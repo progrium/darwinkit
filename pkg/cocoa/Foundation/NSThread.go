@@ -4,12 +4,12 @@
 
 package foundation
 
-import "testing"
+import "github.com/progrium/macdriver/pkg/objc"
 
-func TestString(t *testing.T) {
-	hi := "hello, world!"
-	str := NSStringFromString(hi)
-	if str.String() != hi {
-		t.Error("mismatch")
-	}
+type NSThread struct {
+	objc.Object
+}
+
+func NSThread_IsMainThread() bool {
+	return objc.GetClass("NSThread").SendMsg("isMainThread") != nil
 }

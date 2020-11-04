@@ -5,7 +5,7 @@
 package appkit
 
 import (
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -13,9 +13,9 @@ type NSNib struct {
 	objc.Object
 }
 
-func NewNSNib(name string, bundle NSBundle) NSNib {
-	return NSNib{objc.GetClass("NSNib").SendMsg("alloc").SendMsg("initWithNibNamed:bundle:",
-		NSStringFromString(name), bundle)}
+func NSNib_Init(name string, bundle NSBundle) NSNib {
+	return NSNib{objc.GetClass("NSNib").Alloc().SendMsg("initWithNibNamed:bundle:",
+		cocoa.String(name), bundle)}
 }
 
 func (nib NSNib) InstantiateWithOwner(owner objc.Object) {

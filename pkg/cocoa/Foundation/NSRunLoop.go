@@ -10,11 +10,11 @@ type NSRunLoop struct {
 	objc.Object
 }
 
-func NSRunLoopCurrent() NSRunLoop {
+func NSRunLoop_Current() NSRunLoop {
 	return NSRunLoop{objc.GetClass("NSRunLoop").SendMsg("currentRunLoop")}
 }
 
-func NSRunLoopMain() NSRunLoop {
+func NSRunLoop_Main() NSRunLoop {
 	return NSRunLoop{objc.GetClass("NSRunLoop").SendMsg("mainRunLoop")}
 }
 

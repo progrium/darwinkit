@@ -12,6 +12,10 @@ type NSDictionary struct {
 	objc.Object
 }
 
+func NSDictionary_New() NSDictionary {
+	return NSDictionary{objc.GetClass("NSDictionary").Alloc().Init()}
+}
+
 func (dict NSDictionary) ObjectForKey(key objc.Object) objc.Object {
 	return dict.SendMsg("objectForKey:", key)
 }

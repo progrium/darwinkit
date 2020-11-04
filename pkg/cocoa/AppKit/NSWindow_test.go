@@ -7,16 +7,17 @@ package appkit
 import (
 	"testing"
 
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
+	foundation "github.com/progrium/macdriver/pkg/cocoa/Foundation"
 )
 
 func TestTitle(t *testing.T) {
-	pool := NewNSAutoreleasePool()
+	pool := foundation.NSAutoreleasePool_New()
 	defer pool.Release()
 
-	NSSharedApplication()
+	NSApp()
 
-	window := NewNSWindow(NSRectMake(0, 0, 500, 500), 0, NSBackingStoreBuffered, false)
+	window := NSWindow_Init(cocoa.Rect(0, 0, 500, 500), 0, NSBackingStoreBuffered, false)
 
 	title := "hey"
 

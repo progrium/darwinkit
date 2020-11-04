@@ -5,7 +5,7 @@
 package appkit
 
 import (
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -13,16 +13,16 @@ type NSMenu struct {
 	objc.Object
 }
 
-func NewNSMenu() NSMenu {
-	return NSMenu{objc.GetClass("NSMenu").SendMsg("alloc").SendMsg("init")}
+func NSMenu_New() NSMenu {
+	return NSMenu{objc.GetClass("NSMenu").Alloc().Init()}
 }
 
-func NewNSMenuWithTitle(title string) NSMenu {
-	return NSMenu{objc.GetClass("NSMenu").SendMsg("alloc").SendMsg("initWithTitle:", NSStringFromString(title))}
+func NSMenu_Init(title string) NSMenu {
+	return NSMenu{objc.GetClass("NSMenu").Alloc().SendMsg("initWithTitle:", cocoa.String(title))}
 }
 
 func (menu NSMenu) SetTitle(title string) {
-	menu.SendMsg("setTitle:", NSStringFromString(title))
+	menu.SendMsg("setTitle:", cocoa.String(title))
 }
 
 func (menu NSMenu) Title() string {

@@ -5,7 +5,7 @@
 package appkit
 
 import (
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -13,6 +13,6 @@ type NSImage struct {
 	objc.Object
 }
 
-func NSImageNamed(name string) objc.Object {
-	return NSImage{objc.GetClass("NSImage").SendMsg("imageNamed:", NSStringFromString(name))}
+func NSImage_ImageNamed(name string) objc.Object {
+	return NSImage{objc.GetClass("NSImage").SendMsg("imageNamed:", cocoa.String(name))}
 }

@@ -7,7 +7,7 @@ package uikit
 import (
 	"unsafe"
 
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
 )
 
 /*
@@ -22,7 +22,7 @@ int GOUIKit_UIApplicationMain(void *appCls, void *appDelegateCls) {
 import "C"
 
 func UIApplicationMain(appClass string, appDelegateClass string) int {
-	appClassNSString := NSStringFromString(appClass)
-	appDelegateClassNSString := NSStringFromString(appDelegateClass)
+	appClassNSString := cocoa.String(appClass)
+	appDelegateClassNSString := cocoa.String(appDelegateClass)
 	return int(C.GOUIKit_UIApplicationMain(unsafe.Pointer(appClassNSString.Pointer()), unsafe.Pointer(appDelegateClassNSString.Pointer())))
 }

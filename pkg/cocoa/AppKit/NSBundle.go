@@ -5,7 +5,7 @@
 package appkit
 
 import (
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	foundation "github.com/progrium/macdriver/pkg/cocoa/Foundation"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -17,6 +17,6 @@ func NSMainBundle() NSBundle {
 	return NSBundle{objc.GetClass("NSBundle").SendMsg("mainBundle")}
 }
 
-func (bundle NSBundle) InfoDictionary() NSDictionary {
-	return NSDictionary{bundle.SendMsg("infoDictionary")}
+func (bundle NSBundle) InfoDictionary() foundation.NSDictionary {
+	return foundation.NSDictionary{Object: bundle.SendMsg("infoDictionary")}
 }

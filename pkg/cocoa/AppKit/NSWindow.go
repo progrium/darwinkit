@@ -5,7 +5,8 @@
 package appkit
 
 import (
-	. "github.com/progrium/macdriver/pkg/ns/Foundation"
+	"github.com/progrium/macdriver/pkg/cocoa"
+	. "github.com/progrium/macdriver/pkg/cocoa/Foundation"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -30,7 +31,11 @@ type NSWindow struct {
 	objc.Object
 }
 
-func NewNSWindow(rect NSRect, windowStyle NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
+func NSWindow_New() NSWindow {
+	return NSWindow{objc.GetClass("NSWindow").Alloc().Init()}
+}
+
+func NSWindow_Init(rect NSRect, windowStyle NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
 	obj := objc.GetClass("NSWindow").Alloc().
 		SendMsg("initWithContentRect:styleMask:backing:defer:",
 			rect, windowStyle, bufferingType, deferCreation)
@@ -46,7 +51,7 @@ func (win NSWindow) MakeKeyAndOrderFront(sender objc.Object) {
 }
 
 func (win NSWindow) SetTitle(title string) {
-	win.SendMsg("setTitle:", NSStringFromString(title).Object)
+	win.SendMsg("setTitle:", cocoa.String(title))
 }
 
 func (win NSWindow) Title() string {

@@ -19,12 +19,12 @@ type NSString struct {
 	objc.Object
 }
 
-func NSStringFromString(str string) NSString {
+func NSString_FromString(str string) NSString {
 	hdrp := (*reflect.StringHeader)(unsafe.Pointer(&str))
 	obj := objc.GetClass("NSString").SendMsg("alloc").SendMsg("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
-	return NSStringFromObject(obj)
+	return NSString_FromObject(obj)
 }
 
-func NSStringFromObject(obj objc.Object) NSString {
+func NSString_FromObject(obj objc.Object) NSString {
 	return NSString{obj}
 }

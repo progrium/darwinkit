@@ -6,10 +6,10 @@ package foundation
 
 import "github.com/progrium/macdriver/pkg/objc"
 
-type NSThread struct {
+type NSAutoreleasePool struct {
 	objc.Object
 }
 
-func NSThreadIsMainThread() bool {
-	return objc.GetClass("NSThread").SendMsg("isMainThread") != nil
+func NSAutoreleasePool_New() NSAutoreleasePool {
+	return NSAutoreleasePool{objc.GetClass("NSAutoreleasePool").Alloc().Init()}
 }

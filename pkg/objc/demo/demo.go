@@ -8,7 +8,7 @@ import (
 	"log"
 	"runtime"
 
-	. "github.com/progrium/macdriver/pkg/ns/AppKit"
+	appkit "github.com/progrium/macdriver/pkg/cocoa/AppKit"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -31,10 +31,10 @@ func (delegate *AppDelegate) ApplicationDidFinishLaunching(notification objc.Obj
 	log.Printf("Object: %v", delegate.Object)
 	log.Printf("Window: %v", delegate.Window)
 
-	mainMenu := NSSharedApplication().MainMenu()
+	mainMenu := appkit.NSApp().MainMenu()
 	log.Printf("%v", mainMenu)
 }
 
 func main() {
-	NSApplicationMain()
+	appkit.NSApplicationMain()
 }

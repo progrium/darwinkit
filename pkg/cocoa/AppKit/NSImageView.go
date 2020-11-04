@@ -12,7 +12,7 @@ type NSImageView struct {
 	objc.Object
 }
 
-func NewNSImageView() NSImageView {
+func NSImageView_New() NSImageView {
 	return NSImageView{objc.GetClass("NSImageView").Alloc().Init()}
 }
 

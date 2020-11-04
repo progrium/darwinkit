@@ -4,21 +4,17 @@
 
 package appkit
 
-/*
-extern int NSApplicationMain(int argc, const char *argv[]);
-void GoAppKit_NSApplicationMain() {
-	NSApplicationMain(0, (void *)0);
-}
-*/
-import "C"
-
 import "github.com/progrium/macdriver/pkg/objc"
 
 type NSApplication struct {
 	objc.Object
 }
 
-func NSSharedApplication() NSApplication {
+func NSApplication_New() NSApplication {
+	return NSApplication{objc.GetClass("NSApplication").Alloc().Init()}
+}
+
+func NSApp() NSApplication {
 	return NSApplication{objc.GetClass("NSApplication").SendMsg("sharedApplication")}
 }
 
@@ -38,10 +34,14 @@ func (app NSApplication) SetMainMenu(menu NSMenu) {
 	app.SendMsg("setMainMenu:", menu)
 }
 
-func (app NSApplication) MainMenu() NSMenu {
-	return NSMenu{app.SendMsg("mainMenu")}
+func (app NSApplication) SetActivationPolicy(policy int) {
+	app.SendMsg("setActivationPolicy:", policy)
 }
 
-func NSApplicationMain() {
-	C.GoAppKit_NSApplicationMain()
+func (app NSApplication) ActivateIgnoringOtherApps(flag bool) {
+	app.SendMsg("activateIgnoringOtherApps:", flag)
+}
+
+func (app NSApplication) MainMenu() NSMenu {
+	return NSMenu{app.SendMsg("mainMenu")}
 }
