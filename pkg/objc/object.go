@@ -9,17 +9,21 @@ import (
 	"C"
 	"unsafe"
 )
+import (
+	"fmt"
+	"strings"
+)
 
 // An Object represents an Objective-C object, along with
 // some convenience methods only found on NSObjects.
 type Object interface {
 	// SendMsg sends an arbitrary message to the method on the
 	// object that is idenfieid by selectorName.
-	SendMsg(selectorName string, args ...interface{}) Object
+	Send(selector string, args ...interface{}) Object
 
 	// SendSuperMsg is like SendMsg, but sends to the object's
 	// super class instead.
-	SendSuperMsg(selectorName string, args ...interface{}) Object
+	SendSuper(selector string, args ...interface{}) Object
 
 	// Alloc sends the  "alloc" message to the object.
 	Alloc() Object
@@ -59,6 +63,10 @@ type Object interface {
 
 	// Bool returns the value of the object as a bool.
 	Bool() bool
+
+	Set(setter string, args ...interface{})
+	Get(getter string) Object
+	GetSt(getter string, ret interface{})
 }
 
 // Type object is the package's internal representation of an Object.
@@ -66,6 +74,10 @@ type Object interface {
 // the Class interface.
 type object struct {
 	ptr uintptr
+}
+
+func ObjectPtr(ptr uintptr) Object {
+	return object{ptr: ptr}
 }
 
 // Return the Object as a uintptr.
@@ -77,35 +89,47 @@ func (obj object) Pointer() uintptr {
 }
 
 func (obj object) Alloc() Object {
-	return obj.SendMsg("alloc")
+	return obj.Send("alloc")
 }
 
 func (obj object) Init() Object {
-	return obj.SendMsg("init")
+	return obj.Send("init")
 }
 
 func (obj object) Retain() Object {
-	return obj.SendMsg("retain")
+	return obj.Send("retain")
 }
 
 func (obj object) Release() Object {
-	return obj.SendMsg("release")
+	return obj.Send("release")
 }
 
 func (obj object) AutoRelease() Object {
-	return obj.SendMsg("autorelease")
+	return obj.Send("autorelease")
 }
 
 func (obj object) Copy() Object {
-	return obj.SendMsg("copy")
+	return obj.Send("copy")
+}
+
+func (obj object) Get(getter string) Object {
+	return obj.Send(getter)
+}
+
+func (obj object) GetSt(getter string, ret interface{}) {
+	obj.Send(getter, ret)
+}
+
+func (obj object) Set(setter string, args ...interface{}) {
+	obj.Send(fmt.Sprintf("set%s", strings.Title(setter)), args...)
 }
 
 func (obj object) String() string {
 	pool := GetClass("NSAutoreleasePool").Alloc().Init()
 	defer pool.Release()
 
-	descString := obj.SendMsg("description")
-	utf8Bytes := descString.SendMsg("UTF8String")
+	descString := obj.Send("description")
+	utf8Bytes := descString.Send("UTF8String")
 	if utf8Bytes.Pointer() != 0 {
 		return C.GoString((*C.char)(unsafe.Pointer(utf8Bytes.Pointer())))
 	}

@@ -3,30 +3,50 @@ package macdriver
 import (
 	"fmt"
 	"log"
+	"runtime"
 
 	"github.com/progrium/macdriver/pkg/cocoa"
-	appkit "github.com/progrium/macdriver/pkg/cocoa/AppKit"
-	foundation "github.com/progrium/macdriver/pkg/cocoa/Foundation"
+	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
+var effect objc.Object
+var webview core.WKWebView
+
 func init() {
-	// defer runtime.LockOSThread()
+	defer runtime.LockOSThread()
 	c := objc.NewClass(AppDelegate{})
 	c.AddMethod("applicationDidFinishLaunching:", (*AppDelegate).ApplicationDidFinishLaunching)
 	c.AddMethod("applicationShouldTerminateAfterLastWindowClosed:", (*AppDelegate).ApplicationShouldTerminateAfterLastWindowClosed)
 	c.AddMethod("applicationWillFinishLaunching:", (*AppDelegate).ApplicationWillFinishLaunching)
 	c.AddMethod("foobar:", (*AppDelegate).Foobar)
 	objc.RegisterClass(c)
+
+	vc := objc.NewClass(ViewController{})
+	vc.AddMethod("viewDidLoad", (*ViewController).ViewDidLoad)
+	objc.RegisterClass(vc)
+}
+
+type ViewController struct {
+	objc.Object `objc:"ViewController : NSViewController"`
+}
+
+func (c *ViewController) ViewDidLoad() {
+	log.Println("VIEW DID LOAD")
 }
 
 type AppDelegate struct {
-	objc.Object `objc:"GOAppDelegate : NSObject"`
-	Window      appkit.NSWindow
+	objc.Object `objc:"AppDelegate : NSObject"`
 }
 
 func (delegate *AppDelegate) Foobar() {
 	log.Println("FOOBAR")
+	url := core.NSURL_Init("http://localhost:8080/bgtest.html")
+	req := core.NSURLRequest_Init(url)
+	webview.LoadRequest(req)
+	webview.Set("opaque:", false)
+	webview.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
+	webview.Send("setValue:forKey:", objc.Get("NSNumber").Send("numberWithBool:", false), core.String("drawsBackground"))
 }
 
 func (delegate *AppDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender objc.Object) bool {
@@ -34,34 +54,63 @@ func (delegate *AppDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sen
 }
 
 func (delegate *AppDelegate) ApplicationWillFinishLaunching(notification objc.Object) {
-	//log.Printf("ApplicationWillFinishLaunching! %v", notification)
-
-	appkit.NSApp().SetActivationPolicy(0)
+	cocoa.NSApp().SetActivationPolicy(0)
 }
 
 func (delegate *AppDelegate) ApplicationDidFinishLaunching(notification objc.Object) {
-	//log.Printf("ApplicationDidFinishLaunching! %v", notification)
+	//view := objc.GetClass("NSView").Alloc().SendMsg("initWithFrame:", cocoa.Rect(0, 0, 1400, 300))
 
-	delegate.Window = appkit.NSWindow_Init(cocoa.Rect(200.0, 200.0, 600.0, 400.0),
-		appkit.NSTitledWindowMask|appkit.NSClosableWindowMask|appkit.NSMiniaturizableWindowMask,
-		appkit.NSBackingStoreBuffered,
-		false,
-	)
-	delegate.Window.SetTitle("Hello world!!")
-	delegate.Window.MakeKeyAndOrderFront(delegate.Window)
+	tv := cocoa.NSTextView_Init(core.Rect(0, 0, 1400, 300))
+	tv.Set("string:", core.String("Hello again"))
+	tv.Set("selectable:", false)
+	tv.Set("richText:", false)
+	tv.Set("editable:", false)
+	tv.Set("fieldEditor:", false)
+	tv.Set("importsGraphics:", false)
+	tv.Set("drawsBackground:", false)
+	tv.Set("font:", cocoa.NSFont_Init("Helvetica", 258.0))
+	tv.Set("alignment:", cocoa.NSTextAlignmentCenter)
 
-	appkit.NSApp().SetMainMenu(MakeMenu())
+	effect = objc.Get("NSVisualEffectView").Alloc().Init()
+	effect.Set("translatesAutoresizingMaskIntoConstraints:", false)
+	effect.Set("state:", 1)
+	effect.Set("blendingMode:", cocoa.NSVisualEffectBlendingModeBehindWindow)
+	effect.Set("material:", 2)
+	effect.Set("wantsLayer:", true)
+	effect.Get("layer").Set("masksToBounds:", true)
+	effect.Get("layer").Set("cornerRadius:", 16.0)
 
-	// content := objc.GetClass("UNMutableNotificationContent").Alloc().Init()
-	// content.SendMsg("setTitle:", cocoa.String("Title"))
-	// content.SendMsg("setBody:", cocoa.String("This is the body"))
-	// trigger := objc.GetClass("UNTimeIntervalNotificationTrigger").SendMsg("triggerWithTimeInterval:repeats:", 0, false)
-	// req := objc.GetClass("UNNotificationRequest").SendMsg("requestWithIdentifier:content:trigger:", cocoa.String("test"), content, nil)
-	// objc.GetClass("UNUserNotificationCenter").SendMsg("currentNotificationCenter").SendMsg("addNotificationRequest:", req)
+	// view.SendMsg("addSubview:", tv)
+	// view.SendMsg("addSubview:", effect)
 
-	// notif := objc.GetClass("NSUSerNotification").Alloc().Init()
-	// notif.SendMsg("setTitle:", cocoa.String("Hello there"))
-	// objc.GetClass("NSUserNotificationCenter").SendMsg("defaultUserNotificationCenter").SendMsg("scheduleNotification:", notif)
+	win := cocoa.NSWindow_Init(core.Rect(0, 0, 1400, 300), cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
+	win.Set("movableByWindowBackground:", true)
+	win.Set("titlebarAppearsTransparent:", true)
+	win.Set("titleVisibility:", cocoa.NSWindowTitleHidden)
+	win.Set("opaque:", false)
+	win.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
+	win.Center()
+	win.SetContentView(effect)
+	win.ContentView().Send("addSubview:positioned:relativeTo:", tv, cocoa.NSWindowAbove, nil)
+
+	win.SetTitle("Hello world!!")
+	win.MakeKeyAndOrderFront(win)
+
+	webview = MakeWebView()
+
+	wv := cocoa.NSWindow_Init(core.Rect(0, 0, 1400, 300), cocoa.NSTitledWindowMask|cocoa.NSClosableWindowMask|cocoa.NSMiniaturizableWindowMask|cocoa.NSResizableWindowMask, cocoa.NSBackingStoreBuffered, false)
+	wv.Set("movableByWindowBackground:", true)
+	wv.Set("opaque:", false)
+	wv.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
+	wv.Set("ignoresMouseEvents:", true)
+	wv.SetContentView(webview)
+	wv.MakeKeyAndOrderFront(wv)
+
+	cocoa.NSApp().SetMainMenu(MakeMenu())
+
+	//log.Println(w2.ContentRectForFrameRect(cocoa.Rect(200.0, 300.0, 200.0, 300.0)), w2.IsVisible())
+	//debug.FontTest()
+
 }
 
 // regular w/ titlebar (w/ auto dark mode)
@@ -76,51 +125,58 @@ func (delegate *AppDelegate) ApplicationDidFinishLaunching(notification objc.Obj
 // hide, minimize, maximize
 
 func Run() {
-	foundation.NSAutoreleasePool_New()
+	core.NSAutoreleasePool_New()
 
-	app := appkit.NSApp()
-	delegate := objc.GetClass("GOAppDelegate").Alloc().Init()
+	app := cocoa.NSApp()
+	delegate := objc.Get("AppDelegate").Alloc().Init()
 
-	statusBarItem := objc.GetClass("NSStatusBar").SendMsg("systemStatusBar").SendMsg("statusItemWithLength:", -1.0)
-	statusBarItem.SendMsg("button").SendMsg("setTitle:", cocoa.String("Hello world"))
-	statusBarItem.SendMsg("setTarget:", delegate)
-	statusBarItem.SendMsg("setAction:", objc.GetSelector("foobar:"))
+	statusBarItem := objc.Get("NSStatusBar").Send("systemStatusBar").Send("statusItemWithLength:", -1.0)
+	statusBarItem.Send("button").Send("setTitle:", core.String("Hello world"))
+	statusBarItem.Send("setTarget:", delegate)
+	statusBarItem.Send("setAction:", objc.Sel("foobar:"))
 
 	app.SetDelegate(delegate)
 	fmt.Println("running...")
 	app.Run()
 }
 
-func MakeMenu() appkit.NSMenu {
-	mainMenu := appkit.NSMenu_New()
+func MakeWebView() core.WKWebView {
+	config := core.WKWebViewConfiguration_New()
+	wv := core.WKWebView_Init(core.Rect(0, 0, 1400, 300), config)
+
+	return wv
+}
+
+func MakeMenu() cocoa.NSMenu {
+	mainMenu := cocoa.NSMenu_New()
 	mainMenu.AutoRelease()
 
-	mainAppItem := appkit.NSMenuItem_New()
+	mainAppItem := cocoa.NSMenuItem_New()
 	mainAppItem.AutoRelease()
 
-	mainFileItem := appkit.NSMenuItem_New()
+	mainFileItem := cocoa.NSMenuItem_New()
 	mainFileItem.AutoRelease()
 
 	mainMenu.AddItem(mainAppItem)
 	mainMenu.AddItem(mainFileItem)
 
-	fileMenu := appkit.NSMenu_Init("File")
+	fileMenu := cocoa.NSMenu_Init("File")
 	fileMenu.AutoRelease()
 	mainFileItem.SetSubmenu(fileMenu)
 
-	appMenu := appkit.NSMenu_Init("App")
+	appMenu := cocoa.NSMenu_Init("App")
 	appMenu.AutoRelease()
 	mainAppItem.SetSubmenu(appMenu)
 
-	quitItem := appkit.NSMenuItem_New()
-	quitItem.SendMsg("setKeyEquivalent:", cocoa.String("q"))
-	quitItem.SendMsg("setTitle:", cocoa.String("Quit"))
-	quitItem.SendMsg("setAction:", objc.GetSelector("terminate:"))
+	quitItem := cocoa.NSMenuItem_New()
+	quitItem.Send("setKeyEquivalent:", core.String("q"))
+	quitItem.Send("setTitle:", core.String("Quit"))
+	quitItem.Send("setAction:", objc.Sel("terminate:"))
 	quitItem.AutoRelease()
 
-	quitItem2 := appkit.NSMenuItem_New()
-	quitItem2.SendMsg("setTitle:", cocoa.String("Foobar"))
-	quitItem2.SendMsg("setAction:", objc.GetSelector("foobar:"))
+	quitItem2 := cocoa.NSMenuItem_New()
+	quitItem2.Send("setTitle:", core.String("Foobar"))
+	quitItem2.Send("setAction:", objc.Sel("foobar:"))
 	quitItem2.AutoRelease()
 
 	fileMenu.AddItem(quitItem2)

@@ -17,11 +17,11 @@ type object64 struct {
 	big uint64
 }
 
-func (obj object64) SendMsg(selector string, args ...interface{}) Object {
+func (obj object64) Send(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSend", selector, args...)
 }
 
-func (obj object64) SendSuperMsg(selector string, args ...interface{}) Object {
+func (obj object64) SendSuper(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSendSuper", selector, args...)
 }
 
@@ -30,35 +30,35 @@ func (obj object64) Pointer() uintptr {
 }
 
 func (obj object64) Alloc() Object {
-	return obj.SendMsg("alloc")
+	return obj.Send("alloc")
 }
 
 func (obj object64) Init() Object {
-	return obj.SendMsg("init")
+	return obj.Send("init")
 }
 
 func (obj object64) Retain() Object {
-	return obj.SendMsg("retain")
+	return obj.Send("retain")
 }
 
 func (obj object64) Release() Object {
-	return obj.SendMsg("release")
+	return obj.Send("release")
 }
 
 func (obj object64) AutoRelease() Object {
-	return obj.SendMsg("autorelease")
+	return obj.Send("autorelease")
 }
 
 func (obj object64) Copy() Object {
-	return obj.SendMsg("copy")
+	return obj.Send("copy")
 }
 
 func (obj object64) String() string {
 	pool := GetClass("NSAutoreleasePool").Alloc().Init()
 	defer pool.Release()
 
-	descString := obj.SendMsg("description")
-	utf8Bytes := descString.SendMsg("UTF8String")
+	descString := obj.Send("description")
+	utf8Bytes := descString.Send("UTF8String")
 	if utf8Bytes.Pointer() != 0 {
 		return C.GoString((*C.char)(unsafe.Pointer(utf8Bytes.Pointer())))
 	}

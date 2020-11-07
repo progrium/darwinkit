@@ -205,7 +205,7 @@ func goMethodCallEntryPoint(p uintptr) uintptr {
 	// method.
 	if sel == "dealloc" && method == nil {
 		clsInfo.RemoveRef(internalPtr)
-		obj.SendSuperMsg("dealloc")
+		obj.SendSuper("dealloc")
 		return 0
 	}
 

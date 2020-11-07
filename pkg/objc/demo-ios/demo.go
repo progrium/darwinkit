@@ -8,8 +8,7 @@ import (
 	"log"
 	"runtime"
 
-	foundation "github.com/progrium/macdriver/pkg/cocoa/Foundation"
-	uikit "github.com/progrium/macdriver/pkg/cocoa/UIKit"
+	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
@@ -30,8 +29,8 @@ func init() {
 }
 
 func main() {
-	pool := foundation.NSAutoreleasePool_New()
+	pool := core.NSAutoreleasePool_New()
 	defer pool.Release()
 
-	uikit.UIApplicationMain("UIApplication", "GOAppDelegate")
+	//uikit.UIApplicationMain("UIApplication", "GOAppDelegate")
 }

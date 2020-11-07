@@ -5,7 +5,11 @@
 package objc
 
 /*
+//#cgo CFLAGS: -x objective-c
 #cgo LDFLAGS: -lobjc -framework Foundation
+#define OBJC_OLD_DISPATCH_PROTOTYPES 1
+
+// #cgo LDFLAGS: -lobjc -framework Foundation
 #define __OBJC2__ 1
 #include <objc/runtime.h>
 #include <objc/message.h>
@@ -17,11 +21,23 @@ void *GoObjc_GetObjectSuperClassStruct(void *obj) {
 	s->super_class = class_getSuperclass(object_getClass(obj));
 	return s;
 }
+
+void GoObjc_MsgSend_Stret0(void *stretAddr, void *self, void *op) {
+	objc_msgSend_stret(stretAddr, self, op);
+}
+
+void GoObjc_MsgSend_Stret1(void *stretAddr, void *self, void *op, void *arg) {
+	objc_msgSend_stret(stretAddr, self, op, arg);
+}
+
 */
 import "C"
 import (
+	"fmt"
+	"log"
 	"math"
 	"reflect"
+	"strings"
 	"unsafe"
 
 	"github.com/progrium/macdriver/pkg/variadic"
@@ -64,10 +80,26 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 	intArgs := []uintptr{}
 	floatArgs := []uintptr{}
 	memArgs := []uintptr{}
+	argOffset := 2 // self, op
 
 	typeInfo := simpleTypeInfoForMethod(obj, selector)
 
+	var stretAddr uintptr
+	if len(typeInfo) > 0 && string(typeInfo[0]) == encStructBegin {
+		lastArg := reflect.ValueOf(args[len(args)-1])
+		if lastArg.Kind() == reflect.Ptr {
+			sendFuncName = fmt.Sprintf("%s_stret", sendFuncName)
+			argOffset = 3 // stretAddr, theReceiver, theSelector (not used now)
+			stretAddr = lastArg.Pointer()
+			args = args[:len(args)-1]
+		}
+	}
+
 	for i, arg := range args {
+		if args[i] == nil {
+			intArgs = append(intArgs, uintptr(0))
+			continue
+		}
 		switch t := arg.(type) {
 		case Object:
 			intArgs = append(intArgs, t.Pointer())
@@ -131,8 +163,25 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 				args := unpackStruct(val)
 				memArgs = append(memArgs, args...)
 			default:
-				panic("unhandled kind")
+				log.Panicf("unhandled kind: %s", val.Kind())
 			}
+		}
+	}
+
+	// only objc_msgSend_stret supported for now,
+	// with limited arg counts and type support
+	if strings.HasSuffix(sendFuncName, "_stret") {
+		switch len(intArgs) {
+		case 0:
+			C.GoObjc_MsgSend_Stret0(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel)
+			return object{ptr: 0}
+		case 1:
+			// TODO: currently broken, segfaults with any reasonable values
+			log.Println(stretAddr, obj.Pointer(), sel, intArgs[0])
+			C.GoObjc_MsgSend_Stret1(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel, unsafe.Pointer(intArgs[0]))
+			return object{ptr: 0}
+		default:
+			log.Panicf("unsupported arg count for data-structure return call: %s(%d)", sendFuncName, len(intArgs))
 		}
 	}
 
@@ -161,12 +210,12 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 	}
 
 	for i, v := range intArgs {
-		fc.Words[i+2] = v
+		fc.Words[argOffset+i] = v
 	}
 
 	fc.NumFloat = int64(len(floatArgs))
 	for i, v := range floatArgs {
-		fc.Words[6+i] = v
+		fc.Words[argOffset+4+i] = v
 	}
 
 	if len(typeInfo) > 0 {
@@ -181,10 +230,15 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 	return object{ptr: fc.Call()}
 }
 
-func (obj object) SendMsg(selector string, args ...interface{}) Object {
+func (obj object) Send(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSend", selector, args...)
 }
 
-func (obj object) SendSuperMsg(selector string, args ...interface{}) Object {
+// func (obj object) SendMsgStret(ret uintptr, selector string, args ...interface{}) {
+// 	sel := selectorWithName(selector)
+// 	C.Debug_MsgSend_Stret(unsafe.Pointer(ret), unsafe.Pointer(obj.Pointer()), sel)
+// }
+
+func (obj object) SendSuper(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSendSuper", selector, args...)
 }

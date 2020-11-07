@@ -173,8 +173,13 @@ func NewClass(value interface{}) Class {
 }
 
 // Lookup a Class by name
-func GetClass(name string) Class {
+func Get(name string) Class {
 	return object{ptr: uintptr(C.GoObjc_GetClassByName(C.CString(name)))}
+}
+
+// deprecated
+func GetClass(name string) Class {
+	return Get(name)
 }
 
 // Get the Class of an object. This equivalent to sending the

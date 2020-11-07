@@ -54,8 +54,17 @@ func (sel selector) String() string {
 }
 
 // GetSelector looks up a Selector by name.
-func GetSelector(name string) Selector {
+func Sel(name string) Selector {
 	return selector(name)
+}
+
+// deprecated
+func GetSelector(name string) Selector {
+	return Sel(name)
+}
+
+func RegisterSelector(name string) unsafe.Pointer {
+	return selectorWithName(name)
 }
 
 // selectorWithName looks up a selector by name.

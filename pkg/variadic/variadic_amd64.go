@@ -17,7 +17,9 @@ void *LookupSymAddr(char *str) {
 */
 import "C"
 
-import "unsafe"
+import (
+	"unsafe"
+)
 
 const (
 	RDI = iota

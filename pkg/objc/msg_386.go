@@ -169,10 +169,10 @@ func sendMsg(obj Object, sendFuncName string, selector string, restArgs ...inter
 	return object{ptr: fc.Call()}
 }
 
-func (obj object) SendMsg(selector string, args ...interface{}) Object {
+func (obj object) Send(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSend", selector, args...)
 }
 
-func (obj object) SendSuperMsg(selector string, args ...interface{}) Object {
+func (obj object) SendSuper(selector string, args ...interface{}) Object {
 	return sendMsg(obj, "objc_msgSendSuper", selector, args...)
 }

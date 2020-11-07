@@ -30,14 +30,14 @@ func TestStructPassing(t *testing.T) {
 			Y: 0,
 		},
 		NSSize{
-			Width: 500,
+			Width:  500,
 			Height: 500,
 		},
 	}
 
 	obj := GetClass("NSValue").SendMsg("valueWithRect:", rect)
 	if obj.Pointer() == 0 {
-		t.Fatalf("unable to create NSWindow, got nil ptr")
+		t.Fatalf("unable to create NSValue, got nil ptr")
 	}
 	want := "NSRect: {{0, 0}, {500, 500}}"
 	got := obj.String()
