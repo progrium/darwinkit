@@ -22,7 +22,7 @@ func (sgo *SomeGoObject) ThirtyTwo() int64 {
 }
 
 func (sgo *SomeGoObject) Sum() int64 {
-	return sgo.SendMsg("thirtyTwo").Int() + sgo.SendMsg("fiftyFive").Int()
+	return sgo.Send("thirtyTwo").Int() + sgo.Send("fiftyFive").Int()
 }
 
 func (sgo *SomeGoObject) GoSum() int64 {
@@ -37,8 +37,8 @@ func TestGoObjectCallObjC(t *testing.T) {
 	c.AddMethod("sum", (*SomeGoObject).Sum)
 	RegisterClass(c)
 
-	sgo := GetClass("SomeGoObject").SendMsg("alloc").SendMsg("init")
-	if sgo.SendMsg("goSum").Int() != sgo.SendMsg("sum").Int() {
+	sgo := GetClass("SomeGoObject").Send("alloc").Send("init")
+	if sgo.Send("goSum").Int() != sgo.Send("sum").Int() {
 		t.Errorf("calculated sums do not match")
 	}
 }

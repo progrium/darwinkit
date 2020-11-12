@@ -2,185 +2,342 @@ package macdriver
 
 import (
 	"fmt"
-	"log"
-	"runtime"
+	"os"
+	"reflect"
+	"sort"
+	"strconv"
+	"strings"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
+	"github.com/rs/xid"
 )
 
-var effect objc.Object
-var webview core.WKWebView
+var (
+	mutations chan mutation
+)
 
 func init() {
-	defer runtime.LockOSThread()
-	c := objc.NewClass(AppDelegate{})
-	c.AddMethod("applicationDidFinishLaunching:", (*AppDelegate).ApplicationDidFinishLaunching)
-	c.AddMethod("applicationShouldTerminateAfterLastWindowClosed:", (*AppDelegate).ApplicationShouldTerminateAfterLastWindowClosed)
-	c.AddMethod("applicationWillFinishLaunching:", (*AppDelegate).ApplicationWillFinishLaunching)
-	c.AddMethod("foobar:", (*AppDelegate).Foobar)
-	objc.RegisterClass(c)
-
-	vc := objc.NewClass(ViewController{})
-	vc.AddMethod("viewDidLoad", (*ViewController).ViewDidLoad)
-	objc.RegisterClass(vc)
+	mutations = make(chan mutation)
 }
 
-type ViewController struct {
-	objc.Object `objc:"ViewController : NSViewController"`
-}
-
-func (c *ViewController) ViewDidLoad() {
-	log.Println("VIEW DID LOAD")
+type mutation struct {
+	fn  func(r Resource) (interface{}, error)
+	ret chan interface{}
+	r   Resource
 }
 
 type AppDelegate struct {
 	objc.Object `objc:"AppDelegate : NSObject"`
 }
 
-func (delegate *AppDelegate) Foobar() {
-	log.Println("FOOBAR")
-	url := core.NSURL_Init("http://localhost:8080/bgtest.html")
-	req := core.NSURLRequest_Init(url)
-	webview.LoadRequest(req)
-	webview.Set("opaque:", false)
-	webview.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
-	webview.Send("setValue:forKey:", objc.Get("NSNumber").Send("numberWithBool:", false), core.String("drawsBackground"))
-}
-
-func (delegate *AppDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender objc.Object) bool {
-	return true
-}
-
-func (delegate *AppDelegate) ApplicationWillFinishLaunching(notification objc.Object) {
-	cocoa.NSApp().SetActivationPolicy(0)
-}
-
 func (delegate *AppDelegate) ApplicationDidFinishLaunching(notification objc.Object) {
-	//view := objc.GetClass("NSView").Alloc().SendMsg("initWithFrame:", cocoa.Rect(0, 0, 1400, 300))
-
-	tv := cocoa.NSTextView_Init(core.Rect(0, 0, 1400, 300))
-	tv.Set("string:", core.String("Hello again"))
-	tv.Set("selectable:", false)
-	tv.Set("richText:", false)
-	tv.Set("editable:", false)
-	tv.Set("fieldEditor:", false)
-	tv.Set("importsGraphics:", false)
-	tv.Set("drawsBackground:", false)
-	tv.Set("font:", cocoa.NSFont_Init("Helvetica", 258.0))
-	tv.Set("alignment:", cocoa.NSTextAlignmentCenter)
-
-	effect = objc.Get("NSVisualEffectView").Alloc().Init()
-	effect.Set("translatesAutoresizingMaskIntoConstraints:", false)
-	effect.Set("state:", 1)
-	effect.Set("blendingMode:", cocoa.NSVisualEffectBlendingModeBehindWindow)
-	effect.Set("material:", 2)
-	effect.Set("wantsLayer:", true)
-	effect.Get("layer").Set("masksToBounds:", true)
-	effect.Get("layer").Set("cornerRadius:", 16.0)
-
-	// view.SendMsg("addSubview:", tv)
-	// view.SendMsg("addSubview:", effect)
-
-	win := cocoa.NSWindow_Init(core.Rect(0, 0, 1400, 300), cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
-	win.Set("movableByWindowBackground:", true)
-	win.Set("titlebarAppearsTransparent:", true)
-	win.Set("titleVisibility:", cocoa.NSWindowTitleHidden)
-	win.Set("opaque:", false)
-	win.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
-	win.Center()
-	win.SetContentView(effect)
-	win.ContentView().Send("addSubview:positioned:relativeTo:", tv, cocoa.NSWindowAbove, nil)
-
-	win.SetTitle("Hello world!!")
-	win.MakeKeyAndOrderFront(win)
-
-	webview = MakeWebView()
-
-	wv := cocoa.NSWindow_Init(core.Rect(0, 0, 1400, 300), cocoa.NSTitledWindowMask|cocoa.NSClosableWindowMask|cocoa.NSMiniaturizableWindowMask|cocoa.NSResizableWindowMask, cocoa.NSBackingStoreBuffered, false)
-	wv.Set("movableByWindowBackground:", true)
-	wv.Set("opaque:", false)
-	wv.Set("backgroundColor:", objc.Get("NSColor").Get("clearColor"))
-	wv.Set("ignoresMouseEvents:", true)
-	wv.SetContentView(webview)
-	wv.MakeKeyAndOrderFront(wv)
-
-	cocoa.NSApp().SetMainMenu(MakeMenu())
-
-	//log.Println(w2.ContentRectForFrameRect(cocoa.Rect(200.0, 300.0, 200.0, 300.0)), w2.IsVisible())
-	//debug.FontTest()
-
+	for m := range mutations {
+		v, err := m.fn(m.r)
+		m.ret <- v
+		m.ret <- err
+	}
 }
 
-// regular w/ titlebar (w/ auto dark mode)
-// bg: solid, transparent, translucent
-// corners: radius
-// titlebar: regular, minimal, none
-
-// fixed size
-// min-max size
-// resizable, resizable to grid?
-// always on top
-// hide, minimize, maximize
-
-func Run() {
-	core.NSAutoreleasePool_New()
-
-	app := cocoa.NSApp()
-	delegate := objc.Get("AppDelegate").Alloc().Init()
-
-	statusBarItem := objc.Get("NSStatusBar").Send("systemStatusBar").Send("statusItemWithLength:", -1.0)
-	statusBarItem.Send("button").Send("setTitle:", core.String("Hello world"))
-	statusBarItem.Send("setTarget:", delegate)
-	statusBarItem.Send("setAction:", objc.Sel("foobar:"))
-
-	app.SetDelegate(delegate)
-	fmt.Println("running...")
-	app.Run()
+func MutateInMainThread(fn func(r Resource) (interface{}, error), r Resource) (interface{}, error) {
+	ret := make(chan interface{}, 2)
+	mutations <- mutation{
+		fn:  fn,
+		ret: ret,
+		r:   r,
+	}
+	v := <-ret
+	e := <-ret
+	var err error
+	if e != nil {
+		err = e.(error)
+	}
+	return v, err
 }
 
-func MakeWebView() core.WKWebView {
-	config := core.WKWebViewConfiguration_New()
-	wv := core.WKWebView_Init(core.Rect(0, 0, 1400, 300), config)
+type Handle string
 
-	return wv
+func (h Handle) Type() string {
+	parts := strings.Split(string(h), ":")
+	return parts[0]
 }
 
-func MakeMenu() cocoa.NSMenu {
-	mainMenu := cocoa.NSMenu_New()
-	mainMenu.AutoRelease()
+type Resource interface {
+	Handle() Handle
+	Apply(old, new reflect.Value, target objc.Object) error
+	Init(v reflect.Value) (objc.Object, error)
+}
 
-	mainAppItem := cocoa.NSMenuItem_New()
-	mainAppItem.AutoRelease()
+type resource struct {
+	handle Handle
+}
 
-	mainFileItem := cocoa.NSMenuItem_New()
-	mainFileItem.AutoRelease()
+func (r *resource) Handle() Handle {
+	return r.handle
+}
 
-	mainMenu.AddItem(mainAppItem)
-	mainMenu.AddItem(mainFileItem)
+type Menu struct {
+	resource
 
-	fileMenu := cocoa.NSMenu_Init("File")
-	fileMenu.AutoRelease()
-	mainFileItem.SetSubmenu(fileMenu)
+	Icon    string
+	Title   string
+	Tooltip string
+	Items   []*MenuItem
+}
 
-	appMenu := cocoa.NSMenu_Init("App")
-	appMenu.AutoRelease()
-	mainAppItem.SetSubmenu(appMenu)
+func (m *Menu) Apply(old, new reflect.Value, target objc.Object) error {
+	return nil
+}
 
-	quitItem := cocoa.NSMenuItem_New()
-	quitItem.Send("setKeyEquivalent:", core.String("q"))
-	quitItem.Send("setTitle:", core.String("Quit"))
-	quitItem.Send("setAction:", objc.Sel("terminate:"))
-	quitItem.AutoRelease()
+func (m *Menu) Init(v reflect.Value) (objc.Object, error) {
+	return cocoa.NSMenu_New(), nil
+}
 
-	quitItem2 := cocoa.NSMenuItem_New()
-	quitItem2.Send("setTitle:", core.String("Foobar"))
-	quitItem2.Send("setAction:", objc.Sel("foobar:"))
-	quitItem2.AutoRelease()
+type MenuItem struct {
+	resource
 
-	fileMenu.AddItem(quitItem2)
-	appMenu.AddItem(quitItem)
+	Title   string
+	Icon    string
+	Tooltip string
+	Enabled bool
+	Checked bool
+}
 
-	return mainMenu
+func (m *MenuItem) Apply(old, new reflect.Value, target objc.Object) error {
+	return nil
+}
+
+func (m *MenuItem) Init(v reflect.Value) (objc.Object, error) {
+	return cocoa.NSMenuItem_New(), nil
+}
+
+type StatusItem struct {
+	resource
+
+	Icon string
+	Text string
+	Menu *Menu
+}
+
+func (s *StatusItem) Apply(old, new reflect.Value, target objc.Object) error {
+	return nil
+}
+
+func (s *StatusItem) Init(v reflect.Value) (objc.Object, error) {
+	return cocoa.NSStatusBar_System().StatusItemWithLength(cocoa.NSVariableStatusItemLength), nil
+}
+
+type Window struct {
+	resource
+
+	Title    string
+	Position Point
+	Size     Point
+}
+
+func (w *Window) Apply(old, new reflect.Value, target objc.Object) error {
+	fmt.Fprintln(os.Stderr, "APPLY", w, target)
+	obj := cocoa.NSWindow{Object: target}
+	obj.SetTitle(w.Title)
+	obj.SetFrameDisplay(core.Rect(w.Position.X, w.Position.Y, w.Size.X, w.Size.Y), true)
+	return nil
+}
+
+func (w *Window) Init(v reflect.Value) (objc.Object, error) {
+	return cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0), cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false), nil
+}
+
+type Point struct {
+	X float64
+	Y float64
+}
+
+func NewHandle(type_ string) Handle {
+	return Handle(fmt.Sprintf("%s:%s", type_, xid.New().String()))
+}
+
+type State struct {
+	Menus       []*Menu
+	StatusItems []*StatusItem
+	Windows     []*Window
+
+	objects    map[Handle]objc.Object
+	lastValues map[Handle]reflect.Value
+}
+
+func NewState() *State {
+	return &State{
+		objects:    make(map[Handle]objc.Object),
+		lastValues: make(map[Handle]reflect.Value),
+	}
+}
+
+func (s *State) Update(handle Handle, data interface{}) error {
+	v, err := s.Lookup(handle)
+	if err != nil {
+		return err
+	}
+	if err := mapstructure.Decode(data, v.Interface()); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *State) Init(type_ string, data interface{}) (string, error) {
+	t, found := map[string]reflect.Type{
+		"Window": reflect.TypeOf(Window{}),
+	}[type_]
+	if !found {
+		return "", fmt.Errorf("type not found")
+	}
+	rv := reflect.New(t)
+	v := rv.Interface()
+	if err := mapstructure.Decode(data, v); err != nil {
+		return "", err
+	}
+	r, ok := v.(*Window)
+	if !ok {
+		panic("not a resource")
+	}
+	r.resource.handle = NewHandle(type_)
+	s.Windows = append(s.Windows, v.(*Window))
+	return string(r.resource.handle), nil
+}
+
+func (s *State) Lookup(handle Handle) (found reflect.Value, err error) {
+	// TODO: stop return value for Walk so it doesn't continue crawling once found
+	err = Walk(s, func(v reflect.Value, parent reflect.Value, path []string) error {
+		r, ok := v.Interface().(Resource)
+		if ok {
+			if r.Handle() == handle {
+				found = v
+			}
+		}
+		return nil
+	})
+	return found, err
+}
+
+func (s *State) Reconcile() error {
+	return Walk(s, func(v reflect.Value, parent reflect.Value, path []string) error {
+		r, ok := v.Interface().(Resource)
+		if ok {
+			var err error
+			old := s.lastValues[r.Handle()]
+			target, exists := s.objects[r.Handle()]
+			if !exists {
+				var target_ interface{}
+				if target_, err = MutateInMainThread(func(r Resource) (interface{}, error) {
+					return r.Init(v)
+				}, r); err != nil {
+					return err
+				}
+				s.objects[r.Handle()] = target_.(objc.Object)
+			}
+			_, err = MutateInMainThread(func(r Resource) (interface{}, error) {
+				if err := r.Apply(old, v, target); err != nil {
+					return nil, err
+				}
+				return nil, nil
+			}, r)
+			if err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+}
+
+func walk(v reflect.Value, path []string, visitor func(v reflect.Value, parent reflect.Value, path []string) error) error {
+	for _, k := range keys(v) {
+		subpath := append(path, k)
+		vv := prop(v, k)
+		if err := visitor(vv, v, subpath); err != nil {
+			return err
+		}
+		if err := walk(vv, subpath, visitor); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func Walk(v interface{}, visitor func(v reflect.Value, parent reflect.Value, path []string) error) error {
+	return walk(reflect.ValueOf(v), []string{}, visitor)
+}
+
+func prop(robj reflect.Value, key string) reflect.Value {
+	rtyp := robj.Type()
+	switch rtyp.Kind() {
+	case reflect.Slice, reflect.Array:
+		idx, err := strconv.Atoi(key)
+		if err != nil {
+			panic("non-numeric index given for slice")
+		}
+		rval := robj.Index(idx)
+		if rval.IsValid() {
+			return rval
+		}
+	case reflect.Ptr:
+		return prop(robj.Elem(), key)
+	case reflect.Map:
+		rval := robj.MapIndex(reflect.ValueOf(key))
+		if rval.IsValid() {
+			return rval
+		}
+	case reflect.Struct:
+		rval := robj.FieldByName(key)
+		if rval.IsValid() {
+			return rval
+		}
+		for i := 0; i < rtyp.NumField(); i++ {
+			field := rtyp.Field(i)
+			tag := strings.Split(field.Tag.Get("json"), ",")
+			if tag[0] == key || field.Name == key {
+				return robj.FieldByName(field.Name)
+			}
+		}
+		panic("struct field not found: " + key)
+	}
+	//spew.Dump(robj, key)
+	panic("unexpected kind: " + rtyp.Kind().String())
+}
+
+func keys(v reflect.Value) []string {
+	switch v.Type().Kind() {
+	case reflect.Map:
+		var keys []string
+		for _, key := range v.MapKeys() {
+			k, ok := key.Interface().(string)
+			if !ok {
+				continue
+			}
+			keys = append(keys, k)
+		}
+		sort.Sort(sort.StringSlice(keys))
+		return keys
+	case reflect.Struct:
+		t := v.Type()
+		var f []string
+		for i := 0; i < t.NumField(); i++ {
+			name := t.Field(i).Name
+			// first letter capitalized means exported
+			if name[0] == strings.ToUpper(name)[0] {
+				f = append(f, name)
+			}
+		}
+		return f
+	case reflect.Slice, reflect.Array:
+		var k []string
+		for n := 0; n < v.Len(); n++ {
+			k = append(k, strconv.Itoa(n))
+		}
+		return k
+	case reflect.Ptr:
+		return keys(v.Elem())
+	default:
+		return []string{}
+	}
 }

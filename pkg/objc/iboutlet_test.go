@@ -40,23 +40,23 @@ const NSUTF8StringEncoding = 4
 
 func NSStringFromString(str string) Object {
 	hdrp := (*reflect.StringHeader)(unsafe.Pointer(&str))
-	return GetClass("NSString").SendMsg("alloc").SendMsg("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
+	return GetClass("NSString").Send("alloc").Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
 }
 
 func TestIBOutletKeyValueCodingImpl(t *testing.T) {
 	registerIBOutletTestClass()
 
-	pool := GetClass("NSAutoreleasePool").SendMsg("alloc").SendMsg("init")
-	defer pool.SendMsg("release")
+	pool := GetClass("NSAutoreleasePool").Send("alloc").Send("init")
+	defer pool.Send("release")
 
-	ibo := GetClass("IBOutletTester").SendMsg("alloc").SendMsg("init")
-	ibo.SendMsg("setValue:forKey:", ibo, NSStringFromString("Myself").AutoRelease())
+	ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
+	ibo.Send("setValue:forKey:", ibo, NSStringFromString("Myself").Autorelease())
 
-	if ibo.SendMsg("myselfIsNil").Bool() {
+	if ibo.Send("myselfIsNil").Bool() {
 		t.Fatal("nil iboutlet, value not properly set for key")
 	}
 
-	if !ibo.SendMsg("myselfIsMyself").Bool() {
+	if !ibo.Send("myselfIsMyself").Bool() {
 		t.Fatal("value not set, or incorrectly set.")
 	}
 }
@@ -64,17 +64,17 @@ func TestIBOutletKeyValueCodingImpl(t *testing.T) {
 func TestIBOutletSetter(t *testing.T) {
 	registerIBOutletTestClass()
 
-	pool := GetClass("NSAutoreleasePool").SendMsg("alloc").SendMsg("init")
-	defer pool.SendMsg("release")
+	pool := GetClass("NSAutoreleasePool").Send("alloc").Send("init")
+	defer pool.Send("release")
 
-	ibo := GetClass("IBOutletTester").SendMsg("alloc").SendMsg("init")
-	ibo.SendMsg("setMyself:", ibo)
+	ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
+	ibo.Send("setMyself:", ibo)
 
-	if ibo.SendMsg("myselfIsNil").Bool() {
+	if ibo.Send("myselfIsNil").Bool() {
 		t.Fatal("nil iboutlet, value not properly set for key")
 	}
 
-	if !ibo.SendMsg("myselfIsMyself").Bool() {
+	if !ibo.Send("myselfIsMyself").Bool() {
 		t.Fatal("value not set, or incorrectly set.")
 	}
 }

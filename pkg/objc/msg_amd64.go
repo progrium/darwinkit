@@ -162,6 +162,8 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 			case reflect.Struct:
 				args := unpackStruct(val)
 				memArgs = append(memArgs, args...)
+			case reflect.Uint, reflect.Int, reflect.Int64, reflect.Uint64:
+				intArgs = append(intArgs, uintptr(val.Uint()))
 			default:
 				log.Panicf("unhandled kind: %s", val.Kind())
 			}
@@ -176,8 +178,6 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 			C.GoObjc_MsgSend_Stret0(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel)
 			return object{ptr: 0}
 		case 1:
-			// TODO: currently broken, segfaults with any reasonable values
-			log.Println(stretAddr, obj.Pointer(), sel, intArgs[0])
 			C.GoObjc_MsgSend_Stret1(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel, unsafe.Pointer(intArgs[0]))
 			return object{ptr: 0}
 		default:

@@ -25,9 +25,9 @@ func TestAlloc(t *testing.T) {
 	c.AddMethod("hasValue", (*GoStruct).HasValue)
 	RegisterClass(c)
 
-	o := GetClass("GoStruct").SendMsg("alloc").SendMsg("init")
-	o.SendMsg("setValue")
-	if !o.SendMsg("hasValue").Bool() {
+	o := GetClass("GoStruct").Send("alloc").Send("init")
+	o.Send("setValue")
+	if !o.Send("hasValue").Bool() {
 		t.Errorf("value was not set!")
 	}
 }

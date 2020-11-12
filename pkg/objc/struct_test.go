@@ -35,7 +35,7 @@ func TestStructPassing(t *testing.T) {
 		},
 	}
 
-	obj := GetClass("NSValue").SendMsg("valueWithRect:", rect)
+	obj := GetClass("NSValue").Send("valueWithRect:", rect)
 	if obj.Pointer() == 0 {
 		t.Fatalf("unable to create NSValue, got nil ptr")
 	}

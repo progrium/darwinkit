@@ -11,7 +11,7 @@ type CustomDealloc struct {
 }
 
 func (cd *CustomDealloc) Dealloc() {
-	cd.SendSuperMsg("dealloc")
+	cd.SendSuper("dealloc")
 }
 
 func TestGoObjectCustomDealloc(t *testing.T) {
@@ -19,8 +19,8 @@ func TestGoObjectCustomDealloc(t *testing.T) {
 	c.AddMethod("dealloc", (*CustomDealloc).Dealloc)
 	RegisterClass(c)
 
-	dc := GetClass("CustomDealloc").SendMsg("alloc").SendMsg("init")
-	dc.SendMsg("dealloc")
+	dc := GetClass("CustomDealloc").Send("alloc").Send("init")
+	dc.Send("dealloc")
 }
 
 type StdDealloc struct {
@@ -31,6 +31,6 @@ func TestGoObjectStandardDealloc(t *testing.T) {
 	c := NewClass(StdDealloc{})
 	RegisterClass(c)
 
-	dc := GetClass("StdDealloc").SendMsg("alloc").SendMsg("init")
-	dc.SendMsg("dealloc")
+	dc := GetClass("StdDealloc").Send("alloc").Send("init")
+	dc.Send("dealloc")
 }

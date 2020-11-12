@@ -6,6 +6,12 @@ package cocoa
 
 import "github.com/progrium/macdriver/pkg/objc"
 
+const (
+	NSApplicationActivationPolicyRegular    = 0
+	NSApplicationActivationPolicyAccessory  = 1
+	NSApplicationActivationPolicyProhibited = 2
+)
+
 type NSApplication struct {
 	objc.Object
 }
@@ -22,6 +28,10 @@ func NSApp() NSApplication {
 
 func (app NSApplication) Run() {
 	app.Send("run")
+}
+
+func (app NSApplication) Terminate() {
+	app.Send("terminate:", nil)
 }
 
 func (app NSApplication) SetDelegate(delegate objc.Object) {

@@ -38,7 +38,7 @@ type Object interface {
 	Release() Object
 
 	// AutoRelease sends the "autorelease" message to the object.
-	AutoRelease() Object
+	Autorelease() Object
 
 	// Copy sends the "copy" message to the object.
 	Copy() Object
@@ -104,7 +104,7 @@ func (obj object) Release() Object {
 	return obj.Send("release")
 }
 
-func (obj object) AutoRelease() Object {
+func (obj object) Autorelease() Object {
 	return obj.Send("autorelease")
 }
 

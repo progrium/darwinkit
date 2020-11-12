@@ -132,84 +132,84 @@ func (so *SomeObject) CallWithBool(val bool) {
 
 func TestSelectorObjectPassing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithObject:selector:", so, GetSelector("callWithObject:selector:"))
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithObject:selector:", so, GetSelector("callWithObject:selector:"))
 }
 
 func TestFloat64Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithFloat64:", float64val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithFloat64:", float64val)
 }
 
 func TestFloat32Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithFloat32:", float32val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithFloat32:", float32val)
 }
 
 func TestUint64Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithUint64:", uint64val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithUint64:", uint64val)
 }
 
 func TestUint32Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithUint32:", uint32val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithUint32:", uint32val)
 }
 
 func TestUint16Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithUint16:", uint16val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithUint16:", uint16val)
 }
 
 func TestUint8Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithUint8:", uint8val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithUint8:", uint8val)
 }
 
 func TestInt64Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithInt64:", int64val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithInt64:", int64val)
 }
 
 func TestInt32Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithInt32:", int32val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithInt32:", int32val)
 }
 
 func TestInt16Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithInt16:", int16val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithInt16:", int16val)
 }
 
 func TestInt8Passing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithInt8:", int8val)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithInt8:", int8val)
 }
 
 func TestBoolPassing(t *testing.T) {
 	registerTestClass()
-	so := GetClass("SomeObject").SendMsg("alloc").SendMsg("init")
-	so.SendMsg("setTesting:", t)
-	so.SendMsg("callWithBool:", boolval)
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	so.Send("setTesting:", t)
+	so.Send("callWithBool:", boolval)
 }

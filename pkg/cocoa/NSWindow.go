@@ -104,3 +104,39 @@ func (w NSWindow) ContentRectForFrameRect(frameRect core.NSRect) (rect core.NSRe
 	w.Send("contentRectForFrameRect:", frameRect, &rect)
 	return rect
 }
+
+func (w NSWindow) SetTitlebarAppearsTransparent(b bool) {
+	w.Set("titlebarAppearsTransparent:", b)
+}
+
+func (w NSWindow) TitlebarAppearsTransparent() bool {
+	return w.Get("titlebarAppearsTransparent").Bool()
+}
+
+func (w NSWindow) SetTitleVisibility(v int) {
+	w.Set("titleVisibility:", v)
+}
+
+func (w NSWindow) TitleVisibility() int64 {
+	return w.Get("titleVisibility").Int()
+}
+
+func (w NSWindow) SetOpaque(b bool) {
+	w.Set("opaque:", b)
+}
+
+func (w NSWindow) Opaque() bool {
+	return w.Get("opaque").Bool()
+}
+
+func (w NSWindow) BackgroundColor() NSColor {
+	return NSColor{w.Get("backgroundColor")}
+}
+
+func (w NSWindow) SetBackgroundColor(color NSColor) {
+	w.Set("backgroundColor:", color)
+}
+
+func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
+	w.Send("setFrame:display:", frame, display)
+}
