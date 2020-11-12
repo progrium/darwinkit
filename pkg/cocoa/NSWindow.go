@@ -38,6 +38,9 @@ const (
 	NSBackingStoreRetained    = 0
 	NSBackingStoreNonretained = 1
 	NSBackingStoreBuffered    = 2
+
+	NSFloatingWindowLevel = 3
+	NSMainMenuWindowLevel = 24
 )
 
 type NSBackingStoreType uintptr
@@ -98,6 +101,10 @@ func (w NSWindow) IsVisible() bool {
 func (w NSWindow) Frame() (frame core.NSRect) {
 	w.Send("frame", &frame)
 	return frame
+}
+
+func (w NSWindow) ToggleFullScreen(s objc.Object) {
+	w.Send("toggleFullScreen:", s)
 }
 
 func (w NSWindow) ContentRectForFrameRect(frameRect core.NSRect) (rect core.NSRect) {
