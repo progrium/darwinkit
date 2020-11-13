@@ -78,6 +78,14 @@ func (w NSWindow) MakeKeyAndOrderFront(sender objc.Object) {
 	w.Send("makeKeyAndOrderFront:", sender)
 }
 
+func (w NSWindow) SetLevel(level int) {
+	w.Send("setLevel:", level)
+}
+
+func (w NSWindow) Level() int64 {
+	return w.Send("level").Int()
+}
+
 func (w NSWindow) SetTitle(title string) {
 	w.Send("setTitle:", core.String(title))
 }
@@ -134,6 +142,22 @@ func (w NSWindow) SetOpaque(b bool) {
 
 func (w NSWindow) Opaque() bool {
 	return w.Get("opaque").Bool()
+}
+
+func (w NSWindow) SetIgnoresMouseEvents(b bool) {
+	w.Set("ignoresMouseEvents:", b)
+}
+
+func (w NSWindow) IgnoresMouseEvents() bool {
+	return w.Get("ignoresMouseEvents").Bool()
+}
+
+func (w NSWindow) SetMovableByWindowBackground(b bool) {
+	w.Set("movableByWindowBackground:", b)
+}
+
+func (w NSWindow) MovableByWindowBackground() bool {
+	return w.Get("movableByWindowBackground").Bool()
 }
 
 func (w NSWindow) BackgroundColor() NSColor {

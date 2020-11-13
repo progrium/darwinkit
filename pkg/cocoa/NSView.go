@@ -62,3 +62,15 @@ func (v NSView) SetBoundsOrigin(p core.NSPoint) {
 func (v NSView) SetBoundsSize(s core.NSSize) {
 	v.Set("boundsSize:", s)
 }
+
+func (v NSView) SetOpaque(b bool) {
+	v.Set("opaque:", b)
+}
+
+func (v NSView) Opaque() bool {
+	return v.Get("opaque").Bool()
+}
+
+func (v NSView) SetValueForKey(value, key objc.Object) {
+	v.Send("setValue:forKey:", value, key)
+}

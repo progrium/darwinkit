@@ -1,4 +1,4 @@
-package core
+package webkit
 
 import "github.com/progrium/macdriver/pkg/objc"
 
@@ -8,4 +8,8 @@ type WKWebViewConfiguration struct {
 
 func WKWebViewConfiguration_New() WKWebViewConfiguration {
 	return WKWebViewConfiguration{objc.Get("WKWebViewConfiguration").Alloc().Init()}
+}
+
+func (wv WKWebViewConfiguration) Preferences() WKPreferences {
+	return WKPreferences{wv.Get("preferences")}
 }

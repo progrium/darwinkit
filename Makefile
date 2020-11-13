@@ -1,9 +1,9 @@
-.PHONY: dev largetype weboverlay
+.PHONY: dev largetype topframe
 
 dev:
 	go run ./cmd/macdriver/client
 largetype:
 	go run ./cmd/largetype Hello world
 
-weboverlay:
-	go run ./cmd/weboverlay
+topframe:
+	go run ./cmd/topframe

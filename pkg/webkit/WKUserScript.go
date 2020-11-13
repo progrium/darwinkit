@@ -1,4 +1,4 @@
-package core
+package webkit
 
 import "github.com/progrium/macdriver/pkg/objc"
 

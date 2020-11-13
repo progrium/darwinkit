@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"runtime"
 	"time"
 
 	"github.com/manifold/qtalk/golang/mux"
@@ -20,9 +19,11 @@ var (
 	state *macdriver.State
 )
 
-func main() {
-	runtime.LockOSThread()
+// func init() {
+// 	runtime.LockOSThread()
+// }
 
+func main() {
 	c := objc.NewClass(macdriver.AppDelegate{})
 	c.AddMethod("applicationDidFinishLaunching:", (*macdriver.AppDelegate).ApplicationDidFinishLaunching)
 	objc.RegisterClass(c)

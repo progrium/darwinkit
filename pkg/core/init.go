@@ -8,6 +8,17 @@ package core
 #cgo LDFLAGS: -framework Foundation -framework CoreFoundation -framework WebKit
 */
 import "C"
+import "github.com/progrium/macdriver/pkg/objc"
+
+var (
+	True  objc.Object
+	False objc.Object
+)
+
+func init() {
+	True = NSNumber_WithBool(true)
+	False = NSNumber_WithBool(false)
+}
 
 func String(str string) NSString {
 	return NSString_FromString(str)
@@ -23,4 +34,8 @@ func Size(width float64, height float64) NSSize {
 
 func Rect(x, y, w, h float64) NSRect {
 	return NSMakeRect(x, y, w, h)
+}
+
+func URL(url string) NSURL {
+	return NSURL_Init(url)
 }
