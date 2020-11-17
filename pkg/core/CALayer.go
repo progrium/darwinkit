@@ -13,3 +13,11 @@ func (l CALayer) CornerRadius() float64 {
 func (l CALayer) SetCornerRadius(r float64) {
 	l.Set("cornerRadius:", r)
 }
+
+func (l CALayer) Contents() objc.Object {
+	return l.Get("contents")
+}
+
+func (l CALayer) SetContents(o objc.Object) {
+	l.Set("contents:", o)
+}

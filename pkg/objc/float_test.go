@@ -75,7 +75,7 @@ func (ft *FloatTester) Float32Returner() float32 {
 }
 
 func TestFloat64RetGoObject(t *testing.T) {
-	c := NewClass(FloatTester{})
+	c := NewClassFromStruct(FloatTester{})
 	c.AddMethod("float64Returner", (*FloatTester).Float64Returner)
 	c.AddMethod("float32Returner", (*FloatTester).Float32Returner)
 	RegisterClass(c)

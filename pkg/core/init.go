@@ -1,23 +1,39 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package core
 
 /*
-#cgo LDFLAGS: -framework Foundation -framework CoreFoundation -framework WebKit
+#cgo CFLAGS: -x objective-c
+
+void dispatch(void *f);
+
 */
 import "C"
-import "github.com/progrium/macdriver/pkg/objc"
+
+import (
+	"github.com/progrium/macdriver/pkg/objc"
+)
 
 var (
 	True  objc.Object
 	False objc.Object
+
+	dispatched chan func()
 )
 
 func init() {
 	True = NSNumber_WithBool(true)
 	False = NSNumber_WithBool(false)
+
+	dispatched = make(chan func(), 1)
+}
+
+//export dispatchCb
+func dispatchCb() {
+	(<-dispatched)()
+}
+
+func Dispatch(fn func()) {
+	dispatched <- fn
+	C.dispatch(nil)
 }
 
 func String(str string) NSString {

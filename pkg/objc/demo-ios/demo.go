@@ -23,7 +23,7 @@ func (delegate *AppDelegate) ApplicationDidFinishLaunchingWithOptions(app objc.O
 func init() {
 	defer runtime.LockOSThread()
 
-	c := objc.NewClass(AppDelegate{})
+	c := objc.NewClassFromStruct(AppDelegate{})
 	c.AddMethod("application:didFinishLaunchingWithOptions:", (*AppDelegate).ApplicationDidFinishLaunchingWithOptions)
 	objc.RegisterClass(c)
 }

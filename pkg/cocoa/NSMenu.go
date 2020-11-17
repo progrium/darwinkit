@@ -38,3 +38,11 @@ func (menu NSMenu) AddItem(item NSMenuItem) {
 func (menu NSMenu) RemoveItem(item NSMenuItem) {
 	menu.Send("removeItem:", item)
 }
+
+func (menu NSMenu) SetAutoenablesItems(b bool) {
+	menu.Set("autoenablesItems:", b)
+}
+
+func (menu NSMenu) AutoenablesItems() bool {
+	return menu.Get("autoenablesItems").Bool()
+}

@@ -20,7 +20,7 @@ func (gs *GoStruct) HasValue() bool {
 }
 
 func TestAlloc(t *testing.T) {
-	c := NewClass(GoStruct{})
+	c := NewClassFromStruct(GoStruct{})
 	c.AddMethod("setValue", (*GoStruct).SetValue)
 	c.AddMethod("hasValue", (*GoStruct).HasValue)
 	RegisterClass(c)

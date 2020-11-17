@@ -16,7 +16,7 @@ var iboutletOnce sync.Once
 
 func registerIBOutletTestClass() {
 	iboutletOnce.Do(func() {
-		c := NewClass(IBOutletTester{})
+		c := NewClassFromStruct(IBOutletTester{})
 		c.AddMethod("myselfIsNil", (*IBOutletTester).MyselfIsNil)
 		c.AddMethod("myselfIsMyself", (*IBOutletTester).MyselfIsMyself)
 		RegisterClass(c)
@@ -103,7 +103,7 @@ func TestIBOutletShadowPanic(t *testing.T) {
 		}
 	}()
 
-	c := NewClass(Shadow{})
+	c := NewClassFromStruct(Shadow{})
 	c.AddMethod("setNumber:", (*Shadow).SetNumber)
 	RegisterClass(c)
 }

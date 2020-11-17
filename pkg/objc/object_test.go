@@ -30,7 +30,7 @@ func (sgo *SomeGoObject) GoSum() int64 {
 }
 
 func TestGoObjectCallObjC(t *testing.T) {
-	c := NewClass(SomeGoObject{})
+	c := NewClassFromStruct(SomeGoObject{})
 	c.AddMethod("fiftyFive", (*SomeGoObject).FiftyFive)
 	c.AddMethod("thirtyTwo", (*SomeGoObject).ThirtyTwo)
 	c.AddMethod("goSum", (*SomeGoObject).GoSum)

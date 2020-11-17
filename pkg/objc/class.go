@@ -99,10 +99,33 @@ type Class interface {
 	AddMethod(selector string, fn interface{})
 }
 
+func NewClass(classname string, superclass string) Class {
+	superClass := GetClass(superclass)
+
+	ptr := C.GoObjc_AllocateClassPair(unsafe.Pointer(superClass.Pointer()), C.CString(classname))
+	if ptr == nil {
+		panic("unable to AllocateClassPair")
+	}
+
+	// Register the dealloc method to be able to properly remove the classInfo
+	// reference to our internal pointer.
+	sel := selectorWithName("dealloc")
+	typeInfo := encVoid + encId + encSelector
+	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+
+	classMap[classname] = classInfo{
+		typ:       reflect.TypeOf(struct{ Object }{}),
+		methodMap: make(map[string]interface{}),
+		setters:   map[string]struct{}{},
+	}
+
+	return object{ptr: uintptr(ptr)}
+}
+
 // NewClass returns a new class. The value parameter must
 // point to a value of the struct that is used to represent
 // instances of the class in Go.
-func NewClass(value interface{}) Class {
+func NewClassFromStruct(value interface{}) Class {
 	typ := reflect.ValueOf(value).Type()
 
 	// The tag of the first field contains a

@@ -21,12 +21,14 @@ import (
 )
 
 const (
-	NSBorderlessWindowMask         = 0
-	NSTitledWindowMask             = 1 << 0
-	NSClosableWindowMask           = 1 << 1
-	NSMiniaturizableWindowMask     = 1 << 2
-	NSResizableWindowMask          = 1 << 3
-	NSTexturedBackgroundWindowMask = 1 << 8
+	NSBorderlessWindowMask          = 0
+	NSTitledWindowMask              = 1 << 0
+	NSClosableWindowMask            = 1 << 1
+	NSMiniaturizableWindowMask      = 1 << 2
+	NSResizableWindowMask           = 1 << 3
+	NSTexturedBackgroundWindowMask  = 1 << 8
+	NSWindowStyleMaskFullScreen     = 1 << 14
+	NSFullSizeContentViewWindowMask = 32768
 
 	NSWindowTitleVisible = 0
 	NSWindowTitleHidden  = 1
@@ -86,6 +88,14 @@ func (w NSWindow) Level() int64 {
 	return w.Send("level").Int()
 }
 
+func (w NSWindow) SetStyleMask(mask int) {
+	w.Send("setStyleMask:", mask)
+}
+
+func (w NSWindow) StyleMask() int64 {
+	return w.Send("styleMask").Int()
+}
+
 func (w NSWindow) SetTitle(title string) {
 	w.Send("setTitle:", core.String(title))
 }
@@ -98,8 +108,8 @@ func (w NSWindow) SetContentView(view objc.Object) {
 	w.Send("setContentView:", view)
 }
 
-func (w NSWindow) ContentView() objc.Object {
-	return w.Send("contentView")
+func (w NSWindow) ContentView() NSView {
+	return NSView{w.Send("contentView")}
 }
 
 func (w NSWindow) IsVisible() bool {

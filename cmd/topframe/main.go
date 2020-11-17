@@ -18,113 +18,80 @@ import (
 	"github.com/progrium/watcher"
 )
 
-// console.log
-//
-
-var (
-	listener  net.Listener
-	serveRoot string
-	reloadCh  chan struct{}
-)
-
-type AppDelegate struct {
-	objc.Object `objc:"AppDelegate : NSObject"`
-}
-
-func (delegate *AppDelegate) ApplicationDidFinishLaunching(notification objc.Object) {
-	config := webkit.WKWebViewConfiguration_New()
-	config.Preferences().SetValueForKey(core.True, core.String("developerExtrasEnabled"))
-
-	wv := webkit.WKWebView_Init(cocoa.NSScreen_Main().Frame(), config)
-	wv.SetOpaque(false)
-	wv.SetBackgroundColor(cocoa.NSColor_Clear())
-	wv.SetValueForKey(core.False, core.String("drawsBackground"))
-
-	req := core.NSURLRequest_Init(core.URL(fmt.Sprintf("http://%s", listener.Addr().String())))
-	wv.LoadRequest(req)
-
-	w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(),
-		cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
-	w.SetTitlebarAppearsTransparent(true)
-	w.SetTitleVisibility(cocoa.NSWindowTitleHidden)
-	w.SetMovableByWindowBackground(true)
-	w.SetOpaque(false)
-	w.SetBackgroundColor(cocoa.NSColor_Clear())
-	w.SetIgnoresMouseEvents(true)
-	w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
-	w.SetContentView(wv)
-	w.MakeKeyAndOrderFront(w)
-
-	go func() {
-		for range reloadCh {
-			wv.Reload(nil)
-		}
-	}()
+func init() {
+	runtime.LockOSThread()
 }
 
 func main() {
-	runtime.LockOSThread()
-
 	var err error
-	listener, err = net.Listen("tcp", ":0")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	reloadCh = make(chan struct{})
 
 	usr, err := user.Current()
 	if err != nil {
 		log.Fatal(err)
 	}
-	serveRoot = filepath.Join(usr.HomeDir, ".topframe")
-	os.MkdirAll(serveRoot, 0755)
 
-	c := objc.NewClass(AppDelegate{})
-	c.AddMethod("applicationDidFinishLaunching:", (*AppDelegate).ApplicationDidFinishLaunching)
-	objc.RegisterClass(c)
+	dir := filepath.Join(usr.HomeDir, ".topframe")
+	os.MkdirAll(dir, 0755)
 
-	go server()
-	go watch()
+	srv := http.Server{
+		Handler: http.FileServer(http.Dir(dir)),
+	}
 
-	delegate := objc.Get("AppDelegate").Alloc().Init()
-	app := cocoa.NSApp()
-	app.SetDelegate(delegate)
-	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
-	app.ActivateIgnoringOtherApps(true)
-	fmt.Println("running...")
-	app.Run()
-
-}
-
-func watch() {
-	w := watcher.New()
-	if err := w.AddRecursive(serveRoot); err != nil {
+	ln, err := net.Listen("tcp", ":0")
+	if err != nil {
 		log.Fatal(err)
 	}
-	go func() {
-		for {
-			select {
-			case event := <-w.Event:
-				if event.IsDir() {
-					continue
-				}
-				reloadCh <- struct{}{}
-			case err := <-w.Error:
-				if err != watcher.ErrWatchedFileDeleted {
-					log.Fatal(err)
-				}
-			case <-w.Closed:
-				return
-			}
-		}
-	}()
-	log.Fatal(w.Start(500 * time.Millisecond))
-}
 
-func server() {
-	srv := http.Server{
-		Handler: http.FileServer(http.Dir(serveRoot)),
+	go srv.Serve(ln)
+
+	fw := watcher.New()
+	if err := fw.AddRecursive(dir); err != nil {
+		log.Fatal(err)
 	}
-	log.Fatal(srv.Serve(listener))
+
+	go fw.Start(400 * time.Millisecond)
+
+	app := cocoa.NSApp_WithDidLaunch(func(notification objc.Object) {
+		config := webkit.WKWebViewConfiguration_New()
+		config.Preferences().SetValueForKey(core.True, core.String("developerExtrasEnabled"))
+
+		wv := webkit.WKWebView_Init(cocoa.NSScreen_Main().Frame(), config)
+		wv.SetOpaque(false)
+		wv.SetBackgroundColor(cocoa.NSColor_Clear())
+		wv.SetValueForKey(core.False, core.String("drawsBackground"))
+
+		url := core.URL(fmt.Sprintf("http://%s", ln.Addr().String()))
+		req := core.NSURLRequest_Init(url)
+		wv.LoadRequest(req)
+
+		w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(),
+			cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
+		w.SetContentView(wv)
+		w.SetBackgroundColor(cocoa.NSColor_Clear())
+		w.SetOpaque(false)
+		w.SetTitleVisibility(cocoa.NSWindowTitleHidden)
+		w.SetTitlebarAppearsTransparent(true)
+		w.SetIgnoresMouseEvents(true)
+		w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
+		w.MakeKeyAndOrderFront(w)
+
+		go func() {
+			for {
+				select {
+				case event := <-fw.Event:
+					if event.IsDir() {
+						continue
+					}
+					wv.Reload(nil)
+				case <-fw.Closed:
+					return
+				}
+			}
+		}()
+	})
+	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
+	app.ActivateIgnoringOtherApps(true)
+
+	log.Printf("topframe 0.1.0 by progrium\n")
+	app.Run()
 }

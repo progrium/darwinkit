@@ -33,7 +33,7 @@ var once sync.Once
 
 func registerTestClass() {
 	once.Do(func() {
-		c := NewClass(SomeObject{})
+		c := NewClassFromStruct(SomeObject{})
 		c.AddMethod("setTesting:", (*SomeObject).SetTesting)
 		c.AddMethod("callWithObject:selector:", (*SomeObject).CallWithObjectAndSelector)
 		c.AddMethod("callWithFloat64:", (*SomeObject).CallWithFloat64)

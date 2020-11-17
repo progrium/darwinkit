@@ -13,6 +13,19 @@ type NSImage struct {
 	objc.Object
 }
 
-func NSImage_ImageNamed(name string) objc.Object {
+func NSImage_InitWithData(data core.NSData) NSImage {
+	return NSImage{objc.Get("NSImage").Alloc().Send("initWithData:", data)}
+}
+
+func NSImage_ImageNamed(name string) NSImage {
 	return NSImage{objc.Get("NSImage").Send("imageNamed:", core.String(name))}
+}
+
+func (i NSImage) Size() (size core.NSSize) {
+	i.Send("size", &size)
+	return size
+}
+
+func (i NSImage) SetSize(size core.NSSize) {
+	i.Send("setSize:", size)
 }

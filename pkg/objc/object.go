@@ -43,6 +43,8 @@ type Object interface {
 	// Copy sends the "copy" message to the object.
 	Copy() Object
 
+	Equals(o Object) bool
+
 	// String returns a string-representation of the object.
 	// This is equivalent to sending the "description"
 	// message to the object, except that this method
@@ -88,6 +90,10 @@ func (obj object) Pointer() uintptr {
 	return obj.ptr
 }
 
+func (obj object) Equals(o Object) bool {
+	return obj.Pointer() == o.Pointer()
+}
+
 func (obj object) Alloc() Object {
 	return obj.Send("alloc")
 }
@@ -125,6 +131,8 @@ func (obj object) Set(setter string, args ...interface{}) {
 }
 
 func (obj object) String() string {
+	// TODO: some kind of recover to catch when this doesnt work
+
 	pool := GetClass("NSAutoreleasePool").Alloc().Init()
 	defer pool.Release()
 

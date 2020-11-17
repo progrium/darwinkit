@@ -26,6 +26,15 @@ func NSApp() NSApplication {
 	return NSApplication{NSApplication_.Send("sharedApplication")}
 }
 
+func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
+	c := objc.NewClass("DidLaunchDelegate", "NSObject")
+	c.AddMethod("applicationDidFinishLaunching:", cb)
+	objc.RegisterClass(c)
+	app := NSApp()
+	app.SetDelegate(objc.Get("DidLaunchDelegate").Alloc().Init())
+	return app
+}
+
 func (app NSApplication) Run() {
 	app.Send("run")
 }
