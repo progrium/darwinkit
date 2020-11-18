@@ -2,6 +2,7 @@ package macdriver
 
 import (
 	"encoding/base64"
+	"fmt"
 	"reflect"
 
 	"github.com/manifold/qtalk/golang/rpc"
@@ -32,6 +33,15 @@ type Window struct {
 	image   *cocoa.NSImage
 }
 
+func (w *Window) Release(p *rpc.Peer) (err error) {
+	handle := string(w.resource.handle)
+	if handle == "" {
+		return fmt.Errorf("unable to release an uninitialized resource")
+	}
+	_, err = p.Call("Release", handle, nil)
+	return
+}
+
 func (w *Window) Sync(p *rpc.Peer) (err error) {
 	handle := string(w.resource.handle)
 	if handle == "" {
@@ -43,6 +53,11 @@ func (w *Window) Sync(p *rpc.Peer) (err error) {
 }
 
 func (w *Window) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {
+	if !old.IsValid() && !new.IsValid() {
+		obj := cocoa.NSWindow{Object: target}
+		obj.Close()
+		return nil, nil
+	}
 	if target == nil {
 		win := cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0), cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
 		win.MakeKeyAndOrderFront(nil)

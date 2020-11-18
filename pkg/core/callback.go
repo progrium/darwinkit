@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"reflect"
 	"sync"
 
 	"github.com/progrium/macdriver/pkg/objc"
@@ -19,7 +20,8 @@ type callbackEntry struct {
 }
 
 func Callback(fn interface{}) (objc.Object, objc.Selector) {
-	cb, ok := callbacks.Load(fn)
+	rfn := reflect.ValueOf(fn)
+	cb, ok := callbacks.Load(rfn.Type().String())
 	if !ok {
 		cbCounter++
 		delegateName := fmt.Sprintf("CallbackDelegate%d", cbCounter)
@@ -31,7 +33,7 @@ func Callback(fn interface{}) (objc.Object, objc.Selector) {
 			class:    c,
 			instance: objc.Get(delegateName).Alloc().Init(),
 		}
-		callbacks.Store(fn, cb)
+		callbacks.Store(rfn.Type().String(), cb)
 	}
 	return cb.(callbackEntry).instance, objc.Sel("callback:")
 }

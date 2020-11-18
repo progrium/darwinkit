@@ -3,6 +3,7 @@ package host
 import (
 	"context"
 	"encoding/base64"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -18,6 +19,9 @@ import (
 func run(peer *rpc.Peer) {
 	data, err := ioutil.ReadFile("/Users/progrium/Source/github.com/manifold/tractor/data/icons/tractor_dark.ico")
 	fatal(err)
+
+	peer.Bind("Invoke", macdriver.Invoke)
+	go peer.Respond()
 
 	window := macdriver.Window{
 		Title:       "Hello",
@@ -36,8 +40,12 @@ func run(peer *rpc.Peer) {
 		Text: "Hello world",
 		Menu: &macdriver.Menu{
 			Items: []macdriver.MenuItem{
-				{Title: "Foo", Enabled: true},
-				{Title: "Bar", Enabled: true},
+				{Title: "Foo", Enabled: true, OnClick: macdriver.ExportFunc(func() {
+					fmt.Println("Foo clicked")
+				})},
+				{Title: "Bar", Enabled: true, OnClick: macdriver.ExportFunc(func() {
+					fmt.Println("Bar clicked")
+				})},
 				{Title: "Quit", Enabled: true},
 			},
 		},
@@ -45,10 +53,9 @@ func run(peer *rpc.Peer) {
 	}
 	fatal(systray.Sync(peer))
 
-	time.Sleep(3 * time.Second)
+	time.Sleep(1 * time.Second)
 
-	systray.Text = "updated hello"
-	fatal(systray.Sync(peer))
+	window.Release(peer)
 
 	// for t := 0; t < 240; t++ {
 	// 	pt := macdriver.Point{X: 200 + float64(t*8), Y: 400}
@@ -58,12 +65,11 @@ func run(peer *rpc.Peer) {
 	// 	time.Sleep(2 * time.Millisecond)
 	// }
 
-	time.Sleep(3 * time.Second)
+	var sret string
+	_, err = peer.Call("debug", []interface{}{window.Handle().String(), systray}, &sret)
+	fmt.Println("RET: ", sret)
+	fatal(err)
 
-	// var sret string
-	// _, err := peer.Call("debug", window.Handle().String(), &sret)
-	// fatal(err)
-	// fmt.Println(sret)
 }
 
 func Run() {

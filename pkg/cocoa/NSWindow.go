@@ -154,6 +154,10 @@ func (w NSWindow) Opaque() bool {
 	return w.Get("opaque").Bool()
 }
 
+func (w NSWindow) Close() {
+	w.Send("close")
+}
+
 func (w NSWindow) SetIgnoresMouseEvents(b bool) {
 	w.Set("ignoresMouseEvents:", b)
 }

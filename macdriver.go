@@ -10,11 +10,11 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/manifold/qtalk/golang/mux"
 	"github.com/manifold/qtalk/golang/rpc"
 	"github.com/mitchellh/mapstructure"
+	"github.com/mitchellh/reflectwalk"
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
@@ -27,31 +27,24 @@ var (
 func Run() {
 	state = NewState()
 	app := cocoa.NSApp_WithDidLaunch(func(n objc.Object) {
-		go func() {
-			session := mux.NewSession(context.Background(), struct {
-				io.ReadCloser
-				io.Writer
-			}{os.Stdin, os.Stdout})
-			peer := rpc.NewPeer(session, rpc.JSONCodec{})
-			peer.Bind("debug", debug)
-			peer.Bind("Apply", state.Apply)
-			peer.Respond()
-		}()
+		session := mux.NewSession(context.Background(), struct {
+			io.ReadCloser
+			io.Writer
+		}{os.Stdin, os.Stdout})
+		peer := rpc.NewPeer(session, rpc.JSONCodec{})
+		peer.Bind("debug", debug)
+		peer.Bind("Apply", state.Apply)
+		peer.Bind("Release", state.Release)
+		//peer.Bind("Invoke", state.Invoke)
+		go peer.Respond()
 	})
-	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyRegular)
-	go func() {
-		<-time.After(3 * time.Second)
-		app.Terminate()
-	}()
+	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
+	app.ActivateIgnoringOtherApps(true)
 	app.Run()
 }
 
-func debug(handle string) string {
-	r, err := state.Lookup(Handle(handle))
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-	}
-	return fmt.Sprintf("%#v %#v", state, r)
+func debug(handle string, data interface{}) string {
+	return fmt.Sprintf("%#v", state.StatusItems[0].Menu)
 }
 
 type State struct {
@@ -60,21 +53,71 @@ type State struct {
 	Windows     []*Window
 
 	objects    map[Handle]objc.Object
+	released   map[Handle]bool
 	lastValues map[Handle]reflect.Value
 
+	caller rpc.Caller
+
 	sync.Mutex
+}
+
+func Invoke(ptr string) error {
+	// todo args
+	ef, ok := exportedFuncs[ptr]
+	// reflect call
+	if ok {
+		ef.fn.(func())()
+	}
+	return nil
 }
 
 func NewState() *State {
 	return &State{
 		objects:    make(map[Handle]objc.Object),
 		lastValues: make(map[Handle]reflect.Value),
+		released:   make(map[Handle]bool),
 	}
 }
 
-func (s *State) Apply(h string, patch interface{}) (handle Handle, err error) {
+func (s *State) Map(m reflect.Value) error {
+	return nil
+}
+
+func (s *State) MapElem(m, k, v reflect.Value) error {
+	mm := m.Interface().(map[string]interface{})
+	if mm["$fnptr"] != "" && k.String() == "Caller" {
+		return reflectwalk.SkipEntry
+	}
+	if k.String() == "$fnptr" && v.Interface().(string) != "" {
+		mm["Caller"] = s.caller
+	}
+	return nil
+}
+
+func (s *State) Release(h string) (err error) {
+	s.Lock()
+	handle := Handle(h)
+	s.released[handle] = true
+	core.Dispatch(func() {
+		//fmt.Fprintf(os.Stderr, "RECONCILING %v\n", handle)
+		if err := s.Reconcile(); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
+		s.Unlock()
+	})
+	return nil
+}
+
+func (s *State) Apply(h string, patch interface{}, call *rpc.Call) (handle Handle, err error) {
 	s.Lock()
 	handle = Handle(h)
+
+	// TODO: cleanup
+	s.caller = call.Caller
+	reflectwalk.Walk(patch, s)
+
+	//fmt.Fprintf(os.Stderr, "%#v\n", patch)
+
 	if handle.ID() != "" {
 		v, err := s.Lookup(handle)
 		if err != nil {
@@ -86,6 +129,7 @@ func (s *State) Apply(h string, patch interface{}) (handle Handle, err error) {
 			}
 		}
 	} else {
+
 		v, err := handle.Init()
 		if err != nil {
 			return handle, err
@@ -108,11 +152,11 @@ func (s *State) Apply(h string, patch interface{}) (handle Handle, err error) {
 		}
 	}
 	core.Dispatch(func() {
-		defer s.Unlock()
-		fmt.Fprintf(os.Stderr, "RECONCILING %v\n", handle)
+		//fmt.Fprintf(os.Stderr, "RECONCILING %v\n", handle)
 		if err := s.Reconcile(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
+		s.Unlock()
 	})
 	return handle, err
 }
@@ -135,9 +179,13 @@ func (s *State) Reconcile() error {
 	return Walk(s, func(v reflect.Value, parent reflect.Value, path []string) error {
 		r, ok := v.Interface().(Resource)
 		if ok && !v.IsNil() {
-			fmt.Fprintf(os.Stderr, "- %s %s\n", r.Handle(), strings.Join(path, "/"))
 			var err error
 			old := s.lastValues[r.Handle()]
+			if s.released[r.Handle()] {
+				old = reflect.Value{}
+				v = reflect.Value{}
+				defer delete(s.objects, r.Handle())
+			}
 			target, exists := s.objects[r.Handle()]
 			if exists {
 				_, err := r.Apply(old, v, target)
@@ -239,7 +287,8 @@ func keys(v reflect.Value) []string {
 		}
 		return k
 	case reflect.Ptr:
-		if v.Elem().IsValid() {
+		// fmt.Fprintf(os.Stderr, "type %v\n", v.Type())
+		if !v.IsNil() {
 			return keys(v.Elem())
 		}
 		return []string{}

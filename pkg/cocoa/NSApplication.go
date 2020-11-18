@@ -12,6 +12,15 @@ const (
 	NSApplicationActivationPolicyProhibited = 2
 )
 
+var DefaultDelegate objc.Object
+var DefaultDelegateClass objc.Class
+
+func init() {
+	DefaultDelegateClass = objc.NewClass("DefaultDelegate", "NSObject")
+	objc.RegisterClass(DefaultDelegateClass)
+	DefaultDelegate = objc.Get("DefaultDelegate").Alloc().Init()
+}
+
 type NSApplication struct {
 	objc.Object
 }
@@ -27,11 +36,9 @@ func NSApp() NSApplication {
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
-	c := objc.NewClass("DidLaunchDelegate", "NSObject")
-	c.AddMethod("applicationDidFinishLaunching:", cb)
-	objc.RegisterClass(c)
+	DefaultDelegateClass.AddMethod("applicationDidFinishLaunching:", cb)
 	app := NSApp()
-	app.SetDelegate(objc.Get("DidLaunchDelegate").Alloc().Init())
+	app.SetDelegate(DefaultDelegate)
 	return app
 }
 

@@ -3,6 +3,8 @@ github.com/manifold/qtalk v0.0.0-20201020222946-6bae0320c850 h1:VVbSgoxVEgUR1x9I
 github.com/manifold/qtalk v0.0.0-20201020222946-6bae0320c850/go.mod h1:UX1KjRclAJyV+ydrpEO1CnF8x95Le/Adx8BMGPJaYqg=
 github.com/mitchellh/mapstructure v1.3.3 h1:SzB1nHZ2Xi+17FP0zVQBHIZqvwRN9408fJO8h+eeNA8=
 github.com/mitchellh/mapstructure v1.3.3/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
+github.com/mitchellh/reflectwalk v1.0.1 h1:FVzMWA5RllMAKIdUSC8mdWo3XtwoecrH79BY70sEEpE=
+github.com/mitchellh/reflectwalk v1.0.1/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx0jmZXqmk4esnw=
 github.com/progrium/watcher v1.0.7 h1:A+ciAtU09mHrTW0tdODa6SwWEuKMKF+n/vBJYNU/FqE=
 github.com/progrium/watcher v1.0.7/go.mod h1:JQYLbWpkvkx6EDYKgqn4Tv5zwhRXe9a+MQw1wnmcyvI=
 github.com/rs/xid v1.2.1 h1:mhH9Nq+C1fY2l1XIpgxIiUOfNpRBYH1kKcr+qfKgjRc=
