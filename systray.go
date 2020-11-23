@@ -32,8 +32,15 @@ func (s *StatusItem) Apply(old, new reflect.Value, target objc.Object) (objc.Obj
 		}
 		data := core.NSData_WithBytes(b, uint64(len(b)))
 		image := cocoa.NSImage_InitWithData(data)
-		image.SetSize(core.Size(16, 16))
+		image.SetSize(core.Size(16.0, 16.0))
+		image.SetTemplate(true)
 		obj.Button().SetImage(image)
+		if s.Text != "" {
+			obj.Button().SetImagePosition(cocoa.NSImageLeft)
+		} else {
+			obj.Button().SetImagePosition(cocoa.NSImageOnly)
+		}
+
 	}
 	if s.Menu != nil {
 		menu, err := s.Menu.Apply(reflect.Value{}, reflect.Value{}, nil)

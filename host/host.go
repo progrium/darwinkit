@@ -31,13 +31,12 @@ func run(peer *rpc.Peer) {
 		Minimizable: false,
 		Resizable:   false,
 		Borderless:  false,
-		Image:       base64.StdEncoding.EncodeToString(data),
+		// Image:       base64.StdEncoding.EncodeToString(data),
 		// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
 	}
 	fatal(macdriver.Sync(peer, &window))
 
 	systray := macdriver.StatusItem{
-		Text: "Hello world",
 		Menu: &macdriver.Menu{
 			Items: []macdriver.MenuItem{
 				{Title: "Bar", Enabled: true, OnClick: macdriver.ExportFunc(func() {
@@ -46,11 +45,11 @@ func run(peer *rpc.Peer) {
 				{Title: "Foo", Enabled: true, OnClick: macdriver.ExportFunc(func() {
 					fmt.Println("Foo clicked")
 				})},
-
+				{Separator: true},
 				{Title: "Quit", Enabled: true},
 			},
 		},
-		//Icon: base64.StdEncoding.EncodeToString(data),
+		Icon: base64.StdEncoding.EncodeToString(data),
 	}
 	fatal(macdriver.Sync(peer, &systray))
 

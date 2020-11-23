@@ -25,7 +25,7 @@ func NSMenuItem_New() NSMenuItem {
 }
 
 func NSMenuItem_Separator() NSMenuItem {
-	return NSMenuItem{NSMenuItem_.Alloc().Get("separatorItem")}
+	return NSMenuItem{NSMenuItem_.Get("separatorItem")}
 }
 
 func (i NSMenuItem) SetSubmenu(submenu NSMenu) {

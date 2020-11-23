@@ -71,17 +71,20 @@ func ExportFunc(fn interface{}) *rpc_FuncExport {
 }
 
 type MenuItem struct {
-	Title   string
-	Icon    string
-	Tooltip string
-	Enabled bool
-	Checked bool
-	OnClick *rpc_FuncExport
+	Title     string
+	Icon      string
+	Tooltip   string
+	Separator bool
+	Enabled   bool
+	Checked   bool
+	OnClick   *rpc_FuncExport
 	// TODO: submenus
-	// TODO: onclick
 }
 
 func (i *MenuItem) NSMenuItem() cocoa.NSMenuItem {
+	if i.Separator {
+		return cocoa.NSMenuItem_Separator()
+	}
 	obj := cocoa.NSMenuItem_New()
 	obj.SetTitle(i.Title)
 	obj.SetEnabled(i.Enabled)
@@ -93,7 +96,9 @@ func (i *MenuItem) NSMenuItem() cocoa.NSMenuItem {
 		b, err := base64.StdEncoding.DecodeString(i.Icon)
 		if err == nil {
 			data := core.NSData_WithBytes(b, uint64(len(b)))
-			obj.SetImage(cocoa.NSImage_InitWithData(data))
+			img := cocoa.NSImage_InitWithData(data)
+			img.SetSize(core.Size(16, 16))
+			obj.SetImage(img)
 		}
 	}
 	if i.Title == "Quit" {
