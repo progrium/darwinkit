@@ -4,7 +4,6 @@ import (
 	"encoding/base64"
 	"reflect"
 
-	"github.com/manifold/qtalk/golang/rpc"
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
@@ -16,16 +15,6 @@ type StatusItem struct {
 	Icon string
 	Text string
 	Menu *Menu
-}
-
-func (s *StatusItem) Sync(p *rpc.Peer) (err error) {
-	handle := string(s.resource.handle)
-	if handle == "" {
-		handle = "StatusItem"
-	}
-	_, err = p.Call("Apply", []interface{}{handle, s}, &handle)
-	s.resource.handle = Handle(handle)
-	return
 }
 
 func (s *StatusItem) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {

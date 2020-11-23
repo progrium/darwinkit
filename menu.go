@@ -25,7 +25,7 @@ type Menu struct {
 func (m *Menu) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {
 	if target == nil {
 		menu := cocoa.NSMenu_New()
-		menu.SetAutoenablesItems(false)
+		menu.SetAutoenablesItems(true)
 		for _, i := range m.Items {
 			menu.AddItem(i.NSMenuItem())
 		}
@@ -45,7 +45,7 @@ func (e *rpc_FuncExport) Call(args, reply interface{}) error {
 	return err
 }
 
-func (e *rpc_FuncExport) DelegateCallback() (objc.Object, objc.Selector) {
+func (e *rpc_FuncExport) Callback() (objc.Object, objc.Selector) {
 	ee := *e
 	return core.Callback(func(o objc.Object) {
 		err := ee.Call(nil, nil)
@@ -101,7 +101,7 @@ func (i *MenuItem) NSMenuItem() cocoa.NSMenuItem {
 		obj.SetAction(objc.Sel("terminate:"))
 	}
 	if i.OnClick != nil && i.OnClick.Caller != nil {
-		t, sel := i.OnClick.DelegateCallback()
+		t, sel := i.OnClick.Callback()
 		obj.SetTarget(t)
 		obj.SetAction(sel)
 	}

@@ -38,7 +38,7 @@ func Run() {
 		//peer.Bind("Invoke", state.Invoke)
 		go peer.Respond()
 	})
-	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
+	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyRegular)
 	app.ActivateIgnoringOtherApps(true)
 	app.Run()
 }
@@ -85,7 +85,7 @@ func (s *State) Map(m reflect.Value) error {
 
 func (s *State) MapElem(m, k, v reflect.Value) error {
 	mm := m.Interface().(map[string]interface{})
-	if mm["$fnptr"] != "" && k.String() == "Caller" {
+	if mm["$fnptr"] != "" && k.String() == "Caller" && v.Interface() != nil {
 		return reflectwalk.SkipEntry
 	}
 	if k.String() == "$fnptr" && v.Interface().(string) != "" {
@@ -112,9 +112,12 @@ func (s *State) Apply(h string, patch interface{}, call *rpc.Call) (handle Handl
 	s.Lock()
 	handle = Handle(h)
 
-	// TODO: cleanup
-	s.caller = call.Caller
-	reflectwalk.Walk(patch, s)
+	Walk(patch, func(v, p reflect.Value, path []string) error {
+		if path[len(path)-1] == "$fnptr" {
+			p.SetMapIndex(reflect.ValueOf("Caller"), reflect.ValueOf(call.Caller))
+		}
+		return nil
+	})
 
 	//fmt.Fprintf(os.Stderr, "%#v\n", patch)
 
@@ -205,6 +208,9 @@ func walk(v reflect.Value, path []string, visitor func(v reflect.Value, parent r
 	for _, k := range keys(v) {
 		subpath := append(path, k)
 		vv := prop(v, k)
+		if !vv.IsValid() {
+			continue
+		}
 		if err := visitor(vv, v, subpath); err != nil {
 			return err
 		}
@@ -229,14 +235,14 @@ func prop(robj reflect.Value, key string) reflect.Value {
 		}
 		rval := robj.Index(idx)
 		if rval.IsValid() {
-			return rval
+			return reflect.ValueOf(rval.Interface())
 		}
 	case reflect.Ptr:
 		return prop(robj.Elem(), key)
 	case reflect.Map:
 		rval := robj.MapIndex(reflect.ValueOf(key))
 		if rval.IsValid() {
-			return rval
+			return reflect.ValueOf(rval.Interface())
 		}
 	case reflect.Struct:
 		rval := robj.FieldByName(key)
@@ -287,12 +293,14 @@ func keys(v reflect.Value) []string {
 		}
 		return k
 	case reflect.Ptr:
-		// fmt.Fprintf(os.Stderr, "type %v\n", v.Type())
 		if !v.IsNil() {
 			return keys(v.Elem())
 		}
 		return []string{}
+	case reflect.String, reflect.Bool, reflect.Float64, reflect.Float32, reflect.Interface:
+		return []string{}
 	default:
+		fmt.Fprintf(os.Stderr, "unexpected type: %s\n", v.Type().Kind())
 		return []string{}
 	}
 }

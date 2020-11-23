@@ -2,10 +2,8 @@ package macdriver
 
 import (
 	"encoding/base64"
-	"fmt"
 	"reflect"
 
-	"github.com/manifold/qtalk/golang/rpc"
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
@@ -31,25 +29,6 @@ type Window struct {
 
 	webview *webkit.WKWebView
 	image   *cocoa.NSImage
-}
-
-func (w *Window) Release(p *rpc.Peer) (err error) {
-	handle := string(w.resource.handle)
-	if handle == "" {
-		return fmt.Errorf("unable to release an uninitialized resource")
-	}
-	_, err = p.Call("Release", handle, nil)
-	return
-}
-
-func (w *Window) Sync(p *rpc.Peer) (err error) {
-	handle := string(w.resource.handle)
-	if handle == "" {
-		handle = "Window"
-	}
-	_, err = p.Call("Apply", []interface{}{handle, w}, &handle)
-	w.resource.handle = Handle(handle)
-	return
 }
 
 func (w *Window) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {
