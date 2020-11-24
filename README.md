@@ -56,8 +56,8 @@ as needed until we have enough coverage/confidence to know how we'd generate wra
 
 ## High-level Macdriver API
 
-The high-level API lets you declaratively describe a handful of common system resources such as windows, menus, status items,
-etc in your application and easily "sync" to a managed subprocess that handles direct communication with Apple APIs using the
+The high-level API lets you declaratively describe a handful of common system resources such as windows, menus, systray items,
+etc in your application and then "sync" them to a managed subprocess that reconciles state with Apple APIs using the
 low-level API.
 
 ```go
