@@ -23,18 +23,18 @@ func run(peer *rpc.Peer) {
 	peer.Bind("Invoke", macdriver.Invoke)
 	go peer.Respond()
 
-	window := macdriver.Window{
-		Title:       "Hello",
-		Size:        macdriver.Size{W: 480, H: 240},
-		Position:    macdriver.Point{X: 200, Y: 200},
-		Closable:    true,
-		Minimizable: false,
-		Resizable:   false,
-		Borderless:  false,
-		// Image:       base64.StdEncoding.EncodeToString(data),
-		// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
-	}
-	fatal(macdriver.Sync(peer, &window))
+	// window := macdriver.Window{
+	// 	Title:       "Hello",
+	// 	Size:        macdriver.Size{W: 480, H: 240},
+	// 	Position:    macdriver.Point{X: 200, Y: 200},
+	// 	Closable:    true,
+	// 	Minimizable: false,
+	// 	Resizable:   false,
+	// 	Borderless:  false,
+	// 	// Image:       base64.StdEncoding.EncodeToString(data),
+	// 	// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
+	// }
+	// fatal(macdriver.Sync(peer, &window))
 
 	systray := macdriver.StatusItem{
 		Menu: &macdriver.Menu{
@@ -53,9 +53,22 @@ func run(peer *rpc.Peer) {
 	}
 	fatal(macdriver.Sync(peer, &systray))
 
-	time.Sleep(1 * time.Second)
+	time.Sleep(4 * time.Second)
 
-	macdriver.Release(peer, &window)
+	systray.Text = "Hello"
+	systray.Menu.Items = []macdriver.MenuItem{
+		{Title: "Zar", Enabled: true, OnClick: macdriver.ExportFunc(func() {
+			fmt.Println("Zar clicked")
+		})},
+		{Title: "Zoo", Enabled: false},
+		{Separator: true},
+		{Title: "Shutdown", Enabled: true, OnClick: macdriver.ExportFunc(func() {
+			fmt.Println("shutdown")
+		})},
+	}
+	fatal(macdriver.Sync(peer, &systray))
+
+	// macdriver.Release(peer, &window)
 
 	// for t := 0; t < 240; t++ {
 	// 	pt := macdriver.Point{X: 200 + float64(t*8), Y: 400}
