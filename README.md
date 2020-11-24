@@ -1,19 +1,18 @@
 # macdriver
 Native Mac APIs in Go
 
-```
+```go
 func main() {
 	app := cocoa.NSApp_WithDidLaunch(func(notification objc.Object) {
 		config := webkit.WKWebViewConfiguration_New()
-		config.Preferences().SetValueForKey(core.True, core.String("developerExtrasEnabled"))
-
 		wv := webkit.WKWebView_Init(core.Rect(0, 0, 1440, 900), config)
 		url := core.URL("http://progrium.com")
 		req := core.NSURLRequest_Init(url)
 		wv.LoadRequest(req)
 
 		w := cocoa.NSWindow_Init(core.Rect(0, 0, 1440, 900),
-			cocoa.NSClosableWindowMask|cocoa.NSResizableWindowMask|cocoa.NSTitledWindowMask,
+			cocoa.NSClosableWindowMask|
+				cocoa.NSTitledWindowMask,
 			cocoa.NSBackingStoreBuffered, false)
 		w.SetContentView(wv)
 		w.MakeKeyAndOrderFront(w)
@@ -33,7 +32,7 @@ for working with objects and classes, and then there are Go versions of common c
 Since an NSApplication has its own run loop and modifications to the UI need to happen in the main thread, this basically
 takes over your process. This is partly why the high-level API talks to a subprocess.
 
-```
+```go
 w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(),
     cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
 w.SetContentView(wv)
@@ -61,7 +60,8 @@ The high-level API lets you declaratively describe a handful of common system re
 etc in your application and easily "sync" to a managed subprocess that handles direct communication with Apple APIs using the
 low-level API.
 
-```
+```go
+// create a window
 window := macdriver.Window{
 	Title:       "My Title",
 	Size:        macdriver.Size{W: 480, H: 240},
@@ -70,15 +70,19 @@ window := macdriver.Window{
 	Minimizable: false,
 	Resizable:   false,
 	Borderless:  false,
-	Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
+	Background:   &macdriver.Color{R: 1, G: 1, B: 1, A: 0.5},
 }
 macdriver.Sync(peer, &window)
 
+// change its title
 window.Title = "My New Title"
 macdriver.Sync(peer, &window)
+
+// destroy the window
+macdriver.Release(peer, &window)
 ```
 
-This high-level API is meant to be platform agnostic, so you can imagine windriver and linuxdriver equivalent projects. It's also
+The high-level API is meant to be platform agnostic, so you can imagine windriver and linuxdriver equivalent projects. It's also
 based on a non-Go specific communication protocol, so this API could be exposed to other languages.
 
 ## License
