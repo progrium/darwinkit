@@ -69,8 +69,8 @@ window := macdriver.Window{
 	Closable:    true,
 	Minimizable: false,
 	Resizable:   false,
-    Borderless:  false,
-    AlwaysOnTop: true,
+	Borderless:  false,
+	AlwaysOnTop: true,
 	Background:   &macdriver.Color{R: 1, G: 1, B: 1, A: 0.5},
 }
 macdriver.Sync(peer, &window)
