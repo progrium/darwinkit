@@ -69,7 +69,8 @@ window := macdriver.Window{
 	Closable:    true,
 	Minimizable: false,
 	Resizable:   false,
-	Borderless:  false,
+    Borderless:  false,
+    AlwaysOnTop: true,
 	Background:   &macdriver.Color{R: 1, G: 1, B: 1, A: 0.5},
 }
 macdriver.Sync(peer, &window)
@@ -84,6 +85,11 @@ macdriver.Release(peer, &window)
 
 The high-level API is meant to be platform agnostic, so you can imagine windriver and linuxdriver equivalent projects. It's also
 based on a non-Go specific communication protocol, so this API could be exposed to other languages.
+
+## Thanks
+
+The original `objc` and `variadic` packages were written by Mikkel Krautz. The `variadic` package makes everything possible since
+libobjc relies heavily on variadic function calls, which weren't possible in Cgo. 
 
 ## License
 
