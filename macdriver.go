@@ -14,7 +14,6 @@ import (
 	"github.com/manifold/qtalk/golang/mux"
 	"github.com/manifold/qtalk/golang/rpc"
 	"github.com/mitchellh/mapstructure"
-	"github.com/mitchellh/reflectwalk"
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
@@ -79,21 +78,6 @@ func NewState() *State {
 	}
 }
 
-func (s *State) Map(m reflect.Value) error {
-	return nil
-}
-
-func (s *State) MapElem(m, k, v reflect.Value) error {
-	mm := m.Interface().(map[string]interface{})
-	if mm["$fnptr"] != "" && k.String() == "Caller" && v.Interface() != nil {
-		return reflectwalk.SkipEntry
-	}
-	if k.String() == "$fnptr" && v.Interface().(string) != "" {
-		mm["Caller"] = s.caller
-	}
-	return nil
-}
-
 func (s *State) Release(h string) (err error) {
 	s.Lock()
 	handle := Handle(h)
@@ -105,6 +89,7 @@ func (s *State) Release(h string) (err error) {
 		}
 		s.Unlock()
 	})
+	// TODO: remove from State slices
 	return nil
 }
 
@@ -118,8 +103,6 @@ func (s *State) Apply(h string, patch interface{}, call *rpc.Call) (handle Handl
 		}
 		return nil
 	})
-
-	//fmt.Fprintf(os.Stderr, "%#v\n", patch)
 
 	if handle.ID() != "" {
 		v, err := s.Lookup(handle)
@@ -185,6 +168,12 @@ func (s *State) Reconcile() error {
 			var err error
 			old := s.lastValues[r.Handle()]
 			if s.released[r.Handle()] {
+				// if in released but not in objects,
+				// its stale state that should have been cleaned up
+				// so we will ignore it here
+				if _, ok := s.objects[r.Handle()]; !ok {
+					return nil
+				}
 				old = reflect.Value{}
 				v = reflect.Value{}
 				defer delete(s.objects, r.Handle())
