@@ -23,18 +23,46 @@ func run(peer *rpc.Peer) {
 	peer.Bind("Invoke", macdriver.Invoke)
 	go peer.Respond()
 
-	// window := macdriver.Window{
-	// 	Title:       "Hello",
-	// 	Size:        macdriver.Size{W: 480, H: 240},
-	// 	Position:    macdriver.Point{X: 200, Y: 200},
-	// 	Closable:    true,
-	// 	Minimizable: false,
-	// 	Resizable:   false,
-	// 	Borderless:  false,
-	// 	// Image:       base64.StdEncoding.EncodeToString(data),
-	// 	// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
-	// }
-	// fatal(macdriver.Sync(peer, &window))
+	window := macdriver.Window{
+		Title:       "Hello",
+		Size:        macdriver.Size{W: 480, H: 240},
+		Position:    macdriver.Point{X: 200, Y: 200},
+		Closable:    true,
+		Minimizable: false,
+		Resizable:   false,
+		Borderless:  false,
+		// Image:       base64.StdEncoding.EncodeToString(data),
+		// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
+	}
+	fatal(macdriver.Sync(peer, &window))
+
+	window2 := macdriver.Window{
+		Title:       "Hello2",
+		Size:        macdriver.Size{W: 480, H: 240},
+		Position:    macdriver.Point{X: 400, Y: 200},
+		Closable:    true,
+		Minimizable: false,
+		Resizable:   false,
+		Borderless:  false,
+		// Image:       base64.StdEncoding.EncodeToString(data),
+		// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
+	}
+	fatal(macdriver.Sync(peer, &window2))
+
+	fatal(macdriver.Release(peer, &window))
+
+	window3 := macdriver.Window{
+		Title:       "Hello3",
+		Size:        macdriver.Size{W: 480, H: 240},
+		Position:    macdriver.Point{X: 500, Y: 200},
+		Closable:    true,
+		Minimizable: false,
+		Resizable:   false,
+		Borderless:  false,
+		// Image:       base64.StdEncoding.EncodeToString(data),
+		// Background:   &macdriver.Color{R: 0, G: 0, B: 1, A: 0.5},
+	}
+	fatal(macdriver.Sync(peer, &window3))
 
 	systray := macdriver.StatusItem{
 		Menu: &macdriver.Menu{

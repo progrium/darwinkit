@@ -24,6 +24,7 @@ type Window struct {
 	CornerRadius float64
 	AlwaysOnTop  bool
 	IgnoreMouse  bool
+	Center       bool
 	URL          string
 	Image        string
 
@@ -37,13 +38,23 @@ func (w *Window) Apply(old, new reflect.Value, target objc.Object) (objc.Object,
 		obj.Close()
 		return nil, nil
 	}
+	frame := core.Rect(w.Position.X, w.Position.Y, w.Size.W, w.Size.H)
 	if target == nil {
 		win := cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0), cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
+		win.Retain()
 		win.MakeKeyAndOrderFront(nil)
 		target = win.Object
+		if w.Center {
+			screenRect := cocoa.NSScreen_Main().Frame()
+			frame = core.Rect(
+				(screenRect.Size.Width/2)-(w.Size.W/2),
+				(screenRect.Size.Height/2)-(w.Size.H/2),
+				w.Size.W,
+				w.Size.H,
+			)
+		}
 	}
 	obj := cocoa.NSWindow{Object: target}
-	frame := core.Rect(w.Position.X, w.Position.Y, w.Size.W, w.Size.H)
 
 	if w.URL != "" && w.webview == nil {
 		config := webkit.WKWebViewConfiguration_New()
