@@ -12,11 +12,18 @@ const (
 	NSApplicationActivationPolicyProhibited = 2
 )
 
-var DefaultDelegate objc.Object
-var DefaultDelegateClass objc.Class
+var (
+	DefaultDelegate      objc.Object
+	DefaultDelegateClass objc.Class
+
+	TerminateAfterWindowsClose = true
+)
 
 func init() {
 	DefaultDelegateClass = objc.NewClass("DefaultDelegate", "NSObject")
+	DefaultDelegateClass.AddMethod("applicationShouldTerminateAfterLastWindowClosed:", func(notification objc.Object) bool {
+		return TerminateAfterWindowsClose
+	})
 	objc.RegisterClass(DefaultDelegateClass)
 	DefaultDelegate = objc.Get("DefaultDelegate").Alloc().Init()
 }
