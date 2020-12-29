@@ -64,8 +64,8 @@ func main() {
 		req := core.NSURLRequest_Init(url)
 		wv.LoadRequest(req)
 
-		w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(),
-			cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
+		w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(), cocoa.NSClosableWindowMask,
+			cocoa.NSBackingStoreBuffered, false)
 		w.SetContentView(wv)
 		w.SetBackgroundColor(cocoa.NSColor_Clear())
 		w.SetOpaque(false)
@@ -74,6 +74,23 @@ func main() {
 		w.SetIgnoresMouseEvents(true)
 		w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
 		w.MakeKeyAndOrderFront(w)
+
+		events := make(chan cocoa.NSEvent)
+		go func() {
+			for e := range events {
+				if e.KeyCode() == 100 {
+					if w.IgnoresMouseEvents() {
+						fmt.Println("Mouse events on")
+						w.SetIgnoresMouseEvents(false)
+					} else {
+						fmt.Println("Mouse events off")
+						w.SetIgnoresMouseEvents(true)
+					}
+				}
+				e.Release()
+			}
+		}()
+		cocoa.NSEvent_GlobalMonitorForEventsMatchingMask(cocoa.NSEventMaskKeyDown, events)
 
 		go func() {
 			for {
@@ -89,7 +106,7 @@ func main() {
 			}
 		}()
 	})
-	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
+	//app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyRegular)
 	app.ActivateIgnoringOtherApps(true)
 
 	log.Printf("topframe 0.1.0 by progrium\n")
