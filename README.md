@@ -1,5 +1,14 @@
-# macdriver
-Native Mac APIs in Go
+<img src="./macdriver.png" alt="MacDriver Logo">
+
+Native Mac APIs for Go!
+
+[![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://godoc.org/github.com/progrium/macdriver)
+[![Go Report Card](https://goreportcard.com/badge/github.com/progrium/macdriver)](https://goreportcard.com/report/github.com/progrium/macdriver)
+<a href="https://twitter.com/progriumHQ" title="@progriumHQ on Twitter"><img src="https://img.shields.io/badge/twitter-@progriumHQ-55acee.svg" alt="@progriumHQ on Twitter"></a>
+<a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
+
+------
+
 
 ```go
 func main() {
