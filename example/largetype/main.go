@@ -11,21 +11,6 @@ import (
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
-func SizeText(text string, fontName string, minSize, maxSize, maxWidth float64) (rect core.NSRect, size float64) {
-	t := cocoa.NSTextView_Init(core.Rect(0, 0, 0, 0))
-	t.SetString(text)
-	for s := minSize; s <= maxSize; s += 12 {
-		t.SetFont(cocoa.Font(fontName, s))
-		t.LayoutManager().EnsureLayoutForTextContainer(t.TextContainer())
-		rect = t.LayoutManager().UsedRectForTextContainer(t.TextContainer())
-		size = s
-		if rect.Size.Width >= maxWidth {
-			break
-		}
-	}
-	return rect, size
-}
-
 func main() {
 	runtime.LockOSThread()
 
@@ -35,7 +20,20 @@ func main() {
 
 		screen := cocoa.NSScreen_Main().Frame().Size
 		text := fmt.Sprintf(" %s ", strings.Join(flag.Args(), " "))
-		tr, fontSize := SizeText(text, *fontName, 70, 550, screen.Width*0.8)
+		tr, fontSize := func() (rect core.NSRect, size float64) {
+			t := cocoa.NSTextView_Init(core.Rect(0, 0, 0, 0))
+			t.SetString(text)
+			for s := 70.0; s <= 550; s += 12 {
+				t.SetFont(cocoa.Font(*fontName, s))
+				t.LayoutManager().EnsureLayoutForTextContainer(t.TextContainer())
+				rect = t.LayoutManager().UsedRectForTextContainer(t.TextContainer())
+				size = s
+				if rect.Size.Width >= screen.Width*0.8 {
+					break
+				}
+			}
+			return rect, size
+		}()
 
 		height := tr.Size.Height * 1.5
 		tr.Origin.Y = (height / 2) - (tr.Size.Height / 2)
@@ -56,7 +54,8 @@ func main() {
 		tr.Origin.X = (screen.Width / 2) - (tr.Size.Width / 2)
 		tr.Origin.Y = (screen.Height / 2) - (tr.Size.Height / 2)
 
-		w := cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0), cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
+		w := cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0),
+			cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
 		w.SetContentView(c)
 		w.SetTitlebarAppearsTransparent(true)
 		w.SetTitleVisibility(cocoa.NSWindowTitleHidden)
@@ -71,7 +70,7 @@ func main() {
 			<-events
 			cocoa.NSApp().Terminate()
 		}()
-		cocoa.NSEvent_GlobalMonitorForEventsMatchingMask(cocoa.NSEventMaskAny, events)
+		cocoa.NSEvent_GlobalMonitorMatchingMask(cocoa.NSEventMaskAny, events)
 	})
 	app.ActivateIgnoringOtherApps(true)
 	app.Run()

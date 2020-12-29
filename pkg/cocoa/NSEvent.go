@@ -100,7 +100,7 @@ type NSEvent struct {
 	objc.Object
 }
 
-func NSEvent_GlobalMonitorForEventsMatchingMask(mask uint64, ch chan NSEvent) {
+func NSEvent_GlobalMonitorMatchingMask(mask uint64, ch chan NSEvent) {
 	monitorCh = ch
 	C.monitor(C.ulonglong(mask))
 }

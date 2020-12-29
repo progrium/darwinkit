@@ -90,7 +90,7 @@ func main() {
 				e.Release()
 			}
 		}()
-		cocoa.NSEvent_GlobalMonitorForEventsMatchingMask(cocoa.NSEventMaskKeyDown, events)
+		cocoa.NSEvent_GlobalMonitorMatchingMask(cocoa.NSEventMaskKeyDown, events)
 
 		go func() {
 			for {
