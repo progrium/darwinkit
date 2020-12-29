@@ -1,26 +1,18 @@
-// Usage: largetype [-font=<fontName>] text
-// TODO: replace 3 second display with close on any input
-// TODO: replace call to center with something to place window at true center
 package main
 
 import (
 	"flag"
 	"fmt"
-	"os"
 	"runtime"
 	"strings"
-	"time"
 
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
 )
 
-var fontName = flag.String("font", "Helvetica", "font to use")
-
 func SizeText(text string, fontName string, minSize, maxSize, maxWidth float64) (rect core.NSRect, size float64) {
-	t := cocoa.NSTextView_Init(core.Rect(0, 0, 1600, 900))
-	defer t.Release()
+	t := cocoa.NSTextView_Init(core.Rect(0, 0, 0, 0))
 	t.SetString(text)
 	for s := minSize; s <= maxSize; s += 12 {
 		t.SetFont(cocoa.Font(fontName, s))
@@ -36,13 +28,18 @@ func SizeText(text string, fontName string, minSize, maxSize, maxWidth float64) 
 
 func main() {
 	runtime.LockOSThread()
-	flag.Parse()
 
 	app := cocoa.NSApp_WithDidLaunch(func(n objc.Object) {
-		text := fmt.Sprintf(" %s ", strings.Join(flag.Args(), " "))
-		tr, fontSize := SizeText(text, *fontName, 70, 550, 1400)
+		fontName := flag.String("font", "Helvetica", "font to use")
+		flag.Parse()
 
-		t := cocoa.NSTextView_Init(core.Rect(0, 0, 1600, tr.Size.Height))
+		screen := cocoa.NSScreen_Main().Frame().Size
+		text := fmt.Sprintf(" %s ", strings.Join(flag.Args(), " "))
+		tr, fontSize := SizeText(text, *fontName, 70, 550, screen.Width*0.8)
+
+		height := tr.Size.Height * 1.5
+		tr.Origin.Y = (height / 2) - (tr.Size.Height / 2)
+		t := cocoa.NSTextView_Init(tr)
 		t.SetString(text)
 		t.SetFont(cocoa.Font(*fontName, fontSize))
 		t.SetEditable(false)
@@ -55,24 +52,27 @@ func main() {
 		c.Layer().SetCornerRadius(32.0)
 		c.AddSubviewPositionedRelativeTo(t, cocoa.NSWindowAbove, nil)
 
+		tr.Size.Height = height
+		tr.Origin.X = (screen.Width / 2) - (tr.Size.Width / 2)
+		tr.Origin.Y = (screen.Height / 2) - (tr.Size.Height / 2)
+
 		w := cocoa.NSWindow_Init(core.Rect(0, 0, 0, 0), cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
+		w.SetContentView(c)
 		w.SetTitlebarAppearsTransparent(true)
 		w.SetTitleVisibility(cocoa.NSWindowTitleHidden)
 		w.SetOpaque(false)
 		w.SetBackgroundColor(cocoa.NSColor_Clear())
-
-		tr.Size.Height = tr.Size.Height * 1.05
+		w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
 		w.SetFrameDisplay(tr, true)
-
-		w.Center()
-		w.SetContentView(c)
 		w.MakeKeyAndOrderFront(nil)
+
+		events := make(chan cocoa.NSEvent, 64)
+		go func() {
+			<-events
+			cocoa.NSApp().Terminate()
+		}()
+		cocoa.NSEvent_GlobalMonitorForEventsMatchingMask(cocoa.NSEventMaskAny, events)
 	})
-	app.SetActivationPolicy(cocoa.NSApplicationActivationPolicyAccessory)
 	app.ActivateIgnoringOtherApps(true)
-	go func() {
-		<-time.After(3 * time.Second)
-		os.Exit(0)
-	}()
 	app.Run()
 }
