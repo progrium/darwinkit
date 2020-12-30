@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/progrium/macdriver/pkg/variadic"
+	"github.com/progrium/macdriver/pkg/misc/variadic"
 )
 
 func unpackStruct(val reflect.Value) []uintptr {

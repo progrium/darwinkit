@@ -1,4 +1,4 @@
-package macdriver
+package bridge
 
 import (
 	"github.com/progrium/macdriver/pkg/cocoa"

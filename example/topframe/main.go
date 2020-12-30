@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -11,6 +12,8 @@ import (
 	"runtime"
 	"time"
 
+	_ "embed"
+
 	"github.com/progrium/macdriver/pkg/cocoa"
 	"github.com/progrium/macdriver/pkg/core"
 	"github.com/progrium/macdriver/pkg/objc"
@@ -18,11 +21,8 @@ import (
 	"github.com/progrium/watcher"
 )
 
-func init() {
-	runtime.LockOSThread()
-}
-
 func main() {
+	runtime.LockOSThread()
 	var err error
 
 	usr, err := user.Current()
@@ -32,6 +32,12 @@ func main() {
 
 	dir := filepath.Join(usr.HomeDir, ".topframe")
 	os.MkdirAll(dir, 0755)
+
+	//go:embed index.html
+	var defaultIndex []byte
+	if _, err := os.Stat(filepath.Join(dir, "index.html")); os.IsNotExist(err) {
+		ioutil.WriteFile(filepath.Join(dir, "index.html"), defaultIndex, 0644)
+	}
 
 	srv := http.Server{
 		Handler: http.FileServer(http.Dir(dir)),

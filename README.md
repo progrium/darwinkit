@@ -9,7 +9,31 @@ Native Mac APIs for Go!
 
 ------
 
+MacDriver is a toolkit for working with Apple/Mac APIs and frameworks. It currently has 3 major components:
 
+## Bindings for libobjc
+The `objc` package wraps the [Objective-C runtime](https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc) to dynamically interact with Objective-C objects and classes:
+```go
+objc.Get("NSApplication").Get("sharedApplication").Send("terminate:", nil)
+```
+But also dynamically create them:
+```go
+cls := objc.NewClass("AppDelegate", "NSObject")
+cls.AddMethod("applicationDidFinishLaunching:", func(app objc.Object) {
+	fmt.Println("Launched!")
+})
+objc.RegisterClass(cls)
+```
+
+## Framework Packages
+The `cocoa`, `webkit`, and `core` packages contain wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
+we can automate this process with schema data. These packages effectively let you use the Apple APIs as if they were native Go libraries:
+```go
+w := cocoa.NSWindow_Init(core.Rect(0, 0, 1440, 900),
+		cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
+w.MakeKeyAndOrderFront(w)
+```
+Together they let you write Mac applications (potentially also iOS, watchOS, etc) as Go applications:
 ```go
 func main() {
 	app := cocoa.NSApp_WithDidLaunch(func(notification objc.Object) {
@@ -33,29 +57,64 @@ func main() {
 }
 ```
 
-## Low-level Mac APIs
+## Bridge System
+A common use case for this toolkit is not building full native apps, but integrating Go applications
+with various Mac systems, like windows, native menus, status icons (systray), etc.
+One-off libraries for some of these exist, but besides often limiting what you can do, 
+they're also just not composable. They all want to own the main thread!
 
-The low-level API lets you work directly with Apple APIs from Go. It's based on an Objective-C bridge using libobjc
-for working with objects and classes, and then there are Go versions of common classes that wrap the libobjc bridge.
+For this and other reasons, we often run the above kind of code in a separate process altogether from our
+Go application. This might seem like a step backwards, but it is safer and more robust in a way. 
 
-Since an NSApplication has its own run loop and modifications to the UI need to happen in the main thread, this basically
-takes over your process. This is partly why the high-level API talks to a subprocess.
-
+The `bridge` package takes advantage of this situation to create a higher-level abstraction more aligned with a potential 
+cross-platform toolkit where you can declaratively describe and modify structs that can be copied to the bridge process and applied to the Objective-C
+objects in a manner similar to configuration management:
 ```go
-w := cocoa.NSWindow_Init(cocoa.NSScreen_Main().Frame(),
-    cocoa.NSBorderlessWindowMask, cocoa.NSBackingStoreBuffered, false)
-w.SetContentView(wv)
-w.SetBackgroundColor(cocoa.NSColor_Clear())
-w.SetOpaque(false)
-w.SetTitleVisibility(cocoa.NSWindowTitleHidden)
-w.SetTitlebarAppearsTransparent(true)
-w.SetIgnoresMouseEvents(true)
-w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
-w.MakeKeyAndOrderFront(w)
-```
+package main 
 
-Not all APIs have wrappers and certain methods (such as those taking/returning structs) may not work. Deficiencies in the 
-Objective-C bridge can be made up with CGO, letting you use C or even Objective-C to expose and call methods.
+import (
+	"os"
+
+	"github.com/progrium/macdriver/pkg/bridge"
+)
+
+func main() {
+	// start a bridge subprocess
+	host := bridge.NewHost(os.Stderr)
+	go host.Run()
+
+	// create a window
+	window := bridge.Window{
+		Title:       "My Title",
+		Size:        bridge.Size{W: 480, H: 240},
+		Position:    bridge.Point{X: 200, Y: 200},
+		Closable:    true,
+		Minimizable: false,
+		Resizable:   false,
+		Borderless:  false,
+		AlwaysOnTop: true,
+		Background:   &bridge.Color{R: 1, G: 1, B: 1, A: 0.5},
+	}
+	host.Sync(&window)
+
+	// change its title
+	window.Title = "My New Title"
+	host.Sync(&window)
+
+	// destroy the window
+	host.Release(&window)
+}
+
+```
+This is the most WIP part of the project, but once developed further we can take this API and build a bridge
+system with the same resources for Windows and Linux, making a cross-platform OS "driver". We'll see.
+
+## Development Notes
+
+As far as we know, due to limitations of Go modules, we often need to add `replace` directives to our `go.mod` during development
+to work against a local checkout of some dependency (like qtalk). However, these should not be versioned, so for now we encourage
+you to use `git update-index --skip-worktree go.mod` on your checkout if you need to add `replace` directives. When updates need to
+be checked in, `git update-index --no-skip-worktree go.mod` can be used to reverse this on your local repo to commit changes and then re-enable.
 
 #### Generating wrappers
 
@@ -63,49 +122,10 @@ Eventually we can generate most of the wrapper APIs using bridgesupport and/or d
 is pretty ridiculous so there are lots of edge cases I wouldn't know how to automate yet. We can just continue to create them by hand
 as needed until we have enough coverage/confidence to know how we'd generate wrappers.
 
-## High-level Macdriver API
-
-The high-level API lets you declaratively describe a handful of common system resources such as windows, menus, systray items,
-etc in your application and then "sync" them to a managed subprocess that reconciles state with Apple APIs using the
-low-level API.
-
-```go
-// create a window
-window := macdriver.Window{
-	Title:       "My Title",
-	Size:        macdriver.Size{W: 480, H: 240},
-	Position:    macdriver.Point{X: 200, Y: 200},
-	Closable:    true,
-	Minimizable: false,
-	Resizable:   false,
-	Borderless:  false,
-	AlwaysOnTop: true,
-	Background:   &macdriver.Color{R: 1, G: 1, B: 1, A: 0.5},
-}
-macdriver.Sync(peer, &window)
-
-// change its title
-window.Title = "My New Title"
-macdriver.Sync(peer, &window)
-
-// destroy the window
-macdriver.Release(peer, &window)
-```
-
-The high-level API is meant to be platform agnostic, so you can imagine windriver and linuxdriver equivalent projects. It's also
-based on a non-Go specific communication protocol, so this API could be exposed to other languages.
-
-## Development Notes
-
-As far as we know, due to limitations of Go modules, we often need to add `replace` directives to our `go.mod` during development
-to work against a local checkout of some dependency (like qtalk). However, these should not be versioned, so for now we encourage
-you to use `git update-index --skip-worktree go.mod` on your checkout if you need to add `replace` directives. When updates need to
-be checked in, `git update-index --no-skip-worktree go.mod` can be used to reverse this change to your local repo.
-
 ## Thanks
 
-The original `objc` and `variadic` packages were written by Mikkel Krautz. The `variadic` package makes everything possible since
-libobjc relies heavily on variadic function calls, which weren't possible in Cgo. 
+The original `objc` and `variadic` packages were written by Mikkel Krautz. The `variadic` package is a little magic to make everything possible since
+libobjc relies heavily on variadic function calls, which aren't possible out of the box in Cgo. 
 
 ## License
 

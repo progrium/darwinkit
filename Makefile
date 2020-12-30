@@ -1,10 +1,14 @@
-.PHONY: dev largetype topframe
 
-dev:
-	go run ./cmd/macdriver-host
+GOBIN ?= go
 
-largetype:
-	go run ./cmd/largetype Hello world
+help: ## show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+.PHONY: help
 
-topframe:
-	go run ./cmd/topframe
+largetype: ## build and run largetype example
+	$(GOBIN) run ./example/largetype -font="Monaco" "Hello world"
+.PHONY: largetype
+
+topframe: ## build and run topframe example
+	$(GOBIN) run ./example/topframe
+.PHONY: topframe
