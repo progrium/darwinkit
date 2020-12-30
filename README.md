@@ -66,9 +66,9 @@ func main() {
 [examples/largetype](https://github.com/progrium/macdriver/blob/main/examples/largetype/main.go#L1) - A Contacts/Quicksilver-style Large Type utility in under 80 lines:
 ![largetype screenshot](https://pbs.twimg.com/media/EqaoO2MXIAEJNK2?format=jpg&name=large)
 
-[example/topframe](https://github.com/progrium/macdriver/blob/main/examples/topframe/main.go#L1) - A non-interactive, always-on-top webview with transparent background so you can draw on your
+[examples/topframe](https://github.com/progrium/macdriver/blob/main/examples/topframe/main.go#L1) - A non-interactive, always-on-top webview with transparent background in 120 lines so you can draw on your
 screen with HTML/JS: 
-![topframe screenshot](https://pbs.twimg.com/media/EqhWwe1XIAE2wFt?format=jpg&name=large)
+![topframe screenshot](https://pbs.twimg.com/media/EqhYDmlW8AEBC6-?format=jpg&name=large)
 
 ## Bridge System
 Lastly, a common use case for this toolkit is not building full native apps, but integrating Go applications
