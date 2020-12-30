@@ -13,10 +13,13 @@ MacDriver is a toolkit for working with Apple/Mac APIs and frameworks. It curren
 
 ## Bindings for libobjc
 The `objc` package wraps the [Objective-C runtime](https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc) to dynamically interact with Objective-C objects and classes:
+
 ```go
 objc.Get("NSApplication").Get("sharedApplication").Send("terminate:", nil)
 ```
-But also dynamically create them:
+
+Also dynamically create them:
+
 ```go
 cls := objc.NewClass("AppDelegate", "NSObject")
 cls.AddMethod("applicationDidFinishLaunching:", func(app objc.Object) {
@@ -28,12 +31,15 @@ objc.RegisterClass(cls)
 ## Framework Packages
 The `cocoa`, `webkit`, and `core` packages contain wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
 we can automate this process with schema data. These packages effectively let you use the Apple APIs as if they were native Go libraries:
+
 ```go
 w := cocoa.NSWindow_Init(core.Rect(0, 0, 1440, 900),
 		cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
 w.MakeKeyAndOrderFront(w)
 ```
+
 Together they let you write Mac applications (potentially also iOS, watchOS, etc) as Go applications:
+
 ```go
 func main() {
 	app := cocoa.NSApp_WithDidLaunch(func(notification objc.Object) {
@@ -56,9 +62,16 @@ func main() {
 	app.Run()
 }
 ```
+### Examples
+#### example/largetype
+A Contacts/Quicksilver-style Large Type utility in under 80 lines.
+
+#### example/topframe
+A non-interactive, always-on-top webview with transparent background so you can draw on your
+screen with HTML/JS.
 
 ## Bridge System
-A common use case for this toolkit is not building full native apps, but integrating Go applications
+Lastly, a common use case for this toolkit is not building full native apps, but integrating Go applications
 with various Mac systems, like windows, native menus, status icons (systray), etc.
 One-off libraries for some of these exist, but besides often limiting what you can do, 
 they're also just not composable. They all want to own the main thread!
@@ -69,6 +82,7 @@ Go application. This might seem like a step backwards, but it is safer and more 
 The `bridge` package takes advantage of this situation to create a higher-level abstraction more aligned with a potential 
 cross-platform toolkit where you can declaratively describe and modify structs that can be copied to the bridge process and applied to the Objective-C
 objects in a manner similar to configuration management:
+
 ```go
 package main 
 
