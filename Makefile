@@ -6,9 +6,9 @@ help: ## show this help
 .PHONY: help
 
 largetype: ## build and run largetype example
-	$(GOBIN) run ./example/largetype -font="Monaco" "Hello world"
+	$(GOBIN) run ./examples/largetype -font="Monaco" "Hello world"
 .PHONY: largetype
 
 topframe: ## build and run topframe example
-	$(GOBIN) run ./example/topframe
+	$(GOBIN) run ./examples/topframe
 .PHONY: topframe

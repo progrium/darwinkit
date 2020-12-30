@@ -63,10 +63,11 @@ func main() {
 }
 ```
 ### Examples
-#### example/largetype
+#### [examples/largetype](https://github.com/progrium/macdriver/blob/main/examples/largetype/main.go#L1)
 A Contacts/Quicksilver-style Large Type utility in under 80 lines.
+![largetype screenshot](https://pbs.twimg.com/media/EqaoO2MXIAEJNK2?format=jpg&name=large)
 
-#### example/topframe
+#### [example/topframe](https://github.com/progrium/macdriver/blob/main/examples/topframe/main.go#L1)
 A non-interactive, always-on-top webview with transparent background so you can draw on your
 screen with HTML/JS.
 
