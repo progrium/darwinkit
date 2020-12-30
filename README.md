@@ -1,4 +1,4 @@
-<img src="./macdriver.png" alt="MacDriver Logo">
+<img src="https://github.com/progrium/macdriver/raw/main/macdriver.gif" alt="MacDriver Logo">
 
 Native Mac APIs for Go!
 
