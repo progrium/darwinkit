@@ -1,3 +1,11 @@
 **/node_modules/
 **/.DS_Store
 /local
+
+# we DO want to version go.mod,
+# but we're forced to append checkout
+# specific directives when working
+# on qtalk, so we leave go.mod
+# "unversioned" except for when we
+# need to change it:
+go.mod
