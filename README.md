@@ -95,6 +95,13 @@ macdriver.Release(peer, &window)
 The high-level API is meant to be platform agnostic, so you can imagine windriver and linuxdriver equivalent projects. It's also
 based on a non-Go specific communication protocol, so this API could be exposed to other languages.
 
+## Development Notes
+
+As far as we know, due to limitations of Go modules, we often need to add `replace` directives to our `go.mod` during development
+to work against a local checkout of some dependency (like qtalk). However, these should not be versioned, so for now we encourage
+you to use `git update-index --skip-worktree go.mod` on your checkout if you need to add `replace` directives. When updates need to
+be checked in, `git update-index --no-skip-worktree go.mod` can be used to reverse this change to your local repo.
+
 ## Thanks
 
 The original `objc` and `variadic` packages were written by Mikkel Krautz. The `variadic` package makes everything possible since
