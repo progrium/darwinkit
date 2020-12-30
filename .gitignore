@@ -8,4 +8,4 @@
 # on qtalk, so we leave go.mod
 # "unversioned" except for when we
 # need to change it:
-go.mod
+/go.mod
