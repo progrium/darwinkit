@@ -3,7 +3,7 @@ package main
 import (
 	"runtime"
 
-	"github.com/progrium/macdriver/pkg/bridge"
+	"github.com/progrium/macdriver/bridge"
 )
 
 func main() {

@@ -14,10 +14,10 @@ import (
 
 	_ "embed"
 
-	"github.com/progrium/macdriver/pkg/cocoa"
-	"github.com/progrium/macdriver/pkg/core"
-	"github.com/progrium/macdriver/pkg/objc"
-	"github.com/progrium/macdriver/pkg/webkit"
+	"github.com/progrium/macdriver/cocoa"
+	"github.com/progrium/macdriver/core"
+	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/macdriver/webkit"
 	"github.com/progrium/watcher"
 )
 

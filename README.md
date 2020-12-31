@@ -1,6 +1,6 @@
 <img src="https://github.com/progrium/macdriver/raw/main/macdriver.gif" alt="MacDriver Logo">
 
-Native Mac APIs for Go!
+Native Mac APIs for Golang!
 
 [![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://godoc.org/github.com/progrium/macdriver)
 [![Go Report Card](https://goreportcard.com/badge/github.com/progrium/macdriver)](https://goreportcard.com/report/github.com/progrium/macdriver)
@@ -9,16 +9,10 @@ Native Mac APIs for Go!
 
 ------
 
-MacDriver is a toolkit for working with Apple/Mac APIs and frameworks. It currently has 3 major components:
+MacDriver is a toolkit for working with Apple/Mac APIs and frameworks in Go. It currently has 3 major "layers":
 
-## Bindings for libobjc
+## Bindings for Objective-C
 The `objc` package wraps the [Objective-C runtime](https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc) to dynamically interact with Objective-C objects and classes:
-
-```go
-objc.Get("NSApplication").Get("sharedApplication").Send("terminate:", nil)
-```
-
-Also dynamically create them:
 
 ```go
 cls := objc.NewClass("AppDelegate", "NSObject")
@@ -26,6 +20,11 @@ cls.AddMethod("applicationDidFinishLaunching:", func(app objc.Object) {
 	fmt.Println("Launched!")
 })
 objc.RegisterClass(cls)
+
+delegate := objc.Get("AppDelegate").Alloc().Init()
+app := objc.Get("NSApplication").Get("sharedApplication")
+app.Set("delegate:", delegate)
+app.Send("run")
 ```
 
 ## Framework Packages
@@ -35,6 +34,7 @@ we can automate this process with schema data. These packages effectively let yo
 ```go
 w := cocoa.NSWindow_Init(core.Rect(0, 0, 1440, 900),
 		cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
+w.SetBackgroundColor(cocoa.NSColor_Clear())
 w.MakeKeyAndOrderFront(w)
 ```
 
@@ -71,8 +71,8 @@ screen with HTML/JS:
 ![topframe screenshot](https://pbs.twimg.com/media/EqhYDmlW8AEBC6-?format=jpg&name=large)
 
 ## Bridge System
-Lastly, a common use case for this toolkit is not building full native apps, but integrating Go applications
-with various Mac systems, like windows, native menus, status icons (systray), etc.
+Lastly, a common case for this toolkit is not just building full native apps, but integrating Go applications
+with Mac systems, like windows, native menus, status icons (systray), etc.
 One-off libraries for some of these exist, but besides often limiting what you can do, 
 they're also just not composable. They all want to own the main thread!
 
@@ -80,7 +80,7 @@ For this and other reasons, we often run the above kind of code in a separate pr
 Go application. This might seem like a step backwards, but it is safer and more robust in a way. 
 
 The `bridge` package takes advantage of this situation to create a higher-level abstraction more aligned with a potential 
-cross-platform toolkit where you can declaratively describe and modify structs that can be copied to the bridge process and applied to the Objective-C
+cross-platform toolkit. You can declaratively describe and modify structs that can be copied to the bridge process and applied to the Objective-C
 objects in a manner similar to configuration management:
 
 ```go
@@ -89,7 +89,7 @@ package main
 import (
 	"os"
 
-	"github.com/progrium/macdriver/pkg/bridge"
+	"github.com/progrium/macdriver/bridge"
 )
 
 func main() {
@@ -138,8 +138,7 @@ as needed until we have enough coverage/confidence to know how we'd generate wra
 
 ## Thanks
 
-The original `objc` and `variadic` packages were written by Mikkel Krautz. The `variadic` package is a little magic to make everything possible since
-libobjc relies heavily on variadic function calls, which aren't possible out of the box in Cgo. 
+The original `objc` and `variadic` packages were written by [Mikkel Krautz](https://github.com/mkrautz). The `variadic` package is some assembly magic to make everything possible since libobjc relies heavily on variadic function calls, which aren't possible out of the box in Cgo. 
 
 ## License
 

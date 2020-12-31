@@ -6,9 +6,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/progrium/macdriver/pkg/cocoa"
-	"github.com/progrium/macdriver/pkg/core"
-	"github.com/progrium/macdriver/pkg/objc"
+	"github.com/progrium/macdriver/cocoa"
+	"github.com/progrium/macdriver/core"
+	"github.com/progrium/macdriver/objc"
 )
 
 func main() {
