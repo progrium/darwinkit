@@ -28,17 +28,9 @@ app.Send("run")
 ```
 
 ## Framework Packages
-The `cocoa`, `webkit`, and `core` packages contain wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
-we can automate this process with schema data. These packages effectively let you use the Apple APIs as if they were native Go libraries:
-
-```go
-w := cocoa.NSWindow_Init(core.Rect(0, 0, 1440, 900),
-		cocoa.NSTitledWindowMask, cocoa.NSBackingStoreBuffered, false)
-w.SetBackgroundColor(cocoa.NSColor_Clear())
-w.MakeKeyAndOrderFront(w)
-```
-
-Together they let you write Mac applications (potentially also iOS, watchOS, etc) as Go applications:
+The `cocoa`, `webkit`, and `core` packages wrap `objc` with wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
+we can automate this process with schema data. These packages effectively let you use Apple APIs as if they were native Go libraries, letting
+you write Mac applications (potentially also iOS, watchOS, etc) as Go applications:
 
 ```go
 func main() {
