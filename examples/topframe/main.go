@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -22,6 +23,9 @@ import (
 )
 
 func main() {
+	spacesFlag := flag.Bool("spaces", true, "appear on all spaces")
+	flag.Parse()
+
 	runtime.LockOSThread()
 	var err error
 
@@ -80,6 +84,9 @@ func main() {
 		w.SetIgnoresMouseEvents(true)
 		w.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
 		w.MakeKeyAndOrderFront(w)
+		if *spacesFlag {
+			w.SetCollectionBehavior(cocoa.NSWindowCollectionBehaviorCanJoinAllSpaces)
+		}
 
 		events := make(chan cocoa.NSEvent)
 		go func() {

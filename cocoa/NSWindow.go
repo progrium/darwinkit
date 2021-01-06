@@ -185,3 +185,10 @@ func (w NSWindow) SetBackgroundColor(color NSColor) {
 func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
 	w.Send("setFrame:display:", frame, display)
 }
+
+func (w NSWindow) CollectionBehavior() int64 {
+	return w.Get("collectionBehavior").Int()
+}
+func (w NSWindow) SetCollectionBehavior(collectionBehavior int) {
+	w.Set("collectionBehavior:", collectionBehavior)
+}
