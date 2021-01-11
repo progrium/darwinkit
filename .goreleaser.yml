@@ -2,19 +2,14 @@
 before:
   hooks:
     - go mod download
-    # you may remove this if you don't need go generate
-    # - go generate ./...
 builds:
-  - id: darwin-amd64
+  - id: macbridge
     main: ./cmd/macbridge
     binary: macbridge
     goos:
       - darwin
     goarch:
       - amd64
-    env:
-      - PKG_CONFIG_SYSROOT_DIR=/sysroot/macos/amd64
-      - PKG_CONFIG_PATH=/sysroot/macos/amd64/usr/local/lib/pkgconfig
 archives:
   - replacements:
       darwin: Darwin
