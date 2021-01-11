@@ -27,6 +27,11 @@ app.Set("delegate:", delegate)
 app.Send("run")
 ```
 
+* Access any class or method you can in Objective-C
+* Method send common conveniences: Get, Set, Alloc, Init, ...
+* Create and extend classes that can be used by Objective-C code
+* Retain and Release methods for working with Objective-C garbage collection
+
 ## Framework Packages
 The `cocoa`, `webkit`, and `core` packages wrap `objc` with wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
 we can automate this process with schema data. These packages effectively let you use Apple APIs as if they were native Go libraries, letting
@@ -54,6 +59,15 @@ func main() {
 	app.Run()
 }
 ```
+
+* 1:1 mapping of API names with Objective-C APIs
+* Cocoa types: NSApplication, NSImage, NSMenu, NSWindow, more ...
+* Webkit types: WKWebView and configuration classes
+* Core types: NSData, NSDictionary, NSNumber, NSPoint, NSRect, NSSize, NSString, NSURL, more ...
+* Core also allows dispatching Go functions in the Cocoa run loop
+* Many constants/enums are defined
+
+
 ### Examples
 [examples/largetype](https://github.com/progrium/macdriver/blob/main/examples/largetype/main.go#L1) - A Contacts/Quicksilver-style Large Type utility in under 80 lines:
 ![largetype screenshot](https://pbs.twimg.com/media/EqaoO2MXIAEJNK2?format=jpg&name=large)
@@ -117,6 +131,11 @@ func main() {
 ```
 This is the most WIP part of the project, but once developed further we can take this API and build a bridge
 system with the same resources for Windows and Linux, making a cross-platform OS "driver". We'll see.
+
+* Current bridge types available:
+  * Window
+  * StatusItem (systray)
+  * Menu
 
 ## Development Notes
 
