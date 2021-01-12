@@ -28,9 +28,9 @@ app.Set("delegate:", delegate)
 app.Send("run")
 ```
 
-* Access any class or method you can in Objective-C
-* Method send common conveniences: Get, Set, Alloc, Init, ...
-* Create and extend classes that can be used by Objective-C code
+* Access any class or method you can access in Objective-C
+* Common object convenience methods: Get, Set, Alloc, Init, ...
+* Create and extend classes at runtime that can be used by Objective-C code
 * Retain and Release methods for working with Objective-C garbage collection
 
 ## Framework Packages
