@@ -10,5 +10,9 @@ largetype: ## build and run largetype example
 .PHONY: largetype
 
 topframe: ## build and run topframe example
-	$(GOBIN) run ./examples/topframe
+	$(GOBIN) run ./examples/_topframe
 .PHONY: topframe
+
+pomodoro: ## build and run pomodoro example
+	$(GOBIN) run ./examples/pomodoro
+.PHONY: pomodoro
