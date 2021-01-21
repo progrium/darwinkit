@@ -2,22 +2,22 @@ package bridge
 
 import (
 	"encoding/base64"
-	"reflect"
 
+	"github.com/progrium/macdriver/bridge/resource"
 	"github.com/progrium/macdriver/cocoa"
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
 
-type StatusItem struct {
-	resource
+type Indicator struct {
+	*resource.Handle
 
 	Icon string
 	Text string
 	Menu *Menu
 }
 
-func (s *StatusItem) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {
+func (s *Indicator) Apply(target objc.Object) (objc.Object, error) {
 	obj := cocoa.NSStatusItem{Object: target}
 	if target == nil {
 		obj = cocoa.NSStatusBar_System().StatusItemWithLength(cocoa.NSVariableStatusItemLength)
@@ -43,8 +43,9 @@ func (s *StatusItem) Apply(old, new reflect.Value, target objc.Object) (objc.Obj
 
 	}
 	if s.Menu != nil {
-		menu, err := s.Menu.Apply(reflect.Value{}, reflect.Value{}, nil)
-		if err != nil {
+		var menu objc.Object
+		var err error
+		if menu, err = s.Menu.Apply(menu); err != nil {
 			return nil, err
 		}
 		obj.SetMenu(cocoa.NSMenu{Object: menu})

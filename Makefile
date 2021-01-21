@@ -18,5 +18,6 @@ pomodoro: ## build and run pomodoro example
 .PHONY: pomodoro
 
 bridgehost: ## build and run bridgehost example
+	$(GOEXE) install ./cmd/macbridge
 	$(GOEXE) run ./examples/bridgehost
 .PHONY: bridgehost

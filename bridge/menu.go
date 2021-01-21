@@ -4,9 +4,9 @@ import (
 	"encoding/base64"
 	"fmt"
 	"os"
-	"reflect"
 
 	"github.com/manifold/qtalk/golang/rpc"
+	"github.com/progrium/macdriver/bridge/resource"
 	"github.com/progrium/macdriver/cocoa"
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
@@ -14,7 +14,7 @@ import (
 )
 
 type Menu struct {
-	resource
+	*resource.Handle
 
 	Icon    string
 	Title   string
@@ -22,7 +22,7 @@ type Menu struct {
 	Items   []MenuItem
 }
 
-func (m *Menu) Apply(old, new reflect.Value, target objc.Object) (objc.Object, error) {
+func (m *Menu) Apply(target objc.Object) (objc.Object, error) {
 	if target == nil {
 		menu := cocoa.NSMenu_New()
 		menu.SetAutoenablesItems(true)
@@ -71,13 +71,16 @@ func ExportFunc(fn interface{}) *rpc_FuncExport {
 }
 
 type MenuItem struct {
+	*resource.Handle
+
 	Title     string
 	Icon      string
 	Tooltip   string
 	Separator bool
 	Enabled   bool
 	Checked   bool
-	OnClick   *rpc_FuncExport
+
+	OnClick *rpc_FuncExport
 	// TODO: submenus
 }
 
