@@ -59,6 +59,9 @@ func (h *Handle) ID() string {
 }
 
 func (h *Handle) Handle() string {
+	if h == nil {
+		return ""
+	}
 	return string(*h)
 }
 

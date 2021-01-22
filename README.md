@@ -11,9 +11,9 @@ Native Mac APIs for Golang!
 
 ------
 
-MacDriver is a toolkit for working with Apple/Mac APIs and frameworks in Go. It currently has 3 major "layers":
+MacDriver is a toolkit for working with Apple/Mac APIs and frameworks in Go. It currently has 3 "layers":
 
-## Bindings for Objective-C
+## 1. Bindings for Objective-C
 The `objc` package wraps the [Objective-C runtime](https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc) to dynamically interact with Objective-C objects and classes:
 
 ```go
@@ -34,7 +34,7 @@ app.Send("run")
 * Create and extend classes at runtime that can be used by Objective-C code
 * Retain and Release methods for working with Objective-C garbage collection
 
-## Framework Packages
+## 2. Framework Packages
 The `cocoa`, `webkit`, and `core` packages wrap `objc` with wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
 we can automate this process with schema data. These packages effectively let you use Apple APIs as if they were native Go libraries, letting
 you write Mac applications (potentially also iOS, watchOS, etc) as Go applications:
@@ -83,7 +83,7 @@ screen with HTML/JS:
 ![topframe screenshot](https://pbs.twimg.com/media/EqhYDmlW8AEBC6-?format=jpg&name=large)
 > Note: topframe currently relies on [embed](https://github.com/golang/go/issues/41191) which you can use with go [1.16beta](https://golang.org/dl/#unstable)
 
-## Bridge System
+## 3. Bridge System
 Lastly, a common case for this toolkit is not just building full native apps, but integrating Go applications
 with Mac systems, like windows, native menus, status icons (systray), etc.
 One-off libraries for some of these exist, but besides often limiting what you can do, 
