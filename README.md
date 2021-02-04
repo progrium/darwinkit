@@ -32,7 +32,7 @@ app.Send("run")
 * Access any class or method you can access in Objective-C
 * Common object convenience methods: Get, Set, Alloc, Init, ...
 * Create and extend classes at runtime that can be used by Objective-C code
-* Retain and Release methods for working with Objective-C garbage collection
+* Retain and Release methods for working with Objective-C memory management
 
 ## 2. Framework Packages
 The `cocoa`, `webkit`, and `core` packages wrap `objc` with wrapper types for parts of the Apple/Mac APIs. They're being added to as needed by hand until
