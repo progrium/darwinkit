@@ -70,7 +70,7 @@ func main() {
 		wv.SetBackgroundColor(cocoa.NSColor_Clear())
 		wv.SetValueForKey(core.False, core.String("drawsBackground"))
 
-		url := core.URL(fmt.Sprintf("http://%s", ln.Addr().String()))
+		url := core.URL(fmt.Sprintf("http://localhost:%d", ln.Addr().(*net.TCPAddr).Port))
 		req := core.NSURLRequest_Init(url)
 		wv.LoadRequest(req)
 
