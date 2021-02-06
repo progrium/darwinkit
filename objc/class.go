@@ -43,6 +43,13 @@ void GoObjc_RegisterClass(void *cls) {
 char *GoObjc_GetClassName(void *cls) {
 	return (char *) class_getName(cls);
 }
+
+void GoObjc_Swizzle(void *cls, void *sel1, void *sel2) {
+	Method m1 = class_getInstanceMethod(cls, sel1);
+	Method m2 = class_getInstanceMethod(cls, sel2);
+	method_exchangeImplementations(m1, m2);
+}
+
 */
 import "C"
 import (
@@ -97,6 +104,11 @@ type Class interface {
 	// Go function if instances of the class are instanciated
 	// by calling objc.NewGoInstance.
 	AddMethod(selector string, fn interface{})
+
+	// Swizzle swaps the implementation of two methods on a class
+	// so that messages sent to selectorA are received by the
+	// implementation of selectorB and vice-versa.
+	Swizzle(selectorA, selectorB string)
 }
 
 func NewClass(classname string, superclass string) Class {
@@ -120,6 +132,15 @@ func NewClass(classname string, superclass string) Class {
 	}
 
 	return object{ptr: uintptr(ptr)}
+}
+
+func TODO_RegisterClassInMap(cls Class) {
+	obj := cls.(object)
+	classMap[obj.className()] = classInfo{
+		typ:       reflect.TypeOf(struct{ Object }{}),
+		methodMap: map[string]interface{}{},
+		setters:   map[string]struct{}{},
+	}
 }
 
 // NewClass returns a new class. The value parameter must
@@ -242,6 +263,19 @@ func (cls object) AddMethod(selector string, fn interface{}) {
 
 	// Add the method to the class's method map
 	clsInfo.methodMap[selector] = fn
+}
+
+// Swizzle swaps the implementation of two methods.
+func (cls object) Swizzle(selectorA, selectorB string) {
+	selA := selectorWithName(selectorA)
+	selB := selectorWithName(selectorB)
+	C.GoObjc_Swizzle(unsafe.Pointer(cls.Pointer()), selA, selB)
+
+	clsName := cls.className()
+	clsInfo := classMap[clsName]
+	mm := clsInfo.methodMap
+
+	mm[selectorA], mm[selectorB] = mm[selectorB], mm[selectorA]
 }
 
 // setInternalPointer sets an internal pointer on the object.
