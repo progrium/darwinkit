@@ -19,6 +19,7 @@ void monitor(unsigned long long int mask) {
 */
 import "C"
 import (
+	"errors"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -105,6 +106,20 @@ func NSEvent_GlobalMonitorMatchingMask(mask uint64, ch chan NSEvent) {
 	C.monitor(C.ulonglong(mask))
 }
 
-func (e NSEvent) KeyCode() int64 {
-	return e.Get("keyCode").Int()
+func (e NSEvent) KeyCode() (int64, error) {
+	eventType := e.Type()
+	if eventType != NSEventTypeKeyDown && eventType != NSEventTypeKeyUp {
+		return 0, errors.New("event does not contain a keycode")
+	}
+	return e.Get("keyCode").Int(), nil
+}
+func (e NSEvent) Type() int64 {
+	return e.Get("type").Int()
+}
+func (e NSEvent) Characters() (string, error) {
+	eventType := e.Type()
+	if eventType != NSEventTypeKeyDown && eventType != NSEventTypeKeyUp {
+		return "", errors.New("event does not contain characters")
+	}
+	return e.Get("characters").String(), nil
 }
