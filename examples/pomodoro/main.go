@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/progrium/macdriver/core"
 	"runtime"
 	"time"
 
 	"github.com/progrium/macdriver/cocoa"
+	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
 
