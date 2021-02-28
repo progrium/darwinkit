@@ -12,13 +12,6 @@ type NSPasteboardType = string
 /*
 Code to get the values for those constants:
 ```objc
-//
-//  main.m
-//  test-objc
-//
-//  Created by Jonas Faber on 16.02.21.
-//
-
 #import <Foundation/Foundation.h>
 #import <AppKit/NSPasteboard.h>
 #import <AppKit/NSTextView.h>
