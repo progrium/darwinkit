@@ -16,5 +16,5 @@ func ExampleNSPasteboard(){
 
 	// read data from pasteboard
 	fmt.Println(gp.StringForType(cocoa.NSPasteboardTypeString))
-	// Output: "test-content"
+	// Output: test-content
 }
