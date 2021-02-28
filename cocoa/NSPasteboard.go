@@ -14,7 +14,6 @@ Code to get the values for those constants:
 ```objc
 #import <Foundation/Foundation.h>
 #import <AppKit/NSPasteboard.h>
-#import <AppKit/NSTextView.h>
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
