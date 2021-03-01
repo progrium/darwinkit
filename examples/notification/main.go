@@ -29,8 +29,7 @@ func main() {
 		notification.Release()
 	})
 
-	nsbundle := cocoa.NSBundle_Main().Send("class").(objc.Class)
-	objc.TODO_RegisterClassInMap(nsbundle)
+	nsbundle := cocoa.NSBundle_Main().Class()
 
 	nsbundle.AddMethod("__bundleIdentifier", func(_ objc.Object) objc.Object {
 		return core.NSString_FromString("com.example.fake")

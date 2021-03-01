@@ -125,18 +125,16 @@ func NewClass(classname string, superclass string) Class {
 	typeInfo := encVoid + encId + encSelector
 	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
 
-	classMap[classname] = classInfo{
-		typ:       reflect.TypeOf(struct{ Object }{}),
-		methodMap: make(map[string]interface{}),
-		setters:   map[string]struct{}{},
-	}
-
+	lazilyRegisterClassInMap(classname)
 	return object{ptr: uintptr(ptr)}
 }
 
-func TODO_RegisterClassInMap(cls Class) {
-	obj := cls.(object)
-	classMap[obj.className()] = classInfo{
+func lazilyRegisterClassInMap(className string) {
+	if _, found := classMap[className]; found {
+		return
+	}
+
+	classMap[className] = classInfo{
 		typ:       reflect.TypeOf(struct{ Object }{}),
 		methodMap: map[string]interface{}{},
 		setters:   map[string]struct{}{},
