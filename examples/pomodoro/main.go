@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/progrium/macdriver/cocoa"
+	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -51,7 +52,11 @@ func main() {
 					2: "✅ Finished %02d:%02d",
 					3: "⏸️ Break %02d:%02d",
 				}
-				obj.Button().SetTitle(fmt.Sprintf(labels[state], timer/60, timer%60))
+				// updates to the ui should happen on the main thread to avoid strange bugs
+				core.Dispatch(func() {
+					obj.Button().SetTitle(fmt.Sprintf(labels[state], timer/60, timer%60))
+
+				})
 			}
 		}()
 		nextClicked <- true
