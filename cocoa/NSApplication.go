@@ -43,7 +43,9 @@ func NSApp() NSApplication {
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
-	DefaultDelegateClass.AddMethod("applicationDidFinishLaunching:", cb)
+	DefaultDelegateClass.AddMethod("applicationDidFinishLaunching:", func(_, notification objc.Object){
+		cb(notification)
+	})
 	app := NSApp()
 	app.SetDelegate(DefaultDelegate)
 	return app
