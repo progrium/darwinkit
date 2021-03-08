@@ -25,6 +25,10 @@ type Object interface {
 	// super class instead.
 	SendSuper(selector string, args ...interface{}) Object
 
+	// Class returns the the special class object corresponding
+	// to this object.
+	Class() Class
+
 	// Alloc sends the  "alloc" message to the object.
 	Alloc() Object
 
@@ -88,6 +92,12 @@ func ObjectPtr(ptr uintptr) Object {
 // be converted to an unsafe.Pointer.
 func (obj object) Pointer() uintptr {
 	return obj.ptr
+}
+
+func (obj object) Class() Class {
+	cls := obj.Send("class").(Class)
+	lazilyRegisterClassInMap(cls.(object).className())
+	return cls
 }
 
 func (obj object) Equals(o Object) bool {

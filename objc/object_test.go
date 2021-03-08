@@ -4,7 +4,11 @@
 
 package objc
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+	"unsafe"
+)
 
 type SomeGoObject struct {
 	Object `objc:"SomeGoObject : NSObject"`
@@ -40,5 +44,25 @@ func TestGoObjectCallObjC(t *testing.T) {
 	sgo := GetClass("SomeGoObject").Send("alloc").Send("init")
 	if sgo.Send("goSum").Int() != sgo.Send("sum").Int() {
 		t.Errorf("calculated sums do not match")
+	}
+}
+
+func TestObjectClass(t *testing.T) {
+	// using core.String() would introduce an import cycle
+	gostr := "hello world"
+	hdrp := (*reflect.StringHeader)(unsafe.Pointer(&gostr))
+	obj := Get("NSString").Alloc().Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
+
+	cls := obj.Class()
+	// NSString class method chosen at random
+	r := cls.Send("defaultCStringEncoding").Int()
+	if r == 0 {
+		t.Errorf("unexpected default string encoding")
+	}
+
+	if !cls.Class().Equals(cls) {
+		// the metaclass is returned by calling object_getClass() on the class
+		// object, not by sending -[x class]
+		t.Errorf("sending -[x class] to a class object should return itself")
 	}
 }
