@@ -10,7 +10,7 @@ import (
 )
 
 type Indicator struct {
-	*resource.Handle
+	*resource.Handle // ind:
 
 	Icon string
 	Text string
