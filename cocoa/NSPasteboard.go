@@ -79,14 +79,12 @@ type NSPasteboard struct {
 	objc.Object
 }
 
-// Wrapper for NSPasteboard
-// https://developer.apple.com/documentation/appkit/nspasteboard?language=objc
-var NSPasteboard_ = NSPasteboard{objc.Get("NSPasteboard")}
+var nsPasteboard = objc.Get("NSPasteboard")
 
 // NSPasteboard_GeneralPasteboard is the shared pasteboard object to use for general content.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc
 func NSPasteboard_GeneralPasteboard() NSPasteboard {
-	return NSPasteboard{NSPasteboard_.Get("generalPasteboard")}
+	return NSPasteboard{nsPasteboard.Get("generalPasteboard")}
 }
 
 // ClearContents clears the existing contents of the pasteboard.
@@ -98,10 +96,11 @@ func (pb NSPasteboard) ClearContents() {
 // SetStringForType sets the given string as the representation for the specified type for the first item on the receiver.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1528225-setstring?language=objc
 func (pb NSPasteboard) SetStringForType(s string, t NSPasteboardType) {
-	pb.Send("setString:forType:", core.NSString_FromString(s),  core.NSString_FromString(t))
+	pb.Send("setString:forType:", core.NSString_FromString(s), core.NSString_FromString(t))
 }
+
 // StringForType returns a concatenation of the strings for the specified type from all the items in the receiver that contain the type.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1533566-stringfortype?language=objc
 func (pb NSPasteboard) StringForType(t NSPasteboardType) string {
-	return pb.Send("stringForType:",  core.NSString_FromString(t)).String()
+	return pb.Send("stringForType:", core.NSString_FromString(t)).String()
 }
