@@ -1,7 +1,3 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package cocoa
 
 /*
@@ -144,6 +140,10 @@ func (w NSWindow) SetTitleVisibility(v int) {
 
 func (w NSWindow) TitleVisibility() int64 {
 	return w.Get("titleVisibility").Int()
+}
+
+func (w NSWindow) SetHasShadow(b bool) {
+	w.Set("hasShadow:", b)
 }
 
 func (w NSWindow) SetOpaque(b bool) {

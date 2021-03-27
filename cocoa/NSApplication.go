@@ -1,7 +1,3 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package cocoa
 
 import "github.com/progrium/macdriver/objc"
@@ -43,7 +39,7 @@ func NSApp() NSApplication {
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
-	DefaultDelegateClass.AddMethod("applicationDidFinishLaunching:", func(_, notification objc.Object){
+	DefaultDelegateClass.AddMethod("applicationDidFinishLaunching:", func(_, notification objc.Object) {
 		cb(notification)
 	})
 	app := NSApp()
