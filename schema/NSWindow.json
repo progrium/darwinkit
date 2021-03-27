@@ -1,0 +1,997 @@
+{
+  "Name": "NSWindow",
+  "Description": "A window that an app displays on the screen.",
+  "InstanceMethods": [
+    {
+      "Name": "initWithContentRect:styleMask:backing:defer:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc"
+    },
+    {
+      "Name": "initWithContentRect:styleMask:backing:defer:screen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc"
+    },
+    {
+      "Name": "toggleFullScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419527-togglefullscreen?language=objc"
+    },
+    {
+      "Name": "invalidateShadow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419529-invalidateshadow?language=objc"
+    },
+    {
+      "Name": "autorecalculatesContentBorderThicknessForEdge:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419356-autorecalculatescontentborderthi?language=objc"
+    },
+    {
+      "Name": "setAutorecalculatesContentBorderThickness:forEdge:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419218-setautorecalculatescontentborder?language=objc"
+    },
+    {
+      "Name": "contentBorderThicknessForEdge:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419775-contentborderthicknessforedge?language=objc"
+    },
+    {
+      "Name": "setContentBorderThickness:forEdge:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419541-setcontentborderthickness?language=objc"
+    },
+    {
+      "Name": "contentRectForFrameRect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419108-contentrectforframerect?language=objc"
+    },
+    {
+      "Name": "frameRectForContentRect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419134-framerectforcontentrect?language=objc"
+    },
+    {
+      "Name": "beginSheet:completionHandler:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419653-beginsheet?language=objc"
+    },
+    {
+      "Name": "beginCriticalSheet:completionHandler:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419198-begincriticalsheet?language=objc"
+    },
+    {
+      "Name": "endSheet:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419318-endsheet?language=objc"
+    },
+    {
+      "Name": "endSheet:returnCode:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419497-endsheet?language=objc"
+    },
+    {
+      "Name": "setFrameOrigin:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419690-setframeorigin?language=objc"
+    },
+    {
+      "Name": "setFrameTopLeftPoint:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419658-setframetopleftpoint?language=objc"
+    },
+    {
+      "Name": "constrainFrameRect:toScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419779-constrainframerect?language=objc"
+    },
+    {
+      "Name": "cascadeTopLeftFromPoint:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419392-cascadetopleftfrompoint?language=objc"
+    },
+    {
+      "Name": "setFrame:display:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419753-setframe?language=objc"
+    },
+    {
+      "Name": "setFrame:display:animate:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419519-setframe?language=objc"
+    },
+    {
+      "Name": "animationResizeTime:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419655-animationresizetime?language=objc"
+    },
+    {
+      "Name": "performZoom:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419450-performzoom?language=objc"
+    },
+    {
+      "Name": "zoom:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419513-zoom?language=objc"
+    },
+    {
+      "Name": "setContentSize:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419100-setcontentsize?language=objc"
+    },
+    {
+      "Name": "orderOut:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419660-orderout?language=objc"
+    },
+    {
+      "Name": "orderBack:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419204-orderback?language=objc"
+    },
+    {
+      "Name": "orderFront:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419495-orderfront?language=objc"
+    },
+    {
+      "Name": "orderFrontRegardless",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419444-orderfrontregardless?language=objc"
+    },
+    {
+      "Name": "orderWindow:relativeTo:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419672-orderwindow?language=objc"
+    },
+    {
+      "Name": "setFrameUsingName:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419723-setframeusingname?language=objc"
+    },
+    {
+      "Name": "setFrameUsingName:force:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419226-setframeusingname?language=objc"
+    },
+    {
+      "Name": "saveFrameUsingName:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419290-saveframeusingname?language=objc"
+    },
+    {
+      "Name": "setFrameFromString:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419759-setframefromstring?language=objc"
+    },
+    {
+      "Name": "makeKeyWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419368-makekeywindow?language=objc"
+    },
+    {
+      "Name": "makeKeyAndOrderFront:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419208-makekeyandorderfront?language=objc"
+    },
+    {
+      "Name": "becomeKeyWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419338-becomekeywindow?language=objc"
+    },
+    {
+      "Name": "resignKeyWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419047-resignkeywindow?language=objc"
+    },
+    {
+      "Name": "makeMainWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419271-makemainwindow?language=objc"
+    },
+    {
+      "Name": "becomeMainWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419084-becomemainwindow?language=objc"
+    },
+    {
+      "Name": "resignMainWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419212-resignmainwindow?language=objc"
+    },
+    {
+      "Name": "toggleToolbarShown:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419554-toggletoolbarshown?language=objc"
+    },
+    {
+      "Name": "runToolbarCustomizationPalette:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419284-runtoolbarcustomizationpalette?language=objc"
+    },
+    {
+      "Name": "addChildWindow:ordered:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419152-addchildwindow?language=objc"
+    },
+    {
+      "Name": "removeChildWindow:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419063-removechildwindow?language=objc"
+    },
+    {
+      "Name": "enableKeyEquivalentForDefaultButtonCell",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419276-enablekeyequivalentfordefaultbut?language=objc"
+    },
+    {
+      "Name": "disableKeyEquivalentForDefaultButtonCell",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419242-disablekeyequivalentfordefaultbu?language=objc"
+    },
+    {
+      "Name": "fieldEditor:forObject:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419647-fieldeditor?language=objc"
+    },
+    {
+      "Name": "endEditingFor:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419469-endeditingfor?language=objc"
+    },
+    {
+      "Name": "enableCursorRects",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419202-enablecursorrects?language=objc"
+    },
+    {
+      "Name": "disableCursorRects",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419639-disablecursorrects?language=objc"
+    },
+    {
+      "Name": "discardCursorRects",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419269-discardcursorrects?language=objc"
+    },
+    {
+      "Name": "invalidateCursorRectsForView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419601-invalidatecursorrectsforview?language=objc"
+    },
+    {
+      "Name": "resetCursorRects",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419464-resetcursorrects?language=objc"
+    },
+    {
+      "Name": "standardWindowButton:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419491-standardwindowbutton?language=objc"
+    },
+    {
+      "Name": "addTitlebarAccessoryViewController:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419382-addtitlebaraccessoryviewcontroll?language=objc"
+    },
+    {
+      "Name": "insertTitlebarAccessoryViewController:atIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419275-inserttitlebaraccessoryviewcontr?language=objc"
+    },
+    {
+      "Name": "removeTitlebarAccessoryViewControllerAtIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419643-removetitlebaraccessoryviewcontr?language=objc"
+    },
+    {
+      "Name": "addTabbedWindow:ordered:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1855947-addtabbedwindow?language=objc"
+    },
+    {
+      "Name": "selectNextTab:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644693-selectnexttab?language=objc"
+    },
+    {
+      "Name": "selectPreviousTab:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644555-selectprevioustab?language=objc"
+    },
+    {
+      "Name": "moveTabToNewWindow:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644410-movetabtonewwindow?language=objc"
+    },
+    {
+      "Name": "toggleTabBar:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644517-toggletabbar?language=objc"
+    },
+    {
+      "Name": "toggleTabOverview:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2870175-toggletaboverview?language=objc"
+    },
+    {
+      "Name": "nextEventMatchingMask:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419304-nexteventmatchingmask?language=objc"
+    },
+    {
+      "Name": "nextEventMatchingMask:untilDate:inMode:dequeue:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419721-nexteventmatchingmask?language=objc"
+    },
+    {
+      "Name": "discardEventsMatchingMask:beforeEvent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419676-discardeventsmatchingmask?language=objc"
+    },
+    {
+      "Name": "postEvent:atStart:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419376-postevent?language=objc"
+    },
+    {
+      "Name": "sendEvent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419228-sendevent?language=objc"
+    },
+    {
+      "Name": "tryToPerform:with:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419428-trytoperform?language=objc"
+    },
+    {
+      "Name": "makeFirstResponder:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419366-makefirstresponder?language=objc"
+    },
+    {
+      "Name": "selectKeyViewPrecedingView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419757-selectkeyviewprecedingview?language=objc"
+    },
+    {
+      "Name": "selectKeyViewFollowingView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419633-selectkeyviewfollowingview?language=objc"
+    },
+    {
+      "Name": "selectPreviousKeyView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419110-selectpreviouskeyview?language=objc"
+    },
+    {
+      "Name": "selectNextKeyView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419715-selectnextkeyview?language=objc"
+    },
+    {
+      "Name": "recalculateKeyViewLoop",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419350-recalculatekeyviewloop?language=objc"
+    },
+    {
+      "Name": "keyDown:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419200-keydown?language=objc"
+    },
+    {
+      "Name": "trackEventsMatchingMask:timeout:mode:handler:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419727-trackeventsmatchingmask?language=objc"
+    },
+    {
+      "Name": "performWindowDragWithEvent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419386-performwindowdragwithevent?language=objc"
+    },
+    {
+      "Name": "disableSnapshotRestoration",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526239-disablesnapshotrestoration?language=objc"
+    },
+    {
+      "Name": "enableSnapshotRestoration",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1525288-enablesnapshotrestoration?language=objc"
+    },
+    {
+      "Name": "display",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419358-display?language=objc"
+    },
+    {
+      "Name": "displayIfNeeded",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419096-displayifneeded?language=objc"
+    },
+    {
+      "Name": "disableScreenUpdatesUntilFlush",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419483-disablescreenupdatesuntilflush?language=objc"
+    },
+    {
+      "Name": "update",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419577-update?language=objc"
+    },
+    {
+      "Name": "dragImage:at:offset:event:pasteboard:source:slideBack:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419224-dragimage?language=objc"
+    },
+    {
+      "Name": "registerForDraggedTypes:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419140-registerfordraggedtypes?language=objc"
+    },
+    {
+      "Name": "unregisterDraggedTypes",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419456-unregisterdraggedtypes?language=objc"
+    },
+    {
+      "Name": "backingAlignedRect:options:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419319-backingalignedrect?language=objc"
+    },
+    {
+      "Name": "convertRectFromBacking:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419273-convertrectfrombacking?language=objc"
+    },
+    {
+      "Name": "convertRectToBacking:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419260-convertrecttobacking?language=objc"
+    },
+    {
+      "Name": "convertRectToScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419286-convertrecttoscreen?language=objc"
+    },
+    {
+      "Name": "convertRectFromScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419603-convertrectfromscreen?language=objc"
+    },
+    {
+      "Name": "setTitleWithRepresentedFilename:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419192-settitlewithrepresentedfilename?language=objc"
+    },
+    {
+      "Name": "center",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419090-center?language=objc"
+    },
+    {
+      "Name": "performClose:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419288-performclose?language=objc"
+    },
+    {
+      "Name": "close",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419662-close?language=objc"
+    },
+    {
+      "Name": "performMiniaturize:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419749-performminiaturize?language=objc"
+    },
+    {
+      "Name": "miniaturize:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419426-miniaturize?language=objc"
+    },
+    {
+      "Name": "deminiaturize:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419334-deminiaturize?language=objc"
+    },
+    {
+      "Name": "print:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419767-print?language=objc"
+    },
+    {
+      "Name": "dataWithEPSInsideRect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419128-datawithepsinsiderect?language=objc"
+    },
+    {
+      "Name": "dataWithPDFInsideRect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419418-datawithpdfinsiderect?language=objc"
+    },
+    {
+      "Name": "validRequestorForSendType:returnType:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419454-validrequestorforsendtype?language=objc"
+    },
+    {
+      "Name": "updateConstraintsIfNeeded",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526915-updateconstraintsifneeded?language=objc"
+    },
+    {
+      "Name": "layoutIfNeeded",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526910-layoutifneeded?language=objc"
+    },
+    {
+      "Name": "visualizeConstraints:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526997-visualizeconstraints?language=objc"
+    },
+    {
+      "Name": "anchorAttributeForOrientation:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526957-anchorattributefororientation?language=objc"
+    },
+    {
+      "Name": "setAnchorAttribute:forOrientation:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526985-setanchorattribute?language=objc"
+    },
+    {
+      "Name": "initWithWindowRef:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419446-initwithwindowref?language=objc"
+    },
+    {
+      "Name": "setIsMiniaturized:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449566-setisminiaturized?language=objc"
+    },
+    {
+      "Name": "setIsVisible:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449570-setisvisible?language=objc"
+    },
+    {
+      "Name": "setIsZoomed:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449589-setiszoomed?language=objc"
+    },
+    {
+      "Name": "handleCloseScriptCommand:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449581-handleclosescriptcommand?language=objc"
+    },
+    {
+      "Name": "handlePrintScriptCommand:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449585-handleprintscriptcommand?language=objc"
+    },
+    {
+      "Name": "handleSaveScriptCommand:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449591-handlesavescriptcommand?language=objc"
+    },
+    {
+      "Name": "canRepresentDisplayGamut:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2138278-canrepresentdisplaygamut?language=objc"
+    },
+    {
+      "Name": "convertPointFromScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2967180-convertpointfromscreen?language=objc"
+    },
+    {
+      "Name": "convertPointToScreen:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2967182-convertpointtoscreen?language=objc"
+    },
+    {
+      "Name": "convertPointFromBacking:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2967179-convertpointfrombacking?language=objc"
+    },
+    {
+      "Name": "convertPointToBacking:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2967181-convertpointtobacking?language=objc"
+    },
+    {
+      "Name": "mergeAllWindows:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644639-mergeallwindows?language=objc"
+    },
+    {
+      "Name": "setDynamicDepthLimit:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419473-setdynamicdepthlimit?language=objc"
+    },
+    {
+      "Name": "setFrameAutosaveName:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419509-setframeautosavename?language=objc"
+    }
+  ],
+  "TypeMethods": [
+    {
+      "Name": "windowWithContentViewController:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419551-windowwithcontentviewcontroller?language=objc"
+    },
+    {
+      "Name": "windowNumbersWithOptions:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419678-windownumberswithoptions?language=objc"
+    },
+    {
+      "Name": "contentRectForFrameRect:styleMask:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419586-contentrectforframerect?language=objc"
+    },
+    {
+      "Name": "frameRectForContentRect:styleMask:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419372-framerectforcontentrect?language=objc"
+    },
+    {
+      "Name": "minFrameWidthWithTitle:styleMask:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419294-minframewidthwithtitle?language=objc"
+    },
+    {
+      "Name": "removeFrameUsingName:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419313-removeframeusingname?language=objc"
+    },
+    {
+      "Name": "standardWindowButton:forStyleMask:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419173-standardwindowbutton?language=objc"
+    },
+    {
+      "Name": "windowNumberAtPoint:belowWindowWithWindowNumber:",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419210-windownumberatpoint?language=objc"
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "delegate",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419060-delegate?language=objc"
+    },
+    {
+      "Name": "contentViewController",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419615-contentviewcontroller?language=objc"
+    },
+    {
+      "Name": "contentView",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419160-contentview?language=objc"
+    },
+    {
+      "Name": "worksWhenModal",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419220-workswhenmodal?language=objc"
+    },
+    {
+      "Name": "alphaValue",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419186-alphavalue?language=objc"
+    },
+    {
+      "Name": "backgroundColor",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419751-backgroundcolor?language=objc"
+    },
+    {
+      "Name": "colorSpace",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419569-colorspace?language=objc"
+    },
+    {
+      "Name": "canHide",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419725-canhide?language=objc"
+    },
+    {
+      "Name": "onActiveSpace",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419707-onactivespace?language=objc"
+    },
+    {
+      "Name": "hidesOnDeactivate",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419777-hidesondeactivate?language=objc"
+    },
+    {
+      "Name": "collectionBehavior",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419471-collectionbehavior?language=objc"
+    },
+    {
+      "Name": "opaque",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419086-opaque?language=objc"
+    },
+    {
+      "Name": "hasShadow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc"
+    },
+    {
+      "Name": "preventsApplicationTerminationWhenModal",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419743-preventsapplicationterminationwh?language=objc"
+    },
+    {
+      "Name": "defaultDepthLimit",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419049-defaultdepthlimit?language=objc"
+    },
+    {
+      "Name": "windowNumber",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419068-windownumber?language=objc"
+    },
+    {
+      "Name": "deviceDescription",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419741-devicedescription?language=objc"
+    },
+    {
+      "Name": "canBecomeVisibleWithoutLogin",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419179-canbecomevisiblewithoutlogin?language=objc"
+    },
+    {
+      "Name": "sharingType",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419729-sharingtype?language=objc"
+    },
+    {
+      "Name": "backingType",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419599-backingtype?language=objc"
+    },
+    {
+      "Name": "depthLimit",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419613-depthlimit?language=objc"
+    },
+    {
+      "Name": "hasDynamicDepthLimit",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419330-hasdynamicdepthlimit?language=objc"
+    },
+    {
+      "Name": "windowController",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419092-windowcontroller?language=objc"
+    },
+    {
+      "Name": "attachedSheet",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419467-attachedsheet?language=objc"
+    },
+    {
+      "Name": "sheet",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419364-sheet?language=objc"
+    },
+    {
+      "Name": "sheetParent",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419052-sheetparent?language=objc"
+    },
+    {
+      "Name": "sheets",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419765-sheets?language=objc"
+    },
+    {
+      "Name": "frame",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419697-frame?language=objc"
+    },
+    {
+      "Name": "aspectRatio",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419507-aspectratio?language=objc"
+    },
+    {
+      "Name": "minSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419206-minsize?language=objc"
+    },
+    {
+      "Name": "maxSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419595-maxsize?language=objc"
+    },
+    {
+      "Name": "zoomed",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419398-zoomed?language=objc"
+    },
+    {
+      "Name": "resizeFlags",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419302-resizeflags?language=objc"
+    },
+    {
+      "Name": "resizeIncrements",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419390-resizeincrements?language=objc"
+    },
+    {
+      "Name": "preservesContentDuringLiveResize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419588-preservescontentduringliveresize?language=objc"
+    },
+    {
+      "Name": "inLiveResize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419378-inliveresize?language=objc"
+    },
+    {
+      "Name": "contentAspectRatio",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419148-contentaspectratio?language=objc"
+    },
+    {
+      "Name": "contentMinSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419670-contentminsize?language=objc"
+    },
+    {
+      "Name": "contentMaxSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419154-contentmaxsize?language=objc"
+    },
+    {
+      "Name": "contentResizeIncrements",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419649-contentresizeincrements?language=objc"
+    },
+    {
+      "Name": "contentLayoutGuide",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419094-contentlayoutguide?language=objc"
+    },
+    {
+      "Name": "contentLayoutRect",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419124-contentlayoutrect?language=objc"
+    },
+    {
+      "Name": "maxFullScreenContentSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419438-maxfullscreencontentsize?language=objc"
+    },
+    {
+      "Name": "minFullScreenContentSize",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419627-minfullscreencontentsize?language=objc"
+    },
+    {
+      "Name": "level",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419511-level?language=objc"
+    },
+    {
+      "Name": "visible",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419132-visible?language=objc"
+    },
+    {
+      "Name": "occlusionState",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419321-occlusionstate?language=objc"
+    },
+    {
+      "Name": "frameAutosaveName",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419362-frameautosavename?language=objc"
+    },
+    {
+      "Name": "stringWithSavedFrame",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419515-stringwithsavedframe?language=objc"
+    },
+    {
+      "Name": "keyWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419735-keywindow?language=objc"
+    },
+    {
+      "Name": "canBecomeKeyWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419543-canbecomekeywindow?language=objc"
+    },
+    {
+      "Name": "mainWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419130-mainwindow?language=objc"
+    },
+    {
+      "Name": "canBecomeMainWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419162-canbecomemainwindow?language=objc"
+    },
+    {
+      "Name": "toolbar",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419731-toolbar?language=objc"
+    },
+    {
+      "Name": "childWindows",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419236-childwindows?language=objc"
+    },
+    {
+      "Name": "parentWindow",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419695-parentwindow?language=objc"
+    },
+    {
+      "Name": "defaultButtonCell",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419328-defaultbuttoncell?language=objc"
+    },
+    {
+      "Name": "excludedFromWindowsMenu",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419175-excludedfromwindowsmenu?language=objc"
+    },
+    {
+      "Name": "areCursorRectsEnabled",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419668-arecursorrectsenabled?language=objc"
+    },
+    {
+      "Name": "showsToolbarButton",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419196-showstoolbarbutton?language=objc"
+    },
+    {
+      "Name": "titlebarAppearsTransparent",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419167-titlebarappearstransparent?language=objc"
+    },
+    {
+      "Name": "toolbarStyle",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/3608199-toolbarstyle?language=objc"
+    },
+    {
+      "Name": "titlebarSeparatorStyle",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/3622489-titlebarseparatorstyle?language=objc"
+    },
+    {
+      "Name": "titlebarAccessoryViewControllers",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419547-titlebaraccessoryviewcontrollers?language=objc"
+    },
+    {
+      "Name": "allowsAutomaticWindowTabbing",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc"
+    },
+    {
+      "Name": "userTabbingPreference",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1646658-usertabbingpreference?language=objc"
+    },
+    {
+      "Name": "tab",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2870102-tab?language=objc"
+    },
+    {
+      "Name": "tabbingIdentifier",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644704-tabbingidentifier?language=objc"
+    },
+    {
+      "Name": "tabbingMode",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644729-tabbingmode?language=objc"
+    },
+    {
+      "Name": "tabbedWindows",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1792044-tabbedwindows?language=objc"
+    },
+    {
+      "Name": "tabGroup",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2879189-tabgroup?language=objc"
+    },
+    {
+      "Name": "allowsToolTipsWhenApplicationIsInactive",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419138-allowstooltipswhenapplicationisi?language=objc"
+    },
+    {
+      "Name": "currentEvent",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419298-currentevent?language=objc"
+    },
+    {
+      "Name": "initialFirstResponder",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419479-initialfirstresponder?language=objc"
+    },
+    {
+      "Name": "firstResponder",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419440-firstresponder?language=objc"
+    },
+    {
+      "Name": "keyViewSelectionDirection",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419158-keyviewselectiondirection?language=objc"
+    },
+    {
+      "Name": "autorecalculatesKeyViewLoop",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419214-autorecalculateskeyviewloop?language=objc"
+    },
+    {
+      "Name": "acceptsMouseMovedEvents",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419340-acceptsmousemovedevents?language=objc"
+    },
+    {
+      "Name": "ignoresMouseEvents",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419354-ignoresmouseevents?language=objc"
+    },
+    {
+      "Name": "mouseLocationOutsideOfEventStream",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419280-mouselocationoutsideofeventstrea?language=objc"
+    },
+    {
+      "Name": "restorable",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526255-restorable?language=objc"
+    },
+    {
+      "Name": "restorationClass",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1526241-restorationclass?language=objc"
+    },
+    {
+      "Name": "viewsNeedDisplay",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419609-viewsneeddisplay?language=objc"
+    },
+    {
+      "Name": "allowsConcurrentViewDrawing",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419300-allowsconcurrentviewdrawing?language=objc"
+    },
+    {
+      "Name": "animationBehavior",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419763-animationbehavior?language=objc"
+    },
+    {
+      "Name": "documentEdited",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419311-documentedited?language=objc"
+    },
+    {
+      "Name": "backingScaleFactor",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419459-backingscalefactor?language=objc"
+    },
+    {
+      "Name": "title",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419404-title?language=objc"
+    },
+    {
+      "Name": "subtitle",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/3608198-subtitle?language=objc"
+    },
+    {
+      "Name": "titleVisibility",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419635-titlevisibility?language=objc"
+    },
+    {
+      "Name": "representedFilename",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419631-representedfilename?language=objc"
+    },
+    {
+      "Name": "representedURL",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419066-representedurl?language=objc"
+    },
+    {
+      "Name": "screen",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419232-screen?language=objc"
+    },
+    {
+      "Name": "deepestScreen",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419080-deepestscreen?language=objc"
+    },
+    {
+      "Name": "displaysWhenScreenProfileChanges",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419430-displayswhenscreenprofilechanges?language=objc"
+    },
+    {
+      "Name": "movableByWindowBackground",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419072-movablebywindowbackground?language=objc"
+    },
+    {
+      "Name": "movable",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419579-movable?language=objc"
+    },
+    {
+      "Name": "releasedWhenClosed",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419062-releasedwhenclosed?language=objc"
+    },
+    {
+      "Name": "miniaturized",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419699-miniaturized?language=objc"
+    },
+    {
+      "Name": "miniwindowImage",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419185-miniwindowimage?language=objc"
+    },
+    {
+      "Name": "miniwindowTitle",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419571-miniwindowtitle?language=objc"
+    },
+    {
+      "Name": "dockTile",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419088-docktile?language=objc"
+    },
+    {
+      "Name": "windowRef",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419485-windowref?language=objc"
+    },
+    {
+      "Name": "hasCloseBox",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449574-hasclosebox?language=objc"
+    },
+    {
+      "Name": "hasTitleBar",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449568-hastitlebar?language=objc"
+    },
+    {
+      "Name": "orderedIndex",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449577-orderedindex?language=objc"
+    },
+    {
+      "Name": "appearanceSource",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/2998855-appearancesource?language=objc"
+    },
+    {
+      "Name": "floatingPanel",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449579-floatingpanel?language=objc"
+    },
+    {
+      "Name": "miniaturizable",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449583-miniaturizable?language=objc"
+    },
+    {
+      "Name": "modalPanel",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449576-modalpanel?language=objc"
+    },
+    {
+      "Name": "resizable",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449572-resizable?language=objc"
+    },
+    {
+      "Name": "styleMask",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1419078-stylemask?language=objc"
+    },
+    {
+      "Name": "windowTitlebarLayoutDirection",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1644535-windowtitlebarlayoutdirection?language=objc"
+    },
+    {
+      "Name": "zoomable",
+      "URL": "https://developer.apple.com/documentation/appkit/nswindow/1449587-zoomable?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "AppKit"
+  ],
+  "Platforms": [
+    "macOS 10.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/appkit/nswindow?language=objc"
+}
