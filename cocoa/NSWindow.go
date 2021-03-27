@@ -155,7 +155,7 @@ func (w NSWindow) SetCollectionBehavior(collectionBehavior int) {
 // SetHasShadow sets a Boolean value that indicates whether the window has a shadow.
 // https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
 func (w NSWindow) SetHasShadow(b bool) {
-	w.Set("setHasShadow:", b)
+	w.Set("hasShadow:", b)
 }
 
 // HasShadow returns a Boolean value that indicates whether the window has a shadow.
