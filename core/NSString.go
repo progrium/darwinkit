@@ -15,11 +15,11 @@ type NSString struct {
 	objc.Object
 }
 
-var NSString_ = objc.Get("NSString")
+var nsString = objc.Get("NSString")
 
 func NSString_FromString(str string) NSString {
 	hdrp := (*reflect.StringHeader)(unsafe.Pointer(&str))
-	obj := NSString_.Alloc().Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
+	obj := nsString.Alloc().Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
 	return NSString_FromObject(obj)
 }
 

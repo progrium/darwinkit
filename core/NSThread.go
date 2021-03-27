@@ -6,8 +6,8 @@ type NSThread struct {
 	objc.Object
 }
 
-var NSThread_ = objc.Get("NSThread")
+var nsThread = objc.Get("NSThread")
 
 func NSThread_IsMainThread() bool {
-	return NSThread_.Send("isMainThread") != nil
+	return nsThread.Send("isMainThread") != nil
 }

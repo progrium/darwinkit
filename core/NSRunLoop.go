@@ -6,14 +6,14 @@ type NSRunLoop struct {
 	objc.Object
 }
 
-var NSRunLoop_ = objc.Get("NSRunLoop")
+var nsRunLoop = objc.Get("NSRunLoop")
 
 func NSRunLoop_Current() NSRunLoop {
-	return NSRunLoop{NSRunLoop_.Send("currentRunLoop")}
+	return NSRunLoop{nsRunLoop.Send("currentRunLoop")}
 }
 
 func NSRunLoop_Main() NSRunLoop {
-	return NSRunLoop{NSRunLoop_.Send("mainRunLoop")}
+	return NSRunLoop{nsRunLoop.Send("mainRunLoop")}
 }
 
 func (rl NSRunLoop) Run() {

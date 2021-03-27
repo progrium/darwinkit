@@ -28,14 +28,14 @@ type NSApplication struct {
 	objc.Object
 }
 
-var NSApplication_ = objc.Get("NSApplication")
+var nsApplication = objc.Get("NSApplication")
 
 func NSApplication_New() NSApplication {
-	return NSApplication{NSApplication_.Alloc().Init()}
+	return NSApplication{nsApplication.Alloc().Init()}
 }
 
 func NSApp() NSApplication {
-	return NSApplication{NSApplication_.Send("sharedApplication")}
+	return NSApplication{nsApplication.Send("sharedApplication")}
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {

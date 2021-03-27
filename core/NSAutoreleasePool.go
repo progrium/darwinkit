@@ -6,8 +6,8 @@ type NSAutoreleasePool struct {
 	objc.Object
 }
 
-var NSAutoreleasePool_ = objc.Get("NSAutoreleasePool")
+var nsAutoreleasePool = objc.Get("NSAutoreleasePool")
 
 func NSAutoreleasePool_New() NSAutoreleasePool {
-	return NSAutoreleasePool{NSAutoreleasePool_.Alloc().Init()}
+	return NSAutoreleasePool{nsAutoreleasePool.Alloc().Init()}
 }

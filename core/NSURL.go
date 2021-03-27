@@ -8,8 +8,8 @@ type NSURL struct {
 	objc.Object
 }
 
-var NSURL_ = objc.Get("NSURL")
+var nsURL = objc.Get("NSURL")
 
 func NSURL_Init(url string) NSURL {
-	return NSURL{NSURL_.Send("URLWithString:", NSString_FromString(url))}
+	return NSURL{nsURL.Send("URLWithString:", NSString_FromString(url))}
 }

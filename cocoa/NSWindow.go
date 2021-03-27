@@ -47,18 +47,18 @@ type NSWindow struct {
 	objc.Object
 }
 
-var NSWindow_ = objc.Get("NSWindow")
+var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow{NSWindow_.Alloc().Init()}
+	return NSWindow{nsWindow.Alloc().Init()}
 }
 
 func NSWindow_WithContentViewController(controller objc.Object) NSWindow {
-	return NSWindow{NSWindow_.Send("windowWithContentViewController:", controller)}
+	return NSWindow{nsWindow.Send("windowWithContentViewController:", controller)}
 }
 
 func NSWindow_Init(rect core.NSRect, windowStyle core.NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
-	obj := NSWindow_.Alloc().
+	obj := nsWindow.Alloc().
 		Send("initWithContentRect:styleMask:backing:defer:",
 			rect, windowStyle, bufferingType, deferCreation)
 	return NSWindow{obj}
