@@ -142,10 +142,6 @@ func (w NSWindow) TitleVisibility() int64 {
 	return w.Get("titleVisibility").Int()
 }
 
-func (w NSWindow) SetHasShadow(b bool) {
-	w.Set("hasShadow:", b)
-}
-
 func (w NSWindow) SetOpaque(b bool) {
 	w.Set("opaque:", b)
 }
@@ -189,6 +185,37 @@ func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
 func (w NSWindow) CollectionBehavior() int64 {
 	return w.Get("collectionBehavior").Int()
 }
+
 func (w NSWindow) SetCollectionBehavior(collectionBehavior int) {
 	w.Set("collectionBehavior:", collectionBehavior)
+}
+
+// SetHasShadow sets a Boolean value that indicates whether the window has a shadow.
+// https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
+func (w NSWindow) SetHasShadow(b bool) {
+	w.Set("setHasShadow:", b)
+}
+
+// HasShadow returns a Boolean value that indicates whether the window has a shadow.
+// https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
+func (w NSWindow) HasShadow() bool {
+	return w.Get("hasShadow").Bool()
+}
+
+// OrderOut removes the window from the screen list, which hides the window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419660-orderout?language=objc
+func (w NSWindow) OrderOut(sender objc.Object) {
+	w.Send("orderOut:", sender)
+}
+
+// OrderFront moves the window to the front of its level in the screen list, without changing either the key window or the main window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419495-orderfront?language=objc
+func (w NSWindow) OrderFront(sender objc.Object) {
+	w.Send("orderFront:", sender)
+}
+
+// OrderBack moves the window to the back of its level in the screen list, without changing either the key window or the main window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419204-orderback?language=objc
+func (w NSWindow) OrderBack(sender objc.Object) {
+	w.Send("orderBack:", sender)
 }
