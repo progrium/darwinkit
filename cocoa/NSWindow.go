@@ -1,47 +1,9 @@
 package cocoa
 
-/*
-#cgo CFLAGS: -x objective-c
-#cgo LDFLAGS: -lobjc -framework Foundation
-#define OBJC_OLD_DISPATCH_PROTOTYPES 1
-#include <objc/runtime.h>
-#include <objc/message.h>
-
-
-*/
-import "C"
-
 import (
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
-
-const (
-	NSBorderlessWindowMask          = 0
-	NSTitledWindowMask              = 1 << 0
-	NSClosableWindowMask            = 1 << 1
-	NSMiniaturizableWindowMask      = 1 << 2
-	NSResizableWindowMask           = 1 << 3
-	NSTexturedBackgroundWindowMask  = 1 << 8
-	NSWindowStyleMaskFullScreen     = 1 << 14
-	NSFullSizeContentViewWindowMask = 32768
-
-	NSWindowTitleVisible = 0
-	NSWindowTitleHidden  = 1
-
-	NSWindowAbove = 1
-	NSWindowBelow = -1
-	NSWindowOut   = 0
-
-	NSBackingStoreRetained    = 0
-	NSBackingStoreNonretained = 1
-	NSBackingStoreBuffered    = 2
-
-	NSFloatingWindowLevel = 3
-	NSMainMenuWindowLevel = 24
-)
-
-type NSBackingStoreType uintptr
 
 type NSWindow struct {
 	objc.Object
