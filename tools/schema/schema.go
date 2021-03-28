@@ -60,14 +60,14 @@ func main() {
 		chromedp.Navigate(class.URL),
 		chromedp.WaitVisible(`main`),
 		chromedp.Text(`main div.topictitle h1.title`, &class.Name),
-		chromedp.Text(`main div.row.container div.col.description div.abstract.content`, &class.Description),
-		textList(`main div.col.summary div.frameworks ul li span`, &class.Frameworks),
-		textList(`main div.col.summary div.availability ul li span`, &class.Platforms),
+		chromedp.Text(`main div.container div.description div.abstract.content`, &class.Description),
+		textList(`main div.summary div.frameworks ul li span`, &class.Frameworks),
+		textList(`main div.summary div.availability ul li span`, &class.Platforms),
 	); err != nil {
 		log.Fatal(err)
 	}
 
-	topics := "#topics div.contenttable-section div.section-content div.topic a.link"
+	topics := "#topics div.contenttable-section div.section-content div.topic a.link:not(.deprecated)"
 	for _, n := range nodes(ctx, topics) {
 		var t Topic
 		var ok bool
@@ -79,7 +79,10 @@ func main() {
 		}
 
 		// Handle related consts/enums later
-		if strings.HasPrefix(t.Name, "NS") {
+		if strings.HasPrefix(t.Name, "NS") ||
+			strings.HasPrefix(t.Name, "CG") ||
+			strings.HasPrefix(t.Name, "UI") ||
+			strings.HasPrefix(t.Name, "WK") {
 			continue
 		}
 

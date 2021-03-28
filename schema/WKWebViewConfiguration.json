@@ -1,0 +1,90 @@
+{
+  "Name": "WKWebViewConfiguration",
+  "Description": "A collection of properties that you use to initialize a web view.",
+  "InstanceMethods": [
+    {
+      "Name": "setURLSchemeHandler:forURLScheme:",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc"
+    },
+    {
+      "Name": "urlSchemeHandlerForURLScheme:",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc"
+    }
+  ],
+  "TypeMethods": null,
+  "Properties": [
+    {
+      "Name": "websiteDataStore",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc"
+    },
+    {
+      "Name": "userContentController",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395668-usercontentcontroller?language=objc"
+    },
+    {
+      "Name": "processPool",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395659-processpool?language=objc"
+    },
+    {
+      "Name": "applicationNameForUserAgent",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc"
+    },
+    {
+      "Name": "limitsNavigationsToAppBoundDomains",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc"
+    },
+    {
+      "Name": "preferences",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc"
+    },
+    {
+      "Name": "defaultWebpagePreferences",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3194420-defaultwebpagepreferences?language=objc"
+    },
+    {
+      "Name": "ignoresViewportScaleLimits",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits?language=objc"
+    },
+    {
+      "Name": "suppressesIncrementalRendering",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering?language=objc"
+    },
+    {
+      "Name": "allowsInlineMediaPlayback",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback?language=objc"
+    },
+    {
+      "Name": "allowsAirPlayForMediaPlayback",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback?language=objc"
+    },
+    {
+      "Name": "allowsPictureInPictureMediaPlayback",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb?language=objc"
+    },
+    {
+      "Name": "mediaTypesRequiringUserActionForPlayback",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor?language=objc"
+    },
+    {
+      "Name": "dataDetectorTypes",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes?language=objc"
+    },
+    {
+      "Name": "selectionGranularity",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614756-selectiongranularity?language=objc"
+    },
+    {
+      "Name": "userInterfaceDirectionPolicy",
+      "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "WebKit"
+  ],
+  "Platforms": [
+    "iOS 8.0+",
+    "macOS 10.10+",
+    "Mac Catalyst 13.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration?language=objc"
+}

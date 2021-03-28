@@ -1,0 +1,36 @@
+{
+  "Name": "NSStatusBar",
+  "Description": "An object that manages a collection of status items displayed within the system-wide menu bar.",
+  "InstanceMethods": [
+    {
+      "Name": "statusItemWithLength:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar/1532895-statusitemwithlength?language=objc"
+    },
+    {
+      "Name": "removeStatusItem:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar/1530377-removestatusitem?language=objc"
+    }
+  ],
+  "TypeMethods": null,
+  "Properties": [
+    {
+      "Name": "systemStatusBar",
+      "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc"
+    },
+    {
+      "Name": "vertical",
+      "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar/1530580-vertical?language=objc"
+    },
+    {
+      "Name": "thickness",
+      "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar/1534591-thickness?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "AppKit"
+  ],
+  "Platforms": [
+    "macOS 10.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/appkit/nsstatusbar?language=objc"
+}
