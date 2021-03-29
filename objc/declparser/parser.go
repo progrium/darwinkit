@@ -22,9 +22,11 @@ type InterfaceDecl struct {
 type PropertyDecl struct {
 	TypeProperty bool // class property
 	Readonly     bool
-	Strong       bool
+	Weak         bool
+	Nonatomic    bool
 	Copy         bool
 	Getter       string
+	Setter       string
 	Name         string
 	Type         TypeInfo
 }
@@ -149,18 +151,39 @@ func (p *Parser) parseProperty() (*PropertyDecl, error) {
 		for {
 			tok, lit = p.scan()
 			if tok != IDENT {
-				return nil, fmt.Errorf("found %q, expected prop identifier", lit)
+				return nil, fmt.Errorf("found %q, expected property attribute", lit)
 			}
 
 			switch lit {
+			case "readwrite":
+				// readwrite is opposite of readonly,
+				// this is the default, so no-op
 			case "readonly":
 				decl.Readonly = true
 			case "class":
 				decl.TypeProperty = true
 			case "strong":
-				decl.Strong = true
+				// strong is opposite of weak,
+				// this is the default, so no-op
+			case "weak":
+				decl.Weak = true
 			case "copy":
 				decl.Copy = true
+			case "assign":
+				// another default, no-ops
+			case "nonatomic":
+				decl.Nonatomic = true
+			case "setter":
+				tok, lit = p.scan()
+				if tok != EQUAL {
+					return nil, fmt.Errorf("found %q, expected =", lit)
+				}
+
+				tok, lit = p.scan()
+				if tok != IDENT {
+					return nil, fmt.Errorf("found %q, expected setter identifier", lit)
+				}
+				decl.Setter = lit
 			case "getter":
 				tok, lit = p.scan()
 				if tok != EQUAL {
@@ -173,7 +196,7 @@ func (p *Parser) parseProperty() (*PropertyDecl, error) {
 				}
 				decl.Getter = lit
 			default:
-				return nil, fmt.Errorf("found %q, unrecognized prop identifier", lit)
+				return nil, fmt.Errorf("found %q, unrecognized property attribute", lit)
 			}
 
 			tok, lit = p.scan()
