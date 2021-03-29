@@ -14,7 +14,7 @@ import (
 )
 
 type Menu struct {
-	*resource.Handle
+	*resource.Handle /// men:
 
 	Icon    string
 	Title   string
@@ -71,7 +71,7 @@ func ExportFunc(fn interface{}) *rpc_FuncExport {
 }
 
 type MenuItem struct {
-	*resource.Handle
+	*resource.Handle // mit:
 
 	Title     string
 	Icon      string

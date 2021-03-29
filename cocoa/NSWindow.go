@@ -1,68 +1,26 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package cocoa
-
-/*
-#cgo CFLAGS: -x objective-c
-#cgo LDFLAGS: -lobjc -framework Foundation
-#define OBJC_OLD_DISPATCH_PROTOTYPES 1
-#include <objc/runtime.h>
-#include <objc/message.h>
-
-
-*/
-import "C"
 
 import (
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
 
-const (
-	NSBorderlessWindowMask          = 0
-	NSTitledWindowMask              = 1 << 0
-	NSClosableWindowMask            = 1 << 1
-	NSMiniaturizableWindowMask      = 1 << 2
-	NSResizableWindowMask           = 1 << 3
-	NSTexturedBackgroundWindowMask  = 1 << 8
-	NSWindowStyleMaskFullScreen     = 1 << 14
-	NSFullSizeContentViewWindowMask = 32768
-
-	NSWindowTitleVisible = 0
-	NSWindowTitleHidden  = 1
-
-	NSWindowAbove = 1
-	NSWindowBelow = -1
-	NSWindowOut   = 0
-
-	NSBackingStoreRetained    = 0
-	NSBackingStoreNonretained = 1
-	NSBackingStoreBuffered    = 2
-
-	NSFloatingWindowLevel = 3
-	NSMainMenuWindowLevel = 24
-)
-
-type NSBackingStoreType uintptr
-
 type NSWindow struct {
 	objc.Object
 }
 
-var NSWindow_ = objc.Get("NSWindow")
+var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow{NSWindow_.Alloc().Init()}
+	return NSWindow{nsWindow.Alloc().Init()}
 }
 
 func NSWindow_WithContentViewController(controller objc.Object) NSWindow {
-	return NSWindow{NSWindow_.Send("windowWithContentViewController:", controller)}
+	return NSWindow{nsWindow.Send("windowWithContentViewController:", controller)}
 }
 
 func NSWindow_Init(rect core.NSRect, windowStyle core.NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
-	obj := NSWindow_.Alloc().
+	obj := nsWindow.Alloc().
 		Send("initWithContentRect:styleMask:backing:defer:",
 			rect, windowStyle, bufferingType, deferCreation)
 	return NSWindow{obj}
@@ -189,6 +147,37 @@ func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
 func (w NSWindow) CollectionBehavior() int64 {
 	return w.Get("collectionBehavior").Int()
 }
+
 func (w NSWindow) SetCollectionBehavior(collectionBehavior int) {
 	w.Set("collectionBehavior:", collectionBehavior)
+}
+
+// SetHasShadow sets a Boolean value that indicates whether the window has a shadow.
+// https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
+func (w NSWindow) SetHasShadow(b bool) {
+	w.Set("hasShadow:", b)
+}
+
+// HasShadow returns a Boolean value that indicates whether the window has a shadow.
+// https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
+func (w NSWindow) HasShadow() bool {
+	return w.Get("hasShadow").Bool()
+}
+
+// OrderOut removes the window from the screen list, which hides the window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419660-orderout?language=objc
+func (w NSWindow) OrderOut(sender objc.Object) {
+	w.Send("orderOut:", sender)
+}
+
+// OrderFront moves the window to the front of its level in the screen list, without changing either the key window or the main window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419495-orderfront?language=objc
+func (w NSWindow) OrderFront(sender objc.Object) {
+	w.Send("orderFront:", sender)
+}
+
+// OrderBack moves the window to the back of its level in the screen list, without changing either the key window or the main window.
+// https://developer.apple.com/documentation/appkit/nswindow/1419204-orderback?language=objc
+func (w NSWindow) OrderBack(sender objc.Object) {
+	w.Send("orderBack:", sender)
 }

@@ -1,7 +1,3 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package core
 
 import (
@@ -21,7 +17,7 @@ type NSString struct {
 	objc.Object
 }
 
-var NSString_ = objc.Get("NSString")
+var nsString = objc.Get("NSString")
 
 // NSString_FromString returns an initialized NSString object containing a given number of bytes
 // from a given buffer of bytes interpreted in a given encoding.
@@ -30,7 +26,7 @@ var NSString_ = objc.Get("NSString")
 // https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=occ
 func NSString_FromString(str string) NSString {
 	hdrp := (*reflect.StringHeader)(unsafe.Pointer(&str))
-	obj := NSString_.Alloc().Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
+	obj := nsString.Alloc().Send("initWithBytes:length:encoding:", hdrp.Data, hdrp.Len, NSUTF8StringEncoding)
 	return NSString_FromObject(obj)
 }
 

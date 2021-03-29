@@ -11,7 +11,7 @@ import (
 )
 
 type Window struct {
-	*resource.Handle
+	*resource.Handle // win:
 
 	Title        string
 	Position     Point

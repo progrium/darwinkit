@@ -81,7 +81,7 @@ type NSPasteboard struct {
 	objc.Object
 }
 
-var nsPasteboard = NSPasteboard{objc.Get("NSPasteboard")}
+var nsPasteboard = objc.Get("NSPasteboard")
 
 // NSPasteboard_GeneralPasteboard is the shared pasteboard object to use for general content.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc

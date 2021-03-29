@@ -13,6 +13,10 @@ topframe: ## build and run topframe example
 	$(GOEXE) run ./examples/_topframe
 .PHONY: topframe
 
+notification: ## build and run notification example
+	$(GOEXE) run ./examples/notification
+.PHONY: notification
+
 pomodoro: ## build and run pomodoro example
 	$(GOEXE) run ./examples/pomodoro
 .PHONY: pomodoro

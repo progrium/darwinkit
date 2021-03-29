@@ -18,9 +18,12 @@ import (
 )
 
 var bridge *Bridge
-var initTypes = map[string]reflect.Type{
-	"Window":    reflect.TypeOf(Window{}),
-	"Indicator": reflect.TypeOf(Indicator{}),
+
+func init() {
+	fmt.Fprintln(os.Stderr, "registering...")
+	resource.RegisterType("win", reflect.TypeOf(Window{}))
+	resource.RegisterType("ind", reflect.TypeOf(Indicator{}))
+	resource.RegisterType("mnu", reflect.TypeOf(Menu{}))
 }
 
 func Sync(p *rpc.Peer, v interface{}) error {
@@ -28,10 +31,14 @@ func Sync(p *rpc.Peer, v interface{}) error {
 		return fmt.Errorf("not a resource")
 	}
 	handle := resource.GetHandle(v)
+	fmt.Println("get handle:", handle.Handle())
 	if handle == nil {
+		// TODO: use proper registered prefix
 		handle = resource.NewHandle(reflect.ValueOf(v).Type().Elem().Name())
+		fmt.Println("new handle:", handle.Handle())
 	}
 	var h string
+	fmt.Println("sync:", handle.Handle())
 	_, err := p.Call("Apply", []interface{}{*handle, v}, &h)
 	resource.SetHandle(v, h)
 	return err
@@ -42,6 +49,7 @@ func Release(p *rpc.Peer, v interface{}) error {
 		return fmt.Errorf("not a resource")
 	}
 	handle := resource.GetHandle(v)
+	fmt.Println("release:", handle.Handle())
 	if handle == nil {
 		return fmt.Errorf("unable to release an uninitialized resource")
 	}
@@ -75,13 +83,13 @@ func Run() {
 // 	return fmt.Sprintf("%#v", state.StatusItems[0].Menu)
 // }
 
-func newResource(h resource.Handle) (reflect.Value, error) {
-	t, found := initTypes[h.Type()]
-	if !found {
-		return reflect.Value{}, fmt.Errorf("type not found")
-	}
-	return reflect.New(t), nil
-}
+// func newResource(h resource.Handle) (reflect.Value, error) {
+// 	t, found := initTypes[h.Type()]
+// 	if !found {
+// 		return reflect.Value{}, fmt.Errorf("type not found")
+// 	}
+// 	return reflect.New(t), nil
+// }
 
 func Invoke(ptr string) error {
 	// todo args
@@ -128,6 +136,7 @@ func (s *Bridge) Release(h resource.Handle) (err error) {
 func (s *Bridge) Apply(h string, patch map[string]interface{}, call *rpc.Call) (resource.Handle, error) {
 	s.Lock()
 	handle := resource.Handle(h)
+	fmt.Fprintln(os.Stderr, "handle:", handle, handle.Prefix(), handle.ID())
 
 	Walk(patch, func(v, p reflect.Value, path []string) error {
 		if path[len(path)-1] == "$fnptr" {
@@ -141,11 +150,11 @@ func (s *Bridge) Apply(h string, patch map[string]interface{}, call *rpc.Call) (
 		return handle, err
 	}
 	if !v.IsValid() {
-		var err error
-		v, err = newResource(handle)
-		if err != nil {
-			return handle, err
-		}
+		// var err error
+		v = reflect.ValueOf(resource.New(handle.Prefix()))
+		// if err != nil {
+		// 	return handle, err
+		// }
 		resource.SetHandle(v.Interface(), handle.Handle())
 		delete(patch, "Handle")
 	}
