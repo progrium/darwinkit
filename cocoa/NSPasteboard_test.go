@@ -7,10 +7,9 @@ import (
 	"log"
 )
 
-func ExampleNSPasteboard(){
+func ExampleNSPasteboard() {
 	// get general pasteboard
 	gp := cocoa.NSPasteboard_GeneralPasteboard()
-
 
 	// clear pasteboard and write to pasteboard
 	gp.ClearContents()
@@ -35,7 +34,7 @@ func ExampleNSPasteboard_DataForType() {
 	data := gp.DataForType(pbType)
 	var bs []byte
 	// turn into go bytes
-	bs = data.GoBytes()
+	bs = data.Bytes()
 
 	f, err := ioutil.TempFile("", "out-img")
 	if err != nil {
