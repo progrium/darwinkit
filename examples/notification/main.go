@@ -21,8 +21,8 @@ var NSUserNotificationCenter_ = objc.Get("NSUserNotificationCenter")
 func main() {
 	app := cocoa.NSApp_WithDidLaunch(func(_ objc.Object) {
 		notification := NSUserNotification{NSUserNotification_.Alloc().Init()}
-		notification.Set("title:", core.NSString_FromString("Hello, world!"))
-		notification.Set("informativeText:", core.NSString_FromString("More text"))
+		notification.Set("title:", core.String("Hello, world!"))
+		notification.Set("informativeText:", core.String("More text"))
 
 		center := NSUserNotificationCenter{NSUserNotificationCenter_.Send("defaultUserNotificationCenter")}
 		center.Send("deliverNotification:", notification)
@@ -32,7 +32,7 @@ func main() {
 	nsbundle := cocoa.NSBundle_Main().Class()
 
 	nsbundle.AddMethod("__bundleIdentifier", func(_ objc.Object) objc.Object {
-		return core.NSString_FromString("com.example.fake")
+		return core.String("com.example.fake")
 	})
 	nsbundle.Swizzle("bundleIdentifier", "__bundleIdentifier")
 
