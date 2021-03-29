@@ -76,12 +76,12 @@ const (
 	NSPasteboardTypeTIFF = NSPasteboardType("public.tiff")
 )
 
+// Wrapper for NSPasteboard
+// https://developer.apple.com/documentation/appkit/nspasteboard?language=objc
 type NSPasteboard struct {
 	objc.Object
 }
 
-// Wrapper for NSPasteboard
-// https://developer.apple.com/documentation/appkit/nspasteboard?language=objc
 var NSPasteboard_ = NSPasteboard{objc.Get("NSPasteboard")}
 
 // NSPasteboard_GeneralPasteboard is the shared pasteboard object to use for general content.
@@ -99,20 +99,20 @@ func (pb NSPasteboard) ClearContents() {
 // SetStringForType sets the given string as the representation for the specified type for the first item on the receiver.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1528225-setstring?language=objc
 func (pb NSPasteboard) SetStringForType(s string, t NSPasteboardType) {
-	pb.Send("setString:forType:", core.NSString_FromString(s),  core.NSString_FromString(string(t)))
+	pb.Send("setString:forType:", core.String(s), core.String(string(t)))
 }
 
 // StringForType returns a concatenation of the strings for the specified type from all the items in the receiver that contain the type.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1533566-stringfortype?language=objc
 func (pb NSPasteboard) StringForType(t NSPasteboardType) string {
-	return pb.Send("stringForType:",  core.NSString_FromString(string(t))).String()
+	return pb.Send("stringForType:", core.String(string(t))).String()
 }
 
 // DataForType returns the data for the specified type from the first item in the receiver that contains the type.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1531810-datafortype?language=objc
 func (pb NSPasteboard) DataForType(t NSPasteboardType) core.NSData {
 	return core.NSData{
-		Object: pb.Send("dataForType:",  core.NSString_FromString(string(t))),
+		Object: pb.Send("dataForType:", core.String(string(t))),
 	}
 }
 
@@ -137,12 +137,12 @@ func (pb NSPasteboard) Types() []NSPasteboardType {
 func (pb NSPasteboard) AvailableTypeFromArray(types []NSPasteboardType) NSPasteboardType {
 	strs := make([]objc.Object, len(types))
 	for i, t := range types {
-		strs[i] = core.NSString_FromString(string(t))
+		strs[i] = core.String(string(t))
 	}
 	arr := core.NSArray_WithObjects(strs...)
 	o := pb.Send("availableTypeFromArray:", arr)
 	pbType := NSPasteboardType(o.String())
-	if pbType == "(nil)"{
+	if pbType == "(nil)" {
 		return ""
 	}
 	return pbType
