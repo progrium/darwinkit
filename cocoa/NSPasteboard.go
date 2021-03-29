@@ -81,12 +81,12 @@ type NSPasteboard struct {
 	objc.Object
 }
 
-var NSPasteboard_ = NSPasteboard{objc.Get("NSPasteboard")}
+var nsPasteboard = NSPasteboard{objc.Get("NSPasteboard")}
 
 // NSPasteboard_GeneralPasteboard is the shared pasteboard object to use for general content.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc
 func NSPasteboard_GeneralPasteboard() NSPasteboard {
-	return NSPasteboard{NSPasteboard_.Get("generalPasteboard")}
+	return NSPasteboard{nsPasteboard.Get("generalPasteboard")}
 }
 
 // ClearContents clears the existing contents of the pasteboard.
