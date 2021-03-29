@@ -78,10 +78,10 @@ func main() {
 ![pomodoro gif](https://github.com/progrium/macdriver/blob/main/examples/pomodoro/pomodoro.gif?raw=true)
 
 
-[examples/topframe](https://github.com/progrium/macdriver/blob/main/examples/_topframe/main.go#L1) - A non-interactive, always-on-top webview with transparent background in 120 lines so you can draw on your
-screen with HTML/JS: 
+[examples/topframe](https://github.com/progrium/macdriver/blob/main/examples/_topframe/main.go#L1) - An always-on-top webview with transparent background in 120 lines [requires Go 1.16+]: 
 ![topframe screenshot](https://pbs.twimg.com/media/EqhYDmlW8AEBC6-?format=jpg&name=large)
-> Note: topframe currently relies on [embed](https://github.com/golang/go/issues/41191) which you can use with go [1.16beta](https://golang.org/dl/#unstable)
+
+**NEW**: See [progrium/topframe](https://github.com/progrium/topframe) for a more fully-featured standalone version!
 
 ## 3. Bridge System
 Lastly, a common case for this toolkit is not just building full native apps, but integrating Go applications
