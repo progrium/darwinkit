@@ -3,7 +3,6 @@ package cocoa
 import (
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
-	"log"
 )
 
 // The supported pasteboard types.
@@ -121,7 +120,6 @@ func (pb NSPasteboard) DataForType(t NSPasteboardType) core.NSData {
 func (pb NSPasteboard) Types() []NSPasteboardType {
 
 	o := pb.Get("types")
-	log.Println(o.Pointer())
 	arr := core.NSArray{o}
 	count := int(arr.Count())
 	types := make([]NSPasteboardType, count)
