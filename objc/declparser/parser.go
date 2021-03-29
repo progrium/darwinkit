@@ -23,6 +23,7 @@ type PropertyDecl struct {
 	TypeProperty bool // class property
 	Readonly     bool
 	Strong       bool
+	Copy         bool
 	Getter       string
 	Name         string
 	Type         TypeInfo
@@ -158,6 +159,8 @@ func (p *Parser) parseProperty() (*PropertyDecl, error) {
 				decl.TypeProperty = true
 			case "strong":
 				decl.Strong = true
+			case "copy":
+				decl.Copy = true
 			case "getter":
 				tok, lit = p.scan()
 				if tok != EQUAL {
