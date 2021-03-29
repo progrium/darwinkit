@@ -67,14 +67,17 @@ func main() {
 		log.Fatal(err)
 	}
 
-	topics := "#topics div.contenttable-section div.section-content div.topic a.link:not(.deprecated)"
+	topics := "#topics div.contenttable-section div.section-content div.topic a.link"
+	if os.Getenv("ALLOW_DEPRECATED") == "" {
+		topics = topics + ":not(.deprecated)"
+	}
 	for _, n := range nodes(ctx, topics) {
 		var t Topic
 		var ok bool
-		if err := chromedp.Run(ctx, chromedp.TextContent(n.FullXPathByID(), &t.Name)); err != nil {
-			log.Fatal(err)
-		}
-		if err := chromedp.Run(ctx, chromedp.AttributeValue(n.FullXPathByID(), "href", &t.URL, &ok)); err != nil {
+		if err := chromedp.Run(ctx,
+			chromedp.TextContent(n.FullXPathByID(), &t.Name),
+			chromedp.AttributeValue(n.FullXPathByID(), "href", &t.URL, &ok),
+		); err != nil {
 			log.Fatal(err)
 		}
 
