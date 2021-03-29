@@ -25,15 +25,10 @@ func (d NSData) Length() uint64 {
 	return d.Get("length").Uint()
 }
 
-// Bytes returns a pointer to the data object's contents.
+// Bytes returns a slice of bytes containing the data object's contents.
 // https://developer.apple.com/documentation/foundation/nsdata/1410616-bytes?language=objc
-func (d NSData) Bytes() uintptr {
-	return d.Get("bytes").Pointer()
-}
-
-// GoBytes is a wrapper method to convert the data to go slice of bytes.
-func (d NSData) GoBytes() []byte  {
-	ptr := d.Bytes();
+func (d NSData) Bytes() []byte {
+	ptr := d.Get("bytes").Pointer()
 	length := d.Length()
 	if length == 0 {
 		return nil
