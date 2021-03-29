@@ -34,3 +34,13 @@ func (a NSArray) ObjectAtIndex(i uint64) objc.Object {
 	return a.Send("objectAtIndex:", i)
 }
 
+// Strings returns the NSArray as slice of string by calling the String Method on each objc.Object.
+func (a NSArray) Strings() []string {
+	count := int(a.Count())
+	ss := make([]string, count)
+	for i := 0; i < count; i++ {
+		o := a.ObjectAtIndex(uint64(i))
+		ss[i] = o.String()
+	}
+	return ss
+}

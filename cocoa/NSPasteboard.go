@@ -118,14 +118,11 @@ func (pb NSPasteboard) DataForType(t NSPasteboardType) core.NSData {
 // Types is an array of the receiver’s supported data types.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1529599-types?language=objc
 func (pb NSPasteboard) Types() []NSPasteboardType {
-
 	o := pb.Get("types")
-	arr := core.NSArray{o}
-	count := int(arr.Count())
-	types := make([]NSPasteboardType, count)
-	for i := 0; i < count; i++ {
-		o := arr.ObjectAtIndex(uint64(i))
-		types[i] = NSPasteboardType(o.String())
+	ss := core.NSArray{o}.Strings()
+	types := make([]NSPasteboardType, len(ss))
+	for i, s := range ss {
+		types[i] = NSPasteboardType(s)
 	}
 	return types
 }
