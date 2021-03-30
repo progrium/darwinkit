@@ -14,9 +14,32 @@ type Statement struct {
 	Interface *InterfaceDecl
 }
 
+func (s Statement) String() string {
+	if s.Method != nil {
+		return s.Method.String()
+	}
+	if s.Property != nil {
+		return s.Property.String()
+	}
+
+	if s.Interface != nil {
+		return s.Interface.String()
+	}
+	return ""
+}
+
 type InterfaceDecl struct {
 	Name      string
 	SuperName string
+}
+
+func (i InterfaceDecl) String() string {
+	b := &strings.Builder{}
+	_, _ = fmt.Fprintf(b, "@interface %s", i.Name)
+	if i.SuperName != "" {
+		_, _ = fmt.Fprintf(b, " : %s", i.SuperName)
+	}
+	return b.String()
 }
 
 type PropertyDecl struct {
@@ -29,6 +52,48 @@ type PropertyDecl struct {
 	Setter       string
 	Name         string
 	Type         TypeInfo
+}
+
+func (p PropertyDecl) String() string {
+	b := &strings.Builder{}
+	b.WriteString("@property")
+	var options []string
+	if p.Setter != ""{
+		options = append(options, fmt.Sprintf("setter=%s", p.Setter))
+	}
+	if p.Getter != "" {
+		options = append(options, fmt.Sprintf("getter=%s", p.Getter))
+	}
+	if p.TypeProperty {
+		options = append(options, "class")
+	}
+	if p.Readonly {
+		options = append(options, "readonly")
+	}
+	if p.Copy {
+		options = append(options, "copy")
+	}
+	if p.Nonatomic {
+		options = append(options, "nonatomic")
+	}
+	if p.Weak {
+		options = append(options, "weak")
+	}
+	if len(options) != 0 {
+		b.WriteString("(")
+		b.WriteString(strings.Join(options, ", "))
+		b.WriteString(")")
+	}
+
+	b.WriteString(" ")
+	b.WriteString(p.Type.Name)
+	b.WriteString(" ")
+	if p.Type.IsPtr {
+		b.WriteString("*")
+	}
+	b.WriteString(p.Name)
+	b.WriteString(";")
+	return b.String()
 }
 
 type MethodDecl struct {
@@ -48,14 +113,53 @@ func (m *MethodDecl) Name() string {
 	return strings.Join(append(m.NameParts, ""), ":")
 }
 
+func (m MethodDecl) String() string {
+	b := &strings.Builder{}
+	if m.TypeMethod {
+		b.WriteString("+")
+	}else {
+		b.WriteString("-")
+	}
+	b.WriteString(" ")
+	b.WriteString(fmt.Sprintf("(%s)", m.ReturnType.String()))
+	b.WriteString(m.NameParts[0])
+	for i, arg := range m.Args {
+		if i != 0 {
+			b.WriteString(" \n")
+			b.WriteString(m.NameParts[i])
+		}
+		b.WriteString(":")
+		b.WriteString(arg.String())
+
+	}
+	b.WriteString(";")
+	return b.String()
+}
+
 type TypeInfo struct {
 	Name  string
 	IsPtr bool
 }
 
+func (t TypeInfo) String() string {
+	b := &strings.Builder{}
+	b.WriteString(t.Name)
+	if t.IsPtr {
+		b.WriteString(" *")
+	}
+	return b.String()
+}
+
 type ArgInfo struct {
 	Name string
 	Type TypeInfo
+}
+
+func (arg ArgInfo) String() string {
+	b := &strings.Builder{}
+	b.WriteString(fmt.Sprintf("(%s)", arg.Type.String()))
+	b.WriteString(arg.Name)
+	return b.String()
 }
 
 type Parser struct {
