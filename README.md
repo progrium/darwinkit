@@ -83,13 +83,6 @@ func main() {
 
 **NEW**: See [progrium/topframe](https://github.com/progrium/topframe) for a more fully-featured standalone version!
 
-## Development Notes
-
-As far as we know, due to limitations of Go modules, we often need to add `replace` directives to our `go.mod` during development
-to work against a local checkout of some dependency (like qtalk). However, these should not be versioned, so for now we encourage
-you to use `git update-index --skip-worktree go.mod` on your checkout if you need to add `replace` directives. When updates need to
-be checked in, `git update-index --no-skip-worktree go.mod` can be used to reverse this on your local repo to commit changes and then re-enable.
-
 #### Generating wrappers
 
 Eventually we can generate most of the wrapper APIs using bridgesupport and/or doc schemas. However, the number of APIs
