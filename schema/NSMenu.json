@@ -1,0 +1,201 @@
+{
+  "Name": "NSMenu",
+  "Description": "An object that manages an app’s menus.",
+  "InstanceMethods": [
+    {
+      "Name": "initWithTitle:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518144-initwithtitle?language=objc"
+    },
+    {
+      "Name": "insertItem:atIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518201-insertitem?language=objc"
+    },
+    {
+      "Name": "insertItemWithTitle:action:keyEquivalent:atIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518146-insertitemwithtitle?language=objc"
+    },
+    {
+      "Name": "addItem:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518176-additem?language=objc"
+    },
+    {
+      "Name": "addItemWithTitle:action:keyEquivalent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518181-additemwithtitle?language=objc"
+    },
+    {
+      "Name": "removeItem:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518257-removeitem?language=objc"
+    },
+    {
+      "Name": "removeItemAtIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518207-removeitematindex?language=objc"
+    },
+    {
+      "Name": "itemChanged:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518154-itemchanged?language=objc"
+    },
+    {
+      "Name": "removeAllItems",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518234-removeallitems?language=objc"
+    },
+    {
+      "Name": "itemWithTag:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518223-itemwithtag?language=objc"
+    },
+    {
+      "Name": "itemWithTitle:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518248-itemwithtitle?language=objc"
+    },
+    {
+      "Name": "itemAtIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518218-itematindex?language=objc"
+    },
+    {
+      "Name": "indexOfItem:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518178-indexofitem?language=objc"
+    },
+    {
+      "Name": "indexOfItemWithTitle:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518237-indexofitemwithtitle?language=objc"
+    },
+    {
+      "Name": "indexOfItemWithTag:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518164-indexofitemwithtag?language=objc"
+    },
+    {
+      "Name": "indexOfItemWithTarget:andAction:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518153-indexofitemwithtarget?language=objc"
+    },
+    {
+      "Name": "indexOfItemWithRepresentedObject:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518175-indexofitemwithrepresentedobject?language=objc"
+    },
+    {
+      "Name": "indexOfItemWithSubmenu:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518216-indexofitemwithsubmenu?language=objc"
+    },
+    {
+      "Name": "setSubmenu:forItem:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518194-setsubmenu?language=objc"
+    },
+    {
+      "Name": "submenuAction:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518179-submenuaction?language=objc"
+    },
+    {
+      "Name": "update",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518249-update?language=objc"
+    },
+    {
+      "Name": "performKeyEquivalent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518198-performkeyequivalent?language=objc"
+    },
+    {
+      "Name": "performActionForItemAtIndex:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518210-performactionforitematindex?language=objc"
+    },
+    {
+      "Name": "popUpMenuPositioningItem:atLocation:inView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518212-popupmenupositioningitem?language=objc"
+    },
+    {
+      "Name": "cancelTracking",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518150-canceltracking?language=objc"
+    },
+    {
+      "Name": "cancelTrackingWithoutAnimation",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518244-canceltrackingwithoutanimation?language=objc"
+    },
+    {
+      "Name": "initWithCoder:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1644714-initwithcoder?language=objc"
+    }
+  ],
+  "TypeMethods": [
+    {
+      "Name": "menuBarVisible",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518236-menubarvisible?language=objc"
+    },
+    {
+      "Name": "setMenuBarVisible:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518200-setmenubarvisible?language=objc"
+    },
+    {
+      "Name": "popUpContextMenu:withEvent:forView:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518170-popupcontextmenu?language=objc"
+    },
+    {
+      "Name": "popUpContextMenu:withEvent:forView:withFont:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518165-popupcontextmenu?language=objc"
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "menuBarHeight",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518141-menubarheight?language=objc"
+    },
+    {
+      "Name": "numberOfItems",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518202-numberofitems?language=objc"
+    },
+    {
+      "Name": "itemArray",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518186-itemarray?language=objc"
+    },
+    {
+      "Name": "supermenu",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518204-supermenu?language=objc"
+    },
+    {
+      "Name": "autoenablesItems",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518227-autoenablesitems?language=objc"
+    },
+    {
+      "Name": "font",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518230-font?language=objc"
+    },
+    {
+      "Name": "title",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518192-title?language=objc"
+    },
+    {
+      "Name": "minimumWidth",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518221-minimumwidth?language=objc"
+    },
+    {
+      "Name": "size",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518185-size?language=objc"
+    },
+    {
+      "Name": "propertiesToUpdate",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518245-propertiestoupdate?language=objc"
+    },
+    {
+      "Name": "allowsContextMenuPlugIns",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518220-allowscontextmenuplugins?language=objc"
+    },
+    {
+      "Name": "showsStateColumn",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518253-showsstatecolumn?language=objc"
+    },
+    {
+      "Name": "highlightedItem",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518222-highlighteditem?language=objc"
+    },
+    {
+      "Name": "userInterfaceLayoutDirection",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518254-userinterfacelayoutdirection?language=objc"
+    },
+    {
+      "Name": "delegate",
+      "URL": "https://developer.apple.com/documentation/appkit/nsmenu/1518169-delegate?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "AppKit"
+  ],
+  "Platforms": [
+    "macOS 10.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/appkit/nsmenu?language=objc"
+}

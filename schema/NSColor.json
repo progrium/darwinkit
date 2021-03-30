@@ -1,0 +1,169 @@
+{
+  "Name": "NSColor",
+  "Description": "An object that stores color data and sometimes opacity (alpha value).",
+  "InstanceMethods": [
+    {
+      "Name": "colorWithSystemEffect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/2998826-colorwithsystemeffect?language=objc"
+    },
+    {
+      "Name": "colorUsingColorSpace:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1527379-colorusingcolorspace?language=objc"
+    },
+    {
+      "Name": "blendedColorWithFraction:ofColor:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1524689-blendedcolorwithfraction?language=objc"
+    },
+    {
+      "Name": "colorWithAlphaComponent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1526906-colorwithalphacomponent?language=objc"
+    },
+    {
+      "Name": "highlightWithLevel:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1533061-highlightwithlevel?language=objc"
+    },
+    {
+      "Name": "shadowWithLevel:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1528523-shadowwithlevel?language=objc"
+    },
+    {
+      "Name": "writeToPasteboard:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1532199-writetopasteboard?language=objc"
+    },
+    {
+      "Name": "getCyan:magenta:yellow:black:alpha:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531348-getcyan?language=objc"
+    },
+    {
+      "Name": "getHue:saturation:brightness:alpha:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1534060-gethue?language=objc"
+    },
+    {
+      "Name": "getRed:green:blue:alpha:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1527848-getred?language=objc"
+    },
+    {
+      "Name": "getWhite:alpha:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1532613-getwhite?language=objc"
+    },
+    {
+      "Name": "getComponents:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1524600-getcomponents?language=objc"
+    },
+    {
+      "Name": "colorUsingType:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/2880320-colorusingtype?language=objc"
+    },
+    {
+      "Name": "drawSwatchInRect:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531770-drawswatchinrect?language=objc"
+    },
+    {
+      "Name": "set",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1527089-set?language=objc"
+    },
+    {
+      "Name": "setFill",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1524755-setfill?language=objc"
+    },
+    {
+      "Name": "setStroke",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531019-setstroke?language=objc"
+    }
+  ],
+  "TypeMethods": [
+    {
+      "Name": "colorFromPasteboard:",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1535057-colorfrompasteboard?language=objc"
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "ignoresAlpha",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1533565-ignoresalpha?language=objc"
+    },
+    {
+      "Name": "numberOfComponents",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531308-numberofcomponents?language=objc"
+    },
+    {
+      "Name": "alphaComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1532504-alphacomponent?language=objc"
+    },
+    {
+      "Name": "whiteComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1534051-whitecomponent?language=objc"
+    },
+    {
+      "Name": "redComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1530483-redcomponent?language=objc"
+    },
+    {
+      "Name": "greenComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1525935-greencomponent?language=objc"
+    },
+    {
+      "Name": "blueComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1534229-bluecomponent?language=objc"
+    },
+    {
+      "Name": "cyanComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1528234-cyancomponent?language=objc"
+    },
+    {
+      "Name": "magentaComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1535560-magentacomponent?language=objc"
+    },
+    {
+      "Name": "yellowComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531965-yellowcomponent?language=objc"
+    },
+    {
+      "Name": "blackComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1526883-blackcomponent?language=objc"
+    },
+    {
+      "Name": "hueComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1531780-huecomponent?language=objc"
+    },
+    {
+      "Name": "saturationComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1526326-saturationcomponent?language=objc"
+    },
+    {
+      "Name": "brightnessComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1529355-brightnesscomponent?language=objc"
+    },
+    {
+      "Name": "catalogNameComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1535443-catalognamecomponent?language=objc"
+    },
+    {
+      "Name": "localizedCatalogNameComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1535351-localizedcatalognamecomponent?language=objc"
+    },
+    {
+      "Name": "colorNameComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1528278-colornamecomponent?language=objc"
+    },
+    {
+      "Name": "localizedColorNameComponent",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1527286-localizedcolornamecomponent?language=objc"
+    },
+    {
+      "Name": "type",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/2880315-type?language=objc"
+    },
+    {
+      "Name": "colorSpace",
+      "URL": "https://developer.apple.com/documentation/appkit/nscolor/1526733-colorspace?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "AppKit"
+  ],
+  "Platforms": [
+    "macOS 10.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/appkit/nscolor?language=objc"
+}

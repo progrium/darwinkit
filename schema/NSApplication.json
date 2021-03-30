@@ -1,0 +1,237 @@
+{
+  "Name": "NSApplication",
+  "Description": "An object that manages an app’s main event loop and resources used by all of that app’s objects.",
+  "InstanceMethods": [
+    {
+      "Name": "nextEventMatchingMask:untilDate:inMode:dequeue:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428485-nexteventmatchingmask?language=objc"
+    },
+    {
+      "Name": "discardEventsMatchingMask:beforeEvent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428652-discardeventsmatchingmask?language=objc"
+    },
+    {
+      "Name": "run",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428631-run?language=objc"
+    },
+    {
+      "Name": "finishLaunching",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428771-finishlaunching?language=objc"
+    },
+    {
+      "Name": "stop:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428473-stop?language=objc"
+    },
+    {
+      "Name": "sendEvent:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428359-sendevent?language=objc"
+    },
+    {
+      "Name": "postEvent:atStart:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428710-postevent?language=objc"
+    },
+    {
+      "Name": "tryToPerform:with:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428366-trytoperform?language=objc"
+    },
+    {
+      "Name": "sendAction:to:from:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428509-sendaction?language=objc"
+    },
+    {
+      "Name": "targetForAction:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428449-targetforaction?language=objc"
+    },
+    {
+      "Name": "targetForAction:to:from:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428658-targetforaction?language=objc"
+    },
+    {
+      "Name": "terminate:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428417-terminate?language=objc"
+    },
+    {
+      "Name": "replyToApplicationShouldTerminate:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428594-replytoapplicationshouldterminat?language=objc"
+    },
+    {
+      "Name": "activateIgnoringOtherApps:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428468-activateignoringotherapps?language=objc"
+    },
+    {
+      "Name": "deactivate",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428428-deactivate?language=objc"
+    },
+    {
+      "Name": "disableRelaunchOnLogin",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428376-disablerelaunchonlogin?language=objc"
+    },
+    {
+      "Name": "enableRelaunchOnLogin",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428453-enablerelaunchonlogin?language=objc"
+    },
+    {
+      "Name": "registerForRemoteNotifications",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/2967172-registerforremotenotifications?language=objc"
+    },
+    {
+      "Name": "unregisterForRemoteNotifications",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428747-unregisterforremotenotifications?language=objc"
+    },
+    {
+      "Name": "registerForRemoteNotificationTypes:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428476-registerforremotenotificationtyp?language=objc"
+    },
+    {
+      "Name": "toggleTouchBarCustomizationPalette:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/2646920-toggletouchbarcustomizationpalet?language=objc"
+    },
+    {
+      "Name": "requestUserAttention:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428358-requestuserattention?language=objc"
+    },
+    {
+      "Name": "cancelUserAttentionRequest:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428683-canceluserattentionrequest?language=objc"
+    },
+    {
+      "Name": "replyToOpenOrPrint:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428592-replytoopenorprint?language=objc"
+    },
+    {
+      "Name": "registerUserInterfaceItemSearchHandler:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1420818-registeruserinterfaceitemsearchh?language=objc"
+    },
+    {
+      "Name": "searchString:inUserInterfaceItemString:searchRange:foundRange:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1420808-searchstring?language=objc"
+    },
+    {
+      "Name": "unregisterUserInterfaceItemSearchHandler:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1420820-unregisteruserinterfaceitemsearc?language=objc"
+    },
+    {
+      "Name": "showHelp:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1500910-showhelp?language=objc"
+    },
+    {
+      "Name": "activateContextHelpMode:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1500925-activatecontexthelpmode?language=objc"
+    },
+    {
+      "Name": "validRequestorForSendType:returnType:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428379-validrequestorforsendtype?language=objc"
+    },
+    {
+      "Name": "hideOtherApplications:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428746-hideotherapplications?language=objc"
+    },
+    {
+      "Name": "unhideAllApplications:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428737-unhideallapplications?language=objc"
+    },
+    {
+      "Name": "reportException:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428396-reportexception?language=objc"
+    },
+    {
+      "Name": "activationPolicy",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428703-activationpolicy?language=objc"
+    },
+    {
+      "Name": "setActivationPolicy:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428621-setactivationpolicy?language=objc"
+    }
+  ],
+  "TypeMethods": [
+    {
+      "Name": "detachDrawingThread:toTarget:withObject:",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428374-detachdrawingthread?language=objc"
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "sharedApplication",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428360-sharedapplication?language=objc"
+    },
+    {
+      "Name": "delegate",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428705-delegate?language=objc"
+    },
+    {
+      "Name": "currentEvent",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428668-currentevent?language=objc"
+    },
+    {
+      "Name": "running",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428759-running?language=objc"
+    },
+    {
+      "Name": "active",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428493-active?language=objc"
+    },
+    {
+      "Name": "enabledRemoteNotificationTypes",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428776-enabledremotenotificationtypes?language=objc"
+    },
+    {
+      "Name": "registeredForRemoteNotifications",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/2967173-registeredforremotenotifications?language=objc"
+    },
+    {
+      "Name": "appearance",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/2967170-appearance?language=objc"
+    },
+    {
+      "Name": "effectiveAppearance",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/2967171-effectiveappearance?language=objc"
+    },
+    {
+      "Name": "currentSystemPresentationOptions",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428717-currentsystempresentationoptions?language=objc"
+    },
+    {
+      "Name": "presentationOptions",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428664-presentationoptions?language=objc"
+    },
+    {
+      "Name": "userInterfaceLayoutDirection",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428556-userinterfacelayoutdirection?language=objc"
+    },
+    {
+      "Name": "dockTile",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428671-docktile?language=objc"
+    },
+    {
+      "Name": "applicationIconImage",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428744-applicationiconimage?language=objc"
+    },
+    {
+      "Name": "helpMenu",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428644-helpmenu?language=objc"
+    },
+    {
+      "Name": "servicesProvider",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428467-servicesprovider?language=objc"
+    },
+    {
+      "Name": "fullKeyboardAccessEnabled",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1428469-fullkeyboardaccessenabled?language=objc"
+    },
+    {
+      "Name": "orderedDocuments",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1494283-ordereddocuments?language=objc"
+    },
+    {
+      "Name": "orderedWindows",
+      "URL": "https://developer.apple.com/documentation/appkit/nsapplication/1494287-orderedwindows?language=objc"
+    }
+  ],
+  "Frameworks": [
+    "AppKit"
+  ],
+  "Platforms": [
+    "macOS 10.0+"
+  ],
+  "URL": "https://developer.apple.com/documentation/appkit/nsapplication?language=objc"
+}
