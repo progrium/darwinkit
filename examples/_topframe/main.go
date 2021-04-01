@@ -1,3 +1,4 @@
+// +build go1.6
 package main
 
 import (

@@ -20,8 +20,3 @@ notification: ## build and run notification example
 pomodoro: ## build and run pomodoro example
 	$(GOEXE) run ./examples/pomodoro
 .PHONY: pomodoro
-
-bridgehost: ## build and run bridgehost example
-	$(GOEXE) install ./cmd/macbridge
-	$(GOEXE) run ./examples/bridgehost
-.PHONY: bridgehost
