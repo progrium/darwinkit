@@ -87,6 +87,10 @@ func (v NSTextView) SetFont(f NSFont) {
 	v.Set("font:", f)
 }
 
+func (v NSTextView) SetTextColor(c NSColor) {
+	v.Set("textColor:", c)
+}
+
 func (v NSTextView) Alignment() NSTextAlignment {
 	return NSTextAlignment(v.Get("alignment").Int())
 }
