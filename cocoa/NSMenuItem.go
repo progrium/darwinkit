@@ -79,6 +79,12 @@ func (i NSMenuItem) SetTitle(s string) {
 	i.Set("title:", core.String(s))
 }
 
+// SetAttributedTitle sets a custom string for the menu item's title.
+// https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc
+func (i NSMenuItem) SetAttributedTitle(s string) {
+	i.Set("attributedTitle:", core.NSAttributedString_FromString(s))
+}
+
 // Image returns the menu item’s image.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc
 func (i NSMenuItem) Image() NSImage {
