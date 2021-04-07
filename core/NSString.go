@@ -11,7 +11,7 @@ const (
 	NSUTF8StringEncoding = 4
 )
 
-// Wrapper for NSPasteboard
+// Wrapper for NSString
 // https://developer.apple.com/documentation/foundation/nsstring?language=occ
 type NSString struct {
 	objc.Object
