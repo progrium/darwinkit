@@ -9,37 +9,7 @@ import (
 // https://developer.apple.com/documentation/appkit/nspasteboardtype?language=objc
 type NSPasteboardType string
 
-/*
-Code to get the values for those constants:
-```objc
-#import <Foundation/Foundation.h>
-#import <AppKit/NSPasteboard.h>
-
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-
-        NSLog(@"NSPasteboardTypeURL:%@", NSPasteboardTypeURL);
-        NSLog(@"NSPasteboardTypeColor:%@", NSPasteboardTypeColor);
-        NSLog(@"NSPasteboardTypeFileURL:%@", NSPasteboardTypeFileURL);
-        NSLog(@"NSPasteboardTypeFont:%@", NSPasteboardTypeFont);
-        NSLog(@"NSPasteboardTypeHTML:%@", NSPasteboardTypeHTML);
-        NSLog(@"NSPasteboardTypeMultipleTextSelection:%@", NSPasteboardTypeMultipleTextSelection);
-        NSLog(@"NSPasteboardTypePDF:%@", NSPasteboardTypePDF);
-        NSLog(@"NSPasteboardTypePNG:%@", NSPasteboardTypePNG);
-        NSLog(@"NSPasteboardTypeRTF:%@", NSPasteboardTypeRTF);
-        NSLog(@"NSPasteboardTypeRTFD:%@", NSPasteboardTypeRTFD);
-        NSLog(@"NSPasteboardTypeRuler:%@", NSPasteboardTypeRuler);
-        NSLog(@"NSPasteboardTypeSound:%@", NSPasteboardTypeSound);
-        NSLog(@"NSPasteboardTypeString:%@", NSPasteboardTypeString);
-        NSLog(@"NSPasteboardTypeTabularText:%@", NSPasteboardTypeTabularText);
-        NSLog(@"NSPasteboardTypeTextFinderOptions:%@", NSPasteboardTypeTextFinderOptions);
-        NSLog(@"NSPasteboardTypeTIFF:%@", NSPasteboardTypeTIFF);
-    }
-    return 0;
-}
-```
-*/
-
+// check https://github.com/progrium/macdriver/wiki/How-to-pull-enum-constants for example on how to get these values from objc
 const (
 	// NSPasteboardTypeURL holds URL data for one file or resource.
 	NSPasteboardTypeURL = NSPasteboardType("public.url")
