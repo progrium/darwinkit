@@ -214,7 +214,7 @@ func NewClassFromStruct(value interface{}) Class {
 	return object{ptr: uintptr(ptr)}
 }
 
-// Lookup a Class by name
+// Get looks up a class by name.
 func Get(name string) Class {
 	return object{ptr: uintptr(C.GoObjc_GetClassByName(C.CString(name)))}
 }
