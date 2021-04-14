@@ -5,20 +5,19 @@
 // Package objc implements access to the Objective-C runtime from Go
 package objc
 
-import (
-	"C"
-	"unsafe"
-)
+import "C"
+
 import (
 	"fmt"
 	"strings"
+	"unsafe"
 )
 
 // An Object represents an Objective-C object, along with
 // some convenience methods only found on NSObjects.
 type Object interface {
 	// SendMsg sends an arbitrary message to the method on the
-	// object that is idenfieid by selectorName.
+	// object that is identified by selectorName.
 	Send(selector string, args ...interface{}) Object
 
 	// SendSuperMsg is like SendMsg, but sends to the object's
@@ -41,7 +40,7 @@ type Object interface {
 	// Release sends the "release" message to the object.
 	Release() Object
 
-	// AutoRelease sends the "autorelease" message to the object.
+	// Autorelease sends the "autorelease" message to the object.
 	Autorelease() Object
 
 	// Copy sends the "copy" message to the object.
@@ -76,7 +75,7 @@ type Object interface {
 }
 
 // Type object is the package's internal representation of an Object.
-// Besides implementing the Objct interface, object also implements
+// Besides implementing the Object interface, object also implements
 // the Class interface.
 type object struct {
 	ptr uintptr
@@ -86,7 +85,7 @@ func ObjectPtr(ptr uintptr) Object {
 	return object{ptr: ptr}
 }
 
-// Return the Object as a uintptr.
+// Pointer returns the object as a uintptr.
 //
 // Using package unsafe, this uintptr can further
 // be converted to an unsafe.Pointer.
