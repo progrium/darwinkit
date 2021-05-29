@@ -15,7 +15,10 @@ void (* send_NSInvocation_setTarget)(id self, SEL _cmd, id target) = (void(*)(id
 void (* send_NSInvocation_setSelector)(id self, SEL _cmd, SEL sel) = (void(*)(id,SEL,SEL))objc_msgSend;
 
 // - (void)setArgument:(void *)argumentLocation atIndex:(NSInteger)idx;
-// void (* send_setArgument)(id self, SEL _cmd, void *arg, NSInteger idx) = (void(*)(id,SEL,void*,NSInteger))objc_msgSend;
+void (* send_setArgument)(id self, SEL _cmd, void *arg, int idx) = (void(*)(id,SEL,void*,int))objc_msgSend;
+void setArgument(void *invocation, void *arg, int idx) {
+	send_setArgument(invocation, sel_registerName("setArgument:atIndex:"), arg, idx);
+}
 
 // - (void)invoke;
 void (* send_invoke)(id self, SEL _cmd) = (void(*)(id,SEL))objc_msgSend;
@@ -53,8 +56,16 @@ func newInvocation(target uintptr, selName string) uintptr {
 	return uintptr(C.nsInvocation(unsafe.Pointer(target), C.CString(selName)))
 }
 
+func setArgumentAtIndex(call uintptr, arg unsafe.Pointer, index int) {
+	C.setArgument(unsafe.Pointer(call), arg, C.int(index))
+}
+
 // TODO variant for calls with no return?
 // or just split into two calls?
 func invoke(call uintptr, dest unsafe.Pointer) {
 	C.invoke(unsafe.Pointer(call), dest)
+}
+
+func cstring(ptr uintptr) string {
+	return C.GoString((*C.char)(unsafe.Pointer(ptr)))
 }

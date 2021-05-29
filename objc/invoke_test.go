@@ -31,4 +31,11 @@ func TestInvocation(t *testing.T) {
 	t.Errorf("out: %v", out)
 	outObj := ObjectPtr(out)
 	t.Errorf("outObj: %v", outObj)
+
+	i2 := newInvocation(sigID, "getArgumentTypeAtIndex:")
+	idx := 1
+	setArgumentAtIndex(i2, unsafe.Pointer(&idx), 2)
+	var arg uintptr
+	invoke(i2, unsafe.Pointer(&arg))
+	t.Errorf("argType: %v", cstring(arg))
 }
