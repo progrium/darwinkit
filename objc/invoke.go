@@ -69,3 +69,11 @@ func invoke(call uintptr, dest unsafe.Pointer) {
 func cstring(ptr uintptr) string {
 	return C.GoString((*C.char)(unsafe.Pointer(ptr)))
 }
+
+func send(retDest unsafe.Pointer, target uintptr, selName string, args ...unsafe.Pointer) {
+	inv := newInvocation(target, selName)
+	for i, arg := range args {
+		setArgumentAtIndex(inv, arg, i+2)
+	}
+	invoke(inv, retDest)
+}
