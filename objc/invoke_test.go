@@ -34,6 +34,14 @@ func TestInvocation(t *testing.T) {
 
 	i2 := newInvocation(sigID, "getArgumentTypeAtIndex:")
 	idx := 1
+	// this works, but may not be safe since this is holding onto a pointer to the Go memory
+	// unless it makes a copy?
+	// or pass everything we need into a single C call that performs the call and the releases it?
+	// or do alloc in C?
+	// maybe set retainArguments to make sure it makes a copy, and we can
+	// then manually "release" when we're done?
+	// Based on this it looks like it's copying the value into the target frame:
+	// https://github.com/microsoft/WinObjC/blob/ea3f7983803fa02309f974ff878b6c9ecc72c7c4/Frameworks/Foundation/_NSInvocation.x86.mm
 	setArgumentAtIndex(i2, unsafe.Pointer(&idx), 2)
 	var arg uintptr
 	invoke(i2, unsafe.Pointer(&arg))
