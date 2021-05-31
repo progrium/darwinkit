@@ -155,7 +155,7 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 		default:
 			val := reflect.ValueOf(args[i])
 			switch val.Kind() {
-			case reflect.Ptr:
+			case reflect.Ptr, reflect.UnsafePointer:
 				intArgs = append(intArgs, val.Pointer())
 			case reflect.Uintptr:
 				intArgs = append(intArgs, uintptr(val.Uint()))

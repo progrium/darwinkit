@@ -11,6 +11,9 @@ package objc
 #include <objc/runtime.h>
 #include <objc/message.h>
 
+extern void GoObjc_Invoke(id, SEL, id);
+extern void GoObjc_MethodSignature(id self, SEL _cmd, SEL sel);
+
 static unsigned long key = 0xbadc0c0a;
 
 void *GoObjc_GetClassByName(char *name) {
@@ -122,15 +125,17 @@ func NewClass(classname string, superclass string) Class {
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
-	addMethod(ptr, "dealloc", encVoid+encId+encSelector)
+	addMethod(ptr, "dealloc", methodCallTarget(), encVoid+encId+encSelector)
+	addMethod(ptr, "methodSignatureForSelector:", unsafe.Pointer(C.GoObjc_MethodSignature), encId+encId+encSelector+encSelector)
+	addMethod(ptr, "forwardInvocation:", unsafe.Pointer(C.GoObjc_Invoke), encVoid+encId+encSelector+encId)
 
 	lazilyRegisterClassInMap(classname)
 	return object{ptr: uintptr(ptr)}
 }
 
-func addMethod(ptr unsafe.Pointer, sel string, typeInfo string) {
+func addMethod(ptr unsafe.Pointer, sel string, fn unsafe.Pointer, typeInfo string) {
 	cTypeInfo := C.CString(typeInfo)
-	C.GoObjc_ClassAddMethod(ptr, selectorWithName(sel), methodCallTarget(), cTypeInfo)
+	C.GoObjc_ClassAddMethod(ptr, selectorWithName(sel), fn, cTypeInfo)
 	C.free(unsafe.Pointer(cTypeInfo))
 }
 
@@ -198,19 +203,21 @@ func NewClassFromStruct(value interface{}) Class {
 
 	// Register the IBOutlet setters.
 	for setterSelector, _ := range setters {
-		addMethod(ptr, setterSelector, encVoid+encId+encSelector+encId)
+		addMethod(ptr, setterSelector, methodCallTarget(), encVoid+encId+encSelector+encId)
 	}
 
 	// Register the setValue:forKey: method for our custom IBOutlet handling
 	// if the class has any IBOutlets. (Currently only relevant for the iOS runtime)
 	if len(setters) > 0 {
-		addMethod(ptr, "setValue:forKey:", encVoid+encId+encSelector+encId+encId)
+		addMethod(ptr, "setValue:forKey:", methodCallTarget(), encVoid+encId+encSelector+encId+encId)
 	}
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
 	typeInfo := encVoid + encId + encSelector
-	addMethod(ptr, "dealloc", typeInfo)
+	addMethod(ptr, "dealloc", methodCallTarget(), typeInfo)
+	addMethod(ptr, "methodSignatureForSelector:", unsafe.Pointer(C.GoObjc_MethodSignature), encId+encId+encSelector+encSelector)
+	addMethod(ptr, "forwardInvocation:", unsafe.Pointer(C.GoObjc_Invoke), encVoid+encId+encSelector+encId)
 
 	classMap[className] = classInfo{
 		typ:       reflect.TypeOf(value),
@@ -262,7 +269,10 @@ func (cls object) AddMethod(selector string, fn interface{}) {
 		panic("objc: unable to add method '" + selector + "'; would shadow IBOutlet setter with same name.")
 	}
 
-	addMethod(unsafe.Pointer(cls.Pointer()), selector, funcTypeInfo(fn))
+	// addMethod(unsafe.Pointer(cls.Pointer()), selector, methodCallTarget(), funcTypeInfo(fn))
+
+	// TODO make the conversion function when we register it so we can
+	// call directly instead of redoing reflection on each call?
 
 	// Add the method to the class's method map
 	clsInfo.methodMap[selector] = fn
@@ -270,9 +280,9 @@ func (cls object) AddMethod(selector string, fn interface{}) {
 
 // Swizzle swaps the implementation of two methods.
 func (cls object) Swizzle(selectorA, selectorB string) {
-	selA := selectorWithName(selectorA)
-	selB := selectorWithName(selectorB)
-	C.GoObjc_Swizzle(unsafe.Pointer(cls.Pointer()), selA, selB)
+	// selA := selectorWithName(selectorA)
+	// selB := selectorWithName(selectorB)
+	// C.GoObjc_Swizzle(unsafe.Pointer(cls.Pointer()), selA, selB)
 
 	clsName := cls.className()
 	clsInfo := classMap[clsName]

@@ -41,11 +41,13 @@ func (gs *DynamicMethodStruct) Value() uint64 {
 }
 
 func TestDynamicMethod(t *testing.T) {
+	t.FailNow()
+
 	c := NewClassFromStruct(DynamicMethodStruct{})
 	c.AddMethod("setValue", (*DynamicMethodStruct).SetValue)
 	c.AddMethod("hasValue", (*DynamicMethodStruct).Value)
-	c.AddMethod("methodSignatureForSelector:", (*DynamicMethodStruct).MethodSignatureForSelector)
-	c.AddMethod("forwardInvocation:", (*DynamicMethodStruct).ForwardInvocation)
+	// c.AddMethod("methodSignatureForSelector:", (*DynamicMethodStruct).MethodSignatureForSelector)
+	// c.AddMethod("forwardInvocation:", (*DynamicMethodStruct).ForwardInvocation)
 	RegisterClass(c)
 
 	o := GetClass("DynamicMethodStruct").Send("alloc").Send("init")

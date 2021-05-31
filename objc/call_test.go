@@ -7,6 +7,7 @@ package objc
 import (
 	"sync"
 	"testing"
+	"unsafe"
 )
 
 type SomeObject struct {
@@ -51,8 +52,10 @@ func registerTestClass() {
 	})
 }
 
-func (so *SomeObject) SetTesting(t *testing.T) {
-	so.t = t
+// func (so *SomeObject) SetTesting(t *testing.T) {
+func (so *SomeObject) SetTesting(t uintptr) {
+	// FIXME
+	so.t = (*testing.T)(unsafe.Pointer(t))
 }
 
 func (so *SomeObject) CallWithObjectAndSelector(object Object, selector Selector) {
