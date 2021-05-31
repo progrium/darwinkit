@@ -7,6 +7,7 @@ package objc
 /*
 #cgo LDFLAGS: -lobjc -framework Foundation
 #define __OBJC2__ 1
+#include <stdlib.h>
 #include <objc/runtime.h>
 #include <objc/message.h>
 
@@ -121,12 +122,23 @@ func NewClass(classname string, superclass string) Class {
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
-	sel := selectorWithName("dealloc")
-	typeInfo := encVoid + encId + encSelector
-	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+	addMethod(ptr, "dealloc", encVoid+encId+encSelector)
 
 	lazilyRegisterClassInMap(classname)
 	return object{ptr: uintptr(ptr)}
+}
+
+func addMethod(ptr unsafe.Pointer, sel string, typeInfo string) {
+	cTypeInfo := C.CString(typeInfo)
+	C.GoObjc_ClassAddMethod(ptr, selectorWithName(sel), methodCallTarget(), cTypeInfo)
+	C.free(unsafe.Pointer(cTypeInfo))
+}
+
+func newSignature(types string) uintptr {
+	cTypes := C.CString(types)
+	sig := GetClass("NSMethodSignature").Send("signatureWithObjCTypes:", cTypes)
+	C.free(unsafe.Pointer(cTypes))
+	return sig.Pointer()
 }
 
 func lazilyRegisterClassInMap(className string) {
@@ -186,24 +198,19 @@ func NewClassFromStruct(value interface{}) Class {
 
 	// Register the IBOutlet setters.
 	for setterSelector, _ := range setters {
-		sel := selectorWithName(setterSelector)
-		typeInfo := encVoid + encId + encSelector + encId
-		C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+		addMethod(ptr, setterSelector, encVoid+encId+encSelector+encId)
 	}
 
 	// Register the setValue:forKey: method for our custom IBOutlet handling
 	// if the class has any IBOutlets. (Currently only relevant for the iOS runtime)
 	if len(setters) > 0 {
-		sel := selectorWithName("setValue:forKey:")
-		typeInfo := encVoid + encId + encSelector + encId + encId
-		C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+		addMethod(ptr, "setValue:forKey:", encVoid+encId+encSelector+encId+encId)
 	}
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
-	sel := selectorWithName("dealloc")
 	typeInfo := encVoid + encId + encSelector
-	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+	addMethod(ptr, "dealloc", typeInfo)
 
 	classMap[className] = classInfo{
 		typ:       reflect.TypeOf(value),
@@ -255,9 +262,7 @@ func (cls object) AddMethod(selector string, fn interface{}) {
 		panic("objc: unable to add method '" + selector + "'; would shadow IBOutlet setter with same name.")
 	}
 
-	sel := selectorWithName(selector)
-	typeInfo := funcTypeInfo(fn)
-	C.GoObjc_ClassAddMethod(unsafe.Pointer(cls.Pointer()), sel, methodCallTarget(), C.CString(typeInfo))
+	addMethod(unsafe.Pointer(cls.Pointer()), selector, funcTypeInfo(fn))
 
 	// Add the method to the class's method map
 	clsInfo.methodMap[selector] = fn
