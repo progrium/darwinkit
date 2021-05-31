@@ -48,6 +48,7 @@ func registerTestClass() {
 		c.AddMethod("callWithInt16:", (*SomeObject).CallWithInt16)
 		c.AddMethod("callWithInt8:", (*SomeObject).CallWithInt8)
 		c.AddMethod("callWithBool:", (*SomeObject).CallWithBool)
+		c.AddMethod("callReturnObject:", (*SomeObject).CallReturnObject)
 		RegisterClass(c)
 	})
 }
@@ -133,6 +134,10 @@ func (so *SomeObject) CallWithBool(val bool) {
 	}
 }
 
+func (so *SomeObject) CallReturnObject(o Object) Object {
+	return o
+}
+
 func TestSelectorObjectPassing(t *testing.T) {
 	registerTestClass()
 	so := GetClass("SomeObject").Send("alloc").Send("init")
@@ -215,4 +220,13 @@ func TestBoolPassing(t *testing.T) {
 	so := GetClass("SomeObject").Send("alloc").Send("init")
 	so.Send("setTesting:", t)
 	so.Send("callWithBool:", boolval)
+}
+
+func TestObjectReturn(t *testing.T) {
+	registerTestClass()
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	out := so.Send("callReturnObject:", so)
+	if out != so {
+		t.Errorf("expected to return the input object")
+	}
 }

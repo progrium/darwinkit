@@ -12,6 +12,7 @@ package objc
 */
 import "C"
 import (
+	"fmt"
 	"log"
 	"reflect"
 	"unsafe"
@@ -302,15 +303,14 @@ func goInvoke(self, cmd, invocation unsafe.Pointer) {
 			v := val.Float()
 			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
 		case reflect.Interface:
-			panic("not implemented")
-			// if obj, ok := val.Interface().(Object); ok {
-			// 	return obj.Pointer()
-			// }
-			// panic("call: bad interface return value")
+			obj, ok := val.Interface().(Object)
+			if !ok {
+				panic(fmt.Errorf("call: bad interface return value: %v", val.Type()))
+			}
+			v := uintptr(obj.Pointer())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
 		default:
 			panic("call: unknown return value")
 		}
 	}
-
-	return
 }
