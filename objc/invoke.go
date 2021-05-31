@@ -4,6 +4,7 @@ package objc
 #cgo LDFLAGS: -lobjc
 #define __OBJC2__ 1
 #include <objc/message.h>
+#include <stdlib.h>
 
 // + (NSInvocation *)invocationWithMethodSignature:(NSMethodSignature *)sig;
 id (* send_NSInvocation_invocationWithMethodSignature)(Class cls, SEL _cmd, id sig) = (id(*)(Class,SEL,id))objc_msgSend;
@@ -30,6 +31,24 @@ void *methodSignatureForSelector(void *target, char *selName) {
 	return send_NSObject_methodSignatureForSelector(target, sel_registerName("methodSignatureForSelector:"), sel_registerName(selName));
 }
 
+int (* send_numberOfArguments)(id self, SEL _cmd) = (int(*)(id,SEL))objc_msgSend;
+
+int numberOfArguments(void *target) {
+	return send_numberOfArguments(target, sel_registerName("numberOfArguments"));
+}
+
+const char * (* send_methodReturnType)(id self, SEL _cmd) = (const char * (*)(id,SEL))objc_msgSend;
+
+const char * methodReturnType(void *target) {
+	return send_methodReturnType(target, sel_registerName("methodReturnType"));
+}
+
+const char * (* send_getArgumentTypeAtIndex)(id self, SEL _cmd, int i) = (const char * (*)(id,SEL,int))objc_msgSend;
+
+const char * getArgumentTypeAtIndex(void *target, int idx) {
+	return send_getArgumentTypeAtIndex(target, sel_registerName("getArgumentTypeAtIndex:"), idx);
+}
+
 void *nsInvocation(void *target, char *selName) {
 	Class cls = objc_getClass("NSInvocation");
 	SEL sel = sel_registerName(selName);
@@ -42,14 +61,31 @@ void *nsInvocation(void *target, char *selName) {
 
 void invoke(void *invocation, void *retLoc) {
 	send_invoke(invocation, sel_registerName("invoke"));
-	send_getReturnValue(invocation, sel_registerName("getReturnValue:"), retLoc);
+	if (retLoc != NULL) {
+		send_getReturnValue(invocation, sel_registerName("getReturnValue:"), retLoc);
+	}
 }
 */
 import "C"
 import "unsafe"
 
+func numberOfArguments(id uintptr) int {
+	return int(C.numberOfArguments(unsafe.Pointer(id)))
+}
+
+func methodReturnType(id uintptr) string {
+	return C.GoString(C.methodReturnType(unsafe.Pointer(id)))
+}
+
+func getArgumentTypeAtIndex(id uintptr, idx int) string {
+	return C.GoString(C.getArgumentTypeAtIndex(unsafe.Pointer(id), C.int(idx)))
+}
+
 func methodSignatureForSelector(target uintptr, selName string) uintptr {
-	return uintptr(C.methodSignatureForSelector(unsafe.Pointer(target), C.CString(selName)))
+	cSelName := C.CString(selName)
+	sig := uintptr(C.methodSignatureForSelector(unsafe.Pointer(target), cSelName))
+	C.free(unsafe.Pointer(cSelName))
+	return sig
 }
 
 func newInvocation(target uintptr, selName string) uintptr {
@@ -77,3 +113,5 @@ func send(retDest unsafe.Pointer, target uintptr, selName string, args ...unsafe
 	}
 	invoke(inv, retDest)
 }
+
+func wrapArg()

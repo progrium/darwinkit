@@ -234,9 +234,9 @@ func goInvoke(self, cmd, invocation unsafe.Pointer) {
 			args = append(args, reflect.ValueOf(v != 0))
 
 		case reflect.Ptr:
-			panic("call: cannot pass pointer arguments")
-			// ptrAddr := unsafe.Pointer(uintptr(fetcher.Int()))
-			// args = append(args, reflect.NewAt(typ.Elem(), ptrAddr))
+			var v uintptr
+			fetchArg(unsafe.Pointer(&v))
+			args = append(args, reflect.NewAt(typ.Elem(), unsafe.Pointer(v)))
 
 		default:
 			panic("call: unhandled arg")
@@ -259,28 +259,48 @@ func goInvoke(self, cmd, invocation unsafe.Pointer) {
 	if len(retVals) > 0 {
 		val := retVals[0]
 		switch val.Kind() {
-		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-			panic("not implemented")
-			// return uintptr(val.Int())
-		case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-			panic("not implemented")
-			// return uintptr(val.Uint())
+		case reflect.Int:
+			v := int(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Int8:
+			v := int8(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Int16:
+			v := int16(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Int32:
+			v := int32(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Int64:
+			v := int64(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uint:
+			v := uint(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uint8:
+			v := uint8(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uint16:
+			v := uint16(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uint32:
+			v := uint32(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uint64:
+			v := uint64(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
+		case reflect.Uintptr:
+			v := uintptr(val.Int())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
 		case reflect.Bool:
 			v := val.Bool()
 			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
-			// if val.Bool() {
-			// 	return 1
-			// } else {
-			// 	return 0
-			// }
 		case reflect.Float32:
-			panic("not implemented")
-			// frame.xmm0 = uintptr(math.Float32bits(float32(val.Float())))
-			// return 1
+			v := float32(val.Float())
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
 		case reflect.Float64:
-			panic("not implemented")
-			// frame.xmm0 = uintptr(math.Float64bits(val.Float()))
-			// return 1
+			v := val.Float()
+			inv.Send("setReturnValue:", uintptr(unsafe.Pointer(&v)))
 		case reflect.Interface:
 			panic("not implemented")
 			// if obj, ok := val.Interface().(Object); ok {
