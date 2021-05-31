@@ -253,10 +253,6 @@ func goInvoke(self, cmd, invocation unsafe.Pointer) {
 		clsInfo.RemoveRef(internalPtr)
 	}
 
-	// XXX does this exist in the Apple implementation, or just:
-	// https://github.com/microsoft/WinObjC/blob/ea3f7983803fa02309f974ff878b6c9ecc72c7c4/Frameworks/Foundation/NSMethodSignature.mm
-	// objc_sizeof_type(typeString)
-
 	if len(retVals) > 0 {
 		val := retVals[0]
 		switch val.Kind() {
