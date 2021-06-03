@@ -53,9 +53,6 @@ func setIBOutletValue(obj reflect.Value, name string, value Object) {
 
 //export goMethodSignature
 func goMethodSignature(self, cmd, selPtr unsafe.Pointer) unsafe.Pointer {
-	// if true {
-	// 	panic("asdfasdfasdf")
-	// }
 	sel := stringFromSelector(selPtr)
 	log.Printf("resolving %v", sel)
 
@@ -65,6 +62,7 @@ func goMethodSignature(self, cmd, selPtr unsafe.Pointer) unsafe.Pointer {
 	clsInfo := classMap[clsName]
 	method := clsInfo.MethodForSelector(sel)
 	if method == nil {
+		// FIXME delegate to super class?
 		return nil
 	}
 	return unsafe.Pointer(newSignature(funcTypeInfo(method)))

@@ -43,6 +43,18 @@ const char * methodReturnType(void *target) {
 	return send_methodReturnType(target, sel_registerName("methodReturnType"));
 }
 
+id (* send_init)(id self, SEL _cmd) = (id(*)(id,SEL))objc_msgSend;
+
+void *init(void *target) {
+	return send_init(target, sel_registerName("init"));
+}
+
+void (* send_dealloc)(id self, SEL _cmd) = (void(*)(id,SEL))objc_msgSend;
+
+void dealloc(void *target) {
+	return send_dealloc(target, sel_registerName("dealloc"));
+}
+
 const char * (* send_getArgumentTypeAtIndex)(id self, SEL _cmd, int i) = (const char * (*)(id,SEL,int))objc_msgSend;
 
 const char * getArgumentTypeAtIndex(void *target, int idx) {
@@ -67,7 +79,13 @@ void invoke(void *invocation, void *retLoc) {
 }
 */
 import "C"
-import "unsafe"
+import (
+	"fmt"
+	"log"
+	"math"
+	"reflect"
+	"unsafe"
+)
 
 func numberOfArguments(id uintptr) int {
 	return int(C.numberOfArguments(unsafe.Pointer(id)))
@@ -114,4 +132,113 @@ func send(retDest unsafe.Pointer, target uintptr, selName string, args ...unsafe
 	invoke(inv, retDest)
 }
 
-func wrapArg()
+func send2(target uintptr, selName string, args ...interface{}) uintptr {
+	switch selName {
+	case "init":
+		// TODO check args length is 0?
+		// the method signature for init appears to return NULL which causes problems
+		// maybe there's a better way, but we can hard-code the msgSend wrapper for
+		// this case
+		return uintptr(C.init(unsafe.Pointer(target)))
+	case "dealloc":
+		C.dealloc(unsafe.Pointer(target))
+		return 0
+	}
+	sig := methodSignatureForSelector(target, selName)
+	retType := methodReturnType(sig)
+	log.Printf("%d %s -> %s", target, selName, retType)
+	inv := newInvocation(target, selName)
+	for i, arg := range args {
+		setArgumentAtIndex(inv, wrapArg(arg), i+2)
+	}
+	// FIXME clean up some of the special cases here based on normalizing the
+	// return type detection.
+	switch retType {
+	case "":
+		invoke(inv, nil)
+		return 0
+	case encId, encSelector, encBool:
+		var v uintptr
+		invoke(inv, unsafe.Pointer(&v))
+		return v
+	case encVoid, "V" + encVoid: // "V" = one-way, used by "release"
+		invoke(inv, nil)
+		return 0
+	case "r*": // const char *
+		var v uintptr
+		invoke(inv, unsafe.Pointer(&v))
+		return v
+	case encFloat:
+		var v float32
+		invoke(inv, unsafe.Pointer(&v))
+		return uintptr(math.Float32bits(v))
+	case encDouble:
+		var v float64
+		invoke(inv, unsafe.Pointer(&v))
+		return uintptr(math.Float64bits(v))
+	default:
+		panic(fmt.Errorf("unhandled: %v", retType))
+	}
+}
+
+func wrapArg(v interface{}) unsafe.Pointer {
+	switch v := v.(type) {
+	case Object:
+		return wrapArg(v.Pointer())
+	case selector:
+		return wrapArg(RegisterSelector(v.Selector()))
+	}
+
+	val := reflect.ValueOf(v)
+
+	switch val.Kind() {
+	case reflect.Int:
+		v := int(val.Int())
+		return unsafe.Pointer(&v)
+	case reflect.Int8:
+		v := int8(val.Int())
+		return unsafe.Pointer(&v)
+	case reflect.Int16:
+		v := int16(val.Int())
+		return unsafe.Pointer(&v)
+	case reflect.Int32:
+		v := int32(val.Int())
+		return unsafe.Pointer(&v)
+	case reflect.Int64:
+		v := int64(val.Int())
+		return unsafe.Pointer(&v)
+
+	case reflect.Uint8:
+		v := uint8(val.Uint())
+		return unsafe.Pointer(&v)
+	case reflect.Uint16:
+		v := uint16(val.Uint())
+		return unsafe.Pointer(&v)
+	case reflect.Uint32:
+		v := uint32(val.Uint())
+		return unsafe.Pointer(&v)
+	case reflect.Uint64:
+		v := uint64(val.Uint())
+		return unsafe.Pointer(&v)
+	case reflect.Uintptr:
+		v := uintptr(val.Uint())
+		return unsafe.Pointer(&v)
+
+	case reflect.Float32:
+		v := float32(val.Float())
+		return unsafe.Pointer(&v)
+	case reflect.Float64:
+		v := float64(val.Float())
+		return unsafe.Pointer(&v)
+
+	case reflect.Bool:
+		v := val.Bool() // FIXME what size should we decode bool into?
+		return unsafe.Pointer(&v)
+
+	case reflect.Ptr, reflect.UnsafePointer:
+		return wrapArg(val.Pointer())
+
+	default:
+		panic(fmt.Errorf("call: unhandled arg: %T %#v", v, v))
+	}
+}

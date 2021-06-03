@@ -230,3 +230,12 @@ func TestObjectReturn(t *testing.T) {
 		t.Errorf("expected to return the input object")
 	}
 }
+
+func TestObjectReturn2(t *testing.T) {
+	registerTestClass()
+	so := GetClass("SomeObject").Send("alloc").Send("init")
+	out := send2(so.Pointer(), "callReturnObject:", so)
+	if out != so.Pointer() {
+		t.Errorf("expected to return the input object")
+	}
+}

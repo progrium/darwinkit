@@ -231,6 +231,7 @@ func sendMsg(obj Object, sendFuncName string, selector string, args ...interface
 }
 
 func (obj object) Send(selector string, args ...interface{}) Object {
+	// return ObjectPtr(send2(obj.Pointer(), selector, args...))
 	return sendMsg(obj, "objc_msgSend", selector, args...)
 }
 
