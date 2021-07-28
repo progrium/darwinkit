@@ -69,6 +69,9 @@ type Object interface {
 	// Bool returns the value of the object as a bool.
 	Bool() bool
 
+	// CString returns the value of the object as a C string.
+	CString() string
+
 	Set(setter string, args ...interface{})
 	Get(getter string) Object
 	GetSt(getter string, ret interface{})
@@ -139,17 +142,24 @@ func (obj object) Set(setter string, args ...interface{}) {
 	obj.Send(fmt.Sprintf("set%s", strings.Title(setter)), args...)
 }
 
+func (obj object) CString() string {
+	if obj.Pointer() == 0 {
+		return ""
+	}
+
+	return C.GoString((*C.char)(unsafe.Pointer(obj.Pointer())))
+}
+
 func (obj object) String() string {
 	// TODO: some kind of recover to catch when this doesnt work
 
 	pool := GetClass("NSAutoreleasePool").Alloc().Init()
 	defer pool.Release()
 
-	descString := obj.Send("description")
-	utf8Bytes := descString.Send("UTF8String")
-	if utf8Bytes.Pointer() != 0 {
-		return C.GoString((*C.char)(unsafe.Pointer(utf8Bytes.Pointer())))
+	bytes := obj.Send("description").Send("UTF8String")
+	if bytes.Pointer() == 0 {
+		return "(nil)"
 	}
 
-	return "(nil)"
+	return bytes.CString()
 }
