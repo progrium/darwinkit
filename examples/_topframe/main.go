@@ -23,6 +23,9 @@ import (
 	"github.com/progrium/watcher"
 )
 
+//go:embed index.html
+var defaultIndex []byte
+
 func main() {
 	spacesFlag := flag.Bool("spaces", true, "appear on all spaces")
 	flag.Parse()
@@ -38,8 +41,6 @@ func main() {
 	dir := filepath.Join(usr.HomeDir, ".topframe")
 	os.MkdirAll(dir, 0755)
 
-	//go:embed index.html
-	var defaultIndex []byte
 	if _, err := os.Stat(filepath.Join(dir, "index.html")); os.IsNotExist(err) {
 		ioutil.WriteFile(filepath.Join(dir, "index.html"), defaultIndex, 0644)
 	}
@@ -92,7 +93,9 @@ func main() {
 		events := make(chan cocoa.NSEvent)
 		go func() {
 			for e := range events {
-				if e.KeyCode() == 100 {
+				keyCode, _ := e.KeyCode()
+
+				if int(keyCode) == 100 {
 					if w.IgnoresMouseEvents() {
 						fmt.Println("Mouse events on")
 						w.SetIgnoresMouseEvents(false)
