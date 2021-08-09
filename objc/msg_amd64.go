@@ -75,12 +75,17 @@ func sendMsg(obj Object, sendFunc variadic.Function, selector string, args ...in
 		return nil
 	}
 
+	typeInfo := simpleTypeInfoForMethod(obj, selector)
+	// if !sendFunc.IsSuper() {
+	// 	if ret, ok := sendMsgDirect(obj, SelectorPtr(sel), typeInfo, args); ok {
+	// 		return ret
+	// 	}
+	// }
+
 	intArgs := []uintptr{}
 	floatArgs := []uintptr{}
 	memArgs := []uintptr{}
 	argOffset := 2 // self, op
-
-	typeInfo := simpleTypeInfoForMethod(obj, selector)
 
 	var stretAddr uintptr
 	if len(typeInfo) > 0 && string(typeInfo[0]) == encStructBegin {

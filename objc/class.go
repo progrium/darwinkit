@@ -224,6 +224,10 @@ func GetClass(name string) Class {
 	return Get(name)
 }
 
+func ClassPtr(ptr uintptr) Class {
+	return object{ptr: ptr}
+}
+
 // Get the Class of an object. This equivalent to sending the
 // class message to the object, but this is not always possible.
 // (The SendMsg method, for example, needs to get the class of the

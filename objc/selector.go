@@ -29,6 +29,8 @@ import (
 
 // A Selector represents an Objective-C method selector.
 type Selector interface {
+	Pointer() unsafe.Pointer
+
 	// Selector returns a string representation of
 	// a selector.
 	Selector() string
@@ -44,6 +46,10 @@ type Selector interface {
 // a Go string.
 type selector string
 
+func (sel selector) Pointer() unsafe.Pointer {
+	return RegisterSelector(sel.Selector())
+}
+
 // Selector implements the Selector method of the
 // Selector interface.
 func (sel selector) Selector() string {
@@ -54,6 +60,26 @@ func (sel selector) Selector() string {
 // Selector interface.
 func (sel selector) String() string {
 	return sel.Selector()
+}
+
+type selectorPtr struct {
+	ptr unsafe.Pointer
+}
+
+func (s selectorPtr) Pointer() unsafe.Pointer {
+	return s.ptr
+}
+
+func (s selectorPtr) Selector() string {
+	return stringFromSelector(s.ptr)
+}
+
+func (s selectorPtr) String() string {
+	return s.Selector()
+}
+
+func SelectorPtr(ptr unsafe.Pointer) Selector {
+	return selectorPtr{ptr: ptr}
 }
 
 // GetSelector looks up a Selector by name.
