@@ -76,11 +76,11 @@ func sendMsg(obj Object, sendFunc variadic.Function, selector string, args ...in
 	}
 
 	typeInfo := simpleTypeInfoForMethod(obj, selector)
-	// if !sendFunc.IsSuper() {
-	// 	if ret, ok := sendMsgDirect(obj, SelectorPtr(sel), typeInfo, args); ok {
-	// 		return ret
-	// 	}
-	// }
+	if !sendFunc.IsSuper() {
+		if ret, ok := sendMsgDirect(obj, SelectorPtr(sel), typeInfo, args); ok {
+			return ret
+		}
+	}
 
 	intArgs := []uintptr{}
 	floatArgs := []uintptr{}
