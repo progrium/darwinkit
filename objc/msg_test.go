@@ -21,12 +21,45 @@ func TestMain(m *testing.M) {
 }
 
 func BenchmarkSendMsg(b *testing.B) {
-	obj := Get("NSObject").Send("new")
-	defer obj.Release()
+	b.Run("description", func(b *testing.B) {
+		b.Skip()
+		obj := Get("NSObject").Send("new")
+		defer obj.Release()
 
-	for i := 0; i < b.N; i++ {
-		sendMsg(obj, variadic.F_msgSend, "description")
-	}
+		for i := 0; i < b.N; i++ {
+			sendMsg(obj, variadic.F_msgSend, "description")
+		}
+	})
+
+	b.Run("count", func(b *testing.B) {
+		obj := Get("NSArray").Send("new")
+		defer obj.Release()
+
+		for i := 0; i < b.N; i++ {
+			sendMsg(obj, variadic.F_msgSend, "count")
+		}
+	})
+
+	b.Run("count direct", func(b *testing.B) {
+		b.Skip()
+		obj := Get("NSArray").Send("new")
+		defer obj.Release()
+
+		for i := 0; i < b.N; i++ {
+			SendQ(obj, Sel("count"))
+		}
+	})
+
+	b.Run("count direct prefetch", func(b *testing.B) {
+		b.Skip()
+		obj := Get("NSArray").Send("new")
+		defer obj.Release()
+
+		sel := SelectorPtr(Sel("count").Pointer())
+		for i := 0; i < b.N; i++ {
+			SendQ(obj, sel)
+		}
+	})
 }
 
 func TestNSStringSendMsg(t *testing.T) {
