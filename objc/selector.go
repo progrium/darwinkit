@@ -6,6 +6,7 @@ package objc
 
 /*
 #cgo LDFLAGS: -lobjc
+#include <stdlib.h>
 #include <objc/runtime.h>
 
 void *GoObjc_RegisterSelector(char *name) {
@@ -70,14 +71,59 @@ func RegisterSelector(name string) unsafe.Pointer {
 	return selectorWithName(name)
 }
 
+var selectors = struct {
+	sync.RWMutex
+	sel  map[string]unsafe.Pointer
+	name map[unsafe.Pointer]string
+}{
+	sel:  map[string]unsafe.Pointer{},
+	name: map[unsafe.Pointer]string{},
+}
+
 // selectorWithName looks up a selector by name.
 func selectorWithName(name string) unsafe.Pointer {
-	return C.GoObjc_RegisterSelector(C.CString(name))
+	selectors.RLock()
+	sel, ok := selectors.sel[name]
+	selectors.RUnlock()
+	if ok {
+		return sel
+	}
+
+	selectors.Lock()
+	defer selectors.Unlock()
+
+	sel, ok = selectors.sel[name]
+	if ok {
+		return sel
+	}
+
+	cstr := C.CString(name)
+	defer C.free(unsafe.Pointer(cstr))
+	sel = C.GoObjc_RegisterSelector(cstr)
+	selectors.name[sel], selectors.sel[name] = name, sel
+	return sel
 }
 
 // stringFromSelector converts a selector to a Go string
 func stringFromSelector(sel unsafe.Pointer) string {
-	return C.GoString(C.GoObjc_SelectorToString(sel))
+	selectors.RLock()
+	name, ok := selectors.name[sel]
+	selectors.RUnlock()
+	if ok {
+		return name
+	}
+
+	selectors.Lock()
+	defer selectors.Unlock()
+
+	name, ok = selectors.name[sel]
+	if ok {
+		return name
+	}
+
+	name = C.GoString(C.GoObjc_SelectorToString(sel))
+	selectors.name[sel], selectors.sel[name] = name, sel
+	return name
 }
 
 // simplifyTypeInfo returns a simplified typeInfo representation
@@ -111,9 +157,8 @@ var methodTypeInfo = struct {
 // simpleTypeInfoForMethod fetches the type info for the method
 // identified by obj's class and the given selector and returns
 // it in a simplified form produced by the simplifyTypeInfo function.
-func simpleTypeInfoForMethod(obj Object, selector string) string {
+func simpleTypeInfoForMethod(obj Object, sel unsafe.Pointer) string {
 	cls := unsafe.Pointer(getObjectClass(obj).Pointer())
-	sel := selectorWithName(selector)
 	key := [2]unsafe.Pointer{cls, sel}
 
 	methodTypeInfo.RLock()

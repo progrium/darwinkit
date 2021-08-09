@@ -80,7 +80,7 @@ func sendMsg(obj Object, sendFunc variadic.Function, selector string, args ...in
 	memArgs := []uintptr{}
 	argOffset := 2 // self, op
 
-	typeInfo := simpleTypeInfoForMethod(obj, selector)
+	typeInfo := simpleTypeInfoForMethod(obj, sel)
 
 	var stretAddr uintptr
 	if len(typeInfo) > 0 && string(typeInfo[0]) == encStructBegin {
