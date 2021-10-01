@@ -97,6 +97,10 @@ void* NSApplication_type_sharedApplication() {
 	return [NSApplication
 		sharedApplication];
 }
+void* NSControl_type_alloc() {
+	return [NSControl
+		alloc];
+}
 void* NSButton_type_alloc() {
 	return [NSButton
 		alloc];
@@ -326,6 +330,10 @@ void NSMenu_type_popUpContextMenu_withEvent_forView_withFont_(void* menu, void* 
 		withEvent: event
 		forView: view
 		withFont: font];
+}
+void* NSPopover_type_alloc() {
+	return [NSPopover
+		alloc];
 }
 void* NSMenuItem_type_alloc() {
 	return [NSMenuItem
@@ -977,6 +985,280 @@ void* NSApplication_inst_mainMenu(void *id) {
 void NSApplication_inst_setMainMenu_(void *id, void* value) {
 	[(NSApplication*)id
 		setMainMenu: value];
+}
+
+void* NSControl_inst_initWithFrame_(void *id, NSRect frameRect) {
+	return [(NSControl*)id
+		initWithFrame: frameRect];
+}
+
+void NSControl_inst_takeDoubleValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeDoubleValueFrom: sender];
+}
+
+void NSControl_inst_takeFloatValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeFloatValueFrom: sender];
+}
+
+void NSControl_inst_takeIntValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeIntValueFrom: sender];
+}
+
+void NSControl_inst_takeIntegerValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeIntegerValueFrom: sender];
+}
+
+void NSControl_inst_takeObjectValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeObjectValueFrom: sender];
+}
+
+void NSControl_inst_takeStringValueFrom_(void *id, void* sender) {
+	[(NSControl*)id
+		takeStringValueFrom: sender];
+}
+
+void NSControl_inst_drawWithExpansionFrame_inView_(void *id, NSRect contentFrame, void* view) {
+	[(NSControl*)id
+		drawWithExpansionFrame: contentFrame
+		inView: view];
+}
+
+NSRect NSControl_inst_expansionFrameWithFrame_(void *id, NSRect contentFrame) {
+	return [(NSControl*)id
+		expansionFrameWithFrame: contentFrame];
+}
+
+BOOL NSControl_inst_abortEditing(void *id) {
+	return [(NSControl*)id
+		abortEditing];
+}
+
+void* NSControl_inst_currentEditor(void *id) {
+	return [(NSControl*)id
+		currentEditor];
+}
+
+void NSControl_inst_validateEditing(void *id) {
+	[(NSControl*)id
+		validateEditing];
+}
+
+void NSControl_inst_editWithFrame_editor_delegate_event_(void *id, NSRect rect, void* textObj, void* delegate, void* event) {
+	[(NSControl*)id
+		editWithFrame: rect
+		editor: textObj
+		delegate: delegate
+		event: event];
+}
+
+void NSControl_inst_endEditing_(void *id, void* textObj) {
+	[(NSControl*)id
+		endEditing: textObj];
+}
+
+void NSControl_inst_selectWithFrame_editor_delegate_start_length_(void *id, NSRect rect, void* textObj, void* delegate, long selStart, long selLength) {
+	[(NSControl*)id
+		selectWithFrame: rect
+		editor: textObj
+		delegate: delegate
+		start: selStart
+		length: selLength];
+}
+
+NSSize NSControl_inst_sizeThatFits_(void *id, NSSize size) {
+	return [(NSControl*)id
+		sizeThatFits: size];
+}
+
+void NSControl_inst_sizeToFit(void *id) {
+	[(NSControl*)id
+		sizeToFit];
+}
+
+BOOL NSControl_inst_sendAction_to_(void *id, void* action, void* target) {
+	return [(NSControl*)id
+		sendAction: action
+		to: target];
+}
+
+void NSControl_inst_performClick_(void *id, void* sender) {
+	[(NSControl*)id
+		performClick: sender];
+}
+
+void NSControl_inst_mouseDown_(void *id, void* event) {
+	[(NSControl*)id
+		mouseDown: event];
+}
+
+void* NSControl_inst_init(void *id) {
+	return [(NSControl*)id
+		init];
+}
+
+BOOL NSControl_inst_isEnabled(void *id) {
+	return [(NSControl*)id
+		isEnabled];
+}
+
+void NSControl_inst_setEnabled_(void *id, BOOL value) {
+	[(NSControl*)id
+		setEnabled: value];
+}
+
+int NSControl_inst_intValue(void *id) {
+	return [(NSControl*)id
+		intValue];
+}
+
+void NSControl_inst_setIntValue_(void *id, int value) {
+	[(NSControl*)id
+		setIntValue: value];
+}
+
+long NSControl_inst_integerValue(void *id) {
+	return [(NSControl*)id
+		integerValue];
+}
+
+void NSControl_inst_setIntegerValue_(void *id, long value) {
+	[(NSControl*)id
+		setIntegerValue: value];
+}
+
+void* NSControl_inst_objectValue(void *id) {
+	return [(NSControl*)id
+		objectValue];
+}
+
+void NSControl_inst_setObjectValue_(void *id, void* value) {
+	[(NSControl*)id
+		setObjectValue: value];
+}
+
+void* NSControl_inst_stringValue(void *id) {
+	return [(NSControl*)id
+		stringValue];
+}
+
+void NSControl_inst_setStringValue_(void *id, void* value) {
+	[(NSControl*)id
+		setStringValue: value];
+}
+
+void* NSControl_inst_attributedStringValue(void *id) {
+	return [(NSControl*)id
+		attributedStringValue];
+}
+
+void NSControl_inst_setAttributedStringValue_(void *id, void* value) {
+	[(NSControl*)id
+		setAttributedStringValue: value];
+}
+
+void* NSControl_inst_font(void *id) {
+	return [(NSControl*)id
+		font];
+}
+
+void NSControl_inst_setFont_(void *id, void* value) {
+	[(NSControl*)id
+		setFont: value];
+}
+
+BOOL NSControl_inst_usesSingleLineMode(void *id) {
+	return [(NSControl*)id
+		usesSingleLineMode];
+}
+
+void NSControl_inst_setUsesSingleLineMode_(void *id, BOOL value) {
+	[(NSControl*)id
+		setUsesSingleLineMode: value];
+}
+
+BOOL NSControl_inst_allowsExpansionToolTips(void *id) {
+	return [(NSControl*)id
+		allowsExpansionToolTips];
+}
+
+void NSControl_inst_setAllowsExpansionToolTips_(void *id, BOOL value) {
+	[(NSControl*)id
+		setAllowsExpansionToolTips: value];
+}
+
+BOOL NSControl_inst_isHighlighted(void *id) {
+	return [(NSControl*)id
+		isHighlighted];
+}
+
+void NSControl_inst_setHighlighted_(void *id, BOOL value) {
+	[(NSControl*)id
+		setHighlighted: value];
+}
+
+void* NSControl_inst_action(void *id) {
+	return [(NSControl*)id
+		action];
+}
+
+void NSControl_inst_setAction_(void *id, void* value) {
+	[(NSControl*)id
+		setAction: value];
+}
+
+void* NSControl_inst_target(void *id) {
+	return [(NSControl*)id
+		target];
+}
+
+void NSControl_inst_setTarget_(void *id, void* value) {
+	[(NSControl*)id
+		setTarget: value];
+}
+
+BOOL NSControl_inst_isContinuous(void *id) {
+	return [(NSControl*)id
+		isContinuous];
+}
+
+void NSControl_inst_setContinuous_(void *id, BOOL value) {
+	[(NSControl*)id
+		setContinuous: value];
+}
+
+long NSControl_inst_tag(void *id) {
+	return [(NSControl*)id
+		tag];
+}
+
+void NSControl_inst_setTag_(void *id, long value) {
+	[(NSControl*)id
+		setTag: value];
+}
+
+BOOL NSControl_inst_refusesFirstResponder(void *id) {
+	return [(NSControl*)id
+		refusesFirstResponder];
+}
+
+void NSControl_inst_setRefusesFirstResponder_(void *id, BOOL value) {
+	[(NSControl*)id
+		setRefusesFirstResponder: value];
+}
+
+BOOL NSControl_inst_ignoresMultiClick(void *id) {
+	return [(NSControl*)id
+		ignoresMultiClick];
+}
+
+void NSControl_inst_setIgnoresMultiClick_(void *id, BOOL value) {
+	[(NSControl*)id
+		setIgnoresMultiClick: value];
 }
 
 void NSButton_inst_compressWithPrioritizedCompressionOptions_(void *id, void* prioritizedOptions) {
@@ -2284,6 +2566,71 @@ void* NSMenu_inst_delegate(void *id) {
 void NSMenu_inst_setDelegate_(void *id, void* value) {
 	[(NSMenu*)id
 		setDelegate: value];
+}
+
+void NSPopover_inst_performClose_(void *id, void* sender) {
+	[(NSPopover*)id
+		performClose: sender];
+}
+
+void NSPopover_inst_close(void *id) {
+	[(NSPopover*)id
+		close];
+}
+
+void* NSPopover_inst_init(void *id) {
+	return [(NSPopover*)id
+		init];
+}
+
+long NSPopover_inst_behavior(void *id) {
+	return [(NSPopover*)id
+		behavior];
+}
+
+void NSPopover_inst_setBehavior_(void *id, long value) {
+	[(NSPopover*)id
+		setBehavior: value];
+}
+
+NSRect NSPopover_inst_positioningRect(void *id) {
+	return [(NSPopover*)id
+		positioningRect];
+}
+
+void NSPopover_inst_setPositioningRect_(void *id, NSRect value) {
+	[(NSPopover*)id
+		setPositioningRect: value];
+}
+
+BOOL NSPopover_inst_animates(void *id) {
+	return [(NSPopover*)id
+		animates];
+}
+
+void NSPopover_inst_setAnimates_(void *id, BOOL value) {
+	[(NSPopover*)id
+		setAnimates: value];
+}
+
+NSSize NSPopover_inst_contentSize(void *id) {
+	return [(NSPopover*)id
+		contentSize];
+}
+
+void NSPopover_inst_setContentSize_(void *id, NSSize value) {
+	[(NSPopover*)id
+		setContentSize: value];
+}
+
+BOOL NSPopover_inst_isShown(void *id) {
+	return [(NSPopover*)id
+		isShown];
+}
+
+BOOL NSPopover_inst_isDetached(void *id) {
+	return [(NSPopover*)id
+		isDetached];
 }
 
 void* NSMenuItem_inst_initWithTitle_action_keyEquivalent_(void *id, void* string, void* selector, void* charCode) {
@@ -6769,6 +7116,14 @@ func NSApplication_sharedApplication() (
 	return
 }
 
+func NSControl_alloc() (
+	r0 NSControl,
+) {
+	ret := C.NSControl_type_alloc()
+	r0 = NSControl_fromPointer(ret)
+	return
+}
+
 func NSButton_alloc() (
 	r0 NSButton,
 ) {
@@ -7326,6 +7681,14 @@ func NSMenu_popUpContextMenu_withEvent_forView_withFont_(
 		objc.RefPointer(view),
 		objc.RefPointer(font),
 	)
+	return
+}
+
+func NSPopover_alloc() (
+	r0 NSPopover,
+) {
+	ret := C.NSPopover_type_alloc()
+	r0 = NSPopover_fromPointer(ret)
 	return
 }
 
@@ -8743,18 +9106,591 @@ func (x gen_NSApplication) SetMainMenu_(
 	return
 }
 
+type NSControlRef interface {
+	Pointer() uintptr
+	Init_asNSControl() NSControl
+}
+
+type gen_NSControl struct {
+	NSView
+}
+
+func NSControl_fromPointer(ptr unsafe.Pointer) NSControl {
+	return NSControl{gen_NSControl{
+		NSView_fromPointer(ptr),
+	}}
+}
+
+func NSControl_fromRef(ref objc.Ref) NSControl {
+	return NSControl_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSControl) InitWithFrame__asNSControl(
+	frameRect core.NSRect,
+) (
+	r0 NSControl,
+) {
+	ret := C.NSControl_inst_initWithFrame_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
+	)
+	r0 = NSControl_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) TakeDoubleValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeDoubleValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) TakeFloatValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeFloatValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) TakeIntValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeIntValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) TakeIntegerValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeIntegerValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) TakeObjectValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeObjectValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) TakeStringValueFrom_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_takeStringValueFrom_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) DrawWithExpansionFrame_inView_(
+	contentFrame core.NSRect,
+	view NSViewRef,
+) {
+	C.NSControl_inst_drawWithExpansionFrame_inView_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
+		objc.RefPointer(view),
+	)
+	return
+}
+
+func (x gen_NSControl) ExpansionFrameWithFrame_(
+	contentFrame core.NSRect,
+) (
+	r0 core.NSRect,
+) {
+	ret := C.NSControl_inst_expansionFrameWithFrame_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
+	)
+	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSControl) AbortEditing() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_abortEditing(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) CurrentEditor() (
+	r0 NSText,
+) {
+	ret := C.NSControl_inst_currentEditor(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSText_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) ValidateEditing() {
+	C.NSControl_inst_validateEditing(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_NSControl) EditWithFrame_editor_delegate_event_(
+	rect core.NSRect,
+	textObj NSTextRef,
+	delegate objc.Ref,
+	event NSEventRef,
+) {
+	C.NSControl_inst_editWithFrame_editor_delegate_event_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&rect)),
+		objc.RefPointer(textObj),
+		objc.RefPointer(delegate),
+		objc.RefPointer(event),
+	)
+	return
+}
+
+func (x gen_NSControl) EndEditing_(
+	textObj NSTextRef,
+) {
+	C.NSControl_inst_endEditing_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(textObj),
+	)
+	return
+}
+
+func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length_(
+	rect core.NSRect,
+	textObj NSTextRef,
+	delegate objc.Ref,
+	selStart core.NSInteger,
+	selLength core.NSInteger,
+) {
+	C.NSControl_inst_selectWithFrame_editor_delegate_start_length_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&rect)),
+		objc.RefPointer(textObj),
+		objc.RefPointer(delegate),
+		C.long(selStart),
+		C.long(selLength),
+	)
+	return
+}
+
+func (x gen_NSControl) SizeThatFits_(
+	size core.NSSize,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSControl_inst_sizeThatFits_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSControl) SizeToFit() {
+	C.NSControl_inst_sizeToFit(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_NSControl) SendAction_to_(
+	action objc.Selector,
+	target objc.Ref,
+) (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_sendAction_to_(
+		unsafe.Pointer(x.Pointer()),
+		action.SelectorAddress(),
+		objc.RefPointer(target),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) PerformClick_(
+	sender objc.Ref,
+) {
+	C.NSControl_inst_performClick_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSControl) MouseDown_(
+	event NSEventRef,
+) {
+	C.NSControl_inst_mouseDown_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(event),
+	)
+	return
+}
+
+func (x gen_NSControl) Init_asNSControl() (
+	r0 NSControl,
+) {
+	ret := C.NSControl_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSControl_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) IsEnabled() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_isEnabled(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetEnabled_(
+	value bool,
+) {
+	C.NSControl_inst_setEnabled_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) IntValue() (
+	r0 int32,
+) {
+	ret := C.NSControl_inst_intValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = int32(ret)
+	return
+}
+
+func (x gen_NSControl) SetIntValue_(
+	value int32,
+) {
+	C.NSControl_inst_setIntValue_(
+		unsafe.Pointer(x.Pointer()),
+		C.int(value),
+	)
+	return
+}
+
+func (x gen_NSControl) IntegerValue() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSControl_inst_integerValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSControl) SetIntegerValue_(
+	value core.NSInteger,
+) {
+	C.NSControl_inst_setIntegerValue_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+	return
+}
+
+func (x gen_NSControl) ObjectValue() (
+	r0 objc.Object,
+) {
+	ret := C.NSControl_inst_objectValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) SetObjectValue_(
+	value objc.Ref,
+) {
+	C.NSControl_inst_setObjectValue_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSControl) StringValue() (
+	r0 core.NSString,
+) {
+	ret := C.NSControl_inst_stringValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) SetStringValue_(
+	value core.NSStringRef,
+) {
+	C.NSControl_inst_setStringValue_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSControl) AttributedStringValue() (
+	r0 core.NSAttributedString,
+) {
+	ret := C.NSControl_inst_attributedStringValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSAttributedString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) SetAttributedStringValue_(
+	value core.NSAttributedStringRef,
+) {
+	C.NSControl_inst_setAttributedStringValue_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSControl) Font() (
+	r0 NSFont,
+) {
+	ret := C.NSControl_inst_font(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSFont_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) SetFont_(
+	value NSFontRef,
+) {
+	C.NSControl_inst_setFont_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSControl) UsesSingleLineMode() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_usesSingleLineMode(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetUsesSingleLineMode_(
+	value bool,
+) {
+	C.NSControl_inst_setUsesSingleLineMode_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) AllowsExpansionToolTips() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_allowsExpansionToolTips(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetAllowsExpansionToolTips_(
+	value bool,
+) {
+	C.NSControl_inst_setAllowsExpansionToolTips_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) IsHighlighted() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_isHighlighted(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetHighlighted_(
+	value bool,
+) {
+	C.NSControl_inst_setHighlighted_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) Action() (
+	r0 objc.Selector,
+) {
+	ret := C.NSControl_inst_action(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = objc.SelectorAt(ret)
+	return
+}
+
+func (x gen_NSControl) SetAction_(
+	value objc.Selector,
+) {
+	C.NSControl_inst_setAction_(
+		unsafe.Pointer(x.Pointer()),
+		value.SelectorAddress(),
+	)
+	return
+}
+
+func (x gen_NSControl) Target() (
+	r0 objc.Object,
+) {
+	ret := C.NSControl_inst_target(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSControl) SetTarget_(
+	value objc.Ref,
+) {
+	C.NSControl_inst_setTarget_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSControl) IsContinuous() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_isContinuous(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetContinuous_(
+	value bool,
+) {
+	C.NSControl_inst_setContinuous_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) Tag() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSControl_inst_tag(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSControl) SetTag_(
+	value core.NSInteger,
+) {
+	C.NSControl_inst_setTag_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+	return
+}
+
+func (x gen_NSControl) RefusesFirstResponder() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_refusesFirstResponder(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetRefusesFirstResponder_(
+	value bool,
+) {
+	C.NSControl_inst_setRefusesFirstResponder_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSControl) IgnoresMultiClick() (
+	r0 bool,
+) {
+	ret := C.NSControl_inst_ignoresMultiClick(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSControl) SetIgnoresMultiClick_(
+	value bool,
+) {
+	C.NSControl_inst_setIgnoresMultiClick_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
 type NSButtonRef interface {
 	Pointer() uintptr
 	Init_asNSButton() NSButton
 }
 
 type gen_NSButton struct {
-	objc.Object
+	NSControl
 }
 
 func NSButton_fromPointer(ptr unsafe.Pointer) NSButton {
 	return NSButton{gen_NSButton{
-		objc.Object_fromPointer(ptr),
+		NSControl_fromPointer(ptr),
 	}}
 }
 
@@ -10186,12 +11122,12 @@ type NSImageViewRef interface {
 }
 
 type gen_NSImageView struct {
-	objc.Object
+	NSControl
 }
 
 func NSImageView_fromPointer(ptr unsafe.Pointer) NSImageView {
 	return NSImageView{gen_NSImageView{
-		objc.Object_fromPointer(ptr),
+		NSControl_fromPointer(ptr),
 	}}
 }
 
@@ -11630,6 +12566,152 @@ func (x gen_NSMenu) SetDelegate_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
+	return
+}
+
+type NSPopoverRef interface {
+	Pointer() uintptr
+	Init_asNSPopover() NSPopover
+}
+
+type gen_NSPopover struct {
+	objc.Object
+}
+
+func NSPopover_fromPointer(ptr unsafe.Pointer) NSPopover {
+	return NSPopover{gen_NSPopover{
+		objc.Object_fromPointer(ptr),
+	}}
+}
+
+func NSPopover_fromRef(ref objc.Ref) NSPopover {
+	return NSPopover_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSPopover) PerformClose_(
+	sender objc.Ref,
+) {
+	C.NSPopover_inst_performClose_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSPopover) Close() {
+	C.NSPopover_inst_close(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_NSPopover) Init_asNSPopover() (
+	r0 NSPopover,
+) {
+	ret := C.NSPopover_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSPopover_fromPointer(ret)
+	return
+}
+
+func (x gen_NSPopover) Behavior() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSPopover_inst_behavior(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSPopover) SetBehavior_(
+	value core.NSInteger,
+) {
+	C.NSPopover_inst_setBehavior_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+	return
+}
+
+func (x gen_NSPopover) PositioningRect() (
+	r0 core.NSRect,
+) {
+	ret := C.NSPopover_inst_positioningRect(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSPopover) SetPositioningRect_(
+	value core.NSRect,
+) {
+	C.NSPopover_inst_setPositioningRect_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSPopover) Animates() (
+	r0 bool,
+) {
+	ret := C.NSPopover_inst_animates(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSPopover) SetAnimates_(
+	value bool,
+) {
+	C.NSPopover_inst_setAnimates_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSPopover) ContentSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSPopover_inst_contentSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSPopover) SetContentSize_(
+	value core.NSSize,
+) {
+	C.NSPopover_inst_setContentSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSPopover) IsShown() (
+	r0 bool,
+) {
+	ret := C.NSPopover_inst_isShown(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSPopover) IsDetached() (
+	r0 bool,
+) {
+	ret := C.NSPopover_inst_isDetached(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
 	return
 }
 
