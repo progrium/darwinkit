@@ -2,6 +2,7 @@ package cocoa
 
 import (
 	"github.com/progrium/macdriver/core"
+	"github.com/progrium/macdriver/objc"
 )
 
 type NSMenu struct {
@@ -34,4 +35,8 @@ func (menu NSMenu) RemoveItem(item NSMenuItemRef) {
 
 func (menu NSMenu) SetAutoenablesItems(b bool) {
 	menu.SetAutoenablesItems_(b)
+}
+
+func (menu NSMenu) SetDelegate(delegate objc.Object) {
+	menu.SetDelegate_(delegate)
 }

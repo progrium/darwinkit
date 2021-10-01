@@ -3,13 +3,14 @@ package cocoa
 type NSBackingStoreType uintptr
 
 const (
-	NSBorderlessWindowMask          = 0
-	NSTitledWindowMask              = 1 << 0
-	NSClosableWindowMask            = 1 << 1
-	NSMiniaturizableWindowMask      = 1 << 2
-	NSResizableWindowMask           = 1 << 3
-	NSTexturedBackgroundWindowMask  = 1 << 8
-	NSWindowStyleMaskFullScreen     = 1 << 14
+	NSBorderlessWindowMask         = 0
+	NSTitledWindowMask             = 1 << 0
+	NSClosableWindowMask           = 1 << 1
+	NSMiniaturizableWindowMask     = 1 << 2
+	NSResizableWindowMask          = 1 << 3
+	NSTexturedBackgroundWindowMask = 1 << 8
+	NSWindowStyleMaskFullScreen    = 1 << 14
+
 	NSFullSizeContentViewWindowMask = 32768
 
 	NSWindowTitleVisible = 0
@@ -23,8 +24,15 @@ const (
 	NSBackingStoreNonretained NSBackingStoreType = 1
 	NSBackingStoreBuffered    NSBackingStoreType = 2
 
-	NSFloatingWindowLevel = 3
-	NSMainMenuWindowLevel = 24
+	NSNormalWindowLevel      = 4
+	NSFloatingWindowLevel    = 5
+	NSSubmenuWindowLevel     = 6
+	NSTornOffMenuWindowLevel = 6
+	NSMainMenuWindowLevel    = 8
+	NSStatusWindowLevel      = 9
+	NSModalPanelWindowLevel  = 10
+	NSPopUpMenuWindowLevel   = 11
+	NSScreenSaverWindowLevel = 13
 
 	NSWindowCollectionBehaviorDefault                   = 0
 	NSWindowCollectionBehaviorCanJoinAllSpaces          = 1 << 0

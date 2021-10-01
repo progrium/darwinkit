@@ -1,0 +1,223 @@
+{
+  "Class": {
+    "Name": "NSPopover",
+    "Description": "A means to display additional content related to existing content on the screen.",
+    "Declaration": "@interface NSPopover : NSResponder",
+    "InstanceMethods": [
+      {
+        "Name": "showRelativeToRect:ofView:preferredEdge:",
+        "Description": "Shows the popover anchored to the specified view.",
+        "Declaration": "- (void)showRelativeToRect:(NSRect)positioningRect \n                    ofView:(NSView *)positioningView \n             preferredEdge:(NSRectEdge)preferredEdge;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "positioningRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "positioningView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "preferredEdge",
+            "Type": {
+              "Name": "NSRectEdge"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1532113-showrelativetorect?language=objc"
+      },
+      {
+        "Name": "performClose:",
+        "Description": "Attempts to close the popover.",
+        "Declaration": "- (IBAction)performClose:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1534290-performclose?language=objc"
+      },
+      {
+        "Name": "close",
+        "Description": "Forces the popover to close without consulting its delegate.",
+        "Declaration": "- (void)close;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526823-close?language=objc"
+      },
+      {
+        "Name": "init",
+        "Description": "",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1524631-initwithcoder?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "NSViewController",
+        "Description": "The view controller that manages the content of the popover.",
+        "Declaration": "@property(retain) IBOutlet NSViewController *contentViewController;",
+        "Type": {
+          "Name": "IBOutlet"
+        },
+        "Attrs": {
+          "retain": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526794-contentviewcontroller?language=objc"
+      },
+      {
+        "Name": "behavior",
+        "Description": "Specifies the behavior of the popover.",
+        "Declaration": "@property NSPopoverBehavior behavior;",
+        "Type": {
+          "Name": "NSPopoverBehavior"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc"
+      },
+      {
+        "Name": "positioningRect",
+        "Description": "The rectangle within the positioning view relative to which the popover should be positioned.",
+        "Declaration": "@property NSRect positioningRect;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc"
+      },
+      {
+        "Name": "appearance",
+        "Description": "The appearance of the popover.",
+        "Declaration": "@property(strong) NSAppearance *appearance;",
+        "Type": {
+          "Name": "NSAppearance",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc"
+      },
+      {
+        "Name": "effectiveAppearance",
+        "Description": "The appearance that will be used when the popover is displayed onscreen.",
+        "Declaration": "@property(readonly, strong) NSAppearance *effectiveAppearance;",
+        "Type": {
+          "Name": "NSAppearance",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526863-effectiveappearance?language=objc"
+      },
+      {
+        "Name": "animates",
+        "Description": "Specifies if the popover is to be animated.",
+        "Declaration": "@property BOOL animates;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc"
+      },
+      {
+        "Name": "contentSize",
+        "Description": "The content size of the popover.",
+        "Declaration": "@property NSSize contentSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1524677-contentsize?language=objc"
+      },
+      {
+        "Name": "shown",
+        "Description": "The display state of the popover.",
+        "Declaration": "@property(readonly, getter=isShown) BOOL shown;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isShown",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1535120-shown?language=objc"
+      },
+      {
+        "Name": "detached",
+        "Description": "A Boolean value that indicates whether the window created by a popover's detachment is automatically created.",
+        "Declaration": "@property(readonly, getter=isDetached) BOOL detached;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isDetached",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1534278-detached?language=objc"
+      },
+      {
+        "Name": "id",
+        "Description": "The delegate of the popover.",
+        "Declaration": "@property(weak) IBOutlet id\u003cNSPopoverDelegate\u003e delegate;",
+        "Type": {
+          "Name": "IBOutlet"
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.7+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nspopover?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-10-09T14:55:36.542623-04:00",
+  "Version": 2
+}

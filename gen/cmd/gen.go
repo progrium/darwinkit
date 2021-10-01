@@ -33,6 +33,7 @@ func main() {
 			loadFile("api/foundation/nsbundle.objc.json"),
 
 			loadFile("api/appkit/nsapplication.objc.json"),
+			loadFile("api/appkit/nscontrol.objc.json"),
 			loadFile("api/appkit/nsbutton.objc.json"),
 			loadFile("api/appkit/nsevent.objc.json"),
 			loadFile("api/appkit/nsfont.objc.json"),
@@ -42,6 +43,7 @@ func main() {
 			loadFile("api/appkit/nspasteboard.objc.json"),
 			loadFile("api/appkit/nslayoutmanager.objc.json"),
 			loadFile("api/appkit/nsmenu.objc.json"),
+			loadFile("api/appkit/nspopover.objc.json"),
 			loadFile("api/appkit/nsmenuitem.objc.json"),
 			loadFile("api/appkit/nsscreen.objc.json"),
 			loadFile("api/appkit/nsstatusbar.objc.json"),

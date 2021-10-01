@@ -131,9 +131,17 @@ void* NSNumber_type_numberWithBool_(BOOL value) {
 	return [NSNumber
 		numberWithBool: value];
 }
+void* NSNumber_type_numberWithInt_(int value) {
+	return [NSNumber
+		numberWithInt: value];
+}
 void* NSNumber_type_numberWithInteger_(long value) {
 	return [NSNumber
 		numberWithInteger: value];
+}
+void* NSNumber_type_numberWithUnsignedInt_(int value) {
+	return [NSNumber
+		numberWithUnsignedInt: value];
 }
 void* NSNumber_type_numberWithUnsignedInteger_(unsigned long value) {
 	return [NSNumber
@@ -322,6 +330,12 @@ void CALayer_inst_addSublayer_(void *id, void* layer) {
 void CALayer_inst_removeFromSuperlayer(void *id) {
 	[(CALayer*)id
 		removeFromSuperlayer];
+}
+
+void CALayer_inst_insertSublayer_atIndex_(void *id, void* layer, int idx) {
+	[(CALayer*)id
+		insertSublayer: layer
+		atIndex: idx];
 }
 
 void CALayer_inst_insertSublayer_below_(void *id, void* layer, void* sibling) {
@@ -1188,9 +1202,19 @@ void* NSNumber_inst_initWithBool_(void *id, BOOL value) {
 		initWithBool: value];
 }
 
+void* NSNumber_inst_initWithInt_(void *id, int value) {
+	return [(NSNumber*)id
+		initWithInt: value];
+}
+
 void* NSNumber_inst_initWithInteger_(void *id, long value) {
 	return [(NSNumber*)id
 		initWithInteger: value];
+}
+
+void* NSNumber_inst_initWithUnsignedInt_(void *id, int value) {
+	return [(NSNumber*)id
+		initWithUnsignedInt: value];
 }
 
 void* NSNumber_inst_initWithUnsignedInteger_(void *id, unsigned long value) {
@@ -1218,6 +1242,11 @@ BOOL NSNumber_inst_boolValue(void *id) {
 		boolValue];
 }
 
+int NSNumber_inst_intValue(void *id) {
+	return [(NSNumber*)id
+		intValue];
+}
+
 long NSNumber_inst_integerValue(void *id) {
 	return [(NSNumber*)id
 		integerValue];
@@ -1226,6 +1255,11 @@ long NSNumber_inst_integerValue(void *id) {
 unsigned long NSNumber_inst_unsignedIntegerValue(void *id) {
 	return [(NSNumber*)id
 		unsignedIntegerValue];
+}
+
+int NSNumber_inst_unsignedIntValue(void *id) {
+	return [(NSNumber*)id
+		unsignedIntValue];
 }
 
 void* NSNumber_inst_stringValue(void *id) {
@@ -1496,6 +1530,11 @@ void* NSString_inst_precomposedStringWithCanonicalMapping(void *id) {
 void* NSString_inst_precomposedStringWithCompatibilityMapping(void *id) {
 	return [(NSString*)id
 		precomposedStringWithCompatibilityMapping];
+}
+
+int NSString_inst_intValue(void *id) {
+	return [(NSString*)id
+		intValue];
 }
 
 long NSString_inst_integerValue(void *id) {
@@ -2229,6 +2268,18 @@ func NSNumber_numberWithBool_(
 	return
 }
 
+func NSNumber_numberWithInt_(
+	value int32,
+) (
+	r0 NSNumber,
+) {
+	ret := C.NSNumber_type_numberWithInt_(
+		C.int(value),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
 func NSNumber_numberWithInteger_(
 	value NSInteger,
 ) (
@@ -2236,6 +2287,18 @@ func NSNumber_numberWithInteger_(
 ) {
 	ret := C.NSNumber_type_numberWithInteger_(
 		C.long(value),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
+func NSNumber_numberWithUnsignedInt_(
+	value int32,
+) (
+	r0 NSNumber,
+) {
+	ret := C.NSNumber_type_numberWithUnsignedInt_(
+		C.int(value),
 	)
 	r0 = NSNumber_fromPointer(ret)
 	return
@@ -2689,6 +2752,18 @@ func (x gen_CALayer) AddSublayer_(
 func (x gen_CALayer) RemoveFromSuperlayer() {
 	C.CALayer_inst_removeFromSuperlayer(
 		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) InsertSublayer_atIndex_(
+	layer CALayerRef,
+	idx int32,
+) {
+	C.CALayer_inst_insertSublayer_atIndex_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(layer),
+		C.int(idx),
 	)
 	return
 }
@@ -4627,6 +4702,19 @@ func (x gen_NSNumber) InitWithBool_(
 	return
 }
 
+func (x gen_NSNumber) InitWithInt_(
+	value int32,
+) (
+	r0 NSNumber,
+) {
+	ret := C.NSNumber_inst_initWithInt_(
+		unsafe.Pointer(x.Pointer()),
+		C.int(value),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
 func (x gen_NSNumber) InitWithInteger_(
 	value NSInteger,
 ) (
@@ -4635,6 +4723,19 @@ func (x gen_NSNumber) InitWithInteger_(
 	ret := C.NSNumber_inst_initWithInteger_(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
+func (x gen_NSNumber) InitWithUnsignedInt_(
+	value int32,
+) (
+	r0 NSNumber,
+) {
+	ret := C.NSNumber_inst_initWithUnsignedInt_(
+		unsafe.Pointer(x.Pointer()),
+		C.int(value),
 	)
 	r0 = NSNumber_fromPointer(ret)
 	return
@@ -4699,6 +4800,16 @@ func (x gen_NSNumber) BoolValue() (
 	return
 }
 
+func (x gen_NSNumber) IntValue() (
+	r0 int32,
+) {
+	ret := C.NSNumber_inst_intValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = int32(ret)
+	return
+}
+
 func (x gen_NSNumber) IntegerValue() (
 	r0 NSInteger,
 ) {
@@ -4716,6 +4827,16 @@ func (x gen_NSNumber) UnsignedIntegerValue() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = NSUInteger(ret)
+	return
+}
+
+func (x gen_NSNumber) UnsignedIntValue() (
+	r0 int32,
+) {
+	ret := C.NSNumber_inst_unsignedIntValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = int32(ret)
 	return
 }
 
@@ -5375,6 +5496,16 @@ func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) IntValue() (
+	r0 int32,
+) {
+	ret := C.NSString_inst_intValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = int32(ret)
 	return
 }
 

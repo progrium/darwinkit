@@ -88,7 +88,7 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			FromCGoFmt: corePkg + "NSUInteger(%s)",
 			ToCGoFmt:   "C.ulong(%s)",
 		}
-	case "NSInteger", "NSWindowTitleVisibility", "NSWindowLevel", "NSApplicationActivationPolicy", "NSControlStateValue":
+	case "NSInteger", "NSWindowTitleVisibility", "NSWindowLevel", "NSApplicationActivationPolicy", "NSControlStateValue", "NSPopoverBehavior":
 		return typeMapping{
 			GoType:     corePkg + "NSInteger",
 			CType:      "long",
@@ -122,6 +122,13 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			CType:      "BOOL",
 			FromCGoFmt: "convertObjCBoolToGo(%s)",
 			ToCGoFmt:   "convertToObjCBool(%s)",
+		}
+	case "int":
+		return typeMapping{
+			GoType:     "int32",
+			CType:      "int",
+			FromCGoFmt: "int32(%s)",
+			ToCGoFmt:   "C.int(%s)",
 		}
 	case "SEL":
 		return typeMapping{

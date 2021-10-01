@@ -107,6 +107,14 @@ func (i NSMenuItem) SetTarget(obj objc.Object) {
 	i.SetTarget_(obj)
 }
 
+func (i NSMenuItem) SetView(obj NSViewRef) {
+	i.SetView_(obj)
+}
+
+func (i NSMenuItem) View() NSView {
+	return i.View()
+}
+
 // Action returns the menu item's action-method selector.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514825-action?language=objc
 func (i NSMenuItem) Action() objc.Selector {
