@@ -1,0 +1,2712 @@
+{
+  "Class": {
+    "Name": "NSLayoutManager",
+    "Description": "An object that coordinates the layout and display of text characters.",
+    "Declaration": "@interface NSLayoutManager : NSObject",
+    "Frameworks": [
+      "UIKit",
+      "AppKit"
+    ],
+    "Platforms": [
+      "iOS 7.0+",
+      "macOS 10.7+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Initializes a newly created layout manager object.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "Creates a layout manager from data in an unarchiver.",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403043-initwithcoder?language=objc"
+      },
+      {
+        "Name": "replaceTextStorage:",
+        "Description": "Replaces the layout manager's current text storage object with the specified object.",
+        "Declaration": "- (void)replaceTextStorage:(NSTextStorage *)newTextStorage;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "newTextStorage",
+            "Type": {
+              "Name": "NSTextStorage",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403227-replacetextstorage?language=objc"
+      },
+      {
+        "Name": "addTextContainer:",
+        "Description": "Appends the specified text container to the series of text containers where the layout manager arranges text.",
+        "Declaration": "- (void)addTextContainer:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402946-addtextcontainer?language=objc"
+      },
+      {
+        "Name": "insertTextContainer:atIndex:",
+        "Description": "Inserts a text container at the specified index in the list of text containers.",
+        "Declaration": "- (void)insertTextContainer:(NSTextContainer *)container \n                    atIndex:(NSUInteger)index;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403010-inserttextcontainer?language=objc"
+      },
+      {
+        "Name": "removeTextContainerAtIndex:",
+        "Description": "Removes the text container at the specified index and invalidates the layout as necessary.",
+        "Declaration": "- (void)removeTextContainerAtIndex:(NSUInteger)index;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403017-removetextcontaineratindex?language=objc"
+      },
+      {
+        "Name": "setTextContainer:forGlyphRange:",
+        "Description": "Associates a text container with the specified range of glyphs.",
+        "Declaration": "- (void)setTextContainer:(NSTextContainer *)container \n           forGlyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403241-settextcontainer?language=objc"
+      },
+      {
+        "Name": "textContainerChangedGeometry:",
+        "Description": "Invalidates the layout information, and possibly glyphs, for the specified text container and all subsequent text container objects.",
+        "Declaration": "- (void)textContainerChangedGeometry:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403091-textcontainerchangedgeometry?language=objc"
+      },
+      {
+        "Name": "textContainerChangedTextView:",
+        "Description": "Updates the information necessary to manage text view objects for the specified text container.",
+        "Declaration": "- (void)textContainerChangedTextView:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403229-textcontainerchangedtextview?language=objc"
+      },
+      {
+        "Name": "textContainerForGlyphAtIndex:effectiveRange:",
+        "Description": "Returns the text container that manages the layout for the specified glyph, causing layout to happen as necessary.",
+        "Declaration": "- (NSTextContainer *)textContainerForGlyphAtIndex:(NSUInteger)glyphIndex \n                                   effectiveRange:(NSRangePointer)effectiveGlyphRange;\n",
+        "Return": {
+          "Name": "NSTextContainer",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403110-textcontainerforglyphatindex?language=objc"
+      },
+      {
+        "Name": "textContainerForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:",
+        "Description": "Returns the text container that manages the layout for the specified glyph.",
+        "Declaration": "- (NSTextContainer *)textContainerForGlyphAtIndex:(NSUInteger)glyphIndex \n                                   effectiveRange:(NSRangePointer)effectiveGlyphRange \n                          withoutAdditionalLayout:(BOOL)flag;\n",
+        "Return": {
+          "Name": "NSTextContainer",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403055-textcontainerforglyphatindex?language=objc"
+      },
+      {
+        "Name": "usedRectForTextContainer:",
+        "Description": "Returns the bounding rectangle for the glyphs in the specified text container.",
+        "Declaration": "- (CGRect)usedRectForTextContainer:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402980-usedrectfortextcontainer?language=objc"
+      },
+      {
+        "Name": "invalidateDisplayForCharacterRange:",
+        "Description": "Invalidates display for the specified character range.",
+        "Declaration": "- (void)invalidateDisplayForCharacterRange:(NSRange)charRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402924-invalidatedisplayforcharacterran?language=objc"
+      },
+      {
+        "Name": "invalidateDisplayForGlyphRange:",
+        "Description": "Invalidates a range of glyphs, requiring new layout information, and updates the appropriate regions of any text views that display those glyphs.",
+        "Declaration": "- (void)invalidateDisplayForGlyphRange:(NSRange)glyphRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403118-invalidatedisplayforglyphrange?language=objc"
+      },
+      {
+        "Name": "invalidateGlyphsForCharacterRange:changeInLength:actualCharacterRange:",
+        "Description": "Invalidates and adjusts the glyphs in the specified character range.",
+        "Declaration": "- (void)invalidateGlyphsForCharacterRange:(NSRange)charRange \n                           changeInLength:(NSInteger)delta \n                     actualCharacterRange:(NSRangePointer)actualCharRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "actualCharRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403171-invalidateglyphsforcharacterrang?language=objc"
+      },
+      {
+        "Name": "invalidateLayoutForCharacterRange:actualCharacterRange:",
+        "Description": "Invalidates the layout information for the glyphs that map to the specified character range.",
+        "Declaration": "- (void)invalidateLayoutForCharacterRange:(NSRange)charRange \n                     actualCharacterRange:(NSRangePointer)actualCharRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "actualCharRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403248-invalidatelayoutforcharacterrang?language=objc"
+      },
+      {
+        "Name": "processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:",
+        "Description": "Notifies the layout manager when an edit action changes the contents of its text storage object.",
+        "Declaration": "- (void)processEditingForTextStorage:(NSTextStorage *)textStorage \n                              edited:(NSTextStorageEditActions)editMask \n                               range:(NSRange)newCharRange \n                      changeInLength:(NSInteger)delta \n                    invalidatedRange:(NSRange)invalidatedCharRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "textStorage",
+            "Type": {
+              "Name": "NSTextStorage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "editMask",
+            "Type": {
+              "Name": "NSTextStorageEditActions"
+            }
+          },
+          {
+            "Name": "newCharRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "invalidatedCharRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403065-processeditingfortextstorage?language=objc"
+      },
+      {
+        "Name": "ensureGlyphsForCharacterRange:",
+        "Description": "Forces the layout manager to generate glyphs for the specified character range if it hasn’t already.",
+        "Declaration": "- (void)ensureGlyphsForCharacterRange:(NSRange)charRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403189-ensureglyphsforcharacterrange?language=objc"
+      },
+      {
+        "Name": "ensureGlyphsForGlyphRange:",
+        "Description": "Forces the layout manager to generate glyphs for the specified glyph range if it hasn’t already.",
+        "Declaration": "- (void)ensureGlyphsForGlyphRange:(NSRange)glyphRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403219-ensureglyphsforglyphrange?language=objc"
+      },
+      {
+        "Name": "ensureLayoutForBoundingRect:inTextContainer:",
+        "Description": "Forces the layout manager to perform layout for the specified area in the specified text container if it hasn’t already.",
+        "Declaration": "- (void)ensureLayoutForBoundingRect:(CGRect)bounds \n                    inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "bounds",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402962-ensurelayoutforboundingrect?language=objc"
+      },
+      {
+        "Name": "ensureLayoutForCharacterRange:",
+        "Description": "Forces the layout manager to perform layout for the specified character range if it hasn’t already.",
+        "Declaration": "- (void)ensureLayoutForCharacterRange:(NSRange)charRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402986-ensurelayoutforcharacterrange?language=objc"
+      },
+      {
+        "Name": "ensureLayoutForGlyphRange:",
+        "Description": "Forces the layout manager to perform layout for the specified glyph range if it hasn’t already.",
+        "Declaration": "- (void)ensureLayoutForGlyphRange:(NSRange)glyphRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402939-ensurelayoutforglyphrange?language=objc"
+      },
+      {
+        "Name": "ensureLayoutForTextContainer:",
+        "Description": "Forces the layout manager to perform layout for the specified text container if it hasn’t already.",
+        "Declaration": "- (void)ensureLayoutForTextContainer:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402967-ensurelayoutfortextcontainer?language=objc"
+      },
+      {
+        "Name": "getGlyphsInRange:glyphs:properties:characterIndexes:bidiLevels:",
+        "Description": "Fills a passed-in buffer with a sequence of glyphs.",
+        "Declaration": "- (NSUInteger)getGlyphsInRange:(NSRange)glyphRange \n                        glyphs:(CGGlyph *)glyphBuffer \n                    properties:(NSGlyphProperty *)props \n              characterIndexes:(NSUInteger *)charIndexBuffer \n                    bidiLevels:(unsigned char *)bidiLevelBuffer;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "glyphBuffer",
+            "Type": {
+              "Name": "CGGlyph",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "props",
+            "Type": {
+              "Name": "NSGlyphProperty",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charIndexBuffer",
+            "Type": {
+              "Name": "NSUInteger",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bidiLevelBuffer",
+            "Type": {
+              "Name": "char",
+              "IsPtr": true,
+              "Annotations": [
+                "unsigned"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403104-getglyphsinrange?language=objc"
+      },
+      {
+        "Name": "CGGlyphAtIndex:",
+        "Description": "Returns the glyph at the specified index.",
+        "Declaration": "- (CGGlyph)CGGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "CGGlyph"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403039-cgglyphatindex?language=objc"
+      },
+      {
+        "Name": "CGGlyphAtIndex:isValidIndex:",
+        "Description": "Returns the glyph at the specified index along with information about whether the glyph index is valid.",
+        "Declaration": "- (CGGlyph)CGGlyphAtIndex:(NSUInteger)glyphIndex \n             isValidIndex:(BOOL *)isValidIndex;\n",
+        "Return": {
+          "Name": "CGGlyph"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "isValidIndex",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403132-cgglyphatindex?language=objc"
+      },
+      {
+        "Name": "setGlyphs:properties:characterIndexes:font:forGlyphRange:",
+        "Description": "Stores the initial glyphs and glyph properties for a character range.",
+        "Declaration": "- (void)setGlyphs:(const CGGlyph *)glyphs \n       properties:(const NSGlyphProperty *)props \n characterIndexes:(const NSUInteger *)charIndexes \n             font:(UIFont *)aFont \n    forGlyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphs",
+            "Type": {
+              "Name": "CGGlyph",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "props",
+            "Type": {
+              "Name": "NSGlyphProperty",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "charIndexes",
+            "Type": {
+              "Name": "NSUInteger",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "aFont",
+            "Type": {
+              "Name": "UIFont",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403030-setglyphs?language=objc"
+      },
+      {
+        "Name": "characterIndexForGlyphAtIndex:",
+        "Description": "Returns the index in the text storage for the first character of the specified glyph.",
+        "Declaration": "- (NSUInteger)characterIndexForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402944-characterindexforglyphatindex?language=objc"
+      },
+      {
+        "Name": "glyphIndexForCharacterAtIndex:",
+        "Description": "Returns the index of the first glyph of the character at the specified index.",
+        "Declaration": "- (NSUInteger)glyphIndexForCharacterAtIndex:(NSUInteger)charIndex;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "charIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403001-glyphindexforcharacteratindex?language=objc"
+      },
+      {
+        "Name": "isValidGlyphIndex:",
+        "Description": "Indicates whether the specified index refers to a valid glyph.",
+        "Declaration": "- (BOOL)isValidGlyphIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402950-isvalidglyphindex?language=objc"
+      },
+      {
+        "Name": "propertyForGlyphAtIndex:",
+        "Description": "Returns the glyph property of the glyph at the specified index.",
+        "Declaration": "- (NSGlyphProperty)propertyForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "NSGlyphProperty"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403014-propertyforglyphatindex?language=objc"
+      },
+      {
+        "Name": "setAttachmentSize:forGlyphRange:",
+        "Description": "Sets the size to use when drawing a glyph that represents an attachment.",
+        "Declaration": "- (void)setAttachmentSize:(CGSize)attachmentSize \n            forGlyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attachmentSize",
+            "Type": {
+              "Name": "CGSize"
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403047-setattachmentsize?language=objc"
+      },
+      {
+        "Name": "setDrawsOutsideLineFragment:forGlyphAtIndex:",
+        "Description": "Indicates whether the specified glyph exceeds the bounds of the line fragment for its layout.",
+        "Declaration": "- (void)setDrawsOutsideLineFragment:(BOOL)flag \n                    forGlyphAtIndex:(NSUInteger)glyphIndex;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402964-setdrawsoutsidelinefragment?language=objc"
+      },
+      {
+        "Name": "setExtraLineFragmentRect:usedRect:textContainer:",
+        "Description": "Sets the bounds and container for the extra line fragment.",
+        "Declaration": "- (void)setExtraLineFragmentRect:(CGRect)fragmentRect \n                        usedRect:(CGRect)usedRect \n                   textContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "fragmentRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "usedRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403071-setextralinefragmentrect?language=objc"
+      },
+      {
+        "Name": "setLineFragmentRect:forGlyphRange:usedRect:",
+        "Description": "Associates the line fragment bounds for the specified range of glyphs.",
+        "Declaration": "- (void)setLineFragmentRect:(CGRect)fragmentRect \n              forGlyphRange:(NSRange)glyphRange \n                   usedRect:(CGRect)usedRect;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "fragmentRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "usedRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402935-setlinefragmentrect?language=objc"
+      },
+      {
+        "Name": "setLocation:forStartOfGlyphRange:",
+        "Description": "Sets the location for the first glyph in the specified range.",
+        "Declaration": "- (void)setLocation:(CGPoint)location \nforStartOfGlyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402982-setlocation?language=objc"
+      },
+      {
+        "Name": "setNotShownAttribute:forGlyphAtIndex:",
+        "Description": "Sets the visibility of the glyph at the specified index.",
+        "Declaration": "- (void)setNotShownAttribute:(BOOL)flag \n             forGlyphAtIndex:(NSUInteger)glyphIndex;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403078-setnotshownattribute?language=objc"
+      },
+      {
+        "Name": "attachmentSizeForGlyphAtIndex:",
+        "Description": "Returns the size of the attachment glyph at the specified index.",
+        "Declaration": "- (CGSize)attachmentSizeForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "CGSize"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403099-attachmentsizeforglyphatindex?language=objc"
+      },
+      {
+        "Name": "drawsOutsideLineFragmentForGlyphAtIndex:",
+        "Description": "Indicates whether the glyph draws outside its line fragment rectangle.",
+        "Declaration": "- (BOOL)drawsOutsideLineFragmentForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403003-drawsoutsidelinefragmentforglyph?language=objc"
+      },
+      {
+        "Name": "firstUnlaidCharacterIndex",
+        "Description": "Returns the index for the first character in the layout manager that isn’t in the layout.",
+        "Declaration": "- (NSUInteger)firstUnlaidCharacterIndex;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403067-firstunlaidcharacterindex?language=objc"
+      },
+      {
+        "Name": "firstUnlaidGlyphIndex",
+        "Description": "Returns the index for the first glyph in the layout manager that isn’t in the layout.",
+        "Declaration": "- (NSUInteger)firstUnlaidGlyphIndex;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403245-firstunlaidglyphindex?language=objc"
+      },
+      {
+        "Name": "getFirstUnlaidCharacterIndex:glyphIndex:",
+        "Description": "Returns the indexes for the first character and glyph that have invalid layout information.",
+        "Declaration": "- (void)getFirstUnlaidCharacterIndex:(NSUInteger *)charIndex \n                          glyphIndex:(NSUInteger *)glyphIndex;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charIndex",
+            "Type": {
+              "Name": "NSUInteger",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403187-getfirstunlaidcharacterindex?language=objc"
+      },
+      {
+        "Name": "lineFragmentRectForGlyphAtIndex:effectiveRange:",
+        "Description": "Returns the rectangle for the line fragment where the glyph lies and (optionally), by reference, the entire range of glyphs in that fragment.",
+        "Declaration": "- (CGRect)lineFragmentRectForGlyphAtIndex:(NSUInteger)glyphIndex \n                           effectiveRange:(NSRangePointer)effectiveGlyphRange;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403140-linefragmentrectforglyphatindex?language=objc"
+      },
+      {
+        "Name": "lineFragmentRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:",
+        "Description": "Returns the line fragment rectangle that contains the glyph at the specified glyph index.",
+        "Declaration": "- (CGRect)lineFragmentRectForGlyphAtIndex:(NSUInteger)glyphIndex \n                           effectiveRange:(NSRangePointer)effectiveGlyphRange \n                  withoutAdditionalLayout:(BOOL)flag;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403116-linefragmentrectforglyphatindex?language=objc"
+      },
+      {
+        "Name": "lineFragmentUsedRectForGlyphAtIndex:effectiveRange:",
+        "Description": "Returns the usage rectangle for the line fragment and (optionally) returns the entire range of glyphs in that fragment.",
+        "Declaration": "- (CGRect)lineFragmentUsedRectForGlyphAtIndex:(NSUInteger)glyphIndex \n                               effectiveRange:(NSRangePointer)effectiveGlyphRange;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403193-linefragmentusedrectforglyphatin?language=objc"
+      },
+      {
+        "Name": "lineFragmentUsedRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:",
+        "Description": "Returns the usage rectangle for the line fragment and (optionally) returns the entire range of glyphs in that fragment.",
+        "Declaration": "- (CGRect)lineFragmentUsedRectForGlyphAtIndex:(NSUInteger)glyphIndex \n                               effectiveRange:(NSRangePointer)effectiveGlyphRange \n                      withoutAdditionalLayout:(BOOL)flag;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403035-linefragmentusedrectforglyphatin?language=objc"
+      },
+      {
+        "Name": "locationForGlyphAtIndex:",
+        "Description": "Returns the location for the specified glyph within its line fragment.",
+        "Declaration": "- (CGPoint)locationForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "CGPoint"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403239-locationforglyphatindex?language=objc"
+      },
+      {
+        "Name": "notShownAttributeForGlyphAtIndex:",
+        "Description": "Indicates whether the glyph at the specified index has a visible representation.",
+        "Declaration": "- (BOOL)notShownAttributeForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402931-notshownattributeforglyphatindex?language=objc"
+      },
+      {
+        "Name": "truncatedGlyphRangeInLineFragmentForGlyphAtIndex:",
+        "Description": "Returns the range of truncated glyphs for a line fragment that contains the specified index.",
+        "Declaration": "- (NSRange)truncatedGlyphRangeInLineFragmentForGlyphAtIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403203-truncatedglyphrangeinlinefragmen?language=objc"
+      },
+      {
+        "Name": "boundingRectForGlyphRange:inTextContainer:",
+        "Description": "Returns the bounding rectangle for the specified glyphs in a container.",
+        "Declaration": "- (CGRect)boundingRectForGlyphRange:(NSRange)glyphRange \n                    inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403255-boundingrectforglyphrange?language=objc"
+      },
+      {
+        "Name": "characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:",
+        "Description": "Returns the index of the character that lies beneath the specified point using the specified container's coordinate system.",
+        "Declaration": "- (NSUInteger)characterIndexForPoint:(CGPoint)point \n                     inTextContainer:(NSTextContainer *)container \nfractionOfDistanceBetweenInsertionPoints:(CGFloat *)partialFraction;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "partialFraction",
+            "Type": {
+              "Name": "CGFloat",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403028-characterindexforpoint?language=objc"
+      },
+      {
+        "Name": "characterRangeForGlyphRange:actualGlyphRange:",
+        "Description": "Returns the range of characters that correspond to the glyphs in the specified glyph range.",
+        "Declaration": "- (NSRange)characterRangeForGlyphRange:(NSRange)glyphRange \n                      actualGlyphRange:(NSRangePointer)actualGlyphRange;\n",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "actualGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403225-characterrangeforglyphrange?language=objc"
+      },
+      {
+        "Name": "enumerateEnclosingRectsForGlyphRange:withinSelectedGlyphRange:inTextContainer:usingBlock:",
+        "Description": "Enumerates enclosing rectangles for the specified glyph range in a text container.",
+        "Declaration": "- (void)enumerateEnclosingRectsForGlyphRange:(NSRange)glyphRange \n                    withinSelectedGlyphRange:(NSRange)selectedRange \n                             inTextContainer:(NSTextContainer *)textContainer \n                                  usingBlock:(void (^)(CGRect rect, BOOL *stop))block;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "selectedRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "textContainer",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "rect",
+                    "Type": {
+                      "Name": "CGRect"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403021-enumerateenclosingrectsforglyphr?language=objc"
+      },
+      {
+        "Name": "enumerateLineFragmentsForGlyphRange:usingBlock:",
+        "Description": "Enumerates line fragments intersecting with the specified glyph range.",
+        "Declaration": "- (void)enumerateLineFragmentsForGlyphRange:(NSRange)glyphRange \n                                 usingBlock:(void (^)(CGRect rect, CGRect usedRect, NSTextContainer *textContainer, NSRange glyphRange, BOOL *stop))block;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "rect",
+                    "Type": {
+                      "Name": "CGRect"
+                    }
+                  },
+                  {
+                    "Name": "usedRect",
+                    "Type": {
+                      "Name": "CGRect"
+                    }
+                  },
+                  {
+                    "Name": "textContainer",
+                    "Type": {
+                      "Name": "NSTextContainer",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "glyphRange",
+                    "Type": {
+                      "Name": "NSRange"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403160-enumeratelinefragmentsforglyphra?language=objc"
+      },
+      {
+        "Name": "fractionOfDistanceThroughGlyphForPoint:inTextContainer:",
+        "Description": "Returns the fraction of the distance between the glyph at the specified point and the next glyph.",
+        "Declaration": "- (CGFloat)fractionOfDistanceThroughGlyphForPoint:(CGPoint)point \n                                  inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403097-fractionofdistancethroughglyphfo?language=objc"
+      },
+      {
+        "Name": "getLineFragmentInsertionPointsForCharacterAtIndex:alternatePositions:inDisplayOrder:positions:characterIndexes:",
+        "Description": "Returns insertion points in bulk for a specified line fragment.",
+        "Declaration": "- (NSUInteger)getLineFragmentInsertionPointsForCharacterAtIndex:(NSUInteger)charIndex \n                                             alternatePositions:(BOOL)aFlag \n                                                 inDisplayOrder:(BOOL)dFlag \n                                                      positions:(CGFloat *)positions \n                                               characterIndexes:(NSUInteger *)charIndexes;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "charIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "aFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "dFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "positions",
+            "Type": {
+              "Name": "CGFloat",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charIndexes",
+            "Type": {
+              "Name": "NSUInteger",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403012-getlinefragmentinsertionpointsfo?language=objc"
+      },
+      {
+        "Name": "glyphIndexForPoint:inTextContainer:",
+        "Description": "Returns the index of the glyph at the specified location in a text container.",
+        "Declaration": "- (NSUInteger)glyphIndexForPoint:(CGPoint)point \n                 inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403112-glyphindexforpoint?language=objc"
+      },
+      {
+        "Name": "glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:",
+        "Description": "Returns the index of the glyph at the specified point using the container's coordinate system.",
+        "Declaration": "- (NSUInteger)glyphIndexForPoint:(CGPoint)point \n                 inTextContainer:(NSTextContainer *)container \n  fractionOfDistanceThroughGlyph:(CGFloat *)partialFraction;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "partialFraction",
+            "Type": {
+              "Name": "CGFloat",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402933-glyphindexforpoint?language=objc"
+      },
+      {
+        "Name": "glyphRangeForBoundingRect:inTextContainer:",
+        "Description": "Returns the smallest contiguous range for glyphs lying wholly or partially within the specified rectangle of the text container.",
+        "Declaration": "- (NSRange)glyphRangeForBoundingRect:(CGRect)bounds \n                     inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "bounds",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403053-glyphrangeforboundingrect?language=objc"
+      },
+      {
+        "Name": "glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:",
+        "Description": "Returns the smallest contiguous range for glyphs lying wholly or partially within the specified rectangle of the text container.",
+        "Declaration": "- (NSRange)glyphRangeForBoundingRectWithoutAdditionalLayout:(CGRect)bounds \n                                            inTextContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "bounds",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403183-glyphrangeforboundingrectwithout?language=objc"
+      },
+      {
+        "Name": "glyphRangeForTextContainer:",
+        "Description": "Returns the range of glyphs lying within the specified text container.",
+        "Declaration": "- (NSRange)glyphRangeForTextContainer:(NSTextContainer *)container;",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403041-glyphrangefortextcontainer?language=objc"
+      },
+      {
+        "Name": "glyphRangeForCharacterRange:actualCharacterRange:",
+        "Description": "Returns the range of glyphs that the specified range of characters generates.",
+        "Declaration": "- (NSRange)glyphRangeForCharacterRange:(NSRange)charRange \n                  actualCharacterRange:(NSRangePointer)actualCharRange;\n",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "actualCharRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402999-glyphrangeforcharacterrange?language=objc"
+      },
+      {
+        "Name": "rangeOfNominallySpacedGlyphsContainingIndex:",
+        "Description": "Returns the range of displayable glyphs that surround the glyph at the specified index.",
+        "Declaration": "- (NSRange)rangeOfNominallySpacedGlyphsContainingIndex:(NSUInteger)glyphIndex;",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403152-rangeofnominallyspacedglyphscont?language=objc"
+      },
+      {
+        "Name": "drawBackgroundForGlyphRange:atPoint:",
+        "Description": "Draws background marks for the specified glyphs, which must lie completely within a single text container.",
+        "Declaration": "- (void)drawBackgroundForGlyphRange:(NSRange)glyphsToShow \n                            atPoint:(CGPoint)origin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphsToShow",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "origin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402949-drawbackgroundforglyphrange?language=objc"
+      },
+      {
+        "Name": "drawGlyphsForGlyphRange:atPoint:",
+        "Description": "Draws the specified glyphs, which must lie completely within a single text container.",
+        "Declaration": "- (void)drawGlyphsForGlyphRange:(NSRange)glyphsToShow \n                        atPoint:(CGPoint)origin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphsToShow",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "origin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403158-drawglyphsforglyphrange?language=objc"
+      },
+      {
+        "Name": "drawStrikethroughForGlyphRange:strikethroughType:baselineOffset:lineFragmentRect:lineFragmentGlyphRange:containerOrigin:",
+        "Description": "Draws a strikethrough for the specified glyphs.",
+        "Declaration": "- (void)drawStrikethroughForGlyphRange:(NSRange)glyphRange \n                     strikethroughType:(NSUnderlineStyle)strikethroughVal \n                        baselineOffset:(CGFloat)baselineOffset \n                      lineFragmentRect:(CGRect)lineRect \n                lineFragmentGlyphRange:(NSRange)lineGlyphRange \n                       containerOrigin:(CGPoint)containerOrigin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "strikethroughVal",
+            "Type": {
+              "Name": "NSUnderlineStyle"
+            }
+          },
+          {
+            "Name": "baselineOffset",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "lineRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "lineGlyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "containerOrigin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403169-drawstrikethroughforglyphrange?language=objc"
+      },
+      {
+        "Name": "drawUnderlineForGlyphRange:underlineType:baselineOffset:lineFragmentRect:lineFragmentGlyphRange:containerOrigin:",
+        "Description": "Draws underlining for the glyphs in a specified range.",
+        "Declaration": "- (void)drawUnderlineForGlyphRange:(NSRange)glyphRange \n                     underlineType:(NSUnderlineStyle)underlineVal \n                    baselineOffset:(CGFloat)baselineOffset \n                  lineFragmentRect:(CGRect)lineRect \n            lineFragmentGlyphRange:(NSRange)lineGlyphRange \n                   containerOrigin:(CGPoint)containerOrigin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "underlineVal",
+            "Type": {
+              "Name": "NSUnderlineStyle"
+            }
+          },
+          {
+            "Name": "baselineOffset",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "lineRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "lineGlyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "containerOrigin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403079-drawunderlineforglyphrange?language=objc"
+      },
+      {
+        "Name": "fillBackgroundRectArray:count:forCharacterRange:color:",
+        "Description": "Fills background rectangles with a color.",
+        "Declaration": "- (void)fillBackgroundRectArray:(const CGRect *)rectArray \n                          count:(NSUInteger)rectCount \n              forCharacterRange:(NSRange)charRange \n                          color:(UIColor *)color;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rectArray",
+            "Type": {
+              "Name": "CGRect",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "rectCount",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "color",
+            "Type": {
+              "Name": "UIColor",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403161-fillbackgroundrectarray?language=objc"
+      },
+      {
+        "Name": "showCGGlyphs:positions:count:font:textMatrix:attributes:inContext:",
+        "Description": "Renders the glyphs at the specified positions, using the specified attributes.",
+        "Declaration": "- (void)showCGGlyphs:(const CGGlyph *)glyphs \n           positions:(const CGPoint *)positions \n               count:(NSInteger)glyphCount \n                font:(UIFont *)font \n          textMatrix:(CGAffineTransform)textMatrix \n          attributes:(NSDictionary\u003cNSAttributedStringKey, id\u003e *)attributes \n           inContext:(CGContextRef)CGContext;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphs",
+            "Type": {
+              "Name": "CGGlyph",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "positions",
+            "Type": {
+              "Name": "CGPoint",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "glyphCount",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "font",
+            "Type": {
+              "Name": "UIFont",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "textMatrix",
+            "Type": {
+              "Name": "CGAffineTransform"
+            }
+          },
+          {
+            "Name": "attributes",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSAttributedStringKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "CGContext",
+            "Type": {
+              "Name": "CGContextRef"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/3180379-showcgglyphs?language=objc"
+      },
+      {
+        "Name": "strikethroughGlyphRange:strikethroughType:lineFragmentRect:lineFragmentGlyphRange:containerOrigin:",
+        "Description": "Calculates and draws strikethrough for the specified glyphs.",
+        "Declaration": "- (void)strikethroughGlyphRange:(NSRange)glyphRange \n              strikethroughType:(NSUnderlineStyle)strikethroughVal \n               lineFragmentRect:(CGRect)lineRect \n         lineFragmentGlyphRange:(NSRange)lineGlyphRange \n                containerOrigin:(CGPoint)containerOrigin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "strikethroughVal",
+            "Type": {
+              "Name": "NSUnderlineStyle"
+            }
+          },
+          {
+            "Name": "lineRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "lineGlyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "containerOrigin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403009-strikethroughglyphrange?language=objc"
+      },
+      {
+        "Name": "underlineGlyphRange:underlineType:lineFragmentRect:lineFragmentGlyphRange:containerOrigin:",
+        "Description": "Calculates subranges to underline for the specified glyphs and draws the underlining as appropriate.",
+        "Declaration": "- (void)underlineGlyphRange:(NSRange)glyphRange \n              underlineType:(NSUnderlineStyle)underlineVal \n           lineFragmentRect:(CGRect)lineRect \n     lineFragmentGlyphRange:(NSRange)lineGlyphRange \n            containerOrigin:(CGPoint)containerOrigin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "underlineVal",
+            "Type": {
+              "Name": "NSUnderlineStyle"
+            }
+          },
+          {
+            "Name": "lineRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "lineGlyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "containerOrigin",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403114-underlineglyphrange?language=objc"
+      },
+      {
+        "Name": "setLayoutRect:forTextBlock:glyphRange:",
+        "Description": "Sets the layout rectangle that encloses the specified text block and glyph range.",
+        "Declaration": "- (void)setLayoutRect:(NSRect)rect \n         forTextBlock:(NSTextBlock *)block \n           glyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402929-setlayoutrect?language=objc"
+      },
+      {
+        "Name": "layoutRectForTextBlock:glyphRange:",
+        "Description": "Returns the rectangle for the layout of the specified text block and glyph range.",
+        "Declaration": "- (NSRect)layoutRectForTextBlock:(NSTextBlock *)block \n                      glyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403201-layoutrectfortextblock?language=objc"
+      },
+      {
+        "Name": "setBoundsRect:forTextBlock:glyphRange:",
+        "Description": "Sets the bounding rectangle that encloses the specified text block and glyph range.",
+        "Declaration": "- (void)setBoundsRect:(NSRect)rect \n         forTextBlock:(NSTextBlock *)block \n           glyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402991-setboundsrect?language=objc"
+      },
+      {
+        "Name": "boundsRectForTextBlock:glyphRange:",
+        "Description": "Returns the bounding rectangle that encloses the specified text block and glyph range.",
+        "Declaration": "- (NSRect)boundsRectForTextBlock:(NSTextBlock *)block \n                      glyphRange:(NSRange)glyphRange;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403138-boundsrectfortextblock?language=objc"
+      },
+      {
+        "Name": "layoutRectForTextBlock:atIndex:effectiveRange:",
+        "Description": "Returns the rectangle for the layout of the specified text block and glyph.",
+        "Declaration": "- (NSRect)layoutRectForTextBlock:(NSTextBlock *)block \n                         atIndex:(NSUInteger)glyphIndex \n                  effectiveRange:(NSRangePointer)effectiveGlyphRange;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403102-layoutrectfortextblock?language=objc"
+      },
+      {
+        "Name": "boundsRectForTextBlock:atIndex:effectiveRange:",
+        "Description": "Returns the bounding rectangle for the specified text block and glyph.",
+        "Declaration": "- (NSRect)boundsRectForTextBlock:(NSTextBlock *)block \n                         atIndex:(NSUInteger)glyphIndex \n                  effectiveRange:(NSRangePointer)effectiveGlyphRange;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Name": "NSTextBlock",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "glyphIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveGlyphRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402956-boundsrectfortextblock?language=objc"
+      },
+      {
+        "Name": "showAttachmentCell:inRect:characterIndex:",
+        "Description": "Draws an attachment cell.",
+        "Declaration": "- (void)showAttachmentCell:(NSCell *)cell \n                    inRect:(NSRect)rect \n            characterIndex:(NSUInteger)attachmentIndex;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cell",
+            "Type": {
+              "Name": "NSCell",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "attachmentIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402965-showattachmentcell?language=objc"
+      },
+      {
+        "Name": "rulerAccessoryViewForTextView:paragraphStyle:ruler:enabled:",
+        "Description": "Returns the accessory view that the text system uses for its ruler.",
+        "Declaration": "- (__kindof NSView *)rulerAccessoryViewForTextView:(NSTextView *)view \n                                    paragraphStyle:(NSParagraphStyle *)style \n                                             ruler:(NSRulerView *)ruler \n                                           enabled:(BOOL)isEnabled;\n",
+        "Return": {
+          "Name": "NSView",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSTextView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSParagraphStyle",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isEnabled",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403130-ruleraccessoryviewfortextview?language=objc"
+      },
+      {
+        "Name": "rulerMarkersForTextView:paragraphStyle:ruler:",
+        "Description": "Returns an array of text ruler objects for the current selection.",
+        "Declaration": "- (NSArray\u003cNSRulerMarker *\u003e *)rulerMarkersForTextView:(NSTextView *)view \n                                       paragraphStyle:(NSParagraphStyle *)style \n                                                ruler:(NSRulerView *)ruler;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSTextView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSParagraphStyle",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403163-rulermarkersfortextview?language=objc"
+      },
+      {
+        "Name": "layoutManagerOwnsFirstResponderInWindow:",
+        "Description": "Indicates whether the first responder in the specified window is a text view for the layout manager.",
+        "Declaration": "- (BOOL)layoutManagerOwnsFirstResponderInWindow:(NSWindow *)window;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "window",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403026-layoutmanagerownsfirstresponderi?language=objc"
+      },
+      {
+        "Name": "defaultLineHeightForFont:",
+        "Description": "Returns the default line height for a line of text that uses a specified font.",
+        "Declaration": "- (CGFloat)defaultLineHeightForFont:(NSFont *)theFont;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "theFont",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403007-defaultlineheightforfont?language=objc"
+      },
+      {
+        "Name": "defaultBaselineOffsetForFont:",
+        "Description": "Returns the default baseline offset that the layout manager's typesetter uses for the specified font.",
+        "Declaration": "- (CGFloat)defaultBaselineOffsetForFont:(NSFont *)theFont;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "theFont",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403058-defaultbaselineoffsetforfont?language=objc"
+      },
+      {
+        "Name": "addTemporaryAttributes:forCharacterRange:",
+        "Description": "Appends one or more temporary attributes to the attributes dictionary of the specified character range.",
+        "Declaration": "- (void)addTemporaryAttributes:(NSDictionary\u003cNSAttributedStringKey, id\u003e *)attrs \n             forCharacterRange:(NSRange)charRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attrs",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSAttributedStringKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403250-addtemporaryattributes?language=objc"
+      },
+      {
+        "Name": "addTemporaryAttribute:value:forCharacterRange:",
+        "Description": "Adds a temporary attribute to the characters in the specified range.",
+        "Declaration": "- (void)addTemporaryAttribute:(NSAttributedStringKey)attrName \n                        value:(id)value \n            forCharacterRange:(NSRange)charRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attrName",
+            "Type": {
+              "Name": "NSAttributedStringKey"
+            }
+          },
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403005-addtemporaryattribute?language=objc"
+      },
+      {
+        "Name": "setTemporaryAttributes:forCharacterRange:",
+        "Description": "Sets one or more temporary attributes for the specified character range.",
+        "Declaration": "- (void)setTemporaryAttributes:(NSDictionary\u003cNSAttributedStringKey, id\u003e *)attrs \n             forCharacterRange:(NSRange)charRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attrs",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSAttributedStringKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403037-settemporaryattributes?language=objc"
+      },
+      {
+        "Name": "removeTemporaryAttribute:forCharacterRange:",
+        "Description": "Removes a temporary attribute from the list of attributes for the specified character range.",
+        "Declaration": "- (void)removeTemporaryAttribute:(NSAttributedStringKey)attrName \n               forCharacterRange:(NSRange)charRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attrName",
+            "Type": {
+              "Name": "NSAttributedStringKey"
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403087-removetemporaryattribute?language=objc"
+      },
+      {
+        "Name": "temporaryAttribute:atCharacterIndex:effectiveRange:",
+        "Description": "Returns the value for the temporary attribute of a character, and the range it applies to.",
+        "Declaration": "- (id)temporaryAttribute:(NSAttributedStringKey)attrName \n        atCharacterIndex:(NSUInteger)location \n          effectiveRange:(NSRangePointer)range;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "attrName",
+            "Type": {
+              "Name": "NSAttributedStringKey"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402969-temporaryattribute?language=objc"
+      },
+      {
+        "Name": "temporaryAttribute:atCharacterIndex:longestEffectiveRange:inRange:",
+        "Description": "Returns the value for the temporary attribute of a character, and the maximum range it applies to.",
+        "Declaration": "- (id)temporaryAttribute:(NSAttributedStringKey)attrName \n        atCharacterIndex:(NSUInteger)location \n   longestEffectiveRange:(NSRangePointer)range \n                 inRange:(NSRange)rangeLimit;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "attrName",
+            "Type": {
+              "Name": "NSAttributedStringKey"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          },
+          {
+            "Name": "rangeLimit",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403223-temporaryattribute?language=objc"
+      },
+      {
+        "Name": "temporaryAttributesAtCharacterIndex:effectiveRange:",
+        "Description": "Returns the dictionary of temporary attributes for the specified character range.",
+        "Declaration": "- (NSDictionary\u003cNSAttributedStringKey, id\u003e *)temporaryAttributesAtCharacterIndex:(NSUInteger)charIndex \n                                                                  effectiveRange:(NSRangePointer)effectiveCharRange;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "charIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "effectiveCharRange",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403033-temporaryattributesatcharacterin?language=objc"
+      },
+      {
+        "Name": "temporaryAttributesAtCharacterIndex:longestEffectiveRange:inRange:",
+        "Description": "Returns the temporary attributes for a character, and the maximum range they apply to.",
+        "Declaration": "- (NSDictionary\u003cNSAttributedStringKey, id\u003e *)temporaryAttributesAtCharacterIndex:(NSUInteger)location \n                                                           longestEffectiveRange:(NSRangePointer)range \n                                                                         inRange:(NSRange)rangeLimit;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRangePointer"
+            }
+          },
+          {
+            "Name": "rangeLimit",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403060-temporaryattributesatcharacterin?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The layout manager’s delegate.",
+        "Declaration": "@property(nullable, weak, nonatomic) id\u003cNSLayoutManagerDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSLayoutManagerDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "nullable": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402920-delegate?language=objc"
+      },
+      {
+        "Name": "textStorage",
+        "Description": "The text storage object that contains the content to lay out.",
+        "Declaration": "@property(nullable, assign, nonatomic) NSTextStorage *textStorage;",
+        "Type": {
+          "Name": "NSTextStorage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403015-textstorage?language=objc"
+      },
+      {
+        "Name": "allowsNonContiguousLayout",
+        "Description": "A Boolean value that indicates whether the layout manager allows noncontiguous layout.",
+        "Declaration": "@property(nonatomic) BOOL allowsNonContiguousLayout;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403197-allowsnoncontiguouslayout?language=objc"
+      },
+      {
+        "Name": "hasNonContiguousLayout",
+        "Description": "A Boolean value that indicates whether the layout manager currently has any areas of noncontiguous layout.",
+        "Declaration": "@property(readonly, nonatomic) BOOL hasNonContiguousLayout;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403207-hasnoncontiguouslayout?language=objc"
+      },
+      {
+        "Name": "showsInvisibleCharacters",
+        "Description": "A Boolean value that indicates whether to substitute visible glyphs for whitespace and other typically invisible characters.",
+        "Declaration": "@property(nonatomic) BOOL showsInvisibleCharacters;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403254-showsinvisiblecharacters?language=objc"
+      },
+      {
+        "Name": "showsControlCharacters",
+        "Description": "A Boolean value that indicates whether the layout manager substitutes visible glyphs for control characters in the layout.",
+        "Declaration": "@property(nonatomic) BOOL showsControlCharacters;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402912-showscontrolcharacters?language=objc"
+      },
+      {
+        "Name": "usesFontLeading",
+        "Description": "A Boolean value that indicates whether the layout manager uses the leading of the font.",
+        "Declaration": "@property(nonatomic) BOOL usesFontLeading;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403156-usesfontleading?language=objc"
+      },
+      {
+        "Name": "backgroundLayoutEnabled",
+        "Description": "A Boolean value that indicates whether the layout manager generates glyphs and lays them out when the app's run loop is idle.",
+        "Declaration": "@property BOOL backgroundLayoutEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402952-backgroundlayoutenabled?language=objc"
+      },
+      {
+        "Name": "limitsLayoutForSuspiciousContents",
+        "Description": "A Boolean value that indicates whether the layout manager avoids laying out unusually long or suspicious input.",
+        "Declaration": "@property BOOL limitsLayoutForSuspiciousContents;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/3021179-limitslayoutforsuspiciouscontent?language=objc"
+      },
+      {
+        "Name": "usesDefaultHyphenation",
+        "Description": "A Boolean value that indicates whether the layout manager uses the default hyphenation rules to wrap lines.",
+        "Declaration": "@property BOOL usesDefaultHyphenation;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/3180380-usesdefaulthyphenation?language=objc"
+      },
+      {
+        "Name": "textContainers",
+        "Description": "The current text containers of the layout manager.",
+        "Declaration": "@property(readonly, nonatomic) NSArray\u003cNSTextContainer *\u003e *textContainers;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403144-textcontainers?language=objc"
+      },
+      {
+        "Name": "glyphGenerator",
+        "Description": "The glyph generator that the layout manager uses.",
+        "Declaration": "@property(strong) NSGlyphGenerator *glyphGenerator;",
+        "Type": {
+          "Name": "NSGlyphGenerator",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403069-glyphgenerator?language=objc"
+      },
+      {
+        "Name": "numberOfGlyphs",
+        "Description": "The number of glyphs in the layout manager.",
+        "Declaration": "@property(readonly, nonatomic) NSUInteger numberOfGlyphs;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402937-numberofglyphs?language=objc"
+      },
+      {
+        "Name": "extraLineFragmentRect",
+        "Description": "The rectangle for the extra line fragment at the end of a document.",
+        "Declaration": "@property(readonly, nonatomic) CGRect extraLineFragmentRect;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403175-extralinefragmentrect?language=objc"
+      },
+      {
+        "Name": "extraLineFragmentTextContainer",
+        "Description": "The text container for the extra line fragment rectangle.",
+        "Declaration": "@property(nullable, readonly, nonatomic) NSTextContainer *extraLineFragmentTextContainer;",
+        "Type": {
+          "Name": "NSTextContainer",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1403165-extralinefragmenttextcontainer?language=objc"
+      },
+      {
+        "Name": "extraLineFragmentUsedRect",
+        "Description": "The rectangle that encloses the insertion point in the extra line fragment rectangle.",
+        "Declaration": "@property(readonly, nonatomic) CGRect extraLineFragmentUsedRect;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nslayoutmanager/1402988-extralinefragmentusedrect?language=objc"
+      },
+      {
+        "Name": "defaultAttachmentScaling",
+        "Description": "The default amount of scaling to apply when an attachment image is too large to fit in a text container.",
+        "Declaration": "@property NSImageScaling defaultAttachmentScaling;",
+        "Type": {
+          "Name": "NSImageScaling"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403045-defaultattachmentscaling?language=objc"
+      },
+      {
+        "Name": "firstTextView",
+        "Description": "The first text view in the layout manager’s series of text views.",
+        "Declaration": "@property(nullable, readonly, assign) NSTextView *firstTextView;",
+        "Type": {
+          "Name": "NSTextView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1402995-firsttextview?language=objc"
+      },
+      {
+        "Name": "textViewForBeginningOfSelection",
+        "Description": "The text view that contains the first glyph in the selection.",
+        "Declaration": "@property(nullable, readonly, assign) NSTextView *textViewForBeginningOfSelection;",
+        "Type": {
+          "Name": "NSTextView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403089-textviewforbeginningofselection?language=objc"
+      },
+      {
+        "Name": "typesetter",
+        "Description": "The current typesetter.",
+        "Declaration": "@property(strong) __kindof NSTypesetter *typesetter;",
+        "Type": {
+          "Name": "NSTypesetter",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403205-typesetter?language=objc"
+      },
+      {
+        "Name": "typesetterBehavior",
+        "Description": "The default typesetter behavior.",
+        "Declaration": "@property NSTypesetterBehavior typesetterBehavior;",
+        "Type": {
+          "Name": "NSTypesetterBehavior"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nslayoutmanager/1403199-typesetterbehavior?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T18:52:51.74751-07:00",
+  "Version": 2
+}

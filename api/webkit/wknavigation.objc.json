@@ -1,0 +1,34 @@
+{
+  "Class": {
+    "Name": "WKNavigation",
+    "Description": "An object that tracks the loading progress of a webpage.",
+    "Declaration": "@interface WKNavigation : NSObject",
+    "Frameworks": [
+      "WebKit"
+    ],
+    "Platforms": [
+      "iOS 8.0+",
+      "macOS 10.10+",
+      "Mac Catalyst 13.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/webkit/wknavigation?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "effectiveContentMode",
+        "Description": "The content mode WebKit uses to load the webpage.",
+        "Declaration": "@property(nonatomic, readonly) WKContentMode effectiveContentMode;",
+        "Type": {
+          "Name": "WKContentMode"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wknavigation/3229061-effectivecontentmode?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-31T14:16:09.750788-07:00",
+  "Version": 2
+}

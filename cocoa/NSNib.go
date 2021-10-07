@@ -6,17 +6,15 @@ import (
 )
 
 type NSNib struct {
-	objc.Object
+	gen_NSNib
 }
 
 func NSNib_InitWithNibNamed_Bundle(name string, bundle NSBundle) NSNib {
-	return NSNib{objc.Get("NSNib").Alloc().Send("initWithNibNamed:bundle:",
-		core.String(name), bundle)}
+	return NSNib_fromRef(NSNib_alloc().Send("initWithNibNamed:bundle:", core.String(name), bundle))
 }
 
-func NSNib_InitWithNibData_Bundle(data core.NSData, bundle NSBundle) NSNib {
-	return NSNib{objc.Get("NSNib").Alloc().Send("initWithNibData:bundle:",
-		data, bundle)}
+func NSNib_InitWithNibData_Bundle(data core.NSDataRef, bundle NSBundleRef) NSNib {
+	return NSNib_alloc().InitWithNibData_bundle__asNSNib(data, bundle)
 }
 
 func (nib NSNib) InstantiateWithOwner_TopLevelObjects(owner objc.Object) (core.NSArray, bool) {

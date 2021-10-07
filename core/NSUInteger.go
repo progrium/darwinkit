@@ -1,3 +1,3 @@
 package core
 
-type NSUInteger uintptr
+type NSUInteger uint

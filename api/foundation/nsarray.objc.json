@@ -1,0 +1,2219 @@
+{
+  "Class": {
+    "Name": "NSArray",
+    "Description": "A static ordered collection of objects.",
+    "Declaration": "@interface NSArray\u003c__covariant ObjectType\u003e : NSObject",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Initializes a newly allocated array.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc"
+      },
+      {
+        "Name": "initWithArray:",
+        "Description": "Initializes a newly allocated array by placing in it the objects contained in a given array.",
+        "Declaration": "- (instancetype)initWithArray:(NSArray\u003cObjectType\u003e *)array;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc"
+      },
+      {
+        "Name": "initWithArray:copyItems:",
+        "Description": "Initializes a newly allocated array using anArray as the source of data objects for the array.",
+        "Declaration": "- (instancetype)initWithArray:(NSArray\u003cObjectType\u003e *)array \n                    copyItems:(BOOL)flag;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408557-initwitharray?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfFile:",
+        "Description": "Initializes a newly allocated array with the contents of the file specified by a given path.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)initWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1413844-initwithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:",
+        "Description": "Initializes a newly allocated array with the contents of the location specified by a given URL.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)initWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1410518-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithObjects:",
+        "Description": "Initializes a newly allocated array by placing in it the objects in the argument list.",
+        "Declaration": "- (instancetype)initWithObjects:(ObjectType)firstObj, ...;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "firstObj",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "...",
+            "Type": {}
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460068-initwithobjects?language=objc"
+      },
+      {
+        "Name": "initWithObjects:count:",
+        "Description": "Initializes a newly allocated array to include a given number of objects from a given C array.",
+        "Declaration": "- (instancetype)initWithObjects:(ObjectType  _Nonnull const *)objects \n                          count:(NSUInteger)cnt;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "cnt",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415056-initwithobjects?language=objc"
+      },
+      {
+        "Name": "containsObject:",
+        "Description": "Returns a Boolean value that indicates whether a given object is present in the array.",
+        "Declaration": "- (BOOL)containsObject:(ObjectType)anObject;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1407477-containsobject?language=objc"
+      },
+      {
+        "Name": "getObjects:",
+        "Description": "Copies all the objects contained in the array to aBuffer.",
+        "Declaration": "- (void)getObjects:(ObjectType  _Nonnull *)objects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1410317-getobjects?language=objc"
+      },
+      {
+        "Name": "getObjects:range:",
+        "Description": "Copies references to objects contained in the array that fall within the specified range to aBuffer.",
+        "Declaration": "- (void)getObjects:(ObjectType  _Nonnull *)objects \n             range:(NSRange)range;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414725-getobjects?language=objc"
+      },
+      {
+        "Name": "objectAtIndex:",
+        "Description": "Returns the object located at the specified index.",
+        "Declaration": "- (ObjectType)objectAtIndex:(NSUInteger)index;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417555-objectatindex?language=objc"
+      },
+      {
+        "Name": "objectAtIndexedSubscript:",
+        "Description": "Returns the object at the specified index.",
+        "Declaration": "- (ObjectType)objectAtIndexedSubscript:(NSUInteger)idx;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "idx",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414084-objectatindexedsubscript?language=objc"
+      },
+      {
+        "Name": "objectsAtIndexes:",
+        "Description": "Returns an array containing the objects in the array at the indexes specified by a given index set.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)objectsAtIndexes:(NSIndexSet *)indexes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411296-objectsatindexes?language=objc"
+      },
+      {
+        "Name": "objectEnumerator",
+        "Description": "Returns an enumerator object that lets you access each object in the array.",
+        "Declaration": "- (NSEnumerator\u003cObjectType\u003e *)objectEnumerator;",
+        "Return": {
+          "Name": "NSEnumerator",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1416048-objectenumerator?language=objc"
+      },
+      {
+        "Name": "reverseObjectEnumerator",
+        "Description": "Returns an enumerator object that lets you access each object in the array, in reverse order.",
+        "Declaration": "- (NSEnumerator\u003cObjectType\u003e *)reverseObjectEnumerator;",
+        "Return": {
+          "Name": "NSEnumerator",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415734-reverseobjectenumerator?language=objc"
+      },
+      {
+        "Name": "indexOfObject:",
+        "Description": "Returns the lowest index whose corresponding array value is equal to a given object.",
+        "Declaration": "- (NSUInteger)indexOfObject:(ObjectType)anObject;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417076-indexofobject?language=objc"
+      },
+      {
+        "Name": "indexOfObject:inRange:",
+        "Description": "Returns the lowest index within a specified range whose corresponding array value is equal to a given object .",
+        "Declaration": "- (NSUInteger)indexOfObject:(ObjectType)anObject \n                    inRange:(NSRange)range;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415248-indexofobject?language=objc"
+      },
+      {
+        "Name": "indexOfObjectIdenticalTo:",
+        "Description": "Returns the lowest index whose corresponding array value is identical to a given object.",
+        "Declaration": "- (NSUInteger)indexOfObjectIdenticalTo:(ObjectType)anObject;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1410847-indexofobjectidenticalto?language=objc"
+      },
+      {
+        "Name": "indexOfObjectIdenticalTo:inRange:",
+        "Description": "Returns the lowest index within a specified range whose corresponding array value is equal to a given object .",
+        "Declaration": "- (NSUInteger)indexOfObjectIdenticalTo:(ObjectType)anObject \n                               inRange:(NSRange)range;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415805-indexofobjectidenticalto?language=objc"
+      },
+      {
+        "Name": "indexOfObjectPassingTest:",
+        "Description": "Returns the index of the first object in the array that passes a test in a given block.",
+        "Declaration": "- (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408043-indexofobjectpassingtest?language=objc"
+      },
+      {
+        "Name": "indexOfObjectWithOptions:passingTest:",
+        "Description": "Returns the index of an object in the array that passes a test in a given block for a given set of enumeration options.",
+        "Declaration": "- (NSUInteger)indexOfObjectWithOptions:(NSEnumerationOptions)opts \n                           passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417053-indexofobjectwithoptions?language=objc"
+      },
+      {
+        "Name": "indexOfObjectAtIndexes:options:passingTest:",
+        "Description": "Returns the index, from a given set of indexes, of the first object in the array that passes a test in a given block for a given set of enumeration options.",
+        "Declaration": "- (NSUInteger)indexOfObjectAtIndexes:(NSIndexSet *)s \n                             options:(NSEnumerationOptions)opts \n                         passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "s",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1407652-indexofobjectatindexes?language=objc"
+      },
+      {
+        "Name": "indexesOfObjectsPassingTest:",
+        "Description": "Returns the indexes of objects in the array that pass a test in a given block.",
+        "Declaration": "- (NSIndexSet *)indexesOfObjectsPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;",
+        "Return": {
+          "Name": "NSIndexSet",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417603-indexesofobjectspassingtest?language=objc"
+      },
+      {
+        "Name": "indexesOfObjectsWithOptions:passingTest:",
+        "Description": "Returns the indexes of objects in the array that pass a test in a given block for a given set of enumeration options.",
+        "Declaration": "- (NSIndexSet *)indexesOfObjectsWithOptions:(NSEnumerationOptions)opts \n                                passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;\n",
+        "Return": {
+          "Name": "NSIndexSet",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415087-indexesofobjectswithoptions?language=objc"
+      },
+      {
+        "Name": "indexesOfObjectsAtIndexes:options:passingTest:",
+        "Description": "Returns the indexes, from a given set of indexes, of objects in the array that pass a test in a given block for a given set of enumeration options.",
+        "Declaration": "- (NSIndexSet *)indexesOfObjectsAtIndexes:(NSIndexSet *)s \n                                  options:(NSEnumerationOptions)opts \n                              passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;\n",
+        "Return": {
+          "Name": "NSIndexSet",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "s",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1413512-indexesofobjectsatindexes?language=objc"
+      },
+      {
+        "Name": "indexOfObject:inSortedRange:options:usingComparator:",
+        "Description": "Returns the index, within a specified range, of an object compared with elements in the array using a given NSComparator block.",
+        "Declaration": "- (NSUInteger)indexOfObject:(ObjectType)obj \n              inSortedRange:(NSRange)r \n                    options:(NSBinarySearchingOptions)opts \n            usingComparator:(NSComparator)cmp;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "obj",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "r",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSBinarySearchingOptions"
+            }
+          },
+          {
+            "Name": "cmp",
+            "Type": {
+              "Name": "NSComparator"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412722-indexofobject?language=objc"
+      },
+      {
+        "Name": "makeObjectsPerformSelector:",
+        "Description": "Sends to each object in the array the message identified by a given selector, starting with the first object and continuing through the array to the last object.",
+        "Declaration": "- (void)makeObjectsPerformSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460115-makeobjectsperformselector?language=objc"
+      },
+      {
+        "Name": "makeObjectsPerformSelector:withObject:",
+        "Description": "Sends the aSelector message to each object in the array, starting with the first object and continuing through the array to the last object.",
+        "Declaration": "- (void)makeObjectsPerformSelector:(SEL)aSelector \n                        withObject:(id)argument;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "argument",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460107-makeobjectsperformselector?language=objc"
+      },
+      {
+        "Name": "enumerateObjectsUsingBlock:",
+        "Description": "Executes a given block using each object in the array, starting with the first object and continuing through the array to the last object.",
+        "Declaration": "- (void)enumerateObjectsUsingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415846-enumerateobjectsusingblock?language=objc"
+      },
+      {
+        "Name": "enumerateObjectsWithOptions:usingBlock:",
+        "Description": "Executes a given block using each object in the array with the specified options.",
+        "Declaration": "- (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts \n                         usingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1413010-enumerateobjectswithoptions?language=objc"
+      },
+      {
+        "Name": "enumerateObjectsAtIndexes:options:usingBlock:",
+        "Description": "Executes a given block using the objects in the array at the specified indexes.",
+        "Declaration": "- (void)enumerateObjectsAtIndexes:(NSIndexSet *)s \n                          options:(NSEnumerationOptions)opts \n                       usingBlock:(void (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "s",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "idx",
+                    "Type": {
+                      "Name": "NSUInteger"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417577-enumerateobjectsatindexes?language=objc"
+      },
+      {
+        "Name": "firstObjectCommonWithArray:",
+        "Description": "Returns the first object contained in the receiving array that’s equal to an object in another given array.",
+        "Declaration": "- (ObjectType)firstObjectCommonWithArray:(NSArray\u003cObjectType\u003e *)otherArray;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "otherArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408825-firstobjectcommonwitharray?language=objc"
+      },
+      {
+        "Name": "isEqualToArray:",
+        "Description": "Compares the receiving array to another array.",
+        "Declaration": "- (BOOL)isEqualToArray:(NSArray\u003cObjectType\u003e *)otherArray;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "otherArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411770-isequaltoarray?language=objc"
+      },
+      {
+        "Name": "arrayByAddingObject:",
+        "Description": "Returns a new array that is a copy of the receiving array with a given object added to the end.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)arrayByAddingObject:(ObjectType)anObject;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408534-arraybyaddingobject?language=objc"
+      },
+      {
+        "Name": "arrayByAddingObjectsFromArray:",
+        "Description": "Returns a new array that is a copy of the receiving array with the objects contained in another array added to the end.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)arrayByAddingObjectsFromArray:(NSArray\u003cObjectType\u003e *)otherArray;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "otherArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412087-arraybyaddingobjectsfromarray?language=objc"
+      },
+      {
+        "Name": "filteredArrayUsingPredicate:",
+        "Description": "Evaluates a given predicate against each object in the receiving array and returns a new array containing the objects for which the predicate returns true.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)filteredArrayUsingPredicate:(NSPredicate *)predicate;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "predicate",
+            "Type": {
+              "Name": "NSPredicate",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411033-filteredarrayusingpredicate?language=objc"
+      },
+      {
+        "Name": "subarrayWithRange:",
+        "Description": "Returns a new array containing the receiving array’s elements that fall within the limits specified by a given range.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)subarrayWithRange:(NSRange)range;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415157-subarraywithrange?language=objc"
+      },
+      {
+        "Name": "sortedArrayUsingFunction:context:",
+        "Description": "Returns a new array that lists the receiving array’s elements in ascending order as defined by the comparison function comparator.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayUsingFunction:(NSInteger (*)(ObjectType, ObjectType, void *))comparator \n                                          context:(void *)context;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "comparator",
+            "Type": {
+              "FuncPtr": {
+                "Return": {
+                  "Name": "NSInteger"
+                },
+                "Args": [
+                  {
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Type": {
+                      "Name": "void",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408213-sortedarrayusingfunction?language=objc"
+      },
+      {
+        "Name": "sortedArrayUsingFunction:context:hint:",
+        "Description": "Returns a new array that lists the receiving array’s elements in ascending order as defined by the comparison function comparator.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayUsingFunction:(NSInteger (*)(ObjectType, ObjectType, void *))comparator \n                                          context:(void *)context \n                                             hint:(NSData *)hint;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "comparator",
+            "Type": {
+              "FuncPtr": {
+                "Return": {
+                  "Name": "NSInteger"
+                },
+                "Args": [
+                  {
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Type": {
+                      "Name": "void",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "hint",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414839-sortedarrayusingfunction?language=objc"
+      },
+      {
+        "Name": "sortedArrayUsingDescriptors:",
+        "Description": "Returns a copy of the receiving array sorted as specified by a given array of sort descriptors.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayUsingDescriptors:(NSArray\u003cNSSortDescriptor *\u003e *)sortDescriptors;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "sortDescriptors",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSSortDescriptor",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1415069-sortedarrayusingdescriptors?language=objc"
+      },
+      {
+        "Name": "sortedArrayUsingSelector:",
+        "Description": "Returns an array that lists the receiving array’s elements in ascending order, as determined by the comparison method specified by a given selector.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayUsingSelector:(SEL)comparator;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "comparator",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1410025-sortedarrayusingselector?language=objc"
+      },
+      {
+        "Name": "sortedArrayUsingComparator:",
+        "Description": "Returns an array that lists the receiving array’s elements in ascending order, as determined by the comparison method specified by a given NSComparator block.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayUsingComparator:(NSComparator)cmptr;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "cmptr",
+            "Type": {
+              "Name": "NSComparator"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411195-sortedarrayusingcomparator?language=objc"
+      },
+      {
+        "Name": "sortedArrayWithOptions:usingComparator:",
+        "Description": "Returns an array that lists the receiving array’s elements in ascending order, as determined by the comparison method specified by a given NSComparator block.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)sortedArrayWithOptions:(NSSortOptions)opts \n                                usingComparator:(NSComparator)cmptr;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSSortOptions"
+            }
+          },
+          {
+            "Name": "cmptr",
+            "Type": {
+              "Name": "NSComparator"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1417804-sortedarraywithoptions?language=objc"
+      },
+      {
+        "Name": "componentsJoinedByString:",
+        "Description": "Constructs and returns an NSString object that is the result of interposing a given separator between the elements of the array.",
+        "Declaration": "- (NSString *)componentsJoinedByString:(NSString *)separator;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "separator",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412075-componentsjoinedbystring?language=objc"
+      },
+      {
+        "Name": "descriptionWithLocale:",
+        "Description": "Returns a string that represents the contents of the array, formatted as a property list.",
+        "Declaration": "- (NSString *)descriptionWithLocale:(id)locale;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "locale",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412374-descriptionwithlocale?language=objc"
+      },
+      {
+        "Name": "descriptionWithLocale:indent:",
+        "Description": "Returns a string that represents the contents of the array, formatted as a property list.",
+        "Declaration": "- (NSString *)descriptionWithLocale:(id)locale \n                             indent:(NSUInteger)level;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "locale",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "level",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1416257-descriptionwithlocale?language=objc"
+      },
+      {
+        "Name": "writeToFile:atomically:",
+        "Description": "Writes the contents of the array to a file at a given path.",
+        "Declaration": "- (BOOL)writeToFile:(NSString *)path \n         atomically:(BOOL)useAuxiliaryFile;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "useAuxiliaryFile",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414742-writetofile?language=objc"
+      },
+      {
+        "Name": "writeToURL:atomically:",
+        "Description": "Writes the contents of the array to the location specified by a given URL.",
+        "Declaration": "- (BOOL)writeToURL:(NSURL *)url \n        atomically:(BOOL)atomically;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "atomically",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411480-writetourl?language=objc"
+      },
+      {
+        "Name": "pathsMatchingExtensions:",
+        "Description": "Returns an array containing all the pathname elements in the receiving array that have filename extensions from a given array.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)pathsMatchingExtensions:(NSArray\u003cNSString *\u003e *)filterTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "filterTypes",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1418275-pathsmatchingextensions?language=objc"
+      },
+      {
+        "Name": "addObserver:forKeyPath:options:context:",
+        "Description": "Raises an exception.",
+        "Declaration": "- (void)addObserver:(NSObject *)observer \n         forKeyPath:(NSString *)keyPath \n            options:(NSKeyValueObservingOptions)options \n            context:(void *)context;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSKeyValueObservingOptions"
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1409775-addobserver?language=objc"
+      },
+      {
+        "Name": "removeObserver:forKeyPath:",
+        "Description": "Raises an exception.",
+        "Declaration": "- (void)removeObserver:(NSObject *)observer \n            forKeyPath:(NSString *)keyPath;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1414976-removeobserver?language=objc"
+      },
+      {
+        "Name": "removeObserver:forKeyPath:context:",
+        "Description": "Raises an exception.",
+        "Declaration": "- (void)removeObserver:(NSObject *)observer \n            forKeyPath:(NSString *)keyPath \n               context:(void *)context;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1418441-removeobserver?language=objc"
+      },
+      {
+        "Name": "removeObserver:fromObjectsAtIndexes:forKeyPath:context:",
+        "Description": "Raises an exception.",
+        "Declaration": "- (void)removeObserver:(NSObject *)observer \n  fromObjectsAtIndexes:(NSIndexSet *)indexes \n            forKeyPath:(NSString *)keyPath \n               context:(void *)context;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408305-removeobserver?language=objc"
+      },
+      {
+        "Name": "addObserver:toObjectsAtIndexes:forKeyPath:options:context:",
+        "Description": "Registers an observer to receive key value observer notifications for the specified key-path relative to the objects at the indexes.",
+        "Declaration": "- (void)addObserver:(NSObject *)observer \n toObjectsAtIndexes:(NSIndexSet *)indexes \n         forKeyPath:(NSString *)keyPath \n            options:(NSKeyValueObservingOptions)options \n            context:(void *)context;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSKeyValueObservingOptions"
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411404-addobserver?language=objc"
+      },
+      {
+        "Name": "removeObserver:fromObjectsAtIndexes:forKeyPath:",
+        "Description": "Removes anObserver from all key value observer notifications associated with the specified keyPath relative to the array’s objects at indexes.",
+        "Declaration": "- (void)removeObserver:(NSObject *)observer \n  fromObjectsAtIndexes:(NSIndexSet *)indexes \n            forKeyPath:(NSString *)keyPath;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "observer",
+            "Type": {
+              "Name": "NSObject",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1407434-removeobserver?language=objc"
+      },
+      {
+        "Name": "setValue:forKey:",
+        "Description": "Invokes setValue:forKey: on each of the array's items using the specified value and key.",
+        "Declaration": "- (void)setValue:(id)value \n          forKey:(NSString *)key;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408301-setvalue?language=objc"
+      },
+      {
+        "Name": "valueForKey:",
+        "Description": "Returns an array containing the results of invoking valueForKey: using key on each of the array's objects.",
+        "Declaration": "- (id)valueForKey:(NSString *)key;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412219-valueforkey?language=objc"
+      },
+      {
+        "Name": "shuffledArray",
+        "Description": "Returns a new array that lists this array’s elements in a random order.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)shuffledArray;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1640855-shuffledarray?language=objc"
+      },
+      {
+        "Name": "shuffledArrayWithRandomSource:",
+        "Description": "Returns a new array that lists this array’s elements in a random order, using the specified random source.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)shuffledArrayWithRandomSource:(GKRandomSource *)randomSource;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "randomSource",
+            "Type": {
+              "Name": "GKRandomSource",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1640687-shuffledarraywithrandomsource?language=objc"
+      },
+      {
+        "Name": "differenceFromArray:",
+        "Description": "Compares two arrays to create a difference object that represents the changes between them.",
+        "Declaration": "- (NSOrderedCollectionDifference\u003cObjectType\u003e *)differenceFromArray:(NSArray\u003cObjectType\u003e *)other;",
+        "Return": {
+          "Name": "NSOrderedCollectionDifference",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "other",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/3152166-differencefromarray?language=objc"
+      },
+      {
+        "Name": "differenceFromArray:withOptions:",
+        "Description": "Compares two arrays, with options, to create a difference object that represents the changes between them.",
+        "Declaration": "- (NSOrderedCollectionDifference\u003cObjectType\u003e *)differenceFromArray:(NSArray\u003cObjectType\u003e *)other \n                                                       withOptions:(NSOrderedCollectionDifferenceCalculationOptions)options;\n",
+        "Return": {
+          "Name": "NSOrderedCollectionDifference",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "other",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSOrderedCollectionDifferenceCalculationOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/3152167-differencefromarray?language=objc"
+      },
+      {
+        "Name": "differenceFromArray:withOptions:usingEquivalenceTest:",
+        "Description": "Compares two arrays, using the provided block and with options, to create a difference object that represents the changes between them.",
+        "Declaration": "- (NSOrderedCollectionDifference\u003cObjectType\u003e *)differenceFromArray:(NSArray\u003cObjectType\u003e *)other \n                                                       withOptions:(NSOrderedCollectionDifferenceCalculationOptions)options \n                                              usingEquivalenceTest:(BOOL (^)(ObjectType obj1, ObjectType obj2))block;\n",
+        "Return": {
+          "Name": "NSOrderedCollectionDifference",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "other",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSOrderedCollectionDifferenceCalculationOptions"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "obj1",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "obj2",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/3152168-differencefromarray?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1407810-initwithcoder?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:error:",
+        "Description": "",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)initWithContentsOfURL:(NSURL *)url \n                                         error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/2879134-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "writeToURL:error:",
+        "Description": "",
+        "Declaration": "- (BOOL)writeToURL:(NSURL *)url \n             error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/2879138-writetourl?language=objc"
+      },
+      {
+        "Name": "arrayByApplyingDifference:",
+        "Description": "Creates a new array by applying a difference object to an existing array.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)arrayByApplyingDifference:(NSOrderedCollectionDifference\u003cObjectType\u003e *)difference;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "difference",
+            "Type": {
+              "Name": "NSOrderedCollectionDifference",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/3152165-arraybyapplyingdifference?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "count",
+        "Description": "The number of objects in the array.",
+        "Declaration": "@property(readonly) NSUInteger count;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1409982-count?language=objc"
+      },
+      {
+        "Name": "firstObject",
+        "Description": "The first object in the array.",
+        "Declaration": "@property(nullable, nonatomic, readonly) ObjectType firstObject;",
+        "Type": {
+          "Name": "ObjectType"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1412852-firstobject?language=objc"
+      },
+      {
+        "Name": "lastObject",
+        "Description": "The last object in the array.",
+        "Declaration": "@property(nullable, nonatomic, readonly) ObjectType lastObject;",
+        "Type": {
+          "Name": "ObjectType"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1408316-lastobject?language=objc"
+      },
+      {
+        "Name": "sortedArrayHint",
+        "Description": "Analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedArrayUsingFunction:context:hint:.",
+        "Declaration": "@property(readonly, copy) NSData *sortedArrayHint;",
+        "Type": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1413063-sortedarrayhint?language=objc"
+      },
+      {
+        "Name": "description",
+        "Description": "A string that represents the contents of the array, formatted as a property list.",
+        "Declaration": "@property(readonly, copy) NSString *description;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1413042-description?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "array",
+        "Description": "Creates and returns an empty array.",
+        "Declaration": "+ (instancetype)array;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460120-array?language=objc"
+      },
+      {
+        "Name": "arrayWithArray:",
+        "Description": "Creates and returns an array containing the objects in another given array.",
+        "Declaration": "+ (instancetype)arrayWithArray:(NSArray\u003cObjectType\u003e *)array;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460122-arraywitharray?language=objc"
+      },
+      {
+        "Name": "arrayWithContentsOfFile:",
+        "Description": "Creates and returns an array containing the contents of the file specified by a given path.",
+        "Declaration": "+ (NSArray\u003cObjectType\u003e *)arrayWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460099-arraywithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "arrayWithContentsOfURL:",
+        "Description": "Creates and returns an array containing the contents specified by a given URL.",
+        "Declaration": "+ (NSArray\u003cObjectType\u003e *)arrayWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460060-arraywithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "arrayWithObject:",
+        "Description": "Creates and returns an array containing a given object.",
+        "Declaration": "+ (instancetype)arrayWithObject:(ObjectType)anObject;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1411981-arraywithobject?language=objc"
+      },
+      {
+        "Name": "arrayWithObjects:",
+        "Description": "Creates and returns an array containing the objects in the argument list.",
+        "Declaration": "+ (instancetype)arrayWithObjects:(ObjectType)firstObj, ...;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "firstObj",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "...",
+            "Type": {}
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460145-arraywithobjects?language=objc"
+      },
+      {
+        "Name": "arrayWithObjects:count:",
+        "Description": "Creates and returns an array that includes a given number of objects from a given C array.",
+        "Declaration": "+ (instancetype)arrayWithObjects:(ObjectType  _Nonnull const *)objects \n                           count:(NSUInteger)cnt;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "cnt",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/1460096-arraywithobjects?language=objc"
+      },
+      {
+        "Name": "arrayWithContentsOfURL:error:",
+        "Description": "",
+        "Declaration": "+ (NSArray\u003cObjectType\u003e *)arrayWithContentsOfURL:(NSURL *)url \n                                          error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsarray/2879153-arraywithcontentsofurl?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-13T11:11:07.475891-07:00",
+  "Version": 2
+}

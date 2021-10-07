@@ -1,6 +1,8 @@
 package cocoa
 
-import "github.com/progrium/macdriver/objc"
+import (
+	"github.com/progrium/macdriver/core"
+)
 
 const (
 	NSVariableStatusItemLength = -1.0
@@ -8,17 +10,17 @@ const (
 )
 
 type NSStatusBar struct {
-	objc.Object
+	gen_NSStatusBar
 }
 
 func NSStatusBar_System() NSStatusBar {
-	return NSStatusBar{objc.Get("NSStatusBar").Send("systemStatusBar")}
+	return NSStatusBar_systemStatusBar()
 }
 
 func (sb NSStatusBar) StatusItemWithLength(l float64) NSStatusItem {
-	return NSStatusItem{sb.Send("statusItemWithLength:", l)}
+	return sb.StatusItemWithLength_(core.CGFloat(l))
 }
 
-func (sb NSStatusBar) RemoveStatusItem(i NSStatusItem) {
-	sb.Send("removeStatusItem:", i)
+func (sb NSStatusBar) RemoveStatusItem(i NSStatusItemRef) {
+	sb.RemoveStatusItem_(i)
 }

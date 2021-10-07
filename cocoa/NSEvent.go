@@ -20,7 +20,6 @@ void monitor(unsigned long long int mask) {
 import "C"
 import (
 	"errors"
-	"github.com/progrium/macdriver/objc"
 )
 
 const (
@@ -98,7 +97,7 @@ const (
 )
 
 type NSEvent struct {
-	objc.Object
+	gen_NSEvent
 }
 
 func NSEvent_GlobalMonitorMatchingMask(mask uint64, ch chan NSEvent) {
@@ -121,5 +120,5 @@ func (e NSEvent) Characters() (string, error) {
 	if eventType != NSEventTypeKeyDown && eventType != NSEventTypeKeyUp {
 		return "", errors.New("event does not contain characters")
 	}
-	return e.Get("characters").String(), nil
+	return e.gen_NSEvent.Characters().String(), nil
 }

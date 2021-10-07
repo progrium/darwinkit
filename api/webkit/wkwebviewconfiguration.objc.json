@@ -1,0 +1,331 @@
+{
+  "Class": {
+    "Name": "WKWebViewConfiguration",
+    "Description": "A collection of properties that you use to initialize a web view.",
+    "Declaration": "@interface WKWebViewConfiguration : NSObject",
+    "Frameworks": [
+      "WebKit"
+    ],
+    "Platforms": [
+      "iOS 8.0+",
+      "macOS 10.10+",
+      "Mac Catalyst 13.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "setURLSchemeHandler:forURLScheme:",
+        "Description": "Registers an object to load resources associated with the specified URL scheme.",
+        "Declaration": "- (void)setURLSchemeHandler:(id\u003cWKURLSchemeHandler\u003e)urlSchemeHandler \n               forURLScheme:(NSString *)urlScheme;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "urlSchemeHandler",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "WKURLSchemeHandler"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "urlScheme",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc"
+      },
+      {
+        "Name": "urlSchemeHandlerForURLScheme:",
+        "Description": "Returns the currently registered handler object for the specified URL scheme.",
+        "Declaration": "- (id\u003cWKURLSchemeHandler\u003e)urlSchemeHandlerForURLScheme:(NSString *)urlScheme;",
+        "Return": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "WKURLSchemeHandler"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "urlScheme",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "websiteDataStore",
+        "Description": "The object you use to get and set the site’s cookies and to track the cached data objects.",
+        "Declaration": "@property(nonatomic, strong) WKWebsiteDataStore *websiteDataStore;",
+        "Type": {
+          "Name": "WKWebsiteDataStore",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc"
+      },
+      {
+        "Name": "userContentController",
+        "Description": "The object that coordinates interactions between your app’s native code and the webpage’s scripts and other content.",
+        "Declaration": "@property(nonatomic, strong) WKUserContentController *userContentController;",
+        "Type": {
+          "Name": "WKUserContentController",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395668-usercontentcontroller?language=objc"
+      },
+      {
+        "Name": "processPool",
+        "Description": "The object that coordinates the processes the web view uses to render its web content and execute scripts.",
+        "Declaration": "@property(nonatomic, strong) WKProcessPool *processPool;",
+        "Type": {
+          "Name": "WKProcessPool",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395659-processpool?language=objc"
+      },
+      {
+        "Name": "applicationNameForUserAgent",
+        "Description": "The app name that appears in the user agent string.",
+        "Declaration": "@property(nullable, nonatomic, copy) NSString *applicationNameForUserAgent;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc"
+      },
+      {
+        "Name": "limitsNavigationsToAppBoundDomains",
+        "Description": "A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain.",
+        "Declaration": "@property(nonatomic) BOOL limitsNavigationsToAppBoundDomains;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc"
+      },
+      {
+        "Name": "preferences",
+        "Description": "The object that manages the preference-related settings for the web view.",
+        "Declaration": "@property(nonatomic, strong) WKPreferences *preferences;",
+        "Type": {
+          "Name": "WKPreferences",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc"
+      },
+      {
+        "Name": "defaultWebpagePreferences",
+        "Description": "The default preferences to use when loading and rendering content.",
+        "Declaration": "@property(nonatomic, copy) WKWebpagePreferences *defaultWebpagePreferences;",
+        "Type": {
+          "Name": "WKWebpagePreferences",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3194420-defaultwebpagepreferences?language=objc"
+      },
+      {
+        "Name": "ignoresViewportScaleLimits",
+        "Description": "A Boolean value that determines whether a web view allows scaling of the webpage.",
+        "Declaration": "@property(nonatomic) BOOL ignoresViewportScaleLimits;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits?language=objc"
+      },
+      {
+        "Name": "suppressesIncrementalRendering",
+        "Description": "A Boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.",
+        "Declaration": "@property(nonatomic) BOOL suppressesIncrementalRendering;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering?language=objc"
+      },
+      {
+        "Name": "allowsInlineMediaPlayback",
+        "Description": "A Boolean value that indicates whether HTML5 videos play inline or use the native full-screen controller.",
+        "Declaration": "@property(nonatomic) BOOL allowsInlineMediaPlayback;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback?language=objc"
+      },
+      {
+        "Name": "allowsAirPlayForMediaPlayback",
+        "Description": "A Boolean value that indicates whether the web view allows media playback over AirPlay.",
+        "Declaration": "@property(nonatomic) BOOL allowsAirPlayForMediaPlayback;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback?language=objc"
+      },
+      {
+        "Name": "allowsPictureInPictureMediaPlayback",
+        "Description": "A Boolean value that indicates whether HTML5 videos can play Picture in Picture.",
+        "Declaration": "@property(nonatomic) BOOL allowsPictureInPictureMediaPlayback;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb?language=objc"
+      },
+      {
+        "Name": "mediaTypesRequiringUserActionForPlayback",
+        "Description": "The media types that require a user gesture to begin playing.",
+        "Declaration": "@property(nonatomic) WKAudiovisualMediaTypes mediaTypesRequiringUserActionForPlayback;",
+        "Type": {
+          "Name": "WKAudiovisualMediaTypes"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1851524-mediatypesrequiringuseractionfor?language=objc"
+      },
+      {
+        "Name": "dataDetectorTypes",
+        "Description": "The types of data detectors to apply to the web view’s content.",
+        "Declaration": "@property(nonatomic) WKDataDetectorTypes dataDetectorTypes;",
+        "Type": {
+          "Name": "WKDataDetectorTypes"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes?language=objc"
+      },
+      {
+        "Name": "selectionGranularity",
+        "Description": "The level of granularity with which the user can interactively select web view content.",
+        "Declaration": "@property(nonatomic) WKSelectionGranularity selectionGranularity;",
+        "Type": {
+          "Name": "WKSelectionGranularity"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614756-selectiongranularity?language=objc"
+      },
+      {
+        "Name": "userInterfaceDirectionPolicy",
+        "Description": "The directionality of user interface elements.",
+        "Declaration": "@property(nonatomic) WKUserInterfaceDirectionPolicy userInterfaceDirectionPolicy;",
+        "Type": {
+          "Name": "WKUserInterfaceDirectionPolicy"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1690322-userinterfacedirectionpolicy?language=objc"
+      },
+      {
+        "Name": "mediaPlaybackAllowsAirPlay",
+        "Description": "Deprecated property.",
+        "Declaration": "@property(nonatomic) BOOL mediaPlaybackAllowsAirPlay;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614726-mediaplaybackallowsairplay?language=objc"
+      },
+      {
+        "Name": "requiresUserActionForMediaPlayback",
+        "Description": "A Boolean value that indicates whether HTML5 videos require the user to start playing them (YES) or whether the videos play automatically (NO).",
+        "Declaration": "@property(nonatomic) BOOL requiresUserActionForMediaPlayback;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614794-requiresuseractionformediaplayba?language=objc"
+      },
+      {
+        "Name": "mediaPlaybackRequiresUserAction",
+        "Description": "Deprecated property.",
+        "Declaration": "@property(nonatomic) BOOL mediaPlaybackRequiresUserAction;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614727-mediaplaybackrequiresuseraction?language=objc"
+      },
+      {
+        "Name": "upgradeKnownHostsToHTTPS",
+        "Description": "",
+        "Declaration": "@property(nonatomic) BOOL upgradeKnownHostsToHTTPS;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-30T14:38:43.184759-07:00",
+  "Version": 2
+}

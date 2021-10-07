@@ -38,6 +38,11 @@ type Selector interface {
 	// It is only implemented to implement the Stringer
 	// interface.
 	String() string
+
+	// Objective-C address for the selector.
+	// NOTE: this could have used `Ref` for the address interface, though using a
+	// different method for the interface keeps them distinct from objects.
+	SelectorAddress() unsafe.Pointer
 }
 
 // Type selector is the underlying implementation
@@ -57,6 +62,10 @@ func (sel selector) String() string {
 	return sel.Selector()
 }
 
+func (sel selector) SelectorAddress() unsafe.Pointer {
+	return selectorWithName(sel.Selector())
+}
+
 // GetSelector looks up a Selector by name.
 func Sel(name string) Selector {
 	return selector(name)
@@ -69,6 +78,10 @@ func GetSelector(name string) Selector {
 
 func RegisterSelector(name string) unsafe.Pointer {
 	return selectorWithName(name)
+}
+
+func SelectorAt(p unsafe.Pointer) Selector {
+	return selector(stringFromSelector(p))
 }
 
 var selectors = struct {

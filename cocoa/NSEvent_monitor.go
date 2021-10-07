@@ -22,5 +22,5 @@ func monitorReentry(event unsafe.Pointer) {
 	}
 	obj := objc.ObjectPtr(uintptr(event))
 	obj.Retain()
-	monitorCh <- NSEvent{obj}
+	monitorCh <- NSEvent_fromRef(obj)
 }

@@ -5,19 +5,22 @@ import (
 )
 
 type NSDictionary struct {
-	objc.Object
+	gen_NSDictionary
 }
 
-var nsDictionary = objc.Get("NSDictionary")
-
 func NSDictionary_New() NSDictionary {
-	return NSDictionary{nsDictionary.Alloc().Init()}
+	return NSDictionary_alloc().Init_asNSDictionary()
 }
 
 func NSDictionary_Init(valueKeys ...interface{}) NSDictionary {
-	return NSDictionary{nsDictionary.Alloc().Send("initWithObjectsAndKeys:", valueKeys...)}
+	return NSDictionary_fromRef(
+		NSDictionary_alloc().Send("initWithObjectsAndKeys:", valueKeys...))
 }
 
 func (d NSDictionary) ObjectForKey(key objc.Object) objc.Object {
 	return d.Send("objectForKey:", key)
+}
+
+func (d NSDictionary) Count() int {
+	return int(d.gen_NSDictionary.Count())
 }

@@ -6,178 +6,133 @@ import (
 )
 
 type NSWindow struct {
-	objc.Object
+	gen_NSWindow
 }
 
 var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow{nsWindow.Alloc().Init()}
+	return NSWindow_alloc().Init_asNSWindow()
 }
 
-func NSWindow_WithContentViewController(controller objc.Object) NSWindow {
-	return NSWindow{nsWindow.Send("windowWithContentViewController:", controller)}
+func NSWindow_WithContentViewController(controller NSViewControllerRef) NSWindow {
+	return NSWindow_windowWithContentViewController_(controller)
 }
 
 func NSWindow_Init(rect core.NSRect, windowStyle core.NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
-	obj := nsWindow.Alloc().
-		Send("initWithContentRect:styleMask:backing:defer:",
-			rect, windowStyle, bufferingType, deferCreation)
-	return NSWindow{obj}
-}
-
-func (w NSWindow) Display() {
-	w.Send("display")
-}
-
-func (w NSWindow) Center() {
-	w.Send("center")
+	return NSWindow_alloc().InitWithContentRect_styleMask_backing_defer__asNSWindow(
+		rect, core.NSUInteger(windowStyle), core.NSUInteger(bufferingType), deferCreation,
+	)
 }
 
 func (w NSWindow) MakeKeyAndOrderFront(sender objc.Object) {
-	w.Send("makeKeyAndOrderFront:", sender)
+	w.MakeKeyAndOrderFront_(sender)
 }
 
 func (w NSWindow) SetLevel(level int) {
-	w.Send("setLevel:", level)
+	w.SetLevel_(core.NSInteger(level))
 }
 
 func (w NSWindow) Level() int64 {
-	return w.Send("level").Int()
+	return int64(w.gen_NSWindow.Level())
 }
 
-func (w NSWindow) SetStyleMask(mask int) {
-	w.Send("setStyleMask:", mask)
+func (w NSWindow) SetStyleMask(mask uint) {
+	w.SetStyleMask_(core.NSUInteger(mask))
 }
 
-func (w NSWindow) StyleMask() int64 {
-	return w.Send("styleMask").Int()
+func (w NSWindow) StyleMask() uint {
+	return uint(w.gen_NSWindow.StyleMask())
 }
 
 func (w NSWindow) SetTitle(title string) {
-	w.Send("setTitle:", core.String(title))
+	w.SetTitle_(core.String(title))
 }
 
 func (w NSWindow) Title() string {
-	return w.Send("title").String()
+	return w.gen_NSWindow.Title().String()
 }
 
-func (w NSWindow) SetContentView(view objc.Object) {
-	w.Send("setContentView:", view)
-}
-
-func (w NSWindow) ContentView() NSView {
-	return NSView{w.Send("contentView")}
-}
-
-func (w NSWindow) IsVisible() bool {
-	return w.Send("isVisible").Bool()
-}
-
-func (w NSWindow) Frame() (frame core.NSRect) {
-	w.Send("frame", &frame)
-	return frame
+func (w NSWindow) SetContentView(view NSViewRef) {
+	w.SetContentView_(view)
 }
 
 func (w NSWindow) ToggleFullScreen(s objc.Object) {
-	w.Send("toggleFullScreen:", s)
+	w.ToggleFullScreen_(s)
 }
 
 func (w NSWindow) ContentRectForFrameRect(frameRect core.NSRect) (rect core.NSRect) {
-	w.Send("contentRectForFrameRect:", frameRect, &rect)
-	return rect
+	return w.ContentRectForFrameRect_(frameRect)
 }
 
 func (w NSWindow) SetTitlebarAppearsTransparent(b bool) {
-	w.Set("titlebarAppearsTransparent:", b)
-}
-
-func (w NSWindow) TitlebarAppearsTransparent() bool {
-	return w.Get("titlebarAppearsTransparent").Bool()
+	w.SetTitlebarAppearsTransparent_(b)
 }
 
 func (w NSWindow) SetTitleVisibility(v int) {
-	w.Set("titleVisibility:", v)
+	w.SetTitleVisibility_(core.NSInteger(v))
 }
 
 func (w NSWindow) TitleVisibility() int64 {
-	return w.Get("titleVisibility").Int()
+	return int64(w.gen_NSWindow.TitleVisibility())
 }
 
 func (w NSWindow) SetOpaque(b bool) {
-	w.Set("opaque:", b)
+	w.SetOpaque_(b)
 }
 
 func (w NSWindow) Opaque() bool {
-	return w.Get("opaque").Bool()
-}
-
-func (w NSWindow) Close() {
-	w.Send("close")
+	return w.IsOpaque()
 }
 
 func (w NSWindow) SetIgnoresMouseEvents(b bool) {
-	w.Set("ignoresMouseEvents:", b)
-}
-
-func (w NSWindow) IgnoresMouseEvents() bool {
-	return w.Get("ignoresMouseEvents").Bool()
+	w.SetIgnoresMouseEvents_(b)
 }
 
 func (w NSWindow) SetMovableByWindowBackground(b bool) {
-	w.Set("movableByWindowBackground:", b)
+	w.SetMovableByWindowBackground_(b)
 }
 
 func (w NSWindow) MovableByWindowBackground() bool {
-	return w.Get("movableByWindowBackground").Bool()
-}
-
-func (w NSWindow) BackgroundColor() NSColor {
-	return NSColor{w.Get("backgroundColor")}
+	return w.IsMovableByWindowBackground()
 }
 
 func (w NSWindow) SetBackgroundColor(color NSColor) {
-	w.Set("backgroundColor:", color)
+	w.SetBackgroundColor_(color)
 }
 
 func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
-	w.Send("setFrame:display:", frame, display)
+	w.SetFrame_display_(frame, display)
 }
 
-func (w NSWindow) CollectionBehavior() int64 {
-	return w.Get("collectionBehavior").Int()
+func (w NSWindow) CollectionBehavior() uint {
+	return uint(w.gen_NSWindow.CollectionBehavior())
 }
 
-func (w NSWindow) SetCollectionBehavior(collectionBehavior int) {
-	w.Set("collectionBehavior:", collectionBehavior)
+func (w NSWindow) SetCollectionBehavior(collectionBehavior uint) {
+	w.SetCollectionBehavior_(core.NSUInteger(collectionBehavior))
 }
 
 // SetHasShadow sets a Boolean value that indicates whether the window has a shadow.
 // https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
 func (w NSWindow) SetHasShadow(b bool) {
-	w.Set("hasShadow:", b)
-}
-
-// HasShadow returns a Boolean value that indicates whether the window has a shadow.
-// https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc
-func (w NSWindow) HasShadow() bool {
-	return w.Get("hasShadow").Bool()
+	w.SetHasShadow_(b)
 }
 
 // OrderOut removes the window from the screen list, which hides the window.
 // https://developer.apple.com/documentation/appkit/nswindow/1419660-orderout?language=objc
 func (w NSWindow) OrderOut(sender objc.Object) {
-	w.Send("orderOut:", sender)
+	w.OrderOut_(sender)
 }
 
 // OrderFront moves the window to the front of its level in the screen list, without changing either the key window or the main window.
 // https://developer.apple.com/documentation/appkit/nswindow/1419495-orderfront?language=objc
 func (w NSWindow) OrderFront(sender objc.Object) {
-	w.Send("orderFront:", sender)
+	w.OrderFront_(sender)
 }
 
 // OrderBack moves the window to the back of its level in the screen list, without changing either the key window or the main window.
 // https://developer.apple.com/documentation/appkit/nswindow/1419204-orderback?language=objc
 func (w NSWindow) OrderBack(sender objc.Object) {
-	w.Send("orderBack:", sender)
+	w.OrderBack_(sender)
 }

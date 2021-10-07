@@ -1,23 +1,21 @@
 package core
 
-import "github.com/progrium/macdriver/objc"
+import (
+	"github.com/progrium/macdriver/objc"
+)
 
 type CALayer struct {
-	objc.Object
+	gen_CALayer
 }
 
 func (l CALayer) CornerRadius() float64 {
-	return l.Get("cornerRadius").Float()
+	return float64(l.gen_CALayer.CornerRadius())
 }
 
 func (l CALayer) SetCornerRadius(r float64) {
-	l.Set("cornerRadius:", r)
-}
-
-func (l CALayer) Contents() objc.Object {
-	return l.Get("contents")
+	l.SetCornerRadius_(CGFloat(r))
 }
 
 func (l CALayer) SetContents(o objc.Object) {
-	l.Set("contents:", o)
+	l.SetContents_(objc.Object_fromRef(o))
 }

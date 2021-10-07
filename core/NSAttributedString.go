@@ -7,19 +7,16 @@ import (
 // Wrapper for NSAttributedString
 // https://developer.apple.com/documentation/foundation/nsattributedstring?language=objc
 type NSAttributedString struct {
-	objc.Object
+	gen_NSAttributedString
 }
-
-var nsAttributedString = objc.Get("NSAttributedString")
 
 // NSAttributedString_FromString returns an initialized NSAttributedString
 // https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc
 func NSAttributedString_FromString(str string) NSAttributedString {
 	nsstr := NSString_FromString(str)
-	obj := nsAttributedString.Alloc().Send("initWithString:", nsstr)
-	return NSAttributedString_FromObject(obj)
+	return NSAttributedString_alloc().InitWithString__asNSAttributedString(nsstr)
 }
 
 func NSAttributedString_FromObject(obj objc.Object) NSAttributedString {
-	return NSAttributedString{obj}
+	return NSAttributedString_fromRef(obj)
 }

@@ -1,0 +1,27 @@
+{
+  "TypeAlias": {
+    "Name": "NSUInteger",
+    "Description": "Describes an unsigned integer.",
+    "Declaration": "typedef unsigned long NSUInteger;",
+    "Frameworks": [
+      "Objective-C Runtime"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.5+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/objectivec/nsuinteger?language=objc",
+    "Type": {
+      "Name": "long",
+      "Annotations": [
+        "unsigned"
+      ]
+    }
+  },
+  "Kind": "typealias",
+  "PullDate": "2021-08-30T10:12:45.034386-07:00",
+  "Version": 2
+}

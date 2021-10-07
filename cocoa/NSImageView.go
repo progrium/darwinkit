@@ -1,21 +1,13 @@
 package cocoa
 
-import (
-	"github.com/progrium/macdriver/objc"
-)
-
 type NSImageView struct {
-	objc.Object
+	gen_NSImageView
 }
 
 func NSImageView_New() NSImageView {
-	return NSImageView{objc.Get("NSImageView").Alloc().Init()}
+	return NSImageView_alloc().Init_asNSImageView()
 }
 
-func (imgView NSImageView) SetImage(img objc.Object) {
-	imgView.Send("setImage:", img)
-}
-
-func (imgView NSImageView) Image() NSImage {
-	return NSImage{imgView.Send("image")}
+func (imgView NSImageView) SetImage(img NSImageRef) {
+	imgView.gen_NSImageView.SetImage_(img)
 }

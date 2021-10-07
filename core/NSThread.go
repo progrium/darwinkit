@@ -1,13 +1,9 @@
 package core
 
-import "github.com/progrium/macdriver/objc"
-
 type NSThread struct {
-	objc.Object
+	gen_NSThread
 }
 
-var nsThread = objc.Get("NSThread")
-
 func NSThread_IsMainThread() bool {
-	return nsThread.Send("isMainThread") != nil
+	return NSThread_isMainThread()
 }

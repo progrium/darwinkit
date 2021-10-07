@@ -1,0 +1,385 @@
+{
+  "Class": {
+    "Name": "NSScreen",
+    "Description": "An object that describes the attributes of a computer’s monitor or screen.",
+    "Declaration": "@interface NSScreen : NSObject",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "userSpaceScaleFactor",
+        "Description": "Returns the scaling factor from user space to device space on the screen.",
+        "Declaration": "- (CGFloat)userSpaceScaleFactor;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388375-userspacescalefactor?language=objc"
+      },
+      {
+        "Name": "canRepresentDisplayGamut:",
+        "Description": "A Boolean value indicating whether the color space of the screen is capable of representing the specified display gamut.",
+        "Declaration": "- (BOOL)canRepresentDisplayGamut:(NSDisplayGamut)displayGamut;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "displayGamut",
+            "Type": {
+              "Name": "NSDisplayGamut"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/2138325-canrepresentdisplaygamut?language=objc"
+      },
+      {
+        "Name": "backingAlignedRect:options:",
+        "Description": "Converts a rectangle in global screen coordinates to a pixel aligned rectangle.",
+        "Declaration": "- (NSRect)backingAlignedRect:(NSRect)rect \n                     options:(NSAlignmentOptions)options;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSAlignmentOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388381-backingalignedrect?language=objc"
+      },
+      {
+        "Name": "convertRectFromBacking:",
+        "Description": "Converts the rectangle from the device pixel aligned coordinates system of a screen.",
+        "Declaration": "- (NSRect)convertRectFromBacking:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388364-convertrectfrombacking?language=objc"
+      },
+      {
+        "Name": "convertRectToBacking:",
+        "Description": "Converts the rectangle to the device pixel aligned coordinates system of a screen.",
+        "Declaration": "- (NSRect)convertRectToBacking:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388389-convertrecttobacking?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "depth",
+        "Description": "The current bit depth and colorspace information of the screen.",
+        "Declaration": "@property(readonly) NSWindowDepth depth;",
+        "Type": {
+          "Name": "NSWindowDepth"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388373-depth?language=objc"
+      },
+      {
+        "Name": "frame",
+        "Description": "The dimensions and location of the screen.",
+        "Declaration": "@property(readonly) NSRect frame;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388387-frame?language=objc"
+      },
+      {
+        "Name": "supportedWindowDepths",
+        "Description": "A zero-terminated array of the window depths supported by the screen.",
+        "Declaration": "@property(readonly) const NSWindowDepth *supportedWindowDepths;",
+        "Type": {
+          "Name": "NSWindowDepth",
+          "IsPtr": true,
+          "Annotations": [
+            "const"
+          ]
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388391-supportedwindowdepths?language=objc"
+      },
+      {
+        "Name": "deviceDescription",
+        "Description": "The device dictionary for the screen.",
+        "Declaration": "@property(readonly, copy) NSDictionary\u003cNSDeviceDescriptionKey, id\u003e *deviceDescription;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSDeviceDescriptionKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388360-devicedescription?language=objc"
+      },
+      {
+        "Name": "visibleFrame",
+        "Description": "The current location and dimensions of the visible screen.",
+        "Declaration": "@property(readonly) NSRect visibleFrame;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388369-visibleframe?language=objc"
+      },
+      {
+        "Name": "colorSpace",
+        "Description": "The color space of the screen.",
+        "Declaration": "@property(nullable, readonly, strong) NSColorSpace *colorSpace;",
+        "Type": {
+          "Name": "NSColorSpace",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388383-colorspace?language=objc"
+      },
+      {
+        "Name": "backingScaleFactor",
+        "Description": "The backing store pixel scale factor for the screen.",
+        "Declaration": "@property(readonly) CGFloat backingScaleFactor;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388385-backingscalefactor?language=objc"
+      },
+      {
+        "Name": "maximumPotentialExtendedDynamicRangeColorComponentValue",
+        "Description": "The maximum possible color component value for the screen when it's in extended dynamic range (EDR) mode.",
+        "Declaration": "@property(readonly) CGFloat maximumPotentialExtendedDynamicRangeColorComponentValue;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3180381-maximumpotentialextendeddynamicr?language=objc"
+      },
+      {
+        "Name": "maximumExtendedDynamicRangeColorComponentValue",
+        "Description": "The current maximum color component value for the screen.",
+        "Declaration": "@property(readonly) CGFloat maximumExtendedDynamicRangeColorComponentValue;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388362-maximumextendeddynamicrangecolor?language=objc"
+      },
+      {
+        "Name": "maximumReferenceExtendedDynamicRangeColorComponentValue",
+        "Description": "The current maximum color component value for reference rendering to the screen.",
+        "Declaration": "@property(readonly) CGFloat maximumReferenceExtendedDynamicRangeColorComponentValue;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3180382-maximumreferenceextendeddynamicr?language=objc"
+      },
+      {
+        "Name": "displayUpdateGranularity",
+        "Description": "",
+        "Declaration": "@property(readonly) NSTimeInterval displayUpdateGranularity;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3824743-displayupdategranularity?language=objc"
+      },
+      {
+        "Name": "lastDisplayUpdateTimestamp",
+        "Description": "",
+        "Declaration": "@property(readonly) NSTimeInterval lastDisplayUpdateTimestamp;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3824744-lastdisplayupdatetimestamp?language=objc"
+      },
+      {
+        "Name": "localizedName",
+        "Description": "",
+        "Declaration": "@property(readonly, copy) NSString *localizedName;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3228043-localizedname?language=objc"
+      },
+      {
+        "Name": "maximumFramesPerSecond",
+        "Description": "",
+        "Declaration": "@property(readonly) NSInteger maximumFramesPerSecond;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3824745-maximumframespersecond?language=objc"
+      },
+      {
+        "Name": "maximumRefreshInterval",
+        "Description": "",
+        "Declaration": "@property(readonly) NSTimeInterval maximumRefreshInterval;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3824746-maximumrefreshinterval?language=objc"
+      },
+      {
+        "Name": "minimumRefreshInterval",
+        "Description": "",
+        "Declaration": "@property(readonly) NSTimeInterval minimumRefreshInterval;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/3824747-minimumrefreshinterval?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "mainScreen",
+        "Description": "Returns the screen object containing the window with the keyboard focus.",
+        "Declaration": "@property(class, readonly, nullable, strong) NSScreen *mainScreen;",
+        "Type": {
+          "Name": "NSScreen",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388371-mainscreen?language=objc"
+      },
+      {
+        "Name": "deepestScreen",
+        "Description": "Returns a screen object representing the screen that can best represent color.",
+        "Declaration": "@property(class, readonly, nullable, strong) NSScreen *deepestScreen;",
+        "Type": {
+          "Name": "NSScreen",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388374-deepestscreen?language=objc"
+      },
+      {
+        "Name": "screens",
+        "Description": "Returns an array of screen objects representing all of the screens available on the system.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSScreen *\u003e *screens;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388393-screens?language=objc"
+      },
+      {
+        "Name": "screensHaveSeparateSpaces",
+        "Description": "Returns a Boolean value indicating whether each screen can have its own set of spaces.",
+        "Declaration": "@property(class, readonly) BOOL screensHaveSeparateSpaces;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscreen/1388365-screenshaveseparatespaces?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-20T16:28:51.80508-07:00",
+  "Version": 2
+}

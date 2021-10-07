@@ -1,0 +1,1919 @@
+{
+  "Class": {
+    "Name": "NSURL",
+    "Description": "An object that represents the location of a resource, such as an item on a remote server or the path to a local file.",
+    "Declaration": "@interface NSURL : NSObject",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithString:",
+        "Description": "Initializes an NSURL object with a provided URL string.",
+        "Declaration": "- (instancetype)initWithString:(NSString *)URLString;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URLString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413146-initwithstring?language=objc"
+      },
+      {
+        "Name": "initWithString:relativeToURL:",
+        "Description": "Initializes an NSURL object with a base URL and a relative string.",
+        "Declaration": "- (instancetype)initWithString:(NSString *)URLString \n                 relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URLString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc"
+      },
+      {
+        "Name": "initFileURLWithPath:isDirectory:",
+        "Description": "Initializes a newly created NSURL referencing the local file or directory at path.",
+        "Declaration": "- (instancetype)initFileURLWithPath:(NSString *)path \n                        isDirectory:(BOOL)isDir;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417505-initfileurlwithpath?language=objc"
+      },
+      {
+        "Name": "initFileURLWithPath:relativeToURL:",
+        "Description": "",
+        "Declaration": "- (instancetype)initFileURLWithPath:(NSString *)path \n                      relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1415077-initfileurlwithpath?language=objc"
+      },
+      {
+        "Name": "initFileURLWithPath:isDirectory:relativeToURL:",
+        "Description": "",
+        "Declaration": "- (instancetype)initFileURLWithPath:(NSString *)path \n                        isDirectory:(BOOL)isDir \n                      relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc"
+      },
+      {
+        "Name": "initFileURLWithPath:",
+        "Description": "Initializes a newly created NSURL referencing the local file or directory at path.",
+        "Declaration": "- (instancetype)initFileURLWithPath:(NSString *)path;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410301-initfileurlwithpath?language=objc"
+      },
+      {
+        "Name": "initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:",
+        "Description": "Initializes a newly created NSURL that points to a location specified by resolving bookmark data.",
+        "Declaration": "- (instancetype)initByResolvingBookmarkData:(NSData *)bookmarkData \n                                    options:(NSURLBookmarkResolutionOptions)options \n                              relativeToURL:(NSURL *)relativeURL \n                        bookmarkDataIsStale:(BOOL *)isStale \n                                      error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "bookmarkData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSURLBookmarkResolutionOptions"
+            }
+          },
+          {
+            "Name": "relativeURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isStale",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413475-initbyresolvingbookmarkdata?language=objc"
+      },
+      {
+        "Name": "getFileSystemRepresentation:maxLength:",
+        "Description": "Fills the provided buffer with a C string representing a local file system path.",
+        "Declaration": "- (BOOL)getFileSystemRepresentation:(char *)buffer \n                          maxLength:(NSUInteger)maxBufferLength;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "buffer",
+            "Type": {
+              "Name": "char",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "maxBufferLength",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1415117-getfilesystemrepresentation?language=objc"
+      },
+      {
+        "Name": "initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:",
+        "Description": "Initializes a URL object with a C string representing a local file system path.",
+        "Declaration": "- (instancetype)initFileURLWithFileSystemRepresentation:(const char *)path \n                                            isDirectory:(BOOL)isDir \n                                          relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "char",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411210-initfileurlwithfilesystemreprese?language=objc"
+      },
+      {
+        "Name": "initAbsoluteURLWithDataRepresentation:relativeToURL:",
+        "Description": "",
+        "Declaration": "- (instancetype)initAbsoluteURLWithDataRepresentation:(NSData *)data \n                                        relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410750-initabsoluteurlwithdatarepresent?language=objc"
+      },
+      {
+        "Name": "initWithDataRepresentation:relativeToURL:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithDataRepresentation:(NSData *)data \n                             relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1416851-initwithdatarepresentation?language=objc"
+      },
+      {
+        "Name": "checkResourceIsReachableAndReturnError:",
+        "Description": "Returns whether the resource pointed to by a file URL can be reached.",
+        "Declaration": "- (BOOL)checkResourceIsReachableAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410597-checkresourceisreachableandretur?language=objc"
+      },
+      {
+        "Name": "isFileReferenceURL",
+        "Description": "Returns whether the URL is a file reference URL.",
+        "Declaration": "- (BOOL)isFileReferenceURL;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408507-isfilereferenceurl?language=objc"
+      },
+      {
+        "Name": "resourceValuesForKeys:error:",
+        "Description": "Returns the resource values for the properties identified by specified array of keys.",
+        "Declaration": "- (NSDictionary\u003cNSURLResourceKey, id\u003e *)resourceValuesForKeys:(NSArray\u003cNSURLResourceKey\u003e *)keys \n                                                        error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURLResourceKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURLResourceKey"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417657-resourcevaluesforkeys?language=objc"
+      },
+      {
+        "Name": "getResourceValue:forKey:error:",
+        "Description": "Returns the value of the resource property for the specified key.",
+        "Declaration": "- (BOOL)getResourceValue:(out id  _Nullable *)value \n                  forKey:(NSURLResourceKey)key \n                   error:(out NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "out",
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSURLResourceKey"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "out",
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408874-getresourcevalue?language=objc"
+      },
+      {
+        "Name": "setResourceValue:forKey:error:",
+        "Description": "Sets the URL’s resource property for a given key to a given value.",
+        "Declaration": "- (BOOL)setResourceValue:(id)value \n                  forKey:(NSURLResourceKey)key \n                   error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSURLResourceKey"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413819-setresourcevalue?language=objc"
+      },
+      {
+        "Name": "setResourceValues:error:",
+        "Description": "Sets the URL’s resource properties for a given set of keys to a given set of values.",
+        "Declaration": "- (BOOL)setResourceValues:(NSDictionary\u003cNSURLResourceKey, id\u003e *)keyedValues \n                    error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "keyedValues",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURLResourceKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408208-setresourcevalues?language=objc"
+      },
+      {
+        "Name": "removeAllCachedResourceValues",
+        "Description": "Removes all cached resource values and temporary resource values from the URL object.",
+        "Declaration": "- (void)removeAllCachedResourceValues;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417078-removeallcachedresourcevalues?language=objc"
+      },
+      {
+        "Name": "removeCachedResourceValueForKey:",
+        "Description": "Removes the cached resource value identified by a given key from the URL object.",
+        "Declaration": "- (void)removeCachedResourceValueForKey:(NSURLResourceKey)key;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSURLResourceKey"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410758-removecachedresourcevalueforkey?language=objc"
+      },
+      {
+        "Name": "setTemporaryResourceValue:forKey:",
+        "Description": "Sets a temporary resource value on the URL object.",
+        "Declaration": "- (void)setTemporaryResourceValue:(id)value \n                           forKey:(NSURLResourceKey)key;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSURLResourceKey"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411094-settemporaryresourcevalue?language=objc"
+      },
+      {
+        "Name": "fileReferenceURL",
+        "Description": "Returns a new file reference URL that points to the same resource as the receiver.",
+        "Declaration": "- (NSURL *)fileReferenceURL;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408631-filereferenceurl?language=objc"
+      },
+      {
+        "Name": "URLByAppendingPathComponent:",
+        "Description": "Returns a new URL made by appending a path component to the original URL.",
+        "Declaration": "- (NSURL *)URLByAppendingPathComponent:(NSString *)pathComponent;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pathComponent",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410614-urlbyappendingpathcomponent?language=objc"
+      },
+      {
+        "Name": "URLByAppendingPathComponent:isDirectory:",
+        "Description": "Returns a new URL made by appending a path component to the original URL, along with a trailing slash if the component is designated a directory.",
+        "Declaration": "- (NSURL *)URLByAppendingPathComponent:(NSString *)pathComponent \n                           isDirectory:(BOOL)isDirectory;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pathComponent",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isDirectory",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413953-urlbyappendingpathcomponent?language=objc"
+      },
+      {
+        "Name": "URLByAppendingPathExtension:",
+        "Description": "Returns a new URL made by appending a path extension to the original URL.",
+        "Declaration": "- (NSURL *)URLByAppendingPathExtension:(NSString *)pathExtension;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pathExtension",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417082-urlbyappendingpathextension?language=objc"
+      },
+      {
+        "Name": "bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:",
+        "Description": "Returns a bookmark for the URL, created with specified options and resource values.",
+        "Declaration": "- (NSData *)bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)options \n     includingResourceValuesForKeys:(NSArray\u003cNSURLResourceKey\u003e *)keys \n                      relativeToURL:(NSURL *)relativeURL \n                              error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSURLBookmarkCreationOptions"
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURLResourceKey"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "relativeURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417795-bookmarkdatawithoptions?language=objc"
+      },
+      {
+        "Name": "startAccessingSecurityScopedResource",
+        "Description": "In an app that has adopted App Sandbox, makes the resource pointed to by a security-scoped URL available to the app.",
+        "Declaration": "- (BOOL)startAccessingSecurityScopedResource;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417051-startaccessingsecurityscopedreso?language=objc"
+      },
+      {
+        "Name": "stopAccessingSecurityScopedResource",
+        "Description": "In an app that adopts App Sandbox, revokes access to the resource pointed to by a security-scoped URL.",
+        "Declaration": "- (void)stopAccessingSecurityScopedResource;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413736-stopaccessingsecurityscopedresou?language=objc"
+      },
+      {
+        "Name": "checkPromisedItemIsReachableAndReturnError:",
+        "Description": "Returns whether the promised item can be reached.",
+        "Declaration": "- (BOOL)checkPromisedItemIsReachableAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410411-checkpromiseditemisreachableandr?language=objc"
+      },
+      {
+        "Name": "getPromisedItemResourceValue:forKey:error:",
+        "Description": "Returns the value of the resource property for the specified key.",
+        "Declaration": "- (BOOL)getPromisedItemResourceValue:(id  _Nullable *)value \n                              forKey:(NSURLResourceKey)key \n                               error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSURLResourceKey"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414238-getpromiseditemresourcevalue?language=objc"
+      },
+      {
+        "Name": "promisedItemResourceValuesForKeys:error:",
+        "Description": "Returns the resource values for the properties identified by specified array of keys.",
+        "Declaration": "- (NSDictionary\u003cNSURLResourceKey, id\u003e *)promisedItemResourceValuesForKeys:(NSArray\u003cNSURLResourceKey\u003e *)keys \n                                                                    error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURLResourceKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURLResourceKey"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1407746-promiseditemresourcevaluesforkey?language=objc"
+      },
+      {
+        "Name": "writeToPasteboard:",
+        "Description": "Writes the URL to the specified pasteboard.",
+        "Declaration": "- (void)writeToPasteboard:(NSPasteboard *)pasteBoard;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pasteBoard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1532980-writetopasteboard?language=objc"
+      },
+      {
+        "Name": "initWithScheme:host:path:",
+        "Description": "Initializes a newly created NSURL with a specified scheme, host, and path.",
+        "Declaration": "- (instancetype)initWithScheme:(NSString *)scheme \n                          host:(NSString *)host \n                          path:(NSString *)path;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "scheme",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "host",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414181-initwithscheme?language=objc"
+      },
+      {
+        "Name": "URLHandleUsingCache:",
+        "Description": "Returns a URL handle to service the receiver.",
+        "Declaration": "- (NSURLHandle *)URLHandleUsingCache:(BOOL)shouldUseCache;",
+        "Return": {
+          "Name": "NSURLHandle",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "shouldUseCache",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572051-urlhandleusingcache?language=objc"
+      },
+      {
+        "Name": "loadResourceDataNotifyingClient:usingCache:",
+        "Description": "Loads the receiver’s resource data in the background.",
+        "Declaration": "- (void)loadResourceDataNotifyingClient:(id)client \n                             usingCache:(BOOL)shouldUseCache;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "client",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "shouldUseCache",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572043-loadresourcedatanotifyingclient?language=objc"
+      },
+      {
+        "Name": "resourceDataUsingCache:",
+        "Description": "Returns the receiver’s resource data, loading it if necessary.",
+        "Declaration": "- (NSData *)resourceDataUsingCache:(BOOL)shouldUseCache;",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "shouldUseCache",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572037-resourcedatausingcache?language=objc"
+      },
+      {
+        "Name": "setResourceData:",
+        "Description": "Attempts to set the resource data for the receiver.",
+        "Declaration": "- (BOOL)setResourceData:(NSData *)data;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572038-setresourcedata?language=objc"
+      },
+      {
+        "Name": "propertyForKey:",
+        "Description": "Returns the specified property of the receiver’s resource.",
+        "Declaration": "- (id)propertyForKey:(NSString *)propertyKey;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "propertyKey",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572044-propertyforkey?language=objc"
+      },
+      {
+        "Name": "setProperty:forKey:",
+        "Description": "Changes the specified property of the receiver’s resource.",
+        "Declaration": "- (BOOL)setProperty:(id)property \n             forKey:(NSString *)propertyKey;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "property",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "propertyKey",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572041-setproperty?language=objc"
+      },
+      {
+        "Name": "URLByAppendingPathComponent:conformingToType:",
+        "Description": "",
+        "Declaration": "- (NSURL *)URLByAppendingPathComponent:(NSString *)partialName \n                      conformingToType:(UTType *)contentType;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "partialName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/3564810-urlbyappendingpathcomponent?language=objc"
+      },
+      {
+        "Name": "URLByAppendingPathExtensionForType:",
+        "Description": "",
+        "Declaration": "- (NSURL *)URLByAppendingPathExtensionForType:(UTType *)contentType;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/3584837-urlbyappendingpathextensionforty?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "dataRepresentation",
+        "Description": "",
+        "Declaration": "@property(readonly, copy) NSData *dataRepresentation;",
+        "Type": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1407656-datarepresentation?language=objc"
+      },
+      {
+        "Name": "fileURL",
+        "Description": "A boolean value that determines whether the receiver is a file URL.",
+        "Declaration": "@property(readonly, getter=isFileURL) BOOL fileURL;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFileURL",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408782-fileurl?language=objc"
+      },
+      {
+        "Name": "absoluteString",
+        "Description": "The URL string for the receiver as an absolute URL. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *absoluteString;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1409868-absolutestring?language=objc"
+      },
+      {
+        "Name": "absoluteURL",
+        "Description": "An absolute URL that refers to the same resource as the receiver. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *absoluteURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414266-absoluteurl?language=objc"
+      },
+      {
+        "Name": "baseURL",
+        "Description": "The base URL. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *baseURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412311-baseurl?language=objc"
+      },
+      {
+        "Name": "fileSystemRepresentation",
+        "Description": "A C string containing the URL’s file system path. (read-only)",
+        "Declaration": "@property(readonly) const char *fileSystemRepresentation;",
+        "Type": {
+          "Name": "char",
+          "IsPtr": true,
+          "Annotations": [
+            "const"
+          ]
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412925-filesystemrepresentation?language=objc"
+      },
+      {
+        "Name": "fragment",
+        "Description": "The fragment identifier, conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *fragment;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413775-fragment?language=objc"
+      },
+      {
+        "Name": "host",
+        "Description": "The host, conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *host;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413640-host?language=objc"
+      },
+      {
+        "Name": "lastPathComponent",
+        "Description": "The last path component. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *lastPathComponent;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1417444-lastpathcomponent?language=objc"
+      },
+      {
+        "Name": "parameterString",
+        "Description": "The parameter string conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *parameterString;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412797-parameterstring?language=objc"
+      },
+      {
+        "Name": "password",
+        "Description": "The password conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *password;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412096-password?language=objc"
+      },
+      {
+        "Name": "path",
+        "Description": "The path, conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *path;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408809-path?language=objc"
+      },
+      {
+        "Name": "pathComponents",
+        "Description": "An array containing the path components. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSString *\u003e *pathComponents;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1407365-pathcomponents?language=objc"
+      },
+      {
+        "Name": "pathExtension",
+        "Description": "The path extension. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *pathExtension;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410208-pathextension?language=objc"
+      },
+      {
+        "Name": "port",
+        "Description": "The port, conforming to RFC 1808.",
+        "Declaration": "@property(nullable, readonly, copy) NSNumber *port;",
+        "Type": {
+          "Name": "NSNumber",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413455-port?language=objc"
+      },
+      {
+        "Name": "query",
+        "Description": "The query string, conforming to RFC 1808.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *query;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1407543-query?language=objc"
+      },
+      {
+        "Name": "relativePath",
+        "Description": "The relative path, conforming to RFC 1808. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *relativePath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410263-relativepath?language=objc"
+      },
+      {
+        "Name": "relativeString",
+        "Description": "A string representation of the relative portion of the URL. (read-only)",
+        "Declaration": "@property(readonly, copy) NSString *relativeString;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411417-relativestring?language=objc"
+      },
+      {
+        "Name": "resourceSpecifier",
+        "Description": "The resource specifier. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *resourceSpecifier;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1415309-resourcespecifier?language=objc"
+      },
+      {
+        "Name": "scheme",
+        "Description": "The scheme. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSString *scheme;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413437-scheme?language=objc"
+      },
+      {
+        "Name": "standardizedURL",
+        "Description": "A copy of the URL with any instances of \"..\" or \".\" removed from its path. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *standardizedURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411073-standardizedurl?language=objc"
+      },
+      {
+        "Name": "user",
+        "Description": "The user name, conforming to RFC 1808.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *user;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1418335-user?language=objc"
+      },
+      {
+        "Name": "filePathURL",
+        "Description": "A file path URL that points to the same resource as the URL object. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *filePathURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408442-filepathurl?language=objc"
+      },
+      {
+        "Name": "URLByDeletingLastPathComponent",
+        "Description": "A URL created by taking the receiver and removing the last path component. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *URLByDeletingLastPathComponent;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411592-urlbydeletinglastpathcomponent?language=objc"
+      },
+      {
+        "Name": "URLByDeletingPathExtension",
+        "Description": "A URL created by taking the receiver and removing the path extension, if any. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *URLByDeletingPathExtension;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412357-urlbydeletingpathextension?language=objc"
+      },
+      {
+        "Name": "URLByResolvingSymlinksInPath",
+        "Description": "A URL that points to the same resource as the receiver and includes no symbolic links. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *URLByResolvingSymlinksInPath;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1415965-urlbyresolvingsymlinksinpath?language=objc"
+      },
+      {
+        "Name": "URLByStandardizingPath",
+        "Description": "A URL that points to the same resource as the original URL using an absolute path. (read-only)",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *URLByStandardizingPath;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414302-urlbystandardizingpath?language=objc"
+      },
+      {
+        "Name": "hasDirectoryPath",
+        "Description": "",
+        "Declaration": "@property(readonly) BOOL hasDirectoryPath;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411475-hasdirectorypath?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "URLWithString:",
+        "Description": "Creates and returns an NSURL object initialized with a provided URL string.",
+        "Declaration": "+ (instancetype)URLWithString:(NSString *)URLString;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URLString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572047-urlwithstring?language=objc"
+      },
+      {
+        "Name": "URLWithString:relativeToURL:",
+        "Description": "Creates and returns an NSURL object initialized with a base URL and a relative string.",
+        "Declaration": "+ (instancetype)URLWithString:(NSString *)URLString \n                relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URLString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572049-urlwithstring?language=objc"
+      },
+      {
+        "Name": "fileURLWithPath:isDirectory:",
+        "Description": "Initializes and returns a newly created NSURL object as a file URL with a specified path.",
+        "Declaration": "+ (NSURL *)fileURLWithPath:(NSString *)path \n               isDirectory:(BOOL)isDir;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414650-fileurlwithpath?language=objc"
+      },
+      {
+        "Name": "fileURLWithPath:relativeToURL:",
+        "Description": "",
+        "Declaration": "+ (NSURL *)fileURLWithPath:(NSString *)path \n             relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413201-fileurlwithpath?language=objc"
+      },
+      {
+        "Name": "fileURLWithPath:isDirectory:relativeToURL:",
+        "Description": "",
+        "Declaration": "+ (NSURL *)fileURLWithPath:(NSString *)path \n               isDirectory:(BOOL)isDir \n             relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1413020-fileurlwithpath?language=objc"
+      },
+      {
+        "Name": "fileURLWithPath:",
+        "Description": "Initializes and returns a newly created NSURL object as a file URL with a specified path.",
+        "Declaration": "+ (NSURL *)fileURLWithPath:(NSString *)path;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1410828-fileurlwithpath?language=objc"
+      },
+      {
+        "Name": "fileURLWithPathComponents:",
+        "Description": "Initializes and returns a newly created NSURL object as a file URL with specified path components.",
+        "Declaration": "+ (NSURL *)fileURLWithPathComponents:(NSArray\u003cNSString *\u003e *)components;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "components",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1414206-fileurlwithpathcomponents?language=objc"
+      },
+      {
+        "Name": "URLByResolvingAliasFileAtURL:options:error:",
+        "Description": "Returns a new URL made by resolving the alias file at url.",
+        "Declaration": "+ (instancetype)URLByResolvingAliasFileAtURL:(NSURL *)url \n                                     options:(NSURLBookmarkResolutionOptions)options \n                                       error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSURLBookmarkResolutionOptions"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1416404-urlbyresolvingaliasfileaturl?language=objc"
+      },
+      {
+        "Name": "URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:",
+        "Description": "Returns a new URL made by resolving bookmark data.",
+        "Declaration": "+ (instancetype)URLByResolvingBookmarkData:(NSData *)bookmarkData \n                                   options:(NSURLBookmarkResolutionOptions)options \n                             relativeToURL:(NSURL *)relativeURL \n                       bookmarkDataIsStale:(BOOL *)isStale \n                                     error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "bookmarkData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSURLBookmarkResolutionOptions"
+            }
+          },
+          {
+            "Name": "relativeURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "isStale",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572035-urlbyresolvingbookmarkdata?language=objc"
+      },
+      {
+        "Name": "fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:",
+        "Description": "Returns a new URL object initialized with a C string representing a local file system path.",
+        "Declaration": "+ (NSURL *)fileURLWithFileSystemRepresentation:(const char *)path \n                                   isDirectory:(BOOL)isDir \n                                 relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "char",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "isDir",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1411492-fileurlwithfilesystemrepresentat?language=objc"
+      },
+      {
+        "Name": "absoluteURLWithDataRepresentation:relativeToURL:",
+        "Description": "",
+        "Declaration": "+ (NSURL *)absoluteURLWithDataRepresentation:(NSData *)data \n                               relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1412404-absoluteurlwithdatarepresentatio?language=objc"
+      },
+      {
+        "Name": "URLWithDataRepresentation:relativeToURL:",
+        "Description": "",
+        "Declaration": "+ (NSURL *)URLWithDataRepresentation:(NSData *)data \n                       relativeToURL:(NSURL *)baseURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1572042-urlwithdatarepresentation?language=objc"
+      },
+      {
+        "Name": "bookmarkDataWithContentsOfURL:error:",
+        "Description": "Initializes and returns bookmark data derived from an alias file pointed to by a specified URL.",
+        "Declaration": "+ (NSData *)bookmarkDataWithContentsOfURL:(NSURL *)bookmarkFileURL \n                                    error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "bookmarkFileURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408344-bookmarkdatawithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "resourceValuesForKeys:fromBookmarkData:",
+        "Description": "Returns the resource values for properties identified by a specified array of keys contained in specified bookmark data.",
+        "Declaration": "+ (NSDictionary\u003cNSURLResourceKey, id\u003e *)resourceValuesForKeys:(NSArray\u003cNSURLResourceKey\u003e *)keys \n                                             fromBookmarkData:(NSData *)bookmarkData;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURLResourceKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURLResourceKey"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "bookmarkData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1418097-resourcevaluesforkeys?language=objc"
+      },
+      {
+        "Name": "writeBookmarkData:toURL:options:error:",
+        "Description": "Creates an alias file on disk at a specified location with specified bookmark data.",
+        "Declaration": "+ (BOOL)writeBookmarkData:(NSData *)bookmarkData \n                    toURL:(NSURL *)bookmarkFileURL \n                  options:(NSURLBookmarkFileCreationOptions)options \n                    error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "bookmarkData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bookmarkFileURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSURLBookmarkFileCreationOptions"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1408532-writebookmarkdata?language=objc"
+      },
+      {
+        "Name": "URLFromPasteboard:",
+        "Description": "Reads an NSURL object off of the specified pasteboard.",
+        "Declaration": "+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pasteBoard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurl/1525106-urlfrompasteboard?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-20T16:13:37.744719-07:00",
+  "Version": 2
+}

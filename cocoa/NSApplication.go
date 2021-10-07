@@ -1,6 +1,9 @@
 package cocoa
 
-import "github.com/progrium/macdriver/objc"
+import (
+	"github.com/progrium/macdriver/core"
+	"github.com/progrium/macdriver/objc"
+)
 
 const (
 	NSApplicationActivationPolicyRegular    = 0
@@ -25,17 +28,15 @@ func init() {
 }
 
 type NSApplication struct {
-	objc.Object
+	gen_NSApplication
 }
 
-var nsApplication = objc.Get("NSApplication")
-
 func NSApplication_New() NSApplication {
-	return NSApplication{nsApplication.Alloc().Init()}
+	return NSApplication_alloc().Init_asNSApplication()
 }
 
 func NSApp() NSApplication {
-	return NSApplication{nsApplication.Send("sharedApplication")}
+	return NSApplication_sharedApplication()
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
@@ -47,34 +48,26 @@ func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
 	return app
 }
 
-func (app NSApplication) Run() {
-	app.Send("run")
-}
-
 func (app NSApplication) Terminate() {
-	app.Send("terminate:", nil)
+	app.Terminate_(nil)
 }
 
 func (app NSApplication) SetDelegate(delegate objc.Object) {
-	app.Send("setDelegate:", delegate)
+	app.SetDelegate_(delegate)
 }
 
 func (app NSApplication) Delegate() objc.Object {
-	return app.Send("delegate")
+	return app.gen_NSApplication.Delegate()
 }
 
 func (app NSApplication) SetMainMenu(menu NSMenu) {
-	app.Send("setMainMenu:", menu)
+	app.SetMainMenu_(menu)
 }
 
 func (app NSApplication) SetActivationPolicy(policy int) {
-	app.Send("setActivationPolicy:", policy)
+	app.SetActivationPolicy_(core.NSInteger(policy))
 }
 
 func (app NSApplication) ActivateIgnoringOtherApps(flag bool) {
-	app.Send("activateIgnoringOtherApps:", flag)
-}
-
-func (app NSApplication) MainMenu() NSMenu {
-	return NSMenu{app.Send("mainMenu")}
+	app.ActivateIgnoringOtherApps_(flag)
 }

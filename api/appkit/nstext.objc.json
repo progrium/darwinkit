@@ -1,0 +1,855 @@
+{
+  "Class": {
+    "Name": "NSText",
+    "Description": "The most general programmatic interface for objects that manage text.",
+    "Declaration": "@interface NSText : NSView",
+    "InstanceMethods": [
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535093-initwithcoder?language=objc"
+      },
+      {
+        "Name": "initWithFrame:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithFrame:(NSRect)frameRect;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1525191-initwithframe?language=objc"
+      },
+      {
+        "Name": "toggleRuler:",
+        "Description": "This action method shows or hides the ruler, if the receiver is enclosed in a scroll view.",
+        "Declaration": "- (void)toggleRuler:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535773-toggleruler?language=objc"
+      },
+      {
+        "Name": "replaceCharactersInRange:withRTF:",
+        "Description": "Replaces the characters in the given range with RTF text interpreted from the given RTF data.",
+        "Declaration": "- (void)replaceCharactersInRange:(NSRange)range \n                         withRTF:(NSData *)rtfData;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "rtfData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527249-replacecharactersinrange?language=objc"
+      },
+      {
+        "Name": "replaceCharactersInRange:withRTFD:",
+        "Description": "Replaces the characters in the given range with RTFD text interpreted from the given RTFD data.",
+        "Declaration": "- (void)replaceCharactersInRange:(NSRange)range \n                        withRTFD:(NSData *)rtfdData;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "rtfdData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1525846-replacecharactersinrange?language=objc"
+      },
+      {
+        "Name": "replaceCharactersInRange:withString:",
+        "Description": "Replaces the characters in the given range with those in the given string.",
+        "Declaration": "- (void)replaceCharactersInRange:(NSRange)range \n                      withString:(NSString *)string;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1530589-replacecharactersinrange?language=objc"
+      },
+      {
+        "Name": "selectAll:",
+        "Description": "This action method selects all of the receiver’s text.",
+        "Declaration": "- (void)selectAll:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527642-selectall?language=objc"
+      },
+      {
+        "Name": "copy:",
+        "Description": "This action method copies the selected text onto the general pasteboard, in as many formats as the receiver supports.",
+        "Declaration": "- (void)copy:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1525497-copy?language=objc"
+      },
+      {
+        "Name": "cut:",
+        "Description": "This action method deletes the selected text and places it onto the general pasteboard, in as many formats as the receiver supports.",
+        "Declaration": "- (void)cut:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1524858-cut?language=objc"
+      },
+      {
+        "Name": "paste:",
+        "Description": "This action method pastes text from the general pasteboard at the insertion point or over the selection.",
+        "Declaration": "- (void)paste:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527209-paste?language=objc"
+      },
+      {
+        "Name": "copyFont:",
+        "Description": "This action method copies the font information for the first character of the selection (or for the insertion point) onto the font pasteboard, as NSFontPboardType.",
+        "Declaration": "- (void)copyFont:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531255-copyfont?language=objc"
+      },
+      {
+        "Name": "pasteFont:",
+        "Description": "This action method pastes font information from the font pasteboard onto the selected text or insertion point of a rich text object, or over all text of a plain text object.",
+        "Declaration": "- (void)pasteFont:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531099-pastefont?language=objc"
+      },
+      {
+        "Name": "copyRuler:",
+        "Description": "This action method copies the paragraph style information for first selected paragraph onto the ruler pasteboard, as NSRulerPboardType, and expands the selection to paragraph boundaries.",
+        "Declaration": "- (void)copyRuler:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1533303-copyruler?language=objc"
+      },
+      {
+        "Name": "pasteRuler:",
+        "Description": "This action method pastes paragraph style information from the ruler pasteboard onto the selected paragraphs of a rich text object.",
+        "Declaration": "- (void)pasteRuler:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1530420-pasteruler?language=objc"
+      },
+      {
+        "Name": "delete:",
+        "Description": "This action method deletes the selected text.",
+        "Declaration": "- (void)delete:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1524660-delete?language=objc"
+      },
+      {
+        "Name": "changeFont:",
+        "Description": "This action method changes the font of the selection for a rich text object, or of all text for a plain text object.",
+        "Declaration": "- (void)changeFont:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531459-changefont?language=objc"
+      },
+      {
+        "Name": "setFont:range:",
+        "Description": "Sets the font of characters within aRange to aFont.",
+        "Declaration": "- (void)setFont:(NSFont *)font \n          range:(NSRange)range;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "font",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1526283-setfont?language=objc"
+      },
+      {
+        "Name": "alignCenter:",
+        "Description": "This action method applies center alignment to selected paragraphs (or all text if the receiver is a plain text object).",
+        "Declaration": "- (void)alignCenter:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535569-aligncenter?language=objc"
+      },
+      {
+        "Name": "alignLeft:",
+        "Description": "This action method applies left alignment to selected paragraphs (or all text if the receiver is a plain text object).",
+        "Declaration": "- (void)alignLeft:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535705-alignleft?language=objc"
+      },
+      {
+        "Name": "alignRight:",
+        "Description": "This action method applies right alignment to selected paragraphs (or all text if the receiver is a plain text object).",
+        "Declaration": "- (void)alignRight:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1526477-alignright?language=objc"
+      },
+      {
+        "Name": "setTextColor:range:",
+        "Description": "Sets the text color of characters within the specified range to the specified color.",
+        "Declaration": "- (void)setTextColor:(NSColor *)color \n               range:(NSRange)range;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "color",
+            "Type": {
+              "Name": "NSColor",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1530110-settextcolor?language=objc"
+      },
+      {
+        "Name": "superscript:",
+        "Description": "This action method applies a superscript attribute to selected text (or all text if the receiver is a plain text object), raising its baseline offset by a predefined amount.",
+        "Declaration": "- (void)superscript:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1525743-superscript?language=objc"
+      },
+      {
+        "Name": "subscript:",
+        "Description": "This action method applies a subscript attribute to selected text (or all text if the receiver is a plain text object), lowering its baseline offset by a predefined amount.",
+        "Declaration": "- (void)subscript:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535373-subscript?language=objc"
+      },
+      {
+        "Name": "unscript:",
+        "Description": "This action method removes any superscripting or subscripting from selected text (or all text if the receiver is a plain text object).",
+        "Declaration": "- (void)unscript:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527542-unscript?language=objc"
+      },
+      {
+        "Name": "underline:",
+        "Description": "Adds the underline attribute to the selected text attributes if absent; removes the attribute if present.",
+        "Declaration": "- (void)underline:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1534203-underline?language=objc"
+      },
+      {
+        "Name": "readRTFDFromFile:",
+        "Description": "Attempts to read the RTFD file at path, returning YES if successful and NO if not.",
+        "Declaration": "- (BOOL)readRTFDFromFile:(NSString *)path;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1532564-readrtfdfromfile?language=objc"
+      },
+      {
+        "Name": "writeRTFDToFile:atomically:",
+        "Description": "Writes the receiver’s text as RTF with attachments to a file or directory at path.",
+        "Declaration": "- (BOOL)writeRTFDToFile:(NSString *)path \n             atomically:(BOOL)flag;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527085-writertfdtofile?language=objc"
+      },
+      {
+        "Name": "RTFDFromRange:",
+        "Description": "Returns an NSData object that contains an RTFD stream corresponding to the characters and attributes within aRange.",
+        "Declaration": "- (NSData *)RTFDFromRange:(NSRange)range;",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1528394-rtfdfromrange?language=objc"
+      },
+      {
+        "Name": "RTFFromRange:",
+        "Description": "Returns an NSData object that contains an RTF stream corresponding to the characters and attributes within aRange, omitting any attachment characters and attributes.",
+        "Declaration": "- (NSData *)RTFFromRange:(NSRange)range;",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527004-rtffromrange?language=objc"
+      },
+      {
+        "Name": "checkSpelling:",
+        "Description": "This action method searches for a misspelled word in the receiver’s text.",
+        "Declaration": "- (void)checkSpelling:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1534926-checkspelling?language=objc"
+      },
+      {
+        "Name": "showGuessPanel:",
+        "Description": "This action method opens the Spelling panel, allowing the user to make a correction during spell checking.",
+        "Declaration": "- (void)showGuessPanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1533456-showguesspanel?language=objc"
+      },
+      {
+        "Name": "sizeToFit",
+        "Description": "Resizes the receiver to fit its text.",
+        "Declaration": "- (void)sizeToFit;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1533991-sizetofit?language=objc"
+      },
+      {
+        "Name": "scrollRangeToVisible:",
+        "Description": "Scrolls the receiver in its enclosing scroll view so the first characters of aRange are visible.",
+        "Declaration": "- (void)scrollRangeToVisible:(NSRange)range;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1529884-scrollrangetovisible?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "string",
+        "Description": "The characters of the receiver’s text.",
+        "Declaration": "@property(copy) NSString *string;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1528601-string?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The receiver’s background color to a given color.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535324-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "drawsBackground",
+        "Description": "A Boolean that controls whether the receiver draws its background.",
+        "Declaration": "@property BOOL drawsBackground;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531772-drawsbackground?language=objc"
+      },
+      {
+        "Name": "editable",
+        "Description": "A Boolean that controls whether the receiver allows the user to edit its text.",
+        "Declaration": "@property(getter=isEditable) BOOL editable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEditable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1529876-editable?language=objc"
+      },
+      {
+        "Name": "selectable",
+        "Description": "A Boolean that controls whether the receiver allows the user to select its text.",
+        "Declaration": "@property(getter=isSelectable) BOOL selectable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSelectable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535368-selectable?language=objc"
+      },
+      {
+        "Name": "fieldEditor",
+        "Description": "A Boolean that controls whether the receiver interprets Tab, Shift-Tab, and Return (Enter) as cues to end editing and possibly to change the first responder.",
+        "Declaration": "@property(getter=isFieldEditor) BOOL fieldEditor;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFieldEditor"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1533080-fieldeditor?language=objc"
+      },
+      {
+        "Name": "richText",
+        "Description": "A Boolean that controls whether the receiver allows the user to apply attributes to specific ranges of the text.",
+        "Declaration": "@property(getter=isRichText) BOOL richText;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRichText"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531003-richtext?language=objc"
+      },
+      {
+        "Name": "importsGraphics",
+        "Description": "A Boolean that controls whether the receiver allows the user to import files by dragging.",
+        "Declaration": "@property BOOL importsGraphics;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1531887-importsgraphics?language=objc"
+      },
+      {
+        "Name": "usesFontPanel",
+        "Description": "A Boolean that controls whether the receiver uses the Font panel and Font menu.",
+        "Declaration": "@property BOOL usesFontPanel;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527431-usesfontpanel?language=objc"
+      },
+      {
+        "Name": "rulerVisible",
+        "Description": "A Boolean value that indicates whether the receiver’s enclosing scroll view shows its ruler.",
+        "Declaration": "@property(getter=isRulerVisible, readonly) BOOL rulerVisible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRulerVisible",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1533732-rulervisible?language=objc"
+      },
+      {
+        "Name": "selectedRange",
+        "Description": "The receiver’s characters within aRange.",
+        "Declaration": "@property NSRange selectedRange;",
+        "Type": {
+          "Name": "NSRange"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1526227-selectedrange?language=objc"
+      },
+      {
+        "Name": "font",
+        "Description": "The font of all the receiver’s text.",
+        "Declaration": "@property(strong) NSFont *font;",
+        "Type": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1534646-font?language=objc"
+      },
+      {
+        "Name": "alignment",
+        "Description": "The alignment of all the receiver’s text.",
+        "Declaration": "@property NSTextAlignment alignment;",
+        "Type": {
+          "Name": "NSTextAlignment"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1534102-alignment?language=objc"
+      },
+      {
+        "Name": "textColor",
+        "Description": "The text color of all characters in the receiver.",
+        "Declaration": "@property(copy) NSColor *textColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1534875-textcolor?language=objc"
+      },
+      {
+        "Name": "baseWritingDirection",
+        "Description": "The initial writing direction used to determine the actual writing direction for text.",
+        "Declaration": "@property NSWritingDirection baseWritingDirection;",
+        "Type": {
+          "Name": "NSWritingDirection"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1526206-basewritingdirection?language=objc"
+      },
+      {
+        "Name": "maxSize",
+        "Description": "The receiver’s maximum size.",
+        "Declaration": "@property NSSize maxSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535900-maxsize?language=objc"
+      },
+      {
+        "Name": "minSize",
+        "Description": "The receiver’s minimum size.",
+        "Declaration": "@property NSSize minSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1526222-minsize?language=objc"
+      },
+      {
+        "Name": "verticallyResizable",
+        "Description": "A Boolean that controls whether the receiver changes its height to fit the height of its text.",
+        "Declaration": "@property(getter=isVerticallyResizable) BOOL verticallyResizable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVerticallyResizable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1535082-verticallyresizable?language=objc"
+      },
+      {
+        "Name": "horizontallyResizable",
+        "Description": "A Boolean that controls whether the receiver changes its width to fit the width of its text.",
+        "Declaration": "@property(getter=isHorizontallyResizable) BOOL horizontallyResizable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHorizontallyResizable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1527489-horizontallyresizable?language=objc"
+      },
+      {
+        "Name": "delegate",
+        "Description": "The receiver’s delegate.",
+        "Declaration": "@property(assign) id\u003cNSTextDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSTextDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstext/1529480-delegate?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nstext?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T18:51:24.964454-07:00",
+  "Version": 2
+}

@@ -1,0 +1,1554 @@
+{
+  "Class": {
+    "Name": "NSImage",
+    "Description": "A high-level interface for manipulating image data.",
+    "Declaration": "@interface NSImage : NSObject",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "setName:",
+        "Description": "Registers the image object under the specified name.",
+        "Declaration": "- (BOOL)setName:(NSImageName)string;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSImageName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520025-setname?language=objc"
+      },
+      {
+        "Name": "name",
+        "Description": "Returns the name associated with the image, if any.",
+        "Declaration": "- (NSImageName)name;",
+        "Return": {
+          "Name": "NSImageName"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519884-name?language=objc"
+      },
+      {
+        "Name": "initByReferencingFile:",
+        "Description": "Initializes and returns an image object using the specified file.",
+        "Declaration": "- (instancetype)initByReferencingFile:(NSString *)fileName;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "fileName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519955-initbyreferencingfile?language=objc"
+      },
+      {
+        "Name": "initByReferencingURL:",
+        "Description": "Initializes and returns an image object using the specified URL.",
+        "Declaration": "- (instancetype)initByReferencingURL:(NSURL *)url;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519990-initbyreferencingurl?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfFile:",
+        "Description": "Initializes and returns an image object with the contents of the specified file.",
+        "Declaration": "- (instancetype)initWithContentsOfFile:(NSString *)fileName;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "fileName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519918-initwithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:",
+        "Description": "Initializes and returns an image object with the contents of the specified URL.",
+        "Declaration": "- (instancetype)initWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519907-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithData:",
+        "Description": "Initializes and returns an image object using the provided image data.",
+        "Declaration": "- (instancetype)initWithData:(NSData *)data;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519941-initwithdata?language=objc"
+      },
+      {
+        "Name": "initWithDataIgnoringOrientation:",
+        "Description": "Initializes and returns an image object using the provided image data and ignoring the EXIF orientation tags.",
+        "Declaration": "- (instancetype)initWithDataIgnoringOrientation:(NSData *)data;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519915-initwithdataignoringorientation?language=objc"
+      },
+      {
+        "Name": "initWithCGImage:size:",
+        "Description": "Creates a new image using the contents of the provided image.",
+        "Declaration": "- (instancetype)initWithCGImage:(CGImageRef)cgImage \n                           size:(NSSize)size;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "cgImage",
+            "Type": {
+              "Name": "CGImageRef"
+            }
+          },
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "NSSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519939-initwithcgimage?language=objc"
+      },
+      {
+        "Name": "initWithPasteboard:",
+        "Description": "Initializes and returns an image object with data from the specified pasteboard.",
+        "Declaration": "- (instancetype)initWithPasteboard:(NSPasteboard *)pasteboard;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519952-initwithpasteboard?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "Initializes and returns an image object from data in an unarchiver.",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/2177315-initwithcoder?language=objc"
+      },
+      {
+        "Name": "initWithIconRef:",
+        "Description": "Initializes the image object with a Carbon-style icon resource.",
+        "Declaration": "- (instancetype)initWithIconRef:(IconRef)iconRef;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "iconRef",
+            "Type": {
+              "Name": "IconRef"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519930-initwithiconref?language=objc"
+      },
+      {
+        "Name": "initWithSize:",
+        "Description": "Initializes and returns an image object with the specified dimensions.",
+        "Declaration": "- (instancetype)initWithSize:(NSSize)size;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "NSSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520033-initwithsize?language=objc"
+      },
+      {
+        "Name": "configurationByApplyingConfiguration:",
+        "Description": "Creates a configuration object by applying the values from the configuration you specify.",
+        "Declaration": "- (instancetype)configurationByApplyingConfiguration:(NSImageSymbolConfiguration *)configuration;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "configuration",
+            "Type": {
+              "Name": "NSImageSymbolConfiguration",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimagesymbolconfiguration/3852560-configurationbyapplyingconfigura?language=objc"
+      },
+      {
+        "Name": "imageWithSymbolConfiguration:",
+        "Description": "Creates a new symbol image with the specified configuration.",
+        "Declaration": "- (NSImage *)imageWithSymbolConfiguration:(NSImageSymbolConfiguration *)configuration;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "configuration",
+            "Type": {
+              "Name": "NSImageSymbolConfiguration",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/3656508-imagewithsymbolconfiguration?language=objc"
+      },
+      {
+        "Name": "isTemplate",
+        "Description": "Returns a Boolean value that indicates whether the image is a template image.",
+        "Declaration": "- (BOOL)isTemplate",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1807274-istemplate?language=objc"
+      },
+      {
+        "Name": "addRepresentation:",
+        "Description": "Adds the specified image representation object to the image.",
+        "Declaration": "- (void)addRepresentation:(NSImageRep *)imageRep;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "imageRep",
+            "Type": {
+              "Name": "NSImageRep",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519911-addrepresentation?language=objc"
+      },
+      {
+        "Name": "addRepresentations:",
+        "Description": "Adds an array of image representation objects to the image.",
+        "Declaration": "- (void)addRepresentations:(NSArray\u003cNSImageRep *\u003e *)imageReps;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "imageReps",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImageRep",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519964-addrepresentations?language=objc"
+      },
+      {
+        "Name": "removeRepresentation:",
+        "Description": "Removes and releases the specified image representation.",
+        "Declaration": "- (void)removeRepresentation:(NSImageRep *)imageRep;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "imageRep",
+            "Type": {
+              "Name": "NSImageRep",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519995-removerepresentation?language=objc"
+      },
+      {
+        "Name": "bestRepresentationForRect:context:hints:",
+        "Description": "Returns the best representation of the image for the specified rectangle using the provided hints.",
+        "Declaration": "- (NSImageRep *)bestRepresentationForRect:(NSRect)rect \n                                  context:(NSGraphicsContext *)referenceContext \n                                    hints:(NSDictionary\u003cNSImageHintKey, id\u003e *)hints;\n",
+        "Return": {
+          "Name": "NSImageRep",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "referenceContext",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "hints",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImageHintKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519961-bestrepresentationforrect?language=objc"
+      },
+      {
+        "Name": "drawInRect:",
+        "Description": "Draws the image in the specified rectangle.",
+        "Declaration": "- (void)drawInRect:(NSRect)rect;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519863-drawinrect?language=objc"
+      },
+      {
+        "Name": "drawAtPoint:fromRect:operation:fraction:",
+        "Description": "Draws all or part of the image at the specified point in the current coordinate system.",
+        "Declaration": "- (void)drawAtPoint:(NSPoint)point \n           fromRect:(NSRect)fromRect \n          operation:(NSCompositingOperation)op \n           fraction:(CGFloat)delta;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "fromRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519981-drawatpoint?language=objc"
+      },
+      {
+        "Name": "drawInRect:fromRect:operation:fraction:",
+        "Description": "Draws all or part of the image in the specified rectangle in the current coordinate system.",
+        "Declaration": "- (void)drawInRect:(NSRect)rect \n          fromRect:(NSRect)fromRect \n         operation:(NSCompositingOperation)op \n          fraction:(CGFloat)delta;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "fromRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520067-drawinrect?language=objc"
+      },
+      {
+        "Name": "drawInRect:fromRect:operation:fraction:respectFlipped:hints:",
+        "Description": "Draws all or part of the image in the specified rectangle respecting the hints and the orientation of the current coordinate system.",
+        "Declaration": "- (void)drawInRect:(NSRect)dstSpacePortionRect \n          fromRect:(NSRect)srcSpacePortionRect \n         operation:(NSCompositingOperation)op \n          fraction:(CGFloat)requestedAlpha \n    respectFlipped:(BOOL)respectContextIsFlipped \n             hints:(NSDictionary\u003cNSImageHintKey, id\u003e *)hints;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "dstSpacePortionRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "srcSpacePortionRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          },
+          {
+            "Name": "requestedAlpha",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "respectContextIsFlipped",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "hints",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImageHintKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520043-drawinrect?language=objc"
+      },
+      {
+        "Name": "drawRepresentation:inRect:",
+        "Description": "Draws the image using the specified image representation object.",
+        "Declaration": "- (BOOL)drawRepresentation:(NSImageRep *)imageRep \n                    inRect:(NSRect)rect;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "imageRep",
+            "Type": {
+              "Name": "NSImageRep",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519904-drawrepresentation?language=objc"
+      },
+      {
+        "Name": "lockFocus",
+        "Description": "Prepares the image to receive drawing commands.",
+        "Declaration": "- (void)lockFocus;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519891-lockfocus?language=objc"
+      },
+      {
+        "Name": "lockFocusFlipped:",
+        "Description": "Prepares the image to receive drawing commands using the specified flipped state.",
+        "Declaration": "- (void)lockFocusFlipped:(BOOL)flipped;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flipped",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519914-lockfocusflipped?language=objc"
+      },
+      {
+        "Name": "unlockFocus",
+        "Description": "Removes the focus from the image.",
+        "Declaration": "- (void)unlockFocus;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519853-unlockfocus?language=objc"
+      },
+      {
+        "Name": "recache",
+        "Description": "Invalidates and frees offscreen caches of all image representations.",
+        "Declaration": "- (void)recache;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519890-recache?language=objc"
+      },
+      {
+        "Name": "TIFFRepresentationUsingCompression:factor:",
+        "Description": "Returns a data object that contains TIFF data with the specified compression settings for all of the image representations in the image.",
+        "Declaration": "- (NSData *)TIFFRepresentationUsingCompression:(NSTIFFCompression)comp \n                                        factor:(float)factor;\n",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "comp",
+            "Type": {
+              "Name": "NSTIFFCompression"
+            }
+          },
+          {
+            "Name": "factor",
+            "Type": {
+              "Name": "float"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519949-tiffrepresentationusingcompressi?language=objc"
+      },
+      {
+        "Name": "CGImageForProposedRect:context:hints:",
+        "Description": "Returns a Core Graphics image based on the contents of the current image object.",
+        "Declaration": "- (CGImageRef)CGImageForProposedRect:(NSRect *)proposedDestRect \n                             context:(NSGraphicsContext *)referenceContext \n                               hints:(NSDictionary\u003cNSImageHintKey, id\u003e *)hints;\n",
+        "Return": {
+          "Name": "CGImageRef"
+        },
+        "Args": [
+          {
+            "Name": "proposedDestRect",
+            "Type": {
+              "Name": "NSRect",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "referenceContext",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "hints",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImageHintKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519861-cgimageforproposedrect?language=objc"
+      },
+      {
+        "Name": "cancelIncrementalLoad",
+        "Description": "Cancels the current download operation, if any, for an incrementally loaded image.",
+        "Declaration": "- (void)cancelIncrementalLoad;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520041-cancelincrementalload?language=objc"
+      },
+      {
+        "Name": "hitTestRect:withImageDestinationRect:context:hints:flipped:",
+        "Description": "Returns whether the destination rectangle would intersect a non-transparent portion of the image.",
+        "Declaration": "- (BOOL)hitTestRect:(NSRect)testRectDestSpace \nwithImageDestinationRect:(NSRect)imageRectDestSpace \n            context:(NSGraphicsContext *)context \n              hints:(NSDictionary\u003cNSImageHintKey, id\u003e *)hints \n            flipped:(BOOL)flipped;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "testRectDestSpace",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "imageRectDestSpace",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "hints",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImageHintKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "flipped",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519922-hittestrect?language=objc"
+      },
+      {
+        "Name": "layerContentsForContentsScale:",
+        "Description": "Returns an object that may be used as the contents of a layer.",
+        "Declaration": "- (id)layerContentsForContentsScale:(CGFloat)layerContentsScale;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "layerContentsScale",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519851-layercontentsforcontentsscale?language=objc"
+      },
+      {
+        "Name": "recommendedLayerContentsScale:",
+        "Description": "Returns the recommended layer contents scale for this image.",
+        "Declaration": "- (CGFloat)recommendedLayerContentsScale:(CGFloat)preferredContentsScale;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "preferredContentsScale",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519878-recommendedlayercontentsscale?language=objc"
+      },
+      {
+        "Name": "lockFocusOnRepresentation:",
+        "Description": "Prepares the specified image representation to receive drawing commands.",
+        "Declaration": "- (void)lockFocusOnRepresentation:(NSImageRep *)imageRepresentation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "imageRepresentation",
+            "Type": {
+              "Name": "NSImageRep",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519950-lockfocusonrepresentation?language=objc"
+      },
+      {
+        "Name": "bestRepresentationForDevice:",
+        "Description": "Returns the best representation for the device with the specified characteristics.",
+        "Declaration": "- (NSImageRep *)bestRepresentationForDevice:(NSDictionary *)deviceDescription;",
+        "Return": {
+          "Name": "NSImageRep",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "deviceDescription",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519925-bestrepresentationfordevice?language=objc"
+      },
+      {
+        "Name": "compositeToPoint:operation:",
+        "Description": "Composites the entire image to the specified point in the current coordinate system.",
+        "Declaration": "- (void)compositeToPoint:(NSPoint)point \n               operation:(NSCompositingOperation)op;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519867-compositetopoint?language=objc"
+      },
+      {
+        "Name": "compositeToPoint:fromRect:operation:",
+        "Description": "Composites a portion of the image to the specified point in the current coordinate system.",
+        "Declaration": "- (void)compositeToPoint:(NSPoint)point \n                fromRect:(NSRect)rect \n               operation:(NSCompositingOperation)op;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520046-compositetopoint?language=objc"
+      },
+      {
+        "Name": "compositeToPoint:fromRect:operation:fraction:",
+        "Description": "Composites a portion of the image at the specified opacity to the current coordinate system.",
+        "Declaration": "- (void)compositeToPoint:(NSPoint)point \n                fromRect:(NSRect)rect \n               operation:(NSCompositingOperation)op \n                fraction:(CGFloat)delta;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520026-compositetopoint?language=objc"
+      },
+      {
+        "Name": "compositeToPoint:operation:fraction:",
+        "Description": "Composites the entire image at the specified opacity in the current coordinate system.",
+        "Declaration": "- (void)compositeToPoint:(NSPoint)point \n               operation:(NSCompositingOperation)op \n                fraction:(CGFloat)delta;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "op",
+            "Type": {
+              "Name": "NSCompositingOperation"
+            }
+          },
+          {
+            "Name": "delta",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519932-compositetopoint?language=objc"
+      },
+      {
+        "Name": "dissolveToPoint:fraction:",
+        "Description": "Composites the entire image to the specified location using the source-over operator.",
+        "Declaration": "- (void)dissolveToPoint:(NSPoint)point \n               fraction:(CGFloat)fraction;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "fraction",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519887-dissolvetopoint?language=objc"
+      },
+      {
+        "Name": "dissolveToPoint:fromRect:fraction:",
+        "Description": "Composites a portion of the image to the specified location using the source-over operator.",
+        "Declaration": "- (void)dissolveToPoint:(NSPoint)point \n               fromRect:(NSRect)rect \n               fraction:(CGFloat)fraction;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "fraction",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519968-dissolvetopoint?language=objc"
+      },
+      {
+        "Name": "setScalesWhenResized:",
+        "Description": "Sets whether to scale different-sized image representations to fit the image's size.",
+        "Declaration": "- (void)setScalesWhenResized:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519970-setscaleswhenresized?language=objc"
+      },
+      {
+        "Name": "scalesWhenResized",
+        "Description": "Returns a Boolean value that indicates whether to scale image representations to fit the image's size.",
+        "Declaration": "- (BOOL)scalesWhenResized;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519929-scaleswhenresized?language=objc"
+      },
+      {
+        "Name": "setDataRetained:",
+        "Description": "Sets whether the image retains its source image data.",
+        "Declaration": "- (void)setDataRetained:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519999-setdataretained?language=objc"
+      },
+      {
+        "Name": "isDataRetained",
+        "Description": "Returns a Boolean value that incidates whether the image retains its source image data.",
+        "Declaration": "- (BOOL)isDataRetained;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520005-isdataretained?language=objc"
+      },
+      {
+        "Name": "setCachedSeparately:",
+        "Description": "Sets whether each image representation uses a separate offscreen window to cache its contents.",
+        "Declaration": "- (void)setCachedSeparately:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520009-setcachedseparately?language=objc"
+      },
+      {
+        "Name": "isCachedSeparately",
+        "Description": "Returns a Boolean value that indicates whether each image representation caches its contents in a separate offscreen window.",
+        "Declaration": "- (BOOL)isCachedSeparately;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520021-iscachedseparately?language=objc"
+      },
+      {
+        "Name": "setCacheDepthMatchesImageDepth:",
+        "Description": "Sets whether the image’s offscreen window caches use the same bit depth as the image data itself.",
+        "Declaration": "- (void)setCacheDepthMatchesImageDepth:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519895-setcachedepthmatchesimagedepth?language=objc"
+      },
+      {
+        "Name": "cacheDepthMatchesImageDepth",
+        "Description": "Returns a Boolean value that indicates whether an image's offscreen window caches use the same bit depth as the image data itself.",
+        "Declaration": "- (BOOL)cacheDepthMatchesImageDepth;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519992-cachedepthmatchesimagedepth?language=objc"
+      },
+      {
+        "Name": "setFlipped:",
+        "Description": "Sets whether the polarity of the y axis is inverted when drawing an image.",
+        "Declaration": "- (void)setFlipped:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520044-setflipped?language=objc"
+      },
+      {
+        "Name": "isFlipped",
+        "Description": "Returns a Boolean value that indicates whether the image uses a flipped coordinate system.",
+        "Declaration": "- (BOOL)isFlipped;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519846-isflipped?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "symbolConfiguration",
+        "Description": "The configuration details for a symbol image.",
+        "Declaration": "@property(readonly, copy) NSImageSymbolConfiguration *symbolConfiguration;",
+        "Type": {
+          "Name": "NSImageSymbolConfiguration",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/3852559-symbolconfiguration?language=objc"
+      },
+      {
+        "Name": "delegate",
+        "Description": "The image’s delegate object.",
+        "Declaration": "@property(weak) id\u003cNSImageDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSImageDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519926-delegate?language=objc"
+      },
+      {
+        "Name": "size",
+        "Description": "The size of the image.",
+        "Declaration": "@property NSSize size;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519987-size?language=objc"
+      },
+      {
+        "Name": "template",
+        "Description": "A Boolean value that determines whether the image represents a template image.",
+        "Declaration": "@property(getter=isTemplate) BOOL template;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isTemplate"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520017-template?language=objc"
+      },
+      {
+        "Name": "representations",
+        "Description": "An array containing all of the image object’s image representations.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSImageRep *\u003e *representations;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSImageRep",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519858-representations?language=objc"
+      },
+      {
+        "Name": "prefersColorMatch",
+        "Description": "A Boolean value that indicates whether the image prefers to choose image representations using color-matching or resolution-matching.",
+        "Declaration": "@property BOOL prefersColorMatch;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520010-preferscolormatch?language=objc"
+      },
+      {
+        "Name": "usesEPSOnResolutionMismatch",
+        "Description": "A Boolean value that indicates whether EPS representations are preferred when no other representations match the resolution of the device.",
+        "Declaration": "@property BOOL usesEPSOnResolutionMismatch;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519868-usesepsonresolutionmismatch?language=objc"
+      },
+      {
+        "Name": "matchesOnMultipleResolution",
+        "Description": "A Boolean value that indicates whether image representations whose resolution is an integral multiple of the device resolution are a match.",
+        "Declaration": "@property BOOL matchesOnMultipleResolution;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519963-matchesonmultipleresolution?language=objc"
+      },
+      {
+        "Name": "valid",
+        "Description": "A Boolean value that indicates whether it is possible to draw an image representation.",
+        "Declaration": "@property(getter=isValid, readonly) BOOL valid;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isValid",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519991-valid?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The background color for the image.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520059-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "capInsets",
+        "Description": "The cap insets for the image.",
+        "Declaration": "@property NSEdgeInsets capInsets;",
+        "Type": {
+          "Name": "NSEdgeInsets"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520012-capinsets?language=objc"
+      },
+      {
+        "Name": "resizingMode",
+        "Description": "The resizing mode for the image.",
+        "Declaration": "@property NSImageResizingMode resizingMode;",
+        "Type": {
+          "Name": "NSImageResizingMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520060-resizingmode?language=objc"
+      },
+      {
+        "Name": "alignmentRect",
+        "Description": "A rectangle that you can use to position the image during layout.",
+        "Declaration": "@property NSRect alignmentRect;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519905-alignmentrect?language=objc"
+      },
+      {
+        "Name": "cacheMode",
+        "Description": "The image’s caching mode.",
+        "Declaration": "@property NSImageCacheMode cacheMode;",
+        "Type": {
+          "Name": "NSImageCacheMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519850-cachemode?language=objc"
+      },
+      {
+        "Name": "TIFFRepresentation",
+        "Description": "A data object containing TIFF data for all of the image representations in the image.",
+        "Declaration": "@property(nullable, readonly, strong) NSData *TIFFRepresentation;",
+        "Type": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519841-tiffrepresentation?language=objc"
+      },
+      {
+        "Name": "accessibilityDescription",
+        "Description": "The image’s accessibility description.",
+        "Declaration": "@property(copy) NSString *accessibilityDescription;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519943-accessibilitydescription?language=objc"
+      },
+      {
+        "Name": "matchesOnlyOnBestFittingAxis",
+        "Description": "A Boolean value that indicates whether the image matches only on the best fitting axis.",
+        "Declaration": "@property BOOL matchesOnlyOnBestFittingAxis;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519848-matchesonlyonbestfittingaxis?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "imageNamed:",
+        "Description": "Returns the image object associated with the specified name.",
+        "Declaration": "+ (NSImage *)imageNamed:(NSImageName)name;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSImageName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520015-imagenamed?language=objc"
+      },
+      {
+        "Name": "imageWithSystemSymbolName:accessibilityDescription:",
+        "Description": "Creates a symbol image with the system symbol name and accessibility description that you specify.",
+        "Declaration": "+ (instancetype)imageWithSystemSymbolName:(NSString *)symbolName \n                 accessibilityDescription:(NSString *)description;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "symbolName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "description",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/3622472-imagewithsystemsymbolname?language=objc"
+      },
+      {
+        "Name": "imageWithSize:flipped:drawingHandler:",
+        "Description": "Creates and returns an image object whose contents are drawn using the specified block.",
+        "Declaration": "+ (instancetype)imageWithSize:(NSSize)size \n                      flipped:(BOOL)drawingHandlerShouldBeCalledWithFlippedContext \n               drawingHandler:(BOOL (^)(NSRect dstRect))drawingHandler;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "drawingHandlerShouldBeCalledWithFlippedContext",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "drawingHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "dstRect",
+                    "Type": {
+                      "Name": "NSRect"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519860-imagewithsize?language=objc"
+      },
+      {
+        "Name": "canInitWithPasteboard:",
+        "Description": "Tests whether the image can create an instance of itself using pasteboard data.",
+        "Declaration": "+ (BOOL)canInitWithPasteboard:(NSPasteboard *)pasteboard;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1520039-caninitwithpasteboard?language=objc"
+      },
+      {
+        "Name": "imageFileTypes",
+        "Description": "Returns an array of strings identifying the image types supported by the registered image representation objects.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)imageFileTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519989-imagefiletypes?language=objc"
+      },
+      {
+        "Name": "imageUnfilteredFileTypes",
+        "Description": "Returns an array of strings identifying the file types supported directly by the registered image representation objects.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)imageUnfilteredFileTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519973-imageunfilteredfiletypes?language=objc"
+      },
+      {
+        "Name": "imagePasteboardTypes",
+        "Description": "Returns an array of strings identifying the pasteboard types supported directly by the registered image representation objects.",
+        "Declaration": "+ (NSArray\u003cNSPasteboardType\u003e *)imagePasteboardTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSPasteboardType"
+            }
+          ]
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519924-imagepasteboardtypes?language=objc"
+      },
+      {
+        "Name": "imageUnfilteredPasteboardTypes",
+        "Description": "Returns an array of strings identifying the pasteboard types supported directly by the registered image representation objects.",
+        "Declaration": "+ (NSArray\u003cNSPasteboardType\u003e *)imageUnfilteredPasteboardTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSPasteboardType"
+            }
+          ]
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519872-imageunfilteredpasteboardtypes?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "imageTypes",
+        "Description": "Returns an array of UTI strings identifying the image types supported by the registered image representation objects, either directly or through a user-installed filter service.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSString *\u003e *imageTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519988-imagetypes?language=objc"
+      },
+      {
+        "Name": "imageUnfilteredTypes",
+        "Description": "Returns an array of UTI strings identifying the image types supported directly by the registered image representation objects.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSString *\u003e *imageUnfilteredTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsimage/1519899-imageunfilteredtypes?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-14T14:33:34.097532-07:00",
+  "Version": 2
+}

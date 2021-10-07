@@ -1,9 +1,11 @@
 package cocoa
 
-import "github.com/progrium/macdriver/core"
+import (
+	"github.com/progrium/macdriver/core"
+)
 
 type NSStatusBarButton struct {
-	NSView
+	gen_NSStatusBarButton
 }
 
 func (b NSStatusBarButton) SetImagePosition(state int) {
@@ -19,15 +21,11 @@ func (b NSStatusBarButton) Title() string {
 }
 
 func (b NSStatusBarButton) SetTitle(s string) {
-	b.Set("title:", core.String(s))
+	b.SetTitle_(core.String(s))
 }
 
-func (b NSStatusBarButton) Image() NSImage {
-	return NSImage{b.Get("image")}
-}
-
-func (b NSStatusBarButton) SetImage(obj NSImage) {
-	b.Set("image:", obj)
+func (b NSStatusBarButton) SetImage(obj NSImageRef) {
+	b.SetImage_(obj)
 }
 
 func (b NSStatusBarButton) ToolTip() string {

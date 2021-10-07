@@ -1,18 +1,16 @@
 package cocoa
 
-import "github.com/progrium/macdriver/objc"
-
 const (
 	NSVisualEffectBlendingModeBehindWindow = 0
 	NSVisualEffectBlendingModeWithinWindow = 1
 )
 
 type NSVisualEffectView struct {
-	objc.Object
+	gen_NSVisualEffectView
 }
 
 func NSVisualEffectView_New() NSVisualEffectView {
-	return NSVisualEffectView{objc.Get("NSVisualEffectView").Alloc().Init()}
+	return NSVisualEffectView_alloc().Init_asNSVisualEffectView()
 }
 
 // effect.Set("translatesAutoresizingMaskIntoConstraints:", false)

@@ -1,0 +1,163 @@
+{
+  "Class": {
+    "Name": "NSNib",
+    "Description": "An object wrapper, or container, for an Interface Builder nib file.",
+    "Declaration": "@interface NSNib : NSObject",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.3+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithContentsOfURL:",
+        "Description": "Returns an NSNib object initialized to the nib file at the specified URL.",
+        "Declaration": "- (id)initWithContentsOfURL:(NSURL *)nibFileURL;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "nibFileURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1547299-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithNibNamed:bundle:",
+        "Description": "Returns an NSNib object initialized to the nib file in the specified bundle.",
+        "Declaration": "- (instancetype)initWithNibNamed:(NSNibName)nibName \n                          bundle:(NSBundle *)bundle;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "nibName",
+            "Type": {
+              "Name": "NSNibName"
+            }
+          },
+          {
+            "Name": "bundle",
+            "Type": {
+              "Name": "NSBundle",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1533932-initwithnibnamed?language=objc"
+      },
+      {
+        "Name": "initWithNibData:bundle:",
+        "Description": "Initializes an instance with nib data and specified bundle for locating resources.",
+        "Declaration": "- (instancetype)initWithNibData:(NSData *)nibData \n                         bundle:(NSBundle *)bundle;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "nibData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bundle",
+            "Type": {
+              "Name": "NSBundle",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc"
+      },
+      {
+        "Name": "instantiateNibWithOwner:topLevelObjects:",
+        "Description": "Unarchives and instantiates the in-memory contents of the receiver's nib file, creating a distinct object tree and set of top level objects.",
+        "Declaration": "- (BOOL)instantiateNibWithOwner:(id)owner \n                topLevelObjects:(NSArray * _Null_unspecified *)topLevelObjects;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "topLevelObjects",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_null_unspecified"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1547297-instantiatenibwithowner?language=objc"
+      },
+      {
+        "Name": "instantiateNibWithExternalNameTable:",
+        "Description": "Unarchives and instantiates the in-memory contents of the receiver's nib file, creating a distinct object tree and top level objects.",
+        "Declaration": "- (BOOL)instantiateNibWithExternalNameTable:(NSDictionary *)externalNameTable;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "externalNameTable",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1547300-instantiatenibwithexternalnameta?language=objc"
+      },
+      {
+        "Name": "instantiateWithOwner:topLevelObjects:",
+        "Description": "Instantiates objects in the nib file with the specified owner.",
+        "Declaration": "- (BOOL)instantiateWithOwner:(id)owner \n             topLevelObjects:(NSArray * _Nullable *)topLevelObjects;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "topLevelObjects",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsnib/1527173-instantiatewithowner?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-14T14:33:55.47782-07:00",
+  "Version": 2
+}

@@ -22,15 +22,15 @@ import (
 )
 
 type NSImage struct {
-	objc.Object
+	gen_NSImage
 }
 
-func NSImage_InitWithData(data core.NSData) NSImage {
-	return NSImage{objc.Get("NSImage").Alloc().Send("initWithData:", data)}
+func NSImage_InitWithData(data core.NSDataRef) NSImage {
+	return NSImage_alloc().InitWithData__asNSImage(data)
 }
 
 func NSImage_ImageNamed(name string) NSImage {
-	return NSImage{objc.Get("NSImage").Send("imageNamed:", core.String(name))}
+	return NSImage_fromRef(objc.Get("NSImage").Send("imageNamed:", core.String(name)))
 }
 
 // broken
@@ -44,11 +44,7 @@ func (i NSImage) SetSize(size core.NSSize) {
 }
 
 func (i NSImage) SetTemplate(b bool) {
-	i.Send("setTemplate:", b)
-}
-
-func (i NSImage) IsTemplate() bool {
-	return i.Get("isTemplate").Bool()
+	i.SetTemplate_(b)
 }
 
 func (i NSImage) SetValueForKey(value, key interface{}) {

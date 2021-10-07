@@ -1,0 +1,520 @@
+{
+  "Class": {
+    "Name": "NSMenuItem",
+    "Description": "A command item in an app menu.",
+    "Declaration": "@interface NSMenuItem : NSObject",
+    "InstanceMethods": [
+      {
+        "Name": "initWithTitle:action:keyEquivalent:",
+        "Description": "Returns an initialized instance of NSMenuItem.",
+        "Declaration": "- (instancetype)initWithTitle:(NSString *)string \n                       action:(SEL)selector \n                keyEquivalent:(NSString *)charCode;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "selector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "charCode",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc"
+      },
+      {
+        "Name": "setMnemonicLocation:",
+        "Description": "Sets the character of the menu item title at location that is to be underlined.",
+        "Declaration": "- (void)setMnemonicLocation:(NSUInteger)location;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514829-setmnemoniclocation?language=objc"
+      },
+      {
+        "Name": "mnemonicLocation",
+        "Description": "Returns the position of the underlined character in the menu item title used as a mnemonic.",
+        "Declaration": "- (NSUInteger)mnemonicLocation;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514803-mnemoniclocation?language=objc"
+      },
+      {
+        "Name": "setTitleWithMnemonic:",
+        "Description": "Sets the title of a menu item with a character denoting an access key.",
+        "Declaration": "- (void)setTitleWithMnemonic:(NSString *)stringWithAmpersand;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "stringWithAmpersand",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514851-settitlewithmnemonic?language=objc"
+      },
+      {
+        "Name": "mnemonic",
+        "Description": "Returns the character in the menu item title that appears underlined for use as a mnemonic.",
+        "Declaration": "- (NSString *)mnemonic;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514852-mnemonic?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1644728-initwithcoder?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "enabled",
+        "Description": "A Boolean value that indicates whether the menu item is enabled.",
+        "Declaration": "@property(getter=isEnabled) BOOL enabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514863-enabled?language=objc"
+      },
+      {
+        "Name": "hidden",
+        "Description": "A Boolean value that indicates whether the menu item is hidden.",
+        "Declaration": "@property(getter=isHidden) BOOL hidden;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHidden"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514846-hidden?language=objc"
+      },
+      {
+        "Name": "hiddenOrHasHiddenAncestor",
+        "Description": "A Boolean value that indicates whether the menu item or any of its superitems is hidden.",
+        "Declaration": "@property(getter=isHiddenOrHasHiddenAncestor, readonly) BOOL hiddenOrHasHiddenAncestor;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHiddenOrHasHiddenAncestor",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514832-hiddenorhashiddenancestor?language=objc"
+      },
+      {
+        "Name": "target",
+        "Description": "The menu item's target.",
+        "Declaration": "@property(weak) id target;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514843-target?language=objc"
+      },
+      {
+        "Name": "action",
+        "Description": "The menu item's action-method selector.",
+        "Declaration": "@property SEL action;",
+        "Type": {
+          "Name": "SEL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514825-action?language=objc"
+      },
+      {
+        "Name": "title",
+        "Description": "The menu item's title.",
+        "Declaration": "@property(copy) NSString *title;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc"
+      },
+      {
+        "Name": "attributedTitle",
+        "Description": "A custom string for a menu item.",
+        "Declaration": "@property(copy) NSAttributedString *attributedTitle;",
+        "Type": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc"
+      },
+      {
+        "Name": "tag",
+        "Description": "The menu item's tag.",
+        "Declaration": "@property NSInteger tag;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514840-tag?language=objc"
+      },
+      {
+        "Name": "state",
+        "Description": "The state of the menu item.",
+        "Declaration": "@property NSControlStateValue state;",
+        "Type": {
+          "Name": "NSControlStateValue"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514804-state?language=objc"
+      },
+      {
+        "Name": "image",
+        "Description": "The menu item’s image.",
+        "Declaration": "@property(strong) NSImage *image;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc"
+      },
+      {
+        "Name": "onStateImage",
+        "Description": "The image of the menu item that indicates an “on” state.",
+        "Declaration": "@property(strong) NSImage *onStateImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514861-onstateimage?language=objc"
+      },
+      {
+        "Name": "offStateImage",
+        "Description": "The image of the menu item that indicates an “off” state.",
+        "Declaration": "@property(strong) NSImage *offStateImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514821-offstateimage?language=objc"
+      },
+      {
+        "Name": "mixedStateImage",
+        "Description": "The image of the menu item that indicates a “mixed” state, that is, a state neither “on” nor “off.”",
+        "Declaration": "@property(strong) NSImage *mixedStateImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514827-mixedstateimage?language=objc"
+      },
+      {
+        "Name": "submenu",
+        "Description": "The submenu of the menu item.",
+        "Declaration": "@property(strong) NSMenu *submenu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514845-submenu?language=objc"
+      },
+      {
+        "Name": "hasSubmenu",
+        "Description": "A Boolean value that indicates whether the menu item has a submenu.",
+        "Declaration": "@property(readonly) BOOL hasSubmenu;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514817-hassubmenu?language=objc"
+      },
+      {
+        "Name": "parentItem",
+        "Description": "The menu item whose submenu contains the receiver.",
+        "Declaration": "@property(nullable, readonly, assign) NSMenuItem *parentItem;",
+        "Type": {
+          "Name": "NSMenuItem",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514813-parentitem?language=objc"
+      },
+      {
+        "Name": "separatorItem",
+        "Description": "A menu item that is used to separate logical groups of menu commands.",
+        "Declaration": "@property(getter=isSeparatorItem, readonly) BOOL separatorItem;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSeparatorItem",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514837-separatoritem?language=objc"
+      },
+      {
+        "Name": "menu",
+        "Description": "The menu item’s menu.",
+        "Declaration": "@property(assign) NSMenu *menu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514830-menu?language=objc"
+      },
+      {
+        "Name": "keyEquivalent",
+        "Description": "The menu item’s unmodified key equivalent.",
+        "Declaration": "@property(copy) NSString *keyEquivalent;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc"
+      },
+      {
+        "Name": "keyEquivalentModifierMask",
+        "Description": "The menu item’s keyboard equivalent modifiers.",
+        "Declaration": "@property NSEventModifierFlags keyEquivalentModifierMask;",
+        "Type": {
+          "Name": "NSEventModifierFlags"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514815-keyequivalentmodifiermask?language=objc"
+      },
+      {
+        "Name": "userKeyEquivalent",
+        "Description": "The user-assigned key equivalent for the menu item.",
+        "Declaration": "@property(readonly, copy) NSString *userKeyEquivalent;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514850-userkeyequivalent?language=objc"
+      },
+      {
+        "Name": "alternate",
+        "Description": "A Boolean value that marks the menu item as an alternate to the previous menu item.",
+        "Declaration": "@property(getter=isAlternate) BOOL alternate;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAlternate"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514823-alternate?language=objc"
+      },
+      {
+        "Name": "indentationLevel",
+        "Description": "The menu item indentation level for the menu item.",
+        "Declaration": "@property NSInteger indentationLevel;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514809-indentationlevel?language=objc"
+      },
+      {
+        "Name": "toolTip",
+        "Description": "A help tag for the menu item.",
+        "Declaration": "@property(copy) NSString *toolTip;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc"
+      },
+      {
+        "Name": "representedObject",
+        "Description": "The object represented by the menu item.",
+        "Declaration": "@property(strong) id representedObject;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514834-representedobject?language=objc"
+      },
+      {
+        "Name": "view",
+        "Description": "The content view for the menu item.",
+        "Declaration": "@property(strong) NSView *view;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514835-view?language=objc"
+      },
+      {
+        "Name": "highlighted",
+        "Description": "A Boolean value that indicates whether the menu item should be drawn highlighted.",
+        "Declaration": "@property(getter=isHighlighted, readonly) BOOL highlighted;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHighlighted",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514856-highlighted?language=objc"
+      },
+      {
+        "Name": "allowsAutomaticKeyEquivalentLocalization",
+        "Description": "",
+        "Declaration": "@property BOOL allowsAutomaticKeyEquivalentLocalization;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/3787554-allowsautomatickeyequivalentloca?language=objc"
+      },
+      {
+        "Name": "allowsAutomaticKeyEquivalentMirroring",
+        "Description": "",
+        "Declaration": "@property BOOL allowsAutomaticKeyEquivalentMirroring;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/3787555-allowsautomatickeyequivalentmirr?language=objc"
+      },
+      {
+        "Name": "allowsKeyEquivalentWhenHidden",
+        "Description": "",
+        "Declaration": "@property BOOL allowsKeyEquivalentWhenHidden;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/2880316-allowskeyequivalentwhenhidden?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "separatorItem",
+        "Description": "Returns a menu item that is used to separate logical groups of menu commands.",
+        "Declaration": "+ (NSMenuItem *)separatorItem;",
+        "Return": {
+          "Name": "NSMenuItem",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "usesUserKeyEquivalents",
+        "Description": "Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents.",
+        "Declaration": "@property(class) BOOL usesUserKeyEquivalents;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsmenuitem?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-13T14:22:35.518102-07:00",
+  "Version": 2
+}

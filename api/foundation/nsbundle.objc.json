@@ -1,0 +1,1648 @@
+{
+  "Class": {
+    "Name": "NSBundle",
+    "Description": "A representation of the code and resources stored in a bundle directory on disk.",
+    "Declaration": "@interface NSBundle : NSObject",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithURL:",
+        "Description": "Returns an NSBundle object initialized to correspond to the specified file URL.",
+        "Declaration": "- (instancetype)initWithURL:(NSURL *)url;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409352-initwithurl?language=objc"
+      },
+      {
+        "Name": "initWithPath:",
+        "Description": "Returns an NSBundle object initialized to correspond to the specified directory.",
+        "Declaration": "- (instancetype)initWithPath:(NSString *)path;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1412741-initwithpath?language=objc"
+      },
+      {
+        "Name": "loadNibNamed:owner:options:",
+        "Description": "Unarchives the contents of a nib file located in the receiver's bundle.",
+        "Declaration": "- (NSArray *)loadNibNamed:(NSString *)name \n                    owner:(id)owner \n                  options:(NSDictionary\u003cUINibOptionsKey, id\u003e *)options;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "UINibOptionsKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1618147-loadnibnamed?language=objc"
+      },
+      {
+        "Name": "loadNibNamed:owner:topLevelObjects:",
+        "Description": "Loads a nib from the bundle with the specified file name and owner.",
+        "Declaration": "- (BOOL)loadNibNamed:(NSNibName)nibName \n               owner:(id)owner \n     topLevelObjects:(NSArray * _Nullable *)topLevelObjects;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "nibName",
+            "Type": {
+              "Name": "NSNibName"
+            }
+          },
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "topLevelObjects",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1402909-loadnibnamed?language=objc"
+      },
+      {
+        "Name": "loadNibFile:externalNameTable:withZone:",
+        "Description": "Unarchives the contents of a nib file located in the receiver's bundle.",
+        "Declaration": "- (BOOL)loadNibFile:(NSString *)fileName \n  externalNameTable:(NSDictionary *)context \n           withZone:(NSZone *)zone;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fileName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "zone",
+            "Type": {
+              "Name": "NSZone",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1402910-loadnibfile?language=objc"
+      },
+      {
+        "Name": "URLForResource:withExtension:subdirectory:",
+        "Description": "Returns the file URL for the resource file identified by the specified name and extension and residing in a given bundle directory.",
+        "Declaration": "- (NSURL *)URLForResource:(NSString *)name \n            withExtension:(NSString *)ext \n             subdirectory:(NSString *)subpath;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1416712-urlforresource?language=objc"
+      },
+      {
+        "Name": "URLForResource:withExtension:",
+        "Description": "Returns the file URL for the resource identified by the specified name and file extension.",
+        "Declaration": "- (NSURL *)URLForResource:(NSString *)name \n            withExtension:(NSString *)ext;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411540-urlforresource?language=objc"
+      },
+      {
+        "Name": "URLsForResourcesWithExtension:subdirectory:",
+        "Description": "Returns an array of file URLs for all resources identified by the specified file extension and located in the specified bundle subdirectory.",
+        "Declaration": "- (NSArray\u003cNSURL *\u003e *)URLsForResourcesWithExtension:(NSString *)ext \n                                       subdirectory:(NSString *)subpath;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1407424-urlsforresourceswithextension?language=objc"
+      },
+      {
+        "Name": "URLForResource:withExtension:subdirectory:localization:",
+        "Description": "Returns the file URL for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.",
+        "Declaration": "- (NSURL *)URLForResource:(NSString *)name \n            withExtension:(NSString *)ext \n             subdirectory:(NSString *)subpath \n             localization:(NSString *)localizationName;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "localizationName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417378-urlforresource?language=objc"
+      },
+      {
+        "Name": "URLsForResourcesWithExtension:subdirectory:localization:",
+        "Description": "Returns an array containing the file URLs for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.",
+        "Declaration": "- (NSArray\u003cNSURL *\u003e *)URLsForResourcesWithExtension:(NSString *)ext \n                                       subdirectory:(NSString *)subpath \n                                       localization:(NSString *)localizationName;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "localizationName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1414688-urlsforresourceswithextension?language=objc"
+      },
+      {
+        "Name": "pathForResource:ofType:",
+        "Description": "Returns the full pathname for the resource identified by the specified name and file extension.",
+        "Declaration": "- (NSString *)pathForResource:(NSString *)name \n                       ofType:(NSString *)ext;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1410989-pathforresource?language=objc"
+      },
+      {
+        "Name": "pathForResource:ofType:inDirectory:",
+        "Description": "Returns the full pathname for the resource identified by the specified name and file extension and located in the specified bundle subdirectory.",
+        "Declaration": "- (NSString *)pathForResource:(NSString *)name \n                       ofType:(NSString *)ext \n                  inDirectory:(NSString *)subpath;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409670-pathforresource?language=objc"
+      },
+      {
+        "Name": "pathForResource:ofType:inDirectory:forLocalization:",
+        "Description": "Returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.",
+        "Declaration": "- (NSString *)pathForResource:(NSString *)name \n                       ofType:(NSString *)ext \n                  inDirectory:(NSString *)subpath \n              forLocalization:(NSString *)localizationName;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "localizationName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413471-pathforresource?language=objc"
+      },
+      {
+        "Name": "pathsForResourcesOfType:inDirectory:",
+        "Description": "Returns an array containing the pathnames for all bundle resources having the specified filename extension and residing in the resource subdirectory.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)pathsForResourcesOfType:(NSString *)ext \n                                     inDirectory:(NSString *)subpath;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413058-pathsforresourcesoftype?language=objc"
+      },
+      {
+        "Name": "pathsForResourcesOfType:inDirectory:forLocalization:",
+        "Description": "Returns an array containing the file for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)pathsForResourcesOfType:(NSString *)ext \n                                     inDirectory:(NSString *)subpath \n                                 forLocalization:(NSString *)localizationName;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "localizationName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1416940-pathsforresourcesoftype?language=objc"
+      },
+      {
+        "Name": "URLForImageResource:",
+        "Description": "Returns the location of the specified image resource as an NSURL.",
+        "Declaration": "- (NSURL *)URLForImageResource:(NSImageName)name;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSImageName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1519886-urlforimageresource?language=objc"
+      },
+      {
+        "Name": "pathForImageResource:",
+        "Description": "Returns the location of the specified image resource file.",
+        "Declaration": "- (NSString *)pathForImageResource:(NSImageName)name;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSImageName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1519854-pathforimageresource?language=objc"
+      },
+      {
+        "Name": "imageForResource:",
+        "Description": "Returns an NSImage instance associated with the specified name, which can be backed by multiple files representing different resolution versions of the image.",
+        "Declaration": "- (NSImage *)imageForResource:(NSImageName)name;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSImageName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1519901-imageforresource?language=objc"
+      },
+      {
+        "Name": "pathForSoundResource:",
+        "Description": "Returns the location of the specified sound resource file.",
+        "Declaration": "- (NSString *)pathForSoundResource:(NSSoundName)name;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSSoundName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1477280-pathforsoundresource?language=objc"
+      },
+      {
+        "Name": "localizedStringForKey:value:table:",
+        "Description": "Returns a localized version of the string designated by the specified key and residing in the specified table.",
+        "Declaration": "- (NSString *)localizedStringForKey:(NSString *)key \n                              value:(NSString *)value \n                              table:(NSString *)tableName;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "tableName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417694-localizedstringforkey?language=objc"
+      },
+      {
+        "Name": "contextHelpForKey:",
+        "Description": "Returns the context-sensitive help for the specified key from the bundle's help file.",
+        "Declaration": "- (NSAttributedString *)contextHelpForKey:(NSHelpManagerContextHelpKey)key;",
+        "Return": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSHelpManagerContextHelpKey"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1500918-contexthelpforkey?language=objc"
+      },
+      {
+        "Name": "URLForAuxiliaryExecutable:",
+        "Description": "Returns the file URL of the executable with the specified name in the receiver’s bundle.",
+        "Declaration": "- (NSURL *)URLForAuxiliaryExecutable:(NSString *)executableName;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "executableName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411412-urlforauxiliaryexecutable?language=objc"
+      },
+      {
+        "Name": "pathForAuxiliaryExecutable:",
+        "Description": "Returns the full pathname of the executable with the specified name in the receiver’s bundle.",
+        "Declaration": "- (NSString *)pathForAuxiliaryExecutable:(NSString *)executableName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "executableName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415214-pathforauxiliaryexecutable?language=objc"
+      },
+      {
+        "Name": "objectForInfoDictionaryKey:",
+        "Description": "Returns the value associated with the specified key in the receiver's information property list.",
+        "Declaration": "- (id)objectForInfoDictionaryKey:(NSString *)key;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1408696-objectforinfodictionarykey?language=objc"
+      },
+      {
+        "Name": "setPreservationPriority:forTags:",
+        "Description": "A hint to the system of the relative order for purging tagged sets of resources in the bundle.",
+        "Declaration": "- (void)setPreservationPriority:(double)priority \n                        forTags:(NSSet\u003cNSString *\u003e *)tags;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "priority",
+            "Type": {
+              "Name": "double"
+            }
+          },
+          {
+            "Name": "tags",
+            "Type": {
+              "Name": "NSSet",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1614845-setpreservationpriority?language=objc"
+      },
+      {
+        "Name": "preservationPriorityForTag:",
+        "Description": "Returns the current preservation priority for the specified tag.",
+        "Declaration": "- (double)preservationPriorityForTag:(NSString *)tag;",
+        "Return": {
+          "Name": "double"
+        },
+        "Args": [
+          {
+            "Name": "tag",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1614839-preservationpriorityfortag?language=objc"
+      },
+      {
+        "Name": "classNamed:",
+        "Description": "Returns the Class object for the specified name.",
+        "Declaration": "- (Class)classNamed:(NSString *)className;",
+        "Return": {
+          "Name": "Class"
+        },
+        "Args": [
+          {
+            "Name": "className",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1407299-classnamed?language=objc"
+      },
+      {
+        "Name": "preflightAndReturnError:",
+        "Description": "Returns a Boolean value indicating whether the bundle’s executable code could be loaded successfully.",
+        "Declaration": "- (BOOL)preflightAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415083-preflightandreturnerror?language=objc"
+      },
+      {
+        "Name": "load",
+        "Description": "Dynamically loads the bundle’s executable code into a running program, if the code has not already been loaded.",
+        "Declaration": "- (BOOL)load;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415927-load?language=objc"
+      },
+      {
+        "Name": "loadAndReturnError:",
+        "Description": "Loads the bundle’s executable code and returns any errors.",
+        "Declaration": "- (BOOL)loadAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411819-loadandreturnerror?language=objc"
+      },
+      {
+        "Name": "unload",
+        "Description": "Unloads the code associated with the receiver.",
+        "Declaration": "- (BOOL)unload;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1412388-unload?language=objc"
+      },
+      {
+        "Name": "localizedAttributedStringForKey:value:table:",
+        "Description": "",
+        "Declaration": "- (NSAttributedString *)localizedAttributedStringForKey:(NSString *)key \n                                                  value:(NSString *)value \n                                                  table:(NSString *)tableName;\n",
+        "Return": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "tableName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/3746904-localizedattributedstringforkey?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "resourceURL",
+        "Description": "The file URL of the bundle’s subdirectory containing resource files.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *resourceURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1414821-resourceurl?language=objc"
+      },
+      {
+        "Name": "executableURL",
+        "Description": "The file URL of the receiver's executable file.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *executableURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1410470-executableurl?language=objc"
+      },
+      {
+        "Name": "privateFrameworksURL",
+        "Description": "The file URL of the bundle’s subdirectory containing private frameworks.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *privateFrameworksURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417617-privateframeworksurl?language=objc"
+      },
+      {
+        "Name": "sharedFrameworksURL",
+        "Description": "The file URL of the receiver's subdirectory containing shared frameworks.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *sharedFrameworksURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411774-sharedframeworksurl?language=objc"
+      },
+      {
+        "Name": "builtInPlugInsURL",
+        "Description": "The file URL of the receiver's subdirectory containing plug-ins.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *builtInPlugInsURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409603-builtinpluginsurl?language=objc"
+      },
+      {
+        "Name": "sharedSupportURL",
+        "Description": "The file URL of the bundle’s subdirectory containing shared support files.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *sharedSupportURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1416823-sharedsupporturl?language=objc"
+      },
+      {
+        "Name": "appStoreReceiptURL",
+        "Description": "The file URL for the bundle’s App Store receipt.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *appStoreReceiptURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1407276-appstorereceipturl?language=objc"
+      },
+      {
+        "Name": "resourcePath",
+        "Description": "The full pathname of the bundle’s subdirectory containing resources.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *resourcePath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417723-resourcepath?language=objc"
+      },
+      {
+        "Name": "executablePath",
+        "Description": "The full pathname of the receiver's executable file.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *executablePath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409078-executablepath?language=objc"
+      },
+      {
+        "Name": "privateFrameworksPath",
+        "Description": "The full pathname of the bundle’s subdirectory containing private frameworks.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *privateFrameworksPath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415562-privateframeworkspath?language=objc"
+      },
+      {
+        "Name": "sharedFrameworksPath",
+        "Description": "The full pathname of the bundle’s subdirectory containing shared frameworks.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *sharedFrameworksPath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417226-sharedframeworkspath?language=objc"
+      },
+      {
+        "Name": "builtInPlugInsPath",
+        "Description": "The full pathname of the receiver's subdirectory containing plug-ins.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *builtInPlugInsPath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1408900-builtinpluginspath?language=objc"
+      },
+      {
+        "Name": "sharedSupportPath",
+        "Description": "The full pathname of the bundle’s subdirectory containing shared support files.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *sharedSupportPath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411609-sharedsupportpath?language=objc"
+      },
+      {
+        "Name": "bundleURL",
+        "Description": "The full URL of the receiver’s bundle directory.",
+        "Declaration": "@property(readonly, copy) NSURL *bundleURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415654-bundleurl?language=objc"
+      },
+      {
+        "Name": "bundlePath",
+        "Description": "The full pathname of the receiver’s bundle directory.",
+        "Declaration": "@property(readonly, copy) NSString *bundlePath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1407973-bundlepath?language=objc"
+      },
+      {
+        "Name": "bundleIdentifier",
+        "Description": "The receiver’s bundle identifier.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *bundleIdentifier;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1418023-bundleidentifier?language=objc"
+      },
+      {
+        "Name": "infoDictionary",
+        "Description": "A dictionary, constructed from the bundle’s Info.plist file, that contains information about the receiver.",
+        "Declaration": "@property(nullable, readonly, copy) NSDictionary\u003cNSString *,id\u003e *infoDictionary;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413477-infodictionary?language=objc"
+      },
+      {
+        "Name": "localizations",
+        "Description": "A list of all the localizations contained in the bundle.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *localizations;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417415-localizations?language=objc"
+      },
+      {
+        "Name": "preferredLocalizations",
+        "Description": "An ordered list of preferred localizations contained in the bundle.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *preferredLocalizations;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413220-preferredlocalizations?language=objc"
+      },
+      {
+        "Name": "developmentLocalization",
+        "Description": "The localization for the development language.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *developmentLocalization;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417526-developmentlocalization?language=objc"
+      },
+      {
+        "Name": "localizedInfoDictionary",
+        "Description": "A dictionary with the keys from the bundle’s localized property list.",
+        "Declaration": "@property(nullable, readonly, copy) NSDictionary\u003cNSString *,id\u003e *localizedInfoDictionary;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1407645-localizedinfodictionary?language=objc"
+      },
+      {
+        "Name": "principalClass",
+        "Description": "The bundle’s principal class.",
+        "Declaration": "@property(readonly) Class principalClass;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409048-principalclass?language=objc"
+      },
+      {
+        "Name": "executableArchitectures",
+        "Description": "An array of numbers indicating the architecture types supported by the bundle’s executable.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSNumber *\u003e *executableArchitectures;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSNumber",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415499-executablearchitectures?language=objc"
+      },
+      {
+        "Name": "loaded",
+        "Description": "The load status of a bundle.",
+        "Declaration": "@property(readonly, getter=isLoaded) BOOL loaded;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isLoaded",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413594-loaded?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "bundleWithURL:",
+        "Description": "Returns an NSBundle object that corresponds to the specified file URL.",
+        "Declaration": "+ (instancetype)bundleWithURL:(NSURL *)url;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1494992-bundlewithurl?language=objc"
+      },
+      {
+        "Name": "bundleWithPath:",
+        "Description": "Returns an NSBundle object that corresponds to the specified directory.",
+        "Declaration": "+ (instancetype)bundleWithPath:(NSString *)path;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1495012-bundlewithpath?language=objc"
+      },
+      {
+        "Name": "bundleForClass:",
+        "Description": "Returns the NSBundle object with which the specified class is associated.",
+        "Declaration": "+ (NSBundle *)bundleForClass:(Class)aClass;",
+        "Return": {
+          "Name": "NSBundle",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "aClass",
+            "Type": {
+              "Name": "Class"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417717-bundleforclass?language=objc"
+      },
+      {
+        "Name": "bundleWithIdentifier:",
+        "Description": "Returns the NSBundle instance that has the specified bundle identifier.",
+        "Declaration": "+ (NSBundle *)bundleWithIdentifier:(NSString *)identifier;",
+        "Return": {
+          "Name": "NSBundle",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc"
+      },
+      {
+        "Name": "loadNibNamed:owner:",
+        "Description": "Unarchives the contents of the nib file and links them to a specific owner object.",
+        "Declaration": "+ (BOOL)loadNibNamed:(NSString *)nibName \n               owner:(id)owner;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "nibName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1402904-loadnibnamed?language=objc"
+      },
+      {
+        "Name": "loadNibFile:externalNameTable:withZone:",
+        "Description": "Unarchives the contents of the nib file and links them to objects in your program.",
+        "Declaration": "+ (BOOL)loadNibFile:(NSString *)fileName \n  externalNameTable:(NSDictionary *)context \n           withZone:(NSZone *)zone;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fileName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "context",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "zone",
+            "Type": {
+              "Name": "NSZone",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1402906-loadnibfile?language=objc"
+      },
+      {
+        "Name": "URLForResource:withExtension:subdirectory:inBundleWithURL:",
+        "Description": "Creates and returns a file URL for the resource with the specified name and extension in the specified bundle.",
+        "Declaration": "+ (NSURL *)URLForResource:(NSString *)name \n            withExtension:(NSString *)ext \n             subdirectory:(NSString *)subpath \n          inBundleWithURL:(NSURL *)bundleURL;\n",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bundleURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc"
+      },
+      {
+        "Name": "URLsForResourcesWithExtension:subdirectory:inBundleWithURL:",
+        "Description": "Returns an array containing the file URLs for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.",
+        "Declaration": "+ (NSArray\u003cNSURL *\u003e *)URLsForResourcesWithExtension:(NSString *)ext \n                                       subdirectory:(NSString *)subpath \n                                    inBundleWithURL:(NSURL *)bundleURL;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subpath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bundleURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409807-urlsforresourceswithextension?language=objc"
+      },
+      {
+        "Name": "pathForResource:ofType:inDirectory:",
+        "Description": "Returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.",
+        "Declaration": "+ (NSString *)pathForResource:(NSString *)name \n                       ofType:(NSString *)ext \n                  inDirectory:(NSString *)bundlePath;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bundlePath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409523-pathforresource?language=objc"
+      },
+      {
+        "Name": "pathsForResourcesOfType:inDirectory:",
+        "Description": "Returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)pathsForResourcesOfType:(NSString *)ext \n                                     inDirectory:(NSString *)bundlePath;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ext",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "bundlePath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1415876-pathsforresourcesoftype?language=objc"
+      },
+      {
+        "Name": "preferredLocalizationsFromArray:",
+        "Description": "Returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)preferredLocalizationsFromArray:(NSArray\u003cNSString *\u003e *)localizationsArray;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "localizationsArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1417249-preferredlocalizationsfromarray?language=objc"
+      },
+      {
+        "Name": "preferredLocalizationsFromArray:forPreferences:",
+        "Description": "Returns locale identifiers for which a bundle would provide localized content, given a specified list of candidates for a user's language preferences.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)preferredLocalizationsFromArray:(NSArray\u003cNSString *\u003e *)localizationsArray \n                                          forPreferences:(NSArray\u003cNSString *\u003e *)preferencesArray;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "localizationsArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "preferencesArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1409418-preferredlocalizationsfromarray?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "mainBundle",
+        "Description": "Returns the bundle object that contains the current executable.",
+        "Declaration": "@property(class, readonly, strong) NSBundle *mainBundle;",
+        "Type": {
+          "Name": "NSBundle",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc"
+      },
+      {
+        "Name": "allFrameworks",
+        "Description": "Returns an array of all of the application’s bundles that represent frameworks.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSBundle *\u003e *allFrameworks;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSBundle",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1408056-allframeworks?language=objc"
+      },
+      {
+        "Name": "allBundles",
+        "Description": "Returns an array of all the application’s non-framework bundles.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSBundle *\u003e *allBundles;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSBundle",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsbundle/1413705-allbundles?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-02T14:27:28.587556-07:00",
+  "Version": 2
+}
