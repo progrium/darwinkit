@@ -231,16 +231,6 @@ BOOL WKWebView_inst_hasOnlySecureContent(void *id) {
 		hasOnlySecureContent];
 }
 
-double WKWebView_inst_pageZoom(void *id) {
-	return [(WKWebView*)id
-		pageZoom];
-}
-
-void WKWebView_inst_setPageZoom_(void *id, double value) {
-	[(WKWebView*)id
-		setPageZoom: value];
-}
-
 BOOL WKWebView_inst_allowsMagnification(void *id) {
 	return [(WKWebView*)id
 		allowsMagnification];
@@ -975,26 +965,6 @@ func (x gen_WKWebView) HasOnlySecureContent() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_WKWebView) PageZoom() (
-	r0 core.CGFloat,
-) {
-	ret := C.WKWebView_inst_pageZoom(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = core.CGFloat(ret)
-	return
-}
-
-func (x gen_WKWebView) SetPageZoom_(
-	value core.CGFloat,
-) {
-	C.WKWebView_inst_setPageZoom_(
-		unsafe.Pointer(x.Pointer()),
-		C.double(value),
-	)
 	return
 }
 

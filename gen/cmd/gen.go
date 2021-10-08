@@ -108,7 +108,9 @@ func main() {
 		{"webkit", []schemaLoader{
 			loadFile("api/webkit/wknavigation.objc.json"),
 			loadFile("api/webkit/wkuserscript.objc.json"),
-			loadFile("api/webkit/wkwebview.objc.json"),
+			loadFile("api/webkit/wkwebview.objc.json").Then(filterProps(func(p schema.Property) bool {
+				return p.Name != "pageZoom"
+			})),
 			loadFile("api/webkit/wkwebviewconfiguration.objc.json"),
 			loadFile("api/webkit/wkpreferences.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.InstanceMethods = append(s.Class.InstanceMethods, schema.Method{
