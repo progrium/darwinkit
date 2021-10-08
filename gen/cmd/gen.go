@@ -93,7 +93,10 @@ func main() {
 				})
 				return nil
 			}),
-			loadFile("api/appkit/nsview.objc.json").Then(func(s *schema.Schema) error {
+			loadFile("api/appkit/nsview.objc.json").Then(filterProps(func(p schema.Property) bool {
+				// only available on macOS 11+, causing build errors on GitHub
+				return p.Name != "safeAreaRect"
+			})).Then(func(s *schema.Schema) error {
 				s.Class.InstanceProperties = append(s.Class.InstanceProperties, schema.Property{
 					Name: "backgroundColor",
 					Type: schema.DataType{Name: "NSColor", IsPtr: true},

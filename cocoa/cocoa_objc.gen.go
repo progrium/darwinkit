@@ -5869,11 +5869,6 @@ void NSView_inst_setVerticalContentSizeConstraintActive_(void *id, BOOL value) {
 		setVerticalContentSizeConstraintActive: value];
 }
 
-NSRect NSView_inst_safeAreaRect(void *id) {
-	return [(NSView*)id
-		safeAreaRect];
-}
-
 void* NSView_inst_backgroundColor(void *id) {
 	return [(NSView*)id
 		backgroundColor];
@@ -18250,16 +18245,6 @@ func (x gen_NSView) SetVerticalContentSizeConstraintActive_(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
-	return
-}
-
-func (x gen_NSView) SafeAreaRect() (
-	r0 core.NSRect,
-) {
-	ret := C.NSView_inst_safeAreaRect(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
 	return
 }
 
