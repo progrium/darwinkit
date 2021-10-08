@@ -1,0 +1,314 @@
+{
+  "Class": {
+    "Name": "NSStatusItem",
+    "Description": "An individual element displayed in the system menu bar.",
+    "Declaration": "@interface NSStatusItem : NSObject",
+    "InstanceMethods": [
+      {
+        "Name": "sendActionOn:",
+        "Description": "Sets the conditions on which the status item sends action messages to its target.",
+        "Declaration": "- (NSInteger)sendActionOn:(NSEventMask)mask;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1535025-sendactionon?language=objc"
+      },
+      {
+        "Name": "popUpStatusItemMenu:",
+        "Description": "Displays a menu under a custom status bar item.",
+        "Declaration": "- (void)popUpStatusItemMenu:(NSMenu *)menu;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "menu",
+            "Type": {
+              "Name": "NSMenu",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1524256-popupstatusitemmenu?language=objc"
+      },
+      {
+        "Name": "drawStatusBarBackgroundInRect:withHighlight:",
+        "Description": "Draws the menu background pattern for a custom status-bar item in regular or highlight pattern.",
+        "Declaration": "- (void)drawStatusBarBackgroundInRect:(NSRect)rect \n                        withHighlight:(BOOL)highlight;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "highlight",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1532509-drawstatusbarbackgroundinrect?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "statusBar",
+        "Description": "The status bar that displays the status item.",
+        "Declaration": "@property(readonly, weak) NSStatusBar *statusBar;",
+        "Type": {
+          "Name": "NSStatusBar",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1525951-statusbar?language=objc"
+      },
+      {
+        "Name": "behavior",
+        "Description": "The set of allowed behaviors for the status item.",
+        "Declaration": "@property(assign) NSStatusItemBehavior behavior;",
+        "Type": {
+          "Name": "NSStatusItemBehavior"
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1644024-behavior?language=objc"
+      },
+      {
+        "Name": "button",
+        "Description": "The button displayed in the status bar.",
+        "Declaration": "@property(nullable, readonly, strong) NSStatusBarButton *button;",
+        "Type": {
+          "Name": "NSStatusBarButton",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1535056-button?language=objc"
+      },
+      {
+        "Name": "menu",
+        "Description": "The pull-down menu displayed when the user clicks the status item.",
+        "Declaration": "@property(strong) NSMenu *menu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1535918-menu?language=objc"
+      },
+      {
+        "Name": "visible",
+        "Description": "A Boolean value indicating if the menu bar currently displays the status item.",
+        "Declaration": "@property(assign, getter=isVisible) BOOL visible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "assign": true,
+          "getter": "isVisible"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1644025-visible?language=objc"
+      },
+      {
+        "Name": "length",
+        "Description": "The amount of space in the status bar that should be allocated to the status item.",
+        "Declaration": "@property CGFloat length;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc"
+      },
+      {
+        "Name": "autosaveName",
+        "Description": "A unique name for saving and restoring information about a status item.",
+        "Declaration": "@property(copy) NSStatusItemAutosaveName autosaveName;",
+        "Type": {
+          "Name": "NSStatusItemAutosaveName"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1644022-autosavename?language=objc"
+      },
+      {
+        "Name": "enabled",
+        "Description": "A Boolean that indicates whether the status item is enabled to respond to clicks.",
+        "Declaration": "@property(getter=isEnabled) BOOL enabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEnabled"
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1527352-enabled?language=objc"
+      },
+      {
+        "Name": "target",
+        "Description": "The target object to which the status item’s action message is sent when the status item is clicked.",
+        "Declaration": "@property(weak) id target;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1532686-target?language=objc"
+      },
+      {
+        "Name": "action",
+        "Description": "The selector that is sent to the status item’s target when the status item is clicked.",
+        "Declaration": "@property SEL action;",
+        "Type": {
+          "Name": "SEL"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1531580-action?language=objc"
+      },
+      {
+        "Name": "doubleAction",
+        "Description": "The selector that is sent to the status item’s target when the status item is double-clicked.",
+        "Declaration": "@property SEL doubleAction;",
+        "Type": {
+          "Name": "SEL"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1535555-doubleaction?language=objc"
+      },
+      {
+        "Name": "title",
+        "Description": "The string that is displayed at the status item’s position in the status bar.",
+        "Declaration": "@property(copy) NSString *title;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1534494-title?language=objc"
+      },
+      {
+        "Name": "attributedTitle",
+        "Description": "The attributed string that is displayed at the status item’s position in the status bar.",
+        "Declaration": "@property(copy) NSAttributedString *attributedTitle;",
+        "Type": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1534223-attributedtitle?language=objc"
+      },
+      {
+        "Name": "image",
+        "Description": "The image that is displayed at the status item’s position in the status bar.",
+        "Declaration": "@property(strong) NSImage *image;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1524711-image?language=objc"
+      },
+      {
+        "Name": "alternateImage",
+        "Description": "The alternate image to be displayed when a status bar item is highlighted.",
+        "Declaration": "@property(strong) NSImage *alternateImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1534014-alternateimage?language=objc"
+      },
+      {
+        "Name": "highlightMode",
+        "Description": "A Boolean that indicates whether the status item is highlighted when it is clicked.",
+        "Declaration": "@property BOOL highlightMode;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1528609-highlightmode?language=objc"
+      },
+      {
+        "Name": "toolTip",
+        "Description": "The tool tip string that is displayed when the cursor pauses over the status item.",
+        "Declaration": "@property(copy) NSString *toolTip;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1534916-tooltip?language=objc"
+      },
+      {
+        "Name": "view",
+        "Description": "The custom view that is displayed at the status item’s position in the status bar.",
+        "Declaration": "@property(strong) NSView *view;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem/1531522-view?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsstatusitem?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-16T11:03:27.72102-07:00",
+  "Version": 2
+}

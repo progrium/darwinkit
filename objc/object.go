@@ -13,9 +13,19 @@ import (
 	"unsafe"
 )
 
+// A Ref represents an Objective-C object.
+// The basic interface only includes the address (aka ID) of the object.
+// For richer wrapper, use `Object`.
+type Ref interface {
+	// Pointer returns the in-memory address of the object.
+	Pointer() uintptr
+}
+
 // An Object represents an Objective-C object, along with
 // some convenience methods only found on NSObjects.
 type Object interface {
+	Ref
+
 	// SendMsg sends an arbitrary message to the method on the
 	// object that is identified by selectorName.
 	Send(selector string, args ...interface{}) Object
@@ -54,9 +64,6 @@ type Object interface {
 	// returns a Go string.
 	String() string
 
-	// Pointer returns the in-memory address of the object.
-	Pointer() uintptr
-
 	// Uint returns the value of the object as an uint64.
 	Uint() uint64
 
@@ -86,6 +93,24 @@ type object struct {
 
 func ObjectPtr(ptr uintptr) Object {
 	return object{ptr: ptr}
+}
+
+func Object_fromPointer(id unsafe.Pointer) Object {
+	return ObjectPtr(uintptr(id))
+}
+
+func Object_fromRef(ref Ref) Object {
+	if ref == nil {
+		return nil
+	}
+	return ObjectPtr(ref.Pointer())
+}
+
+func RefPointer(o Ref) unsafe.Pointer {
+	if o == nil {
+		return nil
+	}
+	return unsafe.Pointer(o.Pointer())
 }
 
 // Pointer returns the object as a uintptr.

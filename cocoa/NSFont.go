@@ -2,13 +2,13 @@ package cocoa
 
 import (
 	"github.com/progrium/macdriver/core"
-	"github.com/progrium/macdriver/objc"
 )
 
-type NSFont struct {
-	objc.Object
-}
+type NSFont struct{ gen_NSFont }
 
 func NSFont_Init(fontName string, size float64) NSFont {
-	return NSFont{objc.Get("NSFont").Send("fontWithName:size:", core.String(fontName), size)}
+	return NSFont_fontWithName_size_(
+		core.String(fontName),
+		core.CGFloat(size),
+	)
 }

@@ -1,0 +1,976 @@
+{
+  "Class": {
+    "Name": "NSApplication",
+    "Description": "An object that manages an app’s main event loop and resources used by all of that app’s objects.",
+    "Declaration": "@interface NSApplication : NSResponder",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "nextEventMatchingMask:untilDate:inMode:dequeue:",
+        "Description": "Returns the next event matching a given mask, or nil if no such event is found before a specified expiration date.",
+        "Declaration": "- (NSEvent *)nextEventMatchingMask:(NSEventMask)mask \n                         untilDate:(NSDate *)expiration \n                            inMode:(NSRunLoopMode)mode \n                           dequeue:(BOOL)deqFlag;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "expiration",
+            "Type": {
+              "Name": "NSDate",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "mode",
+            "Type": {
+              "Name": "NSRunLoopMode"
+            }
+          },
+          {
+            "Name": "deqFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428485-nexteventmatchingmask?language=objc"
+      },
+      {
+        "Name": "discardEventsMatchingMask:beforeEvent:",
+        "Description": "Removes all events matching the given mask and generated before the specified event.",
+        "Declaration": "- (void)discardEventsMatchingMask:(NSEventMask)mask \n                      beforeEvent:(NSEvent *)lastEvent;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "lastEvent",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428652-discardeventsmatchingmask?language=objc"
+      },
+      {
+        "Name": "run",
+        "Description": "Starts the main event loop.",
+        "Declaration": "- (void)run;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428631-run?language=objc"
+      },
+      {
+        "Name": "finishLaunching",
+        "Description": "Activates the app, opens any files specified by the NSOpen user default, and unhighlights the app’s icon.",
+        "Declaration": "- (void)finishLaunching;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428771-finishlaunching?language=objc"
+      },
+      {
+        "Name": "stop:",
+        "Description": "Stops the main event loop.",
+        "Declaration": "- (void)stop:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428473-stop?language=objc"
+      },
+      {
+        "Name": "sendEvent:",
+        "Description": "Dispatches an event to other objects.",
+        "Declaration": "- (void)sendEvent:(NSEvent *)event;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428359-sendevent?language=objc"
+      },
+      {
+        "Name": "postEvent:atStart:",
+        "Description": "Adds a given event to the receiver’s event queue.",
+        "Declaration": "- (void)postEvent:(NSEvent *)event \n          atStart:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428710-postevent?language=objc"
+      },
+      {
+        "Name": "tryToPerform:with:",
+        "Description": "Dispatches an action message to the specified target.",
+        "Declaration": "- (BOOL)tryToPerform:(SEL)action \n                with:(id)object;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428366-trytoperform?language=objc"
+      },
+      {
+        "Name": "sendAction:to:from:",
+        "Description": "Sends the given action message to the given target.",
+        "Declaration": "- (BOOL)sendAction:(SEL)action \n                to:(id)target \n              from:(id)sender;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428509-sendaction?language=objc"
+      },
+      {
+        "Name": "targetForAction:",
+        "Description": "Returns the object that receives the action message specified by the given selector.",
+        "Declaration": "- (id)targetForAction:(SEL)action;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428449-targetforaction?language=objc"
+      },
+      {
+        "Name": "targetForAction:to:from:",
+        "Description": "Searches for an object that can receive the message specified by the given selector.",
+        "Declaration": "- (id)targetForAction:(SEL)action \n                   to:(id)target \n                 from:(id)sender;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428658-targetforaction?language=objc"
+      },
+      {
+        "Name": "terminate:",
+        "Description": "Terminates the receiver.",
+        "Declaration": "- (void)terminate:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428417-terminate?language=objc"
+      },
+      {
+        "Name": "replyToApplicationShouldTerminate:",
+        "Description": "Responds to NSTerminateLater once the app knows whether it can terminate.",
+        "Declaration": "- (void)replyToApplicationShouldTerminate:(BOOL)shouldTerminate;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "shouldTerminate",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428594-replytoapplicationshouldterminat?language=objc"
+      },
+      {
+        "Name": "activateIgnoringOtherApps:",
+        "Description": "Makes the receiver the active app.",
+        "Declaration": "- (void)activateIgnoringOtherApps:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428468-activateignoringotherapps?language=objc"
+      },
+      {
+        "Name": "deactivate",
+        "Description": "Deactivates the receiver.",
+        "Declaration": "- (void)deactivate;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428428-deactivate?language=objc"
+      },
+      {
+        "Name": "disableRelaunchOnLogin",
+        "Description": "Disables relaunching the app on login.",
+        "Declaration": "- (void)disableRelaunchOnLogin;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428376-disablerelaunchonlogin?language=objc"
+      },
+      {
+        "Name": "enableRelaunchOnLogin",
+        "Description": "Enables relaunching the app on login.",
+        "Declaration": "- (void)enableRelaunchOnLogin;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428453-enablerelaunchonlogin?language=objc"
+      },
+      {
+        "Name": "registerForRemoteNotifications",
+        "Description": "Register for notifications sent by Apple Push Notification service (APNs).",
+        "Declaration": "- (void)registerForRemoteNotifications;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/2967172-registerforremotenotifications?language=objc"
+      },
+      {
+        "Name": "unregisterForRemoteNotifications",
+        "Description": "Unregister for notifications received from Apple Push Notification service.",
+        "Declaration": "- (void)unregisterForRemoteNotifications;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428747-unregisterforremotenotifications?language=objc"
+      },
+      {
+        "Name": "registerForRemoteNotificationTypes:",
+        "Description": "Register to receive notifications of the specified types from a provider through the Apple Push Notification service.",
+        "Declaration": "- (void)registerForRemoteNotificationTypes:(NSRemoteNotificationType)types;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "types",
+            "Type": {
+              "Name": "NSRemoteNotificationType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428476-registerforremotenotificationtyp?language=objc"
+      },
+      {
+        "Name": "toggleTouchBarCustomizationPalette:",
+        "Description": "Show or hides the interface for customizing the Touch Bar.",
+        "Declaration": "- (IBAction)toggleTouchBarCustomizationPalette:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/2646920-toggletouchbarcustomizationpalet?language=objc"
+      },
+      {
+        "Name": "requestUserAttention:",
+        "Description": "Starts a user attention request.",
+        "Declaration": "- (NSInteger)requestUserAttention:(NSRequestUserAttentionType)requestType;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "requestType",
+            "Type": {
+              "Name": "NSRequestUserAttentionType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428358-requestuserattention?language=objc"
+      },
+      {
+        "Name": "cancelUserAttentionRequest:",
+        "Description": "Cancels a previous user attention request.",
+        "Declaration": "- (void)cancelUserAttentionRequest:(NSInteger)request;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "request",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428683-canceluserattentionrequest?language=objc"
+      },
+      {
+        "Name": "replyToOpenOrPrint:",
+        "Description": "Handles errors that might occur when the user attempts to open or print files.",
+        "Declaration": "- (void)replyToOpenOrPrint:(NSApplicationDelegateReply)reply;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "reply",
+            "Type": {
+              "Name": "NSApplicationDelegateReply"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428592-replytoopenorprint?language=objc"
+      },
+      {
+        "Name": "registerUserInterfaceItemSearchHandler:",
+        "Description": "Register an object that provides help data to your app.",
+        "Declaration": "- (void)registerUserInterfaceItemSearchHandler:(id\u003cNSUserInterfaceItemSearching\u003e)handler;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "handler",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSUserInterfaceItemSearching"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1420818-registeruserinterfaceitemsearchh?language=objc"
+      },
+      {
+        "Name": "searchString:inUserInterfaceItemString:searchRange:foundRange:",
+        "Description": "Searches for the string in the user interface.",
+        "Declaration": "- (BOOL)searchString:(NSString *)searchString \ninUserInterfaceItemString:(NSString *)stringToSearch \n         searchRange:(NSRange)searchRange \n          foundRange:(NSRange *)foundRange;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "searchString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "stringToSearch",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "searchRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "foundRange",
+            "Type": {
+              "Name": "NSRange",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1420808-searchstring?language=objc"
+      },
+      {
+        "Name": "unregisterUserInterfaceItemSearchHandler:",
+        "Description": "Unregister an object that provides help data to your app.",
+        "Declaration": "- (void)unregisterUserInterfaceItemSearchHandler:(id\u003cNSUserInterfaceItemSearching\u003e)handler;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "handler",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSUserInterfaceItemSearching"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1420820-unregisteruserinterfaceitemsearc?language=objc"
+      },
+      {
+        "Name": "showHelp:",
+        "Description": "If your project is properly registered, and the necessary keys have been set in the property list, this method launches Help Viewer and displays the first page of your app’s help book.",
+        "Declaration": "- (void)showHelp:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1500910-showhelp?language=objc"
+      },
+      {
+        "Name": "activateContextHelpMode:",
+        "Description": "Places the receiver in context-sensitive help mode.",
+        "Declaration": "- (void)activateContextHelpMode:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1500925-activatecontexthelpmode?language=objc"
+      },
+      {
+        "Name": "validRequestorForSendType:returnType:",
+        "Description": "Indicates whether the receiver can send and receive the specified pasteboard types.",
+        "Declaration": "- (id)validRequestorForSendType:(NSPasteboardType)sendType \n                     returnType:(NSPasteboardType)returnType;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "sendType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          },
+          {
+            "Name": "returnType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428379-validrequestorforsendtype?language=objc"
+      },
+      {
+        "Name": "hideOtherApplications:",
+        "Description": "Hides all apps, except the receiver.",
+        "Declaration": "- (void)hideOtherApplications:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428746-hideotherapplications?language=objc"
+      },
+      {
+        "Name": "unhideAllApplications:",
+        "Description": "Unhides all apps, including the receiver.",
+        "Declaration": "- (void)unhideAllApplications:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428737-unhideallapplications?language=objc"
+      },
+      {
+        "Name": "reportException:",
+        "Description": "Logs a given exception by calling NSLog().",
+        "Declaration": "- (void)reportException:(NSException *)exception;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "exception",
+            "Type": {
+              "Name": "NSException",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428396-reportexception?language=objc"
+      },
+      {
+        "Name": "activationPolicy",
+        "Description": "Returns the app’s activation policy.",
+        "Declaration": "- (NSApplicationActivationPolicy)activationPolicy;",
+        "Return": {
+          "Name": "NSApplicationActivationPolicy"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428703-activationpolicy?language=objc"
+      },
+      {
+        "Name": "setActivationPolicy:",
+        "Description": "Attempts to modify the app’s activation policy.",
+        "Declaration": "- (BOOL)setActivationPolicy:(NSApplicationActivationPolicy)activationPolicy;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "activationPolicy",
+            "Type": {
+              "Name": "NSApplicationActivationPolicy"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428621-setactivationpolicy?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The app delegate object.",
+        "Declaration": "@property(weak) id\u003cNSApplicationDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSApplicationDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428705-delegate?language=objc"
+      },
+      {
+        "Name": "currentEvent",
+        "Description": "The last event object that the app retrieved from the event queue.",
+        "Declaration": "@property(nullable, readonly, strong) NSEvent *currentEvent;",
+        "Type": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428668-currentevent?language=objc"
+      },
+      {
+        "Name": "running",
+        "Description": "A Boolean value indicating whether the main event loop is running.",
+        "Declaration": "@property(getter=isRunning, readonly) BOOL running;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRunning",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428759-running?language=objc"
+      },
+      {
+        "Name": "active",
+        "Description": "A Boolean value indicating whether this is the active app.",
+        "Declaration": "@property(getter=isActive, readonly) BOOL active;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isActive",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428493-active?language=objc"
+      },
+      {
+        "Name": "enabledRemoteNotificationTypes",
+        "Description": "The types of push notifications that the app accepts.",
+        "Declaration": "@property(readonly) NSRemoteNotificationType enabledRemoteNotificationTypes;",
+        "Type": {
+          "Name": "NSRemoteNotificationType"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428776-enabledremotenotificationtypes?language=objc"
+      },
+      {
+        "Name": "registeredForRemoteNotifications",
+        "Description": "A Boolean value indicating whether the app is registered with Apple Push Notification service (APNs).",
+        "Declaration": "@property(readonly, getter=isRegisteredForRemoteNotifications) BOOL registeredForRemoteNotifications;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRegisteredForRemoteNotifications",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/2967173-registeredforremotenotifications?language=objc"
+      },
+      {
+        "Name": "appearance",
+        "Description": "The appearance associated with the app’s windows.",
+        "Declaration": "@property(strong) NSAppearance *appearance;",
+        "Type": {
+          "Name": "NSAppearance",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/2967170-appearance?language=objc"
+      },
+      {
+        "Name": "effectiveAppearance",
+        "Description": "The appearance that AppKit uses to draw the app’s interface.",
+        "Declaration": "@property(readonly, strong) NSAppearance *effectiveAppearance;",
+        "Type": {
+          "Name": "NSAppearance",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/2967171-effectiveappearance?language=objc"
+      },
+      {
+        "Name": "currentSystemPresentationOptions",
+        "Description": "The set of app presentation options that are currently in effect for the system.",
+        "Declaration": "@property(readonly) NSApplicationPresentationOptions currentSystemPresentationOptions;",
+        "Type": {
+          "Name": "NSApplicationPresentationOptions"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428717-currentsystempresentationoptions?language=objc"
+      },
+      {
+        "Name": "presentationOptions",
+        "Description": "The presentation options that should be in effect for the system when this app is active.",
+        "Declaration": "@property NSApplicationPresentationOptions presentationOptions;",
+        "Type": {
+          "Name": "NSApplicationPresentationOptions"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428664-presentationoptions?language=objc"
+      },
+      {
+        "Name": "userInterfaceLayoutDirection",
+        "Description": "The layout direction of the user interface.",
+        "Declaration": "@property(readonly) NSUserInterfaceLayoutDirection userInterfaceLayoutDirection;",
+        "Type": {
+          "Name": "NSUserInterfaceLayoutDirection"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428556-userinterfacelayoutdirection?language=objc"
+      },
+      {
+        "Name": "dockTile",
+        "Description": "The app’s Dock tile.",
+        "Declaration": "@property(readonly, strong) NSDockTile *dockTile;",
+        "Type": {
+          "Name": "NSDockTile",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428671-docktile?language=objc"
+      },
+      {
+        "Name": "applicationIconImage",
+        "Description": "The image used for the app’s icon.",
+        "Declaration": "@property(strong) NSImage *applicationIconImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428744-applicationiconimage?language=objc"
+      },
+      {
+        "Name": "helpMenu",
+        "Description": "The help menu used by the app.",
+        "Declaration": "@property(strong) NSMenu *helpMenu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428644-helpmenu?language=objc"
+      },
+      {
+        "Name": "servicesProvider",
+        "Description": "The object that provides the services the current app advertises in the Services menu of other apps.",
+        "Declaration": "@property(strong) id servicesProvider;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428467-servicesprovider?language=objc"
+      },
+      {
+        "Name": "fullKeyboardAccessEnabled",
+        "Description": "A Boolean value indicating whether Full Keyboard Access is enabled in the Keyboard preference pane.",
+        "Declaration": "@property(getter=isFullKeyboardAccessEnabled, readonly) BOOL fullKeyboardAccessEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFullKeyboardAccessEnabled",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428469-fullkeyboardaccessenabled?language=objc"
+      },
+      {
+        "Name": "orderedDocuments",
+        "Description": "An array of document objects arranged according to the front-to-back ordering of their associated windows.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSDocument *\u003e *orderedDocuments;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSDocument",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1494283-ordereddocuments?language=objc"
+      },
+      {
+        "Name": "orderedWindows",
+        "Description": "An array of window objects arranged according to their front-to-back ordering on the screen.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSWindow *\u003e *orderedWindows;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1494287-orderedwindows?language=objc"
+      },
+      {
+        "Name": "mainMenu",
+        "Description": "The app’s main menu bar.",
+        "Declaration": "@property(strong) NSMenu *mainMenu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428634-mainmenu?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "detachDrawingThread:toTarget:withObject:",
+        "Description": "Creates and executes a new thread based on the specified target and selector.",
+        "Declaration": "+ (void)detachDrawingThread:(SEL)selector \n                   toTarget:(id)target \n                 withObject:(id)argument;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "selector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "argument",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428374-detachdrawingthread?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "sharedApplication",
+        "Description": "Returns the application instance, creating it if it doesn’t exist yet.",
+        "Declaration": "@property(class, readonly, strong) __kindof NSApplication *sharedApplication;",
+        "Type": {
+          "Name": "NSApplication",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsapplication/1428360-sharedapplication?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-04T20:57:19.786684-07:00",
+  "Version": 2
+}

@@ -1,0 +1,737 @@
+{
+  "Class": {
+    "Name": "NSFont",
+    "Description": "The representation of a font in an app.",
+    "Declaration": "@interface NSFont : NSObject",
+    "InstanceMethods": [
+      {
+        "Name": "set",
+        "Description": "Sets this font as the font for the current graphics context.",
+        "Declaration": "- (void)set;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1531373-set?language=objc"
+      },
+      {
+        "Name": "setInContext:",
+        "Description": "Sets this font as the font for the specified graphics context.",
+        "Declaration": "- (void)setInContext:(NSGraphicsContext *)graphicsContext;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "graphicsContext",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1534538-setincontext?language=objc"
+      },
+      {
+        "Name": "fontWithSize:",
+        "Description": "",
+        "Declaration": "- (NSFont *)fontWithSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/3667454-fontwithsize?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "pointSize",
+        "Description": "The point size of the font.",
+        "Declaration": "@property(readonly) CGFloat pointSize;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1524511-pointsize?language=objc"
+      },
+      {
+        "Name": "coveredCharacterSet",
+        "Description": "The character set containing all of the nominal characters that the font can render.",
+        "Declaration": "@property(readonly, strong) NSCharacterSet *coveredCharacterSet;",
+        "Type": {
+          "Name": "NSCharacterSet",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1535912-coveredcharacterset?language=objc"
+      },
+      {
+        "Name": "fontDescriptor",
+        "Description": "The font descriptor object for the font.",
+        "Declaration": "@property(readonly, strong) NSFontDescriptor *fontDescriptor;",
+        "Type": {
+          "Name": "NSFontDescriptor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1530476-fontdescriptor?language=objc"
+      },
+      {
+        "Name": "fixedPitch",
+        "Description": "A Boolean value indicating whether all glyphs in the font have the same advancement.",
+        "Declaration": "@property(getter=isFixedPitch, readonly) BOOL fixedPitch;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFixedPitch",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1529210-fixedpitch?language=objc"
+      },
+      {
+        "Name": "mostCompatibleStringEncoding",
+        "Description": "The string encoding that works best with the font.",
+        "Declaration": "@property(readonly) NSStringEncoding mostCompatibleStringEncoding;",
+        "Type": {
+          "Name": "NSStringEncoding"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1527635-mostcompatiblestringencoding?language=objc"
+      },
+      {
+        "Name": "numberOfGlyphs",
+        "Description": "The number of glyphs in the font.",
+        "Declaration": "@property(readonly) NSUInteger numberOfGlyphs;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1533968-numberofglyphs?language=objc"
+      },
+      {
+        "Name": "displayName",
+        "Description": "The name of the font, including family and face names, to use when displaying the font information to the user.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *displayName;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1531660-displayname?language=objc"
+      },
+      {
+        "Name": "familyName",
+        "Description": "The family name of the font—for example, “Times” or “Helvetica.”",
+        "Declaration": "@property(nullable, readonly, copy) NSString *familyName;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1529585-familyname?language=objc"
+      },
+      {
+        "Name": "fontName",
+        "Description": "The full name of the font, as used in PostScript language code—for example, “Times-Roman” or “Helvetica-Oblique.”",
+        "Declaration": "@property(readonly, copy) NSString *fontName;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1526183-fontname?language=objc"
+      },
+      {
+        "Name": "vertical",
+        "Description": "A Boolean value indicating whether the font is a vertical font.",
+        "Declaration": "@property(getter=isVertical, readonly) BOOL vertical;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVertical",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1534644-vertical?language=objc"
+      },
+      {
+        "Name": "verticalFont",
+        "Description": "A vertical version of the font.",
+        "Declaration": "@property(readonly, copy) NSFont *verticalFont;",
+        "Type": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1535152-verticalfont?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "fontWithName:size:",
+        "Description": "Creates a font object for the specified font name and font size.",
+        "Declaration": "+ (NSFont *)fontWithName:(NSString *)fontName \n                    size:(CGFloat)fontSize;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname?language=objc"
+      },
+      {
+        "Name": "fontWithDescriptor:size:",
+        "Description": "Returns a font object for the specified font descriptor and font size.",
+        "Declaration": "+ (NSFont *)fontWithDescriptor:(NSFontDescriptor *)fontDescriptor \n                          size:(CGFloat)fontSize;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontDescriptor",
+            "Type": {
+              "Name": "NSFontDescriptor",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1525386-fontwithdescriptor?language=objc"
+      },
+      {
+        "Name": "fontWithDescriptor:textTransform:",
+        "Description": "Returns a font object for the specified font descriptor and text transform.",
+        "Declaration": "+ (NSFont *)fontWithDescriptor:(NSFontDescriptor *)fontDescriptor \n                 textTransform:(NSAffineTransform *)textTransform;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontDescriptor",
+            "Type": {
+              "Name": "NSFontDescriptor",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "textTransform",
+            "Type": {
+              "Name": "NSAffineTransform",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1525775-fontwithdescriptor?language=objc"
+      },
+      {
+        "Name": "fontWithName:matrix:",
+        "Description": "Returns a font object for the specified font name and matrix.",
+        "Declaration": "+ (NSFont *)fontWithName:(NSString *)fontName \n                  matrix:(const CGFloat *)fontMatrix;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "fontMatrix",
+            "Type": {
+              "Name": "CGFloat",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1530751-fontwithname?language=objc"
+      },
+      {
+        "Name": "userFontOfSize:",
+        "Description": "Returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), in the specified size.",
+        "Declaration": "+ (NSFont *)userFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1524559-userfontofsize?language=objc"
+      },
+      {
+        "Name": "userFixedPitchFontOfSize:",
+        "Description": "Returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), when that font should be fixed-pitch, in the specified size.",
+        "Declaration": "+ (NSFont *)userFixedPitchFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1531381-userfixedpitchfontofsize?language=objc"
+      },
+      {
+        "Name": "preferredFontForTextStyle:options:",
+        "Description": "Returns the font associated with the text style.",
+        "Declaration": "+ (NSFont *)preferredFontForTextStyle:(NSFontTextStyle)style \n                              options:(NSDictionary\u003cNSFontTextStyleOptionKey, id\u003e *)options;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSFontTextStyle"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSFontTextStyleOptionKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/3553195-preferredfontfortextstyle?language=objc"
+      },
+      {
+        "Name": "systemFontOfSize:",
+        "Description": "Returns the standard system font with the specified size.",
+        "Declaration": "+ (NSFont *)systemFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1530094-systemfontofsize?language=objc"
+      },
+      {
+        "Name": "systemFontOfSize:weight:",
+        "Description": "Returns the standard system font with the specified size and weight.",
+        "Declaration": "+ (NSFont *)systemFontOfSize:(CGFloat)fontSize \n                      weight:(NSFontWeight)weight;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "weight",
+            "Type": {
+              "Name": "NSFontWeight"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1524930-systemfontofsize?language=objc"
+      },
+      {
+        "Name": "boldSystemFontOfSize:",
+        "Description": "Returns the standard system font in boldface type with the specified size.",
+        "Declaration": "+ (NSFont *)boldSystemFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1533549-boldsystemfontofsize?language=objc"
+      },
+      {
+        "Name": "monospacedSystemFontOfSize:weight:",
+        "Description": "Returns a monospace version of the system font with the specified size and weight.",
+        "Declaration": "+ (NSFont *)monospacedSystemFontOfSize:(CGFloat)fontSize \n                                weight:(NSFontWeight)weight;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "weight",
+            "Type": {
+              "Name": "NSFontWeight"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/3042659-monospacedsystemfontofsize?language=objc"
+      },
+      {
+        "Name": "monospacedDigitSystemFontOfSize:weight:",
+        "Description": "Returns a version of the standard system font that contains monospaced digit glyphs.",
+        "Declaration": "+ (NSFont *)monospacedDigitSystemFontOfSize:(CGFloat)fontSize \n                                     weight:(NSFontWeight)weight;\n",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "weight",
+            "Type": {
+              "Name": "NSFontWeight"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1528205-monospaceddigitsystemfontofsize?language=objc"
+      },
+      {
+        "Name": "labelFontOfSize:",
+        "Description": "Returns the font used for standard interface labels in the specified size.",
+        "Declaration": "+ (NSFont *)labelFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1528213-labelfontofsize?language=objc"
+      },
+      {
+        "Name": "messageFontOfSize:",
+        "Description": "Returns the font used for standard interface items, such as button labels, menu items, and so on, in the specified size.",
+        "Declaration": "+ (NSFont *)messageFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1525777-messagefontofsize?language=objc"
+      },
+      {
+        "Name": "menuBarFontOfSize:",
+        "Description": "Returns the font used for menu bar items, in the specified size.",
+        "Declaration": "+ (NSFont *)menuBarFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1534194-menubarfontofsize?language=objc"
+      },
+      {
+        "Name": "menuFontOfSize:",
+        "Description": "Returns the font used for menu items, in the specified size.",
+        "Declaration": "+ (NSFont *)menuFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1533068-menufontofsize?language=objc"
+      },
+      {
+        "Name": "controlContentFontOfSize:",
+        "Description": "Returns the font used for the content of controls in the specified size.",
+        "Declaration": "+ (NSFont *)controlContentFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1527070-controlcontentfontofsize?language=objc"
+      },
+      {
+        "Name": "titleBarFontOfSize:",
+        "Description": "Returns the font used for window title bars, in the specified size.",
+        "Declaration": "+ (NSFont *)titleBarFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1530200-titlebarfontofsize?language=objc"
+      },
+      {
+        "Name": "paletteFontOfSize:",
+        "Description": "Returns the font used for palette window title bars, in the specified size.",
+        "Declaration": "+ (NSFont *)paletteFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1535462-palettefontofsize?language=objc"
+      },
+      {
+        "Name": "toolTipsFontOfSize:",
+        "Description": "Returns the font used for tool tips labels, in the specified size.",
+        "Declaration": "+ (NSFont *)toolTipsFontOfSize:(CGFloat)fontSize;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fontSize",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1527704-tooltipsfontofsize?language=objc"
+      },
+      {
+        "Name": "systemFontSizeForControlSize:",
+        "Description": "Returns the font size used for the specified control size.",
+        "Declaration": "+ (CGFloat)systemFontSizeForControlSize:(NSControlSize)controlSize;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "controlSize",
+            "Type": {
+              "Name": "NSControlSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1529747-systemfontsizeforcontrolsize?language=objc"
+      },
+      {
+        "Name": "setUserFont:",
+        "Description": "Sets the font used by default for documents and other text under the user’s control to the specified font.",
+        "Declaration": "+ (void)setUserFont:(NSFont *)font;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "font",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1526068-setuserfont?language=objc"
+      },
+      {
+        "Name": "setUserFixedPitchFont:",
+        "Description": "Sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font.",
+        "Declaration": "+ (void)setUserFixedPitchFont:(NSFont *)font;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "font",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1529050-setuserfixedpitchfont?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "systemFontSize",
+        "Description": "Returns the size of the standard system font.",
+        "Declaration": "@property(class, readonly) CGFloat systemFontSize;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1531931-systemfontsize?language=objc"
+      },
+      {
+        "Name": "smallSystemFontSize",
+        "Description": "Returns the size of the standard small system font.",
+        "Declaration": "@property(class, readonly) CGFloat smallSystemFontSize;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1535612-smallsystemfontsize?language=objc"
+      },
+      {
+        "Name": "labelFontSize",
+        "Description": "Returns the size of the standard label font.",
+        "Declaration": "@property(class, readonly) CGFloat labelFontSize;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont/1534629-labelfontsize?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsfont?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T18:52:21.732543-07:00",
+  "Version": 2
+}

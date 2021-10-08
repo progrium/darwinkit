@@ -1,17 +1,13 @@
 package cocoa
 
-import (
-	"github.com/progrium/macdriver/objc"
-)
+import "github.com/progrium/macdriver/core"
 
-type NSColor struct {
-	objc.Object
-}
+type NSColor struct{ gen_NSColor }
 
 func NSColor_Init(r, g, b, a float64) NSColor {
-	return NSColor{objc.Get("NSColor").Send("colorWithRed:green:blue:alpha:", r, g, b, a)}
+	return NSColor_colorWithRed_green_blue_alpha_(core.CGFloat(r), core.CGFloat(g), core.CGFloat(b), core.CGFloat(a))
 }
 
 func NSColor_Clear() NSColor {
-	return NSColor{objc.Get("NSColor").Get("clearColor")}
+	return NSColor_clearColor()
 }

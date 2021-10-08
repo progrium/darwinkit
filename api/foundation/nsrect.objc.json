@@ -1,0 +1,42 @@
+{
+  "TypeAlias": {
+    "Name": "NSRect",
+    "Description": "A rectangle.",
+    "Declaration": "typedef CGRect NSRect;",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsrect?language=objc",
+    "Type": {
+      "Name": "CGRect"
+    },
+    "Values": [
+      {
+        "Name": "NSZeroRect",
+        "Description": "An NSRect structure set to 0 in width and height.",
+        "Declaration": "const NSRect NSZeroRect;",
+        "Frameworks": [
+          "Foundation"
+        ],
+        "Platforms": [
+          "macOS 10.0+",
+          "Mac Catalyst 13.0+"
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nszerorect?language=objc",
+        "Type": {
+          "Name": "NSRect",
+          "Annotations": [
+            "const"
+          ]
+        }
+      }
+    ]
+  },
+  "Kind": "typealias",
+  "PullDate": "2021-08-30T10:16:39.397647-07:00",
+  "Version": 2
+}

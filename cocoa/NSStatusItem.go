@@ -5,19 +5,19 @@ import (
 )
 
 type NSStatusItem struct {
-	objc.Object
+	gen_NSStatusItem
 }
 
 func (i NSStatusItem) Button() NSStatusBarButton {
-	return NSStatusBarButton{NSView{i.Get("button")}}
+	return NSStatusBarButton_fromRef(i.Get("button"))
 }
 
 func (i NSStatusItem) SetMenu(menu NSMenu) {
-	i.Set("menu:", menu)
+	i.SetMenu_(menu)
 }
 
 func (i NSStatusItem) Menu() NSMenu {
-	return NSMenu{i.Get("menu")}
+	return NSMenu_fromRef(i.Get("menu"))
 }
 
 func (i NSStatusItem) Target() objc.Object {

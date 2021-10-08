@@ -1,0 +1,153 @@
+{{define "main"}}
+package {{.Name}}
+
+import (
+	{{range .Imports -}}
+	{{if .Alias -}}{{.Alias}} {{end -}} {{.Path | printf "%q"}}
+	{{end}}
+)
+
+{{template "cgo" .}}
+{{template "go_to_cgo" .CGoWrapperFuncs}}
+{{template "classes" .Classes}}
+
+{{end}}
+
+
+{{define "cgo"}}
+/*
+#cgo CFLAGS: -x objective-c
+#cgo LDFLAGS: -lobjc{{range .LinkFrameworks}} -framework {{.}}{{end}}
+#define __OBJC2__ 1
+#include <objc/message.h>
+#include <stdlib.h>
+{{range .CIncludes}}
+#include <{{.}}>
+{{- end}}
+
+bool {{.Name}}_convertObjCBool(BOOL b) {
+	if (b) { return true; }
+	return false;
+}
+
+{{range .ClassMsgSendWrappers}}
+{{.Return}} {{.Name}}(
+	{{- range $idx, $_ := .Selector -}}{{- if .Arg -}}
+	{{if ne $idx 0}}, {{end}}{{.Arg.Type}} {{.Arg.Name}}
+	{{- end -}}{{- end -}}
+) {
+	{{if .HasReturn}}return {{end -}}
+	[{{.Class}}
+		{{- range .Selector}}
+		{{.Key}}{{if .Arg}} {{.Arg.Name}}{{end}}
+		{{- end -}}
+		];
+}
+{{- end}}
+
+{{range .MsgSendWrappers}}
+{{.Return}} {{.Name}}(void *id
+	{{- range .Selector -}}{{- if .Arg -}}
+	, {{.Arg.Type}} {{.Arg.Name}}
+	{{- end -}}{{- end -}}
+) {
+	{{if .HasReturn}}return {{end -}}
+	[({{.Class}}*)id
+		{{- range .Selector}}
+		{{.Key}}{{if .Arg}} {{.Arg.Name}}{{end}}
+		{{- end -}}
+		];
+}
+{{end}}
+*/
+import "C"
+
+func convertObjCBoolToGo(b C.BOOL) bool {
+	// NOTE: the prefix here is used to namespace these since the linker will
+	// otherwise report a "duplicate symbol" because the C functions have the
+	// same name.
+	return bool(C.{{.Name}}_convertObjCBool(b))
+}
+
+func convertToObjCBool(b bool) C.BOOL {
+	if b {
+		return 1
+	}
+	return 0
+}
+{{end}}
+
+
+{{define "go_to_cgo"}}
+{{range $x := .}}
+func {{.Name}}(
+	{{- range .WrappedFunc.Args}}
+		{{.Name}} {{.Type}},
+	{{- end}}
+) {{if .WrappedFunc.HasReturn}}(
+	{{- range $i, $_ := .WrappedFunc.Returns}}
+	r{{$i}} {{.Type}},
+	{{- end}}
+){{end}} {
+	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
+		{{- range .WrappedFunc.Args}}
+		{{printf .ToCGoFmt .Name}},
+		{{- end}}
+	)
+	{{- range $i, $_ := .WrappedFunc.Returns}}
+	r{{$i}} = {{printf .FromCGoFmt "ret"}}
+	{{- end}}
+	return
+}
+
+{{end}}
+{{end}}
+
+
+{{define "classes"}}
+{{range $cls := .}}
+type {{.Name}}Ref interface {
+	Pointer() uintptr
+	Init_as{{.Name}}() {{.Name}}
+}
+
+type gen_{{.Name}} struct {
+	{{.Base}}
+}
+
+func {{.Name}}_fromPointer(ptr unsafe.Pointer) {{.Name}} {
+	return {{.Name}}{gen_{{.Name}}{
+		{{.Base}}_fromPointer(ptr),
+	}}
+}
+
+func {{.Name}}_fromRef(ref objc.Ref) {{.Name}} {
+	return {{.Name}}_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+{{range .InstanceMethods}}
+func (x gen_{{$cls.Name}}) {{.Name}}(
+	{{- range .WrappedFunc.Args}}
+		{{.Name}} {{.Type}},
+	{{- end}}
+) {{if .WrappedFunc.HasReturn}}(
+	{{- range $i, $_ := .WrappedFunc.Returns}}
+	r{{$i}} {{.Type}},
+	{{- end}}
+){{end}} {
+	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
+		unsafe.Pointer(x.Pointer()),
+		{{- range .WrappedFunc.Args}}
+		{{printf .ToCGoFmt .Name}},
+		{{- end}}
+	)
+	{{- range $i, $_ := .WrappedFunc.Returns}}
+	r{{$i}} = {{printf .FromCGoFmt "ret"}}
+	{{- end}}
+	return
+}
+{{end}}
+
+{{end}}
+
+{{end}}

@@ -1,0 +1,1533 @@
+{
+  "Class": {
+    "Name": "CALayer",
+    "Description": "An object that manages image-based content and allows you to perform animations on that content.",
+    "Declaration": "@interface CALayer : NSObject",
+    "Frameworks": [
+      "Core Animation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.5+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Returns an initialized CALayer object.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc"
+      },
+      {
+        "Name": "initWithLayer:",
+        "Description": "Override to copy or initialize custom fields of the specified layer.",
+        "Declaration": "- (instancetype)initWithLayer:(id)layer;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc"
+      },
+      {
+        "Name": "presentationLayer",
+        "Description": "Returns a copy of the presentation layer object that represents the state of the layer as it currently appears onscreen.",
+        "Declaration": "- (instancetype)presentationLayer;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc"
+      },
+      {
+        "Name": "modelLayer",
+        "Description": "Returns the model layer object associated with the receiver, if any.",
+        "Declaration": "- (instancetype)modelLayer;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc"
+      },
+      {
+        "Name": "display",
+        "Description": "Reloads the content of this layer.",
+        "Declaration": "- (void)display;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410926-display?language=objc"
+      },
+      {
+        "Name": "drawInContext:",
+        "Description": "Draws the layer’s content using the specified graphics context.",
+        "Declaration": "- (void)drawInContext:(CGContextRef)ctx;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ctx",
+            "Type": {
+              "Name": "CGContextRef"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410757-drawincontext?language=objc"
+      },
+      {
+        "Name": "contentsAreFlipped",
+        "Description": "Returns a Boolean indicating whether the layer content is implicitly flipped when rendered.",
+        "Declaration": "- (BOOL)contentsAreFlipped;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410777-contentsareflipped?language=objc"
+      },
+      {
+        "Name": "renderInContext:",
+        "Description": "Renders the layer and its sublayers into the specified context.",
+        "Declaration": "- (void)renderInContext:(CGContextRef)ctx;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ctx",
+            "Type": {
+              "Name": "CGContextRef"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410909-renderincontext?language=objc"
+      },
+      {
+        "Name": "affineTransform",
+        "Description": "Returns an affine version of the layer’s transform.",
+        "Declaration": "- (CGAffineTransform)affineTransform;",
+        "Return": {
+          "Name": "CGAffineTransform"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410882-affinetransform?language=objc"
+      },
+      {
+        "Name": "setAffineTransform:",
+        "Description": "Sets the layer’s transform to the specified affine transform.",
+        "Declaration": "- (void)setAffineTransform:(CGAffineTransform)m;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "m",
+            "Type": {
+              "Name": "CGAffineTransform"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410868-setaffinetransform?language=objc"
+      },
+      {
+        "Name": "addSublayer:",
+        "Description": "Appends the layer to the layer’s list of sublayers.",
+        "Declaration": "- (void)addSublayer:(CALayer *)layer;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410833-addsublayer?language=objc"
+      },
+      {
+        "Name": "removeFromSuperlayer",
+        "Description": "Detaches the layer from its parent layer.",
+        "Declaration": "- (void)removeFromSuperlayer;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410767-removefromsuperlayer?language=objc"
+      },
+      {
+        "Name": "insertSublayer:atIndex:",
+        "Description": "Inserts the specified layer into the receiver’s list of sublayers at the specified index.",
+        "Declaration": "- (void)insertSublayer:(CALayer *)layer \n               atIndex:(unsigned int)idx;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "idx",
+            "Type": {
+              "Name": "int",
+              "Annotations": [
+                "unsigned"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410944-insertsublayer?language=objc"
+      },
+      {
+        "Name": "insertSublayer:below:",
+        "Description": "Inserts the specified sublayer below a different sublayer that already belongs to the receiver.",
+        "Declaration": "- (void)insertSublayer:(CALayer *)layer \n                 below:(CALayer *)sibling;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "sibling",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410840-insertsublayer?language=objc"
+      },
+      {
+        "Name": "insertSublayer:above:",
+        "Description": "Inserts the specified sublayer above a different sublayer that already belongs to the receiver.",
+        "Declaration": "- (void)insertSublayer:(CALayer *)layer \n                 above:(CALayer *)sibling;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "sibling",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410798-insertsublayer?language=objc"
+      },
+      {
+        "Name": "replaceSublayer:with:",
+        "Description": "Replaces the specified sublayer with a different layer object.",
+        "Declaration": "- (void)replaceSublayer:(CALayer *)oldLayer \n                   with:(CALayer *)newLayer;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "oldLayer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "newLayer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410820-replacesublayer?language=objc"
+      },
+      {
+        "Name": "setNeedsDisplay",
+        "Description": "Marks the layer’s contents as needing to be updated.",
+        "Declaration": "- (void)setNeedsDisplay;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410855-setneedsdisplay?language=objc"
+      },
+      {
+        "Name": "setNeedsDisplayInRect:",
+        "Description": "Marks the region within the specified rectangle as needing to be updated.",
+        "Declaration": "- (void)setNeedsDisplayInRect:(CGRect)r;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "r",
+            "Type": {
+              "Name": "CGRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410800-setneedsdisplayinrect?language=objc"
+      },
+      {
+        "Name": "displayIfNeeded",
+        "Description": "Initiates the update process for a layer if it is currently marked as needing an update.",
+        "Declaration": "- (void)displayIfNeeded;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410813-displayifneeded?language=objc"
+      },
+      {
+        "Name": "needsDisplay",
+        "Description": "Returns a Boolean indicating whether the layer has been marked as needing an update.",
+        "Declaration": "- (BOOL)needsDisplay;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410958-needsdisplay?language=objc"
+      },
+      {
+        "Name": "addAnimation:forKey:",
+        "Description": "Add the specified animation object to the layer’s render tree.",
+        "Declaration": "- (void)addAnimation:(CAAnimation *)anim \n              forKey:(NSString *)key;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "anim",
+            "Type": {
+              "Name": "CAAnimation",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410848-addanimation?language=objc"
+      },
+      {
+        "Name": "animationForKey:",
+        "Description": "Returns the animation object with the specified identifier.",
+        "Declaration": "- (__kindof CAAnimation *)animationForKey:(NSString *)key;",
+        "Return": {
+          "Name": "CAAnimation",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410808-animationforkey?language=objc"
+      },
+      {
+        "Name": "removeAllAnimations",
+        "Description": "Remove all animations attached to the layer.",
+        "Declaration": "- (void)removeAllAnimations;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410810-removeallanimations?language=objc"
+      },
+      {
+        "Name": "removeAnimationForKey:",
+        "Description": "Remove the animation object with the specified key.",
+        "Declaration": "- (void)removeAnimationForKey:(NSString *)key;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410939-removeanimationforkey?language=objc"
+      },
+      {
+        "Name": "animationKeys",
+        "Description": "Returns an array of strings that identify the animations currently attached to the layer.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)animationKeys;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410937-animationkeys?language=objc"
+      },
+      {
+        "Name": "setNeedsLayout",
+        "Description": "Invalidates the layer’s layout and marks it as needing an update.",
+        "Declaration": "- (void)setNeedsLayout;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410946-setneedslayout?language=objc"
+      },
+      {
+        "Name": "layoutSublayers",
+        "Description": "Tells the layer to update its layout.",
+        "Declaration": "- (void)layoutSublayers;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410935-layoutsublayers?language=objc"
+      },
+      {
+        "Name": "layoutIfNeeded",
+        "Description": "Recalculate the receiver’s layout, if required.",
+        "Declaration": "- (void)layoutIfNeeded;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410873-layoutifneeded?language=objc"
+      },
+      {
+        "Name": "needsLayout",
+        "Description": "Returns a Boolean indicating whether the layer has been marked as needing a layout update.",
+        "Declaration": "- (BOOL)needsLayout;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410956-needslayout?language=objc"
+      },
+      {
+        "Name": "resizeWithOldSuperlayerSize:",
+        "Description": "Informs the receiver that the size of its superlayer changed.",
+        "Declaration": "- (void)resizeWithOldSuperlayerSize:(CGSize)size;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "CGSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410894-resizewitholdsuperlayersize?language=objc"
+      },
+      {
+        "Name": "resizeSublayersWithOldSize:",
+        "Description": "Informs the receiver’s sublayers that the receiver’s size has changed.",
+        "Declaration": "- (void)resizeSublayersWithOldSize:(CGSize)size;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "CGSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410929-resizesublayerswitholdsize?language=objc"
+      },
+      {
+        "Name": "preferredFrameSize",
+        "Description": "Returns the preferred size of the layer in the coordinate space of its superlayer.",
+        "Declaration": "- (CGSize)preferredFrameSize;",
+        "Return": {
+          "Name": "CGSize"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410980-preferredframesize?language=objc"
+      },
+      {
+        "Name": "addConstraint:",
+        "Description": "Adds the specified constraint to the layer.",
+        "Declaration": "- (void)addConstraint:(CAConstraint *)c;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "c",
+            "Type": {
+              "Name": "CAConstraint",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1521899-addconstraint?language=objc"
+      },
+      {
+        "Name": "actionForKey:",
+        "Description": "Returns the action object assigned to the specified key.",
+        "Declaration": "- (id\u003cCAAction\u003e)actionForKey:(NSString *)event;",
+        "Return": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "CAAction"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410844-actionforkey?language=objc"
+      },
+      {
+        "Name": "convertPoint:fromLayer:",
+        "Description": "Converts the point from the specified layer’s coordinate system to the receiver’s coordinate system.",
+        "Declaration": "- (CGPoint)convertPoint:(CGPoint)p \n              fromLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CGPoint"
+        },
+        "Args": [
+          {
+            "Name": "p",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410825-convertpoint?language=objc"
+      },
+      {
+        "Name": "convertPoint:toLayer:",
+        "Description": "Converts the point from the receiver’s coordinate system to the specified layer’s coordinate system.",
+        "Declaration": "- (CGPoint)convertPoint:(CGPoint)p \n                toLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CGPoint"
+        },
+        "Args": [
+          {
+            "Name": "p",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410881-convertpoint?language=objc"
+      },
+      {
+        "Name": "convertRect:fromLayer:",
+        "Description": "Converts the rectangle from the specified layer’s coordinate system to the receiver’s coordinate system.",
+        "Declaration": "- (CGRect)convertRect:(CGRect)r \n            fromLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "r",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410948-convertrect?language=objc"
+      },
+      {
+        "Name": "convertRect:toLayer:",
+        "Description": "Converts the rectangle from the receiver’s coordinate system to the specified layer’s coordinate system.",
+        "Declaration": "- (CGRect)convertRect:(CGRect)r \n              toLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "r",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410742-convertrect?language=objc"
+      },
+      {
+        "Name": "convertTime:fromLayer:",
+        "Description": "Converts the time interval from the specified layer’s time space to the receiver’s time space.",
+        "Declaration": "- (CFTimeInterval)convertTime:(CFTimeInterval)t \n                    fromLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CFTimeInterval"
+        },
+        "Args": [
+          {
+            "Name": "t",
+            "Type": {
+              "Name": "CFTimeInterval"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410821-converttime?language=objc"
+      },
+      {
+        "Name": "convertTime:toLayer:",
+        "Description": "Converts the time interval from the receiver’s time space to the specified layer’s time space",
+        "Declaration": "- (CFTimeInterval)convertTime:(CFTimeInterval)t \n                      toLayer:(CALayer *)l;\n",
+        "Return": {
+          "Name": "CFTimeInterval"
+        },
+        "Args": [
+          {
+            "Name": "t",
+            "Type": {
+              "Name": "CFTimeInterval"
+            }
+          },
+          {
+            "Name": "l",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410823-converttime?language=objc"
+      },
+      {
+        "Name": "hitTest:",
+        "Description": "Returns the farthest descendant of the receiver in the layer hierarchy (including itself) that contains the specified point.",
+        "Declaration": "- (__kindof CALayer *)hitTest:(CGPoint)p;",
+        "Return": {
+          "Name": "CALayer",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Args": [
+          {
+            "Name": "p",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410972-hittest?language=objc"
+      },
+      {
+        "Name": "containsPoint:",
+        "Description": "Returns whether the receiver contains a specified point.",
+        "Declaration": "- (BOOL)containsPoint:(CGPoint)p;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "p",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410857-containspoint?language=objc"
+      },
+      {
+        "Name": "scrollPoint:",
+        "Description": "Initiates a scroll in the layer’s closest ancestor scroll layer so that the specified point lies at the origin of the scroll layer.",
+        "Declaration": "- (void)scrollPoint:(CGPoint)p;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "p",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1522202-scrollpoint?language=objc"
+      },
+      {
+        "Name": "scrollRectToVisible:",
+        "Description": "Initiates a scroll in the layer’s closest ancestor scroll layer so that the specified rectangle becomes visible.",
+        "Declaration": "- (void)scrollRectToVisible:(CGRect)r;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "r",
+            "Type": {
+              "Name": "CGRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1522139-scrollrecttovisible?language=objc"
+      },
+      {
+        "Name": "shouldArchiveValueForKey:",
+        "Description": "Returns a Boolean indicating whether the value of the specified key should be archived.",
+        "Declaration": "- (BOOL)shouldArchiveValueForKey:(NSString *)key;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410753-shouldarchivevalueforkey?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The layer’s delegate object.",
+        "Declaration": "@property(weak) id\u003cCALayerDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "CALayerDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410984-delegate?language=objc"
+      },
+      {
+        "Name": "contents",
+        "Description": "An object that provides the contents of the layer. Animatable.",
+        "Declaration": "@property(strong) id contents;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410773-contents?language=objc"
+      },
+      {
+        "Name": "contentsRect",
+        "Description": "The rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. Animatable.",
+        "Declaration": "@property CGRect contentsRect;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410866-contentsrect?language=objc"
+      },
+      {
+        "Name": "contentsCenter",
+        "Description": "The rectangle that defines how the layer contents are scaled if the layer’s contents are resized. Animatable.",
+        "Declaration": "@property CGRect contentsCenter;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410740-contentscenter?language=objc"
+      },
+      {
+        "Name": "contentsGravity",
+        "Description": "A constant that specifies how the layer's contents are positioned or scaled within its bounds.",
+        "Declaration": "@property(copy) CALayerContentsGravity contentsGravity;",
+        "Type": {
+          "Name": "CALayerContentsGravity"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410872-contentsgravity?language=objc"
+      },
+      {
+        "Name": "opacity",
+        "Description": "The opacity of the receiver. Animatable.",
+        "Declaration": "@property float opacity;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc"
+      },
+      {
+        "Name": "hidden",
+        "Description": "A Boolean indicating whether the layer is displayed. Animatable.",
+        "Declaration": "@property(getter=isHidden) BOOL hidden;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHidden"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc"
+      },
+      {
+        "Name": "masksToBounds",
+        "Description": "A Boolean indicating whether sublayers are clipped to the layer’s bounds. Animatable.",
+        "Declaration": "@property BOOL masksToBounds;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410896-maskstobounds?language=objc"
+      },
+      {
+        "Name": "mask",
+        "Description": "An optional layer whose alpha channel is used to mask the layer’s content.",
+        "Declaration": "@property(strong) __kindof CALayer *mask;",
+        "Type": {
+          "Name": "CALayer",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410861-mask?language=objc"
+      },
+      {
+        "Name": "doubleSided",
+        "Description": "A Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable.",
+        "Declaration": "@property(getter=isDoubleSided) BOOL doubleSided;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isDoubleSided"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410924-doublesided?language=objc"
+      },
+      {
+        "Name": "cornerRadius",
+        "Description": "The radius to use when drawing rounded corners for the layer’s background. Animatable.",
+        "Declaration": "@property CGFloat cornerRadius;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410818-cornerradius?language=objc"
+      },
+      {
+        "Name": "maskedCorners",
+        "Description": "",
+        "Declaration": "@property CACornerMask maskedCorners;",
+        "Type": {
+          "Name": "CACornerMask"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/2877488-maskedcorners?language=objc"
+      },
+      {
+        "Name": "borderWidth",
+        "Description": "The width of the layer’s border. Animatable.",
+        "Declaration": "@property CGFloat borderWidth;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410917-borderwidth?language=objc"
+      },
+      {
+        "Name": "borderColor",
+        "Description": "The color of the layer’s border. Animatable.",
+        "Declaration": "@property CGColorRef borderColor;",
+        "Type": {
+          "Name": "CGColorRef"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410903-bordercolor?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The background color of the receiver. Animatable.",
+        "Declaration": "@property CGColorRef backgroundColor;",
+        "Type": {
+          "Name": "CGColorRef"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410966-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "shadowOpacity",
+        "Description": "The opacity of the layer’s shadow. Animatable.",
+        "Declaration": "@property float shadowOpacity;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc"
+      },
+      {
+        "Name": "shadowRadius",
+        "Description": "The blur radius (in points) used to render the layer’s shadow. Animatable.",
+        "Declaration": "@property CGFloat shadowRadius;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410819-shadowradius?language=objc"
+      },
+      {
+        "Name": "shadowOffset",
+        "Description": "The offset (in points) of the layer’s shadow. Animatable.",
+        "Declaration": "@property CGSize shadowOffset;",
+        "Type": {
+          "Name": "CGSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410970-shadowoffset?language=objc"
+      },
+      {
+        "Name": "shadowColor",
+        "Description": "The color of the layer’s shadow. Animatable.",
+        "Declaration": "@property CGColorRef shadowColor;",
+        "Type": {
+          "Name": "CGColorRef"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410829-shadowcolor?language=objc"
+      },
+      {
+        "Name": "shadowPath",
+        "Description": "The shape of the layer’s shadow. Animatable.",
+        "Declaration": "@property CGPathRef shadowPath;",
+        "Type": {
+          "Name": "CGPathRef"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410771-shadowpath?language=objc"
+      },
+      {
+        "Name": "style",
+        "Description": "An optional dictionary used to store property values that aren't explicitly defined by the layer.",
+        "Declaration": "@property(copy) NSDictionary *style;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410875-style?language=objc"
+      },
+      {
+        "Name": "allowsEdgeAntialiasing",
+        "Description": "A Boolean indicating whether the layer is allowed to perform edge antialiasing.",
+        "Declaration": "@property BOOL allowsEdgeAntialiasing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1621285-allowsedgeantialiasing?language=objc"
+      },
+      {
+        "Name": "allowsGroupOpacity",
+        "Description": "A Boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.",
+        "Declaration": "@property BOOL allowsGroupOpacity;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1621277-allowsgroupopacity?language=objc"
+      },
+      {
+        "Name": "filters",
+        "Description": "An array of Core Image filters to apply to the contents of the layer and its sublayers. Animatable.",
+        "Declaration": "@property(copy) NSArray *filters;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410901-filters?language=objc"
+      },
+      {
+        "Name": "compositingFilter",
+        "Description": "A CoreImage filter used to composite the layer and the content behind it. Animatable.",
+        "Declaration": "@property(strong) id compositingFilter;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410748-compositingfilter?language=objc"
+      },
+      {
+        "Name": "backgroundFilters",
+        "Description": "An array of Core Image filters to apply to the content immediately behind the layer. Animatable.",
+        "Declaration": "@property(copy) NSArray *backgroundFilters;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410827-backgroundfilters?language=objc"
+      },
+      {
+        "Name": "minificationFilter",
+        "Description": "The filter used when reducing the size of the content.",
+        "Declaration": "@property(copy) CALayerContentsFilter minificationFilter;",
+        "Type": {
+          "Name": "CALayerContentsFilter"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410898-minificationfilter?language=objc"
+      },
+      {
+        "Name": "minificationFilterBias",
+        "Description": "The bias factor used by the minification filter to determine the levels of detail.",
+        "Declaration": "@property float minificationFilterBias;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc"
+      },
+      {
+        "Name": "magnificationFilter",
+        "Description": "The filter used when increasing the size of the content.",
+        "Declaration": "@property(copy) CALayerContentsFilter magnificationFilter;",
+        "Type": {
+          "Name": "CALayerContentsFilter"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410907-magnificationfilter?language=objc"
+      },
+      {
+        "Name": "opaque",
+        "Description": "A Boolean value indicating whether the layer contains completely opaque content.",
+        "Declaration": "@property(getter=isOpaque) BOOL opaque;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isOpaque"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410763-opaque?language=objc"
+      },
+      {
+        "Name": "edgeAntialiasingMask",
+        "Description": "A bitmask defining how the edges of the receiver are rasterized.",
+        "Declaration": "@property CAEdgeAntialiasingMask edgeAntialiasingMask;",
+        "Type": {
+          "Name": "CAEdgeAntialiasingMask"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410892-edgeantialiasingmask?language=objc"
+      },
+      {
+        "Name": "geometryFlipped",
+        "Description": "A Boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.",
+        "Declaration": "@property(getter=isGeometryFlipped) BOOL geometryFlipped;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isGeometryFlipped"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410960-geometryflipped?language=objc"
+      },
+      {
+        "Name": "drawsAsynchronously",
+        "Description": "A Boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.",
+        "Declaration": "@property BOOL drawsAsynchronously;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410974-drawsasynchronously?language=objc"
+      },
+      {
+        "Name": "shouldRasterize",
+        "Description": "A Boolean that indicates whether the layer is rendered as a bitmap before compositing. Animatable",
+        "Declaration": "@property BOOL shouldRasterize;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410905-shouldrasterize?language=objc"
+      },
+      {
+        "Name": "rasterizationScale",
+        "Description": "The scale at which to rasterize content, relative to the coordinate space of the layer. Animatable",
+        "Declaration": "@property CGFloat rasterizationScale;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410801-rasterizationscale?language=objc"
+      },
+      {
+        "Name": "contentsFormat",
+        "Description": "A hint for the desired storage format of the layer contents.",
+        "Declaration": "@property(copy) CALayerContentsFormat contentsFormat;",
+        "Type": {
+          "Name": "CALayerContentsFormat"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1792104-contentsformat?language=objc"
+      },
+      {
+        "Name": "frame",
+        "Description": "The layer’s frame rectangle.",
+        "Declaration": "@property CGRect frame;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410779-frame?language=objc"
+      },
+      {
+        "Name": "bounds",
+        "Description": "The layer’s bounds rectangle. Animatable.",
+        "Declaration": "@property CGRect bounds;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410915-bounds?language=objc"
+      },
+      {
+        "Name": "position",
+        "Description": "The layer’s position in its superlayer’s coordinate space. Animatable.",
+        "Declaration": "@property CGPoint position;",
+        "Type": {
+          "Name": "CGPoint"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410791-position?language=objc"
+      },
+      {
+        "Name": "zPosition",
+        "Description": "The layer’s position on the z axis. Animatable.",
+        "Declaration": "@property CGFloat zPosition;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410884-zposition?language=objc"
+      },
+      {
+        "Name": "anchorPointZ",
+        "Description": "The anchor point for the layer’s position along the z axis. Animatable.",
+        "Declaration": "@property CGFloat anchorPointZ;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410796-anchorpointz?language=objc"
+      },
+      {
+        "Name": "anchorPoint",
+        "Description": "Defines the anchor point of the layer's bounds rectangle. Animatable.",
+        "Declaration": "@property CGPoint anchorPoint;",
+        "Type": {
+          "Name": "CGPoint"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410817-anchorpoint?language=objc"
+      },
+      {
+        "Name": "contentsScale",
+        "Description": "The scale factor applied to the layer.",
+        "Declaration": "@property CGFloat contentsScale;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410746-contentsscale?language=objc"
+      },
+      {
+        "Name": "transform",
+        "Description": "The transform applied to the layer’s contents. Animatable.",
+        "Declaration": "@property CATransform3D transform;",
+        "Type": {
+          "Name": "CATransform3D"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410836-transform?language=objc"
+      },
+      {
+        "Name": "sublayerTransform",
+        "Description": "Specifies the transform to apply to sublayers when rendering. Animatable.",
+        "Declaration": "@property CATransform3D sublayerTransform;",
+        "Type": {
+          "Name": "CATransform3D"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410888-sublayertransform?language=objc"
+      },
+      {
+        "Name": "sublayers",
+        "Description": "An array containing the layer’s sublayers.",
+        "Declaration": "@property(copy) NSArray\u003c__kindof CALayer *\u003e *sublayers;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "CALayer",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410802-sublayers?language=objc"
+      },
+      {
+        "Name": "superlayer",
+        "Description": "The superlayer of the layer.",
+        "Declaration": "@property(readonly) CALayer *superlayer;",
+        "Type": {
+          "Name": "CALayer",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410761-superlayer?language=objc"
+      },
+      {
+        "Name": "needsDisplayOnBoundsChange",
+        "Description": "A Boolean indicating whether the layer contents must be updated when its bounds rectangle changes.",
+        "Declaration": "@property BOOL needsDisplayOnBoundsChange;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410923-needsdisplayonboundschange?language=objc"
+      },
+      {
+        "Name": "layoutManager",
+        "Description": "The object responsible for laying out the layer’s sublayers.",
+        "Declaration": "@property(strong) id\u003cCALayoutManager\u003e layoutManager;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "CALayoutManager"
+            }
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410749-layoutmanager?language=objc"
+      },
+      {
+        "Name": "autoresizingMask",
+        "Description": "A bitmask defining how the layer is resized when the bounds of its superlayer changes.",
+        "Declaration": "@property CAAutoresizingMask autoresizingMask;",
+        "Type": {
+          "Name": "CAAutoresizingMask"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410877-autoresizingmask?language=objc"
+      },
+      {
+        "Name": "constraints",
+        "Description": "The constraints used to position current layer’s sublayers.",
+        "Declaration": "@property(copy) NSArray\u003cCAConstraint *\u003e *constraints;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "CAConstraint",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1521906-constraints?language=objc"
+      },
+      {
+        "Name": "actions",
+        "Description": "A dictionary containing layer actions.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSString *,id\u003cCAAction\u003e\u003e *actions;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "CAAction"
+                }
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410789-actions?language=objc"
+      },
+      {
+        "Name": "visibleRect",
+        "Description": "The visible region of the layer in its own coordinate space.",
+        "Declaration": "@property(readonly) CGRect visibleRect;",
+        "Type": {
+          "Name": "CGRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1521892-visiblerect?language=objc"
+      },
+      {
+        "Name": "name",
+        "Description": "The name of the receiver.",
+        "Declaration": "@property(copy) NSString *name;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410879-name?language=objc"
+      },
+      {
+        "Name": "cornerCurve",
+        "Description": "",
+        "Declaration": "@property(copy) CALayerCornerCurve cornerCurve;",
+        "Type": {
+          "Name": "CALayerCornerCurve"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/3152596-cornercurve?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "layer",
+        "Description": "Creates and returns an instance of the layer object.",
+        "Declaration": "+ (instancetype)layer;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc"
+      },
+      {
+        "Name": "layerWithRemoteClientId:",
+        "Description": "Initializes a layer with a remote client ID.",
+        "Declaration": "+ (CALayer *)layerWithRemoteClientId:(uint32_t)client_id;",
+        "Return": {
+          "Name": "CALayer",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "client_id",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1522119-layerwithremoteclientid?language=objc"
+      },
+      {
+        "Name": "needsDisplayForKey:",
+        "Description": "Returns a Boolean indicating whether changes to the specified key require the layer to be redisplayed.",
+        "Declaration": "+ (BOOL)needsDisplayForKey:(NSString *)key;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410769-needsdisplayforkey?language=objc"
+      },
+      {
+        "Name": "defaultActionForKey:",
+        "Description": "Returns the default action for the current class.",
+        "Declaration": "+ (id\u003cCAAction\u003e)defaultActionForKey:(NSString *)event;",
+        "Return": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "CAAction"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410954-defaultactionforkey?language=objc"
+      },
+      {
+        "Name": "defaultValueForKey:",
+        "Description": "Specifies the default value associated with the specified key.",
+        "Declaration": "+ (id)defaultValueForKey:(NSString *)key;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/1410886-defaultvalueforkey?language=objc"
+      },
+      {
+        "Name": "cornerCurveExpansionFactor:",
+        "Description": "",
+        "Declaration": "+ (CGFloat)cornerCurveExpansionFactor:(CALayerCornerCurve)curve;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "curve",
+            "Type": {
+              "Name": "CALayerCornerCurve"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/quartzcore/calayer/3152597-cornercurveexpansionfactor?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T21:23:19.7609-07:00",
+  "Version": 2
+}

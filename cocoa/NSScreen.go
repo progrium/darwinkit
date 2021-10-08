@@ -6,23 +6,18 @@ import (
 )
 
 type NSScreen struct {
-	objc.Object
+	gen_NSScreen
 }
 
 func NSScreen_Main() NSScreen {
-	return NSScreen{objc.Get("NSScreen").Send("mainScreen")}
+	return NSScreen_mainScreen()
 }
 
 func NSScreen_Screens() []NSScreen {
 	var result []NSScreen
 	screens := core.NSArray{objc.Get("NSScreen").Send("screens")}
 	for i := uint64(0); i < screens.Count(); i++ {
-		result = append(result, NSScreen{screens.ObjectAtIndex(i)})
+		result = append(result, NSScreen_fromRef(screens.ObjectAtIndex(i)))
 	}
 	return result
-}
-
-func (s NSScreen) Frame() (frame core.NSRect) {
-	s.Send("frame", &frame)
-	return frame
 }

@@ -1,0 +1,377 @@
+{
+  "Class": {
+    "Name": "NSURLRequest",
+    "Description": "A URL load request that is independent of protocol or URL scheme.",
+    "Declaration": "@interface NSURLRequest : NSObject",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.2+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithURL:",
+        "Description": "Creates a URL request for a specified URL.",
+        "Declaration": "- (instancetype)initWithURL:(NSURL *)URL;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc"
+      },
+      {
+        "Name": "initWithURL:cachePolicy:timeoutInterval:",
+        "Description": "Creates a URL request with the specified URL, cache policy, and timeout values.",
+        "Declaration": "- (instancetype)initWithURL:(NSURL *)URL \n                cachePolicy:(NSURLRequestCachePolicy)cachePolicy \n            timeoutInterval:(NSTimeInterval)timeoutInterval;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "cachePolicy",
+            "Type": {
+              "Name": "NSURLRequestCachePolicy"
+            }
+          },
+          {
+            "Name": "timeoutInterval",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1416292-initwithurl?language=objc"
+      },
+      {
+        "Name": "valueForHTTPHeaderField:",
+        "Description": "Returns the value of the specified HTTP header field.",
+        "Declaration": "- (NSString *)valueForHTTPHeaderField:(NSString *)field;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "field",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1409376-valueforhttpheaderfield?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "cachePolicy",
+        "Description": "The request’s cache policy.",
+        "Declaration": "@property(readonly) NSURLRequestCachePolicy cachePolicy;",
+        "Type": {
+          "Name": "NSURLRequestCachePolicy"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1407944-cachepolicy?language=objc"
+      },
+      {
+        "Name": "HTTPMethod",
+        "Description": "The HTTP request method.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *HTTPMethod;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc"
+      },
+      {
+        "Name": "URL",
+        "Description": "The URL being requested.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *URL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1408996-url?language=objc"
+      },
+      {
+        "Name": "HTTPBody",
+        "Description": "The request body.",
+        "Declaration": "@property(nullable, readonly, copy) NSData *HTTPBody;",
+        "Type": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1411317-httpbody?language=objc"
+      },
+      {
+        "Name": "HTTPBodyStream",
+        "Description": "The request body as an input stream.",
+        "Declaration": "@property(nullable, readonly, retain) NSInputStream *HTTPBodyStream;",
+        "Type": {
+          "Name": "NSInputStream",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "retain": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1407341-httpbodystream?language=objc"
+      },
+      {
+        "Name": "mainDocumentURL",
+        "Description": "The main document URL associated with the request.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *mainDocumentURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1414134-maindocumenturl?language=objc"
+      },
+      {
+        "Name": "allHTTPHeaderFields",
+        "Description": "A dictionary containing all of the HTTP header fields for a request.",
+        "Declaration": "@property(nullable, readonly, copy) NSDictionary\u003cNSString *,NSString *\u003e *allHTTPHeaderFields;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields?language=objc"
+      },
+      {
+        "Name": "timeoutInterval",
+        "Description": "The request’s timeout interval, in seconds.",
+        "Declaration": "@property(readonly) NSTimeInterval timeoutInterval;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1418229-timeoutinterval?language=objc"
+      },
+      {
+        "Name": "HTTPShouldHandleCookies",
+        "Description": "A Boolean value that indicates whether the default cookie handling will be used for this request.",
+        "Declaration": "@property(readonly) BOOL HTTPShouldHandleCookies;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1418369-httpshouldhandlecookies?language=objc"
+      },
+      {
+        "Name": "HTTPShouldUsePipelining",
+        "Description": "A Boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission.",
+        "Declaration": "@property(readonly) BOOL HTTPShouldUsePipelining;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1409170-httpshouldusepipelining?language=objc"
+      },
+      {
+        "Name": "allowsCellularAccess",
+        "Description": "A Boolean value that indicates whether the request is allowed to use the cellular radio (if present).",
+        "Declaration": "@property(readonly) BOOL allowsCellularAccess;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1412032-allowscellularaccess?language=objc"
+      },
+      {
+        "Name": "allowsConstrainedNetworkAccess",
+        "Description": "A Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode.",
+        "Declaration": "@property(readonly) BOOL allowsConstrainedNetworkAccess;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/3325678-allowsconstrainednetworkaccess?language=objc"
+      },
+      {
+        "Name": "allowsExpensiveNetworkAccess",
+        "Description": "A Boolean value that indicates whether connections may use a network interface that the system considers expensive.",
+        "Declaration": "@property(readonly) BOOL allowsExpensiveNetworkAccess;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/3325679-allowsexpensivenetworkaccess?language=objc"
+      },
+      {
+        "Name": "networkServiceType",
+        "Description": "The network service type of the request.",
+        "Declaration": "@property(readonly) NSURLRequestNetworkServiceType networkServiceType;",
+        "Type": {
+          "Name": "NSURLRequestNetworkServiceType"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1418333-networkservicetype?language=objc"
+      },
+      {
+        "Name": "attribution",
+        "Description": "The entity that initiates the network request.",
+        "Declaration": "@property(readonly) NSURLRequestAttribution attribution;",
+        "Type": {
+          "Name": "NSURLRequestAttribution"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/3746973-attribution?language=objc"
+      },
+      {
+        "Name": "assumesHTTP3Capable",
+        "Description": "",
+        "Declaration": "@property(readonly) BOOL assumesHTTP3Capable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/3735880-assumeshttp3capable?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "requestWithURL:",
+        "Description": "Creates and returns a URL request for a specified URL.",
+        "Declaration": "+ (instancetype)requestWithURL:(NSURL *)URL;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl?language=objc"
+      },
+      {
+        "Name": "requestWithURL:cachePolicy:timeoutInterval:",
+        "Description": "Creates and returns an initialized URL request with specified URL, cache policy, and timeout values.",
+        "Declaration": "+ (instancetype)requestWithURL:(NSURL *)URL \n                   cachePolicy:(NSURLRequestCachePolicy)cachePolicy \n               timeoutInterval:(NSTimeInterval)timeoutInterval;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "URL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "cachePolicy",
+            "Type": {
+              "Name": "NSURLRequestCachePolicy"
+            }
+          },
+          {
+            "Name": "timeoutInterval",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1528579-requestwithurl?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "supportsSecureCoding",
+        "Description": "A Boolean value indicating whether the NSURLRequest implements the NSSecureCoding protocol.",
+        "Declaration": "@property(class, readonly) BOOL supportsSecureCoding;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsurlrequest/1416510-supportssecurecoding?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-20T16:25:20.827466-07:00",
+  "Version": 2
+}

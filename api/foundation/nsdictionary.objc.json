@@ -1,0 +1,1512 @@
+{
+  "Class": {
+    "Name": "NSDictionary",
+    "Description": "A static collection of objects associated with unique keys.",
+    "Declaration": "@interface NSDictionary\u003c__covariant KeyType, __covariant ObjectType\u003e : NSObject",
+    "Frameworks": [
+      "Foundation"
+    ],
+    "Platforms": [
+      "iOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Initializes a newly allocated dictionary.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc"
+      },
+      {
+        "Name": "initWithObjects:forKeys:",
+        "Description": "Initializes a newly allocated dictionary with key-value pairs constructed from the provided arrays of keys and objects.",
+        "Declaration": "- (instancetype)initWithObjects:(NSArray\u003cObjectType\u003e *)objects \n                        forKeys:(NSArray\u003cid\u003cNSCopying\u003e\u003e *)keys;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "id",
+                  "Params": [
+                    {
+                      "Name": "NSCopying"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1410010-initwithobjects?language=objc"
+      },
+      {
+        "Name": "initWithObjects:forKeys:count:",
+        "Description": "Initializes a newly allocated dictionary with the specified number of key-value pairs constructed from the provided C arrays of keys and objects.",
+        "Declaration": "- (instancetype)initWithObjects:(ObjectType  _Nonnull const *)objects \n                        forKeys:(id\u003cNSCopying\u003e  _Nonnull const *)keys \n                          count:(NSUInteger)cnt;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "id",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ],
+              "Params": [
+                {
+                  "Name": "NSCopying"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "cnt",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1412631-initwithobjects?language=objc"
+      },
+      {
+        "Name": "initWithObjectsAndKeys:",
+        "Description": "Initializes a newly allocated dictionary with entries constructed from the specified set of values and keys.",
+        "Declaration": "- (instancetype)initWithObjectsAndKeys:(id)firstObject, ...;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "firstObject",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "...",
+            "Type": {}
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574190-initwithobjectsandkeys?language=objc"
+      },
+      {
+        "Name": "initWithDictionary:",
+        "Description": "Initializes a newly allocated dictionary by placing in it the keys and values contained in another given dictionary.",
+        "Declaration": "- (instancetype)initWithDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)otherDictionary;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "otherDictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1418434-initwithdictionary?language=objc"
+      },
+      {
+        "Name": "initWithDictionary:copyItems:",
+        "Description": "Initializes a newly allocated dictionary using the objects contained in another given dictionary.",
+        "Declaration": "- (instancetype)initWithDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)otherDictionary \n                         copyItems:(BOOL)flag;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "otherDictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1410124-initwithdictionary?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:error:",
+        "Description": "Initializes a newly allocated dictionary using the keys and values found at a given URL.",
+        "Declaration": "- (NSDictionary\u003cNSString *,ObjectType\u003e *)initWithContentsOfURL:(NSURL *)url \n                                                         error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/2879140-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:",
+        "Description": "Initializes a newly allocated dictionary using the keys and values found at a given URL.",
+        "Declaration": "- (NSDictionary\u003cKeyType, ObjectType\u003e *)initWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416069-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfFile:",
+        "Description": "Initializes a newly allocated dictionary using the keys and values found in a file at a given path.",
+        "Declaration": "- (NSDictionary\u003cKeyType, ObjectType\u003e *)initWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1414949-initwithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "Creates a dictionary initialized from data in the provided unarchiver.",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417987-initwithcoder?language=objc"
+      },
+      {
+        "Name": "isEqualToDictionary:",
+        "Description": "Returns a Boolean value that indicates whether the contents of the receiving dictionary are equal to the contents of another given dictionary.",
+        "Declaration": "- (BOOL)isEqualToDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)otherDictionary;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "otherDictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415445-isequaltodictionary?language=objc"
+      },
+      {
+        "Name": "allKeysForObject:",
+        "Description": "Returns a new array containing the keys corresponding to all occurrences of a given object in the dictionary.",
+        "Declaration": "- (NSArray\u003cKeyType\u003e *)allKeysForObject:(ObjectType)anObject;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417147-allkeysforobject?language=objc"
+      },
+      {
+        "Name": "valueForKey:",
+        "Description": "Returns the value associated with a given key.",
+        "Declaration": "- (ObjectType)valueForKey:(NSString *)key;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1410210-valueforkey?language=objc"
+      },
+      {
+        "Name": "getObjects:andKeys:count:",
+        "Description": "Returns by reference C arrays of the keys and values in the dictionary.",
+        "Declaration": "- (void)getObjects:(ObjectType  _Nonnull *)objects \n           andKeys:(KeyType  _Nonnull *)keys \n             count:(NSUInteger)count;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "KeyType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          },
+          {
+            "Name": "count",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409973-getobjects?language=objc"
+      },
+      {
+        "Name": "getObjects:andKeys:",
+        "Description": "Returns by reference C arrays of the keys and values in the dictionary.",
+        "Declaration": "- (void)getObjects:(ObjectType  _Nonnull *)objects \n           andKeys:(KeyType  _Nonnull *)keys;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "KeyType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409428-getobjects?language=objc"
+      },
+      {
+        "Name": "objectsForKeys:notFoundMarker:",
+        "Description": "Returns as a static array the set of objects from the dictionary that corresponds to the specified keys.",
+        "Declaration": "- (NSArray\u003cObjectType\u003e *)objectsForKeys:(NSArray\u003cKeyType\u003e *)keys \n                         notFoundMarker:(ObjectType)marker;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1408769-objectsforkeys?language=objc"
+      },
+      {
+        "Name": "objectForKey:",
+        "Description": "Returns the value associated with a given key.",
+        "Declaration": "- (ObjectType)objectForKey:(KeyType)aKey;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "aKey",
+            "Type": {
+              "Name": "KeyType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1414347-objectforkey?language=objc"
+      },
+      {
+        "Name": "objectForKeyedSubscript:",
+        "Description": "Returns the value associated with a given key.",
+        "Declaration": "- (ObjectType)objectForKeyedSubscript:(KeyType)key;",
+        "Return": {
+          "Name": "ObjectType"
+        },
+        "Args": [
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "KeyType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415430-objectforkeyedsubscript?language=objc"
+      },
+      {
+        "Name": "keyEnumerator",
+        "Description": "Provides an enumerator to access the keys in the dictionary.",
+        "Declaration": "- (NSEnumerator\u003cKeyType\u003e *)keyEnumerator;",
+        "Return": {
+          "Name": "NSEnumerator",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1411011-keyenumerator?language=objc"
+      },
+      {
+        "Name": "objectEnumerator",
+        "Description": "Returns an enumerator object that lets you access each value in the dictionary.",
+        "Declaration": "- (NSEnumerator\u003cObjectType\u003e *)objectEnumerator;",
+        "Return": {
+          "Name": "NSEnumerator",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409600-objectenumerator?language=objc"
+      },
+      {
+        "Name": "enumerateKeysAndObjectsUsingBlock:",
+        "Description": "Applies a given block object to the entries of the dictionary.",
+        "Declaration": "- (void)enumerateKeysAndObjectsUsingBlock:(void (^)(KeyType key, ObjectType obj, BOOL *stop))block;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "key",
+                    "Type": {
+                      "Name": "KeyType"
+                    }
+                  },
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1414570-enumeratekeysandobjectsusingbloc?language=objc"
+      },
+      {
+        "Name": "enumerateKeysAndObjectsWithOptions:usingBlock:",
+        "Description": "Applies a given block object to the entries of the dictionary, with options specifying how the enumeration is performed.",
+        "Declaration": "- (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts \n                                usingBlock:(void (^)(KeyType key, ObjectType obj, BOOL *stop))block;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "key",
+                    "Type": {
+                      "Name": "KeyType"
+                    }
+                  },
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409739-enumeratekeysandobjectswithoptio?language=objc"
+      },
+      {
+        "Name": "countByEnumeratingWithState:objects:count:",
+        "Description": "Returns by reference a C array of objects over which the sender should iterate.",
+        "Declaration": "- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state \n                                  objects:(K  _Nullable *)buffer \n                                    count:(NSUInteger)len;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "state",
+            "Type": {
+              "Name": "NSFastEnumerationState",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "buffer",
+            "Type": {
+              "Name": "K",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "len",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/2865769-countbyenumeratingwithstate?language=objc"
+      },
+      {
+        "Name": "keysSortedByValueUsingSelector:",
+        "Description": "Returns an array of the dictionary’s keys, in the order they would be in if the dictionary were sorted by its values.",
+        "Declaration": "- (NSArray\u003cKeyType\u003e *)keysSortedByValueUsingSelector:(SEL)comparator;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "comparator",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1412484-keyssortedbyvalueusingselector?language=objc"
+      },
+      {
+        "Name": "keysSortedByValueUsingComparator:",
+        "Description": "Returns an array of the dictionary’s keys, in the order they would be in if the dictionary were sorted by its values using a given comparator block.",
+        "Declaration": "- (NSArray\u003cKeyType\u003e *)keysSortedByValueUsingComparator:(NSComparator)cmptr;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "cmptr",
+            "Type": {
+              "Name": "NSComparator"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1411105-keyssortedbyvalueusingcomparator?language=objc"
+      },
+      {
+        "Name": "keysSortedByValueWithOptions:usingComparator:",
+        "Description": "Returns an array of the dictionary’s keys, in the order they would be in if the dictionary were sorted by its values using a given comparator block and a specified set of options.",
+        "Declaration": "- (NSArray\u003cKeyType\u003e *)keysSortedByValueWithOptions:(NSSortOptions)opts \n                                   usingComparator:(NSComparator)cmptr;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSSortOptions"
+            }
+          },
+          {
+            "Name": "cmptr",
+            "Type": {
+              "Name": "NSComparator"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415717-keyssortedbyvaluewithoptions?language=objc"
+      },
+      {
+        "Name": "keysOfEntriesPassingTest:",
+        "Description": "Returns the set of keys whose corresponding value satisfies a constraint described by a block object.",
+        "Declaration": "- (NSSet\u003cKeyType\u003e *)keysOfEntriesPassingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate;",
+        "Return": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "key",
+                    "Type": {
+                      "Name": "KeyType"
+                    }
+                  },
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1407186-keysofentriespassingtest?language=objc"
+      },
+      {
+        "Name": "keysOfEntriesWithOptions:passingTest:",
+        "Description": "Returns the set of keys whose corresponding value satisfies a constraint described by a block object.",
+        "Declaration": "- (NSSet\u003cKeyType\u003e *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts \n                                 passingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate;\n",
+        "Return": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "opts",
+            "Type": {
+              "Name": "NSEnumerationOptions"
+            }
+          },
+          {
+            "Name": "predicate",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "BOOL"
+                },
+                "Args": [
+                  {
+                    "Name": "key",
+                    "Type": {
+                      "Name": "KeyType"
+                    }
+                  },
+                  {
+                    "Name": "obj",
+                    "Type": {
+                      "Name": "ObjectType"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416706-keysofentrieswithoptions?language=objc"
+      },
+      {
+        "Name": "writeToURL:error:",
+        "Description": "Writes a property list representation of the contents of the dictionary to a given URL.",
+        "Declaration": "- (BOOL)writeToURL:(NSURL *)url \n             error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc"
+      },
+      {
+        "Name": "writeToURL:atomically:",
+        "Description": "Writes a property list representation of the contents of the dictionary to a given URL.",
+        "Declaration": "- (BOOL)writeToURL:(NSURL *)url \n        atomically:(BOOL)atomically;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "atomically",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409634-writetourl?language=objc"
+      },
+      {
+        "Name": "writeToFile:atomically:",
+        "Description": "Writes a property list representation of the contents of the dictionary to a given path.",
+        "Declaration": "- (BOOL)writeToFile:(NSString *)path \n         atomically:(BOOL)useAuxiliaryFile;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "useAuxiliaryFile",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415753-writetofile?language=objc"
+      },
+      {
+        "Name": "fileSize",
+        "Description": "Returns the file’s size, in bytes.",
+        "Declaration": "- (unsigned long long)fileSize;",
+        "Return": {
+          "Name": "long long",
+          "Annotations": [
+            "unsigned"
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1413465-filesize?language=objc"
+      },
+      {
+        "Name": "fileType",
+        "Description": "Returns the file type.",
+        "Declaration": "- (NSString *)fileType;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416809-filetype?language=objc"
+      },
+      {
+        "Name": "fileCreationDate",
+        "Description": "Returns the file’s creation date.",
+        "Declaration": "- (NSDate *)fileCreationDate;",
+        "Return": {
+          "Name": "NSDate",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417071-filecreationdate?language=objc"
+      },
+      {
+        "Name": "fileModificationDate",
+        "Description": "Returns file’s modification date.",
+        "Declaration": "- (NSDate *)fileModificationDate;",
+        "Return": {
+          "Name": "NSDate",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1408811-filemodificationdate?language=objc"
+      },
+      {
+        "Name": "filePosixPermissions",
+        "Description": "Returns the file’s POSIX permissions.",
+        "Declaration": "- (NSUInteger)filePosixPermissions;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409446-fileposixpermissions?language=objc"
+      },
+      {
+        "Name": "fileOwnerAccountID",
+        "Description": "Returns the file’s owner account ID.",
+        "Declaration": "- (NSNumber *)fileOwnerAccountID;",
+        "Return": {
+          "Name": "NSNumber",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1412281-fileowneraccountid?language=objc"
+      },
+      {
+        "Name": "fileOwnerAccountName",
+        "Description": "Returns the file’s owner account name.",
+        "Declaration": "- (NSString *)fileOwnerAccountName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417533-fileowneraccountname?language=objc"
+      },
+      {
+        "Name": "fileGroupOwnerAccountID",
+        "Description": "Returns file’s group owner account ID.",
+        "Declaration": "- (NSNumber *)fileGroupOwnerAccountID;",
+        "Return": {
+          "Name": "NSNumber",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1413626-filegroupowneraccountid?language=objc"
+      },
+      {
+        "Name": "fileGroupOwnerAccountName",
+        "Description": "Returns the file’s group owner account name.",
+        "Declaration": "- (NSString *)fileGroupOwnerAccountName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416788-filegroupowneraccountname?language=objc"
+      },
+      {
+        "Name": "fileExtensionHidden",
+        "Description": "Returns a Boolean value indicating whether the file hides its extension.",
+        "Declaration": "- (BOOL)fileExtensionHidden;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1413177-fileextensionhidden?language=objc"
+      },
+      {
+        "Name": "fileIsImmutable",
+        "Description": "Returns a Boolean value indicating whether the file is immutable.",
+        "Declaration": "- (BOOL)fileIsImmutable;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416500-fileisimmutable?language=objc"
+      },
+      {
+        "Name": "fileIsAppendOnly",
+        "Description": "Returns a Boolean value indicating whether the file is append only.",
+        "Declaration": "- (BOOL)fileIsAppendOnly;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1416083-fileisappendonly?language=objc"
+      },
+      {
+        "Name": "fileSystemFileNumber",
+        "Description": "Returns the filesystem file number.",
+        "Declaration": "- (NSUInteger)fileSystemFileNumber;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1408396-filesystemfilenumber?language=objc"
+      },
+      {
+        "Name": "fileSystemNumber",
+        "Description": "Returns the filesystem number.",
+        "Declaration": "- (NSInteger)fileSystemNumber;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415329-filesystemnumber?language=objc"
+      },
+      {
+        "Name": "fileHFSTypeCode",
+        "Description": "Returns file’s HFS type code.",
+        "Declaration": "- (OSType)fileHFSTypeCode;",
+        "Return": {
+          "Name": "OSType"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417215-filehfstypecode?language=objc"
+      },
+      {
+        "Name": "fileHFSCreatorCode",
+        "Description": "Returns the file’s HFS creator code.",
+        "Declaration": "- (OSType)fileHFSCreatorCode;",
+        "Return": {
+          "Name": "OSType"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1415065-filehfscreatorcode?language=objc"
+      },
+      {
+        "Name": "descriptionWithLocale:",
+        "Description": "Returns a string object that represents the contents of the dictionary, formatted as a property list.",
+        "Declaration": "- (NSString *)descriptionWithLocale:(id)locale;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "locale",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1417665-descriptionwithlocale?language=objc"
+      },
+      {
+        "Name": "descriptionWithLocale:indent:",
+        "Description": "Returns a string object that represents the contents of the dictionary, formatted as a property list.",
+        "Declaration": "- (NSString *)descriptionWithLocale:(id)locale \n                             indent:(NSUInteger)level;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "locale",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "level",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1412690-descriptionwithlocale?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "count",
+        "Description": "The number of entries in the dictionary.",
+        "Declaration": "@property(readonly) NSUInteger count;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409628-count?language=objc"
+      },
+      {
+        "Name": "allKeys",
+        "Description": "A new array containing the dictionary’s keys, or an empty array if the dictionary has no entries.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cKeyType\u003e *allKeys;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1409150-allkeys?language=objc"
+      },
+      {
+        "Name": "allValues",
+        "Description": "A new array containing the dictionary’s values, or an empty array if the dictionary has no entries.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cObjectType\u003e *allValues;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1408915-allvalues?language=objc"
+      },
+      {
+        "Name": "description",
+        "Description": "A string that represents the contents of the dictionary, formatted as a property list.",
+        "Declaration": "@property(readonly, copy) NSString *description;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1410799-description?language=objc"
+      },
+      {
+        "Name": "descriptionInStringsFileFormat",
+        "Description": "A string that represents the contents of the dictionary, formatted in .strings file format.",
+        "Declaration": "@property(readonly, copy) NSString *descriptionInStringsFileFormat;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1413282-descriptioninstringsfileformat?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "dictionary",
+        "Description": "Creates an empty dictionary.",
+        "Declaration": "+ (instancetype)dictionary;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574180-dictionary?language=objc"
+      },
+      {
+        "Name": "dictionaryWithObjects:forKeys:",
+        "Description": "Creates a dictionary containing entries constructed from the contents of an array of keys and an array of values.",
+        "Declaration": "+ (instancetype)dictionaryWithObjects:(NSArray\u003cObjectType\u003e *)objects \n                              forKeys:(NSArray\u003cid\u003cNSCopying\u003e\u003e *)keys;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "id",
+                  "Params": [
+                    {
+                      "Name": "NSCopying"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574183-dictionarywithobjects?language=objc"
+      },
+      {
+        "Name": "dictionaryWithObjects:forKeys:count:",
+        "Description": "Creates a dictionary containing a specified number of objects from a C array.",
+        "Declaration": "+ (instancetype)dictionaryWithObjects:(ObjectType  _Nonnull const *)objects \n                              forKeys:(id\u003cNSCopying\u003e  _Nonnull const *)keys \n                                count:(NSUInteger)cnt;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "objects",
+            "Type": {
+              "Name": "ObjectType",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "id",
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nonnull",
+                "const"
+              ],
+              "Params": [
+                {
+                  "Name": "NSCopying"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "cnt",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574184-dictionarywithobjects?language=objc"
+      },
+      {
+        "Name": "dictionaryWithObjectsAndKeys:",
+        "Description": "Creates a dictionary containing entries constructed from the specified set of values and keys.",
+        "Declaration": "+ (instancetype)dictionaryWithObjectsAndKeys:(id)firstObject, ...;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "firstObject",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "...",
+            "Type": {}
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574181-dictionarywithobjectsandkeys?language=objc"
+      },
+      {
+        "Name": "dictionaryWithObject:forKey:",
+        "Description": "Creates a dictionary containing a given key and value.",
+        "Declaration": "+ (instancetype)dictionaryWithObject:(ObjectType)object \n                              forKey:(id\u003cNSCopying\u003e)key;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSCopying"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1414965-dictionarywithobject?language=objc"
+      },
+      {
+        "Name": "dictionaryWithDictionary:",
+        "Description": "Creates a dictionary containing the keys and values from another given dictionary.",
+        "Declaration": "+ (instancetype)dictionaryWithDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)dict;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "dict",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574191-dictionarywithdictionary?language=objc"
+      },
+      {
+        "Name": "dictionaryWithContentsOfURL:error:",
+        "Description": "Creates a dictionary using the keys and values found in a resource specified by a given URL.",
+        "Declaration": "+ (NSDictionary\u003cNSString *,ObjectType\u003e *)dictionaryWithContentsOfURL:(NSURL *)url \n                                                               error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/2879163-dictionarywithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "dictionaryWithContentsOfURL:",
+        "Description": "Creates a dictionary using the keys and values found in a resource specified by a given URL.",
+        "Declaration": "+ (NSDictionary\u003cKeyType, ObjectType\u003e *)dictionaryWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574185-dictionarywithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "dictionaryWithContentsOfFile:",
+        "Description": "Creates a dictionary using the keys and values found in a file specified by a given path.",
+        "Declaration": "+ (NSDictionary\u003cKeyType, ObjectType\u003e *)dictionaryWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1574189-dictionarywithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "sharedKeySetForKeys:",
+        "Description": "Creates a shared key set object for the specified keys.",
+        "Declaration": "+ (id)sharedKeySetForKeys:(NSArray\u003cid\u003cNSCopying\u003e\u003e *)keys;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "id",
+                  "Params": [
+                    {
+                      "Name": "NSCopying"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsdictionary/1408190-sharedkeysetforkeys?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-06-15T14:37:24.782252-07:00",
+  "Version": 2
+}

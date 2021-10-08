@@ -1,0 +1,1477 @@
+{
+  "Class": {
+    "Name": "NSEvent",
+    "Description": "An object that contains information about an input action, such as a mouse click or a key press.",
+    "Declaration": "@interface NSEvent : NSObject",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "touchesMatchingPhase:inView:",
+        "Description": "Returns all the NSTouch objects associated with a specific phase.",
+        "Declaration": "- (NSSet\u003cNSTouch *\u003e *)touchesMatchingPhase:(NSTouchPhase)phase \n                                    inView:(NSView *)view;\n",
+        "Return": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTouch",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "phase",
+            "Type": {
+              "Name": "NSTouchPhase"
+            }
+          },
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530950-touchesmatchingphase?language=objc"
+      },
+      {
+        "Name": "allTouches",
+        "Description": "",
+        "Declaration": "- (NSSet\u003cNSTouch *\u003e *)allTouches;",
+        "Return": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTouch",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/2646917-alltouches?language=objc"
+      },
+      {
+        "Name": "touchesForView:",
+        "Description": "",
+        "Declaration": "- (NSSet\u003cNSTouch *\u003e *)touchesForView:(NSView *)view;",
+        "Return": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTouch",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/2646918-touchesforview?language=objc"
+      },
+      {
+        "Name": "coalescedTouchesForTouch:",
+        "Description": "",
+        "Declaration": "- (NSArray\u003cNSTouch *\u003e *)coalescedTouchesForTouch:(NSTouch *)touch;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTouch",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "touch",
+            "Type": {
+              "Name": "NSTouch",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/2646916-coalescedtouchesfortouch?language=objc"
+      },
+      {
+        "Name": "trackSwipeEventWithOptions:dampenAmountThresholdMin:max:usingHandler:",
+        "Description": "Allows tracking and user interface feedback of scroll wheel events.",
+        "Declaration": "- (void)trackSwipeEventWithOptions:(NSEventSwipeTrackingOptions)options \n          dampenAmountThresholdMin:(CGFloat)minDampenThreshold \n                               max:(CGFloat)maxDampenThreshold \n                      usingHandler:(void (^)(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop))trackingHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSEventSwipeTrackingOptions"
+            }
+          },
+          {
+            "Name": "minDampenThreshold",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "maxDampenThreshold",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "trackingHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "gestureAmount",
+                    "Type": {
+                      "Name": "CGFloat"
+                    }
+                  },
+                  {
+                    "Name": "phase",
+                    "Type": {
+                      "Name": "NSEventPhase"
+                    }
+                  },
+                  {
+                    "Name": "isComplete",
+                    "Type": {
+                      "Name": "BOOL"
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533300-trackswipeeventwithoptions?language=objc"
+      },
+      {
+        "Name": "locationInNode:",
+        "Description": "Returns the location of the receiver in the coordinate system of the given node.",
+        "Declaration": "- (CGPoint)locationInNode:(SKNode *)node;",
+        "Return": {
+          "Name": "CGPoint"
+        },
+        "Args": [
+          {
+            "Name": "node",
+            "Type": {
+              "Name": "SKNode",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1483105-locationinnode?language=objc"
+      },
+      {
+        "Name": "charactersByApplyingModifiers:",
+        "Description": "",
+        "Declaration": "- (NSString *)charactersByApplyingModifiers:(NSEventModifierFlags)modifiers;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "modifiers",
+            "Type": {
+              "Name": "NSEventModifierFlags"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/3242717-charactersbyapplyingmodifiers?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "type",
+        "Description": "The event’s type.",
+        "Declaration": "@property(readonly) NSEventType type;",
+        "Type": {
+          "Name": "NSEventType"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528439-type?language=objc"
+      },
+      {
+        "Name": "subtype",
+        "Description": "The event’s subtype.",
+        "Declaration": "@property(readonly) NSEventSubtype subtype;",
+        "Type": {
+          "Name": "NSEventSubtype"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527726-subtype?language=objc"
+      },
+      {
+        "Name": "modifierFlags",
+        "Description": "An integer bit field indicating the event’s modifier keys.",
+        "Declaration": "@property(readonly) NSEventModifierFlags modifierFlags;",
+        "Type": {
+          "Name": "NSEventModifierFlags"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534405-modifierflags?language=objc"
+      },
+      {
+        "Name": "context",
+        "Description": "The display graphics context for this event.",
+        "Declaration": "@property(nullable, readonly, strong) NSGraphicsContext *context;",
+        "Type": {
+          "Name": "NSGraphicsContext",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1524291-context?language=objc"
+      },
+      {
+        "Name": "locationInWindow",
+        "Description": "The receiver’s location in the base coordinate system of the associated window.",
+        "Declaration": "@property(readonly) NSPoint locationInWindow;",
+        "Type": {
+          "Name": "NSPoint"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1529068-locationinwindow?language=objc"
+      },
+      {
+        "Name": "timestamp",
+        "Description": "The time when the event occurred in seconds since system startup.",
+        "Declaration": "@property(readonly) NSTimeInterval timestamp;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528239-timestamp?language=objc"
+      },
+      {
+        "Name": "window",
+        "Description": "The window object associated with the event.",
+        "Declaration": "@property(readonly, nullable, weak) NSWindow *window;",
+        "Type": {
+          "Name": "NSWindow",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530808-window?language=objc"
+      },
+      {
+        "Name": "windowNumber",
+        "Description": "The identifier for the window device associated with the event.",
+        "Declaration": "@property(readonly) NSInteger windowNumber;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1531361-windownumber?language=objc"
+      },
+      {
+        "Name": "eventRef",
+        "Description": "An opaque Carbon type associated with this event.",
+        "Declaration": "@property(readonly) const void *eventRef;",
+        "Type": {
+          "Name": "void",
+          "IsPtr": true,
+          "Annotations": [
+            "const"
+          ]
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525143-eventref?language=objc"
+      },
+      {
+        "Name": "CGEvent",
+        "Description": "The Core Graphics event object corresponding to this event.",
+        "Declaration": "@property(readonly) CGEventRef CGEvent;",
+        "Type": {
+          "Name": "CGEventRef"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530429-cgevent?language=objc"
+      },
+      {
+        "Name": "characters",
+        "Description": "The characters associated with a key-up or key-down event.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *characters;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534183-characters?language=objc"
+      },
+      {
+        "Name": "charactersIgnoringModifiers",
+        "Description": "The characters generated by a key event as if no modifier key (except for Shift) applies.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *charactersIgnoringModifiers;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1524605-charactersignoringmodifiers?language=objc"
+      },
+      {
+        "Name": "ARepeat",
+        "Description": "A Boolean value that indicates whether the key event is a repeat.",
+        "Declaration": "@property(getter=isARepeat, readonly) BOOL ARepeat;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isARepeat",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528049-arepeat?language=objc"
+      },
+      {
+        "Name": "keyCode",
+        "Description": "The virtual key code for the keyboard key associated with a key event.",
+        "Declaration": "@property(readonly) unsigned short keyCode;",
+        "Type": {
+          "Name": "short",
+          "Annotations": [
+            "unsigned"
+          ]
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534513-keycode?language=objc"
+      },
+      {
+        "Name": "buttonNumber",
+        "Description": "The button number for a mouse event.",
+        "Declaration": "@property(readonly) NSInteger buttonNumber;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527828-buttonnumber?language=objc"
+      },
+      {
+        "Name": "clickCount",
+        "Description": "The number of mouse clicks associated with a mouse-down or mouse-up event.",
+        "Declaration": "@property(readonly) NSInteger clickCount;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528200-clickcount?language=objc"
+      },
+      {
+        "Name": "associatedEventsMask",
+        "Description": "The associated events mask of a mouse event.",
+        "Declaration": "@property(readonly) NSEventMask associatedEventsMask;",
+        "Type": {
+          "Name": "NSEventMask"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1529610-associatedeventsmask?language=objc"
+      },
+      {
+        "Name": "eventNumber",
+        "Description": "The counter value of the latest mouse or tracking-rectangle event object; every system-generated mouse and tracking-rectangle event increments this counter.",
+        "Declaration": "@property(readonly) NSInteger eventNumber;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535220-eventnumber?language=objc"
+      },
+      {
+        "Name": "trackingNumber",
+        "Description": "The identifier of a mouse-tracking event.",
+        "Declaration": "@property(readonly) NSInteger trackingNumber;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533974-trackingnumber?language=objc"
+      },
+      {
+        "Name": "trackingArea",
+        "Description": "The NSTrackingArea object for the event.",
+        "Declaration": "@property(nullable, readonly, strong) NSTrackingArea *trackingArea;",
+        "Type": {
+          "Name": "NSTrackingArea",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534800-trackingarea?language=objc"
+      },
+      {
+        "Name": "userData",
+        "Description": "The data associated with a mouse-tracking event.",
+        "Declaration": "@property(readonly) void *userData;",
+        "Type": {
+          "Name": "void",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526810-userdata?language=objc"
+      },
+      {
+        "Name": "data1",
+        "Description": "Additional data associated with this event.",
+        "Declaration": "@property(readonly) NSInteger data1;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528289-data1?language=objc"
+      },
+      {
+        "Name": "data2",
+        "Description": "Additional data associated with this event.",
+        "Declaration": "@property(readonly) NSInteger data2;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528647-data2?language=objc"
+      },
+      {
+        "Name": "deltaX",
+        "Description": "The x-coordinate change for mouse-move, mouse-drag, and swipe events.",
+        "Declaration": "@property(readonly) CGFloat deltaX;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534871-deltax?language=objc"
+      },
+      {
+        "Name": "deltaY",
+        "Description": "The y-coordinate change for mouse-move, mouse-drag, and swipe events.",
+        "Declaration": "@property(readonly) CGFloat deltaY;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534158-deltay?language=objc"
+      },
+      {
+        "Name": "deltaZ",
+        "Description": "The z-coordinate change for a scroll wheel, mouse-move, or mouse-drag event.",
+        "Declaration": "@property(readonly) CGFloat deltaZ;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1531528-deltaz?language=objc"
+      },
+      {
+        "Name": "pressure",
+        "Description": "A value from 0.0 through 1.0 indicating the degree of pressure applied to an appropriate input device.",
+        "Declaration": "@property(readonly) float pressure;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534543-pressure?language=objc"
+      },
+      {
+        "Name": "stage",
+        "Description": "A value of 0, 1, or 2, indicating the stage of a gesture event of type NSEventTypePressure.",
+        "Declaration": "@property(readonly) NSInteger stage;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527242-stage?language=objc"
+      },
+      {
+        "Name": "stageTransition",
+        "Description": "The transition value for the stage of a pressure gesture event of type NSEventTypePressure.",
+        "Declaration": "@property(readonly) CGFloat stageTransition;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526739-stagetransition?language=objc"
+      },
+      {
+        "Name": "pressureBehavior",
+        "Description": "The pressure behavior and progression for an event of type NSEventTypePressure.",
+        "Declaration": "@property(readonly) NSPressureBehavior pressureBehavior;",
+        "Type": {
+          "Name": "NSPressureBehavior"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1531392-pressurebehavior?language=objc"
+      },
+      {
+        "Name": "capabilityMask",
+        "Description": "A mask whose set bits indicate the capabilities of the tablet device that generated this event.",
+        "Declaration": "@property(readonly) NSUInteger capabilityMask;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534648-capabilitymask?language=objc"
+      },
+      {
+        "Name": "deviceID",
+        "Description": "A special identifier that is used to match tablet-pointer and tablet-proximity events.",
+        "Declaration": "@property(readonly) NSUInteger deviceID;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530014-deviceid?language=objc"
+      },
+      {
+        "Name": "enteringProximity",
+        "Description": "A Boolean value that indicates whether a pointing device is entering or leaving the proximity of its tablet.",
+        "Declaration": "@property(getter=isEnteringProximity, readonly) BOOL enteringProximity;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEnteringProximity",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1531702-enteringproximity?language=objc"
+      },
+      {
+        "Name": "pointingDeviceID",
+        "Description": "The index of the pointing device currently in proximity with the tablet.",
+        "Declaration": "@property(readonly) NSUInteger pointingDeviceID;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528818-pointingdeviceid?language=objc"
+      },
+      {
+        "Name": "pointingDeviceSerialNumber",
+        "Description": "The vendor-assigned serial number of a pointing device.",
+        "Declaration": "@property(readonly) NSUInteger pointingDeviceSerialNumber;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533420-pointingdeviceserialnumber?language=objc"
+      },
+      {
+        "Name": "pointingDeviceType",
+        "Description": "The kind of pointing device associated with this event.",
+        "Declaration": "@property(readonly) NSPointingDeviceType pointingDeviceType;",
+        "Type": {
+          "Name": "NSPointingDeviceType"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535573-pointingdevicetype?language=objc"
+      },
+      {
+        "Name": "systemTabletID",
+        "Description": "The index of the tablet device connected to the system.",
+        "Declaration": "@property(readonly) NSUInteger systemTabletID;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528299-systemtabletid?language=objc"
+      },
+      {
+        "Name": "tabletID",
+        "Description": "The USB model identifier of the tablet device associated with this event.",
+        "Declaration": "@property(readonly) NSUInteger tabletID;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527003-tabletid?language=objc"
+      },
+      {
+        "Name": "uniqueID",
+        "Description": "The unique identifier of the pointing device that generated this event.",
+        "Declaration": "@property(readonly) unsigned long long uniqueID;",
+        "Type": {
+          "Name": "long long",
+          "Annotations": [
+            "unsigned"
+          ]
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535813-uniqueid?language=objc"
+      },
+      {
+        "Name": "vendorID",
+        "Description": "The vendor identifier of the tablet associated with the event.",
+        "Declaration": "@property(readonly) NSUInteger vendorID;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525177-vendorid?language=objc"
+      },
+      {
+        "Name": "vendorPointingDeviceType",
+        "Description": "A coded bit field whose set bits indicate the type of pointing device (within a vendor selection) associated with the event.",
+        "Declaration": "@property(readonly) NSUInteger vendorPointingDeviceType;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527736-vendorpointingdevicetype?language=objc"
+      },
+      {
+        "Name": "absoluteX",
+        "Description": "The absolute x coordinate of a pointing device on its tablet at full tablet resolution.",
+        "Declaration": "@property(readonly) NSInteger absoluteX;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530617-absolutex?language=objc"
+      },
+      {
+        "Name": "absoluteY",
+        "Description": "The absolute y coordinate of a pointing device on its tablet at full tablet resolution.",
+        "Declaration": "@property(readonly) NSInteger absoluteY;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528904-absolutey?language=objc"
+      },
+      {
+        "Name": "absoluteZ",
+        "Description": "The absolute z coordinate of pointing device on its tablet at full tablet resolution.",
+        "Declaration": "@property(readonly) NSInteger absoluteZ;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1532154-absolutez?language=objc"
+      },
+      {
+        "Name": "buttonMask",
+        "Description": "A bit mask identifying the buttons pressed for a tablet event.",
+        "Declaration": "@property(readonly) NSEventButtonMask buttonMask;",
+        "Type": {
+          "Name": "NSEventButtonMask"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535428-buttonmask?language=objc"
+      },
+      {
+        "Name": "rotation",
+        "Description": "The rotation in degrees of the tablet pointing device associated with this event.",
+        "Declaration": "@property(readonly) float rotation;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526249-rotation?language=objc"
+      },
+      {
+        "Name": "tangentialPressure",
+        "Description": "The tangential pressure on the device that generated this event.",
+        "Declaration": "@property(readonly) float tangentialPressure;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525959-tangentialpressure?language=objc"
+      },
+      {
+        "Name": "tilt",
+        "Description": "The scaled tilt values of the pointing device that generated this event.",
+        "Declaration": "@property(readonly) NSPoint tilt;",
+        "Type": {
+          "Name": "NSPoint"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534226-tilt?language=objc"
+      },
+      {
+        "Name": "vendorDefined",
+        "Description": "An array of three vendor-defined NSNumber objects associated with a pointing-type event.",
+        "Declaration": "@property(readonly, strong) id vendorDefined;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530551-vendordefined?language=objc"
+      },
+      {
+        "Name": "magnification",
+        "Description": "The change in magnification.",
+        "Declaration": "@property(readonly) CGFloat magnification;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1531642-magnification?language=objc"
+      },
+      {
+        "Name": "hasPreciseScrollingDeltas",
+        "Description": "A Boolean value that indicates whether precise scrolling deltas are available.",
+        "Declaration": "@property(readonly) BOOL hasPreciseScrollingDeltas;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525758-hasprecisescrollingdeltas?language=objc"
+      },
+      {
+        "Name": "scrollingDeltaX",
+        "Description": "The scroll wheel’s horizontal delta.",
+        "Declaration": "@property(readonly) CGFloat scrollingDeltaX;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1524505-scrollingdeltax?language=objc"
+      },
+      {
+        "Name": "scrollingDeltaY",
+        "Description": "The scroll wheel’s vertical delta.",
+        "Declaration": "@property(readonly) CGFloat scrollingDeltaY;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535387-scrollingdeltay?language=objc"
+      },
+      {
+        "Name": "momentumPhase",
+        "Description": "The momentum phase for a scroll or flick gesture.",
+        "Declaration": "@property(readonly) NSEventPhase momentumPhase;",
+        "Type": {
+          "Name": "NSEventPhase"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525439-momentumphase?language=objc"
+      },
+      {
+        "Name": "phase",
+        "Description": "The phase of a gesture event, such as a magnify, scroll, or pressure change.",
+        "Declaration": "@property(readonly) NSEventPhase phase;",
+        "Type": {
+          "Name": "NSEventPhase"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533550-phase?language=objc"
+      },
+      {
+        "Name": "directionInvertedFromDevice",
+        "Description": "A Boolean value that indicates whether the user has changed the device inversion.",
+        "Declaration": "@property(getter=isDirectionInvertedFromDevice, readonly) BOOL directionInvertedFromDevice;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isDirectionInvertedFromDevice",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1525151-directioninvertedfromdevice?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:",
+        "Description": "Returns a new NSEvent object describing a key event.",
+        "Declaration": "+ (NSEvent *)keyEventWithType:(NSEventType)type \n                     location:(NSPoint)location \n                modifierFlags:(NSEventModifierFlags)flags \n                    timestamp:(NSTimeInterval)time \n                 windowNumber:(NSInteger)wNum \n                      context:(NSGraphicsContext *)unusedPassNil \n                   characters:(NSString *)keys \n  charactersIgnoringModifiers:(NSString *)ukeys \n                    isARepeat:(BOOL)flag \n                      keyCode:(unsigned short)code;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSEventType"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "flags",
+            "Type": {
+              "Name": "NSEventModifierFlags"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "wNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "unusedPassNil",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keys",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ukeys",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "code",
+            "Type": {
+              "Name": "short",
+              "Annotations": [
+                "unsigned"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533943-keyeventwithtype?language=objc"
+      },
+      {
+        "Name": "mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:",
+        "Description": "Returns a new NSEvent object describing a mouse-down, -up, -moved, or -dragged event.",
+        "Declaration": "+ (NSEvent *)mouseEventWithType:(NSEventType)type \n                       location:(NSPoint)location \n                  modifierFlags:(NSEventModifierFlags)flags \n                      timestamp:(NSTimeInterval)time \n                   windowNumber:(NSInteger)wNum \n                        context:(NSGraphicsContext *)unusedPassNil \n                    eventNumber:(NSInteger)evNum \n                     clickCount:(NSInteger)cNum \n                       pressure:(float)pressure;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSEventType"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "flags",
+            "Type": {
+              "Name": "NSEventModifierFlags"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "wNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "unusedPassNil",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "evNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "cNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "pressure",
+            "Type": {
+              "Name": "float"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1532495-mouseeventwithtype?language=objc"
+      },
+      {
+        "Name": "enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:",
+        "Description": "Returns a new NSEvent object describing a tracking-rectangle or cursor-update event.",
+        "Declaration": "+ (NSEvent *)enterExitEventWithType:(NSEventType)type \n                           location:(NSPoint)location \n                      modifierFlags:(NSEventModifierFlags)flags \n                          timestamp:(NSTimeInterval)time \n                       windowNumber:(NSInteger)wNum \n                            context:(NSGraphicsContext *)unusedPassNil \n                        eventNumber:(NSInteger)evNum \n                     trackingNumber:(NSInteger)tNum \n                           userData:(void *)data;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSEventType"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "flags",
+            "Type": {
+              "Name": "NSEventModifierFlags"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "wNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "unusedPassNil",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "evNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "tNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535383-enterexiteventwithtype?language=objc"
+      },
+      {
+        "Name": "otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:",
+        "Description": "Returns a new NSEvent object describing a custom event.",
+        "Declaration": "+ (NSEvent *)otherEventWithType:(NSEventType)type \n                       location:(NSPoint)location \n                  modifierFlags:(NSEventModifierFlags)flags \n                      timestamp:(NSTimeInterval)time \n                   windowNumber:(NSInteger)wNum \n                        context:(NSGraphicsContext *)unusedPassNil \n                        subtype:(short)subtype \n                          data1:(NSInteger)d1 \n                          data2:(NSInteger)d2;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSEventType"
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "flags",
+            "Type": {
+              "Name": "NSEventModifierFlags"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "wNum",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "unusedPassNil",
+            "Type": {
+              "Name": "NSGraphicsContext",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "subtype",
+            "Type": {
+              "Name": "short"
+            }
+          },
+          {
+            "Name": "d1",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "d2",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530010-othereventwithtype?language=objc"
+      },
+      {
+        "Name": "eventWithEventRef:",
+        "Description": "Creates an event object that is based on a Carbon type of event.",
+        "Declaration": "+ (NSEvent *)eventWithEventRef:(const void *)eventRef;",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "eventRef",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528021-eventwitheventref?language=objc"
+      },
+      {
+        "Name": "eventWithCGEvent:",
+        "Description": "Creates and returns an event object that is based on a Core Graphics type of event.",
+        "Declaration": "+ (NSEvent *)eventWithCGEvent:(CGEventRef)cgEvent;",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "cgEvent",
+            "Type": {
+              "Name": "CGEventRef"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526299-eventwithcgevent?language=objc"
+      },
+      {
+        "Name": "startPeriodicEventsAfterDelay:withPeriod:",
+        "Description": "Begins generating periodic events for the current thread.",
+        "Declaration": "+ (void)startPeriodicEventsAfterDelay:(NSTimeInterval)delay \n                           withPeriod:(NSTimeInterval)period;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "delay",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "period",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526044-startperiodiceventsafterdelay?language=objc"
+      },
+      {
+        "Name": "stopPeriodicEvents",
+        "Description": "Stops generating periodic events for the current thread and discards any periodic events remaining in the queue.",
+        "Declaration": "+ (void)stopPeriodicEvents;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533746-stopperiodicevents?language=objc"
+      },
+      {
+        "Name": "addGlobalMonitorForEventsMatchingMask:handler:",
+        "Description": "Installs an event monitor that receives copies of events posted to other applications.",
+        "Declaration": "+ (id)addGlobalMonitorForEventsMatchingMask:(NSEventMask)mask \n                                    handler:(void (^)(NSEvent *event))block;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "event",
+                    "Type": {
+                      "Name": "NSEvent",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535472-addglobalmonitorforeventsmatchin?language=objc"
+      },
+      {
+        "Name": "addLocalMonitorForEventsMatchingMask:handler:",
+        "Description": "Installs an event monitor that receives copies of events posted to this application before they are dispatched.",
+        "Declaration": "+ (id)addLocalMonitorForEventsMatchingMask:(NSEventMask)mask \n                                   handler:(NSEvent * _Nullable (^)(NSEvent *event))block;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "block",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "NSEvent",
+                  "IsPtr": true,
+                  "Annotations": [
+                    "_nullable"
+                  ]
+                },
+                "Args": [
+                  {
+                    "Name": "event",
+                    "Type": {
+                      "Name": "NSEvent",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1534971-addlocalmonitorforeventsmatching?language=objc"
+      },
+      {
+        "Name": "removeMonitor:",
+        "Description": "Remove the specified event monitor.",
+        "Declaration": "+ (void)removeMonitor:(id)eventMonitor;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "eventMonitor",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533709-removemonitor?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "modifierFlags",
+        "Description": "Returns the currently pressed modifier flags.",
+        "Declaration": "@property(class, readonly) NSEventModifierFlags modifierFlags;",
+        "Type": {
+          "Name": "NSEventModifierFlags"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1535211-modifierflags?language=objc"
+      },
+      {
+        "Name": "keyRepeatDelay",
+        "Description": "Returns the length of time a key must be held down in order to generate the first key repeat event.",
+        "Declaration": "@property(class, readonly) NSTimeInterval keyRepeatDelay;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1530832-keyrepeatdelay?language=objc"
+      },
+      {
+        "Name": "keyRepeatInterval",
+        "Description": "Returns the length between subsequent key repeat events being posted.",
+        "Declaration": "@property(class, readonly) NSTimeInterval keyRepeatInterval;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1526076-keyrepeatinterval?language=objc"
+      },
+      {
+        "Name": "pressedMouseButtons",
+        "Description": "Returns the indices of the currently depressed mouse buttons.",
+        "Declaration": "@property(class, readonly) NSUInteger pressedMouseButtons;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1527943-pressedmousebuttons?language=objc"
+      },
+      {
+        "Name": "doubleClickInterval",
+        "Description": "Returns the time, in seconds, in which a second mouse click must occur in order to be considered a double click.",
+        "Declaration": "@property(class, readonly) NSTimeInterval doubleClickInterval;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1528384-doubleclickinterval?language=objc"
+      },
+      {
+        "Name": "mouseLocation",
+        "Description": "Reports the current mouse position in screen coordinates.",
+        "Declaration": "@property(class, readonly) NSPoint mouseLocation;",
+        "Type": {
+          "Name": "NSPoint"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/1533380-mouselocation?language=objc"
+      },
+      {
+        "Name": "mouseCoalescingEnabled",
+        "Description": "",
+        "Declaration": "@property(class) BOOL mouseCoalescingEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/2870068-mousecoalescingenabled?language=objc"
+      },
+      {
+        "Name": "swipeTrackingFromScrollEventsEnabled",
+        "Description": "",
+        "Declaration": "@property(class, readonly) BOOL swipeTrackingFromScrollEventsEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsevent/2870067-swipetrackingfromscrolleventsena?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-09-14T14:30:43.557969-07:00",
+  "Version": 2
+}

@@ -1,11 +1,14 @@
 package webkit
 
-import "github.com/progrium/macdriver/objc"
+import (
+	"github.com/progrium/macdriver/core"
+	"github.com/progrium/macdriver/objc"
+)
 
 type WKPreferences struct {
-	objc.Object
+	gen_WKPreferences
 }
 
-func (p WKPreferences) SetValueForKey(value, key objc.Object) {
-	p.Send("setValue:forKey:", value, key)
+func (p WKPreferences) SetValueForKey(value objc.Object, key core.NSStringRef) {
+	p.SetValue_forKey_(value, key)
 }

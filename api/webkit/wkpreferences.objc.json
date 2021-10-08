@@ -1,0 +1,122 @@
+{
+  "Class": {
+    "Name": "WKPreferences",
+    "Description": "An object that encapsulates the standard behaviors to apply to websites.",
+    "Declaration": "@interface WKPreferences : NSObject",
+    "Frameworks": [
+      "WebKit"
+    ],
+    "Platforms": [
+      "iOS 8.0+",
+      "macOS 10.10+",
+      "Mac Catalyst 13.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "minimumFontSize",
+        "Description": "The minimum font size, in points.",
+        "Declaration": "@property(nonatomic) CGFloat minimumFontSize;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize?language=objc"
+      },
+      {
+        "Name": "tabFocusesLinks",
+        "Description": "A Boolean value that indicates whether pressing the tab key changes the focus to links and form controls.",
+        "Declaration": "@property(nonatomic) BOOL tabFocusesLinks;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc"
+      },
+      {
+        "Name": "javaScriptCanOpenWindowsAutomatically",
+        "Description": "A Boolean value that indicates whether JavaScript can open windows without user interaction.",
+        "Declaration": "@property(nonatomic) BOOL javaScriptCanOpenWindowsAutomatically;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc"
+      },
+      {
+        "Name": "fraudulentWebsiteWarningEnabled",
+        "Description": "A Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.",
+        "Declaration": "@property(nonatomic, getter=isFraudulentWebsiteWarningEnabled) BOOL fraudulentWebsiteWarningEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFraudulentWebsiteWarningEnabled",
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc"
+      },
+      {
+        "Name": "javaEnabled",
+        "Description": "A Boolean value that indicates whether Java is enabled.",
+        "Declaration": "@property(nonatomic) BOOL javaEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/1538062-javaenabled?language=objc"
+      },
+      {
+        "Name": "javaScriptEnabled",
+        "Description": "A Boolean value that indicates whether JavaScript is enabled.",
+        "Declaration": "@property(nonatomic) BOOL javaScriptEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/1536203-javascriptenabled?language=objc"
+      },
+      {
+        "Name": "plugInsEnabled",
+        "Description": "A Boolean value that indicates whether plug-ins are enabled.",
+        "Declaration": "@property(nonatomic) BOOL plugInsEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/1536894-pluginsenabled?language=objc"
+      },
+      {
+        "Name": "textInteractionEnabled",
+        "Description": "",
+        "Declaration": "@property(nonatomic, getter=isTextInteractionEnabled) BOOL textInteractionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isTextInteractionEnabled",
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/webkit/wkpreferences/3727362-textinteractionenabled?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-30T14:39:36.3224-07:00",
+  "Version": 2
+}

@@ -1,0 +1,3814 @@
+{
+  "Class": {
+    "Name": "NSWindow",
+    "Description": "A window that an app displays on the screen.",
+    "Declaration": "@interface NSWindow : NSResponder",
+    "InstanceMethods": [
+      {
+        "Name": "initWithContentRect:styleMask:backing:defer:",
+        "Description": "Initializes the window with the specified values.",
+        "Declaration": "- (instancetype)initWithContentRect:(NSRect)contentRect \n                          styleMask:(NSWindowStyleMask)style \n                            backing:(NSBackingStoreType)backingStoreType \n                              defer:(BOOL)flag;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "contentRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          },
+          {
+            "Name": "backingStoreType",
+            "Type": {
+              "Name": "NSBackingStoreType"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc"
+      },
+      {
+        "Name": "initWithContentRect:styleMask:backing:defer:screen:",
+        "Description": "Initializes an allocated window with the specified values.",
+        "Declaration": "- (instancetype)initWithContentRect:(NSRect)contentRect \n                          styleMask:(NSWindowStyleMask)style \n                            backing:(NSBackingStoreType)backingStoreType \n                              defer:(BOOL)flag \n                             screen:(NSScreen *)screen;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "contentRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          },
+          {
+            "Name": "backingStoreType",
+            "Type": {
+              "Name": "NSBackingStoreType"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "screen",
+            "Type": {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc"
+      },
+      {
+        "Name": "toggleFullScreen:",
+        "Description": "Takes the window into or out of fullscreen mode,",
+        "Declaration": "- (void)toggleFullScreen:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419527-togglefullscreen?language=objc"
+      },
+      {
+        "Name": "setDynamicDepthLimit:",
+        "Description": "Sets a Boolean value that indicates whether the window’s depth limit can change to match the depth of the screen it’s on.",
+        "Declaration": "- (void)setDynamicDepthLimit:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419473-setdynamicdepthlimit?language=objc"
+      },
+      {
+        "Name": "invalidateShadow",
+        "Description": "Invalidates the window shadow so that it is recomputed based on the current window shape.",
+        "Declaration": "- (void)invalidateShadow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419529-invalidateshadow?language=objc"
+      },
+      {
+        "Name": "autorecalculatesContentBorderThicknessForEdge:",
+        "Description": "Indicates whether the window calculates the thickness of a given border automatically.",
+        "Declaration": "- (BOOL)autorecalculatesContentBorderThicknessForEdge:(NSRectEdge)edge;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "edge",
+            "Type": {
+              "Name": "NSRectEdge"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419356-autorecalculatescontentborderthi?language=objc"
+      },
+      {
+        "Name": "setAutorecalculatesContentBorderThickness:forEdge:",
+        "Description": "Specifies whether the window calculates the thickness of a given border automatically.",
+        "Declaration": "- (void)setAutorecalculatesContentBorderThickness:(BOOL)flag \n                                          forEdge:(NSRectEdge)edge;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "edge",
+            "Type": {
+              "Name": "NSRectEdge"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419218-setautorecalculatescontentborder?language=objc"
+      },
+      {
+        "Name": "contentBorderThicknessForEdge:",
+        "Description": "Indicates the thickness of a given border of the window.",
+        "Declaration": "- (CGFloat)contentBorderThicknessForEdge:(NSRectEdge)edge;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "edge",
+            "Type": {
+              "Name": "NSRectEdge"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419775-contentborderthicknessforedge?language=objc"
+      },
+      {
+        "Name": "setContentBorderThickness:forEdge:",
+        "Description": "Specifies the thickness of a given border of the window.",
+        "Declaration": "- (void)setContentBorderThickness:(CGFloat)thickness \n                          forEdge:(NSRectEdge)edge;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "thickness",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "edge",
+            "Type": {
+              "Name": "NSRectEdge"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419541-setcontentborderthickness?language=objc"
+      },
+      {
+        "Name": "contentRectForFrameRect:",
+        "Description": "Returns the window’s content rectangle with a given frame rectangle.",
+        "Declaration": "- (NSRect)contentRectForFrameRect:(NSRect)frameRect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419108-contentrectforframerect?language=objc"
+      },
+      {
+        "Name": "frameRectForContentRect:",
+        "Description": "Returns the window’s frame rectangle with a given content rectangle.",
+        "Declaration": "- (NSRect)frameRectForContentRect:(NSRect)contentRect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "contentRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419134-framerectforcontentrect?language=objc"
+      },
+      {
+        "Name": "beginSheet:completionHandler:",
+        "Description": "Starts a document-modal session and presents—or queues for presentation—a sheet.",
+        "Declaration": "- (void)beginSheet:(NSWindow *)sheetWindow \n completionHandler:(void (^)(NSModalResponse returnCode))handler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sheetWindow",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "handler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "returnCode",
+                    "Type": {
+                      "Name": "NSModalResponse"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419653-beginsheet?language=objc"
+      },
+      {
+        "Name": "beginCriticalSheet:completionHandler:",
+        "Description": "Starts a document-modal session and presents the specified critical sheet.",
+        "Declaration": "- (void)beginCriticalSheet:(NSWindow *)sheetWindow \n         completionHandler:(void (^)(NSModalResponse returnCode))handler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sheetWindow",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "handler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "returnCode",
+                    "Type": {
+                      "Name": "NSModalResponse"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419198-begincriticalsheet?language=objc"
+      },
+      {
+        "Name": "endSheet:",
+        "Description": "Ends a document-modal session and dismisses the specified sheet.",
+        "Declaration": "- (void)endSheet:(NSWindow *)sheetWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sheetWindow",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419318-endsheet?language=objc"
+      },
+      {
+        "Name": "endSheet:returnCode:",
+        "Description": "Ends a document-modal session and dismisses the specified sheet.",
+        "Declaration": "- (void)endSheet:(NSWindow *)sheetWindow \n      returnCode:(NSModalResponse)returnCode;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sheetWindow",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "returnCode",
+            "Type": {
+              "Name": "NSModalResponse"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419497-endsheet?language=objc"
+      },
+      {
+        "Name": "setFrameOrigin:",
+        "Description": "Positions the bottom-left corner of the window’s frame rectangle at a given point in screen coordinates.",
+        "Declaration": "- (void)setFrameOrigin:(NSPoint)point;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419690-setframeorigin?language=objc"
+      },
+      {
+        "Name": "setFrameTopLeftPoint:",
+        "Description": "Positions the top-left corner of the window’s frame rectangle at a given point in screen coordinates.",
+        "Declaration": "- (void)setFrameTopLeftPoint:(NSPoint)point;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419658-setframetopleftpoint?language=objc"
+      },
+      {
+        "Name": "constrainFrameRect:toScreen:",
+        "Description": "Modifies and returns a frame rectangle so that its top edge lies on a specific screen.",
+        "Declaration": "- (NSRect)constrainFrameRect:(NSRect)frameRect \n                    toScreen:(NSScreen *)screen;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "screen",
+            "Type": {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419779-constrainframerect?language=objc"
+      },
+      {
+        "Name": "cascadeTopLeftFromPoint:",
+        "Description": "Positions the window’s top-left to a given point.",
+        "Declaration": "- (NSPoint)cascadeTopLeftFromPoint:(NSPoint)topLeftPoint;",
+        "Return": {
+          "Name": "NSPoint"
+        },
+        "Args": [
+          {
+            "Name": "topLeftPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419392-cascadetopleftfrompoint?language=objc"
+      },
+      {
+        "Name": "setFrame:display:",
+        "Description": "Sets the origin and size of the window’s frame rectangle according to a given frame rectangle, thereby setting its position and size onscreen.",
+        "Declaration": "- (void)setFrame:(NSRect)frameRect \n         display:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419753-setframe?language=objc"
+      },
+      {
+        "Name": "setFrame:display:animate:",
+        "Description": "Sets the origin and size of the window’s frame rectangle, with optional animation, according to a given frame rectangle, thereby setting its position and size onscreen.",
+        "Declaration": "- (void)setFrame:(NSRect)frameRect \n         display:(BOOL)displayFlag \n         animate:(BOOL)animateFlag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "displayFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "animateFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419519-setframe?language=objc"
+      },
+      {
+        "Name": "animationResizeTime:",
+        "Description": "Specifies the duration of a smooth frame-size change.",
+        "Declaration": "- (NSTimeInterval)animationResizeTime:(NSRect)newFrame;",
+        "Return": {
+          "Name": "NSTimeInterval"
+        },
+        "Args": [
+          {
+            "Name": "newFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419655-animationresizetime?language=objc"
+      },
+      {
+        "Name": "performZoom:",
+        "Description": "This action method simulates the user clicking the zoom box by momentarily highlighting the button and then zooming the window.",
+        "Declaration": "- (void)performZoom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419450-performzoom?language=objc"
+      },
+      {
+        "Name": "zoom:",
+        "Description": "Toggles the size and location of the window between its standard state (which the application provides as the best size to display the window’s data) and its user state (a new size and location the user may have set by moving or resizing the window).",
+        "Declaration": "- (void)zoom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419513-zoom?language=objc"
+      },
+      {
+        "Name": "setContentSize:",
+        "Description": "Sets the size of the window’s content view to a given size, which is expressed in the window’s base coordinate system.",
+        "Declaration": "- (void)setContentSize:(NSSize)size;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "NSSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419100-setcontentsize?language=objc"
+      },
+      {
+        "Name": "orderOut:",
+        "Description": "Removes the window from the screen list, which hides the window.",
+        "Declaration": "- (void)orderOut:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419660-orderout?language=objc"
+      },
+      {
+        "Name": "orderBack:",
+        "Description": "Moves the window to the back of its level in the screen list, without changing either the key window or the main window.",
+        "Declaration": "- (void)orderBack:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419204-orderback?language=objc"
+      },
+      {
+        "Name": "orderFront:",
+        "Description": "Moves the window to the front of its level in the screen list, without changing either the key window or the main window.",
+        "Declaration": "- (void)orderFront:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419495-orderfront?language=objc"
+      },
+      {
+        "Name": "orderFrontRegardless",
+        "Description": "Moves the window to the front of its level, even if its application isn’t active, without changing either the key window or the main window.",
+        "Declaration": "- (void)orderFrontRegardless;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419444-orderfrontregardless?language=objc"
+      },
+      {
+        "Name": "orderWindow:relativeTo:",
+        "Description": "Repositions the window’s window device in the window server’s screen list.",
+        "Declaration": "- (void)orderWindow:(NSWindowOrderingMode)place \n         relativeTo:(NSInteger)otherWin;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "place",
+            "Type": {
+              "Name": "NSWindowOrderingMode"
+            }
+          },
+          {
+            "Name": "otherWin",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419672-orderwindow?language=objc"
+      },
+      {
+        "Name": "setFrameUsingName:",
+        "Description": "Sets the window’s frame rectangle by reading the rectangle data stored under a given name from the defaults system.",
+        "Declaration": "- (BOOL)setFrameUsingName:(NSWindowFrameAutosaveName)name;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSWindowFrameAutosaveName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419723-setframeusingname?language=objc"
+      },
+      {
+        "Name": "setFrameUsingName:force:",
+        "Description": "Sets the window’s frame rectangle by reading the rectangle data stored under a given name from the defaults system. Can operate on non-resizable windows.",
+        "Declaration": "- (BOOL)setFrameUsingName:(NSWindowFrameAutosaveName)name \n                    force:(BOOL)force;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSWindowFrameAutosaveName"
+            }
+          },
+          {
+            "Name": "force",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419226-setframeusingname?language=objc"
+      },
+      {
+        "Name": "saveFrameUsingName:",
+        "Description": "Saves the window’s frame rectangle in the user defaults system under a given name.",
+        "Declaration": "- (void)saveFrameUsingName:(NSWindowFrameAutosaveName)name;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSWindowFrameAutosaveName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419290-saveframeusingname?language=objc"
+      },
+      {
+        "Name": "setFrameAutosaveName:",
+        "Description": "Sets the name AppKit uses to automatically save the window’s frame rectangle data in the defaults system.",
+        "Declaration": "- (BOOL)setFrameAutosaveName:(NSWindowFrameAutosaveName)name;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSWindowFrameAutosaveName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419509-setframeautosavename?language=objc"
+      },
+      {
+        "Name": "setFrameFromString:",
+        "Description": "Sets the window’s frame rectangle from a given string representation.",
+        "Declaration": "- (void)setFrameFromString:(NSWindowPersistableFrameDescriptor)string;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSWindowPersistableFrameDescriptor"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419759-setframefromstring?language=objc"
+      },
+      {
+        "Name": "makeKeyWindow",
+        "Description": "Makes the window the key window.",
+        "Declaration": "- (void)makeKeyWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419368-makekeywindow?language=objc"
+      },
+      {
+        "Name": "makeKeyAndOrderFront:",
+        "Description": "Moves the window to the front of the screen list, within its level, and makes it the key window; that is, it shows the window.",
+        "Declaration": "- (void)makeKeyAndOrderFront:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419208-makekeyandorderfront?language=objc"
+      },
+      {
+        "Name": "becomeKeyWindow",
+        "Description": "Informs the window that it has become the key window.",
+        "Declaration": "- (void)becomeKeyWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419338-becomekeywindow?language=objc"
+      },
+      {
+        "Name": "resignKeyWindow",
+        "Description": "Resigns the window’s key window status.",
+        "Declaration": "- (void)resignKeyWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419047-resignkeywindow?language=objc"
+      },
+      {
+        "Name": "makeMainWindow",
+        "Description": "Makes the window the main window.",
+        "Declaration": "- (void)makeMainWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419271-makemainwindow?language=objc"
+      },
+      {
+        "Name": "becomeMainWindow",
+        "Description": "Informs the window that it has become the main window.",
+        "Declaration": "- (void)becomeMainWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419084-becomemainwindow?language=objc"
+      },
+      {
+        "Name": "resignMainWindow",
+        "Description": "Resigns the window’s main window status.",
+        "Declaration": "- (void)resignMainWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419212-resignmainwindow?language=objc"
+      },
+      {
+        "Name": "toggleToolbarShown:",
+        "Description": "Toggles the visibility of the window’s toolbar.",
+        "Declaration": "- (void)toggleToolbarShown:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419554-toggletoolbarshown?language=objc"
+      },
+      {
+        "Name": "runToolbarCustomizationPalette:",
+        "Description": "Presents the toolbar customization user interface.",
+        "Declaration": "- (void)runToolbarCustomizationPalette:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419284-runtoolbarcustomizationpalette?language=objc"
+      },
+      {
+        "Name": "addChildWindow:ordered:",
+        "Description": "Adds a given window as a child window of the window.",
+        "Declaration": "- (void)addChildWindow:(NSWindow *)childWin \n               ordered:(NSWindowOrderingMode)place;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "childWin",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "place",
+            "Type": {
+              "Name": "NSWindowOrderingMode"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419152-addchildwindow?language=objc"
+      },
+      {
+        "Name": "removeChildWindow:",
+        "Description": "Detaches a given child window from the window.",
+        "Declaration": "- (void)removeChildWindow:(NSWindow *)childWin;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "childWin",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419063-removechildwindow?language=objc"
+      },
+      {
+        "Name": "enableKeyEquivalentForDefaultButtonCell",
+        "Description": "Reenables the default button cell’s key equivalent, so it performs a click when the user presses Return (or Enter).",
+        "Declaration": "- (void)enableKeyEquivalentForDefaultButtonCell;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419276-enablekeyequivalentfordefaultbut?language=objc"
+      },
+      {
+        "Name": "disableKeyEquivalentForDefaultButtonCell",
+        "Description": "Disables the default button cell’s key equivalent, so it doesn’t perform a click when the user presses Return (or Enter).",
+        "Declaration": "- (void)disableKeyEquivalentForDefaultButtonCell;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419242-disablekeyequivalentfordefaultbu?language=objc"
+      },
+      {
+        "Name": "fieldEditor:forObject:",
+        "Description": "Returns the window’s field editor, creating it if requested.",
+        "Declaration": "- (NSText *)fieldEditor:(BOOL)createFlag \n              forObject:(id)object;\n",
+        "Return": {
+          "Name": "NSText",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "createFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419647-fieldeditor?language=objc"
+      },
+      {
+        "Name": "endEditingFor:",
+        "Description": "Forces the field editor to give up its first responder status and prepares it for its next assignment.",
+        "Declaration": "- (void)endEditingFor:(id)object;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419469-endeditingfor?language=objc"
+      },
+      {
+        "Name": "enableCursorRects",
+        "Description": "Reenables cursor rectangle management within the window after a disableCursorRects message.",
+        "Declaration": "- (void)enableCursorRects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419202-enablecursorrects?language=objc"
+      },
+      {
+        "Name": "disableCursorRects",
+        "Description": "Disables all cursor rectangle management within the window.",
+        "Declaration": "- (void)disableCursorRects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419639-disablecursorrects?language=objc"
+      },
+      {
+        "Name": "discardCursorRects",
+        "Description": "Invalidates all cursor rectangles in the window.",
+        "Declaration": "- (void)discardCursorRects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419269-discardcursorrects?language=objc"
+      },
+      {
+        "Name": "invalidateCursorRectsForView:",
+        "Description": "Marks as invalid the cursor rectangles of a given view object in the window, so they’ll be set up again when the window becomes key.",
+        "Declaration": "- (void)invalidateCursorRectsForView:(NSView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419601-invalidatecursorrectsforview?language=objc"
+      },
+      {
+        "Name": "resetCursorRects",
+        "Description": "Clears the window’s cursor rectangles and the cursor rectangles of the NSView objects in its view hierarchy.",
+        "Declaration": "- (void)resetCursorRects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419464-resetcursorrects?language=objc"
+      },
+      {
+        "Name": "standardWindowButton:",
+        "Description": "Returns the window button of a given window button kind in the window’s view hierarchy.",
+        "Declaration": "- (NSButton *)standardWindowButton:(NSWindowButton)b;",
+        "Return": {
+          "Name": "NSButton",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "b",
+            "Type": {
+              "Name": "NSWindowButton"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419491-standardwindowbutton?language=objc"
+      },
+      {
+        "Name": "addTitlebarAccessoryViewController:",
+        "Description": "Adds the specified title bar accessory view controller to the window.",
+        "Declaration": "- (void)addTitlebarAccessoryViewController:(NSTitlebarAccessoryViewController *)childViewController;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "childViewController",
+            "Type": {
+              "Name": "NSTitlebarAccessoryViewController",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419382-addtitlebaraccessoryviewcontroll?language=objc"
+      },
+      {
+        "Name": "insertTitlebarAccessoryViewController:atIndex:",
+        "Description": "Inserts the view controller into the window’s array of title bar accessory view controllers at the specified index.",
+        "Declaration": "- (void)insertTitlebarAccessoryViewController:(NSTitlebarAccessoryViewController *)childViewController \n                                      atIndex:(NSInteger)index;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "childViewController",
+            "Type": {
+              "Name": "NSTitlebarAccessoryViewController",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419275-inserttitlebaraccessoryviewcontr?language=objc"
+      },
+      {
+        "Name": "removeTitlebarAccessoryViewControllerAtIndex:",
+        "Description": "Removes the view controller at the specified index from the window’s array of title bar accessory view controllers.",
+        "Declaration": "- (void)removeTitlebarAccessoryViewControllerAtIndex:(NSInteger)index;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419643-removetitlebaraccessoryviewcontr?language=objc"
+      },
+      {
+        "Name": "addTabbedWindow:ordered:",
+        "Description": "Adds the provided window as a new tab in a tabbed window using the specified ordering instruction.",
+        "Declaration": "- (void)addTabbedWindow:(NSWindow *)window \n                ordered:(NSWindowOrderingMode)ordered;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "window",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "ordered",
+            "Type": {
+              "Name": "NSWindowOrderingMode"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1855947-addtabbedwindow?language=objc"
+      },
+      {
+        "Name": "mergeAllWindows:",
+        "Description": "Merges all open windows into a single tabbed window.",
+        "Declaration": "- (IBAction)mergeAllWindows:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644639-mergeallwindows?language=objc"
+      },
+      {
+        "Name": "selectNextTab:",
+        "Description": "Selects the next tab in the tab group in the trailing direction.",
+        "Declaration": "- (IBAction)selectNextTab:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644693-selectnexttab?language=objc"
+      },
+      {
+        "Name": "selectPreviousTab:",
+        "Description": "Selects the previous tab in the tab group in the leading direction.",
+        "Declaration": "- (IBAction)selectPreviousTab:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644555-selectprevioustab?language=objc"
+      },
+      {
+        "Name": "moveTabToNewWindow:",
+        "Description": "Moves the tab to a new containing window.",
+        "Declaration": "- (IBAction)moveTabToNewWindow:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644410-movetabtonewwindow?language=objc"
+      },
+      {
+        "Name": "toggleTabBar:",
+        "Description": "Shows or hides the tab bar.",
+        "Declaration": "- (IBAction)toggleTabBar:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644517-toggletabbar?language=objc"
+      },
+      {
+        "Name": "toggleTabOverview:",
+        "Description": "Shows or hides the tab overview.",
+        "Declaration": "- (IBAction)toggleTabOverview:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2870175-toggletaboverview?language=objc"
+      },
+      {
+        "Name": "nextEventMatchingMask:",
+        "Description": "Returns the next event matching a given mask.",
+        "Declaration": "- (NSEvent *)nextEventMatchingMask:(NSEventMask)mask;",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419304-nexteventmatchingmask?language=objc"
+      },
+      {
+        "Name": "nextEventMatchingMask:untilDate:inMode:dequeue:",
+        "Description": "Forwards the message to the global application object.",
+        "Declaration": "- (NSEvent *)nextEventMatchingMask:(NSEventMask)mask \n                         untilDate:(NSDate *)expiration \n                            inMode:(NSRunLoopMode)mode \n                           dequeue:(BOOL)deqFlag;\n",
+        "Return": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "expiration",
+            "Type": {
+              "Name": "NSDate",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "mode",
+            "Type": {
+              "Name": "NSRunLoopMode"
+            }
+          },
+          {
+            "Name": "deqFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419721-nexteventmatchingmask?language=objc"
+      },
+      {
+        "Name": "discardEventsMatchingMask:beforeEvent:",
+        "Description": "Forwards the message to the global application object.",
+        "Declaration": "- (void)discardEventsMatchingMask:(NSEventMask)mask \n                      beforeEvent:(NSEvent *)lastEvent;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "lastEvent",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419676-discardeventsmatchingmask?language=objc"
+      },
+      {
+        "Name": "postEvent:atStart:",
+        "Description": "Forwards the message to the global application object.",
+        "Declaration": "- (void)postEvent:(NSEvent *)event \n          atStart:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419376-postevent?language=objc"
+      },
+      {
+        "Name": "sendEvent:",
+        "Description": "This action method dispatches mouse and keyboard events the global application object sends to the window.",
+        "Declaration": "- (void)sendEvent:(NSEvent *)event;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419228-sendevent?language=objc"
+      },
+      {
+        "Name": "tryToPerform:with:",
+        "Description": "Dispatches action messages with a given argument.",
+        "Declaration": "- (BOOL)tryToPerform:(SEL)action \n                with:(id)object;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419428-trytoperform?language=objc"
+      },
+      {
+        "Name": "makeFirstResponder:",
+        "Description": "Attempts to make a given responder the first responder for the window.",
+        "Declaration": "- (BOOL)makeFirstResponder:(NSResponder *)responder;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "responder",
+            "Type": {
+              "Name": "NSResponder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419366-makefirstresponder?language=objc"
+      },
+      {
+        "Name": "selectKeyViewPrecedingView:",
+        "Description": "Gives key view status to the view that precedes the given view.",
+        "Declaration": "- (void)selectKeyViewPrecedingView:(NSView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419757-selectkeyviewprecedingview?language=objc"
+      },
+      {
+        "Name": "selectKeyViewFollowingView:",
+        "Description": "Gives key view status to the view that follows the given view.",
+        "Declaration": "- (void)selectKeyViewFollowingView:(NSView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419633-selectkeyviewfollowingview?language=objc"
+      },
+      {
+        "Name": "selectPreviousKeyView:",
+        "Description": "Searches for a candidate previous key view and, if it finds one, tries to make it the first responder.",
+        "Declaration": "- (void)selectPreviousKeyView:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419110-selectpreviouskeyview?language=objc"
+      },
+      {
+        "Name": "selectNextKeyView:",
+        "Description": "Searches for a candidate next key view and, if it finds one, tries to make it the first responder.",
+        "Declaration": "- (void)selectNextKeyView:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419715-selectnextkeyview?language=objc"
+      },
+      {
+        "Name": "recalculateKeyViewLoop",
+        "Description": "Marks the key view loop as “dirty” and in need of recalculation.",
+        "Declaration": "- (void)recalculateKeyViewLoop;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419350-recalculatekeyviewloop?language=objc"
+      },
+      {
+        "Name": "trackEventsMatchingMask:timeout:mode:handler:",
+        "Description": "Tracks events that match the specified mask using the specified tracking handler until the tracking handler explicitly terminates tracking.",
+        "Declaration": "- (void)trackEventsMatchingMask:(NSEventMask)mask \n                        timeout:(NSTimeInterval)timeout \n                           mode:(NSRunLoopMode)mode \n                        handler:(void (^)(NSEvent *event, BOOL *stop))trackingHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          },
+          {
+            "Name": "timeout",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "mode",
+            "Type": {
+              "Name": "NSRunLoopMode"
+            }
+          },
+          {
+            "Name": "trackingHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "event",
+                    "Type": {
+                      "Name": "NSEvent",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "stop",
+                    "Type": {
+                      "Name": "BOOL",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419727-trackeventsmatchingmask?language=objc"
+      },
+      {
+        "Name": "performWindowDragWithEvent:",
+        "Description": "Starts a window drag based on the specified mouse-down event.",
+        "Declaration": "- (void)performWindowDragWithEvent:(NSEvent *)event;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419386-performwindowdragwithevent?language=objc"
+      },
+      {
+        "Name": "disableSnapshotRestoration",
+        "Description": "Disables snapshot restoration.",
+        "Declaration": "- (void)disableSnapshotRestoration;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526239-disablesnapshotrestoration?language=objc"
+      },
+      {
+        "Name": "enableSnapshotRestoration",
+        "Description": "Enables snapshot restoration.",
+        "Declaration": "- (void)enableSnapshotRestoration;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1525288-enablesnapshotrestoration?language=objc"
+      },
+      {
+        "Name": "display",
+        "Description": "Passes a display message down the window’s view hierarchy, thus redrawing all views within the window.",
+        "Declaration": "- (void)display;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419358-display?language=objc"
+      },
+      {
+        "Name": "displayIfNeeded",
+        "Description": "Passes a display message down the window’s view hierarchy, thus redrawing all views that need displaying.",
+        "Declaration": "- (void)displayIfNeeded;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419096-displayifneeded?language=objc"
+      },
+      {
+        "Name": "disableScreenUpdatesUntilFlush",
+        "Description": "Disables the window’s screen updates until the window is flushed.",
+        "Declaration": "- (void)disableScreenUpdatesUntilFlush;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419483-disablescreenupdatesuntilflush?language=objc"
+      },
+      {
+        "Name": "update",
+        "Description": "Updates the window.",
+        "Declaration": "- (void)update;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419577-update?language=objc"
+      },
+      {
+        "Name": "dragImage:at:offset:event:pasteboard:source:slideBack:",
+        "Description": "Begins a dragging session.",
+        "Declaration": "- (void)dragImage:(NSImage *)image \n               at:(NSPoint)baseLocation \n           offset:(NSSize)initialOffset \n            event:(NSEvent *)event \n       pasteboard:(NSPasteboard *)pboard \n           source:(id)sourceObj \n        slideBack:(BOOL)slideFlag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "baseLocation",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "initialOffset",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "sourceObj",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "slideFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419224-dragimage?language=objc"
+      },
+      {
+        "Name": "registerForDraggedTypes:",
+        "Description": "Registers a set of pasteboard types that the window accepts as the destination of an image-dragging session.",
+        "Declaration": "- (void)registerForDraggedTypes:(NSArray\u003cNSPasteboardType\u003e *)newTypes;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "newTypes",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSPasteboardType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419140-registerfordraggedtypes?language=objc"
+      },
+      {
+        "Name": "unregisterDraggedTypes",
+        "Description": "Unregisters the window as a possible destination for dragging operations.",
+        "Declaration": "- (void)unregisterDraggedTypes;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419456-unregisterdraggedtypes?language=objc"
+      },
+      {
+        "Name": "backingAlignedRect:options:",
+        "Description": "Returns a backing store pixel-aligned rectangle in window coordinates.",
+        "Declaration": "- (NSRect)backingAlignedRect:(NSRect)rect \n                     options:(NSAlignmentOptions)options;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSAlignmentOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419319-backingalignedrect?language=objc"
+      },
+      {
+        "Name": "convertRectFromBacking:",
+        "Description": "Converts a rectangle from its pixel-aligned backing store coordinate system to the window’s coordinate system.",
+        "Declaration": "- (NSRect)convertRectFromBacking:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419273-convertrectfrombacking?language=objc"
+      },
+      {
+        "Name": "convertRectFromScreen:",
+        "Description": "Converts a rectangle from the screen coordinate system to the window’s coordinate system.",
+        "Declaration": "- (NSRect)convertRectFromScreen:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419603-convertrectfromscreen?language=objc"
+      },
+      {
+        "Name": "convertPointFromBacking:",
+        "Description": "Converts a point from its pixel-aligned backing store coordinate system to the window’s coordinate system.",
+        "Declaration": "- (NSPoint)convertPointFromBacking:(NSPoint)point;",
+        "Return": {
+          "Name": "NSPoint"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2967179-convertpointfrombacking?language=objc"
+      },
+      {
+        "Name": "convertPointFromScreen:",
+        "Description": "Converts a point from the screen coordinate system to the window’s coordinate system.",
+        "Declaration": "- (NSPoint)convertPointFromScreen:(NSPoint)point;",
+        "Return": {
+          "Name": "NSPoint"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2967180-convertpointfromscreen?language=objc"
+      },
+      {
+        "Name": "convertRectToBacking:",
+        "Description": "Converts a rectangle from the window’s coordinate system to its pixel-aligned backing store coordinate system.",
+        "Declaration": "- (NSRect)convertRectToBacking:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419260-convertrecttobacking?language=objc"
+      },
+      {
+        "Name": "convertRectToScreen:",
+        "Description": "Converts a rectangle to the screen coordinate system from the window’s coordinate system.",
+        "Declaration": "- (NSRect)convertRectToScreen:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419286-convertrecttoscreen?language=objc"
+      },
+      {
+        "Name": "convertPointToBacking:",
+        "Description": "Converts a point from the window’s coordinate system to its pixel-aligned backing store coordinate system.",
+        "Declaration": "- (NSPoint)convertPointToBacking:(NSPoint)point;",
+        "Return": {
+          "Name": "NSPoint"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2967181-convertpointtobacking?language=objc"
+      },
+      {
+        "Name": "convertPointToScreen:",
+        "Description": "Converts a point to the screen coordinate system from the window’s coordinate system.",
+        "Declaration": "- (NSPoint)convertPointToScreen:(NSPoint)point;",
+        "Return": {
+          "Name": "NSPoint"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2967182-convertpointtoscreen?language=objc"
+      },
+      {
+        "Name": "setTitleWithRepresentedFilename:",
+        "Description": "Sets a given path as the window’s title, formatting it as a file-system path, and records this path as the window’s associated file.",
+        "Declaration": "- (void)setTitleWithRepresentedFilename:(NSString *)filename;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "filename",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419192-settitlewithrepresentedfilename?language=objc"
+      },
+      {
+        "Name": "center",
+        "Description": "Sets the window’s location to the center of the screen.",
+        "Declaration": "- (void)center;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419090-center?language=objc"
+      },
+      {
+        "Name": "performClose:",
+        "Description": "Simulates the user clicking the close button by momentarily highlighting the button and then closing the window.",
+        "Declaration": "- (void)performClose:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419288-performclose?language=objc"
+      },
+      {
+        "Name": "close",
+        "Description": "Removes the window from the screen.",
+        "Declaration": "- (void)close;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419662-close?language=objc"
+      },
+      {
+        "Name": "performMiniaturize:",
+        "Description": "Simulates the user clicking the minimize button by momentarily highlighting the button, then minimizing the window.",
+        "Declaration": "- (void)performMiniaturize:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419749-performminiaturize?language=objc"
+      },
+      {
+        "Name": "miniaturize:",
+        "Description": "Removes the window from the screen list and displays the minimized window in the Dock.",
+        "Declaration": "- (void)miniaturize:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419426-miniaturize?language=objc"
+      },
+      {
+        "Name": "deminiaturize:",
+        "Description": "De-minimizes the window.",
+        "Declaration": "- (void)deminiaturize:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419334-deminiaturize?language=objc"
+      },
+      {
+        "Name": "print:",
+        "Description": "Runs the Print panel, and if the user chooses an option other than canceling, prints the window (its frame view and all subviews).",
+        "Declaration": "- (void)print:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419767-print?language=objc"
+      },
+      {
+        "Name": "dataWithEPSInsideRect:",
+        "Description": "Returns EPS data that draws the region of the window within a given rectangle.",
+        "Declaration": "- (NSData *)dataWithEPSInsideRect:(NSRect)rect;",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419128-datawithepsinsiderect?language=objc"
+      },
+      {
+        "Name": "dataWithPDFInsideRect:",
+        "Description": "Returns PDF data that draws the region of the window within a given rectangle.",
+        "Declaration": "- (NSData *)dataWithPDFInsideRect:(NSRect)rect;",
+        "Return": {
+          "Name": "NSData",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419418-datawithpdfinsiderect?language=objc"
+      },
+      {
+        "Name": "validRequestorForSendType:returnType:",
+        "Description": "Searches for an object that responds to a Services request.",
+        "Declaration": "- (id)validRequestorForSendType:(NSPasteboardType)sendType \n                     returnType:(NSPasteboardType)returnType;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "sendType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          },
+          {
+            "Name": "returnType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419454-validrequestorforsendtype?language=objc"
+      },
+      {
+        "Name": "updateConstraintsIfNeeded",
+        "Description": "Updates the constraints based on changes to views in the window since the last layout.",
+        "Declaration": "- (void)updateConstraintsIfNeeded;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526915-updateconstraintsifneeded?language=objc"
+      },
+      {
+        "Name": "layoutIfNeeded",
+        "Description": "Updates the layout of views in the window based on the current views and constraints.",
+        "Declaration": "- (void)layoutIfNeeded;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526910-layoutifneeded?language=objc"
+      },
+      {
+        "Name": "visualizeConstraints:",
+        "Description": "Displays a visual representation of the supplied constraints in the window.",
+        "Declaration": "- (void)visualizeConstraints:(NSArray\u003cNSLayoutConstraint *\u003e *)constraints;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "constraints",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSLayoutConstraint",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526997-visualizeconstraints?language=objc"
+      },
+      {
+        "Name": "anchorAttributeForOrientation:",
+        "Description": "Returns the part of the window that stays stationary during constraint-based layout.",
+        "Declaration": "- (NSLayoutAttribute)anchorAttributeForOrientation:(NSLayoutConstraintOrientation)orientation;",
+        "Return": {
+          "Name": "NSLayoutAttribute"
+        },
+        "Args": [
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "NSLayoutConstraintOrientation"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526957-anchorattributefororientation?language=objc"
+      },
+      {
+        "Name": "setAnchorAttribute:forOrientation:",
+        "Description": "Sets the part of the window that stays stationary during constraint-based layout.",
+        "Declaration": "- (void)setAnchorAttribute:(NSLayoutAttribute)attr \n            forOrientation:(NSLayoutConstraintOrientation)orientation;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "attr",
+            "Type": {
+              "Name": "NSLayoutAttribute"
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "NSLayoutConstraintOrientation"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526985-setanchorattribute?language=objc"
+      },
+      {
+        "Name": "canRepresentDisplayGamut:",
+        "Description": "A Boolean value that indicates if the window and its screen use a color space that can represent the specified display gamut.",
+        "Declaration": "- (BOOL)canRepresentDisplayGamut:(NSDisplayGamut)displayGamut;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "displayGamut",
+            "Type": {
+              "Name": "NSDisplayGamut"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2138278-canrepresentdisplaygamut?language=objc"
+      },
+      {
+        "Name": "setIsMiniaturized:",
+        "Description": "Sets the window’s miniaturized state to the value you specify.",
+        "Declaration": "- (void)setIsMiniaturized:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449566-setisminiaturized?language=objc"
+      },
+      {
+        "Name": "setIsVisible:",
+        "Description": "Sets the window’s visible state to the value you specify.",
+        "Declaration": "- (void)setIsVisible:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449570-setisvisible?language=objc"
+      },
+      {
+        "Name": "setIsZoomed:",
+        "Description": "Sets the window’s zoomed state to the value you specify.",
+        "Declaration": "- (void)setIsZoomed:(BOOL)flag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449589-setiszoomed?language=objc"
+      },
+      {
+        "Name": "handleCloseScriptCommand:",
+        "Description": "Handles the AppleScript command to close the window (and its associated document, if any).",
+        "Declaration": "- (id)handleCloseScriptCommand:(NSCloseCommand *)command;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "command",
+            "Type": {
+              "Name": "NSCloseCommand",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449581-handleclosescriptcommand?language=objc"
+      },
+      {
+        "Name": "handlePrintScriptCommand:",
+        "Description": "Handles the AppleScript command to print the contents of the window (or its associated document, if any).",
+        "Declaration": "- (id)handlePrintScriptCommand:(NSScriptCommand *)command;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "command",
+            "Type": {
+              "Name": "NSScriptCommand",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449585-handleprintscriptcommand?language=objc"
+      },
+      {
+        "Name": "handleSaveScriptCommand:",
+        "Description": "Handles the AppleScript command to save the window (and its associated document, if any).",
+        "Declaration": "- (id)handleSaveScriptCommand:(NSScriptCommand *)command;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "command",
+            "Type": {
+              "Name": "NSScriptCommand",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449591-handlesavescriptcommand?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The window’s delegate.",
+        "Declaration": "@property(weak) id\u003cNSWindowDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSWindowDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419060-delegate?language=objc"
+      },
+      {
+        "Name": "contentViewController",
+        "Description": "The main content view controller for the window.",
+        "Declaration": "@property(strong) NSViewController *contentViewController;",
+        "Type": {
+          "Name": "NSViewController",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419615-contentviewcontroller?language=objc"
+      },
+      {
+        "Name": "contentView",
+        "Description": "The window’s content view, the highest accessible view object in the window’s view hierarchy.",
+        "Declaration": "@property(strong) __kindof NSView *contentView;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419160-contentview?language=objc"
+      },
+      {
+        "Name": "styleMask",
+        "Description": "Flags that describe the window’s current style, such as if it’s resizable or in full-screen mode.",
+        "Declaration": "@property NSWindowStyleMask styleMask;",
+        "Type": {
+          "Name": "NSWindowStyleMask"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419078-stylemask?language=objc"
+      },
+      {
+        "Name": "worksWhenModal",
+        "Description": "A Boolean value that indicates whether the window is able to receive keyboard and mouse events even when some other window is being run modally.",
+        "Declaration": "@property(readonly) BOOL worksWhenModal;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419220-workswhenmodal?language=objc"
+      },
+      {
+        "Name": "alphaValue",
+        "Description": "The window’s alpha value.",
+        "Declaration": "@property CGFloat alphaValue;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419186-alphavalue?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The color of the window’s background.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419751-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "colorSpace",
+        "Description": "The window’s color space.",
+        "Declaration": "@property(strong) NSColorSpace *colorSpace;",
+        "Type": {
+          "Name": "NSColorSpace",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419569-colorspace?language=objc"
+      },
+      {
+        "Name": "canHide",
+        "Description": "A Boolean value that indicates whether the window can hide when its application becomes hidden.",
+        "Declaration": "@property BOOL canHide;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419725-canhide?language=objc"
+      },
+      {
+        "Name": "onActiveSpace",
+        "Description": "A Boolean value that indicates whether the window is on the currently active space.",
+        "Declaration": "@property(getter=isOnActiveSpace, readonly) BOOL onActiveSpace;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isOnActiveSpace",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419707-onactivespace?language=objc"
+      },
+      {
+        "Name": "hidesOnDeactivate",
+        "Description": "A Boolean value that indicates whether the window is removed from the screen when its application becomes inactive.",
+        "Declaration": "@property BOOL hidesOnDeactivate;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419777-hidesondeactivate?language=objc"
+      },
+      {
+        "Name": "collectionBehavior",
+        "Description": "A value that identifies the window’s behavior in window collections.",
+        "Declaration": "@property NSWindowCollectionBehavior collectionBehavior;",
+        "Type": {
+          "Name": "NSWindowCollectionBehavior"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419471-collectionbehavior?language=objc"
+      },
+      {
+        "Name": "opaque",
+        "Description": "A Boolean value that indicates whether the window is opaque.",
+        "Declaration": "@property(getter=isOpaque) BOOL opaque;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isOpaque"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419086-opaque?language=objc"
+      },
+      {
+        "Name": "hasShadow",
+        "Description": "A Boolean value that indicates whether the window has a shadow.",
+        "Declaration": "@property BOOL hasShadow;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc"
+      },
+      {
+        "Name": "preventsApplicationTerminationWhenModal",
+        "Description": "A Boolean value that indicates whether the window prevents application termination when modal.",
+        "Declaration": "@property BOOL preventsApplicationTerminationWhenModal;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419743-preventsapplicationterminationwh?language=objc"
+      },
+      {
+        "Name": "appearanceSource",
+        "Description": "An object that the window inherits its appearance from.",
+        "Declaration": "@property(weak) NSObject\u003cNSAppearanceCustomization\u003e *appearanceSource;",
+        "Type": {
+          "Name": "NSObject",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAppearanceCustomization"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2998855-appearancesource?language=objc"
+      },
+      {
+        "Name": "depthLimit",
+        "Description": "The depth limit of the window.",
+        "Declaration": "@property NSWindowDepth depthLimit;",
+        "Type": {
+          "Name": "NSWindowDepth"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419613-depthlimit?language=objc"
+      },
+      {
+        "Name": "hasDynamicDepthLimit",
+        "Description": "A Boolean value that indicates whether the window’s depth limit can change to match the depth of the screen it’s on.",
+        "Declaration": "@property(readonly) BOOL hasDynamicDepthLimit;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419330-hasdynamicdepthlimit?language=objc"
+      },
+      {
+        "Name": "windowNumber",
+        "Description": "The window number of the window’s window device.",
+        "Declaration": "@property(readonly) NSInteger windowNumber;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419068-windownumber?language=objc"
+      },
+      {
+        "Name": "deviceDescription",
+        "Description": "A dictionary containing information about the window’s resolution, such as color, depth, and so on.",
+        "Declaration": "@property(readonly, copy) NSDictionary\u003cNSDeviceDescriptionKey, id\u003e *deviceDescription;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSDeviceDescriptionKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419741-devicedescription?language=objc"
+      },
+      {
+        "Name": "canBecomeVisibleWithoutLogin",
+        "Description": "A Boolean value that indicates whether the window can be displayed at the login window.",
+        "Declaration": "@property BOOL canBecomeVisibleWithoutLogin;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419179-canbecomevisiblewithoutlogin?language=objc"
+      },
+      {
+        "Name": "sharingType",
+        "Description": "A Boolean value that indicates the level of access other processes have to the window’s content.",
+        "Declaration": "@property NSWindowSharingType sharingType;",
+        "Type": {
+          "Name": "NSWindowSharingType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419729-sharingtype?language=objc"
+      },
+      {
+        "Name": "backingType",
+        "Description": "The window’s backing store type.",
+        "Declaration": "@property NSBackingStoreType backingType;",
+        "Type": {
+          "Name": "NSBackingStoreType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419599-backingtype?language=objc"
+      },
+      {
+        "Name": "windowController",
+        "Description": "The window’s window controller.",
+        "Declaration": "@property(weak) __kindof NSWindowController *windowController;",
+        "Type": {
+          "Name": "NSWindowController",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419092-windowcontroller?language=objc"
+      },
+      {
+        "Name": "attachedSheet",
+        "Description": "The sheet attached to the window.",
+        "Declaration": "@property(nullable, readonly, strong) NSWindow *attachedSheet;",
+        "Type": {
+          "Name": "NSWindow",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419467-attachedsheet?language=objc"
+      },
+      {
+        "Name": "sheet",
+        "Description": "A Boolean value that indicates whether the window has ever run as a modal sheet.",
+        "Declaration": "@property(getter=isSheet, readonly) BOOL sheet;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSheet",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419364-sheet?language=objc"
+      },
+      {
+        "Name": "sheetParent",
+        "Description": "The window to which the sheet is attached.",
+        "Declaration": "@property(nullable, readonly, strong) NSWindow *sheetParent;",
+        "Type": {
+          "Name": "NSWindow",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419052-sheetparent?language=objc"
+      },
+      {
+        "Name": "sheets",
+        "Description": "An array of the sheets currently attached to the window.",
+        "Declaration": "@property(readonly, copy) NSArray\u003c__kindof NSWindow *\u003e *sheets;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSWindow",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419765-sheets?language=objc"
+      },
+      {
+        "Name": "frame",
+        "Description": "The window’s frame rectangle in screen coordinates, including the title bar.",
+        "Declaration": "@property(readonly) NSRect frame;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419697-frame?language=objc"
+      },
+      {
+        "Name": "aspectRatio",
+        "Description": "The window’s aspect ratio, which constrains the size of its frame rectangle to integral multiples of this ratio when the user resizes it.",
+        "Declaration": "@property NSSize aspectRatio;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419507-aspectratio?language=objc"
+      },
+      {
+        "Name": "minSize",
+        "Description": "The minimum size to which the window’s frame (including its title bar) can be sized.",
+        "Declaration": "@property NSSize minSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419206-minsize?language=objc"
+      },
+      {
+        "Name": "maxSize",
+        "Description": "The maximum size to which the window’s frame (including its title bar) can be sized.",
+        "Declaration": "@property NSSize maxSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419595-maxsize?language=objc"
+      },
+      {
+        "Name": "zoomed",
+        "Description": "A Boolean value that indicates whether the window is in a zoomed state.",
+        "Declaration": "@property(getter=isZoomed, readonly) BOOL zoomed;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isZoomed",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419398-zoomed?language=objc"
+      },
+      {
+        "Name": "resizeFlags",
+        "Description": "The flags field of the event record for the mouse-down event that initiated the resizing session.",
+        "Declaration": "@property(readonly) NSEventModifierFlags resizeFlags;",
+        "Type": {
+          "Name": "NSEventModifierFlags"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419302-resizeflags?language=objc"
+      },
+      {
+        "Name": "resizeIncrements",
+        "Description": "The window’s resizing increments.",
+        "Declaration": "@property NSSize resizeIncrements;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419390-resizeincrements?language=objc"
+      },
+      {
+        "Name": "preservesContentDuringLiveResize",
+        "Description": "A Boolean value that indicates whether the window tries to optimize user-initiated resize operations by preserving the content of views that have not changed.",
+        "Declaration": "@property BOOL preservesContentDuringLiveResize;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419588-preservescontentduringliveresize?language=objc"
+      },
+      {
+        "Name": "inLiveResize",
+        "Description": "A Boolean value that indicates whether the window is being resized by the user.",
+        "Declaration": "@property(readonly) BOOL inLiveResize;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419378-inliveresize?language=objc"
+      },
+      {
+        "Name": "contentAspectRatio",
+        "Description": "The window’s content aspect ratio.",
+        "Declaration": "@property NSSize contentAspectRatio;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419148-contentaspectratio?language=objc"
+      },
+      {
+        "Name": "contentMinSize",
+        "Description": "The minimum size of the window’s content view in the window’s base coordinate system.",
+        "Declaration": "@property NSSize contentMinSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419670-contentminsize?language=objc"
+      },
+      {
+        "Name": "contentMaxSize",
+        "Description": "The maximum size of the window’s content view in the window’s base coordinate system.",
+        "Declaration": "@property NSSize contentMaxSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419154-contentmaxsize?language=objc"
+      },
+      {
+        "Name": "contentResizeIncrements",
+        "Description": "The window’s content-view resizing increments.",
+        "Declaration": "@property NSSize contentResizeIncrements;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419649-contentresizeincrements?language=objc"
+      },
+      {
+        "Name": "contentLayoutGuide",
+        "Description": "A value used by Auto Layout constraints to automatically bind to the value of contentLayoutRect.",
+        "Declaration": "@property(readonly) id contentLayoutGuide;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419094-contentlayoutguide?language=objc"
+      },
+      {
+        "Name": "contentLayoutRect",
+        "Description": "The area inside the window that is for non-obscured content, in window coordinates.",
+        "Declaration": "@property(readonly) NSRect contentLayoutRect;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419124-contentlayoutrect?language=objc"
+      },
+      {
+        "Name": "maxFullScreenContentSize",
+        "Description": "A maximum size that is used to determine if a window can fit when it is in full screen in a tile.",
+        "Declaration": "@property NSSize maxFullScreenContentSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419438-maxfullscreencontentsize?language=objc"
+      },
+      {
+        "Name": "minFullScreenContentSize",
+        "Description": "A minimum size that is used to determine if a window can fit when it is in full screen in a tile.",
+        "Declaration": "@property NSSize minFullScreenContentSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419627-minfullscreencontentsize?language=objc"
+      },
+      {
+        "Name": "level",
+        "Description": "The window level of the window.",
+        "Declaration": "@property NSWindowLevel level;",
+        "Type": {
+          "Name": "NSWindowLevel"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419511-level?language=objc"
+      },
+      {
+        "Name": "visible",
+        "Description": "A Boolean value that indicates whether the window is visible onscreen (even when it’s obscured by other windows).",
+        "Declaration": "@property(getter=isVisible, readonly) BOOL visible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVisible",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419132-visible?language=objc"
+      },
+      {
+        "Name": "occlusionState",
+        "Description": "The occlusion state of the window.",
+        "Declaration": "@property(readonly) NSWindowOcclusionState occlusionState;",
+        "Type": {
+          "Name": "NSWindowOcclusionState"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419321-occlusionstate?language=objc"
+      },
+      {
+        "Name": "frameAutosaveName",
+        "Description": "The name used to automatically save the window’s frame rectangle data in the defaults system.",
+        "Declaration": "@property(readonly, copy) NSWindowFrameAutosaveName frameAutosaveName;",
+        "Type": {
+          "Name": "NSWindowFrameAutosaveName"
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419362-frameautosavename?language=objc"
+      },
+      {
+        "Name": "stringWithSavedFrame",
+        "Description": "A string representation of the window’s frame rectangle.",
+        "Declaration": "@property(readonly, copy) NSWindowPersistableFrameDescriptor stringWithSavedFrame;",
+        "Type": {
+          "Name": "NSWindowPersistableFrameDescriptor"
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419515-stringwithsavedframe?language=objc"
+      },
+      {
+        "Name": "keyWindow",
+        "Description": "A Boolean value that indicates whether the window is the key window for the application.",
+        "Declaration": "@property(getter=isKeyWindow, readonly) BOOL keyWindow;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isKeyWindow",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419735-keywindow?language=objc"
+      },
+      {
+        "Name": "canBecomeKeyWindow",
+        "Description": "A Boolean value that indicates whether the window can become the key window.",
+        "Declaration": "@property(readonly) BOOL canBecomeKeyWindow;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419543-canbecomekeywindow?language=objc"
+      },
+      {
+        "Name": "mainWindow",
+        "Description": "A Boolean value that indicates whether the window is the application’s main window.",
+        "Declaration": "@property(getter=isMainWindow, readonly) BOOL mainWindow;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isMainWindow",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419130-mainwindow?language=objc"
+      },
+      {
+        "Name": "canBecomeMainWindow",
+        "Description": "A Boolean value that indicates whether the window can become the application’s main window.",
+        "Declaration": "@property(readonly) BOOL canBecomeMainWindow;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419162-canbecomemainwindow?language=objc"
+      },
+      {
+        "Name": "toolbar",
+        "Description": "The window’s toolbar.",
+        "Declaration": "@property(strong) NSToolbar *toolbar;",
+        "Type": {
+          "Name": "NSToolbar",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419731-toolbar?language=objc"
+      },
+      {
+        "Name": "childWindows",
+        "Description": "An array of the window’s attached child windows.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003c__kindof NSWindow *\u003e *childWindows;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSWindow",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419236-childwindows?language=objc"
+      },
+      {
+        "Name": "parentWindow",
+        "Description": "The parent window to which the window is attached as a child.",
+        "Declaration": "@property(weak) NSWindow *parentWindow;",
+        "Type": {
+          "Name": "NSWindow",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419695-parentwindow?language=objc"
+      },
+      {
+        "Name": "defaultButtonCell",
+        "Description": "The button cell that performs as if clicked when the window receives a Return (or Enter) key event.",
+        "Declaration": "@property(retain) NSButtonCell *defaultButtonCell;",
+        "Type": {
+          "Name": "NSButtonCell",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "retain": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419328-defaultbuttoncell?language=objc"
+      },
+      {
+        "Name": "excludedFromWindowsMenu",
+        "Description": "A Boolean value that indicates whether the window is excluded from the application’s Windows menu.",
+        "Declaration": "@property(getter=isExcludedFromWindowsMenu) BOOL excludedFromWindowsMenu;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isExcludedFromWindowsMenu"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419175-excludedfromwindowsmenu?language=objc"
+      },
+      {
+        "Name": "areCursorRectsEnabled",
+        "Description": "A Boolean value that indicates whether the window’s cursor rectangles are enabled.",
+        "Declaration": "@property(readonly) BOOL areCursorRectsEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419668-arecursorrectsenabled?language=objc"
+      },
+      {
+        "Name": "showsToolbarButton",
+        "Description": "A Boolean value that indicates whether the toolbar control button is currently displayed.",
+        "Declaration": "@property BOOL showsToolbarButton;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419196-showstoolbarbutton?language=objc"
+      },
+      {
+        "Name": "titlebarAppearsTransparent",
+        "Description": "A Boolean value that indicates whether the title bar draws its background.",
+        "Declaration": "@property BOOL titlebarAppearsTransparent;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419167-titlebarappearstransparent?language=objc"
+      },
+      {
+        "Name": "toolbarStyle",
+        "Description": "The style that determines the appearance and location of the toolbar in relation to the title bar.",
+        "Declaration": "@property NSWindowToolbarStyle toolbarStyle;",
+        "Type": {
+          "Name": "NSWindowToolbarStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/3608199-toolbarstyle?language=objc"
+      },
+      {
+        "Name": "titlebarSeparatorStyle",
+        "Description": "The type of separator that the app displays between the title bar and content of a window.",
+        "Declaration": "@property NSTitlebarSeparatorStyle titlebarSeparatorStyle;",
+        "Type": {
+          "Name": "NSTitlebarSeparatorStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/3622489-titlebarseparatorstyle?language=objc"
+      },
+      {
+        "Name": "windowTitlebarLayoutDirection",
+        "Description": "The direction the window’s title bar lays text out, either left to right or right to left.",
+        "Declaration": "@property(readonly) NSUserInterfaceLayoutDirection windowTitlebarLayoutDirection;",
+        "Type": {
+          "Name": "NSUserInterfaceLayoutDirection"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644535-windowtitlebarlayoutdirection?language=objc"
+      },
+      {
+        "Name": "titlebarAccessoryViewControllers",
+        "Description": "An array of title bar accessory view controllers that are currently added to the window.",
+        "Declaration": "@property(copy) NSArray\u003c__kindof NSTitlebarAccessoryViewController *\u003e *titlebarAccessoryViewControllers;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSTitlebarAccessoryViewController",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419547-titlebaraccessoryviewcontrollers?language=objc"
+      },
+      {
+        "Name": "tab",
+        "Description": "An object that represents information about a window when it displays as a tab.",
+        "Declaration": "@property(strong, readonly) NSWindowTab *tab;",
+        "Type": {
+          "Name": "NSWindowTab",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2870102-tab?language=objc"
+      },
+      {
+        "Name": "tabbingIdentifier",
+        "Description": "A value that allows a group of related windows.",
+        "Declaration": "@property(copy) NSWindowTabbingIdentifier tabbingIdentifier;",
+        "Type": {
+          "Name": "NSWindowTabbingIdentifier"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644704-tabbingidentifier?language=objc"
+      },
+      {
+        "Name": "tabbingMode",
+        "Description": "A value that indicates when a window displays tabs.",
+        "Declaration": "@property NSWindowTabbingMode tabbingMode;",
+        "Type": {
+          "Name": "NSWindowTabbingMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1644729-tabbingmode?language=objc"
+      },
+      {
+        "Name": "tabbedWindows",
+        "Description": "An array of windows that display as tabs.",
+        "Declaration": "@property(readonly, copy, nullable) NSArray\u003cNSWindow *\u003e *tabbedWindows;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1792044-tabbedwindows?language=objc"
+      },
+      {
+        "Name": "tabGroup",
+        "Description": "A group of windows that display together as a tab group.",
+        "Declaration": "@property(readonly, weak) NSWindowTabGroup *tabGroup;",
+        "Type": {
+          "Name": "NSWindowTabGroup",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/2879189-tabgroup?language=objc"
+      },
+      {
+        "Name": "allowsToolTipsWhenApplicationIsInactive",
+        "Description": "A Boolean value that indicates whether the window can display tooltips even when the application is in the background.",
+        "Declaration": "@property BOOL allowsToolTipsWhenApplicationIsInactive;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419138-allowstooltipswhenapplicationisi?language=objc"
+      },
+      {
+        "Name": "currentEvent",
+        "Description": "The event currently being processed by the application.",
+        "Declaration": "@property(nullable, readonly, strong) NSEvent *currentEvent;",
+        "Type": {
+          "Name": "NSEvent",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419298-currentevent?language=objc"
+      },
+      {
+        "Name": "initialFirstResponder",
+        "Description": "The view that’s made first responder (also called the key view) the first time the window is placed onscreen.",
+        "Declaration": "@property(weak) NSView *initialFirstResponder;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419479-initialfirstresponder?language=objc"
+      },
+      {
+        "Name": "firstResponder",
+        "Description": "The window’s first responder.",
+        "Declaration": "@property(readonly, weak) NSResponder *firstResponder;",
+        "Type": {
+          "Name": "NSResponder",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419440-firstresponder?language=objc"
+      },
+      {
+        "Name": "keyViewSelectionDirection",
+        "Description": "The direction the window is currently using to change the key view.",
+        "Declaration": "@property(readonly) NSSelectionDirection keyViewSelectionDirection;",
+        "Type": {
+          "Name": "NSSelectionDirection"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419158-keyviewselectiondirection?language=objc"
+      },
+      {
+        "Name": "autorecalculatesKeyViewLoop",
+        "Description": "A Boolean value that indicates whether the window automatically recalculates the key view loop when views are added.",
+        "Declaration": "@property BOOL autorecalculatesKeyViewLoop;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419214-autorecalculateskeyviewloop?language=objc"
+      },
+      {
+        "Name": "acceptsMouseMovedEvents",
+        "Description": "A Boolean value that indicates whether the window accepts mouse-moved events.",
+        "Declaration": "@property BOOL acceptsMouseMovedEvents;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419340-acceptsmousemovedevents?language=objc"
+      },
+      {
+        "Name": "ignoresMouseEvents",
+        "Description": "A Boolean value that indicates whether the window is transparent to mouse events.",
+        "Declaration": "@property BOOL ignoresMouseEvents;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419354-ignoresmouseevents?language=objc"
+      },
+      {
+        "Name": "mouseLocationOutsideOfEventStream",
+        "Description": "The current location of the pointer reckoned in the window’s base coordinate system, regardless of the current event being handled or of any events pending.",
+        "Declaration": "@property(readonly) NSPoint mouseLocationOutsideOfEventStream;",
+        "Type": {
+          "Name": "NSPoint"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419280-mouselocationoutsideofeventstrea?language=objc"
+      },
+      {
+        "Name": "restorable",
+        "Description": "A Boolean value indicating whether the window configuration is preserved between application launches.",
+        "Declaration": "@property(getter=isRestorable) BOOL restorable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRestorable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526255-restorable?language=objc"
+      },
+      {
+        "Name": "restorationClass",
+        "Description": "The restoration class associated with the window.",
+        "Declaration": "@property(assign) Class\u003cNSWindowRestoration\u003e restorationClass;",
+        "Type": {
+          "Name": "Class",
+          "Params": [
+            {
+              "Name": "NSWindowRestoration"
+            }
+          ]
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1526241-restorationclass?language=objc"
+      },
+      {
+        "Name": "viewsNeedDisplay",
+        "Description": "A Boolean value that indicates whether any of the window’s views need to be displayed.",
+        "Declaration": "@property BOOL viewsNeedDisplay;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419609-viewsneeddisplay?language=objc"
+      },
+      {
+        "Name": "allowsConcurrentViewDrawing",
+        "Description": "A Boolean value that indicates whether the window allows multithreaded view drawing.",
+        "Declaration": "@property BOOL allowsConcurrentViewDrawing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419300-allowsconcurrentviewdrawing?language=objc"
+      },
+      {
+        "Name": "animationBehavior",
+        "Description": "The window’s automatic animation behavior.",
+        "Declaration": "@property NSWindowAnimationBehavior animationBehavior;",
+        "Type": {
+          "Name": "NSWindowAnimationBehavior"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419763-animationbehavior?language=objc"
+      },
+      {
+        "Name": "documentEdited",
+        "Description": "A Boolean value that indicates whether the window’s document has been edited.",
+        "Declaration": "@property(getter=isDocumentEdited) BOOL documentEdited;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isDocumentEdited"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419311-documentedited?language=objc"
+      },
+      {
+        "Name": "backingScaleFactor",
+        "Description": "The backing scale factor.",
+        "Declaration": "@property(readonly) CGFloat backingScaleFactor;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419459-backingscalefactor?language=objc"
+      },
+      {
+        "Name": "title",
+        "Description": "The string that appears in the title bar of the window or the path to the represented file.",
+        "Declaration": "@property(copy) NSString *title;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419404-title?language=objc"
+      },
+      {
+        "Name": "subtitle",
+        "Description": "A secondary line of text that appears in the title bar of the window.",
+        "Declaration": "@property(copy) NSString *subtitle;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/3608198-subtitle?language=objc"
+      },
+      {
+        "Name": "titleVisibility",
+        "Description": "A value that indicates the visibility of the window’s title and title bar buttons.",
+        "Declaration": "@property NSWindowTitleVisibility titleVisibility;",
+        "Type": {
+          "Name": "NSWindowTitleVisibility"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419635-titlevisibility?language=objc"
+      },
+      {
+        "Name": "representedFilename",
+        "Description": "The path to the file of the window’s represented file.",
+        "Declaration": "@property(copy) NSString *representedFilename;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419631-representedfilename?language=objc"
+      },
+      {
+        "Name": "representedURL",
+        "Description": "The URL of the file the window represents.",
+        "Declaration": "@property(copy) NSURL *representedURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419066-representedurl?language=objc"
+      },
+      {
+        "Name": "screen",
+        "Description": "The screen the window is on.",
+        "Declaration": "@property(nullable, readonly, strong) NSScreen *screen;",
+        "Type": {
+          "Name": "NSScreen",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419232-screen?language=objc"
+      },
+      {
+        "Name": "deepestScreen",
+        "Description": "The deepest screen the window is on (it may be split over several screens).",
+        "Declaration": "@property(nullable, readonly, strong) NSScreen *deepestScreen;",
+        "Type": {
+          "Name": "NSScreen",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419080-deepestscreen?language=objc"
+      },
+      {
+        "Name": "displaysWhenScreenProfileChanges",
+        "Description": "A Boolean value that indicates whether the window context should be updated when the screen profile changes or when the window moves to a different screen.",
+        "Declaration": "@property BOOL displaysWhenScreenProfileChanges;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419430-displayswhenscreenprofilechanges?language=objc"
+      },
+      {
+        "Name": "movableByWindowBackground",
+        "Description": "A Boolean value that indicates whether the window is movable by clicking and dragging anywhere in its background.",
+        "Declaration": "@property(getter=isMovableByWindowBackground) BOOL movableByWindowBackground;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isMovableByWindowBackground"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419072-movablebywindowbackground?language=objc"
+      },
+      {
+        "Name": "movable",
+        "Description": "A Boolean value that indicates whether the window can be dragged by clicking in its title bar or background.",
+        "Declaration": "@property(getter=isMovable) BOOL movable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isMovable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419579-movable?language=objc"
+      },
+      {
+        "Name": "releasedWhenClosed",
+        "Description": "A Boolean value that indicates whether the window is released when it receives the close message.",
+        "Declaration": "@property(getter=isReleasedWhenClosed) BOOL releasedWhenClosed;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isReleasedWhenClosed"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419062-releasedwhenclosed?language=objc"
+      },
+      {
+        "Name": "miniaturized",
+        "Description": "A Boolean value that indicates whether the window is minimized.",
+        "Declaration": "@property(getter=isMiniaturized, readonly) BOOL miniaturized;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isMiniaturized",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419699-miniaturized?language=objc"
+      },
+      {
+        "Name": "miniwindowImage",
+        "Description": "The custom miniaturized window image of the window.",
+        "Declaration": "@property(strong) NSImage *miniwindowImage;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419185-miniwindowimage?language=objc"
+      },
+      {
+        "Name": "miniwindowTitle",
+        "Description": "The title displayed in the window’s minimized window.",
+        "Declaration": "@property(copy) NSString *miniwindowTitle;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419571-miniwindowtitle?language=objc"
+      },
+      {
+        "Name": "dockTile",
+        "Description": "The application’s Dock tile.",
+        "Declaration": "@property(readonly, strong) NSDockTile *dockTile;",
+        "Type": {
+          "Name": "NSDockTile",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419088-docktile?language=objc"
+      },
+      {
+        "Name": "hasCloseBox",
+        "Description": "A Boolean value that indicates if the window has a close box.",
+        "Declaration": "@property(readonly) BOOL hasCloseBox;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449574-hasclosebox?language=objc"
+      },
+      {
+        "Name": "hasTitleBar",
+        "Description": "A Boolean value that indicates if the window has a title bar.",
+        "Declaration": "@property(readonly) BOOL hasTitleBar;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449568-hastitlebar?language=objc"
+      },
+      {
+        "Name": "modalPanel",
+        "Description": "A Boolean value that indicates whether the window is a modal panel.",
+        "Declaration": "@property(getter=isModalPanel, readonly) BOOL modalPanel;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isModalPanel",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449576-modalpanel?language=objc"
+      },
+      {
+        "Name": "floatingPanel",
+        "Description": "A Boolean value that indicates whether the window is a floating panel.",
+        "Declaration": "@property(getter=isFloatingPanel, readonly) BOOL floatingPanel;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFloatingPanel",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449579-floatingpanel?language=objc"
+      },
+      {
+        "Name": "zoomable",
+        "Description": "A Boolean value that indicates whether the window allows zooming.",
+        "Declaration": "@property(getter=isZoomable, readonly) BOOL zoomable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isZoomable",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449587-zoomable?language=objc"
+      },
+      {
+        "Name": "resizable",
+        "Description": "A Boolean value that indicates if the user can resize the window.",
+        "Declaration": "@property(getter=isResizable, readonly) BOOL resizable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isResizable",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449572-resizable?language=objc"
+      },
+      {
+        "Name": "miniaturizable",
+        "Description": "A Boolean value that indicates whether the window can minimize.",
+        "Declaration": "@property(getter=isMiniaturizable, readonly) BOOL miniaturizable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isMiniaturizable",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449583-miniaturizable?language=objc"
+      },
+      {
+        "Name": "orderedIndex",
+        "Description": "The zero-based position of the window, based on its order from front to back among all visible application windows.",
+        "Declaration": "@property NSInteger orderedIndex;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1449577-orderedindex?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "windowWithContentViewController:",
+        "Description": "Creates a titled window that contains the specified content view controller.",
+        "Declaration": "+ (instancetype)windowWithContentViewController:(NSViewController *)contentViewController;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "contentViewController",
+            "Type": {
+              "Name": "NSViewController",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419551-windowwithcontentviewcontroller?language=objc"
+      },
+      {
+        "Name": "windowNumbersWithOptions:",
+        "Description": "Returns the window numbers for all visible windows satisfying the specified options.",
+        "Declaration": "+ (NSArray\u003cNSNumber *\u003e *)windowNumbersWithOptions:(NSWindowNumberListOptions)options;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSNumber",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSWindowNumberListOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419678-windownumberswithoptions?language=objc"
+      },
+      {
+        "Name": "contentRectForFrameRect:styleMask:",
+        "Description": "Returns the content rectangle used by a window with a given frame rectangle and window style.",
+        "Declaration": "+ (NSRect)contentRectForFrameRect:(NSRect)fRect \n                        styleMask:(NSWindowStyleMask)style;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "fRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419586-contentrectforframerect?language=objc"
+      },
+      {
+        "Name": "frameRectForContentRect:styleMask:",
+        "Description": "Returns the frame rectangle used by a window with a given content rectangle and window style.",
+        "Declaration": "+ (NSRect)frameRectForContentRect:(NSRect)cRect \n                        styleMask:(NSWindowStyleMask)style;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "cRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419372-framerectforcontentrect?language=objc"
+      },
+      {
+        "Name": "minFrameWidthWithTitle:styleMask:",
+        "Description": "Returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.",
+        "Declaration": "+ (CGFloat)minFrameWidthWithTitle:(NSString *)title \n                        styleMask:(NSWindowStyleMask)style;\n",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "title",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "style",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419294-minframewidthwithtitle?language=objc"
+      },
+      {
+        "Name": "removeFrameUsingName:",
+        "Description": "Removes the frame data stored under a given name from the application’s user defaults.",
+        "Declaration": "+ (void)removeFrameUsingName:(NSWindowFrameAutosaveName)name;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSWindowFrameAutosaveName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419313-removeframeusingname?language=objc"
+      },
+      {
+        "Name": "standardWindowButton:forStyleMask:",
+        "Description": "Returns a new instance of a given standard window button, sized appropriately for a given window style.",
+        "Declaration": "+ (NSButton *)standardWindowButton:(NSWindowButton)b \n                      forStyleMask:(NSWindowStyleMask)styleMask;\n",
+        "Return": {
+          "Name": "NSButton",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "b",
+            "Type": {
+              "Name": "NSWindowButton"
+            }
+          },
+          {
+            "Name": "styleMask",
+            "Type": {
+              "Name": "NSWindowStyleMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419173-standardwindowbutton?language=objc"
+      },
+      {
+        "Name": "windowNumberAtPoint:belowWindowWithWindowNumber:",
+        "Description": "Returns the number of the frontmost window that would be hit by a mouse-down at the specified screen location.",
+        "Declaration": "+ (NSInteger)windowNumberAtPoint:(NSPoint)point \n     belowWindowWithWindowNumber:(NSInteger)windowNumber;\n",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "windowNumber",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419210-windownumberatpoint?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "defaultDepthLimit",
+        "Description": "Returns the default depth limit for instances of NSWindow.",
+        "Declaration": "@property(class, readonly) NSWindowDepth defaultDepthLimit;",
+        "Type": {
+          "Name": "NSWindowDepth"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1419049-defaultdepthlimit?language=objc"
+      },
+      {
+        "Name": "allowsAutomaticWindowTabbing",
+        "Description": "A Boolean value that indicates whether the app can automatically organize windows into tabs.",
+        "Declaration": "@property(class) BOOL allowsAutomaticWindowTabbing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc"
+      },
+      {
+        "Name": "userTabbingPreference",
+        "Description": "A value that indicates the user’s preference for window tabbing.",
+        "Declaration": "@property(class, readonly) NSWindowUserTabbingPreference userTabbingPreference;",
+        "Type": {
+          "Name": "NSWindowUserTabbingPreference"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow/1646658-usertabbingpreference?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nswindow?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-06-15T14:29:31.142627-07:00",
+  "Version": 2
+}

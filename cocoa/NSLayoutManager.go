@@ -2,18 +2,16 @@ package cocoa
 
 import (
 	"github.com/progrium/macdriver/core"
-	"github.com/progrium/macdriver/objc"
 )
 
 type NSLayoutManager struct {
-	objc.Object
+	gen_NSLayoutManager
 }
 
-func (lm NSLayoutManager) EnsureLayoutForTextContainer(tc NSTextContainer) {
-	lm.Send("ensureLayoutForTextContainer:", tc)
+func (lm NSLayoutManager) EnsureLayoutForTextContainer(tc NSTextContainerRef) {
+	lm.EnsureLayoutForTextContainer_(tc)
 }
 
-func (lm NSLayoutManager) UsedRectForTextContainer(tc NSTextContainer) (rect core.NSRect) {
-	lm.Send("usedRectForTextContainer:", tc, &rect)
-	return rect
+func (lm NSLayoutManager) UsedRectForTextContainer(tc NSTextContainerRef) (rect core.NSRect) {
+	return lm.UsedRectForTextContainer_(tc)
 }

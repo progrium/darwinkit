@@ -1,0 +1,3105 @@
+{
+  "Class": {
+    "Name": "NSTextView",
+    "Description": "A view that draws text and handles user interactions with that text.",
+    "Declaration": "@interface NSTextView : NSText",
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithFrame:textContainer:",
+        "Description": "Initializes a text view.",
+        "Declaration": "- (instancetype)initWithFrame:(NSRect)frameRect \n                textContainer:(NSTextContainer *)container;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "container",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449347-initwithframe?language=objc"
+      },
+      {
+        "Name": "initWithFrame:",
+        "Description": "Initializes a text view.",
+        "Declaration": "- (instancetype)initWithFrame:(NSRect)frameRect;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449262-initwithframe?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "Initializes a text view with data in an unarchiver.",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449489-initwithcoder?language=objc"
+      },
+      {
+        "Name": "replaceTextContainer:",
+        "Description": "Replaces the text container for the group of text system objects containing the receiver, keeping the association between the receiver and its layout manager intact.",
+        "Declaration": "- (void)replaceTextContainer:(NSTextContainer *)newContainer;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "newContainer",
+            "Type": {
+              "Name": "NSTextContainer",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449479-replacetextcontainer?language=objc"
+      },
+      {
+        "Name": "invalidateTextContainerOrigin",
+        "Description": "Invalidates the calculated origin of the text container.",
+        "Declaration": "- (void)invalidateTextContainerOrigin;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449546-invalidatetextcontainerorigin?language=objc"
+      },
+      {
+        "Name": "changeDocumentBackgroundColor:",
+        "Description": "An action method used to set the background color.",
+        "Declaration": "- (void)changeDocumentBackgroundColor:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449475-changedocumentbackgroundcolor?language=objc"
+      },
+      {
+        "Name": "setNeedsDisplayInRect:avoidAdditionalLayout:",
+        "Description": "Marks the receiver as requiring display.",
+        "Declaration": "- (void)setNeedsDisplayInRect:(NSRect)rect \n        avoidAdditionalLayout:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449279-setneedsdisplayinrect?language=objc"
+      },
+      {
+        "Name": "drawInsertionPointInRect:color:turnedOn:",
+        "Description": "Draws or erases the insertion point.",
+        "Declaration": "- (void)drawInsertionPointInRect:(NSRect)rect \n                           color:(NSColor *)color \n                        turnedOn:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "color",
+            "Type": {
+              "Name": "NSColor",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449232-drawinsertionpointinrect?language=objc"
+      },
+      {
+        "Name": "drawViewBackgroundInRect:",
+        "Description": "Draws the background of the text view.",
+        "Declaration": "- (void)drawViewBackgroundInRect:(NSRect)rect;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449135-drawviewbackgroundinrect?language=objc"
+      },
+      {
+        "Name": "setConstrainedFrameSize:",
+        "Description": "Attempts to set the frame size as if by user action.",
+        "Declaration": "- (void)setConstrainedFrameSize:(NSSize)desiredSize;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "desiredSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449230-setconstrainedframesize?language=objc"
+      },
+      {
+        "Name": "cleanUpAfterDragOperation",
+        "Description": "Releases the drag information still existing after the dragging session has completed.",
+        "Declaration": "- (void)cleanUpAfterDragOperation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449202-cleanupafterdragoperation?language=objc"
+      },
+      {
+        "Name": "showFindIndicatorForRange:",
+        "Description": "Causes a temporary highlighting effect to appear around the visible portion (or portions) of the specified range.",
+        "Declaration": "- (void)showFindIndicatorForRange:(NSRange)charRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449540-showfindindicatorforrange?language=objc"
+      },
+      {
+        "Name": "insertText:",
+        "Description": "Inserts aString into the receiver’s text at the insertion point if there is one, otherwise replacing the selection.",
+        "Declaration": "- (void)insertText:(id)insertString;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "insertString",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449174-inserttext?language=objc"
+      },
+      {
+        "Name": "setBaseWritingDirection:range:",
+        "Description": "Sets the base writing direction of a range of text.",
+        "Declaration": "- (void)setBaseWritingDirection:(NSWritingDirection)writingDirection \n                          range:(NSRange)range;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "writingDirection",
+            "Type": {
+              "Name": "NSWritingDirection"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449146-setbasewritingdirection?language=objc"
+      },
+      {
+        "Name": "toggleBaseWritingDirection:",
+        "Description": "Changes the base writing direction of a paragraph between left-to-right and right-to-left.",
+        "Declaration": "- (void)toggleBaseWritingDirection:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449465-togglebasewritingdirection?language=objc"
+      },
+      {
+        "Name": "outline:",
+        "Description": "Adds the outline attribute to the selected text attributes if absent; removes the attribute if present.",
+        "Declaration": "- (void)outline:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449386-outline?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticQuoteSubstitution:",
+        "Description": "Changes the state of automatic quotation mark substitution from enabled to disabled and vice versa.",
+        "Declaration": "- (void)toggleAutomaticQuoteSubstitution:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449444-toggleautomaticquotesubstitution?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticLinkDetection:",
+        "Description": "Changes the state of automatic link detection from enabled to disabled and vice versa.",
+        "Declaration": "- (void)toggleAutomaticLinkDetection:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449353-toggleautomaticlinkdetection?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticTextCompletion:",
+        "Description": "",
+        "Declaration": "- (IBAction)toggleAutomaticTextCompletion:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544841-toggleautomatictextcompletion?language=objc"
+      },
+      {
+        "Name": "setSelectedRange:",
+        "Description": "Selects the specified range of characters in response to user action.",
+        "Declaration": "- (void)setSelectedRange:(NSRange)charRange;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449256-setselectedrange?language=objc"
+      },
+      {
+        "Name": "setSelectedRange:affinity:stillSelecting:",
+        "Description": "Sets the selection to a range of characters in response to user action.",
+        "Declaration": "- (void)setSelectedRange:(NSRange)charRange \n                affinity:(NSSelectionAffinity)affinity \n          stillSelecting:(BOOL)stillSelectingFlag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "affinity",
+            "Type": {
+              "Name": "NSSelectionAffinity"
+            }
+          },
+          {
+            "Name": "stillSelectingFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449462-setselectedrange?language=objc"
+      },
+      {
+        "Name": "setSelectedRanges:affinity:stillSelecting:",
+        "Description": "Sets the selection to the characters in an array of ranges in response to user action.",
+        "Declaration": "- (void)setSelectedRanges:(NSArray\u003cNSValue *\u003e *)ranges \n                 affinity:(NSSelectionAffinity)affinity \n           stillSelecting:(BOOL)stillSelectingFlag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ranges",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSValue",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "affinity",
+            "Type": {
+              "Name": "NSSelectionAffinity"
+            }
+          },
+          {
+            "Name": "stillSelectingFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449208-setselectedranges?language=objc"
+      },
+      {
+        "Name": "updateInsertionPointStateAndRestartTimer:",
+        "Description": "Updates the insertion point’s location and optionally restarts the blinking cursor timer.",
+        "Declaration": "- (void)updateInsertionPointStateAndRestartTimer:(BOOL)restartFlag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "restartFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449268-updateinsertionpointstateandrest?language=objc"
+      },
+      {
+        "Name": "characterIndexForInsertionAtPoint:",
+        "Description": "Returns a character index appropriate for placing a zero-length selection for an insertion point associated with the mouse at the given point.",
+        "Declaration": "- (NSUInteger)characterIndexForInsertionAtPoint:(NSPoint)point;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449505-characterindexforinsertionatpoin?language=objc"
+      },
+      {
+        "Name": "updateCandidates",
+        "Description": "",
+        "Declaration": "- (void)updateCandidates;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544833-updatecandidates?language=objc"
+      },
+      {
+        "Name": "preferredPasteboardTypeFromArray:restrictedToTypesFromArray:",
+        "Description": "Returns whatever type on the pasteboard would be most preferred for copying data.",
+        "Declaration": "- (NSPasteboardType)preferredPasteboardTypeFromArray:(NSArray\u003cNSPasteboardType\u003e *)availableTypes \n                          restrictedToTypesFromArray:(NSArray\u003cNSPasteboardType\u003e *)allowedTypes;\n",
+        "Return": {
+          "Name": "NSPasteboardType"
+        },
+        "Args": [
+          {
+            "Name": "availableTypes",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSPasteboardType"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "allowedTypes",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSPasteboardType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449131-preferredpasteboardtypefromarray?language=objc"
+      },
+      {
+        "Name": "readSelectionFromPasteboard:",
+        "Description": "Reads the text view’s preferred type of data from the specified pasteboard.",
+        "Declaration": "- (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449469-readselectionfrompasteboard?language=objc"
+      },
+      {
+        "Name": "readSelectionFromPasteboard:type:",
+        "Description": "Reads data of the given type from the specified pasteboard.",
+        "Declaration": "- (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard \n                               type:(NSPasteboardType)type;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449190-readselectionfrompasteboard?language=objc"
+      },
+      {
+        "Name": "writeSelectionToPasteboard:type:",
+        "Description": "Writes the current selection to the specified pasteboard using the given type.",
+        "Declaration": "- (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard \n                              type:(NSPasteboardType)type;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449187-writeselectiontopasteboard?language=objc"
+      },
+      {
+        "Name": "writeSelectionToPasteboard:types:",
+        "Description": "Writes the current selection to the specified pasteboard under each given type.",
+        "Declaration": "- (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard \n                             types:(NSArray\u003cNSPasteboardType\u003e *)types;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "types",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSPasteboardType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449277-writeselectiontopasteboard?language=objc"
+      },
+      {
+        "Name": "validRequestorForSendType:returnType:",
+        "Description": "Returns self if the text view can provide and accept the specified data types, or nil if it can't.",
+        "Declaration": "- (id)validRequestorForSendType:(NSPasteboardType)sendType \n                     returnType:(NSPasteboardType)returnType;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "sendType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          },
+          {
+            "Name": "returnType",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449301-validrequestorforsendtype?language=objc"
+      },
+      {
+        "Name": "alignJustified:",
+        "Description": "Applies full justification to selected paragraphs (or all text, if the receiver is a plain text object).",
+        "Declaration": "- (void)alignJustified:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449515-alignjustified?language=objc"
+      },
+      {
+        "Name": "changeAttributes:",
+        "Description": "Changes the attributes of the current selection.",
+        "Declaration": "- (void)changeAttributes:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449216-changeattributes?language=objc"
+      },
+      {
+        "Name": "changeColor:",
+        "Description": "Sets the color of the selected text.",
+        "Declaration": "- (void)changeColor:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449282-changecolor?language=objc"
+      },
+      {
+        "Name": "setAlignment:range:",
+        "Description": "Sets the alignment of the paragraphs containing characters in the specified range.",
+        "Declaration": "- (void)setAlignment:(NSTextAlignment)alignment \n               range:(NSRange)range;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "alignment",
+            "Type": {
+              "Name": "NSTextAlignment"
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449536-setalignment?language=objc"
+      },
+      {
+        "Name": "useStandardKerning:",
+        "Description": "Set the receiver to use pair kerning data for the glyphs in its selection, or for all glyphs if the receiver is a plain text view.",
+        "Declaration": "- (void)useStandardKerning:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449491-usestandardkerning?language=objc"
+      },
+      {
+        "Name": "lowerBaseline:",
+        "Description": "Lowers the baseline offset of selected text by 1 point, or of all text if the receiver is a plain text view.",
+        "Declaration": "- (void)lowerBaseline:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449289-lowerbaseline?language=objc"
+      },
+      {
+        "Name": "raiseBaseline:",
+        "Description": "Raises the baseline offset of selected text by 1 point, or of all text if the receiver is a plain text view.",
+        "Declaration": "- (void)raiseBaseline:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449198-raisebaseline?language=objc"
+      },
+      {
+        "Name": "turnOffKerning:",
+        "Description": "Sets the receiver to use nominal glyph spacing for the glyphs in its selection, or for all glyphs if the receiver is a plain text view.",
+        "Declaration": "- (void)turnOffKerning:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449464-turnoffkerning?language=objc"
+      },
+      {
+        "Name": "loosenKerning:",
+        "Description": "Increases the space between glyphs in the receiver’s selection, or in all text if the receiver is a plain text view.",
+        "Declaration": "- (void)loosenKerning:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449183-loosenkerning?language=objc"
+      },
+      {
+        "Name": "tightenKerning:",
+        "Description": "Decreases the space between glyphs in the receiver’s selection, or for all glyphs if the receiver is a plain text view.",
+        "Declaration": "- (void)tightenKerning:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449137-tightenkerning?language=objc"
+      },
+      {
+        "Name": "useStandardLigatures:",
+        "Description": "Sets the receiver to use the standard ligatures available for the fonts and languages used when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.",
+        "Declaration": "- (void)useStandardLigatures:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449144-usestandardligatures?language=objc"
+      },
+      {
+        "Name": "turnOffLigatures:",
+        "Description": "Sets the receiver to use only required ligatures when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.",
+        "Declaration": "- (void)turnOffLigatures:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449436-turnoffligatures?language=objc"
+      },
+      {
+        "Name": "useAllLigatures:",
+        "Description": "Sets the receiver to use all ligatures available for the fonts and languages used when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.",
+        "Declaration": "- (void)useAllLigatures:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449213-useallligatures?language=objc"
+      },
+      {
+        "Name": "toggleTraditionalCharacterShape:",
+        "Description": "Toggles the NSCharacterShapeAttributeName attribute at the current selection.",
+        "Declaration": "- (void)toggleTraditionalCharacterShape:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449292-toggletraditionalcharactershape?language=objc"
+      },
+      {
+        "Name": "clickedOnLink:atIndex:",
+        "Description": "Causes the text view to act as if the user clicked on some text with the given link as the value of a link attribute associated with the text.",
+        "Declaration": "- (void)clickedOnLink:(id)link \n              atIndex:(NSUInteger)charIndex;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "link",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "charIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449497-clickedonlink?language=objc"
+      },
+      {
+        "Name": "pasteAsPlainText:",
+        "Description": "Inserts the contents of the pasteboard into the receiver’s text as plain text.",
+        "Declaration": "- (void)pasteAsPlainText:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449250-pasteasplaintext?language=objc"
+      },
+      {
+        "Name": "pasteAsRichText:",
+        "Description": "This action method inserts the contents of the pasteboard into the receiver’s text as rich text, maintaining its attributes.",
+        "Declaration": "- (void)pasteAsRichText:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449395-pasteasrichtext?language=objc"
+      },
+      {
+        "Name": "breakUndoCoalescing",
+        "Description": "Informs the receiver that it should begin coalescing successive typing operations in a new undo grouping.",
+        "Declaration": "- (void)breakUndoCoalescing;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449384-breakundocoalescing?language=objc"
+      },
+      {
+        "Name": "updateFontPanel",
+        "Description": "Updates the Font panel to contain the font attributes of the selection.",
+        "Declaration": "- (void)updateFontPanel;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449401-updatefontpanel?language=objc"
+      },
+      {
+        "Name": "updateRuler",
+        "Description": "Updates the ruler view in the receiver’s enclosing scroll view to reflect the selection’s paragraph and marker attributes.",
+        "Declaration": "- (void)updateRuler;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449323-updateruler?language=objc"
+      },
+      {
+        "Name": "updateDragTypeRegistration",
+        "Description": "Updates the acceptable drag types of all text views associated with the receiver's layout manager.",
+        "Declaration": "- (void)updateDragTypeRegistration;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449181-updatedragtyperegistration?language=objc"
+      },
+      {
+        "Name": "selectionRangeForProposedRange:granularity:",
+        "Description": "Returns an adjusted selected range based on the selection granularity.",
+        "Declaration": "- (NSRange)selectionRangeForProposedRange:(NSRange)proposedCharRange \n                              granularity:(NSSelectionGranularity)granularity;\n",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "proposedCharRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "granularity",
+            "Type": {
+              "Name": "NSSelectionGranularity"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449188-selectionrangeforproposedrange?language=objc"
+      },
+      {
+        "Name": "shouldChangeTextInRange:replacementString:",
+        "Description": "Initiates a series of delegate messages (and general notifications) to determine whether modifications can be made to the characters and attributes of the receiver’s text.",
+        "Declaration": "- (BOOL)shouldChangeTextInRange:(NSRange)affectedCharRange \n              replacementString:(NSString *)replacementString;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "affectedCharRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "replacementString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449532-shouldchangetextinrange?language=objc"
+      },
+      {
+        "Name": "shouldChangeTextInRanges:replacementStrings:",
+        "Description": "Initiates a series of delegate messages (and general notifications) to determine whether modifications can be made to the characters and attributes of the receiver’s text.",
+        "Declaration": "- (BOOL)shouldChangeTextInRanges:(NSArray\u003cNSValue *\u003e *)affectedRanges \n              replacementStrings:(NSArray\u003cNSString *\u003e *)replacementStrings;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "affectedRanges",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSValue",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "replacementStrings",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449311-shouldchangetextinranges?language=objc"
+      },
+      {
+        "Name": "didChangeText",
+        "Description": "Sends out necessary notifications when a text change completes.",
+        "Declaration": "- (void)didChangeText;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449296-didchangetext?language=objc"
+      },
+      {
+        "Name": "smartDeleteRangeForProposedRange:",
+        "Description": "Returns an extended range that includes adjacent whitespace that should be deleted along with the proposed range in order to preserve proper spacing and punctuation.",
+        "Declaration": "- (NSRange)smartDeleteRangeForProposedRange:(NSRange)proposedCharRange;",
+        "Return": {
+          "Name": "NSRange"
+        },
+        "Args": [
+          {
+            "Name": "proposedCharRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449428-smartdeleterangeforproposedrange?language=objc"
+      },
+      {
+        "Name": "smartInsertAfterStringForString:replacingRange:",
+        "Description": "Returns any whitespace that needs to be added after the string to preserve proper spacing and punctuation when the string replaces the characters in the specified range.",
+        "Declaration": "- (NSString *)smartInsertAfterStringForString:(NSString *)pasteString \n                               replacingRange:(NSRange)charRangeToReplace;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pasteString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charRangeToReplace",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449467-smartinsertafterstringforstring?language=objc"
+      },
+      {
+        "Name": "smartInsertBeforeStringForString:replacingRange:",
+        "Description": "Returns any whitespace that needs to be added before the string to preserve proper spacing and punctuation when the string replaces the characters in the specified range.",
+        "Declaration": "- (NSString *)smartInsertBeforeStringForString:(NSString *)pasteString \n                                replacingRange:(NSRange)charRangeToReplace;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "pasteString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charRangeToReplace",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449242-smartinsertbeforestringforstring?language=objc"
+      },
+      {
+        "Name": "smartInsertForString:replacingRange:beforeString:afterString:",
+        "Description": "Determines whether whitespace needs to be added around the string to preserve proper spacing and punctuation when it replaces the characters in the specified range.",
+        "Declaration": "- (void)smartInsertForString:(NSString *)pasteString \n              replacingRange:(NSRange)charRangeToReplace \n                beforeString:(NSString * _Nullable *)beforeString \n                 afterString:(NSString * _Nullable *)afterString;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pasteString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charRangeToReplace",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "beforeString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "afterString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449544-smartinsertforstring?language=objc"
+      },
+      {
+        "Name": "toggleSmartInsertDelete:",
+        "Description": "Changes the state of smart insert and delete from enabled to disabled and vice versa.",
+        "Declaration": "- (void)toggleSmartInsertDelete:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449273-togglesmartinsertdelete?language=objc"
+      },
+      {
+        "Name": "toggleContinuousSpellChecking:",
+        "Description": "Toggles whether continuous spell checking is enabled for the receiver.",
+        "Declaration": "- (void)toggleContinuousSpellChecking:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449471-togglecontinuousspellchecking?language=objc"
+      },
+      {
+        "Name": "toggleGrammarChecking:",
+        "Description": "Changes the state of grammar checking from enabled to disabled and vice versa.",
+        "Declaration": "- (void)toggleGrammarChecking:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449393-togglegrammarchecking?language=objc"
+      },
+      {
+        "Name": "setSpellingState:range:",
+        "Description": "Sets the spelling state, which controls the display of the spelling and grammar indicators on the given text range.",
+        "Declaration": "- (void)setSpellingState:(NSInteger)value \n                   range:(NSRange)charRange;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449493-setspellingstate?language=objc"
+      },
+      {
+        "Name": "orderFrontSharingServicePicker:",
+        "Description": "Creates and displays a new instance of the sharing service picker.",
+        "Declaration": "- (IBAction)orderFrontSharingServicePicker:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449150-orderfrontsharingservicepicker?language=objc"
+      },
+      {
+        "Name": "rulerView:didMoveMarker:",
+        "Description": "Modifies the paragraph style of the paragraphs containing the selection to record the new location of the marker.",
+        "Declaration": "- (void)rulerView:(NSRulerView *)ruler \n    didMoveMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449159-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:willMoveMarker:toLocation:",
+        "Description": "Returns a potentially modified location to which the marker should be moved.",
+        "Declaration": "- (CGFloat)rulerView:(NSRulerView *)ruler \n      willMoveMarker:(NSRulerMarker *)marker \n          toLocation:(CGFloat)location;\n",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449287-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:shouldMoveMarker:",
+        "Description": "Returns whether the marker should be moved.",
+        "Declaration": "- (BOOL)rulerView:(NSRulerView *)ruler \n shouldMoveMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449390-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:didRemoveMarker:",
+        "Description": "Modifies the paragraph style of the paragraphs containing the selection—if possible—by removing the specified marker.",
+        "Declaration": "- (void)rulerView:(NSRulerView *)ruler \n  didRemoveMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449299-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:shouldRemoveMarker:",
+        "Description": "Returns whether the marker should be removed.",
+        "Declaration": "- (BOOL)rulerView:(NSRulerView *)ruler \nshouldRemoveMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449366-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:didAddMarker:",
+        "Description": "Modifies the paragraph style of the paragraphs containing the selection to accommodate a new marker.",
+        "Declaration": "- (void)rulerView:(NSRulerView *)ruler \n     didAddMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449523-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:shouldAddMarker:",
+        "Description": "Returns whether a new marker can be added.",
+        "Declaration": "- (BOOL)rulerView:(NSRulerView *)ruler \n  shouldAddMarker:(NSRulerMarker *)marker;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449446-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:willAddMarker:atLocation:",
+        "Description": "Returns a potentially modified location to which the marker should be added.",
+        "Declaration": "- (CGFloat)rulerView:(NSRulerView *)ruler \n       willAddMarker:(NSRulerMarker *)marker \n          atLocation:(CGFloat)location;\n",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "marker",
+            "Type": {
+              "Name": "NSRulerMarker",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449351-rulerview?language=objc"
+      },
+      {
+        "Name": "rulerView:handleMouseDown:",
+        "Description": "Adds a left tab marker to the ruler at the location clicked.",
+        "Declaration": "- (void)rulerView:(NSRulerView *)ruler \n  handleMouseDown:(NSEvent *)event;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "ruler",
+            "Type": {
+              "Name": "NSRulerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449399-rulerview?language=objc"
+      },
+      {
+        "Name": "dragImageForSelectionWithEvent:origin:",
+        "Description": "Returns an appropriate drag image for the drag initiated by the specified event.",
+        "Declaration": "- (NSImage *)dragImageForSelectionWithEvent:(NSEvent *)event \n                                     origin:(NSPointPointer)origin;\n",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "origin",
+            "Type": {
+              "Name": "NSPointPointer"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449423-dragimageforselectionwithevent?language=objc"
+      },
+      {
+        "Name": "dragOperationForDraggingInfo:type:",
+        "Description": "Returns the type of drag operation that should be performed if the image were released now.",
+        "Declaration": "- (NSDragOperation)dragOperationForDraggingInfo:(id\u003cNSDraggingInfo\u003e)dragInfo \n                                           type:(NSPasteboardType)type;\n",
+        "Return": {
+          "Name": "NSDragOperation"
+        },
+        "Args": [
+          {
+            "Name": "dragInfo",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSDraggingInfo"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449176-dragoperationfordragginginfo?language=objc"
+      },
+      {
+        "Name": "dragSelectionWithEvent:offset:slideBack:",
+        "Description": "Begins dragging the current selected text range.",
+        "Declaration": "- (BOOL)dragSelectionWithEvent:(NSEvent *)event \n                        offset:(NSSize)mouseOffset \n                     slideBack:(BOOL)slideBack;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "mouseOffset",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "slideBack",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449413-dragselectionwithevent?language=objc"
+      },
+      {
+        "Name": "startSpeaking:",
+        "Description": "Speaks the selected text, or all text if no selection.",
+        "Declaration": "- (void)startSpeaking:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449519-startspeaking?language=objc"
+      },
+      {
+        "Name": "stopSpeaking:",
+        "Description": "Stops the speaking of text.",
+        "Declaration": "- (void)stopSpeaking:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449172-stopspeaking?language=objc"
+      },
+      {
+        "Name": "performFindPanelAction:",
+        "Description": "Performs a find panel action specified by the sender's tag.",
+        "Declaration": "- (void)performFindPanelAction:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449525-performfindpanelaction?language=objc"
+      },
+      {
+        "Name": "orderFrontLinkPanel:",
+        "Description": "Brings forward a panel allowing the user to manipulate links in the text view.",
+        "Declaration": "- (void)orderFrontLinkPanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449238-orderfrontlinkpanel?language=objc"
+      },
+      {
+        "Name": "orderFrontListPanel:",
+        "Description": "Brings forward a panel allowing the user to manipulate text lists in the text view.",
+        "Declaration": "- (void)orderFrontListPanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449349-orderfrontlistpanel?language=objc"
+      },
+      {
+        "Name": "orderFrontSpacingPanel:",
+        "Description": "Brings forward a panel allowing the user to manipulate text line heights, interline spacing, and paragraph spacing, in the text view.",
+        "Declaration": "- (void)orderFrontSpacingPanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449438-orderfrontspacingpanel?language=objc"
+      },
+      {
+        "Name": "orderFrontTablePanel:",
+        "Description": "Brings forward a panel allowing the user to manipulate text tables in the text view.",
+        "Declaration": "- (void)orderFrontTablePanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449442-orderfronttablepanel?language=objc"
+      },
+      {
+        "Name": "orderFrontSubstitutionsPanel:",
+        "Description": "Brings forward a panel allowing the user to specify string substitutions in the text view.",
+        "Declaration": "- (void)orderFrontSubstitutionsPanel:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449327-orderfrontsubstitutionspanel?language=objc"
+      },
+      {
+        "Name": "complete:",
+        "Description": "Invokes completion in a text view.",
+        "Declaration": "- (void)complete:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449359-complete?language=objc"
+      },
+      {
+        "Name": "completionsForPartialWordRange:indexOfSelectedItem:",
+        "Description": "Returns an array of potential completions, in the order to be presented, representing possible word completions available from a partial word.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)completionsForPartialWordRange:(NSRange)charRange \n                                    indexOfSelectedItem:(NSInteger *)index;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449405-completionsforpartialwordrange?language=objc"
+      },
+      {
+        "Name": "insertCompletion:forPartialWordRange:movement:isFinal:",
+        "Description": "Inserts the selected completion into the text at the appropriate location.",
+        "Declaration": "- (void)insertCompletion:(NSString *)word \n     forPartialWordRange:(NSRange)charRange \n                movement:(NSInteger)movement \n                 isFinal:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "word",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "charRange",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "movement",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449448-insertcompletion?language=objc"
+      },
+      {
+        "Name": "checkTextInDocument:",
+        "Description": "Performs the default text checking on the entire document.",
+        "Declaration": "- (void)checkTextInDocument:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449440-checktextindocument?language=objc"
+      },
+      {
+        "Name": "checkTextInSelection:",
+        "Description": "Performs the default text checking on the current selection.",
+        "Declaration": "- (void)checkTextInSelection:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449382-checktextinselection?language=objc"
+      },
+      {
+        "Name": "checkTextInRange:types:options:",
+        "Description": "Check and replace the text in the range using the specified checking types and options.",
+        "Declaration": "- (void)checkTextInRange:(NSRange)range \n                   types:(NSTextCheckingTypes)checkingTypes \n                 options:(NSDictionary\u003cNSTextCheckingOptionKey, id\u003e *)options;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "checkingTypes",
+            "Type": {
+              "Name": "NSTextCheckingTypes"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSTextCheckingOptionKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449240-checktextinrange?language=objc"
+      },
+      {
+        "Name": "handleTextCheckingResults:forRange:types:options:orthography:wordCount:",
+        "Description": "Handles the text checking results returned by the text view",
+        "Declaration": "- (void)handleTextCheckingResults:(NSArray\u003cNSTextCheckingResult *\u003e *)results \n                         forRange:(NSRange)range \n                            types:(NSTextCheckingTypes)checkingTypes \n                          options:(NSDictionary\u003cNSTextCheckingOptionKey, id\u003e *)options \n                      orthography:(NSOrthography *)orthography \n                        wordCount:(NSInteger)wordCount;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "results",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSTextCheckingResult",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "checkingTypes",
+            "Type": {
+              "Name": "NSTextCheckingTypes"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSTextCheckingOptionKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "orthography",
+            "Type": {
+              "Name": "NSOrthography",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "wordCount",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449473-handletextcheckingresults?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticDashSubstitution:",
+        "Description": "Toggles the state of the automatic dash substitution.",
+        "Declaration": "- (void)toggleAutomaticDashSubstitution:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449305-toggleautomaticdashsubstitution?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticDataDetection:",
+        "Description": "Toggles the state of the automatic data detection.",
+        "Declaration": "- (void)toggleAutomaticDataDetection:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449499-toggleautomaticdatadetection?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticSpellingCorrection:",
+        "Description": "Toggles the state of the automatic spelling correction.",
+        "Declaration": "- (void)toggleAutomaticSpellingCorrection:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449178-toggleautomaticspellingcorrectio?language=objc"
+      },
+      {
+        "Name": "toggleAutomaticTextReplacement:",
+        "Description": "Toggles the state of the automatic text replacement.",
+        "Declaration": "- (void)toggleAutomaticTextReplacement:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449200-toggleautomatictextreplacement?language=objc"
+      },
+      {
+        "Name": "performValidatedReplacementInRange:withAttributedString:",
+        "Description": "Replaces text in the range you specify with the attributed string you provide.",
+        "Declaration": "- (BOOL)performValidatedReplacementInRange:(NSRange)range \n                      withAttributedString:(NSAttributedString *)attributedString;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "attributedString",
+            "Type": {
+              "Name": "NSAttributedString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2990526-performvalidatedreplacementinran?language=objc"
+      },
+      {
+        "Name": "updateQuickLookPreviewPanel",
+        "Description": "Notifies the QuickLook panel that an update may be required.",
+        "Declaration": "- (void)updateQuickLookPreviewPanel;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449409-updatequicklookpreviewpanel?language=objc"
+      },
+      {
+        "Name": "toggleQuickLookPreviewPanel:",
+        "Description": "An action message that toggles the visibility state of the Quick Look preview panel.",
+        "Declaration": "- (IBAction)toggleQuickLookPreviewPanel:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449415-togglequicklookpreviewpanel?language=objc"
+      },
+      {
+        "Name": "quickLookPreviewableItemsInRanges:",
+        "Description": "Returns an array of URLs for items that can be displayed by QuickLook in the specified ranges.",
+        "Declaration": "- (NSArray\u003cid\u003cQLPreviewItem\u003e\u003e *)quickLookPreviewableItemsInRanges:(NSArray\u003cNSValue *\u003e *)ranges;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "QLPreviewItem"
+                }
+              ]
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "ranges",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSValue",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449426-quicklookpreviewableitemsinrange?language=objc"
+      },
+      {
+        "Name": "changeLayoutOrientation:",
+        "Description": "An action method that sets the layout orientation of the text.",
+        "Declaration": "- (void)changeLayoutOrientation:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449286-changelayoutorientation?language=objc"
+      },
+      {
+        "Name": "setLayoutOrientation:",
+        "Description": "Changes the receiver's layout orientation and invalidates the contents.",
+        "Declaration": "- (void)setLayoutOrientation:(NSTextLayoutOrientation)orientation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "NSTextLayoutOrientation"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449483-setlayoutorientation?language=objc"
+      },
+      {
+        "Name": "updateTextTouchBarItems",
+        "Description": "",
+        "Declaration": "- (void)updateTextTouchBarItems;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544676-updatetexttouchbaritems?language=objc"
+      },
+      {
+        "Name": "updateTouchBarItemIdentifiers",
+        "Description": "",
+        "Declaration": "- (void)updateTouchBarItemIdentifiers;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544834-updatetouchbaritemidentifiers?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The delegate for all text views sharing the receiver’s layout manager.",
+        "Declaration": "@property(weak) id\u003cNSTextViewDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSTextViewDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449521-delegate?language=objc"
+      },
+      {
+        "Name": "textContainer",
+        "Description": "The receiver’s text container.",
+        "Declaration": "@property(assign) NSTextContainer *textContainer;",
+        "Type": {
+          "Name": "NSTextContainer",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449364-textcontainer?language=objc"
+      },
+      {
+        "Name": "textContainerInset",
+        "Description": "The empty space the receiver leaves around its associated text container.",
+        "Declaration": "@property NSSize textContainerInset;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449168-textcontainerinset?language=objc"
+      },
+      {
+        "Name": "textContainerOrigin",
+        "Description": "The origin of the receiver’s text container.",
+        "Declaration": "@property(readonly) NSPoint textContainerOrigin;",
+        "Type": {
+          "Name": "NSPoint"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449477-textcontainerorigin?language=objc"
+      },
+      {
+        "Name": "textLayoutManager",
+        "Description": "The manager that lays out text for the receiver’s text container.",
+        "Declaration": "@property(nullable, readonly, weak) NSTextLayoutManager *textLayoutManager;",
+        "Type": {
+          "Name": "NSTextLayoutManager",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/3824763-textlayoutmanager?language=objc"
+      },
+      {
+        "Name": "layoutManager",
+        "Description": "The layout manager that lays out text for the receiver’s text container.",
+        "Declaration": "@property(nullable, readonly, assign) NSLayoutManager *layoutManager;",
+        "Type": {
+          "Name": "NSLayoutManager",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449148-layoutmanager?language=objc"
+      },
+      {
+        "Name": "textContentStorage",
+        "Description": "The receiver’s text storage object.",
+        "Declaration": "@property(nullable, readonly, weak) NSTextContentStorage *textContentStorage;",
+        "Type": {
+          "Name": "NSTextContentStorage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/3824762-textcontentstorage?language=objc"
+      },
+      {
+        "Name": "textStorage",
+        "Description": "The receiver’s text storage object.",
+        "Declaration": "@property(nullable, readonly, assign) NSTextStorage *textStorage;",
+        "Type": {
+          "Name": "NSTextStorage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449196-textstorage?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The receiver’s background color.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449501-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "drawsBackground",
+        "Description": "A Boolean value that indicates whether the receiver draws its background.",
+        "Declaration": "@property BOOL drawsBackground;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449530-drawsbackground?language=objc"
+      },
+      {
+        "Name": "allowsDocumentBackgroundColorChange",
+        "Description": "A Boolean value that indicates whether the receiver allows its background color to change.",
+        "Declaration": "@property BOOL allowsDocumentBackgroundColorChange;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449397-allowsdocumentbackgroundcolorcha?language=objc"
+      },
+      {
+        "Name": "shouldDrawInsertionPoint",
+        "Description": "A Boolean value that determines whether the receiver should draw its insertion point.",
+        "Declaration": "@property(readonly) BOOL shouldDrawInsertionPoint;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449152-shoulddrawinsertionpoint?language=objc"
+      },
+      {
+        "Name": "allowedInputSourceLocales",
+        "Description": "An array of locale identifiers representing input sources that are allowed to be enabled when the receiver has the keyboard focus.",
+        "Declaration": "@property(copy) NSArray\u003cNSString *\u003e *allowedInputSourceLocales;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449370-allowedinputsourcelocales?language=objc"
+      },
+      {
+        "Name": "allowsUndo",
+        "Description": "A Boolean value that indicates whether the receiver allows undo.",
+        "Declaration": "@property BOOL allowsUndo;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449450-allowsundo?language=objc"
+      },
+      {
+        "Name": "editable",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to edit text.",
+        "Declaration": "@property(getter=isEditable) BOOL editable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEditable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449345-editable?language=objc"
+      },
+      {
+        "Name": "selectable",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to select text.",
+        "Declaration": "@property(getter=isSelectable) BOOL selectable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSelectable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449297-selectable?language=objc"
+      },
+      {
+        "Name": "fieldEditor",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager behave as field editors.",
+        "Declaration": "@property(getter=isFieldEditor) BOOL fieldEditor;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFieldEditor"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449156-fieldeditor?language=objc"
+      },
+      {
+        "Name": "richText",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to apply attributes to specific ranges of text.",
+        "Declaration": "@property(getter=isRichText) BOOL richText;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRichText"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449538-richtext?language=objc"
+      },
+      {
+        "Name": "importsGraphics",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to import files by dragging.",
+        "Declaration": "@property BOOL importsGraphics;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449266-importsgraphics?language=objc"
+      },
+      {
+        "Name": "defaultParagraphStyle",
+        "Description": "The receiver’s default paragraph style.",
+        "Declaration": "@property(copy) NSParagraphStyle *defaultParagraphStyle;",
+        "Type": {
+          "Name": "NSParagraphStyle",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449271-defaultparagraphstyle?language=objc"
+      },
+      {
+        "Name": "allowsImageEditing",
+        "Description": "Indicates whether image attachments should permit editing of their images.",
+        "Declaration": "@property BOOL allowsImageEditing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449425-allowsimageediting?language=objc"
+      },
+      {
+        "Name": "automaticQuoteSubstitutionEnabled",
+        "Description": "A Boolean value that enables and disables automatic quotation mark substitution.",
+        "Declaration": "@property(getter=isAutomaticQuoteSubstitutionEnabled) BOOL automaticQuoteSubstitutionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticQuoteSubstitutionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449258-automaticquotesubstitutionenable?language=objc"
+      },
+      {
+        "Name": "automaticLinkDetectionEnabled",
+        "Description": "A Boolean value that enables or disables automatic link detection.",
+        "Declaration": "@property(getter=isAutomaticLinkDetectionEnabled) BOOL automaticLinkDetectionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticLinkDetectionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449170-automaticlinkdetectionenabled?language=objc"
+      },
+      {
+        "Name": "displaysLinkToolTips",
+        "Description": "A Boolean value that indicates whether the text view automatically supplies the destination of a link as a tooltip for text that has a link attribute.",
+        "Declaration": "@property BOOL displaysLinkToolTips;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449204-displayslinktooltips?language=objc"
+      },
+      {
+        "Name": "automaticTextCompletionEnabled",
+        "Description": "A Boolean vlaue that inidcates whether the text view supplies autocompletion suggestions as the user types.",
+        "Declaration": "@property(getter=isAutomaticTextCompletionEnabled) BOOL automaticTextCompletionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticTextCompletionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544655-automatictextcompletionenabled?language=objc"
+      },
+      {
+        "Name": "usesAdaptiveColorMappingForDarkAppearance",
+        "Description": "A Boolean vlaues that indicates whether the framework should use adaptive color mapping for dark appearance.",
+        "Declaration": "@property BOOL usesAdaptiveColorMappingForDarkAppearance;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/3237223-usesadaptivecolormappingfordarka?language=objc"
+      },
+      {
+        "Name": "usesRolloverButtonForSelection",
+        "Description": "",
+        "Declaration": "@property BOOL usesRolloverButtonForSelection;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449357-usesrolloverbuttonforselection?language=objc"
+      },
+      {
+        "Name": "usesRuler",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager use a ruler.",
+        "Declaration": "@property BOOL usesRuler;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449218-usesruler?language=objc"
+      },
+      {
+        "Name": "rulerVisible",
+        "Description": "A Boolean value that controls whether the scroll view enclosing text views sharing the receiver’s layout manager displays the ruler.",
+        "Declaration": "@property(getter=isRulerVisible) BOOL rulerVisible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isRulerVisible"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449406-rulervisible?language=objc"
+      },
+      {
+        "Name": "usesInspectorBar",
+        "Description": "A Boolean value that indicates whether this text view uses the inspector bar.",
+        "Declaration": "@property BOOL usesInspectorBar;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449407-usesinspectorbar?language=objc"
+      },
+      {
+        "Name": "selectedRanges",
+        "Description": "An array containing the ranges of characters selected in the receiver’s layout manager.",
+        "Declaration": "@property(copy) NSArray\u003cNSValue *\u003e *selectedRanges;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSValue",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449129-selectedranges?language=objc"
+      },
+      {
+        "Name": "selectionAffinity",
+        "Description": "The preferred direction of selection.",
+        "Declaration": "@property(readonly) NSSelectionAffinity selectionAffinity;",
+        "Type": {
+          "Name": "NSSelectionAffinity"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449291-selectionaffinity?language=objc"
+      },
+      {
+        "Name": "selectionGranularity",
+        "Description": "The selection granularity for subsequent extension of a selection.",
+        "Declaration": "@property NSSelectionGranularity selectionGranularity;",
+        "Type": {
+          "Name": "NSSelectionGranularity"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449165-selectiongranularity?language=objc"
+      },
+      {
+        "Name": "insertionPointColor",
+        "Description": "The color of the insertion point.",
+        "Declaration": "@property(copy) NSColor *insertionPointColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449309-insertionpointcolor?language=objc"
+      },
+      {
+        "Name": "selectedTextAttributes",
+        "Description": "The attributes used to indicate the selection.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSAttributedStringKey, id\u003e *selectedTextAttributes;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449270-selectedtextattributes?language=objc"
+      },
+      {
+        "Name": "markedTextAttributes",
+        "Description": "The attributes used to draw marked text.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSAttributedStringKey, id\u003e *markedTextAttributes;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449179-markedtextattributes?language=objc"
+      },
+      {
+        "Name": "linkTextAttributes",
+        "Description": "The attributes used to draw the onscreen presentation of link text.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSAttributedStringKey, id\u003e *linkTextAttributes;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449452-linktextattributes?language=objc"
+      },
+      {
+        "Name": "readablePasteboardTypes",
+        "Description": "The types this text view can read immediately from the pasteboard.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSPasteboardType\u003e *readablePasteboardTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSPasteboardType"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449361-readablepasteboardtypes?language=objc"
+      },
+      {
+        "Name": "writablePasteboardTypes",
+        "Description": "The pasteboard types that can be provided from the current selection.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSPasteboardType\u003e *writablePasteboardTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSPasteboardType"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449222-writablepasteboardtypes?language=objc"
+      },
+      {
+        "Name": "typingAttributes",
+        "Description": "The receiver’s typing attributes.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSAttributedStringKey, id\u003e *typingAttributes;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSAttributedStringKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449487-typingattributes?language=objc"
+      },
+      {
+        "Name": "coalescingUndo",
+        "Description": "A Boolean value that indicates whether undo coalescing is in progress.",
+        "Declaration": "@property(getter=isCoalescingUndo, readonly) BOOL coalescingUndo;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isCoalescingUndo",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449368-coalescingundo?language=objc"
+      },
+      {
+        "Name": "acceptableDragTypes",
+        "Description": "The data types that the receiver accepts as the destination view of a dragging operation.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSPasteboardType\u003e *acceptableDragTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSPasteboardType"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449234-acceptabledragtypes?language=objc"
+      },
+      {
+        "Name": "rangeForUserCharacterAttributeChange",
+        "Description": "The range of characters affected by an action method that changes character (not paragraph) attributes.",
+        "Declaration": "@property(readonly) NSRange rangeForUserCharacterAttributeChange;",
+        "Type": {
+          "Name": "NSRange"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449392-rangeforusercharacterattributech?language=objc"
+      },
+      {
+        "Name": "rangesForUserCharacterAttributeChange",
+        "Description": "An array containing the ranges of characters affected by an action method that changes character (not paragraph) attributes.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSValue *\u003e *rangesForUserCharacterAttributeChange;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSValue",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449503-rangesforusercharacterattributec?language=objc"
+      },
+      {
+        "Name": "rangeForUserParagraphAttributeChange",
+        "Description": "The range of characters affected by an action method that changes paragraph (not character) attributes.",
+        "Declaration": "@property(readonly) NSRange rangeForUserParagraphAttributeChange;",
+        "Type": {
+          "Name": "NSRange"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449252-rangeforuserparagraphattributech?language=objc"
+      },
+      {
+        "Name": "rangesForUserParagraphAttributeChange",
+        "Description": "An array containing the ranges of characters affected by a method that changes paragraph (not character) attributes.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSValue *\u003e *rangesForUserParagraphAttributeChange;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSValue",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449161-rangesforuserparagraphattributec?language=objc"
+      },
+      {
+        "Name": "rangeForUserTextChange",
+        "Description": "The range of characters affected by a method that changes characters (as opposed to attributes).",
+        "Declaration": "@property(readonly) NSRange rangeForUserTextChange;",
+        "Type": {
+          "Name": "NSRange"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449315-rangeforusertextchange?language=objc"
+      },
+      {
+        "Name": "rangesForUserTextChange",
+        "Description": "An array containing the ranges of characters affected by a method that changes characters (as opposed to attributes).",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSValue *\u003e *rangesForUserTextChange;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSValue",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449434-rangesforusertextchange?language=objc"
+      },
+      {
+        "Name": "smartInsertDeleteEnabled",
+        "Description": "A Boolean value that controls whether the receiver inserts or deletes space around selected words so as to preserve proper spacing and punctuation.",
+        "Declaration": "@property BOOL smartInsertDeleteEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449236-smartinsertdeleteenabled?language=objc"
+      },
+      {
+        "Name": "continuousSpellCheckingEnabled",
+        "Description": "A Boolean value that indicates whether the receiver has continuous spell checking enabled.",
+        "Declaration": "@property(getter=isContinuousSpellCheckingEnabled) BOOL continuousSpellCheckingEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isContinuousSpellCheckingEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449430-continuousspellcheckingenabled?language=objc"
+      },
+      {
+        "Name": "spellCheckerDocumentTag",
+        "Description": "A tag identifying the text view's text as a document for the spell checker server.",
+        "Declaration": "@property(readonly) NSInteger spellCheckerDocumentTag;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449513-spellcheckerdocumenttag?language=objc"
+      },
+      {
+        "Name": "grammarCheckingEnabled",
+        "Description": "Enables and disables grammar checking.",
+        "Declaration": "@property(getter=isGrammarCheckingEnabled) BOOL grammarCheckingEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isGrammarCheckingEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449166-grammarcheckingenabled?language=objc"
+      },
+      {
+        "Name": "acceptsGlyphInfo",
+        "Description": "A Boolean value that indicates whether the receiver accepts the glyph info attribute.",
+        "Declaration": "@property BOOL acceptsGlyphInfo;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449163-acceptsglyphinfo?language=objc"
+      },
+      {
+        "Name": "usesFontPanel",
+        "Description": "A Boolean value that controls whether the text views sharing the receiver’s layout manager use the Font panel and Font menu.",
+        "Declaration": "@property BOOL usesFontPanel;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449534-usesfontpanel?language=objc"
+      },
+      {
+        "Name": "usesFindPanel",
+        "Description": "A Boolean value that indicates whether the receiver allows for a find panel.",
+        "Declaration": "@property BOOL usesFindPanel;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449293-usesfindpanel?language=objc"
+      },
+      {
+        "Name": "rangeForUserCompletion",
+        "Description": "The partial range from the most recent beginning of a word up to the insertion point.",
+        "Declaration": "@property(readonly) NSRange rangeForUserCompletion;",
+        "Type": {
+          "Name": "NSRange"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449329-rangeforusercompletion?language=objc"
+      },
+      {
+        "Name": "enabledTextCheckingTypes",
+        "Description": "The default text checking types.",
+        "Declaration": "@property NSTextCheckingTypes enabledTextCheckingTypes;",
+        "Type": {
+          "Name": "NSTextCheckingTypes"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449529-enabledtextcheckingtypes?language=objc"
+      },
+      {
+        "Name": "automaticDashSubstitutionEnabled",
+        "Description": "A Boolean value that indicates whether automatic dash substitution is enabled.",
+        "Declaration": "@property(getter=isAutomaticDashSubstitutionEnabled) BOOL automaticDashSubstitutionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticDashSubstitutionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449403-automaticdashsubstitutionenabled?language=objc"
+      },
+      {
+        "Name": "automaticDataDetectionEnabled",
+        "Description": "A Boolean value that indicates whether automatic data detection is enabled.",
+        "Declaration": "@property(getter=isAutomaticDataDetectionEnabled) BOOL automaticDataDetectionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticDataDetectionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449192-automaticdatadetectionenabled?language=objc"
+      },
+      {
+        "Name": "automaticSpellingCorrectionEnabled",
+        "Description": "A Boolean value that indicates whether automatic spelling correction is enabled.",
+        "Declaration": "@property(getter=isAutomaticSpellingCorrectionEnabled) BOOL automaticSpellingCorrectionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticSpellingCorrectionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449254-automaticspellingcorrectionenabl?language=objc"
+      },
+      {
+        "Name": "automaticTextReplacementEnabled",
+        "Description": "A Boolean value that indicates whether automatic text replacement is enabled.",
+        "Declaration": "@property(getter=isAutomaticTextReplacementEnabled) BOOL automaticTextReplacementEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticTextReplacementEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449210-automatictextreplacementenabled?language=objc"
+      },
+      {
+        "Name": "usesFindBar",
+        "Description": "A Boolean value that indicates whether to use the find bar for this text view.",
+        "Declaration": "@property BOOL usesFindBar;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449456-usesfindbar?language=objc"
+      },
+      {
+        "Name": "incrementalSearchingEnabled",
+        "Description": "A Boolean value that indicates whether incremental searching is enabled.",
+        "Declaration": "@property(getter=isIncrementalSearchingEnabled) BOOL incrementalSearchingEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isIncrementalSearchingEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449458-incrementalsearchingenabled?language=objc"
+      },
+      {
+        "Name": "allowsCharacterPickerTouchBarItem",
+        "Description": "",
+        "Declaration": "@property BOOL allowsCharacterPickerTouchBarItem;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544680-allowscharacterpickertouchbarite?language=objc"
+      },
+      {
+        "Name": "candidateListTouchBarItem",
+        "Description": "",
+        "Declaration": "@property(nullable, readonly, strong) NSCandidateListTouchBarItem *candidateListTouchBarItem;",
+        "Type": {
+          "Name": "NSCandidateListTouchBarItem",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2544750-candidatelisttouchbaritem?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "registerForServices",
+        "Description": "Registers send and return types for the Services facility.",
+        "Declaration": "+ (void)registerForServices;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/1449507-registerforservices?language=objc"
+      },
+      {
+        "Name": "fieldEditor",
+        "Description": "",
+        "Declaration": "+ (instancetype)fieldEditor;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2990525-fieldeditor?language=objc"
+      },
+      {
+        "Name": "scrollableDocumentContentTextView",
+        "Description": "",
+        "Declaration": "+ (NSScrollView *)scrollableDocumentContentTextView;",
+        "Return": {
+          "Name": "NSScrollView",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2990527-scrollabledocumentcontenttextvie?language=objc"
+      },
+      {
+        "Name": "scrollablePlainDocumentContentTextView",
+        "Description": "",
+        "Declaration": "+ (NSScrollView *)scrollablePlainDocumentContentTextView;",
+        "Return": {
+          "Name": "NSScrollView",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2990528-scrollableplaindocumentcontentte?language=objc"
+      },
+      {
+        "Name": "scrollableTextView",
+        "Description": "",
+        "Declaration": "+ (NSScrollView *)scrollableTextView;",
+        "Return": {
+          "Name": "NSScrollView",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2990529-scrollabletextview?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "stronglyReferencesTextStorage",
+        "Description": "",
+        "Declaration": "@property(readonly, class) BOOL stronglyReferencesTextStorage;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextview/2269433-stronglyreferencestextstorage?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T18:50:22.647797-07:00",
+  "Version": 2
+}

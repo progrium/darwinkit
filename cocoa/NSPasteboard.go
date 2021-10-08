@@ -48,21 +48,20 @@ const (
 // Wrapper for NSPasteboard
 // https://developer.apple.com/documentation/appkit/nspasteboard?language=objc
 type NSPasteboard struct {
-	objc.Object
+	gen_NSPasteboard
 }
-
-var nsPasteboard = objc.Get("NSPasteboard")
 
 // NSPasteboard_GeneralPasteboard is the shared pasteboard object to use for general content.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc
 func NSPasteboard_GeneralPasteboard() NSPasteboard {
-	return NSPasteboard{nsPasteboard.Get("generalPasteboard")}
+	return NSPasteboard_generalPasteboard()
 }
 
 // ClearContents clears the existing contents of the pasteboard.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1533599-clearcontents?language=objc
 func (pb NSPasteboard) ClearContents() {
-	pb.Send("clearContents")
+	// TODO this returns an int, should we add that to this wrapper?
+	pb.gen_NSPasteboard.ClearContents()
 }
 
 // SetStringForType sets the given string as the representation for the specified type for the first item on the receiver.
@@ -80,9 +79,7 @@ func (pb NSPasteboard) StringForType(t NSPasteboardType) string {
 // DataForType returns the data for the specified type from the first item in the receiver that contains the type.
 // https://developer.apple.com/documentation/appkit/nspasteboard/1531810-datafortype?language=objc
 func (pb NSPasteboard) DataForType(t NSPasteboardType) core.NSData {
-	return core.NSData{
-		Object: pb.Send("dataForType:", core.String(string(t))),
-	}
+	return core.NSData_fromRef(pb.Send("dataForType:", core.String(string(t))))
 }
 
 // Types is an array of the receiver’s supported data types.

@@ -1,0 +1,347 @@
+{
+  "Class": {
+    "Name": "NSTextContainer",
+    "Description": "A region where text layout occurs.",
+    "Declaration": "@interface NSTextContainer : NSObject",
+    "Frameworks": [
+      "UIKit",
+      "AppKit"
+    ],
+    "Platforms": [
+      "iOS 7.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithSize:",
+        "Description": "Initializes a text container with a specified bounding rectangle.",
+        "Declaration": "- (instancetype)initWithSize:(CGSize)size;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "size",
+            "Type": {
+              "Name": "CGSize"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444529-initwithsize?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "Creates a text container from data in an unarchiver.",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444573-initwithcoder?language=objc"
+      },
+      {
+        "Name": "replaceLayoutManager:",
+        "Description": "Replaces the layout manager for the group of text system objects that contains the text container.",
+        "Declaration": "- (void)replaceLayoutManager:(NSLayoutManager *)newLayoutManager;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "newLayoutManager",
+            "Type": {
+              "Name": "NSLayoutManager",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444545-replacelayoutmanager?language=objc"
+      },
+      {
+        "Name": "lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect:",
+        "Description": "Returns the bounds of a line fragment rectangle inside the text container for the proposed rectangle.",
+        "Declaration": "- (CGRect)lineFragmentRectForProposedRect:(CGRect)proposedRect \n                                  atIndex:(NSUInteger)characterIndex \n                         writingDirection:(NSWritingDirection)baseWritingDirection \n                            remainingRect:(CGRect *)remainingRect;\n",
+        "Return": {
+          "Name": "CGRect"
+        },
+        "Args": [
+          {
+            "Name": "proposedRect",
+            "Type": {
+              "Name": "CGRect"
+            }
+          },
+          {
+            "Name": "characterIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "baseWritingDirection",
+            "Type": {
+              "Name": "NSWritingDirection"
+            }
+          },
+          {
+            "Name": "remainingRect",
+            "Type": {
+              "Name": "CGRect",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444555-linefragmentrectforproposedrect?language=objc"
+      },
+      {
+        "Name": "initWithContainerSize:",
+        "Description": "Initializes a text container with a specified bounding rectangle.",
+        "Declaration": "- (instancetype)initWithContainerSize:(NSSize)aContainerSize;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "aContainerSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer/1444543-initwithcontainersize?language=objc"
+      },
+      {
+        "Name": "lineFragmentRectForProposedRect:sweepDirection:movementDirection:remainingRect:",
+        "Description": "Calculates and returns the longest rectangle available in the proposed rectangle for displaying text.",
+        "Declaration": "- (NSRect)lineFragmentRectForProposedRect:(NSRect)proposedRect \n                           sweepDirection:(NSLineSweepDirection)sweepDirection \n                        movementDirection:(NSLineMovementDirection)movementDirection \n                            remainingRect:(NSRectPointer)remainingRect;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "proposedRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "sweepDirection",
+            "Type": {
+              "Name": "NSLineSweepDirection"
+            }
+          },
+          {
+            "Name": "movementDirection",
+            "Type": {
+              "Name": "NSLineMovementDirection"
+            }
+          },
+          {
+            "Name": "remainingRect",
+            "Type": {
+              "Name": "NSRectPointer"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer/1444571-linefragmentrectforproposedrect?language=objc"
+      },
+      {
+        "Name": "containsPoint:",
+        "Description": "Queries whether a point lies within the text container’s region or on the region’s edge—not simply within its bounding rectangle.",
+        "Declaration": "- (BOOL)containsPoint:(NSPoint)point;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer/1444567-containspoint?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "layoutManager",
+        "Description": "The text container’s layout manager.",
+        "Declaration": "@property(nullable, assign, nonatomic) NSLayoutManager *layoutManager;",
+        "Type": {
+          "Name": "NSLayoutManager",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444517-layoutmanager?language=objc"
+      },
+      {
+        "Name": "textLayoutManager",
+        "Description": "",
+        "Declaration": "@property(weak, nullable, readonly, nonatomic) NSTextLayoutManager *textLayoutManager;",
+        "Type": {
+          "Name": "NSTextLayoutManager",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/3809914-textlayoutmanager?language=objc"
+      },
+      {
+        "Name": "textView",
+        "Description": "The text container’s text view.",
+        "Declaration": "@property(weak) NSTextView *textView;",
+        "Type": {
+          "Name": "NSTextView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer/1444537-textview?language=objc"
+      },
+      {
+        "Name": "size",
+        "Description": "The size of the text container’s bounding rectangle.",
+        "Declaration": "@property(nonatomic) CGSize size;",
+        "Type": {
+          "Name": "CGSize"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444553-size?language=objc"
+      },
+      {
+        "Name": "exclusionPaths",
+        "Description": "An array of path objects that represents the regions where text doesn’t display in the text container.",
+        "Declaration": "@property(copy, nonatomic) NSArray\u003cUIBezierPath *\u003e *exclusionPaths;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "UIBezierPath",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444569-exclusionpaths?language=objc"
+      },
+      {
+        "Name": "lineBreakMode",
+        "Description": "The behavior of the last line inside the text container.",
+        "Declaration": "@property(nonatomic) NSLineBreakMode lineBreakMode;",
+        "Type": {
+          "Name": "NSLineBreakMode"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444519-linebreakmode?language=objc"
+      },
+      {
+        "Name": "widthTracksTextView",
+        "Description": "A Boolean that controls whether the text container adjusts the width of its bounding rectangle when its text view resizes.",
+        "Declaration": "@property(nonatomic) BOOL widthTracksTextView;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444563-widthtrackstextview?language=objc"
+      },
+      {
+        "Name": "heightTracksTextView",
+        "Description": "A Boolean that controls whether the text container adjusts the height of its bounding rectangle when its text view resizes.",
+        "Declaration": "@property(nonatomic) BOOL heightTracksTextView;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444559-heighttrackstextview?language=objc"
+      },
+      {
+        "Name": "maximumNumberOfLines",
+        "Description": "The maximum number of lines that the text container can store.",
+        "Declaration": "@property(nonatomic) NSUInteger maximumNumberOfLines;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444531-maximumnumberoflines?language=objc"
+      },
+      {
+        "Name": "lineFragmentPadding",
+        "Description": "The value for the text inset within line fragment rectangles.",
+        "Declaration": "@property(nonatomic) CGFloat lineFragmentPadding;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "nonatomic": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444527-linefragmentpadding?language=objc"
+      },
+      {
+        "Name": "simpleRectangularTextContainer",
+        "Description": "A Boolean that indicates whether the text container’s region is a rectangle with no holes or gaps, and whose edges are parallel to the text view's coordinate system axes.",
+        "Declaration": "@property(getter=isSimpleRectangularTextContainer, readonly, nonatomic) BOOL simpleRectangularTextContainer;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSimpleRectangularTextContainer",
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/uikit/nstextcontainer/1444525-simplerectangulartextcontainer?language=objc"
+      },
+      {
+        "Name": "containerSize",
+        "Description": "The size of the text container’s bounding rectangle.",
+        "Declaration": "@property NSSize containerSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextcontainer/1444551-containersize?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2021-08-29T18:53:01.573161-07:00",
+  "Version": 2
+}
