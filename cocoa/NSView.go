@@ -30,7 +30,7 @@ func (v NSView) SetFrameOrigin(p core.NSPoint) {
 }
 
 func (v NSView) SetFrameSize(s core.NSSize) {
-	v.Set("frameSize:", s)
+	v.SetFrameSize_(s)
 }
 
 func (v NSView) SetBoundsOrigin(p core.NSPoint) {
@@ -38,7 +38,7 @@ func (v NSView) SetBoundsOrigin(p core.NSPoint) {
 }
 
 func (v NSView) SetBoundsSize(s core.NSSize) {
-	v.Set("boundsSize:", s)
+	v.SetBoundsSize_(s)
 }
 
 func (v NSView) SetOpaque(b bool) {

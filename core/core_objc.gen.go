@@ -7,11 +7,12 @@ import (
 
 /*
 #cgo CFLAGS: -x objective-c
-#cgo LDFLAGS: -lobjc -framework QuartzCore -framework Foundation
+#cgo LDFLAGS: -lobjc -framework AppKit -framework QuartzCore -framework Foundation
 #define __OBJC2__ 1
 #include <objc/message.h>
 #include <stdlib.h>
 
+#include <AppKit/AppKit.h>
 #include <QuartzCore/QuartzCore.h>
 #include <Foundation/Foundation.h>
 
@@ -336,6 +337,21 @@ BOOL CALayer_inst_needsLayout(void *id) {
 		needsLayout];
 }
 
+void CALayer_inst_resizeWithOldSuperlayerSize_(void *id, NSSize size) {
+	[(CALayer*)id
+		resizeWithOldSuperlayerSize: size];
+}
+
+void CALayer_inst_resizeSublayersWithOldSize_(void *id, NSSize size) {
+	[(CALayer*)id
+		resizeSublayersWithOldSize: size];
+}
+
+NSSize CALayer_inst_preferredFrameSize(void *id) {
+	return [(CALayer*)id
+		preferredFrameSize];
+}
+
 void* CALayer_inst_actionForKey_(void *id, void* event) {
 	return [(CALayer*)id
 		actionForKey: event];
@@ -471,6 +487,16 @@ double CALayer_inst_shadowRadius(void *id) {
 void CALayer_inst_setShadowRadius_(void *id, double value) {
 	[(CALayer*)id
 		setShadowRadius: value];
+}
+
+NSSize CALayer_inst_shadowOffset(void *id) {
+	return [(CALayer*)id
+		shadowOffset];
+}
+
+void CALayer_inst_setShadowOffset_(void *id, NSSize value) {
+	[(CALayer*)id
+		setShadowOffset: value];
 }
 
 void* CALayer_inst_style(void *id) {
@@ -736,6 +762,11 @@ void* NSAttributedString_inst_attributedStringByInflectingString(void *id) {
 void NSAttributedString_inst_drawInRect_(void *id, NSRect rect) {
 	[(NSAttributedString*)id
 		drawInRect: rect];
+}
+
+NSSize NSAttributedString_inst_size(void *id) {
+	return [(NSAttributedString*)id
+		size];
 }
 
 void* NSAttributedString_inst_init(void *id) {
@@ -1122,6 +1153,11 @@ void NSString_inst_drawInRect_withAttributes_(void *id, NSRect rect, void* attrs
 	[(NSString*)id
 		drawInRect: rect
 		withAttributes: attrs];
+}
+
+NSSize NSString_inst_sizeWithAttributes_(void *id, void* attrs) {
+	return [(NSString*)id
+		sizeWithAttributes: attrs];
 }
 
 void* NSString_inst_variantFittingPresentationWidth_(void *id, long width) {
@@ -2380,6 +2416,36 @@ func (x gen_CALayer) NeedsLayout() (
 	return
 }
 
+func (x gen_CALayer) ResizeWithOldSuperlayerSize_(
+	size NSSize,
+) {
+	C.CALayer_inst_resizeWithOldSuperlayerSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	return
+}
+
+func (x gen_CALayer) ResizeSublayersWithOldSize_(
+	size NSSize,
+) {
+	C.CALayer_inst_resizeSublayersWithOldSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	return
+}
+
+func (x gen_CALayer) PreferredFrameSize() (
+	r0 NSSize,
+) {
+	ret := C.CALayer_inst_preferredFrameSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
 func (x gen_CALayer) ActionForKey_(
 	event NSStringRef,
 ) (
@@ -2662,6 +2728,26 @@ func (x gen_CALayer) SetShadowRadius_(
 	C.CALayer_inst_setShadowRadius_(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
+	)
+	return
+}
+
+func (x gen_CALayer) ShadowOffset() (
+	r0 NSSize,
+) {
+	ret := C.CALayer_inst_shadowOffset(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_CALayer) SetShadowOffset_(
+	value NSSize,
+) {
+	C.CALayer_inst_setShadowOffset_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 	return
 }
@@ -3245,6 +3331,16 @@ func (x gen_NSAttributedString) DrawInRect_(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
+	return
+}
+
+func (x gen_NSAttributedString) Size() (
+	r0 NSSize,
+) {
+	ret := C.NSAttributedString_inst_size(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
 	return
 }
 
@@ -4220,6 +4316,19 @@ func (x gen_NSString) DrawInRect_withAttributes_(
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(attrs),
 	)
+	return
+}
+
+func (x gen_NSString) SizeWithAttributes_(
+	attrs NSDictionaryRef,
+) (
+	r0 NSSize,
+) {
+	ret := C.NSString_inst_sizeWithAttributes_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(attrs),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
 	return
 }
 

@@ -1,24 +1,7 @@
 package cocoa
 
-/*
-#cgo CFLAGS: -x objective-c
-#cgo LDFLAGS: -framework Foundation
-#import <Foundation/Foundation.h>
-#include <Cocoa/Cocoa.h>
-#include <CoreGraphics/CoreGraphics.h>
-#include <objc/objc-runtime.h>
-void NSImage_SetSize(void *id, double x, double y) {
-    NSImage *image = id;
-    [image setSize:NSMakeSize(x, y)];
-}
-*/
-import "C"
-
 import (
-	"unsafe"
-
 	"github.com/progrium/macdriver/core"
-	"github.com/progrium/macdriver/objc"
 )
 
 type NSImage struct {
@@ -30,17 +13,11 @@ func NSImage_InitWithData(data core.NSDataRef) NSImage {
 }
 
 func NSImage_ImageNamed(name string) NSImage {
-	return NSImage_fromRef(objc.Get("NSImage").Send("imageNamed:", core.String(name)))
-}
-
-// broken
-func (i NSImage) Size() (size core.NSSize) {
-	i.Send("size", &size)
-	return size
+	return NSImage_fromRef(NSImage_alloc().Send("imageNamed:", core.String(name)))
 }
 
 func (i NSImage) SetSize(size core.NSSize) {
-	C.NSImage_SetSize(unsafe.Pointer(i.Object.Pointer()), C.double(size.Width), C.double(size.Height))
+	i.SetSize_(size)
 }
 
 func (i NSImage) SetTemplate(b bool) {

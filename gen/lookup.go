@@ -144,19 +144,13 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			FromCGoFmt: "*(*" + corePkg + "NSPoint)(unsafe.Pointer(&%s))",
 			ToCGoFmt:   "*(*C.NSPoint)(unsafe.Pointer(&%s))",
 		}
-	/* FIXME
-
-		core/core_objc.gen.go:522:9: error: returning 'id' from a function with incompatible result type 'NSSize' (aka 'struct CGSize')
-	        return [(NSString*)id
-	               ^~~~~~~~~~~~~~
-	*/
-	// case "NSSize", "CGSize":
-	// 	return typeMapping{
-	// 		GoType:     "objc.NSSize",
-	// 		CType:      "NSSize",
-	// 		FromCGoFmt: "*(*objc.NSSize)(unsafe.Pointer(&%s))",
-	// 		ToCGoFmt:   "*(*C.NSSize)(unsafe.Pointer(&%s))",
-	// 	}
+	case "NSSize", "CGSize":
+		return typeMapping{
+			GoType:     corePkg + "NSSize",
+			CType:      "NSSize",
+			FromCGoFmt: "*(*" + corePkg + "NSSize)(unsafe.Pointer(&%s))",
+			ToCGoFmt:   "*(*C.NSSize)(unsafe.Pointer(&%s))",
+		}
 	case "id":
 		return typeMapping{
 			GoType:          "objc.Object",
