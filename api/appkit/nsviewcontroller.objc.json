@@ -551,15 +551,17 @@
         "TopicURL": "https://developer.apple.com/documentation/appkit/nsviewcontroller/1434472-nibname?language=objc"
       },
       {
-        "Name": "NSView",
+        "Name": "view",
         "Description": "The view controller’s primary view.",
         "Declaration": "@property(strong) IBOutlet NSView *view;",
         "Type": {
-          "Name": "IBOutlet"
+          "Name": "NSView",
+          "IsPtr": true
         },
         "Attrs": {
           "strong": true
         },
+        "IsOutlet": true,
         "TopicURL": "https://developer.apple.com/documentation/appkit/nsviewcontroller/1434401-view?language=objc"
       },
       {
@@ -735,20 +737,22 @@
         "TopicURL": "https://developer.apple.com/documentation/appkit/nsviewcontroller/1434418-preferredminimumsize?language=objc"
       },
       {
-        "Name": "NSView",
+        "Name": "sourceItemView",
         "Description": "",
         "Declaration": "@property(strong) IBOutlet NSView *sourceItemView;",
         "Type": {
-          "Name": "IBOutlet"
+          "Name": "NSView",
+          "IsPtr": true
         },
         "Attrs": {
           "strong": true
         },
+        "IsOutlet": true,
         "TopicURL": "https://developer.apple.com/documentation/appkit/nsviewcontroller/1434479-sourceitemview?language=objc"
       }
     ]
   },
   "Kind": "class",
-  "PullDate": "2021-09-20T09:55:16.168739-07:00",
+  "PullDate": "2021-10-13T14:49:31.526935-07:00",
   "Version": 2
 }
