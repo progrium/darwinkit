@@ -1,6 +1,8 @@
 package cocoa
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,7 +22,7 @@ func NSNib_InitWithNibData_Bundle(data core.NSDataRef, bundle NSBundleRef) NSNib
 func (nib NSNib) InstantiateWithOwner_TopLevelObjects(owner objc.Object) (core.NSArray, bool) {
 	var ptr uintptr
 	ok := nib.Send("instantiateWithOwner:topLevelObjects:", owner, &ptr).Bool()
-	return core.NSArray{Object: objc.ObjectPtr(ptr)}, ok
+	return core.NSArray_fromPointer(unsafe.Pointer(ptr)), ok
 }
 
 // Deprecated: use InstantiateWithOwner_TopLevelObjects
