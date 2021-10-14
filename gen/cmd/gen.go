@@ -17,6 +17,7 @@ func main() {
 		{"core", []schemaLoader{
 			loadFile("api/quartzcore/calayer.objc.json"),
 
+			loadFile("api/foundation/nsarray.objc.json"),
 			loadFile("api/foundation/nsattributedstring.objc.json"),
 			loadFile("api/foundation/nsdata.objc.json"),
 			loadFile("api/foundation/nsdictionary.objc.json"),

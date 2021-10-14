@@ -9,7 +9,7 @@ import "C"
 // NSArray is a static ordered collection of objects.
 // https://developer.apple.com/documentation/foundation/nsarray?language=objc
 type NSArray struct {
-	objc.Object
+	gen_NSArray
 }
 
 // NSArray_WithObjects creates and returns an array containing the objects in the argument list.
@@ -19,13 +19,13 @@ func NSArray_WithObjects(objs ...objc.Object) NSArray {
 	for i, obj := range objs {
 		objsInterface[i] = obj
 	}
-	return NSArray{objc.Get("NSArray").Send("arrayWithObjects:", objsInterface...)}
+	return NSArray_fromRef(objc.Get("NSArray").Send("arrayWithObjects:", objsInterface...))
 }
 
 // Count returns the number of objects in the array.
 // https://developer.apple.com/documentation/foundation/nsarray/1409982-count?language=objc
 func (a NSArray) Count() uint64 {
-	return a.Get("count").Uint()
+	return uint64(a.gen_NSArray.Count())
 }
 
 // ObjectAtIndex returns the object located at the specified index.
