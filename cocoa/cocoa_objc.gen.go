@@ -1371,6 +1371,11 @@ void* NSImage_inst_initWithPasteboard_(void *id, void* pasteboard) {
 		initWithPasteboard: pasteboard];
 }
 
+void* NSImage_inst_initWithSize_(void *id, NSSize size) {
+	return [(NSImage*)id
+		initWithSize: size];
+}
+
 BOOL NSImage_inst_isTemplate(void *id) {
 	return [(NSImage*)id
 		isTemplate];
@@ -1429,6 +1434,16 @@ void* NSImage_inst_delegate(void *id) {
 void NSImage_inst_setDelegate_(void *id, void* value) {
 	[(NSImage*)id
 		setDelegate: value];
+}
+
+NSSize NSImage_inst_size(void *id) {
+	return [(NSImage*)id
+		size];
+}
+
+void NSImage_inst_setSize_(void *id, NSSize value) {
+	[(NSImage*)id
+		setSize: value];
 }
 
 void NSImage_inst_setTemplate_(void *id, BOOL value) {
@@ -1686,6 +1701,11 @@ void NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex_(void *id, BOOL f
 	[(NSLayoutManager*)id
 		setNotShownAttribute: flag
 		forGlyphAtIndex: glyphIndex];
+}
+
+NSSize NSLayoutManager_inst_attachmentSizeForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
+	return [(NSLayoutManager*)id
+		attachmentSizeForGlyphAtIndex: glyphIndex];
 }
 
 BOOL NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
@@ -2041,6 +2061,11 @@ double NSMenu_inst_minimumWidth(void *id) {
 void NSMenu_inst_setMinimumWidth_(void *id, double value) {
 	[(NSMenu*)id
 		setMinimumWidth: value];
+}
+
+NSSize NSMenu_inst_size(void *id) {
+	return [(NSMenu*)id
+		size];
 }
 
 BOOL NSMenu_inst_allowsContextMenuPlugIns(void *id) {
@@ -2736,6 +2761,26 @@ void NSText_inst_setTextColor_(void *id, void* value) {
 		setTextColor: value];
 }
 
+NSSize NSText_inst_maxSize(void *id) {
+	return [(NSText*)id
+		maxSize];
+}
+
+void NSText_inst_setMaxSize_(void *id, NSSize value) {
+	[(NSText*)id
+		setMaxSize: value];
+}
+
+NSSize NSText_inst_minSize(void *id) {
+	return [(NSText*)id
+		minSize];
+}
+
+void NSText_inst_setMinSize_(void *id, NSSize value) {
+	[(NSText*)id
+		setMinSize: value];
+}
+
 BOOL NSText_inst_isVerticallyResizable(void *id) {
 	return [(NSText*)id
 		isVerticallyResizable];
@@ -2766,6 +2811,11 @@ void NSText_inst_setDelegate_(void *id, void* value) {
 		setDelegate: value];
 }
 
+void* NSTextContainer_inst_initWithSize_(void *id, NSSize size) {
+	return [(NSTextContainer*)id
+		initWithSize: size];
+}
+
 void NSTextContainer_inst_replaceLayoutManager_(void *id, void* newLayoutManager) {
 	[(NSTextContainer*)id
 		replaceLayoutManager: newLayoutManager];
@@ -2794,6 +2844,16 @@ void* NSTextContainer_inst_textView(void *id) {
 void NSTextContainer_inst_setTextView_(void *id, void* value) {
 	[(NSTextContainer*)id
 		setTextView: value];
+}
+
+NSSize NSTextContainer_inst_size(void *id) {
+	return [(NSTextContainer*)id
+		size];
+}
+
+void NSTextContainer_inst_setSize_(void *id, NSSize value) {
+	[(NSTextContainer*)id
+		setSize: value];
 }
 
 BOOL NSTextContainer_inst_widthTracksTextView(void *id) {
@@ -2955,6 +3015,11 @@ void NSViewController_inst_presentViewControllerAsSheet_(void *id, void* viewCon
 		presentViewControllerAsSheet: viewController];
 }
 
+void NSViewController_inst_viewWillTransitionToSize_(void *id, NSSize newSize) {
+	[(NSViewController*)id
+		viewWillTransitionToSize: newSize];
+}
+
 void* NSViewController_inst_init(void *id) {
 	return [(NSViewController*)id
 		init];
@@ -2990,6 +3055,16 @@ BOOL NSViewController_inst_isViewLoaded(void *id) {
 		isViewLoaded];
 }
 
+NSSize NSViewController_inst_preferredContentSize(void *id) {
+	return [(NSViewController*)id
+		preferredContentSize];
+}
+
+void NSViewController_inst_setPreferredContentSize_(void *id, NSSize value) {
+	[(NSViewController*)id
+		setPreferredContentSize: value];
+}
+
 void* NSViewController_inst_parentViewController(void *id) {
 	return [(NSViewController*)id
 		parentViewController];
@@ -3008,6 +3083,16 @@ NSPoint NSViewController_inst_preferredScreenOrigin(void *id) {
 void NSViewController_inst_setPreferredScreenOrigin_(void *id, NSPoint value) {
 	[(NSViewController*)id
 		setPreferredScreenOrigin: value];
+}
+
+NSSize NSViewController_inst_preferredMaximumSize(void *id) {
+	return [(NSViewController*)id
+		preferredMaximumSize];
+}
+
+NSSize NSViewController_inst_preferredMinimumSize(void *id) {
+	return [(NSViewController*)id
+		preferredMinimumSize];
 }
 
 void NSVisualEffectView_inst_viewDidMoveToWindow(void *id) {
@@ -3134,6 +3219,11 @@ void NSWindow_inst_performZoom_(void *id, void* sender) {
 void NSWindow_inst_zoom_(void *id, void* sender) {
 	[(NSWindow*)id
 		zoom: sender];
+}
+
+void NSWindow_inst_setContentSize_(void *id, NSSize size) {
+	[(NSWindow*)id
+		setContentSize: size];
 }
 
 void NSWindow_inst_orderOut_(void *id, void* sender) {
@@ -3380,6 +3470,17 @@ void NSWindow_inst_disableScreenUpdatesUntilFlush(void *id) {
 void NSWindow_inst_update(void *id) {
 	[(NSWindow*)id
 		update];
+}
+
+void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack_(void *id, void* image, NSPoint baseLocation, NSSize initialOffset, void* event, void* pboard, void* sourceObj, BOOL slideFlag) {
+	[(NSWindow*)id
+		dragImage: image
+		at: baseLocation
+		offset: initialOffset
+		event: event
+		pasteboard: pboard
+		source: sourceObj
+		slideBack: slideFlag];
 }
 
 void NSWindow_inst_unregisterDraggedTypes(void *id) {
@@ -3692,9 +3793,49 @@ NSRect NSWindow_inst_frame(void *id) {
 		frame];
 }
 
+NSSize NSWindow_inst_aspectRatio(void *id) {
+	return [(NSWindow*)id
+		aspectRatio];
+}
+
+void NSWindow_inst_setAspectRatio_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setAspectRatio: value];
+}
+
+NSSize NSWindow_inst_minSize(void *id) {
+	return [(NSWindow*)id
+		minSize];
+}
+
+void NSWindow_inst_setMinSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setMinSize: value];
+}
+
+NSSize NSWindow_inst_maxSize(void *id) {
+	return [(NSWindow*)id
+		maxSize];
+}
+
+void NSWindow_inst_setMaxSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setMaxSize: value];
+}
+
 BOOL NSWindow_inst_isZoomed(void *id) {
 	return [(NSWindow*)id
 		isZoomed];
+}
+
+NSSize NSWindow_inst_resizeIncrements(void *id) {
+	return [(NSWindow*)id
+		resizeIncrements];
+}
+
+void NSWindow_inst_setResizeIncrements_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setResizeIncrements: value];
 }
 
 BOOL NSWindow_inst_preservesContentDuringLiveResize(void *id) {
@@ -3712,6 +3853,46 @@ BOOL NSWindow_inst_inLiveResize(void *id) {
 		inLiveResize];
 }
 
+NSSize NSWindow_inst_contentAspectRatio(void *id) {
+	return [(NSWindow*)id
+		contentAspectRatio];
+}
+
+void NSWindow_inst_setContentAspectRatio_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setContentAspectRatio: value];
+}
+
+NSSize NSWindow_inst_contentMinSize(void *id) {
+	return [(NSWindow*)id
+		contentMinSize];
+}
+
+void NSWindow_inst_setContentMinSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setContentMinSize: value];
+}
+
+NSSize NSWindow_inst_contentMaxSize(void *id) {
+	return [(NSWindow*)id
+		contentMaxSize];
+}
+
+void NSWindow_inst_setContentMaxSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setContentMaxSize: value];
+}
+
+NSSize NSWindow_inst_contentResizeIncrements(void *id) {
+	return [(NSWindow*)id
+		contentResizeIncrements];
+}
+
+void NSWindow_inst_setContentResizeIncrements_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setContentResizeIncrements: value];
+}
+
 void* NSWindow_inst_contentLayoutGuide(void *id) {
 	return [(NSWindow*)id
 		contentLayoutGuide];
@@ -3720,6 +3901,26 @@ void* NSWindow_inst_contentLayoutGuide(void *id) {
 NSRect NSWindow_inst_contentLayoutRect(void *id) {
 	return [(NSWindow*)id
 		contentLayoutRect];
+}
+
+NSSize NSWindow_inst_maxFullScreenContentSize(void *id) {
+	return [(NSWindow*)id
+		maxFullScreenContentSize];
+}
+
+void NSWindow_inst_setMaxFullScreenContentSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setMaxFullScreenContentSize: value];
+}
+
+NSSize NSWindow_inst_minFullScreenContentSize(void *id) {
+	return [(NSWindow*)id
+		minFullScreenContentSize];
+}
+
+void NSWindow_inst_setMinFullScreenContentSize_(void *id, NSSize value) {
+	[(NSWindow*)id
+		setMinFullScreenContentSize: value];
 }
 
 long NSWindow_inst_level(void *id) {
@@ -4247,6 +4448,11 @@ void NSTextView_inst_drawViewBackgroundInRect_(void *id, NSRect rect) {
 		drawViewBackgroundInRect: rect];
 }
 
+void NSTextView_inst_setConstrainedFrameSize_(void *id, NSSize desiredSize) {
+	[(NSTextView*)id
+		setConstrainedFrameSize: desiredSize];
+}
+
 void NSTextView_inst_cleanUpAfterDragOperation(void *id) {
 	[(NSTextView*)id
 		cleanUpAfterDragOperation];
@@ -4413,6 +4619,13 @@ void NSTextView_inst_orderFrontSharingServicePicker_(void *id, void* sender) {
 		orderFrontSharingServicePicker: sender];
 }
 
+BOOL NSTextView_inst_dragSelectionWithEvent_offset_slideBack_(void *id, void* event, NSSize mouseOffset, BOOL slideBack) {
+	return [(NSTextView*)id
+		dragSelectionWithEvent: event
+		offset: mouseOffset
+		slideBack: slideBack];
+}
+
 void NSTextView_inst_startSpeaking_(void *id, void* sender) {
 	[(NSTextView*)id
 		startSpeaking: sender];
@@ -4536,6 +4749,16 @@ void* NSTextView_inst_textContainer(void *id) {
 void NSTextView_inst_setTextContainer_(void *id, void* value) {
 	[(NSTextView*)id
 		setTextContainer: value];
+}
+
+NSSize NSTextView_inst_textContainerInset(void *id) {
+	return [(NSTextView*)id
+		textContainerInset];
+}
+
+void NSTextView_inst_setTextContainerInset_(void *id, NSSize value) {
+	[(NSTextView*)id
+		setTextContainerInset: value];
 }
 
 NSPoint NSTextView_inst_textContainerOrigin(void *id) {
@@ -5026,9 +5249,19 @@ void NSView_inst_setFrameOrigin_(void *id, NSPoint newOrigin) {
 		setFrameOrigin: newOrigin];
 }
 
+void NSView_inst_setFrameSize_(void *id, NSSize newSize) {
+	[(NSView*)id
+		setFrameSize: newSize];
+}
+
 void NSView_inst_setBoundsOrigin_(void *id, NSPoint newOrigin) {
 	[(NSView*)id
 		setBoundsOrigin: newOrigin];
+}
+
+void NSView_inst_setBoundsSize_(void *id, NSSize newSize) {
+	[(NSView*)id
+		setBoundsSize: newSize];
 }
 
 void* NSView_inst_makeBackingLayer(void *id) {
@@ -5084,6 +5317,11 @@ void NSView_inst_writePDFInsideRect_toPasteboard_(void *id, NSRect rect, void* p
 		toPasteboard: pasteboard];
 }
 
+void NSView_inst_drawPageBorderWithSize_(void *id, NSSize borderSize) {
+	[(NSView*)id
+		drawPageBorderWithSize: borderSize];
+}
+
 NSRect NSView_inst_rectForPage_(void *id, long page) {
 	return [(NSView*)id
 		rectForPage: page];
@@ -5134,6 +5372,12 @@ void NSView_inst_displayIfNeededInRectIgnoringOpacity_(void *id, NSRect rect) {
 		displayIfNeededInRectIgnoringOpacity: rect];
 }
 
+void NSView_inst_translateRectsNeedingDisplayInRect_by_(void *id, NSRect clipRect, NSSize delta) {
+	[(NSView*)id
+		translateRectsNeedingDisplayInRect: clipRect
+		by: delta];
+}
+
 void NSView_inst_viewWillDraw(void *id) {
 	[(NSView*)id
 		viewWillDraw];
@@ -5179,6 +5423,26 @@ NSRect NSView_inst_convertRectToLayer_(void *id, NSRect rect) {
 		convertRectToLayer: rect];
 }
 
+NSSize NSView_inst_convertSizeFromBacking_(void *id, NSSize size) {
+	return [(NSView*)id
+		convertSizeFromBacking: size];
+}
+
+NSSize NSView_inst_convertSizeToBacking_(void *id, NSSize size) {
+	return [(NSView*)id
+		convertSizeToBacking: size];
+}
+
+NSSize NSView_inst_convertSizeFromLayer_(void *id, NSSize size) {
+	return [(NSView*)id
+		convertSizeFromLayer: size];
+}
+
+NSSize NSView_inst_convertSizeToLayer_(void *id, NSSize size) {
+	return [(NSView*)id
+		convertSizeToLayer: size];
+}
+
 NSPoint NSView_inst_convertPoint_fromView_(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
@@ -5188,6 +5452,18 @@ NSPoint NSView_inst_convertPoint_fromView_(void *id, NSPoint point, void* view) 
 NSPoint NSView_inst_convertPoint_toView_(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
+		toView: view];
+}
+
+NSSize NSView_inst_convertSize_fromView_(void *id, NSSize size, void* view) {
+	return [(NSView*)id
+		convertSize: size
+		fromView: view];
+}
+
+NSSize NSView_inst_convertSize_toView_(void *id, NSSize size, void* view) {
+	return [(NSView*)id
+		convertSize: size
 		toView: view];
 }
 
@@ -5213,9 +5489,24 @@ void NSView_inst_translateOriginToPoint_(void *id, NSPoint translation) {
 		translateOriginToPoint: translation];
 }
 
+void NSView_inst_scaleUnitSquareToSize_(void *id, NSSize newUnitSize) {
+	[(NSView*)id
+		scaleUnitSquareToSize: newUnitSize];
+}
+
 void NSView_inst_rotateByAngle_(void *id, double angle) {
 	[(NSView*)id
 		rotateByAngle: angle];
+}
+
+void NSView_inst_resizeSubviewsWithOldSize_(void *id, NSSize oldSize) {
+	[(NSView*)id
+		resizeSubviewsWithOldSize: oldSize];
+}
+
+void NSView_inst_resizeWithOldSuperviewSize_(void *id, NSSize oldSize) {
+	[(NSView*)id
+		resizeWithOldSuperviewSize: oldSize];
 }
 
 void NSView_inst_invalidateIntrinsicContentSize(void *id) {
@@ -5652,6 +5943,16 @@ BOOL NSView_inst_autoresizesSubviews(void *id) {
 void NSView_inst_setAutoresizesSubviews_(void *id, BOOL value) {
 	[(NSView*)id
 		setAutoresizesSubviews: value];
+}
+
+NSSize NSView_inst_fittingSize(void *id) {
+	return [(NSView*)id
+		fittingSize];
+}
+
+NSSize NSView_inst_intrinsicContentSize(void *id) {
+	return [(NSView*)id
+		intrinsicContentSize];
 }
 
 double NSView_inst_baselineOffsetFromBottom(void *id) {
@@ -8907,6 +9208,19 @@ func (x gen_NSImage) InitWithPasteboard__asNSImage(
 	return
 }
 
+func (x gen_NSImage) InitWithSize__asNSImage(
+	size core.NSSize,
+) (
+	r0 NSImage,
+) {
+	ret := C.NSImage_inst_initWithSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = NSImage_fromPointer(ret)
+	return
+}
+
 func (x gen_NSImage) IsTemplate() (
 	r0 bool,
 ) {
@@ -9017,6 +9331,26 @@ func (x gen_NSImage) SetDelegate_(
 	C.NSImage_inst_setDelegate_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSImage) Size() (
+	r0 core.NSSize,
+) {
+	ret := C.NSImage_inst_size(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSImage) SetSize_(
+	value core.NSSize,
+) {
+	C.NSImage_inst_setSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 	return
 }
@@ -9623,6 +9957,19 @@ func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex_(
 		convertToObjCBool(flag),
 		C.ulong(glyphIndex),
 	)
+	return
+}
+
+func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex_(
+	glyphIndex core.NSUInteger,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSLayoutManager_inst_attachmentSizeForGlyphAtIndex_(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(glyphIndex),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
 	return
 }
 
@@ -10397,6 +10744,16 @@ func (x gen_NSMenu) SetMinimumWidth_(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
+	return
+}
+
+func (x gen_NSMenu) Size() (
+	r0 core.NSSize,
+) {
+	ret := C.NSMenu_inst_size(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
 	return
 }
 
@@ -11918,6 +12275,46 @@ func (x gen_NSText) SetTextColor_(
 	return
 }
 
+func (x gen_NSText) MaxSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSText_inst_maxSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSText) SetMaxSize_(
+	value core.NSSize,
+) {
+	C.NSText_inst_setMaxSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSText) MinSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSText_inst_minSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSText) SetMinSize_(
+	value core.NSSize,
+) {
+	C.NSText_inst_setMinSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
 func (x gen_NSText) IsVerticallyResizable() (
 	r0 bool,
 ) {
@@ -11997,6 +12394,19 @@ func NSTextContainer_fromRef(ref objc.Ref) NSTextContainer {
 	return NSTextContainer_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSTextContainer) InitWithSize__asNSTextContainer(
+	size core.NSSize,
+) (
+	r0 NSTextContainer,
+) {
+	ret := C.NSTextContainer_inst_initWithSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = NSTextContainer_fromPointer(ret)
+	return
+}
+
 func (x gen_NSTextContainer) ReplaceLayoutManager_(
 	newLayoutManager NSLayoutManagerRef,
 ) {
@@ -12053,6 +12463,26 @@ func (x gen_NSTextContainer) SetTextView_(
 	C.NSTextContainer_inst_setTextView_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextContainer) Size() (
+	r0 core.NSSize,
+) {
+	ret := C.NSTextContainer_inst_size(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSTextContainer) SetSize_(
+	value core.NSSize,
+) {
+	C.NSTextContainer_inst_setSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 	return
 }
@@ -12361,6 +12791,16 @@ func (x gen_NSViewController) PresentViewControllerAsSheet_(
 	return
 }
 
+func (x gen_NSViewController) ViewWillTransitionToSize_(
+	newSize core.NSSize,
+) {
+	C.NSViewController_inst_viewWillTransitionToSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&newSize)),
+	)
+	return
+}
+
 func (x gen_NSViewController) Init_asNSViewController() (
 	r0 NSViewController,
 ) {
@@ -12431,6 +12871,26 @@ func (x gen_NSViewController) IsViewLoaded() (
 	return
 }
 
+func (x gen_NSViewController) PreferredContentSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSViewController_inst_preferredContentSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSViewController) SetPreferredContentSize_(
+	value core.NSSize,
+) {
+	C.NSViewController_inst_setPreferredContentSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
 func (x gen_NSViewController) ParentViewController() (
 	r0 NSViewController,
 ) {
@@ -12468,6 +12928,26 @@ func (x gen_NSViewController) SetPreferredScreenOrigin_(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&value)),
 	)
+	return
+}
+
+func (x gen_NSViewController) PreferredMaximumSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSViewController_inst_preferredMaximumSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSViewController) PreferredMinimumSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSViewController_inst_preferredMinimumSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
 	return
 }
 
@@ -12769,6 +13249,16 @@ func (x gen_NSWindow) Zoom_(
 	C.NSWindow_inst_zoom_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSWindow) SetContentSize_(
+	size core.NSSize,
+) {
+	C.NSWindow_inst_setContentSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 	return
 }
@@ -13207,6 +13697,28 @@ func (x gen_NSWindow) DisableScreenUpdatesUntilFlush() {
 func (x gen_NSWindow) Update() {
 	C.NSWindow_inst_update(
 		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack_(
+	image NSImageRef,
+	baseLocation core.NSPoint,
+	initialOffset core.NSSize,
+	event NSEventRef,
+	pboard NSPasteboardRef,
+	sourceObj objc.Ref,
+	slideFlag bool,
+) {
+	C.NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(image),
+		*(*C.NSPoint)(unsafe.Pointer(&baseLocation)),
+		*(*C.NSSize)(unsafe.Pointer(&initialOffset)),
+		objc.RefPointer(event),
+		objc.RefPointer(pboard),
+		objc.RefPointer(sourceObj),
+		convertToObjCBool(slideFlag),
 	)
 	return
 }
@@ -13846,6 +14358,66 @@ func (x gen_NSWindow) Frame() (
 	return
 }
 
+func (x gen_NSWindow) AspectRatio() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_aspectRatio(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetAspectRatio_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setAspectRatio_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) MinSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_minSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetMinSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setMinSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) MaxSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_maxSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetMaxSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setMaxSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
 func (x gen_NSWindow) IsZoomed() (
 	r0 bool,
 ) {
@@ -13853,6 +14425,26 @@ func (x gen_NSWindow) IsZoomed() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWindow) ResizeIncrements() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_resizeIncrements(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetResizeIncrements_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setResizeIncrements_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
 	return
 }
 
@@ -13886,6 +14478,86 @@ func (x gen_NSWindow) InLiveResize() (
 	return
 }
 
+func (x gen_NSWindow) ContentAspectRatio() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_contentAspectRatio(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetContentAspectRatio_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setContentAspectRatio_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) ContentMinSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_contentMinSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetContentMinSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setContentMinSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) ContentMaxSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_contentMaxSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetContentMaxSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setContentMaxSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) ContentResizeIncrements() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_contentResizeIncrements(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetContentResizeIncrements_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setContentResizeIncrements_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
 func (x gen_NSWindow) ContentLayoutGuide() (
 	r0 objc.Object,
 ) {
@@ -13903,6 +14575,46 @@ func (x gen_NSWindow) ContentLayoutRect() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) MaxFullScreenContentSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_maxFullScreenContentSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetMaxFullScreenContentSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setMaxFullScreenContentSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+	return
+}
+
+func (x gen_NSWindow) MinFullScreenContentSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSWindow_inst_minFullScreenContentSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSWindow) SetMinFullScreenContentSize_(
+	value core.NSSize,
+) {
+	C.NSWindow_inst_setMinFullScreenContentSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
 	return
 }
 
@@ -15000,6 +15712,16 @@ func (x gen_NSTextView) DrawViewBackgroundInRect_(
 	return
 }
 
+func (x gen_NSTextView) SetConstrainedFrameSize_(
+	desiredSize core.NSSize,
+) {
+	C.NSTextView_inst_setConstrainedFrameSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&desiredSize)),
+	)
+	return
+}
+
 func (x gen_NSTextView) CleanUpAfterDragOperation() {
 	C.NSTextView_inst_cleanUpAfterDragOperation(
 		unsafe.Pointer(x.Pointer()),
@@ -15317,6 +16039,23 @@ func (x gen_NSTextView) OrderFrontSharingServicePicker_(
 	return
 }
 
+func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack_(
+	event NSEventRef,
+	mouseOffset core.NSSize,
+	slideBack bool,
+) (
+	r0 bool,
+) {
+	ret := C.NSTextView_inst_dragSelectionWithEvent_offset_slideBack_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(event),
+		*(*C.NSSize)(unsafe.Pointer(&mouseOffset)),
+		convertToObjCBool(slideBack),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
 func (x gen_NSTextView) StartSpeaking_(
 	sender objc.Ref,
 ) {
@@ -15554,6 +16293,26 @@ func (x gen_NSTextView) SetTextContainer_(
 	C.NSTextView_inst_setTextContainer_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextView) TextContainerInset() (
+	r0 core.NSSize,
+) {
+	ret := C.NSTextView_inst_textContainerInset(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSTextView) SetTextContainerInset_(
+	value core.NSSize,
+) {
+	C.NSTextView_inst_setTextContainerInset_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 	return
 }
@@ -16547,12 +17306,32 @@ func (x gen_NSView) SetFrameOrigin_(
 	return
 }
 
+func (x gen_NSView) SetFrameSize_(
+	newSize core.NSSize,
+) {
+	C.NSView_inst_setFrameSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&newSize)),
+	)
+	return
+}
+
 func (x gen_NSView) SetBoundsOrigin_(
 	newOrigin core.NSPoint,
 ) {
 	C.NSView_inst_setBoundsOrigin_(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&newOrigin)),
+	)
+	return
+}
+
+func (x gen_NSView) SetBoundsSize_(
+	newSize core.NSSize,
+) {
+	C.NSView_inst_setBoundsSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
 	return
 }
@@ -16669,6 +17448,16 @@ func (x gen_NSView) WritePDFInsideRect_toPasteboard_(
 	return
 }
 
+func (x gen_NSView) DrawPageBorderWithSize_(
+	borderSize core.NSSize,
+) {
+	C.NSView_inst_drawPageBorderWithSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&borderSize)),
+	)
+	return
+}
+
 func (x gen_NSView) RectForPage_(
 	page core.NSInteger,
 ) (
@@ -16762,6 +17551,18 @@ func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity_(
 	C.NSView_inst_displayIfNeededInRectIgnoringOpacity_(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
+	)
+	return
+}
+
+func (x gen_NSView) TranslateRectsNeedingDisplayInRect_by_(
+	clipRect core.NSRect,
+	delta core.NSSize,
+) {
+	C.NSView_inst_translateRectsNeedingDisplayInRect_by_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&clipRect)),
+		*(*C.NSSize)(unsafe.Pointer(&delta)),
 	)
 	return
 }
@@ -16877,6 +17678,58 @@ func (x gen_NSView) ConvertRectToLayer_(
 	return
 }
 
+func (x gen_NSView) ConvertSizeFromBacking_(
+	size core.NSSize,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSizeFromBacking_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSizeToBacking_(
+	size core.NSSize,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSizeToBacking_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSizeFromLayer_(
+	size core.NSSize,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSizeFromLayer_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSizeToLayer_(
+	size core.NSSize,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSizeToLayer_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
 func (x gen_NSView) ConvertPoint_fromView_(
 	point core.NSPoint,
 	view NSViewRef,
@@ -16904,6 +17757,36 @@ func (x gen_NSView) ConvertPoint_toView_(
 		objc.RefPointer(view),
 	)
 	r0 = *(*core.NSPoint)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSize_fromView_(
+	size core.NSSize,
+	view NSViewRef,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSize_fromView_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+		objc.RefPointer(view),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSize_toView_(
+	size core.NSSize,
+	view NSViewRef,
+) (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_convertSize_toView_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+		objc.RefPointer(view),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
 	return
 }
 
@@ -16960,12 +17843,42 @@ func (x gen_NSView) TranslateOriginToPoint_(
 	return
 }
 
+func (x gen_NSView) ScaleUnitSquareToSize_(
+	newUnitSize core.NSSize,
+) {
+	C.NSView_inst_scaleUnitSquareToSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&newUnitSize)),
+	)
+	return
+}
+
 func (x gen_NSView) RotateByAngle_(
 	angle core.CGFloat,
 ) {
 	C.NSView_inst_rotateByAngle_(
 		unsafe.Pointer(x.Pointer()),
 		C.double(angle),
+	)
+	return
+}
+
+func (x gen_NSView) ResizeSubviewsWithOldSize_(
+	oldSize core.NSSize,
+) {
+	C.NSView_inst_resizeSubviewsWithOldSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
+	)
+	return
+}
+
+func (x gen_NSView) ResizeWithOldSuperviewSize_(
+	oldSize core.NSSize,
+) {
+	C.NSView_inst_resizeWithOldSuperviewSize_(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
 	)
 	return
 }
@@ -17815,6 +18728,26 @@ func (x gen_NSView) SetAutoresizesSubviews_(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
+	return
+}
+
+func (x gen_NSView) FittingSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_fittingSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) IntrinsicContentSize() (
+	r0 core.NSSize,
+) {
+	ret := C.NSView_inst_intrinsicContentSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
 	return
 }
 

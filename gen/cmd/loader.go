@@ -163,6 +163,21 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 		Name: name,
 	}
 	seenFrameworks := make(map[string]bool)
+	addFramework := func(fw string) {
+		if seenFrameworks[fw] {
+			return
+		}
+		seenFrameworks[fw] = true
+		desc.LinkFrameworks = append(desc.LinkFrameworks, fw)
+		desc.CIncludes = append(desc.CIncludes, fmt.Sprintf("%s/%s.h", fw, fw))
+	}
+	if name == "core" {
+		// HACK: the types in the "core" package are defined in "Foundation", but
+		// some have methods contributed by "AppKit". We don't currenly have the
+		// framework info at the method-level to detect this, so just manually
+		// inject the AppKit dependency here so that those methods will compile.
+		addFramework("AppKit")
+	}
 	for _, input := range schemas {
 		for _, fw := range input.Class.Frameworks {
 			fw = strings.ReplaceAll(fw, " ", "")
@@ -174,12 +189,7 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 			case "UIKit":
 				continue
 			}
-			if seenFrameworks[fw] {
-				continue
-			}
-			seenFrameworks[fw] = true
-			desc.LinkFrameworks = append(desc.LinkFrameworks, fw)
-			desc.CIncludes = append(desc.CIncludes, fmt.Sprintf("%s/%s.h", fw, fw))
+			addFramework(fw)
 		}
 	}
 	pkg := gen.Convert(desc, combinedImports, schemas...)

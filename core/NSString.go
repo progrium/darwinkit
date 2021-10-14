@@ -39,7 +39,5 @@ func NSString_FromObject(obj objc.Object) NSString {
 }
 
 func (s NSString) SizeWithAttributes(attrs NSDictionary) NSSize {
-	size := NSSize{}
-	s.Send("sizeWithAttributes:", attrs, &size)
-	return size
+	return s.gen_NSString.SizeWithAttributes_(attrs)
 }
