@@ -7,6 +7,7 @@ package objc
 /*
 #cgo LDFLAGS: -lobjc -framework Foundation
 #define __OBJC2__ 1
+#include <stdlib.h>
 #include <objc/runtime.h>
 #include <objc/message.h>
 
@@ -114,16 +115,14 @@ type Class interface {
 func NewClass(classname string, superclass string) Class {
 	superClass := GetClass(superclass)
 
-	ptr := C.GoObjc_AllocateClassPair(unsafe.Pointer(superClass.Pointer()), C.CString(classname))
+	ptr := allocateClassPair(unsafe.Pointer(superClass.Pointer()), classname)
 	if ptr == nil {
 		panic("unable to AllocateClassPair")
 	}
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
-	sel := selectorWithName("dealloc")
-	typeInfo := encVoid + encId + encSelector
-	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+	classAddMethod(ptr, "dealloc", encVoid+encId+encSelector)
 
 	lazilyRegisterClassInMap(classname)
 	return object{ptr: uintptr(ptr)}
@@ -164,7 +163,7 @@ func NewClassFromStruct(value interface{}) Class {
 	superClassName := descr[1]
 	superClass := GetClass(superClassName)
 
-	ptr := C.GoObjc_AllocateClassPair(unsafe.Pointer(superClass.Pointer()), C.CString(className))
+	ptr := allocateClassPair(unsafe.Pointer(superClass.Pointer()), className)
 	if ptr == nil {
 		panic("unable to AllocateClassPair")
 	}
@@ -185,25 +184,19 @@ func NewClassFromStruct(value interface{}) Class {
 	}
 
 	// Register the IBOutlet setters.
-	for setterSelector, _ := range setters {
-		sel := selectorWithName(setterSelector)
-		typeInfo := encVoid + encId + encSelector + encId
-		C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+	for setterSelector := range setters {
+		classAddMethod(ptr, setterSelector, encVoid+encId+encSelector+encId)
 	}
 
 	// Register the setValue:forKey: method for our custom IBOutlet handling
 	// if the class has any IBOutlets. (Currently only relevant for the iOS runtime)
 	if len(setters) > 0 {
-		sel := selectorWithName("setValue:forKey:")
-		typeInfo := encVoid + encId + encSelector + encId + encId
-		C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+		classAddMethod(ptr, "setValue:forKey:", encVoid+encId+encSelector+encId+encId)
 	}
 
 	// Register the dealloc method to be able to properly remove the classInfo
 	// reference to our internal pointer.
-	sel := selectorWithName("dealloc")
-	typeInfo := encVoid + encId + encSelector
-	C.GoObjc_ClassAddMethod(ptr, sel, methodCallTarget(), C.CString(typeInfo))
+	classAddMethod(ptr, "dealloc", encVoid+encId+encSelector)
 
 	classMap[className] = classInfo{
 		typ:       reflect.TypeOf(value),
@@ -214,9 +207,23 @@ func NewClassFromStruct(value interface{}) Class {
 	return object{ptr: uintptr(ptr)}
 }
 
+func allocateClassPair(ptr unsafe.Pointer, className string) unsafe.Pointer {
+	cstr := C.CString(className)
+	defer C.free(unsafe.Pointer(cstr))
+	return C.GoObjc_AllocateClassPair(ptr, cstr)
+}
+
+func classAddMethod(ptr unsafe.Pointer, sel string, typeInfo string) {
+	typeCStr := C.CString(typeInfo)
+	defer C.free(unsafe.Pointer(typeCStr))
+	C.GoObjc_ClassAddMethod(ptr, selectorWithName(sel), methodCallTarget(), typeCStr)
+}
+
 // Get looks up a class by name.
 func Get(name string) Class {
-	return object{ptr: uintptr(C.GoObjc_GetClassByName(C.CString(name)))}
+	cstr := C.CString(name)
+	defer C.free(unsafe.Pointer(cstr))
+	return object{ptr: uintptr(C.GoObjc_GetClassByName(cstr))}
 }
 
 // deprecated
@@ -255,9 +262,7 @@ func (cls object) AddMethod(selector string, fn interface{}) {
 		panic("objc: unable to add method '" + selector + "'; would shadow IBOutlet setter with same name.")
 	}
 
-	sel := selectorWithName(selector)
-	typeInfo := funcTypeInfo(fn)
-	C.GoObjc_ClassAddMethod(unsafe.Pointer(cls.Pointer()), sel, methodCallTarget(), C.CString(typeInfo))
+	classAddMethod(unsafe.Pointer(cls.Pointer()), selector, funcTypeInfo(fn))
 
 	// Add the method to the class's method map
 	clsInfo.methodMap[selector] = fn
