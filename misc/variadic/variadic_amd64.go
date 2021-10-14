@@ -5,6 +5,7 @@
 package variadic
 
 /*
+#include <stdlib.h>
 #include <dlfcn.h>
 
 void *VariadicCall(void *ctx);
@@ -49,7 +50,9 @@ type FunctionCall struct {
 // used to call the C function named by the name parameter.
 func NewFunctionCall(name string) *FunctionCall {
 	fc := new(FunctionCall)
-	fc.addr = C.LookupSymAddr(C.CString(name))
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	fc.addr = C.LookupSymAddr(cname)
 	return fc
 }
 
