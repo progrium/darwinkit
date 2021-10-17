@@ -1,7 +1,6 @@
 package cocoa
 
 import (
-	"github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -35,9 +34,4 @@ func (i NSStatusItem) Action() objc.Selector {
 
 func (i NSStatusItem) SetAction(sel objc.Selector) {
 	i.Set("action:", sel)
-}
-
-func (i NSStatusItem) Frame() (frame core.NSRect) {
-	i.Send("frame", &frame)
-	return frame
 }

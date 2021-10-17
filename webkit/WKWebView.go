@@ -25,5 +25,5 @@ func (wv WKWebView) Reload(sender objc.Object) {
 }
 
 func (wv WKWebView) LoadHTMLString(html core.NSString, url core.NSURL) {
-	wv.Send("loadHTMLString:baseURL:", html, url)
+	wv.LoadHTMLString_baseURL_(html, url)
 }
