@@ -26,7 +26,7 @@ func (v NSView) AddSubviewPositionedRelativeTo(subview NSViewRef, positioned int
 }
 
 func (v NSView) AddSubview(subview NSViewRef) {
-	v.Send("addSubview:", subview)
+	v.AddSubview_(subview)
 }
 
 func (v NSView) SetFrameOrigin(p core.NSPoint) {
@@ -38,7 +38,7 @@ func (v NSView) SetFrameSize(s core.NSSize) {
 }
 
 func (v NSView) SetFrame(r core.NSRect) {
-	v.Set("frame:", r)
+	v.SetFrame_(r)
 }
 
 func (v NSView) SetBoundsOrigin(p core.NSPoint) {
@@ -50,7 +50,7 @@ func (v NSView) SetBoundsSize(s core.NSSize) {
 }
 
 func (v NSView) SetBounds(r core.NSRect) {
-	v.Set("bounds:", r)
+	v.SetBounds_(r)
 }
 
 func (v NSView) SetOpaque(b bool) {

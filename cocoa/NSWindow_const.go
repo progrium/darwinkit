@@ -1,5 +1,12 @@
 package cocoa
 
+/*
+#cgo CFLAGS: -x objective-c
+#cgo LDFLAGS: -lobjc -framework AppKit
+#include <AppKit/AppKit.h>
+*/
+import "C"
+
 type NSBackingStoreType uintptr
 
 const (
@@ -24,15 +31,15 @@ const (
 	NSBackingStoreNonretained NSBackingStoreType = 1
 	NSBackingStoreBuffered    NSBackingStoreType = 2
 
-	NSNormalWindowLevel      = 4
-	NSFloatingWindowLevel    = 5
-	NSSubmenuWindowLevel     = 6
-	NSTornOffMenuWindowLevel = 6
-	NSMainMenuWindowLevel    = 8
-	NSStatusWindowLevel      = 9
-	NSModalPanelWindowLevel  = 10
-	NSPopUpMenuWindowLevel   = 11
-	NSScreenSaverWindowLevel = 13
+	NSNormalWindowLevel      = C.NSNormalWindowLevel
+	NSFloatingWindowLevel    = C.NSFloatingWindowLevel
+	NSSubmenuWindowLevel     = C.NSSubmenuWindowLevel
+	NSTornOffMenuWindowLevel = C.NSTornOffMenuWindowLevel
+	NSMainMenuWindowLevel    = C.NSMainMenuWindowLevel
+	NSStatusWindowLevel      = C.NSStatusWindowLevel
+	NSModalPanelWindowLevel  = C.NSModalPanelWindowLevel
+	NSPopUpMenuWindowLevel   = C.NSPopUpMenuWindowLevel
+	NSScreenSaverWindowLevel = C.NSScreenSaverWindowLevel
 
 	NSWindowCollectionBehaviorDefault                   = 0
 	NSWindowCollectionBehaviorCanJoinAllSpaces          = 1 << 0

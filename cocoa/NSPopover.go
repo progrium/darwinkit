@@ -21,7 +21,7 @@ func (p NSPopover) SetContentSize(s core.NSSize) {
 	p.Send("setContentSize:", s)
 }
 
-func (p NSPopover) SetBehavior(b uint32) {
+func (p NSPopover) SetBehavior(b int) {
 	p.SetBehavior_(core.NSInteger(b))
 }
 
