@@ -46,37 +46,35 @@ func NSStringFromString(str string) Object {
 func TestIBOutletKeyValueCodingImpl(t *testing.T) {
 	registerIBOutletTestClass()
 
-	pool := GetClass("NSAutoreleasePool").Send("alloc").Send("init")
-	defer pool.Send("release")
+	Autorelease(func() {
+		ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
+		ibo.Send("setValue:forKey:", ibo, NSStringFromString("Myself").Autorelease())
 
-	ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
-	ibo.Send("setValue:forKey:", ibo, NSStringFromString("Myself").Autorelease())
+		if ibo.Send("myselfIsNil").Bool() {
+			t.Fatal("nil iboutlet, value not properly set for key")
+		}
 
-	if ibo.Send("myselfIsNil").Bool() {
-		t.Fatal("nil iboutlet, value not properly set for key")
-	}
-
-	if !ibo.Send("myselfIsMyself").Bool() {
-		t.Fatal("value not set, or incorrectly set.")
-	}
+		if !ibo.Send("myselfIsMyself").Bool() {
+			t.Fatal("value not set, or incorrectly set.")
+		}
+	})
 }
 
 func TestIBOutletSetter(t *testing.T) {
 	registerIBOutletTestClass()
 
-	pool := GetClass("NSAutoreleasePool").Send("alloc").Send("init")
-	defer pool.Send("release")
+	Autorelease(func() {
+		ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
+		ibo.Send("setMyself:", ibo)
 
-	ibo := GetClass("IBOutletTester").Send("alloc").Send("init")
-	ibo.Send("setMyself:", ibo)
+		if ibo.Send("myselfIsNil").Bool() {
+			t.Fatal("nil iboutlet, value not properly set for key")
+		}
 
-	if ibo.Send("myselfIsNil").Bool() {
-		t.Fatal("nil iboutlet, value not properly set for key")
-	}
-
-	if !ibo.Send("myselfIsMyself").Bool() {
-		t.Fatal("value not set, or incorrectly set.")
-	}
+		if !ibo.Send("myselfIsMyself").Bool() {
+			t.Fatal("value not set, or incorrectly set.")
+		}
+	})
 }
 
 type Shadow struct {

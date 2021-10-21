@@ -177,14 +177,14 @@ func (obj object) CString() string {
 
 func (obj object) String() string {
 	// TODO: some kind of recover to catch when this doesnt work
-
-	pool := GetClass("NSAutoreleasePool").Alloc().Init()
-	defer pool.Release()
-
-	bytes := obj.Send("description").Send("UTF8String")
-	if bytes.Pointer() == 0 {
-		return "(nil)"
-	}
-
-	return bytes.CString()
+	var r string
+	Autorelease(func() {
+		bytes := obj.Send("description").Send("UTF8String")
+		if bytes.Pointer() == 0 {
+			r = "(nil)"
+		} else {
+			r = bytes.CString()
+		}
+	})
+	return r
 }

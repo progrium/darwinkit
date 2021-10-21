@@ -14,10 +14,13 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	pool := GetClass("NSAutoreleasePool").Alloc().Init()
-	defer pool.Release()
-
-	os.Exit(m.Run())
+	// default to 1 to still exit with an error if a bug leads to not updating the
+	// status
+	status := 1
+	Autorelease(func() {
+		status = m.Run()
+	})
+	os.Exit(status)
 }
 
 func BenchmarkSendMsg(b *testing.B) {
