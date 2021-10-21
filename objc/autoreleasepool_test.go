@@ -5,8 +5,7 @@ import (
 )
 
 type AutoreleaseDealloc struct {
-	Object       `objc:"AutoreleaseDealloc : NSObject"`
-	deallocCount int
+	Object `objc:"AutoreleaseDealloc : NSObject"`
 }
 
 func TestAutorelease(t *testing.T) {
