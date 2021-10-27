@@ -13,6 +13,7 @@ import (
 func main() {
 	runtime.LockOSThread()
 
+	cocoa.TerminateAfterWindowsClose = false
 	app := cocoa.NSApp_WithDidLaunch(func(n objc.Object) {
 		obj := cocoa.NSStatusBar_System().StatusItemWithLength(cocoa.NSVariableStatusItemLength)
 		obj.Retain()
