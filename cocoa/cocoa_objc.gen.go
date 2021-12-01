@@ -83,6 +83,18 @@ void* NSBundle_type_allBundles() {
 	return [NSBundle
 		allBundles];
 }
+void* NSSound_type_alloc() {
+	return [NSSound
+		alloc];
+}
+BOOL NSSound_type_canInitWithPasteboard_(void* pasteboard) {
+	return [NSSound
+		canInitWithPasteboard: pasteboard];
+}
+void* NSSound_type_soundUnfilteredTypes() {
+	return [NSSound
+		soundUnfilteredTypes];
+}
 void* NSApplication_type_alloc() {
 	return [NSApplication
 		alloc];
@@ -756,6 +768,83 @@ BOOL NSBundle_inst_isLoaded(void *id) {
 		isLoaded];
 }
 
+void* NSSound_inst_initWithContentsOfFile_byReference_(void *id, void* path, BOOL byRef) {
+	return [(NSSound*)id
+		initWithContentsOfFile: path
+		byReference: byRef];
+}
+
+void* NSSound_inst_initWithContentsOfURL_byReference_(void *id, void* url, BOOL byRef) {
+	return [(NSSound*)id
+		initWithContentsOfURL: url
+		byReference: byRef];
+}
+
+void* NSSound_inst_initWithData_(void *id, void* data) {
+	return [(NSSound*)id
+		initWithData: data];
+}
+
+void* NSSound_inst_initWithPasteboard_(void *id, void* pasteboard) {
+	return [(NSSound*)id
+		initWithPasteboard: pasteboard];
+}
+
+BOOL NSSound_inst_pause(void *id) {
+	return [(NSSound*)id
+		pause];
+}
+
+BOOL NSSound_inst_play(void *id) {
+	return [(NSSound*)id
+		play];
+}
+
+BOOL NSSound_inst_resume(void *id) {
+	return [(NSSound*)id
+		resume];
+}
+
+BOOL NSSound_inst_stop(void *id) {
+	return [(NSSound*)id
+		stop];
+}
+
+void NSSound_inst_writeToPasteboard_(void *id, void* pasteboard) {
+	[(NSSound*)id
+		writeToPasteboard: pasteboard];
+}
+
+void* NSSound_inst_init(void *id) {
+	return [(NSSound*)id
+		init];
+}
+
+void* NSSound_inst_delegate(void *id) {
+	return [(NSSound*)id
+		delegate];
+}
+
+void NSSound_inst_setDelegate_(void *id, void* value) {
+	[(NSSound*)id
+		setDelegate: value];
+}
+
+BOOL NSSound_inst_loops(void *id) {
+	return [(NSSound*)id
+		loops];
+}
+
+void NSSound_inst_setLoops_(void *id, BOOL value) {
+	[(NSSound*)id
+		setLoops: value];
+}
+
+BOOL NSSound_inst_isPlaying(void *id) {
+	return [(NSSound*)id
+		isPlaying];
+}
+
 void NSApplication_inst_run(void *id) {
 	[(NSApplication*)id
 		run];
@@ -1349,6 +1438,16 @@ void* NSButton_inst_title(void *id) {
 void NSButton_inst_setTitle_(void *id, void* value) {
 	[(NSButton*)id
 		setTitle: value];
+}
+
+void* NSButton_inst_sound(void *id) {
+	return [(NSButton*)id
+		sound];
+}
+
+void NSButton_inst_setSound_(void *id, void* value) {
+	[(NSButton*)id
+		setSound: value];
 }
 
 BOOL NSButton_inst_isSpringLoaded(void *id) {
@@ -7087,6 +7186,34 @@ func NSBundle_allBundles() (
 	return
 }
 
+func NSSound_alloc() (
+	r0 NSSound,
+) {
+	ret := C.NSSound_type_alloc()
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func NSSound_canInitWithPasteboard_(
+	pasteboard NSPasteboardRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSSound_type_canInitWithPasteboard_(
+		objc.RefPointer(pasteboard),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func NSSound_soundUnfilteredTypes() (
+	r0 core.NSArray,
+) {
+	ret := C.NSSound_type_soundUnfilteredTypes()
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
 func NSApplication_alloc() (
 	r0 NSApplication,
 ) {
@@ -8631,6 +8758,191 @@ func (x gen_NSBundle) IsLoaded() (
 	return
 }
 
+type NSSoundRef interface {
+	Pointer() uintptr
+	Init_asNSSound() NSSound
+}
+
+type gen_NSSound struct {
+	objc.Object
+}
+
+func NSSound_fromPointer(ptr unsafe.Pointer) NSSound {
+	return NSSound{gen_NSSound{
+		objc.Object_fromPointer(ptr),
+	}}
+}
+
+func NSSound_fromRef(ref objc.Ref) NSSound {
+	return NSSound_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSSound) InitWithContentsOfFile_byReference__asNSSound(
+	path core.NSStringRef,
+	byRef bool,
+) (
+	r0 NSSound,
+) {
+	ret := C.NSSound_inst_initWithContentsOfFile_byReference_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		convertToObjCBool(byRef),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) InitWithContentsOfURL_byReference__asNSSound(
+	url core.NSURLRef,
+	byRef bool,
+) (
+	r0 NSSound,
+) {
+	ret := C.NSSound_inst_initWithContentsOfURL_byReference_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		convertToObjCBool(byRef),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) InitWithData__asNSSound(
+	data core.NSDataRef,
+) (
+	r0 NSSound,
+) {
+	ret := C.NSSound_inst_initWithData_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) InitWithPasteboard__asNSSound(
+	pasteboard NSPasteboardRef,
+) (
+	r0 NSSound,
+) {
+	ret := C.NSSound_inst_initWithPasteboard_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(pasteboard),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) Pause() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_pause(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSSound) Play() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_play(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSSound) Resume() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_resume(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSSound) Stop() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_stop(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSSound) WriteToPasteboard_(
+	pasteboard NSPasteboardRef,
+) {
+	C.NSSound_inst_writeToPasteboard_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(pasteboard),
+	)
+	return
+}
+
+func (x gen_NSSound) Init_asNSSound() (
+	r0 NSSound,
+) {
+	ret := C.NSSound_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) Delegate() (
+	r0 objc.Object,
+) {
+	ret := C.NSSound_inst_delegate(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSSound) SetDelegate_(
+	value objc.Ref,
+) {
+	C.NSSound_inst_setDelegate_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSSound) Loops() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_loops(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSSound) SetLoops_(
+	value bool,
+) {
+	C.NSSound_inst_setLoops_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSSound) IsPlaying() (
+	r0 bool,
+) {
+	ret := C.NSSound_inst_isPlaying(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
 type NSApplicationRef interface {
 	Pointer() uintptr
 	Init_asNSApplication() NSApplication
@@ -9875,6 +10187,26 @@ func (x gen_NSButton) SetTitle_(
 	value core.NSStringRef,
 ) {
 	C.NSButton_inst_setTitle_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSButton) Sound() (
+	r0 NSSound,
+) {
+	ret := C.NSButton_inst_sound(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSSound_fromPointer(ret)
+	return
+}
+
+func (x gen_NSButton) SetSound_(
+	value NSSoundRef,
+) {
+	C.NSButton_inst_setSound_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)

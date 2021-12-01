@@ -1,0 +1,394 @@
+{
+  "Class": {
+    "Name": "NSSound",
+    "Description": "A simple interface for loading and playing audio files.",
+    "Declaration": "@interface NSSound : NSObject",
+    "InstanceMethods": [
+      {
+        "Name": "initWithContentsOfFile:byReference:",
+        "Description": "Initializes the receiver with the audio data located at a given filepath.",
+        "Declaration": "- (instancetype)initWithContentsOfFile:(NSString *)path \n                           byReference:(BOOL)byRef;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "byRef",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477274-initwithcontentsoffile?language=objc"
+      },
+      {
+        "Name": "initWithContentsOfURL:byReference:",
+        "Description": "Initializes the receiver with the audio data located at a given URL.",
+        "Declaration": "- (instancetype)initWithContentsOfURL:(NSURL *)url \n                          byReference:(BOOL)byRef;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "byRef",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477288-initwithcontentsofurl?language=objc"
+      },
+      {
+        "Name": "initWithData:",
+        "Description": "Initializes the receiver with a given audio data.",
+        "Declaration": "- (instancetype)initWithData:(NSData *)data;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477292-initwithdata?language=objc"
+      },
+      {
+        "Name": "initWithPasteboard:",
+        "Description": "Initializes the receiver with data from a pasteboard. The pasteboard should contain a type returned by NSSound. NSSound expects the data to have a proper magic number, sound header, and data for the formats it supports.",
+        "Declaration": "- (instancetype)initWithPasteboard:(NSPasteboard *)pasteboard;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477294-initwithpasteboard?language=objc"
+      },
+      {
+        "Name": "setName:",
+        "Description": "",
+        "Declaration": "- (BOOL)setName:(NSSoundName)string;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSSoundName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477286-setname?language=objc"
+      },
+      {
+        "Name": "pause",
+        "Description": "Pauses audio playback.",
+        "Declaration": "- (BOOL)pause;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477307-pause?language=objc"
+      },
+      {
+        "Name": "play",
+        "Description": "Initiates audio playback.",
+        "Declaration": "- (BOOL)play;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477322-play?language=objc"
+      },
+      {
+        "Name": "resume",
+        "Description": "Resumes audio playback.",
+        "Declaration": "- (BOOL)resume;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477336-resume?language=objc"
+      },
+      {
+        "Name": "stop",
+        "Description": "Concludes audio playback.",
+        "Declaration": "- (BOOL)stop;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477282-stop?language=objc"
+      },
+      {
+        "Name": "writeToPasteboard:",
+        "Description": "Writes the receiver’s data to a pasteboard.",
+        "Declaration": "- (void)writeToPasteboard:(NSPasteboard *)pasteboard;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477338-writetopasteboard?language=objc"
+      },
+      {
+        "Name": "channelMapping",
+        "Description": "Provides the receiver’s channel map.",
+        "Declaration": "- (NSArray *)channelMapping;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477326-channelmapping?language=objc"
+      },
+      {
+        "Name": "setChannelMapping:",
+        "Description": "Specifies the receiver’s channel map.",
+        "Declaration": "- (void)setChannelMapping:(NSArray *)channelMapping;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "channelMapping",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477317-setchannelmapping?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The sound’s delegate.",
+        "Declaration": "@property(weak) id\u003cNSSoundDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSSoundDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477300-delegate?language=objc"
+      },
+      {
+        "Name": "name",
+        "Description": "The name assigned to the sound.",
+        "Declaration": "@property(nullable, readonly, copy) NSSoundName name;",
+        "Type": {
+          "Name": "NSSoundName"
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477296-name?language=objc"
+      },
+      {
+        "Name": "volume",
+        "Description": "The volume of the sound.",
+        "Declaration": "@property float volume;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477315-volume?language=objc"
+      },
+      {
+        "Name": "currentTime",
+        "Description": "The sound’s playback progress, in seconds.",
+        "Declaration": "@property NSTimeInterval currentTime;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477320-currenttime?language=objc"
+      },
+      {
+        "Name": "loops",
+        "Description": "A Boolean that indicates whether the sound restarts playback when it reaches the end of its content.",
+        "Declaration": "@property BOOL loops;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477311-loops?language=objc"
+      },
+      {
+        "Name": "playbackDeviceIdentifier",
+        "Description": "Identifies the sound’s output device",
+        "Declaration": "@property(copy) NSSoundPlaybackDeviceIdentifier playbackDeviceIdentifier;",
+        "Type": {
+          "Name": "NSSoundPlaybackDeviceIdentifier"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477284-playbackdeviceidentifier?language=objc"
+      },
+      {
+        "Name": "duration",
+        "Description": "The duration of the sound, in seconds.",
+        "Declaration": "@property(readonly) NSTimeInterval duration;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477313-duration?language=objc"
+      },
+      {
+        "Name": "playing",
+        "Description": "A Boolean that indicates whether the sound is playing its audio data.",
+        "Declaration": "@property(getter=isPlaying, readonly) BOOL playing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isPlaying",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477302-playing?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "canInitWithPasteboard:",
+        "Description": "Indicates whether the receiver can create an instance of itself from the data in a pasteboard.",
+        "Declaration": "+ (BOOL)canInitWithPasteboard:(NSPasteboard *)pasteboard;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477276-caninitwithpasteboard?language=objc"
+      },
+      {
+        "Name": "soundNamed:",
+        "Description": "Returns the NSSound instance associated with a given name.",
+        "Declaration": "+ (NSSound *)soundNamed:(NSSoundName)name;",
+        "Return": {
+          "Name": "NSSound",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "name",
+            "Type": {
+              "Name": "NSSoundName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477318-soundnamed?language=objc"
+      },
+      {
+        "Name": "soundUnfilteredFileTypes",
+        "Description": "Provides the list of file types the NSSound class understands.",
+        "Declaration": "+ (NSArray *)soundUnfilteredFileTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477309-soundunfilteredfiletypes?language=objc"
+      },
+      {
+        "Name": "soundUnfilteredPasteboardTypes",
+        "Description": "Provides a list of the pasteboard types that the NSSound class can accept.",
+        "Declaration": "+ (NSArray *)soundUnfilteredPasteboardTypes;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477278-soundunfilteredpasteboardtypes?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "soundUnfilteredTypes",
+        "Description": "Provides the file types the NSSound class understands.",
+        "Declaration": "@property(class, readonly, copy) NSArray\u003cNSString *\u003e *soundUnfilteredTypes;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssound/1477290-soundunfilteredtypes?language=objc"
+      }
+    ],
+    "Frameworks": [
+      "AppKit"
+    ],
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nssound?language=objc"
+  },
+  "Kind": "class",
+  "PullDate": "2021-12-01T00:18:45.904521+05:30",
+  "Version": 2
+}
