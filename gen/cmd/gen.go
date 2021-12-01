@@ -31,6 +31,7 @@ func main() {
 
 		{"cocoa", []schemaLoader{
 			loadFile("api/foundation/nsbundle.objc.json"),
+			loadFile("api/appkit/nssound.objc.json"),
 
 			loadFile("api/appkit/nsapplication.objc.json"),
 			loadFile("api/appkit/nscontrol.objc.json"),
