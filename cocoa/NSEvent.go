@@ -7,12 +7,20 @@ package cocoa
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 
-void monitor(unsigned long long int mask) {
+void monitorGlobal(unsigned long long int mask) {
 	[NSEvent addGlobalMonitorForEventsMatchingMask:mask
             handler:^(NSEvent *incomingEvent) {
-		void monitorReentry(NSEvent *event);
-		monitorReentry(incomingEvent);
+		void monitorGlobalReentry(NSEvent *event);
+		monitorGlobalReentry(incomingEvent);
         return;
+    }];
+}
+
+void monitorLocal(unsigned long long int mask) {
+	[NSEvent addLocalMonitorForEventsMatchingMask:mask
+            handler:^(NSEvent *incomingEvent) {
+		NSEvent* monitorLocalReentry(NSEvent *event);
+		return monitorLocalReentry(incomingEvent);
     }];
 }
 
@@ -102,7 +110,12 @@ type NSEvent struct {
 
 func NSEvent_GlobalMonitorMatchingMask(mask uint64, ch chan NSEvent) {
 	monitorCh = ch
-	C.monitor(C.ulonglong(mask))
+	C.monitorGlobal(C.ulonglong(mask))
+}
+
+func NSEvent_LocalMonitorMatchingMask(mask uint64, ch chan NSEvent) {
+	monitorCh = ch
+	C.monitorLocal(C.ulonglong(mask))
 }
 
 func (e NSEvent) KeyCode() (int64, error) {
