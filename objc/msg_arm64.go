@@ -161,20 +161,9 @@ func sendMsg(obj Object, sendFunc variadic.Function, selector string, args ...in
 		}
 	}
 
-	// only objc_msgSend_stret supported for now,
-	// with limited arg counts and type support
-	/*if sendFunc.IsStRet() {
-		switch len(intArgs) {
-		case 0:
-			C.GoObjc_MsgSend_Stret0(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel)
-			return object{ptr: 0}
-		case 1:
-			C.GoObjc_MsgSend_Stret1(unsafe.Pointer(stretAddr), unsafe.Pointer(obj.Pointer()), sel, unsafe.Pointer(intArgs[0]))
-			return object{ptr: 0}
-		default:
-			log.Panicf("unsupported arg count for data-structure return call: %v(%d)", sendFunc, len(intArgs))
-		}
-	}*/
+	if sendFunc.IsStRet() {
+		panic("objc: stret is not yet supported on arm64")
+	}
 
 	fc := sendFunc.NewCall()
 	if sendFunc.IsSuper() {
