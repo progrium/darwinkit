@@ -7011,6 +7011,10 @@ void NSView_inst_setBackgroundColor_(void *id, void* value) {
 		setBackgroundColor: value];
 }
 
+
+BOOL cocoa_objc_bool_true = YES;
+BOOL cocoa_objc_bool_false = NO;
+
 */
 import "C"
 
@@ -7023,9 +7027,9 @@ func convertObjCBoolToGo(b C.BOOL) bool {
 
 func convertToObjCBool(b bool) C.BOOL {
 	if b {
-		return 1
+		return C.cocoa_objc_bool_true
 	}
-	return 0
+	return C.cocoa_objc_bool_false
 }
 
 func NSBundle_alloc() (
