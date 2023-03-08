@@ -7,8 +7,13 @@ import "unsafe"
 #import <objc/message.h>
 void * addr_msgSend = &objc_msgSend;
 void * addr_msgSendSuper = &objc_msgSendSuper;
+#if defined(__aarch64__)
+void * addr_msgSend_stret = NULL;
+void * addr_msgSendSuper_stret = NULL;
+#else
 void * addr_msgSend_stret = &objc_msgSend_stret;
 void * addr_msgSendSuper_stret = &objc_msgSendSuper_stret;
+#endif
 */
 import "C"
 

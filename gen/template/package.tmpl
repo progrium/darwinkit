@@ -59,6 +59,10 @@ bool {{.Name}}_convertObjCBool(BOOL b) {
 		];
 }
 {{end}}
+
+BOOL {{.Name}}_objc_bool_true = YES;
+BOOL {{.Name}}_objc_bool_false = NO;
+
 */
 import "C"
 
@@ -71,9 +75,9 @@ func convertObjCBoolToGo(b C.BOOL) bool {
 
 func convertToObjCBool(b bool) C.BOOL {
 	if b {
-		return 1
+		return C.{{.Name}}_objc_bool_true
 	}
-	return 0
+	return C.{{.Name}}_objc_bool_false
 }
 {{end}}
 

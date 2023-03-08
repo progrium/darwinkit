@@ -4,7 +4,9 @@
 
 package objc
 
-import "testing"
+import (
+	"testing"
+)
 
 type GoStruct struct {
 	Object `objc:"GoStruct : NSObject"`

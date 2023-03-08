@@ -458,6 +458,10 @@ void WKPreferences_inst_setTextInteractionEnabled_(void *id, BOOL value) {
 		setTextInteractionEnabled: value];
 }
 
+
+BOOL webkit_objc_bool_true = YES;
+BOOL webkit_objc_bool_false = NO;
+
 */
 import "C"
 
@@ -470,9 +474,9 @@ func convertObjCBoolToGo(b C.BOOL) bool {
 
 func convertToObjCBool(b bool) C.BOOL {
 	if b {
-		return 1
+		return C.webkit_objc_bool_true
 	}
-	return 0
+	return C.webkit_objc_bool_false
 }
 
 func WKNavigation_alloc() (

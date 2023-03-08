@@ -1977,6 +1977,10 @@ BOOL NSURLRequest_inst_assumesHTTP3Capable(void *id) {
 		assumesHTTP3Capable];
 }
 
+
+BOOL core_objc_bool_true = YES;
+BOOL core_objc_bool_false = NO;
+
 */
 import "C"
 
@@ -1989,9 +1993,9 @@ func convertObjCBoolToGo(b C.BOOL) bool {
 
 func convertToObjCBool(b bool) C.BOOL {
 	if b {
-		return 1
+		return C.core_objc_bool_true
 	}
-	return 0
+	return C.core_objc_bool_false
 }
 
 func CALayer_alloc() (
