@@ -141,7 +141,17 @@ func goMethodCallEntryPoint(p uintptr) uintptr {
 	sel := stringFromSelector(unsafe.Pointer(fetcher.Int()))
 
 	clsName := object{ptr: getObjectClass(obj).Pointer()}.className()
+	// Sometimes newer versions of macOS dynamically create a "NSKVONotifying_"
+	// prefixed subclass, which we won't have registered in classMap. However,
+	// since it's a subclass, we can probably get away with looking up the class
+	// that was inherited from based on the name part after the prefix.
+	if strings.HasPrefix(clsName, "NSKVONotifying_") {
+		clsName = strings.Replace(clsName, "NSKVONotifying_", "", 1)
+	}
 	clsInfo := classMap[clsName]
+	if clsInfo.typ == nil {
+		panic("unable to find registered class: " + clsName)
+	}
 	method := clsInfo.MethodForSelector(sel)
 
 	// Check if we have an internal pointer set for this object.
