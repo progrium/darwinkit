@@ -3679,6 +3679,16 @@ void* NSViewController_inst_nibBundle(void *id) {
 		nibBundle];
 }
 
+void* NSViewController_inst_view(void *id) {
+	return [(NSViewController*)id
+		view];
+}
+
+void NSViewController_inst_setView_(void *id, void* value) {
+	[(NSViewController*)id
+		setView: value];
+}
+
 void* NSViewController_inst_title(void *id) {
 	return [(NSViewController*)id
 		title];
@@ -3747,6 +3757,16 @@ NSSize NSViewController_inst_preferredMaximumSize(void *id) {
 NSSize NSViewController_inst_preferredMinimumSize(void *id) {
 	return [(NSViewController*)id
 		preferredMinimumSize];
+}
+
+void* NSViewController_inst_sourceItemView(void *id) {
+	return [(NSViewController*)id
+		sourceItemView];
+}
+
+void NSViewController_inst_setSourceItemView_(void *id, void* value) {
+	[(NSViewController*)id
+		setSourceItemView: value];
 }
 
 void NSVisualEffectView_inst_viewDidMoveToWindow(void *id) {
@@ -15085,6 +15105,26 @@ func (x gen_NSViewController) NibBundle() (
 	return
 }
 
+func (x gen_NSViewController) View() (
+	r0 NSView,
+) {
+	ret := C.NSViewController_inst_view(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSView_fromPointer(ret)
+	return
+}
+
+func (x gen_NSViewController) SetView_(
+	value NSViewRef,
+) {
+	C.NSViewController_inst_setView_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
 func (x gen_NSViewController) Title() (
 	r0 core.NSString,
 ) {
@@ -15222,6 +15262,26 @@ func (x gen_NSViewController) PreferredMinimumSize() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = *(*core.NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSViewController) SourceItemView() (
+	r0 NSView,
+) {
+	ret := C.NSViewController_inst_sourceItemView(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSView_fromPointer(ret)
+	return
+}
+
+func (x gen_NSViewController) SetSourceItemView_(
+	value NSViewRef,
+) {
+	C.NSViewController_inst_setSourceItemView_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
 	return
 }
 
