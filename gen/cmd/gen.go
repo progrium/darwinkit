@@ -55,6 +55,7 @@ func main() {
 			loadFile("api/appkit/nsviewcontroller.objc.json"),
 			loadFile("api/appkit/nsvisualeffectview.objc.json"),
 			loadFile("api/appkit/nswindow.objc.json"),
+			loadFile("api/appkit/nsworkspace.objc.json"),
 
 			loadFile("api/appkit/nscolor.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.TypeMethods = append(s.Class.TypeMethods, schema.Method{
