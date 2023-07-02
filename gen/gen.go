@@ -222,7 +222,8 @@ func toExportedName(name string) string {
 	return string(ch) + name[n:]
 }
 
-func Convert(desc PackageDescription, imports []PackageContents, schemas ...*schema.Schema) GoPackage {
+// Convert converts a schema into a GoPackage.
+func Convert(desc PackageDescription, imports []PackageContents, schemas ...*schema.Schema) (GoPackage, error) {
 	pkg := GoPackage{
 		PackageDescription: desc,
 	}
@@ -240,7 +241,13 @@ func Convert(desc PackageDescription, imports []PackageContents, schemas ...*sch
 			Name: cb.Class.Name,
 			Base: "objc.Object",
 		}
-		if decl := parseClassDeclaration(cb.Class.Declaration); decl.Base != "NSObject" {
+		decl, err := parseClassDeclaration(cb.Class.Declaration)
+		if err != nil {
+			return pkg, fmt.Errorf("issue with class %s failed to parse declaration %+v: %w", cb.Class.Name, cb.Class, err)
+
+		}
+
+		if decl.Base != "NSObject" {
 			// TODO require resolving every base class but for now just fall back on
 			// objc.Object if we don't have the base type in the schema
 			if cls := cb.mapClass(decl.Base); cls != nil {
@@ -273,7 +280,7 @@ func Convert(desc PackageDescription, imports []PackageContents, schemas ...*sch
 	for imp := range consumedImports {
 		pkg.Imports = append(pkg.Imports, imp)
 	}
-	return pkg
+	return pkg, nil
 }
 
 type declaration struct {
@@ -281,14 +288,16 @@ type declaration struct {
 	Base string
 }
 
-func parseClassDeclaration(decl string) declaration {
+func parseClassDeclaration(decl string) (declaration, error) {
 	decl = strings.TrimPrefix(decl, "@interface ")
 	parts := strings.Split(decl, ":")
 	if len(parts) != 2 {
-		panic(fmt.Errorf("unable to parse: %q", decl))
+		//panic(fmt.Errorf("unable to parse: %q", decl))
+		return declaration{}, fmt.Errorf("unable to parse: %q (%d parts)", decl, len(parts))
+
 	}
 	return declaration{
 		Name: strings.TrimSpace(parts[0]),
 		Base: strings.TrimSpace(parts[1]),
-	}
+	}, nil
 }
