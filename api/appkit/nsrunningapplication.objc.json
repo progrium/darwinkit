@@ -1,0 +1,363 @@
+{
+  "Class": {
+    "Name": "NSRunningApplication",
+    "Description": "An object that can manipulate and provide information for a single instance of an app.",
+    "Declaration": "@interface NSRunningApplication : NSObject",
+    "Platforms": [
+      "macOS 10.6+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "activateWithOptions:",
+        "Description": "Attempts to activate the application using the specified options.",
+        "Declaration": "- (BOOL)activateWithOptions:(NSApplicationActivationOptions)options;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSApplicationActivationOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1528725-activatewithoptions?language=objc"
+      },
+      {
+        "Name": "activateFromApplication:options:",
+        "Description": "",
+        "Declaration": "- (BOOL)activateFromApplication:(NSRunningApplication *)application \n                        options:(NSApplicationActivationOptions)options;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "application",
+            "Type": {
+              "Name": "NSRunningApplication",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSApplicationActivationOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/4168356-activatefromapplication?language=objc"
+      },
+      {
+        "Name": "hide",
+        "Description": "Attempts to hide or the application.",
+        "Declaration": "- (BOOL)hide;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1526608-hide?language=objc"
+      },
+      {
+        "Name": "unhide",
+        "Description": "Attempts to unhide or the application.",
+        "Declaration": "- (BOOL)unhide;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1534676-unhide?language=objc"
+      },
+      {
+        "Name": "forceTerminate",
+        "Description": "Attempts to force the receiver to quit.",
+        "Declaration": "- (BOOL)forceTerminate;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1530370-forceterminate?language=objc"
+      },
+      {
+        "Name": "terminate",
+        "Description": "Attempts to quit the receiver normally.",
+        "Declaration": "- (BOOL)terminate;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1528922-terminate?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "active",
+        "Description": "Indicates whether the application is currently frontmost.",
+        "Declaration": "@property(readonly, getter=isActive) BOOL active;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isActive",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1528778-active?language=objc"
+      },
+      {
+        "Name": "activationPolicy",
+        "Description": "Indicates the activation policy of the application.",
+        "Declaration": "@property(readonly) NSApplicationActivationPolicy activationPolicy;",
+        "Type": {
+          "Name": "NSApplicationActivationPolicy"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1533103-activationpolicy?language=objc"
+      },
+      {
+        "Name": "hidden",
+        "Description": "Indicates whether the application is currently hidden.",
+        "Declaration": "@property(readonly, getter=isHidden) BOOL hidden;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHidden",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1525949-hidden?language=objc"
+      },
+      {
+        "Name": "localizedName",
+        "Description": "Indicates the localized name of the application.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *localizedName;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1526751-localizedname?language=objc"
+      },
+      {
+        "Name": "icon",
+        "Description": "Returns the icon for the receiver’s application.",
+        "Declaration": "@property(nullable, readonly, strong) NSImage *icon;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1529885-icon?language=objc"
+      },
+      {
+        "Name": "bundleIdentifier",
+        "Description": "Indicates the CFBundleIdentifier of the application.",
+        "Declaration": "@property(nullable, readonly, copy) NSString *bundleIdentifier;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1529140-bundleidentifier?language=objc"
+      },
+      {
+        "Name": "bundleURL",
+        "Description": "Indicates the URL to the application's bundle.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *bundleURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1535500-bundleurl?language=objc"
+      },
+      {
+        "Name": "executableArchitecture",
+        "Description": "Indicates the executing processor architecture for the application.",
+        "Declaration": "@property(readonly) NSInteger executableArchitecture;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1524287-executablearchitecture?language=objc"
+      },
+      {
+        "Name": "executableURL",
+        "Description": "Indicates the URL to the application's executable.",
+        "Declaration": "@property(nullable, readonly, copy) NSURL *executableURL;",
+        "Type": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1531062-executableurl?language=objc"
+      },
+      {
+        "Name": "launchDate",
+        "Description": "Indicates the date when the application was launched.",
+        "Declaration": "@property(nullable, readonly, copy) NSDate *launchDate;",
+        "Type": {
+          "Name": "NSDate",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1532595-launchdate?language=objc"
+      },
+      {
+        "Name": "finishedLaunching",
+        "Description": "Indicates whether the receiver’s process has finished launching,",
+        "Declaration": "@property(readonly, getter=isFinishedLaunching) BOOL finishedLaunching;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isFinishedLaunching",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1532002-finishedlaunching?language=objc"
+      },
+      {
+        "Name": "processIdentifier",
+        "Description": "Indicates the process identifier (pid) of the application.",
+        "Declaration": "@property(readonly) pid_t processIdentifier;",
+        "Type": {
+          "Name": "pid_t"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1526998-processidentifier?language=objc"
+      },
+      {
+        "Name": "ownsMenuBar",
+        "Description": "Returns whether the application owns the current menu bar.",
+        "Declaration": "@property(readonly) BOOL ownsMenuBar;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1525915-ownsmenubar?language=objc"
+      },
+      {
+        "Name": "terminated",
+        "Description": "Indicates that the receiver’s application has terminated.",
+        "Declaration": "@property(readonly, getter=isTerminated) BOOL terminated;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isTerminated",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1532239-terminated?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "runningApplicationWithProcessIdentifier:",
+        "Description": "Returns the running application with the given process identifier, or nil if no application has that pid.",
+        "Declaration": "+ (instancetype)runningApplicationWithProcessIdentifier:(pid_t)pid;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pid",
+            "Type": {
+              "Name": "pid_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1530730-runningapplicationwithprocesside?language=objc"
+      },
+      {
+        "Name": "runningApplicationsWithBundleIdentifier:",
+        "Description": "Returns an array of currently running applications with the specified bundle identifier.",
+        "Declaration": "+ (NSArray\u003cNSRunningApplication *\u003e *)runningApplicationsWithBundleIdentifier:(NSString *)bundleIdentifier;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSRunningApplication",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "bundleIdentifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1530798-runningapplicationswithbundleide?language=objc"
+      },
+      {
+        "Name": "terminateAutomaticallyTerminableApplications",
+        "Description": "Terminates invisibly running applications as if triggered by system memory pressure.",
+        "Declaration": "+ (void)terminateAutomaticallyTerminableApplications;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1529538-terminateautomaticallyterminable?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "currentApplication",
+        "Description": "Returns an NSRunningApplication representing this application.",
+        "Declaration": "@property(class, readonly, strong) __kindof NSRunningApplication *currentApplication;",
+        "Type": {
+          "Name": "NSRunningApplication",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-01T17:22:47.073483-07:00",
+  "Version": 2
+}
