@@ -46,6 +46,7 @@ func main() {
 			loadFile("api/appkit/nsmenu.objc.json"),
 			loadFile("api/appkit/nspopover.objc.json"),
 			loadFile("api/appkit/nsmenuitem.objc.json"),
+			loadFile("api/appkit/nsrunningapplication.objc.json"),
 			loadFile("api/appkit/nsscreen.objc.json"),
 			loadFile("api/appkit/nsstatusbar.objc.json"),
 			loadFile("api/appkit/nsstatusbarbutton.objc.json"),

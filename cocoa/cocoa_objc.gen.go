@@ -363,6 +363,22 @@ void NSMenuItem_type_setUsesUserKeyEquivalents_(BOOL value) {
 	[NSMenuItem
 		setUsesUserKeyEquivalents: value];
 }
+void* NSRunningApplication_type_alloc() {
+	return [NSRunningApplication
+		alloc];
+}
+void* NSRunningApplication_type_runningApplicationsWithBundleIdentifier_(void* bundleIdentifier) {
+	return [NSRunningApplication
+		runningApplicationsWithBundleIdentifier: bundleIdentifier];
+}
+void NSRunningApplication_type_terminateAutomaticallyTerminableApplications() {
+	[NSRunningApplication
+		terminateAutomaticallyTerminableApplications];
+}
+void* NSRunningApplication_type_currentApplication() {
+	return [NSRunningApplication
+		currentApplication];
+}
 void* NSScreen_type_alloc() {
 	return [NSScreen
 		alloc];
@@ -3012,6 +3028,91 @@ void NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden_(void *id, BOOL value) {
 		setAllowsKeyEquivalentWhenHidden: value];
 }
 
+BOOL NSRunningApplication_inst_hide(void *id) {
+	return [(NSRunningApplication*)id
+		hide];
+}
+
+BOOL NSRunningApplication_inst_unhide(void *id) {
+	return [(NSRunningApplication*)id
+		unhide];
+}
+
+BOOL NSRunningApplication_inst_forceTerminate(void *id) {
+	return [(NSRunningApplication*)id
+		forceTerminate];
+}
+
+BOOL NSRunningApplication_inst_terminate(void *id) {
+	return [(NSRunningApplication*)id
+		terminate];
+}
+
+void* NSRunningApplication_inst_init(void *id) {
+	return [(NSRunningApplication*)id
+		init];
+}
+
+BOOL NSRunningApplication_inst_isActive(void *id) {
+	return [(NSRunningApplication*)id
+		isActive];
+}
+
+long NSRunningApplication_inst_activationPolicy(void *id) {
+	return [(NSRunningApplication*)id
+		activationPolicy];
+}
+
+BOOL NSRunningApplication_inst_isHidden(void *id) {
+	return [(NSRunningApplication*)id
+		isHidden];
+}
+
+void* NSRunningApplication_inst_localizedName(void *id) {
+	return [(NSRunningApplication*)id
+		localizedName];
+}
+
+void* NSRunningApplication_inst_icon(void *id) {
+	return [(NSRunningApplication*)id
+		icon];
+}
+
+void* NSRunningApplication_inst_bundleIdentifier(void *id) {
+	return [(NSRunningApplication*)id
+		bundleIdentifier];
+}
+
+void* NSRunningApplication_inst_bundleURL(void *id) {
+	return [(NSRunningApplication*)id
+		bundleURL];
+}
+
+long NSRunningApplication_inst_executableArchitecture(void *id) {
+	return [(NSRunningApplication*)id
+		executableArchitecture];
+}
+
+void* NSRunningApplication_inst_executableURL(void *id) {
+	return [(NSRunningApplication*)id
+		executableURL];
+}
+
+BOOL NSRunningApplication_inst_isFinishedLaunching(void *id) {
+	return [(NSRunningApplication*)id
+		isFinishedLaunching];
+}
+
+BOOL NSRunningApplication_inst_ownsMenuBar(void *id) {
+	return [(NSRunningApplication*)id
+		ownsMenuBar];
+}
+
+BOOL NSRunningApplication_inst_isTerminated(void *id) {
+	return [(NSRunningApplication*)id
+		isTerminated];
+}
+
 NSRect NSScreen_inst_convertRectFromBacking_(void *id, NSRect rect) {
 	return [(NSScreen*)id
 		convertRectFromBacking: rect];
@@ -5086,9 +5187,19 @@ void* NSWorkspace_inst_init(void *id) {
 		init];
 }
 
+void* NSWorkspace_inst_frontmostApplication(void *id) {
+	return [(NSWorkspace*)id
+		frontmostApplication];
+}
+
 void* NSWorkspace_inst_runningApplications(void *id) {
 	return [(NSWorkspace*)id
 		runningApplications];
+}
+
+void* NSWorkspace_inst_menuBarOwningApplication(void *id) {
+	return [(NSWorkspace*)id
+		menuBarOwningApplication];
 }
 
 void* NSWorkspace_inst_fileLabels(void *id) {
@@ -8022,6 +8133,39 @@ func NSMenuItem_setUsesUserKeyEquivalents_(
 	C.NSMenuItem_type_setUsesUserKeyEquivalents_(
 		convertToObjCBool(value),
 	)
+	return
+}
+
+func NSRunningApplication_alloc() (
+	r0 NSRunningApplication,
+) {
+	ret := C.NSRunningApplication_type_alloc()
+	r0 = NSRunningApplication_fromPointer(ret)
+	return
+}
+
+func NSRunningApplication_runningApplicationsWithBundleIdentifier_(
+	bundleIdentifier core.NSStringRef,
+) (
+	r0 core.NSArray,
+) {
+	ret := C.NSRunningApplication_type_runningApplicationsWithBundleIdentifier_(
+		objc.RefPointer(bundleIdentifier),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func NSRunningApplication_terminateAutomaticallyTerminableApplications() {
+	C.NSRunningApplication_type_terminateAutomaticallyTerminableApplications()
+	return
+}
+
+func NSRunningApplication_currentApplication() (
+	r0 NSRunningApplication,
+) {
+	ret := C.NSRunningApplication_type_currentApplication()
+	r0 = NSRunningApplication_fromPointer(ret)
 	return
 }
 
@@ -13802,6 +13946,195 @@ func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden_(
 	return
 }
 
+type NSRunningApplicationRef interface {
+	Pointer() uintptr
+	Init_asNSRunningApplication() NSRunningApplication
+}
+
+type gen_NSRunningApplication struct {
+	objc.Object
+}
+
+func NSRunningApplication_fromPointer(ptr unsafe.Pointer) NSRunningApplication {
+	return NSRunningApplication{gen_NSRunningApplication{
+		objc.Object_fromPointer(ptr),
+	}}
+}
+
+func NSRunningApplication_fromRef(ref objc.Ref) NSRunningApplication {
+	return NSRunningApplication_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSRunningApplication) Hide() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_hide(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) Unhide() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_unhide(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) ForceTerminate() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_forceTerminate(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) Terminate() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_terminate(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) Init_asNSRunningApplication() (
+	r0 NSRunningApplication,
+) {
+	ret := C.NSRunningApplication_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSRunningApplication_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) IsActive() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_isActive(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) ActivationPolicy() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSRunningApplication_inst_activationPolicy(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) IsHidden() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_isHidden(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) LocalizedName() (
+	r0 core.NSString,
+) {
+	ret := C.NSRunningApplication_inst_localizedName(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) Icon() (
+	r0 NSImage,
+) {
+	ret := C.NSRunningApplication_inst_icon(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSImage_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) BundleIdentifier() (
+	r0 core.NSString,
+) {
+	ret := C.NSRunningApplication_inst_bundleIdentifier(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) BundleURL() (
+	r0 core.NSURL,
+) {
+	ret := C.NSRunningApplication_inst_bundleURL(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) ExecutableArchitecture() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSRunningApplication_inst_executableArchitecture(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) ExecutableURL() (
+	r0 core.NSURL,
+) {
+	ret := C.NSRunningApplication_inst_executableURL(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) IsFinishedLaunching() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_isFinishedLaunching(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) OwnsMenuBar() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_ownsMenuBar(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSRunningApplication) IsTerminated() (
+	r0 bool,
+) {
+	ret := C.NSRunningApplication_inst_isTerminated(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
 type NSScreenRef interface {
 	Pointer() uintptr
 	Init_asNSScreen() NSScreen
@@ -18137,6 +18470,16 @@ func (x gen_NSWorkspace) Init_asNSWorkspace() (
 	return
 }
 
+func (x gen_NSWorkspace) FrontmostApplication() (
+	r0 NSRunningApplication,
+) {
+	ret := C.NSWorkspace_inst_frontmostApplication(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSRunningApplication_fromPointer(ret)
+	return
+}
+
 func (x gen_NSWorkspace) RunningApplications() (
 	r0 core.NSArray,
 ) {
@@ -18144,6 +18487,16 @@ func (x gen_NSWorkspace) RunningApplications() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) MenuBarOwningApplication() (
+	r0 NSRunningApplication,
+) {
+	ret := C.NSWorkspace_inst_menuBarOwningApplication(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSRunningApplication_fromPointer(ret)
 	return
 }
 
