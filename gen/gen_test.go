@@ -16,7 +16,8 @@ func TestExportedName(t *testing.T) {
 }
 
 func TestParseClassDeclaration(t *testing.T) {
-	d := parseClassDeclaration("@interface NSString : NSObject")
+	d, err := parseClassDeclaration("@interface NSString : NSObject")
+	assert.NoError(t, err)
 	assert.Equal(t, declaration{
 		Name: "NSString",
 		Base: "NSObject",

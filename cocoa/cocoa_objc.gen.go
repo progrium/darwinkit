@@ -451,6 +451,14 @@ void NSWindow_type_setAllowsAutomaticWindowTabbing_(BOOL value) {
 	[NSWindow
 		setAllowsAutomaticWindowTabbing: value];
 }
+void* NSWorkspace_type_alloc() {
+	return [NSWorkspace
+		alloc];
+}
+void* NSWorkspace_type_sharedWorkspace() {
+	return [NSWorkspace
+		sharedWorkspace];
+}
 void* NSColor_type_alloc() {
 	return [NSColor
 		alloc];
@@ -4987,6 +4995,147 @@ void NSWindow_inst_setOrderedIndex_(void *id, long value) {
 		setOrderedIndex: value];
 }
 
+BOOL NSWorkspace_inst_openURL_(void *id, void* url) {
+	return [(NSWorkspace*)id
+		openURL: url];
+}
+
+void NSWorkspace_inst_hideOtherApplications(void *id) {
+	[(NSWorkspace*)id
+		hideOtherApplications];
+}
+
+void NSWorkspace_inst_activateFileViewerSelectingURLs_(void *id, void* fileURLs) {
+	[(NSWorkspace*)id
+		activateFileViewerSelectingURLs: fileURLs];
+}
+
+BOOL NSWorkspace_inst_selectFile_inFileViewerRootedAtPath_(void *id, void* fullPath, void* rootFullPath) {
+	return [(NSWorkspace*)id
+		selectFile: fullPath
+		inFileViewerRootedAtPath: rootFullPath];
+}
+
+void* NSWorkspace_inst_URLForApplicationWithBundleIdentifier_(void *id, void* bundleIdentifier) {
+	return [(NSWorkspace*)id
+		URLForApplicationWithBundleIdentifier: bundleIdentifier];
+}
+
+void* NSWorkspace_inst_URLForApplicationToOpenURL_(void *id, void* url) {
+	return [(NSWorkspace*)id
+		URLForApplicationToOpenURL: url];
+}
+
+BOOL NSWorkspace_inst_isFilePackageAtPath_(void *id, void* fullPath) {
+	return [(NSWorkspace*)id
+		isFilePackageAtPath: fullPath];
+}
+
+void* NSWorkspace_inst_iconForFile_(void *id, void* fullPath) {
+	return [(NSWorkspace*)id
+		iconForFile: fullPath];
+}
+
+void* NSWorkspace_inst_iconForFiles_(void *id, void* fullPaths) {
+	return [(NSWorkspace*)id
+		iconForFiles: fullPaths];
+}
+
+BOOL NSWorkspace_inst_unmountAndEjectDeviceAtPath_(void *id, void* path) {
+	return [(NSWorkspace*)id
+		unmountAndEjectDeviceAtPath: path];
+}
+
+void* NSWorkspace_inst_desktopImageURLForScreen_(void *id, void* screen) {
+	return [(NSWorkspace*)id
+		desktopImageURLForScreen: screen];
+}
+
+void* NSWorkspace_inst_desktopImageOptionsForScreen_(void *id, void* screen) {
+	return [(NSWorkspace*)id
+		desktopImageOptionsForScreen: screen];
+}
+
+BOOL NSWorkspace_inst_showSearchResultsForQueryString_(void *id, void* queryString) {
+	return [(NSWorkspace*)id
+		showSearchResultsForQueryString: queryString];
+}
+
+void NSWorkspace_inst_noteFileSystemChanged_(void *id, void* path) {
+	[(NSWorkspace*)id
+		noteFileSystemChanged: path];
+}
+
+long NSWorkspace_inst_extendPowerOffBy_(void *id, long requested) {
+	return [(NSWorkspace*)id
+		extendPowerOffBy: requested];
+}
+
+void* NSWorkspace_inst_URLsForApplicationsToOpenURL_(void *id, void* url) {
+	return [(NSWorkspace*)id
+		URLsForApplicationsToOpenURL: url];
+}
+
+void* NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier_(void *id, void* bundleIdentifier) {
+	return [(NSWorkspace*)id
+		URLsForApplicationsWithBundleIdentifier: bundleIdentifier];
+}
+
+void* NSWorkspace_inst_init(void *id) {
+	return [(NSWorkspace*)id
+		init];
+}
+
+void* NSWorkspace_inst_runningApplications(void *id) {
+	return [(NSWorkspace*)id
+		runningApplications];
+}
+
+void* NSWorkspace_inst_fileLabels(void *id) {
+	return [(NSWorkspace*)id
+		fileLabels];
+}
+
+void* NSWorkspace_inst_fileLabelColors(void *id) {
+	return [(NSWorkspace*)id
+		fileLabelColors];
+}
+
+BOOL NSWorkspace_inst_accessibilityDisplayShouldDifferentiateWithoutColor(void *id) {
+	return [(NSWorkspace*)id
+		accessibilityDisplayShouldDifferentiateWithoutColor];
+}
+
+BOOL NSWorkspace_inst_accessibilityDisplayShouldIncreaseContrast(void *id) {
+	return [(NSWorkspace*)id
+		accessibilityDisplayShouldIncreaseContrast];
+}
+
+BOOL NSWorkspace_inst_accessibilityDisplayShouldReduceTransparency(void *id) {
+	return [(NSWorkspace*)id
+		accessibilityDisplayShouldReduceTransparency];
+}
+
+BOOL NSWorkspace_inst_accessibilityDisplayShouldInvertColors(void *id) {
+	return [(NSWorkspace*)id
+		accessibilityDisplayShouldInvertColors];
+}
+
+BOOL NSWorkspace_inst_accessibilityDisplayShouldReduceMotion(void *id) {
+	return [(NSWorkspace*)id
+		accessibilityDisplayShouldReduceMotion];
+}
+
+BOOL NSWorkspace_inst_isSwitchControlEnabled(void *id) {
+	return [(NSWorkspace*)id
+		isSwitchControlEnabled];
+}
+
+BOOL NSWorkspace_inst_isVoiceOverEnabled(void *id) {
+	return [(NSWorkspace*)id
+		isVoiceOverEnabled];
+}
+
 void* NSColor_inst_blendedColorWithFraction_ofColor_(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -8070,6 +8219,22 @@ func NSWindow_setAllowsAutomaticWindowTabbing_(
 	C.NSWindow_type_setAllowsAutomaticWindowTabbing_(
 		convertToObjCBool(value),
 	)
+	return
+}
+
+func NSWorkspace_alloc() (
+	r0 NSWorkspace,
+) {
+	ret := C.NSWorkspace_type_alloc()
+	r0 = NSWorkspace_fromPointer(ret)
+	return
+}
+
+func NSWorkspace_sharedWorkspace() (
+	r0 NSWorkspace,
+) {
+	ret := C.NSWorkspace_type_sharedWorkspace()
+	r0 = NSWorkspace_fromPointer(ret)
 	return
 }
 
@@ -17729,6 +17894,346 @@ func (x gen_NSWindow) SetOrderedIndex_(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
+	return
+}
+
+type NSWorkspaceRef interface {
+	Pointer() uintptr
+	Init_asNSWorkspace() NSWorkspace
+}
+
+type gen_NSWorkspace struct {
+	objc.Object
+}
+
+func NSWorkspace_fromPointer(ptr unsafe.Pointer) NSWorkspace {
+	return NSWorkspace{gen_NSWorkspace{
+		objc.Object_fromPointer(ptr),
+	}}
+}
+
+func NSWorkspace_fromRef(ref objc.Ref) NSWorkspace {
+	return NSWorkspace_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSWorkspace) OpenURL_(
+	url core.NSURLRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_openURL_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) HideOtherApplications() {
+	C.NSWorkspace_inst_hideOtherApplications(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs_(
+	fileURLs core.NSArrayRef,
+) {
+	C.NSWorkspace_inst_activateFileViewerSelectingURLs_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(fileURLs),
+	)
+	return
+}
+
+func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath_(
+	fullPath core.NSStringRef,
+	rootFullPath core.NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_selectFile_inFileViewerRootedAtPath_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(fullPath),
+		objc.RefPointer(rootFullPath),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier_(
+	bundleIdentifier core.NSStringRef,
+) (
+	r0 core.NSURL,
+) {
+	ret := C.NSWorkspace_inst_URLForApplicationWithBundleIdentifier_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(bundleIdentifier),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) URLForApplicationToOpenURL_(
+	url core.NSURLRef,
+) (
+	r0 core.NSURL,
+) {
+	ret := C.NSWorkspace_inst_URLForApplicationToOpenURL_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) IsFilePackageAtPath_(
+	fullPath core.NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_isFilePackageAtPath_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(fullPath),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) IconForFile_(
+	fullPath core.NSStringRef,
+) (
+	r0 NSImage,
+) {
+	ret := C.NSWorkspace_inst_iconForFile_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(fullPath),
+	)
+	r0 = NSImage_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) IconForFiles_(
+	fullPaths core.NSArrayRef,
+) (
+	r0 NSImage,
+) {
+	ret := C.NSWorkspace_inst_iconForFiles_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(fullPaths),
+	)
+	r0 = NSImage_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath_(
+	path core.NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_unmountAndEjectDeviceAtPath_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) DesktopImageURLForScreen_(
+	screen NSScreenRef,
+) (
+	r0 core.NSURL,
+) {
+	ret := C.NSWorkspace_inst_desktopImageURLForScreen_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(screen),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) DesktopImageOptionsForScreen_(
+	screen NSScreenRef,
+) (
+	r0 core.NSDictionary,
+) {
+	ret := C.NSWorkspace_inst_desktopImageOptionsForScreen_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(screen),
+	)
+	r0 = core.NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) ShowSearchResultsForQueryString_(
+	queryString core.NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_showSearchResultsForQueryString_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(queryString),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) NoteFileSystemChanged_(
+	path core.NSStringRef,
+) {
+	C.NSWorkspace_inst_noteFileSystemChanged_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+	)
+	return
+}
+
+func (x gen_NSWorkspace) ExtendPowerOffBy_(
+	requested core.NSInteger,
+) (
+	r0 core.NSInteger,
+) {
+	ret := C.NSWorkspace_inst_extendPowerOffBy_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(requested),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSWorkspace) URLsForApplicationsToOpenURL_(
+	url core.NSURLRef,
+) (
+	r0 core.NSArray,
+) {
+	ret := C.NSWorkspace_inst_URLsForApplicationsToOpenURL_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier_(
+	bundleIdentifier core.NSStringRef,
+) (
+	r0 core.NSArray,
+) {
+	ret := C.NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(bundleIdentifier),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) Init_asNSWorkspace() (
+	r0 NSWorkspace,
+) {
+	ret := C.NSWorkspace_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSWorkspace_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) RunningApplications() (
+	r0 core.NSArray,
+) {
+	ret := C.NSWorkspace_inst_runningApplications(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) FileLabels() (
+	r0 core.NSArray,
+) {
+	ret := C.NSWorkspace_inst_fileLabels(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) FileLabelColors() (
+	r0 core.NSArray,
+) {
+	ret := C.NSWorkspace_inst_fileLabelColors(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSWorkspace) AccessibilityDisplayShouldDifferentiateWithoutColor() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_accessibilityDisplayShouldDifferentiateWithoutColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) AccessibilityDisplayShouldIncreaseContrast() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_accessibilityDisplayShouldIncreaseContrast(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceTransparency() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_accessibilityDisplayShouldReduceTransparency(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) AccessibilityDisplayShouldInvertColors() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_accessibilityDisplayShouldInvertColors(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceMotion() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_accessibilityDisplayShouldReduceMotion(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) IsSwitchControlEnabled() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_isSwitchControlEnabled(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSWorkspace) IsVoiceOverEnabled() (
+	r0 bool,
+) {
+	ret := C.NSWorkspace_inst_isVoiceOverEnabled(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
 	return
 }
 

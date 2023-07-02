@@ -192,11 +192,14 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 			addFramework(fw)
 		}
 	}
-	pkg := gen.Convert(desc, combinedImports, schemas...)
+	pkg, err := gen.Convert(desc, combinedImports, schemas...)
+	if err != nil {
+		return fmt.Errorf("generating package %s: %w", name, err)
+	}
 	outPath := path.Join(name, desc.Name+"_objc.gen.go")
 	var b bytes.Buffer
 	if err := pkg.Generate(&b); err != nil {
-		return err
+		return fmt.Errorf("generating package %s: %w", name, err)
 	}
 	code, err := format.Source(b.Bytes())
 	if err != nil {

@@ -1,0 +1,1473 @@
+{
+  "Class": {
+    "Name": "NSWorkspace",
+    "Description": "A workspace that can launch other apps and perform a variety of file-handling services.",
+    "Declaration": "@interface NSWorkspace : NSObject",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "openURL:configuration:completionHandler:",
+        "Description": "Opens a URL asynchronously using the provided options.",
+        "Declaration": "- (void)openURL:(NSURL *)url \n  configuration:(NSWorkspaceOpenConfiguration *)configuration \ncompletionHandler:(void (^)(NSRunningApplication *app, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "configuration",
+            "Type": {
+              "Name": "NSWorkspaceOpenConfiguration",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "app",
+                    "Type": {
+                      "Name": "NSRunningApplication",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3172701-openurl?language=objc"
+      },
+      {
+        "Name": "openURLs:withApplicationAtURL:configuration:completionHandler:",
+        "Description": "Opens one or more URLs asynchronously in the specified app using the provided options.",
+        "Declaration": "- (void)openURLs:(NSArray\u003cNSURL *\u003e *)urls \nwithApplicationAtURL:(NSURL *)applicationURL \n   configuration:(NSWorkspaceOpenConfiguration *)configuration \ncompletionHandler:(void (^)(NSRunningApplication *app, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "urls",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURL",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "configuration",
+            "Type": {
+              "Name": "NSWorkspaceOpenConfiguration",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "app",
+                    "Type": {
+                      "Name": "NSRunningApplication",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3172702-openurls?language=objc"
+      },
+      {
+        "Name": "openURL:",
+        "Description": "Opens the location at the specified URL.",
+        "Declaration": "- (BOOL)openURL:(NSURL *)url;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1533463-openurl?language=objc"
+      },
+      {
+        "Name": "openApplicationAtURL:configuration:completionHandler:",
+        "Description": "Launches the app at the specified URL and asynchronously reports back on the app's status.",
+        "Declaration": "- (void)openApplicationAtURL:(NSURL *)applicationURL \n               configuration:(NSWorkspaceOpenConfiguration *)configuration \n           completionHandler:(void (^)(NSRunningApplication *app, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "configuration",
+            "Type": {
+              "Name": "NSWorkspaceOpenConfiguration",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "app",
+                    "Type": {
+                      "Name": "NSRunningApplication",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3172700-openapplicationaturl?language=objc"
+      },
+      {
+        "Name": "hideOtherApplications",
+        "Description": "Hides all applications other than the sender.",
+        "Declaration": "- (void)hideOtherApplications;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530417-hideotherapplications?language=objc"
+      },
+      {
+        "Name": "duplicateURLs:completionHandler:",
+        "Description": "Duplicates the specified URLS asynchronously in the same manner as the Finder.",
+        "Declaration": "- (void)duplicateURLs:(NSArray\u003cNSURL *\u003e *)URLs \n    completionHandler:(void (^)(NSDictionary\u003cNSURL *,NSURL *\u003e *newURLs, NSError *error))handler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "URLs",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURL",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "handler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "newURLs",
+                    "Type": {
+                      "Name": "NSDictionary",
+                      "IsPtr": true,
+                      "Params": [
+                        {
+                          "Name": "NSURL",
+                          "IsPtr": true
+                        },
+                        {
+                          "Name": "NSURL",
+                          "IsPtr": true
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1524490-duplicateurls?language=objc"
+      },
+      {
+        "Name": "recycleURLs:completionHandler:",
+        "Description": "Moves the specified URLs to the trash in the same manner as the Finder.",
+        "Declaration": "- (void)recycleURLs:(NSArray\u003cNSURL *\u003e *)URLs \n  completionHandler:(void (^)(NSDictionary\u003cNSURL *,NSURL *\u003e *newURLs, NSError *error))handler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "URLs",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURL",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "handler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "newURLs",
+                    "Type": {
+                      "Name": "NSDictionary",
+                      "IsPtr": true,
+                      "Params": [
+                        {
+                          "Name": "NSURL",
+                          "IsPtr": true
+                        },
+                        {
+                          "Name": "NSURL",
+                          "IsPtr": true
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530465-recycleurls?language=objc"
+      },
+      {
+        "Name": "activateFileViewerSelectingURLs:",
+        "Description": "Activates the Finder, and opens one or more windows selecting the specified files.",
+        "Declaration": "- (void)activateFileViewerSelectingURLs:(NSArray\u003cNSURL *\u003e *)fileURLs;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "fileURLs",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSURL",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1524549-activatefileviewerselectingurls?language=objc"
+      },
+      {
+        "Name": "selectFile:inFileViewerRootedAtPath:",
+        "Description": "Selects the file at the specified path.",
+        "Declaration": "- (BOOL)selectFile:(NSString *)fullPath \ninFileViewerRootedAtPath:(NSString *)rootFullPath;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "rootFullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1524399-selectfile?language=objc"
+      },
+      {
+        "Name": "typeOfFile:error:",
+        "Description": "Returns the uniform type identifier of the specified file, if it can be determined.",
+        "Declaration": "- (NSString *)typeOfFile:(NSString *)absoluteFilePath \n                   error:(NSError * _Nullable *)outError;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "absoluteFilePath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "outError",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1526144-typeoffile?language=objc"
+      },
+      {
+        "Name": "localizedDescriptionForType:",
+        "Description": "Returns the localized description for the specified Uniform Type Identifier (UTI).",
+        "Declaration": "- (NSString *)localizedDescriptionForType:(NSString *)typeName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "typeName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1527222-localizeddescriptionfortype?language=objc"
+      },
+      {
+        "Name": "preferredFilenameExtensionForType:",
+        "Description": "Returns the preferred filename extension for the specified Uniform Type Identifier (UTI).",
+        "Declaration": "- (NSString *)preferredFilenameExtensionForType:(NSString *)typeName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "typeName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1535654-preferredfilenameextensionfortyp?language=objc"
+      },
+      {
+        "Name": "filenameExtension:isValidForType:",
+        "Description": "Returns whether the specified filename extension is appropriate for the Uniform Type Identifier (UTI).",
+        "Declaration": "- (BOOL)filenameExtension:(NSString *)filenameExtension \n           isValidForType:(NSString *)typeName;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "filenameExtension",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "typeName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1525316-filenameextension?language=objc"
+      },
+      {
+        "Name": "type:conformsToType:",
+        "Description": "Returns a Boolean indicating that the first Uniform Type Identifier (UTI) conforms to the second UTI.",
+        "Declaration": "- (BOOL)type:(NSString *)firstTypeName \nconformsToType:(NSString *)secondTypeName;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "firstTypeName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "secondTypeName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1535903-type?language=objc"
+      },
+      {
+        "Name": "URLForApplicationWithBundleIdentifier:",
+        "Description": "Returns the URL for the app with the specified identifier.",
+        "Declaration": "- (NSURL *)URLForApplicationWithBundleIdentifier:(NSString *)bundleIdentifier;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "bundleIdentifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1534053-urlforapplicationwithbundleident?language=objc"
+      },
+      {
+        "Name": "getInfoForFile:application:type:",
+        "Description": "Retrieves information about the specified file.",
+        "Declaration": "- (BOOL)getInfoForFile:(NSString *)fullPath \n           application:(NSString * _Nullable *)appName \n                  type:(NSString * _Nullable *)type;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "appName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1535102-getinfoforfile?language=objc"
+      },
+      {
+        "Name": "URLForApplicationToOpenURL:",
+        "Description": "Returns the URL to the default app that would be opened.",
+        "Declaration": "- (NSURL *)URLForApplicationToOpenURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1533391-urlforapplicationtoopenurl?language=objc"
+      },
+      {
+        "Name": "getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:",
+        "Description": "Returns information about the file system at the specified path.",
+        "Declaration": "- (BOOL)getFileSystemInfoForPath:(NSString *)fullPath \n                     isRemovable:(BOOL *)removableFlag \n                      isWritable:(BOOL *)writableFlag \n                   isUnmountable:(BOOL *)unmountableFlag \n                     description:(NSString * _Nullable *)description \n                            type:(NSString * _Nullable *)fileSystemType;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "removableFlag",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "writableFlag",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "unmountableFlag",
+            "Type": {
+              "Name": "BOOL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "description",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          },
+          {
+            "Name": "fileSystemType",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1526987-getfilesysteminfoforpath?language=objc"
+      },
+      {
+        "Name": "isFilePackageAtPath:",
+        "Description": "Determines whether the specified path is a file package.",
+        "Declaration": "- (BOOL)isFilePackageAtPath:(NSString *)fullPath;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1529991-isfilepackageatpath?language=objc"
+      },
+      {
+        "Name": "iconForFile:",
+        "Description": "Returns an image containing the icon for the specified file.",
+        "Declaration": "- (NSImage *)iconForFile:(NSString *)fullPath;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1528158-iconforfile?language=objc"
+      },
+      {
+        "Name": "iconForFiles:",
+        "Description": "Returns an image containing the icon for the specified files.",
+        "Declaration": "- (NSImage *)iconForFiles:(NSArray\u003cNSString *\u003e *)fullPaths;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "fullPaths",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1525487-iconforfiles?language=objc"
+      },
+      {
+        "Name": "iconForContentType:",
+        "Description": "Returns an image containing the icon for the specified content type.",
+        "Declaration": "- (NSImage *)iconForContentType:(UTType *)contentType;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3553230-iconforcontenttype?language=objc"
+      },
+      {
+        "Name": "setIcon:forFile:options:",
+        "Description": "Sets the icon for the file or directory at the specified path.",
+        "Declaration": "- (BOOL)setIcon:(NSImage *)image \n        forFile:(NSString *)fullPath \n        options:(NSWorkspaceIconCreationOptions)options;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "fullPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSWorkspaceIconCreationOptions"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1529882-seticon?language=objc"
+      },
+      {
+        "Name": "unmountAndEjectDeviceAtPath:",
+        "Description": "Unmounts and ejects the device at the specified path.",
+        "Declaration": "- (BOOL)unmountAndEjectDeviceAtPath:(NSString *)path;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1527741-unmountandejectdeviceatpath?language=objc"
+      },
+      {
+        "Name": "unmountAndEjectDeviceAtURL:error:",
+        "Description": "Attempts to eject the volume mounted at the given path.",
+        "Declaration": "- (BOOL)unmountAndEjectDeviceAtURL:(NSURL *)url \n                             error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530469-unmountandejectdeviceaturl?language=objc"
+      },
+      {
+        "Name": "desktopImageURLForScreen:",
+        "Description": "Returns the URL for the desktop image for the given screen.",
+        "Declaration": "- (NSURL *)desktopImageURLForScreen:(NSScreen *)screen;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "screen",
+            "Type": {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530635-desktopimageurlforscreen?language=objc"
+      },
+      {
+        "Name": "setDesktopImageURL:forScreen:options:error:",
+        "Description": "Sets the desktop image for the given screen to the image at the specified URL.",
+        "Declaration": "- (BOOL)setDesktopImageURL:(NSURL *)url \n                 forScreen:(NSScreen *)screen \n                   options:(NSDictionary\u003cNSWorkspaceDesktopImageOptionKey, id\u003e *)options \n                     error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "screen",
+            "Type": {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSWorkspaceDesktopImageOptionKey"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1527228-setdesktopimageurl?language=objc"
+      },
+      {
+        "Name": "desktopImageOptionsForScreen:",
+        "Description": "Returns the desktop image options for the given screen.",
+        "Declaration": "- (NSDictionary\u003cNSWorkspaceDesktopImageOptionKey, id\u003e *)desktopImageOptionsForScreen:(NSScreen *)screen;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSWorkspaceDesktopImageOptionKey"
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "screen",
+            "Type": {
+              "Name": "NSScreen",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530855-desktopimageoptionsforscreen?language=objc"
+      },
+      {
+        "Name": "showSearchResultsForQueryString:",
+        "Description": "Displays a Spotlight search results window in Finder for the specified query string.",
+        "Declaration": "- (BOOL)showSearchResultsForQueryString:(NSString *)queryString;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "queryString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1532131-showsearchresultsforquerystring?language=objc"
+      },
+      {
+        "Name": "noteFileSystemChanged:",
+        "Description": "Informs the workspace object that the file system changed at the specified path.",
+        "Declaration": "- (void)noteFileSystemChanged:(NSString *)path;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1525376-notefilesystemchanged?language=objc"
+      },
+      {
+        "Name": "extendPowerOffBy:",
+        "Description": "Requests the system wait for the specified amount of time before turning off the power or logging out the user.",
+        "Declaration": "- (NSInteger)extendPowerOffBy:(NSInteger)requested;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "requested",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1533106-extendpoweroffby?language=objc"
+      },
+      {
+        "Name": "requestAuthorizationOfType:completionHandler:",
+        "Description": "Requests authorization to perform a privileged file operation.",
+        "Declaration": "- (void)requestAuthorizationOfType:(NSWorkspaceAuthorizationType)type \n                 completionHandler:(void (^)(NSWorkspaceAuthorization *authorization, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSWorkspaceAuthorizationType"
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "authorization",
+                    "Type": {
+                      "Name": "NSWorkspaceAuthorization",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3025774-requestauthorizationoftype?language=objc"
+      },
+      {
+        "Name": "setDefaultApplicationAtURL:toOpenContentType:completionHandler:",
+        "Description": "",
+        "Declaration": "- (void)setDefaultApplicationAtURL:(NSURL *)applicationURL \n                 toOpenContentType:(UTType *)contentType \n                 completionHandler:(void (^)(NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753002-setdefaultapplicationaturl?language=objc"
+      },
+      {
+        "Name": "setDefaultApplicationAtURL:toOpenContentTypeOfFileAtURL:completionHandler:",
+        "Description": "",
+        "Declaration": "- (void)setDefaultApplicationAtURL:(NSURL *)applicationURL \n      toOpenContentTypeOfFileAtURL:(NSURL *)url \n                 completionHandler:(void (^)(NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753003-setdefaultapplicationaturl?language=objc"
+      },
+      {
+        "Name": "setDefaultApplicationAtURL:toOpenFileAtURL:completionHandler:",
+        "Description": "",
+        "Declaration": "- (void)setDefaultApplicationAtURL:(NSURL *)applicationURL \n                   toOpenFileAtURL:(NSURL *)url \n                 completionHandler:(void (^)(NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753004-setdefaultapplicationaturl?language=objc"
+      },
+      {
+        "Name": "setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:",
+        "Description": "",
+        "Declaration": "- (void)setDefaultApplicationAtURL:(NSURL *)applicationURL \n              toOpenURLsWithScheme:(NSString *)urlScheme \n                 completionHandler:(void (^)(NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "applicationURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "urlScheme",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753005-setdefaultapplicationaturl?language=objc"
+      },
+      {
+        "Name": "URLForApplicationToOpenContentType:",
+        "Description": "",
+        "Declaration": "- (NSURL *)URLForApplicationToOpenContentType:(UTType *)contentType;",
+        "Return": {
+          "Name": "NSURL",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3752998-urlforapplicationtoopencontentty?language=objc"
+      },
+      {
+        "Name": "URLsForApplicationsToOpenContentType:",
+        "Description": "",
+        "Declaration": "- (NSArray\u003cNSURL *\u003e *)URLsForApplicationsToOpenContentType:(UTType *)contentType;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "contentType",
+            "Type": {
+              "Name": "UTType",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3752999-urlsforapplicationstoopencontent?language=objc"
+      },
+      {
+        "Name": "URLsForApplicationsToOpenURL:",
+        "Description": "",
+        "Declaration": "- (NSArray\u003cNSURL *\u003e *)URLsForApplicationsToOpenURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753000-urlsforapplicationstoopenurl?language=objc"
+      },
+      {
+        "Name": "URLsForApplicationsWithBundleIdentifier:",
+        "Description": "",
+        "Declaration": "- (NSArray\u003cNSURL *\u003e *)URLsForApplicationsWithBundleIdentifier:(NSString *)bundleIdentifier;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "bundleIdentifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/3753001-urlsforapplicationswithbundleide?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "notificationCenter",
+        "Description": "The notification center for workspace notifications.",
+        "Declaration": "@property(readonly, strong) NSNotificationCenter *notificationCenter;",
+        "Type": {
+          "Name": "NSNotificationCenter",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1525071-notificationcenter?language=objc"
+      },
+      {
+        "Name": "frontmostApplication",
+        "Description": "Returns the frontmost app, which is the app that receives key events.",
+        "Declaration": "@property(nullable, readonly, strong) NSRunningApplication *frontmostApplication;",
+        "Type": {
+          "Name": "NSRunningApplication",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1532097-frontmostapplication?language=objc"
+      },
+      {
+        "Name": "runningApplications",
+        "Description": "Returns an array of running apps.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSRunningApplication *\u003e *runningApplications;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSRunningApplication",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1534059-runningapplications?language=objc"
+      },
+      {
+        "Name": "menuBarOwningApplication",
+        "Description": "Returns the app that owns the currently displayed menu bar.",
+        "Declaration": "@property(nullable, readonly, strong) NSRunningApplication *menuBarOwningApplication;",
+        "Type": {
+          "Name": "NSRunningApplication",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1525848-menubarowningapplication?language=objc"
+      },
+      {
+        "Name": "fileLabels",
+        "Description": "The array of file labels, returned as strings.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *fileLabels;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1533953-filelabels?language=objc"
+      },
+      {
+        "Name": "fileLabelColors",
+        "Description": "The array of colors for the file labels.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSColor *\u003e *fileLabelColors;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSColor",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1527553-filelabelcolors?language=objc"
+      },
+      {
+        "Name": "accessibilityDisplayShouldDifferentiateWithoutColor",
+        "Description": "A Boolean value that indicates whether the app avoids conveying information through color alone.",
+        "Declaration": "@property(readonly) BOOL accessibilityDisplayShouldDifferentiateWithoutColor;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1524656-accessibilitydisplayshoulddiffer?language=objc"
+      },
+      {
+        "Name": "accessibilityDisplayShouldIncreaseContrast",
+        "Description": "A Boolean value that indicates whether the app presents a high-contrast user interface.",
+        "Declaration": "@property(readonly) BOOL accessibilityDisplayShouldIncreaseContrast;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1526290-accessibilitydisplayshouldincrea?language=objc"
+      },
+      {
+        "Name": "accessibilityDisplayShouldReduceTransparency",
+        "Description": "A Boolean value that indicates whether the app avoids using semitransparent backgrounds.",
+        "Declaration": "@property(readonly) BOOL accessibilityDisplayShouldReduceTransparency;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1533006-accessibilitydisplayshouldreduce?language=objc"
+      },
+      {
+        "Name": "accessibilityDisplayShouldInvertColors",
+        "Description": "A Boolean value that indicates whether the accessibility option to invert colors is in an enabled state.",
+        "Declaration": "@property(readonly) BOOL accessibilityDisplayShouldInvertColors;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1644068-accessibilitydisplayshouldinvert?language=objc"
+      },
+      {
+        "Name": "accessibilityDisplayShouldReduceMotion",
+        "Description": "A Boolean value that indicates whether the accessibility option to reduce motion is in an enabled state.",
+        "Declaration": "@property(readonly) BOOL accessibilityDisplayShouldReduceMotion;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1644069-accessibilitydisplayshouldreduce?language=objc"
+      },
+      {
+        "Name": "switchControlEnabled",
+        "Description": "A Boolean value that indicates whether Switch Control is currently running.",
+        "Declaration": "@property(readonly, getter=isSwitchControlEnabled) BOOL switchControlEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSwitchControlEnabled",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/2880322-switchcontrolenabled?language=objc"
+      },
+      {
+        "Name": "voiceOverEnabled",
+        "Description": "A Boolean value that indicates whether VoiceOver is currently running.",
+        "Declaration": "@property(readonly, getter=isVoiceOverEnabled) BOOL voiceOverEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVoiceOverEnabled",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/2880317-voiceoverenabled?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "sharedWorkspace",
+        "Description": "The shared workspace object.",
+        "Declaration": "@property(class, readonly, strong) NSWorkspace *sharedWorkspace;",
+        "Type": {
+          "Name": "NSWorkspace",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsworkspace/1530344-sharedworkspace?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-01T16:34:44.7059-07:00",
+  "Version": 2
+}
