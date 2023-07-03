@@ -232,6 +232,9 @@ func Convert(desc PackageDescription, imports []PackageContents, schemas ...*sch
 		{Path: "github.com/progrium/macdriver/objc"}: true,
 	}
 	for _, s := range schemas {
+		if s.Class == nil {
+			continue
+		}
 		cb := classBuilder{
 			Class:           *s.Class,
 			Imports:         imports,

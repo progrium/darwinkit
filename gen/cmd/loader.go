@@ -75,6 +75,9 @@ func filterMethods(pred func(schema.Method) bool) schemaUpdater {
 		return out
 	}
 	return func(s *schema.Schema) error {
+		if s.Class == nil {
+			return nil
+		}
 		s.Class.TypeMethods = filter(s.Class.TypeMethods)
 		s.Class.InstanceMethods = filter(s.Class.InstanceMethods)
 		return nil
@@ -92,6 +95,9 @@ func filterProps(pred func(schema.Property) bool) schemaUpdater {
 		return out
 	}
 	return func(s *schema.Schema) error {
+		if s.Class == nil {
+			return nil
+		}
 		s.Class.TypeProperties = filter(s.Class.TypeProperties)
 		s.Class.InstanceProperties = filter(s.Class.InstanceProperties)
 		return nil
@@ -119,7 +125,9 @@ func loadSchemas(contents []schemaLoader) ([]*schema.Schema, error) {
 func definedClasses(schemas []*schema.Schema) map[string]bool {
 	r := map[string]bool{}
 	for _, input := range schemas {
-		r[input.Class.Name] = true
+		if input.Class != nil {
+			r[input.Class.Name] = true
+		}
 	}
 	return r
 }
@@ -179,6 +187,10 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 		addFramework("AppKit")
 	}
 	for _, input := range schemas {
+		if input.Class == nil {
+			continue
+		}
+
 		for _, fw := range input.Class.Frameworks {
 			fw = strings.ReplaceAll(fw, " ", "")
 			// FIXME is there a better way to determine which includes and frameworks

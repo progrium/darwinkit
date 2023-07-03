@@ -28,6 +28,9 @@ func main() {
 			loadFile("api/foundation/nsurl.objc.json"),
 			loadFile("api/foundation/nsurlrequest.objc.json"),
 		}},
+		{"coregraphics", []schemaLoader{
+			loadFile("api/coregraphics/quartz_event_services.objc.json"),
+		}},
 
 		{"cocoa", []schemaLoader{
 			loadFile("api/foundation/nsbundle.objc.json"),
