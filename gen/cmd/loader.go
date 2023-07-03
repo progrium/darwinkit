@@ -64,7 +64,7 @@ func loadFile(filename string) schemaLoader {
 	return loadFileBase(filename).Then(filterDeprecated)
 }
 
-func filterMethods(pred func(schema.Method) bool) schemaUpdater {
+func filterClassMethods(pred func(schema.Method) bool) schemaUpdater {
 	filter := func(in []schema.Method) []schema.Method {
 		var out []schema.Method
 		for _, m := range in {
@@ -75,13 +75,16 @@ func filterMethods(pred func(schema.Method) bool) schemaUpdater {
 		return out
 	}
 	return func(s *schema.Schema) error {
+		if s.Class == nil {
+			return nil
+		}
 		s.Class.TypeMethods = filter(s.Class.TypeMethods)
 		s.Class.InstanceMethods = filter(s.Class.InstanceMethods)
 		return nil
 	}
 }
 
-func filterProps(pred func(schema.Property) bool) schemaUpdater {
+func filterClassProperties(pred func(schema.Property) bool) schemaUpdater {
 	filter := func(in []schema.Property) []schema.Property {
 		var out []schema.Property
 		for _, m := range in {
@@ -92,15 +95,19 @@ func filterProps(pred func(schema.Property) bool) schemaUpdater {
 		return out
 	}
 	return func(s *schema.Schema) error {
+		if s.Class == nil {
+			return nil
+		}
 		s.Class.TypeProperties = filter(s.Class.TypeProperties)
 		s.Class.InstanceProperties = filter(s.Class.InstanceProperties)
 		return nil
 	}
 }
 
-var filterDeprecated = filterMethods(func(m schema.Method) bool {
+// filterDeprecated removes deprecated methods and properties from a class.
+var filterDeprecated = filterClassMethods(func(m schema.Method) bool {
 	return !m.Deprecated
-}).Then(filterProps(func(p schema.Property) bool {
+}).Then(filterClassProperties(func(p schema.Property) bool {
 	return !p.Deprecated
 }))
 
@@ -119,7 +126,9 @@ func loadSchemas(contents []schemaLoader) ([]*schema.Schema, error) {
 func definedClasses(schemas []*schema.Schema) map[string]bool {
 	r := map[string]bool{}
 	for _, input := range schemas {
-		r[input.Class.Name] = true
+		if input.Class != nil {
+			r[input.Class.Name] = true
+		}
 	}
 	return r
 }
@@ -129,7 +138,7 @@ func generate(basePackage string, packages []pkg) error {
 	for _, p := range packages {
 		schemas, err := loadSchemas(p.Contents)
 		if err != nil {
-			return err
+			return fmt.Errorf("loading schemas for package %q: %w", p.Name, err)
 		}
 		if err := generatePackage(p.Name, schemas, imports); err != nil {
 			return err
@@ -179,6 +188,9 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 		addFramework("AppKit")
 	}
 	for _, input := range schemas {
+		if input.Class == nil {
+			continue
+		}
 		for _, fw := range input.Class.Frameworks {
 			fw = strings.ReplaceAll(fw, " ", "")
 			// FIXME is there a better way to determine which includes and frameworks
@@ -194,12 +206,12 @@ func generatePackage(name string, schemas []*schema.Schema, imports []gen.Packag
 	}
 	pkg, err := gen.Convert(desc, combinedImports, schemas...)
 	if err != nil {
-		return fmt.Errorf("generating package %s: %w", name, err)
+		return fmt.Errorf("error converting package %s: %w", name, err)
 	}
 	outPath := path.Join(name, desc.Name+"_objc.gen.go")
 	var b bytes.Buffer
 	if err := pkg.Generate(&b); err != nil {
-		return fmt.Errorf("generating package %s: %w", name, err)
+		return fmt.Errorf("error generating package %s: %w", name, err)
 	}
 	code, err := format.Source(b.Bytes())
 	if err != nil {

@@ -94,6 +94,16 @@ type ClassDef struct {
 	InstanceMethods []MethodDef
 }
 
+type StructDef struct {
+	Name   string
+	Fields []StructField
+}
+
+type StructField struct {
+	Name string
+	Type string
+}
+
 type PackageDescription struct {
 	Name           string
 	LinkFrameworks []string
@@ -107,6 +117,7 @@ type GoPackage struct {
 	MsgSendWrappers      []CGoMsgSend
 	CGoWrapperFuncs      []MethodDef
 	Classes              []ClassDef
+	Structs              []StructDef
 }
 
 func (p *GoPackage) Generate(w io.Writer) error {

@@ -28,6 +28,9 @@ func main() {
 			loadFile("api/foundation/nsurl.objc.json"),
 			loadFile("api/foundation/nsurlrequest.objc.json"),
 		}},
+		// {"coregraphics", []schemaLoader{
+		// 	loadFile("api/coregraphics/cgrect.objc.json"),
+		// }},
 
 		{"cocoa", []schemaLoader{
 			loadFile("api/foundation/nsbundle.objc.json"),
@@ -99,7 +102,7 @@ func main() {
 				})
 				return nil
 			}),
-			loadFile("api/appkit/nsview.objc.json").Then(filterProps(func(p schema.Property) bool {
+			loadFile("api/appkit/nsview.objc.json").Then(filterClassProperties(func(p schema.Property) bool {
 				// only available on macOS 11+, causing build errors on GitHub
 				return p.Name != "safeAreaRect"
 			})).Then(func(s *schema.Schema) error {
@@ -114,7 +117,7 @@ func main() {
 		{"webkit", []schemaLoader{
 			loadFile("api/webkit/wknavigation.objc.json"),
 			loadFile("api/webkit/wkuserscript.objc.json"),
-			loadFile("api/webkit/wkwebview.objc.json").Then(filterProps(func(p schema.Property) bool {
+			loadFile("api/webkit/wkwebview.objc.json").Then(filterClassProperties(func(p schema.Property) bool {
 				return p.Name != "pageZoom"
 			})),
 			loadFile("api/webkit/wkwebviewconfiguration.objc.json"),
