@@ -290,6 +290,18 @@ BOOL NSURLRequest_type_supportsSecureCoding() {
 	return [NSURLRequest
 		supportsSecureCoding];
 }
+void* NSUserDefaults_type_alloc() {
+	return [NSUserDefaults
+		alloc];
+}
+void NSUserDefaults_type_resetStandardUserDefaults() {
+	[NSUserDefaults
+		resetStandardUserDefaults];
+}
+void* NSUserDefaults_type_standardUserDefaults() {
+	return [NSUserDefaults
+		standardUserDefaults];
+}
 
 
 void* CALayer_inst_init(void *id) {
@@ -1977,6 +1989,163 @@ BOOL NSURLRequest_inst_assumesHTTP3Capable(void *id) {
 		assumesHTTP3Capable];
 }
 
+void* NSUserDefaults_inst_init(void *id) {
+	return [(NSUserDefaults*)id
+		init];
+}
+
+void* NSUserDefaults_inst_initWithSuiteName_(void *id, void* suitename) {
+	return [(NSUserDefaults*)id
+		initWithSuiteName: suitename];
+}
+
+void* NSUserDefaults_inst_objectForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		objectForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_URLForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		URLForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_arrayForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		arrayForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dictionaryForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		dictionaryForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_stringForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		stringForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_stringArrayForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		stringArrayForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dataForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		dataForKey: defaultName];
+}
+
+BOOL NSUserDefaults_inst_boolForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		boolForKey: defaultName];
+}
+
+long NSUserDefaults_inst_integerForKey_(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		integerForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dictionaryRepresentation(void *id) {
+	return [(NSUserDefaults*)id
+		dictionaryRepresentation];
+}
+
+void NSUserDefaults_inst_setObject_forKey_(void *id, void* value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setObject: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setInteger_forKey_(void *id, long value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setInteger: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setBool_forKey_(void *id, BOOL value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setBool: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setURL_forKey_(void *id, void* url, void* defaultName) {
+	[(NSUserDefaults*)id
+		setURL: url
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_removeObjectForKey_(void *id, void* defaultName) {
+	[(NSUserDefaults*)id
+		removeObjectForKey: defaultName];
+}
+
+void NSUserDefaults_inst_addSuiteNamed_(void *id, void* suiteName) {
+	[(NSUserDefaults*)id
+		addSuiteNamed: suiteName];
+}
+
+void NSUserDefaults_inst_removeSuiteNamed_(void *id, void* suiteName) {
+	[(NSUserDefaults*)id
+		removeSuiteNamed: suiteName];
+}
+
+void NSUserDefaults_inst_registerDefaults_(void *id, void* registrationDictionary) {
+	[(NSUserDefaults*)id
+		registerDefaults: registrationDictionary];
+}
+
+void* NSUserDefaults_inst_persistentDomainForName_(void *id, void* domainName) {
+	return [(NSUserDefaults*)id
+		persistentDomainForName: domainName];
+}
+
+void NSUserDefaults_inst_setPersistentDomain_forName_(void *id, void* domain, void* domainName) {
+	[(NSUserDefaults*)id
+		setPersistentDomain: domain
+		forName: domainName];
+}
+
+void NSUserDefaults_inst_removePersistentDomainForName_(void *id, void* domainName) {
+	[(NSUserDefaults*)id
+		removePersistentDomainForName: domainName];
+}
+
+void* NSUserDefaults_inst_volatileDomainForName_(void *id, void* domainName) {
+	return [(NSUserDefaults*)id
+		volatileDomainForName: domainName];
+}
+
+void NSUserDefaults_inst_setVolatileDomain_forName_(void *id, void* domain, void* domainName) {
+	[(NSUserDefaults*)id
+		setVolatileDomain: domain
+		forName: domainName];
+}
+
+void NSUserDefaults_inst_removeVolatileDomainForName_(void *id, void* domainName) {
+	[(NSUserDefaults*)id
+		removeVolatileDomainForName: domainName];
+}
+
+BOOL NSUserDefaults_inst_objectIsForcedForKey_(void *id, void* key) {
+	return [(NSUserDefaults*)id
+		objectIsForcedForKey: key];
+}
+
+BOOL NSUserDefaults_inst_objectIsForcedForKey_inDomain_(void *id, void* key, void* domain) {
+	return [(NSUserDefaults*)id
+		objectIsForcedForKey: key
+		inDomain: domain];
+}
+
+BOOL NSUserDefaults_inst_synchronize(void *id) {
+	return [(NSUserDefaults*)id
+		synchronize];
+}
+
+void* NSUserDefaults_inst_volatileDomainNames(void *id) {
+	return [(NSUserDefaults*)id
+		volatileDomainNames];
+}
+
 
 BOOL core_objc_bool_true = YES;
 BOOL core_objc_bool_false = NO;
@@ -2661,6 +2830,27 @@ func NSURLRequest_supportsSecureCoding() (
 ) {
 	ret := C.NSURLRequest_type_supportsSecureCoding()
 	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func NSUserDefaults_alloc() (
+	r0 NSUserDefaults,
+) {
+	ret := C.NSUserDefaults_type_alloc()
+	r0 = NSUserDefaults_fromPointer(ret)
+	return
+}
+
+func NSUserDefaults_resetStandardUserDefaults() {
+	C.NSUserDefaults_type_resetStandardUserDefaults()
+	return
+}
+
+func NSUserDefaults_standardUserDefaults() (
+	r0 NSUserDefaults,
+) {
+	ret := C.NSUserDefaults_type_standardUserDefaults()
+	r0 = NSUserDefaults_fromPointer(ret)
 	return
 }
 
@@ -6474,5 +6664,380 @@ func (x gen_NSURLRequest) AssumesHTTP3Capable() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+type NSUserDefaultsRef interface {
+	Pointer() uintptr
+	Init_asNSUserDefaults() NSUserDefaults
+}
+
+type gen_NSUserDefaults struct {
+	objc.Object
+}
+
+func NSUserDefaults_fromPointer(ptr unsafe.Pointer) NSUserDefaults {
+	return NSUserDefaults{gen_NSUserDefaults{
+		objc.Object_fromPointer(ptr),
+	}}
+}
+
+func NSUserDefaults_fromRef(ref objc.Ref) NSUserDefaults {
+	return NSUserDefaults_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSUserDefaults) Init_asNSUserDefaults() (
+	r0 NSUserDefaults,
+) {
+	ret := C.NSUserDefaults_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSUserDefaults_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) InitWithSuiteName__asNSUserDefaults(
+	suitename NSStringRef,
+) (
+	r0 NSUserDefaults,
+) {
+	ret := C.NSUserDefaults_inst_initWithSuiteName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(suitename),
+	)
+	r0 = NSUserDefaults_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) ObjectForKey_(
+	defaultName NSStringRef,
+) (
+	r0 objc.Object,
+) {
+	ret := C.NSUserDefaults_inst_objectForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) URLForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSUserDefaults_inst_URLForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) ArrayForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSUserDefaults_inst_arrayForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DictionaryForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_dictionaryForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) StringForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSString,
+) {
+	ret := C.NSUserDefaults_inst_stringForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) StringArrayForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSUserDefaults_inst_stringArrayForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DataForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSData,
+) {
+	ret := C.NSUserDefaults_inst_dataForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) BoolForKey_(
+	defaultName NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSUserDefaults_inst_boolForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) IntegerForKey_(
+	defaultName NSStringRef,
+) (
+	r0 NSInteger,
+) {
+	ret := C.NSUserDefaults_inst_integerForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSInteger(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DictionaryRepresentation() (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_dictionaryRepresentation(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) SetObject_forKey_(
+	value objc.Ref,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setObject_forKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetInteger_forKey_(
+	value NSInteger,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setInteger_forKey_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetBool_forKey_(
+	value bool,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setBool_forKey_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetURL_forKey_(
+	url NSURLRef,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setURL_forKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveObjectForKey_(
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeObjectForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) AddSuiteNamed_(
+	suiteName NSStringRef,
+) {
+	C.NSUserDefaults_inst_addSuiteNamed_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(suiteName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveSuiteNamed_(
+	suiteName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeSuiteNamed_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(suiteName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RegisterDefaults_(
+	registrationDictionary NSDictionaryRef,
+) {
+	C.NSUserDefaults_inst_registerDefaults_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(registrationDictionary),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) PersistentDomainForName_(
+	domainName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_persistentDomainForName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) SetPersistentDomain_forName_(
+	domain NSDictionaryRef,
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setPersistentDomain_forName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domain),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemovePersistentDomainForName_(
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removePersistentDomainForName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) VolatileDomainForName_(
+	domainName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_volatileDomainForName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) SetVolatileDomain_forName_(
+	domain NSDictionaryRef,
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setVolatileDomain_forName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domain),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveVolatileDomainForName_(
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeVolatileDomainForName_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) ObjectIsForcedForKey_(
+	key NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSUserDefaults_inst_objectIsForcedForKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) ObjectIsForcedForKey_inDomain_(
+	key NSStringRef,
+	domain NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSUserDefaults_inst_objectIsForcedForKey_inDomain_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+		objc.RefPointer(domain),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) Synchronize() (
+	r0 bool,
+) {
+	ret := C.NSUserDefaults_inst_synchronize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) VolatileDomainNames() (
+	r0 NSArray,
+) {
+	ret := C.NSUserDefaults_inst_volatileDomainNames(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSArray_fromPointer(ret)
 	return
 }
