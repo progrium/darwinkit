@@ -12,10 +12,6 @@ func (i NSStatusItem) Button() NSStatusBarButton {
 	return NSStatusBarButton_fromRef(i.Get("button"))
 }
 
-func (i NSStatusItem) SetMenu(menu NSMenu) {
-	i.SetMenu_(menu)
-}
-
 func (i NSStatusItem) Menu() NSMenu {
 	return NSMenu_fromRef(i.Get("menu"))
 }

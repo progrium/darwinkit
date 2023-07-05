@@ -22,11 +22,7 @@ func (p NSPopover) SetContentSize(s core.NSSize) {
 }
 
 func (p NSPopover) SetBehavior(b int) {
-	p.SetBehavior_(core.NSInteger(b))
-}
-
-func (p NSPopover) SetAnimates(b bool) {
-	p.SetAnimates_(b)
+	p.gen_NSPopover.SetBehavior(core.NSInteger(b))
 }
 
 func (p NSPopover) SetDelegate(delegate objc.Object) {

@@ -10,47 +10,11 @@ type NSView struct {
 }
 
 func NSView_Init(frame core.NSRect) NSView {
-	return NSView_alloc().InitWithFrame__asNSView(frame)
-}
-
-func (v NSView) SetBackgroundColor(color NSColor) {
-	v.SetBackgroundColor_(color)
-}
-
-func (v NSView) SetWantsLayer(b bool) {
-	v.SetWantsLayer_(b)
+	return NSView_alloc().InitWithFrame_asNSView(frame)
 }
 
 func (v NSView) AddSubviewPositionedRelativeTo(subview NSViewRef, positioned int, relativeTo NSViewRef) {
-	v.AddSubview_positioned_relativeTo_(subview, core.NSUInteger(positioned), relativeTo)
-}
-
-func (v NSView) AddSubview(subview NSViewRef) {
-	v.AddSubview_(subview)
-}
-
-func (v NSView) SetFrameOrigin(p core.NSPoint) {
-	v.SetFrameOrigin_(p)
-}
-
-func (v NSView) SetFrameSize(s core.NSSize) {
-	v.SetFrameSize_(s)
-}
-
-func (v NSView) SetFrame(r core.NSRect) {
-	v.SetFrame_(r)
-}
-
-func (v NSView) SetBoundsOrigin(p core.NSPoint) {
-	v.SetBoundsOrigin_(p)
-}
-
-func (v NSView) SetBoundsSize(s core.NSSize) {
-	v.SetBoundsSize_(s)
-}
-
-func (v NSView) SetBounds(r core.NSRect) {
-	v.SetBounds_(r)
+	v.AddSubview_positioned_relativeTo(subview, core.NSUInteger(positioned), relativeTo)
 }
 
 func (v NSView) SetOpaque(b bool) {
