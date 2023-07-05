@@ -22,79 +22,79 @@ bool webkit_convertObjCBool(BOOL b) {
 }
 
 
-void* WKNavigation_type_alloc() {
+void* WKNavigation_type_Alloc() {
 	return [WKNavigation
 		alloc];
 }
-void* WKUserScript_type_alloc() {
+void* WKUserScript_type_Alloc() {
 	return [WKUserScript
 		alloc];
 }
-void* WKWebView_type_alloc() {
+void* WKWebView_type_Alloc() {
 	return [WKWebView
 		alloc];
 }
-BOOL WKWebView_type_handlesURLScheme(void* urlScheme) {
+BOOL WKWebView_type_HandlesURLScheme(void* urlScheme) {
 	return [WKWebView
 		handlesURLScheme: urlScheme];
 }
-void* WKWebViewConfiguration_type_alloc() {
+void* WKWebViewConfiguration_type_Alloc() {
 	return [WKWebViewConfiguration
 		alloc];
 }
-void* WKPreferences_type_alloc() {
+void* WKPreferences_type_Alloc() {
 	return [WKPreferences
 		alloc];
 }
 
 
-void* WKNavigation_inst_init(void *id) {
+void* WKNavigation_inst_Init(void *id) {
 	return [(WKNavigation*)id
 		init];
 }
 
-void* WKUserScript_inst_init(void *id) {
+void* WKUserScript_inst_Init(void *id) {
 	return [(WKUserScript*)id
 		init];
 }
 
-void* WKUserScript_inst_source(void *id) {
+void* WKUserScript_inst_Source(void *id) {
 	return [(WKUserScript*)id
 		source];
 }
 
-BOOL WKUserScript_inst_isForMainFrameOnly(void *id) {
+BOOL WKUserScript_inst_IsForMainFrameOnly(void *id) {
 	return [(WKUserScript*)id
 		isForMainFrameOnly];
 }
 
-void* WKWebView_inst_goBack(void *id) {
+void* WKWebView_inst_GoBack(void *id) {
 	return [(WKWebView*)id
 		goBack];
 }
 
-void WKWebView_inst_goBack_(void *id, void* sender) {
+void WKWebView_inst_GoBack(void *id, void* sender) {
 	[(WKWebView*)id
 		goBack: sender];
 }
 
-void* WKWebView_inst_goForward(void *id) {
+void* WKWebView_inst_GoForward(void *id) {
 	return [(WKWebView*)id
 		goForward];
 }
 
-void WKWebView_inst_goForward_(void *id, void* sender) {
+void WKWebView_inst_GoForward(void *id, void* sender) {
 	[(WKWebView*)id
 		goForward: sender];
 }
 
-void* WKWebView_inst_initWithFrame_configuration(void *id, NSRect frame, void* configuration) {
+void* WKWebView_inst_InitWithFrameConfiguration(void *id, NSRect frame, void* configuration) {
 	return [(WKWebView*)id
 		initWithFrame: frame
 		configuration: configuration];
 }
 
-void* WKWebView_inst_loadData_MIMEType_characterEncodingName_baseURL(void *id, void* data, void* MIMEType, void* characterEncodingName, void* baseURL) {
+void* WKWebView_inst_LoadDataMIMETypeCharacterEncodingNameBaseURL(void *id, void* data, void* MIMEType, void* characterEncodingName, void* baseURL) {
 	return [(WKWebView*)id
 		loadData: data
 		MIMEType: MIMEType
@@ -102,71 +102,71 @@ void* WKWebView_inst_loadData_MIMEType_characterEncodingName_baseURL(void *id, v
 		baseURL: baseURL];
 }
 
-void* WKWebView_inst_loadFileRequest_allowingReadAccessToURL(void *id, void* request, void* readAccessURL) {
+void* WKWebView_inst_LoadFileRequestAllowingReadAccessToURL(void *id, void* request, void* readAccessURL) {
 	return [(WKWebView*)id
 		loadFileRequest: request
 		allowingReadAccessToURL: readAccessURL];
 }
 
-void* WKWebView_inst_loadFileURL_allowingReadAccessToURL(void *id, void* URL, void* readAccessURL) {
+void* WKWebView_inst_LoadFileURLAllowingReadAccessToURL(void *id, void* URL, void* readAccessURL) {
 	return [(WKWebView*)id
 		loadFileURL: URL
 		allowingReadAccessToURL: readAccessURL];
 }
 
-void* WKWebView_inst_loadHTMLString_baseURL(void *id, void* string, void* baseURL) {
+void* WKWebView_inst_LoadHTMLStringBaseURL(void *id, void* string, void* baseURL) {
 	return [(WKWebView*)id
 		loadHTMLString: string
 		baseURL: baseURL];
 }
 
-void* WKWebView_inst_loadRequest(void *id, void* request) {
+void* WKWebView_inst_LoadRequest(void *id, void* request) {
 	return [(WKWebView*)id
 		loadRequest: request];
 }
 
-void* WKWebView_inst_loadSimulatedRequest_responseHTMLString(void *id, void* request, void* string) {
+void* WKWebView_inst_LoadSimulatedRequestResponseHTMLString(void *id, void* request, void* string) {
 	return [(WKWebView*)id
 		loadSimulatedRequest: request
 		responseHTMLString: string];
 }
 
-void* WKWebView_inst_reload(void *id) {
+void* WKWebView_inst_Reload(void *id) {
 	return [(WKWebView*)id
 		reload];
 }
 
-void WKWebView_inst_reload_(void *id, void* sender) {
+void WKWebView_inst_Reload(void *id, void* sender) {
 	[(WKWebView*)id
 		reload: sender];
 }
 
-void* WKWebView_inst_reloadFromOrigin(void *id) {
+void* WKWebView_inst_ReloadFromOrigin(void *id) {
 	return [(WKWebView*)id
 		reloadFromOrigin];
 }
 
-void WKWebView_inst_reloadFromOrigin_(void *id, void* sender) {
+void WKWebView_inst_ReloadFromOrigin(void *id, void* sender) {
 	[(WKWebView*)id
 		reloadFromOrigin: sender];
 }
 
-void WKWebView_inst_stopLoading(void *id) {
+void WKWebView_inst_StopLoading(void *id) {
 	[(WKWebView*)id
 		stopLoading];
 }
 
-void WKWebView_inst_stopLoading_(void *id, void* sender) {
+void WKWebView_inst_StopLoading(void *id, void* sender) {
 	[(WKWebView*)id
 		stopLoading: sender];
 }
 
-void* WKWebView_inst_init(void *id) {
+void* WKWebView_inst_Init(void *id) {
 	return [(WKWebView*)id
 		init];
 }
 
-void* WKWebView_inst_configuration(void *id) {
+void* WKWebView_inst_Configuration(void *id) {
 	return [(WKWebView*)id
 		configuration];
 }
@@ -176,27 +176,27 @@ void* WKWebView_inst_UIDelegate(void *id) {
 		UIDelegate];
 }
 
-void WKWebView_inst_setUIDelegate(void *id, void* value) {
+void WKWebView_inst_SetUIDelegate(void *id, void* value) {
 	[(WKWebView*)id
 		setUIDelegate: value];
 }
 
-void* WKWebView_inst_navigationDelegate(void *id) {
+void* WKWebView_inst_NavigationDelegate(void *id) {
 	return [(WKWebView*)id
 		navigationDelegate];
 }
 
-void WKWebView_inst_setNavigationDelegate(void *id, void* value) {
+void WKWebView_inst_SetNavigationDelegate(void *id, void* value) {
 	[(WKWebView*)id
 		setNavigationDelegate: value];
 }
 
-BOOL WKWebView_inst_isLoading(void *id) {
+BOOL WKWebView_inst_IsLoading(void *id) {
 	return [(WKWebView*)id
 		isLoading];
 }
 
-void* WKWebView_inst_title(void *id) {
+void* WKWebView_inst_Title(void *id) {
 	return [(WKWebView*)id
 		title];
 }
@@ -206,254 +206,254 @@ void* WKWebView_inst_URL(void *id) {
 		URL];
 }
 
-void* WKWebView_inst_mediaType(void *id) {
+void* WKWebView_inst_MediaType(void *id) {
 	return [(WKWebView*)id
 		mediaType];
 }
 
-void WKWebView_inst_setMediaType(void *id, void* value) {
+void WKWebView_inst_SetMediaType(void *id, void* value) {
 	[(WKWebView*)id
 		setMediaType: value];
 }
 
-void* WKWebView_inst_customUserAgent(void *id) {
+void* WKWebView_inst_CustomUserAgent(void *id) {
 	return [(WKWebView*)id
 		customUserAgent];
 }
 
-void WKWebView_inst_setCustomUserAgent(void *id, void* value) {
+void WKWebView_inst_SetCustomUserAgent(void *id, void* value) {
 	[(WKWebView*)id
 		setCustomUserAgent: value];
 }
 
-BOOL WKWebView_inst_hasOnlySecureContent(void *id) {
+BOOL WKWebView_inst_HasOnlySecureContent(void *id) {
 	return [(WKWebView*)id
 		hasOnlySecureContent];
 }
 
-BOOL WKWebView_inst_allowsMagnification(void *id) {
+BOOL WKWebView_inst_AllowsMagnification(void *id) {
 	return [(WKWebView*)id
 		allowsMagnification];
 }
 
-void WKWebView_inst_setAllowsMagnification(void *id, BOOL value) {
+void WKWebView_inst_SetAllowsMagnification(void *id, BOOL value) {
 	[(WKWebView*)id
 		setAllowsMagnification: value];
 }
 
-double WKWebView_inst_magnification(void *id) {
+double WKWebView_inst_Magnification(void *id) {
 	return [(WKWebView*)id
 		magnification];
 }
 
-void WKWebView_inst_setMagnification(void *id, double value) {
+void WKWebView_inst_SetMagnification(void *id, double value) {
 	[(WKWebView*)id
 		setMagnification: value];
 }
 
-BOOL WKWebView_inst_allowsBackForwardNavigationGestures(void *id) {
+BOOL WKWebView_inst_AllowsBackForwardNavigationGestures(void *id) {
 	return [(WKWebView*)id
 		allowsBackForwardNavigationGestures];
 }
 
-void WKWebView_inst_setAllowsBackForwardNavigationGestures(void *id, BOOL value) {
+void WKWebView_inst_SetAllowsBackForwardNavigationGestures(void *id, BOOL value) {
 	[(WKWebView*)id
 		setAllowsBackForwardNavigationGestures: value];
 }
 
-BOOL WKWebView_inst_canGoBack(void *id) {
+BOOL WKWebView_inst_CanGoBack(void *id) {
 	return [(WKWebView*)id
 		canGoBack];
 }
 
-BOOL WKWebView_inst_canGoForward(void *id) {
+BOOL WKWebView_inst_CanGoForward(void *id) {
 	return [(WKWebView*)id
 		canGoForward];
 }
 
-BOOL WKWebView_inst_allowsLinkPreview(void *id) {
+BOOL WKWebView_inst_AllowsLinkPreview(void *id) {
 	return [(WKWebView*)id
 		allowsLinkPreview];
 }
 
-void WKWebView_inst_setAllowsLinkPreview(void *id, BOOL value) {
+void WKWebView_inst_SetAllowsLinkPreview(void *id, BOOL value) {
 	[(WKWebView*)id
 		setAllowsLinkPreview: value];
 }
 
-void* WKWebView_inst_interactionState(void *id) {
+void* WKWebView_inst_InteractionState(void *id) {
 	return [(WKWebView*)id
 		interactionState];
 }
 
-void WKWebView_inst_setInteractionState(void *id, void* value) {
+void WKWebView_inst_SetInteractionState(void *id, void* value) {
 	[(WKWebView*)id
 		setInteractionState: value];
 }
 
-void WKWebViewConfiguration_inst_setURLSchemeHandler_forURLScheme(void *id, void* urlSchemeHandler, void* urlScheme) {
+void WKWebViewConfiguration_inst_SetURLSchemeHandlerForURLScheme(void *id, void* urlSchemeHandler, void* urlScheme) {
 	[(WKWebViewConfiguration*)id
 		setURLSchemeHandler: urlSchemeHandler
 		forURLScheme: urlScheme];
 }
 
-void* WKWebViewConfiguration_inst_urlSchemeHandlerForURLScheme(void *id, void* urlScheme) {
+void* WKWebViewConfiguration_inst_UrlSchemeHandlerForURLScheme(void *id, void* urlScheme) {
 	return [(WKWebViewConfiguration*)id
 		urlSchemeHandlerForURLScheme: urlScheme];
 }
 
-void* WKWebViewConfiguration_inst_init(void *id) {
+void* WKWebViewConfiguration_inst_Init(void *id) {
 	return [(WKWebViewConfiguration*)id
 		init];
 }
 
-void* WKWebViewConfiguration_inst_applicationNameForUserAgent(void *id) {
+void* WKWebViewConfiguration_inst_ApplicationNameForUserAgent(void *id) {
 	return [(WKWebViewConfiguration*)id
 		applicationNameForUserAgent];
 }
 
-void WKWebViewConfiguration_inst_setApplicationNameForUserAgent(void *id, void* value) {
+void WKWebViewConfiguration_inst_SetApplicationNameForUserAgent(void *id, void* value) {
 	[(WKWebViewConfiguration*)id
 		setApplicationNameForUserAgent: value];
 }
 
-BOOL WKWebViewConfiguration_inst_limitsNavigationsToAppBoundDomains(void *id) {
+BOOL WKWebViewConfiguration_inst_LimitsNavigationsToAppBoundDomains(void *id) {
 	return [(WKWebViewConfiguration*)id
 		limitsNavigationsToAppBoundDomains];
 }
 
-void WKWebViewConfiguration_inst_setLimitsNavigationsToAppBoundDomains(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetLimitsNavigationsToAppBoundDomains(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setLimitsNavigationsToAppBoundDomains: value];
 }
 
-void* WKWebViewConfiguration_inst_preferences(void *id) {
+void* WKWebViewConfiguration_inst_Preferences(void *id) {
 	return [(WKWebViewConfiguration*)id
 		preferences];
 }
 
-void WKWebViewConfiguration_inst_setPreferences(void *id, void* value) {
+void WKWebViewConfiguration_inst_SetPreferences(void *id, void* value) {
 	[(WKWebViewConfiguration*)id
 		setPreferences: value];
 }
 
-BOOL WKWebViewConfiguration_inst_ignoresViewportScaleLimits(void *id) {
+BOOL WKWebViewConfiguration_inst_IgnoresViewportScaleLimits(void *id) {
 	return [(WKWebViewConfiguration*)id
 		ignoresViewportScaleLimits];
 }
 
-void WKWebViewConfiguration_inst_setIgnoresViewportScaleLimits(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetIgnoresViewportScaleLimits(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setIgnoresViewportScaleLimits: value];
 }
 
-BOOL WKWebViewConfiguration_inst_suppressesIncrementalRendering(void *id) {
+BOOL WKWebViewConfiguration_inst_SuppressesIncrementalRendering(void *id) {
 	return [(WKWebViewConfiguration*)id
 		suppressesIncrementalRendering];
 }
 
-void WKWebViewConfiguration_inst_setSuppressesIncrementalRendering(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetSuppressesIncrementalRendering(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setSuppressesIncrementalRendering: value];
 }
 
-BOOL WKWebViewConfiguration_inst_allowsInlineMediaPlayback(void *id) {
+BOOL WKWebViewConfiguration_inst_AllowsInlineMediaPlayback(void *id) {
 	return [(WKWebViewConfiguration*)id
 		allowsInlineMediaPlayback];
 }
 
-void WKWebViewConfiguration_inst_setAllowsInlineMediaPlayback(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetAllowsInlineMediaPlayback(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setAllowsInlineMediaPlayback: value];
 }
 
-BOOL WKWebViewConfiguration_inst_allowsAirPlayForMediaPlayback(void *id) {
+BOOL WKWebViewConfiguration_inst_AllowsAirPlayForMediaPlayback(void *id) {
 	return [(WKWebViewConfiguration*)id
 		allowsAirPlayForMediaPlayback];
 }
 
-void WKWebViewConfiguration_inst_setAllowsAirPlayForMediaPlayback(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetAllowsAirPlayForMediaPlayback(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setAllowsAirPlayForMediaPlayback: value];
 }
 
-BOOL WKWebViewConfiguration_inst_allowsPictureInPictureMediaPlayback(void *id) {
+BOOL WKWebViewConfiguration_inst_AllowsPictureInPictureMediaPlayback(void *id) {
 	return [(WKWebViewConfiguration*)id
 		allowsPictureInPictureMediaPlayback];
 }
 
-void WKWebViewConfiguration_inst_setAllowsPictureInPictureMediaPlayback(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetAllowsPictureInPictureMediaPlayback(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setAllowsPictureInPictureMediaPlayback: value];
 }
 
-BOOL WKWebViewConfiguration_inst_upgradeKnownHostsToHTTPS(void *id) {
+BOOL WKWebViewConfiguration_inst_UpgradeKnownHostsToHTTPS(void *id) {
 	return [(WKWebViewConfiguration*)id
 		upgradeKnownHostsToHTTPS];
 }
 
-void WKWebViewConfiguration_inst_setUpgradeKnownHostsToHTTPS(void *id, BOOL value) {
+void WKWebViewConfiguration_inst_SetUpgradeKnownHostsToHTTPS(void *id, BOOL value) {
 	[(WKWebViewConfiguration*)id
 		setUpgradeKnownHostsToHTTPS: value];
 }
 
-void WKPreferences_inst_setValue_forKey(void *id, void* value, void* key) {
+void WKPreferences_inst_SetValueForKey(void *id, void* value, void* key) {
 	[(WKPreferences*)id
 		setValue: value
 		forKey: key];
 }
 
-void* WKPreferences_inst_init(void *id) {
+void* WKPreferences_inst_Init(void *id) {
 	return [(WKPreferences*)id
 		init];
 }
 
-double WKPreferences_inst_minimumFontSize(void *id) {
+double WKPreferences_inst_MinimumFontSize(void *id) {
 	return [(WKPreferences*)id
 		minimumFontSize];
 }
 
-void WKPreferences_inst_setMinimumFontSize(void *id, double value) {
+void WKPreferences_inst_SetMinimumFontSize(void *id, double value) {
 	[(WKPreferences*)id
 		setMinimumFontSize: value];
 }
 
-BOOL WKPreferences_inst_tabFocusesLinks(void *id) {
+BOOL WKPreferences_inst_TabFocusesLinks(void *id) {
 	return [(WKPreferences*)id
 		tabFocusesLinks];
 }
 
-void WKPreferences_inst_setTabFocusesLinks(void *id, BOOL value) {
+void WKPreferences_inst_SetTabFocusesLinks(void *id, BOOL value) {
 	[(WKPreferences*)id
 		setTabFocusesLinks: value];
 }
 
-BOOL WKPreferences_inst_javaScriptCanOpenWindowsAutomatically(void *id) {
+BOOL WKPreferences_inst_JavaScriptCanOpenWindowsAutomatically(void *id) {
 	return [(WKPreferences*)id
 		javaScriptCanOpenWindowsAutomatically];
 }
 
-void WKPreferences_inst_setJavaScriptCanOpenWindowsAutomatically(void *id, BOOL value) {
+void WKPreferences_inst_SetJavaScriptCanOpenWindowsAutomatically(void *id, BOOL value) {
 	[(WKPreferences*)id
 		setJavaScriptCanOpenWindowsAutomatically: value];
 }
 
-BOOL WKPreferences_inst_isFraudulentWebsiteWarningEnabled(void *id) {
+BOOL WKPreferences_inst_IsFraudulentWebsiteWarningEnabled(void *id) {
 	return [(WKPreferences*)id
 		isFraudulentWebsiteWarningEnabled];
 }
 
-void WKPreferences_inst_setFraudulentWebsiteWarningEnabled(void *id, BOOL value) {
+void WKPreferences_inst_SetFraudulentWebsiteWarningEnabled(void *id, BOOL value) {
 	[(WKPreferences*)id
 		setFraudulentWebsiteWarningEnabled: value];
 }
 
-BOOL WKPreferences_inst_isTextInteractionEnabled(void *id) {
+BOOL WKPreferences_inst_IsTextInteractionEnabled(void *id) {
 	return [(WKPreferences*)id
 		isTextInteractionEnabled];
 }
 
-void WKPreferences_inst_setTextInteractionEnabled(void *id, BOOL value) {
+void WKPreferences_inst_SetTextInteractionEnabled(void *id, BOOL value) {
 	[(WKPreferences*)id
 		setTextInteractionEnabled: value];
 }
@@ -479,41 +479,41 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.webkit_objc_bool_false
 }
 
-// WKNavigation_alloc
+// WKNavigation_Alloc
 //
 // See  for details.
-func WKNavigation_alloc() WKNavigation {
-	ret := C.WKNavigation_type_alloc()
+func WKNavigation_Alloc() WKNavigation {
+	ret := C.WKNavigation_type_Alloc()
 
 	return WKNavigation_fromPointer(ret)
 
 }
 
-// WKUserScript_alloc
+// WKUserScript_Alloc
 //
 // See  for details.
-func WKUserScript_alloc() WKUserScript {
-	ret := C.WKUserScript_type_alloc()
+func WKUserScript_Alloc() WKUserScript {
+	ret := C.WKUserScript_type_Alloc()
 
 	return WKUserScript_fromPointer(ret)
 
 }
 
-// WKWebView_alloc
+// WKWebView_Alloc
 //
 // See  for details.
-func WKWebView_alloc() WKWebView {
-	ret := C.WKWebView_type_alloc()
+func WKWebView_Alloc() WKWebView {
+	ret := C.WKWebView_type_Alloc()
 
 	return WKWebView_fromPointer(ret)
 
 }
 
-// WKWebView_handlesURLScheme returns a boolean value that indicates whether webkit natively supports resources with the specified url scheme.
+// WKWebView_HandlesURLScheme returns a boolean value that indicates whether webkit natively supports resources with the specified url scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc for details.
-func WKWebView_handlesURLScheme(urlScheme core.NSStringRef) bool {
-	ret := C.WKWebView_type_handlesURLScheme(
+func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
+	ret := C.WKWebView_type_HandlesURLScheme(
 		objc.RefPointer(urlScheme),
 	)
 
@@ -521,21 +521,21 @@ func WKWebView_handlesURLScheme(urlScheme core.NSStringRef) bool {
 
 }
 
-// WKWebViewConfiguration_alloc
+// WKWebViewConfiguration_Alloc
 //
 // See  for details.
-func WKWebViewConfiguration_alloc() WKWebViewConfiguration {
-	ret := C.WKWebViewConfiguration_type_alloc()
+func WKWebViewConfiguration_Alloc() WKWebViewConfiguration {
+	ret := C.WKWebViewConfiguration_type_Alloc()
 
 	return WKWebViewConfiguration_fromPointer(ret)
 
 }
 
-// WKPreferences_alloc
+// WKPreferences_Alloc
 //
 // See  for details.
-func WKPreferences_alloc() WKPreferences {
-	ret := C.WKPreferences_type_alloc()
+func WKPreferences_Alloc() WKPreferences {
+	ret := C.WKPreferences_type_Alloc()
 
 	return WKPreferences_fromPointer(ret)
 
@@ -564,7 +564,7 @@ func WKNavigation_fromRef(ref objc.Ref) WKNavigation {
 //
 // See  for details.
 func (x gen_WKNavigation) Init_asWKNavigation() WKNavigation {
-	ret := C.WKNavigation_inst_init(
+	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -595,7 +595,7 @@ func WKUserScript_fromRef(ref objc.Ref) WKUserScript {
 //
 // See  for details.
 func (x gen_WKUserScript) Init_asWKUserScript() WKUserScript {
-	ret := C.WKUserScript_inst_init(
+	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -607,7 +607,7 @@ func (x gen_WKUserScript) Init_asWKUserScript() WKUserScript {
 //
 // See https://developer.apple.com/documentation/webkit/wkuserscript/1537787-source?language=objc for details.
 func (x gen_WKUserScript) Source() core.NSString {
-	ret := C.WKUserScript_inst_source(
+	ret := C.WKUserScript_inst_Source(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -619,7 +619,7 @@ func (x gen_WKUserScript) Source() core.NSString {
 //
 // See https://developer.apple.com/documentation/webkit/wkuserscript/1537856-formainframeonly?language=objc for details.
 func (x gen_WKUserScript) IsForMainFrameOnly() bool {
-	ret := C.WKUserScript_inst_isForMainFrameOnly(
+	ret := C.WKUserScript_inst_IsForMainFrameOnly(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -650,7 +650,7 @@ func WKWebView_fromRef(ref objc.Ref) WKWebView {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414952-goback?language=objc for details.
 func (x gen_WKWebView) GoBack() WKNavigation {
-	ret := C.WKWebView_inst_goBack(
+	ret := C.WKWebView_inst_GoBack(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -658,13 +658,13 @@ func (x gen_WKWebView) GoBack() WKNavigation {
 
 }
 
-// GoBack_ navigates to the back item in the back-forward list.
+// GoBack navigates to the back item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414975-goback?language=objc for details.
-func (x gen_WKWebView) GoBack_(
+func (x gen_WKWebView) GoBack(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_goBack_(
+	C.WKWebView_inst_GoBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -677,7 +677,7 @@ func (x gen_WKWebView) GoBack_(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414993-goforward?language=objc for details.
 func (x gen_WKWebView) GoForward() WKNavigation {
-	ret := C.WKWebView_inst_goForward(
+	ret := C.WKWebView_inst_GoForward(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -685,13 +685,13 @@ func (x gen_WKWebView) GoForward() WKNavigation {
 
 }
 
-// GoForward_ navigates to the forward item in the back-forward list.
+// GoForward navigates to the forward item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414960-goforward?language=objc for details.
-func (x gen_WKWebView) GoForward_(
+func (x gen_WKWebView) GoForward(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_goForward_(
+	C.WKWebView_inst_GoForward(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -700,14 +700,14 @@ func (x gen_WKWebView) GoForward_(
 
 }
 
-// InitWithFrame_configuration creates a web view and initializes it with the specified frame and configuration data.
+// InitWithFrameConfiguration creates a web view and initializes it with the specified frame and configuration data.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414998-initwithframe?language=objc for details.
-func (x gen_WKWebView) InitWithFrame_configuration_asWKWebView(
+func (x gen_WKWebView) InitWithFrameConfiguration_asWKWebView(
 	frame core.NSRect,
 	configuration WKWebViewConfigurationRef,
 ) WKWebView {
-	ret := C.WKWebView_inst_initWithFrame_configuration(
+	ret := C.WKWebView_inst_InitWithFrameConfiguration(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frame)),
 		objc.RefPointer(configuration),
@@ -717,16 +717,16 @@ func (x gen_WKWebView) InitWithFrame_configuration_asWKWebView(
 
 }
 
-// LoadData_MIMEType_characterEncodingName_baseURL loads the content of the specified data object and navigates to it.
+// LoadDataMIMETypeCharacterEncodingNameBaseURL loads the content of the specified data object and navigates to it.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415011-loaddata?language=objc for details.
-func (x gen_WKWebView) LoadData_MIMEType_characterEncodingName_baseURL(
+func (x gen_WKWebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(
 	data core.NSDataRef,
 	MIMEType core.NSStringRef,
 	characterEncodingName core.NSStringRef,
 	baseURL core.NSURLRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadData_MIMEType_characterEncodingName_baseURL(
+	ret := C.WKWebView_inst_LoadDataMIMETypeCharacterEncodingNameBaseURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(MIMEType),
@@ -738,14 +738,14 @@ func (x gen_WKWebView) LoadData_MIMEType_characterEncodingName_baseURL(
 
 }
 
-// LoadFileRequest_allowingReadAccessToURL
+// LoadFileRequestAllowingReadAccessToURL
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3752237-loadfilerequest?language=objc for details.
-func (x gen_WKWebView) LoadFileRequest_allowingReadAccessToURL(
+func (x gen_WKWebView) LoadFileRequestAllowingReadAccessToURL(
 	request core.NSURLRequestRef,
 	readAccessURL core.NSURLRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadFileRequest_allowingReadAccessToURL(
+	ret := C.WKWebView_inst_LoadFileRequestAllowingReadAccessToURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(request),
 		objc.RefPointer(readAccessURL),
@@ -755,14 +755,14 @@ func (x gen_WKWebView) LoadFileRequest_allowingReadAccessToURL(
 
 }
 
-// LoadFileURL_allowingReadAccessToURL loads the web content from the specified file and navigates to it.
+// LoadFileURLAllowingReadAccessToURL loads the web content from the specified file and navigates to it.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414973-loadfileurl?language=objc for details.
-func (x gen_WKWebView) LoadFileURL_allowingReadAccessToURL(
+func (x gen_WKWebView) LoadFileURLAllowingReadAccessToURL(
 	URL core.NSURLRef,
 	readAccessURL core.NSURLRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadFileURL_allowingReadAccessToURL(
+	ret := C.WKWebView_inst_LoadFileURLAllowingReadAccessToURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(URL),
 		objc.RefPointer(readAccessURL),
@@ -772,14 +772,14 @@ func (x gen_WKWebView) LoadFileURL_allowingReadAccessToURL(
 
 }
 
-// LoadHTMLString_baseURL loads the contents of the specified html string and navigates to it.
+// LoadHTMLStringBaseURL loads the contents of the specified html string and navigates to it.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415004-loadhtmlstring?language=objc for details.
-func (x gen_WKWebView) LoadHTMLString_baseURL(
+func (x gen_WKWebView) LoadHTMLStringBaseURL(
 	string core.NSStringRef,
 	baseURL core.NSURLRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadHTMLString_baseURL(
+	ret := C.WKWebView_inst_LoadHTMLStringBaseURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		objc.RefPointer(baseURL),
@@ -795,7 +795,7 @@ func (x gen_WKWebView) LoadHTMLString_baseURL(
 func (x gen_WKWebView) LoadRequest(
 	request core.NSURLRequestRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadRequest(
+	ret := C.WKWebView_inst_LoadRequest(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(request),
 	)
@@ -804,14 +804,14 @@ func (x gen_WKWebView) LoadRequest(
 
 }
 
-// LoadSimulatedRequest_responseHTMLString
+// LoadSimulatedRequestResponseHTMLString
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3763095-loadsimulatedrequest?language=objc for details.
-func (x gen_WKWebView) LoadSimulatedRequest_responseHTMLString(
+func (x gen_WKWebView) LoadSimulatedRequestResponseHTMLString(
 	request core.NSURLRequestRef,
 	string core.NSStringRef,
 ) WKNavigation {
-	ret := C.WKWebView_inst_loadSimulatedRequest_responseHTMLString(
+	ret := C.WKWebView_inst_LoadSimulatedRequestResponseHTMLString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(request),
 		objc.RefPointer(string),
@@ -825,7 +825,7 @@ func (x gen_WKWebView) LoadSimulatedRequest_responseHTMLString(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414969-reload?language=objc for details.
 func (x gen_WKWebView) Reload() WKNavigation {
-	ret := C.WKWebView_inst_reload(
+	ret := C.WKWebView_inst_Reload(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -833,13 +833,13 @@ func (x gen_WKWebView) Reload() WKNavigation {
 
 }
 
-// Reload_ reloads the current webpage.
+// Reload reloads the current webpage.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414987-reload?language=objc for details.
-func (x gen_WKWebView) Reload_(
+func (x gen_WKWebView) Reload(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_reload_(
+	C.WKWebView_inst_Reload(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -852,7 +852,7 @@ func (x gen_WKWebView) Reload_(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414956-reloadfromorigin?language=objc for details.
 func (x gen_WKWebView) ReloadFromOrigin() WKNavigation {
-	ret := C.WKWebView_inst_reloadFromOrigin(
+	ret := C.WKWebView_inst_ReloadFromOrigin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -860,13 +860,13 @@ func (x gen_WKWebView) ReloadFromOrigin() WKNavigation {
 
 }
 
-// ReloadFromOrigin_ reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible.
+// ReloadFromOrigin reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414989-reloadfromorigin?language=objc for details.
-func (x gen_WKWebView) ReloadFromOrigin_(
+func (x gen_WKWebView) ReloadFromOrigin(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_reloadFromOrigin_(
+	C.WKWebView_inst_ReloadFromOrigin(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -879,7 +879,7 @@ func (x gen_WKWebView) ReloadFromOrigin_(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414981-stoploading?language=objc for details.
 func (x gen_WKWebView) StopLoading() {
-	C.WKWebView_inst_stopLoading(
+	C.WKWebView_inst_StopLoading(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -887,13 +887,13 @@ func (x gen_WKWebView) StopLoading() {
 
 }
 
-// StopLoading_ stops loading all resources on the current page.
+// StopLoading stops loading all resources on the current page.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415013-stoploading?language=objc for details.
-func (x gen_WKWebView) StopLoading_(
+func (x gen_WKWebView) StopLoading(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_stopLoading_(
+	C.WKWebView_inst_StopLoading(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -906,7 +906,7 @@ func (x gen_WKWebView) StopLoading_(
 //
 // See  for details.
 func (x gen_WKWebView) Init_asWKWebView() WKWebView {
-	ret := C.WKWebView_inst_init(
+	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -918,7 +918,7 @@ func (x gen_WKWebView) Init_asWKWebView() WKWebView {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414979-configuration?language=objc for details.
 func (x gen_WKWebView) Configuration() WKWebViewConfiguration {
-	ret := C.WKWebView_inst_configuration(
+	ret := C.WKWebView_inst_Configuration(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -944,7 +944,7 @@ func (x gen_WKWebView) UIDelegate() objc.Object {
 func (x gen_WKWebView) SetUIDelegate(
 	value objc.Ref,
 ) {
-	C.WKWebView_inst_setUIDelegate(
+	C.WKWebView_inst_SetUIDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -957,7 +957,7 @@ func (x gen_WKWebView) SetUIDelegate(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414971-navigationdelegate?language=objc for details.
 func (x gen_WKWebView) NavigationDelegate() objc.Object {
-	ret := C.WKWebView_inst_navigationDelegate(
+	ret := C.WKWebView_inst_NavigationDelegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -971,7 +971,7 @@ func (x gen_WKWebView) NavigationDelegate() objc.Object {
 func (x gen_WKWebView) SetNavigationDelegate(
 	value objc.Ref,
 ) {
-	C.WKWebView_inst_setNavigationDelegate(
+	C.WKWebView_inst_SetNavigationDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -984,7 +984,7 @@ func (x gen_WKWebView) SetNavigationDelegate(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414964-loading?language=objc for details.
 func (x gen_WKWebView) IsLoading() bool {
-	ret := C.WKWebView_inst_isLoading(
+	ret := C.WKWebView_inst_IsLoading(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -996,7 +996,7 @@ func (x gen_WKWebView) IsLoading() bool {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415015-title?language=objc for details.
 func (x gen_WKWebView) Title() core.NSString {
-	ret := C.WKWebView_inst_title(
+	ret := C.WKWebView_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1020,7 +1020,7 @@ func (x gen_WKWebView) URL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc for details.
 func (x gen_WKWebView) MediaType() core.NSString {
-	ret := C.WKWebView_inst_mediaType(
+	ret := C.WKWebView_inst_MediaType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1034,7 +1034,7 @@ func (x gen_WKWebView) MediaType() core.NSString {
 func (x gen_WKWebView) SetMediaType(
 	value core.NSStringRef,
 ) {
-	C.WKWebView_inst_setMediaType(
+	C.WKWebView_inst_SetMediaType(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -1047,7 +1047,7 @@ func (x gen_WKWebView) SetMediaType(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414950-customuseragent?language=objc for details.
 func (x gen_WKWebView) CustomUserAgent() core.NSString {
-	ret := C.WKWebView_inst_customUserAgent(
+	ret := C.WKWebView_inst_CustomUserAgent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1061,7 +1061,7 @@ func (x gen_WKWebView) CustomUserAgent() core.NSString {
 func (x gen_WKWebView) SetCustomUserAgent(
 	value core.NSStringRef,
 ) {
-	C.WKWebView_inst_setCustomUserAgent(
+	C.WKWebView_inst_SetCustomUserAgent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -1074,7 +1074,7 @@ func (x gen_WKWebView) SetCustomUserAgent(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent?language=objc for details.
 func (x gen_WKWebView) HasOnlySecureContent() bool {
-	ret := C.WKWebView_inst_hasOnlySecureContent(
+	ret := C.WKWebView_inst_HasOnlySecureContent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1086,7 +1086,7 @@ func (x gen_WKWebView) HasOnlySecureContent() bool {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc for details.
 func (x gen_WKWebView) AllowsMagnification() bool {
-	ret := C.WKWebView_inst_allowsMagnification(
+	ret := C.WKWebView_inst_AllowsMagnification(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1100,7 +1100,7 @@ func (x gen_WKWebView) AllowsMagnification() bool {
 func (x gen_WKWebView) SetAllowsMagnification(
 	value bool,
 ) {
-	C.WKWebView_inst_setAllowsMagnification(
+	C.WKWebView_inst_SetAllowsMagnification(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1113,7 +1113,7 @@ func (x gen_WKWebView) SetAllowsMagnification(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414985-magnification?language=objc for details.
 func (x gen_WKWebView) Magnification() core.CGFloat {
-	ret := C.WKWebView_inst_magnification(
+	ret := C.WKWebView_inst_Magnification(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1127,7 +1127,7 @@ func (x gen_WKWebView) Magnification() core.CGFloat {
 func (x gen_WKWebView) SetMagnification(
 	value core.CGFloat,
 ) {
-	C.WKWebView_inst_setMagnification(
+	C.WKWebView_inst_SetMagnification(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -1140,7 +1140,7 @@ func (x gen_WKWebView) SetMagnification(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414995-allowsbackforwardnavigationgestu?language=objc for details.
 func (x gen_WKWebView) AllowsBackForwardNavigationGestures() bool {
-	ret := C.WKWebView_inst_allowsBackForwardNavigationGestures(
+	ret := C.WKWebView_inst_AllowsBackForwardNavigationGestures(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1154,7 +1154,7 @@ func (x gen_WKWebView) AllowsBackForwardNavigationGestures() bool {
 func (x gen_WKWebView) SetAllowsBackForwardNavigationGestures(
 	value bool,
 ) {
-	C.WKWebView_inst_setAllowsBackForwardNavigationGestures(
+	C.WKWebView_inst_SetAllowsBackForwardNavigationGestures(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1167,7 +1167,7 @@ func (x gen_WKWebView) SetAllowsBackForwardNavigationGestures(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414966-cangoback?language=objc for details.
 func (x gen_WKWebView) CanGoBack() bool {
-	ret := C.WKWebView_inst_canGoBack(
+	ret := C.WKWebView_inst_CanGoBack(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1179,7 +1179,7 @@ func (x gen_WKWebView) CanGoBack() bool {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414962-cangoforward?language=objc for details.
 func (x gen_WKWebView) CanGoForward() bool {
-	ret := C.WKWebView_inst_canGoForward(
+	ret := C.WKWebView_inst_CanGoForward(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1191,7 +1191,7 @@ func (x gen_WKWebView) CanGoForward() bool {
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415000-allowslinkpreview?language=objc for details.
 func (x gen_WKWebView) AllowsLinkPreview() bool {
-	ret := C.WKWebView_inst_allowsLinkPreview(
+	ret := C.WKWebView_inst_AllowsLinkPreview(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1205,7 +1205,7 @@ func (x gen_WKWebView) AllowsLinkPreview() bool {
 func (x gen_WKWebView) SetAllowsLinkPreview(
 	value bool,
 ) {
-	C.WKWebView_inst_setAllowsLinkPreview(
+	C.WKWebView_inst_SetAllowsLinkPreview(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1218,7 +1218,7 @@ func (x gen_WKWebView) SetAllowsLinkPreview(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc for details.
 func (x gen_WKWebView) InteractionState() objc.Object {
-	ret := C.WKWebView_inst_interactionState(
+	ret := C.WKWebView_inst_InteractionState(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1232,7 +1232,7 @@ func (x gen_WKWebView) InteractionState() objc.Object {
 func (x gen_WKWebView) SetInteractionState(
 	value objc.Ref,
 ) {
-	C.WKWebView_inst_setInteractionState(
+	C.WKWebView_inst_SetInteractionState(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -1260,14 +1260,14 @@ func WKWebViewConfiguration_fromRef(ref objc.Ref) WKWebViewConfiguration {
 	return WKWebViewConfiguration_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// SetURLSchemeHandler_forURLScheme registers an object to load resources associated with the specified url scheme.
+// SetURLSchemeHandlerForURLScheme registers an object to load resources associated with the specified url scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc for details.
-func (x gen_WKWebViewConfiguration) SetURLSchemeHandler_forURLScheme(
+func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
 	urlSchemeHandler objc.Ref,
 	urlScheme core.NSStringRef,
 ) {
-	C.WKWebViewConfiguration_inst_setURLSchemeHandler_forURLScheme(
+	C.WKWebViewConfiguration_inst_SetURLSchemeHandlerForURLScheme(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(urlSchemeHandler),
 		objc.RefPointer(urlScheme),
@@ -1283,7 +1283,7 @@ func (x gen_WKWebViewConfiguration) SetURLSchemeHandler_forURLScheme(
 func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 	urlScheme core.NSStringRef,
 ) objc.Object {
-	ret := C.WKWebViewConfiguration_inst_urlSchemeHandlerForURLScheme(
+	ret := C.WKWebViewConfiguration_inst_UrlSchemeHandlerForURLScheme(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(urlScheme),
 	)
@@ -1296,7 +1296,7 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 //
 // See  for details.
 func (x gen_WKWebViewConfiguration) Init_asWKWebViewConfiguration() WKWebViewConfiguration {
-	ret := C.WKWebViewConfiguration_inst_init(
+	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1308,7 +1308,7 @@ func (x gen_WKWebViewConfiguration) Init_asWKWebViewConfiguration() WKWebViewCon
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc for details.
 func (x gen_WKWebViewConfiguration) ApplicationNameForUserAgent() core.NSString {
-	ret := C.WKWebViewConfiguration_inst_applicationNameForUserAgent(
+	ret := C.WKWebViewConfiguration_inst_ApplicationNameForUserAgent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1322,7 +1322,7 @@ func (x gen_WKWebViewConfiguration) ApplicationNameForUserAgent() core.NSString 
 func (x gen_WKWebViewConfiguration) SetApplicationNameForUserAgent(
 	value core.NSStringRef,
 ) {
-	C.WKWebViewConfiguration_inst_setApplicationNameForUserAgent(
+	C.WKWebViewConfiguration_inst_SetApplicationNameForUserAgent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -1335,7 +1335,7 @@ func (x gen_WKWebViewConfiguration) SetApplicationNameForUserAgent(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc for details.
 func (x gen_WKWebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
-	ret := C.WKWebViewConfiguration_inst_limitsNavigationsToAppBoundDomains(
+	ret := C.WKWebViewConfiguration_inst_LimitsNavigationsToAppBoundDomains(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1349,7 +1349,7 @@ func (x gen_WKWebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
 func (x gen_WKWebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setLimitsNavigationsToAppBoundDomains(
+	C.WKWebViewConfiguration_inst_SetLimitsNavigationsToAppBoundDomains(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1362,7 +1362,7 @@ func (x gen_WKWebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc for details.
 func (x gen_WKWebViewConfiguration) Preferences() WKPreferences {
-	ret := C.WKWebViewConfiguration_inst_preferences(
+	ret := C.WKWebViewConfiguration_inst_Preferences(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1376,7 +1376,7 @@ func (x gen_WKWebViewConfiguration) Preferences() WKPreferences {
 func (x gen_WKWebViewConfiguration) SetPreferences(
 	value WKPreferencesRef,
 ) {
-	C.WKWebViewConfiguration_inst_setPreferences(
+	C.WKWebViewConfiguration_inst_SetPreferences(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -1389,7 +1389,7 @@ func (x gen_WKWebViewConfiguration) SetPreferences(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits?language=objc for details.
 func (x gen_WKWebViewConfiguration) IgnoresViewportScaleLimits() bool {
-	ret := C.WKWebViewConfiguration_inst_ignoresViewportScaleLimits(
+	ret := C.WKWebViewConfiguration_inst_IgnoresViewportScaleLimits(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1403,7 +1403,7 @@ func (x gen_WKWebViewConfiguration) IgnoresViewportScaleLimits() bool {
 func (x gen_WKWebViewConfiguration) SetIgnoresViewportScaleLimits(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setIgnoresViewportScaleLimits(
+	C.WKWebViewConfiguration_inst_SetIgnoresViewportScaleLimits(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1416,7 +1416,7 @@ func (x gen_WKWebViewConfiguration) SetIgnoresViewportScaleLimits(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering?language=objc for details.
 func (x gen_WKWebViewConfiguration) SuppressesIncrementalRendering() bool {
-	ret := C.WKWebViewConfiguration_inst_suppressesIncrementalRendering(
+	ret := C.WKWebViewConfiguration_inst_SuppressesIncrementalRendering(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1430,7 +1430,7 @@ func (x gen_WKWebViewConfiguration) SuppressesIncrementalRendering() bool {
 func (x gen_WKWebViewConfiguration) SetSuppressesIncrementalRendering(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setSuppressesIncrementalRendering(
+	C.WKWebViewConfiguration_inst_SetSuppressesIncrementalRendering(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1443,7 +1443,7 @@ func (x gen_WKWebViewConfiguration) SetSuppressesIncrementalRendering(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsInlineMediaPlayback() bool {
-	ret := C.WKWebViewConfiguration_inst_allowsInlineMediaPlayback(
+	ret := C.WKWebViewConfiguration_inst_AllowsInlineMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1457,7 +1457,7 @@ func (x gen_WKWebViewConfiguration) AllowsInlineMediaPlayback() bool {
 func (x gen_WKWebViewConfiguration) SetAllowsInlineMediaPlayback(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setAllowsInlineMediaPlayback(
+	C.WKWebViewConfiguration_inst_SetAllowsInlineMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1470,7 +1470,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsInlineMediaPlayback(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
-	ret := C.WKWebViewConfiguration_inst_allowsAirPlayForMediaPlayback(
+	ret := C.WKWebViewConfiguration_inst_AllowsAirPlayForMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1484,7 +1484,7 @@ func (x gen_WKWebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
 func (x gen_WKWebViewConfiguration) SetAllowsAirPlayForMediaPlayback(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setAllowsAirPlayForMediaPlayback(
+	C.WKWebViewConfiguration_inst_SetAllowsAirPlayForMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1497,7 +1497,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsAirPlayForMediaPlayback(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsPictureInPictureMediaPlayback() bool {
-	ret := C.WKWebViewConfiguration_inst_allowsPictureInPictureMediaPlayback(
+	ret := C.WKWebViewConfiguration_inst_AllowsPictureInPictureMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1511,7 +1511,7 @@ func (x gen_WKWebViewConfiguration) AllowsPictureInPictureMediaPlayback() bool {
 func (x gen_WKWebViewConfiguration) SetAllowsPictureInPictureMediaPlayback(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setAllowsPictureInPictureMediaPlayback(
+	C.WKWebViewConfiguration_inst_SetAllowsPictureInPictureMediaPlayback(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1524,7 +1524,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsPictureInPictureMediaPlayback(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc for details.
 func (x gen_WKWebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
-	ret := C.WKWebViewConfiguration_inst_upgradeKnownHostsToHTTPS(
+	ret := C.WKWebViewConfiguration_inst_UpgradeKnownHostsToHTTPS(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1538,7 +1538,7 @@ func (x gen_WKWebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
 func (x gen_WKWebViewConfiguration) SetUpgradeKnownHostsToHTTPS(
 	value bool,
 ) {
-	C.WKWebViewConfiguration_inst_setUpgradeKnownHostsToHTTPS(
+	C.WKWebViewConfiguration_inst_SetUpgradeKnownHostsToHTTPS(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1566,14 +1566,14 @@ func WKPreferences_fromRef(ref objc.Ref) WKPreferences {
 	return WKPreferences_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// SetValue_forKey
+// SetValueForKey
 //
 // See  for details.
-func (x gen_WKPreferences) SetValue_forKey(
+func (x gen_WKPreferences) SetValueForKey(
 	value objc.Ref,
 	key core.NSStringRef,
 ) {
-	C.WKPreferences_inst_setValue_forKey(
+	C.WKPreferences_inst_SetValueForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 		objc.RefPointer(key),
@@ -1587,7 +1587,7 @@ func (x gen_WKPreferences) SetValue_forKey(
 //
 // See  for details.
 func (x gen_WKPreferences) Init_asWKPreferences() WKPreferences {
-	ret := C.WKPreferences_inst_init(
+	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1599,7 +1599,7 @@ func (x gen_WKPreferences) Init_asWKPreferences() WKPreferences {
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/1537155-minimumfontsize?language=objc for details.
 func (x gen_WKPreferences) MinimumFontSize() core.CGFloat {
-	ret := C.WKPreferences_inst_minimumFontSize(
+	ret := C.WKPreferences_inst_MinimumFontSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1613,7 +1613,7 @@ func (x gen_WKPreferences) MinimumFontSize() core.CGFloat {
 func (x gen_WKPreferences) SetMinimumFontSize(
 	value core.CGFloat,
 ) {
-	C.WKPreferences_inst_setMinimumFontSize(
+	C.WKPreferences_inst_SetMinimumFontSize(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -1626,7 +1626,7 @@ func (x gen_WKPreferences) SetMinimumFontSize(
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc for details.
 func (x gen_WKPreferences) TabFocusesLinks() bool {
-	ret := C.WKPreferences_inst_tabFocusesLinks(
+	ret := C.WKPreferences_inst_TabFocusesLinks(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1640,7 +1640,7 @@ func (x gen_WKPreferences) TabFocusesLinks() bool {
 func (x gen_WKPreferences) SetTabFocusesLinks(
 	value bool,
 ) {
-	C.WKPreferences_inst_setTabFocusesLinks(
+	C.WKPreferences_inst_SetTabFocusesLinks(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1653,7 +1653,7 @@ func (x gen_WKPreferences) SetTabFocusesLinks(
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc for details.
 func (x gen_WKPreferences) JavaScriptCanOpenWindowsAutomatically() bool {
-	ret := C.WKPreferences_inst_javaScriptCanOpenWindowsAutomatically(
+	ret := C.WKPreferences_inst_JavaScriptCanOpenWindowsAutomatically(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1667,7 +1667,7 @@ func (x gen_WKPreferences) JavaScriptCanOpenWindowsAutomatically() bool {
 func (x gen_WKPreferences) SetJavaScriptCanOpenWindowsAutomatically(
 	value bool,
 ) {
-	C.WKPreferences_inst_setJavaScriptCanOpenWindowsAutomatically(
+	C.WKPreferences_inst_SetJavaScriptCanOpenWindowsAutomatically(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1680,7 +1680,7 @@ func (x gen_WKPreferences) SetJavaScriptCanOpenWindowsAutomatically(
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc for details.
 func (x gen_WKPreferences) IsFraudulentWebsiteWarningEnabled() bool {
-	ret := C.WKPreferences_inst_isFraudulentWebsiteWarningEnabled(
+	ret := C.WKPreferences_inst_IsFraudulentWebsiteWarningEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1694,7 +1694,7 @@ func (x gen_WKPreferences) IsFraudulentWebsiteWarningEnabled() bool {
 func (x gen_WKPreferences) SetFraudulentWebsiteWarningEnabled(
 	value bool,
 ) {
-	C.WKPreferences_inst_setFraudulentWebsiteWarningEnabled(
+	C.WKPreferences_inst_SetFraudulentWebsiteWarningEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -1707,7 +1707,7 @@ func (x gen_WKPreferences) SetFraudulentWebsiteWarningEnabled(
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3727362-textinteractionenabled?language=objc for details.
 func (x gen_WKPreferences) IsTextInteractionEnabled() bool {
-	ret := C.WKPreferences_inst_isTextInteractionEnabled(
+	ret := C.WKPreferences_inst_IsTextInteractionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -1721,7 +1721,7 @@ func (x gen_WKPreferences) IsTextInteractionEnabled() bool {
 func (x gen_WKPreferences) SetTextInteractionEnabled(
 	value bool,
 ) {
-	C.WKPreferences_inst_setTextInteractionEnabled(
+	C.WKPreferences_inst_SetTextInteractionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)

@@ -32,7 +32,26 @@ func selectorNameToGoIdent(generatedNames map[string]string, sel string) string 
 	if ident, ok := generatedNames[sel]; ok {
 		return ident
 	}
-	ident := strings.ReplaceAll(sel, ":", "_")
+	// convert to idiomatic Go name (e.g. "sendAction:to:from" -> "SendActionToFrom")
+	var ident string
+
+	// for every colon, capitalize the next letter
+	// walk runes:
+	// - if rune is a colon, skip it and capitalize the next letter
+	// - else, add it to the ident
+	capNext := true
+	for _, r := range sel {
+		if r == ':' {
+			capNext = true
+			continue
+		}
+		if capNext {
+			ident += string(unicode.ToUpper(r))
+			capNext = false
+		} else {
+			ident += string(r)
+		}
+	}
 
 	if strings.HasSuffix(sel, ":") {
 		trimmedSel := strings.TrimSuffix(sel, ":")

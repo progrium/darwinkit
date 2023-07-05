@@ -22,547 +22,547 @@ bool cocoa_convertObjCBool(BOOL b) {
 }
 
 
-void* NSBundle_type_alloc() {
+void* NSBundle_type_Alloc() {
 	return [NSBundle
 		alloc];
 }
-void* NSBundle_type_bundleWithURL(void* url) {
+void* NSBundle_type_BundleWithURL(void* url) {
 	return [NSBundle
 		bundleWithURL: url];
 }
-void* NSBundle_type_bundleWithPath(void* path) {
+void* NSBundle_type_BundleWithPath(void* path) {
 	return [NSBundle
 		bundleWithPath: path];
 }
-void* NSBundle_type_bundleWithIdentifier(void* identifier) {
+void* NSBundle_type_BundleWithIdentifier(void* identifier) {
 	return [NSBundle
 		bundleWithIdentifier: identifier];
 }
-void* NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL(void* name, void* ext, void* subpath, void* bundleURL) {
+void* NSBundle_type_URLForResourceWithExtensionSubdirectoryInBundleWithURL(void* name, void* ext, void* subpath, void* bundleURL) {
 	return [NSBundle
 		URLForResource: name
 		withExtension: ext
 		subdirectory: subpath
 		inBundleWithURL: bundleURL];
 }
-void* NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(void* ext, void* subpath, void* bundleURL) {
+void* NSBundle_type_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(void* ext, void* subpath, void* bundleURL) {
 	return [NSBundle
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath
 		inBundleWithURL: bundleURL];
 }
-void* NSBundle_type_pathForResource_ofType_inDirectory(void* name, void* ext, void* bundlePath) {
+void* NSBundle_type_PathForResourceOfTypeInDirectory(void* name, void* ext, void* bundlePath) {
 	return [NSBundle
 		pathForResource: name
 		ofType: ext
 		inDirectory: bundlePath];
 }
-void* NSBundle_type_pathsForResourcesOfType_inDirectory(void* ext, void* bundlePath) {
+void* NSBundle_type_PathsForResourcesOfTypeInDirectory(void* ext, void* bundlePath) {
 	return [NSBundle
 		pathsForResourcesOfType: ext
 		inDirectory: bundlePath];
 }
-void* NSBundle_type_preferredLocalizationsFromArray(void* localizationsArray) {
+void* NSBundle_type_PreferredLocalizationsFromArray(void* localizationsArray) {
 	return [NSBundle
 		preferredLocalizationsFromArray: localizationsArray];
 }
-void* NSBundle_type_preferredLocalizationsFromArray_forPreferences(void* localizationsArray, void* preferencesArray) {
+void* NSBundle_type_PreferredLocalizationsFromArrayForPreferences(void* localizationsArray, void* preferencesArray) {
 	return [NSBundle
 		preferredLocalizationsFromArray: localizationsArray
 		forPreferences: preferencesArray];
 }
-void* NSBundle_type_mainBundle() {
+void* NSBundle_type_MainBundle() {
 	return [NSBundle
 		mainBundle];
 }
-void* NSBundle_type_allFrameworks() {
+void* NSBundle_type_AllFrameworks() {
 	return [NSBundle
 		allFrameworks];
 }
-void* NSBundle_type_allBundles() {
+void* NSBundle_type_AllBundles() {
 	return [NSBundle
 		allBundles];
 }
-void* NSSound_type_alloc() {
+void* NSSound_type_Alloc() {
 	return [NSSound
 		alloc];
 }
-BOOL NSSound_type_canInitWithPasteboard(void* pasteboard) {
+BOOL NSSound_type_CanInitWithPasteboard(void* pasteboard) {
 	return [NSSound
 		canInitWithPasteboard: pasteboard];
 }
-void* NSSound_type_soundUnfilteredTypes() {
+void* NSSound_type_SoundUnfilteredTypes() {
 	return [NSSound
 		soundUnfilteredTypes];
 }
-void* NSApplication_type_alloc() {
+void* NSApplication_type_Alloc() {
 	return [NSApplication
 		alloc];
 }
-void NSApplication_type_detachDrawingThread_toTarget_withObject(void* selector, void* target, void* argument) {
+void NSApplication_type_DetachDrawingThreadToTargetWithObject(void* selector, void* target, void* argument) {
 	[NSApplication
 		detachDrawingThread: selector
 		toTarget: target
 		withObject: argument];
 }
-void* NSApplication_type_sharedApplication() {
+void* NSApplication_type_SharedApplication() {
 	return [NSApplication
 		sharedApplication];
 }
-void* NSControl_type_alloc() {
+void* NSControl_type_Alloc() {
 	return [NSControl
 		alloc];
 }
-void* NSButton_type_alloc() {
+void* NSButton_type_Alloc() {
 	return [NSButton
 		alloc];
 }
-void* NSButton_type_checkboxWithTitle_target_action(void* title, void* target, void* action) {
+void* NSButton_type_CheckboxWithTitleTargetAction(void* title, void* target, void* action) {
 	return [NSButton
 		checkboxWithTitle: title
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithImage_target_action(void* image, void* target, void* action) {
+void* NSButton_type_ButtonWithImageTargetAction(void* image, void* target, void* action) {
 	return [NSButton
 		buttonWithImage: image
 		target: target
 		action: action];
 }
-void* NSButton_type_radioButtonWithTitle_target_action(void* title, void* target, void* action) {
+void* NSButton_type_RadioButtonWithTitleTargetAction(void* title, void* target, void* action) {
 	return [NSButton
 		radioButtonWithTitle: title
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithTitle_image_target_action(void* title, void* image, void* target, void* action) {
+void* NSButton_type_ButtonWithTitleImageTargetAction(void* title, void* image, void* target, void* action) {
 	return [NSButton
 		buttonWithTitle: title
 		image: image
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithTitle_target_action(void* title, void* target, void* action) {
+void* NSButton_type_ButtonWithTitleTargetAction(void* title, void* target, void* action) {
 	return [NSButton
 		buttonWithTitle: title
 		target: target
 		action: action];
 }
-void* NSEvent_type_alloc() {
+void* NSEvent_type_Alloc() {
 	return [NSEvent
 		alloc];
 }
-void* NSEvent_type_eventWithEventRef(void* eventRef) {
+void* NSEvent_type_EventWithEventRef(void* eventRef) {
 	return [NSEvent
 		eventWithEventRef: eventRef];
 }
-void NSEvent_type_stopPeriodicEvents() {
+void NSEvent_type_StopPeriodicEvents() {
 	[NSEvent
 		stopPeriodicEvents];
 }
-void NSEvent_type_removeMonitor(void* eventMonitor) {
+void NSEvent_type_RemoveMonitor(void* eventMonitor) {
 	[NSEvent
 		removeMonitor: eventMonitor];
 }
-unsigned long NSEvent_type_pressedMouseButtons() {
+unsigned long NSEvent_type_PressedMouseButtons() {
 	return [NSEvent
 		pressedMouseButtons];
 }
-NSPoint NSEvent_type_mouseLocation() {
+NSPoint NSEvent_type_MouseLocation() {
 	return [NSEvent
 		mouseLocation];
 }
-BOOL NSEvent_type_mouseCoalescingEnabled() {
+BOOL NSEvent_type_MouseCoalescingEnabled() {
 	return [NSEvent
 		mouseCoalescingEnabled];
 }
-void NSEvent_type_setMouseCoalescingEnabled(BOOL value) {
+void NSEvent_type_SetMouseCoalescingEnabled(BOOL value) {
 	[NSEvent
 		setMouseCoalescingEnabled: value];
 }
-BOOL NSEvent_type_swipeTrackingFromScrollEventsEnabled() {
+BOOL NSEvent_type_SwipeTrackingFromScrollEventsEnabled() {
 	return [NSEvent
 		swipeTrackingFromScrollEventsEnabled];
 }
-void* NSFont_type_alloc() {
+void* NSFont_type_Alloc() {
 	return [NSFont
 		alloc];
 }
-void* NSFont_type_fontWithName_size(void* fontName, double fontSize) {
+void* NSFont_type_FontWithNameSize(void* fontName, double fontSize) {
 	return [NSFont
 		fontWithName: fontName
 		size: fontSize];
 }
-void* NSFont_type_userFontOfSize(double fontSize) {
+void* NSFont_type_UserFontOfSize(double fontSize) {
 	return [NSFont
 		userFontOfSize: fontSize];
 }
-void* NSFont_type_userFixedPitchFontOfSize(double fontSize) {
+void* NSFont_type_UserFixedPitchFontOfSize(double fontSize) {
 	return [NSFont
 		userFixedPitchFontOfSize: fontSize];
 }
-void* NSFont_type_systemFontOfSize(double fontSize) {
+void* NSFont_type_SystemFontOfSize(double fontSize) {
 	return [NSFont
 		systemFontOfSize: fontSize];
 }
-void* NSFont_type_boldSystemFontOfSize(double fontSize) {
+void* NSFont_type_BoldSystemFontOfSize(double fontSize) {
 	return [NSFont
 		boldSystemFontOfSize: fontSize];
 }
-void* NSFont_type_labelFontOfSize(double fontSize) {
+void* NSFont_type_LabelFontOfSize(double fontSize) {
 	return [NSFont
 		labelFontOfSize: fontSize];
 }
-void* NSFont_type_messageFontOfSize(double fontSize) {
+void* NSFont_type_MessageFontOfSize(double fontSize) {
 	return [NSFont
 		messageFontOfSize: fontSize];
 }
-void* NSFont_type_menuBarFontOfSize(double fontSize) {
+void* NSFont_type_MenuBarFontOfSize(double fontSize) {
 	return [NSFont
 		menuBarFontOfSize: fontSize];
 }
-void* NSFont_type_menuFontOfSize(double fontSize) {
+void* NSFont_type_MenuFontOfSize(double fontSize) {
 	return [NSFont
 		menuFontOfSize: fontSize];
 }
-void* NSFont_type_controlContentFontOfSize(double fontSize) {
+void* NSFont_type_ControlContentFontOfSize(double fontSize) {
 	return [NSFont
 		controlContentFontOfSize: fontSize];
 }
-void* NSFont_type_titleBarFontOfSize(double fontSize) {
+void* NSFont_type_TitleBarFontOfSize(double fontSize) {
 	return [NSFont
 		titleBarFontOfSize: fontSize];
 }
-void* NSFont_type_paletteFontOfSize(double fontSize) {
+void* NSFont_type_PaletteFontOfSize(double fontSize) {
 	return [NSFont
 		paletteFontOfSize: fontSize];
 }
-void* NSFont_type_toolTipsFontOfSize(double fontSize) {
+void* NSFont_type_ToolTipsFontOfSize(double fontSize) {
 	return [NSFont
 		toolTipsFontOfSize: fontSize];
 }
-void NSFont_type_setUserFont(void* font) {
+void NSFont_type_SetUserFont(void* font) {
 	[NSFont
 		setUserFont: font];
 }
-void NSFont_type_setUserFixedPitchFont(void* font) {
+void NSFont_type_SetUserFixedPitchFont(void* font) {
 	[NSFont
 		setUserFixedPitchFont: font];
 }
-double NSFont_type_systemFontSize() {
+double NSFont_type_SystemFontSize() {
 	return [NSFont
 		systemFontSize];
 }
-double NSFont_type_smallSystemFontSize() {
+double NSFont_type_SmallSystemFontSize() {
 	return [NSFont
 		smallSystemFontSize];
 }
-double NSFont_type_labelFontSize() {
+double NSFont_type_LabelFontSize() {
 	return [NSFont
 		labelFontSize];
 }
-void* NSImage_type_alloc() {
+void* NSImage_type_Alloc() {
 	return [NSImage
 		alloc];
 }
-void* NSImage_type_imageWithSystemSymbolName_accessibilityDescription(void* symbolName, void* description) {
+void* NSImage_type_ImageWithSystemSymbolNameAccessibilityDescription(void* symbolName, void* description) {
 	return [NSImage
 		imageWithSystemSymbolName: symbolName
 		accessibilityDescription: description];
 }
-BOOL NSImage_type_canInitWithPasteboard(void* pasteboard) {
+BOOL NSImage_type_CanInitWithPasteboard(void* pasteboard) {
 	return [NSImage
 		canInitWithPasteboard: pasteboard];
 }
-void* NSImage_type_imageTypes() {
+void* NSImage_type_ImageTypes() {
 	return [NSImage
 		imageTypes];
 }
-void* NSImage_type_imageUnfilteredTypes() {
+void* NSImage_type_ImageUnfilteredTypes() {
 	return [NSImage
 		imageUnfilteredTypes];
 }
-void* NSImageView_type_alloc() {
+void* NSImageView_type_Alloc() {
 	return [NSImageView
 		alloc];
 }
-void* NSImageView_type_imageViewWithImage(void* image) {
+void* NSImageView_type_ImageViewWithImage(void* image) {
 	return [NSImageView
 		imageViewWithImage: image];
 }
-void* NSNib_type_alloc() {
+void* NSNib_type_Alloc() {
 	return [NSNib
 		alloc];
 }
-void* NSPasteboard_type_alloc() {
+void* NSPasteboard_type_Alloc() {
 	return [NSPasteboard
 		alloc];
 }
-void* NSPasteboard_type_pasteboardByFilteringFile(void* filename) {
+void* NSPasteboard_type_PasteboardByFilteringFile(void* filename) {
 	return [NSPasteboard
 		pasteboardByFilteringFile: filename];
 }
-void* NSPasteboard_type_pasteboardByFilteringTypesInPasteboard(void* pboard) {
+void* NSPasteboard_type_PasteboardByFilteringTypesInPasteboard(void* pboard) {
 	return [NSPasteboard
 		pasteboardByFilteringTypesInPasteboard: pboard];
 }
-void* NSPasteboard_type_pasteboardWithUniqueName() {
+void* NSPasteboard_type_PasteboardWithUniqueName() {
 	return [NSPasteboard
 		pasteboardWithUniqueName];
 }
-void* NSPasteboard_type_generalPasteboard() {
+void* NSPasteboard_type_GeneralPasteboard() {
 	return [NSPasteboard
 		generalPasteboard];
 }
-void* NSLayoutManager_type_alloc() {
+void* NSLayoutManager_type_Alloc() {
 	return [NSLayoutManager
 		alloc];
 }
-void* NSMenu_type_alloc() {
+void* NSMenu_type_Alloc() {
 	return [NSMenu
 		alloc];
 }
-BOOL NSMenu_type_menuBarVisible() {
+BOOL NSMenu_type_MenuBarVisible() {
 	return [NSMenu
 		menuBarVisible];
 }
-void NSMenu_type_setMenuBarVisible(BOOL visible) {
+void NSMenu_type_SetMenuBarVisible(BOOL visible) {
 	[NSMenu
 		setMenuBarVisible: visible];
 }
-void NSMenu_type_popUpContextMenu_withEvent_forView(void* menu, void* event, void* view) {
+void NSMenu_type_PopUpContextMenuWithEventForView(void* menu, void* event, void* view) {
 	[NSMenu
 		popUpContextMenu: menu
 		withEvent: event
 		forView: view];
 }
-void NSMenu_type_popUpContextMenu_withEvent_forView_withFont(void* menu, void* event, void* view, void* font) {
+void NSMenu_type_PopUpContextMenuWithEventForViewWithFont(void* menu, void* event, void* view, void* font) {
 	[NSMenu
 		popUpContextMenu: menu
 		withEvent: event
 		forView: view
 		withFont: font];
 }
-void* NSPopover_type_alloc() {
+void* NSPopover_type_Alloc() {
 	return [NSPopover
 		alloc];
 }
-void* NSMenuItem_type_alloc() {
+void* NSMenuItem_type_Alloc() {
 	return [NSMenuItem
 		alloc];
 }
-void* NSMenuItem_type_separatorItem() {
+void* NSMenuItem_type_SeparatorItem() {
 	return [NSMenuItem
 		separatorItem];
 }
-BOOL NSMenuItem_type_usesUserKeyEquivalents() {
+BOOL NSMenuItem_type_UsesUserKeyEquivalents() {
 	return [NSMenuItem
 		usesUserKeyEquivalents];
 }
-void NSMenuItem_type_setUsesUserKeyEquivalents(BOOL value) {
+void NSMenuItem_type_SetUsesUserKeyEquivalents(BOOL value) {
 	[NSMenuItem
 		setUsesUserKeyEquivalents: value];
 }
-void* NSRunningApplication_type_alloc() {
+void* NSRunningApplication_type_Alloc() {
 	return [NSRunningApplication
 		alloc];
 }
-void* NSRunningApplication_type_runningApplicationsWithBundleIdentifier(void* bundleIdentifier) {
+void* NSRunningApplication_type_RunningApplicationsWithBundleIdentifier(void* bundleIdentifier) {
 	return [NSRunningApplication
 		runningApplicationsWithBundleIdentifier: bundleIdentifier];
 }
-void NSRunningApplication_type_terminateAutomaticallyTerminableApplications() {
+void NSRunningApplication_type_TerminateAutomaticallyTerminableApplications() {
 	[NSRunningApplication
 		terminateAutomaticallyTerminableApplications];
 }
-void* NSRunningApplication_type_currentApplication() {
+void* NSRunningApplication_type_CurrentApplication() {
 	return [NSRunningApplication
 		currentApplication];
 }
-void* NSScreen_type_alloc() {
+void* NSScreen_type_Alloc() {
 	return [NSScreen
 		alloc];
 }
-void* NSScreen_type_mainScreen() {
+void* NSScreen_type_MainScreen() {
 	return [NSScreen
 		mainScreen];
 }
-void* NSScreen_type_deepestScreen() {
+void* NSScreen_type_DeepestScreen() {
 	return [NSScreen
 		deepestScreen];
 }
-void* NSScreen_type_screens() {
+void* NSScreen_type_Screens() {
 	return [NSScreen
 		screens];
 }
-BOOL NSScreen_type_screensHaveSeparateSpaces() {
+BOOL NSScreen_type_ScreensHaveSeparateSpaces() {
 	return [NSScreen
 		screensHaveSeparateSpaces];
 }
-void* NSStatusBar_type_alloc() {
+void* NSStatusBar_type_Alloc() {
 	return [NSStatusBar
 		alloc];
 }
-void* NSStatusBar_type_systemStatusBar() {
+void* NSStatusBar_type_SystemStatusBar() {
 	return [NSStatusBar
 		systemStatusBar];
 }
-void* NSStatusBarButton_type_alloc() {
+void* NSStatusBarButton_type_Alloc() {
 	return [NSStatusBarButton
 		alloc];
 }
-void* NSStatusItem_type_alloc() {
+void* NSStatusItem_type_Alloc() {
 	return [NSStatusItem
 		alloc];
 }
-void* NSText_type_alloc() {
+void* NSText_type_Alloc() {
 	return [NSText
 		alloc];
 }
-void* NSTextField_type_alloc() {
+void* NSTextField_type_Alloc() {
 	return [NSTextField
 		alloc];
 }
-void* NSTextField_type_labelWithAttributedString(void* attributedStringValue) {
+void* NSTextField_type_LabelWithAttributedString(void* attributedStringValue) {
 	return [NSTextField
 		labelWithAttributedString: attributedStringValue];
 }
-void* NSTextField_type_labelWithString(void* stringValue) {
+void* NSTextField_type_LabelWithString(void* stringValue) {
 	return [NSTextField
 		labelWithString: stringValue];
 }
-void* NSTextField_type_textFieldWithString(void* stringValue) {
+void* NSTextField_type_TextFieldWithString(void* stringValue) {
 	return [NSTextField
 		textFieldWithString: stringValue];
 }
-void* NSTextField_type_wrappingLabelWithString(void* stringValue) {
+void* NSTextField_type_WrappingLabelWithString(void* stringValue) {
 	return [NSTextField
 		wrappingLabelWithString: stringValue];
 }
-void* NSTextContainer_type_alloc() {
+void* NSTextContainer_type_Alloc() {
 	return [NSTextContainer
 		alloc];
 }
-void* NSViewController_type_alloc() {
+void* NSViewController_type_Alloc() {
 	return [NSViewController
 		alloc];
 }
-void* NSVisualEffectView_type_alloc() {
+void* NSVisualEffectView_type_Alloc() {
 	return [NSVisualEffectView
 		alloc];
 }
-void* NSWindow_type_alloc() {
+void* NSWindow_type_Alloc() {
 	return [NSWindow
 		alloc];
 }
-void* NSWindow_type_windowWithContentViewController(void* contentViewController) {
+void* NSWindow_type_WindowWithContentViewController(void* contentViewController) {
 	return [NSWindow
 		windowWithContentViewController: contentViewController];
 }
-NSRect NSWindow_type_contentRectForFrameRect_styleMask(NSRect fRect, unsigned long style) {
+NSRect NSWindow_type_ContentRectForFrameRectStyleMask(NSRect fRect, unsigned long style) {
 	return [NSWindow
 		contentRectForFrameRect: fRect
 		styleMask: style];
 }
-NSRect NSWindow_type_frameRectForContentRect_styleMask(NSRect cRect, unsigned long style) {
+NSRect NSWindow_type_FrameRectForContentRectStyleMask(NSRect cRect, unsigned long style) {
 	return [NSWindow
 		frameRectForContentRect: cRect
 		styleMask: style];
 }
-double NSWindow_type_minFrameWidthWithTitle_styleMask(void* title, unsigned long style) {
+double NSWindow_type_MinFrameWidthWithTitleStyleMask(void* title, unsigned long style) {
 	return [NSWindow
 		minFrameWidthWithTitle: title
 		styleMask: style];
 }
-long NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber(NSPoint point, long windowNumber) {
+long NSWindow_type_WindowNumberAtPointBelowWindowWithWindowNumber(NSPoint point, long windowNumber) {
 	return [NSWindow
 		windowNumberAtPoint: point
 		belowWindowWithWindowNumber: windowNumber];
 }
-BOOL NSWindow_type_allowsAutomaticWindowTabbing() {
+BOOL NSWindow_type_AllowsAutomaticWindowTabbing() {
 	return [NSWindow
 		allowsAutomaticWindowTabbing];
 }
-void NSWindow_type_setAllowsAutomaticWindowTabbing(BOOL value) {
+void NSWindow_type_SetAllowsAutomaticWindowTabbing(BOOL value) {
 	[NSWindow
 		setAllowsAutomaticWindowTabbing: value];
 }
-void* NSWorkspace_type_alloc() {
+void* NSWorkspace_type_Alloc() {
 	return [NSWorkspace
 		alloc];
 }
-void* NSWorkspace_type_sharedWorkspace() {
+void* NSWorkspace_type_SharedWorkspace() {
 	return [NSWorkspace
 		sharedWorkspace];
 }
-void* NSColor_type_alloc() {
+void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
 }
-void* NSColor_type_colorFromPasteboard(void* pasteBoard) {
+void* NSColor_type_ColorFromPasteboard(void* pasteBoard) {
 	return [NSColor
 		colorFromPasteboard: pasteBoard];
 }
-void* NSColor_type_colorWithRed_green_blue_alpha(double red, double green, double blue, double alpha) {
+void* NSColor_type_ColorWithRedGreenBlueAlpha(double red, double green, double blue, double alpha) {
 	return [NSColor
 		colorWithRed: red
 		green: green
 		blue: blue
 		alpha: alpha];
 }
-BOOL NSColor_type_ignoresAlpha() {
+BOOL NSColor_type_IgnoresAlpha() {
 	return [NSColor
 		ignoresAlpha];
 }
-void NSColor_type_setIgnoresAlpha(BOOL value) {
+void NSColor_type_SetIgnoresAlpha(BOOL value) {
 	[NSColor
 		setIgnoresAlpha: value];
 }
-void* NSColor_type_systemCyanColor() {
+void* NSColor_type_SystemCyanColor() {
 	return [NSColor
 		systemCyanColor];
 }
-void* NSColor_type_systemMintColor() {
+void* NSColor_type_SystemMintColor() {
 	return [NSColor
 		systemMintColor];
 }
-void* NSColor_type_clearColor() {
+void* NSColor_type_ClearColor() {
 	return [NSColor
 		clearColor];
 }
-void* NSTextView_type_alloc() {
+void* NSTextView_type_Alloc() {
 	return [NSTextView
 		alloc];
 }
-void NSTextView_type_registerForServices() {
+void NSTextView_type_RegisterForServices() {
 	[NSTextView
 		registerForServices];
 }
-void* NSTextView_type_fieldEditor() {
+void* NSTextView_type_FieldEditor() {
 	return [NSTextView
 		fieldEditor];
 }
-BOOL NSTextView_type_stronglyReferencesTextStorage() {
+BOOL NSTextView_type_StronglyReferencesTextStorage() {
 	return [NSTextView
 		stronglyReferencesTextStorage];
 }
-void* NSView_type_alloc() {
+void* NSView_type_Alloc() {
 	return [NSView
 		alloc];
 }
-BOOL NSView_type_requiresConstraintBasedLayout() {
+BOOL NSView_type_RequiresConstraintBasedLayout() {
 	return [NSView
 		requiresConstraintBasedLayout];
 }
-void* NSView_type_focusView() {
+void* NSView_type_FocusView() {
 	return [NSView
 		focusView];
 }
-void* NSView_type_defaultMenu() {
+void* NSView_type_DefaultMenu() {
 	return [NSView
 		defaultMenu];
 }
-BOOL NSView_type_compatibleWithResponsiveScrolling() {
+BOOL NSView_type_CompatibleWithResponsiveScrolling() {
 	return [NSView
 		compatibleWithResponsiveScrolling];
 }
@@ -573,20 +573,20 @@ void* NSBundle_inst_URLForAuxiliaryExecutable(void *id, void* executableName) {
 		URLForAuxiliaryExecutable: executableName];
 }
 
-void* NSBundle_inst_URLForResource_withExtension(void *id, void* name, void* ext) {
+void* NSBundle_inst_URLForResourceWithExtension(void *id, void* name, void* ext) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext];
 }
 
-void* NSBundle_inst_URLForResource_withExtension_subdirectory(void *id, void* name, void* ext, void* subpath) {
+void* NSBundle_inst_URLForResourceWithExtensionSubdirectory(void *id, void* name, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext
 		subdirectory: subpath];
 }
 
-void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_URLForResourceWithExtensionSubdirectoryLocalization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext
@@ -594,79 +594,79 @@ void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization(void 
 		localization: localizationName];
 }
 
-void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory(void *id, void* ext, void* subpath) {
+void* NSBundle_inst_URLsForResourcesWithExtensionSubdirectory(void *id, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath];
 }
 
-void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization(void *id, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_URLsForResourcesWithExtensionSubdirectoryLocalization(void *id, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath
 		localization: localizationName];
 }
 
-void* NSBundle_inst_initWithPath(void *id, void* path) {
+void* NSBundle_inst_InitWithPath(void *id, void* path) {
 	return [(NSBundle*)id
 		initWithPath: path];
 }
 
-void* NSBundle_inst_initWithURL(void *id, void* url) {
+void* NSBundle_inst_InitWithURL(void *id, void* url) {
 	return [(NSBundle*)id
 		initWithURL: url];
 }
 
-BOOL NSBundle_inst_load(void *id) {
+BOOL NSBundle_inst_Load(void *id) {
 	return [(NSBundle*)id
 		load];
 }
 
-void* NSBundle_inst_loadNibNamed_owner_options(void *id, void* name, void* owner, void* options) {
+void* NSBundle_inst_LoadNibNamedOwnerOptions(void *id, void* name, void* owner, void* options) {
 	return [(NSBundle*)id
 		loadNibNamed: name
 		owner: owner
 		options: options];
 }
 
-void* NSBundle_inst_localizedAttributedStringForKey_value_table(void *id, void* key, void* value, void* tableName) {
+void* NSBundle_inst_LocalizedAttributedStringForKeyValueTable(void *id, void* key, void* value, void* tableName) {
 	return [(NSBundle*)id
 		localizedAttributedStringForKey: key
 		value: value
 		table: tableName];
 }
 
-void* NSBundle_inst_localizedStringForKey_value_table(void *id, void* key, void* value, void* tableName) {
+void* NSBundle_inst_LocalizedStringForKeyValueTable(void *id, void* key, void* value, void* tableName) {
 	return [(NSBundle*)id
 		localizedStringForKey: key
 		value: value
 		table: tableName];
 }
 
-void* NSBundle_inst_objectForInfoDictionaryKey(void *id, void* key) {
+void* NSBundle_inst_ObjectForInfoDictionaryKey(void *id, void* key) {
 	return [(NSBundle*)id
 		objectForInfoDictionaryKey: key];
 }
 
-void* NSBundle_inst_pathForAuxiliaryExecutable(void *id, void* executableName) {
+void* NSBundle_inst_PathForAuxiliaryExecutable(void *id, void* executableName) {
 	return [(NSBundle*)id
 		pathForAuxiliaryExecutable: executableName];
 }
 
-void* NSBundle_inst_pathForResource_ofType(void *id, void* name, void* ext) {
+void* NSBundle_inst_PathForResourceOfType(void *id, void* name, void* ext) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext];
 }
 
-void* NSBundle_inst_pathForResource_ofType_inDirectory(void *id, void* name, void* ext, void* subpath) {
+void* NSBundle_inst_PathForResourceOfTypeInDirectory(void *id, void* name, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext
 		inDirectory: subpath];
 }
 
-void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_PathForResourceOfTypeInDirectoryForLocalization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext
@@ -674,469 +674,469 @@ void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization(void *id,
 		forLocalization: localizationName];
 }
 
-void* NSBundle_inst_pathsForResourcesOfType_inDirectory(void *id, void* ext, void* subpath) {
+void* NSBundle_inst_PathsForResourcesOfTypeInDirectory(void *id, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		pathsForResourcesOfType: ext
 		inDirectory: subpath];
 }
 
-void* NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization(void *id, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_PathsForResourcesOfTypeInDirectoryForLocalization(void *id, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		pathsForResourcesOfType: ext
 		inDirectory: subpath
 		forLocalization: localizationName];
 }
 
-BOOL NSBundle_inst_unload(void *id) {
+BOOL NSBundle_inst_Unload(void *id) {
 	return [(NSBundle*)id
 		unload];
 }
 
-void* NSBundle_inst_init(void *id) {
+void* NSBundle_inst_Init(void *id) {
 	return [(NSBundle*)id
 		init];
 }
 
-void* NSBundle_inst_resourceURL(void *id) {
+void* NSBundle_inst_ResourceURL(void *id) {
 	return [(NSBundle*)id
 		resourceURL];
 }
 
-void* NSBundle_inst_executableURL(void *id) {
+void* NSBundle_inst_ExecutableURL(void *id) {
 	return [(NSBundle*)id
 		executableURL];
 }
 
-void* NSBundle_inst_privateFrameworksURL(void *id) {
+void* NSBundle_inst_PrivateFrameworksURL(void *id) {
 	return [(NSBundle*)id
 		privateFrameworksURL];
 }
 
-void* NSBundle_inst_sharedFrameworksURL(void *id) {
+void* NSBundle_inst_SharedFrameworksURL(void *id) {
 	return [(NSBundle*)id
 		sharedFrameworksURL];
 }
 
-void* NSBundle_inst_builtInPlugInsURL(void *id) {
+void* NSBundle_inst_BuiltInPlugInsURL(void *id) {
 	return [(NSBundle*)id
 		builtInPlugInsURL];
 }
 
-void* NSBundle_inst_sharedSupportURL(void *id) {
+void* NSBundle_inst_SharedSupportURL(void *id) {
 	return [(NSBundle*)id
 		sharedSupportURL];
 }
 
-void* NSBundle_inst_appStoreReceiptURL(void *id) {
+void* NSBundle_inst_AppStoreReceiptURL(void *id) {
 	return [(NSBundle*)id
 		appStoreReceiptURL];
 }
 
-void* NSBundle_inst_resourcePath(void *id) {
+void* NSBundle_inst_ResourcePath(void *id) {
 	return [(NSBundle*)id
 		resourcePath];
 }
 
-void* NSBundle_inst_executablePath(void *id) {
+void* NSBundle_inst_ExecutablePath(void *id) {
 	return [(NSBundle*)id
 		executablePath];
 }
 
-void* NSBundle_inst_privateFrameworksPath(void *id) {
+void* NSBundle_inst_PrivateFrameworksPath(void *id) {
 	return [(NSBundle*)id
 		privateFrameworksPath];
 }
 
-void* NSBundle_inst_sharedFrameworksPath(void *id) {
+void* NSBundle_inst_SharedFrameworksPath(void *id) {
 	return [(NSBundle*)id
 		sharedFrameworksPath];
 }
 
-void* NSBundle_inst_builtInPlugInsPath(void *id) {
+void* NSBundle_inst_BuiltInPlugInsPath(void *id) {
 	return [(NSBundle*)id
 		builtInPlugInsPath];
 }
 
-void* NSBundle_inst_sharedSupportPath(void *id) {
+void* NSBundle_inst_SharedSupportPath(void *id) {
 	return [(NSBundle*)id
 		sharedSupportPath];
 }
 
-void* NSBundle_inst_bundleURL(void *id) {
+void* NSBundle_inst_BundleURL(void *id) {
 	return [(NSBundle*)id
 		bundleURL];
 }
 
-void* NSBundle_inst_bundlePath(void *id) {
+void* NSBundle_inst_BundlePath(void *id) {
 	return [(NSBundle*)id
 		bundlePath];
 }
 
-void* NSBundle_inst_bundleIdentifier(void *id) {
+void* NSBundle_inst_BundleIdentifier(void *id) {
 	return [(NSBundle*)id
 		bundleIdentifier];
 }
 
-void* NSBundle_inst_infoDictionary(void *id) {
+void* NSBundle_inst_InfoDictionary(void *id) {
 	return [(NSBundle*)id
 		infoDictionary];
 }
 
-void* NSBundle_inst_localizations(void *id) {
+void* NSBundle_inst_Localizations(void *id) {
 	return [(NSBundle*)id
 		localizations];
 }
 
-void* NSBundle_inst_preferredLocalizations(void *id) {
+void* NSBundle_inst_PreferredLocalizations(void *id) {
 	return [(NSBundle*)id
 		preferredLocalizations];
 }
 
-void* NSBundle_inst_developmentLocalization(void *id) {
+void* NSBundle_inst_DevelopmentLocalization(void *id) {
 	return [(NSBundle*)id
 		developmentLocalization];
 }
 
-void* NSBundle_inst_localizedInfoDictionary(void *id) {
+void* NSBundle_inst_LocalizedInfoDictionary(void *id) {
 	return [(NSBundle*)id
 		localizedInfoDictionary];
 }
 
-void* NSBundle_inst_executableArchitectures(void *id) {
+void* NSBundle_inst_ExecutableArchitectures(void *id) {
 	return [(NSBundle*)id
 		executableArchitectures];
 }
 
-BOOL NSBundle_inst_isLoaded(void *id) {
+BOOL NSBundle_inst_IsLoaded(void *id) {
 	return [(NSBundle*)id
 		isLoaded];
 }
 
-void* NSSound_inst_initWithContentsOfFile_byReference(void *id, void* path, BOOL byRef) {
+void* NSSound_inst_InitWithContentsOfFileByReference(void *id, void* path, BOOL byRef) {
 	return [(NSSound*)id
 		initWithContentsOfFile: path
 		byReference: byRef];
 }
 
-void* NSSound_inst_initWithContentsOfURL_byReference(void *id, void* url, BOOL byRef) {
+void* NSSound_inst_InitWithContentsOfURLByReference(void *id, void* url, BOOL byRef) {
 	return [(NSSound*)id
 		initWithContentsOfURL: url
 		byReference: byRef];
 }
 
-void* NSSound_inst_initWithData(void *id, void* data) {
+void* NSSound_inst_InitWithData(void *id, void* data) {
 	return [(NSSound*)id
 		initWithData: data];
 }
 
-void* NSSound_inst_initWithPasteboard(void *id, void* pasteboard) {
+void* NSSound_inst_InitWithPasteboard(void *id, void* pasteboard) {
 	return [(NSSound*)id
 		initWithPasteboard: pasteboard];
 }
 
-BOOL NSSound_inst_pause(void *id) {
+BOOL NSSound_inst_Pause(void *id) {
 	return [(NSSound*)id
 		pause];
 }
 
-BOOL NSSound_inst_play(void *id) {
+BOOL NSSound_inst_Play(void *id) {
 	return [(NSSound*)id
 		play];
 }
 
-BOOL NSSound_inst_resume(void *id) {
+BOOL NSSound_inst_Resume(void *id) {
 	return [(NSSound*)id
 		resume];
 }
 
-BOOL NSSound_inst_stop(void *id) {
+BOOL NSSound_inst_Stop(void *id) {
 	return [(NSSound*)id
 		stop];
 }
 
-void NSSound_inst_writeToPasteboard(void *id, void* pasteboard) {
+void NSSound_inst_WriteToPasteboard(void *id, void* pasteboard) {
 	[(NSSound*)id
 		writeToPasteboard: pasteboard];
 }
 
-void* NSSound_inst_init(void *id) {
+void* NSSound_inst_Init(void *id) {
 	return [(NSSound*)id
 		init];
 }
 
-void* NSSound_inst_delegate(void *id) {
+void* NSSound_inst_Delegate(void *id) {
 	return [(NSSound*)id
 		delegate];
 }
 
-void NSSound_inst_setDelegate(void *id, void* value) {
+void NSSound_inst_SetDelegate(void *id, void* value) {
 	[(NSSound*)id
 		setDelegate: value];
 }
 
-BOOL NSSound_inst_loops(void *id) {
+BOOL NSSound_inst_Loops(void *id) {
 	return [(NSSound*)id
 		loops];
 }
 
-void NSSound_inst_setLoops(void *id, BOOL value) {
+void NSSound_inst_SetLoops(void *id, BOOL value) {
 	[(NSSound*)id
 		setLoops: value];
 }
 
-BOOL NSSound_inst_isPlaying(void *id) {
+BOOL NSSound_inst_IsPlaying(void *id) {
 	return [(NSSound*)id
 		isPlaying];
 }
 
-void NSApplication_inst_activateContextHelpMode(void *id, void* sender) {
+void NSApplication_inst_ActivateContextHelpMode(void *id, void* sender) {
 	[(NSApplication*)id
 		activateContextHelpMode: sender];
 }
 
-void NSApplication_inst_activateIgnoringOtherApps(void *id, BOOL flag) {
+void NSApplication_inst_ActivateIgnoringOtherApps(void *id, BOOL flag) {
 	[(NSApplication*)id
 		activateIgnoringOtherApps: flag];
 }
 
-long NSApplication_inst_activationPolicy(void *id) {
+long NSApplication_inst_ActivationPolicy(void *id) {
 	return [(NSApplication*)id
 		activationPolicy];
 }
 
-void NSApplication_inst_cancelUserAttentionRequest(void *id, long request) {
+void NSApplication_inst_CancelUserAttentionRequest(void *id, long request) {
 	[(NSApplication*)id
 		cancelUserAttentionRequest: request];
 }
 
-void NSApplication_inst_deactivate(void *id) {
+void NSApplication_inst_Deactivate(void *id) {
 	[(NSApplication*)id
 		deactivate];
 }
 
-void NSApplication_inst_disableRelaunchOnLogin(void *id) {
+void NSApplication_inst_DisableRelaunchOnLogin(void *id) {
 	[(NSApplication*)id
 		disableRelaunchOnLogin];
 }
 
-void NSApplication_inst_enableRelaunchOnLogin(void *id) {
+void NSApplication_inst_EnableRelaunchOnLogin(void *id) {
 	[(NSApplication*)id
 		enableRelaunchOnLogin];
 }
 
-void NSApplication_inst_finishLaunching(void *id) {
+void NSApplication_inst_FinishLaunching(void *id) {
 	[(NSApplication*)id
 		finishLaunching];
 }
 
-void NSApplication_inst_hideOtherApplications(void *id, void* sender) {
+void NSApplication_inst_HideOtherApplications(void *id, void* sender) {
 	[(NSApplication*)id
 		hideOtherApplications: sender];
 }
 
-void NSApplication_inst_postEvent_atStart(void *id, void* event, BOOL flag) {
+void NSApplication_inst_PostEventAtStart(void *id, void* event, BOOL flag) {
 	[(NSApplication*)id
 		postEvent: event
 		atStart: flag];
 }
 
-void NSApplication_inst_registerForRemoteNotifications(void *id) {
+void NSApplication_inst_RegisterForRemoteNotifications(void *id) {
 	[(NSApplication*)id
 		registerForRemoteNotifications];
 }
 
-void NSApplication_inst_registerUserInterfaceItemSearchHandler(void *id, void* handler) {
+void NSApplication_inst_RegisterUserInterfaceItemSearchHandler(void *id, void* handler) {
 	[(NSApplication*)id
 		registerUserInterfaceItemSearchHandler: handler];
 }
 
-void NSApplication_inst_replyToApplicationShouldTerminate(void *id, BOOL shouldTerminate) {
+void NSApplication_inst_ReplyToApplicationShouldTerminate(void *id, BOOL shouldTerminate) {
 	[(NSApplication*)id
 		replyToApplicationShouldTerminate: shouldTerminate];
 }
 
-void NSApplication_inst_run(void *id) {
+void NSApplication_inst_Run(void *id) {
 	[(NSApplication*)id
 		run];
 }
 
-BOOL NSApplication_inst_sendAction_to_from(void *id, void* action, void* target, void* sender) {
+BOOL NSApplication_inst_SendActionToFrom(void *id, void* action, void* target, void* sender) {
 	return [(NSApplication*)id
 		sendAction: action
 		to: target
 		from: sender];
 }
 
-void NSApplication_inst_sendEvent(void *id, void* event) {
+void NSApplication_inst_SendEvent(void *id, void* event) {
 	[(NSApplication*)id
 		sendEvent: event];
 }
 
-BOOL NSApplication_inst_setActivationPolicy(void *id, long activationPolicy) {
+BOOL NSApplication_inst_SetActivationPolicy(void *id, long activationPolicy) {
 	return [(NSApplication*)id
 		setActivationPolicy: activationPolicy];
 }
 
-void NSApplication_inst_showHelp(void *id, void* sender) {
+void NSApplication_inst_ShowHelp(void *id, void* sender) {
 	[(NSApplication*)id
 		showHelp: sender];
 }
 
-void NSApplication_inst_stop(void *id, void* sender) {
+void NSApplication_inst_Stop(void *id, void* sender) {
 	[(NSApplication*)id
 		stop: sender];
 }
 
-void* NSApplication_inst_targetForAction(void *id, void* action) {
+void* NSApplication_inst_TargetForAction(void *id, void* action) {
 	return [(NSApplication*)id
 		targetForAction: action];
 }
 
-void* NSApplication_inst_targetForAction_to_from(void *id, void* action, void* target, void* sender) {
+void* NSApplication_inst_TargetForActionToFrom(void *id, void* action, void* target, void* sender) {
 	return [(NSApplication*)id
 		targetForAction: action
 		to: target
 		from: sender];
 }
 
-void NSApplication_inst_terminate(void *id, void* sender) {
+void NSApplication_inst_Terminate(void *id, void* sender) {
 	[(NSApplication*)id
 		terminate: sender];
 }
 
-void NSApplication_inst_toggleTouchBarCustomizationPalette(void *id, void* sender) {
+void NSApplication_inst_ToggleTouchBarCustomizationPalette(void *id, void* sender) {
 	[(NSApplication*)id
 		toggleTouchBarCustomizationPalette: sender];
 }
 
-BOOL NSApplication_inst_tryToPerform_with(void *id, void* action, void* object) {
+BOOL NSApplication_inst_TryToPerformWith(void *id, void* action, void* object) {
 	return [(NSApplication*)id
 		tryToPerform: action
 		with: object];
 }
 
-void NSApplication_inst_unhideAllApplications(void *id, void* sender) {
+void NSApplication_inst_UnhideAllApplications(void *id, void* sender) {
 	[(NSApplication*)id
 		unhideAllApplications: sender];
 }
 
-void NSApplication_inst_unregisterForRemoteNotifications(void *id) {
+void NSApplication_inst_UnregisterForRemoteNotifications(void *id) {
 	[(NSApplication*)id
 		unregisterForRemoteNotifications];
 }
 
-void NSApplication_inst_unregisterUserInterfaceItemSearchHandler(void *id, void* handler) {
+void NSApplication_inst_UnregisterUserInterfaceItemSearchHandler(void *id, void* handler) {
 	[(NSApplication*)id
 		unregisterUserInterfaceItemSearchHandler: handler];
 }
 
-void* NSApplication_inst_init(void *id) {
+void* NSApplication_inst_Init(void *id) {
 	return [(NSApplication*)id
 		init];
 }
 
-void* NSApplication_inst_delegate(void *id) {
+void* NSApplication_inst_Delegate(void *id) {
 	return [(NSApplication*)id
 		delegate];
 }
 
-void NSApplication_inst_setDelegate(void *id, void* value) {
+void NSApplication_inst_SetDelegate(void *id, void* value) {
 	[(NSApplication*)id
 		setDelegate: value];
 }
 
-void* NSApplication_inst_currentEvent(void *id) {
+void* NSApplication_inst_CurrentEvent(void *id) {
 	return [(NSApplication*)id
 		currentEvent];
 }
 
-BOOL NSApplication_inst_isRunning(void *id) {
+BOOL NSApplication_inst_IsRunning(void *id) {
 	return [(NSApplication*)id
 		isRunning];
 }
 
-BOOL NSApplication_inst_isActive(void *id) {
+BOOL NSApplication_inst_IsActive(void *id) {
 	return [(NSApplication*)id
 		isActive];
 }
 
-BOOL NSApplication_inst_isRegisteredForRemoteNotifications(void *id) {
+BOOL NSApplication_inst_IsRegisteredForRemoteNotifications(void *id) {
 	return [(NSApplication*)id
 		isRegisteredForRemoteNotifications];
 }
 
-void* NSApplication_inst_applicationIconImage(void *id) {
+void* NSApplication_inst_ApplicationIconImage(void *id) {
 	return [(NSApplication*)id
 		applicationIconImage];
 }
 
-void NSApplication_inst_setApplicationIconImage(void *id, void* value) {
+void NSApplication_inst_SetApplicationIconImage(void *id, void* value) {
 	[(NSApplication*)id
 		setApplicationIconImage: value];
 }
 
-void* NSApplication_inst_helpMenu(void *id) {
+void* NSApplication_inst_HelpMenu(void *id) {
 	return [(NSApplication*)id
 		helpMenu];
 }
 
-void NSApplication_inst_setHelpMenu(void *id, void* value) {
+void NSApplication_inst_SetHelpMenu(void *id, void* value) {
 	[(NSApplication*)id
 		setHelpMenu: value];
 }
 
-void* NSApplication_inst_servicesProvider(void *id) {
+void* NSApplication_inst_ServicesProvider(void *id) {
 	return [(NSApplication*)id
 		servicesProvider];
 }
 
-void NSApplication_inst_setServicesProvider(void *id, void* value) {
+void NSApplication_inst_SetServicesProvider(void *id, void* value) {
 	[(NSApplication*)id
 		setServicesProvider: value];
 }
 
-BOOL NSApplication_inst_isFullKeyboardAccessEnabled(void *id) {
+BOOL NSApplication_inst_IsFullKeyboardAccessEnabled(void *id) {
 	return [(NSApplication*)id
 		isFullKeyboardAccessEnabled];
 }
 
-void* NSApplication_inst_orderedDocuments(void *id) {
+void* NSApplication_inst_OrderedDocuments(void *id) {
 	return [(NSApplication*)id
 		orderedDocuments];
 }
 
-void* NSApplication_inst_orderedWindows(void *id) {
+void* NSApplication_inst_OrderedWindows(void *id) {
 	return [(NSApplication*)id
 		orderedWindows];
 }
 
-void* NSApplication_inst_mainMenu(void *id) {
+void* NSApplication_inst_MainMenu(void *id) {
 	return [(NSApplication*)id
 		mainMenu];
 }
 
-void NSApplication_inst_setMainMenu(void *id, void* value) {
+void NSApplication_inst_SetMainMenu(void *id, void* value) {
 	[(NSApplication*)id
 		setMainMenu: value];
 }
 
-BOOL NSControl_inst_abortEditing(void *id) {
+BOOL NSControl_inst_AbortEditing(void *id) {
 	return [(NSControl*)id
 		abortEditing];
 }
 
-void* NSControl_inst_currentEditor(void *id) {
+void* NSControl_inst_CurrentEditor(void *id) {
 	return [(NSControl*)id
 		currentEditor];
 }
 
-void NSControl_inst_drawWithExpansionFrame_inView(void *id, NSRect contentFrame, void* view) {
+void NSControl_inst_DrawWithExpansionFrameInView(void *id, NSRect contentFrame, void* view) {
 	[(NSControl*)id
 		drawWithExpansionFrame: contentFrame
 		inView: view];
 }
 
-void NSControl_inst_editWithFrame_editor_delegate_event(void *id, NSRect rect, void* textObj, void* delegate, void* event) {
+void NSControl_inst_EditWithFrameEditorDelegateEvent(void *id, NSRect rect, void* textObj, void* delegate, void* event) {
 	[(NSControl*)id
 		editWithFrame: rect
 		editor: textObj
@@ -1144,32 +1144,32 @@ void NSControl_inst_editWithFrame_editor_delegate_event(void *id, NSRect rect, v
 		event: event];
 }
 
-void NSControl_inst_endEditing(void *id, void* textObj) {
+void NSControl_inst_EndEditing(void *id, void* textObj) {
 	[(NSControl*)id
 		endEditing: textObj];
 }
 
-NSRect NSControl_inst_expansionFrameWithFrame(void *id, NSRect contentFrame) {
+NSRect NSControl_inst_ExpansionFrameWithFrame(void *id, NSRect contentFrame) {
 	return [(NSControl*)id
 		expansionFrameWithFrame: contentFrame];
 }
 
-void* NSControl_inst_initWithFrame(void *id, NSRect frameRect) {
+void* NSControl_inst_InitWithFrame(void *id, NSRect frameRect) {
 	return [(NSControl*)id
 		initWithFrame: frameRect];
 }
 
-void NSControl_inst_mouseDown(void *id, void* event) {
+void NSControl_inst_MouseDown(void *id, void* event) {
 	[(NSControl*)id
 		mouseDown: event];
 }
 
-void NSControl_inst_performClick(void *id, void* sender) {
+void NSControl_inst_PerformClick(void *id, void* sender) {
 	[(NSControl*)id
 		performClick: sender];
 }
 
-void NSControl_inst_selectWithFrame_editor_delegate_start_length(void *id, NSRect rect, void* textObj, void* delegate, long selStart, long selLength) {
+void NSControl_inst_SelectWithFrameEditorDelegateStartLength(void *id, NSRect rect, void* textObj, void* delegate, long selStart, long selLength) {
 	[(NSControl*)id
 		selectWithFrame: rect
 		editor: textObj
@@ -1178,873 +1178,873 @@ void NSControl_inst_selectWithFrame_editor_delegate_start_length(void *id, NSRec
 		length: selLength];
 }
 
-BOOL NSControl_inst_sendAction_to(void *id, void* action, void* target) {
+BOOL NSControl_inst_SendActionTo(void *id, void* action, void* target) {
 	return [(NSControl*)id
 		sendAction: action
 		to: target];
 }
 
-NSSize NSControl_inst_sizeThatFits(void *id, NSSize size) {
+NSSize NSControl_inst_SizeThatFits(void *id, NSSize size) {
 	return [(NSControl*)id
 		sizeThatFits: size];
 }
 
-void NSControl_inst_sizeToFit(void *id) {
+void NSControl_inst_SizeToFit(void *id) {
 	[(NSControl*)id
 		sizeToFit];
 }
 
-void NSControl_inst_takeDoubleValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeDoubleValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeDoubleValueFrom: sender];
 }
 
-void NSControl_inst_takeFloatValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeFloatValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeFloatValueFrom: sender];
 }
 
-void NSControl_inst_takeIntValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeIntValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeIntValueFrom: sender];
 }
 
-void NSControl_inst_takeIntegerValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeIntegerValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeIntegerValueFrom: sender];
 }
 
-void NSControl_inst_takeObjectValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeObjectValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeObjectValueFrom: sender];
 }
 
-void NSControl_inst_takeStringValueFrom(void *id, void* sender) {
+void NSControl_inst_TakeStringValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeStringValueFrom: sender];
 }
 
-void NSControl_inst_validateEditing(void *id) {
+void NSControl_inst_ValidateEditing(void *id) {
 	[(NSControl*)id
 		validateEditing];
 }
 
-void* NSControl_inst_init(void *id) {
+void* NSControl_inst_Init(void *id) {
 	return [(NSControl*)id
 		init];
 }
 
-BOOL NSControl_inst_isEnabled(void *id) {
+BOOL NSControl_inst_IsEnabled(void *id) {
 	return [(NSControl*)id
 		isEnabled];
 }
 
-void NSControl_inst_setEnabled(void *id, BOOL value) {
+void NSControl_inst_SetEnabled(void *id, BOOL value) {
 	[(NSControl*)id
 		setEnabled: value];
 }
 
-int NSControl_inst_intValue(void *id) {
+int NSControl_inst_IntValue(void *id) {
 	return [(NSControl*)id
 		intValue];
 }
 
-void NSControl_inst_setIntValue(void *id, int value) {
+void NSControl_inst_SetIntValue(void *id, int value) {
 	[(NSControl*)id
 		setIntValue: value];
 }
 
-long NSControl_inst_integerValue(void *id) {
+long NSControl_inst_IntegerValue(void *id) {
 	return [(NSControl*)id
 		integerValue];
 }
 
-void NSControl_inst_setIntegerValue(void *id, long value) {
+void NSControl_inst_SetIntegerValue(void *id, long value) {
 	[(NSControl*)id
 		setIntegerValue: value];
 }
 
-void* NSControl_inst_objectValue(void *id) {
+void* NSControl_inst_ObjectValue(void *id) {
 	return [(NSControl*)id
 		objectValue];
 }
 
-void NSControl_inst_setObjectValue(void *id, void* value) {
+void NSControl_inst_SetObjectValue(void *id, void* value) {
 	[(NSControl*)id
 		setObjectValue: value];
 }
 
-void* NSControl_inst_stringValue(void *id) {
+void* NSControl_inst_StringValue(void *id) {
 	return [(NSControl*)id
 		stringValue];
 }
 
-void NSControl_inst_setStringValue(void *id, void* value) {
+void NSControl_inst_SetStringValue(void *id, void* value) {
 	[(NSControl*)id
 		setStringValue: value];
 }
 
-void* NSControl_inst_attributedStringValue(void *id) {
+void* NSControl_inst_AttributedStringValue(void *id) {
 	return [(NSControl*)id
 		attributedStringValue];
 }
 
-void NSControl_inst_setAttributedStringValue(void *id, void* value) {
+void NSControl_inst_SetAttributedStringValue(void *id, void* value) {
 	[(NSControl*)id
 		setAttributedStringValue: value];
 }
 
-void* NSControl_inst_font(void *id) {
+void* NSControl_inst_Font(void *id) {
 	return [(NSControl*)id
 		font];
 }
 
-void NSControl_inst_setFont(void *id, void* value) {
+void NSControl_inst_SetFont(void *id, void* value) {
 	[(NSControl*)id
 		setFont: value];
 }
 
-BOOL NSControl_inst_usesSingleLineMode(void *id) {
+BOOL NSControl_inst_UsesSingleLineMode(void *id) {
 	return [(NSControl*)id
 		usesSingleLineMode];
 }
 
-void NSControl_inst_setUsesSingleLineMode(void *id, BOOL value) {
+void NSControl_inst_SetUsesSingleLineMode(void *id, BOOL value) {
 	[(NSControl*)id
 		setUsesSingleLineMode: value];
 }
 
-BOOL NSControl_inst_allowsExpansionToolTips(void *id) {
+BOOL NSControl_inst_AllowsExpansionToolTips(void *id) {
 	return [(NSControl*)id
 		allowsExpansionToolTips];
 }
 
-void NSControl_inst_setAllowsExpansionToolTips(void *id, BOOL value) {
+void NSControl_inst_SetAllowsExpansionToolTips(void *id, BOOL value) {
 	[(NSControl*)id
 		setAllowsExpansionToolTips: value];
 }
 
-BOOL NSControl_inst_isHighlighted(void *id) {
+BOOL NSControl_inst_IsHighlighted(void *id) {
 	return [(NSControl*)id
 		isHighlighted];
 }
 
-void NSControl_inst_setHighlighted(void *id, BOOL value) {
+void NSControl_inst_SetHighlighted(void *id, BOOL value) {
 	[(NSControl*)id
 		setHighlighted: value];
 }
 
-void* NSControl_inst_action(void *id) {
+void* NSControl_inst_Action(void *id) {
 	return [(NSControl*)id
 		action];
 }
 
-void NSControl_inst_setAction(void *id, void* value) {
+void NSControl_inst_SetAction(void *id, void* value) {
 	[(NSControl*)id
 		setAction: value];
 }
 
-void* NSControl_inst_target(void *id) {
+void* NSControl_inst_Target(void *id) {
 	return [(NSControl*)id
 		target];
 }
 
-void NSControl_inst_setTarget(void *id, void* value) {
+void NSControl_inst_SetTarget(void *id, void* value) {
 	[(NSControl*)id
 		setTarget: value];
 }
 
-BOOL NSControl_inst_isContinuous(void *id) {
+BOOL NSControl_inst_IsContinuous(void *id) {
 	return [(NSControl*)id
 		isContinuous];
 }
 
-void NSControl_inst_setContinuous(void *id, BOOL value) {
+void NSControl_inst_SetContinuous(void *id, BOOL value) {
 	[(NSControl*)id
 		setContinuous: value];
 }
 
-long NSControl_inst_tag(void *id) {
+long NSControl_inst_Tag(void *id) {
 	return [(NSControl*)id
 		tag];
 }
 
-void NSControl_inst_setTag(void *id, long value) {
+void NSControl_inst_SetTag(void *id, long value) {
 	[(NSControl*)id
 		setTag: value];
 }
 
-BOOL NSControl_inst_refusesFirstResponder(void *id) {
+BOOL NSControl_inst_RefusesFirstResponder(void *id) {
 	return [(NSControl*)id
 		refusesFirstResponder];
 }
 
-void NSControl_inst_setRefusesFirstResponder(void *id, BOOL value) {
+void NSControl_inst_SetRefusesFirstResponder(void *id, BOOL value) {
 	[(NSControl*)id
 		setRefusesFirstResponder: value];
 }
 
-BOOL NSControl_inst_ignoresMultiClick(void *id) {
+BOOL NSControl_inst_IgnoresMultiClick(void *id) {
 	return [(NSControl*)id
 		ignoresMultiClick];
 }
 
-void NSControl_inst_setIgnoresMultiClick(void *id, BOOL value) {
+void NSControl_inst_SetIgnoresMultiClick(void *id, BOOL value) {
 	[(NSControl*)id
 		setIgnoresMultiClick: value];
 }
 
-void NSButton_inst_compressWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
+void NSButton_inst_CompressWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
 	[(NSButton*)id
 		compressWithPrioritizedCompressionOptions: prioritizedOptions];
 }
 
-void NSButton_inst_highlight(void *id, BOOL flag) {
+void NSButton_inst_Highlight(void *id, BOOL flag) {
 	[(NSButton*)id
 		highlight: flag];
 }
 
-NSSize NSButton_inst_minimumSizeWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
+NSSize NSButton_inst_MinimumSizeWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
 	return [(NSButton*)id
 		minimumSizeWithPrioritizedCompressionOptions: prioritizedOptions];
 }
 
-BOOL NSButton_inst_performKeyEquivalent(void *id, void* key) {
+BOOL NSButton_inst_PerformKeyEquivalent(void *id, void* key) {
 	return [(NSButton*)id
 		performKeyEquivalent: key];
 }
 
-void NSButton_inst_setNextState(void *id) {
+void NSButton_inst_SetNextState(void *id) {
 	[(NSButton*)id
 		setNextState];
 }
 
-void* NSButton_inst_init(void *id) {
+void* NSButton_inst_Init(void *id) {
 	return [(NSButton*)id
 		init];
 }
 
-void* NSButton_inst_contentTintColor(void *id) {
+void* NSButton_inst_ContentTintColor(void *id) {
 	return [(NSButton*)id
 		contentTintColor];
 }
 
-void NSButton_inst_setContentTintColor(void *id, void* value) {
+void NSButton_inst_SetContentTintColor(void *id, void* value) {
 	[(NSButton*)id
 		setContentTintColor: value];
 }
 
-BOOL NSButton_inst_hasDestructiveAction(void *id) {
+BOOL NSButton_inst_HasDestructiveAction(void *id) {
 	return [(NSButton*)id
 		hasDestructiveAction];
 }
 
-void NSButton_inst_setHasDestructiveAction(void *id, BOOL value) {
+void NSButton_inst_SetHasDestructiveAction(void *id, BOOL value) {
 	[(NSButton*)id
 		setHasDestructiveAction: value];
 }
 
-void* NSButton_inst_alternateTitle(void *id) {
+void* NSButton_inst_AlternateTitle(void *id) {
 	return [(NSButton*)id
 		alternateTitle];
 }
 
-void NSButton_inst_setAlternateTitle(void *id, void* value) {
+void NSButton_inst_SetAlternateTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAlternateTitle: value];
 }
 
-void* NSButton_inst_attributedTitle(void *id) {
+void* NSButton_inst_AttributedTitle(void *id) {
 	return [(NSButton*)id
 		attributedTitle];
 }
 
-void NSButton_inst_setAttributedTitle(void *id, void* value) {
+void NSButton_inst_SetAttributedTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAttributedTitle: value];
 }
 
-void* NSButton_inst_attributedAlternateTitle(void *id) {
+void* NSButton_inst_AttributedAlternateTitle(void *id) {
 	return [(NSButton*)id
 		attributedAlternateTitle];
 }
 
-void NSButton_inst_setAttributedAlternateTitle(void *id, void* value) {
+void NSButton_inst_SetAttributedAlternateTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAttributedAlternateTitle: value];
 }
 
-void* NSButton_inst_title(void *id) {
+void* NSButton_inst_Title(void *id) {
 	return [(NSButton*)id
 		title];
 }
 
-void NSButton_inst_setTitle(void *id, void* value) {
+void NSButton_inst_SetTitle(void *id, void* value) {
 	[(NSButton*)id
 		setTitle: value];
 }
 
-void* NSButton_inst_sound(void *id) {
+void* NSButton_inst_Sound(void *id) {
 	return [(NSButton*)id
 		sound];
 }
 
-void NSButton_inst_setSound(void *id, void* value) {
+void NSButton_inst_SetSound(void *id, void* value) {
 	[(NSButton*)id
 		setSound: value];
 }
 
-BOOL NSButton_inst_isSpringLoaded(void *id) {
+BOOL NSButton_inst_IsSpringLoaded(void *id) {
 	return [(NSButton*)id
 		isSpringLoaded];
 }
 
-void NSButton_inst_setSpringLoaded(void *id, BOOL value) {
+void NSButton_inst_SetSpringLoaded(void *id, BOOL value) {
 	[(NSButton*)id
 		setSpringLoaded: value];
 }
 
-long NSButton_inst_maxAcceleratorLevel(void *id) {
+long NSButton_inst_MaxAcceleratorLevel(void *id) {
 	return [(NSButton*)id
 		maxAcceleratorLevel];
 }
 
-void NSButton_inst_setMaxAcceleratorLevel(void *id, long value) {
+void NSButton_inst_SetMaxAcceleratorLevel(void *id, long value) {
 	[(NSButton*)id
 		setMaxAcceleratorLevel: value];
 }
 
-void* NSButton_inst_image(void *id) {
+void* NSButton_inst_Image(void *id) {
 	return [(NSButton*)id
 		image];
 }
 
-void NSButton_inst_setImage(void *id, void* value) {
+void NSButton_inst_SetImage(void *id, void* value) {
 	[(NSButton*)id
 		setImage: value];
 }
 
-void* NSButton_inst_alternateImage(void *id) {
+void* NSButton_inst_AlternateImage(void *id) {
 	return [(NSButton*)id
 		alternateImage];
 }
 
-void NSButton_inst_setAlternateImage(void *id, void* value) {
+void NSButton_inst_SetAlternateImage(void *id, void* value) {
 	[(NSButton*)id
 		setAlternateImage: value];
 }
 
-BOOL NSButton_inst_isBordered(void *id) {
+BOOL NSButton_inst_IsBordered(void *id) {
 	return [(NSButton*)id
 		isBordered];
 }
 
-void NSButton_inst_setBordered(void *id, BOOL value) {
+void NSButton_inst_SetBordered(void *id, BOOL value) {
 	[(NSButton*)id
 		setBordered: value];
 }
 
-BOOL NSButton_inst_isTransparent(void *id) {
+BOOL NSButton_inst_IsTransparent(void *id) {
 	return [(NSButton*)id
 		isTransparent];
 }
 
-void NSButton_inst_setTransparent(void *id, BOOL value) {
+void NSButton_inst_SetTransparent(void *id, BOOL value) {
 	[(NSButton*)id
 		setTransparent: value];
 }
 
-void* NSButton_inst_bezelColor(void *id) {
+void* NSButton_inst_BezelColor(void *id) {
 	return [(NSButton*)id
 		bezelColor];
 }
 
-void NSButton_inst_setBezelColor(void *id, void* value) {
+void NSButton_inst_SetBezelColor(void *id, void* value) {
 	[(NSButton*)id
 		setBezelColor: value];
 }
 
-BOOL NSButton_inst_showsBorderOnlyWhileMouseInside(void *id) {
+BOOL NSButton_inst_ShowsBorderOnlyWhileMouseInside(void *id) {
 	return [(NSButton*)id
 		showsBorderOnlyWhileMouseInside];
 }
 
-void NSButton_inst_setShowsBorderOnlyWhileMouseInside(void *id, BOOL value) {
+void NSButton_inst_SetShowsBorderOnlyWhileMouseInside(void *id, BOOL value) {
 	[(NSButton*)id
 		setShowsBorderOnlyWhileMouseInside: value];
 }
 
-BOOL NSButton_inst_imageHugsTitle(void *id) {
+BOOL NSButton_inst_ImageHugsTitle(void *id) {
 	return [(NSButton*)id
 		imageHugsTitle];
 }
 
-void NSButton_inst_setImageHugsTitle(void *id, BOOL value) {
+void NSButton_inst_SetImageHugsTitle(void *id, BOOL value) {
 	[(NSButton*)id
 		setImageHugsTitle: value];
 }
 
-BOOL NSButton_inst_allowsMixedState(void *id) {
+BOOL NSButton_inst_AllowsMixedState(void *id) {
 	return [(NSButton*)id
 		allowsMixedState];
 }
 
-void NSButton_inst_setAllowsMixedState(void *id, BOOL value) {
+void NSButton_inst_SetAllowsMixedState(void *id, BOOL value) {
 	[(NSButton*)id
 		setAllowsMixedState: value];
 }
 
-long NSButton_inst_state(void *id) {
+long NSButton_inst_State(void *id) {
 	return [(NSButton*)id
 		state];
 }
 
-void NSButton_inst_setState(void *id, long value) {
+void NSButton_inst_SetState(void *id, long value) {
 	[(NSButton*)id
 		setState: value];
 }
 
-void* NSButton_inst_keyEquivalent(void *id) {
+void* NSButton_inst_KeyEquivalent(void *id) {
 	return [(NSButton*)id
 		keyEquivalent];
 }
 
-void NSButton_inst_setKeyEquivalent(void *id, void* value) {
+void NSButton_inst_SetKeyEquivalent(void *id, void* value) {
 	[(NSButton*)id
 		setKeyEquivalent: value];
 }
 
-void* NSEvent_inst_init(void *id) {
+void* NSEvent_inst_Init(void *id) {
 	return [(NSEvent*)id
 		init];
 }
 
-NSPoint NSEvent_inst_locationInWindow(void *id) {
+NSPoint NSEvent_inst_LocationInWindow(void *id) {
 	return [(NSEvent*)id
 		locationInWindow];
 }
 
-void* NSEvent_inst_window(void *id) {
+void* NSEvent_inst_Window(void *id) {
 	return [(NSEvent*)id
 		window];
 }
 
-long NSEvent_inst_windowNumber(void *id) {
+long NSEvent_inst_WindowNumber(void *id) {
 	return [(NSEvent*)id
 		windowNumber];
 }
 
-void* NSEvent_inst_eventRef(void *id) {
+void* NSEvent_inst_EventRef(void *id) {
 	return [(NSEvent*)id
 		eventRef];
 }
 
-void* NSEvent_inst_characters(void *id) {
+void* NSEvent_inst_Characters(void *id) {
 	return [(NSEvent*)id
 		characters];
 }
 
-void* NSEvent_inst_charactersIgnoringModifiers(void *id) {
+void* NSEvent_inst_CharactersIgnoringModifiers(void *id) {
 	return [(NSEvent*)id
 		charactersIgnoringModifiers];
 }
 
-BOOL NSEvent_inst_isARepeat(void *id) {
+BOOL NSEvent_inst_IsARepeat(void *id) {
 	return [(NSEvent*)id
 		isARepeat];
 }
 
-long NSEvent_inst_buttonNumber(void *id) {
+long NSEvent_inst_ButtonNumber(void *id) {
 	return [(NSEvent*)id
 		buttonNumber];
 }
 
-long NSEvent_inst_clickCount(void *id) {
+long NSEvent_inst_ClickCount(void *id) {
 	return [(NSEvent*)id
 		clickCount];
 }
 
-long NSEvent_inst_eventNumber(void *id) {
+long NSEvent_inst_EventNumber(void *id) {
 	return [(NSEvent*)id
 		eventNumber];
 }
 
-long NSEvent_inst_trackingNumber(void *id) {
+long NSEvent_inst_TrackingNumber(void *id) {
 	return [(NSEvent*)id
 		trackingNumber];
 }
 
-void* NSEvent_inst_userData(void *id) {
+void* NSEvent_inst_UserData(void *id) {
 	return [(NSEvent*)id
 		userData];
 }
 
-long NSEvent_inst_data1(void *id) {
+long NSEvent_inst_Data1(void *id) {
 	return [(NSEvent*)id
 		data1];
 }
 
-long NSEvent_inst_data2(void *id) {
+long NSEvent_inst_Data2(void *id) {
 	return [(NSEvent*)id
 		data2];
 }
 
-double NSEvent_inst_deltaX(void *id) {
+double NSEvent_inst_DeltaX(void *id) {
 	return [(NSEvent*)id
 		deltaX];
 }
 
-double NSEvent_inst_deltaY(void *id) {
+double NSEvent_inst_DeltaY(void *id) {
 	return [(NSEvent*)id
 		deltaY];
 }
 
-double NSEvent_inst_deltaZ(void *id) {
+double NSEvent_inst_DeltaZ(void *id) {
 	return [(NSEvent*)id
 		deltaZ];
 }
 
-long NSEvent_inst_stage(void *id) {
+long NSEvent_inst_Stage(void *id) {
 	return [(NSEvent*)id
 		stage];
 }
 
-double NSEvent_inst_stageTransition(void *id) {
+double NSEvent_inst_StageTransition(void *id) {
 	return [(NSEvent*)id
 		stageTransition];
 }
 
-unsigned long NSEvent_inst_capabilityMask(void *id) {
+unsigned long NSEvent_inst_CapabilityMask(void *id) {
 	return [(NSEvent*)id
 		capabilityMask];
 }
 
-unsigned long NSEvent_inst_deviceID(void *id) {
+unsigned long NSEvent_inst_DeviceID(void *id) {
 	return [(NSEvent*)id
 		deviceID];
 }
 
-BOOL NSEvent_inst_isEnteringProximity(void *id) {
+BOOL NSEvent_inst_IsEnteringProximity(void *id) {
 	return [(NSEvent*)id
 		isEnteringProximity];
 }
 
-unsigned long NSEvent_inst_pointingDeviceID(void *id) {
+unsigned long NSEvent_inst_PointingDeviceID(void *id) {
 	return [(NSEvent*)id
 		pointingDeviceID];
 }
 
-unsigned long NSEvent_inst_pointingDeviceSerialNumber(void *id) {
+unsigned long NSEvent_inst_PointingDeviceSerialNumber(void *id) {
 	return [(NSEvent*)id
 		pointingDeviceSerialNumber];
 }
 
-unsigned long NSEvent_inst_systemTabletID(void *id) {
+unsigned long NSEvent_inst_SystemTabletID(void *id) {
 	return [(NSEvent*)id
 		systemTabletID];
 }
 
-unsigned long NSEvent_inst_tabletID(void *id) {
+unsigned long NSEvent_inst_TabletID(void *id) {
 	return [(NSEvent*)id
 		tabletID];
 }
 
-unsigned long NSEvent_inst_vendorID(void *id) {
+unsigned long NSEvent_inst_VendorID(void *id) {
 	return [(NSEvent*)id
 		vendorID];
 }
 
-unsigned long NSEvent_inst_vendorPointingDeviceType(void *id) {
+unsigned long NSEvent_inst_VendorPointingDeviceType(void *id) {
 	return [(NSEvent*)id
 		vendorPointingDeviceType];
 }
 
-long NSEvent_inst_absoluteX(void *id) {
+long NSEvent_inst_AbsoluteX(void *id) {
 	return [(NSEvent*)id
 		absoluteX];
 }
 
-long NSEvent_inst_absoluteY(void *id) {
+long NSEvent_inst_AbsoluteY(void *id) {
 	return [(NSEvent*)id
 		absoluteY];
 }
 
-long NSEvent_inst_absoluteZ(void *id) {
+long NSEvent_inst_AbsoluteZ(void *id) {
 	return [(NSEvent*)id
 		absoluteZ];
 }
 
-NSPoint NSEvent_inst_tilt(void *id) {
+NSPoint NSEvent_inst_Tilt(void *id) {
 	return [(NSEvent*)id
 		tilt];
 }
 
-void* NSEvent_inst_vendorDefined(void *id) {
+void* NSEvent_inst_VendorDefined(void *id) {
 	return [(NSEvent*)id
 		vendorDefined];
 }
 
-double NSEvent_inst_magnification(void *id) {
+double NSEvent_inst_Magnification(void *id) {
 	return [(NSEvent*)id
 		magnification];
 }
 
-BOOL NSEvent_inst_hasPreciseScrollingDeltas(void *id) {
+BOOL NSEvent_inst_HasPreciseScrollingDeltas(void *id) {
 	return [(NSEvent*)id
 		hasPreciseScrollingDeltas];
 }
 
-double NSEvent_inst_scrollingDeltaX(void *id) {
+double NSEvent_inst_ScrollingDeltaX(void *id) {
 	return [(NSEvent*)id
 		scrollingDeltaX];
 }
 
-double NSEvent_inst_scrollingDeltaY(void *id) {
+double NSEvent_inst_ScrollingDeltaY(void *id) {
 	return [(NSEvent*)id
 		scrollingDeltaY];
 }
 
-BOOL NSEvent_inst_isDirectionInvertedFromDevice(void *id) {
+BOOL NSEvent_inst_IsDirectionInvertedFromDevice(void *id) {
 	return [(NSEvent*)id
 		isDirectionInvertedFromDevice];
 }
 
-void* NSFont_inst_fontWithSize(void *id, double fontSize) {
+void* NSFont_inst_FontWithSize(void *id, double fontSize) {
 	return [(NSFont*)id
 		fontWithSize: fontSize];
 }
 
-void NSFont_inst_set(void *id) {
+void NSFont_inst_Set(void *id) {
 	[(NSFont*)id
 		set];
 }
 
-void* NSFont_inst_init(void *id) {
+void* NSFont_inst_Init(void *id) {
 	return [(NSFont*)id
 		init];
 }
 
-double NSFont_inst_pointSize(void *id) {
+double NSFont_inst_PointSize(void *id) {
 	return [(NSFont*)id
 		pointSize];
 }
 
-BOOL NSFont_inst_isFixedPitch(void *id) {
+BOOL NSFont_inst_IsFixedPitch(void *id) {
 	return [(NSFont*)id
 		isFixedPitch];
 }
 
-unsigned long NSFont_inst_mostCompatibleStringEncoding(void *id) {
+unsigned long NSFont_inst_MostCompatibleStringEncoding(void *id) {
 	return [(NSFont*)id
 		mostCompatibleStringEncoding];
 }
 
-unsigned long NSFont_inst_numberOfGlyphs(void *id) {
+unsigned long NSFont_inst_NumberOfGlyphs(void *id) {
 	return [(NSFont*)id
 		numberOfGlyphs];
 }
 
-void* NSFont_inst_displayName(void *id) {
+void* NSFont_inst_DisplayName(void *id) {
 	return [(NSFont*)id
 		displayName];
 }
 
-void* NSFont_inst_familyName(void *id) {
+void* NSFont_inst_FamilyName(void *id) {
 	return [(NSFont*)id
 		familyName];
 }
 
-void* NSFont_inst_fontName(void *id) {
+void* NSFont_inst_FontName(void *id) {
 	return [(NSFont*)id
 		fontName];
 }
 
-BOOL NSFont_inst_isVertical(void *id) {
+BOOL NSFont_inst_IsVertical(void *id) {
 	return [(NSFont*)id
 		isVertical];
 }
 
-void* NSFont_inst_verticalFont(void *id) {
+void* NSFont_inst_VerticalFont(void *id) {
 	return [(NSFont*)id
 		verticalFont];
 }
 
-void NSImage_inst_addRepresentations(void *id, void* imageReps) {
+void NSImage_inst_AddRepresentations(void *id, void* imageReps) {
 	[(NSImage*)id
 		addRepresentations: imageReps];
 }
 
-void NSImage_inst_cancelIncrementalLoad(void *id) {
+void NSImage_inst_CancelIncrementalLoad(void *id) {
 	[(NSImage*)id
 		cancelIncrementalLoad];
 }
 
-void NSImage_inst_drawInRect(void *id, NSRect rect) {
+void NSImage_inst_DrawInRect(void *id, NSRect rect) {
 	[(NSImage*)id
 		drawInRect: rect];
 }
 
-void* NSImage_inst_initByReferencingFile(void *id, void* fileName) {
+void* NSImage_inst_InitByReferencingFile(void *id, void* fileName) {
 	return [(NSImage*)id
 		initByReferencingFile: fileName];
 }
 
-void* NSImage_inst_initByReferencingURL(void *id, void* url) {
+void* NSImage_inst_InitByReferencingURL(void *id, void* url) {
 	return [(NSImage*)id
 		initByReferencingURL: url];
 }
 
-void* NSImage_inst_initWithContentsOfFile(void *id, void* fileName) {
+void* NSImage_inst_InitWithContentsOfFile(void *id, void* fileName) {
 	return [(NSImage*)id
 		initWithContentsOfFile: fileName];
 }
 
-void* NSImage_inst_initWithContentsOfURL(void *id, void* url) {
+void* NSImage_inst_InitWithContentsOfURL(void *id, void* url) {
 	return [(NSImage*)id
 		initWithContentsOfURL: url];
 }
 
-void* NSImage_inst_initWithData(void *id, void* data) {
+void* NSImage_inst_InitWithData(void *id, void* data) {
 	return [(NSImage*)id
 		initWithData: data];
 }
 
-void* NSImage_inst_initWithDataIgnoringOrientation(void *id, void* data) {
+void* NSImage_inst_InitWithDataIgnoringOrientation(void *id, void* data) {
 	return [(NSImage*)id
 		initWithDataIgnoringOrientation: data];
 }
 
-void* NSImage_inst_initWithPasteboard(void *id, void* pasteboard) {
+void* NSImage_inst_InitWithPasteboard(void *id, void* pasteboard) {
 	return [(NSImage*)id
 		initWithPasteboard: pasteboard];
 }
 
-void* NSImage_inst_initWithSize(void *id, NSSize size) {
+void* NSImage_inst_InitWithSize(void *id, NSSize size) {
 	return [(NSImage*)id
 		initWithSize: size];
 }
 
-BOOL NSImage_inst_isTemplate(void *id) {
+BOOL NSImage_inst_IsTemplate(void *id) {
 	return [(NSImage*)id
 		isTemplate];
 }
 
-void* NSImage_inst_layerContentsForContentsScale(void *id, double layerContentsScale) {
+void* NSImage_inst_LayerContentsForContentsScale(void *id, double layerContentsScale) {
 	return [(NSImage*)id
 		layerContentsForContentsScale: layerContentsScale];
 }
 
-void NSImage_inst_lockFocus(void *id) {
+void NSImage_inst_LockFocus(void *id) {
 	[(NSImage*)id
 		lockFocus];
 }
 
-void NSImage_inst_lockFocusFlipped(void *id, BOOL flipped) {
+void NSImage_inst_LockFocusFlipped(void *id, BOOL flipped) {
 	[(NSImage*)id
 		lockFocusFlipped: flipped];
 }
 
-void NSImage_inst_recache(void *id) {
+void NSImage_inst_Recache(void *id) {
 	[(NSImage*)id
 		recache];
 }
 
-double NSImage_inst_recommendedLayerContentsScale(void *id, double preferredContentsScale) {
+double NSImage_inst_RecommendedLayerContentsScale(void *id, double preferredContentsScale) {
 	return [(NSImage*)id
 		recommendedLayerContentsScale: preferredContentsScale];
 }
 
-void NSImage_inst_unlockFocus(void *id) {
+void NSImage_inst_UnlockFocus(void *id) {
 	[(NSImage*)id
 		unlockFocus];
 }
 
-void* NSImage_inst_init(void *id) {
+void* NSImage_inst_Init(void *id) {
 	return [(NSImage*)id
 		init];
 }
 
-void* NSImage_inst_delegate(void *id) {
+void* NSImage_inst_Delegate(void *id) {
 	return [(NSImage*)id
 		delegate];
 }
 
-void NSImage_inst_setDelegate(void *id, void* value) {
+void NSImage_inst_SetDelegate(void *id, void* value) {
 	[(NSImage*)id
 		setDelegate: value];
 }
 
-NSSize NSImage_inst_size(void *id) {
+NSSize NSImage_inst_Size(void *id) {
 	return [(NSImage*)id
 		size];
 }
 
-void NSImage_inst_setSize(void *id, NSSize value) {
+void NSImage_inst_SetSize(void *id, NSSize value) {
 	[(NSImage*)id
 		setSize: value];
 }
 
-void NSImage_inst_setTemplate(void *id, BOOL value) {
+void NSImage_inst_SetTemplate(void *id, BOOL value) {
 	[(NSImage*)id
 		setTemplate: value];
 }
 
-void* NSImage_inst_representations(void *id) {
+void* NSImage_inst_Representations(void *id) {
 	return [(NSImage*)id
 		representations];
 }
 
-BOOL NSImage_inst_prefersColorMatch(void *id) {
+BOOL NSImage_inst_PrefersColorMatch(void *id) {
 	return [(NSImage*)id
 		prefersColorMatch];
 }
 
-void NSImage_inst_setPrefersColorMatch(void *id, BOOL value) {
+void NSImage_inst_SetPrefersColorMatch(void *id, BOOL value) {
 	[(NSImage*)id
 		setPrefersColorMatch: value];
 }
 
-BOOL NSImage_inst_usesEPSOnResolutionMismatch(void *id) {
+BOOL NSImage_inst_UsesEPSOnResolutionMismatch(void *id) {
 	return [(NSImage*)id
 		usesEPSOnResolutionMismatch];
 }
 
-void NSImage_inst_setUsesEPSOnResolutionMismatch(void *id, BOOL value) {
+void NSImage_inst_SetUsesEPSOnResolutionMismatch(void *id, BOOL value) {
 	[(NSImage*)id
 		setUsesEPSOnResolutionMismatch: value];
 }
 
-BOOL NSImage_inst_matchesOnMultipleResolution(void *id) {
+BOOL NSImage_inst_MatchesOnMultipleResolution(void *id) {
 	return [(NSImage*)id
 		matchesOnMultipleResolution];
 }
 
-void NSImage_inst_setMatchesOnMultipleResolution(void *id, BOOL value) {
+void NSImage_inst_SetMatchesOnMultipleResolution(void *id, BOOL value) {
 	[(NSImage*)id
 		setMatchesOnMultipleResolution: value];
 }
 
-BOOL NSImage_inst_isValid(void *id) {
+BOOL NSImage_inst_IsValid(void *id) {
 	return [(NSImage*)id
 		isValid];
 }
 
-void* NSImage_inst_backgroundColor(void *id) {
+void* NSImage_inst_BackgroundColor(void *id) {
 	return [(NSImage*)id
 		backgroundColor];
 }
 
-void NSImage_inst_setBackgroundColor(void *id, void* value) {
+void NSImage_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSImage*)id
 		setBackgroundColor: value];
 }
 
-NSRect NSImage_inst_alignmentRect(void *id) {
+NSRect NSImage_inst_AlignmentRect(void *id) {
 	return [(NSImage*)id
 		alignmentRect];
 }
 
-void NSImage_inst_setAlignmentRect(void *id, NSRect value) {
+void NSImage_inst_SetAlignmentRect(void *id, NSRect value) {
 	[(NSImage*)id
 		setAlignmentRect: value];
 }
@@ -2054,473 +2054,473 @@ void* NSImage_inst_TIFFRepresentation(void *id) {
 		TIFFRepresentation];
 }
 
-void* NSImage_inst_accessibilityDescription(void *id) {
+void* NSImage_inst_AccessibilityDescription(void *id) {
 	return [(NSImage*)id
 		accessibilityDescription];
 }
 
-void NSImage_inst_setAccessibilityDescription(void *id, void* value) {
+void NSImage_inst_SetAccessibilityDescription(void *id, void* value) {
 	[(NSImage*)id
 		setAccessibilityDescription: value];
 }
 
-BOOL NSImage_inst_matchesOnlyOnBestFittingAxis(void *id) {
+BOOL NSImage_inst_MatchesOnlyOnBestFittingAxis(void *id) {
 	return [(NSImage*)id
 		matchesOnlyOnBestFittingAxis];
 }
 
-void NSImage_inst_setMatchesOnlyOnBestFittingAxis(void *id, BOOL value) {
+void NSImage_inst_SetMatchesOnlyOnBestFittingAxis(void *id, BOOL value) {
 	[(NSImage*)id
 		setMatchesOnlyOnBestFittingAxis: value];
 }
 
-void* NSImageView_inst_init(void *id) {
+void* NSImageView_inst_Init(void *id) {
 	return [(NSImageView*)id
 		init];
 }
 
-void* NSImageView_inst_image(void *id) {
+void* NSImageView_inst_Image(void *id) {
 	return [(NSImageView*)id
 		image];
 }
 
-void NSImageView_inst_setImage(void *id, void* value) {
+void NSImageView_inst_SetImage(void *id, void* value) {
 	[(NSImageView*)id
 		setImage: value];
 }
 
-BOOL NSImageView_inst_animates(void *id) {
+BOOL NSImageView_inst_Animates(void *id) {
 	return [(NSImageView*)id
 		animates];
 }
 
-void NSImageView_inst_setAnimates(void *id, BOOL value) {
+void NSImageView_inst_SetAnimates(void *id, BOOL value) {
 	[(NSImageView*)id
 		setAnimates: value];
 }
 
-BOOL NSImageView_inst_isEditable(void *id) {
+BOOL NSImageView_inst_IsEditable(void *id) {
 	return [(NSImageView*)id
 		isEditable];
 }
 
-void NSImageView_inst_setEditable(void *id, BOOL value) {
+void NSImageView_inst_SetEditable(void *id, BOOL value) {
 	[(NSImageView*)id
 		setEditable: value];
 }
 
-BOOL NSImageView_inst_allowsCutCopyPaste(void *id) {
+BOOL NSImageView_inst_AllowsCutCopyPaste(void *id) {
 	return [(NSImageView*)id
 		allowsCutCopyPaste];
 }
 
-void NSImageView_inst_setAllowsCutCopyPaste(void *id, BOOL value) {
+void NSImageView_inst_SetAllowsCutCopyPaste(void *id, BOOL value) {
 	[(NSImageView*)id
 		setAllowsCutCopyPaste: value];
 }
 
-void* NSImageView_inst_contentTintColor(void *id) {
+void* NSImageView_inst_ContentTintColor(void *id) {
 	return [(NSImageView*)id
 		contentTintColor];
 }
 
-void NSImageView_inst_setContentTintColor(void *id, void* value) {
+void NSImageView_inst_SetContentTintColor(void *id, void* value) {
 	[(NSImageView*)id
 		setContentTintColor: value];
 }
 
-void* NSNib_inst_initWithNibData_bundle(void *id, void* nibData, void* bundle) {
+void* NSNib_inst_InitWithNibDataBundle(void *id, void* nibData, void* bundle) {
 	return [(NSNib*)id
 		initWithNibData: nibData
 		bundle: bundle];
 }
 
-BOOL NSNib_inst_instantiateWithOwner_topLevelObjects(void *id, void* owner, void* topLevelObjects) {
+BOOL NSNib_inst_InstantiateWithOwnerTopLevelObjects(void *id, void* owner, void* topLevelObjects) {
 	return [(NSNib*)id
 		instantiateWithOwner: owner
 		topLevelObjects: topLevelObjects];
 }
 
-void* NSNib_inst_init(void *id) {
+void* NSNib_inst_Init(void *id) {
 	return [(NSNib*)id
 		init];
 }
 
-long NSPasteboard_inst_addTypes_owner(void *id, void* newTypes, void* newOwner) {
+long NSPasteboard_inst_AddTypesOwner(void *id, void* newTypes, void* newOwner) {
 	return [(NSPasteboard*)id
 		addTypes: newTypes
 		owner: newOwner];
 }
 
-BOOL NSPasteboard_inst_canReadItemWithDataConformingToTypes(void *id, void* types) {
+BOOL NSPasteboard_inst_CanReadItemWithDataConformingToTypes(void *id, void* types) {
 	return [(NSPasteboard*)id
 		canReadItemWithDataConformingToTypes: types];
 }
 
-BOOL NSPasteboard_inst_canReadObjectForClasses_options(void *id, void* classArray, void* options) {
+BOOL NSPasteboard_inst_CanReadObjectForClassesOptions(void *id, void* classArray, void* options) {
 	return [(NSPasteboard*)id
 		canReadObjectForClasses: classArray
 		options: options];
 }
 
-long NSPasteboard_inst_clearContents(void *id) {
+long NSPasteboard_inst_ClearContents(void *id) {
 	return [(NSPasteboard*)id
 		clearContents];
 }
 
-long NSPasteboard_inst_declareTypes_owner(void *id, void* newTypes, void* newOwner) {
+long NSPasteboard_inst_DeclareTypesOwner(void *id, void* newTypes, void* newOwner) {
 	return [(NSPasteboard*)id
 		declareTypes: newTypes
 		owner: newOwner];
 }
 
-void* NSPasteboard_inst_readObjectsForClasses_options(void *id, void* classArray, void* options) {
+void* NSPasteboard_inst_ReadObjectsForClassesOptions(void *id, void* classArray, void* options) {
 	return [(NSPasteboard*)id
 		readObjectsForClasses: classArray
 		options: options];
 }
 
-void NSPasteboard_inst_releaseGlobally(void *id) {
+void NSPasteboard_inst_ReleaseGlobally(void *id) {
 	[(NSPasteboard*)id
 		releaseGlobally];
 }
 
-BOOL NSPasteboard_inst_writeFileContents(void *id, void* filename) {
+BOOL NSPasteboard_inst_WriteFileContents(void *id, void* filename) {
 	return [(NSPasteboard*)id
 		writeFileContents: filename];
 }
 
-BOOL NSPasteboard_inst_writeObjects(void *id, void* objects) {
+BOOL NSPasteboard_inst_WriteObjects(void *id, void* objects) {
 	return [(NSPasteboard*)id
 		writeObjects: objects];
 }
 
-void* NSPasteboard_inst_init(void *id) {
+void* NSPasteboard_inst_Init(void *id) {
 	return [(NSPasteboard*)id
 		init];
 }
 
-void* NSPasteboard_inst_pasteboardItems(void *id) {
+void* NSPasteboard_inst_PasteboardItems(void *id) {
 	return [(NSPasteboard*)id
 		pasteboardItems];
 }
 
-void* NSPasteboard_inst_types(void *id) {
+void* NSPasteboard_inst_Types(void *id) {
 	return [(NSPasteboard*)id
 		types];
 }
 
-long NSPasteboard_inst_changeCount(void *id) {
+long NSPasteboard_inst_ChangeCount(void *id) {
 	return [(NSPasteboard*)id
 		changeCount];
 }
 
-void NSLayoutManager_inst_addTextContainer(void *id, void* container) {
+void NSLayoutManager_inst_AddTextContainer(void *id, void* container) {
 	[(NSLayoutManager*)id
 		addTextContainer: container];
 }
 
-NSSize NSLayoutManager_inst_attachmentSizeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
+NSSize NSLayoutManager_inst_AttachmentSizeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		attachmentSizeForGlyphAtIndex: glyphIndex];
 }
 
-unsigned long NSLayoutManager_inst_characterIndexForGlyphAtIndex(void *id, unsigned long glyphIndex) {
+unsigned long NSLayoutManager_inst_CharacterIndexForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		characterIndexForGlyphAtIndex: glyphIndex];
 }
 
-double NSLayoutManager_inst_defaultBaselineOffsetForFont(void *id, void* theFont) {
+double NSLayoutManager_inst_DefaultBaselineOffsetForFont(void *id, void* theFont) {
 	return [(NSLayoutManager*)id
 		defaultBaselineOffsetForFont: theFont];
 }
 
-double NSLayoutManager_inst_defaultLineHeightForFont(void *id, void* theFont) {
+double NSLayoutManager_inst_DefaultLineHeightForFont(void *id, void* theFont) {
 	return [(NSLayoutManager*)id
 		defaultLineHeightForFont: theFont];
 }
 
-BOOL NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_DrawsOutsideLineFragmentForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		drawsOutsideLineFragmentForGlyphAtIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer(void *id, NSRect bounds, void* container) {
+void NSLayoutManager_inst_EnsureLayoutForBoundingRectInTextContainer(void *id, NSRect bounds, void* container) {
 	[(NSLayoutManager*)id
 		ensureLayoutForBoundingRect: bounds
 		inTextContainer: container];
 }
 
-void NSLayoutManager_inst_ensureLayoutForTextContainer(void *id, void* container) {
+void NSLayoutManager_inst_EnsureLayoutForTextContainer(void *id, void* container) {
 	[(NSLayoutManager*)id
 		ensureLayoutForTextContainer: container];
 }
 
-unsigned long NSLayoutManager_inst_firstUnlaidCharacterIndex(void *id) {
+unsigned long NSLayoutManager_inst_FirstUnlaidCharacterIndex(void *id) {
 	return [(NSLayoutManager*)id
 		firstUnlaidCharacterIndex];
 }
 
-unsigned long NSLayoutManager_inst_firstUnlaidGlyphIndex(void *id) {
+unsigned long NSLayoutManager_inst_FirstUnlaidGlyphIndex(void *id) {
 	return [(NSLayoutManager*)id
 		firstUnlaidGlyphIndex];
 }
 
-unsigned long NSLayoutManager_inst_glyphIndexForCharacterAtIndex(void *id, unsigned long charIndex) {
+unsigned long NSLayoutManager_inst_GlyphIndexForCharacterAtIndex(void *id, unsigned long charIndex) {
 	return [(NSLayoutManager*)id
 		glyphIndexForCharacterAtIndex: charIndex];
 }
 
-void* NSLayoutManager_inst_init(void *id) {
+void* NSLayoutManager_inst_Init(void *id) {
 	return [(NSLayoutManager*)id
 		init];
 }
 
-void NSLayoutManager_inst_insertTextContainer_atIndex(void *id, void* container, unsigned long index) {
+void NSLayoutManager_inst_InsertTextContainerAtIndex(void *id, void* container, unsigned long index) {
 	[(NSLayoutManager*)id
 		insertTextContainer: container
 		atIndex: index];
 }
 
-BOOL NSLayoutManager_inst_isValidGlyphIndex(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_IsValidGlyphIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		isValidGlyphIndex: glyphIndex];
 }
 
-BOOL NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow(void *id, void* window) {
+BOOL NSLayoutManager_inst_LayoutManagerOwnsFirstResponderInWindow(void *id, void* window) {
 	return [(NSLayoutManager*)id
 		layoutManagerOwnsFirstResponderInWindow: window];
 }
 
-BOOL NSLayoutManager_inst_notShownAttributeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_NotShownAttributeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		notShownAttributeForGlyphAtIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_removeTextContainerAtIndex(void *id, unsigned long index) {
+void NSLayoutManager_inst_RemoveTextContainerAtIndex(void *id, unsigned long index) {
 	[(NSLayoutManager*)id
 		removeTextContainerAtIndex: index];
 }
 
-void NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
+void NSLayoutManager_inst_SetDrawsOutsideLineFragmentForGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
 	[(NSLayoutManager*)id
 		setDrawsOutsideLineFragment: flag
 		forGlyphAtIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer(void *id, NSRect fragmentRect, NSRect usedRect, void* container) {
+void NSLayoutManager_inst_SetExtraLineFragmentRectUsedRectTextContainer(void *id, NSRect fragmentRect, NSRect usedRect, void* container) {
 	[(NSLayoutManager*)id
 		setExtraLineFragmentRect: fragmentRect
 		usedRect: usedRect
 		textContainer: container];
 }
 
-void NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
+void NSLayoutManager_inst_SetNotShownAttributeForGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
 	[(NSLayoutManager*)id
 		setNotShownAttribute: flag
 		forGlyphAtIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_textContainerChangedGeometry(void *id, void* container) {
+void NSLayoutManager_inst_TextContainerChangedGeometry(void *id, void* container) {
 	[(NSLayoutManager*)id
 		textContainerChangedGeometry: container];
 }
 
-void NSLayoutManager_inst_textContainerChangedTextView(void *id, void* container) {
+void NSLayoutManager_inst_TextContainerChangedTextView(void *id, void* container) {
 	[(NSLayoutManager*)id
 		textContainerChangedTextView: container];
 }
 
-NSRect NSLayoutManager_inst_usedRectForTextContainer(void *id, void* container) {
+NSRect NSLayoutManager_inst_UsedRectForTextContainer(void *id, void* container) {
 	return [(NSLayoutManager*)id
 		usedRectForTextContainer: container];
 }
 
-void* NSLayoutManager_inst_delegate(void *id) {
+void* NSLayoutManager_inst_Delegate(void *id) {
 	return [(NSLayoutManager*)id
 		delegate];
 }
 
-void NSLayoutManager_inst_setDelegate(void *id, void* value) {
+void NSLayoutManager_inst_SetDelegate(void *id, void* value) {
 	[(NSLayoutManager*)id
 		setDelegate: value];
 }
 
-BOOL NSLayoutManager_inst_allowsNonContiguousLayout(void *id) {
+BOOL NSLayoutManager_inst_AllowsNonContiguousLayout(void *id) {
 	return [(NSLayoutManager*)id
 		allowsNonContiguousLayout];
 }
 
-void NSLayoutManager_inst_setAllowsNonContiguousLayout(void *id, BOOL value) {
+void NSLayoutManager_inst_SetAllowsNonContiguousLayout(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setAllowsNonContiguousLayout: value];
 }
 
-BOOL NSLayoutManager_inst_hasNonContiguousLayout(void *id) {
+BOOL NSLayoutManager_inst_HasNonContiguousLayout(void *id) {
 	return [(NSLayoutManager*)id
 		hasNonContiguousLayout];
 }
 
-BOOL NSLayoutManager_inst_showsInvisibleCharacters(void *id) {
+BOOL NSLayoutManager_inst_ShowsInvisibleCharacters(void *id) {
 	return [(NSLayoutManager*)id
 		showsInvisibleCharacters];
 }
 
-void NSLayoutManager_inst_setShowsInvisibleCharacters(void *id, BOOL value) {
+void NSLayoutManager_inst_SetShowsInvisibleCharacters(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setShowsInvisibleCharacters: value];
 }
 
-BOOL NSLayoutManager_inst_showsControlCharacters(void *id) {
+BOOL NSLayoutManager_inst_ShowsControlCharacters(void *id) {
 	return [(NSLayoutManager*)id
 		showsControlCharacters];
 }
 
-void NSLayoutManager_inst_setShowsControlCharacters(void *id, BOOL value) {
+void NSLayoutManager_inst_SetShowsControlCharacters(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setShowsControlCharacters: value];
 }
 
-BOOL NSLayoutManager_inst_usesFontLeading(void *id) {
+BOOL NSLayoutManager_inst_UsesFontLeading(void *id) {
 	return [(NSLayoutManager*)id
 		usesFontLeading];
 }
 
-void NSLayoutManager_inst_setUsesFontLeading(void *id, BOOL value) {
+void NSLayoutManager_inst_SetUsesFontLeading(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setUsesFontLeading: value];
 }
 
-BOOL NSLayoutManager_inst_backgroundLayoutEnabled(void *id) {
+BOOL NSLayoutManager_inst_BackgroundLayoutEnabled(void *id) {
 	return [(NSLayoutManager*)id
 		backgroundLayoutEnabled];
 }
 
-void NSLayoutManager_inst_setBackgroundLayoutEnabled(void *id, BOOL value) {
+void NSLayoutManager_inst_SetBackgroundLayoutEnabled(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setBackgroundLayoutEnabled: value];
 }
 
-BOOL NSLayoutManager_inst_limitsLayoutForSuspiciousContents(void *id) {
+BOOL NSLayoutManager_inst_LimitsLayoutForSuspiciousContents(void *id) {
 	return [(NSLayoutManager*)id
 		limitsLayoutForSuspiciousContents];
 }
 
-void NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents(void *id, BOOL value) {
+void NSLayoutManager_inst_SetLimitsLayoutForSuspiciousContents(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setLimitsLayoutForSuspiciousContents: value];
 }
 
-BOOL NSLayoutManager_inst_usesDefaultHyphenation(void *id) {
+BOOL NSLayoutManager_inst_UsesDefaultHyphenation(void *id) {
 	return [(NSLayoutManager*)id
 		usesDefaultHyphenation];
 }
 
-void NSLayoutManager_inst_setUsesDefaultHyphenation(void *id, BOOL value) {
+void NSLayoutManager_inst_SetUsesDefaultHyphenation(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setUsesDefaultHyphenation: value];
 }
 
-void* NSLayoutManager_inst_textContainers(void *id) {
+void* NSLayoutManager_inst_TextContainers(void *id) {
 	return [(NSLayoutManager*)id
 		textContainers];
 }
 
-unsigned long NSLayoutManager_inst_numberOfGlyphs(void *id) {
+unsigned long NSLayoutManager_inst_NumberOfGlyphs(void *id) {
 	return [(NSLayoutManager*)id
 		numberOfGlyphs];
 }
 
-NSRect NSLayoutManager_inst_extraLineFragmentRect(void *id) {
+NSRect NSLayoutManager_inst_ExtraLineFragmentRect(void *id) {
 	return [(NSLayoutManager*)id
 		extraLineFragmentRect];
 }
 
-void* NSLayoutManager_inst_extraLineFragmentTextContainer(void *id) {
+void* NSLayoutManager_inst_ExtraLineFragmentTextContainer(void *id) {
 	return [(NSLayoutManager*)id
 		extraLineFragmentTextContainer];
 }
 
-NSRect NSLayoutManager_inst_extraLineFragmentUsedRect(void *id) {
+NSRect NSLayoutManager_inst_ExtraLineFragmentUsedRect(void *id) {
 	return [(NSLayoutManager*)id
 		extraLineFragmentUsedRect];
 }
 
-void* NSLayoutManager_inst_firstTextView(void *id) {
+void* NSLayoutManager_inst_FirstTextView(void *id) {
 	return [(NSLayoutManager*)id
 		firstTextView];
 }
 
-void* NSLayoutManager_inst_textViewForBeginningOfSelection(void *id) {
+void* NSLayoutManager_inst_TextViewForBeginningOfSelection(void *id) {
 	return [(NSLayoutManager*)id
 		textViewForBeginningOfSelection];
 }
 
-void NSMenu_inst_addItem(void *id, void* newItem) {
+void NSMenu_inst_AddItem(void *id, void* newItem) {
 	[(NSMenu*)id
 		addItem: newItem];
 }
 
-void* NSMenu_inst_addItemWithTitle_action_keyEquivalent(void *id, void* string, void* selector, void* charCode) {
+void* NSMenu_inst_AddItemWithTitleActionKeyEquivalent(void *id, void* string, void* selector, void* charCode) {
 	return [(NSMenu*)id
 		addItemWithTitle: string
 		action: selector
 		keyEquivalent: charCode];
 }
 
-void NSMenu_inst_cancelTracking(void *id) {
+void NSMenu_inst_CancelTracking(void *id) {
 	[(NSMenu*)id
 		cancelTracking];
 }
 
-void NSMenu_inst_cancelTrackingWithoutAnimation(void *id) {
+void NSMenu_inst_CancelTrackingWithoutAnimation(void *id) {
 	[(NSMenu*)id
 		cancelTrackingWithoutAnimation];
 }
 
-long NSMenu_inst_indexOfItem(void *id, void* item) {
+long NSMenu_inst_IndexOfItem(void *id, void* item) {
 	return [(NSMenu*)id
 		indexOfItem: item];
 }
 
-long NSMenu_inst_indexOfItemWithRepresentedObject(void *id, void* object) {
+long NSMenu_inst_IndexOfItemWithRepresentedObject(void *id, void* object) {
 	return [(NSMenu*)id
 		indexOfItemWithRepresentedObject: object];
 }
 
-long NSMenu_inst_indexOfItemWithSubmenu(void *id, void* submenu) {
+long NSMenu_inst_IndexOfItemWithSubmenu(void *id, void* submenu) {
 	return [(NSMenu*)id
 		indexOfItemWithSubmenu: submenu];
 }
 
-long NSMenu_inst_indexOfItemWithTag(void *id, long tag) {
+long NSMenu_inst_IndexOfItemWithTag(void *id, long tag) {
 	return [(NSMenu*)id
 		indexOfItemWithTag: tag];
 }
 
-long NSMenu_inst_indexOfItemWithTarget_andAction(void *id, void* target, void* actionSelector) {
+long NSMenu_inst_IndexOfItemWithTargetAndAction(void *id, void* target, void* actionSelector) {
 	return [(NSMenu*)id
 		indexOfItemWithTarget: target
 		andAction: actionSelector];
 }
 
-long NSMenu_inst_indexOfItemWithTitle(void *id, void* title) {
+long NSMenu_inst_IndexOfItemWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		indexOfItemWithTitle: title];
 }
 
-void* NSMenu_inst_initWithTitle(void *id, void* title) {
+void* NSMenu_inst_InitWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		initWithTitle: title];
 }
 
-void NSMenu_inst_insertItem_atIndex(void *id, void* newItem, long index) {
+void NSMenu_inst_InsertItemAtIndex(void *id, void* newItem, long index) {
 	[(NSMenu*)id
 		insertItem: newItem
 		atIndex: index];
 }
 
-void* NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex(void *id, void* string, void* selector, void* charCode, long index) {
+void* NSMenu_inst_InsertItemWithTitleActionKeyEquivalentAtIndex(void *id, void* string, void* selector, void* charCode, long index) {
 	return [(NSMenu*)id
 		insertItemWithTitle: string
 		action: selector
@@ -2528,1745 +2528,1745 @@ void* NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex(void *id, voi
 		atIndex: index];
 }
 
-void* NSMenu_inst_itemAtIndex(void *id, long index) {
+void* NSMenu_inst_ItemAtIndex(void *id, long index) {
 	return [(NSMenu*)id
 		itemAtIndex: index];
 }
 
-void NSMenu_inst_itemChanged(void *id, void* item) {
+void NSMenu_inst_ItemChanged(void *id, void* item) {
 	[(NSMenu*)id
 		itemChanged: item];
 }
 
-void* NSMenu_inst_itemWithTag(void *id, long tag) {
+void* NSMenu_inst_ItemWithTag(void *id, long tag) {
 	return [(NSMenu*)id
 		itemWithTag: tag];
 }
 
-void* NSMenu_inst_itemWithTitle(void *id, void* title) {
+void* NSMenu_inst_ItemWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		itemWithTitle: title];
 }
 
-void NSMenu_inst_performActionForItemAtIndex(void *id, long index) {
+void NSMenu_inst_PerformActionForItemAtIndex(void *id, long index) {
 	[(NSMenu*)id
 		performActionForItemAtIndex: index];
 }
 
-BOOL NSMenu_inst_performKeyEquivalent(void *id, void* event) {
+BOOL NSMenu_inst_PerformKeyEquivalent(void *id, void* event) {
 	return [(NSMenu*)id
 		performKeyEquivalent: event];
 }
 
-BOOL NSMenu_inst_popUpMenuPositioningItem_atLocation_inView(void *id, void* item, NSPoint location, void* view) {
+BOOL NSMenu_inst_PopUpMenuPositioningItemAtLocationInView(void *id, void* item, NSPoint location, void* view) {
 	return [(NSMenu*)id
 		popUpMenuPositioningItem: item
 		atLocation: location
 		inView: view];
 }
 
-void NSMenu_inst_removeAllItems(void *id) {
+void NSMenu_inst_RemoveAllItems(void *id) {
 	[(NSMenu*)id
 		removeAllItems];
 }
 
-void NSMenu_inst_removeItem(void *id, void* item) {
+void NSMenu_inst_RemoveItem(void *id, void* item) {
 	[(NSMenu*)id
 		removeItem: item];
 }
 
-void NSMenu_inst_removeItemAtIndex(void *id, long index) {
+void NSMenu_inst_RemoveItemAtIndex(void *id, long index) {
 	[(NSMenu*)id
 		removeItemAtIndex: index];
 }
 
-void NSMenu_inst_setSubmenu_forItem(void *id, void* menu, void* item) {
+void NSMenu_inst_SetSubmenuForItem(void *id, void* menu, void* item) {
 	[(NSMenu*)id
 		setSubmenu: menu
 		forItem: item];
 }
 
-void NSMenu_inst_submenuAction(void *id, void* sender) {
+void NSMenu_inst_SubmenuAction(void *id, void* sender) {
 	[(NSMenu*)id
 		submenuAction: sender];
 }
 
-void NSMenu_inst_update(void *id) {
+void NSMenu_inst_Update(void *id) {
 	[(NSMenu*)id
 		update];
 }
 
-void* NSMenu_inst_init(void *id) {
+void* NSMenu_inst_Init(void *id) {
 	return [(NSMenu*)id
 		init];
 }
 
-double NSMenu_inst_menuBarHeight(void *id) {
+double NSMenu_inst_MenuBarHeight(void *id) {
 	return [(NSMenu*)id
 		menuBarHeight];
 }
 
-long NSMenu_inst_numberOfItems(void *id) {
+long NSMenu_inst_NumberOfItems(void *id) {
 	return [(NSMenu*)id
 		numberOfItems];
 }
 
-void* NSMenu_inst_itemArray(void *id) {
+void* NSMenu_inst_ItemArray(void *id) {
 	return [(NSMenu*)id
 		itemArray];
 }
 
-void NSMenu_inst_setItemArray(void *id, void* value) {
+void NSMenu_inst_SetItemArray(void *id, void* value) {
 	[(NSMenu*)id
 		setItemArray: value];
 }
 
-void* NSMenu_inst_supermenu(void *id) {
+void* NSMenu_inst_Supermenu(void *id) {
 	return [(NSMenu*)id
 		supermenu];
 }
 
-void NSMenu_inst_setSupermenu(void *id, void* value) {
+void NSMenu_inst_SetSupermenu(void *id, void* value) {
 	[(NSMenu*)id
 		setSupermenu: value];
 }
 
-BOOL NSMenu_inst_autoenablesItems(void *id) {
+BOOL NSMenu_inst_AutoenablesItems(void *id) {
 	return [(NSMenu*)id
 		autoenablesItems];
 }
 
-void NSMenu_inst_setAutoenablesItems(void *id, BOOL value) {
+void NSMenu_inst_SetAutoenablesItems(void *id, BOOL value) {
 	[(NSMenu*)id
 		setAutoenablesItems: value];
 }
 
-void* NSMenu_inst_font(void *id) {
+void* NSMenu_inst_Font(void *id) {
 	return [(NSMenu*)id
 		font];
 }
 
-void NSMenu_inst_setFont(void *id, void* value) {
+void NSMenu_inst_SetFont(void *id, void* value) {
 	[(NSMenu*)id
 		setFont: value];
 }
 
-void* NSMenu_inst_title(void *id) {
+void* NSMenu_inst_Title(void *id) {
 	return [(NSMenu*)id
 		title];
 }
 
-void NSMenu_inst_setTitle(void *id, void* value) {
+void NSMenu_inst_SetTitle(void *id, void* value) {
 	[(NSMenu*)id
 		setTitle: value];
 }
 
-double NSMenu_inst_minimumWidth(void *id) {
+double NSMenu_inst_MinimumWidth(void *id) {
 	return [(NSMenu*)id
 		minimumWidth];
 }
 
-void NSMenu_inst_setMinimumWidth(void *id, double value) {
+void NSMenu_inst_SetMinimumWidth(void *id, double value) {
 	[(NSMenu*)id
 		setMinimumWidth: value];
 }
 
-NSSize NSMenu_inst_size(void *id) {
+NSSize NSMenu_inst_Size(void *id) {
 	return [(NSMenu*)id
 		size];
 }
 
-BOOL NSMenu_inst_allowsContextMenuPlugIns(void *id) {
+BOOL NSMenu_inst_AllowsContextMenuPlugIns(void *id) {
 	return [(NSMenu*)id
 		allowsContextMenuPlugIns];
 }
 
-void NSMenu_inst_setAllowsContextMenuPlugIns(void *id, BOOL value) {
+void NSMenu_inst_SetAllowsContextMenuPlugIns(void *id, BOOL value) {
 	[(NSMenu*)id
 		setAllowsContextMenuPlugIns: value];
 }
 
-BOOL NSMenu_inst_showsStateColumn(void *id) {
+BOOL NSMenu_inst_ShowsStateColumn(void *id) {
 	return [(NSMenu*)id
 		showsStateColumn];
 }
 
-void NSMenu_inst_setShowsStateColumn(void *id, BOOL value) {
+void NSMenu_inst_SetShowsStateColumn(void *id, BOOL value) {
 	[(NSMenu*)id
 		setShowsStateColumn: value];
 }
 
-void* NSMenu_inst_highlightedItem(void *id) {
+void* NSMenu_inst_HighlightedItem(void *id) {
 	return [(NSMenu*)id
 		highlightedItem];
 }
 
-void* NSMenu_inst_delegate(void *id) {
+void* NSMenu_inst_Delegate(void *id) {
 	return [(NSMenu*)id
 		delegate];
 }
 
-void NSMenu_inst_setDelegate(void *id, void* value) {
+void NSMenu_inst_SetDelegate(void *id, void* value) {
 	[(NSMenu*)id
 		setDelegate: value];
 }
 
-void NSPopover_inst_close(void *id) {
+void NSPopover_inst_Close(void *id) {
 	[(NSPopover*)id
 		close];
 }
 
-void* NSPopover_inst_init(void *id) {
+void* NSPopover_inst_Init(void *id) {
 	return [(NSPopover*)id
 		init];
 }
 
-void NSPopover_inst_performClose(void *id, void* sender) {
+void NSPopover_inst_PerformClose(void *id, void* sender) {
 	[(NSPopover*)id
 		performClose: sender];
 }
 
-long NSPopover_inst_behavior(void *id) {
+long NSPopover_inst_Behavior(void *id) {
 	return [(NSPopover*)id
 		behavior];
 }
 
-void NSPopover_inst_setBehavior(void *id, long value) {
+void NSPopover_inst_SetBehavior(void *id, long value) {
 	[(NSPopover*)id
 		setBehavior: value];
 }
 
-NSRect NSPopover_inst_positioningRect(void *id) {
+NSRect NSPopover_inst_PositioningRect(void *id) {
 	return [(NSPopover*)id
 		positioningRect];
 }
 
-void NSPopover_inst_setPositioningRect(void *id, NSRect value) {
+void NSPopover_inst_SetPositioningRect(void *id, NSRect value) {
 	[(NSPopover*)id
 		setPositioningRect: value];
 }
 
-BOOL NSPopover_inst_animates(void *id) {
+BOOL NSPopover_inst_Animates(void *id) {
 	return [(NSPopover*)id
 		animates];
 }
 
-void NSPopover_inst_setAnimates(void *id, BOOL value) {
+void NSPopover_inst_SetAnimates(void *id, BOOL value) {
 	[(NSPopover*)id
 		setAnimates: value];
 }
 
-NSSize NSPopover_inst_contentSize(void *id) {
+NSSize NSPopover_inst_ContentSize(void *id) {
 	return [(NSPopover*)id
 		contentSize];
 }
 
-void NSPopover_inst_setContentSize(void *id, NSSize value) {
+void NSPopover_inst_SetContentSize(void *id, NSSize value) {
 	[(NSPopover*)id
 		setContentSize: value];
 }
 
-BOOL NSPopover_inst_isShown(void *id) {
+BOOL NSPopover_inst_IsShown(void *id) {
 	return [(NSPopover*)id
 		isShown];
 }
 
-BOOL NSPopover_inst_isDetached(void *id) {
+BOOL NSPopover_inst_IsDetached(void *id) {
 	return [(NSPopover*)id
 		isDetached];
 }
 
-void* NSMenuItem_inst_initWithTitle_action_keyEquivalent(void *id, void* string, void* selector, void* charCode) {
+void* NSMenuItem_inst_InitWithTitleActionKeyEquivalent(void *id, void* string, void* selector, void* charCode) {
 	return [(NSMenuItem*)id
 		initWithTitle: string
 		action: selector
 		keyEquivalent: charCode];
 }
 
-void* NSMenuItem_inst_init(void *id) {
+void* NSMenuItem_inst_Init(void *id) {
 	return [(NSMenuItem*)id
 		init];
 }
 
-BOOL NSMenuItem_inst_isEnabled(void *id) {
+BOOL NSMenuItem_inst_IsEnabled(void *id) {
 	return [(NSMenuItem*)id
 		isEnabled];
 }
 
-void NSMenuItem_inst_setEnabled(void *id, BOOL value) {
+void NSMenuItem_inst_SetEnabled(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setEnabled: value];
 }
 
-BOOL NSMenuItem_inst_isHidden(void *id) {
+BOOL NSMenuItem_inst_IsHidden(void *id) {
 	return [(NSMenuItem*)id
 		isHidden];
 }
 
-void NSMenuItem_inst_setHidden(void *id, BOOL value) {
+void NSMenuItem_inst_SetHidden(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setHidden: value];
 }
 
-BOOL NSMenuItem_inst_isHiddenOrHasHiddenAncestor(void *id) {
+BOOL NSMenuItem_inst_IsHiddenOrHasHiddenAncestor(void *id) {
 	return [(NSMenuItem*)id
 		isHiddenOrHasHiddenAncestor];
 }
 
-void* NSMenuItem_inst_target(void *id) {
+void* NSMenuItem_inst_Target(void *id) {
 	return [(NSMenuItem*)id
 		target];
 }
 
-void NSMenuItem_inst_setTarget(void *id, void* value) {
+void NSMenuItem_inst_SetTarget(void *id, void* value) {
 	[(NSMenuItem*)id
 		setTarget: value];
 }
 
-void* NSMenuItem_inst_action(void *id) {
+void* NSMenuItem_inst_Action(void *id) {
 	return [(NSMenuItem*)id
 		action];
 }
 
-void NSMenuItem_inst_setAction(void *id, void* value) {
+void NSMenuItem_inst_SetAction(void *id, void* value) {
 	[(NSMenuItem*)id
 		setAction: value];
 }
 
-void* NSMenuItem_inst_title(void *id) {
+void* NSMenuItem_inst_Title(void *id) {
 	return [(NSMenuItem*)id
 		title];
 }
 
-void NSMenuItem_inst_setTitle(void *id, void* value) {
+void NSMenuItem_inst_SetTitle(void *id, void* value) {
 	[(NSMenuItem*)id
 		setTitle: value];
 }
 
-void* NSMenuItem_inst_attributedTitle(void *id) {
+void* NSMenuItem_inst_AttributedTitle(void *id) {
 	return [(NSMenuItem*)id
 		attributedTitle];
 }
 
-void NSMenuItem_inst_setAttributedTitle(void *id, void* value) {
+void NSMenuItem_inst_SetAttributedTitle(void *id, void* value) {
 	[(NSMenuItem*)id
 		setAttributedTitle: value];
 }
 
-long NSMenuItem_inst_tag(void *id) {
+long NSMenuItem_inst_Tag(void *id) {
 	return [(NSMenuItem*)id
 		tag];
 }
 
-void NSMenuItem_inst_setTag(void *id, long value) {
+void NSMenuItem_inst_SetTag(void *id, long value) {
 	[(NSMenuItem*)id
 		setTag: value];
 }
 
-long NSMenuItem_inst_state(void *id) {
+long NSMenuItem_inst_State(void *id) {
 	return [(NSMenuItem*)id
 		state];
 }
 
-void NSMenuItem_inst_setState(void *id, long value) {
+void NSMenuItem_inst_SetState(void *id, long value) {
 	[(NSMenuItem*)id
 		setState: value];
 }
 
-void* NSMenuItem_inst_image(void *id) {
+void* NSMenuItem_inst_Image(void *id) {
 	return [(NSMenuItem*)id
 		image];
 }
 
-void NSMenuItem_inst_setImage(void *id, void* value) {
+void NSMenuItem_inst_SetImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setImage: value];
 }
 
-void* NSMenuItem_inst_onStateImage(void *id) {
+void* NSMenuItem_inst_OnStateImage(void *id) {
 	return [(NSMenuItem*)id
 		onStateImage];
 }
 
-void NSMenuItem_inst_setOnStateImage(void *id, void* value) {
+void NSMenuItem_inst_SetOnStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setOnStateImage: value];
 }
 
-void* NSMenuItem_inst_offStateImage(void *id) {
+void* NSMenuItem_inst_OffStateImage(void *id) {
 	return [(NSMenuItem*)id
 		offStateImage];
 }
 
-void NSMenuItem_inst_setOffStateImage(void *id, void* value) {
+void NSMenuItem_inst_SetOffStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setOffStateImage: value];
 }
 
-void* NSMenuItem_inst_mixedStateImage(void *id) {
+void* NSMenuItem_inst_MixedStateImage(void *id) {
 	return [(NSMenuItem*)id
 		mixedStateImage];
 }
 
-void NSMenuItem_inst_setMixedStateImage(void *id, void* value) {
+void NSMenuItem_inst_SetMixedStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setMixedStateImage: value];
 }
 
-void* NSMenuItem_inst_submenu(void *id) {
+void* NSMenuItem_inst_Submenu(void *id) {
 	return [(NSMenuItem*)id
 		submenu];
 }
 
-void NSMenuItem_inst_setSubmenu(void *id, void* value) {
+void NSMenuItem_inst_SetSubmenu(void *id, void* value) {
 	[(NSMenuItem*)id
 		setSubmenu: value];
 }
 
-BOOL NSMenuItem_inst_hasSubmenu(void *id) {
+BOOL NSMenuItem_inst_HasSubmenu(void *id) {
 	return [(NSMenuItem*)id
 		hasSubmenu];
 }
 
-void* NSMenuItem_inst_parentItem(void *id) {
+void* NSMenuItem_inst_ParentItem(void *id) {
 	return [(NSMenuItem*)id
 		parentItem];
 }
 
-BOOL NSMenuItem_inst_isSeparatorItem(void *id) {
+BOOL NSMenuItem_inst_IsSeparatorItem(void *id) {
 	return [(NSMenuItem*)id
 		isSeparatorItem];
 }
 
-void* NSMenuItem_inst_menu(void *id) {
+void* NSMenuItem_inst_Menu(void *id) {
 	return [(NSMenuItem*)id
 		menu];
 }
 
-void NSMenuItem_inst_setMenu(void *id, void* value) {
+void NSMenuItem_inst_SetMenu(void *id, void* value) {
 	[(NSMenuItem*)id
 		setMenu: value];
 }
 
-void* NSMenuItem_inst_keyEquivalent(void *id) {
+void* NSMenuItem_inst_KeyEquivalent(void *id) {
 	return [(NSMenuItem*)id
 		keyEquivalent];
 }
 
-void NSMenuItem_inst_setKeyEquivalent(void *id, void* value) {
+void NSMenuItem_inst_SetKeyEquivalent(void *id, void* value) {
 	[(NSMenuItem*)id
 		setKeyEquivalent: value];
 }
 
-void* NSMenuItem_inst_userKeyEquivalent(void *id) {
+void* NSMenuItem_inst_UserKeyEquivalent(void *id) {
 	return [(NSMenuItem*)id
 		userKeyEquivalent];
 }
 
-BOOL NSMenuItem_inst_isAlternate(void *id) {
+BOOL NSMenuItem_inst_IsAlternate(void *id) {
 	return [(NSMenuItem*)id
 		isAlternate];
 }
 
-void NSMenuItem_inst_setAlternate(void *id, BOOL value) {
+void NSMenuItem_inst_SetAlternate(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAlternate: value];
 }
 
-long NSMenuItem_inst_indentationLevel(void *id) {
+long NSMenuItem_inst_IndentationLevel(void *id) {
 	return [(NSMenuItem*)id
 		indentationLevel];
 }
 
-void NSMenuItem_inst_setIndentationLevel(void *id, long value) {
+void NSMenuItem_inst_SetIndentationLevel(void *id, long value) {
 	[(NSMenuItem*)id
 		setIndentationLevel: value];
 }
 
-void* NSMenuItem_inst_toolTip(void *id) {
+void* NSMenuItem_inst_ToolTip(void *id) {
 	return [(NSMenuItem*)id
 		toolTip];
 }
 
-void NSMenuItem_inst_setToolTip(void *id, void* value) {
+void NSMenuItem_inst_SetToolTip(void *id, void* value) {
 	[(NSMenuItem*)id
 		setToolTip: value];
 }
 
-void* NSMenuItem_inst_representedObject(void *id) {
+void* NSMenuItem_inst_RepresentedObject(void *id) {
 	return [(NSMenuItem*)id
 		representedObject];
 }
 
-void NSMenuItem_inst_setRepresentedObject(void *id, void* value) {
+void NSMenuItem_inst_SetRepresentedObject(void *id, void* value) {
 	[(NSMenuItem*)id
 		setRepresentedObject: value];
 }
 
-void* NSMenuItem_inst_view(void *id) {
+void* NSMenuItem_inst_View(void *id) {
 	return [(NSMenuItem*)id
 		view];
 }
 
-void NSMenuItem_inst_setView(void *id, void* value) {
+void NSMenuItem_inst_SetView(void *id, void* value) {
 	[(NSMenuItem*)id
 		setView: value];
 }
 
-BOOL NSMenuItem_inst_isHighlighted(void *id) {
+BOOL NSMenuItem_inst_IsHighlighted(void *id) {
 	return [(NSMenuItem*)id
 		isHighlighted];
 }
 
-BOOL NSMenuItem_inst_allowsAutomaticKeyEquivalentLocalization(void *id) {
+BOOL NSMenuItem_inst_AllowsAutomaticKeyEquivalentLocalization(void *id) {
 	return [(NSMenuItem*)id
 		allowsAutomaticKeyEquivalentLocalization];
 }
 
-void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization(void *id, BOOL value) {
+void NSMenuItem_inst_SetAllowsAutomaticKeyEquivalentLocalization(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsAutomaticKeyEquivalentLocalization: value];
 }
 
-BOOL NSMenuItem_inst_allowsAutomaticKeyEquivalentMirroring(void *id) {
+BOOL NSMenuItem_inst_AllowsAutomaticKeyEquivalentMirroring(void *id) {
 	return [(NSMenuItem*)id
 		allowsAutomaticKeyEquivalentMirroring];
 }
 
-void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring(void *id, BOOL value) {
+void NSMenuItem_inst_SetAllowsAutomaticKeyEquivalentMirroring(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsAutomaticKeyEquivalentMirroring: value];
 }
 
-BOOL NSMenuItem_inst_allowsKeyEquivalentWhenHidden(void *id) {
+BOOL NSMenuItem_inst_AllowsKeyEquivalentWhenHidden(void *id) {
 	return [(NSMenuItem*)id
 		allowsKeyEquivalentWhenHidden];
 }
 
-void NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden(void *id, BOOL value) {
+void NSMenuItem_inst_SetAllowsKeyEquivalentWhenHidden(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsKeyEquivalentWhenHidden: value];
 }
 
-BOOL NSRunningApplication_inst_forceTerminate(void *id) {
+BOOL NSRunningApplication_inst_ForceTerminate(void *id) {
 	return [(NSRunningApplication*)id
 		forceTerminate];
 }
 
-BOOL NSRunningApplication_inst_hide(void *id) {
+BOOL NSRunningApplication_inst_Hide(void *id) {
 	return [(NSRunningApplication*)id
 		hide];
 }
 
-BOOL NSRunningApplication_inst_terminate(void *id) {
+BOOL NSRunningApplication_inst_Terminate(void *id) {
 	return [(NSRunningApplication*)id
 		terminate];
 }
 
-BOOL NSRunningApplication_inst_unhide(void *id) {
+BOOL NSRunningApplication_inst_Unhide(void *id) {
 	return [(NSRunningApplication*)id
 		unhide];
 }
 
-void* NSRunningApplication_inst_init(void *id) {
+void* NSRunningApplication_inst_Init(void *id) {
 	return [(NSRunningApplication*)id
 		init];
 }
 
-BOOL NSRunningApplication_inst_isActive(void *id) {
+BOOL NSRunningApplication_inst_IsActive(void *id) {
 	return [(NSRunningApplication*)id
 		isActive];
 }
 
-long NSRunningApplication_inst_activationPolicy(void *id) {
+long NSRunningApplication_inst_ActivationPolicy(void *id) {
 	return [(NSRunningApplication*)id
 		activationPolicy];
 }
 
-BOOL NSRunningApplication_inst_isHidden(void *id) {
+BOOL NSRunningApplication_inst_IsHidden(void *id) {
 	return [(NSRunningApplication*)id
 		isHidden];
 }
 
-void* NSRunningApplication_inst_localizedName(void *id) {
+void* NSRunningApplication_inst_LocalizedName(void *id) {
 	return [(NSRunningApplication*)id
 		localizedName];
 }
 
-void* NSRunningApplication_inst_icon(void *id) {
+void* NSRunningApplication_inst_Icon(void *id) {
 	return [(NSRunningApplication*)id
 		icon];
 }
 
-void* NSRunningApplication_inst_bundleIdentifier(void *id) {
+void* NSRunningApplication_inst_BundleIdentifier(void *id) {
 	return [(NSRunningApplication*)id
 		bundleIdentifier];
 }
 
-void* NSRunningApplication_inst_bundleURL(void *id) {
+void* NSRunningApplication_inst_BundleURL(void *id) {
 	return [(NSRunningApplication*)id
 		bundleURL];
 }
 
-long NSRunningApplication_inst_executableArchitecture(void *id) {
+long NSRunningApplication_inst_ExecutableArchitecture(void *id) {
 	return [(NSRunningApplication*)id
 		executableArchitecture];
 }
 
-void* NSRunningApplication_inst_executableURL(void *id) {
+void* NSRunningApplication_inst_ExecutableURL(void *id) {
 	return [(NSRunningApplication*)id
 		executableURL];
 }
 
-BOOL NSRunningApplication_inst_isFinishedLaunching(void *id) {
+BOOL NSRunningApplication_inst_IsFinishedLaunching(void *id) {
 	return [(NSRunningApplication*)id
 		isFinishedLaunching];
 }
 
-BOOL NSRunningApplication_inst_ownsMenuBar(void *id) {
+BOOL NSRunningApplication_inst_OwnsMenuBar(void *id) {
 	return [(NSRunningApplication*)id
 		ownsMenuBar];
 }
 
-BOOL NSRunningApplication_inst_isTerminated(void *id) {
+BOOL NSRunningApplication_inst_IsTerminated(void *id) {
 	return [(NSRunningApplication*)id
 		isTerminated];
 }
 
-NSRect NSScreen_inst_convertRectFromBacking(void *id, NSRect rect) {
+NSRect NSScreen_inst_ConvertRectFromBacking(void *id, NSRect rect) {
 	return [(NSScreen*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSScreen_inst_convertRectToBacking(void *id, NSRect rect) {
+NSRect NSScreen_inst_ConvertRectToBacking(void *id, NSRect rect) {
 	return [(NSScreen*)id
 		convertRectToBacking: rect];
 }
 
-void* NSScreen_inst_init(void *id) {
+void* NSScreen_inst_Init(void *id) {
 	return [(NSScreen*)id
 		init];
 }
 
-NSRect NSScreen_inst_frame(void *id) {
+NSRect NSScreen_inst_Frame(void *id) {
 	return [(NSScreen*)id
 		frame];
 }
 
-void* NSScreen_inst_deviceDescription(void *id) {
+void* NSScreen_inst_DeviceDescription(void *id) {
 	return [(NSScreen*)id
 		deviceDescription];
 }
 
-NSRect NSScreen_inst_visibleFrame(void *id) {
+NSRect NSScreen_inst_VisibleFrame(void *id) {
 	return [(NSScreen*)id
 		visibleFrame];
 }
 
-double NSScreen_inst_backingScaleFactor(void *id) {
+double NSScreen_inst_BackingScaleFactor(void *id) {
 	return [(NSScreen*)id
 		backingScaleFactor];
 }
 
-double NSScreen_inst_maximumPotentialExtendedDynamicRangeColorComponentValue(void *id) {
+double NSScreen_inst_MaximumPotentialExtendedDynamicRangeColorComponentValue(void *id) {
 	return [(NSScreen*)id
 		maximumPotentialExtendedDynamicRangeColorComponentValue];
 }
 
-double NSScreen_inst_maximumExtendedDynamicRangeColorComponentValue(void *id) {
+double NSScreen_inst_MaximumExtendedDynamicRangeColorComponentValue(void *id) {
 	return [(NSScreen*)id
 		maximumExtendedDynamicRangeColorComponentValue];
 }
 
-double NSScreen_inst_maximumReferenceExtendedDynamicRangeColorComponentValue(void *id) {
+double NSScreen_inst_MaximumReferenceExtendedDynamicRangeColorComponentValue(void *id) {
 	return [(NSScreen*)id
 		maximumReferenceExtendedDynamicRangeColorComponentValue];
 }
 
-void* NSScreen_inst_localizedName(void *id) {
+void* NSScreen_inst_LocalizedName(void *id) {
 	return [(NSScreen*)id
 		localizedName];
 }
 
-long NSScreen_inst_maximumFramesPerSecond(void *id) {
+long NSScreen_inst_MaximumFramesPerSecond(void *id) {
 	return [(NSScreen*)id
 		maximumFramesPerSecond];
 }
 
-void NSStatusBar_inst_removeStatusItem(void *id, void* item) {
+void NSStatusBar_inst_RemoveStatusItem(void *id, void* item) {
 	[(NSStatusBar*)id
 		removeStatusItem: item];
 }
 
-void* NSStatusBar_inst_statusItemWithLength(void *id, double length) {
+void* NSStatusBar_inst_StatusItemWithLength(void *id, double length) {
 	return [(NSStatusBar*)id
 		statusItemWithLength: length];
 }
 
-void* NSStatusBar_inst_init(void *id) {
+void* NSStatusBar_inst_Init(void *id) {
 	return [(NSStatusBar*)id
 		init];
 }
 
-BOOL NSStatusBar_inst_isVertical(void *id) {
+BOOL NSStatusBar_inst_IsVertical(void *id) {
 	return [(NSStatusBar*)id
 		isVertical];
 }
 
-double NSStatusBar_inst_thickness(void *id) {
+double NSStatusBar_inst_Thickness(void *id) {
 	return [(NSStatusBar*)id
 		thickness];
 }
 
-void* NSStatusBarButton_inst_init(void *id) {
+void* NSStatusBarButton_inst_Init(void *id) {
 	return [(NSStatusBarButton*)id
 		init];
 }
 
-BOOL NSStatusBarButton_inst_appearsDisabled(void *id) {
+BOOL NSStatusBarButton_inst_AppearsDisabled(void *id) {
 	return [(NSStatusBarButton*)id
 		appearsDisabled];
 }
 
-void NSStatusBarButton_inst_setAppearsDisabled(void *id, BOOL value) {
+void NSStatusBarButton_inst_SetAppearsDisabled(void *id, BOOL value) {
 	[(NSStatusBarButton*)id
 		setAppearsDisabled: value];
 }
 
-void* NSStatusItem_inst_init(void *id) {
+void* NSStatusItem_inst_Init(void *id) {
 	return [(NSStatusItem*)id
 		init];
 }
 
-void* NSStatusItem_inst_statusBar(void *id) {
+void* NSStatusItem_inst_StatusBar(void *id) {
 	return [(NSStatusItem*)id
 		statusBar];
 }
 
-void* NSStatusItem_inst_button(void *id) {
+void* NSStatusItem_inst_Button(void *id) {
 	return [(NSStatusItem*)id
 		button];
 }
 
-void* NSStatusItem_inst_menu(void *id) {
+void* NSStatusItem_inst_Menu(void *id) {
 	return [(NSStatusItem*)id
 		menu];
 }
 
-void NSStatusItem_inst_setMenu(void *id, void* value) {
+void NSStatusItem_inst_SetMenu(void *id, void* value) {
 	[(NSStatusItem*)id
 		setMenu: value];
 }
 
-BOOL NSStatusItem_inst_isVisible(void *id) {
+BOOL NSStatusItem_inst_IsVisible(void *id) {
 	return [(NSStatusItem*)id
 		isVisible];
 }
 
-void NSStatusItem_inst_setVisible(void *id, BOOL value) {
+void NSStatusItem_inst_SetVisible(void *id, BOOL value) {
 	[(NSStatusItem*)id
 		setVisible: value];
 }
 
-double NSStatusItem_inst_length(void *id) {
+double NSStatusItem_inst_Length(void *id) {
 	return [(NSStatusItem*)id
 		length];
 }
 
-void NSStatusItem_inst_setLength(void *id, double value) {
+void NSStatusItem_inst_SetLength(void *id, double value) {
 	[(NSStatusItem*)id
 		setLength: value];
 }
 
-void NSText_inst_alignCenter(void *id, void* sender) {
+void NSText_inst_AlignCenter(void *id, void* sender) {
 	[(NSText*)id
 		alignCenter: sender];
 }
 
-void NSText_inst_alignLeft(void *id, void* sender) {
+void NSText_inst_AlignLeft(void *id, void* sender) {
 	[(NSText*)id
 		alignLeft: sender];
 }
 
-void NSText_inst_alignRight(void *id, void* sender) {
+void NSText_inst_AlignRight(void *id, void* sender) {
 	[(NSText*)id
 		alignRight: sender];
 }
 
-void NSText_inst_changeFont(void *id, void* sender) {
+void NSText_inst_ChangeFont(void *id, void* sender) {
 	[(NSText*)id
 		changeFont: sender];
 }
 
-void NSText_inst_checkSpelling(void *id, void* sender) {
+void NSText_inst_CheckSpelling(void *id, void* sender) {
 	[(NSText*)id
 		checkSpelling: sender];
 }
 
-void NSText_inst_copy(void *id, void* sender) {
+void NSText_inst_Copy(void *id, void* sender) {
 	[(NSText*)id
 		copy: sender];
 }
 
-void NSText_inst_copyFont(void *id, void* sender) {
+void NSText_inst_CopyFont(void *id, void* sender) {
 	[(NSText*)id
 		copyFont: sender];
 }
 
-void NSText_inst_copyRuler(void *id, void* sender) {
+void NSText_inst_CopyRuler(void *id, void* sender) {
 	[(NSText*)id
 		copyRuler: sender];
 }
 
-void NSText_inst_cut(void *id, void* sender) {
+void NSText_inst_Cut(void *id, void* sender) {
 	[(NSText*)id
 		cut: sender];
 }
 
-void NSText_inst_delete(void *id, void* sender) {
+void NSText_inst_Delete(void *id, void* sender) {
 	[(NSText*)id
 		delete: sender];
 }
 
-void* NSText_inst_initWithFrame(void *id, NSRect frameRect) {
+void* NSText_inst_InitWithFrame(void *id, NSRect frameRect) {
 	return [(NSText*)id
 		initWithFrame: frameRect];
 }
 
-void NSText_inst_paste(void *id, void* sender) {
+void NSText_inst_Paste(void *id, void* sender) {
 	[(NSText*)id
 		paste: sender];
 }
 
-void NSText_inst_pasteFont(void *id, void* sender) {
+void NSText_inst_PasteFont(void *id, void* sender) {
 	[(NSText*)id
 		pasteFont: sender];
 }
 
-void NSText_inst_pasteRuler(void *id, void* sender) {
+void NSText_inst_PasteRuler(void *id, void* sender) {
 	[(NSText*)id
 		pasteRuler: sender];
 }
 
-BOOL NSText_inst_readRTFDFromFile(void *id, void* path) {
+BOOL NSText_inst_ReadRTFDFromFile(void *id, void* path) {
 	return [(NSText*)id
 		readRTFDFromFile: path];
 }
 
-void NSText_inst_selectAll(void *id, void* sender) {
+void NSText_inst_SelectAll(void *id, void* sender) {
 	[(NSText*)id
 		selectAll: sender];
 }
 
-void NSText_inst_showGuessPanel(void *id, void* sender) {
+void NSText_inst_ShowGuessPanel(void *id, void* sender) {
 	[(NSText*)id
 		showGuessPanel: sender];
 }
 
-void NSText_inst_sizeToFit(void *id) {
+void NSText_inst_SizeToFit(void *id) {
 	[(NSText*)id
 		sizeToFit];
 }
 
-void NSText_inst_subscript(void *id, void* sender) {
+void NSText_inst_Subscript(void *id, void* sender) {
 	[(NSText*)id
 		subscript: sender];
 }
 
-void NSText_inst_superscript(void *id, void* sender) {
+void NSText_inst_Superscript(void *id, void* sender) {
 	[(NSText*)id
 		superscript: sender];
 }
 
-void NSText_inst_toggleRuler(void *id, void* sender) {
+void NSText_inst_ToggleRuler(void *id, void* sender) {
 	[(NSText*)id
 		toggleRuler: sender];
 }
 
-void NSText_inst_underline(void *id, void* sender) {
+void NSText_inst_Underline(void *id, void* sender) {
 	[(NSText*)id
 		underline: sender];
 }
 
-void NSText_inst_unscript(void *id, void* sender) {
+void NSText_inst_Unscript(void *id, void* sender) {
 	[(NSText*)id
 		unscript: sender];
 }
 
-BOOL NSText_inst_writeRTFDToFile_atomically(void *id, void* path, BOOL flag) {
+BOOL NSText_inst_WriteRTFDToFileAtomically(void *id, void* path, BOOL flag) {
 	return [(NSText*)id
 		writeRTFDToFile: path
 		atomically: flag];
 }
 
-void* NSText_inst_init(void *id) {
+void* NSText_inst_Init(void *id) {
 	return [(NSText*)id
 		init];
 }
 
-void* NSText_inst_string(void *id) {
+void* NSText_inst_String(void *id) {
 	return [(NSText*)id
 		string];
 }
 
-void NSText_inst_setString(void *id, void* value) {
+void NSText_inst_SetString(void *id, void* value) {
 	[(NSText*)id
 		setString: value];
 }
 
-void* NSText_inst_backgroundColor(void *id) {
+void* NSText_inst_BackgroundColor(void *id) {
 	return [(NSText*)id
 		backgroundColor];
 }
 
-void NSText_inst_setBackgroundColor(void *id, void* value) {
+void NSText_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSText*)id
 		setBackgroundColor: value];
 }
 
-BOOL NSText_inst_drawsBackground(void *id) {
+BOOL NSText_inst_DrawsBackground(void *id) {
 	return [(NSText*)id
 		drawsBackground];
 }
 
-void NSText_inst_setDrawsBackground(void *id, BOOL value) {
+void NSText_inst_SetDrawsBackground(void *id, BOOL value) {
 	[(NSText*)id
 		setDrawsBackground: value];
 }
 
-BOOL NSText_inst_isEditable(void *id) {
+BOOL NSText_inst_IsEditable(void *id) {
 	return [(NSText*)id
 		isEditable];
 }
 
-void NSText_inst_setEditable(void *id, BOOL value) {
+void NSText_inst_SetEditable(void *id, BOOL value) {
 	[(NSText*)id
 		setEditable: value];
 }
 
-BOOL NSText_inst_isSelectable(void *id) {
+BOOL NSText_inst_IsSelectable(void *id) {
 	return [(NSText*)id
 		isSelectable];
 }
 
-void NSText_inst_setSelectable(void *id, BOOL value) {
+void NSText_inst_SetSelectable(void *id, BOOL value) {
 	[(NSText*)id
 		setSelectable: value];
 }
 
-BOOL NSText_inst_isFieldEditor(void *id) {
+BOOL NSText_inst_IsFieldEditor(void *id) {
 	return [(NSText*)id
 		isFieldEditor];
 }
 
-void NSText_inst_setFieldEditor(void *id, BOOL value) {
+void NSText_inst_SetFieldEditor(void *id, BOOL value) {
 	[(NSText*)id
 		setFieldEditor: value];
 }
 
-BOOL NSText_inst_isRichText(void *id) {
+BOOL NSText_inst_IsRichText(void *id) {
 	return [(NSText*)id
 		isRichText];
 }
 
-void NSText_inst_setRichText(void *id, BOOL value) {
+void NSText_inst_SetRichText(void *id, BOOL value) {
 	[(NSText*)id
 		setRichText: value];
 }
 
-BOOL NSText_inst_importsGraphics(void *id) {
+BOOL NSText_inst_ImportsGraphics(void *id) {
 	return [(NSText*)id
 		importsGraphics];
 }
 
-void NSText_inst_setImportsGraphics(void *id, BOOL value) {
+void NSText_inst_SetImportsGraphics(void *id, BOOL value) {
 	[(NSText*)id
 		setImportsGraphics: value];
 }
 
-BOOL NSText_inst_usesFontPanel(void *id) {
+BOOL NSText_inst_UsesFontPanel(void *id) {
 	return [(NSText*)id
 		usesFontPanel];
 }
 
-void NSText_inst_setUsesFontPanel(void *id, BOOL value) {
+void NSText_inst_SetUsesFontPanel(void *id, BOOL value) {
 	[(NSText*)id
 		setUsesFontPanel: value];
 }
 
-BOOL NSText_inst_isRulerVisible(void *id) {
+BOOL NSText_inst_IsRulerVisible(void *id) {
 	return [(NSText*)id
 		isRulerVisible];
 }
 
-void* NSText_inst_font(void *id) {
+void* NSText_inst_Font(void *id) {
 	return [(NSText*)id
 		font];
 }
 
-void NSText_inst_setFont(void *id, void* value) {
+void NSText_inst_SetFont(void *id, void* value) {
 	[(NSText*)id
 		setFont: value];
 }
 
-void* NSText_inst_textColor(void *id) {
+void* NSText_inst_TextColor(void *id) {
 	return [(NSText*)id
 		textColor];
 }
 
-void NSText_inst_setTextColor(void *id, void* value) {
+void NSText_inst_SetTextColor(void *id, void* value) {
 	[(NSText*)id
 		setTextColor: value];
 }
 
-NSSize NSText_inst_maxSize(void *id) {
+NSSize NSText_inst_MaxSize(void *id) {
 	return [(NSText*)id
 		maxSize];
 }
 
-void NSText_inst_setMaxSize(void *id, NSSize value) {
+void NSText_inst_SetMaxSize(void *id, NSSize value) {
 	[(NSText*)id
 		setMaxSize: value];
 }
 
-NSSize NSText_inst_minSize(void *id) {
+NSSize NSText_inst_MinSize(void *id) {
 	return [(NSText*)id
 		minSize];
 }
 
-void NSText_inst_setMinSize(void *id, NSSize value) {
+void NSText_inst_SetMinSize(void *id, NSSize value) {
 	[(NSText*)id
 		setMinSize: value];
 }
 
-BOOL NSText_inst_isVerticallyResizable(void *id) {
+BOOL NSText_inst_IsVerticallyResizable(void *id) {
 	return [(NSText*)id
 		isVerticallyResizable];
 }
 
-void NSText_inst_setVerticallyResizable(void *id, BOOL value) {
+void NSText_inst_SetVerticallyResizable(void *id, BOOL value) {
 	[(NSText*)id
 		setVerticallyResizable: value];
 }
 
-BOOL NSText_inst_isHorizontallyResizable(void *id) {
+BOOL NSText_inst_IsHorizontallyResizable(void *id) {
 	return [(NSText*)id
 		isHorizontallyResizable];
 }
 
-void NSText_inst_setHorizontallyResizable(void *id, BOOL value) {
+void NSText_inst_SetHorizontallyResizable(void *id, BOOL value) {
 	[(NSText*)id
 		setHorizontallyResizable: value];
 }
 
-void* NSText_inst_delegate(void *id) {
+void* NSText_inst_Delegate(void *id) {
 	return [(NSText*)id
 		delegate];
 }
 
-void NSText_inst_setDelegate(void *id, void* value) {
+void NSText_inst_SetDelegate(void *id, void* value) {
 	[(NSText*)id
 		setDelegate: value];
 }
 
-void NSTextField_inst_selectText(void *id, void* sender) {
+void NSTextField_inst_SelectText(void *id, void* sender) {
 	[(NSTextField*)id
 		selectText: sender];
 }
 
-BOOL NSTextField_inst_textShouldBeginEditing(void *id, void* textObject) {
+BOOL NSTextField_inst_TextShouldBeginEditing(void *id, void* textObject) {
 	return [(NSTextField*)id
 		textShouldBeginEditing: textObject];
 }
 
-BOOL NSTextField_inst_textShouldEndEditing(void *id, void* textObject) {
+BOOL NSTextField_inst_TextShouldEndEditing(void *id, void* textObject) {
 	return [(NSTextField*)id
 		textShouldEndEditing: textObject];
 }
 
-void* NSTextField_inst_init(void *id) {
+void* NSTextField_inst_Init(void *id) {
 	return [(NSTextField*)id
 		init];
 }
 
-BOOL NSTextField_inst_isSelectable(void *id) {
+BOOL NSTextField_inst_IsSelectable(void *id) {
 	return [(NSTextField*)id
 		isSelectable];
 }
 
-void NSTextField_inst_setSelectable(void *id, BOOL value) {
+void NSTextField_inst_SetSelectable(void *id, BOOL value) {
 	[(NSTextField*)id
 		setSelectable: value];
 }
 
-BOOL NSTextField_inst_isEditable(void *id) {
+BOOL NSTextField_inst_IsEditable(void *id) {
 	return [(NSTextField*)id
 		isEditable];
 }
 
-void NSTextField_inst_setEditable(void *id, BOOL value) {
+void NSTextField_inst_SetEditable(void *id, BOOL value) {
 	[(NSTextField*)id
 		setEditable: value];
 }
 
-BOOL NSTextField_inst_allowsEditingTextAttributes(void *id) {
+BOOL NSTextField_inst_AllowsEditingTextAttributes(void *id) {
 	return [(NSTextField*)id
 		allowsEditingTextAttributes];
 }
 
-void NSTextField_inst_setAllowsEditingTextAttributes(void *id, BOOL value) {
+void NSTextField_inst_SetAllowsEditingTextAttributes(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsEditingTextAttributes: value];
 }
 
-BOOL NSTextField_inst_importsGraphics(void *id) {
+BOOL NSTextField_inst_ImportsGraphics(void *id) {
 	return [(NSTextField*)id
 		importsGraphics];
 }
 
-void NSTextField_inst_setImportsGraphics(void *id, BOOL value) {
+void NSTextField_inst_SetImportsGraphics(void *id, BOOL value) {
 	[(NSTextField*)id
 		setImportsGraphics: value];
 }
 
-void* NSTextField_inst_placeholderString(void *id) {
+void* NSTextField_inst_PlaceholderString(void *id) {
 	return [(NSTextField*)id
 		placeholderString];
 }
 
-void NSTextField_inst_setPlaceholderString(void *id, void* value) {
+void NSTextField_inst_SetPlaceholderString(void *id, void* value) {
 	[(NSTextField*)id
 		setPlaceholderString: value];
 }
 
-void* NSTextField_inst_placeholderAttributedString(void *id) {
+void* NSTextField_inst_PlaceholderAttributedString(void *id) {
 	return [(NSTextField*)id
 		placeholderAttributedString];
 }
 
-void NSTextField_inst_setPlaceholderAttributedString(void *id, void* value) {
+void NSTextField_inst_SetPlaceholderAttributedString(void *id, void* value) {
 	[(NSTextField*)id
 		setPlaceholderAttributedString: value];
 }
 
-BOOL NSTextField_inst_allowsDefaultTighteningForTruncation(void *id) {
+BOOL NSTextField_inst_AllowsDefaultTighteningForTruncation(void *id) {
 	return [(NSTextField*)id
 		allowsDefaultTighteningForTruncation];
 }
 
-void NSTextField_inst_setAllowsDefaultTighteningForTruncation(void *id, BOOL value) {
+void NSTextField_inst_SetAllowsDefaultTighteningForTruncation(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsDefaultTighteningForTruncation: value];
 }
 
-long NSTextField_inst_maximumNumberOfLines(void *id) {
+long NSTextField_inst_MaximumNumberOfLines(void *id) {
 	return [(NSTextField*)id
 		maximumNumberOfLines];
 }
 
-void NSTextField_inst_setMaximumNumberOfLines(void *id, long value) {
+void NSTextField_inst_SetMaximumNumberOfLines(void *id, long value) {
 	[(NSTextField*)id
 		setMaximumNumberOfLines: value];
 }
 
-double NSTextField_inst_preferredMaxLayoutWidth(void *id) {
+double NSTextField_inst_PreferredMaxLayoutWidth(void *id) {
 	return [(NSTextField*)id
 		preferredMaxLayoutWidth];
 }
 
-void NSTextField_inst_setPreferredMaxLayoutWidth(void *id, double value) {
+void NSTextField_inst_SetPreferredMaxLayoutWidth(void *id, double value) {
 	[(NSTextField*)id
 		setPreferredMaxLayoutWidth: value];
 }
 
-void* NSTextField_inst_textColor(void *id) {
+void* NSTextField_inst_TextColor(void *id) {
 	return [(NSTextField*)id
 		textColor];
 }
 
-void NSTextField_inst_setTextColor(void *id, void* value) {
+void NSTextField_inst_SetTextColor(void *id, void* value) {
 	[(NSTextField*)id
 		setTextColor: value];
 }
 
-void* NSTextField_inst_backgroundColor(void *id) {
+void* NSTextField_inst_BackgroundColor(void *id) {
 	return [(NSTextField*)id
 		backgroundColor];
 }
 
-void NSTextField_inst_setBackgroundColor(void *id, void* value) {
+void NSTextField_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSTextField*)id
 		setBackgroundColor: value];
 }
 
-BOOL NSTextField_inst_drawsBackground(void *id) {
+BOOL NSTextField_inst_DrawsBackground(void *id) {
 	return [(NSTextField*)id
 		drawsBackground];
 }
 
-void NSTextField_inst_setDrawsBackground(void *id, BOOL value) {
+void NSTextField_inst_SetDrawsBackground(void *id, BOOL value) {
 	[(NSTextField*)id
 		setDrawsBackground: value];
 }
 
-BOOL NSTextField_inst_isBezeled(void *id) {
+BOOL NSTextField_inst_IsBezeled(void *id) {
 	return [(NSTextField*)id
 		isBezeled];
 }
 
-void NSTextField_inst_setBezeled(void *id, BOOL value) {
+void NSTextField_inst_SetBezeled(void *id, BOOL value) {
 	[(NSTextField*)id
 		setBezeled: value];
 }
 
-BOOL NSTextField_inst_isBordered(void *id) {
+BOOL NSTextField_inst_IsBordered(void *id) {
 	return [(NSTextField*)id
 		isBordered];
 }
 
-void NSTextField_inst_setBordered(void *id, BOOL value) {
+void NSTextField_inst_SetBordered(void *id, BOOL value) {
 	[(NSTextField*)id
 		setBordered: value];
 }
 
-BOOL NSTextField_inst_acceptsFirstResponder(void *id) {
+BOOL NSTextField_inst_AcceptsFirstResponder(void *id) {
 	return [(NSTextField*)id
 		acceptsFirstResponder];
 }
 
-BOOL NSTextField_inst_allowsCharacterPickerTouchBarItem(void *id) {
+BOOL NSTextField_inst_AllowsCharacterPickerTouchBarItem(void *id) {
 	return [(NSTextField*)id
 		allowsCharacterPickerTouchBarItem];
 }
 
-void NSTextField_inst_setAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
+void NSTextField_inst_SetAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsCharacterPickerTouchBarItem: value];
 }
 
-BOOL NSTextField_inst_isAutomaticTextCompletionEnabled(void *id) {
+BOOL NSTextField_inst_IsAutomaticTextCompletionEnabled(void *id) {
 	return [(NSTextField*)id
 		isAutomaticTextCompletionEnabled];
 }
 
-void NSTextField_inst_setAutomaticTextCompletionEnabled(void *id, BOOL value) {
+void NSTextField_inst_SetAutomaticTextCompletionEnabled(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAutomaticTextCompletionEnabled: value];
 }
 
-void* NSTextField_inst_delegate(void *id) {
+void* NSTextField_inst_Delegate(void *id) {
 	return [(NSTextField*)id
 		delegate];
 }
 
-void NSTextField_inst_setDelegate(void *id, void* value) {
+void NSTextField_inst_SetDelegate(void *id, void* value) {
 	[(NSTextField*)id
 		setDelegate: value];
 }
 
-void* NSTextContainer_inst_initWithSize(void *id, NSSize size) {
+void* NSTextContainer_inst_InitWithSize(void *id, NSSize size) {
 	return [(NSTextContainer*)id
 		initWithSize: size];
 }
 
-void NSTextContainer_inst_replaceLayoutManager(void *id, void* newLayoutManager) {
+void NSTextContainer_inst_ReplaceLayoutManager(void *id, void* newLayoutManager) {
 	[(NSTextContainer*)id
 		replaceLayoutManager: newLayoutManager];
 }
 
-void* NSTextContainer_inst_init(void *id) {
+void* NSTextContainer_inst_Init(void *id) {
 	return [(NSTextContainer*)id
 		init];
 }
 
-void* NSTextContainer_inst_layoutManager(void *id) {
+void* NSTextContainer_inst_LayoutManager(void *id) {
 	return [(NSTextContainer*)id
 		layoutManager];
 }
 
-void NSTextContainer_inst_setLayoutManager(void *id, void* value) {
+void NSTextContainer_inst_SetLayoutManager(void *id, void* value) {
 	[(NSTextContainer*)id
 		setLayoutManager: value];
 }
 
-void* NSTextContainer_inst_textView(void *id) {
+void* NSTextContainer_inst_TextView(void *id) {
 	return [(NSTextContainer*)id
 		textView];
 }
 
-void NSTextContainer_inst_setTextView(void *id, void* value) {
+void NSTextContainer_inst_SetTextView(void *id, void* value) {
 	[(NSTextContainer*)id
 		setTextView: value];
 }
 
-NSSize NSTextContainer_inst_size(void *id) {
+NSSize NSTextContainer_inst_Size(void *id) {
 	return [(NSTextContainer*)id
 		size];
 }
 
-void NSTextContainer_inst_setSize(void *id, NSSize value) {
+void NSTextContainer_inst_SetSize(void *id, NSSize value) {
 	[(NSTextContainer*)id
 		setSize: value];
 }
 
-void* NSTextContainer_inst_exclusionPaths(void *id) {
+void* NSTextContainer_inst_ExclusionPaths(void *id) {
 	return [(NSTextContainer*)id
 		exclusionPaths];
 }
 
-void NSTextContainer_inst_setExclusionPaths(void *id, void* value) {
+void NSTextContainer_inst_SetExclusionPaths(void *id, void* value) {
 	[(NSTextContainer*)id
 		setExclusionPaths: value];
 }
 
-BOOL NSTextContainer_inst_widthTracksTextView(void *id) {
+BOOL NSTextContainer_inst_WidthTracksTextView(void *id) {
 	return [(NSTextContainer*)id
 		widthTracksTextView];
 }
 
-void NSTextContainer_inst_setWidthTracksTextView(void *id, BOOL value) {
+void NSTextContainer_inst_SetWidthTracksTextView(void *id, BOOL value) {
 	[(NSTextContainer*)id
 		setWidthTracksTextView: value];
 }
 
-BOOL NSTextContainer_inst_heightTracksTextView(void *id) {
+BOOL NSTextContainer_inst_HeightTracksTextView(void *id) {
 	return [(NSTextContainer*)id
 		heightTracksTextView];
 }
 
-void NSTextContainer_inst_setHeightTracksTextView(void *id, BOOL value) {
+void NSTextContainer_inst_SetHeightTracksTextView(void *id, BOOL value) {
 	[(NSTextContainer*)id
 		setHeightTracksTextView: value];
 }
 
-unsigned long NSTextContainer_inst_maximumNumberOfLines(void *id) {
+unsigned long NSTextContainer_inst_MaximumNumberOfLines(void *id) {
 	return [(NSTextContainer*)id
 		maximumNumberOfLines];
 }
 
-void NSTextContainer_inst_setMaximumNumberOfLines(void *id, unsigned long value) {
+void NSTextContainer_inst_SetMaximumNumberOfLines(void *id, unsigned long value) {
 	[(NSTextContainer*)id
 		setMaximumNumberOfLines: value];
 }
 
-double NSTextContainer_inst_lineFragmentPadding(void *id) {
+double NSTextContainer_inst_LineFragmentPadding(void *id) {
 	return [(NSTextContainer*)id
 		lineFragmentPadding];
 }
 
-void NSTextContainer_inst_setLineFragmentPadding(void *id, double value) {
+void NSTextContainer_inst_SetLineFragmentPadding(void *id, double value) {
 	[(NSTextContainer*)id
 		setLineFragmentPadding: value];
 }
 
-BOOL NSTextContainer_inst_isSimpleRectangularTextContainer(void *id) {
+BOOL NSTextContainer_inst_IsSimpleRectangularTextContainer(void *id) {
 	return [(NSTextContainer*)id
 		isSimpleRectangularTextContainer];
 }
 
-void NSViewController_inst_addChildViewController(void *id, void* childViewController) {
+void NSViewController_inst_AddChildViewController(void *id, void* childViewController) {
 	[(NSViewController*)id
 		addChildViewController: childViewController];
 }
 
-BOOL NSViewController_inst_commitEditing(void *id) {
+BOOL NSViewController_inst_CommitEditing(void *id) {
 	return [(NSViewController*)id
 		commitEditing];
 }
 
-void NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo(void *id, void* delegate, void* didCommitSelector, void* contextInfo) {
+void NSViewController_inst_CommitEditingWithDelegateDidCommitSelectorContextInfo(void *id, void* delegate, void* didCommitSelector, void* contextInfo) {
 	[(NSViewController*)id
 		commitEditingWithDelegate: delegate
 		didCommitSelector: didCommitSelector
 		contextInfo: contextInfo];
 }
 
-void NSViewController_inst_discardEditing(void *id) {
+void NSViewController_inst_DiscardEditing(void *id) {
 	[(NSViewController*)id
 		discardEditing];
 }
 
-void NSViewController_inst_dismissController(void *id, void* sender) {
+void NSViewController_inst_DismissController(void *id, void* sender) {
 	[(NSViewController*)id
 		dismissController: sender];
 }
 
-void NSViewController_inst_dismissViewController(void *id, void* viewController) {
+void NSViewController_inst_DismissViewController(void *id, void* viewController) {
 	[(NSViewController*)id
 		dismissViewController: viewController];
 }
 
-void NSViewController_inst_insertChildViewController_atIndex(void *id, void* childViewController, long index) {
+void NSViewController_inst_InsertChildViewControllerAtIndex(void *id, void* childViewController, long index) {
 	[(NSViewController*)id
 		insertChildViewController: childViewController
 		atIndex: index];
 }
 
-void NSViewController_inst_loadView(void *id) {
+void NSViewController_inst_LoadView(void *id) {
 	[(NSViewController*)id
 		loadView];
 }
 
-void NSViewController_inst_preferredContentSizeDidChangeForViewController(void *id, void* viewController) {
+void NSViewController_inst_PreferredContentSizeDidChangeForViewController(void *id, void* viewController) {
 	[(NSViewController*)id
 		preferredContentSizeDidChangeForViewController: viewController];
 }
 
-void NSViewController_inst_presentViewController_animator(void *id, void* viewController, void* animator) {
+void NSViewController_inst_PresentViewControllerAnimator(void *id, void* viewController, void* animator) {
 	[(NSViewController*)id
 		presentViewController: viewController
 		animator: animator];
 }
 
-void NSViewController_inst_presentViewControllerAsModalWindow(void *id, void* viewController) {
+void NSViewController_inst_PresentViewControllerAsModalWindow(void *id, void* viewController) {
 	[(NSViewController*)id
 		presentViewControllerAsModalWindow: viewController];
 }
 
-void NSViewController_inst_presentViewControllerAsSheet(void *id, void* viewController) {
+void NSViewController_inst_PresentViewControllerAsSheet(void *id, void* viewController) {
 	[(NSViewController*)id
 		presentViewControllerAsSheet: viewController];
 }
 
-void NSViewController_inst_removeChildViewControllerAtIndex(void *id, long index) {
+void NSViewController_inst_RemoveChildViewControllerAtIndex(void *id, long index) {
 	[(NSViewController*)id
 		removeChildViewControllerAtIndex: index];
 }
 
-void NSViewController_inst_removeFromParentViewController(void *id) {
+void NSViewController_inst_RemoveFromParentViewController(void *id) {
 	[(NSViewController*)id
 		removeFromParentViewController];
 }
 
-void NSViewController_inst_updateViewConstraints(void *id) {
+void NSViewController_inst_UpdateViewConstraints(void *id) {
 	[(NSViewController*)id
 		updateViewConstraints];
 }
 
-void NSViewController_inst_viewDidAppear(void *id) {
+void NSViewController_inst_ViewDidAppear(void *id) {
 	[(NSViewController*)id
 		viewDidAppear];
 }
 
-void NSViewController_inst_viewDidDisappear(void *id) {
+void NSViewController_inst_ViewDidDisappear(void *id) {
 	[(NSViewController*)id
 		viewDidDisappear];
 }
 
-void NSViewController_inst_viewDidLayout(void *id) {
+void NSViewController_inst_ViewDidLayout(void *id) {
 	[(NSViewController*)id
 		viewDidLayout];
 }
 
-void NSViewController_inst_viewDidLoad(void *id) {
+void NSViewController_inst_ViewDidLoad(void *id) {
 	[(NSViewController*)id
 		viewDidLoad];
 }
 
-void NSViewController_inst_viewWillAppear(void *id) {
+void NSViewController_inst_ViewWillAppear(void *id) {
 	[(NSViewController*)id
 		viewWillAppear];
 }
 
-void NSViewController_inst_viewWillDisappear(void *id) {
+void NSViewController_inst_ViewWillDisappear(void *id) {
 	[(NSViewController*)id
 		viewWillDisappear];
 }
 
-void NSViewController_inst_viewWillLayout(void *id) {
+void NSViewController_inst_ViewWillLayout(void *id) {
 	[(NSViewController*)id
 		viewWillLayout];
 }
 
-void NSViewController_inst_viewWillTransitionToSize(void *id, NSSize newSize) {
+void NSViewController_inst_ViewWillTransitionToSize(void *id, NSSize newSize) {
 	[(NSViewController*)id
 		viewWillTransitionToSize: newSize];
 }
 
-void* NSViewController_inst_init(void *id) {
+void* NSViewController_inst_Init(void *id) {
 	return [(NSViewController*)id
 		init];
 }
 
-void* NSViewController_inst_representedObject(void *id) {
+void* NSViewController_inst_RepresentedObject(void *id) {
 	return [(NSViewController*)id
 		representedObject];
 }
 
-void NSViewController_inst_setRepresentedObject(void *id, void* value) {
+void NSViewController_inst_SetRepresentedObject(void *id, void* value) {
 	[(NSViewController*)id
 		setRepresentedObject: value];
 }
 
-void* NSViewController_inst_nibBundle(void *id) {
+void* NSViewController_inst_NibBundle(void *id) {
 	return [(NSViewController*)id
 		nibBundle];
 }
 
-void* NSViewController_inst_view(void *id) {
+void* NSViewController_inst_View(void *id) {
 	return [(NSViewController*)id
 		view];
 }
 
-void NSViewController_inst_setView(void *id, void* value) {
+void NSViewController_inst_SetView(void *id, void* value) {
 	[(NSViewController*)id
 		setView: value];
 }
 
-void* NSViewController_inst_title(void *id) {
+void* NSViewController_inst_Title(void *id) {
 	return [(NSViewController*)id
 		title];
 }
 
-void NSViewController_inst_setTitle(void *id, void* value) {
+void NSViewController_inst_SetTitle(void *id, void* value) {
 	[(NSViewController*)id
 		setTitle: value];
 }
 
-BOOL NSViewController_inst_isViewLoaded(void *id) {
+BOOL NSViewController_inst_IsViewLoaded(void *id) {
 	return [(NSViewController*)id
 		isViewLoaded];
 }
 
-NSSize NSViewController_inst_preferredContentSize(void *id) {
+NSSize NSViewController_inst_PreferredContentSize(void *id) {
 	return [(NSViewController*)id
 		preferredContentSize];
 }
 
-void NSViewController_inst_setPreferredContentSize(void *id, NSSize value) {
+void NSViewController_inst_SetPreferredContentSize(void *id, NSSize value) {
 	[(NSViewController*)id
 		setPreferredContentSize: value];
 }
 
-void* NSViewController_inst_childViewControllers(void *id) {
+void* NSViewController_inst_ChildViewControllers(void *id) {
 	return [(NSViewController*)id
 		childViewControllers];
 }
 
-void NSViewController_inst_setChildViewControllers(void *id, void* value) {
+void NSViewController_inst_SetChildViewControllers(void *id, void* value) {
 	[(NSViewController*)id
 		setChildViewControllers: value];
 }
 
-void* NSViewController_inst_parentViewController(void *id) {
+void* NSViewController_inst_ParentViewController(void *id) {
 	return [(NSViewController*)id
 		parentViewController];
 }
 
-void* NSViewController_inst_presentedViewControllers(void *id) {
+void* NSViewController_inst_PresentedViewControllers(void *id) {
 	return [(NSViewController*)id
 		presentedViewControllers];
 }
 
-void* NSViewController_inst_presentingViewController(void *id) {
+void* NSViewController_inst_PresentingViewController(void *id) {
 	return [(NSViewController*)id
 		presentingViewController];
 }
 
-NSPoint NSViewController_inst_preferredScreenOrigin(void *id) {
+NSPoint NSViewController_inst_PreferredScreenOrigin(void *id) {
 	return [(NSViewController*)id
 		preferredScreenOrigin];
 }
 
-void NSViewController_inst_setPreferredScreenOrigin(void *id, NSPoint value) {
+void NSViewController_inst_SetPreferredScreenOrigin(void *id, NSPoint value) {
 	[(NSViewController*)id
 		setPreferredScreenOrigin: value];
 }
 
-NSSize NSViewController_inst_preferredMaximumSize(void *id) {
+NSSize NSViewController_inst_PreferredMaximumSize(void *id) {
 	return [(NSViewController*)id
 		preferredMaximumSize];
 }
 
-NSSize NSViewController_inst_preferredMinimumSize(void *id) {
+NSSize NSViewController_inst_PreferredMinimumSize(void *id) {
 	return [(NSViewController*)id
 		preferredMinimumSize];
 }
 
-void* NSViewController_inst_sourceItemView(void *id) {
+void* NSViewController_inst_SourceItemView(void *id) {
 	return [(NSViewController*)id
 		sourceItemView];
 }
 
-void NSViewController_inst_setSourceItemView(void *id, void* value) {
+void NSViewController_inst_SetSourceItemView(void *id, void* value) {
 	[(NSViewController*)id
 		setSourceItemView: value];
 }
 
-void NSVisualEffectView_inst_viewDidMoveToWindow(void *id) {
+void NSVisualEffectView_inst_ViewDidMoveToWindow(void *id) {
 	[(NSVisualEffectView*)id
 		viewDidMoveToWindow];
 }
 
-void NSVisualEffectView_inst_viewWillMoveToWindow(void *id, void* newWindow) {
+void NSVisualEffectView_inst_ViewWillMoveToWindow(void *id, void* newWindow) {
 	[(NSVisualEffectView*)id
 		viewWillMoveToWindow: newWindow];
 }
 
-void* NSVisualEffectView_inst_init(void *id) {
+void* NSVisualEffectView_inst_Init(void *id) {
 	return [(NSVisualEffectView*)id
 		init];
 }
 
-BOOL NSVisualEffectView_inst_isEmphasized(void *id) {
+BOOL NSVisualEffectView_inst_IsEmphasized(void *id) {
 	return [(NSVisualEffectView*)id
 		isEmphasized];
 }
 
-void NSVisualEffectView_inst_setEmphasized(void *id, BOOL value) {
+void NSVisualEffectView_inst_SetEmphasized(void *id, BOOL value) {
 	[(NSVisualEffectView*)id
 		setEmphasized: value];
 }
 
-void* NSVisualEffectView_inst_maskImage(void *id) {
+void* NSVisualEffectView_inst_MaskImage(void *id) {
 	return [(NSVisualEffectView*)id
 		maskImage];
 }
 
-void NSVisualEffectView_inst_setMaskImage(void *id, void* value) {
+void NSVisualEffectView_inst_SetMaskImage(void *id, void* value) {
 	[(NSVisualEffectView*)id
 		setMaskImage: value];
 }
 
-void NSWindow_inst_addChildWindow_ordered(void *id, void* childWin, unsigned long place) {
+void NSWindow_inst_AddChildWindowOrdered(void *id, void* childWin, unsigned long place) {
 	[(NSWindow*)id
 		addChildWindow: childWin
 		ordered: place];
 }
 
-void NSWindow_inst_addTabbedWindow_ordered(void *id, void* window, unsigned long ordered) {
+void NSWindow_inst_AddTabbedWindowOrdered(void *id, void* window, unsigned long ordered) {
 	[(NSWindow*)id
 		addTabbedWindow: window
 		ordered: ordered];
 }
 
-void NSWindow_inst_becomeKeyWindow(void *id) {
+void NSWindow_inst_BecomeKeyWindow(void *id) {
 	[(NSWindow*)id
 		becomeKeyWindow];
 }
 
-void NSWindow_inst_becomeMainWindow(void *id) {
+void NSWindow_inst_BecomeMainWindow(void *id) {
 	[(NSWindow*)id
 		becomeMainWindow];
 }
 
-NSPoint NSWindow_inst_cascadeTopLeftFromPoint(void *id, NSPoint topLeftPoint) {
+NSPoint NSWindow_inst_CascadeTopLeftFromPoint(void *id, NSPoint topLeftPoint) {
 	return [(NSWindow*)id
 		cascadeTopLeftFromPoint: topLeftPoint];
 }
 
-void NSWindow_inst_center(void *id) {
+void NSWindow_inst_Center(void *id) {
 	[(NSWindow*)id
 		center];
 }
 
-void NSWindow_inst_close(void *id) {
+void NSWindow_inst_Close(void *id) {
 	[(NSWindow*)id
 		close];
 }
 
-NSRect NSWindow_inst_constrainFrameRect_toScreen(void *id, NSRect frameRect, void* screen) {
+NSRect NSWindow_inst_ConstrainFrameRectToScreen(void *id, NSRect frameRect, void* screen) {
 	return [(NSWindow*)id
 		constrainFrameRect: frameRect
 		toScreen: screen];
 }
 
-NSRect NSWindow_inst_contentRectForFrameRect(void *id, NSRect frameRect) {
+NSRect NSWindow_inst_ContentRectForFrameRect(void *id, NSRect frameRect) {
 	return [(NSWindow*)id
 		contentRectForFrameRect: frameRect];
 }
 
-NSPoint NSWindow_inst_convertPointFromBacking(void *id, NSPoint point) {
+NSPoint NSWindow_inst_ConvertPointFromBacking(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointFromBacking: point];
 }
 
-NSPoint NSWindow_inst_convertPointFromScreen(void *id, NSPoint point) {
+NSPoint NSWindow_inst_ConvertPointFromScreen(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointFromScreen: point];
 }
 
-NSPoint NSWindow_inst_convertPointToBacking(void *id, NSPoint point) {
+NSPoint NSWindow_inst_ConvertPointToBacking(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointToBacking: point];
 }
 
-NSPoint NSWindow_inst_convertPointToScreen(void *id, NSPoint point) {
+NSPoint NSWindow_inst_ConvertPointToScreen(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointToScreen: point];
 }
 
-NSRect NSWindow_inst_convertRectFromBacking(void *id, NSRect rect) {
+NSRect NSWindow_inst_ConvertRectFromBacking(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSWindow_inst_convertRectFromScreen(void *id, NSRect rect) {
+NSRect NSWindow_inst_ConvertRectFromScreen(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectFromScreen: rect];
 }
 
-NSRect NSWindow_inst_convertRectToBacking(void *id, NSRect rect) {
+NSRect NSWindow_inst_ConvertRectToBacking(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectToBacking: rect];
 }
 
-NSRect NSWindow_inst_convertRectToScreen(void *id, NSRect rect) {
+NSRect NSWindow_inst_ConvertRectToScreen(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectToScreen: rect];
 }
 
-void* NSWindow_inst_dataWithEPSInsideRect(void *id, NSRect rect) {
+void* NSWindow_inst_DataWithEPSInsideRect(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		dataWithEPSInsideRect: rect];
 }
 
-void* NSWindow_inst_dataWithPDFInsideRect(void *id, NSRect rect) {
+void* NSWindow_inst_DataWithPDFInsideRect(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		dataWithPDFInsideRect: rect];
 }
 
-void NSWindow_inst_deminiaturize(void *id, void* sender) {
+void NSWindow_inst_Deminiaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		deminiaturize: sender];
 }
 
-void NSWindow_inst_disableCursorRects(void *id) {
+void NSWindow_inst_DisableCursorRects(void *id) {
 	[(NSWindow*)id
 		disableCursorRects];
 }
 
-void NSWindow_inst_disableKeyEquivalentForDefaultButtonCell(void *id) {
+void NSWindow_inst_DisableKeyEquivalentForDefaultButtonCell(void *id) {
 	[(NSWindow*)id
 		disableKeyEquivalentForDefaultButtonCell];
 }
 
-void NSWindow_inst_disableScreenUpdatesUntilFlush(void *id) {
+void NSWindow_inst_DisableScreenUpdatesUntilFlush(void *id) {
 	[(NSWindow*)id
 		disableScreenUpdatesUntilFlush];
 }
 
-void NSWindow_inst_disableSnapshotRestoration(void *id) {
+void NSWindow_inst_DisableSnapshotRestoration(void *id) {
 	[(NSWindow*)id
 		disableSnapshotRestoration];
 }
 
-void NSWindow_inst_discardCursorRects(void *id) {
+void NSWindow_inst_DiscardCursorRects(void *id) {
 	[(NSWindow*)id
 		discardCursorRects];
 }
 
-void NSWindow_inst_display(void *id) {
+void NSWindow_inst_Display(void *id) {
 	[(NSWindow*)id
 		display];
 }
 
-void NSWindow_inst_displayIfNeeded(void *id) {
+void NSWindow_inst_DisplayIfNeeded(void *id) {
 	[(NSWindow*)id
 		displayIfNeeded];
 }
 
-void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack(void *id, void* image, NSPoint baseLocation, NSSize initialOffset, void* event, void* pboard, void* sourceObj, BOOL slideFlag) {
+void NSWindow_inst_DragImageAtOffsetEventPasteboardSourceSlideBack(void *id, void* image, NSPoint baseLocation, NSSize initialOffset, void* event, void* pboard, void* sourceObj, BOOL slideFlag) {
 	[(NSWindow*)id
 		dragImage: image
 		at: baseLocation
@@ -4277,43 +4277,43 @@ void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack(void *i
 		slideBack: slideFlag];
 }
 
-void NSWindow_inst_enableCursorRects(void *id) {
+void NSWindow_inst_EnableCursorRects(void *id) {
 	[(NSWindow*)id
 		enableCursorRects];
 }
 
-void NSWindow_inst_enableKeyEquivalentForDefaultButtonCell(void *id) {
+void NSWindow_inst_EnableKeyEquivalentForDefaultButtonCell(void *id) {
 	[(NSWindow*)id
 		enableKeyEquivalentForDefaultButtonCell];
 }
 
-void NSWindow_inst_enableSnapshotRestoration(void *id) {
+void NSWindow_inst_EnableSnapshotRestoration(void *id) {
 	[(NSWindow*)id
 		enableSnapshotRestoration];
 }
 
-void NSWindow_inst_endEditingFor(void *id, void* object) {
+void NSWindow_inst_EndEditingFor(void *id, void* object) {
 	[(NSWindow*)id
 		endEditingFor: object];
 }
 
-void NSWindow_inst_endSheet(void *id, void* sheetWindow) {
+void NSWindow_inst_EndSheet(void *id, void* sheetWindow) {
 	[(NSWindow*)id
 		endSheet: sheetWindow];
 }
 
-void* NSWindow_inst_fieldEditor_forObject(void *id, BOOL createFlag, void* object) {
+void* NSWindow_inst_FieldEditorForObject(void *id, BOOL createFlag, void* object) {
 	return [(NSWindow*)id
 		fieldEditor: createFlag
 		forObject: object];
 }
 
-NSRect NSWindow_inst_frameRectForContentRect(void *id, NSRect contentRect) {
+NSRect NSWindow_inst_FrameRectForContentRect(void *id, NSRect contentRect) {
 	return [(NSWindow*)id
 		frameRectForContentRect: contentRect];
 }
 
-void* NSWindow_inst_initWithContentRect_styleMask_backing_defer(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag) {
+void* NSWindow_inst_InitWithContentRectStyleMaskBackingDefer(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag) {
 	return [(NSWindow*)id
 		initWithContentRect: contentRect
 		styleMask: style
@@ -4321,7 +4321,7 @@ void* NSWindow_inst_initWithContentRect_styleMask_backing_defer(void *id, NSRect
 		defer: flag];
 }
 
-void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag, void* screen) {
+void* NSWindow_inst_InitWithContentRectStyleMaskBackingDeferScreen(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag, void* screen) {
 	return [(NSWindow*)id
 		initWithContentRect: contentRect
 		styleMask: style
@@ -4330,983 +4330,983 @@ void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen(void *id,
 		screen: screen];
 }
 
-void NSWindow_inst_invalidateCursorRectsForView(void *id, void* view) {
+void NSWindow_inst_InvalidateCursorRectsForView(void *id, void* view) {
 	[(NSWindow*)id
 		invalidateCursorRectsForView: view];
 }
 
-void NSWindow_inst_invalidateShadow(void *id) {
+void NSWindow_inst_InvalidateShadow(void *id) {
 	[(NSWindow*)id
 		invalidateShadow];
 }
 
-void NSWindow_inst_layoutIfNeeded(void *id) {
+void NSWindow_inst_LayoutIfNeeded(void *id) {
 	[(NSWindow*)id
 		layoutIfNeeded];
 }
 
-void NSWindow_inst_makeKeyAndOrderFront(void *id, void* sender) {
+void NSWindow_inst_MakeKeyAndOrderFront(void *id, void* sender) {
 	[(NSWindow*)id
 		makeKeyAndOrderFront: sender];
 }
 
-void NSWindow_inst_makeKeyWindow(void *id) {
+void NSWindow_inst_MakeKeyWindow(void *id) {
 	[(NSWindow*)id
 		makeKeyWindow];
 }
 
-void NSWindow_inst_makeMainWindow(void *id) {
+void NSWindow_inst_MakeMainWindow(void *id) {
 	[(NSWindow*)id
 		makeMainWindow];
 }
 
-void NSWindow_inst_mergeAllWindows(void *id, void* sender) {
+void NSWindow_inst_MergeAllWindows(void *id, void* sender) {
 	[(NSWindow*)id
 		mergeAllWindows: sender];
 }
 
-void NSWindow_inst_miniaturize(void *id, void* sender) {
+void NSWindow_inst_Miniaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		miniaturize: sender];
 }
 
-void NSWindow_inst_moveTabToNewWindow(void *id, void* sender) {
+void NSWindow_inst_MoveTabToNewWindow(void *id, void* sender) {
 	[(NSWindow*)id
 		moveTabToNewWindow: sender];
 }
 
-void NSWindow_inst_orderBack(void *id, void* sender) {
+void NSWindow_inst_OrderBack(void *id, void* sender) {
 	[(NSWindow*)id
 		orderBack: sender];
 }
 
-void NSWindow_inst_orderFront(void *id, void* sender) {
+void NSWindow_inst_OrderFront(void *id, void* sender) {
 	[(NSWindow*)id
 		orderFront: sender];
 }
 
-void NSWindow_inst_orderFrontRegardless(void *id) {
+void NSWindow_inst_OrderFrontRegardless(void *id) {
 	[(NSWindow*)id
 		orderFrontRegardless];
 }
 
-void NSWindow_inst_orderOut(void *id, void* sender) {
+void NSWindow_inst_OrderOut(void *id, void* sender) {
 	[(NSWindow*)id
 		orderOut: sender];
 }
 
-void NSWindow_inst_orderWindow_relativeTo(void *id, unsigned long place, long otherWin) {
+void NSWindow_inst_OrderWindowRelativeTo(void *id, unsigned long place, long otherWin) {
 	[(NSWindow*)id
 		orderWindow: place
 		relativeTo: otherWin];
 }
 
-void NSWindow_inst_performClose(void *id, void* sender) {
+void NSWindow_inst_PerformClose(void *id, void* sender) {
 	[(NSWindow*)id
 		performClose: sender];
 }
 
-void NSWindow_inst_performMiniaturize(void *id, void* sender) {
+void NSWindow_inst_PerformMiniaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		performMiniaturize: sender];
 }
 
-void NSWindow_inst_performWindowDragWithEvent(void *id, void* event) {
+void NSWindow_inst_PerformWindowDragWithEvent(void *id, void* event) {
 	[(NSWindow*)id
 		performWindowDragWithEvent: event];
 }
 
-void NSWindow_inst_performZoom(void *id, void* sender) {
+void NSWindow_inst_PerformZoom(void *id, void* sender) {
 	[(NSWindow*)id
 		performZoom: sender];
 }
 
-void NSWindow_inst_postEvent_atStart(void *id, void* event, BOOL flag) {
+void NSWindow_inst_PostEventAtStart(void *id, void* event, BOOL flag) {
 	[(NSWindow*)id
 		postEvent: event
 		atStart: flag];
 }
 
-void NSWindow_inst_print(void *id, void* sender) {
+void NSWindow_inst_Print(void *id, void* sender) {
 	[(NSWindow*)id
 		print: sender];
 }
 
-void NSWindow_inst_recalculateKeyViewLoop(void *id) {
+void NSWindow_inst_RecalculateKeyViewLoop(void *id) {
 	[(NSWindow*)id
 		recalculateKeyViewLoop];
 }
 
-void NSWindow_inst_registerForDraggedTypes(void *id, void* newTypes) {
+void NSWindow_inst_RegisterForDraggedTypes(void *id, void* newTypes) {
 	[(NSWindow*)id
 		registerForDraggedTypes: newTypes];
 }
 
-void NSWindow_inst_removeChildWindow(void *id, void* childWin) {
+void NSWindow_inst_RemoveChildWindow(void *id, void* childWin) {
 	[(NSWindow*)id
 		removeChildWindow: childWin];
 }
 
-void NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex(void *id, long index) {
+void NSWindow_inst_RemoveTitlebarAccessoryViewControllerAtIndex(void *id, long index) {
 	[(NSWindow*)id
 		removeTitlebarAccessoryViewControllerAtIndex: index];
 }
 
-void NSWindow_inst_resetCursorRects(void *id) {
+void NSWindow_inst_ResetCursorRects(void *id) {
 	[(NSWindow*)id
 		resetCursorRects];
 }
 
-void NSWindow_inst_resignKeyWindow(void *id) {
+void NSWindow_inst_ResignKeyWindow(void *id) {
 	[(NSWindow*)id
 		resignKeyWindow];
 }
 
-void NSWindow_inst_resignMainWindow(void *id) {
+void NSWindow_inst_ResignMainWindow(void *id) {
 	[(NSWindow*)id
 		resignMainWindow];
 }
 
-void NSWindow_inst_runToolbarCustomizationPalette(void *id, void* sender) {
+void NSWindow_inst_RunToolbarCustomizationPalette(void *id, void* sender) {
 	[(NSWindow*)id
 		runToolbarCustomizationPalette: sender];
 }
 
-void NSWindow_inst_selectKeyViewFollowingView(void *id, void* view) {
+void NSWindow_inst_SelectKeyViewFollowingView(void *id, void* view) {
 	[(NSWindow*)id
 		selectKeyViewFollowingView: view];
 }
 
-void NSWindow_inst_selectKeyViewPrecedingView(void *id, void* view) {
+void NSWindow_inst_SelectKeyViewPrecedingView(void *id, void* view) {
 	[(NSWindow*)id
 		selectKeyViewPrecedingView: view];
 }
 
-void NSWindow_inst_selectNextKeyView(void *id, void* sender) {
+void NSWindow_inst_SelectNextKeyView(void *id, void* sender) {
 	[(NSWindow*)id
 		selectNextKeyView: sender];
 }
 
-void NSWindow_inst_selectNextTab(void *id, void* sender) {
+void NSWindow_inst_SelectNextTab(void *id, void* sender) {
 	[(NSWindow*)id
 		selectNextTab: sender];
 }
 
-void NSWindow_inst_selectPreviousKeyView(void *id, void* sender) {
+void NSWindow_inst_SelectPreviousKeyView(void *id, void* sender) {
 	[(NSWindow*)id
 		selectPreviousKeyView: sender];
 }
 
-void NSWindow_inst_selectPreviousTab(void *id, void* sender) {
+void NSWindow_inst_SelectPreviousTab(void *id, void* sender) {
 	[(NSWindow*)id
 		selectPreviousTab: sender];
 }
 
-void NSWindow_inst_sendEvent(void *id, void* event) {
+void NSWindow_inst_SendEvent(void *id, void* event) {
 	[(NSWindow*)id
 		sendEvent: event];
 }
 
-void NSWindow_inst_setContentSize(void *id, NSSize size) {
+void NSWindow_inst_SetContentSize(void *id, NSSize size) {
 	[(NSWindow*)id
 		setContentSize: size];
 }
 
-void NSWindow_inst_setDynamicDepthLimit(void *id, BOOL flag) {
+void NSWindow_inst_SetDynamicDepthLimit(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setDynamicDepthLimit: flag];
 }
 
-void NSWindow_inst_setFrame_display(void *id, NSRect frameRect, BOOL flag) {
+void NSWindow_inst_SetFrameDisplay(void *id, NSRect frameRect, BOOL flag) {
 	[(NSWindow*)id
 		setFrame: frameRect
 		display: flag];
 }
 
-void NSWindow_inst_setFrame_display_animate(void *id, NSRect frameRect, BOOL displayFlag, BOOL animateFlag) {
+void NSWindow_inst_SetFrameDisplayAnimate(void *id, NSRect frameRect, BOOL displayFlag, BOOL animateFlag) {
 	[(NSWindow*)id
 		setFrame: frameRect
 		display: displayFlag
 		animate: animateFlag];
 }
 
-void NSWindow_inst_setFrameOrigin(void *id, NSPoint point) {
+void NSWindow_inst_SetFrameOrigin(void *id, NSPoint point) {
 	[(NSWindow*)id
 		setFrameOrigin: point];
 }
 
-void NSWindow_inst_setFrameTopLeftPoint(void *id, NSPoint point) {
+void NSWindow_inst_SetFrameTopLeftPoint(void *id, NSPoint point) {
 	[(NSWindow*)id
 		setFrameTopLeftPoint: point];
 }
 
-void NSWindow_inst_setIsMiniaturized(void *id, BOOL flag) {
+void NSWindow_inst_SetIsMiniaturized(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsMiniaturized: flag];
 }
 
-void NSWindow_inst_setIsVisible(void *id, BOOL flag) {
+void NSWindow_inst_SetIsVisible(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsVisible: flag];
 }
 
-void NSWindow_inst_setIsZoomed(void *id, BOOL flag) {
+void NSWindow_inst_SetIsZoomed(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsZoomed: flag];
 }
 
-void NSWindow_inst_setTitleWithRepresentedFilename(void *id, void* filename) {
+void NSWindow_inst_SetTitleWithRepresentedFilename(void *id, void* filename) {
 	[(NSWindow*)id
 		setTitleWithRepresentedFilename: filename];
 }
 
-void NSWindow_inst_toggleFullScreen(void *id, void* sender) {
+void NSWindow_inst_ToggleFullScreen(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleFullScreen: sender];
 }
 
-void NSWindow_inst_toggleTabBar(void *id, void* sender) {
+void NSWindow_inst_ToggleTabBar(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleTabBar: sender];
 }
 
-void NSWindow_inst_toggleTabOverview(void *id, void* sender) {
+void NSWindow_inst_ToggleTabOverview(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleTabOverview: sender];
 }
 
-void NSWindow_inst_toggleToolbarShown(void *id, void* sender) {
+void NSWindow_inst_ToggleToolbarShown(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleToolbarShown: sender];
 }
 
-BOOL NSWindow_inst_tryToPerform_with(void *id, void* action, void* object) {
+BOOL NSWindow_inst_TryToPerformWith(void *id, void* action, void* object) {
 	return [(NSWindow*)id
 		tryToPerform: action
 		with: object];
 }
 
-void NSWindow_inst_unregisterDraggedTypes(void *id) {
+void NSWindow_inst_UnregisterDraggedTypes(void *id) {
 	[(NSWindow*)id
 		unregisterDraggedTypes];
 }
 
-void NSWindow_inst_update(void *id) {
+void NSWindow_inst_Update(void *id) {
 	[(NSWindow*)id
 		update];
 }
 
-void NSWindow_inst_updateConstraintsIfNeeded(void *id) {
+void NSWindow_inst_UpdateConstraintsIfNeeded(void *id) {
 	[(NSWindow*)id
 		updateConstraintsIfNeeded];
 }
 
-void NSWindow_inst_visualizeConstraints(void *id, void* constraints) {
+void NSWindow_inst_VisualizeConstraints(void *id, void* constraints) {
 	[(NSWindow*)id
 		visualizeConstraints: constraints];
 }
 
-void NSWindow_inst_zoom(void *id, void* sender) {
+void NSWindow_inst_Zoom(void *id, void* sender) {
 	[(NSWindow*)id
 		zoom: sender];
 }
 
-void* NSWindow_inst_init(void *id) {
+void* NSWindow_inst_Init(void *id) {
 	return [(NSWindow*)id
 		init];
 }
 
-void* NSWindow_inst_delegate(void *id) {
+void* NSWindow_inst_Delegate(void *id) {
 	return [(NSWindow*)id
 		delegate];
 }
 
-void NSWindow_inst_setDelegate(void *id, void* value) {
+void NSWindow_inst_SetDelegate(void *id, void* value) {
 	[(NSWindow*)id
 		setDelegate: value];
 }
 
-void* NSWindow_inst_contentViewController(void *id) {
+void* NSWindow_inst_ContentViewController(void *id) {
 	return [(NSWindow*)id
 		contentViewController];
 }
 
-void NSWindow_inst_setContentViewController(void *id, void* value) {
+void NSWindow_inst_SetContentViewController(void *id, void* value) {
 	[(NSWindow*)id
 		setContentViewController: value];
 }
 
-void* NSWindow_inst_contentView(void *id) {
+void* NSWindow_inst_ContentView(void *id) {
 	return [(NSWindow*)id
 		contentView];
 }
 
-void NSWindow_inst_setContentView(void *id, void* value) {
+void NSWindow_inst_SetContentView(void *id, void* value) {
 	[(NSWindow*)id
 		setContentView: value];
 }
 
-unsigned long NSWindow_inst_styleMask(void *id) {
+unsigned long NSWindow_inst_StyleMask(void *id) {
 	return [(NSWindow*)id
 		styleMask];
 }
 
-void NSWindow_inst_setStyleMask(void *id, unsigned long value) {
+void NSWindow_inst_SetStyleMask(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setStyleMask: value];
 }
 
-BOOL NSWindow_inst_worksWhenModal(void *id) {
+BOOL NSWindow_inst_WorksWhenModal(void *id) {
 	return [(NSWindow*)id
 		worksWhenModal];
 }
 
-double NSWindow_inst_alphaValue(void *id) {
+double NSWindow_inst_AlphaValue(void *id) {
 	return [(NSWindow*)id
 		alphaValue];
 }
 
-void NSWindow_inst_setAlphaValue(void *id, double value) {
+void NSWindow_inst_SetAlphaValue(void *id, double value) {
 	[(NSWindow*)id
 		setAlphaValue: value];
 }
 
-void* NSWindow_inst_backgroundColor(void *id) {
+void* NSWindow_inst_BackgroundColor(void *id) {
 	return [(NSWindow*)id
 		backgroundColor];
 }
 
-void NSWindow_inst_setBackgroundColor(void *id, void* value) {
+void NSWindow_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSWindow*)id
 		setBackgroundColor: value];
 }
 
-BOOL NSWindow_inst_canHide(void *id) {
+BOOL NSWindow_inst_CanHide(void *id) {
 	return [(NSWindow*)id
 		canHide];
 }
 
-void NSWindow_inst_setCanHide(void *id, BOOL value) {
+void NSWindow_inst_SetCanHide(void *id, BOOL value) {
 	[(NSWindow*)id
 		setCanHide: value];
 }
 
-BOOL NSWindow_inst_isOnActiveSpace(void *id) {
+BOOL NSWindow_inst_IsOnActiveSpace(void *id) {
 	return [(NSWindow*)id
 		isOnActiveSpace];
 }
 
-BOOL NSWindow_inst_hidesOnDeactivate(void *id) {
+BOOL NSWindow_inst_HidesOnDeactivate(void *id) {
 	return [(NSWindow*)id
 		hidesOnDeactivate];
 }
 
-void NSWindow_inst_setHidesOnDeactivate(void *id, BOOL value) {
+void NSWindow_inst_SetHidesOnDeactivate(void *id, BOOL value) {
 	[(NSWindow*)id
 		setHidesOnDeactivate: value];
 }
 
-unsigned long NSWindow_inst_collectionBehavior(void *id) {
+unsigned long NSWindow_inst_CollectionBehavior(void *id) {
 	return [(NSWindow*)id
 		collectionBehavior];
 }
 
-void NSWindow_inst_setCollectionBehavior(void *id, unsigned long value) {
+void NSWindow_inst_SetCollectionBehavior(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setCollectionBehavior: value];
 }
 
-BOOL NSWindow_inst_isOpaque(void *id) {
+BOOL NSWindow_inst_IsOpaque(void *id) {
 	return [(NSWindow*)id
 		isOpaque];
 }
 
-void NSWindow_inst_setOpaque(void *id, BOOL value) {
+void NSWindow_inst_SetOpaque(void *id, BOOL value) {
 	[(NSWindow*)id
 		setOpaque: value];
 }
 
-BOOL NSWindow_inst_hasShadow(void *id) {
+BOOL NSWindow_inst_HasShadow(void *id) {
 	return [(NSWindow*)id
 		hasShadow];
 }
 
-void NSWindow_inst_setHasShadow(void *id, BOOL value) {
+void NSWindow_inst_SetHasShadow(void *id, BOOL value) {
 	[(NSWindow*)id
 		setHasShadow: value];
 }
 
-BOOL NSWindow_inst_preventsApplicationTerminationWhenModal(void *id) {
+BOOL NSWindow_inst_PreventsApplicationTerminationWhenModal(void *id) {
 	return [(NSWindow*)id
 		preventsApplicationTerminationWhenModal];
 }
 
-void NSWindow_inst_setPreventsApplicationTerminationWhenModal(void *id, BOOL value) {
+void NSWindow_inst_SetPreventsApplicationTerminationWhenModal(void *id, BOOL value) {
 	[(NSWindow*)id
 		setPreventsApplicationTerminationWhenModal: value];
 }
 
-BOOL NSWindow_inst_hasDynamicDepthLimit(void *id) {
+BOOL NSWindow_inst_HasDynamicDepthLimit(void *id) {
 	return [(NSWindow*)id
 		hasDynamicDepthLimit];
 }
 
-long NSWindow_inst_windowNumber(void *id) {
+long NSWindow_inst_WindowNumber(void *id) {
 	return [(NSWindow*)id
 		windowNumber];
 }
 
-void* NSWindow_inst_deviceDescription(void *id) {
+void* NSWindow_inst_DeviceDescription(void *id) {
 	return [(NSWindow*)id
 		deviceDescription];
 }
 
-BOOL NSWindow_inst_canBecomeVisibleWithoutLogin(void *id) {
+BOOL NSWindow_inst_CanBecomeVisibleWithoutLogin(void *id) {
 	return [(NSWindow*)id
 		canBecomeVisibleWithoutLogin];
 }
 
-void NSWindow_inst_setCanBecomeVisibleWithoutLogin(void *id, BOOL value) {
+void NSWindow_inst_SetCanBecomeVisibleWithoutLogin(void *id, BOOL value) {
 	[(NSWindow*)id
 		setCanBecomeVisibleWithoutLogin: value];
 }
 
-unsigned long NSWindow_inst_backingType(void *id) {
+unsigned long NSWindow_inst_BackingType(void *id) {
 	return [(NSWindow*)id
 		backingType];
 }
 
-void NSWindow_inst_setBackingType(void *id, unsigned long value) {
+void NSWindow_inst_SetBackingType(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setBackingType: value];
 }
 
-void* NSWindow_inst_attachedSheet(void *id) {
+void* NSWindow_inst_AttachedSheet(void *id) {
 	return [(NSWindow*)id
 		attachedSheet];
 }
 
-BOOL NSWindow_inst_isSheet(void *id) {
+BOOL NSWindow_inst_IsSheet(void *id) {
 	return [(NSWindow*)id
 		isSheet];
 }
 
-void* NSWindow_inst_sheetParent(void *id) {
+void* NSWindow_inst_SheetParent(void *id) {
 	return [(NSWindow*)id
 		sheetParent];
 }
 
-void* NSWindow_inst_sheets(void *id) {
+void* NSWindow_inst_Sheets(void *id) {
 	return [(NSWindow*)id
 		sheets];
 }
 
-NSRect NSWindow_inst_frame(void *id) {
+NSRect NSWindow_inst_Frame(void *id) {
 	return [(NSWindow*)id
 		frame];
 }
 
-NSSize NSWindow_inst_aspectRatio(void *id) {
+NSSize NSWindow_inst_AspectRatio(void *id) {
 	return [(NSWindow*)id
 		aspectRatio];
 }
 
-void NSWindow_inst_setAspectRatio(void *id, NSSize value) {
+void NSWindow_inst_SetAspectRatio(void *id, NSSize value) {
 	[(NSWindow*)id
 		setAspectRatio: value];
 }
 
-NSSize NSWindow_inst_minSize(void *id) {
+NSSize NSWindow_inst_MinSize(void *id) {
 	return [(NSWindow*)id
 		minSize];
 }
 
-void NSWindow_inst_setMinSize(void *id, NSSize value) {
+void NSWindow_inst_SetMinSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMinSize: value];
 }
 
-NSSize NSWindow_inst_maxSize(void *id) {
+NSSize NSWindow_inst_MaxSize(void *id) {
 	return [(NSWindow*)id
 		maxSize];
 }
 
-void NSWindow_inst_setMaxSize(void *id, NSSize value) {
+void NSWindow_inst_SetMaxSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMaxSize: value];
 }
 
-BOOL NSWindow_inst_isZoomed(void *id) {
+BOOL NSWindow_inst_IsZoomed(void *id) {
 	return [(NSWindow*)id
 		isZoomed];
 }
 
-NSSize NSWindow_inst_resizeIncrements(void *id) {
+NSSize NSWindow_inst_ResizeIncrements(void *id) {
 	return [(NSWindow*)id
 		resizeIncrements];
 }
 
-void NSWindow_inst_setResizeIncrements(void *id, NSSize value) {
+void NSWindow_inst_SetResizeIncrements(void *id, NSSize value) {
 	[(NSWindow*)id
 		setResizeIncrements: value];
 }
 
-BOOL NSWindow_inst_preservesContentDuringLiveResize(void *id) {
+BOOL NSWindow_inst_PreservesContentDuringLiveResize(void *id) {
 	return [(NSWindow*)id
 		preservesContentDuringLiveResize];
 }
 
-void NSWindow_inst_setPreservesContentDuringLiveResize(void *id, BOOL value) {
+void NSWindow_inst_SetPreservesContentDuringLiveResize(void *id, BOOL value) {
 	[(NSWindow*)id
 		setPreservesContentDuringLiveResize: value];
 }
 
-BOOL NSWindow_inst_inLiveResize(void *id) {
+BOOL NSWindow_inst_InLiveResize(void *id) {
 	return [(NSWindow*)id
 		inLiveResize];
 }
 
-NSSize NSWindow_inst_contentAspectRatio(void *id) {
+NSSize NSWindow_inst_ContentAspectRatio(void *id) {
 	return [(NSWindow*)id
 		contentAspectRatio];
 }
 
-void NSWindow_inst_setContentAspectRatio(void *id, NSSize value) {
+void NSWindow_inst_SetContentAspectRatio(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentAspectRatio: value];
 }
 
-NSSize NSWindow_inst_contentMinSize(void *id) {
+NSSize NSWindow_inst_ContentMinSize(void *id) {
 	return [(NSWindow*)id
 		contentMinSize];
 }
 
-void NSWindow_inst_setContentMinSize(void *id, NSSize value) {
+void NSWindow_inst_SetContentMinSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentMinSize: value];
 }
 
-NSSize NSWindow_inst_contentMaxSize(void *id) {
+NSSize NSWindow_inst_ContentMaxSize(void *id) {
 	return [(NSWindow*)id
 		contentMaxSize];
 }
 
-void NSWindow_inst_setContentMaxSize(void *id, NSSize value) {
+void NSWindow_inst_SetContentMaxSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentMaxSize: value];
 }
 
-NSSize NSWindow_inst_contentResizeIncrements(void *id) {
+NSSize NSWindow_inst_ContentResizeIncrements(void *id) {
 	return [(NSWindow*)id
 		contentResizeIncrements];
 }
 
-void NSWindow_inst_setContentResizeIncrements(void *id, NSSize value) {
+void NSWindow_inst_SetContentResizeIncrements(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentResizeIncrements: value];
 }
 
-void* NSWindow_inst_contentLayoutGuide(void *id) {
+void* NSWindow_inst_ContentLayoutGuide(void *id) {
 	return [(NSWindow*)id
 		contentLayoutGuide];
 }
 
-NSRect NSWindow_inst_contentLayoutRect(void *id) {
+NSRect NSWindow_inst_ContentLayoutRect(void *id) {
 	return [(NSWindow*)id
 		contentLayoutRect];
 }
 
-NSSize NSWindow_inst_maxFullScreenContentSize(void *id) {
+NSSize NSWindow_inst_MaxFullScreenContentSize(void *id) {
 	return [(NSWindow*)id
 		maxFullScreenContentSize];
 }
 
-void NSWindow_inst_setMaxFullScreenContentSize(void *id, NSSize value) {
+void NSWindow_inst_SetMaxFullScreenContentSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMaxFullScreenContentSize: value];
 }
 
-NSSize NSWindow_inst_minFullScreenContentSize(void *id) {
+NSSize NSWindow_inst_MinFullScreenContentSize(void *id) {
 	return [(NSWindow*)id
 		minFullScreenContentSize];
 }
 
-void NSWindow_inst_setMinFullScreenContentSize(void *id, NSSize value) {
+void NSWindow_inst_SetMinFullScreenContentSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMinFullScreenContentSize: value];
 }
 
-long NSWindow_inst_level(void *id) {
+long NSWindow_inst_Level(void *id) {
 	return [(NSWindow*)id
 		level];
 }
 
-void NSWindow_inst_setLevel(void *id, long value) {
+void NSWindow_inst_SetLevel(void *id, long value) {
 	[(NSWindow*)id
 		setLevel: value];
 }
 
-BOOL NSWindow_inst_isVisible(void *id) {
+BOOL NSWindow_inst_IsVisible(void *id) {
 	return [(NSWindow*)id
 		isVisible];
 }
 
-BOOL NSWindow_inst_isKeyWindow(void *id) {
+BOOL NSWindow_inst_IsKeyWindow(void *id) {
 	return [(NSWindow*)id
 		isKeyWindow];
 }
 
-BOOL NSWindow_inst_canBecomeKeyWindow(void *id) {
+BOOL NSWindow_inst_CanBecomeKeyWindow(void *id) {
 	return [(NSWindow*)id
 		canBecomeKeyWindow];
 }
 
-BOOL NSWindow_inst_isMainWindow(void *id) {
+BOOL NSWindow_inst_IsMainWindow(void *id) {
 	return [(NSWindow*)id
 		isMainWindow];
 }
 
-BOOL NSWindow_inst_canBecomeMainWindow(void *id) {
+BOOL NSWindow_inst_CanBecomeMainWindow(void *id) {
 	return [(NSWindow*)id
 		canBecomeMainWindow];
 }
 
-void* NSWindow_inst_childWindows(void *id) {
+void* NSWindow_inst_ChildWindows(void *id) {
 	return [(NSWindow*)id
 		childWindows];
 }
 
-void* NSWindow_inst_parentWindow(void *id) {
+void* NSWindow_inst_ParentWindow(void *id) {
 	return [(NSWindow*)id
 		parentWindow];
 }
 
-void NSWindow_inst_setParentWindow(void *id, void* value) {
+void NSWindow_inst_SetParentWindow(void *id, void* value) {
 	[(NSWindow*)id
 		setParentWindow: value];
 }
 
-BOOL NSWindow_inst_isExcludedFromWindowsMenu(void *id) {
+BOOL NSWindow_inst_IsExcludedFromWindowsMenu(void *id) {
 	return [(NSWindow*)id
 		isExcludedFromWindowsMenu];
 }
 
-void NSWindow_inst_setExcludedFromWindowsMenu(void *id, BOOL value) {
+void NSWindow_inst_SetExcludedFromWindowsMenu(void *id, BOOL value) {
 	[(NSWindow*)id
 		setExcludedFromWindowsMenu: value];
 }
 
-BOOL NSWindow_inst_areCursorRectsEnabled(void *id) {
+BOOL NSWindow_inst_AreCursorRectsEnabled(void *id) {
 	return [(NSWindow*)id
 		areCursorRectsEnabled];
 }
 
-BOOL NSWindow_inst_showsToolbarButton(void *id) {
+BOOL NSWindow_inst_ShowsToolbarButton(void *id) {
 	return [(NSWindow*)id
 		showsToolbarButton];
 }
 
-void NSWindow_inst_setShowsToolbarButton(void *id, BOOL value) {
+void NSWindow_inst_SetShowsToolbarButton(void *id, BOOL value) {
 	[(NSWindow*)id
 		setShowsToolbarButton: value];
 }
 
-BOOL NSWindow_inst_titlebarAppearsTransparent(void *id) {
+BOOL NSWindow_inst_TitlebarAppearsTransparent(void *id) {
 	return [(NSWindow*)id
 		titlebarAppearsTransparent];
 }
 
-void NSWindow_inst_setTitlebarAppearsTransparent(void *id, BOOL value) {
+void NSWindow_inst_SetTitlebarAppearsTransparent(void *id, BOOL value) {
 	[(NSWindow*)id
 		setTitlebarAppearsTransparent: value];
 }
 
-void* NSWindow_inst_titlebarAccessoryViewControllers(void *id) {
+void* NSWindow_inst_TitlebarAccessoryViewControllers(void *id) {
 	return [(NSWindow*)id
 		titlebarAccessoryViewControllers];
 }
 
-void NSWindow_inst_setTitlebarAccessoryViewControllers(void *id, void* value) {
+void NSWindow_inst_SetTitlebarAccessoryViewControllers(void *id, void* value) {
 	[(NSWindow*)id
 		setTitlebarAccessoryViewControllers: value];
 }
 
-void* NSWindow_inst_tabbedWindows(void *id) {
+void* NSWindow_inst_TabbedWindows(void *id) {
 	return [(NSWindow*)id
 		tabbedWindows];
 }
 
-BOOL NSWindow_inst_allowsToolTipsWhenApplicationIsInactive(void *id) {
+BOOL NSWindow_inst_AllowsToolTipsWhenApplicationIsInactive(void *id) {
 	return [(NSWindow*)id
 		allowsToolTipsWhenApplicationIsInactive];
 }
 
-void NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive(void *id, BOOL value) {
+void NSWindow_inst_SetAllowsToolTipsWhenApplicationIsInactive(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAllowsToolTipsWhenApplicationIsInactive: value];
 }
 
-void* NSWindow_inst_currentEvent(void *id) {
+void* NSWindow_inst_CurrentEvent(void *id) {
 	return [(NSWindow*)id
 		currentEvent];
 }
 
-void* NSWindow_inst_initialFirstResponder(void *id) {
+void* NSWindow_inst_InitialFirstResponder(void *id) {
 	return [(NSWindow*)id
 		initialFirstResponder];
 }
 
-void NSWindow_inst_setInitialFirstResponder(void *id, void* value) {
+void NSWindow_inst_SetInitialFirstResponder(void *id, void* value) {
 	[(NSWindow*)id
 		setInitialFirstResponder: value];
 }
 
-BOOL NSWindow_inst_autorecalculatesKeyViewLoop(void *id) {
+BOOL NSWindow_inst_AutorecalculatesKeyViewLoop(void *id) {
 	return [(NSWindow*)id
 		autorecalculatesKeyViewLoop];
 }
 
-void NSWindow_inst_setAutorecalculatesKeyViewLoop(void *id, BOOL value) {
+void NSWindow_inst_SetAutorecalculatesKeyViewLoop(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAutorecalculatesKeyViewLoop: value];
 }
 
-BOOL NSWindow_inst_acceptsMouseMovedEvents(void *id) {
+BOOL NSWindow_inst_AcceptsMouseMovedEvents(void *id) {
 	return [(NSWindow*)id
 		acceptsMouseMovedEvents];
 }
 
-void NSWindow_inst_setAcceptsMouseMovedEvents(void *id, BOOL value) {
+void NSWindow_inst_SetAcceptsMouseMovedEvents(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAcceptsMouseMovedEvents: value];
 }
 
-BOOL NSWindow_inst_ignoresMouseEvents(void *id) {
+BOOL NSWindow_inst_IgnoresMouseEvents(void *id) {
 	return [(NSWindow*)id
 		ignoresMouseEvents];
 }
 
-void NSWindow_inst_setIgnoresMouseEvents(void *id, BOOL value) {
+void NSWindow_inst_SetIgnoresMouseEvents(void *id, BOOL value) {
 	[(NSWindow*)id
 		setIgnoresMouseEvents: value];
 }
 
-NSPoint NSWindow_inst_mouseLocationOutsideOfEventStream(void *id) {
+NSPoint NSWindow_inst_MouseLocationOutsideOfEventStream(void *id) {
 	return [(NSWindow*)id
 		mouseLocationOutsideOfEventStream];
 }
 
-BOOL NSWindow_inst_isRestorable(void *id) {
+BOOL NSWindow_inst_IsRestorable(void *id) {
 	return [(NSWindow*)id
 		isRestorable];
 }
 
-void NSWindow_inst_setRestorable(void *id, BOOL value) {
+void NSWindow_inst_SetRestorable(void *id, BOOL value) {
 	[(NSWindow*)id
 		setRestorable: value];
 }
 
-BOOL NSWindow_inst_viewsNeedDisplay(void *id) {
+BOOL NSWindow_inst_ViewsNeedDisplay(void *id) {
 	return [(NSWindow*)id
 		viewsNeedDisplay];
 }
 
-void NSWindow_inst_setViewsNeedDisplay(void *id, BOOL value) {
+void NSWindow_inst_SetViewsNeedDisplay(void *id, BOOL value) {
 	[(NSWindow*)id
 		setViewsNeedDisplay: value];
 }
 
-BOOL NSWindow_inst_allowsConcurrentViewDrawing(void *id) {
+BOOL NSWindow_inst_AllowsConcurrentViewDrawing(void *id) {
 	return [(NSWindow*)id
 		allowsConcurrentViewDrawing];
 }
 
-void NSWindow_inst_setAllowsConcurrentViewDrawing(void *id, BOOL value) {
+void NSWindow_inst_SetAllowsConcurrentViewDrawing(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAllowsConcurrentViewDrawing: value];
 }
 
-BOOL NSWindow_inst_isDocumentEdited(void *id) {
+BOOL NSWindow_inst_IsDocumentEdited(void *id) {
 	return [(NSWindow*)id
 		isDocumentEdited];
 }
 
-void NSWindow_inst_setDocumentEdited(void *id, BOOL value) {
+void NSWindow_inst_SetDocumentEdited(void *id, BOOL value) {
 	[(NSWindow*)id
 		setDocumentEdited: value];
 }
 
-double NSWindow_inst_backingScaleFactor(void *id) {
+double NSWindow_inst_BackingScaleFactor(void *id) {
 	return [(NSWindow*)id
 		backingScaleFactor];
 }
 
-void* NSWindow_inst_title(void *id) {
+void* NSWindow_inst_Title(void *id) {
 	return [(NSWindow*)id
 		title];
 }
 
-void NSWindow_inst_setTitle(void *id, void* value) {
+void NSWindow_inst_SetTitle(void *id, void* value) {
 	[(NSWindow*)id
 		setTitle: value];
 }
 
-void* NSWindow_inst_subtitle(void *id) {
+void* NSWindow_inst_Subtitle(void *id) {
 	return [(NSWindow*)id
 		subtitle];
 }
 
-void NSWindow_inst_setSubtitle(void *id, void* value) {
+void NSWindow_inst_SetSubtitle(void *id, void* value) {
 	[(NSWindow*)id
 		setSubtitle: value];
 }
 
-long NSWindow_inst_titleVisibility(void *id) {
+long NSWindow_inst_TitleVisibility(void *id) {
 	return [(NSWindow*)id
 		titleVisibility];
 }
 
-void NSWindow_inst_setTitleVisibility(void *id, long value) {
+void NSWindow_inst_SetTitleVisibility(void *id, long value) {
 	[(NSWindow*)id
 		setTitleVisibility: value];
 }
 
-void* NSWindow_inst_representedFilename(void *id) {
+void* NSWindow_inst_RepresentedFilename(void *id) {
 	return [(NSWindow*)id
 		representedFilename];
 }
 
-void NSWindow_inst_setRepresentedFilename(void *id, void* value) {
+void NSWindow_inst_SetRepresentedFilename(void *id, void* value) {
 	[(NSWindow*)id
 		setRepresentedFilename: value];
 }
 
-void* NSWindow_inst_representedURL(void *id) {
+void* NSWindow_inst_RepresentedURL(void *id) {
 	return [(NSWindow*)id
 		representedURL];
 }
 
-void NSWindow_inst_setRepresentedURL(void *id, void* value) {
+void NSWindow_inst_SetRepresentedURL(void *id, void* value) {
 	[(NSWindow*)id
 		setRepresentedURL: value];
 }
 
-void* NSWindow_inst_screen(void *id) {
+void* NSWindow_inst_Screen(void *id) {
 	return [(NSWindow*)id
 		screen];
 }
 
-void* NSWindow_inst_deepestScreen(void *id) {
+void* NSWindow_inst_DeepestScreen(void *id) {
 	return [(NSWindow*)id
 		deepestScreen];
 }
 
-BOOL NSWindow_inst_displaysWhenScreenProfileChanges(void *id) {
+BOOL NSWindow_inst_DisplaysWhenScreenProfileChanges(void *id) {
 	return [(NSWindow*)id
 		displaysWhenScreenProfileChanges];
 }
 
-void NSWindow_inst_setDisplaysWhenScreenProfileChanges(void *id, BOOL value) {
+void NSWindow_inst_SetDisplaysWhenScreenProfileChanges(void *id, BOOL value) {
 	[(NSWindow*)id
 		setDisplaysWhenScreenProfileChanges: value];
 }
 
-BOOL NSWindow_inst_isMovableByWindowBackground(void *id) {
+BOOL NSWindow_inst_IsMovableByWindowBackground(void *id) {
 	return [(NSWindow*)id
 		isMovableByWindowBackground];
 }
 
-void NSWindow_inst_setMovableByWindowBackground(void *id, BOOL value) {
+void NSWindow_inst_SetMovableByWindowBackground(void *id, BOOL value) {
 	[(NSWindow*)id
 		setMovableByWindowBackground: value];
 }
 
-BOOL NSWindow_inst_isMovable(void *id) {
+BOOL NSWindow_inst_IsMovable(void *id) {
 	return [(NSWindow*)id
 		isMovable];
 }
 
-void NSWindow_inst_setMovable(void *id, BOOL value) {
+void NSWindow_inst_SetMovable(void *id, BOOL value) {
 	[(NSWindow*)id
 		setMovable: value];
 }
 
-BOOL NSWindow_inst_isReleasedWhenClosed(void *id) {
+BOOL NSWindow_inst_IsReleasedWhenClosed(void *id) {
 	return [(NSWindow*)id
 		isReleasedWhenClosed];
 }
 
-void NSWindow_inst_setReleasedWhenClosed(void *id, BOOL value) {
+void NSWindow_inst_SetReleasedWhenClosed(void *id, BOOL value) {
 	[(NSWindow*)id
 		setReleasedWhenClosed: value];
 }
 
-BOOL NSWindow_inst_isMiniaturized(void *id) {
+BOOL NSWindow_inst_IsMiniaturized(void *id) {
 	return [(NSWindow*)id
 		isMiniaturized];
 }
 
-void* NSWindow_inst_miniwindowImage(void *id) {
+void* NSWindow_inst_MiniwindowImage(void *id) {
 	return [(NSWindow*)id
 		miniwindowImage];
 }
 
-void NSWindow_inst_setMiniwindowImage(void *id, void* value) {
+void NSWindow_inst_SetMiniwindowImage(void *id, void* value) {
 	[(NSWindow*)id
 		setMiniwindowImage: value];
 }
 
-void* NSWindow_inst_miniwindowTitle(void *id) {
+void* NSWindow_inst_MiniwindowTitle(void *id) {
 	return [(NSWindow*)id
 		miniwindowTitle];
 }
 
-void NSWindow_inst_setMiniwindowTitle(void *id, void* value) {
+void NSWindow_inst_SetMiniwindowTitle(void *id, void* value) {
 	[(NSWindow*)id
 		setMiniwindowTitle: value];
 }
 
-BOOL NSWindow_inst_hasCloseBox(void *id) {
+BOOL NSWindow_inst_HasCloseBox(void *id) {
 	return [(NSWindow*)id
 		hasCloseBox];
 }
 
-BOOL NSWindow_inst_hasTitleBar(void *id) {
+BOOL NSWindow_inst_HasTitleBar(void *id) {
 	return [(NSWindow*)id
 		hasTitleBar];
 }
 
-BOOL NSWindow_inst_isModalPanel(void *id) {
+BOOL NSWindow_inst_IsModalPanel(void *id) {
 	return [(NSWindow*)id
 		isModalPanel];
 }
 
-BOOL NSWindow_inst_isFloatingPanel(void *id) {
+BOOL NSWindow_inst_IsFloatingPanel(void *id) {
 	return [(NSWindow*)id
 		isFloatingPanel];
 }
 
-BOOL NSWindow_inst_isZoomable(void *id) {
+BOOL NSWindow_inst_IsZoomable(void *id) {
 	return [(NSWindow*)id
 		isZoomable];
 }
 
-BOOL NSWindow_inst_isResizable(void *id) {
+BOOL NSWindow_inst_IsResizable(void *id) {
 	return [(NSWindow*)id
 		isResizable];
 }
 
-BOOL NSWindow_inst_isMiniaturizable(void *id) {
+BOOL NSWindow_inst_IsMiniaturizable(void *id) {
 	return [(NSWindow*)id
 		isMiniaturizable];
 }
 
-long NSWindow_inst_orderedIndex(void *id) {
+long NSWindow_inst_OrderedIndex(void *id) {
 	return [(NSWindow*)id
 		orderedIndex];
 }
 
-void NSWindow_inst_setOrderedIndex(void *id, long value) {
+void NSWindow_inst_SetOrderedIndex(void *id, long value) {
 	[(NSWindow*)id
 		setOrderedIndex: value];
 }
@@ -5331,2177 +5331,2177 @@ void* NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier(void *id, void* b
 		URLsForApplicationsWithBundleIdentifier: bundleIdentifier];
 }
 
-void NSWorkspace_inst_activateFileViewerSelectingURLs(void *id, void* fileURLs) {
+void NSWorkspace_inst_ActivateFileViewerSelectingURLs(void *id, void* fileURLs) {
 	[(NSWorkspace*)id
 		activateFileViewerSelectingURLs: fileURLs];
 }
 
-void* NSWorkspace_inst_desktopImageOptionsForScreen(void *id, void* screen) {
+void* NSWorkspace_inst_DesktopImageOptionsForScreen(void *id, void* screen) {
 	return [(NSWorkspace*)id
 		desktopImageOptionsForScreen: screen];
 }
 
-void* NSWorkspace_inst_desktopImageURLForScreen(void *id, void* screen) {
+void* NSWorkspace_inst_DesktopImageURLForScreen(void *id, void* screen) {
 	return [(NSWorkspace*)id
 		desktopImageURLForScreen: screen];
 }
 
-long NSWorkspace_inst_extendPowerOffBy(void *id, long requested) {
+long NSWorkspace_inst_ExtendPowerOffBy(void *id, long requested) {
 	return [(NSWorkspace*)id
 		extendPowerOffBy: requested];
 }
 
-void NSWorkspace_inst_hideOtherApplications(void *id) {
+void NSWorkspace_inst_HideOtherApplications(void *id) {
 	[(NSWorkspace*)id
 		hideOtherApplications];
 }
 
-void* NSWorkspace_inst_iconForFile(void *id, void* fullPath) {
+void* NSWorkspace_inst_IconForFile(void *id, void* fullPath) {
 	return [(NSWorkspace*)id
 		iconForFile: fullPath];
 }
 
-void* NSWorkspace_inst_iconForFiles(void *id, void* fullPaths) {
+void* NSWorkspace_inst_IconForFiles(void *id, void* fullPaths) {
 	return [(NSWorkspace*)id
 		iconForFiles: fullPaths];
 }
 
-BOOL NSWorkspace_inst_isFilePackageAtPath(void *id, void* fullPath) {
+BOOL NSWorkspace_inst_IsFilePackageAtPath(void *id, void* fullPath) {
 	return [(NSWorkspace*)id
 		isFilePackageAtPath: fullPath];
 }
 
-void NSWorkspace_inst_noteFileSystemChanged(void *id, void* path) {
+void NSWorkspace_inst_NoteFileSystemChanged(void *id, void* path) {
 	[(NSWorkspace*)id
 		noteFileSystemChanged: path];
 }
 
-BOOL NSWorkspace_inst_openURL(void *id, void* url) {
+BOOL NSWorkspace_inst_OpenURL(void *id, void* url) {
 	return [(NSWorkspace*)id
 		openURL: url];
 }
 
-BOOL NSWorkspace_inst_selectFile_inFileViewerRootedAtPath(void *id, void* fullPath, void* rootFullPath) {
+BOOL NSWorkspace_inst_SelectFileInFileViewerRootedAtPath(void *id, void* fullPath, void* rootFullPath) {
 	return [(NSWorkspace*)id
 		selectFile: fullPath
 		inFileViewerRootedAtPath: rootFullPath];
 }
 
-BOOL NSWorkspace_inst_showSearchResultsForQueryString(void *id, void* queryString) {
+BOOL NSWorkspace_inst_ShowSearchResultsForQueryString(void *id, void* queryString) {
 	return [(NSWorkspace*)id
 		showSearchResultsForQueryString: queryString];
 }
 
-BOOL NSWorkspace_inst_unmountAndEjectDeviceAtPath(void *id, void* path) {
+BOOL NSWorkspace_inst_UnmountAndEjectDeviceAtPath(void *id, void* path) {
 	return [(NSWorkspace*)id
 		unmountAndEjectDeviceAtPath: path];
 }
 
-void* NSWorkspace_inst_init(void *id) {
+void* NSWorkspace_inst_Init(void *id) {
 	return [(NSWorkspace*)id
 		init];
 }
 
-void* NSWorkspace_inst_frontmostApplication(void *id) {
+void* NSWorkspace_inst_FrontmostApplication(void *id) {
 	return [(NSWorkspace*)id
 		frontmostApplication];
 }
 
-void* NSWorkspace_inst_runningApplications(void *id) {
+void* NSWorkspace_inst_RunningApplications(void *id) {
 	return [(NSWorkspace*)id
 		runningApplications];
 }
 
-void* NSWorkspace_inst_menuBarOwningApplication(void *id) {
+void* NSWorkspace_inst_MenuBarOwningApplication(void *id) {
 	return [(NSWorkspace*)id
 		menuBarOwningApplication];
 }
 
-void* NSWorkspace_inst_fileLabels(void *id) {
+void* NSWorkspace_inst_FileLabels(void *id) {
 	return [(NSWorkspace*)id
 		fileLabels];
 }
 
-void* NSWorkspace_inst_fileLabelColors(void *id) {
+void* NSWorkspace_inst_FileLabelColors(void *id) {
 	return [(NSWorkspace*)id
 		fileLabelColors];
 }
 
-BOOL NSWorkspace_inst_accessibilityDisplayShouldDifferentiateWithoutColor(void *id) {
+BOOL NSWorkspace_inst_AccessibilityDisplayShouldDifferentiateWithoutColor(void *id) {
 	return [(NSWorkspace*)id
 		accessibilityDisplayShouldDifferentiateWithoutColor];
 }
 
-BOOL NSWorkspace_inst_accessibilityDisplayShouldIncreaseContrast(void *id) {
+BOOL NSWorkspace_inst_AccessibilityDisplayShouldIncreaseContrast(void *id) {
 	return [(NSWorkspace*)id
 		accessibilityDisplayShouldIncreaseContrast];
 }
 
-BOOL NSWorkspace_inst_accessibilityDisplayShouldReduceTransparency(void *id) {
+BOOL NSWorkspace_inst_AccessibilityDisplayShouldReduceTransparency(void *id) {
 	return [(NSWorkspace*)id
 		accessibilityDisplayShouldReduceTransparency];
 }
 
-BOOL NSWorkspace_inst_accessibilityDisplayShouldInvertColors(void *id) {
+BOOL NSWorkspace_inst_AccessibilityDisplayShouldInvertColors(void *id) {
 	return [(NSWorkspace*)id
 		accessibilityDisplayShouldInvertColors];
 }
 
-BOOL NSWorkspace_inst_accessibilityDisplayShouldReduceMotion(void *id) {
+BOOL NSWorkspace_inst_AccessibilityDisplayShouldReduceMotion(void *id) {
 	return [(NSWorkspace*)id
 		accessibilityDisplayShouldReduceMotion];
 }
 
-BOOL NSWorkspace_inst_isSwitchControlEnabled(void *id) {
+BOOL NSWorkspace_inst_IsSwitchControlEnabled(void *id) {
 	return [(NSWorkspace*)id
 		isSwitchControlEnabled];
 }
 
-BOOL NSWorkspace_inst_isVoiceOverEnabled(void *id) {
+BOOL NSWorkspace_inst_IsVoiceOverEnabled(void *id) {
 	return [(NSWorkspace*)id
 		isVoiceOverEnabled];
 }
 
-void* NSColor_inst_blendedColorWithFraction_ofColor(void *id, double fraction, void* color) {
+void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
 		ofColor: color];
 }
 
-void* NSColor_inst_colorWithAlphaComponent(void *id, double alpha) {
+void* NSColor_inst_ColorWithAlphaComponent(void *id, double alpha) {
 	return [(NSColor*)id
 		colorWithAlphaComponent: alpha];
 }
 
-void NSColor_inst_drawSwatchInRect(void *id, NSRect rect) {
+void NSColor_inst_DrawSwatchInRect(void *id, NSRect rect) {
 	[(NSColor*)id
 		drawSwatchInRect: rect];
 }
 
-void* NSColor_inst_highlightWithLevel(void *id, double val) {
+void* NSColor_inst_HighlightWithLevel(void *id, double val) {
 	return [(NSColor*)id
 		highlightWithLevel: val];
 }
 
-void NSColor_inst_set(void *id) {
+void NSColor_inst_Set(void *id) {
 	[(NSColor*)id
 		set];
 }
 
-void NSColor_inst_setFill(void *id) {
+void NSColor_inst_SetFill(void *id) {
 	[(NSColor*)id
 		setFill];
 }
 
-void NSColor_inst_setStroke(void *id) {
+void NSColor_inst_SetStroke(void *id) {
 	[(NSColor*)id
 		setStroke];
 }
 
-void* NSColor_inst_shadowWithLevel(void *id, double val) {
+void* NSColor_inst_ShadowWithLevel(void *id, double val) {
 	return [(NSColor*)id
 		shadowWithLevel: val];
 }
 
-void NSColor_inst_writeToPasteboard(void *id, void* pasteBoard) {
+void NSColor_inst_WriteToPasteboard(void *id, void* pasteBoard) {
 	[(NSColor*)id
 		writeToPasteboard: pasteBoard];
 }
 
-void* NSColor_inst_init(void *id) {
+void* NSColor_inst_Init(void *id) {
 	return [(NSColor*)id
 		init];
 }
 
-long NSColor_inst_numberOfComponents(void *id) {
+long NSColor_inst_NumberOfComponents(void *id) {
 	return [(NSColor*)id
 		numberOfComponents];
 }
 
-double NSColor_inst_alphaComponent(void *id) {
+double NSColor_inst_AlphaComponent(void *id) {
 	return [(NSColor*)id
 		alphaComponent];
 }
 
-double NSColor_inst_whiteComponent(void *id) {
+double NSColor_inst_WhiteComponent(void *id) {
 	return [(NSColor*)id
 		whiteComponent];
 }
 
-double NSColor_inst_redComponent(void *id) {
+double NSColor_inst_RedComponent(void *id) {
 	return [(NSColor*)id
 		redComponent];
 }
 
-double NSColor_inst_greenComponent(void *id) {
+double NSColor_inst_GreenComponent(void *id) {
 	return [(NSColor*)id
 		greenComponent];
 }
 
-double NSColor_inst_blueComponent(void *id) {
+double NSColor_inst_BlueComponent(void *id) {
 	return [(NSColor*)id
 		blueComponent];
 }
 
-double NSColor_inst_cyanComponent(void *id) {
+double NSColor_inst_CyanComponent(void *id) {
 	return [(NSColor*)id
 		cyanComponent];
 }
 
-double NSColor_inst_magentaComponent(void *id) {
+double NSColor_inst_MagentaComponent(void *id) {
 	return [(NSColor*)id
 		magentaComponent];
 }
 
-double NSColor_inst_yellowComponent(void *id) {
+double NSColor_inst_YellowComponent(void *id) {
 	return [(NSColor*)id
 		yellowComponent];
 }
 
-double NSColor_inst_blackComponent(void *id) {
+double NSColor_inst_BlackComponent(void *id) {
 	return [(NSColor*)id
 		blackComponent];
 }
 
-double NSColor_inst_hueComponent(void *id) {
+double NSColor_inst_HueComponent(void *id) {
 	return [(NSColor*)id
 		hueComponent];
 }
 
-double NSColor_inst_saturationComponent(void *id) {
+double NSColor_inst_SaturationComponent(void *id) {
 	return [(NSColor*)id
 		saturationComponent];
 }
 
-double NSColor_inst_brightnessComponent(void *id) {
+double NSColor_inst_BrightnessComponent(void *id) {
 	return [(NSColor*)id
 		brightnessComponent];
 }
 
-void* NSColor_inst_localizedCatalogNameComponent(void *id) {
+void* NSColor_inst_LocalizedCatalogNameComponent(void *id) {
 	return [(NSColor*)id
 		localizedCatalogNameComponent];
 }
 
-void* NSColor_inst_localizedColorNameComponent(void *id) {
+void* NSColor_inst_LocalizedColorNameComponent(void *id) {
 	return [(NSColor*)id
 		localizedColorNameComponent];
 }
 
-void NSTextView_inst_alignJustified(void *id, void* sender) {
+void NSTextView_inst_AlignJustified(void *id, void* sender) {
 	[(NSTextView*)id
 		alignJustified: sender];
 }
 
-void NSTextView_inst_breakUndoCoalescing(void *id) {
+void NSTextView_inst_BreakUndoCoalescing(void *id) {
 	[(NSTextView*)id
 		breakUndoCoalescing];
 }
 
-void NSTextView_inst_changeAttributes(void *id, void* sender) {
+void NSTextView_inst_ChangeAttributes(void *id, void* sender) {
 	[(NSTextView*)id
 		changeAttributes: sender];
 }
 
-void NSTextView_inst_changeColor(void *id, void* sender) {
+void NSTextView_inst_ChangeColor(void *id, void* sender) {
 	[(NSTextView*)id
 		changeColor: sender];
 }
 
-void NSTextView_inst_changeDocumentBackgroundColor(void *id, void* sender) {
+void NSTextView_inst_ChangeDocumentBackgroundColor(void *id, void* sender) {
 	[(NSTextView*)id
 		changeDocumentBackgroundColor: sender];
 }
 
-void NSTextView_inst_changeLayoutOrientation(void *id, void* sender) {
+void NSTextView_inst_ChangeLayoutOrientation(void *id, void* sender) {
 	[(NSTextView*)id
 		changeLayoutOrientation: sender];
 }
 
-unsigned long NSTextView_inst_characterIndexForInsertionAtPoint(void *id, NSPoint point) {
+unsigned long NSTextView_inst_CharacterIndexForInsertionAtPoint(void *id, NSPoint point) {
 	return [(NSTextView*)id
 		characterIndexForInsertionAtPoint: point];
 }
 
-void NSTextView_inst_checkTextInDocument(void *id, void* sender) {
+void NSTextView_inst_CheckTextInDocument(void *id, void* sender) {
 	[(NSTextView*)id
 		checkTextInDocument: sender];
 }
 
-void NSTextView_inst_checkTextInSelection(void *id, void* sender) {
+void NSTextView_inst_CheckTextInSelection(void *id, void* sender) {
 	[(NSTextView*)id
 		checkTextInSelection: sender];
 }
 
-void NSTextView_inst_cleanUpAfterDragOperation(void *id) {
+void NSTextView_inst_CleanUpAfterDragOperation(void *id) {
 	[(NSTextView*)id
 		cleanUpAfterDragOperation];
 }
 
-void NSTextView_inst_clickedOnLink_atIndex(void *id, void* link, unsigned long charIndex) {
+void NSTextView_inst_ClickedOnLinkAtIndex(void *id, void* link, unsigned long charIndex) {
 	[(NSTextView*)id
 		clickedOnLink: link
 		atIndex: charIndex];
 }
 
-void NSTextView_inst_complete(void *id, void* sender) {
+void NSTextView_inst_Complete(void *id, void* sender) {
 	[(NSTextView*)id
 		complete: sender];
 }
 
-void NSTextView_inst_didChangeText(void *id) {
+void NSTextView_inst_DidChangeText(void *id) {
 	[(NSTextView*)id
 		didChangeText];
 }
 
-BOOL NSTextView_inst_dragSelectionWithEvent_offset_slideBack(void *id, void* event, NSSize mouseOffset, BOOL slideBack) {
+BOOL NSTextView_inst_DragSelectionWithEventOffsetSlideBack(void *id, void* event, NSSize mouseOffset, BOOL slideBack) {
 	return [(NSTextView*)id
 		dragSelectionWithEvent: event
 		offset: mouseOffset
 		slideBack: slideBack];
 }
 
-void NSTextView_inst_drawInsertionPointInRect_color_turnedOn(void *id, NSRect rect, void* color, BOOL flag) {
+void NSTextView_inst_DrawInsertionPointInRectColorTurnedOn(void *id, NSRect rect, void* color, BOOL flag) {
 	[(NSTextView*)id
 		drawInsertionPointInRect: rect
 		color: color
 		turnedOn: flag];
 }
 
-void NSTextView_inst_drawViewBackgroundInRect(void *id, NSRect rect) {
+void NSTextView_inst_DrawViewBackgroundInRect(void *id, NSRect rect) {
 	[(NSTextView*)id
 		drawViewBackgroundInRect: rect];
 }
 
-void* NSTextView_inst_initWithFrame(void *id, NSRect frameRect) {
+void* NSTextView_inst_InitWithFrame(void *id, NSRect frameRect) {
 	return [(NSTextView*)id
 		initWithFrame: frameRect];
 }
 
-void* NSTextView_inst_initWithFrame_textContainer(void *id, NSRect frameRect, void* container) {
+void* NSTextView_inst_InitWithFrameTextContainer(void *id, NSRect frameRect, void* container) {
 	return [(NSTextView*)id
 		initWithFrame: frameRect
 		textContainer: container];
 }
 
-void NSTextView_inst_invalidateTextContainerOrigin(void *id) {
+void NSTextView_inst_InvalidateTextContainerOrigin(void *id) {
 	[(NSTextView*)id
 		invalidateTextContainerOrigin];
 }
 
-void NSTextView_inst_loosenKerning(void *id, void* sender) {
+void NSTextView_inst_LoosenKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		loosenKerning: sender];
 }
 
-void NSTextView_inst_lowerBaseline(void *id, void* sender) {
+void NSTextView_inst_LowerBaseline(void *id, void* sender) {
 	[(NSTextView*)id
 		lowerBaseline: sender];
 }
 
-void NSTextView_inst_orderFrontLinkPanel(void *id, void* sender) {
+void NSTextView_inst_OrderFrontLinkPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontLinkPanel: sender];
 }
 
-void NSTextView_inst_orderFrontListPanel(void *id, void* sender) {
+void NSTextView_inst_OrderFrontListPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontListPanel: sender];
 }
 
-void NSTextView_inst_orderFrontSharingServicePicker(void *id, void* sender) {
+void NSTextView_inst_OrderFrontSharingServicePicker(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSharingServicePicker: sender];
 }
 
-void NSTextView_inst_orderFrontSpacingPanel(void *id, void* sender) {
+void NSTextView_inst_OrderFrontSpacingPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSpacingPanel: sender];
 }
 
-void NSTextView_inst_orderFrontSubstitutionsPanel(void *id, void* sender) {
+void NSTextView_inst_OrderFrontSubstitutionsPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSubstitutionsPanel: sender];
 }
 
-void NSTextView_inst_orderFrontTablePanel(void *id, void* sender) {
+void NSTextView_inst_OrderFrontTablePanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontTablePanel: sender];
 }
 
-void NSTextView_inst_outline(void *id, void* sender) {
+void NSTextView_inst_Outline(void *id, void* sender) {
 	[(NSTextView*)id
 		outline: sender];
 }
 
-void NSTextView_inst_pasteAsPlainText(void *id, void* sender) {
+void NSTextView_inst_PasteAsPlainText(void *id, void* sender) {
 	[(NSTextView*)id
 		pasteAsPlainText: sender];
 }
 
-void NSTextView_inst_pasteAsRichText(void *id, void* sender) {
+void NSTextView_inst_PasteAsRichText(void *id, void* sender) {
 	[(NSTextView*)id
 		pasteAsRichText: sender];
 }
 
-void NSTextView_inst_performFindPanelAction(void *id, void* sender) {
+void NSTextView_inst_PerformFindPanelAction(void *id, void* sender) {
 	[(NSTextView*)id
 		performFindPanelAction: sender];
 }
 
-void* NSTextView_inst_quickLookPreviewableItemsInRanges(void *id, void* ranges) {
+void* NSTextView_inst_QuickLookPreviewableItemsInRanges(void *id, void* ranges) {
 	return [(NSTextView*)id
 		quickLookPreviewableItemsInRanges: ranges];
 }
 
-void NSTextView_inst_raiseBaseline(void *id, void* sender) {
+void NSTextView_inst_RaiseBaseline(void *id, void* sender) {
 	[(NSTextView*)id
 		raiseBaseline: sender];
 }
 
-BOOL NSTextView_inst_readSelectionFromPasteboard(void *id, void* pboard) {
+BOOL NSTextView_inst_ReadSelectionFromPasteboard(void *id, void* pboard) {
 	return [(NSTextView*)id
 		readSelectionFromPasteboard: pboard];
 }
 
-void NSTextView_inst_replaceTextContainer(void *id, void* newContainer) {
+void NSTextView_inst_ReplaceTextContainer(void *id, void* newContainer) {
 	[(NSTextView*)id
 		replaceTextContainer: newContainer];
 }
 
-void NSTextView_inst_setConstrainedFrameSize(void *id, NSSize desiredSize) {
+void NSTextView_inst_SetConstrainedFrameSize(void *id, NSSize desiredSize) {
 	[(NSTextView*)id
 		setConstrainedFrameSize: desiredSize];
 }
 
-void NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout(void *id, NSRect rect, BOOL flag) {
+void NSTextView_inst_SetNeedsDisplayInRectAvoidAdditionalLayout(void *id, NSRect rect, BOOL flag) {
 	[(NSTextView*)id
 		setNeedsDisplayInRect: rect
 		avoidAdditionalLayout: flag];
 }
 
-BOOL NSTextView_inst_shouldChangeTextInRanges_replacementStrings(void *id, void* affectedRanges, void* replacementStrings) {
+BOOL NSTextView_inst_ShouldChangeTextInRangesReplacementStrings(void *id, void* affectedRanges, void* replacementStrings) {
 	return [(NSTextView*)id
 		shouldChangeTextInRanges: affectedRanges
 		replacementStrings: replacementStrings];
 }
 
-void NSTextView_inst_startSpeaking(void *id, void* sender) {
+void NSTextView_inst_StartSpeaking(void *id, void* sender) {
 	[(NSTextView*)id
 		startSpeaking: sender];
 }
 
-void NSTextView_inst_stopSpeaking(void *id, void* sender) {
+void NSTextView_inst_StopSpeaking(void *id, void* sender) {
 	[(NSTextView*)id
 		stopSpeaking: sender];
 }
 
-void NSTextView_inst_tightenKerning(void *id, void* sender) {
+void NSTextView_inst_TightenKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		tightenKerning: sender];
 }
 
-void NSTextView_inst_toggleAutomaticDashSubstitution(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticDashSubstitution(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticDashSubstitution: sender];
 }
 
-void NSTextView_inst_toggleAutomaticDataDetection(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticDataDetection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticDataDetection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticLinkDetection(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticLinkDetection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticLinkDetection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticQuoteSubstitution(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticQuoteSubstitution(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticQuoteSubstitution: sender];
 }
 
-void NSTextView_inst_toggleAutomaticSpellingCorrection(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticSpellingCorrection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticSpellingCorrection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticTextCompletion(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticTextCompletion(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticTextCompletion: sender];
 }
 
-void NSTextView_inst_toggleAutomaticTextReplacement(void *id, void* sender) {
+void NSTextView_inst_ToggleAutomaticTextReplacement(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticTextReplacement: sender];
 }
 
-void NSTextView_inst_toggleContinuousSpellChecking(void *id, void* sender) {
+void NSTextView_inst_ToggleContinuousSpellChecking(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleContinuousSpellChecking: sender];
 }
 
-void NSTextView_inst_toggleGrammarChecking(void *id, void* sender) {
+void NSTextView_inst_ToggleGrammarChecking(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleGrammarChecking: sender];
 }
 
-void NSTextView_inst_toggleQuickLookPreviewPanel(void *id, void* sender) {
+void NSTextView_inst_ToggleQuickLookPreviewPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleQuickLookPreviewPanel: sender];
 }
 
-void NSTextView_inst_toggleSmartInsertDelete(void *id, void* sender) {
+void NSTextView_inst_ToggleSmartInsertDelete(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleSmartInsertDelete: sender];
 }
 
-void NSTextView_inst_turnOffKerning(void *id, void* sender) {
+void NSTextView_inst_TurnOffKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		turnOffKerning: sender];
 }
 
-void NSTextView_inst_turnOffLigatures(void *id, void* sender) {
+void NSTextView_inst_TurnOffLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		turnOffLigatures: sender];
 }
 
-void NSTextView_inst_updateCandidates(void *id) {
+void NSTextView_inst_UpdateCandidates(void *id) {
 	[(NSTextView*)id
 		updateCandidates];
 }
 
-void NSTextView_inst_updateDragTypeRegistration(void *id) {
+void NSTextView_inst_UpdateDragTypeRegistration(void *id) {
 	[(NSTextView*)id
 		updateDragTypeRegistration];
 }
 
-void NSTextView_inst_updateFontPanel(void *id) {
+void NSTextView_inst_UpdateFontPanel(void *id) {
 	[(NSTextView*)id
 		updateFontPanel];
 }
 
-void NSTextView_inst_updateInsertionPointStateAndRestartTimer(void *id, BOOL restartFlag) {
+void NSTextView_inst_UpdateInsertionPointStateAndRestartTimer(void *id, BOOL restartFlag) {
 	[(NSTextView*)id
 		updateInsertionPointStateAndRestartTimer: restartFlag];
 }
 
-void NSTextView_inst_updateQuickLookPreviewPanel(void *id) {
+void NSTextView_inst_UpdateQuickLookPreviewPanel(void *id) {
 	[(NSTextView*)id
 		updateQuickLookPreviewPanel];
 }
 
-void NSTextView_inst_updateRuler(void *id) {
+void NSTextView_inst_UpdateRuler(void *id) {
 	[(NSTextView*)id
 		updateRuler];
 }
 
-void NSTextView_inst_updateTextTouchBarItems(void *id) {
+void NSTextView_inst_UpdateTextTouchBarItems(void *id) {
 	[(NSTextView*)id
 		updateTextTouchBarItems];
 }
 
-void NSTextView_inst_updateTouchBarItemIdentifiers(void *id) {
+void NSTextView_inst_UpdateTouchBarItemIdentifiers(void *id) {
 	[(NSTextView*)id
 		updateTouchBarItemIdentifiers];
 }
 
-void NSTextView_inst_useAllLigatures(void *id, void* sender) {
+void NSTextView_inst_UseAllLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		useAllLigatures: sender];
 }
 
-void NSTextView_inst_useStandardKerning(void *id, void* sender) {
+void NSTextView_inst_UseStandardKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		useStandardKerning: sender];
 }
 
-void NSTextView_inst_useStandardLigatures(void *id, void* sender) {
+void NSTextView_inst_UseStandardLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		useStandardLigatures: sender];
 }
 
-BOOL NSTextView_inst_writeSelectionToPasteboard_types(void *id, void* pboard, void* types) {
+BOOL NSTextView_inst_WriteSelectionToPasteboardTypes(void *id, void* pboard, void* types) {
 	return [(NSTextView*)id
 		writeSelectionToPasteboard: pboard
 		types: types];
 }
 
-void* NSTextView_inst_init(void *id) {
+void* NSTextView_inst_Init(void *id) {
 	return [(NSTextView*)id
 		init];
 }
 
-void* NSTextView_inst_delegate(void *id) {
+void* NSTextView_inst_Delegate(void *id) {
 	return [(NSTextView*)id
 		delegate];
 }
 
-void NSTextView_inst_setDelegate(void *id, void* value) {
+void NSTextView_inst_SetDelegate(void *id, void* value) {
 	[(NSTextView*)id
 		setDelegate: value];
 }
 
-void* NSTextView_inst_textContainer(void *id) {
+void* NSTextView_inst_TextContainer(void *id) {
 	return [(NSTextView*)id
 		textContainer];
 }
 
-void NSTextView_inst_setTextContainer(void *id, void* value) {
+void NSTextView_inst_SetTextContainer(void *id, void* value) {
 	[(NSTextView*)id
 		setTextContainer: value];
 }
 
-NSSize NSTextView_inst_textContainerInset(void *id) {
+NSSize NSTextView_inst_TextContainerInset(void *id) {
 	return [(NSTextView*)id
 		textContainerInset];
 }
 
-void NSTextView_inst_setTextContainerInset(void *id, NSSize value) {
+void NSTextView_inst_SetTextContainerInset(void *id, NSSize value) {
 	[(NSTextView*)id
 		setTextContainerInset: value];
 }
 
-NSPoint NSTextView_inst_textContainerOrigin(void *id) {
+NSPoint NSTextView_inst_TextContainerOrigin(void *id) {
 	return [(NSTextView*)id
 		textContainerOrigin];
 }
 
-void* NSTextView_inst_layoutManager(void *id) {
+void* NSTextView_inst_LayoutManager(void *id) {
 	return [(NSTextView*)id
 		layoutManager];
 }
 
-void* NSTextView_inst_backgroundColor(void *id) {
+void* NSTextView_inst_BackgroundColor(void *id) {
 	return [(NSTextView*)id
 		backgroundColor];
 }
 
-void NSTextView_inst_setBackgroundColor(void *id, void* value) {
+void NSTextView_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSTextView*)id
 		setBackgroundColor: value];
 }
 
-BOOL NSTextView_inst_drawsBackground(void *id) {
+BOOL NSTextView_inst_DrawsBackground(void *id) {
 	return [(NSTextView*)id
 		drawsBackground];
 }
 
-void NSTextView_inst_setDrawsBackground(void *id, BOOL value) {
+void NSTextView_inst_SetDrawsBackground(void *id, BOOL value) {
 	[(NSTextView*)id
 		setDrawsBackground: value];
 }
 
-BOOL NSTextView_inst_allowsDocumentBackgroundColorChange(void *id) {
+BOOL NSTextView_inst_AllowsDocumentBackgroundColorChange(void *id) {
 	return [(NSTextView*)id
 		allowsDocumentBackgroundColorChange];
 }
 
-void NSTextView_inst_setAllowsDocumentBackgroundColorChange(void *id, BOOL value) {
+void NSTextView_inst_SetAllowsDocumentBackgroundColorChange(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsDocumentBackgroundColorChange: value];
 }
 
-BOOL NSTextView_inst_shouldDrawInsertionPoint(void *id) {
+BOOL NSTextView_inst_ShouldDrawInsertionPoint(void *id) {
 	return [(NSTextView*)id
 		shouldDrawInsertionPoint];
 }
 
-void* NSTextView_inst_allowedInputSourceLocales(void *id) {
+void* NSTextView_inst_AllowedInputSourceLocales(void *id) {
 	return [(NSTextView*)id
 		allowedInputSourceLocales];
 }
 
-void NSTextView_inst_setAllowedInputSourceLocales(void *id, void* value) {
+void NSTextView_inst_SetAllowedInputSourceLocales(void *id, void* value) {
 	[(NSTextView*)id
 		setAllowedInputSourceLocales: value];
 }
 
-BOOL NSTextView_inst_allowsUndo(void *id) {
+BOOL NSTextView_inst_AllowsUndo(void *id) {
 	return [(NSTextView*)id
 		allowsUndo];
 }
 
-void NSTextView_inst_setAllowsUndo(void *id, BOOL value) {
+void NSTextView_inst_SetAllowsUndo(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsUndo: value];
 }
 
-BOOL NSTextView_inst_isEditable(void *id) {
+BOOL NSTextView_inst_IsEditable(void *id) {
 	return [(NSTextView*)id
 		isEditable];
 }
 
-void NSTextView_inst_setEditable(void *id, BOOL value) {
+void NSTextView_inst_SetEditable(void *id, BOOL value) {
 	[(NSTextView*)id
 		setEditable: value];
 }
 
-BOOL NSTextView_inst_isSelectable(void *id) {
+BOOL NSTextView_inst_IsSelectable(void *id) {
 	return [(NSTextView*)id
 		isSelectable];
 }
 
-void NSTextView_inst_setSelectable(void *id, BOOL value) {
+void NSTextView_inst_SetSelectable(void *id, BOOL value) {
 	[(NSTextView*)id
 		setSelectable: value];
 }
 
-BOOL NSTextView_inst_isFieldEditor(void *id) {
+BOOL NSTextView_inst_IsFieldEditor(void *id) {
 	return [(NSTextView*)id
 		isFieldEditor];
 }
 
-void NSTextView_inst_setFieldEditor(void *id, BOOL value) {
+void NSTextView_inst_SetFieldEditor(void *id, BOOL value) {
 	[(NSTextView*)id
 		setFieldEditor: value];
 }
 
-BOOL NSTextView_inst_isRichText(void *id) {
+BOOL NSTextView_inst_IsRichText(void *id) {
 	return [(NSTextView*)id
 		isRichText];
 }
 
-void NSTextView_inst_setRichText(void *id, BOOL value) {
+void NSTextView_inst_SetRichText(void *id, BOOL value) {
 	[(NSTextView*)id
 		setRichText: value];
 }
 
-BOOL NSTextView_inst_importsGraphics(void *id) {
+BOOL NSTextView_inst_ImportsGraphics(void *id) {
 	return [(NSTextView*)id
 		importsGraphics];
 }
 
-void NSTextView_inst_setImportsGraphics(void *id, BOOL value) {
+void NSTextView_inst_SetImportsGraphics(void *id, BOOL value) {
 	[(NSTextView*)id
 		setImportsGraphics: value];
 }
 
-BOOL NSTextView_inst_allowsImageEditing(void *id) {
+BOOL NSTextView_inst_AllowsImageEditing(void *id) {
 	return [(NSTextView*)id
 		allowsImageEditing];
 }
 
-void NSTextView_inst_setAllowsImageEditing(void *id, BOOL value) {
+void NSTextView_inst_SetAllowsImageEditing(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsImageEditing: value];
 }
 
-BOOL NSTextView_inst_isAutomaticQuoteSubstitutionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticQuoteSubstitutionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticQuoteSubstitutionEnabled];
 }
 
-void NSTextView_inst_setAutomaticQuoteSubstitutionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticQuoteSubstitutionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticQuoteSubstitutionEnabled: value];
 }
 
-BOOL NSTextView_inst_isAutomaticLinkDetectionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticLinkDetectionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticLinkDetectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticLinkDetectionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticLinkDetectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticLinkDetectionEnabled: value];
 }
 
-BOOL NSTextView_inst_displaysLinkToolTips(void *id) {
+BOOL NSTextView_inst_DisplaysLinkToolTips(void *id) {
 	return [(NSTextView*)id
 		displaysLinkToolTips];
 }
 
-void NSTextView_inst_setDisplaysLinkToolTips(void *id, BOOL value) {
+void NSTextView_inst_SetDisplaysLinkToolTips(void *id, BOOL value) {
 	[(NSTextView*)id
 		setDisplaysLinkToolTips: value];
 }
 
-BOOL NSTextView_inst_isAutomaticTextCompletionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticTextCompletionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticTextCompletionEnabled];
 }
 
-void NSTextView_inst_setAutomaticTextCompletionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticTextCompletionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticTextCompletionEnabled: value];
 }
 
-BOOL NSTextView_inst_usesAdaptiveColorMappingForDarkAppearance(void *id) {
+BOOL NSTextView_inst_UsesAdaptiveColorMappingForDarkAppearance(void *id) {
 	return [(NSTextView*)id
 		usesAdaptiveColorMappingForDarkAppearance];
 }
 
-void NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance(void *id, BOOL value) {
+void NSTextView_inst_SetUsesAdaptiveColorMappingForDarkAppearance(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesAdaptiveColorMappingForDarkAppearance: value];
 }
 
-BOOL NSTextView_inst_usesRolloverButtonForSelection(void *id) {
+BOOL NSTextView_inst_UsesRolloverButtonForSelection(void *id) {
 	return [(NSTextView*)id
 		usesRolloverButtonForSelection];
 }
 
-void NSTextView_inst_setUsesRolloverButtonForSelection(void *id, BOOL value) {
+void NSTextView_inst_SetUsesRolloverButtonForSelection(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesRolloverButtonForSelection: value];
 }
 
-BOOL NSTextView_inst_usesRuler(void *id) {
+BOOL NSTextView_inst_UsesRuler(void *id) {
 	return [(NSTextView*)id
 		usesRuler];
 }
 
-void NSTextView_inst_setUsesRuler(void *id, BOOL value) {
+void NSTextView_inst_SetUsesRuler(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesRuler: value];
 }
 
-BOOL NSTextView_inst_isRulerVisible(void *id) {
+BOOL NSTextView_inst_IsRulerVisible(void *id) {
 	return [(NSTextView*)id
 		isRulerVisible];
 }
 
-void NSTextView_inst_setRulerVisible(void *id, BOOL value) {
+void NSTextView_inst_SetRulerVisible(void *id, BOOL value) {
 	[(NSTextView*)id
 		setRulerVisible: value];
 }
 
-BOOL NSTextView_inst_usesInspectorBar(void *id) {
+BOOL NSTextView_inst_UsesInspectorBar(void *id) {
 	return [(NSTextView*)id
 		usesInspectorBar];
 }
 
-void NSTextView_inst_setUsesInspectorBar(void *id, BOOL value) {
+void NSTextView_inst_SetUsesInspectorBar(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesInspectorBar: value];
 }
 
-void* NSTextView_inst_selectedRanges(void *id) {
+void* NSTextView_inst_SelectedRanges(void *id) {
 	return [(NSTextView*)id
 		selectedRanges];
 }
 
-void NSTextView_inst_setSelectedRanges(void *id, void* value) {
+void NSTextView_inst_SetSelectedRanges(void *id, void* value) {
 	[(NSTextView*)id
 		setSelectedRanges: value];
 }
 
-void* NSTextView_inst_insertionPointColor(void *id) {
+void* NSTextView_inst_InsertionPointColor(void *id) {
 	return [(NSTextView*)id
 		insertionPointColor];
 }
 
-void NSTextView_inst_setInsertionPointColor(void *id, void* value) {
+void NSTextView_inst_SetInsertionPointColor(void *id, void* value) {
 	[(NSTextView*)id
 		setInsertionPointColor: value];
 }
 
-void* NSTextView_inst_selectedTextAttributes(void *id) {
+void* NSTextView_inst_SelectedTextAttributes(void *id) {
 	return [(NSTextView*)id
 		selectedTextAttributes];
 }
 
-void NSTextView_inst_setSelectedTextAttributes(void *id, void* value) {
+void NSTextView_inst_SetSelectedTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setSelectedTextAttributes: value];
 }
 
-void* NSTextView_inst_markedTextAttributes(void *id) {
+void* NSTextView_inst_MarkedTextAttributes(void *id) {
 	return [(NSTextView*)id
 		markedTextAttributes];
 }
 
-void NSTextView_inst_setMarkedTextAttributes(void *id, void* value) {
+void NSTextView_inst_SetMarkedTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setMarkedTextAttributes: value];
 }
 
-void* NSTextView_inst_linkTextAttributes(void *id) {
+void* NSTextView_inst_LinkTextAttributes(void *id) {
 	return [(NSTextView*)id
 		linkTextAttributes];
 }
 
-void NSTextView_inst_setLinkTextAttributes(void *id, void* value) {
+void NSTextView_inst_SetLinkTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setLinkTextAttributes: value];
 }
 
-void* NSTextView_inst_readablePasteboardTypes(void *id) {
+void* NSTextView_inst_ReadablePasteboardTypes(void *id) {
 	return [(NSTextView*)id
 		readablePasteboardTypes];
 }
 
-void* NSTextView_inst_writablePasteboardTypes(void *id) {
+void* NSTextView_inst_WritablePasteboardTypes(void *id) {
 	return [(NSTextView*)id
 		writablePasteboardTypes];
 }
 
-void* NSTextView_inst_typingAttributes(void *id) {
+void* NSTextView_inst_TypingAttributes(void *id) {
 	return [(NSTextView*)id
 		typingAttributes];
 }
 
-void NSTextView_inst_setTypingAttributes(void *id, void* value) {
+void NSTextView_inst_SetTypingAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setTypingAttributes: value];
 }
 
-BOOL NSTextView_inst_isCoalescingUndo(void *id) {
+BOOL NSTextView_inst_IsCoalescingUndo(void *id) {
 	return [(NSTextView*)id
 		isCoalescingUndo];
 }
 
-void* NSTextView_inst_acceptableDragTypes(void *id) {
+void* NSTextView_inst_AcceptableDragTypes(void *id) {
 	return [(NSTextView*)id
 		acceptableDragTypes];
 }
 
-void* NSTextView_inst_rangesForUserCharacterAttributeChange(void *id) {
+void* NSTextView_inst_RangesForUserCharacterAttributeChange(void *id) {
 	return [(NSTextView*)id
 		rangesForUserCharacterAttributeChange];
 }
 
-void* NSTextView_inst_rangesForUserParagraphAttributeChange(void *id) {
+void* NSTextView_inst_RangesForUserParagraphAttributeChange(void *id) {
 	return [(NSTextView*)id
 		rangesForUserParagraphAttributeChange];
 }
 
-void* NSTextView_inst_rangesForUserTextChange(void *id) {
+void* NSTextView_inst_RangesForUserTextChange(void *id) {
 	return [(NSTextView*)id
 		rangesForUserTextChange];
 }
 
-BOOL NSTextView_inst_smartInsertDeleteEnabled(void *id) {
+BOOL NSTextView_inst_SmartInsertDeleteEnabled(void *id) {
 	return [(NSTextView*)id
 		smartInsertDeleteEnabled];
 }
 
-void NSTextView_inst_setSmartInsertDeleteEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetSmartInsertDeleteEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setSmartInsertDeleteEnabled: value];
 }
 
-BOOL NSTextView_inst_isContinuousSpellCheckingEnabled(void *id) {
+BOOL NSTextView_inst_IsContinuousSpellCheckingEnabled(void *id) {
 	return [(NSTextView*)id
 		isContinuousSpellCheckingEnabled];
 }
 
-void NSTextView_inst_setContinuousSpellCheckingEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetContinuousSpellCheckingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setContinuousSpellCheckingEnabled: value];
 }
 
-long NSTextView_inst_spellCheckerDocumentTag(void *id) {
+long NSTextView_inst_SpellCheckerDocumentTag(void *id) {
 	return [(NSTextView*)id
 		spellCheckerDocumentTag];
 }
 
-BOOL NSTextView_inst_isGrammarCheckingEnabled(void *id) {
+BOOL NSTextView_inst_IsGrammarCheckingEnabled(void *id) {
 	return [(NSTextView*)id
 		isGrammarCheckingEnabled];
 }
 
-void NSTextView_inst_setGrammarCheckingEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetGrammarCheckingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setGrammarCheckingEnabled: value];
 }
 
-BOOL NSTextView_inst_acceptsGlyphInfo(void *id) {
+BOOL NSTextView_inst_AcceptsGlyphInfo(void *id) {
 	return [(NSTextView*)id
 		acceptsGlyphInfo];
 }
 
-void NSTextView_inst_setAcceptsGlyphInfo(void *id, BOOL value) {
+void NSTextView_inst_SetAcceptsGlyphInfo(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAcceptsGlyphInfo: value];
 }
 
-BOOL NSTextView_inst_usesFontPanel(void *id) {
+BOOL NSTextView_inst_UsesFontPanel(void *id) {
 	return [(NSTextView*)id
 		usesFontPanel];
 }
 
-void NSTextView_inst_setUsesFontPanel(void *id, BOOL value) {
+void NSTextView_inst_SetUsesFontPanel(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFontPanel: value];
 }
 
-BOOL NSTextView_inst_usesFindPanel(void *id) {
+BOOL NSTextView_inst_UsesFindPanel(void *id) {
 	return [(NSTextView*)id
 		usesFindPanel];
 }
 
-void NSTextView_inst_setUsesFindPanel(void *id, BOOL value) {
+void NSTextView_inst_SetUsesFindPanel(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFindPanel: value];
 }
 
-BOOL NSTextView_inst_isAutomaticDashSubstitutionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticDashSubstitutionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticDashSubstitutionEnabled];
 }
 
-void NSTextView_inst_setAutomaticDashSubstitutionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticDashSubstitutionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticDashSubstitutionEnabled: value];
 }
 
-BOOL NSTextView_inst_isAutomaticDataDetectionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticDataDetectionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticDataDetectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticDataDetectionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticDataDetectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticDataDetectionEnabled: value];
 }
 
-BOOL NSTextView_inst_isAutomaticSpellingCorrectionEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticSpellingCorrectionEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticSpellingCorrectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticSpellingCorrectionEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticSpellingCorrectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticSpellingCorrectionEnabled: value];
 }
 
-BOOL NSTextView_inst_isAutomaticTextReplacementEnabled(void *id) {
+BOOL NSTextView_inst_IsAutomaticTextReplacementEnabled(void *id) {
 	return [(NSTextView*)id
 		isAutomaticTextReplacementEnabled];
 }
 
-void NSTextView_inst_setAutomaticTextReplacementEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetAutomaticTextReplacementEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticTextReplacementEnabled: value];
 }
 
-BOOL NSTextView_inst_usesFindBar(void *id) {
+BOOL NSTextView_inst_UsesFindBar(void *id) {
 	return [(NSTextView*)id
 		usesFindBar];
 }
 
-void NSTextView_inst_setUsesFindBar(void *id, BOOL value) {
+void NSTextView_inst_SetUsesFindBar(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFindBar: value];
 }
 
-BOOL NSTextView_inst_isIncrementalSearchingEnabled(void *id) {
+BOOL NSTextView_inst_IsIncrementalSearchingEnabled(void *id) {
 	return [(NSTextView*)id
 		isIncrementalSearchingEnabled];
 }
 
-void NSTextView_inst_setIncrementalSearchingEnabled(void *id, BOOL value) {
+void NSTextView_inst_SetIncrementalSearchingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setIncrementalSearchingEnabled: value];
 }
 
-BOOL NSTextView_inst_allowsCharacterPickerTouchBarItem(void *id) {
+BOOL NSTextView_inst_AllowsCharacterPickerTouchBarItem(void *id) {
 	return [(NSTextView*)id
 		allowsCharacterPickerTouchBarItem];
 }
 
-void NSTextView_inst_setAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
+void NSTextView_inst_SetAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsCharacterPickerTouchBarItem: value];
 }
 
-void* NSTextView_inst_font(void *id) {
+void* NSTextView_inst_Font(void *id) {
 	return [(NSTextView*)id
 		font];
 }
 
-void NSTextView_inst_setFont(void *id, void* value) {
+void NSTextView_inst_SetFont(void *id, void* value) {
 	[(NSTextView*)id
 		setFont: value];
 }
 
-BOOL NSView_inst_acceptsFirstMouse(void *id, void* event) {
+BOOL NSView_inst_AcceptsFirstMouse(void *id, void* event) {
 	return [(NSView*)id
 		acceptsFirstMouse: event];
 }
 
-void NSView_inst_addConstraints(void *id, void* constraints) {
+void NSView_inst_AddConstraints(void *id, void* constraints) {
 	[(NSView*)id
 		addConstraints: constraints];
 }
 
-void NSView_inst_addSubview(void *id, void* view) {
+void NSView_inst_AddSubview(void *id, void* view) {
 	[(NSView*)id
 		addSubview: view];
 }
 
-void NSView_inst_addSubview_positioned_relativeTo(void *id, void* view, unsigned long place, void* otherView) {
+void NSView_inst_AddSubviewPositionedRelativeTo(void *id, void* view, unsigned long place, void* otherView) {
 	[(NSView*)id
 		addSubview: view
 		positioned: place
 		relativeTo: otherView];
 }
 
-NSRect NSView_inst_adjustScroll(void *id, NSRect newVisible) {
+NSRect NSView_inst_AdjustScroll(void *id, NSRect newVisible) {
 	return [(NSView*)id
 		adjustScroll: newVisible];
 }
 
-NSRect NSView_inst_alignmentRectForFrame(void *id, NSRect frame) {
+NSRect NSView_inst_AlignmentRectForFrame(void *id, NSRect frame) {
 	return [(NSView*)id
 		alignmentRectForFrame: frame];
 }
 
-void* NSView_inst_ancestorSharedWithView(void *id, void* view) {
+void* NSView_inst_AncestorSharedWithView(void *id, void* view) {
 	return [(NSView*)id
 		ancestorSharedWithView: view];
 }
 
-BOOL NSView_inst_autoscroll(void *id, void* event) {
+BOOL NSView_inst_Autoscroll(void *id, void* event) {
 	return [(NSView*)id
 		autoscroll: event];
 }
 
-void NSView_inst_beginDocument(void *id) {
+void NSView_inst_BeginDocument(void *id) {
 	[(NSView*)id
 		beginDocument];
 }
 
-void NSView_inst_beginPageInRect_atPlacement(void *id, NSRect rect, NSPoint location) {
+void NSView_inst_BeginPageInRectAtPlacement(void *id, NSRect rect, NSPoint location) {
 	[(NSView*)id
 		beginPageInRect: rect
 		atPlacement: location];
 }
 
-NSRect NSView_inst_centerScanRect(void *id, NSRect rect) {
+NSRect NSView_inst_CenterScanRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		centerScanRect: rect];
 }
 
-NSPoint NSView_inst_convertPoint_fromView(void *id, NSPoint point, void* view) {
+NSPoint NSView_inst_ConvertPointFromView(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
 		fromView: view];
 }
 
-NSPoint NSView_inst_convertPoint_toView(void *id, NSPoint point, void* view) {
+NSPoint NSView_inst_ConvertPointToView(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
 		toView: view];
 }
 
-NSPoint NSView_inst_convertPointFromBacking(void *id, NSPoint point) {
+NSPoint NSView_inst_ConvertPointFromBacking(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointFromBacking: point];
 }
 
-NSPoint NSView_inst_convertPointFromLayer(void *id, NSPoint point) {
+NSPoint NSView_inst_ConvertPointFromLayer(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointFromLayer: point];
 }
 
-NSPoint NSView_inst_convertPointToBacking(void *id, NSPoint point) {
+NSPoint NSView_inst_ConvertPointToBacking(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointToBacking: point];
 }
 
-NSPoint NSView_inst_convertPointToLayer(void *id, NSPoint point) {
+NSPoint NSView_inst_ConvertPointToLayer(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointToLayer: point];
 }
 
-NSRect NSView_inst_convertRect_fromView(void *id, NSRect rect, void* view) {
+NSRect NSView_inst_ConvertRectFromView(void *id, NSRect rect, void* view) {
 	return [(NSView*)id
 		convertRect: rect
 		fromView: view];
 }
 
-NSRect NSView_inst_convertRect_toView(void *id, NSRect rect, void* view) {
+NSRect NSView_inst_ConvertRectToView(void *id, NSRect rect, void* view) {
 	return [(NSView*)id
 		convertRect: rect
 		toView: view];
 }
 
-NSRect NSView_inst_convertRectFromBacking(void *id, NSRect rect) {
+NSRect NSView_inst_ConvertRectFromBacking(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSView_inst_convertRectFromLayer(void *id, NSRect rect) {
+NSRect NSView_inst_ConvertRectFromLayer(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectFromLayer: rect];
 }
 
-NSRect NSView_inst_convertRectToBacking(void *id, NSRect rect) {
+NSRect NSView_inst_ConvertRectToBacking(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectToBacking: rect];
 }
 
-NSRect NSView_inst_convertRectToLayer(void *id, NSRect rect) {
+NSRect NSView_inst_ConvertRectToLayer(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectToLayer: rect];
 }
 
-NSSize NSView_inst_convertSize_fromView(void *id, NSSize size, void* view) {
+NSSize NSView_inst_ConvertSizeFromView(void *id, NSSize size, void* view) {
 	return [(NSView*)id
 		convertSize: size
 		fromView: view];
 }
 
-NSSize NSView_inst_convertSize_toView(void *id, NSSize size, void* view) {
+NSSize NSView_inst_ConvertSizeToView(void *id, NSSize size, void* view) {
 	return [(NSView*)id
 		convertSize: size
 		toView: view];
 }
 
-NSSize NSView_inst_convertSizeFromBacking(void *id, NSSize size) {
+NSSize NSView_inst_ConvertSizeFromBacking(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeFromBacking: size];
 }
 
-NSSize NSView_inst_convertSizeFromLayer(void *id, NSSize size) {
+NSSize NSView_inst_ConvertSizeFromLayer(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeFromLayer: size];
 }
 
-NSSize NSView_inst_convertSizeToBacking(void *id, NSSize size) {
+NSSize NSView_inst_ConvertSizeToBacking(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeToBacking: size];
 }
 
-NSSize NSView_inst_convertSizeToLayer(void *id, NSSize size) {
+NSSize NSView_inst_ConvertSizeToLayer(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeToLayer: size];
 }
 
-void* NSView_inst_dataWithEPSInsideRect(void *id, NSRect rect) {
+void* NSView_inst_DataWithEPSInsideRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		dataWithEPSInsideRect: rect];
 }
 
-void* NSView_inst_dataWithPDFInsideRect(void *id, NSRect rect) {
+void* NSView_inst_DataWithPDFInsideRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		dataWithPDFInsideRect: rect];
 }
 
-void NSView_inst_didAddSubview(void *id, void* subview) {
+void NSView_inst_DidAddSubview(void *id, void* subview) {
 	[(NSView*)id
 		didAddSubview: subview];
 }
 
-void NSView_inst_didCloseMenu_withEvent(void *id, void* menu, void* event) {
+void NSView_inst_DidCloseMenuWithEvent(void *id, void* menu, void* event) {
 	[(NSView*)id
 		didCloseMenu: menu
 		withEvent: event];
 }
 
-void NSView_inst_discardCursorRects(void *id) {
+void NSView_inst_DiscardCursorRects(void *id) {
 	[(NSView*)id
 		discardCursorRects];
 }
 
-void NSView_inst_display(void *id) {
+void NSView_inst_Display(void *id) {
 	[(NSView*)id
 		display];
 }
 
-void NSView_inst_displayIfNeeded(void *id) {
+void NSView_inst_DisplayIfNeeded(void *id) {
 	[(NSView*)id
 		displayIfNeeded];
 }
 
-void NSView_inst_displayIfNeededIgnoringOpacity(void *id) {
+void NSView_inst_DisplayIfNeededIgnoringOpacity(void *id) {
 	[(NSView*)id
 		displayIfNeededIgnoringOpacity];
 }
 
-void NSView_inst_displayIfNeededInRect(void *id, NSRect rect) {
+void NSView_inst_DisplayIfNeededInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		displayIfNeededInRect: rect];
 }
 
-void NSView_inst_displayIfNeededInRectIgnoringOpacity(void *id, NSRect rect) {
+void NSView_inst_DisplayIfNeededInRectIgnoringOpacity(void *id, NSRect rect) {
 	[(NSView*)id
 		displayIfNeededInRectIgnoringOpacity: rect];
 }
 
-void NSView_inst_displayRect(void *id, NSRect rect) {
+void NSView_inst_DisplayRect(void *id, NSRect rect) {
 	[(NSView*)id
 		displayRect: rect];
 }
 
-void NSView_inst_displayRectIgnoringOpacity(void *id, NSRect rect) {
+void NSView_inst_DisplayRectIgnoringOpacity(void *id, NSRect rect) {
 	[(NSView*)id
 		displayRectIgnoringOpacity: rect];
 }
 
-void NSView_inst_drawFocusRingMask(void *id) {
+void NSView_inst_DrawFocusRingMask(void *id) {
 	[(NSView*)id
 		drawFocusRingMask];
 }
 
-void NSView_inst_drawPageBorderWithSize(void *id, NSSize borderSize) {
+void NSView_inst_DrawPageBorderWithSize(void *id, NSSize borderSize) {
 	[(NSView*)id
 		drawPageBorderWithSize: borderSize];
 }
 
-void NSView_inst_drawRect(void *id, NSRect dirtyRect) {
+void NSView_inst_DrawRect(void *id, NSRect dirtyRect) {
 	[(NSView*)id
 		drawRect: dirtyRect];
 }
 
-void NSView_inst_endDocument(void *id) {
+void NSView_inst_EndDocument(void *id) {
 	[(NSView*)id
 		endDocument];
 }
 
-void NSView_inst_endPage(void *id) {
+void NSView_inst_EndPage(void *id) {
 	[(NSView*)id
 		endPage];
 }
 
-BOOL NSView_inst_enterFullScreenMode_withOptions(void *id, void* screen, void* options) {
+BOOL NSView_inst_EnterFullScreenModeWithOptions(void *id, void* screen, void* options) {
 	return [(NSView*)id
 		enterFullScreenMode: screen
 		withOptions: options];
 }
 
-void NSView_inst_exerciseAmbiguityInLayout(void *id) {
+void NSView_inst_ExerciseAmbiguityInLayout(void *id) {
 	[(NSView*)id
 		exerciseAmbiguityInLayout];
 }
 
-void NSView_inst_exitFullScreenModeWithOptions(void *id, void* options) {
+void NSView_inst_ExitFullScreenModeWithOptions(void *id, void* options) {
 	[(NSView*)id
 		exitFullScreenModeWithOptions: options];
 }
 
-NSRect NSView_inst_frameForAlignmentRect(void *id, NSRect alignmentRect) {
+NSRect NSView_inst_FrameForAlignmentRect(void *id, NSRect alignmentRect) {
 	return [(NSView*)id
 		frameForAlignmentRect: alignmentRect];
 }
 
-void* NSView_inst_hitTest(void *id, NSPoint point) {
+void* NSView_inst_HitTest(void *id, NSPoint point) {
 	return [(NSView*)id
 		hitTest: point];
 }
 
-void* NSView_inst_initWithFrame(void *id, NSRect frameRect) {
+void* NSView_inst_InitWithFrame(void *id, NSRect frameRect) {
 	return [(NSView*)id
 		initWithFrame: frameRect];
 }
 
-void NSView_inst_invalidateIntrinsicContentSize(void *id) {
+void NSView_inst_InvalidateIntrinsicContentSize(void *id) {
 	[(NSView*)id
 		invalidateIntrinsicContentSize];
 }
 
-BOOL NSView_inst_isDescendantOf(void *id, void* view) {
+BOOL NSView_inst_IsDescendantOf(void *id, void* view) {
 	return [(NSView*)id
 		isDescendantOf: view];
 }
 
-void NSView_inst_layout(void *id) {
+void NSView_inst_Layout(void *id) {
 	[(NSView*)id
 		layout];
 }
 
-void NSView_inst_layoutSubtreeIfNeeded(void *id) {
+void NSView_inst_LayoutSubtreeIfNeeded(void *id) {
 	[(NSView*)id
 		layoutSubtreeIfNeeded];
 }
 
-NSPoint NSView_inst_locationOfPrintRect(void *id, NSRect rect) {
+NSPoint NSView_inst_LocationOfPrintRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		locationOfPrintRect: rect];
 }
 
-void* NSView_inst_makeBackingLayer(void *id) {
+void* NSView_inst_MakeBackingLayer(void *id) {
 	return [(NSView*)id
 		makeBackingLayer];
 }
 
-void* NSView_inst_menuForEvent(void *id, void* event) {
+void* NSView_inst_MenuForEvent(void *id, void* event) {
 	return [(NSView*)id
 		menuForEvent: event];
 }
 
-BOOL NSView_inst_mouse_inRect(void *id, NSPoint point, NSRect rect) {
+BOOL NSView_inst_MouseInRect(void *id, NSPoint point, NSRect rect) {
 	return [(NSView*)id
 		mouse: point
 		inRect: rect];
 }
 
-BOOL NSView_inst_needsToDrawRect(void *id, NSRect rect) {
+BOOL NSView_inst_NeedsToDrawRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		needsToDrawRect: rect];
 }
 
-void NSView_inst_noteFocusRingMaskChanged(void *id) {
+void NSView_inst_NoteFocusRingMaskChanged(void *id) {
 	[(NSView*)id
 		noteFocusRingMaskChanged];
 }
 
-BOOL NSView_inst_performKeyEquivalent(void *id, void* event) {
+BOOL NSView_inst_PerformKeyEquivalent(void *id, void* event) {
 	return [(NSView*)id
 		performKeyEquivalent: event];
 }
 
-void NSView_inst_prepareContentInRect(void *id, NSRect rect) {
+void NSView_inst_PrepareContentInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		prepareContentInRect: rect];
 }
 
-void NSView_inst_prepareForReuse(void *id) {
+void NSView_inst_PrepareForReuse(void *id) {
 	[(NSView*)id
 		prepareForReuse];
 }
 
-void NSView_inst_print(void *id, void* sender) {
+void NSView_inst_Print(void *id, void* sender) {
 	[(NSView*)id
 		print: sender];
 }
 
-NSRect NSView_inst_rectForPage(void *id, long page) {
+NSRect NSView_inst_RectForPage(void *id, long page) {
 	return [(NSView*)id
 		rectForPage: page];
 }
 
-NSRect NSView_inst_rectForSmartMagnificationAtPoint_inRect(void *id, NSPoint location, NSRect visibleRect) {
+NSRect NSView_inst_RectForSmartMagnificationAtPointInRect(void *id, NSPoint location, NSRect visibleRect) {
 	return [(NSView*)id
 		rectForSmartMagnificationAtPoint: location
 		inRect: visibleRect];
 }
 
-void NSView_inst_registerForDraggedTypes(void *id, void* newTypes) {
+void NSView_inst_RegisterForDraggedTypes(void *id, void* newTypes) {
 	[(NSView*)id
 		registerForDraggedTypes: newTypes];
 }
 
-void NSView_inst_removeAllToolTips(void *id) {
+void NSView_inst_RemoveAllToolTips(void *id) {
 	[(NSView*)id
 		removeAllToolTips];
 }
 
-void NSView_inst_removeConstraints(void *id, void* constraints) {
+void NSView_inst_RemoveConstraints(void *id, void* constraints) {
 	[(NSView*)id
 		removeConstraints: constraints];
 }
 
-void NSView_inst_removeFromSuperview(void *id) {
+void NSView_inst_RemoveFromSuperview(void *id) {
 	[(NSView*)id
 		removeFromSuperview];
 }
 
-void NSView_inst_removeFromSuperviewWithoutNeedingDisplay(void *id) {
+void NSView_inst_RemoveFromSuperviewWithoutNeedingDisplay(void *id) {
 	[(NSView*)id
 		removeFromSuperviewWithoutNeedingDisplay];
 }
 
-void NSView_inst_replaceSubview_with(void *id, void* oldView, void* newView) {
+void NSView_inst_ReplaceSubviewWith(void *id, void* oldView, void* newView) {
 	[(NSView*)id
 		replaceSubview: oldView
 		with: newView];
 }
 
-void NSView_inst_resetCursorRects(void *id) {
+void NSView_inst_ResetCursorRects(void *id) {
 	[(NSView*)id
 		resetCursorRects];
 }
 
-void NSView_inst_resizeSubviewsWithOldSize(void *id, NSSize oldSize) {
+void NSView_inst_ResizeSubviewsWithOldSize(void *id, NSSize oldSize) {
 	[(NSView*)id
 		resizeSubviewsWithOldSize: oldSize];
 }
 
-void NSView_inst_resizeWithOldSuperviewSize(void *id, NSSize oldSize) {
+void NSView_inst_ResizeWithOldSuperviewSize(void *id, NSSize oldSize) {
 	[(NSView*)id
 		resizeWithOldSuperviewSize: oldSize];
 }
 
-void NSView_inst_rotateByAngle(void *id, double angle) {
+void NSView_inst_RotateByAngle(void *id, double angle) {
 	[(NSView*)id
 		rotateByAngle: angle];
 }
 
-void NSView_inst_scaleUnitSquareToSize(void *id, NSSize newUnitSize) {
+void NSView_inst_ScaleUnitSquareToSize(void *id, NSSize newUnitSize) {
 	[(NSView*)id
 		scaleUnitSquareToSize: newUnitSize];
 }
 
-void NSView_inst_scrollPoint(void *id, NSPoint point) {
+void NSView_inst_ScrollPoint(void *id, NSPoint point) {
 	[(NSView*)id
 		scrollPoint: point];
 }
 
-BOOL NSView_inst_scrollRectToVisible(void *id, NSRect rect) {
+BOOL NSView_inst_ScrollRectToVisible(void *id, NSRect rect) {
 	return [(NSView*)id
 		scrollRectToVisible: rect];
 }
 
-void NSView_inst_setBoundsOrigin(void *id, NSPoint newOrigin) {
+void NSView_inst_SetBoundsOrigin(void *id, NSPoint newOrigin) {
 	[(NSView*)id
 		setBoundsOrigin: newOrigin];
 }
 
-void NSView_inst_setBoundsSize(void *id, NSSize newSize) {
+void NSView_inst_SetBoundsSize(void *id, NSSize newSize) {
 	[(NSView*)id
 		setBoundsSize: newSize];
 }
 
-void NSView_inst_setFrameOrigin(void *id, NSPoint newOrigin) {
+void NSView_inst_SetFrameOrigin(void *id, NSPoint newOrigin) {
 	[(NSView*)id
 		setFrameOrigin: newOrigin];
 }
 
-void NSView_inst_setFrameSize(void *id, NSSize newSize) {
+void NSView_inst_SetFrameSize(void *id, NSSize newSize) {
 	[(NSView*)id
 		setFrameSize: newSize];
 }
 
-void NSView_inst_setKeyboardFocusRingNeedsDisplayInRect(void *id, NSRect rect) {
+void NSView_inst_SetKeyboardFocusRingNeedsDisplayInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		setKeyboardFocusRingNeedsDisplayInRect: rect];
 }
 
-void NSView_inst_setNeedsDisplayInRect(void *id, NSRect invalidRect) {
+void NSView_inst_SetNeedsDisplayInRect(void *id, NSRect invalidRect) {
 	[(NSView*)id
 		setNeedsDisplayInRect: invalidRect];
 }
 
-BOOL NSView_inst_shouldDelayWindowOrderingForEvent(void *id, void* event) {
+BOOL NSView_inst_ShouldDelayWindowOrderingForEvent(void *id, void* event) {
 	return [(NSView*)id
 		shouldDelayWindowOrderingForEvent: event];
 }
 
-void NSView_inst_showDefinitionForAttributedString_atPoint(void *id, void* attrString, NSPoint textBaselineOrigin) {
+void NSView_inst_ShowDefinitionForAttributedStringAtPoint(void *id, void* attrString, NSPoint textBaselineOrigin) {
 	[(NSView*)id
 		showDefinitionForAttributedString: attrString
 		atPoint: textBaselineOrigin];
 }
 
-void NSView_inst_translateOriginToPoint(void *id, NSPoint translation) {
+void NSView_inst_TranslateOriginToPoint(void *id, NSPoint translation) {
 	[(NSView*)id
 		translateOriginToPoint: translation];
 }
 
-void NSView_inst_translateRectsNeedingDisplayInRect_by(void *id, NSRect clipRect, NSSize delta) {
+void NSView_inst_TranslateRectsNeedingDisplayInRectBy(void *id, NSRect clipRect, NSSize delta) {
 	[(NSView*)id
 		translateRectsNeedingDisplayInRect: clipRect
 		by: delta];
 }
 
-void NSView_inst_unregisterDraggedTypes(void *id) {
+void NSView_inst_UnregisterDraggedTypes(void *id) {
 	[(NSView*)id
 		unregisterDraggedTypes];
 }
 
-void NSView_inst_updateConstraints(void *id) {
+void NSView_inst_UpdateConstraints(void *id) {
 	[(NSView*)id
 		updateConstraints];
 }
 
-void NSView_inst_updateConstraintsForSubtreeIfNeeded(void *id) {
+void NSView_inst_UpdateConstraintsForSubtreeIfNeeded(void *id) {
 	[(NSView*)id
 		updateConstraintsForSubtreeIfNeeded];
 }
 
-void NSView_inst_updateLayer(void *id) {
+void NSView_inst_UpdateLayer(void *id) {
 	[(NSView*)id
 		updateLayer];
 }
 
-void NSView_inst_updateTrackingAreas(void *id) {
+void NSView_inst_UpdateTrackingAreas(void *id) {
 	[(NSView*)id
 		updateTrackingAreas];
 }
 
-void NSView_inst_viewDidChangeBackingProperties(void *id) {
+void NSView_inst_ViewDidChangeBackingProperties(void *id) {
 	[(NSView*)id
 		viewDidChangeBackingProperties];
 }
 
-void NSView_inst_viewDidChangeEffectiveAppearance(void *id) {
+void NSView_inst_ViewDidChangeEffectiveAppearance(void *id) {
 	[(NSView*)id
 		viewDidChangeEffectiveAppearance];
 }
 
-void NSView_inst_viewDidEndLiveResize(void *id) {
+void NSView_inst_ViewDidEndLiveResize(void *id) {
 	[(NSView*)id
 		viewDidEndLiveResize];
 }
 
-void NSView_inst_viewDidHide(void *id) {
+void NSView_inst_ViewDidHide(void *id) {
 	[(NSView*)id
 		viewDidHide];
 }
 
-void NSView_inst_viewDidMoveToSuperview(void *id) {
+void NSView_inst_ViewDidMoveToSuperview(void *id) {
 	[(NSView*)id
 		viewDidMoveToSuperview];
 }
 
-void NSView_inst_viewDidMoveToWindow(void *id) {
+void NSView_inst_ViewDidMoveToWindow(void *id) {
 	[(NSView*)id
 		viewDidMoveToWindow];
 }
 
-void NSView_inst_viewDidUnhide(void *id) {
+void NSView_inst_ViewDidUnhide(void *id) {
 	[(NSView*)id
 		viewDidUnhide];
 }
 
-void NSView_inst_viewWillDraw(void *id) {
+void NSView_inst_ViewWillDraw(void *id) {
 	[(NSView*)id
 		viewWillDraw];
 }
 
-void NSView_inst_viewWillMoveToSuperview(void *id, void* newSuperview) {
+void NSView_inst_ViewWillMoveToSuperview(void *id, void* newSuperview) {
 	[(NSView*)id
 		viewWillMoveToSuperview: newSuperview];
 }
 
-void NSView_inst_viewWillMoveToWindow(void *id, void* newWindow) {
+void NSView_inst_ViewWillMoveToWindow(void *id, void* newWindow) {
 	[(NSView*)id
 		viewWillMoveToWindow: newWindow];
 }
 
-void NSView_inst_viewWillStartLiveResize(void *id) {
+void NSView_inst_ViewWillStartLiveResize(void *id) {
 	[(NSView*)id
 		viewWillStartLiveResize];
 }
 
-void* NSView_inst_viewWithTag(void *id, long tag) {
+void* NSView_inst_ViewWithTag(void *id, long tag) {
 	return [(NSView*)id
 		viewWithTag: tag];
 }
 
-void NSView_inst_willOpenMenu_withEvent(void *id, void* menu, void* event) {
+void NSView_inst_WillOpenMenuWithEvent(void *id, void* menu, void* event) {
 	[(NSView*)id
 		willOpenMenu: menu
 		withEvent: event];
 }
 
-void NSView_inst_willRemoveSubview(void *id, void* subview) {
+void NSView_inst_WillRemoveSubview(void *id, void* subview) {
 	[(NSView*)id
 		willRemoveSubview: subview];
 }
 
-void NSView_inst_writeEPSInsideRect_toPasteboard(void *id, NSRect rect, void* pasteboard) {
+void NSView_inst_WriteEPSInsideRectToPasteboard(void *id, NSRect rect, void* pasteboard) {
 	[(NSView*)id
 		writeEPSInsideRect: rect
 		toPasteboard: pasteboard];
 }
 
-void NSView_inst_writePDFInsideRect_toPasteboard(void *id, NSRect rect, void* pasteboard) {
+void NSView_inst_WritePDFInsideRectToPasteboard(void *id, NSRect rect, void* pasteboard) {
 	[(NSView*)id
 		writePDFInsideRect: rect
 		toPasteboard: pasteboard];
 }
 
-void* NSView_inst_init(void *id) {
+void* NSView_inst_Init(void *id) {
 	return [(NSView*)id
 		init];
 }
 
-void* NSView_inst_superview(void *id) {
+void* NSView_inst_Superview(void *id) {
 	return [(NSView*)id
 		superview];
 }
 
-void* NSView_inst_subviews(void *id) {
+void* NSView_inst_Subviews(void *id) {
 	return [(NSView*)id
 		subviews];
 }
 
-void NSView_inst_setSubviews(void *id, void* value) {
+void NSView_inst_SetSubviews(void *id, void* value) {
 	[(NSView*)id
 		setSubviews: value];
 }
 
-void* NSView_inst_window(void *id) {
+void* NSView_inst_Window(void *id) {
 	return [(NSView*)id
 		window];
 }
 
-void* NSView_inst_opaqueAncestor(void *id) {
+void* NSView_inst_OpaqueAncestor(void *id) {
 	return [(NSView*)id
 		opaqueAncestor];
 }
 
-void* NSView_inst_enclosingMenuItem(void *id) {
+void* NSView_inst_EnclosingMenuItem(void *id) {
 	return [(NSView*)id
 		enclosingMenuItem];
 }
 
-NSRect NSView_inst_frame(void *id) {
+NSRect NSView_inst_Frame(void *id) {
 	return [(NSView*)id
 		frame];
 }
 
-void NSView_inst_setFrame(void *id, NSRect value) {
+void NSView_inst_SetFrame(void *id, NSRect value) {
 	[(NSView*)id
 		setFrame: value];
 }
 
-double NSView_inst_frameRotation(void *id) {
+double NSView_inst_FrameRotation(void *id) {
 	return [(NSView*)id
 		frameRotation];
 }
 
-void NSView_inst_setFrameRotation(void *id, double value) {
+void NSView_inst_SetFrameRotation(void *id, double value) {
 	[(NSView*)id
 		setFrameRotation: value];
 }
 
-NSRect NSView_inst_bounds(void *id) {
+NSRect NSView_inst_Bounds(void *id) {
 	return [(NSView*)id
 		bounds];
 }
 
-void NSView_inst_setBounds(void *id, NSRect value) {
+void NSView_inst_SetBounds(void *id, NSRect value) {
 	[(NSView*)id
 		setBounds: value];
 }
 
-double NSView_inst_boundsRotation(void *id) {
+double NSView_inst_BoundsRotation(void *id) {
 	return [(NSView*)id
 		boundsRotation];
 }
 
-void NSView_inst_setBoundsRotation(void *id, double value) {
+void NSView_inst_SetBoundsRotation(void *id, double value) {
 	[(NSView*)id
 		setBoundsRotation: value];
 }
 
-BOOL NSView_inst_wantsLayer(void *id) {
+BOOL NSView_inst_WantsLayer(void *id) {
 	return [(NSView*)id
 		wantsLayer];
 }
 
-void NSView_inst_setWantsLayer(void *id, BOOL value) {
+void NSView_inst_SetWantsLayer(void *id, BOOL value) {
 	[(NSView*)id
 		setWantsLayer: value];
 }
 
-BOOL NSView_inst_wantsUpdateLayer(void *id) {
+BOOL NSView_inst_WantsUpdateLayer(void *id) {
 	return [(NSView*)id
 		wantsUpdateLayer];
 }
 
-void* NSView_inst_layer(void *id) {
+void* NSView_inst_Layer(void *id) {
 	return [(NSView*)id
 		layer];
 }
 
-void NSView_inst_setLayer(void *id, void* value) {
+void NSView_inst_SetLayer(void *id, void* value) {
 	[(NSView*)id
 		setLayer: value];
 }
 
-BOOL NSView_inst_canDrawSubviewsIntoLayer(void *id) {
+BOOL NSView_inst_CanDrawSubviewsIntoLayer(void *id) {
 	return [(NSView*)id
 		canDrawSubviewsIntoLayer];
 }
 
-void NSView_inst_setCanDrawSubviewsIntoLayer(void *id, BOOL value) {
+void NSView_inst_SetCanDrawSubviewsIntoLayer(void *id, BOOL value) {
 	[(NSView*)id
 		setCanDrawSubviewsIntoLayer: value];
 }
 
-BOOL NSView_inst_layerUsesCoreImageFilters(void *id) {
+BOOL NSView_inst_LayerUsesCoreImageFilters(void *id) {
 	return [(NSView*)id
 		layerUsesCoreImageFilters];
 }
 
-void NSView_inst_setLayerUsesCoreImageFilters(void *id, BOOL value) {
+void NSView_inst_SetLayerUsesCoreImageFilters(void *id, BOOL value) {
 	[(NSView*)id
 		setLayerUsesCoreImageFilters: value];
 }
 
-double NSView_inst_alphaValue(void *id) {
+double NSView_inst_AlphaValue(void *id) {
 	return [(NSView*)id
 		alphaValue];
 }
 
-void NSView_inst_setAlphaValue(void *id, double value) {
+void NSView_inst_SetAlphaValue(void *id, double value) {
 	[(NSView*)id
 		setAlphaValue: value];
 }
 
-double NSView_inst_frameCenterRotation(void *id) {
+double NSView_inst_FrameCenterRotation(void *id) {
 	return [(NSView*)id
 		frameCenterRotation];
 }
 
-void NSView_inst_setFrameCenterRotation(void *id, double value) {
+void NSView_inst_SetFrameCenterRotation(void *id, double value) {
 	[(NSView*)id
 		setFrameCenterRotation: value];
 }
 
-void* NSView_inst_backgroundFilters(void *id) {
+void* NSView_inst_BackgroundFilters(void *id) {
 	return [(NSView*)id
 		backgroundFilters];
 }
 
-void NSView_inst_setBackgroundFilters(void *id, void* value) {
+void NSView_inst_SetBackgroundFilters(void *id, void* value) {
 	[(NSView*)id
 		setBackgroundFilters: value];
 }
 
-void* NSView_inst_contentFilters(void *id) {
+void* NSView_inst_ContentFilters(void *id) {
 	return [(NSView*)id
 		contentFilters];
 }
 
-void NSView_inst_setContentFilters(void *id, void* value) {
+void NSView_inst_SetContentFilters(void *id, void* value) {
 	[(NSView*)id
 		setContentFilters: value];
 }
 
-BOOL NSView_inst_canDrawConcurrently(void *id) {
+BOOL NSView_inst_CanDrawConcurrently(void *id) {
 	return [(NSView*)id
 		canDrawConcurrently];
 }
 
-void NSView_inst_setCanDrawConcurrently(void *id, BOOL value) {
+void NSView_inst_SetCanDrawConcurrently(void *id, BOOL value) {
 	[(NSView*)id
 		setCanDrawConcurrently: value];
 }
 
-NSRect NSView_inst_visibleRect(void *id) {
+NSRect NSView_inst_VisibleRect(void *id) {
 	return [(NSView*)id
 		visibleRect];
 }
 
-BOOL NSView_inst_wantsDefaultClipping(void *id) {
+BOOL NSView_inst_WantsDefaultClipping(void *id) {
 	return [(NSView*)id
 		wantsDefaultClipping];
 }
 
-void* NSView_inst_printJobTitle(void *id) {
+void* NSView_inst_PrintJobTitle(void *id) {
 	return [(NSView*)id
 		printJobTitle];
 }
 
-void* NSView_inst_pageHeader(void *id) {
+void* NSView_inst_PageHeader(void *id) {
 	return [(NSView*)id
 		pageHeader];
 }
 
-void* NSView_inst_pageFooter(void *id) {
+void* NSView_inst_PageFooter(void *id) {
 	return [(NSView*)id
 		pageFooter];
 }
 
-double NSView_inst_heightAdjustLimit(void *id) {
+double NSView_inst_HeightAdjustLimit(void *id) {
 	return [(NSView*)id
 		heightAdjustLimit];
 }
 
-double NSView_inst_widthAdjustLimit(void *id) {
+double NSView_inst_WidthAdjustLimit(void *id) {
 	return [(NSView*)id
 		widthAdjustLimit];
 }
 
-BOOL NSView_inst_needsDisplay(void *id) {
+BOOL NSView_inst_NeedsDisplay(void *id) {
 	return [(NSView*)id
 		needsDisplay];
 }
 
-void NSView_inst_setNeedsDisplay(void *id, BOOL value) {
+void NSView_inst_SetNeedsDisplay(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsDisplay: value];
 }
 
-BOOL NSView_inst_isOpaque(void *id) {
+BOOL NSView_inst_IsOpaque(void *id) {
 	return [(NSView*)id
 		isOpaque];
 }
 
-BOOL NSView_inst_isFlipped(void *id) {
+BOOL NSView_inst_IsFlipped(void *id) {
 	return [(NSView*)id
 		isFlipped];
 }
 
-BOOL NSView_inst_isRotatedFromBase(void *id) {
+BOOL NSView_inst_IsRotatedFromBase(void *id) {
 	return [(NSView*)id
 		isRotatedFromBase];
 }
 
-BOOL NSView_inst_isRotatedOrScaledFromBase(void *id) {
+BOOL NSView_inst_IsRotatedOrScaledFromBase(void *id) {
 	return [(NSView*)id
 		isRotatedOrScaledFromBase];
 }
 
-BOOL NSView_inst_autoresizesSubviews(void *id) {
+BOOL NSView_inst_AutoresizesSubviews(void *id) {
 	return [(NSView*)id
 		autoresizesSubviews];
 }
 
-void NSView_inst_setAutoresizesSubviews(void *id, BOOL value) {
+void NSView_inst_SetAutoresizesSubviews(void *id, BOOL value) {
 	[(NSView*)id
 		setAutoresizesSubviews: value];
 }
 
-void* NSView_inst_constraints(void *id) {
+void* NSView_inst_Constraints(void *id) {
 	return [(NSView*)id
 		constraints];
 }
 
-void* NSView_inst_layoutGuides(void *id) {
+void* NSView_inst_LayoutGuides(void *id) {
 	return [(NSView*)id
 		layoutGuides];
 }
 
-NSSize NSView_inst_fittingSize(void *id) {
+NSSize NSView_inst_FittingSize(void *id) {
 	return [(NSView*)id
 		fittingSize];
 }
 
-NSSize NSView_inst_intrinsicContentSize(void *id) {
+NSSize NSView_inst_IntrinsicContentSize(void *id) {
 	return [(NSView*)id
 		intrinsicContentSize];
 }
 
-double NSView_inst_baselineOffsetFromBottom(void *id) {
+double NSView_inst_BaselineOffsetFromBottom(void *id) {
 	return [(NSView*)id
 		baselineOffsetFromBottom];
 }
 
-double NSView_inst_firstBaselineOffsetFromTop(void *id) {
+double NSView_inst_FirstBaselineOffsetFromTop(void *id) {
 	return [(NSView*)id
 		firstBaselineOffsetFromTop];
 }
 
-double NSView_inst_lastBaselineOffsetFromBottom(void *id) {
+double NSView_inst_LastBaselineOffsetFromBottom(void *id) {
 	return [(NSView*)id
 		lastBaselineOffsetFromBottom];
 }
 
-BOOL NSView_inst_needsLayout(void *id) {
+BOOL NSView_inst_NeedsLayout(void *id) {
 	return [(NSView*)id
 		needsLayout];
 }
 
-void NSView_inst_setNeedsLayout(void *id, BOOL value) {
+void NSView_inst_SetNeedsLayout(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsLayout: value];
 }
 
-BOOL NSView_inst_needsUpdateConstraints(void *id) {
+BOOL NSView_inst_NeedsUpdateConstraints(void *id) {
 	return [(NSView*)id
 		needsUpdateConstraints];
 }
 
-void NSView_inst_setNeedsUpdateConstraints(void *id, BOOL value) {
+void NSView_inst_SetNeedsUpdateConstraints(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsUpdateConstraints: value];
 }
 
-BOOL NSView_inst_translatesAutoresizingMaskIntoConstraints(void *id) {
+BOOL NSView_inst_TranslatesAutoresizingMaskIntoConstraints(void *id) {
 	return [(NSView*)id
 		translatesAutoresizingMaskIntoConstraints];
 }
 
-void NSView_inst_setTranslatesAutoresizingMaskIntoConstraints(void *id, BOOL value) {
+void NSView_inst_SetTranslatesAutoresizingMaskIntoConstraints(void *id, BOOL value) {
 	[(NSView*)id
 		setTranslatesAutoresizingMaskIntoConstraints: value];
 }
 
-BOOL NSView_inst_hasAmbiguousLayout(void *id) {
+BOOL NSView_inst_HasAmbiguousLayout(void *id) {
 	return [(NSView*)id
 		hasAmbiguousLayout];
 }
 
-NSRect NSView_inst_focusRingMaskBounds(void *id) {
+NSRect NSView_inst_FocusRingMaskBounds(void *id) {
 	return [(NSView*)id
 		focusRingMaskBounds];
 }
 
-BOOL NSView_inst_allowsVibrancy(void *id) {
+BOOL NSView_inst_AllowsVibrancy(void *id) {
 	return [(NSView*)id
 		allowsVibrancy];
 }
 
-BOOL NSView_inst_isInFullScreenMode(void *id) {
+BOOL NSView_inst_IsInFullScreenMode(void *id) {
 	return [(NSView*)id
 		isInFullScreenMode];
 }
 
-BOOL NSView_inst_isHidden(void *id) {
+BOOL NSView_inst_IsHidden(void *id) {
 	return [(NSView*)id
 		isHidden];
 }
 
-void NSView_inst_setHidden(void *id, BOOL value) {
+void NSView_inst_SetHidden(void *id, BOOL value) {
 	[(NSView*)id
 		setHidden: value];
 }
 
-BOOL NSView_inst_isHiddenOrHasHiddenAncestor(void *id) {
+BOOL NSView_inst_IsHiddenOrHasHiddenAncestor(void *id) {
 	return [(NSView*)id
 		isHiddenOrHasHiddenAncestor];
 }
 
-BOOL NSView_inst_inLiveResize(void *id) {
+BOOL NSView_inst_InLiveResize(void *id) {
 	return [(NSView*)id
 		inLiveResize];
 }
 
-BOOL NSView_inst_preservesContentDuringLiveResize(void *id) {
+BOOL NSView_inst_PreservesContentDuringLiveResize(void *id) {
 	return [(NSView*)id
 		preservesContentDuringLiveResize];
 }
 
-NSRect NSView_inst_rectPreservedDuringLiveResize(void *id) {
+NSRect NSView_inst_RectPreservedDuringLiveResize(void *id) {
 	return [(NSView*)id
 		rectPreservedDuringLiveResize];
 }
 
-void* NSView_inst_gestureRecognizers(void *id) {
+void* NSView_inst_GestureRecognizers(void *id) {
 	return [(NSView*)id
 		gestureRecognizers];
 }
 
-void NSView_inst_setGestureRecognizers(void *id, void* value) {
+void NSView_inst_SetGestureRecognizers(void *id, void* value) {
 	[(NSView*)id
 		setGestureRecognizers: value];
 }
 
-BOOL NSView_inst_mouseDownCanMoveWindow(void *id) {
+BOOL NSView_inst_MouseDownCanMoveWindow(void *id) {
 	return [(NSView*)id
 		mouseDownCanMoveWindow];
 }
 
-BOOL NSView_inst_wantsRestingTouches(void *id) {
+BOOL NSView_inst_WantsRestingTouches(void *id) {
 	return [(NSView*)id
 		wantsRestingTouches];
 }
 
-void NSView_inst_setWantsRestingTouches(void *id, BOOL value) {
+void NSView_inst_SetWantsRestingTouches(void *id, BOOL value) {
 	[(NSView*)id
 		setWantsRestingTouches: value];
 }
 
-BOOL NSView_inst_canBecomeKeyView(void *id) {
+BOOL NSView_inst_CanBecomeKeyView(void *id) {
 	return [(NSView*)id
 		canBecomeKeyView];
 }
 
-BOOL NSView_inst_needsPanelToBecomeKey(void *id) {
+BOOL NSView_inst_NeedsPanelToBecomeKey(void *id) {
 	return [(NSView*)id
 		needsPanelToBecomeKey];
 }
 
-void* NSView_inst_nextKeyView(void *id) {
+void* NSView_inst_NextKeyView(void *id) {
 	return [(NSView*)id
 		nextKeyView];
 }
 
-void NSView_inst_setNextKeyView(void *id, void* value) {
+void NSView_inst_SetNextKeyView(void *id, void* value) {
 	[(NSView*)id
 		setNextKeyView: value];
 }
 
-void* NSView_inst_nextValidKeyView(void *id) {
+void* NSView_inst_NextValidKeyView(void *id) {
 	return [(NSView*)id
 		nextValidKeyView];
 }
 
-void* NSView_inst_previousKeyView(void *id) {
+void* NSView_inst_PreviousKeyView(void *id) {
 	return [(NSView*)id
 		previousKeyView];
 }
 
-void* NSView_inst_previousValidKeyView(void *id) {
+void* NSView_inst_PreviousValidKeyView(void *id) {
 	return [(NSView*)id
 		previousValidKeyView];
 }
 
-NSRect NSView_inst_preparedContentRect(void *id) {
+NSRect NSView_inst_PreparedContentRect(void *id) {
 	return [(NSView*)id
 		preparedContentRect];
 }
 
-void NSView_inst_setPreparedContentRect(void *id, NSRect value) {
+void NSView_inst_SetPreparedContentRect(void *id, NSRect value) {
 	[(NSView*)id
 		setPreparedContentRect: value];
 }
 
-void* NSView_inst_registeredDraggedTypes(void *id) {
+void* NSView_inst_RegisteredDraggedTypes(void *id) {
 	return [(NSView*)id
 		registeredDraggedTypes];
 }
 
-BOOL NSView_inst_postsFrameChangedNotifications(void *id) {
+BOOL NSView_inst_PostsFrameChangedNotifications(void *id) {
 	return [(NSView*)id
 		postsFrameChangedNotifications];
 }
 
-void NSView_inst_setPostsFrameChangedNotifications(void *id, BOOL value) {
+void NSView_inst_SetPostsFrameChangedNotifications(void *id, BOOL value) {
 	[(NSView*)id
 		setPostsFrameChangedNotifications: value];
 }
 
-BOOL NSView_inst_postsBoundsChangedNotifications(void *id) {
+BOOL NSView_inst_PostsBoundsChangedNotifications(void *id) {
 	return [(NSView*)id
 		postsBoundsChangedNotifications];
 }
 
-void NSView_inst_setPostsBoundsChangedNotifications(void *id, BOOL value) {
+void NSView_inst_SetPostsBoundsChangedNotifications(void *id, BOOL value) {
 	[(NSView*)id
 		setPostsBoundsChangedNotifications: value];
 }
 
-long NSView_inst_tag(void *id) {
+long NSView_inst_Tag(void *id) {
 	return [(NSView*)id
 		tag];
 }
 
-void* NSView_inst_toolTip(void *id) {
+void* NSView_inst_ToolTip(void *id) {
 	return [(NSView*)id
 		toolTip];
 }
 
-void NSView_inst_setToolTip(void *id, void* value) {
+void NSView_inst_SetToolTip(void *id, void* value) {
 	[(NSView*)id
 		setToolTip: value];
 }
 
-void* NSView_inst_trackingAreas(void *id) {
+void* NSView_inst_TrackingAreas(void *id) {
 	return [(NSView*)id
 		trackingAreas];
 }
 
-BOOL NSView_inst_isDrawingFindIndicator(void *id) {
+BOOL NSView_inst_IsDrawingFindIndicator(void *id) {
 	return [(NSView*)id
 		isDrawingFindIndicator];
 }
 
-BOOL NSView_inst_isHorizontalContentSizeConstraintActive(void *id) {
+BOOL NSView_inst_IsHorizontalContentSizeConstraintActive(void *id) {
 	return [(NSView*)id
 		isHorizontalContentSizeConstraintActive];
 }
 
-void NSView_inst_setHorizontalContentSizeConstraintActive(void *id, BOOL value) {
+void NSView_inst_SetHorizontalContentSizeConstraintActive(void *id, BOOL value) {
 	[(NSView*)id
 		setHorizontalContentSizeConstraintActive: value];
 }
 
-BOOL NSView_inst_isVerticalContentSizeConstraintActive(void *id) {
+BOOL NSView_inst_IsVerticalContentSizeConstraintActive(void *id) {
 	return [(NSView*)id
 		isVerticalContentSizeConstraintActive];
 }
 
-void NSView_inst_setVerticalContentSizeConstraintActive(void *id, BOOL value) {
+void NSView_inst_SetVerticalContentSizeConstraintActive(void *id, BOOL value) {
 	[(NSView*)id
 		setVerticalContentSizeConstraintActive: value];
 }
 
-void* NSView_inst_backgroundColor(void *id) {
+void* NSView_inst_BackgroundColor(void *id) {
 	return [(NSView*)id
 		backgroundColor];
 }
 
-void NSView_inst_setBackgroundColor(void *id, void* value) {
+void NSView_inst_SetBackgroundColor(void *id, void* value) {
 	[(NSView*)id
 		setBackgroundColor: value];
 }
@@ -7527,21 +7527,21 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.cocoa_objc_bool_false
 }
 
-// NSBundle_alloc
+// NSBundle_Alloc
 //
 // See  for details.
-func NSBundle_alloc() NSBundle {
-	ret := C.NSBundle_type_alloc()
+func NSBundle_Alloc() NSBundle {
+	ret := C.NSBundle_type_Alloc()
 
 	return NSBundle_fromPointer(ret)
 
 }
 
-// NSBundle_bundleWithURL returns an nsbundle object that corresponds to the specified file url.
+// NSBundle_BundleWithURL returns an nsbundle object that corresponds to the specified file url.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1494992-bundlewithurl?language=objc for details.
-func NSBundle_bundleWithURL(url core.NSURLRef) NSBundle {
-	ret := C.NSBundle_type_bundleWithURL(
+func NSBundle_BundleWithURL(url core.NSURLRef) NSBundle {
+	ret := C.NSBundle_type_BundleWithURL(
 		objc.RefPointer(url),
 	)
 
@@ -7549,11 +7549,11 @@ func NSBundle_bundleWithURL(url core.NSURLRef) NSBundle {
 
 }
 
-// NSBundle_bundleWithPath returns an nsbundle object that corresponds to the specified directory.
+// NSBundle_BundleWithPath returns an nsbundle object that corresponds to the specified directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1495012-bundlewithpath?language=objc for details.
-func NSBundle_bundleWithPath(path core.NSStringRef) NSBundle {
-	ret := C.NSBundle_type_bundleWithPath(
+func NSBundle_BundleWithPath(path core.NSStringRef) NSBundle {
+	ret := C.NSBundle_type_BundleWithPath(
 		objc.RefPointer(path),
 	)
 
@@ -7561,11 +7561,11 @@ func NSBundle_bundleWithPath(path core.NSStringRef) NSBundle {
 
 }
 
-// NSBundle_bundleWithIdentifier returns the nsbundle instance that has the specified bundle identifier.
+// NSBundle_BundleWithIdentifier returns the nsbundle instance that has the specified bundle identifier.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc for details.
-func NSBundle_bundleWithIdentifier(identifier core.NSStringRef) NSBundle {
-	ret := C.NSBundle_type_bundleWithIdentifier(
+func NSBundle_BundleWithIdentifier(identifier core.NSStringRef) NSBundle {
+	ret := C.NSBundle_type_BundleWithIdentifier(
 		objc.RefPointer(identifier),
 	)
 
@@ -7573,11 +7573,11 @@ func NSBundle_bundleWithIdentifier(identifier core.NSStringRef) NSBundle {
 
 }
 
-// NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL creates and returns a file url for the resource with the specified name and extension in the specified bundle.
+// NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL creates and returns a file url for the resource with the specified name and extension in the specified bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc for details.
-func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL(name core.NSStringRef, ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSURL {
-	ret := C.NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL(
+func NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name core.NSStringRef, ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSURL {
+	ret := C.NSBundle_type_URLForResourceWithExtensionSubdirectoryInBundleWithURL(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -7588,11 +7588,11 @@ func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL(name cor
 
 }
 
-// NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.
+// NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409807-urlsforresourceswithextension?language=objc for details.
-func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSArray {
-	ret := C.NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(
+func NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSArray {
+	ret := C.NSBundle_type_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
 		objc.RefPointer(bundleURL),
@@ -7602,11 +7602,11 @@ func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(ext cor
 
 }
 
-// NSBundle_pathForResource_ofType_inDirectory returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.
+// NSBundle_PathForResourceOfTypeInDirectory returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409523-pathforresource?language=objc for details.
-func NSBundle_pathForResource_ofType_inDirectory(name core.NSStringRef, ext core.NSStringRef, bundlePath core.NSStringRef) core.NSString {
-	ret := C.NSBundle_type_pathForResource_ofType_inDirectory(
+func NSBundle_PathForResourceOfTypeInDirectory(name core.NSStringRef, ext core.NSStringRef, bundlePath core.NSStringRef) core.NSString {
+	ret := C.NSBundle_type_PathForResourceOfTypeInDirectory(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
@@ -7616,11 +7616,11 @@ func NSBundle_pathForResource_ofType_inDirectory(name core.NSStringRef, ext core
 
 }
 
-// NSBundle_pathsForResourcesOfType_inDirectory returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.
+// NSBundle_PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415876-pathsforresourcesoftype?language=objc for details.
-func NSBundle_pathsForResourcesOfType_inDirectory(ext core.NSStringRef, bundlePath core.NSStringRef) core.NSArray {
-	ret := C.NSBundle_type_pathsForResourcesOfType_inDirectory(
+func NSBundle_PathsForResourcesOfTypeInDirectory(ext core.NSStringRef, bundlePath core.NSStringRef) core.NSArray {
+	ret := C.NSBundle_type_PathsForResourcesOfTypeInDirectory(
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
 	)
@@ -7629,11 +7629,11 @@ func NSBundle_pathsForResourcesOfType_inDirectory(ext core.NSStringRef, bundlePa
 
 }
 
-// NSBundle_preferredLocalizationsFromArray returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user.
+// NSBundle_PreferredLocalizationsFromArray returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417249-preferredlocalizationsfromarray?language=objc for details.
-func NSBundle_preferredLocalizationsFromArray(localizationsArray core.NSArrayRef) core.NSArray {
-	ret := C.NSBundle_type_preferredLocalizationsFromArray(
+func NSBundle_PreferredLocalizationsFromArray(localizationsArray core.NSArrayRef) core.NSArray {
+	ret := C.NSBundle_type_PreferredLocalizationsFromArray(
 		objc.RefPointer(localizationsArray),
 	)
 
@@ -7641,11 +7641,11 @@ func NSBundle_preferredLocalizationsFromArray(localizationsArray core.NSArrayRef
 
 }
 
-// NSBundle_preferredLocalizationsFromArray_forPreferences returns locale identifiers for which a bundle would provide localized content, given a specified list of candidates for a user's language preferences.
+// NSBundle_PreferredLocalizationsFromArrayForPreferences returns locale identifiers for which a bundle would provide localized content, given a specified list of candidates for a user's language preferences.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409418-preferredlocalizationsfromarray?language=objc for details.
-func NSBundle_preferredLocalizationsFromArray_forPreferences(localizationsArray core.NSArrayRef, preferencesArray core.NSArrayRef) core.NSArray {
-	ret := C.NSBundle_type_preferredLocalizationsFromArray_forPreferences(
+func NSBundle_PreferredLocalizationsFromArrayForPreferences(localizationsArray core.NSArrayRef, preferencesArray core.NSArrayRef) core.NSArray {
+	ret := C.NSBundle_type_PreferredLocalizationsFromArrayForPreferences(
 		objc.RefPointer(localizationsArray),
 		objc.RefPointer(preferencesArray),
 	)
@@ -7654,51 +7654,51 @@ func NSBundle_preferredLocalizationsFromArray_forPreferences(localizationsArray 
 
 }
 
-// NSBundle_mainBundle returns the bundle object that contains the current executable.
+// NSBundle_MainBundle returns the bundle object that contains the current executable.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc for details.
-func NSBundle_mainBundle() NSBundle {
-	ret := C.NSBundle_type_mainBundle()
+func NSBundle_MainBundle() NSBundle {
+	ret := C.NSBundle_type_MainBundle()
 
 	return NSBundle_fromPointer(ret)
 
 }
 
-// NSBundle_allFrameworks returns an array of all of the application’s bundles that represent frameworks.
+// NSBundle_AllFrameworks returns an array of all of the application’s bundles that represent frameworks.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1408056-allframeworks?language=objc for details.
-func NSBundle_allFrameworks() core.NSArray {
-	ret := C.NSBundle_type_allFrameworks()
+func NSBundle_AllFrameworks() core.NSArray {
+	ret := C.NSBundle_type_AllFrameworks()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSBundle_allBundles returns an array of all the application’s non-framework bundles.
+// NSBundle_AllBundles returns an array of all the application’s non-framework bundles.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413705-allbundles?language=objc for details.
-func NSBundle_allBundles() core.NSArray {
-	ret := C.NSBundle_type_allBundles()
+func NSBundle_AllBundles() core.NSArray {
+	ret := C.NSBundle_type_AllBundles()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSSound_alloc
+// NSSound_Alloc
 //
 // See  for details.
-func NSSound_alloc() NSSound {
-	ret := C.NSSound_type_alloc()
+func NSSound_Alloc() NSSound {
+	ret := C.NSSound_type_Alloc()
 
 	return NSSound_fromPointer(ret)
 
 }
 
-// NSSound_canInitWithPasteboard indicates whether the receiver can create an instance of itself from the data in a pasteboard.
+// NSSound_CanInitWithPasteboard indicates whether the receiver can create an instance of itself from the data in a pasteboard.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477276-caninitwithpasteboard?language=objc for details.
-func NSSound_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
-	ret := C.NSSound_type_canInitWithPasteboard(
+func NSSound_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
+	ret := C.NSSound_type_CanInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
 
@@ -7706,31 +7706,31 @@ func NSSound_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 
 }
 
-// NSSound_soundUnfilteredTypes provides the file types the nssound class understands.
+// NSSound_SoundUnfilteredTypes provides the file types the nssound class understands.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477290-soundunfilteredtypes?language=objc for details.
-func NSSound_soundUnfilteredTypes() core.NSArray {
-	ret := C.NSSound_type_soundUnfilteredTypes()
+func NSSound_SoundUnfilteredTypes() core.NSArray {
+	ret := C.NSSound_type_SoundUnfilteredTypes()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSApplication_alloc
+// NSApplication_Alloc
 //
 // See  for details.
-func NSApplication_alloc() NSApplication {
-	ret := C.NSApplication_type_alloc()
+func NSApplication_Alloc() NSApplication {
+	ret := C.NSApplication_type_Alloc()
 
 	return NSApplication_fromPointer(ret)
 
 }
 
-// NSApplication_detachDrawingThread_toTarget_withObject creates and executes a new thread based on the specified target and selector.
+// NSApplication_DetachDrawingThreadToTargetWithObject creates and executes a new thread based on the specified target and selector.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428374-detachdrawingthread?language=objc for details.
-func NSApplication_detachDrawingThread_toTarget_withObject(selector objc.Selector, target objc.Ref, argument objc.Ref) {
-	C.NSApplication_type_detachDrawingThread_toTarget_withObject(
+func NSApplication_DetachDrawingThreadToTargetWithObject(selector objc.Selector, target objc.Ref, argument objc.Ref) {
+	C.NSApplication_type_DetachDrawingThreadToTargetWithObject(
 		selector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(argument),
@@ -7740,41 +7740,41 @@ func NSApplication_detachDrawingThread_toTarget_withObject(selector objc.Selecto
 
 }
 
-// NSApplication_sharedApplication returns the application instance, creating it if it doesn’t exist yet.
+// NSApplication_SharedApplication returns the application instance, creating it if it doesn’t exist yet.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428360-sharedapplication?language=objc for details.
-func NSApplication_sharedApplication() NSApplication {
-	ret := C.NSApplication_type_sharedApplication()
+func NSApplication_SharedApplication() NSApplication {
+	ret := C.NSApplication_type_SharedApplication()
 
 	return NSApplication_fromPointer(ret)
 
 }
 
-// NSControl_alloc
+// NSControl_Alloc
 //
 // See  for details.
-func NSControl_alloc() NSControl {
-	ret := C.NSControl_type_alloc()
+func NSControl_Alloc() NSControl {
+	ret := C.NSControl_type_Alloc()
 
 	return NSControl_fromPointer(ret)
 
 }
 
-// NSButton_alloc
+// NSButton_Alloc
 //
 // See  for details.
-func NSButton_alloc() NSButton {
-	ret := C.NSButton_type_alloc()
+func NSButton_Alloc() NSButton {
+	ret := C.NSButton_type_Alloc()
 
 	return NSButton_fromPointer(ret)
 
 }
 
-// NSButton_checkboxWithTitle_target_action creates a standard checkbox with the title you specify.
+// NSButton_CheckboxWithTitleTargetAction creates a standard checkbox with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc for details.
-func NSButton_checkboxWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
-	ret := C.NSButton_type_checkboxWithTitle_target_action(
+func NSButton_CheckboxWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+	ret := C.NSButton_type_CheckboxWithTitleTargetAction(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7784,11 +7784,11 @@ func NSButton_checkboxWithTitle_target_action(title core.NSStringRef, target obj
 
 }
 
-// NSButton_buttonWithImage_target_action creates a standard push button with the image you specify.
+// NSButton_ButtonWithImageTargetAction creates a standard push button with the image you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644659-buttonwithimage?language=objc for details.
-func NSButton_buttonWithImage_target_action(image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
-	ret := C.NSButton_type_buttonWithImage_target_action(
+func NSButton_ButtonWithImageTargetAction(image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
+	ret := C.NSButton_type_ButtonWithImageTargetAction(
 		objc.RefPointer(image),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7798,11 +7798,11 @@ func NSButton_buttonWithImage_target_action(image NSImageRef, target objc.Ref, a
 
 }
 
-// NSButton_radioButtonWithTitle_target_action creates a standard radio button with the title you specify.
+// NSButton_RadioButtonWithTitleTargetAction creates a standard radio button with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644340-radiobuttonwithtitle?language=objc for details.
-func NSButton_radioButtonWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
-	ret := C.NSButton_type_radioButtonWithTitle_target_action(
+func NSButton_RadioButtonWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+	ret := C.NSButton_type_RadioButtonWithTitleTargetAction(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7812,11 +7812,11 @@ func NSButton_radioButtonWithTitle_target_action(title core.NSStringRef, target 
 
 }
 
-// NSButton_buttonWithTitle_image_target_action creates a standard push button with a title and image.
+// NSButton_ButtonWithTitleImageTargetAction creates a standard push button with a title and image.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc for details.
-func NSButton_buttonWithTitle_image_target_action(title core.NSStringRef, image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
-	ret := C.NSButton_type_buttonWithTitle_image_target_action(
+func NSButton_ButtonWithTitleImageTargetAction(title core.NSStringRef, image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
+	ret := C.NSButton_type_ButtonWithTitleImageTargetAction(
 		objc.RefPointer(title),
 		objc.RefPointer(image),
 		objc.RefPointer(target),
@@ -7827,11 +7827,11 @@ func NSButton_buttonWithTitle_image_target_action(title core.NSStringRef, image 
 
 }
 
-// NSButton_buttonWithTitle_target_action creates a standard push button with the title you specify.
+// NSButton_ButtonWithTitleTargetAction creates a standard push button with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc for details.
-func NSButton_buttonWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
-	ret := C.NSButton_type_buttonWithTitle_target_action(
+func NSButton_ButtonWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+	ret := C.NSButton_type_ButtonWithTitleTargetAction(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7841,21 +7841,21 @@ func NSButton_buttonWithTitle_target_action(title core.NSStringRef, target objc.
 
 }
 
-// NSEvent_alloc
+// NSEvent_Alloc
 //
 // See  for details.
-func NSEvent_alloc() NSEvent {
-	ret := C.NSEvent_type_alloc()
+func NSEvent_Alloc() NSEvent {
+	ret := C.NSEvent_type_Alloc()
 
 	return NSEvent_fromPointer(ret)
 
 }
 
-// NSEvent_eventWithEventRef creates an event object that is based on a carbon type of event.
+// NSEvent_EventWithEventRef creates an event object that is based on a carbon type of event.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528021-eventwitheventref?language=objc for details.
-func NSEvent_eventWithEventRef(eventRef unsafe.Pointer) NSEvent {
-	ret := C.NSEvent_type_eventWithEventRef(
+func NSEvent_EventWithEventRef(eventRef unsafe.Pointer) NSEvent {
+	ret := C.NSEvent_type_EventWithEventRef(
 		eventRef,
 	)
 
@@ -7863,21 +7863,21 @@ func NSEvent_eventWithEventRef(eventRef unsafe.Pointer) NSEvent {
 
 }
 
-// NSEvent_stopPeriodicEvents stops generating periodic events for the current thread and discards any periodic events remaining in the queue.
+// NSEvent_StopPeriodicEvents stops generating periodic events for the current thread and discards any periodic events remaining in the queue.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1533746-stopperiodicevents?language=objc for details.
-func NSEvent_stopPeriodicEvents() {
-	C.NSEvent_type_stopPeriodicEvents()
+func NSEvent_StopPeriodicEvents() {
+	C.NSEvent_type_StopPeriodicEvents()
 
 	return
 
 }
 
-// NSEvent_removeMonitor remove the specified event monitor.
+// NSEvent_RemoveMonitor remove the specified event monitor.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1533709-removemonitor?language=objc for details.
-func NSEvent_removeMonitor(eventMonitor objc.Ref) {
-	C.NSEvent_type_removeMonitor(
+func NSEvent_RemoveMonitor(eventMonitor objc.Ref) {
+	C.NSEvent_type_RemoveMonitor(
 		objc.RefPointer(eventMonitor),
 	)
 
@@ -7885,41 +7885,41 @@ func NSEvent_removeMonitor(eventMonitor objc.Ref) {
 
 }
 
-// NSEvent_pressedMouseButtons returns the indices of the currently depressed mouse buttons.
+// NSEvent_PressedMouseButtons returns the indices of the currently depressed mouse buttons.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527943-pressedmousebuttons?language=objc for details.
-func NSEvent_pressedMouseButtons() core.NSUInteger {
-	ret := C.NSEvent_type_pressedMouseButtons()
+func NSEvent_PressedMouseButtons() core.NSUInteger {
+	ret := C.NSEvent_type_PressedMouseButtons()
 
 	return core.NSUInteger(ret)
 
 }
 
-// NSEvent_mouseLocation reports the current mouse position in screen coordinates.
+// NSEvent_MouseLocation reports the current mouse position in screen coordinates.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1533380-mouselocation?language=objc for details.
-func NSEvent_mouseLocation() core.NSPoint {
-	ret := C.NSEvent_type_mouseLocation()
+func NSEvent_MouseLocation() core.NSPoint {
+	ret := C.NSEvent_type_MouseLocation()
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
 
 }
 
-// NSEvent_mouseCoalescingEnabled
+// NSEvent_MouseCoalescingEnabled
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/2870068-mousecoalescingenabled?language=objc for details.
-func NSEvent_mouseCoalescingEnabled() bool {
-	ret := C.NSEvent_type_mouseCoalescingEnabled()
+func NSEvent_MouseCoalescingEnabled() bool {
+	ret := C.NSEvent_type_MouseCoalescingEnabled()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSEvent_setMouseCoalescingEnabled
+// NSEvent_SetMouseCoalescingEnabled
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/2870068-mousecoalescingenabled?language=objc for details.
-func NSEvent_setMouseCoalescingEnabled(value bool) {
-	C.NSEvent_type_setMouseCoalescingEnabled(
+func NSEvent_SetMouseCoalescingEnabled(value bool) {
+	C.NSEvent_type_SetMouseCoalescingEnabled(
 		convertToObjCBool(value),
 	)
 
@@ -7927,31 +7927,31 @@ func NSEvent_setMouseCoalescingEnabled(value bool) {
 
 }
 
-// NSEvent_swipeTrackingFromScrollEventsEnabled
+// NSEvent_SwipeTrackingFromScrollEventsEnabled
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/2870067-swipetrackingfromscrolleventsena?language=objc for details.
-func NSEvent_swipeTrackingFromScrollEventsEnabled() bool {
-	ret := C.NSEvent_type_swipeTrackingFromScrollEventsEnabled()
+func NSEvent_SwipeTrackingFromScrollEventsEnabled() bool {
+	ret := C.NSEvent_type_SwipeTrackingFromScrollEventsEnabled()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSFont_alloc
+// NSFont_Alloc
 //
 // See  for details.
-func NSFont_alloc() NSFont {
-	ret := C.NSFont_type_alloc()
+func NSFont_Alloc() NSFont {
+	ret := C.NSFont_type_Alloc()
 
 	return NSFont_fromPointer(ret)
 
 }
 
-// NSFont_fontWithName_size creates a font object for the specified font name and font size.
+// NSFont_FontWithNameSize creates a font object for the specified font name and font size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname?language=objc for details.
-func NSFont_fontWithName_size(fontName core.NSStringRef, fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_fontWithName_size(
+func NSFont_FontWithNameSize(fontName core.NSStringRef, fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_FontWithNameSize(
 		objc.RefPointer(fontName),
 		C.double(fontSize),
 	)
@@ -7960,11 +7960,11 @@ func NSFont_fontWithName_size(fontName core.NSStringRef, fontSize core.CGFloat) 
 
 }
 
-// NSFont_userFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), in the specified size.
+// NSFont_UserFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1524559-userfontofsize?language=objc for details.
-func NSFont_userFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_userFontOfSize(
+func NSFont_UserFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_UserFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -7972,11 +7972,11 @@ func NSFont_userFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_userFixedPitchFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), when that font should be fixed-pitch, in the specified size.
+// NSFont_UserFixedPitchFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), when that font should be fixed-pitch, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1531381-userfixedpitchfontofsize?language=objc for details.
-func NSFont_userFixedPitchFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_userFixedPitchFontOfSize(
+func NSFont_UserFixedPitchFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_UserFixedPitchFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -7984,11 +7984,11 @@ func NSFont_userFixedPitchFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_systemFontOfSize returns the standard system font with the specified size.
+// NSFont_SystemFontOfSize returns the standard system font with the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1530094-systemfontofsize?language=objc for details.
-func NSFont_systemFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_systemFontOfSize(
+func NSFont_SystemFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_SystemFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -7996,11 +7996,11 @@ func NSFont_systemFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_boldSystemFontOfSize returns the standard system font in boldface type with the specified size.
+// NSFont_BoldSystemFontOfSize returns the standard system font in boldface type with the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1533549-boldsystemfontofsize?language=objc for details.
-func NSFont_boldSystemFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_boldSystemFontOfSize(
+func NSFont_BoldSystemFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_BoldSystemFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8008,11 +8008,11 @@ func NSFont_boldSystemFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_labelFontOfSize returns the font used for standard interface labels in the specified size.
+// NSFont_LabelFontOfSize returns the font used for standard interface labels in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1528213-labelfontofsize?language=objc for details.
-func NSFont_labelFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_labelFontOfSize(
+func NSFont_LabelFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_LabelFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8020,11 +8020,11 @@ func NSFont_labelFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_messageFontOfSize returns the font used for standard interface items, such as button labels, menu items, and so on, in the specified size.
+// NSFont_MessageFontOfSize returns the font used for standard interface items, such as button labels, menu items, and so on, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1525777-messagefontofsize?language=objc for details.
-func NSFont_messageFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_messageFontOfSize(
+func NSFont_MessageFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_MessageFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8032,11 +8032,11 @@ func NSFont_messageFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_menuBarFontOfSize returns the font used for menu bar items, in the specified size.
+// NSFont_MenuBarFontOfSize returns the font used for menu bar items, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1534194-menubarfontofsize?language=objc for details.
-func NSFont_menuBarFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_menuBarFontOfSize(
+func NSFont_MenuBarFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_MenuBarFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8044,11 +8044,11 @@ func NSFont_menuBarFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_menuFontOfSize returns the font used for menu items, in the specified size.
+// NSFont_MenuFontOfSize returns the font used for menu items, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1533068-menufontofsize?language=objc for details.
-func NSFont_menuFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_menuFontOfSize(
+func NSFont_MenuFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_MenuFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8056,11 +8056,11 @@ func NSFont_menuFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_controlContentFontOfSize returns the font used for the content of controls in the specified size.
+// NSFont_ControlContentFontOfSize returns the font used for the content of controls in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1527070-controlcontentfontofsize?language=objc for details.
-func NSFont_controlContentFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_controlContentFontOfSize(
+func NSFont_ControlContentFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_ControlContentFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8068,11 +8068,11 @@ func NSFont_controlContentFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_titleBarFontOfSize returns the font used for window title bars, in the specified size.
+// NSFont_TitleBarFontOfSize returns the font used for window title bars, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1530200-titlebarfontofsize?language=objc for details.
-func NSFont_titleBarFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_titleBarFontOfSize(
+func NSFont_TitleBarFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_TitleBarFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8080,11 +8080,11 @@ func NSFont_titleBarFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_paletteFontOfSize returns the font used for palette window title bars, in the specified size.
+// NSFont_PaletteFontOfSize returns the font used for palette window title bars, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1535462-palettefontofsize?language=objc for details.
-func NSFont_paletteFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_paletteFontOfSize(
+func NSFont_PaletteFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_PaletteFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8092,11 +8092,11 @@ func NSFont_paletteFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_toolTipsFontOfSize returns the font used for tool tips labels, in the specified size.
+// NSFont_ToolTipsFontOfSize returns the font used for tool tips labels, in the specified size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1527704-tooltipsfontofsize?language=objc for details.
-func NSFont_toolTipsFontOfSize(fontSize core.CGFloat) NSFont {
-	ret := C.NSFont_type_toolTipsFontOfSize(
+func NSFont_ToolTipsFontOfSize(fontSize core.CGFloat) NSFont {
+	ret := C.NSFont_type_ToolTipsFontOfSize(
 		C.double(fontSize),
 	)
 
@@ -8104,11 +8104,11 @@ func NSFont_toolTipsFontOfSize(fontSize core.CGFloat) NSFont {
 
 }
 
-// NSFont_setUserFont sets the font used by default for documents and other text under the user’s control to the specified font.
+// NSFont_SetUserFont sets the font used by default for documents and other text under the user’s control to the specified font.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1526068-setuserfont?language=objc for details.
-func NSFont_setUserFont(font NSFontRef) {
-	C.NSFont_type_setUserFont(
+func NSFont_SetUserFont(font NSFontRef) {
+	C.NSFont_type_SetUserFont(
 		objc.RefPointer(font),
 	)
 
@@ -8116,11 +8116,11 @@ func NSFont_setUserFont(font NSFontRef) {
 
 }
 
-// NSFont_setUserFixedPitchFont sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font.
+// NSFont_SetUserFixedPitchFont sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1529050-setuserfixedpitchfont?language=objc for details.
-func NSFont_setUserFixedPitchFont(font NSFontRef) {
-	C.NSFont_type_setUserFixedPitchFont(
+func NSFont_SetUserFixedPitchFont(font NSFontRef) {
+	C.NSFont_type_SetUserFixedPitchFont(
 		objc.RefPointer(font),
 	)
 
@@ -8128,51 +8128,51 @@ func NSFont_setUserFixedPitchFont(font NSFontRef) {
 
 }
 
-// NSFont_systemFontSize returns the size of the standard system font.
+// NSFont_SystemFontSize returns the size of the standard system font.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1531931-systemfontsize?language=objc for details.
-func NSFont_systemFontSize() core.CGFloat {
-	ret := C.NSFont_type_systemFontSize()
+func NSFont_SystemFontSize() core.CGFloat {
+	ret := C.NSFont_type_SystemFontSize()
 
 	return core.CGFloat(ret)
 
 }
 
-// NSFont_smallSystemFontSize returns the size of the standard small system font.
+// NSFont_SmallSystemFontSize returns the size of the standard small system font.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1535612-smallsystemfontsize?language=objc for details.
-func NSFont_smallSystemFontSize() core.CGFloat {
-	ret := C.NSFont_type_smallSystemFontSize()
+func NSFont_SmallSystemFontSize() core.CGFloat {
+	ret := C.NSFont_type_SmallSystemFontSize()
 
 	return core.CGFloat(ret)
 
 }
 
-// NSFont_labelFontSize returns the size of the standard label font.
+// NSFont_LabelFontSize returns the size of the standard label font.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1534629-labelfontsize?language=objc for details.
-func NSFont_labelFontSize() core.CGFloat {
-	ret := C.NSFont_type_labelFontSize()
+func NSFont_LabelFontSize() core.CGFloat {
+	ret := C.NSFont_type_LabelFontSize()
 
 	return core.CGFloat(ret)
 
 }
 
-// NSImage_alloc
+// NSImage_Alloc
 //
 // See  for details.
-func NSImage_alloc() NSImage {
-	ret := C.NSImage_type_alloc()
+func NSImage_Alloc() NSImage {
+	ret := C.NSImage_type_Alloc()
 
 	return NSImage_fromPointer(ret)
 
 }
 
-// NSImage_imageWithSystemSymbolName_accessibilityDescription creates a symbol image with the system symbol name and accessibility description that you specify.
+// NSImage_ImageWithSystemSymbolNameAccessibilityDescription creates a symbol image with the system symbol name and accessibility description that you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/3622472-imagewithsystemsymbolname?language=objc for details.
-func NSImage_imageWithSystemSymbolName_accessibilityDescription(symbolName core.NSStringRef, description core.NSStringRef) NSImage {
-	ret := C.NSImage_type_imageWithSystemSymbolName_accessibilityDescription(
+func NSImage_ImageWithSystemSymbolNameAccessibilityDescription(symbolName core.NSStringRef, description core.NSStringRef) NSImage {
+	ret := C.NSImage_type_ImageWithSystemSymbolNameAccessibilityDescription(
 		objc.RefPointer(symbolName),
 		objc.RefPointer(description),
 	)
@@ -8181,11 +8181,11 @@ func NSImage_imageWithSystemSymbolName_accessibilityDescription(symbolName core.
 
 }
 
-// NSImage_canInitWithPasteboard tests whether the image can create an instance of itself using pasteboard data.
+// NSImage_CanInitWithPasteboard tests whether the image can create an instance of itself using pasteboard data.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1520039-caninitwithpasteboard?language=objc for details.
-func NSImage_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
-	ret := C.NSImage_type_canInitWithPasteboard(
+func NSImage_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
+	ret := C.NSImage_type_CanInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
 
@@ -8193,41 +8193,41 @@ func NSImage_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 
 }
 
-// NSImage_imageTypes returns an array of uti strings identifying the image types supported by the registered image representation objects, either directly or through a user-installed filter service.
+// NSImage_ImageTypes returns an array of uti strings identifying the image types supported by the registered image representation objects, either directly or through a user-installed filter service.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519988-imagetypes?language=objc for details.
-func NSImage_imageTypes() core.NSArray {
-	ret := C.NSImage_type_imageTypes()
+func NSImage_ImageTypes() core.NSArray {
+	ret := C.NSImage_type_ImageTypes()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSImage_imageUnfilteredTypes returns an array of uti strings identifying the image types supported directly by the registered image representation objects.
+// NSImage_ImageUnfilteredTypes returns an array of uti strings identifying the image types supported directly by the registered image representation objects.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519899-imageunfilteredtypes?language=objc for details.
-func NSImage_imageUnfilteredTypes() core.NSArray {
-	ret := C.NSImage_type_imageUnfilteredTypes()
+func NSImage_ImageUnfilteredTypes() core.NSArray {
+	ret := C.NSImage_type_ImageUnfilteredTypes()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSImageView_alloc
+// NSImageView_Alloc
 //
 // See  for details.
-func NSImageView_alloc() NSImageView {
-	ret := C.NSImageView_type_alloc()
+func NSImageView_Alloc() NSImageView {
+	ret := C.NSImageView_type_Alloc()
 
 	return NSImageView_fromPointer(ret)
 
 }
 
-// NSImageView_imageViewWithImage
+// NSImageView_ImageViewWithImage
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/1644708-imageviewwithimage?language=objc for details.
-func NSImageView_imageViewWithImage(image NSImageRef) NSImageView {
-	ret := C.NSImageView_type_imageViewWithImage(
+func NSImageView_ImageViewWithImage(image NSImageRef) NSImageView {
+	ret := C.NSImageView_type_ImageViewWithImage(
 		objc.RefPointer(image),
 	)
 
@@ -8235,31 +8235,31 @@ func NSImageView_imageViewWithImage(image NSImageRef) NSImageView {
 
 }
 
-// NSNib_alloc
+// NSNib_Alloc
 //
 // See  for details.
-func NSNib_alloc() NSNib {
-	ret := C.NSNib_type_alloc()
+func NSNib_Alloc() NSNib {
+	ret := C.NSNib_type_Alloc()
 
 	return NSNib_fromPointer(ret)
 
 }
 
-// NSPasteboard_alloc
+// NSPasteboard_Alloc
 //
 // See  for details.
-func NSPasteboard_alloc() NSPasteboard {
-	ret := C.NSPasteboard_type_alloc()
+func NSPasteboard_Alloc() NSPasteboard {
+	ret := C.NSPasteboard_type_Alloc()
 
 	return NSPasteboard_fromPointer(ret)
 
 }
 
-// NSPasteboard_pasteboardByFilteringFile creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services.
+// NSPasteboard_PasteboardByFilteringFile creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc for details.
-func NSPasteboard_pasteboardByFilteringFile(filename core.NSStringRef) NSPasteboard {
-	ret := C.NSPasteboard_type_pasteboardByFilteringFile(
+func NSPasteboard_PasteboardByFilteringFile(filename core.NSStringRef) NSPasteboard {
+	ret := C.NSPasteboard_type_PasteboardByFilteringFile(
 		objc.RefPointer(filename),
 	)
 
@@ -8267,11 +8267,11 @@ func NSPasteboard_pasteboardByFilteringFile(filename core.NSStringRef) NSPastebo
 
 }
 
-// NSPasteboard_pasteboardByFilteringTypesInPasteboard creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services.
+// NSPasteboard_PasteboardByFilteringTypesInPasteboard creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc for details.
-func NSPasteboard_pasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef) NSPasteboard {
-	ret := C.NSPasteboard_type_pasteboardByFilteringTypesInPasteboard(
+func NSPasteboard_PasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef) NSPasteboard {
+	ret := C.NSPasteboard_type_PasteboardByFilteringTypesInPasteboard(
 		objc.RefPointer(pboard),
 	)
 
@@ -8279,61 +8279,61 @@ func NSPasteboard_pasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef)
 
 }
 
-// NSPasteboard_pasteboardWithUniqueName creates and returns a new pasteboard with a name that is guaranteed to be unique with respect to other pasteboards in the system.
+// NSPasteboard_PasteboardWithUniqueName creates and returns a new pasteboard with a name that is guaranteed to be unique with respect to other pasteboards in the system.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1528936-pasteboardwithuniquename?language=objc for details.
-func NSPasteboard_pasteboardWithUniqueName() NSPasteboard {
-	ret := C.NSPasteboard_type_pasteboardWithUniqueName()
+func NSPasteboard_PasteboardWithUniqueName() NSPasteboard {
+	ret := C.NSPasteboard_type_PasteboardWithUniqueName()
 
 	return NSPasteboard_fromPointer(ret)
 
 }
 
-// NSPasteboard_generalPasteboard returns the shared pasteboard object to use for general content.
+// NSPasteboard_GeneralPasteboard returns the shared pasteboard object to use for general content.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc for details.
-func NSPasteboard_generalPasteboard() NSPasteboard {
-	ret := C.NSPasteboard_type_generalPasteboard()
+func NSPasteboard_GeneralPasteboard() NSPasteboard {
+	ret := C.NSPasteboard_type_GeneralPasteboard()
 
 	return NSPasteboard_fromPointer(ret)
 
 }
 
-// NSLayoutManager_alloc
+// NSLayoutManager_Alloc
 //
 // See  for details.
-func NSLayoutManager_alloc() NSLayoutManager {
-	ret := C.NSLayoutManager_type_alloc()
+func NSLayoutManager_Alloc() NSLayoutManager {
+	ret := C.NSLayoutManager_type_Alloc()
 
 	return NSLayoutManager_fromPointer(ret)
 
 }
 
-// NSMenu_alloc
+// NSMenu_Alloc
 //
 // See  for details.
-func NSMenu_alloc() NSMenu {
-	ret := C.NSMenu_type_alloc()
+func NSMenu_Alloc() NSMenu {
+	ret := C.NSMenu_type_Alloc()
 
 	return NSMenu_fromPointer(ret)
 
 }
 
-// NSMenu_menuBarVisible returns a boolean value that indicates whether the menu bar is visible.
+// NSMenu_MenuBarVisible returns a boolean value that indicates whether the menu bar is visible.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518236-menubarvisible?language=objc for details.
-func NSMenu_menuBarVisible() bool {
-	ret := C.NSMenu_type_menuBarVisible()
+func NSMenu_MenuBarVisible() bool {
+	ret := C.NSMenu_type_MenuBarVisible()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSMenu_setMenuBarVisible sets whether the menu bar is visible and selectable by the user.
+// NSMenu_SetMenuBarVisible sets whether the menu bar is visible and selectable by the user.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518200-setmenubarvisible?language=objc for details.
-func NSMenu_setMenuBarVisible(visible bool) {
-	C.NSMenu_type_setMenuBarVisible(
+func NSMenu_SetMenuBarVisible(visible bool) {
+	C.NSMenu_type_SetMenuBarVisible(
 		convertToObjCBool(visible),
 	)
 
@@ -8341,11 +8341,11 @@ func NSMenu_setMenuBarVisible(visible bool) {
 
 }
 
-// NSMenu_popUpContextMenu_withEvent_forView displays a contextual menu over a view for an event.
+// NSMenu_PopUpContextMenuWithEventForView displays a contextual menu over a view for an event.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518170-popupcontextmenu?language=objc for details.
-func NSMenu_popUpContextMenu_withEvent_forView(menu NSMenuRef, event NSEventRef, view NSViewRef) {
-	C.NSMenu_type_popUpContextMenu_withEvent_forView(
+func NSMenu_PopUpContextMenuWithEventForView(menu NSMenuRef, event NSEventRef, view NSViewRef) {
+	C.NSMenu_type_PopUpContextMenuWithEventForView(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
@@ -8355,11 +8355,11 @@ func NSMenu_popUpContextMenu_withEvent_forView(menu NSMenuRef, event NSEventRef,
 
 }
 
-// NSMenu_popUpContextMenu_withEvent_forView_withFont displays a contextual menu over a view for an event using a specified font.
+// NSMenu_PopUpContextMenuWithEventForViewWithFont displays a contextual menu over a view for an event using a specified font.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518165-popupcontextmenu?language=objc for details.
-func NSMenu_popUpContextMenu_withEvent_forView_withFont(menu NSMenuRef, event NSEventRef, view NSViewRef, font NSFontRef) {
-	C.NSMenu_type_popUpContextMenu_withEvent_forView_withFont(
+func NSMenu_PopUpContextMenuWithEventForViewWithFont(menu NSMenuRef, event NSEventRef, view NSViewRef, font NSFontRef) {
+	C.NSMenu_type_PopUpContextMenuWithEventForViewWithFont(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
@@ -8370,51 +8370,51 @@ func NSMenu_popUpContextMenu_withEvent_forView_withFont(menu NSMenuRef, event NS
 
 }
 
-// NSPopover_alloc
+// NSPopover_Alloc
 //
 // See  for details.
-func NSPopover_alloc() NSPopover {
-	ret := C.NSPopover_type_alloc()
+func NSPopover_Alloc() NSPopover {
+	ret := C.NSPopover_type_Alloc()
 
 	return NSPopover_fromPointer(ret)
 
 }
 
-// NSMenuItem_alloc
+// NSMenuItem_Alloc
 //
 // See  for details.
-func NSMenuItem_alloc() NSMenuItem {
-	ret := C.NSMenuItem_type_alloc()
+func NSMenuItem_Alloc() NSMenuItem {
+	ret := C.NSMenuItem_type_Alloc()
 
 	return NSMenuItem_fromPointer(ret)
 
 }
 
-// NSMenuItem_separatorItem returns a menu item that is used to separate logical groups of menu commands.
+// NSMenuItem_SeparatorItem returns a menu item that is used to separate logical groups of menu commands.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem?language=objc for details.
-func NSMenuItem_separatorItem() NSMenuItem {
-	ret := C.NSMenuItem_type_separatorItem()
+func NSMenuItem_SeparatorItem() NSMenuItem {
+	ret := C.NSMenuItem_type_SeparatorItem()
 
 	return NSMenuItem_fromPointer(ret)
 
 }
 
-// NSMenuItem_usesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
+// NSMenuItem_UsesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc for details.
-func NSMenuItem_usesUserKeyEquivalents() bool {
-	ret := C.NSMenuItem_type_usesUserKeyEquivalents()
+func NSMenuItem_UsesUserKeyEquivalents() bool {
+	ret := C.NSMenuItem_type_UsesUserKeyEquivalents()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSMenuItem_setUsesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
+// NSMenuItem_SetUsesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc for details.
-func NSMenuItem_setUsesUserKeyEquivalents(value bool) {
-	C.NSMenuItem_type_setUsesUserKeyEquivalents(
+func NSMenuItem_SetUsesUserKeyEquivalents(value bool) {
+	C.NSMenuItem_type_SetUsesUserKeyEquivalents(
 		convertToObjCBool(value),
 	)
 
@@ -8422,21 +8422,21 @@ func NSMenuItem_setUsesUserKeyEquivalents(value bool) {
 
 }
 
-// NSRunningApplication_alloc
+// NSRunningApplication_Alloc
 //
 // See  for details.
-func NSRunningApplication_alloc() NSRunningApplication {
-	ret := C.NSRunningApplication_type_alloc()
+func NSRunningApplication_Alloc() NSRunningApplication {
+	ret := C.NSRunningApplication_type_Alloc()
 
 	return NSRunningApplication_fromPointer(ret)
 
 }
 
-// NSRunningApplication_runningApplicationsWithBundleIdentifier returns an array of currently running applications with the specified bundle identifier.
+// NSRunningApplication_RunningApplicationsWithBundleIdentifier returns an array of currently running applications with the specified bundle identifier.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1530798-runningapplicationswithbundleide?language=objc for details.
-func NSRunningApplication_runningApplicationsWithBundleIdentifier(bundleIdentifier core.NSStringRef) core.NSArray {
-	ret := C.NSRunningApplication_type_runningApplicationsWithBundleIdentifier(
+func NSRunningApplication_RunningApplicationsWithBundleIdentifier(bundleIdentifier core.NSStringRef) core.NSArray {
+	ret := C.NSRunningApplication_type_RunningApplicationsWithBundleIdentifier(
 		objc.RefPointer(bundleIdentifier),
 	)
 
@@ -8444,141 +8444,141 @@ func NSRunningApplication_runningApplicationsWithBundleIdentifier(bundleIdentifi
 
 }
 
-// NSRunningApplication_terminateAutomaticallyTerminableApplications terminates invisibly running applications as if triggered by system memory pressure.
+// NSRunningApplication_TerminateAutomaticallyTerminableApplications terminates invisibly running applications as if triggered by system memory pressure.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1529538-terminateautomaticallyterminable?language=objc for details.
-func NSRunningApplication_terminateAutomaticallyTerminableApplications() {
-	C.NSRunningApplication_type_terminateAutomaticallyTerminableApplications()
+func NSRunningApplication_TerminateAutomaticallyTerminableApplications() {
+	C.NSRunningApplication_type_TerminateAutomaticallyTerminableApplications()
 
 	return
 
 }
 
-// NSRunningApplication_currentApplication returns an nsrunningapplication representing this application.
+// NSRunningApplication_CurrentApplication returns an nsrunningapplication representing this application.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc for details.
-func NSRunningApplication_currentApplication() NSRunningApplication {
-	ret := C.NSRunningApplication_type_currentApplication()
+func NSRunningApplication_CurrentApplication() NSRunningApplication {
+	ret := C.NSRunningApplication_type_CurrentApplication()
 
 	return NSRunningApplication_fromPointer(ret)
 
 }
 
-// NSScreen_alloc
+// NSScreen_Alloc
 //
 // See  for details.
-func NSScreen_alloc() NSScreen {
-	ret := C.NSScreen_type_alloc()
+func NSScreen_Alloc() NSScreen {
+	ret := C.NSScreen_type_Alloc()
 
 	return NSScreen_fromPointer(ret)
 
 }
 
-// NSScreen_mainScreen returns the screen object containing the window with the keyboard focus.
+// NSScreen_MainScreen returns the screen object containing the window with the keyboard focus.
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388371-mainscreen?language=objc for details.
-func NSScreen_mainScreen() NSScreen {
-	ret := C.NSScreen_type_mainScreen()
+func NSScreen_MainScreen() NSScreen {
+	ret := C.NSScreen_type_MainScreen()
 
 	return NSScreen_fromPointer(ret)
 
 }
 
-// NSScreen_deepestScreen returns a screen object representing the screen that can best represent color.
+// NSScreen_DeepestScreen returns a screen object representing the screen that can best represent color.
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388374-deepestscreen?language=objc for details.
-func NSScreen_deepestScreen() NSScreen {
-	ret := C.NSScreen_type_deepestScreen()
+func NSScreen_DeepestScreen() NSScreen {
+	ret := C.NSScreen_type_DeepestScreen()
 
 	return NSScreen_fromPointer(ret)
 
 }
 
-// NSScreen_screens returns an array of screen objects representing all of the screens available on the system.
+// NSScreen_Screens returns an array of screen objects representing all of the screens available on the system.
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388393-screens?language=objc for details.
-func NSScreen_screens() core.NSArray {
-	ret := C.NSScreen_type_screens()
+func NSScreen_Screens() core.NSArray {
+	ret := C.NSScreen_type_Screens()
 
 	return core.NSArray_fromPointer(ret)
 
 }
 
-// NSScreen_screensHaveSeparateSpaces returns a boolean value indicating whether each screen can have its own set of spaces.
+// NSScreen_ScreensHaveSeparateSpaces returns a boolean value indicating whether each screen can have its own set of spaces.
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388365-screenshaveseparatespaces?language=objc for details.
-func NSScreen_screensHaveSeparateSpaces() bool {
-	ret := C.NSScreen_type_screensHaveSeparateSpaces()
+func NSScreen_ScreensHaveSeparateSpaces() bool {
+	ret := C.NSScreen_type_ScreensHaveSeparateSpaces()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSStatusBar_alloc
+// NSStatusBar_Alloc
 //
 // See  for details.
-func NSStatusBar_alloc() NSStatusBar {
-	ret := C.NSStatusBar_type_alloc()
+func NSStatusBar_Alloc() NSStatusBar {
+	ret := C.NSStatusBar_type_Alloc()
 
 	return NSStatusBar_fromPointer(ret)
 
 }
 
-// NSStatusBar_systemStatusBar returns the system-wide status bar located in the menu bar.
+// NSStatusBar_SystemStatusBar returns the system-wide status bar located in the menu bar.
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc for details.
-func NSStatusBar_systemStatusBar() NSStatusBar {
-	ret := C.NSStatusBar_type_systemStatusBar()
+func NSStatusBar_SystemStatusBar() NSStatusBar {
+	ret := C.NSStatusBar_type_SystemStatusBar()
 
 	return NSStatusBar_fromPointer(ret)
 
 }
 
-// NSStatusBarButton_alloc
+// NSStatusBarButton_Alloc
 //
 // See  for details.
-func NSStatusBarButton_alloc() NSStatusBarButton {
-	ret := C.NSStatusBarButton_type_alloc()
+func NSStatusBarButton_Alloc() NSStatusBarButton {
+	ret := C.NSStatusBarButton_type_Alloc()
 
 	return NSStatusBarButton_fromPointer(ret)
 
 }
 
-// NSStatusItem_alloc
+// NSStatusItem_Alloc
 //
 // See  for details.
-func NSStatusItem_alloc() NSStatusItem {
-	ret := C.NSStatusItem_type_alloc()
+func NSStatusItem_Alloc() NSStatusItem {
+	ret := C.NSStatusItem_type_Alloc()
 
 	return NSStatusItem_fromPointer(ret)
 
 }
 
-// NSText_alloc
+// NSText_Alloc
 //
 // See  for details.
-func NSText_alloc() NSText {
-	ret := C.NSText_type_alloc()
+func NSText_Alloc() NSText {
+	ret := C.NSText_type_Alloc()
 
 	return NSText_fromPointer(ret)
 
 }
 
-// NSTextField_alloc
+// NSTextField_Alloc
 //
 // See  for details.
-func NSTextField_alloc() NSTextField {
-	ret := C.NSTextField_type_alloc()
+func NSTextField_Alloc() NSTextField {
+	ret := C.NSTextField_type_Alloc()
 
 	return NSTextField_fromPointer(ret)
 
 }
 
-// NSTextField_labelWithAttributedString creates a text field for use as a static label that displays styled text, doesn’t wrap, and doesn’t have selectable text.
+// NSTextField_LabelWithAttributedString creates a text field for use as a static label that displays styled text, doesn’t wrap, and doesn’t have selectable text.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc for details.
-func NSTextField_labelWithAttributedString(attributedStringValue core.NSAttributedStringRef) NSTextField {
-	ret := C.NSTextField_type_labelWithAttributedString(
+func NSTextField_LabelWithAttributedString(attributedStringValue core.NSAttributedStringRef) NSTextField {
+	ret := C.NSTextField_type_LabelWithAttributedString(
 		objc.RefPointer(attributedStringValue),
 	)
 
@@ -8586,11 +8586,11 @@ func NSTextField_labelWithAttributedString(attributedStringValue core.NSAttribut
 
 }
 
-// NSTextField_labelWithString initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.
+// NSTextField_LabelWithString initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc for details.
-func NSTextField_labelWithString(stringValue core.NSStringRef) NSTextField {
-	ret := C.NSTextField_type_labelWithString(
+func NSTextField_LabelWithString(stringValue core.NSStringRef) NSTextField {
+	ret := C.NSTextField_type_LabelWithString(
 		objc.RefPointer(stringValue),
 	)
 
@@ -8598,11 +8598,11 @@ func NSTextField_labelWithString(stringValue core.NSStringRef) NSTextField {
 
 }
 
-// NSTextField_textFieldWithString initializes a single-line editable text field for user input using the system default font and standard visual appearance.
+// NSTextField_TextFieldWithString initializes a single-line editable text field for user input using the system default font and standard visual appearance.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644706-textfieldwithstring?language=objc for details.
-func NSTextField_textFieldWithString(stringValue core.NSStringRef) NSTextField {
-	ret := C.NSTextField_type_textFieldWithString(
+func NSTextField_TextFieldWithString(stringValue core.NSStringRef) NSTextField {
+	ret := C.NSTextField_type_TextFieldWithString(
 		objc.RefPointer(stringValue),
 	)
 
@@ -8610,11 +8610,11 @@ func NSTextField_textFieldWithString(stringValue core.NSStringRef) NSTextField {
 
 }
 
-// NSTextField_wrappingLabelWithString initializes a text field for use as a multiline static label with selectable text that uses the system default font.
+// NSTextField_WrappingLabelWithString initializes a text field for use as a multiline static label with selectable text that uses the system default font.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644543-wrappinglabelwithstring?language=objc for details.
-func NSTextField_wrappingLabelWithString(stringValue core.NSStringRef) NSTextField {
-	ret := C.NSTextField_type_wrappingLabelWithString(
+func NSTextField_WrappingLabelWithString(stringValue core.NSStringRef) NSTextField {
+	ret := C.NSTextField_type_WrappingLabelWithString(
 		objc.RefPointer(stringValue),
 	)
 
@@ -8622,51 +8622,51 @@ func NSTextField_wrappingLabelWithString(stringValue core.NSStringRef) NSTextFie
 
 }
 
-// NSTextContainer_alloc
+// NSTextContainer_Alloc
 //
 // See  for details.
-func NSTextContainer_alloc() NSTextContainer {
-	ret := C.NSTextContainer_type_alloc()
+func NSTextContainer_Alloc() NSTextContainer {
+	ret := C.NSTextContainer_type_Alloc()
 
 	return NSTextContainer_fromPointer(ret)
 
 }
 
-// NSViewController_alloc
+// NSViewController_Alloc
 //
 // See  for details.
-func NSViewController_alloc() NSViewController {
-	ret := C.NSViewController_type_alloc()
+func NSViewController_Alloc() NSViewController {
+	ret := C.NSViewController_type_Alloc()
 
 	return NSViewController_fromPointer(ret)
 
 }
 
-// NSVisualEffectView_alloc
+// NSVisualEffectView_Alloc
 //
 // See  for details.
-func NSVisualEffectView_alloc() NSVisualEffectView {
-	ret := C.NSVisualEffectView_type_alloc()
+func NSVisualEffectView_Alloc() NSVisualEffectView {
+	ret := C.NSVisualEffectView_type_Alloc()
 
 	return NSVisualEffectView_fromPointer(ret)
 
 }
 
-// NSWindow_alloc
+// NSWindow_Alloc
 //
 // See  for details.
-func NSWindow_alloc() NSWindow {
-	ret := C.NSWindow_type_alloc()
+func NSWindow_Alloc() NSWindow {
+	ret := C.NSWindow_type_Alloc()
 
 	return NSWindow_fromPointer(ret)
 
 }
 
-// NSWindow_windowWithContentViewController creates a titled window that contains the specified content view controller.
+// NSWindow_WindowWithContentViewController creates a titled window that contains the specified content view controller.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419551-windowwithcontentviewcontroller?language=objc for details.
-func NSWindow_windowWithContentViewController(contentViewController NSViewControllerRef) NSWindow {
-	ret := C.NSWindow_type_windowWithContentViewController(
+func NSWindow_WindowWithContentViewController(contentViewController NSViewControllerRef) NSWindow {
+	ret := C.NSWindow_type_WindowWithContentViewController(
 		objc.RefPointer(contentViewController),
 	)
 
@@ -8674,11 +8674,11 @@ func NSWindow_windowWithContentViewController(contentViewController NSViewContro
 
 }
 
-// NSWindow_contentRectForFrameRect_styleMask returns the content rectangle used by a window with a given frame rectangle and window style.
+// NSWindow_ContentRectForFrameRectStyleMask returns the content rectangle used by a window with a given frame rectangle and window style.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419586-contentrectforframerect?language=objc for details.
-func NSWindow_contentRectForFrameRect_styleMask(fRect core.NSRect, style core.NSUInteger) core.NSRect {
-	ret := C.NSWindow_type_contentRectForFrameRect_styleMask(
+func NSWindow_ContentRectForFrameRectStyleMask(fRect core.NSRect, style core.NSUInteger) core.NSRect {
+	ret := C.NSWindow_type_ContentRectForFrameRectStyleMask(
 		*(*C.NSRect)(unsafe.Pointer(&fRect)),
 		C.ulong(style),
 	)
@@ -8687,11 +8687,11 @@ func NSWindow_contentRectForFrameRect_styleMask(fRect core.NSRect, style core.NS
 
 }
 
-// NSWindow_frameRectForContentRect_styleMask returns the frame rectangle used by a window with a given content rectangle and window style.
+// NSWindow_FrameRectForContentRectStyleMask returns the frame rectangle used by a window with a given content rectangle and window style.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419372-framerectforcontentrect?language=objc for details.
-func NSWindow_frameRectForContentRect_styleMask(cRect core.NSRect, style core.NSUInteger) core.NSRect {
-	ret := C.NSWindow_type_frameRectForContentRect_styleMask(
+func NSWindow_FrameRectForContentRectStyleMask(cRect core.NSRect, style core.NSUInteger) core.NSRect {
+	ret := C.NSWindow_type_FrameRectForContentRectStyleMask(
 		*(*C.NSRect)(unsafe.Pointer(&cRect)),
 		C.ulong(style),
 	)
@@ -8700,11 +8700,11 @@ func NSWindow_frameRectForContentRect_styleMask(cRect core.NSRect, style core.NS
 
 }
 
-// NSWindow_minFrameWidthWithTitle_styleMask returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.
+// NSWindow_MinFrameWidthWithTitleStyleMask returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419294-minframewidthwithtitle?language=objc for details.
-func NSWindow_minFrameWidthWithTitle_styleMask(title core.NSStringRef, style core.NSUInteger) core.CGFloat {
-	ret := C.NSWindow_type_minFrameWidthWithTitle_styleMask(
+func NSWindow_MinFrameWidthWithTitleStyleMask(title core.NSStringRef, style core.NSUInteger) core.CGFloat {
+	ret := C.NSWindow_type_MinFrameWidthWithTitleStyleMask(
 		objc.RefPointer(title),
 		C.ulong(style),
 	)
@@ -8713,11 +8713,11 @@ func NSWindow_minFrameWidthWithTitle_styleMask(title core.NSStringRef, style cor
 
 }
 
-// NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber returns the number of the frontmost window that would be hit by a mouse-down at the specified screen location.
+// NSWindow_WindowNumberAtPointBelowWindowWithWindowNumber returns the number of the frontmost window that would be hit by a mouse-down at the specified screen location.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419210-windownumberatpoint?language=objc for details.
-func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber(point core.NSPoint, windowNumber core.NSInteger) core.NSInteger {
-	ret := C.NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber(
+func NSWindow_WindowNumberAtPointBelowWindowWithWindowNumber(point core.NSPoint, windowNumber core.NSInteger) core.NSInteger {
+	ret := C.NSWindow_type_WindowNumberAtPointBelowWindowWithWindowNumber(
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		C.long(windowNumber),
 	)
@@ -8726,21 +8726,21 @@ func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber(point core.NSPoint
 
 }
 
-// NSWindow_allowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
+// NSWindow_AllowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc for details.
-func NSWindow_allowsAutomaticWindowTabbing() bool {
-	ret := C.NSWindow_type_allowsAutomaticWindowTabbing()
+func NSWindow_AllowsAutomaticWindowTabbing() bool {
+	ret := C.NSWindow_type_AllowsAutomaticWindowTabbing()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSWindow_setAllowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
+// NSWindow_SetAllowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc for details.
-func NSWindow_setAllowsAutomaticWindowTabbing(value bool) {
-	C.NSWindow_type_setAllowsAutomaticWindowTabbing(
+func NSWindow_SetAllowsAutomaticWindowTabbing(value bool) {
+	C.NSWindow_type_SetAllowsAutomaticWindowTabbing(
 		convertToObjCBool(value),
 	)
 
@@ -8748,41 +8748,41 @@ func NSWindow_setAllowsAutomaticWindowTabbing(value bool) {
 
 }
 
-// NSWorkspace_alloc
+// NSWorkspace_Alloc
 //
 // See  for details.
-func NSWorkspace_alloc() NSWorkspace {
-	ret := C.NSWorkspace_type_alloc()
+func NSWorkspace_Alloc() NSWorkspace {
+	ret := C.NSWorkspace_type_Alloc()
 
 	return NSWorkspace_fromPointer(ret)
 
 }
 
-// NSWorkspace_sharedWorkspace returns the shared workspace object.
+// NSWorkspace_SharedWorkspace returns the shared workspace object.
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1530344-sharedworkspace?language=objc for details.
-func NSWorkspace_sharedWorkspace() NSWorkspace {
-	ret := C.NSWorkspace_type_sharedWorkspace()
+func NSWorkspace_SharedWorkspace() NSWorkspace {
+	ret := C.NSWorkspace_type_SharedWorkspace()
 
 	return NSWorkspace_fromPointer(ret)
 
 }
 
-// NSColor_alloc
+// NSColor_Alloc
 //
 // See  for details.
-func NSColor_alloc() NSColor {
-	ret := C.NSColor_type_alloc()
+func NSColor_Alloc() NSColor {
+	ret := C.NSColor_type_Alloc()
 
 	return NSColor_fromPointer(ret)
 
 }
 
-// NSColor_colorFromPasteboard creates a color object from color data currently on the pasteboard.
+// NSColor_ColorFromPasteboard creates a color object from color data currently on the pasteboard.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1535057-colorfrompasteboard?language=objc for details.
-func NSColor_colorFromPasteboard(pasteBoard NSPasteboardRef) NSColor {
-	ret := C.NSColor_type_colorFromPasteboard(
+func NSColor_ColorFromPasteboard(pasteBoard NSPasteboardRef) NSColor {
+	ret := C.NSColor_type_ColorFromPasteboard(
 		objc.RefPointer(pasteBoard),
 	)
 
@@ -8790,11 +8790,11 @@ func NSColor_colorFromPasteboard(pasteBoard NSPasteboardRef) NSColor {
 
 }
 
-// NSColor_colorWithRed_green_blue_alpha
+// NSColor_ColorWithRedGreenBlueAlpha
 //
 // See  for details.
-func NSColor_colorWithRed_green_blue_alpha(red core.CGFloat, green core.CGFloat, blue core.CGFloat, alpha core.CGFloat) NSColor {
-	ret := C.NSColor_type_colorWithRed_green_blue_alpha(
+func NSColor_ColorWithRedGreenBlueAlpha(red core.CGFloat, green core.CGFloat, blue core.CGFloat, alpha core.CGFloat) NSColor {
+	ret := C.NSColor_type_ColorWithRedGreenBlueAlpha(
 		C.double(red),
 		C.double(green),
 		C.double(blue),
@@ -8805,21 +8805,21 @@ func NSColor_colorWithRed_green_blue_alpha(red core.CGFloat, green core.CGFloat,
 
 }
 
-// NSColor_ignoresAlpha returns a boolean value that indicates whether the app supports alpha.
+// NSColor_IgnoresAlpha returns a boolean value that indicates whether the app supports alpha.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1533565-ignoresalpha?language=objc for details.
-func NSColor_ignoresAlpha() bool {
-	ret := C.NSColor_type_ignoresAlpha()
+func NSColor_IgnoresAlpha() bool {
+	ret := C.NSColor_type_IgnoresAlpha()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSColor_setIgnoresAlpha returns a boolean value that indicates whether the app supports alpha.
+// NSColor_SetIgnoresAlpha returns a boolean value that indicates whether the app supports alpha.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1533565-ignoresalpha?language=objc for details.
-func NSColor_setIgnoresAlpha(value bool) {
-	C.NSColor_type_setIgnoresAlpha(
+func NSColor_SetIgnoresAlpha(value bool) {
+	C.NSColor_type_SetIgnoresAlpha(
 		convertToObjCBool(value),
 	)
 
@@ -8827,121 +8827,121 @@ func NSColor_setIgnoresAlpha(value bool) {
 
 }
 
-// NSColor_systemCyanColor
+// NSColor_SystemCyanColor
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/3816005-systemcyancolor?language=objc for details.
-func NSColor_systemCyanColor() NSColor {
-	ret := C.NSColor_type_systemCyanColor()
+func NSColor_SystemCyanColor() NSColor {
+	ret := C.NSColor_type_SystemCyanColor()
 
 	return NSColor_fromPointer(ret)
 
 }
 
-// NSColor_systemMintColor
+// NSColor_SystemMintColor
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/3816006-systemmintcolor?language=objc for details.
-func NSColor_systemMintColor() NSColor {
-	ret := C.NSColor_type_systemMintColor()
+func NSColor_SystemMintColor() NSColor {
+	ret := C.NSColor_type_SystemMintColor()
 
 	return NSColor_fromPointer(ret)
 
 }
 
-// NSColor_clearColor returns a color object whose grayscale and alpha values are both 0.0.
+// NSColor_ClearColor returns a color object whose grayscale and alpha values are both 0.0.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1527217-clearcolor?language=objc for details.
-func NSColor_clearColor() NSColor {
-	ret := C.NSColor_type_clearColor()
+func NSColor_ClearColor() NSColor {
+	ret := C.NSColor_type_ClearColor()
 
 	return NSColor_fromPointer(ret)
 
 }
 
-// NSTextView_alloc
+// NSTextView_Alloc
 //
 // See  for details.
-func NSTextView_alloc() NSTextView {
-	ret := C.NSTextView_type_alloc()
+func NSTextView_Alloc() NSTextView {
+	ret := C.NSTextView_type_Alloc()
 
 	return NSTextView_fromPointer(ret)
 
 }
 
-// NSTextView_registerForServices registers send and return types for the services facility.
+// NSTextView_RegisterForServices registers send and return types for the services facility.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449507-registerforservices?language=objc for details.
-func NSTextView_registerForServices() {
-	C.NSTextView_type_registerForServices()
+func NSTextView_RegisterForServices() {
+	C.NSTextView_type_RegisterForServices()
 
 	return
 
 }
 
-// NSTextView_fieldEditor
+// NSTextView_FieldEditor
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2990525-fieldeditor?language=objc for details.
-func NSTextView_fieldEditor() NSTextView {
-	ret := C.NSTextView_type_fieldEditor()
+func NSTextView_FieldEditor() NSTextView {
+	ret := C.NSTextView_type_FieldEditor()
 
 	return NSTextView_fromPointer(ret)
 
 }
 
-// NSTextView_stronglyReferencesTextStorage
+// NSTextView_StronglyReferencesTextStorage
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2269433-stronglyreferencestextstorage?language=objc for details.
-func NSTextView_stronglyReferencesTextStorage() bool {
-	ret := C.NSTextView_type_stronglyReferencesTextStorage()
+func NSTextView_StronglyReferencesTextStorage() bool {
+	ret := C.NSTextView_type_StronglyReferencesTextStorage()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSView_alloc
+// NSView_Alloc
 //
 // See  for details.
-func NSView_alloc() NSView {
-	ret := C.NSView_type_alloc()
+func NSView_Alloc() NSView {
+	ret := C.NSView_type_Alloc()
 
 	return NSView_fromPointer(ret)
 
 }
 
-// NSView_requiresConstraintBasedLayout returns a boolean value indicating whether the view depends on the constraint-based layout system.
+// NSView_RequiresConstraintBasedLayout returns a boolean value indicating whether the view depends on the constraint-based layout system.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526926-requiresconstraintbasedlayout?language=objc for details.
-func NSView_requiresConstraintBasedLayout() bool {
-	ret := C.NSView_type_requiresConstraintBasedLayout()
+func NSView_RequiresConstraintBasedLayout() bool {
+	ret := C.NSView_type_RequiresConstraintBasedLayout()
 
 	return convertObjCBoolToGo(ret)
 
 }
 
-// NSView_focusView returns the currently focused nsview object, or nil if there is none.
+// NSView_FocusView returns the currently focused nsview object, or nil if there is none.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483662-focusview?language=objc for details.
-func NSView_focusView() NSView {
-	ret := C.NSView_type_focusView()
+func NSView_FocusView() NSView {
+	ret := C.NSView_type_FocusView()
 
 	return NSView_fromPointer(ret)
 
 }
 
-// NSView_defaultMenu overridden by subclasses to return the default pop-up menu for instances of the receiving class.
+// NSView_DefaultMenu overridden by subclasses to return the default pop-up menu for instances of the receiving class.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483417-defaultmenu?language=objc for details.
-func NSView_defaultMenu() NSMenu {
-	ret := C.NSView_type_defaultMenu()
+func NSView_DefaultMenu() NSMenu {
+	ret := C.NSView_type_DefaultMenu()
 
 	return NSMenu_fromPointer(ret)
 
 }
 
-// NSView_compatibleWithResponsiveScrolling
+// NSView_CompatibleWithResponsiveScrolling
 //
 // See https://developer.apple.com/documentation/appkit/nsview/2870005-compatiblewithresponsivescrollin?language=objc for details.
-func NSView_compatibleWithResponsiveScrolling() bool {
-	ret := C.NSView_type_compatibleWithResponsiveScrolling()
+func NSView_CompatibleWithResponsiveScrolling() bool {
+	ret := C.NSView_type_CompatibleWithResponsiveScrolling()
 
 	return convertObjCBoolToGo(ret)
 
@@ -8981,14 +8981,14 @@ func (x gen_NSBundle) URLForAuxiliaryExecutable(
 
 }
 
-// URLForResource_withExtension returns the file url for the resource identified by the specified name and file extension.
+// URLForResourceWithExtension returns the file url for the resource identified by the specified name and file extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411540-urlforresource?language=objc for details.
-func (x gen_NSBundle) URLForResource_withExtension(
+func (x gen_NSBundle) URLForResourceWithExtension(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 ) core.NSURL {
-	ret := C.NSBundle_inst_URLForResource_withExtension(
+	ret := C.NSBundle_inst_URLForResourceWithExtension(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8998,15 +8998,15 @@ func (x gen_NSBundle) URLForResource_withExtension(
 
 }
 
-// URLForResource_withExtension_subdirectory returns the file url for the resource file identified by the specified name and extension and residing in a given bundle directory.
+// URLForResourceWithExtensionSubdirectory returns the file url for the resource file identified by the specified name and extension and residing in a given bundle directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416712-urlforresource?language=objc for details.
-func (x gen_NSBundle) URLForResource_withExtension_subdirectory(
+func (x gen_NSBundle) URLForResourceWithExtensionSubdirectory(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) core.NSURL {
-	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory(
+	ret := C.NSBundle_inst_URLForResourceWithExtensionSubdirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -9017,16 +9017,16 @@ func (x gen_NSBundle) URLForResource_withExtension_subdirectory(
 
 }
 
-// URLForResource_withExtension_subdirectory_localization returns the file url for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
+// URLForResourceWithExtensionSubdirectoryLocalization returns the file url for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417378-urlforresource?language=objc for details.
-func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization(
+func (x gen_NSBundle) URLForResourceWithExtensionSubdirectoryLocalization(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) core.NSURL {
-	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory_localization(
+	ret := C.NSBundle_inst_URLForResourceWithExtensionSubdirectoryLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -9038,14 +9038,14 @@ func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization(
 
 }
 
-// URLsForResourcesWithExtension_subdirectory returns an array of file urls for all resources identified by the specified file extension and located in the specified bundle subdirectory.
+// URLsForResourcesWithExtensionSubdirectory returns an array of file urls for all resources identified by the specified file extension and located in the specified bundle subdirectory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407424-urlsforresourceswithextension?language=objc for details.
-func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory(
+func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectory(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) core.NSArray {
-	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory(
+	ret := C.NSBundle_inst_URLsForResourcesWithExtensionSubdirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9055,15 +9055,15 @@ func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory(
 
 }
 
-// URLsForResourcesWithExtension_subdirectory_localization returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
+// URLsForResourcesWithExtensionSubdirectoryLocalization returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1414688-urlsforresourceswithextension?language=objc for details.
-func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_localization(
+func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectoryLocalization(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) core.NSArray {
-	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization(
+	ret := C.NSBundle_inst_URLsForResourcesWithExtensionSubdirectoryLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9080,7 +9080,7 @@ func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_localization(
 func (x gen_NSBundle) InitWithPath_asNSBundle(
 	path core.NSStringRef,
 ) NSBundle {
-	ret := C.NSBundle_inst_initWithPath(
+	ret := C.NSBundle_inst_InitWithPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -9095,7 +9095,7 @@ func (x gen_NSBundle) InitWithPath_asNSBundle(
 func (x gen_NSBundle) InitWithURL_asNSBundle(
 	url core.NSURLRef,
 ) NSBundle {
-	ret := C.NSBundle_inst_initWithURL(
+	ret := C.NSBundle_inst_InitWithURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -9108,7 +9108,7 @@ func (x gen_NSBundle) InitWithURL_asNSBundle(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415927-load?language=objc for details.
 func (x gen_NSBundle) Load() bool {
-	ret := C.NSBundle_inst_load(
+	ret := C.NSBundle_inst_Load(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9116,15 +9116,15 @@ func (x gen_NSBundle) Load() bool {
 
 }
 
-// LoadNibNamed_owner_options unarchives the contents of a nib file located in the receiver's bundle.
+// LoadNibNamedOwnerOptions unarchives the contents of a nib file located in the receiver's bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1618147-loadnibnamed?language=objc for details.
-func (x gen_NSBundle) LoadNibNamed_owner_options(
+func (x gen_NSBundle) LoadNibNamedOwnerOptions(
 	name core.NSStringRef,
 	owner objc.Ref,
 	options core.NSDictionaryRef,
 ) core.NSArray {
-	ret := C.NSBundle_inst_loadNibNamed_owner_options(
+	ret := C.NSBundle_inst_LoadNibNamedOwnerOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(owner),
@@ -9135,15 +9135,15 @@ func (x gen_NSBundle) LoadNibNamed_owner_options(
 
 }
 
-// LocalizedAttributedStringForKey_value_table
+// LocalizedAttributedStringForKeyValueTable
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/3746904-localizedattributedstringforkey?language=objc for details.
-func (x gen_NSBundle) LocalizedAttributedStringForKey_value_table(
+func (x gen_NSBundle) LocalizedAttributedStringForKeyValueTable(
 	key core.NSStringRef,
 	value core.NSStringRef,
 	tableName core.NSStringRef,
 ) core.NSAttributedString {
-	ret := C.NSBundle_inst_localizedAttributedStringForKey_value_table(
+	ret := C.NSBundle_inst_LocalizedAttributedStringForKeyValueTable(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 		objc.RefPointer(value),
@@ -9154,15 +9154,15 @@ func (x gen_NSBundle) LocalizedAttributedStringForKey_value_table(
 
 }
 
-// LocalizedStringForKey_value_table returns a localized version of the string designated by the specified key and residing in the specified table.
+// LocalizedStringForKeyValueTable returns a localized version of the string designated by the specified key and residing in the specified table.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417694-localizedstringforkey?language=objc for details.
-func (x gen_NSBundle) LocalizedStringForKey_value_table(
+func (x gen_NSBundle) LocalizedStringForKeyValueTable(
 	key core.NSStringRef,
 	value core.NSStringRef,
 	tableName core.NSStringRef,
 ) core.NSString {
-	ret := C.NSBundle_inst_localizedStringForKey_value_table(
+	ret := C.NSBundle_inst_LocalizedStringForKeyValueTable(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 		objc.RefPointer(value),
@@ -9179,7 +9179,7 @@ func (x gen_NSBundle) LocalizedStringForKey_value_table(
 func (x gen_NSBundle) ObjectForInfoDictionaryKey(
 	key core.NSStringRef,
 ) objc.Object {
-	ret := C.NSBundle_inst_objectForInfoDictionaryKey(
+	ret := C.NSBundle_inst_ObjectForInfoDictionaryKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 	)
@@ -9194,7 +9194,7 @@ func (x gen_NSBundle) ObjectForInfoDictionaryKey(
 func (x gen_NSBundle) PathForAuxiliaryExecutable(
 	executableName core.NSStringRef,
 ) core.NSString {
-	ret := C.NSBundle_inst_pathForAuxiliaryExecutable(
+	ret := C.NSBundle_inst_PathForAuxiliaryExecutable(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(executableName),
 	)
@@ -9203,14 +9203,14 @@ func (x gen_NSBundle) PathForAuxiliaryExecutable(
 
 }
 
-// PathForResource_ofType returns the full pathname for the resource identified by the specified name and file extension.
+// PathForResourceOfType returns the full pathname for the resource identified by the specified name and file extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1410989-pathforresource?language=objc for details.
-func (x gen_NSBundle) PathForResource_ofType(
+func (x gen_NSBundle) PathForResourceOfType(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 ) core.NSString {
-	ret := C.NSBundle_inst_pathForResource_ofType(
+	ret := C.NSBundle_inst_PathForResourceOfType(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -9220,15 +9220,15 @@ func (x gen_NSBundle) PathForResource_ofType(
 
 }
 
-// PathForResource_ofType_inDirectory returns the full pathname for the resource identified by the specified name and file extension and located in the specified bundle subdirectory.
+// PathForResourceOfTypeInDirectory returns the full pathname for the resource identified by the specified name and file extension and located in the specified bundle subdirectory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409670-pathforresource?language=objc for details.
-func (x gen_NSBundle) PathForResource_ofType_inDirectory(
+func (x gen_NSBundle) PathForResourceOfTypeInDirectory(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) core.NSString {
-	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory(
+	ret := C.NSBundle_inst_PathForResourceOfTypeInDirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -9239,16 +9239,16 @@ func (x gen_NSBundle) PathForResource_ofType_inDirectory(
 
 }
 
-// PathForResource_ofType_inDirectory_forLocalization returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
+// PathForResourceOfTypeInDirectoryForLocalization returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413471-pathforresource?language=objc for details.
-func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization(
+func (x gen_NSBundle) PathForResourceOfTypeInDirectoryForLocalization(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) core.NSString {
-	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization(
+	ret := C.NSBundle_inst_PathForResourceOfTypeInDirectoryForLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -9260,14 +9260,14 @@ func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization(
 
 }
 
-// PathsForResourcesOfType_inDirectory returns an array containing the pathnames for all bundle resources having the specified filename extension and residing in the resource subdirectory.
+// PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified filename extension and residing in the resource subdirectory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413058-pathsforresourcesoftype?language=objc for details.
-func (x gen_NSBundle) PathsForResourcesOfType_inDirectory(
+func (x gen_NSBundle) PathsForResourcesOfTypeInDirectory(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) core.NSArray {
-	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory(
+	ret := C.NSBundle_inst_PathsForResourcesOfTypeInDirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9277,15 +9277,15 @@ func (x gen_NSBundle) PathsForResourcesOfType_inDirectory(
 
 }
 
-// PathsForResourcesOfType_inDirectory_forLocalization returns an array containing the file for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
+// PathsForResourcesOfTypeInDirectoryForLocalization returns an array containing the file for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416940-pathsforresourcesoftype?language=objc for details.
-func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_forLocalization(
+func (x gen_NSBundle) PathsForResourcesOfTypeInDirectoryForLocalization(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) core.NSArray {
-	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization(
+	ret := C.NSBundle_inst_PathsForResourcesOfTypeInDirectoryForLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9300,7 +9300,7 @@ func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_forLocalization(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1412388-unload?language=objc for details.
 func (x gen_NSBundle) Unload() bool {
-	ret := C.NSBundle_inst_unload(
+	ret := C.NSBundle_inst_Unload(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9312,7 +9312,7 @@ func (x gen_NSBundle) Unload() bool {
 //
 // See  for details.
 func (x gen_NSBundle) Init_asNSBundle() NSBundle {
-	ret := C.NSBundle_inst_init(
+	ret := C.NSBundle_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9324,7 +9324,7 @@ func (x gen_NSBundle) Init_asNSBundle() NSBundle {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1414821-resourceurl?language=objc for details.
 func (x gen_NSBundle) ResourceURL() core.NSURL {
-	ret := C.NSBundle_inst_resourceURL(
+	ret := C.NSBundle_inst_ResourceURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9336,7 +9336,7 @@ func (x gen_NSBundle) ResourceURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1410470-executableurl?language=objc for details.
 func (x gen_NSBundle) ExecutableURL() core.NSURL {
-	ret := C.NSBundle_inst_executableURL(
+	ret := C.NSBundle_inst_ExecutableURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9348,7 +9348,7 @@ func (x gen_NSBundle) ExecutableURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417617-privateframeworksurl?language=objc for details.
 func (x gen_NSBundle) PrivateFrameworksURL() core.NSURL {
-	ret := C.NSBundle_inst_privateFrameworksURL(
+	ret := C.NSBundle_inst_PrivateFrameworksURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9360,7 +9360,7 @@ func (x gen_NSBundle) PrivateFrameworksURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411774-sharedframeworksurl?language=objc for details.
 func (x gen_NSBundle) SharedFrameworksURL() core.NSURL {
-	ret := C.NSBundle_inst_sharedFrameworksURL(
+	ret := C.NSBundle_inst_SharedFrameworksURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9372,7 +9372,7 @@ func (x gen_NSBundle) SharedFrameworksURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409603-builtinpluginsurl?language=objc for details.
 func (x gen_NSBundle) BuiltInPlugInsURL() core.NSURL {
-	ret := C.NSBundle_inst_builtInPlugInsURL(
+	ret := C.NSBundle_inst_BuiltInPlugInsURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9384,7 +9384,7 @@ func (x gen_NSBundle) BuiltInPlugInsURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416823-sharedsupporturl?language=objc for details.
 func (x gen_NSBundle) SharedSupportURL() core.NSURL {
-	ret := C.NSBundle_inst_sharedSupportURL(
+	ret := C.NSBundle_inst_SharedSupportURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9396,7 +9396,7 @@ func (x gen_NSBundle) SharedSupportURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407276-appstorereceipturl?language=objc for details.
 func (x gen_NSBundle) AppStoreReceiptURL() core.NSURL {
-	ret := C.NSBundle_inst_appStoreReceiptURL(
+	ret := C.NSBundle_inst_AppStoreReceiptURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9408,7 +9408,7 @@ func (x gen_NSBundle) AppStoreReceiptURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417723-resourcepath?language=objc for details.
 func (x gen_NSBundle) ResourcePath() core.NSString {
-	ret := C.NSBundle_inst_resourcePath(
+	ret := C.NSBundle_inst_ResourcePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9420,7 +9420,7 @@ func (x gen_NSBundle) ResourcePath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409078-executablepath?language=objc for details.
 func (x gen_NSBundle) ExecutablePath() core.NSString {
-	ret := C.NSBundle_inst_executablePath(
+	ret := C.NSBundle_inst_ExecutablePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9432,7 +9432,7 @@ func (x gen_NSBundle) ExecutablePath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415562-privateframeworkspath?language=objc for details.
 func (x gen_NSBundle) PrivateFrameworksPath() core.NSString {
-	ret := C.NSBundle_inst_privateFrameworksPath(
+	ret := C.NSBundle_inst_PrivateFrameworksPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9444,7 +9444,7 @@ func (x gen_NSBundle) PrivateFrameworksPath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417226-sharedframeworkspath?language=objc for details.
 func (x gen_NSBundle) SharedFrameworksPath() core.NSString {
-	ret := C.NSBundle_inst_sharedFrameworksPath(
+	ret := C.NSBundle_inst_SharedFrameworksPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9456,7 +9456,7 @@ func (x gen_NSBundle) SharedFrameworksPath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1408900-builtinpluginspath?language=objc for details.
 func (x gen_NSBundle) BuiltInPlugInsPath() core.NSString {
-	ret := C.NSBundle_inst_builtInPlugInsPath(
+	ret := C.NSBundle_inst_BuiltInPlugInsPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9468,7 +9468,7 @@ func (x gen_NSBundle) BuiltInPlugInsPath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411609-sharedsupportpath?language=objc for details.
 func (x gen_NSBundle) SharedSupportPath() core.NSString {
-	ret := C.NSBundle_inst_sharedSupportPath(
+	ret := C.NSBundle_inst_SharedSupportPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9480,7 +9480,7 @@ func (x gen_NSBundle) SharedSupportPath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415654-bundleurl?language=objc for details.
 func (x gen_NSBundle) BundleURL() core.NSURL {
-	ret := C.NSBundle_inst_bundleURL(
+	ret := C.NSBundle_inst_BundleURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9492,7 +9492,7 @@ func (x gen_NSBundle) BundleURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407973-bundlepath?language=objc for details.
 func (x gen_NSBundle) BundlePath() core.NSString {
-	ret := C.NSBundle_inst_bundlePath(
+	ret := C.NSBundle_inst_BundlePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9504,7 +9504,7 @@ func (x gen_NSBundle) BundlePath() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1418023-bundleidentifier?language=objc for details.
 func (x gen_NSBundle) BundleIdentifier() core.NSString {
-	ret := C.NSBundle_inst_bundleIdentifier(
+	ret := C.NSBundle_inst_BundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9516,7 +9516,7 @@ func (x gen_NSBundle) BundleIdentifier() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413477-infodictionary?language=objc for details.
 func (x gen_NSBundle) InfoDictionary() core.NSDictionary {
-	ret := C.NSBundle_inst_infoDictionary(
+	ret := C.NSBundle_inst_InfoDictionary(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9528,7 +9528,7 @@ func (x gen_NSBundle) InfoDictionary() core.NSDictionary {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417415-localizations?language=objc for details.
 func (x gen_NSBundle) Localizations() core.NSArray {
-	ret := C.NSBundle_inst_localizations(
+	ret := C.NSBundle_inst_Localizations(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9540,7 +9540,7 @@ func (x gen_NSBundle) Localizations() core.NSArray {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413220-preferredlocalizations?language=objc for details.
 func (x gen_NSBundle) PreferredLocalizations() core.NSArray {
-	ret := C.NSBundle_inst_preferredLocalizations(
+	ret := C.NSBundle_inst_PreferredLocalizations(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9552,7 +9552,7 @@ func (x gen_NSBundle) PreferredLocalizations() core.NSArray {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417526-developmentlocalization?language=objc for details.
 func (x gen_NSBundle) DevelopmentLocalization() core.NSString {
-	ret := C.NSBundle_inst_developmentLocalization(
+	ret := C.NSBundle_inst_DevelopmentLocalization(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9564,7 +9564,7 @@ func (x gen_NSBundle) DevelopmentLocalization() core.NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407645-localizedinfodictionary?language=objc for details.
 func (x gen_NSBundle) LocalizedInfoDictionary() core.NSDictionary {
-	ret := C.NSBundle_inst_localizedInfoDictionary(
+	ret := C.NSBundle_inst_LocalizedInfoDictionary(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9576,7 +9576,7 @@ func (x gen_NSBundle) LocalizedInfoDictionary() core.NSDictionary {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415499-executablearchitectures?language=objc for details.
 func (x gen_NSBundle) ExecutableArchitectures() core.NSArray {
-	ret := C.NSBundle_inst_executableArchitectures(
+	ret := C.NSBundle_inst_ExecutableArchitectures(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9588,7 +9588,7 @@ func (x gen_NSBundle) ExecutableArchitectures() core.NSArray {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413594-loaded?language=objc for details.
 func (x gen_NSBundle) IsLoaded() bool {
-	ret := C.NSBundle_inst_isLoaded(
+	ret := C.NSBundle_inst_IsLoaded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9615,14 +9615,14 @@ func NSSound_fromRef(ref objc.Ref) NSSound {
 	return NSSound_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// InitWithContentsOfFile_byReference initializes the receiver with the audio data located at a given filepath.
+// InitWithContentsOfFileByReference initializes the receiver with the audio data located at a given filepath.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477274-initwithcontentsoffile?language=objc for details.
-func (x gen_NSSound) InitWithContentsOfFile_byReference_asNSSound(
+func (x gen_NSSound) InitWithContentsOfFileByReference_asNSSound(
 	path core.NSStringRef,
 	byRef bool,
 ) NSSound {
-	ret := C.NSSound_inst_initWithContentsOfFile_byReference(
+	ret := C.NSSound_inst_InitWithContentsOfFileByReference(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 		convertToObjCBool(byRef),
@@ -9632,14 +9632,14 @@ func (x gen_NSSound) InitWithContentsOfFile_byReference_asNSSound(
 
 }
 
-// InitWithContentsOfURL_byReference initializes the receiver with the audio data located at a given url.
+// InitWithContentsOfURLByReference initializes the receiver with the audio data located at a given url.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477288-initwithcontentsofurl?language=objc for details.
-func (x gen_NSSound) InitWithContentsOfURL_byReference_asNSSound(
+func (x gen_NSSound) InitWithContentsOfURLByReference_asNSSound(
 	url core.NSURLRef,
 	byRef bool,
 ) NSSound {
-	ret := C.NSSound_inst_initWithContentsOfURL_byReference(
+	ret := C.NSSound_inst_InitWithContentsOfURLByReference(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 		convertToObjCBool(byRef),
@@ -9655,7 +9655,7 @@ func (x gen_NSSound) InitWithContentsOfURL_byReference_asNSSound(
 func (x gen_NSSound) InitWithData_asNSSound(
 	data core.NSDataRef,
 ) NSSound {
-	ret := C.NSSound_inst_initWithData(
+	ret := C.NSSound_inst_InitWithData(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -9670,7 +9670,7 @@ func (x gen_NSSound) InitWithData_asNSSound(
 func (x gen_NSSound) InitWithPasteboard_asNSSound(
 	pasteboard NSPasteboardRef,
 ) NSSound {
-	ret := C.NSSound_inst_initWithPasteboard(
+	ret := C.NSSound_inst_InitWithPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -9683,7 +9683,7 @@ func (x gen_NSSound) InitWithPasteboard_asNSSound(
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477307-pause?language=objc for details.
 func (x gen_NSSound) Pause() bool {
-	ret := C.NSSound_inst_pause(
+	ret := C.NSSound_inst_Pause(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9695,7 +9695,7 @@ func (x gen_NSSound) Pause() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477322-play?language=objc for details.
 func (x gen_NSSound) Play() bool {
-	ret := C.NSSound_inst_play(
+	ret := C.NSSound_inst_Play(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9707,7 +9707,7 @@ func (x gen_NSSound) Play() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477336-resume?language=objc for details.
 func (x gen_NSSound) Resume() bool {
-	ret := C.NSSound_inst_resume(
+	ret := C.NSSound_inst_Resume(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9719,7 +9719,7 @@ func (x gen_NSSound) Resume() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477282-stop?language=objc for details.
 func (x gen_NSSound) Stop() bool {
-	ret := C.NSSound_inst_stop(
+	ret := C.NSSound_inst_Stop(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9733,7 +9733,7 @@ func (x gen_NSSound) Stop() bool {
 func (x gen_NSSound) WriteToPasteboard(
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSSound_inst_writeToPasteboard(
+	C.NSSound_inst_WriteToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -9746,7 +9746,7 @@ func (x gen_NSSound) WriteToPasteboard(
 //
 // See  for details.
 func (x gen_NSSound) Init_asNSSound() NSSound {
-	ret := C.NSSound_inst_init(
+	ret := C.NSSound_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9758,7 +9758,7 @@ func (x gen_NSSound) Init_asNSSound() NSSound {
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477300-delegate?language=objc for details.
 func (x gen_NSSound) Delegate() objc.Object {
-	ret := C.NSSound_inst_delegate(
+	ret := C.NSSound_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9772,7 +9772,7 @@ func (x gen_NSSound) Delegate() objc.Object {
 func (x gen_NSSound) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSSound_inst_setDelegate(
+	C.NSSound_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -9785,7 +9785,7 @@ func (x gen_NSSound) SetDelegate(
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477311-loops?language=objc for details.
 func (x gen_NSSound) Loops() bool {
-	ret := C.NSSound_inst_loops(
+	ret := C.NSSound_inst_Loops(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9799,7 +9799,7 @@ func (x gen_NSSound) Loops() bool {
 func (x gen_NSSound) SetLoops(
 	value bool,
 ) {
-	C.NSSound_inst_setLoops(
+	C.NSSound_inst_SetLoops(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -9812,7 +9812,7 @@ func (x gen_NSSound) SetLoops(
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477302-playing?language=objc for details.
 func (x gen_NSSound) IsPlaying() bool {
-	ret := C.NSSound_inst_isPlaying(
+	ret := C.NSSound_inst_IsPlaying(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9845,7 +9845,7 @@ func NSApplication_fromRef(ref objc.Ref) NSApplication {
 func (x gen_NSApplication) ActivateContextHelpMode(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_activateContextHelpMode(
+	C.NSApplication_inst_ActivateContextHelpMode(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -9860,7 +9860,7 @@ func (x gen_NSApplication) ActivateContextHelpMode(
 func (x gen_NSApplication) ActivateIgnoringOtherApps(
 	flag bool,
 ) {
-	C.NSApplication_inst_activateIgnoringOtherApps(
+	C.NSApplication_inst_ActivateIgnoringOtherApps(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -9873,7 +9873,7 @@ func (x gen_NSApplication) ActivateIgnoringOtherApps(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428703-activationpolicy?language=objc for details.
 func (x gen_NSApplication) ActivationPolicy() core.NSInteger {
-	ret := C.NSApplication_inst_activationPolicy(
+	ret := C.NSApplication_inst_ActivationPolicy(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9887,7 +9887,7 @@ func (x gen_NSApplication) ActivationPolicy() core.NSInteger {
 func (x gen_NSApplication) CancelUserAttentionRequest(
 	request core.NSInteger,
 ) {
-	C.NSApplication_inst_cancelUserAttentionRequest(
+	C.NSApplication_inst_CancelUserAttentionRequest(
 		unsafe.Pointer(x.Pointer()),
 		C.long(request),
 	)
@@ -9900,7 +9900,7 @@ func (x gen_NSApplication) CancelUserAttentionRequest(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428428-deactivate?language=objc for details.
 func (x gen_NSApplication) Deactivate() {
-	C.NSApplication_inst_deactivate(
+	C.NSApplication_inst_Deactivate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9912,7 +9912,7 @@ func (x gen_NSApplication) Deactivate() {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428376-disablerelaunchonlogin?language=objc for details.
 func (x gen_NSApplication) DisableRelaunchOnLogin() {
-	C.NSApplication_inst_disableRelaunchOnLogin(
+	C.NSApplication_inst_DisableRelaunchOnLogin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9924,7 +9924,7 @@ func (x gen_NSApplication) DisableRelaunchOnLogin() {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428453-enablerelaunchonlogin?language=objc for details.
 func (x gen_NSApplication) EnableRelaunchOnLogin() {
-	C.NSApplication_inst_enableRelaunchOnLogin(
+	C.NSApplication_inst_EnableRelaunchOnLogin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9936,7 +9936,7 @@ func (x gen_NSApplication) EnableRelaunchOnLogin() {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428771-finishlaunching?language=objc for details.
 func (x gen_NSApplication) FinishLaunching() {
-	C.NSApplication_inst_finishLaunching(
+	C.NSApplication_inst_FinishLaunching(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9950,7 +9950,7 @@ func (x gen_NSApplication) FinishLaunching() {
 func (x gen_NSApplication) HideOtherApplications(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_hideOtherApplications(
+	C.NSApplication_inst_HideOtherApplications(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -9959,14 +9959,14 @@ func (x gen_NSApplication) HideOtherApplications(
 
 }
 
-// PostEvent_atStart adds a given event to the receiver’s event queue.
+// PostEventAtStart adds a given event to the receiver’s event queue.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428710-postevent?language=objc for details.
-func (x gen_NSApplication) PostEvent_atStart(
+func (x gen_NSApplication) PostEventAtStart(
 	event NSEventRef,
 	flag bool,
 ) {
-	C.NSApplication_inst_postEvent_atStart(
+	C.NSApplication_inst_PostEventAtStart(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		convertToObjCBool(flag),
@@ -9980,7 +9980,7 @@ func (x gen_NSApplication) PostEvent_atStart(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/2967172-registerforremotenotifications?language=objc for details.
 func (x gen_NSApplication) RegisterForRemoteNotifications() {
-	C.NSApplication_inst_registerForRemoteNotifications(
+	C.NSApplication_inst_RegisterForRemoteNotifications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -9994,7 +9994,7 @@ func (x gen_NSApplication) RegisterForRemoteNotifications() {
 func (x gen_NSApplication) RegisterUserInterfaceItemSearchHandler(
 	handler objc.Ref,
 ) {
-	C.NSApplication_inst_registerUserInterfaceItemSearchHandler(
+	C.NSApplication_inst_RegisterUserInterfaceItemSearchHandler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(handler),
 	)
@@ -10009,7 +10009,7 @@ func (x gen_NSApplication) RegisterUserInterfaceItemSearchHandler(
 func (x gen_NSApplication) ReplyToApplicationShouldTerminate(
 	shouldTerminate bool,
 ) {
-	C.NSApplication_inst_replyToApplicationShouldTerminate(
+	C.NSApplication_inst_ReplyToApplicationShouldTerminate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(shouldTerminate),
 	)
@@ -10022,7 +10022,7 @@ func (x gen_NSApplication) ReplyToApplicationShouldTerminate(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428631-run?language=objc for details.
 func (x gen_NSApplication) Run() {
-	C.NSApplication_inst_run(
+	C.NSApplication_inst_Run(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10030,15 +10030,15 @@ func (x gen_NSApplication) Run() {
 
 }
 
-// SendAction_to_from sends the given action message to the given target.
+// SendActionToFrom sends the given action message to the given target.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428509-sendaction?language=objc for details.
-func (x gen_NSApplication) SendAction_to_from(
+func (x gen_NSApplication) SendActionToFrom(
 	action objc.Selector,
 	target objc.Ref,
 	sender objc.Ref,
 ) bool {
-	ret := C.NSApplication_inst_sendAction_to_from(
+	ret := C.NSApplication_inst_SendActionToFrom(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -10055,7 +10055,7 @@ func (x gen_NSApplication) SendAction_to_from(
 func (x gen_NSApplication) SendEvent(
 	event NSEventRef,
 ) {
-	C.NSApplication_inst_sendEvent(
+	C.NSApplication_inst_SendEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -10070,7 +10070,7 @@ func (x gen_NSApplication) SendEvent(
 func (x gen_NSApplication) SetActivationPolicy(
 	activationPolicy core.NSInteger,
 ) bool {
-	ret := C.NSApplication_inst_setActivationPolicy(
+	ret := C.NSApplication_inst_SetActivationPolicy(
 		unsafe.Pointer(x.Pointer()),
 		C.long(activationPolicy),
 	)
@@ -10085,7 +10085,7 @@ func (x gen_NSApplication) SetActivationPolicy(
 func (x gen_NSApplication) ShowHelp(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_showHelp(
+	C.NSApplication_inst_ShowHelp(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10100,7 +10100,7 @@ func (x gen_NSApplication) ShowHelp(
 func (x gen_NSApplication) Stop(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_stop(
+	C.NSApplication_inst_Stop(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10115,7 +10115,7 @@ func (x gen_NSApplication) Stop(
 func (x gen_NSApplication) TargetForAction(
 	action objc.Selector,
 ) objc.Object {
-	ret := C.NSApplication_inst_targetForAction(
+	ret := C.NSApplication_inst_TargetForAction(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 	)
@@ -10124,15 +10124,15 @@ func (x gen_NSApplication) TargetForAction(
 
 }
 
-// TargetForAction_to_from searches for an object that can receive the message specified by the given selector.
+// TargetForActionToFrom searches for an object that can receive the message specified by the given selector.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428658-targetforaction?language=objc for details.
-func (x gen_NSApplication) TargetForAction_to_from(
+func (x gen_NSApplication) TargetForActionToFrom(
 	action objc.Selector,
 	target objc.Ref,
 	sender objc.Ref,
 ) objc.Object {
-	ret := C.NSApplication_inst_targetForAction_to_from(
+	ret := C.NSApplication_inst_TargetForActionToFrom(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -10149,7 +10149,7 @@ func (x gen_NSApplication) TargetForAction_to_from(
 func (x gen_NSApplication) Terminate(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_terminate(
+	C.NSApplication_inst_Terminate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10164,7 +10164,7 @@ func (x gen_NSApplication) Terminate(
 func (x gen_NSApplication) ToggleTouchBarCustomizationPalette(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_toggleTouchBarCustomizationPalette(
+	C.NSApplication_inst_ToggleTouchBarCustomizationPalette(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10173,14 +10173,14 @@ func (x gen_NSApplication) ToggleTouchBarCustomizationPalette(
 
 }
 
-// TryToPerform_with dispatches an action message to the specified target.
+// TryToPerformWith dispatches an action message to the specified target.
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428366-trytoperform?language=objc for details.
-func (x gen_NSApplication) TryToPerform_with(
+func (x gen_NSApplication) TryToPerformWith(
 	action objc.Selector,
 	object objc.Ref,
 ) bool {
-	ret := C.NSApplication_inst_tryToPerform_with(
+	ret := C.NSApplication_inst_TryToPerformWith(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(object),
@@ -10196,7 +10196,7 @@ func (x gen_NSApplication) TryToPerform_with(
 func (x gen_NSApplication) UnhideAllApplications(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_unhideAllApplications(
+	C.NSApplication_inst_UnhideAllApplications(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10209,7 +10209,7 @@ func (x gen_NSApplication) UnhideAllApplications(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428747-unregisterforremotenotifications?language=objc for details.
 func (x gen_NSApplication) UnregisterForRemoteNotifications() {
-	C.NSApplication_inst_unregisterForRemoteNotifications(
+	C.NSApplication_inst_UnregisterForRemoteNotifications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10223,7 +10223,7 @@ func (x gen_NSApplication) UnregisterForRemoteNotifications() {
 func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 	handler objc.Ref,
 ) {
-	C.NSApplication_inst_unregisterUserInterfaceItemSearchHandler(
+	C.NSApplication_inst_UnregisterUserInterfaceItemSearchHandler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(handler),
 	)
@@ -10236,7 +10236,7 @@ func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 //
 // See  for details.
 func (x gen_NSApplication) Init_asNSApplication() NSApplication {
-	ret := C.NSApplication_inst_init(
+	ret := C.NSApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10248,7 +10248,7 @@ func (x gen_NSApplication) Init_asNSApplication() NSApplication {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428705-delegate?language=objc for details.
 func (x gen_NSApplication) Delegate() objc.Object {
-	ret := C.NSApplication_inst_delegate(
+	ret := C.NSApplication_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10262,7 +10262,7 @@ func (x gen_NSApplication) Delegate() objc.Object {
 func (x gen_NSApplication) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSApplication_inst_setDelegate(
+	C.NSApplication_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10275,7 +10275,7 @@ func (x gen_NSApplication) SetDelegate(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428668-currentevent?language=objc for details.
 func (x gen_NSApplication) CurrentEvent() NSEvent {
-	ret := C.NSApplication_inst_currentEvent(
+	ret := C.NSApplication_inst_CurrentEvent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10287,7 +10287,7 @@ func (x gen_NSApplication) CurrentEvent() NSEvent {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428759-running?language=objc for details.
 func (x gen_NSApplication) IsRunning() bool {
-	ret := C.NSApplication_inst_isRunning(
+	ret := C.NSApplication_inst_IsRunning(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10299,7 +10299,7 @@ func (x gen_NSApplication) IsRunning() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428493-active?language=objc for details.
 func (x gen_NSApplication) IsActive() bool {
-	ret := C.NSApplication_inst_isActive(
+	ret := C.NSApplication_inst_IsActive(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10311,7 +10311,7 @@ func (x gen_NSApplication) IsActive() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/2967173-registeredforremotenotifications?language=objc for details.
 func (x gen_NSApplication) IsRegisteredForRemoteNotifications() bool {
-	ret := C.NSApplication_inst_isRegisteredForRemoteNotifications(
+	ret := C.NSApplication_inst_IsRegisteredForRemoteNotifications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10323,7 +10323,7 @@ func (x gen_NSApplication) IsRegisteredForRemoteNotifications() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428744-applicationiconimage?language=objc for details.
 func (x gen_NSApplication) ApplicationIconImage() NSImage {
-	ret := C.NSApplication_inst_applicationIconImage(
+	ret := C.NSApplication_inst_ApplicationIconImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10337,7 +10337,7 @@ func (x gen_NSApplication) ApplicationIconImage() NSImage {
 func (x gen_NSApplication) SetApplicationIconImage(
 	value NSImageRef,
 ) {
-	C.NSApplication_inst_setApplicationIconImage(
+	C.NSApplication_inst_SetApplicationIconImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10350,7 +10350,7 @@ func (x gen_NSApplication) SetApplicationIconImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428644-helpmenu?language=objc for details.
 func (x gen_NSApplication) HelpMenu() NSMenu {
-	ret := C.NSApplication_inst_helpMenu(
+	ret := C.NSApplication_inst_HelpMenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10364,7 +10364,7 @@ func (x gen_NSApplication) HelpMenu() NSMenu {
 func (x gen_NSApplication) SetHelpMenu(
 	value NSMenuRef,
 ) {
-	C.NSApplication_inst_setHelpMenu(
+	C.NSApplication_inst_SetHelpMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10377,7 +10377,7 @@ func (x gen_NSApplication) SetHelpMenu(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428467-servicesprovider?language=objc for details.
 func (x gen_NSApplication) ServicesProvider() objc.Object {
-	ret := C.NSApplication_inst_servicesProvider(
+	ret := C.NSApplication_inst_ServicesProvider(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10391,7 +10391,7 @@ func (x gen_NSApplication) ServicesProvider() objc.Object {
 func (x gen_NSApplication) SetServicesProvider(
 	value objc.Ref,
 ) {
-	C.NSApplication_inst_setServicesProvider(
+	C.NSApplication_inst_SetServicesProvider(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10404,7 +10404,7 @@ func (x gen_NSApplication) SetServicesProvider(
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428469-fullkeyboardaccessenabled?language=objc for details.
 func (x gen_NSApplication) IsFullKeyboardAccessEnabled() bool {
-	ret := C.NSApplication_inst_isFullKeyboardAccessEnabled(
+	ret := C.NSApplication_inst_IsFullKeyboardAccessEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10416,7 +10416,7 @@ func (x gen_NSApplication) IsFullKeyboardAccessEnabled() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1494283-ordereddocuments?language=objc for details.
 func (x gen_NSApplication) OrderedDocuments() core.NSArray {
-	ret := C.NSApplication_inst_orderedDocuments(
+	ret := C.NSApplication_inst_OrderedDocuments(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10428,7 +10428,7 @@ func (x gen_NSApplication) OrderedDocuments() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1494287-orderedwindows?language=objc for details.
 func (x gen_NSApplication) OrderedWindows() core.NSArray {
-	ret := C.NSApplication_inst_orderedWindows(
+	ret := C.NSApplication_inst_OrderedWindows(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10440,7 +10440,7 @@ func (x gen_NSApplication) OrderedWindows() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsapplication/1428634-mainmenu?language=objc for details.
 func (x gen_NSApplication) MainMenu() NSMenu {
-	ret := C.NSApplication_inst_mainMenu(
+	ret := C.NSApplication_inst_MainMenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10454,7 +10454,7 @@ func (x gen_NSApplication) MainMenu() NSMenu {
 func (x gen_NSApplication) SetMainMenu(
 	value NSMenuRef,
 ) {
-	C.NSApplication_inst_setMainMenu(
+	C.NSApplication_inst_SetMainMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10486,7 +10486,7 @@ func NSControl_fromRef(ref objc.Ref) NSControl {
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428867-abortediting?language=objc for details.
 func (x gen_NSControl) AbortEditing() bool {
-	ret := C.NSControl_inst_abortEditing(
+	ret := C.NSControl_inst_AbortEditing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10498,7 +10498,7 @@ func (x gen_NSControl) AbortEditing() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428980-currenteditor?language=objc for details.
 func (x gen_NSControl) CurrentEditor() NSText {
-	ret := C.NSControl_inst_currentEditor(
+	ret := C.NSControl_inst_CurrentEditor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10506,14 +10506,14 @@ func (x gen_NSControl) CurrentEditor() NSText {
 
 }
 
-// DrawWithExpansionFrame_inView performs custom expansion tool tip drawing.
+// DrawWithExpansionFrameInView performs custom expansion tool tip drawing.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428895-drawwithexpansionframe?language=objc for details.
-func (x gen_NSControl) DrawWithExpansionFrame_inView(
+func (x gen_NSControl) DrawWithExpansionFrameInView(
 	contentFrame core.NSRect,
 	view NSViewRef,
 ) {
-	C.NSControl_inst_drawWithExpansionFrame_inView(
+	C.NSControl_inst_DrawWithExpansionFrameInView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
 		objc.RefPointer(view),
@@ -10523,16 +10523,16 @@ func (x gen_NSControl) DrawWithExpansionFrame_inView(
 
 }
 
-// EditWithFrame_editor_delegate_event begins editing of the receiver’s text using the specified field editor.
+// EditWithFrameEditorDelegateEvent begins editing of the receiver’s text using the specified field editor.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428919-editwithframe?language=objc for details.
-func (x gen_NSControl) EditWithFrame_editor_delegate_event(
+func (x gen_NSControl) EditWithFrameEditorDelegateEvent(
 	rect core.NSRect,
 	textObj NSTextRef,
 	delegate objc.Ref,
 	event NSEventRef,
 ) {
-	C.NSControl_inst_editWithFrame_editor_delegate_event(
+	C.NSControl_inst_EditWithFrameEditorDelegateEvent(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(textObj),
@@ -10550,7 +10550,7 @@ func (x gen_NSControl) EditWithFrame_editor_delegate_event(
 func (x gen_NSControl) EndEditing(
 	textObj NSTextRef,
 ) {
-	C.NSControl_inst_endEditing(
+	C.NSControl_inst_EndEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObj),
 	)
@@ -10565,7 +10565,7 @@ func (x gen_NSControl) EndEditing(
 func (x gen_NSControl) ExpansionFrameWithFrame(
 	contentFrame core.NSRect,
 ) core.NSRect {
-	ret := C.NSControl_inst_expansionFrameWithFrame(
+	ret := C.NSControl_inst_ExpansionFrameWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
 	)
@@ -10580,7 +10580,7 @@ func (x gen_NSControl) ExpansionFrameWithFrame(
 func (x gen_NSControl) InitWithFrame_asNSControl(
 	frameRect core.NSRect,
 ) NSControl {
-	ret := C.NSControl_inst_initWithFrame(
+	ret := C.NSControl_inst_InitWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -10595,7 +10595,7 @@ func (x gen_NSControl) InitWithFrame_asNSControl(
 func (x gen_NSControl) MouseDown(
 	event NSEventRef,
 ) {
-	C.NSControl_inst_mouseDown(
+	C.NSControl_inst_MouseDown(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -10610,7 +10610,7 @@ func (x gen_NSControl) MouseDown(
 func (x gen_NSControl) PerformClick(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_performClick(
+	C.NSControl_inst_PerformClick(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10619,17 +10619,17 @@ func (x gen_NSControl) PerformClick(
 
 }
 
-// SelectWithFrame_editor_delegate_start_length selects the specified text range in the receiver's field editor.
+// SelectWithFrameEditorDelegateStartLength selects the specified text range in the receiver's field editor.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428968-selectwithframe?language=objc for details.
-func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length(
+func (x gen_NSControl) SelectWithFrameEditorDelegateStartLength(
 	rect core.NSRect,
 	textObj NSTextRef,
 	delegate objc.Ref,
 	selStart core.NSInteger,
 	selLength core.NSInteger,
 ) {
-	C.NSControl_inst_selectWithFrame_editor_delegate_start_length(
+	C.NSControl_inst_SelectWithFrameEditorDelegateStartLength(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(textObj),
@@ -10642,14 +10642,14 @@ func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length(
 
 }
 
-// SendAction_to causes the specified action to be sent to the target.
+// SendActionTo causes the specified action to be sent to the target.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428851-sendaction?language=objc for details.
-func (x gen_NSControl) SendAction_to(
+func (x gen_NSControl) SendActionTo(
 	action objc.Selector,
 	target objc.Ref,
 ) bool {
-	ret := C.NSControl_inst_sendAction_to(
+	ret := C.NSControl_inst_SendActionTo(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -10665,7 +10665,7 @@ func (x gen_NSControl) SendAction_to(
 func (x gen_NSControl) SizeThatFits(
 	size core.NSSize,
 ) core.NSSize {
-	ret := C.NSControl_inst_sizeThatFits(
+	ret := C.NSControl_inst_SizeThatFits(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -10678,7 +10678,7 @@ func (x gen_NSControl) SizeThatFits(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428877-sizetofit?language=objc for details.
 func (x gen_NSControl) SizeToFit() {
-	C.NSControl_inst_sizeToFit(
+	C.NSControl_inst_SizeToFit(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10692,7 +10692,7 @@ func (x gen_NSControl) SizeToFit() {
 func (x gen_NSControl) TakeDoubleValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeDoubleValueFrom(
+	C.NSControl_inst_TakeDoubleValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10707,7 +10707,7 @@ func (x gen_NSControl) TakeDoubleValueFrom(
 func (x gen_NSControl) TakeFloatValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeFloatValueFrom(
+	C.NSControl_inst_TakeFloatValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10722,7 +10722,7 @@ func (x gen_NSControl) TakeFloatValueFrom(
 func (x gen_NSControl) TakeIntValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeIntValueFrom(
+	C.NSControl_inst_TakeIntValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10737,7 +10737,7 @@ func (x gen_NSControl) TakeIntValueFrom(
 func (x gen_NSControl) TakeIntegerValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeIntegerValueFrom(
+	C.NSControl_inst_TakeIntegerValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10752,7 +10752,7 @@ func (x gen_NSControl) TakeIntegerValueFrom(
 func (x gen_NSControl) TakeObjectValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeObjectValueFrom(
+	C.NSControl_inst_TakeObjectValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10767,7 +10767,7 @@ func (x gen_NSControl) TakeObjectValueFrom(
 func (x gen_NSControl) TakeStringValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeStringValueFrom(
+	C.NSControl_inst_TakeStringValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -10780,7 +10780,7 @@ func (x gen_NSControl) TakeStringValueFrom(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428855-validateediting?language=objc for details.
 func (x gen_NSControl) ValidateEditing() {
-	C.NSControl_inst_validateEditing(
+	C.NSControl_inst_ValidateEditing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10792,7 +10792,7 @@ func (x gen_NSControl) ValidateEditing() {
 //
 // See  for details.
 func (x gen_NSControl) Init_asNSControl() NSControl {
-	ret := C.NSControl_inst_init(
+	ret := C.NSControl_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10804,7 +10804,7 @@ func (x gen_NSControl) Init_asNSControl() NSControl {
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428970-enabled?language=objc for details.
 func (x gen_NSControl) IsEnabled() bool {
-	ret := C.NSControl_inst_isEnabled(
+	ret := C.NSControl_inst_IsEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10818,7 +10818,7 @@ func (x gen_NSControl) IsEnabled() bool {
 func (x gen_NSControl) SetEnabled(
 	value bool,
 ) {
-	C.NSControl_inst_setEnabled(
+	C.NSControl_inst_SetEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10831,7 +10831,7 @@ func (x gen_NSControl) SetEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428939-intvalue?language=objc for details.
 func (x gen_NSControl) IntValue() int32 {
-	ret := C.NSControl_inst_intValue(
+	ret := C.NSControl_inst_IntValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10845,7 +10845,7 @@ func (x gen_NSControl) IntValue() int32 {
 func (x gen_NSControl) SetIntValue(
 	value int32,
 ) {
-	C.NSControl_inst_setIntValue(
+	C.NSControl_inst_SetIntValue(
 		unsafe.Pointer(x.Pointer()),
 		C.int(value),
 	)
@@ -10858,7 +10858,7 @@ func (x gen_NSControl) SetIntValue(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428969-integervalue?language=objc for details.
 func (x gen_NSControl) IntegerValue() core.NSInteger {
-	ret := C.NSControl_inst_integerValue(
+	ret := C.NSControl_inst_IntegerValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10872,7 +10872,7 @@ func (x gen_NSControl) IntegerValue() core.NSInteger {
 func (x gen_NSControl) SetIntegerValue(
 	value core.NSInteger,
 ) {
-	C.NSControl_inst_setIntegerValue(
+	C.NSControl_inst_SetIntegerValue(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -10885,7 +10885,7 @@ func (x gen_NSControl) SetIntegerValue(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428849-objectvalue?language=objc for details.
 func (x gen_NSControl) ObjectValue() objc.Object {
-	ret := C.NSControl_inst_objectValue(
+	ret := C.NSControl_inst_ObjectValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10899,7 +10899,7 @@ func (x gen_NSControl) ObjectValue() objc.Object {
 func (x gen_NSControl) SetObjectValue(
 	value objc.Ref,
 ) {
-	C.NSControl_inst_setObjectValue(
+	C.NSControl_inst_SetObjectValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10912,7 +10912,7 @@ func (x gen_NSControl) SetObjectValue(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428950-stringvalue?language=objc for details.
 func (x gen_NSControl) StringValue() core.NSString {
-	ret := C.NSControl_inst_stringValue(
+	ret := C.NSControl_inst_StringValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10926,7 +10926,7 @@ func (x gen_NSControl) StringValue() core.NSString {
 func (x gen_NSControl) SetStringValue(
 	value core.NSStringRef,
 ) {
-	C.NSControl_inst_setStringValue(
+	C.NSControl_inst_SetStringValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10939,7 +10939,7 @@ func (x gen_NSControl) SetStringValue(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428916-attributedstringvalue?language=objc for details.
 func (x gen_NSControl) AttributedStringValue() core.NSAttributedString {
-	ret := C.NSControl_inst_attributedStringValue(
+	ret := C.NSControl_inst_AttributedStringValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10953,7 +10953,7 @@ func (x gen_NSControl) AttributedStringValue() core.NSAttributedString {
 func (x gen_NSControl) SetAttributedStringValue(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSControl_inst_setAttributedStringValue(
+	C.NSControl_inst_SetAttributedStringValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10966,7 +10966,7 @@ func (x gen_NSControl) SetAttributedStringValue(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428914-font?language=objc for details.
 func (x gen_NSControl) Font() NSFont {
-	ret := C.NSControl_inst_font(
+	ret := C.NSControl_inst_Font(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -10980,7 +10980,7 @@ func (x gen_NSControl) Font() NSFont {
 func (x gen_NSControl) SetFont(
 	value NSFontRef,
 ) {
-	C.NSControl_inst_setFont(
+	C.NSControl_inst_SetFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10993,7 +10993,7 @@ func (x gen_NSControl) SetFont(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428929-usessinglelinemode?language=objc for details.
 func (x gen_NSControl) UsesSingleLineMode() bool {
-	ret := C.NSControl_inst_usesSingleLineMode(
+	ret := C.NSControl_inst_UsesSingleLineMode(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11007,7 +11007,7 @@ func (x gen_NSControl) UsesSingleLineMode() bool {
 func (x gen_NSControl) SetUsesSingleLineMode(
 	value bool,
 ) {
-	C.NSControl_inst_setUsesSingleLineMode(
+	C.NSControl_inst_SetUsesSingleLineMode(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11020,7 +11020,7 @@ func (x gen_NSControl) SetUsesSingleLineMode(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428962-allowsexpansiontooltips?language=objc for details.
 func (x gen_NSControl) AllowsExpansionToolTips() bool {
-	ret := C.NSControl_inst_allowsExpansionToolTips(
+	ret := C.NSControl_inst_AllowsExpansionToolTips(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11034,7 +11034,7 @@ func (x gen_NSControl) AllowsExpansionToolTips() bool {
 func (x gen_NSControl) SetAllowsExpansionToolTips(
 	value bool,
 ) {
-	C.NSControl_inst_setAllowsExpansionToolTips(
+	C.NSControl_inst_SetAllowsExpansionToolTips(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11047,7 +11047,7 @@ func (x gen_NSControl) SetAllowsExpansionToolTips(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428927-highlighted?language=objc for details.
 func (x gen_NSControl) IsHighlighted() bool {
-	ret := C.NSControl_inst_isHighlighted(
+	ret := C.NSControl_inst_IsHighlighted(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11061,7 +11061,7 @@ func (x gen_NSControl) IsHighlighted() bool {
 func (x gen_NSControl) SetHighlighted(
 	value bool,
 ) {
-	C.NSControl_inst_setHighlighted(
+	C.NSControl_inst_SetHighlighted(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11074,7 +11074,7 @@ func (x gen_NSControl) SetHighlighted(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428956-action?language=objc for details.
 func (x gen_NSControl) Action() objc.Selector {
-	ret := C.NSControl_inst_action(
+	ret := C.NSControl_inst_Action(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11088,7 +11088,7 @@ func (x gen_NSControl) Action() objc.Selector {
 func (x gen_NSControl) SetAction(
 	value objc.Selector,
 ) {
-	C.NSControl_inst_setAction(
+	C.NSControl_inst_SetAction(
 		unsafe.Pointer(x.Pointer()),
 		value.SelectorAddress(),
 	)
@@ -11101,7 +11101,7 @@ func (x gen_NSControl) SetAction(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428885-target?language=objc for details.
 func (x gen_NSControl) Target() objc.Object {
-	ret := C.NSControl_inst_target(
+	ret := C.NSControl_inst_Target(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11115,7 +11115,7 @@ func (x gen_NSControl) Target() objc.Object {
 func (x gen_NSControl) SetTarget(
 	value objc.Ref,
 ) {
-	C.NSControl_inst_setTarget(
+	C.NSControl_inst_SetTarget(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11128,7 +11128,7 @@ func (x gen_NSControl) SetTarget(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428952-continuous?language=objc for details.
 func (x gen_NSControl) IsContinuous() bool {
-	ret := C.NSControl_inst_isContinuous(
+	ret := C.NSControl_inst_IsContinuous(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11142,7 +11142,7 @@ func (x gen_NSControl) IsContinuous() bool {
 func (x gen_NSControl) SetContinuous(
 	value bool,
 ) {
-	C.NSControl_inst_setContinuous(
+	C.NSControl_inst_SetContinuous(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11155,7 +11155,7 @@ func (x gen_NSControl) SetContinuous(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428910-tag?language=objc for details.
 func (x gen_NSControl) Tag() core.NSInteger {
-	ret := C.NSControl_inst_tag(
+	ret := C.NSControl_inst_Tag(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11169,7 +11169,7 @@ func (x gen_NSControl) Tag() core.NSInteger {
 func (x gen_NSControl) SetTag(
 	value core.NSInteger,
 ) {
-	C.NSControl_inst_setTag(
+	C.NSControl_inst_SetTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -11182,7 +11182,7 @@ func (x gen_NSControl) SetTag(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428976-refusesfirstresponder?language=objc for details.
 func (x gen_NSControl) RefusesFirstResponder() bool {
-	ret := C.NSControl_inst_refusesFirstResponder(
+	ret := C.NSControl_inst_RefusesFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11196,7 +11196,7 @@ func (x gen_NSControl) RefusesFirstResponder() bool {
 func (x gen_NSControl) SetRefusesFirstResponder(
 	value bool,
 ) {
-	C.NSControl_inst_setRefusesFirstResponder(
+	C.NSControl_inst_SetRefusesFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11209,7 +11209,7 @@ func (x gen_NSControl) SetRefusesFirstResponder(
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428863-ignoresmulticlick?language=objc for details.
 func (x gen_NSControl) IgnoresMultiClick() bool {
-	ret := C.NSControl_inst_ignoresMultiClick(
+	ret := C.NSControl_inst_IgnoresMultiClick(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11223,7 +11223,7 @@ func (x gen_NSControl) IgnoresMultiClick() bool {
 func (x gen_NSControl) SetIgnoresMultiClick(
 	value bool,
 ) {
-	C.NSControl_inst_setIgnoresMultiClick(
+	C.NSControl_inst_SetIgnoresMultiClick(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11257,7 +11257,7 @@ func NSButton_fromRef(ref objc.Ref) NSButton {
 func (x gen_NSButton) CompressWithPrioritizedCompressionOptions(
 	prioritizedOptions core.NSArrayRef,
 ) {
-	C.NSButton_inst_compressWithPrioritizedCompressionOptions(
+	C.NSButton_inst_CompressWithPrioritizedCompressionOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(prioritizedOptions),
 	)
@@ -11272,7 +11272,7 @@ func (x gen_NSButton) CompressWithPrioritizedCompressionOptions(
 func (x gen_NSButton) Highlight(
 	flag bool,
 ) {
-	C.NSButton_inst_highlight(
+	C.NSButton_inst_Highlight(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -11287,7 +11287,7 @@ func (x gen_NSButton) Highlight(
 func (x gen_NSButton) MinimumSizeWithPrioritizedCompressionOptions(
 	prioritizedOptions core.NSArrayRef,
 ) core.NSSize {
-	ret := C.NSButton_inst_minimumSizeWithPrioritizedCompressionOptions(
+	ret := C.NSButton_inst_MinimumSizeWithPrioritizedCompressionOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(prioritizedOptions),
 	)
@@ -11302,7 +11302,7 @@ func (x gen_NSButton) MinimumSizeWithPrioritizedCompressionOptions(
 func (x gen_NSButton) PerformKeyEquivalent(
 	key NSEventRef,
 ) bool {
-	ret := C.NSButton_inst_performKeyEquivalent(
+	ret := C.NSButton_inst_PerformKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 	)
@@ -11315,7 +11315,7 @@ func (x gen_NSButton) PerformKeyEquivalent(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1530594-setnextstate?language=objc for details.
 func (x gen_NSButton) SetNextState() {
-	C.NSButton_inst_setNextState(
+	C.NSButton_inst_SetNextState(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11327,7 +11327,7 @@ func (x gen_NSButton) SetNextState() {
 //
 // See  for details.
 func (x gen_NSButton) Init_asNSButton() NSButton {
-	ret := C.NSButton_inst_init(
+	ret := C.NSButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11339,7 +11339,7 @@ func (x gen_NSButton) Init_asNSButton() NSButton {
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/3000781-contenttintcolor?language=objc for details.
 func (x gen_NSButton) ContentTintColor() NSColor {
-	ret := C.NSButton_inst_contentTintColor(
+	ret := C.NSButton_inst_ContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11353,7 +11353,7 @@ func (x gen_NSButton) ContentTintColor() NSColor {
 func (x gen_NSButton) SetContentTintColor(
 	value NSColorRef,
 ) {
-	C.NSButton_inst_setContentTintColor(
+	C.NSButton_inst_SetContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11366,7 +11366,7 @@ func (x gen_NSButton) SetContentTintColor(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/3622469-hasdestructiveaction?language=objc for details.
 func (x gen_NSButton) HasDestructiveAction() bool {
-	ret := C.NSButton_inst_hasDestructiveAction(
+	ret := C.NSButton_inst_HasDestructiveAction(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11380,7 +11380,7 @@ func (x gen_NSButton) HasDestructiveAction() bool {
 func (x gen_NSButton) SetHasDestructiveAction(
 	value bool,
 ) {
-	C.NSButton_inst_setHasDestructiveAction(
+	C.NSButton_inst_SetHasDestructiveAction(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11393,7 +11393,7 @@ func (x gen_NSButton) SetHasDestructiveAction(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc for details.
 func (x gen_NSButton) AlternateTitle() core.NSString {
-	ret := C.NSButton_inst_alternateTitle(
+	ret := C.NSButton_inst_AlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11407,7 +11407,7 @@ func (x gen_NSButton) AlternateTitle() core.NSString {
 func (x gen_NSButton) SetAlternateTitle(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setAlternateTitle(
+	C.NSButton_inst_SetAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11420,7 +11420,7 @@ func (x gen_NSButton) SetAlternateTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1524640-attributedtitle?language=objc for details.
 func (x gen_NSButton) AttributedTitle() core.NSAttributedString {
-	ret := C.NSButton_inst_attributedTitle(
+	ret := C.NSButton_inst_AttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11434,7 +11434,7 @@ func (x gen_NSButton) AttributedTitle() core.NSAttributedString {
 func (x gen_NSButton) SetAttributedTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSButton_inst_setAttributedTitle(
+	C.NSButton_inst_SetAttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11447,7 +11447,7 @@ func (x gen_NSButton) SetAttributedTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc for details.
 func (x gen_NSButton) AttributedAlternateTitle() core.NSAttributedString {
-	ret := C.NSButton_inst_attributedAlternateTitle(
+	ret := C.NSButton_inst_AttributedAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11461,7 +11461,7 @@ func (x gen_NSButton) AttributedAlternateTitle() core.NSAttributedString {
 func (x gen_NSButton) SetAttributedAlternateTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSButton_inst_setAttributedAlternateTitle(
+	C.NSButton_inst_SetAttributedAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11474,7 +11474,7 @@ func (x gen_NSButton) SetAttributedAlternateTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc for details.
 func (x gen_NSButton) Title() core.NSString {
-	ret := C.NSButton_inst_title(
+	ret := C.NSButton_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11488,7 +11488,7 @@ func (x gen_NSButton) Title() core.NSString {
 func (x gen_NSButton) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setTitle(
+	C.NSButton_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11501,7 +11501,7 @@ func (x gen_NSButton) SetTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc for details.
 func (x gen_NSButton) Sound() NSSound {
-	ret := C.NSButton_inst_sound(
+	ret := C.NSButton_inst_Sound(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11515,7 +11515,7 @@ func (x gen_NSButton) Sound() NSSound {
 func (x gen_NSButton) SetSound(
 	value NSSoundRef,
 ) {
-	C.NSButton_inst_setSound(
+	C.NSButton_inst_SetSound(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11528,7 +11528,7 @@ func (x gen_NSButton) SetSound(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1532300-springloaded?language=objc for details.
 func (x gen_NSButton) IsSpringLoaded() bool {
-	ret := C.NSButton_inst_isSpringLoaded(
+	ret := C.NSButton_inst_IsSpringLoaded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11542,7 +11542,7 @@ func (x gen_NSButton) IsSpringLoaded() bool {
 func (x gen_NSButton) SetSpringLoaded(
 	value bool,
 ) {
-	C.NSButton_inst_setSpringLoaded(
+	C.NSButton_inst_SetSpringLoaded(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11555,7 +11555,7 @@ func (x gen_NSButton) SetSpringLoaded(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1534413-maxacceleratorlevel?language=objc for details.
 func (x gen_NSButton) MaxAcceleratorLevel() core.NSInteger {
-	ret := C.NSButton_inst_maxAcceleratorLevel(
+	ret := C.NSButton_inst_MaxAcceleratorLevel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11569,7 +11569,7 @@ func (x gen_NSButton) MaxAcceleratorLevel() core.NSInteger {
 func (x gen_NSButton) SetMaxAcceleratorLevel(
 	value core.NSInteger,
 ) {
-	C.NSButton_inst_setMaxAcceleratorLevel(
+	C.NSButton_inst_SetMaxAcceleratorLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -11582,7 +11582,7 @@ func (x gen_NSButton) SetMaxAcceleratorLevel(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc for details.
 func (x gen_NSButton) Image() NSImage {
-	ret := C.NSButton_inst_image(
+	ret := C.NSButton_inst_Image(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11596,7 +11596,7 @@ func (x gen_NSButton) Image() NSImage {
 func (x gen_NSButton) SetImage(
 	value NSImageRef,
 ) {
-	C.NSButton_inst_setImage(
+	C.NSButton_inst_SetImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11609,7 +11609,7 @@ func (x gen_NSButton) SetImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc for details.
 func (x gen_NSButton) AlternateImage() NSImage {
-	ret := C.NSButton_inst_alternateImage(
+	ret := C.NSButton_inst_AlternateImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11623,7 +11623,7 @@ func (x gen_NSButton) AlternateImage() NSImage {
 func (x gen_NSButton) SetAlternateImage(
 	value NSImageRef,
 ) {
-	C.NSButton_inst_setAlternateImage(
+	C.NSButton_inst_SetAlternateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11636,7 +11636,7 @@ func (x gen_NSButton) SetAlternateImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1525565-bordered?language=objc for details.
 func (x gen_NSButton) IsBordered() bool {
-	ret := C.NSButton_inst_isBordered(
+	ret := C.NSButton_inst_IsBordered(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11650,7 +11650,7 @@ func (x gen_NSButton) IsBordered() bool {
 func (x gen_NSButton) SetBordered(
 	value bool,
 ) {
-	C.NSButton_inst_setBordered(
+	C.NSButton_inst_SetBordered(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11663,7 +11663,7 @@ func (x gen_NSButton) SetBordered(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1529659-transparent?language=objc for details.
 func (x gen_NSButton) IsTransparent() bool {
-	ret := C.NSButton_inst_isTransparent(
+	ret := C.NSButton_inst_IsTransparent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11677,7 +11677,7 @@ func (x gen_NSButton) IsTransparent() bool {
 func (x gen_NSButton) SetTransparent(
 	value bool,
 ) {
-	C.NSButton_inst_setTransparent(
+	C.NSButton_inst_SetTransparent(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11690,7 +11690,7 @@ func (x gen_NSButton) SetTransparent(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc for details.
 func (x gen_NSButton) BezelColor() NSColor {
-	ret := C.NSButton_inst_bezelColor(
+	ret := C.NSButton_inst_BezelColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11704,7 +11704,7 @@ func (x gen_NSButton) BezelColor() NSColor {
 func (x gen_NSButton) SetBezelColor(
 	value NSColorRef,
 ) {
-	C.NSButton_inst_setBezelColor(
+	C.NSButton_inst_SetBezelColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11717,7 +11717,7 @@ func (x gen_NSButton) SetBezelColor(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1532248-showsborderonlywhilemouseinside?language=objc for details.
 func (x gen_NSButton) ShowsBorderOnlyWhileMouseInside() bool {
-	ret := C.NSButton_inst_showsBorderOnlyWhileMouseInside(
+	ret := C.NSButton_inst_ShowsBorderOnlyWhileMouseInside(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11731,7 +11731,7 @@ func (x gen_NSButton) ShowsBorderOnlyWhileMouseInside() bool {
 func (x gen_NSButton) SetShowsBorderOnlyWhileMouseInside(
 	value bool,
 ) {
-	C.NSButton_inst_setShowsBorderOnlyWhileMouseInside(
+	C.NSButton_inst_SetShowsBorderOnlyWhileMouseInside(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11744,7 +11744,7 @@ func (x gen_NSButton) SetShowsBorderOnlyWhileMouseInside(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/2092414-imagehugstitle?language=objc for details.
 func (x gen_NSButton) ImageHugsTitle() bool {
-	ret := C.NSButton_inst_imageHugsTitle(
+	ret := C.NSButton_inst_ImageHugsTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11758,7 +11758,7 @@ func (x gen_NSButton) ImageHugsTitle() bool {
 func (x gen_NSButton) SetImageHugsTitle(
 	value bool,
 ) {
-	C.NSButton_inst_setImageHugsTitle(
+	C.NSButton_inst_SetImageHugsTitle(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11771,7 +11771,7 @@ func (x gen_NSButton) SetImageHugsTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1528670-allowsmixedstate?language=objc for details.
 func (x gen_NSButton) AllowsMixedState() bool {
-	ret := C.NSButton_inst_allowsMixedState(
+	ret := C.NSButton_inst_AllowsMixedState(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11785,7 +11785,7 @@ func (x gen_NSButton) AllowsMixedState() bool {
 func (x gen_NSButton) SetAllowsMixedState(
 	value bool,
 ) {
-	C.NSButton_inst_setAllowsMixedState(
+	C.NSButton_inst_SetAllowsMixedState(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11798,7 +11798,7 @@ func (x gen_NSButton) SetAllowsMixedState(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1528907-state?language=objc for details.
 func (x gen_NSButton) State() core.NSInteger {
-	ret := C.NSButton_inst_state(
+	ret := C.NSButton_inst_State(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11812,7 +11812,7 @@ func (x gen_NSButton) State() core.NSInteger {
 func (x gen_NSButton) SetState(
 	value core.NSInteger,
 ) {
-	C.NSButton_inst_setState(
+	C.NSButton_inst_SetState(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -11825,7 +11825,7 @@ func (x gen_NSButton) SetState(
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc for details.
 func (x gen_NSButton) KeyEquivalent() core.NSString {
-	ret := C.NSButton_inst_keyEquivalent(
+	ret := C.NSButton_inst_KeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11839,7 +11839,7 @@ func (x gen_NSButton) KeyEquivalent() core.NSString {
 func (x gen_NSButton) SetKeyEquivalent(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setKeyEquivalent(
+	C.NSButton_inst_SetKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11871,7 +11871,7 @@ func NSEvent_fromRef(ref objc.Ref) NSEvent {
 //
 // See  for details.
 func (x gen_NSEvent) Init_asNSEvent() NSEvent {
-	ret := C.NSEvent_inst_init(
+	ret := C.NSEvent_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11883,7 +11883,7 @@ func (x gen_NSEvent) Init_asNSEvent() NSEvent {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1529068-locationinwindow?language=objc for details.
 func (x gen_NSEvent) LocationInWindow() core.NSPoint {
-	ret := C.NSEvent_inst_locationInWindow(
+	ret := C.NSEvent_inst_LocationInWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11895,7 +11895,7 @@ func (x gen_NSEvent) LocationInWindow() core.NSPoint {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1530808-window?language=objc for details.
 func (x gen_NSEvent) Window() NSWindow {
-	ret := C.NSEvent_inst_window(
+	ret := C.NSEvent_inst_Window(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11907,7 +11907,7 @@ func (x gen_NSEvent) Window() NSWindow {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1531361-windownumber?language=objc for details.
 func (x gen_NSEvent) WindowNumber() core.NSInteger {
-	ret := C.NSEvent_inst_windowNumber(
+	ret := C.NSEvent_inst_WindowNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11919,7 +11919,7 @@ func (x gen_NSEvent) WindowNumber() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1525143-eventref?language=objc for details.
 func (x gen_NSEvent) EventRef() unsafe.Pointer {
-	ret := C.NSEvent_inst_eventRef(
+	ret := C.NSEvent_inst_EventRef(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11931,7 +11931,7 @@ func (x gen_NSEvent) EventRef() unsafe.Pointer {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534183-characters?language=objc for details.
 func (x gen_NSEvent) Characters() core.NSString {
-	ret := C.NSEvent_inst_characters(
+	ret := C.NSEvent_inst_Characters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11943,7 +11943,7 @@ func (x gen_NSEvent) Characters() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1524605-charactersignoringmodifiers?language=objc for details.
 func (x gen_NSEvent) CharactersIgnoringModifiers() core.NSString {
-	ret := C.NSEvent_inst_charactersIgnoringModifiers(
+	ret := C.NSEvent_inst_CharactersIgnoringModifiers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11955,7 +11955,7 @@ func (x gen_NSEvent) CharactersIgnoringModifiers() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528049-arepeat?language=objc for details.
 func (x gen_NSEvent) IsARepeat() bool {
-	ret := C.NSEvent_inst_isARepeat(
+	ret := C.NSEvent_inst_IsARepeat(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11967,7 +11967,7 @@ func (x gen_NSEvent) IsARepeat() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527828-buttonnumber?language=objc for details.
 func (x gen_NSEvent) ButtonNumber() core.NSInteger {
-	ret := C.NSEvent_inst_buttonNumber(
+	ret := C.NSEvent_inst_ButtonNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11979,7 +11979,7 @@ func (x gen_NSEvent) ButtonNumber() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528200-clickcount?language=objc for details.
 func (x gen_NSEvent) ClickCount() core.NSInteger {
-	ret := C.NSEvent_inst_clickCount(
+	ret := C.NSEvent_inst_ClickCount(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -11991,7 +11991,7 @@ func (x gen_NSEvent) ClickCount() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1535220-eventnumber?language=objc for details.
 func (x gen_NSEvent) EventNumber() core.NSInteger {
-	ret := C.NSEvent_inst_eventNumber(
+	ret := C.NSEvent_inst_EventNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12003,7 +12003,7 @@ func (x gen_NSEvent) EventNumber() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1533974-trackingnumber?language=objc for details.
 func (x gen_NSEvent) TrackingNumber() core.NSInteger {
-	ret := C.NSEvent_inst_trackingNumber(
+	ret := C.NSEvent_inst_TrackingNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12015,7 +12015,7 @@ func (x gen_NSEvent) TrackingNumber() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1526810-userdata?language=objc for details.
 func (x gen_NSEvent) UserData() unsafe.Pointer {
-	ret := C.NSEvent_inst_userData(
+	ret := C.NSEvent_inst_UserData(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12027,7 +12027,7 @@ func (x gen_NSEvent) UserData() unsafe.Pointer {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528289-data1?language=objc for details.
 func (x gen_NSEvent) Data1() core.NSInteger {
-	ret := C.NSEvent_inst_data1(
+	ret := C.NSEvent_inst_Data1(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12039,7 +12039,7 @@ func (x gen_NSEvent) Data1() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528647-data2?language=objc for details.
 func (x gen_NSEvent) Data2() core.NSInteger {
-	ret := C.NSEvent_inst_data2(
+	ret := C.NSEvent_inst_Data2(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12051,7 +12051,7 @@ func (x gen_NSEvent) Data2() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534871-deltax?language=objc for details.
 func (x gen_NSEvent) DeltaX() core.CGFloat {
-	ret := C.NSEvent_inst_deltaX(
+	ret := C.NSEvent_inst_DeltaX(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12063,7 +12063,7 @@ func (x gen_NSEvent) DeltaX() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534158-deltay?language=objc for details.
 func (x gen_NSEvent) DeltaY() core.CGFloat {
-	ret := C.NSEvent_inst_deltaY(
+	ret := C.NSEvent_inst_DeltaY(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12075,7 +12075,7 @@ func (x gen_NSEvent) DeltaY() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1531528-deltaz?language=objc for details.
 func (x gen_NSEvent) DeltaZ() core.CGFloat {
-	ret := C.NSEvent_inst_deltaZ(
+	ret := C.NSEvent_inst_DeltaZ(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12087,7 +12087,7 @@ func (x gen_NSEvent) DeltaZ() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527242-stage?language=objc for details.
 func (x gen_NSEvent) Stage() core.NSInteger {
-	ret := C.NSEvent_inst_stage(
+	ret := C.NSEvent_inst_Stage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12099,7 +12099,7 @@ func (x gen_NSEvent) Stage() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1526739-stagetransition?language=objc for details.
 func (x gen_NSEvent) StageTransition() core.CGFloat {
-	ret := C.NSEvent_inst_stageTransition(
+	ret := C.NSEvent_inst_StageTransition(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12111,7 +12111,7 @@ func (x gen_NSEvent) StageTransition() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534648-capabilitymask?language=objc for details.
 func (x gen_NSEvent) CapabilityMask() core.NSUInteger {
-	ret := C.NSEvent_inst_capabilityMask(
+	ret := C.NSEvent_inst_CapabilityMask(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12123,7 +12123,7 @@ func (x gen_NSEvent) CapabilityMask() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1530014-deviceid?language=objc for details.
 func (x gen_NSEvent) DeviceID() core.NSUInteger {
-	ret := C.NSEvent_inst_deviceID(
+	ret := C.NSEvent_inst_DeviceID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12135,7 +12135,7 @@ func (x gen_NSEvent) DeviceID() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1531702-enteringproximity?language=objc for details.
 func (x gen_NSEvent) IsEnteringProximity() bool {
-	ret := C.NSEvent_inst_isEnteringProximity(
+	ret := C.NSEvent_inst_IsEnteringProximity(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12147,7 +12147,7 @@ func (x gen_NSEvent) IsEnteringProximity() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528818-pointingdeviceid?language=objc for details.
 func (x gen_NSEvent) PointingDeviceID() core.NSUInteger {
-	ret := C.NSEvent_inst_pointingDeviceID(
+	ret := C.NSEvent_inst_PointingDeviceID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12159,7 +12159,7 @@ func (x gen_NSEvent) PointingDeviceID() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1533420-pointingdeviceserialnumber?language=objc for details.
 func (x gen_NSEvent) PointingDeviceSerialNumber() core.NSUInteger {
-	ret := C.NSEvent_inst_pointingDeviceSerialNumber(
+	ret := C.NSEvent_inst_PointingDeviceSerialNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12171,7 +12171,7 @@ func (x gen_NSEvent) PointingDeviceSerialNumber() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528299-systemtabletid?language=objc for details.
 func (x gen_NSEvent) SystemTabletID() core.NSUInteger {
-	ret := C.NSEvent_inst_systemTabletID(
+	ret := C.NSEvent_inst_SystemTabletID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12183,7 +12183,7 @@ func (x gen_NSEvent) SystemTabletID() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527003-tabletid?language=objc for details.
 func (x gen_NSEvent) TabletID() core.NSUInteger {
-	ret := C.NSEvent_inst_tabletID(
+	ret := C.NSEvent_inst_TabletID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12195,7 +12195,7 @@ func (x gen_NSEvent) TabletID() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1525177-vendorid?language=objc for details.
 func (x gen_NSEvent) VendorID() core.NSUInteger {
-	ret := C.NSEvent_inst_vendorID(
+	ret := C.NSEvent_inst_VendorID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12207,7 +12207,7 @@ func (x gen_NSEvent) VendorID() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527736-vendorpointingdevicetype?language=objc for details.
 func (x gen_NSEvent) VendorPointingDeviceType() core.NSUInteger {
-	ret := C.NSEvent_inst_vendorPointingDeviceType(
+	ret := C.NSEvent_inst_VendorPointingDeviceType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12219,7 +12219,7 @@ func (x gen_NSEvent) VendorPointingDeviceType() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1530617-absolutex?language=objc for details.
 func (x gen_NSEvent) AbsoluteX() core.NSInteger {
-	ret := C.NSEvent_inst_absoluteX(
+	ret := C.NSEvent_inst_AbsoluteX(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12231,7 +12231,7 @@ func (x gen_NSEvent) AbsoluteX() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1528904-absolutey?language=objc for details.
 func (x gen_NSEvent) AbsoluteY() core.NSInteger {
-	ret := C.NSEvent_inst_absoluteY(
+	ret := C.NSEvent_inst_AbsoluteY(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12243,7 +12243,7 @@ func (x gen_NSEvent) AbsoluteY() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1532154-absolutez?language=objc for details.
 func (x gen_NSEvent) AbsoluteZ() core.NSInteger {
-	ret := C.NSEvent_inst_absoluteZ(
+	ret := C.NSEvent_inst_AbsoluteZ(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12255,7 +12255,7 @@ func (x gen_NSEvent) AbsoluteZ() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534226-tilt?language=objc for details.
 func (x gen_NSEvent) Tilt() core.NSPoint {
-	ret := C.NSEvent_inst_tilt(
+	ret := C.NSEvent_inst_Tilt(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12267,7 +12267,7 @@ func (x gen_NSEvent) Tilt() core.NSPoint {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1530551-vendordefined?language=objc for details.
 func (x gen_NSEvent) VendorDefined() objc.Object {
-	ret := C.NSEvent_inst_vendorDefined(
+	ret := C.NSEvent_inst_VendorDefined(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12279,7 +12279,7 @@ func (x gen_NSEvent) VendorDefined() objc.Object {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1531642-magnification?language=objc for details.
 func (x gen_NSEvent) Magnification() core.CGFloat {
-	ret := C.NSEvent_inst_magnification(
+	ret := C.NSEvent_inst_Magnification(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12291,7 +12291,7 @@ func (x gen_NSEvent) Magnification() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1525758-hasprecisescrollingdeltas?language=objc for details.
 func (x gen_NSEvent) HasPreciseScrollingDeltas() bool {
-	ret := C.NSEvent_inst_hasPreciseScrollingDeltas(
+	ret := C.NSEvent_inst_HasPreciseScrollingDeltas(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12303,7 +12303,7 @@ func (x gen_NSEvent) HasPreciseScrollingDeltas() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1524505-scrollingdeltax?language=objc for details.
 func (x gen_NSEvent) ScrollingDeltaX() core.CGFloat {
-	ret := C.NSEvent_inst_scrollingDeltaX(
+	ret := C.NSEvent_inst_ScrollingDeltaX(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12315,7 +12315,7 @@ func (x gen_NSEvent) ScrollingDeltaX() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1535387-scrollingdeltay?language=objc for details.
 func (x gen_NSEvent) ScrollingDeltaY() core.CGFloat {
-	ret := C.NSEvent_inst_scrollingDeltaY(
+	ret := C.NSEvent_inst_ScrollingDeltaY(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12327,7 +12327,7 @@ func (x gen_NSEvent) ScrollingDeltaY() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1525151-directioninvertedfromdevice?language=objc for details.
 func (x gen_NSEvent) IsDirectionInvertedFromDevice() bool {
-	ret := C.NSEvent_inst_isDirectionInvertedFromDevice(
+	ret := C.NSEvent_inst_IsDirectionInvertedFromDevice(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12360,7 +12360,7 @@ func NSFont_fromRef(ref objc.Ref) NSFont {
 func (x gen_NSFont) FontWithSize(
 	fontSize core.CGFloat,
 ) NSFont {
-	ret := C.NSFont_inst_fontWithSize(
+	ret := C.NSFont_inst_FontWithSize(
 		unsafe.Pointer(x.Pointer()),
 		C.double(fontSize),
 	)
@@ -12373,7 +12373,7 @@ func (x gen_NSFont) FontWithSize(
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1531373-set?language=objc for details.
 func (x gen_NSFont) Set() {
-	C.NSFont_inst_set(
+	C.NSFont_inst_Set(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12385,7 +12385,7 @@ func (x gen_NSFont) Set() {
 //
 // See  for details.
 func (x gen_NSFont) Init_asNSFont() NSFont {
-	ret := C.NSFont_inst_init(
+	ret := C.NSFont_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12397,7 +12397,7 @@ func (x gen_NSFont) Init_asNSFont() NSFont {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1524511-pointsize?language=objc for details.
 func (x gen_NSFont) PointSize() core.CGFloat {
-	ret := C.NSFont_inst_pointSize(
+	ret := C.NSFont_inst_PointSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12409,7 +12409,7 @@ func (x gen_NSFont) PointSize() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1529210-fixedpitch?language=objc for details.
 func (x gen_NSFont) IsFixedPitch() bool {
-	ret := C.NSFont_inst_isFixedPitch(
+	ret := C.NSFont_inst_IsFixedPitch(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12421,7 +12421,7 @@ func (x gen_NSFont) IsFixedPitch() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1527635-mostcompatiblestringencoding?language=objc for details.
 func (x gen_NSFont) MostCompatibleStringEncoding() core.NSStringEncoding {
-	ret := C.NSFont_inst_mostCompatibleStringEncoding(
+	ret := C.NSFont_inst_MostCompatibleStringEncoding(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12433,7 +12433,7 @@ func (x gen_NSFont) MostCompatibleStringEncoding() core.NSStringEncoding {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1533968-numberofglyphs?language=objc for details.
 func (x gen_NSFont) NumberOfGlyphs() core.NSUInteger {
-	ret := C.NSFont_inst_numberOfGlyphs(
+	ret := C.NSFont_inst_NumberOfGlyphs(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12445,7 +12445,7 @@ func (x gen_NSFont) NumberOfGlyphs() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1531660-displayname?language=objc for details.
 func (x gen_NSFont) DisplayName() core.NSString {
-	ret := C.NSFont_inst_displayName(
+	ret := C.NSFont_inst_DisplayName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12457,7 +12457,7 @@ func (x gen_NSFont) DisplayName() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1529585-familyname?language=objc for details.
 func (x gen_NSFont) FamilyName() core.NSString {
-	ret := C.NSFont_inst_familyName(
+	ret := C.NSFont_inst_FamilyName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12469,7 +12469,7 @@ func (x gen_NSFont) FamilyName() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1526183-fontname?language=objc for details.
 func (x gen_NSFont) FontName() core.NSString {
-	ret := C.NSFont_inst_fontName(
+	ret := C.NSFont_inst_FontName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12481,7 +12481,7 @@ func (x gen_NSFont) FontName() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1534644-vertical?language=objc for details.
 func (x gen_NSFont) IsVertical() bool {
-	ret := C.NSFont_inst_isVertical(
+	ret := C.NSFont_inst_IsVertical(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12493,7 +12493,7 @@ func (x gen_NSFont) IsVertical() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1535152-verticalfont?language=objc for details.
 func (x gen_NSFont) VerticalFont() NSFont {
-	ret := C.NSFont_inst_verticalFont(
+	ret := C.NSFont_inst_VerticalFont(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12526,7 +12526,7 @@ func NSImage_fromRef(ref objc.Ref) NSImage {
 func (x gen_NSImage) AddRepresentations(
 	imageReps core.NSArrayRef,
 ) {
-	C.NSImage_inst_addRepresentations(
+	C.NSImage_inst_AddRepresentations(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(imageReps),
 	)
@@ -12539,7 +12539,7 @@ func (x gen_NSImage) AddRepresentations(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1520041-cancelincrementalload?language=objc for details.
 func (x gen_NSImage) CancelIncrementalLoad() {
-	C.NSImage_inst_cancelIncrementalLoad(
+	C.NSImage_inst_CancelIncrementalLoad(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12553,7 +12553,7 @@ func (x gen_NSImage) CancelIncrementalLoad() {
 func (x gen_NSImage) DrawInRect(
 	rect core.NSRect,
 ) {
-	C.NSImage_inst_drawInRect(
+	C.NSImage_inst_DrawInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -12568,7 +12568,7 @@ func (x gen_NSImage) DrawInRect(
 func (x gen_NSImage) InitByReferencingFile_asNSImage(
 	fileName core.NSStringRef,
 ) NSImage {
-	ret := C.NSImage_inst_initByReferencingFile(
+	ret := C.NSImage_inst_InitByReferencingFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileName),
 	)
@@ -12583,7 +12583,7 @@ func (x gen_NSImage) InitByReferencingFile_asNSImage(
 func (x gen_NSImage) InitByReferencingURL_asNSImage(
 	url core.NSURLRef,
 ) NSImage {
-	ret := C.NSImage_inst_initByReferencingURL(
+	ret := C.NSImage_inst_InitByReferencingURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -12598,7 +12598,7 @@ func (x gen_NSImage) InitByReferencingURL_asNSImage(
 func (x gen_NSImage) InitWithContentsOfFile_asNSImage(
 	fileName core.NSStringRef,
 ) NSImage {
-	ret := C.NSImage_inst_initWithContentsOfFile(
+	ret := C.NSImage_inst_InitWithContentsOfFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileName),
 	)
@@ -12613,7 +12613,7 @@ func (x gen_NSImage) InitWithContentsOfFile_asNSImage(
 func (x gen_NSImage) InitWithContentsOfURL_asNSImage(
 	url core.NSURLRef,
 ) NSImage {
-	ret := C.NSImage_inst_initWithContentsOfURL(
+	ret := C.NSImage_inst_InitWithContentsOfURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -12628,7 +12628,7 @@ func (x gen_NSImage) InitWithContentsOfURL_asNSImage(
 func (x gen_NSImage) InitWithData_asNSImage(
 	data core.NSDataRef,
 ) NSImage {
-	ret := C.NSImage_inst_initWithData(
+	ret := C.NSImage_inst_InitWithData(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -12643,7 +12643,7 @@ func (x gen_NSImage) InitWithData_asNSImage(
 func (x gen_NSImage) InitWithDataIgnoringOrientation_asNSImage(
 	data core.NSDataRef,
 ) NSImage {
-	ret := C.NSImage_inst_initWithDataIgnoringOrientation(
+	ret := C.NSImage_inst_InitWithDataIgnoringOrientation(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -12658,7 +12658,7 @@ func (x gen_NSImage) InitWithDataIgnoringOrientation_asNSImage(
 func (x gen_NSImage) InitWithPasteboard_asNSImage(
 	pasteboard NSPasteboardRef,
 ) NSImage {
-	ret := C.NSImage_inst_initWithPasteboard(
+	ret := C.NSImage_inst_InitWithPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -12673,7 +12673,7 @@ func (x gen_NSImage) InitWithPasteboard_asNSImage(
 func (x gen_NSImage) InitWithSize_asNSImage(
 	size core.NSSize,
 ) NSImage {
-	ret := C.NSImage_inst_initWithSize(
+	ret := C.NSImage_inst_InitWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -12686,7 +12686,7 @@ func (x gen_NSImage) InitWithSize_asNSImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1807274-istemplate?language=objc for details.
 func (x gen_NSImage) IsTemplate() bool {
-	ret := C.NSImage_inst_isTemplate(
+	ret := C.NSImage_inst_IsTemplate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12700,7 +12700,7 @@ func (x gen_NSImage) IsTemplate() bool {
 func (x gen_NSImage) LayerContentsForContentsScale(
 	layerContentsScale core.CGFloat,
 ) objc.Object {
-	ret := C.NSImage_inst_layerContentsForContentsScale(
+	ret := C.NSImage_inst_LayerContentsForContentsScale(
 		unsafe.Pointer(x.Pointer()),
 		C.double(layerContentsScale),
 	)
@@ -12713,7 +12713,7 @@ func (x gen_NSImage) LayerContentsForContentsScale(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519891-lockfocus?language=objc for details.
 func (x gen_NSImage) LockFocus() {
-	C.NSImage_inst_lockFocus(
+	C.NSImage_inst_LockFocus(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12727,7 +12727,7 @@ func (x gen_NSImage) LockFocus() {
 func (x gen_NSImage) LockFocusFlipped(
 	flipped bool,
 ) {
-	C.NSImage_inst_lockFocusFlipped(
+	C.NSImage_inst_LockFocusFlipped(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flipped),
 	)
@@ -12740,7 +12740,7 @@ func (x gen_NSImage) LockFocusFlipped(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519890-recache?language=objc for details.
 func (x gen_NSImage) Recache() {
-	C.NSImage_inst_recache(
+	C.NSImage_inst_Recache(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12754,7 +12754,7 @@ func (x gen_NSImage) Recache() {
 func (x gen_NSImage) RecommendedLayerContentsScale(
 	preferredContentsScale core.CGFloat,
 ) core.CGFloat {
-	ret := C.NSImage_inst_recommendedLayerContentsScale(
+	ret := C.NSImage_inst_RecommendedLayerContentsScale(
 		unsafe.Pointer(x.Pointer()),
 		C.double(preferredContentsScale),
 	)
@@ -12767,7 +12767,7 @@ func (x gen_NSImage) RecommendedLayerContentsScale(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519853-unlockfocus?language=objc for details.
 func (x gen_NSImage) UnlockFocus() {
-	C.NSImage_inst_unlockFocus(
+	C.NSImage_inst_UnlockFocus(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12779,7 +12779,7 @@ func (x gen_NSImage) UnlockFocus() {
 //
 // See  for details.
 func (x gen_NSImage) Init_asNSImage() NSImage {
-	ret := C.NSImage_inst_init(
+	ret := C.NSImage_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12791,7 +12791,7 @@ func (x gen_NSImage) Init_asNSImage() NSImage {
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519926-delegate?language=objc for details.
 func (x gen_NSImage) Delegate() objc.Object {
-	ret := C.NSImage_inst_delegate(
+	ret := C.NSImage_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12805,7 +12805,7 @@ func (x gen_NSImage) Delegate() objc.Object {
 func (x gen_NSImage) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSImage_inst_setDelegate(
+	C.NSImage_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12818,7 +12818,7 @@ func (x gen_NSImage) SetDelegate(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519987-size?language=objc for details.
 func (x gen_NSImage) Size() core.NSSize {
-	ret := C.NSImage_inst_size(
+	ret := C.NSImage_inst_Size(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12832,7 +12832,7 @@ func (x gen_NSImage) Size() core.NSSize {
 func (x gen_NSImage) SetSize(
 	value core.NSSize,
 ) {
-	C.NSImage_inst_setSize(
+	C.NSImage_inst_SetSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -12847,7 +12847,7 @@ func (x gen_NSImage) SetSize(
 func (x gen_NSImage) SetTemplate(
 	value bool,
 ) {
-	C.NSImage_inst_setTemplate(
+	C.NSImage_inst_SetTemplate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12860,7 +12860,7 @@ func (x gen_NSImage) SetTemplate(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519858-representations?language=objc for details.
 func (x gen_NSImage) Representations() core.NSArray {
-	ret := C.NSImage_inst_representations(
+	ret := C.NSImage_inst_Representations(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12872,7 +12872,7 @@ func (x gen_NSImage) Representations() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1520010-preferscolormatch?language=objc for details.
 func (x gen_NSImage) PrefersColorMatch() bool {
-	ret := C.NSImage_inst_prefersColorMatch(
+	ret := C.NSImage_inst_PrefersColorMatch(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12886,7 +12886,7 @@ func (x gen_NSImage) PrefersColorMatch() bool {
 func (x gen_NSImage) SetPrefersColorMatch(
 	value bool,
 ) {
-	C.NSImage_inst_setPrefersColorMatch(
+	C.NSImage_inst_SetPrefersColorMatch(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12899,7 +12899,7 @@ func (x gen_NSImage) SetPrefersColorMatch(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519868-usesepsonresolutionmismatch?language=objc for details.
 func (x gen_NSImage) UsesEPSOnResolutionMismatch() bool {
-	ret := C.NSImage_inst_usesEPSOnResolutionMismatch(
+	ret := C.NSImage_inst_UsesEPSOnResolutionMismatch(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12913,7 +12913,7 @@ func (x gen_NSImage) UsesEPSOnResolutionMismatch() bool {
 func (x gen_NSImage) SetUsesEPSOnResolutionMismatch(
 	value bool,
 ) {
-	C.NSImage_inst_setUsesEPSOnResolutionMismatch(
+	C.NSImage_inst_SetUsesEPSOnResolutionMismatch(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12926,7 +12926,7 @@ func (x gen_NSImage) SetUsesEPSOnResolutionMismatch(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519963-matchesonmultipleresolution?language=objc for details.
 func (x gen_NSImage) MatchesOnMultipleResolution() bool {
-	ret := C.NSImage_inst_matchesOnMultipleResolution(
+	ret := C.NSImage_inst_MatchesOnMultipleResolution(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12940,7 +12940,7 @@ func (x gen_NSImage) MatchesOnMultipleResolution() bool {
 func (x gen_NSImage) SetMatchesOnMultipleResolution(
 	value bool,
 ) {
-	C.NSImage_inst_setMatchesOnMultipleResolution(
+	C.NSImage_inst_SetMatchesOnMultipleResolution(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12953,7 +12953,7 @@ func (x gen_NSImage) SetMatchesOnMultipleResolution(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519991-valid?language=objc for details.
 func (x gen_NSImage) IsValid() bool {
-	ret := C.NSImage_inst_isValid(
+	ret := C.NSImage_inst_IsValid(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12965,7 +12965,7 @@ func (x gen_NSImage) IsValid() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1520059-backgroundcolor?language=objc for details.
 func (x gen_NSImage) BackgroundColor() NSColor {
-	ret := C.NSImage_inst_backgroundColor(
+	ret := C.NSImage_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -12979,7 +12979,7 @@ func (x gen_NSImage) BackgroundColor() NSColor {
 func (x gen_NSImage) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSImage_inst_setBackgroundColor(
+	C.NSImage_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12992,7 +12992,7 @@ func (x gen_NSImage) SetBackgroundColor(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519905-alignmentrect?language=objc for details.
 func (x gen_NSImage) AlignmentRect() core.NSRect {
-	ret := C.NSImage_inst_alignmentRect(
+	ret := C.NSImage_inst_AlignmentRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13006,7 +13006,7 @@ func (x gen_NSImage) AlignmentRect() core.NSRect {
 func (x gen_NSImage) SetAlignmentRect(
 	value core.NSRect,
 ) {
-	C.NSImage_inst_setAlignmentRect(
+	C.NSImage_inst_SetAlignmentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -13031,7 +13031,7 @@ func (x gen_NSImage) TIFFRepresentation() core.NSData {
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519943-accessibilitydescription?language=objc for details.
 func (x gen_NSImage) AccessibilityDescription() core.NSString {
-	ret := C.NSImage_inst_accessibilityDescription(
+	ret := C.NSImage_inst_AccessibilityDescription(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13045,7 +13045,7 @@ func (x gen_NSImage) AccessibilityDescription() core.NSString {
 func (x gen_NSImage) SetAccessibilityDescription(
 	value core.NSStringRef,
 ) {
-	C.NSImage_inst_setAccessibilityDescription(
+	C.NSImage_inst_SetAccessibilityDescription(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13058,7 +13058,7 @@ func (x gen_NSImage) SetAccessibilityDescription(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519848-matchesonlyonbestfittingaxis?language=objc for details.
 func (x gen_NSImage) MatchesOnlyOnBestFittingAxis() bool {
-	ret := C.NSImage_inst_matchesOnlyOnBestFittingAxis(
+	ret := C.NSImage_inst_MatchesOnlyOnBestFittingAxis(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13072,7 +13072,7 @@ func (x gen_NSImage) MatchesOnlyOnBestFittingAxis() bool {
 func (x gen_NSImage) SetMatchesOnlyOnBestFittingAxis(
 	value bool,
 ) {
-	C.NSImage_inst_setMatchesOnlyOnBestFittingAxis(
+	C.NSImage_inst_SetMatchesOnlyOnBestFittingAxis(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13104,7 +13104,7 @@ func NSImageView_fromRef(ref objc.Ref) NSImageView {
 //
 // See  for details.
 func (x gen_NSImageView) Init_asNSImageView() NSImageView {
-	ret := C.NSImageView_inst_init(
+	ret := C.NSImageView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13116,7 +13116,7 @@ func (x gen_NSImageView) Init_asNSImageView() NSImageView {
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc for details.
 func (x gen_NSImageView) Image() NSImage {
-	ret := C.NSImageView_inst_image(
+	ret := C.NSImageView_inst_Image(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13130,7 +13130,7 @@ func (x gen_NSImageView) Image() NSImage {
 func (x gen_NSImageView) SetImage(
 	value NSImageRef,
 ) {
-	C.NSImageView_inst_setImage(
+	C.NSImageView_inst_SetImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13143,7 +13143,7 @@ func (x gen_NSImageView) SetImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/1404950-animates?language=objc for details.
 func (x gen_NSImageView) Animates() bool {
-	ret := C.NSImageView_inst_animates(
+	ret := C.NSImageView_inst_Animates(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13157,7 +13157,7 @@ func (x gen_NSImageView) Animates() bool {
 func (x gen_NSImageView) SetAnimates(
 	value bool,
 ) {
-	C.NSImageView_inst_setAnimates(
+	C.NSImageView_inst_SetAnimates(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13170,7 +13170,7 @@ func (x gen_NSImageView) SetAnimates(
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/1404954-editable?language=objc for details.
 func (x gen_NSImageView) IsEditable() bool {
-	ret := C.NSImageView_inst_isEditable(
+	ret := C.NSImageView_inst_IsEditable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13184,7 +13184,7 @@ func (x gen_NSImageView) IsEditable() bool {
 func (x gen_NSImageView) SetEditable(
 	value bool,
 ) {
-	C.NSImageView_inst_setEditable(
+	C.NSImageView_inst_SetEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13197,7 +13197,7 @@ func (x gen_NSImageView) SetEditable(
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/1404961-allowscutcopypaste?language=objc for details.
 func (x gen_NSImageView) AllowsCutCopyPaste() bool {
-	ret := C.NSImageView_inst_allowsCutCopyPaste(
+	ret := C.NSImageView_inst_AllowsCutCopyPaste(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13211,7 +13211,7 @@ func (x gen_NSImageView) AllowsCutCopyPaste() bool {
 func (x gen_NSImageView) SetAllowsCutCopyPaste(
 	value bool,
 ) {
-	C.NSImageView_inst_setAllowsCutCopyPaste(
+	C.NSImageView_inst_SetAllowsCutCopyPaste(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13224,7 +13224,7 @@ func (x gen_NSImageView) SetAllowsCutCopyPaste(
 //
 // See https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc for details.
 func (x gen_NSImageView) ContentTintColor() NSColor {
-	ret := C.NSImageView_inst_contentTintColor(
+	ret := C.NSImageView_inst_ContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13238,7 +13238,7 @@ func (x gen_NSImageView) ContentTintColor() NSColor {
 func (x gen_NSImageView) SetContentTintColor(
 	value NSColorRef,
 ) {
-	C.NSImageView_inst_setContentTintColor(
+	C.NSImageView_inst_SetContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13266,14 +13266,14 @@ func NSNib_fromRef(ref objc.Ref) NSNib {
 	return NSNib_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// InitWithNibData_bundle initializes an instance with nib data and specified bundle for locating resources.
+// InitWithNibDataBundle initializes an instance with nib data and specified bundle for locating resources.
 //
 // See https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc for details.
-func (x gen_NSNib) InitWithNibData_bundle_asNSNib(
+func (x gen_NSNib) InitWithNibDataBundle_asNSNib(
 	nibData core.NSDataRef,
 	bundle NSBundleRef,
 ) NSNib {
-	ret := C.NSNib_inst_initWithNibData_bundle(
+	ret := C.NSNib_inst_InitWithNibDataBundle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(nibData),
 		objc.RefPointer(bundle),
@@ -13283,14 +13283,14 @@ func (x gen_NSNib) InitWithNibData_bundle_asNSNib(
 
 }
 
-// InstantiateWithOwner_topLevelObjects instantiates objects in the nib file with the specified owner.
+// InstantiateWithOwnerTopLevelObjects instantiates objects in the nib file with the specified owner.
 //
 // See https://developer.apple.com/documentation/appkit/nsnib/1527173-instantiatewithowner?language=objc for details.
-func (x gen_NSNib) InstantiateWithOwner_topLevelObjects(
+func (x gen_NSNib) InstantiateWithOwnerTopLevelObjects(
 	owner objc.Ref,
 	topLevelObjects core.NSArrayRef,
 ) bool {
-	ret := C.NSNib_inst_instantiateWithOwner_topLevelObjects(
+	ret := C.NSNib_inst_InstantiateWithOwnerTopLevelObjects(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(owner),
 		objc.RefPointer(topLevelObjects),
@@ -13304,7 +13304,7 @@ func (x gen_NSNib) InstantiateWithOwner_topLevelObjects(
 //
 // See  for details.
 func (x gen_NSNib) Init_asNSNib() NSNib {
-	ret := C.NSNib_inst_init(
+	ret := C.NSNib_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13331,14 +13331,14 @@ func NSPasteboard_fromRef(ref objc.Ref) NSPasteboard {
 	return NSPasteboard_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// AddTypes_owner adds promises for the specified types to the first pasteboard item.
+// AddTypesOwner adds promises for the specified types to the first pasteboard item.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1533580-addtypes?language=objc for details.
-func (x gen_NSPasteboard) AddTypes_owner(
+func (x gen_NSPasteboard) AddTypesOwner(
 	newTypes core.NSArrayRef,
 	newOwner objc.Ref,
 ) core.NSInteger {
-	ret := C.NSPasteboard_inst_addTypes_owner(
+	ret := C.NSPasteboard_inst_AddTypesOwner(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 		objc.RefPointer(newOwner),
@@ -13354,7 +13354,7 @@ func (x gen_NSPasteboard) AddTypes_owner(
 func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes(
 	types core.NSArrayRef,
 ) bool {
-	ret := C.NSPasteboard_inst_canReadItemWithDataConformingToTypes(
+	ret := C.NSPasteboard_inst_CanReadItemWithDataConformingToTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(types),
 	)
@@ -13363,14 +13363,14 @@ func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes(
 
 }
 
-// CanReadObjectForClasses_options returns a boolean value that indicates whether the receiver contains any items that can be represented as an instance of any class in a given array.
+// CanReadObjectForClassesOptions returns a boolean value that indicates whether the receiver contains any items that can be represented as an instance of any class in a given array.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1533360-canreadobjectforclasses?language=objc for details.
-func (x gen_NSPasteboard) CanReadObjectForClasses_options(
+func (x gen_NSPasteboard) CanReadObjectForClassesOptions(
 	classArray core.NSArrayRef,
 	options core.NSDictionaryRef,
 ) bool {
-	ret := C.NSPasteboard_inst_canReadObjectForClasses_options(
+	ret := C.NSPasteboard_inst_CanReadObjectForClassesOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(classArray),
 		objc.RefPointer(options),
@@ -13384,7 +13384,7 @@ func (x gen_NSPasteboard) CanReadObjectForClasses_options(
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1533599-clearcontents?language=objc for details.
 func (x gen_NSPasteboard) ClearContents() core.NSInteger {
-	ret := C.NSPasteboard_inst_clearContents(
+	ret := C.NSPasteboard_inst_ClearContents(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13392,14 +13392,14 @@ func (x gen_NSPasteboard) ClearContents() core.NSInteger {
 
 }
 
-// DeclareTypes_owner prepares the receiver for a change in its contents by declaring the new types of data it will contain and a new owner.
+// DeclareTypesOwner prepares the receiver for a change in its contents by declaring the new types of data it will contain and a new owner.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1533561-declaretypes?language=objc for details.
-func (x gen_NSPasteboard) DeclareTypes_owner(
+func (x gen_NSPasteboard) DeclareTypesOwner(
 	newTypes core.NSArrayRef,
 	newOwner objc.Ref,
 ) core.NSInteger {
-	ret := C.NSPasteboard_inst_declareTypes_owner(
+	ret := C.NSPasteboard_inst_DeclareTypesOwner(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 		objc.RefPointer(newOwner),
@@ -13409,14 +13409,14 @@ func (x gen_NSPasteboard) DeclareTypes_owner(
 
 }
 
-// ReadObjectsForClasses_options reads from the receiver objects that best match the specified array of classes.
+// ReadObjectsForClassesOptions reads from the receiver objects that best match the specified array of classes.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1524454-readobjectsforclasses?language=objc for details.
-func (x gen_NSPasteboard) ReadObjectsForClasses_options(
+func (x gen_NSPasteboard) ReadObjectsForClassesOptions(
 	classArray core.NSArrayRef,
 	options core.NSDictionaryRef,
 ) core.NSArray {
-	ret := C.NSPasteboard_inst_readObjectsForClasses_options(
+	ret := C.NSPasteboard_inst_ReadObjectsForClassesOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(classArray),
 		objc.RefPointer(options),
@@ -13430,7 +13430,7 @@ func (x gen_NSPasteboard) ReadObjectsForClasses_options(
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1527044-releaseglobally?language=objc for details.
 func (x gen_NSPasteboard) ReleaseGlobally() {
-	C.NSPasteboard_inst_releaseGlobally(
+	C.NSPasteboard_inst_ReleaseGlobally(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13444,7 +13444,7 @@ func (x gen_NSPasteboard) ReleaseGlobally() {
 func (x gen_NSPasteboard) WriteFileContents(
 	filename core.NSStringRef,
 ) bool {
-	ret := C.NSPasteboard_inst_writeFileContents(
+	ret := C.NSPasteboard_inst_WriteFileContents(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(filename),
 	)
@@ -13459,7 +13459,7 @@ func (x gen_NSPasteboard) WriteFileContents(
 func (x gen_NSPasteboard) WriteObjects(
 	objects core.NSArrayRef,
 ) bool {
-	ret := C.NSPasteboard_inst_writeObjects(
+	ret := C.NSPasteboard_inst_WriteObjects(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(objects),
 	)
@@ -13472,7 +13472,7 @@ func (x gen_NSPasteboard) WriteObjects(
 //
 // See  for details.
 func (x gen_NSPasteboard) Init_asNSPasteboard() NSPasteboard {
-	ret := C.NSPasteboard_inst_init(
+	ret := C.NSPasteboard_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13484,7 +13484,7 @@ func (x gen_NSPasteboard) Init_asNSPasteboard() NSPasteboard {
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1529995-pasteboarditems?language=objc for details.
 func (x gen_NSPasteboard) PasteboardItems() core.NSArray {
-	ret := C.NSPasteboard_inst_pasteboardItems(
+	ret := C.NSPasteboard_inst_PasteboardItems(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13496,7 +13496,7 @@ func (x gen_NSPasteboard) PasteboardItems() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1529599-types?language=objc for details.
 func (x gen_NSPasteboard) Types() core.NSArray {
-	ret := C.NSPasteboard_inst_types(
+	ret := C.NSPasteboard_inst_Types(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13508,7 +13508,7 @@ func (x gen_NSPasteboard) Types() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1533544-changecount?language=objc for details.
 func (x gen_NSPasteboard) ChangeCount() core.NSInteger {
-	ret := C.NSPasteboard_inst_changeCount(
+	ret := C.NSPasteboard_inst_ChangeCount(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13541,7 +13541,7 @@ func NSLayoutManager_fromRef(ref objc.Ref) NSLayoutManager {
 func (x gen_NSLayoutManager) AddTextContainer(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_addTextContainer(
+	C.NSLayoutManager_inst_AddTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -13556,7 +13556,7 @@ func (x gen_NSLayoutManager) AddTextContainer(
 func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) core.NSSize {
-	ret := C.NSLayoutManager_inst_attachmentSizeForGlyphAtIndex(
+	ret := C.NSLayoutManager_inst_AttachmentSizeForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -13571,7 +13571,7 @@ func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex(
 func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) core.NSUInteger {
-	ret := C.NSLayoutManager_inst_characterIndexForGlyphAtIndex(
+	ret := C.NSLayoutManager_inst_CharacterIndexForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -13586,7 +13586,7 @@ func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex(
 func (x gen_NSLayoutManager) DefaultBaselineOffsetForFont(
 	theFont NSFontRef,
 ) core.CGFloat {
-	ret := C.NSLayoutManager_inst_defaultBaselineOffsetForFont(
+	ret := C.NSLayoutManager_inst_DefaultBaselineOffsetForFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(theFont),
 	)
@@ -13601,7 +13601,7 @@ func (x gen_NSLayoutManager) DefaultBaselineOffsetForFont(
 func (x gen_NSLayoutManager) DefaultLineHeightForFont(
 	theFont NSFontRef,
 ) core.CGFloat {
-	ret := C.NSLayoutManager_inst_defaultLineHeightForFont(
+	ret := C.NSLayoutManager_inst_DefaultLineHeightForFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(theFont),
 	)
@@ -13616,7 +13616,7 @@ func (x gen_NSLayoutManager) DefaultLineHeightForFont(
 func (x gen_NSLayoutManager) DrawsOutsideLineFragmentForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) bool {
-	ret := C.NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex(
+	ret := C.NSLayoutManager_inst_DrawsOutsideLineFragmentForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -13625,14 +13625,14 @@ func (x gen_NSLayoutManager) DrawsOutsideLineFragmentForGlyphAtIndex(
 
 }
 
-// EnsureLayoutForBoundingRect_inTextContainer forces the layout manager to perform layout for the specified area in the specified text container if it hasn’t already.
+// EnsureLayoutForBoundingRectInTextContainer forces the layout manager to perform layout for the specified area in the specified text container if it hasn’t already.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402962-ensurelayoutforboundingrect?language=objc for details.
-func (x gen_NSLayoutManager) EnsureLayoutForBoundingRect_inTextContainer(
+func (x gen_NSLayoutManager) EnsureLayoutForBoundingRectInTextContainer(
 	bounds core.NSRect,
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer(
+	C.NSLayoutManager_inst_EnsureLayoutForBoundingRectInTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&bounds)),
 		objc.RefPointer(container),
@@ -13648,7 +13648,7 @@ func (x gen_NSLayoutManager) EnsureLayoutForBoundingRect_inTextContainer(
 func (x gen_NSLayoutManager) EnsureLayoutForTextContainer(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_ensureLayoutForTextContainer(
+	C.NSLayoutManager_inst_EnsureLayoutForTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -13661,7 +13661,7 @@ func (x gen_NSLayoutManager) EnsureLayoutForTextContainer(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403067-firstunlaidcharacterindex?language=objc for details.
 func (x gen_NSLayoutManager) FirstUnlaidCharacterIndex() core.NSUInteger {
-	ret := C.NSLayoutManager_inst_firstUnlaidCharacterIndex(
+	ret := C.NSLayoutManager_inst_FirstUnlaidCharacterIndex(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13673,7 +13673,7 @@ func (x gen_NSLayoutManager) FirstUnlaidCharacterIndex() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403245-firstunlaidglyphindex?language=objc for details.
 func (x gen_NSLayoutManager) FirstUnlaidGlyphIndex() core.NSUInteger {
-	ret := C.NSLayoutManager_inst_firstUnlaidGlyphIndex(
+	ret := C.NSLayoutManager_inst_FirstUnlaidGlyphIndex(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13687,7 +13687,7 @@ func (x gen_NSLayoutManager) FirstUnlaidGlyphIndex() core.NSUInteger {
 func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 	charIndex core.NSUInteger,
 ) core.NSUInteger {
-	ret := C.NSLayoutManager_inst_glyphIndexForCharacterAtIndex(
+	ret := C.NSLayoutManager_inst_GlyphIndexForCharacterAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(charIndex),
 	)
@@ -13700,7 +13700,7 @@ func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc for details.
 func (x gen_NSLayoutManager) Init_asNSLayoutManager() NSLayoutManager {
-	ret := C.NSLayoutManager_inst_init(
+	ret := C.NSLayoutManager_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13708,14 +13708,14 @@ func (x gen_NSLayoutManager) Init_asNSLayoutManager() NSLayoutManager {
 
 }
 
-// InsertTextContainer_atIndex inserts a text container at the specified index in the list of text containers.
+// InsertTextContainerAtIndex inserts a text container at the specified index in the list of text containers.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403010-inserttextcontainer?language=objc for details.
-func (x gen_NSLayoutManager) InsertTextContainer_atIndex(
+func (x gen_NSLayoutManager) InsertTextContainerAtIndex(
 	container NSTextContainerRef,
 	index core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_insertTextContainer_atIndex(
+	C.NSLayoutManager_inst_InsertTextContainerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 		C.ulong(index),
@@ -13731,7 +13731,7 @@ func (x gen_NSLayoutManager) InsertTextContainer_atIndex(
 func (x gen_NSLayoutManager) IsValidGlyphIndex(
 	glyphIndex core.NSUInteger,
 ) bool {
-	ret := C.NSLayoutManager_inst_isValidGlyphIndex(
+	ret := C.NSLayoutManager_inst_IsValidGlyphIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -13746,7 +13746,7 @@ func (x gen_NSLayoutManager) IsValidGlyphIndex(
 func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow(
 	window NSWindowRef,
 ) bool {
-	ret := C.NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow(
+	ret := C.NSLayoutManager_inst_LayoutManagerOwnsFirstResponderInWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(window),
 	)
@@ -13761,7 +13761,7 @@ func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow(
 func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) bool {
-	ret := C.NSLayoutManager_inst_notShownAttributeForGlyphAtIndex(
+	ret := C.NSLayoutManager_inst_NotShownAttributeForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -13776,7 +13776,7 @@ func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex(
 func (x gen_NSLayoutManager) RemoveTextContainerAtIndex(
 	index core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_removeTextContainerAtIndex(
+	C.NSLayoutManager_inst_RemoveTextContainerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(index),
 	)
@@ -13785,14 +13785,14 @@ func (x gen_NSLayoutManager) RemoveTextContainerAtIndex(
 
 }
 
-// SetDrawsOutsideLineFragment_forGlyphAtIndex indicates whether the specified glyph exceeds the bounds of the line fragment for its layout.
+// SetDrawsOutsideLineFragmentForGlyphAtIndex indicates whether the specified glyph exceeds the bounds of the line fragment for its layout.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402964-setdrawsoutsidelinefragment?language=objc for details.
-func (x gen_NSLayoutManager) SetDrawsOutsideLineFragment_forGlyphAtIndex(
+func (x gen_NSLayoutManager) SetDrawsOutsideLineFragmentForGlyphAtIndex(
 	flag bool,
 	glyphIndex core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex(
+	C.NSLayoutManager_inst_SetDrawsOutsideLineFragmentForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 		C.ulong(glyphIndex),
@@ -13802,15 +13802,15 @@ func (x gen_NSLayoutManager) SetDrawsOutsideLineFragment_forGlyphAtIndex(
 
 }
 
-// SetExtraLineFragmentRect_usedRect_textContainer sets the bounds and container for the extra line fragment.
+// SetExtraLineFragmentRectUsedRectTextContainer sets the bounds and container for the extra line fragment.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403071-setextralinefragmentrect?language=objc for details.
-func (x gen_NSLayoutManager) SetExtraLineFragmentRect_usedRect_textContainer(
+func (x gen_NSLayoutManager) SetExtraLineFragmentRectUsedRectTextContainer(
 	fragmentRect core.NSRect,
 	usedRect core.NSRect,
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer(
+	C.NSLayoutManager_inst_SetExtraLineFragmentRectUsedRectTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&fragmentRect)),
 		*(*C.NSRect)(unsafe.Pointer(&usedRect)),
@@ -13821,14 +13821,14 @@ func (x gen_NSLayoutManager) SetExtraLineFragmentRect_usedRect_textContainer(
 
 }
 
-// SetNotShownAttribute_forGlyphAtIndex sets the visibility of the glyph at the specified index.
+// SetNotShownAttributeForGlyphAtIndex sets the visibility of the glyph at the specified index.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403078-setnotshownattribute?language=objc for details.
-func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex(
+func (x gen_NSLayoutManager) SetNotShownAttributeForGlyphAtIndex(
 	flag bool,
 	glyphIndex core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex(
+	C.NSLayoutManager_inst_SetNotShownAttributeForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 		C.ulong(glyphIndex),
@@ -13844,7 +13844,7 @@ func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex(
 func (x gen_NSLayoutManager) TextContainerChangedGeometry(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_textContainerChangedGeometry(
+	C.NSLayoutManager_inst_TextContainerChangedGeometry(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -13859,7 +13859,7 @@ func (x gen_NSLayoutManager) TextContainerChangedGeometry(
 func (x gen_NSLayoutManager) TextContainerChangedTextView(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_textContainerChangedTextView(
+	C.NSLayoutManager_inst_TextContainerChangedTextView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -13874,7 +13874,7 @@ func (x gen_NSLayoutManager) TextContainerChangedTextView(
 func (x gen_NSLayoutManager) UsedRectForTextContainer(
 	container NSTextContainerRef,
 ) core.NSRect {
-	ret := C.NSLayoutManager_inst_usedRectForTextContainer(
+	ret := C.NSLayoutManager_inst_UsedRectForTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -13887,7 +13887,7 @@ func (x gen_NSLayoutManager) UsedRectForTextContainer(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402920-delegate?language=objc for details.
 func (x gen_NSLayoutManager) Delegate() objc.Object {
-	ret := C.NSLayoutManager_inst_delegate(
+	ret := C.NSLayoutManager_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13901,7 +13901,7 @@ func (x gen_NSLayoutManager) Delegate() objc.Object {
 func (x gen_NSLayoutManager) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSLayoutManager_inst_setDelegate(
+	C.NSLayoutManager_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13914,7 +13914,7 @@ func (x gen_NSLayoutManager) SetDelegate(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403197-allowsnoncontiguouslayout?language=objc for details.
 func (x gen_NSLayoutManager) AllowsNonContiguousLayout() bool {
-	ret := C.NSLayoutManager_inst_allowsNonContiguousLayout(
+	ret := C.NSLayoutManager_inst_AllowsNonContiguousLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13928,7 +13928,7 @@ func (x gen_NSLayoutManager) AllowsNonContiguousLayout() bool {
 func (x gen_NSLayoutManager) SetAllowsNonContiguousLayout(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setAllowsNonContiguousLayout(
+	C.NSLayoutManager_inst_SetAllowsNonContiguousLayout(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13941,7 +13941,7 @@ func (x gen_NSLayoutManager) SetAllowsNonContiguousLayout(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403207-hasnoncontiguouslayout?language=objc for details.
 func (x gen_NSLayoutManager) HasNonContiguousLayout() bool {
-	ret := C.NSLayoutManager_inst_hasNonContiguousLayout(
+	ret := C.NSLayoutManager_inst_HasNonContiguousLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13953,7 +13953,7 @@ func (x gen_NSLayoutManager) HasNonContiguousLayout() bool {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403254-showsinvisiblecharacters?language=objc for details.
 func (x gen_NSLayoutManager) ShowsInvisibleCharacters() bool {
-	ret := C.NSLayoutManager_inst_showsInvisibleCharacters(
+	ret := C.NSLayoutManager_inst_ShowsInvisibleCharacters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13967,7 +13967,7 @@ func (x gen_NSLayoutManager) ShowsInvisibleCharacters() bool {
 func (x gen_NSLayoutManager) SetShowsInvisibleCharacters(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setShowsInvisibleCharacters(
+	C.NSLayoutManager_inst_SetShowsInvisibleCharacters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13980,7 +13980,7 @@ func (x gen_NSLayoutManager) SetShowsInvisibleCharacters(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402912-showscontrolcharacters?language=objc for details.
 func (x gen_NSLayoutManager) ShowsControlCharacters() bool {
-	ret := C.NSLayoutManager_inst_showsControlCharacters(
+	ret := C.NSLayoutManager_inst_ShowsControlCharacters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -13994,7 +13994,7 @@ func (x gen_NSLayoutManager) ShowsControlCharacters() bool {
 func (x gen_NSLayoutManager) SetShowsControlCharacters(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setShowsControlCharacters(
+	C.NSLayoutManager_inst_SetShowsControlCharacters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14007,7 +14007,7 @@ func (x gen_NSLayoutManager) SetShowsControlCharacters(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403156-usesfontleading?language=objc for details.
 func (x gen_NSLayoutManager) UsesFontLeading() bool {
-	ret := C.NSLayoutManager_inst_usesFontLeading(
+	ret := C.NSLayoutManager_inst_UsesFontLeading(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14021,7 +14021,7 @@ func (x gen_NSLayoutManager) UsesFontLeading() bool {
 func (x gen_NSLayoutManager) SetUsesFontLeading(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setUsesFontLeading(
+	C.NSLayoutManager_inst_SetUsesFontLeading(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14034,7 +14034,7 @@ func (x gen_NSLayoutManager) SetUsesFontLeading(
 //
 // See https://developer.apple.com/documentation/appkit/nslayoutmanager/1402952-backgroundlayoutenabled?language=objc for details.
 func (x gen_NSLayoutManager) BackgroundLayoutEnabled() bool {
-	ret := C.NSLayoutManager_inst_backgroundLayoutEnabled(
+	ret := C.NSLayoutManager_inst_BackgroundLayoutEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14048,7 +14048,7 @@ func (x gen_NSLayoutManager) BackgroundLayoutEnabled() bool {
 func (x gen_NSLayoutManager) SetBackgroundLayoutEnabled(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setBackgroundLayoutEnabled(
+	C.NSLayoutManager_inst_SetBackgroundLayoutEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14061,7 +14061,7 @@ func (x gen_NSLayoutManager) SetBackgroundLayoutEnabled(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/3021179-limitslayoutforsuspiciouscontent?language=objc for details.
 func (x gen_NSLayoutManager) LimitsLayoutForSuspiciousContents() bool {
-	ret := C.NSLayoutManager_inst_limitsLayoutForSuspiciousContents(
+	ret := C.NSLayoutManager_inst_LimitsLayoutForSuspiciousContents(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14075,7 +14075,7 @@ func (x gen_NSLayoutManager) LimitsLayoutForSuspiciousContents() bool {
 func (x gen_NSLayoutManager) SetLimitsLayoutForSuspiciousContents(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents(
+	C.NSLayoutManager_inst_SetLimitsLayoutForSuspiciousContents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14088,7 +14088,7 @@ func (x gen_NSLayoutManager) SetLimitsLayoutForSuspiciousContents(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/3180380-usesdefaulthyphenation?language=objc for details.
 func (x gen_NSLayoutManager) UsesDefaultHyphenation() bool {
-	ret := C.NSLayoutManager_inst_usesDefaultHyphenation(
+	ret := C.NSLayoutManager_inst_UsesDefaultHyphenation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14102,7 +14102,7 @@ func (x gen_NSLayoutManager) UsesDefaultHyphenation() bool {
 func (x gen_NSLayoutManager) SetUsesDefaultHyphenation(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setUsesDefaultHyphenation(
+	C.NSLayoutManager_inst_SetUsesDefaultHyphenation(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14115,7 +14115,7 @@ func (x gen_NSLayoutManager) SetUsesDefaultHyphenation(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403144-textcontainers?language=objc for details.
 func (x gen_NSLayoutManager) TextContainers() core.NSArray {
-	ret := C.NSLayoutManager_inst_textContainers(
+	ret := C.NSLayoutManager_inst_TextContainers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14127,7 +14127,7 @@ func (x gen_NSLayoutManager) TextContainers() core.NSArray {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402937-numberofglyphs?language=objc for details.
 func (x gen_NSLayoutManager) NumberOfGlyphs() core.NSUInteger {
-	ret := C.NSLayoutManager_inst_numberOfGlyphs(
+	ret := C.NSLayoutManager_inst_NumberOfGlyphs(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14139,7 +14139,7 @@ func (x gen_NSLayoutManager) NumberOfGlyphs() core.NSUInteger {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403175-extralinefragmentrect?language=objc for details.
 func (x gen_NSLayoutManager) ExtraLineFragmentRect() core.NSRect {
-	ret := C.NSLayoutManager_inst_extraLineFragmentRect(
+	ret := C.NSLayoutManager_inst_ExtraLineFragmentRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14151,7 +14151,7 @@ func (x gen_NSLayoutManager) ExtraLineFragmentRect() core.NSRect {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1403165-extralinefragmenttextcontainer?language=objc for details.
 func (x gen_NSLayoutManager) ExtraLineFragmentTextContainer() NSTextContainer {
-	ret := C.NSLayoutManager_inst_extraLineFragmentTextContainer(
+	ret := C.NSLayoutManager_inst_ExtraLineFragmentTextContainer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14163,7 +14163,7 @@ func (x gen_NSLayoutManager) ExtraLineFragmentTextContainer() NSTextContainer {
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402988-extralinefragmentusedrect?language=objc for details.
 func (x gen_NSLayoutManager) ExtraLineFragmentUsedRect() core.NSRect {
-	ret := C.NSLayoutManager_inst_extraLineFragmentUsedRect(
+	ret := C.NSLayoutManager_inst_ExtraLineFragmentUsedRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14175,7 +14175,7 @@ func (x gen_NSLayoutManager) ExtraLineFragmentUsedRect() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nslayoutmanager/1402995-firsttextview?language=objc for details.
 func (x gen_NSLayoutManager) FirstTextView() NSTextView {
-	ret := C.NSLayoutManager_inst_firstTextView(
+	ret := C.NSLayoutManager_inst_FirstTextView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14187,7 +14187,7 @@ func (x gen_NSLayoutManager) FirstTextView() NSTextView {
 //
 // See https://developer.apple.com/documentation/appkit/nslayoutmanager/1403089-textviewforbeginningofselection?language=objc for details.
 func (x gen_NSLayoutManager) TextViewForBeginningOfSelection() NSTextView {
-	ret := C.NSLayoutManager_inst_textViewForBeginningOfSelection(
+	ret := C.NSLayoutManager_inst_TextViewForBeginningOfSelection(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14220,7 +14220,7 @@ func NSMenu_fromRef(ref objc.Ref) NSMenu {
 func (x gen_NSMenu) AddItem(
 	newItem NSMenuItemRef,
 ) {
-	C.NSMenu_inst_addItem(
+	C.NSMenu_inst_AddItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newItem),
 	)
@@ -14229,15 +14229,15 @@ func (x gen_NSMenu) AddItem(
 
 }
 
-// AddItemWithTitle_action_keyEquivalent creates a new menu item and adds it to the end of the menu.
+// AddItemWithTitleActionKeyEquivalent creates a new menu item and adds it to the end of the menu.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518181-additemwithtitle?language=objc for details.
-func (x gen_NSMenu) AddItemWithTitle_action_keyEquivalent(
+func (x gen_NSMenu) AddItemWithTitleActionKeyEquivalent(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
 ) NSMenuItem {
-	ret := C.NSMenu_inst_addItemWithTitle_action_keyEquivalent(
+	ret := C.NSMenu_inst_AddItemWithTitleActionKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -14252,7 +14252,7 @@ func (x gen_NSMenu) AddItemWithTitle_action_keyEquivalent(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518150-canceltracking?language=objc for details.
 func (x gen_NSMenu) CancelTracking() {
-	C.NSMenu_inst_cancelTracking(
+	C.NSMenu_inst_CancelTracking(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14264,7 +14264,7 @@ func (x gen_NSMenu) CancelTracking() {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518244-canceltrackingwithoutanimation?language=objc for details.
 func (x gen_NSMenu) CancelTrackingWithoutAnimation() {
-	C.NSMenu_inst_cancelTrackingWithoutAnimation(
+	C.NSMenu_inst_CancelTrackingWithoutAnimation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14278,7 +14278,7 @@ func (x gen_NSMenu) CancelTrackingWithoutAnimation() {
 func (x gen_NSMenu) IndexOfItem(
 	item NSMenuItemRef,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItem(
+	ret := C.NSMenu_inst_IndexOfItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -14293,7 +14293,7 @@ func (x gen_NSMenu) IndexOfItem(
 func (x gen_NSMenu) IndexOfItemWithRepresentedObject(
 	object objc.Ref,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItemWithRepresentedObject(
+	ret := C.NSMenu_inst_IndexOfItemWithRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(object),
 	)
@@ -14308,7 +14308,7 @@ func (x gen_NSMenu) IndexOfItemWithRepresentedObject(
 func (x gen_NSMenu) IndexOfItemWithSubmenu(
 	submenu NSMenuRef,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItemWithSubmenu(
+	ret := C.NSMenu_inst_IndexOfItemWithSubmenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(submenu),
 	)
@@ -14323,7 +14323,7 @@ func (x gen_NSMenu) IndexOfItemWithSubmenu(
 func (x gen_NSMenu) IndexOfItemWithTag(
 	tag core.NSInteger,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItemWithTag(
+	ret := C.NSMenu_inst_IndexOfItemWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -14332,14 +14332,14 @@ func (x gen_NSMenu) IndexOfItemWithTag(
 
 }
 
-// IndexOfItemWithTarget_andAction returns the index of the first menu item in the menu that has a specified action and target.
+// IndexOfItemWithTargetAndAction returns the index of the first menu item in the menu that has a specified action and target.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518153-indexofitemwithtarget?language=objc for details.
-func (x gen_NSMenu) IndexOfItemWithTarget_andAction(
+func (x gen_NSMenu) IndexOfItemWithTargetAndAction(
 	target objc.Ref,
 	actionSelector objc.Selector,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItemWithTarget_andAction(
+	ret := C.NSMenu_inst_IndexOfItemWithTargetAndAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(target),
 		actionSelector.SelectorAddress(),
@@ -14355,7 +14355,7 @@ func (x gen_NSMenu) IndexOfItemWithTarget_andAction(
 func (x gen_NSMenu) IndexOfItemWithTitle(
 	title core.NSStringRef,
 ) core.NSInteger {
-	ret := C.NSMenu_inst_indexOfItemWithTitle(
+	ret := C.NSMenu_inst_IndexOfItemWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -14370,7 +14370,7 @@ func (x gen_NSMenu) IndexOfItemWithTitle(
 func (x gen_NSMenu) InitWithTitle_asNSMenu(
 	title core.NSStringRef,
 ) NSMenu {
-	ret := C.NSMenu_inst_initWithTitle(
+	ret := C.NSMenu_inst_InitWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -14379,14 +14379,14 @@ func (x gen_NSMenu) InitWithTitle_asNSMenu(
 
 }
 
-// InsertItem_atIndex inserts a menu item into the menu at a specific location.
+// InsertItemAtIndex inserts a menu item into the menu at a specific location.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518201-insertitem?language=objc for details.
-func (x gen_NSMenu) InsertItem_atIndex(
+func (x gen_NSMenu) InsertItemAtIndex(
 	newItem NSMenuItemRef,
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_insertItem_atIndex(
+	C.NSMenu_inst_InsertItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newItem),
 		C.long(index),
@@ -14396,16 +14396,16 @@ func (x gen_NSMenu) InsertItem_atIndex(
 
 }
 
-// InsertItemWithTitle_action_keyEquivalent_atIndex creates and adds a menu item at a specified location in the menu.
+// InsertItemWithTitleActionKeyEquivalentAtIndex creates and adds a menu item at a specified location in the menu.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518146-insertitemwithtitle?language=objc for details.
-func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex(
+func (x gen_NSMenu) InsertItemWithTitleActionKeyEquivalentAtIndex(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
 	index core.NSInteger,
 ) NSMenuItem {
-	ret := C.NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex(
+	ret := C.NSMenu_inst_InsertItemWithTitleActionKeyEquivalentAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -14423,7 +14423,7 @@ func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex(
 func (x gen_NSMenu) ItemAtIndex(
 	index core.NSInteger,
 ) NSMenuItem {
-	ret := C.NSMenu_inst_itemAtIndex(
+	ret := C.NSMenu_inst_ItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -14438,7 +14438,7 @@ func (x gen_NSMenu) ItemAtIndex(
 func (x gen_NSMenu) ItemChanged(
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_itemChanged(
+	C.NSMenu_inst_ItemChanged(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -14453,7 +14453,7 @@ func (x gen_NSMenu) ItemChanged(
 func (x gen_NSMenu) ItemWithTag(
 	tag core.NSInteger,
 ) NSMenuItem {
-	ret := C.NSMenu_inst_itemWithTag(
+	ret := C.NSMenu_inst_ItemWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -14468,7 +14468,7 @@ func (x gen_NSMenu) ItemWithTag(
 func (x gen_NSMenu) ItemWithTitle(
 	title core.NSStringRef,
 ) NSMenuItem {
-	ret := C.NSMenu_inst_itemWithTitle(
+	ret := C.NSMenu_inst_ItemWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -14483,7 +14483,7 @@ func (x gen_NSMenu) ItemWithTitle(
 func (x gen_NSMenu) PerformActionForItemAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_performActionForItemAtIndex(
+	C.NSMenu_inst_PerformActionForItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -14498,7 +14498,7 @@ func (x gen_NSMenu) PerformActionForItemAtIndex(
 func (x gen_NSMenu) PerformKeyEquivalent(
 	event NSEventRef,
 ) bool {
-	ret := C.NSMenu_inst_performKeyEquivalent(
+	ret := C.NSMenu_inst_PerformKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -14507,15 +14507,15 @@ func (x gen_NSMenu) PerformKeyEquivalent(
 
 }
 
-// PopUpMenuPositioningItem_atLocation_inView pops up the menu at the specified location.
+// PopUpMenuPositioningItemAtLocationInView pops up the menu at the specified location.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518212-popupmenupositioningitem?language=objc for details.
-func (x gen_NSMenu) PopUpMenuPositioningItem_atLocation_inView(
+func (x gen_NSMenu) PopUpMenuPositioningItemAtLocationInView(
 	item NSMenuItemRef,
 	location core.NSPoint,
 	view NSViewRef,
 ) bool {
-	ret := C.NSMenu_inst_popUpMenuPositioningItem_atLocation_inView(
+	ret := C.NSMenu_inst_PopUpMenuPositioningItemAtLocationInView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
@@ -14530,7 +14530,7 @@ func (x gen_NSMenu) PopUpMenuPositioningItem_atLocation_inView(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518234-removeallitems?language=objc for details.
 func (x gen_NSMenu) RemoveAllItems() {
-	C.NSMenu_inst_removeAllItems(
+	C.NSMenu_inst_RemoveAllItems(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14544,7 +14544,7 @@ func (x gen_NSMenu) RemoveAllItems() {
 func (x gen_NSMenu) RemoveItem(
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_removeItem(
+	C.NSMenu_inst_RemoveItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -14559,7 +14559,7 @@ func (x gen_NSMenu) RemoveItem(
 func (x gen_NSMenu) RemoveItemAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_removeItemAtIndex(
+	C.NSMenu_inst_RemoveItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -14568,14 +14568,14 @@ func (x gen_NSMenu) RemoveItemAtIndex(
 
 }
 
-// SetSubmenu_forItem assigns a menu to be a submenu of the menu controlled by a given menu item.
+// SetSubmenuForItem assigns a menu to be a submenu of the menu controlled by a given menu item.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518194-setsubmenu?language=objc for details.
-func (x gen_NSMenu) SetSubmenu_forItem(
+func (x gen_NSMenu) SetSubmenuForItem(
 	menu NSMenuRef,
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_setSubmenu_forItem(
+	C.NSMenu_inst_SetSubmenuForItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(item),
@@ -14591,7 +14591,7 @@ func (x gen_NSMenu) SetSubmenu_forItem(
 func (x gen_NSMenu) SubmenuAction(
 	sender objc.Ref,
 ) {
-	C.NSMenu_inst_submenuAction(
+	C.NSMenu_inst_SubmenuAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -14604,7 +14604,7 @@ func (x gen_NSMenu) SubmenuAction(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518249-update?language=objc for details.
 func (x gen_NSMenu) Update() {
-	C.NSMenu_inst_update(
+	C.NSMenu_inst_Update(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14616,7 +14616,7 @@ func (x gen_NSMenu) Update() {
 //
 // See  for details.
 func (x gen_NSMenu) Init_asNSMenu() NSMenu {
-	ret := C.NSMenu_inst_init(
+	ret := C.NSMenu_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14628,7 +14628,7 @@ func (x gen_NSMenu) Init_asNSMenu() NSMenu {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518141-menubarheight?language=objc for details.
 func (x gen_NSMenu) MenuBarHeight() core.CGFloat {
-	ret := C.NSMenu_inst_menuBarHeight(
+	ret := C.NSMenu_inst_MenuBarHeight(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14640,7 +14640,7 @@ func (x gen_NSMenu) MenuBarHeight() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518202-numberofitems?language=objc for details.
 func (x gen_NSMenu) NumberOfItems() core.NSInteger {
-	ret := C.NSMenu_inst_numberOfItems(
+	ret := C.NSMenu_inst_NumberOfItems(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14652,7 +14652,7 @@ func (x gen_NSMenu) NumberOfItems() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518186-itemarray?language=objc for details.
 func (x gen_NSMenu) ItemArray() core.NSArray {
-	ret := C.NSMenu_inst_itemArray(
+	ret := C.NSMenu_inst_ItemArray(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14666,7 +14666,7 @@ func (x gen_NSMenu) ItemArray() core.NSArray {
 func (x gen_NSMenu) SetItemArray(
 	value core.NSArrayRef,
 ) {
-	C.NSMenu_inst_setItemArray(
+	C.NSMenu_inst_SetItemArray(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14679,7 +14679,7 @@ func (x gen_NSMenu) SetItemArray(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518204-supermenu?language=objc for details.
 func (x gen_NSMenu) Supermenu() NSMenu {
-	ret := C.NSMenu_inst_supermenu(
+	ret := C.NSMenu_inst_Supermenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14693,7 +14693,7 @@ func (x gen_NSMenu) Supermenu() NSMenu {
 func (x gen_NSMenu) SetSupermenu(
 	value NSMenuRef,
 ) {
-	C.NSMenu_inst_setSupermenu(
+	C.NSMenu_inst_SetSupermenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14706,7 +14706,7 @@ func (x gen_NSMenu) SetSupermenu(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518227-autoenablesitems?language=objc for details.
 func (x gen_NSMenu) AutoenablesItems() bool {
-	ret := C.NSMenu_inst_autoenablesItems(
+	ret := C.NSMenu_inst_AutoenablesItems(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14720,7 +14720,7 @@ func (x gen_NSMenu) AutoenablesItems() bool {
 func (x gen_NSMenu) SetAutoenablesItems(
 	value bool,
 ) {
-	C.NSMenu_inst_setAutoenablesItems(
+	C.NSMenu_inst_SetAutoenablesItems(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14733,7 +14733,7 @@ func (x gen_NSMenu) SetAutoenablesItems(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518230-font?language=objc for details.
 func (x gen_NSMenu) Font() NSFont {
-	ret := C.NSMenu_inst_font(
+	ret := C.NSMenu_inst_Font(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14747,7 +14747,7 @@ func (x gen_NSMenu) Font() NSFont {
 func (x gen_NSMenu) SetFont(
 	value NSFontRef,
 ) {
-	C.NSMenu_inst_setFont(
+	C.NSMenu_inst_SetFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14760,7 +14760,7 @@ func (x gen_NSMenu) SetFont(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518192-title?language=objc for details.
 func (x gen_NSMenu) Title() core.NSString {
-	ret := C.NSMenu_inst_title(
+	ret := C.NSMenu_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14774,7 +14774,7 @@ func (x gen_NSMenu) Title() core.NSString {
 func (x gen_NSMenu) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSMenu_inst_setTitle(
+	C.NSMenu_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14787,7 +14787,7 @@ func (x gen_NSMenu) SetTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518221-minimumwidth?language=objc for details.
 func (x gen_NSMenu) MinimumWidth() core.CGFloat {
-	ret := C.NSMenu_inst_minimumWidth(
+	ret := C.NSMenu_inst_MinimumWidth(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14801,7 +14801,7 @@ func (x gen_NSMenu) MinimumWidth() core.CGFloat {
 func (x gen_NSMenu) SetMinimumWidth(
 	value core.CGFloat,
 ) {
-	C.NSMenu_inst_setMinimumWidth(
+	C.NSMenu_inst_SetMinimumWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -14814,7 +14814,7 @@ func (x gen_NSMenu) SetMinimumWidth(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518185-size?language=objc for details.
 func (x gen_NSMenu) Size() core.NSSize {
-	ret := C.NSMenu_inst_size(
+	ret := C.NSMenu_inst_Size(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14826,7 +14826,7 @@ func (x gen_NSMenu) Size() core.NSSize {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518220-allowscontextmenuplugins?language=objc for details.
 func (x gen_NSMenu) AllowsContextMenuPlugIns() bool {
-	ret := C.NSMenu_inst_allowsContextMenuPlugIns(
+	ret := C.NSMenu_inst_AllowsContextMenuPlugIns(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14840,7 +14840,7 @@ func (x gen_NSMenu) AllowsContextMenuPlugIns() bool {
 func (x gen_NSMenu) SetAllowsContextMenuPlugIns(
 	value bool,
 ) {
-	C.NSMenu_inst_setAllowsContextMenuPlugIns(
+	C.NSMenu_inst_SetAllowsContextMenuPlugIns(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14853,7 +14853,7 @@ func (x gen_NSMenu) SetAllowsContextMenuPlugIns(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518253-showsstatecolumn?language=objc for details.
 func (x gen_NSMenu) ShowsStateColumn() bool {
-	ret := C.NSMenu_inst_showsStateColumn(
+	ret := C.NSMenu_inst_ShowsStateColumn(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14867,7 +14867,7 @@ func (x gen_NSMenu) ShowsStateColumn() bool {
 func (x gen_NSMenu) SetShowsStateColumn(
 	value bool,
 ) {
-	C.NSMenu_inst_setShowsStateColumn(
+	C.NSMenu_inst_SetShowsStateColumn(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14880,7 +14880,7 @@ func (x gen_NSMenu) SetShowsStateColumn(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518222-highlighteditem?language=objc for details.
 func (x gen_NSMenu) HighlightedItem() NSMenuItem {
-	ret := C.NSMenu_inst_highlightedItem(
+	ret := C.NSMenu_inst_HighlightedItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14892,7 +14892,7 @@ func (x gen_NSMenu) HighlightedItem() NSMenuItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518169-delegate?language=objc for details.
 func (x gen_NSMenu) Delegate() objc.Object {
-	ret := C.NSMenu_inst_delegate(
+	ret := C.NSMenu_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14906,7 +14906,7 @@ func (x gen_NSMenu) Delegate() objc.Object {
 func (x gen_NSMenu) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSMenu_inst_setDelegate(
+	C.NSMenu_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14938,7 +14938,7 @@ func NSPopover_fromRef(ref objc.Ref) NSPopover {
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526823-close?language=objc for details.
 func (x gen_NSPopover) Close() {
-	C.NSPopover_inst_close(
+	C.NSPopover_inst_Close(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14950,7 +14950,7 @@ func (x gen_NSPopover) Close() {
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc for details.
 func (x gen_NSPopover) Init_asNSPopover() NSPopover {
-	ret := C.NSPopover_inst_init(
+	ret := C.NSPopover_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14964,7 +14964,7 @@ func (x gen_NSPopover) Init_asNSPopover() NSPopover {
 func (x gen_NSPopover) PerformClose(
 	sender objc.Ref,
 ) {
-	C.NSPopover_inst_performClose(
+	C.NSPopover_inst_PerformClose(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -14977,7 +14977,7 @@ func (x gen_NSPopover) PerformClose(
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc for details.
 func (x gen_NSPopover) Behavior() core.NSInteger {
-	ret := C.NSPopover_inst_behavior(
+	ret := C.NSPopover_inst_Behavior(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -14991,7 +14991,7 @@ func (x gen_NSPopover) Behavior() core.NSInteger {
 func (x gen_NSPopover) SetBehavior(
 	value core.NSInteger,
 ) {
-	C.NSPopover_inst_setBehavior(
+	C.NSPopover_inst_SetBehavior(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -15004,7 +15004,7 @@ func (x gen_NSPopover) SetBehavior(
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc for details.
 func (x gen_NSPopover) PositioningRect() core.NSRect {
-	ret := C.NSPopover_inst_positioningRect(
+	ret := C.NSPopover_inst_PositioningRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15018,7 +15018,7 @@ func (x gen_NSPopover) PositioningRect() core.NSRect {
 func (x gen_NSPopover) SetPositioningRect(
 	value core.NSRect,
 ) {
-	C.NSPopover_inst_setPositioningRect(
+	C.NSPopover_inst_SetPositioningRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -15031,7 +15031,7 @@ func (x gen_NSPopover) SetPositioningRect(
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc for details.
 func (x gen_NSPopover) Animates() bool {
-	ret := C.NSPopover_inst_animates(
+	ret := C.NSPopover_inst_Animates(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15045,7 +15045,7 @@ func (x gen_NSPopover) Animates() bool {
 func (x gen_NSPopover) SetAnimates(
 	value bool,
 ) {
-	C.NSPopover_inst_setAnimates(
+	C.NSPopover_inst_SetAnimates(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15058,7 +15058,7 @@ func (x gen_NSPopover) SetAnimates(
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1524677-contentsize?language=objc for details.
 func (x gen_NSPopover) ContentSize() core.NSSize {
-	ret := C.NSPopover_inst_contentSize(
+	ret := C.NSPopover_inst_ContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15072,7 +15072,7 @@ func (x gen_NSPopover) ContentSize() core.NSSize {
 func (x gen_NSPopover) SetContentSize(
 	value core.NSSize,
 ) {
-	C.NSPopover_inst_setContentSize(
+	C.NSPopover_inst_SetContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -15085,7 +15085,7 @@ func (x gen_NSPopover) SetContentSize(
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1535120-shown?language=objc for details.
 func (x gen_NSPopover) IsShown() bool {
-	ret := C.NSPopover_inst_isShown(
+	ret := C.NSPopover_inst_IsShown(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15097,7 +15097,7 @@ func (x gen_NSPopover) IsShown() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1534278-detached?language=objc for details.
 func (x gen_NSPopover) IsDetached() bool {
-	ret := C.NSPopover_inst_isDetached(
+	ret := C.NSPopover_inst_IsDetached(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15124,15 +15124,15 @@ func NSMenuItem_fromRef(ref objc.Ref) NSMenuItem {
 	return NSMenuItem_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// InitWithTitle_action_keyEquivalent returns an initialized instance of nsmenuitem.
+// InitWithTitleActionKeyEquivalent returns an initialized instance of nsmenuitem.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc for details.
-func (x gen_NSMenuItem) InitWithTitle_action_keyEquivalent_asNSMenuItem(
+func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent_asNSMenuItem(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
 ) NSMenuItem {
-	ret := C.NSMenuItem_inst_initWithTitle_action_keyEquivalent(
+	ret := C.NSMenuItem_inst_InitWithTitleActionKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -15147,7 +15147,7 @@ func (x gen_NSMenuItem) InitWithTitle_action_keyEquivalent_asNSMenuItem(
 //
 // See  for details.
 func (x gen_NSMenuItem) Init_asNSMenuItem() NSMenuItem {
-	ret := C.NSMenuItem_inst_init(
+	ret := C.NSMenuItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15159,7 +15159,7 @@ func (x gen_NSMenuItem) Init_asNSMenuItem() NSMenuItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514863-enabled?language=objc for details.
 func (x gen_NSMenuItem) IsEnabled() bool {
-	ret := C.NSMenuItem_inst_isEnabled(
+	ret := C.NSMenuItem_inst_IsEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15173,7 +15173,7 @@ func (x gen_NSMenuItem) IsEnabled() bool {
 func (x gen_NSMenuItem) SetEnabled(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setEnabled(
+	C.NSMenuItem_inst_SetEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15186,7 +15186,7 @@ func (x gen_NSMenuItem) SetEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514846-hidden?language=objc for details.
 func (x gen_NSMenuItem) IsHidden() bool {
-	ret := C.NSMenuItem_inst_isHidden(
+	ret := C.NSMenuItem_inst_IsHidden(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15200,7 +15200,7 @@ func (x gen_NSMenuItem) IsHidden() bool {
 func (x gen_NSMenuItem) SetHidden(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setHidden(
+	C.NSMenuItem_inst_SetHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15213,7 +15213,7 @@ func (x gen_NSMenuItem) SetHidden(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514832-hiddenorhashiddenancestor?language=objc for details.
 func (x gen_NSMenuItem) IsHiddenOrHasHiddenAncestor() bool {
-	ret := C.NSMenuItem_inst_isHiddenOrHasHiddenAncestor(
+	ret := C.NSMenuItem_inst_IsHiddenOrHasHiddenAncestor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15225,7 +15225,7 @@ func (x gen_NSMenuItem) IsHiddenOrHasHiddenAncestor() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514843-target?language=objc for details.
 func (x gen_NSMenuItem) Target() objc.Object {
-	ret := C.NSMenuItem_inst_target(
+	ret := C.NSMenuItem_inst_Target(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15239,7 +15239,7 @@ func (x gen_NSMenuItem) Target() objc.Object {
 func (x gen_NSMenuItem) SetTarget(
 	value objc.Ref,
 ) {
-	C.NSMenuItem_inst_setTarget(
+	C.NSMenuItem_inst_SetTarget(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15252,7 +15252,7 @@ func (x gen_NSMenuItem) SetTarget(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514825-action?language=objc for details.
 func (x gen_NSMenuItem) Action() objc.Selector {
-	ret := C.NSMenuItem_inst_action(
+	ret := C.NSMenuItem_inst_Action(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15266,7 +15266,7 @@ func (x gen_NSMenuItem) Action() objc.Selector {
 func (x gen_NSMenuItem) SetAction(
 	value objc.Selector,
 ) {
-	C.NSMenuItem_inst_setAction(
+	C.NSMenuItem_inst_SetAction(
 		unsafe.Pointer(x.Pointer()),
 		value.SelectorAddress(),
 	)
@@ -15279,7 +15279,7 @@ func (x gen_NSMenuItem) SetAction(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc for details.
 func (x gen_NSMenuItem) Title() core.NSString {
-	ret := C.NSMenuItem_inst_title(
+	ret := C.NSMenuItem_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15293,7 +15293,7 @@ func (x gen_NSMenuItem) Title() core.NSString {
 func (x gen_NSMenuItem) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setTitle(
+	C.NSMenuItem_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15306,7 +15306,7 @@ func (x gen_NSMenuItem) SetTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc for details.
 func (x gen_NSMenuItem) AttributedTitle() core.NSAttributedString {
-	ret := C.NSMenuItem_inst_attributedTitle(
+	ret := C.NSMenuItem_inst_AttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15320,7 +15320,7 @@ func (x gen_NSMenuItem) AttributedTitle() core.NSAttributedString {
 func (x gen_NSMenuItem) SetAttributedTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSMenuItem_inst_setAttributedTitle(
+	C.NSMenuItem_inst_SetAttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15333,7 +15333,7 @@ func (x gen_NSMenuItem) SetAttributedTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514840-tag?language=objc for details.
 func (x gen_NSMenuItem) Tag() core.NSInteger {
-	ret := C.NSMenuItem_inst_tag(
+	ret := C.NSMenuItem_inst_Tag(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15347,7 +15347,7 @@ func (x gen_NSMenuItem) Tag() core.NSInteger {
 func (x gen_NSMenuItem) SetTag(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setTag(
+	C.NSMenuItem_inst_SetTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -15360,7 +15360,7 @@ func (x gen_NSMenuItem) SetTag(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514804-state?language=objc for details.
 func (x gen_NSMenuItem) State() core.NSInteger {
-	ret := C.NSMenuItem_inst_state(
+	ret := C.NSMenuItem_inst_State(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15374,7 +15374,7 @@ func (x gen_NSMenuItem) State() core.NSInteger {
 func (x gen_NSMenuItem) SetState(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setState(
+	C.NSMenuItem_inst_SetState(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -15387,7 +15387,7 @@ func (x gen_NSMenuItem) SetState(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc for details.
 func (x gen_NSMenuItem) Image() NSImage {
-	ret := C.NSMenuItem_inst_image(
+	ret := C.NSMenuItem_inst_Image(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15401,7 +15401,7 @@ func (x gen_NSMenuItem) Image() NSImage {
 func (x gen_NSMenuItem) SetImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setImage(
+	C.NSMenuItem_inst_SetImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15414,7 +15414,7 @@ func (x gen_NSMenuItem) SetImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514861-onstateimage?language=objc for details.
 func (x gen_NSMenuItem) OnStateImage() NSImage {
-	ret := C.NSMenuItem_inst_onStateImage(
+	ret := C.NSMenuItem_inst_OnStateImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15428,7 +15428,7 @@ func (x gen_NSMenuItem) OnStateImage() NSImage {
 func (x gen_NSMenuItem) SetOnStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setOnStateImage(
+	C.NSMenuItem_inst_SetOnStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15441,7 +15441,7 @@ func (x gen_NSMenuItem) SetOnStateImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514821-offstateimage?language=objc for details.
 func (x gen_NSMenuItem) OffStateImage() NSImage {
-	ret := C.NSMenuItem_inst_offStateImage(
+	ret := C.NSMenuItem_inst_OffStateImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15455,7 +15455,7 @@ func (x gen_NSMenuItem) OffStateImage() NSImage {
 func (x gen_NSMenuItem) SetOffStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setOffStateImage(
+	C.NSMenuItem_inst_SetOffStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15468,7 +15468,7 @@ func (x gen_NSMenuItem) SetOffStateImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514827-mixedstateimage?language=objc for details.
 func (x gen_NSMenuItem) MixedStateImage() NSImage {
-	ret := C.NSMenuItem_inst_mixedStateImage(
+	ret := C.NSMenuItem_inst_MixedStateImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15482,7 +15482,7 @@ func (x gen_NSMenuItem) MixedStateImage() NSImage {
 func (x gen_NSMenuItem) SetMixedStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setMixedStateImage(
+	C.NSMenuItem_inst_SetMixedStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15495,7 +15495,7 @@ func (x gen_NSMenuItem) SetMixedStateImage(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514845-submenu?language=objc for details.
 func (x gen_NSMenuItem) Submenu() NSMenu {
-	ret := C.NSMenuItem_inst_submenu(
+	ret := C.NSMenuItem_inst_Submenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15509,7 +15509,7 @@ func (x gen_NSMenuItem) Submenu() NSMenu {
 func (x gen_NSMenuItem) SetSubmenu(
 	value NSMenuRef,
 ) {
-	C.NSMenuItem_inst_setSubmenu(
+	C.NSMenuItem_inst_SetSubmenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15522,7 +15522,7 @@ func (x gen_NSMenuItem) SetSubmenu(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514817-hassubmenu?language=objc for details.
 func (x gen_NSMenuItem) HasSubmenu() bool {
-	ret := C.NSMenuItem_inst_hasSubmenu(
+	ret := C.NSMenuItem_inst_HasSubmenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15534,7 +15534,7 @@ func (x gen_NSMenuItem) HasSubmenu() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514813-parentitem?language=objc for details.
 func (x gen_NSMenuItem) ParentItem() NSMenuItem {
-	ret := C.NSMenuItem_inst_parentItem(
+	ret := C.NSMenuItem_inst_ParentItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15546,7 +15546,7 @@ func (x gen_NSMenuItem) ParentItem() NSMenuItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514837-separatoritem?language=objc for details.
 func (x gen_NSMenuItem) IsSeparatorItem() bool {
-	ret := C.NSMenuItem_inst_isSeparatorItem(
+	ret := C.NSMenuItem_inst_IsSeparatorItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15558,7 +15558,7 @@ func (x gen_NSMenuItem) IsSeparatorItem() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514830-menu?language=objc for details.
 func (x gen_NSMenuItem) Menu() NSMenu {
-	ret := C.NSMenuItem_inst_menu(
+	ret := C.NSMenuItem_inst_Menu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15572,7 +15572,7 @@ func (x gen_NSMenuItem) Menu() NSMenu {
 func (x gen_NSMenuItem) SetMenu(
 	value NSMenuRef,
 ) {
-	C.NSMenuItem_inst_setMenu(
+	C.NSMenuItem_inst_SetMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15585,7 +15585,7 @@ func (x gen_NSMenuItem) SetMenu(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc for details.
 func (x gen_NSMenuItem) KeyEquivalent() core.NSString {
-	ret := C.NSMenuItem_inst_keyEquivalent(
+	ret := C.NSMenuItem_inst_KeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15599,7 +15599,7 @@ func (x gen_NSMenuItem) KeyEquivalent() core.NSString {
 func (x gen_NSMenuItem) SetKeyEquivalent(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setKeyEquivalent(
+	C.NSMenuItem_inst_SetKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15612,7 +15612,7 @@ func (x gen_NSMenuItem) SetKeyEquivalent(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514850-userkeyequivalent?language=objc for details.
 func (x gen_NSMenuItem) UserKeyEquivalent() core.NSString {
-	ret := C.NSMenuItem_inst_userKeyEquivalent(
+	ret := C.NSMenuItem_inst_UserKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15624,7 +15624,7 @@ func (x gen_NSMenuItem) UserKeyEquivalent() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514823-alternate?language=objc for details.
 func (x gen_NSMenuItem) IsAlternate() bool {
-	ret := C.NSMenuItem_inst_isAlternate(
+	ret := C.NSMenuItem_inst_IsAlternate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15638,7 +15638,7 @@ func (x gen_NSMenuItem) IsAlternate() bool {
 func (x gen_NSMenuItem) SetAlternate(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAlternate(
+	C.NSMenuItem_inst_SetAlternate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15651,7 +15651,7 @@ func (x gen_NSMenuItem) SetAlternate(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514809-indentationlevel?language=objc for details.
 func (x gen_NSMenuItem) IndentationLevel() core.NSInteger {
-	ret := C.NSMenuItem_inst_indentationLevel(
+	ret := C.NSMenuItem_inst_IndentationLevel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15665,7 +15665,7 @@ func (x gen_NSMenuItem) IndentationLevel() core.NSInteger {
 func (x gen_NSMenuItem) SetIndentationLevel(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setIndentationLevel(
+	C.NSMenuItem_inst_SetIndentationLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -15678,7 +15678,7 @@ func (x gen_NSMenuItem) SetIndentationLevel(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc for details.
 func (x gen_NSMenuItem) ToolTip() core.NSString {
-	ret := C.NSMenuItem_inst_toolTip(
+	ret := C.NSMenuItem_inst_ToolTip(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15692,7 +15692,7 @@ func (x gen_NSMenuItem) ToolTip() core.NSString {
 func (x gen_NSMenuItem) SetToolTip(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setToolTip(
+	C.NSMenuItem_inst_SetToolTip(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15705,7 +15705,7 @@ func (x gen_NSMenuItem) SetToolTip(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514834-representedobject?language=objc for details.
 func (x gen_NSMenuItem) RepresentedObject() objc.Object {
-	ret := C.NSMenuItem_inst_representedObject(
+	ret := C.NSMenuItem_inst_RepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15719,7 +15719,7 @@ func (x gen_NSMenuItem) RepresentedObject() objc.Object {
 func (x gen_NSMenuItem) SetRepresentedObject(
 	value objc.Ref,
 ) {
-	C.NSMenuItem_inst_setRepresentedObject(
+	C.NSMenuItem_inst_SetRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15732,7 +15732,7 @@ func (x gen_NSMenuItem) SetRepresentedObject(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514835-view?language=objc for details.
 func (x gen_NSMenuItem) View() NSView {
-	ret := C.NSMenuItem_inst_view(
+	ret := C.NSMenuItem_inst_View(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15746,7 +15746,7 @@ func (x gen_NSMenuItem) View() NSView {
 func (x gen_NSMenuItem) SetView(
 	value NSViewRef,
 ) {
-	C.NSMenuItem_inst_setView(
+	C.NSMenuItem_inst_SetView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15759,7 +15759,7 @@ func (x gen_NSMenuItem) SetView(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514856-highlighted?language=objc for details.
 func (x gen_NSMenuItem) IsHighlighted() bool {
-	ret := C.NSMenuItem_inst_isHighlighted(
+	ret := C.NSMenuItem_inst_IsHighlighted(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15771,7 +15771,7 @@ func (x gen_NSMenuItem) IsHighlighted() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/3787554-allowsautomatickeyequivalentloca?language=objc for details.
 func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentLocalization() bool {
-	ret := C.NSMenuItem_inst_allowsAutomaticKeyEquivalentLocalization(
+	ret := C.NSMenuItem_inst_AllowsAutomaticKeyEquivalentLocalization(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15785,7 +15785,7 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentLocalization() bool {
 func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentLocalization(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization(
+	C.NSMenuItem_inst_SetAllowsAutomaticKeyEquivalentLocalization(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15798,7 +15798,7 @@ func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentLocalization(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/3787555-allowsautomatickeyequivalentmirr?language=objc for details.
 func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentMirroring() bool {
-	ret := C.NSMenuItem_inst_allowsAutomaticKeyEquivalentMirroring(
+	ret := C.NSMenuItem_inst_AllowsAutomaticKeyEquivalentMirroring(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15812,7 +15812,7 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentMirroring() bool {
 func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentMirroring(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring(
+	C.NSMenuItem_inst_SetAllowsAutomaticKeyEquivalentMirroring(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15825,7 +15825,7 @@ func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentMirroring(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/2880316-allowskeyequivalentwhenhidden?language=objc for details.
 func (x gen_NSMenuItem) AllowsKeyEquivalentWhenHidden() bool {
-	ret := C.NSMenuItem_inst_allowsKeyEquivalentWhenHidden(
+	ret := C.NSMenuItem_inst_AllowsKeyEquivalentWhenHidden(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15839,7 +15839,7 @@ func (x gen_NSMenuItem) AllowsKeyEquivalentWhenHidden() bool {
 func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden(
+	C.NSMenuItem_inst_SetAllowsKeyEquivalentWhenHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15871,7 +15871,7 @@ func NSRunningApplication_fromRef(ref objc.Ref) NSRunningApplication {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1530370-forceterminate?language=objc for details.
 func (x gen_NSRunningApplication) ForceTerminate() bool {
-	ret := C.NSRunningApplication_inst_forceTerminate(
+	ret := C.NSRunningApplication_inst_ForceTerminate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15883,7 +15883,7 @@ func (x gen_NSRunningApplication) ForceTerminate() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1526608-hide?language=objc for details.
 func (x gen_NSRunningApplication) Hide() bool {
-	ret := C.NSRunningApplication_inst_hide(
+	ret := C.NSRunningApplication_inst_Hide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15895,7 +15895,7 @@ func (x gen_NSRunningApplication) Hide() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1528922-terminate?language=objc for details.
 func (x gen_NSRunningApplication) Terminate() bool {
-	ret := C.NSRunningApplication_inst_terminate(
+	ret := C.NSRunningApplication_inst_Terminate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15907,7 +15907,7 @@ func (x gen_NSRunningApplication) Terminate() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1534676-unhide?language=objc for details.
 func (x gen_NSRunningApplication) Unhide() bool {
-	ret := C.NSRunningApplication_inst_unhide(
+	ret := C.NSRunningApplication_inst_Unhide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15919,7 +15919,7 @@ func (x gen_NSRunningApplication) Unhide() bool {
 //
 // See  for details.
 func (x gen_NSRunningApplication) Init_asNSRunningApplication() NSRunningApplication {
-	ret := C.NSRunningApplication_inst_init(
+	ret := C.NSRunningApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15931,7 +15931,7 @@ func (x gen_NSRunningApplication) Init_asNSRunningApplication() NSRunningApplica
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1528778-active?language=objc for details.
 func (x gen_NSRunningApplication) IsActive() bool {
-	ret := C.NSRunningApplication_inst_isActive(
+	ret := C.NSRunningApplication_inst_IsActive(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15943,7 +15943,7 @@ func (x gen_NSRunningApplication) IsActive() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1533103-activationpolicy?language=objc for details.
 func (x gen_NSRunningApplication) ActivationPolicy() core.NSInteger {
-	ret := C.NSRunningApplication_inst_activationPolicy(
+	ret := C.NSRunningApplication_inst_ActivationPolicy(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15955,7 +15955,7 @@ func (x gen_NSRunningApplication) ActivationPolicy() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1525949-hidden?language=objc for details.
 func (x gen_NSRunningApplication) IsHidden() bool {
-	ret := C.NSRunningApplication_inst_isHidden(
+	ret := C.NSRunningApplication_inst_IsHidden(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15967,7 +15967,7 @@ func (x gen_NSRunningApplication) IsHidden() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1526751-localizedname?language=objc for details.
 func (x gen_NSRunningApplication) LocalizedName() core.NSString {
-	ret := C.NSRunningApplication_inst_localizedName(
+	ret := C.NSRunningApplication_inst_LocalizedName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15979,7 +15979,7 @@ func (x gen_NSRunningApplication) LocalizedName() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1529885-icon?language=objc for details.
 func (x gen_NSRunningApplication) Icon() NSImage {
-	ret := C.NSRunningApplication_inst_icon(
+	ret := C.NSRunningApplication_inst_Icon(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -15991,7 +15991,7 @@ func (x gen_NSRunningApplication) Icon() NSImage {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1529140-bundleidentifier?language=objc for details.
 func (x gen_NSRunningApplication) BundleIdentifier() core.NSString {
-	ret := C.NSRunningApplication_inst_bundleIdentifier(
+	ret := C.NSRunningApplication_inst_BundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16003,7 +16003,7 @@ func (x gen_NSRunningApplication) BundleIdentifier() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1535500-bundleurl?language=objc for details.
 func (x gen_NSRunningApplication) BundleURL() core.NSURL {
-	ret := C.NSRunningApplication_inst_bundleURL(
+	ret := C.NSRunningApplication_inst_BundleURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16015,7 +16015,7 @@ func (x gen_NSRunningApplication) BundleURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1524287-executablearchitecture?language=objc for details.
 func (x gen_NSRunningApplication) ExecutableArchitecture() core.NSInteger {
-	ret := C.NSRunningApplication_inst_executableArchitecture(
+	ret := C.NSRunningApplication_inst_ExecutableArchitecture(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16027,7 +16027,7 @@ func (x gen_NSRunningApplication) ExecutableArchitecture() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1531062-executableurl?language=objc for details.
 func (x gen_NSRunningApplication) ExecutableURL() core.NSURL {
-	ret := C.NSRunningApplication_inst_executableURL(
+	ret := C.NSRunningApplication_inst_ExecutableURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16039,7 +16039,7 @@ func (x gen_NSRunningApplication) ExecutableURL() core.NSURL {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1532002-finishedlaunching?language=objc for details.
 func (x gen_NSRunningApplication) IsFinishedLaunching() bool {
-	ret := C.NSRunningApplication_inst_isFinishedLaunching(
+	ret := C.NSRunningApplication_inst_IsFinishedLaunching(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16051,7 +16051,7 @@ func (x gen_NSRunningApplication) IsFinishedLaunching() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1525915-ownsmenubar?language=objc for details.
 func (x gen_NSRunningApplication) OwnsMenuBar() bool {
-	ret := C.NSRunningApplication_inst_ownsMenuBar(
+	ret := C.NSRunningApplication_inst_OwnsMenuBar(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16063,7 +16063,7 @@ func (x gen_NSRunningApplication) OwnsMenuBar() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1532239-terminated?language=objc for details.
 func (x gen_NSRunningApplication) IsTerminated() bool {
-	ret := C.NSRunningApplication_inst_isTerminated(
+	ret := C.NSRunningApplication_inst_IsTerminated(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16096,7 +16096,7 @@ func NSScreen_fromRef(ref objc.Ref) NSScreen {
 func (x gen_NSScreen) ConvertRectFromBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSScreen_inst_convertRectFromBacking(
+	ret := C.NSScreen_inst_ConvertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -16111,7 +16111,7 @@ func (x gen_NSScreen) ConvertRectFromBacking(
 func (x gen_NSScreen) ConvertRectToBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSScreen_inst_convertRectToBacking(
+	ret := C.NSScreen_inst_ConvertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -16124,7 +16124,7 @@ func (x gen_NSScreen) ConvertRectToBacking(
 //
 // See  for details.
 func (x gen_NSScreen) Init_asNSScreen() NSScreen {
-	ret := C.NSScreen_inst_init(
+	ret := C.NSScreen_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16136,7 +16136,7 @@ func (x gen_NSScreen) Init_asNSScreen() NSScreen {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388387-frame?language=objc for details.
 func (x gen_NSScreen) Frame() core.NSRect {
-	ret := C.NSScreen_inst_frame(
+	ret := C.NSScreen_inst_Frame(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16148,7 +16148,7 @@ func (x gen_NSScreen) Frame() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388360-devicedescription?language=objc for details.
 func (x gen_NSScreen) DeviceDescription() core.NSDictionary {
-	ret := C.NSScreen_inst_deviceDescription(
+	ret := C.NSScreen_inst_DeviceDescription(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16160,7 +16160,7 @@ func (x gen_NSScreen) DeviceDescription() core.NSDictionary {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388369-visibleframe?language=objc for details.
 func (x gen_NSScreen) VisibleFrame() core.NSRect {
-	ret := C.NSScreen_inst_visibleFrame(
+	ret := C.NSScreen_inst_VisibleFrame(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16172,7 +16172,7 @@ func (x gen_NSScreen) VisibleFrame() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388385-backingscalefactor?language=objc for details.
 func (x gen_NSScreen) BackingScaleFactor() core.CGFloat {
-	ret := C.NSScreen_inst_backingScaleFactor(
+	ret := C.NSScreen_inst_BackingScaleFactor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16184,7 +16184,7 @@ func (x gen_NSScreen) BackingScaleFactor() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/3180381-maximumpotentialextendeddynamicr?language=objc for details.
 func (x gen_NSScreen) MaximumPotentialExtendedDynamicRangeColorComponentValue() core.CGFloat {
-	ret := C.NSScreen_inst_maximumPotentialExtendedDynamicRangeColorComponentValue(
+	ret := C.NSScreen_inst_MaximumPotentialExtendedDynamicRangeColorComponentValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16196,7 +16196,7 @@ func (x gen_NSScreen) MaximumPotentialExtendedDynamicRangeColorComponentValue() 
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/1388362-maximumextendeddynamicrangecolor?language=objc for details.
 func (x gen_NSScreen) MaximumExtendedDynamicRangeColorComponentValue() core.CGFloat {
-	ret := C.NSScreen_inst_maximumExtendedDynamicRangeColorComponentValue(
+	ret := C.NSScreen_inst_MaximumExtendedDynamicRangeColorComponentValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16208,7 +16208,7 @@ func (x gen_NSScreen) MaximumExtendedDynamicRangeColorComponentValue() core.CGFl
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/3180382-maximumreferenceextendeddynamicr?language=objc for details.
 func (x gen_NSScreen) MaximumReferenceExtendedDynamicRangeColorComponentValue() core.CGFloat {
-	ret := C.NSScreen_inst_maximumReferenceExtendedDynamicRangeColorComponentValue(
+	ret := C.NSScreen_inst_MaximumReferenceExtendedDynamicRangeColorComponentValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16220,7 +16220,7 @@ func (x gen_NSScreen) MaximumReferenceExtendedDynamicRangeColorComponentValue() 
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/3228043-localizedname?language=objc for details.
 func (x gen_NSScreen) LocalizedName() core.NSString {
-	ret := C.NSScreen_inst_localizedName(
+	ret := C.NSScreen_inst_LocalizedName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16232,7 +16232,7 @@ func (x gen_NSScreen) LocalizedName() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/3824745-maximumframespersecond?language=objc for details.
 func (x gen_NSScreen) MaximumFramesPerSecond() core.NSInteger {
-	ret := C.NSScreen_inst_maximumFramesPerSecond(
+	ret := C.NSScreen_inst_MaximumFramesPerSecond(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16265,7 +16265,7 @@ func NSStatusBar_fromRef(ref objc.Ref) NSStatusBar {
 func (x gen_NSStatusBar) RemoveStatusItem(
 	item NSStatusItemRef,
 ) {
-	C.NSStatusBar_inst_removeStatusItem(
+	C.NSStatusBar_inst_RemoveStatusItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -16280,7 +16280,7 @@ func (x gen_NSStatusBar) RemoveStatusItem(
 func (x gen_NSStatusBar) StatusItemWithLength(
 	length core.CGFloat,
 ) NSStatusItem {
-	ret := C.NSStatusBar_inst_statusItemWithLength(
+	ret := C.NSStatusBar_inst_StatusItemWithLength(
 		unsafe.Pointer(x.Pointer()),
 		C.double(length),
 	)
@@ -16293,7 +16293,7 @@ func (x gen_NSStatusBar) StatusItemWithLength(
 //
 // See  for details.
 func (x gen_NSStatusBar) Init_asNSStatusBar() NSStatusBar {
-	ret := C.NSStatusBar_inst_init(
+	ret := C.NSStatusBar_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16305,7 +16305,7 @@ func (x gen_NSStatusBar) Init_asNSStatusBar() NSStatusBar {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusbar/1530580-vertical?language=objc for details.
 func (x gen_NSStatusBar) IsVertical() bool {
-	ret := C.NSStatusBar_inst_isVertical(
+	ret := C.NSStatusBar_inst_IsVertical(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16317,7 +16317,7 @@ func (x gen_NSStatusBar) IsVertical() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusbar/1534591-thickness?language=objc for details.
 func (x gen_NSStatusBar) Thickness() core.CGFloat {
-	ret := C.NSStatusBar_inst_thickness(
+	ret := C.NSStatusBar_inst_Thickness(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16348,7 +16348,7 @@ func NSStatusBarButton_fromRef(ref objc.Ref) NSStatusBarButton {
 //
 // See  for details.
 func (x gen_NSStatusBarButton) Init_asNSStatusBarButton() NSStatusBarButton {
-	ret := C.NSStatusBarButton_inst_init(
+	ret := C.NSStatusBarButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16360,7 +16360,7 @@ func (x gen_NSStatusBarButton) Init_asNSStatusBarButton() NSStatusBarButton {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusbarbutton/1409292-appearsdisabled?language=objc for details.
 func (x gen_NSStatusBarButton) AppearsDisabled() bool {
-	ret := C.NSStatusBarButton_inst_appearsDisabled(
+	ret := C.NSStatusBarButton_inst_AppearsDisabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16374,7 +16374,7 @@ func (x gen_NSStatusBarButton) AppearsDisabled() bool {
 func (x gen_NSStatusBarButton) SetAppearsDisabled(
 	value bool,
 ) {
-	C.NSStatusBarButton_inst_setAppearsDisabled(
+	C.NSStatusBarButton_inst_SetAppearsDisabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -16406,7 +16406,7 @@ func NSStatusItem_fromRef(ref objc.Ref) NSStatusItem {
 //
 // See  for details.
 func (x gen_NSStatusItem) Init_asNSStatusItem() NSStatusItem {
-	ret := C.NSStatusItem_inst_init(
+	ret := C.NSStatusItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16418,7 +16418,7 @@ func (x gen_NSStatusItem) Init_asNSStatusItem() NSStatusItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusitem/1525951-statusbar?language=objc for details.
 func (x gen_NSStatusItem) StatusBar() NSStatusBar {
-	ret := C.NSStatusItem_inst_statusBar(
+	ret := C.NSStatusItem_inst_StatusBar(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16430,7 +16430,7 @@ func (x gen_NSStatusItem) StatusBar() NSStatusBar {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusitem/1535056-button?language=objc for details.
 func (x gen_NSStatusItem) Button() NSStatusBarButton {
-	ret := C.NSStatusItem_inst_button(
+	ret := C.NSStatusItem_inst_Button(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16442,7 +16442,7 @@ func (x gen_NSStatusItem) Button() NSStatusBarButton {
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusitem/1535918-menu?language=objc for details.
 func (x gen_NSStatusItem) Menu() NSMenu {
-	ret := C.NSStatusItem_inst_menu(
+	ret := C.NSStatusItem_inst_Menu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16456,7 +16456,7 @@ func (x gen_NSStatusItem) Menu() NSMenu {
 func (x gen_NSStatusItem) SetMenu(
 	value NSMenuRef,
 ) {
-	C.NSStatusItem_inst_setMenu(
+	C.NSStatusItem_inst_SetMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16469,7 +16469,7 @@ func (x gen_NSStatusItem) SetMenu(
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusitem/1644025-visible?language=objc for details.
 func (x gen_NSStatusItem) IsVisible() bool {
-	ret := C.NSStatusItem_inst_isVisible(
+	ret := C.NSStatusItem_inst_IsVisible(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16483,7 +16483,7 @@ func (x gen_NSStatusItem) IsVisible() bool {
 func (x gen_NSStatusItem) SetVisible(
 	value bool,
 ) {
-	C.NSStatusItem_inst_setVisible(
+	C.NSStatusItem_inst_SetVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -16496,7 +16496,7 @@ func (x gen_NSStatusItem) SetVisible(
 //
 // See https://developer.apple.com/documentation/appkit/nsstatusitem/1529402-length?language=objc for details.
 func (x gen_NSStatusItem) Length() core.CGFloat {
-	ret := C.NSStatusItem_inst_length(
+	ret := C.NSStatusItem_inst_Length(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16510,7 +16510,7 @@ func (x gen_NSStatusItem) Length() core.CGFloat {
 func (x gen_NSStatusItem) SetLength(
 	value core.CGFloat,
 ) {
-	C.NSStatusItem_inst_setLength(
+	C.NSStatusItem_inst_SetLength(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -16544,7 +16544,7 @@ func NSText_fromRef(ref objc.Ref) NSText {
 func (x gen_NSText) AlignCenter(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignCenter(
+	C.NSText_inst_AlignCenter(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16559,7 +16559,7 @@ func (x gen_NSText) AlignCenter(
 func (x gen_NSText) AlignLeft(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignLeft(
+	C.NSText_inst_AlignLeft(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16574,7 +16574,7 @@ func (x gen_NSText) AlignLeft(
 func (x gen_NSText) AlignRight(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignRight(
+	C.NSText_inst_AlignRight(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16589,7 +16589,7 @@ func (x gen_NSText) AlignRight(
 func (x gen_NSText) ChangeFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_changeFont(
+	C.NSText_inst_ChangeFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16604,7 +16604,7 @@ func (x gen_NSText) ChangeFont(
 func (x gen_NSText) CheckSpelling(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_checkSpelling(
+	C.NSText_inst_CheckSpelling(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16619,7 +16619,7 @@ func (x gen_NSText) CheckSpelling(
 func (x gen_NSText) Copy(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copy(
+	C.NSText_inst_Copy(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16634,7 +16634,7 @@ func (x gen_NSText) Copy(
 func (x gen_NSText) CopyFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copyFont(
+	C.NSText_inst_CopyFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16649,7 +16649,7 @@ func (x gen_NSText) CopyFont(
 func (x gen_NSText) CopyRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copyRuler(
+	C.NSText_inst_CopyRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16664,7 +16664,7 @@ func (x gen_NSText) CopyRuler(
 func (x gen_NSText) Cut(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_cut(
+	C.NSText_inst_Cut(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16679,7 +16679,7 @@ func (x gen_NSText) Cut(
 func (x gen_NSText) Delete(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_delete(
+	C.NSText_inst_Delete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16694,7 +16694,7 @@ func (x gen_NSText) Delete(
 func (x gen_NSText) InitWithFrame_asNSText(
 	frameRect core.NSRect,
 ) NSText {
-	ret := C.NSText_inst_initWithFrame(
+	ret := C.NSText_inst_InitWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -16709,7 +16709,7 @@ func (x gen_NSText) InitWithFrame_asNSText(
 func (x gen_NSText) Paste(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_paste(
+	C.NSText_inst_Paste(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16724,7 +16724,7 @@ func (x gen_NSText) Paste(
 func (x gen_NSText) PasteFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_pasteFont(
+	C.NSText_inst_PasteFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16739,7 +16739,7 @@ func (x gen_NSText) PasteFont(
 func (x gen_NSText) PasteRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_pasteRuler(
+	C.NSText_inst_PasteRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16754,7 +16754,7 @@ func (x gen_NSText) PasteRuler(
 func (x gen_NSText) ReadRTFDFromFile(
 	path core.NSStringRef,
 ) bool {
-	ret := C.NSText_inst_readRTFDFromFile(
+	ret := C.NSText_inst_ReadRTFDFromFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -16769,7 +16769,7 @@ func (x gen_NSText) ReadRTFDFromFile(
 func (x gen_NSText) SelectAll(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_selectAll(
+	C.NSText_inst_SelectAll(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16784,7 +16784,7 @@ func (x gen_NSText) SelectAll(
 func (x gen_NSText) ShowGuessPanel(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_showGuessPanel(
+	C.NSText_inst_ShowGuessPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16797,7 +16797,7 @@ func (x gen_NSText) ShowGuessPanel(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1533991-sizetofit?language=objc for details.
 func (x gen_NSText) SizeToFit() {
-	C.NSText_inst_sizeToFit(
+	C.NSText_inst_SizeToFit(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16811,7 +16811,7 @@ func (x gen_NSText) SizeToFit() {
 func (x gen_NSText) Subscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_subscript(
+	C.NSText_inst_Subscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16826,7 +16826,7 @@ func (x gen_NSText) Subscript(
 func (x gen_NSText) Superscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_superscript(
+	C.NSText_inst_Superscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16841,7 +16841,7 @@ func (x gen_NSText) Superscript(
 func (x gen_NSText) ToggleRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_toggleRuler(
+	C.NSText_inst_ToggleRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16856,7 +16856,7 @@ func (x gen_NSText) ToggleRuler(
 func (x gen_NSText) Underline(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_underline(
+	C.NSText_inst_Underline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16871,7 +16871,7 @@ func (x gen_NSText) Underline(
 func (x gen_NSText) Unscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_unscript(
+	C.NSText_inst_Unscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16880,14 +16880,14 @@ func (x gen_NSText) Unscript(
 
 }
 
-// WriteRTFDToFile_atomically writes the receiver’s text as rtf with attachments to a file or directory at path.
+// WriteRTFDToFileAtomically writes the receiver’s text as rtf with attachments to a file or directory at path.
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1527085-writertfdtofile?language=objc for details.
-func (x gen_NSText) WriteRTFDToFile_atomically(
+func (x gen_NSText) WriteRTFDToFileAtomically(
 	path core.NSStringRef,
 	flag bool,
 ) bool {
-	ret := C.NSText_inst_writeRTFDToFile_atomically(
+	ret := C.NSText_inst_WriteRTFDToFileAtomically(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 		convertToObjCBool(flag),
@@ -16901,7 +16901,7 @@ func (x gen_NSText) WriteRTFDToFile_atomically(
 //
 // See  for details.
 func (x gen_NSText) Init_asNSText() NSText {
-	ret := C.NSText_inst_init(
+	ret := C.NSText_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16913,7 +16913,7 @@ func (x gen_NSText) Init_asNSText() NSText {
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1528601-string?language=objc for details.
 func (x gen_NSText) String() core.NSString {
-	ret := C.NSText_inst_string(
+	ret := C.NSText_inst_String(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16927,7 +16927,7 @@ func (x gen_NSText) String() core.NSString {
 func (x gen_NSText) SetString(
 	value core.NSStringRef,
 ) {
-	C.NSText_inst_setString(
+	C.NSText_inst_SetString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16940,7 +16940,7 @@ func (x gen_NSText) SetString(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1535324-backgroundcolor?language=objc for details.
 func (x gen_NSText) BackgroundColor() NSColor {
-	ret := C.NSText_inst_backgroundColor(
+	ret := C.NSText_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16954,7 +16954,7 @@ func (x gen_NSText) BackgroundColor() NSColor {
 func (x gen_NSText) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSText_inst_setBackgroundColor(
+	C.NSText_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16967,7 +16967,7 @@ func (x gen_NSText) SetBackgroundColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1531772-drawsbackground?language=objc for details.
 func (x gen_NSText) DrawsBackground() bool {
-	ret := C.NSText_inst_drawsBackground(
+	ret := C.NSText_inst_DrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -16981,7 +16981,7 @@ func (x gen_NSText) DrawsBackground() bool {
 func (x gen_NSText) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSText_inst_setDrawsBackground(
+	C.NSText_inst_SetDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -16994,7 +16994,7 @@ func (x gen_NSText) SetDrawsBackground(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1529876-editable?language=objc for details.
 func (x gen_NSText) IsEditable() bool {
-	ret := C.NSText_inst_isEditable(
+	ret := C.NSText_inst_IsEditable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17008,7 +17008,7 @@ func (x gen_NSText) IsEditable() bool {
 func (x gen_NSText) SetEditable(
 	value bool,
 ) {
-	C.NSText_inst_setEditable(
+	C.NSText_inst_SetEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17021,7 +17021,7 @@ func (x gen_NSText) SetEditable(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1535368-selectable?language=objc for details.
 func (x gen_NSText) IsSelectable() bool {
-	ret := C.NSText_inst_isSelectable(
+	ret := C.NSText_inst_IsSelectable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17035,7 +17035,7 @@ func (x gen_NSText) IsSelectable() bool {
 func (x gen_NSText) SetSelectable(
 	value bool,
 ) {
-	C.NSText_inst_setSelectable(
+	C.NSText_inst_SetSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17048,7 +17048,7 @@ func (x gen_NSText) SetSelectable(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1533080-fieldeditor?language=objc for details.
 func (x gen_NSText) IsFieldEditor() bool {
-	ret := C.NSText_inst_isFieldEditor(
+	ret := C.NSText_inst_IsFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17062,7 +17062,7 @@ func (x gen_NSText) IsFieldEditor() bool {
 func (x gen_NSText) SetFieldEditor(
 	value bool,
 ) {
-	C.NSText_inst_setFieldEditor(
+	C.NSText_inst_SetFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17075,7 +17075,7 @@ func (x gen_NSText) SetFieldEditor(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1531003-richtext?language=objc for details.
 func (x gen_NSText) IsRichText() bool {
-	ret := C.NSText_inst_isRichText(
+	ret := C.NSText_inst_IsRichText(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17089,7 +17089,7 @@ func (x gen_NSText) IsRichText() bool {
 func (x gen_NSText) SetRichText(
 	value bool,
 ) {
-	C.NSText_inst_setRichText(
+	C.NSText_inst_SetRichText(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17102,7 +17102,7 @@ func (x gen_NSText) SetRichText(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1531887-importsgraphics?language=objc for details.
 func (x gen_NSText) ImportsGraphics() bool {
-	ret := C.NSText_inst_importsGraphics(
+	ret := C.NSText_inst_ImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17116,7 +17116,7 @@ func (x gen_NSText) ImportsGraphics() bool {
 func (x gen_NSText) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSText_inst_setImportsGraphics(
+	C.NSText_inst_SetImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17129,7 +17129,7 @@ func (x gen_NSText) SetImportsGraphics(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1527431-usesfontpanel?language=objc for details.
 func (x gen_NSText) UsesFontPanel() bool {
-	ret := C.NSText_inst_usesFontPanel(
+	ret := C.NSText_inst_UsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17143,7 +17143,7 @@ func (x gen_NSText) UsesFontPanel() bool {
 func (x gen_NSText) SetUsesFontPanel(
 	value bool,
 ) {
-	C.NSText_inst_setUsesFontPanel(
+	C.NSText_inst_SetUsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17156,7 +17156,7 @@ func (x gen_NSText) SetUsesFontPanel(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1533732-rulervisible?language=objc for details.
 func (x gen_NSText) IsRulerVisible() bool {
-	ret := C.NSText_inst_isRulerVisible(
+	ret := C.NSText_inst_IsRulerVisible(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17168,7 +17168,7 @@ func (x gen_NSText) IsRulerVisible() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1534646-font?language=objc for details.
 func (x gen_NSText) Font() NSFont {
-	ret := C.NSText_inst_font(
+	ret := C.NSText_inst_Font(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17182,7 +17182,7 @@ func (x gen_NSText) Font() NSFont {
 func (x gen_NSText) SetFont(
 	value NSFontRef,
 ) {
-	C.NSText_inst_setFont(
+	C.NSText_inst_SetFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17195,7 +17195,7 @@ func (x gen_NSText) SetFont(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1534875-textcolor?language=objc for details.
 func (x gen_NSText) TextColor() NSColor {
-	ret := C.NSText_inst_textColor(
+	ret := C.NSText_inst_TextColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17209,7 +17209,7 @@ func (x gen_NSText) TextColor() NSColor {
 func (x gen_NSText) SetTextColor(
 	value NSColorRef,
 ) {
-	C.NSText_inst_setTextColor(
+	C.NSText_inst_SetTextColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17222,7 +17222,7 @@ func (x gen_NSText) SetTextColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1535900-maxsize?language=objc for details.
 func (x gen_NSText) MaxSize() core.NSSize {
-	ret := C.NSText_inst_maxSize(
+	ret := C.NSText_inst_MaxSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17236,7 +17236,7 @@ func (x gen_NSText) MaxSize() core.NSSize {
 func (x gen_NSText) SetMaxSize(
 	value core.NSSize,
 ) {
-	C.NSText_inst_setMaxSize(
+	C.NSText_inst_SetMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -17249,7 +17249,7 @@ func (x gen_NSText) SetMaxSize(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1526222-minsize?language=objc for details.
 func (x gen_NSText) MinSize() core.NSSize {
-	ret := C.NSText_inst_minSize(
+	ret := C.NSText_inst_MinSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17263,7 +17263,7 @@ func (x gen_NSText) MinSize() core.NSSize {
 func (x gen_NSText) SetMinSize(
 	value core.NSSize,
 ) {
-	C.NSText_inst_setMinSize(
+	C.NSText_inst_SetMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -17276,7 +17276,7 @@ func (x gen_NSText) SetMinSize(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1535082-verticallyresizable?language=objc for details.
 func (x gen_NSText) IsVerticallyResizable() bool {
-	ret := C.NSText_inst_isVerticallyResizable(
+	ret := C.NSText_inst_IsVerticallyResizable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17290,7 +17290,7 @@ func (x gen_NSText) IsVerticallyResizable() bool {
 func (x gen_NSText) SetVerticallyResizable(
 	value bool,
 ) {
-	C.NSText_inst_setVerticallyResizable(
+	C.NSText_inst_SetVerticallyResizable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17303,7 +17303,7 @@ func (x gen_NSText) SetVerticallyResizable(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1527489-horizontallyresizable?language=objc for details.
 func (x gen_NSText) IsHorizontallyResizable() bool {
-	ret := C.NSText_inst_isHorizontallyResizable(
+	ret := C.NSText_inst_IsHorizontallyResizable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17317,7 +17317,7 @@ func (x gen_NSText) IsHorizontallyResizable() bool {
 func (x gen_NSText) SetHorizontallyResizable(
 	value bool,
 ) {
-	C.NSText_inst_setHorizontallyResizable(
+	C.NSText_inst_SetHorizontallyResizable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17330,7 +17330,7 @@ func (x gen_NSText) SetHorizontallyResizable(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1529480-delegate?language=objc for details.
 func (x gen_NSText) Delegate() objc.Object {
-	ret := C.NSText_inst_delegate(
+	ret := C.NSText_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17344,7 +17344,7 @@ func (x gen_NSText) Delegate() objc.Object {
 func (x gen_NSText) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSText_inst_setDelegate(
+	C.NSText_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17378,7 +17378,7 @@ func NSTextField_fromRef(ref objc.Ref) NSTextField {
 func (x gen_NSTextField) SelectText(
 	sender objc.Ref,
 ) {
-	C.NSTextField_inst_selectText(
+	C.NSTextField_inst_SelectText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -17393,7 +17393,7 @@ func (x gen_NSTextField) SelectText(
 func (x gen_NSTextField) TextShouldBeginEditing(
 	textObject NSTextRef,
 ) bool {
-	ret := C.NSTextField_inst_textShouldBeginEditing(
+	ret := C.NSTextField_inst_TextShouldBeginEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObject),
 	)
@@ -17408,7 +17408,7 @@ func (x gen_NSTextField) TextShouldBeginEditing(
 func (x gen_NSTextField) TextShouldEndEditing(
 	textObject NSTextRef,
 ) bool {
-	ret := C.NSTextField_inst_textShouldEndEditing(
+	ret := C.NSTextField_inst_TextShouldEndEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObject),
 	)
@@ -17421,7 +17421,7 @@ func (x gen_NSTextField) TextShouldEndEditing(
 //
 // See  for details.
 func (x gen_NSTextField) Init_asNSTextField() NSTextField {
-	ret := C.NSTextField_inst_init(
+	ret := C.NSTextField_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17433,7 +17433,7 @@ func (x gen_NSTextField) Init_asNSTextField() NSTextField {
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc for details.
 func (x gen_NSTextField) IsSelectable() bool {
-	ret := C.NSTextField_inst_isSelectable(
+	ret := C.NSTextField_inst_IsSelectable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17447,7 +17447,7 @@ func (x gen_NSTextField) IsSelectable() bool {
 func (x gen_NSTextField) SetSelectable(
 	value bool,
 ) {
-	C.NSTextField_inst_setSelectable(
+	C.NSTextField_inst_SetSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17460,7 +17460,7 @@ func (x gen_NSTextField) SetSelectable(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc for details.
 func (x gen_NSTextField) IsEditable() bool {
-	ret := C.NSTextField_inst_isEditable(
+	ret := C.NSTextField_inst_IsEditable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17474,7 +17474,7 @@ func (x gen_NSTextField) IsEditable() bool {
 func (x gen_NSTextField) SetEditable(
 	value bool,
 ) {
-	C.NSTextField_inst_setEditable(
+	C.NSTextField_inst_SetEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17487,7 +17487,7 @@ func (x gen_NSTextField) SetEditable(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc for details.
 func (x gen_NSTextField) AllowsEditingTextAttributes() bool {
-	ret := C.NSTextField_inst_allowsEditingTextAttributes(
+	ret := C.NSTextField_inst_AllowsEditingTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17501,7 +17501,7 @@ func (x gen_NSTextField) AllowsEditingTextAttributes() bool {
 func (x gen_NSTextField) SetAllowsEditingTextAttributes(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsEditingTextAttributes(
+	C.NSTextField_inst_SetAllowsEditingTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17514,7 +17514,7 @@ func (x gen_NSTextField) SetAllowsEditingTextAttributes(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc for details.
 func (x gen_NSTextField) ImportsGraphics() bool {
-	ret := C.NSTextField_inst_importsGraphics(
+	ret := C.NSTextField_inst_ImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17528,7 +17528,7 @@ func (x gen_NSTextField) ImportsGraphics() bool {
 func (x gen_NSTextField) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSTextField_inst_setImportsGraphics(
+	C.NSTextField_inst_SetImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17541,7 +17541,7 @@ func (x gen_NSTextField) SetImportsGraphics(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc for details.
 func (x gen_NSTextField) PlaceholderString() core.NSString {
-	ret := C.NSTextField_inst_placeholderString(
+	ret := C.NSTextField_inst_PlaceholderString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17555,7 +17555,7 @@ func (x gen_NSTextField) PlaceholderString() core.NSString {
 func (x gen_NSTextField) SetPlaceholderString(
 	value core.NSStringRef,
 ) {
-	C.NSTextField_inst_setPlaceholderString(
+	C.NSTextField_inst_SetPlaceholderString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17568,7 +17568,7 @@ func (x gen_NSTextField) SetPlaceholderString(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc for details.
 func (x gen_NSTextField) PlaceholderAttributedString() core.NSAttributedString {
-	ret := C.NSTextField_inst_placeholderAttributedString(
+	ret := C.NSTextField_inst_PlaceholderAttributedString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17582,7 +17582,7 @@ func (x gen_NSTextField) PlaceholderAttributedString() core.NSAttributedString {
 func (x gen_NSTextField) SetPlaceholderAttributedString(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSTextField_inst_setPlaceholderAttributedString(
+	C.NSTextField_inst_SetPlaceholderAttributedString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17595,7 +17595,7 @@ func (x gen_NSTextField) SetPlaceholderAttributedString(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399405-allowsdefaulttighteningfortrunca?language=objc for details.
 func (x gen_NSTextField) AllowsDefaultTighteningForTruncation() bool {
-	ret := C.NSTextField_inst_allowsDefaultTighteningForTruncation(
+	ret := C.NSTextField_inst_AllowsDefaultTighteningForTruncation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17609,7 +17609,7 @@ func (x gen_NSTextField) AllowsDefaultTighteningForTruncation() bool {
 func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsDefaultTighteningForTruncation(
+	C.NSTextField_inst_SetAllowsDefaultTighteningForTruncation(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17622,7 +17622,7 @@ func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399424-maximumnumberoflines?language=objc for details.
 func (x gen_NSTextField) MaximumNumberOfLines() core.NSInteger {
-	ret := C.NSTextField_inst_maximumNumberOfLines(
+	ret := C.NSTextField_inst_MaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17636,7 +17636,7 @@ func (x gen_NSTextField) MaximumNumberOfLines() core.NSInteger {
 func (x gen_NSTextField) SetMaximumNumberOfLines(
 	value core.NSInteger,
 ) {
-	C.NSTextField_inst_setMaximumNumberOfLines(
+	C.NSTextField_inst_SetMaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -17649,7 +17649,7 @@ func (x gen_NSTextField) SetMaximumNumberOfLines(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc for details.
 func (x gen_NSTextField) PreferredMaxLayoutWidth() core.CGFloat {
-	ret := C.NSTextField_inst_preferredMaxLayoutWidth(
+	ret := C.NSTextField_inst_PreferredMaxLayoutWidth(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17663,7 +17663,7 @@ func (x gen_NSTextField) PreferredMaxLayoutWidth() core.CGFloat {
 func (x gen_NSTextField) SetPreferredMaxLayoutWidth(
 	value core.CGFloat,
 ) {
-	C.NSTextField_inst_setPreferredMaxLayoutWidth(
+	C.NSTextField_inst_SetPreferredMaxLayoutWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -17676,7 +17676,7 @@ func (x gen_NSTextField) SetPreferredMaxLayoutWidth(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc for details.
 func (x gen_NSTextField) TextColor() NSColor {
-	ret := C.NSTextField_inst_textColor(
+	ret := C.NSTextField_inst_TextColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17690,7 +17690,7 @@ func (x gen_NSTextField) TextColor() NSColor {
 func (x gen_NSTextField) SetTextColor(
 	value NSColorRef,
 ) {
-	C.NSTextField_inst_setTextColor(
+	C.NSTextField_inst_SetTextColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17703,7 +17703,7 @@ func (x gen_NSTextField) SetTextColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc for details.
 func (x gen_NSTextField) BackgroundColor() NSColor {
-	ret := C.NSTextField_inst_backgroundColor(
+	ret := C.NSTextField_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17717,7 +17717,7 @@ func (x gen_NSTextField) BackgroundColor() NSColor {
 func (x gen_NSTextField) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSTextField_inst_setBackgroundColor(
+	C.NSTextField_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17730,7 +17730,7 @@ func (x gen_NSTextField) SetBackgroundColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399416-drawsbackground?language=objc for details.
 func (x gen_NSTextField) DrawsBackground() bool {
-	ret := C.NSTextField_inst_drawsBackground(
+	ret := C.NSTextField_inst_DrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17744,7 +17744,7 @@ func (x gen_NSTextField) DrawsBackground() bool {
 func (x gen_NSTextField) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSTextField_inst_setDrawsBackground(
+	C.NSTextField_inst_SetDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17757,7 +17757,7 @@ func (x gen_NSTextField) SetDrawsBackground(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc for details.
 func (x gen_NSTextField) IsBezeled() bool {
-	ret := C.NSTextField_inst_isBezeled(
+	ret := C.NSTextField_inst_IsBezeled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17771,7 +17771,7 @@ func (x gen_NSTextField) IsBezeled() bool {
 func (x gen_NSTextField) SetBezeled(
 	value bool,
 ) {
-	C.NSTextField_inst_setBezeled(
+	C.NSTextField_inst_SetBezeled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17784,7 +17784,7 @@ func (x gen_NSTextField) SetBezeled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399403-bordered?language=objc for details.
 func (x gen_NSTextField) IsBordered() bool {
-	ret := C.NSTextField_inst_isBordered(
+	ret := C.NSTextField_inst_IsBordered(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17798,7 +17798,7 @@ func (x gen_NSTextField) IsBordered() bool {
 func (x gen_NSTextField) SetBordered(
 	value bool,
 ) {
-	C.NSTextField_inst_setBordered(
+	C.NSTextField_inst_SetBordered(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17811,7 +17811,7 @@ func (x gen_NSTextField) SetBordered(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399393-acceptsfirstresponder?language=objc for details.
 func (x gen_NSTextField) AcceptsFirstResponder() bool {
-	ret := C.NSTextField_inst_acceptsFirstResponder(
+	ret := C.NSTextField_inst_AcceptsFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17823,7 +17823,7 @@ func (x gen_NSTextField) AcceptsFirstResponder() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc for details.
 func (x gen_NSTextField) AllowsCharacterPickerTouchBarItem() bool {
-	ret := C.NSTextField_inst_allowsCharacterPickerTouchBarItem(
+	ret := C.NSTextField_inst_AllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17837,7 +17837,7 @@ func (x gen_NSTextField) AllowsCharacterPickerTouchBarItem() bool {
 func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsCharacterPickerTouchBarItem(
+	C.NSTextField_inst_SetAllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17850,7 +17850,7 @@ func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc for details.
 func (x gen_NSTextField) IsAutomaticTextCompletionEnabled() bool {
-	ret := C.NSTextField_inst_isAutomaticTextCompletionEnabled(
+	ret := C.NSTextField_inst_IsAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17864,7 +17864,7 @@ func (x gen_NSTextField) IsAutomaticTextCompletionEnabled() bool {
 func (x gen_NSTextField) SetAutomaticTextCompletionEnabled(
 	value bool,
 ) {
-	C.NSTextField_inst_setAutomaticTextCompletionEnabled(
+	C.NSTextField_inst_SetAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17877,7 +17877,7 @@ func (x gen_NSTextField) SetAutomaticTextCompletionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399437-delegate?language=objc for details.
 func (x gen_NSTextField) Delegate() objc.Object {
-	ret := C.NSTextField_inst_delegate(
+	ret := C.NSTextField_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17891,7 +17891,7 @@ func (x gen_NSTextField) Delegate() objc.Object {
 func (x gen_NSTextField) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSTextField_inst_setDelegate(
+	C.NSTextField_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17925,7 +17925,7 @@ func NSTextContainer_fromRef(ref objc.Ref) NSTextContainer {
 func (x gen_NSTextContainer) InitWithSize_asNSTextContainer(
 	size core.NSSize,
 ) NSTextContainer {
-	ret := C.NSTextContainer_inst_initWithSize(
+	ret := C.NSTextContainer_inst_InitWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -17940,7 +17940,7 @@ func (x gen_NSTextContainer) InitWithSize_asNSTextContainer(
 func (x gen_NSTextContainer) ReplaceLayoutManager(
 	newLayoutManager NSLayoutManagerRef,
 ) {
-	C.NSTextContainer_inst_replaceLayoutManager(
+	C.NSTextContainer_inst_ReplaceLayoutManager(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newLayoutManager),
 	)
@@ -17953,7 +17953,7 @@ func (x gen_NSTextContainer) ReplaceLayoutManager(
 //
 // See  for details.
 func (x gen_NSTextContainer) Init_asNSTextContainer() NSTextContainer {
-	ret := C.NSTextContainer_inst_init(
+	ret := C.NSTextContainer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17965,7 +17965,7 @@ func (x gen_NSTextContainer) Init_asNSTextContainer() NSTextContainer {
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444517-layoutmanager?language=objc for details.
 func (x gen_NSTextContainer) LayoutManager() NSLayoutManager {
-	ret := C.NSTextContainer_inst_layoutManager(
+	ret := C.NSTextContainer_inst_LayoutManager(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -17979,7 +17979,7 @@ func (x gen_NSTextContainer) LayoutManager() NSLayoutManager {
 func (x gen_NSTextContainer) SetLayoutManager(
 	value NSLayoutManagerRef,
 ) {
-	C.NSTextContainer_inst_setLayoutManager(
+	C.NSTextContainer_inst_SetLayoutManager(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17992,7 +17992,7 @@ func (x gen_NSTextContainer) SetLayoutManager(
 //
 // See https://developer.apple.com/documentation/appkit/nstextcontainer/1444537-textview?language=objc for details.
 func (x gen_NSTextContainer) TextView() NSTextView {
-	ret := C.NSTextContainer_inst_textView(
+	ret := C.NSTextContainer_inst_TextView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18006,7 +18006,7 @@ func (x gen_NSTextContainer) TextView() NSTextView {
 func (x gen_NSTextContainer) SetTextView(
 	value NSTextViewRef,
 ) {
-	C.NSTextContainer_inst_setTextView(
+	C.NSTextContainer_inst_SetTextView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18019,7 +18019,7 @@ func (x gen_NSTextContainer) SetTextView(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444553-size?language=objc for details.
 func (x gen_NSTextContainer) Size() core.NSSize {
-	ret := C.NSTextContainer_inst_size(
+	ret := C.NSTextContainer_inst_Size(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18033,7 +18033,7 @@ func (x gen_NSTextContainer) Size() core.NSSize {
 func (x gen_NSTextContainer) SetSize(
 	value core.NSSize,
 ) {
-	C.NSTextContainer_inst_setSize(
+	C.NSTextContainer_inst_SetSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18046,7 +18046,7 @@ func (x gen_NSTextContainer) SetSize(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444569-exclusionpaths?language=objc for details.
 func (x gen_NSTextContainer) ExclusionPaths() core.NSArray {
-	ret := C.NSTextContainer_inst_exclusionPaths(
+	ret := C.NSTextContainer_inst_ExclusionPaths(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18060,7 +18060,7 @@ func (x gen_NSTextContainer) ExclusionPaths() core.NSArray {
 func (x gen_NSTextContainer) SetExclusionPaths(
 	value core.NSArrayRef,
 ) {
-	C.NSTextContainer_inst_setExclusionPaths(
+	C.NSTextContainer_inst_SetExclusionPaths(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18073,7 +18073,7 @@ func (x gen_NSTextContainer) SetExclusionPaths(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444563-widthtrackstextview?language=objc for details.
 func (x gen_NSTextContainer) WidthTracksTextView() bool {
-	ret := C.NSTextContainer_inst_widthTracksTextView(
+	ret := C.NSTextContainer_inst_WidthTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18087,7 +18087,7 @@ func (x gen_NSTextContainer) WidthTracksTextView() bool {
 func (x gen_NSTextContainer) SetWidthTracksTextView(
 	value bool,
 ) {
-	C.NSTextContainer_inst_setWidthTracksTextView(
+	C.NSTextContainer_inst_SetWidthTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18100,7 +18100,7 @@ func (x gen_NSTextContainer) SetWidthTracksTextView(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444559-heighttrackstextview?language=objc for details.
 func (x gen_NSTextContainer) HeightTracksTextView() bool {
-	ret := C.NSTextContainer_inst_heightTracksTextView(
+	ret := C.NSTextContainer_inst_HeightTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18114,7 +18114,7 @@ func (x gen_NSTextContainer) HeightTracksTextView() bool {
 func (x gen_NSTextContainer) SetHeightTracksTextView(
 	value bool,
 ) {
-	C.NSTextContainer_inst_setHeightTracksTextView(
+	C.NSTextContainer_inst_SetHeightTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18127,7 +18127,7 @@ func (x gen_NSTextContainer) SetHeightTracksTextView(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444531-maximumnumberoflines?language=objc for details.
 func (x gen_NSTextContainer) MaximumNumberOfLines() core.NSUInteger {
-	ret := C.NSTextContainer_inst_maximumNumberOfLines(
+	ret := C.NSTextContainer_inst_MaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18141,7 +18141,7 @@ func (x gen_NSTextContainer) MaximumNumberOfLines() core.NSUInteger {
 func (x gen_NSTextContainer) SetMaximumNumberOfLines(
 	value core.NSUInteger,
 ) {
-	C.NSTextContainer_inst_setMaximumNumberOfLines(
+	C.NSTextContainer_inst_SetMaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -18154,7 +18154,7 @@ func (x gen_NSTextContainer) SetMaximumNumberOfLines(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444527-linefragmentpadding?language=objc for details.
 func (x gen_NSTextContainer) LineFragmentPadding() core.CGFloat {
-	ret := C.NSTextContainer_inst_lineFragmentPadding(
+	ret := C.NSTextContainer_inst_LineFragmentPadding(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18168,7 +18168,7 @@ func (x gen_NSTextContainer) LineFragmentPadding() core.CGFloat {
 func (x gen_NSTextContainer) SetLineFragmentPadding(
 	value core.CGFloat,
 ) {
-	C.NSTextContainer_inst_setLineFragmentPadding(
+	C.NSTextContainer_inst_SetLineFragmentPadding(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -18181,7 +18181,7 @@ func (x gen_NSTextContainer) SetLineFragmentPadding(
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444525-simplerectangulartextcontainer?language=objc for details.
 func (x gen_NSTextContainer) IsSimpleRectangularTextContainer() bool {
-	ret := C.NSTextContainer_inst_isSimpleRectangularTextContainer(
+	ret := C.NSTextContainer_inst_IsSimpleRectangularTextContainer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18214,7 +18214,7 @@ func NSViewController_fromRef(ref objc.Ref) NSViewController {
 func (x gen_NSViewController) AddChildViewController(
 	childViewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_addChildViewController(
+	C.NSViewController_inst_AddChildViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childViewController),
 	)
@@ -18227,7 +18227,7 @@ func (x gen_NSViewController) AddChildViewController(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434485-commitediting?language=objc for details.
 func (x gen_NSViewController) CommitEditing() bool {
-	ret := C.NSViewController_inst_commitEditing(
+	ret := C.NSViewController_inst_CommitEditing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18235,15 +18235,15 @@ func (x gen_NSViewController) CommitEditing() bool {
 
 }
 
-// CommitEditingWithDelegate_didCommitSelector_contextInfo attempt to commit any currently edited results of the receiver.
+// CommitEditingWithDelegateDidCommitSelectorContextInfo attempt to commit any currently edited results of the receiver.
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434464-commiteditingwithdelegate?language=objc for details.
-func (x gen_NSViewController) CommitEditingWithDelegate_didCommitSelector_contextInfo(
+func (x gen_NSViewController) CommitEditingWithDelegateDidCommitSelectorContextInfo(
 	delegate objc.Ref,
 	didCommitSelector objc.Selector,
 	contextInfo unsafe.Pointer,
 ) {
-	C.NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo(
+	C.NSViewController_inst_CommitEditingWithDelegateDidCommitSelectorContextInfo(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(delegate),
 		didCommitSelector.SelectorAddress(),
@@ -18258,7 +18258,7 @@ func (x gen_NSViewController) CommitEditingWithDelegate_didCommitSelector_contex
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434487-discardediting?language=objc for details.
 func (x gen_NSViewController) DiscardEditing() {
-	C.NSViewController_inst_discardEditing(
+	C.NSViewController_inst_DiscardEditing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18272,7 +18272,7 @@ func (x gen_NSViewController) DiscardEditing() {
 func (x gen_NSViewController) DismissController(
 	sender objc.Ref,
 ) {
-	C.NSViewController_inst_dismissController(
+	C.NSViewController_inst_DismissController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -18287,7 +18287,7 @@ func (x gen_NSViewController) DismissController(
 func (x gen_NSViewController) DismissViewController(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_dismissViewController(
+	C.NSViewController_inst_DismissViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
@@ -18296,14 +18296,14 @@ func (x gen_NSViewController) DismissViewController(
 
 }
 
-// InsertChildViewController_atIndex inserts a specified child view controller into the childviewcontrollers array at a specified position.
+// InsertChildViewControllerAtIndex inserts a specified child view controller into the childviewcontrollers array at a specified position.
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434437-insertchildviewcontroller?language=objc for details.
-func (x gen_NSViewController) InsertChildViewController_atIndex(
+func (x gen_NSViewController) InsertChildViewControllerAtIndex(
 	childViewController NSViewControllerRef,
 	index core.NSInteger,
 ) {
-	C.NSViewController_inst_insertChildViewController_atIndex(
+	C.NSViewController_inst_InsertChildViewControllerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childViewController),
 		C.long(index),
@@ -18317,7 +18317,7 @@ func (x gen_NSViewController) InsertChildViewController_atIndex(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434405-loadview?language=objc for details.
 func (x gen_NSViewController) LoadView() {
-	C.NSViewController_inst_loadView(
+	C.NSViewController_inst_LoadView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18331,7 +18331,7 @@ func (x gen_NSViewController) LoadView() {
 func (x gen_NSViewController) PreferredContentSizeDidChangeForViewController(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_preferredContentSizeDidChangeForViewController(
+	C.NSViewController_inst_PreferredContentSizeDidChangeForViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
@@ -18340,14 +18340,14 @@ func (x gen_NSViewController) PreferredContentSizeDidChangeForViewController(
 
 }
 
-// PresentViewController_animator presents another view controller using a specified, custom animator for presentation and dismissal.
+// PresentViewControllerAnimator presents another view controller using a specified, custom animator for presentation and dismissal.
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434431-presentviewcontroller?language=objc for details.
-func (x gen_NSViewController) PresentViewController_animator(
+func (x gen_NSViewController) PresentViewControllerAnimator(
 	viewController NSViewControllerRef,
 	animator objc.Ref,
 ) {
-	C.NSViewController_inst_presentViewController_animator(
+	C.NSViewController_inst_PresentViewControllerAnimator(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 		objc.RefPointer(animator),
@@ -18363,7 +18363,7 @@ func (x gen_NSViewController) PresentViewController_animator(
 func (x gen_NSViewController) PresentViewControllerAsModalWindow(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_presentViewControllerAsModalWindow(
+	C.NSViewController_inst_PresentViewControllerAsModalWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
@@ -18378,7 +18378,7 @@ func (x gen_NSViewController) PresentViewControllerAsModalWindow(
 func (x gen_NSViewController) PresentViewControllerAsSheet(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_presentViewControllerAsSheet(
+	C.NSViewController_inst_PresentViewControllerAsSheet(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
@@ -18393,7 +18393,7 @@ func (x gen_NSViewController) PresentViewControllerAsSheet(
 func (x gen_NSViewController) RemoveChildViewControllerAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSViewController_inst_removeChildViewControllerAtIndex(
+	C.NSViewController_inst_RemoveChildViewControllerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -18406,7 +18406,7 @@ func (x gen_NSViewController) RemoveChildViewControllerAtIndex(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434466-removefromparentviewcontroller?language=objc for details.
 func (x gen_NSViewController) RemoveFromParentViewController() {
-	C.NSViewController_inst_removeFromParentViewController(
+	C.NSViewController_inst_RemoveFromParentViewController(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18418,7 +18418,7 @@ func (x gen_NSViewController) RemoveFromParentViewController() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434400-updateviewconstraints?language=objc for details.
 func (x gen_NSViewController) UpdateViewConstraints() {
-	C.NSViewController_inst_updateViewConstraints(
+	C.NSViewController_inst_UpdateViewConstraints(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18430,7 +18430,7 @@ func (x gen_NSViewController) UpdateViewConstraints() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434455-viewdidappear?language=objc for details.
 func (x gen_NSViewController) ViewDidAppear() {
-	C.NSViewController_inst_viewDidAppear(
+	C.NSViewController_inst_ViewDidAppear(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18442,7 +18442,7 @@ func (x gen_NSViewController) ViewDidAppear() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434416-viewdiddisappear?language=objc for details.
 func (x gen_NSViewController) ViewDidDisappear() {
-	C.NSViewController_inst_viewDidDisappear(
+	C.NSViewController_inst_ViewDidDisappear(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18454,7 +18454,7 @@ func (x gen_NSViewController) ViewDidDisappear() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434451-viewdidlayout?language=objc for details.
 func (x gen_NSViewController) ViewDidLayout() {
-	C.NSViewController_inst_viewDidLayout(
+	C.NSViewController_inst_ViewDidLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18466,7 +18466,7 @@ func (x gen_NSViewController) ViewDidLayout() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434476-viewdidload?language=objc for details.
 func (x gen_NSViewController) ViewDidLoad() {
-	C.NSViewController_inst_viewDidLoad(
+	C.NSViewController_inst_ViewDidLoad(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18478,7 +18478,7 @@ func (x gen_NSViewController) ViewDidLoad() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434415-viewwillappear?language=objc for details.
 func (x gen_NSViewController) ViewWillAppear() {
-	C.NSViewController_inst_viewWillAppear(
+	C.NSViewController_inst_ViewWillAppear(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18490,7 +18490,7 @@ func (x gen_NSViewController) ViewWillAppear() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434483-viewwilldisappear?language=objc for details.
 func (x gen_NSViewController) ViewWillDisappear() {
-	C.NSViewController_inst_viewWillDisappear(
+	C.NSViewController_inst_ViewWillDisappear(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18502,7 +18502,7 @@ func (x gen_NSViewController) ViewWillDisappear() {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434495-viewwilllayout?language=objc for details.
 func (x gen_NSViewController) ViewWillLayout() {
-	C.NSViewController_inst_viewWillLayout(
+	C.NSViewController_inst_ViewWillLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18516,7 +18516,7 @@ func (x gen_NSViewController) ViewWillLayout() {
 func (x gen_NSViewController) ViewWillTransitionToSize(
 	newSize core.NSSize,
 ) {
-	C.NSViewController_inst_viewWillTransitionToSize(
+	C.NSViewController_inst_ViewWillTransitionToSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
@@ -18529,7 +18529,7 @@ func (x gen_NSViewController) ViewWillTransitionToSize(
 //
 // See  for details.
 func (x gen_NSViewController) Init_asNSViewController() NSViewController {
-	ret := C.NSViewController_inst_init(
+	ret := C.NSViewController_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18541,7 +18541,7 @@ func (x gen_NSViewController) Init_asNSViewController() NSViewController {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434453-representedobject?language=objc for details.
 func (x gen_NSViewController) RepresentedObject() objc.Object {
-	ret := C.NSViewController_inst_representedObject(
+	ret := C.NSViewController_inst_RepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18555,7 +18555,7 @@ func (x gen_NSViewController) RepresentedObject() objc.Object {
 func (x gen_NSViewController) SetRepresentedObject(
 	value objc.Ref,
 ) {
-	C.NSViewController_inst_setRepresentedObject(
+	C.NSViewController_inst_SetRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18568,7 +18568,7 @@ func (x gen_NSViewController) SetRepresentedObject(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434433-nibbundle?language=objc for details.
 func (x gen_NSViewController) NibBundle() NSBundle {
-	ret := C.NSViewController_inst_nibBundle(
+	ret := C.NSViewController_inst_NibBundle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18580,7 +18580,7 @@ func (x gen_NSViewController) NibBundle() NSBundle {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434401-view?language=objc for details.
 func (x gen_NSViewController) View() NSView {
-	ret := C.NSViewController_inst_view(
+	ret := C.NSViewController_inst_View(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18594,7 +18594,7 @@ func (x gen_NSViewController) View() NSView {
 func (x gen_NSViewController) SetView(
 	value NSViewRef,
 ) {
-	C.NSViewController_inst_setView(
+	C.NSViewController_inst_SetView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18607,7 +18607,7 @@ func (x gen_NSViewController) SetView(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434426-title?language=objc for details.
 func (x gen_NSViewController) Title() core.NSString {
-	ret := C.NSViewController_inst_title(
+	ret := C.NSViewController_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18621,7 +18621,7 @@ func (x gen_NSViewController) Title() core.NSString {
 func (x gen_NSViewController) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSViewController_inst_setTitle(
+	C.NSViewController_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18634,7 +18634,7 @@ func (x gen_NSViewController) SetTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434435-viewloaded?language=objc for details.
 func (x gen_NSViewController) IsViewLoaded() bool {
-	ret := C.NSViewController_inst_isViewLoaded(
+	ret := C.NSViewController_inst_IsViewLoaded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18646,7 +18646,7 @@ func (x gen_NSViewController) IsViewLoaded() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434409-preferredcontentsize?language=objc for details.
 func (x gen_NSViewController) PreferredContentSize() core.NSSize {
-	ret := C.NSViewController_inst_preferredContentSize(
+	ret := C.NSViewController_inst_PreferredContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18660,7 +18660,7 @@ func (x gen_NSViewController) PreferredContentSize() core.NSSize {
 func (x gen_NSViewController) SetPreferredContentSize(
 	value core.NSSize,
 ) {
-	C.NSViewController_inst_setPreferredContentSize(
+	C.NSViewController_inst_SetPreferredContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18673,7 +18673,7 @@ func (x gen_NSViewController) SetPreferredContentSize(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434432-childviewcontrollers?language=objc for details.
 func (x gen_NSViewController) ChildViewControllers() core.NSArray {
-	ret := C.NSViewController_inst_childViewControllers(
+	ret := C.NSViewController_inst_ChildViewControllers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18687,7 +18687,7 @@ func (x gen_NSViewController) ChildViewControllers() core.NSArray {
 func (x gen_NSViewController) SetChildViewControllers(
 	value core.NSArrayRef,
 ) {
-	C.NSViewController_inst_setChildViewControllers(
+	C.NSViewController_inst_SetChildViewControllers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18700,7 +18700,7 @@ func (x gen_NSViewController) SetChildViewControllers(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434491-parentviewcontroller?language=objc for details.
 func (x gen_NSViewController) ParentViewController() NSViewController {
-	ret := C.NSViewController_inst_parentViewController(
+	ret := C.NSViewController_inst_ParentViewController(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18712,7 +18712,7 @@ func (x gen_NSViewController) ParentViewController() NSViewController {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434497-presentedviewcontrollers?language=objc for details.
 func (x gen_NSViewController) PresentedViewControllers() core.NSArray {
-	ret := C.NSViewController_inst_presentedViewControllers(
+	ret := C.NSViewController_inst_PresentedViewControllers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18724,7 +18724,7 @@ func (x gen_NSViewController) PresentedViewControllers() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434439-presentingviewcontroller?language=objc for details.
 func (x gen_NSViewController) PresentingViewController() NSViewController {
-	ret := C.NSViewController_inst_presentingViewController(
+	ret := C.NSViewController_inst_PresentingViewController(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18736,7 +18736,7 @@ func (x gen_NSViewController) PresentingViewController() NSViewController {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434468-preferredscreenorigin?language=objc for details.
 func (x gen_NSViewController) PreferredScreenOrigin() core.NSPoint {
-	ret := C.NSViewController_inst_preferredScreenOrigin(
+	ret := C.NSViewController_inst_PreferredScreenOrigin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18750,7 +18750,7 @@ func (x gen_NSViewController) PreferredScreenOrigin() core.NSPoint {
 func (x gen_NSViewController) SetPreferredScreenOrigin(
 	value core.NSPoint,
 ) {
-	C.NSViewController_inst_setPreferredScreenOrigin(
+	C.NSViewController_inst_SetPreferredScreenOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&value)),
 	)
@@ -18763,7 +18763,7 @@ func (x gen_NSViewController) SetPreferredScreenOrigin(
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434403-preferredmaximumsize?language=objc for details.
 func (x gen_NSViewController) PreferredMaximumSize() core.NSSize {
-	ret := C.NSViewController_inst_preferredMaximumSize(
+	ret := C.NSViewController_inst_PreferredMaximumSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18775,7 +18775,7 @@ func (x gen_NSViewController) PreferredMaximumSize() core.NSSize {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434418-preferredminimumsize?language=objc for details.
 func (x gen_NSViewController) PreferredMinimumSize() core.NSSize {
-	ret := C.NSViewController_inst_preferredMinimumSize(
+	ret := C.NSViewController_inst_PreferredMinimumSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18787,7 +18787,7 @@ func (x gen_NSViewController) PreferredMinimumSize() core.NSSize {
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434479-sourceitemview?language=objc for details.
 func (x gen_NSViewController) SourceItemView() NSView {
-	ret := C.NSViewController_inst_sourceItemView(
+	ret := C.NSViewController_inst_SourceItemView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18801,7 +18801,7 @@ func (x gen_NSViewController) SourceItemView() NSView {
 func (x gen_NSViewController) SetSourceItemView(
 	value NSViewRef,
 ) {
-	C.NSViewController_inst_setSourceItemView(
+	C.NSViewController_inst_SetSourceItemView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18833,7 +18833,7 @@ func NSVisualEffectView_fromRef(ref objc.Ref) NSVisualEffectView {
 //
 // See https://developer.apple.com/documentation/appkit/nsvisualeffectview/1534300-viewdidmovetowindow?language=objc for details.
 func (x gen_NSVisualEffectView) ViewDidMoveToWindow() {
-	C.NSVisualEffectView_inst_viewDidMoveToWindow(
+	C.NSVisualEffectView_inst_ViewDidMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18847,7 +18847,7 @@ func (x gen_NSVisualEffectView) ViewDidMoveToWindow() {
 func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 	newWindow NSWindowRef,
 ) {
-	C.NSVisualEffectView_inst_viewWillMoveToWindow(
+	C.NSVisualEffectView_inst_ViewWillMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newWindow),
 	)
@@ -18860,7 +18860,7 @@ func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 //
 // See  for details.
 func (x gen_NSVisualEffectView) Init_asNSVisualEffectView() NSVisualEffectView {
-	ret := C.NSVisualEffectView_inst_init(
+	ret := C.NSVisualEffectView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18872,7 +18872,7 @@ func (x gen_NSVisualEffectView) Init_asNSVisualEffectView() NSVisualEffectView {
 //
 // See https://developer.apple.com/documentation/appkit/nsvisualeffectview/1644721-emphasized?language=objc for details.
 func (x gen_NSVisualEffectView) IsEmphasized() bool {
-	ret := C.NSVisualEffectView_inst_isEmphasized(
+	ret := C.NSVisualEffectView_inst_IsEmphasized(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18886,7 +18886,7 @@ func (x gen_NSVisualEffectView) IsEmphasized() bool {
 func (x gen_NSVisualEffectView) SetEmphasized(
 	value bool,
 ) {
-	C.NSVisualEffectView_inst_setEmphasized(
+	C.NSVisualEffectView_inst_SetEmphasized(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18899,7 +18899,7 @@ func (x gen_NSVisualEffectView) SetEmphasized(
 //
 // See https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535318-maskimage?language=objc for details.
 func (x gen_NSVisualEffectView) MaskImage() NSImage {
-	ret := C.NSVisualEffectView_inst_maskImage(
+	ret := C.NSVisualEffectView_inst_MaskImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18913,7 +18913,7 @@ func (x gen_NSVisualEffectView) MaskImage() NSImage {
 func (x gen_NSVisualEffectView) SetMaskImage(
 	value NSImageRef,
 ) {
-	C.NSVisualEffectView_inst_setMaskImage(
+	C.NSVisualEffectView_inst_SetMaskImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18941,14 +18941,14 @@ func NSWindow_fromRef(ref objc.Ref) NSWindow {
 	return NSWindow_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// AddChildWindow_ordered adds a given window as a child window of the window.
+// AddChildWindowOrdered adds a given window as a child window of the window.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419152-addchildwindow?language=objc for details.
-func (x gen_NSWindow) AddChildWindow_ordered(
+func (x gen_NSWindow) AddChildWindowOrdered(
 	childWin NSWindowRef,
 	place core.NSUInteger,
 ) {
-	C.NSWindow_inst_addChildWindow_ordered(
+	C.NSWindow_inst_AddChildWindowOrdered(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childWin),
 		C.ulong(place),
@@ -18958,14 +18958,14 @@ func (x gen_NSWindow) AddChildWindow_ordered(
 
 }
 
-// AddTabbedWindow_ordered adds the provided window as a new tab in a tabbed window using the specified ordering instruction.
+// AddTabbedWindowOrdered adds the provided window as a new tab in a tabbed window using the specified ordering instruction.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1855947-addtabbedwindow?language=objc for details.
-func (x gen_NSWindow) AddTabbedWindow_ordered(
+func (x gen_NSWindow) AddTabbedWindowOrdered(
 	window NSWindowRef,
 	ordered core.NSUInteger,
 ) {
-	C.NSWindow_inst_addTabbedWindow_ordered(
+	C.NSWindow_inst_AddTabbedWindowOrdered(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(window),
 		C.ulong(ordered),
@@ -18979,7 +18979,7 @@ func (x gen_NSWindow) AddTabbedWindow_ordered(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419338-becomekeywindow?language=objc for details.
 func (x gen_NSWindow) BecomeKeyWindow() {
-	C.NSWindow_inst_becomeKeyWindow(
+	C.NSWindow_inst_BecomeKeyWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -18991,7 +18991,7 @@ func (x gen_NSWindow) BecomeKeyWindow() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419084-becomemainwindow?language=objc for details.
 func (x gen_NSWindow) BecomeMainWindow() {
-	C.NSWindow_inst_becomeMainWindow(
+	C.NSWindow_inst_BecomeMainWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19005,7 +19005,7 @@ func (x gen_NSWindow) BecomeMainWindow() {
 func (x gen_NSWindow) CascadeTopLeftFromPoint(
 	topLeftPoint core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSWindow_inst_cascadeTopLeftFromPoint(
+	ret := C.NSWindow_inst_CascadeTopLeftFromPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&topLeftPoint)),
 	)
@@ -19018,7 +19018,7 @@ func (x gen_NSWindow) CascadeTopLeftFromPoint(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419090-center?language=objc for details.
 func (x gen_NSWindow) Center() {
-	C.NSWindow_inst_center(
+	C.NSWindow_inst_Center(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19030,7 +19030,7 @@ func (x gen_NSWindow) Center() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419662-close?language=objc for details.
 func (x gen_NSWindow) Close() {
-	C.NSWindow_inst_close(
+	C.NSWindow_inst_Close(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19038,14 +19038,14 @@ func (x gen_NSWindow) Close() {
 
 }
 
-// ConstrainFrameRect_toScreen modifies and returns a frame rectangle so that its top edge lies on a specific screen.
+// ConstrainFrameRectToScreen modifies and returns a frame rectangle so that its top edge lies on a specific screen.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419779-constrainframerect?language=objc for details.
-func (x gen_NSWindow) ConstrainFrameRect_toScreen(
+func (x gen_NSWindow) ConstrainFrameRectToScreen(
 	frameRect core.NSRect,
 	screen NSScreenRef,
 ) core.NSRect {
-	ret := C.NSWindow_inst_constrainFrameRect_toScreen(
+	ret := C.NSWindow_inst_ConstrainFrameRectToScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		objc.RefPointer(screen),
@@ -19061,7 +19061,7 @@ func (x gen_NSWindow) ConstrainFrameRect_toScreen(
 func (x gen_NSWindow) ContentRectForFrameRect(
 	frameRect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_contentRectForFrameRect(
+	ret := C.NSWindow_inst_ContentRectForFrameRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -19076,7 +19076,7 @@ func (x gen_NSWindow) ContentRectForFrameRect(
 func (x gen_NSWindow) ConvertPointFromBacking(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSWindow_inst_convertPointFromBacking(
+	ret := C.NSWindow_inst_ConvertPointFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -19091,7 +19091,7 @@ func (x gen_NSWindow) ConvertPointFromBacking(
 func (x gen_NSWindow) ConvertPointFromScreen(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSWindow_inst_convertPointFromScreen(
+	ret := C.NSWindow_inst_ConvertPointFromScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -19106,7 +19106,7 @@ func (x gen_NSWindow) ConvertPointFromScreen(
 func (x gen_NSWindow) ConvertPointToBacking(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSWindow_inst_convertPointToBacking(
+	ret := C.NSWindow_inst_ConvertPointToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -19121,7 +19121,7 @@ func (x gen_NSWindow) ConvertPointToBacking(
 func (x gen_NSWindow) ConvertPointToScreen(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSWindow_inst_convertPointToScreen(
+	ret := C.NSWindow_inst_ConvertPointToScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -19136,7 +19136,7 @@ func (x gen_NSWindow) ConvertPointToScreen(
 func (x gen_NSWindow) ConvertRectFromBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_convertRectFromBacking(
+	ret := C.NSWindow_inst_ConvertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19151,7 +19151,7 @@ func (x gen_NSWindow) ConvertRectFromBacking(
 func (x gen_NSWindow) ConvertRectFromScreen(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_convertRectFromScreen(
+	ret := C.NSWindow_inst_ConvertRectFromScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19166,7 +19166,7 @@ func (x gen_NSWindow) ConvertRectFromScreen(
 func (x gen_NSWindow) ConvertRectToBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_convertRectToBacking(
+	ret := C.NSWindow_inst_ConvertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19181,7 +19181,7 @@ func (x gen_NSWindow) ConvertRectToBacking(
 func (x gen_NSWindow) ConvertRectToScreen(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_convertRectToScreen(
+	ret := C.NSWindow_inst_ConvertRectToScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19196,7 +19196,7 @@ func (x gen_NSWindow) ConvertRectToScreen(
 func (x gen_NSWindow) DataWithEPSInsideRect(
 	rect core.NSRect,
 ) core.NSData {
-	ret := C.NSWindow_inst_dataWithEPSInsideRect(
+	ret := C.NSWindow_inst_DataWithEPSInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19211,7 +19211,7 @@ func (x gen_NSWindow) DataWithEPSInsideRect(
 func (x gen_NSWindow) DataWithPDFInsideRect(
 	rect core.NSRect,
 ) core.NSData {
-	ret := C.NSWindow_inst_dataWithPDFInsideRect(
+	ret := C.NSWindow_inst_DataWithPDFInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19226,7 +19226,7 @@ func (x gen_NSWindow) DataWithPDFInsideRect(
 func (x gen_NSWindow) Deminiaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_deminiaturize(
+	C.NSWindow_inst_Deminiaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19239,7 +19239,7 @@ func (x gen_NSWindow) Deminiaturize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419639-disablecursorrects?language=objc for details.
 func (x gen_NSWindow) DisableCursorRects() {
-	C.NSWindow_inst_disableCursorRects(
+	C.NSWindow_inst_DisableCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19251,7 +19251,7 @@ func (x gen_NSWindow) DisableCursorRects() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419242-disablekeyequivalentfordefaultbu?language=objc for details.
 func (x gen_NSWindow) DisableKeyEquivalentForDefaultButtonCell() {
-	C.NSWindow_inst_disableKeyEquivalentForDefaultButtonCell(
+	C.NSWindow_inst_DisableKeyEquivalentForDefaultButtonCell(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19263,7 +19263,7 @@ func (x gen_NSWindow) DisableKeyEquivalentForDefaultButtonCell() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419483-disablescreenupdatesuntilflush?language=objc for details.
 func (x gen_NSWindow) DisableScreenUpdatesUntilFlush() {
-	C.NSWindow_inst_disableScreenUpdatesUntilFlush(
+	C.NSWindow_inst_DisableScreenUpdatesUntilFlush(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19275,7 +19275,7 @@ func (x gen_NSWindow) DisableScreenUpdatesUntilFlush() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1526239-disablesnapshotrestoration?language=objc for details.
 func (x gen_NSWindow) DisableSnapshotRestoration() {
-	C.NSWindow_inst_disableSnapshotRestoration(
+	C.NSWindow_inst_DisableSnapshotRestoration(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19287,7 +19287,7 @@ func (x gen_NSWindow) DisableSnapshotRestoration() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419269-discardcursorrects?language=objc for details.
 func (x gen_NSWindow) DiscardCursorRects() {
-	C.NSWindow_inst_discardCursorRects(
+	C.NSWindow_inst_DiscardCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19299,7 +19299,7 @@ func (x gen_NSWindow) DiscardCursorRects() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419358-display?language=objc for details.
 func (x gen_NSWindow) Display() {
-	C.NSWindow_inst_display(
+	C.NSWindow_inst_Display(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19311,7 +19311,7 @@ func (x gen_NSWindow) Display() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419096-displayifneeded?language=objc for details.
 func (x gen_NSWindow) DisplayIfNeeded() {
-	C.NSWindow_inst_displayIfNeeded(
+	C.NSWindow_inst_DisplayIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19319,10 +19319,10 @@ func (x gen_NSWindow) DisplayIfNeeded() {
 
 }
 
-// DragImage_at_offset_event_pasteboard_source_slideBack begins a dragging session.
+// DragImageAtOffsetEventPasteboardSourceSlideBack begins a dragging session.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419224-dragimage?language=objc for details.
-func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack(
+func (x gen_NSWindow) DragImageAtOffsetEventPasteboardSourceSlideBack(
 	image NSImageRef,
 	baseLocation core.NSPoint,
 	initialOffset core.NSSize,
@@ -19331,7 +19331,7 @@ func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack(
 	sourceObj objc.Ref,
 	slideFlag bool,
 ) {
-	C.NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack(
+	C.NSWindow_inst_DragImageAtOffsetEventPasteboardSourceSlideBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(image),
 		*(*C.NSPoint)(unsafe.Pointer(&baseLocation)),
@@ -19350,7 +19350,7 @@ func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419202-enablecursorrects?language=objc for details.
 func (x gen_NSWindow) EnableCursorRects() {
-	C.NSWindow_inst_enableCursorRects(
+	C.NSWindow_inst_EnableCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19362,7 +19362,7 @@ func (x gen_NSWindow) EnableCursorRects() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419276-enablekeyequivalentfordefaultbut?language=objc for details.
 func (x gen_NSWindow) EnableKeyEquivalentForDefaultButtonCell() {
-	C.NSWindow_inst_enableKeyEquivalentForDefaultButtonCell(
+	C.NSWindow_inst_EnableKeyEquivalentForDefaultButtonCell(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19374,7 +19374,7 @@ func (x gen_NSWindow) EnableKeyEquivalentForDefaultButtonCell() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1525288-enablesnapshotrestoration?language=objc for details.
 func (x gen_NSWindow) EnableSnapshotRestoration() {
-	C.NSWindow_inst_enableSnapshotRestoration(
+	C.NSWindow_inst_EnableSnapshotRestoration(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19388,7 +19388,7 @@ func (x gen_NSWindow) EnableSnapshotRestoration() {
 func (x gen_NSWindow) EndEditingFor(
 	object objc.Ref,
 ) {
-	C.NSWindow_inst_endEditingFor(
+	C.NSWindow_inst_EndEditingFor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(object),
 	)
@@ -19403,7 +19403,7 @@ func (x gen_NSWindow) EndEditingFor(
 func (x gen_NSWindow) EndSheet(
 	sheetWindow NSWindowRef,
 ) {
-	C.NSWindow_inst_endSheet(
+	C.NSWindow_inst_EndSheet(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sheetWindow),
 	)
@@ -19412,14 +19412,14 @@ func (x gen_NSWindow) EndSheet(
 
 }
 
-// FieldEditor_forObject returns the window’s field editor, creating it if requested.
+// FieldEditorForObject returns the window’s field editor, creating it if requested.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419647-fieldeditor?language=objc for details.
-func (x gen_NSWindow) FieldEditor_forObject(
+func (x gen_NSWindow) FieldEditorForObject(
 	createFlag bool,
 	object objc.Ref,
 ) NSText {
-	ret := C.NSWindow_inst_fieldEditor_forObject(
+	ret := C.NSWindow_inst_FieldEditorForObject(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(createFlag),
 		objc.RefPointer(object),
@@ -19435,7 +19435,7 @@ func (x gen_NSWindow) FieldEditor_forObject(
 func (x gen_NSWindow) FrameRectForContentRect(
 	contentRect core.NSRect,
 ) core.NSRect {
-	ret := C.NSWindow_inst_frameRectForContentRect(
+	ret := C.NSWindow_inst_FrameRectForContentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 	)
@@ -19444,16 +19444,16 @@ func (x gen_NSWindow) FrameRectForContentRect(
 
 }
 
-// InitWithContentRect_styleMask_backing_defer initializes the window with the specified values.
+// InitWithContentRectStyleMaskBackingDefer initializes the window with the specified values.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc for details.
-func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_asNSWindow(
+func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDefer_asNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
 	flag bool,
 ) NSWindow {
-	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer(
+	ret := C.NSWindow_inst_InitWithContentRectStyleMaskBackingDefer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 		C.ulong(style),
@@ -19465,17 +19465,17 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_asNSWindow(
 
 }
 
-// InitWithContentRect_styleMask_backing_defer_screen initializes an allocated window with the specified values.
+// InitWithContentRectStyleMaskBackingDeferScreen initializes an allocated window with the specified values.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc for details.
-func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen_asNSWindow(
+func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDeferScreen_asNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
 	flag bool,
 	screen NSScreenRef,
 ) NSWindow {
-	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen(
+	ret := C.NSWindow_inst_InitWithContentRectStyleMaskBackingDeferScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 		C.ulong(style),
@@ -19494,7 +19494,7 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen_asNSWin
 func (x gen_NSWindow) InvalidateCursorRectsForView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_invalidateCursorRectsForView(
+	C.NSWindow_inst_InvalidateCursorRectsForView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -19507,7 +19507,7 @@ func (x gen_NSWindow) InvalidateCursorRectsForView(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419529-invalidateshadow?language=objc for details.
 func (x gen_NSWindow) InvalidateShadow() {
-	C.NSWindow_inst_invalidateShadow(
+	C.NSWindow_inst_InvalidateShadow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19519,7 +19519,7 @@ func (x gen_NSWindow) InvalidateShadow() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1526910-layoutifneeded?language=objc for details.
 func (x gen_NSWindow) LayoutIfNeeded() {
-	C.NSWindow_inst_layoutIfNeeded(
+	C.NSWindow_inst_LayoutIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19533,7 +19533,7 @@ func (x gen_NSWindow) LayoutIfNeeded() {
 func (x gen_NSWindow) MakeKeyAndOrderFront(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_makeKeyAndOrderFront(
+	C.NSWindow_inst_MakeKeyAndOrderFront(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19546,7 +19546,7 @@ func (x gen_NSWindow) MakeKeyAndOrderFront(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419368-makekeywindow?language=objc for details.
 func (x gen_NSWindow) MakeKeyWindow() {
-	C.NSWindow_inst_makeKeyWindow(
+	C.NSWindow_inst_MakeKeyWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19558,7 +19558,7 @@ func (x gen_NSWindow) MakeKeyWindow() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419271-makemainwindow?language=objc for details.
 func (x gen_NSWindow) MakeMainWindow() {
-	C.NSWindow_inst_makeMainWindow(
+	C.NSWindow_inst_MakeMainWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19572,7 +19572,7 @@ func (x gen_NSWindow) MakeMainWindow() {
 func (x gen_NSWindow) MergeAllWindows(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_mergeAllWindows(
+	C.NSWindow_inst_MergeAllWindows(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19587,7 +19587,7 @@ func (x gen_NSWindow) MergeAllWindows(
 func (x gen_NSWindow) Miniaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_miniaturize(
+	C.NSWindow_inst_Miniaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19602,7 +19602,7 @@ func (x gen_NSWindow) Miniaturize(
 func (x gen_NSWindow) MoveTabToNewWindow(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_moveTabToNewWindow(
+	C.NSWindow_inst_MoveTabToNewWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19617,7 +19617,7 @@ func (x gen_NSWindow) MoveTabToNewWindow(
 func (x gen_NSWindow) OrderBack(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderBack(
+	C.NSWindow_inst_OrderBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19632,7 +19632,7 @@ func (x gen_NSWindow) OrderBack(
 func (x gen_NSWindow) OrderFront(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderFront(
+	C.NSWindow_inst_OrderFront(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19645,7 +19645,7 @@ func (x gen_NSWindow) OrderFront(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419444-orderfrontregardless?language=objc for details.
 func (x gen_NSWindow) OrderFrontRegardless() {
-	C.NSWindow_inst_orderFrontRegardless(
+	C.NSWindow_inst_OrderFrontRegardless(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19659,7 +19659,7 @@ func (x gen_NSWindow) OrderFrontRegardless() {
 func (x gen_NSWindow) OrderOut(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderOut(
+	C.NSWindow_inst_OrderOut(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19668,14 +19668,14 @@ func (x gen_NSWindow) OrderOut(
 
 }
 
-// OrderWindow_relativeTo repositions the window’s window device in the window server’s screen list.
+// OrderWindowRelativeTo repositions the window’s window device in the window server’s screen list.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419672-orderwindow?language=objc for details.
-func (x gen_NSWindow) OrderWindow_relativeTo(
+func (x gen_NSWindow) OrderWindowRelativeTo(
 	place core.NSUInteger,
 	otherWin core.NSInteger,
 ) {
-	C.NSWindow_inst_orderWindow_relativeTo(
+	C.NSWindow_inst_OrderWindowRelativeTo(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(place),
 		C.long(otherWin),
@@ -19691,7 +19691,7 @@ func (x gen_NSWindow) OrderWindow_relativeTo(
 func (x gen_NSWindow) PerformClose(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performClose(
+	C.NSWindow_inst_PerformClose(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19706,7 +19706,7 @@ func (x gen_NSWindow) PerformClose(
 func (x gen_NSWindow) PerformMiniaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performMiniaturize(
+	C.NSWindow_inst_PerformMiniaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19721,7 +19721,7 @@ func (x gen_NSWindow) PerformMiniaturize(
 func (x gen_NSWindow) PerformWindowDragWithEvent(
 	event NSEventRef,
 ) {
-	C.NSWindow_inst_performWindowDragWithEvent(
+	C.NSWindow_inst_PerformWindowDragWithEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -19736,7 +19736,7 @@ func (x gen_NSWindow) PerformWindowDragWithEvent(
 func (x gen_NSWindow) PerformZoom(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performZoom(
+	C.NSWindow_inst_PerformZoom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19745,14 +19745,14 @@ func (x gen_NSWindow) PerformZoom(
 
 }
 
-// PostEvent_atStart forwards the message to the global application object.
+// PostEventAtStart forwards the message to the global application object.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419376-postevent?language=objc for details.
-func (x gen_NSWindow) PostEvent_atStart(
+func (x gen_NSWindow) PostEventAtStart(
 	event NSEventRef,
 	flag bool,
 ) {
-	C.NSWindow_inst_postEvent_atStart(
+	C.NSWindow_inst_PostEventAtStart(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		convertToObjCBool(flag),
@@ -19768,7 +19768,7 @@ func (x gen_NSWindow) PostEvent_atStart(
 func (x gen_NSWindow) Print(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_print(
+	C.NSWindow_inst_Print(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19781,7 +19781,7 @@ func (x gen_NSWindow) Print(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419350-recalculatekeyviewloop?language=objc for details.
 func (x gen_NSWindow) RecalculateKeyViewLoop() {
-	C.NSWindow_inst_recalculateKeyViewLoop(
+	C.NSWindow_inst_RecalculateKeyViewLoop(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19795,7 +19795,7 @@ func (x gen_NSWindow) RecalculateKeyViewLoop() {
 func (x gen_NSWindow) RegisterForDraggedTypes(
 	newTypes core.NSArrayRef,
 ) {
-	C.NSWindow_inst_registerForDraggedTypes(
+	C.NSWindow_inst_RegisterForDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 	)
@@ -19810,7 +19810,7 @@ func (x gen_NSWindow) RegisterForDraggedTypes(
 func (x gen_NSWindow) RemoveChildWindow(
 	childWin NSWindowRef,
 ) {
-	C.NSWindow_inst_removeChildWindow(
+	C.NSWindow_inst_RemoveChildWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childWin),
 	)
@@ -19825,7 +19825,7 @@ func (x gen_NSWindow) RemoveChildWindow(
 func (x gen_NSWindow) RemoveTitlebarAccessoryViewControllerAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex(
+	C.NSWindow_inst_RemoveTitlebarAccessoryViewControllerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -19838,7 +19838,7 @@ func (x gen_NSWindow) RemoveTitlebarAccessoryViewControllerAtIndex(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419464-resetcursorrects?language=objc for details.
 func (x gen_NSWindow) ResetCursorRects() {
-	C.NSWindow_inst_resetCursorRects(
+	C.NSWindow_inst_ResetCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19850,7 +19850,7 @@ func (x gen_NSWindow) ResetCursorRects() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419047-resignkeywindow?language=objc for details.
 func (x gen_NSWindow) ResignKeyWindow() {
-	C.NSWindow_inst_resignKeyWindow(
+	C.NSWindow_inst_ResignKeyWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19862,7 +19862,7 @@ func (x gen_NSWindow) ResignKeyWindow() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419212-resignmainwindow?language=objc for details.
 func (x gen_NSWindow) ResignMainWindow() {
-	C.NSWindow_inst_resignMainWindow(
+	C.NSWindow_inst_ResignMainWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -19876,7 +19876,7 @@ func (x gen_NSWindow) ResignMainWindow() {
 func (x gen_NSWindow) RunToolbarCustomizationPalette(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_runToolbarCustomizationPalette(
+	C.NSWindow_inst_RunToolbarCustomizationPalette(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19891,7 +19891,7 @@ func (x gen_NSWindow) RunToolbarCustomizationPalette(
 func (x gen_NSWindow) SelectKeyViewFollowingView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_selectKeyViewFollowingView(
+	C.NSWindow_inst_SelectKeyViewFollowingView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -19906,7 +19906,7 @@ func (x gen_NSWindow) SelectKeyViewFollowingView(
 func (x gen_NSWindow) SelectKeyViewPrecedingView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_selectKeyViewPrecedingView(
+	C.NSWindow_inst_SelectKeyViewPrecedingView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -19921,7 +19921,7 @@ func (x gen_NSWindow) SelectKeyViewPrecedingView(
 func (x gen_NSWindow) SelectNextKeyView(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectNextKeyView(
+	C.NSWindow_inst_SelectNextKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19936,7 +19936,7 @@ func (x gen_NSWindow) SelectNextKeyView(
 func (x gen_NSWindow) SelectNextTab(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectNextTab(
+	C.NSWindow_inst_SelectNextTab(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19951,7 +19951,7 @@ func (x gen_NSWindow) SelectNextTab(
 func (x gen_NSWindow) SelectPreviousKeyView(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectPreviousKeyView(
+	C.NSWindow_inst_SelectPreviousKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19966,7 +19966,7 @@ func (x gen_NSWindow) SelectPreviousKeyView(
 func (x gen_NSWindow) SelectPreviousTab(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectPreviousTab(
+	C.NSWindow_inst_SelectPreviousTab(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19981,7 +19981,7 @@ func (x gen_NSWindow) SelectPreviousTab(
 func (x gen_NSWindow) SendEvent(
 	event NSEventRef,
 ) {
-	C.NSWindow_inst_sendEvent(
+	C.NSWindow_inst_SendEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -19996,7 +19996,7 @@ func (x gen_NSWindow) SendEvent(
 func (x gen_NSWindow) SetContentSize(
 	size core.NSSize,
 ) {
-	C.NSWindow_inst_setContentSize(
+	C.NSWindow_inst_SetContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -20011,7 +20011,7 @@ func (x gen_NSWindow) SetContentSize(
 func (x gen_NSWindow) SetDynamicDepthLimit(
 	flag bool,
 ) {
-	C.NSWindow_inst_setDynamicDepthLimit(
+	C.NSWindow_inst_SetDynamicDepthLimit(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -20020,14 +20020,14 @@ func (x gen_NSWindow) SetDynamicDepthLimit(
 
 }
 
-// SetFrame_display sets the origin and size of the window’s frame rectangle according to a given frame rectangle, thereby setting its position and size onscreen.
+// SetFrameDisplay sets the origin and size of the window’s frame rectangle according to a given frame rectangle, thereby setting its position and size onscreen.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419753-setframe?language=objc for details.
-func (x gen_NSWindow) SetFrame_display(
+func (x gen_NSWindow) SetFrameDisplay(
 	frameRect core.NSRect,
 	flag bool,
 ) {
-	C.NSWindow_inst_setFrame_display(
+	C.NSWindow_inst_SetFrameDisplay(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		convertToObjCBool(flag),
@@ -20037,15 +20037,15 @@ func (x gen_NSWindow) SetFrame_display(
 
 }
 
-// SetFrame_display_animate sets the origin and size of the window’s frame rectangle, with optional animation, according to a given frame rectangle, thereby setting its position and size onscreen.
+// SetFrameDisplayAnimate sets the origin and size of the window’s frame rectangle, with optional animation, according to a given frame rectangle, thereby setting its position and size onscreen.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419519-setframe?language=objc for details.
-func (x gen_NSWindow) SetFrame_display_animate(
+func (x gen_NSWindow) SetFrameDisplayAnimate(
 	frameRect core.NSRect,
 	displayFlag bool,
 	animateFlag bool,
 ) {
-	C.NSWindow_inst_setFrame_display_animate(
+	C.NSWindow_inst_SetFrameDisplayAnimate(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		convertToObjCBool(displayFlag),
@@ -20062,7 +20062,7 @@ func (x gen_NSWindow) SetFrame_display_animate(
 func (x gen_NSWindow) SetFrameOrigin(
 	point core.NSPoint,
 ) {
-	C.NSWindow_inst_setFrameOrigin(
+	C.NSWindow_inst_SetFrameOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -20077,7 +20077,7 @@ func (x gen_NSWindow) SetFrameOrigin(
 func (x gen_NSWindow) SetFrameTopLeftPoint(
 	point core.NSPoint,
 ) {
-	C.NSWindow_inst_setFrameTopLeftPoint(
+	C.NSWindow_inst_SetFrameTopLeftPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -20092,7 +20092,7 @@ func (x gen_NSWindow) SetFrameTopLeftPoint(
 func (x gen_NSWindow) SetIsMiniaturized(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsMiniaturized(
+	C.NSWindow_inst_SetIsMiniaturized(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -20107,7 +20107,7 @@ func (x gen_NSWindow) SetIsMiniaturized(
 func (x gen_NSWindow) SetIsVisible(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsVisible(
+	C.NSWindow_inst_SetIsVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -20122,7 +20122,7 @@ func (x gen_NSWindow) SetIsVisible(
 func (x gen_NSWindow) SetIsZoomed(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsZoomed(
+	C.NSWindow_inst_SetIsZoomed(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -20137,7 +20137,7 @@ func (x gen_NSWindow) SetIsZoomed(
 func (x gen_NSWindow) SetTitleWithRepresentedFilename(
 	filename core.NSStringRef,
 ) {
-	C.NSWindow_inst_setTitleWithRepresentedFilename(
+	C.NSWindow_inst_SetTitleWithRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(filename),
 	)
@@ -20152,7 +20152,7 @@ func (x gen_NSWindow) SetTitleWithRepresentedFilename(
 func (x gen_NSWindow) ToggleFullScreen(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleFullScreen(
+	C.NSWindow_inst_ToggleFullScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20167,7 +20167,7 @@ func (x gen_NSWindow) ToggleFullScreen(
 func (x gen_NSWindow) ToggleTabBar(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleTabBar(
+	C.NSWindow_inst_ToggleTabBar(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20182,7 +20182,7 @@ func (x gen_NSWindow) ToggleTabBar(
 func (x gen_NSWindow) ToggleTabOverview(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleTabOverview(
+	C.NSWindow_inst_ToggleTabOverview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20197,7 +20197,7 @@ func (x gen_NSWindow) ToggleTabOverview(
 func (x gen_NSWindow) ToggleToolbarShown(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleToolbarShown(
+	C.NSWindow_inst_ToggleToolbarShown(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20206,14 +20206,14 @@ func (x gen_NSWindow) ToggleToolbarShown(
 
 }
 
-// TryToPerform_with dispatches action messages with a given argument.
+// TryToPerformWith dispatches action messages with a given argument.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419428-trytoperform?language=objc for details.
-func (x gen_NSWindow) TryToPerform_with(
+func (x gen_NSWindow) TryToPerformWith(
 	action objc.Selector,
 	object objc.Ref,
 ) bool {
-	ret := C.NSWindow_inst_tryToPerform_with(
+	ret := C.NSWindow_inst_TryToPerformWith(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(object),
@@ -20227,7 +20227,7 @@ func (x gen_NSWindow) TryToPerform_with(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419456-unregisterdraggedtypes?language=objc for details.
 func (x gen_NSWindow) UnregisterDraggedTypes() {
-	C.NSWindow_inst_unregisterDraggedTypes(
+	C.NSWindow_inst_UnregisterDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20239,7 +20239,7 @@ func (x gen_NSWindow) UnregisterDraggedTypes() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419577-update?language=objc for details.
 func (x gen_NSWindow) Update() {
-	C.NSWindow_inst_update(
+	C.NSWindow_inst_Update(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20251,7 +20251,7 @@ func (x gen_NSWindow) Update() {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1526915-updateconstraintsifneeded?language=objc for details.
 func (x gen_NSWindow) UpdateConstraintsIfNeeded() {
-	C.NSWindow_inst_updateConstraintsIfNeeded(
+	C.NSWindow_inst_UpdateConstraintsIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20265,7 +20265,7 @@ func (x gen_NSWindow) UpdateConstraintsIfNeeded() {
 func (x gen_NSWindow) VisualizeConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSWindow_inst_visualizeConstraints(
+	C.NSWindow_inst_VisualizeConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
@@ -20280,7 +20280,7 @@ func (x gen_NSWindow) VisualizeConstraints(
 func (x gen_NSWindow) Zoom(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_zoom(
+	C.NSWindow_inst_Zoom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20293,7 +20293,7 @@ func (x gen_NSWindow) Zoom(
 //
 // See  for details.
 func (x gen_NSWindow) Init_asNSWindow() NSWindow {
-	ret := C.NSWindow_inst_init(
+	ret := C.NSWindow_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20305,7 +20305,7 @@ func (x gen_NSWindow) Init_asNSWindow() NSWindow {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419060-delegate?language=objc for details.
 func (x gen_NSWindow) Delegate() objc.Object {
-	ret := C.NSWindow_inst_delegate(
+	ret := C.NSWindow_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20319,7 +20319,7 @@ func (x gen_NSWindow) Delegate() objc.Object {
 func (x gen_NSWindow) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSWindow_inst_setDelegate(
+	C.NSWindow_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20332,7 +20332,7 @@ func (x gen_NSWindow) SetDelegate(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419615-contentviewcontroller?language=objc for details.
 func (x gen_NSWindow) ContentViewController() NSViewController {
-	ret := C.NSWindow_inst_contentViewController(
+	ret := C.NSWindow_inst_ContentViewController(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20346,7 +20346,7 @@ func (x gen_NSWindow) ContentViewController() NSViewController {
 func (x gen_NSWindow) SetContentViewController(
 	value NSViewControllerRef,
 ) {
-	C.NSWindow_inst_setContentViewController(
+	C.NSWindow_inst_SetContentViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20359,7 +20359,7 @@ func (x gen_NSWindow) SetContentViewController(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419160-contentview?language=objc for details.
 func (x gen_NSWindow) ContentView() NSView {
-	ret := C.NSWindow_inst_contentView(
+	ret := C.NSWindow_inst_ContentView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20373,7 +20373,7 @@ func (x gen_NSWindow) ContentView() NSView {
 func (x gen_NSWindow) SetContentView(
 	value NSViewRef,
 ) {
-	C.NSWindow_inst_setContentView(
+	C.NSWindow_inst_SetContentView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20386,7 +20386,7 @@ func (x gen_NSWindow) SetContentView(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419078-stylemask?language=objc for details.
 func (x gen_NSWindow) StyleMask() core.NSUInteger {
-	ret := C.NSWindow_inst_styleMask(
+	ret := C.NSWindow_inst_StyleMask(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20400,7 +20400,7 @@ func (x gen_NSWindow) StyleMask() core.NSUInteger {
 func (x gen_NSWindow) SetStyleMask(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setStyleMask(
+	C.NSWindow_inst_SetStyleMask(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -20413,7 +20413,7 @@ func (x gen_NSWindow) SetStyleMask(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419220-workswhenmodal?language=objc for details.
 func (x gen_NSWindow) WorksWhenModal() bool {
-	ret := C.NSWindow_inst_worksWhenModal(
+	ret := C.NSWindow_inst_WorksWhenModal(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20425,7 +20425,7 @@ func (x gen_NSWindow) WorksWhenModal() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419186-alphavalue?language=objc for details.
 func (x gen_NSWindow) AlphaValue() core.CGFloat {
-	ret := C.NSWindow_inst_alphaValue(
+	ret := C.NSWindow_inst_AlphaValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20439,7 +20439,7 @@ func (x gen_NSWindow) AlphaValue() core.CGFloat {
 func (x gen_NSWindow) SetAlphaValue(
 	value core.CGFloat,
 ) {
-	C.NSWindow_inst_setAlphaValue(
+	C.NSWindow_inst_SetAlphaValue(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -20452,7 +20452,7 @@ func (x gen_NSWindow) SetAlphaValue(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419751-backgroundcolor?language=objc for details.
 func (x gen_NSWindow) BackgroundColor() NSColor {
-	ret := C.NSWindow_inst_backgroundColor(
+	ret := C.NSWindow_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20466,7 +20466,7 @@ func (x gen_NSWindow) BackgroundColor() NSColor {
 func (x gen_NSWindow) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSWindow_inst_setBackgroundColor(
+	C.NSWindow_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20479,7 +20479,7 @@ func (x gen_NSWindow) SetBackgroundColor(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419725-canhide?language=objc for details.
 func (x gen_NSWindow) CanHide() bool {
-	ret := C.NSWindow_inst_canHide(
+	ret := C.NSWindow_inst_CanHide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20493,7 +20493,7 @@ func (x gen_NSWindow) CanHide() bool {
 func (x gen_NSWindow) SetCanHide(
 	value bool,
 ) {
-	C.NSWindow_inst_setCanHide(
+	C.NSWindow_inst_SetCanHide(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20506,7 +20506,7 @@ func (x gen_NSWindow) SetCanHide(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419707-onactivespace?language=objc for details.
 func (x gen_NSWindow) IsOnActiveSpace() bool {
-	ret := C.NSWindow_inst_isOnActiveSpace(
+	ret := C.NSWindow_inst_IsOnActiveSpace(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20518,7 +20518,7 @@ func (x gen_NSWindow) IsOnActiveSpace() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419777-hidesondeactivate?language=objc for details.
 func (x gen_NSWindow) HidesOnDeactivate() bool {
-	ret := C.NSWindow_inst_hidesOnDeactivate(
+	ret := C.NSWindow_inst_HidesOnDeactivate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20532,7 +20532,7 @@ func (x gen_NSWindow) HidesOnDeactivate() bool {
 func (x gen_NSWindow) SetHidesOnDeactivate(
 	value bool,
 ) {
-	C.NSWindow_inst_setHidesOnDeactivate(
+	C.NSWindow_inst_SetHidesOnDeactivate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20545,7 +20545,7 @@ func (x gen_NSWindow) SetHidesOnDeactivate(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419471-collectionbehavior?language=objc for details.
 func (x gen_NSWindow) CollectionBehavior() core.NSUInteger {
-	ret := C.NSWindow_inst_collectionBehavior(
+	ret := C.NSWindow_inst_CollectionBehavior(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20559,7 +20559,7 @@ func (x gen_NSWindow) CollectionBehavior() core.NSUInteger {
 func (x gen_NSWindow) SetCollectionBehavior(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setCollectionBehavior(
+	C.NSWindow_inst_SetCollectionBehavior(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -20572,7 +20572,7 @@ func (x gen_NSWindow) SetCollectionBehavior(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419086-opaque?language=objc for details.
 func (x gen_NSWindow) IsOpaque() bool {
-	ret := C.NSWindow_inst_isOpaque(
+	ret := C.NSWindow_inst_IsOpaque(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20586,7 +20586,7 @@ func (x gen_NSWindow) IsOpaque() bool {
 func (x gen_NSWindow) SetOpaque(
 	value bool,
 ) {
-	C.NSWindow_inst_setOpaque(
+	C.NSWindow_inst_SetOpaque(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20599,7 +20599,7 @@ func (x gen_NSWindow) SetOpaque(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419234-hasshadow?language=objc for details.
 func (x gen_NSWindow) HasShadow() bool {
-	ret := C.NSWindow_inst_hasShadow(
+	ret := C.NSWindow_inst_HasShadow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20613,7 +20613,7 @@ func (x gen_NSWindow) HasShadow() bool {
 func (x gen_NSWindow) SetHasShadow(
 	value bool,
 ) {
-	C.NSWindow_inst_setHasShadow(
+	C.NSWindow_inst_SetHasShadow(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20626,7 +20626,7 @@ func (x gen_NSWindow) SetHasShadow(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419743-preventsapplicationterminationwh?language=objc for details.
 func (x gen_NSWindow) PreventsApplicationTerminationWhenModal() bool {
-	ret := C.NSWindow_inst_preventsApplicationTerminationWhenModal(
+	ret := C.NSWindow_inst_PreventsApplicationTerminationWhenModal(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20640,7 +20640,7 @@ func (x gen_NSWindow) PreventsApplicationTerminationWhenModal() bool {
 func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal(
 	value bool,
 ) {
-	C.NSWindow_inst_setPreventsApplicationTerminationWhenModal(
+	C.NSWindow_inst_SetPreventsApplicationTerminationWhenModal(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20653,7 +20653,7 @@ func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419330-hasdynamicdepthlimit?language=objc for details.
 func (x gen_NSWindow) HasDynamicDepthLimit() bool {
-	ret := C.NSWindow_inst_hasDynamicDepthLimit(
+	ret := C.NSWindow_inst_HasDynamicDepthLimit(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20665,7 +20665,7 @@ func (x gen_NSWindow) HasDynamicDepthLimit() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419068-windownumber?language=objc for details.
 func (x gen_NSWindow) WindowNumber() core.NSInteger {
-	ret := C.NSWindow_inst_windowNumber(
+	ret := C.NSWindow_inst_WindowNumber(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20677,7 +20677,7 @@ func (x gen_NSWindow) WindowNumber() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419741-devicedescription?language=objc for details.
 func (x gen_NSWindow) DeviceDescription() core.NSDictionary {
-	ret := C.NSWindow_inst_deviceDescription(
+	ret := C.NSWindow_inst_DeviceDescription(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20689,7 +20689,7 @@ func (x gen_NSWindow) DeviceDescription() core.NSDictionary {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419179-canbecomevisiblewithoutlogin?language=objc for details.
 func (x gen_NSWindow) CanBecomeVisibleWithoutLogin() bool {
-	ret := C.NSWindow_inst_canBecomeVisibleWithoutLogin(
+	ret := C.NSWindow_inst_CanBecomeVisibleWithoutLogin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20703,7 +20703,7 @@ func (x gen_NSWindow) CanBecomeVisibleWithoutLogin() bool {
 func (x gen_NSWindow) SetCanBecomeVisibleWithoutLogin(
 	value bool,
 ) {
-	C.NSWindow_inst_setCanBecomeVisibleWithoutLogin(
+	C.NSWindow_inst_SetCanBecomeVisibleWithoutLogin(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20716,7 +20716,7 @@ func (x gen_NSWindow) SetCanBecomeVisibleWithoutLogin(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419599-backingtype?language=objc for details.
 func (x gen_NSWindow) BackingType() core.NSUInteger {
-	ret := C.NSWindow_inst_backingType(
+	ret := C.NSWindow_inst_BackingType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20730,7 +20730,7 @@ func (x gen_NSWindow) BackingType() core.NSUInteger {
 func (x gen_NSWindow) SetBackingType(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setBackingType(
+	C.NSWindow_inst_SetBackingType(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -20743,7 +20743,7 @@ func (x gen_NSWindow) SetBackingType(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419467-attachedsheet?language=objc for details.
 func (x gen_NSWindow) AttachedSheet() NSWindow {
-	ret := C.NSWindow_inst_attachedSheet(
+	ret := C.NSWindow_inst_AttachedSheet(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20755,7 +20755,7 @@ func (x gen_NSWindow) AttachedSheet() NSWindow {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419364-sheet?language=objc for details.
 func (x gen_NSWindow) IsSheet() bool {
-	ret := C.NSWindow_inst_isSheet(
+	ret := C.NSWindow_inst_IsSheet(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20767,7 +20767,7 @@ func (x gen_NSWindow) IsSheet() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419052-sheetparent?language=objc for details.
 func (x gen_NSWindow) SheetParent() NSWindow {
-	ret := C.NSWindow_inst_sheetParent(
+	ret := C.NSWindow_inst_SheetParent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20779,7 +20779,7 @@ func (x gen_NSWindow) SheetParent() NSWindow {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419765-sheets?language=objc for details.
 func (x gen_NSWindow) Sheets() core.NSArray {
-	ret := C.NSWindow_inst_sheets(
+	ret := C.NSWindow_inst_Sheets(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20791,7 +20791,7 @@ func (x gen_NSWindow) Sheets() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419697-frame?language=objc for details.
 func (x gen_NSWindow) Frame() core.NSRect {
-	ret := C.NSWindow_inst_frame(
+	ret := C.NSWindow_inst_Frame(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20803,7 +20803,7 @@ func (x gen_NSWindow) Frame() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419507-aspectratio?language=objc for details.
 func (x gen_NSWindow) AspectRatio() core.NSSize {
-	ret := C.NSWindow_inst_aspectRatio(
+	ret := C.NSWindow_inst_AspectRatio(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20817,7 +20817,7 @@ func (x gen_NSWindow) AspectRatio() core.NSSize {
 func (x gen_NSWindow) SetAspectRatio(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setAspectRatio(
+	C.NSWindow_inst_SetAspectRatio(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20830,7 +20830,7 @@ func (x gen_NSWindow) SetAspectRatio(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419206-minsize?language=objc for details.
 func (x gen_NSWindow) MinSize() core.NSSize {
-	ret := C.NSWindow_inst_minSize(
+	ret := C.NSWindow_inst_MinSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20844,7 +20844,7 @@ func (x gen_NSWindow) MinSize() core.NSSize {
 func (x gen_NSWindow) SetMinSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMinSize(
+	C.NSWindow_inst_SetMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20857,7 +20857,7 @@ func (x gen_NSWindow) SetMinSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419595-maxsize?language=objc for details.
 func (x gen_NSWindow) MaxSize() core.NSSize {
-	ret := C.NSWindow_inst_maxSize(
+	ret := C.NSWindow_inst_MaxSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20871,7 +20871,7 @@ func (x gen_NSWindow) MaxSize() core.NSSize {
 func (x gen_NSWindow) SetMaxSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMaxSize(
+	C.NSWindow_inst_SetMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20884,7 +20884,7 @@ func (x gen_NSWindow) SetMaxSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419398-zoomed?language=objc for details.
 func (x gen_NSWindow) IsZoomed() bool {
-	ret := C.NSWindow_inst_isZoomed(
+	ret := C.NSWindow_inst_IsZoomed(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20896,7 +20896,7 @@ func (x gen_NSWindow) IsZoomed() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419390-resizeincrements?language=objc for details.
 func (x gen_NSWindow) ResizeIncrements() core.NSSize {
-	ret := C.NSWindow_inst_resizeIncrements(
+	ret := C.NSWindow_inst_ResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20910,7 +20910,7 @@ func (x gen_NSWindow) ResizeIncrements() core.NSSize {
 func (x gen_NSWindow) SetResizeIncrements(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setResizeIncrements(
+	C.NSWindow_inst_SetResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20923,7 +20923,7 @@ func (x gen_NSWindow) SetResizeIncrements(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419588-preservescontentduringliveresize?language=objc for details.
 func (x gen_NSWindow) PreservesContentDuringLiveResize() bool {
-	ret := C.NSWindow_inst_preservesContentDuringLiveResize(
+	ret := C.NSWindow_inst_PreservesContentDuringLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20937,7 +20937,7 @@ func (x gen_NSWindow) PreservesContentDuringLiveResize() bool {
 func (x gen_NSWindow) SetPreservesContentDuringLiveResize(
 	value bool,
 ) {
-	C.NSWindow_inst_setPreservesContentDuringLiveResize(
+	C.NSWindow_inst_SetPreservesContentDuringLiveResize(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20950,7 +20950,7 @@ func (x gen_NSWindow) SetPreservesContentDuringLiveResize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419378-inliveresize?language=objc for details.
 func (x gen_NSWindow) InLiveResize() bool {
-	ret := C.NSWindow_inst_inLiveResize(
+	ret := C.NSWindow_inst_InLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20962,7 +20962,7 @@ func (x gen_NSWindow) InLiveResize() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419148-contentaspectratio?language=objc for details.
 func (x gen_NSWindow) ContentAspectRatio() core.NSSize {
-	ret := C.NSWindow_inst_contentAspectRatio(
+	ret := C.NSWindow_inst_ContentAspectRatio(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -20976,7 +20976,7 @@ func (x gen_NSWindow) ContentAspectRatio() core.NSSize {
 func (x gen_NSWindow) SetContentAspectRatio(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentAspectRatio(
+	C.NSWindow_inst_SetContentAspectRatio(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20989,7 +20989,7 @@ func (x gen_NSWindow) SetContentAspectRatio(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419670-contentminsize?language=objc for details.
 func (x gen_NSWindow) ContentMinSize() core.NSSize {
-	ret := C.NSWindow_inst_contentMinSize(
+	ret := C.NSWindow_inst_ContentMinSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21003,7 +21003,7 @@ func (x gen_NSWindow) ContentMinSize() core.NSSize {
 func (x gen_NSWindow) SetContentMinSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentMinSize(
+	C.NSWindow_inst_SetContentMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -21016,7 +21016,7 @@ func (x gen_NSWindow) SetContentMinSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419154-contentmaxsize?language=objc for details.
 func (x gen_NSWindow) ContentMaxSize() core.NSSize {
-	ret := C.NSWindow_inst_contentMaxSize(
+	ret := C.NSWindow_inst_ContentMaxSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21030,7 +21030,7 @@ func (x gen_NSWindow) ContentMaxSize() core.NSSize {
 func (x gen_NSWindow) SetContentMaxSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentMaxSize(
+	C.NSWindow_inst_SetContentMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -21043,7 +21043,7 @@ func (x gen_NSWindow) SetContentMaxSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419649-contentresizeincrements?language=objc for details.
 func (x gen_NSWindow) ContentResizeIncrements() core.NSSize {
-	ret := C.NSWindow_inst_contentResizeIncrements(
+	ret := C.NSWindow_inst_ContentResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21057,7 +21057,7 @@ func (x gen_NSWindow) ContentResizeIncrements() core.NSSize {
 func (x gen_NSWindow) SetContentResizeIncrements(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentResizeIncrements(
+	C.NSWindow_inst_SetContentResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -21070,7 +21070,7 @@ func (x gen_NSWindow) SetContentResizeIncrements(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419094-contentlayoutguide?language=objc for details.
 func (x gen_NSWindow) ContentLayoutGuide() objc.Object {
-	ret := C.NSWindow_inst_contentLayoutGuide(
+	ret := C.NSWindow_inst_ContentLayoutGuide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21082,7 +21082,7 @@ func (x gen_NSWindow) ContentLayoutGuide() objc.Object {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419124-contentlayoutrect?language=objc for details.
 func (x gen_NSWindow) ContentLayoutRect() core.NSRect {
-	ret := C.NSWindow_inst_contentLayoutRect(
+	ret := C.NSWindow_inst_ContentLayoutRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21094,7 +21094,7 @@ func (x gen_NSWindow) ContentLayoutRect() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419438-maxfullscreencontentsize?language=objc for details.
 func (x gen_NSWindow) MaxFullScreenContentSize() core.NSSize {
-	ret := C.NSWindow_inst_maxFullScreenContentSize(
+	ret := C.NSWindow_inst_MaxFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21108,7 +21108,7 @@ func (x gen_NSWindow) MaxFullScreenContentSize() core.NSSize {
 func (x gen_NSWindow) SetMaxFullScreenContentSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMaxFullScreenContentSize(
+	C.NSWindow_inst_SetMaxFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -21121,7 +21121,7 @@ func (x gen_NSWindow) SetMaxFullScreenContentSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419627-minfullscreencontentsize?language=objc for details.
 func (x gen_NSWindow) MinFullScreenContentSize() core.NSSize {
-	ret := C.NSWindow_inst_minFullScreenContentSize(
+	ret := C.NSWindow_inst_MinFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21135,7 +21135,7 @@ func (x gen_NSWindow) MinFullScreenContentSize() core.NSSize {
 func (x gen_NSWindow) SetMinFullScreenContentSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMinFullScreenContentSize(
+	C.NSWindow_inst_SetMinFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -21148,7 +21148,7 @@ func (x gen_NSWindow) SetMinFullScreenContentSize(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419511-level?language=objc for details.
 func (x gen_NSWindow) Level() core.NSInteger {
-	ret := C.NSWindow_inst_level(
+	ret := C.NSWindow_inst_Level(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21162,7 +21162,7 @@ func (x gen_NSWindow) Level() core.NSInteger {
 func (x gen_NSWindow) SetLevel(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setLevel(
+	C.NSWindow_inst_SetLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -21175,7 +21175,7 @@ func (x gen_NSWindow) SetLevel(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419132-visible?language=objc for details.
 func (x gen_NSWindow) IsVisible() bool {
-	ret := C.NSWindow_inst_isVisible(
+	ret := C.NSWindow_inst_IsVisible(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21187,7 +21187,7 @@ func (x gen_NSWindow) IsVisible() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419735-keywindow?language=objc for details.
 func (x gen_NSWindow) IsKeyWindow() bool {
-	ret := C.NSWindow_inst_isKeyWindow(
+	ret := C.NSWindow_inst_IsKeyWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21199,7 +21199,7 @@ func (x gen_NSWindow) IsKeyWindow() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419543-canbecomekeywindow?language=objc for details.
 func (x gen_NSWindow) CanBecomeKeyWindow() bool {
-	ret := C.NSWindow_inst_canBecomeKeyWindow(
+	ret := C.NSWindow_inst_CanBecomeKeyWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21211,7 +21211,7 @@ func (x gen_NSWindow) CanBecomeKeyWindow() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419130-mainwindow?language=objc for details.
 func (x gen_NSWindow) IsMainWindow() bool {
-	ret := C.NSWindow_inst_isMainWindow(
+	ret := C.NSWindow_inst_IsMainWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21223,7 +21223,7 @@ func (x gen_NSWindow) IsMainWindow() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419162-canbecomemainwindow?language=objc for details.
 func (x gen_NSWindow) CanBecomeMainWindow() bool {
-	ret := C.NSWindow_inst_canBecomeMainWindow(
+	ret := C.NSWindow_inst_CanBecomeMainWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21235,7 +21235,7 @@ func (x gen_NSWindow) CanBecomeMainWindow() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419236-childwindows?language=objc for details.
 func (x gen_NSWindow) ChildWindows() core.NSArray {
-	ret := C.NSWindow_inst_childWindows(
+	ret := C.NSWindow_inst_ChildWindows(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21247,7 +21247,7 @@ func (x gen_NSWindow) ChildWindows() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419695-parentwindow?language=objc for details.
 func (x gen_NSWindow) ParentWindow() NSWindow {
-	ret := C.NSWindow_inst_parentWindow(
+	ret := C.NSWindow_inst_ParentWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21261,7 +21261,7 @@ func (x gen_NSWindow) ParentWindow() NSWindow {
 func (x gen_NSWindow) SetParentWindow(
 	value NSWindowRef,
 ) {
-	C.NSWindow_inst_setParentWindow(
+	C.NSWindow_inst_SetParentWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21274,7 +21274,7 @@ func (x gen_NSWindow) SetParentWindow(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419175-excludedfromwindowsmenu?language=objc for details.
 func (x gen_NSWindow) IsExcludedFromWindowsMenu() bool {
-	ret := C.NSWindow_inst_isExcludedFromWindowsMenu(
+	ret := C.NSWindow_inst_IsExcludedFromWindowsMenu(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21288,7 +21288,7 @@ func (x gen_NSWindow) IsExcludedFromWindowsMenu() bool {
 func (x gen_NSWindow) SetExcludedFromWindowsMenu(
 	value bool,
 ) {
-	C.NSWindow_inst_setExcludedFromWindowsMenu(
+	C.NSWindow_inst_SetExcludedFromWindowsMenu(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21301,7 +21301,7 @@ func (x gen_NSWindow) SetExcludedFromWindowsMenu(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419668-arecursorrectsenabled?language=objc for details.
 func (x gen_NSWindow) AreCursorRectsEnabled() bool {
-	ret := C.NSWindow_inst_areCursorRectsEnabled(
+	ret := C.NSWindow_inst_AreCursorRectsEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21313,7 +21313,7 @@ func (x gen_NSWindow) AreCursorRectsEnabled() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419196-showstoolbarbutton?language=objc for details.
 func (x gen_NSWindow) ShowsToolbarButton() bool {
-	ret := C.NSWindow_inst_showsToolbarButton(
+	ret := C.NSWindow_inst_ShowsToolbarButton(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21327,7 +21327,7 @@ func (x gen_NSWindow) ShowsToolbarButton() bool {
 func (x gen_NSWindow) SetShowsToolbarButton(
 	value bool,
 ) {
-	C.NSWindow_inst_setShowsToolbarButton(
+	C.NSWindow_inst_SetShowsToolbarButton(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21340,7 +21340,7 @@ func (x gen_NSWindow) SetShowsToolbarButton(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419167-titlebarappearstransparent?language=objc for details.
 func (x gen_NSWindow) TitlebarAppearsTransparent() bool {
-	ret := C.NSWindow_inst_titlebarAppearsTransparent(
+	ret := C.NSWindow_inst_TitlebarAppearsTransparent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21354,7 +21354,7 @@ func (x gen_NSWindow) TitlebarAppearsTransparent() bool {
 func (x gen_NSWindow) SetTitlebarAppearsTransparent(
 	value bool,
 ) {
-	C.NSWindow_inst_setTitlebarAppearsTransparent(
+	C.NSWindow_inst_SetTitlebarAppearsTransparent(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21367,7 +21367,7 @@ func (x gen_NSWindow) SetTitlebarAppearsTransparent(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419547-titlebaraccessoryviewcontrollers?language=objc for details.
 func (x gen_NSWindow) TitlebarAccessoryViewControllers() core.NSArray {
-	ret := C.NSWindow_inst_titlebarAccessoryViewControllers(
+	ret := C.NSWindow_inst_TitlebarAccessoryViewControllers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21381,7 +21381,7 @@ func (x gen_NSWindow) TitlebarAccessoryViewControllers() core.NSArray {
 func (x gen_NSWindow) SetTitlebarAccessoryViewControllers(
 	value core.NSArrayRef,
 ) {
-	C.NSWindow_inst_setTitlebarAccessoryViewControllers(
+	C.NSWindow_inst_SetTitlebarAccessoryViewControllers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21394,7 +21394,7 @@ func (x gen_NSWindow) SetTitlebarAccessoryViewControllers(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1792044-tabbedwindows?language=objc for details.
 func (x gen_NSWindow) TabbedWindows() core.NSArray {
-	ret := C.NSWindow_inst_tabbedWindows(
+	ret := C.NSWindow_inst_TabbedWindows(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21406,7 +21406,7 @@ func (x gen_NSWindow) TabbedWindows() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419138-allowstooltipswhenapplicationisi?language=objc for details.
 func (x gen_NSWindow) AllowsToolTipsWhenApplicationIsInactive() bool {
-	ret := C.NSWindow_inst_allowsToolTipsWhenApplicationIsInactive(
+	ret := C.NSWindow_inst_AllowsToolTipsWhenApplicationIsInactive(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21420,7 +21420,7 @@ func (x gen_NSWindow) AllowsToolTipsWhenApplicationIsInactive() bool {
 func (x gen_NSWindow) SetAllowsToolTipsWhenApplicationIsInactive(
 	value bool,
 ) {
-	C.NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive(
+	C.NSWindow_inst_SetAllowsToolTipsWhenApplicationIsInactive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21433,7 +21433,7 @@ func (x gen_NSWindow) SetAllowsToolTipsWhenApplicationIsInactive(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419298-currentevent?language=objc for details.
 func (x gen_NSWindow) CurrentEvent() NSEvent {
-	ret := C.NSWindow_inst_currentEvent(
+	ret := C.NSWindow_inst_CurrentEvent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21445,7 +21445,7 @@ func (x gen_NSWindow) CurrentEvent() NSEvent {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419479-initialfirstresponder?language=objc for details.
 func (x gen_NSWindow) InitialFirstResponder() NSView {
-	ret := C.NSWindow_inst_initialFirstResponder(
+	ret := C.NSWindow_inst_InitialFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21459,7 +21459,7 @@ func (x gen_NSWindow) InitialFirstResponder() NSView {
 func (x gen_NSWindow) SetInitialFirstResponder(
 	value NSViewRef,
 ) {
-	C.NSWindow_inst_setInitialFirstResponder(
+	C.NSWindow_inst_SetInitialFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21472,7 +21472,7 @@ func (x gen_NSWindow) SetInitialFirstResponder(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419214-autorecalculateskeyviewloop?language=objc for details.
 func (x gen_NSWindow) AutorecalculatesKeyViewLoop() bool {
-	ret := C.NSWindow_inst_autorecalculatesKeyViewLoop(
+	ret := C.NSWindow_inst_AutorecalculatesKeyViewLoop(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21486,7 +21486,7 @@ func (x gen_NSWindow) AutorecalculatesKeyViewLoop() bool {
 func (x gen_NSWindow) SetAutorecalculatesKeyViewLoop(
 	value bool,
 ) {
-	C.NSWindow_inst_setAutorecalculatesKeyViewLoop(
+	C.NSWindow_inst_SetAutorecalculatesKeyViewLoop(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21499,7 +21499,7 @@ func (x gen_NSWindow) SetAutorecalculatesKeyViewLoop(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419340-acceptsmousemovedevents?language=objc for details.
 func (x gen_NSWindow) AcceptsMouseMovedEvents() bool {
-	ret := C.NSWindow_inst_acceptsMouseMovedEvents(
+	ret := C.NSWindow_inst_AcceptsMouseMovedEvents(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21513,7 +21513,7 @@ func (x gen_NSWindow) AcceptsMouseMovedEvents() bool {
 func (x gen_NSWindow) SetAcceptsMouseMovedEvents(
 	value bool,
 ) {
-	C.NSWindow_inst_setAcceptsMouseMovedEvents(
+	C.NSWindow_inst_SetAcceptsMouseMovedEvents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21526,7 +21526,7 @@ func (x gen_NSWindow) SetAcceptsMouseMovedEvents(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419354-ignoresmouseevents?language=objc for details.
 func (x gen_NSWindow) IgnoresMouseEvents() bool {
-	ret := C.NSWindow_inst_ignoresMouseEvents(
+	ret := C.NSWindow_inst_IgnoresMouseEvents(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21540,7 +21540,7 @@ func (x gen_NSWindow) IgnoresMouseEvents() bool {
 func (x gen_NSWindow) SetIgnoresMouseEvents(
 	value bool,
 ) {
-	C.NSWindow_inst_setIgnoresMouseEvents(
+	C.NSWindow_inst_SetIgnoresMouseEvents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21553,7 +21553,7 @@ func (x gen_NSWindow) SetIgnoresMouseEvents(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419280-mouselocationoutsideofeventstrea?language=objc for details.
 func (x gen_NSWindow) MouseLocationOutsideOfEventStream() core.NSPoint {
-	ret := C.NSWindow_inst_mouseLocationOutsideOfEventStream(
+	ret := C.NSWindow_inst_MouseLocationOutsideOfEventStream(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21565,7 +21565,7 @@ func (x gen_NSWindow) MouseLocationOutsideOfEventStream() core.NSPoint {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1526255-restorable?language=objc for details.
 func (x gen_NSWindow) IsRestorable() bool {
-	ret := C.NSWindow_inst_isRestorable(
+	ret := C.NSWindow_inst_IsRestorable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21579,7 +21579,7 @@ func (x gen_NSWindow) IsRestorable() bool {
 func (x gen_NSWindow) SetRestorable(
 	value bool,
 ) {
-	C.NSWindow_inst_setRestorable(
+	C.NSWindow_inst_SetRestorable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21592,7 +21592,7 @@ func (x gen_NSWindow) SetRestorable(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419609-viewsneeddisplay?language=objc for details.
 func (x gen_NSWindow) ViewsNeedDisplay() bool {
-	ret := C.NSWindow_inst_viewsNeedDisplay(
+	ret := C.NSWindow_inst_ViewsNeedDisplay(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21606,7 +21606,7 @@ func (x gen_NSWindow) ViewsNeedDisplay() bool {
 func (x gen_NSWindow) SetViewsNeedDisplay(
 	value bool,
 ) {
-	C.NSWindow_inst_setViewsNeedDisplay(
+	C.NSWindow_inst_SetViewsNeedDisplay(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21619,7 +21619,7 @@ func (x gen_NSWindow) SetViewsNeedDisplay(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419300-allowsconcurrentviewdrawing?language=objc for details.
 func (x gen_NSWindow) AllowsConcurrentViewDrawing() bool {
-	ret := C.NSWindow_inst_allowsConcurrentViewDrawing(
+	ret := C.NSWindow_inst_AllowsConcurrentViewDrawing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21633,7 +21633,7 @@ func (x gen_NSWindow) AllowsConcurrentViewDrawing() bool {
 func (x gen_NSWindow) SetAllowsConcurrentViewDrawing(
 	value bool,
 ) {
-	C.NSWindow_inst_setAllowsConcurrentViewDrawing(
+	C.NSWindow_inst_SetAllowsConcurrentViewDrawing(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21646,7 +21646,7 @@ func (x gen_NSWindow) SetAllowsConcurrentViewDrawing(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419311-documentedited?language=objc for details.
 func (x gen_NSWindow) IsDocumentEdited() bool {
-	ret := C.NSWindow_inst_isDocumentEdited(
+	ret := C.NSWindow_inst_IsDocumentEdited(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21660,7 +21660,7 @@ func (x gen_NSWindow) IsDocumentEdited() bool {
 func (x gen_NSWindow) SetDocumentEdited(
 	value bool,
 ) {
-	C.NSWindow_inst_setDocumentEdited(
+	C.NSWindow_inst_SetDocumentEdited(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21673,7 +21673,7 @@ func (x gen_NSWindow) SetDocumentEdited(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419459-backingscalefactor?language=objc for details.
 func (x gen_NSWindow) BackingScaleFactor() core.CGFloat {
-	ret := C.NSWindow_inst_backingScaleFactor(
+	ret := C.NSWindow_inst_BackingScaleFactor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21685,7 +21685,7 @@ func (x gen_NSWindow) BackingScaleFactor() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419404-title?language=objc for details.
 func (x gen_NSWindow) Title() core.NSString {
-	ret := C.NSWindow_inst_title(
+	ret := C.NSWindow_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21699,7 +21699,7 @@ func (x gen_NSWindow) Title() core.NSString {
 func (x gen_NSWindow) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setTitle(
+	C.NSWindow_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21712,7 +21712,7 @@ func (x gen_NSWindow) SetTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/3608198-subtitle?language=objc for details.
 func (x gen_NSWindow) Subtitle() core.NSString {
-	ret := C.NSWindow_inst_subtitle(
+	ret := C.NSWindow_inst_Subtitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21726,7 +21726,7 @@ func (x gen_NSWindow) Subtitle() core.NSString {
 func (x gen_NSWindow) SetSubtitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setSubtitle(
+	C.NSWindow_inst_SetSubtitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21739,7 +21739,7 @@ func (x gen_NSWindow) SetSubtitle(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419635-titlevisibility?language=objc for details.
 func (x gen_NSWindow) TitleVisibility() core.NSInteger {
-	ret := C.NSWindow_inst_titleVisibility(
+	ret := C.NSWindow_inst_TitleVisibility(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21753,7 +21753,7 @@ func (x gen_NSWindow) TitleVisibility() core.NSInteger {
 func (x gen_NSWindow) SetTitleVisibility(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setTitleVisibility(
+	C.NSWindow_inst_SetTitleVisibility(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -21766,7 +21766,7 @@ func (x gen_NSWindow) SetTitleVisibility(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419631-representedfilename?language=objc for details.
 func (x gen_NSWindow) RepresentedFilename() core.NSString {
-	ret := C.NSWindow_inst_representedFilename(
+	ret := C.NSWindow_inst_RepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21780,7 +21780,7 @@ func (x gen_NSWindow) RepresentedFilename() core.NSString {
 func (x gen_NSWindow) SetRepresentedFilename(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setRepresentedFilename(
+	C.NSWindow_inst_SetRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21793,7 +21793,7 @@ func (x gen_NSWindow) SetRepresentedFilename(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419066-representedurl?language=objc for details.
 func (x gen_NSWindow) RepresentedURL() core.NSURL {
-	ret := C.NSWindow_inst_representedURL(
+	ret := C.NSWindow_inst_RepresentedURL(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21807,7 +21807,7 @@ func (x gen_NSWindow) RepresentedURL() core.NSURL {
 func (x gen_NSWindow) SetRepresentedURL(
 	value core.NSURLRef,
 ) {
-	C.NSWindow_inst_setRepresentedURL(
+	C.NSWindow_inst_SetRepresentedURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21820,7 +21820,7 @@ func (x gen_NSWindow) SetRepresentedURL(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419232-screen?language=objc for details.
 func (x gen_NSWindow) Screen() NSScreen {
-	ret := C.NSWindow_inst_screen(
+	ret := C.NSWindow_inst_Screen(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21832,7 +21832,7 @@ func (x gen_NSWindow) Screen() NSScreen {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419080-deepestscreen?language=objc for details.
 func (x gen_NSWindow) DeepestScreen() NSScreen {
-	ret := C.NSWindow_inst_deepestScreen(
+	ret := C.NSWindow_inst_DeepestScreen(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21844,7 +21844,7 @@ func (x gen_NSWindow) DeepestScreen() NSScreen {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419430-displayswhenscreenprofilechanges?language=objc for details.
 func (x gen_NSWindow) DisplaysWhenScreenProfileChanges() bool {
-	ret := C.NSWindow_inst_displaysWhenScreenProfileChanges(
+	ret := C.NSWindow_inst_DisplaysWhenScreenProfileChanges(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21858,7 +21858,7 @@ func (x gen_NSWindow) DisplaysWhenScreenProfileChanges() bool {
 func (x gen_NSWindow) SetDisplaysWhenScreenProfileChanges(
 	value bool,
 ) {
-	C.NSWindow_inst_setDisplaysWhenScreenProfileChanges(
+	C.NSWindow_inst_SetDisplaysWhenScreenProfileChanges(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21871,7 +21871,7 @@ func (x gen_NSWindow) SetDisplaysWhenScreenProfileChanges(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419072-movablebywindowbackground?language=objc for details.
 func (x gen_NSWindow) IsMovableByWindowBackground() bool {
-	ret := C.NSWindow_inst_isMovableByWindowBackground(
+	ret := C.NSWindow_inst_IsMovableByWindowBackground(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21885,7 +21885,7 @@ func (x gen_NSWindow) IsMovableByWindowBackground() bool {
 func (x gen_NSWindow) SetMovableByWindowBackground(
 	value bool,
 ) {
-	C.NSWindow_inst_setMovableByWindowBackground(
+	C.NSWindow_inst_SetMovableByWindowBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21898,7 +21898,7 @@ func (x gen_NSWindow) SetMovableByWindowBackground(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419579-movable?language=objc for details.
 func (x gen_NSWindow) IsMovable() bool {
-	ret := C.NSWindow_inst_isMovable(
+	ret := C.NSWindow_inst_IsMovable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21912,7 +21912,7 @@ func (x gen_NSWindow) IsMovable() bool {
 func (x gen_NSWindow) SetMovable(
 	value bool,
 ) {
-	C.NSWindow_inst_setMovable(
+	C.NSWindow_inst_SetMovable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21925,7 +21925,7 @@ func (x gen_NSWindow) SetMovable(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419062-releasedwhenclosed?language=objc for details.
 func (x gen_NSWindow) IsReleasedWhenClosed() bool {
-	ret := C.NSWindow_inst_isReleasedWhenClosed(
+	ret := C.NSWindow_inst_IsReleasedWhenClosed(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21939,7 +21939,7 @@ func (x gen_NSWindow) IsReleasedWhenClosed() bool {
 func (x gen_NSWindow) SetReleasedWhenClosed(
 	value bool,
 ) {
-	C.NSWindow_inst_setReleasedWhenClosed(
+	C.NSWindow_inst_SetReleasedWhenClosed(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21952,7 +21952,7 @@ func (x gen_NSWindow) SetReleasedWhenClosed(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419699-miniaturized?language=objc for details.
 func (x gen_NSWindow) IsMiniaturized() bool {
-	ret := C.NSWindow_inst_isMiniaturized(
+	ret := C.NSWindow_inst_IsMiniaturized(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21964,7 +21964,7 @@ func (x gen_NSWindow) IsMiniaturized() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419185-miniwindowimage?language=objc for details.
 func (x gen_NSWindow) MiniwindowImage() NSImage {
-	ret := C.NSWindow_inst_miniwindowImage(
+	ret := C.NSWindow_inst_MiniwindowImage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -21978,7 +21978,7 @@ func (x gen_NSWindow) MiniwindowImage() NSImage {
 func (x gen_NSWindow) SetMiniwindowImage(
 	value NSImageRef,
 ) {
-	C.NSWindow_inst_setMiniwindowImage(
+	C.NSWindow_inst_SetMiniwindowImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21991,7 +21991,7 @@ func (x gen_NSWindow) SetMiniwindowImage(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419571-miniwindowtitle?language=objc for details.
 func (x gen_NSWindow) MiniwindowTitle() core.NSString {
-	ret := C.NSWindow_inst_miniwindowTitle(
+	ret := C.NSWindow_inst_MiniwindowTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22005,7 +22005,7 @@ func (x gen_NSWindow) MiniwindowTitle() core.NSString {
 func (x gen_NSWindow) SetMiniwindowTitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setMiniwindowTitle(
+	C.NSWindow_inst_SetMiniwindowTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -22018,7 +22018,7 @@ func (x gen_NSWindow) SetMiniwindowTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449574-hasclosebox?language=objc for details.
 func (x gen_NSWindow) HasCloseBox() bool {
-	ret := C.NSWindow_inst_hasCloseBox(
+	ret := C.NSWindow_inst_HasCloseBox(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22030,7 +22030,7 @@ func (x gen_NSWindow) HasCloseBox() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449568-hastitlebar?language=objc for details.
 func (x gen_NSWindow) HasTitleBar() bool {
-	ret := C.NSWindow_inst_hasTitleBar(
+	ret := C.NSWindow_inst_HasTitleBar(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22042,7 +22042,7 @@ func (x gen_NSWindow) HasTitleBar() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449576-modalpanel?language=objc for details.
 func (x gen_NSWindow) IsModalPanel() bool {
-	ret := C.NSWindow_inst_isModalPanel(
+	ret := C.NSWindow_inst_IsModalPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22054,7 +22054,7 @@ func (x gen_NSWindow) IsModalPanel() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449579-floatingpanel?language=objc for details.
 func (x gen_NSWindow) IsFloatingPanel() bool {
-	ret := C.NSWindow_inst_isFloatingPanel(
+	ret := C.NSWindow_inst_IsFloatingPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22066,7 +22066,7 @@ func (x gen_NSWindow) IsFloatingPanel() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449587-zoomable?language=objc for details.
 func (x gen_NSWindow) IsZoomable() bool {
-	ret := C.NSWindow_inst_isZoomable(
+	ret := C.NSWindow_inst_IsZoomable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22078,7 +22078,7 @@ func (x gen_NSWindow) IsZoomable() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449572-resizable?language=objc for details.
 func (x gen_NSWindow) IsResizable() bool {
-	ret := C.NSWindow_inst_isResizable(
+	ret := C.NSWindow_inst_IsResizable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22090,7 +22090,7 @@ func (x gen_NSWindow) IsResizable() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449583-miniaturizable?language=objc for details.
 func (x gen_NSWindow) IsMiniaturizable() bool {
-	ret := C.NSWindow_inst_isMiniaturizable(
+	ret := C.NSWindow_inst_IsMiniaturizable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22102,7 +22102,7 @@ func (x gen_NSWindow) IsMiniaturizable() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1449577-orderedindex?language=objc for details.
 func (x gen_NSWindow) OrderedIndex() core.NSInteger {
-	ret := C.NSWindow_inst_orderedIndex(
+	ret := C.NSWindow_inst_OrderedIndex(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22116,7 +22116,7 @@ func (x gen_NSWindow) OrderedIndex() core.NSInteger {
 func (x gen_NSWindow) SetOrderedIndex(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setOrderedIndex(
+	C.NSWindow_inst_SetOrderedIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -22210,7 +22210,7 @@ func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier(
 func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs(
 	fileURLs core.NSArrayRef,
 ) {
-	C.NSWorkspace_inst_activateFileViewerSelectingURLs(
+	C.NSWorkspace_inst_ActivateFileViewerSelectingURLs(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileURLs),
 	)
@@ -22225,7 +22225,7 @@ func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs(
 func (x gen_NSWorkspace) DesktopImageOptionsForScreen(
 	screen NSScreenRef,
 ) core.NSDictionary {
-	ret := C.NSWorkspace_inst_desktopImageOptionsForScreen(
+	ret := C.NSWorkspace_inst_DesktopImageOptionsForScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 	)
@@ -22240,7 +22240,7 @@ func (x gen_NSWorkspace) DesktopImageOptionsForScreen(
 func (x gen_NSWorkspace) DesktopImageURLForScreen(
 	screen NSScreenRef,
 ) core.NSURL {
-	ret := C.NSWorkspace_inst_desktopImageURLForScreen(
+	ret := C.NSWorkspace_inst_DesktopImageURLForScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 	)
@@ -22255,7 +22255,7 @@ func (x gen_NSWorkspace) DesktopImageURLForScreen(
 func (x gen_NSWorkspace) ExtendPowerOffBy(
 	requested core.NSInteger,
 ) core.NSInteger {
-	ret := C.NSWorkspace_inst_extendPowerOffBy(
+	ret := C.NSWorkspace_inst_ExtendPowerOffBy(
 		unsafe.Pointer(x.Pointer()),
 		C.long(requested),
 	)
@@ -22268,7 +22268,7 @@ func (x gen_NSWorkspace) ExtendPowerOffBy(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1530417-hideotherapplications?language=objc for details.
 func (x gen_NSWorkspace) HideOtherApplications() {
-	C.NSWorkspace_inst_hideOtherApplications(
+	C.NSWorkspace_inst_HideOtherApplications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22282,7 +22282,7 @@ func (x gen_NSWorkspace) HideOtherApplications() {
 func (x gen_NSWorkspace) IconForFile(
 	fullPath core.NSStringRef,
 ) NSImage {
-	ret := C.NSWorkspace_inst_iconForFile(
+	ret := C.NSWorkspace_inst_IconForFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 	)
@@ -22297,7 +22297,7 @@ func (x gen_NSWorkspace) IconForFile(
 func (x gen_NSWorkspace) IconForFiles(
 	fullPaths core.NSArrayRef,
 ) NSImage {
-	ret := C.NSWorkspace_inst_iconForFiles(
+	ret := C.NSWorkspace_inst_IconForFiles(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPaths),
 	)
@@ -22312,7 +22312,7 @@ func (x gen_NSWorkspace) IconForFiles(
 func (x gen_NSWorkspace) IsFilePackageAtPath(
 	fullPath core.NSStringRef,
 ) bool {
-	ret := C.NSWorkspace_inst_isFilePackageAtPath(
+	ret := C.NSWorkspace_inst_IsFilePackageAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 	)
@@ -22327,7 +22327,7 @@ func (x gen_NSWorkspace) IsFilePackageAtPath(
 func (x gen_NSWorkspace) NoteFileSystemChanged(
 	path core.NSStringRef,
 ) {
-	C.NSWorkspace_inst_noteFileSystemChanged(
+	C.NSWorkspace_inst_NoteFileSystemChanged(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -22342,7 +22342,7 @@ func (x gen_NSWorkspace) NoteFileSystemChanged(
 func (x gen_NSWorkspace) OpenURL(
 	url core.NSURLRef,
 ) bool {
-	ret := C.NSWorkspace_inst_openURL(
+	ret := C.NSWorkspace_inst_OpenURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -22351,14 +22351,14 @@ func (x gen_NSWorkspace) OpenURL(
 
 }
 
-// SelectFile_inFileViewerRootedAtPath selects the file at the specified path.
+// SelectFileInFileViewerRootedAtPath selects the file at the specified path.
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1524399-selectfile?language=objc for details.
-func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath(
+func (x gen_NSWorkspace) SelectFileInFileViewerRootedAtPath(
 	fullPath core.NSStringRef,
 	rootFullPath core.NSStringRef,
 ) bool {
-	ret := C.NSWorkspace_inst_selectFile_inFileViewerRootedAtPath(
+	ret := C.NSWorkspace_inst_SelectFileInFileViewerRootedAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 		objc.RefPointer(rootFullPath),
@@ -22374,7 +22374,7 @@ func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath(
 func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
 	queryString core.NSStringRef,
 ) bool {
-	ret := C.NSWorkspace_inst_showSearchResultsForQueryString(
+	ret := C.NSWorkspace_inst_ShowSearchResultsForQueryString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(queryString),
 	)
@@ -22389,7 +22389,7 @@ func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
 func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 	path core.NSStringRef,
 ) bool {
-	ret := C.NSWorkspace_inst_unmountAndEjectDeviceAtPath(
+	ret := C.NSWorkspace_inst_UnmountAndEjectDeviceAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -22402,7 +22402,7 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 //
 // See  for details.
 func (x gen_NSWorkspace) Init_asNSWorkspace() NSWorkspace {
-	ret := C.NSWorkspace_inst_init(
+	ret := C.NSWorkspace_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22414,7 +22414,7 @@ func (x gen_NSWorkspace) Init_asNSWorkspace() NSWorkspace {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1532097-frontmostapplication?language=objc for details.
 func (x gen_NSWorkspace) FrontmostApplication() NSRunningApplication {
-	ret := C.NSWorkspace_inst_frontmostApplication(
+	ret := C.NSWorkspace_inst_FrontmostApplication(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22426,7 +22426,7 @@ func (x gen_NSWorkspace) FrontmostApplication() NSRunningApplication {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1534059-runningapplications?language=objc for details.
 func (x gen_NSWorkspace) RunningApplications() core.NSArray {
-	ret := C.NSWorkspace_inst_runningApplications(
+	ret := C.NSWorkspace_inst_RunningApplications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22438,7 +22438,7 @@ func (x gen_NSWorkspace) RunningApplications() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1525848-menubarowningapplication?language=objc for details.
 func (x gen_NSWorkspace) MenuBarOwningApplication() NSRunningApplication {
-	ret := C.NSWorkspace_inst_menuBarOwningApplication(
+	ret := C.NSWorkspace_inst_MenuBarOwningApplication(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22450,7 +22450,7 @@ func (x gen_NSWorkspace) MenuBarOwningApplication() NSRunningApplication {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1533953-filelabels?language=objc for details.
 func (x gen_NSWorkspace) FileLabels() core.NSArray {
-	ret := C.NSWorkspace_inst_fileLabels(
+	ret := C.NSWorkspace_inst_FileLabels(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22462,7 +22462,7 @@ func (x gen_NSWorkspace) FileLabels() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1527553-filelabelcolors?language=objc for details.
 func (x gen_NSWorkspace) FileLabelColors() core.NSArray {
-	ret := C.NSWorkspace_inst_fileLabelColors(
+	ret := C.NSWorkspace_inst_FileLabelColors(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22474,7 +22474,7 @@ func (x gen_NSWorkspace) FileLabelColors() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1524656-accessibilitydisplayshoulddiffer?language=objc for details.
 func (x gen_NSWorkspace) AccessibilityDisplayShouldDifferentiateWithoutColor() bool {
-	ret := C.NSWorkspace_inst_accessibilityDisplayShouldDifferentiateWithoutColor(
+	ret := C.NSWorkspace_inst_AccessibilityDisplayShouldDifferentiateWithoutColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22486,7 +22486,7 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldDifferentiateWithoutColor() b
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1526290-accessibilitydisplayshouldincrea?language=objc for details.
 func (x gen_NSWorkspace) AccessibilityDisplayShouldIncreaseContrast() bool {
-	ret := C.NSWorkspace_inst_accessibilityDisplayShouldIncreaseContrast(
+	ret := C.NSWorkspace_inst_AccessibilityDisplayShouldIncreaseContrast(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22498,7 +22498,7 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldIncreaseContrast() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1533006-accessibilitydisplayshouldreduce?language=objc for details.
 func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceTransparency() bool {
-	ret := C.NSWorkspace_inst_accessibilityDisplayShouldReduceTransparency(
+	ret := C.NSWorkspace_inst_AccessibilityDisplayShouldReduceTransparency(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22510,7 +22510,7 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceTransparency() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1644068-accessibilitydisplayshouldinvert?language=objc for details.
 func (x gen_NSWorkspace) AccessibilityDisplayShouldInvertColors() bool {
-	ret := C.NSWorkspace_inst_accessibilityDisplayShouldInvertColors(
+	ret := C.NSWorkspace_inst_AccessibilityDisplayShouldInvertColors(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22522,7 +22522,7 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldInvertColors() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1644069-accessibilitydisplayshouldreduce?language=objc for details.
 func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceMotion() bool {
-	ret := C.NSWorkspace_inst_accessibilityDisplayShouldReduceMotion(
+	ret := C.NSWorkspace_inst_AccessibilityDisplayShouldReduceMotion(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22534,7 +22534,7 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceMotion() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/2880322-switchcontrolenabled?language=objc for details.
 func (x gen_NSWorkspace) IsSwitchControlEnabled() bool {
-	ret := C.NSWorkspace_inst_isSwitchControlEnabled(
+	ret := C.NSWorkspace_inst_IsSwitchControlEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22546,7 +22546,7 @@ func (x gen_NSWorkspace) IsSwitchControlEnabled() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/2880317-voiceoverenabled?language=objc for details.
 func (x gen_NSWorkspace) IsVoiceOverEnabled() bool {
-	ret := C.NSWorkspace_inst_isVoiceOverEnabled(
+	ret := C.NSWorkspace_inst_IsVoiceOverEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22573,14 +22573,14 @@ func NSColor_fromRef(ref objc.Ref) NSColor {
 	return NSColor_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// BlendedColorWithFraction_ofColor creates a new color object whose component values are a weighted sum of the current color object and the specified color object's.
+// BlendedColorWithFractionOfColor creates a new color object whose component values are a weighted sum of the current color object and the specified color object's.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1524689-blendedcolorwithfraction?language=objc for details.
-func (x gen_NSColor) BlendedColorWithFraction_ofColor(
+func (x gen_NSColor) BlendedColorWithFractionOfColor(
 	fraction core.CGFloat,
 	color NSColorRef,
 ) NSColor {
-	ret := C.NSColor_inst_blendedColorWithFraction_ofColor(
+	ret := C.NSColor_inst_BlendedColorWithFractionOfColor(
 		unsafe.Pointer(x.Pointer()),
 		C.double(fraction),
 		objc.RefPointer(color),
@@ -22596,7 +22596,7 @@ func (x gen_NSColor) BlendedColorWithFraction_ofColor(
 func (x gen_NSColor) ColorWithAlphaComponent(
 	alpha core.CGFloat,
 ) NSColor {
-	ret := C.NSColor_inst_colorWithAlphaComponent(
+	ret := C.NSColor_inst_ColorWithAlphaComponent(
 		unsafe.Pointer(x.Pointer()),
 		C.double(alpha),
 	)
@@ -22611,7 +22611,7 @@ func (x gen_NSColor) ColorWithAlphaComponent(
 func (x gen_NSColor) DrawSwatchInRect(
 	rect core.NSRect,
 ) {
-	C.NSColor_inst_drawSwatchInRect(
+	C.NSColor_inst_DrawSwatchInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -22626,7 +22626,7 @@ func (x gen_NSColor) DrawSwatchInRect(
 func (x gen_NSColor) HighlightWithLevel(
 	val core.CGFloat,
 ) NSColor {
-	ret := C.NSColor_inst_highlightWithLevel(
+	ret := C.NSColor_inst_HighlightWithLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.double(val),
 	)
@@ -22639,7 +22639,7 @@ func (x gen_NSColor) HighlightWithLevel(
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1527089-set?language=objc for details.
 func (x gen_NSColor) Set() {
-	C.NSColor_inst_set(
+	C.NSColor_inst_Set(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22651,7 +22651,7 @@ func (x gen_NSColor) Set() {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1524755-setfill?language=objc for details.
 func (x gen_NSColor) SetFill() {
-	C.NSColor_inst_setFill(
+	C.NSColor_inst_SetFill(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22663,7 +22663,7 @@ func (x gen_NSColor) SetFill() {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1531019-setstroke?language=objc for details.
 func (x gen_NSColor) SetStroke() {
-	C.NSColor_inst_setStroke(
+	C.NSColor_inst_SetStroke(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22677,7 +22677,7 @@ func (x gen_NSColor) SetStroke() {
 func (x gen_NSColor) ShadowWithLevel(
 	val core.CGFloat,
 ) NSColor {
-	ret := C.NSColor_inst_shadowWithLevel(
+	ret := C.NSColor_inst_ShadowWithLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.double(val),
 	)
@@ -22692,7 +22692,7 @@ func (x gen_NSColor) ShadowWithLevel(
 func (x gen_NSColor) WriteToPasteboard(
 	pasteBoard NSPasteboardRef,
 ) {
-	C.NSColor_inst_writeToPasteboard(
+	C.NSColor_inst_WriteToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteBoard),
 	)
@@ -22705,7 +22705,7 @@ func (x gen_NSColor) WriteToPasteboard(
 //
 // See  for details.
 func (x gen_NSColor) Init_asNSColor() NSColor {
-	ret := C.NSColor_inst_init(
+	ret := C.NSColor_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22717,7 +22717,7 @@ func (x gen_NSColor) Init_asNSColor() NSColor {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1531308-numberofcomponents?language=objc for details.
 func (x gen_NSColor) NumberOfComponents() core.NSInteger {
-	ret := C.NSColor_inst_numberOfComponents(
+	ret := C.NSColor_inst_NumberOfComponents(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22729,7 +22729,7 @@ func (x gen_NSColor) NumberOfComponents() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1532504-alphacomponent?language=objc for details.
 func (x gen_NSColor) AlphaComponent() core.CGFloat {
-	ret := C.NSColor_inst_alphaComponent(
+	ret := C.NSColor_inst_AlphaComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22741,7 +22741,7 @@ func (x gen_NSColor) AlphaComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1534051-whitecomponent?language=objc for details.
 func (x gen_NSColor) WhiteComponent() core.CGFloat {
-	ret := C.NSColor_inst_whiteComponent(
+	ret := C.NSColor_inst_WhiteComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22753,7 +22753,7 @@ func (x gen_NSColor) WhiteComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1530483-redcomponent?language=objc for details.
 func (x gen_NSColor) RedComponent() core.CGFloat {
-	ret := C.NSColor_inst_redComponent(
+	ret := C.NSColor_inst_RedComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22765,7 +22765,7 @@ func (x gen_NSColor) RedComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1525935-greencomponent?language=objc for details.
 func (x gen_NSColor) GreenComponent() core.CGFloat {
-	ret := C.NSColor_inst_greenComponent(
+	ret := C.NSColor_inst_GreenComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22777,7 +22777,7 @@ func (x gen_NSColor) GreenComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1534229-bluecomponent?language=objc for details.
 func (x gen_NSColor) BlueComponent() core.CGFloat {
-	ret := C.NSColor_inst_blueComponent(
+	ret := C.NSColor_inst_BlueComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22789,7 +22789,7 @@ func (x gen_NSColor) BlueComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1528234-cyancomponent?language=objc for details.
 func (x gen_NSColor) CyanComponent() core.CGFloat {
-	ret := C.NSColor_inst_cyanComponent(
+	ret := C.NSColor_inst_CyanComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22801,7 +22801,7 @@ func (x gen_NSColor) CyanComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1535560-magentacomponent?language=objc for details.
 func (x gen_NSColor) MagentaComponent() core.CGFloat {
-	ret := C.NSColor_inst_magentaComponent(
+	ret := C.NSColor_inst_MagentaComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22813,7 +22813,7 @@ func (x gen_NSColor) MagentaComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1531965-yellowcomponent?language=objc for details.
 func (x gen_NSColor) YellowComponent() core.CGFloat {
-	ret := C.NSColor_inst_yellowComponent(
+	ret := C.NSColor_inst_YellowComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22825,7 +22825,7 @@ func (x gen_NSColor) YellowComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1526883-blackcomponent?language=objc for details.
 func (x gen_NSColor) BlackComponent() core.CGFloat {
-	ret := C.NSColor_inst_blackComponent(
+	ret := C.NSColor_inst_BlackComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22837,7 +22837,7 @@ func (x gen_NSColor) BlackComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1531780-huecomponent?language=objc for details.
 func (x gen_NSColor) HueComponent() core.CGFloat {
-	ret := C.NSColor_inst_hueComponent(
+	ret := C.NSColor_inst_HueComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22849,7 +22849,7 @@ func (x gen_NSColor) HueComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1526326-saturationcomponent?language=objc for details.
 func (x gen_NSColor) SaturationComponent() core.CGFloat {
-	ret := C.NSColor_inst_saturationComponent(
+	ret := C.NSColor_inst_SaturationComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22861,7 +22861,7 @@ func (x gen_NSColor) SaturationComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1529355-brightnesscomponent?language=objc for details.
 func (x gen_NSColor) BrightnessComponent() core.CGFloat {
-	ret := C.NSColor_inst_brightnessComponent(
+	ret := C.NSColor_inst_BrightnessComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22873,7 +22873,7 @@ func (x gen_NSColor) BrightnessComponent() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1535351-localizedcatalognamecomponent?language=objc for details.
 func (x gen_NSColor) LocalizedCatalogNameComponent() core.NSString {
-	ret := C.NSColor_inst_localizedCatalogNameComponent(
+	ret := C.NSColor_inst_LocalizedCatalogNameComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22885,7 +22885,7 @@ func (x gen_NSColor) LocalizedCatalogNameComponent() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1527286-localizedcolornamecomponent?language=objc for details.
 func (x gen_NSColor) LocalizedColorNameComponent() core.NSString {
-	ret := C.NSColor_inst_localizedColorNameComponent(
+	ret := C.NSColor_inst_LocalizedColorNameComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22918,7 +22918,7 @@ func NSTextView_fromRef(ref objc.Ref) NSTextView {
 func (x gen_NSTextView) AlignJustified(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_alignJustified(
+	C.NSTextView_inst_AlignJustified(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -22931,7 +22931,7 @@ func (x gen_NSTextView) AlignJustified(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449384-breakundocoalescing?language=objc for details.
 func (x gen_NSTextView) BreakUndoCoalescing() {
-	C.NSTextView_inst_breakUndoCoalescing(
+	C.NSTextView_inst_BreakUndoCoalescing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -22945,7 +22945,7 @@ func (x gen_NSTextView) BreakUndoCoalescing() {
 func (x gen_NSTextView) ChangeAttributes(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeAttributes(
+	C.NSTextView_inst_ChangeAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -22960,7 +22960,7 @@ func (x gen_NSTextView) ChangeAttributes(
 func (x gen_NSTextView) ChangeColor(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeColor(
+	C.NSTextView_inst_ChangeColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -22975,7 +22975,7 @@ func (x gen_NSTextView) ChangeColor(
 func (x gen_NSTextView) ChangeDocumentBackgroundColor(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeDocumentBackgroundColor(
+	C.NSTextView_inst_ChangeDocumentBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -22990,7 +22990,7 @@ func (x gen_NSTextView) ChangeDocumentBackgroundColor(
 func (x gen_NSTextView) ChangeLayoutOrientation(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeLayoutOrientation(
+	C.NSTextView_inst_ChangeLayoutOrientation(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23005,7 +23005,7 @@ func (x gen_NSTextView) ChangeLayoutOrientation(
 func (x gen_NSTextView) CharacterIndexForInsertionAtPoint(
 	point core.NSPoint,
 ) core.NSUInteger {
-	ret := C.NSTextView_inst_characterIndexForInsertionAtPoint(
+	ret := C.NSTextView_inst_CharacterIndexForInsertionAtPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -23020,7 +23020,7 @@ func (x gen_NSTextView) CharacterIndexForInsertionAtPoint(
 func (x gen_NSTextView) CheckTextInDocument(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_checkTextInDocument(
+	C.NSTextView_inst_CheckTextInDocument(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23035,7 +23035,7 @@ func (x gen_NSTextView) CheckTextInDocument(
 func (x gen_NSTextView) CheckTextInSelection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_checkTextInSelection(
+	C.NSTextView_inst_CheckTextInSelection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23048,7 +23048,7 @@ func (x gen_NSTextView) CheckTextInSelection(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449202-cleanupafterdragoperation?language=objc for details.
 func (x gen_NSTextView) CleanUpAfterDragOperation() {
-	C.NSTextView_inst_cleanUpAfterDragOperation(
+	C.NSTextView_inst_CleanUpAfterDragOperation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23056,14 +23056,14 @@ func (x gen_NSTextView) CleanUpAfterDragOperation() {
 
 }
 
-// ClickedOnLink_atIndex causes the text view to act as if the user clicked on some text with the given link as the value of a link attribute associated with the text.
+// ClickedOnLinkAtIndex causes the text view to act as if the user clicked on some text with the given link as the value of a link attribute associated with the text.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449497-clickedonlink?language=objc for details.
-func (x gen_NSTextView) ClickedOnLink_atIndex(
+func (x gen_NSTextView) ClickedOnLinkAtIndex(
 	link objc.Ref,
 	charIndex core.NSUInteger,
 ) {
-	C.NSTextView_inst_clickedOnLink_atIndex(
+	C.NSTextView_inst_ClickedOnLinkAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(link),
 		C.ulong(charIndex),
@@ -23079,7 +23079,7 @@ func (x gen_NSTextView) ClickedOnLink_atIndex(
 func (x gen_NSTextView) Complete(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_complete(
+	C.NSTextView_inst_Complete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23092,7 +23092,7 @@ func (x gen_NSTextView) Complete(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449296-didchangetext?language=objc for details.
 func (x gen_NSTextView) DidChangeText() {
-	C.NSTextView_inst_didChangeText(
+	C.NSTextView_inst_DidChangeText(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23100,15 +23100,15 @@ func (x gen_NSTextView) DidChangeText() {
 
 }
 
-// DragSelectionWithEvent_offset_slideBack begins dragging the current selected text range.
+// DragSelectionWithEventOffsetSlideBack begins dragging the current selected text range.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449413-dragselectionwithevent?language=objc for details.
-func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack(
+func (x gen_NSTextView) DragSelectionWithEventOffsetSlideBack(
 	event NSEventRef,
 	mouseOffset core.NSSize,
 	slideBack bool,
 ) bool {
-	ret := C.NSTextView_inst_dragSelectionWithEvent_offset_slideBack(
+	ret := C.NSTextView_inst_DragSelectionWithEventOffsetSlideBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		*(*C.NSSize)(unsafe.Pointer(&mouseOffset)),
@@ -23119,15 +23119,15 @@ func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack(
 
 }
 
-// DrawInsertionPointInRect_color_turnedOn draws or erases the insertion point.
+// DrawInsertionPointInRectColorTurnedOn draws or erases the insertion point.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449232-drawinsertionpointinrect?language=objc for details.
-func (x gen_NSTextView) DrawInsertionPointInRect_color_turnedOn(
+func (x gen_NSTextView) DrawInsertionPointInRectColorTurnedOn(
 	rect core.NSRect,
 	color NSColorRef,
 	flag bool,
 ) {
-	C.NSTextView_inst_drawInsertionPointInRect_color_turnedOn(
+	C.NSTextView_inst_DrawInsertionPointInRectColorTurnedOn(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(color),
@@ -23144,7 +23144,7 @@ func (x gen_NSTextView) DrawInsertionPointInRect_color_turnedOn(
 func (x gen_NSTextView) DrawViewBackgroundInRect(
 	rect core.NSRect,
 ) {
-	C.NSTextView_inst_drawViewBackgroundInRect(
+	C.NSTextView_inst_DrawViewBackgroundInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -23159,7 +23159,7 @@ func (x gen_NSTextView) DrawViewBackgroundInRect(
 func (x gen_NSTextView) InitWithFrame_asNSTextView(
 	frameRect core.NSRect,
 ) NSTextView {
-	ret := C.NSTextView_inst_initWithFrame(
+	ret := C.NSTextView_inst_InitWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -23168,14 +23168,14 @@ func (x gen_NSTextView) InitWithFrame_asNSTextView(
 
 }
 
-// InitWithFrame_textContainer initializes a text view.
+// InitWithFrameTextContainer initializes a text view.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449347-initwithframe?language=objc for details.
-func (x gen_NSTextView) InitWithFrame_textContainer_asNSTextView(
+func (x gen_NSTextView) InitWithFrameTextContainer_asNSTextView(
 	frameRect core.NSRect,
 	container NSTextContainerRef,
 ) NSTextView {
-	ret := C.NSTextView_inst_initWithFrame_textContainer(
+	ret := C.NSTextView_inst_InitWithFrameTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		objc.RefPointer(container),
@@ -23189,7 +23189,7 @@ func (x gen_NSTextView) InitWithFrame_textContainer_asNSTextView(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449546-invalidatetextcontainerorigin?language=objc for details.
 func (x gen_NSTextView) InvalidateTextContainerOrigin() {
-	C.NSTextView_inst_invalidateTextContainerOrigin(
+	C.NSTextView_inst_InvalidateTextContainerOrigin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23203,7 +23203,7 @@ func (x gen_NSTextView) InvalidateTextContainerOrigin() {
 func (x gen_NSTextView) LoosenKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_loosenKerning(
+	C.NSTextView_inst_LoosenKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23218,7 +23218,7 @@ func (x gen_NSTextView) LoosenKerning(
 func (x gen_NSTextView) LowerBaseline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_lowerBaseline(
+	C.NSTextView_inst_LowerBaseline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23233,7 +23233,7 @@ func (x gen_NSTextView) LowerBaseline(
 func (x gen_NSTextView) OrderFrontLinkPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontLinkPanel(
+	C.NSTextView_inst_OrderFrontLinkPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23248,7 +23248,7 @@ func (x gen_NSTextView) OrderFrontLinkPanel(
 func (x gen_NSTextView) OrderFrontListPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontListPanel(
+	C.NSTextView_inst_OrderFrontListPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23263,7 +23263,7 @@ func (x gen_NSTextView) OrderFrontListPanel(
 func (x gen_NSTextView) OrderFrontSharingServicePicker(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSharingServicePicker(
+	C.NSTextView_inst_OrderFrontSharingServicePicker(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23278,7 +23278,7 @@ func (x gen_NSTextView) OrderFrontSharingServicePicker(
 func (x gen_NSTextView) OrderFrontSpacingPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSpacingPanel(
+	C.NSTextView_inst_OrderFrontSpacingPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23293,7 +23293,7 @@ func (x gen_NSTextView) OrderFrontSpacingPanel(
 func (x gen_NSTextView) OrderFrontSubstitutionsPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSubstitutionsPanel(
+	C.NSTextView_inst_OrderFrontSubstitutionsPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23308,7 +23308,7 @@ func (x gen_NSTextView) OrderFrontSubstitutionsPanel(
 func (x gen_NSTextView) OrderFrontTablePanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontTablePanel(
+	C.NSTextView_inst_OrderFrontTablePanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23323,7 +23323,7 @@ func (x gen_NSTextView) OrderFrontTablePanel(
 func (x gen_NSTextView) Outline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_outline(
+	C.NSTextView_inst_Outline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23338,7 +23338,7 @@ func (x gen_NSTextView) Outline(
 func (x gen_NSTextView) PasteAsPlainText(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_pasteAsPlainText(
+	C.NSTextView_inst_PasteAsPlainText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23353,7 +23353,7 @@ func (x gen_NSTextView) PasteAsPlainText(
 func (x gen_NSTextView) PasteAsRichText(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_pasteAsRichText(
+	C.NSTextView_inst_PasteAsRichText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23368,7 +23368,7 @@ func (x gen_NSTextView) PasteAsRichText(
 func (x gen_NSTextView) PerformFindPanelAction(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_performFindPanelAction(
+	C.NSTextView_inst_PerformFindPanelAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23383,7 +23383,7 @@ func (x gen_NSTextView) PerformFindPanelAction(
 func (x gen_NSTextView) QuickLookPreviewableItemsInRanges(
 	ranges core.NSArrayRef,
 ) core.NSArray {
-	ret := C.NSTextView_inst_quickLookPreviewableItemsInRanges(
+	ret := C.NSTextView_inst_QuickLookPreviewableItemsInRanges(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ranges),
 	)
@@ -23398,7 +23398,7 @@ func (x gen_NSTextView) QuickLookPreviewableItemsInRanges(
 func (x gen_NSTextView) RaiseBaseline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_raiseBaseline(
+	C.NSTextView_inst_RaiseBaseline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23413,7 +23413,7 @@ func (x gen_NSTextView) RaiseBaseline(
 func (x gen_NSTextView) ReadSelectionFromPasteboard(
 	pboard NSPasteboardRef,
 ) bool {
-	ret := C.NSTextView_inst_readSelectionFromPasteboard(
+	ret := C.NSTextView_inst_ReadSelectionFromPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pboard),
 	)
@@ -23428,7 +23428,7 @@ func (x gen_NSTextView) ReadSelectionFromPasteboard(
 func (x gen_NSTextView) ReplaceTextContainer(
 	newContainer NSTextContainerRef,
 ) {
-	C.NSTextView_inst_replaceTextContainer(
+	C.NSTextView_inst_ReplaceTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newContainer),
 	)
@@ -23443,7 +23443,7 @@ func (x gen_NSTextView) ReplaceTextContainer(
 func (x gen_NSTextView) SetConstrainedFrameSize(
 	desiredSize core.NSSize,
 ) {
-	C.NSTextView_inst_setConstrainedFrameSize(
+	C.NSTextView_inst_SetConstrainedFrameSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&desiredSize)),
 	)
@@ -23452,14 +23452,14 @@ func (x gen_NSTextView) SetConstrainedFrameSize(
 
 }
 
-// SetNeedsDisplayInRect_avoidAdditionalLayout marks the receiver as requiring display.
+// SetNeedsDisplayInRectAvoidAdditionalLayout marks the receiver as requiring display.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449279-setneedsdisplayinrect?language=objc for details.
-func (x gen_NSTextView) SetNeedsDisplayInRect_avoidAdditionalLayout(
+func (x gen_NSTextView) SetNeedsDisplayInRectAvoidAdditionalLayout(
 	rect core.NSRect,
 	flag bool,
 ) {
-	C.NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout(
+	C.NSTextView_inst_SetNeedsDisplayInRectAvoidAdditionalLayout(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		convertToObjCBool(flag),
@@ -23469,14 +23469,14 @@ func (x gen_NSTextView) SetNeedsDisplayInRect_avoidAdditionalLayout(
 
 }
 
-// ShouldChangeTextInRanges_replacementStrings initiates a series of delegate messages (and general notifications) to determine whether modifications can be made to the characters and attributes of the receiver’s text.
+// ShouldChangeTextInRangesReplacementStrings initiates a series of delegate messages (and general notifications) to determine whether modifications can be made to the characters and attributes of the receiver’s text.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449311-shouldchangetextinranges?language=objc for details.
-func (x gen_NSTextView) ShouldChangeTextInRanges_replacementStrings(
+func (x gen_NSTextView) ShouldChangeTextInRangesReplacementStrings(
 	affectedRanges core.NSArrayRef,
 	replacementStrings core.NSArrayRef,
 ) bool {
-	ret := C.NSTextView_inst_shouldChangeTextInRanges_replacementStrings(
+	ret := C.NSTextView_inst_ShouldChangeTextInRangesReplacementStrings(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(affectedRanges),
 		objc.RefPointer(replacementStrings),
@@ -23492,7 +23492,7 @@ func (x gen_NSTextView) ShouldChangeTextInRanges_replacementStrings(
 func (x gen_NSTextView) StartSpeaking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_startSpeaking(
+	C.NSTextView_inst_StartSpeaking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23507,7 +23507,7 @@ func (x gen_NSTextView) StartSpeaking(
 func (x gen_NSTextView) StopSpeaking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_stopSpeaking(
+	C.NSTextView_inst_StopSpeaking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23522,7 +23522,7 @@ func (x gen_NSTextView) StopSpeaking(
 func (x gen_NSTextView) TightenKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_tightenKerning(
+	C.NSTextView_inst_TightenKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23537,7 +23537,7 @@ func (x gen_NSTextView) TightenKerning(
 func (x gen_NSTextView) ToggleAutomaticDashSubstitution(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticDashSubstitution(
+	C.NSTextView_inst_ToggleAutomaticDashSubstitution(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23552,7 +23552,7 @@ func (x gen_NSTextView) ToggleAutomaticDashSubstitution(
 func (x gen_NSTextView) ToggleAutomaticDataDetection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticDataDetection(
+	C.NSTextView_inst_ToggleAutomaticDataDetection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23567,7 +23567,7 @@ func (x gen_NSTextView) ToggleAutomaticDataDetection(
 func (x gen_NSTextView) ToggleAutomaticLinkDetection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticLinkDetection(
+	C.NSTextView_inst_ToggleAutomaticLinkDetection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23582,7 +23582,7 @@ func (x gen_NSTextView) ToggleAutomaticLinkDetection(
 func (x gen_NSTextView) ToggleAutomaticQuoteSubstitution(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticQuoteSubstitution(
+	C.NSTextView_inst_ToggleAutomaticQuoteSubstitution(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23597,7 +23597,7 @@ func (x gen_NSTextView) ToggleAutomaticQuoteSubstitution(
 func (x gen_NSTextView) ToggleAutomaticSpellingCorrection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticSpellingCorrection(
+	C.NSTextView_inst_ToggleAutomaticSpellingCorrection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23612,7 +23612,7 @@ func (x gen_NSTextView) ToggleAutomaticSpellingCorrection(
 func (x gen_NSTextView) ToggleAutomaticTextCompletion(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticTextCompletion(
+	C.NSTextView_inst_ToggleAutomaticTextCompletion(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23627,7 +23627,7 @@ func (x gen_NSTextView) ToggleAutomaticTextCompletion(
 func (x gen_NSTextView) ToggleAutomaticTextReplacement(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticTextReplacement(
+	C.NSTextView_inst_ToggleAutomaticTextReplacement(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23642,7 +23642,7 @@ func (x gen_NSTextView) ToggleAutomaticTextReplacement(
 func (x gen_NSTextView) ToggleContinuousSpellChecking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleContinuousSpellChecking(
+	C.NSTextView_inst_ToggleContinuousSpellChecking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23657,7 +23657,7 @@ func (x gen_NSTextView) ToggleContinuousSpellChecking(
 func (x gen_NSTextView) ToggleGrammarChecking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleGrammarChecking(
+	C.NSTextView_inst_ToggleGrammarChecking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23672,7 +23672,7 @@ func (x gen_NSTextView) ToggleGrammarChecking(
 func (x gen_NSTextView) ToggleQuickLookPreviewPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleQuickLookPreviewPanel(
+	C.NSTextView_inst_ToggleQuickLookPreviewPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23687,7 +23687,7 @@ func (x gen_NSTextView) ToggleQuickLookPreviewPanel(
 func (x gen_NSTextView) ToggleSmartInsertDelete(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleSmartInsertDelete(
+	C.NSTextView_inst_ToggleSmartInsertDelete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23702,7 +23702,7 @@ func (x gen_NSTextView) ToggleSmartInsertDelete(
 func (x gen_NSTextView) TurnOffKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_turnOffKerning(
+	C.NSTextView_inst_TurnOffKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23717,7 +23717,7 @@ func (x gen_NSTextView) TurnOffKerning(
 func (x gen_NSTextView) TurnOffLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_turnOffLigatures(
+	C.NSTextView_inst_TurnOffLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23730,7 +23730,7 @@ func (x gen_NSTextView) TurnOffLigatures(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2544833-updatecandidates?language=objc for details.
 func (x gen_NSTextView) UpdateCandidates() {
-	C.NSTextView_inst_updateCandidates(
+	C.NSTextView_inst_UpdateCandidates(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23742,7 +23742,7 @@ func (x gen_NSTextView) UpdateCandidates() {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449181-updatedragtyperegistration?language=objc for details.
 func (x gen_NSTextView) UpdateDragTypeRegistration() {
-	C.NSTextView_inst_updateDragTypeRegistration(
+	C.NSTextView_inst_UpdateDragTypeRegistration(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23754,7 +23754,7 @@ func (x gen_NSTextView) UpdateDragTypeRegistration() {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449401-updatefontpanel?language=objc for details.
 func (x gen_NSTextView) UpdateFontPanel() {
-	C.NSTextView_inst_updateFontPanel(
+	C.NSTextView_inst_UpdateFontPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23768,7 +23768,7 @@ func (x gen_NSTextView) UpdateFontPanel() {
 func (x gen_NSTextView) UpdateInsertionPointStateAndRestartTimer(
 	restartFlag bool,
 ) {
-	C.NSTextView_inst_updateInsertionPointStateAndRestartTimer(
+	C.NSTextView_inst_UpdateInsertionPointStateAndRestartTimer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(restartFlag),
 	)
@@ -23781,7 +23781,7 @@ func (x gen_NSTextView) UpdateInsertionPointStateAndRestartTimer(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449409-updatequicklookpreviewpanel?language=objc for details.
 func (x gen_NSTextView) UpdateQuickLookPreviewPanel() {
-	C.NSTextView_inst_updateQuickLookPreviewPanel(
+	C.NSTextView_inst_UpdateQuickLookPreviewPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23793,7 +23793,7 @@ func (x gen_NSTextView) UpdateQuickLookPreviewPanel() {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449323-updateruler?language=objc for details.
 func (x gen_NSTextView) UpdateRuler() {
-	C.NSTextView_inst_updateRuler(
+	C.NSTextView_inst_UpdateRuler(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23805,7 +23805,7 @@ func (x gen_NSTextView) UpdateRuler() {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2544676-updatetexttouchbaritems?language=objc for details.
 func (x gen_NSTextView) UpdateTextTouchBarItems() {
-	C.NSTextView_inst_updateTextTouchBarItems(
+	C.NSTextView_inst_UpdateTextTouchBarItems(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23817,7 +23817,7 @@ func (x gen_NSTextView) UpdateTextTouchBarItems() {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2544834-updatetouchbaritemidentifiers?language=objc for details.
 func (x gen_NSTextView) UpdateTouchBarItemIdentifiers() {
-	C.NSTextView_inst_updateTouchBarItemIdentifiers(
+	C.NSTextView_inst_UpdateTouchBarItemIdentifiers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23831,7 +23831,7 @@ func (x gen_NSTextView) UpdateTouchBarItemIdentifiers() {
 func (x gen_NSTextView) UseAllLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useAllLigatures(
+	C.NSTextView_inst_UseAllLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23846,7 +23846,7 @@ func (x gen_NSTextView) UseAllLigatures(
 func (x gen_NSTextView) UseStandardKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useStandardKerning(
+	C.NSTextView_inst_UseStandardKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23861,7 +23861,7 @@ func (x gen_NSTextView) UseStandardKerning(
 func (x gen_NSTextView) UseStandardLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useStandardLigatures(
+	C.NSTextView_inst_UseStandardLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -23870,14 +23870,14 @@ func (x gen_NSTextView) UseStandardLigatures(
 
 }
 
-// WriteSelectionToPasteboard_types writes the current selection to the specified pasteboard under each given type.
+// WriteSelectionToPasteboardTypes writes the current selection to the specified pasteboard under each given type.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449277-writeselectiontopasteboard?language=objc for details.
-func (x gen_NSTextView) WriteSelectionToPasteboard_types(
+func (x gen_NSTextView) WriteSelectionToPasteboardTypes(
 	pboard NSPasteboardRef,
 	types core.NSArrayRef,
 ) bool {
-	ret := C.NSTextView_inst_writeSelectionToPasteboard_types(
+	ret := C.NSTextView_inst_WriteSelectionToPasteboardTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pboard),
 		objc.RefPointer(types),
@@ -23891,7 +23891,7 @@ func (x gen_NSTextView) WriteSelectionToPasteboard_types(
 //
 // See  for details.
 func (x gen_NSTextView) Init_asNSTextView() NSTextView {
-	ret := C.NSTextView_inst_init(
+	ret := C.NSTextView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23903,7 +23903,7 @@ func (x gen_NSTextView) Init_asNSTextView() NSTextView {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449521-delegate?language=objc for details.
 func (x gen_NSTextView) Delegate() objc.Object {
-	ret := C.NSTextView_inst_delegate(
+	ret := C.NSTextView_inst_Delegate(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23917,7 +23917,7 @@ func (x gen_NSTextView) Delegate() objc.Object {
 func (x gen_NSTextView) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSTextView_inst_setDelegate(
+	C.NSTextView_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -23930,7 +23930,7 @@ func (x gen_NSTextView) SetDelegate(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449364-textcontainer?language=objc for details.
 func (x gen_NSTextView) TextContainer() NSTextContainer {
-	ret := C.NSTextView_inst_textContainer(
+	ret := C.NSTextView_inst_TextContainer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23944,7 +23944,7 @@ func (x gen_NSTextView) TextContainer() NSTextContainer {
 func (x gen_NSTextView) SetTextContainer(
 	value NSTextContainerRef,
 ) {
-	C.NSTextView_inst_setTextContainer(
+	C.NSTextView_inst_SetTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -23957,7 +23957,7 @@ func (x gen_NSTextView) SetTextContainer(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449168-textcontainerinset?language=objc for details.
 func (x gen_NSTextView) TextContainerInset() core.NSSize {
-	ret := C.NSTextView_inst_textContainerInset(
+	ret := C.NSTextView_inst_TextContainerInset(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23971,7 +23971,7 @@ func (x gen_NSTextView) TextContainerInset() core.NSSize {
 func (x gen_NSTextView) SetTextContainerInset(
 	value core.NSSize,
 ) {
-	C.NSTextView_inst_setTextContainerInset(
+	C.NSTextView_inst_SetTextContainerInset(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -23984,7 +23984,7 @@ func (x gen_NSTextView) SetTextContainerInset(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449477-textcontainerorigin?language=objc for details.
 func (x gen_NSTextView) TextContainerOrigin() core.NSPoint {
-	ret := C.NSTextView_inst_textContainerOrigin(
+	ret := C.NSTextView_inst_TextContainerOrigin(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -23996,7 +23996,7 @@ func (x gen_NSTextView) TextContainerOrigin() core.NSPoint {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449148-layoutmanager?language=objc for details.
 func (x gen_NSTextView) LayoutManager() NSLayoutManager {
-	ret := C.NSTextView_inst_layoutManager(
+	ret := C.NSTextView_inst_LayoutManager(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24008,7 +24008,7 @@ func (x gen_NSTextView) LayoutManager() NSLayoutManager {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449501-backgroundcolor?language=objc for details.
 func (x gen_NSTextView) BackgroundColor() NSColor {
-	ret := C.NSTextView_inst_backgroundColor(
+	ret := C.NSTextView_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24022,7 +24022,7 @@ func (x gen_NSTextView) BackgroundColor() NSColor {
 func (x gen_NSTextView) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSTextView_inst_setBackgroundColor(
+	C.NSTextView_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24035,7 +24035,7 @@ func (x gen_NSTextView) SetBackgroundColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449530-drawsbackground?language=objc for details.
 func (x gen_NSTextView) DrawsBackground() bool {
-	ret := C.NSTextView_inst_drawsBackground(
+	ret := C.NSTextView_inst_DrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24049,7 +24049,7 @@ func (x gen_NSTextView) DrawsBackground() bool {
 func (x gen_NSTextView) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSTextView_inst_setDrawsBackground(
+	C.NSTextView_inst_SetDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24062,7 +24062,7 @@ func (x gen_NSTextView) SetDrawsBackground(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449397-allowsdocumentbackgroundcolorcha?language=objc for details.
 func (x gen_NSTextView) AllowsDocumentBackgroundColorChange() bool {
-	ret := C.NSTextView_inst_allowsDocumentBackgroundColorChange(
+	ret := C.NSTextView_inst_AllowsDocumentBackgroundColorChange(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24076,7 +24076,7 @@ func (x gen_NSTextView) AllowsDocumentBackgroundColorChange() bool {
 func (x gen_NSTextView) SetAllowsDocumentBackgroundColorChange(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsDocumentBackgroundColorChange(
+	C.NSTextView_inst_SetAllowsDocumentBackgroundColorChange(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24089,7 +24089,7 @@ func (x gen_NSTextView) SetAllowsDocumentBackgroundColorChange(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449152-shoulddrawinsertionpoint?language=objc for details.
 func (x gen_NSTextView) ShouldDrawInsertionPoint() bool {
-	ret := C.NSTextView_inst_shouldDrawInsertionPoint(
+	ret := C.NSTextView_inst_ShouldDrawInsertionPoint(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24101,7 +24101,7 @@ func (x gen_NSTextView) ShouldDrawInsertionPoint() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449370-allowedinputsourcelocales?language=objc for details.
 func (x gen_NSTextView) AllowedInputSourceLocales() core.NSArray {
-	ret := C.NSTextView_inst_allowedInputSourceLocales(
+	ret := C.NSTextView_inst_AllowedInputSourceLocales(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24115,7 +24115,7 @@ func (x gen_NSTextView) AllowedInputSourceLocales() core.NSArray {
 func (x gen_NSTextView) SetAllowedInputSourceLocales(
 	value core.NSArrayRef,
 ) {
-	C.NSTextView_inst_setAllowedInputSourceLocales(
+	C.NSTextView_inst_SetAllowedInputSourceLocales(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24128,7 +24128,7 @@ func (x gen_NSTextView) SetAllowedInputSourceLocales(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449450-allowsundo?language=objc for details.
 func (x gen_NSTextView) AllowsUndo() bool {
-	ret := C.NSTextView_inst_allowsUndo(
+	ret := C.NSTextView_inst_AllowsUndo(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24142,7 +24142,7 @@ func (x gen_NSTextView) AllowsUndo() bool {
 func (x gen_NSTextView) SetAllowsUndo(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsUndo(
+	C.NSTextView_inst_SetAllowsUndo(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24155,7 +24155,7 @@ func (x gen_NSTextView) SetAllowsUndo(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449345-editable?language=objc for details.
 func (x gen_NSTextView) IsEditable() bool {
-	ret := C.NSTextView_inst_isEditable(
+	ret := C.NSTextView_inst_IsEditable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24169,7 +24169,7 @@ func (x gen_NSTextView) IsEditable() bool {
 func (x gen_NSTextView) SetEditable(
 	value bool,
 ) {
-	C.NSTextView_inst_setEditable(
+	C.NSTextView_inst_SetEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24182,7 +24182,7 @@ func (x gen_NSTextView) SetEditable(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449297-selectable?language=objc for details.
 func (x gen_NSTextView) IsSelectable() bool {
-	ret := C.NSTextView_inst_isSelectable(
+	ret := C.NSTextView_inst_IsSelectable(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24196,7 +24196,7 @@ func (x gen_NSTextView) IsSelectable() bool {
 func (x gen_NSTextView) SetSelectable(
 	value bool,
 ) {
-	C.NSTextView_inst_setSelectable(
+	C.NSTextView_inst_SetSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24209,7 +24209,7 @@ func (x gen_NSTextView) SetSelectable(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449156-fieldeditor?language=objc for details.
 func (x gen_NSTextView) IsFieldEditor() bool {
-	ret := C.NSTextView_inst_isFieldEditor(
+	ret := C.NSTextView_inst_IsFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24223,7 +24223,7 @@ func (x gen_NSTextView) IsFieldEditor() bool {
 func (x gen_NSTextView) SetFieldEditor(
 	value bool,
 ) {
-	C.NSTextView_inst_setFieldEditor(
+	C.NSTextView_inst_SetFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24236,7 +24236,7 @@ func (x gen_NSTextView) SetFieldEditor(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449538-richtext?language=objc for details.
 func (x gen_NSTextView) IsRichText() bool {
-	ret := C.NSTextView_inst_isRichText(
+	ret := C.NSTextView_inst_IsRichText(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24250,7 +24250,7 @@ func (x gen_NSTextView) IsRichText() bool {
 func (x gen_NSTextView) SetRichText(
 	value bool,
 ) {
-	C.NSTextView_inst_setRichText(
+	C.NSTextView_inst_SetRichText(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24263,7 +24263,7 @@ func (x gen_NSTextView) SetRichText(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449266-importsgraphics?language=objc for details.
 func (x gen_NSTextView) ImportsGraphics() bool {
-	ret := C.NSTextView_inst_importsGraphics(
+	ret := C.NSTextView_inst_ImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24277,7 +24277,7 @@ func (x gen_NSTextView) ImportsGraphics() bool {
 func (x gen_NSTextView) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSTextView_inst_setImportsGraphics(
+	C.NSTextView_inst_SetImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24290,7 +24290,7 @@ func (x gen_NSTextView) SetImportsGraphics(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449425-allowsimageediting?language=objc for details.
 func (x gen_NSTextView) AllowsImageEditing() bool {
-	ret := C.NSTextView_inst_allowsImageEditing(
+	ret := C.NSTextView_inst_AllowsImageEditing(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24304,7 +24304,7 @@ func (x gen_NSTextView) AllowsImageEditing() bool {
 func (x gen_NSTextView) SetAllowsImageEditing(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsImageEditing(
+	C.NSTextView_inst_SetAllowsImageEditing(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24317,7 +24317,7 @@ func (x gen_NSTextView) SetAllowsImageEditing(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449258-automaticquotesubstitutionenable?language=objc for details.
 func (x gen_NSTextView) IsAutomaticQuoteSubstitutionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticQuoteSubstitutionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticQuoteSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24331,7 +24331,7 @@ func (x gen_NSTextView) IsAutomaticQuoteSubstitutionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticQuoteSubstitutionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticQuoteSubstitutionEnabled(
+	C.NSTextView_inst_SetAutomaticQuoteSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24344,7 +24344,7 @@ func (x gen_NSTextView) SetAutomaticQuoteSubstitutionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449170-automaticlinkdetectionenabled?language=objc for details.
 func (x gen_NSTextView) IsAutomaticLinkDetectionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticLinkDetectionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticLinkDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24358,7 +24358,7 @@ func (x gen_NSTextView) IsAutomaticLinkDetectionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticLinkDetectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticLinkDetectionEnabled(
+	C.NSTextView_inst_SetAutomaticLinkDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24371,7 +24371,7 @@ func (x gen_NSTextView) SetAutomaticLinkDetectionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449204-displayslinktooltips?language=objc for details.
 func (x gen_NSTextView) DisplaysLinkToolTips() bool {
-	ret := C.NSTextView_inst_displaysLinkToolTips(
+	ret := C.NSTextView_inst_DisplaysLinkToolTips(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24385,7 +24385,7 @@ func (x gen_NSTextView) DisplaysLinkToolTips() bool {
 func (x gen_NSTextView) SetDisplaysLinkToolTips(
 	value bool,
 ) {
-	C.NSTextView_inst_setDisplaysLinkToolTips(
+	C.NSTextView_inst_SetDisplaysLinkToolTips(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24398,7 +24398,7 @@ func (x gen_NSTextView) SetDisplaysLinkToolTips(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2544655-automatictextcompletionenabled?language=objc for details.
 func (x gen_NSTextView) IsAutomaticTextCompletionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticTextCompletionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24412,7 +24412,7 @@ func (x gen_NSTextView) IsAutomaticTextCompletionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticTextCompletionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticTextCompletionEnabled(
+	C.NSTextView_inst_SetAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24425,7 +24425,7 @@ func (x gen_NSTextView) SetAutomaticTextCompletionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/3237223-usesadaptivecolormappingfordarka?language=objc for details.
 func (x gen_NSTextView) UsesAdaptiveColorMappingForDarkAppearance() bool {
-	ret := C.NSTextView_inst_usesAdaptiveColorMappingForDarkAppearance(
+	ret := C.NSTextView_inst_UsesAdaptiveColorMappingForDarkAppearance(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24439,7 +24439,7 @@ func (x gen_NSTextView) UsesAdaptiveColorMappingForDarkAppearance() bool {
 func (x gen_NSTextView) SetUsesAdaptiveColorMappingForDarkAppearance(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance(
+	C.NSTextView_inst_SetUsesAdaptiveColorMappingForDarkAppearance(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24452,7 +24452,7 @@ func (x gen_NSTextView) SetUsesAdaptiveColorMappingForDarkAppearance(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449357-usesrolloverbuttonforselection?language=objc for details.
 func (x gen_NSTextView) UsesRolloverButtonForSelection() bool {
-	ret := C.NSTextView_inst_usesRolloverButtonForSelection(
+	ret := C.NSTextView_inst_UsesRolloverButtonForSelection(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24466,7 +24466,7 @@ func (x gen_NSTextView) UsesRolloverButtonForSelection() bool {
 func (x gen_NSTextView) SetUsesRolloverButtonForSelection(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesRolloverButtonForSelection(
+	C.NSTextView_inst_SetUsesRolloverButtonForSelection(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24479,7 +24479,7 @@ func (x gen_NSTextView) SetUsesRolloverButtonForSelection(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449218-usesruler?language=objc for details.
 func (x gen_NSTextView) UsesRuler() bool {
-	ret := C.NSTextView_inst_usesRuler(
+	ret := C.NSTextView_inst_UsesRuler(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24493,7 +24493,7 @@ func (x gen_NSTextView) UsesRuler() bool {
 func (x gen_NSTextView) SetUsesRuler(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesRuler(
+	C.NSTextView_inst_SetUsesRuler(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24506,7 +24506,7 @@ func (x gen_NSTextView) SetUsesRuler(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449406-rulervisible?language=objc for details.
 func (x gen_NSTextView) IsRulerVisible() bool {
-	ret := C.NSTextView_inst_isRulerVisible(
+	ret := C.NSTextView_inst_IsRulerVisible(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24520,7 +24520,7 @@ func (x gen_NSTextView) IsRulerVisible() bool {
 func (x gen_NSTextView) SetRulerVisible(
 	value bool,
 ) {
-	C.NSTextView_inst_setRulerVisible(
+	C.NSTextView_inst_SetRulerVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24533,7 +24533,7 @@ func (x gen_NSTextView) SetRulerVisible(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449407-usesinspectorbar?language=objc for details.
 func (x gen_NSTextView) UsesInspectorBar() bool {
-	ret := C.NSTextView_inst_usesInspectorBar(
+	ret := C.NSTextView_inst_UsesInspectorBar(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24547,7 +24547,7 @@ func (x gen_NSTextView) UsesInspectorBar() bool {
 func (x gen_NSTextView) SetUsesInspectorBar(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesInspectorBar(
+	C.NSTextView_inst_SetUsesInspectorBar(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24560,7 +24560,7 @@ func (x gen_NSTextView) SetUsesInspectorBar(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449129-selectedranges?language=objc for details.
 func (x gen_NSTextView) SelectedRanges() core.NSArray {
-	ret := C.NSTextView_inst_selectedRanges(
+	ret := C.NSTextView_inst_SelectedRanges(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24574,7 +24574,7 @@ func (x gen_NSTextView) SelectedRanges() core.NSArray {
 func (x gen_NSTextView) SetSelectedRanges(
 	value core.NSArrayRef,
 ) {
-	C.NSTextView_inst_setSelectedRanges(
+	C.NSTextView_inst_SetSelectedRanges(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24587,7 +24587,7 @@ func (x gen_NSTextView) SetSelectedRanges(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449309-insertionpointcolor?language=objc for details.
 func (x gen_NSTextView) InsertionPointColor() NSColor {
-	ret := C.NSTextView_inst_insertionPointColor(
+	ret := C.NSTextView_inst_InsertionPointColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24601,7 +24601,7 @@ func (x gen_NSTextView) InsertionPointColor() NSColor {
 func (x gen_NSTextView) SetInsertionPointColor(
 	value NSColorRef,
 ) {
-	C.NSTextView_inst_setInsertionPointColor(
+	C.NSTextView_inst_SetInsertionPointColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24614,7 +24614,7 @@ func (x gen_NSTextView) SetInsertionPointColor(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449270-selectedtextattributes?language=objc for details.
 func (x gen_NSTextView) SelectedTextAttributes() core.NSDictionary {
-	ret := C.NSTextView_inst_selectedTextAttributes(
+	ret := C.NSTextView_inst_SelectedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24628,7 +24628,7 @@ func (x gen_NSTextView) SelectedTextAttributes() core.NSDictionary {
 func (x gen_NSTextView) SetSelectedTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setSelectedTextAttributes(
+	C.NSTextView_inst_SetSelectedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24641,7 +24641,7 @@ func (x gen_NSTextView) SetSelectedTextAttributes(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449179-markedtextattributes?language=objc for details.
 func (x gen_NSTextView) MarkedTextAttributes() core.NSDictionary {
-	ret := C.NSTextView_inst_markedTextAttributes(
+	ret := C.NSTextView_inst_MarkedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24655,7 +24655,7 @@ func (x gen_NSTextView) MarkedTextAttributes() core.NSDictionary {
 func (x gen_NSTextView) SetMarkedTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setMarkedTextAttributes(
+	C.NSTextView_inst_SetMarkedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24668,7 +24668,7 @@ func (x gen_NSTextView) SetMarkedTextAttributes(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449452-linktextattributes?language=objc for details.
 func (x gen_NSTextView) LinkTextAttributes() core.NSDictionary {
-	ret := C.NSTextView_inst_linkTextAttributes(
+	ret := C.NSTextView_inst_LinkTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24682,7 +24682,7 @@ func (x gen_NSTextView) LinkTextAttributes() core.NSDictionary {
 func (x gen_NSTextView) SetLinkTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setLinkTextAttributes(
+	C.NSTextView_inst_SetLinkTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24695,7 +24695,7 @@ func (x gen_NSTextView) SetLinkTextAttributes(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449361-readablepasteboardtypes?language=objc for details.
 func (x gen_NSTextView) ReadablePasteboardTypes() core.NSArray {
-	ret := C.NSTextView_inst_readablePasteboardTypes(
+	ret := C.NSTextView_inst_ReadablePasteboardTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24707,7 +24707,7 @@ func (x gen_NSTextView) ReadablePasteboardTypes() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449222-writablepasteboardtypes?language=objc for details.
 func (x gen_NSTextView) WritablePasteboardTypes() core.NSArray {
-	ret := C.NSTextView_inst_writablePasteboardTypes(
+	ret := C.NSTextView_inst_WritablePasteboardTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24719,7 +24719,7 @@ func (x gen_NSTextView) WritablePasteboardTypes() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449487-typingattributes?language=objc for details.
 func (x gen_NSTextView) TypingAttributes() core.NSDictionary {
-	ret := C.NSTextView_inst_typingAttributes(
+	ret := C.NSTextView_inst_TypingAttributes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24733,7 +24733,7 @@ func (x gen_NSTextView) TypingAttributes() core.NSDictionary {
 func (x gen_NSTextView) SetTypingAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setTypingAttributes(
+	C.NSTextView_inst_SetTypingAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -24746,7 +24746,7 @@ func (x gen_NSTextView) SetTypingAttributes(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449368-coalescingundo?language=objc for details.
 func (x gen_NSTextView) IsCoalescingUndo() bool {
-	ret := C.NSTextView_inst_isCoalescingUndo(
+	ret := C.NSTextView_inst_IsCoalescingUndo(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24758,7 +24758,7 @@ func (x gen_NSTextView) IsCoalescingUndo() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449234-acceptabledragtypes?language=objc for details.
 func (x gen_NSTextView) AcceptableDragTypes() core.NSArray {
-	ret := C.NSTextView_inst_acceptableDragTypes(
+	ret := C.NSTextView_inst_AcceptableDragTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24770,7 +24770,7 @@ func (x gen_NSTextView) AcceptableDragTypes() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449503-rangesforusercharacterattributec?language=objc for details.
 func (x gen_NSTextView) RangesForUserCharacterAttributeChange() core.NSArray {
-	ret := C.NSTextView_inst_rangesForUserCharacterAttributeChange(
+	ret := C.NSTextView_inst_RangesForUserCharacterAttributeChange(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24782,7 +24782,7 @@ func (x gen_NSTextView) RangesForUserCharacterAttributeChange() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449161-rangesforuserparagraphattributec?language=objc for details.
 func (x gen_NSTextView) RangesForUserParagraphAttributeChange() core.NSArray {
-	ret := C.NSTextView_inst_rangesForUserParagraphAttributeChange(
+	ret := C.NSTextView_inst_RangesForUserParagraphAttributeChange(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24794,7 +24794,7 @@ func (x gen_NSTextView) RangesForUserParagraphAttributeChange() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449434-rangesforusertextchange?language=objc for details.
 func (x gen_NSTextView) RangesForUserTextChange() core.NSArray {
-	ret := C.NSTextView_inst_rangesForUserTextChange(
+	ret := C.NSTextView_inst_RangesForUserTextChange(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24806,7 +24806,7 @@ func (x gen_NSTextView) RangesForUserTextChange() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449236-smartinsertdeleteenabled?language=objc for details.
 func (x gen_NSTextView) SmartInsertDeleteEnabled() bool {
-	ret := C.NSTextView_inst_smartInsertDeleteEnabled(
+	ret := C.NSTextView_inst_SmartInsertDeleteEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24820,7 +24820,7 @@ func (x gen_NSTextView) SmartInsertDeleteEnabled() bool {
 func (x gen_NSTextView) SetSmartInsertDeleteEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setSmartInsertDeleteEnabled(
+	C.NSTextView_inst_SetSmartInsertDeleteEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24833,7 +24833,7 @@ func (x gen_NSTextView) SetSmartInsertDeleteEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449430-continuousspellcheckingenabled?language=objc for details.
 func (x gen_NSTextView) IsContinuousSpellCheckingEnabled() bool {
-	ret := C.NSTextView_inst_isContinuousSpellCheckingEnabled(
+	ret := C.NSTextView_inst_IsContinuousSpellCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24847,7 +24847,7 @@ func (x gen_NSTextView) IsContinuousSpellCheckingEnabled() bool {
 func (x gen_NSTextView) SetContinuousSpellCheckingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setContinuousSpellCheckingEnabled(
+	C.NSTextView_inst_SetContinuousSpellCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24860,7 +24860,7 @@ func (x gen_NSTextView) SetContinuousSpellCheckingEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449513-spellcheckerdocumenttag?language=objc for details.
 func (x gen_NSTextView) SpellCheckerDocumentTag() core.NSInteger {
-	ret := C.NSTextView_inst_spellCheckerDocumentTag(
+	ret := C.NSTextView_inst_SpellCheckerDocumentTag(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24872,7 +24872,7 @@ func (x gen_NSTextView) SpellCheckerDocumentTag() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449166-grammarcheckingenabled?language=objc for details.
 func (x gen_NSTextView) IsGrammarCheckingEnabled() bool {
-	ret := C.NSTextView_inst_isGrammarCheckingEnabled(
+	ret := C.NSTextView_inst_IsGrammarCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24886,7 +24886,7 @@ func (x gen_NSTextView) IsGrammarCheckingEnabled() bool {
 func (x gen_NSTextView) SetGrammarCheckingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setGrammarCheckingEnabled(
+	C.NSTextView_inst_SetGrammarCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24899,7 +24899,7 @@ func (x gen_NSTextView) SetGrammarCheckingEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449163-acceptsglyphinfo?language=objc for details.
 func (x gen_NSTextView) AcceptsGlyphInfo() bool {
-	ret := C.NSTextView_inst_acceptsGlyphInfo(
+	ret := C.NSTextView_inst_AcceptsGlyphInfo(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24913,7 +24913,7 @@ func (x gen_NSTextView) AcceptsGlyphInfo() bool {
 func (x gen_NSTextView) SetAcceptsGlyphInfo(
 	value bool,
 ) {
-	C.NSTextView_inst_setAcceptsGlyphInfo(
+	C.NSTextView_inst_SetAcceptsGlyphInfo(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24926,7 +24926,7 @@ func (x gen_NSTextView) SetAcceptsGlyphInfo(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449534-usesfontpanel?language=objc for details.
 func (x gen_NSTextView) UsesFontPanel() bool {
-	ret := C.NSTextView_inst_usesFontPanel(
+	ret := C.NSTextView_inst_UsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24940,7 +24940,7 @@ func (x gen_NSTextView) UsesFontPanel() bool {
 func (x gen_NSTextView) SetUsesFontPanel(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFontPanel(
+	C.NSTextView_inst_SetUsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24953,7 +24953,7 @@ func (x gen_NSTextView) SetUsesFontPanel(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449293-usesfindpanel?language=objc for details.
 func (x gen_NSTextView) UsesFindPanel() bool {
-	ret := C.NSTextView_inst_usesFindPanel(
+	ret := C.NSTextView_inst_UsesFindPanel(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24967,7 +24967,7 @@ func (x gen_NSTextView) UsesFindPanel() bool {
 func (x gen_NSTextView) SetUsesFindPanel(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFindPanel(
+	C.NSTextView_inst_SetUsesFindPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -24980,7 +24980,7 @@ func (x gen_NSTextView) SetUsesFindPanel(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449403-automaticdashsubstitutionenabled?language=objc for details.
 func (x gen_NSTextView) IsAutomaticDashSubstitutionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticDashSubstitutionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticDashSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -24994,7 +24994,7 @@ func (x gen_NSTextView) IsAutomaticDashSubstitutionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticDashSubstitutionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticDashSubstitutionEnabled(
+	C.NSTextView_inst_SetAutomaticDashSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25007,7 +25007,7 @@ func (x gen_NSTextView) SetAutomaticDashSubstitutionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449192-automaticdatadetectionenabled?language=objc for details.
 func (x gen_NSTextView) IsAutomaticDataDetectionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticDataDetectionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticDataDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25021,7 +25021,7 @@ func (x gen_NSTextView) IsAutomaticDataDetectionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticDataDetectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticDataDetectionEnabled(
+	C.NSTextView_inst_SetAutomaticDataDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25034,7 +25034,7 @@ func (x gen_NSTextView) SetAutomaticDataDetectionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449254-automaticspellingcorrectionenabl?language=objc for details.
 func (x gen_NSTextView) IsAutomaticSpellingCorrectionEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticSpellingCorrectionEnabled(
+	ret := C.NSTextView_inst_IsAutomaticSpellingCorrectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25048,7 +25048,7 @@ func (x gen_NSTextView) IsAutomaticSpellingCorrectionEnabled() bool {
 func (x gen_NSTextView) SetAutomaticSpellingCorrectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticSpellingCorrectionEnabled(
+	C.NSTextView_inst_SetAutomaticSpellingCorrectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25061,7 +25061,7 @@ func (x gen_NSTextView) SetAutomaticSpellingCorrectionEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449210-automatictextreplacementenabled?language=objc for details.
 func (x gen_NSTextView) IsAutomaticTextReplacementEnabled() bool {
-	ret := C.NSTextView_inst_isAutomaticTextReplacementEnabled(
+	ret := C.NSTextView_inst_IsAutomaticTextReplacementEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25075,7 +25075,7 @@ func (x gen_NSTextView) IsAutomaticTextReplacementEnabled() bool {
 func (x gen_NSTextView) SetAutomaticTextReplacementEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticTextReplacementEnabled(
+	C.NSTextView_inst_SetAutomaticTextReplacementEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25088,7 +25088,7 @@ func (x gen_NSTextView) SetAutomaticTextReplacementEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449456-usesfindbar?language=objc for details.
 func (x gen_NSTextView) UsesFindBar() bool {
-	ret := C.NSTextView_inst_usesFindBar(
+	ret := C.NSTextView_inst_UsesFindBar(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25102,7 +25102,7 @@ func (x gen_NSTextView) UsesFindBar() bool {
 func (x gen_NSTextView) SetUsesFindBar(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFindBar(
+	C.NSTextView_inst_SetUsesFindBar(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25115,7 +25115,7 @@ func (x gen_NSTextView) SetUsesFindBar(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449458-incrementalsearchingenabled?language=objc for details.
 func (x gen_NSTextView) IsIncrementalSearchingEnabled() bool {
-	ret := C.NSTextView_inst_isIncrementalSearchingEnabled(
+	ret := C.NSTextView_inst_IsIncrementalSearchingEnabled(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25129,7 +25129,7 @@ func (x gen_NSTextView) IsIncrementalSearchingEnabled() bool {
 func (x gen_NSTextView) SetIncrementalSearchingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setIncrementalSearchingEnabled(
+	C.NSTextView_inst_SetIncrementalSearchingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25142,7 +25142,7 @@ func (x gen_NSTextView) SetIncrementalSearchingEnabled(
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/2544680-allowscharacterpickertouchbarite?language=objc for details.
 func (x gen_NSTextView) AllowsCharacterPickerTouchBarItem() bool {
-	ret := C.NSTextView_inst_allowsCharacterPickerTouchBarItem(
+	ret := C.NSTextView_inst_AllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25156,7 +25156,7 @@ func (x gen_NSTextView) AllowsCharacterPickerTouchBarItem() bool {
 func (x gen_NSTextView) SetAllowsCharacterPickerTouchBarItem(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsCharacterPickerTouchBarItem(
+	C.NSTextView_inst_SetAllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -25169,7 +25169,7 @@ func (x gen_NSTextView) SetAllowsCharacterPickerTouchBarItem(
 //
 // See  for details.
 func (x gen_NSTextView) Font() NSFont {
-	ret := C.NSTextView_inst_font(
+	ret := C.NSTextView_inst_Font(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25183,7 +25183,7 @@ func (x gen_NSTextView) Font() NSFont {
 func (x gen_NSTextView) SetFont(
 	value NSFontRef,
 ) {
-	C.NSTextView_inst_setFont(
+	C.NSTextView_inst_SetFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -25217,7 +25217,7 @@ func NSView_fromRef(ref objc.Ref) NSView {
 func (x gen_NSView) AcceptsFirstMouse(
 	event NSEventRef,
 ) bool {
-	ret := C.NSView_inst_acceptsFirstMouse(
+	ret := C.NSView_inst_AcceptsFirstMouse(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -25232,7 +25232,7 @@ func (x gen_NSView) AcceptsFirstMouse(
 func (x gen_NSView) AddConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSView_inst_addConstraints(
+	C.NSView_inst_AddConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
@@ -25247,7 +25247,7 @@ func (x gen_NSView) AddConstraints(
 func (x gen_NSView) AddSubview(
 	view NSViewRef,
 ) {
-	C.NSView_inst_addSubview(
+	C.NSView_inst_AddSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -25256,15 +25256,15 @@ func (x gen_NSView) AddSubview(
 
 }
 
-// AddSubview_positioned_relativeTo inserts a view among the view’s subviews so it’s displayed immediately above or below another view.
+// AddSubviewPositionedRelativeTo inserts a view among the view’s subviews so it’s displayed immediately above or below another view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483640-addsubview?language=objc for details.
-func (x gen_NSView) AddSubview_positioned_relativeTo(
+func (x gen_NSView) AddSubviewPositionedRelativeTo(
 	view NSViewRef,
 	place core.NSUInteger,
 	otherView NSViewRef,
 ) {
-	C.NSView_inst_addSubview_positioned_relativeTo(
+	C.NSView_inst_AddSubviewPositionedRelativeTo(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 		C.ulong(place),
@@ -25281,7 +25281,7 @@ func (x gen_NSView) AddSubview_positioned_relativeTo(
 func (x gen_NSView) AdjustScroll(
 	newVisible core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_adjustScroll(
+	ret := C.NSView_inst_AdjustScroll(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&newVisible)),
 	)
@@ -25296,7 +25296,7 @@ func (x gen_NSView) AdjustScroll(
 func (x gen_NSView) AlignmentRectForFrame(
 	frame core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_alignmentRectForFrame(
+	ret := C.NSView_inst_AlignmentRectForFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frame)),
 	)
@@ -25311,7 +25311,7 @@ func (x gen_NSView) AlignmentRectForFrame(
 func (x gen_NSView) AncestorSharedWithView(
 	view NSViewRef,
 ) NSView {
-	ret := C.NSView_inst_ancestorSharedWithView(
+	ret := C.NSView_inst_AncestorSharedWithView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -25326,7 +25326,7 @@ func (x gen_NSView) AncestorSharedWithView(
 func (x gen_NSView) Autoscroll(
 	event NSEventRef,
 ) bool {
-	ret := C.NSView_inst_autoscroll(
+	ret := C.NSView_inst_Autoscroll(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -25339,7 +25339,7 @@ func (x gen_NSView) Autoscroll(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483423-begindocument?language=objc for details.
 func (x gen_NSView) BeginDocument() {
-	C.NSView_inst_beginDocument(
+	C.NSView_inst_BeginDocument(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25347,14 +25347,14 @@ func (x gen_NSView) BeginDocument() {
 
 }
 
-// BeginPageInRect_atPlacement called at the beginning of each page, this method sets up the coordinate system so that a region inside the view’s bounds is translated to a specified location.
+// BeginPageInRectAtPlacement called at the beginning of each page, this method sets up the coordinate system so that a region inside the view’s bounds is translated to a specified location.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483438-beginpageinrect?language=objc for details.
-func (x gen_NSView) BeginPageInRect_atPlacement(
+func (x gen_NSView) BeginPageInRectAtPlacement(
 	rect core.NSRect,
 	location core.NSPoint,
 ) {
-	C.NSView_inst_beginPageInRect_atPlacement(
+	C.NSView_inst_BeginPageInRectAtPlacement(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
@@ -25370,7 +25370,7 @@ func (x gen_NSView) BeginPageInRect_atPlacement(
 func (x gen_NSView) CenterScanRect(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_centerScanRect(
+	ret := C.NSView_inst_CenterScanRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25379,14 +25379,14 @@ func (x gen_NSView) CenterScanRect(
 
 }
 
-// ConvertPoint_fromView converts a point from the coordinate system of a given view to that of the view.
+// ConvertPointFromView converts a point from the coordinate system of a given view to that of the view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483269-convertpoint?language=objc for details.
-func (x gen_NSView) ConvertPoint_fromView(
+func (x gen_NSView) ConvertPointFromView(
 	point core.NSPoint,
 	view NSViewRef,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPoint_fromView(
+	ret := C.NSView_inst_ConvertPointFromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		objc.RefPointer(view),
@@ -25396,14 +25396,14 @@ func (x gen_NSView) ConvertPoint_fromView(
 
 }
 
-// ConvertPoint_toView converts a point from the view’s coordinate system to that of a given view.
+// ConvertPointToView converts a point from the view’s coordinate system to that of a given view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483406-convertpoint?language=objc for details.
-func (x gen_NSView) ConvertPoint_toView(
+func (x gen_NSView) ConvertPointToView(
 	point core.NSPoint,
 	view NSViewRef,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPoint_toView(
+	ret := C.NSView_inst_ConvertPointToView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		objc.RefPointer(view),
@@ -25419,7 +25419,7 @@ func (x gen_NSView) ConvertPoint_toView(
 func (x gen_NSView) ConvertPointFromBacking(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPointFromBacking(
+	ret := C.NSView_inst_ConvertPointFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -25434,7 +25434,7 @@ func (x gen_NSView) ConvertPointFromBacking(
 func (x gen_NSView) ConvertPointFromLayer(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPointFromLayer(
+	ret := C.NSView_inst_ConvertPointFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -25449,7 +25449,7 @@ func (x gen_NSView) ConvertPointFromLayer(
 func (x gen_NSView) ConvertPointToBacking(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPointToBacking(
+	ret := C.NSView_inst_ConvertPointToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -25464,7 +25464,7 @@ func (x gen_NSView) ConvertPointToBacking(
 func (x gen_NSView) ConvertPointToLayer(
 	point core.NSPoint,
 ) core.NSPoint {
-	ret := C.NSView_inst_convertPointToLayer(
+	ret := C.NSView_inst_ConvertPointToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -25473,14 +25473,14 @@ func (x gen_NSView) ConvertPointToLayer(
 
 }
 
-// ConvertRect_fromView converts a rectangle from the coordinate system of another view to that of the view.
+// ConvertRectFromView converts a rectangle from the coordinate system of another view to that of the view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483785-convertrect?language=objc for details.
-func (x gen_NSView) ConvertRect_fromView(
+func (x gen_NSView) ConvertRectFromView(
 	rect core.NSRect,
 	view NSViewRef,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRect_fromView(
+	ret := C.NSView_inst_ConvertRectFromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(view),
@@ -25490,14 +25490,14 @@ func (x gen_NSView) ConvertRect_fromView(
 
 }
 
-// ConvertRect_toView converts a rectangle from the view’s coordinate system to that of another view.
+// ConvertRectToView converts a rectangle from the view’s coordinate system to that of another view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483217-convertrect?language=objc for details.
-func (x gen_NSView) ConvertRect_toView(
+func (x gen_NSView) ConvertRectToView(
 	rect core.NSRect,
 	view NSViewRef,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRect_toView(
+	ret := C.NSView_inst_ConvertRectToView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(view),
@@ -25513,7 +25513,7 @@ func (x gen_NSView) ConvertRect_toView(
 func (x gen_NSView) ConvertRectFromBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRectFromBacking(
+	ret := C.NSView_inst_ConvertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25528,7 +25528,7 @@ func (x gen_NSView) ConvertRectFromBacking(
 func (x gen_NSView) ConvertRectFromLayer(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRectFromLayer(
+	ret := C.NSView_inst_ConvertRectFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25543,7 +25543,7 @@ func (x gen_NSView) ConvertRectFromLayer(
 func (x gen_NSView) ConvertRectToBacking(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRectToBacking(
+	ret := C.NSView_inst_ConvertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25558,7 +25558,7 @@ func (x gen_NSView) ConvertRectToBacking(
 func (x gen_NSView) ConvertRectToLayer(
 	rect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_convertRectToLayer(
+	ret := C.NSView_inst_ConvertRectToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25567,14 +25567,14 @@ func (x gen_NSView) ConvertRectToLayer(
 
 }
 
-// ConvertSize_fromView converts a size from another view’s coordinate system to that of the view.
+// ConvertSizeFromView converts a size from another view’s coordinate system to that of the view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483307-convertsize?language=objc for details.
-func (x gen_NSView) ConvertSize_fromView(
+func (x gen_NSView) ConvertSizeFromView(
 	size core.NSSize,
 	view NSViewRef,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSize_fromView(
+	ret := C.NSView_inst_ConvertSizeFromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 		objc.RefPointer(view),
@@ -25584,14 +25584,14 @@ func (x gen_NSView) ConvertSize_fromView(
 
 }
 
-// ConvertSize_toView converts a size from the view’s coordinate system to that of another view.
+// ConvertSizeToView converts a size from the view’s coordinate system to that of another view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483744-convertsize?language=objc for details.
-func (x gen_NSView) ConvertSize_toView(
+func (x gen_NSView) ConvertSizeToView(
 	size core.NSSize,
 	view NSViewRef,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSize_toView(
+	ret := C.NSView_inst_ConvertSizeToView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 		objc.RefPointer(view),
@@ -25607,7 +25607,7 @@ func (x gen_NSView) ConvertSize_toView(
 func (x gen_NSView) ConvertSizeFromBacking(
 	size core.NSSize,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSizeFromBacking(
+	ret := C.NSView_inst_ConvertSizeFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -25622,7 +25622,7 @@ func (x gen_NSView) ConvertSizeFromBacking(
 func (x gen_NSView) ConvertSizeFromLayer(
 	size core.NSSize,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSizeFromLayer(
+	ret := C.NSView_inst_ConvertSizeFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -25637,7 +25637,7 @@ func (x gen_NSView) ConvertSizeFromLayer(
 func (x gen_NSView) ConvertSizeToBacking(
 	size core.NSSize,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSizeToBacking(
+	ret := C.NSView_inst_ConvertSizeToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -25652,7 +25652,7 @@ func (x gen_NSView) ConvertSizeToBacking(
 func (x gen_NSView) ConvertSizeToLayer(
 	size core.NSSize,
 ) core.NSSize {
-	ret := C.NSView_inst_convertSizeToLayer(
+	ret := C.NSView_inst_ConvertSizeToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -25667,7 +25667,7 @@ func (x gen_NSView) ConvertSizeToLayer(
 func (x gen_NSView) DataWithEPSInsideRect(
 	rect core.NSRect,
 ) core.NSData {
-	ret := C.NSView_inst_dataWithEPSInsideRect(
+	ret := C.NSView_inst_DataWithEPSInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25682,7 +25682,7 @@ func (x gen_NSView) DataWithEPSInsideRect(
 func (x gen_NSView) DataWithPDFInsideRect(
 	rect core.NSRect,
 ) core.NSData {
-	ret := C.NSView_inst_dataWithPDFInsideRect(
+	ret := C.NSView_inst_DataWithPDFInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25697,7 +25697,7 @@ func (x gen_NSView) DataWithPDFInsideRect(
 func (x gen_NSView) DidAddSubview(
 	subview NSViewRef,
 ) {
-	C.NSView_inst_didAddSubview(
+	C.NSView_inst_DidAddSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(subview),
 	)
@@ -25706,14 +25706,14 @@ func (x gen_NSView) DidAddSubview(
 
 }
 
-// DidCloseMenu_withEvent called after a contextual menu that was displayed from the receiving view has been closed.
+// DidCloseMenuWithEvent called after a contextual menu that was displayed from the receiving view has been closed.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483770-didclosemenu?language=objc for details.
-func (x gen_NSView) DidCloseMenu_withEvent(
+func (x gen_NSView) DidCloseMenuWithEvent(
 	menu NSMenuRef,
 	event NSEventRef,
 ) {
-	C.NSView_inst_didCloseMenu_withEvent(
+	C.NSView_inst_DidCloseMenuWithEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
@@ -25727,7 +25727,7 @@ func (x gen_NSView) DidCloseMenu_withEvent(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483733-discardcursorrects?language=objc for details.
 func (x gen_NSView) DiscardCursorRects() {
-	C.NSView_inst_discardCursorRects(
+	C.NSView_inst_DiscardCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25739,7 +25739,7 @@ func (x gen_NSView) DiscardCursorRects() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483487-display?language=objc for details.
 func (x gen_NSView) Display() {
-	C.NSView_inst_display(
+	C.NSView_inst_Display(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25751,7 +25751,7 @@ func (x gen_NSView) Display() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483566-displayifneeded?language=objc for details.
 func (x gen_NSView) DisplayIfNeeded() {
-	C.NSView_inst_displayIfNeeded(
+	C.NSView_inst_DisplayIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25763,7 +25763,7 @@ func (x gen_NSView) DisplayIfNeeded() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483526-displayifneededignoringopacity?language=objc for details.
 func (x gen_NSView) DisplayIfNeededIgnoringOpacity() {
-	C.NSView_inst_displayIfNeededIgnoringOpacity(
+	C.NSView_inst_DisplayIfNeededIgnoringOpacity(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25777,7 +25777,7 @@ func (x gen_NSView) DisplayIfNeededIgnoringOpacity() {
 func (x gen_NSView) DisplayIfNeededInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayIfNeededInRect(
+	C.NSView_inst_DisplayIfNeededInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25792,7 +25792,7 @@ func (x gen_NSView) DisplayIfNeededInRect(
 func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayIfNeededInRectIgnoringOpacity(
+	C.NSView_inst_DisplayIfNeededInRectIgnoringOpacity(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25807,7 +25807,7 @@ func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity(
 func (x gen_NSView) DisplayRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayRect(
+	C.NSView_inst_DisplayRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25822,7 +25822,7 @@ func (x gen_NSView) DisplayRect(
 func (x gen_NSView) DisplayRectIgnoringOpacity(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayRectIgnoringOpacity(
+	C.NSView_inst_DisplayRectIgnoringOpacity(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -25835,7 +25835,7 @@ func (x gen_NSView) DisplayRectIgnoringOpacity(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483335-drawfocusringmask?language=objc for details.
 func (x gen_NSView) DrawFocusRingMask() {
-	C.NSView_inst_drawFocusRingMask(
+	C.NSView_inst_DrawFocusRingMask(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25849,7 +25849,7 @@ func (x gen_NSView) DrawFocusRingMask() {
 func (x gen_NSView) DrawPageBorderWithSize(
 	borderSize core.NSSize,
 ) {
-	C.NSView_inst_drawPageBorderWithSize(
+	C.NSView_inst_DrawPageBorderWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&borderSize)),
 	)
@@ -25864,7 +25864,7 @@ func (x gen_NSView) DrawPageBorderWithSize(
 func (x gen_NSView) DrawRect(
 	dirtyRect core.NSRect,
 ) {
-	C.NSView_inst_drawRect(
+	C.NSView_inst_DrawRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&dirtyRect)),
 	)
@@ -25877,7 +25877,7 @@ func (x gen_NSView) DrawRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483610-enddocument?language=objc for details.
 func (x gen_NSView) EndDocument() {
-	C.NSView_inst_endDocument(
+	C.NSView_inst_EndDocument(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25889,7 +25889,7 @@ func (x gen_NSView) EndDocument() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483549-endpage?language=objc for details.
 func (x gen_NSView) EndPage() {
-	C.NSView_inst_endPage(
+	C.NSView_inst_EndPage(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25897,14 +25897,14 @@ func (x gen_NSView) EndPage() {
 
 }
 
-// EnterFullScreenMode_withOptions sets the view to full screen mode.
+// EnterFullScreenModeWithOptions sets the view to full screen mode.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483780-enterfullscreenmode?language=objc for details.
-func (x gen_NSView) EnterFullScreenMode_withOptions(
+func (x gen_NSView) EnterFullScreenModeWithOptions(
 	screen NSScreenRef,
 	options core.NSDictionaryRef,
 ) bool {
-	ret := C.NSView_inst_enterFullScreenMode_withOptions(
+	ret := C.NSView_inst_EnterFullScreenModeWithOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 		objc.RefPointer(options),
@@ -25918,7 +25918,7 @@ func (x gen_NSView) EnterFullScreenMode_withOptions(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526934-exerciseambiguityinlayout?language=objc for details.
 func (x gen_NSView) ExerciseAmbiguityInLayout() {
-	C.NSView_inst_exerciseAmbiguityInLayout(
+	C.NSView_inst_ExerciseAmbiguityInLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -25932,7 +25932,7 @@ func (x gen_NSView) ExerciseAmbiguityInLayout() {
 func (x gen_NSView) ExitFullScreenModeWithOptions(
 	options core.NSDictionaryRef,
 ) {
-	C.NSView_inst_exitFullScreenModeWithOptions(
+	C.NSView_inst_ExitFullScreenModeWithOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(options),
 	)
@@ -25947,7 +25947,7 @@ func (x gen_NSView) ExitFullScreenModeWithOptions(
 func (x gen_NSView) FrameForAlignmentRect(
 	alignmentRect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_frameForAlignmentRect(
+	ret := C.NSView_inst_FrameForAlignmentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&alignmentRect)),
 	)
@@ -25962,7 +25962,7 @@ func (x gen_NSView) FrameForAlignmentRect(
 func (x gen_NSView) HitTest(
 	point core.NSPoint,
 ) NSView {
-	ret := C.NSView_inst_hitTest(
+	ret := C.NSView_inst_HitTest(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -25977,7 +25977,7 @@ func (x gen_NSView) HitTest(
 func (x gen_NSView) InitWithFrame_asNSView(
 	frameRect core.NSRect,
 ) NSView {
-	ret := C.NSView_inst_initWithFrame(
+	ret := C.NSView_inst_InitWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -25990,7 +25990,7 @@ func (x gen_NSView) InitWithFrame_asNSView(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526864-invalidateintrinsiccontentsize?language=objc for details.
 func (x gen_NSView) InvalidateIntrinsicContentSize() {
-	C.NSView_inst_invalidateIntrinsicContentSize(
+	C.NSView_inst_InvalidateIntrinsicContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26004,7 +26004,7 @@ func (x gen_NSView) InvalidateIntrinsicContentSize() {
 func (x gen_NSView) IsDescendantOf(
 	view NSViewRef,
 ) bool {
-	ret := C.NSView_inst_isDescendantOf(
+	ret := C.NSView_inst_IsDescendantOf(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -26017,7 +26017,7 @@ func (x gen_NSView) IsDescendantOf(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526146-layout?language=objc for details.
 func (x gen_NSView) Layout() {
-	C.NSView_inst_layout(
+	C.NSView_inst_Layout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26029,7 +26029,7 @@ func (x gen_NSView) Layout() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526871-layoutsubtreeifneeded?language=objc for details.
 func (x gen_NSView) LayoutSubtreeIfNeeded() {
-	C.NSView_inst_layoutSubtreeIfNeeded(
+	C.NSView_inst_LayoutSubtreeIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26043,7 +26043,7 @@ func (x gen_NSView) LayoutSubtreeIfNeeded() {
 func (x gen_NSView) LocationOfPrintRect(
 	rect core.NSRect,
 ) core.NSPoint {
-	ret := C.NSView_inst_locationOfPrintRect(
+	ret := C.NSView_inst_LocationOfPrintRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -26056,7 +26056,7 @@ func (x gen_NSView) LocationOfPrintRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483687-makebackinglayer?language=objc for details.
 func (x gen_NSView) MakeBackingLayer() core.CALayer {
-	ret := C.NSView_inst_makeBackingLayer(
+	ret := C.NSView_inst_MakeBackingLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26070,7 +26070,7 @@ func (x gen_NSView) MakeBackingLayer() core.CALayer {
 func (x gen_NSView) MenuForEvent(
 	event NSEventRef,
 ) NSMenu {
-	ret := C.NSView_inst_menuForEvent(
+	ret := C.NSView_inst_MenuForEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -26079,14 +26079,14 @@ func (x gen_NSView) MenuForEvent(
 
 }
 
-// Mouse_inRect returns whether a region of the view contains a specified point, accounting for whether the view is flipped or not.
+// MouseInRect returns whether a region of the view contains a specified point, accounting for whether the view is flipped or not.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483237-mouse?language=objc for details.
-func (x gen_NSView) Mouse_inRect(
+func (x gen_NSView) MouseInRect(
 	point core.NSPoint,
 	rect core.NSRect,
 ) bool {
-	ret := C.NSView_inst_mouse_inRect(
+	ret := C.NSView_inst_MouseInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
@@ -26102,7 +26102,7 @@ func (x gen_NSView) Mouse_inRect(
 func (x gen_NSView) NeedsToDrawRect(
 	rect core.NSRect,
 ) bool {
-	ret := C.NSView_inst_needsToDrawRect(
+	ret := C.NSView_inst_NeedsToDrawRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -26115,7 +26115,7 @@ func (x gen_NSView) NeedsToDrawRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483809-notefocusringmaskchanged?language=objc for details.
 func (x gen_NSView) NoteFocusRingMaskChanged() {
-	C.NSView_inst_noteFocusRingMaskChanged(
+	C.NSView_inst_NoteFocusRingMaskChanged(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26129,7 +26129,7 @@ func (x gen_NSView) NoteFocusRingMaskChanged() {
 func (x gen_NSView) PerformKeyEquivalent(
 	event NSEventRef,
 ) bool {
-	ret := C.NSView_inst_performKeyEquivalent(
+	ret := C.NSView_inst_PerformKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -26144,7 +26144,7 @@ func (x gen_NSView) PerformKeyEquivalent(
 func (x gen_NSView) PrepareContentInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_prepareContentInRect(
+	C.NSView_inst_PrepareContentInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -26157,7 +26157,7 @@ func (x gen_NSView) PrepareContentInRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483626-prepareforreuse?language=objc for details.
 func (x gen_NSView) PrepareForReuse() {
-	C.NSView_inst_prepareForReuse(
+	C.NSView_inst_PrepareForReuse(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26171,7 +26171,7 @@ func (x gen_NSView) PrepareForReuse() {
 func (x gen_NSView) Print(
 	sender objc.Ref,
 ) {
-	C.NSView_inst_print(
+	C.NSView_inst_Print(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -26186,7 +26186,7 @@ func (x gen_NSView) Print(
 func (x gen_NSView) RectForPage(
 	page core.NSInteger,
 ) core.NSRect {
-	ret := C.NSView_inst_rectForPage(
+	ret := C.NSView_inst_RectForPage(
 		unsafe.Pointer(x.Pointer()),
 		C.long(page),
 	)
@@ -26195,14 +26195,14 @@ func (x gen_NSView) RectForPage(
 
 }
 
-// RectForSmartMagnificationAtPoint_inRect returns the appropriate rectangle to use when magnifying around the specified point.
+// RectForSmartMagnificationAtPointInRect returns the appropriate rectangle to use when magnifying around the specified point.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483305-rectforsmartmagnificationatpoint?language=objc for details.
-func (x gen_NSView) RectForSmartMagnificationAtPoint_inRect(
+func (x gen_NSView) RectForSmartMagnificationAtPointInRect(
 	location core.NSPoint,
 	visibleRect core.NSRect,
 ) core.NSRect {
-	ret := C.NSView_inst_rectForSmartMagnificationAtPoint_inRect(
+	ret := C.NSView_inst_RectForSmartMagnificationAtPointInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
 		*(*C.NSRect)(unsafe.Pointer(&visibleRect)),
@@ -26218,7 +26218,7 @@ func (x gen_NSView) RectForSmartMagnificationAtPoint_inRect(
 func (x gen_NSView) RegisterForDraggedTypes(
 	newTypes core.NSArrayRef,
 ) {
-	C.NSView_inst_registerForDraggedTypes(
+	C.NSView_inst_RegisterForDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 	)
@@ -26231,7 +26231,7 @@ func (x gen_NSView) RegisterForDraggedTypes(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483801-removealltooltips?language=objc for details.
 func (x gen_NSView) RemoveAllToolTips() {
-	C.NSView_inst_removeAllToolTips(
+	C.NSView_inst_RemoveAllToolTips(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26245,7 +26245,7 @@ func (x gen_NSView) RemoveAllToolTips() {
 func (x gen_NSView) RemoveConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSView_inst_removeConstraints(
+	C.NSView_inst_RemoveConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
@@ -26258,7 +26258,7 @@ func (x gen_NSView) RemoveConstraints(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483265-removefromsuperview?language=objc for details.
 func (x gen_NSView) RemoveFromSuperview() {
-	C.NSView_inst_removeFromSuperview(
+	C.NSView_inst_RemoveFromSuperview(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26270,7 +26270,7 @@ func (x gen_NSView) RemoveFromSuperview() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483644-removefromsuperviewwithoutneedin?language=objc for details.
 func (x gen_NSView) RemoveFromSuperviewWithoutNeedingDisplay() {
-	C.NSView_inst_removeFromSuperviewWithoutNeedingDisplay(
+	C.NSView_inst_RemoveFromSuperviewWithoutNeedingDisplay(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26278,14 +26278,14 @@ func (x gen_NSView) RemoveFromSuperviewWithoutNeedingDisplay() {
 
 }
 
-// ReplaceSubview_with replaces one of the view’s subviews with another view.
+// ReplaceSubviewWith replaces one of the view’s subviews with another view.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483632-replacesubview?language=objc for details.
-func (x gen_NSView) ReplaceSubview_with(
+func (x gen_NSView) ReplaceSubviewWith(
 	oldView NSViewRef,
 	newView NSViewRef,
 ) {
-	C.NSView_inst_replaceSubview_with(
+	C.NSView_inst_ReplaceSubviewWith(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(oldView),
 		objc.RefPointer(newView),
@@ -26299,7 +26299,7 @@ func (x gen_NSView) ReplaceSubview_with(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483448-resetcursorrects?language=objc for details.
 func (x gen_NSView) ResetCursorRects() {
-	C.NSView_inst_resetCursorRects(
+	C.NSView_inst_ResetCursorRects(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26313,7 +26313,7 @@ func (x gen_NSView) ResetCursorRects() {
 func (x gen_NSView) ResizeSubviewsWithOldSize(
 	oldSize core.NSSize,
 ) {
-	C.NSView_inst_resizeSubviewsWithOldSize(
+	C.NSView_inst_ResizeSubviewsWithOldSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
 	)
@@ -26328,7 +26328,7 @@ func (x gen_NSView) ResizeSubviewsWithOldSize(
 func (x gen_NSView) ResizeWithOldSuperviewSize(
 	oldSize core.NSSize,
 ) {
-	C.NSView_inst_resizeWithOldSuperviewSize(
+	C.NSView_inst_ResizeWithOldSuperviewSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
 	)
@@ -26343,7 +26343,7 @@ func (x gen_NSView) ResizeWithOldSuperviewSize(
 func (x gen_NSView) RotateByAngle(
 	angle core.CGFloat,
 ) {
-	C.NSView_inst_rotateByAngle(
+	C.NSView_inst_RotateByAngle(
 		unsafe.Pointer(x.Pointer()),
 		C.double(angle),
 	)
@@ -26358,7 +26358,7 @@ func (x gen_NSView) RotateByAngle(
 func (x gen_NSView) ScaleUnitSquareToSize(
 	newUnitSize core.NSSize,
 ) {
-	C.NSView_inst_scaleUnitSquareToSize(
+	C.NSView_inst_ScaleUnitSquareToSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newUnitSize)),
 	)
@@ -26373,7 +26373,7 @@ func (x gen_NSView) ScaleUnitSquareToSize(
 func (x gen_NSView) ScrollPoint(
 	point core.NSPoint,
 ) {
-	C.NSView_inst_scrollPoint(
+	C.NSView_inst_ScrollPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -26388,7 +26388,7 @@ func (x gen_NSView) ScrollPoint(
 func (x gen_NSView) ScrollRectToVisible(
 	rect core.NSRect,
 ) bool {
-	ret := C.NSView_inst_scrollRectToVisible(
+	ret := C.NSView_inst_ScrollRectToVisible(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -26403,7 +26403,7 @@ func (x gen_NSView) ScrollRectToVisible(
 func (x gen_NSView) SetBoundsOrigin(
 	newOrigin core.NSPoint,
 ) {
-	C.NSView_inst_setBoundsOrigin(
+	C.NSView_inst_SetBoundsOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&newOrigin)),
 	)
@@ -26418,7 +26418,7 @@ func (x gen_NSView) SetBoundsOrigin(
 func (x gen_NSView) SetBoundsSize(
 	newSize core.NSSize,
 ) {
-	C.NSView_inst_setBoundsSize(
+	C.NSView_inst_SetBoundsSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
@@ -26433,7 +26433,7 @@ func (x gen_NSView) SetBoundsSize(
 func (x gen_NSView) SetFrameOrigin(
 	newOrigin core.NSPoint,
 ) {
-	C.NSView_inst_setFrameOrigin(
+	C.NSView_inst_SetFrameOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&newOrigin)),
 	)
@@ -26448,7 +26448,7 @@ func (x gen_NSView) SetFrameOrigin(
 func (x gen_NSView) SetFrameSize(
 	newSize core.NSSize,
 ) {
-	C.NSView_inst_setFrameSize(
+	C.NSView_inst_SetFrameSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
@@ -26463,7 +26463,7 @@ func (x gen_NSView) SetFrameSize(
 func (x gen_NSView) SetKeyboardFocusRingNeedsDisplayInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_setKeyboardFocusRingNeedsDisplayInRect(
+	C.NSView_inst_SetKeyboardFocusRingNeedsDisplayInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -26478,7 +26478,7 @@ func (x gen_NSView) SetKeyboardFocusRingNeedsDisplayInRect(
 func (x gen_NSView) SetNeedsDisplayInRect(
 	invalidRect core.NSRect,
 ) {
-	C.NSView_inst_setNeedsDisplayInRect(
+	C.NSView_inst_SetNeedsDisplayInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&invalidRect)),
 	)
@@ -26493,7 +26493,7 @@ func (x gen_NSView) SetNeedsDisplayInRect(
 func (x gen_NSView) ShouldDelayWindowOrderingForEvent(
 	event NSEventRef,
 ) bool {
-	ret := C.NSView_inst_shouldDelayWindowOrderingForEvent(
+	ret := C.NSView_inst_ShouldDelayWindowOrderingForEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -26502,14 +26502,14 @@ func (x gen_NSView) ShouldDelayWindowOrderingForEvent(
 
 }
 
-// ShowDefinitionForAttributedString_atPoint shows a window displaying the definition of the attributed string at the specified point.
+// ShowDefinitionForAttributedStringAtPoint shows a window displaying the definition of the attributed string at the specified point.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483747-showdefinitionforattributedstrin?language=objc for details.
-func (x gen_NSView) ShowDefinitionForAttributedString_atPoint(
+func (x gen_NSView) ShowDefinitionForAttributedStringAtPoint(
 	attrString core.NSAttributedStringRef,
 	textBaselineOrigin core.NSPoint,
 ) {
-	C.NSView_inst_showDefinitionForAttributedString_atPoint(
+	C.NSView_inst_ShowDefinitionForAttributedStringAtPoint(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(attrString),
 		*(*C.NSPoint)(unsafe.Pointer(&textBaselineOrigin)),
@@ -26525,7 +26525,7 @@ func (x gen_NSView) ShowDefinitionForAttributedString_atPoint(
 func (x gen_NSView) TranslateOriginToPoint(
 	translation core.NSPoint,
 ) {
-	C.NSView_inst_translateOriginToPoint(
+	C.NSView_inst_TranslateOriginToPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&translation)),
 	)
@@ -26534,14 +26534,14 @@ func (x gen_NSView) TranslateOriginToPoint(
 
 }
 
-// TranslateRectsNeedingDisplayInRect_by translates the display rectangles by the specified delta.
+// TranslateRectsNeedingDisplayInRectBy translates the display rectangles by the specified delta.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483731-translaterectsneedingdisplayinre?language=objc for details.
-func (x gen_NSView) TranslateRectsNeedingDisplayInRect_by(
+func (x gen_NSView) TranslateRectsNeedingDisplayInRectBy(
 	clipRect core.NSRect,
 	delta core.NSSize,
 ) {
-	C.NSView_inst_translateRectsNeedingDisplayInRect_by(
+	C.NSView_inst_TranslateRectsNeedingDisplayInRectBy(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&clipRect)),
 		*(*C.NSSize)(unsafe.Pointer(&delta)),
@@ -26555,7 +26555,7 @@ func (x gen_NSView) TranslateRectsNeedingDisplayInRect_by(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483602-unregisterdraggedtypes?language=objc for details.
 func (x gen_NSView) UnregisterDraggedTypes() {
-	C.NSView_inst_unregisterDraggedTypes(
+	C.NSView_inst_UnregisterDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26567,7 +26567,7 @@ func (x gen_NSView) UnregisterDraggedTypes() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526891-updateconstraints?language=objc for details.
 func (x gen_NSView) UpdateConstraints() {
-	C.NSView_inst_updateConstraints(
+	C.NSView_inst_UpdateConstraints(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26579,7 +26579,7 @@ func (x gen_NSView) UpdateConstraints() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526939-updateconstraintsforsubtreeifnee?language=objc for details.
 func (x gen_NSView) UpdateConstraintsForSubtreeIfNeeded() {
-	C.NSView_inst_updateConstraintsForSubtreeIfNeeded(
+	C.NSView_inst_UpdateConstraintsForSubtreeIfNeeded(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26591,7 +26591,7 @@ func (x gen_NSView) UpdateConstraintsForSubtreeIfNeeded() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483580-updatelayer?language=objc for details.
 func (x gen_NSView) UpdateLayer() {
-	C.NSView_inst_updateLayer(
+	C.NSView_inst_UpdateLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26603,7 +26603,7 @@ func (x gen_NSView) UpdateLayer() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483719-updatetrackingareas?language=objc for details.
 func (x gen_NSView) UpdateTrackingAreas() {
-	C.NSView_inst_updateTrackingAreas(
+	C.NSView_inst_UpdateTrackingAreas(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26615,7 +26615,7 @@ func (x gen_NSView) UpdateTrackingAreas() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483742-viewdidchangebackingproperties?language=objc for details.
 func (x gen_NSView) ViewDidChangeBackingProperties() {
-	C.NSView_inst_viewDidChangeBackingProperties(
+	C.NSView_inst_ViewDidChangeBackingProperties(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26627,7 +26627,7 @@ func (x gen_NSView) ViewDidChangeBackingProperties() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/2977088-viewdidchangeeffectiveappearance?language=objc for details.
 func (x gen_NSView) ViewDidChangeEffectiveAppearance() {
-	C.NSView_inst_viewDidChangeEffectiveAppearance(
+	C.NSView_inst_ViewDidChangeEffectiveAppearance(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26639,7 +26639,7 @@ func (x gen_NSView) ViewDidChangeEffectiveAppearance() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483543-viewdidendliveresize?language=objc for details.
 func (x gen_NSView) ViewDidEndLiveResize() {
-	C.NSView_inst_viewDidEndLiveResize(
+	C.NSView_inst_ViewDidEndLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26651,7 +26651,7 @@ func (x gen_NSView) ViewDidEndLiveResize() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483596-viewdidhide?language=objc for details.
 func (x gen_NSView) ViewDidHide() {
-	C.NSView_inst_viewDidHide(
+	C.NSView_inst_ViewDidHide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26663,7 +26663,7 @@ func (x gen_NSView) ViewDidHide() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483568-viewdidmovetosuperview?language=objc for details.
 func (x gen_NSView) ViewDidMoveToSuperview() {
-	C.NSView_inst_viewDidMoveToSuperview(
+	C.NSView_inst_ViewDidMoveToSuperview(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26675,7 +26675,7 @@ func (x gen_NSView) ViewDidMoveToSuperview() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483329-viewdidmovetowindow?language=objc for details.
 func (x gen_NSView) ViewDidMoveToWindow() {
-	C.NSView_inst_viewDidMoveToWindow(
+	C.NSView_inst_ViewDidMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26687,7 +26687,7 @@ func (x gen_NSView) ViewDidMoveToWindow() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483275-viewdidunhide?language=objc for details.
 func (x gen_NSView) ViewDidUnhide() {
-	C.NSView_inst_viewDidUnhide(
+	C.NSView_inst_ViewDidUnhide(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26699,7 +26699,7 @@ func (x gen_NSView) ViewDidUnhide() {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483351-viewwilldraw?language=objc for details.
 func (x gen_NSView) ViewWillDraw() {
-	C.NSView_inst_viewWillDraw(
+	C.NSView_inst_ViewWillDraw(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26713,7 +26713,7 @@ func (x gen_NSView) ViewWillDraw() {
 func (x gen_NSView) ViewWillMoveToSuperview(
 	newSuperview NSViewRef,
 ) {
-	C.NSView_inst_viewWillMoveToSuperview(
+	C.NSView_inst_ViewWillMoveToSuperview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newSuperview),
 	)
@@ -26728,7 +26728,7 @@ func (x gen_NSView) ViewWillMoveToSuperview(
 func (x gen_NSView) ViewWillMoveToWindow(
 	newWindow NSWindowRef,
 ) {
-	C.NSView_inst_viewWillMoveToWindow(
+	C.NSView_inst_ViewWillMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newWindow),
 	)
@@ -26741,7 +26741,7 @@ func (x gen_NSView) ViewWillMoveToWindow(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483620-viewwillstartliveresize?language=objc for details.
 func (x gen_NSView) ViewWillStartLiveResize() {
-	C.NSView_inst_viewWillStartLiveResize(
+	C.NSView_inst_ViewWillStartLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26755,7 +26755,7 @@ func (x gen_NSView) ViewWillStartLiveResize() {
 func (x gen_NSView) ViewWithTag(
 	tag core.NSInteger,
 ) NSView {
-	ret := C.NSView_inst_viewWithTag(
+	ret := C.NSView_inst_ViewWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -26764,14 +26764,14 @@ func (x gen_NSView) ViewWithTag(
 
 }
 
-// WillOpenMenu_withEvent called just before a contextual menu for a view is opened on screen.
+// WillOpenMenuWithEvent called just before a contextual menu for a view is opened on screen.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483429-willopenmenu?language=objc for details.
-func (x gen_NSView) WillOpenMenu_withEvent(
+func (x gen_NSView) WillOpenMenuWithEvent(
 	menu NSMenuRef,
 	event NSEventRef,
 ) {
-	C.NSView_inst_willOpenMenu_withEvent(
+	C.NSView_inst_WillOpenMenuWithEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
@@ -26787,7 +26787,7 @@ func (x gen_NSView) WillOpenMenu_withEvent(
 func (x gen_NSView) WillRemoveSubview(
 	subview NSViewRef,
 ) {
-	C.NSView_inst_willRemoveSubview(
+	C.NSView_inst_WillRemoveSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(subview),
 	)
@@ -26796,14 +26796,14 @@ func (x gen_NSView) WillRemoveSubview(
 
 }
 
-// WriteEPSInsideRect_toPasteboard writes eps data that draws the region of the view within a specified rectangle onto a pasteboard.
+// WriteEPSInsideRectToPasteboard writes eps data that draws the region of the view within a specified rectangle onto a pasteboard.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483235-writeepsinsiderect?language=objc for details.
-func (x gen_NSView) WriteEPSInsideRect_toPasteboard(
+func (x gen_NSView) WriteEPSInsideRectToPasteboard(
 	rect core.NSRect,
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSView_inst_writeEPSInsideRect_toPasteboard(
+	C.NSView_inst_WriteEPSInsideRectToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(pasteboard),
@@ -26813,14 +26813,14 @@ func (x gen_NSView) WriteEPSInsideRect_toPasteboard(
 
 }
 
-// WritePDFInsideRect_toPasteboard writes pdf data that draws the region of the view within a specified rectangle onto a pasteboard.
+// WritePDFInsideRectToPasteboard writes pdf data that draws the region of the view within a specified rectangle onto a pasteboard.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483499-writepdfinsiderect?language=objc for details.
-func (x gen_NSView) WritePDFInsideRect_toPasteboard(
+func (x gen_NSView) WritePDFInsideRectToPasteboard(
 	rect core.NSRect,
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSView_inst_writePDFInsideRect_toPasteboard(
+	C.NSView_inst_WritePDFInsideRectToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(pasteboard),
@@ -26834,7 +26834,7 @@ func (x gen_NSView) WritePDFInsideRect_toPasteboard(
 //
 // See  for details.
 func (x gen_NSView) Init_asNSView() NSView {
-	ret := C.NSView_inst_init(
+	ret := C.NSView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26846,7 +26846,7 @@ func (x gen_NSView) Init_asNSView() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483737-superview?language=objc for details.
 func (x gen_NSView) Superview() NSView {
-	ret := C.NSView_inst_superview(
+	ret := C.NSView_inst_Superview(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26858,7 +26858,7 @@ func (x gen_NSView) Superview() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483539-subviews?language=objc for details.
 func (x gen_NSView) Subviews() core.NSArray {
-	ret := C.NSView_inst_subviews(
+	ret := C.NSView_inst_Subviews(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26872,7 +26872,7 @@ func (x gen_NSView) Subviews() core.NSArray {
 func (x gen_NSView) SetSubviews(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setSubviews(
+	C.NSView_inst_SetSubviews(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -26885,7 +26885,7 @@ func (x gen_NSView) SetSubviews(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483301-window?language=objc for details.
 func (x gen_NSView) Window() NSWindow {
-	ret := C.NSView_inst_window(
+	ret := C.NSView_inst_Window(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26897,7 +26897,7 @@ func (x gen_NSView) Window() NSWindow {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483383-opaqueancestor?language=objc for details.
 func (x gen_NSView) OpaqueAncestor() NSView {
-	ret := C.NSView_inst_opaqueAncestor(
+	ret := C.NSView_inst_OpaqueAncestor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26909,7 +26909,7 @@ func (x gen_NSView) OpaqueAncestor() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1514865-enclosingmenuitem?language=objc for details.
 func (x gen_NSView) EnclosingMenuItem() NSMenuItem {
-	ret := C.NSView_inst_enclosingMenuItem(
+	ret := C.NSView_inst_EnclosingMenuItem(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26921,7 +26921,7 @@ func (x gen_NSView) EnclosingMenuItem() NSMenuItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483713-frame?language=objc for details.
 func (x gen_NSView) Frame() core.NSRect {
-	ret := C.NSView_inst_frame(
+	ret := C.NSView_inst_Frame(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26935,7 +26935,7 @@ func (x gen_NSView) Frame() core.NSRect {
 func (x gen_NSView) SetFrame(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setFrame(
+	C.NSView_inst_SetFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -26948,7 +26948,7 @@ func (x gen_NSView) SetFrame(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483412-framerotation?language=objc for details.
 func (x gen_NSView) FrameRotation() core.CGFloat {
-	ret := C.NSView_inst_frameRotation(
+	ret := C.NSView_inst_FrameRotation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26962,7 +26962,7 @@ func (x gen_NSView) FrameRotation() core.CGFloat {
 func (x gen_NSView) SetFrameRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setFrameRotation(
+	C.NSView_inst_SetFrameRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -26975,7 +26975,7 @@ func (x gen_NSView) SetFrameRotation(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483817-bounds?language=objc for details.
 func (x gen_NSView) Bounds() core.NSRect {
-	ret := C.NSView_inst_bounds(
+	ret := C.NSView_inst_Bounds(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -26989,7 +26989,7 @@ func (x gen_NSView) Bounds() core.NSRect {
 func (x gen_NSView) SetBounds(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setBounds(
+	C.NSView_inst_SetBounds(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -27002,7 +27002,7 @@ func (x gen_NSView) SetBounds(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483746-boundsrotation?language=objc for details.
 func (x gen_NSView) BoundsRotation() core.CGFloat {
-	ret := C.NSView_inst_boundsRotation(
+	ret := C.NSView_inst_BoundsRotation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27016,7 +27016,7 @@ func (x gen_NSView) BoundsRotation() core.CGFloat {
 func (x gen_NSView) SetBoundsRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setBoundsRotation(
+	C.NSView_inst_SetBoundsRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -27029,7 +27029,7 @@ func (x gen_NSView) SetBoundsRotation(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483695-wantslayer?language=objc for details.
 func (x gen_NSView) WantsLayer() bool {
-	ret := C.NSView_inst_wantsLayer(
+	ret := C.NSView_inst_WantsLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27043,7 +27043,7 @@ func (x gen_NSView) WantsLayer() bool {
 func (x gen_NSView) SetWantsLayer(
 	value bool,
 ) {
-	C.NSView_inst_setWantsLayer(
+	C.NSView_inst_SetWantsLayer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27056,7 +27056,7 @@ func (x gen_NSView) SetWantsLayer(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483461-wantsupdatelayer?language=objc for details.
 func (x gen_NSView) WantsUpdateLayer() bool {
-	ret := C.NSView_inst_wantsUpdateLayer(
+	ret := C.NSView_inst_WantsUpdateLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27068,7 +27068,7 @@ func (x gen_NSView) WantsUpdateLayer() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483298-layer?language=objc for details.
 func (x gen_NSView) Layer() core.CALayer {
-	ret := C.NSView_inst_layer(
+	ret := C.NSView_inst_Layer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27082,7 +27082,7 @@ func (x gen_NSView) Layer() core.CALayer {
 func (x gen_NSView) SetLayer(
 	value core.CALayerRef,
 ) {
-	C.NSView_inst_setLayer(
+	C.NSView_inst_SetLayer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -27095,7 +27095,7 @@ func (x gen_NSView) SetLayer(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483347-candrawsubviewsintolayer?language=objc for details.
 func (x gen_NSView) CanDrawSubviewsIntoLayer() bool {
-	ret := C.NSView_inst_canDrawSubviewsIntoLayer(
+	ret := C.NSView_inst_CanDrawSubviewsIntoLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27109,7 +27109,7 @@ func (x gen_NSView) CanDrawSubviewsIntoLayer() bool {
 func (x gen_NSView) SetCanDrawSubviewsIntoLayer(
 	value bool,
 ) {
-	C.NSView_inst_setCanDrawSubviewsIntoLayer(
+	C.NSView_inst_SetCanDrawSubviewsIntoLayer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27122,7 +27122,7 @@ func (x gen_NSView) SetCanDrawSubviewsIntoLayer(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483576-layerusescoreimagefilters?language=objc for details.
 func (x gen_NSView) LayerUsesCoreImageFilters() bool {
-	ret := C.NSView_inst_layerUsesCoreImageFilters(
+	ret := C.NSView_inst_LayerUsesCoreImageFilters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27136,7 +27136,7 @@ func (x gen_NSView) LayerUsesCoreImageFilters() bool {
 func (x gen_NSView) SetLayerUsesCoreImageFilters(
 	value bool,
 ) {
-	C.NSView_inst_setLayerUsesCoreImageFilters(
+	C.NSView_inst_SetLayerUsesCoreImageFilters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27149,7 +27149,7 @@ func (x gen_NSView) SetLayerUsesCoreImageFilters(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483560-alphavalue?language=objc for details.
 func (x gen_NSView) AlphaValue() core.CGFloat {
-	ret := C.NSView_inst_alphaValue(
+	ret := C.NSView_inst_AlphaValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27163,7 +27163,7 @@ func (x gen_NSView) AlphaValue() core.CGFloat {
 func (x gen_NSView) SetAlphaValue(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setAlphaValue(
+	C.NSView_inst_SetAlphaValue(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -27176,7 +27176,7 @@ func (x gen_NSView) SetAlphaValue(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483367-framecenterrotation?language=objc for details.
 func (x gen_NSView) FrameCenterRotation() core.CGFloat {
-	ret := C.NSView_inst_frameCenterRotation(
+	ret := C.NSView_inst_FrameCenterRotation(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27190,7 +27190,7 @@ func (x gen_NSView) FrameCenterRotation() core.CGFloat {
 func (x gen_NSView) SetFrameCenterRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setFrameCenterRotation(
+	C.NSView_inst_SetFrameCenterRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -27203,7 +27203,7 @@ func (x gen_NSView) SetFrameCenterRotation(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483689-backgroundfilters?language=objc for details.
 func (x gen_NSView) BackgroundFilters() core.NSArray {
-	ret := C.NSView_inst_backgroundFilters(
+	ret := C.NSView_inst_BackgroundFilters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27217,7 +27217,7 @@ func (x gen_NSView) BackgroundFilters() core.NSArray {
 func (x gen_NSView) SetBackgroundFilters(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setBackgroundFilters(
+	C.NSView_inst_SetBackgroundFilters(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -27230,7 +27230,7 @@ func (x gen_NSView) SetBackgroundFilters(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483703-contentfilters?language=objc for details.
 func (x gen_NSView) ContentFilters() core.NSArray {
-	ret := C.NSView_inst_contentFilters(
+	ret := C.NSView_inst_ContentFilters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27244,7 +27244,7 @@ func (x gen_NSView) ContentFilters() core.NSArray {
 func (x gen_NSView) SetContentFilters(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setContentFilters(
+	C.NSView_inst_SetContentFilters(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -27257,7 +27257,7 @@ func (x gen_NSView) SetContentFilters(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483425-candrawconcurrently?language=objc for details.
 func (x gen_NSView) CanDrawConcurrently() bool {
-	ret := C.NSView_inst_canDrawConcurrently(
+	ret := C.NSView_inst_CanDrawConcurrently(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27271,7 +27271,7 @@ func (x gen_NSView) CanDrawConcurrently() bool {
 func (x gen_NSView) SetCanDrawConcurrently(
 	value bool,
 ) {
-	C.NSView_inst_setCanDrawConcurrently(
+	C.NSView_inst_SetCanDrawConcurrently(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27284,7 +27284,7 @@ func (x gen_NSView) SetCanDrawConcurrently(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483446-visiblerect?language=objc for details.
 func (x gen_NSView) VisibleRect() core.NSRect {
-	ret := C.NSView_inst_visibleRect(
+	ret := C.NSView_inst_VisibleRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27296,7 +27296,7 @@ func (x gen_NSView) VisibleRect() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483365-wantsdefaultclipping?language=objc for details.
 func (x gen_NSView) WantsDefaultClipping() bool {
-	ret := C.NSView_inst_wantsDefaultClipping(
+	ret := C.NSView_inst_WantsDefaultClipping(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27308,7 +27308,7 @@ func (x gen_NSView) WantsDefaultClipping() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483753-printjobtitle?language=objc for details.
 func (x gen_NSView) PrintJobTitle() core.NSString {
-	ret := C.NSView_inst_printJobTitle(
+	ret := C.NSView_inst_PrintJobTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27320,7 +27320,7 @@ func (x gen_NSView) PrintJobTitle() core.NSString {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483674-pageheader?language=objc for details.
 func (x gen_NSView) PageHeader() core.NSAttributedString {
-	ret := C.NSView_inst_pageHeader(
+	ret := C.NSView_inst_PageHeader(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27332,7 +27332,7 @@ func (x gen_NSView) PageHeader() core.NSAttributedString {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483355-pagefooter?language=objc for details.
 func (x gen_NSView) PageFooter() core.NSAttributedString {
-	ret := C.NSView_inst_pageFooter(
+	ret := C.NSView_inst_PageFooter(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27344,7 +27344,7 @@ func (x gen_NSView) PageFooter() core.NSAttributedString {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483691-heightadjustlimit?language=objc for details.
 func (x gen_NSView) HeightAdjustLimit() core.CGFloat {
-	ret := C.NSView_inst_heightAdjustLimit(
+	ret := C.NSView_inst_HeightAdjustLimit(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27356,7 +27356,7 @@ func (x gen_NSView) HeightAdjustLimit() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483392-widthadjustlimit?language=objc for details.
 func (x gen_NSView) WidthAdjustLimit() core.CGFloat {
-	ret := C.NSView_inst_widthAdjustLimit(
+	ret := C.NSView_inst_WidthAdjustLimit(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27368,7 +27368,7 @@ func (x gen_NSView) WidthAdjustLimit() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483360-needsdisplay?language=objc for details.
 func (x gen_NSView) NeedsDisplay() bool {
-	ret := C.NSView_inst_needsDisplay(
+	ret := C.NSView_inst_NeedsDisplay(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27382,7 +27382,7 @@ func (x gen_NSView) NeedsDisplay() bool {
 func (x gen_NSView) SetNeedsDisplay(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsDisplay(
+	C.NSView_inst_SetNeedsDisplay(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27395,7 +27395,7 @@ func (x gen_NSView) SetNeedsDisplay(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483558-opaque?language=objc for details.
 func (x gen_NSView) IsOpaque() bool {
-	ret := C.NSView_inst_isOpaque(
+	ret := C.NSView_inst_IsOpaque(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27407,7 +27407,7 @@ func (x gen_NSView) IsOpaque() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483532-flipped?language=objc for details.
 func (x gen_NSView) IsFlipped() bool {
-	ret := C.NSView_inst_isFlipped(
+	ret := C.NSView_inst_IsFlipped(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27419,7 +27419,7 @@ func (x gen_NSView) IsFlipped() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483709-rotatedfrombase?language=objc for details.
 func (x gen_NSView) IsRotatedFromBase() bool {
-	ret := C.NSView_inst_isRotatedFromBase(
+	ret := C.NSView_inst_IsRotatedFromBase(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27431,7 +27431,7 @@ func (x gen_NSView) IsRotatedFromBase() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483390-rotatedorscaledfrombase?language=objc for details.
 func (x gen_NSView) IsRotatedOrScaledFromBase() bool {
-	ret := C.NSView_inst_isRotatedOrScaledFromBase(
+	ret := C.NSView_inst_IsRotatedOrScaledFromBase(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27443,7 +27443,7 @@ func (x gen_NSView) IsRotatedOrScaledFromBase() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483358-autoresizessubviews?language=objc for details.
 func (x gen_NSView) AutoresizesSubviews() bool {
-	ret := C.NSView_inst_autoresizesSubviews(
+	ret := C.NSView_inst_AutoresizesSubviews(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27457,7 +27457,7 @@ func (x gen_NSView) AutoresizesSubviews() bool {
 func (x gen_NSView) SetAutoresizesSubviews(
 	value bool,
 ) {
-	C.NSView_inst_setAutoresizesSubviews(
+	C.NSView_inst_SetAutoresizesSubviews(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27470,7 +27470,7 @@ func (x gen_NSView) SetAutoresizesSubviews(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526917-constraints?language=objc for details.
 func (x gen_NSView) Constraints() core.NSArray {
-	ret := C.NSView_inst_constraints(
+	ret := C.NSView_inst_Constraints(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27482,7 +27482,7 @@ func (x gen_NSView) Constraints() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1534395-layoutguides?language=objc for details.
 func (x gen_NSView) LayoutGuides() core.NSArray {
-	ret := C.NSView_inst_layoutGuides(
+	ret := C.NSView_inst_LayoutGuides(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27494,7 +27494,7 @@ func (x gen_NSView) LayoutGuides() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526904-fittingsize?language=objc for details.
 func (x gen_NSView) FittingSize() core.NSSize {
-	ret := C.NSView_inst_fittingSize(
+	ret := C.NSView_inst_FittingSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27506,7 +27506,7 @@ func (x gen_NSView) FittingSize() core.NSSize {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526996-intrinsiccontentsize?language=objc for details.
 func (x gen_NSView) IntrinsicContentSize() core.NSSize {
-	ret := C.NSView_inst_intrinsicContentSize(
+	ret := C.NSView_inst_IntrinsicContentSize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27518,7 +27518,7 @@ func (x gen_NSView) IntrinsicContentSize() core.NSSize {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526949-baselineoffsetfrombottom?language=objc for details.
 func (x gen_NSView) BaselineOffsetFromBottom() core.CGFloat {
-	ret := C.NSView_inst_baselineOffsetFromBottom(
+	ret := C.NSView_inst_BaselineOffsetFromBottom(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27530,7 +27530,7 @@ func (x gen_NSView) BaselineOffsetFromBottom() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526963-firstbaselineoffsetfromtop?language=objc for details.
 func (x gen_NSView) FirstBaselineOffsetFromTop() core.CGFloat {
-	ret := C.NSView_inst_firstBaselineOffsetFromTop(
+	ret := C.NSView_inst_FirstBaselineOffsetFromTop(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27542,7 +27542,7 @@ func (x gen_NSView) FirstBaselineOffsetFromTop() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1525942-lastbaselineoffsetfrombottom?language=objc for details.
 func (x gen_NSView) LastBaselineOffsetFromBottom() core.CGFloat {
-	ret := C.NSView_inst_lastBaselineOffsetFromBottom(
+	ret := C.NSView_inst_LastBaselineOffsetFromBottom(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27554,7 +27554,7 @@ func (x gen_NSView) LastBaselineOffsetFromBottom() core.CGFloat {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526912-needslayout?language=objc for details.
 func (x gen_NSView) NeedsLayout() bool {
-	ret := C.NSView_inst_needsLayout(
+	ret := C.NSView_inst_NeedsLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27568,7 +27568,7 @@ func (x gen_NSView) NeedsLayout() bool {
 func (x gen_NSView) SetNeedsLayout(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsLayout(
+	C.NSView_inst_SetNeedsLayout(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27581,7 +27581,7 @@ func (x gen_NSView) SetNeedsLayout(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526856-needsupdateconstraints?language=objc for details.
 func (x gen_NSView) NeedsUpdateConstraints() bool {
-	ret := C.NSView_inst_needsUpdateConstraints(
+	ret := C.NSView_inst_NeedsUpdateConstraints(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27595,7 +27595,7 @@ func (x gen_NSView) NeedsUpdateConstraints() bool {
 func (x gen_NSView) SetNeedsUpdateConstraints(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsUpdateConstraints(
+	C.NSView_inst_SetNeedsUpdateConstraints(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27608,7 +27608,7 @@ func (x gen_NSView) SetNeedsUpdateConstraints(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526961-translatesautoresizingmaskintoco?language=objc for details.
 func (x gen_NSView) TranslatesAutoresizingMaskIntoConstraints() bool {
-	ret := C.NSView_inst_translatesAutoresizingMaskIntoConstraints(
+	ret := C.NSView_inst_TranslatesAutoresizingMaskIntoConstraints(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27622,7 +27622,7 @@ func (x gen_NSView) TranslatesAutoresizingMaskIntoConstraints() bool {
 func (x gen_NSView) SetTranslatesAutoresizingMaskIntoConstraints(
 	value bool,
 ) {
-	C.NSView_inst_setTranslatesAutoresizingMaskIntoConstraints(
+	C.NSView_inst_SetTranslatesAutoresizingMaskIntoConstraints(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27635,7 +27635,7 @@ func (x gen_NSView) SetTranslatesAutoresizingMaskIntoConstraints(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1526907-hasambiguouslayout?language=objc for details.
 func (x gen_NSView) HasAmbiguousLayout() bool {
-	ret := C.NSView_inst_hasAmbiguousLayout(
+	ret := C.NSView_inst_HasAmbiguousLayout(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27647,7 +27647,7 @@ func (x gen_NSView) HasAmbiguousLayout() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483287-focusringmaskbounds?language=objc for details.
 func (x gen_NSView) FocusRingMaskBounds() core.NSRect {
-	ret := C.NSView_inst_focusRingMaskBounds(
+	ret := C.NSView_inst_FocusRingMaskBounds(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27659,7 +27659,7 @@ func (x gen_NSView) FocusRingMaskBounds() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483793-allowsvibrancy?language=objc for details.
 func (x gen_NSView) AllowsVibrancy() bool {
-	ret := C.NSView_inst_allowsVibrancy(
+	ret := C.NSView_inst_AllowsVibrancy(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27671,7 +27671,7 @@ func (x gen_NSView) AllowsVibrancy() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483337-infullscreenmode?language=objc for details.
 func (x gen_NSView) IsInFullScreenMode() bool {
-	ret := C.NSView_inst_isInFullScreenMode(
+	ret := C.NSView_inst_IsInFullScreenMode(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27683,7 +27683,7 @@ func (x gen_NSView) IsInFullScreenMode() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483369-hidden?language=objc for details.
 func (x gen_NSView) IsHidden() bool {
-	ret := C.NSView_inst_isHidden(
+	ret := C.NSView_inst_IsHidden(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27697,7 +27697,7 @@ func (x gen_NSView) IsHidden() bool {
 func (x gen_NSView) SetHidden(
 	value bool,
 ) {
-	C.NSView_inst_setHidden(
+	C.NSView_inst_SetHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27710,7 +27710,7 @@ func (x gen_NSView) SetHidden(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483473-hiddenorhashiddenancestor?language=objc for details.
 func (x gen_NSView) IsHiddenOrHasHiddenAncestor() bool {
-	ret := C.NSView_inst_isHiddenOrHasHiddenAncestor(
+	ret := C.NSView_inst_IsHiddenOrHasHiddenAncestor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27722,7 +27722,7 @@ func (x gen_NSView) IsHiddenOrHasHiddenAncestor() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483267-inliveresize?language=objc for details.
 func (x gen_NSView) InLiveResize() bool {
-	ret := C.NSView_inst_inLiveResize(
+	ret := C.NSView_inst_InLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27734,7 +27734,7 @@ func (x gen_NSView) InLiveResize() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483795-preservescontentduringliveresize?language=objc for details.
 func (x gen_NSView) PreservesContentDuringLiveResize() bool {
-	ret := C.NSView_inst_preservesContentDuringLiveResize(
+	ret := C.NSView_inst_PreservesContentDuringLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27746,7 +27746,7 @@ func (x gen_NSView) PreservesContentDuringLiveResize() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483528-rectpreservedduringliveresize?language=objc for details.
 func (x gen_NSView) RectPreservedDuringLiveResize() core.NSRect {
-	ret := C.NSView_inst_rectPreservedDuringLiveResize(
+	ret := C.NSView_inst_RectPreservedDuringLiveResize(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27758,7 +27758,7 @@ func (x gen_NSView) RectPreservedDuringLiveResize() core.NSRect {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483658-gesturerecognizers?language=objc for details.
 func (x gen_NSView) GestureRecognizers() core.NSArray {
-	ret := C.NSView_inst_gestureRecognizers(
+	ret := C.NSView_inst_GestureRecognizers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27772,7 +27772,7 @@ func (x gen_NSView) GestureRecognizers() core.NSArray {
 func (x gen_NSView) SetGestureRecognizers(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setGestureRecognizers(
+	C.NSView_inst_SetGestureRecognizers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -27785,7 +27785,7 @@ func (x gen_NSView) SetGestureRecognizers(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483666-mousedowncanmovewindow?language=objc for details.
 func (x gen_NSView) MouseDownCanMoveWindow() bool {
-	ret := C.NSView_inst_mouseDownCanMoveWindow(
+	ret := C.NSView_inst_MouseDownCanMoveWindow(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27797,7 +27797,7 @@ func (x gen_NSView) MouseDownCanMoveWindow() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483594-wantsrestingtouches?language=objc for details.
 func (x gen_NSView) WantsRestingTouches() bool {
-	ret := C.NSView_inst_wantsRestingTouches(
+	ret := C.NSView_inst_WantsRestingTouches(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27811,7 +27811,7 @@ func (x gen_NSView) WantsRestingTouches() bool {
 func (x gen_NSView) SetWantsRestingTouches(
 	value bool,
 ) {
-	C.NSView_inst_setWantsRestingTouches(
+	C.NSView_inst_SetWantsRestingTouches(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27824,7 +27824,7 @@ func (x gen_NSView) SetWantsRestingTouches(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483759-canbecomekeyview?language=objc for details.
 func (x gen_NSView) CanBecomeKeyView() bool {
-	ret := C.NSView_inst_canBecomeKeyView(
+	ret := C.NSView_inst_CanBecomeKeyView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27836,7 +27836,7 @@ func (x gen_NSView) CanBecomeKeyView() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483512-needspaneltobecomekey?language=objc for details.
 func (x gen_NSView) NeedsPanelToBecomeKey() bool {
-	ret := C.NSView_inst_needsPanelToBecomeKey(
+	ret := C.NSView_inst_NeedsPanelToBecomeKey(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27848,7 +27848,7 @@ func (x gen_NSView) NeedsPanelToBecomeKey() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483465-nextkeyview?language=objc for details.
 func (x gen_NSView) NextKeyView() NSView {
-	ret := C.NSView_inst_nextKeyView(
+	ret := C.NSView_inst_NextKeyView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27862,7 +27862,7 @@ func (x gen_NSView) NextKeyView() NSView {
 func (x gen_NSView) SetNextKeyView(
 	value NSViewRef,
 ) {
-	C.NSView_inst_setNextKeyView(
+	C.NSView_inst_SetNextKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -27875,7 +27875,7 @@ func (x gen_NSView) SetNextKeyView(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483572-nextvalidkeyview?language=objc for details.
 func (x gen_NSView) NextValidKeyView() NSView {
-	ret := C.NSView_inst_nextValidKeyView(
+	ret := C.NSView_inst_NextValidKeyView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27887,7 +27887,7 @@ func (x gen_NSView) NextValidKeyView() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483646-previouskeyview?language=objc for details.
 func (x gen_NSView) PreviousKeyView() NSView {
-	ret := C.NSView_inst_previousKeyView(
+	ret := C.NSView_inst_PreviousKeyView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27899,7 +27899,7 @@ func (x gen_NSView) PreviousKeyView() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483371-previousvalidkeyview?language=objc for details.
 func (x gen_NSView) PreviousValidKeyView() NSView {
-	ret := C.NSView_inst_previousValidKeyView(
+	ret := C.NSView_inst_PreviousValidKeyView(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27911,7 +27911,7 @@ func (x gen_NSView) PreviousValidKeyView() NSView {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483215-preparedcontentrect?language=objc for details.
 func (x gen_NSView) PreparedContentRect() core.NSRect {
-	ret := C.NSView_inst_preparedContentRect(
+	ret := C.NSView_inst_PreparedContentRect(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27925,7 +27925,7 @@ func (x gen_NSView) PreparedContentRect() core.NSRect {
 func (x gen_NSView) SetPreparedContentRect(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setPreparedContentRect(
+	C.NSView_inst_SetPreparedContentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -27938,7 +27938,7 @@ func (x gen_NSView) SetPreparedContentRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483564-registereddraggedtypes?language=objc for details.
 func (x gen_NSView) RegisteredDraggedTypes() core.NSArray {
-	ret := C.NSView_inst_registeredDraggedTypes(
+	ret := C.NSView_inst_RegisteredDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27950,7 +27950,7 @@ func (x gen_NSView) RegisteredDraggedTypes() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483524-postsframechangednotifications?language=objc for details.
 func (x gen_NSView) PostsFrameChangedNotifications() bool {
-	ret := C.NSView_inst_postsFrameChangedNotifications(
+	ret := C.NSView_inst_PostsFrameChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27964,7 +27964,7 @@ func (x gen_NSView) PostsFrameChangedNotifications() bool {
 func (x gen_NSView) SetPostsFrameChangedNotifications(
 	value bool,
 ) {
-	C.NSView_inst_setPostsFrameChangedNotifications(
+	C.NSView_inst_SetPostsFrameChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -27977,7 +27977,7 @@ func (x gen_NSView) SetPostsFrameChangedNotifications(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483239-postsboundschangednotifications?language=objc for details.
 func (x gen_NSView) PostsBoundsChangedNotifications() bool {
-	ret := C.NSView_inst_postsBoundsChangedNotifications(
+	ret := C.NSView_inst_PostsBoundsChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -27991,7 +27991,7 @@ func (x gen_NSView) PostsBoundsChangedNotifications() bool {
 func (x gen_NSView) SetPostsBoundsChangedNotifications(
 	value bool,
 ) {
-	C.NSView_inst_setPostsBoundsChangedNotifications(
+	C.NSView_inst_SetPostsBoundsChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -28004,7 +28004,7 @@ func (x gen_NSView) SetPostsBoundsChangedNotifications(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483248-tag?language=objc for details.
 func (x gen_NSView) Tag() core.NSInteger {
-	ret := C.NSView_inst_tag(
+	ret := C.NSView_inst_Tag(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28016,7 +28016,7 @@ func (x gen_NSView) Tag() core.NSInteger {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483541-tooltip?language=objc for details.
 func (x gen_NSView) ToolTip() core.NSString {
-	ret := C.NSView_inst_toolTip(
+	ret := C.NSView_inst_ToolTip(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28030,7 +28030,7 @@ func (x gen_NSView) ToolTip() core.NSString {
 func (x gen_NSView) SetToolTip(
 	value core.NSStringRef,
 ) {
-	C.NSView_inst_setToolTip(
+	C.NSView_inst_SetToolTip(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -28043,7 +28043,7 @@ func (x gen_NSView) SetToolTip(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483333-trackingareas?language=objc for details.
 func (x gen_NSView) TrackingAreas() core.NSArray {
-	ret := C.NSView_inst_trackingAreas(
+	ret := C.NSView_inst_TrackingAreas(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28055,7 +28055,7 @@ func (x gen_NSView) TrackingAreas() core.NSArray {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483317-drawingfindindicator?language=objc for details.
 func (x gen_NSView) IsDrawingFindIndicator() bool {
-	ret := C.NSView_inst_isDrawingFindIndicator(
+	ret := C.NSView_inst_IsDrawingFindIndicator(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28067,7 +28067,7 @@ func (x gen_NSView) IsDrawingFindIndicator() bool {
 //
 // See https://developer.apple.com/documentation/appkit/nsview/3353053-horizontalcontentsizeconstrainta?language=objc for details.
 func (x gen_NSView) IsHorizontalContentSizeConstraintActive() bool {
-	ret := C.NSView_inst_isHorizontalContentSizeConstraintActive(
+	ret := C.NSView_inst_IsHorizontalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28081,7 +28081,7 @@ func (x gen_NSView) IsHorizontalContentSizeConstraintActive() bool {
 func (x gen_NSView) SetHorizontalContentSizeConstraintActive(
 	value bool,
 ) {
-	C.NSView_inst_setHorizontalContentSizeConstraintActive(
+	C.NSView_inst_SetHorizontalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -28094,7 +28094,7 @@ func (x gen_NSView) SetHorizontalContentSizeConstraintActive(
 //
 // See https://developer.apple.com/documentation/appkit/nsview/3353054-verticalcontentsizeconstraintact?language=objc for details.
 func (x gen_NSView) IsVerticalContentSizeConstraintActive() bool {
-	ret := C.NSView_inst_isVerticalContentSizeConstraintActive(
+	ret := C.NSView_inst_IsVerticalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28108,7 +28108,7 @@ func (x gen_NSView) IsVerticalContentSizeConstraintActive() bool {
 func (x gen_NSView) SetVerticalContentSizeConstraintActive(
 	value bool,
 ) {
-	C.NSView_inst_setVerticalContentSizeConstraintActive(
+	C.NSView_inst_SetVerticalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -28121,7 +28121,7 @@ func (x gen_NSView) SetVerticalContentSizeConstraintActive(
 //
 // See  for details.
 func (x gen_NSView) BackgroundColor() NSColor {
-	ret := C.NSView_inst_backgroundColor(
+	ret := C.NSView_inst_BackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
@@ -28135,7 +28135,7 @@ func (x gen_NSView) BackgroundColor() NSColor {
 func (x gen_NSView) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSView_inst_setBackgroundColor(
+	C.NSView_inst_SetBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
