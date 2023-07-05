@@ -30,7 +30,7 @@ func NSString_FromString(s string) NSString {
 	b := []byte(s)
 	c := C.CBytes(b)
 	defer C.free(unsafe.Pointer(c))
-	ret := NSString_alloc().InitWithBytes_length_encoding__asNSString(c, NSUInteger(len(b)), NSUTF8StringEncoding)
+	ret := NSString_alloc().InitWithBytes_length_encoding_asNSString(c, NSUInteger(len(b)), NSUTF8StringEncoding)
 	return ret
 }
 
@@ -39,5 +39,5 @@ func NSString_FromObject(obj objc.Object) NSString {
 }
 
 func (s NSString) SizeWithAttributes(attrs NSDictionary) NSSize {
-	return s.gen_NSString.SizeWithAttributes_(attrs)
+	return s.gen_NSString.SizeWithAttributes(attrs)
 }

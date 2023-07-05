@@ -14,7 +14,7 @@ type NSData struct {
 func NSData_WithBytes(b []byte, length uint64) NSData {
 	buf := C.CBytes(b)
 	defer C.free(buf)
-	return NSData_dataWithBytes_length_(buf, NSUInteger(length))
+	return NSData_dataWithBytes_length(buf, NSUInteger(length))
 }
 
 // Length is the number of bytes contained by the data object.

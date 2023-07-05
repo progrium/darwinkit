@@ -26,47 +26,47 @@ void* NSBundle_type_alloc() {
 	return [NSBundle
 		alloc];
 }
-void* NSBundle_type_bundleWithURL_(void* url) {
+void* NSBundle_type_bundleWithURL(void* url) {
 	return [NSBundle
 		bundleWithURL: url];
 }
-void* NSBundle_type_bundleWithPath_(void* path) {
+void* NSBundle_type_bundleWithPath(void* path) {
 	return [NSBundle
 		bundleWithPath: path];
 }
-void* NSBundle_type_bundleWithIdentifier_(void* identifier) {
+void* NSBundle_type_bundleWithIdentifier(void* identifier) {
 	return [NSBundle
 		bundleWithIdentifier: identifier];
 }
-void* NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL_(void* name, void* ext, void* subpath, void* bundleURL) {
+void* NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL(void* name, void* ext, void* subpath, void* bundleURL) {
 	return [NSBundle
 		URLForResource: name
 		withExtension: ext
 		subdirectory: subpath
 		inBundleWithURL: bundleURL];
 }
-void* NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL_(void* ext, void* subpath, void* bundleURL) {
+void* NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(void* ext, void* subpath, void* bundleURL) {
 	return [NSBundle
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath
 		inBundleWithURL: bundleURL];
 }
-void* NSBundle_type_pathForResource_ofType_inDirectory_(void* name, void* ext, void* bundlePath) {
+void* NSBundle_type_pathForResource_ofType_inDirectory(void* name, void* ext, void* bundlePath) {
 	return [NSBundle
 		pathForResource: name
 		ofType: ext
 		inDirectory: bundlePath];
 }
-void* NSBundle_type_pathsForResourcesOfType_inDirectory_(void* ext, void* bundlePath) {
+void* NSBundle_type_pathsForResourcesOfType_inDirectory(void* ext, void* bundlePath) {
 	return [NSBundle
 		pathsForResourcesOfType: ext
 		inDirectory: bundlePath];
 }
-void* NSBundle_type_preferredLocalizationsFromArray_(void* localizationsArray) {
+void* NSBundle_type_preferredLocalizationsFromArray(void* localizationsArray) {
 	return [NSBundle
 		preferredLocalizationsFromArray: localizationsArray];
 }
-void* NSBundle_type_preferredLocalizationsFromArray_forPreferences_(void* localizationsArray, void* preferencesArray) {
+void* NSBundle_type_preferredLocalizationsFromArray_forPreferences(void* localizationsArray, void* preferencesArray) {
 	return [NSBundle
 		preferredLocalizationsFromArray: localizationsArray
 		forPreferences: preferencesArray];
@@ -87,7 +87,7 @@ void* NSSound_type_alloc() {
 	return [NSSound
 		alloc];
 }
-BOOL NSSound_type_canInitWithPasteboard_(void* pasteboard) {
+BOOL NSSound_type_canInitWithPasteboard(void* pasteboard) {
 	return [NSSound
 		canInitWithPasteboard: pasteboard];
 }
@@ -99,7 +99,7 @@ void* NSApplication_type_alloc() {
 	return [NSApplication
 		alloc];
 }
-void NSApplication_type_detachDrawingThread_toTarget_withObject_(void* selector, void* target, void* argument) {
+void NSApplication_type_detachDrawingThread_toTarget_withObject(void* selector, void* target, void* argument) {
 	[NSApplication
 		detachDrawingThread: selector
 		toTarget: target
@@ -117,32 +117,32 @@ void* NSButton_type_alloc() {
 	return [NSButton
 		alloc];
 }
-void* NSButton_type_checkboxWithTitle_target_action_(void* title, void* target, void* action) {
+void* NSButton_type_checkboxWithTitle_target_action(void* title, void* target, void* action) {
 	return [NSButton
 		checkboxWithTitle: title
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithImage_target_action_(void* image, void* target, void* action) {
+void* NSButton_type_buttonWithImage_target_action(void* image, void* target, void* action) {
 	return [NSButton
 		buttonWithImage: image
 		target: target
 		action: action];
 }
-void* NSButton_type_radioButtonWithTitle_target_action_(void* title, void* target, void* action) {
+void* NSButton_type_radioButtonWithTitle_target_action(void* title, void* target, void* action) {
 	return [NSButton
 		radioButtonWithTitle: title
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithTitle_image_target_action_(void* title, void* image, void* target, void* action) {
+void* NSButton_type_buttonWithTitle_image_target_action(void* title, void* image, void* target, void* action) {
 	return [NSButton
 		buttonWithTitle: title
 		image: image
 		target: target
 		action: action];
 }
-void* NSButton_type_buttonWithTitle_target_action_(void* title, void* target, void* action) {
+void* NSButton_type_buttonWithTitle_target_action(void* title, void* target, void* action) {
 	return [NSButton
 		buttonWithTitle: title
 		target: target
@@ -152,7 +152,7 @@ void* NSEvent_type_alloc() {
 	return [NSEvent
 		alloc];
 }
-void* NSEvent_type_eventWithEventRef_(void* eventRef) {
+void* NSEvent_type_eventWithEventRef(void* eventRef) {
 	return [NSEvent
 		eventWithEventRef: eventRef];
 }
@@ -160,7 +160,7 @@ void NSEvent_type_stopPeriodicEvents() {
 	[NSEvent
 		stopPeriodicEvents];
 }
-void NSEvent_type_removeMonitor_(void* eventMonitor) {
+void NSEvent_type_removeMonitor(void* eventMonitor) {
 	[NSEvent
 		removeMonitor: eventMonitor];
 }
@@ -176,7 +176,7 @@ BOOL NSEvent_type_mouseCoalescingEnabled() {
 	return [NSEvent
 		mouseCoalescingEnabled];
 }
-void NSEvent_type_setMouseCoalescingEnabled_(BOOL value) {
+void NSEvent_type_setMouseCoalescingEnabled(BOOL value) {
 	[NSEvent
 		setMouseCoalescingEnabled: value];
 }
@@ -188,64 +188,64 @@ void* NSFont_type_alloc() {
 	return [NSFont
 		alloc];
 }
-void* NSFont_type_fontWithName_size_(void* fontName, double fontSize) {
+void* NSFont_type_fontWithName_size(void* fontName, double fontSize) {
 	return [NSFont
 		fontWithName: fontName
 		size: fontSize];
 }
-void* NSFont_type_userFontOfSize_(double fontSize) {
+void* NSFont_type_userFontOfSize(double fontSize) {
 	return [NSFont
 		userFontOfSize: fontSize];
 }
-void* NSFont_type_userFixedPitchFontOfSize_(double fontSize) {
+void* NSFont_type_userFixedPitchFontOfSize(double fontSize) {
 	return [NSFont
 		userFixedPitchFontOfSize: fontSize];
 }
-void* NSFont_type_systemFontOfSize_(double fontSize) {
+void* NSFont_type_systemFontOfSize(double fontSize) {
 	return [NSFont
 		systemFontOfSize: fontSize];
 }
-void* NSFont_type_boldSystemFontOfSize_(double fontSize) {
+void* NSFont_type_boldSystemFontOfSize(double fontSize) {
 	return [NSFont
 		boldSystemFontOfSize: fontSize];
 }
-void* NSFont_type_labelFontOfSize_(double fontSize) {
+void* NSFont_type_labelFontOfSize(double fontSize) {
 	return [NSFont
 		labelFontOfSize: fontSize];
 }
-void* NSFont_type_messageFontOfSize_(double fontSize) {
+void* NSFont_type_messageFontOfSize(double fontSize) {
 	return [NSFont
 		messageFontOfSize: fontSize];
 }
-void* NSFont_type_menuBarFontOfSize_(double fontSize) {
+void* NSFont_type_menuBarFontOfSize(double fontSize) {
 	return [NSFont
 		menuBarFontOfSize: fontSize];
 }
-void* NSFont_type_menuFontOfSize_(double fontSize) {
+void* NSFont_type_menuFontOfSize(double fontSize) {
 	return [NSFont
 		menuFontOfSize: fontSize];
 }
-void* NSFont_type_controlContentFontOfSize_(double fontSize) {
+void* NSFont_type_controlContentFontOfSize(double fontSize) {
 	return [NSFont
 		controlContentFontOfSize: fontSize];
 }
-void* NSFont_type_titleBarFontOfSize_(double fontSize) {
+void* NSFont_type_titleBarFontOfSize(double fontSize) {
 	return [NSFont
 		titleBarFontOfSize: fontSize];
 }
-void* NSFont_type_paletteFontOfSize_(double fontSize) {
+void* NSFont_type_paletteFontOfSize(double fontSize) {
 	return [NSFont
 		paletteFontOfSize: fontSize];
 }
-void* NSFont_type_toolTipsFontOfSize_(double fontSize) {
+void* NSFont_type_toolTipsFontOfSize(double fontSize) {
 	return [NSFont
 		toolTipsFontOfSize: fontSize];
 }
-void NSFont_type_setUserFont_(void* font) {
+void NSFont_type_setUserFont(void* font) {
 	[NSFont
 		setUserFont: font];
 }
-void NSFont_type_setUserFixedPitchFont_(void* font) {
+void NSFont_type_setUserFixedPitchFont(void* font) {
 	[NSFont
 		setUserFixedPitchFont: font];
 }
@@ -265,12 +265,12 @@ void* NSImage_type_alloc() {
 	return [NSImage
 		alloc];
 }
-void* NSImage_type_imageWithSystemSymbolName_accessibilityDescription_(void* symbolName, void* description) {
+void* NSImage_type_imageWithSystemSymbolName_accessibilityDescription(void* symbolName, void* description) {
 	return [NSImage
 		imageWithSystemSymbolName: symbolName
 		accessibilityDescription: description];
 }
-BOOL NSImage_type_canInitWithPasteboard_(void* pasteboard) {
+BOOL NSImage_type_canInitWithPasteboard(void* pasteboard) {
 	return [NSImage
 		canInitWithPasteboard: pasteboard];
 }
@@ -286,7 +286,7 @@ void* NSImageView_type_alloc() {
 	return [NSImageView
 		alloc];
 }
-void* NSImageView_type_imageViewWithImage_(void* image) {
+void* NSImageView_type_imageViewWithImage(void* image) {
 	return [NSImageView
 		imageViewWithImage: image];
 }
@@ -298,11 +298,11 @@ void* NSPasteboard_type_alloc() {
 	return [NSPasteboard
 		alloc];
 }
-void* NSPasteboard_type_pasteboardByFilteringFile_(void* filename) {
+void* NSPasteboard_type_pasteboardByFilteringFile(void* filename) {
 	return [NSPasteboard
 		pasteboardByFilteringFile: filename];
 }
-void* NSPasteboard_type_pasteboardByFilteringTypesInPasteboard_(void* pboard) {
+void* NSPasteboard_type_pasteboardByFilteringTypesInPasteboard(void* pboard) {
 	return [NSPasteboard
 		pasteboardByFilteringTypesInPasteboard: pboard];
 }
@@ -326,17 +326,17 @@ BOOL NSMenu_type_menuBarVisible() {
 	return [NSMenu
 		menuBarVisible];
 }
-void NSMenu_type_setMenuBarVisible_(BOOL visible) {
+void NSMenu_type_setMenuBarVisible(BOOL visible) {
 	[NSMenu
 		setMenuBarVisible: visible];
 }
-void NSMenu_type_popUpContextMenu_withEvent_forView_(void* menu, void* event, void* view) {
+void NSMenu_type_popUpContextMenu_withEvent_forView(void* menu, void* event, void* view) {
 	[NSMenu
 		popUpContextMenu: menu
 		withEvent: event
 		forView: view];
 }
-void NSMenu_type_popUpContextMenu_withEvent_forView_withFont_(void* menu, void* event, void* view, void* font) {
+void NSMenu_type_popUpContextMenu_withEvent_forView_withFont(void* menu, void* event, void* view, void* font) {
 	[NSMenu
 		popUpContextMenu: menu
 		withEvent: event
@@ -359,7 +359,7 @@ BOOL NSMenuItem_type_usesUserKeyEquivalents() {
 	return [NSMenuItem
 		usesUserKeyEquivalents];
 }
-void NSMenuItem_type_setUsesUserKeyEquivalents_(BOOL value) {
+void NSMenuItem_type_setUsesUserKeyEquivalents(BOOL value) {
 	[NSMenuItem
 		setUsesUserKeyEquivalents: value];
 }
@@ -367,7 +367,7 @@ void* NSRunningApplication_type_alloc() {
 	return [NSRunningApplication
 		alloc];
 }
-void* NSRunningApplication_type_runningApplicationsWithBundleIdentifier_(void* bundleIdentifier) {
+void* NSRunningApplication_type_runningApplicationsWithBundleIdentifier(void* bundleIdentifier) {
 	return [NSRunningApplication
 		runningApplicationsWithBundleIdentifier: bundleIdentifier];
 }
@@ -423,19 +423,19 @@ void* NSTextField_type_alloc() {
 	return [NSTextField
 		alloc];
 }
-void* NSTextField_type_labelWithAttributedString_(void* attributedStringValue) {
+void* NSTextField_type_labelWithAttributedString(void* attributedStringValue) {
 	return [NSTextField
 		labelWithAttributedString: attributedStringValue];
 }
-void* NSTextField_type_labelWithString_(void* stringValue) {
+void* NSTextField_type_labelWithString(void* stringValue) {
 	return [NSTextField
 		labelWithString: stringValue];
 }
-void* NSTextField_type_textFieldWithString_(void* stringValue) {
+void* NSTextField_type_textFieldWithString(void* stringValue) {
 	return [NSTextField
 		textFieldWithString: stringValue];
 }
-void* NSTextField_type_wrappingLabelWithString_(void* stringValue) {
+void* NSTextField_type_wrappingLabelWithString(void* stringValue) {
 	return [NSTextField
 		wrappingLabelWithString: stringValue];
 }
@@ -455,26 +455,26 @@ void* NSWindow_type_alloc() {
 	return [NSWindow
 		alloc];
 }
-void* NSWindow_type_windowWithContentViewController_(void* contentViewController) {
+void* NSWindow_type_windowWithContentViewController(void* contentViewController) {
 	return [NSWindow
 		windowWithContentViewController: contentViewController];
 }
-NSRect NSWindow_type_contentRectForFrameRect_styleMask_(NSRect fRect, unsigned long style) {
+NSRect NSWindow_type_contentRectForFrameRect_styleMask(NSRect fRect, unsigned long style) {
 	return [NSWindow
 		contentRectForFrameRect: fRect
 		styleMask: style];
 }
-NSRect NSWindow_type_frameRectForContentRect_styleMask_(NSRect cRect, unsigned long style) {
+NSRect NSWindow_type_frameRectForContentRect_styleMask(NSRect cRect, unsigned long style) {
 	return [NSWindow
 		frameRectForContentRect: cRect
 		styleMask: style];
 }
-double NSWindow_type_minFrameWidthWithTitle_styleMask_(void* title, unsigned long style) {
+double NSWindow_type_minFrameWidthWithTitle_styleMask(void* title, unsigned long style) {
 	return [NSWindow
 		minFrameWidthWithTitle: title
 		styleMask: style];
 }
-long NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber_(NSPoint point, long windowNumber) {
+long NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber(NSPoint point, long windowNumber) {
 	return [NSWindow
 		windowNumberAtPoint: point
 		belowWindowWithWindowNumber: windowNumber];
@@ -483,7 +483,7 @@ BOOL NSWindow_type_allowsAutomaticWindowTabbing() {
 	return [NSWindow
 		allowsAutomaticWindowTabbing];
 }
-void NSWindow_type_setAllowsAutomaticWindowTabbing_(BOOL value) {
+void NSWindow_type_setAllowsAutomaticWindowTabbing(BOOL value) {
 	[NSWindow
 		setAllowsAutomaticWindowTabbing: value];
 }
@@ -499,11 +499,11 @@ void* NSColor_type_alloc() {
 	return [NSColor
 		alloc];
 }
-void* NSColor_type_colorFromPasteboard_(void* pasteBoard) {
+void* NSColor_type_colorFromPasteboard(void* pasteBoard) {
 	return [NSColor
 		colorFromPasteboard: pasteBoard];
 }
-void* NSColor_type_colorWithRed_green_blue_alpha_(double red, double green, double blue, double alpha) {
+void* NSColor_type_colorWithRed_green_blue_alpha(double red, double green, double blue, double alpha) {
 	return [NSColor
 		colorWithRed: red
 		green: green
@@ -514,7 +514,7 @@ BOOL NSColor_type_ignoresAlpha() {
 	return [NSColor
 		ignoresAlpha];
 }
-void NSColor_type_setIgnoresAlpha_(BOOL value) {
+void NSColor_type_setIgnoresAlpha(BOOL value) {
 	[NSColor
 		setIgnoresAlpha: value];
 }
@@ -568,43 +568,43 @@ BOOL NSView_type_compatibleWithResponsiveScrolling() {
 }
 
 
-void* NSBundle_inst_initWithURL_(void *id, void* url) {
+void* NSBundle_inst_initWithURL(void *id, void* url) {
 	return [(NSBundle*)id
 		initWithURL: url];
 }
 
-void* NSBundle_inst_initWithPath_(void *id, void* path) {
+void* NSBundle_inst_initWithPath(void *id, void* path) {
 	return [(NSBundle*)id
 		initWithPath: path];
 }
 
-void* NSBundle_inst_loadNibNamed_owner_options_(void *id, void* name, void* owner, void* options) {
+void* NSBundle_inst_loadNibNamed_owner_options(void *id, void* name, void* owner, void* options) {
 	return [(NSBundle*)id
 		loadNibNamed: name
 		owner: owner
 		options: options];
 }
 
-void* NSBundle_inst_URLForResource_withExtension_subdirectory_(void *id, void* name, void* ext, void* subpath) {
+void* NSBundle_inst_URLForResource_withExtension_subdirectory(void *id, void* name, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext
 		subdirectory: subpath];
 }
 
-void* NSBundle_inst_URLForResource_withExtension_(void *id, void* name, void* ext) {
+void* NSBundle_inst_URLForResource_withExtension(void *id, void* name, void* ext) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext];
 }
 
-void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_(void *id, void* ext, void* subpath) {
+void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory(void *id, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath];
 }
 
-void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization_(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		URLForResource: name
 		withExtension: ext
@@ -612,27 +612,27 @@ void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization_(void
 		localization: localizationName];
 }
 
-void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization_(void *id, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization(void *id, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		URLsForResourcesWithExtension: ext
 		subdirectory: subpath
 		localization: localizationName];
 }
 
-void* NSBundle_inst_pathForResource_ofType_(void *id, void* name, void* ext) {
+void* NSBundle_inst_pathForResource_ofType(void *id, void* name, void* ext) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext];
 }
 
-void* NSBundle_inst_pathForResource_ofType_inDirectory_(void *id, void* name, void* ext, void* subpath) {
+void* NSBundle_inst_pathForResource_ofType_inDirectory(void *id, void* name, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext
 		inDirectory: subpath];
 }
 
-void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization_(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization(void *id, void* name, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		pathForResource: name
 		ofType: ext
@@ -640,37 +640,37 @@ void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization_(void *id
 		forLocalization: localizationName];
 }
 
-void* NSBundle_inst_pathsForResourcesOfType_inDirectory_(void *id, void* ext, void* subpath) {
+void* NSBundle_inst_pathsForResourcesOfType_inDirectory(void *id, void* ext, void* subpath) {
 	return [(NSBundle*)id
 		pathsForResourcesOfType: ext
 		inDirectory: subpath];
 }
 
-void* NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization_(void *id, void* ext, void* subpath, void* localizationName) {
+void* NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization(void *id, void* ext, void* subpath, void* localizationName) {
 	return [(NSBundle*)id
 		pathsForResourcesOfType: ext
 		inDirectory: subpath
 		forLocalization: localizationName];
 }
 
-void* NSBundle_inst_localizedStringForKey_value_table_(void *id, void* key, void* value, void* tableName) {
+void* NSBundle_inst_localizedStringForKey_value_table(void *id, void* key, void* value, void* tableName) {
 	return [(NSBundle*)id
 		localizedStringForKey: key
 		value: value
 		table: tableName];
 }
 
-void* NSBundle_inst_URLForAuxiliaryExecutable_(void *id, void* executableName) {
+void* NSBundle_inst_URLForAuxiliaryExecutable(void *id, void* executableName) {
 	return [(NSBundle*)id
 		URLForAuxiliaryExecutable: executableName];
 }
 
-void* NSBundle_inst_pathForAuxiliaryExecutable_(void *id, void* executableName) {
+void* NSBundle_inst_pathForAuxiliaryExecutable(void *id, void* executableName) {
 	return [(NSBundle*)id
 		pathForAuxiliaryExecutable: executableName];
 }
 
-void* NSBundle_inst_objectForInfoDictionaryKey_(void *id, void* key) {
+void* NSBundle_inst_objectForInfoDictionaryKey(void *id, void* key) {
 	return [(NSBundle*)id
 		objectForInfoDictionaryKey: key];
 }
@@ -685,7 +685,7 @@ BOOL NSBundle_inst_unload(void *id) {
 		unload];
 }
 
-void* NSBundle_inst_localizedAttributedStringForKey_value_table_(void *id, void* key, void* value, void* tableName) {
+void* NSBundle_inst_localizedAttributedStringForKey_value_table(void *id, void* key, void* value, void* tableName) {
 	return [(NSBundle*)id
 		localizedAttributedStringForKey: key
 		value: value
@@ -812,24 +812,24 @@ BOOL NSBundle_inst_isLoaded(void *id) {
 		isLoaded];
 }
 
-void* NSSound_inst_initWithContentsOfFile_byReference_(void *id, void* path, BOOL byRef) {
+void* NSSound_inst_initWithContentsOfFile_byReference(void *id, void* path, BOOL byRef) {
 	return [(NSSound*)id
 		initWithContentsOfFile: path
 		byReference: byRef];
 }
 
-void* NSSound_inst_initWithContentsOfURL_byReference_(void *id, void* url, BOOL byRef) {
+void* NSSound_inst_initWithContentsOfURL_byReference(void *id, void* url, BOOL byRef) {
 	return [(NSSound*)id
 		initWithContentsOfURL: url
 		byReference: byRef];
 }
 
-void* NSSound_inst_initWithData_(void *id, void* data) {
+void* NSSound_inst_initWithData(void *id, void* data) {
 	return [(NSSound*)id
 		initWithData: data];
 }
 
-void* NSSound_inst_initWithPasteboard_(void *id, void* pasteboard) {
+void* NSSound_inst_initWithPasteboard(void *id, void* pasteboard) {
 	return [(NSSound*)id
 		initWithPasteboard: pasteboard];
 }
@@ -854,7 +854,7 @@ BOOL NSSound_inst_stop(void *id) {
 		stop];
 }
 
-void NSSound_inst_writeToPasteboard_(void *id, void* pasteboard) {
+void NSSound_inst_writeToPasteboard(void *id, void* pasteboard) {
 	[(NSSound*)id
 		writeToPasteboard: pasteboard];
 }
@@ -869,7 +869,7 @@ void* NSSound_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSSound_inst_setDelegate_(void *id, void* value) {
+void NSSound_inst_setDelegate(void *id, void* value) {
 	[(NSSound*)id
 		setDelegate: value];
 }
@@ -879,7 +879,7 @@ BOOL NSSound_inst_loops(void *id) {
 		loops];
 }
 
-void NSSound_inst_setLoops_(void *id, BOOL value) {
+void NSSound_inst_setLoops(void *id, BOOL value) {
 	[(NSSound*)id
 		setLoops: value];
 }
@@ -899,58 +899,58 @@ void NSApplication_inst_finishLaunching(void *id) {
 		finishLaunching];
 }
 
-void NSApplication_inst_stop_(void *id, void* sender) {
+void NSApplication_inst_stop(void *id, void* sender) {
 	[(NSApplication*)id
 		stop: sender];
 }
 
-void NSApplication_inst_sendEvent_(void *id, void* event) {
+void NSApplication_inst_sendEvent(void *id, void* event) {
 	[(NSApplication*)id
 		sendEvent: event];
 }
 
-void NSApplication_inst_postEvent_atStart_(void *id, void* event, BOOL flag) {
+void NSApplication_inst_postEvent_atStart(void *id, void* event, BOOL flag) {
 	[(NSApplication*)id
 		postEvent: event
 		atStart: flag];
 }
 
-BOOL NSApplication_inst_tryToPerform_with_(void *id, void* action, void* object) {
+BOOL NSApplication_inst_tryToPerform_with(void *id, void* action, void* object) {
 	return [(NSApplication*)id
 		tryToPerform: action
 		with: object];
 }
 
-BOOL NSApplication_inst_sendAction_to_from_(void *id, void* action, void* target, void* sender) {
+BOOL NSApplication_inst_sendAction_to_from(void *id, void* action, void* target, void* sender) {
 	return [(NSApplication*)id
 		sendAction: action
 		to: target
 		from: sender];
 }
 
-void* NSApplication_inst_targetForAction_(void *id, void* action) {
+void* NSApplication_inst_targetForAction(void *id, void* action) {
 	return [(NSApplication*)id
 		targetForAction: action];
 }
 
-void* NSApplication_inst_targetForAction_to_from_(void *id, void* action, void* target, void* sender) {
+void* NSApplication_inst_targetForAction_to_from(void *id, void* action, void* target, void* sender) {
 	return [(NSApplication*)id
 		targetForAction: action
 		to: target
 		from: sender];
 }
 
-void NSApplication_inst_terminate_(void *id, void* sender) {
+void NSApplication_inst_terminate(void *id, void* sender) {
 	[(NSApplication*)id
 		terminate: sender];
 }
 
-void NSApplication_inst_replyToApplicationShouldTerminate_(void *id, BOOL shouldTerminate) {
+void NSApplication_inst_replyToApplicationShouldTerminate(void *id, BOOL shouldTerminate) {
 	[(NSApplication*)id
 		replyToApplicationShouldTerminate: shouldTerminate];
 }
 
-void NSApplication_inst_activateIgnoringOtherApps_(void *id, BOOL flag) {
+void NSApplication_inst_activateIgnoringOtherApps(void *id, BOOL flag) {
 	[(NSApplication*)id
 		activateIgnoringOtherApps: flag];
 }
@@ -980,42 +980,42 @@ void NSApplication_inst_unregisterForRemoteNotifications(void *id) {
 		unregisterForRemoteNotifications];
 }
 
-void NSApplication_inst_toggleTouchBarCustomizationPalette_(void *id, void* sender) {
+void NSApplication_inst_toggleTouchBarCustomizationPalette(void *id, void* sender) {
 	[(NSApplication*)id
 		toggleTouchBarCustomizationPalette: sender];
 }
 
-void NSApplication_inst_cancelUserAttentionRequest_(void *id, long request) {
+void NSApplication_inst_cancelUserAttentionRequest(void *id, long request) {
 	[(NSApplication*)id
 		cancelUserAttentionRequest: request];
 }
 
-void NSApplication_inst_registerUserInterfaceItemSearchHandler_(void *id, void* handler) {
+void NSApplication_inst_registerUserInterfaceItemSearchHandler(void *id, void* handler) {
 	[(NSApplication*)id
 		registerUserInterfaceItemSearchHandler: handler];
 }
 
-void NSApplication_inst_unregisterUserInterfaceItemSearchHandler_(void *id, void* handler) {
+void NSApplication_inst_unregisterUserInterfaceItemSearchHandler(void *id, void* handler) {
 	[(NSApplication*)id
 		unregisterUserInterfaceItemSearchHandler: handler];
 }
 
-void NSApplication_inst_showHelp_(void *id, void* sender) {
+void NSApplication_inst_showHelp(void *id, void* sender) {
 	[(NSApplication*)id
 		showHelp: sender];
 }
 
-void NSApplication_inst_activateContextHelpMode_(void *id, void* sender) {
+void NSApplication_inst_activateContextHelpMode(void *id, void* sender) {
 	[(NSApplication*)id
 		activateContextHelpMode: sender];
 }
 
-void NSApplication_inst_hideOtherApplications_(void *id, void* sender) {
+void NSApplication_inst_hideOtherApplications(void *id, void* sender) {
 	[(NSApplication*)id
 		hideOtherApplications: sender];
 }
 
-void NSApplication_inst_unhideAllApplications_(void *id, void* sender) {
+void NSApplication_inst_unhideAllApplications(void *id, void* sender) {
 	[(NSApplication*)id
 		unhideAllApplications: sender];
 }
@@ -1025,7 +1025,7 @@ long NSApplication_inst_activationPolicy(void *id) {
 		activationPolicy];
 }
 
-BOOL NSApplication_inst_setActivationPolicy_(void *id, long activationPolicy) {
+BOOL NSApplication_inst_setActivationPolicy(void *id, long activationPolicy) {
 	return [(NSApplication*)id
 		setActivationPolicy: activationPolicy];
 }
@@ -1040,7 +1040,7 @@ void* NSApplication_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSApplication_inst_setDelegate_(void *id, void* value) {
+void NSApplication_inst_setDelegate(void *id, void* value) {
 	[(NSApplication*)id
 		setDelegate: value];
 }
@@ -1070,7 +1070,7 @@ void* NSApplication_inst_applicationIconImage(void *id) {
 		applicationIconImage];
 }
 
-void NSApplication_inst_setApplicationIconImage_(void *id, void* value) {
+void NSApplication_inst_setApplicationIconImage(void *id, void* value) {
 	[(NSApplication*)id
 		setApplicationIconImage: value];
 }
@@ -1080,7 +1080,7 @@ void* NSApplication_inst_helpMenu(void *id) {
 		helpMenu];
 }
 
-void NSApplication_inst_setHelpMenu_(void *id, void* value) {
+void NSApplication_inst_setHelpMenu(void *id, void* value) {
 	[(NSApplication*)id
 		setHelpMenu: value];
 }
@@ -1090,7 +1090,7 @@ void* NSApplication_inst_servicesProvider(void *id) {
 		servicesProvider];
 }
 
-void NSApplication_inst_setServicesProvider_(void *id, void* value) {
+void NSApplication_inst_setServicesProvider(void *id, void* value) {
 	[(NSApplication*)id
 		setServicesProvider: value];
 }
@@ -1115,53 +1115,53 @@ void* NSApplication_inst_mainMenu(void *id) {
 		mainMenu];
 }
 
-void NSApplication_inst_setMainMenu_(void *id, void* value) {
+void NSApplication_inst_setMainMenu(void *id, void* value) {
 	[(NSApplication*)id
 		setMainMenu: value];
 }
 
-void* NSControl_inst_initWithFrame_(void *id, NSRect frameRect) {
+void* NSControl_inst_initWithFrame(void *id, NSRect frameRect) {
 	return [(NSControl*)id
 		initWithFrame: frameRect];
 }
 
-void NSControl_inst_takeDoubleValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeDoubleValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeDoubleValueFrom: sender];
 }
 
-void NSControl_inst_takeFloatValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeFloatValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeFloatValueFrom: sender];
 }
 
-void NSControl_inst_takeIntValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeIntValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeIntValueFrom: sender];
 }
 
-void NSControl_inst_takeIntegerValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeIntegerValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeIntegerValueFrom: sender];
 }
 
-void NSControl_inst_takeObjectValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeObjectValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeObjectValueFrom: sender];
 }
 
-void NSControl_inst_takeStringValueFrom_(void *id, void* sender) {
+void NSControl_inst_takeStringValueFrom(void *id, void* sender) {
 	[(NSControl*)id
 		takeStringValueFrom: sender];
 }
 
-void NSControl_inst_drawWithExpansionFrame_inView_(void *id, NSRect contentFrame, void* view) {
+void NSControl_inst_drawWithExpansionFrame_inView(void *id, NSRect contentFrame, void* view) {
 	[(NSControl*)id
 		drawWithExpansionFrame: contentFrame
 		inView: view];
 }
 
-NSRect NSControl_inst_expansionFrameWithFrame_(void *id, NSRect contentFrame) {
+NSRect NSControl_inst_expansionFrameWithFrame(void *id, NSRect contentFrame) {
 	return [(NSControl*)id
 		expansionFrameWithFrame: contentFrame];
 }
@@ -1181,7 +1181,7 @@ void NSControl_inst_validateEditing(void *id) {
 		validateEditing];
 }
 
-void NSControl_inst_editWithFrame_editor_delegate_event_(void *id, NSRect rect, void* textObj, void* delegate, void* event) {
+void NSControl_inst_editWithFrame_editor_delegate_event(void *id, NSRect rect, void* textObj, void* delegate, void* event) {
 	[(NSControl*)id
 		editWithFrame: rect
 		editor: textObj
@@ -1189,12 +1189,12 @@ void NSControl_inst_editWithFrame_editor_delegate_event_(void *id, NSRect rect, 
 		event: event];
 }
 
-void NSControl_inst_endEditing_(void *id, void* textObj) {
+void NSControl_inst_endEditing(void *id, void* textObj) {
 	[(NSControl*)id
 		endEditing: textObj];
 }
 
-void NSControl_inst_selectWithFrame_editor_delegate_start_length_(void *id, NSRect rect, void* textObj, void* delegate, long selStart, long selLength) {
+void NSControl_inst_selectWithFrame_editor_delegate_start_length(void *id, NSRect rect, void* textObj, void* delegate, long selStart, long selLength) {
 	[(NSControl*)id
 		selectWithFrame: rect
 		editor: textObj
@@ -1203,7 +1203,7 @@ void NSControl_inst_selectWithFrame_editor_delegate_start_length_(void *id, NSRe
 		length: selLength];
 }
 
-NSSize NSControl_inst_sizeThatFits_(void *id, NSSize size) {
+NSSize NSControl_inst_sizeThatFits(void *id, NSSize size) {
 	return [(NSControl*)id
 		sizeThatFits: size];
 }
@@ -1213,18 +1213,18 @@ void NSControl_inst_sizeToFit(void *id) {
 		sizeToFit];
 }
 
-BOOL NSControl_inst_sendAction_to_(void *id, void* action, void* target) {
+BOOL NSControl_inst_sendAction_to(void *id, void* action, void* target) {
 	return [(NSControl*)id
 		sendAction: action
 		to: target];
 }
 
-void NSControl_inst_performClick_(void *id, void* sender) {
+void NSControl_inst_performClick(void *id, void* sender) {
 	[(NSControl*)id
 		performClick: sender];
 }
 
-void NSControl_inst_mouseDown_(void *id, void* event) {
+void NSControl_inst_mouseDown(void *id, void* event) {
 	[(NSControl*)id
 		mouseDown: event];
 }
@@ -1239,7 +1239,7 @@ BOOL NSControl_inst_isEnabled(void *id) {
 		isEnabled];
 }
 
-void NSControl_inst_setEnabled_(void *id, BOOL value) {
+void NSControl_inst_setEnabled(void *id, BOOL value) {
 	[(NSControl*)id
 		setEnabled: value];
 }
@@ -1249,7 +1249,7 @@ int NSControl_inst_intValue(void *id) {
 		intValue];
 }
 
-void NSControl_inst_setIntValue_(void *id, int value) {
+void NSControl_inst_setIntValue(void *id, int value) {
 	[(NSControl*)id
 		setIntValue: value];
 }
@@ -1259,7 +1259,7 @@ long NSControl_inst_integerValue(void *id) {
 		integerValue];
 }
 
-void NSControl_inst_setIntegerValue_(void *id, long value) {
+void NSControl_inst_setIntegerValue(void *id, long value) {
 	[(NSControl*)id
 		setIntegerValue: value];
 }
@@ -1269,7 +1269,7 @@ void* NSControl_inst_objectValue(void *id) {
 		objectValue];
 }
 
-void NSControl_inst_setObjectValue_(void *id, void* value) {
+void NSControl_inst_setObjectValue(void *id, void* value) {
 	[(NSControl*)id
 		setObjectValue: value];
 }
@@ -1279,7 +1279,7 @@ void* NSControl_inst_stringValue(void *id) {
 		stringValue];
 }
 
-void NSControl_inst_setStringValue_(void *id, void* value) {
+void NSControl_inst_setStringValue(void *id, void* value) {
 	[(NSControl*)id
 		setStringValue: value];
 }
@@ -1289,7 +1289,7 @@ void* NSControl_inst_attributedStringValue(void *id) {
 		attributedStringValue];
 }
 
-void NSControl_inst_setAttributedStringValue_(void *id, void* value) {
+void NSControl_inst_setAttributedStringValue(void *id, void* value) {
 	[(NSControl*)id
 		setAttributedStringValue: value];
 }
@@ -1299,7 +1299,7 @@ void* NSControl_inst_font(void *id) {
 		font];
 }
 
-void NSControl_inst_setFont_(void *id, void* value) {
+void NSControl_inst_setFont(void *id, void* value) {
 	[(NSControl*)id
 		setFont: value];
 }
@@ -1309,7 +1309,7 @@ BOOL NSControl_inst_usesSingleLineMode(void *id) {
 		usesSingleLineMode];
 }
 
-void NSControl_inst_setUsesSingleLineMode_(void *id, BOOL value) {
+void NSControl_inst_setUsesSingleLineMode(void *id, BOOL value) {
 	[(NSControl*)id
 		setUsesSingleLineMode: value];
 }
@@ -1319,7 +1319,7 @@ BOOL NSControl_inst_allowsExpansionToolTips(void *id) {
 		allowsExpansionToolTips];
 }
 
-void NSControl_inst_setAllowsExpansionToolTips_(void *id, BOOL value) {
+void NSControl_inst_setAllowsExpansionToolTips(void *id, BOOL value) {
 	[(NSControl*)id
 		setAllowsExpansionToolTips: value];
 }
@@ -1329,7 +1329,7 @@ BOOL NSControl_inst_isHighlighted(void *id) {
 		isHighlighted];
 }
 
-void NSControl_inst_setHighlighted_(void *id, BOOL value) {
+void NSControl_inst_setHighlighted(void *id, BOOL value) {
 	[(NSControl*)id
 		setHighlighted: value];
 }
@@ -1339,7 +1339,7 @@ void* NSControl_inst_action(void *id) {
 		action];
 }
 
-void NSControl_inst_setAction_(void *id, void* value) {
+void NSControl_inst_setAction(void *id, void* value) {
 	[(NSControl*)id
 		setAction: value];
 }
@@ -1349,7 +1349,7 @@ void* NSControl_inst_target(void *id) {
 		target];
 }
 
-void NSControl_inst_setTarget_(void *id, void* value) {
+void NSControl_inst_setTarget(void *id, void* value) {
 	[(NSControl*)id
 		setTarget: value];
 }
@@ -1359,7 +1359,7 @@ BOOL NSControl_inst_isContinuous(void *id) {
 		isContinuous];
 }
 
-void NSControl_inst_setContinuous_(void *id, BOOL value) {
+void NSControl_inst_setContinuous(void *id, BOOL value) {
 	[(NSControl*)id
 		setContinuous: value];
 }
@@ -1369,7 +1369,7 @@ long NSControl_inst_tag(void *id) {
 		tag];
 }
 
-void NSControl_inst_setTag_(void *id, long value) {
+void NSControl_inst_setTag(void *id, long value) {
 	[(NSControl*)id
 		setTag: value];
 }
@@ -1379,7 +1379,7 @@ BOOL NSControl_inst_refusesFirstResponder(void *id) {
 		refusesFirstResponder];
 }
 
-void NSControl_inst_setRefusesFirstResponder_(void *id, BOOL value) {
+void NSControl_inst_setRefusesFirstResponder(void *id, BOOL value) {
 	[(NSControl*)id
 		setRefusesFirstResponder: value];
 }
@@ -1389,17 +1389,17 @@ BOOL NSControl_inst_ignoresMultiClick(void *id) {
 		ignoresMultiClick];
 }
 
-void NSControl_inst_setIgnoresMultiClick_(void *id, BOOL value) {
+void NSControl_inst_setIgnoresMultiClick(void *id, BOOL value) {
 	[(NSControl*)id
 		setIgnoresMultiClick: value];
 }
 
-void NSButton_inst_compressWithPrioritizedCompressionOptions_(void *id, void* prioritizedOptions) {
+void NSButton_inst_compressWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
 	[(NSButton*)id
 		compressWithPrioritizedCompressionOptions: prioritizedOptions];
 }
 
-NSSize NSButton_inst_minimumSizeWithPrioritizedCompressionOptions_(void *id, void* prioritizedOptions) {
+NSSize NSButton_inst_minimumSizeWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
 	return [(NSButton*)id
 		minimumSizeWithPrioritizedCompressionOptions: prioritizedOptions];
 }
@@ -1409,12 +1409,12 @@ void NSButton_inst_setNextState(void *id) {
 		setNextState];
 }
 
-void NSButton_inst_highlight_(void *id, BOOL flag) {
+void NSButton_inst_highlight(void *id, BOOL flag) {
 	[(NSButton*)id
 		highlight: flag];
 }
 
-BOOL NSButton_inst_performKeyEquivalent_(void *id, void* key) {
+BOOL NSButton_inst_performKeyEquivalent(void *id, void* key) {
 	return [(NSButton*)id
 		performKeyEquivalent: key];
 }
@@ -1429,7 +1429,7 @@ void* NSButton_inst_contentTintColor(void *id) {
 		contentTintColor];
 }
 
-void NSButton_inst_setContentTintColor_(void *id, void* value) {
+void NSButton_inst_setContentTintColor(void *id, void* value) {
 	[(NSButton*)id
 		setContentTintColor: value];
 }
@@ -1439,7 +1439,7 @@ BOOL NSButton_inst_hasDestructiveAction(void *id) {
 		hasDestructiveAction];
 }
 
-void NSButton_inst_setHasDestructiveAction_(void *id, BOOL value) {
+void NSButton_inst_setHasDestructiveAction(void *id, BOOL value) {
 	[(NSButton*)id
 		setHasDestructiveAction: value];
 }
@@ -1449,7 +1449,7 @@ void* NSButton_inst_alternateTitle(void *id) {
 		alternateTitle];
 }
 
-void NSButton_inst_setAlternateTitle_(void *id, void* value) {
+void NSButton_inst_setAlternateTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAlternateTitle: value];
 }
@@ -1459,7 +1459,7 @@ void* NSButton_inst_attributedTitle(void *id) {
 		attributedTitle];
 }
 
-void NSButton_inst_setAttributedTitle_(void *id, void* value) {
+void NSButton_inst_setAttributedTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAttributedTitle: value];
 }
@@ -1469,7 +1469,7 @@ void* NSButton_inst_attributedAlternateTitle(void *id) {
 		attributedAlternateTitle];
 }
 
-void NSButton_inst_setAttributedAlternateTitle_(void *id, void* value) {
+void NSButton_inst_setAttributedAlternateTitle(void *id, void* value) {
 	[(NSButton*)id
 		setAttributedAlternateTitle: value];
 }
@@ -1479,7 +1479,7 @@ void* NSButton_inst_title(void *id) {
 		title];
 }
 
-void NSButton_inst_setTitle_(void *id, void* value) {
+void NSButton_inst_setTitle(void *id, void* value) {
 	[(NSButton*)id
 		setTitle: value];
 }
@@ -1489,7 +1489,7 @@ void* NSButton_inst_sound(void *id) {
 		sound];
 }
 
-void NSButton_inst_setSound_(void *id, void* value) {
+void NSButton_inst_setSound(void *id, void* value) {
 	[(NSButton*)id
 		setSound: value];
 }
@@ -1499,7 +1499,7 @@ BOOL NSButton_inst_isSpringLoaded(void *id) {
 		isSpringLoaded];
 }
 
-void NSButton_inst_setSpringLoaded_(void *id, BOOL value) {
+void NSButton_inst_setSpringLoaded(void *id, BOOL value) {
 	[(NSButton*)id
 		setSpringLoaded: value];
 }
@@ -1509,7 +1509,7 @@ long NSButton_inst_maxAcceleratorLevel(void *id) {
 		maxAcceleratorLevel];
 }
 
-void NSButton_inst_setMaxAcceleratorLevel_(void *id, long value) {
+void NSButton_inst_setMaxAcceleratorLevel(void *id, long value) {
 	[(NSButton*)id
 		setMaxAcceleratorLevel: value];
 }
@@ -1519,7 +1519,7 @@ void* NSButton_inst_image(void *id) {
 		image];
 }
 
-void NSButton_inst_setImage_(void *id, void* value) {
+void NSButton_inst_setImage(void *id, void* value) {
 	[(NSButton*)id
 		setImage: value];
 }
@@ -1529,7 +1529,7 @@ void* NSButton_inst_alternateImage(void *id) {
 		alternateImage];
 }
 
-void NSButton_inst_setAlternateImage_(void *id, void* value) {
+void NSButton_inst_setAlternateImage(void *id, void* value) {
 	[(NSButton*)id
 		setAlternateImage: value];
 }
@@ -1539,7 +1539,7 @@ BOOL NSButton_inst_isBordered(void *id) {
 		isBordered];
 }
 
-void NSButton_inst_setBordered_(void *id, BOOL value) {
+void NSButton_inst_setBordered(void *id, BOOL value) {
 	[(NSButton*)id
 		setBordered: value];
 }
@@ -1549,7 +1549,7 @@ BOOL NSButton_inst_isTransparent(void *id) {
 		isTransparent];
 }
 
-void NSButton_inst_setTransparent_(void *id, BOOL value) {
+void NSButton_inst_setTransparent(void *id, BOOL value) {
 	[(NSButton*)id
 		setTransparent: value];
 }
@@ -1559,7 +1559,7 @@ void* NSButton_inst_bezelColor(void *id) {
 		bezelColor];
 }
 
-void NSButton_inst_setBezelColor_(void *id, void* value) {
+void NSButton_inst_setBezelColor(void *id, void* value) {
 	[(NSButton*)id
 		setBezelColor: value];
 }
@@ -1569,7 +1569,7 @@ BOOL NSButton_inst_showsBorderOnlyWhileMouseInside(void *id) {
 		showsBorderOnlyWhileMouseInside];
 }
 
-void NSButton_inst_setShowsBorderOnlyWhileMouseInside_(void *id, BOOL value) {
+void NSButton_inst_setShowsBorderOnlyWhileMouseInside(void *id, BOOL value) {
 	[(NSButton*)id
 		setShowsBorderOnlyWhileMouseInside: value];
 }
@@ -1579,7 +1579,7 @@ BOOL NSButton_inst_imageHugsTitle(void *id) {
 		imageHugsTitle];
 }
 
-void NSButton_inst_setImageHugsTitle_(void *id, BOOL value) {
+void NSButton_inst_setImageHugsTitle(void *id, BOOL value) {
 	[(NSButton*)id
 		setImageHugsTitle: value];
 }
@@ -1589,7 +1589,7 @@ BOOL NSButton_inst_allowsMixedState(void *id) {
 		allowsMixedState];
 }
 
-void NSButton_inst_setAllowsMixedState_(void *id, BOOL value) {
+void NSButton_inst_setAllowsMixedState(void *id, BOOL value) {
 	[(NSButton*)id
 		setAllowsMixedState: value];
 }
@@ -1599,7 +1599,7 @@ long NSButton_inst_state(void *id) {
 		state];
 }
 
-void NSButton_inst_setState_(void *id, long value) {
+void NSButton_inst_setState(void *id, long value) {
 	[(NSButton*)id
 		setState: value];
 }
@@ -1609,7 +1609,7 @@ void* NSButton_inst_keyEquivalent(void *id) {
 		keyEquivalent];
 }
 
-void NSButton_inst_setKeyEquivalent_(void *id, void* value) {
+void NSButton_inst_setKeyEquivalent(void *id, void* value) {
 	[(NSButton*)id
 		setKeyEquivalent: value];
 }
@@ -1814,7 +1814,7 @@ void NSFont_inst_set(void *id) {
 		set];
 }
 
-void* NSFont_inst_fontWithSize_(void *id, double fontSize) {
+void* NSFont_inst_fontWithSize(void *id, double fontSize) {
 	return [(NSFont*)id
 		fontWithSize: fontSize];
 }
@@ -1869,42 +1869,42 @@ void* NSFont_inst_verticalFont(void *id) {
 		verticalFont];
 }
 
-void* NSImage_inst_initByReferencingFile_(void *id, void* fileName) {
+void* NSImage_inst_initByReferencingFile(void *id, void* fileName) {
 	return [(NSImage*)id
 		initByReferencingFile: fileName];
 }
 
-void* NSImage_inst_initByReferencingURL_(void *id, void* url) {
+void* NSImage_inst_initByReferencingURL(void *id, void* url) {
 	return [(NSImage*)id
 		initByReferencingURL: url];
 }
 
-void* NSImage_inst_initWithContentsOfFile_(void *id, void* fileName) {
+void* NSImage_inst_initWithContentsOfFile(void *id, void* fileName) {
 	return [(NSImage*)id
 		initWithContentsOfFile: fileName];
 }
 
-void* NSImage_inst_initWithContentsOfURL_(void *id, void* url) {
+void* NSImage_inst_initWithContentsOfURL(void *id, void* url) {
 	return [(NSImage*)id
 		initWithContentsOfURL: url];
 }
 
-void* NSImage_inst_initWithData_(void *id, void* data) {
+void* NSImage_inst_initWithData(void *id, void* data) {
 	return [(NSImage*)id
 		initWithData: data];
 }
 
-void* NSImage_inst_initWithDataIgnoringOrientation_(void *id, void* data) {
+void* NSImage_inst_initWithDataIgnoringOrientation(void *id, void* data) {
 	return [(NSImage*)id
 		initWithDataIgnoringOrientation: data];
 }
 
-void* NSImage_inst_initWithPasteboard_(void *id, void* pasteboard) {
+void* NSImage_inst_initWithPasteboard(void *id, void* pasteboard) {
 	return [(NSImage*)id
 		initWithPasteboard: pasteboard];
 }
 
-void* NSImage_inst_initWithSize_(void *id, NSSize size) {
+void* NSImage_inst_initWithSize(void *id, NSSize size) {
 	return [(NSImage*)id
 		initWithSize: size];
 }
@@ -1914,12 +1914,12 @@ BOOL NSImage_inst_isTemplate(void *id) {
 		isTemplate];
 }
 
-void NSImage_inst_addRepresentations_(void *id, void* imageReps) {
+void NSImage_inst_addRepresentations(void *id, void* imageReps) {
 	[(NSImage*)id
 		addRepresentations: imageReps];
 }
 
-void NSImage_inst_drawInRect_(void *id, NSRect rect) {
+void NSImage_inst_drawInRect(void *id, NSRect rect) {
 	[(NSImage*)id
 		drawInRect: rect];
 }
@@ -1929,7 +1929,7 @@ void NSImage_inst_lockFocus(void *id) {
 		lockFocus];
 }
 
-void NSImage_inst_lockFocusFlipped_(void *id, BOOL flipped) {
+void NSImage_inst_lockFocusFlipped(void *id, BOOL flipped) {
 	[(NSImage*)id
 		lockFocusFlipped: flipped];
 }
@@ -1949,12 +1949,12 @@ void NSImage_inst_cancelIncrementalLoad(void *id) {
 		cancelIncrementalLoad];
 }
 
-void* NSImage_inst_layerContentsForContentsScale_(void *id, double layerContentsScale) {
+void* NSImage_inst_layerContentsForContentsScale(void *id, double layerContentsScale) {
 	return [(NSImage*)id
 		layerContentsForContentsScale: layerContentsScale];
 }
 
-double NSImage_inst_recommendedLayerContentsScale_(void *id, double preferredContentsScale) {
+double NSImage_inst_recommendedLayerContentsScale(void *id, double preferredContentsScale) {
 	return [(NSImage*)id
 		recommendedLayerContentsScale: preferredContentsScale];
 }
@@ -1969,7 +1969,7 @@ void* NSImage_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSImage_inst_setDelegate_(void *id, void* value) {
+void NSImage_inst_setDelegate(void *id, void* value) {
 	[(NSImage*)id
 		setDelegate: value];
 }
@@ -1979,12 +1979,12 @@ NSSize NSImage_inst_size(void *id) {
 		size];
 }
 
-void NSImage_inst_setSize_(void *id, NSSize value) {
+void NSImage_inst_setSize(void *id, NSSize value) {
 	[(NSImage*)id
 		setSize: value];
 }
 
-void NSImage_inst_setTemplate_(void *id, BOOL value) {
+void NSImage_inst_setTemplate(void *id, BOOL value) {
 	[(NSImage*)id
 		setTemplate: value];
 }
@@ -1999,7 +1999,7 @@ BOOL NSImage_inst_prefersColorMatch(void *id) {
 		prefersColorMatch];
 }
 
-void NSImage_inst_setPrefersColorMatch_(void *id, BOOL value) {
+void NSImage_inst_setPrefersColorMatch(void *id, BOOL value) {
 	[(NSImage*)id
 		setPrefersColorMatch: value];
 }
@@ -2009,7 +2009,7 @@ BOOL NSImage_inst_usesEPSOnResolutionMismatch(void *id) {
 		usesEPSOnResolutionMismatch];
 }
 
-void NSImage_inst_setUsesEPSOnResolutionMismatch_(void *id, BOOL value) {
+void NSImage_inst_setUsesEPSOnResolutionMismatch(void *id, BOOL value) {
 	[(NSImage*)id
 		setUsesEPSOnResolutionMismatch: value];
 }
@@ -2019,7 +2019,7 @@ BOOL NSImage_inst_matchesOnMultipleResolution(void *id) {
 		matchesOnMultipleResolution];
 }
 
-void NSImage_inst_setMatchesOnMultipleResolution_(void *id, BOOL value) {
+void NSImage_inst_setMatchesOnMultipleResolution(void *id, BOOL value) {
 	[(NSImage*)id
 		setMatchesOnMultipleResolution: value];
 }
@@ -2034,7 +2034,7 @@ void* NSImage_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSImage_inst_setBackgroundColor_(void *id, void* value) {
+void NSImage_inst_setBackgroundColor(void *id, void* value) {
 	[(NSImage*)id
 		setBackgroundColor: value];
 }
@@ -2044,7 +2044,7 @@ NSRect NSImage_inst_alignmentRect(void *id) {
 		alignmentRect];
 }
 
-void NSImage_inst_setAlignmentRect_(void *id, NSRect value) {
+void NSImage_inst_setAlignmentRect(void *id, NSRect value) {
 	[(NSImage*)id
 		setAlignmentRect: value];
 }
@@ -2059,7 +2059,7 @@ void* NSImage_inst_accessibilityDescription(void *id) {
 		accessibilityDescription];
 }
 
-void NSImage_inst_setAccessibilityDescription_(void *id, void* value) {
+void NSImage_inst_setAccessibilityDescription(void *id, void* value) {
 	[(NSImage*)id
 		setAccessibilityDescription: value];
 }
@@ -2069,7 +2069,7 @@ BOOL NSImage_inst_matchesOnlyOnBestFittingAxis(void *id) {
 		matchesOnlyOnBestFittingAxis];
 }
 
-void NSImage_inst_setMatchesOnlyOnBestFittingAxis_(void *id, BOOL value) {
+void NSImage_inst_setMatchesOnlyOnBestFittingAxis(void *id, BOOL value) {
 	[(NSImage*)id
 		setMatchesOnlyOnBestFittingAxis: value];
 }
@@ -2084,7 +2084,7 @@ void* NSImageView_inst_image(void *id) {
 		image];
 }
 
-void NSImageView_inst_setImage_(void *id, void* value) {
+void NSImageView_inst_setImage(void *id, void* value) {
 	[(NSImageView*)id
 		setImage: value];
 }
@@ -2094,7 +2094,7 @@ BOOL NSImageView_inst_animates(void *id) {
 		animates];
 }
 
-void NSImageView_inst_setAnimates_(void *id, BOOL value) {
+void NSImageView_inst_setAnimates(void *id, BOOL value) {
 	[(NSImageView*)id
 		setAnimates: value];
 }
@@ -2104,7 +2104,7 @@ BOOL NSImageView_inst_isEditable(void *id) {
 		isEditable];
 }
 
-void NSImageView_inst_setEditable_(void *id, BOOL value) {
+void NSImageView_inst_setEditable(void *id, BOOL value) {
 	[(NSImageView*)id
 		setEditable: value];
 }
@@ -2114,7 +2114,7 @@ BOOL NSImageView_inst_allowsCutCopyPaste(void *id) {
 		allowsCutCopyPaste];
 }
 
-void NSImageView_inst_setAllowsCutCopyPaste_(void *id, BOOL value) {
+void NSImageView_inst_setAllowsCutCopyPaste(void *id, BOOL value) {
 	[(NSImageView*)id
 		setAllowsCutCopyPaste: value];
 }
@@ -2124,18 +2124,18 @@ void* NSImageView_inst_contentTintColor(void *id) {
 		contentTintColor];
 }
 
-void NSImageView_inst_setContentTintColor_(void *id, void* value) {
+void NSImageView_inst_setContentTintColor(void *id, void* value) {
 	[(NSImageView*)id
 		setContentTintColor: value];
 }
 
-void* NSNib_inst_initWithNibData_bundle_(void *id, void* nibData, void* bundle) {
+void* NSNib_inst_initWithNibData_bundle(void *id, void* nibData, void* bundle) {
 	return [(NSNib*)id
 		initWithNibData: nibData
 		bundle: bundle];
 }
 
-BOOL NSNib_inst_instantiateWithOwner_topLevelObjects_(void *id, void* owner, void* topLevelObjects) {
+BOOL NSNib_inst_instantiateWithOwner_topLevelObjects(void *id, void* owner, void* topLevelObjects) {
 	return [(NSNib*)id
 		instantiateWithOwner: owner
 		topLevelObjects: topLevelObjects];
@@ -2156,41 +2156,41 @@ long NSPasteboard_inst_clearContents(void *id) {
 		clearContents];
 }
 
-BOOL NSPasteboard_inst_writeObjects_(void *id, void* objects) {
+BOOL NSPasteboard_inst_writeObjects(void *id, void* objects) {
 	return [(NSPasteboard*)id
 		writeObjects: objects];
 }
 
-void* NSPasteboard_inst_readObjectsForClasses_options_(void *id, void* classArray, void* options) {
+void* NSPasteboard_inst_readObjectsForClasses_options(void *id, void* classArray, void* options) {
 	return [(NSPasteboard*)id
 		readObjectsForClasses: classArray
 		options: options];
 }
 
-BOOL NSPasteboard_inst_canReadItemWithDataConformingToTypes_(void *id, void* types) {
+BOOL NSPasteboard_inst_canReadItemWithDataConformingToTypes(void *id, void* types) {
 	return [(NSPasteboard*)id
 		canReadItemWithDataConformingToTypes: types];
 }
 
-BOOL NSPasteboard_inst_canReadObjectForClasses_options_(void *id, void* classArray, void* options) {
+BOOL NSPasteboard_inst_canReadObjectForClasses_options(void *id, void* classArray, void* options) {
 	return [(NSPasteboard*)id
 		canReadObjectForClasses: classArray
 		options: options];
 }
 
-long NSPasteboard_inst_declareTypes_owner_(void *id, void* newTypes, void* newOwner) {
+long NSPasteboard_inst_declareTypes_owner(void *id, void* newTypes, void* newOwner) {
 	return [(NSPasteboard*)id
 		declareTypes: newTypes
 		owner: newOwner];
 }
 
-long NSPasteboard_inst_addTypes_owner_(void *id, void* newTypes, void* newOwner) {
+long NSPasteboard_inst_addTypes_owner(void *id, void* newTypes, void* newOwner) {
 	return [(NSPasteboard*)id
 		addTypes: newTypes
 		owner: newOwner];
 }
 
-BOOL NSPasteboard_inst_writeFileContents_(void *id, void* filename) {
+BOOL NSPasteboard_inst_writeFileContents(void *id, void* filename) {
 	return [(NSPasteboard*)id
 		writeFileContents: filename];
 }
@@ -2220,88 +2220,88 @@ void* NSLayoutManager_inst_init(void *id) {
 		init];
 }
 
-void NSLayoutManager_inst_addTextContainer_(void *id, void* container) {
+void NSLayoutManager_inst_addTextContainer(void *id, void* container) {
 	[(NSLayoutManager*)id
 		addTextContainer: container];
 }
 
-void NSLayoutManager_inst_insertTextContainer_atIndex_(void *id, void* container, unsigned long index) {
+void NSLayoutManager_inst_insertTextContainer_atIndex(void *id, void* container, unsigned long index) {
 	[(NSLayoutManager*)id
 		insertTextContainer: container
 		atIndex: index];
 }
 
-void NSLayoutManager_inst_removeTextContainerAtIndex_(void *id, unsigned long index) {
+void NSLayoutManager_inst_removeTextContainerAtIndex(void *id, unsigned long index) {
 	[(NSLayoutManager*)id
 		removeTextContainerAtIndex: index];
 }
 
-void NSLayoutManager_inst_textContainerChangedGeometry_(void *id, void* container) {
+void NSLayoutManager_inst_textContainerChangedGeometry(void *id, void* container) {
 	[(NSLayoutManager*)id
 		textContainerChangedGeometry: container];
 }
 
-void NSLayoutManager_inst_textContainerChangedTextView_(void *id, void* container) {
+void NSLayoutManager_inst_textContainerChangedTextView(void *id, void* container) {
 	[(NSLayoutManager*)id
 		textContainerChangedTextView: container];
 }
 
-NSRect NSLayoutManager_inst_usedRectForTextContainer_(void *id, void* container) {
+NSRect NSLayoutManager_inst_usedRectForTextContainer(void *id, void* container) {
 	return [(NSLayoutManager*)id
 		usedRectForTextContainer: container];
 }
 
-void NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer_(void *id, NSRect bounds, void* container) {
+void NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer(void *id, NSRect bounds, void* container) {
 	[(NSLayoutManager*)id
 		ensureLayoutForBoundingRect: bounds
 		inTextContainer: container];
 }
 
-void NSLayoutManager_inst_ensureLayoutForTextContainer_(void *id, void* container) {
+void NSLayoutManager_inst_ensureLayoutForTextContainer(void *id, void* container) {
 	[(NSLayoutManager*)id
 		ensureLayoutForTextContainer: container];
 }
 
-unsigned long NSLayoutManager_inst_characterIndexForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
+unsigned long NSLayoutManager_inst_characterIndexForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		characterIndexForGlyphAtIndex: glyphIndex];
 }
 
-unsigned long NSLayoutManager_inst_glyphIndexForCharacterAtIndex_(void *id, unsigned long charIndex) {
+unsigned long NSLayoutManager_inst_glyphIndexForCharacterAtIndex(void *id, unsigned long charIndex) {
 	return [(NSLayoutManager*)id
 		glyphIndexForCharacterAtIndex: charIndex];
 }
 
-BOOL NSLayoutManager_inst_isValidGlyphIndex_(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_isValidGlyphIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		isValidGlyphIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex_(void *id, BOOL flag, unsigned long glyphIndex) {
+void NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
 	[(NSLayoutManager*)id
 		setDrawsOutsideLineFragment: flag
 		forGlyphAtIndex: glyphIndex];
 }
 
-void NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer_(void *id, NSRect fragmentRect, NSRect usedRect, void* container) {
+void NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer(void *id, NSRect fragmentRect, NSRect usedRect, void* container) {
 	[(NSLayoutManager*)id
 		setExtraLineFragmentRect: fragmentRect
 		usedRect: usedRect
 		textContainer: container];
 }
 
-void NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex_(void *id, BOOL flag, unsigned long glyphIndex) {
+void NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex(void *id, BOOL flag, unsigned long glyphIndex) {
 	[(NSLayoutManager*)id
 		setNotShownAttribute: flag
 		forGlyphAtIndex: glyphIndex];
 }
 
-NSSize NSLayoutManager_inst_attachmentSizeForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
+NSSize NSLayoutManager_inst_attachmentSizeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		attachmentSizeForGlyphAtIndex: glyphIndex];
 }
 
-BOOL NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		drawsOutsideLineFragmentForGlyphAtIndex: glyphIndex];
 }
@@ -2316,22 +2316,22 @@ unsigned long NSLayoutManager_inst_firstUnlaidGlyphIndex(void *id) {
 		firstUnlaidGlyphIndex];
 }
 
-BOOL NSLayoutManager_inst_notShownAttributeForGlyphAtIndex_(void *id, unsigned long glyphIndex) {
+BOOL NSLayoutManager_inst_notShownAttributeForGlyphAtIndex(void *id, unsigned long glyphIndex) {
 	return [(NSLayoutManager*)id
 		notShownAttributeForGlyphAtIndex: glyphIndex];
 }
 
-BOOL NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow_(void *id, void* window) {
+BOOL NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow(void *id, void* window) {
 	return [(NSLayoutManager*)id
 		layoutManagerOwnsFirstResponderInWindow: window];
 }
 
-double NSLayoutManager_inst_defaultLineHeightForFont_(void *id, void* theFont) {
+double NSLayoutManager_inst_defaultLineHeightForFont(void *id, void* theFont) {
 	return [(NSLayoutManager*)id
 		defaultLineHeightForFont: theFont];
 }
 
-double NSLayoutManager_inst_defaultBaselineOffsetForFont_(void *id, void* theFont) {
+double NSLayoutManager_inst_defaultBaselineOffsetForFont(void *id, void* theFont) {
 	return [(NSLayoutManager*)id
 		defaultBaselineOffsetForFont: theFont];
 }
@@ -2341,7 +2341,7 @@ void* NSLayoutManager_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSLayoutManager_inst_setDelegate_(void *id, void* value) {
+void NSLayoutManager_inst_setDelegate(void *id, void* value) {
 	[(NSLayoutManager*)id
 		setDelegate: value];
 }
@@ -2351,7 +2351,7 @@ BOOL NSLayoutManager_inst_allowsNonContiguousLayout(void *id) {
 		allowsNonContiguousLayout];
 }
 
-void NSLayoutManager_inst_setAllowsNonContiguousLayout_(void *id, BOOL value) {
+void NSLayoutManager_inst_setAllowsNonContiguousLayout(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setAllowsNonContiguousLayout: value];
 }
@@ -2366,7 +2366,7 @@ BOOL NSLayoutManager_inst_showsInvisibleCharacters(void *id) {
 		showsInvisibleCharacters];
 }
 
-void NSLayoutManager_inst_setShowsInvisibleCharacters_(void *id, BOOL value) {
+void NSLayoutManager_inst_setShowsInvisibleCharacters(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setShowsInvisibleCharacters: value];
 }
@@ -2376,7 +2376,7 @@ BOOL NSLayoutManager_inst_showsControlCharacters(void *id) {
 		showsControlCharacters];
 }
 
-void NSLayoutManager_inst_setShowsControlCharacters_(void *id, BOOL value) {
+void NSLayoutManager_inst_setShowsControlCharacters(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setShowsControlCharacters: value];
 }
@@ -2386,7 +2386,7 @@ BOOL NSLayoutManager_inst_usesFontLeading(void *id) {
 		usesFontLeading];
 }
 
-void NSLayoutManager_inst_setUsesFontLeading_(void *id, BOOL value) {
+void NSLayoutManager_inst_setUsesFontLeading(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setUsesFontLeading: value];
 }
@@ -2396,7 +2396,7 @@ BOOL NSLayoutManager_inst_backgroundLayoutEnabled(void *id) {
 		backgroundLayoutEnabled];
 }
 
-void NSLayoutManager_inst_setBackgroundLayoutEnabled_(void *id, BOOL value) {
+void NSLayoutManager_inst_setBackgroundLayoutEnabled(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setBackgroundLayoutEnabled: value];
 }
@@ -2406,7 +2406,7 @@ BOOL NSLayoutManager_inst_limitsLayoutForSuspiciousContents(void *id) {
 		limitsLayoutForSuspiciousContents];
 }
 
-void NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents_(void *id, BOOL value) {
+void NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setLimitsLayoutForSuspiciousContents: value];
 }
@@ -2416,7 +2416,7 @@ BOOL NSLayoutManager_inst_usesDefaultHyphenation(void *id) {
 		usesDefaultHyphenation];
 }
 
-void NSLayoutManager_inst_setUsesDefaultHyphenation_(void *id, BOOL value) {
+void NSLayoutManager_inst_setUsesDefaultHyphenation(void *id, BOOL value) {
 	[(NSLayoutManager*)id
 		setUsesDefaultHyphenation: value];
 }
@@ -2456,18 +2456,18 @@ void* NSLayoutManager_inst_textViewForBeginningOfSelection(void *id) {
 		textViewForBeginningOfSelection];
 }
 
-void* NSMenu_inst_initWithTitle_(void *id, void* title) {
+void* NSMenu_inst_initWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		initWithTitle: title];
 }
 
-void NSMenu_inst_insertItem_atIndex_(void *id, void* newItem, long index) {
+void NSMenu_inst_insertItem_atIndex(void *id, void* newItem, long index) {
 	[(NSMenu*)id
 		insertItem: newItem
 		atIndex: index];
 }
 
-void* NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex_(void *id, void* string, void* selector, void* charCode, long index) {
+void* NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex(void *id, void* string, void* selector, void* charCode, long index) {
 	return [(NSMenu*)id
 		insertItemWithTitle: string
 		action: selector
@@ -2475,29 +2475,29 @@ void* NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex_(void *id, vo
 		atIndex: index];
 }
 
-void NSMenu_inst_addItem_(void *id, void* newItem) {
+void NSMenu_inst_addItem(void *id, void* newItem) {
 	[(NSMenu*)id
 		addItem: newItem];
 }
 
-void* NSMenu_inst_addItemWithTitle_action_keyEquivalent_(void *id, void* string, void* selector, void* charCode) {
+void* NSMenu_inst_addItemWithTitle_action_keyEquivalent(void *id, void* string, void* selector, void* charCode) {
 	return [(NSMenu*)id
 		addItemWithTitle: string
 		action: selector
 		keyEquivalent: charCode];
 }
 
-void NSMenu_inst_removeItem_(void *id, void* item) {
+void NSMenu_inst_removeItem(void *id, void* item) {
 	[(NSMenu*)id
 		removeItem: item];
 }
 
-void NSMenu_inst_removeItemAtIndex_(void *id, long index) {
+void NSMenu_inst_removeItemAtIndex(void *id, long index) {
 	[(NSMenu*)id
 		removeItemAtIndex: index];
 }
 
-void NSMenu_inst_itemChanged_(void *id, void* item) {
+void NSMenu_inst_itemChanged(void *id, void* item) {
 	[(NSMenu*)id
 		itemChanged: item];
 }
@@ -2507,59 +2507,59 @@ void NSMenu_inst_removeAllItems(void *id) {
 		removeAllItems];
 }
 
-void* NSMenu_inst_itemWithTag_(void *id, long tag) {
+void* NSMenu_inst_itemWithTag(void *id, long tag) {
 	return [(NSMenu*)id
 		itemWithTag: tag];
 }
 
-void* NSMenu_inst_itemWithTitle_(void *id, void* title) {
+void* NSMenu_inst_itemWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		itemWithTitle: title];
 }
 
-void* NSMenu_inst_itemAtIndex_(void *id, long index) {
+void* NSMenu_inst_itemAtIndex(void *id, long index) {
 	return [(NSMenu*)id
 		itemAtIndex: index];
 }
 
-long NSMenu_inst_indexOfItem_(void *id, void* item) {
+long NSMenu_inst_indexOfItem(void *id, void* item) {
 	return [(NSMenu*)id
 		indexOfItem: item];
 }
 
-long NSMenu_inst_indexOfItemWithTitle_(void *id, void* title) {
+long NSMenu_inst_indexOfItemWithTitle(void *id, void* title) {
 	return [(NSMenu*)id
 		indexOfItemWithTitle: title];
 }
 
-long NSMenu_inst_indexOfItemWithTag_(void *id, long tag) {
+long NSMenu_inst_indexOfItemWithTag(void *id, long tag) {
 	return [(NSMenu*)id
 		indexOfItemWithTag: tag];
 }
 
-long NSMenu_inst_indexOfItemWithTarget_andAction_(void *id, void* target, void* actionSelector) {
+long NSMenu_inst_indexOfItemWithTarget_andAction(void *id, void* target, void* actionSelector) {
 	return [(NSMenu*)id
 		indexOfItemWithTarget: target
 		andAction: actionSelector];
 }
 
-long NSMenu_inst_indexOfItemWithRepresentedObject_(void *id, void* object) {
+long NSMenu_inst_indexOfItemWithRepresentedObject(void *id, void* object) {
 	return [(NSMenu*)id
 		indexOfItemWithRepresentedObject: object];
 }
 
-long NSMenu_inst_indexOfItemWithSubmenu_(void *id, void* submenu) {
+long NSMenu_inst_indexOfItemWithSubmenu(void *id, void* submenu) {
 	return [(NSMenu*)id
 		indexOfItemWithSubmenu: submenu];
 }
 
-void NSMenu_inst_setSubmenu_forItem_(void *id, void* menu, void* item) {
+void NSMenu_inst_setSubmenu_forItem(void *id, void* menu, void* item) {
 	[(NSMenu*)id
 		setSubmenu: menu
 		forItem: item];
 }
 
-void NSMenu_inst_submenuAction_(void *id, void* sender) {
+void NSMenu_inst_submenuAction(void *id, void* sender) {
 	[(NSMenu*)id
 		submenuAction: sender];
 }
@@ -2569,17 +2569,17 @@ void NSMenu_inst_update(void *id) {
 		update];
 }
 
-BOOL NSMenu_inst_performKeyEquivalent_(void *id, void* event) {
+BOOL NSMenu_inst_performKeyEquivalent(void *id, void* event) {
 	return [(NSMenu*)id
 		performKeyEquivalent: event];
 }
 
-void NSMenu_inst_performActionForItemAtIndex_(void *id, long index) {
+void NSMenu_inst_performActionForItemAtIndex(void *id, long index) {
 	[(NSMenu*)id
 		performActionForItemAtIndex: index];
 }
 
-BOOL NSMenu_inst_popUpMenuPositioningItem_atLocation_inView_(void *id, void* item, NSPoint location, void* view) {
+BOOL NSMenu_inst_popUpMenuPositioningItem_atLocation_inView(void *id, void* item, NSPoint location, void* view) {
 	return [(NSMenu*)id
 		popUpMenuPositioningItem: item
 		atLocation: location
@@ -2616,7 +2616,7 @@ void* NSMenu_inst_itemArray(void *id) {
 		itemArray];
 }
 
-void NSMenu_inst_setItemArray_(void *id, void* value) {
+void NSMenu_inst_setItemArray(void *id, void* value) {
 	[(NSMenu*)id
 		setItemArray: value];
 }
@@ -2626,7 +2626,7 @@ void* NSMenu_inst_supermenu(void *id) {
 		supermenu];
 }
 
-void NSMenu_inst_setSupermenu_(void *id, void* value) {
+void NSMenu_inst_setSupermenu(void *id, void* value) {
 	[(NSMenu*)id
 		setSupermenu: value];
 }
@@ -2636,7 +2636,7 @@ BOOL NSMenu_inst_autoenablesItems(void *id) {
 		autoenablesItems];
 }
 
-void NSMenu_inst_setAutoenablesItems_(void *id, BOOL value) {
+void NSMenu_inst_setAutoenablesItems(void *id, BOOL value) {
 	[(NSMenu*)id
 		setAutoenablesItems: value];
 }
@@ -2646,7 +2646,7 @@ void* NSMenu_inst_font(void *id) {
 		font];
 }
 
-void NSMenu_inst_setFont_(void *id, void* value) {
+void NSMenu_inst_setFont(void *id, void* value) {
 	[(NSMenu*)id
 		setFont: value];
 }
@@ -2656,7 +2656,7 @@ void* NSMenu_inst_title(void *id) {
 		title];
 }
 
-void NSMenu_inst_setTitle_(void *id, void* value) {
+void NSMenu_inst_setTitle(void *id, void* value) {
 	[(NSMenu*)id
 		setTitle: value];
 }
@@ -2666,7 +2666,7 @@ double NSMenu_inst_minimumWidth(void *id) {
 		minimumWidth];
 }
 
-void NSMenu_inst_setMinimumWidth_(void *id, double value) {
+void NSMenu_inst_setMinimumWidth(void *id, double value) {
 	[(NSMenu*)id
 		setMinimumWidth: value];
 }
@@ -2681,7 +2681,7 @@ BOOL NSMenu_inst_allowsContextMenuPlugIns(void *id) {
 		allowsContextMenuPlugIns];
 }
 
-void NSMenu_inst_setAllowsContextMenuPlugIns_(void *id, BOOL value) {
+void NSMenu_inst_setAllowsContextMenuPlugIns(void *id, BOOL value) {
 	[(NSMenu*)id
 		setAllowsContextMenuPlugIns: value];
 }
@@ -2691,7 +2691,7 @@ BOOL NSMenu_inst_showsStateColumn(void *id) {
 		showsStateColumn];
 }
 
-void NSMenu_inst_setShowsStateColumn_(void *id, BOOL value) {
+void NSMenu_inst_setShowsStateColumn(void *id, BOOL value) {
 	[(NSMenu*)id
 		setShowsStateColumn: value];
 }
@@ -2706,12 +2706,12 @@ void* NSMenu_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSMenu_inst_setDelegate_(void *id, void* value) {
+void NSMenu_inst_setDelegate(void *id, void* value) {
 	[(NSMenu*)id
 		setDelegate: value];
 }
 
-void NSPopover_inst_performClose_(void *id, void* sender) {
+void NSPopover_inst_performClose(void *id, void* sender) {
 	[(NSPopover*)id
 		performClose: sender];
 }
@@ -2731,7 +2731,7 @@ long NSPopover_inst_behavior(void *id) {
 		behavior];
 }
 
-void NSPopover_inst_setBehavior_(void *id, long value) {
+void NSPopover_inst_setBehavior(void *id, long value) {
 	[(NSPopover*)id
 		setBehavior: value];
 }
@@ -2741,7 +2741,7 @@ NSRect NSPopover_inst_positioningRect(void *id) {
 		positioningRect];
 }
 
-void NSPopover_inst_setPositioningRect_(void *id, NSRect value) {
+void NSPopover_inst_setPositioningRect(void *id, NSRect value) {
 	[(NSPopover*)id
 		setPositioningRect: value];
 }
@@ -2751,7 +2751,7 @@ BOOL NSPopover_inst_animates(void *id) {
 		animates];
 }
 
-void NSPopover_inst_setAnimates_(void *id, BOOL value) {
+void NSPopover_inst_setAnimates(void *id, BOOL value) {
 	[(NSPopover*)id
 		setAnimates: value];
 }
@@ -2761,7 +2761,7 @@ NSSize NSPopover_inst_contentSize(void *id) {
 		contentSize];
 }
 
-void NSPopover_inst_setContentSize_(void *id, NSSize value) {
+void NSPopover_inst_setContentSize(void *id, NSSize value) {
 	[(NSPopover*)id
 		setContentSize: value];
 }
@@ -2776,7 +2776,7 @@ BOOL NSPopover_inst_isDetached(void *id) {
 		isDetached];
 }
 
-void* NSMenuItem_inst_initWithTitle_action_keyEquivalent_(void *id, void* string, void* selector, void* charCode) {
+void* NSMenuItem_inst_initWithTitle_action_keyEquivalent(void *id, void* string, void* selector, void* charCode) {
 	return [(NSMenuItem*)id
 		initWithTitle: string
 		action: selector
@@ -2793,7 +2793,7 @@ BOOL NSMenuItem_inst_isEnabled(void *id) {
 		isEnabled];
 }
 
-void NSMenuItem_inst_setEnabled_(void *id, BOOL value) {
+void NSMenuItem_inst_setEnabled(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setEnabled: value];
 }
@@ -2803,7 +2803,7 @@ BOOL NSMenuItem_inst_isHidden(void *id) {
 		isHidden];
 }
 
-void NSMenuItem_inst_setHidden_(void *id, BOOL value) {
+void NSMenuItem_inst_setHidden(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setHidden: value];
 }
@@ -2818,7 +2818,7 @@ void* NSMenuItem_inst_target(void *id) {
 		target];
 }
 
-void NSMenuItem_inst_setTarget_(void *id, void* value) {
+void NSMenuItem_inst_setTarget(void *id, void* value) {
 	[(NSMenuItem*)id
 		setTarget: value];
 }
@@ -2828,7 +2828,7 @@ void* NSMenuItem_inst_action(void *id) {
 		action];
 }
 
-void NSMenuItem_inst_setAction_(void *id, void* value) {
+void NSMenuItem_inst_setAction(void *id, void* value) {
 	[(NSMenuItem*)id
 		setAction: value];
 }
@@ -2838,7 +2838,7 @@ void* NSMenuItem_inst_title(void *id) {
 		title];
 }
 
-void NSMenuItem_inst_setTitle_(void *id, void* value) {
+void NSMenuItem_inst_setTitle(void *id, void* value) {
 	[(NSMenuItem*)id
 		setTitle: value];
 }
@@ -2848,7 +2848,7 @@ void* NSMenuItem_inst_attributedTitle(void *id) {
 		attributedTitle];
 }
 
-void NSMenuItem_inst_setAttributedTitle_(void *id, void* value) {
+void NSMenuItem_inst_setAttributedTitle(void *id, void* value) {
 	[(NSMenuItem*)id
 		setAttributedTitle: value];
 }
@@ -2858,7 +2858,7 @@ long NSMenuItem_inst_tag(void *id) {
 		tag];
 }
 
-void NSMenuItem_inst_setTag_(void *id, long value) {
+void NSMenuItem_inst_setTag(void *id, long value) {
 	[(NSMenuItem*)id
 		setTag: value];
 }
@@ -2868,7 +2868,7 @@ long NSMenuItem_inst_state(void *id) {
 		state];
 }
 
-void NSMenuItem_inst_setState_(void *id, long value) {
+void NSMenuItem_inst_setState(void *id, long value) {
 	[(NSMenuItem*)id
 		setState: value];
 }
@@ -2878,7 +2878,7 @@ void* NSMenuItem_inst_image(void *id) {
 		image];
 }
 
-void NSMenuItem_inst_setImage_(void *id, void* value) {
+void NSMenuItem_inst_setImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setImage: value];
 }
@@ -2888,7 +2888,7 @@ void* NSMenuItem_inst_onStateImage(void *id) {
 		onStateImage];
 }
 
-void NSMenuItem_inst_setOnStateImage_(void *id, void* value) {
+void NSMenuItem_inst_setOnStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setOnStateImage: value];
 }
@@ -2898,7 +2898,7 @@ void* NSMenuItem_inst_offStateImage(void *id) {
 		offStateImage];
 }
 
-void NSMenuItem_inst_setOffStateImage_(void *id, void* value) {
+void NSMenuItem_inst_setOffStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setOffStateImage: value];
 }
@@ -2908,7 +2908,7 @@ void* NSMenuItem_inst_mixedStateImage(void *id) {
 		mixedStateImage];
 }
 
-void NSMenuItem_inst_setMixedStateImage_(void *id, void* value) {
+void NSMenuItem_inst_setMixedStateImage(void *id, void* value) {
 	[(NSMenuItem*)id
 		setMixedStateImage: value];
 }
@@ -2918,7 +2918,7 @@ void* NSMenuItem_inst_submenu(void *id) {
 		submenu];
 }
 
-void NSMenuItem_inst_setSubmenu_(void *id, void* value) {
+void NSMenuItem_inst_setSubmenu(void *id, void* value) {
 	[(NSMenuItem*)id
 		setSubmenu: value];
 }
@@ -2943,7 +2943,7 @@ void* NSMenuItem_inst_menu(void *id) {
 		menu];
 }
 
-void NSMenuItem_inst_setMenu_(void *id, void* value) {
+void NSMenuItem_inst_setMenu(void *id, void* value) {
 	[(NSMenuItem*)id
 		setMenu: value];
 }
@@ -2953,7 +2953,7 @@ void* NSMenuItem_inst_keyEquivalent(void *id) {
 		keyEquivalent];
 }
 
-void NSMenuItem_inst_setKeyEquivalent_(void *id, void* value) {
+void NSMenuItem_inst_setKeyEquivalent(void *id, void* value) {
 	[(NSMenuItem*)id
 		setKeyEquivalent: value];
 }
@@ -2968,7 +2968,7 @@ BOOL NSMenuItem_inst_isAlternate(void *id) {
 		isAlternate];
 }
 
-void NSMenuItem_inst_setAlternate_(void *id, BOOL value) {
+void NSMenuItem_inst_setAlternate(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAlternate: value];
 }
@@ -2978,7 +2978,7 @@ long NSMenuItem_inst_indentationLevel(void *id) {
 		indentationLevel];
 }
 
-void NSMenuItem_inst_setIndentationLevel_(void *id, long value) {
+void NSMenuItem_inst_setIndentationLevel(void *id, long value) {
 	[(NSMenuItem*)id
 		setIndentationLevel: value];
 }
@@ -2988,7 +2988,7 @@ void* NSMenuItem_inst_toolTip(void *id) {
 		toolTip];
 }
 
-void NSMenuItem_inst_setToolTip_(void *id, void* value) {
+void NSMenuItem_inst_setToolTip(void *id, void* value) {
 	[(NSMenuItem*)id
 		setToolTip: value];
 }
@@ -2998,7 +2998,7 @@ void* NSMenuItem_inst_representedObject(void *id) {
 		representedObject];
 }
 
-void NSMenuItem_inst_setRepresentedObject_(void *id, void* value) {
+void NSMenuItem_inst_setRepresentedObject(void *id, void* value) {
 	[(NSMenuItem*)id
 		setRepresentedObject: value];
 }
@@ -3008,7 +3008,7 @@ void* NSMenuItem_inst_view(void *id) {
 		view];
 }
 
-void NSMenuItem_inst_setView_(void *id, void* value) {
+void NSMenuItem_inst_setView(void *id, void* value) {
 	[(NSMenuItem*)id
 		setView: value];
 }
@@ -3023,7 +3023,7 @@ BOOL NSMenuItem_inst_allowsAutomaticKeyEquivalentLocalization(void *id) {
 		allowsAutomaticKeyEquivalentLocalization];
 }
 
-void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization_(void *id, BOOL value) {
+void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsAutomaticKeyEquivalentLocalization: value];
 }
@@ -3033,7 +3033,7 @@ BOOL NSMenuItem_inst_allowsAutomaticKeyEquivalentMirroring(void *id) {
 		allowsAutomaticKeyEquivalentMirroring];
 }
 
-void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring_(void *id, BOOL value) {
+void NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsAutomaticKeyEquivalentMirroring: value];
 }
@@ -3043,7 +3043,7 @@ BOOL NSMenuItem_inst_allowsKeyEquivalentWhenHidden(void *id) {
 		allowsKeyEquivalentWhenHidden];
 }
 
-void NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden_(void *id, BOOL value) {
+void NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden(void *id, BOOL value) {
 	[(NSMenuItem*)id
 		setAllowsKeyEquivalentWhenHidden: value];
 }
@@ -3133,12 +3133,12 @@ BOOL NSRunningApplication_inst_isTerminated(void *id) {
 		isTerminated];
 }
 
-NSRect NSScreen_inst_convertRectFromBacking_(void *id, NSRect rect) {
+NSRect NSScreen_inst_convertRectFromBacking(void *id, NSRect rect) {
 	return [(NSScreen*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSScreen_inst_convertRectToBacking_(void *id, NSRect rect) {
+NSRect NSScreen_inst_convertRectToBacking(void *id, NSRect rect) {
 	return [(NSScreen*)id
 		convertRectToBacking: rect];
 }
@@ -3193,12 +3193,12 @@ long NSScreen_inst_maximumFramesPerSecond(void *id) {
 		maximumFramesPerSecond];
 }
 
-void* NSStatusBar_inst_statusItemWithLength_(void *id, double length) {
+void* NSStatusBar_inst_statusItemWithLength(void *id, double length) {
 	return [(NSStatusBar*)id
 		statusItemWithLength: length];
 }
 
-void NSStatusBar_inst_removeStatusItem_(void *id, void* item) {
+void NSStatusBar_inst_removeStatusItem(void *id, void* item) {
 	[(NSStatusBar*)id
 		removeStatusItem: item];
 }
@@ -3228,7 +3228,7 @@ BOOL NSStatusBarButton_inst_appearsDisabled(void *id) {
 		appearsDisabled];
 }
 
-void NSStatusBarButton_inst_setAppearsDisabled_(void *id, BOOL value) {
+void NSStatusBarButton_inst_setAppearsDisabled(void *id, BOOL value) {
 	[(NSStatusBarButton*)id
 		setAppearsDisabled: value];
 }
@@ -3253,7 +3253,7 @@ void* NSStatusItem_inst_menu(void *id) {
 		menu];
 }
 
-void NSStatusItem_inst_setMenu_(void *id, void* value) {
+void NSStatusItem_inst_setMenu(void *id, void* value) {
 	[(NSStatusItem*)id
 		setMenu: value];
 }
@@ -3263,7 +3263,7 @@ BOOL NSStatusItem_inst_isVisible(void *id) {
 		isVisible];
 }
 
-void NSStatusItem_inst_setVisible_(void *id, BOOL value) {
+void NSStatusItem_inst_setVisible(void *id, BOOL value) {
 	[(NSStatusItem*)id
 		setVisible: value];
 }
@@ -3273,123 +3273,123 @@ double NSStatusItem_inst_length(void *id) {
 		length];
 }
 
-void NSStatusItem_inst_setLength_(void *id, double value) {
+void NSStatusItem_inst_setLength(void *id, double value) {
 	[(NSStatusItem*)id
 		setLength: value];
 }
 
-void* NSText_inst_initWithFrame_(void *id, NSRect frameRect) {
+void* NSText_inst_initWithFrame(void *id, NSRect frameRect) {
 	return [(NSText*)id
 		initWithFrame: frameRect];
 }
 
-void NSText_inst_toggleRuler_(void *id, void* sender) {
+void NSText_inst_toggleRuler(void *id, void* sender) {
 	[(NSText*)id
 		toggleRuler: sender];
 }
 
-void NSText_inst_selectAll_(void *id, void* sender) {
+void NSText_inst_selectAll(void *id, void* sender) {
 	[(NSText*)id
 		selectAll: sender];
 }
 
-void NSText_inst_copy_(void *id, void* sender) {
+void NSText_inst_copy(void *id, void* sender) {
 	[(NSText*)id
 		copy: sender];
 }
 
-void NSText_inst_cut_(void *id, void* sender) {
+void NSText_inst_cut(void *id, void* sender) {
 	[(NSText*)id
 		cut: sender];
 }
 
-void NSText_inst_paste_(void *id, void* sender) {
+void NSText_inst_paste(void *id, void* sender) {
 	[(NSText*)id
 		paste: sender];
 }
 
-void NSText_inst_copyFont_(void *id, void* sender) {
+void NSText_inst_copyFont(void *id, void* sender) {
 	[(NSText*)id
 		copyFont: sender];
 }
 
-void NSText_inst_pasteFont_(void *id, void* sender) {
+void NSText_inst_pasteFont(void *id, void* sender) {
 	[(NSText*)id
 		pasteFont: sender];
 }
 
-void NSText_inst_copyRuler_(void *id, void* sender) {
+void NSText_inst_copyRuler(void *id, void* sender) {
 	[(NSText*)id
 		copyRuler: sender];
 }
 
-void NSText_inst_pasteRuler_(void *id, void* sender) {
+void NSText_inst_pasteRuler(void *id, void* sender) {
 	[(NSText*)id
 		pasteRuler: sender];
 }
 
-void NSText_inst_delete_(void *id, void* sender) {
+void NSText_inst_delete(void *id, void* sender) {
 	[(NSText*)id
 		delete: sender];
 }
 
-void NSText_inst_changeFont_(void *id, void* sender) {
+void NSText_inst_changeFont(void *id, void* sender) {
 	[(NSText*)id
 		changeFont: sender];
 }
 
-void NSText_inst_alignCenter_(void *id, void* sender) {
+void NSText_inst_alignCenter(void *id, void* sender) {
 	[(NSText*)id
 		alignCenter: sender];
 }
 
-void NSText_inst_alignLeft_(void *id, void* sender) {
+void NSText_inst_alignLeft(void *id, void* sender) {
 	[(NSText*)id
 		alignLeft: sender];
 }
 
-void NSText_inst_alignRight_(void *id, void* sender) {
+void NSText_inst_alignRight(void *id, void* sender) {
 	[(NSText*)id
 		alignRight: sender];
 }
 
-void NSText_inst_superscript_(void *id, void* sender) {
+void NSText_inst_superscript(void *id, void* sender) {
 	[(NSText*)id
 		superscript: sender];
 }
 
-void NSText_inst_subscript_(void *id, void* sender) {
+void NSText_inst_subscript(void *id, void* sender) {
 	[(NSText*)id
 		subscript: sender];
 }
 
-void NSText_inst_unscript_(void *id, void* sender) {
+void NSText_inst_unscript(void *id, void* sender) {
 	[(NSText*)id
 		unscript: sender];
 }
 
-void NSText_inst_underline_(void *id, void* sender) {
+void NSText_inst_underline(void *id, void* sender) {
 	[(NSText*)id
 		underline: sender];
 }
 
-BOOL NSText_inst_readRTFDFromFile_(void *id, void* path) {
+BOOL NSText_inst_readRTFDFromFile(void *id, void* path) {
 	return [(NSText*)id
 		readRTFDFromFile: path];
 }
 
-BOOL NSText_inst_writeRTFDToFile_atomically_(void *id, void* path, BOOL flag) {
+BOOL NSText_inst_writeRTFDToFile_atomically(void *id, void* path, BOOL flag) {
 	return [(NSText*)id
 		writeRTFDToFile: path
 		atomically: flag];
 }
 
-void NSText_inst_checkSpelling_(void *id, void* sender) {
+void NSText_inst_checkSpelling(void *id, void* sender) {
 	[(NSText*)id
 		checkSpelling: sender];
 }
 
-void NSText_inst_showGuessPanel_(void *id, void* sender) {
+void NSText_inst_showGuessPanel(void *id, void* sender) {
 	[(NSText*)id
 		showGuessPanel: sender];
 }
@@ -3409,7 +3409,7 @@ void* NSText_inst_string(void *id) {
 		string];
 }
 
-void NSText_inst_setString_(void *id, void* value) {
+void NSText_inst_setString(void *id, void* value) {
 	[(NSText*)id
 		setString: value];
 }
@@ -3419,7 +3419,7 @@ void* NSText_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSText_inst_setBackgroundColor_(void *id, void* value) {
+void NSText_inst_setBackgroundColor(void *id, void* value) {
 	[(NSText*)id
 		setBackgroundColor: value];
 }
@@ -3429,7 +3429,7 @@ BOOL NSText_inst_drawsBackground(void *id) {
 		drawsBackground];
 }
 
-void NSText_inst_setDrawsBackground_(void *id, BOOL value) {
+void NSText_inst_setDrawsBackground(void *id, BOOL value) {
 	[(NSText*)id
 		setDrawsBackground: value];
 }
@@ -3439,7 +3439,7 @@ BOOL NSText_inst_isEditable(void *id) {
 		isEditable];
 }
 
-void NSText_inst_setEditable_(void *id, BOOL value) {
+void NSText_inst_setEditable(void *id, BOOL value) {
 	[(NSText*)id
 		setEditable: value];
 }
@@ -3449,7 +3449,7 @@ BOOL NSText_inst_isSelectable(void *id) {
 		isSelectable];
 }
 
-void NSText_inst_setSelectable_(void *id, BOOL value) {
+void NSText_inst_setSelectable(void *id, BOOL value) {
 	[(NSText*)id
 		setSelectable: value];
 }
@@ -3459,7 +3459,7 @@ BOOL NSText_inst_isFieldEditor(void *id) {
 		isFieldEditor];
 }
 
-void NSText_inst_setFieldEditor_(void *id, BOOL value) {
+void NSText_inst_setFieldEditor(void *id, BOOL value) {
 	[(NSText*)id
 		setFieldEditor: value];
 }
@@ -3469,7 +3469,7 @@ BOOL NSText_inst_isRichText(void *id) {
 		isRichText];
 }
 
-void NSText_inst_setRichText_(void *id, BOOL value) {
+void NSText_inst_setRichText(void *id, BOOL value) {
 	[(NSText*)id
 		setRichText: value];
 }
@@ -3479,7 +3479,7 @@ BOOL NSText_inst_importsGraphics(void *id) {
 		importsGraphics];
 }
 
-void NSText_inst_setImportsGraphics_(void *id, BOOL value) {
+void NSText_inst_setImportsGraphics(void *id, BOOL value) {
 	[(NSText*)id
 		setImportsGraphics: value];
 }
@@ -3489,7 +3489,7 @@ BOOL NSText_inst_usesFontPanel(void *id) {
 		usesFontPanel];
 }
 
-void NSText_inst_setUsesFontPanel_(void *id, BOOL value) {
+void NSText_inst_setUsesFontPanel(void *id, BOOL value) {
 	[(NSText*)id
 		setUsesFontPanel: value];
 }
@@ -3504,7 +3504,7 @@ void* NSText_inst_font(void *id) {
 		font];
 }
 
-void NSText_inst_setFont_(void *id, void* value) {
+void NSText_inst_setFont(void *id, void* value) {
 	[(NSText*)id
 		setFont: value];
 }
@@ -3514,7 +3514,7 @@ void* NSText_inst_textColor(void *id) {
 		textColor];
 }
 
-void NSText_inst_setTextColor_(void *id, void* value) {
+void NSText_inst_setTextColor(void *id, void* value) {
 	[(NSText*)id
 		setTextColor: value];
 }
@@ -3524,7 +3524,7 @@ NSSize NSText_inst_maxSize(void *id) {
 		maxSize];
 }
 
-void NSText_inst_setMaxSize_(void *id, NSSize value) {
+void NSText_inst_setMaxSize(void *id, NSSize value) {
 	[(NSText*)id
 		setMaxSize: value];
 }
@@ -3534,7 +3534,7 @@ NSSize NSText_inst_minSize(void *id) {
 		minSize];
 }
 
-void NSText_inst_setMinSize_(void *id, NSSize value) {
+void NSText_inst_setMinSize(void *id, NSSize value) {
 	[(NSText*)id
 		setMinSize: value];
 }
@@ -3544,7 +3544,7 @@ BOOL NSText_inst_isVerticallyResizable(void *id) {
 		isVerticallyResizable];
 }
 
-void NSText_inst_setVerticallyResizable_(void *id, BOOL value) {
+void NSText_inst_setVerticallyResizable(void *id, BOOL value) {
 	[(NSText*)id
 		setVerticallyResizable: value];
 }
@@ -3554,7 +3554,7 @@ BOOL NSText_inst_isHorizontallyResizable(void *id) {
 		isHorizontallyResizable];
 }
 
-void NSText_inst_setHorizontallyResizable_(void *id, BOOL value) {
+void NSText_inst_setHorizontallyResizable(void *id, BOOL value) {
 	[(NSText*)id
 		setHorizontallyResizable: value];
 }
@@ -3564,22 +3564,22 @@ void* NSText_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSText_inst_setDelegate_(void *id, void* value) {
+void NSText_inst_setDelegate(void *id, void* value) {
 	[(NSText*)id
 		setDelegate: value];
 }
 
-void NSTextField_inst_selectText_(void *id, void* sender) {
+void NSTextField_inst_selectText(void *id, void* sender) {
 	[(NSTextField*)id
 		selectText: sender];
 }
 
-BOOL NSTextField_inst_textShouldBeginEditing_(void *id, void* textObject) {
+BOOL NSTextField_inst_textShouldBeginEditing(void *id, void* textObject) {
 	return [(NSTextField*)id
 		textShouldBeginEditing: textObject];
 }
 
-BOOL NSTextField_inst_textShouldEndEditing_(void *id, void* textObject) {
+BOOL NSTextField_inst_textShouldEndEditing(void *id, void* textObject) {
 	return [(NSTextField*)id
 		textShouldEndEditing: textObject];
 }
@@ -3594,7 +3594,7 @@ BOOL NSTextField_inst_isSelectable(void *id) {
 		isSelectable];
 }
 
-void NSTextField_inst_setSelectable_(void *id, BOOL value) {
+void NSTextField_inst_setSelectable(void *id, BOOL value) {
 	[(NSTextField*)id
 		setSelectable: value];
 }
@@ -3604,7 +3604,7 @@ BOOL NSTextField_inst_isEditable(void *id) {
 		isEditable];
 }
 
-void NSTextField_inst_setEditable_(void *id, BOOL value) {
+void NSTextField_inst_setEditable(void *id, BOOL value) {
 	[(NSTextField*)id
 		setEditable: value];
 }
@@ -3614,7 +3614,7 @@ BOOL NSTextField_inst_allowsEditingTextAttributes(void *id) {
 		allowsEditingTextAttributes];
 }
 
-void NSTextField_inst_setAllowsEditingTextAttributes_(void *id, BOOL value) {
+void NSTextField_inst_setAllowsEditingTextAttributes(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsEditingTextAttributes: value];
 }
@@ -3624,7 +3624,7 @@ BOOL NSTextField_inst_importsGraphics(void *id) {
 		importsGraphics];
 }
 
-void NSTextField_inst_setImportsGraphics_(void *id, BOOL value) {
+void NSTextField_inst_setImportsGraphics(void *id, BOOL value) {
 	[(NSTextField*)id
 		setImportsGraphics: value];
 }
@@ -3634,7 +3634,7 @@ void* NSTextField_inst_placeholderString(void *id) {
 		placeholderString];
 }
 
-void NSTextField_inst_setPlaceholderString_(void *id, void* value) {
+void NSTextField_inst_setPlaceholderString(void *id, void* value) {
 	[(NSTextField*)id
 		setPlaceholderString: value];
 }
@@ -3644,7 +3644,7 @@ void* NSTextField_inst_placeholderAttributedString(void *id) {
 		placeholderAttributedString];
 }
 
-void NSTextField_inst_setPlaceholderAttributedString_(void *id, void* value) {
+void NSTextField_inst_setPlaceholderAttributedString(void *id, void* value) {
 	[(NSTextField*)id
 		setPlaceholderAttributedString: value];
 }
@@ -3654,7 +3654,7 @@ BOOL NSTextField_inst_allowsDefaultTighteningForTruncation(void *id) {
 		allowsDefaultTighteningForTruncation];
 }
 
-void NSTextField_inst_setAllowsDefaultTighteningForTruncation_(void *id, BOOL value) {
+void NSTextField_inst_setAllowsDefaultTighteningForTruncation(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsDefaultTighteningForTruncation: value];
 }
@@ -3664,7 +3664,7 @@ long NSTextField_inst_maximumNumberOfLines(void *id) {
 		maximumNumberOfLines];
 }
 
-void NSTextField_inst_setMaximumNumberOfLines_(void *id, long value) {
+void NSTextField_inst_setMaximumNumberOfLines(void *id, long value) {
 	[(NSTextField*)id
 		setMaximumNumberOfLines: value];
 }
@@ -3674,7 +3674,7 @@ double NSTextField_inst_preferredMaxLayoutWidth(void *id) {
 		preferredMaxLayoutWidth];
 }
 
-void NSTextField_inst_setPreferredMaxLayoutWidth_(void *id, double value) {
+void NSTextField_inst_setPreferredMaxLayoutWidth(void *id, double value) {
 	[(NSTextField*)id
 		setPreferredMaxLayoutWidth: value];
 }
@@ -3684,7 +3684,7 @@ void* NSTextField_inst_textColor(void *id) {
 		textColor];
 }
 
-void NSTextField_inst_setTextColor_(void *id, void* value) {
+void NSTextField_inst_setTextColor(void *id, void* value) {
 	[(NSTextField*)id
 		setTextColor: value];
 }
@@ -3694,7 +3694,7 @@ void* NSTextField_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSTextField_inst_setBackgroundColor_(void *id, void* value) {
+void NSTextField_inst_setBackgroundColor(void *id, void* value) {
 	[(NSTextField*)id
 		setBackgroundColor: value];
 }
@@ -3704,7 +3704,7 @@ BOOL NSTextField_inst_drawsBackground(void *id) {
 		drawsBackground];
 }
 
-void NSTextField_inst_setDrawsBackground_(void *id, BOOL value) {
+void NSTextField_inst_setDrawsBackground(void *id, BOOL value) {
 	[(NSTextField*)id
 		setDrawsBackground: value];
 }
@@ -3714,7 +3714,7 @@ BOOL NSTextField_inst_isBezeled(void *id) {
 		isBezeled];
 }
 
-void NSTextField_inst_setBezeled_(void *id, BOOL value) {
+void NSTextField_inst_setBezeled(void *id, BOOL value) {
 	[(NSTextField*)id
 		setBezeled: value];
 }
@@ -3724,7 +3724,7 @@ BOOL NSTextField_inst_isBordered(void *id) {
 		isBordered];
 }
 
-void NSTextField_inst_setBordered_(void *id, BOOL value) {
+void NSTextField_inst_setBordered(void *id, BOOL value) {
 	[(NSTextField*)id
 		setBordered: value];
 }
@@ -3739,7 +3739,7 @@ BOOL NSTextField_inst_allowsCharacterPickerTouchBarItem(void *id) {
 		allowsCharacterPickerTouchBarItem];
 }
 
-void NSTextField_inst_setAllowsCharacterPickerTouchBarItem_(void *id, BOOL value) {
+void NSTextField_inst_setAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAllowsCharacterPickerTouchBarItem: value];
 }
@@ -3749,7 +3749,7 @@ BOOL NSTextField_inst_isAutomaticTextCompletionEnabled(void *id) {
 		isAutomaticTextCompletionEnabled];
 }
 
-void NSTextField_inst_setAutomaticTextCompletionEnabled_(void *id, BOOL value) {
+void NSTextField_inst_setAutomaticTextCompletionEnabled(void *id, BOOL value) {
 	[(NSTextField*)id
 		setAutomaticTextCompletionEnabled: value];
 }
@@ -3759,17 +3759,17 @@ void* NSTextField_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSTextField_inst_setDelegate_(void *id, void* value) {
+void NSTextField_inst_setDelegate(void *id, void* value) {
 	[(NSTextField*)id
 		setDelegate: value];
 }
 
-void* NSTextContainer_inst_initWithSize_(void *id, NSSize size) {
+void* NSTextContainer_inst_initWithSize(void *id, NSSize size) {
 	return [(NSTextContainer*)id
 		initWithSize: size];
 }
 
-void NSTextContainer_inst_replaceLayoutManager_(void *id, void* newLayoutManager) {
+void NSTextContainer_inst_replaceLayoutManager(void *id, void* newLayoutManager) {
 	[(NSTextContainer*)id
 		replaceLayoutManager: newLayoutManager];
 }
@@ -3784,7 +3784,7 @@ void* NSTextContainer_inst_layoutManager(void *id) {
 		layoutManager];
 }
 
-void NSTextContainer_inst_setLayoutManager_(void *id, void* value) {
+void NSTextContainer_inst_setLayoutManager(void *id, void* value) {
 	[(NSTextContainer*)id
 		setLayoutManager: value];
 }
@@ -3794,7 +3794,7 @@ void* NSTextContainer_inst_textView(void *id) {
 		textView];
 }
 
-void NSTextContainer_inst_setTextView_(void *id, void* value) {
+void NSTextContainer_inst_setTextView(void *id, void* value) {
 	[(NSTextContainer*)id
 		setTextView: value];
 }
@@ -3804,7 +3804,7 @@ NSSize NSTextContainer_inst_size(void *id) {
 		size];
 }
 
-void NSTextContainer_inst_setSize_(void *id, NSSize value) {
+void NSTextContainer_inst_setSize(void *id, NSSize value) {
 	[(NSTextContainer*)id
 		setSize: value];
 }
@@ -3814,7 +3814,7 @@ void* NSTextContainer_inst_exclusionPaths(void *id) {
 		exclusionPaths];
 }
 
-void NSTextContainer_inst_setExclusionPaths_(void *id, void* value) {
+void NSTextContainer_inst_setExclusionPaths(void *id, void* value) {
 	[(NSTextContainer*)id
 		setExclusionPaths: value];
 }
@@ -3824,7 +3824,7 @@ BOOL NSTextContainer_inst_widthTracksTextView(void *id) {
 		widthTracksTextView];
 }
 
-void NSTextContainer_inst_setWidthTracksTextView_(void *id, BOOL value) {
+void NSTextContainer_inst_setWidthTracksTextView(void *id, BOOL value) {
 	[(NSTextContainer*)id
 		setWidthTracksTextView: value];
 }
@@ -3834,7 +3834,7 @@ BOOL NSTextContainer_inst_heightTracksTextView(void *id) {
 		heightTracksTextView];
 }
 
-void NSTextContainer_inst_setHeightTracksTextView_(void *id, BOOL value) {
+void NSTextContainer_inst_setHeightTracksTextView(void *id, BOOL value) {
 	[(NSTextContainer*)id
 		setHeightTracksTextView: value];
 }
@@ -3844,7 +3844,7 @@ unsigned long NSTextContainer_inst_maximumNumberOfLines(void *id) {
 		maximumNumberOfLines];
 }
 
-void NSTextContainer_inst_setMaximumNumberOfLines_(void *id, unsigned long value) {
+void NSTextContainer_inst_setMaximumNumberOfLines(void *id, unsigned long value) {
 	[(NSTextContainer*)id
 		setMaximumNumberOfLines: value];
 }
@@ -3854,7 +3854,7 @@ double NSTextContainer_inst_lineFragmentPadding(void *id) {
 		lineFragmentPadding];
 }
 
-void NSTextContainer_inst_setLineFragmentPadding_(void *id, double value) {
+void NSTextContainer_inst_setLineFragmentPadding(void *id, double value) {
 	[(NSTextContainer*)id
 		setLineFragmentPadding: value];
 }
@@ -3869,7 +3869,7 @@ void NSViewController_inst_loadView(void *id) {
 		loadView];
 }
 
-void NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo_(void *id, void* delegate, void* didCommitSelector, void* contextInfo) {
+void NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo(void *id, void* delegate, void* didCommitSelector, void* contextInfo) {
 	[(NSViewController*)id
 		commitEditingWithDelegate: delegate
 		didCommitSelector: didCommitSelector
@@ -3886,7 +3886,7 @@ void NSViewController_inst_discardEditing(void *id) {
 		discardEditing];
 }
 
-void NSViewController_inst_dismissController_(void *id, void* sender) {
+void NSViewController_inst_dismissController(void *id, void* sender) {
 	[(NSViewController*)id
 		dismissController: sender];
 }
@@ -3931,18 +3931,18 @@ void NSViewController_inst_viewDidLayout(void *id) {
 		viewDidLayout];
 }
 
-void NSViewController_inst_addChildViewController_(void *id, void* childViewController) {
+void NSViewController_inst_addChildViewController(void *id, void* childViewController) {
 	[(NSViewController*)id
 		addChildViewController: childViewController];
 }
 
-void NSViewController_inst_insertChildViewController_atIndex_(void *id, void* childViewController, long index) {
+void NSViewController_inst_insertChildViewController_atIndex(void *id, void* childViewController, long index) {
 	[(NSViewController*)id
 		insertChildViewController: childViewController
 		atIndex: index];
 }
 
-void NSViewController_inst_removeChildViewControllerAtIndex_(void *id, long index) {
+void NSViewController_inst_removeChildViewControllerAtIndex(void *id, long index) {
 	[(NSViewController*)id
 		removeChildViewControllerAtIndex: index];
 }
@@ -3952,33 +3952,33 @@ void NSViewController_inst_removeFromParentViewController(void *id) {
 		removeFromParentViewController];
 }
 
-void NSViewController_inst_preferredContentSizeDidChangeForViewController_(void *id, void* viewController) {
+void NSViewController_inst_preferredContentSizeDidChangeForViewController(void *id, void* viewController) {
 	[(NSViewController*)id
 		preferredContentSizeDidChangeForViewController: viewController];
 }
 
-void NSViewController_inst_presentViewController_animator_(void *id, void* viewController, void* animator) {
+void NSViewController_inst_presentViewController_animator(void *id, void* viewController, void* animator) {
 	[(NSViewController*)id
 		presentViewController: viewController
 		animator: animator];
 }
 
-void NSViewController_inst_dismissViewController_(void *id, void* viewController) {
+void NSViewController_inst_dismissViewController(void *id, void* viewController) {
 	[(NSViewController*)id
 		dismissViewController: viewController];
 }
 
-void NSViewController_inst_presentViewControllerAsModalWindow_(void *id, void* viewController) {
+void NSViewController_inst_presentViewControllerAsModalWindow(void *id, void* viewController) {
 	[(NSViewController*)id
 		presentViewControllerAsModalWindow: viewController];
 }
 
-void NSViewController_inst_presentViewControllerAsSheet_(void *id, void* viewController) {
+void NSViewController_inst_presentViewControllerAsSheet(void *id, void* viewController) {
 	[(NSViewController*)id
 		presentViewControllerAsSheet: viewController];
 }
 
-void NSViewController_inst_viewWillTransitionToSize_(void *id, NSSize newSize) {
+void NSViewController_inst_viewWillTransitionToSize(void *id, NSSize newSize) {
 	[(NSViewController*)id
 		viewWillTransitionToSize: newSize];
 }
@@ -3993,7 +3993,7 @@ void* NSViewController_inst_representedObject(void *id) {
 		representedObject];
 }
 
-void NSViewController_inst_setRepresentedObject_(void *id, void* value) {
+void NSViewController_inst_setRepresentedObject(void *id, void* value) {
 	[(NSViewController*)id
 		setRepresentedObject: value];
 }
@@ -4008,7 +4008,7 @@ void* NSViewController_inst_view(void *id) {
 		view];
 }
 
-void NSViewController_inst_setView_(void *id, void* value) {
+void NSViewController_inst_setView(void *id, void* value) {
 	[(NSViewController*)id
 		setView: value];
 }
@@ -4018,7 +4018,7 @@ void* NSViewController_inst_title(void *id) {
 		title];
 }
 
-void NSViewController_inst_setTitle_(void *id, void* value) {
+void NSViewController_inst_setTitle(void *id, void* value) {
 	[(NSViewController*)id
 		setTitle: value];
 }
@@ -4033,7 +4033,7 @@ NSSize NSViewController_inst_preferredContentSize(void *id) {
 		preferredContentSize];
 }
 
-void NSViewController_inst_setPreferredContentSize_(void *id, NSSize value) {
+void NSViewController_inst_setPreferredContentSize(void *id, NSSize value) {
 	[(NSViewController*)id
 		setPreferredContentSize: value];
 }
@@ -4043,7 +4043,7 @@ void* NSViewController_inst_childViewControllers(void *id) {
 		childViewControllers];
 }
 
-void NSViewController_inst_setChildViewControllers_(void *id, void* value) {
+void NSViewController_inst_setChildViewControllers(void *id, void* value) {
 	[(NSViewController*)id
 		setChildViewControllers: value];
 }
@@ -4068,7 +4068,7 @@ NSPoint NSViewController_inst_preferredScreenOrigin(void *id) {
 		preferredScreenOrigin];
 }
 
-void NSViewController_inst_setPreferredScreenOrigin_(void *id, NSPoint value) {
+void NSViewController_inst_setPreferredScreenOrigin(void *id, NSPoint value) {
 	[(NSViewController*)id
 		setPreferredScreenOrigin: value];
 }
@@ -4088,7 +4088,7 @@ void* NSViewController_inst_sourceItemView(void *id) {
 		sourceItemView];
 }
 
-void NSViewController_inst_setSourceItemView_(void *id, void* value) {
+void NSViewController_inst_setSourceItemView(void *id, void* value) {
 	[(NSViewController*)id
 		setSourceItemView: value];
 }
@@ -4098,7 +4098,7 @@ void NSVisualEffectView_inst_viewDidMoveToWindow(void *id) {
 		viewDidMoveToWindow];
 }
 
-void NSVisualEffectView_inst_viewWillMoveToWindow_(void *id, void* newWindow) {
+void NSVisualEffectView_inst_viewWillMoveToWindow(void *id, void* newWindow) {
 	[(NSVisualEffectView*)id
 		viewWillMoveToWindow: newWindow];
 }
@@ -4113,7 +4113,7 @@ BOOL NSVisualEffectView_inst_isEmphasized(void *id) {
 		isEmphasized];
 }
 
-void NSVisualEffectView_inst_setEmphasized_(void *id, BOOL value) {
+void NSVisualEffectView_inst_setEmphasized(void *id, BOOL value) {
 	[(NSVisualEffectView*)id
 		setEmphasized: value];
 }
@@ -4123,12 +4123,12 @@ void* NSVisualEffectView_inst_maskImage(void *id) {
 		maskImage];
 }
 
-void NSVisualEffectView_inst_setMaskImage_(void *id, void* value) {
+void NSVisualEffectView_inst_setMaskImage(void *id, void* value) {
 	[(NSVisualEffectView*)id
 		setMaskImage: value];
 }
 
-void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag) {
+void* NSWindow_inst_initWithContentRect_styleMask_backing_defer(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag) {
 	return [(NSWindow*)id
 		initWithContentRect: contentRect
 		styleMask: style
@@ -4136,7 +4136,7 @@ void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_(void *id, NSRec
 		defer: flag];
 }
 
-void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen_(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag, void* screen) {
+void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen(void *id, NSRect contentRect, unsigned long style, unsigned long backingStoreType, BOOL flag, void* screen) {
 	return [(NSWindow*)id
 		initWithContentRect: contentRect
 		styleMask: style
@@ -4145,12 +4145,12 @@ void* NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen_(void *id
 		screen: screen];
 }
 
-void NSWindow_inst_toggleFullScreen_(void *id, void* sender) {
+void NSWindow_inst_toggleFullScreen(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleFullScreen: sender];
 }
 
-void NSWindow_inst_setDynamicDepthLimit_(void *id, BOOL flag) {
+void NSWindow_inst_setDynamicDepthLimit(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setDynamicDepthLimit: flag];
 }
@@ -4160,81 +4160,81 @@ void NSWindow_inst_invalidateShadow(void *id) {
 		invalidateShadow];
 }
 
-NSRect NSWindow_inst_contentRectForFrameRect_(void *id, NSRect frameRect) {
+NSRect NSWindow_inst_contentRectForFrameRect(void *id, NSRect frameRect) {
 	return [(NSWindow*)id
 		contentRectForFrameRect: frameRect];
 }
 
-NSRect NSWindow_inst_frameRectForContentRect_(void *id, NSRect contentRect) {
+NSRect NSWindow_inst_frameRectForContentRect(void *id, NSRect contentRect) {
 	return [(NSWindow*)id
 		frameRectForContentRect: contentRect];
 }
 
-void NSWindow_inst_endSheet_(void *id, void* sheetWindow) {
+void NSWindow_inst_endSheet(void *id, void* sheetWindow) {
 	[(NSWindow*)id
 		endSheet: sheetWindow];
 }
 
-void NSWindow_inst_setFrameOrigin_(void *id, NSPoint point) {
+void NSWindow_inst_setFrameOrigin(void *id, NSPoint point) {
 	[(NSWindow*)id
 		setFrameOrigin: point];
 }
 
-void NSWindow_inst_setFrameTopLeftPoint_(void *id, NSPoint point) {
+void NSWindow_inst_setFrameTopLeftPoint(void *id, NSPoint point) {
 	[(NSWindow*)id
 		setFrameTopLeftPoint: point];
 }
 
-NSRect NSWindow_inst_constrainFrameRect_toScreen_(void *id, NSRect frameRect, void* screen) {
+NSRect NSWindow_inst_constrainFrameRect_toScreen(void *id, NSRect frameRect, void* screen) {
 	return [(NSWindow*)id
 		constrainFrameRect: frameRect
 		toScreen: screen];
 }
 
-NSPoint NSWindow_inst_cascadeTopLeftFromPoint_(void *id, NSPoint topLeftPoint) {
+NSPoint NSWindow_inst_cascadeTopLeftFromPoint(void *id, NSPoint topLeftPoint) {
 	return [(NSWindow*)id
 		cascadeTopLeftFromPoint: topLeftPoint];
 }
 
-void NSWindow_inst_setFrame_display_(void *id, NSRect frameRect, BOOL flag) {
+void NSWindow_inst_setFrame_display(void *id, NSRect frameRect, BOOL flag) {
 	[(NSWindow*)id
 		setFrame: frameRect
 		display: flag];
 }
 
-void NSWindow_inst_setFrame_display_animate_(void *id, NSRect frameRect, BOOL displayFlag, BOOL animateFlag) {
+void NSWindow_inst_setFrame_display_animate(void *id, NSRect frameRect, BOOL displayFlag, BOOL animateFlag) {
 	[(NSWindow*)id
 		setFrame: frameRect
 		display: displayFlag
 		animate: animateFlag];
 }
 
-void NSWindow_inst_performZoom_(void *id, void* sender) {
+void NSWindow_inst_performZoom(void *id, void* sender) {
 	[(NSWindow*)id
 		performZoom: sender];
 }
 
-void NSWindow_inst_zoom_(void *id, void* sender) {
+void NSWindow_inst_zoom(void *id, void* sender) {
 	[(NSWindow*)id
 		zoom: sender];
 }
 
-void NSWindow_inst_setContentSize_(void *id, NSSize size) {
+void NSWindow_inst_setContentSize(void *id, NSSize size) {
 	[(NSWindow*)id
 		setContentSize: size];
 }
 
-void NSWindow_inst_orderOut_(void *id, void* sender) {
+void NSWindow_inst_orderOut(void *id, void* sender) {
 	[(NSWindow*)id
 		orderOut: sender];
 }
 
-void NSWindow_inst_orderBack_(void *id, void* sender) {
+void NSWindow_inst_orderBack(void *id, void* sender) {
 	[(NSWindow*)id
 		orderBack: sender];
 }
 
-void NSWindow_inst_orderFront_(void *id, void* sender) {
+void NSWindow_inst_orderFront(void *id, void* sender) {
 	[(NSWindow*)id
 		orderFront: sender];
 }
@@ -4244,7 +4244,7 @@ void NSWindow_inst_orderFrontRegardless(void *id) {
 		orderFrontRegardless];
 }
 
-void NSWindow_inst_orderWindow_relativeTo_(void *id, unsigned long place, long otherWin) {
+void NSWindow_inst_orderWindow_relativeTo(void *id, unsigned long place, long otherWin) {
 	[(NSWindow*)id
 		orderWindow: place
 		relativeTo: otherWin];
@@ -4255,7 +4255,7 @@ void NSWindow_inst_makeKeyWindow(void *id) {
 		makeKeyWindow];
 }
 
-void NSWindow_inst_makeKeyAndOrderFront_(void *id, void* sender) {
+void NSWindow_inst_makeKeyAndOrderFront(void *id, void* sender) {
 	[(NSWindow*)id
 		makeKeyAndOrderFront: sender];
 }
@@ -4285,23 +4285,23 @@ void NSWindow_inst_resignMainWindow(void *id) {
 		resignMainWindow];
 }
 
-void NSWindow_inst_toggleToolbarShown_(void *id, void* sender) {
+void NSWindow_inst_toggleToolbarShown(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleToolbarShown: sender];
 }
 
-void NSWindow_inst_runToolbarCustomizationPalette_(void *id, void* sender) {
+void NSWindow_inst_runToolbarCustomizationPalette(void *id, void* sender) {
 	[(NSWindow*)id
 		runToolbarCustomizationPalette: sender];
 }
 
-void NSWindow_inst_addChildWindow_ordered_(void *id, void* childWin, unsigned long place) {
+void NSWindow_inst_addChildWindow_ordered(void *id, void* childWin, unsigned long place) {
 	[(NSWindow*)id
 		addChildWindow: childWin
 		ordered: place];
 }
 
-void NSWindow_inst_removeChildWindow_(void *id, void* childWin) {
+void NSWindow_inst_removeChildWindow(void *id, void* childWin) {
 	[(NSWindow*)id
 		removeChildWindow: childWin];
 }
@@ -4316,13 +4316,13 @@ void NSWindow_inst_disableKeyEquivalentForDefaultButtonCell(void *id) {
 		disableKeyEquivalentForDefaultButtonCell];
 }
 
-void* NSWindow_inst_fieldEditor_forObject_(void *id, BOOL createFlag, void* object) {
+void* NSWindow_inst_fieldEditor_forObject(void *id, BOOL createFlag, void* object) {
 	return [(NSWindow*)id
 		fieldEditor: createFlag
 		forObject: object];
 }
 
-void NSWindow_inst_endEditingFor_(void *id, void* object) {
+void NSWindow_inst_endEditingFor(void *id, void* object) {
 	[(NSWindow*)id
 		endEditingFor: object];
 }
@@ -4342,7 +4342,7 @@ void NSWindow_inst_discardCursorRects(void *id) {
 		discardCursorRects];
 }
 
-void NSWindow_inst_invalidateCursorRectsForView_(void *id, void* view) {
+void NSWindow_inst_invalidateCursorRectsForView(void *id, void* view) {
 	[(NSWindow*)id
 		invalidateCursorRectsForView: view];
 }
@@ -4352,80 +4352,80 @@ void NSWindow_inst_resetCursorRects(void *id) {
 		resetCursorRects];
 }
 
-void NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex_(void *id, long index) {
+void NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex(void *id, long index) {
 	[(NSWindow*)id
 		removeTitlebarAccessoryViewControllerAtIndex: index];
 }
 
-void NSWindow_inst_addTabbedWindow_ordered_(void *id, void* window, unsigned long ordered) {
+void NSWindow_inst_addTabbedWindow_ordered(void *id, void* window, unsigned long ordered) {
 	[(NSWindow*)id
 		addTabbedWindow: window
 		ordered: ordered];
 }
 
-void NSWindow_inst_mergeAllWindows_(void *id, void* sender) {
+void NSWindow_inst_mergeAllWindows(void *id, void* sender) {
 	[(NSWindow*)id
 		mergeAllWindows: sender];
 }
 
-void NSWindow_inst_selectNextTab_(void *id, void* sender) {
+void NSWindow_inst_selectNextTab(void *id, void* sender) {
 	[(NSWindow*)id
 		selectNextTab: sender];
 }
 
-void NSWindow_inst_selectPreviousTab_(void *id, void* sender) {
+void NSWindow_inst_selectPreviousTab(void *id, void* sender) {
 	[(NSWindow*)id
 		selectPreviousTab: sender];
 }
 
-void NSWindow_inst_moveTabToNewWindow_(void *id, void* sender) {
+void NSWindow_inst_moveTabToNewWindow(void *id, void* sender) {
 	[(NSWindow*)id
 		moveTabToNewWindow: sender];
 }
 
-void NSWindow_inst_toggleTabBar_(void *id, void* sender) {
+void NSWindow_inst_toggleTabBar(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleTabBar: sender];
 }
 
-void NSWindow_inst_toggleTabOverview_(void *id, void* sender) {
+void NSWindow_inst_toggleTabOverview(void *id, void* sender) {
 	[(NSWindow*)id
 		toggleTabOverview: sender];
 }
 
-void NSWindow_inst_postEvent_atStart_(void *id, void* event, BOOL flag) {
+void NSWindow_inst_postEvent_atStart(void *id, void* event, BOOL flag) {
 	[(NSWindow*)id
 		postEvent: event
 		atStart: flag];
 }
 
-void NSWindow_inst_sendEvent_(void *id, void* event) {
+void NSWindow_inst_sendEvent(void *id, void* event) {
 	[(NSWindow*)id
 		sendEvent: event];
 }
 
-BOOL NSWindow_inst_tryToPerform_with_(void *id, void* action, void* object) {
+BOOL NSWindow_inst_tryToPerform_with(void *id, void* action, void* object) {
 	return [(NSWindow*)id
 		tryToPerform: action
 		with: object];
 }
 
-void NSWindow_inst_selectKeyViewPrecedingView_(void *id, void* view) {
+void NSWindow_inst_selectKeyViewPrecedingView(void *id, void* view) {
 	[(NSWindow*)id
 		selectKeyViewPrecedingView: view];
 }
 
-void NSWindow_inst_selectKeyViewFollowingView_(void *id, void* view) {
+void NSWindow_inst_selectKeyViewFollowingView(void *id, void* view) {
 	[(NSWindow*)id
 		selectKeyViewFollowingView: view];
 }
 
-void NSWindow_inst_selectPreviousKeyView_(void *id, void* sender) {
+void NSWindow_inst_selectPreviousKeyView(void *id, void* sender) {
 	[(NSWindow*)id
 		selectPreviousKeyView: sender];
 }
 
-void NSWindow_inst_selectNextKeyView_(void *id, void* sender) {
+void NSWindow_inst_selectNextKeyView(void *id, void* sender) {
 	[(NSWindow*)id
 		selectNextKeyView: sender];
 }
@@ -4435,7 +4435,7 @@ void NSWindow_inst_recalculateKeyViewLoop(void *id) {
 		recalculateKeyViewLoop];
 }
 
-void NSWindow_inst_performWindowDragWithEvent_(void *id, void* event) {
+void NSWindow_inst_performWindowDragWithEvent(void *id, void* event) {
 	[(NSWindow*)id
 		performWindowDragWithEvent: event];
 }
@@ -4470,7 +4470,7 @@ void NSWindow_inst_update(void *id) {
 		update];
 }
 
-void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack_(void *id, void* image, NSPoint baseLocation, NSSize initialOffset, void* event, void* pboard, void* sourceObj, BOOL slideFlag) {
+void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack(void *id, void* image, NSPoint baseLocation, NSSize initialOffset, void* event, void* pboard, void* sourceObj, BOOL slideFlag) {
 	[(NSWindow*)id
 		dragImage: image
 		at: baseLocation
@@ -4481,7 +4481,7 @@ void NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack_(void *
 		slideBack: slideFlag];
 }
 
-void NSWindow_inst_registerForDraggedTypes_(void *id, void* newTypes) {
+void NSWindow_inst_registerForDraggedTypes(void *id, void* newTypes) {
 	[(NSWindow*)id
 		registerForDraggedTypes: newTypes];
 }
@@ -4491,47 +4491,47 @@ void NSWindow_inst_unregisterDraggedTypes(void *id) {
 		unregisterDraggedTypes];
 }
 
-NSRect NSWindow_inst_convertRectFromBacking_(void *id, NSRect rect) {
+NSRect NSWindow_inst_convertRectFromBacking(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSWindow_inst_convertRectFromScreen_(void *id, NSRect rect) {
+NSRect NSWindow_inst_convertRectFromScreen(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectFromScreen: rect];
 }
 
-NSPoint NSWindow_inst_convertPointFromBacking_(void *id, NSPoint point) {
+NSPoint NSWindow_inst_convertPointFromBacking(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointFromBacking: point];
 }
 
-NSPoint NSWindow_inst_convertPointFromScreen_(void *id, NSPoint point) {
+NSPoint NSWindow_inst_convertPointFromScreen(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointFromScreen: point];
 }
 
-NSRect NSWindow_inst_convertRectToBacking_(void *id, NSRect rect) {
+NSRect NSWindow_inst_convertRectToBacking(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectToBacking: rect];
 }
 
-NSRect NSWindow_inst_convertRectToScreen_(void *id, NSRect rect) {
+NSRect NSWindow_inst_convertRectToScreen(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		convertRectToScreen: rect];
 }
 
-NSPoint NSWindow_inst_convertPointToBacking_(void *id, NSPoint point) {
+NSPoint NSWindow_inst_convertPointToBacking(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointToBacking: point];
 }
 
-NSPoint NSWindow_inst_convertPointToScreen_(void *id, NSPoint point) {
+NSPoint NSWindow_inst_convertPointToScreen(void *id, NSPoint point) {
 	return [(NSWindow*)id
 		convertPointToScreen: point];
 }
 
-void NSWindow_inst_setTitleWithRepresentedFilename_(void *id, void* filename) {
+void NSWindow_inst_setTitleWithRepresentedFilename(void *id, void* filename) {
 	[(NSWindow*)id
 		setTitleWithRepresentedFilename: filename];
 }
@@ -4541,7 +4541,7 @@ void NSWindow_inst_center(void *id) {
 		center];
 }
 
-void NSWindow_inst_performClose_(void *id, void* sender) {
+void NSWindow_inst_performClose(void *id, void* sender) {
 	[(NSWindow*)id
 		performClose: sender];
 }
@@ -4551,32 +4551,32 @@ void NSWindow_inst_close(void *id) {
 		close];
 }
 
-void NSWindow_inst_performMiniaturize_(void *id, void* sender) {
+void NSWindow_inst_performMiniaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		performMiniaturize: sender];
 }
 
-void NSWindow_inst_miniaturize_(void *id, void* sender) {
+void NSWindow_inst_miniaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		miniaturize: sender];
 }
 
-void NSWindow_inst_deminiaturize_(void *id, void* sender) {
+void NSWindow_inst_deminiaturize(void *id, void* sender) {
 	[(NSWindow*)id
 		deminiaturize: sender];
 }
 
-void NSWindow_inst_print_(void *id, void* sender) {
+void NSWindow_inst_print(void *id, void* sender) {
 	[(NSWindow*)id
 		print: sender];
 }
 
-void* NSWindow_inst_dataWithEPSInsideRect_(void *id, NSRect rect) {
+void* NSWindow_inst_dataWithEPSInsideRect(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		dataWithEPSInsideRect: rect];
 }
 
-void* NSWindow_inst_dataWithPDFInsideRect_(void *id, NSRect rect) {
+void* NSWindow_inst_dataWithPDFInsideRect(void *id, NSRect rect) {
 	return [(NSWindow*)id
 		dataWithPDFInsideRect: rect];
 }
@@ -4591,22 +4591,22 @@ void NSWindow_inst_layoutIfNeeded(void *id) {
 		layoutIfNeeded];
 }
 
-void NSWindow_inst_visualizeConstraints_(void *id, void* constraints) {
+void NSWindow_inst_visualizeConstraints(void *id, void* constraints) {
 	[(NSWindow*)id
 		visualizeConstraints: constraints];
 }
 
-void NSWindow_inst_setIsMiniaturized_(void *id, BOOL flag) {
+void NSWindow_inst_setIsMiniaturized(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsMiniaturized: flag];
 }
 
-void NSWindow_inst_setIsVisible_(void *id, BOOL flag) {
+void NSWindow_inst_setIsVisible(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsVisible: flag];
 }
 
-void NSWindow_inst_setIsZoomed_(void *id, BOOL flag) {
+void NSWindow_inst_setIsZoomed(void *id, BOOL flag) {
 	[(NSWindow*)id
 		setIsZoomed: flag];
 }
@@ -4621,7 +4621,7 @@ void* NSWindow_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSWindow_inst_setDelegate_(void *id, void* value) {
+void NSWindow_inst_setDelegate(void *id, void* value) {
 	[(NSWindow*)id
 		setDelegate: value];
 }
@@ -4631,7 +4631,7 @@ void* NSWindow_inst_contentViewController(void *id) {
 		contentViewController];
 }
 
-void NSWindow_inst_setContentViewController_(void *id, void* value) {
+void NSWindow_inst_setContentViewController(void *id, void* value) {
 	[(NSWindow*)id
 		setContentViewController: value];
 }
@@ -4641,7 +4641,7 @@ void* NSWindow_inst_contentView(void *id) {
 		contentView];
 }
 
-void NSWindow_inst_setContentView_(void *id, void* value) {
+void NSWindow_inst_setContentView(void *id, void* value) {
 	[(NSWindow*)id
 		setContentView: value];
 }
@@ -4651,7 +4651,7 @@ unsigned long NSWindow_inst_styleMask(void *id) {
 		styleMask];
 }
 
-void NSWindow_inst_setStyleMask_(void *id, unsigned long value) {
+void NSWindow_inst_setStyleMask(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setStyleMask: value];
 }
@@ -4666,7 +4666,7 @@ double NSWindow_inst_alphaValue(void *id) {
 		alphaValue];
 }
 
-void NSWindow_inst_setAlphaValue_(void *id, double value) {
+void NSWindow_inst_setAlphaValue(void *id, double value) {
 	[(NSWindow*)id
 		setAlphaValue: value];
 }
@@ -4676,7 +4676,7 @@ void* NSWindow_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSWindow_inst_setBackgroundColor_(void *id, void* value) {
+void NSWindow_inst_setBackgroundColor(void *id, void* value) {
 	[(NSWindow*)id
 		setBackgroundColor: value];
 }
@@ -4686,7 +4686,7 @@ BOOL NSWindow_inst_canHide(void *id) {
 		canHide];
 }
 
-void NSWindow_inst_setCanHide_(void *id, BOOL value) {
+void NSWindow_inst_setCanHide(void *id, BOOL value) {
 	[(NSWindow*)id
 		setCanHide: value];
 }
@@ -4701,7 +4701,7 @@ BOOL NSWindow_inst_hidesOnDeactivate(void *id) {
 		hidesOnDeactivate];
 }
 
-void NSWindow_inst_setHidesOnDeactivate_(void *id, BOOL value) {
+void NSWindow_inst_setHidesOnDeactivate(void *id, BOOL value) {
 	[(NSWindow*)id
 		setHidesOnDeactivate: value];
 }
@@ -4711,7 +4711,7 @@ unsigned long NSWindow_inst_collectionBehavior(void *id) {
 		collectionBehavior];
 }
 
-void NSWindow_inst_setCollectionBehavior_(void *id, unsigned long value) {
+void NSWindow_inst_setCollectionBehavior(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setCollectionBehavior: value];
 }
@@ -4721,7 +4721,7 @@ BOOL NSWindow_inst_isOpaque(void *id) {
 		isOpaque];
 }
 
-void NSWindow_inst_setOpaque_(void *id, BOOL value) {
+void NSWindow_inst_setOpaque(void *id, BOOL value) {
 	[(NSWindow*)id
 		setOpaque: value];
 }
@@ -4731,7 +4731,7 @@ BOOL NSWindow_inst_hasShadow(void *id) {
 		hasShadow];
 }
 
-void NSWindow_inst_setHasShadow_(void *id, BOOL value) {
+void NSWindow_inst_setHasShadow(void *id, BOOL value) {
 	[(NSWindow*)id
 		setHasShadow: value];
 }
@@ -4741,7 +4741,7 @@ BOOL NSWindow_inst_preventsApplicationTerminationWhenModal(void *id) {
 		preventsApplicationTerminationWhenModal];
 }
 
-void NSWindow_inst_setPreventsApplicationTerminationWhenModal_(void *id, BOOL value) {
+void NSWindow_inst_setPreventsApplicationTerminationWhenModal(void *id, BOOL value) {
 	[(NSWindow*)id
 		setPreventsApplicationTerminationWhenModal: value];
 }
@@ -4766,7 +4766,7 @@ BOOL NSWindow_inst_canBecomeVisibleWithoutLogin(void *id) {
 		canBecomeVisibleWithoutLogin];
 }
 
-void NSWindow_inst_setCanBecomeVisibleWithoutLogin_(void *id, BOOL value) {
+void NSWindow_inst_setCanBecomeVisibleWithoutLogin(void *id, BOOL value) {
 	[(NSWindow*)id
 		setCanBecomeVisibleWithoutLogin: value];
 }
@@ -4776,7 +4776,7 @@ unsigned long NSWindow_inst_backingType(void *id) {
 		backingType];
 }
 
-void NSWindow_inst_setBackingType_(void *id, unsigned long value) {
+void NSWindow_inst_setBackingType(void *id, unsigned long value) {
 	[(NSWindow*)id
 		setBackingType: value];
 }
@@ -4811,7 +4811,7 @@ NSSize NSWindow_inst_aspectRatio(void *id) {
 		aspectRatio];
 }
 
-void NSWindow_inst_setAspectRatio_(void *id, NSSize value) {
+void NSWindow_inst_setAspectRatio(void *id, NSSize value) {
 	[(NSWindow*)id
 		setAspectRatio: value];
 }
@@ -4821,7 +4821,7 @@ NSSize NSWindow_inst_minSize(void *id) {
 		minSize];
 }
 
-void NSWindow_inst_setMinSize_(void *id, NSSize value) {
+void NSWindow_inst_setMinSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMinSize: value];
 }
@@ -4831,7 +4831,7 @@ NSSize NSWindow_inst_maxSize(void *id) {
 		maxSize];
 }
 
-void NSWindow_inst_setMaxSize_(void *id, NSSize value) {
+void NSWindow_inst_setMaxSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMaxSize: value];
 }
@@ -4846,7 +4846,7 @@ NSSize NSWindow_inst_resizeIncrements(void *id) {
 		resizeIncrements];
 }
 
-void NSWindow_inst_setResizeIncrements_(void *id, NSSize value) {
+void NSWindow_inst_setResizeIncrements(void *id, NSSize value) {
 	[(NSWindow*)id
 		setResizeIncrements: value];
 }
@@ -4856,7 +4856,7 @@ BOOL NSWindow_inst_preservesContentDuringLiveResize(void *id) {
 		preservesContentDuringLiveResize];
 }
 
-void NSWindow_inst_setPreservesContentDuringLiveResize_(void *id, BOOL value) {
+void NSWindow_inst_setPreservesContentDuringLiveResize(void *id, BOOL value) {
 	[(NSWindow*)id
 		setPreservesContentDuringLiveResize: value];
 }
@@ -4871,7 +4871,7 @@ NSSize NSWindow_inst_contentAspectRatio(void *id) {
 		contentAspectRatio];
 }
 
-void NSWindow_inst_setContentAspectRatio_(void *id, NSSize value) {
+void NSWindow_inst_setContentAspectRatio(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentAspectRatio: value];
 }
@@ -4881,7 +4881,7 @@ NSSize NSWindow_inst_contentMinSize(void *id) {
 		contentMinSize];
 }
 
-void NSWindow_inst_setContentMinSize_(void *id, NSSize value) {
+void NSWindow_inst_setContentMinSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentMinSize: value];
 }
@@ -4891,7 +4891,7 @@ NSSize NSWindow_inst_contentMaxSize(void *id) {
 		contentMaxSize];
 }
 
-void NSWindow_inst_setContentMaxSize_(void *id, NSSize value) {
+void NSWindow_inst_setContentMaxSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentMaxSize: value];
 }
@@ -4901,7 +4901,7 @@ NSSize NSWindow_inst_contentResizeIncrements(void *id) {
 		contentResizeIncrements];
 }
 
-void NSWindow_inst_setContentResizeIncrements_(void *id, NSSize value) {
+void NSWindow_inst_setContentResizeIncrements(void *id, NSSize value) {
 	[(NSWindow*)id
 		setContentResizeIncrements: value];
 }
@@ -4921,7 +4921,7 @@ NSSize NSWindow_inst_maxFullScreenContentSize(void *id) {
 		maxFullScreenContentSize];
 }
 
-void NSWindow_inst_setMaxFullScreenContentSize_(void *id, NSSize value) {
+void NSWindow_inst_setMaxFullScreenContentSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMaxFullScreenContentSize: value];
 }
@@ -4931,7 +4931,7 @@ NSSize NSWindow_inst_minFullScreenContentSize(void *id) {
 		minFullScreenContentSize];
 }
 
-void NSWindow_inst_setMinFullScreenContentSize_(void *id, NSSize value) {
+void NSWindow_inst_setMinFullScreenContentSize(void *id, NSSize value) {
 	[(NSWindow*)id
 		setMinFullScreenContentSize: value];
 }
@@ -4941,7 +4941,7 @@ long NSWindow_inst_level(void *id) {
 		level];
 }
 
-void NSWindow_inst_setLevel_(void *id, long value) {
+void NSWindow_inst_setLevel(void *id, long value) {
 	[(NSWindow*)id
 		setLevel: value];
 }
@@ -4981,7 +4981,7 @@ void* NSWindow_inst_parentWindow(void *id) {
 		parentWindow];
 }
 
-void NSWindow_inst_setParentWindow_(void *id, void* value) {
+void NSWindow_inst_setParentWindow(void *id, void* value) {
 	[(NSWindow*)id
 		setParentWindow: value];
 }
@@ -4991,7 +4991,7 @@ BOOL NSWindow_inst_isExcludedFromWindowsMenu(void *id) {
 		isExcludedFromWindowsMenu];
 }
 
-void NSWindow_inst_setExcludedFromWindowsMenu_(void *id, BOOL value) {
+void NSWindow_inst_setExcludedFromWindowsMenu(void *id, BOOL value) {
 	[(NSWindow*)id
 		setExcludedFromWindowsMenu: value];
 }
@@ -5006,7 +5006,7 @@ BOOL NSWindow_inst_showsToolbarButton(void *id) {
 		showsToolbarButton];
 }
 
-void NSWindow_inst_setShowsToolbarButton_(void *id, BOOL value) {
+void NSWindow_inst_setShowsToolbarButton(void *id, BOOL value) {
 	[(NSWindow*)id
 		setShowsToolbarButton: value];
 }
@@ -5016,7 +5016,7 @@ BOOL NSWindow_inst_titlebarAppearsTransparent(void *id) {
 		titlebarAppearsTransparent];
 }
 
-void NSWindow_inst_setTitlebarAppearsTransparent_(void *id, BOOL value) {
+void NSWindow_inst_setTitlebarAppearsTransparent(void *id, BOOL value) {
 	[(NSWindow*)id
 		setTitlebarAppearsTransparent: value];
 }
@@ -5026,7 +5026,7 @@ void* NSWindow_inst_titlebarAccessoryViewControllers(void *id) {
 		titlebarAccessoryViewControllers];
 }
 
-void NSWindow_inst_setTitlebarAccessoryViewControllers_(void *id, void* value) {
+void NSWindow_inst_setTitlebarAccessoryViewControllers(void *id, void* value) {
 	[(NSWindow*)id
 		setTitlebarAccessoryViewControllers: value];
 }
@@ -5041,7 +5041,7 @@ BOOL NSWindow_inst_allowsToolTipsWhenApplicationIsInactive(void *id) {
 		allowsToolTipsWhenApplicationIsInactive];
 }
 
-void NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive_(void *id, BOOL value) {
+void NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAllowsToolTipsWhenApplicationIsInactive: value];
 }
@@ -5056,7 +5056,7 @@ void* NSWindow_inst_initialFirstResponder(void *id) {
 		initialFirstResponder];
 }
 
-void NSWindow_inst_setInitialFirstResponder_(void *id, void* value) {
+void NSWindow_inst_setInitialFirstResponder(void *id, void* value) {
 	[(NSWindow*)id
 		setInitialFirstResponder: value];
 }
@@ -5066,7 +5066,7 @@ BOOL NSWindow_inst_autorecalculatesKeyViewLoop(void *id) {
 		autorecalculatesKeyViewLoop];
 }
 
-void NSWindow_inst_setAutorecalculatesKeyViewLoop_(void *id, BOOL value) {
+void NSWindow_inst_setAutorecalculatesKeyViewLoop(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAutorecalculatesKeyViewLoop: value];
 }
@@ -5076,7 +5076,7 @@ BOOL NSWindow_inst_acceptsMouseMovedEvents(void *id) {
 		acceptsMouseMovedEvents];
 }
 
-void NSWindow_inst_setAcceptsMouseMovedEvents_(void *id, BOOL value) {
+void NSWindow_inst_setAcceptsMouseMovedEvents(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAcceptsMouseMovedEvents: value];
 }
@@ -5086,7 +5086,7 @@ BOOL NSWindow_inst_ignoresMouseEvents(void *id) {
 		ignoresMouseEvents];
 }
 
-void NSWindow_inst_setIgnoresMouseEvents_(void *id, BOOL value) {
+void NSWindow_inst_setIgnoresMouseEvents(void *id, BOOL value) {
 	[(NSWindow*)id
 		setIgnoresMouseEvents: value];
 }
@@ -5101,7 +5101,7 @@ BOOL NSWindow_inst_isRestorable(void *id) {
 		isRestorable];
 }
 
-void NSWindow_inst_setRestorable_(void *id, BOOL value) {
+void NSWindow_inst_setRestorable(void *id, BOOL value) {
 	[(NSWindow*)id
 		setRestorable: value];
 }
@@ -5111,7 +5111,7 @@ BOOL NSWindow_inst_viewsNeedDisplay(void *id) {
 		viewsNeedDisplay];
 }
 
-void NSWindow_inst_setViewsNeedDisplay_(void *id, BOOL value) {
+void NSWindow_inst_setViewsNeedDisplay(void *id, BOOL value) {
 	[(NSWindow*)id
 		setViewsNeedDisplay: value];
 }
@@ -5121,7 +5121,7 @@ BOOL NSWindow_inst_allowsConcurrentViewDrawing(void *id) {
 		allowsConcurrentViewDrawing];
 }
 
-void NSWindow_inst_setAllowsConcurrentViewDrawing_(void *id, BOOL value) {
+void NSWindow_inst_setAllowsConcurrentViewDrawing(void *id, BOOL value) {
 	[(NSWindow*)id
 		setAllowsConcurrentViewDrawing: value];
 }
@@ -5131,7 +5131,7 @@ BOOL NSWindow_inst_isDocumentEdited(void *id) {
 		isDocumentEdited];
 }
 
-void NSWindow_inst_setDocumentEdited_(void *id, BOOL value) {
+void NSWindow_inst_setDocumentEdited(void *id, BOOL value) {
 	[(NSWindow*)id
 		setDocumentEdited: value];
 }
@@ -5146,7 +5146,7 @@ void* NSWindow_inst_title(void *id) {
 		title];
 }
 
-void NSWindow_inst_setTitle_(void *id, void* value) {
+void NSWindow_inst_setTitle(void *id, void* value) {
 	[(NSWindow*)id
 		setTitle: value];
 }
@@ -5156,7 +5156,7 @@ void* NSWindow_inst_subtitle(void *id) {
 		subtitle];
 }
 
-void NSWindow_inst_setSubtitle_(void *id, void* value) {
+void NSWindow_inst_setSubtitle(void *id, void* value) {
 	[(NSWindow*)id
 		setSubtitle: value];
 }
@@ -5166,7 +5166,7 @@ long NSWindow_inst_titleVisibility(void *id) {
 		titleVisibility];
 }
 
-void NSWindow_inst_setTitleVisibility_(void *id, long value) {
+void NSWindow_inst_setTitleVisibility(void *id, long value) {
 	[(NSWindow*)id
 		setTitleVisibility: value];
 }
@@ -5176,7 +5176,7 @@ void* NSWindow_inst_representedFilename(void *id) {
 		representedFilename];
 }
 
-void NSWindow_inst_setRepresentedFilename_(void *id, void* value) {
+void NSWindow_inst_setRepresentedFilename(void *id, void* value) {
 	[(NSWindow*)id
 		setRepresentedFilename: value];
 }
@@ -5186,7 +5186,7 @@ void* NSWindow_inst_representedURL(void *id) {
 		representedURL];
 }
 
-void NSWindow_inst_setRepresentedURL_(void *id, void* value) {
+void NSWindow_inst_setRepresentedURL(void *id, void* value) {
 	[(NSWindow*)id
 		setRepresentedURL: value];
 }
@@ -5206,7 +5206,7 @@ BOOL NSWindow_inst_displaysWhenScreenProfileChanges(void *id) {
 		displaysWhenScreenProfileChanges];
 }
 
-void NSWindow_inst_setDisplaysWhenScreenProfileChanges_(void *id, BOOL value) {
+void NSWindow_inst_setDisplaysWhenScreenProfileChanges(void *id, BOOL value) {
 	[(NSWindow*)id
 		setDisplaysWhenScreenProfileChanges: value];
 }
@@ -5216,7 +5216,7 @@ BOOL NSWindow_inst_isMovableByWindowBackground(void *id) {
 		isMovableByWindowBackground];
 }
 
-void NSWindow_inst_setMovableByWindowBackground_(void *id, BOOL value) {
+void NSWindow_inst_setMovableByWindowBackground(void *id, BOOL value) {
 	[(NSWindow*)id
 		setMovableByWindowBackground: value];
 }
@@ -5226,7 +5226,7 @@ BOOL NSWindow_inst_isMovable(void *id) {
 		isMovable];
 }
 
-void NSWindow_inst_setMovable_(void *id, BOOL value) {
+void NSWindow_inst_setMovable(void *id, BOOL value) {
 	[(NSWindow*)id
 		setMovable: value];
 }
@@ -5236,7 +5236,7 @@ BOOL NSWindow_inst_isReleasedWhenClosed(void *id) {
 		isReleasedWhenClosed];
 }
 
-void NSWindow_inst_setReleasedWhenClosed_(void *id, BOOL value) {
+void NSWindow_inst_setReleasedWhenClosed(void *id, BOOL value) {
 	[(NSWindow*)id
 		setReleasedWhenClosed: value];
 }
@@ -5251,7 +5251,7 @@ void* NSWindow_inst_miniwindowImage(void *id) {
 		miniwindowImage];
 }
 
-void NSWindow_inst_setMiniwindowImage_(void *id, void* value) {
+void NSWindow_inst_setMiniwindowImage(void *id, void* value) {
 	[(NSWindow*)id
 		setMiniwindowImage: value];
 }
@@ -5261,7 +5261,7 @@ void* NSWindow_inst_miniwindowTitle(void *id) {
 		miniwindowTitle];
 }
 
-void NSWindow_inst_setMiniwindowTitle_(void *id, void* value) {
+void NSWindow_inst_setMiniwindowTitle(void *id, void* value) {
 	[(NSWindow*)id
 		setMiniwindowTitle: value];
 }
@@ -5306,12 +5306,12 @@ long NSWindow_inst_orderedIndex(void *id) {
 		orderedIndex];
 }
 
-void NSWindow_inst_setOrderedIndex_(void *id, long value) {
+void NSWindow_inst_setOrderedIndex(void *id, long value) {
 	[(NSWindow*)id
 		setOrderedIndex: value];
 }
 
-BOOL NSWorkspace_inst_openURL_(void *id, void* url) {
+BOOL NSWorkspace_inst_openURL(void *id, void* url) {
 	return [(NSWorkspace*)id
 		openURL: url];
 }
@@ -5321,78 +5321,78 @@ void NSWorkspace_inst_hideOtherApplications(void *id) {
 		hideOtherApplications];
 }
 
-void NSWorkspace_inst_activateFileViewerSelectingURLs_(void *id, void* fileURLs) {
+void NSWorkspace_inst_activateFileViewerSelectingURLs(void *id, void* fileURLs) {
 	[(NSWorkspace*)id
 		activateFileViewerSelectingURLs: fileURLs];
 }
 
-BOOL NSWorkspace_inst_selectFile_inFileViewerRootedAtPath_(void *id, void* fullPath, void* rootFullPath) {
+BOOL NSWorkspace_inst_selectFile_inFileViewerRootedAtPath(void *id, void* fullPath, void* rootFullPath) {
 	return [(NSWorkspace*)id
 		selectFile: fullPath
 		inFileViewerRootedAtPath: rootFullPath];
 }
 
-void* NSWorkspace_inst_URLForApplicationWithBundleIdentifier_(void *id, void* bundleIdentifier) {
+void* NSWorkspace_inst_URLForApplicationWithBundleIdentifier(void *id, void* bundleIdentifier) {
 	return [(NSWorkspace*)id
 		URLForApplicationWithBundleIdentifier: bundleIdentifier];
 }
 
-void* NSWorkspace_inst_URLForApplicationToOpenURL_(void *id, void* url) {
+void* NSWorkspace_inst_URLForApplicationToOpenURL(void *id, void* url) {
 	return [(NSWorkspace*)id
 		URLForApplicationToOpenURL: url];
 }
 
-BOOL NSWorkspace_inst_isFilePackageAtPath_(void *id, void* fullPath) {
+BOOL NSWorkspace_inst_isFilePackageAtPath(void *id, void* fullPath) {
 	return [(NSWorkspace*)id
 		isFilePackageAtPath: fullPath];
 }
 
-void* NSWorkspace_inst_iconForFile_(void *id, void* fullPath) {
+void* NSWorkspace_inst_iconForFile(void *id, void* fullPath) {
 	return [(NSWorkspace*)id
 		iconForFile: fullPath];
 }
 
-void* NSWorkspace_inst_iconForFiles_(void *id, void* fullPaths) {
+void* NSWorkspace_inst_iconForFiles(void *id, void* fullPaths) {
 	return [(NSWorkspace*)id
 		iconForFiles: fullPaths];
 }
 
-BOOL NSWorkspace_inst_unmountAndEjectDeviceAtPath_(void *id, void* path) {
+BOOL NSWorkspace_inst_unmountAndEjectDeviceAtPath(void *id, void* path) {
 	return [(NSWorkspace*)id
 		unmountAndEjectDeviceAtPath: path];
 }
 
-void* NSWorkspace_inst_desktopImageURLForScreen_(void *id, void* screen) {
+void* NSWorkspace_inst_desktopImageURLForScreen(void *id, void* screen) {
 	return [(NSWorkspace*)id
 		desktopImageURLForScreen: screen];
 }
 
-void* NSWorkspace_inst_desktopImageOptionsForScreen_(void *id, void* screen) {
+void* NSWorkspace_inst_desktopImageOptionsForScreen(void *id, void* screen) {
 	return [(NSWorkspace*)id
 		desktopImageOptionsForScreen: screen];
 }
 
-BOOL NSWorkspace_inst_showSearchResultsForQueryString_(void *id, void* queryString) {
+BOOL NSWorkspace_inst_showSearchResultsForQueryString(void *id, void* queryString) {
 	return [(NSWorkspace*)id
 		showSearchResultsForQueryString: queryString];
 }
 
-void NSWorkspace_inst_noteFileSystemChanged_(void *id, void* path) {
+void NSWorkspace_inst_noteFileSystemChanged(void *id, void* path) {
 	[(NSWorkspace*)id
 		noteFileSystemChanged: path];
 }
 
-long NSWorkspace_inst_extendPowerOffBy_(void *id, long requested) {
+long NSWorkspace_inst_extendPowerOffBy(void *id, long requested) {
 	return [(NSWorkspace*)id
 		extendPowerOffBy: requested];
 }
 
-void* NSWorkspace_inst_URLsForApplicationsToOpenURL_(void *id, void* url) {
+void* NSWorkspace_inst_URLsForApplicationsToOpenURL(void *id, void* url) {
 	return [(NSWorkspace*)id
 		URLsForApplicationsToOpenURL: url];
 }
 
-void* NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier_(void *id, void* bundleIdentifier) {
+void* NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier(void *id, void* bundleIdentifier) {
 	return [(NSWorkspace*)id
 		URLsForApplicationsWithBundleIdentifier: bundleIdentifier];
 }
@@ -5462,33 +5462,33 @@ BOOL NSWorkspace_inst_isVoiceOverEnabled(void *id) {
 		isVoiceOverEnabled];
 }
 
-void* NSColor_inst_blendedColorWithFraction_ofColor_(void *id, double fraction, void* color) {
+void* NSColor_inst_blendedColorWithFraction_ofColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
 		ofColor: color];
 }
 
-void* NSColor_inst_colorWithAlphaComponent_(void *id, double alpha) {
+void* NSColor_inst_colorWithAlphaComponent(void *id, double alpha) {
 	return [(NSColor*)id
 		colorWithAlphaComponent: alpha];
 }
 
-void* NSColor_inst_highlightWithLevel_(void *id, double val) {
+void* NSColor_inst_highlightWithLevel(void *id, double val) {
 	return [(NSColor*)id
 		highlightWithLevel: val];
 }
 
-void* NSColor_inst_shadowWithLevel_(void *id, double val) {
+void* NSColor_inst_shadowWithLevel(void *id, double val) {
 	return [(NSColor*)id
 		shadowWithLevel: val];
 }
 
-void NSColor_inst_writeToPasteboard_(void *id, void* pasteBoard) {
+void NSColor_inst_writeToPasteboard(void *id, void* pasteBoard) {
 	[(NSColor*)id
 		writeToPasteboard: pasteBoard];
 }
 
-void NSColor_inst_drawSwatchInRect_(void *id, NSRect rect) {
+void NSColor_inst_drawSwatchInRect(void *id, NSRect rect) {
 	[(NSColor*)id
 		drawSwatchInRect: rect];
 }
@@ -5588,18 +5588,18 @@ void* NSColor_inst_localizedColorNameComponent(void *id) {
 		localizedColorNameComponent];
 }
 
-void* NSTextView_inst_initWithFrame_textContainer_(void *id, NSRect frameRect, void* container) {
+void* NSTextView_inst_initWithFrame_textContainer(void *id, NSRect frameRect, void* container) {
 	return [(NSTextView*)id
 		initWithFrame: frameRect
 		textContainer: container];
 }
 
-void* NSTextView_inst_initWithFrame_(void *id, NSRect frameRect) {
+void* NSTextView_inst_initWithFrame(void *id, NSRect frameRect) {
 	return [(NSTextView*)id
 		initWithFrame: frameRect];
 }
 
-void NSTextView_inst_replaceTextContainer_(void *id, void* newContainer) {
+void NSTextView_inst_replaceTextContainer(void *id, void* newContainer) {
 	[(NSTextView*)id
 		replaceTextContainer: newContainer];
 }
@@ -5609,30 +5609,30 @@ void NSTextView_inst_invalidateTextContainerOrigin(void *id) {
 		invalidateTextContainerOrigin];
 }
 
-void NSTextView_inst_changeDocumentBackgroundColor_(void *id, void* sender) {
+void NSTextView_inst_changeDocumentBackgroundColor(void *id, void* sender) {
 	[(NSTextView*)id
 		changeDocumentBackgroundColor: sender];
 }
 
-void NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout_(void *id, NSRect rect, BOOL flag) {
+void NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout(void *id, NSRect rect, BOOL flag) {
 	[(NSTextView*)id
 		setNeedsDisplayInRect: rect
 		avoidAdditionalLayout: flag];
 }
 
-void NSTextView_inst_drawInsertionPointInRect_color_turnedOn_(void *id, NSRect rect, void* color, BOOL flag) {
+void NSTextView_inst_drawInsertionPointInRect_color_turnedOn(void *id, NSRect rect, void* color, BOOL flag) {
 	[(NSTextView*)id
 		drawInsertionPointInRect: rect
 		color: color
 		turnedOn: flag];
 }
 
-void NSTextView_inst_drawViewBackgroundInRect_(void *id, NSRect rect) {
+void NSTextView_inst_drawViewBackgroundInRect(void *id, NSRect rect) {
 	[(NSTextView*)id
 		drawViewBackgroundInRect: rect];
 }
 
-void NSTextView_inst_setConstrainedFrameSize_(void *id, NSSize desiredSize) {
+void NSTextView_inst_setConstrainedFrameSize(void *id, NSSize desiredSize) {
 	[(NSTextView*)id
 		setConstrainedFrameSize: desiredSize];
 }
@@ -5642,32 +5642,32 @@ void NSTextView_inst_cleanUpAfterDragOperation(void *id) {
 		cleanUpAfterDragOperation];
 }
 
-void NSTextView_inst_outline_(void *id, void* sender) {
+void NSTextView_inst_outline(void *id, void* sender) {
 	[(NSTextView*)id
 		outline: sender];
 }
 
-void NSTextView_inst_toggleAutomaticQuoteSubstitution_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticQuoteSubstitution(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticQuoteSubstitution: sender];
 }
 
-void NSTextView_inst_toggleAutomaticLinkDetection_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticLinkDetection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticLinkDetection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticTextCompletion_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticTextCompletion(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticTextCompletion: sender];
 }
 
-void NSTextView_inst_updateInsertionPointStateAndRestartTimer_(void *id, BOOL restartFlag) {
+void NSTextView_inst_updateInsertionPointStateAndRestartTimer(void *id, BOOL restartFlag) {
 	[(NSTextView*)id
 		updateInsertionPointStateAndRestartTimer: restartFlag];
 }
 
-unsigned long NSTextView_inst_characterIndexForInsertionAtPoint_(void *id, NSPoint point) {
+unsigned long NSTextView_inst_characterIndexForInsertionAtPoint(void *id, NSPoint point) {
 	return [(NSTextView*)id
 		characterIndexForInsertionAtPoint: point];
 }
@@ -5677,89 +5677,89 @@ void NSTextView_inst_updateCandidates(void *id) {
 		updateCandidates];
 }
 
-BOOL NSTextView_inst_readSelectionFromPasteboard_(void *id, void* pboard) {
+BOOL NSTextView_inst_readSelectionFromPasteboard(void *id, void* pboard) {
 	return [(NSTextView*)id
 		readSelectionFromPasteboard: pboard];
 }
 
-BOOL NSTextView_inst_writeSelectionToPasteboard_types_(void *id, void* pboard, void* types) {
+BOOL NSTextView_inst_writeSelectionToPasteboard_types(void *id, void* pboard, void* types) {
 	return [(NSTextView*)id
 		writeSelectionToPasteboard: pboard
 		types: types];
 }
 
-void NSTextView_inst_alignJustified_(void *id, void* sender) {
+void NSTextView_inst_alignJustified(void *id, void* sender) {
 	[(NSTextView*)id
 		alignJustified: sender];
 }
 
-void NSTextView_inst_changeAttributes_(void *id, void* sender) {
+void NSTextView_inst_changeAttributes(void *id, void* sender) {
 	[(NSTextView*)id
 		changeAttributes: sender];
 }
 
-void NSTextView_inst_changeColor_(void *id, void* sender) {
+void NSTextView_inst_changeColor(void *id, void* sender) {
 	[(NSTextView*)id
 		changeColor: sender];
 }
 
-void NSTextView_inst_useStandardKerning_(void *id, void* sender) {
+void NSTextView_inst_useStandardKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		useStandardKerning: sender];
 }
 
-void NSTextView_inst_lowerBaseline_(void *id, void* sender) {
+void NSTextView_inst_lowerBaseline(void *id, void* sender) {
 	[(NSTextView*)id
 		lowerBaseline: sender];
 }
 
-void NSTextView_inst_raiseBaseline_(void *id, void* sender) {
+void NSTextView_inst_raiseBaseline(void *id, void* sender) {
 	[(NSTextView*)id
 		raiseBaseline: sender];
 }
 
-void NSTextView_inst_turnOffKerning_(void *id, void* sender) {
+void NSTextView_inst_turnOffKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		turnOffKerning: sender];
 }
 
-void NSTextView_inst_loosenKerning_(void *id, void* sender) {
+void NSTextView_inst_loosenKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		loosenKerning: sender];
 }
 
-void NSTextView_inst_tightenKerning_(void *id, void* sender) {
+void NSTextView_inst_tightenKerning(void *id, void* sender) {
 	[(NSTextView*)id
 		tightenKerning: sender];
 }
 
-void NSTextView_inst_useStandardLigatures_(void *id, void* sender) {
+void NSTextView_inst_useStandardLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		useStandardLigatures: sender];
 }
 
-void NSTextView_inst_turnOffLigatures_(void *id, void* sender) {
+void NSTextView_inst_turnOffLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		turnOffLigatures: sender];
 }
 
-void NSTextView_inst_useAllLigatures_(void *id, void* sender) {
+void NSTextView_inst_useAllLigatures(void *id, void* sender) {
 	[(NSTextView*)id
 		useAllLigatures: sender];
 }
 
-void NSTextView_inst_clickedOnLink_atIndex_(void *id, void* link, unsigned long charIndex) {
+void NSTextView_inst_clickedOnLink_atIndex(void *id, void* link, unsigned long charIndex) {
 	[(NSTextView*)id
 		clickedOnLink: link
 		atIndex: charIndex];
 }
 
-void NSTextView_inst_pasteAsPlainText_(void *id, void* sender) {
+void NSTextView_inst_pasteAsPlainText(void *id, void* sender) {
 	[(NSTextView*)id
 		pasteAsPlainText: sender];
 }
 
-void NSTextView_inst_pasteAsRichText_(void *id, void* sender) {
+void NSTextView_inst_pasteAsRichText(void *id, void* sender) {
 	[(NSTextView*)id
 		pasteAsRichText: sender];
 }
@@ -5784,7 +5784,7 @@ void NSTextView_inst_updateDragTypeRegistration(void *id) {
 		updateDragTypeRegistration];
 }
 
-BOOL NSTextView_inst_shouldChangeTextInRanges_replacementStrings_(void *id, void* affectedRanges, void* replacementStrings) {
+BOOL NSTextView_inst_shouldChangeTextInRanges_replacementStrings(void *id, void* affectedRanges, void* replacementStrings) {
 	return [(NSTextView*)id
 		shouldChangeTextInRanges: affectedRanges
 		replacementStrings: replacementStrings];
@@ -5795,104 +5795,104 @@ void NSTextView_inst_didChangeText(void *id) {
 		didChangeText];
 }
 
-void NSTextView_inst_toggleSmartInsertDelete_(void *id, void* sender) {
+void NSTextView_inst_toggleSmartInsertDelete(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleSmartInsertDelete: sender];
 }
 
-void NSTextView_inst_toggleContinuousSpellChecking_(void *id, void* sender) {
+void NSTextView_inst_toggleContinuousSpellChecking(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleContinuousSpellChecking: sender];
 }
 
-void NSTextView_inst_toggleGrammarChecking_(void *id, void* sender) {
+void NSTextView_inst_toggleGrammarChecking(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleGrammarChecking: sender];
 }
 
-void NSTextView_inst_orderFrontSharingServicePicker_(void *id, void* sender) {
+void NSTextView_inst_orderFrontSharingServicePicker(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSharingServicePicker: sender];
 }
 
-BOOL NSTextView_inst_dragSelectionWithEvent_offset_slideBack_(void *id, void* event, NSSize mouseOffset, BOOL slideBack) {
+BOOL NSTextView_inst_dragSelectionWithEvent_offset_slideBack(void *id, void* event, NSSize mouseOffset, BOOL slideBack) {
 	return [(NSTextView*)id
 		dragSelectionWithEvent: event
 		offset: mouseOffset
 		slideBack: slideBack];
 }
 
-void NSTextView_inst_startSpeaking_(void *id, void* sender) {
+void NSTextView_inst_startSpeaking(void *id, void* sender) {
 	[(NSTextView*)id
 		startSpeaking: sender];
 }
 
-void NSTextView_inst_stopSpeaking_(void *id, void* sender) {
+void NSTextView_inst_stopSpeaking(void *id, void* sender) {
 	[(NSTextView*)id
 		stopSpeaking: sender];
 }
 
-void NSTextView_inst_performFindPanelAction_(void *id, void* sender) {
+void NSTextView_inst_performFindPanelAction(void *id, void* sender) {
 	[(NSTextView*)id
 		performFindPanelAction: sender];
 }
 
-void NSTextView_inst_orderFrontLinkPanel_(void *id, void* sender) {
+void NSTextView_inst_orderFrontLinkPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontLinkPanel: sender];
 }
 
-void NSTextView_inst_orderFrontListPanel_(void *id, void* sender) {
+void NSTextView_inst_orderFrontListPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontListPanel: sender];
 }
 
-void NSTextView_inst_orderFrontSpacingPanel_(void *id, void* sender) {
+void NSTextView_inst_orderFrontSpacingPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSpacingPanel: sender];
 }
 
-void NSTextView_inst_orderFrontTablePanel_(void *id, void* sender) {
+void NSTextView_inst_orderFrontTablePanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontTablePanel: sender];
 }
 
-void NSTextView_inst_orderFrontSubstitutionsPanel_(void *id, void* sender) {
+void NSTextView_inst_orderFrontSubstitutionsPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		orderFrontSubstitutionsPanel: sender];
 }
 
-void NSTextView_inst_complete_(void *id, void* sender) {
+void NSTextView_inst_complete(void *id, void* sender) {
 	[(NSTextView*)id
 		complete: sender];
 }
 
-void NSTextView_inst_checkTextInDocument_(void *id, void* sender) {
+void NSTextView_inst_checkTextInDocument(void *id, void* sender) {
 	[(NSTextView*)id
 		checkTextInDocument: sender];
 }
 
-void NSTextView_inst_checkTextInSelection_(void *id, void* sender) {
+void NSTextView_inst_checkTextInSelection(void *id, void* sender) {
 	[(NSTextView*)id
 		checkTextInSelection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticDashSubstitution_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticDashSubstitution(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticDashSubstitution: sender];
 }
 
-void NSTextView_inst_toggleAutomaticDataDetection_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticDataDetection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticDataDetection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticSpellingCorrection_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticSpellingCorrection(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticSpellingCorrection: sender];
 }
 
-void NSTextView_inst_toggleAutomaticTextReplacement_(void *id, void* sender) {
+void NSTextView_inst_toggleAutomaticTextReplacement(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleAutomaticTextReplacement: sender];
 }
@@ -5902,17 +5902,17 @@ void NSTextView_inst_updateQuickLookPreviewPanel(void *id) {
 		updateQuickLookPreviewPanel];
 }
 
-void NSTextView_inst_toggleQuickLookPreviewPanel_(void *id, void* sender) {
+void NSTextView_inst_toggleQuickLookPreviewPanel(void *id, void* sender) {
 	[(NSTextView*)id
 		toggleQuickLookPreviewPanel: sender];
 }
 
-void* NSTextView_inst_quickLookPreviewableItemsInRanges_(void *id, void* ranges) {
+void* NSTextView_inst_quickLookPreviewableItemsInRanges(void *id, void* ranges) {
 	return [(NSTextView*)id
 		quickLookPreviewableItemsInRanges: ranges];
 }
 
-void NSTextView_inst_changeLayoutOrientation_(void *id, void* sender) {
+void NSTextView_inst_changeLayoutOrientation(void *id, void* sender) {
 	[(NSTextView*)id
 		changeLayoutOrientation: sender];
 }
@@ -5937,7 +5937,7 @@ void* NSTextView_inst_delegate(void *id) {
 		delegate];
 }
 
-void NSTextView_inst_setDelegate_(void *id, void* value) {
+void NSTextView_inst_setDelegate(void *id, void* value) {
 	[(NSTextView*)id
 		setDelegate: value];
 }
@@ -5947,7 +5947,7 @@ void* NSTextView_inst_textContainer(void *id) {
 		textContainer];
 }
 
-void NSTextView_inst_setTextContainer_(void *id, void* value) {
+void NSTextView_inst_setTextContainer(void *id, void* value) {
 	[(NSTextView*)id
 		setTextContainer: value];
 }
@@ -5957,7 +5957,7 @@ NSSize NSTextView_inst_textContainerInset(void *id) {
 		textContainerInset];
 }
 
-void NSTextView_inst_setTextContainerInset_(void *id, NSSize value) {
+void NSTextView_inst_setTextContainerInset(void *id, NSSize value) {
 	[(NSTextView*)id
 		setTextContainerInset: value];
 }
@@ -5977,7 +5977,7 @@ void* NSTextView_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSTextView_inst_setBackgroundColor_(void *id, void* value) {
+void NSTextView_inst_setBackgroundColor(void *id, void* value) {
 	[(NSTextView*)id
 		setBackgroundColor: value];
 }
@@ -5987,7 +5987,7 @@ BOOL NSTextView_inst_drawsBackground(void *id) {
 		drawsBackground];
 }
 
-void NSTextView_inst_setDrawsBackground_(void *id, BOOL value) {
+void NSTextView_inst_setDrawsBackground(void *id, BOOL value) {
 	[(NSTextView*)id
 		setDrawsBackground: value];
 }
@@ -5997,7 +5997,7 @@ BOOL NSTextView_inst_allowsDocumentBackgroundColorChange(void *id) {
 		allowsDocumentBackgroundColorChange];
 }
 
-void NSTextView_inst_setAllowsDocumentBackgroundColorChange_(void *id, BOOL value) {
+void NSTextView_inst_setAllowsDocumentBackgroundColorChange(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsDocumentBackgroundColorChange: value];
 }
@@ -6012,7 +6012,7 @@ void* NSTextView_inst_allowedInputSourceLocales(void *id) {
 		allowedInputSourceLocales];
 }
 
-void NSTextView_inst_setAllowedInputSourceLocales_(void *id, void* value) {
+void NSTextView_inst_setAllowedInputSourceLocales(void *id, void* value) {
 	[(NSTextView*)id
 		setAllowedInputSourceLocales: value];
 }
@@ -6022,7 +6022,7 @@ BOOL NSTextView_inst_allowsUndo(void *id) {
 		allowsUndo];
 }
 
-void NSTextView_inst_setAllowsUndo_(void *id, BOOL value) {
+void NSTextView_inst_setAllowsUndo(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsUndo: value];
 }
@@ -6032,7 +6032,7 @@ BOOL NSTextView_inst_isEditable(void *id) {
 		isEditable];
 }
 
-void NSTextView_inst_setEditable_(void *id, BOOL value) {
+void NSTextView_inst_setEditable(void *id, BOOL value) {
 	[(NSTextView*)id
 		setEditable: value];
 }
@@ -6042,7 +6042,7 @@ BOOL NSTextView_inst_isSelectable(void *id) {
 		isSelectable];
 }
 
-void NSTextView_inst_setSelectable_(void *id, BOOL value) {
+void NSTextView_inst_setSelectable(void *id, BOOL value) {
 	[(NSTextView*)id
 		setSelectable: value];
 }
@@ -6052,7 +6052,7 @@ BOOL NSTextView_inst_isFieldEditor(void *id) {
 		isFieldEditor];
 }
 
-void NSTextView_inst_setFieldEditor_(void *id, BOOL value) {
+void NSTextView_inst_setFieldEditor(void *id, BOOL value) {
 	[(NSTextView*)id
 		setFieldEditor: value];
 }
@@ -6062,7 +6062,7 @@ BOOL NSTextView_inst_isRichText(void *id) {
 		isRichText];
 }
 
-void NSTextView_inst_setRichText_(void *id, BOOL value) {
+void NSTextView_inst_setRichText(void *id, BOOL value) {
 	[(NSTextView*)id
 		setRichText: value];
 }
@@ -6072,7 +6072,7 @@ BOOL NSTextView_inst_importsGraphics(void *id) {
 		importsGraphics];
 }
 
-void NSTextView_inst_setImportsGraphics_(void *id, BOOL value) {
+void NSTextView_inst_setImportsGraphics(void *id, BOOL value) {
 	[(NSTextView*)id
 		setImportsGraphics: value];
 }
@@ -6082,7 +6082,7 @@ BOOL NSTextView_inst_allowsImageEditing(void *id) {
 		allowsImageEditing];
 }
 
-void NSTextView_inst_setAllowsImageEditing_(void *id, BOOL value) {
+void NSTextView_inst_setAllowsImageEditing(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsImageEditing: value];
 }
@@ -6092,7 +6092,7 @@ BOOL NSTextView_inst_isAutomaticQuoteSubstitutionEnabled(void *id) {
 		isAutomaticQuoteSubstitutionEnabled];
 }
 
-void NSTextView_inst_setAutomaticQuoteSubstitutionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticQuoteSubstitutionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticQuoteSubstitutionEnabled: value];
 }
@@ -6102,7 +6102,7 @@ BOOL NSTextView_inst_isAutomaticLinkDetectionEnabled(void *id) {
 		isAutomaticLinkDetectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticLinkDetectionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticLinkDetectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticLinkDetectionEnabled: value];
 }
@@ -6112,7 +6112,7 @@ BOOL NSTextView_inst_displaysLinkToolTips(void *id) {
 		displaysLinkToolTips];
 }
 
-void NSTextView_inst_setDisplaysLinkToolTips_(void *id, BOOL value) {
+void NSTextView_inst_setDisplaysLinkToolTips(void *id, BOOL value) {
 	[(NSTextView*)id
 		setDisplaysLinkToolTips: value];
 }
@@ -6122,7 +6122,7 @@ BOOL NSTextView_inst_isAutomaticTextCompletionEnabled(void *id) {
 		isAutomaticTextCompletionEnabled];
 }
 
-void NSTextView_inst_setAutomaticTextCompletionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticTextCompletionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticTextCompletionEnabled: value];
 }
@@ -6132,7 +6132,7 @@ BOOL NSTextView_inst_usesAdaptiveColorMappingForDarkAppearance(void *id) {
 		usesAdaptiveColorMappingForDarkAppearance];
 }
 
-void NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance_(void *id, BOOL value) {
+void NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesAdaptiveColorMappingForDarkAppearance: value];
 }
@@ -6142,7 +6142,7 @@ BOOL NSTextView_inst_usesRolloverButtonForSelection(void *id) {
 		usesRolloverButtonForSelection];
 }
 
-void NSTextView_inst_setUsesRolloverButtonForSelection_(void *id, BOOL value) {
+void NSTextView_inst_setUsesRolloverButtonForSelection(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesRolloverButtonForSelection: value];
 }
@@ -6152,7 +6152,7 @@ BOOL NSTextView_inst_usesRuler(void *id) {
 		usesRuler];
 }
 
-void NSTextView_inst_setUsesRuler_(void *id, BOOL value) {
+void NSTextView_inst_setUsesRuler(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesRuler: value];
 }
@@ -6162,7 +6162,7 @@ BOOL NSTextView_inst_isRulerVisible(void *id) {
 		isRulerVisible];
 }
 
-void NSTextView_inst_setRulerVisible_(void *id, BOOL value) {
+void NSTextView_inst_setRulerVisible(void *id, BOOL value) {
 	[(NSTextView*)id
 		setRulerVisible: value];
 }
@@ -6172,7 +6172,7 @@ BOOL NSTextView_inst_usesInspectorBar(void *id) {
 		usesInspectorBar];
 }
 
-void NSTextView_inst_setUsesInspectorBar_(void *id, BOOL value) {
+void NSTextView_inst_setUsesInspectorBar(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesInspectorBar: value];
 }
@@ -6182,7 +6182,7 @@ void* NSTextView_inst_selectedRanges(void *id) {
 		selectedRanges];
 }
 
-void NSTextView_inst_setSelectedRanges_(void *id, void* value) {
+void NSTextView_inst_setSelectedRanges(void *id, void* value) {
 	[(NSTextView*)id
 		setSelectedRanges: value];
 }
@@ -6192,7 +6192,7 @@ void* NSTextView_inst_insertionPointColor(void *id) {
 		insertionPointColor];
 }
 
-void NSTextView_inst_setInsertionPointColor_(void *id, void* value) {
+void NSTextView_inst_setInsertionPointColor(void *id, void* value) {
 	[(NSTextView*)id
 		setInsertionPointColor: value];
 }
@@ -6202,7 +6202,7 @@ void* NSTextView_inst_selectedTextAttributes(void *id) {
 		selectedTextAttributes];
 }
 
-void NSTextView_inst_setSelectedTextAttributes_(void *id, void* value) {
+void NSTextView_inst_setSelectedTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setSelectedTextAttributes: value];
 }
@@ -6212,7 +6212,7 @@ void* NSTextView_inst_markedTextAttributes(void *id) {
 		markedTextAttributes];
 }
 
-void NSTextView_inst_setMarkedTextAttributes_(void *id, void* value) {
+void NSTextView_inst_setMarkedTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setMarkedTextAttributes: value];
 }
@@ -6222,7 +6222,7 @@ void* NSTextView_inst_linkTextAttributes(void *id) {
 		linkTextAttributes];
 }
 
-void NSTextView_inst_setLinkTextAttributes_(void *id, void* value) {
+void NSTextView_inst_setLinkTextAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setLinkTextAttributes: value];
 }
@@ -6242,7 +6242,7 @@ void* NSTextView_inst_typingAttributes(void *id) {
 		typingAttributes];
 }
 
-void NSTextView_inst_setTypingAttributes_(void *id, void* value) {
+void NSTextView_inst_setTypingAttributes(void *id, void* value) {
 	[(NSTextView*)id
 		setTypingAttributes: value];
 }
@@ -6277,7 +6277,7 @@ BOOL NSTextView_inst_smartInsertDeleteEnabled(void *id) {
 		smartInsertDeleteEnabled];
 }
 
-void NSTextView_inst_setSmartInsertDeleteEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setSmartInsertDeleteEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setSmartInsertDeleteEnabled: value];
 }
@@ -6287,7 +6287,7 @@ BOOL NSTextView_inst_isContinuousSpellCheckingEnabled(void *id) {
 		isContinuousSpellCheckingEnabled];
 }
 
-void NSTextView_inst_setContinuousSpellCheckingEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setContinuousSpellCheckingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setContinuousSpellCheckingEnabled: value];
 }
@@ -6302,7 +6302,7 @@ BOOL NSTextView_inst_isGrammarCheckingEnabled(void *id) {
 		isGrammarCheckingEnabled];
 }
 
-void NSTextView_inst_setGrammarCheckingEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setGrammarCheckingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setGrammarCheckingEnabled: value];
 }
@@ -6312,7 +6312,7 @@ BOOL NSTextView_inst_acceptsGlyphInfo(void *id) {
 		acceptsGlyphInfo];
 }
 
-void NSTextView_inst_setAcceptsGlyphInfo_(void *id, BOOL value) {
+void NSTextView_inst_setAcceptsGlyphInfo(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAcceptsGlyphInfo: value];
 }
@@ -6322,7 +6322,7 @@ BOOL NSTextView_inst_usesFontPanel(void *id) {
 		usesFontPanel];
 }
 
-void NSTextView_inst_setUsesFontPanel_(void *id, BOOL value) {
+void NSTextView_inst_setUsesFontPanel(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFontPanel: value];
 }
@@ -6332,7 +6332,7 @@ BOOL NSTextView_inst_usesFindPanel(void *id) {
 		usesFindPanel];
 }
 
-void NSTextView_inst_setUsesFindPanel_(void *id, BOOL value) {
+void NSTextView_inst_setUsesFindPanel(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFindPanel: value];
 }
@@ -6342,7 +6342,7 @@ BOOL NSTextView_inst_isAutomaticDashSubstitutionEnabled(void *id) {
 		isAutomaticDashSubstitutionEnabled];
 }
 
-void NSTextView_inst_setAutomaticDashSubstitutionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticDashSubstitutionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticDashSubstitutionEnabled: value];
 }
@@ -6352,7 +6352,7 @@ BOOL NSTextView_inst_isAutomaticDataDetectionEnabled(void *id) {
 		isAutomaticDataDetectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticDataDetectionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticDataDetectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticDataDetectionEnabled: value];
 }
@@ -6362,7 +6362,7 @@ BOOL NSTextView_inst_isAutomaticSpellingCorrectionEnabled(void *id) {
 		isAutomaticSpellingCorrectionEnabled];
 }
 
-void NSTextView_inst_setAutomaticSpellingCorrectionEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticSpellingCorrectionEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticSpellingCorrectionEnabled: value];
 }
@@ -6372,7 +6372,7 @@ BOOL NSTextView_inst_isAutomaticTextReplacementEnabled(void *id) {
 		isAutomaticTextReplacementEnabled];
 }
 
-void NSTextView_inst_setAutomaticTextReplacementEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setAutomaticTextReplacementEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAutomaticTextReplacementEnabled: value];
 }
@@ -6382,7 +6382,7 @@ BOOL NSTextView_inst_usesFindBar(void *id) {
 		usesFindBar];
 }
 
-void NSTextView_inst_setUsesFindBar_(void *id, BOOL value) {
+void NSTextView_inst_setUsesFindBar(void *id, BOOL value) {
 	[(NSTextView*)id
 		setUsesFindBar: value];
 }
@@ -6392,7 +6392,7 @@ BOOL NSTextView_inst_isIncrementalSearchingEnabled(void *id) {
 		isIncrementalSearchingEnabled];
 }
 
-void NSTextView_inst_setIncrementalSearchingEnabled_(void *id, BOOL value) {
+void NSTextView_inst_setIncrementalSearchingEnabled(void *id, BOOL value) {
 	[(NSTextView*)id
 		setIncrementalSearchingEnabled: value];
 }
@@ -6402,7 +6402,7 @@ BOOL NSTextView_inst_allowsCharacterPickerTouchBarItem(void *id) {
 		allowsCharacterPickerTouchBarItem];
 }
 
-void NSTextView_inst_setAllowsCharacterPickerTouchBarItem_(void *id, BOOL value) {
+void NSTextView_inst_setAllowsCharacterPickerTouchBarItem(void *id, BOOL value) {
 	[(NSTextView*)id
 		setAllowsCharacterPickerTouchBarItem: value];
 }
@@ -6412,12 +6412,12 @@ void* NSTextView_inst_font(void *id) {
 		font];
 }
 
-void NSTextView_inst_setFont_(void *id, void* value) {
+void NSTextView_inst_setFont(void *id, void* value) {
 	[(NSTextView*)id
 		setFont: value];
 }
 
-void* NSView_inst_initWithFrame_(void *id, NSRect frameRect) {
+void* NSView_inst_initWithFrame(void *id, NSRect frameRect) {
 	return [(NSView*)id
 		initWithFrame: frameRect];
 }
@@ -6427,19 +6427,19 @@ void NSView_inst_prepareForReuse(void *id) {
 		prepareForReuse];
 }
 
-void NSView_inst_addSubview_(void *id, void* view) {
+void NSView_inst_addSubview(void *id, void* view) {
 	[(NSView*)id
 		addSubview: view];
 }
 
-void NSView_inst_addSubview_positioned_relativeTo_(void *id, void* view, unsigned long place, void* otherView) {
+void NSView_inst_addSubview_positioned_relativeTo(void *id, void* view, unsigned long place, void* otherView) {
 	[(NSView*)id
 		addSubview: view
 		positioned: place
 		relativeTo: otherView];
 }
 
-void NSView_inst_didAddSubview_(void *id, void* subview) {
+void NSView_inst_didAddSubview(void *id, void* subview) {
 	[(NSView*)id
 		didAddSubview: subview];
 }
@@ -6454,18 +6454,18 @@ void NSView_inst_removeFromSuperviewWithoutNeedingDisplay(void *id) {
 		removeFromSuperviewWithoutNeedingDisplay];
 }
 
-void NSView_inst_replaceSubview_with_(void *id, void* oldView, void* newView) {
+void NSView_inst_replaceSubview_with(void *id, void* oldView, void* newView) {
 	[(NSView*)id
 		replaceSubview: oldView
 		with: newView];
 }
 
-BOOL NSView_inst_isDescendantOf_(void *id, void* view) {
+BOOL NSView_inst_isDescendantOf(void *id, void* view) {
 	return [(NSView*)id
 		isDescendantOf: view];
 }
 
-void* NSView_inst_ancestorSharedWithView_(void *id, void* view) {
+void* NSView_inst_ancestorSharedWithView(void *id, void* view) {
 	return [(NSView*)id
 		ancestorSharedWithView: view];
 }
@@ -6480,37 +6480,37 @@ void NSView_inst_viewDidMoveToWindow(void *id) {
 		viewDidMoveToWindow];
 }
 
-void NSView_inst_viewWillMoveToSuperview_(void *id, void* newSuperview) {
+void NSView_inst_viewWillMoveToSuperview(void *id, void* newSuperview) {
 	[(NSView*)id
 		viewWillMoveToSuperview: newSuperview];
 }
 
-void NSView_inst_viewWillMoveToWindow_(void *id, void* newWindow) {
+void NSView_inst_viewWillMoveToWindow(void *id, void* newWindow) {
 	[(NSView*)id
 		viewWillMoveToWindow: newWindow];
 }
 
-void NSView_inst_willRemoveSubview_(void *id, void* subview) {
+void NSView_inst_willRemoveSubview(void *id, void* subview) {
 	[(NSView*)id
 		willRemoveSubview: subview];
 }
 
-void NSView_inst_setFrameOrigin_(void *id, NSPoint newOrigin) {
+void NSView_inst_setFrameOrigin(void *id, NSPoint newOrigin) {
 	[(NSView*)id
 		setFrameOrigin: newOrigin];
 }
 
-void NSView_inst_setFrameSize_(void *id, NSSize newSize) {
+void NSView_inst_setFrameSize(void *id, NSSize newSize) {
 	[(NSView*)id
 		setFrameSize: newSize];
 }
 
-void NSView_inst_setBoundsOrigin_(void *id, NSPoint newOrigin) {
+void NSView_inst_setBoundsOrigin(void *id, NSPoint newOrigin) {
 	[(NSView*)id
 		setBoundsOrigin: newOrigin];
 }
 
-void NSView_inst_setBoundsSize_(void *id, NSSize newSize) {
+void NSView_inst_setBoundsSize(void *id, NSSize newSize) {
 	[(NSView*)id
 		setBoundsSize: newSize];
 }
@@ -6525,65 +6525,65 @@ void NSView_inst_updateLayer(void *id) {
 		updateLayer];
 }
 
-void NSView_inst_drawRect_(void *id, NSRect dirtyRect) {
+void NSView_inst_drawRect(void *id, NSRect dirtyRect) {
 	[(NSView*)id
 		drawRect: dirtyRect];
 }
 
-BOOL NSView_inst_needsToDrawRect_(void *id, NSRect rect) {
+BOOL NSView_inst_needsToDrawRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		needsToDrawRect: rect];
 }
 
-void NSView_inst_print_(void *id, void* sender) {
+void NSView_inst_print(void *id, void* sender) {
 	[(NSView*)id
 		print: sender];
 }
 
-void NSView_inst_beginPageInRect_atPlacement_(void *id, NSRect rect, NSPoint location) {
+void NSView_inst_beginPageInRect_atPlacement(void *id, NSRect rect, NSPoint location) {
 	[(NSView*)id
 		beginPageInRect: rect
 		atPlacement: location];
 }
 
-void* NSView_inst_dataWithEPSInsideRect_(void *id, NSRect rect) {
+void* NSView_inst_dataWithEPSInsideRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		dataWithEPSInsideRect: rect];
 }
 
-void* NSView_inst_dataWithPDFInsideRect_(void *id, NSRect rect) {
+void* NSView_inst_dataWithPDFInsideRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		dataWithPDFInsideRect: rect];
 }
 
-void NSView_inst_writeEPSInsideRect_toPasteboard_(void *id, NSRect rect, void* pasteboard) {
+void NSView_inst_writeEPSInsideRect_toPasteboard(void *id, NSRect rect, void* pasteboard) {
 	[(NSView*)id
 		writeEPSInsideRect: rect
 		toPasteboard: pasteboard];
 }
 
-void NSView_inst_writePDFInsideRect_toPasteboard_(void *id, NSRect rect, void* pasteboard) {
+void NSView_inst_writePDFInsideRect_toPasteboard(void *id, NSRect rect, void* pasteboard) {
 	[(NSView*)id
 		writePDFInsideRect: rect
 		toPasteboard: pasteboard];
 }
 
-void NSView_inst_drawPageBorderWithSize_(void *id, NSSize borderSize) {
+void NSView_inst_drawPageBorderWithSize(void *id, NSSize borderSize) {
 	[(NSView*)id
 		drawPageBorderWithSize: borderSize];
 }
 
-NSRect NSView_inst_rectForPage_(void *id, long page) {
+NSRect NSView_inst_rectForPage(void *id, long page) {
 	return [(NSView*)id
 		rectForPage: page];
 }
 
-NSPoint NSView_inst_locationOfPrintRect_(void *id, NSRect rect) {
+NSPoint NSView_inst_locationOfPrintRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		locationOfPrintRect: rect];
 }
 
-void NSView_inst_setNeedsDisplayInRect_(void *id, NSRect invalidRect) {
+void NSView_inst_setNeedsDisplayInRect(void *id, NSRect invalidRect) {
 	[(NSView*)id
 		setNeedsDisplayInRect: invalidRect];
 }
@@ -6593,12 +6593,12 @@ void NSView_inst_display(void *id) {
 		display];
 }
 
-void NSView_inst_displayRect_(void *id, NSRect rect) {
+void NSView_inst_displayRect(void *id, NSRect rect) {
 	[(NSView*)id
 		displayRect: rect];
 }
 
-void NSView_inst_displayRectIgnoringOpacity_(void *id, NSRect rect) {
+void NSView_inst_displayRectIgnoringOpacity(void *id, NSRect rect) {
 	[(NSView*)id
 		displayRectIgnoringOpacity: rect];
 }
@@ -6608,7 +6608,7 @@ void NSView_inst_displayIfNeeded(void *id) {
 		displayIfNeeded];
 }
 
-void NSView_inst_displayIfNeededInRect_(void *id, NSRect rect) {
+void NSView_inst_displayIfNeededInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		displayIfNeededInRect: rect];
 }
@@ -6618,12 +6618,12 @@ void NSView_inst_displayIfNeededIgnoringOpacity(void *id) {
 		displayIfNeededIgnoringOpacity];
 }
 
-void NSView_inst_displayIfNeededInRectIgnoringOpacity_(void *id, NSRect rect) {
+void NSView_inst_displayIfNeededInRectIgnoringOpacity(void *id, NSRect rect) {
 	[(NSView*)id
 		displayIfNeededInRectIgnoringOpacity: rect];
 }
 
-void NSView_inst_translateRectsNeedingDisplayInRect_by_(void *id, NSRect clipRect, NSSize delta) {
+void NSView_inst_translateRectsNeedingDisplayInRect_by(void *id, NSRect clipRect, NSSize delta) {
 	[(NSView*)id
 		translateRectsNeedingDisplayInRect: clipRect
 		by: delta];
@@ -6634,138 +6634,138 @@ void NSView_inst_viewWillDraw(void *id) {
 		viewWillDraw];
 }
 
-NSPoint NSView_inst_convertPointFromBacking_(void *id, NSPoint point) {
+NSPoint NSView_inst_convertPointFromBacking(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointFromBacking: point];
 }
 
-NSPoint NSView_inst_convertPointToBacking_(void *id, NSPoint point) {
+NSPoint NSView_inst_convertPointToBacking(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointToBacking: point];
 }
 
-NSPoint NSView_inst_convertPointFromLayer_(void *id, NSPoint point) {
+NSPoint NSView_inst_convertPointFromLayer(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointFromLayer: point];
 }
 
-NSPoint NSView_inst_convertPointToLayer_(void *id, NSPoint point) {
+NSPoint NSView_inst_convertPointToLayer(void *id, NSPoint point) {
 	return [(NSView*)id
 		convertPointToLayer: point];
 }
 
-NSRect NSView_inst_convertRectFromBacking_(void *id, NSRect rect) {
+NSRect NSView_inst_convertRectFromBacking(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectFromBacking: rect];
 }
 
-NSRect NSView_inst_convertRectToBacking_(void *id, NSRect rect) {
+NSRect NSView_inst_convertRectToBacking(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectToBacking: rect];
 }
 
-NSRect NSView_inst_convertRectFromLayer_(void *id, NSRect rect) {
+NSRect NSView_inst_convertRectFromLayer(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectFromLayer: rect];
 }
 
-NSRect NSView_inst_convertRectToLayer_(void *id, NSRect rect) {
+NSRect NSView_inst_convertRectToLayer(void *id, NSRect rect) {
 	return [(NSView*)id
 		convertRectToLayer: rect];
 }
 
-NSSize NSView_inst_convertSizeFromBacking_(void *id, NSSize size) {
+NSSize NSView_inst_convertSizeFromBacking(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeFromBacking: size];
 }
 
-NSSize NSView_inst_convertSizeToBacking_(void *id, NSSize size) {
+NSSize NSView_inst_convertSizeToBacking(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeToBacking: size];
 }
 
-NSSize NSView_inst_convertSizeFromLayer_(void *id, NSSize size) {
+NSSize NSView_inst_convertSizeFromLayer(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeFromLayer: size];
 }
 
-NSSize NSView_inst_convertSizeToLayer_(void *id, NSSize size) {
+NSSize NSView_inst_convertSizeToLayer(void *id, NSSize size) {
 	return [(NSView*)id
 		convertSizeToLayer: size];
 }
 
-NSPoint NSView_inst_convertPoint_fromView_(void *id, NSPoint point, void* view) {
+NSPoint NSView_inst_convertPoint_fromView(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
 		fromView: view];
 }
 
-NSPoint NSView_inst_convertPoint_toView_(void *id, NSPoint point, void* view) {
+NSPoint NSView_inst_convertPoint_toView(void *id, NSPoint point, void* view) {
 	return [(NSView*)id
 		convertPoint: point
 		toView: view];
 }
 
-NSSize NSView_inst_convertSize_fromView_(void *id, NSSize size, void* view) {
+NSSize NSView_inst_convertSize_fromView(void *id, NSSize size, void* view) {
 	return [(NSView*)id
 		convertSize: size
 		fromView: view];
 }
 
-NSSize NSView_inst_convertSize_toView_(void *id, NSSize size, void* view) {
+NSSize NSView_inst_convertSize_toView(void *id, NSSize size, void* view) {
 	return [(NSView*)id
 		convertSize: size
 		toView: view];
 }
 
-NSRect NSView_inst_convertRect_fromView_(void *id, NSRect rect, void* view) {
+NSRect NSView_inst_convertRect_fromView(void *id, NSRect rect, void* view) {
 	return [(NSView*)id
 		convertRect: rect
 		fromView: view];
 }
 
-NSRect NSView_inst_convertRect_toView_(void *id, NSRect rect, void* view) {
+NSRect NSView_inst_convertRect_toView(void *id, NSRect rect, void* view) {
 	return [(NSView*)id
 		convertRect: rect
 		toView: view];
 }
 
-NSRect NSView_inst_centerScanRect_(void *id, NSRect rect) {
+NSRect NSView_inst_centerScanRect(void *id, NSRect rect) {
 	return [(NSView*)id
 		centerScanRect: rect];
 }
 
-void NSView_inst_translateOriginToPoint_(void *id, NSPoint translation) {
+void NSView_inst_translateOriginToPoint(void *id, NSPoint translation) {
 	[(NSView*)id
 		translateOriginToPoint: translation];
 }
 
-void NSView_inst_scaleUnitSquareToSize_(void *id, NSSize newUnitSize) {
+void NSView_inst_scaleUnitSquareToSize(void *id, NSSize newUnitSize) {
 	[(NSView*)id
 		scaleUnitSquareToSize: newUnitSize];
 }
 
-void NSView_inst_rotateByAngle_(void *id, double angle) {
+void NSView_inst_rotateByAngle(void *id, double angle) {
 	[(NSView*)id
 		rotateByAngle: angle];
 }
 
-void NSView_inst_resizeSubviewsWithOldSize_(void *id, NSSize oldSize) {
+void NSView_inst_resizeSubviewsWithOldSize(void *id, NSSize oldSize) {
 	[(NSView*)id
 		resizeSubviewsWithOldSize: oldSize];
 }
 
-void NSView_inst_resizeWithOldSuperviewSize_(void *id, NSSize oldSize) {
+void NSView_inst_resizeWithOldSuperviewSize(void *id, NSSize oldSize) {
 	[(NSView*)id
 		resizeWithOldSuperviewSize: oldSize];
 }
 
-void NSView_inst_addConstraints_(void *id, void* constraints) {
+void NSView_inst_addConstraints(void *id, void* constraints) {
 	[(NSView*)id
 		addConstraints: constraints];
 }
 
-void NSView_inst_removeConstraints_(void *id, void* constraints) {
+void NSView_inst_removeConstraints(void *id, void* constraints) {
 	[(NSView*)id
 		removeConstraints: constraints];
 }
@@ -6775,12 +6775,12 @@ void NSView_inst_invalidateIntrinsicContentSize(void *id) {
 		invalidateIntrinsicContentSize];
 }
 
-NSRect NSView_inst_alignmentRectForFrame_(void *id, NSRect frame) {
+NSRect NSView_inst_alignmentRectForFrame(void *id, NSRect frame) {
 	return [(NSView*)id
 		alignmentRectForFrame: frame];
 }
 
-NSRect NSView_inst_frameForAlignmentRect_(void *id, NSRect alignmentRect) {
+NSRect NSView_inst_frameForAlignmentRect(void *id, NSRect alignmentRect) {
 	return [(NSView*)id
 		frameForAlignmentRect: alignmentRect];
 }
@@ -6820,18 +6820,18 @@ void NSView_inst_noteFocusRingMaskChanged(void *id) {
 		noteFocusRingMaskChanged];
 }
 
-void NSView_inst_setKeyboardFocusRingNeedsDisplayInRect_(void *id, NSRect rect) {
+void NSView_inst_setKeyboardFocusRingNeedsDisplayInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		setKeyboardFocusRingNeedsDisplayInRect: rect];
 }
 
-BOOL NSView_inst_enterFullScreenMode_withOptions_(void *id, void* screen, void* options) {
+BOOL NSView_inst_enterFullScreenMode_withOptions(void *id, void* screen, void* options) {
 	return [(NSView*)id
 		enterFullScreenMode: screen
 		withOptions: options];
 }
 
-void NSView_inst_exitFullScreenModeWithOptions_(void *id, void* options) {
+void NSView_inst_exitFullScreenModeWithOptions(void *id, void* options) {
 	[(NSView*)id
 		exitFullScreenModeWithOptions: options];
 }
@@ -6856,53 +6856,53 @@ void NSView_inst_viewDidEndLiveResize(void *id) {
 		viewDidEndLiveResize];
 }
 
-BOOL NSView_inst_acceptsFirstMouse_(void *id, void* event) {
+BOOL NSView_inst_acceptsFirstMouse(void *id, void* event) {
 	return [(NSView*)id
 		acceptsFirstMouse: event];
 }
 
-void* NSView_inst_hitTest_(void *id, NSPoint point) {
+void* NSView_inst_hitTest(void *id, NSPoint point) {
 	return [(NSView*)id
 		hitTest: point];
 }
 
-BOOL NSView_inst_mouse_inRect_(void *id, NSPoint point, NSRect rect) {
+BOOL NSView_inst_mouse_inRect(void *id, NSPoint point, NSRect rect) {
 	return [(NSView*)id
 		mouse: point
 		inRect: rect];
 }
 
-BOOL NSView_inst_performKeyEquivalent_(void *id, void* event) {
+BOOL NSView_inst_performKeyEquivalent(void *id, void* event) {
 	return [(NSView*)id
 		performKeyEquivalent: event];
 }
 
-void NSView_inst_prepareContentInRect_(void *id, NSRect rect) {
+void NSView_inst_prepareContentInRect(void *id, NSRect rect) {
 	[(NSView*)id
 		prepareContentInRect: rect];
 }
 
-void NSView_inst_scrollPoint_(void *id, NSPoint point) {
+void NSView_inst_scrollPoint(void *id, NSPoint point) {
 	[(NSView*)id
 		scrollPoint: point];
 }
 
-BOOL NSView_inst_scrollRectToVisible_(void *id, NSRect rect) {
+BOOL NSView_inst_scrollRectToVisible(void *id, NSRect rect) {
 	return [(NSView*)id
 		scrollRectToVisible: rect];
 }
 
-BOOL NSView_inst_autoscroll_(void *id, void* event) {
+BOOL NSView_inst_autoscroll(void *id, void* event) {
 	return [(NSView*)id
 		autoscroll: event];
 }
 
-NSRect NSView_inst_adjustScroll_(void *id, NSRect newVisible) {
+NSRect NSView_inst_adjustScroll(void *id, NSRect newVisible) {
 	return [(NSView*)id
 		adjustScroll: newVisible];
 }
 
-void NSView_inst_registerForDraggedTypes_(void *id, void* newTypes) {
+void NSView_inst_registerForDraggedTypes(void *id, void* newTypes) {
 	[(NSView*)id
 		registerForDraggedTypes: newTypes];
 }
@@ -6912,12 +6912,12 @@ void NSView_inst_unregisterDraggedTypes(void *id) {
 		unregisterDraggedTypes];
 }
 
-BOOL NSView_inst_shouldDelayWindowOrderingForEvent_(void *id, void* event) {
+BOOL NSView_inst_shouldDelayWindowOrderingForEvent(void *id, void* event) {
 	return [(NSView*)id
 		shouldDelayWindowOrderingForEvent: event];
 }
 
-NSRect NSView_inst_rectForSmartMagnificationAtPoint_inRect_(void *id, NSPoint location, NSRect visibleRect) {
+NSRect NSView_inst_rectForSmartMagnificationAtPoint_inRect(void *id, NSPoint location, NSRect visibleRect) {
 	return [(NSView*)id
 		rectForSmartMagnificationAtPoint: location
 		inRect: visibleRect];
@@ -6928,7 +6928,7 @@ void NSView_inst_viewDidChangeBackingProperties(void *id) {
 		viewDidChangeBackingProperties];
 }
 
-void* NSView_inst_viewWithTag_(void *id, long tag) {
+void* NSView_inst_viewWithTag(void *id, long tag) {
 	return [(NSView*)id
 		viewWithTag: tag];
 }
@@ -6953,18 +6953,18 @@ void NSView_inst_resetCursorRects(void *id) {
 		resetCursorRects];
 }
 
-void* NSView_inst_menuForEvent_(void *id, void* event) {
+void* NSView_inst_menuForEvent(void *id, void* event) {
 	return [(NSView*)id
 		menuForEvent: event];
 }
 
-void NSView_inst_willOpenMenu_withEvent_(void *id, void* menu, void* event) {
+void NSView_inst_willOpenMenu_withEvent(void *id, void* menu, void* event) {
 	[(NSView*)id
 		willOpenMenu: menu
 		withEvent: event];
 }
 
-void NSView_inst_didCloseMenu_withEvent_(void *id, void* menu, void* event) {
+void NSView_inst_didCloseMenu_withEvent(void *id, void* menu, void* event) {
 	[(NSView*)id
 		didCloseMenu: menu
 		withEvent: event];
@@ -6985,7 +6985,7 @@ void NSView_inst_endPage(void *id) {
 		endPage];
 }
 
-void NSView_inst_showDefinitionForAttributedString_atPoint_(void *id, void* attrString, NSPoint textBaselineOrigin) {
+void NSView_inst_showDefinitionForAttributedString_atPoint(void *id, void* attrString, NSPoint textBaselineOrigin) {
 	[(NSView*)id
 		showDefinitionForAttributedString: attrString
 		atPoint: textBaselineOrigin];
@@ -7011,7 +7011,7 @@ void* NSView_inst_subviews(void *id) {
 		subviews];
 }
 
-void NSView_inst_setSubviews_(void *id, void* value) {
+void NSView_inst_setSubviews(void *id, void* value) {
 	[(NSView*)id
 		setSubviews: value];
 }
@@ -7036,7 +7036,7 @@ NSRect NSView_inst_frame(void *id) {
 		frame];
 }
 
-void NSView_inst_setFrame_(void *id, NSRect value) {
+void NSView_inst_setFrame(void *id, NSRect value) {
 	[(NSView*)id
 		setFrame: value];
 }
@@ -7046,7 +7046,7 @@ double NSView_inst_frameRotation(void *id) {
 		frameRotation];
 }
 
-void NSView_inst_setFrameRotation_(void *id, double value) {
+void NSView_inst_setFrameRotation(void *id, double value) {
 	[(NSView*)id
 		setFrameRotation: value];
 }
@@ -7056,7 +7056,7 @@ NSRect NSView_inst_bounds(void *id) {
 		bounds];
 }
 
-void NSView_inst_setBounds_(void *id, NSRect value) {
+void NSView_inst_setBounds(void *id, NSRect value) {
 	[(NSView*)id
 		setBounds: value];
 }
@@ -7066,7 +7066,7 @@ double NSView_inst_boundsRotation(void *id) {
 		boundsRotation];
 }
 
-void NSView_inst_setBoundsRotation_(void *id, double value) {
+void NSView_inst_setBoundsRotation(void *id, double value) {
 	[(NSView*)id
 		setBoundsRotation: value];
 }
@@ -7076,7 +7076,7 @@ BOOL NSView_inst_wantsLayer(void *id) {
 		wantsLayer];
 }
 
-void NSView_inst_setWantsLayer_(void *id, BOOL value) {
+void NSView_inst_setWantsLayer(void *id, BOOL value) {
 	[(NSView*)id
 		setWantsLayer: value];
 }
@@ -7091,7 +7091,7 @@ void* NSView_inst_layer(void *id) {
 		layer];
 }
 
-void NSView_inst_setLayer_(void *id, void* value) {
+void NSView_inst_setLayer(void *id, void* value) {
 	[(NSView*)id
 		setLayer: value];
 }
@@ -7101,7 +7101,7 @@ BOOL NSView_inst_canDrawSubviewsIntoLayer(void *id) {
 		canDrawSubviewsIntoLayer];
 }
 
-void NSView_inst_setCanDrawSubviewsIntoLayer_(void *id, BOOL value) {
+void NSView_inst_setCanDrawSubviewsIntoLayer(void *id, BOOL value) {
 	[(NSView*)id
 		setCanDrawSubviewsIntoLayer: value];
 }
@@ -7111,7 +7111,7 @@ BOOL NSView_inst_layerUsesCoreImageFilters(void *id) {
 		layerUsesCoreImageFilters];
 }
 
-void NSView_inst_setLayerUsesCoreImageFilters_(void *id, BOOL value) {
+void NSView_inst_setLayerUsesCoreImageFilters(void *id, BOOL value) {
 	[(NSView*)id
 		setLayerUsesCoreImageFilters: value];
 }
@@ -7121,7 +7121,7 @@ double NSView_inst_alphaValue(void *id) {
 		alphaValue];
 }
 
-void NSView_inst_setAlphaValue_(void *id, double value) {
+void NSView_inst_setAlphaValue(void *id, double value) {
 	[(NSView*)id
 		setAlphaValue: value];
 }
@@ -7131,7 +7131,7 @@ double NSView_inst_frameCenterRotation(void *id) {
 		frameCenterRotation];
 }
 
-void NSView_inst_setFrameCenterRotation_(void *id, double value) {
+void NSView_inst_setFrameCenterRotation(void *id, double value) {
 	[(NSView*)id
 		setFrameCenterRotation: value];
 }
@@ -7141,7 +7141,7 @@ void* NSView_inst_backgroundFilters(void *id) {
 		backgroundFilters];
 }
 
-void NSView_inst_setBackgroundFilters_(void *id, void* value) {
+void NSView_inst_setBackgroundFilters(void *id, void* value) {
 	[(NSView*)id
 		setBackgroundFilters: value];
 }
@@ -7151,7 +7151,7 @@ void* NSView_inst_contentFilters(void *id) {
 		contentFilters];
 }
 
-void NSView_inst_setContentFilters_(void *id, void* value) {
+void NSView_inst_setContentFilters(void *id, void* value) {
 	[(NSView*)id
 		setContentFilters: value];
 }
@@ -7161,7 +7161,7 @@ BOOL NSView_inst_canDrawConcurrently(void *id) {
 		canDrawConcurrently];
 }
 
-void NSView_inst_setCanDrawConcurrently_(void *id, BOOL value) {
+void NSView_inst_setCanDrawConcurrently(void *id, BOOL value) {
 	[(NSView*)id
 		setCanDrawConcurrently: value];
 }
@@ -7206,7 +7206,7 @@ BOOL NSView_inst_needsDisplay(void *id) {
 		needsDisplay];
 }
 
-void NSView_inst_setNeedsDisplay_(void *id, BOOL value) {
+void NSView_inst_setNeedsDisplay(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsDisplay: value];
 }
@@ -7236,7 +7236,7 @@ BOOL NSView_inst_autoresizesSubviews(void *id) {
 		autoresizesSubviews];
 }
 
-void NSView_inst_setAutoresizesSubviews_(void *id, BOOL value) {
+void NSView_inst_setAutoresizesSubviews(void *id, BOOL value) {
 	[(NSView*)id
 		setAutoresizesSubviews: value];
 }
@@ -7281,7 +7281,7 @@ BOOL NSView_inst_needsLayout(void *id) {
 		needsLayout];
 }
 
-void NSView_inst_setNeedsLayout_(void *id, BOOL value) {
+void NSView_inst_setNeedsLayout(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsLayout: value];
 }
@@ -7291,7 +7291,7 @@ BOOL NSView_inst_needsUpdateConstraints(void *id) {
 		needsUpdateConstraints];
 }
 
-void NSView_inst_setNeedsUpdateConstraints_(void *id, BOOL value) {
+void NSView_inst_setNeedsUpdateConstraints(void *id, BOOL value) {
 	[(NSView*)id
 		setNeedsUpdateConstraints: value];
 }
@@ -7301,7 +7301,7 @@ BOOL NSView_inst_translatesAutoresizingMaskIntoConstraints(void *id) {
 		translatesAutoresizingMaskIntoConstraints];
 }
 
-void NSView_inst_setTranslatesAutoresizingMaskIntoConstraints_(void *id, BOOL value) {
+void NSView_inst_setTranslatesAutoresizingMaskIntoConstraints(void *id, BOOL value) {
 	[(NSView*)id
 		setTranslatesAutoresizingMaskIntoConstraints: value];
 }
@@ -7331,7 +7331,7 @@ BOOL NSView_inst_isHidden(void *id) {
 		isHidden];
 }
 
-void NSView_inst_setHidden_(void *id, BOOL value) {
+void NSView_inst_setHidden(void *id, BOOL value) {
 	[(NSView*)id
 		setHidden: value];
 }
@@ -7361,7 +7361,7 @@ void* NSView_inst_gestureRecognizers(void *id) {
 		gestureRecognizers];
 }
 
-void NSView_inst_setGestureRecognizers_(void *id, void* value) {
+void NSView_inst_setGestureRecognizers(void *id, void* value) {
 	[(NSView*)id
 		setGestureRecognizers: value];
 }
@@ -7376,7 +7376,7 @@ BOOL NSView_inst_wantsRestingTouches(void *id) {
 		wantsRestingTouches];
 }
 
-void NSView_inst_setWantsRestingTouches_(void *id, BOOL value) {
+void NSView_inst_setWantsRestingTouches(void *id, BOOL value) {
 	[(NSView*)id
 		setWantsRestingTouches: value];
 }
@@ -7396,7 +7396,7 @@ void* NSView_inst_nextKeyView(void *id) {
 		nextKeyView];
 }
 
-void NSView_inst_setNextKeyView_(void *id, void* value) {
+void NSView_inst_setNextKeyView(void *id, void* value) {
 	[(NSView*)id
 		setNextKeyView: value];
 }
@@ -7421,7 +7421,7 @@ NSRect NSView_inst_preparedContentRect(void *id) {
 		preparedContentRect];
 }
 
-void NSView_inst_setPreparedContentRect_(void *id, NSRect value) {
+void NSView_inst_setPreparedContentRect(void *id, NSRect value) {
 	[(NSView*)id
 		setPreparedContentRect: value];
 }
@@ -7436,7 +7436,7 @@ BOOL NSView_inst_postsFrameChangedNotifications(void *id) {
 		postsFrameChangedNotifications];
 }
 
-void NSView_inst_setPostsFrameChangedNotifications_(void *id, BOOL value) {
+void NSView_inst_setPostsFrameChangedNotifications(void *id, BOOL value) {
 	[(NSView*)id
 		setPostsFrameChangedNotifications: value];
 }
@@ -7446,7 +7446,7 @@ BOOL NSView_inst_postsBoundsChangedNotifications(void *id) {
 		postsBoundsChangedNotifications];
 }
 
-void NSView_inst_setPostsBoundsChangedNotifications_(void *id, BOOL value) {
+void NSView_inst_setPostsBoundsChangedNotifications(void *id, BOOL value) {
 	[(NSView*)id
 		setPostsBoundsChangedNotifications: value];
 }
@@ -7461,7 +7461,7 @@ void* NSView_inst_toolTip(void *id) {
 		toolTip];
 }
 
-void NSView_inst_setToolTip_(void *id, void* value) {
+void NSView_inst_setToolTip(void *id, void* value) {
 	[(NSView*)id
 		setToolTip: value];
 }
@@ -7481,7 +7481,7 @@ BOOL NSView_inst_isHorizontalContentSizeConstraintActive(void *id) {
 		isHorizontalContentSizeConstraintActive];
 }
 
-void NSView_inst_setHorizontalContentSizeConstraintActive_(void *id, BOOL value) {
+void NSView_inst_setHorizontalContentSizeConstraintActive(void *id, BOOL value) {
 	[(NSView*)id
 		setHorizontalContentSizeConstraintActive: value];
 }
@@ -7491,7 +7491,7 @@ BOOL NSView_inst_isVerticalContentSizeConstraintActive(void *id) {
 		isVerticalContentSizeConstraintActive];
 }
 
-void NSView_inst_setVerticalContentSizeConstraintActive_(void *id, BOOL value) {
+void NSView_inst_setVerticalContentSizeConstraintActive(void *id, BOOL value) {
 	[(NSView*)id
 		setVerticalContentSizeConstraintActive: value];
 }
@@ -7501,7 +7501,7 @@ void* NSView_inst_backgroundColor(void *id) {
 		backgroundColor];
 }
 
-void NSView_inst_setBackgroundColor_(void *id, void* value) {
+void NSView_inst_setBackgroundColor(void *id, void* value) {
 	[(NSView*)id
 		setBackgroundColor: value];
 }
@@ -7535,43 +7535,43 @@ func NSBundle_alloc() (
 	return
 }
 
-func NSBundle_bundleWithURL_(
+func NSBundle_bundleWithURL(
 	url core.NSURLRef,
 ) (
 	r0 NSBundle,
 ) {
-	ret := C.NSBundle_type_bundleWithURL_(
+	ret := C.NSBundle_type_bundleWithURL(
 		objc.RefPointer(url),
 	)
 	r0 = NSBundle_fromPointer(ret)
 	return
 }
 
-func NSBundle_bundleWithPath_(
+func NSBundle_bundleWithPath(
 	path core.NSStringRef,
 ) (
 	r0 NSBundle,
 ) {
-	ret := C.NSBundle_type_bundleWithPath_(
+	ret := C.NSBundle_type_bundleWithPath(
 		objc.RefPointer(path),
 	)
 	r0 = NSBundle_fromPointer(ret)
 	return
 }
 
-func NSBundle_bundleWithIdentifier_(
+func NSBundle_bundleWithIdentifier(
 	identifier core.NSStringRef,
 ) (
 	r0 NSBundle,
 ) {
-	ret := C.NSBundle_type_bundleWithIdentifier_(
+	ret := C.NSBundle_type_bundleWithIdentifier(
 		objc.RefPointer(identifier),
 	)
 	r0 = NSBundle_fromPointer(ret)
 	return
 }
 
-func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL_(
+func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
@@ -7579,7 +7579,7 @@ func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL_(
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL_(
+	ret := C.NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -7589,14 +7589,14 @@ func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL_(
 	return
 }
 
-func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL_(
+func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	bundleURL core.NSURLRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL_(
+	ret := C.NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
 		objc.RefPointer(bundleURL),
@@ -7605,14 +7605,14 @@ func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL_(
 	return
 }
 
-func NSBundle_pathForResource_ofType_inDirectory_(
+func NSBundle_pathForResource_ofType_inDirectory(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	bundlePath core.NSStringRef,
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_type_pathForResource_ofType_inDirectory_(
+	ret := C.NSBundle_type_pathForResource_ofType_inDirectory(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
@@ -7621,13 +7621,13 @@ func NSBundle_pathForResource_ofType_inDirectory_(
 	return
 }
 
-func NSBundle_pathsForResourcesOfType_inDirectory_(
+func NSBundle_pathsForResourcesOfType_inDirectory(
 	ext core.NSStringRef,
 	bundlePath core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_type_pathsForResourcesOfType_inDirectory_(
+	ret := C.NSBundle_type_pathsForResourcesOfType_inDirectory(
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
 	)
@@ -7635,25 +7635,25 @@ func NSBundle_pathsForResourcesOfType_inDirectory_(
 	return
 }
 
-func NSBundle_preferredLocalizationsFromArray_(
+func NSBundle_preferredLocalizationsFromArray(
 	localizationsArray core.NSArrayRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_type_preferredLocalizationsFromArray_(
+	ret := C.NSBundle_type_preferredLocalizationsFromArray(
 		objc.RefPointer(localizationsArray),
 	)
 	r0 = core.NSArray_fromPointer(ret)
 	return
 }
 
-func NSBundle_preferredLocalizationsFromArray_forPreferences_(
+func NSBundle_preferredLocalizationsFromArray_forPreferences(
 	localizationsArray core.NSArrayRef,
 	preferencesArray core.NSArrayRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_type_preferredLocalizationsFromArray_forPreferences_(
+	ret := C.NSBundle_type_preferredLocalizationsFromArray_forPreferences(
 		objc.RefPointer(localizationsArray),
 		objc.RefPointer(preferencesArray),
 	)
@@ -7693,12 +7693,12 @@ func NSSound_alloc() (
 	return
 }
 
-func NSSound_canInitWithPasteboard_(
+func NSSound_canInitWithPasteboard(
 	pasteboard NSPasteboardRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSSound_type_canInitWithPasteboard_(
+	ret := C.NSSound_type_canInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
 	r0 = convertObjCBoolToGo(ret)
@@ -7721,12 +7721,12 @@ func NSApplication_alloc() (
 	return
 }
 
-func NSApplication_detachDrawingThread_toTarget_withObject_(
+func NSApplication_detachDrawingThread_toTarget_withObject(
 	selector objc.Selector,
 	target objc.Ref,
 	argument objc.Ref,
 ) {
-	C.NSApplication_type_detachDrawingThread_toTarget_withObject_(
+	C.NSApplication_type_detachDrawingThread_toTarget_withObject(
 		selector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(argument),
@@ -7758,14 +7758,14 @@ func NSButton_alloc() (
 	return
 }
 
-func NSButton_checkboxWithTitle_target_action_(
+func NSButton_checkboxWithTitle_target_action(
 	title core.NSStringRef,
 	target objc.Ref,
 	action objc.Selector,
 ) (
 	r0 NSButton,
 ) {
-	ret := C.NSButton_type_checkboxWithTitle_target_action_(
+	ret := C.NSButton_type_checkboxWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7774,14 +7774,14 @@ func NSButton_checkboxWithTitle_target_action_(
 	return
 }
 
-func NSButton_buttonWithImage_target_action_(
+func NSButton_buttonWithImage_target_action(
 	image NSImageRef,
 	target objc.Ref,
 	action objc.Selector,
 ) (
 	r0 NSButton,
 ) {
-	ret := C.NSButton_type_buttonWithImage_target_action_(
+	ret := C.NSButton_type_buttonWithImage_target_action(
 		objc.RefPointer(image),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7790,14 +7790,14 @@ func NSButton_buttonWithImage_target_action_(
 	return
 }
 
-func NSButton_radioButtonWithTitle_target_action_(
+func NSButton_radioButtonWithTitle_target_action(
 	title core.NSStringRef,
 	target objc.Ref,
 	action objc.Selector,
 ) (
 	r0 NSButton,
 ) {
-	ret := C.NSButton_type_radioButtonWithTitle_target_action_(
+	ret := C.NSButton_type_radioButtonWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7806,7 +7806,7 @@ func NSButton_radioButtonWithTitle_target_action_(
 	return
 }
 
-func NSButton_buttonWithTitle_image_target_action_(
+func NSButton_buttonWithTitle_image_target_action(
 	title core.NSStringRef,
 	image NSImageRef,
 	target objc.Ref,
@@ -7814,7 +7814,7 @@ func NSButton_buttonWithTitle_image_target_action_(
 ) (
 	r0 NSButton,
 ) {
-	ret := C.NSButton_type_buttonWithTitle_image_target_action_(
+	ret := C.NSButton_type_buttonWithTitle_image_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(image),
 		objc.RefPointer(target),
@@ -7824,14 +7824,14 @@ func NSButton_buttonWithTitle_image_target_action_(
 	return
 }
 
-func NSButton_buttonWithTitle_target_action_(
+func NSButton_buttonWithTitle_target_action(
 	title core.NSStringRef,
 	target objc.Ref,
 	action objc.Selector,
 ) (
 	r0 NSButton,
 ) {
-	ret := C.NSButton_type_buttonWithTitle_target_action_(
+	ret := C.NSButton_type_buttonWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7848,12 +7848,12 @@ func NSEvent_alloc() (
 	return
 }
 
-func NSEvent_eventWithEventRef_(
+func NSEvent_eventWithEventRef(
 	eventRef unsafe.Pointer,
 ) (
 	r0 NSEvent,
 ) {
-	ret := C.NSEvent_type_eventWithEventRef_(
+	ret := C.NSEvent_type_eventWithEventRef(
 		eventRef,
 	)
 	r0 = NSEvent_fromPointer(ret)
@@ -7865,10 +7865,10 @@ func NSEvent_stopPeriodicEvents() {
 	return
 }
 
-func NSEvent_removeMonitor_(
+func NSEvent_removeMonitor(
 	eventMonitor objc.Ref,
 ) {
-	C.NSEvent_type_removeMonitor_(
+	C.NSEvent_type_removeMonitor(
 		objc.RefPointer(eventMonitor),
 	)
 	return
@@ -7898,10 +7898,10 @@ func NSEvent_mouseCoalescingEnabled() (
 	return
 }
 
-func NSEvent_setMouseCoalescingEnabled_(
+func NSEvent_setMouseCoalescingEnabled(
 	value bool,
 ) {
-	C.NSEvent_type_setMouseCoalescingEnabled_(
+	C.NSEvent_type_setMouseCoalescingEnabled(
 		convertToObjCBool(value),
 	)
 	return
@@ -7923,13 +7923,13 @@ func NSFont_alloc() (
 	return
 }
 
-func NSFont_fontWithName_size_(
+func NSFont_fontWithName_size(
 	fontName core.NSStringRef,
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_fontWithName_size_(
+	ret := C.NSFont_type_fontWithName_size(
 		objc.RefPointer(fontName),
 		C.double(fontSize),
 	)
@@ -7937,163 +7937,163 @@ func NSFont_fontWithName_size_(
 	return
 }
 
-func NSFont_userFontOfSize_(
+func NSFont_userFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_userFontOfSize_(
+	ret := C.NSFont_type_userFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_userFixedPitchFontOfSize_(
+func NSFont_userFixedPitchFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_userFixedPitchFontOfSize_(
+	ret := C.NSFont_type_userFixedPitchFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_systemFontOfSize_(
+func NSFont_systemFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_systemFontOfSize_(
+	ret := C.NSFont_type_systemFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_boldSystemFontOfSize_(
+func NSFont_boldSystemFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_boldSystemFontOfSize_(
+	ret := C.NSFont_type_boldSystemFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_labelFontOfSize_(
+func NSFont_labelFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_labelFontOfSize_(
+	ret := C.NSFont_type_labelFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_messageFontOfSize_(
+func NSFont_messageFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_messageFontOfSize_(
+	ret := C.NSFont_type_messageFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_menuBarFontOfSize_(
+func NSFont_menuBarFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_menuBarFontOfSize_(
+	ret := C.NSFont_type_menuBarFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_menuFontOfSize_(
+func NSFont_menuFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_menuFontOfSize_(
+	ret := C.NSFont_type_menuFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_controlContentFontOfSize_(
+func NSFont_controlContentFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_controlContentFontOfSize_(
+	ret := C.NSFont_type_controlContentFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_titleBarFontOfSize_(
+func NSFont_titleBarFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_titleBarFontOfSize_(
+	ret := C.NSFont_type_titleBarFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_paletteFontOfSize_(
+func NSFont_paletteFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_paletteFontOfSize_(
+	ret := C.NSFont_type_paletteFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_toolTipsFontOfSize_(
+func NSFont_toolTipsFontOfSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_type_toolTipsFontOfSize_(
+	ret := C.NSFont_type_toolTipsFontOfSize(
 		C.double(fontSize),
 	)
 	r0 = NSFont_fromPointer(ret)
 	return
 }
 
-func NSFont_setUserFont_(
+func NSFont_setUserFont(
 	font NSFontRef,
 ) {
-	C.NSFont_type_setUserFont_(
+	C.NSFont_type_setUserFont(
 		objc.RefPointer(font),
 	)
 	return
 }
 
-func NSFont_setUserFixedPitchFont_(
+func NSFont_setUserFixedPitchFont(
 	font NSFontRef,
 ) {
-	C.NSFont_type_setUserFixedPitchFont_(
+	C.NSFont_type_setUserFixedPitchFont(
 		objc.RefPointer(font),
 	)
 	return
@@ -8131,13 +8131,13 @@ func NSImage_alloc() (
 	return
 }
 
-func NSImage_imageWithSystemSymbolName_accessibilityDescription_(
+func NSImage_imageWithSystemSymbolName_accessibilityDescription(
 	symbolName core.NSStringRef,
 	description core.NSStringRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_type_imageWithSystemSymbolName_accessibilityDescription_(
+	ret := C.NSImage_type_imageWithSystemSymbolName_accessibilityDescription(
 		objc.RefPointer(symbolName),
 		objc.RefPointer(description),
 	)
@@ -8145,12 +8145,12 @@ func NSImage_imageWithSystemSymbolName_accessibilityDescription_(
 	return
 }
 
-func NSImage_canInitWithPasteboard_(
+func NSImage_canInitWithPasteboard(
 	pasteboard NSPasteboardRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSImage_type_canInitWithPasteboard_(
+	ret := C.NSImage_type_canInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
 	r0 = convertObjCBoolToGo(ret)
@@ -8181,12 +8181,12 @@ func NSImageView_alloc() (
 	return
 }
 
-func NSImageView_imageViewWithImage_(
+func NSImageView_imageViewWithImage(
 	image NSImageRef,
 ) (
 	r0 NSImageView,
 ) {
-	ret := C.NSImageView_type_imageViewWithImage_(
+	ret := C.NSImageView_type_imageViewWithImage(
 		objc.RefPointer(image),
 	)
 	r0 = NSImageView_fromPointer(ret)
@@ -8209,24 +8209,24 @@ func NSPasteboard_alloc() (
 	return
 }
 
-func NSPasteboard_pasteboardByFilteringFile_(
+func NSPasteboard_pasteboardByFilteringFile(
 	filename core.NSStringRef,
 ) (
 	r0 NSPasteboard,
 ) {
-	ret := C.NSPasteboard_type_pasteboardByFilteringFile_(
+	ret := C.NSPasteboard_type_pasteboardByFilteringFile(
 		objc.RefPointer(filename),
 	)
 	r0 = NSPasteboard_fromPointer(ret)
 	return
 }
 
-func NSPasteboard_pasteboardByFilteringTypesInPasteboard_(
+func NSPasteboard_pasteboardByFilteringTypesInPasteboard(
 	pboard NSPasteboardRef,
 ) (
 	r0 NSPasteboard,
 ) {
-	ret := C.NSPasteboard_type_pasteboardByFilteringTypesInPasteboard_(
+	ret := C.NSPasteboard_type_pasteboardByFilteringTypesInPasteboard(
 		objc.RefPointer(pboard),
 	)
 	r0 = NSPasteboard_fromPointer(ret)
@@ -8273,21 +8273,21 @@ func NSMenu_menuBarVisible() (
 	return
 }
 
-func NSMenu_setMenuBarVisible_(
+func NSMenu_setMenuBarVisible(
 	visible bool,
 ) {
-	C.NSMenu_type_setMenuBarVisible_(
+	C.NSMenu_type_setMenuBarVisible(
 		convertToObjCBool(visible),
 	)
 	return
 }
 
-func NSMenu_popUpContextMenu_withEvent_forView_(
+func NSMenu_popUpContextMenu_withEvent_forView(
 	menu NSMenuRef,
 	event NSEventRef,
 	view NSViewRef,
 ) {
-	C.NSMenu_type_popUpContextMenu_withEvent_forView_(
+	C.NSMenu_type_popUpContextMenu_withEvent_forView(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
@@ -8295,13 +8295,13 @@ func NSMenu_popUpContextMenu_withEvent_forView_(
 	return
 }
 
-func NSMenu_popUpContextMenu_withEvent_forView_withFont_(
+func NSMenu_popUpContextMenu_withEvent_forView_withFont(
 	menu NSMenuRef,
 	event NSEventRef,
 	view NSViewRef,
 	font NSFontRef,
 ) {
-	C.NSMenu_type_popUpContextMenu_withEvent_forView_withFont_(
+	C.NSMenu_type_popUpContextMenu_withEvent_forView_withFont(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
@@ -8342,10 +8342,10 @@ func NSMenuItem_usesUserKeyEquivalents() (
 	return
 }
 
-func NSMenuItem_setUsesUserKeyEquivalents_(
+func NSMenuItem_setUsesUserKeyEquivalents(
 	value bool,
 ) {
-	C.NSMenuItem_type_setUsesUserKeyEquivalents_(
+	C.NSMenuItem_type_setUsesUserKeyEquivalents(
 		convertToObjCBool(value),
 	)
 	return
@@ -8359,12 +8359,12 @@ func NSRunningApplication_alloc() (
 	return
 }
 
-func NSRunningApplication_runningApplicationsWithBundleIdentifier_(
+func NSRunningApplication_runningApplicationsWithBundleIdentifier(
 	bundleIdentifier core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSRunningApplication_type_runningApplicationsWithBundleIdentifier_(
+	ret := C.NSRunningApplication_type_runningApplicationsWithBundleIdentifier(
 		objc.RefPointer(bundleIdentifier),
 	)
 	r0 = core.NSArray_fromPointer(ret)
@@ -8472,48 +8472,48 @@ func NSTextField_alloc() (
 	return
 }
 
-func NSTextField_labelWithAttributedString_(
+func NSTextField_labelWithAttributedString(
 	attributedStringValue core.NSAttributedStringRef,
 ) (
 	r0 NSTextField,
 ) {
-	ret := C.NSTextField_type_labelWithAttributedString_(
+	ret := C.NSTextField_type_labelWithAttributedString(
 		objc.RefPointer(attributedStringValue),
 	)
 	r0 = NSTextField_fromPointer(ret)
 	return
 }
 
-func NSTextField_labelWithString_(
+func NSTextField_labelWithString(
 	stringValue core.NSStringRef,
 ) (
 	r0 NSTextField,
 ) {
-	ret := C.NSTextField_type_labelWithString_(
+	ret := C.NSTextField_type_labelWithString(
 		objc.RefPointer(stringValue),
 	)
 	r0 = NSTextField_fromPointer(ret)
 	return
 }
 
-func NSTextField_textFieldWithString_(
+func NSTextField_textFieldWithString(
 	stringValue core.NSStringRef,
 ) (
 	r0 NSTextField,
 ) {
-	ret := C.NSTextField_type_textFieldWithString_(
+	ret := C.NSTextField_type_textFieldWithString(
 		objc.RefPointer(stringValue),
 	)
 	r0 = NSTextField_fromPointer(ret)
 	return
 }
 
-func NSTextField_wrappingLabelWithString_(
+func NSTextField_wrappingLabelWithString(
 	stringValue core.NSStringRef,
 ) (
 	r0 NSTextField,
 ) {
-	ret := C.NSTextField_type_wrappingLabelWithString_(
+	ret := C.NSTextField_type_wrappingLabelWithString(
 		objc.RefPointer(stringValue),
 	)
 	r0 = NSTextField_fromPointer(ret)
@@ -8552,25 +8552,25 @@ func NSWindow_alloc() (
 	return
 }
 
-func NSWindow_windowWithContentViewController_(
+func NSWindow_windowWithContentViewController(
 	contentViewController NSViewControllerRef,
 ) (
 	r0 NSWindow,
 ) {
-	ret := C.NSWindow_type_windowWithContentViewController_(
+	ret := C.NSWindow_type_windowWithContentViewController(
 		objc.RefPointer(contentViewController),
 	)
 	r0 = NSWindow_fromPointer(ret)
 	return
 }
 
-func NSWindow_contentRectForFrameRect_styleMask_(
+func NSWindow_contentRectForFrameRect_styleMask(
 	fRect core.NSRect,
 	style core.NSUInteger,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_type_contentRectForFrameRect_styleMask_(
+	ret := C.NSWindow_type_contentRectForFrameRect_styleMask(
 		*(*C.NSRect)(unsafe.Pointer(&fRect)),
 		C.ulong(style),
 	)
@@ -8578,13 +8578,13 @@ func NSWindow_contentRectForFrameRect_styleMask_(
 	return
 }
 
-func NSWindow_frameRectForContentRect_styleMask_(
+func NSWindow_frameRectForContentRect_styleMask(
 	cRect core.NSRect,
 	style core.NSUInteger,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_type_frameRectForContentRect_styleMask_(
+	ret := C.NSWindow_type_frameRectForContentRect_styleMask(
 		*(*C.NSRect)(unsafe.Pointer(&cRect)),
 		C.ulong(style),
 	)
@@ -8592,13 +8592,13 @@ func NSWindow_frameRectForContentRect_styleMask_(
 	return
 }
 
-func NSWindow_minFrameWidthWithTitle_styleMask_(
+func NSWindow_minFrameWidthWithTitle_styleMask(
 	title core.NSStringRef,
 	style core.NSUInteger,
 ) (
 	r0 core.CGFloat,
 ) {
-	ret := C.NSWindow_type_minFrameWidthWithTitle_styleMask_(
+	ret := C.NSWindow_type_minFrameWidthWithTitle_styleMask(
 		objc.RefPointer(title),
 		C.ulong(style),
 	)
@@ -8606,13 +8606,13 @@ func NSWindow_minFrameWidthWithTitle_styleMask_(
 	return
 }
 
-func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber_(
+func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber(
 	point core.NSPoint,
 	windowNumber core.NSInteger,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber_(
+	ret := C.NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber(
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		C.long(windowNumber),
 	)
@@ -8628,10 +8628,10 @@ func NSWindow_allowsAutomaticWindowTabbing() (
 	return
 }
 
-func NSWindow_setAllowsAutomaticWindowTabbing_(
+func NSWindow_setAllowsAutomaticWindowTabbing(
 	value bool,
 ) {
-	C.NSWindow_type_setAllowsAutomaticWindowTabbing_(
+	C.NSWindow_type_setAllowsAutomaticWindowTabbing(
 		convertToObjCBool(value),
 	)
 	return
@@ -8661,19 +8661,19 @@ func NSColor_alloc() (
 	return
 }
 
-func NSColor_colorFromPasteboard_(
+func NSColor_colorFromPasteboard(
 	pasteBoard NSPasteboardRef,
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_type_colorFromPasteboard_(
+	ret := C.NSColor_type_colorFromPasteboard(
 		objc.RefPointer(pasteBoard),
 	)
 	r0 = NSColor_fromPointer(ret)
 	return
 }
 
-func NSColor_colorWithRed_green_blue_alpha_(
+func NSColor_colorWithRed_green_blue_alpha(
 	red core.CGFloat,
 	green core.CGFloat,
 	blue core.CGFloat,
@@ -8681,7 +8681,7 @@ func NSColor_colorWithRed_green_blue_alpha_(
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_type_colorWithRed_green_blue_alpha_(
+	ret := C.NSColor_type_colorWithRed_green_blue_alpha(
 		C.double(red),
 		C.double(green),
 		C.double(blue),
@@ -8699,10 +8699,10 @@ func NSColor_ignoresAlpha() (
 	return
 }
 
-func NSColor_setIgnoresAlpha_(
+func NSColor_setIgnoresAlpha(
 	value bool,
 ) {
-	C.NSColor_type_setIgnoresAlpha_(
+	C.NSColor_type_setIgnoresAlpha(
 		convertToObjCBool(value),
 	)
 	return
@@ -8820,12 +8820,12 @@ func NSBundle_fromRef(ref objc.Ref) NSBundle {
 	return NSBundle_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSBundle) InitWithURL__asNSBundle(
+func (x gen_NSBundle) InitWithURL_asNSBundle(
 	url core.NSURLRef,
 ) (
 	r0 NSBundle,
 ) {
-	ret := C.NSBundle_inst_initWithURL_(
+	ret := C.NSBundle_inst_initWithURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -8833,12 +8833,12 @@ func (x gen_NSBundle) InitWithURL__asNSBundle(
 	return
 }
 
-func (x gen_NSBundle) InitWithPath__asNSBundle(
+func (x gen_NSBundle) InitWithPath_asNSBundle(
 	path core.NSStringRef,
 ) (
 	r0 NSBundle,
 ) {
-	ret := C.NSBundle_inst_initWithPath_(
+	ret := C.NSBundle_inst_initWithPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -8846,14 +8846,14 @@ func (x gen_NSBundle) InitWithPath__asNSBundle(
 	return
 }
 
-func (x gen_NSBundle) LoadNibNamed_owner_options_(
+func (x gen_NSBundle) LoadNibNamed_owner_options(
 	name core.NSStringRef,
 	owner objc.Ref,
 	options core.NSDictionaryRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_inst_loadNibNamed_owner_options_(
+	ret := C.NSBundle_inst_loadNibNamed_owner_options(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(owner),
@@ -8863,14 +8863,14 @@ func (x gen_NSBundle) LoadNibNamed_owner_options_(
 	return
 }
 
-func (x gen_NSBundle) URLForResource_withExtension_subdirectory_(
+func (x gen_NSBundle) URLForResource_withExtension_subdirectory(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory_(
+	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8880,13 +8880,13 @@ func (x gen_NSBundle) URLForResource_withExtension_subdirectory_(
 	return
 }
 
-func (x gen_NSBundle) URLForResource_withExtension_(
+func (x gen_NSBundle) URLForResource_withExtension(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSBundle_inst_URLForResource_withExtension_(
+	ret := C.NSBundle_inst_URLForResource_withExtension(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8895,13 +8895,13 @@ func (x gen_NSBundle) URLForResource_withExtension_(
 	return
 }
 
-func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_(
+func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory_(
+	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -8910,7 +8910,7 @@ func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_(
 	return
 }
 
-func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization_(
+func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
@@ -8918,7 +8918,7 @@ func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization_(
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory_localization_(
+	ret := C.NSBundle_inst_URLForResource_withExtension_subdirectory_localization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8929,14 +8929,14 @@ func (x gen_NSBundle) URLForResource_withExtension_subdirectory_localization_(
 	return
 }
 
-func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_localization_(
+func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_localization(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization_(
+	ret := C.NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -8946,13 +8946,13 @@ func (x gen_NSBundle) URLsForResourcesWithExtension_subdirectory_localization_(
 	return
 }
 
-func (x gen_NSBundle) PathForResource_ofType_(
+func (x gen_NSBundle) PathForResource_ofType(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_inst_pathForResource_ofType_(
+	ret := C.NSBundle_inst_pathForResource_ofType(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8961,14 +8961,14 @@ func (x gen_NSBundle) PathForResource_ofType_(
 	return
 }
 
-func (x gen_NSBundle) PathForResource_ofType_inDirectory_(
+func (x gen_NSBundle) PathForResource_ofType_inDirectory(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory_(
+	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8978,7 +8978,7 @@ func (x gen_NSBundle) PathForResource_ofType_inDirectory_(
 	return
 }
 
-func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization_(
+func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization(
 	name core.NSStringRef,
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
@@ -8986,7 +8986,7 @@ func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization_(
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization_(
+	ret := C.NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
@@ -8997,13 +8997,13 @@ func (x gen_NSBundle) PathForResource_ofType_inDirectory_forLocalization_(
 	return
 }
 
-func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_(
+func (x gen_NSBundle) PathsForResourcesOfType_inDirectory(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory_(
+	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9012,14 +9012,14 @@ func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_(
 	return
 }
 
-func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_forLocalization_(
+func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_forLocalization(
 	ext core.NSStringRef,
 	subpath core.NSStringRef,
 	localizationName core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization_(
+	ret := C.NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
@@ -9029,14 +9029,14 @@ func (x gen_NSBundle) PathsForResourcesOfType_inDirectory_forLocalization_(
 	return
 }
 
-func (x gen_NSBundle) LocalizedStringForKey_value_table_(
+func (x gen_NSBundle) LocalizedStringForKey_value_table(
 	key core.NSStringRef,
 	value core.NSStringRef,
 	tableName core.NSStringRef,
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_inst_localizedStringForKey_value_table_(
+	ret := C.NSBundle_inst_localizedStringForKey_value_table(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 		objc.RefPointer(value),
@@ -9046,12 +9046,12 @@ func (x gen_NSBundle) LocalizedStringForKey_value_table_(
 	return
 }
 
-func (x gen_NSBundle) URLForAuxiliaryExecutable_(
+func (x gen_NSBundle) URLForAuxiliaryExecutable(
 	executableName core.NSStringRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSBundle_inst_URLForAuxiliaryExecutable_(
+	ret := C.NSBundle_inst_URLForAuxiliaryExecutable(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(executableName),
 	)
@@ -9059,12 +9059,12 @@ func (x gen_NSBundle) URLForAuxiliaryExecutable_(
 	return
 }
 
-func (x gen_NSBundle) PathForAuxiliaryExecutable_(
+func (x gen_NSBundle) PathForAuxiliaryExecutable(
 	executableName core.NSStringRef,
 ) (
 	r0 core.NSString,
 ) {
-	ret := C.NSBundle_inst_pathForAuxiliaryExecutable_(
+	ret := C.NSBundle_inst_pathForAuxiliaryExecutable(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(executableName),
 	)
@@ -9072,12 +9072,12 @@ func (x gen_NSBundle) PathForAuxiliaryExecutable_(
 	return
 }
 
-func (x gen_NSBundle) ObjectForInfoDictionaryKey_(
+func (x gen_NSBundle) ObjectForInfoDictionaryKey(
 	key core.NSStringRef,
 ) (
 	r0 objc.Object,
 ) {
-	ret := C.NSBundle_inst_objectForInfoDictionaryKey_(
+	ret := C.NSBundle_inst_objectForInfoDictionaryKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 	)
@@ -9105,14 +9105,14 @@ func (x gen_NSBundle) Unload() (
 	return
 }
 
-func (x gen_NSBundle) LocalizedAttributedStringForKey_value_table_(
+func (x gen_NSBundle) LocalizedAttributedStringForKey_value_table(
 	key core.NSStringRef,
 	value core.NSStringRef,
 	tableName core.NSStringRef,
 ) (
 	r0 core.NSAttributedString,
 ) {
-	ret := C.NSBundle_inst_localizedAttributedStringForKey_value_table_(
+	ret := C.NSBundle_inst_localizedAttributedStringForKey_value_table(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 		objc.RefPointer(value),
@@ -9381,13 +9381,13 @@ func NSSound_fromRef(ref objc.Ref) NSSound {
 	return NSSound_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSSound) InitWithContentsOfFile_byReference__asNSSound(
+func (x gen_NSSound) InitWithContentsOfFile_byReference_asNSSound(
 	path core.NSStringRef,
 	byRef bool,
 ) (
 	r0 NSSound,
 ) {
-	ret := C.NSSound_inst_initWithContentsOfFile_byReference_(
+	ret := C.NSSound_inst_initWithContentsOfFile_byReference(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 		convertToObjCBool(byRef),
@@ -9396,13 +9396,13 @@ func (x gen_NSSound) InitWithContentsOfFile_byReference__asNSSound(
 	return
 }
 
-func (x gen_NSSound) InitWithContentsOfURL_byReference__asNSSound(
+func (x gen_NSSound) InitWithContentsOfURL_byReference_asNSSound(
 	url core.NSURLRef,
 	byRef bool,
 ) (
 	r0 NSSound,
 ) {
-	ret := C.NSSound_inst_initWithContentsOfURL_byReference_(
+	ret := C.NSSound_inst_initWithContentsOfURL_byReference(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 		convertToObjCBool(byRef),
@@ -9411,12 +9411,12 @@ func (x gen_NSSound) InitWithContentsOfURL_byReference__asNSSound(
 	return
 }
 
-func (x gen_NSSound) InitWithData__asNSSound(
+func (x gen_NSSound) InitWithData_asNSSound(
 	data core.NSDataRef,
 ) (
 	r0 NSSound,
 ) {
-	ret := C.NSSound_inst_initWithData_(
+	ret := C.NSSound_inst_initWithData(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -9424,12 +9424,12 @@ func (x gen_NSSound) InitWithData__asNSSound(
 	return
 }
 
-func (x gen_NSSound) InitWithPasteboard__asNSSound(
+func (x gen_NSSound) InitWithPasteboard_asNSSound(
 	pasteboard NSPasteboardRef,
 ) (
 	r0 NSSound,
 ) {
-	ret := C.NSSound_inst_initWithPasteboard_(
+	ret := C.NSSound_inst_initWithPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -9477,10 +9477,10 @@ func (x gen_NSSound) Stop() (
 	return
 }
 
-func (x gen_NSSound) WriteToPasteboard_(
+func (x gen_NSSound) WriteToPasteboard(
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSSound_inst_writeToPasteboard_(
+	C.NSSound_inst_writeToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -9507,10 +9507,10 @@ func (x gen_NSSound) Delegate() (
 	return
 }
 
-func (x gen_NSSound) SetDelegate_(
+func (x gen_NSSound) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSSound_inst_setDelegate_(
+	C.NSSound_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -9527,10 +9527,10 @@ func (x gen_NSSound) Loops() (
 	return
 }
 
-func (x gen_NSSound) SetLoops_(
+func (x gen_NSSound) SetLoops(
 	value bool,
 ) {
-	C.NSSound_inst_setLoops_(
+	C.NSSound_inst_setLoops(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -9580,31 +9580,31 @@ func (x gen_NSApplication) FinishLaunching() {
 	return
 }
 
-func (x gen_NSApplication) Stop_(
+func (x gen_NSApplication) Stop(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_stop_(
+	C.NSApplication_inst_stop(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) SendEvent_(
+func (x gen_NSApplication) SendEvent(
 	event NSEventRef,
 ) {
-	C.NSApplication_inst_sendEvent_(
+	C.NSApplication_inst_sendEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
 	return
 }
 
-func (x gen_NSApplication) PostEvent_atStart_(
+func (x gen_NSApplication) PostEvent_atStart(
 	event NSEventRef,
 	flag bool,
 ) {
-	C.NSApplication_inst_postEvent_atStart_(
+	C.NSApplication_inst_postEvent_atStart(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		convertToObjCBool(flag),
@@ -9612,13 +9612,13 @@ func (x gen_NSApplication) PostEvent_atStart_(
 	return
 }
 
-func (x gen_NSApplication) TryToPerform_with_(
+func (x gen_NSApplication) TryToPerform_with(
 	action objc.Selector,
 	object objc.Ref,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSApplication_inst_tryToPerform_with_(
+	ret := C.NSApplication_inst_tryToPerform_with(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(object),
@@ -9627,14 +9627,14 @@ func (x gen_NSApplication) TryToPerform_with_(
 	return
 }
 
-func (x gen_NSApplication) SendAction_to_from_(
+func (x gen_NSApplication) SendAction_to_from(
 	action objc.Selector,
 	target objc.Ref,
 	sender objc.Ref,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSApplication_inst_sendAction_to_from_(
+	ret := C.NSApplication_inst_sendAction_to_from(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -9644,12 +9644,12 @@ func (x gen_NSApplication) SendAction_to_from_(
 	return
 }
 
-func (x gen_NSApplication) TargetForAction_(
+func (x gen_NSApplication) TargetForAction(
 	action objc.Selector,
 ) (
 	r0 objc.Object,
 ) {
-	ret := C.NSApplication_inst_targetForAction_(
+	ret := C.NSApplication_inst_targetForAction(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 	)
@@ -9657,14 +9657,14 @@ func (x gen_NSApplication) TargetForAction_(
 	return
 }
 
-func (x gen_NSApplication) TargetForAction_to_from_(
+func (x gen_NSApplication) TargetForAction_to_from(
 	action objc.Selector,
 	target objc.Ref,
 	sender objc.Ref,
 ) (
 	r0 objc.Object,
 ) {
-	ret := C.NSApplication_inst_targetForAction_to_from_(
+	ret := C.NSApplication_inst_targetForAction_to_from(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -9674,30 +9674,30 @@ func (x gen_NSApplication) TargetForAction_to_from_(
 	return
 }
 
-func (x gen_NSApplication) Terminate_(
+func (x gen_NSApplication) Terminate(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_terminate_(
+	C.NSApplication_inst_terminate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) ReplyToApplicationShouldTerminate_(
+func (x gen_NSApplication) ReplyToApplicationShouldTerminate(
 	shouldTerminate bool,
 ) {
-	C.NSApplication_inst_replyToApplicationShouldTerminate_(
+	C.NSApplication_inst_replyToApplicationShouldTerminate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(shouldTerminate),
 	)
 	return
 }
 
-func (x gen_NSApplication) ActivateIgnoringOtherApps_(
+func (x gen_NSApplication) ActivateIgnoringOtherApps(
 	flag bool,
 ) {
-	C.NSApplication_inst_activateIgnoringOtherApps_(
+	C.NSApplication_inst_activateIgnoringOtherApps(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -9739,80 +9739,80 @@ func (x gen_NSApplication) UnregisterForRemoteNotifications() {
 	return
 }
 
-func (x gen_NSApplication) ToggleTouchBarCustomizationPalette_(
+func (x gen_NSApplication) ToggleTouchBarCustomizationPalette(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_toggleTouchBarCustomizationPalette_(
+	C.NSApplication_inst_toggleTouchBarCustomizationPalette(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) CancelUserAttentionRequest_(
+func (x gen_NSApplication) CancelUserAttentionRequest(
 	request core.NSInteger,
 ) {
-	C.NSApplication_inst_cancelUserAttentionRequest_(
+	C.NSApplication_inst_cancelUserAttentionRequest(
 		unsafe.Pointer(x.Pointer()),
 		C.long(request),
 	)
 	return
 }
 
-func (x gen_NSApplication) RegisterUserInterfaceItemSearchHandler_(
+func (x gen_NSApplication) RegisterUserInterfaceItemSearchHandler(
 	handler objc.Ref,
 ) {
-	C.NSApplication_inst_registerUserInterfaceItemSearchHandler_(
+	C.NSApplication_inst_registerUserInterfaceItemSearchHandler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(handler),
 	)
 	return
 }
 
-func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler_(
+func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 	handler objc.Ref,
 ) {
-	C.NSApplication_inst_unregisterUserInterfaceItemSearchHandler_(
+	C.NSApplication_inst_unregisterUserInterfaceItemSearchHandler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(handler),
 	)
 	return
 }
 
-func (x gen_NSApplication) ShowHelp_(
+func (x gen_NSApplication) ShowHelp(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_showHelp_(
+	C.NSApplication_inst_showHelp(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) ActivateContextHelpMode_(
+func (x gen_NSApplication) ActivateContextHelpMode(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_activateContextHelpMode_(
+	C.NSApplication_inst_activateContextHelpMode(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) HideOtherApplications_(
+func (x gen_NSApplication) HideOtherApplications(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_hideOtherApplications_(
+	C.NSApplication_inst_hideOtherApplications(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSApplication) UnhideAllApplications_(
+func (x gen_NSApplication) UnhideAllApplications(
 	sender objc.Ref,
 ) {
-	C.NSApplication_inst_unhideAllApplications_(
+	C.NSApplication_inst_unhideAllApplications(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -9829,12 +9829,12 @@ func (x gen_NSApplication) ActivationPolicy() (
 	return
 }
 
-func (x gen_NSApplication) SetActivationPolicy_(
+func (x gen_NSApplication) SetActivationPolicy(
 	activationPolicy core.NSInteger,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSApplication_inst_setActivationPolicy_(
+	ret := C.NSApplication_inst_setActivationPolicy(
 		unsafe.Pointer(x.Pointer()),
 		C.long(activationPolicy),
 	)
@@ -9862,10 +9862,10 @@ func (x gen_NSApplication) Delegate() (
 	return
 }
 
-func (x gen_NSApplication) SetDelegate_(
+func (x gen_NSApplication) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSApplication_inst_setDelegate_(
+	C.NSApplication_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -9922,10 +9922,10 @@ func (x gen_NSApplication) ApplicationIconImage() (
 	return
 }
 
-func (x gen_NSApplication) SetApplicationIconImage_(
+func (x gen_NSApplication) SetApplicationIconImage(
 	value NSImageRef,
 ) {
-	C.NSApplication_inst_setApplicationIconImage_(
+	C.NSApplication_inst_setApplicationIconImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -9942,10 +9942,10 @@ func (x gen_NSApplication) HelpMenu() (
 	return
 }
 
-func (x gen_NSApplication) SetHelpMenu_(
+func (x gen_NSApplication) SetHelpMenu(
 	value NSMenuRef,
 ) {
-	C.NSApplication_inst_setHelpMenu_(
+	C.NSApplication_inst_setHelpMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -9962,10 +9962,10 @@ func (x gen_NSApplication) ServicesProvider() (
 	return
 }
 
-func (x gen_NSApplication) SetServicesProvider_(
+func (x gen_NSApplication) SetServicesProvider(
 	value objc.Ref,
 ) {
-	C.NSApplication_inst_setServicesProvider_(
+	C.NSApplication_inst_setServicesProvider(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10012,10 +10012,10 @@ func (x gen_NSApplication) MainMenu() (
 	return
 }
 
-func (x gen_NSApplication) SetMainMenu_(
+func (x gen_NSApplication) SetMainMenu(
 	value NSMenuRef,
 ) {
-	C.NSApplication_inst_setMainMenu_(
+	C.NSApplication_inst_setMainMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10041,12 +10041,12 @@ func NSControl_fromRef(ref objc.Ref) NSControl {
 	return NSControl_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSControl) InitWithFrame__asNSControl(
+func (x gen_NSControl) InitWithFrame_asNSControl(
 	frameRect core.NSRect,
 ) (
 	r0 NSControl,
 ) {
-	ret := C.NSControl_inst_initWithFrame_(
+	ret := C.NSControl_inst_initWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -10054,71 +10054,71 @@ func (x gen_NSControl) InitWithFrame__asNSControl(
 	return
 }
 
-func (x gen_NSControl) TakeDoubleValueFrom_(
+func (x gen_NSControl) TakeDoubleValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeDoubleValueFrom_(
+	C.NSControl_inst_takeDoubleValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) TakeFloatValueFrom_(
+func (x gen_NSControl) TakeFloatValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeFloatValueFrom_(
+	C.NSControl_inst_takeFloatValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) TakeIntValueFrom_(
+func (x gen_NSControl) TakeIntValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeIntValueFrom_(
+	C.NSControl_inst_takeIntValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) TakeIntegerValueFrom_(
+func (x gen_NSControl) TakeIntegerValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeIntegerValueFrom_(
+	C.NSControl_inst_takeIntegerValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) TakeObjectValueFrom_(
+func (x gen_NSControl) TakeObjectValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeObjectValueFrom_(
+	C.NSControl_inst_takeObjectValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) TakeStringValueFrom_(
+func (x gen_NSControl) TakeStringValueFrom(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_takeStringValueFrom_(
+	C.NSControl_inst_takeStringValueFrom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) DrawWithExpansionFrame_inView_(
+func (x gen_NSControl) DrawWithExpansionFrame_inView(
 	contentFrame core.NSRect,
 	view NSViewRef,
 ) {
-	C.NSControl_inst_drawWithExpansionFrame_inView_(
+	C.NSControl_inst_drawWithExpansionFrame_inView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
 		objc.RefPointer(view),
@@ -10126,12 +10126,12 @@ func (x gen_NSControl) DrawWithExpansionFrame_inView_(
 	return
 }
 
-func (x gen_NSControl) ExpansionFrameWithFrame_(
+func (x gen_NSControl) ExpansionFrameWithFrame(
 	contentFrame core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSControl_inst_expansionFrameWithFrame_(
+	ret := C.NSControl_inst_expansionFrameWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentFrame)),
 	)
@@ -10166,13 +10166,13 @@ func (x gen_NSControl) ValidateEditing() {
 	return
 }
 
-func (x gen_NSControl) EditWithFrame_editor_delegate_event_(
+func (x gen_NSControl) EditWithFrame_editor_delegate_event(
 	rect core.NSRect,
 	textObj NSTextRef,
 	delegate objc.Ref,
 	event NSEventRef,
 ) {
-	C.NSControl_inst_editWithFrame_editor_delegate_event_(
+	C.NSControl_inst_editWithFrame_editor_delegate_event(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(textObj),
@@ -10182,24 +10182,24 @@ func (x gen_NSControl) EditWithFrame_editor_delegate_event_(
 	return
 }
 
-func (x gen_NSControl) EndEditing_(
+func (x gen_NSControl) EndEditing(
 	textObj NSTextRef,
 ) {
-	C.NSControl_inst_endEditing_(
+	C.NSControl_inst_endEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObj),
 	)
 	return
 }
 
-func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length_(
+func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length(
 	rect core.NSRect,
 	textObj NSTextRef,
 	delegate objc.Ref,
 	selStart core.NSInteger,
 	selLength core.NSInteger,
 ) {
-	C.NSControl_inst_selectWithFrame_editor_delegate_start_length_(
+	C.NSControl_inst_selectWithFrame_editor_delegate_start_length(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(textObj),
@@ -10210,12 +10210,12 @@ func (x gen_NSControl) SelectWithFrame_editor_delegate_start_length_(
 	return
 }
 
-func (x gen_NSControl) SizeThatFits_(
+func (x gen_NSControl) SizeThatFits(
 	size core.NSSize,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSControl_inst_sizeThatFits_(
+	ret := C.NSControl_inst_sizeThatFits(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -10230,13 +10230,13 @@ func (x gen_NSControl) SizeToFit() {
 	return
 }
 
-func (x gen_NSControl) SendAction_to_(
+func (x gen_NSControl) SendAction_to(
 	action objc.Selector,
 	target objc.Ref,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSControl_inst_sendAction_to_(
+	ret := C.NSControl_inst_sendAction_to(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(target),
@@ -10245,20 +10245,20 @@ func (x gen_NSControl) SendAction_to_(
 	return
 }
 
-func (x gen_NSControl) PerformClick_(
+func (x gen_NSControl) PerformClick(
 	sender objc.Ref,
 ) {
-	C.NSControl_inst_performClick_(
+	C.NSControl_inst_performClick(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSControl) MouseDown_(
+func (x gen_NSControl) MouseDown(
 	event NSEventRef,
 ) {
-	C.NSControl_inst_mouseDown_(
+	C.NSControl_inst_mouseDown(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -10285,10 +10285,10 @@ func (x gen_NSControl) IsEnabled() (
 	return
 }
 
-func (x gen_NSControl) SetEnabled_(
+func (x gen_NSControl) SetEnabled(
 	value bool,
 ) {
-	C.NSControl_inst_setEnabled_(
+	C.NSControl_inst_setEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10305,10 +10305,10 @@ func (x gen_NSControl) IntValue() (
 	return
 }
 
-func (x gen_NSControl) SetIntValue_(
+func (x gen_NSControl) SetIntValue(
 	value int32,
 ) {
-	C.NSControl_inst_setIntValue_(
+	C.NSControl_inst_setIntValue(
 		unsafe.Pointer(x.Pointer()),
 		C.int(value),
 	)
@@ -10325,10 +10325,10 @@ func (x gen_NSControl) IntegerValue() (
 	return
 }
 
-func (x gen_NSControl) SetIntegerValue_(
+func (x gen_NSControl) SetIntegerValue(
 	value core.NSInteger,
 ) {
-	C.NSControl_inst_setIntegerValue_(
+	C.NSControl_inst_setIntegerValue(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -10345,10 +10345,10 @@ func (x gen_NSControl) ObjectValue() (
 	return
 }
 
-func (x gen_NSControl) SetObjectValue_(
+func (x gen_NSControl) SetObjectValue(
 	value objc.Ref,
 ) {
-	C.NSControl_inst_setObjectValue_(
+	C.NSControl_inst_setObjectValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10365,10 +10365,10 @@ func (x gen_NSControl) StringValue() (
 	return
 }
 
-func (x gen_NSControl) SetStringValue_(
+func (x gen_NSControl) SetStringValue(
 	value core.NSStringRef,
 ) {
-	C.NSControl_inst_setStringValue_(
+	C.NSControl_inst_setStringValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10385,10 +10385,10 @@ func (x gen_NSControl) AttributedStringValue() (
 	return
 }
 
-func (x gen_NSControl) SetAttributedStringValue_(
+func (x gen_NSControl) SetAttributedStringValue(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSControl_inst_setAttributedStringValue_(
+	C.NSControl_inst_setAttributedStringValue(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10405,10 +10405,10 @@ func (x gen_NSControl) Font() (
 	return
 }
 
-func (x gen_NSControl) SetFont_(
+func (x gen_NSControl) SetFont(
 	value NSFontRef,
 ) {
-	C.NSControl_inst_setFont_(
+	C.NSControl_inst_setFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10425,10 +10425,10 @@ func (x gen_NSControl) UsesSingleLineMode() (
 	return
 }
 
-func (x gen_NSControl) SetUsesSingleLineMode_(
+func (x gen_NSControl) SetUsesSingleLineMode(
 	value bool,
 ) {
-	C.NSControl_inst_setUsesSingleLineMode_(
+	C.NSControl_inst_setUsesSingleLineMode(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10445,10 +10445,10 @@ func (x gen_NSControl) AllowsExpansionToolTips() (
 	return
 }
 
-func (x gen_NSControl) SetAllowsExpansionToolTips_(
+func (x gen_NSControl) SetAllowsExpansionToolTips(
 	value bool,
 ) {
-	C.NSControl_inst_setAllowsExpansionToolTips_(
+	C.NSControl_inst_setAllowsExpansionToolTips(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10465,10 +10465,10 @@ func (x gen_NSControl) IsHighlighted() (
 	return
 }
 
-func (x gen_NSControl) SetHighlighted_(
+func (x gen_NSControl) SetHighlighted(
 	value bool,
 ) {
-	C.NSControl_inst_setHighlighted_(
+	C.NSControl_inst_setHighlighted(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10485,10 +10485,10 @@ func (x gen_NSControl) Action() (
 	return
 }
 
-func (x gen_NSControl) SetAction_(
+func (x gen_NSControl) SetAction(
 	value objc.Selector,
 ) {
-	C.NSControl_inst_setAction_(
+	C.NSControl_inst_setAction(
 		unsafe.Pointer(x.Pointer()),
 		value.SelectorAddress(),
 	)
@@ -10505,10 +10505,10 @@ func (x gen_NSControl) Target() (
 	return
 }
 
-func (x gen_NSControl) SetTarget_(
+func (x gen_NSControl) SetTarget(
 	value objc.Ref,
 ) {
-	C.NSControl_inst_setTarget_(
+	C.NSControl_inst_setTarget(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10525,10 +10525,10 @@ func (x gen_NSControl) IsContinuous() (
 	return
 }
 
-func (x gen_NSControl) SetContinuous_(
+func (x gen_NSControl) SetContinuous(
 	value bool,
 ) {
-	C.NSControl_inst_setContinuous_(
+	C.NSControl_inst_setContinuous(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10545,10 +10545,10 @@ func (x gen_NSControl) Tag() (
 	return
 }
 
-func (x gen_NSControl) SetTag_(
+func (x gen_NSControl) SetTag(
 	value core.NSInteger,
 ) {
-	C.NSControl_inst_setTag_(
+	C.NSControl_inst_setTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -10565,10 +10565,10 @@ func (x gen_NSControl) RefusesFirstResponder() (
 	return
 }
 
-func (x gen_NSControl) SetRefusesFirstResponder_(
+func (x gen_NSControl) SetRefusesFirstResponder(
 	value bool,
 ) {
-	C.NSControl_inst_setRefusesFirstResponder_(
+	C.NSControl_inst_setRefusesFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10585,10 +10585,10 @@ func (x gen_NSControl) IgnoresMultiClick() (
 	return
 }
 
-func (x gen_NSControl) SetIgnoresMultiClick_(
+func (x gen_NSControl) SetIgnoresMultiClick(
 	value bool,
 ) {
-	C.NSControl_inst_setIgnoresMultiClick_(
+	C.NSControl_inst_setIgnoresMultiClick(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10614,22 +10614,22 @@ func NSButton_fromRef(ref objc.Ref) NSButton {
 	return NSButton_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSButton) CompressWithPrioritizedCompressionOptions_(
+func (x gen_NSButton) CompressWithPrioritizedCompressionOptions(
 	prioritizedOptions core.NSArrayRef,
 ) {
-	C.NSButton_inst_compressWithPrioritizedCompressionOptions_(
+	C.NSButton_inst_compressWithPrioritizedCompressionOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(prioritizedOptions),
 	)
 	return
 }
 
-func (x gen_NSButton) MinimumSizeWithPrioritizedCompressionOptions_(
+func (x gen_NSButton) MinimumSizeWithPrioritizedCompressionOptions(
 	prioritizedOptions core.NSArrayRef,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSButton_inst_minimumSizeWithPrioritizedCompressionOptions_(
+	ret := C.NSButton_inst_minimumSizeWithPrioritizedCompressionOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(prioritizedOptions),
 	)
@@ -10644,22 +10644,22 @@ func (x gen_NSButton) SetNextState() {
 	return
 }
 
-func (x gen_NSButton) Highlight_(
+func (x gen_NSButton) Highlight(
 	flag bool,
 ) {
-	C.NSButton_inst_highlight_(
+	C.NSButton_inst_highlight(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
 	return
 }
 
-func (x gen_NSButton) PerformKeyEquivalent_(
+func (x gen_NSButton) PerformKeyEquivalent(
 	key NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSButton_inst_performKeyEquivalent_(
+	ret := C.NSButton_inst_performKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(key),
 	)
@@ -10687,10 +10687,10 @@ func (x gen_NSButton) ContentTintColor() (
 	return
 }
 
-func (x gen_NSButton) SetContentTintColor_(
+func (x gen_NSButton) SetContentTintColor(
 	value NSColorRef,
 ) {
-	C.NSButton_inst_setContentTintColor_(
+	C.NSButton_inst_setContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10707,10 +10707,10 @@ func (x gen_NSButton) HasDestructiveAction() (
 	return
 }
 
-func (x gen_NSButton) SetHasDestructiveAction_(
+func (x gen_NSButton) SetHasDestructiveAction(
 	value bool,
 ) {
-	C.NSButton_inst_setHasDestructiveAction_(
+	C.NSButton_inst_setHasDestructiveAction(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10727,10 +10727,10 @@ func (x gen_NSButton) AlternateTitle() (
 	return
 }
 
-func (x gen_NSButton) SetAlternateTitle_(
+func (x gen_NSButton) SetAlternateTitle(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setAlternateTitle_(
+	C.NSButton_inst_setAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10747,10 +10747,10 @@ func (x gen_NSButton) AttributedTitle() (
 	return
 }
 
-func (x gen_NSButton) SetAttributedTitle_(
+func (x gen_NSButton) SetAttributedTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSButton_inst_setAttributedTitle_(
+	C.NSButton_inst_setAttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10767,10 +10767,10 @@ func (x gen_NSButton) AttributedAlternateTitle() (
 	return
 }
 
-func (x gen_NSButton) SetAttributedAlternateTitle_(
+func (x gen_NSButton) SetAttributedAlternateTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSButton_inst_setAttributedAlternateTitle_(
+	C.NSButton_inst_setAttributedAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10787,10 +10787,10 @@ func (x gen_NSButton) Title() (
 	return
 }
 
-func (x gen_NSButton) SetTitle_(
+func (x gen_NSButton) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setTitle_(
+	C.NSButton_inst_setTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10807,10 +10807,10 @@ func (x gen_NSButton) Sound() (
 	return
 }
 
-func (x gen_NSButton) SetSound_(
+func (x gen_NSButton) SetSound(
 	value NSSoundRef,
 ) {
-	C.NSButton_inst_setSound_(
+	C.NSButton_inst_setSound(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10827,10 +10827,10 @@ func (x gen_NSButton) IsSpringLoaded() (
 	return
 }
 
-func (x gen_NSButton) SetSpringLoaded_(
+func (x gen_NSButton) SetSpringLoaded(
 	value bool,
 ) {
-	C.NSButton_inst_setSpringLoaded_(
+	C.NSButton_inst_setSpringLoaded(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10847,10 +10847,10 @@ func (x gen_NSButton) MaxAcceleratorLevel() (
 	return
 }
 
-func (x gen_NSButton) SetMaxAcceleratorLevel_(
+func (x gen_NSButton) SetMaxAcceleratorLevel(
 	value core.NSInteger,
 ) {
-	C.NSButton_inst_setMaxAcceleratorLevel_(
+	C.NSButton_inst_setMaxAcceleratorLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -10867,10 +10867,10 @@ func (x gen_NSButton) Image() (
 	return
 }
 
-func (x gen_NSButton) SetImage_(
+func (x gen_NSButton) SetImage(
 	value NSImageRef,
 ) {
-	C.NSButton_inst_setImage_(
+	C.NSButton_inst_setImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10887,10 +10887,10 @@ func (x gen_NSButton) AlternateImage() (
 	return
 }
 
-func (x gen_NSButton) SetAlternateImage_(
+func (x gen_NSButton) SetAlternateImage(
 	value NSImageRef,
 ) {
-	C.NSButton_inst_setAlternateImage_(
+	C.NSButton_inst_setAlternateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10907,10 +10907,10 @@ func (x gen_NSButton) IsBordered() (
 	return
 }
 
-func (x gen_NSButton) SetBordered_(
+func (x gen_NSButton) SetBordered(
 	value bool,
 ) {
-	C.NSButton_inst_setBordered_(
+	C.NSButton_inst_setBordered(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10927,10 +10927,10 @@ func (x gen_NSButton) IsTransparent() (
 	return
 }
 
-func (x gen_NSButton) SetTransparent_(
+func (x gen_NSButton) SetTransparent(
 	value bool,
 ) {
-	C.NSButton_inst_setTransparent_(
+	C.NSButton_inst_setTransparent(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10947,10 +10947,10 @@ func (x gen_NSButton) BezelColor() (
 	return
 }
 
-func (x gen_NSButton) SetBezelColor_(
+func (x gen_NSButton) SetBezelColor(
 	value NSColorRef,
 ) {
-	C.NSButton_inst_setBezelColor_(
+	C.NSButton_inst_setBezelColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -10967,10 +10967,10 @@ func (x gen_NSButton) ShowsBorderOnlyWhileMouseInside() (
 	return
 }
 
-func (x gen_NSButton) SetShowsBorderOnlyWhileMouseInside_(
+func (x gen_NSButton) SetShowsBorderOnlyWhileMouseInside(
 	value bool,
 ) {
-	C.NSButton_inst_setShowsBorderOnlyWhileMouseInside_(
+	C.NSButton_inst_setShowsBorderOnlyWhileMouseInside(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -10987,10 +10987,10 @@ func (x gen_NSButton) ImageHugsTitle() (
 	return
 }
 
-func (x gen_NSButton) SetImageHugsTitle_(
+func (x gen_NSButton) SetImageHugsTitle(
 	value bool,
 ) {
-	C.NSButton_inst_setImageHugsTitle_(
+	C.NSButton_inst_setImageHugsTitle(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11007,10 +11007,10 @@ func (x gen_NSButton) AllowsMixedState() (
 	return
 }
 
-func (x gen_NSButton) SetAllowsMixedState_(
+func (x gen_NSButton) SetAllowsMixedState(
 	value bool,
 ) {
-	C.NSButton_inst_setAllowsMixedState_(
+	C.NSButton_inst_setAllowsMixedState(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11027,10 +11027,10 @@ func (x gen_NSButton) State() (
 	return
 }
 
-func (x gen_NSButton) SetState_(
+func (x gen_NSButton) SetState(
 	value core.NSInteger,
 ) {
-	C.NSButton_inst_setState_(
+	C.NSButton_inst_setState(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -11047,10 +11047,10 @@ func (x gen_NSButton) KeyEquivalent() (
 	return
 }
 
-func (x gen_NSButton) SetKeyEquivalent_(
+func (x gen_NSButton) SetKeyEquivalent(
 	value core.NSStringRef,
 ) {
-	C.NSButton_inst_setKeyEquivalent_(
+	C.NSButton_inst_setKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11492,12 +11492,12 @@ func (x gen_NSFont) Set() {
 	return
 }
 
-func (x gen_NSFont) FontWithSize_(
+func (x gen_NSFont) FontWithSize(
 	fontSize core.CGFloat,
 ) (
 	r0 NSFont,
 ) {
-	ret := C.NSFont_inst_fontWithSize_(
+	ret := C.NSFont_inst_fontWithSize(
 		unsafe.Pointer(x.Pointer()),
 		C.double(fontSize),
 	)
@@ -11624,12 +11624,12 @@ func NSImage_fromRef(ref objc.Ref) NSImage {
 	return NSImage_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSImage) InitByReferencingFile__asNSImage(
+func (x gen_NSImage) InitByReferencingFile_asNSImage(
 	fileName core.NSStringRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initByReferencingFile_(
+	ret := C.NSImage_inst_initByReferencingFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileName),
 	)
@@ -11637,12 +11637,12 @@ func (x gen_NSImage) InitByReferencingFile__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitByReferencingURL__asNSImage(
+func (x gen_NSImage) InitByReferencingURL_asNSImage(
 	url core.NSURLRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initByReferencingURL_(
+	ret := C.NSImage_inst_initByReferencingURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -11650,12 +11650,12 @@ func (x gen_NSImage) InitByReferencingURL__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithContentsOfFile__asNSImage(
+func (x gen_NSImage) InitWithContentsOfFile_asNSImage(
 	fileName core.NSStringRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithContentsOfFile_(
+	ret := C.NSImage_inst_initWithContentsOfFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileName),
 	)
@@ -11663,12 +11663,12 @@ func (x gen_NSImage) InitWithContentsOfFile__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithContentsOfURL__asNSImage(
+func (x gen_NSImage) InitWithContentsOfURL_asNSImage(
 	url core.NSURLRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithContentsOfURL_(
+	ret := C.NSImage_inst_initWithContentsOfURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -11676,12 +11676,12 @@ func (x gen_NSImage) InitWithContentsOfURL__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithData__asNSImage(
+func (x gen_NSImage) InitWithData_asNSImage(
 	data core.NSDataRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithData_(
+	ret := C.NSImage_inst_initWithData(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -11689,12 +11689,12 @@ func (x gen_NSImage) InitWithData__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithDataIgnoringOrientation__asNSImage(
+func (x gen_NSImage) InitWithDataIgnoringOrientation_asNSImage(
 	data core.NSDataRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithDataIgnoringOrientation_(
+	ret := C.NSImage_inst_initWithDataIgnoringOrientation(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 	)
@@ -11702,12 +11702,12 @@ func (x gen_NSImage) InitWithDataIgnoringOrientation__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithPasteboard__asNSImage(
+func (x gen_NSImage) InitWithPasteboard_asNSImage(
 	pasteboard NSPasteboardRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithPasteboard_(
+	ret := C.NSImage_inst_initWithPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteboard),
 	)
@@ -11715,12 +11715,12 @@ func (x gen_NSImage) InitWithPasteboard__asNSImage(
 	return
 }
 
-func (x gen_NSImage) InitWithSize__asNSImage(
+func (x gen_NSImage) InitWithSize_asNSImage(
 	size core.NSSize,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSImage_inst_initWithSize_(
+	ret := C.NSImage_inst_initWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -11738,20 +11738,20 @@ func (x gen_NSImage) IsTemplate() (
 	return
 }
 
-func (x gen_NSImage) AddRepresentations_(
+func (x gen_NSImage) AddRepresentations(
 	imageReps core.NSArrayRef,
 ) {
-	C.NSImage_inst_addRepresentations_(
+	C.NSImage_inst_addRepresentations(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(imageReps),
 	)
 	return
 }
 
-func (x gen_NSImage) DrawInRect_(
+func (x gen_NSImage) DrawInRect(
 	rect core.NSRect,
 ) {
-	C.NSImage_inst_drawInRect_(
+	C.NSImage_inst_drawInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -11765,10 +11765,10 @@ func (x gen_NSImage) LockFocus() {
 	return
 }
 
-func (x gen_NSImage) LockFocusFlipped_(
+func (x gen_NSImage) LockFocusFlipped(
 	flipped bool,
 ) {
-	C.NSImage_inst_lockFocusFlipped_(
+	C.NSImage_inst_lockFocusFlipped(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flipped),
 	)
@@ -11796,12 +11796,12 @@ func (x gen_NSImage) CancelIncrementalLoad() {
 	return
 }
 
-func (x gen_NSImage) LayerContentsForContentsScale_(
+func (x gen_NSImage) LayerContentsForContentsScale(
 	layerContentsScale core.CGFloat,
 ) (
 	r0 objc.Object,
 ) {
-	ret := C.NSImage_inst_layerContentsForContentsScale_(
+	ret := C.NSImage_inst_layerContentsForContentsScale(
 		unsafe.Pointer(x.Pointer()),
 		C.double(layerContentsScale),
 	)
@@ -11809,12 +11809,12 @@ func (x gen_NSImage) LayerContentsForContentsScale_(
 	return
 }
 
-func (x gen_NSImage) RecommendedLayerContentsScale_(
+func (x gen_NSImage) RecommendedLayerContentsScale(
 	preferredContentsScale core.CGFloat,
 ) (
 	r0 core.CGFloat,
 ) {
-	ret := C.NSImage_inst_recommendedLayerContentsScale_(
+	ret := C.NSImage_inst_recommendedLayerContentsScale(
 		unsafe.Pointer(x.Pointer()),
 		C.double(preferredContentsScale),
 	)
@@ -11842,10 +11842,10 @@ func (x gen_NSImage) Delegate() (
 	return
 }
 
-func (x gen_NSImage) SetDelegate_(
+func (x gen_NSImage) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSImage_inst_setDelegate_(
+	C.NSImage_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11862,20 +11862,20 @@ func (x gen_NSImage) Size() (
 	return
 }
 
-func (x gen_NSImage) SetSize_(
+func (x gen_NSImage) SetSize(
 	value core.NSSize,
 ) {
-	C.NSImage_inst_setSize_(
+	C.NSImage_inst_setSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 	return
 }
 
-func (x gen_NSImage) SetTemplate_(
+func (x gen_NSImage) SetTemplate(
 	value bool,
 ) {
-	C.NSImage_inst_setTemplate_(
+	C.NSImage_inst_setTemplate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11902,10 +11902,10 @@ func (x gen_NSImage) PrefersColorMatch() (
 	return
 }
 
-func (x gen_NSImage) SetPrefersColorMatch_(
+func (x gen_NSImage) SetPrefersColorMatch(
 	value bool,
 ) {
-	C.NSImage_inst_setPrefersColorMatch_(
+	C.NSImage_inst_setPrefersColorMatch(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11922,10 +11922,10 @@ func (x gen_NSImage) UsesEPSOnResolutionMismatch() (
 	return
 }
 
-func (x gen_NSImage) SetUsesEPSOnResolutionMismatch_(
+func (x gen_NSImage) SetUsesEPSOnResolutionMismatch(
 	value bool,
 ) {
-	C.NSImage_inst_setUsesEPSOnResolutionMismatch_(
+	C.NSImage_inst_setUsesEPSOnResolutionMismatch(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11942,10 +11942,10 @@ func (x gen_NSImage) MatchesOnMultipleResolution() (
 	return
 }
 
-func (x gen_NSImage) SetMatchesOnMultipleResolution_(
+func (x gen_NSImage) SetMatchesOnMultipleResolution(
 	value bool,
 ) {
-	C.NSImage_inst_setMatchesOnMultipleResolution_(
+	C.NSImage_inst_setMatchesOnMultipleResolution(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -11972,10 +11972,10 @@ func (x gen_NSImage) BackgroundColor() (
 	return
 }
 
-func (x gen_NSImage) SetBackgroundColor_(
+func (x gen_NSImage) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSImage_inst_setBackgroundColor_(
+	C.NSImage_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -11992,10 +11992,10 @@ func (x gen_NSImage) AlignmentRect() (
 	return
 }
 
-func (x gen_NSImage) SetAlignmentRect_(
+func (x gen_NSImage) SetAlignmentRect(
 	value core.NSRect,
 ) {
-	C.NSImage_inst_setAlignmentRect_(
+	C.NSImage_inst_setAlignmentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -12022,10 +12022,10 @@ func (x gen_NSImage) AccessibilityDescription() (
 	return
 }
 
-func (x gen_NSImage) SetAccessibilityDescription_(
+func (x gen_NSImage) SetAccessibilityDescription(
 	value core.NSStringRef,
 ) {
-	C.NSImage_inst_setAccessibilityDescription_(
+	C.NSImage_inst_setAccessibilityDescription(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12042,10 +12042,10 @@ func (x gen_NSImage) MatchesOnlyOnBestFittingAxis() (
 	return
 }
 
-func (x gen_NSImage) SetMatchesOnlyOnBestFittingAxis_(
+func (x gen_NSImage) SetMatchesOnlyOnBestFittingAxis(
 	value bool,
 ) {
-	C.NSImage_inst_setMatchesOnlyOnBestFittingAxis_(
+	C.NSImage_inst_setMatchesOnlyOnBestFittingAxis(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12091,10 +12091,10 @@ func (x gen_NSImageView) Image() (
 	return
 }
 
-func (x gen_NSImageView) SetImage_(
+func (x gen_NSImageView) SetImage(
 	value NSImageRef,
 ) {
-	C.NSImageView_inst_setImage_(
+	C.NSImageView_inst_setImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12111,10 +12111,10 @@ func (x gen_NSImageView) Animates() (
 	return
 }
 
-func (x gen_NSImageView) SetAnimates_(
+func (x gen_NSImageView) SetAnimates(
 	value bool,
 ) {
-	C.NSImageView_inst_setAnimates_(
+	C.NSImageView_inst_setAnimates(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12131,10 +12131,10 @@ func (x gen_NSImageView) IsEditable() (
 	return
 }
 
-func (x gen_NSImageView) SetEditable_(
+func (x gen_NSImageView) SetEditable(
 	value bool,
 ) {
-	C.NSImageView_inst_setEditable_(
+	C.NSImageView_inst_setEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12151,10 +12151,10 @@ func (x gen_NSImageView) AllowsCutCopyPaste() (
 	return
 }
 
-func (x gen_NSImageView) SetAllowsCutCopyPaste_(
+func (x gen_NSImageView) SetAllowsCutCopyPaste(
 	value bool,
 ) {
-	C.NSImageView_inst_setAllowsCutCopyPaste_(
+	C.NSImageView_inst_setAllowsCutCopyPaste(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12171,10 +12171,10 @@ func (x gen_NSImageView) ContentTintColor() (
 	return
 }
 
-func (x gen_NSImageView) SetContentTintColor_(
+func (x gen_NSImageView) SetContentTintColor(
 	value NSColorRef,
 ) {
-	C.NSImageView_inst_setContentTintColor_(
+	C.NSImageView_inst_setContentTintColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12200,13 +12200,13 @@ func NSNib_fromRef(ref objc.Ref) NSNib {
 	return NSNib_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSNib) InitWithNibData_bundle__asNSNib(
+func (x gen_NSNib) InitWithNibData_bundle_asNSNib(
 	nibData core.NSDataRef,
 	bundle NSBundleRef,
 ) (
 	r0 NSNib,
 ) {
-	ret := C.NSNib_inst_initWithNibData_bundle_(
+	ret := C.NSNib_inst_initWithNibData_bundle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(nibData),
 		objc.RefPointer(bundle),
@@ -12215,13 +12215,13 @@ func (x gen_NSNib) InitWithNibData_bundle__asNSNib(
 	return
 }
 
-func (x gen_NSNib) InstantiateWithOwner_topLevelObjects_(
+func (x gen_NSNib) InstantiateWithOwner_topLevelObjects(
 	owner objc.Ref,
 	topLevelObjects core.NSArrayRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSNib_inst_instantiateWithOwner_topLevelObjects_(
+	ret := C.NSNib_inst_instantiateWithOwner_topLevelObjects(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(owner),
 		objc.RefPointer(topLevelObjects),
@@ -12276,12 +12276,12 @@ func (x gen_NSPasteboard) ClearContents() (
 	return
 }
 
-func (x gen_NSPasteboard) WriteObjects_(
+func (x gen_NSPasteboard) WriteObjects(
 	objects core.NSArrayRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSPasteboard_inst_writeObjects_(
+	ret := C.NSPasteboard_inst_writeObjects(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(objects),
 	)
@@ -12289,13 +12289,13 @@ func (x gen_NSPasteboard) WriteObjects_(
 	return
 }
 
-func (x gen_NSPasteboard) ReadObjectsForClasses_options_(
+func (x gen_NSPasteboard) ReadObjectsForClasses_options(
 	classArray core.NSArrayRef,
 	options core.NSDictionaryRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSPasteboard_inst_readObjectsForClasses_options_(
+	ret := C.NSPasteboard_inst_readObjectsForClasses_options(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(classArray),
 		objc.RefPointer(options),
@@ -12304,12 +12304,12 @@ func (x gen_NSPasteboard) ReadObjectsForClasses_options_(
 	return
 }
 
-func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes_(
+func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes(
 	types core.NSArrayRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSPasteboard_inst_canReadItemWithDataConformingToTypes_(
+	ret := C.NSPasteboard_inst_canReadItemWithDataConformingToTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(types),
 	)
@@ -12317,13 +12317,13 @@ func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes_(
 	return
 }
 
-func (x gen_NSPasteboard) CanReadObjectForClasses_options_(
+func (x gen_NSPasteboard) CanReadObjectForClasses_options(
 	classArray core.NSArrayRef,
 	options core.NSDictionaryRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSPasteboard_inst_canReadObjectForClasses_options_(
+	ret := C.NSPasteboard_inst_canReadObjectForClasses_options(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(classArray),
 		objc.RefPointer(options),
@@ -12332,13 +12332,13 @@ func (x gen_NSPasteboard) CanReadObjectForClasses_options_(
 	return
 }
 
-func (x gen_NSPasteboard) DeclareTypes_owner_(
+func (x gen_NSPasteboard) DeclareTypes_owner(
 	newTypes core.NSArrayRef,
 	newOwner objc.Ref,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSPasteboard_inst_declareTypes_owner_(
+	ret := C.NSPasteboard_inst_declareTypes_owner(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 		objc.RefPointer(newOwner),
@@ -12347,13 +12347,13 @@ func (x gen_NSPasteboard) DeclareTypes_owner_(
 	return
 }
 
-func (x gen_NSPasteboard) AddTypes_owner_(
+func (x gen_NSPasteboard) AddTypes_owner(
 	newTypes core.NSArrayRef,
 	newOwner objc.Ref,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSPasteboard_inst_addTypes_owner_(
+	ret := C.NSPasteboard_inst_addTypes_owner(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 		objc.RefPointer(newOwner),
@@ -12362,12 +12362,12 @@ func (x gen_NSPasteboard) AddTypes_owner_(
 	return
 }
 
-func (x gen_NSPasteboard) WriteFileContents_(
+func (x gen_NSPasteboard) WriteFileContents(
 	filename core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSPasteboard_inst_writeFileContents_(
+	ret := C.NSPasteboard_inst_writeFileContents(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(filename),
 	)
@@ -12444,21 +12444,21 @@ func (x gen_NSLayoutManager) Init_asNSLayoutManager() (
 	return
 }
 
-func (x gen_NSLayoutManager) AddTextContainer_(
+func (x gen_NSLayoutManager) AddTextContainer(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_addTextContainer_(
+	C.NSLayoutManager_inst_addTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
 	return
 }
 
-func (x gen_NSLayoutManager) InsertTextContainer_atIndex_(
+func (x gen_NSLayoutManager) InsertTextContainer_atIndex(
 	container NSTextContainerRef,
 	index core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_insertTextContainer_atIndex_(
+	C.NSLayoutManager_inst_insertTextContainer_atIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 		C.ulong(index),
@@ -12466,42 +12466,42 @@ func (x gen_NSLayoutManager) InsertTextContainer_atIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) RemoveTextContainerAtIndex_(
+func (x gen_NSLayoutManager) RemoveTextContainerAtIndex(
 	index core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_removeTextContainerAtIndex_(
+	C.NSLayoutManager_inst_removeTextContainerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(index),
 	)
 	return
 }
 
-func (x gen_NSLayoutManager) TextContainerChangedGeometry_(
+func (x gen_NSLayoutManager) TextContainerChangedGeometry(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_textContainerChangedGeometry_(
+	C.NSLayoutManager_inst_textContainerChangedGeometry(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
 	return
 }
 
-func (x gen_NSLayoutManager) TextContainerChangedTextView_(
+func (x gen_NSLayoutManager) TextContainerChangedTextView(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_textContainerChangedTextView_(
+	C.NSLayoutManager_inst_textContainerChangedTextView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
 	return
 }
 
-func (x gen_NSLayoutManager) UsedRectForTextContainer_(
+func (x gen_NSLayoutManager) UsedRectForTextContainer(
 	container NSTextContainerRef,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSLayoutManager_inst_usedRectForTextContainer_(
+	ret := C.NSLayoutManager_inst_usedRectForTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
@@ -12509,11 +12509,11 @@ func (x gen_NSLayoutManager) UsedRectForTextContainer_(
 	return
 }
 
-func (x gen_NSLayoutManager) EnsureLayoutForBoundingRect_inTextContainer_(
+func (x gen_NSLayoutManager) EnsureLayoutForBoundingRect_inTextContainer(
 	bounds core.NSRect,
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer_(
+	C.NSLayoutManager_inst_ensureLayoutForBoundingRect_inTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&bounds)),
 		objc.RefPointer(container),
@@ -12521,22 +12521,22 @@ func (x gen_NSLayoutManager) EnsureLayoutForBoundingRect_inTextContainer_(
 	return
 }
 
-func (x gen_NSLayoutManager) EnsureLayoutForTextContainer_(
+func (x gen_NSLayoutManager) EnsureLayoutForTextContainer(
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_ensureLayoutForTextContainer_(
+	C.NSLayoutManager_inst_ensureLayoutForTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(container),
 	)
 	return
 }
 
-func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex_(
+func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) (
 	r0 core.NSUInteger,
 ) {
-	ret := C.NSLayoutManager_inst_characterIndexForGlyphAtIndex_(
+	ret := C.NSLayoutManager_inst_characterIndexForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -12544,12 +12544,12 @@ func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex_(
+func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 	charIndex core.NSUInteger,
 ) (
 	r0 core.NSUInteger,
 ) {
-	ret := C.NSLayoutManager_inst_glyphIndexForCharacterAtIndex_(
+	ret := C.NSLayoutManager_inst_glyphIndexForCharacterAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(charIndex),
 	)
@@ -12557,12 +12557,12 @@ func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) IsValidGlyphIndex_(
+func (x gen_NSLayoutManager) IsValidGlyphIndex(
 	glyphIndex core.NSUInteger,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSLayoutManager_inst_isValidGlyphIndex_(
+	ret := C.NSLayoutManager_inst_isValidGlyphIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -12570,11 +12570,11 @@ func (x gen_NSLayoutManager) IsValidGlyphIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) SetDrawsOutsideLineFragment_forGlyphAtIndex_(
+func (x gen_NSLayoutManager) SetDrawsOutsideLineFragment_forGlyphAtIndex(
 	flag bool,
 	glyphIndex core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex_(
+	C.NSLayoutManager_inst_setDrawsOutsideLineFragment_forGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 		C.ulong(glyphIndex),
@@ -12582,12 +12582,12 @@ func (x gen_NSLayoutManager) SetDrawsOutsideLineFragment_forGlyphAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) SetExtraLineFragmentRect_usedRect_textContainer_(
+func (x gen_NSLayoutManager) SetExtraLineFragmentRect_usedRect_textContainer(
 	fragmentRect core.NSRect,
 	usedRect core.NSRect,
 	container NSTextContainerRef,
 ) {
-	C.NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer_(
+	C.NSLayoutManager_inst_setExtraLineFragmentRect_usedRect_textContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&fragmentRect)),
 		*(*C.NSRect)(unsafe.Pointer(&usedRect)),
@@ -12596,11 +12596,11 @@ func (x gen_NSLayoutManager) SetExtraLineFragmentRect_usedRect_textContainer_(
 	return
 }
 
-func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex_(
+func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex(
 	flag bool,
 	glyphIndex core.NSUInteger,
 ) {
-	C.NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex_(
+	C.NSLayoutManager_inst_setNotShownAttribute_forGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 		C.ulong(glyphIndex),
@@ -12608,12 +12608,12 @@ func (x gen_NSLayoutManager) SetNotShownAttribute_forGlyphAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex_(
+func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSLayoutManager_inst_attachmentSizeForGlyphAtIndex_(
+	ret := C.NSLayoutManager_inst_attachmentSizeForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -12621,12 +12621,12 @@ func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) DrawsOutsideLineFragmentForGlyphAtIndex_(
+func (x gen_NSLayoutManager) DrawsOutsideLineFragmentForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex_(
+	ret := C.NSLayoutManager_inst_drawsOutsideLineFragmentForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -12654,12 +12654,12 @@ func (x gen_NSLayoutManager) FirstUnlaidGlyphIndex() (
 	return
 }
 
-func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex_(
+func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex(
 	glyphIndex core.NSUInteger,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSLayoutManager_inst_notShownAttributeForGlyphAtIndex_(
+	ret := C.NSLayoutManager_inst_notShownAttributeForGlyphAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(glyphIndex),
 	)
@@ -12667,12 +12667,12 @@ func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex_(
 	return
 }
 
-func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow_(
+func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow(
 	window NSWindowRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow_(
+	ret := C.NSLayoutManager_inst_layoutManagerOwnsFirstResponderInWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(window),
 	)
@@ -12680,12 +12680,12 @@ func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow_(
 	return
 }
 
-func (x gen_NSLayoutManager) DefaultLineHeightForFont_(
+func (x gen_NSLayoutManager) DefaultLineHeightForFont(
 	theFont NSFontRef,
 ) (
 	r0 core.CGFloat,
 ) {
-	ret := C.NSLayoutManager_inst_defaultLineHeightForFont_(
+	ret := C.NSLayoutManager_inst_defaultLineHeightForFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(theFont),
 	)
@@ -12693,12 +12693,12 @@ func (x gen_NSLayoutManager) DefaultLineHeightForFont_(
 	return
 }
 
-func (x gen_NSLayoutManager) DefaultBaselineOffsetForFont_(
+func (x gen_NSLayoutManager) DefaultBaselineOffsetForFont(
 	theFont NSFontRef,
 ) (
 	r0 core.CGFloat,
 ) {
-	ret := C.NSLayoutManager_inst_defaultBaselineOffsetForFont_(
+	ret := C.NSLayoutManager_inst_defaultBaselineOffsetForFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(theFont),
 	)
@@ -12716,10 +12716,10 @@ func (x gen_NSLayoutManager) Delegate() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetDelegate_(
+func (x gen_NSLayoutManager) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSLayoutManager_inst_setDelegate_(
+	C.NSLayoutManager_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -12736,10 +12736,10 @@ func (x gen_NSLayoutManager) AllowsNonContiguousLayout() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetAllowsNonContiguousLayout_(
+func (x gen_NSLayoutManager) SetAllowsNonContiguousLayout(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setAllowsNonContiguousLayout_(
+	C.NSLayoutManager_inst_setAllowsNonContiguousLayout(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12766,10 +12766,10 @@ func (x gen_NSLayoutManager) ShowsInvisibleCharacters() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetShowsInvisibleCharacters_(
+func (x gen_NSLayoutManager) SetShowsInvisibleCharacters(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setShowsInvisibleCharacters_(
+	C.NSLayoutManager_inst_setShowsInvisibleCharacters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12786,10 +12786,10 @@ func (x gen_NSLayoutManager) ShowsControlCharacters() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetShowsControlCharacters_(
+func (x gen_NSLayoutManager) SetShowsControlCharacters(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setShowsControlCharacters_(
+	C.NSLayoutManager_inst_setShowsControlCharacters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12806,10 +12806,10 @@ func (x gen_NSLayoutManager) UsesFontLeading() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetUsesFontLeading_(
+func (x gen_NSLayoutManager) SetUsesFontLeading(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setUsesFontLeading_(
+	C.NSLayoutManager_inst_setUsesFontLeading(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12826,10 +12826,10 @@ func (x gen_NSLayoutManager) BackgroundLayoutEnabled() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetBackgroundLayoutEnabled_(
+func (x gen_NSLayoutManager) SetBackgroundLayoutEnabled(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setBackgroundLayoutEnabled_(
+	C.NSLayoutManager_inst_setBackgroundLayoutEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12846,10 +12846,10 @@ func (x gen_NSLayoutManager) LimitsLayoutForSuspiciousContents() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetLimitsLayoutForSuspiciousContents_(
+func (x gen_NSLayoutManager) SetLimitsLayoutForSuspiciousContents(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents_(
+	C.NSLayoutManager_inst_setLimitsLayoutForSuspiciousContents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12866,10 +12866,10 @@ func (x gen_NSLayoutManager) UsesDefaultHyphenation() (
 	return
 }
 
-func (x gen_NSLayoutManager) SetUsesDefaultHyphenation_(
+func (x gen_NSLayoutManager) SetUsesDefaultHyphenation(
 	value bool,
 ) {
-	C.NSLayoutManager_inst_setUsesDefaultHyphenation_(
+	C.NSLayoutManager_inst_setUsesDefaultHyphenation(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -12965,12 +12965,12 @@ func NSMenu_fromRef(ref objc.Ref) NSMenu {
 	return NSMenu_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSMenu) InitWithTitle__asNSMenu(
+func (x gen_NSMenu) InitWithTitle_asNSMenu(
 	title core.NSStringRef,
 ) (
 	r0 NSMenu,
 ) {
-	ret := C.NSMenu_inst_initWithTitle_(
+	ret := C.NSMenu_inst_initWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -12978,11 +12978,11 @@ func (x gen_NSMenu) InitWithTitle__asNSMenu(
 	return
 }
 
-func (x gen_NSMenu) InsertItem_atIndex_(
+func (x gen_NSMenu) InsertItem_atIndex(
 	newItem NSMenuItemRef,
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_insertItem_atIndex_(
+	C.NSMenu_inst_insertItem_atIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newItem),
 		C.long(index),
@@ -12990,7 +12990,7 @@ func (x gen_NSMenu) InsertItem_atIndex_(
 	return
 }
 
-func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex_(
+func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
@@ -12998,7 +12998,7 @@ func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex_(
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex_(
+	ret := C.NSMenu_inst_insertItemWithTitle_action_keyEquivalent_atIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -13009,24 +13009,24 @@ func (x gen_NSMenu) InsertItemWithTitle_action_keyEquivalent_atIndex_(
 	return
 }
 
-func (x gen_NSMenu) AddItem_(
+func (x gen_NSMenu) AddItem(
 	newItem NSMenuItemRef,
 ) {
-	C.NSMenu_inst_addItem_(
+	C.NSMenu_inst_addItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newItem),
 	)
 	return
 }
 
-func (x gen_NSMenu) AddItemWithTitle_action_keyEquivalent_(
+func (x gen_NSMenu) AddItemWithTitle_action_keyEquivalent(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenu_inst_addItemWithTitle_action_keyEquivalent_(
+	ret := C.NSMenu_inst_addItemWithTitle_action_keyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -13036,30 +13036,30 @@ func (x gen_NSMenu) AddItemWithTitle_action_keyEquivalent_(
 	return
 }
 
-func (x gen_NSMenu) RemoveItem_(
+func (x gen_NSMenu) RemoveItem(
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_removeItem_(
+	C.NSMenu_inst_removeItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
 	return
 }
 
-func (x gen_NSMenu) RemoveItemAtIndex_(
+func (x gen_NSMenu) RemoveItemAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_removeItemAtIndex_(
+	C.NSMenu_inst_removeItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
 	return
 }
 
-func (x gen_NSMenu) ItemChanged_(
+func (x gen_NSMenu) ItemChanged(
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_itemChanged_(
+	C.NSMenu_inst_itemChanged(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -13073,12 +13073,12 @@ func (x gen_NSMenu) RemoveAllItems() {
 	return
 }
 
-func (x gen_NSMenu) ItemWithTag_(
+func (x gen_NSMenu) ItemWithTag(
 	tag core.NSInteger,
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenu_inst_itemWithTag_(
+	ret := C.NSMenu_inst_itemWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -13086,12 +13086,12 @@ func (x gen_NSMenu) ItemWithTag_(
 	return
 }
 
-func (x gen_NSMenu) ItemWithTitle_(
+func (x gen_NSMenu) ItemWithTitle(
 	title core.NSStringRef,
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenu_inst_itemWithTitle_(
+	ret := C.NSMenu_inst_itemWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -13099,12 +13099,12 @@ func (x gen_NSMenu) ItemWithTitle_(
 	return
 }
 
-func (x gen_NSMenu) ItemAtIndex_(
+func (x gen_NSMenu) ItemAtIndex(
 	index core.NSInteger,
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenu_inst_itemAtIndex_(
+	ret := C.NSMenu_inst_itemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -13112,12 +13112,12 @@ func (x gen_NSMenu) ItemAtIndex_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItem_(
+func (x gen_NSMenu) IndexOfItem(
 	item NSMenuItemRef,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItem_(
+	ret := C.NSMenu_inst_indexOfItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -13125,12 +13125,12 @@ func (x gen_NSMenu) IndexOfItem_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItemWithTitle_(
+func (x gen_NSMenu) IndexOfItemWithTitle(
 	title core.NSStringRef,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItemWithTitle_(
+	ret := C.NSMenu_inst_indexOfItemWithTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(title),
 	)
@@ -13138,12 +13138,12 @@ func (x gen_NSMenu) IndexOfItemWithTitle_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItemWithTag_(
+func (x gen_NSMenu) IndexOfItemWithTag(
 	tag core.NSInteger,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItemWithTag_(
+	ret := C.NSMenu_inst_indexOfItemWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -13151,13 +13151,13 @@ func (x gen_NSMenu) IndexOfItemWithTag_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItemWithTarget_andAction_(
+func (x gen_NSMenu) IndexOfItemWithTarget_andAction(
 	target objc.Ref,
 	actionSelector objc.Selector,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItemWithTarget_andAction_(
+	ret := C.NSMenu_inst_indexOfItemWithTarget_andAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(target),
 		actionSelector.SelectorAddress(),
@@ -13166,12 +13166,12 @@ func (x gen_NSMenu) IndexOfItemWithTarget_andAction_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItemWithRepresentedObject_(
+func (x gen_NSMenu) IndexOfItemWithRepresentedObject(
 	object objc.Ref,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItemWithRepresentedObject_(
+	ret := C.NSMenu_inst_indexOfItemWithRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(object),
 	)
@@ -13179,12 +13179,12 @@ func (x gen_NSMenu) IndexOfItemWithRepresentedObject_(
 	return
 }
 
-func (x gen_NSMenu) IndexOfItemWithSubmenu_(
+func (x gen_NSMenu) IndexOfItemWithSubmenu(
 	submenu NSMenuRef,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSMenu_inst_indexOfItemWithSubmenu_(
+	ret := C.NSMenu_inst_indexOfItemWithSubmenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(submenu),
 	)
@@ -13192,11 +13192,11 @@ func (x gen_NSMenu) IndexOfItemWithSubmenu_(
 	return
 }
 
-func (x gen_NSMenu) SetSubmenu_forItem_(
+func (x gen_NSMenu) SetSubmenu_forItem(
 	menu NSMenuRef,
 	item NSMenuItemRef,
 ) {
-	C.NSMenu_inst_setSubmenu_forItem_(
+	C.NSMenu_inst_setSubmenu_forItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(item),
@@ -13204,10 +13204,10 @@ func (x gen_NSMenu) SetSubmenu_forItem_(
 	return
 }
 
-func (x gen_NSMenu) SubmenuAction_(
+func (x gen_NSMenu) SubmenuAction(
 	sender objc.Ref,
 ) {
-	C.NSMenu_inst_submenuAction_(
+	C.NSMenu_inst_submenuAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -13221,12 +13221,12 @@ func (x gen_NSMenu) Update() {
 	return
 }
 
-func (x gen_NSMenu) PerformKeyEquivalent_(
+func (x gen_NSMenu) PerformKeyEquivalent(
 	event NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSMenu_inst_performKeyEquivalent_(
+	ret := C.NSMenu_inst_performKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -13234,24 +13234,24 @@ func (x gen_NSMenu) PerformKeyEquivalent_(
 	return
 }
 
-func (x gen_NSMenu) PerformActionForItemAtIndex_(
+func (x gen_NSMenu) PerformActionForItemAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSMenu_inst_performActionForItemAtIndex_(
+	C.NSMenu_inst_performActionForItemAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
 	return
 }
 
-func (x gen_NSMenu) PopUpMenuPositioningItem_atLocation_inView_(
+func (x gen_NSMenu) PopUpMenuPositioningItem_atLocation_inView(
 	item NSMenuItemRef,
 	location core.NSPoint,
 	view NSViewRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSMenu_inst_popUpMenuPositioningItem_atLocation_inView_(
+	ret := C.NSMenu_inst_popUpMenuPositioningItem_atLocation_inView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
@@ -13315,10 +13315,10 @@ func (x gen_NSMenu) ItemArray() (
 	return
 }
 
-func (x gen_NSMenu) SetItemArray_(
+func (x gen_NSMenu) SetItemArray(
 	value core.NSArrayRef,
 ) {
-	C.NSMenu_inst_setItemArray_(
+	C.NSMenu_inst_setItemArray(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13335,10 +13335,10 @@ func (x gen_NSMenu) Supermenu() (
 	return
 }
 
-func (x gen_NSMenu) SetSupermenu_(
+func (x gen_NSMenu) SetSupermenu(
 	value NSMenuRef,
 ) {
-	C.NSMenu_inst_setSupermenu_(
+	C.NSMenu_inst_setSupermenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13355,10 +13355,10 @@ func (x gen_NSMenu) AutoenablesItems() (
 	return
 }
 
-func (x gen_NSMenu) SetAutoenablesItems_(
+func (x gen_NSMenu) SetAutoenablesItems(
 	value bool,
 ) {
-	C.NSMenu_inst_setAutoenablesItems_(
+	C.NSMenu_inst_setAutoenablesItems(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13375,10 +13375,10 @@ func (x gen_NSMenu) Font() (
 	return
 }
 
-func (x gen_NSMenu) SetFont_(
+func (x gen_NSMenu) SetFont(
 	value NSFontRef,
 ) {
-	C.NSMenu_inst_setFont_(
+	C.NSMenu_inst_setFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13395,10 +13395,10 @@ func (x gen_NSMenu) Title() (
 	return
 }
 
-func (x gen_NSMenu) SetTitle_(
+func (x gen_NSMenu) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSMenu_inst_setTitle_(
+	C.NSMenu_inst_setTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13415,10 +13415,10 @@ func (x gen_NSMenu) MinimumWidth() (
 	return
 }
 
-func (x gen_NSMenu) SetMinimumWidth_(
+func (x gen_NSMenu) SetMinimumWidth(
 	value core.CGFloat,
 ) {
-	C.NSMenu_inst_setMinimumWidth_(
+	C.NSMenu_inst_setMinimumWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -13445,10 +13445,10 @@ func (x gen_NSMenu) AllowsContextMenuPlugIns() (
 	return
 }
 
-func (x gen_NSMenu) SetAllowsContextMenuPlugIns_(
+func (x gen_NSMenu) SetAllowsContextMenuPlugIns(
 	value bool,
 ) {
-	C.NSMenu_inst_setAllowsContextMenuPlugIns_(
+	C.NSMenu_inst_setAllowsContextMenuPlugIns(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13465,10 +13465,10 @@ func (x gen_NSMenu) ShowsStateColumn() (
 	return
 }
 
-func (x gen_NSMenu) SetShowsStateColumn_(
+func (x gen_NSMenu) SetShowsStateColumn(
 	value bool,
 ) {
-	C.NSMenu_inst_setShowsStateColumn_(
+	C.NSMenu_inst_setShowsStateColumn(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13495,10 +13495,10 @@ func (x gen_NSMenu) Delegate() (
 	return
 }
 
-func (x gen_NSMenu) SetDelegate_(
+func (x gen_NSMenu) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSMenu_inst_setDelegate_(
+	C.NSMenu_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13524,10 +13524,10 @@ func NSPopover_fromRef(ref objc.Ref) NSPopover {
 	return NSPopover_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSPopover) PerformClose_(
+func (x gen_NSPopover) PerformClose(
 	sender objc.Ref,
 ) {
-	C.NSPopover_inst_performClose_(
+	C.NSPopover_inst_performClose(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -13561,10 +13561,10 @@ func (x gen_NSPopover) Behavior() (
 	return
 }
 
-func (x gen_NSPopover) SetBehavior_(
+func (x gen_NSPopover) SetBehavior(
 	value core.NSInteger,
 ) {
-	C.NSPopover_inst_setBehavior_(
+	C.NSPopover_inst_setBehavior(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -13581,10 +13581,10 @@ func (x gen_NSPopover) PositioningRect() (
 	return
 }
 
-func (x gen_NSPopover) SetPositioningRect_(
+func (x gen_NSPopover) SetPositioningRect(
 	value core.NSRect,
 ) {
-	C.NSPopover_inst_setPositioningRect_(
+	C.NSPopover_inst_setPositioningRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -13601,10 +13601,10 @@ func (x gen_NSPopover) Animates() (
 	return
 }
 
-func (x gen_NSPopover) SetAnimates_(
+func (x gen_NSPopover) SetAnimates(
 	value bool,
 ) {
-	C.NSPopover_inst_setAnimates_(
+	C.NSPopover_inst_setAnimates(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13621,10 +13621,10 @@ func (x gen_NSPopover) ContentSize() (
 	return
 }
 
-func (x gen_NSPopover) SetContentSize_(
+func (x gen_NSPopover) SetContentSize(
 	value core.NSSize,
 ) {
-	C.NSPopover_inst_setContentSize_(
+	C.NSPopover_inst_setContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -13670,14 +13670,14 @@ func NSMenuItem_fromRef(ref objc.Ref) NSMenuItem {
 	return NSMenuItem_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSMenuItem) InitWithTitle_action_keyEquivalent__asNSMenuItem(
+func (x gen_NSMenuItem) InitWithTitle_action_keyEquivalent_asNSMenuItem(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
 ) (
 	r0 NSMenuItem,
 ) {
-	ret := C.NSMenuItem_inst_initWithTitle_action_keyEquivalent_(
+	ret := C.NSMenuItem_inst_initWithTitle_action_keyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(string),
 		selector.SelectorAddress(),
@@ -13707,10 +13707,10 @@ func (x gen_NSMenuItem) IsEnabled() (
 	return
 }
 
-func (x gen_NSMenuItem) SetEnabled_(
+func (x gen_NSMenuItem) SetEnabled(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setEnabled_(
+	C.NSMenuItem_inst_setEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13727,10 +13727,10 @@ func (x gen_NSMenuItem) IsHidden() (
 	return
 }
 
-func (x gen_NSMenuItem) SetHidden_(
+func (x gen_NSMenuItem) SetHidden(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setHidden_(
+	C.NSMenuItem_inst_setHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -13757,10 +13757,10 @@ func (x gen_NSMenuItem) Target() (
 	return
 }
 
-func (x gen_NSMenuItem) SetTarget_(
+func (x gen_NSMenuItem) SetTarget(
 	value objc.Ref,
 ) {
-	C.NSMenuItem_inst_setTarget_(
+	C.NSMenuItem_inst_setTarget(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13777,10 +13777,10 @@ func (x gen_NSMenuItem) Action() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAction_(
+func (x gen_NSMenuItem) SetAction(
 	value objc.Selector,
 ) {
-	C.NSMenuItem_inst_setAction_(
+	C.NSMenuItem_inst_setAction(
 		unsafe.Pointer(x.Pointer()),
 		value.SelectorAddress(),
 	)
@@ -13797,10 +13797,10 @@ func (x gen_NSMenuItem) Title() (
 	return
 }
 
-func (x gen_NSMenuItem) SetTitle_(
+func (x gen_NSMenuItem) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setTitle_(
+	C.NSMenuItem_inst_setTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13817,10 +13817,10 @@ func (x gen_NSMenuItem) AttributedTitle() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAttributedTitle_(
+func (x gen_NSMenuItem) SetAttributedTitle(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSMenuItem_inst_setAttributedTitle_(
+	C.NSMenuItem_inst_setAttributedTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13837,10 +13837,10 @@ func (x gen_NSMenuItem) Tag() (
 	return
 }
 
-func (x gen_NSMenuItem) SetTag_(
+func (x gen_NSMenuItem) SetTag(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setTag_(
+	C.NSMenuItem_inst_setTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -13857,10 +13857,10 @@ func (x gen_NSMenuItem) State() (
 	return
 }
 
-func (x gen_NSMenuItem) SetState_(
+func (x gen_NSMenuItem) SetState(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setState_(
+	C.NSMenuItem_inst_setState(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -13877,10 +13877,10 @@ func (x gen_NSMenuItem) Image() (
 	return
 }
 
-func (x gen_NSMenuItem) SetImage_(
+func (x gen_NSMenuItem) SetImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setImage_(
+	C.NSMenuItem_inst_setImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13897,10 +13897,10 @@ func (x gen_NSMenuItem) OnStateImage() (
 	return
 }
 
-func (x gen_NSMenuItem) SetOnStateImage_(
+func (x gen_NSMenuItem) SetOnStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setOnStateImage_(
+	C.NSMenuItem_inst_setOnStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13917,10 +13917,10 @@ func (x gen_NSMenuItem) OffStateImage() (
 	return
 }
 
-func (x gen_NSMenuItem) SetOffStateImage_(
+func (x gen_NSMenuItem) SetOffStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setOffStateImage_(
+	C.NSMenuItem_inst_setOffStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13937,10 +13937,10 @@ func (x gen_NSMenuItem) MixedStateImage() (
 	return
 }
 
-func (x gen_NSMenuItem) SetMixedStateImage_(
+func (x gen_NSMenuItem) SetMixedStateImage(
 	value NSImageRef,
 ) {
-	C.NSMenuItem_inst_setMixedStateImage_(
+	C.NSMenuItem_inst_setMixedStateImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -13957,10 +13957,10 @@ func (x gen_NSMenuItem) Submenu() (
 	return
 }
 
-func (x gen_NSMenuItem) SetSubmenu_(
+func (x gen_NSMenuItem) SetSubmenu(
 	value NSMenuRef,
 ) {
-	C.NSMenuItem_inst_setSubmenu_(
+	C.NSMenuItem_inst_setSubmenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14007,10 +14007,10 @@ func (x gen_NSMenuItem) Menu() (
 	return
 }
 
-func (x gen_NSMenuItem) SetMenu_(
+func (x gen_NSMenuItem) SetMenu(
 	value NSMenuRef,
 ) {
-	C.NSMenuItem_inst_setMenu_(
+	C.NSMenuItem_inst_setMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14027,10 +14027,10 @@ func (x gen_NSMenuItem) KeyEquivalent() (
 	return
 }
 
-func (x gen_NSMenuItem) SetKeyEquivalent_(
+func (x gen_NSMenuItem) SetKeyEquivalent(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setKeyEquivalent_(
+	C.NSMenuItem_inst_setKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14057,10 +14057,10 @@ func (x gen_NSMenuItem) IsAlternate() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAlternate_(
+func (x gen_NSMenuItem) SetAlternate(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAlternate_(
+	C.NSMenuItem_inst_setAlternate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14077,10 +14077,10 @@ func (x gen_NSMenuItem) IndentationLevel() (
 	return
 }
 
-func (x gen_NSMenuItem) SetIndentationLevel_(
+func (x gen_NSMenuItem) SetIndentationLevel(
 	value core.NSInteger,
 ) {
-	C.NSMenuItem_inst_setIndentationLevel_(
+	C.NSMenuItem_inst_setIndentationLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -14097,10 +14097,10 @@ func (x gen_NSMenuItem) ToolTip() (
 	return
 }
 
-func (x gen_NSMenuItem) SetToolTip_(
+func (x gen_NSMenuItem) SetToolTip(
 	value core.NSStringRef,
 ) {
-	C.NSMenuItem_inst_setToolTip_(
+	C.NSMenuItem_inst_setToolTip(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14117,10 +14117,10 @@ func (x gen_NSMenuItem) RepresentedObject() (
 	return
 }
 
-func (x gen_NSMenuItem) SetRepresentedObject_(
+func (x gen_NSMenuItem) SetRepresentedObject(
 	value objc.Ref,
 ) {
-	C.NSMenuItem_inst_setRepresentedObject_(
+	C.NSMenuItem_inst_setRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14137,10 +14137,10 @@ func (x gen_NSMenuItem) View() (
 	return
 }
 
-func (x gen_NSMenuItem) SetView_(
+func (x gen_NSMenuItem) SetView(
 	value NSViewRef,
 ) {
-	C.NSMenuItem_inst_setView_(
+	C.NSMenuItem_inst_setView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14167,10 +14167,10 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentLocalization() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentLocalization_(
+func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentLocalization(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization_(
+	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentLocalization(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14187,10 +14187,10 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentMirroring() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentMirroring_(
+func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentMirroring(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring_(
+	C.NSMenuItem_inst_setAllowsAutomaticKeyEquivalentMirroring(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14207,10 +14207,10 @@ func (x gen_NSMenuItem) AllowsKeyEquivalentWhenHidden() (
 	return
 }
 
-func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden_(
+func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden(
 	value bool,
 ) {
-	C.NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden_(
+	C.NSMenuItem_inst_setAllowsKeyEquivalentWhenHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14425,12 +14425,12 @@ func NSScreen_fromRef(ref objc.Ref) NSScreen {
 	return NSScreen_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSScreen) ConvertRectFromBacking_(
+func (x gen_NSScreen) ConvertRectFromBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSScreen_inst_convertRectFromBacking_(
+	ret := C.NSScreen_inst_convertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -14438,12 +14438,12 @@ func (x gen_NSScreen) ConvertRectFromBacking_(
 	return
 }
 
-func (x gen_NSScreen) ConvertRectToBacking_(
+func (x gen_NSScreen) ConvertRectToBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSScreen_inst_convertRectToBacking_(
+	ret := C.NSScreen_inst_convertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -14570,12 +14570,12 @@ func NSStatusBar_fromRef(ref objc.Ref) NSStatusBar {
 	return NSStatusBar_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSStatusBar) StatusItemWithLength_(
+func (x gen_NSStatusBar) StatusItemWithLength(
 	length core.CGFloat,
 ) (
 	r0 NSStatusItem,
 ) {
-	ret := C.NSStatusBar_inst_statusItemWithLength_(
+	ret := C.NSStatusBar_inst_statusItemWithLength(
 		unsafe.Pointer(x.Pointer()),
 		C.double(length),
 	)
@@ -14583,10 +14583,10 @@ func (x gen_NSStatusBar) StatusItemWithLength_(
 	return
 }
 
-func (x gen_NSStatusBar) RemoveStatusItem_(
+func (x gen_NSStatusBar) RemoveStatusItem(
 	item NSStatusItemRef,
 ) {
-	C.NSStatusBar_inst_removeStatusItem_(
+	C.NSStatusBar_inst_removeStatusItem(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(item),
 	)
@@ -14662,10 +14662,10 @@ func (x gen_NSStatusBarButton) AppearsDisabled() (
 	return
 }
 
-func (x gen_NSStatusBarButton) SetAppearsDisabled_(
+func (x gen_NSStatusBarButton) SetAppearsDisabled(
 	value bool,
 ) {
-	C.NSStatusBarButton_inst_setAppearsDisabled_(
+	C.NSStatusBarButton_inst_setAppearsDisabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14731,10 +14731,10 @@ func (x gen_NSStatusItem) Menu() (
 	return
 }
 
-func (x gen_NSStatusItem) SetMenu_(
+func (x gen_NSStatusItem) SetMenu(
 	value NSMenuRef,
 ) {
-	C.NSStatusItem_inst_setMenu_(
+	C.NSStatusItem_inst_setMenu(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -14751,10 +14751,10 @@ func (x gen_NSStatusItem) IsVisible() (
 	return
 }
 
-func (x gen_NSStatusItem) SetVisible_(
+func (x gen_NSStatusItem) SetVisible(
 	value bool,
 ) {
-	C.NSStatusItem_inst_setVisible_(
+	C.NSStatusItem_inst_setVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -14771,10 +14771,10 @@ func (x gen_NSStatusItem) Length() (
 	return
 }
 
-func (x gen_NSStatusItem) SetLength_(
+func (x gen_NSStatusItem) SetLength(
 	value core.CGFloat,
 ) {
-	C.NSStatusItem_inst_setLength_(
+	C.NSStatusItem_inst_setLength(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -14800,12 +14800,12 @@ func NSText_fromRef(ref objc.Ref) NSText {
 	return NSText_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSText) InitWithFrame__asNSText(
+func (x gen_NSText) InitWithFrame_asNSText(
 	frameRect core.NSRect,
 ) (
 	r0 NSText,
 ) {
-	ret := C.NSText_inst_initWithFrame_(
+	ret := C.NSText_inst_initWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -14813,192 +14813,192 @@ func (x gen_NSText) InitWithFrame__asNSText(
 	return
 }
 
-func (x gen_NSText) ToggleRuler_(
+func (x gen_NSText) ToggleRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_toggleRuler_(
+	C.NSText_inst_toggleRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) SelectAll_(
+func (x gen_NSText) SelectAll(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_selectAll_(
+	C.NSText_inst_selectAll(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Copy_(
+func (x gen_NSText) Copy(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copy_(
+	C.NSText_inst_copy(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Cut_(
+func (x gen_NSText) Cut(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_cut_(
+	C.NSText_inst_cut(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Paste_(
+func (x gen_NSText) Paste(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_paste_(
+	C.NSText_inst_paste(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) CopyFont_(
+func (x gen_NSText) CopyFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copyFont_(
+	C.NSText_inst_copyFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) PasteFont_(
+func (x gen_NSText) PasteFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_pasteFont_(
+	C.NSText_inst_pasteFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) CopyRuler_(
+func (x gen_NSText) CopyRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_copyRuler_(
+	C.NSText_inst_copyRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) PasteRuler_(
+func (x gen_NSText) PasteRuler(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_pasteRuler_(
+	C.NSText_inst_pasteRuler(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Delete_(
+func (x gen_NSText) Delete(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_delete_(
+	C.NSText_inst_delete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) ChangeFont_(
+func (x gen_NSText) ChangeFont(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_changeFont_(
+	C.NSText_inst_changeFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) AlignCenter_(
+func (x gen_NSText) AlignCenter(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignCenter_(
+	C.NSText_inst_alignCenter(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) AlignLeft_(
+func (x gen_NSText) AlignLeft(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignLeft_(
+	C.NSText_inst_alignLeft(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) AlignRight_(
+func (x gen_NSText) AlignRight(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_alignRight_(
+	C.NSText_inst_alignRight(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Superscript_(
+func (x gen_NSText) Superscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_superscript_(
+	C.NSText_inst_superscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Subscript_(
+func (x gen_NSText) Subscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_subscript_(
+	C.NSText_inst_subscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Unscript_(
+func (x gen_NSText) Unscript(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_unscript_(
+	C.NSText_inst_unscript(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) Underline_(
+func (x gen_NSText) Underline(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_underline_(
+	C.NSText_inst_underline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) ReadRTFDFromFile_(
+func (x gen_NSText) ReadRTFDFromFile(
 	path core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSText_inst_readRTFDFromFile_(
+	ret := C.NSText_inst_readRTFDFromFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -15006,13 +15006,13 @@ func (x gen_NSText) ReadRTFDFromFile_(
 	return
 }
 
-func (x gen_NSText) WriteRTFDToFile_atomically_(
+func (x gen_NSText) WriteRTFDToFile_atomically(
 	path core.NSStringRef,
 	flag bool,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSText_inst_writeRTFDToFile_atomically_(
+	ret := C.NSText_inst_writeRTFDToFile_atomically(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 		convertToObjCBool(flag),
@@ -15021,20 +15021,20 @@ func (x gen_NSText) WriteRTFDToFile_atomically_(
 	return
 }
 
-func (x gen_NSText) CheckSpelling_(
+func (x gen_NSText) CheckSpelling(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_checkSpelling_(
+	C.NSText_inst_checkSpelling(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSText) ShowGuessPanel_(
+func (x gen_NSText) ShowGuessPanel(
 	sender objc.Ref,
 ) {
-	C.NSText_inst_showGuessPanel_(
+	C.NSText_inst_showGuessPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -15068,10 +15068,10 @@ func (x gen_NSText) String() (
 	return
 }
 
-func (x gen_NSText) SetString_(
+func (x gen_NSText) SetString(
 	value core.NSStringRef,
 ) {
-	C.NSText_inst_setString_(
+	C.NSText_inst_setString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15088,10 +15088,10 @@ func (x gen_NSText) BackgroundColor() (
 	return
 }
 
-func (x gen_NSText) SetBackgroundColor_(
+func (x gen_NSText) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSText_inst_setBackgroundColor_(
+	C.NSText_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15108,10 +15108,10 @@ func (x gen_NSText) DrawsBackground() (
 	return
 }
 
-func (x gen_NSText) SetDrawsBackground_(
+func (x gen_NSText) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSText_inst_setDrawsBackground_(
+	C.NSText_inst_setDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15128,10 +15128,10 @@ func (x gen_NSText) IsEditable() (
 	return
 }
 
-func (x gen_NSText) SetEditable_(
+func (x gen_NSText) SetEditable(
 	value bool,
 ) {
-	C.NSText_inst_setEditable_(
+	C.NSText_inst_setEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15148,10 +15148,10 @@ func (x gen_NSText) IsSelectable() (
 	return
 }
 
-func (x gen_NSText) SetSelectable_(
+func (x gen_NSText) SetSelectable(
 	value bool,
 ) {
-	C.NSText_inst_setSelectable_(
+	C.NSText_inst_setSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15168,10 +15168,10 @@ func (x gen_NSText) IsFieldEditor() (
 	return
 }
 
-func (x gen_NSText) SetFieldEditor_(
+func (x gen_NSText) SetFieldEditor(
 	value bool,
 ) {
-	C.NSText_inst_setFieldEditor_(
+	C.NSText_inst_setFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15188,10 +15188,10 @@ func (x gen_NSText) IsRichText() (
 	return
 }
 
-func (x gen_NSText) SetRichText_(
+func (x gen_NSText) SetRichText(
 	value bool,
 ) {
-	C.NSText_inst_setRichText_(
+	C.NSText_inst_setRichText(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15208,10 +15208,10 @@ func (x gen_NSText) ImportsGraphics() (
 	return
 }
 
-func (x gen_NSText) SetImportsGraphics_(
+func (x gen_NSText) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSText_inst_setImportsGraphics_(
+	C.NSText_inst_setImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15228,10 +15228,10 @@ func (x gen_NSText) UsesFontPanel() (
 	return
 }
 
-func (x gen_NSText) SetUsesFontPanel_(
+func (x gen_NSText) SetUsesFontPanel(
 	value bool,
 ) {
-	C.NSText_inst_setUsesFontPanel_(
+	C.NSText_inst_setUsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15258,10 +15258,10 @@ func (x gen_NSText) Font() (
 	return
 }
 
-func (x gen_NSText) SetFont_(
+func (x gen_NSText) SetFont(
 	value NSFontRef,
 ) {
-	C.NSText_inst_setFont_(
+	C.NSText_inst_setFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15278,10 +15278,10 @@ func (x gen_NSText) TextColor() (
 	return
 }
 
-func (x gen_NSText) SetTextColor_(
+func (x gen_NSText) SetTextColor(
 	value NSColorRef,
 ) {
-	C.NSText_inst_setTextColor_(
+	C.NSText_inst_setTextColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15298,10 +15298,10 @@ func (x gen_NSText) MaxSize() (
 	return
 }
 
-func (x gen_NSText) SetMaxSize_(
+func (x gen_NSText) SetMaxSize(
 	value core.NSSize,
 ) {
-	C.NSText_inst_setMaxSize_(
+	C.NSText_inst_setMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -15318,10 +15318,10 @@ func (x gen_NSText) MinSize() (
 	return
 }
 
-func (x gen_NSText) SetMinSize_(
+func (x gen_NSText) SetMinSize(
 	value core.NSSize,
 ) {
-	C.NSText_inst_setMinSize_(
+	C.NSText_inst_setMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -15338,10 +15338,10 @@ func (x gen_NSText) IsVerticallyResizable() (
 	return
 }
 
-func (x gen_NSText) SetVerticallyResizable_(
+func (x gen_NSText) SetVerticallyResizable(
 	value bool,
 ) {
-	C.NSText_inst_setVerticallyResizable_(
+	C.NSText_inst_setVerticallyResizable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15358,10 +15358,10 @@ func (x gen_NSText) IsHorizontallyResizable() (
 	return
 }
 
-func (x gen_NSText) SetHorizontallyResizable_(
+func (x gen_NSText) SetHorizontallyResizable(
 	value bool,
 ) {
-	C.NSText_inst_setHorizontallyResizable_(
+	C.NSText_inst_setHorizontallyResizable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15378,10 +15378,10 @@ func (x gen_NSText) Delegate() (
 	return
 }
 
-func (x gen_NSText) SetDelegate_(
+func (x gen_NSText) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSText_inst_setDelegate_(
+	C.NSText_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15407,22 +15407,22 @@ func NSTextField_fromRef(ref objc.Ref) NSTextField {
 	return NSTextField_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSTextField) SelectText_(
+func (x gen_NSTextField) SelectText(
 	sender objc.Ref,
 ) {
-	C.NSTextField_inst_selectText_(
+	C.NSTextField_inst_selectText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextField) TextShouldBeginEditing_(
+func (x gen_NSTextField) TextShouldBeginEditing(
 	textObject NSTextRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextField_inst_textShouldBeginEditing_(
+	ret := C.NSTextField_inst_textShouldBeginEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObject),
 	)
@@ -15430,12 +15430,12 @@ func (x gen_NSTextField) TextShouldBeginEditing_(
 	return
 }
 
-func (x gen_NSTextField) TextShouldEndEditing_(
+func (x gen_NSTextField) TextShouldEndEditing(
 	textObject NSTextRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextField_inst_textShouldEndEditing_(
+	ret := C.NSTextField_inst_textShouldEndEditing(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(textObject),
 	)
@@ -15463,10 +15463,10 @@ func (x gen_NSTextField) IsSelectable() (
 	return
 }
 
-func (x gen_NSTextField) SetSelectable_(
+func (x gen_NSTextField) SetSelectable(
 	value bool,
 ) {
-	C.NSTextField_inst_setSelectable_(
+	C.NSTextField_inst_setSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15483,10 +15483,10 @@ func (x gen_NSTextField) IsEditable() (
 	return
 }
 
-func (x gen_NSTextField) SetEditable_(
+func (x gen_NSTextField) SetEditable(
 	value bool,
 ) {
-	C.NSTextField_inst_setEditable_(
+	C.NSTextField_inst_setEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15503,10 +15503,10 @@ func (x gen_NSTextField) AllowsEditingTextAttributes() (
 	return
 }
 
-func (x gen_NSTextField) SetAllowsEditingTextAttributes_(
+func (x gen_NSTextField) SetAllowsEditingTextAttributes(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsEditingTextAttributes_(
+	C.NSTextField_inst_setAllowsEditingTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15523,10 +15523,10 @@ func (x gen_NSTextField) ImportsGraphics() (
 	return
 }
 
-func (x gen_NSTextField) SetImportsGraphics_(
+func (x gen_NSTextField) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSTextField_inst_setImportsGraphics_(
+	C.NSTextField_inst_setImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15543,10 +15543,10 @@ func (x gen_NSTextField) PlaceholderString() (
 	return
 }
 
-func (x gen_NSTextField) SetPlaceholderString_(
+func (x gen_NSTextField) SetPlaceholderString(
 	value core.NSStringRef,
 ) {
-	C.NSTextField_inst_setPlaceholderString_(
+	C.NSTextField_inst_setPlaceholderString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15563,10 +15563,10 @@ func (x gen_NSTextField) PlaceholderAttributedString() (
 	return
 }
 
-func (x gen_NSTextField) SetPlaceholderAttributedString_(
+func (x gen_NSTextField) SetPlaceholderAttributedString(
 	value core.NSAttributedStringRef,
 ) {
-	C.NSTextField_inst_setPlaceholderAttributedString_(
+	C.NSTextField_inst_setPlaceholderAttributedString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15583,10 +15583,10 @@ func (x gen_NSTextField) AllowsDefaultTighteningForTruncation() (
 	return
 }
 
-func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation_(
+func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsDefaultTighteningForTruncation_(
+	C.NSTextField_inst_setAllowsDefaultTighteningForTruncation(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15603,10 +15603,10 @@ func (x gen_NSTextField) MaximumNumberOfLines() (
 	return
 }
 
-func (x gen_NSTextField) SetMaximumNumberOfLines_(
+func (x gen_NSTextField) SetMaximumNumberOfLines(
 	value core.NSInteger,
 ) {
-	C.NSTextField_inst_setMaximumNumberOfLines_(
+	C.NSTextField_inst_setMaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -15623,10 +15623,10 @@ func (x gen_NSTextField) PreferredMaxLayoutWidth() (
 	return
 }
 
-func (x gen_NSTextField) SetPreferredMaxLayoutWidth_(
+func (x gen_NSTextField) SetPreferredMaxLayoutWidth(
 	value core.CGFloat,
 ) {
-	C.NSTextField_inst_setPreferredMaxLayoutWidth_(
+	C.NSTextField_inst_setPreferredMaxLayoutWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -15643,10 +15643,10 @@ func (x gen_NSTextField) TextColor() (
 	return
 }
 
-func (x gen_NSTextField) SetTextColor_(
+func (x gen_NSTextField) SetTextColor(
 	value NSColorRef,
 ) {
-	C.NSTextField_inst_setTextColor_(
+	C.NSTextField_inst_setTextColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15663,10 +15663,10 @@ func (x gen_NSTextField) BackgroundColor() (
 	return
 }
 
-func (x gen_NSTextField) SetBackgroundColor_(
+func (x gen_NSTextField) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSTextField_inst_setBackgroundColor_(
+	C.NSTextField_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15683,10 +15683,10 @@ func (x gen_NSTextField) DrawsBackground() (
 	return
 }
 
-func (x gen_NSTextField) SetDrawsBackground_(
+func (x gen_NSTextField) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSTextField_inst_setDrawsBackground_(
+	C.NSTextField_inst_setDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15703,10 +15703,10 @@ func (x gen_NSTextField) IsBezeled() (
 	return
 }
 
-func (x gen_NSTextField) SetBezeled_(
+func (x gen_NSTextField) SetBezeled(
 	value bool,
 ) {
-	C.NSTextField_inst_setBezeled_(
+	C.NSTextField_inst_setBezeled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15723,10 +15723,10 @@ func (x gen_NSTextField) IsBordered() (
 	return
 }
 
-func (x gen_NSTextField) SetBordered_(
+func (x gen_NSTextField) SetBordered(
 	value bool,
 ) {
-	C.NSTextField_inst_setBordered_(
+	C.NSTextField_inst_setBordered(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15753,10 +15753,10 @@ func (x gen_NSTextField) AllowsCharacterPickerTouchBarItem() (
 	return
 }
 
-func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem_(
+func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem(
 	value bool,
 ) {
-	C.NSTextField_inst_setAllowsCharacterPickerTouchBarItem_(
+	C.NSTextField_inst_setAllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15773,10 +15773,10 @@ func (x gen_NSTextField) IsAutomaticTextCompletionEnabled() (
 	return
 }
 
-func (x gen_NSTextField) SetAutomaticTextCompletionEnabled_(
+func (x gen_NSTextField) SetAutomaticTextCompletionEnabled(
 	value bool,
 ) {
-	C.NSTextField_inst_setAutomaticTextCompletionEnabled_(
+	C.NSTextField_inst_setAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15793,10 +15793,10 @@ func (x gen_NSTextField) Delegate() (
 	return
 }
 
-func (x gen_NSTextField) SetDelegate_(
+func (x gen_NSTextField) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSTextField_inst_setDelegate_(
+	C.NSTextField_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15822,12 +15822,12 @@ func NSTextContainer_fromRef(ref objc.Ref) NSTextContainer {
 	return NSTextContainer_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSTextContainer) InitWithSize__asNSTextContainer(
+func (x gen_NSTextContainer) InitWithSize_asNSTextContainer(
 	size core.NSSize,
 ) (
 	r0 NSTextContainer,
 ) {
-	ret := C.NSTextContainer_inst_initWithSize_(
+	ret := C.NSTextContainer_inst_initWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -15835,10 +15835,10 @@ func (x gen_NSTextContainer) InitWithSize__asNSTextContainer(
 	return
 }
 
-func (x gen_NSTextContainer) ReplaceLayoutManager_(
+func (x gen_NSTextContainer) ReplaceLayoutManager(
 	newLayoutManager NSLayoutManagerRef,
 ) {
-	C.NSTextContainer_inst_replaceLayoutManager_(
+	C.NSTextContainer_inst_replaceLayoutManager(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newLayoutManager),
 	)
@@ -15865,10 +15865,10 @@ func (x gen_NSTextContainer) LayoutManager() (
 	return
 }
 
-func (x gen_NSTextContainer) SetLayoutManager_(
+func (x gen_NSTextContainer) SetLayoutManager(
 	value NSLayoutManagerRef,
 ) {
-	C.NSTextContainer_inst_setLayoutManager_(
+	C.NSTextContainer_inst_setLayoutManager(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15885,10 +15885,10 @@ func (x gen_NSTextContainer) TextView() (
 	return
 }
 
-func (x gen_NSTextContainer) SetTextView_(
+func (x gen_NSTextContainer) SetTextView(
 	value NSTextViewRef,
 ) {
-	C.NSTextContainer_inst_setTextView_(
+	C.NSTextContainer_inst_setTextView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15905,10 +15905,10 @@ func (x gen_NSTextContainer) Size() (
 	return
 }
 
-func (x gen_NSTextContainer) SetSize_(
+func (x gen_NSTextContainer) SetSize(
 	value core.NSSize,
 ) {
-	C.NSTextContainer_inst_setSize_(
+	C.NSTextContainer_inst_setSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -15925,10 +15925,10 @@ func (x gen_NSTextContainer) ExclusionPaths() (
 	return
 }
 
-func (x gen_NSTextContainer) SetExclusionPaths_(
+func (x gen_NSTextContainer) SetExclusionPaths(
 	value core.NSArrayRef,
 ) {
-	C.NSTextContainer_inst_setExclusionPaths_(
+	C.NSTextContainer_inst_setExclusionPaths(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -15945,10 +15945,10 @@ func (x gen_NSTextContainer) WidthTracksTextView() (
 	return
 }
 
-func (x gen_NSTextContainer) SetWidthTracksTextView_(
+func (x gen_NSTextContainer) SetWidthTracksTextView(
 	value bool,
 ) {
-	C.NSTextContainer_inst_setWidthTracksTextView_(
+	C.NSTextContainer_inst_setWidthTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15965,10 +15965,10 @@ func (x gen_NSTextContainer) HeightTracksTextView() (
 	return
 }
 
-func (x gen_NSTextContainer) SetHeightTracksTextView_(
+func (x gen_NSTextContainer) SetHeightTracksTextView(
 	value bool,
 ) {
-	C.NSTextContainer_inst_setHeightTracksTextView_(
+	C.NSTextContainer_inst_setHeightTracksTextView(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -15985,10 +15985,10 @@ func (x gen_NSTextContainer) MaximumNumberOfLines() (
 	return
 }
 
-func (x gen_NSTextContainer) SetMaximumNumberOfLines_(
+func (x gen_NSTextContainer) SetMaximumNumberOfLines(
 	value core.NSUInteger,
 ) {
-	C.NSTextContainer_inst_setMaximumNumberOfLines_(
+	C.NSTextContainer_inst_setMaximumNumberOfLines(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -16005,10 +16005,10 @@ func (x gen_NSTextContainer) LineFragmentPadding() (
 	return
 }
 
-func (x gen_NSTextContainer) SetLineFragmentPadding_(
+func (x gen_NSTextContainer) SetLineFragmentPadding(
 	value core.CGFloat,
 ) {
-	C.NSTextContainer_inst_setLineFragmentPadding_(
+	C.NSTextContainer_inst_setLineFragmentPadding(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -16051,12 +16051,12 @@ func (x gen_NSViewController) LoadView() {
 	return
 }
 
-func (x gen_NSViewController) CommitEditingWithDelegate_didCommitSelector_contextInfo_(
+func (x gen_NSViewController) CommitEditingWithDelegate_didCommitSelector_contextInfo(
 	delegate objc.Ref,
 	didCommitSelector objc.Selector,
 	contextInfo unsafe.Pointer,
 ) {
-	C.NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo_(
+	C.NSViewController_inst_commitEditingWithDelegate_didCommitSelector_contextInfo(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(delegate),
 		didCommitSelector.SelectorAddress(),
@@ -16082,10 +16082,10 @@ func (x gen_NSViewController) DiscardEditing() {
 	return
 }
 
-func (x gen_NSViewController) DismissController_(
+func (x gen_NSViewController) DismissController(
 	sender objc.Ref,
 ) {
-	C.NSViewController_inst_dismissController_(
+	C.NSViewController_inst_dismissController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16148,21 +16148,21 @@ func (x gen_NSViewController) ViewDidLayout() {
 	return
 }
 
-func (x gen_NSViewController) AddChildViewController_(
+func (x gen_NSViewController) AddChildViewController(
 	childViewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_addChildViewController_(
+	C.NSViewController_inst_addChildViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childViewController),
 	)
 	return
 }
 
-func (x gen_NSViewController) InsertChildViewController_atIndex_(
+func (x gen_NSViewController) InsertChildViewController_atIndex(
 	childViewController NSViewControllerRef,
 	index core.NSInteger,
 ) {
-	C.NSViewController_inst_insertChildViewController_atIndex_(
+	C.NSViewController_inst_insertChildViewController_atIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childViewController),
 		C.long(index),
@@ -16170,10 +16170,10 @@ func (x gen_NSViewController) InsertChildViewController_atIndex_(
 	return
 }
 
-func (x gen_NSViewController) RemoveChildViewControllerAtIndex_(
+func (x gen_NSViewController) RemoveChildViewControllerAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSViewController_inst_removeChildViewControllerAtIndex_(
+	C.NSViewController_inst_removeChildViewControllerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
@@ -16187,21 +16187,21 @@ func (x gen_NSViewController) RemoveFromParentViewController() {
 	return
 }
 
-func (x gen_NSViewController) PreferredContentSizeDidChangeForViewController_(
+func (x gen_NSViewController) PreferredContentSizeDidChangeForViewController(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_preferredContentSizeDidChangeForViewController_(
+	C.NSViewController_inst_preferredContentSizeDidChangeForViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
 	return
 }
 
-func (x gen_NSViewController) PresentViewController_animator_(
+func (x gen_NSViewController) PresentViewController_animator(
 	viewController NSViewControllerRef,
 	animator objc.Ref,
 ) {
-	C.NSViewController_inst_presentViewController_animator_(
+	C.NSViewController_inst_presentViewController_animator(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 		objc.RefPointer(animator),
@@ -16209,40 +16209,40 @@ func (x gen_NSViewController) PresentViewController_animator_(
 	return
 }
 
-func (x gen_NSViewController) DismissViewController_(
+func (x gen_NSViewController) DismissViewController(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_dismissViewController_(
+	C.NSViewController_inst_dismissViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
 	return
 }
 
-func (x gen_NSViewController) PresentViewControllerAsModalWindow_(
+func (x gen_NSViewController) PresentViewControllerAsModalWindow(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_presentViewControllerAsModalWindow_(
+	C.NSViewController_inst_presentViewControllerAsModalWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
 	return
 }
 
-func (x gen_NSViewController) PresentViewControllerAsSheet_(
+func (x gen_NSViewController) PresentViewControllerAsSheet(
 	viewController NSViewControllerRef,
 ) {
-	C.NSViewController_inst_presentViewControllerAsSheet_(
+	C.NSViewController_inst_presentViewControllerAsSheet(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(viewController),
 	)
 	return
 }
 
-func (x gen_NSViewController) ViewWillTransitionToSize_(
+func (x gen_NSViewController) ViewWillTransitionToSize(
 	newSize core.NSSize,
 ) {
-	C.NSViewController_inst_viewWillTransitionToSize_(
+	C.NSViewController_inst_viewWillTransitionToSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
@@ -16269,10 +16269,10 @@ func (x gen_NSViewController) RepresentedObject() (
 	return
 }
 
-func (x gen_NSViewController) SetRepresentedObject_(
+func (x gen_NSViewController) SetRepresentedObject(
 	value objc.Ref,
 ) {
-	C.NSViewController_inst_setRepresentedObject_(
+	C.NSViewController_inst_setRepresentedObject(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16299,10 +16299,10 @@ func (x gen_NSViewController) View() (
 	return
 }
 
-func (x gen_NSViewController) SetView_(
+func (x gen_NSViewController) SetView(
 	value NSViewRef,
 ) {
-	C.NSViewController_inst_setView_(
+	C.NSViewController_inst_setView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16319,10 +16319,10 @@ func (x gen_NSViewController) Title() (
 	return
 }
 
-func (x gen_NSViewController) SetTitle_(
+func (x gen_NSViewController) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSViewController_inst_setTitle_(
+	C.NSViewController_inst_setTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16349,10 +16349,10 @@ func (x gen_NSViewController) PreferredContentSize() (
 	return
 }
 
-func (x gen_NSViewController) SetPreferredContentSize_(
+func (x gen_NSViewController) SetPreferredContentSize(
 	value core.NSSize,
 ) {
-	C.NSViewController_inst_setPreferredContentSize_(
+	C.NSViewController_inst_setPreferredContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -16369,10 +16369,10 @@ func (x gen_NSViewController) ChildViewControllers() (
 	return
 }
 
-func (x gen_NSViewController) SetChildViewControllers_(
+func (x gen_NSViewController) SetChildViewControllers(
 	value core.NSArrayRef,
 ) {
-	C.NSViewController_inst_setChildViewControllers_(
+	C.NSViewController_inst_setChildViewControllers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16419,10 +16419,10 @@ func (x gen_NSViewController) PreferredScreenOrigin() (
 	return
 }
 
-func (x gen_NSViewController) SetPreferredScreenOrigin_(
+func (x gen_NSViewController) SetPreferredScreenOrigin(
 	value core.NSPoint,
 ) {
-	C.NSViewController_inst_setPreferredScreenOrigin_(
+	C.NSViewController_inst_setPreferredScreenOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&value)),
 	)
@@ -16459,10 +16459,10 @@ func (x gen_NSViewController) SourceItemView() (
 	return
 }
 
-func (x gen_NSViewController) SetSourceItemView_(
+func (x gen_NSViewController) SetSourceItemView(
 	value NSViewRef,
 ) {
-	C.NSViewController_inst_setSourceItemView_(
+	C.NSViewController_inst_setSourceItemView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16495,10 +16495,10 @@ func (x gen_NSVisualEffectView) ViewDidMoveToWindow() {
 	return
 }
 
-func (x gen_NSVisualEffectView) ViewWillMoveToWindow_(
+func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 	newWindow NSWindowRef,
 ) {
-	C.NSVisualEffectView_inst_viewWillMoveToWindow_(
+	C.NSVisualEffectView_inst_viewWillMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newWindow),
 	)
@@ -16525,10 +16525,10 @@ func (x gen_NSVisualEffectView) IsEmphasized() (
 	return
 }
 
-func (x gen_NSVisualEffectView) SetEmphasized_(
+func (x gen_NSVisualEffectView) SetEmphasized(
 	value bool,
 ) {
-	C.NSVisualEffectView_inst_setEmphasized_(
+	C.NSVisualEffectView_inst_setEmphasized(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -16545,10 +16545,10 @@ func (x gen_NSVisualEffectView) MaskImage() (
 	return
 }
 
-func (x gen_NSVisualEffectView) SetMaskImage_(
+func (x gen_NSVisualEffectView) SetMaskImage(
 	value NSImageRef,
 ) {
-	C.NSVisualEffectView_inst_setMaskImage_(
+	C.NSVisualEffectView_inst_setMaskImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -16574,7 +16574,7 @@ func NSWindow_fromRef(ref objc.Ref) NSWindow {
 	return NSWindow_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer__asNSWindow(
+func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_asNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
@@ -16582,7 +16582,7 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer__asNSWindow(
 ) (
 	r0 NSWindow,
 ) {
-	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer_(
+	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 		C.ulong(style),
@@ -16593,7 +16593,7 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer__asNSWindow(
 	return
 }
 
-func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen__asNSWindow(
+func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen_asNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
@@ -16602,7 +16602,7 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen__asNSWi
 ) (
 	r0 NSWindow,
 ) {
-	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen_(
+	ret := C.NSWindow_inst_initWithContentRect_styleMask_backing_defer_screen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 		C.ulong(style),
@@ -16614,20 +16614,20 @@ func (x gen_NSWindow) InitWithContentRect_styleMask_backing_defer_screen__asNSWi
 	return
 }
 
-func (x gen_NSWindow) ToggleFullScreen_(
+func (x gen_NSWindow) ToggleFullScreen(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleFullScreen_(
+	C.NSWindow_inst_toggleFullScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetDynamicDepthLimit_(
+func (x gen_NSWindow) SetDynamicDepthLimit(
 	flag bool,
 ) {
-	C.NSWindow_inst_setDynamicDepthLimit_(
+	C.NSWindow_inst_setDynamicDepthLimit(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -16641,12 +16641,12 @@ func (x gen_NSWindow) InvalidateShadow() {
 	return
 }
 
-func (x gen_NSWindow) ContentRectForFrameRect_(
+func (x gen_NSWindow) ContentRectForFrameRect(
 	frameRect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_contentRectForFrameRect_(
+	ret := C.NSWindow_inst_contentRectForFrameRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -16654,12 +16654,12 @@ func (x gen_NSWindow) ContentRectForFrameRect_(
 	return
 }
 
-func (x gen_NSWindow) FrameRectForContentRect_(
+func (x gen_NSWindow) FrameRectForContentRect(
 	contentRect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_frameRectForContentRect_(
+	ret := C.NSWindow_inst_frameRectForContentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&contentRect)),
 	)
@@ -16667,43 +16667,43 @@ func (x gen_NSWindow) FrameRectForContentRect_(
 	return
 }
 
-func (x gen_NSWindow) EndSheet_(
+func (x gen_NSWindow) EndSheet(
 	sheetWindow NSWindowRef,
 ) {
-	C.NSWindow_inst_endSheet_(
+	C.NSWindow_inst_endSheet(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sheetWindow),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetFrameOrigin_(
+func (x gen_NSWindow) SetFrameOrigin(
 	point core.NSPoint,
 ) {
-	C.NSWindow_inst_setFrameOrigin_(
+	C.NSWindow_inst_setFrameOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetFrameTopLeftPoint_(
+func (x gen_NSWindow) SetFrameTopLeftPoint(
 	point core.NSPoint,
 ) {
-	C.NSWindow_inst_setFrameTopLeftPoint_(
+	C.NSWindow_inst_setFrameTopLeftPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
 	return
 }
 
-func (x gen_NSWindow) ConstrainFrameRect_toScreen_(
+func (x gen_NSWindow) ConstrainFrameRect_toScreen(
 	frameRect core.NSRect,
 	screen NSScreenRef,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_constrainFrameRect_toScreen_(
+	ret := C.NSWindow_inst_constrainFrameRect_toScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		objc.RefPointer(screen),
@@ -16712,12 +16712,12 @@ func (x gen_NSWindow) ConstrainFrameRect_toScreen_(
 	return
 }
 
-func (x gen_NSWindow) CascadeTopLeftFromPoint_(
+func (x gen_NSWindow) CascadeTopLeftFromPoint(
 	topLeftPoint core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSWindow_inst_cascadeTopLeftFromPoint_(
+	ret := C.NSWindow_inst_cascadeTopLeftFromPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&topLeftPoint)),
 	)
@@ -16725,11 +16725,11 @@ func (x gen_NSWindow) CascadeTopLeftFromPoint_(
 	return
 }
 
-func (x gen_NSWindow) SetFrame_display_(
+func (x gen_NSWindow) SetFrame_display(
 	frameRect core.NSRect,
 	flag bool,
 ) {
-	C.NSWindow_inst_setFrame_display_(
+	C.NSWindow_inst_setFrame_display(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		convertToObjCBool(flag),
@@ -16737,12 +16737,12 @@ func (x gen_NSWindow) SetFrame_display_(
 	return
 }
 
-func (x gen_NSWindow) SetFrame_display_animate_(
+func (x gen_NSWindow) SetFrame_display_animate(
 	frameRect core.NSRect,
 	displayFlag bool,
 	animateFlag bool,
 ) {
-	C.NSWindow_inst_setFrame_display_animate_(
+	C.NSWindow_inst_setFrame_display_animate(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		convertToObjCBool(displayFlag),
@@ -16751,60 +16751,60 @@ func (x gen_NSWindow) SetFrame_display_animate_(
 	return
 }
 
-func (x gen_NSWindow) PerformZoom_(
+func (x gen_NSWindow) PerformZoom(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performZoom_(
+	C.NSWindow_inst_performZoom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) Zoom_(
+func (x gen_NSWindow) Zoom(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_zoom_(
+	C.NSWindow_inst_zoom(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetContentSize_(
+func (x gen_NSWindow) SetContentSize(
 	size core.NSSize,
 ) {
-	C.NSWindow_inst_setContentSize_(
+	C.NSWindow_inst_setContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 	return
 }
 
-func (x gen_NSWindow) OrderOut_(
+func (x gen_NSWindow) OrderOut(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderOut_(
+	C.NSWindow_inst_orderOut(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) OrderBack_(
+func (x gen_NSWindow) OrderBack(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderBack_(
+	C.NSWindow_inst_orderBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) OrderFront_(
+func (x gen_NSWindow) OrderFront(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_orderFront_(
+	C.NSWindow_inst_orderFront(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16818,11 +16818,11 @@ func (x gen_NSWindow) OrderFrontRegardless() {
 	return
 }
 
-func (x gen_NSWindow) OrderWindow_relativeTo_(
+func (x gen_NSWindow) OrderWindow_relativeTo(
 	place core.NSUInteger,
 	otherWin core.NSInteger,
 ) {
-	C.NSWindow_inst_orderWindow_relativeTo_(
+	C.NSWindow_inst_orderWindow_relativeTo(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(place),
 		C.long(otherWin),
@@ -16837,10 +16837,10 @@ func (x gen_NSWindow) MakeKeyWindow() {
 	return
 }
 
-func (x gen_NSWindow) MakeKeyAndOrderFront_(
+func (x gen_NSWindow) MakeKeyAndOrderFront(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_makeKeyAndOrderFront_(
+	C.NSWindow_inst_makeKeyAndOrderFront(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -16882,31 +16882,31 @@ func (x gen_NSWindow) ResignMainWindow() {
 	return
 }
 
-func (x gen_NSWindow) ToggleToolbarShown_(
+func (x gen_NSWindow) ToggleToolbarShown(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleToolbarShown_(
+	C.NSWindow_inst_toggleToolbarShown(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) RunToolbarCustomizationPalette_(
+func (x gen_NSWindow) RunToolbarCustomizationPalette(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_runToolbarCustomizationPalette_(
+	C.NSWindow_inst_runToolbarCustomizationPalette(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) AddChildWindow_ordered_(
+func (x gen_NSWindow) AddChildWindow_ordered(
 	childWin NSWindowRef,
 	place core.NSUInteger,
 ) {
-	C.NSWindow_inst_addChildWindow_ordered_(
+	C.NSWindow_inst_addChildWindow_ordered(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childWin),
 		C.ulong(place),
@@ -16914,10 +16914,10 @@ func (x gen_NSWindow) AddChildWindow_ordered_(
 	return
 }
 
-func (x gen_NSWindow) RemoveChildWindow_(
+func (x gen_NSWindow) RemoveChildWindow(
 	childWin NSWindowRef,
 ) {
-	C.NSWindow_inst_removeChildWindow_(
+	C.NSWindow_inst_removeChildWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(childWin),
 	)
@@ -16938,13 +16938,13 @@ func (x gen_NSWindow) DisableKeyEquivalentForDefaultButtonCell() {
 	return
 }
 
-func (x gen_NSWindow) FieldEditor_forObject_(
+func (x gen_NSWindow) FieldEditor_forObject(
 	createFlag bool,
 	object objc.Ref,
 ) (
 	r0 NSText,
 ) {
-	ret := C.NSWindow_inst_fieldEditor_forObject_(
+	ret := C.NSWindow_inst_fieldEditor_forObject(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(createFlag),
 		objc.RefPointer(object),
@@ -16953,10 +16953,10 @@ func (x gen_NSWindow) FieldEditor_forObject_(
 	return
 }
 
-func (x gen_NSWindow) EndEditingFor_(
+func (x gen_NSWindow) EndEditingFor(
 	object objc.Ref,
 ) {
-	C.NSWindow_inst_endEditingFor_(
+	C.NSWindow_inst_endEditingFor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(object),
 	)
@@ -16984,10 +16984,10 @@ func (x gen_NSWindow) DiscardCursorRects() {
 	return
 }
 
-func (x gen_NSWindow) InvalidateCursorRectsForView_(
+func (x gen_NSWindow) InvalidateCursorRectsForView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_invalidateCursorRectsForView_(
+	C.NSWindow_inst_invalidateCursorRectsForView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -17001,21 +17001,21 @@ func (x gen_NSWindow) ResetCursorRects() {
 	return
 }
 
-func (x gen_NSWindow) RemoveTitlebarAccessoryViewControllerAtIndex_(
+func (x gen_NSWindow) RemoveTitlebarAccessoryViewControllerAtIndex(
 	index core.NSInteger,
 ) {
-	C.NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex_(
+	C.NSWindow_inst_removeTitlebarAccessoryViewControllerAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(index),
 	)
 	return
 }
 
-func (x gen_NSWindow) AddTabbedWindow_ordered_(
+func (x gen_NSWindow) AddTabbedWindow_ordered(
 	window NSWindowRef,
 	ordered core.NSUInteger,
 ) {
-	C.NSWindow_inst_addTabbedWindow_ordered_(
+	C.NSWindow_inst_addTabbedWindow_ordered(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(window),
 		C.ulong(ordered),
@@ -17023,71 +17023,71 @@ func (x gen_NSWindow) AddTabbedWindow_ordered_(
 	return
 }
 
-func (x gen_NSWindow) MergeAllWindows_(
+func (x gen_NSWindow) MergeAllWindows(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_mergeAllWindows_(
+	C.NSWindow_inst_mergeAllWindows(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) SelectNextTab_(
+func (x gen_NSWindow) SelectNextTab(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectNextTab_(
+	C.NSWindow_inst_selectNextTab(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) SelectPreviousTab_(
+func (x gen_NSWindow) SelectPreviousTab(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectPreviousTab_(
+	C.NSWindow_inst_selectPreviousTab(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) MoveTabToNewWindow_(
+func (x gen_NSWindow) MoveTabToNewWindow(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_moveTabToNewWindow_(
+	C.NSWindow_inst_moveTabToNewWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) ToggleTabBar_(
+func (x gen_NSWindow) ToggleTabBar(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleTabBar_(
+	C.NSWindow_inst_toggleTabBar(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) ToggleTabOverview_(
+func (x gen_NSWindow) ToggleTabOverview(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_toggleTabOverview_(
+	C.NSWindow_inst_toggleTabOverview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) PostEvent_atStart_(
+func (x gen_NSWindow) PostEvent_atStart(
 	event NSEventRef,
 	flag bool,
 ) {
-	C.NSWindow_inst_postEvent_atStart_(
+	C.NSWindow_inst_postEvent_atStart(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		convertToObjCBool(flag),
@@ -17095,23 +17095,23 @@ func (x gen_NSWindow) PostEvent_atStart_(
 	return
 }
 
-func (x gen_NSWindow) SendEvent_(
+func (x gen_NSWindow) SendEvent(
 	event NSEventRef,
 ) {
-	C.NSWindow_inst_sendEvent_(
+	C.NSWindow_inst_sendEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
 	return
 }
 
-func (x gen_NSWindow) TryToPerform_with_(
+func (x gen_NSWindow) TryToPerform_with(
 	action objc.Selector,
 	object objc.Ref,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWindow_inst_tryToPerform_with_(
+	ret := C.NSWindow_inst_tryToPerform_with(
 		unsafe.Pointer(x.Pointer()),
 		action.SelectorAddress(),
 		objc.RefPointer(object),
@@ -17120,40 +17120,40 @@ func (x gen_NSWindow) TryToPerform_with_(
 	return
 }
 
-func (x gen_NSWindow) SelectKeyViewPrecedingView_(
+func (x gen_NSWindow) SelectKeyViewPrecedingView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_selectKeyViewPrecedingView_(
+	C.NSWindow_inst_selectKeyViewPrecedingView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
 	return
 }
 
-func (x gen_NSWindow) SelectKeyViewFollowingView_(
+func (x gen_NSWindow) SelectKeyViewFollowingView(
 	view NSViewRef,
 ) {
-	C.NSWindow_inst_selectKeyViewFollowingView_(
+	C.NSWindow_inst_selectKeyViewFollowingView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
 	return
 }
 
-func (x gen_NSWindow) SelectPreviousKeyView_(
+func (x gen_NSWindow) SelectPreviousKeyView(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectPreviousKeyView_(
+	C.NSWindow_inst_selectPreviousKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) SelectNextKeyView_(
+func (x gen_NSWindow) SelectNextKeyView(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_selectNextKeyView_(
+	C.NSWindow_inst_selectNextKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -17167,10 +17167,10 @@ func (x gen_NSWindow) RecalculateKeyViewLoop() {
 	return
 }
 
-func (x gen_NSWindow) PerformWindowDragWithEvent_(
+func (x gen_NSWindow) PerformWindowDragWithEvent(
 	event NSEventRef,
 ) {
-	C.NSWindow_inst_performWindowDragWithEvent_(
+	C.NSWindow_inst_performWindowDragWithEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -17219,7 +17219,7 @@ func (x gen_NSWindow) Update() {
 	return
 }
 
-func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack_(
+func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack(
 	image NSImageRef,
 	baseLocation core.NSPoint,
 	initialOffset core.NSSize,
@@ -17228,7 +17228,7 @@ func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack_(
 	sourceObj objc.Ref,
 	slideFlag bool,
 ) {
-	C.NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack_(
+	C.NSWindow_inst_dragImage_at_offset_event_pasteboard_source_slideBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(image),
 		*(*C.NSPoint)(unsafe.Pointer(&baseLocation)),
@@ -17241,10 +17241,10 @@ func (x gen_NSWindow) DragImage_at_offset_event_pasteboard_source_slideBack_(
 	return
 }
 
-func (x gen_NSWindow) RegisterForDraggedTypes_(
+func (x gen_NSWindow) RegisterForDraggedTypes(
 	newTypes core.NSArrayRef,
 ) {
-	C.NSWindow_inst_registerForDraggedTypes_(
+	C.NSWindow_inst_registerForDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 	)
@@ -17258,12 +17258,12 @@ func (x gen_NSWindow) UnregisterDraggedTypes() {
 	return
 }
 
-func (x gen_NSWindow) ConvertRectFromBacking_(
+func (x gen_NSWindow) ConvertRectFromBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_convertRectFromBacking_(
+	ret := C.NSWindow_inst_convertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17271,12 +17271,12 @@ func (x gen_NSWindow) ConvertRectFromBacking_(
 	return
 }
 
-func (x gen_NSWindow) ConvertRectFromScreen_(
+func (x gen_NSWindow) ConvertRectFromScreen(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_convertRectFromScreen_(
+	ret := C.NSWindow_inst_convertRectFromScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17284,12 +17284,12 @@ func (x gen_NSWindow) ConvertRectFromScreen_(
 	return
 }
 
-func (x gen_NSWindow) ConvertPointFromBacking_(
+func (x gen_NSWindow) ConvertPointFromBacking(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSWindow_inst_convertPointFromBacking_(
+	ret := C.NSWindow_inst_convertPointFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -17297,12 +17297,12 @@ func (x gen_NSWindow) ConvertPointFromBacking_(
 	return
 }
 
-func (x gen_NSWindow) ConvertPointFromScreen_(
+func (x gen_NSWindow) ConvertPointFromScreen(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSWindow_inst_convertPointFromScreen_(
+	ret := C.NSWindow_inst_convertPointFromScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -17310,12 +17310,12 @@ func (x gen_NSWindow) ConvertPointFromScreen_(
 	return
 }
 
-func (x gen_NSWindow) ConvertRectToBacking_(
+func (x gen_NSWindow) ConvertRectToBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_convertRectToBacking_(
+	ret := C.NSWindow_inst_convertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17323,12 +17323,12 @@ func (x gen_NSWindow) ConvertRectToBacking_(
 	return
 }
 
-func (x gen_NSWindow) ConvertRectToScreen_(
+func (x gen_NSWindow) ConvertRectToScreen(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSWindow_inst_convertRectToScreen_(
+	ret := C.NSWindow_inst_convertRectToScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17336,12 +17336,12 @@ func (x gen_NSWindow) ConvertRectToScreen_(
 	return
 }
 
-func (x gen_NSWindow) ConvertPointToBacking_(
+func (x gen_NSWindow) ConvertPointToBacking(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSWindow_inst_convertPointToBacking_(
+	ret := C.NSWindow_inst_convertPointToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -17349,12 +17349,12 @@ func (x gen_NSWindow) ConvertPointToBacking_(
 	return
 }
 
-func (x gen_NSWindow) ConvertPointToScreen_(
+func (x gen_NSWindow) ConvertPointToScreen(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSWindow_inst_convertPointToScreen_(
+	ret := C.NSWindow_inst_convertPointToScreen(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -17362,10 +17362,10 @@ func (x gen_NSWindow) ConvertPointToScreen_(
 	return
 }
 
-func (x gen_NSWindow) SetTitleWithRepresentedFilename_(
+func (x gen_NSWindow) SetTitleWithRepresentedFilename(
 	filename core.NSStringRef,
 ) {
-	C.NSWindow_inst_setTitleWithRepresentedFilename_(
+	C.NSWindow_inst_setTitleWithRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(filename),
 	)
@@ -17379,10 +17379,10 @@ func (x gen_NSWindow) Center() {
 	return
 }
 
-func (x gen_NSWindow) PerformClose_(
+func (x gen_NSWindow) PerformClose(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performClose_(
+	C.NSWindow_inst_performClose(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -17396,52 +17396,52 @@ func (x gen_NSWindow) Close() {
 	return
 }
 
-func (x gen_NSWindow) PerformMiniaturize_(
+func (x gen_NSWindow) PerformMiniaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_performMiniaturize_(
+	C.NSWindow_inst_performMiniaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) Miniaturize_(
+func (x gen_NSWindow) Miniaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_miniaturize_(
+	C.NSWindow_inst_miniaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) Deminiaturize_(
+func (x gen_NSWindow) Deminiaturize(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_deminiaturize_(
+	C.NSWindow_inst_deminiaturize(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) Print_(
+func (x gen_NSWindow) Print(
 	sender objc.Ref,
 ) {
-	C.NSWindow_inst_print_(
+	C.NSWindow_inst_print(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSWindow) DataWithEPSInsideRect_(
+func (x gen_NSWindow) DataWithEPSInsideRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSData,
 ) {
-	ret := C.NSWindow_inst_dataWithEPSInsideRect_(
+	ret := C.NSWindow_inst_dataWithEPSInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17449,12 +17449,12 @@ func (x gen_NSWindow) DataWithEPSInsideRect_(
 	return
 }
 
-func (x gen_NSWindow) DataWithPDFInsideRect_(
+func (x gen_NSWindow) DataWithPDFInsideRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSData,
 ) {
-	ret := C.NSWindow_inst_dataWithPDFInsideRect_(
+	ret := C.NSWindow_inst_dataWithPDFInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -17476,40 +17476,40 @@ func (x gen_NSWindow) LayoutIfNeeded() {
 	return
 }
 
-func (x gen_NSWindow) VisualizeConstraints_(
+func (x gen_NSWindow) VisualizeConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSWindow_inst_visualizeConstraints_(
+	C.NSWindow_inst_visualizeConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetIsMiniaturized_(
+func (x gen_NSWindow) SetIsMiniaturized(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsMiniaturized_(
+	C.NSWindow_inst_setIsMiniaturized(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetIsVisible_(
+func (x gen_NSWindow) SetIsVisible(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsVisible_(
+	C.NSWindow_inst_setIsVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
 	return
 }
 
-func (x gen_NSWindow) SetIsZoomed_(
+func (x gen_NSWindow) SetIsZoomed(
 	flag bool,
 ) {
-	C.NSWindow_inst_setIsZoomed_(
+	C.NSWindow_inst_setIsZoomed(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(flag),
 	)
@@ -17536,10 +17536,10 @@ func (x gen_NSWindow) Delegate() (
 	return
 }
 
-func (x gen_NSWindow) SetDelegate_(
+func (x gen_NSWindow) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSWindow_inst_setDelegate_(
+	C.NSWindow_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17556,10 +17556,10 @@ func (x gen_NSWindow) ContentViewController() (
 	return
 }
 
-func (x gen_NSWindow) SetContentViewController_(
+func (x gen_NSWindow) SetContentViewController(
 	value NSViewControllerRef,
 ) {
-	C.NSWindow_inst_setContentViewController_(
+	C.NSWindow_inst_setContentViewController(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17576,10 +17576,10 @@ func (x gen_NSWindow) ContentView() (
 	return
 }
 
-func (x gen_NSWindow) SetContentView_(
+func (x gen_NSWindow) SetContentView(
 	value NSViewRef,
 ) {
-	C.NSWindow_inst_setContentView_(
+	C.NSWindow_inst_setContentView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17596,10 +17596,10 @@ func (x gen_NSWindow) StyleMask() (
 	return
 }
 
-func (x gen_NSWindow) SetStyleMask_(
+func (x gen_NSWindow) SetStyleMask(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setStyleMask_(
+	C.NSWindow_inst_setStyleMask(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -17626,10 +17626,10 @@ func (x gen_NSWindow) AlphaValue() (
 	return
 }
 
-func (x gen_NSWindow) SetAlphaValue_(
+func (x gen_NSWindow) SetAlphaValue(
 	value core.CGFloat,
 ) {
-	C.NSWindow_inst_setAlphaValue_(
+	C.NSWindow_inst_setAlphaValue(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -17646,10 +17646,10 @@ func (x gen_NSWindow) BackgroundColor() (
 	return
 }
 
-func (x gen_NSWindow) SetBackgroundColor_(
+func (x gen_NSWindow) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSWindow_inst_setBackgroundColor_(
+	C.NSWindow_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -17666,10 +17666,10 @@ func (x gen_NSWindow) CanHide() (
 	return
 }
 
-func (x gen_NSWindow) SetCanHide_(
+func (x gen_NSWindow) SetCanHide(
 	value bool,
 ) {
-	C.NSWindow_inst_setCanHide_(
+	C.NSWindow_inst_setCanHide(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17696,10 +17696,10 @@ func (x gen_NSWindow) HidesOnDeactivate() (
 	return
 }
 
-func (x gen_NSWindow) SetHidesOnDeactivate_(
+func (x gen_NSWindow) SetHidesOnDeactivate(
 	value bool,
 ) {
-	C.NSWindow_inst_setHidesOnDeactivate_(
+	C.NSWindow_inst_setHidesOnDeactivate(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17716,10 +17716,10 @@ func (x gen_NSWindow) CollectionBehavior() (
 	return
 }
 
-func (x gen_NSWindow) SetCollectionBehavior_(
+func (x gen_NSWindow) SetCollectionBehavior(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setCollectionBehavior_(
+	C.NSWindow_inst_setCollectionBehavior(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -17736,10 +17736,10 @@ func (x gen_NSWindow) IsOpaque() (
 	return
 }
 
-func (x gen_NSWindow) SetOpaque_(
+func (x gen_NSWindow) SetOpaque(
 	value bool,
 ) {
-	C.NSWindow_inst_setOpaque_(
+	C.NSWindow_inst_setOpaque(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17756,10 +17756,10 @@ func (x gen_NSWindow) HasShadow() (
 	return
 }
 
-func (x gen_NSWindow) SetHasShadow_(
+func (x gen_NSWindow) SetHasShadow(
 	value bool,
 ) {
-	C.NSWindow_inst_setHasShadow_(
+	C.NSWindow_inst_setHasShadow(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17776,10 +17776,10 @@ func (x gen_NSWindow) PreventsApplicationTerminationWhenModal() (
 	return
 }
 
-func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal_(
+func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal(
 	value bool,
 ) {
-	C.NSWindow_inst_setPreventsApplicationTerminationWhenModal_(
+	C.NSWindow_inst_setPreventsApplicationTerminationWhenModal(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17826,10 +17826,10 @@ func (x gen_NSWindow) CanBecomeVisibleWithoutLogin() (
 	return
 }
 
-func (x gen_NSWindow) SetCanBecomeVisibleWithoutLogin_(
+func (x gen_NSWindow) SetCanBecomeVisibleWithoutLogin(
 	value bool,
 ) {
-	C.NSWindow_inst_setCanBecomeVisibleWithoutLogin_(
+	C.NSWindow_inst_setCanBecomeVisibleWithoutLogin(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -17846,10 +17846,10 @@ func (x gen_NSWindow) BackingType() (
 	return
 }
 
-func (x gen_NSWindow) SetBackingType_(
+func (x gen_NSWindow) SetBackingType(
 	value core.NSUInteger,
 ) {
-	C.NSWindow_inst_setBackingType_(
+	C.NSWindow_inst_setBackingType(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
 	)
@@ -17916,10 +17916,10 @@ func (x gen_NSWindow) AspectRatio() (
 	return
 }
 
-func (x gen_NSWindow) SetAspectRatio_(
+func (x gen_NSWindow) SetAspectRatio(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setAspectRatio_(
+	C.NSWindow_inst_setAspectRatio(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -17936,10 +17936,10 @@ func (x gen_NSWindow) MinSize() (
 	return
 }
 
-func (x gen_NSWindow) SetMinSize_(
+func (x gen_NSWindow) SetMinSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMinSize_(
+	C.NSWindow_inst_setMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -17956,10 +17956,10 @@ func (x gen_NSWindow) MaxSize() (
 	return
 }
 
-func (x gen_NSWindow) SetMaxSize_(
+func (x gen_NSWindow) SetMaxSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMaxSize_(
+	C.NSWindow_inst_setMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -17986,10 +17986,10 @@ func (x gen_NSWindow) ResizeIncrements() (
 	return
 }
 
-func (x gen_NSWindow) SetResizeIncrements_(
+func (x gen_NSWindow) SetResizeIncrements(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setResizeIncrements_(
+	C.NSWindow_inst_setResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18006,10 +18006,10 @@ func (x gen_NSWindow) PreservesContentDuringLiveResize() (
 	return
 }
 
-func (x gen_NSWindow) SetPreservesContentDuringLiveResize_(
+func (x gen_NSWindow) SetPreservesContentDuringLiveResize(
 	value bool,
 ) {
-	C.NSWindow_inst_setPreservesContentDuringLiveResize_(
+	C.NSWindow_inst_setPreservesContentDuringLiveResize(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18036,10 +18036,10 @@ func (x gen_NSWindow) ContentAspectRatio() (
 	return
 }
 
-func (x gen_NSWindow) SetContentAspectRatio_(
+func (x gen_NSWindow) SetContentAspectRatio(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentAspectRatio_(
+	C.NSWindow_inst_setContentAspectRatio(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18056,10 +18056,10 @@ func (x gen_NSWindow) ContentMinSize() (
 	return
 }
 
-func (x gen_NSWindow) SetContentMinSize_(
+func (x gen_NSWindow) SetContentMinSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentMinSize_(
+	C.NSWindow_inst_setContentMinSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18076,10 +18076,10 @@ func (x gen_NSWindow) ContentMaxSize() (
 	return
 }
 
-func (x gen_NSWindow) SetContentMaxSize_(
+func (x gen_NSWindow) SetContentMaxSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentMaxSize_(
+	C.NSWindow_inst_setContentMaxSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18096,10 +18096,10 @@ func (x gen_NSWindow) ContentResizeIncrements() (
 	return
 }
 
-func (x gen_NSWindow) SetContentResizeIncrements_(
+func (x gen_NSWindow) SetContentResizeIncrements(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setContentResizeIncrements_(
+	C.NSWindow_inst_setContentResizeIncrements(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18136,10 +18136,10 @@ func (x gen_NSWindow) MaxFullScreenContentSize() (
 	return
 }
 
-func (x gen_NSWindow) SetMaxFullScreenContentSize_(
+func (x gen_NSWindow) SetMaxFullScreenContentSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMaxFullScreenContentSize_(
+	C.NSWindow_inst_setMaxFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18156,10 +18156,10 @@ func (x gen_NSWindow) MinFullScreenContentSize() (
 	return
 }
 
-func (x gen_NSWindow) SetMinFullScreenContentSize_(
+func (x gen_NSWindow) SetMinFullScreenContentSize(
 	value core.NSSize,
 ) {
-	C.NSWindow_inst_setMinFullScreenContentSize_(
+	C.NSWindow_inst_setMinFullScreenContentSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -18176,10 +18176,10 @@ func (x gen_NSWindow) Level() (
 	return
 }
 
-func (x gen_NSWindow) SetLevel_(
+func (x gen_NSWindow) SetLevel(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setLevel_(
+	C.NSWindow_inst_setLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -18256,10 +18256,10 @@ func (x gen_NSWindow) ParentWindow() (
 	return
 }
 
-func (x gen_NSWindow) SetParentWindow_(
+func (x gen_NSWindow) SetParentWindow(
 	value NSWindowRef,
 ) {
-	C.NSWindow_inst_setParentWindow_(
+	C.NSWindow_inst_setParentWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18276,10 +18276,10 @@ func (x gen_NSWindow) IsExcludedFromWindowsMenu() (
 	return
 }
 
-func (x gen_NSWindow) SetExcludedFromWindowsMenu_(
+func (x gen_NSWindow) SetExcludedFromWindowsMenu(
 	value bool,
 ) {
-	C.NSWindow_inst_setExcludedFromWindowsMenu_(
+	C.NSWindow_inst_setExcludedFromWindowsMenu(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18306,10 +18306,10 @@ func (x gen_NSWindow) ShowsToolbarButton() (
 	return
 }
 
-func (x gen_NSWindow) SetShowsToolbarButton_(
+func (x gen_NSWindow) SetShowsToolbarButton(
 	value bool,
 ) {
-	C.NSWindow_inst_setShowsToolbarButton_(
+	C.NSWindow_inst_setShowsToolbarButton(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18326,10 +18326,10 @@ func (x gen_NSWindow) TitlebarAppearsTransparent() (
 	return
 }
 
-func (x gen_NSWindow) SetTitlebarAppearsTransparent_(
+func (x gen_NSWindow) SetTitlebarAppearsTransparent(
 	value bool,
 ) {
-	C.NSWindow_inst_setTitlebarAppearsTransparent_(
+	C.NSWindow_inst_setTitlebarAppearsTransparent(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18346,10 +18346,10 @@ func (x gen_NSWindow) TitlebarAccessoryViewControllers() (
 	return
 }
 
-func (x gen_NSWindow) SetTitlebarAccessoryViewControllers_(
+func (x gen_NSWindow) SetTitlebarAccessoryViewControllers(
 	value core.NSArrayRef,
 ) {
-	C.NSWindow_inst_setTitlebarAccessoryViewControllers_(
+	C.NSWindow_inst_setTitlebarAccessoryViewControllers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18376,10 +18376,10 @@ func (x gen_NSWindow) AllowsToolTipsWhenApplicationIsInactive() (
 	return
 }
 
-func (x gen_NSWindow) SetAllowsToolTipsWhenApplicationIsInactive_(
+func (x gen_NSWindow) SetAllowsToolTipsWhenApplicationIsInactive(
 	value bool,
 ) {
-	C.NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive_(
+	C.NSWindow_inst_setAllowsToolTipsWhenApplicationIsInactive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18406,10 +18406,10 @@ func (x gen_NSWindow) InitialFirstResponder() (
 	return
 }
 
-func (x gen_NSWindow) SetInitialFirstResponder_(
+func (x gen_NSWindow) SetInitialFirstResponder(
 	value NSViewRef,
 ) {
-	C.NSWindow_inst_setInitialFirstResponder_(
+	C.NSWindow_inst_setInitialFirstResponder(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18426,10 +18426,10 @@ func (x gen_NSWindow) AutorecalculatesKeyViewLoop() (
 	return
 }
 
-func (x gen_NSWindow) SetAutorecalculatesKeyViewLoop_(
+func (x gen_NSWindow) SetAutorecalculatesKeyViewLoop(
 	value bool,
 ) {
-	C.NSWindow_inst_setAutorecalculatesKeyViewLoop_(
+	C.NSWindow_inst_setAutorecalculatesKeyViewLoop(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18446,10 +18446,10 @@ func (x gen_NSWindow) AcceptsMouseMovedEvents() (
 	return
 }
 
-func (x gen_NSWindow) SetAcceptsMouseMovedEvents_(
+func (x gen_NSWindow) SetAcceptsMouseMovedEvents(
 	value bool,
 ) {
-	C.NSWindow_inst_setAcceptsMouseMovedEvents_(
+	C.NSWindow_inst_setAcceptsMouseMovedEvents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18466,10 +18466,10 @@ func (x gen_NSWindow) IgnoresMouseEvents() (
 	return
 }
 
-func (x gen_NSWindow) SetIgnoresMouseEvents_(
+func (x gen_NSWindow) SetIgnoresMouseEvents(
 	value bool,
 ) {
-	C.NSWindow_inst_setIgnoresMouseEvents_(
+	C.NSWindow_inst_setIgnoresMouseEvents(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18496,10 +18496,10 @@ func (x gen_NSWindow) IsRestorable() (
 	return
 }
 
-func (x gen_NSWindow) SetRestorable_(
+func (x gen_NSWindow) SetRestorable(
 	value bool,
 ) {
-	C.NSWindow_inst_setRestorable_(
+	C.NSWindow_inst_setRestorable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18516,10 +18516,10 @@ func (x gen_NSWindow) ViewsNeedDisplay() (
 	return
 }
 
-func (x gen_NSWindow) SetViewsNeedDisplay_(
+func (x gen_NSWindow) SetViewsNeedDisplay(
 	value bool,
 ) {
-	C.NSWindow_inst_setViewsNeedDisplay_(
+	C.NSWindow_inst_setViewsNeedDisplay(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18536,10 +18536,10 @@ func (x gen_NSWindow) AllowsConcurrentViewDrawing() (
 	return
 }
 
-func (x gen_NSWindow) SetAllowsConcurrentViewDrawing_(
+func (x gen_NSWindow) SetAllowsConcurrentViewDrawing(
 	value bool,
 ) {
-	C.NSWindow_inst_setAllowsConcurrentViewDrawing_(
+	C.NSWindow_inst_setAllowsConcurrentViewDrawing(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18556,10 +18556,10 @@ func (x gen_NSWindow) IsDocumentEdited() (
 	return
 }
 
-func (x gen_NSWindow) SetDocumentEdited_(
+func (x gen_NSWindow) SetDocumentEdited(
 	value bool,
 ) {
-	C.NSWindow_inst_setDocumentEdited_(
+	C.NSWindow_inst_setDocumentEdited(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18586,10 +18586,10 @@ func (x gen_NSWindow) Title() (
 	return
 }
 
-func (x gen_NSWindow) SetTitle_(
+func (x gen_NSWindow) SetTitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setTitle_(
+	C.NSWindow_inst_setTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18606,10 +18606,10 @@ func (x gen_NSWindow) Subtitle() (
 	return
 }
 
-func (x gen_NSWindow) SetSubtitle_(
+func (x gen_NSWindow) SetSubtitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setSubtitle_(
+	C.NSWindow_inst_setSubtitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18626,10 +18626,10 @@ func (x gen_NSWindow) TitleVisibility() (
 	return
 }
 
-func (x gen_NSWindow) SetTitleVisibility_(
+func (x gen_NSWindow) SetTitleVisibility(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setTitleVisibility_(
+	C.NSWindow_inst_setTitleVisibility(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -18646,10 +18646,10 @@ func (x gen_NSWindow) RepresentedFilename() (
 	return
 }
 
-func (x gen_NSWindow) SetRepresentedFilename_(
+func (x gen_NSWindow) SetRepresentedFilename(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setRepresentedFilename_(
+	C.NSWindow_inst_setRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18666,10 +18666,10 @@ func (x gen_NSWindow) RepresentedURL() (
 	return
 }
 
-func (x gen_NSWindow) SetRepresentedURL_(
+func (x gen_NSWindow) SetRepresentedURL(
 	value core.NSURLRef,
 ) {
-	C.NSWindow_inst_setRepresentedURL_(
+	C.NSWindow_inst_setRepresentedURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18706,10 +18706,10 @@ func (x gen_NSWindow) DisplaysWhenScreenProfileChanges() (
 	return
 }
 
-func (x gen_NSWindow) SetDisplaysWhenScreenProfileChanges_(
+func (x gen_NSWindow) SetDisplaysWhenScreenProfileChanges(
 	value bool,
 ) {
-	C.NSWindow_inst_setDisplaysWhenScreenProfileChanges_(
+	C.NSWindow_inst_setDisplaysWhenScreenProfileChanges(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18726,10 +18726,10 @@ func (x gen_NSWindow) IsMovableByWindowBackground() (
 	return
 }
 
-func (x gen_NSWindow) SetMovableByWindowBackground_(
+func (x gen_NSWindow) SetMovableByWindowBackground(
 	value bool,
 ) {
-	C.NSWindow_inst_setMovableByWindowBackground_(
+	C.NSWindow_inst_setMovableByWindowBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18746,10 +18746,10 @@ func (x gen_NSWindow) IsMovable() (
 	return
 }
 
-func (x gen_NSWindow) SetMovable_(
+func (x gen_NSWindow) SetMovable(
 	value bool,
 ) {
-	C.NSWindow_inst_setMovable_(
+	C.NSWindow_inst_setMovable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18766,10 +18766,10 @@ func (x gen_NSWindow) IsReleasedWhenClosed() (
 	return
 }
 
-func (x gen_NSWindow) SetReleasedWhenClosed_(
+func (x gen_NSWindow) SetReleasedWhenClosed(
 	value bool,
 ) {
-	C.NSWindow_inst_setReleasedWhenClosed_(
+	C.NSWindow_inst_setReleasedWhenClosed(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -18796,10 +18796,10 @@ func (x gen_NSWindow) MiniwindowImage() (
 	return
 }
 
-func (x gen_NSWindow) SetMiniwindowImage_(
+func (x gen_NSWindow) SetMiniwindowImage(
 	value NSImageRef,
 ) {
-	C.NSWindow_inst_setMiniwindowImage_(
+	C.NSWindow_inst_setMiniwindowImage(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18816,10 +18816,10 @@ func (x gen_NSWindow) MiniwindowTitle() (
 	return
 }
 
-func (x gen_NSWindow) SetMiniwindowTitle_(
+func (x gen_NSWindow) SetMiniwindowTitle(
 	value core.NSStringRef,
 ) {
-	C.NSWindow_inst_setMiniwindowTitle_(
+	C.NSWindow_inst_setMiniwindowTitle(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -18906,10 +18906,10 @@ func (x gen_NSWindow) OrderedIndex() (
 	return
 }
 
-func (x gen_NSWindow) SetOrderedIndex_(
+func (x gen_NSWindow) SetOrderedIndex(
 	value core.NSInteger,
 ) {
-	C.NSWindow_inst_setOrderedIndex_(
+	C.NSWindow_inst_setOrderedIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
 	)
@@ -18935,12 +18935,12 @@ func NSWorkspace_fromRef(ref objc.Ref) NSWorkspace {
 	return NSWorkspace_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSWorkspace) OpenURL_(
+func (x gen_NSWorkspace) OpenURL(
 	url core.NSURLRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWorkspace_inst_openURL_(
+	ret := C.NSWorkspace_inst_openURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -18955,23 +18955,23 @@ func (x gen_NSWorkspace) HideOtherApplications() {
 	return
 }
 
-func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs_(
+func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs(
 	fileURLs core.NSArrayRef,
 ) {
-	C.NSWorkspace_inst_activateFileViewerSelectingURLs_(
+	C.NSWorkspace_inst_activateFileViewerSelectingURLs(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fileURLs),
 	)
 	return
 }
 
-func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath_(
+func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath(
 	fullPath core.NSStringRef,
 	rootFullPath core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWorkspace_inst_selectFile_inFileViewerRootedAtPath_(
+	ret := C.NSWorkspace_inst_selectFile_inFileViewerRootedAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 		objc.RefPointer(rootFullPath),
@@ -18980,12 +18980,12 @@ func (x gen_NSWorkspace) SelectFile_inFileViewerRootedAtPath_(
 	return
 }
 
-func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier_(
+func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier(
 	bundleIdentifier core.NSStringRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSWorkspace_inst_URLForApplicationWithBundleIdentifier_(
+	ret := C.NSWorkspace_inst_URLForApplicationWithBundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(bundleIdentifier),
 	)
@@ -18993,12 +18993,12 @@ func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier_(
 	return
 }
 
-func (x gen_NSWorkspace) URLForApplicationToOpenURL_(
+func (x gen_NSWorkspace) URLForApplicationToOpenURL(
 	url core.NSURLRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSWorkspace_inst_URLForApplicationToOpenURL_(
+	ret := C.NSWorkspace_inst_URLForApplicationToOpenURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -19006,12 +19006,12 @@ func (x gen_NSWorkspace) URLForApplicationToOpenURL_(
 	return
 }
 
-func (x gen_NSWorkspace) IsFilePackageAtPath_(
+func (x gen_NSWorkspace) IsFilePackageAtPath(
 	fullPath core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWorkspace_inst_isFilePackageAtPath_(
+	ret := C.NSWorkspace_inst_isFilePackageAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 	)
@@ -19019,12 +19019,12 @@ func (x gen_NSWorkspace) IsFilePackageAtPath_(
 	return
 }
 
-func (x gen_NSWorkspace) IconForFile_(
+func (x gen_NSWorkspace) IconForFile(
 	fullPath core.NSStringRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSWorkspace_inst_iconForFile_(
+	ret := C.NSWorkspace_inst_iconForFile(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPath),
 	)
@@ -19032,12 +19032,12 @@ func (x gen_NSWorkspace) IconForFile_(
 	return
 }
 
-func (x gen_NSWorkspace) IconForFiles_(
+func (x gen_NSWorkspace) IconForFiles(
 	fullPaths core.NSArrayRef,
 ) (
 	r0 NSImage,
 ) {
-	ret := C.NSWorkspace_inst_iconForFiles_(
+	ret := C.NSWorkspace_inst_iconForFiles(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(fullPaths),
 	)
@@ -19045,12 +19045,12 @@ func (x gen_NSWorkspace) IconForFiles_(
 	return
 }
 
-func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath_(
+func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 	path core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWorkspace_inst_unmountAndEjectDeviceAtPath_(
+	ret := C.NSWorkspace_inst_unmountAndEjectDeviceAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
@@ -19058,12 +19058,12 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath_(
 	return
 }
 
-func (x gen_NSWorkspace) DesktopImageURLForScreen_(
+func (x gen_NSWorkspace) DesktopImageURLForScreen(
 	screen NSScreenRef,
 ) (
 	r0 core.NSURL,
 ) {
-	ret := C.NSWorkspace_inst_desktopImageURLForScreen_(
+	ret := C.NSWorkspace_inst_desktopImageURLForScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 	)
@@ -19071,12 +19071,12 @@ func (x gen_NSWorkspace) DesktopImageURLForScreen_(
 	return
 }
 
-func (x gen_NSWorkspace) DesktopImageOptionsForScreen_(
+func (x gen_NSWorkspace) DesktopImageOptionsForScreen(
 	screen NSScreenRef,
 ) (
 	r0 core.NSDictionary,
 ) {
-	ret := C.NSWorkspace_inst_desktopImageOptionsForScreen_(
+	ret := C.NSWorkspace_inst_desktopImageOptionsForScreen(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 	)
@@ -19084,12 +19084,12 @@ func (x gen_NSWorkspace) DesktopImageOptionsForScreen_(
 	return
 }
 
-func (x gen_NSWorkspace) ShowSearchResultsForQueryString_(
+func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
 	queryString core.NSStringRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSWorkspace_inst_showSearchResultsForQueryString_(
+	ret := C.NSWorkspace_inst_showSearchResultsForQueryString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(queryString),
 	)
@@ -19097,22 +19097,22 @@ func (x gen_NSWorkspace) ShowSearchResultsForQueryString_(
 	return
 }
 
-func (x gen_NSWorkspace) NoteFileSystemChanged_(
+func (x gen_NSWorkspace) NoteFileSystemChanged(
 	path core.NSStringRef,
 ) {
-	C.NSWorkspace_inst_noteFileSystemChanged_(
+	C.NSWorkspace_inst_noteFileSystemChanged(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
 	)
 	return
 }
 
-func (x gen_NSWorkspace) ExtendPowerOffBy_(
+func (x gen_NSWorkspace) ExtendPowerOffBy(
 	requested core.NSInteger,
 ) (
 	r0 core.NSInteger,
 ) {
-	ret := C.NSWorkspace_inst_extendPowerOffBy_(
+	ret := C.NSWorkspace_inst_extendPowerOffBy(
 		unsafe.Pointer(x.Pointer()),
 		C.long(requested),
 	)
@@ -19120,12 +19120,12 @@ func (x gen_NSWorkspace) ExtendPowerOffBy_(
 	return
 }
 
-func (x gen_NSWorkspace) URLsForApplicationsToOpenURL_(
+func (x gen_NSWorkspace) URLsForApplicationsToOpenURL(
 	url core.NSURLRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSWorkspace_inst_URLsForApplicationsToOpenURL_(
+	ret := C.NSWorkspace_inst_URLsForApplicationsToOpenURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 	)
@@ -19133,12 +19133,12 @@ func (x gen_NSWorkspace) URLsForApplicationsToOpenURL_(
 	return
 }
 
-func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier_(
+func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier(
 	bundleIdentifier core.NSStringRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier_(
+	ret := C.NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(bundleIdentifier),
 	)
@@ -19295,13 +19295,13 @@ func NSColor_fromRef(ref objc.Ref) NSColor {
 	return NSColor_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSColor) BlendedColorWithFraction_ofColor_(
+func (x gen_NSColor) BlendedColorWithFraction_ofColor(
 	fraction core.CGFloat,
 	color NSColorRef,
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_inst_blendedColorWithFraction_ofColor_(
+	ret := C.NSColor_inst_blendedColorWithFraction_ofColor(
 		unsafe.Pointer(x.Pointer()),
 		C.double(fraction),
 		objc.RefPointer(color),
@@ -19310,12 +19310,12 @@ func (x gen_NSColor) BlendedColorWithFraction_ofColor_(
 	return
 }
 
-func (x gen_NSColor) ColorWithAlphaComponent_(
+func (x gen_NSColor) ColorWithAlphaComponent(
 	alpha core.CGFloat,
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_inst_colorWithAlphaComponent_(
+	ret := C.NSColor_inst_colorWithAlphaComponent(
 		unsafe.Pointer(x.Pointer()),
 		C.double(alpha),
 	)
@@ -19323,12 +19323,12 @@ func (x gen_NSColor) ColorWithAlphaComponent_(
 	return
 }
 
-func (x gen_NSColor) HighlightWithLevel_(
+func (x gen_NSColor) HighlightWithLevel(
 	val core.CGFloat,
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_inst_highlightWithLevel_(
+	ret := C.NSColor_inst_highlightWithLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.double(val),
 	)
@@ -19336,12 +19336,12 @@ func (x gen_NSColor) HighlightWithLevel_(
 	return
 }
 
-func (x gen_NSColor) ShadowWithLevel_(
+func (x gen_NSColor) ShadowWithLevel(
 	val core.CGFloat,
 ) (
 	r0 NSColor,
 ) {
-	ret := C.NSColor_inst_shadowWithLevel_(
+	ret := C.NSColor_inst_shadowWithLevel(
 		unsafe.Pointer(x.Pointer()),
 		C.double(val),
 	)
@@ -19349,20 +19349,20 @@ func (x gen_NSColor) ShadowWithLevel_(
 	return
 }
 
-func (x gen_NSColor) WriteToPasteboard_(
+func (x gen_NSColor) WriteToPasteboard(
 	pasteBoard NSPasteboardRef,
 ) {
-	C.NSColor_inst_writeToPasteboard_(
+	C.NSColor_inst_writeToPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pasteBoard),
 	)
 	return
 }
 
-func (x gen_NSColor) DrawSwatchInRect_(
+func (x gen_NSColor) DrawSwatchInRect(
 	rect core.NSRect,
 ) {
-	C.NSColor_inst_drawSwatchInRect_(
+	C.NSColor_inst_drawSwatchInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -19569,13 +19569,13 @@ func NSTextView_fromRef(ref objc.Ref) NSTextView {
 	return NSTextView_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSTextView) InitWithFrame_textContainer__asNSTextView(
+func (x gen_NSTextView) InitWithFrame_textContainer_asNSTextView(
 	frameRect core.NSRect,
 	container NSTextContainerRef,
 ) (
 	r0 NSTextView,
 ) {
-	ret := C.NSTextView_inst_initWithFrame_textContainer_(
+	ret := C.NSTextView_inst_initWithFrame_textContainer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 		objc.RefPointer(container),
@@ -19584,12 +19584,12 @@ func (x gen_NSTextView) InitWithFrame_textContainer__asNSTextView(
 	return
 }
 
-func (x gen_NSTextView) InitWithFrame__asNSTextView(
+func (x gen_NSTextView) InitWithFrame_asNSTextView(
 	frameRect core.NSRect,
 ) (
 	r0 NSTextView,
 ) {
-	ret := C.NSTextView_inst_initWithFrame_(
+	ret := C.NSTextView_inst_initWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -19597,10 +19597,10 @@ func (x gen_NSTextView) InitWithFrame__asNSTextView(
 	return
 }
 
-func (x gen_NSTextView) ReplaceTextContainer_(
+func (x gen_NSTextView) ReplaceTextContainer(
 	newContainer NSTextContainerRef,
 ) {
-	C.NSTextView_inst_replaceTextContainer_(
+	C.NSTextView_inst_replaceTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newContainer),
 	)
@@ -19614,21 +19614,21 @@ func (x gen_NSTextView) InvalidateTextContainerOrigin() {
 	return
 }
 
-func (x gen_NSTextView) ChangeDocumentBackgroundColor_(
+func (x gen_NSTextView) ChangeDocumentBackgroundColor(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeDocumentBackgroundColor_(
+	C.NSTextView_inst_changeDocumentBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) SetNeedsDisplayInRect_avoidAdditionalLayout_(
+func (x gen_NSTextView) SetNeedsDisplayInRect_avoidAdditionalLayout(
 	rect core.NSRect,
 	flag bool,
 ) {
-	C.NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout_(
+	C.NSTextView_inst_setNeedsDisplayInRect_avoidAdditionalLayout(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		convertToObjCBool(flag),
@@ -19636,12 +19636,12 @@ func (x gen_NSTextView) SetNeedsDisplayInRect_avoidAdditionalLayout_(
 	return
 }
 
-func (x gen_NSTextView) DrawInsertionPointInRect_color_turnedOn_(
+func (x gen_NSTextView) DrawInsertionPointInRect_color_turnedOn(
 	rect core.NSRect,
 	color NSColorRef,
 	flag bool,
 ) {
-	C.NSTextView_inst_drawInsertionPointInRect_color_turnedOn_(
+	C.NSTextView_inst_drawInsertionPointInRect_color_turnedOn(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(color),
@@ -19650,20 +19650,20 @@ func (x gen_NSTextView) DrawInsertionPointInRect_color_turnedOn_(
 	return
 }
 
-func (x gen_NSTextView) DrawViewBackgroundInRect_(
+func (x gen_NSTextView) DrawViewBackgroundInRect(
 	rect core.NSRect,
 ) {
-	C.NSTextView_inst_drawViewBackgroundInRect_(
+	C.NSTextView_inst_drawViewBackgroundInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 	return
 }
 
-func (x gen_NSTextView) SetConstrainedFrameSize_(
+func (x gen_NSTextView) SetConstrainedFrameSize(
 	desiredSize core.NSSize,
 ) {
-	C.NSTextView_inst_setConstrainedFrameSize_(
+	C.NSTextView_inst_setConstrainedFrameSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&desiredSize)),
 	)
@@ -19677,62 +19677,62 @@ func (x gen_NSTextView) CleanUpAfterDragOperation() {
 	return
 }
 
-func (x gen_NSTextView) Outline_(
+func (x gen_NSTextView) Outline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_outline_(
+	C.NSTextView_inst_outline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticQuoteSubstitution_(
+func (x gen_NSTextView) ToggleAutomaticQuoteSubstitution(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticQuoteSubstitution_(
+	C.NSTextView_inst_toggleAutomaticQuoteSubstitution(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticLinkDetection_(
+func (x gen_NSTextView) ToggleAutomaticLinkDetection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticLinkDetection_(
+	C.NSTextView_inst_toggleAutomaticLinkDetection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticTextCompletion_(
+func (x gen_NSTextView) ToggleAutomaticTextCompletion(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticTextCompletion_(
+	C.NSTextView_inst_toggleAutomaticTextCompletion(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) UpdateInsertionPointStateAndRestartTimer_(
+func (x gen_NSTextView) UpdateInsertionPointStateAndRestartTimer(
 	restartFlag bool,
 ) {
-	C.NSTextView_inst_updateInsertionPointStateAndRestartTimer_(
+	C.NSTextView_inst_updateInsertionPointStateAndRestartTimer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(restartFlag),
 	)
 	return
 }
 
-func (x gen_NSTextView) CharacterIndexForInsertionAtPoint_(
+func (x gen_NSTextView) CharacterIndexForInsertionAtPoint(
 	point core.NSPoint,
 ) (
 	r0 core.NSUInteger,
 ) {
-	ret := C.NSTextView_inst_characterIndexForInsertionAtPoint_(
+	ret := C.NSTextView_inst_characterIndexForInsertionAtPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -19747,12 +19747,12 @@ func (x gen_NSTextView) UpdateCandidates() {
 	return
 }
 
-func (x gen_NSTextView) ReadSelectionFromPasteboard_(
+func (x gen_NSTextView) ReadSelectionFromPasteboard(
 	pboard NSPasteboardRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextView_inst_readSelectionFromPasteboard_(
+	ret := C.NSTextView_inst_readSelectionFromPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pboard),
 	)
@@ -19760,13 +19760,13 @@ func (x gen_NSTextView) ReadSelectionFromPasteboard_(
 	return
 }
 
-func (x gen_NSTextView) WriteSelectionToPasteboard_types_(
+func (x gen_NSTextView) WriteSelectionToPasteboard_types(
 	pboard NSPasteboardRef,
 	types core.NSArrayRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextView_inst_writeSelectionToPasteboard_types_(
+	ret := C.NSTextView_inst_writeSelectionToPasteboard_types(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(pboard),
 		objc.RefPointer(types),
@@ -19775,131 +19775,131 @@ func (x gen_NSTextView) WriteSelectionToPasteboard_types_(
 	return
 }
 
-func (x gen_NSTextView) AlignJustified_(
+func (x gen_NSTextView) AlignJustified(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_alignJustified_(
+	C.NSTextView_inst_alignJustified(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ChangeAttributes_(
+func (x gen_NSTextView) ChangeAttributes(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeAttributes_(
+	C.NSTextView_inst_changeAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ChangeColor_(
+func (x gen_NSTextView) ChangeColor(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeColor_(
+	C.NSTextView_inst_changeColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) UseStandardKerning_(
+func (x gen_NSTextView) UseStandardKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useStandardKerning_(
+	C.NSTextView_inst_useStandardKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) LowerBaseline_(
+func (x gen_NSTextView) LowerBaseline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_lowerBaseline_(
+	C.NSTextView_inst_lowerBaseline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) RaiseBaseline_(
+func (x gen_NSTextView) RaiseBaseline(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_raiseBaseline_(
+	C.NSTextView_inst_raiseBaseline(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) TurnOffKerning_(
+func (x gen_NSTextView) TurnOffKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_turnOffKerning_(
+	C.NSTextView_inst_turnOffKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) LoosenKerning_(
+func (x gen_NSTextView) LoosenKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_loosenKerning_(
+	C.NSTextView_inst_loosenKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) TightenKerning_(
+func (x gen_NSTextView) TightenKerning(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_tightenKerning_(
+	C.NSTextView_inst_tightenKerning(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) UseStandardLigatures_(
+func (x gen_NSTextView) UseStandardLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useStandardLigatures_(
+	C.NSTextView_inst_useStandardLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) TurnOffLigatures_(
+func (x gen_NSTextView) TurnOffLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_turnOffLigatures_(
+	C.NSTextView_inst_turnOffLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) UseAllLigatures_(
+func (x gen_NSTextView) UseAllLigatures(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_useAllLigatures_(
+	C.NSTextView_inst_useAllLigatures(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ClickedOnLink_atIndex_(
+func (x gen_NSTextView) ClickedOnLink_atIndex(
 	link objc.Ref,
 	charIndex core.NSUInteger,
 ) {
-	C.NSTextView_inst_clickedOnLink_atIndex_(
+	C.NSTextView_inst_clickedOnLink_atIndex(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(link),
 		C.ulong(charIndex),
@@ -19907,20 +19907,20 @@ func (x gen_NSTextView) ClickedOnLink_atIndex_(
 	return
 }
 
-func (x gen_NSTextView) PasteAsPlainText_(
+func (x gen_NSTextView) PasteAsPlainText(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_pasteAsPlainText_(
+	C.NSTextView_inst_pasteAsPlainText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) PasteAsRichText_(
+func (x gen_NSTextView) PasteAsRichText(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_pasteAsRichText_(
+	C.NSTextView_inst_pasteAsRichText(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -19955,13 +19955,13 @@ func (x gen_NSTextView) UpdateDragTypeRegistration() {
 	return
 }
 
-func (x gen_NSTextView) ShouldChangeTextInRanges_replacementStrings_(
+func (x gen_NSTextView) ShouldChangeTextInRanges_replacementStrings(
 	affectedRanges core.NSArrayRef,
 	replacementStrings core.NSArrayRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextView_inst_shouldChangeTextInRanges_replacementStrings_(
+	ret := C.NSTextView_inst_shouldChangeTextInRanges_replacementStrings(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(affectedRanges),
 		objc.RefPointer(replacementStrings),
@@ -19977,54 +19977,54 @@ func (x gen_NSTextView) DidChangeText() {
 	return
 }
 
-func (x gen_NSTextView) ToggleSmartInsertDelete_(
+func (x gen_NSTextView) ToggleSmartInsertDelete(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleSmartInsertDelete_(
+	C.NSTextView_inst_toggleSmartInsertDelete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleContinuousSpellChecking_(
+func (x gen_NSTextView) ToggleContinuousSpellChecking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleContinuousSpellChecking_(
+	C.NSTextView_inst_toggleContinuousSpellChecking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleGrammarChecking_(
+func (x gen_NSTextView) ToggleGrammarChecking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleGrammarChecking_(
+	C.NSTextView_inst_toggleGrammarChecking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontSharingServicePicker_(
+func (x gen_NSTextView) OrderFrontSharingServicePicker(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSharingServicePicker_(
+	C.NSTextView_inst_orderFrontSharingServicePicker(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack_(
+func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack(
 	event NSEventRef,
 	mouseOffset core.NSSize,
 	slideBack bool,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSTextView_inst_dragSelectionWithEvent_offset_slideBack_(
+	ret := C.NSTextView_inst_dragSelectionWithEvent_offset_slideBack(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 		*(*C.NSSize)(unsafe.Pointer(&mouseOffset)),
@@ -20034,150 +20034,150 @@ func (x gen_NSTextView) DragSelectionWithEvent_offset_slideBack_(
 	return
 }
 
-func (x gen_NSTextView) StartSpeaking_(
+func (x gen_NSTextView) StartSpeaking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_startSpeaking_(
+	C.NSTextView_inst_startSpeaking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) StopSpeaking_(
+func (x gen_NSTextView) StopSpeaking(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_stopSpeaking_(
+	C.NSTextView_inst_stopSpeaking(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) PerformFindPanelAction_(
+func (x gen_NSTextView) PerformFindPanelAction(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_performFindPanelAction_(
+	C.NSTextView_inst_performFindPanelAction(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontLinkPanel_(
+func (x gen_NSTextView) OrderFrontLinkPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontLinkPanel_(
+	C.NSTextView_inst_orderFrontLinkPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontListPanel_(
+func (x gen_NSTextView) OrderFrontListPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontListPanel_(
+	C.NSTextView_inst_orderFrontListPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontSpacingPanel_(
+func (x gen_NSTextView) OrderFrontSpacingPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSpacingPanel_(
+	C.NSTextView_inst_orderFrontSpacingPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontTablePanel_(
+func (x gen_NSTextView) OrderFrontTablePanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontTablePanel_(
+	C.NSTextView_inst_orderFrontTablePanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) OrderFrontSubstitutionsPanel_(
+func (x gen_NSTextView) OrderFrontSubstitutionsPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_orderFrontSubstitutionsPanel_(
+	C.NSTextView_inst_orderFrontSubstitutionsPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) Complete_(
+func (x gen_NSTextView) Complete(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_complete_(
+	C.NSTextView_inst_complete(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) CheckTextInDocument_(
+func (x gen_NSTextView) CheckTextInDocument(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_checkTextInDocument_(
+	C.NSTextView_inst_checkTextInDocument(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) CheckTextInSelection_(
+func (x gen_NSTextView) CheckTextInSelection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_checkTextInSelection_(
+	C.NSTextView_inst_checkTextInSelection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticDashSubstitution_(
+func (x gen_NSTextView) ToggleAutomaticDashSubstitution(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticDashSubstitution_(
+	C.NSTextView_inst_toggleAutomaticDashSubstitution(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticDataDetection_(
+func (x gen_NSTextView) ToggleAutomaticDataDetection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticDataDetection_(
+	C.NSTextView_inst_toggleAutomaticDataDetection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticSpellingCorrection_(
+func (x gen_NSTextView) ToggleAutomaticSpellingCorrection(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticSpellingCorrection_(
+	C.NSTextView_inst_toggleAutomaticSpellingCorrection(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) ToggleAutomaticTextReplacement_(
+func (x gen_NSTextView) ToggleAutomaticTextReplacement(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleAutomaticTextReplacement_(
+	C.NSTextView_inst_toggleAutomaticTextReplacement(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20191,22 +20191,22 @@ func (x gen_NSTextView) UpdateQuickLookPreviewPanel() {
 	return
 }
 
-func (x gen_NSTextView) ToggleQuickLookPreviewPanel_(
+func (x gen_NSTextView) ToggleQuickLookPreviewPanel(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_toggleQuickLookPreviewPanel_(
+	C.NSTextView_inst_toggleQuickLookPreviewPanel(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSTextView) QuickLookPreviewableItemsInRanges_(
+func (x gen_NSTextView) QuickLookPreviewableItemsInRanges(
 	ranges core.NSArrayRef,
 ) (
 	r0 core.NSArray,
 ) {
-	ret := C.NSTextView_inst_quickLookPreviewableItemsInRanges_(
+	ret := C.NSTextView_inst_quickLookPreviewableItemsInRanges(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(ranges),
 	)
@@ -20214,10 +20214,10 @@ func (x gen_NSTextView) QuickLookPreviewableItemsInRanges_(
 	return
 }
 
-func (x gen_NSTextView) ChangeLayoutOrientation_(
+func (x gen_NSTextView) ChangeLayoutOrientation(
 	sender objc.Ref,
 ) {
-	C.NSTextView_inst_changeLayoutOrientation_(
+	C.NSTextView_inst_changeLayoutOrientation(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
@@ -20258,10 +20258,10 @@ func (x gen_NSTextView) Delegate() (
 	return
 }
 
-func (x gen_NSTextView) SetDelegate_(
+func (x gen_NSTextView) SetDelegate(
 	value objc.Ref,
 ) {
-	C.NSTextView_inst_setDelegate_(
+	C.NSTextView_inst_setDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20278,10 +20278,10 @@ func (x gen_NSTextView) TextContainer() (
 	return
 }
 
-func (x gen_NSTextView) SetTextContainer_(
+func (x gen_NSTextView) SetTextContainer(
 	value NSTextContainerRef,
 ) {
-	C.NSTextView_inst_setTextContainer_(
+	C.NSTextView_inst_setTextContainer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20298,10 +20298,10 @@ func (x gen_NSTextView) TextContainerInset() (
 	return
 }
 
-func (x gen_NSTextView) SetTextContainerInset_(
+func (x gen_NSTextView) SetTextContainerInset(
 	value core.NSSize,
 ) {
-	C.NSTextView_inst_setTextContainerInset_(
+	C.NSTextView_inst_setTextContainerInset(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
@@ -20338,10 +20338,10 @@ func (x gen_NSTextView) BackgroundColor() (
 	return
 }
 
-func (x gen_NSTextView) SetBackgroundColor_(
+func (x gen_NSTextView) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSTextView_inst_setBackgroundColor_(
+	C.NSTextView_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20358,10 +20358,10 @@ func (x gen_NSTextView) DrawsBackground() (
 	return
 }
 
-func (x gen_NSTextView) SetDrawsBackground_(
+func (x gen_NSTextView) SetDrawsBackground(
 	value bool,
 ) {
-	C.NSTextView_inst_setDrawsBackground_(
+	C.NSTextView_inst_setDrawsBackground(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20378,10 +20378,10 @@ func (x gen_NSTextView) AllowsDocumentBackgroundColorChange() (
 	return
 }
 
-func (x gen_NSTextView) SetAllowsDocumentBackgroundColorChange_(
+func (x gen_NSTextView) SetAllowsDocumentBackgroundColorChange(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsDocumentBackgroundColorChange_(
+	C.NSTextView_inst_setAllowsDocumentBackgroundColorChange(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20408,10 +20408,10 @@ func (x gen_NSTextView) AllowedInputSourceLocales() (
 	return
 }
 
-func (x gen_NSTextView) SetAllowedInputSourceLocales_(
+func (x gen_NSTextView) SetAllowedInputSourceLocales(
 	value core.NSArrayRef,
 ) {
-	C.NSTextView_inst_setAllowedInputSourceLocales_(
+	C.NSTextView_inst_setAllowedInputSourceLocales(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20428,10 +20428,10 @@ func (x gen_NSTextView) AllowsUndo() (
 	return
 }
 
-func (x gen_NSTextView) SetAllowsUndo_(
+func (x gen_NSTextView) SetAllowsUndo(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsUndo_(
+	C.NSTextView_inst_setAllowsUndo(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20448,10 +20448,10 @@ func (x gen_NSTextView) IsEditable() (
 	return
 }
 
-func (x gen_NSTextView) SetEditable_(
+func (x gen_NSTextView) SetEditable(
 	value bool,
 ) {
-	C.NSTextView_inst_setEditable_(
+	C.NSTextView_inst_setEditable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20468,10 +20468,10 @@ func (x gen_NSTextView) IsSelectable() (
 	return
 }
 
-func (x gen_NSTextView) SetSelectable_(
+func (x gen_NSTextView) SetSelectable(
 	value bool,
 ) {
-	C.NSTextView_inst_setSelectable_(
+	C.NSTextView_inst_setSelectable(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20488,10 +20488,10 @@ func (x gen_NSTextView) IsFieldEditor() (
 	return
 }
 
-func (x gen_NSTextView) SetFieldEditor_(
+func (x gen_NSTextView) SetFieldEditor(
 	value bool,
 ) {
-	C.NSTextView_inst_setFieldEditor_(
+	C.NSTextView_inst_setFieldEditor(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20508,10 +20508,10 @@ func (x gen_NSTextView) IsRichText() (
 	return
 }
 
-func (x gen_NSTextView) SetRichText_(
+func (x gen_NSTextView) SetRichText(
 	value bool,
 ) {
-	C.NSTextView_inst_setRichText_(
+	C.NSTextView_inst_setRichText(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20528,10 +20528,10 @@ func (x gen_NSTextView) ImportsGraphics() (
 	return
 }
 
-func (x gen_NSTextView) SetImportsGraphics_(
+func (x gen_NSTextView) SetImportsGraphics(
 	value bool,
 ) {
-	C.NSTextView_inst_setImportsGraphics_(
+	C.NSTextView_inst_setImportsGraphics(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20548,10 +20548,10 @@ func (x gen_NSTextView) AllowsImageEditing() (
 	return
 }
 
-func (x gen_NSTextView) SetAllowsImageEditing_(
+func (x gen_NSTextView) SetAllowsImageEditing(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsImageEditing_(
+	C.NSTextView_inst_setAllowsImageEditing(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20568,10 +20568,10 @@ func (x gen_NSTextView) IsAutomaticQuoteSubstitutionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticQuoteSubstitutionEnabled_(
+func (x gen_NSTextView) SetAutomaticQuoteSubstitutionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticQuoteSubstitutionEnabled_(
+	C.NSTextView_inst_setAutomaticQuoteSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20588,10 +20588,10 @@ func (x gen_NSTextView) IsAutomaticLinkDetectionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticLinkDetectionEnabled_(
+func (x gen_NSTextView) SetAutomaticLinkDetectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticLinkDetectionEnabled_(
+	C.NSTextView_inst_setAutomaticLinkDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20608,10 +20608,10 @@ func (x gen_NSTextView) DisplaysLinkToolTips() (
 	return
 }
 
-func (x gen_NSTextView) SetDisplaysLinkToolTips_(
+func (x gen_NSTextView) SetDisplaysLinkToolTips(
 	value bool,
 ) {
-	C.NSTextView_inst_setDisplaysLinkToolTips_(
+	C.NSTextView_inst_setDisplaysLinkToolTips(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20628,10 +20628,10 @@ func (x gen_NSTextView) IsAutomaticTextCompletionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticTextCompletionEnabled_(
+func (x gen_NSTextView) SetAutomaticTextCompletionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticTextCompletionEnabled_(
+	C.NSTextView_inst_setAutomaticTextCompletionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20648,10 +20648,10 @@ func (x gen_NSTextView) UsesAdaptiveColorMappingForDarkAppearance() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesAdaptiveColorMappingForDarkAppearance_(
+func (x gen_NSTextView) SetUsesAdaptiveColorMappingForDarkAppearance(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance_(
+	C.NSTextView_inst_setUsesAdaptiveColorMappingForDarkAppearance(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20668,10 +20668,10 @@ func (x gen_NSTextView) UsesRolloverButtonForSelection() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesRolloverButtonForSelection_(
+func (x gen_NSTextView) SetUsesRolloverButtonForSelection(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesRolloverButtonForSelection_(
+	C.NSTextView_inst_setUsesRolloverButtonForSelection(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20688,10 +20688,10 @@ func (x gen_NSTextView) UsesRuler() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesRuler_(
+func (x gen_NSTextView) SetUsesRuler(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesRuler_(
+	C.NSTextView_inst_setUsesRuler(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20708,10 +20708,10 @@ func (x gen_NSTextView) IsRulerVisible() (
 	return
 }
 
-func (x gen_NSTextView) SetRulerVisible_(
+func (x gen_NSTextView) SetRulerVisible(
 	value bool,
 ) {
-	C.NSTextView_inst_setRulerVisible_(
+	C.NSTextView_inst_setRulerVisible(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20728,10 +20728,10 @@ func (x gen_NSTextView) UsesInspectorBar() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesInspectorBar_(
+func (x gen_NSTextView) SetUsesInspectorBar(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesInspectorBar_(
+	C.NSTextView_inst_setUsesInspectorBar(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20748,10 +20748,10 @@ func (x gen_NSTextView) SelectedRanges() (
 	return
 }
 
-func (x gen_NSTextView) SetSelectedRanges_(
+func (x gen_NSTextView) SetSelectedRanges(
 	value core.NSArrayRef,
 ) {
-	C.NSTextView_inst_setSelectedRanges_(
+	C.NSTextView_inst_setSelectedRanges(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20768,10 +20768,10 @@ func (x gen_NSTextView) InsertionPointColor() (
 	return
 }
 
-func (x gen_NSTextView) SetInsertionPointColor_(
+func (x gen_NSTextView) SetInsertionPointColor(
 	value NSColorRef,
 ) {
-	C.NSTextView_inst_setInsertionPointColor_(
+	C.NSTextView_inst_setInsertionPointColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20788,10 +20788,10 @@ func (x gen_NSTextView) SelectedTextAttributes() (
 	return
 }
 
-func (x gen_NSTextView) SetSelectedTextAttributes_(
+func (x gen_NSTextView) SetSelectedTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setSelectedTextAttributes_(
+	C.NSTextView_inst_setSelectedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20808,10 +20808,10 @@ func (x gen_NSTextView) MarkedTextAttributes() (
 	return
 }
 
-func (x gen_NSTextView) SetMarkedTextAttributes_(
+func (x gen_NSTextView) SetMarkedTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setMarkedTextAttributes_(
+	C.NSTextView_inst_setMarkedTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20828,10 +20828,10 @@ func (x gen_NSTextView) LinkTextAttributes() (
 	return
 }
 
-func (x gen_NSTextView) SetLinkTextAttributes_(
+func (x gen_NSTextView) SetLinkTextAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setLinkTextAttributes_(
+	C.NSTextView_inst_setLinkTextAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20868,10 +20868,10 @@ func (x gen_NSTextView) TypingAttributes() (
 	return
 }
 
-func (x gen_NSTextView) SetTypingAttributes_(
+func (x gen_NSTextView) SetTypingAttributes(
 	value core.NSDictionaryRef,
 ) {
-	C.NSTextView_inst_setTypingAttributes_(
+	C.NSTextView_inst_setTypingAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -20938,10 +20938,10 @@ func (x gen_NSTextView) SmartInsertDeleteEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetSmartInsertDeleteEnabled_(
+func (x gen_NSTextView) SetSmartInsertDeleteEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setSmartInsertDeleteEnabled_(
+	C.NSTextView_inst_setSmartInsertDeleteEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20958,10 +20958,10 @@ func (x gen_NSTextView) IsContinuousSpellCheckingEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetContinuousSpellCheckingEnabled_(
+func (x gen_NSTextView) SetContinuousSpellCheckingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setContinuousSpellCheckingEnabled_(
+	C.NSTextView_inst_setContinuousSpellCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -20988,10 +20988,10 @@ func (x gen_NSTextView) IsGrammarCheckingEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetGrammarCheckingEnabled_(
+func (x gen_NSTextView) SetGrammarCheckingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setGrammarCheckingEnabled_(
+	C.NSTextView_inst_setGrammarCheckingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21008,10 +21008,10 @@ func (x gen_NSTextView) AcceptsGlyphInfo() (
 	return
 }
 
-func (x gen_NSTextView) SetAcceptsGlyphInfo_(
+func (x gen_NSTextView) SetAcceptsGlyphInfo(
 	value bool,
 ) {
-	C.NSTextView_inst_setAcceptsGlyphInfo_(
+	C.NSTextView_inst_setAcceptsGlyphInfo(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21028,10 +21028,10 @@ func (x gen_NSTextView) UsesFontPanel() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesFontPanel_(
+func (x gen_NSTextView) SetUsesFontPanel(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFontPanel_(
+	C.NSTextView_inst_setUsesFontPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21048,10 +21048,10 @@ func (x gen_NSTextView) UsesFindPanel() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesFindPanel_(
+func (x gen_NSTextView) SetUsesFindPanel(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFindPanel_(
+	C.NSTextView_inst_setUsesFindPanel(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21068,10 +21068,10 @@ func (x gen_NSTextView) IsAutomaticDashSubstitutionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticDashSubstitutionEnabled_(
+func (x gen_NSTextView) SetAutomaticDashSubstitutionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticDashSubstitutionEnabled_(
+	C.NSTextView_inst_setAutomaticDashSubstitutionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21088,10 +21088,10 @@ func (x gen_NSTextView) IsAutomaticDataDetectionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticDataDetectionEnabled_(
+func (x gen_NSTextView) SetAutomaticDataDetectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticDataDetectionEnabled_(
+	C.NSTextView_inst_setAutomaticDataDetectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21108,10 +21108,10 @@ func (x gen_NSTextView) IsAutomaticSpellingCorrectionEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticSpellingCorrectionEnabled_(
+func (x gen_NSTextView) SetAutomaticSpellingCorrectionEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticSpellingCorrectionEnabled_(
+	C.NSTextView_inst_setAutomaticSpellingCorrectionEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21128,10 +21128,10 @@ func (x gen_NSTextView) IsAutomaticTextReplacementEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetAutomaticTextReplacementEnabled_(
+func (x gen_NSTextView) SetAutomaticTextReplacementEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setAutomaticTextReplacementEnabled_(
+	C.NSTextView_inst_setAutomaticTextReplacementEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21148,10 +21148,10 @@ func (x gen_NSTextView) UsesFindBar() (
 	return
 }
 
-func (x gen_NSTextView) SetUsesFindBar_(
+func (x gen_NSTextView) SetUsesFindBar(
 	value bool,
 ) {
-	C.NSTextView_inst_setUsesFindBar_(
+	C.NSTextView_inst_setUsesFindBar(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21168,10 +21168,10 @@ func (x gen_NSTextView) IsIncrementalSearchingEnabled() (
 	return
 }
 
-func (x gen_NSTextView) SetIncrementalSearchingEnabled_(
+func (x gen_NSTextView) SetIncrementalSearchingEnabled(
 	value bool,
 ) {
-	C.NSTextView_inst_setIncrementalSearchingEnabled_(
+	C.NSTextView_inst_setIncrementalSearchingEnabled(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21188,10 +21188,10 @@ func (x gen_NSTextView) AllowsCharacterPickerTouchBarItem() (
 	return
 }
 
-func (x gen_NSTextView) SetAllowsCharacterPickerTouchBarItem_(
+func (x gen_NSTextView) SetAllowsCharacterPickerTouchBarItem(
 	value bool,
 ) {
-	C.NSTextView_inst_setAllowsCharacterPickerTouchBarItem_(
+	C.NSTextView_inst_setAllowsCharacterPickerTouchBarItem(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -21208,10 +21208,10 @@ func (x gen_NSTextView) Font() (
 	return
 }
 
-func (x gen_NSTextView) SetFont_(
+func (x gen_NSTextView) SetFont(
 	value NSFontRef,
 ) {
-	C.NSTextView_inst_setFont_(
+	C.NSTextView_inst_setFont(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -21237,12 +21237,12 @@ func NSView_fromRef(ref objc.Ref) NSView {
 	return NSView_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSView) InitWithFrame__asNSView(
+func (x gen_NSView) InitWithFrame_asNSView(
 	frameRect core.NSRect,
 ) (
 	r0 NSView,
 ) {
-	ret := C.NSView_inst_initWithFrame_(
+	ret := C.NSView_inst_initWithFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
@@ -21257,22 +21257,22 @@ func (x gen_NSView) PrepareForReuse() {
 	return
 }
 
-func (x gen_NSView) AddSubview_(
+func (x gen_NSView) AddSubview(
 	view NSViewRef,
 ) {
-	C.NSView_inst_addSubview_(
+	C.NSView_inst_addSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
 	return
 }
 
-func (x gen_NSView) AddSubview_positioned_relativeTo_(
+func (x gen_NSView) AddSubview_positioned_relativeTo(
 	view NSViewRef,
 	place core.NSUInteger,
 	otherView NSViewRef,
 ) {
-	C.NSView_inst_addSubview_positioned_relativeTo_(
+	C.NSView_inst_addSubview_positioned_relativeTo(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 		C.ulong(place),
@@ -21281,10 +21281,10 @@ func (x gen_NSView) AddSubview_positioned_relativeTo_(
 	return
 }
 
-func (x gen_NSView) DidAddSubview_(
+func (x gen_NSView) DidAddSubview(
 	subview NSViewRef,
 ) {
-	C.NSView_inst_didAddSubview_(
+	C.NSView_inst_didAddSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(subview),
 	)
@@ -21305,11 +21305,11 @@ func (x gen_NSView) RemoveFromSuperviewWithoutNeedingDisplay() {
 	return
 }
 
-func (x gen_NSView) ReplaceSubview_with_(
+func (x gen_NSView) ReplaceSubview_with(
 	oldView NSViewRef,
 	newView NSViewRef,
 ) {
-	C.NSView_inst_replaceSubview_with_(
+	C.NSView_inst_replaceSubview_with(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(oldView),
 		objc.RefPointer(newView),
@@ -21317,12 +21317,12 @@ func (x gen_NSView) ReplaceSubview_with_(
 	return
 }
 
-func (x gen_NSView) IsDescendantOf_(
+func (x gen_NSView) IsDescendantOf(
 	view NSViewRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_isDescendantOf_(
+	ret := C.NSView_inst_isDescendantOf(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -21330,12 +21330,12 @@ func (x gen_NSView) IsDescendantOf_(
 	return
 }
 
-func (x gen_NSView) AncestorSharedWithView_(
+func (x gen_NSView) AncestorSharedWithView(
 	view NSViewRef,
 ) (
 	r0 NSView,
 ) {
-	ret := C.NSView_inst_ancestorSharedWithView_(
+	ret := C.NSView_inst_ancestorSharedWithView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(view),
 	)
@@ -21357,70 +21357,70 @@ func (x gen_NSView) ViewDidMoveToWindow() {
 	return
 }
 
-func (x gen_NSView) ViewWillMoveToSuperview_(
+func (x gen_NSView) ViewWillMoveToSuperview(
 	newSuperview NSViewRef,
 ) {
-	C.NSView_inst_viewWillMoveToSuperview_(
+	C.NSView_inst_viewWillMoveToSuperview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newSuperview),
 	)
 	return
 }
 
-func (x gen_NSView) ViewWillMoveToWindow_(
+func (x gen_NSView) ViewWillMoveToWindow(
 	newWindow NSWindowRef,
 ) {
-	C.NSView_inst_viewWillMoveToWindow_(
+	C.NSView_inst_viewWillMoveToWindow(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newWindow),
 	)
 	return
 }
 
-func (x gen_NSView) WillRemoveSubview_(
+func (x gen_NSView) WillRemoveSubview(
 	subview NSViewRef,
 ) {
-	C.NSView_inst_willRemoveSubview_(
+	C.NSView_inst_willRemoveSubview(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(subview),
 	)
 	return
 }
 
-func (x gen_NSView) SetFrameOrigin_(
+func (x gen_NSView) SetFrameOrigin(
 	newOrigin core.NSPoint,
 ) {
-	C.NSView_inst_setFrameOrigin_(
+	C.NSView_inst_setFrameOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&newOrigin)),
 	)
 	return
 }
 
-func (x gen_NSView) SetFrameSize_(
+func (x gen_NSView) SetFrameSize(
 	newSize core.NSSize,
 ) {
-	C.NSView_inst_setFrameSize_(
+	C.NSView_inst_setFrameSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
 	return
 }
 
-func (x gen_NSView) SetBoundsOrigin_(
+func (x gen_NSView) SetBoundsOrigin(
 	newOrigin core.NSPoint,
 ) {
-	C.NSView_inst_setBoundsOrigin_(
+	C.NSView_inst_setBoundsOrigin(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&newOrigin)),
 	)
 	return
 }
 
-func (x gen_NSView) SetBoundsSize_(
+func (x gen_NSView) SetBoundsSize(
 	newSize core.NSSize,
 ) {
-	C.NSView_inst_setBoundsSize_(
+	C.NSView_inst_setBoundsSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newSize)),
 	)
@@ -21444,22 +21444,22 @@ func (x gen_NSView) UpdateLayer() {
 	return
 }
 
-func (x gen_NSView) DrawRect_(
+func (x gen_NSView) DrawRect(
 	dirtyRect core.NSRect,
 ) {
-	C.NSView_inst_drawRect_(
+	C.NSView_inst_drawRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&dirtyRect)),
 	)
 	return
 }
 
-func (x gen_NSView) NeedsToDrawRect_(
+func (x gen_NSView) NeedsToDrawRect(
 	rect core.NSRect,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_needsToDrawRect_(
+	ret := C.NSView_inst_needsToDrawRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21467,21 +21467,21 @@ func (x gen_NSView) NeedsToDrawRect_(
 	return
 }
 
-func (x gen_NSView) Print_(
+func (x gen_NSView) Print(
 	sender objc.Ref,
 ) {
-	C.NSView_inst_print_(
+	C.NSView_inst_print(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 	return
 }
 
-func (x gen_NSView) BeginPageInRect_atPlacement_(
+func (x gen_NSView) BeginPageInRect_atPlacement(
 	rect core.NSRect,
 	location core.NSPoint,
 ) {
-	C.NSView_inst_beginPageInRect_atPlacement_(
+	C.NSView_inst_beginPageInRect_atPlacement(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
@@ -21489,12 +21489,12 @@ func (x gen_NSView) BeginPageInRect_atPlacement_(
 	return
 }
 
-func (x gen_NSView) DataWithEPSInsideRect_(
+func (x gen_NSView) DataWithEPSInsideRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSData,
 ) {
-	ret := C.NSView_inst_dataWithEPSInsideRect_(
+	ret := C.NSView_inst_dataWithEPSInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21502,12 +21502,12 @@ func (x gen_NSView) DataWithEPSInsideRect_(
 	return
 }
 
-func (x gen_NSView) DataWithPDFInsideRect_(
+func (x gen_NSView) DataWithPDFInsideRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSData,
 ) {
-	ret := C.NSView_inst_dataWithPDFInsideRect_(
+	ret := C.NSView_inst_dataWithPDFInsideRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21515,11 +21515,11 @@ func (x gen_NSView) DataWithPDFInsideRect_(
 	return
 }
 
-func (x gen_NSView) WriteEPSInsideRect_toPasteboard_(
+func (x gen_NSView) WriteEPSInsideRect_toPasteboard(
 	rect core.NSRect,
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSView_inst_writeEPSInsideRect_toPasteboard_(
+	C.NSView_inst_writeEPSInsideRect_toPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(pasteboard),
@@ -21527,11 +21527,11 @@ func (x gen_NSView) WriteEPSInsideRect_toPasteboard_(
 	return
 }
 
-func (x gen_NSView) WritePDFInsideRect_toPasteboard_(
+func (x gen_NSView) WritePDFInsideRect_toPasteboard(
 	rect core.NSRect,
 	pasteboard NSPasteboardRef,
 ) {
-	C.NSView_inst_writePDFInsideRect_toPasteboard_(
+	C.NSView_inst_writePDFInsideRect_toPasteboard(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(pasteboard),
@@ -21539,22 +21539,22 @@ func (x gen_NSView) WritePDFInsideRect_toPasteboard_(
 	return
 }
 
-func (x gen_NSView) DrawPageBorderWithSize_(
+func (x gen_NSView) DrawPageBorderWithSize(
 	borderSize core.NSSize,
 ) {
-	C.NSView_inst_drawPageBorderWithSize_(
+	C.NSView_inst_drawPageBorderWithSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&borderSize)),
 	)
 	return
 }
 
-func (x gen_NSView) RectForPage_(
+func (x gen_NSView) RectForPage(
 	page core.NSInteger,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_rectForPage_(
+	ret := C.NSView_inst_rectForPage(
 		unsafe.Pointer(x.Pointer()),
 		C.long(page),
 	)
@@ -21562,12 +21562,12 @@ func (x gen_NSView) RectForPage_(
 	return
 }
 
-func (x gen_NSView) LocationOfPrintRect_(
+func (x gen_NSView) LocationOfPrintRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_locationOfPrintRect_(
+	ret := C.NSView_inst_locationOfPrintRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21575,10 +21575,10 @@ func (x gen_NSView) LocationOfPrintRect_(
 	return
 }
 
-func (x gen_NSView) SetNeedsDisplayInRect_(
+func (x gen_NSView) SetNeedsDisplayInRect(
 	invalidRect core.NSRect,
 ) {
-	C.NSView_inst_setNeedsDisplayInRect_(
+	C.NSView_inst_setNeedsDisplayInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&invalidRect)),
 	)
@@ -21592,20 +21592,20 @@ func (x gen_NSView) Display() {
 	return
 }
 
-func (x gen_NSView) DisplayRect_(
+func (x gen_NSView) DisplayRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayRect_(
+	C.NSView_inst_displayRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 	return
 }
 
-func (x gen_NSView) DisplayRectIgnoringOpacity_(
+func (x gen_NSView) DisplayRectIgnoringOpacity(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayRectIgnoringOpacity_(
+	C.NSView_inst_displayRectIgnoringOpacity(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21619,10 +21619,10 @@ func (x gen_NSView) DisplayIfNeeded() {
 	return
 }
 
-func (x gen_NSView) DisplayIfNeededInRect_(
+func (x gen_NSView) DisplayIfNeededInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayIfNeededInRect_(
+	C.NSView_inst_displayIfNeededInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21636,21 +21636,21 @@ func (x gen_NSView) DisplayIfNeededIgnoringOpacity() {
 	return
 }
 
-func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity_(
+func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_displayIfNeededInRectIgnoringOpacity_(
+	C.NSView_inst_displayIfNeededInRectIgnoringOpacity(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 	return
 }
 
-func (x gen_NSView) TranslateRectsNeedingDisplayInRect_by_(
+func (x gen_NSView) TranslateRectsNeedingDisplayInRect_by(
 	clipRect core.NSRect,
 	delta core.NSSize,
 ) {
-	C.NSView_inst_translateRectsNeedingDisplayInRect_by_(
+	C.NSView_inst_translateRectsNeedingDisplayInRect_by(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&clipRect)),
 		*(*C.NSSize)(unsafe.Pointer(&delta)),
@@ -21665,12 +21665,12 @@ func (x gen_NSView) ViewWillDraw() {
 	return
 }
 
-func (x gen_NSView) ConvertPointFromBacking_(
+func (x gen_NSView) ConvertPointFromBacking(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_convertPointFromBacking_(
+	ret := C.NSView_inst_convertPointFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -21678,12 +21678,12 @@ func (x gen_NSView) ConvertPointFromBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertPointToBacking_(
+func (x gen_NSView) ConvertPointToBacking(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_convertPointToBacking_(
+	ret := C.NSView_inst_convertPointToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -21691,12 +21691,12 @@ func (x gen_NSView) ConvertPointToBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertPointFromLayer_(
+func (x gen_NSView) ConvertPointFromLayer(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_convertPointFromLayer_(
+	ret := C.NSView_inst_convertPointFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -21704,12 +21704,12 @@ func (x gen_NSView) ConvertPointFromLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertPointToLayer_(
+func (x gen_NSView) ConvertPointToLayer(
 	point core.NSPoint,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_convertPointToLayer_(
+	ret := C.NSView_inst_convertPointToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -21717,12 +21717,12 @@ func (x gen_NSView) ConvertPointToLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertRectFromBacking_(
+func (x gen_NSView) ConvertRectFromBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRectFromBacking_(
+	ret := C.NSView_inst_convertRectFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21730,12 +21730,12 @@ func (x gen_NSView) ConvertRectFromBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertRectToBacking_(
+func (x gen_NSView) ConvertRectToBacking(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRectToBacking_(
+	ret := C.NSView_inst_convertRectToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21743,12 +21743,12 @@ func (x gen_NSView) ConvertRectToBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertRectFromLayer_(
+func (x gen_NSView) ConvertRectFromLayer(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRectFromLayer_(
+	ret := C.NSView_inst_convertRectFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21756,12 +21756,12 @@ func (x gen_NSView) ConvertRectFromLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertRectToLayer_(
+func (x gen_NSView) ConvertRectToLayer(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRectToLayer_(
+	ret := C.NSView_inst_convertRectToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21769,12 +21769,12 @@ func (x gen_NSView) ConvertRectToLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertSizeFromBacking_(
+func (x gen_NSView) ConvertSizeFromBacking(
 	size core.NSSize,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSizeFromBacking_(
+	ret := C.NSView_inst_convertSizeFromBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -21782,12 +21782,12 @@ func (x gen_NSView) ConvertSizeFromBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertSizeToBacking_(
+func (x gen_NSView) ConvertSizeToBacking(
 	size core.NSSize,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSizeToBacking_(
+	ret := C.NSView_inst_convertSizeToBacking(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -21795,12 +21795,12 @@ func (x gen_NSView) ConvertSizeToBacking_(
 	return
 }
 
-func (x gen_NSView) ConvertSizeFromLayer_(
+func (x gen_NSView) ConvertSizeFromLayer(
 	size core.NSSize,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSizeFromLayer_(
+	ret := C.NSView_inst_convertSizeFromLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -21808,12 +21808,12 @@ func (x gen_NSView) ConvertSizeFromLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertSizeToLayer_(
+func (x gen_NSView) ConvertSizeToLayer(
 	size core.NSSize,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSizeToLayer_(
+	ret := C.NSView_inst_convertSizeToLayer(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
@@ -21821,28 +21821,13 @@ func (x gen_NSView) ConvertSizeToLayer_(
 	return
 }
 
-func (x gen_NSView) ConvertPoint_fromView_(
+func (x gen_NSView) ConvertPoint_fromView(
 	point core.NSPoint,
 	view NSViewRef,
 ) (
 	r0 core.NSPoint,
 ) {
-	ret := C.NSView_inst_convertPoint_fromView_(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSPoint)(unsafe.Pointer(&point)),
-		objc.RefPointer(view),
-	)
-	r0 = *(*core.NSPoint)(unsafe.Pointer(&ret))
-	return
-}
-
-func (x gen_NSView) ConvertPoint_toView_(
-	point core.NSPoint,
-	view NSViewRef,
-) (
-	r0 core.NSPoint,
-) {
-	ret := C.NSView_inst_convertPoint_toView_(
+	ret := C.NSView_inst_convertPoint_fromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		objc.RefPointer(view),
@@ -21851,13 +21836,28 @@ func (x gen_NSView) ConvertPoint_toView_(
 	return
 }
 
-func (x gen_NSView) ConvertSize_fromView_(
+func (x gen_NSView) ConvertPoint_toView(
+	point core.NSPoint,
+	view NSViewRef,
+) (
+	r0 core.NSPoint,
+) {
+	ret := C.NSView_inst_convertPoint_toView(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSPoint)(unsafe.Pointer(&point)),
+		objc.RefPointer(view),
+	)
+	r0 = *(*core.NSPoint)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSView) ConvertSize_fromView(
 	size core.NSSize,
 	view NSViewRef,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSize_fromView_(
+	ret := C.NSView_inst_convertSize_fromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 		objc.RefPointer(view),
@@ -21866,13 +21866,13 @@ func (x gen_NSView) ConvertSize_fromView_(
 	return
 }
 
-func (x gen_NSView) ConvertSize_toView_(
+func (x gen_NSView) ConvertSize_toView(
 	size core.NSSize,
 	view NSViewRef,
 ) (
 	r0 core.NSSize,
 ) {
-	ret := C.NSView_inst_convertSize_toView_(
+	ret := C.NSView_inst_convertSize_toView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 		objc.RefPointer(view),
@@ -21881,13 +21881,13 @@ func (x gen_NSView) ConvertSize_toView_(
 	return
 }
 
-func (x gen_NSView) ConvertRect_fromView_(
+func (x gen_NSView) ConvertRect_fromView(
 	rect core.NSRect,
 	view NSViewRef,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRect_fromView_(
+	ret := C.NSView_inst_convertRect_fromView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(view),
@@ -21896,13 +21896,13 @@ func (x gen_NSView) ConvertRect_fromView_(
 	return
 }
 
-func (x gen_NSView) ConvertRect_toView_(
+func (x gen_NSView) ConvertRect_toView(
 	rect core.NSRect,
 	view NSViewRef,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_convertRect_toView_(
+	ret := C.NSView_inst_convertRect_toView(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(view),
@@ -21911,12 +21911,12 @@ func (x gen_NSView) ConvertRect_toView_(
 	return
 }
 
-func (x gen_NSView) CenterScanRect_(
+func (x gen_NSView) CenterScanRect(
 	rect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_centerScanRect_(
+	ret := C.NSView_inst_centerScanRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -21924,70 +21924,70 @@ func (x gen_NSView) CenterScanRect_(
 	return
 }
 
-func (x gen_NSView) TranslateOriginToPoint_(
+func (x gen_NSView) TranslateOriginToPoint(
 	translation core.NSPoint,
 ) {
-	C.NSView_inst_translateOriginToPoint_(
+	C.NSView_inst_translateOriginToPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&translation)),
 	)
 	return
 }
 
-func (x gen_NSView) ScaleUnitSquareToSize_(
+func (x gen_NSView) ScaleUnitSquareToSize(
 	newUnitSize core.NSSize,
 ) {
-	C.NSView_inst_scaleUnitSquareToSize_(
+	C.NSView_inst_scaleUnitSquareToSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&newUnitSize)),
 	)
 	return
 }
 
-func (x gen_NSView) RotateByAngle_(
+func (x gen_NSView) RotateByAngle(
 	angle core.CGFloat,
 ) {
-	C.NSView_inst_rotateByAngle_(
+	C.NSView_inst_rotateByAngle(
 		unsafe.Pointer(x.Pointer()),
 		C.double(angle),
 	)
 	return
 }
 
-func (x gen_NSView) ResizeSubviewsWithOldSize_(
+func (x gen_NSView) ResizeSubviewsWithOldSize(
 	oldSize core.NSSize,
 ) {
-	C.NSView_inst_resizeSubviewsWithOldSize_(
+	C.NSView_inst_resizeSubviewsWithOldSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
 	)
 	return
 }
 
-func (x gen_NSView) ResizeWithOldSuperviewSize_(
+func (x gen_NSView) ResizeWithOldSuperviewSize(
 	oldSize core.NSSize,
 ) {
-	C.NSView_inst_resizeWithOldSuperviewSize_(
+	C.NSView_inst_resizeWithOldSuperviewSize(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&oldSize)),
 	)
 	return
 }
 
-func (x gen_NSView) AddConstraints_(
+func (x gen_NSView) AddConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSView_inst_addConstraints_(
+	C.NSView_inst_addConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
 	return
 }
 
-func (x gen_NSView) RemoveConstraints_(
+func (x gen_NSView) RemoveConstraints(
 	constraints core.NSArrayRef,
 ) {
-	C.NSView_inst_removeConstraints_(
+	C.NSView_inst_removeConstraints(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(constraints),
 	)
@@ -22001,12 +22001,12 @@ func (x gen_NSView) InvalidateIntrinsicContentSize() {
 	return
 }
 
-func (x gen_NSView) AlignmentRectForFrame_(
+func (x gen_NSView) AlignmentRectForFrame(
 	frame core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_alignmentRectForFrame_(
+	ret := C.NSView_inst_alignmentRectForFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&frame)),
 	)
@@ -22014,12 +22014,12 @@ func (x gen_NSView) AlignmentRectForFrame_(
 	return
 }
 
-func (x gen_NSView) FrameForAlignmentRect_(
+func (x gen_NSView) FrameForAlignmentRect(
 	alignmentRect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_frameForAlignmentRect_(
+	ret := C.NSView_inst_frameForAlignmentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&alignmentRect)),
 	)
@@ -22076,23 +22076,23 @@ func (x gen_NSView) NoteFocusRingMaskChanged() {
 	return
 }
 
-func (x gen_NSView) SetKeyboardFocusRingNeedsDisplayInRect_(
+func (x gen_NSView) SetKeyboardFocusRingNeedsDisplayInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_setKeyboardFocusRingNeedsDisplayInRect_(
+	C.NSView_inst_setKeyboardFocusRingNeedsDisplayInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 	return
 }
 
-func (x gen_NSView) EnterFullScreenMode_withOptions_(
+func (x gen_NSView) EnterFullScreenMode_withOptions(
 	screen NSScreenRef,
 	options core.NSDictionaryRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_enterFullScreenMode_withOptions_(
+	ret := C.NSView_inst_enterFullScreenMode_withOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(screen),
 		objc.RefPointer(options),
@@ -22101,10 +22101,10 @@ func (x gen_NSView) EnterFullScreenMode_withOptions_(
 	return
 }
 
-func (x gen_NSView) ExitFullScreenModeWithOptions_(
+func (x gen_NSView) ExitFullScreenModeWithOptions(
 	options core.NSDictionaryRef,
 ) {
-	C.NSView_inst_exitFullScreenModeWithOptions_(
+	C.NSView_inst_exitFullScreenModeWithOptions(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(options),
 	)
@@ -22139,12 +22139,12 @@ func (x gen_NSView) ViewDidEndLiveResize() {
 	return
 }
 
-func (x gen_NSView) AcceptsFirstMouse_(
+func (x gen_NSView) AcceptsFirstMouse(
 	event NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_acceptsFirstMouse_(
+	ret := C.NSView_inst_acceptsFirstMouse(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -22152,12 +22152,12 @@ func (x gen_NSView) AcceptsFirstMouse_(
 	return
 }
 
-func (x gen_NSView) HitTest_(
+func (x gen_NSView) HitTest(
 	point core.NSPoint,
 ) (
 	r0 NSView,
 ) {
-	ret := C.NSView_inst_hitTest_(
+	ret := C.NSView_inst_hitTest(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
@@ -22165,13 +22165,13 @@ func (x gen_NSView) HitTest_(
 	return
 }
 
-func (x gen_NSView) Mouse_inRect_(
+func (x gen_NSView) Mouse_inRect(
 	point core.NSPoint,
 	rect core.NSRect,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_mouse_inRect_(
+	ret := C.NSView_inst_mouse_inRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
@@ -22180,12 +22180,12 @@ func (x gen_NSView) Mouse_inRect_(
 	return
 }
 
-func (x gen_NSView) PerformKeyEquivalent_(
+func (x gen_NSView) PerformKeyEquivalent(
 	event NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_performKeyEquivalent_(
+	ret := C.NSView_inst_performKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -22193,32 +22193,32 @@ func (x gen_NSView) PerformKeyEquivalent_(
 	return
 }
 
-func (x gen_NSView) PrepareContentInRect_(
+func (x gen_NSView) PrepareContentInRect(
 	rect core.NSRect,
 ) {
-	C.NSView_inst_prepareContentInRect_(
+	C.NSView_inst_prepareContentInRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 	return
 }
 
-func (x gen_NSView) ScrollPoint_(
+func (x gen_NSView) ScrollPoint(
 	point core.NSPoint,
 ) {
-	C.NSView_inst_scrollPoint_(
+	C.NSView_inst_scrollPoint(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
 	return
 }
 
-func (x gen_NSView) ScrollRectToVisible_(
+func (x gen_NSView) ScrollRectToVisible(
 	rect core.NSRect,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_scrollRectToVisible_(
+	ret := C.NSView_inst_scrollRectToVisible(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
@@ -22226,12 +22226,12 @@ func (x gen_NSView) ScrollRectToVisible_(
 	return
 }
 
-func (x gen_NSView) Autoscroll_(
+func (x gen_NSView) Autoscroll(
 	event NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_autoscroll_(
+	ret := C.NSView_inst_autoscroll(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -22239,12 +22239,12 @@ func (x gen_NSView) Autoscroll_(
 	return
 }
 
-func (x gen_NSView) AdjustScroll_(
+func (x gen_NSView) AdjustScroll(
 	newVisible core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_adjustScroll_(
+	ret := C.NSView_inst_adjustScroll(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&newVisible)),
 	)
@@ -22252,10 +22252,10 @@ func (x gen_NSView) AdjustScroll_(
 	return
 }
 
-func (x gen_NSView) RegisterForDraggedTypes_(
+func (x gen_NSView) RegisterForDraggedTypes(
 	newTypes core.NSArrayRef,
 ) {
-	C.NSView_inst_registerForDraggedTypes_(
+	C.NSView_inst_registerForDraggedTypes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(newTypes),
 	)
@@ -22269,12 +22269,12 @@ func (x gen_NSView) UnregisterDraggedTypes() {
 	return
 }
 
-func (x gen_NSView) ShouldDelayWindowOrderingForEvent_(
+func (x gen_NSView) ShouldDelayWindowOrderingForEvent(
 	event NSEventRef,
 ) (
 	r0 bool,
 ) {
-	ret := C.NSView_inst_shouldDelayWindowOrderingForEvent_(
+	ret := C.NSView_inst_shouldDelayWindowOrderingForEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -22282,13 +22282,13 @@ func (x gen_NSView) ShouldDelayWindowOrderingForEvent_(
 	return
 }
 
-func (x gen_NSView) RectForSmartMagnificationAtPoint_inRect_(
+func (x gen_NSView) RectForSmartMagnificationAtPoint_inRect(
 	location core.NSPoint,
 	visibleRect core.NSRect,
 ) (
 	r0 core.NSRect,
 ) {
-	ret := C.NSView_inst_rectForSmartMagnificationAtPoint_inRect_(
+	ret := C.NSView_inst_rectForSmartMagnificationAtPoint_inRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSPoint)(unsafe.Pointer(&location)),
 		*(*C.NSRect)(unsafe.Pointer(&visibleRect)),
@@ -22304,12 +22304,12 @@ func (x gen_NSView) ViewDidChangeBackingProperties() {
 	return
 }
 
-func (x gen_NSView) ViewWithTag_(
+func (x gen_NSView) ViewWithTag(
 	tag core.NSInteger,
 ) (
 	r0 NSView,
 ) {
-	ret := C.NSView_inst_viewWithTag_(
+	ret := C.NSView_inst_viewWithTag(
 		unsafe.Pointer(x.Pointer()),
 		C.long(tag),
 	)
@@ -22345,12 +22345,12 @@ func (x gen_NSView) ResetCursorRects() {
 	return
 }
 
-func (x gen_NSView) MenuForEvent_(
+func (x gen_NSView) MenuForEvent(
 	event NSEventRef,
 ) (
 	r0 NSMenu,
 ) {
-	ret := C.NSView_inst_menuForEvent_(
+	ret := C.NSView_inst_menuForEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(event),
 	)
@@ -22358,11 +22358,11 @@ func (x gen_NSView) MenuForEvent_(
 	return
 }
 
-func (x gen_NSView) WillOpenMenu_withEvent_(
+func (x gen_NSView) WillOpenMenu_withEvent(
 	menu NSMenuRef,
 	event NSEventRef,
 ) {
-	C.NSView_inst_willOpenMenu_withEvent_(
+	C.NSView_inst_willOpenMenu_withEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
@@ -22370,11 +22370,11 @@ func (x gen_NSView) WillOpenMenu_withEvent_(
 	return
 }
 
-func (x gen_NSView) DidCloseMenu_withEvent_(
+func (x gen_NSView) DidCloseMenu_withEvent(
 	menu NSMenuRef,
 	event NSEventRef,
 ) {
-	C.NSView_inst_didCloseMenu_withEvent_(
+	C.NSView_inst_didCloseMenu_withEvent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
@@ -22403,11 +22403,11 @@ func (x gen_NSView) EndPage() {
 	return
 }
 
-func (x gen_NSView) ShowDefinitionForAttributedString_atPoint_(
+func (x gen_NSView) ShowDefinitionForAttributedString_atPoint(
 	attrString core.NSAttributedStringRef,
 	textBaselineOrigin core.NSPoint,
 ) {
-	C.NSView_inst_showDefinitionForAttributedString_atPoint_(
+	C.NSView_inst_showDefinitionForAttributedString_atPoint(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(attrString),
 		*(*C.NSPoint)(unsafe.Pointer(&textBaselineOrigin)),
@@ -22452,10 +22452,10 @@ func (x gen_NSView) Subviews() (
 	return
 }
 
-func (x gen_NSView) SetSubviews_(
+func (x gen_NSView) SetSubviews(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setSubviews_(
+	C.NSView_inst_setSubviews(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -22502,10 +22502,10 @@ func (x gen_NSView) Frame() (
 	return
 }
 
-func (x gen_NSView) SetFrame_(
+func (x gen_NSView) SetFrame(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setFrame_(
+	C.NSView_inst_setFrame(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -22522,10 +22522,10 @@ func (x gen_NSView) FrameRotation() (
 	return
 }
 
-func (x gen_NSView) SetFrameRotation_(
+func (x gen_NSView) SetFrameRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setFrameRotation_(
+	C.NSView_inst_setFrameRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -22542,10 +22542,10 @@ func (x gen_NSView) Bounds() (
 	return
 }
 
-func (x gen_NSView) SetBounds_(
+func (x gen_NSView) SetBounds(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setBounds_(
+	C.NSView_inst_setBounds(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -22562,10 +22562,10 @@ func (x gen_NSView) BoundsRotation() (
 	return
 }
 
-func (x gen_NSView) SetBoundsRotation_(
+func (x gen_NSView) SetBoundsRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setBoundsRotation_(
+	C.NSView_inst_setBoundsRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -22582,10 +22582,10 @@ func (x gen_NSView) WantsLayer() (
 	return
 }
 
-func (x gen_NSView) SetWantsLayer_(
+func (x gen_NSView) SetWantsLayer(
 	value bool,
 ) {
-	C.NSView_inst_setWantsLayer_(
+	C.NSView_inst_setWantsLayer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22612,10 +22612,10 @@ func (x gen_NSView) Layer() (
 	return
 }
 
-func (x gen_NSView) SetLayer_(
+func (x gen_NSView) SetLayer(
 	value core.CALayerRef,
 ) {
-	C.NSView_inst_setLayer_(
+	C.NSView_inst_setLayer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -22632,10 +22632,10 @@ func (x gen_NSView) CanDrawSubviewsIntoLayer() (
 	return
 }
 
-func (x gen_NSView) SetCanDrawSubviewsIntoLayer_(
+func (x gen_NSView) SetCanDrawSubviewsIntoLayer(
 	value bool,
 ) {
-	C.NSView_inst_setCanDrawSubviewsIntoLayer_(
+	C.NSView_inst_setCanDrawSubviewsIntoLayer(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22652,10 +22652,10 @@ func (x gen_NSView) LayerUsesCoreImageFilters() (
 	return
 }
 
-func (x gen_NSView) SetLayerUsesCoreImageFilters_(
+func (x gen_NSView) SetLayerUsesCoreImageFilters(
 	value bool,
 ) {
-	C.NSView_inst_setLayerUsesCoreImageFilters_(
+	C.NSView_inst_setLayerUsesCoreImageFilters(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22672,10 +22672,10 @@ func (x gen_NSView) AlphaValue() (
 	return
 }
 
-func (x gen_NSView) SetAlphaValue_(
+func (x gen_NSView) SetAlphaValue(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setAlphaValue_(
+	C.NSView_inst_setAlphaValue(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -22692,10 +22692,10 @@ func (x gen_NSView) FrameCenterRotation() (
 	return
 }
 
-func (x gen_NSView) SetFrameCenterRotation_(
+func (x gen_NSView) SetFrameCenterRotation(
 	value core.CGFloat,
 ) {
-	C.NSView_inst_setFrameCenterRotation_(
+	C.NSView_inst_setFrameCenterRotation(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
 	)
@@ -22712,10 +22712,10 @@ func (x gen_NSView) BackgroundFilters() (
 	return
 }
 
-func (x gen_NSView) SetBackgroundFilters_(
+func (x gen_NSView) SetBackgroundFilters(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setBackgroundFilters_(
+	C.NSView_inst_setBackgroundFilters(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -22732,10 +22732,10 @@ func (x gen_NSView) ContentFilters() (
 	return
 }
 
-func (x gen_NSView) SetContentFilters_(
+func (x gen_NSView) SetContentFilters(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setContentFilters_(
+	C.NSView_inst_setContentFilters(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -22752,10 +22752,10 @@ func (x gen_NSView) CanDrawConcurrently() (
 	return
 }
 
-func (x gen_NSView) SetCanDrawConcurrently_(
+func (x gen_NSView) SetCanDrawConcurrently(
 	value bool,
 ) {
-	C.NSView_inst_setCanDrawConcurrently_(
+	C.NSView_inst_setCanDrawConcurrently(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22842,10 +22842,10 @@ func (x gen_NSView) NeedsDisplay() (
 	return
 }
 
-func (x gen_NSView) SetNeedsDisplay_(
+func (x gen_NSView) SetNeedsDisplay(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsDisplay_(
+	C.NSView_inst_setNeedsDisplay(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22902,10 +22902,10 @@ func (x gen_NSView) AutoresizesSubviews() (
 	return
 }
 
-func (x gen_NSView) SetAutoresizesSubviews_(
+func (x gen_NSView) SetAutoresizesSubviews(
 	value bool,
 ) {
-	C.NSView_inst_setAutoresizesSubviews_(
+	C.NSView_inst_setAutoresizesSubviews(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -22992,10 +22992,10 @@ func (x gen_NSView) NeedsLayout() (
 	return
 }
 
-func (x gen_NSView) SetNeedsLayout_(
+func (x gen_NSView) SetNeedsLayout(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsLayout_(
+	C.NSView_inst_setNeedsLayout(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23012,10 +23012,10 @@ func (x gen_NSView) NeedsUpdateConstraints() (
 	return
 }
 
-func (x gen_NSView) SetNeedsUpdateConstraints_(
+func (x gen_NSView) SetNeedsUpdateConstraints(
 	value bool,
 ) {
-	C.NSView_inst_setNeedsUpdateConstraints_(
+	C.NSView_inst_setNeedsUpdateConstraints(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23032,10 +23032,10 @@ func (x gen_NSView) TranslatesAutoresizingMaskIntoConstraints() (
 	return
 }
 
-func (x gen_NSView) SetTranslatesAutoresizingMaskIntoConstraints_(
+func (x gen_NSView) SetTranslatesAutoresizingMaskIntoConstraints(
 	value bool,
 ) {
-	C.NSView_inst_setTranslatesAutoresizingMaskIntoConstraints_(
+	C.NSView_inst_setTranslatesAutoresizingMaskIntoConstraints(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23092,10 +23092,10 @@ func (x gen_NSView) IsHidden() (
 	return
 }
 
-func (x gen_NSView) SetHidden_(
+func (x gen_NSView) SetHidden(
 	value bool,
 ) {
-	C.NSView_inst_setHidden_(
+	C.NSView_inst_setHidden(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23152,10 +23152,10 @@ func (x gen_NSView) GestureRecognizers() (
 	return
 }
 
-func (x gen_NSView) SetGestureRecognizers_(
+func (x gen_NSView) SetGestureRecognizers(
 	value core.NSArrayRef,
 ) {
-	C.NSView_inst_setGestureRecognizers_(
+	C.NSView_inst_setGestureRecognizers(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -23182,10 +23182,10 @@ func (x gen_NSView) WantsRestingTouches() (
 	return
 }
 
-func (x gen_NSView) SetWantsRestingTouches_(
+func (x gen_NSView) SetWantsRestingTouches(
 	value bool,
 ) {
-	C.NSView_inst_setWantsRestingTouches_(
+	C.NSView_inst_setWantsRestingTouches(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23222,10 +23222,10 @@ func (x gen_NSView) NextKeyView() (
 	return
 }
 
-func (x gen_NSView) SetNextKeyView_(
+func (x gen_NSView) SetNextKeyView(
 	value NSViewRef,
 ) {
-	C.NSView_inst_setNextKeyView_(
+	C.NSView_inst_setNextKeyView(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -23272,10 +23272,10 @@ func (x gen_NSView) PreparedContentRect() (
 	return
 }
 
-func (x gen_NSView) SetPreparedContentRect_(
+func (x gen_NSView) SetPreparedContentRect(
 	value core.NSRect,
 ) {
-	C.NSView_inst_setPreparedContentRect_(
+	C.NSView_inst_setPreparedContentRect(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
@@ -23302,10 +23302,10 @@ func (x gen_NSView) PostsFrameChangedNotifications() (
 	return
 }
 
-func (x gen_NSView) SetPostsFrameChangedNotifications_(
+func (x gen_NSView) SetPostsFrameChangedNotifications(
 	value bool,
 ) {
-	C.NSView_inst_setPostsFrameChangedNotifications_(
+	C.NSView_inst_setPostsFrameChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23322,10 +23322,10 @@ func (x gen_NSView) PostsBoundsChangedNotifications() (
 	return
 }
 
-func (x gen_NSView) SetPostsBoundsChangedNotifications_(
+func (x gen_NSView) SetPostsBoundsChangedNotifications(
 	value bool,
 ) {
-	C.NSView_inst_setPostsBoundsChangedNotifications_(
+	C.NSView_inst_setPostsBoundsChangedNotifications(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23352,10 +23352,10 @@ func (x gen_NSView) ToolTip() (
 	return
 }
 
-func (x gen_NSView) SetToolTip_(
+func (x gen_NSView) SetToolTip(
 	value core.NSStringRef,
 ) {
-	C.NSView_inst_setToolTip_(
+	C.NSView_inst_setToolTip(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
@@ -23392,10 +23392,10 @@ func (x gen_NSView) IsHorizontalContentSizeConstraintActive() (
 	return
 }
 
-func (x gen_NSView) SetHorizontalContentSizeConstraintActive_(
+func (x gen_NSView) SetHorizontalContentSizeConstraintActive(
 	value bool,
 ) {
-	C.NSView_inst_setHorizontalContentSizeConstraintActive_(
+	C.NSView_inst_setHorizontalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23412,10 +23412,10 @@ func (x gen_NSView) IsVerticalContentSizeConstraintActive() (
 	return
 }
 
-func (x gen_NSView) SetVerticalContentSizeConstraintActive_(
+func (x gen_NSView) SetVerticalContentSizeConstraintActive(
 	value bool,
 ) {
-	C.NSView_inst_setVerticalContentSizeConstraintActive_(
+	C.NSView_inst_setVerticalContentSizeConstraintActive(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
 	)
@@ -23432,10 +23432,10 @@ func (x gen_NSView) BackgroundColor() (
 	return
 }
 
-func (x gen_NSView) SetBackgroundColor_(
+func (x gen_NSView) SetBackgroundColor(
 	value NSColorRef,
 ) {
-	C.NSView_inst_setBackgroundColor_(
+	C.NSView_inst_setBackgroundColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)

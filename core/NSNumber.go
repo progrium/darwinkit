@@ -5,9 +5,9 @@ type NSNumber struct {
 }
 
 func NSNumber_WithBool(b bool) NSNumber {
-	return NSNumber_numberWithBool_(b)
+	return NSNumber_numberWithBool(b)
 }
 
 func NSNumber_WithInt(n int32) NSNumber {
-	return NSNumber_numberWithInt_(n)
+	return NSNumber_numberWithInt(n)
 }

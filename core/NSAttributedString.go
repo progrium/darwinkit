@@ -14,7 +14,7 @@ type NSAttributedString struct {
 // https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc
 func NSAttributedString_FromString(str string) NSAttributedString {
 	nsstr := NSString_FromString(str)
-	return NSAttributedString_alloc().InitWithString__asNSAttributedString(nsstr)
+	return NSAttributedString_alloc().InitWithString_asNSAttributedString(nsstr)
 }
 
 func NSAttributedString_FromObject(obj objc.Object) NSAttributedString {

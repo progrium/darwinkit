@@ -13,9 +13,9 @@ func (l CALayer) CornerRadius() float64 {
 }
 
 func (l CALayer) SetCornerRadius(r float64) {
-	l.SetCornerRadius_(CGFloat(r))
+	l.gen_CALayer.SetCornerRadius(CGFloat(r))
 }
 
 func (l CALayer) SetContents(o objc.Object) {
-	l.SetContents_(objc.Object_fromRef(o))
+	l.gen_CALayer.SetContents(objc.Object_fromRef(o))
 }
