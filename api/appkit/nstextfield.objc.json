@@ -1,0 +1,450 @@
+{
+  "Class": {
+    "Name": "NSTextField",
+    "Description": "Text the user can select or edit to send an action message to a target when the user presses the Return key.",
+    "Declaration": "@interface NSTextField : NSControl",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "selectText:",
+        "Description": "Ends editing in the text field and, if it’s selectable, selects the entire text content.",
+        "Declaration": "- (void)selectText:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399430-selecttext?language=objc"
+      },
+      {
+        "Name": "setTitleWithMnemonic:",
+        "Description": "Sets the text field’s string value using the embedded character as the keyboard mnemonic.",
+        "Declaration": "- (void)setTitleWithMnemonic:(NSString *)stringWithAmpersand;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "stringWithAmpersand",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399411-settitlewithmnemonic?language=objc"
+      },
+      {
+        "Name": "textShouldBeginEditing:",
+        "Description": "Requests permission to begin editing a text object.",
+        "Declaration": "- (BOOL)textShouldBeginEditing:(NSText *)textObject;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "textObject",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399399-textshouldbeginediting?language=objc"
+      },
+      {
+        "Name": "textDidBeginEditing:",
+        "Description": "Posts a notification to the default notification center that the text is about to go into edit mode.",
+        "Declaration": "- (void)textDidBeginEditing:(NSNotification *)notification;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "notification",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399426-textdidbeginediting?language=objc"
+      },
+      {
+        "Name": "textDidChange:",
+        "Description": "Posts a notification when the text changes, and forwards the message to the text field’s cell if it responds.",
+        "Declaration": "- (void)textDidChange:(NSNotification *)notification;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "notification",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399397-textdidchange?language=objc"
+      },
+      {
+        "Name": "textShouldEndEditing:",
+        "Description": "Performs validation on the text field’s new value.",
+        "Declaration": "- (BOOL)textShouldEndEditing:(NSText *)textObject;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "textObject",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399434-textshouldendediting?language=objc"
+      },
+      {
+        "Name": "textDidEndEditing:",
+        "Description": "Posts a notification when the text is no longer in edit mode.",
+        "Declaration": "- (void)textDidEndEditing:(NSNotification *)notification;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "notification",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399420-textdidendediting?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "selectable",
+        "Description": "A Boolean value that determines whether the user can select the content of the text field.",
+        "Declaration": "@property(getter=isSelectable) BOOL selectable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSelectable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399422-selectable?language=objc"
+      },
+      {
+        "Name": "editable",
+        "Description": "A Boolean value that controls whether the user can edit the value in the text field.",
+        "Declaration": "@property(getter=isEditable) BOOL editable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEditable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399407-editable?language=objc"
+      },
+      {
+        "Name": "allowsEditingTextAttributes",
+        "Description": "A Boolean value that controls whether the user can change font attributes of the text field’s string.",
+        "Declaration": "@property BOOL allowsEditingTextAttributes;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399401-allowseditingtextattributes?language=objc"
+      },
+      {
+        "Name": "importsGraphics",
+        "Description": "A Boolean value that controls whether the user can drag image files into the text field.",
+        "Declaration": "@property BOOL importsGraphics;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399428-importsgraphics?language=objc"
+      },
+      {
+        "Name": "placeholderString",
+        "Description": "The string the text field displays when empty to help the user understand the text field’s purpose.",
+        "Declaration": "@property(copy) NSString *placeholderString;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc"
+      },
+      {
+        "Name": "placeholderAttributedString",
+        "Description": "The attributed string the text field displays when empty to help the user understand the text field’s purpose.",
+        "Declaration": "@property(copy) NSAttributedString *placeholderAttributedString;",
+        "Type": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc"
+      },
+      {
+        "Name": "lineBreakStrategy",
+        "Description": "The strategy that the system uses to break lines when laying out multiple lines of text.",
+        "Declaration": "@property NSLineBreakStrategy lineBreakStrategy;",
+        "Type": {
+          "Name": "NSLineBreakStrategy"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/3667464-linebreakstrategy?language=objc"
+      },
+      {
+        "Name": "allowsDefaultTighteningForTruncation",
+        "Description": "A Boolean value that controls whether single-line text fields tighten intercharacter spacing before truncating the text.",
+        "Declaration": "@property BOOL allowsDefaultTighteningForTruncation;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399405-allowsdefaulttighteningfortrunca?language=objc"
+      },
+      {
+        "Name": "maximumNumberOfLines",
+        "Description": "The maximum number of lines a wrapping text field displays before clipping or truncating the text.",
+        "Declaration": "@property NSInteger maximumNumberOfLines;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399424-maximumnumberoflines?language=objc"
+      },
+      {
+        "Name": "preferredMaxLayoutWidth",
+        "Description": "The maximum width of the text field’s intrinsic content size.",
+        "Declaration": "@property CGFloat preferredMaxLayoutWidth;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399395-preferredmaxlayoutwidth?language=objc"
+      },
+      {
+        "Name": "textColor",
+        "Description": "The color of the text field’s content.",
+        "Declaration": "@property(copy) NSColor *textColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The color of the background the text field’s cell draws behind the text.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "drawsBackground",
+        "Description": "A Boolean value that controls whether the text field’s cell draws a background color behind the text.",
+        "Declaration": "@property BOOL drawsBackground;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399416-drawsbackground?language=objc"
+      },
+      {
+        "Name": "bezeled",
+        "Description": "A Boolean value that controls whether the text field draws a bezeled background around its contents.",
+        "Declaration": "@property(getter=isBezeled) BOOL bezeled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isBezeled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399435-bezeled?language=objc"
+      },
+      {
+        "Name": "bezelStyle",
+        "Description": "The text field’s bezel style, square or rounded.",
+        "Declaration": "@property NSTextFieldBezelStyle bezelStyle;",
+        "Type": {
+          "Name": "NSTextFieldBezelStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399418-bezelstyle?language=objc"
+      },
+      {
+        "Name": "bordered",
+        "Description": "A Boolean value that controls whether the text field draws a solid black border around its contents.",
+        "Declaration": "@property(getter=isBordered) BOOL bordered;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isBordered"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399403-bordered?language=objc"
+      },
+      {
+        "Name": "acceptsFirstResponder",
+        "Description": "A Boolean value that indicates whether the text field is editable and accepts first responder status.",
+        "Declaration": "@property(readonly) BOOL acceptsFirstResponder;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399393-acceptsfirstresponder?language=objc"
+      },
+      {
+        "Name": "allowsCharacterPickerTouchBarItem",
+        "Description": "A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields.",
+        "Declaration": "@property BOOL allowsCharacterPickerTouchBarItem;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/2539553-allowscharacterpickertouchbarite?language=objc"
+      },
+      {
+        "Name": "automaticTextCompletionEnabled",
+        "Description": "A Boolean value that indicates whether the text field automatically completes text as the user types.",
+        "Declaration": "@property(getter=isAutomaticTextCompletionEnabled) BOOL automaticTextCompletionEnabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAutomaticTextCompletionEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/2539554-automatictextcompletionenabled?language=objc"
+      },
+      {
+        "Name": "delegate",
+        "Description": "The text field’s delegate.",
+        "Declaration": "@property(weak) id\u003cNSTextFieldDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSTextFieldDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1399437-delegate?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "labelWithAttributedString:",
+        "Description": "Creates a text field for use as a static label that displays styled text, doesn’t wrap, and doesn’t have selectable text.",
+        "Declaration": "+ (instancetype)labelWithAttributedString:(NSAttributedString *)attributedStringValue;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "attributedStringValue",
+            "Type": {
+              "Name": "NSAttributedString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc"
+      },
+      {
+        "Name": "labelWithString:",
+        "Description": "Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.",
+        "Declaration": "+ (instancetype)labelWithString:(NSString *)stringValue;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "stringValue",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc"
+      },
+      {
+        "Name": "textFieldWithString:",
+        "Description": "Initializes a single-line editable text field for user input using the system default font and standard visual appearance.",
+        "Declaration": "+ (instancetype)textFieldWithString:(NSString *)stringValue;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "stringValue",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1644706-textfieldwithstring?language=objc"
+      },
+      {
+        "Name": "wrappingLabelWithString:",
+        "Description": "Initializes a text field for use as a multiline static label with selectable text that uses the system default font.",
+        "Declaration": "+ (instancetype)wrappingLabelWithString:(NSString *)stringValue;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "stringValue",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstextfield/1644543-wrappinglabelwithstring?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-05T10:42:39.176034-07:00",
+  "Version": 2
+}
