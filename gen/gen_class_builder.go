@@ -62,9 +62,10 @@ func (cb *classBuilder) EachInstanceMethod(f func(schema.Method)) {
 }
 
 func (cb *classBuilder) instanceMethod(method schema.Method) MethodDef {
+	ident := toExportedName(selectorNameToGoIdent(cb.generatedNames, method.Name))
 	r := MethodDef{
-		Description: method.Description + fmt.Sprintf("\n// %s", method.TopicURL),
-		Name:        toExportedName(selectorNameToGoIdent(cb.generatedNames, method.Name)),
+		Description: formatComment(method, ident),
+		Name:        ident,
 		WrappedFunc: cb.cgoWrapperFunc(method, false),
 	}
 	if isInstanceType(method.Return) {
