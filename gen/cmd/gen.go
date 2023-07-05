@@ -56,6 +56,7 @@ func main() {
 			loadFile("api/appkit/nsstatusbarbutton.objc.json"),
 			loadFile("api/appkit/nsstatusitem.objc.json"),
 			loadFile("api/appkit/nstext.objc.json"),
+			loadFile("api/appkit/nstextfield.objc.json"),
 			loadFile("api/appkit/nstextcontainer.objc.json"),
 			loadFile("api/appkit/nsviewcontroller.objc.json"),
 			loadFile("api/appkit/nsvisualeffectview.objc.json"),

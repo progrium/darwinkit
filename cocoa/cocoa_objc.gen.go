@@ -419,6 +419,26 @@ void* NSText_type_alloc() {
 	return [NSText
 		alloc];
 }
+void* NSTextField_type_alloc() {
+	return [NSTextField
+		alloc];
+}
+void* NSTextField_type_labelWithAttributedString_(void* attributedStringValue) {
+	return [NSTextField
+		labelWithAttributedString: attributedStringValue];
+}
+void* NSTextField_type_labelWithString_(void* stringValue) {
+	return [NSTextField
+		labelWithString: stringValue];
+}
+void* NSTextField_type_textFieldWithString_(void* stringValue) {
+	return [NSTextField
+		textFieldWithString: stringValue];
+}
+void* NSTextField_type_wrappingLabelWithString_(void* stringValue) {
+	return [NSTextField
+		wrappingLabelWithString: stringValue];
+}
 void* NSTextContainer_type_alloc() {
 	return [NSTextContainer
 		alloc];
@@ -3546,6 +3566,201 @@ void* NSText_inst_delegate(void *id) {
 
 void NSText_inst_setDelegate_(void *id, void* value) {
 	[(NSText*)id
+		setDelegate: value];
+}
+
+void NSTextField_inst_selectText_(void *id, void* sender) {
+	[(NSTextField*)id
+		selectText: sender];
+}
+
+BOOL NSTextField_inst_textShouldBeginEditing_(void *id, void* textObject) {
+	return [(NSTextField*)id
+		textShouldBeginEditing: textObject];
+}
+
+BOOL NSTextField_inst_textShouldEndEditing_(void *id, void* textObject) {
+	return [(NSTextField*)id
+		textShouldEndEditing: textObject];
+}
+
+void* NSTextField_inst_init(void *id) {
+	return [(NSTextField*)id
+		init];
+}
+
+BOOL NSTextField_inst_isSelectable(void *id) {
+	return [(NSTextField*)id
+		isSelectable];
+}
+
+void NSTextField_inst_setSelectable_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setSelectable: value];
+}
+
+BOOL NSTextField_inst_isEditable(void *id) {
+	return [(NSTextField*)id
+		isEditable];
+}
+
+void NSTextField_inst_setEditable_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setEditable: value];
+}
+
+BOOL NSTextField_inst_allowsEditingTextAttributes(void *id) {
+	return [(NSTextField*)id
+		allowsEditingTextAttributes];
+}
+
+void NSTextField_inst_setAllowsEditingTextAttributes_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setAllowsEditingTextAttributes: value];
+}
+
+BOOL NSTextField_inst_importsGraphics(void *id) {
+	return [(NSTextField*)id
+		importsGraphics];
+}
+
+void NSTextField_inst_setImportsGraphics_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setImportsGraphics: value];
+}
+
+void* NSTextField_inst_placeholderString(void *id) {
+	return [(NSTextField*)id
+		placeholderString];
+}
+
+void NSTextField_inst_setPlaceholderString_(void *id, void* value) {
+	[(NSTextField*)id
+		setPlaceholderString: value];
+}
+
+void* NSTextField_inst_placeholderAttributedString(void *id) {
+	return [(NSTextField*)id
+		placeholderAttributedString];
+}
+
+void NSTextField_inst_setPlaceholderAttributedString_(void *id, void* value) {
+	[(NSTextField*)id
+		setPlaceholderAttributedString: value];
+}
+
+BOOL NSTextField_inst_allowsDefaultTighteningForTruncation(void *id) {
+	return [(NSTextField*)id
+		allowsDefaultTighteningForTruncation];
+}
+
+void NSTextField_inst_setAllowsDefaultTighteningForTruncation_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setAllowsDefaultTighteningForTruncation: value];
+}
+
+long NSTextField_inst_maximumNumberOfLines(void *id) {
+	return [(NSTextField*)id
+		maximumNumberOfLines];
+}
+
+void NSTextField_inst_setMaximumNumberOfLines_(void *id, long value) {
+	[(NSTextField*)id
+		setMaximumNumberOfLines: value];
+}
+
+double NSTextField_inst_preferredMaxLayoutWidth(void *id) {
+	return [(NSTextField*)id
+		preferredMaxLayoutWidth];
+}
+
+void NSTextField_inst_setPreferredMaxLayoutWidth_(void *id, double value) {
+	[(NSTextField*)id
+		setPreferredMaxLayoutWidth: value];
+}
+
+void* NSTextField_inst_textColor(void *id) {
+	return [(NSTextField*)id
+		textColor];
+}
+
+void NSTextField_inst_setTextColor_(void *id, void* value) {
+	[(NSTextField*)id
+		setTextColor: value];
+}
+
+void* NSTextField_inst_backgroundColor(void *id) {
+	return [(NSTextField*)id
+		backgroundColor];
+}
+
+void NSTextField_inst_setBackgroundColor_(void *id, void* value) {
+	[(NSTextField*)id
+		setBackgroundColor: value];
+}
+
+BOOL NSTextField_inst_drawsBackground(void *id) {
+	return [(NSTextField*)id
+		drawsBackground];
+}
+
+void NSTextField_inst_setDrawsBackground_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setDrawsBackground: value];
+}
+
+BOOL NSTextField_inst_isBezeled(void *id) {
+	return [(NSTextField*)id
+		isBezeled];
+}
+
+void NSTextField_inst_setBezeled_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setBezeled: value];
+}
+
+BOOL NSTextField_inst_isBordered(void *id) {
+	return [(NSTextField*)id
+		isBordered];
+}
+
+void NSTextField_inst_setBordered_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setBordered: value];
+}
+
+BOOL NSTextField_inst_acceptsFirstResponder(void *id) {
+	return [(NSTextField*)id
+		acceptsFirstResponder];
+}
+
+BOOL NSTextField_inst_allowsCharacterPickerTouchBarItem(void *id) {
+	return [(NSTextField*)id
+		allowsCharacterPickerTouchBarItem];
+}
+
+void NSTextField_inst_setAllowsCharacterPickerTouchBarItem_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setAllowsCharacterPickerTouchBarItem: value];
+}
+
+BOOL NSTextField_inst_isAutomaticTextCompletionEnabled(void *id) {
+	return [(NSTextField*)id
+		isAutomaticTextCompletionEnabled];
+}
+
+void NSTextField_inst_setAutomaticTextCompletionEnabled_(void *id, BOOL value) {
+	[(NSTextField*)id
+		setAutomaticTextCompletionEnabled: value];
+}
+
+void* NSTextField_inst_delegate(void *id) {
+	return [(NSTextField*)id
+		delegate];
+}
+
+void NSTextField_inst_setDelegate_(void *id, void* value) {
+	[(NSTextField*)id
 		setDelegate: value];
 }
 
@@ -8246,6 +8461,62 @@ func NSText_alloc() (
 ) {
 	ret := C.NSText_type_alloc()
 	r0 = NSText_fromPointer(ret)
+	return
+}
+
+func NSTextField_alloc() (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_type_alloc()
+	r0 = NSTextField_fromPointer(ret)
+	return
+}
+
+func NSTextField_labelWithAttributedString_(
+	attributedStringValue core.NSAttributedStringRef,
+) (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_type_labelWithAttributedString_(
+		objc.RefPointer(attributedStringValue),
+	)
+	r0 = NSTextField_fromPointer(ret)
+	return
+}
+
+func NSTextField_labelWithString_(
+	stringValue core.NSStringRef,
+) (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_type_labelWithString_(
+		objc.RefPointer(stringValue),
+	)
+	r0 = NSTextField_fromPointer(ret)
+	return
+}
+
+func NSTextField_textFieldWithString_(
+	stringValue core.NSStringRef,
+) (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_type_textFieldWithString_(
+		objc.RefPointer(stringValue),
+	)
+	r0 = NSTextField_fromPointer(ret)
+	return
+}
+
+func NSTextField_wrappingLabelWithString_(
+	stringValue core.NSStringRef,
+) (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_type_wrappingLabelWithString_(
+		objc.RefPointer(stringValue),
+	)
+	r0 = NSTextField_fromPointer(ret)
 	return
 }
 
@@ -15111,6 +15382,421 @@ func (x gen_NSText) SetDelegate_(
 	value objc.Ref,
 ) {
 	C.NSText_inst_setDelegate_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+type NSTextFieldRef interface {
+	Pointer() uintptr
+	Init_asNSTextField() NSTextField
+}
+
+type gen_NSTextField struct {
+	NSControl
+}
+
+func NSTextField_fromPointer(ptr unsafe.Pointer) NSTextField {
+	return NSTextField{gen_NSTextField{
+		NSControl_fromPointer(ptr),
+	}}
+}
+
+func NSTextField_fromRef(ref objc.Ref) NSTextField {
+	return NSTextField_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSTextField) SelectText_(
+	sender objc.Ref,
+) {
+	C.NSTextField_inst_selectText_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_NSTextField) TextShouldBeginEditing_(
+	textObject NSTextRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_textShouldBeginEditing_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(textObject),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) TextShouldEndEditing_(
+	textObject NSTextRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_textShouldEndEditing_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(textObject),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) Init_asNSTextField() (
+	r0 NSTextField,
+) {
+	ret := C.NSTextField_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSTextField_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) IsSelectable() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_isSelectable(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetSelectable_(
+	value bool,
+) {
+	C.NSTextField_inst_setSelectable_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) IsEditable() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_isEditable(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetEditable_(
+	value bool,
+) {
+	C.NSTextField_inst_setEditable_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) AllowsEditingTextAttributes() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_allowsEditingTextAttributes(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetAllowsEditingTextAttributes_(
+	value bool,
+) {
+	C.NSTextField_inst_setAllowsEditingTextAttributes_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) ImportsGraphics() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_importsGraphics(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetImportsGraphics_(
+	value bool,
+) {
+	C.NSTextField_inst_setImportsGraphics_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) PlaceholderString() (
+	r0 core.NSString,
+) {
+	ret := C.NSTextField_inst_placeholderString(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) SetPlaceholderString_(
+	value core.NSStringRef,
+) {
+	C.NSTextField_inst_setPlaceholderString_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) PlaceholderAttributedString() (
+	r0 core.NSAttributedString,
+) {
+	ret := C.NSTextField_inst_placeholderAttributedString(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSAttributedString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) SetPlaceholderAttributedString_(
+	value core.NSAttributedStringRef,
+) {
+	C.NSTextField_inst_setPlaceholderAttributedString_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) AllowsDefaultTighteningForTruncation() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_allowsDefaultTighteningForTruncation(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation_(
+	value bool,
+) {
+	C.NSTextField_inst_setAllowsDefaultTighteningForTruncation_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) MaximumNumberOfLines() (
+	r0 core.NSInteger,
+) {
+	ret := C.NSTextField_inst_maximumNumberOfLines(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.NSInteger(ret)
+	return
+}
+
+func (x gen_NSTextField) SetMaximumNumberOfLines_(
+	value core.NSInteger,
+) {
+	C.NSTextField_inst_setMaximumNumberOfLines_(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) PreferredMaxLayoutWidth() (
+	r0 core.CGFloat,
+) {
+	ret := C.NSTextField_inst_preferredMaxLayoutWidth(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = core.CGFloat(ret)
+	return
+}
+
+func (x gen_NSTextField) SetPreferredMaxLayoutWidth_(
+	value core.CGFloat,
+) {
+	C.NSTextField_inst_setPreferredMaxLayoutWidth_(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) TextColor() (
+	r0 NSColor,
+) {
+	ret := C.NSTextField_inst_textColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSColor_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) SetTextColor_(
+	value NSColorRef,
+) {
+	C.NSTextField_inst_setTextColor_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) BackgroundColor() (
+	r0 NSColor,
+) {
+	ret := C.NSTextField_inst_backgroundColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSColor_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) SetBackgroundColor_(
+	value NSColorRef,
+) {
+	C.NSTextField_inst_setBackgroundColor_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) DrawsBackground() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_drawsBackground(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetDrawsBackground_(
+	value bool,
+) {
+	C.NSTextField_inst_setDrawsBackground_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) IsBezeled() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_isBezeled(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetBezeled_(
+	value bool,
+) {
+	C.NSTextField_inst_setBezeled_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) IsBordered() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_isBordered(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetBordered_(
+	value bool,
+) {
+	C.NSTextField_inst_setBordered_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) AcceptsFirstResponder() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_acceptsFirstResponder(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) AllowsCharacterPickerTouchBarItem() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_allowsCharacterPickerTouchBarItem(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem_(
+	value bool,
+) {
+	C.NSTextField_inst_setAllowsCharacterPickerTouchBarItem_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) IsAutomaticTextCompletionEnabled() (
+	r0 bool,
+) {
+	ret := C.NSTextField_inst_isAutomaticTextCompletionEnabled(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSTextField) SetAutomaticTextCompletionEnabled_(
+	value bool,
+) {
+	C.NSTextField_inst_setAutomaticTextCompletionEnabled_(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+	return
+}
+
+func (x gen_NSTextField) Delegate() (
+	r0 objc.Object,
+) {
+	ret := C.NSTextField_inst_delegate(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSTextField) SetDelegate_(
+	value objc.Ref,
+) {
+	C.NSTextField_inst_setDelegate_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)
