@@ -63,6 +63,7 @@ func (cb *classBuilder) EachInstanceMethod(f func(schema.Method)) {
 
 func (cb *classBuilder) instanceMethod(method schema.Method) MethodDef {
 	r := MethodDef{
+		Description: method.Description + fmt.Sprintf("\n// %s", method.TopicURL),
 		Name:        toExportedName(selectorNameToGoIdent(cb.generatedNames, method.Name)),
 		WrappedFunc: cb.cgoWrapperFunc(method, false),
 	}

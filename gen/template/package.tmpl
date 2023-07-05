@@ -105,12 +105,12 @@ func {{.Name}}(
 	)
     {{ if eq (len .WrappedFunc.Returns) 1}}
 	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
-	{{ else }}
+    {{ else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
-	{{ end }}
+    {{ end }}
 }
 
 {{end}}
@@ -139,14 +139,19 @@ func {{.Name}}_fromRef(ref objc.Ref) {{.Name}} {
 }
 
 {{range .InstanceMethods}}
+// {{.Name}} {{.Description}}
 func (x gen_{{$cls.Name}}) {{.Name}}(
 	{{- range .WrappedFunc.Args}}
 		{{.Name}} {{.Type}},
 	{{- end}}
 ) {{if .WrappedFunc.HasReturn}}(
-	{{- range $i, $_ := .WrappedFunc.Returns}}
-	r{{$i}} {{.Type}},
-	{{- end}}
+    {{- if eq (len .WrappedFunc.Returns) 1}}
+		{{(index .WrappedFunc.Returns 0).Type}}
+	{{- else -}}
+		{{- range $i, $_ := .WrappedFunc.Returns -}}
+		{{if $i}}, {{end}}r{{$i}} {{.Type}}
+		{{- end -}}
+	{{- end -}}
 ){{end}} {
 	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
 		unsafe.Pointer(x.Pointer()),
@@ -154,10 +159,14 @@ func (x gen_{{$cls.Name}}) {{.Name}}(
 		{{printf .ToCGoFmt .Name}},
 		{{- end}}
 	)
+    {{ if eq (len .WrappedFunc.Returns) 1}}
+	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
+    {{ else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
+    {{ end }}
 }
 {{end}}
 
