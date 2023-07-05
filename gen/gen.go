@@ -29,7 +29,9 @@ func msgSendFuncName(cls schema.Class, selector string, isTypeMethod bool) strin
 }
 
 func selectorNameToGoIdent(sel string) string {
-	return strings.ReplaceAll(sel, ":", "_")
+	ident := strings.ReplaceAll(sel, ":", "_")
+	ident = strings.TrimRight(ident, "_")
+	return ident
 }
 
 // Objective-C properties are syntactic sugar for getter/setter methods, this
