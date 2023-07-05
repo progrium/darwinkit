@@ -20,17 +20,30 @@ func isVoid(dt schema.DataType) bool {
 	return dt.Name == "void" && !dt.IsPtr && !dt.IsPtrPtr
 }
 
-func msgSendFuncName(cls schema.Class, selector string, isTypeMethod bool) string {
+func msgSendFuncName(generatedNames map[string]string, cls schema.Class, selector string, isTypeMethod bool) string {
 	target := "inst"
 	if isTypeMethod {
 		target = "type"
 	}
-	return fmt.Sprintf("%s_%s_%s", cls.Name, target, selectorNameToGoIdent(selector))
+	return fmt.Sprintf("%s_%s_%s", cls.Name, target, selectorNameToGoIdent(generatedNames, selector))
 }
 
-func selectorNameToGoIdent(sel string) string {
+func selectorNameToGoIdent(generatedNames map[string]string, sel string) string {
+	fmt.Println("selectorNameToGoIdent", sel)
+	if ident, ok := generatedNames[sel]; ok {
+		return ident
+	}
 	ident := strings.ReplaceAll(sel, ":", "_")
-	ident = strings.TrimRight(ident, "_")
+
+	if strings.HasSuffix(sel, ":") {
+		trimmedSel := strings.TrimSuffix(sel, ":")
+		if _, ok := generatedNames[trimmedSel]; !ok {
+			ident = strings.TrimSuffix(ident, "_")
+			generatedNames[sel] = ident
+			return ident
+		}
+	}
+	generatedNames[sel] = ident
 	return ident
 }
 

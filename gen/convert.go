@@ -39,6 +39,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		Class:           *s.Class,
 		Imports:         imports,
 		consumedImports: consumedImports,
+		generatedNames:  map[string]string{},
 	}
 	classDef := ClassDef{
 		Name: cb.Class.Name,
@@ -59,8 +60,9 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		defer ignoreIfUnimplemented(fmt.Sprintf("%s.%s", s.Class.Name, m.Name))
 
 		msg := cb.msgSend(m, true)
+		ident := selectorNameToGoIdent(cb.generatedNames, m.Name)
 		wrapper := MethodDef{
-			Name:        fmt.Sprintf("%s_%s", cb.Class.Name, selectorNameToGoIdent(m.Name)),
+			Name:        fmt.Sprintf("%s_%s", cb.Class.Name, ident),
 			WrappedFunc: cb.cgoWrapperFunc(m, true),
 		}
 

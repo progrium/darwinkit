@@ -304,34 +304,9 @@ void* NSUserDefaults_type_standardUserDefaults() {
 }
 
 
-void* CALayer_inst_init(void *id) {
+void* CALayer_inst_actionForKey(void *id, void* event) {
 	return [(CALayer*)id
-		init];
-}
-
-void* CALayer_inst_initWithLayer(void *id, void* layer) {
-	return [(CALayer*)id
-		initWithLayer: layer];
-}
-
-void* CALayer_inst_presentationLayer(void *id) {
-	return [(CALayer*)id
-		presentationLayer];
-}
-
-void* CALayer_inst_modelLayer(void *id) {
-	return [(CALayer*)id
-		modelLayer];
-}
-
-void CALayer_inst_display(void *id) {
-	[(CALayer*)id
-		display];
-}
-
-BOOL CALayer_inst_contentsAreFlipped(void *id) {
-	return [(CALayer*)id
-		contentsAreFlipped];
+		actionForKey: event];
 }
 
 void CALayer_inst_addSublayer(void *id, void* layer) {
@@ -339,108 +314,14 @@ void CALayer_inst_addSublayer(void *id, void* layer) {
 		addSublayer: layer];
 }
 
-void CALayer_inst_removeFromSuperlayer(void *id) {
-	[(CALayer*)id
-		removeFromSuperlayer];
-}
-
-void CALayer_inst_insertSublayer_atIndex(void *id, void* layer, int idx) {
-	[(CALayer*)id
-		insertSublayer: layer
-		atIndex: idx];
-}
-
-void CALayer_inst_insertSublayer_below(void *id, void* layer, void* sibling) {
-	[(CALayer*)id
-		insertSublayer: layer
-		below: sibling];
-}
-
-void CALayer_inst_insertSublayer_above(void *id, void* layer, void* sibling) {
-	[(CALayer*)id
-		insertSublayer: layer
-		above: sibling];
-}
-
-void CALayer_inst_replaceSublayer_with(void *id, void* oldLayer, void* newLayer) {
-	[(CALayer*)id
-		replaceSublayer: oldLayer
-		with: newLayer];
-}
-
-void CALayer_inst_setNeedsDisplay(void *id) {
-	[(CALayer*)id
-		setNeedsDisplay];
-}
-
-void CALayer_inst_setNeedsDisplayInRect(void *id, NSRect r) {
-	[(CALayer*)id
-		setNeedsDisplayInRect: r];
-}
-
-void CALayer_inst_displayIfNeeded(void *id) {
-	[(CALayer*)id
-		displayIfNeeded];
-}
-
-BOOL CALayer_inst_needsDisplay(void *id) {
-	return [(CALayer*)id
-		needsDisplay];
-}
-
-void CALayer_inst_removeAllAnimations(void *id) {
-	[(CALayer*)id
-		removeAllAnimations];
-}
-
-void CALayer_inst_removeAnimationForKey(void *id, void* key) {
-	[(CALayer*)id
-		removeAnimationForKey: key];
-}
-
 void* CALayer_inst_animationKeys(void *id) {
 	return [(CALayer*)id
 		animationKeys];
 }
 
-void CALayer_inst_setNeedsLayout(void *id) {
-	[(CALayer*)id
-		setNeedsLayout];
-}
-
-void CALayer_inst_layoutSublayers(void *id) {
-	[(CALayer*)id
-		layoutSublayers];
-}
-
-void CALayer_inst_layoutIfNeeded(void *id) {
-	[(CALayer*)id
-		layoutIfNeeded];
-}
-
-BOOL CALayer_inst_needsLayout(void *id) {
+BOOL CALayer_inst_contentsAreFlipped(void *id) {
 	return [(CALayer*)id
-		needsLayout];
-}
-
-void CALayer_inst_resizeWithOldSuperlayerSize(void *id, NSSize size) {
-	[(CALayer*)id
-		resizeWithOldSuperlayerSize: size];
-}
-
-void CALayer_inst_resizeSublayersWithOldSize(void *id, NSSize size) {
-	[(CALayer*)id
-		resizeSublayersWithOldSize: size];
-}
-
-NSSize CALayer_inst_preferredFrameSize(void *id) {
-	return [(CALayer*)id
-		preferredFrameSize];
-}
-
-void* CALayer_inst_actionForKey(void *id, void* event) {
-	return [(CALayer*)id
-		actionForKey: event];
+		contentsAreFlipped];
 }
 
 NSRect CALayer_inst_convertRect_fromLayer(void *id, NSRect r, void* l) {
@@ -455,9 +336,128 @@ NSRect CALayer_inst_convertRect_toLayer(void *id, NSRect r, void* l) {
 		toLayer: l];
 }
 
+void CALayer_inst_display(void *id) {
+	[(CALayer*)id
+		display];
+}
+
+void CALayer_inst_displayIfNeeded(void *id) {
+	[(CALayer*)id
+		displayIfNeeded];
+}
+
+void* CALayer_inst_init(void *id) {
+	return [(CALayer*)id
+		init];
+}
+
+void* CALayer_inst_initWithLayer(void *id, void* layer) {
+	return [(CALayer*)id
+		initWithLayer: layer];
+}
+
+void CALayer_inst_insertSublayer_above(void *id, void* layer, void* sibling) {
+	[(CALayer*)id
+		insertSublayer: layer
+		above: sibling];
+}
+
+void CALayer_inst_insertSublayer_atIndex(void *id, void* layer, int idx) {
+	[(CALayer*)id
+		insertSublayer: layer
+		atIndex: idx];
+}
+
+void CALayer_inst_insertSublayer_below(void *id, void* layer, void* sibling) {
+	[(CALayer*)id
+		insertSublayer: layer
+		below: sibling];
+}
+
+void CALayer_inst_layoutIfNeeded(void *id) {
+	[(CALayer*)id
+		layoutIfNeeded];
+}
+
+void CALayer_inst_layoutSublayers(void *id) {
+	[(CALayer*)id
+		layoutSublayers];
+}
+
+void* CALayer_inst_modelLayer(void *id) {
+	return [(CALayer*)id
+		modelLayer];
+}
+
+BOOL CALayer_inst_needsDisplay(void *id) {
+	return [(CALayer*)id
+		needsDisplay];
+}
+
+BOOL CALayer_inst_needsLayout(void *id) {
+	return [(CALayer*)id
+		needsLayout];
+}
+
+NSSize CALayer_inst_preferredFrameSize(void *id) {
+	return [(CALayer*)id
+		preferredFrameSize];
+}
+
+void* CALayer_inst_presentationLayer(void *id) {
+	return [(CALayer*)id
+		presentationLayer];
+}
+
+void CALayer_inst_removeAllAnimations(void *id) {
+	[(CALayer*)id
+		removeAllAnimations];
+}
+
+void CALayer_inst_removeAnimationForKey(void *id, void* key) {
+	[(CALayer*)id
+		removeAnimationForKey: key];
+}
+
+void CALayer_inst_removeFromSuperlayer(void *id) {
+	[(CALayer*)id
+		removeFromSuperlayer];
+}
+
+void CALayer_inst_replaceSublayer_with(void *id, void* oldLayer, void* newLayer) {
+	[(CALayer*)id
+		replaceSublayer: oldLayer
+		with: newLayer];
+}
+
+void CALayer_inst_resizeSublayersWithOldSize(void *id, NSSize size) {
+	[(CALayer*)id
+		resizeSublayersWithOldSize: size];
+}
+
+void CALayer_inst_resizeWithOldSuperlayerSize(void *id, NSSize size) {
+	[(CALayer*)id
+		resizeWithOldSuperlayerSize: size];
+}
+
 void CALayer_inst_scrollRectToVisible(void *id, NSRect r) {
 	[(CALayer*)id
 		scrollRectToVisible: r];
+}
+
+void CALayer_inst_setNeedsDisplay(void *id) {
+	[(CALayer*)id
+		setNeedsDisplay];
+}
+
+void CALayer_inst_setNeedsDisplayInRect(void *id, NSRect r) {
+	[(CALayer*)id
+		setNeedsDisplayInRect: r];
+}
+
+void CALayer_inst_setNeedsLayout(void *id) {
+	[(CALayer*)id
+		setNeedsLayout];
 }
 
 BOOL CALayer_inst_shouldArchiveValueForKey(void *id, void* key) {
@@ -815,51 +815,9 @@ void CALayer_inst_setName(void *id, void* value) {
 		setName: value];
 }
 
-void* NSArray_inst_init(void *id) {
-	return [(NSArray*)id
-		init];
-}
-
-void* NSArray_inst_initWithArray(void *id, void* array) {
-	return [(NSArray*)id
-		initWithArray: array];
-}
-
-void* NSArray_inst_initWithArray_copyItems(void *id, void* array, BOOL flag) {
-	return [(NSArray*)id
-		initWithArray: array
-		copyItems: flag];
-}
-
-void NSArray_inst_makeObjectsPerformSelector(void *id, void* aSelector) {
-	[(NSArray*)id
-		makeObjectsPerformSelector: aSelector];
-}
-
-void NSArray_inst_makeObjectsPerformSelector_withObject(void *id, void* aSelector, void* argument) {
-	[(NSArray*)id
-		makeObjectsPerformSelector: aSelector
-		withObject: argument];
-}
-
-BOOL NSArray_inst_isEqualToArray(void *id, void* otherArray) {
-	return [(NSArray*)id
-		isEqualToArray: otherArray];
-}
-
 void* NSArray_inst_arrayByAddingObjectsFromArray(void *id, void* otherArray) {
 	return [(NSArray*)id
 		arrayByAddingObjectsFromArray: otherArray];
-}
-
-void* NSArray_inst_sortedArrayUsingDescriptors(void *id, void* sortDescriptors) {
-	return [(NSArray*)id
-		sortedArrayUsingDescriptors: sortDescriptors];
-}
-
-void* NSArray_inst_sortedArrayUsingSelector(void *id, void* comparator) {
-	return [(NSArray*)id
-		sortedArrayUsingSelector: comparator];
 }
 
 void* NSArray_inst_componentsJoinedByString(void *id, void* separator) {
@@ -878,6 +836,38 @@ void* NSArray_inst_descriptionWithLocale_indent(void *id, void* locale, unsigned
 		indent: level];
 }
 
+void* NSArray_inst_init(void *id) {
+	return [(NSArray*)id
+		init];
+}
+
+void* NSArray_inst_initWithArray(void *id, void* array) {
+	return [(NSArray*)id
+		initWithArray: array];
+}
+
+void* NSArray_inst_initWithArray_copyItems(void *id, void* array, BOOL flag) {
+	return [(NSArray*)id
+		initWithArray: array
+		copyItems: flag];
+}
+
+BOOL NSArray_inst_isEqualToArray(void *id, void* otherArray) {
+	return [(NSArray*)id
+		isEqualToArray: otherArray];
+}
+
+void NSArray_inst_makeObjectsPerformSelector(void *id, void* aSelector) {
+	[(NSArray*)id
+		makeObjectsPerformSelector: aSelector];
+}
+
+void NSArray_inst_makeObjectsPerformSelector_withObject(void *id, void* aSelector, void* argument) {
+	[(NSArray*)id
+		makeObjectsPerformSelector: aSelector
+		withObject: argument];
+}
+
 void* NSArray_inst_pathsMatchingExtensions(void *id, void* filterTypes) {
 	return [(NSArray*)id
 		pathsMatchingExtensions: filterTypes];
@@ -889,14 +879,24 @@ void NSArray_inst_setValue_forKey(void *id, void* value, void* key) {
 		forKey: key];
 }
 
-void* NSArray_inst_valueForKey(void *id, void* key) {
-	return [(NSArray*)id
-		valueForKey: key];
-}
-
 void* NSArray_inst_shuffledArray(void *id) {
 	return [(NSArray*)id
 		shuffledArray];
+}
+
+void* NSArray_inst_sortedArrayUsingDescriptors(void *id, void* sortDescriptors) {
+	return [(NSArray*)id
+		sortedArrayUsingDescriptors: sortDescriptors];
+}
+
+void* NSArray_inst_sortedArrayUsingSelector(void *id, void* comparator) {
+	return [(NSArray*)id
+		sortedArrayUsingSelector: comparator];
+}
+
+void* NSArray_inst_valueForKey(void *id, void* key) {
+	return [(NSArray*)id
+		valueForKey: key];
 }
 
 unsigned long NSArray_inst_count(void *id) {
@@ -914,15 +914,14 @@ void* NSArray_inst_description(void *id) {
 		description];
 }
 
-void* NSAttributedString_inst_initWithString(void *id, void* str) {
+void* NSAttributedString_inst_attributedStringByInflectingString(void *id) {
 	return [(NSAttributedString*)id
-		initWithString: str];
+		attributedStringByInflectingString];
 }
 
-void* NSAttributedString_inst_initWithString_attributes(void *id, void* str, void* attrs) {
-	return [(NSAttributedString*)id
-		initWithString: str
-		attributes: attrs];
+void NSAttributedString_inst_drawInRect(void *id, NSRect rect) {
+	[(NSAttributedString*)id
+		drawInRect: rect];
 }
 
 void* NSAttributedString_inst_initWithAttributedString(void *id, void* attrStr) {
@@ -936,16 +935,16 @@ void* NSAttributedString_inst_initWithDocFormat_documentAttributes(void *id, voi
 		documentAttributes: dict];
 }
 
-void* NSAttributedString_inst_initWithHTML_documentAttributes(void *id, void* data, void* dict) {
-	return [(NSAttributedString*)id
-		initWithHTML: data
-		documentAttributes: dict];
-}
-
 void* NSAttributedString_inst_initWithHTML_baseURL_documentAttributes(void *id, void* data, void* base, void* dict) {
 	return [(NSAttributedString*)id
 		initWithHTML: data
 		baseURL: base
+		documentAttributes: dict];
+}
+
+void* NSAttributedString_inst_initWithHTML_documentAttributes(void *id, void* data, void* dict) {
+	return [(NSAttributedString*)id
+		initWithHTML: data
 		documentAttributes: dict];
 }
 
@@ -968,6 +967,17 @@ void* NSAttributedString_inst_initWithRTFD_documentAttributes(void *id, void* da
 		documentAttributes: dict];
 }
 
+void* NSAttributedString_inst_initWithString(void *id, void* str) {
+	return [(NSAttributedString*)id
+		initWithString: str];
+}
+
+void* NSAttributedString_inst_initWithString_attributes(void *id, void* str, void* attrs) {
+	return [(NSAttributedString*)id
+		initWithString: str
+		attributes: attrs];
+}
+
 BOOL NSAttributedString_inst_isEqualToAttributedString(void *id, void* other) {
 	return [(NSAttributedString*)id
 		isEqualToAttributedString: other];
@@ -977,16 +987,6 @@ unsigned long NSAttributedString_inst_nextWordFromIndex_forward(void *id, unsign
 	return [(NSAttributedString*)id
 		nextWordFromIndex: location
 		forward: isForward];
-}
-
-void* NSAttributedString_inst_attributedStringByInflectingString(void *id) {
-	return [(NSAttributedString*)id
-		attributedStringByInflectingString];
-}
-
-void NSAttributedString_inst_drawInRect(void *id, NSRect rect) {
-	[(NSAttributedString*)id
-		drawInRect: rect];
 }
 
 NSSize NSAttributedString_inst_size(void *id) {
@@ -1009,6 +1009,12 @@ unsigned long NSAttributedString_inst_length(void *id) {
 		length];
 }
 
+void NSData_inst_getBytes_length(void *id, void* buffer, unsigned long length) {
+	[(NSData*)id
+		getBytes: buffer
+		length: length];
+}
+
 void* NSData_inst_initWithBytes_length(void *id, void* bytes, unsigned long length) {
 	return [(NSData*)id
 		initWithBytes: bytes
@@ -1028,11 +1034,6 @@ void* NSData_inst_initWithBytesNoCopy_length_freeWhenDone(void *id, void* bytes,
 		freeWhenDone: b];
 }
 
-void* NSData_inst_initWithData(void *id, void* data) {
-	return [(NSData*)id
-		initWithData: data];
-}
-
 void* NSData_inst_initWithContentsOfFile(void *id, void* path) {
 	return [(NSData*)id
 		initWithContentsOfFile: path];
@@ -1041,6 +1042,16 @@ void* NSData_inst_initWithContentsOfFile(void *id, void* path) {
 void* NSData_inst_initWithContentsOfURL(void *id, void* url) {
 	return [(NSData*)id
 		initWithContentsOfURL: url];
+}
+
+void* NSData_inst_initWithData(void *id, void* data) {
+	return [(NSData*)id
+		initWithData: data];
+}
+
+BOOL NSData_inst_isEqualToData(void *id, void* other) {
+	return [(NSData*)id
+		isEqualToData: other];
 }
 
 BOOL NSData_inst_writeToFile_atomically(void *id, void* path, BOOL useAuxiliaryFile) {
@@ -1053,17 +1064,6 @@ BOOL NSData_inst_writeToURL_atomically(void *id, void* url, BOOL atomically) {
 	return [(NSData*)id
 		writeToURL: url
 		atomically: atomically];
-}
-
-void NSData_inst_getBytes_length(void *id, void* buffer, unsigned long length) {
-	[(NSData*)id
-		getBytes: buffer
-		length: length];
-}
-
-BOOL NSData_inst_isEqualToData(void *id, void* other) {
-	return [(NSData*)id
-		isEqualToData: other];
 }
 
 void* NSData_inst_init(void *id) {
@@ -1086,15 +1086,75 @@ void* NSData_inst_description(void *id) {
 		description];
 }
 
+void* NSDictionary_inst_descriptionWithLocale(void *id, void* locale) {
+	return [(NSDictionary*)id
+		descriptionWithLocale: locale];
+}
+
+void* NSDictionary_inst_descriptionWithLocale_indent(void *id, void* locale, unsigned long level) {
+	return [(NSDictionary*)id
+		descriptionWithLocale: locale
+		indent: level];
+}
+
+BOOL NSDictionary_inst_fileExtensionHidden(void *id) {
+	return [(NSDictionary*)id
+		fileExtensionHidden];
+}
+
+void* NSDictionary_inst_fileGroupOwnerAccountID(void *id) {
+	return [(NSDictionary*)id
+		fileGroupOwnerAccountID];
+}
+
+void* NSDictionary_inst_fileGroupOwnerAccountName(void *id) {
+	return [(NSDictionary*)id
+		fileGroupOwnerAccountName];
+}
+
+BOOL NSDictionary_inst_fileIsAppendOnly(void *id) {
+	return [(NSDictionary*)id
+		fileIsAppendOnly];
+}
+
+BOOL NSDictionary_inst_fileIsImmutable(void *id) {
+	return [(NSDictionary*)id
+		fileIsImmutable];
+}
+
+void* NSDictionary_inst_fileOwnerAccountID(void *id) {
+	return [(NSDictionary*)id
+		fileOwnerAccountID];
+}
+
+void* NSDictionary_inst_fileOwnerAccountName(void *id) {
+	return [(NSDictionary*)id
+		fileOwnerAccountName];
+}
+
+unsigned long NSDictionary_inst_filePosixPermissions(void *id) {
+	return [(NSDictionary*)id
+		filePosixPermissions];
+}
+
+unsigned long NSDictionary_inst_fileSystemFileNumber(void *id) {
+	return [(NSDictionary*)id
+		fileSystemFileNumber];
+}
+
+long NSDictionary_inst_fileSystemNumber(void *id) {
+	return [(NSDictionary*)id
+		fileSystemNumber];
+}
+
+void* NSDictionary_inst_fileType(void *id) {
+	return [(NSDictionary*)id
+		fileType];
+}
+
 void* NSDictionary_inst_init(void *id) {
 	return [(NSDictionary*)id
 		init];
-}
-
-void* NSDictionary_inst_initWithObjects_forKeys(void *id, void* objects, void* keys) {
-	return [(NSDictionary*)id
-		initWithObjects: objects
-		forKeys: keys];
 }
 
 void* NSDictionary_inst_initWithDictionary(void *id, void* otherDictionary) {
@@ -1108,6 +1168,12 @@ void* NSDictionary_inst_initWithDictionary_copyItems(void *id, void* otherDictio
 		copyItems: flag];
 }
 
+void* NSDictionary_inst_initWithObjects_forKeys(void *id, void* objects, void* keys) {
+	return [(NSDictionary*)id
+		initWithObjects: objects
+		forKeys: keys];
+}
+
 BOOL NSDictionary_inst_isEqualToDictionary(void *id, void* otherDictionary) {
 	return [(NSDictionary*)id
 		isEqualToDictionary: otherDictionary];
@@ -1116,72 +1182,6 @@ BOOL NSDictionary_inst_isEqualToDictionary(void *id, void* otherDictionary) {
 void* NSDictionary_inst_keysSortedByValueUsingSelector(void *id, void* comparator) {
 	return [(NSDictionary*)id
 		keysSortedByValueUsingSelector: comparator];
-}
-
-void* NSDictionary_inst_fileType(void *id) {
-	return [(NSDictionary*)id
-		fileType];
-}
-
-unsigned long NSDictionary_inst_filePosixPermissions(void *id) {
-	return [(NSDictionary*)id
-		filePosixPermissions];
-}
-
-void* NSDictionary_inst_fileOwnerAccountID(void *id) {
-	return [(NSDictionary*)id
-		fileOwnerAccountID];
-}
-
-void* NSDictionary_inst_fileOwnerAccountName(void *id) {
-	return [(NSDictionary*)id
-		fileOwnerAccountName];
-}
-
-void* NSDictionary_inst_fileGroupOwnerAccountID(void *id) {
-	return [(NSDictionary*)id
-		fileGroupOwnerAccountID];
-}
-
-void* NSDictionary_inst_fileGroupOwnerAccountName(void *id) {
-	return [(NSDictionary*)id
-		fileGroupOwnerAccountName];
-}
-
-BOOL NSDictionary_inst_fileExtensionHidden(void *id) {
-	return [(NSDictionary*)id
-		fileExtensionHidden];
-}
-
-BOOL NSDictionary_inst_fileIsImmutable(void *id) {
-	return [(NSDictionary*)id
-		fileIsImmutable];
-}
-
-BOOL NSDictionary_inst_fileIsAppendOnly(void *id) {
-	return [(NSDictionary*)id
-		fileIsAppendOnly];
-}
-
-unsigned long NSDictionary_inst_fileSystemFileNumber(void *id) {
-	return [(NSDictionary*)id
-		fileSystemFileNumber];
-}
-
-long NSDictionary_inst_fileSystemNumber(void *id) {
-	return [(NSDictionary*)id
-		fileSystemNumber];
-}
-
-void* NSDictionary_inst_descriptionWithLocale(void *id, void* locale) {
-	return [(NSDictionary*)id
-		descriptionWithLocale: locale];
-}
-
-void* NSDictionary_inst_descriptionWithLocale_indent(void *id, void* locale, unsigned long level) {
-	return [(NSDictionary*)id
-		descriptionWithLocale: locale
-		indent: level];
 }
 
 unsigned long NSDictionary_inst_count(void *id) {
@@ -1209,6 +1209,11 @@ void* NSDictionary_inst_descriptionInStringsFileFormat(void *id) {
 		descriptionInStringsFileFormat];
 }
 
+void* NSNumber_inst_descriptionWithLocale(void *id, void* locale) {
+	return [(NSNumber*)id
+		descriptionWithLocale: locale];
+}
+
 void* NSNumber_inst_initWithBool(void *id, BOOL value) {
 	return [(NSNumber*)id
 		initWithBool: value];
@@ -1232,11 +1237,6 @@ void* NSNumber_inst_initWithUnsignedInt(void *id, int value) {
 void* NSNumber_inst_initWithUnsignedInteger(void *id, unsigned long value) {
 	return [(NSNumber*)id
 		initWithUnsignedInteger: value];
-}
-
-void* NSNumber_inst_descriptionWithLocale(void *id, void* locale) {
-	return [(NSNumber*)id
-		descriptionWithLocale: locale];
 }
 
 BOOL NSNumber_inst_isEqualToNumber(void *id, void* number) {
@@ -1279,20 +1279,6 @@ void* NSNumber_inst_stringValue(void *id) {
 		stringValue];
 }
 
-void NSRunLoop_inst_run(void *id) {
-	[(NSRunLoop*)id
-		run];
-}
-
-void NSRunLoop_inst_performSelector_target_argument_order_modes(void *id, void* aSelector, void* target, void* arg, unsigned long order, void* modes) {
-	[(NSRunLoop*)id
-		performSelector: aSelector
-		target: target
-		argument: arg
-		order: order
-		modes: modes];
-}
-
 void NSRunLoop_inst_cancelPerformSelector_target_argument(void *id, void* aSelector, void* target, void* arg) {
 	[(NSRunLoop*)id
 		cancelPerformSelector: aSelector
@@ -1305,9 +1291,78 @@ void NSRunLoop_inst_cancelPerformSelectorsWithTarget(void *id, void* target) {
 		cancelPerformSelectorsWithTarget: target];
 }
 
+void NSRunLoop_inst_performSelector_target_argument_order_modes(void *id, void* aSelector, void* target, void* arg, unsigned long order, void* modes) {
+	[(NSRunLoop*)id
+		performSelector: aSelector
+		target: target
+		argument: arg
+		order: order
+		modes: modes];
+}
+
+void NSRunLoop_inst_run(void *id) {
+	[(NSRunLoop*)id
+		run];
+}
+
 void* NSRunLoop_inst_init(void *id) {
 	return [(NSRunLoop*)id
 		init];
+}
+
+BOOL NSString_inst_canBeConvertedToEncoding(void *id, unsigned long encoding) {
+	return [(NSString*)id
+		canBeConvertedToEncoding: encoding];
+}
+
+unsigned short NSString_inst_characterAtIndex(void *id, unsigned long index) {
+	return [(NSString*)id
+		characterAtIndex: index];
+}
+
+unsigned long NSString_inst_completePathIntoString_caseSensitive_matchesIntoArray_filterTypes(void *id, void* outputName, BOOL flag, void* outputArray, void* filterTypes) {
+	return [(NSString*)id
+		completePathIntoString: outputName
+		caseSensitive: flag
+		matchesIntoArray: outputArray
+		filterTypes: filterTypes];
+}
+
+void* NSString_inst_componentsSeparatedByString(void *id, void* separator) {
+	return [(NSString*)id
+		componentsSeparatedByString: separator];
+}
+
+BOOL NSString_inst_containsString(void *id, void* str) {
+	return [(NSString*)id
+		containsString: str];
+}
+
+void* NSString_inst_dataUsingEncoding(void *id, unsigned long encoding) {
+	return [(NSString*)id
+		dataUsingEncoding: encoding];
+}
+
+void* NSString_inst_dataUsingEncoding_allowLossyConversion(void *id, unsigned long encoding, BOOL lossy) {
+	return [(NSString*)id
+		dataUsingEncoding: encoding
+		allowLossyConversion: lossy];
+}
+
+void NSString_inst_drawInRect_withAttributes(void *id, NSRect rect, void* attrs) {
+	[(NSString*)id
+		drawInRect: rect
+		withAttributes: attrs];
+}
+
+BOOL NSString_inst_hasPrefix(void *id, void* str) {
+	return [(NSString*)id
+		hasPrefix: str];
+}
+
+BOOL NSString_inst_hasSuffix(void *id, void* str) {
+	return [(NSString*)id
+		hasSuffix: str];
 }
 
 void* NSString_inst_init(void *id) {
@@ -1330,15 +1385,20 @@ void* NSString_inst_initWithBytesNoCopy_length_encoding_freeWhenDone(void *id, v
 		freeWhenDone: freeBuffer];
 }
 
+void* NSString_inst_initWithData_encoding(void *id, void* data, unsigned long encoding) {
+	return [(NSString*)id
+		initWithData: data
+		encoding: encoding];
+}
+
 void* NSString_inst_initWithString(void *id, void* aString) {
 	return [(NSString*)id
 		initWithString: aString];
 }
 
-void* NSString_inst_initWithData_encoding(void *id, void* data, unsigned long encoding) {
+BOOL NSString_inst_isEqualToString(void *id, void* aString) {
 	return [(NSString*)id
-		initWithData: data
-		encoding: encoding];
+		isEqualToString: aString];
 }
 
 unsigned long NSString_inst_lengthOfBytesUsingEncoding(void *id, unsigned long enc) {
@@ -1346,29 +1406,44 @@ unsigned long NSString_inst_lengthOfBytesUsingEncoding(void *id, unsigned long e
 		lengthOfBytesUsingEncoding: enc];
 }
 
+BOOL NSString_inst_localizedCaseInsensitiveContainsString(void *id, void* str) {
+	return [(NSString*)id
+		localizedCaseInsensitiveContainsString: str];
+}
+
+BOOL NSString_inst_localizedStandardContainsString(void *id, void* str) {
+	return [(NSString*)id
+		localizedStandardContainsString: str];
+}
+
 unsigned long NSString_inst_maximumLengthOfBytesUsingEncoding(void *id, unsigned long enc) {
 	return [(NSString*)id
 		maximumLengthOfBytesUsingEncoding: enc];
 }
 
-unsigned short NSString_inst_characterAtIndex(void *id, unsigned long index) {
+void* NSString_inst_propertyList(void *id) {
 	return [(NSString*)id
-		characterAtIndex: index];
+		propertyList];
 }
 
-BOOL NSString_inst_hasPrefix(void *id, void* str) {
+void* NSString_inst_propertyListFromStringsFileFormat(void *id) {
 	return [(NSString*)id
-		hasPrefix: str];
+		propertyListFromStringsFileFormat];
 }
 
-BOOL NSString_inst_hasSuffix(void *id, void* str) {
+NSSize NSString_inst_sizeWithAttributes(void *id, void* attrs) {
 	return [(NSString*)id
-		hasSuffix: str];
+		sizeWithAttributes: attrs];
 }
 
-BOOL NSString_inst_isEqualToString(void *id, void* aString) {
+void* NSString_inst_stringByAppendingPathComponent(void *id, void* str) {
 	return [(NSString*)id
-		isEqualToString: aString];
+		stringByAppendingPathComponent: str];
+}
+
+void* NSString_inst_stringByAppendingPathExtension(void *id, void* str) {
+	return [(NSString*)id
+		stringByAppendingPathExtension: str];
 }
 
 void* NSString_inst_stringByAppendingString(void *id, void* aString) {
@@ -1383,9 +1458,15 @@ void* NSString_inst_stringByPaddingToLength_withString_startingAtIndex(void *id,
 		startingAtIndex: padIndex];
 }
 
-void* NSString_inst_componentsSeparatedByString(void *id, void* separator) {
+void* NSString_inst_stringByReplacingOccurrencesOfString_withString(void *id, void* target, void* replacement) {
 	return [(NSString*)id
-		componentsSeparatedByString: separator];
+		stringByReplacingOccurrencesOfString: target
+		withString: replacement];
+}
+
+void* NSString_inst_stringsByAppendingPaths(void *id, void* paths) {
+	return [(NSString*)id
+		stringsByAppendingPaths: paths];
 }
 
 void* NSString_inst_substringFromIndex(void *id, unsigned long from) {
@@ -1398,90 +1479,9 @@ void* NSString_inst_substringToIndex(void *id, unsigned long to) {
 		substringToIndex: to];
 }
 
-BOOL NSString_inst_containsString(void *id, void* str) {
-	return [(NSString*)id
-		containsString: str];
-}
-
-BOOL NSString_inst_localizedCaseInsensitiveContainsString(void *id, void* str) {
-	return [(NSString*)id
-		localizedCaseInsensitiveContainsString: str];
-}
-
-BOOL NSString_inst_localizedStandardContainsString(void *id, void* str) {
-	return [(NSString*)id
-		localizedStandardContainsString: str];
-}
-
-void* NSString_inst_stringByReplacingOccurrencesOfString_withString(void *id, void* target, void* replacement) {
-	return [(NSString*)id
-		stringByReplacingOccurrencesOfString: target
-		withString: replacement];
-}
-
-void* NSString_inst_propertyList(void *id) {
-	return [(NSString*)id
-		propertyList];
-}
-
-void* NSString_inst_propertyListFromStringsFileFormat(void *id) {
-	return [(NSString*)id
-		propertyListFromStringsFileFormat];
-}
-
-void NSString_inst_drawInRect_withAttributes(void *id, NSRect rect, void* attrs) {
-	[(NSString*)id
-		drawInRect: rect
-		withAttributes: attrs];
-}
-
-NSSize NSString_inst_sizeWithAttributes(void *id, void* attrs) {
-	return [(NSString*)id
-		sizeWithAttributes: attrs];
-}
-
 void* NSString_inst_variantFittingPresentationWidth(void *id, long width) {
 	return [(NSString*)id
 		variantFittingPresentationWidth: width];
-}
-
-BOOL NSString_inst_canBeConvertedToEncoding(void *id, unsigned long encoding) {
-	return [(NSString*)id
-		canBeConvertedToEncoding: encoding];
-}
-
-void* NSString_inst_dataUsingEncoding(void *id, unsigned long encoding) {
-	return [(NSString*)id
-		dataUsingEncoding: encoding];
-}
-
-void* NSString_inst_dataUsingEncoding_allowLossyConversion(void *id, unsigned long encoding, BOOL lossy) {
-	return [(NSString*)id
-		dataUsingEncoding: encoding
-		allowLossyConversion: lossy];
-}
-
-unsigned long NSString_inst_completePathIntoString_caseSensitive_matchesIntoArray_filterTypes(void *id, void* outputName, BOOL flag, void* outputArray, void* filterTypes) {
-	return [(NSString*)id
-		completePathIntoString: outputName
-		caseSensitive: flag
-		matchesIntoArray: outputArray
-		filterTypes: filterTypes];
-}
-
-void* NSString_inst_stringByAppendingPathComponent(void *id, void* str) {
-	return [(NSString*)id
-		stringByAppendingPathComponent: str];
-}
-
-void* NSString_inst_stringByAppendingPathExtension(void *id, void* str) {
-	return [(NSString*)id
-		stringByAppendingPathExtension: str];
-}
-
-void* NSString_inst_stringsByAppendingPaths(void *id, void* paths) {
-	return [(NSString*)id
-		stringsByAppendingPaths: paths];
 }
 
 unsigned long NSString_inst_length(void *id) {
@@ -1629,6 +1629,11 @@ void* NSString_inst_stringByRemovingPercentEncoding(void *id) {
 		stringByRemovingPercentEncoding];
 }
 
+void NSThread_inst_cancel(void *id) {
+	[(NSThread*)id
+		cancel];
+}
+
 void* NSThread_inst_init(void *id) {
 	return [(NSThread*)id
 		init];
@@ -1641,19 +1646,14 @@ void* NSThread_inst_initWithTarget_selector_object(void *id, void* target, void*
 		object: argument];
 }
 
-void NSThread_inst_start(void *id) {
-	[(NSThread*)id
-		start];
-}
-
 void NSThread_inst_main(void *id) {
 	[(NSThread*)id
 		main];
 }
 
-void NSThread_inst_cancel(void *id) {
+void NSThread_inst_start(void *id) {
 	[(NSThread*)id
-		cancel];
+		start];
 }
 
 BOOL NSThread_inst_isExecuting(void *id) {
@@ -1696,68 +1696,6 @@ void NSThread_inst_setStackSize(void *id, unsigned long value) {
 		setStackSize: value];
 }
 
-void* NSURL_inst_initWithString(void *id, void* URLString) {
-	return [(NSURL*)id
-		initWithString: URLString];
-}
-
-void* NSURL_inst_initWithString_relativeToURL(void *id, void* URLString, void* baseURL) {
-	return [(NSURL*)id
-		initWithString: URLString
-		relativeToURL: baseURL];
-}
-
-void* NSURL_inst_initFileURLWithPath_isDirectory(void *id, void* path, BOOL isDir) {
-	return [(NSURL*)id
-		initFileURLWithPath: path
-		isDirectory: isDir];
-}
-
-void* NSURL_inst_initFileURLWithPath_relativeToURL(void *id, void* path, void* baseURL) {
-	return [(NSURL*)id
-		initFileURLWithPath: path
-		relativeToURL: baseURL];
-}
-
-void* NSURL_inst_initFileURLWithPath_isDirectory_relativeToURL(void *id, void* path, BOOL isDir, void* baseURL) {
-	return [(NSURL*)id
-		initFileURLWithPath: path
-		isDirectory: isDir
-		relativeToURL: baseURL];
-}
-
-void* NSURL_inst_initFileURLWithPath(void *id, void* path) {
-	return [(NSURL*)id
-		initFileURLWithPath: path];
-}
-
-void* NSURL_inst_initAbsoluteURLWithDataRepresentation_relativeToURL(void *id, void* data, void* baseURL) {
-	return [(NSURL*)id
-		initAbsoluteURLWithDataRepresentation: data
-		relativeToURL: baseURL];
-}
-
-void* NSURL_inst_initWithDataRepresentation_relativeToURL(void *id, void* data, void* baseURL) {
-	return [(NSURL*)id
-		initWithDataRepresentation: data
-		relativeToURL: baseURL];
-}
-
-BOOL NSURL_inst_isFileReferenceURL(void *id) {
-	return [(NSURL*)id
-		isFileReferenceURL];
-}
-
-void NSURL_inst_removeAllCachedResourceValues(void *id) {
-	[(NSURL*)id
-		removeAllCachedResourceValues];
-}
-
-void* NSURL_inst_fileReferenceURL(void *id) {
-	return [(NSURL*)id
-		fileReferenceURL];
-}
-
 void* NSURL_inst_URLByAppendingPathComponent(void *id, void* pathComponent) {
 	return [(NSURL*)id
 		URLByAppendingPathComponent: pathComponent];
@@ -1772,6 +1710,68 @@ void* NSURL_inst_URLByAppendingPathComponent_isDirectory(void *id, void* pathCom
 void* NSURL_inst_URLByAppendingPathExtension(void *id, void* pathExtension) {
 	return [(NSURL*)id
 		URLByAppendingPathExtension: pathExtension];
+}
+
+void* NSURL_inst_fileReferenceURL(void *id) {
+	return [(NSURL*)id
+		fileReferenceURL];
+}
+
+void* NSURL_inst_initAbsoluteURLWithDataRepresentation_relativeToURL(void *id, void* data, void* baseURL) {
+	return [(NSURL*)id
+		initAbsoluteURLWithDataRepresentation: data
+		relativeToURL: baseURL];
+}
+
+void* NSURL_inst_initFileURLWithPath(void *id, void* path) {
+	return [(NSURL*)id
+		initFileURLWithPath: path];
+}
+
+void* NSURL_inst_initFileURLWithPath_isDirectory(void *id, void* path, BOOL isDir) {
+	return [(NSURL*)id
+		initFileURLWithPath: path
+		isDirectory: isDir];
+}
+
+void* NSURL_inst_initFileURLWithPath_isDirectory_relativeToURL(void *id, void* path, BOOL isDir, void* baseURL) {
+	return [(NSURL*)id
+		initFileURLWithPath: path
+		isDirectory: isDir
+		relativeToURL: baseURL];
+}
+
+void* NSURL_inst_initFileURLWithPath_relativeToURL(void *id, void* path, void* baseURL) {
+	return [(NSURL*)id
+		initFileURLWithPath: path
+		relativeToURL: baseURL];
+}
+
+void* NSURL_inst_initWithDataRepresentation_relativeToURL(void *id, void* data, void* baseURL) {
+	return [(NSURL*)id
+		initWithDataRepresentation: data
+		relativeToURL: baseURL];
+}
+
+void* NSURL_inst_initWithString(void *id, void* URLString) {
+	return [(NSURL*)id
+		initWithString: URLString];
+}
+
+void* NSURL_inst_initWithString_relativeToURL(void *id, void* URLString, void* baseURL) {
+	return [(NSURL*)id
+		initWithString: URLString
+		relativeToURL: baseURL];
+}
+
+BOOL NSURL_inst_isFileReferenceURL(void *id) {
+	return [(NSURL*)id
+		isFileReferenceURL];
+}
+
+void NSURL_inst_removeAllCachedResourceValues(void *id) {
+	[(NSURL*)id
+		removeAllCachedResourceValues];
 }
 
 BOOL NSURL_inst_startAccessingSecurityScopedResource(void *id) {
@@ -1989,6 +1989,41 @@ BOOL NSURLRequest_inst_assumesHTTP3Capable(void *id) {
 		assumesHTTP3Capable];
 }
 
+void* NSUserDefaults_inst_URLForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		URLForKey: defaultName];
+}
+
+void NSUserDefaults_inst_addSuiteNamed(void *id, void* suiteName) {
+	[(NSUserDefaults*)id
+		addSuiteNamed: suiteName];
+}
+
+void* NSUserDefaults_inst_arrayForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		arrayForKey: defaultName];
+}
+
+BOOL NSUserDefaults_inst_boolForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		boolForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dataForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		dataForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dictionaryForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		dictionaryForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_dictionaryRepresentation(void *id) {
+	return [(NSUserDefaults*)id
+		dictionaryRepresentation];
+}
+
 void* NSUserDefaults_inst_init(void *id) {
 	return [(NSUserDefaults*)id
 		init];
@@ -1999,130 +2034,14 @@ void* NSUserDefaults_inst_initWithSuiteName(void *id, void* suitename) {
 		initWithSuiteName: suitename];
 }
 
-void* NSUserDefaults_inst_objectForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		objectForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_URLForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		URLForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_arrayForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		arrayForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_dictionaryForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		dictionaryForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_stringForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		stringForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_stringArrayForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		stringArrayForKey: defaultName];
-}
-
-void* NSUserDefaults_inst_dataForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		dataForKey: defaultName];
-}
-
-BOOL NSUserDefaults_inst_boolForKey(void *id, void* defaultName) {
-	return [(NSUserDefaults*)id
-		boolForKey: defaultName];
-}
-
 long NSUserDefaults_inst_integerForKey(void *id, void* defaultName) {
 	return [(NSUserDefaults*)id
 		integerForKey: defaultName];
 }
 
-void* NSUserDefaults_inst_dictionaryRepresentation(void *id) {
+void* NSUserDefaults_inst_objectForKey(void *id, void* defaultName) {
 	return [(NSUserDefaults*)id
-		dictionaryRepresentation];
-}
-
-void NSUserDefaults_inst_setObject_forKey(void *id, void* value, void* defaultName) {
-	[(NSUserDefaults*)id
-		setObject: value
-		forKey: defaultName];
-}
-
-void NSUserDefaults_inst_setInteger_forKey(void *id, long value, void* defaultName) {
-	[(NSUserDefaults*)id
-		setInteger: value
-		forKey: defaultName];
-}
-
-void NSUserDefaults_inst_setBool_forKey(void *id, BOOL value, void* defaultName) {
-	[(NSUserDefaults*)id
-		setBool: value
-		forKey: defaultName];
-}
-
-void NSUserDefaults_inst_setURL_forKey(void *id, void* url, void* defaultName) {
-	[(NSUserDefaults*)id
-		setURL: url
-		forKey: defaultName];
-}
-
-void NSUserDefaults_inst_removeObjectForKey(void *id, void* defaultName) {
-	[(NSUserDefaults*)id
-		removeObjectForKey: defaultName];
-}
-
-void NSUserDefaults_inst_addSuiteNamed(void *id, void* suiteName) {
-	[(NSUserDefaults*)id
-		addSuiteNamed: suiteName];
-}
-
-void NSUserDefaults_inst_removeSuiteNamed(void *id, void* suiteName) {
-	[(NSUserDefaults*)id
-		removeSuiteNamed: suiteName];
-}
-
-void NSUserDefaults_inst_registerDefaults(void *id, void* registrationDictionary) {
-	[(NSUserDefaults*)id
-		registerDefaults: registrationDictionary];
-}
-
-void* NSUserDefaults_inst_persistentDomainForName(void *id, void* domainName) {
-	return [(NSUserDefaults*)id
-		persistentDomainForName: domainName];
-}
-
-void NSUserDefaults_inst_setPersistentDomain_forName(void *id, void* domain, void* domainName) {
-	[(NSUserDefaults*)id
-		setPersistentDomain: domain
-		forName: domainName];
-}
-
-void NSUserDefaults_inst_removePersistentDomainForName(void *id, void* domainName) {
-	[(NSUserDefaults*)id
-		removePersistentDomainForName: domainName];
-}
-
-void* NSUserDefaults_inst_volatileDomainForName(void *id, void* domainName) {
-	return [(NSUserDefaults*)id
-		volatileDomainForName: domainName];
-}
-
-void NSUserDefaults_inst_setVolatileDomain_forName(void *id, void* domain, void* domainName) {
-	[(NSUserDefaults*)id
-		setVolatileDomain: domain
-		forName: domainName];
-}
-
-void NSUserDefaults_inst_removeVolatileDomainForName(void *id, void* domainName) {
-	[(NSUserDefaults*)id
-		removeVolatileDomainForName: domainName];
+		objectForKey: defaultName];
 }
 
 BOOL NSUserDefaults_inst_objectIsForcedForKey(void *id, void* key) {
@@ -2136,9 +2055,90 @@ BOOL NSUserDefaults_inst_objectIsForcedForKey_inDomain(void *id, void* key, void
 		inDomain: domain];
 }
 
+void* NSUserDefaults_inst_persistentDomainForName(void *id, void* domainName) {
+	return [(NSUserDefaults*)id
+		persistentDomainForName: domainName];
+}
+
+void NSUserDefaults_inst_registerDefaults(void *id, void* registrationDictionary) {
+	[(NSUserDefaults*)id
+		registerDefaults: registrationDictionary];
+}
+
+void NSUserDefaults_inst_removeObjectForKey(void *id, void* defaultName) {
+	[(NSUserDefaults*)id
+		removeObjectForKey: defaultName];
+}
+
+void NSUserDefaults_inst_removePersistentDomainForName(void *id, void* domainName) {
+	[(NSUserDefaults*)id
+		removePersistentDomainForName: domainName];
+}
+
+void NSUserDefaults_inst_removeSuiteNamed(void *id, void* suiteName) {
+	[(NSUserDefaults*)id
+		removeSuiteNamed: suiteName];
+}
+
+void NSUserDefaults_inst_removeVolatileDomainForName(void *id, void* domainName) {
+	[(NSUserDefaults*)id
+		removeVolatileDomainForName: domainName];
+}
+
+void NSUserDefaults_inst_setBool_forKey(void *id, BOOL value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setBool: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setInteger_forKey(void *id, long value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setInteger: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setObject_forKey(void *id, void* value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setObject: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setPersistentDomain_forName(void *id, void* domain, void* domainName) {
+	[(NSUserDefaults*)id
+		setPersistentDomain: domain
+		forName: domainName];
+}
+
+void NSUserDefaults_inst_setURL_forKey(void *id, void* url, void* defaultName) {
+	[(NSUserDefaults*)id
+		setURL: url
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_setVolatileDomain_forName(void *id, void* domain, void* domainName) {
+	[(NSUserDefaults*)id
+		setVolatileDomain: domain
+		forName: domainName];
+}
+
+void* NSUserDefaults_inst_stringArrayForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		stringArrayForKey: defaultName];
+}
+
+void* NSUserDefaults_inst_stringForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		stringForKey: defaultName];
+}
+
 BOOL NSUserDefaults_inst_synchronize(void *id) {
 	return [(NSUserDefaults*)id
 		synchronize];
+}
+
+void* NSUserDefaults_inst_volatileDomainForName(void *id, void* domainName) {
+	return [(NSUserDefaults*)id
+		volatileDomainForName: domainName];
 }
 
 void* NSUserDefaults_inst_volatileDomainNames(void *id) {
@@ -2873,63 +2873,16 @@ func CALayer_fromRef(ref objc.Ref) CALayer {
 	return CALayer_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_CALayer) Init_asCALayer() (
-	r0 CALayer,
-) {
-	ret := C.CALayer_inst_init(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = CALayer_fromPointer(ret)
-	return
-}
-
-func (x gen_CALayer) InitWithLayer_asCALayer(
-	layer objc.Ref,
+func (x gen_CALayer) ActionForKey(
+	event NSStringRef,
 ) (
-	r0 CALayer,
+	r0 objc.Object,
 ) {
-	ret := C.CALayer_inst_initWithLayer(
+	ret := C.CALayer_inst_actionForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(layer),
+		objc.RefPointer(event),
 	)
-	r0 = CALayer_fromPointer(ret)
-	return
-}
-
-func (x gen_CALayer) PresentationLayer_asCALayer() (
-	r0 CALayer,
-) {
-	ret := C.CALayer_inst_presentationLayer(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = CALayer_fromPointer(ret)
-	return
-}
-
-func (x gen_CALayer) ModelLayer_asCALayer() (
-	r0 CALayer,
-) {
-	ret := C.CALayer_inst_modelLayer(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = CALayer_fromPointer(ret)
-	return
-}
-
-func (x gen_CALayer) Display() {
-	C.CALayer_inst_display(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) ContentsAreFlipped() (
-	r0 bool,
-) {
-	ret := C.CALayer_inst_contentsAreFlipped(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
+	r0 = objc.Object_fromPointer(ret)
 	return
 }
 
@@ -2939,112 +2892,6 @@ func (x gen_CALayer) AddSublayer(
 	C.CALayer_inst_addSublayer(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(layer),
-	)
-	return
-}
-
-func (x gen_CALayer) RemoveFromSuperlayer() {
-	C.CALayer_inst_removeFromSuperlayer(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) InsertSublayer_atIndex(
-	layer CALayerRef,
-	idx int32,
-) {
-	C.CALayer_inst_insertSublayer_atIndex(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(layer),
-		C.int(idx),
-	)
-	return
-}
-
-func (x gen_CALayer) InsertSublayer_below(
-	layer CALayerRef,
-	sibling CALayerRef,
-) {
-	C.CALayer_inst_insertSublayer_below(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(layer),
-		objc.RefPointer(sibling),
-	)
-	return
-}
-
-func (x gen_CALayer) InsertSublayer_above(
-	layer CALayerRef,
-	sibling CALayerRef,
-) {
-	C.CALayer_inst_insertSublayer_above(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(layer),
-		objc.RefPointer(sibling),
-	)
-	return
-}
-
-func (x gen_CALayer) ReplaceSublayer_with(
-	oldLayer CALayerRef,
-	newLayer CALayerRef,
-) {
-	C.CALayer_inst_replaceSublayer_with(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(oldLayer),
-		objc.RefPointer(newLayer),
-	)
-	return
-}
-
-func (x gen_CALayer) SetNeedsDisplay() {
-	C.CALayer_inst_setNeedsDisplay(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) SetNeedsDisplayInRect(
-	r NSRect,
-) {
-	C.CALayer_inst_setNeedsDisplayInRect(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSRect)(unsafe.Pointer(&r)),
-	)
-	return
-}
-
-func (x gen_CALayer) DisplayIfNeeded() {
-	C.CALayer_inst_displayIfNeeded(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) NeedsDisplay() (
-	r0 bool,
-) {
-	ret := C.CALayer_inst_needsDisplay(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_CALayer) RemoveAllAnimations() {
-	C.CALayer_inst_removeAllAnimations(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) RemoveAnimationForKey(
-	key NSStringRef,
-) {
-	C.CALayer_inst_removeAnimationForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
 	)
 	return
 }
@@ -3059,77 +2906,13 @@ func (x gen_CALayer) AnimationKeys() (
 	return
 }
 
-func (x gen_CALayer) SetNeedsLayout() {
-	C.CALayer_inst_setNeedsLayout(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) LayoutSublayers() {
-	C.CALayer_inst_layoutSublayers(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) LayoutIfNeeded() {
-	C.CALayer_inst_layoutIfNeeded(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_CALayer) NeedsLayout() (
+func (x gen_CALayer) ContentsAreFlipped() (
 	r0 bool,
 ) {
-	ret := C.CALayer_inst_needsLayout(
+	ret := C.CALayer_inst_contentsAreFlipped(
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_CALayer) ResizeWithOldSuperlayerSize(
-	size NSSize,
-) {
-	C.CALayer_inst_resizeWithOldSuperlayerSize(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSSize)(unsafe.Pointer(&size)),
-	)
-	return
-}
-
-func (x gen_CALayer) ResizeSublayersWithOldSize(
-	size NSSize,
-) {
-	C.CALayer_inst_resizeSublayersWithOldSize(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSSize)(unsafe.Pointer(&size)),
-	)
-	return
-}
-
-func (x gen_CALayer) PreferredFrameSize() (
-	r0 NSSize,
-) {
-	ret := C.CALayer_inst_preferredFrameSize(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = *(*NSSize)(unsafe.Pointer(&ret))
-	return
-}
-
-func (x gen_CALayer) ActionForKey(
-	event NSStringRef,
-) (
-	r0 objc.Object,
-) {
-	ret := C.CALayer_inst_actionForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(event),
-	)
-	r0 = objc.Object_fromPointer(ret)
 	return
 }
 
@@ -3163,12 +2946,229 @@ func (x gen_CALayer) ConvertRect_toLayer(
 	return
 }
 
+func (x gen_CALayer) Display() {
+	C.CALayer_inst_display(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) DisplayIfNeeded() {
+	C.CALayer_inst_displayIfNeeded(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) Init_asCALayer() (
+	r0 CALayer,
+) {
+	ret := C.CALayer_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = CALayer_fromPointer(ret)
+	return
+}
+
+func (x gen_CALayer) InitWithLayer_asCALayer(
+	layer objc.Ref,
+) (
+	r0 CALayer,
+) {
+	ret := C.CALayer_inst_initWithLayer(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(layer),
+	)
+	r0 = CALayer_fromPointer(ret)
+	return
+}
+
+func (x gen_CALayer) InsertSublayer_above(
+	layer CALayerRef,
+	sibling CALayerRef,
+) {
+	C.CALayer_inst_insertSublayer_above(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(layer),
+		objc.RefPointer(sibling),
+	)
+	return
+}
+
+func (x gen_CALayer) InsertSublayer_atIndex(
+	layer CALayerRef,
+	idx int32,
+) {
+	C.CALayer_inst_insertSublayer_atIndex(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(layer),
+		C.int(idx),
+	)
+	return
+}
+
+func (x gen_CALayer) InsertSublayer_below(
+	layer CALayerRef,
+	sibling CALayerRef,
+) {
+	C.CALayer_inst_insertSublayer_below(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(layer),
+		objc.RefPointer(sibling),
+	)
+	return
+}
+
+func (x gen_CALayer) LayoutIfNeeded() {
+	C.CALayer_inst_layoutIfNeeded(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) LayoutSublayers() {
+	C.CALayer_inst_layoutSublayers(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) ModelLayer_asCALayer() (
+	r0 CALayer,
+) {
+	ret := C.CALayer_inst_modelLayer(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = CALayer_fromPointer(ret)
+	return
+}
+
+func (x gen_CALayer) NeedsDisplay() (
+	r0 bool,
+) {
+	ret := C.CALayer_inst_needsDisplay(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_CALayer) NeedsLayout() (
+	r0 bool,
+) {
+	ret := C.CALayer_inst_needsLayout(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_CALayer) PreferredFrameSize() (
+	r0 NSSize,
+) {
+	ret := C.CALayer_inst_preferredFrameSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_CALayer) PresentationLayer_asCALayer() (
+	r0 CALayer,
+) {
+	ret := C.CALayer_inst_presentationLayer(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = CALayer_fromPointer(ret)
+	return
+}
+
+func (x gen_CALayer) RemoveAllAnimations() {
+	C.CALayer_inst_removeAllAnimations(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) RemoveAnimationForKey(
+	key NSStringRef,
+) {
+	C.CALayer_inst_removeAnimationForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+	return
+}
+
+func (x gen_CALayer) RemoveFromSuperlayer() {
+	C.CALayer_inst_removeFromSuperlayer(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) ReplaceSublayer_with(
+	oldLayer CALayerRef,
+	newLayer CALayerRef,
+) {
+	C.CALayer_inst_replaceSublayer_with(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(oldLayer),
+		objc.RefPointer(newLayer),
+	)
+	return
+}
+
+func (x gen_CALayer) ResizeSublayersWithOldSize(
+	size NSSize,
+) {
+	C.CALayer_inst_resizeSublayersWithOldSize(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	return
+}
+
+func (x gen_CALayer) ResizeWithOldSuperlayerSize(
+	size NSSize,
+) {
+	C.CALayer_inst_resizeWithOldSuperlayerSize(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&size)),
+	)
+	return
+}
+
 func (x gen_CALayer) ScrollRectToVisible(
 	r NSRect,
 ) {
 	C.CALayer_inst_scrollRectToVisible(
 		unsafe.Pointer(x.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&r)),
+	)
+	return
+}
+
+func (x gen_CALayer) SetNeedsDisplay() {
+	C.CALayer_inst_setNeedsDisplay(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_CALayer) SetNeedsDisplayInRect(
+	r NSRect,
+) {
+	C.CALayer_inst_setNeedsDisplayInRect(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&r)),
+	)
+	return
+}
+
+func (x gen_CALayer) SetNeedsLayout() {
+	C.CALayer_inst_setNeedsLayout(
+		unsafe.Pointer(x.Pointer()),
 	)
 	return
 }
@@ -3905,79 +3905,6 @@ func NSArray_fromRef(ref objc.Ref) NSArray {
 	return NSArray_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSArray) Init_asNSArray() (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_init(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) InitWithArray_asNSArray(
-	array NSArrayRef,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_initWithArray(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(array),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) InitWithArray_copyItems_asNSArray(
-	array NSArrayRef,
-	flag bool,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_initWithArray_copyItems(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(array),
-		convertToObjCBool(flag),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) MakeObjectsPerformSelector(
-	aSelector objc.Selector,
-) {
-	C.NSArray_inst_makeObjectsPerformSelector(
-		unsafe.Pointer(x.Pointer()),
-		aSelector.SelectorAddress(),
-	)
-	return
-}
-
-func (x gen_NSArray) MakeObjectsPerformSelector_withObject(
-	aSelector objc.Selector,
-	argument objc.Ref,
-) {
-	C.NSArray_inst_makeObjectsPerformSelector_withObject(
-		unsafe.Pointer(x.Pointer()),
-		aSelector.SelectorAddress(),
-		objc.RefPointer(argument),
-	)
-	return
-}
-
-func (x gen_NSArray) IsEqualToArray(
-	otherArray NSArrayRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSArray_inst_isEqualToArray(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(otherArray),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
 func (x gen_NSArray) ArrayByAddingObjectsFromArray(
 	otherArray NSArrayRef,
 ) (
@@ -3986,32 +3913,6 @@ func (x gen_NSArray) ArrayByAddingObjectsFromArray(
 	ret := C.NSArray_inst_arrayByAddingObjectsFromArray(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(otherArray),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) SortedArrayUsingDescriptors(
-	sortDescriptors NSArrayRef,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_sortedArrayUsingDescriptors(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sortDescriptors),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) SortedArrayUsingSelector(
-	comparator objc.Selector,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_sortedArrayUsingSelector(
-		unsafe.Pointer(x.Pointer()),
-		comparator.SelectorAddress(),
 	)
 	r0 = NSArray_fromPointer(ret)
 	return
@@ -4058,6 +3959,79 @@ func (x gen_NSArray) DescriptionWithLocale_indent(
 	return
 }
 
+func (x gen_NSArray) Init_asNSArray() (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_init(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSArray) InitWithArray_asNSArray(
+	array NSArrayRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_initWithArray(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(array),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSArray) InitWithArray_copyItems_asNSArray(
+	array NSArrayRef,
+	flag bool,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_initWithArray_copyItems(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(array),
+		convertToObjCBool(flag),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSArray) IsEqualToArray(
+	otherArray NSArrayRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSArray_inst_isEqualToArray(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherArray),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSArray) MakeObjectsPerformSelector(
+	aSelector objc.Selector,
+) {
+	C.NSArray_inst_makeObjectsPerformSelector(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+	)
+	return
+}
+
+func (x gen_NSArray) MakeObjectsPerformSelector_withObject(
+	aSelector objc.Selector,
+	argument objc.Ref,
+) {
+	C.NSArray_inst_makeObjectsPerformSelector_withObject(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(argument),
+	)
+	return
+}
+
 func (x gen_NSArray) PathsMatchingExtensions(
 	filterTypes NSArrayRef,
 ) (
@@ -4083,6 +4057,42 @@ func (x gen_NSArray) SetValue_forKey(
 	return
 }
 
+func (x gen_NSArray) ShuffledArray() (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_shuffledArray(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSArray) SortedArrayUsingDescriptors(
+	sortDescriptors NSArrayRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_sortedArrayUsingDescriptors(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sortDescriptors),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSArray) SortedArrayUsingSelector(
+	comparator objc.Selector,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSArray_inst_sortedArrayUsingSelector(
+		unsafe.Pointer(x.Pointer()),
+		comparator.SelectorAddress(),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
 func (x gen_NSArray) ValueForKey(
 	key NSStringRef,
 ) (
@@ -4093,16 +4103,6 @@ func (x gen_NSArray) ValueForKey(
 		objc.RefPointer(key),
 	)
 	r0 = objc.Object_fromPointer(ret)
-	return
-}
-
-func (x gen_NSArray) ShuffledArray() (
-	r0 NSArray,
-) {
-	ret := C.NSArray_inst_shuffledArray(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSArray_fromPointer(ret)
 	return
 }
 
@@ -4155,31 +4155,23 @@ func NSAttributedString_fromRef(ref objc.Ref) NSAttributedString {
 	return NSAttributedString_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSAttributedString) InitWithString_asNSAttributedString(
-	str NSStringRef,
-) (
+func (x gen_NSAttributedString) AttributedStringByInflectingString() (
 	r0 NSAttributedString,
 ) {
-	ret := C.NSAttributedString_inst_initWithString(
+	ret := C.NSAttributedString_inst_attributedStringByInflectingString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
 	)
 	r0 = NSAttributedString_fromPointer(ret)
 	return
 }
 
-func (x gen_NSAttributedString) InitWithString_attributes_asNSAttributedString(
-	str NSStringRef,
-	attrs NSDictionaryRef,
-) (
-	r0 NSAttributedString,
+func (x gen_NSAttributedString) DrawInRect(
+	rect NSRect,
 ) {
-	ret := C.NSAttributedString_inst_initWithString_attributes(
+	C.NSAttributedString_inst_drawInRect(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-		objc.RefPointer(attrs),
+		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
-	r0 = NSAttributedString_fromPointer(ret)
 	return
 }
 
@@ -4211,21 +4203,6 @@ func (x gen_NSAttributedString) InitWithDocFormat_documentAttributes_asNSAttribu
 	return
 }
 
-func (x gen_NSAttributedString) InitWithHTML_documentAttributes_asNSAttributedString(
-	data NSDataRef,
-	dict NSDictionaryRef,
-) (
-	r0 NSAttributedString,
-) {
-	ret := C.NSAttributedString_inst_initWithHTML_documentAttributes(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(data),
-		objc.RefPointer(dict),
-	)
-	r0 = NSAttributedString_fromPointer(ret)
-	return
-}
-
 func (x gen_NSAttributedString) InitWithHTML_baseURL_documentAttributes_asNSAttributedString(
 	data NSDataRef,
 	base NSURLRef,
@@ -4237,6 +4214,21 @@ func (x gen_NSAttributedString) InitWithHTML_baseURL_documentAttributes_asNSAttr
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(base),
+		objc.RefPointer(dict),
+	)
+	r0 = NSAttributedString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSAttributedString) InitWithHTML_documentAttributes_asNSAttributedString(
+	data NSDataRef,
+	dict NSDictionaryRef,
+) (
+	r0 NSAttributedString,
+) {
+	ret := C.NSAttributedString_inst_initWithHTML_documentAttributes(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
 		objc.RefPointer(dict),
 	)
 	r0 = NSAttributedString_fromPointer(ret)
@@ -4290,6 +4282,34 @@ func (x gen_NSAttributedString) InitWithRTFD_documentAttributes_asNSAttributedSt
 	return
 }
 
+func (x gen_NSAttributedString) InitWithString_asNSAttributedString(
+	str NSStringRef,
+) (
+	r0 NSAttributedString,
+) {
+	ret := C.NSAttributedString_inst_initWithString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = NSAttributedString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSAttributedString) InitWithString_attributes_asNSAttributedString(
+	str NSStringRef,
+	attrs NSDictionaryRef,
+) (
+	r0 NSAttributedString,
+) {
+	ret := C.NSAttributedString_inst_initWithString_attributes(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+		objc.RefPointer(attrs),
+	)
+	r0 = NSAttributedString_fromPointer(ret)
+	return
+}
+
 func (x gen_NSAttributedString) IsEqualToAttributedString(
 	other NSAttributedStringRef,
 ) (
@@ -4315,26 +4335,6 @@ func (x gen_NSAttributedString) NextWordFromIndex_forward(
 		convertToObjCBool(isForward),
 	)
 	r0 = NSUInteger(ret)
-	return
-}
-
-func (x gen_NSAttributedString) AttributedStringByInflectingString() (
-	r0 NSAttributedString,
-) {
-	ret := C.NSAttributedString_inst_attributedStringByInflectingString(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSAttributedString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSAttributedString) DrawInRect(
-	rect NSRect,
-) {
-	C.NSAttributedString_inst_drawInRect(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSRect)(unsafe.Pointer(&rect)),
-	)
 	return
 }
 
@@ -4397,6 +4397,18 @@ func NSData_fromRef(ref objc.Ref) NSData {
 	return NSData_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSData) GetBytes_length(
+	buffer unsafe.Pointer,
+	length NSUInteger,
+) {
+	C.NSData_inst_getBytes_length(
+		unsafe.Pointer(x.Pointer()),
+		buffer,
+		C.ulong(length),
+	)
+	return
+}
+
 func (x gen_NSData) InitWithBytes_length_asNSData(
 	bytes unsafe.Pointer,
 	length NSUInteger,
@@ -4444,19 +4456,6 @@ func (x gen_NSData) InitWithBytesNoCopy_length_freeWhenDone_asNSData(
 	return
 }
 
-func (x gen_NSData) InitWithData_asNSData(
-	data NSDataRef,
-) (
-	r0 NSData,
-) {
-	ret := C.NSData_inst_initWithData(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(data),
-	)
-	r0 = NSData_fromPointer(ret)
-	return
-}
-
 func (x gen_NSData) InitWithContentsOfFile_asNSData(
 	path NSStringRef,
 ) (
@@ -4480,6 +4479,32 @@ func (x gen_NSData) InitWithContentsOfURL_asNSData(
 		objc.RefPointer(url),
 	)
 	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSData) InitWithData_asNSData(
+	data NSDataRef,
+) (
+	r0 NSData,
+) {
+	ret := C.NSData_inst_initWithData(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+	)
+	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSData) IsEqualToData(
+	other NSDataRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSData_inst_isEqualToData(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(other),
+	)
+	r0 = convertObjCBoolToGo(ret)
 	return
 }
 
@@ -4508,31 +4533,6 @@ func (x gen_NSData) WriteToURL_atomically(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
 		convertToObjCBool(atomically),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSData) GetBytes_length(
-	buffer unsafe.Pointer,
-	length NSUInteger,
-) {
-	C.NSData_inst_getBytes_length(
-		unsafe.Pointer(x.Pointer()),
-		buffer,
-		C.ulong(length),
-	)
-	return
-}
-
-func (x gen_NSData) IsEqualToData(
-	other NSDataRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSData_inst_isEqualToData(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(other),
 	)
 	r0 = convertObjCBoolToGo(ret)
 	return
@@ -4597,26 +4597,149 @@ func NSDictionary_fromRef(ref objc.Ref) NSDictionary {
 	return NSDictionary_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSDictionary) DescriptionWithLocale(
+	locale objc.Ref,
+) (
+	r0 NSString,
+) {
+	ret := C.NSDictionary_inst_descriptionWithLocale(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(locale),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) DescriptionWithLocale_indent(
+	locale objc.Ref,
+	level NSUInteger,
+) (
+	r0 NSString,
+) {
+	ret := C.NSDictionary_inst_descriptionWithLocale_indent(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(locale),
+		C.ulong(level),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileExtensionHidden() (
+	r0 bool,
+) {
+	ret := C.NSDictionary_inst_fileExtensionHidden(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileGroupOwnerAccountID() (
+	r0 NSNumber,
+) {
+	ret := C.NSDictionary_inst_fileGroupOwnerAccountID(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileGroupOwnerAccountName() (
+	r0 NSString,
+) {
+	ret := C.NSDictionary_inst_fileGroupOwnerAccountName(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileIsAppendOnly() (
+	r0 bool,
+) {
+	ret := C.NSDictionary_inst_fileIsAppendOnly(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileIsImmutable() (
+	r0 bool,
+) {
+	ret := C.NSDictionary_inst_fileIsImmutable(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileOwnerAccountID() (
+	r0 NSNumber,
+) {
+	ret := C.NSDictionary_inst_fileOwnerAccountID(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSNumber_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileOwnerAccountName() (
+	r0 NSString,
+) {
+	ret := C.NSDictionary_inst_fileOwnerAccountName(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSDictionary) FilePosixPermissions() (
+	r0 NSUInteger,
+) {
+	ret := C.NSDictionary_inst_filePosixPermissions(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSUInteger(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileSystemFileNumber() (
+	r0 NSUInteger,
+) {
+	ret := C.NSDictionary_inst_fileSystemFileNumber(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSUInteger(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileSystemNumber() (
+	r0 NSInteger,
+) {
+	ret := C.NSDictionary_inst_fileSystemNumber(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSInteger(ret)
+	return
+}
+
+func (x gen_NSDictionary) FileType() (
+	r0 NSString,
+) {
+	ret := C.NSDictionary_inst_fileType(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
 func (x gen_NSDictionary) Init_asNSDictionary() (
 	r0 NSDictionary,
 ) {
 	ret := C.NSDictionary_inst_init(
 		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) InitWithObjects_forKeys_asNSDictionary(
-	objects NSArrayRef,
-	keys NSArrayRef,
-) (
-	r0 NSDictionary,
-) {
-	ret := C.NSDictionary_inst_initWithObjects_forKeys(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(objects),
-		objc.RefPointer(keys),
 	)
 	r0 = NSDictionary_fromPointer(ret)
 	return
@@ -4650,6 +4773,21 @@ func (x gen_NSDictionary) InitWithDictionary_copyItems_asNSDictionary(
 	return
 }
 
+func (x gen_NSDictionary) InitWithObjects_forKeys_asNSDictionary(
+	objects NSArrayRef,
+	keys NSArrayRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSDictionary_inst_initWithObjects_forKeys(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(objects),
+		objc.RefPointer(keys),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
 func (x gen_NSDictionary) IsEqualToDictionary(
 	otherDictionary NSDictionaryRef,
 ) (
@@ -4673,144 +4811,6 @@ func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
 		comparator.SelectorAddress(),
 	)
 	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileType() (
-	r0 NSString,
-) {
-	ret := C.NSDictionary_inst_fileType(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FilePosixPermissions() (
-	r0 NSUInteger,
-) {
-	ret := C.NSDictionary_inst_filePosixPermissions(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSUInteger(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileOwnerAccountID() (
-	r0 NSNumber,
-) {
-	ret := C.NSDictionary_inst_fileOwnerAccountID(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSNumber_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileOwnerAccountName() (
-	r0 NSString,
-) {
-	ret := C.NSDictionary_inst_fileOwnerAccountName(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileGroupOwnerAccountID() (
-	r0 NSNumber,
-) {
-	ret := C.NSDictionary_inst_fileGroupOwnerAccountID(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSNumber_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileGroupOwnerAccountName() (
-	r0 NSString,
-) {
-	ret := C.NSDictionary_inst_fileGroupOwnerAccountName(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileExtensionHidden() (
-	r0 bool,
-) {
-	ret := C.NSDictionary_inst_fileExtensionHidden(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileIsImmutable() (
-	r0 bool,
-) {
-	ret := C.NSDictionary_inst_fileIsImmutable(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileIsAppendOnly() (
-	r0 bool,
-) {
-	ret := C.NSDictionary_inst_fileIsAppendOnly(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileSystemFileNumber() (
-	r0 NSUInteger,
-) {
-	ret := C.NSDictionary_inst_fileSystemFileNumber(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSUInteger(ret)
-	return
-}
-
-func (x gen_NSDictionary) FileSystemNumber() (
-	r0 NSInteger,
-) {
-	ret := C.NSDictionary_inst_fileSystemNumber(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSInteger(ret)
-	return
-}
-
-func (x gen_NSDictionary) DescriptionWithLocale(
-	locale objc.Ref,
-) (
-	r0 NSString,
-) {
-	ret := C.NSDictionary_inst_descriptionWithLocale(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(locale),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSDictionary) DescriptionWithLocale_indent(
-	locale objc.Ref,
-	level NSUInteger,
-) (
-	r0 NSString,
-) {
-	ret := C.NSDictionary_inst_descriptionWithLocale_indent(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(locale),
-		C.ulong(level),
-	)
-	r0 = NSString_fromPointer(ret)
 	return
 }
 
@@ -4883,6 +4883,19 @@ func NSNumber_fromRef(ref objc.Ref) NSNumber {
 	return NSNumber_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSNumber) DescriptionWithLocale(
+	locale objc.Ref,
+) (
+	r0 NSString,
+) {
+	ret := C.NSNumber_inst_descriptionWithLocale(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(locale),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
 func (x gen_NSNumber) InitWithBool(
 	value bool,
 ) (
@@ -4945,19 +4958,6 @@ func (x gen_NSNumber) InitWithUnsignedInteger(
 		C.ulong(value),
 	)
 	r0 = NSNumber_fromPointer(ret)
-	return
-}
-
-func (x gen_NSNumber) DescriptionWithLocale(
-	locale objc.Ref,
-) (
-	r0 NSString,
-) {
-	ret := C.NSNumber_inst_descriptionWithLocale(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(locale),
-	)
-	r0 = NSString_fromPointer(ret)
 	return
 }
 
@@ -5063,9 +5063,26 @@ func NSRunLoop_fromRef(ref objc.Ref) NSRunLoop {
 	return NSRunLoop_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSRunLoop) Run() {
-	C.NSRunLoop_inst_run(
+func (x gen_NSRunLoop) CancelPerformSelector_target_argument(
+	aSelector objc.Selector,
+	target objc.Ref,
+	arg objc.Ref,
+) {
+	C.NSRunLoop_inst_cancelPerformSelector_target_argument(
 		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(target),
+		objc.RefPointer(arg),
+	)
+	return
+}
+
+func (x gen_NSRunLoop) CancelPerformSelectorsWithTarget(
+	target objc.Ref,
+) {
+	C.NSRunLoop_inst_cancelPerformSelectorsWithTarget(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(target),
 	)
 	return
 }
@@ -5088,26 +5105,9 @@ func (x gen_NSRunLoop) PerformSelector_target_argument_order_modes(
 	return
 }
 
-func (x gen_NSRunLoop) CancelPerformSelector_target_argument(
-	aSelector objc.Selector,
-	target objc.Ref,
-	arg objc.Ref,
-) {
-	C.NSRunLoop_inst_cancelPerformSelector_target_argument(
+func (x gen_NSRunLoop) Run() {
+	C.NSRunLoop_inst_run(
 		unsafe.Pointer(x.Pointer()),
-		aSelector.SelectorAddress(),
-		objc.RefPointer(target),
-		objc.RefPointer(arg),
-	)
-	return
-}
-
-func (x gen_NSRunLoop) CancelPerformSelectorsWithTarget(
-	target objc.Ref,
-) {
-	C.NSRunLoop_inst_cancelPerformSelectorsWithTarget(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(target),
 	)
 	return
 }
@@ -5139,6 +5139,143 @@ func NSString_fromPointer(ptr unsafe.Pointer) NSString {
 
 func NSString_fromRef(ref objc.Ref) NSString {
 	return NSString_fromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+func (x gen_NSString) CanBeConvertedToEncoding(
+	encoding NSStringEncoding,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_canBeConvertedToEncoding(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(encoding),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSString) CharacterAtIndex(
+	index NSUInteger,
+) (
+	r0 Unichar,
+) {
+	ret := C.NSString_inst_characterAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(index),
+	)
+	r0 = Unichar(ret)
+	return
+}
+
+func (x gen_NSString) CompletePathIntoString_caseSensitive_matchesIntoArray_filterTypes(
+	outputName NSStringRef,
+	flag bool,
+	outputArray NSArrayRef,
+	filterTypes NSArrayRef,
+) (
+	r0 NSUInteger,
+) {
+	ret := C.NSString_inst_completePathIntoString_caseSensitive_matchesIntoArray_filterTypes(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(outputName),
+		convertToObjCBool(flag),
+		objc.RefPointer(outputArray),
+		objc.RefPointer(filterTypes),
+	)
+	r0 = NSUInteger(ret)
+	return
+}
+
+func (x gen_NSString) ComponentsSeparatedByString(
+	separator NSStringRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSString_inst_componentsSeparatedByString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(separator),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) ContainsString(
+	str NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_containsString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSString) DataUsingEncoding(
+	encoding NSStringEncoding,
+) (
+	r0 NSData,
+) {
+	ret := C.NSString_inst_dataUsingEncoding(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(encoding),
+	)
+	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) DataUsingEncoding_allowLossyConversion(
+	encoding NSStringEncoding,
+	lossy bool,
+) (
+	r0 NSData,
+) {
+	ret := C.NSString_inst_dataUsingEncoding_allowLossyConversion(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(encoding),
+		convertToObjCBool(lossy),
+	)
+	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) DrawInRect_withAttributes(
+	rect NSRect,
+	attrs NSDictionaryRef,
+) {
+	C.NSString_inst_drawInRect_withAttributes(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSRect)(unsafe.Pointer(&rect)),
+		objc.RefPointer(attrs),
+	)
+	return
+}
+
+func (x gen_NSString) HasPrefix(
+	str NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_hasPrefix(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSString) HasSuffix(
+	str NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_hasSuffix(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
 }
 
 func (x gen_NSString) Init_asNSString() (
@@ -5187,6 +5324,21 @@ func (x gen_NSString) InitWithBytesNoCopy_length_encoding_freeWhenDone_asNSStrin
 	return
 }
 
+func (x gen_NSString) InitWithData_encoding_asNSString(
+	data NSDataRef,
+	encoding NSStringEncoding,
+) (
+	r0 NSString,
+) {
+	ret := C.NSString_inst_initWithData_encoding(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+		C.ulong(encoding),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
 func (x gen_NSString) InitWithString_asNSString(
 	aString NSStringRef,
 ) (
@@ -5200,18 +5352,16 @@ func (x gen_NSString) InitWithString_asNSString(
 	return
 }
 
-func (x gen_NSString) InitWithData_encoding_asNSString(
-	data NSDataRef,
-	encoding NSStringEncoding,
+func (x gen_NSString) IsEqualToString(
+	aString NSStringRef,
 ) (
-	r0 NSString,
+	r0 bool,
 ) {
-	ret := C.NSString_inst_initWithData_encoding(
+	ret := C.NSString_inst_isEqualToString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(data),
-		C.ulong(encoding),
+		objc.RefPointer(aString),
 	)
-	r0 = NSString_fromPointer(ret)
+	r0 = convertObjCBoolToGo(ret)
 	return
 }
 
@@ -5228,6 +5378,32 @@ func (x gen_NSString) LengthOfBytesUsingEncoding(
 	return
 }
 
+func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
+	str NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_localizedCaseInsensitiveContainsString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSString) LocalizedStandardContainsString(
+	str NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSString_inst_localizedStandardContainsString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(str),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
 func (x gen_NSString) MaximumLengthOfBytesUsingEncoding(
 	enc NSStringEncoding,
 ) (
@@ -5241,55 +5417,62 @@ func (x gen_NSString) MaximumLengthOfBytesUsingEncoding(
 	return
 }
 
-func (x gen_NSString) CharacterAtIndex(
-	index NSUInteger,
-) (
-	r0 Unichar,
+func (x gen_NSString) PropertyList() (
+	r0 objc.Object,
 ) {
-	ret := C.NSString_inst_characterAtIndex(
+	ret := C.NSString_inst_propertyList(
 		unsafe.Pointer(x.Pointer()),
-		C.ulong(index),
 	)
-	r0 = Unichar(ret)
+	r0 = objc.Object_fromPointer(ret)
 	return
 }
 
-func (x gen_NSString) HasPrefix(
+func (x gen_NSString) PropertyListFromStringsFileFormat() (
+	r0 NSDictionary,
+) {
+	ret := C.NSString_inst_propertyListFromStringsFileFormat(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) SizeWithAttributes(
+	attrs NSDictionaryRef,
+) (
+	r0 NSSize,
+) {
+	ret := C.NSString_inst_sizeWithAttributes(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(attrs),
+	)
+	r0 = *(*NSSize)(unsafe.Pointer(&ret))
+	return
+}
+
+func (x gen_NSString) StringByAppendingPathComponent(
 	str NSStringRef,
 ) (
-	r0 bool,
+	r0 NSString,
 ) {
-	ret := C.NSString_inst_hasPrefix(
+	ret := C.NSString_inst_stringByAppendingPathComponent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(str),
 	)
-	r0 = convertObjCBoolToGo(ret)
+	r0 = NSString_fromPointer(ret)
 	return
 }
 
-func (x gen_NSString) HasSuffix(
+func (x gen_NSString) StringByAppendingPathExtension(
 	str NSStringRef,
 ) (
-	r0 bool,
+	r0 NSString,
 ) {
-	ret := C.NSString_inst_hasSuffix(
+	ret := C.NSString_inst_stringByAppendingPathExtension(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(str),
 	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSString) IsEqualToString(
-	aString NSStringRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSString_inst_isEqualToString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(aString),
-	)
-	r0 = convertObjCBoolToGo(ret)
+	r0 = NSString_fromPointer(ret)
 	return
 }
 
@@ -5323,14 +5506,29 @@ func (x gen_NSString) StringByPaddingToLength_withString_startingAtIndex(
 	return
 }
 
-func (x gen_NSString) ComponentsSeparatedByString(
-	separator NSStringRef,
+func (x gen_NSString) StringByReplacingOccurrencesOfString_withString(
+	target NSStringRef,
+	replacement NSStringRef,
+) (
+	r0 NSString,
+) {
+	ret := C.NSString_inst_stringByReplacingOccurrencesOfString_withString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(target),
+		objc.RefPointer(replacement),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSString) StringsByAppendingPaths(
+	paths NSArrayRef,
 ) (
 	r0 NSArray,
 ) {
-	ret := C.NSString_inst_componentsSeparatedByString(
+	ret := C.NSString_inst_stringsByAppendingPaths(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(separator),
+		objc.RefPointer(paths),
 	)
 	r0 = NSArray_fromPointer(ret)
 	return
@@ -5362,105 +5560,6 @@ func (x gen_NSString) SubstringToIndex(
 	return
 }
 
-func (x gen_NSString) ContainsString(
-	str NSStringRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSString_inst_containsString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
-	str NSStringRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSString_inst_localizedCaseInsensitiveContainsString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSString) LocalizedStandardContainsString(
-	str NSStringRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSString_inst_localizedStandardContainsString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSString) StringByReplacingOccurrencesOfString_withString(
-	target NSStringRef,
-	replacement NSStringRef,
-) (
-	r0 NSString,
-) {
-	ret := C.NSString_inst_stringByReplacingOccurrencesOfString_withString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(target),
-		objc.RefPointer(replacement),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) PropertyList() (
-	r0 objc.Object,
-) {
-	ret := C.NSString_inst_propertyList(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = objc.Object_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) PropertyListFromStringsFileFormat() (
-	r0 NSDictionary,
-) {
-	ret := C.NSString_inst_propertyListFromStringsFileFormat(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) DrawInRect_withAttributes(
-	rect NSRect,
-	attrs NSDictionaryRef,
-) {
-	C.NSString_inst_drawInRect_withAttributes(
-		unsafe.Pointer(x.Pointer()),
-		*(*C.NSRect)(unsafe.Pointer(&rect)),
-		objc.RefPointer(attrs),
-	)
-	return
-}
-
-func (x gen_NSString) SizeWithAttributes(
-	attrs NSDictionaryRef,
-) (
-	r0 NSSize,
-) {
-	ret := C.NSString_inst_sizeWithAttributes(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(attrs),
-	)
-	r0 = *(*NSSize)(unsafe.Pointer(&ret))
-	return
-}
-
 func (x gen_NSString) VariantFittingPresentationWidth(
 	width NSInteger,
 ) (
@@ -5471,105 +5570,6 @@ func (x gen_NSString) VariantFittingPresentationWidth(
 		C.long(width),
 	)
 	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) CanBeConvertedToEncoding(
-	encoding NSStringEncoding,
-) (
-	r0 bool,
-) {
-	ret := C.NSString_inst_canBeConvertedToEncoding(
-		unsafe.Pointer(x.Pointer()),
-		C.ulong(encoding),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSString) DataUsingEncoding(
-	encoding NSStringEncoding,
-) (
-	r0 NSData,
-) {
-	ret := C.NSString_inst_dataUsingEncoding(
-		unsafe.Pointer(x.Pointer()),
-		C.ulong(encoding),
-	)
-	r0 = NSData_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) DataUsingEncoding_allowLossyConversion(
-	encoding NSStringEncoding,
-	lossy bool,
-) (
-	r0 NSData,
-) {
-	ret := C.NSString_inst_dataUsingEncoding_allowLossyConversion(
-		unsafe.Pointer(x.Pointer()),
-		C.ulong(encoding),
-		convertToObjCBool(lossy),
-	)
-	r0 = NSData_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) CompletePathIntoString_caseSensitive_matchesIntoArray_filterTypes(
-	outputName NSStringRef,
-	flag bool,
-	outputArray NSArrayRef,
-	filterTypes NSArrayRef,
-) (
-	r0 NSUInteger,
-) {
-	ret := C.NSString_inst_completePathIntoString_caseSensitive_matchesIntoArray_filterTypes(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(outputName),
-		convertToObjCBool(flag),
-		objc.RefPointer(outputArray),
-		objc.RefPointer(filterTypes),
-	)
-	r0 = NSUInteger(ret)
-	return
-}
-
-func (x gen_NSString) StringByAppendingPathComponent(
-	str NSStringRef,
-) (
-	r0 NSString,
-) {
-	ret := C.NSString_inst_stringByAppendingPathComponent(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) StringByAppendingPathExtension(
-	str NSStringRef,
-) (
-	r0 NSString,
-) {
-	ret := C.NSString_inst_stringByAppendingPathExtension(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSString) StringsByAppendingPaths(
-	paths NSArrayRef,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSString_inst_stringsByAppendingPaths(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(paths),
-	)
-	r0 = NSArray_fromPointer(ret)
 	return
 }
 
@@ -5882,6 +5882,13 @@ func NSThread_fromRef(ref objc.Ref) NSThread {
 	return NSThread_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSThread) Cancel() {
+	C.NSThread_inst_cancel(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
 func (x gen_NSThread) Init_asNSThread() (
 	r0 NSThread,
 ) {
@@ -5909,13 +5916,6 @@ func (x gen_NSThread) InitWithTarget_selector_object_asNSThread(
 	return
 }
 
-func (x gen_NSThread) Start() {
-	C.NSThread_inst_start(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
 func (x gen_NSThread) Main() {
 	C.NSThread_inst_main(
 		unsafe.Pointer(x.Pointer()),
@@ -5923,8 +5923,8 @@ func (x gen_NSThread) Main() {
 	return
 }
 
-func (x gen_NSThread) Cancel() {
-	C.NSThread_inst_cancel(
+func (x gen_NSThread) Start() {
+	C.NSThread_inst_start(
 		unsafe.Pointer(x.Pointer()),
 	)
 	return
@@ -6029,151 +6029,6 @@ func NSURL_fromRef(ref objc.Ref) NSURL {
 	return NSURL_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-func (x gen_NSURL) InitWithString_asNSURL(
-	URLString NSStringRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initWithString(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(URLString),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitWithString_relativeToURL_asNSURL(
-	URLString NSStringRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initWithString_relativeToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(URLString),
-		objc.RefPointer(baseURL),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitFileURLWithPath_isDirectory_asNSURL(
-	path NSStringRef,
-	isDir bool,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initFileURLWithPath_isDirectory(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
-		convertToObjCBool(isDir),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitFileURLWithPath_relativeToURL_asNSURL(
-	path NSStringRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initFileURLWithPath_relativeToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
-		objc.RefPointer(baseURL),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitFileURLWithPath_isDirectory_relativeToURL_asNSURL(
-	path NSStringRef,
-	isDir bool,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initFileURLWithPath_isDirectory_relativeToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
-		convertToObjCBool(isDir),
-		objc.RefPointer(baseURL),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitFileURLWithPath_asNSURL(
-	path NSStringRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initFileURLWithPath(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitAbsoluteURLWithDataRepresentation_relativeToURL_asNSURL(
-	data NSDataRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initAbsoluteURLWithDataRepresentation_relativeToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(data),
-		objc.RefPointer(baseURL),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) InitWithDataRepresentation_relativeToURL_asNSURL(
-	data NSDataRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_initWithDataRepresentation_relativeToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(data),
-		objc.RefPointer(baseURL),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSURL) IsFileReferenceURL() (
-	r0 bool,
-) {
-	ret := C.NSURL_inst_isFileReferenceURL(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
-func (x gen_NSURL) RemoveAllCachedResourceValues() {
-	C.NSURL_inst_removeAllCachedResourceValues(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_NSURL) FileReferenceURL() (
-	r0 NSURL,
-) {
-	ret := C.NSURL_inst_fileReferenceURL(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
 func (x gen_NSURL) URLByAppendingPathComponent(
 	pathComponent NSStringRef,
 ) (
@@ -6212,6 +6067,151 @@ func (x gen_NSURL) URLByAppendingPathExtension(
 		objc.RefPointer(pathExtension),
 	)
 	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) FileReferenceURL() (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_fileReferenceURL(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitAbsoluteURLWithDataRepresentation_relativeToURL_asNSURL(
+	data NSDataRef,
+	baseURL NSURLRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initAbsoluteURLWithDataRepresentation_relativeToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+		objc.RefPointer(baseURL),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitFileURLWithPath_asNSURL(
+	path NSStringRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initFileURLWithPath(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitFileURLWithPath_isDirectory_asNSURL(
+	path NSStringRef,
+	isDir bool,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initFileURLWithPath_isDirectory(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		convertToObjCBool(isDir),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitFileURLWithPath_isDirectory_relativeToURL_asNSURL(
+	path NSStringRef,
+	isDir bool,
+	baseURL NSURLRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initFileURLWithPath_isDirectory_relativeToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		convertToObjCBool(isDir),
+		objc.RefPointer(baseURL),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitFileURLWithPath_relativeToURL_asNSURL(
+	path NSStringRef,
+	baseURL NSURLRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initFileURLWithPath_relativeToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		objc.RefPointer(baseURL),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitWithDataRepresentation_relativeToURL_asNSURL(
+	data NSDataRef,
+	baseURL NSURLRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initWithDataRepresentation_relativeToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+		objc.RefPointer(baseURL),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitWithString_asNSURL(
+	URLString NSStringRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initWithString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(URLString),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) InitWithString_relativeToURL_asNSURL(
+	URLString NSStringRef,
+	baseURL NSURLRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSURL_inst_initWithString_relativeToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(URLString),
+		objc.RefPointer(baseURL),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSURL) IsFileReferenceURL() (
+	r0 bool,
+) {
+	ret := C.NSURL_inst_isFileReferenceURL(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSURL) RemoveAllCachedResourceValues() {
+	C.NSURL_inst_removeAllCachedResourceValues(
+		unsafe.Pointer(x.Pointer()),
+	)
 	return
 }
 
@@ -6686,6 +6686,91 @@ func NSUserDefaults_fromRef(ref objc.Ref) NSUserDefaults {
 	return NSUserDefaults_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_NSUserDefaults) URLForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSURL,
+) {
+	ret := C.NSUserDefaults_inst_URLForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) AddSuiteNamed(
+	suiteName NSStringRef,
+) {
+	C.NSUserDefaults_inst_addSuiteNamed(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(suiteName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) ArrayForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSUserDefaults_inst_arrayForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) BoolForKey(
+	defaultName NSStringRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSUserDefaults_inst_boolForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DataForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSData,
+) {
+	ret := C.NSUserDefaults_inst_dataForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSData_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DictionaryForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_dictionaryForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) DictionaryRepresentation() (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_dictionaryRepresentation(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
 func (x gen_NSUserDefaults) Init_asNSUserDefaults() (
 	r0 NSUserDefaults,
 ) {
@@ -6709,110 +6794,6 @@ func (x gen_NSUserDefaults) InitWithSuiteName_asNSUserDefaults(
 	return
 }
 
-func (x gen_NSUserDefaults) ObjectForKey(
-	defaultName NSStringRef,
-) (
-	r0 objc.Object,
-) {
-	ret := C.NSUserDefaults_inst_objectForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = objc.Object_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) URLForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSURL,
-) {
-	ret := C.NSUserDefaults_inst_URLForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSURL_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) ArrayForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSUserDefaults_inst_arrayForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) DictionaryForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSDictionary,
-) {
-	ret := C.NSUserDefaults_inst_dictionaryForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) StringForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSString,
-) {
-	ret := C.NSUserDefaults_inst_stringForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSString_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) StringArrayForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSArray,
-) {
-	ret := C.NSUserDefaults_inst_stringArrayForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSArray_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) DataForKey(
-	defaultName NSStringRef,
-) (
-	r0 NSData,
-) {
-	ret := C.NSUserDefaults_inst_dataForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = NSData_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) BoolForKey(
-	defaultName NSStringRef,
-) (
-	r0 bool,
-) {
-	ret := C.NSUserDefaults_inst_boolForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	r0 = convertObjCBoolToGo(ret)
-	return
-}
-
 func (x gen_NSUserDefaults) IntegerForKey(
 	defaultName NSStringRef,
 ) (
@@ -6826,171 +6807,16 @@ func (x gen_NSUserDefaults) IntegerForKey(
 	return
 }
 
-func (x gen_NSUserDefaults) DictionaryRepresentation() (
-	r0 NSDictionary,
-) {
-	ret := C.NSUserDefaults_inst_dictionaryRepresentation(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) SetObject_forKey(
-	value objc.Ref,
+func (x gen_NSUserDefaults) ObjectForKey(
 	defaultName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setObject_forKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
-		objc.RefPointer(defaultName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) SetInteger_forKey(
-	value NSInteger,
-	defaultName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setInteger_forKey(
-		unsafe.Pointer(x.Pointer()),
-		C.long(value),
-		objc.RefPointer(defaultName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) SetBool_forKey(
-	value bool,
-	defaultName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setBool_forKey(
-		unsafe.Pointer(x.Pointer()),
-		convertToObjCBool(value),
-		objc.RefPointer(defaultName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) SetURL_forKey(
-	url NSURLRef,
-	defaultName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setURL_forKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(url),
-		objc.RefPointer(defaultName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) RemoveObjectForKey(
-	defaultName NSStringRef,
-) {
-	C.NSUserDefaults_inst_removeObjectForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) AddSuiteNamed(
-	suiteName NSStringRef,
-) {
-	C.NSUserDefaults_inst_addSuiteNamed(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(suiteName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) RemoveSuiteNamed(
-	suiteName NSStringRef,
-) {
-	C.NSUserDefaults_inst_removeSuiteNamed(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(suiteName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) RegisterDefaults(
-	registrationDictionary NSDictionaryRef,
-) {
-	C.NSUserDefaults_inst_registerDefaults(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(registrationDictionary),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) PersistentDomainForName(
-	domainName NSStringRef,
 ) (
-	r0 NSDictionary,
+	r0 objc.Object,
 ) {
-	ret := C.NSUserDefaults_inst_persistentDomainForName(
+	ret := C.NSUserDefaults_inst_objectForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
+		objc.RefPointer(defaultName),
 	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) SetPersistentDomain_forName(
-	domain NSDictionaryRef,
-	domainName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setPersistentDomain_forName(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domain),
-		objc.RefPointer(domainName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) RemovePersistentDomainForName(
-	domainName NSStringRef,
-) {
-	C.NSUserDefaults_inst_removePersistentDomainForName(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) VolatileDomainForName(
-	domainName NSStringRef,
-) (
-	r0 NSDictionary,
-) {
-	ret := C.NSUserDefaults_inst_volatileDomainForName(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
-	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
-}
-
-func (x gen_NSUserDefaults) SetVolatileDomain_forName(
-	domain NSDictionaryRef,
-	domainName NSStringRef,
-) {
-	C.NSUserDefaults_inst_setVolatileDomain_forName(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domain),
-		objc.RefPointer(domainName),
-	)
-	return
-}
-
-func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
-	domainName NSStringRef,
-) {
-	C.NSUserDefaults_inst_removeVolatileDomainForName(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
-	)
+	r0 = objc.Object_fromPointer(ret)
 	return
 }
 
@@ -7022,6 +6848,167 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKey_inDomain(
 	return
 }
 
+func (x gen_NSUserDefaults) PersistentDomainForName(
+	domainName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_persistentDomainForName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) RegisterDefaults(
+	registrationDictionary NSDictionaryRef,
+) {
+	C.NSUserDefaults_inst_registerDefaults(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(registrationDictionary),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveObjectForKey(
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemovePersistentDomainForName(
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removePersistentDomainForName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveSuiteNamed(
+	suiteName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeSuiteNamed(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(suiteName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_removeVolatileDomainForName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetBool_forKey(
+	value bool,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setBool_forKey(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetInteger_forKey(
+	value NSInteger,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setInteger_forKey(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetObject_forKey(
+	value objc.Ref,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setObject_forKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetPersistentDomain_forName(
+	domain NSDictionaryRef,
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setPersistentDomain_forName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domain),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetURL_forKey(
+	url NSURLRef,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setURL_forKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(defaultName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) SetVolatileDomain_forName(
+	domain NSDictionaryRef,
+	domainName NSStringRef,
+) {
+	C.NSUserDefaults_inst_setVolatileDomain_forName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domain),
+		objc.RefPointer(domainName),
+	)
+	return
+}
+
+func (x gen_NSUserDefaults) StringArrayForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSArray,
+) {
+	ret := C.NSUserDefaults_inst_stringArrayForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSArray_fromPointer(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) StringForKey(
+	defaultName NSStringRef,
+) (
+	r0 NSString,
+) {
+	ret := C.NSUserDefaults_inst_stringForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+	r0 = NSString_fromPointer(ret)
+	return
+}
+
 func (x gen_NSUserDefaults) Synchronize() (
 	r0 bool,
 ) {
@@ -7029,6 +7016,19 @@ func (x gen_NSUserDefaults) Synchronize() (
 		unsafe.Pointer(x.Pointer()),
 	)
 	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSUserDefaults) VolatileDomainForName(
+	domainName NSStringRef,
+) (
+	r0 NSDictionary,
+) {
+	ret := C.NSUserDefaults_inst_volatileDomainForName(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(domainName),
+	)
+	r0 = NSDictionary_fromPointer(ret)
 	return
 }
 

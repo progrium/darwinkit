@@ -68,27 +68,30 @@ BOOL WKUserScript_inst_isForMainFrameOnly(void *id) {
 		isForMainFrameOnly];
 }
 
+void* WKWebView_inst_goBack(void *id) {
+	return [(WKWebView*)id
+		goBack];
+}
+
+void WKWebView_inst_goBack_(void *id, void* sender) {
+	[(WKWebView*)id
+		goBack: sender];
+}
+
+void* WKWebView_inst_goForward(void *id) {
+	return [(WKWebView*)id
+		goForward];
+}
+
+void WKWebView_inst_goForward_(void *id, void* sender) {
+	[(WKWebView*)id
+		goForward: sender];
+}
+
 void* WKWebView_inst_initWithFrame_configuration(void *id, NSRect frame, void* configuration) {
 	return [(WKWebView*)id
 		initWithFrame: frame
 		configuration: configuration];
-}
-
-void* WKWebView_inst_loadRequest(void *id, void* request) {
-	return [(WKWebView*)id
-		loadRequest: request];
-}
-
-void* WKWebView_inst_loadHTMLString_baseURL(void *id, void* string, void* baseURL) {
-	return [(WKWebView*)id
-		loadHTMLString: string
-		baseURL: baseURL];
-}
-
-void* WKWebView_inst_loadFileURL_allowingReadAccessToURL(void *id, void* URL, void* readAccessURL) {
-	return [(WKWebView*)id
-		loadFileURL: URL
-		allowingReadAccessToURL: readAccessURL];
 }
 
 void* WKWebView_inst_loadData_MIMEType_characterEncodingName_baseURL(void *id, void* data, void* MIMEType, void* characterEncodingName, void* baseURL) {
@@ -99,12 +102,41 @@ void* WKWebView_inst_loadData_MIMEType_characterEncodingName_baseURL(void *id, v
 		baseURL: baseURL];
 }
 
+void* WKWebView_inst_loadFileRequest_allowingReadAccessToURL(void *id, void* request, void* readAccessURL) {
+	return [(WKWebView*)id
+		loadFileRequest: request
+		allowingReadAccessToURL: readAccessURL];
+}
+
+void* WKWebView_inst_loadFileURL_allowingReadAccessToURL(void *id, void* URL, void* readAccessURL) {
+	return [(WKWebView*)id
+		loadFileURL: URL
+		allowingReadAccessToURL: readAccessURL];
+}
+
+void* WKWebView_inst_loadHTMLString_baseURL(void *id, void* string, void* baseURL) {
+	return [(WKWebView*)id
+		loadHTMLString: string
+		baseURL: baseURL];
+}
+
+void* WKWebView_inst_loadRequest(void *id, void* request) {
+	return [(WKWebView*)id
+		loadRequest: request];
+}
+
+void* WKWebView_inst_loadSimulatedRequest_responseHTMLString(void *id, void* request, void* string) {
+	return [(WKWebView*)id
+		loadSimulatedRequest: request
+		responseHTMLString: string];
+}
+
 void* WKWebView_inst_reload(void *id) {
 	return [(WKWebView*)id
 		reload];
 }
 
-void WKWebView_inst_reload(void *id, void* sender) {
+void WKWebView_inst_reload_(void *id, void* sender) {
 	[(WKWebView*)id
 		reload: sender];
 }
@@ -114,7 +146,7 @@ void* WKWebView_inst_reloadFromOrigin(void *id) {
 		reloadFromOrigin];
 }
 
-void WKWebView_inst_reloadFromOrigin(void *id, void* sender) {
+void WKWebView_inst_reloadFromOrigin_(void *id, void* sender) {
 	[(WKWebView*)id
 		reloadFromOrigin: sender];
 }
@@ -124,41 +156,9 @@ void WKWebView_inst_stopLoading(void *id) {
 		stopLoading];
 }
 
-void WKWebView_inst_stopLoading(void *id, void* sender) {
+void WKWebView_inst_stopLoading_(void *id, void* sender) {
 	[(WKWebView*)id
 		stopLoading: sender];
-}
-
-void WKWebView_inst_goBack(void *id, void* sender) {
-	[(WKWebView*)id
-		goBack: sender];
-}
-
-void* WKWebView_inst_goBack(void *id) {
-	return [(WKWebView*)id
-		goBack];
-}
-
-void WKWebView_inst_goForward(void *id, void* sender) {
-	[(WKWebView*)id
-		goForward: sender];
-}
-
-void* WKWebView_inst_goForward(void *id) {
-	return [(WKWebView*)id
-		goForward];
-}
-
-void* WKWebView_inst_loadFileRequest_allowingReadAccessToURL(void *id, void* request, void* readAccessURL) {
-	return [(WKWebView*)id
-		loadFileRequest: request
-		allowingReadAccessToURL: readAccessURL];
-}
-
-void* WKWebView_inst_loadSimulatedRequest_responseHTMLString(void *id, void* request, void* string) {
-	return [(WKWebView*)id
-		loadSimulatedRequest: request
-		responseHTMLString: string];
 }
 
 void* WKWebView_inst_init(void *id) {
@@ -628,6 +628,46 @@ func WKWebView_fromRef(ref objc.Ref) WKWebView {
 	return WKWebView_fromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+func (x gen_WKWebView) GoBack() (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_goBack(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) GoBack_(
+	sender objc.Ref,
+) {
+	C.WKWebView_inst_goBack_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_WKWebView) GoForward() (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_goForward(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) GoForward_(
+	sender objc.Ref,
+) {
+	C.WKWebView_inst_goForward_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
 func (x gen_WKWebView) InitWithFrame_configuration_asWKWebView(
 	frame core.NSRect,
 	configuration WKWebViewConfigurationRef,
@@ -640,49 +680,6 @@ func (x gen_WKWebView) InitWithFrame_configuration_asWKWebView(
 		objc.RefPointer(configuration),
 	)
 	r0 = WKWebView_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) LoadRequest(
-	request core.NSURLRequestRef,
-) (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_loadRequest(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(request),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) LoadHTMLString_baseURL(
-	string core.NSStringRef,
-	baseURL core.NSURLRef,
-) (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_loadHTMLString_baseURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
-		objc.RefPointer(baseURL),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) LoadFileURL_allowingReadAccessToURL(
-	URL core.NSURLRef,
-	readAccessURL core.NSURLRef,
-) (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_loadFileURL_allowingReadAccessToURL(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(URL),
-		objc.RefPointer(readAccessURL),
-	)
-	r0 = WKNavigation_fromPointer(ret)
 	return
 }
 
@@ -705,103 +702,6 @@ func (x gen_WKWebView) LoadData_MIMEType_characterEncodingName_baseURL(
 	return
 }
 
-func (x gen_WKWebView) Reload() (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_reload(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) Reload(
-	sender objc.Ref,
-) {
-	C.WKWebView_inst_reload(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sender),
-	)
-	return
-}
-
-func (x gen_WKWebView) ReloadFromOrigin() (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_reloadFromOrigin(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) ReloadFromOrigin(
-	sender objc.Ref,
-) {
-	C.WKWebView_inst_reloadFromOrigin(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sender),
-	)
-	return
-}
-
-func (x gen_WKWebView) StopLoading() {
-	C.WKWebView_inst_stopLoading(
-		unsafe.Pointer(x.Pointer()),
-	)
-	return
-}
-
-func (x gen_WKWebView) StopLoading(
-	sender objc.Ref,
-) {
-	C.WKWebView_inst_stopLoading(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sender),
-	)
-	return
-}
-
-func (x gen_WKWebView) GoBack(
-	sender objc.Ref,
-) {
-	C.WKWebView_inst_goBack(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sender),
-	)
-	return
-}
-
-func (x gen_WKWebView) GoBack() (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_goBack(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
-func (x gen_WKWebView) GoForward(
-	sender objc.Ref,
-) {
-	C.WKWebView_inst_goForward(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(sender),
-	)
-	return
-}
-
-func (x gen_WKWebView) GoForward() (
-	r0 WKNavigation,
-) {
-	ret := C.WKWebView_inst_goForward(
-		unsafe.Pointer(x.Pointer()),
-	)
-	r0 = WKNavigation_fromPointer(ret)
-	return
-}
-
 func (x gen_WKWebView) LoadFileRequest_allowingReadAccessToURL(
 	request core.NSURLRequestRef,
 	readAccessURL core.NSURLRef,
@@ -812,6 +712,49 @@ func (x gen_WKWebView) LoadFileRequest_allowingReadAccessToURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(request),
 		objc.RefPointer(readAccessURL),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) LoadFileURL_allowingReadAccessToURL(
+	URL core.NSURLRef,
+	readAccessURL core.NSURLRef,
+) (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_loadFileURL_allowingReadAccessToURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(URL),
+		objc.RefPointer(readAccessURL),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) LoadHTMLString_baseURL(
+	string core.NSStringRef,
+	baseURL core.NSURLRef,
+) (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_loadHTMLString_baseURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(string),
+		objc.RefPointer(baseURL),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) LoadRequest(
+	request core.NSURLRequestRef,
+) (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_loadRequest(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(request),
 	)
 	r0 = WKNavigation_fromPointer(ret)
 	return
@@ -829,6 +772,63 @@ func (x gen_WKWebView) LoadSimulatedRequest_responseHTMLString(
 		objc.RefPointer(string),
 	)
 	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) Reload() (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_reload(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) Reload_(
+	sender objc.Ref,
+) {
+	C.WKWebView_inst_reload_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_WKWebView) ReloadFromOrigin() (
+	r0 WKNavigation,
+) {
+	ret := C.WKWebView_inst_reloadFromOrigin(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = WKNavigation_fromPointer(ret)
+	return
+}
+
+func (x gen_WKWebView) ReloadFromOrigin_(
+	sender objc.Ref,
+) {
+	C.WKWebView_inst_reloadFromOrigin_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+	return
+}
+
+func (x gen_WKWebView) StopLoading() {
+	C.WKWebView_inst_stopLoading(
+		unsafe.Pointer(x.Pointer()),
+	)
+	return
+}
+
+func (x gen_WKWebView) StopLoading_(
+	sender objc.Ref,
+) {
+	C.WKWebView_inst_stopLoading_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
 	return
 }
 
