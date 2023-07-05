@@ -29,7 +29,6 @@ func msgSendFuncName(generatedNames map[string]string, cls schema.Class, selecto
 }
 
 func selectorNameToGoIdent(generatedNames map[string]string, sel string) string {
-	fmt.Println("selectorNameToGoIdent", sel)
 	if ident, ok := generatedNames[sel]; ok {
 		return ident
 	}

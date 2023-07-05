@@ -7527,1278 +7527,1266 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.cocoa_objc_bool_false
 }
 
-func NSBundle_alloc() (
-	r0 NSBundle,
-) {
+// NSBundle_alloc
+func NSBundle_alloc() NSBundle {
 	ret := C.NSBundle_type_alloc()
-	r0 = NSBundle_fromPointer(ret)
-	return
+
+	return NSBundle_fromPointer(ret)
+
 }
 
-func NSBundle_bundleWithURL(
-	url core.NSURLRef,
-) (
-	r0 NSBundle,
-) {
+// NSBundle_bundleWithURL Returns an NSBundle object that corresponds to the specified file URL.
+// https://developer.apple.com/documentation/foundation/nsbundle/1494992-bundlewithurl?language=objc
+func NSBundle_bundleWithURL(url core.NSURLRef) NSBundle {
 	ret := C.NSBundle_type_bundleWithURL(
 		objc.RefPointer(url),
 	)
-	r0 = NSBundle_fromPointer(ret)
-	return
+
+	return NSBundle_fromPointer(ret)
+
 }
 
-func NSBundle_bundleWithPath(
-	path core.NSStringRef,
-) (
-	r0 NSBundle,
-) {
+// NSBundle_bundleWithPath Returns an NSBundle object that corresponds to the specified directory.
+// https://developer.apple.com/documentation/foundation/nsbundle/1495012-bundlewithpath?language=objc
+func NSBundle_bundleWithPath(path core.NSStringRef) NSBundle {
 	ret := C.NSBundle_type_bundleWithPath(
 		objc.RefPointer(path),
 	)
-	r0 = NSBundle_fromPointer(ret)
-	return
+
+	return NSBundle_fromPointer(ret)
+
 }
 
-func NSBundle_bundleWithIdentifier(
-	identifier core.NSStringRef,
-) (
-	r0 NSBundle,
-) {
+// NSBundle_bundleWithIdentifier Returns the NSBundle instance that has the specified bundle identifier.
+// https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc
+func NSBundle_bundleWithIdentifier(identifier core.NSStringRef) NSBundle {
 	ret := C.NSBundle_type_bundleWithIdentifier(
 		objc.RefPointer(identifier),
 	)
-	r0 = NSBundle_fromPointer(ret)
-	return
+
+	return NSBundle_fromPointer(ret)
+
 }
 
-func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	bundleURL core.NSURLRef,
-) (
-	r0 core.NSURL,
-) {
+// NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL Creates and returns a file URL for the resource with the specified name and extension in the specified bundle.
+// https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc
+func NSBundle_URLForResource_withExtension_subdirectory_inBundleWithURL(name core.NSStringRef, ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSURL {
 	ret := C.NSBundle_type_URLForResource_withExtension_subdirectory_inBundleWithURL(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
 		objc.RefPointer(bundleURL),
 	)
-	r0 = core.NSURL_fromPointer(ret)
-	return
+
+	return core.NSURL_fromPointer(ret)
+
 }
 
-func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	bundleURL core.NSURLRef,
-) (
-	r0 core.NSArray,
-) {
+// NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL Returns an array containing the file URLs for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.
+// https://developer.apple.com/documentation/foundation/nsbundle/1409807-urlsforresourceswithextension?language=objc
+func NSBundle_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSArray {
 	ret := C.NSBundle_type_URLsForResourcesWithExtension_subdirectory_inBundleWithURL(
 		objc.RefPointer(ext),
 		objc.RefPointer(subpath),
 		objc.RefPointer(bundleURL),
 	)
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSBundle_pathForResource_ofType_inDirectory(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	bundlePath core.NSStringRef,
-) (
-	r0 core.NSString,
-) {
+// NSBundle_pathForResource_ofType_inDirectory Returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.
+// https://developer.apple.com/documentation/foundation/nsbundle/1409523-pathforresource?language=objc
+func NSBundle_pathForResource_ofType_inDirectory(name core.NSStringRef, ext core.NSStringRef, bundlePath core.NSStringRef) core.NSString {
 	ret := C.NSBundle_type_pathForResource_ofType_inDirectory(
 		objc.RefPointer(name),
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
 	)
-	r0 = core.NSString_fromPointer(ret)
-	return
+
+	return core.NSString_fromPointer(ret)
+
 }
 
-func NSBundle_pathsForResourcesOfType_inDirectory(
-	ext core.NSStringRef,
-	bundlePath core.NSStringRef,
-) (
-	r0 core.NSArray,
-) {
+// NSBundle_pathsForResourcesOfType_inDirectory Returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.
+// https://developer.apple.com/documentation/foundation/nsbundle/1415876-pathsforresourcesoftype?language=objc
+func NSBundle_pathsForResourcesOfType_inDirectory(ext core.NSStringRef, bundlePath core.NSStringRef) core.NSArray {
 	ret := C.NSBundle_type_pathsForResourcesOfType_inDirectory(
 		objc.RefPointer(ext),
 		objc.RefPointer(bundlePath),
 	)
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSBundle_preferredLocalizationsFromArray(
-	localizationsArray core.NSArrayRef,
-) (
-	r0 core.NSArray,
-) {
+// NSBundle_preferredLocalizationsFromArray Returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user.
+// https://developer.apple.com/documentation/foundation/nsbundle/1417249-preferredlocalizationsfromarray?language=objc
+func NSBundle_preferredLocalizationsFromArray(localizationsArray core.NSArrayRef) core.NSArray {
 	ret := C.NSBundle_type_preferredLocalizationsFromArray(
 		objc.RefPointer(localizationsArray),
 	)
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSBundle_preferredLocalizationsFromArray_forPreferences(
-	localizationsArray core.NSArrayRef,
-	preferencesArray core.NSArrayRef,
-) (
-	r0 core.NSArray,
-) {
+// NSBundle_preferredLocalizationsFromArray_forPreferences Returns locale identifiers for which a bundle would provide localized content, given a specified list of candidates for a user's language preferences.
+// https://developer.apple.com/documentation/foundation/nsbundle/1409418-preferredlocalizationsfromarray?language=objc
+func NSBundle_preferredLocalizationsFromArray_forPreferences(localizationsArray core.NSArrayRef, preferencesArray core.NSArrayRef) core.NSArray {
 	ret := C.NSBundle_type_preferredLocalizationsFromArray_forPreferences(
 		objc.RefPointer(localizationsArray),
 		objc.RefPointer(preferencesArray),
 	)
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSBundle_mainBundle() (
-	r0 NSBundle,
-) {
+// NSBundle_mainBundle Returns the bundle object that contains the current executable.
+// https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc
+func NSBundle_mainBundle() NSBundle {
 	ret := C.NSBundle_type_mainBundle()
-	r0 = NSBundle_fromPointer(ret)
-	return
+
+	return NSBundle_fromPointer(ret)
+
 }
 
-func NSBundle_allFrameworks() (
-	r0 core.NSArray,
-) {
+// NSBundle_allFrameworks Returns an array of all of the application’s bundles that represent frameworks.
+// https://developer.apple.com/documentation/foundation/nsbundle/1408056-allframeworks?language=objc
+func NSBundle_allFrameworks() core.NSArray {
 	ret := C.NSBundle_type_allFrameworks()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSBundle_allBundles() (
-	r0 core.NSArray,
-) {
+// NSBundle_allBundles Returns an array of all the application’s non-framework bundles.
+// https://developer.apple.com/documentation/foundation/nsbundle/1413705-allbundles?language=objc
+func NSBundle_allBundles() core.NSArray {
 	ret := C.NSBundle_type_allBundles()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSSound_alloc() (
-	r0 NSSound,
-) {
+// NSSound_alloc
+func NSSound_alloc() NSSound {
 	ret := C.NSSound_type_alloc()
-	r0 = NSSound_fromPointer(ret)
-	return
+
+	return NSSound_fromPointer(ret)
+
 }
 
-func NSSound_canInitWithPasteboard(
-	pasteboard NSPasteboardRef,
-) (
-	r0 bool,
-) {
+// NSSound_canInitWithPasteboard Indicates whether the receiver can create an instance of itself from the data in a pasteboard.
+// https://developer.apple.com/documentation/appkit/nssound/1477276-caninitwithpasteboard?language=objc
+func NSSound_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 	ret := C.NSSound_type_canInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSSound_soundUnfilteredTypes() (
-	r0 core.NSArray,
-) {
+// NSSound_soundUnfilteredTypes Provides the file types the NSSound class understands.
+// https://developer.apple.com/documentation/appkit/nssound/1477290-soundunfilteredtypes?language=objc
+func NSSound_soundUnfilteredTypes() core.NSArray {
 	ret := C.NSSound_type_soundUnfilteredTypes()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSApplication_alloc() (
-	r0 NSApplication,
-) {
+// NSApplication_alloc
+func NSApplication_alloc() NSApplication {
 	ret := C.NSApplication_type_alloc()
-	r0 = NSApplication_fromPointer(ret)
-	return
+
+	return NSApplication_fromPointer(ret)
+
 }
 
-func NSApplication_detachDrawingThread_toTarget_withObject(
-	selector objc.Selector,
-	target objc.Ref,
-	argument objc.Ref,
-) {
+// NSApplication_detachDrawingThread_toTarget_withObject Creates and executes a new thread based on the specified target and selector.
+// https://developer.apple.com/documentation/appkit/nsapplication/1428374-detachdrawingthread?language=objc
+func NSApplication_detachDrawingThread_toTarget_withObject(selector objc.Selector, target objc.Ref, argument objc.Ref) {
 	C.NSApplication_type_detachDrawingThread_toTarget_withObject(
 		selector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(argument),
 	)
+
 	return
+
 }
 
-func NSApplication_sharedApplication() (
-	r0 NSApplication,
-) {
+// NSApplication_sharedApplication Returns the application instance, creating it if it doesn’t exist yet.
+// https://developer.apple.com/documentation/appkit/nsapplication/1428360-sharedapplication?language=objc
+func NSApplication_sharedApplication() NSApplication {
 	ret := C.NSApplication_type_sharedApplication()
-	r0 = NSApplication_fromPointer(ret)
-	return
+
+	return NSApplication_fromPointer(ret)
+
 }
 
-func NSControl_alloc() (
-	r0 NSControl,
-) {
+// NSControl_alloc
+func NSControl_alloc() NSControl {
 	ret := C.NSControl_type_alloc()
-	r0 = NSControl_fromPointer(ret)
-	return
+
+	return NSControl_fromPointer(ret)
+
 }
 
-func NSButton_alloc() (
-	r0 NSButton,
-) {
+// NSButton_alloc
+func NSButton_alloc() NSButton {
 	ret := C.NSButton_type_alloc()
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSButton_checkboxWithTitle_target_action(
-	title core.NSStringRef,
-	target objc.Ref,
-	action objc.Selector,
-) (
-	r0 NSButton,
-) {
+// NSButton_checkboxWithTitle_target_action Creates a standard checkbox with the title you specify.
+// https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
+func NSButton_checkboxWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_checkboxWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSButton_buttonWithImage_target_action(
-	image NSImageRef,
-	target objc.Ref,
-	action objc.Selector,
-) (
-	r0 NSButton,
-) {
+// NSButton_buttonWithImage_target_action Creates a standard push button with the image you specify.
+// https://developer.apple.com/documentation/appkit/nsbutton/1644659-buttonwithimage?language=objc
+func NSButton_buttonWithImage_target_action(image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_buttonWithImage_target_action(
 		objc.RefPointer(image),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSButton_radioButtonWithTitle_target_action(
-	title core.NSStringRef,
-	target objc.Ref,
-	action objc.Selector,
-) (
-	r0 NSButton,
-) {
+// NSButton_radioButtonWithTitle_target_action Creates a standard radio button with the title you specify.
+// https://developer.apple.com/documentation/appkit/nsbutton/1644340-radiobuttonwithtitle?language=objc
+func NSButton_radioButtonWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_radioButtonWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSButton_buttonWithTitle_image_target_action(
-	title core.NSStringRef,
-	image NSImageRef,
-	target objc.Ref,
-	action objc.Selector,
-) (
-	r0 NSButton,
-) {
+// NSButton_buttonWithTitle_image_target_action Creates a standard push button with a title and image.
+// https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc
+func NSButton_buttonWithTitle_image_target_action(title core.NSStringRef, image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_buttonWithTitle_image_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(image),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSButton_buttonWithTitle_target_action(
-	title core.NSStringRef,
-	target objc.Ref,
-	action objc.Selector,
-) (
-	r0 NSButton,
-) {
+// NSButton_buttonWithTitle_target_action Creates a standard push button with the title you specify.
+// https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc
+func NSButton_buttonWithTitle_target_action(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_buttonWithTitle_target_action(
 		objc.RefPointer(title),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
-	r0 = NSButton_fromPointer(ret)
-	return
+
+	return NSButton_fromPointer(ret)
+
 }
 
-func NSEvent_alloc() (
-	r0 NSEvent,
-) {
+// NSEvent_alloc
+func NSEvent_alloc() NSEvent {
 	ret := C.NSEvent_type_alloc()
-	r0 = NSEvent_fromPointer(ret)
-	return
+
+	return NSEvent_fromPointer(ret)
+
 }
 
-func NSEvent_eventWithEventRef(
-	eventRef unsafe.Pointer,
-) (
-	r0 NSEvent,
-) {
+// NSEvent_eventWithEventRef Creates an event object that is based on a Carbon type of event.
+// https://developer.apple.com/documentation/appkit/nsevent/1528021-eventwitheventref?language=objc
+func NSEvent_eventWithEventRef(eventRef unsafe.Pointer) NSEvent {
 	ret := C.NSEvent_type_eventWithEventRef(
 		eventRef,
 	)
-	r0 = NSEvent_fromPointer(ret)
-	return
+
+	return NSEvent_fromPointer(ret)
+
 }
 
+// NSEvent_stopPeriodicEvents Stops generating periodic events for the current thread and discards any periodic events remaining in the queue.
+// https://developer.apple.com/documentation/appkit/nsevent/1533746-stopperiodicevents?language=objc
 func NSEvent_stopPeriodicEvents() {
 	C.NSEvent_type_stopPeriodicEvents()
+
 	return
+
 }
 
-func NSEvent_removeMonitor(
-	eventMonitor objc.Ref,
-) {
+// NSEvent_removeMonitor Remove the specified event monitor.
+// https://developer.apple.com/documentation/appkit/nsevent/1533709-removemonitor?language=objc
+func NSEvent_removeMonitor(eventMonitor objc.Ref) {
 	C.NSEvent_type_removeMonitor(
 		objc.RefPointer(eventMonitor),
 	)
+
 	return
+
 }
 
-func NSEvent_pressedMouseButtons() (
-	r0 core.NSUInteger,
-) {
+// NSEvent_pressedMouseButtons Returns the indices of the currently depressed mouse buttons.
+// https://developer.apple.com/documentation/appkit/nsevent/1527943-pressedmousebuttons?language=objc
+func NSEvent_pressedMouseButtons() core.NSUInteger {
 	ret := C.NSEvent_type_pressedMouseButtons()
-	r0 = core.NSUInteger(ret)
-	return
+
+	return core.NSUInteger(ret)
+
 }
 
-func NSEvent_mouseLocation() (
-	r0 core.NSPoint,
-) {
+// NSEvent_mouseLocation Reports the current mouse position in screen coordinates.
+// https://developer.apple.com/documentation/appkit/nsevent/1533380-mouselocation?language=objc
+func NSEvent_mouseLocation() core.NSPoint {
 	ret := C.NSEvent_type_mouseLocation()
-	r0 = *(*core.NSPoint)(unsafe.Pointer(&ret))
-	return
+
+	return *(*core.NSPoint)(unsafe.Pointer(&ret))
+
 }
 
-func NSEvent_mouseCoalescingEnabled() (
-	r0 bool,
-) {
+// NSEvent_mouseCoalescingEnabled
+// https://developer.apple.com/documentation/appkit/nsevent/2870068-mousecoalescingenabled?language=objc
+func NSEvent_mouseCoalescingEnabled() bool {
 	ret := C.NSEvent_type_mouseCoalescingEnabled()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSEvent_setMouseCoalescingEnabled(
-	value bool,
-) {
+// NSEvent_setMouseCoalescingEnabled
+// https://developer.apple.com/documentation/appkit/nsevent/2870068-mousecoalescingenabled?language=objc
+func NSEvent_setMouseCoalescingEnabled(value bool) {
 	C.NSEvent_type_setMouseCoalescingEnabled(
 		convertToObjCBool(value),
 	)
+
 	return
+
 }
 
-func NSEvent_swipeTrackingFromScrollEventsEnabled() (
-	r0 bool,
-) {
+// NSEvent_swipeTrackingFromScrollEventsEnabled
+// https://developer.apple.com/documentation/appkit/nsevent/2870067-swipetrackingfromscrolleventsena?language=objc
+func NSEvent_swipeTrackingFromScrollEventsEnabled() bool {
 	ret := C.NSEvent_type_swipeTrackingFromScrollEventsEnabled()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSFont_alloc() (
-	r0 NSFont,
-) {
+// NSFont_alloc
+func NSFont_alloc() NSFont {
 	ret := C.NSFont_type_alloc()
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_fontWithName_size(
-	fontName core.NSStringRef,
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_fontWithName_size Creates a font object for the specified font name and font size.
+// https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname?language=objc
+func NSFont_fontWithName_size(fontName core.NSStringRef, fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_fontWithName_size(
 		objc.RefPointer(fontName),
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_userFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_userFontOfSize Returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1524559-userfontofsize?language=objc
+func NSFont_userFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_userFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_userFixedPitchFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_userFixedPitchFontOfSize Returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), when that font should be fixed-pitch, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1531381-userfixedpitchfontofsize?language=objc
+func NSFont_userFixedPitchFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_userFixedPitchFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_systemFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_systemFontOfSize Returns the standard system font with the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1530094-systemfontofsize?language=objc
+func NSFont_systemFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_systemFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_boldSystemFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_boldSystemFontOfSize Returns the standard system font in boldface type with the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1533549-boldsystemfontofsize?language=objc
+func NSFont_boldSystemFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_boldSystemFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_labelFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_labelFontOfSize Returns the font used for standard interface labels in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1528213-labelfontofsize?language=objc
+func NSFont_labelFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_labelFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_messageFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_messageFontOfSize Returns the font used for standard interface items, such as button labels, menu items, and so on, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1525777-messagefontofsize?language=objc
+func NSFont_messageFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_messageFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_menuBarFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_menuBarFontOfSize Returns the font used for menu bar items, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1534194-menubarfontofsize?language=objc
+func NSFont_menuBarFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_menuBarFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_menuFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_menuFontOfSize Returns the font used for menu items, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1533068-menufontofsize?language=objc
+func NSFont_menuFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_menuFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_controlContentFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_controlContentFontOfSize Returns the font used for the content of controls in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1527070-controlcontentfontofsize?language=objc
+func NSFont_controlContentFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_controlContentFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_titleBarFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_titleBarFontOfSize Returns the font used for window title bars, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1530200-titlebarfontofsize?language=objc
+func NSFont_titleBarFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_titleBarFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_paletteFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_paletteFontOfSize Returns the font used for palette window title bars, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1535462-palettefontofsize?language=objc
+func NSFont_paletteFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_paletteFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_toolTipsFontOfSize(
-	fontSize core.CGFloat,
-) (
-	r0 NSFont,
-) {
+// NSFont_toolTipsFontOfSize Returns the font used for tool tips labels, in the specified size.
+// https://developer.apple.com/documentation/appkit/nsfont/1527704-tooltipsfontofsize?language=objc
+func NSFont_toolTipsFontOfSize(fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_toolTipsFontOfSize(
 		C.double(fontSize),
 	)
-	r0 = NSFont_fromPointer(ret)
-	return
+
+	return NSFont_fromPointer(ret)
+
 }
 
-func NSFont_setUserFont(
-	font NSFontRef,
-) {
+// NSFont_setUserFont Sets the font used by default for documents and other text under the user’s control to the specified font.
+// https://developer.apple.com/documentation/appkit/nsfont/1526068-setuserfont?language=objc
+func NSFont_setUserFont(font NSFontRef) {
 	C.NSFont_type_setUserFont(
 		objc.RefPointer(font),
 	)
+
 	return
+
 }
 
-func NSFont_setUserFixedPitchFont(
-	font NSFontRef,
-) {
+// NSFont_setUserFixedPitchFont Sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font.
+// https://developer.apple.com/documentation/appkit/nsfont/1529050-setuserfixedpitchfont?language=objc
+func NSFont_setUserFixedPitchFont(font NSFontRef) {
 	C.NSFont_type_setUserFixedPitchFont(
 		objc.RefPointer(font),
 	)
+
 	return
+
 }
 
-func NSFont_systemFontSize() (
-	r0 core.CGFloat,
-) {
+// NSFont_systemFontSize Returns the size of the standard system font.
+// https://developer.apple.com/documentation/appkit/nsfont/1531931-systemfontsize?language=objc
+func NSFont_systemFontSize() core.CGFloat {
 	ret := C.NSFont_type_systemFontSize()
-	r0 = core.CGFloat(ret)
-	return
+
+	return core.CGFloat(ret)
+
 }
 
-func NSFont_smallSystemFontSize() (
-	r0 core.CGFloat,
-) {
+// NSFont_smallSystemFontSize Returns the size of the standard small system font.
+// https://developer.apple.com/documentation/appkit/nsfont/1535612-smallsystemfontsize?language=objc
+func NSFont_smallSystemFontSize() core.CGFloat {
 	ret := C.NSFont_type_smallSystemFontSize()
-	r0 = core.CGFloat(ret)
-	return
+
+	return core.CGFloat(ret)
+
 }
 
-func NSFont_labelFontSize() (
-	r0 core.CGFloat,
-) {
+// NSFont_labelFontSize Returns the size of the standard label font.
+// https://developer.apple.com/documentation/appkit/nsfont/1534629-labelfontsize?language=objc
+func NSFont_labelFontSize() core.CGFloat {
 	ret := C.NSFont_type_labelFontSize()
-	r0 = core.CGFloat(ret)
-	return
+
+	return core.CGFloat(ret)
+
 }
 
-func NSImage_alloc() (
-	r0 NSImage,
-) {
+// NSImage_alloc
+func NSImage_alloc() NSImage {
 	ret := C.NSImage_type_alloc()
-	r0 = NSImage_fromPointer(ret)
-	return
+
+	return NSImage_fromPointer(ret)
+
 }
 
-func NSImage_imageWithSystemSymbolName_accessibilityDescription(
-	symbolName core.NSStringRef,
-	description core.NSStringRef,
-) (
-	r0 NSImage,
-) {
+// NSImage_imageWithSystemSymbolName_accessibilityDescription Creates a symbol image with the system symbol name and accessibility description that you specify.
+// https://developer.apple.com/documentation/appkit/nsimage/3622472-imagewithsystemsymbolname?language=objc
+func NSImage_imageWithSystemSymbolName_accessibilityDescription(symbolName core.NSStringRef, description core.NSStringRef) NSImage {
 	ret := C.NSImage_type_imageWithSystemSymbolName_accessibilityDescription(
 		objc.RefPointer(symbolName),
 		objc.RefPointer(description),
 	)
-	r0 = NSImage_fromPointer(ret)
-	return
+
+	return NSImage_fromPointer(ret)
+
 }
 
-func NSImage_canInitWithPasteboard(
-	pasteboard NSPasteboardRef,
-) (
-	r0 bool,
-) {
+// NSImage_canInitWithPasteboard Tests whether the image can create an instance of itself using pasteboard data.
+// https://developer.apple.com/documentation/appkit/nsimage/1520039-caninitwithpasteboard?language=objc
+func NSImage_canInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 	ret := C.NSImage_type_canInitWithPasteboard(
 		objc.RefPointer(pasteboard),
 	)
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSImage_imageTypes() (
-	r0 core.NSArray,
-) {
+// NSImage_imageTypes Returns an array of UTI strings identifying the image types supported by the registered image representation objects, either directly or through a user-installed filter service.
+// https://developer.apple.com/documentation/appkit/nsimage/1519988-imagetypes?language=objc
+func NSImage_imageTypes() core.NSArray {
 	ret := C.NSImage_type_imageTypes()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSImage_imageUnfilteredTypes() (
-	r0 core.NSArray,
-) {
+// NSImage_imageUnfilteredTypes Returns an array of UTI strings identifying the image types supported directly by the registered image representation objects.
+// https://developer.apple.com/documentation/appkit/nsimage/1519899-imageunfilteredtypes?language=objc
+func NSImage_imageUnfilteredTypes() core.NSArray {
 	ret := C.NSImage_type_imageUnfilteredTypes()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSImageView_alloc() (
-	r0 NSImageView,
-) {
+// NSImageView_alloc
+func NSImageView_alloc() NSImageView {
 	ret := C.NSImageView_type_alloc()
-	r0 = NSImageView_fromPointer(ret)
-	return
+
+	return NSImageView_fromPointer(ret)
+
 }
 
-func NSImageView_imageViewWithImage(
-	image NSImageRef,
-) (
-	r0 NSImageView,
-) {
+// NSImageView_imageViewWithImage
+// https://developer.apple.com/documentation/appkit/nsimageview/1644708-imageviewwithimage?language=objc
+func NSImageView_imageViewWithImage(image NSImageRef) NSImageView {
 	ret := C.NSImageView_type_imageViewWithImage(
 		objc.RefPointer(image),
 	)
-	r0 = NSImageView_fromPointer(ret)
-	return
+
+	return NSImageView_fromPointer(ret)
+
 }
 
-func NSNib_alloc() (
-	r0 NSNib,
-) {
+// NSNib_alloc
+func NSNib_alloc() NSNib {
 	ret := C.NSNib_type_alloc()
-	r0 = NSNib_fromPointer(ret)
-	return
+
+	return NSNib_fromPointer(ret)
+
 }
 
-func NSPasteboard_alloc() (
-	r0 NSPasteboard,
-) {
+// NSPasteboard_alloc
+func NSPasteboard_alloc() NSPasteboard {
 	ret := C.NSPasteboard_type_alloc()
-	r0 = NSPasteboard_fromPointer(ret)
-	return
+
+	return NSPasteboard_fromPointer(ret)
+
 }
 
-func NSPasteboard_pasteboardByFilteringFile(
-	filename core.NSStringRef,
-) (
-	r0 NSPasteboard,
-) {
+// NSPasteboard_pasteboardByFilteringFile Creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services.
+// https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc
+func NSPasteboard_pasteboardByFilteringFile(filename core.NSStringRef) NSPasteboard {
 	ret := C.NSPasteboard_type_pasteboardByFilteringFile(
 		objc.RefPointer(filename),
 	)
-	r0 = NSPasteboard_fromPointer(ret)
-	return
+
+	return NSPasteboard_fromPointer(ret)
+
 }
 
-func NSPasteboard_pasteboardByFilteringTypesInPasteboard(
-	pboard NSPasteboardRef,
-) (
-	r0 NSPasteboard,
-) {
+// NSPasteboard_pasteboardByFilteringTypesInPasteboard Creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services.
+// https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
+func NSPasteboard_pasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef) NSPasteboard {
 	ret := C.NSPasteboard_type_pasteboardByFilteringTypesInPasteboard(
 		objc.RefPointer(pboard),
 	)
-	r0 = NSPasteboard_fromPointer(ret)
-	return
+
+	return NSPasteboard_fromPointer(ret)
+
 }
 
-func NSPasteboard_pasteboardWithUniqueName() (
-	r0 NSPasteboard,
-) {
+// NSPasteboard_pasteboardWithUniqueName Creates and returns a new pasteboard with a name that is guaranteed to be unique with respect to other pasteboards in the system.
+// https://developer.apple.com/documentation/appkit/nspasteboard/1528936-pasteboardwithuniquename?language=objc
+func NSPasteboard_pasteboardWithUniqueName() NSPasteboard {
 	ret := C.NSPasteboard_type_pasteboardWithUniqueName()
-	r0 = NSPasteboard_fromPointer(ret)
-	return
+
+	return NSPasteboard_fromPointer(ret)
+
 }
 
-func NSPasteboard_generalPasteboard() (
-	r0 NSPasteboard,
-) {
+// NSPasteboard_generalPasteboard The shared pasteboard object to use for general content.
+// https://developer.apple.com/documentation/appkit/nspasteboard/1530091-generalpasteboard?language=objc
+func NSPasteboard_generalPasteboard() NSPasteboard {
 	ret := C.NSPasteboard_type_generalPasteboard()
-	r0 = NSPasteboard_fromPointer(ret)
-	return
+
+	return NSPasteboard_fromPointer(ret)
+
 }
 
-func NSLayoutManager_alloc() (
-	r0 NSLayoutManager,
-) {
+// NSLayoutManager_alloc
+func NSLayoutManager_alloc() NSLayoutManager {
 	ret := C.NSLayoutManager_type_alloc()
-	r0 = NSLayoutManager_fromPointer(ret)
-	return
+
+	return NSLayoutManager_fromPointer(ret)
+
 }
 
-func NSMenu_alloc() (
-	r0 NSMenu,
-) {
+// NSMenu_alloc
+func NSMenu_alloc() NSMenu {
 	ret := C.NSMenu_type_alloc()
-	r0 = NSMenu_fromPointer(ret)
-	return
+
+	return NSMenu_fromPointer(ret)
+
 }
 
-func NSMenu_menuBarVisible() (
-	r0 bool,
-) {
+// NSMenu_menuBarVisible Returns a Boolean value that indicates whether the menu bar is visible.
+// https://developer.apple.com/documentation/appkit/nsmenu/1518236-menubarvisible?language=objc
+func NSMenu_menuBarVisible() bool {
 	ret := C.NSMenu_type_menuBarVisible()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSMenu_setMenuBarVisible(
-	visible bool,
-) {
+// NSMenu_setMenuBarVisible Sets whether the menu bar is visible and selectable by the user.
+// https://developer.apple.com/documentation/appkit/nsmenu/1518200-setmenubarvisible?language=objc
+func NSMenu_setMenuBarVisible(visible bool) {
 	C.NSMenu_type_setMenuBarVisible(
 		convertToObjCBool(visible),
 	)
+
 	return
+
 }
 
-func NSMenu_popUpContextMenu_withEvent_forView(
-	menu NSMenuRef,
-	event NSEventRef,
-	view NSViewRef,
-) {
+// NSMenu_popUpContextMenu_withEvent_forView Displays a contextual menu over a view for an event.
+// https://developer.apple.com/documentation/appkit/nsmenu/1518170-popupcontextmenu?language=objc
+func NSMenu_popUpContextMenu_withEvent_forView(menu NSMenuRef, event NSEventRef, view NSViewRef) {
 	C.NSMenu_type_popUpContextMenu_withEvent_forView(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
 	)
+
 	return
+
 }
 
-func NSMenu_popUpContextMenu_withEvent_forView_withFont(
-	menu NSMenuRef,
-	event NSEventRef,
-	view NSViewRef,
-	font NSFontRef,
-) {
+// NSMenu_popUpContextMenu_withEvent_forView_withFont Displays a contextual menu over a view for an event using a specified font.
+// https://developer.apple.com/documentation/appkit/nsmenu/1518165-popupcontextmenu?language=objc
+func NSMenu_popUpContextMenu_withEvent_forView_withFont(menu NSMenuRef, event NSEventRef, view NSViewRef, font NSFontRef) {
 	C.NSMenu_type_popUpContextMenu_withEvent_forView_withFont(
 		objc.RefPointer(menu),
 		objc.RefPointer(event),
 		objc.RefPointer(view),
 		objc.RefPointer(font),
 	)
+
 	return
+
 }
 
-func NSPopover_alloc() (
-	r0 NSPopover,
-) {
+// NSPopover_alloc
+func NSPopover_alloc() NSPopover {
 	ret := C.NSPopover_type_alloc()
-	r0 = NSPopover_fromPointer(ret)
-	return
+
+	return NSPopover_fromPointer(ret)
+
 }
 
-func NSMenuItem_alloc() (
-	r0 NSMenuItem,
-) {
+// NSMenuItem_alloc
+func NSMenuItem_alloc() NSMenuItem {
 	ret := C.NSMenuItem_type_alloc()
-	r0 = NSMenuItem_fromPointer(ret)
-	return
+
+	return NSMenuItem_fromPointer(ret)
+
 }
 
-func NSMenuItem_separatorItem() (
-	r0 NSMenuItem,
-) {
+// NSMenuItem_separatorItem Returns a menu item that is used to separate logical groups of menu commands.
+// https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem?language=objc
+func NSMenuItem_separatorItem() NSMenuItem {
 	ret := C.NSMenuItem_type_separatorItem()
-	r0 = NSMenuItem_fromPointer(ret)
-	return
+
+	return NSMenuItem_fromPointer(ret)
+
 }
 
-func NSMenuItem_usesUserKeyEquivalents() (
-	r0 bool,
-) {
+// NSMenuItem_usesUserKeyEquivalents Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents.
+// https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
+func NSMenuItem_usesUserKeyEquivalents() bool {
 	ret := C.NSMenuItem_type_usesUserKeyEquivalents()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSMenuItem_setUsesUserKeyEquivalents(
-	value bool,
-) {
+// NSMenuItem_setUsesUserKeyEquivalents Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents.
+// https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
+func NSMenuItem_setUsesUserKeyEquivalents(value bool) {
 	C.NSMenuItem_type_setUsesUserKeyEquivalents(
 		convertToObjCBool(value),
 	)
+
 	return
+
 }
 
-func NSRunningApplication_alloc() (
-	r0 NSRunningApplication,
-) {
+// NSRunningApplication_alloc
+func NSRunningApplication_alloc() NSRunningApplication {
 	ret := C.NSRunningApplication_type_alloc()
-	r0 = NSRunningApplication_fromPointer(ret)
-	return
+
+	return NSRunningApplication_fromPointer(ret)
+
 }
 
-func NSRunningApplication_runningApplicationsWithBundleIdentifier(
-	bundleIdentifier core.NSStringRef,
-) (
-	r0 core.NSArray,
-) {
+// NSRunningApplication_runningApplicationsWithBundleIdentifier Returns an array of currently running applications with the specified bundle identifier.
+// https://developer.apple.com/documentation/appkit/nsrunningapplication/1530798-runningapplicationswithbundleide?language=objc
+func NSRunningApplication_runningApplicationsWithBundleIdentifier(bundleIdentifier core.NSStringRef) core.NSArray {
 	ret := C.NSRunningApplication_type_runningApplicationsWithBundleIdentifier(
 		objc.RefPointer(bundleIdentifier),
 	)
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
+// NSRunningApplication_terminateAutomaticallyTerminableApplications Terminates invisibly running applications as if triggered by system memory pressure.
+// https://developer.apple.com/documentation/appkit/nsrunningapplication/1529538-terminateautomaticallyterminable?language=objc
 func NSRunningApplication_terminateAutomaticallyTerminableApplications() {
 	C.NSRunningApplication_type_terminateAutomaticallyTerminableApplications()
+
 	return
+
 }
 
-func NSRunningApplication_currentApplication() (
-	r0 NSRunningApplication,
-) {
+// NSRunningApplication_currentApplication Returns an NSRunningApplication representing this application.
+// https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
+func NSRunningApplication_currentApplication() NSRunningApplication {
 	ret := C.NSRunningApplication_type_currentApplication()
-	r0 = NSRunningApplication_fromPointer(ret)
-	return
+
+	return NSRunningApplication_fromPointer(ret)
+
 }
 
-func NSScreen_alloc() (
-	r0 NSScreen,
-) {
+// NSScreen_alloc
+func NSScreen_alloc() NSScreen {
 	ret := C.NSScreen_type_alloc()
-	r0 = NSScreen_fromPointer(ret)
-	return
+
+	return NSScreen_fromPointer(ret)
+
 }
 
-func NSScreen_mainScreen() (
-	r0 NSScreen,
-) {
+// NSScreen_mainScreen Returns the screen object containing the window with the keyboard focus.
+// https://developer.apple.com/documentation/appkit/nsscreen/1388371-mainscreen?language=objc
+func NSScreen_mainScreen() NSScreen {
 	ret := C.NSScreen_type_mainScreen()
-	r0 = NSScreen_fromPointer(ret)
-	return
+
+	return NSScreen_fromPointer(ret)
+
 }
 
-func NSScreen_deepestScreen() (
-	r0 NSScreen,
-) {
+// NSScreen_deepestScreen Returns a screen object representing the screen that can best represent color.
+// https://developer.apple.com/documentation/appkit/nsscreen/1388374-deepestscreen?language=objc
+func NSScreen_deepestScreen() NSScreen {
 	ret := C.NSScreen_type_deepestScreen()
-	r0 = NSScreen_fromPointer(ret)
-	return
+
+	return NSScreen_fromPointer(ret)
+
 }
 
-func NSScreen_screens() (
-	r0 core.NSArray,
-) {
+// NSScreen_screens Returns an array of screen objects representing all of the screens available on the system.
+// https://developer.apple.com/documentation/appkit/nsscreen/1388393-screens?language=objc
+func NSScreen_screens() core.NSArray {
 	ret := C.NSScreen_type_screens()
-	r0 = core.NSArray_fromPointer(ret)
-	return
+
+	return core.NSArray_fromPointer(ret)
+
 }
 
-func NSScreen_screensHaveSeparateSpaces() (
-	r0 bool,
-) {
+// NSScreen_screensHaveSeparateSpaces Returns a Boolean value indicating whether each screen can have its own set of spaces.
+// https://developer.apple.com/documentation/appkit/nsscreen/1388365-screenshaveseparatespaces?language=objc
+func NSScreen_screensHaveSeparateSpaces() bool {
 	ret := C.NSScreen_type_screensHaveSeparateSpaces()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSStatusBar_alloc() (
-	r0 NSStatusBar,
-) {
+// NSStatusBar_alloc
+func NSStatusBar_alloc() NSStatusBar {
 	ret := C.NSStatusBar_type_alloc()
-	r0 = NSStatusBar_fromPointer(ret)
-	return
+
+	return NSStatusBar_fromPointer(ret)
+
 }
 
-func NSStatusBar_systemStatusBar() (
-	r0 NSStatusBar,
-) {
+// NSStatusBar_systemStatusBar Returns the system-wide status bar located in the menu bar.
+// https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
+func NSStatusBar_systemStatusBar() NSStatusBar {
 	ret := C.NSStatusBar_type_systemStatusBar()
-	r0 = NSStatusBar_fromPointer(ret)
-	return
+
+	return NSStatusBar_fromPointer(ret)
+
 }
 
-func NSStatusBarButton_alloc() (
-	r0 NSStatusBarButton,
-) {
+// NSStatusBarButton_alloc
+func NSStatusBarButton_alloc() NSStatusBarButton {
 	ret := C.NSStatusBarButton_type_alloc()
-	r0 = NSStatusBarButton_fromPointer(ret)
-	return
+
+	return NSStatusBarButton_fromPointer(ret)
+
 }
 
-func NSStatusItem_alloc() (
-	r0 NSStatusItem,
-) {
+// NSStatusItem_alloc
+func NSStatusItem_alloc() NSStatusItem {
 	ret := C.NSStatusItem_type_alloc()
-	r0 = NSStatusItem_fromPointer(ret)
-	return
+
+	return NSStatusItem_fromPointer(ret)
+
 }
 
-func NSText_alloc() (
-	r0 NSText,
-) {
+// NSText_alloc
+func NSText_alloc() NSText {
 	ret := C.NSText_type_alloc()
-	r0 = NSText_fromPointer(ret)
-	return
+
+	return NSText_fromPointer(ret)
+
 }
 
-func NSTextField_alloc() (
-	r0 NSTextField,
-) {
+// NSTextField_alloc
+func NSTextField_alloc() NSTextField {
 	ret := C.NSTextField_type_alloc()
-	r0 = NSTextField_fromPointer(ret)
-	return
+
+	return NSTextField_fromPointer(ret)
+
 }
 
-func NSTextField_labelWithAttributedString(
-	attributedStringValue core.NSAttributedStringRef,
-) (
-	r0 NSTextField,
-) {
+// NSTextField_labelWithAttributedString Creates a text field for use as a static label that displays styled text, doesn’t wrap, and doesn’t have selectable text.
+// https://developer.apple.com/documentation/appkit/nstextfield/1644658-labelwithattributedstring?language=objc
+func NSTextField_labelWithAttributedString(attributedStringValue core.NSAttributedStringRef) NSTextField {
 	ret := C.NSTextField_type_labelWithAttributedString(
 		objc.RefPointer(attributedStringValue),
 	)
-	r0 = NSTextField_fromPointer(ret)
-	return
+
+	return NSTextField_fromPointer(ret)
+
 }
 
-func NSTextField_labelWithString(
-	stringValue core.NSStringRef,
-) (
-	r0 NSTextField,
-) {
+// NSTextField_labelWithString Initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.
+// https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc
+func NSTextField_labelWithString(stringValue core.NSStringRef) NSTextField {
 	ret := C.NSTextField_type_labelWithString(
 		objc.RefPointer(stringValue),
 	)
-	r0 = NSTextField_fromPointer(ret)
-	return
+
+	return NSTextField_fromPointer(ret)
+
 }
 
-func NSTextField_textFieldWithString(
-	stringValue core.NSStringRef,
-) (
-	r0 NSTextField,
-) {
+// NSTextField_textFieldWithString Initializes a single-line editable text field for user input using the system default font and standard visual appearance.
+// https://developer.apple.com/documentation/appkit/nstextfield/1644706-textfieldwithstring?language=objc
+func NSTextField_textFieldWithString(stringValue core.NSStringRef) NSTextField {
 	ret := C.NSTextField_type_textFieldWithString(
 		objc.RefPointer(stringValue),
 	)
-	r0 = NSTextField_fromPointer(ret)
-	return
+
+	return NSTextField_fromPointer(ret)
+
 }
 
-func NSTextField_wrappingLabelWithString(
-	stringValue core.NSStringRef,
-) (
-	r0 NSTextField,
-) {
+// NSTextField_wrappingLabelWithString Initializes a text field for use as a multiline static label with selectable text that uses the system default font.
+// https://developer.apple.com/documentation/appkit/nstextfield/1644543-wrappinglabelwithstring?language=objc
+func NSTextField_wrappingLabelWithString(stringValue core.NSStringRef) NSTextField {
 	ret := C.NSTextField_type_wrappingLabelWithString(
 		objc.RefPointer(stringValue),
 	)
-	r0 = NSTextField_fromPointer(ret)
-	return
+
+	return NSTextField_fromPointer(ret)
+
 }
 
-func NSTextContainer_alloc() (
-	r0 NSTextContainer,
-) {
+// NSTextContainer_alloc
+func NSTextContainer_alloc() NSTextContainer {
 	ret := C.NSTextContainer_type_alloc()
-	r0 = NSTextContainer_fromPointer(ret)
-	return
+
+	return NSTextContainer_fromPointer(ret)
+
 }
 
-func NSViewController_alloc() (
-	r0 NSViewController,
-) {
+// NSViewController_alloc
+func NSViewController_alloc() NSViewController {
 	ret := C.NSViewController_type_alloc()
-	r0 = NSViewController_fromPointer(ret)
-	return
+
+	return NSViewController_fromPointer(ret)
+
 }
 
-func NSVisualEffectView_alloc() (
-	r0 NSVisualEffectView,
-) {
+// NSVisualEffectView_alloc
+func NSVisualEffectView_alloc() NSVisualEffectView {
 	ret := C.NSVisualEffectView_type_alloc()
-	r0 = NSVisualEffectView_fromPointer(ret)
-	return
+
+	return NSVisualEffectView_fromPointer(ret)
+
 }
 
-func NSWindow_alloc() (
-	r0 NSWindow,
-) {
+// NSWindow_alloc
+func NSWindow_alloc() NSWindow {
 	ret := C.NSWindow_type_alloc()
-	r0 = NSWindow_fromPointer(ret)
-	return
+
+	return NSWindow_fromPointer(ret)
+
 }
 
-func NSWindow_windowWithContentViewController(
-	contentViewController NSViewControllerRef,
-) (
-	r0 NSWindow,
-) {
+// NSWindow_windowWithContentViewController Creates a titled window that contains the specified content view controller.
+// https://developer.apple.com/documentation/appkit/nswindow/1419551-windowwithcontentviewcontroller?language=objc
+func NSWindow_windowWithContentViewController(contentViewController NSViewControllerRef) NSWindow {
 	ret := C.NSWindow_type_windowWithContentViewController(
 		objc.RefPointer(contentViewController),
 	)
-	r0 = NSWindow_fromPointer(ret)
-	return
+
+	return NSWindow_fromPointer(ret)
+
 }
 
-func NSWindow_contentRectForFrameRect_styleMask(
-	fRect core.NSRect,
-	style core.NSUInteger,
-) (
-	r0 core.NSRect,
-) {
+// NSWindow_contentRectForFrameRect_styleMask Returns the content rectangle used by a window with a given frame rectangle and window style.
+// https://developer.apple.com/documentation/appkit/nswindow/1419586-contentrectforframerect?language=objc
+func NSWindow_contentRectForFrameRect_styleMask(fRect core.NSRect, style core.NSUInteger) core.NSRect {
 	ret := C.NSWindow_type_contentRectForFrameRect_styleMask(
 		*(*C.NSRect)(unsafe.Pointer(&fRect)),
 		C.ulong(style),
 	)
-	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
-	return
+
+	return *(*core.NSRect)(unsafe.Pointer(&ret))
+
 }
 
-func NSWindow_frameRectForContentRect_styleMask(
-	cRect core.NSRect,
-	style core.NSUInteger,
-) (
-	r0 core.NSRect,
-) {
+// NSWindow_frameRectForContentRect_styleMask Returns the frame rectangle used by a window with a given content rectangle and window style.
+// https://developer.apple.com/documentation/appkit/nswindow/1419372-framerectforcontentrect?language=objc
+func NSWindow_frameRectForContentRect_styleMask(cRect core.NSRect, style core.NSUInteger) core.NSRect {
 	ret := C.NSWindow_type_frameRectForContentRect_styleMask(
 		*(*C.NSRect)(unsafe.Pointer(&cRect)),
 		C.ulong(style),
 	)
-	r0 = *(*core.NSRect)(unsafe.Pointer(&ret))
-	return
+
+	return *(*core.NSRect)(unsafe.Pointer(&ret))
+
 }
 
-func NSWindow_minFrameWidthWithTitle_styleMask(
-	title core.NSStringRef,
-	style core.NSUInteger,
-) (
-	r0 core.CGFloat,
-) {
+// NSWindow_minFrameWidthWithTitle_styleMask Returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.
+// https://developer.apple.com/documentation/appkit/nswindow/1419294-minframewidthwithtitle?language=objc
+func NSWindow_minFrameWidthWithTitle_styleMask(title core.NSStringRef, style core.NSUInteger) core.CGFloat {
 	ret := C.NSWindow_type_minFrameWidthWithTitle_styleMask(
 		objc.RefPointer(title),
 		C.ulong(style),
 	)
-	r0 = core.CGFloat(ret)
-	return
+
+	return core.CGFloat(ret)
+
 }
 
-func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber(
-	point core.NSPoint,
-	windowNumber core.NSInteger,
-) (
-	r0 core.NSInteger,
-) {
+// NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber Returns the number of the frontmost window that would be hit by a mouse-down at the specified screen location.
+// https://developer.apple.com/documentation/appkit/nswindow/1419210-windownumberatpoint?language=objc
+func NSWindow_windowNumberAtPoint_belowWindowWithWindowNumber(point core.NSPoint, windowNumber core.NSInteger) core.NSInteger {
 	ret := C.NSWindow_type_windowNumberAtPoint_belowWindowWithWindowNumber(
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 		C.long(windowNumber),
 	)
-	r0 = core.NSInteger(ret)
-	return
+
+	return core.NSInteger(ret)
+
 }
 
-func NSWindow_allowsAutomaticWindowTabbing() (
-	r0 bool,
-) {
+// NSWindow_allowsAutomaticWindowTabbing A Boolean value that indicates whether the app can automatically organize windows into tabs.
+// https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc
+func NSWindow_allowsAutomaticWindowTabbing() bool {
 	ret := C.NSWindow_type_allowsAutomaticWindowTabbing()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSWindow_setAllowsAutomaticWindowTabbing(
-	value bool,
-) {
+// NSWindow_setAllowsAutomaticWindowTabbing A Boolean value that indicates whether the app can automatically organize windows into tabs.
+// https://developer.apple.com/documentation/appkit/nswindow/1646657-allowsautomaticwindowtabbing?language=objc
+func NSWindow_setAllowsAutomaticWindowTabbing(value bool) {
 	C.NSWindow_type_setAllowsAutomaticWindowTabbing(
 		convertToObjCBool(value),
 	)
+
 	return
+
 }
 
-func NSWorkspace_alloc() (
-	r0 NSWorkspace,
-) {
+// NSWorkspace_alloc
+func NSWorkspace_alloc() NSWorkspace {
 	ret := C.NSWorkspace_type_alloc()
-	r0 = NSWorkspace_fromPointer(ret)
-	return
+
+	return NSWorkspace_fromPointer(ret)
+
 }
 
-func NSWorkspace_sharedWorkspace() (
-	r0 NSWorkspace,
-) {
+// NSWorkspace_sharedWorkspace The shared workspace object.
+// https://developer.apple.com/documentation/appkit/nsworkspace/1530344-sharedworkspace?language=objc
+func NSWorkspace_sharedWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_type_sharedWorkspace()
-	r0 = NSWorkspace_fromPointer(ret)
-	return
+
+	return NSWorkspace_fromPointer(ret)
+
 }
 
-func NSColor_alloc() (
-	r0 NSColor,
-) {
+// NSColor_alloc
+func NSColor_alloc() NSColor {
 	ret := C.NSColor_type_alloc()
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSColor_colorFromPasteboard(
-	pasteBoard NSPasteboardRef,
-) (
-	r0 NSColor,
-) {
+// NSColor_colorFromPasteboard Creates a color object from color data currently on the pasteboard.
+// https://developer.apple.com/documentation/appkit/nscolor/1535057-colorfrompasteboard?language=objc
+func NSColor_colorFromPasteboard(pasteBoard NSPasteboardRef) NSColor {
 	ret := C.NSColor_type_colorFromPasteboard(
 		objc.RefPointer(pasteBoard),
 	)
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSColor_colorWithRed_green_blue_alpha(
-	red core.CGFloat,
-	green core.CGFloat,
-	blue core.CGFloat,
-	alpha core.CGFloat,
-) (
-	r0 NSColor,
-) {
+// NSColor_colorWithRed_green_blue_alpha
+func NSColor_colorWithRed_green_blue_alpha(red core.CGFloat, green core.CGFloat, blue core.CGFloat, alpha core.CGFloat) NSColor {
 	ret := C.NSColor_type_colorWithRed_green_blue_alpha(
 		C.double(red),
 		C.double(green),
 		C.double(blue),
 		C.double(alpha),
 	)
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSColor_ignoresAlpha() (
-	r0 bool,
-) {
+// NSColor_ignoresAlpha A Boolean value that indicates whether the app supports alpha.
+// https://developer.apple.com/documentation/appkit/nscolor/1533565-ignoresalpha?language=objc
+func NSColor_ignoresAlpha() bool {
 	ret := C.NSColor_type_ignoresAlpha()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSColor_setIgnoresAlpha(
-	value bool,
-) {
+// NSColor_setIgnoresAlpha A Boolean value that indicates whether the app supports alpha.
+// https://developer.apple.com/documentation/appkit/nscolor/1533565-ignoresalpha?language=objc
+func NSColor_setIgnoresAlpha(value bool) {
 	C.NSColor_type_setIgnoresAlpha(
 		convertToObjCBool(value),
 	)
+
 	return
+
 }
 
-func NSColor_systemCyanColor() (
-	r0 NSColor,
-) {
+// NSColor_systemCyanColor
+// https://developer.apple.com/documentation/appkit/nscolor/3816005-systemcyancolor?language=objc
+func NSColor_systemCyanColor() NSColor {
 	ret := C.NSColor_type_systemCyanColor()
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSColor_systemMintColor() (
-	r0 NSColor,
-) {
+// NSColor_systemMintColor
+// https://developer.apple.com/documentation/appkit/nscolor/3816006-systemmintcolor?language=objc
+func NSColor_systemMintColor() NSColor {
 	ret := C.NSColor_type_systemMintColor()
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSColor_clearColor() (
-	r0 NSColor,
-) {
+// NSColor_clearColor Returns a color object whose grayscale and alpha values are both 0.0.
+// https://developer.apple.com/documentation/appkit/nscolor/1527217-clearcolor?language=objc
+func NSColor_clearColor() NSColor {
 	ret := C.NSColor_type_clearColor()
-	r0 = NSColor_fromPointer(ret)
-	return
+
+	return NSColor_fromPointer(ret)
+
 }
 
-func NSTextView_alloc() (
-	r0 NSTextView,
-) {
+// NSTextView_alloc
+func NSTextView_alloc() NSTextView {
 	ret := C.NSTextView_type_alloc()
-	r0 = NSTextView_fromPointer(ret)
-	return
+
+	return NSTextView_fromPointer(ret)
+
 }
 
+// NSTextView_registerForServices Registers send and return types for the Services facility.
+// https://developer.apple.com/documentation/appkit/nstextview/1449507-registerforservices?language=objc
 func NSTextView_registerForServices() {
 	C.NSTextView_type_registerForServices()
+
 	return
+
 }
 
-func NSTextView_fieldEditor() (
-	r0 NSTextView,
-) {
+// NSTextView_fieldEditor
+// https://developer.apple.com/documentation/appkit/nstextview/2990525-fieldeditor?language=objc
+func NSTextView_fieldEditor() NSTextView {
 	ret := C.NSTextView_type_fieldEditor()
-	r0 = NSTextView_fromPointer(ret)
-	return
+
+	return NSTextView_fromPointer(ret)
+
 }
 
-func NSTextView_stronglyReferencesTextStorage() (
-	r0 bool,
-) {
+// NSTextView_stronglyReferencesTextStorage
+// https://developer.apple.com/documentation/appkit/nstextview/2269433-stronglyreferencestextstorage?language=objc
+func NSTextView_stronglyReferencesTextStorage() bool {
 	ret := C.NSTextView_type_stronglyReferencesTextStorage()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSView_alloc() (
-	r0 NSView,
-) {
+// NSView_alloc
+func NSView_alloc() NSView {
 	ret := C.NSView_type_alloc()
-	r0 = NSView_fromPointer(ret)
-	return
+
+	return NSView_fromPointer(ret)
+
 }
 
-func NSView_requiresConstraintBasedLayout() (
-	r0 bool,
-) {
+// NSView_requiresConstraintBasedLayout Returns a Boolean value indicating whether the view depends on the constraint-based layout system.
+// https://developer.apple.com/documentation/appkit/nsview/1526926-requiresconstraintbasedlayout?language=objc
+func NSView_requiresConstraintBasedLayout() bool {
 	ret := C.NSView_type_requiresConstraintBasedLayout()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSView_focusView() (
-	r0 NSView,
-) {
+// NSView_focusView Returns the currently focused NSView object, or nil if there is none.
+// https://developer.apple.com/documentation/appkit/nsview/1483662-focusview?language=objc
+func NSView_focusView() NSView {
 	ret := C.NSView_type_focusView()
-	r0 = NSView_fromPointer(ret)
-	return
+
+	return NSView_fromPointer(ret)
+
 }
 
-func NSView_defaultMenu() (
-	r0 NSMenu,
-) {
+// NSView_defaultMenu Overridden by subclasses to return the default pop-up menu for instances of the receiving class.
+// https://developer.apple.com/documentation/appkit/nsview/1483417-defaultmenu?language=objc
+func NSView_defaultMenu() NSMenu {
 	ret := C.NSView_type_defaultMenu()
-	r0 = NSMenu_fromPointer(ret)
-	return
+
+	return NSMenu_fromPointer(ret)
+
 }
 
-func NSView_compatibleWithResponsiveScrolling() (
-	r0 bool,
-) {
+// NSView_compatibleWithResponsiveScrolling
+// https://developer.apple.com/documentation/appkit/nsview/2870005-compatiblewithresponsivescrollin?language=objc
+func NSView_compatibleWithResponsiveScrolling() bool {
 	ret := C.NSView_type_compatibleWithResponsiveScrolling()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
 type NSBundleRef interface {

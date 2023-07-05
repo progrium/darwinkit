@@ -108,9 +108,10 @@ func (cb *classBuilder) toMsgSendReturn(dt schema.DataType) string {
 
 func (cb *classBuilder) cgoWrapperFunc(method schema.Method, isTypeMethod bool) CGoWrapperFunc {
 	r := CGoWrapperFunc{
-		Name:    msgSendFuncName(cb.generatedNames, cb.Class, method.Name, isTypeMethod),
-		Args:    []CGoWrapperArg{},
-		Returns: cb.toCGoWrapperReturn(method.Return),
+		Description: method.Description,
+		Name:        msgSendFuncName(cb.generatedNames, cb.Class, method.Name, isTypeMethod),
+		Args:        []CGoWrapperArg{},
+		Returns:     cb.toCGoWrapperReturn(method.Return),
 	}
 	for _, arg := range method.Args {
 		typ := cb.mapType(arg.Type)

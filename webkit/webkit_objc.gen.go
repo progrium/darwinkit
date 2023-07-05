@@ -479,56 +479,55 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.webkit_objc_bool_false
 }
 
-func WKNavigation_alloc() (
-	r0 WKNavigation,
-) {
+// WKNavigation_alloc
+func WKNavigation_alloc() WKNavigation {
 	ret := C.WKNavigation_type_alloc()
-	r0 = WKNavigation_fromPointer(ret)
-	return
+
+	return WKNavigation_fromPointer(ret)
+
 }
 
-func WKUserScript_alloc() (
-	r0 WKUserScript,
-) {
+// WKUserScript_alloc
+func WKUserScript_alloc() WKUserScript {
 	ret := C.WKUserScript_type_alloc()
-	r0 = WKUserScript_fromPointer(ret)
-	return
+
+	return WKUserScript_fromPointer(ret)
+
 }
 
-func WKWebView_alloc() (
-	r0 WKWebView,
-) {
+// WKWebView_alloc
+func WKWebView_alloc() WKWebView {
 	ret := C.WKWebView_type_alloc()
-	r0 = WKWebView_fromPointer(ret)
-	return
+
+	return WKWebView_fromPointer(ret)
+
 }
 
-func WKWebView_handlesURLScheme(
-	urlScheme core.NSStringRef,
-) (
-	r0 bool,
-) {
+// WKWebView_handlesURLScheme Returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme.
+// https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc
+func WKWebView_handlesURLScheme(urlScheme core.NSStringRef) bool {
 	ret := C.WKWebView_type_handlesURLScheme(
 		objc.RefPointer(urlScheme),
 	)
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func WKWebViewConfiguration_alloc() (
-	r0 WKWebViewConfiguration,
-) {
+// WKWebViewConfiguration_alloc
+func WKWebViewConfiguration_alloc() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_type_alloc()
-	r0 = WKWebViewConfiguration_fromPointer(ret)
-	return
+
+	return WKWebViewConfiguration_fromPointer(ret)
+
 }
 
-func WKPreferences_alloc() (
-	r0 WKPreferences,
-) {
+// WKPreferences_alloc
+func WKPreferences_alloc() WKPreferences {
 	ret := C.WKPreferences_type_alloc()
-	r0 = WKPreferences_fromPointer(ret)
-	return
+
+	return WKPreferences_fromPointer(ret)
+
 }
 
 type WKNavigationRef interface {

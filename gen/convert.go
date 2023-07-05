@@ -62,6 +62,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		msg := cb.msgSend(m, true)
 		ident := selectorNameToGoIdent(cb.generatedNames, m.Name)
 		wrapper := MethodDef{
+			Description: m.Description + fmt.Sprintf("\n// %s", m.TopicURL),
 			Name:        fmt.Sprintf("%s_%s", cb.Class.Name, ident),
 			WrappedFunc: cb.cgoWrapperFunc(m, true),
 		}

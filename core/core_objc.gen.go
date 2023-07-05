@@ -2167,691 +2167,670 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.core_objc_bool_false
 }
 
-func CALayer_alloc() (
-	r0 CALayer,
-) {
+// CALayer_alloc
+func CALayer_alloc() CALayer {
 	ret := C.CALayer_type_alloc()
-	r0 = CALayer_fromPointer(ret)
-	return
+
+	return CALayer_fromPointer(ret)
+
 }
 
-func CALayer_layer() (
-	r0 CALayer,
-) {
+// CALayer_layer Creates and returns an instance of the layer object.
+// https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc
+func CALayer_layer() CALayer {
 	ret := C.CALayer_type_layer()
-	r0 = CALayer_fromPointer(ret)
-	return
+
+	return CALayer_fromPointer(ret)
+
 }
 
-func CALayer_needsDisplayForKey(
-	key NSStringRef,
-) (
-	r0 bool,
-) {
+// CALayer_needsDisplayForKey Returns a Boolean indicating whether changes to the specified key require the layer to be redisplayed.
+// https://developer.apple.com/documentation/quartzcore/calayer/1410769-needsdisplayforkey?language=objc
+func CALayer_needsDisplayForKey(key NSStringRef) bool {
 	ret := C.CALayer_type_needsDisplayForKey(
 		objc.RefPointer(key),
 	)
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func CALayer_defaultActionForKey(
-	event NSStringRef,
-) (
-	r0 objc.Object,
-) {
+// CALayer_defaultActionForKey Returns the default action for the current class.
+// https://developer.apple.com/documentation/quartzcore/calayer/1410954-defaultactionforkey?language=objc
+func CALayer_defaultActionForKey(event NSStringRef) objc.Object {
 	ret := C.CALayer_type_defaultActionForKey(
 		objc.RefPointer(event),
 	)
-	r0 = objc.Object_fromPointer(ret)
-	return
+
+	return objc.Object_fromPointer(ret)
+
 }
 
-func CALayer_defaultValueForKey(
-	key NSStringRef,
-) (
-	r0 objc.Object,
-) {
+// CALayer_defaultValueForKey Specifies the default value associated with the specified key.
+// https://developer.apple.com/documentation/quartzcore/calayer/1410886-defaultvalueforkey?language=objc
+func CALayer_defaultValueForKey(key NSStringRef) objc.Object {
 	ret := C.CALayer_type_defaultValueForKey(
 		objc.RefPointer(key),
 	)
-	r0 = objc.Object_fromPointer(ret)
-	return
+
+	return objc.Object_fromPointer(ret)
+
 }
 
-func NSArray_alloc() (
-	r0 NSArray,
-) {
+// NSArray_alloc
+func NSArray_alloc() NSArray {
 	ret := C.NSArray_type_alloc()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSArray_array() (
-	r0 NSArray,
-) {
+// NSArray_array Creates and returns an empty array.
+// https://developer.apple.com/documentation/foundation/nsarray/1460120-array?language=objc
+func NSArray_array() NSArray {
 	ret := C.NSArray_type_array()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSArray_arrayWithArray(
-	array NSArrayRef,
-) (
-	r0 NSArray,
-) {
+// NSArray_arrayWithArray Creates and returns an array containing the objects in another given array.
+// https://developer.apple.com/documentation/foundation/nsarray/1460122-arraywitharray?language=objc
+func NSArray_arrayWithArray(array NSArrayRef) NSArray {
 	ret := C.NSArray_type_arrayWithArray(
 		objc.RefPointer(array),
 	)
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSAttributedString_alloc() (
-	r0 NSAttributedString,
-) {
+// NSAttributedString_alloc
+func NSAttributedString_alloc() NSAttributedString {
 	ret := C.NSAttributedString_type_alloc()
-	r0 = NSAttributedString_fromPointer(ret)
-	return
+
+	return NSAttributedString_fromPointer(ret)
+
 }
 
-func NSAttributedString_textTypes() (
-	r0 NSArray,
-) {
+// NSAttributedString_textTypes An array of UTI strings that identify the file types that attributed strings support, either directly or through a user-installed filter service.
+// https://developer.apple.com/documentation/foundation/nsattributedstring/1535409-texttypes?language=objc
+func NSAttributedString_textTypes() NSArray {
 	ret := C.NSAttributedString_type_textTypes()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSAttributedString_textUnfilteredTypes() (
-	r0 NSArray,
-) {
+// NSAttributedString_textUnfilteredTypes An array of UTI strings that identify the file types that attributed strings support directly.
+// https://developer.apple.com/documentation/foundation/nsattributedstring/1528269-textunfilteredtypes?language=objc
+func NSAttributedString_textUnfilteredTypes() NSArray {
 	ret := C.NSAttributedString_type_textUnfilteredTypes()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSData_alloc() (
-	r0 NSData,
-) {
+// NSData_alloc
+func NSData_alloc() NSData {
 	ret := C.NSData_type_alloc()
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_data() (
-	r0 NSData,
-) {
+// NSData_data Creates an empty data object.
+// https://developer.apple.com/documentation/foundation/nsdata/1547234-data?language=objc
+func NSData_data() NSData {
 	ret := C.NSData_type_data()
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithBytes_length(
-	bytes unsafe.Pointer,
-	length NSUInteger,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithBytes_length Creates a data object containing a given number of bytes copied from a given buffer.
+// https://developer.apple.com/documentation/foundation/nsdata/1547231-datawithbytes?language=objc
+func NSData_dataWithBytes_length(bytes unsafe.Pointer, length NSUInteger) NSData {
 	ret := C.NSData_type_dataWithBytes_length(
 		bytes,
 		C.ulong(length),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithBytesNoCopy_length(
-	bytes unsafe.Pointer,
-	length NSUInteger,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithBytesNoCopy_length Creates a data object that holds a given number of bytes from a given buffer.
+// https://developer.apple.com/documentation/foundation/nsdata/1547229-datawithbytesnocopy?language=objc
+func NSData_dataWithBytesNoCopy_length(bytes unsafe.Pointer, length NSUInteger) NSData {
 	ret := C.NSData_type_dataWithBytesNoCopy_length(
 		bytes,
 		C.ulong(length),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithBytesNoCopy_length_freeWhenDone(
-	bytes unsafe.Pointer,
-	length NSUInteger,
-	b bool,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithBytesNoCopy_length_freeWhenDone Creates a data object that holds a given number of bytes from a given buffer.
+// https://developer.apple.com/documentation/foundation/nsdata/1547240-datawithbytesnocopy?language=objc
+func NSData_dataWithBytesNoCopy_length_freeWhenDone(bytes unsafe.Pointer, length NSUInteger, b bool) NSData {
 	ret := C.NSData_type_dataWithBytesNoCopy_length_freeWhenDone(
 		bytes,
 		C.ulong(length),
 		convertToObjCBool(b),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithData(
-	data NSDataRef,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithData Creates a data object containing the contents of another data object.
+// https://developer.apple.com/documentation/foundation/nsdata/1547230-datawithdata?language=objc
+func NSData_dataWithData(data NSDataRef) NSData {
 	ret := C.NSData_type_dataWithData(
 		objc.RefPointer(data),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithContentsOfFile(
-	path NSStringRef,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithContentsOfFile Creates a data object by reading every byte from the file at a given path.
+// https://developer.apple.com/documentation/foundation/nsdata/1547226-datawithcontentsoffile?language=objc
+func NSData_dataWithContentsOfFile(path NSStringRef) NSData {
 	ret := C.NSData_type_dataWithContentsOfFile(
 		objc.RefPointer(path),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSData_dataWithContentsOfURL(
-	url NSURLRef,
-) (
-	r0 NSData,
-) {
+// NSData_dataWithContentsOfURL Creates a data object containing the data from the location specified by a given URL.
+// https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc
+func NSData_dataWithContentsOfURL(url NSURLRef) NSData {
 	ret := C.NSData_type_dataWithContentsOfURL(
 		objc.RefPointer(url),
 	)
-	r0 = NSData_fromPointer(ret)
-	return
+
+	return NSData_fromPointer(ret)
+
 }
 
-func NSDictionary_alloc() (
-	r0 NSDictionary,
-) {
+// NSDictionary_alloc
+func NSDictionary_alloc() NSDictionary {
 	ret := C.NSDictionary_type_alloc()
-	r0 = NSDictionary_fromPointer(ret)
-	return
+
+	return NSDictionary_fromPointer(ret)
+
 }
 
-func NSDictionary_dictionary() (
-	r0 NSDictionary,
-) {
+// NSDictionary_dictionary Creates an empty dictionary.
+// https://developer.apple.com/documentation/foundation/nsdictionary/1574180-dictionary?language=objc
+func NSDictionary_dictionary() NSDictionary {
 	ret := C.NSDictionary_type_dictionary()
-	r0 = NSDictionary_fromPointer(ret)
-	return
+
+	return NSDictionary_fromPointer(ret)
+
 }
 
-func NSDictionary_dictionaryWithObjects_forKeys(
-	objects NSArrayRef,
-	keys NSArrayRef,
-) (
-	r0 NSDictionary,
-) {
+// NSDictionary_dictionaryWithObjects_forKeys Creates a dictionary containing entries constructed from the contents of an array of keys and an array of values.
+// https://developer.apple.com/documentation/foundation/nsdictionary/1574183-dictionarywithobjects?language=objc
+func NSDictionary_dictionaryWithObjects_forKeys(objects NSArrayRef, keys NSArrayRef) NSDictionary {
 	ret := C.NSDictionary_type_dictionaryWithObjects_forKeys(
 		objc.RefPointer(objects),
 		objc.RefPointer(keys),
 	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
+
+	return NSDictionary_fromPointer(ret)
+
 }
 
-func NSDictionary_dictionaryWithDictionary(
-	dict NSDictionaryRef,
-) (
-	r0 NSDictionary,
-) {
+// NSDictionary_dictionaryWithDictionary Creates a dictionary containing the keys and values from another given dictionary.
+// https://developer.apple.com/documentation/foundation/nsdictionary/1574191-dictionarywithdictionary?language=objc
+func NSDictionary_dictionaryWithDictionary(dict NSDictionaryRef) NSDictionary {
 	ret := C.NSDictionary_type_dictionaryWithDictionary(
 		objc.RefPointer(dict),
 	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
+
+	return NSDictionary_fromPointer(ret)
+
 }
 
-func NSDictionary_sharedKeySetForKeys(
-	keys NSArrayRef,
-) (
-	r0 objc.Object,
-) {
+// NSDictionary_sharedKeySetForKeys Creates a shared key set object for the specified keys.
+// https://developer.apple.com/documentation/foundation/nsdictionary/1408190-sharedkeysetforkeys?language=objc
+func NSDictionary_sharedKeySetForKeys(keys NSArrayRef) objc.Object {
 	ret := C.NSDictionary_type_sharedKeySetForKeys(
 		objc.RefPointer(keys),
 	)
-	r0 = objc.Object_fromPointer(ret)
-	return
+
+	return objc.Object_fromPointer(ret)
+
 }
 
-func NSNumber_alloc() (
-	r0 NSNumber,
-) {
+// NSNumber_alloc
+func NSNumber_alloc() NSNumber {
 	ret := C.NSNumber_type_alloc()
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSNumber_numberWithBool(
-	value bool,
-) (
-	r0 NSNumber,
-) {
+// NSNumber_numberWithBool Creates and returns an NSNumber object containing a given value, treating it as a BOOL.
+// https://developer.apple.com/documentation/foundation/nsnumber/1551475-numberwithbool?language=objc
+func NSNumber_numberWithBool(value bool) NSNumber {
 	ret := C.NSNumber_type_numberWithBool(
 		convertToObjCBool(value),
 	)
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSNumber_numberWithInt(
-	value int32,
-) (
-	r0 NSNumber,
-) {
+// NSNumber_numberWithInt Creates and returns an NSNumber object containing a given value, treating it as a signed int.
+// https://developer.apple.com/documentation/foundation/nsnumber/1551470-numberwithint?language=objc
+func NSNumber_numberWithInt(value int32) NSNumber {
 	ret := C.NSNumber_type_numberWithInt(
 		C.int(value),
 	)
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSNumber_numberWithInteger(
-	value NSInteger,
-) (
-	r0 NSNumber,
-) {
+// NSNumber_numberWithInteger Creates and returns an NSNumber object containing a given value, treating it as an NSInteger.
+// https://developer.apple.com/documentation/foundation/nsnumber/1551473-numberwithinteger?language=objc
+func NSNumber_numberWithInteger(value NSInteger) NSNumber {
 	ret := C.NSNumber_type_numberWithInteger(
 		C.long(value),
 	)
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSNumber_numberWithUnsignedInt(
-	value int32,
-) (
-	r0 NSNumber,
-) {
+// NSNumber_numberWithUnsignedInt Creates and returns an NSNumber object containing a given value, treating it as an unsigned int.
+// https://developer.apple.com/documentation/foundation/nsnumber/1551472-numberwithunsignedint?language=objc
+func NSNumber_numberWithUnsignedInt(value int32) NSNumber {
 	ret := C.NSNumber_type_numberWithUnsignedInt(
 		C.int(value),
 	)
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSNumber_numberWithUnsignedInteger(
-	value NSUInteger,
-) (
-	r0 NSNumber,
-) {
+// NSNumber_numberWithUnsignedInteger Creates and returns an NSNumber object containing a given value, treating it as an NSUInteger.
+// https://developer.apple.com/documentation/foundation/nsnumber/1551469-numberwithunsignedinteger?language=objc
+func NSNumber_numberWithUnsignedInteger(value NSUInteger) NSNumber {
 	ret := C.NSNumber_type_numberWithUnsignedInteger(
 		C.ulong(value),
 	)
-	r0 = NSNumber_fromPointer(ret)
-	return
+
+	return NSNumber_fromPointer(ret)
+
 }
 
-func NSRunLoop_alloc() (
-	r0 NSRunLoop,
-) {
+// NSRunLoop_alloc
+func NSRunLoop_alloc() NSRunLoop {
 	ret := C.NSRunLoop_type_alloc()
-	r0 = NSRunLoop_fromPointer(ret)
-	return
+
+	return NSRunLoop_fromPointer(ret)
+
 }
 
-func NSRunLoop_currentRunLoop() (
-	r0 NSRunLoop,
-) {
+// NSRunLoop_currentRunLoop Returns the run loop for the current thread.
+// https://developer.apple.com/documentation/foundation/nsrunloop/1412291-currentrunloop?language=objc
+func NSRunLoop_currentRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_type_currentRunLoop()
-	r0 = NSRunLoop_fromPointer(ret)
-	return
+
+	return NSRunLoop_fromPointer(ret)
+
 }
 
-func NSRunLoop_mainRunLoop() (
-	r0 NSRunLoop,
-) {
+// NSRunLoop_mainRunLoop Returns the run loop of the main thread.
+// https://developer.apple.com/documentation/foundation/nsrunloop/1418388-mainrunloop?language=objc
+func NSRunLoop_mainRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_type_mainRunLoop()
-	r0 = NSRunLoop_fromPointer(ret)
-	return
+
+	return NSRunLoop_fromPointer(ret)
+
 }
 
-func NSString_alloc() (
-	r0 NSString,
-) {
+// NSString_alloc
+func NSString_alloc() NSString {
 	ret := C.NSString_type_alloc()
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_string() (
-	r0 NSString,
-) {
+// NSString_string Returns an empty string.
+// https://developer.apple.com/documentation/foundation/nsstring/1497312-string?language=objc
+func NSString_string() NSString {
 	ret := C.NSString_type_string()
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_localizedUserNotificationStringForKey_arguments(
-	key NSStringRef,
-	arguments NSArrayRef,
-) (
-	r0 NSString,
-) {
+// NSString_localizedUserNotificationStringForKey_arguments Returns a localized string intended for display in a notification alert.
+// https://developer.apple.com/documentation/foundation/nsstring/1649585-localizedusernotificationstringf?language=objc
+func NSString_localizedUserNotificationStringForKey_arguments(key NSStringRef, arguments NSArrayRef) NSString {
 	ret := C.NSString_type_localizedUserNotificationStringForKey_arguments(
 		objc.RefPointer(key),
 		objc.RefPointer(arguments),
 	)
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_stringWithString(
-	string NSStringRef,
-) (
-	r0 NSString,
-) {
+// NSString_stringWithString Returns a string created by copying the characters from another given string.
+// https://developer.apple.com/documentation/foundation/nsstring/1497372-stringwithstring?language=objc
+func NSString_stringWithString(string NSStringRef) NSString {
 	ret := C.NSString_type_stringWithString(
 		objc.RefPointer(string),
 	)
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_localizedNameOfStringEncoding(
-	encoding NSStringEncoding,
-) (
-	r0 NSString,
-) {
+// NSString_localizedNameOfStringEncoding Returns a human-readable string giving the name of a given encoding.
+// https://developer.apple.com/documentation/foundation/nsstring/1408318-localizednameofstringencoding?language=objc
+func NSString_localizedNameOfStringEncoding(encoding NSStringEncoding) NSString {
 	ret := C.NSString_type_localizedNameOfStringEncoding(
 		C.ulong(encoding),
 	)
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_pathWithComponents(
-	components NSArrayRef,
-) (
-	r0 NSString,
-) {
+// NSString_pathWithComponents Returns a string built from the strings in a given array by concatenating them with a path separator between each pair.
+// https://developer.apple.com/documentation/foundation/nsstring/1417198-pathwithcomponents?language=objc
+func NSString_pathWithComponents(components NSArrayRef) NSString {
 	ret := C.NSString_type_pathWithComponents(
 		objc.RefPointer(components),
 	)
-	r0 = NSString_fromPointer(ret)
-	return
+
+	return NSString_fromPointer(ret)
+
 }
 
-func NSString_defaultCStringEncoding() (
-	r0 NSStringEncoding,
-) {
+// NSString_defaultCStringEncoding Returns the C-string encoding assumed for any method accepting a C string as an argument.
+// https://developer.apple.com/documentation/foundation/nsstring/1410091-defaultcstringencoding?language=objc
+func NSString_defaultCStringEncoding() NSStringEncoding {
 	ret := C.NSString_type_defaultCStringEncoding()
-	r0 = NSStringEncoding(ret)
-	return
+
+	return NSStringEncoding(ret)
+
 }
 
-func NSThread_alloc() (
-	r0 NSThread,
-) {
+// NSThread_alloc
+func NSThread_alloc() NSThread {
 	ret := C.NSThread_type_alloc()
-	r0 = NSThread_fromPointer(ret)
-	return
+
+	return NSThread_fromPointer(ret)
+
 }
 
-func NSThread_detachNewThreadSelector_toTarget_withObject(
-	selector objc.Selector,
-	target objc.Ref,
-	argument objc.Ref,
-) {
+// NSThread_detachNewThreadSelector_toTarget_withObject Detaches a new thread and uses the specified selector as the thread entry point.
+// https://developer.apple.com/documentation/foundation/nsthread/1415633-detachnewthreadselector?language=objc
+func NSThread_detachNewThreadSelector_toTarget_withObject(selector objc.Selector, target objc.Ref, argument objc.Ref) {
 	C.NSThread_type_detachNewThreadSelector_toTarget_withObject(
 		selector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(argument),
 	)
+
 	return
+
 }
 
+// NSThread_exit Terminates the current thread.
+// https://developer.apple.com/documentation/foundation/nsthread/1409404-exit?language=objc
 func NSThread_exit() {
 	C.NSThread_type_exit()
+
 	return
+
 }
 
-func NSThread_isMultiThreaded() (
-	r0 bool,
-) {
+// NSThread_isMultiThreaded Returns whether the application is multithreaded.
+// https://developer.apple.com/documentation/foundation/nsthread/1410702-ismultithreaded?language=objc
+func NSThread_isMultiThreaded() bool {
 	ret := C.NSThread_type_isMultiThreaded()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSThread_isMainThread() (
-	r0 bool,
-) {
+// NSThread_isMainThread Returns a Boolean value that indicates whether the current thread is the main thread.
+// https://developer.apple.com/documentation/foundation/nsthread/1412704-ismainthread?language=objc
+func NSThread_isMainThread() bool {
 	ret := C.NSThread_type_isMainThread()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSThread_mainThread() (
-	r0 NSThread,
-) {
+// NSThread_mainThread Returns the NSThread object representing the main thread.
+// https://developer.apple.com/documentation/foundation/nsthread/1414782-mainthread?language=objc
+func NSThread_mainThread() NSThread {
 	ret := C.NSThread_type_mainThread()
-	r0 = NSThread_fromPointer(ret)
-	return
+
+	return NSThread_fromPointer(ret)
+
 }
 
-func NSThread_currentThread() (
-	r0 NSThread,
-) {
+// NSThread_currentThread Returns the thread object representing the current thread of execution.
+// https://developer.apple.com/documentation/foundation/nsthread/1410679-currentthread?language=objc
+func NSThread_currentThread() NSThread {
 	ret := C.NSThread_type_currentThread()
-	r0 = NSThread_fromPointer(ret)
-	return
+
+	return NSThread_fromPointer(ret)
+
 }
 
-func NSThread_callStackReturnAddresses() (
-	r0 NSArray,
-) {
+// NSThread_callStackReturnAddresses Returns an array containing the call stack return addresses.
+// https://developer.apple.com/documentation/foundation/nsthread/1409565-callstackreturnaddresses?language=objc
+func NSThread_callStackReturnAddresses() NSArray {
 	ret := C.NSThread_type_callStackReturnAddresses()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSThread_callStackSymbols() (
-	r0 NSArray,
-) {
+// NSThread_callStackSymbols Returns an array containing the call stack symbols.
+// https://developer.apple.com/documentation/foundation/nsthread/1414836-callstacksymbols?language=objc
+func NSThread_callStackSymbols() NSArray {
 	ret := C.NSThread_type_callStackSymbols()
-	r0 = NSArray_fromPointer(ret)
-	return
+
+	return NSArray_fromPointer(ret)
+
 }
 
-func NSURL_alloc() (
-	r0 NSURL,
-) {
+// NSURL_alloc
+func NSURL_alloc() NSURL {
 	ret := C.NSURL_type_alloc()
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_URLWithString(
-	URLString NSStringRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_URLWithString Creates and returns an NSURL object initialized with a provided URL string.
+// https://developer.apple.com/documentation/foundation/nsurl/1572047-urlwithstring?language=objc
+func NSURL_URLWithString(URLString NSStringRef) NSURL {
 	ret := C.NSURL_type_URLWithString(
 		objc.RefPointer(URLString),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_URLWithString_relativeToURL(
-	URLString NSStringRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_URLWithString_relativeToURL Creates and returns an NSURL object initialized with a base URL and a relative string.
+// https://developer.apple.com/documentation/foundation/nsurl/1572049-urlwithstring?language=objc
+func NSURL_URLWithString_relativeToURL(URLString NSStringRef, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_URLWithString_relativeToURL(
 		objc.RefPointer(URLString),
 		objc.RefPointer(baseURL),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_fileURLWithPath_isDirectory(
-	path NSStringRef,
-	isDir bool,
-) (
-	r0 NSURL,
-) {
+// NSURL_fileURLWithPath_isDirectory Initializes and returns a newly created NSURL object as a file URL with a specified path.
+// https://developer.apple.com/documentation/foundation/nsurl/1414650-fileurlwithpath?language=objc
+func NSURL_fileURLWithPath_isDirectory(path NSStringRef, isDir bool) NSURL {
 	ret := C.NSURL_type_fileURLWithPath_isDirectory(
 		objc.RefPointer(path),
 		convertToObjCBool(isDir),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_fileURLWithPath_relativeToURL(
-	path NSStringRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_fileURLWithPath_relativeToURL
+// https://developer.apple.com/documentation/foundation/nsurl/1413201-fileurlwithpath?language=objc
+func NSURL_fileURLWithPath_relativeToURL(path NSStringRef, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_fileURLWithPath_relativeToURL(
 		objc.RefPointer(path),
 		objc.RefPointer(baseURL),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_fileURLWithPath_isDirectory_relativeToURL(
-	path NSStringRef,
-	isDir bool,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_fileURLWithPath_isDirectory_relativeToURL
+// https://developer.apple.com/documentation/foundation/nsurl/1413020-fileurlwithpath?language=objc
+func NSURL_fileURLWithPath_isDirectory_relativeToURL(path NSStringRef, isDir bool, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_fileURLWithPath_isDirectory_relativeToURL(
 		objc.RefPointer(path),
 		convertToObjCBool(isDir),
 		objc.RefPointer(baseURL),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_fileURLWithPath(
-	path NSStringRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_fileURLWithPath Initializes and returns a newly created NSURL object as a file URL with a specified path.
+// https://developer.apple.com/documentation/foundation/nsurl/1410828-fileurlwithpath?language=objc
+func NSURL_fileURLWithPath(path NSStringRef) NSURL {
 	ret := C.NSURL_type_fileURLWithPath(
 		objc.RefPointer(path),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_fileURLWithPathComponents(
-	components NSArrayRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_fileURLWithPathComponents Initializes and returns a newly created NSURL object as a file URL with specified path components.
+// https://developer.apple.com/documentation/foundation/nsurl/1414206-fileurlwithpathcomponents?language=objc
+func NSURL_fileURLWithPathComponents(components NSArrayRef) NSURL {
 	ret := C.NSURL_type_fileURLWithPathComponents(
 		objc.RefPointer(components),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_absoluteURLWithDataRepresentation_relativeToURL(
-	data NSDataRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_absoluteURLWithDataRepresentation_relativeToURL
+// https://developer.apple.com/documentation/foundation/nsurl/1412404-absoluteurlwithdatarepresentatio?language=objc
+func NSURL_absoluteURLWithDataRepresentation_relativeToURL(data NSDataRef, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_absoluteURLWithDataRepresentation_relativeToURL(
 		objc.RefPointer(data),
 		objc.RefPointer(baseURL),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_URLWithDataRepresentation_relativeToURL(
-	data NSDataRef,
-	baseURL NSURLRef,
-) (
-	r0 NSURL,
-) {
+// NSURL_URLWithDataRepresentation_relativeToURL
+// https://developer.apple.com/documentation/foundation/nsurl/1572042-urlwithdatarepresentation?language=objc
+func NSURL_URLWithDataRepresentation_relativeToURL(data NSDataRef, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_URLWithDataRepresentation_relativeToURL(
 		objc.RefPointer(data),
 		objc.RefPointer(baseURL),
 	)
-	r0 = NSURL_fromPointer(ret)
-	return
+
+	return NSURL_fromPointer(ret)
+
 }
 
-func NSURL_resourceValuesForKeys_fromBookmarkData(
-	keys NSArrayRef,
-	bookmarkData NSDataRef,
-) (
-	r0 NSDictionary,
-) {
+// NSURL_resourceValuesForKeys_fromBookmarkData Returns the resource values for properties identified by a specified array of keys contained in specified bookmark data.
+// https://developer.apple.com/documentation/foundation/nsurl/1418097-resourcevaluesforkeys?language=objc
+func NSURL_resourceValuesForKeys_fromBookmarkData(keys NSArrayRef, bookmarkData NSDataRef) NSDictionary {
 	ret := C.NSURL_type_resourceValuesForKeys_fromBookmarkData(
 		objc.RefPointer(keys),
 		objc.RefPointer(bookmarkData),
 	)
-	r0 = NSDictionary_fromPointer(ret)
-	return
+
+	return NSDictionary_fromPointer(ret)
+
 }
 
-func NSURLRequest_alloc() (
-	r0 NSURLRequest,
-) {
+// NSURLRequest_alloc
+func NSURLRequest_alloc() NSURLRequest {
 	ret := C.NSURLRequest_type_alloc()
-	r0 = NSURLRequest_fromPointer(ret)
-	return
+
+	return NSURLRequest_fromPointer(ret)
+
 }
 
-func NSURLRequest_requestWithURL(
-	URL NSURLRef,
-) (
-	r0 NSURLRequest,
-) {
+// NSURLRequest_requestWithURL Creates and returns a URL request for a specified URL.
+// https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl?language=objc
+func NSURLRequest_requestWithURL(URL NSURLRef) NSURLRequest {
 	ret := C.NSURLRequest_type_requestWithURL(
 		objc.RefPointer(URL),
 	)
-	r0 = NSURLRequest_fromPointer(ret)
-	return
+
+	return NSURLRequest_fromPointer(ret)
+
 }
 
-func NSURLRequest_supportsSecureCoding() (
-	r0 bool,
-) {
+// NSURLRequest_supportsSecureCoding A Boolean value indicating whether the NSURLRequest implements the NSSecureCoding protocol.
+// https://developer.apple.com/documentation/foundation/nsurlrequest/1416510-supportssecurecoding?language=objc
+func NSURLRequest_supportsSecureCoding() bool {
 	ret := C.NSURLRequest_type_supportsSecureCoding()
-	r0 = convertObjCBoolToGo(ret)
-	return
+
+	return convertObjCBoolToGo(ret)
+
 }
 
-func NSUserDefaults_alloc() (
-	r0 NSUserDefaults,
-) {
+// NSUserDefaults_alloc
+func NSUserDefaults_alloc() NSUserDefaults {
 	ret := C.NSUserDefaults_type_alloc()
-	r0 = NSUserDefaults_fromPointer(ret)
-	return
+
+	return NSUserDefaults_fromPointer(ret)
+
 }
 
+// NSUserDefaults_resetStandardUserDefaults This method has no effect and shouldn't be used.
+// https://developer.apple.com/documentation/foundation/nsuserdefaults/1407708-resetstandarduserdefaults?language=objc
 func NSUserDefaults_resetStandardUserDefaults() {
 	C.NSUserDefaults_type_resetStandardUserDefaults()
+
 	return
+
 }
 
-func NSUserDefaults_standardUserDefaults() (
-	r0 NSUserDefaults,
-) {
+// NSUserDefaults_standardUserDefaults Returns the shared defaults object.
+// https://developer.apple.com/documentation/foundation/nsuserdefaults/1416603-standarduserdefaults?language=objc
+func NSUserDefaults_standardUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_type_standardUserDefaults()
-	r0 = NSUserDefaults_fromPointer(ret)
-	return
+
+	return NSUserDefaults_fromPointer(ret)
+
 }
 
 type CALayerRef interface {

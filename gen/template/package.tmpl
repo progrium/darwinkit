@@ -84,24 +84,33 @@ func convertToObjCBool(b bool) C.BOOL {
 
 {{define "go_to_cgo"}}
 {{range $x := .}}
+// {{.Name}} {{.Description}}
 func {{.Name}}(
-	{{- range .WrappedFunc.Args}}
-		{{.Name}} {{.Type}},
-	{{- end}}
+	{{- range $i, $_ := .WrappedFunc.Args -}}
+		{{if $i}}, {{end}}{{.Name}} {{.Type}}
+	{{- end -}}
 ) {{if .WrappedFunc.HasReturn}}(
-	{{- range $i, $_ := .WrappedFunc.Returns}}
-	r{{$i}} {{.Type}},
-	{{- end}}
+    {{- if eq (len .WrappedFunc.Returns) 1}}
+		{{(index .WrappedFunc.Returns 0).Type}}
+	{{- else -}}
+		{{- range $i, $_ := .WrappedFunc.Returns -}}
+		{{if $i}}, {{end}}r{{$i}} {{.Type}}
+		{{- end -}}
+	{{- end -}}
 ){{end}} {
 	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
 		{{- range .WrappedFunc.Args}}
 		{{printf .ToCGoFmt .Name}},
 		{{- end}}
 	)
+    {{ if eq (len .WrappedFunc.Returns) 1}}
+	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
+	{{ else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
+	{{ end }}
 }
 
 {{end}}

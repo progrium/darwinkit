@@ -73,9 +73,10 @@ type CGoWrapperReturn struct {
 }
 
 type CGoWrapperFunc struct {
-	Name    string
-	Args    []CGoWrapperArg
-	Returns []CGoWrapperReturn
+	Description string
+	Name        string
+	Args        []CGoWrapperArg
+	Returns     []CGoWrapperReturn
 }
 
 func (f CGoWrapperFunc) HasReturn() bool {
@@ -83,6 +84,7 @@ func (f CGoWrapperFunc) HasReturn() bool {
 }
 
 type MethodDef struct {
+	Description string
 	Name        string
 	WrappedFunc CGoWrapperFunc
 }
