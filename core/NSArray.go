@@ -19,7 +19,7 @@ func NSArray_WithObjects(objs ...objc.Object) NSArray {
 	for i, obj := range objs {
 		objsInterface[i] = obj
 	}
-	return NSArray_fromRef(objc.Get("NSArray").Send("arrayWithObjects:", objsInterface...))
+	return NSArray_FromRef(objc.Get("NSArray").Send("arrayWithObjects:", objsInterface...))
 }
 
 // Count returns the number of objects in the array.

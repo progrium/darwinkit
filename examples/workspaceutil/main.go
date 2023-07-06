@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	ws := cocoa.NSWorkspace_sharedWorkspace()
+	ws := cocoa.NSWorkspace_SharedWorkspace()
 	apps := ws.RunningApplications()
 	fmt.Println(apps)
 

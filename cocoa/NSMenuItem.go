@@ -14,19 +14,19 @@ type NSMenuItem struct {
 // NSMenuItem_Init returns an initialized instance of NSMenuItem.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc
 func NSMenuItem_Init(itemName string, action objc.Selector, keyEquivalent string) NSMenuItem {
-	return NSMenuItem_alloc().InitWithTitle_action_keyEquivalent_asNSMenuItem(
+	return NSMenuItem_Alloc().InitWithTitleActionKeyEquivalent_AsNSMenuItem(
 		core.String(itemName), action, core.String(keyEquivalent))
 }
 
 // NSMenuItem_New returns an initialized instance of NSMenuItem.
 func NSMenuItem_New() NSMenuItem {
-	return NSMenuItem_alloc().Init_asNSMenuItem()
+	return NSMenuItem_Alloc().Init_AsNSMenuItem()
 }
 
 // NSMenuItem_Separator returns a menu item that is used to separate logical groups of menu commands.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem?language=objc
 func NSMenuItem_Separator() NSMenuItem {
-	return NSMenuItem_separatorItem()
+	return NSMenuItem_SeparatorItem()
 }
 
 // Hidden returns a boolean value that indicates whether the menu item is hidden.

@@ -5,5 +5,5 @@ type NSImageView struct {
 }
 
 func NSImageView_New() NSImageView {
-	return NSImageView_alloc().Init_asNSImageView()
+	return NSImageView_Alloc().Init_AsNSImageView()
 }

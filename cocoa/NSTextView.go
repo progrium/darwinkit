@@ -19,7 +19,7 @@ type NSTextView struct {
 }
 
 func NSTextView_Init(frame core.NSRect) NSTextView {
-	return NSTextView_alloc().InitWithFrame_asNSTextView(frame)
+	return NSTextView_Alloc().InitWithFrame_AsNSTextView(frame)
 }
 
 func (v NSTextView) String() string {

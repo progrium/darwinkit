@@ -14,7 +14,7 @@ const (
 )
 
 func NSPopover_Init() NSPopover {
-	return NSPopover_alloc().Init_asNSPopover()
+	return NSPopover_Alloc().Init_AsNSPopover()
 }
 
 func (p NSPopover) SetContentSize(s core.NSSize) {

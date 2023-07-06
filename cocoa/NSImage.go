@@ -9,15 +9,15 @@ type NSImage struct {
 }
 
 func NSImage_InitWithData(data core.NSDataRef) NSImage {
-	return NSImage_alloc().InitWithData_asNSImage(data)
+	return NSImage_Alloc().InitWithData_AsNSImage(data)
 }
 
 func NSImage_InitWithURL(url core.NSURL) NSImage {
-	return NSImage_alloc().InitWithContentsOfURL_asNSImage(url)
+	return NSImage_Alloc().InitWithContentsOfURL_AsNSImage(url)
 }
 
 func NSImage_ImageNamed(name string) NSImage {
-	return NSImage_fromRef(NSImage_alloc().Send("imageNamed:", core.String(name)))
+	return NSImage_FromRef(NSImage_Alloc().Send("imageNamed:", core.String(name)))
 }
 
 func (i NSImage) SetValueForKey(value, key interface{}) {

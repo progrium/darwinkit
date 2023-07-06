@@ -73,7 +73,7 @@ void* WKWebView_inst_GoBack(void *id) {
 		goBack];
 }
 
-void WKWebView_inst_GoBack(void *id, void* sender) {
+void WKWebView_inst_GoBack_(void *id, void* sender) {
 	[(WKWebView*)id
 		goBack: sender];
 }
@@ -83,7 +83,7 @@ void* WKWebView_inst_GoForward(void *id) {
 		goForward];
 }
 
-void WKWebView_inst_GoForward(void *id, void* sender) {
+void WKWebView_inst_GoForward_(void *id, void* sender) {
 	[(WKWebView*)id
 		goForward: sender];
 }
@@ -136,7 +136,7 @@ void* WKWebView_inst_Reload(void *id) {
 		reload];
 }
 
-void WKWebView_inst_Reload(void *id, void* sender) {
+void WKWebView_inst_Reload_(void *id, void* sender) {
 	[(WKWebView*)id
 		reload: sender];
 }
@@ -146,7 +146,7 @@ void* WKWebView_inst_ReloadFromOrigin(void *id) {
 		reloadFromOrigin];
 }
 
-void WKWebView_inst_ReloadFromOrigin(void *id, void* sender) {
+void WKWebView_inst_ReloadFromOrigin_(void *id, void* sender) {
 	[(WKWebView*)id
 		reloadFromOrigin: sender];
 }
@@ -156,7 +156,7 @@ void WKWebView_inst_StopLoading(void *id) {
 		stopLoading];
 }
 
-void WKWebView_inst_StopLoading(void *id, void* sender) {
+void WKWebView_inst_StopLoading_(void *id, void* sender) {
 	[(WKWebView*)id
 		stopLoading: sender];
 }
@@ -485,8 +485,7 @@ func convertToObjCBool(b bool) C.BOOL {
 func WKNavigation_Alloc() WKNavigation {
 	ret := C.WKNavigation_type_Alloc()
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // WKUserScript_Alloc
@@ -495,8 +494,7 @@ func WKNavigation_Alloc() WKNavigation {
 func WKUserScript_Alloc() WKUserScript {
 	ret := C.WKUserScript_type_Alloc()
 
-	return WKUserScript_fromPointer(ret)
-
+	return WKUserScript_FromPointer(ret)
 }
 
 // WKWebView_Alloc
@@ -505,8 +503,7 @@ func WKUserScript_Alloc() WKUserScript {
 func WKWebView_Alloc() WKWebView {
 	ret := C.WKWebView_type_Alloc()
 
-	return WKWebView_fromPointer(ret)
-
+	return WKWebView_FromPointer(ret)
 }
 
 // WKWebView_HandlesURLScheme returns a boolean value that indicates whether webkit natively supports resources with the specified url scheme.
@@ -518,7 +515,6 @@ func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // WKWebViewConfiguration_Alloc
@@ -527,8 +523,7 @@ func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
 func WKWebViewConfiguration_Alloc() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_type_Alloc()
 
-	return WKWebViewConfiguration_fromPointer(ret)
-
+	return WKWebViewConfiguration_FromPointer(ret)
 }
 
 // WKPreferences_Alloc
@@ -537,70 +532,67 @@ func WKWebViewConfiguration_Alloc() WKWebViewConfiguration {
 func WKPreferences_Alloc() WKPreferences {
 	ret := C.WKPreferences_type_Alloc()
 
-	return WKPreferences_fromPointer(ret)
-
+	return WKPreferences_FromPointer(ret)
 }
 
 type WKNavigationRef interface {
 	Pointer() uintptr
-	Init_asWKNavigation() WKNavigation
+	Init_AsWKNavigation() WKNavigation
 }
 
 type gen_WKNavigation struct {
 	objc.Object
 }
 
-func WKNavigation_fromPointer(ptr unsafe.Pointer) WKNavigation {
+func WKNavigation_FromPointer(ptr unsafe.Pointer) WKNavigation {
 	return WKNavigation{gen_WKNavigation{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func WKNavigation_fromRef(ref objc.Ref) WKNavigation {
-	return WKNavigation_fromPointer(unsafe.Pointer(ref.Pointer()))
+func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
+	return WKNavigation_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_WKNavigation) Init_asWKNavigation() WKNavigation {
+func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 type WKUserScriptRef interface {
 	Pointer() uintptr
-	Init_asWKUserScript() WKUserScript
+	Init_AsWKUserScript() WKUserScript
 }
 
 type gen_WKUserScript struct {
 	objc.Object
 }
 
-func WKUserScript_fromPointer(ptr unsafe.Pointer) WKUserScript {
+func WKUserScript_FromPointer(ptr unsafe.Pointer) WKUserScript {
 	return WKUserScript{gen_WKUserScript{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func WKUserScript_fromRef(ref objc.Ref) WKUserScript {
-	return WKUserScript_fromPointer(unsafe.Pointer(ref.Pointer()))
+func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
+	return WKUserScript_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_WKUserScript) Init_asWKUserScript() WKUserScript {
+func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKUserScript_fromPointer(ret)
-
+	return WKUserScript_FromPointer(ret)
 }
 
 // Source returns the script’s source code.
@@ -611,8 +603,7 @@ func (x gen_WKUserScript) Source() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // IsForMainFrameOnly returns a boolean value that indicates whether to inject the script into the main frame or all frames.
@@ -624,26 +615,25 @@ func (x gen_WKUserScript) IsForMainFrameOnly() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type WKWebViewRef interface {
 	Pointer() uintptr
-	Init_asWKWebView() WKWebView
+	Init_AsWKWebView() WKWebView
 }
 
 type gen_WKWebView struct {
 	cocoa.NSView
 }
 
-func WKWebView_fromPointer(ptr unsafe.Pointer) WKWebView {
+func WKWebView_FromPointer(ptr unsafe.Pointer) WKWebView {
 	return WKWebView{gen_WKWebView{
-		cocoa.NSView_fromPointer(ptr),
+		cocoa.NSView_FromPointer(ptr),
 	}}
 }
 
-func WKWebView_fromRef(ref objc.Ref) WKWebView {
-	return WKWebView_fromPointer(unsafe.Pointer(ref.Pointer()))
+func WKWebView_FromRef(ref objc.Ref) WKWebView {
+	return WKWebView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // GoBack navigates to the back item in the back-forward list.
@@ -654,23 +644,21 @@ func (x gen_WKWebView) GoBack() WKNavigation {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
-// GoBack navigates to the back item in the back-forward list.
+// GoBack_ navigates to the back item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414975-goback?language=objc for details.
-func (x gen_WKWebView) GoBack(
+func (x gen_WKWebView) GoBack_(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_GoBack(
+	C.WKWebView_inst_GoBack_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 
 	return
-
 }
 
 // GoForward navigates to the forward item in the back-forward list.
@@ -681,29 +669,27 @@ func (x gen_WKWebView) GoForward() WKNavigation {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
-// GoForward navigates to the forward item in the back-forward list.
+// GoForward_ navigates to the forward item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414960-goforward?language=objc for details.
-func (x gen_WKWebView) GoForward(
+func (x gen_WKWebView) GoForward_(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_GoForward(
+	C.WKWebView_inst_GoForward_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 
 	return
-
 }
 
 // InitWithFrameConfiguration creates a web view and initializes it with the specified frame and configuration data.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414998-initwithframe?language=objc for details.
-func (x gen_WKWebView) InitWithFrameConfiguration_asWKWebView(
+func (x gen_WKWebView) InitWithFrameConfiguration_AsWKWebView(
 	frame core.NSRect,
 	configuration WKWebViewConfigurationRef,
 ) WKWebView {
@@ -713,8 +699,7 @@ func (x gen_WKWebView) InitWithFrameConfiguration_asWKWebView(
 		objc.RefPointer(configuration),
 	)
 
-	return WKWebView_fromPointer(ret)
-
+	return WKWebView_FromPointer(ret)
 }
 
 // LoadDataMIMETypeCharacterEncodingNameBaseURL loads the content of the specified data object and navigates to it.
@@ -734,8 +719,7 @@ func (x gen_WKWebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(
 		objc.RefPointer(baseURL),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // LoadFileRequestAllowingReadAccessToURL
@@ -751,8 +735,7 @@ func (x gen_WKWebView) LoadFileRequestAllowingReadAccessToURL(
 		objc.RefPointer(readAccessURL),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // LoadFileURLAllowingReadAccessToURL loads the web content from the specified file and navigates to it.
@@ -768,8 +751,7 @@ func (x gen_WKWebView) LoadFileURLAllowingReadAccessToURL(
 		objc.RefPointer(readAccessURL),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // LoadHTMLStringBaseURL loads the contents of the specified html string and navigates to it.
@@ -785,8 +767,7 @@ func (x gen_WKWebView) LoadHTMLStringBaseURL(
 		objc.RefPointer(baseURL),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // LoadRequest loads the web content referenced by the specified url request object and navigates to it.
@@ -800,8 +781,7 @@ func (x gen_WKWebView) LoadRequest(
 		objc.RefPointer(request),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // LoadSimulatedRequestResponseHTMLString
@@ -817,8 +797,7 @@ func (x gen_WKWebView) LoadSimulatedRequestResponseHTMLString(
 		objc.RefPointer(string),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
 // Reload reloads the current webpage.
@@ -829,23 +808,21 @@ func (x gen_WKWebView) Reload() WKNavigation {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
-// Reload reloads the current webpage.
+// Reload_ reloads the current webpage.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414987-reload?language=objc for details.
-func (x gen_WKWebView) Reload(
+func (x gen_WKWebView) Reload_(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_Reload(
+	C.WKWebView_inst_Reload_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 
 	return
-
 }
 
 // ReloadFromOrigin reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible.
@@ -856,23 +833,21 @@ func (x gen_WKWebView) ReloadFromOrigin() WKNavigation {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKNavigation_fromPointer(ret)
-
+	return WKNavigation_FromPointer(ret)
 }
 
-// ReloadFromOrigin reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible.
+// ReloadFromOrigin_ reloads the current webpage, and performs end-to-end revalidation of the content using cache-validating conditionals, if possible.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414989-reloadfromorigin?language=objc for details.
-func (x gen_WKWebView) ReloadFromOrigin(
+func (x gen_WKWebView) ReloadFromOrigin_(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_ReloadFromOrigin(
+	C.WKWebView_inst_ReloadFromOrigin_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 
 	return
-
 }
 
 // StopLoading stops loading all resources on the current page.
@@ -884,34 +859,31 @@ func (x gen_WKWebView) StopLoading() {
 	)
 
 	return
-
 }
 
-// StopLoading stops loading all resources on the current page.
+// StopLoading_ stops loading all resources on the current page.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415013-stoploading?language=objc for details.
-func (x gen_WKWebView) StopLoading(
+func (x gen_WKWebView) StopLoading_(
 	sender objc.Ref,
 ) {
-	C.WKWebView_inst_StopLoading(
+	C.WKWebView_inst_StopLoading_(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(sender),
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_WKWebView) Init_asWKWebView() WKWebView {
+func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKWebView_fromPointer(ret)
-
+	return WKWebView_FromPointer(ret)
 }
 
 // Configuration returns the object that contains the configuration details for the web view.
@@ -922,8 +894,7 @@ func (x gen_WKWebView) Configuration() WKWebViewConfiguration {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKWebViewConfiguration_fromPointer(ret)
-
+	return WKWebViewConfiguration_FromPointer(ret)
 }
 
 // UIDelegate returns the object you use to integrate custom user interface elements, such as contextual menus or panels, into web view interactions.
@@ -934,8 +905,7 @@ func (x gen_WKWebView) UIDelegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetUIDelegate returns the object you use to integrate custom user interface elements, such as contextual menus or panels, into web view interactions.
@@ -950,7 +920,6 @@ func (x gen_WKWebView) SetUIDelegate(
 	)
 
 	return
-
 }
 
 // NavigationDelegate returns the object you use to manage navigation behavior for the web view.
@@ -961,8 +930,7 @@ func (x gen_WKWebView) NavigationDelegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetNavigationDelegate returns the object you use to manage navigation behavior for the web view.
@@ -977,7 +945,6 @@ func (x gen_WKWebView) SetNavigationDelegate(
 	)
 
 	return
-
 }
 
 // IsLoading returns a boolean value that indicates whether the view is currently loading content.
@@ -989,7 +956,6 @@ func (x gen_WKWebView) IsLoading() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Title returns the page title.
@@ -1000,8 +966,7 @@ func (x gen_WKWebView) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // URL returns the url for the current webpage.
@@ -1012,8 +977,7 @@ func (x gen_WKWebView) URL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // MediaType returns the media type for the contents of the web view.
@@ -1024,8 +988,7 @@ func (x gen_WKWebView) MediaType() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetMediaType returns the media type for the contents of the web view.
@@ -1040,7 +1003,6 @@ func (x gen_WKWebView) SetMediaType(
 	)
 
 	return
-
 }
 
 // CustomUserAgent returns the custom user agent string.
@@ -1051,8 +1013,7 @@ func (x gen_WKWebView) CustomUserAgent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetCustomUserAgent returns the custom user agent string.
@@ -1067,7 +1028,6 @@ func (x gen_WKWebView) SetCustomUserAgent(
 	)
 
 	return
-
 }
 
 // HasOnlySecureContent returns a boolean value that indicates whether the web view loaded all resources on the page through securely encrypted connections.
@@ -1079,7 +1039,6 @@ func (x gen_WKWebView) HasOnlySecureContent() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AllowsMagnification returns a boolean value that indicates whether magnify gestures change the web view’s magnification.
@@ -1091,7 +1050,6 @@ func (x gen_WKWebView) AllowsMagnification() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsMagnification returns a boolean value that indicates whether magnify gestures change the web view’s magnification.
@@ -1106,7 +1064,6 @@ func (x gen_WKWebView) SetAllowsMagnification(
 	)
 
 	return
-
 }
 
 // Magnification returns the factor by which the page content is currently scaled.
@@ -1118,7 +1075,6 @@ func (x gen_WKWebView) Magnification() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetMagnification returns the factor by which the page content is currently scaled.
@@ -1133,7 +1089,6 @@ func (x gen_WKWebView) SetMagnification(
 	)
 
 	return
-
 }
 
 // AllowsBackForwardNavigationGestures returns a boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
@@ -1145,7 +1100,6 @@ func (x gen_WKWebView) AllowsBackForwardNavigationGestures() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsBackForwardNavigationGestures returns a boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
@@ -1160,7 +1114,6 @@ func (x gen_WKWebView) SetAllowsBackForwardNavigationGestures(
 	)
 
 	return
-
 }
 
 // CanGoBack returns a boolean value that indicates whether there is a valid back item in the back-forward list.
@@ -1172,7 +1125,6 @@ func (x gen_WKWebView) CanGoBack() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CanGoForward returns a boolean value that indicates whether there is a valid forward item in the back-forward list.
@@ -1184,7 +1136,6 @@ func (x gen_WKWebView) CanGoForward() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AllowsLinkPreview returns a boolean value that determines whether pressing a link displays a preview of the destination for the link.
@@ -1196,7 +1147,6 @@ func (x gen_WKWebView) AllowsLinkPreview() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsLinkPreview returns a boolean value that determines whether pressing a link displays a preview of the destination for the link.
@@ -1211,7 +1161,6 @@ func (x gen_WKWebView) SetAllowsLinkPreview(
 	)
 
 	return
-
 }
 
 // InteractionState
@@ -1222,8 +1171,7 @@ func (x gen_WKWebView) InteractionState() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetInteractionState
@@ -1238,26 +1186,25 @@ func (x gen_WKWebView) SetInteractionState(
 	)
 
 	return
-
 }
 
 type WKWebViewConfigurationRef interface {
 	Pointer() uintptr
-	Init_asWKWebViewConfiguration() WKWebViewConfiguration
+	Init_AsWKWebViewConfiguration() WKWebViewConfiguration
 }
 
 type gen_WKWebViewConfiguration struct {
 	objc.Object
 }
 
-func WKWebViewConfiguration_fromPointer(ptr unsafe.Pointer) WKWebViewConfiguration {
+func WKWebViewConfiguration_FromPointer(ptr unsafe.Pointer) WKWebViewConfiguration {
 	return WKWebViewConfiguration{gen_WKWebViewConfiguration{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func WKWebViewConfiguration_fromRef(ref objc.Ref) WKWebViewConfiguration {
-	return WKWebViewConfiguration_fromPointer(unsafe.Pointer(ref.Pointer()))
+func WKWebViewConfiguration_FromRef(ref objc.Ref) WKWebViewConfiguration {
+	return WKWebViewConfiguration_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // SetURLSchemeHandlerForURLScheme registers an object to load resources associated with the specified url scheme.
@@ -1274,7 +1221,6 @@ func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
 	)
 
 	return
-
 }
 
 // UrlSchemeHandlerForURLScheme returns the currently registered handler object for the specified url scheme.
@@ -1288,20 +1234,18 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 		objc.RefPointer(urlScheme),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // Init
 //
 // See  for details.
-func (x gen_WKWebViewConfiguration) Init_asWKWebViewConfiguration() WKWebViewConfiguration {
+func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKWebViewConfiguration_fromPointer(ret)
-
+	return WKWebViewConfiguration_FromPointer(ret)
 }
 
 // ApplicationNameForUserAgent returns the app name that appears in the user agent string.
@@ -1312,8 +1256,7 @@ func (x gen_WKWebViewConfiguration) ApplicationNameForUserAgent() core.NSString 
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetApplicationNameForUserAgent returns the app name that appears in the user agent string.
@@ -1328,7 +1271,6 @@ func (x gen_WKWebViewConfiguration) SetApplicationNameForUserAgent(
 	)
 
 	return
-
 }
 
 // LimitsNavigationsToAppBoundDomains returns a boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
@@ -1340,7 +1282,6 @@ func (x gen_WKWebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetLimitsNavigationsToAppBoundDomains returns a boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
@@ -1355,7 +1296,6 @@ func (x gen_WKWebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(
 	)
 
 	return
-
 }
 
 // Preferences returns the object that manages the preference-related settings for the web view.
@@ -1366,8 +1306,7 @@ func (x gen_WKWebViewConfiguration) Preferences() WKPreferences {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKPreferences_fromPointer(ret)
-
+	return WKPreferences_FromPointer(ret)
 }
 
 // SetPreferences returns the object that manages the preference-related settings for the web view.
@@ -1382,7 +1321,6 @@ func (x gen_WKWebViewConfiguration) SetPreferences(
 	)
 
 	return
-
 }
 
 // IgnoresViewportScaleLimits returns a boolean value that determines whether a web view allows scaling of the webpage.
@@ -1394,7 +1332,6 @@ func (x gen_WKWebViewConfiguration) IgnoresViewportScaleLimits() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetIgnoresViewportScaleLimits returns a boolean value that determines whether a web view allows scaling of the webpage.
@@ -1409,7 +1346,6 @@ func (x gen_WKWebViewConfiguration) SetIgnoresViewportScaleLimits(
 	)
 
 	return
-
 }
 
 // SuppressesIncrementalRendering returns a boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
@@ -1421,7 +1357,6 @@ func (x gen_WKWebViewConfiguration) SuppressesIncrementalRendering() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSuppressesIncrementalRendering returns a boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
@@ -1436,7 +1371,6 @@ func (x gen_WKWebViewConfiguration) SetSuppressesIncrementalRendering(
 	)
 
 	return
-
 }
 
 // AllowsInlineMediaPlayback returns a boolean value that indicates whether html5 videos play inline or use the native full-screen controller.
@@ -1448,7 +1382,6 @@ func (x gen_WKWebViewConfiguration) AllowsInlineMediaPlayback() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsInlineMediaPlayback returns a boolean value that indicates whether html5 videos play inline or use the native full-screen controller.
@@ -1463,7 +1396,6 @@ func (x gen_WKWebViewConfiguration) SetAllowsInlineMediaPlayback(
 	)
 
 	return
-
 }
 
 // AllowsAirPlayForMediaPlayback returns a boolean value that indicates whether the web view allows media playback over airplay.
@@ -1475,7 +1407,6 @@ func (x gen_WKWebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsAirPlayForMediaPlayback returns a boolean value that indicates whether the web view allows media playback over airplay.
@@ -1490,7 +1421,6 @@ func (x gen_WKWebViewConfiguration) SetAllowsAirPlayForMediaPlayback(
 	)
 
 	return
-
 }
 
 // AllowsPictureInPictureMediaPlayback returns a boolean value that indicates whether html5 videos can play picture in picture.
@@ -1502,7 +1432,6 @@ func (x gen_WKWebViewConfiguration) AllowsPictureInPictureMediaPlayback() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsPictureInPictureMediaPlayback returns a boolean value that indicates whether html5 videos can play picture in picture.
@@ -1517,7 +1446,6 @@ func (x gen_WKWebViewConfiguration) SetAllowsPictureInPictureMediaPlayback(
 	)
 
 	return
-
 }
 
 // UpgradeKnownHostsToHTTPS
@@ -1529,7 +1457,6 @@ func (x gen_WKWebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUpgradeKnownHostsToHTTPS
@@ -1544,26 +1471,25 @@ func (x gen_WKWebViewConfiguration) SetUpgradeKnownHostsToHTTPS(
 	)
 
 	return
-
 }
 
 type WKPreferencesRef interface {
 	Pointer() uintptr
-	Init_asWKPreferences() WKPreferences
+	Init_AsWKPreferences() WKPreferences
 }
 
 type gen_WKPreferences struct {
 	objc.Object
 }
 
-func WKPreferences_fromPointer(ptr unsafe.Pointer) WKPreferences {
+func WKPreferences_FromPointer(ptr unsafe.Pointer) WKPreferences {
 	return WKPreferences{gen_WKPreferences{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func WKPreferences_fromRef(ref objc.Ref) WKPreferences {
-	return WKPreferences_fromPointer(unsafe.Pointer(ref.Pointer()))
+func WKPreferences_FromRef(ref objc.Ref) WKPreferences {
+	return WKPreferences_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // SetValueForKey
@@ -1580,19 +1506,17 @@ func (x gen_WKPreferences) SetValueForKey(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_WKPreferences) Init_asWKPreferences() WKPreferences {
+func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return WKPreferences_fromPointer(ret)
-
+	return WKPreferences_FromPointer(ret)
 }
 
 // MinimumFontSize returns the minimum font size, in points.
@@ -1604,7 +1528,6 @@ func (x gen_WKPreferences) MinimumFontSize() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetMinimumFontSize returns the minimum font size, in points.
@@ -1619,7 +1542,6 @@ func (x gen_WKPreferences) SetMinimumFontSize(
 	)
 
 	return
-
 }
 
 // TabFocusesLinks returns a boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
@@ -1631,7 +1553,6 @@ func (x gen_WKPreferences) TabFocusesLinks() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetTabFocusesLinks returns a boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
@@ -1646,7 +1567,6 @@ func (x gen_WKPreferences) SetTabFocusesLinks(
 	)
 
 	return
-
 }
 
 // JavaScriptCanOpenWindowsAutomatically returns a boolean value that indicates whether javascript can open windows without user interaction.
@@ -1658,7 +1578,6 @@ func (x gen_WKPreferences) JavaScriptCanOpenWindowsAutomatically() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetJavaScriptCanOpenWindowsAutomatically returns a boolean value that indicates whether javascript can open windows without user interaction.
@@ -1673,7 +1592,6 @@ func (x gen_WKPreferences) SetJavaScriptCanOpenWindowsAutomatically(
 	)
 
 	return
-
 }
 
 // IsFraudulentWebsiteWarningEnabled returns a boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
@@ -1685,7 +1603,6 @@ func (x gen_WKPreferences) IsFraudulentWebsiteWarningEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetFraudulentWebsiteWarningEnabled returns a boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
@@ -1700,7 +1617,6 @@ func (x gen_WKPreferences) SetFraudulentWebsiteWarningEnabled(
 	)
 
 	return
-
 }
 
 // IsTextInteractionEnabled
@@ -1712,7 +1628,6 @@ func (x gen_WKPreferences) IsTextInteractionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetTextInteractionEnabled
@@ -1727,5 +1642,4 @@ func (x gen_WKPreferences) SetTextInteractionEnabled(
 	)
 
 	return
-
 }

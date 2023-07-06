@@ -5,5 +5,5 @@ type WKWebViewConfiguration struct {
 }
 
 func WKWebViewConfiguration_New() WKWebViewConfiguration {
-	return WKWebViewConfiguration_alloc().Init_asWKWebViewConfiguration()
+	return WKWebViewConfiguration_Alloc().Init_AsWKWebViewConfiguration()
 }

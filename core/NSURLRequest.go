@@ -5,5 +5,5 @@ type NSURLRequest struct {
 }
 
 func NSURLRequest_Init(url NSURL) NSURLRequest {
-	return NSURLRequest_requestWithURL(url)
+	return NSURLRequest_RequestWithURL(url)
 }

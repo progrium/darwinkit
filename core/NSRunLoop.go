@@ -5,9 +5,9 @@ type NSRunLoop struct {
 }
 
 func NSRunLoop_Current() NSRunLoop {
-	return NSRunLoop_currentRunLoop()
+	return NSRunLoop_CurrentRunLoop()
 }
 
 func NSRunLoop_Main() NSRunLoop {
-	return NSRunLoop_mainRunLoop()
+	return NSRunLoop_MainRunLoop()
 }

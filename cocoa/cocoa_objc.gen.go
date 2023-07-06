@@ -7533,8 +7533,7 @@ func convertToObjCBool(b bool) C.BOOL {
 func NSBundle_Alloc() NSBundle {
 	ret := C.NSBundle_type_Alloc()
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // NSBundle_BundleWithURL returns an nsbundle object that corresponds to the specified file url.
@@ -7545,8 +7544,7 @@ func NSBundle_BundleWithURL(url core.NSURLRef) NSBundle {
 		objc.RefPointer(url),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // NSBundle_BundleWithPath returns an nsbundle object that corresponds to the specified directory.
@@ -7557,8 +7555,7 @@ func NSBundle_BundleWithPath(path core.NSStringRef) NSBundle {
 		objc.RefPointer(path),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // NSBundle_BundleWithIdentifier returns the nsbundle instance that has the specified bundle identifier.
@@ -7569,8 +7566,7 @@ func NSBundle_BundleWithIdentifier(identifier core.NSStringRef) NSBundle {
 		objc.RefPointer(identifier),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL creates and returns a file url for the resource with the specified name and extension in the specified bundle.
@@ -7584,8 +7580,7 @@ func NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name core.N
 		objc.RefPointer(bundleURL),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.
@@ -7598,8 +7593,7 @@ func NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext core.
 		objc.RefPointer(bundleURL),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSBundle_PathForResourceOfTypeInDirectory returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.
@@ -7612,8 +7606,7 @@ func NSBundle_PathForResourceOfTypeInDirectory(name core.NSStringRef, ext core.N
 		objc.RefPointer(bundlePath),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // NSBundle_PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.
@@ -7625,8 +7618,7 @@ func NSBundle_PathsForResourcesOfTypeInDirectory(ext core.NSStringRef, bundlePat
 		objc.RefPointer(bundlePath),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSBundle_PreferredLocalizationsFromArray returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user.
@@ -7637,8 +7629,7 @@ func NSBundle_PreferredLocalizationsFromArray(localizationsArray core.NSArrayRef
 		objc.RefPointer(localizationsArray),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSBundle_PreferredLocalizationsFromArrayForPreferences returns locale identifiers for which a bundle would provide localized content, given a specified list of candidates for a user's language preferences.
@@ -7650,8 +7641,7 @@ func NSBundle_PreferredLocalizationsFromArrayForPreferences(localizationsArray c
 		objc.RefPointer(preferencesArray),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSBundle_MainBundle returns the bundle object that contains the current executable.
@@ -7660,8 +7650,7 @@ func NSBundle_PreferredLocalizationsFromArrayForPreferences(localizationsArray c
 func NSBundle_MainBundle() NSBundle {
 	ret := C.NSBundle_type_MainBundle()
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // NSBundle_AllFrameworks returns an array of all of the application’s bundles that represent frameworks.
@@ -7670,8 +7659,7 @@ func NSBundle_MainBundle() NSBundle {
 func NSBundle_AllFrameworks() core.NSArray {
 	ret := C.NSBundle_type_AllFrameworks()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSBundle_AllBundles returns an array of all the application’s non-framework bundles.
@@ -7680,8 +7668,7 @@ func NSBundle_AllFrameworks() core.NSArray {
 func NSBundle_AllBundles() core.NSArray {
 	ret := C.NSBundle_type_AllBundles()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSSound_Alloc
@@ -7690,8 +7677,7 @@ func NSBundle_AllBundles() core.NSArray {
 func NSSound_Alloc() NSSound {
 	ret := C.NSSound_type_Alloc()
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // NSSound_CanInitWithPasteboard indicates whether the receiver can create an instance of itself from the data in a pasteboard.
@@ -7703,7 +7689,6 @@ func NSSound_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSSound_SoundUnfilteredTypes provides the file types the nssound class understands.
@@ -7712,8 +7697,7 @@ func NSSound_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 func NSSound_SoundUnfilteredTypes() core.NSArray {
 	ret := C.NSSound_type_SoundUnfilteredTypes()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSApplication_Alloc
@@ -7722,8 +7706,7 @@ func NSSound_SoundUnfilteredTypes() core.NSArray {
 func NSApplication_Alloc() NSApplication {
 	ret := C.NSApplication_type_Alloc()
 
-	return NSApplication_fromPointer(ret)
-
+	return NSApplication_FromPointer(ret)
 }
 
 // NSApplication_DetachDrawingThreadToTargetWithObject creates and executes a new thread based on the specified target and selector.
@@ -7737,7 +7720,6 @@ func NSApplication_DetachDrawingThreadToTargetWithObject(selector objc.Selector,
 	)
 
 	return
-
 }
 
 // NSApplication_SharedApplication returns the application instance, creating it if it doesn’t exist yet.
@@ -7746,8 +7728,7 @@ func NSApplication_DetachDrawingThreadToTargetWithObject(selector objc.Selector,
 func NSApplication_SharedApplication() NSApplication {
 	ret := C.NSApplication_type_SharedApplication()
 
-	return NSApplication_fromPointer(ret)
-
+	return NSApplication_FromPointer(ret)
 }
 
 // NSControl_Alloc
@@ -7756,8 +7737,7 @@ func NSApplication_SharedApplication() NSApplication {
 func NSControl_Alloc() NSControl {
 	ret := C.NSControl_type_Alloc()
 
-	return NSControl_fromPointer(ret)
-
+	return NSControl_FromPointer(ret)
 }
 
 // NSButton_Alloc
@@ -7766,8 +7746,7 @@ func NSControl_Alloc() NSControl {
 func NSButton_Alloc() NSButton {
 	ret := C.NSButton_type_Alloc()
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSButton_CheckboxWithTitleTargetAction creates a standard checkbox with the title you specify.
@@ -7780,8 +7759,7 @@ func NSButton_CheckboxWithTitleTargetAction(title core.NSStringRef, target objc.
 		action.SelectorAddress(),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSButton_ButtonWithImageTargetAction creates a standard push button with the image you specify.
@@ -7794,8 +7772,7 @@ func NSButton_ButtonWithImageTargetAction(image NSImageRef, target objc.Ref, act
 		action.SelectorAddress(),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSButton_RadioButtonWithTitleTargetAction creates a standard radio button with the title you specify.
@@ -7808,8 +7785,7 @@ func NSButton_RadioButtonWithTitleTargetAction(title core.NSStringRef, target ob
 		action.SelectorAddress(),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSButton_ButtonWithTitleImageTargetAction creates a standard push button with a title and image.
@@ -7823,8 +7799,7 @@ func NSButton_ButtonWithTitleImageTargetAction(title core.NSStringRef, image NSI
 		action.SelectorAddress(),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSButton_ButtonWithTitleTargetAction creates a standard push button with the title you specify.
@@ -7837,8 +7812,7 @@ func NSButton_ButtonWithTitleTargetAction(title core.NSStringRef, target objc.Re
 		action.SelectorAddress(),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // NSEvent_Alloc
@@ -7847,8 +7821,7 @@ func NSButton_ButtonWithTitleTargetAction(title core.NSStringRef, target objc.Re
 func NSEvent_Alloc() NSEvent {
 	ret := C.NSEvent_type_Alloc()
 
-	return NSEvent_fromPointer(ret)
-
+	return NSEvent_FromPointer(ret)
 }
 
 // NSEvent_EventWithEventRef creates an event object that is based on a carbon type of event.
@@ -7859,8 +7832,7 @@ func NSEvent_EventWithEventRef(eventRef unsafe.Pointer) NSEvent {
 		eventRef,
 	)
 
-	return NSEvent_fromPointer(ret)
-
+	return NSEvent_FromPointer(ret)
 }
 
 // NSEvent_StopPeriodicEvents stops generating periodic events for the current thread and discards any periodic events remaining in the queue.
@@ -7870,7 +7842,6 @@ func NSEvent_StopPeriodicEvents() {
 	C.NSEvent_type_StopPeriodicEvents()
 
 	return
-
 }
 
 // NSEvent_RemoveMonitor remove the specified event monitor.
@@ -7882,7 +7853,6 @@ func NSEvent_RemoveMonitor(eventMonitor objc.Ref) {
 	)
 
 	return
-
 }
 
 // NSEvent_PressedMouseButtons returns the indices of the currently depressed mouse buttons.
@@ -7892,7 +7862,6 @@ func NSEvent_PressedMouseButtons() core.NSUInteger {
 	ret := C.NSEvent_type_PressedMouseButtons()
 
 	return core.NSUInteger(ret)
-
 }
 
 // NSEvent_MouseLocation reports the current mouse position in screen coordinates.
@@ -7902,7 +7871,6 @@ func NSEvent_MouseLocation() core.NSPoint {
 	ret := C.NSEvent_type_MouseLocation()
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // NSEvent_MouseCoalescingEnabled
@@ -7912,7 +7880,6 @@ func NSEvent_MouseCoalescingEnabled() bool {
 	ret := C.NSEvent_type_MouseCoalescingEnabled()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSEvent_SetMouseCoalescingEnabled
@@ -7924,7 +7891,6 @@ func NSEvent_SetMouseCoalescingEnabled(value bool) {
 	)
 
 	return
-
 }
 
 // NSEvent_SwipeTrackingFromScrollEventsEnabled
@@ -7934,7 +7900,6 @@ func NSEvent_SwipeTrackingFromScrollEventsEnabled() bool {
 	ret := C.NSEvent_type_SwipeTrackingFromScrollEventsEnabled()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSFont_Alloc
@@ -7943,8 +7908,7 @@ func NSEvent_SwipeTrackingFromScrollEventsEnabled() bool {
 func NSFont_Alloc() NSFont {
 	ret := C.NSFont_type_Alloc()
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_FontWithNameSize creates a font object for the specified font name and font size.
@@ -7956,8 +7920,7 @@ func NSFont_FontWithNameSize(fontName core.NSStringRef, fontSize core.CGFloat) N
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_UserFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), in the specified size.
@@ -7968,8 +7931,7 @@ func NSFont_UserFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_UserFixedPitchFontOfSize returns the font used by default for documents and other text under the user’s control (that is, text whose font the user can normally change), when that font should be fixed-pitch, in the specified size.
@@ -7980,8 +7942,7 @@ func NSFont_UserFixedPitchFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_SystemFontOfSize returns the standard system font with the specified size.
@@ -7992,8 +7953,7 @@ func NSFont_SystemFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_BoldSystemFontOfSize returns the standard system font in boldface type with the specified size.
@@ -8004,8 +7964,7 @@ func NSFont_BoldSystemFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_LabelFontOfSize returns the font used for standard interface labels in the specified size.
@@ -8016,8 +7975,7 @@ func NSFont_LabelFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_MessageFontOfSize returns the font used for standard interface items, such as button labels, menu items, and so on, in the specified size.
@@ -8028,8 +7986,7 @@ func NSFont_MessageFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_MenuBarFontOfSize returns the font used for menu bar items, in the specified size.
@@ -8040,8 +7997,7 @@ func NSFont_MenuBarFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_MenuFontOfSize returns the font used for menu items, in the specified size.
@@ -8052,8 +8008,7 @@ func NSFont_MenuFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_ControlContentFontOfSize returns the font used for the content of controls in the specified size.
@@ -8064,8 +8019,7 @@ func NSFont_ControlContentFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_TitleBarFontOfSize returns the font used for window title bars, in the specified size.
@@ -8076,8 +8030,7 @@ func NSFont_TitleBarFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_PaletteFontOfSize returns the font used for palette window title bars, in the specified size.
@@ -8088,8 +8041,7 @@ func NSFont_PaletteFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_ToolTipsFontOfSize returns the font used for tool tips labels, in the specified size.
@@ -8100,8 +8052,7 @@ func NSFont_ToolTipsFontOfSize(fontSize core.CGFloat) NSFont {
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // NSFont_SetUserFont sets the font used by default for documents and other text under the user’s control to the specified font.
@@ -8113,7 +8064,6 @@ func NSFont_SetUserFont(font NSFontRef) {
 	)
 
 	return
-
 }
 
 // NSFont_SetUserFixedPitchFont sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font.
@@ -8125,7 +8075,6 @@ func NSFont_SetUserFixedPitchFont(font NSFontRef) {
 	)
 
 	return
-
 }
 
 // NSFont_SystemFontSize returns the size of the standard system font.
@@ -8135,7 +8084,6 @@ func NSFont_SystemFontSize() core.CGFloat {
 	ret := C.NSFont_type_SystemFontSize()
 
 	return core.CGFloat(ret)
-
 }
 
 // NSFont_SmallSystemFontSize returns the size of the standard small system font.
@@ -8145,7 +8093,6 @@ func NSFont_SmallSystemFontSize() core.CGFloat {
 	ret := C.NSFont_type_SmallSystemFontSize()
 
 	return core.CGFloat(ret)
-
 }
 
 // NSFont_LabelFontSize returns the size of the standard label font.
@@ -8155,7 +8102,6 @@ func NSFont_LabelFontSize() core.CGFloat {
 	ret := C.NSFont_type_LabelFontSize()
 
 	return core.CGFloat(ret)
-
 }
 
 // NSImage_Alloc
@@ -8164,8 +8110,7 @@ func NSFont_LabelFontSize() core.CGFloat {
 func NSImage_Alloc() NSImage {
 	ret := C.NSImage_type_Alloc()
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // NSImage_ImageWithSystemSymbolNameAccessibilityDescription creates a symbol image with the system symbol name and accessibility description that you specify.
@@ -8177,8 +8122,7 @@ func NSImage_ImageWithSystemSymbolNameAccessibilityDescription(symbolName core.N
 		objc.RefPointer(description),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // NSImage_CanInitWithPasteboard tests whether the image can create an instance of itself using pasteboard data.
@@ -8190,7 +8134,6 @@ func NSImage_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSImage_ImageTypes returns an array of uti strings identifying the image types supported by the registered image representation objects, either directly or through a user-installed filter service.
@@ -8199,8 +8142,7 @@ func NSImage_CanInitWithPasteboard(pasteboard NSPasteboardRef) bool {
 func NSImage_ImageTypes() core.NSArray {
 	ret := C.NSImage_type_ImageTypes()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSImage_ImageUnfilteredTypes returns an array of uti strings identifying the image types supported directly by the registered image representation objects.
@@ -8209,8 +8151,7 @@ func NSImage_ImageTypes() core.NSArray {
 func NSImage_ImageUnfilteredTypes() core.NSArray {
 	ret := C.NSImage_type_ImageUnfilteredTypes()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSImageView_Alloc
@@ -8219,8 +8160,7 @@ func NSImage_ImageUnfilteredTypes() core.NSArray {
 func NSImageView_Alloc() NSImageView {
 	ret := C.NSImageView_type_Alloc()
 
-	return NSImageView_fromPointer(ret)
-
+	return NSImageView_FromPointer(ret)
 }
 
 // NSImageView_ImageViewWithImage
@@ -8231,8 +8171,7 @@ func NSImageView_ImageViewWithImage(image NSImageRef) NSImageView {
 		objc.RefPointer(image),
 	)
 
-	return NSImageView_fromPointer(ret)
-
+	return NSImageView_FromPointer(ret)
 }
 
 // NSNib_Alloc
@@ -8241,8 +8180,7 @@ func NSImageView_ImageViewWithImage(image NSImageRef) NSImageView {
 func NSNib_Alloc() NSNib {
 	ret := C.NSNib_type_Alloc()
 
-	return NSNib_fromPointer(ret)
-
+	return NSNib_FromPointer(ret)
 }
 
 // NSPasteboard_Alloc
@@ -8251,8 +8189,7 @@ func NSNib_Alloc() NSNib {
 func NSPasteboard_Alloc() NSPasteboard {
 	ret := C.NSPasteboard_type_Alloc()
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // NSPasteboard_PasteboardByFilteringFile creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services.
@@ -8263,8 +8200,7 @@ func NSPasteboard_PasteboardByFilteringFile(filename core.NSStringRef) NSPastebo
 		objc.RefPointer(filename),
 	)
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // NSPasteboard_PasteboardByFilteringTypesInPasteboard creates a new pasteboard object that supplies the specified pasteboard data in as many types as possible based on the available filter services.
@@ -8275,8 +8211,7 @@ func NSPasteboard_PasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef)
 		objc.RefPointer(pboard),
 	)
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // NSPasteboard_PasteboardWithUniqueName creates and returns a new pasteboard with a name that is guaranteed to be unique with respect to other pasteboards in the system.
@@ -8285,8 +8220,7 @@ func NSPasteboard_PasteboardByFilteringTypesInPasteboard(pboard NSPasteboardRef)
 func NSPasteboard_PasteboardWithUniqueName() NSPasteboard {
 	ret := C.NSPasteboard_type_PasteboardWithUniqueName()
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // NSPasteboard_GeneralPasteboard returns the shared pasteboard object to use for general content.
@@ -8295,8 +8229,7 @@ func NSPasteboard_PasteboardWithUniqueName() NSPasteboard {
 func NSPasteboard_GeneralPasteboard() NSPasteboard {
 	ret := C.NSPasteboard_type_GeneralPasteboard()
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // NSLayoutManager_Alloc
@@ -8305,8 +8238,7 @@ func NSPasteboard_GeneralPasteboard() NSPasteboard {
 func NSLayoutManager_Alloc() NSLayoutManager {
 	ret := C.NSLayoutManager_type_Alloc()
 
-	return NSLayoutManager_fromPointer(ret)
-
+	return NSLayoutManager_FromPointer(ret)
 }
 
 // NSMenu_Alloc
@@ -8315,8 +8247,7 @@ func NSLayoutManager_Alloc() NSLayoutManager {
 func NSMenu_Alloc() NSMenu {
 	ret := C.NSMenu_type_Alloc()
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // NSMenu_MenuBarVisible returns a boolean value that indicates whether the menu bar is visible.
@@ -8326,7 +8257,6 @@ func NSMenu_MenuBarVisible() bool {
 	ret := C.NSMenu_type_MenuBarVisible()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSMenu_SetMenuBarVisible sets whether the menu bar is visible and selectable by the user.
@@ -8338,7 +8268,6 @@ func NSMenu_SetMenuBarVisible(visible bool) {
 	)
 
 	return
-
 }
 
 // NSMenu_PopUpContextMenuWithEventForView displays a contextual menu over a view for an event.
@@ -8352,7 +8281,6 @@ func NSMenu_PopUpContextMenuWithEventForView(menu NSMenuRef, event NSEventRef, v
 	)
 
 	return
-
 }
 
 // NSMenu_PopUpContextMenuWithEventForViewWithFont displays a contextual menu over a view for an event using a specified font.
@@ -8367,7 +8295,6 @@ func NSMenu_PopUpContextMenuWithEventForViewWithFont(menu NSMenuRef, event NSEve
 	)
 
 	return
-
 }
 
 // NSPopover_Alloc
@@ -8376,8 +8303,7 @@ func NSMenu_PopUpContextMenuWithEventForViewWithFont(menu NSMenuRef, event NSEve
 func NSPopover_Alloc() NSPopover {
 	ret := C.NSPopover_type_Alloc()
 
-	return NSPopover_fromPointer(ret)
-
+	return NSPopover_FromPointer(ret)
 }
 
 // NSMenuItem_Alloc
@@ -8386,8 +8312,7 @@ func NSPopover_Alloc() NSPopover {
 func NSMenuItem_Alloc() NSMenuItem {
 	ret := C.NSMenuItem_type_Alloc()
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // NSMenuItem_SeparatorItem returns a menu item that is used to separate logical groups of menu commands.
@@ -8396,8 +8321,7 @@ func NSMenuItem_Alloc() NSMenuItem {
 func NSMenuItem_SeparatorItem() NSMenuItem {
 	ret := C.NSMenuItem_type_SeparatorItem()
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // NSMenuItem_UsesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
@@ -8407,7 +8331,6 @@ func NSMenuItem_UsesUserKeyEquivalents() bool {
 	ret := C.NSMenuItem_type_UsesUserKeyEquivalents()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSMenuItem_SetUsesUserKeyEquivalents returns a boolean value that indicates whether menu items conform to user preferences for key equivalents.
@@ -8419,7 +8342,6 @@ func NSMenuItem_SetUsesUserKeyEquivalents(value bool) {
 	)
 
 	return
-
 }
 
 // NSRunningApplication_Alloc
@@ -8428,8 +8350,7 @@ func NSMenuItem_SetUsesUserKeyEquivalents(value bool) {
 func NSRunningApplication_Alloc() NSRunningApplication {
 	ret := C.NSRunningApplication_type_Alloc()
 
-	return NSRunningApplication_fromPointer(ret)
-
+	return NSRunningApplication_FromPointer(ret)
 }
 
 // NSRunningApplication_RunningApplicationsWithBundleIdentifier returns an array of currently running applications with the specified bundle identifier.
@@ -8440,8 +8361,7 @@ func NSRunningApplication_RunningApplicationsWithBundleIdentifier(bundleIdentifi
 		objc.RefPointer(bundleIdentifier),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSRunningApplication_TerminateAutomaticallyTerminableApplications terminates invisibly running applications as if triggered by system memory pressure.
@@ -8451,7 +8371,6 @@ func NSRunningApplication_TerminateAutomaticallyTerminableApplications() {
 	C.NSRunningApplication_type_TerminateAutomaticallyTerminableApplications()
 
 	return
-
 }
 
 // NSRunningApplication_CurrentApplication returns an nsrunningapplication representing this application.
@@ -8460,8 +8379,7 @@ func NSRunningApplication_TerminateAutomaticallyTerminableApplications() {
 func NSRunningApplication_CurrentApplication() NSRunningApplication {
 	ret := C.NSRunningApplication_type_CurrentApplication()
 
-	return NSRunningApplication_fromPointer(ret)
-
+	return NSRunningApplication_FromPointer(ret)
 }
 
 // NSScreen_Alloc
@@ -8470,8 +8388,7 @@ func NSRunningApplication_CurrentApplication() NSRunningApplication {
 func NSScreen_Alloc() NSScreen {
 	ret := C.NSScreen_type_Alloc()
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // NSScreen_MainScreen returns the screen object containing the window with the keyboard focus.
@@ -8480,8 +8397,7 @@ func NSScreen_Alloc() NSScreen {
 func NSScreen_MainScreen() NSScreen {
 	ret := C.NSScreen_type_MainScreen()
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // NSScreen_DeepestScreen returns a screen object representing the screen that can best represent color.
@@ -8490,8 +8406,7 @@ func NSScreen_MainScreen() NSScreen {
 func NSScreen_DeepestScreen() NSScreen {
 	ret := C.NSScreen_type_DeepestScreen()
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // NSScreen_Screens returns an array of screen objects representing all of the screens available on the system.
@@ -8500,8 +8415,7 @@ func NSScreen_DeepestScreen() NSScreen {
 func NSScreen_Screens() core.NSArray {
 	ret := C.NSScreen_type_Screens()
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NSScreen_ScreensHaveSeparateSpaces returns a boolean value indicating whether each screen can have its own set of spaces.
@@ -8511,7 +8425,6 @@ func NSScreen_ScreensHaveSeparateSpaces() bool {
 	ret := C.NSScreen_type_ScreensHaveSeparateSpaces()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSStatusBar_Alloc
@@ -8520,8 +8433,7 @@ func NSScreen_ScreensHaveSeparateSpaces() bool {
 func NSStatusBar_Alloc() NSStatusBar {
 	ret := C.NSStatusBar_type_Alloc()
 
-	return NSStatusBar_fromPointer(ret)
-
+	return NSStatusBar_FromPointer(ret)
 }
 
 // NSStatusBar_SystemStatusBar returns the system-wide status bar located in the menu bar.
@@ -8530,8 +8442,7 @@ func NSStatusBar_Alloc() NSStatusBar {
 func NSStatusBar_SystemStatusBar() NSStatusBar {
 	ret := C.NSStatusBar_type_SystemStatusBar()
 
-	return NSStatusBar_fromPointer(ret)
-
+	return NSStatusBar_FromPointer(ret)
 }
 
 // NSStatusBarButton_Alloc
@@ -8540,8 +8451,7 @@ func NSStatusBar_SystemStatusBar() NSStatusBar {
 func NSStatusBarButton_Alloc() NSStatusBarButton {
 	ret := C.NSStatusBarButton_type_Alloc()
 
-	return NSStatusBarButton_fromPointer(ret)
-
+	return NSStatusBarButton_FromPointer(ret)
 }
 
 // NSStatusItem_Alloc
@@ -8550,8 +8460,7 @@ func NSStatusBarButton_Alloc() NSStatusBarButton {
 func NSStatusItem_Alloc() NSStatusItem {
 	ret := C.NSStatusItem_type_Alloc()
 
-	return NSStatusItem_fromPointer(ret)
-
+	return NSStatusItem_FromPointer(ret)
 }
 
 // NSText_Alloc
@@ -8560,8 +8469,7 @@ func NSStatusItem_Alloc() NSStatusItem {
 func NSText_Alloc() NSText {
 	ret := C.NSText_type_Alloc()
 
-	return NSText_fromPointer(ret)
-
+	return NSText_FromPointer(ret)
 }
 
 // NSTextField_Alloc
@@ -8570,8 +8478,7 @@ func NSText_Alloc() NSText {
 func NSTextField_Alloc() NSTextField {
 	ret := C.NSTextField_type_Alloc()
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // NSTextField_LabelWithAttributedString creates a text field for use as a static label that displays styled text, doesn’t wrap, and doesn’t have selectable text.
@@ -8582,8 +8489,7 @@ func NSTextField_LabelWithAttributedString(attributedStringValue core.NSAttribut
 		objc.RefPointer(attributedStringValue),
 	)
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // NSTextField_LabelWithString initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.
@@ -8594,8 +8500,7 @@ func NSTextField_LabelWithString(stringValue core.NSStringRef) NSTextField {
 		objc.RefPointer(stringValue),
 	)
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // NSTextField_TextFieldWithString initializes a single-line editable text field for user input using the system default font and standard visual appearance.
@@ -8606,8 +8511,7 @@ func NSTextField_TextFieldWithString(stringValue core.NSStringRef) NSTextField {
 		objc.RefPointer(stringValue),
 	)
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // NSTextField_WrappingLabelWithString initializes a text field for use as a multiline static label with selectable text that uses the system default font.
@@ -8618,8 +8522,7 @@ func NSTextField_WrappingLabelWithString(stringValue core.NSStringRef) NSTextFie
 		objc.RefPointer(stringValue),
 	)
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // NSTextContainer_Alloc
@@ -8628,8 +8531,7 @@ func NSTextField_WrappingLabelWithString(stringValue core.NSStringRef) NSTextFie
 func NSTextContainer_Alloc() NSTextContainer {
 	ret := C.NSTextContainer_type_Alloc()
 
-	return NSTextContainer_fromPointer(ret)
-
+	return NSTextContainer_FromPointer(ret)
 }
 
 // NSViewController_Alloc
@@ -8638,8 +8540,7 @@ func NSTextContainer_Alloc() NSTextContainer {
 func NSViewController_Alloc() NSViewController {
 	ret := C.NSViewController_type_Alloc()
 
-	return NSViewController_fromPointer(ret)
-
+	return NSViewController_FromPointer(ret)
 }
 
 // NSVisualEffectView_Alloc
@@ -8648,8 +8549,7 @@ func NSViewController_Alloc() NSViewController {
 func NSVisualEffectView_Alloc() NSVisualEffectView {
 	ret := C.NSVisualEffectView_type_Alloc()
 
-	return NSVisualEffectView_fromPointer(ret)
-
+	return NSVisualEffectView_FromPointer(ret)
 }
 
 // NSWindow_Alloc
@@ -8658,8 +8558,7 @@ func NSVisualEffectView_Alloc() NSVisualEffectView {
 func NSWindow_Alloc() NSWindow {
 	ret := C.NSWindow_type_Alloc()
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // NSWindow_WindowWithContentViewController creates a titled window that contains the specified content view controller.
@@ -8670,8 +8569,7 @@ func NSWindow_WindowWithContentViewController(contentViewController NSViewContro
 		objc.RefPointer(contentViewController),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // NSWindow_ContentRectForFrameRectStyleMask returns the content rectangle used by a window with a given frame rectangle and window style.
@@ -8684,7 +8582,6 @@ func NSWindow_ContentRectForFrameRectStyleMask(fRect core.NSRect, style core.NSU
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // NSWindow_FrameRectForContentRectStyleMask returns the frame rectangle used by a window with a given content rectangle and window style.
@@ -8697,7 +8594,6 @@ func NSWindow_FrameRectForContentRectStyleMask(cRect core.NSRect, style core.NSU
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // NSWindow_MinFrameWidthWithTitleStyleMask returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.
@@ -8710,7 +8606,6 @@ func NSWindow_MinFrameWidthWithTitleStyleMask(title core.NSStringRef, style core
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // NSWindow_WindowNumberAtPointBelowWindowWithWindowNumber returns the number of the frontmost window that would be hit by a mouse-down at the specified screen location.
@@ -8723,7 +8618,6 @@ func NSWindow_WindowNumberAtPointBelowWindowWithWindowNumber(point core.NSPoint,
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // NSWindow_AllowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
@@ -8733,7 +8627,6 @@ func NSWindow_AllowsAutomaticWindowTabbing() bool {
 	ret := C.NSWindow_type_AllowsAutomaticWindowTabbing()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSWindow_SetAllowsAutomaticWindowTabbing returns a boolean value that indicates whether the app can automatically organize windows into tabs.
@@ -8745,7 +8638,6 @@ func NSWindow_SetAllowsAutomaticWindowTabbing(value bool) {
 	)
 
 	return
-
 }
 
 // NSWorkspace_Alloc
@@ -8754,8 +8646,7 @@ func NSWindow_SetAllowsAutomaticWindowTabbing(value bool) {
 func NSWorkspace_Alloc() NSWorkspace {
 	ret := C.NSWorkspace_type_Alloc()
 
-	return NSWorkspace_fromPointer(ret)
-
+	return NSWorkspace_FromPointer(ret)
 }
 
 // NSWorkspace_SharedWorkspace returns the shared workspace object.
@@ -8764,8 +8655,7 @@ func NSWorkspace_Alloc() NSWorkspace {
 func NSWorkspace_SharedWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_type_SharedWorkspace()
 
-	return NSWorkspace_fromPointer(ret)
-
+	return NSWorkspace_FromPointer(ret)
 }
 
 // NSColor_Alloc
@@ -8774,8 +8664,7 @@ func NSWorkspace_SharedWorkspace() NSWorkspace {
 func NSColor_Alloc() NSColor {
 	ret := C.NSColor_type_Alloc()
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSColor_ColorFromPasteboard creates a color object from color data currently on the pasteboard.
@@ -8786,8 +8675,7 @@ func NSColor_ColorFromPasteboard(pasteBoard NSPasteboardRef) NSColor {
 		objc.RefPointer(pasteBoard),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSColor_ColorWithRedGreenBlueAlpha
@@ -8801,8 +8689,7 @@ func NSColor_ColorWithRedGreenBlueAlpha(red core.CGFloat, green core.CGFloat, bl
 		C.double(alpha),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSColor_IgnoresAlpha returns a boolean value that indicates whether the app supports alpha.
@@ -8812,7 +8699,6 @@ func NSColor_IgnoresAlpha() bool {
 	ret := C.NSColor_type_IgnoresAlpha()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSColor_SetIgnoresAlpha returns a boolean value that indicates whether the app supports alpha.
@@ -8824,7 +8710,6 @@ func NSColor_SetIgnoresAlpha(value bool) {
 	)
 
 	return
-
 }
 
 // NSColor_SystemCyanColor
@@ -8833,8 +8718,7 @@ func NSColor_SetIgnoresAlpha(value bool) {
 func NSColor_SystemCyanColor() NSColor {
 	ret := C.NSColor_type_SystemCyanColor()
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSColor_SystemMintColor
@@ -8843,8 +8727,7 @@ func NSColor_SystemCyanColor() NSColor {
 func NSColor_SystemMintColor() NSColor {
 	ret := C.NSColor_type_SystemMintColor()
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSColor_ClearColor returns a color object whose grayscale and alpha values are both 0.0.
@@ -8853,8 +8736,7 @@ func NSColor_SystemMintColor() NSColor {
 func NSColor_ClearColor() NSColor {
 	ret := C.NSColor_type_ClearColor()
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NSTextView_Alloc
@@ -8863,8 +8745,7 @@ func NSColor_ClearColor() NSColor {
 func NSTextView_Alloc() NSTextView {
 	ret := C.NSTextView_type_Alloc()
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // NSTextView_RegisterForServices registers send and return types for the services facility.
@@ -8874,7 +8755,6 @@ func NSTextView_RegisterForServices() {
 	C.NSTextView_type_RegisterForServices()
 
 	return
-
 }
 
 // NSTextView_FieldEditor
@@ -8883,8 +8763,7 @@ func NSTextView_RegisterForServices() {
 func NSTextView_FieldEditor() NSTextView {
 	ret := C.NSTextView_type_FieldEditor()
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // NSTextView_StronglyReferencesTextStorage
@@ -8894,7 +8773,6 @@ func NSTextView_StronglyReferencesTextStorage() bool {
 	ret := C.NSTextView_type_StronglyReferencesTextStorage()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSView_Alloc
@@ -8903,8 +8781,7 @@ func NSTextView_StronglyReferencesTextStorage() bool {
 func NSView_Alloc() NSView {
 	ret := C.NSView_type_Alloc()
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // NSView_RequiresConstraintBasedLayout returns a boolean value indicating whether the view depends on the constraint-based layout system.
@@ -8914,7 +8791,6 @@ func NSView_RequiresConstraintBasedLayout() bool {
 	ret := C.NSView_type_RequiresConstraintBasedLayout()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NSView_FocusView returns the currently focused nsview object, or nil if there is none.
@@ -8923,8 +8799,7 @@ func NSView_RequiresConstraintBasedLayout() bool {
 func NSView_FocusView() NSView {
 	ret := C.NSView_type_FocusView()
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // NSView_DefaultMenu overridden by subclasses to return the default pop-up menu for instances of the receiving class.
@@ -8933,8 +8808,7 @@ func NSView_FocusView() NSView {
 func NSView_DefaultMenu() NSMenu {
 	ret := C.NSView_type_DefaultMenu()
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // NSView_CompatibleWithResponsiveScrolling
@@ -8944,26 +8818,25 @@ func NSView_CompatibleWithResponsiveScrolling() bool {
 	ret := C.NSView_type_CompatibleWithResponsiveScrolling()
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSBundleRef interface {
 	Pointer() uintptr
-	Init_asNSBundle() NSBundle
+	Init_AsNSBundle() NSBundle
 }
 
 type gen_NSBundle struct {
 	objc.Object
 }
 
-func NSBundle_fromPointer(ptr unsafe.Pointer) NSBundle {
+func NSBundle_FromPointer(ptr unsafe.Pointer) NSBundle {
 	return NSBundle{gen_NSBundle{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSBundle_fromRef(ref objc.Ref) NSBundle {
-	return NSBundle_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSBundle_FromRef(ref objc.Ref) NSBundle {
+	return NSBundle_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // URLForAuxiliaryExecutable returns the file url of the executable with the specified name in the receiver’s bundle.
@@ -8977,8 +8850,7 @@ func (x gen_NSBundle) URLForAuxiliaryExecutable(
 		objc.RefPointer(executableName),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLForResourceWithExtension returns the file url for the resource identified by the specified name and file extension.
@@ -8994,8 +8866,7 @@ func (x gen_NSBundle) URLForResourceWithExtension(
 		objc.RefPointer(ext),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLForResourceWithExtensionSubdirectory returns the file url for the resource file identified by the specified name and extension and residing in a given bundle directory.
@@ -9013,8 +8884,7 @@ func (x gen_NSBundle) URLForResourceWithExtensionSubdirectory(
 		objc.RefPointer(subpath),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLForResourceWithExtensionSubdirectoryLocalization returns the file url for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
@@ -9034,8 +8904,7 @@ func (x gen_NSBundle) URLForResourceWithExtensionSubdirectoryLocalization(
 		objc.RefPointer(localizationName),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLsForResourcesWithExtensionSubdirectory returns an array of file urls for all resources identified by the specified file extension and located in the specified bundle subdirectory.
@@ -9051,8 +8920,7 @@ func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectory(
 		objc.RefPointer(subpath),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // URLsForResourcesWithExtensionSubdirectoryLocalization returns an array containing the file urls for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
@@ -9070,14 +8938,13 @@ func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectoryLocalization(
 		objc.RefPointer(localizationName),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // InitWithPath returns an nsbundle object initialized to correspond to the specified directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1412741-initwithpath?language=objc for details.
-func (x gen_NSBundle) InitWithPath_asNSBundle(
+func (x gen_NSBundle) InitWithPath_AsNSBundle(
 	path core.NSStringRef,
 ) NSBundle {
 	ret := C.NSBundle_inst_InitWithPath(
@@ -9085,14 +8952,13 @@ func (x gen_NSBundle) InitWithPath_asNSBundle(
 		objc.RefPointer(path),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // InitWithURL returns an nsbundle object initialized to correspond to the specified file url.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409352-initwithurl?language=objc for details.
-func (x gen_NSBundle) InitWithURL_asNSBundle(
+func (x gen_NSBundle) InitWithURL_AsNSBundle(
 	url core.NSURLRef,
 ) NSBundle {
 	ret := C.NSBundle_inst_InitWithURL(
@@ -9100,8 +8966,7 @@ func (x gen_NSBundle) InitWithURL_asNSBundle(
 		objc.RefPointer(url),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // Load dynamically loads the bundle’s executable code into a running program, if the code has not already been loaded.
@@ -9113,7 +8978,6 @@ func (x gen_NSBundle) Load() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // LoadNibNamedOwnerOptions unarchives the contents of a nib file located in the receiver's bundle.
@@ -9131,8 +8995,7 @@ func (x gen_NSBundle) LoadNibNamedOwnerOptions(
 		objc.RefPointer(options),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // LocalizedAttributedStringForKeyValueTable
@@ -9150,8 +9013,7 @@ func (x gen_NSBundle) LocalizedAttributedStringForKeyValueTable(
 		objc.RefPointer(tableName),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // LocalizedStringForKeyValueTable returns a localized version of the string designated by the specified key and residing in the specified table.
@@ -9169,8 +9031,7 @@ func (x gen_NSBundle) LocalizedStringForKeyValueTable(
 		objc.RefPointer(tableName),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // ObjectForInfoDictionaryKey returns the value associated with the specified key in the receiver's information property list.
@@ -9184,8 +9045,7 @@ func (x gen_NSBundle) ObjectForInfoDictionaryKey(
 		objc.RefPointer(key),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // PathForAuxiliaryExecutable returns the full pathname of the executable with the specified name in the receiver’s bundle.
@@ -9199,8 +9059,7 @@ func (x gen_NSBundle) PathForAuxiliaryExecutable(
 		objc.RefPointer(executableName),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PathForResourceOfType returns the full pathname for the resource identified by the specified name and file extension.
@@ -9216,8 +9075,7 @@ func (x gen_NSBundle) PathForResourceOfType(
 		objc.RefPointer(ext),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PathForResourceOfTypeInDirectory returns the full pathname for the resource identified by the specified name and file extension and located in the specified bundle subdirectory.
@@ -9235,8 +9093,7 @@ func (x gen_NSBundle) PathForResourceOfTypeInDirectory(
 		objc.RefPointer(subpath),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PathForResourceOfTypeInDirectoryForLocalization returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
@@ -9256,8 +9113,7 @@ func (x gen_NSBundle) PathForResourceOfTypeInDirectoryForLocalization(
 		objc.RefPointer(localizationName),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified filename extension and residing in the resource subdirectory.
@@ -9273,8 +9129,7 @@ func (x gen_NSBundle) PathsForResourcesOfTypeInDirectory(
 		objc.RefPointer(subpath),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // PathsForResourcesOfTypeInDirectoryForLocalization returns an array containing the file for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization.
@@ -9292,8 +9147,7 @@ func (x gen_NSBundle) PathsForResourcesOfTypeInDirectoryForLocalization(
 		objc.RefPointer(localizationName),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // Unload unloads the code associated with the receiver.
@@ -9305,19 +9159,17 @@ func (x gen_NSBundle) Unload() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSBundle) Init_asNSBundle() NSBundle {
+func (x gen_NSBundle) Init_AsNSBundle() NSBundle {
 	ret := C.NSBundle_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // ResourceURL returns the file url of the bundle’s subdirectory containing resource files.
@@ -9328,8 +9180,7 @@ func (x gen_NSBundle) ResourceURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // ExecutableURL returns the file url of the receiver's executable file.
@@ -9340,8 +9191,7 @@ func (x gen_NSBundle) ExecutableURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // PrivateFrameworksURL returns the file url of the bundle’s subdirectory containing private frameworks.
@@ -9352,8 +9202,7 @@ func (x gen_NSBundle) PrivateFrameworksURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // SharedFrameworksURL returns the file url of the receiver's subdirectory containing shared frameworks.
@@ -9364,8 +9213,7 @@ func (x gen_NSBundle) SharedFrameworksURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // BuiltInPlugInsURL returns the file url of the receiver's subdirectory containing plug-ins.
@@ -9376,8 +9224,7 @@ func (x gen_NSBundle) BuiltInPlugInsURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // SharedSupportURL returns the file url of the bundle’s subdirectory containing shared support files.
@@ -9388,8 +9235,7 @@ func (x gen_NSBundle) SharedSupportURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // AppStoreReceiptURL returns the file url for the bundle’s app store receipt.
@@ -9400,8 +9246,7 @@ func (x gen_NSBundle) AppStoreReceiptURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // ResourcePath returns the full pathname of the bundle’s subdirectory containing resources.
@@ -9412,8 +9257,7 @@ func (x gen_NSBundle) ResourcePath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // ExecutablePath returns the full pathname of the receiver's executable file.
@@ -9424,8 +9268,7 @@ func (x gen_NSBundle) ExecutablePath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PrivateFrameworksPath returns the full pathname of the bundle’s subdirectory containing private frameworks.
@@ -9436,8 +9279,7 @@ func (x gen_NSBundle) PrivateFrameworksPath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SharedFrameworksPath returns the full pathname of the bundle’s subdirectory containing shared frameworks.
@@ -9448,8 +9290,7 @@ func (x gen_NSBundle) SharedFrameworksPath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // BuiltInPlugInsPath returns the full pathname of the receiver's subdirectory containing plug-ins.
@@ -9460,8 +9301,7 @@ func (x gen_NSBundle) BuiltInPlugInsPath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SharedSupportPath returns the full pathname of the bundle’s subdirectory containing shared support files.
@@ -9472,8 +9312,7 @@ func (x gen_NSBundle) SharedSupportPath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // BundleURL returns the full url of the receiver’s bundle directory.
@@ -9484,8 +9323,7 @@ func (x gen_NSBundle) BundleURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // BundlePath returns the full pathname of the receiver’s bundle directory.
@@ -9496,8 +9334,7 @@ func (x gen_NSBundle) BundlePath() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // BundleIdentifier returns the receiver’s bundle identifier.
@@ -9508,8 +9345,7 @@ func (x gen_NSBundle) BundleIdentifier() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // InfoDictionary returns a dictionary, constructed from the bundle’s info.plist file, that contains information about the receiver.
@@ -9520,8 +9356,7 @@ func (x gen_NSBundle) InfoDictionary() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // Localizations returns a list of all the localizations contained in the bundle.
@@ -9532,8 +9367,7 @@ func (x gen_NSBundle) Localizations() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // PreferredLocalizations an ordered list of preferred localizations contained in the bundle.
@@ -9544,8 +9378,7 @@ func (x gen_NSBundle) PreferredLocalizations() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // DevelopmentLocalization returns the localization for the development language.
@@ -9556,8 +9389,7 @@ func (x gen_NSBundle) DevelopmentLocalization() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // LocalizedInfoDictionary returns a dictionary with the keys from the bundle’s localized property list.
@@ -9568,8 +9400,7 @@ func (x gen_NSBundle) LocalizedInfoDictionary() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // ExecutableArchitectures an array of numbers indicating the architecture types supported by the bundle’s executable.
@@ -9580,8 +9411,7 @@ func (x gen_NSBundle) ExecutableArchitectures() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // IsLoaded returns the load status of a bundle.
@@ -9593,32 +9423,31 @@ func (x gen_NSBundle) IsLoaded() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSSoundRef interface {
 	Pointer() uintptr
-	Init_asNSSound() NSSound
+	Init_AsNSSound() NSSound
 }
 
 type gen_NSSound struct {
 	objc.Object
 }
 
-func NSSound_fromPointer(ptr unsafe.Pointer) NSSound {
+func NSSound_FromPointer(ptr unsafe.Pointer) NSSound {
 	return NSSound{gen_NSSound{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSSound_fromRef(ref objc.Ref) NSSound {
-	return NSSound_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSSound_FromRef(ref objc.Ref) NSSound {
+	return NSSound_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // InitWithContentsOfFileByReference initializes the receiver with the audio data located at a given filepath.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477274-initwithcontentsoffile?language=objc for details.
-func (x gen_NSSound) InitWithContentsOfFileByReference_asNSSound(
+func (x gen_NSSound) InitWithContentsOfFileByReference_AsNSSound(
 	path core.NSStringRef,
 	byRef bool,
 ) NSSound {
@@ -9628,14 +9457,13 @@ func (x gen_NSSound) InitWithContentsOfFileByReference_asNSSound(
 		convertToObjCBool(byRef),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // InitWithContentsOfURLByReference initializes the receiver with the audio data located at a given url.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477288-initwithcontentsofurl?language=objc for details.
-func (x gen_NSSound) InitWithContentsOfURLByReference_asNSSound(
+func (x gen_NSSound) InitWithContentsOfURLByReference_AsNSSound(
 	url core.NSURLRef,
 	byRef bool,
 ) NSSound {
@@ -9645,14 +9473,13 @@ func (x gen_NSSound) InitWithContentsOfURLByReference_asNSSound(
 		convertToObjCBool(byRef),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // InitWithData initializes the receiver with a given audio data.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477292-initwithdata?language=objc for details.
-func (x gen_NSSound) InitWithData_asNSSound(
+func (x gen_NSSound) InitWithData_AsNSSound(
 	data core.NSDataRef,
 ) NSSound {
 	ret := C.NSSound_inst_InitWithData(
@@ -9660,14 +9487,13 @@ func (x gen_NSSound) InitWithData_asNSSound(
 		objc.RefPointer(data),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // InitWithPasteboard initializes the receiver with data from a pasteboard. the pasteboard should contain a type returned by nssound. nssound expects the data to have a proper magic number, sound header, and data for the formats it supports.
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477294-initwithpasteboard?language=objc for details.
-func (x gen_NSSound) InitWithPasteboard_asNSSound(
+func (x gen_NSSound) InitWithPasteboard_AsNSSound(
 	pasteboard NSPasteboardRef,
 ) NSSound {
 	ret := C.NSSound_inst_InitWithPasteboard(
@@ -9675,8 +9501,7 @@ func (x gen_NSSound) InitWithPasteboard_asNSSound(
 		objc.RefPointer(pasteboard),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // Pause pauses audio playback.
@@ -9688,7 +9513,6 @@ func (x gen_NSSound) Pause() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Play initiates audio playback.
@@ -9700,7 +9524,6 @@ func (x gen_NSSound) Play() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Resume resumes audio playback.
@@ -9712,7 +9535,6 @@ func (x gen_NSSound) Resume() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Stop concludes audio playback.
@@ -9724,7 +9546,6 @@ func (x gen_NSSound) Stop() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // WriteToPasteboard writes the receiver’s data to a pasteboard.
@@ -9739,19 +9560,17 @@ func (x gen_NSSound) WriteToPasteboard(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSSound) Init_asNSSound() NSSound {
+func (x gen_NSSound) Init_AsNSSound() NSSound {
 	ret := C.NSSound_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // Delegate returns the sound’s delegate.
@@ -9762,8 +9581,7 @@ func (x gen_NSSound) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the sound’s delegate.
@@ -9778,7 +9596,6 @@ func (x gen_NSSound) SetDelegate(
 	)
 
 	return
-
 }
 
 // Loops returns a boolean that indicates whether the sound restarts playback when it reaches the end of its content.
@@ -9790,7 +9607,6 @@ func (x gen_NSSound) Loops() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetLoops returns a boolean that indicates whether the sound restarts playback when it reaches the end of its content.
@@ -9805,7 +9621,6 @@ func (x gen_NSSound) SetLoops(
 	)
 
 	return
-
 }
 
 // IsPlaying returns a boolean that indicates whether the sound is playing its audio data.
@@ -9817,26 +9632,25 @@ func (x gen_NSSound) IsPlaying() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSApplicationRef interface {
 	Pointer() uintptr
-	Init_asNSApplication() NSApplication
+	Init_AsNSApplication() NSApplication
 }
 
 type gen_NSApplication struct {
 	objc.Object
 }
 
-func NSApplication_fromPointer(ptr unsafe.Pointer) NSApplication {
+func NSApplication_FromPointer(ptr unsafe.Pointer) NSApplication {
 	return NSApplication{gen_NSApplication{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSApplication_fromRef(ref objc.Ref) NSApplication {
-	return NSApplication_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSApplication_FromRef(ref objc.Ref) NSApplication {
+	return NSApplication_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // ActivateContextHelpMode places the receiver in context-sensitive help mode.
@@ -9851,7 +9665,6 @@ func (x gen_NSApplication) ActivateContextHelpMode(
 	)
 
 	return
-
 }
 
 // ActivateIgnoringOtherApps makes the receiver the active app.
@@ -9866,7 +9679,6 @@ func (x gen_NSApplication) ActivateIgnoringOtherApps(
 	)
 
 	return
-
 }
 
 // ActivationPolicy returns the app’s activation policy.
@@ -9878,7 +9690,6 @@ func (x gen_NSApplication) ActivationPolicy() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // CancelUserAttentionRequest cancels a previous user attention request.
@@ -9893,7 +9704,6 @@ func (x gen_NSApplication) CancelUserAttentionRequest(
 	)
 
 	return
-
 }
 
 // Deactivate deactivates the receiver.
@@ -9905,7 +9715,6 @@ func (x gen_NSApplication) Deactivate() {
 	)
 
 	return
-
 }
 
 // DisableRelaunchOnLogin disables relaunching the app on login.
@@ -9917,7 +9726,6 @@ func (x gen_NSApplication) DisableRelaunchOnLogin() {
 	)
 
 	return
-
 }
 
 // EnableRelaunchOnLogin enables relaunching the app on login.
@@ -9929,7 +9737,6 @@ func (x gen_NSApplication) EnableRelaunchOnLogin() {
 	)
 
 	return
-
 }
 
 // FinishLaunching activates the app, opens any files specified by the nsopen user default, and unhighlights the app’s icon.
@@ -9941,7 +9748,6 @@ func (x gen_NSApplication) FinishLaunching() {
 	)
 
 	return
-
 }
 
 // HideOtherApplications hides all apps, except the receiver.
@@ -9956,7 +9762,6 @@ func (x gen_NSApplication) HideOtherApplications(
 	)
 
 	return
-
 }
 
 // PostEventAtStart adds a given event to the receiver’s event queue.
@@ -9973,7 +9778,6 @@ func (x gen_NSApplication) PostEventAtStart(
 	)
 
 	return
-
 }
 
 // RegisterForRemoteNotifications register for notifications sent by apple push notification service (apns).
@@ -9985,7 +9789,6 @@ func (x gen_NSApplication) RegisterForRemoteNotifications() {
 	)
 
 	return
-
 }
 
 // RegisterUserInterfaceItemSearchHandler register an object that provides help data to your app.
@@ -10000,7 +9803,6 @@ func (x gen_NSApplication) RegisterUserInterfaceItemSearchHandler(
 	)
 
 	return
-
 }
 
 // ReplyToApplicationShouldTerminate responds to nsterminatelater once the app knows whether it can terminate.
@@ -10015,7 +9817,6 @@ func (x gen_NSApplication) ReplyToApplicationShouldTerminate(
 	)
 
 	return
-
 }
 
 // Run starts the main event loop.
@@ -10027,7 +9828,6 @@ func (x gen_NSApplication) Run() {
 	)
 
 	return
-
 }
 
 // SendActionToFrom sends the given action message to the given target.
@@ -10046,7 +9846,6 @@ func (x gen_NSApplication) SendActionToFrom(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SendEvent dispatches an event to other objects.
@@ -10061,7 +9860,6 @@ func (x gen_NSApplication) SendEvent(
 	)
 
 	return
-
 }
 
 // SetActivationPolicy attempts to modify the app’s activation policy.
@@ -10076,7 +9874,6 @@ func (x gen_NSApplication) SetActivationPolicy(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ShowHelp if your project is properly registered, and the necessary keys have been set in the property list, this method launches help viewer and displays the first page of your app’s help book.
@@ -10091,7 +9888,6 @@ func (x gen_NSApplication) ShowHelp(
 	)
 
 	return
-
 }
 
 // Stop stops the main event loop.
@@ -10106,7 +9902,6 @@ func (x gen_NSApplication) Stop(
 	)
 
 	return
-
 }
 
 // TargetForAction returns the object that receives the action message specified by the given selector.
@@ -10120,8 +9915,7 @@ func (x gen_NSApplication) TargetForAction(
 		action.SelectorAddress(),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // TargetForActionToFrom searches for an object that can receive the message specified by the given selector.
@@ -10139,8 +9933,7 @@ func (x gen_NSApplication) TargetForActionToFrom(
 		objc.RefPointer(sender),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // Terminate terminates the receiver.
@@ -10155,7 +9948,6 @@ func (x gen_NSApplication) Terminate(
 	)
 
 	return
-
 }
 
 // ToggleTouchBarCustomizationPalette show or hides the interface for customizing the touch bar.
@@ -10170,7 +9962,6 @@ func (x gen_NSApplication) ToggleTouchBarCustomizationPalette(
 	)
 
 	return
-
 }
 
 // TryToPerformWith dispatches an action message to the specified target.
@@ -10187,7 +9978,6 @@ func (x gen_NSApplication) TryToPerformWith(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // UnhideAllApplications unhides all apps, including the receiver.
@@ -10202,7 +9992,6 @@ func (x gen_NSApplication) UnhideAllApplications(
 	)
 
 	return
-
 }
 
 // UnregisterForRemoteNotifications unregister for notifications received from apple push notification service.
@@ -10214,7 +10003,6 @@ func (x gen_NSApplication) UnregisterForRemoteNotifications() {
 	)
 
 	return
-
 }
 
 // UnregisterUserInterfaceItemSearchHandler unregister an object that provides help data to your app.
@@ -10229,19 +10017,17 @@ func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSApplication) Init_asNSApplication() NSApplication {
+func (x gen_NSApplication) Init_AsNSApplication() NSApplication {
 	ret := C.NSApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSApplication_fromPointer(ret)
-
+	return NSApplication_FromPointer(ret)
 }
 
 // Delegate returns the app delegate object.
@@ -10252,8 +10038,7 @@ func (x gen_NSApplication) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the app delegate object.
@@ -10268,7 +10053,6 @@ func (x gen_NSApplication) SetDelegate(
 	)
 
 	return
-
 }
 
 // CurrentEvent returns the last event object that the app retrieved from the event queue.
@@ -10279,8 +10063,7 @@ func (x gen_NSApplication) CurrentEvent() NSEvent {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSEvent_fromPointer(ret)
-
+	return NSEvent_FromPointer(ret)
 }
 
 // IsRunning returns a boolean value indicating whether the main event loop is running.
@@ -10292,7 +10075,6 @@ func (x gen_NSApplication) IsRunning() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsActive returns a boolean value indicating whether this is the active app.
@@ -10304,7 +10086,6 @@ func (x gen_NSApplication) IsActive() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsRegisteredForRemoteNotifications returns a boolean value indicating whether the app is registered with apple push notification service (apns).
@@ -10316,7 +10097,6 @@ func (x gen_NSApplication) IsRegisteredForRemoteNotifications() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ApplicationIconImage returns the image used for the app’s icon.
@@ -10327,8 +10107,7 @@ func (x gen_NSApplication) ApplicationIconImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetApplicationIconImage returns the image used for the app’s icon.
@@ -10343,7 +10122,6 @@ func (x gen_NSApplication) SetApplicationIconImage(
 	)
 
 	return
-
 }
 
 // HelpMenu returns the help menu used by the app.
@@ -10354,8 +10132,7 @@ func (x gen_NSApplication) HelpMenu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetHelpMenu returns the help menu used by the app.
@@ -10370,7 +10147,6 @@ func (x gen_NSApplication) SetHelpMenu(
 	)
 
 	return
-
 }
 
 // ServicesProvider returns the object that provides the services the current app advertises in the services menu of other apps.
@@ -10381,8 +10157,7 @@ func (x gen_NSApplication) ServicesProvider() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetServicesProvider returns the object that provides the services the current app advertises in the services menu of other apps.
@@ -10397,7 +10172,6 @@ func (x gen_NSApplication) SetServicesProvider(
 	)
 
 	return
-
 }
 
 // IsFullKeyboardAccessEnabled returns a boolean value indicating whether full keyboard access is enabled in the keyboard preference pane.
@@ -10409,7 +10183,6 @@ func (x gen_NSApplication) IsFullKeyboardAccessEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // OrderedDocuments an array of document objects arranged according to the front-to-back ordering of their associated windows.
@@ -10420,8 +10193,7 @@ func (x gen_NSApplication) OrderedDocuments() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // OrderedWindows an array of window objects arranged according to their front-to-back ordering on the screen.
@@ -10432,8 +10204,7 @@ func (x gen_NSApplication) OrderedWindows() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // MainMenu returns the app’s main menu bar.
@@ -10444,8 +10215,7 @@ func (x gen_NSApplication) MainMenu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetMainMenu returns the app’s main menu bar.
@@ -10460,26 +10230,25 @@ func (x gen_NSApplication) SetMainMenu(
 	)
 
 	return
-
 }
 
 type NSControlRef interface {
 	Pointer() uintptr
-	Init_asNSControl() NSControl
+	Init_AsNSControl() NSControl
 }
 
 type gen_NSControl struct {
 	NSView
 }
 
-func NSControl_fromPointer(ptr unsafe.Pointer) NSControl {
+func NSControl_FromPointer(ptr unsafe.Pointer) NSControl {
 	return NSControl{gen_NSControl{
-		NSView_fromPointer(ptr),
+		NSView_FromPointer(ptr),
 	}}
 }
 
-func NSControl_fromRef(ref objc.Ref) NSControl {
-	return NSControl_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSControl_FromRef(ref objc.Ref) NSControl {
+	return NSControl_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AbortEditing terminates the current editing operation and discards any edited text.
@@ -10491,7 +10260,6 @@ func (x gen_NSControl) AbortEditing() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CurrentEditor returns the current field editor for the control.
@@ -10502,8 +10270,7 @@ func (x gen_NSControl) CurrentEditor() NSText {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSText_fromPointer(ret)
-
+	return NSText_FromPointer(ret)
 }
 
 // DrawWithExpansionFrameInView performs custom expansion tool tip drawing.
@@ -10520,7 +10287,6 @@ func (x gen_NSControl) DrawWithExpansionFrameInView(
 	)
 
 	return
-
 }
 
 // EditWithFrameEditorDelegateEvent begins editing of the receiver’s text using the specified field editor.
@@ -10541,7 +10307,6 @@ func (x gen_NSControl) EditWithFrameEditorDelegateEvent(
 	)
 
 	return
-
 }
 
 // EndEditing ends the editing of text in the receiver using the specified field editor.
@@ -10556,7 +10321,6 @@ func (x gen_NSControl) EndEditing(
 	)
 
 	return
-
 }
 
 // ExpansionFrameWithFrame returns the frame in which a tool tip can be displayed, if needed.
@@ -10571,13 +10335,12 @@ func (x gen_NSControl) ExpansionFrameWithFrame(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // InitWithFrame initializes a control with the specified frame rectangle.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc for details.
-func (x gen_NSControl) InitWithFrame_asNSControl(
+func (x gen_NSControl) InitWithFrame_AsNSControl(
 	frameRect core.NSRect,
 ) NSControl {
 	ret := C.NSControl_inst_InitWithFrame(
@@ -10585,8 +10348,7 @@ func (x gen_NSControl) InitWithFrame_asNSControl(
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
 
-	return NSControl_fromPointer(ret)
-
+	return NSControl_FromPointer(ret)
 }
 
 // MouseDown informs the receiver that the user has pressed the left mouse button.
@@ -10601,7 +10363,6 @@ func (x gen_NSControl) MouseDown(
 	)
 
 	return
-
 }
 
 // PerformClick simulates a single mouse click on the receiver.
@@ -10616,7 +10377,6 @@ func (x gen_NSControl) PerformClick(
 	)
 
 	return
-
 }
 
 // SelectWithFrameEditorDelegateStartLength selects the specified text range in the receiver's field editor.
@@ -10639,7 +10399,6 @@ func (x gen_NSControl) SelectWithFrameEditorDelegateStartLength(
 	)
 
 	return
-
 }
 
 // SendActionTo causes the specified action to be sent to the target.
@@ -10656,7 +10415,6 @@ func (x gen_NSControl) SendActionTo(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SizeThatFits asks the control to calculate and return the size that best fits the specified size.
@@ -10671,7 +10429,6 @@ func (x gen_NSControl) SizeThatFits(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SizeToFit resizes the receiver’s frame so that it’s the minimum size needed to contain its cell.
@@ -10683,7 +10440,6 @@ func (x gen_NSControl) SizeToFit() {
 	)
 
 	return
-
 }
 
 // TakeDoubleValueFrom sets the value of the receiver’s cell to a double-precision floating-point value obtained from the specified object.
@@ -10698,7 +10454,6 @@ func (x gen_NSControl) TakeDoubleValueFrom(
 	)
 
 	return
-
 }
 
 // TakeFloatValueFrom sets the value of the receiver’s cell to a single-precision floating-point value obtained from the specified object.
@@ -10713,7 +10468,6 @@ func (x gen_NSControl) TakeFloatValueFrom(
 	)
 
 	return
-
 }
 
 // TakeIntValueFrom sets the value of the receiver’s cell to an integer value obtained from the specified object.
@@ -10728,7 +10482,6 @@ func (x gen_NSControl) TakeIntValueFrom(
 	)
 
 	return
-
 }
 
 // TakeIntegerValueFrom sets the value of the receiver’s cell to an nsinteger value obtained from the specified object.
@@ -10743,7 +10496,6 @@ func (x gen_NSControl) TakeIntegerValueFrom(
 	)
 
 	return
-
 }
 
 // TakeObjectValueFrom sets the value of the receiver’s cell to the object value obtained from the specified object.
@@ -10758,7 +10510,6 @@ func (x gen_NSControl) TakeObjectValueFrom(
 	)
 
 	return
-
 }
 
 // TakeStringValueFrom sets the value of the receiver’s cell to the string value obtained from the specified object.
@@ -10773,7 +10524,6 @@ func (x gen_NSControl) TakeStringValueFrom(
 	)
 
 	return
-
 }
 
 // ValidateEditing validates changes to any user-typed text.
@@ -10785,19 +10535,17 @@ func (x gen_NSControl) ValidateEditing() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSControl) Init_asNSControl() NSControl {
+func (x gen_NSControl) Init_AsNSControl() NSControl {
 	ret := C.NSControl_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSControl_fromPointer(ret)
-
+	return NSControl_FromPointer(ret)
 }
 
 // IsEnabled returns a boolean value that indicates whether the receiver reacts to mouse events.
@@ -10809,7 +10557,6 @@ func (x gen_NSControl) IsEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEnabled returns a boolean value that indicates whether the receiver reacts to mouse events.
@@ -10824,7 +10571,6 @@ func (x gen_NSControl) SetEnabled(
 	)
 
 	return
-
 }
 
 // IntValue returns the value of the receiver’s cell as an integer.
@@ -10836,7 +10582,6 @@ func (x gen_NSControl) IntValue() int32 {
 	)
 
 	return int32(ret)
-
 }
 
 // SetIntValue returns the value of the receiver’s cell as an integer.
@@ -10851,7 +10596,6 @@ func (x gen_NSControl) SetIntValue(
 	)
 
 	return
-
 }
 
 // IntegerValue returns the value of the receiver’s cell as an nsinteger value.
@@ -10863,7 +10607,6 @@ func (x gen_NSControl) IntegerValue() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetIntegerValue returns the value of the receiver’s cell as an nsinteger value.
@@ -10878,7 +10621,6 @@ func (x gen_NSControl) SetIntegerValue(
 	)
 
 	return
-
 }
 
 // ObjectValue returns the value of the receiver’s cell as an objective-c object.
@@ -10889,8 +10631,7 @@ func (x gen_NSControl) ObjectValue() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetObjectValue returns the value of the receiver’s cell as an objective-c object.
@@ -10905,7 +10646,6 @@ func (x gen_NSControl) SetObjectValue(
 	)
 
 	return
-
 }
 
 // StringValue returns the value of the receiver’s cell as an nsstring object.
@@ -10916,8 +10656,7 @@ func (x gen_NSControl) StringValue() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetStringValue returns the value of the receiver’s cell as an nsstring object.
@@ -10932,7 +10671,6 @@ func (x gen_NSControl) SetStringValue(
 	)
 
 	return
-
 }
 
 // AttributedStringValue returns the value of the receiver’s cell as an attributed string.
@@ -10943,8 +10681,7 @@ func (x gen_NSControl) AttributedStringValue() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // SetAttributedStringValue returns the value of the receiver’s cell as an attributed string.
@@ -10959,7 +10696,6 @@ func (x gen_NSControl) SetAttributedStringValue(
 	)
 
 	return
-
 }
 
 // Font returns the font used to draw text in the receiver’s cell.
@@ -10970,8 +10706,7 @@ func (x gen_NSControl) Font() NSFont {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // SetFont returns the font used to draw text in the receiver’s cell.
@@ -10986,7 +10721,6 @@ func (x gen_NSControl) SetFont(
 	)
 
 	return
-
 }
 
 // UsesSingleLineMode returns a boolean value that indicates whether the text in the control’s cell uses single line mode.
@@ -10998,7 +10732,6 @@ func (x gen_NSControl) UsesSingleLineMode() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesSingleLineMode returns a boolean value that indicates whether the text in the control’s cell uses single line mode.
@@ -11013,7 +10746,6 @@ func (x gen_NSControl) SetUsesSingleLineMode(
 	)
 
 	return
-
 }
 
 // AllowsExpansionToolTips returns a boolean value that indicates whether expansion tool tips are shown when the control is hovered over.
@@ -11025,7 +10757,6 @@ func (x gen_NSControl) AllowsExpansionToolTips() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsExpansionToolTips returns a boolean value that indicates whether expansion tool tips are shown when the control is hovered over.
@@ -11040,7 +10771,6 @@ func (x gen_NSControl) SetAllowsExpansionToolTips(
 	)
 
 	return
-
 }
 
 // IsHighlighted returns a boolean value that indicates whether the cell is highlighted.
@@ -11052,7 +10782,6 @@ func (x gen_NSControl) IsHighlighted() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHighlighted returns a boolean value that indicates whether the cell is highlighted.
@@ -11067,7 +10796,6 @@ func (x gen_NSControl) SetHighlighted(
 	)
 
 	return
-
 }
 
 // Action returns the default action-message selector associated with the control.
@@ -11079,7 +10807,6 @@ func (x gen_NSControl) Action() objc.Selector {
 	)
 
 	return objc.SelectorAt(ret)
-
 }
 
 // SetAction returns the default action-message selector associated with the control.
@@ -11094,7 +10821,6 @@ func (x gen_NSControl) SetAction(
 	)
 
 	return
-
 }
 
 // Target returns the target object that receives action messages from the cell.
@@ -11105,8 +10831,7 @@ func (x gen_NSControl) Target() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetTarget returns the target object that receives action messages from the cell.
@@ -11121,7 +10846,6 @@ func (x gen_NSControl) SetTarget(
 	)
 
 	return
-
 }
 
 // IsContinuous returns a boolean value indicating whether the receiver’s cell sends its action message continuously to its target during mouse tracking.
@@ -11133,7 +10857,6 @@ func (x gen_NSControl) IsContinuous() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetContinuous returns a boolean value indicating whether the receiver’s cell sends its action message continuously to its target during mouse tracking.
@@ -11148,7 +10871,6 @@ func (x gen_NSControl) SetContinuous(
 	)
 
 	return
-
 }
 
 // Tag returns the tag identifying the receiver (not the tag of the receiver’s cell).
@@ -11160,7 +10882,6 @@ func (x gen_NSControl) Tag() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetTag returns the tag identifying the receiver (not the tag of the receiver’s cell).
@@ -11175,7 +10896,6 @@ func (x gen_NSControl) SetTag(
 	)
 
 	return
-
 }
 
 // RefusesFirstResponder returns a boolean value indicating whether the receiver refuses the first responder role.
@@ -11187,7 +10907,6 @@ func (x gen_NSControl) RefusesFirstResponder() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetRefusesFirstResponder returns a boolean value indicating whether the receiver refuses the first responder role.
@@ -11202,7 +10921,6 @@ func (x gen_NSControl) SetRefusesFirstResponder(
 	)
 
 	return
-
 }
 
 // IgnoresMultiClick returns a boolean value indicating whether the receiver ignores multiple clicks made in rapid succession.
@@ -11214,7 +10932,6 @@ func (x gen_NSControl) IgnoresMultiClick() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetIgnoresMultiClick returns a boolean value indicating whether the receiver ignores multiple clicks made in rapid succession.
@@ -11229,26 +10946,25 @@ func (x gen_NSControl) SetIgnoresMultiClick(
 	)
 
 	return
-
 }
 
 type NSButtonRef interface {
 	Pointer() uintptr
-	Init_asNSButton() NSButton
+	Init_AsNSButton() NSButton
 }
 
 type gen_NSButton struct {
 	NSControl
 }
 
-func NSButton_fromPointer(ptr unsafe.Pointer) NSButton {
+func NSButton_FromPointer(ptr unsafe.Pointer) NSButton {
 	return NSButton{gen_NSButton{
-		NSControl_fromPointer(ptr),
+		NSControl_FromPointer(ptr),
 	}}
 }
 
-func NSButton_fromRef(ref objc.Ref) NSButton {
-	return NSButton_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSButton_FromRef(ref objc.Ref) NSButton {
+	return NSButton_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // CompressWithPrioritizedCompressionOptions sets the priority compression options for this button.
@@ -11263,7 +10979,6 @@ func (x gen_NSButton) CompressWithPrioritizedCompressionOptions(
 	)
 
 	return
-
 }
 
 // Highlight highlights (or unhighlights) the button.
@@ -11278,7 +10993,6 @@ func (x gen_NSButton) Highlight(
 	)
 
 	return
-
 }
 
 // MinimumSizeWithPrioritizedCompressionOptions returns the minimum size of the button by using the compression options.
@@ -11293,7 +11007,6 @@ func (x gen_NSButton) MinimumSizeWithPrioritizedCompressionOptions(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // PerformKeyEquivalent checks the button's key equivalent against the specified event and, if they match, simulates the button being clicked.
@@ -11308,7 +11021,6 @@ func (x gen_NSButton) PerformKeyEquivalent(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetNextState sets the button to its next state.
@@ -11320,19 +11032,17 @@ func (x gen_NSButton) SetNextState() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSButton) Init_asNSButton() NSButton {
+func (x gen_NSButton) Init_AsNSButton() NSButton {
 	ret := C.NSButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSButton_fromPointer(ret)
-
+	return NSButton_FromPointer(ret)
 }
 
 // ContentTintColor returns a tint color to use for the template image and text content.
@@ -11343,8 +11053,7 @@ func (x gen_NSButton) ContentTintColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetContentTintColor returns a tint color to use for the template image and text content.
@@ -11359,7 +11068,6 @@ func (x gen_NSButton) SetContentTintColor(
 	)
 
 	return
-
 }
 
 // HasDestructiveAction returns a boolean value that defines whether a button’s action has a destructive effect.
@@ -11371,7 +11079,6 @@ func (x gen_NSButton) HasDestructiveAction() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHasDestructiveAction returns a boolean value that defines whether a button’s action has a destructive effect.
@@ -11386,7 +11093,6 @@ func (x gen_NSButton) SetHasDestructiveAction(
 	)
 
 	return
-
 }
 
 // AlternateTitle returns the title that the button displays when the button is in an on state.
@@ -11397,8 +11103,7 @@ func (x gen_NSButton) AlternateTitle() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetAlternateTitle returns the title that the button displays when the button is in an on state.
@@ -11413,7 +11118,6 @@ func (x gen_NSButton) SetAlternateTitle(
 	)
 
 	return
-
 }
 
 // AttributedTitle returns the title that the button displays in an off state, as an attributed string.
@@ -11424,8 +11128,7 @@ func (x gen_NSButton) AttributedTitle() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // SetAttributedTitle returns the title that the button displays in an off state, as an attributed string.
@@ -11440,7 +11143,6 @@ func (x gen_NSButton) SetAttributedTitle(
 	)
 
 	return
-
 }
 
 // AttributedAlternateTitle returns the title that the button displays as an attributed string when the button is in an on state.
@@ -11451,8 +11153,7 @@ func (x gen_NSButton) AttributedAlternateTitle() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // SetAttributedAlternateTitle returns the title that the button displays as an attributed string when the button is in an on state.
@@ -11467,7 +11168,6 @@ func (x gen_NSButton) SetAttributedAlternateTitle(
 	)
 
 	return
-
 }
 
 // Title returns the title displayed on the button when it’s in an off state.
@@ -11478,8 +11178,7 @@ func (x gen_NSButton) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetTitle returns the title displayed on the button when it’s in an off state.
@@ -11494,7 +11193,6 @@ func (x gen_NSButton) SetTitle(
 	)
 
 	return
-
 }
 
 // Sound returns the sound that plays when the user clicks the button.
@@ -11505,8 +11203,7 @@ func (x gen_NSButton) Sound() NSSound {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSSound_fromPointer(ret)
-
+	return NSSound_FromPointer(ret)
 }
 
 // SetSound returns the sound that plays when the user clicks the button.
@@ -11521,7 +11218,6 @@ func (x gen_NSButton) SetSound(
 	)
 
 	return
-
 }
 
 // IsSpringLoaded returns a boolean value that indicates whether spring loading is enabled for the button.
@@ -11533,7 +11229,6 @@ func (x gen_NSButton) IsSpringLoaded() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSpringLoaded returns a boolean value that indicates whether spring loading is enabled for the button.
@@ -11548,7 +11243,6 @@ func (x gen_NSButton) SetSpringLoaded(
 	)
 
 	return
-
 }
 
 // MaxAcceleratorLevel an integer value indicating the maximum pressure level for a button of type nsmultilevelacceleratorbutton.
@@ -11560,7 +11254,6 @@ func (x gen_NSButton) MaxAcceleratorLevel() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetMaxAcceleratorLevel an integer value indicating the maximum pressure level for a button of type nsmultilevelacceleratorbutton.
@@ -11575,7 +11268,6 @@ func (x gen_NSButton) SetMaxAcceleratorLevel(
 	)
 
 	return
-
 }
 
 // Image returns the image that appears on the button when it’s in an off state, or nil if there is no such image.
@@ -11586,8 +11278,7 @@ func (x gen_NSButton) Image() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetImage returns the image that appears on the button when it’s in an off state, or nil if there is no such image.
@@ -11602,7 +11293,6 @@ func (x gen_NSButton) SetImage(
 	)
 
 	return
-
 }
 
 // AlternateImage an alternate image that appears on the button when the button is in an on state.
@@ -11613,8 +11303,7 @@ func (x gen_NSButton) AlternateImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetAlternateImage an alternate image that appears on the button when the button is in an on state.
@@ -11629,7 +11318,6 @@ func (x gen_NSButton) SetAlternateImage(
 	)
 
 	return
-
 }
 
 // IsBordered returns a boolean value that determines whether the button has a border.
@@ -11641,7 +11329,6 @@ func (x gen_NSButton) IsBordered() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetBordered returns a boolean value that determines whether the button has a border.
@@ -11656,7 +11343,6 @@ func (x gen_NSButton) SetBordered(
 	)
 
 	return
-
 }
 
 // IsTransparent returns a boolean value that indicates whether the button is transparent.
@@ -11668,7 +11354,6 @@ func (x gen_NSButton) IsTransparent() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetTransparent returns a boolean value that indicates whether the button is transparent.
@@ -11683,7 +11368,6 @@ func (x gen_NSButton) SetTransparent(
 	)
 
 	return
-
 }
 
 // BezelColor returns the color of the button's bezel, in appearances that support it.
@@ -11694,8 +11378,7 @@ func (x gen_NSButton) BezelColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBezelColor returns the color of the button's bezel, in appearances that support it.
@@ -11710,7 +11393,6 @@ func (x gen_NSButton) SetBezelColor(
 	)
 
 	return
-
 }
 
 // ShowsBorderOnlyWhileMouseInside returns a boolean value that determines whether the button displays its border only when the pointer is over it.
@@ -11722,7 +11404,6 @@ func (x gen_NSButton) ShowsBorderOnlyWhileMouseInside() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetShowsBorderOnlyWhileMouseInside returns a boolean value that determines whether the button displays its border only when the pointer is over it.
@@ -11737,7 +11418,6 @@ func (x gen_NSButton) SetShowsBorderOnlyWhileMouseInside(
 	)
 
 	return
-
 }
 
 // ImageHugsTitle returns a boolean value that determines how the button’s image and title are positioned together within the button bezel.
@@ -11749,7 +11429,6 @@ func (x gen_NSButton) ImageHugsTitle() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetImageHugsTitle returns a boolean value that determines how the button’s image and title are positioned together within the button bezel.
@@ -11764,7 +11443,6 @@ func (x gen_NSButton) SetImageHugsTitle(
 	)
 
 	return
-
 }
 
 // AllowsMixedState returns a boolean value that indicates whether the button allows a mixed state.
@@ -11776,7 +11454,6 @@ func (x gen_NSButton) AllowsMixedState() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsMixedState returns a boolean value that indicates whether the button allows a mixed state.
@@ -11791,7 +11468,6 @@ func (x gen_NSButton) SetAllowsMixedState(
 	)
 
 	return
-
 }
 
 // State returns the button’s state.
@@ -11803,7 +11479,6 @@ func (x gen_NSButton) State() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetState returns the button’s state.
@@ -11818,7 +11493,6 @@ func (x gen_NSButton) SetState(
 	)
 
 	return
-
 }
 
 // KeyEquivalent returns the key-equivalent character of the button.
@@ -11829,8 +11503,7 @@ func (x gen_NSButton) KeyEquivalent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetKeyEquivalent returns the key-equivalent character of the button.
@@ -11845,38 +11518,36 @@ func (x gen_NSButton) SetKeyEquivalent(
 	)
 
 	return
-
 }
 
 type NSEventRef interface {
 	Pointer() uintptr
-	Init_asNSEvent() NSEvent
+	Init_AsNSEvent() NSEvent
 }
 
 type gen_NSEvent struct {
 	objc.Object
 }
 
-func NSEvent_fromPointer(ptr unsafe.Pointer) NSEvent {
+func NSEvent_FromPointer(ptr unsafe.Pointer) NSEvent {
 	return NSEvent{gen_NSEvent{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSEvent_fromRef(ref objc.Ref) NSEvent {
-	return NSEvent_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSEvent_FromRef(ref objc.Ref) NSEvent {
+	return NSEvent_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSEvent) Init_asNSEvent() NSEvent {
+func (x gen_NSEvent) Init_AsNSEvent() NSEvent {
 	ret := C.NSEvent_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSEvent_fromPointer(ret)
-
+	return NSEvent_FromPointer(ret)
 }
 
 // LocationInWindow returns the receiver’s location in the base coordinate system of the associated window.
@@ -11888,7 +11559,6 @@ func (x gen_NSEvent) LocationInWindow() core.NSPoint {
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // Window returns the window object associated with the event.
@@ -11899,8 +11569,7 @@ func (x gen_NSEvent) Window() NSWindow {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // WindowNumber returns the identifier for the window device associated with the event.
@@ -11912,7 +11581,6 @@ func (x gen_NSEvent) WindowNumber() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // EventRef an opaque carbon type associated with this event.
@@ -11924,7 +11592,6 @@ func (x gen_NSEvent) EventRef() unsafe.Pointer {
 	)
 
 	return ret
-
 }
 
 // Characters returns the characters associated with a key-up or key-down event.
@@ -11935,8 +11602,7 @@ func (x gen_NSEvent) Characters() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // CharactersIgnoringModifiers returns the characters generated by a key event as if no modifier key (except for shift) applies.
@@ -11947,8 +11613,7 @@ func (x gen_NSEvent) CharactersIgnoringModifiers() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // IsARepeat returns a boolean value that indicates whether the key event is a repeat.
@@ -11960,7 +11625,6 @@ func (x gen_NSEvent) IsARepeat() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ButtonNumber returns the button number for a mouse event.
@@ -11972,7 +11636,6 @@ func (x gen_NSEvent) ButtonNumber() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // ClickCount returns the number of mouse clicks associated with a mouse-down or mouse-up event.
@@ -11984,7 +11647,6 @@ func (x gen_NSEvent) ClickCount() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // EventNumber returns the counter value of the latest mouse or tracking-rectangle event object; every system-generated mouse and tracking-rectangle event increments this counter.
@@ -11996,7 +11658,6 @@ func (x gen_NSEvent) EventNumber() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // TrackingNumber returns the identifier of a mouse-tracking event.
@@ -12008,7 +11669,6 @@ func (x gen_NSEvent) TrackingNumber() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // UserData returns the data associated with a mouse-tracking event.
@@ -12020,7 +11680,6 @@ func (x gen_NSEvent) UserData() unsafe.Pointer {
 	)
 
 	return ret
-
 }
 
 // Data1 additional data associated with this event.
@@ -12032,7 +11691,6 @@ func (x gen_NSEvent) Data1() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // Data2 additional data associated with this event.
@@ -12044,7 +11702,6 @@ func (x gen_NSEvent) Data2() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // DeltaX returns the x-coordinate change for mouse-move, mouse-drag, and swipe events.
@@ -12056,7 +11713,6 @@ func (x gen_NSEvent) DeltaX() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // DeltaY returns the y-coordinate change for mouse-move, mouse-drag, and swipe events.
@@ -12068,7 +11724,6 @@ func (x gen_NSEvent) DeltaY() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // DeltaZ returns the z-coordinate change for a scroll wheel, mouse-move, or mouse-drag event.
@@ -12080,7 +11735,6 @@ func (x gen_NSEvent) DeltaZ() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // Stage returns a value of 0, 1, or 2, indicating the stage of a gesture event of type nseventtypepressure.
@@ -12092,7 +11746,6 @@ func (x gen_NSEvent) Stage() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // StageTransition returns the transition value for the stage of a pressure gesture event of type nseventtypepressure.
@@ -12104,7 +11757,6 @@ func (x gen_NSEvent) StageTransition() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // CapabilityMask returns a mask whose set bits indicate the capabilities of the tablet device that generated this event.
@@ -12116,7 +11768,6 @@ func (x gen_NSEvent) CapabilityMask() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // DeviceID returns a special identifier that is used to match tablet-pointer and tablet-proximity events.
@@ -12128,7 +11779,6 @@ func (x gen_NSEvent) DeviceID() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // IsEnteringProximity returns a boolean value that indicates whether a pointing device is entering or leaving the proximity of its tablet.
@@ -12140,7 +11790,6 @@ func (x gen_NSEvent) IsEnteringProximity() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PointingDeviceID returns the index of the pointing device currently in proximity with the tablet.
@@ -12152,7 +11801,6 @@ func (x gen_NSEvent) PointingDeviceID() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // PointingDeviceSerialNumber returns the vendor-assigned serial number of a pointing device.
@@ -12164,7 +11812,6 @@ func (x gen_NSEvent) PointingDeviceSerialNumber() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // SystemTabletID returns the index of the tablet device connected to the system.
@@ -12176,7 +11823,6 @@ func (x gen_NSEvent) SystemTabletID() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // TabletID returns the usb model identifier of the tablet device associated with this event.
@@ -12188,7 +11834,6 @@ func (x gen_NSEvent) TabletID() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // VendorID returns the vendor identifier of the tablet associated with the event.
@@ -12200,7 +11845,6 @@ func (x gen_NSEvent) VendorID() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // VendorPointingDeviceType returns a coded bit field whose set bits indicate the type of pointing device (within a vendor selection) associated with the event.
@@ -12212,7 +11856,6 @@ func (x gen_NSEvent) VendorPointingDeviceType() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // AbsoluteX returns the absolute x coordinate of a pointing device on its tablet at full tablet resolution.
@@ -12224,7 +11867,6 @@ func (x gen_NSEvent) AbsoluteX() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // AbsoluteY returns the absolute y coordinate of a pointing device on its tablet at full tablet resolution.
@@ -12236,7 +11878,6 @@ func (x gen_NSEvent) AbsoluteY() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // AbsoluteZ returns the absolute z coordinate of pointing device on its tablet at full tablet resolution.
@@ -12248,7 +11889,6 @@ func (x gen_NSEvent) AbsoluteZ() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // Tilt returns the scaled tilt values of the pointing device that generated this event.
@@ -12260,7 +11900,6 @@ func (x gen_NSEvent) Tilt() core.NSPoint {
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // VendorDefined an array of three vendor-defined nsnumber objects associated with a pointing-type event.
@@ -12271,8 +11910,7 @@ func (x gen_NSEvent) VendorDefined() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // Magnification returns the change in magnification.
@@ -12284,7 +11922,6 @@ func (x gen_NSEvent) Magnification() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // HasPreciseScrollingDeltas returns a boolean value that indicates whether precise scrolling deltas are available.
@@ -12296,7 +11933,6 @@ func (x gen_NSEvent) HasPreciseScrollingDeltas() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ScrollingDeltaX returns the scroll wheel’s horizontal delta.
@@ -12308,7 +11944,6 @@ func (x gen_NSEvent) ScrollingDeltaX() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // ScrollingDeltaY returns the scroll wheel’s vertical delta.
@@ -12320,7 +11955,6 @@ func (x gen_NSEvent) ScrollingDeltaY() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // IsDirectionInvertedFromDevice returns a boolean value that indicates whether the user has changed the device inversion.
@@ -12332,26 +11966,25 @@ func (x gen_NSEvent) IsDirectionInvertedFromDevice() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSFontRef interface {
 	Pointer() uintptr
-	Init_asNSFont() NSFont
+	Init_AsNSFont() NSFont
 }
 
 type gen_NSFont struct {
 	objc.Object
 }
 
-func NSFont_fromPointer(ptr unsafe.Pointer) NSFont {
+func NSFont_FromPointer(ptr unsafe.Pointer) NSFont {
 	return NSFont{gen_NSFont{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSFont_fromRef(ref objc.Ref) NSFont {
-	return NSFont_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSFont_FromRef(ref objc.Ref) NSFont {
+	return NSFont_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // FontWithSize
@@ -12365,8 +11998,7 @@ func (x gen_NSFont) FontWithSize(
 		C.double(fontSize),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // Set sets this font as the font for the current graphics context.
@@ -12378,19 +12010,17 @@ func (x gen_NSFont) Set() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSFont) Init_asNSFont() NSFont {
+func (x gen_NSFont) Init_AsNSFont() NSFont {
 	ret := C.NSFont_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // PointSize returns the point size of the font.
@@ -12402,7 +12032,6 @@ func (x gen_NSFont) PointSize() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // IsFixedPitch returns a boolean value indicating whether all glyphs in the font have the same advancement.
@@ -12414,7 +12043,6 @@ func (x gen_NSFont) IsFixedPitch() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // MostCompatibleStringEncoding returns the string encoding that works best with the font.
@@ -12426,7 +12054,6 @@ func (x gen_NSFont) MostCompatibleStringEncoding() core.NSStringEncoding {
 	)
 
 	return core.NSStringEncoding(ret)
-
 }
 
 // NumberOfGlyphs returns the number of glyphs in the font.
@@ -12438,7 +12065,6 @@ func (x gen_NSFont) NumberOfGlyphs() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // DisplayName returns the name of the font, including family and face names, to use when displaying the font information to the user.
@@ -12449,8 +12075,7 @@ func (x gen_NSFont) DisplayName() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // FamilyName returns the family name of the font—for example, “times” or “helvetica.”
@@ -12461,8 +12086,7 @@ func (x gen_NSFont) FamilyName() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // FontName returns the full name of the font, as used in postscript language code—for example, “times-roman” or “helvetica-oblique.”
@@ -12473,8 +12097,7 @@ func (x gen_NSFont) FontName() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // IsVertical returns a boolean value indicating whether the font is a vertical font.
@@ -12486,7 +12109,6 @@ func (x gen_NSFont) IsVertical() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // VerticalFont returns a vertical version of the font.
@@ -12497,27 +12119,26 @@ func (x gen_NSFont) VerticalFont() NSFont {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 type NSImageRef interface {
 	Pointer() uintptr
-	Init_asNSImage() NSImage
+	Init_AsNSImage() NSImage
 }
 
 type gen_NSImage struct {
 	objc.Object
 }
 
-func NSImage_fromPointer(ptr unsafe.Pointer) NSImage {
+func NSImage_FromPointer(ptr unsafe.Pointer) NSImage {
 	return NSImage{gen_NSImage{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSImage_fromRef(ref objc.Ref) NSImage {
-	return NSImage_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSImage_FromRef(ref objc.Ref) NSImage {
+	return NSImage_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddRepresentations adds an array of image representation objects to the image.
@@ -12532,7 +12153,6 @@ func (x gen_NSImage) AddRepresentations(
 	)
 
 	return
-
 }
 
 // CancelIncrementalLoad cancels the current download operation, if any, for an incrementally loaded image.
@@ -12544,7 +12164,6 @@ func (x gen_NSImage) CancelIncrementalLoad() {
 	)
 
 	return
-
 }
 
 // DrawInRect draws the image in the specified rectangle.
@@ -12559,13 +12178,12 @@ func (x gen_NSImage) DrawInRect(
 	)
 
 	return
-
 }
 
 // InitByReferencingFile initializes and returns an image object using the specified file.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519955-initbyreferencingfile?language=objc for details.
-func (x gen_NSImage) InitByReferencingFile_asNSImage(
+func (x gen_NSImage) InitByReferencingFile_AsNSImage(
 	fileName core.NSStringRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitByReferencingFile(
@@ -12573,14 +12191,13 @@ func (x gen_NSImage) InitByReferencingFile_asNSImage(
 		objc.RefPointer(fileName),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitByReferencingURL initializes and returns an image object using the specified url.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519990-initbyreferencingurl?language=objc for details.
-func (x gen_NSImage) InitByReferencingURL_asNSImage(
+func (x gen_NSImage) InitByReferencingURL_AsNSImage(
 	url core.NSURLRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitByReferencingURL(
@@ -12588,14 +12205,13 @@ func (x gen_NSImage) InitByReferencingURL_asNSImage(
 		objc.RefPointer(url),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithContentsOfFile initializes and returns an image object with the contents of the specified file.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519918-initwithcontentsoffile?language=objc for details.
-func (x gen_NSImage) InitWithContentsOfFile_asNSImage(
+func (x gen_NSImage) InitWithContentsOfFile_AsNSImage(
 	fileName core.NSStringRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithContentsOfFile(
@@ -12603,14 +12219,13 @@ func (x gen_NSImage) InitWithContentsOfFile_asNSImage(
 		objc.RefPointer(fileName),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithContentsOfURL initializes and returns an image object with the contents of the specified url.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519907-initwithcontentsofurl?language=objc for details.
-func (x gen_NSImage) InitWithContentsOfURL_asNSImage(
+func (x gen_NSImage) InitWithContentsOfURL_AsNSImage(
 	url core.NSURLRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithContentsOfURL(
@@ -12618,14 +12233,13 @@ func (x gen_NSImage) InitWithContentsOfURL_asNSImage(
 		objc.RefPointer(url),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithData initializes and returns an image object using the provided image data.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519941-initwithdata?language=objc for details.
-func (x gen_NSImage) InitWithData_asNSImage(
+func (x gen_NSImage) InitWithData_AsNSImage(
 	data core.NSDataRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithData(
@@ -12633,14 +12247,13 @@ func (x gen_NSImage) InitWithData_asNSImage(
 		objc.RefPointer(data),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithDataIgnoringOrientation initializes and returns an image object using the provided image data and ignoring the exif orientation tags.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519915-initwithdataignoringorientation?language=objc for details.
-func (x gen_NSImage) InitWithDataIgnoringOrientation_asNSImage(
+func (x gen_NSImage) InitWithDataIgnoringOrientation_AsNSImage(
 	data core.NSDataRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithDataIgnoringOrientation(
@@ -12648,14 +12261,13 @@ func (x gen_NSImage) InitWithDataIgnoringOrientation_asNSImage(
 		objc.RefPointer(data),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithPasteboard initializes and returns an image object with data from the specified pasteboard.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519952-initwithpasteboard?language=objc for details.
-func (x gen_NSImage) InitWithPasteboard_asNSImage(
+func (x gen_NSImage) InitWithPasteboard_AsNSImage(
 	pasteboard NSPasteboardRef,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithPasteboard(
@@ -12663,14 +12275,13 @@ func (x gen_NSImage) InitWithPasteboard_asNSImage(
 		objc.RefPointer(pasteboard),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // InitWithSize initializes and returns an image object with the specified dimensions.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1520033-initwithsize?language=objc for details.
-func (x gen_NSImage) InitWithSize_asNSImage(
+func (x gen_NSImage) InitWithSize_AsNSImage(
 	size core.NSSize,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithSize(
@@ -12678,8 +12289,7 @@ func (x gen_NSImage) InitWithSize_asNSImage(
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // IsTemplate returns a boolean value that indicates whether the image is a template image.
@@ -12691,7 +12301,6 @@ func (x gen_NSImage) IsTemplate() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // LayerContentsForContentsScale returns an object that may be used as the contents of a layer.
@@ -12705,8 +12314,7 @@ func (x gen_NSImage) LayerContentsForContentsScale(
 		C.double(layerContentsScale),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // LockFocus prepares the image to receive drawing commands.
@@ -12718,7 +12326,6 @@ func (x gen_NSImage) LockFocus() {
 	)
 
 	return
-
 }
 
 // LockFocusFlipped prepares the image to receive drawing commands using the specified flipped state.
@@ -12733,7 +12340,6 @@ func (x gen_NSImage) LockFocusFlipped(
 	)
 
 	return
-
 }
 
 // Recache invalidates and frees offscreen caches of all image representations.
@@ -12745,7 +12351,6 @@ func (x gen_NSImage) Recache() {
 	)
 
 	return
-
 }
 
 // RecommendedLayerContentsScale returns the recommended layer contents scale for this image.
@@ -12760,7 +12365,6 @@ func (x gen_NSImage) RecommendedLayerContentsScale(
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // UnlockFocus removes the focus from the image.
@@ -12772,19 +12376,17 @@ func (x gen_NSImage) UnlockFocus() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSImage) Init_asNSImage() NSImage {
+func (x gen_NSImage) Init_AsNSImage() NSImage {
 	ret := C.NSImage_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // Delegate returns the image’s delegate object.
@@ -12795,8 +12397,7 @@ func (x gen_NSImage) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the image’s delegate object.
@@ -12811,7 +12412,6 @@ func (x gen_NSImage) SetDelegate(
 	)
 
 	return
-
 }
 
 // Size returns the size of the image.
@@ -12823,7 +12423,6 @@ func (x gen_NSImage) Size() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetSize returns the size of the image.
@@ -12838,7 +12437,6 @@ func (x gen_NSImage) SetSize(
 	)
 
 	return
-
 }
 
 // SetTemplate returns a boolean value that determines whether the image represents a template image.
@@ -12853,7 +12451,6 @@ func (x gen_NSImage) SetTemplate(
 	)
 
 	return
-
 }
 
 // Representations an array containing all of the image object’s image representations.
@@ -12864,8 +12461,7 @@ func (x gen_NSImage) Representations() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // PrefersColorMatch returns a boolean value that indicates whether the image prefers to choose image representations using color-matching or resolution-matching.
@@ -12877,7 +12473,6 @@ func (x gen_NSImage) PrefersColorMatch() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetPrefersColorMatch returns a boolean value that indicates whether the image prefers to choose image representations using color-matching or resolution-matching.
@@ -12892,7 +12487,6 @@ func (x gen_NSImage) SetPrefersColorMatch(
 	)
 
 	return
-
 }
 
 // UsesEPSOnResolutionMismatch returns a boolean value that indicates whether eps representations are preferred when no other representations match the resolution of the device.
@@ -12904,7 +12498,6 @@ func (x gen_NSImage) UsesEPSOnResolutionMismatch() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesEPSOnResolutionMismatch returns a boolean value that indicates whether eps representations are preferred when no other representations match the resolution of the device.
@@ -12919,7 +12512,6 @@ func (x gen_NSImage) SetUsesEPSOnResolutionMismatch(
 	)
 
 	return
-
 }
 
 // MatchesOnMultipleResolution returns a boolean value that indicates whether image representations whose resolution is an integral multiple of the device resolution are a match.
@@ -12931,7 +12523,6 @@ func (x gen_NSImage) MatchesOnMultipleResolution() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetMatchesOnMultipleResolution returns a boolean value that indicates whether image representations whose resolution is an integral multiple of the device resolution are a match.
@@ -12946,7 +12537,6 @@ func (x gen_NSImage) SetMatchesOnMultipleResolution(
 	)
 
 	return
-
 }
 
 // IsValid returns a boolean value that indicates whether it is possible to draw an image representation.
@@ -12958,7 +12548,6 @@ func (x gen_NSImage) IsValid() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // BackgroundColor returns the background color for the image.
@@ -12969,8 +12558,7 @@ func (x gen_NSImage) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor returns the background color for the image.
@@ -12985,7 +12573,6 @@ func (x gen_NSImage) SetBackgroundColor(
 	)
 
 	return
-
 }
 
 // AlignmentRect returns a rectangle that you can use to position the image during layout.
@@ -12997,7 +12584,6 @@ func (x gen_NSImage) AlignmentRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // SetAlignmentRect returns a rectangle that you can use to position the image during layout.
@@ -13012,7 +12598,6 @@ func (x gen_NSImage) SetAlignmentRect(
 	)
 
 	return
-
 }
 
 // TIFFRepresentation returns a data object containing tiff data for all of the image representations in the image.
@@ -13023,8 +12608,7 @@ func (x gen_NSImage) TIFFRepresentation() core.NSData {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSData_fromPointer(ret)
-
+	return core.NSData_FromPointer(ret)
 }
 
 // AccessibilityDescription returns the image’s accessibility description.
@@ -13035,8 +12619,7 @@ func (x gen_NSImage) AccessibilityDescription() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetAccessibilityDescription returns the image’s accessibility description.
@@ -13051,7 +12634,6 @@ func (x gen_NSImage) SetAccessibilityDescription(
 	)
 
 	return
-
 }
 
 // MatchesOnlyOnBestFittingAxis returns a boolean value that indicates whether the image matches only on the best fitting axis.
@@ -13063,7 +12645,6 @@ func (x gen_NSImage) MatchesOnlyOnBestFittingAxis() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetMatchesOnlyOnBestFittingAxis returns a boolean value that indicates whether the image matches only on the best fitting axis.
@@ -13078,38 +12659,36 @@ func (x gen_NSImage) SetMatchesOnlyOnBestFittingAxis(
 	)
 
 	return
-
 }
 
 type NSImageViewRef interface {
 	Pointer() uintptr
-	Init_asNSImageView() NSImageView
+	Init_AsNSImageView() NSImageView
 }
 
 type gen_NSImageView struct {
 	NSControl
 }
 
-func NSImageView_fromPointer(ptr unsafe.Pointer) NSImageView {
+func NSImageView_FromPointer(ptr unsafe.Pointer) NSImageView {
 	return NSImageView{gen_NSImageView{
-		NSControl_fromPointer(ptr),
+		NSControl_FromPointer(ptr),
 	}}
 }
 
-func NSImageView_fromRef(ref objc.Ref) NSImageView {
-	return NSImageView_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSImageView_FromRef(ref objc.Ref) NSImageView {
+	return NSImageView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSImageView) Init_asNSImageView() NSImageView {
+func (x gen_NSImageView) Init_AsNSImageView() NSImageView {
 	ret := C.NSImageView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImageView_fromPointer(ret)
-
+	return NSImageView_FromPointer(ret)
 }
 
 // Image returns the image displayed by the image view.
@@ -13120,8 +12699,7 @@ func (x gen_NSImageView) Image() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetImage returns the image displayed by the image view.
@@ -13136,7 +12714,6 @@ func (x gen_NSImageView) SetImage(
 	)
 
 	return
-
 }
 
 // Animates returns a boolean value indicating whether the image view automatically plays animated images.
@@ -13148,7 +12725,6 @@ func (x gen_NSImageView) Animates() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAnimates returns a boolean value indicating whether the image view automatically plays animated images.
@@ -13163,7 +12739,6 @@ func (x gen_NSImageView) SetAnimates(
 	)
 
 	return
-
 }
 
 // IsEditable returns a boolean value indicating whether the user can drag a new image into the image view.
@@ -13175,7 +12750,6 @@ func (x gen_NSImageView) IsEditable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEditable returns a boolean value indicating whether the user can drag a new image into the image view.
@@ -13190,7 +12764,6 @@ func (x gen_NSImageView) SetEditable(
 	)
 
 	return
-
 }
 
 // AllowsCutCopyPaste returns a boolean value indicating whether the image view lets the user cut, copy, and paste the image contents.
@@ -13202,7 +12775,6 @@ func (x gen_NSImageView) AllowsCutCopyPaste() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsCutCopyPaste returns a boolean value indicating whether the image view lets the user cut, copy, and paste the image contents.
@@ -13217,7 +12789,6 @@ func (x gen_NSImageView) SetAllowsCutCopyPaste(
 	)
 
 	return
-
 }
 
 // ContentTintColor
@@ -13228,8 +12799,7 @@ func (x gen_NSImageView) ContentTintColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetContentTintColor
@@ -13244,32 +12814,31 @@ func (x gen_NSImageView) SetContentTintColor(
 	)
 
 	return
-
 }
 
 type NSNibRef interface {
 	Pointer() uintptr
-	Init_asNSNib() NSNib
+	Init_AsNSNib() NSNib
 }
 
 type gen_NSNib struct {
 	objc.Object
 }
 
-func NSNib_fromPointer(ptr unsafe.Pointer) NSNib {
+func NSNib_FromPointer(ptr unsafe.Pointer) NSNib {
 	return NSNib{gen_NSNib{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSNib_fromRef(ref objc.Ref) NSNib {
-	return NSNib_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSNib_FromRef(ref objc.Ref) NSNib {
+	return NSNib_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // InitWithNibDataBundle initializes an instance with nib data and specified bundle for locating resources.
 //
 // See https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc for details.
-func (x gen_NSNib) InitWithNibDataBundle_asNSNib(
+func (x gen_NSNib) InitWithNibDataBundle_AsNSNib(
 	nibData core.NSDataRef,
 	bundle NSBundleRef,
 ) NSNib {
@@ -13279,8 +12848,7 @@ func (x gen_NSNib) InitWithNibDataBundle_asNSNib(
 		objc.RefPointer(bundle),
 	)
 
-	return NSNib_fromPointer(ret)
-
+	return NSNib_FromPointer(ret)
 }
 
 // InstantiateWithOwnerTopLevelObjects instantiates objects in the nib file with the specified owner.
@@ -13297,38 +12865,36 @@ func (x gen_NSNib) InstantiateWithOwnerTopLevelObjects(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSNib) Init_asNSNib() NSNib {
+func (x gen_NSNib) Init_AsNSNib() NSNib {
 	ret := C.NSNib_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSNib_fromPointer(ret)
-
+	return NSNib_FromPointer(ret)
 }
 
 type NSPasteboardRef interface {
 	Pointer() uintptr
-	Init_asNSPasteboard() NSPasteboard
+	Init_AsNSPasteboard() NSPasteboard
 }
 
 type gen_NSPasteboard struct {
 	objc.Object
 }
 
-func NSPasteboard_fromPointer(ptr unsafe.Pointer) NSPasteboard {
+func NSPasteboard_FromPointer(ptr unsafe.Pointer) NSPasteboard {
 	return NSPasteboard{gen_NSPasteboard{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSPasteboard_fromRef(ref objc.Ref) NSPasteboard {
-	return NSPasteboard_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSPasteboard_FromRef(ref objc.Ref) NSPasteboard {
+	return NSPasteboard_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddTypesOwner adds promises for the specified types to the first pasteboard item.
@@ -13345,7 +12911,6 @@ func (x gen_NSPasteboard) AddTypesOwner(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // CanReadItemWithDataConformingToTypes returns a boolean value that indicates whether the receiver contains any items that conform to the specified utis.
@@ -13360,7 +12925,6 @@ func (x gen_NSPasteboard) CanReadItemWithDataConformingToTypes(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CanReadObjectForClassesOptions returns a boolean value that indicates whether the receiver contains any items that can be represented as an instance of any class in a given array.
@@ -13377,7 +12941,6 @@ func (x gen_NSPasteboard) CanReadObjectForClassesOptions(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ClearContents clears the existing contents of the pasteboard.
@@ -13389,7 +12952,6 @@ func (x gen_NSPasteboard) ClearContents() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // DeclareTypesOwner prepares the receiver for a change in its contents by declaring the new types of data it will contain and a new owner.
@@ -13406,7 +12968,6 @@ func (x gen_NSPasteboard) DeclareTypesOwner(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // ReadObjectsForClassesOptions reads from the receiver objects that best match the specified array of classes.
@@ -13422,8 +12983,7 @@ func (x gen_NSPasteboard) ReadObjectsForClassesOptions(
 		objc.RefPointer(options),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // ReleaseGlobally releases the receiver’s resources in the pasteboard server.
@@ -13435,7 +12995,6 @@ func (x gen_NSPasteboard) ReleaseGlobally() {
 	)
 
 	return
-
 }
 
 // WriteFileContents writes the contents of the specified file to the pasteboard.
@@ -13450,7 +13009,6 @@ func (x gen_NSPasteboard) WriteFileContents(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // WriteObjects writes an array of objects to the receiver.
@@ -13465,19 +13023,17 @@ func (x gen_NSPasteboard) WriteObjects(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSPasteboard) Init_asNSPasteboard() NSPasteboard {
+func (x gen_NSPasteboard) Init_AsNSPasteboard() NSPasteboard {
 	ret := C.NSPasteboard_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSPasteboard_fromPointer(ret)
-
+	return NSPasteboard_FromPointer(ret)
 }
 
 // PasteboardItems an array that contains all the items held by the pasteboard.
@@ -13488,8 +13044,7 @@ func (x gen_NSPasteboard) PasteboardItems() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // Types an array of the receiver’s supported data types.
@@ -13500,8 +13055,7 @@ func (x gen_NSPasteboard) Types() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // ChangeCount returns the receiver’s change count.
@@ -13513,26 +13067,25 @@ func (x gen_NSPasteboard) ChangeCount() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 type NSLayoutManagerRef interface {
 	Pointer() uintptr
-	Init_asNSLayoutManager() NSLayoutManager
+	Init_AsNSLayoutManager() NSLayoutManager
 }
 
 type gen_NSLayoutManager struct {
 	objc.Object
 }
 
-func NSLayoutManager_fromPointer(ptr unsafe.Pointer) NSLayoutManager {
+func NSLayoutManager_FromPointer(ptr unsafe.Pointer) NSLayoutManager {
 	return NSLayoutManager{gen_NSLayoutManager{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSLayoutManager_fromRef(ref objc.Ref) NSLayoutManager {
-	return NSLayoutManager_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSLayoutManager_FromRef(ref objc.Ref) NSLayoutManager {
+	return NSLayoutManager_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddTextContainer appends the specified text container to the series of text containers where the layout manager arranges text.
@@ -13547,7 +13100,6 @@ func (x gen_NSLayoutManager) AddTextContainer(
 	)
 
 	return
-
 }
 
 // AttachmentSizeForGlyphAtIndex returns the size of the attachment glyph at the specified index.
@@ -13562,7 +13114,6 @@ func (x gen_NSLayoutManager) AttachmentSizeForGlyphAtIndex(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // CharacterIndexForGlyphAtIndex returns the index in the text storage for the first character of the specified glyph.
@@ -13577,7 +13128,6 @@ func (x gen_NSLayoutManager) CharacterIndexForGlyphAtIndex(
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // DefaultBaselineOffsetForFont returns the default baseline offset that the layout manager's typesetter uses for the specified font.
@@ -13592,7 +13142,6 @@ func (x gen_NSLayoutManager) DefaultBaselineOffsetForFont(
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // DefaultLineHeightForFont returns the default line height for a line of text that uses a specified font.
@@ -13607,7 +13156,6 @@ func (x gen_NSLayoutManager) DefaultLineHeightForFont(
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // DrawsOutsideLineFragmentForGlyphAtIndex indicates whether the glyph draws outside its line fragment rectangle.
@@ -13622,7 +13170,6 @@ func (x gen_NSLayoutManager) DrawsOutsideLineFragmentForGlyphAtIndex(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // EnsureLayoutForBoundingRectInTextContainer forces the layout manager to perform layout for the specified area in the specified text container if it hasn’t already.
@@ -13639,7 +13186,6 @@ func (x gen_NSLayoutManager) EnsureLayoutForBoundingRectInTextContainer(
 	)
 
 	return
-
 }
 
 // EnsureLayoutForTextContainer forces the layout manager to perform layout for the specified text container if it hasn’t already.
@@ -13654,7 +13200,6 @@ func (x gen_NSLayoutManager) EnsureLayoutForTextContainer(
 	)
 
 	return
-
 }
 
 // FirstUnlaidCharacterIndex returns the index for the first character in the layout manager that isn’t in the layout.
@@ -13666,7 +13211,6 @@ func (x gen_NSLayoutManager) FirstUnlaidCharacterIndex() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // FirstUnlaidGlyphIndex returns the index for the first glyph in the layout manager that isn’t in the layout.
@@ -13678,7 +13222,6 @@ func (x gen_NSLayoutManager) FirstUnlaidGlyphIndex() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // GlyphIndexForCharacterAtIndex returns the index of the first glyph of the character at the specified index.
@@ -13693,19 +13236,17 @@ func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // Init initializes a newly created layout manager object.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc for details.
-func (x gen_NSLayoutManager) Init_asNSLayoutManager() NSLayoutManager {
+func (x gen_NSLayoutManager) Init_AsNSLayoutManager() NSLayoutManager {
 	ret := C.NSLayoutManager_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSLayoutManager_fromPointer(ret)
-
+	return NSLayoutManager_FromPointer(ret)
 }
 
 // InsertTextContainerAtIndex inserts a text container at the specified index in the list of text containers.
@@ -13722,7 +13263,6 @@ func (x gen_NSLayoutManager) InsertTextContainerAtIndex(
 	)
 
 	return
-
 }
 
 // IsValidGlyphIndex indicates whether the specified index refers to a valid glyph.
@@ -13737,7 +13277,6 @@ func (x gen_NSLayoutManager) IsValidGlyphIndex(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // LayoutManagerOwnsFirstResponderInWindow indicates whether the first responder in the specified window is a text view for the layout manager.
@@ -13752,7 +13291,6 @@ func (x gen_NSLayoutManager) LayoutManagerOwnsFirstResponderInWindow(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NotShownAttributeForGlyphAtIndex indicates whether the glyph at the specified index has a visible representation.
@@ -13767,7 +13305,6 @@ func (x gen_NSLayoutManager) NotShownAttributeForGlyphAtIndex(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // RemoveTextContainerAtIndex removes the text container at the specified index and invalidates the layout as necessary.
@@ -13782,7 +13319,6 @@ func (x gen_NSLayoutManager) RemoveTextContainerAtIndex(
 	)
 
 	return
-
 }
 
 // SetDrawsOutsideLineFragmentForGlyphAtIndex indicates whether the specified glyph exceeds the bounds of the line fragment for its layout.
@@ -13799,7 +13335,6 @@ func (x gen_NSLayoutManager) SetDrawsOutsideLineFragmentForGlyphAtIndex(
 	)
 
 	return
-
 }
 
 // SetExtraLineFragmentRectUsedRectTextContainer sets the bounds and container for the extra line fragment.
@@ -13818,7 +13353,6 @@ func (x gen_NSLayoutManager) SetExtraLineFragmentRectUsedRectTextContainer(
 	)
 
 	return
-
 }
 
 // SetNotShownAttributeForGlyphAtIndex sets the visibility of the glyph at the specified index.
@@ -13835,7 +13369,6 @@ func (x gen_NSLayoutManager) SetNotShownAttributeForGlyphAtIndex(
 	)
 
 	return
-
 }
 
 // TextContainerChangedGeometry invalidates the layout information, and possibly glyphs, for the specified text container and all subsequent text container objects.
@@ -13850,7 +13383,6 @@ func (x gen_NSLayoutManager) TextContainerChangedGeometry(
 	)
 
 	return
-
 }
 
 // TextContainerChangedTextView updates the information necessary to manage text view objects for the specified text container.
@@ -13865,7 +13397,6 @@ func (x gen_NSLayoutManager) TextContainerChangedTextView(
 	)
 
 	return
-
 }
 
 // UsedRectForTextContainer returns the bounding rectangle for the glyphs in the specified text container.
@@ -13880,7 +13411,6 @@ func (x gen_NSLayoutManager) UsedRectForTextContainer(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // Delegate returns the layout manager’s delegate.
@@ -13891,8 +13421,7 @@ func (x gen_NSLayoutManager) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the layout manager’s delegate.
@@ -13907,7 +13436,6 @@ func (x gen_NSLayoutManager) SetDelegate(
 	)
 
 	return
-
 }
 
 // AllowsNonContiguousLayout returns a boolean value that indicates whether the layout manager allows noncontiguous layout.
@@ -13919,7 +13447,6 @@ func (x gen_NSLayoutManager) AllowsNonContiguousLayout() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsNonContiguousLayout returns a boolean value that indicates whether the layout manager allows noncontiguous layout.
@@ -13934,7 +13461,6 @@ func (x gen_NSLayoutManager) SetAllowsNonContiguousLayout(
 	)
 
 	return
-
 }
 
 // HasNonContiguousLayout returns a boolean value that indicates whether the layout manager currently has any areas of noncontiguous layout.
@@ -13946,7 +13472,6 @@ func (x gen_NSLayoutManager) HasNonContiguousLayout() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ShowsInvisibleCharacters returns a boolean value that indicates whether to substitute visible glyphs for whitespace and other typically invisible characters.
@@ -13958,7 +13483,6 @@ func (x gen_NSLayoutManager) ShowsInvisibleCharacters() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetShowsInvisibleCharacters returns a boolean value that indicates whether to substitute visible glyphs for whitespace and other typically invisible characters.
@@ -13973,7 +13497,6 @@ func (x gen_NSLayoutManager) SetShowsInvisibleCharacters(
 	)
 
 	return
-
 }
 
 // ShowsControlCharacters returns a boolean value that indicates whether the layout manager substitutes visible glyphs for control characters in the layout.
@@ -13985,7 +13508,6 @@ func (x gen_NSLayoutManager) ShowsControlCharacters() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetShowsControlCharacters returns a boolean value that indicates whether the layout manager substitutes visible glyphs for control characters in the layout.
@@ -14000,7 +13522,6 @@ func (x gen_NSLayoutManager) SetShowsControlCharacters(
 	)
 
 	return
-
 }
 
 // UsesFontLeading returns a boolean value that indicates whether the layout manager uses the leading of the font.
@@ -14012,7 +13533,6 @@ func (x gen_NSLayoutManager) UsesFontLeading() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesFontLeading returns a boolean value that indicates whether the layout manager uses the leading of the font.
@@ -14027,7 +13547,6 @@ func (x gen_NSLayoutManager) SetUsesFontLeading(
 	)
 
 	return
-
 }
 
 // BackgroundLayoutEnabled returns a boolean value that indicates whether the layout manager generates glyphs and lays them out when the app's run loop is idle.
@@ -14039,7 +13558,6 @@ func (x gen_NSLayoutManager) BackgroundLayoutEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetBackgroundLayoutEnabled returns a boolean value that indicates whether the layout manager generates glyphs and lays them out when the app's run loop is idle.
@@ -14054,7 +13572,6 @@ func (x gen_NSLayoutManager) SetBackgroundLayoutEnabled(
 	)
 
 	return
-
 }
 
 // LimitsLayoutForSuspiciousContents returns a boolean value that indicates whether the layout manager avoids laying out unusually long or suspicious input.
@@ -14066,7 +13583,6 @@ func (x gen_NSLayoutManager) LimitsLayoutForSuspiciousContents() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetLimitsLayoutForSuspiciousContents returns a boolean value that indicates whether the layout manager avoids laying out unusually long or suspicious input.
@@ -14081,7 +13597,6 @@ func (x gen_NSLayoutManager) SetLimitsLayoutForSuspiciousContents(
 	)
 
 	return
-
 }
 
 // UsesDefaultHyphenation returns a boolean value that indicates whether the layout manager uses the default hyphenation rules to wrap lines.
@@ -14093,7 +13608,6 @@ func (x gen_NSLayoutManager) UsesDefaultHyphenation() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesDefaultHyphenation returns a boolean value that indicates whether the layout manager uses the default hyphenation rules to wrap lines.
@@ -14108,7 +13622,6 @@ func (x gen_NSLayoutManager) SetUsesDefaultHyphenation(
 	)
 
 	return
-
 }
 
 // TextContainers returns the current text containers of the layout manager.
@@ -14119,8 +13632,7 @@ func (x gen_NSLayoutManager) TextContainers() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // NumberOfGlyphs returns the number of glyphs in the layout manager.
@@ -14132,7 +13644,6 @@ func (x gen_NSLayoutManager) NumberOfGlyphs() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // ExtraLineFragmentRect returns the rectangle for the extra line fragment at the end of a document.
@@ -14144,7 +13655,6 @@ func (x gen_NSLayoutManager) ExtraLineFragmentRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ExtraLineFragmentTextContainer returns the text container for the extra line fragment rectangle.
@@ -14155,8 +13665,7 @@ func (x gen_NSLayoutManager) ExtraLineFragmentTextContainer() NSTextContainer {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextContainer_fromPointer(ret)
-
+	return NSTextContainer_FromPointer(ret)
 }
 
 // ExtraLineFragmentUsedRect returns the rectangle that encloses the insertion point in the extra line fragment rectangle.
@@ -14168,7 +13677,6 @@ func (x gen_NSLayoutManager) ExtraLineFragmentUsedRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // FirstTextView returns the first text view in the layout manager’s series of text views.
@@ -14179,8 +13687,7 @@ func (x gen_NSLayoutManager) FirstTextView() NSTextView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // TextViewForBeginningOfSelection returns the text view that contains the first glyph in the selection.
@@ -14191,27 +13698,26 @@ func (x gen_NSLayoutManager) TextViewForBeginningOfSelection() NSTextView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 type NSMenuRef interface {
 	Pointer() uintptr
-	Init_asNSMenu() NSMenu
+	Init_AsNSMenu() NSMenu
 }
 
 type gen_NSMenu struct {
 	objc.Object
 }
 
-func NSMenu_fromPointer(ptr unsafe.Pointer) NSMenu {
+func NSMenu_FromPointer(ptr unsafe.Pointer) NSMenu {
 	return NSMenu{gen_NSMenu{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSMenu_fromRef(ref objc.Ref) NSMenu {
-	return NSMenu_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSMenu_FromRef(ref objc.Ref) NSMenu {
+	return NSMenu_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddItem adds a menu item to the end of the menu.
@@ -14226,7 +13732,6 @@ func (x gen_NSMenu) AddItem(
 	)
 
 	return
-
 }
 
 // AddItemWithTitleActionKeyEquivalent creates a new menu item and adds it to the end of the menu.
@@ -14244,8 +13749,7 @@ func (x gen_NSMenu) AddItemWithTitleActionKeyEquivalent(
 		objc.RefPointer(charCode),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // CancelTracking dismisses the menu and ends all menu tracking.
@@ -14257,7 +13761,6 @@ func (x gen_NSMenu) CancelTracking() {
 	)
 
 	return
-
 }
 
 // CancelTrackingWithoutAnimation dismisses the menu and ends all menu tracking without displaying the associated animation.
@@ -14269,7 +13772,6 @@ func (x gen_NSMenu) CancelTrackingWithoutAnimation() {
 	)
 
 	return
-
 }
 
 // IndexOfItem returns the index identifying the location of a specified menu item in the menu.
@@ -14284,7 +13786,6 @@ func (x gen_NSMenu) IndexOfItem(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IndexOfItemWithRepresentedObject returns the index of the first menu item in the menu that has a given represented object.
@@ -14299,7 +13800,6 @@ func (x gen_NSMenu) IndexOfItemWithRepresentedObject(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IndexOfItemWithSubmenu returns the index of the menu item in the menu with the given submenu.
@@ -14314,7 +13814,6 @@ func (x gen_NSMenu) IndexOfItemWithSubmenu(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IndexOfItemWithTag returns the index of the first menu item in the menu identified by a tag.
@@ -14329,7 +13828,6 @@ func (x gen_NSMenu) IndexOfItemWithTag(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IndexOfItemWithTargetAndAction returns the index of the first menu item in the menu that has a specified action and target.
@@ -14346,7 +13844,6 @@ func (x gen_NSMenu) IndexOfItemWithTargetAndAction(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IndexOfItemWithTitle returns the index of the first menu item in the menu that has a specified title.
@@ -14361,13 +13858,12 @@ func (x gen_NSMenu) IndexOfItemWithTitle(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // InitWithTitle initializes and returns a menu having the specified title and with autoenabling of menu items turned on.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518144-initwithtitle?language=objc for details.
-func (x gen_NSMenu) InitWithTitle_asNSMenu(
+func (x gen_NSMenu) InitWithTitle_AsNSMenu(
 	title core.NSStringRef,
 ) NSMenu {
 	ret := C.NSMenu_inst_InitWithTitle(
@@ -14375,8 +13871,7 @@ func (x gen_NSMenu) InitWithTitle_asNSMenu(
 		objc.RefPointer(title),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // InsertItemAtIndex inserts a menu item into the menu at a specific location.
@@ -14393,7 +13888,6 @@ func (x gen_NSMenu) InsertItemAtIndex(
 	)
 
 	return
-
 }
 
 // InsertItemWithTitleActionKeyEquivalentAtIndex creates and adds a menu item at a specified location in the menu.
@@ -14413,8 +13907,7 @@ func (x gen_NSMenu) InsertItemWithTitleActionKeyEquivalentAtIndex(
 		C.long(index),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // ItemAtIndex returns the menu item at a specific location of the menu.
@@ -14428,8 +13921,7 @@ func (x gen_NSMenu) ItemAtIndex(
 		C.long(index),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // ItemChanged invoked when a menu item is modified visually (for example, its title changes).
@@ -14444,7 +13936,6 @@ func (x gen_NSMenu) ItemChanged(
 	)
 
 	return
-
 }
 
 // ItemWithTag returns the first menu item in the menu with the specified tag.
@@ -14458,8 +13949,7 @@ func (x gen_NSMenu) ItemWithTag(
 		C.long(tag),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // ItemWithTitle returns the first menu item in the menu with a specified title.
@@ -14473,8 +13963,7 @@ func (x gen_NSMenu) ItemWithTitle(
 		objc.RefPointer(title),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // PerformActionForItemAtIndex causes the application to send the action message of a specified menu item to its target.
@@ -14489,7 +13978,6 @@ func (x gen_NSMenu) PerformActionForItemAtIndex(
 	)
 
 	return
-
 }
 
 // PerformKeyEquivalent performs the action for the menu item that corresponds to the given key equivalent.
@@ -14504,7 +13992,6 @@ func (x gen_NSMenu) PerformKeyEquivalent(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PopUpMenuPositioningItemAtLocationInView pops up the menu at the specified location.
@@ -14523,7 +14010,6 @@ func (x gen_NSMenu) PopUpMenuPositioningItemAtLocationInView(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // RemoveAllItems removes all the menu items in the menu.
@@ -14535,7 +14021,6 @@ func (x gen_NSMenu) RemoveAllItems() {
 	)
 
 	return
-
 }
 
 // RemoveItem removes a menu item from the menu.
@@ -14550,7 +14035,6 @@ func (x gen_NSMenu) RemoveItem(
 	)
 
 	return
-
 }
 
 // RemoveItemAtIndex removes the menu item at a specified location in the menu.
@@ -14565,7 +14049,6 @@ func (x gen_NSMenu) RemoveItemAtIndex(
 	)
 
 	return
-
 }
 
 // SetSubmenuForItem assigns a menu to be a submenu of the menu controlled by a given menu item.
@@ -14582,7 +14065,6 @@ func (x gen_NSMenu) SetSubmenuForItem(
 	)
 
 	return
-
 }
 
 // SubmenuAction returns the action method assigned to menu items that open submenus.
@@ -14597,7 +14079,6 @@ func (x gen_NSMenu) SubmenuAction(
 	)
 
 	return
-
 }
 
 // Update enables or disables the menu items of the menu based on the nsmenuvalidation informal protocol and sizes the menu to fit its current menu items if necessary.
@@ -14609,19 +14090,17 @@ func (x gen_NSMenu) Update() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSMenu) Init_asNSMenu() NSMenu {
+func (x gen_NSMenu) Init_AsNSMenu() NSMenu {
 	ret := C.NSMenu_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // MenuBarHeight returns the menu bar height for the main menu in pixels.
@@ -14633,7 +14112,6 @@ func (x gen_NSMenu) MenuBarHeight() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // NumberOfItems returns the number of menu items in the menu, including separator items.
@@ -14645,7 +14123,6 @@ func (x gen_NSMenu) NumberOfItems() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // ItemArray an array containing the menu items in the menu.
@@ -14656,8 +14133,7 @@ func (x gen_NSMenu) ItemArray() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetItemArray an array containing the menu items in the menu.
@@ -14672,7 +14148,6 @@ func (x gen_NSMenu) SetItemArray(
 	)
 
 	return
-
 }
 
 // Supermenu returns the parent menu that contains the menu as a submenu.
@@ -14683,8 +14158,7 @@ func (x gen_NSMenu) Supermenu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetSupermenu returns the parent menu that contains the menu as a submenu.
@@ -14699,7 +14173,6 @@ func (x gen_NSMenu) SetSupermenu(
 	)
 
 	return
-
 }
 
 // AutoenablesItems indicates whether the menu automatically enables and disables its menu items.
@@ -14711,7 +14184,6 @@ func (x gen_NSMenu) AutoenablesItems() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutoenablesItems indicates whether the menu automatically enables and disables its menu items.
@@ -14726,7 +14198,6 @@ func (x gen_NSMenu) SetAutoenablesItems(
 	)
 
 	return
-
 }
 
 // Font returns the font of the menu and its submenus.
@@ -14737,8 +14208,7 @@ func (x gen_NSMenu) Font() NSFont {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // SetFont returns the font of the menu and its submenus.
@@ -14753,7 +14223,6 @@ func (x gen_NSMenu) SetFont(
 	)
 
 	return
-
 }
 
 // Title returns the title of the menu.
@@ -14764,8 +14233,7 @@ func (x gen_NSMenu) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetTitle returns the title of the menu.
@@ -14780,7 +14248,6 @@ func (x gen_NSMenu) SetTitle(
 	)
 
 	return
-
 }
 
 // MinimumWidth returns the minimum width of the menu in screen coordinates.
@@ -14792,7 +14259,6 @@ func (x gen_NSMenu) MinimumWidth() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetMinimumWidth returns the minimum width of the menu in screen coordinates.
@@ -14807,7 +14273,6 @@ func (x gen_NSMenu) SetMinimumWidth(
 	)
 
 	return
-
 }
 
 // Size returns the size of the menu in screen coordinates
@@ -14819,7 +14284,6 @@ func (x gen_NSMenu) Size() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // AllowsContextMenuPlugIns indicates whether the pop-up menu allows appending of contextual menu plug-in items.
@@ -14831,7 +14295,6 @@ func (x gen_NSMenu) AllowsContextMenuPlugIns() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsContextMenuPlugIns indicates whether the pop-up menu allows appending of contextual menu plug-in items.
@@ -14846,7 +14309,6 @@ func (x gen_NSMenu) SetAllowsContextMenuPlugIns(
 	)
 
 	return
-
 }
 
 // ShowsStateColumn indicates whether the menu displays the state column.
@@ -14858,7 +14320,6 @@ func (x gen_NSMenu) ShowsStateColumn() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetShowsStateColumn indicates whether the menu displays the state column.
@@ -14873,7 +14334,6 @@ func (x gen_NSMenu) SetShowsStateColumn(
 	)
 
 	return
-
 }
 
 // HighlightedItem indicates the currently highlighted item in the menu.
@@ -14884,8 +14344,7 @@ func (x gen_NSMenu) HighlightedItem() NSMenuItem {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // Delegate returns the delegate of the menu.
@@ -14896,8 +14355,7 @@ func (x gen_NSMenu) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the delegate of the menu.
@@ -14912,26 +14370,25 @@ func (x gen_NSMenu) SetDelegate(
 	)
 
 	return
-
 }
 
 type NSPopoverRef interface {
 	Pointer() uintptr
-	Init_asNSPopover() NSPopover
+	Init_AsNSPopover() NSPopover
 }
 
 type gen_NSPopover struct {
 	objc.Object
 }
 
-func NSPopover_fromPointer(ptr unsafe.Pointer) NSPopover {
+func NSPopover_FromPointer(ptr unsafe.Pointer) NSPopover {
 	return NSPopover{gen_NSPopover{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSPopover_fromRef(ref objc.Ref) NSPopover {
-	return NSPopover_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSPopover_FromRef(ref objc.Ref) NSPopover {
+	return NSPopover_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Close forces the popover to close without consulting its delegate.
@@ -14943,19 +14400,17 @@ func (x gen_NSPopover) Close() {
 	)
 
 	return
-
 }
 
 // Init
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc for details.
-func (x gen_NSPopover) Init_asNSPopover() NSPopover {
+func (x gen_NSPopover) Init_AsNSPopover() NSPopover {
 	ret := C.NSPopover_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSPopover_fromPointer(ret)
-
+	return NSPopover_FromPointer(ret)
 }
 
 // PerformClose attempts to close the popover.
@@ -14970,7 +14425,6 @@ func (x gen_NSPopover) PerformClose(
 	)
 
 	return
-
 }
 
 // Behavior specifies the behavior of the popover.
@@ -14982,7 +14436,6 @@ func (x gen_NSPopover) Behavior() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetBehavior specifies the behavior of the popover.
@@ -14997,7 +14450,6 @@ func (x gen_NSPopover) SetBehavior(
 	)
 
 	return
-
 }
 
 // PositioningRect returns the rectangle within the positioning view relative to which the popover should be positioned.
@@ -15009,7 +14461,6 @@ func (x gen_NSPopover) PositioningRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // SetPositioningRect returns the rectangle within the positioning view relative to which the popover should be positioned.
@@ -15024,7 +14475,6 @@ func (x gen_NSPopover) SetPositioningRect(
 	)
 
 	return
-
 }
 
 // Animates specifies if the popover is to be animated.
@@ -15036,7 +14486,6 @@ func (x gen_NSPopover) Animates() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAnimates specifies if the popover is to be animated.
@@ -15051,7 +14500,6 @@ func (x gen_NSPopover) SetAnimates(
 	)
 
 	return
-
 }
 
 // ContentSize returns the content size of the popover.
@@ -15063,7 +14511,6 @@ func (x gen_NSPopover) ContentSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetContentSize returns the content size of the popover.
@@ -15078,7 +14525,6 @@ func (x gen_NSPopover) SetContentSize(
 	)
 
 	return
-
 }
 
 // IsShown returns the display state of the popover.
@@ -15090,7 +14536,6 @@ func (x gen_NSPopover) IsShown() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsDetached returns a boolean value that indicates whether the window created by a popover's detachment is automatically created.
@@ -15102,32 +14547,31 @@ func (x gen_NSPopover) IsDetached() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSMenuItemRef interface {
 	Pointer() uintptr
-	Init_asNSMenuItem() NSMenuItem
+	Init_AsNSMenuItem() NSMenuItem
 }
 
 type gen_NSMenuItem struct {
 	objc.Object
 }
 
-func NSMenuItem_fromPointer(ptr unsafe.Pointer) NSMenuItem {
+func NSMenuItem_FromPointer(ptr unsafe.Pointer) NSMenuItem {
 	return NSMenuItem{gen_NSMenuItem{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSMenuItem_fromRef(ref objc.Ref) NSMenuItem {
-	return NSMenuItem_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSMenuItem_FromRef(ref objc.Ref) NSMenuItem {
+	return NSMenuItem_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // InitWithTitleActionKeyEquivalent returns an initialized instance of nsmenuitem.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc for details.
-func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent_asNSMenuItem(
+func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent_AsNSMenuItem(
 	string core.NSStringRef,
 	selector objc.Selector,
 	charCode core.NSStringRef,
@@ -15139,20 +14583,18 @@ func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent_asNSMenuItem(
 		objc.RefPointer(charCode),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSMenuItem) Init_asNSMenuItem() NSMenuItem {
+func (x gen_NSMenuItem) Init_AsNSMenuItem() NSMenuItem {
 	ret := C.NSMenuItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // IsEnabled returns a boolean value that indicates whether the menu item is enabled.
@@ -15164,7 +14606,6 @@ func (x gen_NSMenuItem) IsEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEnabled returns a boolean value that indicates whether the menu item is enabled.
@@ -15179,7 +14620,6 @@ func (x gen_NSMenuItem) SetEnabled(
 	)
 
 	return
-
 }
 
 // IsHidden returns a boolean value that indicates whether the menu item is hidden.
@@ -15191,7 +14631,6 @@ func (x gen_NSMenuItem) IsHidden() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHidden returns a boolean value that indicates whether the menu item is hidden.
@@ -15206,7 +14645,6 @@ func (x gen_NSMenuItem) SetHidden(
 	)
 
 	return
-
 }
 
 // IsHiddenOrHasHiddenAncestor returns a boolean value that indicates whether the menu item or any of its superitems is hidden.
@@ -15218,7 +14656,6 @@ func (x gen_NSMenuItem) IsHiddenOrHasHiddenAncestor() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Target returns the menu item's target.
@@ -15229,8 +14666,7 @@ func (x gen_NSMenuItem) Target() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetTarget returns the menu item's target.
@@ -15245,7 +14681,6 @@ func (x gen_NSMenuItem) SetTarget(
 	)
 
 	return
-
 }
 
 // Action returns the menu item's action-method selector.
@@ -15257,7 +14692,6 @@ func (x gen_NSMenuItem) Action() objc.Selector {
 	)
 
 	return objc.SelectorAt(ret)
-
 }
 
 // SetAction returns the menu item's action-method selector.
@@ -15272,7 +14706,6 @@ func (x gen_NSMenuItem) SetAction(
 	)
 
 	return
-
 }
 
 // Title returns the menu item's title.
@@ -15283,8 +14716,7 @@ func (x gen_NSMenuItem) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetTitle returns the menu item's title.
@@ -15299,7 +14731,6 @@ func (x gen_NSMenuItem) SetTitle(
 	)
 
 	return
-
 }
 
 // AttributedTitle returns a custom string for a menu item.
@@ -15310,8 +14741,7 @@ func (x gen_NSMenuItem) AttributedTitle() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // SetAttributedTitle returns a custom string for a menu item.
@@ -15326,7 +14756,6 @@ func (x gen_NSMenuItem) SetAttributedTitle(
 	)
 
 	return
-
 }
 
 // Tag returns the menu item's tag.
@@ -15338,7 +14767,6 @@ func (x gen_NSMenuItem) Tag() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetTag returns the menu item's tag.
@@ -15353,7 +14781,6 @@ func (x gen_NSMenuItem) SetTag(
 	)
 
 	return
-
 }
 
 // State returns the state of the menu item.
@@ -15365,7 +14792,6 @@ func (x gen_NSMenuItem) State() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetState returns the state of the menu item.
@@ -15380,7 +14806,6 @@ func (x gen_NSMenuItem) SetState(
 	)
 
 	return
-
 }
 
 // Image returns the menu item’s image.
@@ -15391,8 +14816,7 @@ func (x gen_NSMenuItem) Image() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetImage returns the menu item’s image.
@@ -15407,7 +14831,6 @@ func (x gen_NSMenuItem) SetImage(
 	)
 
 	return
-
 }
 
 // OnStateImage returns the image of the menu item that indicates an “on” state.
@@ -15418,8 +14841,7 @@ func (x gen_NSMenuItem) OnStateImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetOnStateImage returns the image of the menu item that indicates an “on” state.
@@ -15434,7 +14856,6 @@ func (x gen_NSMenuItem) SetOnStateImage(
 	)
 
 	return
-
 }
 
 // OffStateImage returns the image of the menu item that indicates an “off” state.
@@ -15445,8 +14866,7 @@ func (x gen_NSMenuItem) OffStateImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetOffStateImage returns the image of the menu item that indicates an “off” state.
@@ -15461,7 +14881,6 @@ func (x gen_NSMenuItem) SetOffStateImage(
 	)
 
 	return
-
 }
 
 // MixedStateImage returns the image of the menu item that indicates a “mixed” state, that is, a state neither “on” nor “off.”
@@ -15472,8 +14891,7 @@ func (x gen_NSMenuItem) MixedStateImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetMixedStateImage returns the image of the menu item that indicates a “mixed” state, that is, a state neither “on” nor “off.”
@@ -15488,7 +14906,6 @@ func (x gen_NSMenuItem) SetMixedStateImage(
 	)
 
 	return
-
 }
 
 // Submenu returns the submenu of the menu item.
@@ -15499,8 +14916,7 @@ func (x gen_NSMenuItem) Submenu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetSubmenu returns the submenu of the menu item.
@@ -15515,7 +14931,6 @@ func (x gen_NSMenuItem) SetSubmenu(
 	)
 
 	return
-
 }
 
 // HasSubmenu returns a boolean value that indicates whether the menu item has a submenu.
@@ -15527,7 +14942,6 @@ func (x gen_NSMenuItem) HasSubmenu() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ParentItem returns the menu item whose submenu contains the receiver.
@@ -15538,8 +14952,7 @@ func (x gen_NSMenuItem) ParentItem() NSMenuItem {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // IsSeparatorItem returns a menu item that is used to separate logical groups of menu commands.
@@ -15551,7 +14964,6 @@ func (x gen_NSMenuItem) IsSeparatorItem() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Menu returns the menu item’s menu.
@@ -15562,8 +14974,7 @@ func (x gen_NSMenuItem) Menu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetMenu returns the menu item’s menu.
@@ -15578,7 +14989,6 @@ func (x gen_NSMenuItem) SetMenu(
 	)
 
 	return
-
 }
 
 // KeyEquivalent returns the menu item’s unmodified key equivalent.
@@ -15589,8 +14999,7 @@ func (x gen_NSMenuItem) KeyEquivalent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetKeyEquivalent returns the menu item’s unmodified key equivalent.
@@ -15605,7 +15014,6 @@ func (x gen_NSMenuItem) SetKeyEquivalent(
 	)
 
 	return
-
 }
 
 // UserKeyEquivalent returns the user-assigned key equivalent for the menu item.
@@ -15616,8 +15024,7 @@ func (x gen_NSMenuItem) UserKeyEquivalent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // IsAlternate returns a boolean value that marks the menu item as an alternate to the previous menu item.
@@ -15629,7 +15036,6 @@ func (x gen_NSMenuItem) IsAlternate() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAlternate returns a boolean value that marks the menu item as an alternate to the previous menu item.
@@ -15644,7 +15050,6 @@ func (x gen_NSMenuItem) SetAlternate(
 	)
 
 	return
-
 }
 
 // IndentationLevel returns the menu item indentation level for the menu item.
@@ -15656,7 +15061,6 @@ func (x gen_NSMenuItem) IndentationLevel() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetIndentationLevel returns the menu item indentation level for the menu item.
@@ -15671,7 +15075,6 @@ func (x gen_NSMenuItem) SetIndentationLevel(
 	)
 
 	return
-
 }
 
 // ToolTip returns a help tag for the menu item.
@@ -15682,8 +15085,7 @@ func (x gen_NSMenuItem) ToolTip() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetToolTip returns a help tag for the menu item.
@@ -15698,7 +15100,6 @@ func (x gen_NSMenuItem) SetToolTip(
 	)
 
 	return
-
 }
 
 // RepresentedObject returns the object represented by the menu item.
@@ -15709,8 +15110,7 @@ func (x gen_NSMenuItem) RepresentedObject() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetRepresentedObject returns the object represented by the menu item.
@@ -15725,7 +15125,6 @@ func (x gen_NSMenuItem) SetRepresentedObject(
 	)
 
 	return
-
 }
 
 // View returns the content view for the menu item.
@@ -15736,8 +15135,7 @@ func (x gen_NSMenuItem) View() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetView returns the content view for the menu item.
@@ -15752,7 +15150,6 @@ func (x gen_NSMenuItem) SetView(
 	)
 
 	return
-
 }
 
 // IsHighlighted returns a boolean value that indicates whether the menu item should be drawn highlighted.
@@ -15764,7 +15161,6 @@ func (x gen_NSMenuItem) IsHighlighted() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AllowsAutomaticKeyEquivalentLocalization
@@ -15776,7 +15172,6 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentLocalization() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsAutomaticKeyEquivalentLocalization
@@ -15791,7 +15186,6 @@ func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentLocalization(
 	)
 
 	return
-
 }
 
 // AllowsAutomaticKeyEquivalentMirroring
@@ -15803,7 +15197,6 @@ func (x gen_NSMenuItem) AllowsAutomaticKeyEquivalentMirroring() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsAutomaticKeyEquivalentMirroring
@@ -15818,7 +15211,6 @@ func (x gen_NSMenuItem) SetAllowsAutomaticKeyEquivalentMirroring(
 	)
 
 	return
-
 }
 
 // AllowsKeyEquivalentWhenHidden
@@ -15830,7 +15222,6 @@ func (x gen_NSMenuItem) AllowsKeyEquivalentWhenHidden() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsKeyEquivalentWhenHidden
@@ -15845,26 +15236,25 @@ func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden(
 	)
 
 	return
-
 }
 
 type NSRunningApplicationRef interface {
 	Pointer() uintptr
-	Init_asNSRunningApplication() NSRunningApplication
+	Init_AsNSRunningApplication() NSRunningApplication
 }
 
 type gen_NSRunningApplication struct {
 	objc.Object
 }
 
-func NSRunningApplication_fromPointer(ptr unsafe.Pointer) NSRunningApplication {
+func NSRunningApplication_FromPointer(ptr unsafe.Pointer) NSRunningApplication {
 	return NSRunningApplication{gen_NSRunningApplication{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSRunningApplication_fromRef(ref objc.Ref) NSRunningApplication {
-	return NSRunningApplication_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSRunningApplication_FromRef(ref objc.Ref) NSRunningApplication {
+	return NSRunningApplication_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // ForceTerminate attempts to force the receiver to quit.
@@ -15876,7 +15266,6 @@ func (x gen_NSRunningApplication) ForceTerminate() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Hide attempts to hide or the application.
@@ -15888,7 +15277,6 @@ func (x gen_NSRunningApplication) Hide() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Terminate attempts to quit the receiver normally.
@@ -15900,7 +15288,6 @@ func (x gen_NSRunningApplication) Terminate() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Unhide attempts to unhide or the application.
@@ -15912,19 +15299,17 @@ func (x gen_NSRunningApplication) Unhide() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSRunningApplication) Init_asNSRunningApplication() NSRunningApplication {
+func (x gen_NSRunningApplication) Init_AsNSRunningApplication() NSRunningApplication {
 	ret := C.NSRunningApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSRunningApplication_fromPointer(ret)
-
+	return NSRunningApplication_FromPointer(ret)
 }
 
 // IsActive indicates whether the application is currently frontmost.
@@ -15936,7 +15321,6 @@ func (x gen_NSRunningApplication) IsActive() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ActivationPolicy indicates the activation policy of the application.
@@ -15948,7 +15332,6 @@ func (x gen_NSRunningApplication) ActivationPolicy() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IsHidden indicates whether the application is currently hidden.
@@ -15960,7 +15343,6 @@ func (x gen_NSRunningApplication) IsHidden() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // LocalizedName indicates the localized name of the application.
@@ -15971,8 +15353,7 @@ func (x gen_NSRunningApplication) LocalizedName() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // Icon returns the icon for the receiver’s application.
@@ -15983,8 +15364,7 @@ func (x gen_NSRunningApplication) Icon() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // BundleIdentifier indicates the cfbundleidentifier of the application.
@@ -15995,8 +15375,7 @@ func (x gen_NSRunningApplication) BundleIdentifier() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // BundleURL indicates the url to the application's bundle.
@@ -16007,8 +15386,7 @@ func (x gen_NSRunningApplication) BundleURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // ExecutableArchitecture indicates the executing processor architecture for the application.
@@ -16020,7 +15398,6 @@ func (x gen_NSRunningApplication) ExecutableArchitecture() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // ExecutableURL indicates the url to the application's executable.
@@ -16031,8 +15408,7 @@ func (x gen_NSRunningApplication) ExecutableURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // IsFinishedLaunching indicates whether the receiver’s process has finished launching,
@@ -16044,7 +15420,6 @@ func (x gen_NSRunningApplication) IsFinishedLaunching() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // OwnsMenuBar returns whether the application owns the current menu bar.
@@ -16056,7 +15431,6 @@ func (x gen_NSRunningApplication) OwnsMenuBar() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsTerminated indicates that the receiver’s application has terminated.
@@ -16068,26 +15442,25 @@ func (x gen_NSRunningApplication) IsTerminated() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSScreenRef interface {
 	Pointer() uintptr
-	Init_asNSScreen() NSScreen
+	Init_AsNSScreen() NSScreen
 }
 
 type gen_NSScreen struct {
 	objc.Object
 }
 
-func NSScreen_fromPointer(ptr unsafe.Pointer) NSScreen {
+func NSScreen_FromPointer(ptr unsafe.Pointer) NSScreen {
 	return NSScreen{gen_NSScreen{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSScreen_fromRef(ref objc.Ref) NSScreen {
-	return NSScreen_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSScreen_FromRef(ref objc.Ref) NSScreen {
+	return NSScreen_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // ConvertRectFromBacking converts the rectangle from the device pixel aligned coordinates system of a screen.
@@ -16102,7 +15475,6 @@ func (x gen_NSScreen) ConvertRectFromBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToBacking converts the rectangle to the device pixel aligned coordinates system of a screen.
@@ -16117,19 +15489,17 @@ func (x gen_NSScreen) ConvertRectToBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSScreen) Init_asNSScreen() NSScreen {
+func (x gen_NSScreen) Init_AsNSScreen() NSScreen {
 	ret := C.NSScreen_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // Frame returns the dimensions and location of the screen.
@@ -16141,7 +15511,6 @@ func (x gen_NSScreen) Frame() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // DeviceDescription returns the device dictionary for the screen.
@@ -16152,8 +15521,7 @@ func (x gen_NSScreen) DeviceDescription() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // VisibleFrame returns the current location and dimensions of the visible screen.
@@ -16165,7 +15533,6 @@ func (x gen_NSScreen) VisibleFrame() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // BackingScaleFactor returns the backing store pixel scale factor for the screen.
@@ -16177,7 +15544,6 @@ func (x gen_NSScreen) BackingScaleFactor() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // MaximumPotentialExtendedDynamicRangeColorComponentValue returns the maximum possible color component value for the screen when it's in extended dynamic range (edr) mode.
@@ -16189,7 +15555,6 @@ func (x gen_NSScreen) MaximumPotentialExtendedDynamicRangeColorComponentValue() 
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // MaximumExtendedDynamicRangeColorComponentValue returns the current maximum color component value for the screen.
@@ -16201,7 +15566,6 @@ func (x gen_NSScreen) MaximumExtendedDynamicRangeColorComponentValue() core.CGFl
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // MaximumReferenceExtendedDynamicRangeColorComponentValue returns the current maximum color component value for reference rendering to the screen.
@@ -16213,7 +15577,6 @@ func (x gen_NSScreen) MaximumReferenceExtendedDynamicRangeColorComponentValue() 
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // LocalizedName
@@ -16224,8 +15587,7 @@ func (x gen_NSScreen) LocalizedName() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // MaximumFramesPerSecond
@@ -16237,26 +15599,25 @@ func (x gen_NSScreen) MaximumFramesPerSecond() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 type NSStatusBarRef interface {
 	Pointer() uintptr
-	Init_asNSStatusBar() NSStatusBar
+	Init_AsNSStatusBar() NSStatusBar
 }
 
 type gen_NSStatusBar struct {
 	objc.Object
 }
 
-func NSStatusBar_fromPointer(ptr unsafe.Pointer) NSStatusBar {
+func NSStatusBar_FromPointer(ptr unsafe.Pointer) NSStatusBar {
 	return NSStatusBar{gen_NSStatusBar{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSStatusBar_fromRef(ref objc.Ref) NSStatusBar {
-	return NSStatusBar_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSStatusBar_FromRef(ref objc.Ref) NSStatusBar {
+	return NSStatusBar_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // RemoveStatusItem removes the specified status item from the receiver.
@@ -16271,7 +15632,6 @@ func (x gen_NSStatusBar) RemoveStatusItem(
 	)
 
 	return
-
 }
 
 // StatusItemWithLength returns a newly created status item that has been allotted a specified space within the status bar.
@@ -16285,20 +15645,18 @@ func (x gen_NSStatusBar) StatusItemWithLength(
 		C.double(length),
 	)
 
-	return NSStatusItem_fromPointer(ret)
-
+	return NSStatusItem_FromPointer(ret)
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSStatusBar) Init_asNSStatusBar() NSStatusBar {
+func (x gen_NSStatusBar) Init_AsNSStatusBar() NSStatusBar {
 	ret := C.NSStatusBar_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSStatusBar_fromPointer(ret)
-
+	return NSStatusBar_FromPointer(ret)
 }
 
 // IsVertical returns a boolean value indicating whether the status bar has a vertical orientation.
@@ -16310,7 +15668,6 @@ func (x gen_NSStatusBar) IsVertical() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Thickness returns the thickness of the status bar, in pixels.
@@ -16322,38 +15679,36 @@ func (x gen_NSStatusBar) Thickness() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 type NSStatusBarButtonRef interface {
 	Pointer() uintptr
-	Init_asNSStatusBarButton() NSStatusBarButton
+	Init_AsNSStatusBarButton() NSStatusBarButton
 }
 
 type gen_NSStatusBarButton struct {
 	NSButton
 }
 
-func NSStatusBarButton_fromPointer(ptr unsafe.Pointer) NSStatusBarButton {
+func NSStatusBarButton_FromPointer(ptr unsafe.Pointer) NSStatusBarButton {
 	return NSStatusBarButton{gen_NSStatusBarButton{
-		NSButton_fromPointer(ptr),
+		NSButton_FromPointer(ptr),
 	}}
 }
 
-func NSStatusBarButton_fromRef(ref objc.Ref) NSStatusBarButton {
-	return NSStatusBarButton_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSStatusBarButton_FromRef(ref objc.Ref) NSStatusBarButton {
+	return NSStatusBarButton_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSStatusBarButton) Init_asNSStatusBarButton() NSStatusBarButton {
+func (x gen_NSStatusBarButton) Init_AsNSStatusBarButton() NSStatusBarButton {
 	ret := C.NSStatusBarButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSStatusBarButton_fromPointer(ret)
-
+	return NSStatusBarButton_FromPointer(ret)
 }
 
 // AppearsDisabled
@@ -16365,7 +15720,6 @@ func (x gen_NSStatusBarButton) AppearsDisabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAppearsDisabled
@@ -16380,38 +15734,36 @@ func (x gen_NSStatusBarButton) SetAppearsDisabled(
 	)
 
 	return
-
 }
 
 type NSStatusItemRef interface {
 	Pointer() uintptr
-	Init_asNSStatusItem() NSStatusItem
+	Init_AsNSStatusItem() NSStatusItem
 }
 
 type gen_NSStatusItem struct {
 	objc.Object
 }
 
-func NSStatusItem_fromPointer(ptr unsafe.Pointer) NSStatusItem {
+func NSStatusItem_FromPointer(ptr unsafe.Pointer) NSStatusItem {
 	return NSStatusItem{gen_NSStatusItem{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSStatusItem_fromRef(ref objc.Ref) NSStatusItem {
-	return NSStatusItem_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSStatusItem_FromRef(ref objc.Ref) NSStatusItem {
+	return NSStatusItem_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSStatusItem) Init_asNSStatusItem() NSStatusItem {
+func (x gen_NSStatusItem) Init_AsNSStatusItem() NSStatusItem {
 	ret := C.NSStatusItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSStatusItem_fromPointer(ret)
-
+	return NSStatusItem_FromPointer(ret)
 }
 
 // StatusBar returns the status bar that displays the status item.
@@ -16422,8 +15774,7 @@ func (x gen_NSStatusItem) StatusBar() NSStatusBar {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSStatusBar_fromPointer(ret)
-
+	return NSStatusBar_FromPointer(ret)
 }
 
 // Button returns the button displayed in the status bar.
@@ -16434,8 +15785,7 @@ func (x gen_NSStatusItem) Button() NSStatusBarButton {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSStatusBarButton_fromPointer(ret)
-
+	return NSStatusBarButton_FromPointer(ret)
 }
 
 // Menu returns the pull-down menu displayed when the user clicks the status item.
@@ -16446,8 +15796,7 @@ func (x gen_NSStatusItem) Menu() NSMenu {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // SetMenu returns the pull-down menu displayed when the user clicks the status item.
@@ -16462,7 +15811,6 @@ func (x gen_NSStatusItem) SetMenu(
 	)
 
 	return
-
 }
 
 // IsVisible returns a boolean value indicating if the menu bar currently displays the status item.
@@ -16474,7 +15822,6 @@ func (x gen_NSStatusItem) IsVisible() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetVisible returns a boolean value indicating if the menu bar currently displays the status item.
@@ -16489,7 +15836,6 @@ func (x gen_NSStatusItem) SetVisible(
 	)
 
 	return
-
 }
 
 // Length returns the amount of space in the status bar that should be allocated to the status item.
@@ -16501,7 +15847,6 @@ func (x gen_NSStatusItem) Length() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetLength returns the amount of space in the status bar that should be allocated to the status item.
@@ -16516,26 +15861,25 @@ func (x gen_NSStatusItem) SetLength(
 	)
 
 	return
-
 }
 
 type NSTextRef interface {
 	Pointer() uintptr
-	Init_asNSText() NSText
+	Init_AsNSText() NSText
 }
 
 type gen_NSText struct {
 	NSView
 }
 
-func NSText_fromPointer(ptr unsafe.Pointer) NSText {
+func NSText_FromPointer(ptr unsafe.Pointer) NSText {
 	return NSText{gen_NSText{
-		NSView_fromPointer(ptr),
+		NSView_FromPointer(ptr),
 	}}
 }
 
-func NSText_fromRef(ref objc.Ref) NSText {
-	return NSText_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSText_FromRef(ref objc.Ref) NSText {
+	return NSText_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AlignCenter this action method applies center alignment to selected paragraphs (or all text if the receiver is a plain text object).
@@ -16550,7 +15894,6 @@ func (x gen_NSText) AlignCenter(
 	)
 
 	return
-
 }
 
 // AlignLeft this action method applies left alignment to selected paragraphs (or all text if the receiver is a plain text object).
@@ -16565,7 +15908,6 @@ func (x gen_NSText) AlignLeft(
 	)
 
 	return
-
 }
 
 // AlignRight this action method applies right alignment to selected paragraphs (or all text if the receiver is a plain text object).
@@ -16580,7 +15922,6 @@ func (x gen_NSText) AlignRight(
 	)
 
 	return
-
 }
 
 // ChangeFont this action method changes the font of the selection for a rich text object, or of all text for a plain text object.
@@ -16595,7 +15936,6 @@ func (x gen_NSText) ChangeFont(
 	)
 
 	return
-
 }
 
 // CheckSpelling this action method searches for a misspelled word in the receiver’s text.
@@ -16610,7 +15950,6 @@ func (x gen_NSText) CheckSpelling(
 	)
 
 	return
-
 }
 
 // Copy this action method copies the selected text onto the general pasteboard, in as many formats as the receiver supports.
@@ -16625,7 +15964,6 @@ func (x gen_NSText) Copy(
 	)
 
 	return
-
 }
 
 // CopyFont this action method copies the font information for the first character of the selection (or for the insertion point) onto the font pasteboard, as nsfontpboardtype.
@@ -16640,7 +15978,6 @@ func (x gen_NSText) CopyFont(
 	)
 
 	return
-
 }
 
 // CopyRuler this action method copies the paragraph style information for first selected paragraph onto the ruler pasteboard, as nsrulerpboardtype, and expands the selection to paragraph boundaries.
@@ -16655,7 +15992,6 @@ func (x gen_NSText) CopyRuler(
 	)
 
 	return
-
 }
 
 // Cut this action method deletes the selected text and places it onto the general pasteboard, in as many formats as the receiver supports.
@@ -16670,7 +16006,6 @@ func (x gen_NSText) Cut(
 	)
 
 	return
-
 }
 
 // Delete this action method deletes the selected text.
@@ -16685,13 +16020,12 @@ func (x gen_NSText) Delete(
 	)
 
 	return
-
 }
 
 // InitWithFrame
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1525191-initwithframe?language=objc for details.
-func (x gen_NSText) InitWithFrame_asNSText(
+func (x gen_NSText) InitWithFrame_AsNSText(
 	frameRect core.NSRect,
 ) NSText {
 	ret := C.NSText_inst_InitWithFrame(
@@ -16699,8 +16033,7 @@ func (x gen_NSText) InitWithFrame_asNSText(
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
 
-	return NSText_fromPointer(ret)
-
+	return NSText_FromPointer(ret)
 }
 
 // Paste this action method pastes text from the general pasteboard at the insertion point or over the selection.
@@ -16715,7 +16048,6 @@ func (x gen_NSText) Paste(
 	)
 
 	return
-
 }
 
 // PasteFont this action method pastes font information from the font pasteboard onto the selected text or insertion point of a rich text object, or over all text of a plain text object.
@@ -16730,7 +16062,6 @@ func (x gen_NSText) PasteFont(
 	)
 
 	return
-
 }
 
 // PasteRuler this action method pastes paragraph style information from the ruler pasteboard onto the selected paragraphs of a rich text object.
@@ -16745,7 +16076,6 @@ func (x gen_NSText) PasteRuler(
 	)
 
 	return
-
 }
 
 // ReadRTFDFromFile attempts to read the rtfd file at path, returning yes if successful and no if not.
@@ -16760,7 +16090,6 @@ func (x gen_NSText) ReadRTFDFromFile(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SelectAll this action method selects all of the receiver’s text.
@@ -16775,7 +16104,6 @@ func (x gen_NSText) SelectAll(
 	)
 
 	return
-
 }
 
 // ShowGuessPanel this action method opens the spelling panel, allowing the user to make a correction during spell checking.
@@ -16790,7 +16118,6 @@ func (x gen_NSText) ShowGuessPanel(
 	)
 
 	return
-
 }
 
 // SizeToFit resizes the receiver to fit its text.
@@ -16802,7 +16129,6 @@ func (x gen_NSText) SizeToFit() {
 	)
 
 	return
-
 }
 
 // Subscript this action method applies a subscript attribute to selected text (or all text if the receiver is a plain text object), lowering its baseline offset by a predefined amount.
@@ -16817,7 +16143,6 @@ func (x gen_NSText) Subscript(
 	)
 
 	return
-
 }
 
 // Superscript this action method applies a superscript attribute to selected text (or all text if the receiver is a plain text object), raising its baseline offset by a predefined amount.
@@ -16832,7 +16157,6 @@ func (x gen_NSText) Superscript(
 	)
 
 	return
-
 }
 
 // ToggleRuler this action method shows or hides the ruler, if the receiver is enclosed in a scroll view.
@@ -16847,7 +16171,6 @@ func (x gen_NSText) ToggleRuler(
 	)
 
 	return
-
 }
 
 // Underline adds the underline attribute to the selected text attributes if absent; removes the attribute if present.
@@ -16862,7 +16185,6 @@ func (x gen_NSText) Underline(
 	)
 
 	return
-
 }
 
 // Unscript this action method removes any superscripting or subscripting from selected text (or all text if the receiver is a plain text object).
@@ -16877,7 +16199,6 @@ func (x gen_NSText) Unscript(
 	)
 
 	return
-
 }
 
 // WriteRTFDToFileAtomically writes the receiver’s text as rtf with attachments to a file or directory at path.
@@ -16894,19 +16215,17 @@ func (x gen_NSText) WriteRTFDToFileAtomically(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSText) Init_asNSText() NSText {
+func (x gen_NSText) Init_AsNSText() NSText {
 	ret := C.NSText_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSText_fromPointer(ret)
-
+	return NSText_FromPointer(ret)
 }
 
 // String returns the characters of the receiver’s text.
@@ -16917,8 +16236,7 @@ func (x gen_NSText) String() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetString returns the characters of the receiver’s text.
@@ -16933,7 +16251,6 @@ func (x gen_NSText) SetString(
 	)
 
 	return
-
 }
 
 // BackgroundColor returns the receiver’s background color to a given color.
@@ -16944,8 +16261,7 @@ func (x gen_NSText) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor returns the receiver’s background color to a given color.
@@ -16960,7 +16276,6 @@ func (x gen_NSText) SetBackgroundColor(
 	)
 
 	return
-
 }
 
 // DrawsBackground returns a boolean that controls whether the receiver draws its background.
@@ -16972,7 +16287,6 @@ func (x gen_NSText) DrawsBackground() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDrawsBackground returns a boolean that controls whether the receiver draws its background.
@@ -16987,7 +16301,6 @@ func (x gen_NSText) SetDrawsBackground(
 	)
 
 	return
-
 }
 
 // IsEditable returns a boolean that controls whether the receiver allows the user to edit its text.
@@ -16999,7 +16312,6 @@ func (x gen_NSText) IsEditable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEditable returns a boolean that controls whether the receiver allows the user to edit its text.
@@ -17014,7 +16326,6 @@ func (x gen_NSText) SetEditable(
 	)
 
 	return
-
 }
 
 // IsSelectable returns a boolean that controls whether the receiver allows the user to select its text.
@@ -17026,7 +16337,6 @@ func (x gen_NSText) IsSelectable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSelectable returns a boolean that controls whether the receiver allows the user to select its text.
@@ -17041,7 +16351,6 @@ func (x gen_NSText) SetSelectable(
 	)
 
 	return
-
 }
 
 // IsFieldEditor returns a boolean that controls whether the receiver interprets tab, shift-tab, and return (enter) as cues to end editing and possibly to change the first responder.
@@ -17053,7 +16362,6 @@ func (x gen_NSText) IsFieldEditor() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetFieldEditor returns a boolean that controls whether the receiver interprets tab, shift-tab, and return (enter) as cues to end editing and possibly to change the first responder.
@@ -17068,7 +16376,6 @@ func (x gen_NSText) SetFieldEditor(
 	)
 
 	return
-
 }
 
 // IsRichText returns a boolean that controls whether the receiver allows the user to apply attributes to specific ranges of the text.
@@ -17080,7 +16387,6 @@ func (x gen_NSText) IsRichText() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetRichText returns a boolean that controls whether the receiver allows the user to apply attributes to specific ranges of the text.
@@ -17095,7 +16401,6 @@ func (x gen_NSText) SetRichText(
 	)
 
 	return
-
 }
 
 // ImportsGraphics returns a boolean that controls whether the receiver allows the user to import files by dragging.
@@ -17107,7 +16412,6 @@ func (x gen_NSText) ImportsGraphics() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetImportsGraphics returns a boolean that controls whether the receiver allows the user to import files by dragging.
@@ -17122,7 +16426,6 @@ func (x gen_NSText) SetImportsGraphics(
 	)
 
 	return
-
 }
 
 // UsesFontPanel returns a boolean that controls whether the receiver uses the font panel and font menu.
@@ -17134,7 +16437,6 @@ func (x gen_NSText) UsesFontPanel() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesFontPanel returns a boolean that controls whether the receiver uses the font panel and font menu.
@@ -17149,7 +16451,6 @@ func (x gen_NSText) SetUsesFontPanel(
 	)
 
 	return
-
 }
 
 // IsRulerVisible returns a boolean value that indicates whether the receiver’s enclosing scroll view shows its ruler.
@@ -17161,7 +16462,6 @@ func (x gen_NSText) IsRulerVisible() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Font returns the font of all the receiver’s text.
@@ -17172,8 +16472,7 @@ func (x gen_NSText) Font() NSFont {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // SetFont returns the font of all the receiver’s text.
@@ -17188,7 +16487,6 @@ func (x gen_NSText) SetFont(
 	)
 
 	return
-
 }
 
 // TextColor returns the text color of all characters in the receiver.
@@ -17199,8 +16497,7 @@ func (x gen_NSText) TextColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetTextColor returns the text color of all characters in the receiver.
@@ -17215,7 +16512,6 @@ func (x gen_NSText) SetTextColor(
 	)
 
 	return
-
 }
 
 // MaxSize returns the receiver’s maximum size.
@@ -17227,7 +16523,6 @@ func (x gen_NSText) MaxSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMaxSize returns the receiver’s maximum size.
@@ -17242,7 +16537,6 @@ func (x gen_NSText) SetMaxSize(
 	)
 
 	return
-
 }
 
 // MinSize returns the receiver’s minimum size.
@@ -17254,7 +16548,6 @@ func (x gen_NSText) MinSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMinSize returns the receiver’s minimum size.
@@ -17269,7 +16562,6 @@ func (x gen_NSText) SetMinSize(
 	)
 
 	return
-
 }
 
 // IsVerticallyResizable returns a boolean that controls whether the receiver changes its height to fit the height of its text.
@@ -17281,7 +16573,6 @@ func (x gen_NSText) IsVerticallyResizable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetVerticallyResizable returns a boolean that controls whether the receiver changes its height to fit the height of its text.
@@ -17296,7 +16587,6 @@ func (x gen_NSText) SetVerticallyResizable(
 	)
 
 	return
-
 }
 
 // IsHorizontallyResizable returns a boolean that controls whether the receiver changes its width to fit the width of its text.
@@ -17308,7 +16598,6 @@ func (x gen_NSText) IsHorizontallyResizable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHorizontallyResizable returns a boolean that controls whether the receiver changes its width to fit the width of its text.
@@ -17323,7 +16612,6 @@ func (x gen_NSText) SetHorizontallyResizable(
 	)
 
 	return
-
 }
 
 // Delegate returns the receiver’s delegate.
@@ -17334,8 +16622,7 @@ func (x gen_NSText) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the receiver’s delegate.
@@ -17350,26 +16637,25 @@ func (x gen_NSText) SetDelegate(
 	)
 
 	return
-
 }
 
 type NSTextFieldRef interface {
 	Pointer() uintptr
-	Init_asNSTextField() NSTextField
+	Init_AsNSTextField() NSTextField
 }
 
 type gen_NSTextField struct {
 	NSControl
 }
 
-func NSTextField_fromPointer(ptr unsafe.Pointer) NSTextField {
+func NSTextField_FromPointer(ptr unsafe.Pointer) NSTextField {
 	return NSTextField{gen_NSTextField{
-		NSControl_fromPointer(ptr),
+		NSControl_FromPointer(ptr),
 	}}
 }
 
-func NSTextField_fromRef(ref objc.Ref) NSTextField {
-	return NSTextField_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSTextField_FromRef(ref objc.Ref) NSTextField {
+	return NSTextField_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // SelectText ends editing in the text field and, if it’s selectable, selects the entire text content.
@@ -17384,7 +16670,6 @@ func (x gen_NSTextField) SelectText(
 	)
 
 	return
-
 }
 
 // TextShouldBeginEditing requests permission to begin editing a text object.
@@ -17399,7 +16684,6 @@ func (x gen_NSTextField) TextShouldBeginEditing(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // TextShouldEndEditing performs validation on the text field’s new value.
@@ -17414,19 +16698,17 @@ func (x gen_NSTextField) TextShouldEndEditing(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSTextField) Init_asNSTextField() NSTextField {
+func (x gen_NSTextField) Init_AsNSTextField() NSTextField {
 	ret := C.NSTextField_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextField_fromPointer(ret)
-
+	return NSTextField_FromPointer(ret)
 }
 
 // IsSelectable returns a boolean value that determines whether the user can select the content of the text field.
@@ -17438,7 +16720,6 @@ func (x gen_NSTextField) IsSelectable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSelectable returns a boolean value that determines whether the user can select the content of the text field.
@@ -17453,7 +16734,6 @@ func (x gen_NSTextField) SetSelectable(
 	)
 
 	return
-
 }
 
 // IsEditable returns a boolean value that controls whether the user can edit the value in the text field.
@@ -17465,7 +16745,6 @@ func (x gen_NSTextField) IsEditable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEditable returns a boolean value that controls whether the user can edit the value in the text field.
@@ -17480,7 +16759,6 @@ func (x gen_NSTextField) SetEditable(
 	)
 
 	return
-
 }
 
 // AllowsEditingTextAttributes returns a boolean value that controls whether the user can change font attributes of the text field’s string.
@@ -17492,7 +16770,6 @@ func (x gen_NSTextField) AllowsEditingTextAttributes() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsEditingTextAttributes returns a boolean value that controls whether the user can change font attributes of the text field’s string.
@@ -17507,7 +16784,6 @@ func (x gen_NSTextField) SetAllowsEditingTextAttributes(
 	)
 
 	return
-
 }
 
 // ImportsGraphics returns a boolean value that controls whether the user can drag image files into the text field.
@@ -17519,7 +16795,6 @@ func (x gen_NSTextField) ImportsGraphics() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetImportsGraphics returns a boolean value that controls whether the user can drag image files into the text field.
@@ -17534,7 +16809,6 @@ func (x gen_NSTextField) SetImportsGraphics(
 	)
 
 	return
-
 }
 
 // PlaceholderString returns the string the text field displays when empty to help the user understand the text field’s purpose.
@@ -17545,8 +16819,7 @@ func (x gen_NSTextField) PlaceholderString() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetPlaceholderString returns the string the text field displays when empty to help the user understand the text field’s purpose.
@@ -17561,7 +16834,6 @@ func (x gen_NSTextField) SetPlaceholderString(
 	)
 
 	return
-
 }
 
 // PlaceholderAttributedString returns the attributed string the text field displays when empty to help the user understand the text field’s purpose.
@@ -17572,8 +16844,7 @@ func (x gen_NSTextField) PlaceholderAttributedString() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // SetPlaceholderAttributedString returns the attributed string the text field displays when empty to help the user understand the text field’s purpose.
@@ -17588,7 +16859,6 @@ func (x gen_NSTextField) SetPlaceholderAttributedString(
 	)
 
 	return
-
 }
 
 // AllowsDefaultTighteningForTruncation returns a boolean value that controls whether single-line text fields tighten intercharacter spacing before truncating the text.
@@ -17600,7 +16870,6 @@ func (x gen_NSTextField) AllowsDefaultTighteningForTruncation() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsDefaultTighteningForTruncation returns a boolean value that controls whether single-line text fields tighten intercharacter spacing before truncating the text.
@@ -17615,7 +16884,6 @@ func (x gen_NSTextField) SetAllowsDefaultTighteningForTruncation(
 	)
 
 	return
-
 }
 
 // MaximumNumberOfLines returns the maximum number of lines a wrapping text field displays before clipping or truncating the text.
@@ -17627,7 +16895,6 @@ func (x gen_NSTextField) MaximumNumberOfLines() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetMaximumNumberOfLines returns the maximum number of lines a wrapping text field displays before clipping or truncating the text.
@@ -17642,7 +16909,6 @@ func (x gen_NSTextField) SetMaximumNumberOfLines(
 	)
 
 	return
-
 }
 
 // PreferredMaxLayoutWidth returns the maximum width of the text field’s intrinsic content size.
@@ -17654,7 +16920,6 @@ func (x gen_NSTextField) PreferredMaxLayoutWidth() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetPreferredMaxLayoutWidth returns the maximum width of the text field’s intrinsic content size.
@@ -17669,7 +16934,6 @@ func (x gen_NSTextField) SetPreferredMaxLayoutWidth(
 	)
 
 	return
-
 }
 
 // TextColor returns the color of the text field’s content.
@@ -17680,8 +16944,7 @@ func (x gen_NSTextField) TextColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetTextColor returns the color of the text field’s content.
@@ -17696,7 +16959,6 @@ func (x gen_NSTextField) SetTextColor(
 	)
 
 	return
-
 }
 
 // BackgroundColor returns the color of the background the text field’s cell draws behind the text.
@@ -17707,8 +16969,7 @@ func (x gen_NSTextField) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor returns the color of the background the text field’s cell draws behind the text.
@@ -17723,7 +16984,6 @@ func (x gen_NSTextField) SetBackgroundColor(
 	)
 
 	return
-
 }
 
 // DrawsBackground returns a boolean value that controls whether the text field’s cell draws a background color behind the text.
@@ -17735,7 +16995,6 @@ func (x gen_NSTextField) DrawsBackground() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDrawsBackground returns a boolean value that controls whether the text field’s cell draws a background color behind the text.
@@ -17750,7 +17009,6 @@ func (x gen_NSTextField) SetDrawsBackground(
 	)
 
 	return
-
 }
 
 // IsBezeled returns a boolean value that controls whether the text field draws a bezeled background around its contents.
@@ -17762,7 +17020,6 @@ func (x gen_NSTextField) IsBezeled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetBezeled returns a boolean value that controls whether the text field draws a bezeled background around its contents.
@@ -17777,7 +17034,6 @@ func (x gen_NSTextField) SetBezeled(
 	)
 
 	return
-
 }
 
 // IsBordered returns a boolean value that controls whether the text field draws a solid black border around its contents.
@@ -17789,7 +17045,6 @@ func (x gen_NSTextField) IsBordered() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetBordered returns a boolean value that controls whether the text field draws a solid black border around its contents.
@@ -17804,7 +17059,6 @@ func (x gen_NSTextField) SetBordered(
 	)
 
 	return
-
 }
 
 // AcceptsFirstResponder returns a boolean value that indicates whether the text field is editable and accepts first responder status.
@@ -17816,7 +17070,6 @@ func (x gen_NSTextField) AcceptsFirstResponder() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AllowsCharacterPickerTouchBarItem returns a boolean value that controls whether the touch bar displays the character picker item for rich text fields.
@@ -17828,7 +17081,6 @@ func (x gen_NSTextField) AllowsCharacterPickerTouchBarItem() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsCharacterPickerTouchBarItem returns a boolean value that controls whether the touch bar displays the character picker item for rich text fields.
@@ -17843,7 +17095,6 @@ func (x gen_NSTextField) SetAllowsCharacterPickerTouchBarItem(
 	)
 
 	return
-
 }
 
 // IsAutomaticTextCompletionEnabled returns a boolean value that indicates whether the text field automatically completes text as the user types.
@@ -17855,7 +17106,6 @@ func (x gen_NSTextField) IsAutomaticTextCompletionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticTextCompletionEnabled returns a boolean value that indicates whether the text field automatically completes text as the user types.
@@ -17870,7 +17120,6 @@ func (x gen_NSTextField) SetAutomaticTextCompletionEnabled(
 	)
 
 	return
-
 }
 
 // Delegate returns the text field’s delegate.
@@ -17881,8 +17130,7 @@ func (x gen_NSTextField) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the text field’s delegate.
@@ -17897,32 +17145,31 @@ func (x gen_NSTextField) SetDelegate(
 	)
 
 	return
-
 }
 
 type NSTextContainerRef interface {
 	Pointer() uintptr
-	Init_asNSTextContainer() NSTextContainer
+	Init_AsNSTextContainer() NSTextContainer
 }
 
 type gen_NSTextContainer struct {
 	objc.Object
 }
 
-func NSTextContainer_fromPointer(ptr unsafe.Pointer) NSTextContainer {
+func NSTextContainer_FromPointer(ptr unsafe.Pointer) NSTextContainer {
 	return NSTextContainer{gen_NSTextContainer{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSTextContainer_fromRef(ref objc.Ref) NSTextContainer {
-	return NSTextContainer_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSTextContainer_FromRef(ref objc.Ref) NSTextContainer {
+	return NSTextContainer_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // InitWithSize initializes a text container with a specified bounding rectangle.
 //
 // See https://developer.apple.com/documentation/uikit/nstextcontainer/1444529-initwithsize?language=objc for details.
-func (x gen_NSTextContainer) InitWithSize_asNSTextContainer(
+func (x gen_NSTextContainer) InitWithSize_AsNSTextContainer(
 	size core.NSSize,
 ) NSTextContainer {
 	ret := C.NSTextContainer_inst_InitWithSize(
@@ -17930,8 +17177,7 @@ func (x gen_NSTextContainer) InitWithSize_asNSTextContainer(
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 
-	return NSTextContainer_fromPointer(ret)
-
+	return NSTextContainer_FromPointer(ret)
 }
 
 // ReplaceLayoutManager replaces the layout manager for the group of text system objects that contains the text container.
@@ -17946,19 +17192,17 @@ func (x gen_NSTextContainer) ReplaceLayoutManager(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSTextContainer) Init_asNSTextContainer() NSTextContainer {
+func (x gen_NSTextContainer) Init_AsNSTextContainer() NSTextContainer {
 	ret := C.NSTextContainer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextContainer_fromPointer(ret)
-
+	return NSTextContainer_FromPointer(ret)
 }
 
 // LayoutManager returns the text container’s layout manager.
@@ -17969,8 +17213,7 @@ func (x gen_NSTextContainer) LayoutManager() NSLayoutManager {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSLayoutManager_fromPointer(ret)
-
+	return NSLayoutManager_FromPointer(ret)
 }
 
 // SetLayoutManager returns the text container’s layout manager.
@@ -17985,7 +17228,6 @@ func (x gen_NSTextContainer) SetLayoutManager(
 	)
 
 	return
-
 }
 
 // TextView returns the text container’s text view.
@@ -17996,8 +17238,7 @@ func (x gen_NSTextContainer) TextView() NSTextView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // SetTextView returns the text container’s text view.
@@ -18012,7 +17253,6 @@ func (x gen_NSTextContainer) SetTextView(
 	)
 
 	return
-
 }
 
 // Size returns the size of the text container’s bounding rectangle.
@@ -18024,7 +17264,6 @@ func (x gen_NSTextContainer) Size() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetSize returns the size of the text container’s bounding rectangle.
@@ -18039,7 +17278,6 @@ func (x gen_NSTextContainer) SetSize(
 	)
 
 	return
-
 }
 
 // ExclusionPaths an array of path objects that represents the regions where text doesn’t display in the text container.
@@ -18050,8 +17288,7 @@ func (x gen_NSTextContainer) ExclusionPaths() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetExclusionPaths an array of path objects that represents the regions where text doesn’t display in the text container.
@@ -18066,7 +17303,6 @@ func (x gen_NSTextContainer) SetExclusionPaths(
 	)
 
 	return
-
 }
 
 // WidthTracksTextView returns a boolean that controls whether the text container adjusts the width of its bounding rectangle when its text view resizes.
@@ -18078,7 +17314,6 @@ func (x gen_NSTextContainer) WidthTracksTextView() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetWidthTracksTextView returns a boolean that controls whether the text container adjusts the width of its bounding rectangle when its text view resizes.
@@ -18093,7 +17328,6 @@ func (x gen_NSTextContainer) SetWidthTracksTextView(
 	)
 
 	return
-
 }
 
 // HeightTracksTextView returns a boolean that controls whether the text container adjusts the height of its bounding rectangle when its text view resizes.
@@ -18105,7 +17339,6 @@ func (x gen_NSTextContainer) HeightTracksTextView() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHeightTracksTextView returns a boolean that controls whether the text container adjusts the height of its bounding rectangle when its text view resizes.
@@ -18120,7 +17353,6 @@ func (x gen_NSTextContainer) SetHeightTracksTextView(
 	)
 
 	return
-
 }
 
 // MaximumNumberOfLines returns the maximum number of lines that the text container can store.
@@ -18132,7 +17364,6 @@ func (x gen_NSTextContainer) MaximumNumberOfLines() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // SetMaximumNumberOfLines returns the maximum number of lines that the text container can store.
@@ -18147,7 +17378,6 @@ func (x gen_NSTextContainer) SetMaximumNumberOfLines(
 	)
 
 	return
-
 }
 
 // LineFragmentPadding returns the value for the text inset within line fragment rectangles.
@@ -18159,7 +17389,6 @@ func (x gen_NSTextContainer) LineFragmentPadding() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetLineFragmentPadding returns the value for the text inset within line fragment rectangles.
@@ -18174,7 +17403,6 @@ func (x gen_NSTextContainer) SetLineFragmentPadding(
 	)
 
 	return
-
 }
 
 // IsSimpleRectangularTextContainer returns a boolean that indicates whether the text container’s region is a rectangle with no holes or gaps, and whose edges are parallel to the text view's coordinate system axes.
@@ -18186,26 +17414,25 @@ func (x gen_NSTextContainer) IsSimpleRectangularTextContainer() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSViewControllerRef interface {
 	Pointer() uintptr
-	Init_asNSViewController() NSViewController
+	Init_AsNSViewController() NSViewController
 }
 
 type gen_NSViewController struct {
 	objc.Object
 }
 
-func NSViewController_fromPointer(ptr unsafe.Pointer) NSViewController {
+func NSViewController_FromPointer(ptr unsafe.Pointer) NSViewController {
 	return NSViewController{gen_NSViewController{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSViewController_fromRef(ref objc.Ref) NSViewController {
-	return NSViewController_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSViewController_FromRef(ref objc.Ref) NSViewController {
+	return NSViewController_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddChildViewController returns a convenience method for adding a child view controller at the end of the childviewcontrollers array.
@@ -18220,7 +17447,6 @@ func (x gen_NSViewController) AddChildViewController(
 	)
 
 	return
-
 }
 
 // CommitEditing returns whether the receiver was able to commit any pending edits.
@@ -18232,7 +17458,6 @@ func (x gen_NSViewController) CommitEditing() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CommitEditingWithDelegateDidCommitSelectorContextInfo attempt to commit any currently edited results of the receiver.
@@ -18251,7 +17476,6 @@ func (x gen_NSViewController) CommitEditingWithDelegateDidCommitSelectorContextI
 	)
 
 	return
-
 }
 
 // DiscardEditing causes the receiver to discard any changes, restoring the previous values.
@@ -18263,7 +17487,6 @@ func (x gen_NSViewController) DiscardEditing() {
 	)
 
 	return
-
 }
 
 // DismissController
@@ -18278,7 +17501,6 @@ func (x gen_NSViewController) DismissController(
 	)
 
 	return
-
 }
 
 // DismissViewController dismisses a presented view controller, using the same animator that presented it.
@@ -18293,7 +17515,6 @@ func (x gen_NSViewController) DismissViewController(
 	)
 
 	return
-
 }
 
 // InsertChildViewControllerAtIndex inserts a specified child view controller into the childviewcontrollers array at a specified position.
@@ -18310,7 +17531,6 @@ func (x gen_NSViewController) InsertChildViewControllerAtIndex(
 	)
 
 	return
-
 }
 
 // LoadView instantiates a view from a nib file and sets the value of the view property.
@@ -18322,7 +17542,6 @@ func (x gen_NSViewController) LoadView() {
 	)
 
 	return
-
 }
 
 // PreferredContentSizeDidChangeForViewController called when there is a change in value of the preferredcontentsize property of a child view controller or a presented view controller.
@@ -18337,7 +17556,6 @@ func (x gen_NSViewController) PreferredContentSizeDidChangeForViewController(
 	)
 
 	return
-
 }
 
 // PresentViewControllerAnimator presents another view controller using a specified, custom animator for presentation and dismissal.
@@ -18354,7 +17572,6 @@ func (x gen_NSViewController) PresentViewControllerAnimator(
 	)
 
 	return
-
 }
 
 // PresentViewControllerAsModalWindow presents another view controller as a modal window, also known as an alert.
@@ -18369,7 +17586,6 @@ func (x gen_NSViewController) PresentViewControllerAsModalWindow(
 	)
 
 	return
-
 }
 
 // PresentViewControllerAsSheet presents another view controller as a sheet.
@@ -18384,7 +17600,6 @@ func (x gen_NSViewController) PresentViewControllerAsSheet(
 	)
 
 	return
-
 }
 
 // RemoveChildViewControllerAtIndex removes a specified child controller from the view controller.
@@ -18399,7 +17614,6 @@ func (x gen_NSViewController) RemoveChildViewControllerAtIndex(
 	)
 
 	return
-
 }
 
 // RemoveFromParentViewController removes the called view controller from its parent view controller.
@@ -18411,7 +17625,6 @@ func (x gen_NSViewController) RemoveFromParentViewController() {
 	)
 
 	return
-
 }
 
 // UpdateViewConstraints called during auto layout constraint updating to enable the view controller to mediate the process.
@@ -18423,7 +17636,6 @@ func (x gen_NSViewController) UpdateViewConstraints() {
 	)
 
 	return
-
 }
 
 // ViewDidAppear called when the view controller’s view is fully transitioned onto the screen.
@@ -18435,7 +17647,6 @@ func (x gen_NSViewController) ViewDidAppear() {
 	)
 
 	return
-
 }
 
 // ViewDidDisappear called after the view controller’s view is removed from the view hierarchy in a window.
@@ -18447,7 +17658,6 @@ func (x gen_NSViewController) ViewDidDisappear() {
 	)
 
 	return
-
 }
 
 // ViewDidLayout called immediately after the layout method of the view controller's view is called.
@@ -18459,7 +17669,6 @@ func (x gen_NSViewController) ViewDidLayout() {
 	)
 
 	return
-
 }
 
 // ViewDidLoad called after the view controller’s view has been loaded into memory.
@@ -18471,7 +17680,6 @@ func (x gen_NSViewController) ViewDidLoad() {
 	)
 
 	return
-
 }
 
 // ViewWillAppear called after the view controller’s view has been loaded into memory is about to be added to the view hierarchy in the window.
@@ -18483,7 +17691,6 @@ func (x gen_NSViewController) ViewWillAppear() {
 	)
 
 	return
-
 }
 
 // ViewWillDisappear called when the view controller’s view is about to be removed from the view hierarchy in the window.
@@ -18495,7 +17702,6 @@ func (x gen_NSViewController) ViewWillDisappear() {
 	)
 
 	return
-
 }
 
 // ViewWillLayout called just before the layout method of the view controller's view is called.
@@ -18507,7 +17713,6 @@ func (x gen_NSViewController) ViewWillLayout() {
 	)
 
 	return
-
 }
 
 // ViewWillTransitionToSize for a view controller that is part of an app extension, called when its view is about to be resized.
@@ -18522,19 +17727,17 @@ func (x gen_NSViewController) ViewWillTransitionToSize(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSViewController) Init_asNSViewController() NSViewController {
+func (x gen_NSViewController) Init_AsNSViewController() NSViewController {
 	ret := C.NSViewController_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSViewController_fromPointer(ret)
-
+	return NSViewController_FromPointer(ret)
 }
 
 // RepresentedObject returns the object whose value is presented in the receiver’s primary view.
@@ -18545,8 +17748,7 @@ func (x gen_NSViewController) RepresentedObject() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetRepresentedObject returns the object whose value is presented in the receiver’s primary view.
@@ -18561,7 +17763,6 @@ func (x gen_NSViewController) SetRepresentedObject(
 	)
 
 	return
-
 }
 
 // NibBundle returns the nib bundle to be loaded to instantiate the receiver’s primary view.
@@ -18572,8 +17773,7 @@ func (x gen_NSViewController) NibBundle() NSBundle {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSBundle_fromPointer(ret)
-
+	return NSBundle_FromPointer(ret)
 }
 
 // View returns the view controller’s primary view.
@@ -18584,8 +17784,7 @@ func (x gen_NSViewController) View() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetView returns the view controller’s primary view.
@@ -18600,7 +17799,6 @@ func (x gen_NSViewController) SetView(
 	)
 
 	return
-
 }
 
 // Title returns the localized title of the receiver’s primary view.
@@ -18611,8 +17809,7 @@ func (x gen_NSViewController) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetTitle returns the localized title of the receiver’s primary view.
@@ -18627,7 +17824,6 @@ func (x gen_NSViewController) SetTitle(
 	)
 
 	return
-
 }
 
 // IsViewLoaded returns a boolean value indicating whether the view controller’s view is loaded into memory.
@@ -18639,7 +17835,6 @@ func (x gen_NSViewController) IsViewLoaded() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PreferredContentSize returns the desired size of the view controller’s view, in screen units.
@@ -18651,7 +17846,6 @@ func (x gen_NSViewController) PreferredContentSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetPreferredContentSize returns the desired size of the view controller’s view, in screen units.
@@ -18666,7 +17860,6 @@ func (x gen_NSViewController) SetPreferredContentSize(
 	)
 
 	return
-
 }
 
 // ChildViewControllers an array of view controllers that are hierarchical children of the view controller.
@@ -18677,8 +17870,7 @@ func (x gen_NSViewController) ChildViewControllers() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetChildViewControllers an array of view controllers that are hierarchical children of the view controller.
@@ -18693,7 +17885,6 @@ func (x gen_NSViewController) SetChildViewControllers(
 	)
 
 	return
-
 }
 
 // ParentViewController returns the immediate ancestor view controller of the view controller.
@@ -18704,8 +17895,7 @@ func (x gen_NSViewController) ParentViewController() NSViewController {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSViewController_fromPointer(ret)
-
+	return NSViewController_FromPointer(ret)
 }
 
 // PresentedViewControllers returns the view controllers, if any, that are currently presented by the view controller.
@@ -18716,8 +17906,7 @@ func (x gen_NSViewController) PresentedViewControllers() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // PresentingViewController returns the view controller that presented the view controller or that presented its farthest ancestor view controller.
@@ -18728,8 +17917,7 @@ func (x gen_NSViewController) PresentingViewController() NSViewController {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSViewController_fromPointer(ret)
-
+	return NSViewController_FromPointer(ret)
 }
 
 // PreferredScreenOrigin for a view controller that is part of an app extension, the preferred screen origin.
@@ -18741,7 +17929,6 @@ func (x gen_NSViewController) PreferredScreenOrigin() core.NSPoint {
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // SetPreferredScreenOrigin for a view controller that is part of an app extension, the preferred screen origin.
@@ -18756,7 +17943,6 @@ func (x gen_NSViewController) SetPreferredScreenOrigin(
 	)
 
 	return
-
 }
 
 // PreferredMaximumSize for a view controller that is part of an app extension, the largest allowable size for the app extension’s primary view, in screen units.
@@ -18768,7 +17954,6 @@ func (x gen_NSViewController) PreferredMaximumSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // PreferredMinimumSize for a view controller that is part of an app extension, the smallest allowable size for the app extension’s primary view, in screen units.
@@ -18780,7 +17965,6 @@ func (x gen_NSViewController) PreferredMinimumSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SourceItemView
@@ -18791,8 +17975,7 @@ func (x gen_NSViewController) SourceItemView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetSourceItemView
@@ -18807,26 +17990,25 @@ func (x gen_NSViewController) SetSourceItemView(
 	)
 
 	return
-
 }
 
 type NSVisualEffectViewRef interface {
 	Pointer() uintptr
-	Init_asNSVisualEffectView() NSVisualEffectView
+	Init_AsNSVisualEffectView() NSVisualEffectView
 }
 
 type gen_NSVisualEffectView struct {
 	NSView
 }
 
-func NSVisualEffectView_fromPointer(ptr unsafe.Pointer) NSVisualEffectView {
+func NSVisualEffectView_FromPointer(ptr unsafe.Pointer) NSVisualEffectView {
 	return NSVisualEffectView{gen_NSVisualEffectView{
-		NSView_fromPointer(ptr),
+		NSView_FromPointer(ptr),
 	}}
 }
 
-func NSVisualEffectView_fromRef(ref objc.Ref) NSVisualEffectView {
-	return NSVisualEffectView_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSVisualEffectView_FromRef(ref objc.Ref) NSVisualEffectView {
+	return NSVisualEffectView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // ViewDidMoveToWindow notifies the view that it moved to a new window.
@@ -18838,7 +18020,6 @@ func (x gen_NSVisualEffectView) ViewDidMoveToWindow() {
 	)
 
 	return
-
 }
 
 // ViewWillMoveToWindow notifies the view immediately before it moves to a new window (which may be nil).
@@ -18853,19 +18034,17 @@ func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSVisualEffectView) Init_asNSVisualEffectView() NSVisualEffectView {
+func (x gen_NSVisualEffectView) Init_AsNSVisualEffectView() NSVisualEffectView {
 	ret := C.NSVisualEffectView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSVisualEffectView_fromPointer(ret)
-
+	return NSVisualEffectView_FromPointer(ret)
 }
 
 // IsEmphasized returns a boolean value indicating whether to emphasize the look of the material.
@@ -18877,7 +18056,6 @@ func (x gen_NSVisualEffectView) IsEmphasized() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEmphasized returns a boolean value indicating whether to emphasize the look of the material.
@@ -18892,7 +18070,6 @@ func (x gen_NSVisualEffectView) SetEmphasized(
 	)
 
 	return
-
 }
 
 // MaskImage an image whose alpha channel masks the visual effect view's material.
@@ -18903,8 +18080,7 @@ func (x gen_NSVisualEffectView) MaskImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetMaskImage an image whose alpha channel masks the visual effect view's material.
@@ -18919,26 +18095,25 @@ func (x gen_NSVisualEffectView) SetMaskImage(
 	)
 
 	return
-
 }
 
 type NSWindowRef interface {
 	Pointer() uintptr
-	Init_asNSWindow() NSWindow
+	Init_AsNSWindow() NSWindow
 }
 
 type gen_NSWindow struct {
 	objc.Object
 }
 
-func NSWindow_fromPointer(ptr unsafe.Pointer) NSWindow {
+func NSWindow_FromPointer(ptr unsafe.Pointer) NSWindow {
 	return NSWindow{gen_NSWindow{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSWindow_fromRef(ref objc.Ref) NSWindow {
-	return NSWindow_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSWindow_FromRef(ref objc.Ref) NSWindow {
+	return NSWindow_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AddChildWindowOrdered adds a given window as a child window of the window.
@@ -18955,7 +18130,6 @@ func (x gen_NSWindow) AddChildWindowOrdered(
 	)
 
 	return
-
 }
 
 // AddTabbedWindowOrdered adds the provided window as a new tab in a tabbed window using the specified ordering instruction.
@@ -18972,7 +18146,6 @@ func (x gen_NSWindow) AddTabbedWindowOrdered(
 	)
 
 	return
-
 }
 
 // BecomeKeyWindow informs the window that it has become the key window.
@@ -18984,7 +18157,6 @@ func (x gen_NSWindow) BecomeKeyWindow() {
 	)
 
 	return
-
 }
 
 // BecomeMainWindow informs the window that it has become the main window.
@@ -18996,7 +18168,6 @@ func (x gen_NSWindow) BecomeMainWindow() {
 	)
 
 	return
-
 }
 
 // CascadeTopLeftFromPoint positions the window’s top-left to a given point.
@@ -19011,7 +18182,6 @@ func (x gen_NSWindow) CascadeTopLeftFromPoint(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // Center sets the window’s location to the center of the screen.
@@ -19023,7 +18193,6 @@ func (x gen_NSWindow) Center() {
 	)
 
 	return
-
 }
 
 // Close removes the window from the screen.
@@ -19035,7 +18204,6 @@ func (x gen_NSWindow) Close() {
 	)
 
 	return
-
 }
 
 // ConstrainFrameRectToScreen modifies and returns a frame rectangle so that its top edge lies on a specific screen.
@@ -19052,7 +18220,6 @@ func (x gen_NSWindow) ConstrainFrameRectToScreen(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ContentRectForFrameRect returns the window’s content rectangle with a given frame rectangle.
@@ -19067,7 +18234,6 @@ func (x gen_NSWindow) ContentRectForFrameRect(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointFromBacking converts a point from its pixel-aligned backing store coordinate system to the window’s coordinate system.
@@ -19082,7 +18248,6 @@ func (x gen_NSWindow) ConvertPointFromBacking(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointFromScreen converts a point from the screen coordinate system to the window’s coordinate system.
@@ -19097,7 +18262,6 @@ func (x gen_NSWindow) ConvertPointFromScreen(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointToBacking converts a point from the window’s coordinate system to its pixel-aligned backing store coordinate system.
@@ -19112,7 +18276,6 @@ func (x gen_NSWindow) ConvertPointToBacking(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointToScreen converts a point to the screen coordinate system from the window’s coordinate system.
@@ -19127,7 +18290,6 @@ func (x gen_NSWindow) ConvertPointToScreen(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectFromBacking converts a rectangle from its pixel-aligned backing store coordinate system to the window’s coordinate system.
@@ -19142,7 +18304,6 @@ func (x gen_NSWindow) ConvertRectFromBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectFromScreen converts a rectangle from the screen coordinate system to the window’s coordinate system.
@@ -19157,7 +18318,6 @@ func (x gen_NSWindow) ConvertRectFromScreen(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToBacking converts a rectangle from the window’s coordinate system to its pixel-aligned backing store coordinate system.
@@ -19172,7 +18332,6 @@ func (x gen_NSWindow) ConvertRectToBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToScreen converts a rectangle to the screen coordinate system from the window’s coordinate system.
@@ -19187,7 +18346,6 @@ func (x gen_NSWindow) ConvertRectToScreen(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // DataWithEPSInsideRect returns eps data that draws the region of the window within a given rectangle.
@@ -19201,8 +18359,7 @@ func (x gen_NSWindow) DataWithEPSInsideRect(
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 
-	return core.NSData_fromPointer(ret)
-
+	return core.NSData_FromPointer(ret)
 }
 
 // DataWithPDFInsideRect returns pdf data that draws the region of the window within a given rectangle.
@@ -19216,8 +18373,7 @@ func (x gen_NSWindow) DataWithPDFInsideRect(
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 
-	return core.NSData_fromPointer(ret)
-
+	return core.NSData_FromPointer(ret)
 }
 
 // Deminiaturize de-minimizes the window.
@@ -19232,7 +18388,6 @@ func (x gen_NSWindow) Deminiaturize(
 	)
 
 	return
-
 }
 
 // DisableCursorRects disables all cursor rectangle management within the window.
@@ -19244,7 +18399,6 @@ func (x gen_NSWindow) DisableCursorRects() {
 	)
 
 	return
-
 }
 
 // DisableKeyEquivalentForDefaultButtonCell disables the default button cell’s key equivalent, so it doesn’t perform a click when the user presses return (or enter).
@@ -19256,7 +18410,6 @@ func (x gen_NSWindow) DisableKeyEquivalentForDefaultButtonCell() {
 	)
 
 	return
-
 }
 
 // DisableScreenUpdatesUntilFlush disables the window’s screen updates until the window is flushed.
@@ -19268,7 +18421,6 @@ func (x gen_NSWindow) DisableScreenUpdatesUntilFlush() {
 	)
 
 	return
-
 }
 
 // DisableSnapshotRestoration disables snapshot restoration.
@@ -19280,7 +18432,6 @@ func (x gen_NSWindow) DisableSnapshotRestoration() {
 	)
 
 	return
-
 }
 
 // DiscardCursorRects invalidates all cursor rectangles in the window.
@@ -19292,7 +18443,6 @@ func (x gen_NSWindow) DiscardCursorRects() {
 	)
 
 	return
-
 }
 
 // Display passes a display message down the window’s view hierarchy, thus redrawing all views within the window.
@@ -19304,7 +18454,6 @@ func (x gen_NSWindow) Display() {
 	)
 
 	return
-
 }
 
 // DisplayIfNeeded passes a display message down the window’s view hierarchy, thus redrawing all views that need displaying.
@@ -19316,7 +18465,6 @@ func (x gen_NSWindow) DisplayIfNeeded() {
 	)
 
 	return
-
 }
 
 // DragImageAtOffsetEventPasteboardSourceSlideBack begins a dragging session.
@@ -19343,7 +18491,6 @@ func (x gen_NSWindow) DragImageAtOffsetEventPasteboardSourceSlideBack(
 	)
 
 	return
-
 }
 
 // EnableCursorRects reenables cursor rectangle management within the window after a disablecursorrects message.
@@ -19355,7 +18502,6 @@ func (x gen_NSWindow) EnableCursorRects() {
 	)
 
 	return
-
 }
 
 // EnableKeyEquivalentForDefaultButtonCell reenables the default button cell’s key equivalent, so it performs a click when the user presses return (or enter).
@@ -19367,7 +18513,6 @@ func (x gen_NSWindow) EnableKeyEquivalentForDefaultButtonCell() {
 	)
 
 	return
-
 }
 
 // EnableSnapshotRestoration enables snapshot restoration.
@@ -19379,7 +18524,6 @@ func (x gen_NSWindow) EnableSnapshotRestoration() {
 	)
 
 	return
-
 }
 
 // EndEditingFor forces the field editor to give up its first responder status and prepares it for its next assignment.
@@ -19394,7 +18538,6 @@ func (x gen_NSWindow) EndEditingFor(
 	)
 
 	return
-
 }
 
 // EndSheet ends a document-modal session and dismisses the specified sheet.
@@ -19409,7 +18552,6 @@ func (x gen_NSWindow) EndSheet(
 	)
 
 	return
-
 }
 
 // FieldEditorForObject returns the window’s field editor, creating it if requested.
@@ -19425,8 +18567,7 @@ func (x gen_NSWindow) FieldEditorForObject(
 		objc.RefPointer(object),
 	)
 
-	return NSText_fromPointer(ret)
-
+	return NSText_FromPointer(ret)
 }
 
 // FrameRectForContentRect returns the window’s frame rectangle with a given content rectangle.
@@ -19441,13 +18582,12 @@ func (x gen_NSWindow) FrameRectForContentRect(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // InitWithContentRectStyleMaskBackingDefer initializes the window with the specified values.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc for details.
-func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDefer_asNSWindow(
+func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDefer_AsNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
@@ -19461,14 +18601,13 @@ func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDefer_asNSWindow(
 		convertToObjCBool(flag),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // InitWithContentRectStyleMaskBackingDeferScreen initializes an allocated window with the specified values.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc for details.
-func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDeferScreen_asNSWindow(
+func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDeferScreen_AsNSWindow(
 	contentRect core.NSRect,
 	style core.NSUInteger,
 	backingStoreType core.NSUInteger,
@@ -19484,8 +18623,7 @@ func (x gen_NSWindow) InitWithContentRectStyleMaskBackingDeferScreen_asNSWindow(
 		objc.RefPointer(screen),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // InvalidateCursorRectsForView marks as invalid the cursor rectangles of a given view object in the window, so they’ll be set up again when the window becomes key.
@@ -19500,7 +18638,6 @@ func (x gen_NSWindow) InvalidateCursorRectsForView(
 	)
 
 	return
-
 }
 
 // InvalidateShadow invalidates the window shadow so that it is recomputed based on the current window shape.
@@ -19512,7 +18649,6 @@ func (x gen_NSWindow) InvalidateShadow() {
 	)
 
 	return
-
 }
 
 // LayoutIfNeeded updates the layout of views in the window based on the current views and constraints.
@@ -19524,7 +18660,6 @@ func (x gen_NSWindow) LayoutIfNeeded() {
 	)
 
 	return
-
 }
 
 // MakeKeyAndOrderFront moves the window to the front of the screen list, within its level, and makes it the key window; that is, it shows the window.
@@ -19539,7 +18674,6 @@ func (x gen_NSWindow) MakeKeyAndOrderFront(
 	)
 
 	return
-
 }
 
 // MakeKeyWindow makes the window the key window.
@@ -19551,7 +18685,6 @@ func (x gen_NSWindow) MakeKeyWindow() {
 	)
 
 	return
-
 }
 
 // MakeMainWindow makes the window the main window.
@@ -19563,7 +18696,6 @@ func (x gen_NSWindow) MakeMainWindow() {
 	)
 
 	return
-
 }
 
 // MergeAllWindows merges all open windows into a single tabbed window.
@@ -19578,7 +18710,6 @@ func (x gen_NSWindow) MergeAllWindows(
 	)
 
 	return
-
 }
 
 // Miniaturize removes the window from the screen list and displays the minimized window in the dock.
@@ -19593,7 +18724,6 @@ func (x gen_NSWindow) Miniaturize(
 	)
 
 	return
-
 }
 
 // MoveTabToNewWindow moves the tab to a new containing window.
@@ -19608,7 +18738,6 @@ func (x gen_NSWindow) MoveTabToNewWindow(
 	)
 
 	return
-
 }
 
 // OrderBack moves the window to the back of its level in the screen list, without changing either the key window or the main window.
@@ -19623,7 +18752,6 @@ func (x gen_NSWindow) OrderBack(
 	)
 
 	return
-
 }
 
 // OrderFront moves the window to the front of its level in the screen list, without changing either the key window or the main window.
@@ -19638,7 +18766,6 @@ func (x gen_NSWindow) OrderFront(
 	)
 
 	return
-
 }
 
 // OrderFrontRegardless moves the window to the front of its level, even if its application isn’t active, without changing either the key window or the main window.
@@ -19650,7 +18777,6 @@ func (x gen_NSWindow) OrderFrontRegardless() {
 	)
 
 	return
-
 }
 
 // OrderOut removes the window from the screen list, which hides the window.
@@ -19665,7 +18791,6 @@ func (x gen_NSWindow) OrderOut(
 	)
 
 	return
-
 }
 
 // OrderWindowRelativeTo repositions the window’s window device in the window server’s screen list.
@@ -19682,7 +18807,6 @@ func (x gen_NSWindow) OrderWindowRelativeTo(
 	)
 
 	return
-
 }
 
 // PerformClose simulates the user clicking the close button by momentarily highlighting the button and then closing the window.
@@ -19697,7 +18821,6 @@ func (x gen_NSWindow) PerformClose(
 	)
 
 	return
-
 }
 
 // PerformMiniaturize simulates the user clicking the minimize button by momentarily highlighting the button, then minimizing the window.
@@ -19712,7 +18835,6 @@ func (x gen_NSWindow) PerformMiniaturize(
 	)
 
 	return
-
 }
 
 // PerformWindowDragWithEvent starts a window drag based on the specified mouse-down event.
@@ -19727,7 +18849,6 @@ func (x gen_NSWindow) PerformWindowDragWithEvent(
 	)
 
 	return
-
 }
 
 // PerformZoom this action method simulates the user clicking the zoom box by momentarily highlighting the button and then zooming the window.
@@ -19742,7 +18863,6 @@ func (x gen_NSWindow) PerformZoom(
 	)
 
 	return
-
 }
 
 // PostEventAtStart forwards the message to the global application object.
@@ -19759,7 +18879,6 @@ func (x gen_NSWindow) PostEventAtStart(
 	)
 
 	return
-
 }
 
 // Print runs the print panel, and if the user chooses an option other than canceling, prints the window (its frame view and all subviews).
@@ -19774,7 +18893,6 @@ func (x gen_NSWindow) Print(
 	)
 
 	return
-
 }
 
 // RecalculateKeyViewLoop marks the key view loop as “dirty” and in need of recalculation.
@@ -19786,7 +18904,6 @@ func (x gen_NSWindow) RecalculateKeyViewLoop() {
 	)
 
 	return
-
 }
 
 // RegisterForDraggedTypes registers a set of pasteboard types that the window accepts as the destination of an image-dragging session.
@@ -19801,7 +18918,6 @@ func (x gen_NSWindow) RegisterForDraggedTypes(
 	)
 
 	return
-
 }
 
 // RemoveChildWindow detaches a given child window from the window.
@@ -19816,7 +18932,6 @@ func (x gen_NSWindow) RemoveChildWindow(
 	)
 
 	return
-
 }
 
 // RemoveTitlebarAccessoryViewControllerAtIndex removes the view controller at the specified index from the window’s array of title bar accessory view controllers.
@@ -19831,7 +18946,6 @@ func (x gen_NSWindow) RemoveTitlebarAccessoryViewControllerAtIndex(
 	)
 
 	return
-
 }
 
 // ResetCursorRects clears the window’s cursor rectangles and the cursor rectangles of the nsview objects in its view hierarchy.
@@ -19843,7 +18957,6 @@ func (x gen_NSWindow) ResetCursorRects() {
 	)
 
 	return
-
 }
 
 // ResignKeyWindow resigns the window’s key window status.
@@ -19855,7 +18968,6 @@ func (x gen_NSWindow) ResignKeyWindow() {
 	)
 
 	return
-
 }
 
 // ResignMainWindow resigns the window’s main window status.
@@ -19867,7 +18979,6 @@ func (x gen_NSWindow) ResignMainWindow() {
 	)
 
 	return
-
 }
 
 // RunToolbarCustomizationPalette presents the toolbar customization user interface.
@@ -19882,7 +18993,6 @@ func (x gen_NSWindow) RunToolbarCustomizationPalette(
 	)
 
 	return
-
 }
 
 // SelectKeyViewFollowingView gives key view status to the view that follows the given view.
@@ -19897,7 +19007,6 @@ func (x gen_NSWindow) SelectKeyViewFollowingView(
 	)
 
 	return
-
 }
 
 // SelectKeyViewPrecedingView gives key view status to the view that precedes the given view.
@@ -19912,7 +19021,6 @@ func (x gen_NSWindow) SelectKeyViewPrecedingView(
 	)
 
 	return
-
 }
 
 // SelectNextKeyView searches for a candidate next key view and, if it finds one, tries to make it the first responder.
@@ -19927,7 +19035,6 @@ func (x gen_NSWindow) SelectNextKeyView(
 	)
 
 	return
-
 }
 
 // SelectNextTab selects the next tab in the tab group in the trailing direction.
@@ -19942,7 +19049,6 @@ func (x gen_NSWindow) SelectNextTab(
 	)
 
 	return
-
 }
 
 // SelectPreviousKeyView searches for a candidate previous key view and, if it finds one, tries to make it the first responder.
@@ -19957,7 +19063,6 @@ func (x gen_NSWindow) SelectPreviousKeyView(
 	)
 
 	return
-
 }
 
 // SelectPreviousTab selects the previous tab in the tab group in the leading direction.
@@ -19972,7 +19077,6 @@ func (x gen_NSWindow) SelectPreviousTab(
 	)
 
 	return
-
 }
 
 // SendEvent this action method dispatches mouse and keyboard events the global application object sends to the window.
@@ -19987,7 +19091,6 @@ func (x gen_NSWindow) SendEvent(
 	)
 
 	return
-
 }
 
 // SetContentSize sets the size of the window’s content view to a given size, which is expressed in the window’s base coordinate system.
@@ -20002,7 +19105,6 @@ func (x gen_NSWindow) SetContentSize(
 	)
 
 	return
-
 }
 
 // SetDynamicDepthLimit sets a boolean value that indicates whether the window’s depth limit can change to match the depth of the screen it’s on.
@@ -20017,7 +19119,6 @@ func (x gen_NSWindow) SetDynamicDepthLimit(
 	)
 
 	return
-
 }
 
 // SetFrameDisplay sets the origin and size of the window’s frame rectangle according to a given frame rectangle, thereby setting its position and size onscreen.
@@ -20034,7 +19135,6 @@ func (x gen_NSWindow) SetFrameDisplay(
 	)
 
 	return
-
 }
 
 // SetFrameDisplayAnimate sets the origin and size of the window’s frame rectangle, with optional animation, according to a given frame rectangle, thereby setting its position and size onscreen.
@@ -20053,7 +19153,6 @@ func (x gen_NSWindow) SetFrameDisplayAnimate(
 	)
 
 	return
-
 }
 
 // SetFrameOrigin positions the bottom-left corner of the window’s frame rectangle at a given point in screen coordinates.
@@ -20068,7 +19167,6 @@ func (x gen_NSWindow) SetFrameOrigin(
 	)
 
 	return
-
 }
 
 // SetFrameTopLeftPoint positions the top-left corner of the window’s frame rectangle at a given point in screen coordinates.
@@ -20083,7 +19181,6 @@ func (x gen_NSWindow) SetFrameTopLeftPoint(
 	)
 
 	return
-
 }
 
 // SetIsMiniaturized sets the window’s miniaturized state to the value you specify.
@@ -20098,7 +19195,6 @@ func (x gen_NSWindow) SetIsMiniaturized(
 	)
 
 	return
-
 }
 
 // SetIsVisible sets the window’s visible state to the value you specify.
@@ -20113,7 +19209,6 @@ func (x gen_NSWindow) SetIsVisible(
 	)
 
 	return
-
 }
 
 // SetIsZoomed sets the window’s zoomed state to the value you specify.
@@ -20128,7 +19223,6 @@ func (x gen_NSWindow) SetIsZoomed(
 	)
 
 	return
-
 }
 
 // SetTitleWithRepresentedFilename sets a given path as the window’s title, formatting it as a file-system path, and records this path as the window’s associated file.
@@ -20143,7 +19237,6 @@ func (x gen_NSWindow) SetTitleWithRepresentedFilename(
 	)
 
 	return
-
 }
 
 // ToggleFullScreen takes the window into or out of fullscreen mode,
@@ -20158,7 +19251,6 @@ func (x gen_NSWindow) ToggleFullScreen(
 	)
 
 	return
-
 }
 
 // ToggleTabBar shows or hides the tab bar.
@@ -20173,7 +19265,6 @@ func (x gen_NSWindow) ToggleTabBar(
 	)
 
 	return
-
 }
 
 // ToggleTabOverview shows or hides the tab overview.
@@ -20188,7 +19279,6 @@ func (x gen_NSWindow) ToggleTabOverview(
 	)
 
 	return
-
 }
 
 // ToggleToolbarShown toggles the visibility of the window’s toolbar.
@@ -20203,7 +19293,6 @@ func (x gen_NSWindow) ToggleToolbarShown(
 	)
 
 	return
-
 }
 
 // TryToPerformWith dispatches action messages with a given argument.
@@ -20220,7 +19309,6 @@ func (x gen_NSWindow) TryToPerformWith(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // UnregisterDraggedTypes unregisters the window as a possible destination for dragging operations.
@@ -20232,7 +19320,6 @@ func (x gen_NSWindow) UnregisterDraggedTypes() {
 	)
 
 	return
-
 }
 
 // Update updates the window.
@@ -20244,7 +19331,6 @@ func (x gen_NSWindow) Update() {
 	)
 
 	return
-
 }
 
 // UpdateConstraintsIfNeeded updates the constraints based on changes to views in the window since the last layout.
@@ -20256,7 +19342,6 @@ func (x gen_NSWindow) UpdateConstraintsIfNeeded() {
 	)
 
 	return
-
 }
 
 // VisualizeConstraints displays a visual representation of the supplied constraints in the window.
@@ -20271,7 +19356,6 @@ func (x gen_NSWindow) VisualizeConstraints(
 	)
 
 	return
-
 }
 
 // Zoom toggles the size and location of the window between its standard state (which the application provides as the best size to display the window’s data) and its user state (a new size and location the user may have set by moving or resizing the window).
@@ -20286,19 +19370,17 @@ func (x gen_NSWindow) Zoom(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSWindow) Init_asNSWindow() NSWindow {
+func (x gen_NSWindow) Init_AsNSWindow() NSWindow {
 	ret := C.NSWindow_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // Delegate returns the window’s delegate.
@@ -20309,8 +19391,7 @@ func (x gen_NSWindow) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the window’s delegate.
@@ -20325,7 +19406,6 @@ func (x gen_NSWindow) SetDelegate(
 	)
 
 	return
-
 }
 
 // ContentViewController returns the main content view controller for the window.
@@ -20336,8 +19416,7 @@ func (x gen_NSWindow) ContentViewController() NSViewController {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSViewController_fromPointer(ret)
-
+	return NSViewController_FromPointer(ret)
 }
 
 // SetContentViewController returns the main content view controller for the window.
@@ -20352,7 +19431,6 @@ func (x gen_NSWindow) SetContentViewController(
 	)
 
 	return
-
 }
 
 // ContentView returns the window’s content view, the highest accessible view object in the window’s view hierarchy.
@@ -20363,8 +19441,7 @@ func (x gen_NSWindow) ContentView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetContentView returns the window’s content view, the highest accessible view object in the window’s view hierarchy.
@@ -20379,7 +19456,6 @@ func (x gen_NSWindow) SetContentView(
 	)
 
 	return
-
 }
 
 // StyleMask flags that describe the window’s current style, such as if it’s resizable or in full-screen mode.
@@ -20391,7 +19467,6 @@ func (x gen_NSWindow) StyleMask() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // SetStyleMask flags that describe the window’s current style, such as if it’s resizable or in full-screen mode.
@@ -20406,7 +19481,6 @@ func (x gen_NSWindow) SetStyleMask(
 	)
 
 	return
-
 }
 
 // WorksWhenModal returns a boolean value that indicates whether the window is able to receive keyboard and mouse events even when some other window is being run modally.
@@ -20418,7 +19492,6 @@ func (x gen_NSWindow) WorksWhenModal() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AlphaValue returns the window’s alpha value.
@@ -20430,7 +19503,6 @@ func (x gen_NSWindow) AlphaValue() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetAlphaValue returns the window’s alpha value.
@@ -20445,7 +19517,6 @@ func (x gen_NSWindow) SetAlphaValue(
 	)
 
 	return
-
 }
 
 // BackgroundColor returns the color of the window’s background.
@@ -20456,8 +19527,7 @@ func (x gen_NSWindow) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor returns the color of the window’s background.
@@ -20472,7 +19542,6 @@ func (x gen_NSWindow) SetBackgroundColor(
 	)
 
 	return
-
 }
 
 // CanHide returns a boolean value that indicates whether the window can hide when its application becomes hidden.
@@ -20484,7 +19553,6 @@ func (x gen_NSWindow) CanHide() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetCanHide returns a boolean value that indicates whether the window can hide when its application becomes hidden.
@@ -20499,7 +19567,6 @@ func (x gen_NSWindow) SetCanHide(
 	)
 
 	return
-
 }
 
 // IsOnActiveSpace returns a boolean value that indicates whether the window is on the currently active space.
@@ -20511,7 +19578,6 @@ func (x gen_NSWindow) IsOnActiveSpace() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // HidesOnDeactivate returns a boolean value that indicates whether the window is removed from the screen when its application becomes inactive.
@@ -20523,7 +19589,6 @@ func (x gen_NSWindow) HidesOnDeactivate() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHidesOnDeactivate returns a boolean value that indicates whether the window is removed from the screen when its application becomes inactive.
@@ -20538,7 +19603,6 @@ func (x gen_NSWindow) SetHidesOnDeactivate(
 	)
 
 	return
-
 }
 
 // CollectionBehavior returns a value that identifies the window’s behavior in window collections.
@@ -20550,7 +19614,6 @@ func (x gen_NSWindow) CollectionBehavior() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // SetCollectionBehavior returns a value that identifies the window’s behavior in window collections.
@@ -20565,7 +19628,6 @@ func (x gen_NSWindow) SetCollectionBehavior(
 	)
 
 	return
-
 }
 
 // IsOpaque returns a boolean value that indicates whether the window is opaque.
@@ -20577,7 +19639,6 @@ func (x gen_NSWindow) IsOpaque() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetOpaque returns a boolean value that indicates whether the window is opaque.
@@ -20592,7 +19653,6 @@ func (x gen_NSWindow) SetOpaque(
 	)
 
 	return
-
 }
 
 // HasShadow returns a boolean value that indicates whether the window has a shadow.
@@ -20604,7 +19664,6 @@ func (x gen_NSWindow) HasShadow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHasShadow returns a boolean value that indicates whether the window has a shadow.
@@ -20619,7 +19678,6 @@ func (x gen_NSWindow) SetHasShadow(
 	)
 
 	return
-
 }
 
 // PreventsApplicationTerminationWhenModal returns a boolean value that indicates whether the window prevents application termination when modal.
@@ -20631,7 +19689,6 @@ func (x gen_NSWindow) PreventsApplicationTerminationWhenModal() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetPreventsApplicationTerminationWhenModal returns a boolean value that indicates whether the window prevents application termination when modal.
@@ -20646,7 +19703,6 @@ func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal(
 	)
 
 	return
-
 }
 
 // HasDynamicDepthLimit returns a boolean value that indicates whether the window’s depth limit can change to match the depth of the screen it’s on.
@@ -20658,7 +19714,6 @@ func (x gen_NSWindow) HasDynamicDepthLimit() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // WindowNumber returns the window number of the window’s window device.
@@ -20670,7 +19725,6 @@ func (x gen_NSWindow) WindowNumber() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // DeviceDescription returns a dictionary containing information about the window’s resolution, such as color, depth, and so on.
@@ -20681,8 +19735,7 @@ func (x gen_NSWindow) DeviceDescription() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // CanBecomeVisibleWithoutLogin returns a boolean value that indicates whether the window can be displayed at the login window.
@@ -20694,7 +19747,6 @@ func (x gen_NSWindow) CanBecomeVisibleWithoutLogin() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetCanBecomeVisibleWithoutLogin returns a boolean value that indicates whether the window can be displayed at the login window.
@@ -20709,7 +19761,6 @@ func (x gen_NSWindow) SetCanBecomeVisibleWithoutLogin(
 	)
 
 	return
-
 }
 
 // BackingType returns the window’s backing store type.
@@ -20721,7 +19772,6 @@ func (x gen_NSWindow) BackingType() core.NSUInteger {
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // SetBackingType returns the window’s backing store type.
@@ -20736,7 +19786,6 @@ func (x gen_NSWindow) SetBackingType(
 	)
 
 	return
-
 }
 
 // AttachedSheet returns the sheet attached to the window.
@@ -20747,8 +19796,7 @@ func (x gen_NSWindow) AttachedSheet() NSWindow {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // IsSheet returns a boolean value that indicates whether the window has ever run as a modal sheet.
@@ -20760,7 +19808,6 @@ func (x gen_NSWindow) IsSheet() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SheetParent returns the window to which the sheet is attached.
@@ -20771,8 +19818,7 @@ func (x gen_NSWindow) SheetParent() NSWindow {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // Sheets an array of the sheets currently attached to the window.
@@ -20783,8 +19829,7 @@ func (x gen_NSWindow) Sheets() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // Frame returns the window’s frame rectangle in screen coordinates, including the title bar.
@@ -20796,7 +19841,6 @@ func (x gen_NSWindow) Frame() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // AspectRatio returns the window’s aspect ratio, which constrains the size of its frame rectangle to integral multiples of this ratio when the user resizes it.
@@ -20808,7 +19852,6 @@ func (x gen_NSWindow) AspectRatio() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetAspectRatio returns the window’s aspect ratio, which constrains the size of its frame rectangle to integral multiples of this ratio when the user resizes it.
@@ -20823,7 +19866,6 @@ func (x gen_NSWindow) SetAspectRatio(
 	)
 
 	return
-
 }
 
 // MinSize returns the minimum size to which the window’s frame (including its title bar) can be sized.
@@ -20835,7 +19877,6 @@ func (x gen_NSWindow) MinSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMinSize returns the minimum size to which the window’s frame (including its title bar) can be sized.
@@ -20850,7 +19891,6 @@ func (x gen_NSWindow) SetMinSize(
 	)
 
 	return
-
 }
 
 // MaxSize returns the maximum size to which the window’s frame (including its title bar) can be sized.
@@ -20862,7 +19902,6 @@ func (x gen_NSWindow) MaxSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMaxSize returns the maximum size to which the window’s frame (including its title bar) can be sized.
@@ -20877,7 +19916,6 @@ func (x gen_NSWindow) SetMaxSize(
 	)
 
 	return
-
 }
 
 // IsZoomed returns a boolean value that indicates whether the window is in a zoomed state.
@@ -20889,7 +19927,6 @@ func (x gen_NSWindow) IsZoomed() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ResizeIncrements returns the window’s resizing increments.
@@ -20901,7 +19938,6 @@ func (x gen_NSWindow) ResizeIncrements() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetResizeIncrements returns the window’s resizing increments.
@@ -20916,7 +19952,6 @@ func (x gen_NSWindow) SetResizeIncrements(
 	)
 
 	return
-
 }
 
 // PreservesContentDuringLiveResize returns a boolean value that indicates whether the window tries to optimize user-initiated resize operations by preserving the content of views that have not changed.
@@ -20928,7 +19963,6 @@ func (x gen_NSWindow) PreservesContentDuringLiveResize() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetPreservesContentDuringLiveResize returns a boolean value that indicates whether the window tries to optimize user-initiated resize operations by preserving the content of views that have not changed.
@@ -20943,7 +19977,6 @@ func (x gen_NSWindow) SetPreservesContentDuringLiveResize(
 	)
 
 	return
-
 }
 
 // InLiveResize returns a boolean value that indicates whether the window is being resized by the user.
@@ -20955,7 +19988,6 @@ func (x gen_NSWindow) InLiveResize() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ContentAspectRatio returns the window’s content aspect ratio.
@@ -20967,7 +19999,6 @@ func (x gen_NSWindow) ContentAspectRatio() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetContentAspectRatio returns the window’s content aspect ratio.
@@ -20982,7 +20013,6 @@ func (x gen_NSWindow) SetContentAspectRatio(
 	)
 
 	return
-
 }
 
 // ContentMinSize returns the minimum size of the window’s content view in the window’s base coordinate system.
@@ -20994,7 +20024,6 @@ func (x gen_NSWindow) ContentMinSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetContentMinSize returns the minimum size of the window’s content view in the window’s base coordinate system.
@@ -21009,7 +20038,6 @@ func (x gen_NSWindow) SetContentMinSize(
 	)
 
 	return
-
 }
 
 // ContentMaxSize returns the maximum size of the window’s content view in the window’s base coordinate system.
@@ -21021,7 +20049,6 @@ func (x gen_NSWindow) ContentMaxSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetContentMaxSize returns the maximum size of the window’s content view in the window’s base coordinate system.
@@ -21036,7 +20063,6 @@ func (x gen_NSWindow) SetContentMaxSize(
 	)
 
 	return
-
 }
 
 // ContentResizeIncrements returns the window’s content-view resizing increments.
@@ -21048,7 +20074,6 @@ func (x gen_NSWindow) ContentResizeIncrements() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetContentResizeIncrements returns the window’s content-view resizing increments.
@@ -21063,7 +20088,6 @@ func (x gen_NSWindow) SetContentResizeIncrements(
 	)
 
 	return
-
 }
 
 // ContentLayoutGuide returns a value used by auto layout constraints to automatically bind to the value of contentlayoutrect.
@@ -21074,8 +20098,7 @@ func (x gen_NSWindow) ContentLayoutGuide() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // ContentLayoutRect returns the area inside the window that is for non-obscured content, in window coordinates.
@@ -21087,7 +20110,6 @@ func (x gen_NSWindow) ContentLayoutRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // MaxFullScreenContentSize returns a maximum size that is used to determine if a window can fit when it is in full screen in a tile.
@@ -21099,7 +20121,6 @@ func (x gen_NSWindow) MaxFullScreenContentSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMaxFullScreenContentSize returns a maximum size that is used to determine if a window can fit when it is in full screen in a tile.
@@ -21114,7 +20135,6 @@ func (x gen_NSWindow) SetMaxFullScreenContentSize(
 	)
 
 	return
-
 }
 
 // MinFullScreenContentSize returns a minimum size that is used to determine if a window can fit when it is in full screen in a tile.
@@ -21126,7 +20146,6 @@ func (x gen_NSWindow) MinFullScreenContentSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetMinFullScreenContentSize returns a minimum size that is used to determine if a window can fit when it is in full screen in a tile.
@@ -21141,7 +20160,6 @@ func (x gen_NSWindow) SetMinFullScreenContentSize(
 	)
 
 	return
-
 }
 
 // Level returns the window level of the window.
@@ -21153,7 +20171,6 @@ func (x gen_NSWindow) Level() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetLevel returns the window level of the window.
@@ -21168,7 +20185,6 @@ func (x gen_NSWindow) SetLevel(
 	)
 
 	return
-
 }
 
 // IsVisible returns a boolean value that indicates whether the window is visible onscreen (even when it’s obscured by other windows).
@@ -21180,7 +20196,6 @@ func (x gen_NSWindow) IsVisible() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsKeyWindow returns a boolean value that indicates whether the window is the key window for the application.
@@ -21192,7 +20207,6 @@ func (x gen_NSWindow) IsKeyWindow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CanBecomeKeyWindow returns a boolean value that indicates whether the window can become the key window.
@@ -21204,7 +20218,6 @@ func (x gen_NSWindow) CanBecomeKeyWindow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsMainWindow returns a boolean value that indicates whether the window is the application’s main window.
@@ -21216,7 +20229,6 @@ func (x gen_NSWindow) IsMainWindow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // CanBecomeMainWindow returns a boolean value that indicates whether the window can become the application’s main window.
@@ -21228,7 +20240,6 @@ func (x gen_NSWindow) CanBecomeMainWindow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ChildWindows an array of the window’s attached child windows.
@@ -21239,8 +20250,7 @@ func (x gen_NSWindow) ChildWindows() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // ParentWindow returns the parent window to which the window is attached as a child.
@@ -21251,8 +20261,7 @@ func (x gen_NSWindow) ParentWindow() NSWindow {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // SetParentWindow returns the parent window to which the window is attached as a child.
@@ -21267,7 +20276,6 @@ func (x gen_NSWindow) SetParentWindow(
 	)
 
 	return
-
 }
 
 // IsExcludedFromWindowsMenu returns a boolean value that indicates whether the window is excluded from the application’s windows menu.
@@ -21279,7 +20287,6 @@ func (x gen_NSWindow) IsExcludedFromWindowsMenu() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetExcludedFromWindowsMenu returns a boolean value that indicates whether the window is excluded from the application’s windows menu.
@@ -21294,7 +20301,6 @@ func (x gen_NSWindow) SetExcludedFromWindowsMenu(
 	)
 
 	return
-
 }
 
 // AreCursorRectsEnabled returns a boolean value that indicates whether the window’s cursor rectangles are enabled.
@@ -21306,7 +20312,6 @@ func (x gen_NSWindow) AreCursorRectsEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ShowsToolbarButton returns a boolean value that indicates whether the toolbar control button is currently displayed.
@@ -21318,7 +20323,6 @@ func (x gen_NSWindow) ShowsToolbarButton() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetShowsToolbarButton returns a boolean value that indicates whether the toolbar control button is currently displayed.
@@ -21333,7 +20337,6 @@ func (x gen_NSWindow) SetShowsToolbarButton(
 	)
 
 	return
-
 }
 
 // TitlebarAppearsTransparent returns a boolean value that indicates whether the title bar draws its background.
@@ -21345,7 +20348,6 @@ func (x gen_NSWindow) TitlebarAppearsTransparent() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetTitlebarAppearsTransparent returns a boolean value that indicates whether the title bar draws its background.
@@ -21360,7 +20362,6 @@ func (x gen_NSWindow) SetTitlebarAppearsTransparent(
 	)
 
 	return
-
 }
 
 // TitlebarAccessoryViewControllers an array of title bar accessory view controllers that are currently added to the window.
@@ -21371,8 +20372,7 @@ func (x gen_NSWindow) TitlebarAccessoryViewControllers() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetTitlebarAccessoryViewControllers an array of title bar accessory view controllers that are currently added to the window.
@@ -21387,7 +20387,6 @@ func (x gen_NSWindow) SetTitlebarAccessoryViewControllers(
 	)
 
 	return
-
 }
 
 // TabbedWindows an array of windows that display as tabs.
@@ -21398,8 +20397,7 @@ func (x gen_NSWindow) TabbedWindows() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // AllowsToolTipsWhenApplicationIsInactive returns a boolean value that indicates whether the window can display tooltips even when the application is in the background.
@@ -21411,7 +20409,6 @@ func (x gen_NSWindow) AllowsToolTipsWhenApplicationIsInactive() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsToolTipsWhenApplicationIsInactive returns a boolean value that indicates whether the window can display tooltips even when the application is in the background.
@@ -21426,7 +20423,6 @@ func (x gen_NSWindow) SetAllowsToolTipsWhenApplicationIsInactive(
 	)
 
 	return
-
 }
 
 // CurrentEvent returns the event currently being processed by the application.
@@ -21437,8 +20433,7 @@ func (x gen_NSWindow) CurrentEvent() NSEvent {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSEvent_fromPointer(ret)
-
+	return NSEvent_FromPointer(ret)
 }
 
 // InitialFirstResponder returns the view that’s made first responder (also called the key view) the first time the window is placed onscreen.
@@ -21449,8 +20444,7 @@ func (x gen_NSWindow) InitialFirstResponder() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetInitialFirstResponder returns the view that’s made first responder (also called the key view) the first time the window is placed onscreen.
@@ -21465,7 +20459,6 @@ func (x gen_NSWindow) SetInitialFirstResponder(
 	)
 
 	return
-
 }
 
 // AutorecalculatesKeyViewLoop returns a boolean value that indicates whether the window automatically recalculates the key view loop when views are added.
@@ -21477,7 +20470,6 @@ func (x gen_NSWindow) AutorecalculatesKeyViewLoop() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutorecalculatesKeyViewLoop returns a boolean value that indicates whether the window automatically recalculates the key view loop when views are added.
@@ -21492,7 +20484,6 @@ func (x gen_NSWindow) SetAutorecalculatesKeyViewLoop(
 	)
 
 	return
-
 }
 
 // AcceptsMouseMovedEvents returns a boolean value that indicates whether the window accepts mouse-moved events.
@@ -21504,7 +20495,6 @@ func (x gen_NSWindow) AcceptsMouseMovedEvents() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAcceptsMouseMovedEvents returns a boolean value that indicates whether the window accepts mouse-moved events.
@@ -21519,7 +20509,6 @@ func (x gen_NSWindow) SetAcceptsMouseMovedEvents(
 	)
 
 	return
-
 }
 
 // IgnoresMouseEvents returns a boolean value that indicates whether the window is transparent to mouse events.
@@ -21531,7 +20520,6 @@ func (x gen_NSWindow) IgnoresMouseEvents() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetIgnoresMouseEvents returns a boolean value that indicates whether the window is transparent to mouse events.
@@ -21546,7 +20534,6 @@ func (x gen_NSWindow) SetIgnoresMouseEvents(
 	)
 
 	return
-
 }
 
 // MouseLocationOutsideOfEventStream returns the current location of the pointer reckoned in the window’s base coordinate system, regardless of the current event being handled or of any events pending.
@@ -21558,7 +20545,6 @@ func (x gen_NSWindow) MouseLocationOutsideOfEventStream() core.NSPoint {
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // IsRestorable returns a boolean value indicating whether the window configuration is preserved between application launches.
@@ -21570,7 +20556,6 @@ func (x gen_NSWindow) IsRestorable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetRestorable returns a boolean value indicating whether the window configuration is preserved between application launches.
@@ -21585,7 +20570,6 @@ func (x gen_NSWindow) SetRestorable(
 	)
 
 	return
-
 }
 
 // ViewsNeedDisplay returns a boolean value that indicates whether any of the window’s views need to be displayed.
@@ -21597,7 +20581,6 @@ func (x gen_NSWindow) ViewsNeedDisplay() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetViewsNeedDisplay returns a boolean value that indicates whether any of the window’s views need to be displayed.
@@ -21612,7 +20595,6 @@ func (x gen_NSWindow) SetViewsNeedDisplay(
 	)
 
 	return
-
 }
 
 // AllowsConcurrentViewDrawing returns a boolean value that indicates whether the window allows multithreaded view drawing.
@@ -21624,7 +20606,6 @@ func (x gen_NSWindow) AllowsConcurrentViewDrawing() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsConcurrentViewDrawing returns a boolean value that indicates whether the window allows multithreaded view drawing.
@@ -21639,7 +20620,6 @@ func (x gen_NSWindow) SetAllowsConcurrentViewDrawing(
 	)
 
 	return
-
 }
 
 // IsDocumentEdited returns a boolean value that indicates whether the window’s document has been edited.
@@ -21651,7 +20631,6 @@ func (x gen_NSWindow) IsDocumentEdited() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDocumentEdited returns a boolean value that indicates whether the window’s document has been edited.
@@ -21666,7 +20645,6 @@ func (x gen_NSWindow) SetDocumentEdited(
 	)
 
 	return
-
 }
 
 // BackingScaleFactor returns the backing scale factor.
@@ -21678,7 +20656,6 @@ func (x gen_NSWindow) BackingScaleFactor() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // Title returns the string that appears in the title bar of the window or the path to the represented file.
@@ -21689,8 +20666,7 @@ func (x gen_NSWindow) Title() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetTitle returns the string that appears in the title bar of the window or the path to the represented file.
@@ -21705,7 +20681,6 @@ func (x gen_NSWindow) SetTitle(
 	)
 
 	return
-
 }
 
 // Subtitle returns a secondary line of text that appears in the title bar of the window.
@@ -21716,8 +20691,7 @@ func (x gen_NSWindow) Subtitle() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetSubtitle returns a secondary line of text that appears in the title bar of the window.
@@ -21732,7 +20706,6 @@ func (x gen_NSWindow) SetSubtitle(
 	)
 
 	return
-
 }
 
 // TitleVisibility returns a value that indicates the visibility of the window’s title and title bar buttons.
@@ -21744,7 +20717,6 @@ func (x gen_NSWindow) TitleVisibility() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetTitleVisibility returns a value that indicates the visibility of the window’s title and title bar buttons.
@@ -21759,7 +20731,6 @@ func (x gen_NSWindow) SetTitleVisibility(
 	)
 
 	return
-
 }
 
 // RepresentedFilename returns the path to the file of the window’s represented file.
@@ -21770,8 +20741,7 @@ func (x gen_NSWindow) RepresentedFilename() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetRepresentedFilename returns the path to the file of the window’s represented file.
@@ -21786,7 +20756,6 @@ func (x gen_NSWindow) SetRepresentedFilename(
 	)
 
 	return
-
 }
 
 // RepresentedURL returns the url of the file the window represents.
@@ -21797,8 +20766,7 @@ func (x gen_NSWindow) RepresentedURL() core.NSURL {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // SetRepresentedURL returns the url of the file the window represents.
@@ -21813,7 +20781,6 @@ func (x gen_NSWindow) SetRepresentedURL(
 	)
 
 	return
-
 }
 
 // Screen returns the screen the window is on.
@@ -21824,8 +20791,7 @@ func (x gen_NSWindow) Screen() NSScreen {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // DeepestScreen returns the deepest screen the window is on (it may be split over several screens).
@@ -21836,8 +20802,7 @@ func (x gen_NSWindow) DeepestScreen() NSScreen {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSScreen_fromPointer(ret)
-
+	return NSScreen_FromPointer(ret)
 }
 
 // DisplaysWhenScreenProfileChanges returns a boolean value that indicates whether the window context should be updated when the screen profile changes or when the window moves to a different screen.
@@ -21849,7 +20814,6 @@ func (x gen_NSWindow) DisplaysWhenScreenProfileChanges() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDisplaysWhenScreenProfileChanges returns a boolean value that indicates whether the window context should be updated when the screen profile changes or when the window moves to a different screen.
@@ -21864,7 +20828,6 @@ func (x gen_NSWindow) SetDisplaysWhenScreenProfileChanges(
 	)
 
 	return
-
 }
 
 // IsMovableByWindowBackground returns a boolean value that indicates whether the window is movable by clicking and dragging anywhere in its background.
@@ -21876,7 +20839,6 @@ func (x gen_NSWindow) IsMovableByWindowBackground() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetMovableByWindowBackground returns a boolean value that indicates whether the window is movable by clicking and dragging anywhere in its background.
@@ -21891,7 +20853,6 @@ func (x gen_NSWindow) SetMovableByWindowBackground(
 	)
 
 	return
-
 }
 
 // IsMovable returns a boolean value that indicates whether the window can be dragged by clicking in its title bar or background.
@@ -21903,7 +20864,6 @@ func (x gen_NSWindow) IsMovable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetMovable returns a boolean value that indicates whether the window can be dragged by clicking in its title bar or background.
@@ -21918,7 +20878,6 @@ func (x gen_NSWindow) SetMovable(
 	)
 
 	return
-
 }
 
 // IsReleasedWhenClosed returns a boolean value that indicates whether the window is released when it receives the close message.
@@ -21930,7 +20889,6 @@ func (x gen_NSWindow) IsReleasedWhenClosed() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetReleasedWhenClosed returns a boolean value that indicates whether the window is released when it receives the close message.
@@ -21945,7 +20903,6 @@ func (x gen_NSWindow) SetReleasedWhenClosed(
 	)
 
 	return
-
 }
 
 // IsMiniaturized returns a boolean value that indicates whether the window is minimized.
@@ -21957,7 +20914,6 @@ func (x gen_NSWindow) IsMiniaturized() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // MiniwindowImage returns the custom miniaturized window image of the window.
@@ -21968,8 +20924,7 @@ func (x gen_NSWindow) MiniwindowImage() NSImage {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // SetMiniwindowImage returns the custom miniaturized window image of the window.
@@ -21984,7 +20939,6 @@ func (x gen_NSWindow) SetMiniwindowImage(
 	)
 
 	return
-
 }
 
 // MiniwindowTitle returns the title displayed in the window’s minimized window.
@@ -21995,8 +20949,7 @@ func (x gen_NSWindow) MiniwindowTitle() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetMiniwindowTitle returns the title displayed in the window’s minimized window.
@@ -22011,7 +20964,6 @@ func (x gen_NSWindow) SetMiniwindowTitle(
 	)
 
 	return
-
 }
 
 // HasCloseBox returns a boolean value that indicates if the window has a close box.
@@ -22023,7 +20975,6 @@ func (x gen_NSWindow) HasCloseBox() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // HasTitleBar returns a boolean value that indicates if the window has a title bar.
@@ -22035,7 +20986,6 @@ func (x gen_NSWindow) HasTitleBar() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsModalPanel returns a boolean value that indicates whether the window is a modal panel.
@@ -22047,7 +20997,6 @@ func (x gen_NSWindow) IsModalPanel() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsFloatingPanel returns a boolean value that indicates whether the window is a floating panel.
@@ -22059,7 +21008,6 @@ func (x gen_NSWindow) IsFloatingPanel() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsZoomable returns a boolean value that indicates whether the window allows zooming.
@@ -22071,7 +21019,6 @@ func (x gen_NSWindow) IsZoomable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsResizable returns a boolean value that indicates if the user can resize the window.
@@ -22083,7 +21030,6 @@ func (x gen_NSWindow) IsResizable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsMiniaturizable returns a boolean value that indicates whether the window can minimize.
@@ -22095,7 +21041,6 @@ func (x gen_NSWindow) IsMiniaturizable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // OrderedIndex returns the zero-based position of the window, based on its order from front to back among all visible application windows.
@@ -22107,7 +21052,6 @@ func (x gen_NSWindow) OrderedIndex() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // SetOrderedIndex returns the zero-based position of the window, based on its order from front to back among all visible application windows.
@@ -22122,26 +21066,25 @@ func (x gen_NSWindow) SetOrderedIndex(
 	)
 
 	return
-
 }
 
 type NSWorkspaceRef interface {
 	Pointer() uintptr
-	Init_asNSWorkspace() NSWorkspace
+	Init_AsNSWorkspace() NSWorkspace
 }
 
 type gen_NSWorkspace struct {
 	objc.Object
 }
 
-func NSWorkspace_fromPointer(ptr unsafe.Pointer) NSWorkspace {
+func NSWorkspace_FromPointer(ptr unsafe.Pointer) NSWorkspace {
 	return NSWorkspace{gen_NSWorkspace{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSWorkspace_fromRef(ref objc.Ref) NSWorkspace {
-	return NSWorkspace_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSWorkspace_FromRef(ref objc.Ref) NSWorkspace {
+	return NSWorkspace_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // URLForApplicationToOpenURL returns the url to the default app that would be opened.
@@ -22155,8 +21098,7 @@ func (x gen_NSWorkspace) URLForApplicationToOpenURL(
 		objc.RefPointer(url),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLForApplicationWithBundleIdentifier returns the url for the app with the specified identifier.
@@ -22170,8 +21112,7 @@ func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier(
 		objc.RefPointer(bundleIdentifier),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // URLsForApplicationsToOpenURL
@@ -22185,8 +21126,7 @@ func (x gen_NSWorkspace) URLsForApplicationsToOpenURL(
 		objc.RefPointer(url),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // URLsForApplicationsWithBundleIdentifier
@@ -22200,8 +21140,7 @@ func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier(
 		objc.RefPointer(bundleIdentifier),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // ActivateFileViewerSelectingURLs activates the finder, and opens one or more windows selecting the specified files.
@@ -22216,7 +21155,6 @@ func (x gen_NSWorkspace) ActivateFileViewerSelectingURLs(
 	)
 
 	return
-
 }
 
 // DesktopImageOptionsForScreen returns the desktop image options for the given screen.
@@ -22230,8 +21168,7 @@ func (x gen_NSWorkspace) DesktopImageOptionsForScreen(
 		objc.RefPointer(screen),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // DesktopImageURLForScreen returns the url for the desktop image for the given screen.
@@ -22245,8 +21182,7 @@ func (x gen_NSWorkspace) DesktopImageURLForScreen(
 		objc.RefPointer(screen),
 	)
 
-	return core.NSURL_fromPointer(ret)
-
+	return core.NSURL_FromPointer(ret)
 }
 
 // ExtendPowerOffBy requests the system wait for the specified amount of time before turning off the power or logging out the user.
@@ -22261,7 +21197,6 @@ func (x gen_NSWorkspace) ExtendPowerOffBy(
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // HideOtherApplications hides all applications other than the sender.
@@ -22273,7 +21208,6 @@ func (x gen_NSWorkspace) HideOtherApplications() {
 	)
 
 	return
-
 }
 
 // IconForFile returns an image containing the icon for the specified file.
@@ -22287,8 +21221,7 @@ func (x gen_NSWorkspace) IconForFile(
 		objc.RefPointer(fullPath),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // IconForFiles returns an image containing the icon for the specified files.
@@ -22302,8 +21235,7 @@ func (x gen_NSWorkspace) IconForFiles(
 		objc.RefPointer(fullPaths),
 	)
 
-	return NSImage_fromPointer(ret)
-
+	return NSImage_FromPointer(ret)
 }
 
 // IsFilePackageAtPath determines whether the specified path is a file package.
@@ -22318,7 +21250,6 @@ func (x gen_NSWorkspace) IsFilePackageAtPath(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NoteFileSystemChanged informs the workspace object that the file system changed at the specified path.
@@ -22333,7 +21264,6 @@ func (x gen_NSWorkspace) NoteFileSystemChanged(
 	)
 
 	return
-
 }
 
 // OpenURL opens the location at the specified url.
@@ -22348,7 +21278,6 @@ func (x gen_NSWorkspace) OpenURL(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SelectFileInFileViewerRootedAtPath selects the file at the specified path.
@@ -22365,7 +21294,6 @@ func (x gen_NSWorkspace) SelectFileInFileViewerRootedAtPath(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ShowSearchResultsForQueryString displays a spotlight search results window in finder for the specified query string.
@@ -22380,7 +21308,6 @@ func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // UnmountAndEjectDeviceAtPath unmounts and ejects the device at the specified path.
@@ -22395,19 +21322,17 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSWorkspace) Init_asNSWorkspace() NSWorkspace {
+func (x gen_NSWorkspace) Init_AsNSWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWorkspace_fromPointer(ret)
-
+	return NSWorkspace_FromPointer(ret)
 }
 
 // FrontmostApplication returns the frontmost app, which is the app that receives key events.
@@ -22418,8 +21343,7 @@ func (x gen_NSWorkspace) FrontmostApplication() NSRunningApplication {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSRunningApplication_fromPointer(ret)
-
+	return NSRunningApplication_FromPointer(ret)
 }
 
 // RunningApplications returns an array of running apps.
@@ -22430,8 +21354,7 @@ func (x gen_NSWorkspace) RunningApplications() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // MenuBarOwningApplication returns the app that owns the currently displayed menu bar.
@@ -22442,8 +21365,7 @@ func (x gen_NSWorkspace) MenuBarOwningApplication() NSRunningApplication {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSRunningApplication_fromPointer(ret)
-
+	return NSRunningApplication_FromPointer(ret)
 }
 
 // FileLabels returns the array of file labels, returned as strings.
@@ -22454,8 +21376,7 @@ func (x gen_NSWorkspace) FileLabels() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // FileLabelColors returns the array of colors for the file labels.
@@ -22466,8 +21387,7 @@ func (x gen_NSWorkspace) FileLabelColors() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // AccessibilityDisplayShouldDifferentiateWithoutColor returns a boolean value that indicates whether the app avoids conveying information through color alone.
@@ -22479,7 +21399,6 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldDifferentiateWithoutColor() b
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AccessibilityDisplayShouldIncreaseContrast returns a boolean value that indicates whether the app presents a high-contrast user interface.
@@ -22491,7 +21410,6 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldIncreaseContrast() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AccessibilityDisplayShouldReduceTransparency returns a boolean value that indicates whether the app avoids using semitransparent backgrounds.
@@ -22503,7 +21421,6 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceTransparency() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AccessibilityDisplayShouldInvertColors returns a boolean value that indicates whether the accessibility option to invert colors is in an enabled state.
@@ -22515,7 +21432,6 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldInvertColors() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AccessibilityDisplayShouldReduceMotion returns a boolean value that indicates whether the accessibility option to reduce motion is in an enabled state.
@@ -22527,7 +21443,6 @@ func (x gen_NSWorkspace) AccessibilityDisplayShouldReduceMotion() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsSwitchControlEnabled returns a boolean value that indicates whether switch control is currently running.
@@ -22539,7 +21454,6 @@ func (x gen_NSWorkspace) IsSwitchControlEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsVoiceOverEnabled returns a boolean value that indicates whether voiceover is currently running.
@@ -22551,26 +21465,25 @@ func (x gen_NSWorkspace) IsVoiceOverEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 type NSColorRef interface {
 	Pointer() uintptr
-	Init_asNSColor() NSColor
+	Init_AsNSColor() NSColor
 }
 
 type gen_NSColor struct {
 	objc.Object
 }
 
-func NSColor_fromPointer(ptr unsafe.Pointer) NSColor {
+func NSColor_FromPointer(ptr unsafe.Pointer) NSColor {
 	return NSColor{gen_NSColor{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSColor_fromRef(ref objc.Ref) NSColor {
-	return NSColor_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSColor_FromRef(ref objc.Ref) NSColor {
+	return NSColor_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // BlendedColorWithFractionOfColor creates a new color object whose component values are a weighted sum of the current color object and the specified color object's.
@@ -22586,8 +21499,7 @@ func (x gen_NSColor) BlendedColorWithFractionOfColor(
 		objc.RefPointer(color),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // ColorWithAlphaComponent creates a new color object that has the same color space and component values as the current color object, but the specified alpha component.
@@ -22601,8 +21513,7 @@ func (x gen_NSColor) ColorWithAlphaComponent(
 		C.double(alpha),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // DrawSwatchInRect draws the current color in the specified rectangle.
@@ -22617,7 +21528,6 @@ func (x gen_NSColor) DrawSwatchInRect(
 	)
 
 	return
-
 }
 
 // HighlightWithLevel creates a new color object that represents a blend between the current color and the highlight color.
@@ -22631,8 +21541,7 @@ func (x gen_NSColor) HighlightWithLevel(
 		C.double(val),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // Set sets the color of subsequent drawing to the color that the color object represents.
@@ -22644,7 +21553,6 @@ func (x gen_NSColor) Set() {
 	)
 
 	return
-
 }
 
 // SetFill sets the fill color of subsequent drawing to the color object’s color.
@@ -22656,7 +21564,6 @@ func (x gen_NSColor) SetFill() {
 	)
 
 	return
-
 }
 
 // SetStroke sets the stroke color of subsequent drawing to the color object’s color.
@@ -22668,7 +21575,6 @@ func (x gen_NSColor) SetStroke() {
 	)
 
 	return
-
 }
 
 // ShadowWithLevel creates a new color object that represents a blend between the current color and the shadow color.
@@ -22682,8 +21588,7 @@ func (x gen_NSColor) ShadowWithLevel(
 		C.double(val),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // WriteToPasteboard writes the color object’s data to the specified pasteboard.
@@ -22698,19 +21603,17 @@ func (x gen_NSColor) WriteToPasteboard(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSColor) Init_asNSColor() NSColor {
+func (x gen_NSColor) Init_AsNSColor() NSColor {
 	ret := C.NSColor_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // NumberOfComponents returns the number of components in the color.
@@ -22722,7 +21625,6 @@ func (x gen_NSColor) NumberOfComponents() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // AlphaComponent returns the alpha (opacity) component value of the color.
@@ -22734,7 +21636,6 @@ func (x gen_NSColor) AlphaComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // WhiteComponent returns the white component value of the color.
@@ -22746,7 +21647,6 @@ func (x gen_NSColor) WhiteComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // RedComponent returns the red component value of the color.
@@ -22758,7 +21658,6 @@ func (x gen_NSColor) RedComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // GreenComponent returns the green component value of the color.
@@ -22770,7 +21669,6 @@ func (x gen_NSColor) GreenComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // BlueComponent returns the blue component value of the color.
@@ -22782,7 +21680,6 @@ func (x gen_NSColor) BlueComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // CyanComponent returns the cyan component value of the color.
@@ -22794,7 +21691,6 @@ func (x gen_NSColor) CyanComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // MagentaComponent returns the magenta component value of the color.
@@ -22806,7 +21702,6 @@ func (x gen_NSColor) MagentaComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // YellowComponent returns the yellow component value of the color.
@@ -22818,7 +21713,6 @@ func (x gen_NSColor) YellowComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // BlackComponent returns the black component value of the color.
@@ -22830,7 +21724,6 @@ func (x gen_NSColor) BlackComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // HueComponent returns the hue component value of the color.
@@ -22842,7 +21735,6 @@ func (x gen_NSColor) HueComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SaturationComponent returns the saturation component value of the color.
@@ -22854,7 +21746,6 @@ func (x gen_NSColor) SaturationComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // BrightnessComponent returns the brightness component value of the color.
@@ -22866,7 +21757,6 @@ func (x gen_NSColor) BrightnessComponent() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // LocalizedCatalogNameComponent returns the localized version of the catalog name containing the color.
@@ -22877,8 +21767,7 @@ func (x gen_NSColor) LocalizedCatalogNameComponent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // LocalizedColorNameComponent returns the localized version of the color name.
@@ -22889,27 +21778,26 @@ func (x gen_NSColor) LocalizedColorNameComponent() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 type NSTextViewRef interface {
 	Pointer() uintptr
-	Init_asNSTextView() NSTextView
+	Init_AsNSTextView() NSTextView
 }
 
 type gen_NSTextView struct {
 	NSText
 }
 
-func NSTextView_fromPointer(ptr unsafe.Pointer) NSTextView {
+func NSTextView_FromPointer(ptr unsafe.Pointer) NSTextView {
 	return NSTextView{gen_NSTextView{
-		NSText_fromPointer(ptr),
+		NSText_FromPointer(ptr),
 	}}
 }
 
-func NSTextView_fromRef(ref objc.Ref) NSTextView {
-	return NSTextView_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSTextView_FromRef(ref objc.Ref) NSTextView {
+	return NSTextView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AlignJustified applies full justification to selected paragraphs (or all text, if the receiver is a plain text object).
@@ -22924,7 +21812,6 @@ func (x gen_NSTextView) AlignJustified(
 	)
 
 	return
-
 }
 
 // BreakUndoCoalescing informs the receiver that it should begin coalescing successive typing operations in a new undo grouping.
@@ -22936,7 +21823,6 @@ func (x gen_NSTextView) BreakUndoCoalescing() {
 	)
 
 	return
-
 }
 
 // ChangeAttributes changes the attributes of the current selection.
@@ -22951,7 +21837,6 @@ func (x gen_NSTextView) ChangeAttributes(
 	)
 
 	return
-
 }
 
 // ChangeColor sets the color of the selected text.
@@ -22966,7 +21851,6 @@ func (x gen_NSTextView) ChangeColor(
 	)
 
 	return
-
 }
 
 // ChangeDocumentBackgroundColor an action method used to set the background color.
@@ -22981,7 +21865,6 @@ func (x gen_NSTextView) ChangeDocumentBackgroundColor(
 	)
 
 	return
-
 }
 
 // ChangeLayoutOrientation an action method that sets the layout orientation of the text.
@@ -22996,7 +21879,6 @@ func (x gen_NSTextView) ChangeLayoutOrientation(
 	)
 
 	return
-
 }
 
 // CharacterIndexForInsertionAtPoint returns a character index appropriate for placing a zero-length selection for an insertion point associated with the mouse at the given point.
@@ -23011,7 +21893,6 @@ func (x gen_NSTextView) CharacterIndexForInsertionAtPoint(
 	)
 
 	return core.NSUInteger(ret)
-
 }
 
 // CheckTextInDocument performs the default text checking on the entire document.
@@ -23026,7 +21907,6 @@ func (x gen_NSTextView) CheckTextInDocument(
 	)
 
 	return
-
 }
 
 // CheckTextInSelection performs the default text checking on the current selection.
@@ -23041,7 +21921,6 @@ func (x gen_NSTextView) CheckTextInSelection(
 	)
 
 	return
-
 }
 
 // CleanUpAfterDragOperation releases the drag information still existing after the dragging session has completed.
@@ -23053,7 +21932,6 @@ func (x gen_NSTextView) CleanUpAfterDragOperation() {
 	)
 
 	return
-
 }
 
 // ClickedOnLinkAtIndex causes the text view to act as if the user clicked on some text with the given link as the value of a link attribute associated with the text.
@@ -23070,7 +21948,6 @@ func (x gen_NSTextView) ClickedOnLinkAtIndex(
 	)
 
 	return
-
 }
 
 // Complete invokes completion in a text view.
@@ -23085,7 +21962,6 @@ func (x gen_NSTextView) Complete(
 	)
 
 	return
-
 }
 
 // DidChangeText sends out necessary notifications when a text change completes.
@@ -23097,7 +21973,6 @@ func (x gen_NSTextView) DidChangeText() {
 	)
 
 	return
-
 }
 
 // DragSelectionWithEventOffsetSlideBack begins dragging the current selected text range.
@@ -23116,7 +21991,6 @@ func (x gen_NSTextView) DragSelectionWithEventOffsetSlideBack(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // DrawInsertionPointInRectColorTurnedOn draws or erases the insertion point.
@@ -23135,7 +22009,6 @@ func (x gen_NSTextView) DrawInsertionPointInRectColorTurnedOn(
 	)
 
 	return
-
 }
 
 // DrawViewBackgroundInRect draws the background of the text view.
@@ -23150,13 +22023,12 @@ func (x gen_NSTextView) DrawViewBackgroundInRect(
 	)
 
 	return
-
 }
 
 // InitWithFrame initializes a text view.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449262-initwithframe?language=objc for details.
-func (x gen_NSTextView) InitWithFrame_asNSTextView(
+func (x gen_NSTextView) InitWithFrame_AsNSTextView(
 	frameRect core.NSRect,
 ) NSTextView {
 	ret := C.NSTextView_inst_InitWithFrame(
@@ -23164,14 +22036,13 @@ func (x gen_NSTextView) InitWithFrame_asNSTextView(
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // InitWithFrameTextContainer initializes a text view.
 //
 // See https://developer.apple.com/documentation/appkit/nstextview/1449347-initwithframe?language=objc for details.
-func (x gen_NSTextView) InitWithFrameTextContainer_asNSTextView(
+func (x gen_NSTextView) InitWithFrameTextContainer_AsNSTextView(
 	frameRect core.NSRect,
 	container NSTextContainerRef,
 ) NSTextView {
@@ -23181,8 +22052,7 @@ func (x gen_NSTextView) InitWithFrameTextContainer_asNSTextView(
 		objc.RefPointer(container),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // InvalidateTextContainerOrigin invalidates the calculated origin of the text container.
@@ -23194,7 +22064,6 @@ func (x gen_NSTextView) InvalidateTextContainerOrigin() {
 	)
 
 	return
-
 }
 
 // LoosenKerning increases the space between glyphs in the receiver’s selection, or in all text if the receiver is a plain text view.
@@ -23209,7 +22078,6 @@ func (x gen_NSTextView) LoosenKerning(
 	)
 
 	return
-
 }
 
 // LowerBaseline lowers the baseline offset of selected text by 1 point, or of all text if the receiver is a plain text view.
@@ -23224,7 +22092,6 @@ func (x gen_NSTextView) LowerBaseline(
 	)
 
 	return
-
 }
 
 // OrderFrontLinkPanel brings forward a panel allowing the user to manipulate links in the text view.
@@ -23239,7 +22106,6 @@ func (x gen_NSTextView) OrderFrontLinkPanel(
 	)
 
 	return
-
 }
 
 // OrderFrontListPanel brings forward a panel allowing the user to manipulate text lists in the text view.
@@ -23254,7 +22120,6 @@ func (x gen_NSTextView) OrderFrontListPanel(
 	)
 
 	return
-
 }
 
 // OrderFrontSharingServicePicker creates and displays a new instance of the sharing service picker.
@@ -23269,7 +22134,6 @@ func (x gen_NSTextView) OrderFrontSharingServicePicker(
 	)
 
 	return
-
 }
 
 // OrderFrontSpacingPanel brings forward a panel allowing the user to manipulate text line heights, interline spacing, and paragraph spacing, in the text view.
@@ -23284,7 +22148,6 @@ func (x gen_NSTextView) OrderFrontSpacingPanel(
 	)
 
 	return
-
 }
 
 // OrderFrontSubstitutionsPanel brings forward a panel allowing the user to specify string substitutions in the text view.
@@ -23299,7 +22162,6 @@ func (x gen_NSTextView) OrderFrontSubstitutionsPanel(
 	)
 
 	return
-
 }
 
 // OrderFrontTablePanel brings forward a panel allowing the user to manipulate text tables in the text view.
@@ -23314,7 +22176,6 @@ func (x gen_NSTextView) OrderFrontTablePanel(
 	)
 
 	return
-
 }
 
 // Outline adds the outline attribute to the selected text attributes if absent; removes the attribute if present.
@@ -23329,7 +22190,6 @@ func (x gen_NSTextView) Outline(
 	)
 
 	return
-
 }
 
 // PasteAsPlainText inserts the contents of the pasteboard into the receiver’s text as plain text.
@@ -23344,7 +22204,6 @@ func (x gen_NSTextView) PasteAsPlainText(
 	)
 
 	return
-
 }
 
 // PasteAsRichText this action method inserts the contents of the pasteboard into the receiver’s text as rich text, maintaining its attributes.
@@ -23359,7 +22218,6 @@ func (x gen_NSTextView) PasteAsRichText(
 	)
 
 	return
-
 }
 
 // PerformFindPanelAction performs a find panel action specified by the sender's tag.
@@ -23374,7 +22232,6 @@ func (x gen_NSTextView) PerformFindPanelAction(
 	)
 
 	return
-
 }
 
 // QuickLookPreviewableItemsInRanges returns an array of urls for items that can be displayed by quicklook in the specified ranges.
@@ -23388,8 +22245,7 @@ func (x gen_NSTextView) QuickLookPreviewableItemsInRanges(
 		objc.RefPointer(ranges),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // RaiseBaseline raises the baseline offset of selected text by 1 point, or of all text if the receiver is a plain text view.
@@ -23404,7 +22260,6 @@ func (x gen_NSTextView) RaiseBaseline(
 	)
 
 	return
-
 }
 
 // ReadSelectionFromPasteboard reads the text view’s preferred type of data from the specified pasteboard.
@@ -23419,7 +22274,6 @@ func (x gen_NSTextView) ReadSelectionFromPasteboard(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ReplaceTextContainer replaces the text container for the group of text system objects containing the receiver, keeping the association between the receiver and its layout manager intact.
@@ -23434,7 +22288,6 @@ func (x gen_NSTextView) ReplaceTextContainer(
 	)
 
 	return
-
 }
 
 // SetConstrainedFrameSize attempts to set the frame size as if by user action.
@@ -23449,7 +22302,6 @@ func (x gen_NSTextView) SetConstrainedFrameSize(
 	)
 
 	return
-
 }
 
 // SetNeedsDisplayInRectAvoidAdditionalLayout marks the receiver as requiring display.
@@ -23466,7 +22318,6 @@ func (x gen_NSTextView) SetNeedsDisplayInRectAvoidAdditionalLayout(
 	)
 
 	return
-
 }
 
 // ShouldChangeTextInRangesReplacementStrings initiates a series of delegate messages (and general notifications) to determine whether modifications can be made to the characters and attributes of the receiver’s text.
@@ -23483,7 +22334,6 @@ func (x gen_NSTextView) ShouldChangeTextInRangesReplacementStrings(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // StartSpeaking speaks the selected text, or all text if no selection.
@@ -23498,7 +22348,6 @@ func (x gen_NSTextView) StartSpeaking(
 	)
 
 	return
-
 }
 
 // StopSpeaking stops the speaking of text.
@@ -23513,7 +22362,6 @@ func (x gen_NSTextView) StopSpeaking(
 	)
 
 	return
-
 }
 
 // TightenKerning decreases the space between glyphs in the receiver’s selection, or for all glyphs if the receiver is a plain text view.
@@ -23528,7 +22376,6 @@ func (x gen_NSTextView) TightenKerning(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticDashSubstitution toggles the state of the automatic dash substitution.
@@ -23543,7 +22390,6 @@ func (x gen_NSTextView) ToggleAutomaticDashSubstitution(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticDataDetection toggles the state of the automatic data detection.
@@ -23558,7 +22404,6 @@ func (x gen_NSTextView) ToggleAutomaticDataDetection(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticLinkDetection changes the state of automatic link detection from enabled to disabled and vice versa.
@@ -23573,7 +22418,6 @@ func (x gen_NSTextView) ToggleAutomaticLinkDetection(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticQuoteSubstitution changes the state of automatic quotation mark substitution from enabled to disabled and vice versa.
@@ -23588,7 +22432,6 @@ func (x gen_NSTextView) ToggleAutomaticQuoteSubstitution(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticSpellingCorrection toggles the state of the automatic spelling correction.
@@ -23603,7 +22446,6 @@ func (x gen_NSTextView) ToggleAutomaticSpellingCorrection(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticTextCompletion
@@ -23618,7 +22460,6 @@ func (x gen_NSTextView) ToggleAutomaticTextCompletion(
 	)
 
 	return
-
 }
 
 // ToggleAutomaticTextReplacement toggles the state of the automatic text replacement.
@@ -23633,7 +22474,6 @@ func (x gen_NSTextView) ToggleAutomaticTextReplacement(
 	)
 
 	return
-
 }
 
 // ToggleContinuousSpellChecking toggles whether continuous spell checking is enabled for the receiver.
@@ -23648,7 +22488,6 @@ func (x gen_NSTextView) ToggleContinuousSpellChecking(
 	)
 
 	return
-
 }
 
 // ToggleGrammarChecking changes the state of grammar checking from enabled to disabled and vice versa.
@@ -23663,7 +22502,6 @@ func (x gen_NSTextView) ToggleGrammarChecking(
 	)
 
 	return
-
 }
 
 // ToggleQuickLookPreviewPanel an action message that toggles the visibility state of the quick look preview panel.
@@ -23678,7 +22516,6 @@ func (x gen_NSTextView) ToggleQuickLookPreviewPanel(
 	)
 
 	return
-
 }
 
 // ToggleSmartInsertDelete changes the state of smart insert and delete from enabled to disabled and vice versa.
@@ -23693,7 +22530,6 @@ func (x gen_NSTextView) ToggleSmartInsertDelete(
 	)
 
 	return
-
 }
 
 // TurnOffKerning sets the receiver to use nominal glyph spacing for the glyphs in its selection, or for all glyphs if the receiver is a plain text view.
@@ -23708,7 +22544,6 @@ func (x gen_NSTextView) TurnOffKerning(
 	)
 
 	return
-
 }
 
 // TurnOffLigatures sets the receiver to use only required ligatures when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.
@@ -23723,7 +22558,6 @@ func (x gen_NSTextView) TurnOffLigatures(
 	)
 
 	return
-
 }
 
 // UpdateCandidates
@@ -23735,7 +22569,6 @@ func (x gen_NSTextView) UpdateCandidates() {
 	)
 
 	return
-
 }
 
 // UpdateDragTypeRegistration updates the acceptable drag types of all text views associated with the receiver's layout manager.
@@ -23747,7 +22580,6 @@ func (x gen_NSTextView) UpdateDragTypeRegistration() {
 	)
 
 	return
-
 }
 
 // UpdateFontPanel updates the font panel to contain the font attributes of the selection.
@@ -23759,7 +22591,6 @@ func (x gen_NSTextView) UpdateFontPanel() {
 	)
 
 	return
-
 }
 
 // UpdateInsertionPointStateAndRestartTimer updates the insertion point’s location and optionally restarts the blinking cursor timer.
@@ -23774,7 +22605,6 @@ func (x gen_NSTextView) UpdateInsertionPointStateAndRestartTimer(
 	)
 
 	return
-
 }
 
 // UpdateQuickLookPreviewPanel notifies the quicklook panel that an update may be required.
@@ -23786,7 +22616,6 @@ func (x gen_NSTextView) UpdateQuickLookPreviewPanel() {
 	)
 
 	return
-
 }
 
 // UpdateRuler updates the ruler view in the receiver’s enclosing scroll view to reflect the selection’s paragraph and marker attributes.
@@ -23798,7 +22627,6 @@ func (x gen_NSTextView) UpdateRuler() {
 	)
 
 	return
-
 }
 
 // UpdateTextTouchBarItems
@@ -23810,7 +22638,6 @@ func (x gen_NSTextView) UpdateTextTouchBarItems() {
 	)
 
 	return
-
 }
 
 // UpdateTouchBarItemIdentifiers
@@ -23822,7 +22649,6 @@ func (x gen_NSTextView) UpdateTouchBarItemIdentifiers() {
 	)
 
 	return
-
 }
 
 // UseAllLigatures sets the receiver to use all ligatures available for the fonts and languages used when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.
@@ -23837,7 +22663,6 @@ func (x gen_NSTextView) UseAllLigatures(
 	)
 
 	return
-
 }
 
 // UseStandardKerning set the receiver to use pair kerning data for the glyphs in its selection, or for all glyphs if the receiver is a plain text view.
@@ -23852,7 +22677,6 @@ func (x gen_NSTextView) UseStandardKerning(
 	)
 
 	return
-
 }
 
 // UseStandardLigatures sets the receiver to use the standard ligatures available for the fonts and languages used when setting text, for the glyphs in the selection if the receiver is a rich text view, or for all glyphs if it’s a plain text view.
@@ -23867,7 +22691,6 @@ func (x gen_NSTextView) UseStandardLigatures(
 	)
 
 	return
-
 }
 
 // WriteSelectionToPasteboardTypes writes the current selection to the specified pasteboard under each given type.
@@ -23884,19 +22707,17 @@ func (x gen_NSTextView) WriteSelectionToPasteboardTypes(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSTextView) Init_asNSTextView() NSTextView {
+func (x gen_NSTextView) Init_AsNSTextView() NSTextView {
 	ret := C.NSTextView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextView_fromPointer(ret)
-
+	return NSTextView_FromPointer(ret)
 }
 
 // Delegate returns the delegate for all text views sharing the receiver’s layout manager.
@@ -23907,8 +22728,7 @@ func (x gen_NSTextView) Delegate() objc.Object {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return objc.Object_fromPointer(ret)
-
+	return objc.Object_FromPointer(ret)
 }
 
 // SetDelegate returns the delegate for all text views sharing the receiver’s layout manager.
@@ -23923,7 +22743,6 @@ func (x gen_NSTextView) SetDelegate(
 	)
 
 	return
-
 }
 
 // TextContainer returns the receiver’s text container.
@@ -23934,8 +22753,7 @@ func (x gen_NSTextView) TextContainer() NSTextContainer {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSTextContainer_fromPointer(ret)
-
+	return NSTextContainer_FromPointer(ret)
 }
 
 // SetTextContainer returns the receiver’s text container.
@@ -23950,7 +22768,6 @@ func (x gen_NSTextView) SetTextContainer(
 	)
 
 	return
-
 }
 
 // TextContainerInset returns the empty space the receiver leaves around its associated text container.
@@ -23962,7 +22779,6 @@ func (x gen_NSTextView) TextContainerInset() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // SetTextContainerInset returns the empty space the receiver leaves around its associated text container.
@@ -23977,7 +22793,6 @@ func (x gen_NSTextView) SetTextContainerInset(
 	)
 
 	return
-
 }
 
 // TextContainerOrigin returns the origin of the receiver’s text container.
@@ -23989,7 +22804,6 @@ func (x gen_NSTextView) TextContainerOrigin() core.NSPoint {
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // LayoutManager returns the layout manager that lays out text for the receiver’s text container.
@@ -24000,8 +22814,7 @@ func (x gen_NSTextView) LayoutManager() NSLayoutManager {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSLayoutManager_fromPointer(ret)
-
+	return NSLayoutManager_FromPointer(ret)
 }
 
 // BackgroundColor returns the receiver’s background color.
@@ -24012,8 +22825,7 @@ func (x gen_NSTextView) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor returns the receiver’s background color.
@@ -24028,7 +22840,6 @@ func (x gen_NSTextView) SetBackgroundColor(
 	)
 
 	return
-
 }
 
 // DrawsBackground returns a boolean value that indicates whether the receiver draws its background.
@@ -24040,7 +22851,6 @@ func (x gen_NSTextView) DrawsBackground() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDrawsBackground returns a boolean value that indicates whether the receiver draws its background.
@@ -24055,7 +22865,6 @@ func (x gen_NSTextView) SetDrawsBackground(
 	)
 
 	return
-
 }
 
 // AllowsDocumentBackgroundColorChange returns a boolean value that indicates whether the receiver allows its background color to change.
@@ -24067,7 +22876,6 @@ func (x gen_NSTextView) AllowsDocumentBackgroundColorChange() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsDocumentBackgroundColorChange returns a boolean value that indicates whether the receiver allows its background color to change.
@@ -24082,7 +22890,6 @@ func (x gen_NSTextView) SetAllowsDocumentBackgroundColorChange(
 	)
 
 	return
-
 }
 
 // ShouldDrawInsertionPoint returns a boolean value that determines whether the receiver should draw its insertion point.
@@ -24094,7 +22901,6 @@ func (x gen_NSTextView) ShouldDrawInsertionPoint() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AllowedInputSourceLocales an array of locale identifiers representing input sources that are allowed to be enabled when the receiver has the keyboard focus.
@@ -24105,8 +22911,7 @@ func (x gen_NSTextView) AllowedInputSourceLocales() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetAllowedInputSourceLocales an array of locale identifiers representing input sources that are allowed to be enabled when the receiver has the keyboard focus.
@@ -24121,7 +22926,6 @@ func (x gen_NSTextView) SetAllowedInputSourceLocales(
 	)
 
 	return
-
 }
 
 // AllowsUndo returns a boolean value that indicates whether the receiver allows undo.
@@ -24133,7 +22937,6 @@ func (x gen_NSTextView) AllowsUndo() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsUndo returns a boolean value that indicates whether the receiver allows undo.
@@ -24148,7 +22951,6 @@ func (x gen_NSTextView) SetAllowsUndo(
 	)
 
 	return
-
 }
 
 // IsEditable returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to edit text.
@@ -24160,7 +22962,6 @@ func (x gen_NSTextView) IsEditable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetEditable returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to edit text.
@@ -24175,7 +22976,6 @@ func (x gen_NSTextView) SetEditable(
 	)
 
 	return
-
 }
 
 // IsSelectable returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to select text.
@@ -24187,7 +22987,6 @@ func (x gen_NSTextView) IsSelectable() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSelectable returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to select text.
@@ -24202,7 +23001,6 @@ func (x gen_NSTextView) SetSelectable(
 	)
 
 	return
-
 }
 
 // IsFieldEditor returns a boolean value that controls whether the text views sharing the receiver’s layout manager behave as field editors.
@@ -24214,7 +23012,6 @@ func (x gen_NSTextView) IsFieldEditor() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetFieldEditor returns a boolean value that controls whether the text views sharing the receiver’s layout manager behave as field editors.
@@ -24229,7 +23026,6 @@ func (x gen_NSTextView) SetFieldEditor(
 	)
 
 	return
-
 }
 
 // IsRichText returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to apply attributes to specific ranges of text.
@@ -24241,7 +23037,6 @@ func (x gen_NSTextView) IsRichText() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetRichText returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to apply attributes to specific ranges of text.
@@ -24256,7 +23051,6 @@ func (x gen_NSTextView) SetRichText(
 	)
 
 	return
-
 }
 
 // ImportsGraphics returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to import files by dragging.
@@ -24268,7 +23062,6 @@ func (x gen_NSTextView) ImportsGraphics() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetImportsGraphics returns a boolean value that controls whether the text views sharing the receiver’s layout manager allow the user to import files by dragging.
@@ -24283,7 +23076,6 @@ func (x gen_NSTextView) SetImportsGraphics(
 	)
 
 	return
-
 }
 
 // AllowsImageEditing indicates whether image attachments should permit editing of their images.
@@ -24295,7 +23087,6 @@ func (x gen_NSTextView) AllowsImageEditing() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsImageEditing indicates whether image attachments should permit editing of their images.
@@ -24310,7 +23101,6 @@ func (x gen_NSTextView) SetAllowsImageEditing(
 	)
 
 	return
-
 }
 
 // IsAutomaticQuoteSubstitutionEnabled returns a boolean value that enables and disables automatic quotation mark substitution.
@@ -24322,7 +23112,6 @@ func (x gen_NSTextView) IsAutomaticQuoteSubstitutionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticQuoteSubstitutionEnabled returns a boolean value that enables and disables automatic quotation mark substitution.
@@ -24337,7 +23126,6 @@ func (x gen_NSTextView) SetAutomaticQuoteSubstitutionEnabled(
 	)
 
 	return
-
 }
 
 // IsAutomaticLinkDetectionEnabled returns a boolean value that enables or disables automatic link detection.
@@ -24349,7 +23137,6 @@ func (x gen_NSTextView) IsAutomaticLinkDetectionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticLinkDetectionEnabled returns a boolean value that enables or disables automatic link detection.
@@ -24364,7 +23151,6 @@ func (x gen_NSTextView) SetAutomaticLinkDetectionEnabled(
 	)
 
 	return
-
 }
 
 // DisplaysLinkToolTips returns a boolean value that indicates whether the text view automatically supplies the destination of a link as a tooltip for text that has a link attribute.
@@ -24376,7 +23162,6 @@ func (x gen_NSTextView) DisplaysLinkToolTips() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetDisplaysLinkToolTips returns a boolean value that indicates whether the text view automatically supplies the destination of a link as a tooltip for text that has a link attribute.
@@ -24391,7 +23176,6 @@ func (x gen_NSTextView) SetDisplaysLinkToolTips(
 	)
 
 	return
-
 }
 
 // IsAutomaticTextCompletionEnabled returns a boolean vlaue that inidcates whether the text view supplies autocompletion suggestions as the user types.
@@ -24403,7 +23187,6 @@ func (x gen_NSTextView) IsAutomaticTextCompletionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticTextCompletionEnabled returns a boolean vlaue that inidcates whether the text view supplies autocompletion suggestions as the user types.
@@ -24418,7 +23201,6 @@ func (x gen_NSTextView) SetAutomaticTextCompletionEnabled(
 	)
 
 	return
-
 }
 
 // UsesAdaptiveColorMappingForDarkAppearance returns a boolean vlaues that indicates whether the framework should use adaptive color mapping for dark appearance.
@@ -24430,7 +23212,6 @@ func (x gen_NSTextView) UsesAdaptiveColorMappingForDarkAppearance() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesAdaptiveColorMappingForDarkAppearance returns a boolean vlaues that indicates whether the framework should use adaptive color mapping for dark appearance.
@@ -24445,7 +23226,6 @@ func (x gen_NSTextView) SetUsesAdaptiveColorMappingForDarkAppearance(
 	)
 
 	return
-
 }
 
 // UsesRolloverButtonForSelection
@@ -24457,7 +23237,6 @@ func (x gen_NSTextView) UsesRolloverButtonForSelection() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesRolloverButtonForSelection
@@ -24472,7 +23251,6 @@ func (x gen_NSTextView) SetUsesRolloverButtonForSelection(
 	)
 
 	return
-
 }
 
 // UsesRuler returns a boolean value that controls whether the text views sharing the receiver’s layout manager use a ruler.
@@ -24484,7 +23262,6 @@ func (x gen_NSTextView) UsesRuler() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesRuler returns a boolean value that controls whether the text views sharing the receiver’s layout manager use a ruler.
@@ -24499,7 +23276,6 @@ func (x gen_NSTextView) SetUsesRuler(
 	)
 
 	return
-
 }
 
 // IsRulerVisible returns a boolean value that controls whether the scroll view enclosing text views sharing the receiver’s layout manager displays the ruler.
@@ -24511,7 +23287,6 @@ func (x gen_NSTextView) IsRulerVisible() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetRulerVisible returns a boolean value that controls whether the scroll view enclosing text views sharing the receiver’s layout manager displays the ruler.
@@ -24526,7 +23301,6 @@ func (x gen_NSTextView) SetRulerVisible(
 	)
 
 	return
-
 }
 
 // UsesInspectorBar returns a boolean value that indicates whether this text view uses the inspector bar.
@@ -24538,7 +23312,6 @@ func (x gen_NSTextView) UsesInspectorBar() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesInspectorBar returns a boolean value that indicates whether this text view uses the inspector bar.
@@ -24553,7 +23326,6 @@ func (x gen_NSTextView) SetUsesInspectorBar(
 	)
 
 	return
-
 }
 
 // SelectedRanges an array containing the ranges of characters selected in the receiver’s layout manager.
@@ -24564,8 +23336,7 @@ func (x gen_NSTextView) SelectedRanges() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetSelectedRanges an array containing the ranges of characters selected in the receiver’s layout manager.
@@ -24580,7 +23351,6 @@ func (x gen_NSTextView) SetSelectedRanges(
 	)
 
 	return
-
 }
 
 // InsertionPointColor returns the color of the insertion point.
@@ -24591,8 +23361,7 @@ func (x gen_NSTextView) InsertionPointColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetInsertionPointColor returns the color of the insertion point.
@@ -24607,7 +23376,6 @@ func (x gen_NSTextView) SetInsertionPointColor(
 	)
 
 	return
-
 }
 
 // SelectedTextAttributes returns the attributes used to indicate the selection.
@@ -24618,8 +23386,7 @@ func (x gen_NSTextView) SelectedTextAttributes() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // SetSelectedTextAttributes returns the attributes used to indicate the selection.
@@ -24634,7 +23401,6 @@ func (x gen_NSTextView) SetSelectedTextAttributes(
 	)
 
 	return
-
 }
 
 // MarkedTextAttributes returns the attributes used to draw marked text.
@@ -24645,8 +23411,7 @@ func (x gen_NSTextView) MarkedTextAttributes() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // SetMarkedTextAttributes returns the attributes used to draw marked text.
@@ -24661,7 +23426,6 @@ func (x gen_NSTextView) SetMarkedTextAttributes(
 	)
 
 	return
-
 }
 
 // LinkTextAttributes returns the attributes used to draw the onscreen presentation of link text.
@@ -24672,8 +23436,7 @@ func (x gen_NSTextView) LinkTextAttributes() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // SetLinkTextAttributes returns the attributes used to draw the onscreen presentation of link text.
@@ -24688,7 +23451,6 @@ func (x gen_NSTextView) SetLinkTextAttributes(
 	)
 
 	return
-
 }
 
 // ReadablePasteboardTypes returns the types this text view can read immediately from the pasteboard.
@@ -24699,8 +23461,7 @@ func (x gen_NSTextView) ReadablePasteboardTypes() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // WritablePasteboardTypes returns the pasteboard types that can be provided from the current selection.
@@ -24711,8 +23472,7 @@ func (x gen_NSTextView) WritablePasteboardTypes() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // TypingAttributes returns the receiver’s typing attributes.
@@ -24723,8 +23483,7 @@ func (x gen_NSTextView) TypingAttributes() core.NSDictionary {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSDictionary_fromPointer(ret)
-
+	return core.NSDictionary_FromPointer(ret)
 }
 
 // SetTypingAttributes returns the receiver’s typing attributes.
@@ -24739,7 +23498,6 @@ func (x gen_NSTextView) SetTypingAttributes(
 	)
 
 	return
-
 }
 
 // IsCoalescingUndo returns a boolean value that indicates whether undo coalescing is in progress.
@@ -24751,7 +23509,6 @@ func (x gen_NSTextView) IsCoalescingUndo() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AcceptableDragTypes returns the data types that the receiver accepts as the destination view of a dragging operation.
@@ -24762,8 +23519,7 @@ func (x gen_NSTextView) AcceptableDragTypes() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // RangesForUserCharacterAttributeChange an array containing the ranges of characters affected by an action method that changes character (not paragraph) attributes.
@@ -24774,8 +23530,7 @@ func (x gen_NSTextView) RangesForUserCharacterAttributeChange() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // RangesForUserParagraphAttributeChange an array containing the ranges of characters affected by a method that changes paragraph (not character) attributes.
@@ -24786,8 +23541,7 @@ func (x gen_NSTextView) RangesForUserParagraphAttributeChange() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // RangesForUserTextChange an array containing the ranges of characters affected by a method that changes characters (as opposed to attributes).
@@ -24798,8 +23552,7 @@ func (x gen_NSTextView) RangesForUserTextChange() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SmartInsertDeleteEnabled returns a boolean value that controls whether the receiver inserts or deletes space around selected words so as to preserve proper spacing and punctuation.
@@ -24811,7 +23564,6 @@ func (x gen_NSTextView) SmartInsertDeleteEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetSmartInsertDeleteEnabled returns a boolean value that controls whether the receiver inserts or deletes space around selected words so as to preserve proper spacing and punctuation.
@@ -24826,7 +23578,6 @@ func (x gen_NSTextView) SetSmartInsertDeleteEnabled(
 	)
 
 	return
-
 }
 
 // IsContinuousSpellCheckingEnabled returns a boolean value that indicates whether the receiver has continuous spell checking enabled.
@@ -24838,7 +23589,6 @@ func (x gen_NSTextView) IsContinuousSpellCheckingEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetContinuousSpellCheckingEnabled returns a boolean value that indicates whether the receiver has continuous spell checking enabled.
@@ -24853,7 +23603,6 @@ func (x gen_NSTextView) SetContinuousSpellCheckingEnabled(
 	)
 
 	return
-
 }
 
 // SpellCheckerDocumentTag returns a tag identifying the text view's text as a document for the spell checker server.
@@ -24865,7 +23614,6 @@ func (x gen_NSTextView) SpellCheckerDocumentTag() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // IsGrammarCheckingEnabled enables and disables grammar checking.
@@ -24877,7 +23625,6 @@ func (x gen_NSTextView) IsGrammarCheckingEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetGrammarCheckingEnabled enables and disables grammar checking.
@@ -24892,7 +23639,6 @@ func (x gen_NSTextView) SetGrammarCheckingEnabled(
 	)
 
 	return
-
 }
 
 // AcceptsGlyphInfo returns a boolean value that indicates whether the receiver accepts the glyph info attribute.
@@ -24904,7 +23650,6 @@ func (x gen_NSTextView) AcceptsGlyphInfo() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAcceptsGlyphInfo returns a boolean value that indicates whether the receiver accepts the glyph info attribute.
@@ -24919,7 +23664,6 @@ func (x gen_NSTextView) SetAcceptsGlyphInfo(
 	)
 
 	return
-
 }
 
 // UsesFontPanel returns a boolean value that controls whether the text views sharing the receiver’s layout manager use the font panel and font menu.
@@ -24931,7 +23675,6 @@ func (x gen_NSTextView) UsesFontPanel() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesFontPanel returns a boolean value that controls whether the text views sharing the receiver’s layout manager use the font panel and font menu.
@@ -24946,7 +23689,6 @@ func (x gen_NSTextView) SetUsesFontPanel(
 	)
 
 	return
-
 }
 
 // UsesFindPanel returns a boolean value that indicates whether the receiver allows for a find panel.
@@ -24958,7 +23700,6 @@ func (x gen_NSTextView) UsesFindPanel() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesFindPanel returns a boolean value that indicates whether the receiver allows for a find panel.
@@ -24973,7 +23714,6 @@ func (x gen_NSTextView) SetUsesFindPanel(
 	)
 
 	return
-
 }
 
 // IsAutomaticDashSubstitutionEnabled returns a boolean value that indicates whether automatic dash substitution is enabled.
@@ -24985,7 +23725,6 @@ func (x gen_NSTextView) IsAutomaticDashSubstitutionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticDashSubstitutionEnabled returns a boolean value that indicates whether automatic dash substitution is enabled.
@@ -25000,7 +23739,6 @@ func (x gen_NSTextView) SetAutomaticDashSubstitutionEnabled(
 	)
 
 	return
-
 }
 
 // IsAutomaticDataDetectionEnabled returns a boolean value that indicates whether automatic data detection is enabled.
@@ -25012,7 +23750,6 @@ func (x gen_NSTextView) IsAutomaticDataDetectionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticDataDetectionEnabled returns a boolean value that indicates whether automatic data detection is enabled.
@@ -25027,7 +23764,6 @@ func (x gen_NSTextView) SetAutomaticDataDetectionEnabled(
 	)
 
 	return
-
 }
 
 // IsAutomaticSpellingCorrectionEnabled returns a boolean value that indicates whether automatic spelling correction is enabled.
@@ -25039,7 +23775,6 @@ func (x gen_NSTextView) IsAutomaticSpellingCorrectionEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticSpellingCorrectionEnabled returns a boolean value that indicates whether automatic spelling correction is enabled.
@@ -25054,7 +23789,6 @@ func (x gen_NSTextView) SetAutomaticSpellingCorrectionEnabled(
 	)
 
 	return
-
 }
 
 // IsAutomaticTextReplacementEnabled returns a boolean value that indicates whether automatic text replacement is enabled.
@@ -25066,7 +23800,6 @@ func (x gen_NSTextView) IsAutomaticTextReplacementEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutomaticTextReplacementEnabled returns a boolean value that indicates whether automatic text replacement is enabled.
@@ -25081,7 +23814,6 @@ func (x gen_NSTextView) SetAutomaticTextReplacementEnabled(
 	)
 
 	return
-
 }
 
 // UsesFindBar returns a boolean value that indicates whether to use the find bar for this text view.
@@ -25093,7 +23825,6 @@ func (x gen_NSTextView) UsesFindBar() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetUsesFindBar returns a boolean value that indicates whether to use the find bar for this text view.
@@ -25108,7 +23839,6 @@ func (x gen_NSTextView) SetUsesFindBar(
 	)
 
 	return
-
 }
 
 // IsIncrementalSearchingEnabled returns a boolean value that indicates whether incremental searching is enabled.
@@ -25120,7 +23850,6 @@ func (x gen_NSTextView) IsIncrementalSearchingEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetIncrementalSearchingEnabled returns a boolean value that indicates whether incremental searching is enabled.
@@ -25135,7 +23864,6 @@ func (x gen_NSTextView) SetIncrementalSearchingEnabled(
 	)
 
 	return
-
 }
 
 // AllowsCharacterPickerTouchBarItem
@@ -25147,7 +23875,6 @@ func (x gen_NSTextView) AllowsCharacterPickerTouchBarItem() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAllowsCharacterPickerTouchBarItem
@@ -25162,7 +23889,6 @@ func (x gen_NSTextView) SetAllowsCharacterPickerTouchBarItem(
 	)
 
 	return
-
 }
 
 // Font
@@ -25173,8 +23899,7 @@ func (x gen_NSTextView) Font() NSFont {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSFont_fromPointer(ret)
-
+	return NSFont_FromPointer(ret)
 }
 
 // SetFont
@@ -25189,26 +23914,25 @@ func (x gen_NSTextView) SetFont(
 	)
 
 	return
-
 }
 
 type NSViewRef interface {
 	Pointer() uintptr
-	Init_asNSView() NSView
+	Init_AsNSView() NSView
 }
 
 type gen_NSView struct {
 	objc.Object
 }
 
-func NSView_fromPointer(ptr unsafe.Pointer) NSView {
+func NSView_FromPointer(ptr unsafe.Pointer) NSView {
 	return NSView{gen_NSView{
-		objc.Object_fromPointer(ptr),
+		objc.Object_FromPointer(ptr),
 	}}
 }
 
-func NSView_fromRef(ref objc.Ref) NSView {
-	return NSView_fromPointer(unsafe.Pointer(ref.Pointer()))
+func NSView_FromRef(ref objc.Ref) NSView {
+	return NSView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 // AcceptsFirstMouse overridden by subclasses to return yes if the view should be sent a mousedown: message for an initial mouse-down event, no if not.
@@ -25223,7 +23947,6 @@ func (x gen_NSView) AcceptsFirstMouse(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AddConstraints adds multiple constraints on the layout of the receiving view or its subviews.
@@ -25238,7 +23961,6 @@ func (x gen_NSView) AddConstraints(
 	)
 
 	return
-
 }
 
 // AddSubview adds a view to the view’s subviews so it’s displayed above its siblings.
@@ -25253,7 +23975,6 @@ func (x gen_NSView) AddSubview(
 	)
 
 	return
-
 }
 
 // AddSubviewPositionedRelativeTo inserts a view among the view’s subviews so it’s displayed immediately above or below another view.
@@ -25272,7 +23993,6 @@ func (x gen_NSView) AddSubviewPositionedRelativeTo(
 	)
 
 	return
-
 }
 
 // AdjustScroll overridden by subclasses to modify a given rectangle, returning the altered rectangle.
@@ -25287,7 +24007,6 @@ func (x gen_NSView) AdjustScroll(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // AlignmentRectForFrame returns the view’s alignment rectangle for a given frame.
@@ -25302,7 +24021,6 @@ func (x gen_NSView) AlignmentRectForFrame(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // AncestorSharedWithView returns the closest ancestor shared by the view and another specified view.
@@ -25316,8 +24034,7 @@ func (x gen_NSView) AncestorSharedWithView(
 		objc.RefPointer(view),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // Autoscroll scrolls the view’s closest ancestor nsclipview object proportionally to the distance of an event that occurs outside of it.
@@ -25332,7 +24049,6 @@ func (x gen_NSView) Autoscroll(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // BeginDocument invoked at the beginning of the printing session, this method sets up the current graphics context.
@@ -25344,7 +24060,6 @@ func (x gen_NSView) BeginDocument() {
 	)
 
 	return
-
 }
 
 // BeginPageInRectAtPlacement called at the beginning of each page, this method sets up the coordinate system so that a region inside the view’s bounds is translated to a specified location.
@@ -25361,7 +24076,6 @@ func (x gen_NSView) BeginPageInRectAtPlacement(
 	)
 
 	return
-
 }
 
 // CenterScanRect converts the corners of a specified rectangle to lie on the center of device pixels, which is useful in compensating for rendering overscanning when the coordinate system has been scaled.
@@ -25376,7 +24090,6 @@ func (x gen_NSView) CenterScanRect(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointFromView converts a point from the coordinate system of a given view to that of the view.
@@ -25393,7 +24106,6 @@ func (x gen_NSView) ConvertPointFromView(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointToView converts a point from the view’s coordinate system to that of a given view.
@@ -25410,7 +24122,6 @@ func (x gen_NSView) ConvertPointToView(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointFromBacking converts a point from its pixel aligned backing store coordinate system to the view’s interior coordinate system.
@@ -25425,7 +24136,6 @@ func (x gen_NSView) ConvertPointFromBacking(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointFromLayer convert the point from the layer's interior coordinate system to the view’s interior coordinate system.
@@ -25440,7 +24150,6 @@ func (x gen_NSView) ConvertPointFromLayer(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointToBacking converts a point from the view’s interior coordinate system to its pixel aligned backing store coordinate system.
@@ -25455,7 +24164,6 @@ func (x gen_NSView) ConvertPointToBacking(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertPointToLayer convert the size from the view’s interior coordinate system to the layer's interior coordinate system.
@@ -25470,7 +24178,6 @@ func (x gen_NSView) ConvertPointToLayer(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectFromView converts a rectangle from the coordinate system of another view to that of the view.
@@ -25487,7 +24194,6 @@ func (x gen_NSView) ConvertRectFromView(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToView converts a rectangle from the view’s coordinate system to that of another view.
@@ -25504,7 +24210,6 @@ func (x gen_NSView) ConvertRectToView(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectFromBacking converts a rectangle from its pixel aligned backing store coordinate system to the view’s interior coordinate system.
@@ -25519,7 +24224,6 @@ func (x gen_NSView) ConvertRectFromBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectFromLayer convert the rectangle from the layer's interior coordinate system to the view’s interior coordinate system.
@@ -25534,7 +24238,6 @@ func (x gen_NSView) ConvertRectFromLayer(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToBacking converts a rectangle from the view’s interior coordinate system to its pixel aligned backing store coordinate system.
@@ -25549,7 +24252,6 @@ func (x gen_NSView) ConvertRectToBacking(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertRectToLayer convert the size from the view’s interior coordinate system to the layer's interior coordinate system.
@@ -25564,7 +24266,6 @@ func (x gen_NSView) ConvertRectToLayer(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeFromView converts a size from another view’s coordinate system to that of the view.
@@ -25581,7 +24282,6 @@ func (x gen_NSView) ConvertSizeFromView(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeToView converts a size from the view’s coordinate system to that of another view.
@@ -25598,7 +24298,6 @@ func (x gen_NSView) ConvertSizeToView(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeFromBacking converts a size from its pixel aligned backing store coordinate system to the view’s interior coordinate system.
@@ -25613,7 +24312,6 @@ func (x gen_NSView) ConvertSizeFromBacking(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeFromLayer convert the size from the layer's interior coordinate system to the view’s interior coordinate system.
@@ -25628,7 +24326,6 @@ func (x gen_NSView) ConvertSizeFromLayer(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeToBacking converts a size from the view’s interior coordinate system to its pixel aligned backing store coordinate system.
@@ -25643,7 +24340,6 @@ func (x gen_NSView) ConvertSizeToBacking(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // ConvertSizeToLayer convert the size from the view’s interior coordinate system to the layer's interior coordinate system.
@@ -25658,7 +24354,6 @@ func (x gen_NSView) ConvertSizeToLayer(
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // DataWithEPSInsideRect returns eps data that draws the region of the view within a specified rectangle.
@@ -25672,8 +24367,7 @@ func (x gen_NSView) DataWithEPSInsideRect(
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 
-	return core.NSData_fromPointer(ret)
-
+	return core.NSData_FromPointer(ret)
 }
 
 // DataWithPDFInsideRect returns pdf data that draws the region of the view within a specified rectangle.
@@ -25687,8 +24381,7 @@ func (x gen_NSView) DataWithPDFInsideRect(
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 
-	return core.NSData_fromPointer(ret)
-
+	return core.NSData_FromPointer(ret)
 }
 
 // DidAddSubview overridden by subclasses to perform additional actions when subviews are added to the view.
@@ -25703,7 +24396,6 @@ func (x gen_NSView) DidAddSubview(
 	)
 
 	return
-
 }
 
 // DidCloseMenuWithEvent called after a contextual menu that was displayed from the receiving view has been closed.
@@ -25720,7 +24412,6 @@ func (x gen_NSView) DidCloseMenuWithEvent(
 	)
 
 	return
-
 }
 
 // DiscardCursorRects invalidates all cursor rectangles set up using addcursorrect:cursor:.
@@ -25732,7 +24423,6 @@ func (x gen_NSView) DiscardCursorRects() {
 	)
 
 	return
-
 }
 
 // Display displays the view and all its subviews if possible, invoking each of the nsview methods lockfocus, drawrect:, and unlockfocus as necessary.
@@ -25744,7 +24434,6 @@ func (x gen_NSView) Display() {
 	)
 
 	return
-
 }
 
 // DisplayIfNeeded displays the view and all its subviews if any part of the view has been marked as needing display.
@@ -25756,7 +24445,6 @@ func (x gen_NSView) DisplayIfNeeded() {
 	)
 
 	return
-
 }
 
 // DisplayIfNeededIgnoringOpacity acts as displayifneeded, except that this method doesn’t back up to the first opaque ancestor—it simply causes the view and its descendants to execute their drawing code.
@@ -25768,7 +24456,6 @@ func (x gen_NSView) DisplayIfNeededIgnoringOpacity() {
 	)
 
 	return
-
 }
 
 // DisplayIfNeededInRect acts as displayifneeded, confining drawing to a specified region of the view.
@@ -25783,7 +24470,6 @@ func (x gen_NSView) DisplayIfNeededInRect(
 	)
 
 	return
-
 }
 
 // DisplayIfNeededInRectIgnoringOpacity acts as displayifneeded, but confining drawing to arect and not backing up to the first opaque ancestor—it simply causes the view and its descendants to execute their drawing code.
@@ -25798,7 +24484,6 @@ func (x gen_NSView) DisplayIfNeededInRectIgnoringOpacity(
 	)
 
 	return
-
 }
 
 // DisplayRect acts as display, but confining drawing to a rectangular region of the view.
@@ -25813,7 +24498,6 @@ func (x gen_NSView) DisplayRect(
 	)
 
 	return
-
 }
 
 // DisplayRectIgnoringOpacity displays the view but confines drawing to a specified region and does not back up to the first opaque ancestor—it simply causes the view and its descendants to execute their drawing code.
@@ -25828,7 +24512,6 @@ func (x gen_NSView) DisplayRectIgnoringOpacity(
 	)
 
 	return
-
 }
 
 // DrawFocusRingMask draws the focus ring mask for the view.
@@ -25840,7 +24523,6 @@ func (x gen_NSView) DrawFocusRingMask() {
 	)
 
 	return
-
 }
 
 // DrawPageBorderWithSize allows applications that use the appkit pagination facility to draw additional marks on each logical page.
@@ -25855,7 +24537,6 @@ func (x gen_NSView) DrawPageBorderWithSize(
 	)
 
 	return
-
 }
 
 // DrawRect overridden by subclasses to draw the view’s image within the specified rectangle.
@@ -25870,7 +24551,6 @@ func (x gen_NSView) DrawRect(
 	)
 
 	return
-
 }
 
 // EndDocument this method is invoked at the end of the printing session.
@@ -25882,7 +24562,6 @@ func (x gen_NSView) EndDocument() {
 	)
 
 	return
-
 }
 
 // EndPage writes the end of a conforming page.
@@ -25894,7 +24573,6 @@ func (x gen_NSView) EndPage() {
 	)
 
 	return
-
 }
 
 // EnterFullScreenModeWithOptions sets the view to full screen mode.
@@ -25911,7 +24589,6 @@ func (x gen_NSView) EnterFullScreenModeWithOptions(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ExerciseAmbiguityInLayout randomly changes the frame of a view with an ambiguous layout between the different valid values.
@@ -25923,7 +24600,6 @@ func (x gen_NSView) ExerciseAmbiguityInLayout() {
 	)
 
 	return
-
 }
 
 // ExitFullScreenModeWithOptions instructs the view to exit full screen mode.
@@ -25938,7 +24614,6 @@ func (x gen_NSView) ExitFullScreenModeWithOptions(
 	)
 
 	return
-
 }
 
 // FrameForAlignmentRect returns the view’s frame for a given alignment rectangle.
@@ -25953,7 +24628,6 @@ func (x gen_NSView) FrameForAlignmentRect(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // HitTest returns the farthest descendant of the view in the view hierarchy (including itself) that contains a specified point, or nil if that point lies completely outside the view.
@@ -25967,14 +24641,13 @@ func (x gen_NSView) HitTest(
 		*(*C.NSPoint)(unsafe.Pointer(&point)),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // InitWithFrame initializes and returns a newly allocated nsview object with a specified frame rectangle.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc for details.
-func (x gen_NSView) InitWithFrame_asNSView(
+func (x gen_NSView) InitWithFrame_AsNSView(
 	frameRect core.NSRect,
 ) NSView {
 	ret := C.NSView_inst_InitWithFrame(
@@ -25982,8 +24655,7 @@ func (x gen_NSView) InitWithFrame_asNSView(
 		*(*C.NSRect)(unsafe.Pointer(&frameRect)),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // InvalidateIntrinsicContentSize invalidates the view’s intrinsic content size.
@@ -25995,7 +24667,6 @@ func (x gen_NSView) InvalidateIntrinsicContentSize() {
 	)
 
 	return
-
 }
 
 // IsDescendantOf returns yes if the view is a subview of a given view or if it’s identical to that view; otherwise, it returns no.
@@ -26010,7 +24681,6 @@ func (x gen_NSView) IsDescendantOf(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Layout perform layout in concert with the constraint-based layout system.
@@ -26022,7 +24692,6 @@ func (x gen_NSView) Layout() {
 	)
 
 	return
-
 }
 
 // LayoutSubtreeIfNeeded updates the layout of the receiving view and its subviews based on the current views and constraints.
@@ -26034,7 +24703,6 @@ func (x gen_NSView) LayoutSubtreeIfNeeded() {
 	)
 
 	return
-
 }
 
 // LocationOfPrintRect invoked by print: to determine the location of the region of the view being printed on the physical page.
@@ -26049,7 +24717,6 @@ func (x gen_NSView) LocationOfPrintRect(
 	)
 
 	return *(*core.NSPoint)(unsafe.Pointer(&ret))
-
 }
 
 // MakeBackingLayer creates the view’s backing layer.
@@ -26060,8 +24727,7 @@ func (x gen_NSView) MakeBackingLayer() core.CALayer {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.CALayer_fromPointer(ret)
-
+	return core.CALayer_FromPointer(ret)
 }
 
 // MenuForEvent overridden by subclasses to return a context-sensitive pop-up menu for a given mouse-down event.
@@ -26075,8 +24741,7 @@ func (x gen_NSView) MenuForEvent(
 		objc.RefPointer(event),
 	)
 
-	return NSMenu_fromPointer(ret)
-
+	return NSMenu_FromPointer(ret)
 }
 
 // MouseInRect returns whether a region of the view contains a specified point, accounting for whether the view is flipped or not.
@@ -26093,7 +24758,6 @@ func (x gen_NSView) MouseInRect(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NeedsToDrawRect returns a boolean value indicating whether the specified rectangle intersects any part of the area that the view is being asked to draw.
@@ -26108,7 +24772,6 @@ func (x gen_NSView) NeedsToDrawRect(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NoteFocusRingMaskChanged invoked to notify the view that the focus ring mask requires updating.
@@ -26120,7 +24783,6 @@ func (x gen_NSView) NoteFocusRingMaskChanged() {
 	)
 
 	return
-
 }
 
 // PerformKeyEquivalent implemented by subclasses to respond to key equivalents (also known as keyboard shortcuts).
@@ -26135,7 +24797,6 @@ func (x gen_NSView) PerformKeyEquivalent(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PrepareContentInRect prepares the overdraw region for drawing.
@@ -26150,7 +24811,6 @@ func (x gen_NSView) PrepareContentInRect(
 	)
 
 	return
-
 }
 
 // PrepareForReuse restores the view to an initial state so that it can be reused.
@@ -26162,7 +24822,6 @@ func (x gen_NSView) PrepareForReuse() {
 	)
 
 	return
-
 }
 
 // Print this action method opens the print panel, and if the user chooses an option other than canceling, prints the view and all its subviews to the device specified in the print panel.
@@ -26177,7 +24836,6 @@ func (x gen_NSView) Print(
 	)
 
 	return
-
 }
 
 // RectForPage implemented by subclasses to determine the portion of the view to be printed for the specified page number.
@@ -26192,7 +24850,6 @@ func (x gen_NSView) RectForPage(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // RectForSmartMagnificationAtPointInRect returns the appropriate rectangle to use when magnifying around the specified point.
@@ -26209,7 +24866,6 @@ func (x gen_NSView) RectForSmartMagnificationAtPointInRect(
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // RegisterForDraggedTypes registers the pasteboard types that the view will accept as the destination of an image-dragging session.
@@ -26224,7 +24880,6 @@ func (x gen_NSView) RegisterForDraggedTypes(
 	)
 
 	return
-
 }
 
 // RemoveAllToolTips removes all tooltips assigned to the view.
@@ -26236,7 +24891,6 @@ func (x gen_NSView) RemoveAllToolTips() {
 	)
 
 	return
-
 }
 
 // RemoveConstraints removes the specified constraints from the view.
@@ -26251,7 +24905,6 @@ func (x gen_NSView) RemoveConstraints(
 	)
 
 	return
-
 }
 
 // RemoveFromSuperview unlinks the view from its superview and its window, removes it from the responder chain, and invalidates its cursor rectangles.
@@ -26263,7 +24916,6 @@ func (x gen_NSView) RemoveFromSuperview() {
 	)
 
 	return
-
 }
 
 // RemoveFromSuperviewWithoutNeedingDisplay unlinks the view from its superview and its window and removes it from the responder chain, but does not invalidate its cursor rectangles to cause redrawing.
@@ -26275,7 +24927,6 @@ func (x gen_NSView) RemoveFromSuperviewWithoutNeedingDisplay() {
 	)
 
 	return
-
 }
 
 // ReplaceSubviewWith replaces one of the view’s subviews with another view.
@@ -26292,7 +24943,6 @@ func (x gen_NSView) ReplaceSubviewWith(
 	)
 
 	return
-
 }
 
 // ResetCursorRects overridden by subclasses to define their default cursor rectangles.
@@ -26304,7 +24954,6 @@ func (x gen_NSView) ResetCursorRects() {
 	)
 
 	return
-
 }
 
 // ResizeSubviewsWithOldSize informs the view’s subviews that the view’s bounds rectangle size has changed.
@@ -26319,7 +24968,6 @@ func (x gen_NSView) ResizeSubviewsWithOldSize(
 	)
 
 	return
-
 }
 
 // ResizeWithOldSuperviewSize informs the view that the bounds size of its superview has changed.
@@ -26334,7 +24982,6 @@ func (x gen_NSView) ResizeWithOldSuperviewSize(
 	)
 
 	return
-
 }
 
 // RotateByAngle rotates the view’s bounds rectangle by a specified degree value around the origin of the coordinate system, (0.0, 0.0).
@@ -26349,7 +24996,6 @@ func (x gen_NSView) RotateByAngle(
 	)
 
 	return
-
 }
 
 // ScaleUnitSquareToSize scales the view’s coordinate system so that the unit square scales to the specified dimensions.
@@ -26364,7 +25010,6 @@ func (x gen_NSView) ScaleUnitSquareToSize(
 	)
 
 	return
-
 }
 
 // ScrollPoint scrolls the view’s closest ancestor nsclipview object so a point in the view lies at the origin of the clip view's bounds rectangle.
@@ -26379,7 +25024,6 @@ func (x gen_NSView) ScrollPoint(
 	)
 
 	return
-
 }
 
 // ScrollRectToVisible scrolls the view’s closest ancestor nsclipview object the minimum distance needed so a specified region of the view becomes visible in the clip view.
@@ -26394,7 +25038,6 @@ func (x gen_NSView) ScrollRectToVisible(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetBoundsOrigin sets the origin of the view’s bounds rectangle to a specified point.
@@ -26409,7 +25052,6 @@ func (x gen_NSView) SetBoundsOrigin(
 	)
 
 	return
-
 }
 
 // SetBoundsSize sets the size of the view’s bounds rectangle to specified dimensions, inversely scaling its coordinate system relative to its frame rectangle.
@@ -26424,7 +25066,6 @@ func (x gen_NSView) SetBoundsSize(
 	)
 
 	return
-
 }
 
 // SetFrameOrigin sets the origin of the view’s frame rectangle to the specified point, effectively repositioning it within its superview.
@@ -26439,7 +25080,6 @@ func (x gen_NSView) SetFrameOrigin(
 	)
 
 	return
-
 }
 
 // SetFrameSize sets the size of the view’s frame rectangle to the specified dimensions, resizing it within its superview without affecting its coordinate system.
@@ -26454,7 +25094,6 @@ func (x gen_NSView) SetFrameSize(
 	)
 
 	return
-
 }
 
 // SetKeyboardFocusRingNeedsDisplayInRect invalidates the area around the focus ring.
@@ -26469,7 +25108,6 @@ func (x gen_NSView) SetKeyboardFocusRingNeedsDisplayInRect(
 	)
 
 	return
-
 }
 
 // SetNeedsDisplayInRect marks the region of the view within the specified rectangle as needing display, increasing the view’s existing invalid region to include it.
@@ -26484,7 +25122,6 @@ func (x gen_NSView) SetNeedsDisplayInRect(
 	)
 
 	return
-
 }
 
 // ShouldDelayWindowOrderingForEvent allows the user to drag objects from the view without activating the app or moving the window of the view forward, possibly obscuring the destination.
@@ -26499,7 +25136,6 @@ func (x gen_NSView) ShouldDelayWindowOrderingForEvent(
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // ShowDefinitionForAttributedStringAtPoint shows a window displaying the definition of the attributed string at the specified point.
@@ -26516,7 +25152,6 @@ func (x gen_NSView) ShowDefinitionForAttributedStringAtPoint(
 	)
 
 	return
-
 }
 
 // TranslateOriginToPoint translates the view’s coordinate system so that its origin moves to a new location.
@@ -26531,7 +25166,6 @@ func (x gen_NSView) TranslateOriginToPoint(
 	)
 
 	return
-
 }
 
 // TranslateRectsNeedingDisplayInRectBy translates the display rectangles by the specified delta.
@@ -26548,7 +25182,6 @@ func (x gen_NSView) TranslateRectsNeedingDisplayInRectBy(
 	)
 
 	return
-
 }
 
 // UnregisterDraggedTypes unregisters the view as a possible destination in a dragging session.
@@ -26560,7 +25193,6 @@ func (x gen_NSView) UnregisterDraggedTypes() {
 	)
 
 	return
-
 }
 
 // UpdateConstraints update constraints for the view.
@@ -26572,7 +25204,6 @@ func (x gen_NSView) UpdateConstraints() {
 	)
 
 	return
-
 }
 
 // UpdateConstraintsForSubtreeIfNeeded updates the constraints for the receiving view and its subviews.
@@ -26584,7 +25215,6 @@ func (x gen_NSView) UpdateConstraintsForSubtreeIfNeeded() {
 	)
 
 	return
-
 }
 
 // UpdateLayer updates the view’s content by modifying its underlying layer.
@@ -26596,7 +25226,6 @@ func (x gen_NSView) UpdateLayer() {
 	)
 
 	return
-
 }
 
 // UpdateTrackingAreas invoked automatically when the view’s geometry changes such that its tracking areas need to be recalculated.
@@ -26608,7 +25237,6 @@ func (x gen_NSView) UpdateTrackingAreas() {
 	)
 
 	return
-
 }
 
 // ViewDidChangeBackingProperties responds when the view’s backing store properties change.
@@ -26620,7 +25248,6 @@ func (x gen_NSView) ViewDidChangeBackingProperties() {
 	)
 
 	return
-
 }
 
 // ViewDidChangeEffectiveAppearance
@@ -26632,7 +25259,6 @@ func (x gen_NSView) ViewDidChangeEffectiveAppearance() {
 	)
 
 	return
-
 }
 
 // ViewDidEndLiveResize informs the view of the end of a live resize—the user has finished resizing the view.
@@ -26644,7 +25270,6 @@ func (x gen_NSView) ViewDidEndLiveResize() {
 	)
 
 	return
-
 }
 
 // ViewDidHide invoked when the view is hidden, either directly, or in response to an ancestor being hidden.
@@ -26656,7 +25281,6 @@ func (x gen_NSView) ViewDidHide() {
 	)
 
 	return
-
 }
 
 // ViewDidMoveToSuperview informs the view that its superview has changed (possibly to nil).
@@ -26668,7 +25292,6 @@ func (x gen_NSView) ViewDidMoveToSuperview() {
 	)
 
 	return
-
 }
 
 // ViewDidMoveToWindow informs the view that it has been added to a new view hierarchy.
@@ -26680,7 +25303,6 @@ func (x gen_NSView) ViewDidMoveToWindow() {
 	)
 
 	return
-
 }
 
 // ViewDidUnhide invoked when the view is unhidden, either directly, or in response to an ancestor being unhidden
@@ -26692,7 +25314,6 @@ func (x gen_NSView) ViewDidUnhide() {
 	)
 
 	return
-
 }
 
 // ViewWillDraw informs the view that it’s required to draw content.
@@ -26704,7 +25325,6 @@ func (x gen_NSView) ViewWillDraw() {
 	)
 
 	return
-
 }
 
 // ViewWillMoveToSuperview informs the view that its superview is about to change to the specified superview (which may be nil).
@@ -26719,7 +25339,6 @@ func (x gen_NSView) ViewWillMoveToSuperview(
 	)
 
 	return
-
 }
 
 // ViewWillMoveToWindow informs the view that it’s being added to the view hierarchy of the specified window object (which may be nil).
@@ -26734,7 +25353,6 @@ func (x gen_NSView) ViewWillMoveToWindow(
 	)
 
 	return
-
 }
 
 // ViewWillStartLiveResize informs the view of the start of a live resize—the user has started resizing the view.
@@ -26746,7 +25364,6 @@ func (x gen_NSView) ViewWillStartLiveResize() {
 	)
 
 	return
-
 }
 
 // ViewWithTag returns the view’s nearest descendant (including itself) with a specific tag, or nil if no subview has that tag.
@@ -26760,8 +25377,7 @@ func (x gen_NSView) ViewWithTag(
 		C.long(tag),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // WillOpenMenuWithEvent called just before a contextual menu for a view is opened on screen.
@@ -26778,7 +25394,6 @@ func (x gen_NSView) WillOpenMenuWithEvent(
 	)
 
 	return
-
 }
 
 // WillRemoveSubview overridden by subclasses to perform additional actions before subviews are removed from the view.
@@ -26793,7 +25408,6 @@ func (x gen_NSView) WillRemoveSubview(
 	)
 
 	return
-
 }
 
 // WriteEPSInsideRectToPasteboard writes eps data that draws the region of the view within a specified rectangle onto a pasteboard.
@@ -26810,7 +25424,6 @@ func (x gen_NSView) WriteEPSInsideRectToPasteboard(
 	)
 
 	return
-
 }
 
 // WritePDFInsideRectToPasteboard writes pdf data that draws the region of the view within a specified rectangle onto a pasteboard.
@@ -26827,19 +25440,17 @@ func (x gen_NSView) WritePDFInsideRectToPasteboard(
 	)
 
 	return
-
 }
 
 // Init
 //
 // See  for details.
-func (x gen_NSView) Init_asNSView() NSView {
+func (x gen_NSView) Init_AsNSView() NSView {
 	ret := C.NSView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // Superview returns the view that is the parent of the current view.
@@ -26850,8 +25461,7 @@ func (x gen_NSView) Superview() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // Subviews returns the array of views embedded in the current view.
@@ -26862,8 +25472,7 @@ func (x gen_NSView) Subviews() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetSubviews returns the array of views embedded in the current view.
@@ -26878,7 +25487,6 @@ func (x gen_NSView) SetSubviews(
 	)
 
 	return
-
 }
 
 // Window returns the view’s window object, if it is installed in a window.
@@ -26889,8 +25497,7 @@ func (x gen_NSView) Window() NSWindow {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSWindow_fromPointer(ret)
-
+	return NSWindow_FromPointer(ret)
 }
 
 // OpaqueAncestor returns the view’s closest opaque ancestor, which might be the view itself.
@@ -26901,8 +25508,7 @@ func (x gen_NSView) OpaqueAncestor() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // EnclosingMenuItem returns the menu item containing the view or any of its superviews in the view hierarchy.
@@ -26913,8 +25519,7 @@ func (x gen_NSView) EnclosingMenuItem() NSMenuItem {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSMenuItem_fromPointer(ret)
-
+	return NSMenuItem_FromPointer(ret)
 }
 
 // Frame returns the view’s frame rectangle, which defines its position and size in its superview’s coordinate system.
@@ -26926,7 +25531,6 @@ func (x gen_NSView) Frame() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // SetFrame returns the view’s frame rectangle, which defines its position and size in its superview’s coordinate system.
@@ -26941,7 +25545,6 @@ func (x gen_NSView) SetFrame(
 	)
 
 	return
-
 }
 
 // FrameRotation returns the angle of rotation, measured in degrees, applied to the view’s frame rectangle relative to its superview’s coordinate system.
@@ -26953,7 +25556,6 @@ func (x gen_NSView) FrameRotation() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetFrameRotation returns the angle of rotation, measured in degrees, applied to the view’s frame rectangle relative to its superview’s coordinate system.
@@ -26968,7 +25570,6 @@ func (x gen_NSView) SetFrameRotation(
 	)
 
 	return
-
 }
 
 // Bounds returns the view’s bounds rectangle, which expresses its location and size in its own coordinate system.
@@ -26980,7 +25581,6 @@ func (x gen_NSView) Bounds() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // SetBounds returns the view’s bounds rectangle, which expresses its location and size in its own coordinate system.
@@ -26995,7 +25595,6 @@ func (x gen_NSView) SetBounds(
 	)
 
 	return
-
 }
 
 // BoundsRotation returns the angle of rotation, measured in degrees, applied to the view’s bounds rectangle relative to its frame rectangle.
@@ -27007,7 +25606,6 @@ func (x gen_NSView) BoundsRotation() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetBoundsRotation returns the angle of rotation, measured in degrees, applied to the view’s bounds rectangle relative to its frame rectangle.
@@ -27022,7 +25620,6 @@ func (x gen_NSView) SetBoundsRotation(
 	)
 
 	return
-
 }
 
 // WantsLayer returns a boolean value indicating whether the view uses a layer as its backing store.
@@ -27034,7 +25631,6 @@ func (x gen_NSView) WantsLayer() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetWantsLayer returns a boolean value indicating whether the view uses a layer as its backing store.
@@ -27049,7 +25645,6 @@ func (x gen_NSView) SetWantsLayer(
 	)
 
 	return
-
 }
 
 // WantsUpdateLayer returns a boolean value indicating which drawing path the view takes when updating its contents.
@@ -27061,7 +25656,6 @@ func (x gen_NSView) WantsUpdateLayer() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // Layer returns the core animation layer that the view uses as its backing store.
@@ -27072,8 +25666,7 @@ func (x gen_NSView) Layer() core.CALayer {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.CALayer_fromPointer(ret)
-
+	return core.CALayer_FromPointer(ret)
 }
 
 // SetLayer returns the core animation layer that the view uses as its backing store.
@@ -27088,7 +25681,6 @@ func (x gen_NSView) SetLayer(
 	)
 
 	return
-
 }
 
 // CanDrawSubviewsIntoLayer returns a boolean value indicating whether the view incorporates content from its subviews into its own layer.
@@ -27100,7 +25692,6 @@ func (x gen_NSView) CanDrawSubviewsIntoLayer() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetCanDrawSubviewsIntoLayer returns a boolean value indicating whether the view incorporates content from its subviews into its own layer.
@@ -27115,7 +25706,6 @@ func (x gen_NSView) SetCanDrawSubviewsIntoLayer(
 	)
 
 	return
-
 }
 
 // LayerUsesCoreImageFilters returns a boolean value indicating whether the view’s layer uses core image filters and needs in-process rendering.
@@ -27127,7 +25717,6 @@ func (x gen_NSView) LayerUsesCoreImageFilters() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetLayerUsesCoreImageFilters returns a boolean value indicating whether the view’s layer uses core image filters and needs in-process rendering.
@@ -27142,7 +25731,6 @@ func (x gen_NSView) SetLayerUsesCoreImageFilters(
 	)
 
 	return
-
 }
 
 // AlphaValue returns the opacity of the view.
@@ -27154,7 +25742,6 @@ func (x gen_NSView) AlphaValue() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetAlphaValue returns the opacity of the view.
@@ -27169,7 +25756,6 @@ func (x gen_NSView) SetAlphaValue(
 	)
 
 	return
-
 }
 
 // FrameCenterRotation returns the rotation angle of the view around the center of its layer.
@@ -27181,7 +25767,6 @@ func (x gen_NSView) FrameCenterRotation() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // SetFrameCenterRotation returns the rotation angle of the view around the center of its layer.
@@ -27196,7 +25781,6 @@ func (x gen_NSView) SetFrameCenterRotation(
 	)
 
 	return
-
 }
 
 // BackgroundFilters an array of core image filters to apply to the view’s background.
@@ -27207,8 +25791,7 @@ func (x gen_NSView) BackgroundFilters() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetBackgroundFilters an array of core image filters to apply to the view’s background.
@@ -27223,7 +25806,6 @@ func (x gen_NSView) SetBackgroundFilters(
 	)
 
 	return
-
 }
 
 // ContentFilters an array of core image filters to apply to the contents of the view and its sublayers.
@@ -27234,8 +25816,7 @@ func (x gen_NSView) ContentFilters() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetContentFilters an array of core image filters to apply to the contents of the view and its sublayers.
@@ -27250,7 +25831,6 @@ func (x gen_NSView) SetContentFilters(
 	)
 
 	return
-
 }
 
 // CanDrawConcurrently returns a boolean value indicating whether the view can draw its contents on a background thread.
@@ -27262,7 +25842,6 @@ func (x gen_NSView) CanDrawConcurrently() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetCanDrawConcurrently returns a boolean value indicating whether the view can draw its contents on a background thread.
@@ -27277,7 +25856,6 @@ func (x gen_NSView) SetCanDrawConcurrently(
 	)
 
 	return
-
 }
 
 // VisibleRect returns the portion of the view that is not clipped by its superviews.
@@ -27289,7 +25867,6 @@ func (x gen_NSView) VisibleRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // WantsDefaultClipping returns a boolean value indicating whether appkit’s default clipping behavior is in effect.
@@ -27301,7 +25878,6 @@ func (x gen_NSView) WantsDefaultClipping() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PrintJobTitle returns the view’s print job title.
@@ -27312,8 +25888,7 @@ func (x gen_NSView) PrintJobTitle() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // PageHeader returns a default header string that includes the print job title and date.
@@ -27324,8 +25899,7 @@ func (x gen_NSView) PageHeader() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // PageFooter returns a default footer string that includes the current page number and page count.
@@ -27336,8 +25910,7 @@ func (x gen_NSView) PageFooter() core.NSAttributedString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSAttributedString_fromPointer(ret)
-
+	return core.NSAttributedString_FromPointer(ret)
 }
 
 // HeightAdjustLimit returns the fraction of the page that can be pushed onto the next page during automatic pagination to prevent items such as lines of text from being divided across pages.
@@ -27349,7 +25922,6 @@ func (x gen_NSView) HeightAdjustLimit() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // WidthAdjustLimit returns the fraction of the page that can be pushed onto the next page during automatic pagination to prevent items such as small images or text columns from being divided across pages.
@@ -27361,7 +25933,6 @@ func (x gen_NSView) WidthAdjustLimit() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // NeedsDisplay returns a boolean value that determines whether the view needs to be redrawn before being displayed.
@@ -27373,7 +25944,6 @@ func (x gen_NSView) NeedsDisplay() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetNeedsDisplay returns a boolean value that determines whether the view needs to be redrawn before being displayed.
@@ -27388,7 +25958,6 @@ func (x gen_NSView) SetNeedsDisplay(
 	)
 
 	return
-
 }
 
 // IsOpaque returns a boolean value indicating whether the view fills its frame rectangle with opaque content.
@@ -27400,7 +25969,6 @@ func (x gen_NSView) IsOpaque() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsFlipped returns a boolean value indicating whether the view uses a flipped coordinate system.
@@ -27412,7 +25980,6 @@ func (x gen_NSView) IsFlipped() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsRotatedFromBase returns a boolean value indicating whether the view or any of its ancestors has ever had a rotation factor applied to its frame or bounds.
@@ -27424,7 +25991,6 @@ func (x gen_NSView) IsRotatedFromBase() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsRotatedOrScaledFromBase returns a boolean value indicating whether the view or any of its ancestors has ever had a rotation factor applied to its frame or bounds, or has been scaled from the window’s base coordinate system.
@@ -27436,7 +26002,6 @@ func (x gen_NSView) IsRotatedOrScaledFromBase() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // AutoresizesSubviews returns a boolean value indicating whether the view applies the autoresizing behavior to its subviews when its frame size changes.
@@ -27448,7 +26013,6 @@ func (x gen_NSView) AutoresizesSubviews() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetAutoresizesSubviews returns a boolean value indicating whether the view applies the autoresizing behavior to its subviews when its frame size changes.
@@ -27463,7 +26027,6 @@ func (x gen_NSView) SetAutoresizesSubviews(
 	)
 
 	return
-
 }
 
 // Constraints returns the constraints held by the view.
@@ -27474,8 +26037,7 @@ func (x gen_NSView) Constraints() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // LayoutGuides returns the array of layout guide objects owned by this view.
@@ -27486,8 +26048,7 @@ func (x gen_NSView) LayoutGuides() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // FittingSize returns the minimum size of the view that satisfies the constraints it holds.
@@ -27499,7 +26060,6 @@ func (x gen_NSView) FittingSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // IntrinsicContentSize returns the natural size for the receiving view, considering only properties of the view itself.
@@ -27511,7 +26071,6 @@ func (x gen_NSView) IntrinsicContentSize() core.NSSize {
 	)
 
 	return *(*core.NSSize)(unsafe.Pointer(&ret))
-
 }
 
 // BaselineOffsetFromBottom returns the distance (in points) between the bottom of the view’s alignment rectangle and its baseline.
@@ -27523,7 +26082,6 @@ func (x gen_NSView) BaselineOffsetFromBottom() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // FirstBaselineOffsetFromTop returns the distance (in points) between the top of the view’s alignment rectangle and its topmost baseline.
@@ -27535,7 +26093,6 @@ func (x gen_NSView) FirstBaselineOffsetFromTop() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // LastBaselineOffsetFromBottom returns the distance (in points) between the bottom of the view’s alignment rectangle and its bottommost baseline.
@@ -27547,7 +26104,6 @@ func (x gen_NSView) LastBaselineOffsetFromBottom() core.CGFloat {
 	)
 
 	return core.CGFloat(ret)
-
 }
 
 // NeedsLayout returns a boolean value indicating whether the view needs a layout pass before it can be drawn.
@@ -27559,7 +26115,6 @@ func (x gen_NSView) NeedsLayout() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetNeedsLayout returns a boolean value indicating whether the view needs a layout pass before it can be drawn.
@@ -27574,7 +26129,6 @@ func (x gen_NSView) SetNeedsLayout(
 	)
 
 	return
-
 }
 
 // NeedsUpdateConstraints returns a boolean value indicating whether the view’s constraints need to be updated.
@@ -27586,7 +26140,6 @@ func (x gen_NSView) NeedsUpdateConstraints() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetNeedsUpdateConstraints returns a boolean value indicating whether the view’s constraints need to be updated.
@@ -27601,7 +26154,6 @@ func (x gen_NSView) SetNeedsUpdateConstraints(
 	)
 
 	return
-
 }
 
 // TranslatesAutoresizingMaskIntoConstraints returns a boolean value indicating whether the view’s autoresizing mask is translated into constraints for the constraint-based layout system.
@@ -27613,7 +26165,6 @@ func (x gen_NSView) TranslatesAutoresizingMaskIntoConstraints() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetTranslatesAutoresizingMaskIntoConstraints returns a boolean value indicating whether the view’s autoresizing mask is translated into constraints for the constraint-based layout system.
@@ -27628,7 +26179,6 @@ func (x gen_NSView) SetTranslatesAutoresizingMaskIntoConstraints(
 	)
 
 	return
-
 }
 
 // HasAmbiguousLayout returns a boolean value indicating whether the constraints impacting the layout of the view incompletely specify the location of the view.
@@ -27640,7 +26190,6 @@ func (x gen_NSView) HasAmbiguousLayout() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // FocusRingMaskBounds returns the focus ring mask bounds, specified in the view’s coordinate space.
@@ -27652,7 +26201,6 @@ func (x gen_NSView) FocusRingMaskBounds() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // AllowsVibrancy returns a boolean value indicating whether the view ensures it is vibrant on top of other content.
@@ -27664,7 +26212,6 @@ func (x gen_NSView) AllowsVibrancy() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsInFullScreenMode returns a boolean value indicating whether the view is in full screen mode.
@@ -27676,7 +26223,6 @@ func (x gen_NSView) IsInFullScreenMode() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsHidden returns a boolean value indicating whether the view is hidden.
@@ -27688,7 +26234,6 @@ func (x gen_NSView) IsHidden() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHidden returns a boolean value indicating whether the view is hidden.
@@ -27703,7 +26248,6 @@ func (x gen_NSView) SetHidden(
 	)
 
 	return
-
 }
 
 // IsHiddenOrHasHiddenAncestor returns a boolean value indicating whether the view is hidden from sight because it, or one of its ancestors, is marked as hidden.
@@ -27715,7 +26259,6 @@ func (x gen_NSView) IsHiddenOrHasHiddenAncestor() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // InLiveResize returns a boolean value indicating whether the view is being rendered as part of a live resizing operation.
@@ -27727,7 +26270,6 @@ func (x gen_NSView) InLiveResize() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // PreservesContentDuringLiveResize returns a boolean value indicating whether the view optimizes live-resize operations by preserving content that has not moved.
@@ -27739,7 +26281,6 @@ func (x gen_NSView) PreservesContentDuringLiveResize() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // RectPreservedDuringLiveResize returns the rectangle identifying the portion of your view that did not change during a live resize operation.
@@ -27751,7 +26292,6 @@ func (x gen_NSView) RectPreservedDuringLiveResize() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // GestureRecognizers returns the gesture recognize objects currently attached to the view.
@@ -27762,8 +26302,7 @@ func (x gen_NSView) GestureRecognizers() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // SetGestureRecognizers returns the gesture recognize objects currently attached to the view.
@@ -27778,7 +26317,6 @@ func (x gen_NSView) SetGestureRecognizers(
 	)
 
 	return
-
 }
 
 // MouseDownCanMoveWindow returns a boolean value indicating whether the view can pass mouse down events through to its superviews.
@@ -27790,7 +26328,6 @@ func (x gen_NSView) MouseDownCanMoveWindow() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // WantsRestingTouches returns a boolean value indicating whether the view wants resting touches.
@@ -27802,7 +26339,6 @@ func (x gen_NSView) WantsRestingTouches() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetWantsRestingTouches returns a boolean value indicating whether the view wants resting touches.
@@ -27817,7 +26353,6 @@ func (x gen_NSView) SetWantsRestingTouches(
 	)
 
 	return
-
 }
 
 // CanBecomeKeyView returns a boolean value indicating whether the view can become key view.
@@ -27829,7 +26364,6 @@ func (x gen_NSView) CanBecomeKeyView() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NeedsPanelToBecomeKey returns a boolean value indicating whether the view needs its panel to become the key window before it can handle keyboard input and navigation.
@@ -27841,7 +26375,6 @@ func (x gen_NSView) NeedsPanelToBecomeKey() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // NextKeyView returns the view object that follows the current view in the key view loop.
@@ -27852,8 +26385,7 @@ func (x gen_NSView) NextKeyView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // SetNextKeyView returns the view object that follows the current view in the key view loop.
@@ -27868,7 +26400,6 @@ func (x gen_NSView) SetNextKeyView(
 	)
 
 	return
-
 }
 
 // NextValidKeyView returns the closest view object in the key view loop that follows the current view in the key view loop and accepts first responder status.
@@ -27879,8 +26410,7 @@ func (x gen_NSView) NextValidKeyView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // PreviousKeyView returns the view object preceding the current view in the key view loop.
@@ -27891,8 +26421,7 @@ func (x gen_NSView) PreviousKeyView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // PreviousValidKeyView returns the closest view object in the key view loop that precedes the current view and accepts first responder status.
@@ -27903,8 +26432,7 @@ func (x gen_NSView) PreviousValidKeyView() NSView {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSView_fromPointer(ret)
-
+	return NSView_FromPointer(ret)
 }
 
 // PreparedContentRect returns the portion of the view that has been rendered and is available for responsive scrolling.
@@ -27916,7 +26444,6 @@ func (x gen_NSView) PreparedContentRect() core.NSRect {
 	)
 
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
-
 }
 
 // SetPreparedContentRect returns the portion of the view that has been rendered and is available for responsive scrolling.
@@ -27931,7 +26458,6 @@ func (x gen_NSView) SetPreparedContentRect(
 	)
 
 	return
-
 }
 
 // RegisteredDraggedTypes returns the array of pasteboard drag types that the view can accept.
@@ -27942,8 +26468,7 @@ func (x gen_NSView) RegisteredDraggedTypes() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // PostsFrameChangedNotifications returns a boolean value indicating whether the view posts notifications when its frame rectangle changes.
@@ -27955,7 +26480,6 @@ func (x gen_NSView) PostsFrameChangedNotifications() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetPostsFrameChangedNotifications returns a boolean value indicating whether the view posts notifications when its frame rectangle changes.
@@ -27970,7 +26494,6 @@ func (x gen_NSView) SetPostsFrameChangedNotifications(
 	)
 
 	return
-
 }
 
 // PostsBoundsChangedNotifications returns a boolean value indicating whether the view posts notifications when its bounds rectangle changes.
@@ -27982,7 +26505,6 @@ func (x gen_NSView) PostsBoundsChangedNotifications() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetPostsBoundsChangedNotifications returns a boolean value indicating whether the view posts notifications when its bounds rectangle changes.
@@ -27997,7 +26519,6 @@ func (x gen_NSView) SetPostsBoundsChangedNotifications(
 	)
 
 	return
-
 }
 
 // Tag returns the view’s tag, which is an integer that you use to identify the view within your app.
@@ -28009,7 +26530,6 @@ func (x gen_NSView) Tag() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
-
 }
 
 // ToolTip returns the text for the view’s tooltip.
@@ -28020,8 +26540,7 @@ func (x gen_NSView) ToolTip() core.NSString {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_fromPointer(ret)
-
+	return core.NSString_FromPointer(ret)
 }
 
 // SetToolTip returns the text for the view’s tooltip.
@@ -28036,7 +26555,6 @@ func (x gen_NSView) SetToolTip(
 	)
 
 	return
-
 }
 
 // TrackingAreas an array of the view’s tracking areas.
@@ -28047,8 +26565,7 @@ func (x gen_NSView) TrackingAreas() core.NSArray {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSArray_fromPointer(ret)
-
+	return core.NSArray_FromPointer(ret)
 }
 
 // IsDrawingFindIndicator returns a boolean value indicating whether the view or one of its ancestors is being drawn for a find indicator.
@@ -28060,7 +26577,6 @@ func (x gen_NSView) IsDrawingFindIndicator() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // IsHorizontalContentSizeConstraintActive
@@ -28072,7 +26588,6 @@ func (x gen_NSView) IsHorizontalContentSizeConstraintActive() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetHorizontalContentSizeConstraintActive
@@ -28087,7 +26602,6 @@ func (x gen_NSView) SetHorizontalContentSizeConstraintActive(
 	)
 
 	return
-
 }
 
 // IsVerticalContentSizeConstraintActive
@@ -28099,7 +26613,6 @@ func (x gen_NSView) IsVerticalContentSizeConstraintActive() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
-
 }
 
 // SetVerticalContentSizeConstraintActive
@@ -28114,7 +26627,6 @@ func (x gen_NSView) SetVerticalContentSizeConstraintActive(
 	)
 
 	return
-
 }
 
 // BackgroundColor
@@ -28125,8 +26637,7 @@ func (x gen_NSView) BackgroundColor() NSColor {
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSColor_fromPointer(ret)
-
+	return NSColor_FromPointer(ret)
 }
 
 // SetBackgroundColor
@@ -28141,5 +26652,4 @@ func (x gen_NSView) SetBackgroundColor(
 	)
 
 	return
-
 }

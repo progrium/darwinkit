@@ -14,7 +14,7 @@ type NSStatusBar struct {
 }
 
 func NSStatusBar_System() NSStatusBar {
-	return NSStatusBar_systemStatusBar()
+	return NSStatusBar_SystemStatusBar()
 }
 
 func (sb NSStatusBar) StatusItemWithLength(l float64) NSStatusItem {

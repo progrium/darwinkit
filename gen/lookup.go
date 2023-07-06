@@ -47,7 +47,7 @@ func (cb *classBuilder) mapClass(name string) *typeMapping {
 		GoType:          pkgPrefix + name,
 		GoSimpleRefType: pkgPrefix + name + "Ref",
 		CType:           "void*",
-		FromCGoFmt:      pkgPrefix + name + "_fromPointer(%s)",
+		FromCGoFmt:      pkgPrefix + name + "_FromPointer(%s)",
 		ToCGoFmt:        "objc.RefPointer(%s)",
 	}
 }
@@ -163,7 +163,7 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			GoType:          "objc.Object",
 			GoSimpleRefType: "objc.Ref",
 			CType:           "void*",
-			FromCGoFmt:      "objc.Object_fromPointer(%s)",
+			FromCGoFmt:      "objc.Object_FromPointer(%s)",
 			ToCGoFmt:        "objc.RefPointer(%s)",
 		}
 	default:

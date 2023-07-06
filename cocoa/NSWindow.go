@@ -12,15 +12,15 @@ type NSWindow struct {
 var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow_alloc().Init_asNSWindow()
+	return NSWindow_Alloc().Init_AsNSWindow()
 }
 
 func NSWindow_WithContentViewController(controller NSViewControllerRef) NSWindow {
-	return NSWindow_windowWithContentViewController(controller)
+	return NSWindow_WindowWithContentViewController(controller)
 }
 
 func NSWindow_Init(rect core.NSRect, windowStyle core.NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
-	return NSWindow_alloc().InitWithContentRect_styleMask_backing_defer_asNSWindow(
+	return NSWindow_Alloc().InitWithContentRectStyleMaskBackingDefer_AsNSWindow(
 		rect, core.NSUInteger(windowStyle), core.NSUInteger(bufferingType), deferCreation,
 	)
 }
@@ -66,7 +66,7 @@ func (w NSWindow) MovableByWindowBackground() bool {
 }
 
 func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
-	w.SetFrame_display(frame, display)
+	w.SetFrameDisplay(frame, display)
 }
 
 func (w NSWindow) CollectionBehavior() uint {

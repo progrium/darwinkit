@@ -10,11 +10,11 @@ type NSView struct {
 }
 
 func NSView_Init(frame core.NSRect) NSView {
-	return NSView_alloc().InitWithFrame_asNSView(frame)
+	return NSView_Alloc().InitWithFrame_AsNSView(frame)
 }
 
 func (v NSView) AddSubviewPositionedRelativeTo(subview NSViewRef, positioned int, relativeTo NSViewRef) {
-	v.AddSubview_positioned_relativeTo(subview, core.NSUInteger(positioned), relativeTo)
+	v.gen_NSView.AddSubviewPositionedRelativeTo(subview, core.NSUInteger(positioned), relativeTo)
 }
 
 func (v NSView) SetOpaque(b bool) {

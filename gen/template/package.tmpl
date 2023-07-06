@@ -105,12 +105,12 @@ func {{.Name}}(
 	)
     {{ if eq (len .WrappedFunc.Returns) 1}}
 	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
-    {{ else }}
+    {{- else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
-    {{ end }}
+    {{- end }}
 }
 
 {{end}}
@@ -121,21 +121,21 @@ func {{.Name}}(
 {{range $cls := .}}
 type {{.Name}}Ref interface {
 	Pointer() uintptr
-	Init_as{{.Name}}() {{.Name}}
+	Init_As{{.Name}}() {{.Name}}
 }
 
 type gen_{{.Name}} struct {
 	{{.Base}}
 }
 
-func {{.Name}}_fromPointer(ptr unsafe.Pointer) {{.Name}} {
+func {{.Name}}_FromPointer(ptr unsafe.Pointer) {{.Name}} {
 	return {{.Name}}{gen_{{.Name}}{
-		{{.Base}}_fromPointer(ptr),
+		{{.Base}}_FromPointer(ptr),
 	}}
 }
 
-func {{.Name}}_fromRef(ref objc.Ref) {{.Name}} {
-	return {{.Name}}_fromPointer(unsafe.Pointer(ref.Pointer()))
+func {{.Name}}_FromRef(ref objc.Ref) {{.Name}} {
+	return {{.Name}}_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 {{range .InstanceMethods}}
@@ -161,12 +161,12 @@ func (x gen_{{$cls.Name}}) {{.Name}}(
 	)
     {{ if eq (len .WrappedFunc.Returns) 1}}
 	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
-    {{ else }}
+    {{- else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
-    {{ end }}
+    {{- end }}
 }
 {{end}}
 

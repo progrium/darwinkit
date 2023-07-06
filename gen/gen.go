@@ -52,6 +52,9 @@ func selectorNameToGoIdent(generatedNames map[string]string, sel string) string 
 			ident += string(r)
 		}
 	}
+	if capNext {
+		ident += "_"
+	}
 
 	if strings.HasSuffix(sel, ":") {
 		trimmedSel := strings.TrimSuffix(sel, ":")

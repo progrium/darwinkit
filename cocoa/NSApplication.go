@@ -32,11 +32,11 @@ type NSApplication struct {
 }
 
 func NSApplication_New() NSApplication {
-	return NSApplication_alloc().Init_asNSApplication()
+	return NSApplication_Alloc().Init_AsNSApplication()
 }
 
 func NSApp() NSApplication {
-	return NSApplication_sharedApplication()
+	return NSApplication_SharedApplication()
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
