@@ -32,11 +32,11 @@ type NSApplication struct {
 }
 
 func NSApplication_New() NSApplication {
-	return NSApplication_alloc().Init_asNSApplication()
+	return NSApplication_Alloc().Init_AsNSApplication()
 }
 
 func NSApp() NSApplication {
-	return NSApplication_sharedApplication()
+	return NSApplication_SharedApplication()
 }
 
 func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
@@ -49,25 +49,8 @@ func NSApp_WithDidLaunch(cb func(notification objc.Object)) NSApplication {
 }
 
 func (app NSApplication) Terminate() {
-	app.Terminate_(nil)
+	app.gen_NSApplication.Terminate(nil)
 }
-
-func (app NSApplication) SetDelegate(delegate objc.Object) {
-	app.SetDelegate_(delegate)
-}
-
-func (app NSApplication) Delegate() objc.Object {
-	return app.gen_NSApplication.Delegate()
-}
-
-func (app NSApplication) SetMainMenu(menu NSMenu) {
-	app.SetMainMenu_(menu)
-}
-
 func (app NSApplication) SetActivationPolicy(policy int) {
-	app.SetActivationPolicy_(core.NSInteger(policy))
-}
-
-func (app NSApplication) ActivateIgnoringOtherApps(flag bool) {
-	app.ActivateIgnoringOtherApps_(flag)
+	app.gen_NSApplication.SetActivationPolicy(core.NSInteger(policy))
 }

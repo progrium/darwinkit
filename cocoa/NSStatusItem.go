@@ -9,15 +9,11 @@ type NSStatusItem struct {
 }
 
 func (i NSStatusItem) Button() NSStatusBarButton {
-	return NSStatusBarButton_fromRef(i.Get("button"))
-}
-
-func (i NSStatusItem) SetMenu(menu NSMenu) {
-	i.SetMenu_(menu)
+	return NSStatusBarButton_FromRef(i.Get("button"))
 }
 
 func (i NSStatusItem) Menu() NSMenu {
-	return NSMenu_fromRef(i.Get("menu"))
+	return NSMenu_FromRef(i.Get("menu"))
 }
 
 func (i NSStatusItem) Target() objc.Object {

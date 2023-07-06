@@ -9,5 +9,5 @@ type NSControl struct {
 }
 
 func NSControl_Init(frame core.NSRect) NSControl {
-	return NSControl_alloc().InitWithFrame__asNSControl(frame)
+	return NSControl_Alloc().InitWithFrame_AsNSControl(frame)
 }

@@ -9,12 +9,12 @@ type NSDictionary struct {
 }
 
 func NSDictionary_New() NSDictionary {
-	return NSDictionary_alloc().Init_asNSDictionary()
+	return NSDictionary_Alloc().Init_AsNSDictionary()
 }
 
 func NSDictionary_Init(valueKeys ...interface{}) NSDictionary {
-	return NSDictionary_fromRef(
-		NSDictionary_alloc().Send("initWithObjectsAndKeys:", valueKeys...))
+	return NSDictionary_FromRef(
+		NSDictionary_Alloc().Send("initWithObjectsAndKeys:", valueKeys...))
 }
 
 func (d NSDictionary) ObjectForKey(key objc.Object) objc.Object {

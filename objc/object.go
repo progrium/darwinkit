@@ -95,11 +95,11 @@ func ObjectPtr(ptr uintptr) Object {
 	return object{ptr: ptr}
 }
 
-func Object_fromPointer(id unsafe.Pointer) Object {
+func Object_FromPointer(id unsafe.Pointer) Object {
 	return ObjectPtr(uintptr(id))
 }
 
-func Object_fromRef(ref Ref) Object {
+func Object_FromRef(ref Ref) Object {
 	if ref == nil {
 		return nil
 	}

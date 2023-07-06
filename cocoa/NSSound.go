@@ -9,7 +9,7 @@ type NSSound struct {
 }
 
 func NSSound_InitWithData(data core.NSDataRef) NSSound {
-	return NSSound_alloc().InitWithData__asNSSound(data)
+	return NSSound_Alloc().InitWithData_AsNSSound(data)
 }
 
 func (sound NSSound) Play() {

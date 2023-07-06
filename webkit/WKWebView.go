@@ -10,11 +10,7 @@ type WKWebView struct {
 }
 
 func WKWebView_Init(frame core.NSRect, config WKWebViewConfiguration) WKWebView {
-	return WKWebView_alloc().InitWithFrame_configuration__asWKWebView(frame, config)
-}
-
-func (wv WKWebView) LoadRequest(req core.NSURLRequest) {
-	wv.LoadRequest_(req)
+	return WKWebView_Alloc().InitWithFrameConfiguration_AsWKWebView(frame, config)
 }
 
 // FIXME this would conflict with the `reload` selector that doesn't take a
@@ -25,5 +21,5 @@ func (wv WKWebView) Reload(sender objc.Object) {
 }
 
 func (wv WKWebView) LoadHTMLString(html core.NSString, url core.NSURL) {
-	wv.LoadHTMLString_baseURL_(html, url)
+	wv.LoadHTMLStringBaseURL(html, url)
 }

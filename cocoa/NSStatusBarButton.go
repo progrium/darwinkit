@@ -21,11 +21,7 @@ func (b NSStatusBarButton) Title() string {
 }
 
 func (b NSStatusBarButton) SetTitle(s string) {
-	b.SetTitle_(core.String(s))
-}
-
-func (b NSStatusBarButton) SetImage(obj NSImageRef) {
-	b.SetImage_(obj)
+	b.gen_NSStatusBarButton.SetTitle(core.String(s))
 }
 
 func (b NSStatusBarButton) ToolTip() string {

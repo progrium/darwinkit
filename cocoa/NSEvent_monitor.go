@@ -22,7 +22,7 @@ func monitorGlobalReentry(event unsafe.Pointer) {
 	}
 	obj := objc.ObjectPtr(uintptr(event))
 	obj.Retain()
-	monitorCh <- NSEvent_fromRef(obj)
+	monitorCh <- NSEvent_FromRef(obj)
 }
 
 //export monitorLocalReentry
@@ -32,6 +32,6 @@ func monitorLocalReentry(event unsafe.Pointer) unsafe.Pointer {
 	}
 	obj := objc.ObjectPtr(uintptr(event))
 	obj.Retain()
-	monitorCh <- NSEvent_fromRef(obj)
+	monitorCh <- NSEvent_FromRef(obj)
 	return event
 }

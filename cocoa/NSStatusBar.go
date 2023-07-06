@@ -14,13 +14,9 @@ type NSStatusBar struct {
 }
 
 func NSStatusBar_System() NSStatusBar {
-	return NSStatusBar_systemStatusBar()
+	return NSStatusBar_SystemStatusBar()
 }
 
 func (sb NSStatusBar) StatusItemWithLength(l float64) NSStatusItem {
-	return sb.StatusItemWithLength_(core.CGFloat(l))
-}
-
-func (sb NSStatusBar) RemoveStatusItem(i NSStatusItemRef) {
-	sb.RemoveStatusItem_(i)
+	return sb.gen_NSStatusBar.StatusItemWithLength(core.CGFloat(l))
 }

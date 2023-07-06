@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/progrium/macschema/schema"
@@ -11,6 +12,8 @@ type classBuilder struct {
 	Class           schema.Class
 	Imports         []PackageContents
 	consumedImports map[Import]bool
+
+	generatedNames map[string]string
 }
 
 func (cb *classBuilder) EachTypeMethod(f func(schema.Method)) {
@@ -30,6 +33,10 @@ func (cb *classBuilder) EachTypeMethod(f func(schema.Method)) {
 
 func (cb *classBuilder) EachInstanceMethod(f func(schema.Method)) {
 	seen := make(map[string]bool)
+	// sort methods by name so that the order is deterministic
+	sort.Slice(cb.Class.InstanceMethods, func(i, j int) bool {
+		return cb.Class.InstanceMethods[i].Name < cb.Class.InstanceMethods[j].Name
+	})
 	for _, m := range cb.Class.InstanceMethods {
 		seen[m.Name] = true
 		f(m)
@@ -55,19 +62,21 @@ func (cb *classBuilder) EachInstanceMethod(f func(schema.Method)) {
 }
 
 func (cb *classBuilder) instanceMethod(method schema.Method) MethodDef {
+	ident := toExportedName(selectorNameToGoIdent(cb.generatedNames, method.Name))
 	r := MethodDef{
-		Name:        toExportedName(selectorNameToGoIdent(method.Name)),
+		Description: formatComment(method, ident),
+		Name:        ident,
 		WrappedFunc: cb.cgoWrapperFunc(method, false),
 	}
 	if isInstanceType(method.Return) {
-		r.Name += "_as" + cb.Class.Name
+		r.Name += "_As" + cb.Class.Name
 	}
 	return r
 }
 
 func (cb *classBuilder) msgSend(method schema.Method, isTypeMethod bool) CGoMsgSend {
 	msg := CGoMsgSend{
-		Name:   msgSendFuncName(cb.Class, method.Name, isTypeMethod),
+		Name:   msgSendFuncName(cb.generatedNames, cb.Class, method.Name, isTypeMethod),
 		Class:  cb.Class.Name,
 		Return: cb.toMsgSendReturn(method.Return),
 	}
@@ -101,9 +110,10 @@ func (cb *classBuilder) toMsgSendReturn(dt schema.DataType) string {
 
 func (cb *classBuilder) cgoWrapperFunc(method schema.Method, isTypeMethod bool) CGoWrapperFunc {
 	r := CGoWrapperFunc{
-		Name:    msgSendFuncName(cb.Class, method.Name, isTypeMethod),
-		Args:    []CGoWrapperArg{},
-		Returns: cb.toCGoWrapperReturn(method.Return),
+		Description: method.Description,
+		Name:        msgSendFuncName(cb.generatedNames, cb.Class, method.Name, isTypeMethod),
+		Args:        []CGoWrapperArg{},
+		Returns:     cb.toCGoWrapperReturn(method.Return),
 	}
 	for _, arg := range method.Args {
 		typ := cb.mapType(arg.Type)

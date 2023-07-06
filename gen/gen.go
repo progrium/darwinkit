@@ -20,16 +20,52 @@ func isVoid(dt schema.DataType) bool {
 	return dt.Name == "void" && !dt.IsPtr && !dt.IsPtrPtr
 }
 
-func msgSendFuncName(cls schema.Class, selector string, isTypeMethod bool) string {
+func msgSendFuncName(generatedNames map[string]string, cls schema.Class, selector string, isTypeMethod bool) string {
 	target := "inst"
 	if isTypeMethod {
 		target = "type"
 	}
-	return fmt.Sprintf("%s_%s_%s", cls.Name, target, selectorNameToGoIdent(selector))
+	return fmt.Sprintf("%s_%s_%s", cls.Name, target, selectorNameToGoIdent(generatedNames, selector))
 }
 
-func selectorNameToGoIdent(sel string) string {
-	return strings.ReplaceAll(sel, ":", "_")
+func selectorNameToGoIdent(generatedNames map[string]string, sel string) string {
+	if ident, ok := generatedNames[sel]; ok {
+		return ident
+	}
+	// convert to idiomatic Go name (e.g. "sendAction:to:from" -> "SendActionToFrom")
+	var ident string
+
+	// for every colon, capitalize the next letter
+	// walk runes:
+	// - if rune is a colon, skip it and capitalize the next letter
+	// - else, add it to the ident
+	capNext := true
+	for _, r := range sel {
+		if r == ':' {
+			capNext = true
+			continue
+		}
+		if capNext {
+			ident += string(unicode.ToUpper(r))
+			capNext = false
+		} else {
+			ident += string(r)
+		}
+	}
+	if capNext {
+		ident += "_"
+	}
+
+	if strings.HasSuffix(sel, ":") {
+		trimmedSel := strings.TrimSuffix(sel, ":")
+		if _, ok := generatedNames[trimmedSel]; !ok {
+			ident = strings.TrimSuffix(ident, "_")
+			generatedNames[sel] = ident
+			return ident
+		}
+	}
+	generatedNames[sel] = ident
+	return ident
 }
 
 // Objective-C properties are syntactic sugar for getter/setter methods, this

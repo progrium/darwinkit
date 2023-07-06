@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/progrium/macschema/schema"
 )
@@ -39,6 +40,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		Class:           *s.Class,
 		Imports:         imports,
 		consumedImports: consumedImports,
+		generatedNames:  map[string]string{},
 	}
 	classDef := ClassDef{
 		Name: cb.Class.Name,
@@ -59,8 +61,11 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		defer ignoreIfUnimplemented(fmt.Sprintf("%s.%s", s.Class.Name, m.Name))
 
 		msg := cb.msgSend(m, true)
+		ident := selectorNameToGoIdent(cb.generatedNames, m.Name)
+		name := fmt.Sprintf("%s_%s", cb.Class.Name, ident)
 		wrapper := MethodDef{
-			Name:        fmt.Sprintf("%s_%s", cb.Class.Name, selectorNameToGoIdent(m.Name)),
+			Description: formatComment(m, name),
+			Name:        name,
 			WrappedFunc: cb.cgoWrapperFunc(m, true),
 		}
 
@@ -78,4 +83,15 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 	})
 
 	return classDef, nil
+}
+
+func formatComment(m schema.Method, ident string) string {
+	ld := strings.ToLower(m.Description)
+	firstWord := strings.Split(ld, " ")[0]
+
+	if firstWord == "a" || firstWord == "the" {
+		ld = "returns " + ld
+	}
+	return fmt.Sprintf("// %s %s\n//\n// See %s for details.", ident, ld, m.TopicURL)
+
 }

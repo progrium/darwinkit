@@ -84,24 +84,33 @@ func convertToObjCBool(b bool) C.BOOL {
 
 {{define "go_to_cgo"}}
 {{range $x := .}}
+{{.Description}}
 func {{.Name}}(
-	{{- range .WrappedFunc.Args}}
-		{{.Name}} {{.Type}},
-	{{- end}}
+	{{- range $i, $_ := .WrappedFunc.Args -}}
+		{{if $i}}, {{end}}{{.Name}} {{.Type}}
+	{{- end -}}
 ) {{if .WrappedFunc.HasReturn}}(
-	{{- range $i, $_ := .WrappedFunc.Returns}}
-	r{{$i}} {{.Type}},
-	{{- end}}
+    {{- if eq (len .WrappedFunc.Returns) 1}}
+		{{(index .WrappedFunc.Returns 0).Type}}
+	{{- else -}}
+		{{- range $i, $_ := .WrappedFunc.Returns -}}
+		{{if $i}}, {{end}}r{{$i}} {{.Type}}
+		{{- end -}}
+	{{- end -}}
 ){{end}} {
 	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
 		{{- range .WrappedFunc.Args}}
 		{{printf .ToCGoFmt .Name}},
 		{{- end}}
 	)
+    {{ if eq (len .WrappedFunc.Returns) 1}}
+	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
+    {{- else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
+    {{- end }}
 }
 
 {{end}}
@@ -112,32 +121,37 @@ func {{.Name}}(
 {{range $cls := .}}
 type {{.Name}}Ref interface {
 	Pointer() uintptr
-	Init_as{{.Name}}() {{.Name}}
+	Init_As{{.Name}}() {{.Name}}
 }
 
 type gen_{{.Name}} struct {
 	{{.Base}}
 }
 
-func {{.Name}}_fromPointer(ptr unsafe.Pointer) {{.Name}} {
+func {{.Name}}_FromPointer(ptr unsafe.Pointer) {{.Name}} {
 	return {{.Name}}{gen_{{.Name}}{
-		{{.Base}}_fromPointer(ptr),
+		{{.Base}}_FromPointer(ptr),
 	}}
 }
 
-func {{.Name}}_fromRef(ref objc.Ref) {{.Name}} {
-	return {{.Name}}_fromPointer(unsafe.Pointer(ref.Pointer()))
+func {{.Name}}_FromRef(ref objc.Ref) {{.Name}} {
+	return {{.Name}}_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
 {{range .InstanceMethods}}
+{{.Description}}
 func (x gen_{{$cls.Name}}) {{.Name}}(
 	{{- range .WrappedFunc.Args}}
 		{{.Name}} {{.Type}},
 	{{- end}}
 ) {{if .WrappedFunc.HasReturn}}(
-	{{- range $i, $_ := .WrappedFunc.Returns}}
-	r{{$i}} {{.Type}},
-	{{- end}}
+    {{- if eq (len .WrappedFunc.Returns) 1}}
+		{{(index .WrappedFunc.Returns 0).Type}}
+	{{- else -}}
+		{{- range $i, $_ := .WrappedFunc.Returns -}}
+		{{if $i}}, {{end}}r{{$i}} {{.Type}}
+		{{- end -}}
+	{{- end -}}
 ){{end}} {
 	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
 		unsafe.Pointer(x.Pointer()),
@@ -145,10 +159,14 @@ func (x gen_{{$cls.Name}}) {{.Name}}(
 		{{printf .ToCGoFmt .Name}},
 		{{- end}}
 	)
+    {{ if eq (len .WrappedFunc.Returns) 1}}
+	return {{printf (index .WrappedFunc.Returns 0).FromCGoFmt "ret"}}
+    {{- else }}
 	{{- range $i, $_ := .WrappedFunc.Returns}}
 	r{{$i}} = {{printf .FromCGoFmt "ret"}}
 	{{- end}}
 	return
+    {{- end }}
 }
 {{end}}
 
