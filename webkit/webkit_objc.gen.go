@@ -479,34 +479,28 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.webkit_objc_bool_false
 }
 
-// WKNavigation_Alloc
-//
-// See  for details.
+// WKNavigation_Alloc is undocumented.
 func WKNavigation_Alloc() WKNavigation {
 	ret := C.WKNavigation_type_Alloc()
 
 	return WKNavigation_FromPointer(ret)
 }
 
-// WKUserScript_Alloc
-//
-// See  for details.
+// WKUserScript_Alloc is undocumented.
 func WKUserScript_Alloc() WKUserScript {
 	ret := C.WKUserScript_type_Alloc()
 
 	return WKUserScript_FromPointer(ret)
 }
 
-// WKWebView_Alloc
-//
-// See  for details.
+// WKWebView_Alloc is undocumented.
 func WKWebView_Alloc() WKWebView {
 	ret := C.WKWebView_type_Alloc()
 
 	return WKWebView_FromPointer(ret)
 }
 
-// WKWebView_HandlesURLScheme returns a boolean value that indicates whether webkit natively supports resources with the specified url scheme.
+// WKWebView_HandlesURLScheme returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc for details.
 func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
@@ -517,18 +511,14 @@ func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// WKWebViewConfiguration_Alloc
-//
-// See  for details.
+// WKWebViewConfiguration_Alloc is undocumented.
 func WKWebViewConfiguration_Alloc() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_type_Alloc()
 
 	return WKWebViewConfiguration_FromPointer(ret)
 }
 
-// WKPreferences_Alloc
-//
-// See  for details.
+// WKPreferences_Alloc is undocumented.
 func WKPreferences_Alloc() WKPreferences {
 	ret := C.WKPreferences_type_Alloc()
 
@@ -554,9 +544,7 @@ func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
 	return WKNavigation_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -584,9 +572,7 @@ func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
 	return WKUserScript_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -606,7 +592,7 @@ func (x gen_WKUserScript) Source() core.NSString {
 	return core.NSString_FromPointer(ret)
 }
 
-// IsForMainFrameOnly returns a boolean value that indicates whether to inject the script into the main frame or all frames.
+// IsForMainFrameOnly returns a Boolean value that indicates whether to inject the script into the main frame or all frames.
 //
 // See https://developer.apple.com/documentation/webkit/wkuserscript/1537856-formainframeonly?language=objc for details.
 func (x gen_WKUserScript) IsForMainFrameOnly() bool {
@@ -722,7 +708,7 @@ func (x gen_WKWebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(
 	return WKNavigation_FromPointer(ret)
 }
 
-// LoadFileRequestAllowingReadAccessToURL
+// LoadFileRequestAllowingReadAccessToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3752237-loadfilerequest?language=objc for details.
 func (x gen_WKWebView) LoadFileRequestAllowingReadAccessToURL(
@@ -754,7 +740,7 @@ func (x gen_WKWebView) LoadFileURLAllowingReadAccessToURL(
 	return WKNavigation_FromPointer(ret)
 }
 
-// LoadHTMLStringBaseURL loads the contents of the specified html string and navigates to it.
+// LoadHTMLStringBaseURL loads the contents of the specified HTML string and navigates to it.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415004-loadhtmlstring?language=objc for details.
 func (x gen_WKWebView) LoadHTMLStringBaseURL(
@@ -770,7 +756,7 @@ func (x gen_WKWebView) LoadHTMLStringBaseURL(
 	return WKNavigation_FromPointer(ret)
 }
 
-// LoadRequest loads the web content referenced by the specified url request object and navigates to it.
+// LoadRequest loads the web content referenced by the specified URL request object and navigates to it.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414954-loadrequest?language=objc for details.
 func (x gen_WKWebView) LoadRequest(
@@ -784,7 +770,7 @@ func (x gen_WKWebView) LoadRequest(
 	return WKNavigation_FromPointer(ret)
 }
 
-// LoadSimulatedRequestResponseHTMLString
+// LoadSimulatedRequestResponseHTMLString is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3763095-loadsimulatedrequest?language=objc for details.
 func (x gen_WKWebView) LoadSimulatedRequestResponseHTMLString(
@@ -875,9 +861,7 @@ func (x gen_WKWebView) StopLoading_(
 	return
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -947,7 +931,7 @@ func (x gen_WKWebView) SetNavigationDelegate(
 	return
 }
 
-// IsLoading returns a boolean value that indicates whether the view is currently loading content.
+// IsLoading returns a Boolean value that indicates whether the view is currently loading content.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414964-loading?language=objc for details.
 func (x gen_WKWebView) IsLoading() bool {
@@ -969,7 +953,7 @@ func (x gen_WKWebView) Title() core.NSString {
 	return core.NSString_FromPointer(ret)
 }
 
-// URL returns the url for the current webpage.
+// URL returns the URL for the current webpage.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415005-url?language=objc for details.
 func (x gen_WKWebView) URL() core.NSURL {
@@ -1030,7 +1014,7 @@ func (x gen_WKWebView) SetCustomUserAgent(
 	return
 }
 
-// HasOnlySecureContent returns a boolean value that indicates whether the web view loaded all resources on the page through securely encrypted connections.
+// HasOnlySecureContent returns a Boolean value that indicates whether the web view loaded all resources on the page through securely encrypted connections.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent?language=objc for details.
 func (x gen_WKWebView) HasOnlySecureContent() bool {
@@ -1041,7 +1025,7 @@ func (x gen_WKWebView) HasOnlySecureContent() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AllowsMagnification returns a boolean value that indicates whether magnify gestures change the web view’s magnification.
+// AllowsMagnification returns a Boolean value that indicates whether magnify gestures change the web view’s magnification.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc for details.
 func (x gen_WKWebView) AllowsMagnification() bool {
@@ -1052,7 +1036,7 @@ func (x gen_WKWebView) AllowsMagnification() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsMagnification returns a boolean value that indicates whether magnify gestures change the web view’s magnification.
+// SetAllowsMagnification returns a Boolean value that indicates whether magnify gestures change the web view’s magnification.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414983-allowsmagnification?language=objc for details.
 func (x gen_WKWebView) SetAllowsMagnification(
@@ -1091,7 +1075,7 @@ func (x gen_WKWebView) SetMagnification(
 	return
 }
 
-// AllowsBackForwardNavigationGestures returns a boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
+// AllowsBackForwardNavigationGestures returns a Boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414995-allowsbackforwardnavigationgestu?language=objc for details.
 func (x gen_WKWebView) AllowsBackForwardNavigationGestures() bool {
@@ -1102,7 +1086,7 @@ func (x gen_WKWebView) AllowsBackForwardNavigationGestures() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsBackForwardNavigationGestures returns a boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
+// SetAllowsBackForwardNavigationGestures returns a Boolean value that indicates whether horizontal swipe gestures trigger backward and forward page navigation.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414995-allowsbackforwardnavigationgestu?language=objc for details.
 func (x gen_WKWebView) SetAllowsBackForwardNavigationGestures(
@@ -1116,7 +1100,7 @@ func (x gen_WKWebView) SetAllowsBackForwardNavigationGestures(
 	return
 }
 
-// CanGoBack returns a boolean value that indicates whether there is a valid back item in the back-forward list.
+// CanGoBack returns a Boolean value that indicates whether there is a valid back item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414966-cangoback?language=objc for details.
 func (x gen_WKWebView) CanGoBack() bool {
@@ -1127,7 +1111,7 @@ func (x gen_WKWebView) CanGoBack() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// CanGoForward returns a boolean value that indicates whether there is a valid forward item in the back-forward list.
+// CanGoForward returns a Boolean value that indicates whether there is a valid forward item in the back-forward list.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414962-cangoforward?language=objc for details.
 func (x gen_WKWebView) CanGoForward() bool {
@@ -1138,7 +1122,7 @@ func (x gen_WKWebView) CanGoForward() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AllowsLinkPreview returns a boolean value that determines whether pressing a link displays a preview of the destination for the link.
+// AllowsLinkPreview returns a Boolean value that determines whether pressing a link displays a preview of the destination for the link.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415000-allowslinkpreview?language=objc for details.
 func (x gen_WKWebView) AllowsLinkPreview() bool {
@@ -1149,7 +1133,7 @@ func (x gen_WKWebView) AllowsLinkPreview() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsLinkPreview returns a boolean value that determines whether pressing a link displays a preview of the destination for the link.
+// SetAllowsLinkPreview returns a Boolean value that determines whether pressing a link displays a preview of the destination for the link.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415000-allowslinkpreview?language=objc for details.
 func (x gen_WKWebView) SetAllowsLinkPreview(
@@ -1163,7 +1147,7 @@ func (x gen_WKWebView) SetAllowsLinkPreview(
 	return
 }
 
-// InteractionState
+// InteractionState is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc for details.
 func (x gen_WKWebView) InteractionState() objc.Object {
@@ -1174,7 +1158,7 @@ func (x gen_WKWebView) InteractionState() objc.Object {
 	return objc.Object_FromPointer(ret)
 }
 
-// SetInteractionState
+// SetInteractionState is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3752236-interactionstate?language=objc for details.
 func (x gen_WKWebView) SetInteractionState(
@@ -1207,7 +1191,7 @@ func WKWebViewConfiguration_FromRef(ref objc.Ref) WKWebViewConfiguration {
 	return WKWebViewConfiguration_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// SetURLSchemeHandlerForURLScheme registers an object to load resources associated with the specified url scheme.
+// SetURLSchemeHandlerForURLScheme registers an object to load resources associated with the specified URL scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
@@ -1223,7 +1207,7 @@ func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
 	return
 }
 
-// UrlSchemeHandlerForURLScheme returns the currently registered handler object for the specified url scheme.
+// UrlSchemeHandlerForURLScheme returns the currently registered handler object for the specified URL scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc for details.
 func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
@@ -1237,9 +1221,7 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 	return objc.Object_FromPointer(ret)
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -1273,7 +1255,7 @@ func (x gen_WKWebViewConfiguration) SetApplicationNameForUserAgent(
 	return
 }
 
-// LimitsNavigationsToAppBoundDomains returns a boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
+// LimitsNavigationsToAppBoundDomains returns a Boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc for details.
 func (x gen_WKWebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
@@ -1284,7 +1266,7 @@ func (x gen_WKWebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetLimitsNavigationsToAppBoundDomains returns a boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
+// SetLimitsNavigationsToAppBoundDomains returns a Boolean value that indicates whether the web view limits navigation to pages within the app’s domain.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3585117-limitsnavigationstoappbounddomai?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(
@@ -1323,7 +1305,7 @@ func (x gen_WKWebViewConfiguration) SetPreferences(
 	return
 }
 
-// IgnoresViewportScaleLimits returns a boolean value that determines whether a web view allows scaling of the webpage.
+// IgnoresViewportScaleLimits returns a Boolean value that determines whether a web view allows scaling of the webpage.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits?language=objc for details.
 func (x gen_WKWebViewConfiguration) IgnoresViewportScaleLimits() bool {
@@ -1334,7 +1316,7 @@ func (x gen_WKWebViewConfiguration) IgnoresViewportScaleLimits() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetIgnoresViewportScaleLimits returns a boolean value that determines whether a web view allows scaling of the webpage.
+// SetIgnoresViewportScaleLimits returns a Boolean value that determines whether a web view allows scaling of the webpage.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2274633-ignoresviewportscalelimits?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetIgnoresViewportScaleLimits(
@@ -1348,7 +1330,7 @@ func (x gen_WKWebViewConfiguration) SetIgnoresViewportScaleLimits(
 	return
 }
 
-// SuppressesIncrementalRendering returns a boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
+// SuppressesIncrementalRendering returns a Boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering?language=objc for details.
 func (x gen_WKWebViewConfiguration) SuppressesIncrementalRendering() bool {
@@ -1359,7 +1341,7 @@ func (x gen_WKWebViewConfiguration) SuppressesIncrementalRendering() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetSuppressesIncrementalRendering returns a boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
+// SetSuppressesIncrementalRendering returns a Boolean value that indicates whether the web view suppresses content rendering until the content is fully loaded into memory.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395663-suppressesincrementalrendering?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetSuppressesIncrementalRendering(
@@ -1373,7 +1355,7 @@ func (x gen_WKWebViewConfiguration) SetSuppressesIncrementalRendering(
 	return
 }
 
-// AllowsInlineMediaPlayback returns a boolean value that indicates whether html5 videos play inline or use the native full-screen controller.
+// AllowsInlineMediaPlayback returns a Boolean value that indicates whether HTML5 videos play inline or use the native full-screen controller.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsInlineMediaPlayback() bool {
@@ -1384,7 +1366,7 @@ func (x gen_WKWebViewConfiguration) AllowsInlineMediaPlayback() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsInlineMediaPlayback returns a boolean value that indicates whether html5 videos play inline or use the native full-screen controller.
+// SetAllowsInlineMediaPlayback returns a Boolean value that indicates whether HTML5 videos play inline or use the native full-screen controller.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetAllowsInlineMediaPlayback(
@@ -1398,7 +1380,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsInlineMediaPlayback(
 	return
 }
 
-// AllowsAirPlayForMediaPlayback returns a boolean value that indicates whether the web view allows media playback over airplay.
+// AllowsAirPlayForMediaPlayback returns a Boolean value that indicates whether the web view allows media playback over AirPlay.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
@@ -1409,7 +1391,7 @@ func (x gen_WKWebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsAirPlayForMediaPlayback returns a boolean value that indicates whether the web view allows media playback over airplay.
+// SetAllowsAirPlayForMediaPlayback returns a Boolean value that indicates whether the web view allows media playback over AirPlay.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395673-allowsairplayformediaplayback?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetAllowsAirPlayForMediaPlayback(
@@ -1423,7 +1405,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsAirPlayForMediaPlayback(
 	return
 }
 
-// AllowsPictureInPictureMediaPlayback returns a boolean value that indicates whether html5 videos can play picture in picture.
+// AllowsPictureInPictureMediaPlayback returns a Boolean value that indicates whether HTML5 videos can play Picture in Picture.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb?language=objc for details.
 func (x gen_WKWebViewConfiguration) AllowsPictureInPictureMediaPlayback() bool {
@@ -1434,7 +1416,7 @@ func (x gen_WKWebViewConfiguration) AllowsPictureInPictureMediaPlayback() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsPictureInPictureMediaPlayback returns a boolean value that indicates whether html5 videos can play picture in picture.
+// SetAllowsPictureInPictureMediaPlayback returns a Boolean value that indicates whether HTML5 videos can play Picture in Picture.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614792-allowspictureinpicturemediaplayb?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetAllowsPictureInPictureMediaPlayback(
@@ -1448,7 +1430,7 @@ func (x gen_WKWebViewConfiguration) SetAllowsPictureInPictureMediaPlayback(
 	return
 }
 
-// UpgradeKnownHostsToHTTPS
+// UpgradeKnownHostsToHTTPS is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc for details.
 func (x gen_WKWebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
@@ -1459,7 +1441,7 @@ func (x gen_WKWebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetUpgradeKnownHostsToHTTPS
+// SetUpgradeKnownHostsToHTTPS is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetUpgradeKnownHostsToHTTPS(
@@ -1492,9 +1474,7 @@ func WKPreferences_FromRef(ref objc.Ref) WKPreferences {
 	return WKPreferences_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// SetValueForKey
-//
-// See  for details.
+// SetValueForKey is undocumented.
 func (x gen_WKPreferences) SetValueForKey(
 	value objc.Ref,
 	key core.NSStringRef,
@@ -1508,9 +1488,7 @@ func (x gen_WKPreferences) SetValueForKey(
 	return
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -1544,7 +1522,7 @@ func (x gen_WKPreferences) SetMinimumFontSize(
 	return
 }
 
-// TabFocusesLinks returns a boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
+// TabFocusesLinks returns a Boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc for details.
 func (x gen_WKPreferences) TabFocusesLinks() bool {
@@ -1555,7 +1533,7 @@ func (x gen_WKPreferences) TabFocusesLinks() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetTabFocusesLinks returns a boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
+// SetTabFocusesLinks returns a Boolean value that indicates whether pressing the tab key changes the focus to links and form controls.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/2818595-tabfocuseslinks?language=objc for details.
 func (x gen_WKPreferences) SetTabFocusesLinks(
@@ -1569,7 +1547,7 @@ func (x gen_WKPreferences) SetTabFocusesLinks(
 	return
 }
 
-// JavaScriptCanOpenWindowsAutomatically returns a boolean value that indicates whether javascript can open windows without user interaction.
+// JavaScriptCanOpenWindowsAutomatically returns a Boolean value that indicates whether JavaScript can open windows without user interaction.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc for details.
 func (x gen_WKPreferences) JavaScriptCanOpenWindowsAutomatically() bool {
@@ -1580,7 +1558,7 @@ func (x gen_WKPreferences) JavaScriptCanOpenWindowsAutomatically() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetJavaScriptCanOpenWindowsAutomatically returns a boolean value that indicates whether javascript can open windows without user interaction.
+// SetJavaScriptCanOpenWindowsAutomatically returns a Boolean value that indicates whether JavaScript can open windows without user interaction.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati?language=objc for details.
 func (x gen_WKPreferences) SetJavaScriptCanOpenWindowsAutomatically(
@@ -1594,7 +1572,7 @@ func (x gen_WKPreferences) SetJavaScriptCanOpenWindowsAutomatically(
 	return
 }
 
-// IsFraudulentWebsiteWarningEnabled returns a boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
+// IsFraudulentWebsiteWarningEnabled returns a Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc for details.
 func (x gen_WKPreferences) IsFraudulentWebsiteWarningEnabled() bool {
@@ -1605,7 +1583,7 @@ func (x gen_WKPreferences) IsFraudulentWebsiteWarningEnabled() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetFraudulentWebsiteWarningEnabled returns a boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
+// SetFraudulentWebsiteWarningEnabled returns a Boolean value that indicates whether the web view shows warnings for suspected fraudulent content, such as malware or phishing attemps.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3335219-fraudulentwebsitewarningenabled?language=objc for details.
 func (x gen_WKPreferences) SetFraudulentWebsiteWarningEnabled(
@@ -1619,7 +1597,7 @@ func (x gen_WKPreferences) SetFraudulentWebsiteWarningEnabled(
 	return
 }
 
-// IsTextInteractionEnabled
+// IsTextInteractionEnabled is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3727362-textinteractionenabled?language=objc for details.
 func (x gen_WKPreferences) IsTextInteractionEnabled() bool {
@@ -1630,7 +1608,7 @@ func (x gen_WKPreferences) IsTextInteractionEnabled() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetTextInteractionEnabled
+// SetTextInteractionEnabled is undocumented.
 //
 // See https://developer.apple.com/documentation/webkit/wkpreferences/3727362-textinteractionenabled?language=objc for details.
 func (x gen_WKPreferences) SetTextInteractionEnabled(

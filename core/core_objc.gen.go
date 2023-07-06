@@ -2167,9 +2167,7 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.core_objc_bool_false
 }
 
-// CALayer_Alloc
-//
-// See  for details.
+// CALayer_Alloc is undocumented.
 func CALayer_Alloc() CALayer {
 	ret := C.CALayer_type_Alloc()
 
@@ -2185,7 +2183,7 @@ func CALayer_Layer() CALayer {
 	return CALayer_FromPointer(ret)
 }
 
-// CALayer_NeedsDisplayForKey returns a boolean indicating whether changes to the specified key require the layer to be redisplayed.
+// CALayer_NeedsDisplayForKey returns a Boolean indicating whether changes to the specified key require the layer to be redisplayed.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410769-needsdisplayforkey?language=objc for details.
 func CALayer_NeedsDisplayForKey(key NSStringRef) bool {
@@ -2218,9 +2216,7 @@ func CALayer_DefaultValueForKey(key NSStringRef) objc.Object {
 	return objc.Object_FromPointer(ret)
 }
 
-// NSArray_Alloc
-//
-// See  for details.
+// NSArray_Alloc is undocumented.
 func NSArray_Alloc() NSArray {
 	ret := C.NSArray_type_Alloc()
 
@@ -2247,16 +2243,14 @@ func NSArray_ArrayWithArray(array NSArrayRef) NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// NSAttributedString_Alloc
-//
-// See  for details.
+// NSAttributedString_Alloc is undocumented.
 func NSAttributedString_Alloc() NSAttributedString {
 	ret := C.NSAttributedString_type_Alloc()
 
 	return NSAttributedString_FromPointer(ret)
 }
 
-// NSAttributedString_TextTypes an array of uti strings that identify the file types that attributed strings support, either directly or through a user-installed filter service.
+// NSAttributedString_TextTypes an array of UTI strings that identify the file types that attributed strings support, either directly or through a user-installed filter service.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1535409-texttypes?language=objc for details.
 func NSAttributedString_TextTypes() NSArray {
@@ -2265,7 +2259,7 @@ func NSAttributedString_TextTypes() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// NSAttributedString_TextUnfilteredTypes an array of uti strings that identify the file types that attributed strings support directly.
+// NSAttributedString_TextUnfilteredTypes an array of UTI strings that identify the file types that attributed strings support directly.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1528269-textunfilteredtypes?language=objc for details.
 func NSAttributedString_TextUnfilteredTypes() NSArray {
@@ -2274,9 +2268,7 @@ func NSAttributedString_TextUnfilteredTypes() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// NSData_Alloc
-//
-// See  for details.
+// NSData_Alloc is undocumented.
 func NSData_Alloc() NSData {
 	ret := C.NSData_type_Alloc()
 
@@ -2351,7 +2343,7 @@ func NSData_DataWithContentsOfFile(path NSStringRef) NSData {
 	return NSData_FromPointer(ret)
 }
 
-// NSData_DataWithContentsOfURL creates a data object containing the data from the location specified by a given url.
+// NSData_DataWithContentsOfURL creates a data object containing the data from the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1547245-datawithcontentsofurl?language=objc for details.
 func NSData_DataWithContentsOfURL(url NSURLRef) NSData {
@@ -2362,9 +2354,7 @@ func NSData_DataWithContentsOfURL(url NSURLRef) NSData {
 	return NSData_FromPointer(ret)
 }
 
-// NSDictionary_Alloc
-//
-// See  for details.
+// NSDictionary_Alloc is undocumented.
 func NSDictionary_Alloc() NSDictionary {
 	ret := C.NSDictionary_type_Alloc()
 
@@ -2414,16 +2404,14 @@ func NSDictionary_SharedKeySetForKeys(keys NSArrayRef) objc.Object {
 	return objc.Object_FromPointer(ret)
 }
 
-// NSNumber_Alloc
-//
-// See  for details.
+// NSNumber_Alloc is undocumented.
 func NSNumber_Alloc() NSNumber {
 	ret := C.NSNumber_type_Alloc()
 
 	return NSNumber_FromPointer(ret)
 }
 
-// NSNumber_NumberWithBool creates and returns an nsnumber object containing a given value, treating it as a bool.
+// NSNumber_NumberWithBool creates and returns an NSNumber object containing a given value, treating it as a BOOL.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551475-numberwithbool?language=objc for details.
 func NSNumber_NumberWithBool(value bool) NSNumber {
@@ -2434,7 +2422,7 @@ func NSNumber_NumberWithBool(value bool) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// NSNumber_NumberWithInt creates and returns an nsnumber object containing a given value, treating it as a signed int.
+// NSNumber_NumberWithInt creates and returns an NSNumber object containing a given value, treating it as a signed int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551470-numberwithint?language=objc for details.
 func NSNumber_NumberWithInt(value int32) NSNumber {
@@ -2445,7 +2433,7 @@ func NSNumber_NumberWithInt(value int32) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// NSNumber_NumberWithInteger creates and returns an nsnumber object containing a given value, treating it as an nsinteger.
+// NSNumber_NumberWithInteger creates and returns an NSNumber object containing a given value, treating it as an NSInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551473-numberwithinteger?language=objc for details.
 func NSNumber_NumberWithInteger(value NSInteger) NSNumber {
@@ -2456,7 +2444,7 @@ func NSNumber_NumberWithInteger(value NSInteger) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// NSNumber_NumberWithUnsignedInt creates and returns an nsnumber object containing a given value, treating it as an unsigned int.
+// NSNumber_NumberWithUnsignedInt creates and returns an NSNumber object containing a given value, treating it as an unsigned int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551472-numberwithunsignedint?language=objc for details.
 func NSNumber_NumberWithUnsignedInt(value int32) NSNumber {
@@ -2467,7 +2455,7 @@ func NSNumber_NumberWithUnsignedInt(value int32) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// NSNumber_NumberWithUnsignedInteger creates and returns an nsnumber object containing a given value, treating it as an nsuinteger.
+// NSNumber_NumberWithUnsignedInteger creates and returns an NSNumber object containing a given value, treating it as an NSUInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551469-numberwithunsignedinteger?language=objc for details.
 func NSNumber_NumberWithUnsignedInteger(value NSUInteger) NSNumber {
@@ -2478,9 +2466,7 @@ func NSNumber_NumberWithUnsignedInteger(value NSUInteger) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// NSRunLoop_Alloc
-//
-// See  for details.
+// NSRunLoop_Alloc is undocumented.
 func NSRunLoop_Alloc() NSRunLoop {
 	ret := C.NSRunLoop_type_Alloc()
 
@@ -2505,9 +2491,7 @@ func NSRunLoop_MainRunLoop() NSRunLoop {
 	return NSRunLoop_FromPointer(ret)
 }
 
-// NSString_Alloc
-//
-// See  for details.
+// NSString_Alloc is undocumented.
 func NSString_Alloc() NSString {
 	ret := C.NSString_type_Alloc()
 
@@ -2568,7 +2552,7 @@ func NSString_PathWithComponents(components NSArrayRef) NSString {
 	return NSString_FromPointer(ret)
 }
 
-// NSString_DefaultCStringEncoding returns the c-string encoding assumed for any method accepting a c string as an argument.
+// NSString_DefaultCStringEncoding returns the C-string encoding assumed for any method accepting a C string as an argument.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410091-defaultcstringencoding?language=objc for details.
 func NSString_DefaultCStringEncoding() NSStringEncoding {
@@ -2577,9 +2561,7 @@ func NSString_DefaultCStringEncoding() NSStringEncoding {
 	return NSStringEncoding(ret)
 }
 
-// NSThread_Alloc
-//
-// See  for details.
+// NSThread_Alloc is undocumented.
 func NSThread_Alloc() NSThread {
 	ret := C.NSThread_type_Alloc()
 
@@ -2617,7 +2599,7 @@ func NSThread_IsMultiThreaded() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// NSThread_IsMainThread returns a boolean value that indicates whether the current thread is the main thread.
+// NSThread_IsMainThread returns a Boolean value that indicates whether the current thread is the main thread.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1412704-ismainthread?language=objc for details.
 func NSThread_IsMainThread() bool {
@@ -2626,7 +2608,7 @@ func NSThread_IsMainThread() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// NSThread_MainThread returns the nsthread object representing the main thread.
+// NSThread_MainThread returns the NSThread object representing the main thread.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414782-mainthread?language=objc for details.
 func NSThread_MainThread() NSThread {
@@ -2662,16 +2644,14 @@ func NSThread_CallStackSymbols() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// NSURL_Alloc
-//
-// See  for details.
+// NSURL_Alloc is undocumented.
 func NSURL_Alloc() NSURL {
 	ret := C.NSURL_type_Alloc()
 
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_URLWithString creates and returns an nsurl object initialized with a provided url string.
+// NSURL_URLWithString creates and returns an NSURL object initialized with a provided URL string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1572047-urlwithstring?language=objc for details.
 func NSURL_URLWithString(URLString NSStringRef) NSURL {
@@ -2682,7 +2662,7 @@ func NSURL_URLWithString(URLString NSStringRef) NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_URLWithStringRelativeToURL creates and returns an nsurl object initialized with a base url and a relative string.
+// NSURL_URLWithStringRelativeToURL creates and returns an NSURL object initialized with a base URL and a relative string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1572049-urlwithstring?language=objc for details.
 func NSURL_URLWithStringRelativeToURL(URLString NSStringRef, baseURL NSURLRef) NSURL {
@@ -2694,7 +2674,7 @@ func NSURL_URLWithStringRelativeToURL(URLString NSStringRef, baseURL NSURLRef) N
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_FileURLWithPathIsDirectory initializes and returns a newly created nsurl object as a file url with a specified path.
+// NSURL_FileURLWithPathIsDirectory initializes and returns a newly created NSURL object as a file URL with a specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414650-fileurlwithpath?language=objc for details.
 func NSURL_FileURLWithPathIsDirectory(path NSStringRef, isDir bool) NSURL {
@@ -2706,7 +2686,7 @@ func NSURL_FileURLWithPathIsDirectory(path NSStringRef, isDir bool) NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_FileURLWithPathRelativeToURL
+// NSURL_FileURLWithPathRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413201-fileurlwithpath?language=objc for details.
 func NSURL_FileURLWithPathRelativeToURL(path NSStringRef, baseURL NSURLRef) NSURL {
@@ -2718,7 +2698,7 @@ func NSURL_FileURLWithPathRelativeToURL(path NSStringRef, baseURL NSURLRef) NSUR
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_FileURLWithPathIsDirectoryRelativeToURL
+// NSURL_FileURLWithPathIsDirectoryRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413020-fileurlwithpath?language=objc for details.
 func NSURL_FileURLWithPathIsDirectoryRelativeToURL(path NSStringRef, isDir bool, baseURL NSURLRef) NSURL {
@@ -2731,7 +2711,7 @@ func NSURL_FileURLWithPathIsDirectoryRelativeToURL(path NSStringRef, isDir bool,
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_FileURLWithPath initializes and returns a newly created nsurl object as a file url with a specified path.
+// NSURL_FileURLWithPath initializes and returns a newly created NSURL object as a file URL with a specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410828-fileurlwithpath?language=objc for details.
 func NSURL_FileURLWithPath(path NSStringRef) NSURL {
@@ -2742,7 +2722,7 @@ func NSURL_FileURLWithPath(path NSStringRef) NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_FileURLWithPathComponents initializes and returns a newly created nsurl object as a file url with specified path components.
+// NSURL_FileURLWithPathComponents initializes and returns a newly created NSURL object as a file URL with specified path components.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414206-fileurlwithpathcomponents?language=objc for details.
 func NSURL_FileURLWithPathComponents(components NSArrayRef) NSURL {
@@ -2753,7 +2733,7 @@ func NSURL_FileURLWithPathComponents(components NSArrayRef) NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_AbsoluteURLWithDataRepresentationRelativeToURL
+// NSURL_AbsoluteURLWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412404-absoluteurlwithdatarepresentatio?language=objc for details.
 func NSURL_AbsoluteURLWithDataRepresentationRelativeToURL(data NSDataRef, baseURL NSURLRef) NSURL {
@@ -2765,7 +2745,7 @@ func NSURL_AbsoluteURLWithDataRepresentationRelativeToURL(data NSDataRef, baseUR
 	return NSURL_FromPointer(ret)
 }
 
-// NSURL_URLWithDataRepresentationRelativeToURL
+// NSURL_URLWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1572042-urlwithdatarepresentation?language=objc for details.
 func NSURL_URLWithDataRepresentationRelativeToURL(data NSDataRef, baseURL NSURLRef) NSURL {
@@ -2789,16 +2769,14 @@ func NSURL_ResourceValuesForKeysFromBookmarkData(keys NSArrayRef, bookmarkData N
 	return NSDictionary_FromPointer(ret)
 }
 
-// NSURLRequest_Alloc
-//
-// See  for details.
+// NSURLRequest_Alloc is undocumented.
 func NSURLRequest_Alloc() NSURLRequest {
 	ret := C.NSURLRequest_type_Alloc()
 
 	return NSURLRequest_FromPointer(ret)
 }
 
-// NSURLRequest_RequestWithURL creates and returns a url request for a specified url.
+// NSURLRequest_RequestWithURL creates and returns a URL request for a specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl?language=objc for details.
 func NSURLRequest_RequestWithURL(URL NSURLRef) NSURLRequest {
@@ -2809,7 +2787,7 @@ func NSURLRequest_RequestWithURL(URL NSURLRef) NSURLRequest {
 	return NSURLRequest_FromPointer(ret)
 }
 
-// NSURLRequest_SupportsSecureCoding returns a boolean value indicating whether the nsurlrequest implements the nssecurecoding protocol.
+// NSURLRequest_SupportsSecureCoding returns a Boolean value indicating whether the NSURLRequest implements the NSSecureCoding protocol.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1416510-supportssecurecoding?language=objc for details.
 func NSURLRequest_SupportsSecureCoding() bool {
@@ -2818,9 +2796,7 @@ func NSURLRequest_SupportsSecureCoding() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// NSUserDefaults_Alloc
-//
-// See  for details.
+// NSUserDefaults_Alloc is undocumented.
 func NSUserDefaults_Alloc() NSUserDefaults {
 	ret := C.NSUserDefaults_type_Alloc()
 
@@ -2903,7 +2879,7 @@ func (x gen_CALayer) AnimationKeys() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// ContentsAreFlipped returns a boolean indicating whether the layer content is implicitly flipped when rendered.
+// ContentsAreFlipped returns a Boolean indicating whether the layer content is implicitly flipped when rendered.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410777-contentsareflipped?language=objc for details.
 func (x gen_CALayer) ContentsAreFlipped() bool {
@@ -2968,7 +2944,7 @@ func (x gen_CALayer) DisplayIfNeeded() {
 	return
 }
 
-// Init returns an initialized calayer object.
+// Init returns an initialized CALayer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
 func (x gen_CALayer) Init_AsCALayer() CALayer {
@@ -3074,7 +3050,7 @@ func (x gen_CALayer) ModelLayer_AsCALayer() CALayer {
 	return CALayer_FromPointer(ret)
 }
 
-// NeedsDisplay returns a boolean indicating whether the layer has been marked as needing an update.
+// NeedsDisplay returns a Boolean indicating whether the layer has been marked as needing an update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410958-needsdisplay?language=objc for details.
 func (x gen_CALayer) NeedsDisplay() bool {
@@ -3085,7 +3061,7 @@ func (x gen_CALayer) NeedsDisplay() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// NeedsLayout returns a boolean indicating whether the layer has been marked as needing a layout update.
+// NeedsLayout returns a Boolean indicating whether the layer has been marked as needing a layout update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410956-needslayout?language=objc for details.
 func (x gen_CALayer) NeedsLayout() bool {
@@ -3248,7 +3224,7 @@ func (x gen_CALayer) SetNeedsLayout() {
 	return
 }
 
-// ShouldArchiveValueForKey returns a boolean indicating whether the value of the specified key should be archived.
+// ShouldArchiveValueForKey returns a Boolean indicating whether the value of the specified key should be archived.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410753-shouldarchivevalueforkey?language=objc for details.
 func (x gen_CALayer) ShouldArchiveValueForKey(
@@ -3287,7 +3263,7 @@ func (x gen_CALayer) SetDelegate(
 	return
 }
 
-// Contents an object that provides the contents of the layer. animatable.
+// Contents an object that provides the contents of the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410773-contents?language=objc for details.
 func (x gen_CALayer) Contents() objc.Object {
@@ -3298,7 +3274,7 @@ func (x gen_CALayer) Contents() objc.Object {
 	return objc.Object_FromPointer(ret)
 }
 
-// SetContents an object that provides the contents of the layer. animatable.
+// SetContents an object that provides the contents of the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410773-contents?language=objc for details.
 func (x gen_CALayer) SetContents(
@@ -3312,7 +3288,7 @@ func (x gen_CALayer) SetContents(
 	return
 }
 
-// ContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. animatable.
+// ContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410866-contentsrect?language=objc for details.
 func (x gen_CALayer) ContentsRect() NSRect {
@@ -3323,7 +3299,7 @@ func (x gen_CALayer) ContentsRect() NSRect {
 	return *(*NSRect)(unsafe.Pointer(&ret))
 }
 
-// SetContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. animatable.
+// SetContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410866-contentsrect?language=objc for details.
 func (x gen_CALayer) SetContentsRect(
@@ -3337,7 +3313,7 @@ func (x gen_CALayer) SetContentsRect(
 	return
 }
 
-// ContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. animatable.
+// ContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410740-contentscenter?language=objc for details.
 func (x gen_CALayer) ContentsCenter() NSRect {
@@ -3348,7 +3324,7 @@ func (x gen_CALayer) ContentsCenter() NSRect {
 	return *(*NSRect)(unsafe.Pointer(&ret))
 }
 
-// SetContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. animatable.
+// SetContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410740-contentscenter?language=objc for details.
 func (x gen_CALayer) SetContentsCenter(
@@ -3362,7 +3338,7 @@ func (x gen_CALayer) SetContentsCenter(
 	return
 }
 
-// IsHidden returns a boolean indicating whether the layer is displayed. animatable.
+// IsHidden returns a Boolean indicating whether the layer is displayed. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc for details.
 func (x gen_CALayer) IsHidden() bool {
@@ -3373,7 +3349,7 @@ func (x gen_CALayer) IsHidden() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetHidden returns a boolean indicating whether the layer is displayed. animatable.
+// SetHidden returns a Boolean indicating whether the layer is displayed. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc for details.
 func (x gen_CALayer) SetHidden(
@@ -3387,7 +3363,7 @@ func (x gen_CALayer) SetHidden(
 	return
 }
 
-// MasksToBounds returns a boolean indicating whether sublayers are clipped to the layer’s bounds. animatable.
+// MasksToBounds returns a Boolean indicating whether sublayers are clipped to the layer’s bounds. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410896-maskstobounds?language=objc for details.
 func (x gen_CALayer) MasksToBounds() bool {
@@ -3398,7 +3374,7 @@ func (x gen_CALayer) MasksToBounds() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetMasksToBounds returns a boolean indicating whether sublayers are clipped to the layer’s bounds. animatable.
+// SetMasksToBounds returns a Boolean indicating whether sublayers are clipped to the layer’s bounds. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410896-maskstobounds?language=objc for details.
 func (x gen_CALayer) SetMasksToBounds(
@@ -3437,7 +3413,7 @@ func (x gen_CALayer) SetMask(
 	return
 }
 
-// IsDoubleSided returns a boolean indicating whether the layer displays its content when facing away from the viewer. animatable.
+// IsDoubleSided returns a Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410924-doublesided?language=objc for details.
 func (x gen_CALayer) IsDoubleSided() bool {
@@ -3448,7 +3424,7 @@ func (x gen_CALayer) IsDoubleSided() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetDoubleSided returns a boolean indicating whether the layer displays its content when facing away from the viewer. animatable.
+// SetDoubleSided returns a Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410924-doublesided?language=objc for details.
 func (x gen_CALayer) SetDoubleSided(
@@ -3462,7 +3438,7 @@ func (x gen_CALayer) SetDoubleSided(
 	return
 }
 
-// CornerRadius returns the radius to use when drawing rounded corners for the layer’s background. animatable.
+// CornerRadius returns the radius to use when drawing rounded corners for the layer’s background. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410818-cornerradius?language=objc for details.
 func (x gen_CALayer) CornerRadius() CGFloat {
@@ -3473,7 +3449,7 @@ func (x gen_CALayer) CornerRadius() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetCornerRadius returns the radius to use when drawing rounded corners for the layer’s background. animatable.
+// SetCornerRadius returns the radius to use when drawing rounded corners for the layer’s background. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410818-cornerradius?language=objc for details.
 func (x gen_CALayer) SetCornerRadius(
@@ -3487,7 +3463,7 @@ func (x gen_CALayer) SetCornerRadius(
 	return
 }
 
-// BorderWidth returns the width of the layer’s border. animatable.
+// BorderWidth returns the width of the layer’s border. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410917-borderwidth?language=objc for details.
 func (x gen_CALayer) BorderWidth() CGFloat {
@@ -3498,7 +3474,7 @@ func (x gen_CALayer) BorderWidth() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetBorderWidth returns the width of the layer’s border. animatable.
+// SetBorderWidth returns the width of the layer’s border. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410917-borderwidth?language=objc for details.
 func (x gen_CALayer) SetBorderWidth(
@@ -3512,7 +3488,7 @@ func (x gen_CALayer) SetBorderWidth(
 	return
 }
 
-// ShadowRadius returns the blur radius (in points) used to render the layer’s shadow. animatable.
+// ShadowRadius returns the blur radius (in points) used to render the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410819-shadowradius?language=objc for details.
 func (x gen_CALayer) ShadowRadius() CGFloat {
@@ -3523,7 +3499,7 @@ func (x gen_CALayer) ShadowRadius() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetShadowRadius returns the blur radius (in points) used to render the layer’s shadow. animatable.
+// SetShadowRadius returns the blur radius (in points) used to render the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410819-shadowradius?language=objc for details.
 func (x gen_CALayer) SetShadowRadius(
@@ -3537,7 +3513,7 @@ func (x gen_CALayer) SetShadowRadius(
 	return
 }
 
-// ShadowOffset returns the offset (in points) of the layer’s shadow. animatable.
+// ShadowOffset returns the offset (in points) of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410970-shadowoffset?language=objc for details.
 func (x gen_CALayer) ShadowOffset() NSSize {
@@ -3548,7 +3524,7 @@ func (x gen_CALayer) ShadowOffset() NSSize {
 	return *(*NSSize)(unsafe.Pointer(&ret))
 }
 
-// SetShadowOffset returns the offset (in points) of the layer’s shadow. animatable.
+// SetShadowOffset returns the offset (in points) of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410970-shadowoffset?language=objc for details.
 func (x gen_CALayer) SetShadowOffset(
@@ -3587,7 +3563,7 @@ func (x gen_CALayer) SetStyle(
 	return
 }
 
-// AllowsEdgeAntialiasing returns a boolean indicating whether the layer is allowed to perform edge antialiasing.
+// AllowsEdgeAntialiasing returns a Boolean indicating whether the layer is allowed to perform edge antialiasing.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621285-allowsedgeantialiasing?language=objc for details.
 func (x gen_CALayer) AllowsEdgeAntialiasing() bool {
@@ -3598,7 +3574,7 @@ func (x gen_CALayer) AllowsEdgeAntialiasing() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsEdgeAntialiasing returns a boolean indicating whether the layer is allowed to perform edge antialiasing.
+// SetAllowsEdgeAntialiasing returns a Boolean indicating whether the layer is allowed to perform edge antialiasing.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621285-allowsedgeantialiasing?language=objc for details.
 func (x gen_CALayer) SetAllowsEdgeAntialiasing(
@@ -3612,7 +3588,7 @@ func (x gen_CALayer) SetAllowsEdgeAntialiasing(
 	return
 }
 
-// AllowsGroupOpacity returns a boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
+// AllowsGroupOpacity returns a Boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621277-allowsgroupopacity?language=objc for details.
 func (x gen_CALayer) AllowsGroupOpacity() bool {
@@ -3623,7 +3599,7 @@ func (x gen_CALayer) AllowsGroupOpacity() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetAllowsGroupOpacity returns a boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
+// SetAllowsGroupOpacity returns a Boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621277-allowsgroupopacity?language=objc for details.
 func (x gen_CALayer) SetAllowsGroupOpacity(
@@ -3637,7 +3613,7 @@ func (x gen_CALayer) SetAllowsGroupOpacity(
 	return
 }
 
-// Filters an array of core image filters to apply to the contents of the layer and its sublayers. animatable.
+// Filters an array of Core Image filters to apply to the contents of the layer and its sublayers. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410901-filters?language=objc for details.
 func (x gen_CALayer) Filters() NSArray {
@@ -3648,7 +3624,7 @@ func (x gen_CALayer) Filters() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// SetFilters an array of core image filters to apply to the contents of the layer and its sublayers. animatable.
+// SetFilters an array of Core Image filters to apply to the contents of the layer and its sublayers. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410901-filters?language=objc for details.
 func (x gen_CALayer) SetFilters(
@@ -3662,7 +3638,7 @@ func (x gen_CALayer) SetFilters(
 	return
 }
 
-// CompositingFilter returns a coreimage filter used to composite the layer and the content behind it. animatable.
+// CompositingFilter returns a CoreImage filter used to composite the layer and the content behind it. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410748-compositingfilter?language=objc for details.
 func (x gen_CALayer) CompositingFilter() objc.Object {
@@ -3673,7 +3649,7 @@ func (x gen_CALayer) CompositingFilter() objc.Object {
 	return objc.Object_FromPointer(ret)
 }
 
-// SetCompositingFilter returns a coreimage filter used to composite the layer and the content behind it. animatable.
+// SetCompositingFilter returns a CoreImage filter used to composite the layer and the content behind it. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410748-compositingfilter?language=objc for details.
 func (x gen_CALayer) SetCompositingFilter(
@@ -3687,7 +3663,7 @@ func (x gen_CALayer) SetCompositingFilter(
 	return
 }
 
-// BackgroundFilters an array of core image filters to apply to the content immediately behind the layer. animatable.
+// BackgroundFilters an array of Core Image filters to apply to the content immediately behind the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410827-backgroundfilters?language=objc for details.
 func (x gen_CALayer) BackgroundFilters() NSArray {
@@ -3698,7 +3674,7 @@ func (x gen_CALayer) BackgroundFilters() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// SetBackgroundFilters an array of core image filters to apply to the content immediately behind the layer. animatable.
+// SetBackgroundFilters an array of Core Image filters to apply to the content immediately behind the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410827-backgroundfilters?language=objc for details.
 func (x gen_CALayer) SetBackgroundFilters(
@@ -3712,7 +3688,7 @@ func (x gen_CALayer) SetBackgroundFilters(
 	return
 }
 
-// IsOpaque returns a boolean value indicating whether the layer contains completely opaque content.
+// IsOpaque returns a Boolean value indicating whether the layer contains completely opaque content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410763-opaque?language=objc for details.
 func (x gen_CALayer) IsOpaque() bool {
@@ -3723,7 +3699,7 @@ func (x gen_CALayer) IsOpaque() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetOpaque returns a boolean value indicating whether the layer contains completely opaque content.
+// SetOpaque returns a Boolean value indicating whether the layer contains completely opaque content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410763-opaque?language=objc for details.
 func (x gen_CALayer) SetOpaque(
@@ -3737,7 +3713,7 @@ func (x gen_CALayer) SetOpaque(
 	return
 }
 
-// IsGeometryFlipped returns a boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
+// IsGeometryFlipped returns a Boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410960-geometryflipped?language=objc for details.
 func (x gen_CALayer) IsGeometryFlipped() bool {
@@ -3748,7 +3724,7 @@ func (x gen_CALayer) IsGeometryFlipped() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetGeometryFlipped returns a boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
+// SetGeometryFlipped returns a Boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410960-geometryflipped?language=objc for details.
 func (x gen_CALayer) SetGeometryFlipped(
@@ -3762,7 +3738,7 @@ func (x gen_CALayer) SetGeometryFlipped(
 	return
 }
 
-// DrawsAsynchronously returns a boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
+// DrawsAsynchronously returns a Boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410974-drawsasynchronously?language=objc for details.
 func (x gen_CALayer) DrawsAsynchronously() bool {
@@ -3773,7 +3749,7 @@ func (x gen_CALayer) DrawsAsynchronously() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetDrawsAsynchronously returns a boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
+// SetDrawsAsynchronously returns a Boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410974-drawsasynchronously?language=objc for details.
 func (x gen_CALayer) SetDrawsAsynchronously(
@@ -3787,7 +3763,7 @@ func (x gen_CALayer) SetDrawsAsynchronously(
 	return
 }
 
-// ShouldRasterize returns a boolean that indicates whether the layer is rendered as a bitmap before compositing. animatable
+// ShouldRasterize returns a Boolean that indicates whether the layer is rendered as a bitmap before compositing. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410905-shouldrasterize?language=objc for details.
 func (x gen_CALayer) ShouldRasterize() bool {
@@ -3798,7 +3774,7 @@ func (x gen_CALayer) ShouldRasterize() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetShouldRasterize returns a boolean that indicates whether the layer is rendered as a bitmap before compositing. animatable
+// SetShouldRasterize returns a Boolean that indicates whether the layer is rendered as a bitmap before compositing. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410905-shouldrasterize?language=objc for details.
 func (x gen_CALayer) SetShouldRasterize(
@@ -3812,7 +3788,7 @@ func (x gen_CALayer) SetShouldRasterize(
 	return
 }
 
-// RasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. animatable
+// RasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410801-rasterizationscale?language=objc for details.
 func (x gen_CALayer) RasterizationScale() CGFloat {
@@ -3823,7 +3799,7 @@ func (x gen_CALayer) RasterizationScale() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetRasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. animatable
+// SetRasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410801-rasterizationscale?language=objc for details.
 func (x gen_CALayer) SetRasterizationScale(
@@ -3862,7 +3838,7 @@ func (x gen_CALayer) SetFrame(
 	return
 }
 
-// Bounds returns the layer’s bounds rectangle. animatable.
+// Bounds returns the layer’s bounds rectangle. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410915-bounds?language=objc for details.
 func (x gen_CALayer) Bounds() NSRect {
@@ -3873,7 +3849,7 @@ func (x gen_CALayer) Bounds() NSRect {
 	return *(*NSRect)(unsafe.Pointer(&ret))
 }
 
-// SetBounds returns the layer’s bounds rectangle. animatable.
+// SetBounds returns the layer’s bounds rectangle. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410915-bounds?language=objc for details.
 func (x gen_CALayer) SetBounds(
@@ -3887,7 +3863,7 @@ func (x gen_CALayer) SetBounds(
 	return
 }
 
-// ZPosition returns the layer’s position on the z axis. animatable.
+// ZPosition returns the layer’s position on the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410884-zposition?language=objc for details.
 func (x gen_CALayer) ZPosition() CGFloat {
@@ -3898,7 +3874,7 @@ func (x gen_CALayer) ZPosition() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetZPosition returns the layer’s position on the z axis. animatable.
+// SetZPosition returns the layer’s position on the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410884-zposition?language=objc for details.
 func (x gen_CALayer) SetZPosition(
@@ -3912,7 +3888,7 @@ func (x gen_CALayer) SetZPosition(
 	return
 }
 
-// AnchorPointZ returns the anchor point for the layer’s position along the z axis. animatable.
+// AnchorPointZ returns the anchor point for the layer’s position along the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410796-anchorpointz?language=objc for details.
 func (x gen_CALayer) AnchorPointZ() CGFloat {
@@ -3923,7 +3899,7 @@ func (x gen_CALayer) AnchorPointZ() CGFloat {
 	return CGFloat(ret)
 }
 
-// SetAnchorPointZ returns the anchor point for the layer’s position along the z axis. animatable.
+// SetAnchorPointZ returns the anchor point for the layer’s position along the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410796-anchorpointz?language=objc for details.
 func (x gen_CALayer) SetAnchorPointZ(
@@ -3998,7 +3974,7 @@ func (x gen_CALayer) Superlayer() CALayer {
 	return CALayer_FromPointer(ret)
 }
 
-// NeedsDisplayOnBoundsChange returns a boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
+// NeedsDisplayOnBoundsChange returns a Boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410923-needsdisplayonboundschange?language=objc for details.
 func (x gen_CALayer) NeedsDisplayOnBoundsChange() bool {
@@ -4009,7 +3985,7 @@ func (x gen_CALayer) NeedsDisplayOnBoundsChange() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// SetNeedsDisplayOnBoundsChange returns a boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
+// SetNeedsDisplayOnBoundsChange returns a Boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410923-needsdisplayonboundschange?language=objc for details.
 func (x gen_CALayer) SetNeedsDisplayOnBoundsChange(
@@ -4167,7 +4143,7 @@ func (x gen_NSArray) ArrayByAddingObjectsFromArray(
 	return NSArray_FromPointer(ret)
 }
 
-// ComponentsJoinedByString constructs and returns an nsstring object that is the result of interposing a given separator between the elements of the array.
+// ComponentsJoinedByString constructs and returns an NSString object that is the result of interposing a given separator between the elements of the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412075-componentsjoinedbystring?language=objc for details.
 func (x gen_NSArray) ComponentsJoinedByString(
@@ -4236,7 +4212,7 @@ func (x gen_NSArray) InitWithArray_AsNSArray(
 	return NSArray_FromPointer(ret)
 }
 
-// InitWithArrayCopyItems initializes a newly allocated array using anarray as the source of data objects for the array.
+// InitWithArrayCopyItems initializes a newly allocated array using anArray as the source of data objects for the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408557-initwitharray?language=objc for details.
 func (x gen_NSArray) InitWithArrayCopyItems_AsNSArray(
@@ -4280,7 +4256,7 @@ func (x gen_NSArray) MakeObjectsPerformSelector(
 	return
 }
 
-// MakeObjectsPerformSelectorWithObject sends the aselector message to each object in the array, starting with the first object and continuing through the array to the last object.
+// MakeObjectsPerformSelectorWithObject sends the aSelector message to each object in the array, starting with the first object and continuing through the array to the last object.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1460107-makeobjectsperformselector?language=objc for details.
 func (x gen_NSArray) MakeObjectsPerformSelectorWithObject(
@@ -4310,7 +4286,7 @@ func (x gen_NSArray) PathsMatchingExtensions(
 	return NSArray_FromPointer(ret)
 }
 
-// SetValueForKey invokes setvalue:forkey: on each of the array's items using the specified value and key.
+// SetValueForKey invokes setValue:forKey: on each of the array's items using the specified value and key.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408301-setvalue?language=objc for details.
 func (x gen_NSArray) SetValueForKey(
@@ -4365,7 +4341,7 @@ func (x gen_NSArray) SortedArrayUsingSelector(
 	return NSArray_FromPointer(ret)
 }
 
-// ValueForKey returns an array containing the results of invoking valueforkey: using key on each of the array's objects.
+// ValueForKey returns an array containing the results of invoking valueForKey: using key on each of the array's objects.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412219-valueforkey?language=objc for details.
 func (x gen_NSArray) ValueForKey(
@@ -4390,7 +4366,7 @@ func (x gen_NSArray) Count() NSUInteger {
 	return NSUInteger(ret)
 }
 
-// SortedArrayHint analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedarrayusingfunction:context:hint:.
+// SortedArrayHint analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedArrayUsingFunction:context:hint:.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1413063-sortedarrayhint?language=objc for details.
 func (x gen_NSArray) SortedArrayHint() NSData {
@@ -4431,7 +4407,7 @@ func NSAttributedString_FromRef(ref objc.Ref) NSAttributedString {
 	return NSAttributedString_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// AttributedStringByInflectingString
+// AttributedStringByInflectingString is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/3746871-attributedstringbyinflectingstri?language=objc for details.
 func (x gen_NSAttributedString) AttributedStringByInflectingString() NSAttributedString {
@@ -4470,7 +4446,7 @@ func (x gen_NSAttributedString) InitWithAttributedString_AsNSAttributedString(
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithDocFormatDocumentAttributes creates an attributed string from microsoft word format data in the specified data object.
+// InitWithDocFormatDocumentAttributes creates an attributed string from Microsoft Word format data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc for details.
 func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes_AsNSAttributedString(
@@ -4486,7 +4462,7 @@ func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes_AsNSAttribut
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithHTMLBaseURLDocumentAttributes creates an attributed string from the html in the specified data object and base url.
+// InitWithHTMLBaseURLDocumentAttributes creates an attributed string from the HTML in the specified data object and base URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1524624-initwithhtml?language=objc for details.
 func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes_AsNSAttributedString(
@@ -4504,7 +4480,7 @@ func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes_AsNSAttrib
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithHTMLDocumentAttributes creates an attributed string from the html in the specified data object.
+// InitWithHTMLDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1525953-initwithhtml?language=objc for details.
 func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes_AsNSAttributedString(
@@ -4520,7 +4496,7 @@ func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes_AsNSAttributedStr
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithHTMLOptionsDocumentAttributes creates an attributed string from the html in the specified data object.
+// InitWithHTMLOptionsDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc for details.
 func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes_AsNSAttributedString(
@@ -4538,7 +4514,7 @@ func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes_AsNSAttrib
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithRTFDocumentAttributes creates an attributed string by decoding the stream of rtf commands and data in the specified data object.
+// InitWithRTFDocumentAttributes creates an attributed string by decoding the stream of RTF commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc for details.
 func (x gen_NSAttributedString) InitWithRTFDocumentAttributes_AsNSAttributedString(
@@ -4554,7 +4530,7 @@ func (x gen_NSAttributedString) InitWithRTFDocumentAttributes_AsNSAttributedStri
 	return NSAttributedString_FromPointer(ret)
 }
 
-// InitWithRTFDDocumentAttributes creates an attributed string by decoding the stream of rtfd commands and data in the specified data object.
+// InitWithRTFDDocumentAttributes creates an attributed string by decoding the stream of RTFD commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc for details.
 func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes_AsNSAttributedString(
@@ -4600,7 +4576,7 @@ func (x gen_NSAttributedString) InitWithStringAttributes_AsNSAttributedString(
 	return NSAttributedString_FromPointer(ret)
 }
 
-// IsEqualToAttributedString returns a boolean value that indicates whether the attributed string is equal to another attributed string.
+// IsEqualToAttributedString returns a Boolean value that indicates whether the attributed string is equal to another attributed string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1414808-isequaltoattributedstring?language=objc for details.
 func (x gen_NSAttributedString) IsEqualToAttributedString(
@@ -4641,9 +4617,7 @@ func (x gen_NSAttributedString) Size() NSSize {
 	return *(*NSSize)(unsafe.Pointer(&ret))
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -4773,7 +4747,7 @@ func (x gen_NSData) InitWithContentsOfFile_AsNSData(
 	return NSData_FromPointer(ret)
 }
 
-// InitWithContentsOfURL initializes a data object with the data from the location specified by a given url.
+// InitWithContentsOfURL initializes a data object with the data from the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc for details.
 func (x gen_NSData) InitWithContentsOfURL_AsNSData(
@@ -4801,7 +4775,7 @@ func (x gen_NSData) InitWithData_AsNSData(
 	return NSData_FromPointer(ret)
 }
 
-// IsEqualToData returns a boolean value indicating whether this data object is the same as another.
+// IsEqualToData returns a Boolean value indicating whether this data object is the same as another.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1409330-isequaltodata?language=objc for details.
 func (x gen_NSData) IsEqualToData(
@@ -4831,7 +4805,7 @@ func (x gen_NSData) WriteToFileAtomically(
 	return convertObjCBoolToGo(ret)
 }
 
-// WriteToURLAtomically writes the data object's bytes to the location specified by a given url.
+// WriteToURLAtomically writes the data object's bytes to the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1415134-writetourl?language=objc for details.
 func (x gen_NSData) WriteToURLAtomically(
@@ -4847,9 +4821,7 @@ func (x gen_NSData) WriteToURLAtomically(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSData) Init_AsNSData() NSData {
 	ret := C.NSData_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -4940,7 +4912,7 @@ func (x gen_NSDictionary) DescriptionWithLocaleIndent(
 	return NSString_FromPointer(ret)
 }
 
-// FileExtensionHidden returns a boolean value indicating whether the file hides its extension.
+// FileExtensionHidden returns a Boolean value indicating whether the file hides its extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413177-fileextensionhidden?language=objc for details.
 func (x gen_NSDictionary) FileExtensionHidden() bool {
@@ -4951,7 +4923,7 @@ func (x gen_NSDictionary) FileExtensionHidden() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// FileGroupOwnerAccountID returns file’s group owner account id.
+// FileGroupOwnerAccountID returns file’s group owner account ID.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413626-filegroupowneraccountid?language=objc for details.
 func (x gen_NSDictionary) FileGroupOwnerAccountID() NSNumber {
@@ -4973,7 +4945,7 @@ func (x gen_NSDictionary) FileGroupOwnerAccountName() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// FileIsAppendOnly returns a boolean value indicating whether the file is append only.
+// FileIsAppendOnly returns a Boolean value indicating whether the file is append only.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416083-fileisappendonly?language=objc for details.
 func (x gen_NSDictionary) FileIsAppendOnly() bool {
@@ -4984,7 +4956,7 @@ func (x gen_NSDictionary) FileIsAppendOnly() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// FileIsImmutable returns a boolean value indicating whether the file is immutable.
+// FileIsImmutable returns a Boolean value indicating whether the file is immutable.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416500-fileisimmutable?language=objc for details.
 func (x gen_NSDictionary) FileIsImmutable() bool {
@@ -4995,7 +4967,7 @@ func (x gen_NSDictionary) FileIsImmutable() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// FileOwnerAccountID returns the file’s owner account id.
+// FileOwnerAccountID returns the file’s owner account ID.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1412281-fileowneraccountid?language=objc for details.
 func (x gen_NSDictionary) FileOwnerAccountID() NSNumber {
@@ -5017,7 +4989,7 @@ func (x gen_NSDictionary) FileOwnerAccountName() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// FilePosixPermissions returns the file’s posix permissions.
+// FilePosixPermissions returns the file’s POSIX permissions.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1409446-fileposixpermissions?language=objc for details.
 func (x gen_NSDictionary) FilePosixPermissions() NSUInteger {
@@ -5118,7 +5090,7 @@ func (x gen_NSDictionary) InitWithObjectsForKeys_AsNSDictionary(
 	return NSDictionary_FromPointer(ret)
 }
 
-// IsEqualToDictionary returns a boolean value that indicates whether the contents of the receiving dictionary are equal to the contents of another given dictionary.
+// IsEqualToDictionary returns a Boolean value that indicates whether the contents of the receiving dictionary are equal to the contents of another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1415445-isequaltodictionary?language=objc for details.
 func (x gen_NSDictionary) IsEqualToDictionary(
@@ -5234,7 +5206,7 @@ func (x gen_NSNumber) DescriptionWithLocale(
 	return NSString_FromPointer(ret)
 }
 
-// InitWithBool returns an nsnumber object initialized to contain a given value, treated as a bool.
+// InitWithBool returns an NSNumber object initialized to contain a given value, treated as a BOOL.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1415728-initwithbool?language=objc for details.
 func (x gen_NSNumber) InitWithBool(
@@ -5248,7 +5220,7 @@ func (x gen_NSNumber) InitWithBool(
 	return NSNumber_FromPointer(ret)
 }
 
-// InitWithInt returns an nsnumber object initialized to contain a given value, treated as a signed int.
+// InitWithInt returns an NSNumber object initialized to contain a given value, treated as a signed int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407580-initwithint?language=objc for details.
 func (x gen_NSNumber) InitWithInt(
@@ -5262,7 +5234,7 @@ func (x gen_NSNumber) InitWithInt(
 	return NSNumber_FromPointer(ret)
 }
 
-// InitWithInteger returns an nsnumber object initialized to contain a given value, treated as an nsinteger.
+// InitWithInteger returns an NSNumber object initialized to contain a given value, treated as an NSInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409397-initwithinteger?language=objc for details.
 func (x gen_NSNumber) InitWithInteger(
@@ -5276,7 +5248,7 @@ func (x gen_NSNumber) InitWithInteger(
 	return NSNumber_FromPointer(ret)
 }
 
-// InitWithUnsignedInt returns an nsnumber object initialized to contain a given value, treated as an unsigned int.
+// InitWithUnsignedInt returns an NSNumber object initialized to contain a given value, treated as an unsigned int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1414598-initwithunsignedint?language=objc for details.
 func (x gen_NSNumber) InitWithUnsignedInt(
@@ -5290,7 +5262,7 @@ func (x gen_NSNumber) InitWithUnsignedInt(
 	return NSNumber_FromPointer(ret)
 }
 
-// InitWithUnsignedInteger returns an nsnumber object initialized to contain a given value, treated as an nsuinteger.
+// InitWithUnsignedInteger returns an NSNumber object initialized to contain a given value, treated as an NSUInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412531-initwithunsignedinteger?language=objc for details.
 func (x gen_NSNumber) InitWithUnsignedInteger(
@@ -5304,7 +5276,7 @@ func (x gen_NSNumber) InitWithUnsignedInteger(
 	return NSNumber_FromPointer(ret)
 }
 
-// IsEqualToNumber returns a boolean value that indicates whether the number object’s value and a given number are equal.
+// IsEqualToNumber returns a Boolean value that indicates whether the number object’s value and a given number are equal.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1411315-isequaltonumber?language=objc for details.
 func (x gen_NSNumber) IsEqualToNumber(
@@ -5318,9 +5290,7 @@ func (x gen_NSNumber) IsEqualToNumber(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
 	ret := C.NSNumber_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -5329,7 +5299,7 @@ func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// BoolValue returns the number object's value expressed as a boolean value.
+// BoolValue returns the number object's value expressed as a Boolean value.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1410865-boolvalue?language=objc for details.
 func (x gen_NSNumber) BoolValue() bool {
@@ -5351,7 +5321,7 @@ func (x gen_NSNumber) IntValue() int32 {
 	return int32(ret)
 }
 
-// IntegerValue returns the number object's value expressed as an nsinteger object, converted as necessary.
+// IntegerValue returns the number object's value expressed as an NSInteger object, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412554-integervalue?language=objc for details.
 func (x gen_NSNumber) IntegerValue() NSInteger {
@@ -5362,7 +5332,7 @@ func (x gen_NSNumber) IntegerValue() NSInteger {
 	return NSInteger(ret)
 }
 
-// UnsignedIntegerValue returns the number object's value expressed as an nsuinteger object, converted as necessary.
+// UnsignedIntegerValue returns the number object's value expressed as an NSUInteger object, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1413324-unsignedintegervalue?language=objc for details.
 func (x gen_NSNumber) UnsignedIntegerValue() NSUInteger {
@@ -5479,9 +5449,7 @@ func (x gen_NSRunLoop) Run() {
 	return
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -5509,7 +5477,7 @@ func NSString_FromRef(ref objc.Ref) NSString {
 	return NSString_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// CanBeConvertedToEncoding returns a boolean value that indicates whether the receiver can be converted to a given encoding without loss of information.
+// CanBeConvertedToEncoding returns a Boolean value that indicates whether the receiver can be converted to a given encoding without loss of information.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409496-canbeconvertedtoencoding?language=objc for details.
 func (x gen_NSString) CanBeConvertedToEncoding(
@@ -5523,7 +5491,7 @@ func (x gen_NSString) CanBeConvertedToEncoding(
 	return convertObjCBoolToGo(ret)
 }
 
-// CharacterAtIndex returns the character at a given utf-16 code unit index.
+// CharacterAtIndex returns the character at a given UTF-16 code unit index.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414645-characteratindex?language=objc for details.
 func (x gen_NSString) CharacterAtIndex(
@@ -5571,7 +5539,7 @@ func (x gen_NSString) ComponentsSeparatedByString(
 	return NSArray_FromPointer(ret)
 }
 
-// ContainsString returns a boolean value indicating whether the string contains a given string by performing a case-sensitive, locale-unaware search.
+// ContainsString returns a Boolean value indicating whether the string contains a given string by performing a case-sensitive, locale-unaware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414563-containsstring?language=objc for details.
 func (x gen_NSString) ContainsString(
@@ -5585,7 +5553,7 @@ func (x gen_NSString) ContainsString(
 	return convertObjCBoolToGo(ret)
 }
 
-// DataUsingEncoding returns an nsdata object containing a representation of the receiver encoded using a given encoding.
+// DataUsingEncoding returns an NSData object containing a representation of the receiver encoded using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416696-datausingencoding?language=objc for details.
 func (x gen_NSString) DataUsingEncoding(
@@ -5599,7 +5567,7 @@ func (x gen_NSString) DataUsingEncoding(
 	return NSData_FromPointer(ret)
 }
 
-// DataUsingEncodingAllowLossyConversion returns an nsdata object containing a representation of the receiver encoded using a given encoding.
+// DataUsingEncodingAllowLossyConversion returns an NSData object containing a representation of the receiver encoded using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413692-datausingencoding?language=objc for details.
 func (x gen_NSString) DataUsingEncodingAllowLossyConversion(
@@ -5631,7 +5599,7 @@ func (x gen_NSString) DrawInRectWithAttributes(
 	return
 }
 
-// HasPrefix returns a boolean value that indicates whether a given string matches the beginning characters of the receiver.
+// HasPrefix returns a Boolean value that indicates whether a given string matches the beginning characters of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410309-hasprefix?language=objc for details.
 func (x gen_NSString) HasPrefix(
@@ -5645,7 +5613,7 @@ func (x gen_NSString) HasPrefix(
 	return convertObjCBoolToGo(ret)
 }
 
-// HasSuffix returns a boolean value that indicates whether a given string matches the ending characters of the receiver.
+// HasSuffix returns a Boolean value that indicates whether a given string matches the ending characters of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416529-hassuffix?language=objc for details.
 func (x gen_NSString) HasSuffix(
@@ -5659,7 +5627,7 @@ func (x gen_NSString) HasSuffix(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init returns an initialized nsstring object that contains no characters.
+// Init returns an initialized NSString object that contains no characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
 func (x gen_NSString) Init_AsNSString() NSString {
@@ -5670,7 +5638,7 @@ func (x gen_NSString) Init_AsNSString() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// InitWithBytesLengthEncoding returns an initialized nsstring object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding.
+// InitWithBytesLengthEncoding returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc for details.
 func (x gen_NSString) InitWithBytesLengthEncoding_AsNSString(
@@ -5688,7 +5656,7 @@ func (x gen_NSString) InitWithBytesLengthEncoding_AsNSString(
 	return NSString_FromPointer(ret)
 }
 
-// InitWithBytesNoCopyLengthEncodingFreeWhenDone returns an initialized nsstring object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer.
+// InitWithBytesNoCopyLengthEncodingFreeWhenDone returns an initialized NSString object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413830-initwithbytesnocopy?language=objc for details.
 func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone_AsNSString(
@@ -5708,7 +5676,7 @@ func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone_AsNSString(
 	return NSString_FromPointer(ret)
 }
 
-// InitWithDataEncoding returns an nsstring object initialized by converting given data into utf-16 code units using a given encoding.
+// InitWithDataEncoding returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc for details.
 func (x gen_NSString) InitWithDataEncoding_AsNSString(
@@ -5724,7 +5692,7 @@ func (x gen_NSString) InitWithDataEncoding_AsNSString(
 	return NSString_FromPointer(ret)
 }
 
-// InitWithString returns an nsstring object initialized by copying the characters from another given string.
+// InitWithString returns an NSString object initialized by copying the characters from another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc for details.
 func (x gen_NSString) InitWithString_AsNSString(
@@ -5738,7 +5706,7 @@ func (x gen_NSString) InitWithString_AsNSString(
 	return NSString_FromPointer(ret)
 }
 
-// IsEqualToString returns a boolean value that indicates whether a given string is equal to the receiver using a literal unicode-based comparison.
+// IsEqualToString returns a Boolean value that indicates whether a given string is equal to the receiver using a literal Unicode-based comparison.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407803-isequaltostring?language=objc for details.
 func (x gen_NSString) IsEqualToString(
@@ -5766,7 +5734,7 @@ func (x gen_NSString) LengthOfBytesUsingEncoding(
 	return NSUInteger(ret)
 }
 
-// LocalizedCaseInsensitiveContainsString returns a boolean value indicating whether the string contains a given string by performing a case-insensitive, locale-aware search.
+// LocalizedCaseInsensitiveContainsString returns a Boolean value indicating whether the string contains a given string by performing a case-insensitive, locale-aware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412098-localizedcaseinsensitivecontains?language=objc for details.
 func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
@@ -5780,7 +5748,7 @@ func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
 	return convertObjCBoolToGo(ret)
 }
 
-// LocalizedStandardContainsString returns a boolean value indicating whether the string contains a given string by performing a case and diacritic insensitive, locale-aware search.
+// LocalizedStandardContainsString returns a Boolean value indicating whether the string contains a given string by performing a case and diacritic insensitive, locale-aware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416328-localizedstandardcontainsstring?language=objc for details.
 func (x gen_NSString) LocalizedStandardContainsString(
@@ -5808,7 +5776,7 @@ func (x gen_NSString) MaximumLengthOfBytesUsingEncoding(
 	return NSUInteger(ret)
 }
 
-// PropertyList parses the receiver as a text representation of a property list, returning an nsstring, nsdata, nsarray, or nsdictionary object, according to the topmost element.
+// PropertyList parses the receiver as a text representation of a property list, returning an NSString, NSData, NSArray, or NSDictionary object, according to the topmost element.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413115-propertylist?language=objc for details.
 func (x gen_NSString) PropertyList() objc.Object {
@@ -5976,7 +5944,7 @@ func (x gen_NSString) VariantFittingPresentationWidth(
 	return NSString_FromPointer(ret)
 }
 
-// Length returns the number of utf-16 code units in the receiver.
+// Length returns the number of UTF-16 code units in the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414212-length?language=objc for details.
 func (x gen_NSString) Length() NSUInteger {
@@ -6064,7 +6032,7 @@ func (x gen_NSString) LocalizedCapitalizedString() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// DecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the unicode normalization form d.
+// DecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form D.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409474-decomposedstringwithcanonicalmap?language=objc for details.
 func (x gen_NSString) DecomposedStringWithCanonicalMapping() NSString {
@@ -6075,7 +6043,7 @@ func (x gen_NSString) DecomposedStringWithCanonicalMapping() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// DecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the unicode normalization form kd.
+// DecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KD.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1415417-decomposedstringwithcompatibilit?language=objc for details.
 func (x gen_NSString) DecomposedStringWithCompatibilityMapping() NSString {
@@ -6086,7 +6054,7 @@ func (x gen_NSString) DecomposedStringWithCompatibilityMapping() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// PrecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the unicode normalization form c.
+// PrecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form C.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412645-precomposedstringwithcanonicalma?language=objc for details.
 func (x gen_NSString) PrecomposedStringWithCanonicalMapping() NSString {
@@ -6097,7 +6065,7 @@ func (x gen_NSString) PrecomposedStringWithCanonicalMapping() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// PrecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the unicode normalization form kc.
+// PrecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KC.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412625-precomposedstringwithcompatibili?language=objc for details.
 func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() NSString {
@@ -6119,7 +6087,7 @@ func (x gen_NSString) IntValue() int32 {
 	return int32(ret)
 }
 
-// IntegerValue returns the nsinteger value of the string.
+// IntegerValue returns the NSInteger value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410267-integervalue?language=objc for details.
 func (x gen_NSString) IntegerValue() NSInteger {
@@ -6130,7 +6098,7 @@ func (x gen_NSString) IntegerValue() NSInteger {
 	return NSInteger(ret)
 }
 
-// BoolValue returns the boolean value of the string.
+// BoolValue returns the Boolean value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409420-boolvalue?language=objc for details.
 func (x gen_NSString) BoolValue() bool {
@@ -6141,7 +6109,7 @@ func (x gen_NSString) BoolValue() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// Description this nsstring object.
+// Description this NSString object.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410889-description?language=objc for details.
 func (x gen_NSString) Description() NSString {
@@ -6185,7 +6153,7 @@ func (x gen_NSString) PathComponents() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
-// IsAbsolutePath returns a boolean value that indicates whether the receiver represents an absolute path.
+// IsAbsolutePath returns a Boolean value that indicates whether the receiver represents an absolute path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409068-absolutepath?language=objc for details.
 func (x gen_NSString) IsAbsolutePath() bool {
@@ -6284,7 +6252,7 @@ func (x gen_NSString) StringByStandardizingPath() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// StringByRemovingPercentEncoding returns a new string made from the receiver by replacing all percent encoded sequences with the matching utf-8 characters.
+// StringByRemovingPercentEncoding returns a new string made from the receiver by replacing all percent encoded sequences with the matching UTF-8 characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409569-stringbyremovingpercentencoding?language=objc for details.
 func (x gen_NSString) StringByRemovingPercentEncoding() NSString {
@@ -6325,7 +6293,7 @@ func (x gen_NSThread) Cancel() {
 	return
 }
 
-// Init returns an initialized nsthread object.
+// Init returns an initialized NSThread object.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
 func (x gen_NSThread) Init_AsNSThread() NSThread {
@@ -6336,7 +6304,7 @@ func (x gen_NSThread) Init_AsNSThread() NSThread {
 	return NSThread_FromPointer(ret)
 }
 
-// InitWithTargetSelectorObject returns an nsthread object initialized with the given arguments.
+// InitWithTargetSelectorObject returns an NSThread object initialized with the given arguments.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414773-initwithtarget?language=objc for details.
 func (x gen_NSThread) InitWithTargetSelectorObject_AsNSThread(
@@ -6376,7 +6344,7 @@ func (x gen_NSThread) Start() {
 	return
 }
 
-// IsExecuting returns a boolean value that indicates whether the receiver is executing.
+// IsExecuting returns a Boolean value that indicates whether the receiver is executing.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411240-executing?language=objc for details.
 func (x gen_NSThread) IsExecuting() bool {
@@ -6387,7 +6355,7 @@ func (x gen_NSThread) IsExecuting() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// IsFinished returns a boolean value that indicates whether the receiver has finished execution.
+// IsFinished returns a Boolean value that indicates whether the receiver has finished execution.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1409297-finished?language=objc for details.
 func (x gen_NSThread) IsFinished() bool {
@@ -6398,7 +6366,7 @@ func (x gen_NSThread) IsFinished() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// IsCancelled returns a boolean value that indicates whether the receiver is cancelled.
+// IsCancelled returns a Boolean value that indicates whether the receiver is cancelled.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1417366-cancelled?language=objc for details.
 func (x gen_NSThread) IsCancelled() bool {
@@ -6409,7 +6377,7 @@ func (x gen_NSThread) IsCancelled() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// IsMainThread returns a boolean value that indicates whether the receiver is the main thread.
+// IsMainThread returns a Boolean value that indicates whether the receiver is the main thread.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1408455-ismainthread?language=objc for details.
 func (x gen_NSThread) IsMainThread() bool {
@@ -6489,7 +6457,7 @@ func NSURL_FromRef(ref objc.Ref) NSURL {
 	return NSURL_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// URLByAppendingPathComponent returns a new url made by appending a path component to the original url.
+// URLByAppendingPathComponent returns a new URL made by appending a path component to the original URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410614-urlbyappendingpathcomponent?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathComponent(
@@ -6503,7 +6471,7 @@ func (x gen_NSURL) URLByAppendingPathComponent(
 	return NSURL_FromPointer(ret)
 }
 
-// URLByAppendingPathComponentIsDirectory returns a new url made by appending a path component to the original url, along with a trailing slash if the component is designated a directory.
+// URLByAppendingPathComponentIsDirectory returns a new URL made by appending a path component to the original URL, along with a trailing slash if the component is designated a directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413953-urlbyappendingpathcomponent?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
@@ -6519,7 +6487,7 @@ func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
 	return NSURL_FromPointer(ret)
 }
 
-// URLByAppendingPathExtension returns a new url made by appending a path extension to the original url.
+// URLByAppendingPathExtension returns a new URL made by appending a path extension to the original URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417082-urlbyappendingpathextension?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathExtension(
@@ -6533,7 +6501,7 @@ func (x gen_NSURL) URLByAppendingPathExtension(
 	return NSURL_FromPointer(ret)
 }
 
-// FileReferenceURL returns a new file reference url that points to the same resource as the receiver.
+// FileReferenceURL returns a new file reference URL that points to the same resource as the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408631-filereferenceurl?language=objc for details.
 func (x gen_NSURL) FileReferenceURL() NSURL {
@@ -6544,7 +6512,7 @@ func (x gen_NSURL) FileReferenceURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// InitAbsoluteURLWithDataRepresentationRelativeToURL
+// InitAbsoluteURLWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410750-initabsoluteurlwithdatarepresent?language=objc for details.
 func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL_AsNSURL(
@@ -6560,7 +6528,7 @@ func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitFileURLWithPath initializes a newly created nsurl referencing the local file or directory at path.
+// InitFileURLWithPath initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410301-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPath_AsNSURL(
@@ -6574,7 +6542,7 @@ func (x gen_NSURL) InitFileURLWithPath_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitFileURLWithPathIsDirectory initializes a newly created nsurl referencing the local file or directory at path.
+// InitFileURLWithPathIsDirectory initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417505-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathIsDirectory_AsNSURL(
@@ -6590,7 +6558,7 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectory_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitFileURLWithPathIsDirectoryRelativeToURL
+// InitFileURLWithPathIsDirectoryRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL_AsNSURL(
@@ -6608,7 +6576,7 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitFileURLWithPathRelativeToURL
+// InitFileURLWithPathRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415077-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathRelativeToURL_AsNSURL(
@@ -6624,7 +6592,7 @@ func (x gen_NSURL) InitFileURLWithPathRelativeToURL_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitWithDataRepresentationRelativeToURL
+// InitWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1416851-initwithdatarepresentation?language=objc for details.
 func (x gen_NSURL) InitWithDataRepresentationRelativeToURL_AsNSURL(
@@ -6640,7 +6608,7 @@ func (x gen_NSURL) InitWithDataRepresentationRelativeToURL_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitWithString initializes an nsurl object with a provided url string.
+// InitWithString initializes an NSURL object with a provided URL string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413146-initwithstring?language=objc for details.
 func (x gen_NSURL) InitWithString_AsNSURL(
@@ -6654,7 +6622,7 @@ func (x gen_NSURL) InitWithString_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// InitWithStringRelativeToURL initializes an nsurl object with a base url and a relative string.
+// InitWithStringRelativeToURL initializes an NSURL object with a base URL and a relative string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc for details.
 func (x gen_NSURL) InitWithStringRelativeToURL_AsNSURL(
@@ -6670,7 +6638,7 @@ func (x gen_NSURL) InitWithStringRelativeToURL_AsNSURL(
 	return NSURL_FromPointer(ret)
 }
 
-// IsFileReferenceURL returns whether the url is a file reference url.
+// IsFileReferenceURL returns whether the URL is a file reference URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408507-isfilereferenceurl?language=objc for details.
 func (x gen_NSURL) IsFileReferenceURL() bool {
@@ -6681,7 +6649,7 @@ func (x gen_NSURL) IsFileReferenceURL() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// RemoveAllCachedResourceValues removes all cached resource values and temporary resource values from the url object.
+// RemoveAllCachedResourceValues removes all cached resource values and temporary resource values from the URL object.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417078-removeallcachedresourcevalues?language=objc for details.
 func (x gen_NSURL) RemoveAllCachedResourceValues() {
@@ -6692,7 +6660,7 @@ func (x gen_NSURL) RemoveAllCachedResourceValues() {
 	return
 }
 
-// StartAccessingSecurityScopedResource in an app that has adopted app sandbox, makes the resource pointed to by a security-scoped url available to the app.
+// StartAccessingSecurityScopedResource in an app that has adopted App Sandbox, makes the resource pointed to by a security-scoped URL available to the app.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417051-startaccessingsecurityscopedreso?language=objc for details.
 func (x gen_NSURL) StartAccessingSecurityScopedResource() bool {
@@ -6703,7 +6671,7 @@ func (x gen_NSURL) StartAccessingSecurityScopedResource() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// StopAccessingSecurityScopedResource in an app that adopts app sandbox, revokes access to the resource pointed to by a security-scoped url.
+// StopAccessingSecurityScopedResource in an app that adopts App Sandbox, revokes access to the resource pointed to by a security-scoped URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413736-stopaccessingsecurityscopedresou?language=objc for details.
 func (x gen_NSURL) StopAccessingSecurityScopedResource() {
@@ -6714,9 +6682,7 @@ func (x gen_NSURL) StopAccessingSecurityScopedResource() {
 	return
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSURL) Init_AsNSURL() NSURL {
 	ret := C.NSURL_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -6725,7 +6691,7 @@ func (x gen_NSURL) Init_AsNSURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// DataRepresentation
+// DataRepresentation is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407656-datarepresentation?language=objc for details.
 func (x gen_NSURL) DataRepresentation() NSData {
@@ -6736,7 +6702,7 @@ func (x gen_NSURL) DataRepresentation() NSData {
 	return NSData_FromPointer(ret)
 }
 
-// IsFileURL returns a boolean value that determines whether the receiver is a file url.
+// IsFileURL returns a boolean value that determines whether the receiver is a file URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408782-fileurl?language=objc for details.
 func (x gen_NSURL) IsFileURL() bool {
@@ -6747,7 +6713,7 @@ func (x gen_NSURL) IsFileURL() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AbsoluteString returns the url string for the receiver as an absolute url. (read-only)
+// AbsoluteString returns the URL string for the receiver as an absolute URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1409868-absolutestring?language=objc for details.
 func (x gen_NSURL) AbsoluteString() NSString {
@@ -6758,7 +6724,7 @@ func (x gen_NSURL) AbsoluteString() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// AbsoluteURL an absolute url that refers to the same resource as the receiver. (read-only)
+// AbsoluteURL an absolute URL that refers to the same resource as the receiver. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414266-absoluteurl?language=objc for details.
 func (x gen_NSURL) AbsoluteURL() NSURL {
@@ -6769,7 +6735,7 @@ func (x gen_NSURL) AbsoluteURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// BaseURL returns the base url. (read-only)
+// BaseURL returns the base URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412311-baseurl?language=objc for details.
 func (x gen_NSURL) BaseURL() NSURL {
@@ -6780,7 +6746,7 @@ func (x gen_NSURL) BaseURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// Fragment returns the fragment identifier, conforming to rfc 1808. (read-only)
+// Fragment returns the fragment identifier, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413775-fragment?language=objc for details.
 func (x gen_NSURL) Fragment() NSString {
@@ -6791,7 +6757,7 @@ func (x gen_NSURL) Fragment() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// Host returns the host, conforming to rfc 1808. (read-only)
+// Host returns the host, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413640-host?language=objc for details.
 func (x gen_NSURL) Host() NSString {
@@ -6813,7 +6779,7 @@ func (x gen_NSURL) LastPathComponent() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// Password returns the password conforming to rfc 1808. (read-only)
+// Password returns the password conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412096-password?language=objc for details.
 func (x gen_NSURL) Password() NSString {
@@ -6824,7 +6790,7 @@ func (x gen_NSURL) Password() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// Path returns the path, conforming to rfc 1808. (read-only)
+// Path returns the path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408809-path?language=objc for details.
 func (x gen_NSURL) Path() NSString {
@@ -6857,7 +6823,7 @@ func (x gen_NSURL) PathExtension() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// Port returns the port, conforming to rfc 1808.
+// Port returns the port, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413455-port?language=objc for details.
 func (x gen_NSURL) Port() NSNumber {
@@ -6868,7 +6834,7 @@ func (x gen_NSURL) Port() NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
-// Query returns the query string, conforming to rfc 1808.
+// Query returns the query string, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407543-query?language=objc for details.
 func (x gen_NSURL) Query() NSString {
@@ -6879,7 +6845,7 @@ func (x gen_NSURL) Query() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// RelativePath returns the relative path, conforming to rfc 1808. (read-only)
+// RelativePath returns the relative path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410263-relativepath?language=objc for details.
 func (x gen_NSURL) RelativePath() NSString {
@@ -6890,7 +6856,7 @@ func (x gen_NSURL) RelativePath() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// RelativeString returns a string representation of the relative portion of the url. (read-only)
+// RelativeString returns a string representation of the relative portion of the URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411417-relativestring?language=objc for details.
 func (x gen_NSURL) RelativeString() NSString {
@@ -6923,7 +6889,7 @@ func (x gen_NSURL) Scheme() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// StandardizedURL returns a copy of the url with any instances of ".." or "." removed from its path. (read-only)
+// StandardizedURL returns a copy of the URL with any instances of ".." or "." removed from its path. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411073-standardizedurl?language=objc for details.
 func (x gen_NSURL) StandardizedURL() NSURL {
@@ -6934,7 +6900,7 @@ func (x gen_NSURL) StandardizedURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// User returns the user name, conforming to rfc 1808.
+// User returns the user name, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1418335-user?language=objc for details.
 func (x gen_NSURL) User() NSString {
@@ -6945,7 +6911,7 @@ func (x gen_NSURL) User() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// FilePathURL returns a file path url that points to the same resource as the url object. (read-only)
+// FilePathURL returns a file path URL that points to the same resource as the URL object. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408442-filepathurl?language=objc for details.
 func (x gen_NSURL) FilePathURL() NSURL {
@@ -6956,7 +6922,7 @@ func (x gen_NSURL) FilePathURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// URLByDeletingLastPathComponent returns a url created by taking the receiver and removing the last path component. (read-only)
+// URLByDeletingLastPathComponent returns a URL created by taking the receiver and removing the last path component. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411592-urlbydeletinglastpathcomponent?language=objc for details.
 func (x gen_NSURL) URLByDeletingLastPathComponent() NSURL {
@@ -6967,7 +6933,7 @@ func (x gen_NSURL) URLByDeletingLastPathComponent() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// URLByDeletingPathExtension returns a url created by taking the receiver and removing the path extension, if any. (read-only)
+// URLByDeletingPathExtension returns a URL created by taking the receiver and removing the path extension, if any. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412357-urlbydeletingpathextension?language=objc for details.
 func (x gen_NSURL) URLByDeletingPathExtension() NSURL {
@@ -6978,7 +6944,7 @@ func (x gen_NSURL) URLByDeletingPathExtension() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// URLByResolvingSymlinksInPath returns a url that points to the same resource as the receiver and includes no symbolic links. (read-only)
+// URLByResolvingSymlinksInPath returns a URL that points to the same resource as the receiver and includes no symbolic links. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415965-urlbyresolvingsymlinksinpath?language=objc for details.
 func (x gen_NSURL) URLByResolvingSymlinksInPath() NSURL {
@@ -6989,7 +6955,7 @@ func (x gen_NSURL) URLByResolvingSymlinksInPath() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// URLByStandardizingPath returns a url that points to the same resource as the original url using an absolute path. (read-only)
+// URLByStandardizingPath returns a URL that points to the same resource as the original URL using an absolute path. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414302-urlbystandardizingpath?language=objc for details.
 func (x gen_NSURL) URLByStandardizingPath() NSURL {
@@ -7000,7 +6966,7 @@ func (x gen_NSURL) URLByStandardizingPath() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// HasDirectoryPath
+// HasDirectoryPath is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411475-hasdirectorypath?language=objc for details.
 func (x gen_NSURL) HasDirectoryPath() bool {
@@ -7030,7 +6996,7 @@ func NSURLRequest_FromRef(ref objc.Ref) NSURLRequest {
 	return NSURLRequest_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// InitWithURL creates a url request for a specified url.
+// InitWithURL creates a URL request for a specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc for details.
 func (x gen_NSURLRequest) InitWithURL_AsNSURLRequest(
@@ -7044,7 +7010,7 @@ func (x gen_NSURLRequest) InitWithURL_AsNSURLRequest(
 	return NSURLRequest_FromPointer(ret)
 }
 
-// ValueForHTTPHeaderField returns the value of the specified http header field.
+// ValueForHTTPHeaderField returns the value of the specified HTTP header field.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1409376-valueforhttpheaderfield?language=objc for details.
 func (x gen_NSURLRequest) ValueForHTTPHeaderField(
@@ -7058,9 +7024,7 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 	return NSString_FromPointer(ret)
 }
 
-// Init
-//
-// See  for details.
+// Init is undocumented.
 func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -7069,7 +7033,7 @@ func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 	return NSURLRequest_FromPointer(ret)
 }
 
-// HTTPMethod returns the http request method.
+// HTTPMethod returns the HTTP request method.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc for details.
 func (x gen_NSURLRequest) HTTPMethod() NSString {
@@ -7080,7 +7044,7 @@ func (x gen_NSURLRequest) HTTPMethod() NSString {
 	return NSString_FromPointer(ret)
 }
 
-// URL returns the url being requested.
+// URL returns the URL being requested.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1408996-url?language=objc for details.
 func (x gen_NSURLRequest) URL() NSURL {
@@ -7102,7 +7066,7 @@ func (x gen_NSURLRequest) HTTPBody() NSData {
 	return NSData_FromPointer(ret)
 }
 
-// MainDocumentURL returns the main document url associated with the request.
+// MainDocumentURL returns the main document URL associated with the request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1414134-maindocumenturl?language=objc for details.
 func (x gen_NSURLRequest) MainDocumentURL() NSURL {
@@ -7113,7 +7077,7 @@ func (x gen_NSURLRequest) MainDocumentURL() NSURL {
 	return NSURL_FromPointer(ret)
 }
 
-// AllHTTPHeaderFields returns a dictionary containing all of the http header fields for a request.
+// AllHTTPHeaderFields returns a dictionary containing all of the HTTP header fields for a request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields?language=objc for details.
 func (x gen_NSURLRequest) AllHTTPHeaderFields() NSDictionary {
@@ -7124,7 +7088,7 @@ func (x gen_NSURLRequest) AllHTTPHeaderFields() NSDictionary {
 	return NSDictionary_FromPointer(ret)
 }
 
-// HTTPShouldHandleCookies returns a boolean value that indicates whether the default cookie handling will be used for this request.
+// HTTPShouldHandleCookies returns a Boolean value that indicates whether the default cookie handling will be used for this request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1418369-httpshouldhandlecookies?language=objc for details.
 func (x gen_NSURLRequest) HTTPShouldHandleCookies() bool {
@@ -7135,7 +7099,7 @@ func (x gen_NSURLRequest) HTTPShouldHandleCookies() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// HTTPShouldUsePipelining returns a boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission.
+// HTTPShouldUsePipelining returns a Boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1409170-httpshouldusepipelining?language=objc for details.
 func (x gen_NSURLRequest) HTTPShouldUsePipelining() bool {
@@ -7146,7 +7110,7 @@ func (x gen_NSURLRequest) HTTPShouldUsePipelining() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AllowsCellularAccess returns a boolean value that indicates whether the request is allowed to use the cellular radio (if present).
+// AllowsCellularAccess returns a Boolean value that indicates whether the request is allowed to use the cellular radio (if present).
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1412032-allowscellularaccess?language=objc for details.
 func (x gen_NSURLRequest) AllowsCellularAccess() bool {
@@ -7157,7 +7121,7 @@ func (x gen_NSURLRequest) AllowsCellularAccess() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AllowsConstrainedNetworkAccess returns a boolean value that indicates whether connections may use the network when the user has specified low data mode.
+// AllowsConstrainedNetworkAccess returns a Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3325678-allowsconstrainednetworkaccess?language=objc for details.
 func (x gen_NSURLRequest) AllowsConstrainedNetworkAccess() bool {
@@ -7168,7 +7132,7 @@ func (x gen_NSURLRequest) AllowsConstrainedNetworkAccess() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AllowsExpensiveNetworkAccess returns a boolean value that indicates whether connections may use a network interface that the system considers expensive.
+// AllowsExpensiveNetworkAccess returns a Boolean value that indicates whether connections may use a network interface that the system considers expensive.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3325679-allowsexpensivenetworkaccess?language=objc for details.
 func (x gen_NSURLRequest) AllowsExpensiveNetworkAccess() bool {
@@ -7179,7 +7143,7 @@ func (x gen_NSURLRequest) AllowsExpensiveNetworkAccess() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// AssumesHTTP3Capable
+// AssumesHTTP3Capable is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3735880-assumeshttp3capable?language=objc for details.
 func (x gen_NSURLRequest) AssumesHTTP3Capable() bool {
@@ -7209,7 +7173,7 @@ func NSUserDefaults_FromRef(ref objc.Ref) NSUserDefaults {
 	return NSUserDefaults_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// URLForKey returns the url associated with the specified key.
+// URLForKey returns the URL associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408648-urlforkey?language=objc for details.
 func (x gen_NSUserDefaults) URLForKey(
@@ -7251,7 +7215,7 @@ func (x gen_NSUserDefaults) ArrayForKey(
 	return NSArray_FromPointer(ret)
 }
 
-// BoolForKey returns the boolean value associated with the specified key.
+// BoolForKey returns the Boolean value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416388-boolforkey?language=objc for details.
 func (x gen_NSUserDefaults) BoolForKey(
@@ -7357,7 +7321,7 @@ func (x gen_NSUserDefaults) ObjectForKey(
 	return objc.Object_FromPointer(ret)
 }
 
-// ObjectIsForcedForKey returns a boolean value indicating whether the specified key is managed by an administrator.
+// ObjectIsForcedForKey returns a Boolean value indicating whether the specified key is managed by an administrator.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408635-objectisforcedforkey?language=objc for details.
 func (x gen_NSUserDefaults) ObjectIsForcedForKey(
@@ -7371,7 +7335,7 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKey(
 	return convertObjCBoolToGo(ret)
 }
 
-// ObjectIsForcedForKeyInDomain returns a boolean value indicating whether the key in the specified domain is managed by an administrator.
+// ObjectIsForcedForKeyInDomain returns a Boolean value indicating whether the key in the specified domain is managed by an administrator.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416306-objectisforcedforkey?language=objc for details.
 func (x gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
@@ -7471,7 +7435,7 @@ func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
 	return
 }
 
-// SetBoolForKey sets the value of the specified default key to the specified boolean value.
+// SetBoolForKey sets the value of the specified default key to the specified Boolean value.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408905-setbool?language=objc for details.
 func (x gen_NSUserDefaults) SetBoolForKey(
@@ -7535,7 +7499,7 @@ func (x gen_NSUserDefaults) SetPersistentDomainForName(
 	return
 }
 
-// SetURLForKey sets the value of the specified default key to the specified url.
+// SetURLForKey sets the value of the specified default key to the specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc for details.
 func (x gen_NSUserDefaults) SetURLForKey(
