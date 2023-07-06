@@ -86,12 +86,30 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 }
 
 func formatComment(m schema.Method, ident string) string {
-	ld := strings.ToLower(m.Description)
-	firstWord := strings.Split(ld, " ")[0]
+	desc := m.Description
+	var result strings.Builder
+	result.WriteString("// ")
+	result.WriteString(ident)
 
-	if firstWord == "a" || firstWord == "the" {
-		ld = "returns " + ld
+	firstWord, rest, _ := strings.Cut(desc, " ")
+	firstWord = strings.ToLower(firstWord)
+
+	if desc == "" {
+		result.WriteString(" is undocumented.")
+	} else {
+		if firstWord == "a" || firstWord == "the" {
+			result.WriteString(" returns")
+		}
+		result.WriteString(" ")
+		result.WriteString(firstWord)
+		result.WriteString(" ")
+		result.WriteString(rest)
 	}
-	return fmt.Sprintf("// %s %s\n//\n// See %s for details.", ident, ld, m.TopicURL)
+	if m.TopicURL != "" {
+		result.WriteString("\n//\n// See ")
+		result.WriteString(m.TopicURL)
+		result.WriteString(" for details.")
+	}
+	return result.String()
 
 }
