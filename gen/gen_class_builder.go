@@ -22,6 +22,9 @@ func (cb *classBuilder) EachTypeMethod(f func(schema.Method)) {
 		Return: schema.DataType{Name: "instancetype"},
 	})
 	for _, m := range cb.Class.TypeMethods {
+		if m.Name == "alloc" && len(m.Args) == 0 {
+			continue
+		}
 		f(m)
 	}
 	for _, p := range cb.Class.TypeProperties {

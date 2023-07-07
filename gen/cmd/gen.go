@@ -15,6 +15,7 @@ func main() {
 		// happen on occasion, e.g. a type in "Foundation" includes methods that
 		// use types from "AppKit".
 		{"core", []schemaLoader{
+			loadFile("api/objectivec/nsobject.objc.json"),
 			loadFile("api/quartzcore/calayer.objc.json"),
 
 			loadFile("api/foundation/nsarray.objc.json"),

@@ -19,7 +19,7 @@ func Convert(desc PackageDescription, imports []PackageContents, schemas ...*sch
 		if s.Class != nil {
 			classDef, err := processClassSchema(pkg, s, imports, consumedImports)
 			if err != nil {
-				return pkg, fmt.Errorf("issue with class %s failed to parse declaration %+v: %w", s.Class.Name, s.Class, err)
+				return pkg, fmt.Errorf("issue with class %s failed to parse schema: %w", s.Class.Name, err)
 			}
 			pkg.Classes = append(pkg.Classes, classDef)
 		} else if s.Struct != nil {
@@ -48,7 +48,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 	}
 	decl, err := parseClassDeclaration(cb.Class.Declaration)
 	if err != nil {
-		return classDef, err
+		return classDef, fmt.Errorf("failed to parse class declaration '%+v': %w", cb.Class.Declaration, err)
 	}
 
 	if decl.Base != "NSObject" {
