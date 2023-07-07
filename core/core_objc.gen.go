@@ -22,6 +22,68 @@ bool core_convertObjCBool(BOOL b) {
 }
 
 
+void* NSObject_type_Alloc() {
+	return [NSObject
+		alloc];
+}
+void NSObject_type_Initialize() {
+	[NSObject
+		initialize];
+}
+void NSObject_type_Load() {
+	[NSObject
+		load];
+}
+void* NSObject_type_New() {
+	return [NSObject
+		new];
+}
+BOOL NSObject_type_InstancesRespondToSelector(void* aSelector) {
+	return [NSObject
+		instancesRespondToSelector: aSelector];
+}
+void* NSObject_type_Description() {
+	return [NSObject
+		description];
+}
+void NSObject_type_CancelPreviousPerformRequestsWithTarget(void* aTarget) {
+	[NSObject
+		cancelPreviousPerformRequestsWithTarget: aTarget];
+}
+void NSObject_type_CancelPreviousPerformRequestsWithTargetSelectorObject(void* aTarget, void* aSelector, void* anArgument) {
+	[NSObject
+		cancelPreviousPerformRequestsWithTarget: aTarget
+		selector: aSelector
+		object: anArgument];
+}
+BOOL NSObject_type_ResolveClassMethod(void* sel) {
+	return [NSObject
+		resolveClassMethod: sel];
+}
+BOOL NSObject_type_ResolveInstanceMethod(void* sel) {
+	return [NSObject
+		resolveInstanceMethod: sel];
+}
+void* NSObject_type_ClassFallbacksForKeyedArchiver() {
+	return [NSObject
+		classFallbacksForKeyedArchiver];
+}
+void NSObject_type_SetVersion(long aVersion) {
+	[NSObject
+		setVersion: aVersion];
+}
+long NSObject_type_Version() {
+	return [NSObject
+		version];
+}
+void* NSObject_type_DebugDescription() {
+	return [NSObject
+		debugDescription];
+}
+unsigned long NSObject_type_Hash() {
+	return [NSObject
+		hash];
+}
 void* CALayer_type_Alloc() {
 	return [CALayer
 		alloc];
@@ -303,6 +365,251 @@ void* NSUserDefaults_type_StandardUserDefaults() {
 		standardUserDefaults];
 }
 
+
+void* NSObject_inst_ActionProperty(void *id) {
+	return [(NSObject*)id
+		actionProperty];
+}
+
+void* NSObject_inst_Candidates(void *id, void* sender) {
+	return [(NSObject*)id
+		candidates: sender];
+}
+
+void NSObject_inst_CommitComposition(void *id, void* sender) {
+	[(NSObject*)id
+		commitComposition: sender];
+}
+
+void* NSObject_inst_ComposedString(void *id, void* sender) {
+	return [(NSObject*)id
+		composedString: sender];
+}
+
+void* NSObject_inst_Copy(void *id) {
+	return [(NSObject*)id
+		copy];
+}
+
+void* NSObject_inst_CopyScriptingValueForKeyWithProperties(void *id, void* value, void* key, void* properties) {
+	return [(NSObject*)id
+		copyScriptingValue: value
+		forKey: key
+		withProperties: properties];
+}
+
+void NSObject_inst_Dealloc(void *id) {
+	[(NSObject*)id
+		dealloc];
+}
+
+BOOL NSObject_inst_DidCommandBySelectorClient(void *id, void* aSelector, void* sender) {
+	return [(NSObject*)id
+		didCommandBySelector: aSelector
+		client: sender];
+}
+
+BOOL NSObject_inst_DoesContain(void *id, void* object) {
+	return [(NSObject*)id
+		doesContain: object];
+}
+
+void NSObject_inst_DoesNotRecognizeSelector(void *id, void* aSelector) {
+	[(NSObject*)id
+		doesNotRecognizeSelector: aSelector];
+}
+
+void* NSObject_inst_ForwardingTargetForSelector(void *id, void* aSelector) {
+	return [(NSObject*)id
+		forwardingTargetForSelector: aSelector];
+}
+
+void* NSObject_inst_ImageRepresentation(void *id) {
+	return [(NSObject*)id
+		imageRepresentation];
+}
+
+void* NSObject_inst_ImageRepresentationType(void *id) {
+	return [(NSObject*)id
+		imageRepresentationType];
+}
+
+void* NSObject_inst_ImageSubtitle(void *id) {
+	return [(NSObject*)id
+		imageSubtitle];
+}
+
+void* NSObject_inst_ImageTitle(void *id) {
+	return [(NSObject*)id
+		imageTitle];
+}
+
+void* NSObject_inst_ImageUID(void *id) {
+	return [(NSObject*)id
+		imageUID];
+}
+
+unsigned long NSObject_inst_ImageVersion(void *id) {
+	return [(NSObject*)id
+		imageVersion];
+}
+
+void* NSObject_inst_Init(void *id) {
+	return [(NSObject*)id
+		init];
+}
+
+BOOL NSObject_inst_InputTextClient(void *id, void* string, void* sender) {
+	return [(NSObject*)id
+		inputText: string
+		client: sender];
+}
+
+BOOL NSObject_inst_InputTextKeyModifiersClient(void *id, void* string, long keyCode, unsigned long flags, void* sender) {
+	return [(NSObject*)id
+		inputText: string
+		key: keyCode
+		modifiers: flags
+		client: sender];
+}
+
+void* NSObject_inst_InverseForRelationshipKey(void *id, void* relationshipKey) {
+	return [(NSObject*)id
+		inverseForRelationshipKey: relationshipKey];
+}
+
+BOOL NSObject_inst_IsCaseInsensitiveLike(void *id, void* object) {
+	return [(NSObject*)id
+		isCaseInsensitiveLike: object];
+}
+
+BOOL NSObject_inst_IsEqualTo(void *id, void* object) {
+	return [(NSObject*)id
+		isEqualTo: object];
+}
+
+BOOL NSObject_inst_IsGreaterThan(void *id, void* object) {
+	return [(NSObject*)id
+		isGreaterThan: object];
+}
+
+BOOL NSObject_inst_IsGreaterThanOrEqualTo(void *id, void* object) {
+	return [(NSObject*)id
+		isGreaterThanOrEqualTo: object];
+}
+
+BOOL NSObject_inst_IsLessThan(void *id, void* object) {
+	return [(NSObject*)id
+		isLessThan: object];
+}
+
+BOOL NSObject_inst_IsLessThanOrEqualTo(void *id, void* object) {
+	return [(NSObject*)id
+		isLessThanOrEqualTo: object];
+}
+
+BOOL NSObject_inst_IsLike(void *id, void* object) {
+	return [(NSObject*)id
+		isLike: object];
+}
+
+BOOL NSObject_inst_IsNotEqualTo(void *id, void* object) {
+	return [(NSObject*)id
+		isNotEqualTo: object];
+}
+
+void* NSObject_inst_MutableCopy(void *id) {
+	return [(NSObject*)id
+		mutableCopy];
+}
+
+void* NSObject_inst_OriginalString(void *id, void* sender) {
+	return [(NSObject*)id
+		originalString: sender];
+}
+
+void NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDone(void *id, void* aSelector, void* thr, void* arg, BOOL wait) {
+	[(NSObject*)id
+		performSelector: aSelector
+		onThread: thr
+		withObject: arg
+		waitUntilDone: wait];
+}
+
+void NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDoneModes(void *id, void* aSelector, void* thr, void* arg, BOOL wait, void* array) {
+	[(NSObject*)id
+		performSelector: aSelector
+		onThread: thr
+		withObject: arg
+		waitUntilDone: wait
+		modes: array];
+}
+
+void NSObject_inst_PerformSelectorInBackgroundWithObject(void *id, void* aSelector, void* arg) {
+	[(NSObject*)id
+		performSelectorInBackground: aSelector
+		withObject: arg];
+}
+
+void NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDone(void *id, void* aSelector, void* arg, BOOL wait) {
+	[(NSObject*)id
+		performSelectorOnMainThread: aSelector
+		withObject: arg
+		waitUntilDone: wait];
+}
+
+void NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(void *id, void* aSelector, void* arg, BOOL wait, void* array) {
+	[(NSObject*)id
+		performSelectorOnMainThread: aSelector
+		withObject: arg
+		waitUntilDone: wait
+		modes: array];
+}
+
+void* NSObject_inst_AutoContentAccessingProxy(void *id) {
+	return [(NSObject*)id
+		autoContentAccessingProxy];
+}
+
+void* NSObject_inst_AttributeKeys(void *id) {
+	return [(NSObject*)id
+		attributeKeys];
+}
+
+void* NSObject_inst_ToManyRelationshipKeys(void *id) {
+	return [(NSObject*)id
+		toManyRelationshipKeys];
+}
+
+void* NSObject_inst_ToOneRelationshipKeys(void *id) {
+	return [(NSObject*)id
+		toOneRelationshipKeys];
+}
+
+void* NSObject_inst_ClassName(void *id) {
+	return [(NSObject*)id
+		className];
+}
+
+void* NSObject_inst_ScriptingProperties(void *id) {
+	return [(NSObject*)id
+		scriptingProperties];
+}
+
+void NSObject_inst_SetScriptingProperties(void *id, void* value) {
+	[(NSObject*)id
+		setScriptingProperties: value];
+}
+
+BOOL NSObject_inst_AccessibilityNotifiesWhenDestroyed(void *id) {
+	return [(NSObject*)id
+		accessibilityNotifiesWhenDestroyed];
+}
+
+BOOL NSObject_inst_IsSelectable(void *id) {
+	return [(NSObject*)id
+		isSelectable];
+}
 
 void* CALayer_inst_ActionForKey(void *id, void* event) {
 	return [(CALayer*)id
@@ -871,6 +1178,19 @@ void NSArray_inst_MakeObjectsPerformSelectorWithObject(void *id, void* aSelector
 void* NSArray_inst_PathsMatchingExtensions(void *id, void* filterTypes) {
 	return [(NSArray*)id
 		pathsMatchingExtensions: filterTypes];
+}
+
+void NSArray_inst_RemoveObserverForKeyPath(void *id, void* observer, void* keyPath) {
+	[(NSArray*)id
+		removeObserver: observer
+		forKeyPath: keyPath];
+}
+
+void NSArray_inst_RemoveObserverForKeyPathContext(void *id, void* observer, void* keyPath, void* context) {
+	[(NSArray*)id
+		removeObserver: observer
+		forKeyPath: keyPath
+		context: context];
 }
 
 void NSArray_inst_SetValueForKey(void *id, void* value, void* key) {
@@ -2167,6 +2487,153 @@ func convertToObjCBool(b bool) C.BOOL {
 	return C.core_objc_bool_false
 }
 
+// NSObject_Alloc is undocumented.
+func NSObject_Alloc() NSObject {
+	ret := C.NSObject_type_Alloc()
+
+	return NSObject_FromPointer(ret)
+}
+
+// NSObject_Initialize initializes the class before it receives its first message.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418639-initialize?language=objc for details.
+func NSObject_Initialize() {
+	C.NSObject_type_Initialize()
+
+	return
+}
+
+// NSObject_Load invoked whenever a class or category is added to the Objective-C runtime; implement this method to perform class-specific behavior upon loading.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418815-load?language=objc for details.
+func NSObject_Load() {
+	C.NSObject_type_Load()
+
+	return
+}
+
+// NSObject_New allocates a new instance of the receiving class, sends it an init message, and returns the initialized object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1571948-new?language=objc for details.
+func NSObject_New() NSObject {
+	ret := C.NSObject_type_New()
+
+	return NSObject_FromPointer(ret)
+}
+
+// NSObject_InstancesRespondToSelector returns a Boolean value that indicates whether instances of the receiver are capable of responding to a given selector.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418555-instancesrespondtoselector?language=objc for details.
+func NSObject_InstancesRespondToSelector(aSelector objc.Selector) bool {
+	ret := C.NSObject_type_InstancesRespondToSelector(
+		aSelector.SelectorAddress(),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// NSObject_Description returns a string that represents the contents of the receiving class.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418799-description?language=objc for details.
+func NSObject_Description() NSString {
+	ret := C.NSObject_type_Description()
+
+	return NSString_FromPointer(ret)
+}
+
+// NSObject_CancelPreviousPerformRequestsWithTarget cancels perform requests previously registered with the performSelector:withObject:afterDelay: instance method.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1417611-cancelpreviousperformrequestswit?language=objc for details.
+func NSObject_CancelPreviousPerformRequestsWithTarget(aTarget objc.Ref) {
+	C.NSObject_type_CancelPreviousPerformRequestsWithTarget(
+		objc.RefPointer(aTarget),
+	)
+
+	return
+}
+
+// NSObject_CancelPreviousPerformRequestsWithTargetSelectorObject cancels perform requests previously registered with performSelector:withObject:afterDelay:.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1410849-cancelpreviousperformrequestswit?language=objc for details.
+func NSObject_CancelPreviousPerformRequestsWithTargetSelectorObject(aTarget objc.Ref, aSelector objc.Selector, anArgument objc.Ref) {
+	C.NSObject_type_CancelPreviousPerformRequestsWithTargetSelectorObject(
+		objc.RefPointer(aTarget),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(anArgument),
+	)
+
+	return
+}
+
+// NSObject_ResolveClassMethod dynamically provides an implementation for a given selector for a class method.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418889-resolveclassmethod?language=objc for details.
+func NSObject_ResolveClassMethod(sel objc.Selector) bool {
+	ret := C.NSObject_type_ResolveClassMethod(
+		sel.SelectorAddress(),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// NSObject_ResolveInstanceMethod dynamically provides an implementation for a given selector for an instance method.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418500-resolveinstancemethod?language=objc for details.
+func NSObject_ResolveInstanceMethod(sel objc.Selector) bool {
+	ret := C.NSObject_type_ResolveInstanceMethod(
+		sel.SelectorAddress(),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// NSObject_ClassFallbacksForKeyedArchiver overridden to return the names of classes that can be used to decode objects if their class is unavailable.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411048-classfallbacksforkeyedarchiver?language=objc for details.
+func NSObject_ClassFallbacksForKeyedArchiver() NSArray {
+	ret := C.NSObject_type_ClassFallbacksForKeyedArchiver()
+
+	return NSArray_FromPointer(ret)
+}
+
+// NSObject_SetVersion sets the receiver's version number.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1416538-setversion?language=objc for details.
+func NSObject_SetVersion(aVersion NSInteger) {
+	C.NSObject_type_SetVersion(
+		C.long(aVersion),
+	)
+
+	return
+}
+
+// NSObject_Version returns the version number assigned to the class.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1415151-version?language=objc for details.
+func NSObject_Version() NSInteger {
+	ret := C.NSObject_type_Version()
+
+	return NSInteger(ret)
+}
+
+// NSObject_DebugDescription is undocumented.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418711-debugdescription?language=objc for details.
+func NSObject_DebugDescription() NSString {
+	ret := C.NSObject_type_DebugDescription()
+
+	return NSString_FromPointer(ret)
+}
+
+// NSObject_Hash is undocumented.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418561-hash?language=objc for details.
+func NSObject_Hash() NSUInteger {
+	ret := C.NSObject_type_Hash()
+
+	return NSUInteger(ret)
+}
+
 // CALayer_Alloc is undocumented.
 func CALayer_Alloc() CALayer {
 	ret := C.CALayer_type_Alloc()
@@ -2819,6 +3286,638 @@ func NSUserDefaults_StandardUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_type_StandardUserDefaults()
 
 	return NSUserDefaults_FromPointer(ret)
+}
+
+type NSObjectRef interface {
+	Pointer() uintptr
+	Init_AsNSObject() NSObject
+}
+
+type gen_NSObject struct {
+	objc.Object
+}
+
+func NSObject_FromPointer(ptr unsafe.Pointer) NSObject {
+	return NSObject{gen_NSObject{
+		objc.Object_FromPointer(ptr),
+	}}
+}
+
+func NSObject_FromRef(ref objc.Ref) NSObject {
+	return NSObject_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// ActionProperty sent to the delegate to request the property the action applies to.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411302-actionproperty?language=objc for details.
+func (x gen_NSObject) ActionProperty() NSString {
+	ret := C.NSObject_inst_ActionProperty(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// Candidates returns an array of candidates.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385360-candidates?language=objc for details.
+func (x gen_NSObject) Candidates(
+	sender objc.Ref,
+) NSArray {
+	ret := C.NSObject_inst_Candidates(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// CommitComposition informs the controller that the composition should be committed.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385539-commitcomposition?language=objc for details.
+func (x gen_NSObject) CommitComposition(
+	sender objc.Ref,
+) {
+	C.NSObject_inst_CommitComposition(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return
+}
+
+// ComposedString return the current composed string.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385416-composedstring?language=objc for details.
+func (x gen_NSObject) ComposedString(
+	sender objc.Ref,
+) objc.Object {
+	ret := C.NSObject_inst_ComposedString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// Copy returns the object returned by copyWithZone:.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418807-copy?language=objc for details.
+func (x gen_NSObject) Copy() objc.Object {
+	ret := C.NSObject_inst_Copy(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// CopyScriptingValueForKeyWithProperties creates and returns one or more scripting objects to be inserted into the specified relationship by copying the passed-in value and setting the properties in the copied object or objects.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1410291-copyscriptingvalue?language=objc for details.
+func (x gen_NSObject) CopyScriptingValueForKeyWithProperties(
+	value objc.Ref,
+	key NSStringRef,
+	properties NSDictionaryRef,
+) objc.Object {
+	ret := C.NSObject_inst_CopyScriptingValueForKeyWithProperties(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+		objc.RefPointer(key),
+		objc.RefPointer(properties),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// Dealloc deallocates the memory occupied by the receiver.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1571947-dealloc?language=objc for details.
+func (x gen_NSObject) Dealloc() {
+	C.NSObject_inst_Dealloc(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// DidCommandBySelectorClient processes a command generated by user action such as typing certain keys or pressing the mouse button.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385394-didcommandbyselector?language=objc for details.
+func (x gen_NSObject) DidCommandBySelectorClient(
+	aSelector objc.Selector,
+	sender objc.Ref,
+) bool {
+	ret := C.NSObject_inst_DidCommandBySelectorClient(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(sender),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// DoesContain returns a Boolean value that indicates whether the receiver contains a given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393848-doescontain?language=objc for details.
+func (x gen_NSObject) DoesContain(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_DoesContain(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// DoesNotRecognizeSelector handles messages the receiver doesn’t recognize.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418637-doesnotrecognizeselector?language=objc for details.
+func (x gen_NSObject) DoesNotRecognizeSelector(
+	aSelector objc.Selector,
+) {
+	C.NSObject_inst_DoesNotRecognizeSelector(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+	)
+
+	return
+}
+
+// ForwardingTargetForSelector returns the object to which unrecognized messages should first be directed.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418855-forwardingtargetforselector?language=objc for details.
+func (x gen_NSObject) ForwardingTargetForSelector(
+	aSelector objc.Selector,
+) objc.Object {
+	ret := C.NSObject_inst_ForwardingTargetForSelector(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ImageRepresentation returns the image to display.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1504801-imagerepresentation?language=objc for details.
+func (x gen_NSObject) ImageRepresentation() objc.Object {
+	ret := C.NSObject_inst_ImageRepresentation(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ImageRepresentationType returns the representation type of the image to display.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1503547-imagerepresentationtype?language=objc for details.
+func (x gen_NSObject) ImageRepresentationType() NSString {
+	ret := C.NSObject_inst_ImageRepresentationType(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// ImageSubtitle returns the display subtitle of the image.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1503725-imagesubtitle?language=objc for details.
+func (x gen_NSObject) ImageSubtitle() NSString {
+	ret := C.NSObject_inst_ImageSubtitle(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// ImageTitle returns the display title of the image.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1504080-imagetitle?language=objc for details.
+func (x gen_NSObject) ImageTitle() NSString {
+	ret := C.NSObject_inst_ImageTitle(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// ImageUID returns a unique string that identifies the data source item.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1503516-imageuid?language=objc for details.
+func (x gen_NSObject) ImageUID() NSString {
+	ret := C.NSObject_inst_ImageUID(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// ImageVersion returns the version of the item.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1504444-imageversion?language=objc for details.
+func (x gen_NSObject) ImageVersion() NSUInteger {
+	ret := C.NSObject_inst_ImageVersion(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSUInteger(ret)
+}
+
+// Init implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc for details.
+func (x gen_NSObject) Init_AsNSObject() NSObject {
+	ret := C.NSObject_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSObject_FromPointer(ret)
+}
+
+// InputTextClient handles key down events that do not map to an action method.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385446-inputtext?language=objc for details.
+func (x gen_NSObject) InputTextClient(
+	string NSStringRef,
+	sender objc.Ref,
+) bool {
+	ret := C.NSObject_inst_InputTextClient(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(string),
+		objc.RefPointer(sender),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// InputTextKeyModifiersClient receives Unicode, the key code that generated it, and any modifier flags.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385436-inputtext?language=objc for details.
+func (x gen_NSObject) InputTextKeyModifiersClient(
+	string NSStringRef,
+	keyCode NSInteger,
+	flags NSUInteger,
+	sender objc.Ref,
+) bool {
+	ret := C.NSObject_inst_InputTextKeyModifiersClient(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(string),
+		C.long(keyCode),
+		C.ulong(flags),
+		objc.RefPointer(sender),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// InverseForRelationshipKey for a given key that defines the name of the relationship from the receiver’s class to another class, returns the name of the relationship from the other class to the receiver’s class.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411046-inverseforrelationshipkey?language=objc for details.
+func (x gen_NSObject) InverseForRelationshipKey(
+	relationshipKey NSStringRef,
+) NSString {
+	ret := C.NSObject_inst_InverseForRelationshipKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(relationshipKey),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// IsCaseInsensitiveLike returns a Boolean value that indicates whether receiver is considered to be “like” a given string when the case of characters in the receiver is ignored.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393837-iscaseinsensitivelike?language=objc for details.
+func (x gen_NSObject) IsCaseInsensitiveLike(
+	object NSStringRef,
+) bool {
+	ret := C.NSObject_inst_IsCaseInsensitiveLike(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsEqualTo returns a Boolean value that indicates whether the receiver is equal to another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393823-isequalto?language=objc for details.
+func (x gen_NSObject) IsEqualTo(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsEqualTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsGreaterThan returns a Boolean value that indicates whether the receiver is greater than another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393885-isgreaterthan?language=objc for details.
+func (x gen_NSObject) IsGreaterThan(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsGreaterThan(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsGreaterThanOrEqualTo returns a Boolean value that indicates whether the receiver is greater than or equal to another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393862-isgreaterthanorequalto?language=objc for details.
+func (x gen_NSObject) IsGreaterThanOrEqualTo(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsGreaterThanOrEqualTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsLessThan returns a Boolean value that indicates whether the receiver is less than another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393841-islessthan?language=objc for details.
+func (x gen_NSObject) IsLessThan(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsLessThan(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsLessThanOrEqualTo returns a Boolean value that indicates whether the receiver is less than or equal to another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393827-islessthanorequalto?language=objc for details.
+func (x gen_NSObject) IsLessThanOrEqualTo(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsLessThanOrEqualTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsLike returns a Boolean value that indicates whether the receiver is "like" another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393866-islike?language=objc for details.
+func (x gen_NSObject) IsLike(
+	object NSStringRef,
+) bool {
+	ret := C.NSObject_inst_IsLike(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsNotEqualTo returns a Boolean value that indicates whether the receiver is not equal to another given object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1393843-isnotequalto?language=objc for details.
+func (x gen_NSObject) IsNotEqualTo(
+	object objc.Ref,
+) bool {
+	ret := C.NSObject_inst_IsNotEqualTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// MutableCopy returns the object returned by mutableCopyWithZone: where the zone is nil.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418978-mutablecopy?language=objc for details.
+func (x gen_NSObject) MutableCopy() objc.Object {
+	ret := C.NSObject_inst_MutableCopy(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// OriginalString return the string that consists of the precomposed Unicode characters.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1385400-originalstring?language=objc for details.
+func (x gen_NSObject) OriginalString(
+	sender objc.Ref,
+) NSAttributedString {
+	ret := C.NSObject_inst_OriginalString(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return NSAttributedString_FromPointer(ret)
+}
+
+// PerformSelectorOnThreadWithObjectWaitUntilDone invokes a method of the receiver on the specified thread using the default mode.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1414476-performselector?language=objc for details.
+func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDone(
+	aSelector objc.Selector,
+	thr NSThreadRef,
+	arg objc.Ref,
+	wait bool,
+) {
+	C.NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDone(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(thr),
+		objc.RefPointer(arg),
+		convertToObjCBool(wait),
+	)
+
+	return
+}
+
+// PerformSelectorOnThreadWithObjectWaitUntilDoneModes invokes a method of the receiver on the specified thread using the specified modes.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1417922-performselector?language=objc for details.
+func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
+	aSelector objc.Selector,
+	thr NSThreadRef,
+	arg objc.Ref,
+	wait bool,
+	array NSArrayRef,
+) {
+	C.NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(thr),
+		objc.RefPointer(arg),
+		convertToObjCBool(wait),
+		objc.RefPointer(array),
+	)
+
+	return
+}
+
+// PerformSelectorInBackgroundWithObject invokes a method of the receiver on a new background thread.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1412390-performselectorinbackground?language=objc for details.
+func (x gen_NSObject) PerformSelectorInBackgroundWithObject(
+	aSelector objc.Selector,
+	arg objc.Ref,
+) {
+	C.NSObject_inst_PerformSelectorInBackgroundWithObject(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(arg),
+	)
+
+	return
+}
+
+// PerformSelectorOnMainThreadWithObjectWaitUntilDone invokes a method of the receiver on the main thread using the default mode.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1414900-performselectoronmainthread?language=objc for details.
+func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDone(
+	aSelector objc.Selector,
+	arg objc.Ref,
+	wait bool,
+) {
+	C.NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDone(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(arg),
+		convertToObjCBool(wait),
+	)
+
+	return
+}
+
+// PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes invokes a method of the receiver on the main thread using the specified modes.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411637-performselectoronmainthread?language=objc for details.
+func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
+	aSelector objc.Selector,
+	arg objc.Ref,
+	wait bool,
+	array NSArrayRef,
+) {
+	C.NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
+		unsafe.Pointer(x.Pointer()),
+		aSelector.SelectorAddress(),
+		objc.RefPointer(arg),
+		convertToObjCBool(wait),
+		objc.RefPointer(array),
+	)
+
+	return
+}
+
+// AutoContentAccessingProxy returns a proxy for the receiving object
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1409224-autocontentaccessingproxy?language=objc for details.
+func (x gen_NSObject) AutoContentAccessingProxy() objc.Object {
+	ret := C.NSObject_inst_AutoContentAccessingProxy(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// AttributeKeys an array of NSString objects containing the names of immutable values that instances of the receiver's class contain.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1415656-attributekeys?language=objc for details.
+func (x gen_NSObject) AttributeKeys() NSArray {
+	ret := C.NSObject_inst_AttributeKeys(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// ToManyRelationshipKeys an array containing the keys for the to-many relationship properties of the receiver.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1415662-tomanyrelationshipkeys?language=objc for details.
+func (x gen_NSObject) ToManyRelationshipKeys() NSArray {
+	ret := C.NSObject_inst_ToManyRelationshipKeys(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// ToOneRelationshipKeys returns the keys for the to-one relationship properties of the receiver, if any.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1414814-toonerelationshipkeys?language=objc for details.
+func (x gen_NSObject) ToOneRelationshipKeys() NSArray {
+	ret := C.NSObject_inst_ToOneRelationshipKeys(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// ClassName returns a string containing the name of the class.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411337-classname?language=objc for details.
+func (x gen_NSObject) ClassName() NSString {
+	ret := C.NSObject_inst_ClassName(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// ScriptingProperties an NSString-keyed dictionary of the receiver's scriptable properties.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1417254-scriptingproperties?language=objc for details.
+func (x gen_NSObject) ScriptingProperties() NSDictionary {
+	ret := C.NSObject_inst_ScriptingProperties(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
+// SetScriptingProperties an NSString-keyed dictionary of the receiver's scriptable properties.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1417254-scriptingproperties?language=objc for details.
+func (x gen_NSObject) SetScriptingProperties(
+	value NSDictionaryRef,
+) {
+	C.NSObject_inst_SetScriptingProperties(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// AccessibilityNotifiesWhenDestroyed returns a Boolean value that indicates whether a custom accessibility object sends a notification when its corresponding UI element is destroyed.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1534050-accessibilitynotifieswhendestroy?language=objc for details.
+func (x gen_NSObject) AccessibilityNotifiesWhenDestroyed() bool {
+	ret := C.NSObject_inst_AccessibilityNotifiesWhenDestroyed(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsSelectable is undocumented.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/2369549-selectable?language=objc for details.
+func (x gen_NSObject) IsSelectable() bool {
+	ret := C.NSObject_inst_IsSelectable(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 type CALayerRef interface {
@@ -4284,6 +5383,40 @@ func (x gen_NSArray) PathsMatchingExtensions(
 	)
 
 	return NSArray_FromPointer(ret)
+}
+
+// RemoveObserverForKeyPath raises an exception.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1414976-removeobserver?language=objc for details.
+func (x gen_NSArray) RemoveObserverForKeyPath(
+	observer NSObjectRef,
+	keyPath NSStringRef,
+) {
+	C.NSArray_inst_RemoveObserverForKeyPath(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(observer),
+		objc.RefPointer(keyPath),
+	)
+
+	return
+}
+
+// RemoveObserverForKeyPathContext raises an exception.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1418441-removeobserver?language=objc for details.
+func (x gen_NSArray) RemoveObserverForKeyPathContext(
+	observer NSObjectRef,
+	keyPath NSStringRef,
+	context unsafe.Pointer,
+) {
+	C.NSArray_inst_RemoveObserverForKeyPathContext(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(observer),
+		objc.RefPointer(keyPath),
+		context,
+	)
+
+	return
 }
 
 // SetValueForKey invokes setValue:forKey: on each of the array's items using the specified value and key.

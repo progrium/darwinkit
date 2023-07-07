@@ -1,0 +1,4349 @@
+{
+  "Class": {
+    "Name": "NSObject",
+    "Description": "The root class of most Objective-C class hierarchies, from which subclasses inherit a basic interface to the runtime system and the ability to behave as Objective-C objects.",
+    "Declaration": "@interface NSObject",
+    "Platforms": [
+      "iOS 2.0+",
+      "iPadOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.1+",
+      "tvOS 9.0+",
+      "watchOS 2.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc"
+      },
+      {
+        "Name": "copy",
+        "Description": "Returns the object returned by copyWithZone:.",
+        "Declaration": "- (id)copy;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418807-copy?language=objc"
+      },
+      {
+        "Name": "mutableCopy",
+        "Description": "Returns the object returned by mutableCopyWithZone: where the zone is nil.",
+        "Declaration": "- (id)mutableCopy;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418978-mutablecopy?language=objc"
+      },
+      {
+        "Name": "dealloc",
+        "Description": "Deallocates the memory occupied by the receiver.",
+        "Declaration": "- (void)dealloc;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571947-dealloc?language=objc"
+      },
+      {
+        "Name": "methodForSelector:",
+        "Description": "Locates and returns the address of the receiver’s implementation of a method so it can be called as a function.",
+        "Declaration": "- (IMP)methodForSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "IMP"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418863-methodforselector?language=objc"
+      },
+      {
+        "Name": "methodSignatureForSelector:",
+        "Description": "Returns an NSMethodSignature object that contains a description of the method identified by a given selector.",
+        "Declaration": "- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "NSMethodSignature",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571960-methodsignatureforselector?language=objc"
+      },
+      {
+        "Name": "performSelector:withObject:afterDelay:",
+        "Description": "Invokes a method of the receiver on the current thread using the default mode after a delay.",
+        "Declaration": "- (void)performSelector:(SEL)aSelector \n             withObject:(id)anArgument \n             afterDelay:(NSTimeInterval)delay;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "anArgument",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "delay",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416176-performselector?language=objc"
+      },
+      {
+        "Name": "performSelector:withObject:afterDelay:inModes:",
+        "Description": "Invokes a method of the receiver on the current thread using the specified modes after a delay.",
+        "Declaration": "- (void)performSelector:(SEL)aSelector \n             withObject:(id)anArgument \n             afterDelay:(NSTimeInterval)delay \n                inModes:(NSArray\u003cNSRunLoopMode\u003e *)modes;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "anArgument",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "delay",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "modes",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSRunLoopMode"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415652-performselector?language=objc"
+      },
+      {
+        "Name": "performSelectorOnMainThread:withObject:waitUntilDone:",
+        "Description": "Invokes a method of the receiver on the main thread using the default mode.",
+        "Declaration": "- (void)performSelectorOnMainThread:(SEL)aSelector \n                         withObject:(id)arg \n                      waitUntilDone:(BOOL)wait;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "arg",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "wait",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1414900-performselectoronmainthread?language=objc"
+      },
+      {
+        "Name": "performSelectorOnMainThread:withObject:waitUntilDone:modes:",
+        "Description": "Invokes a method of the receiver on the main thread using the specified modes.",
+        "Declaration": "- (void)performSelectorOnMainThread:(SEL)aSelector \n                         withObject:(id)arg \n                      waitUntilDone:(BOOL)wait \n                              modes:(NSArray\u003cNSString *\u003e *)array;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "arg",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "wait",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411637-performselectoronmainthread?language=objc"
+      },
+      {
+        "Name": "performSelector:onThread:withObject:waitUntilDone:",
+        "Description": "Invokes a method of the receiver on the specified thread using the default mode.",
+        "Declaration": "- (void)performSelector:(SEL)aSelector \n               onThread:(NSThread *)thr \n             withObject:(id)arg \n          waitUntilDone:(BOOL)wait;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "thr",
+            "Type": {
+              "Name": "NSThread",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "arg",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "wait",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1414476-performselector?language=objc"
+      },
+      {
+        "Name": "performSelector:onThread:withObject:waitUntilDone:modes:",
+        "Description": "Invokes a method of the receiver on the specified thread using the specified modes.",
+        "Declaration": "- (void)performSelector:(SEL)aSelector \n               onThread:(NSThread *)thr \n             withObject:(id)arg \n          waitUntilDone:(BOOL)wait \n                  modes:(NSArray\u003cNSString *\u003e *)array;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "thr",
+            "Type": {
+              "Name": "NSThread",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "arg",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "wait",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417922-performselector?language=objc"
+      },
+      {
+        "Name": "performSelectorInBackground:withObject:",
+        "Description": "Invokes a method of the receiver on a new background thread.",
+        "Declaration": "- (void)performSelectorInBackground:(SEL)aSelector \n                         withObject:(id)arg;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "arg",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1412390-performselectorinbackground?language=objc"
+      },
+      {
+        "Name": "forwardingTargetForSelector:",
+        "Description": "Returns the object to which unrecognized messages should first be directed.",
+        "Declaration": "- (id)forwardingTargetForSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418855-forwardingtargetforselector?language=objc"
+      },
+      {
+        "Name": "forwardInvocation:",
+        "Description": "Overridden by subclasses to forward messages to other objects.",
+        "Declaration": "- (void)forwardInvocation:(NSInvocation *)anInvocation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "anInvocation",
+            "Type": {
+              "Name": "NSInvocation",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571955-forwardinvocation?language=objc"
+      },
+      {
+        "Name": "doesNotRecognizeSelector:",
+        "Description": "Handles messages the receiver doesn’t recognize.",
+        "Declaration": "- (void)doesNotRecognizeSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418637-doesnotrecognizeselector?language=objc"
+      },
+      {
+        "Name": "awakeAfterUsingCoder:",
+        "Description": "Overridden by subclasses to substitute another object in place of the object that was decoded and subsequently received this message.",
+        "Declaration": "- (id)awakeAfterUsingCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417074-awakeafterusingcoder?language=objc"
+      },
+      {
+        "Name": "replacementObjectForArchiver:",
+        "Description": "Overridden by subclasses to substitute another object for itself during archiving.",
+        "Declaration": "- (id)replacementObjectForArchiver:(NSArchiver *)archiver;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "archiver",
+            "Type": {
+              "Name": "NSArchiver",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1409971-replacementobjectforarchiver?language=objc"
+      },
+      {
+        "Name": "replacementObjectForCoder:",
+        "Description": "Overridden by subclasses to substitute another object for itself during encoding.",
+        "Declaration": "- (id)replacementObjectForCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416843-replacementobjectforcoder?language=objc"
+      },
+      {
+        "Name": "replacementObjectForKeyedArchiver:",
+        "Description": "Overridden by subclasses to substitute another object for itself during keyed archiving.",
+        "Declaration": "- (id)replacementObjectForKeyedArchiver:(NSKeyedArchiver *)archiver;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "archiver",
+            "Type": {
+              "Name": "NSKeyedArchiver",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417663-replacementobjectforkeyedarchive?language=objc"
+      },
+      {
+        "Name": "inverseForRelationshipKey:",
+        "Description": "For a given key that defines the name of the relationship from the receiver’s class to another class, returns the name of the relationship from the other class to the receiver’s class.",
+        "Declaration": "- (NSString *)inverseForRelationshipKey:(NSString *)relationshipKey;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "relationshipKey",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411046-inverseforrelationshipkey?language=objc"
+      },
+      {
+        "Name": "copyScriptingValue:forKey:withProperties:",
+        "Description": "Creates and returns one or more scripting objects to be inserted into the specified relationship by copying the passed-in value and setting the properties in the copied object or objects.",
+        "Declaration": "- (id)copyScriptingValue:(id)value \n                  forKey:(NSString *)key \n          withProperties:(NSDictionary\u003cNSString *,id\u003e *)properties;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "properties",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1410291-copyscriptingvalue?language=objc"
+      },
+      {
+        "Name": "newScriptingObjectOfClass:forValueForKey:withContentsValue:properties:",
+        "Description": "Creates and returns an instance of a scriptable class, setting its contents and properties, for insertion into the relationship identified by the key.",
+        "Declaration": "- (id)newScriptingObjectOfClass:(Class)objectClass \n                 forValueForKey:(NSString *)key \n              withContentsValue:(id)contentsValue \n                     properties:(NSDictionary\u003cNSString *,id\u003e *)properties;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "objectClass",
+            "Type": {
+              "Name": "Class"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "contentsValue",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "properties",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418458-newscriptingobjectofclass?language=objc"
+      },
+      {
+        "Name": "scriptingValueForSpecifier:",
+        "Description": "Given an object specifier, returns the specified object or objects in the receiving container.",
+        "Declaration": "- (id)scriptingValueForSpecifier:(NSScriptObjectSpecifier *)objectSpecifier;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "objectSpecifier",
+            "Type": {
+              "Name": "NSScriptObjectSpecifier",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1409268-scriptingvalueforspecifier?language=objc"
+      },
+      {
+        "Name": "acceptsPreviewPanelControl:",
+        "Description": "",
+        "Declaration": "- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "panel",
+            "Type": {
+              "Name": "QLPreviewPanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504653-acceptspreviewpanelcontrol?language=objc"
+      },
+      {
+        "Name": "accessibilityZoomInAtPoint:",
+        "Description": "",
+        "Declaration": "- (BOOL)accessibilityZoomInAtPoint:(CGPoint)point;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161994-accessibilityzoominatpoint?language=objc"
+      },
+      {
+        "Name": "accessibilityZoomOutAtPoint:",
+        "Description": "",
+        "Declaration": "- (BOOL)accessibilityZoomOutAtPoint:(CGPoint)point;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "CGPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161995-accessibilityzoomoutatpoint?language=objc"
+      },
+      {
+        "Name": "actionProperty",
+        "Description": "Sent to the delegate to request the property the action applies to.",
+        "Declaration": "- (NSString *)actionProperty;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411302-actionproperty?language=objc"
+      },
+      {
+        "Name": "attemptRecoveryFromError:optionIndex:",
+        "Description": "Implemented to attempt a recovery from an error noted in an application-modal dialog.",
+        "Declaration": "- (BOOL)attemptRecoveryFromError:(NSError *)error \n                     optionIndex:(NSUInteger)recoveryOptionIndex;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "recoveryOptionIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416402-attemptrecoveryfromerror?language=objc"
+      },
+      {
+        "Name": "attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo:",
+        "Description": "Implemented to attempt a recovery from an error noted in a document-modal sheet.",
+        "Declaration": "- (void)attemptRecoveryFromError:(NSError *)error \n                     optionIndex:(NSUInteger)recoveryOptionIndex \n                        delegate:(id)delegate \n              didRecoverSelector:(SEL)didRecoverSelector \n                     contextInfo:(void *)contextInfo;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "recoveryOptionIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "delegate",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "didRecoverSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "contextInfo",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411071-attemptrecoveryfromerror?language=objc"
+      },
+      {
+        "Name": "authorizationViewCreatedAuthorization:",
+        "Description": "Sent to the delegate to indicate the authorization object has been created or changed. If you have saved a copy of the authorization object for your own purposes, you should discard it and call authorization for a new authorization object.",
+        "Declaration": "- (void)authorizationViewCreatedAuthorization:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411010-authorizationviewcreatedauthoriz?language=objc"
+      },
+      {
+        "Name": "authorizationViewDidAuthorize:",
+        "Description": "Sent to the delegate to indicate the user was authorized and the authorization view was changed to unlocked.",
+        "Declaration": "- (void)authorizationViewDidAuthorize:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411002-authorizationviewdidauthorize?language=objc"
+      },
+      {
+        "Name": "authorizationViewDidDeauthorize:",
+        "Description": "Sent to the delegate to indicate the user was deauthorized and the authorization view was changed to locked.",
+        "Declaration": "- (void)authorizationViewDidDeauthorize:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411017-authorizationviewdiddeauthorize?language=objc"
+      },
+      {
+        "Name": "authorizationViewDidHide:",
+        "Description": "Sent to the delegate to indicate that the view’s visibility has changed.",
+        "Declaration": "- (void)authorizationViewDidHide:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411034-authorizationviewdidhide?language=objc"
+      },
+      {
+        "Name": "authorizationViewReleasedAuthorization:",
+        "Description": "Sent to the delegate to indicate that deauthorization is about to occur.",
+        "Declaration": "- (void)authorizationViewReleasedAuthorization:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1410992-authorizationviewreleasedauthori?language=objc"
+      },
+      {
+        "Name": "authorizationViewShouldDeauthorize:",
+        "Description": "Sent to the delegate when a user clicks the open lock icon.",
+        "Declaration": "- (BOOL)authorizationViewShouldDeauthorize:(SFAuthorizationView *)view;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "SFAuthorizationView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411006-authorizationviewshoulddeauthori?language=objc"
+      },
+      {
+        "Name": "awakeFromNib",
+        "Description": "Prepares the receiver for service after it has been loaded from an Interface Builder archive, or nib file.",
+        "Declaration": "- (void)awakeFromNib;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1402907-awakefromnib?language=objc"
+      },
+      {
+        "Name": "beginPreviewPanelControl:",
+        "Description": "",
+        "Declaration": "- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "panel",
+            "Type": {
+              "Name": "QLPreviewPanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504204-beginpreviewpanelcontrol?language=objc"
+      },
+      {
+        "Name": "candidates:",
+        "Description": "Returns an array of candidates.",
+        "Declaration": "- (NSArray *)candidates:(id)sender;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385360-candidates?language=objc"
+      },
+      {
+        "Name": "certificatePanelShowHelp:",
+        "Description": "Implements custom help behavior for the modal panel.",
+        "Declaration": "- (BOOL)certificatePanelShowHelp:(SFCertificatePanel *)sender;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "SFCertificatePanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1514145-certificatepanelshowhelp?language=objc"
+      },
+      {
+        "Name": "chooseIdentityPanelShowHelp:",
+        "Description": "Implements custom help behavior for the modal panel.",
+        "Declaration": "- (BOOL)chooseIdentityPanelShowHelp:(SFChooseIdentityPanel *)sender;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "SFChooseIdentityPanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1514140-chooseidentitypanelshowhelp?language=objc"
+      },
+      {
+        "Name": "commitComposition:",
+        "Description": "Informs the controller that the composition should be committed.",
+        "Declaration": "- (void)commitComposition:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385539-commitcomposition?language=objc"
+      },
+      {
+        "Name": "composedString:",
+        "Description": "Return the current composed string.",
+        "Declaration": "- (id)composedString:(id)sender;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385416-composedstring?language=objc"
+      },
+      {
+        "Name": "compositionParameterView:didChangeParameterWithKey:",
+        "Description": "Called after an input parameter in the composition parameter view has been edited.",
+        "Declaration": "- (void)compositionParameterView:(QCCompositionParameterView *)parameterView \n       didChangeParameterWithKey:(NSString *)portKey;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "parameterView",
+            "Type": {
+              "Name": "QCCompositionParameterView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "portKey",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1505265-compositionparameterview?language=objc"
+      },
+      {
+        "Name": "compositionParameterView:shouldDisplayParameterWithKey:attributes:",
+        "Description": "Allows you to define which composition parameters are visible in the user interface when the composition parameter view refreshes.",
+        "Declaration": "- (BOOL)compositionParameterView:(QCCompositionParameterView *)parameterView \n   shouldDisplayParameterWithKey:(NSString *)portKey \n                      attributes:(NSDictionary *)portAttributes;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "parameterView",
+            "Type": {
+              "Name": "QCCompositionParameterView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "portKey",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "portAttributes",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503523-compositionparameterview?language=objc"
+      },
+      {
+        "Name": "compositionPickerView:didSelectComposition:",
+        "Description": "Performs custom tasks when the selected composition in the composition picker view changes.",
+        "Declaration": "- (void)compositionPickerView:(QCCompositionPickerView *)pickerView \n         didSelectComposition:(QCComposition *)composition;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pickerView",
+            "Type": {
+              "Name": "QCCompositionPickerView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "composition",
+            "Type": {
+              "Name": "QCComposition",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1447352-compositionpickerview?language=objc"
+      },
+      {
+        "Name": "compositionPickerViewDidStartAnimating:",
+        "Description": "Performs custom tasks when the composition picker view starts animating a composition.",
+        "Declaration": "- (void)compositionPickerViewDidStartAnimating:(QCCompositionPickerView *)pickerView;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pickerView",
+            "Type": {
+              "Name": "QCCompositionPickerView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1447342-compositionpickerviewdidstartani?language=objc"
+      },
+      {
+        "Name": "compositionPickerViewWillStopAnimating:",
+        "Description": "Performs custom tasks when the composition picker view stops animating a composition.",
+        "Declaration": "- (void)compositionPickerViewWillStopAnimating:(QCCompositionPickerView *)pickerView;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "pickerView",
+            "Type": {
+              "Name": "QCCompositionPickerView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1447348-compositionpickerviewwillstopani?language=objc"
+      },
+      {
+        "Name": "didCommandBySelector:client:",
+        "Description": "Processes a command generated by user action such as typing certain keys or pressing the mouse button.",
+        "Declaration": "- (BOOL)didCommandBySelector:(SEL)aSelector \n                      client:(id)sender;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385394-didcommandbyselector?language=objc"
+      },
+      {
+        "Name": "doesContain:",
+        "Description": "Returns a Boolean value that indicates whether the receiver contains a given object.",
+        "Declaration": "- (BOOL)doesContain:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393848-doescontain?language=objc"
+      },
+      {
+        "Name": "endPreviewPanelControl:",
+        "Description": "",
+        "Declaration": "- (void)endPreviewPanelControl:(QLPreviewPanel *)panel;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "panel",
+            "Type": {
+              "Name": "QLPreviewPanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1505044-endpreviewpanelcontrol?language=objc"
+      },
+      {
+        "Name": "exceptionHandler:shouldHandleException:mask:",
+        "Description": "Implemented by the delegate to evaluate whether the delegating NSExceptionHandler instance should handle a given exception.",
+        "Declaration": "- (BOOL)exceptionHandler:(NSExceptionHandler *)sender \n   shouldHandleException:(NSException *)exception \n                    mask:(NSUInteger)aMask;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSExceptionHandler",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "exception",
+            "Type": {
+              "Name": "NSException",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "aMask",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1489854-exceptionhandler?language=objc"
+      },
+      {
+        "Name": "exceptionHandler:shouldLogException:mask:",
+        "Description": "Implemented by the delegate to evaluate whether the delegating NSExceptionHandler instance should log a given exception.",
+        "Declaration": "- (BOOL)exceptionHandler:(NSExceptionHandler *)sender \n      shouldLogException:(NSException *)exception \n                    mask:(NSUInteger)aMask;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSExceptionHandler",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "exception",
+            "Type": {
+              "Name": "NSException",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "aMask",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1489856-exceptionhandler?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesAbortComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesAbortComplete:(OBEXFileTransferServices *)inServices \n                                    error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1430046-filetransferservicesabortcomplet?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesConnectionComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesConnectionComplete:(OBEXFileTransferServices *)inServices \n                                         error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1428872-filetransferservicesconnectionco?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesCopyRemoteFileComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesCopyRemoteFileComplete:(OBEXFileTransferServices *)inServices \n                                             error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1432094-filetransferservicescopyremotefi?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesCopyRemoteFileProgress:transferProgress:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesCopyRemoteFileProgress:(OBEXFileTransferServices *)inServices \n                                  transferProgress:(NSDictionary *)inProgressDescription;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inProgressDescription",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1431422-filetransferservicescopyremotefi?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesCreateFolderComplete:error:folder:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesCreateFolderComplete:(OBEXFileTransferServices *)inServices \n                                           error:(OBEXError)inError \n                                          folder:(NSString *)inFolderName;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          },
+          {
+            "Name": "inFolderName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1430913-filetransferservicescreatefolder?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesDisconnectionComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesDisconnectionComplete:(OBEXFileTransferServices *)inServices \n                                            error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1434806-filetransferservicesdisconnectio?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesFilePreparationComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesFilePreparationComplete:(OBEXFileTransferServices *)inServices \n                                              error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1432086-filetransferservicesfilepreparat?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesPathChangeComplete:error:finalPath:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesPathChangeComplete:(OBEXFileTransferServices *)inServices \n                                         error:(OBEXError)inError \n                                     finalPath:(NSString *)inPath;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          },
+          {
+            "Name": "inPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1432583-filetransferservicespathchangeco?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesRemoveItemComplete:error:removedItem:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesRemoveItemComplete:(OBEXFileTransferServices *)inServices \n                                         error:(OBEXError)inError \n                                   removedItem:(NSString *)inItemName;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          },
+          {
+            "Name": "inItemName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1434702-filetransferservicesremoveitemco?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesRetrieveFolderListingComplete:error:listing:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesRetrieveFolderListingComplete:(OBEXFileTransferServices *)inServices \n                                                    error:(OBEXError)inError \n                                                  listing:(NSArray *)inListing;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          },
+          {
+            "Name": "inListing",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1434777-filetransferservicesretrievefold?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesSendFileComplete:error:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesSendFileComplete:(OBEXFileTransferServices *)inServices \n                                       error:(OBEXError)inError;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inError",
+            "Type": {
+              "Name": "OBEXError"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1434240-filetransferservicessendfilecomp?language=objc"
+      },
+      {
+        "Name": "fileTransferServicesSendFileProgress:transferProgress:",
+        "Description": "",
+        "Declaration": "- (void)fileTransferServicesSendFileProgress:(OBEXFileTransferServices *)inServices \n                            transferProgress:(NSDictionary *)inProgressDescription;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "inServices",
+            "Type": {
+              "Name": "OBEXFileTransferServices",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "inProgressDescription",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1430365-filetransferservicessendfileprog?language=objc"
+      },
+      {
+        "Name": "handleEvent:client:",
+        "Description": "Handles key down and mouse events.",
+        "Declaration": "- (BOOL)handleEvent:(NSEvent *)event \n             client:(id)sender;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385363-handleevent?language=objc"
+      },
+      {
+        "Name": "imageBrowser:backgroundWasRightClickedWithEvent:",
+        "Description": "Performs custom tasks when the user right-clicks the image browser view background.",
+        "Declaration": "- (void)imageBrowser:(IKImageBrowserView *)aBrowser \nbackgroundWasRightClickedWithEvent:(NSEvent *)event;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503526-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:cellWasDoubleClickedAtIndex:",
+        "Description": "Performs custom tasks when the user double-clicks an item in the image browser view.",
+        "Declaration": "- (void)imageBrowser:(IKImageBrowserView *)aBrowser \ncellWasDoubleClickedAtIndex:(NSUInteger)index;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504701-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:cellWasRightClickedAtIndex:withEvent:",
+        "Description": "Performs custom tasks when the user right-clicks an item in the image browser view.",
+        "Declaration": "- (void)imageBrowser:(IKImageBrowserView *)aBrowser \ncellWasRightClickedAtIndex:(NSUInteger)index \n           withEvent:(NSEvent *)event;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503802-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:groupAtIndex:",
+        "Description": "Returns the group at the specified index.",
+        "Declaration": "- (NSDictionary *)imageBrowser:(IKImageBrowserView *)aBrowser \n                  groupAtIndex:(NSUInteger)index;\n",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503488-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:itemAtIndex:",
+        "Description": "Returns an object for the item in an image browser view that corresponds to the specified index.",
+        "Declaration": "- (id)imageBrowser:(IKImageBrowserView *)aBrowser \n       itemAtIndex:(NSUInteger)index;\n",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504064-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:moveItemsAtIndexes:toIndex:",
+        "Description": "Signals that the specified items should be moved to the specified destination.",
+        "Declaration": "- (BOOL)imageBrowser:(IKImageBrowserView *)aBrowser \n  moveItemsAtIndexes:(NSIndexSet *)indexes \n             toIndex:(NSUInteger)destinationIndex;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "destinationIndex",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503616-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:removeItemsAtIndexes:",
+        "Description": "Signals that a remove operation should be applied to the specified items.",
+        "Declaration": "- (void)imageBrowser:(IKImageBrowserView *)aBrowser \nremoveItemsAtIndexes:(NSIndexSet *)indexes;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "indexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503834-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowser:writeItemsAtIndexes:toPasteboard:",
+        "Description": "Signals that a drag should begin.",
+        "Declaration": "- (NSUInteger)imageBrowser:(IKImageBrowserView *)aBrowser \n       writeItemsAtIndexes:(NSIndexSet *)itemIndexes \n              toPasteboard:(NSPasteboard *)pasteboard;\n",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "itemIndexes",
+            "Type": {
+              "Name": "NSIndexSet",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "pasteboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504208-imagebrowser?language=objc"
+      },
+      {
+        "Name": "imageBrowserSelectionDidChange:",
+        "Description": "Performs custom tasks when the selection changes.",
+        "Declaration": "- (void)imageBrowserSelectionDidChange:(IKImageBrowserView *)aBrowser;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503765-imagebrowserselectiondidchange?language=objc"
+      },
+      {
+        "Name": "imageRepresentation",
+        "Description": "Returns the image to display.",
+        "Declaration": "- (id)imageRepresentation;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504801-imagerepresentation?language=objc"
+      },
+      {
+        "Name": "imageRepresentationType",
+        "Description": "Returns the representation type of the image to display.",
+        "Declaration": "- (NSString *)imageRepresentationType;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503547-imagerepresentationtype?language=objc"
+      },
+      {
+        "Name": "imageSubtitle",
+        "Description": "Returns the display subtitle of the image.",
+        "Declaration": "- (NSString *)imageSubtitle;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503725-imagesubtitle?language=objc"
+      },
+      {
+        "Name": "imageTitle",
+        "Description": "Returns the display title of the image.",
+        "Declaration": "- (NSString *)imageTitle;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504080-imagetitle?language=objc"
+      },
+      {
+        "Name": "imageUID",
+        "Description": "Returns a unique string that identifies the data source item.",
+        "Declaration": "- (NSString *)imageUID;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503516-imageuid?language=objc"
+      },
+      {
+        "Name": "imageVersion",
+        "Description": "Returns the version of the item.",
+        "Declaration": "- (NSUInteger)imageVersion;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504444-imageversion?language=objc"
+      },
+      {
+        "Name": "indicesOfObjectsByEvaluatingObjectSpecifier:",
+        "Description": "Returns the indices of the specified container objects.",
+        "Declaration": "- (NSArray\u003cNSNumber *\u003e *)indicesOfObjectsByEvaluatingObjectSpecifier:(NSScriptObjectSpecifier *)specifier;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSNumber",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "specifier",
+            "Type": {
+              "Name": "NSScriptObjectSpecifier",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417806-indicesofobjectsbyevaluatingobje?language=objc"
+      },
+      {
+        "Name": "inputText:client:",
+        "Description": "Handles key down events that do not map to an action method.",
+        "Declaration": "- (BOOL)inputText:(NSString *)string \n           client:(id)sender;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385446-inputtext?language=objc"
+      },
+      {
+        "Name": "inputText:key:modifiers:client:",
+        "Description": "Receives Unicode, the key code that generated it, and any modifier flags.",
+        "Declaration": "- (BOOL)inputText:(NSString *)string \n              key:(NSInteger)keyCode \n        modifiers:(NSUInteger)flags \n           client:(id)sender;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "keyCode",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "flags",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385436-inputtext?language=objc"
+      },
+      {
+        "Name": "isCaseInsensitiveLike:",
+        "Description": "Returns a Boolean value that indicates whether receiver is considered to be “like” a given string when the case of characters in the receiver is ignored.",
+        "Declaration": "- (BOOL)isCaseInsensitiveLike:(NSString *)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393837-iscaseinsensitivelike?language=objc"
+      },
+      {
+        "Name": "isEqualTo:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is equal to another given object.",
+        "Declaration": "- (BOOL)isEqualTo:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393823-isequalto?language=objc"
+      },
+      {
+        "Name": "isGreaterThan:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is greater than another given object.",
+        "Declaration": "- (BOOL)isGreaterThan:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393885-isgreaterthan?language=objc"
+      },
+      {
+        "Name": "isGreaterThanOrEqualTo:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is greater than or equal to another given object.",
+        "Declaration": "- (BOOL)isGreaterThanOrEqualTo:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393862-isgreaterthanorequalto?language=objc"
+      },
+      {
+        "Name": "isLessThan:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is less than another given object.",
+        "Declaration": "- (BOOL)isLessThan:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393841-islessthan?language=objc"
+      },
+      {
+        "Name": "isLessThanOrEqualTo:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is less than or equal to another given object.",
+        "Declaration": "- (BOOL)isLessThanOrEqualTo:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393827-islessthanorequalto?language=objc"
+      },
+      {
+        "Name": "isLike:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is \"like\" another given object.",
+        "Declaration": "- (BOOL)isLike:(NSString *)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393866-islike?language=objc"
+      },
+      {
+        "Name": "isNotEqualTo:",
+        "Description": "Returns a Boolean value that indicates whether the receiver is not equal to another given object.",
+        "Declaration": "- (BOOL)isNotEqualTo:(id)object;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "object",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1393843-isnotequalto?language=objc"
+      },
+      {
+        "Name": "numberOfGroupsInImageBrowser:",
+        "Description": "Returns the number of groups in an image browser view.",
+        "Declaration": "- (NSUInteger)numberOfGroupsInImageBrowser:(IKImageBrowserView *)aBrowser;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503514-numberofgroupsinimagebrowser?language=objc"
+      },
+      {
+        "Name": "numberOfItemsInImageBrowser:",
+        "Description": "Returns the number of records managed by the data source object.",
+        "Declaration": "- (NSUInteger)numberOfItemsInImageBrowser:(IKImageBrowserView *)aBrowser;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": [
+          {
+            "Name": "aBrowser",
+            "Type": {
+              "Name": "IKImageBrowserView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503497-numberofitemsinimagebrowser?language=objc"
+      },
+      {
+        "Name": "originalString:",
+        "Description": "Return the string that consists of the precomposed Unicode characters.",
+        "Declaration": "- (NSAttributedString *)originalString:(id)sender;",
+        "Return": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1385400-originalstring?language=objc"
+      },
+      {
+        "Name": "performActionForPerson:identifier:",
+        "Description": "Sent to the delegate to perform the action.",
+        "Declaration": "- (void)performActionForPerson:(ABPerson *)person \n                    identifier:(NSString *)identifier;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "person",
+            "Type": {
+              "Name": "ABPerson",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411298-performactionforperson?language=objc"
+      },
+      {
+        "Name": "prepareForInterfaceBuilder",
+        "Description": "Called when a designable object is created in Interface Builder.",
+        "Declaration": "- (void)prepareForInterfaceBuilder;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1402908-prepareforinterfacebuilder?language=objc"
+      },
+      {
+        "Name": "provideImageData:bytesPerRow:origin:",
+        "Description": "Supplies data to a CIImage object.",
+        "Declaration": "- (void)provideImageData:(void *)data \n             bytesPerRow:(size_t)rowbytes \n                  origin:(size_t)x \n                        :(size_t)y \n                    size:(size_t)width \n                        :(size_t)height \n                userInfo:(id)info;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "rowbytes",
+            "Type": {
+              "Name": "size_t"
+            }
+          },
+          {
+            "Name": "x",
+            "Type": {
+              "Name": "size_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1438175-provideimagedata?language=objc"
+      },
+      {
+        "Name": "quartzFilterManager:didAddFilter:",
+        "Description": "",
+        "Declaration": "- (void)quartzFilterManager:(QuartzFilterManager *)sender \n               didAddFilter:(QuartzFilter *)filter;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "QuartzFilterManager",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "filter",
+            "Type": {
+              "Name": "QuartzFilter",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1504951-quartzfiltermanager?language=objc"
+      },
+      {
+        "Name": "quartzFilterManager:didModifyFilter:",
+        "Description": "",
+        "Declaration": "- (void)quartzFilterManager:(QuartzFilterManager *)sender \n            didModifyFilter:(QuartzFilter *)filter;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "QuartzFilterManager",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "filter",
+            "Type": {
+              "Name": "QuartzFilter",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503494-quartzfiltermanager?language=objc"
+      },
+      {
+        "Name": "quartzFilterManager:didRemoveFilter:",
+        "Description": "",
+        "Declaration": "- (void)quartzFilterManager:(QuartzFilterManager *)sender \n            didRemoveFilter:(QuartzFilter *)filter;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "QuartzFilterManager",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "filter",
+            "Type": {
+              "Name": "QuartzFilter",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503483-quartzfiltermanager?language=objc"
+      },
+      {
+        "Name": "quartzFilterManager:didSelectFilter:",
+        "Description": "",
+        "Declaration": "- (void)quartzFilterManager:(QuartzFilterManager *)sender \n            didSelectFilter:(QuartzFilter *)filter;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "QuartzFilterManager",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "filter",
+            "Type": {
+              "Name": "QuartzFilter",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503484-quartzfiltermanager?language=objc"
+      },
+      {
+        "Name": "readLinkQualityForDeviceComplete:device:info:error:",
+        "Description": "",
+        "Declaration": "- (void)readLinkQualityForDeviceComplete:(id)controller \n                                  device:(IOBluetoothDevice *)device \n                                    info:(BluetoothHCILinkQualityInfo *)info \n                                   error:(IOReturn)error;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "controller",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "device",
+            "Type": {
+              "Name": "IOBluetoothDevice",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "info",
+            "Type": {
+              "Name": "BluetoothHCILinkQualityInfo",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "IOReturn"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1430075-readlinkqualityfordevicecomplete?language=objc"
+      },
+      {
+        "Name": "readRSSIForDeviceComplete:device:info:error:",
+        "Description": "",
+        "Declaration": "- (void)readRSSIForDeviceComplete:(id)controller \n                           device:(IOBluetoothDevice *)device \n                             info:(BluetoothHCIRSSIInfo *)info \n                            error:(IOReturn)error;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "controller",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "device",
+            "Type": {
+              "Name": "IOBluetoothDevice",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "info",
+            "Type": {
+              "Name": "BluetoothHCIRSSIInfo",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "IOReturn"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1428399-readrssifordevicecomplete?language=objc"
+      },
+      {
+        "Name": "saveOptions:shouldShowUTType:",
+        "Description": "Called to determine if the specified uniform type identifier should be shown in the save panel.",
+        "Declaration": "- (BOOL)saveOptions:(IKSaveOptions *)saveOptions \n   shouldShowUTType:(NSString *)utType;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "saveOptions",
+            "Type": {
+              "Name": "IKSaveOptions",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "utType",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1503501-saveoptions?language=objc"
+      },
+      {
+        "Name": "shouldEnableActionForPerson:identifier:",
+        "Description": "Sent to the delegate to determine whether the action should be enabled.",
+        "Declaration": "- (BOOL)shouldEnableActionForPerson:(ABPerson *)person \n                         identifier:(NSString *)identifier;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "person",
+            "Type": {
+              "Name": "ABPerson",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411300-shouldenableactionforperson?language=objc"
+      },
+      {
+        "Name": "titleForPerson:identifier:",
+        "Description": "Sent to the delegate to request the title of the menu item for the action.",
+        "Declaration": "- (NSString *)titleForPerson:(ABPerson *)person \n                  identifier:(NSString *)identifier;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "person",
+            "Type": {
+              "Name": "ABPerson",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411304-titleforperson?language=objc"
+      },
+      {
+        "Name": "URL:resourceDataDidBecomeAvailable:",
+        "Description": "",
+        "Declaration": "- (void)URL:(NSURL *)sender \nresourceDataDidBecomeAvailable:(NSData *)newBytes;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "newBytes",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1572039-url?language=objc"
+      },
+      {
+        "Name": "URL:resourceDidFailLoadingWithReason:",
+        "Description": "",
+        "Declaration": "- (void)URL:(NSURL *)sender \nresourceDidFailLoadingWithReason:(NSString *)reason;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "reason",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1572040-url?language=objc"
+      },
+      {
+        "Name": "URLResourceDidCancelLoading:",
+        "Description": "",
+        "Declaration": "- (void)URLResourceDidCancelLoading:(NSURL *)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1572048-urlresourcedidcancelloading?language=objc"
+      },
+      {
+        "Name": "URLResourceDidFinishLoading:",
+        "Description": "",
+        "Declaration": "- (void)URLResourceDidFinishLoading:(NSURL *)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1572036-urlresourcedidfinishloading?language=objc"
+      },
+      {
+        "Name": "application:delegateHandlesKey:",
+        "Description": "Sent by Cocoa’s built-in scripting support during execution of get or set script commands to find out if the delegate can handle operations on the specified key-value key.",
+        "Declaration": "- (BOOL)application:(NSApplication *)sender \n delegateHandlesKey:(NSString *)key;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSApplication",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1494285-application?language=objc"
+      },
+      {
+        "Name": "changeColor:",
+        "Description": "Sent to the first responder when the user selects a color in an NSColorPanel object.",
+        "Declaration": "- (void)changeColor:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1532638-changecolor?language=objc"
+      },
+      {
+        "Name": "changeFont:",
+        "Description": "Informs responders of a font change.",
+        "Declaration": "- (void)changeFont:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1462311-changefont?language=objc"
+      },
+      {
+        "Name": "commitEditing",
+        "Description": "Returns whether the receiver was able to commit any pending edits.",
+        "Declaration": "- (BOOL)commitEditing;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458190-commitediting?language=objc"
+      },
+      {
+        "Name": "commitEditingAndReturnError:",
+        "Description": "Attempt to commit pending edits, returning an error in the case of failure.",
+        "Declaration": "- (BOOL)commitEditingAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458181-commiteditingandreturnerror?language=objc"
+      },
+      {
+        "Name": "commitEditingWithDelegate:didCommitSelector:contextInfo:",
+        "Description": "Attempt to commit any currently edited results of the receiver.",
+        "Declaration": "- (void)commitEditingWithDelegate:(id)delegate \n                didCommitSelector:(SEL)didCommitSelector \n                      contextInfo:(void *)contextInfo;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "delegate",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "didCommitSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "contextInfo",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458179-commiteditingwithdelegate?language=objc"
+      },
+      {
+        "Name": "controlTextDidBeginEditing:",
+        "Description": "Sent when a control with editable text begins an editing session.",
+        "Declaration": "- (void)controlTextDidBeginEditing:(NSNotification *)obj;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "obj",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1428934-controltextdidbeginediting?language=objc"
+      },
+      {
+        "Name": "controlTextDidChange:",
+        "Description": "Sent when the text in the receiving control changes.",
+        "Declaration": "- (void)controlTextDidChange:(NSNotification *)obj;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "obj",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1428982-controltextdidchange?language=objc"
+      },
+      {
+        "Name": "controlTextDidEndEditing:",
+        "Description": "Sent when a control with editable text ends an editing session.",
+        "Declaration": "- (void)controlTextDidEndEditing:(NSNotification *)obj;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "obj",
+            "Type": {
+              "Name": "NSNotification",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1428847-controltextdidendediting?language=objc"
+      },
+      {
+        "Name": "discardEditing",
+        "Description": "Causes the receiver to discard any changes, restoring the previous values.",
+        "Declaration": "- (void)discardEditing;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458076-discardediting?language=objc"
+      },
+      {
+        "Name": "draggedImage:beganAt:",
+        "Description": "",
+        "Declaration": "- (void)draggedImage:(NSImage *)image \n             beganAt:(NSPoint)screenPoint;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "screenPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415986-draggedimage?language=objc"
+      },
+      {
+        "Name": "draggedImage:endedAt:deposited:",
+        "Description": "",
+        "Declaration": "- (void)draggedImage:(NSImage *)image \n             endedAt:(NSPoint)screenPoint \n           deposited:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "screenPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416014-draggedimage?language=objc"
+      },
+      {
+        "Name": "draggedImage:endedAt:operation:",
+        "Description": "",
+        "Declaration": "- (void)draggedImage:(NSImage *)image \n             endedAt:(NSPoint)screenPoint \n           operation:(NSDragOperation)operation;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "screenPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "operation",
+            "Type": {
+              "Name": "NSDragOperation"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416054-draggedimage?language=objc"
+      },
+      {
+        "Name": "draggedImage:movedTo:",
+        "Description": "",
+        "Declaration": "- (void)draggedImage:(NSImage *)image \n             movedTo:(NSPoint)screenPoint;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "screenPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416008-draggedimage?language=objc"
+      },
+      {
+        "Name": "draggingSourceOperationMaskForLocal:",
+        "Description": "",
+        "Declaration": "- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)flag;",
+        "Return": {
+          "Name": "NSDragOperation"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415984-draggingsourceoperationmaskforlo?language=objc"
+      },
+      {
+        "Name": "getL2CAPChannelRef",
+        "Description": "",
+        "Declaration": "- (IOBluetoothL2CAPChannelRef)getL2CAPChannelRef;",
+        "Return": {
+          "Name": "IOBluetoothL2CAPChannelRef"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1473892-getl2capchannelref?language=objc"
+      },
+      {
+        "Name": "ignoreModifierKeysWhileDragging",
+        "Description": "",
+        "Declaration": "- (BOOL)ignoreModifierKeysWhileDragging;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416100-ignoremodifierkeyswhiledragging?language=objc"
+      },
+      {
+        "Name": "layer:shouldInheritContentsScale:fromWindow:",
+        "Description": "Invoked when a resolution changes occurs for the window that hosts the layer.",
+        "Declaration": "- (BOOL)layer:(CALayer *)layer \nshouldInheritContentsScale:(CGFloat)newScale \n   fromWindow:(NSWindow *)window;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "layer",
+            "Type": {
+              "Name": "CALayer",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "newScale",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "window",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1483574-layer?language=objc"
+      },
+      {
+        "Name": "objectDidBeginEditing:",
+        "Description": "This message should be sent to the receiver when editor has uncommitted changes that can affect the receiver.",
+        "Declaration": "- (void)objectDidBeginEditing:(id\u003cNSEditor\u003e)editor;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "editor",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSEditor"
+                }
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458092-objectdidbeginediting?language=objc"
+      },
+      {
+        "Name": "objectDidEndEditing:",
+        "Description": "This message should be sent to the receiver when editor has finished editing a property belonging to the receiver.",
+        "Declaration": "- (void)objectDidEndEditing:(id\u003cNSEditor\u003e)editor;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "editor",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSEditor"
+                }
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1458187-objectdidendediting?language=objc"
+      },
+      {
+        "Name": "panel:compareFilename:with:caseSensitive:",
+        "Description": "Controls the ordering of files presented by the NSSavePanel object specified.",
+        "Declaration": "- (NSComparisonResult)panel:(id)sender \n            compareFilename:(NSString *)name1 \n                       with:(NSString *)name2 \n              caseSensitive:(BOOL)caseSensitive;\n",
+        "Return": {
+          "Name": "NSComparisonResult"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "name1",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "name2",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "caseSensitive",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1539083-panel?language=objc"
+      },
+      {
+        "Name": "panel:directoryDidChange:",
+        "Description": "Tells the delegate that the user has changed the selected directory in the NSSavePanel object specified.",
+        "Declaration": "- (void)panel:(id)sender \ndirectoryDidChange:(NSString *)path;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1539080-panel?language=objc"
+      },
+      {
+        "Name": "panel:isValidFilename:",
+        "Description": "Gives the delegate the opportunity to validate selected items.",
+        "Declaration": "- (BOOL)panel:(id)sender \nisValidFilename:(NSString *)filename;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "filename",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1538970-panel?language=objc"
+      },
+      {
+        "Name": "panel:shouldShowFilename:",
+        "Description": "Gives the delegate the opportunity to filter items that it doesn’t want the user to choose.",
+        "Declaration": "- (BOOL)panel:(id)sender \nshouldShowFilename:(NSString *)filename;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "filename",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1539030-panel?language=objc"
+      },
+      {
+        "Name": "pasteboard:provideDataForType:",
+        "Description": "Implemented by an owner object to provide promised data.",
+        "Declaration": "- (void)pasteboard:(NSPasteboard *)sender \nprovideDataForType:(NSPasteboardType)type;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSPasteboardType"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1525907-pasteboard?language=objc"
+      },
+      {
+        "Name": "pasteboardChangedOwner:",
+        "Description": "Notifies a prior owner of the specified pasteboard (and owners of representations on the pasteboard) that the pasteboard has changed owners.",
+        "Declaration": "- (void)pasteboardChangedOwner:(NSPasteboard *)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1532824-pasteboardchangedowner?language=objc"
+      },
+      {
+        "Name": "registerIncomingDataListener:refCon:",
+        "Description": "",
+        "Declaration": "- (IOReturn)registerIncomingDataListener:(IOBluetoothL2CAPChannelIncomingDataListener)listener \n                                  refCon:(void *)refCon;\n",
+        "Return": {
+          "Name": "IOReturn"
+        },
+        "Args": [
+          {
+            "Name": "listener",
+            "Type": {
+              "Name": "IOBluetoothL2CAPChannelIncomingDataListener"
+            }
+          },
+          {
+            "Name": "refCon",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1473896-registerincomingdatalistener?language=objc"
+      },
+      {
+        "Name": "tableView:writeRows:toPasteboard:",
+        "Description": "Writes the specified rows to the specified pasteboard.",
+        "Declaration": "- (BOOL)tableView:(NSTableView *)tableView \n        writeRows:(NSArray *)rows \n     toPasteboard:(NSPasteboard *)pboard;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "tableView",
+            "Type": {
+              "Name": "NSTableView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "rows",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "pboard",
+            "Type": {
+              "Name": "NSPasteboard",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1539424-tableview?language=objc"
+      },
+      {
+        "Name": "validModesForFontPanel:",
+        "Description": "Returns the mode mask corresponding to the expected font panel mode.",
+        "Declaration": "- (NSFontPanelModeMask)validModesForFontPanel:(NSFontPanel *)fontPanel;",
+        "Return": {
+          "Name": "NSFontPanelModeMask"
+        },
+        "Args": [
+          {
+            "Name": "fontPanel",
+            "Type": {
+              "Name": "NSFontPanel",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1534415-validmodesforfontpanel?language=objc"
+      },
+      {
+        "Name": "validateMenuItem:",
+        "Description": "Implemented to override the default action of enabling or disabling a specific menu item.",
+        "Declaration": "- (BOOL)validateMenuItem:(NSMenuItem *)menuItem;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "menuItem",
+            "Type": {
+              "Name": "NSMenuItem",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1518160-validatemenuitem?language=objc"
+      },
+      {
+        "Name": "validateToolbarItem:",
+        "Description": "If this method is implemented and returns NO, NSToolbar will disable theItem; returning YES causes theItem to be enabled.",
+        "Declaration": "- (BOOL)validateToolbarItem:(NSToolbarItem *)item;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "item",
+            "Type": {
+              "Name": "NSToolbarItem",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1524282-validatetoolbaritem?language=objc"
+      },
+      {
+        "Name": "view:stringForToolTip:point:userData:",
+        "Description": "Returns the tool tip string to be displayed due to the cursor pausing at location point within the tool tip rectangle identified by tag in the view view.",
+        "Declaration": "- (NSString *)view:(NSView *)view \n  stringForToolTip:(NSToolTipTag)tag \n             point:(NSPoint)point \n          userData:(void *)data;\n",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "tag",
+            "Type": {
+              "Name": "NSToolTipTag"
+            }
+          },
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1483693-view?language=objc"
+      },
+      {
+        "Name": "write:length:",
+        "Description": "",
+        "Declaration": "- (IOReturn)write:(void *)data \n           length:(UInt16)length;\n",
+        "Return": {
+          "Name": "IOReturn"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "length",
+            "Type": {
+              "Name": "UInt16"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1473874-write?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "autoContentAccessingProxy",
+        "Description": "A proxy for the receiving object",
+        "Declaration": "@property(readonly, retain) id autoContentAccessingProxy;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "readonly": true,
+          "retain": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1409224-autocontentaccessingproxy?language=objc"
+      },
+      {
+        "Name": "classForArchiver",
+        "Description": "The class to substitute for the receiver's own class during archiving.",
+        "Declaration": "@property(readonly) Class classForArchiver;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411359-classforarchiver?language=objc"
+      },
+      {
+        "Name": "classForCoder",
+        "Description": "Overridden by subclasses to substitute a class other than its own during coding.",
+        "Declaration": "@property(readonly) Class classForCoder;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411876-classforcoder?language=objc"
+      },
+      {
+        "Name": "classForKeyedArchiver",
+        "Description": "Subclasses to substitute a new class for instances during keyed archiving.",
+        "Declaration": "@property(readonly) Class classForKeyedArchiver;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1410512-classforkeyedarchiver?language=objc"
+      },
+      {
+        "Name": "classForPortCoder",
+        "Description": "Class to substitute for the receiver in distribution encoding.",
+        "Declaration": "@property(readonly) Class classForPortCoder;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1580076-classforportcoder?language=objc"
+      },
+      {
+        "Name": "attributeKeys",
+        "Description": "An array of NSString objects containing the names of immutable values that instances of the receiver's class contain.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *attributeKeys;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415656-attributekeys?language=objc"
+      },
+      {
+        "Name": "classDescription",
+        "Description": "An object containing information about the attributes and relationships of the receiver’s class.",
+        "Declaration": "@property(readonly, copy) NSClassDescription *classDescription;",
+        "Type": {
+          "Name": "NSClassDescription",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411858-classdescription?language=objc"
+      },
+      {
+        "Name": "toManyRelationshipKeys",
+        "Description": "An array containing the keys for the to-many relationship properties of the receiver.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *toManyRelationshipKeys;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415662-tomanyrelationshipkeys?language=objc"
+      },
+      {
+        "Name": "toOneRelationshipKeys",
+        "Description": "The keys for the to-one relationship properties of the receiver, if any.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSString *\u003e *toOneRelationshipKeys;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1414814-toonerelationshipkeys?language=objc"
+      },
+      {
+        "Name": "classCode",
+        "Description": "The receiver's Apple event type code, as stored in the NSScriptClassDescription object for the object’s class.",
+        "Declaration": "@property(readonly) FourCharCode classCode;",
+        "Type": {
+          "Name": "FourCharCode"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1413991-classcode?language=objc"
+      },
+      {
+        "Name": "className",
+        "Description": "A string containing the name of the class.",
+        "Declaration": "@property(readonly, copy) NSString *className;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411337-classname?language=objc"
+      },
+      {
+        "Name": "scriptingProperties",
+        "Description": "An NSString-keyed dictionary of the receiver's scriptable properties.",
+        "Declaration": "@property(copy) NSDictionary\u003cNSString *,id\u003e *scriptingProperties;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417254-scriptingproperties?language=objc"
+      },
+      {
+        "Name": "accessibilityActivateBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityActivateBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161964-accessibilityactivateblock?language=objc"
+      },
+      {
+        "Name": "accessibilityActivationPointBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXPointReturnBlock accessibilityActivationPointBlock;",
+        "Type": {
+          "Name": "AXPointReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161965-accessibilityactivationpointbloc?language=objc"
+      },
+      {
+        "Name": "accessibilityAttributedHintBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXAttributedStringReturnBlock accessibilityAttributedHintBlock;",
+        "Type": {
+          "Name": "AXAttributedStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161966-accessibilityattributedhintblock?language=objc"
+      },
+      {
+        "Name": "accessibilityAttributedLabelBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXAttributedStringReturnBlock accessibilityAttributedLabelBlock;",
+        "Type": {
+          "Name": "AXAttributedStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161967-accessibilityattributedlabelbloc?language=objc"
+      },
+      {
+        "Name": "accessibilityAttributedUserInputLabelsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXAttributedStringArrayReturnBlock accessibilityAttributedUserInputLabelsBlock;",
+        "Type": {
+          "Name": "AXAttributedStringArrayReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161968-accessibilityattributeduserinput?language=objc"
+      },
+      {
+        "Name": "accessibilityAttributedValueBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXAttributedStringReturnBlock accessibilityAttributedValueBlock;",
+        "Type": {
+          "Name": "AXAttributedStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161969-accessibilityattributedvaluebloc?language=objc"
+      },
+      {
+        "Name": "accessibilityContainerTypeBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXContainerTypeReturnBlock accessibilityContainerTypeBlock;",
+        "Type": {
+          "Name": "AXContainerTypeReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161970-accessibilitycontainertypeblock?language=objc"
+      },
+      {
+        "Name": "accessibilityCustomActionsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXCustomActionsReturnBlock accessibilityCustomActionsBlock;",
+        "Type": {
+          "Name": "AXCustomActionsReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161971-accessibilitycustomactionsblock?language=objc"
+      },
+      {
+        "Name": "accessibilityCustomRotorsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXCustomRotorsReturnBlock accessibilityCustomRotorsBlock;",
+        "Type": {
+          "Name": "AXCustomRotorsReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4162003-accessibilitycustomrotorsblock?language=objc"
+      },
+      {
+        "Name": "accessibilityDecrementBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXVoidReturnBlock accessibilityDecrementBlock;",
+        "Type": {
+          "Name": "AXVoidReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161972-accessibilitydecrementblock?language=objc"
+      },
+      {
+        "Name": "accessibilityElementsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXArrayReturnBlock accessibilityElementsBlock;",
+        "Type": {
+          "Name": "AXArrayReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161974-accessibilityelementsblock?language=objc"
+      },
+      {
+        "Name": "accessibilityElementsHiddenBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityElementsHiddenBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161975-accessibilityelementshiddenblock?language=objc"
+      },
+      {
+        "Name": "accessibilityFrameBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXRectReturnBlock accessibilityFrameBlock;",
+        "Type": {
+          "Name": "AXRectReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161976-accessibilityframeblock?language=objc"
+      },
+      {
+        "Name": "accessibilityHeaderElementsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXArrayReturnBlock accessibilityHeaderElementsBlock;",
+        "Type": {
+          "Name": "AXArrayReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161977-accessibilityheaderelementsblock?language=objc"
+      },
+      {
+        "Name": "accessibilityHintBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringReturnBlock accessibilityHintBlock;",
+        "Type": {
+          "Name": "AXStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161978-accessibilityhintblock?language=objc"
+      },
+      {
+        "Name": "accessibilityIdentifierBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringReturnBlock accessibilityIdentifierBlock;",
+        "Type": {
+          "Name": "AXStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161979-accessibilityidentifierblock?language=objc"
+      },
+      {
+        "Name": "accessibilityIncrementBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXVoidReturnBlock accessibilityIncrementBlock;",
+        "Type": {
+          "Name": "AXVoidReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161980-accessibilityincrementblock?language=objc"
+      },
+      {
+        "Name": "accessibilityLabelBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringReturnBlock accessibilityLabelBlock;",
+        "Type": {
+          "Name": "AXStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161981-accessibilitylabelblock?language=objc"
+      },
+      {
+        "Name": "accessibilityLanguageBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringReturnBlock accessibilityLanguageBlock;",
+        "Type": {
+          "Name": "AXStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161982-accessibilitylanguageblock?language=objc"
+      },
+      {
+        "Name": "accessibilityMagicTapBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityMagicTapBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161983-accessibilitymagictapblock?language=objc"
+      },
+      {
+        "Name": "accessibilityNavigationStyleBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXNavigationStyleReturnBlock accessibilityNavigationStyleBlock;",
+        "Type": {
+          "Name": "AXNavigationStyleReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161984-accessibilitynavigationstylebloc?language=objc"
+      },
+      {
+        "Name": "accessibilityNotifiesWhenDestroyed",
+        "Description": "A Boolean value that indicates whether a custom accessibility object sends a notification when its corresponding UI element is destroyed.",
+        "Declaration": "@property(readonly) BOOL accessibilityNotifiesWhenDestroyed;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1534050-accessibilitynotifieswhendestroy?language=objc"
+      },
+      {
+        "Name": "accessibilityPathBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXPathReturnBlock accessibilityPathBlock;",
+        "Type": {
+          "Name": "AXPathReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161985-accessibilitypathblock?language=objc"
+      },
+      {
+        "Name": "accessibilityPerformEscapeBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityPerformEscapeBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161986-accessibilityperformescapeblock?language=objc"
+      },
+      {
+        "Name": "accessibilityRespondsToUserInteractionBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityRespondsToUserInteractionBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161987-accessibilityrespondstouserinter?language=objc"
+      },
+      {
+        "Name": "accessibilityShouldGroupAccessibilityChildrenBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityShouldGroupAccessibilityChildrenBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161988-accessibilityshouldgroupaccessib?language=objc"
+      },
+      {
+        "Name": "accessibilityTextualContextBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXTextualContextReturnBlock accessibilityTextualContextBlock;",
+        "Type": {
+          "Name": "AXTextualContextReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161989-accessibilitytextualcontextblock?language=objc"
+      },
+      {
+        "Name": "accessibilityTraitsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXTraitsReturnBlock accessibilityTraitsBlock;",
+        "Type": {
+          "Name": "AXTraitsReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161990-accessibilitytraitsblock?language=objc"
+      },
+      {
+        "Name": "accessibilityUserInputLabelsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringArrayReturnBlock accessibilityUserInputLabelsBlock;",
+        "Type": {
+          "Name": "AXStringArrayReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161991-accessibilityuserinputlabelsbloc?language=objc"
+      },
+      {
+        "Name": "accessibilityValueBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXStringReturnBlock accessibilityValueBlock;",
+        "Type": {
+          "Name": "AXStringReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161992-accessibilityvalueblock?language=objc"
+      },
+      {
+        "Name": "accessibilityViewIsModalBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock accessibilityViewIsModalBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161993-accessibilityviewismodalblock?language=objc"
+      },
+      {
+        "Name": "automationElementsBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXArrayReturnBlock automationElementsBlock;",
+        "Type": {
+          "Name": "AXArrayReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4165626-automationelementsblock?language=objc"
+      },
+      {
+        "Name": "isAccessibilityElementBlock",
+        "Description": "",
+        "Declaration": "@property(nullable, nonatomic, copy) AXBoolReturnBlock isAccessibilityElementBlock;",
+        "Type": {
+          "Name": "AXBoolReturnBlock"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/4161996-isaccessibilityelementblock?language=objc"
+      },
+      {
+        "Name": "selectable",
+        "Description": "",
+        "Declaration": "@property(readonly, getter=isSelectable) BOOL selectable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSelectable",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/2369549-selectable?language=objc"
+      },
+      {
+        "Name": "objectSpecifier",
+        "Description": "Returns an object specifier for the receiver.",
+        "Declaration": "@property(nullable, readonly, retain) NSScriptObjectSpecifier *objectSpecifier;",
+        "Type": {
+          "Name": "NSScriptObjectSpecifier",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "retain": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1409884-objectspecifier?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "initialize",
+        "Description": "Initializes the class before it receives its first message.",
+        "Declaration": "+ (void)initialize;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418639-initialize?language=objc"
+      },
+      {
+        "Name": "load",
+        "Description": "Invoked whenever a class or category is added to the Objective-C runtime; implement this method to perform class-specific behavior upon loading.",
+        "Declaration": "+ (void)load;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418815-load?language=objc"
+      },
+      {
+        "Name": "alloc",
+        "Description": "Returns a new instance of the receiving class.",
+        "Declaration": "+ (instancetype)alloc;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571958-alloc?language=objc"
+      },
+      {
+        "Name": "allocWithZone:",
+        "Description": "Returns a new instance of the receiving class.",
+        "Declaration": "+ (instancetype)allocWithZone:(struct _NSZone *)zone;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "zone",
+            "Type": {
+              "Name": "_NSZone",
+              "IsPtr": true,
+              "Annotations": [
+                "struct"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571945-allocwithzone?language=objc"
+      },
+      {
+        "Name": "copyWithZone:",
+        "Description": "Returns the receiver.",
+        "Declaration": "+ (id)copyWithZone:(struct _NSZone *)zone;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "zone",
+            "Type": {
+              "Name": "_NSZone",
+              "IsPtr": true,
+              "Annotations": [
+                "struct"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571953-copywithzone?language=objc"
+      },
+      {
+        "Name": "mutableCopyWithZone:",
+        "Description": "Returns the receiver.",
+        "Declaration": "+ (id)mutableCopyWithZone:(struct _NSZone *)zone;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": [
+          {
+            "Name": "zone",
+            "Type": {
+              "Name": "_NSZone",
+              "IsPtr": true,
+              "Annotations": [
+                "struct"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571956-mutablecopywithzone?language=objc"
+      },
+      {
+        "Name": "new",
+        "Description": "Allocates a new instance of the receiving class, sends it an init message, and returns the initialized object.",
+        "Declaration": "+ (instancetype)new;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571948-new?language=objc"
+      },
+      {
+        "Name": "class",
+        "Description": "Returns the class object.",
+        "Declaration": "+ (Class)class;",
+        "Return": {
+          "Name": "Class"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571950-class?language=objc"
+      },
+      {
+        "Name": "superclass",
+        "Description": "Returns the class object for the receiver’s superclass.",
+        "Declaration": "+ (Class)superclass;",
+        "Return": {
+          "Name": "Class"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418803-superclass?language=objc"
+      },
+      {
+        "Name": "isSubclassOfClass:",
+        "Description": "Returns a Boolean value that indicates whether the receiving class is a subclass of, or identical to, a given class.",
+        "Declaration": "+ (BOOL)isSubclassOfClass:(Class)aClass;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "aClass",
+            "Type": {
+              "Name": "Class"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418669-issubclassofclass?language=objc"
+      },
+      {
+        "Name": "instancesRespondToSelector:",
+        "Description": "Returns a Boolean value that indicates whether instances of the receiver are capable of responding to a given selector.",
+        "Declaration": "+ (BOOL)instancesRespondToSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418555-instancesrespondtoselector?language=objc"
+      },
+      {
+        "Name": "conformsToProtocol:",
+        "Description": "Returns a Boolean value that indicates whether the target conforms to a given protocol.",
+        "Declaration": "+ (BOOL)conformsToProtocol:(Protocol *)protocol;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "protocol",
+            "Type": {
+              "Name": "Protocol",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418893-conformstoprotocol?language=objc"
+      },
+      {
+        "Name": "instanceMethodForSelector:",
+        "Description": "Locates and returns the address of the implementation of the instance method identified by a given selector.",
+        "Declaration": "+ (IMP)instanceMethodForSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "IMP"
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418713-instancemethodforselector?language=objc"
+      },
+      {
+        "Name": "instanceMethodSignatureForSelector:",
+        "Description": "Returns an NSMethodSignature object that contains a description of the instance method identified by a given selector.",
+        "Declaration": "+ (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector;",
+        "Return": {
+          "Name": "NSMethodSignature",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1571959-instancemethodsignatureforselect?language=objc"
+      },
+      {
+        "Name": "description",
+        "Description": "Returns a string that represents the contents of the receiving class.",
+        "Declaration": "+ (NSString *)description;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418799-description?language=objc"
+      },
+      {
+        "Name": "cancelPreviousPerformRequestsWithTarget:",
+        "Description": "Cancels perform requests previously registered with the performSelector:withObject:afterDelay: instance method.",
+        "Declaration": "+ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aTarget",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1417611-cancelpreviousperformrequestswit?language=objc"
+      },
+      {
+        "Name": "cancelPreviousPerformRequestsWithTarget:selector:object:",
+        "Description": "Cancels perform requests previously registered with performSelector:withObject:afterDelay:.",
+        "Declaration": "+ (void)cancelPreviousPerformRequestsWithTarget:(id)aTarget \n                                       selector:(SEL)aSelector \n                                         object:(id)anArgument;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aTarget",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "aSelector",
+            "Type": {
+              "Name": "SEL"
+            }
+          },
+          {
+            "Name": "anArgument",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1410849-cancelpreviousperformrequestswit?language=objc"
+      },
+      {
+        "Name": "resolveClassMethod:",
+        "Description": "Dynamically provides an implementation for a given selector for a class method.",
+        "Declaration": "+ (BOOL)resolveClassMethod:(SEL)sel;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sel",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418889-resolveclassmethod?language=objc"
+      },
+      {
+        "Name": "resolveInstanceMethod:",
+        "Description": "Dynamically provides an implementation for a given selector for an instance method.",
+        "Declaration": "+ (BOOL)resolveInstanceMethod:(SEL)sel;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "sel",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418500-resolveinstancemethod?language=objc"
+      },
+      {
+        "Name": "classFallbacksForKeyedArchiver",
+        "Description": "Overridden to return the names of classes that can be used to decode objects if their class is unavailable.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)classFallbacksForKeyedArchiver;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1411048-classfallbacksforkeyedarchiver?language=objc"
+      },
+      {
+        "Name": "classForKeyedUnarchiver",
+        "Description": "Overridden by subclasses to substitute a new class during keyed unarchiving.",
+        "Declaration": "+ (Class)classForKeyedUnarchiver;",
+        "Return": {
+          "Name": "Class"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1410547-classforkeyedunarchiver?language=objc"
+      },
+      {
+        "Name": "setVersion:",
+        "Description": "Sets the receiver's version number.",
+        "Declaration": "+ (void)setVersion:(NSInteger)aVersion;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aVersion",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1416538-setversion?language=objc"
+      },
+      {
+        "Name": "version",
+        "Description": "Returns the version number assigned to the class.",
+        "Declaration": "+ (NSInteger)version;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1415151-version?language=objc"
+      },
+      {
+        "Name": "debugDescription",
+        "Description": "",
+        "Declaration": "+ (NSString *)debugDescription;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418711-debugdescription?language=objc"
+      },
+      {
+        "Name": "hash",
+        "Description": "",
+        "Declaration": "+ (NSUInteger)hash;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1418561-hash?language=objc"
+      },
+      {
+        "Name": "withL2CAPChannelRef:",
+        "Description": "",
+        "Declaration": "+ (IOBluetoothL2CAPChannel *)withL2CAPChannelRef:(IOBluetoothL2CAPChannelRef)l2capChannelRef;",
+        "Return": {
+          "Name": "IOBluetoothL2CAPChannel",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "l2capChannelRef",
+            "Type": {
+              "Name": "IOBluetoothL2CAPChannelRef"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/objectivec/nsobject/1473857-withl2capchannelref?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T12:18:37.272933-07:00",
+  "Version": 2
+}

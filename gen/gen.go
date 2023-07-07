@@ -142,6 +142,12 @@ type declaration struct {
 
 func parseClassDeclaration(decl string) (declaration, error) {
 	decl = strings.TrimPrefix(decl, "@interface ")
+	if decl == "NSObject" {
+		return declaration{
+			Name: "NSObject",
+			Base: "",
+		}, nil
+	}
 	parts := strings.Split(decl, ":")
 	if len(parts) != 2 {
 		//panic(fmt.Errorf("unable to parse: %q", decl))

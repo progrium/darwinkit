@@ -4746,6 +4746,16 @@ void NSWindow_inst_SetPreventsApplicationTerminationWhenModal(void *id, BOOL val
 		setPreventsApplicationTerminationWhenModal: value];
 }
 
+void* NSWindow_inst_AppearanceSource(void *id) {
+	return [(NSWindow*)id
+		appearanceSource];
+}
+
+void NSWindow_inst_SetAppearanceSource(void *id, void* value) {
+	[(NSWindow*)id
+		setAppearanceSource: value];
+}
+
 BOOL NSWindow_inst_HasDynamicDepthLimit(void *id) {
 	return [(NSWindow*)id
 		hasDynamicDepthLimit];
@@ -19590,6 +19600,31 @@ func (x gen_NSWindow) SetPreventsApplicationTerminationWhenModal(
 	C.NSWindow_inst_SetPreventsApplicationTerminationWhenModal(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// AppearanceSource an object that the window inherits its appearance from.
+//
+// See https://developer.apple.com/documentation/appkit/nswindow/2998855-appearancesource?language=objc for details.
+func (x gen_NSWindow) AppearanceSource() core.NSObject {
+	ret := C.NSWindow_inst_AppearanceSource(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSObject_FromPointer(ret)
+}
+
+// SetAppearanceSource an object that the window inherits its appearance from.
+//
+// See https://developer.apple.com/documentation/appkit/nswindow/2998855-appearancesource?language=objc for details.
+func (x gen_NSWindow) SetAppearanceSource(
+	value core.NSObjectRef,
+) {
+	C.NSWindow_inst_SetAppearanceSource(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
 	)
 
 	return
