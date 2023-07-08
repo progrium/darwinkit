@@ -8760,7 +8760,7 @@ func NSView_CompatibleWithResponsiveScrolling() bool {
 
 type NSBundleRef interface {
 	Pointer() uintptr
-	Init() NSBundle
+	Init_AsNSBundle() NSBundle
 }
 
 type gen_NSBundle struct {
@@ -9100,7 +9100,7 @@ func (x gen_NSBundle) Unload() bool {
 }
 
 // Init is undocumented.
-func (x gen_NSBundle) Init() NSBundle {
+func (x gen_NSBundle) Init_AsNSBundle() NSBundle {
 	ret := C.NSBundle_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -9363,7 +9363,7 @@ func (x gen_NSBundle) IsLoaded() bool {
 
 type NSSoundRef interface {
 	Pointer() uintptr
-	Init() NSSound
+	Init_AsNSSound() NSSound
 }
 
 type gen_NSSound struct {
@@ -9499,7 +9499,7 @@ func (x gen_NSSound) WriteToPasteboard(
 }
 
 // Init is undocumented.
-func (x gen_NSSound) Init() NSSound {
+func (x gen_NSSound) Init_AsNSSound() NSSound {
 	ret := C.NSSound_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -9570,7 +9570,7 @@ func (x gen_NSSound) IsPlaying() bool {
 
 type NSApplicationRef interface {
 	Pointer() uintptr
-	Init() NSApplication
+	Init_AsNSApplication() NSApplication
 }
 
 type gen_NSApplication struct {
@@ -9954,7 +9954,7 @@ func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 }
 
 // Init is undocumented.
-func (x gen_NSApplication) Init() NSApplication {
+func (x gen_NSApplication) Init_AsNSApplication() NSApplication {
 	ret := C.NSApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -10166,7 +10166,7 @@ func (x gen_NSApplication) SetMainMenu(
 
 type NSControlRef interface {
 	Pointer() uintptr
-	Init() NSControl
+	Init_AsNSControl() NSControl
 }
 
 type gen_NSControl struct {
@@ -10470,7 +10470,7 @@ func (x gen_NSControl) ValidateEditing() {
 }
 
 // Init is undocumented.
-func (x gen_NSControl) Init() NSControl {
+func (x gen_NSControl) Init_AsNSControl() NSControl {
 	ret := C.NSControl_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -10880,7 +10880,7 @@ func (x gen_NSControl) SetIgnoresMultiClick(
 
 type NSButtonRef interface {
 	Pointer() uintptr
-	Init() NSButton
+	Init_AsNSButton() NSButton
 }
 
 type gen_NSButton struct {
@@ -10965,7 +10965,7 @@ func (x gen_NSButton) SetNextState() {
 }
 
 // Init is undocumented.
-func (x gen_NSButton) Init() NSButton {
+func (x gen_NSButton) Init_AsNSButton() NSButton {
 	ret := C.NSButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -11450,7 +11450,7 @@ func (x gen_NSButton) SetKeyEquivalent(
 
 type NSEventRef interface {
 	Pointer() uintptr
-	Init() NSEvent
+	Init_AsNSEvent() NSEvent
 }
 
 type gen_NSEvent struct {
@@ -11468,7 +11468,7 @@ func NSEvent_FromRef(ref objc.Ref) NSEvent {
 }
 
 // Init is undocumented.
-func (x gen_NSEvent) Init() NSEvent {
+func (x gen_NSEvent) Init_AsNSEvent() NSEvent {
 	ret := C.NSEvent_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -11896,7 +11896,7 @@ func (x gen_NSEvent) IsDirectionInvertedFromDevice() bool {
 
 type NSFontRef interface {
 	Pointer() uintptr
-	Init() NSFont
+	Init_AsNSFont() NSFont
 }
 
 type gen_NSFont struct {
@@ -11939,7 +11939,7 @@ func (x gen_NSFont) Set() {
 }
 
 // Init is undocumented.
-func (x gen_NSFont) Init() NSFont {
+func (x gen_NSFont) Init_AsNSFont() NSFont {
 	ret := C.NSFont_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12048,7 +12048,7 @@ func (x gen_NSFont) VerticalFont() NSFont {
 
 type NSImageRef interface {
 	Pointer() uintptr
-	Init() NSImage
+	Init_AsNSImage() NSImage
 }
 
 type gen_NSImage struct {
@@ -12303,7 +12303,7 @@ func (x gen_NSImage) UnlockFocus() {
 }
 
 // Init is undocumented.
-func (x gen_NSImage) Init() NSImage {
+func (x gen_NSImage) Init_AsNSImage() NSImage {
 	ret := C.NSImage_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12585,7 +12585,7 @@ func (x gen_NSImage) SetMatchesOnlyOnBestFittingAxis(
 
 type NSImageViewRef interface {
 	Pointer() uintptr
-	Init() NSImageView
+	Init_AsNSImageView() NSImageView
 }
 
 type gen_NSImageView struct {
@@ -12603,7 +12603,7 @@ func NSImageView_FromRef(ref objc.Ref) NSImageView {
 }
 
 // Init is undocumented.
-func (x gen_NSImageView) Init() NSImageView {
+func (x gen_NSImageView) Init_AsNSImageView() NSImageView {
 	ret := C.NSImageView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12738,7 +12738,7 @@ func (x gen_NSImageView) SetContentTintColor(
 
 type NSNibRef interface {
 	Pointer() uintptr
-	Init() NSNib
+	Init_AsNSNib() NSNib
 }
 
 type gen_NSNib struct {
@@ -12788,7 +12788,7 @@ func (x gen_NSNib) InstantiateWithOwnerTopLevelObjects(
 }
 
 // Init is undocumented.
-func (x gen_NSNib) Init() NSNib {
+func (x gen_NSNib) Init_AsNSNib() NSNib {
 	ret := C.NSNib_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12798,7 +12798,7 @@ func (x gen_NSNib) Init() NSNib {
 
 type NSPasteboardRef interface {
 	Pointer() uintptr
-	Init() NSPasteboard
+	Init_AsNSPasteboard() NSPasteboard
 }
 
 type gen_NSPasteboard struct {
@@ -12944,7 +12944,7 @@ func (x gen_NSPasteboard) WriteObjects(
 }
 
 // Init is undocumented.
-func (x gen_NSPasteboard) Init() NSPasteboard {
+func (x gen_NSPasteboard) Init_AsNSPasteboard() NSPasteboard {
 	ret := C.NSPasteboard_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12987,7 +12987,7 @@ func (x gen_NSPasteboard) ChangeCount() core.NSInteger {
 
 type NSLayoutManagerRef interface {
 	Pointer() uintptr
-	Init() NSLayoutManager
+	Init_AsNSLayoutManager() NSLayoutManager
 }
 
 type gen_NSLayoutManager struct {
@@ -13157,7 +13157,7 @@ func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 // Init initializes a newly created layout manager object.
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc for details.
-func (x gen_NSLayoutManager) Init() NSLayoutManager {
+func (x gen_NSLayoutManager) Init_AsNSLayoutManager() NSLayoutManager {
 	ret := C.NSLayoutManager_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -13619,7 +13619,7 @@ func (x gen_NSLayoutManager) TextViewForBeginningOfSelection() NSTextView {
 
 type NSMenuRef interface {
 	Pointer() uintptr
-	Init() NSMenu
+	Init_AsNSMenu() NSMenu
 }
 
 type gen_NSMenu struct {
@@ -14009,7 +14009,7 @@ func (x gen_NSMenu) Update() {
 }
 
 // Init is undocumented.
-func (x gen_NSMenu) Init() NSMenu {
+func (x gen_NSMenu) Init_AsNSMenu() NSMenu {
 	ret := C.NSMenu_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -14288,7 +14288,7 @@ func (x gen_NSMenu) SetDelegate(
 
 type NSPopoverRef interface {
 	Pointer() uintptr
-	Init() NSPopover
+	Init_AsNSPopover() NSPopover
 }
 
 type gen_NSPopover struct {
@@ -14319,7 +14319,7 @@ func (x gen_NSPopover) Close() {
 // Init is undocumented.
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc for details.
-func (x gen_NSPopover) Init() NSPopover {
+func (x gen_NSPopover) Init_AsNSPopover() NSPopover {
 	ret := C.NSPopover_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -14465,7 +14465,7 @@ func (x gen_NSPopover) IsDetached() bool {
 
 type NSMenuItemRef interface {
 	Pointer() uintptr
-	Init() NSMenuItem
+	Init_AsNSMenuItem() NSMenuItem
 }
 
 type gen_NSMenuItem struct {
@@ -14501,7 +14501,7 @@ func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent(
 }
 
 // Init is undocumented.
-func (x gen_NSMenuItem) Init() NSMenuItem {
+func (x gen_NSMenuItem) Init_AsNSMenuItem() NSMenuItem {
 	ret := C.NSMenuItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15152,7 +15152,7 @@ func (x gen_NSMenuItem) SetAllowsKeyEquivalentWhenHidden(
 
 type NSRunningApplicationRef interface {
 	Pointer() uintptr
-	Init() NSRunningApplication
+	Init_AsNSRunningApplication() NSRunningApplication
 }
 
 type gen_NSRunningApplication struct {
@@ -15214,7 +15214,7 @@ func (x gen_NSRunningApplication) Unhide() bool {
 }
 
 // Init is undocumented.
-func (x gen_NSRunningApplication) Init() NSRunningApplication {
+func (x gen_NSRunningApplication) Init_AsNSRunningApplication() NSRunningApplication {
 	ret := C.NSRunningApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15356,7 +15356,7 @@ func (x gen_NSRunningApplication) IsTerminated() bool {
 
 type NSScreenRef interface {
 	Pointer() uintptr
-	Init() NSScreen
+	Init_AsNSScreen() NSScreen
 }
 
 type gen_NSScreen struct {
@@ -15402,7 +15402,7 @@ func (x gen_NSScreen) ConvertRectToBacking(
 }
 
 // Init is undocumented.
-func (x gen_NSScreen) Init() NSScreen {
+func (x gen_NSScreen) Init_AsNSScreen() NSScreen {
 	ret := C.NSScreen_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15511,7 +15511,7 @@ func (x gen_NSScreen) MaximumFramesPerSecond() core.NSInteger {
 
 type NSStatusBarRef interface {
 	Pointer() uintptr
-	Init() NSStatusBar
+	Init_AsNSStatusBar() NSStatusBar
 }
 
 type gen_NSStatusBar struct {
@@ -15557,7 +15557,7 @@ func (x gen_NSStatusBar) StatusItemWithLength(
 }
 
 // Init is undocumented.
-func (x gen_NSStatusBar) Init() NSStatusBar {
+func (x gen_NSStatusBar) Init_AsNSStatusBar() NSStatusBar {
 	ret := C.NSStatusBar_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15589,7 +15589,7 @@ func (x gen_NSStatusBar) Thickness() core.CGFloat {
 
 type NSStatusBarButtonRef interface {
 	Pointer() uintptr
-	Init() NSStatusBarButton
+	Init_AsNSStatusBarButton() NSStatusBarButton
 }
 
 type gen_NSStatusBarButton struct {
@@ -15607,7 +15607,7 @@ func NSStatusBarButton_FromRef(ref objc.Ref) NSStatusBarButton {
 }
 
 // Init is undocumented.
-func (x gen_NSStatusBarButton) Init() NSStatusBarButton {
+func (x gen_NSStatusBarButton) Init_AsNSStatusBarButton() NSStatusBarButton {
 	ret := C.NSStatusBarButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15642,7 +15642,7 @@ func (x gen_NSStatusBarButton) SetAppearsDisabled(
 
 type NSStatusItemRef interface {
 	Pointer() uintptr
-	Init() NSStatusItem
+	Init_AsNSStatusItem() NSStatusItem
 }
 
 type gen_NSStatusItem struct {
@@ -15660,7 +15660,7 @@ func NSStatusItem_FromRef(ref objc.Ref) NSStatusItem {
 }
 
 // Init is undocumented.
-func (x gen_NSStatusItem) Init() NSStatusItem {
+func (x gen_NSStatusItem) Init_AsNSStatusItem() NSStatusItem {
 	ret := C.NSStatusItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15767,7 +15767,7 @@ func (x gen_NSStatusItem) SetLength(
 
 type NSTextRef interface {
 	Pointer() uintptr
-	Init() NSText
+	Init_AsNSText() NSText
 }
 
 type gen_NSText struct {
@@ -16120,7 +16120,7 @@ func (x gen_NSText) WriteRTFDToFileAtomically(
 }
 
 // Init is undocumented.
-func (x gen_NSText) Init() NSText {
+func (x gen_NSText) Init_AsNSText() NSText {
 	ret := C.NSText_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -16541,7 +16541,7 @@ func (x gen_NSText) SetDelegate(
 
 type NSTextFieldRef interface {
 	Pointer() uintptr
-	Init() NSTextField
+	Init_AsNSTextField() NSTextField
 }
 
 type gen_NSTextField struct {
@@ -16601,7 +16601,7 @@ func (x gen_NSTextField) TextShouldEndEditing(
 }
 
 // Init is undocumented.
-func (x gen_NSTextField) Init() NSTextField {
+func (x gen_NSTextField) Init_AsNSTextField() NSTextField {
 	ret := C.NSTextField_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17047,7 +17047,7 @@ func (x gen_NSTextField) SetDelegate(
 
 type NSTextContainerRef interface {
 	Pointer() uintptr
-	Init() NSTextContainer
+	Init_AsNSTextContainer() NSTextContainer
 }
 
 type gen_NSTextContainer struct {
@@ -17093,7 +17093,7 @@ func (x gen_NSTextContainer) ReplaceLayoutManager(
 }
 
 // Init is undocumented.
-func (x gen_NSTextContainer) Init() NSTextContainer {
+func (x gen_NSTextContainer) Init_AsNSTextContainer() NSTextContainer {
 	ret := C.NSTextContainer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17314,7 +17314,7 @@ func (x gen_NSTextContainer) IsSimpleRectangularTextContainer() bool {
 
 type NSViewControllerRef interface {
 	Pointer() uintptr
-	Init() NSViewController
+	Init_AsNSViewController() NSViewController
 }
 
 type gen_NSViewController struct {
@@ -17626,7 +17626,7 @@ func (x gen_NSViewController) ViewWillTransitionToSize(
 }
 
 // Init is undocumented.
-func (x gen_NSViewController) Init() NSViewController {
+func (x gen_NSViewController) Init_AsNSViewController() NSViewController {
 	ret := C.NSViewController_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17888,7 +17888,7 @@ func (x gen_NSViewController) SetSourceItemView(
 
 type NSVisualEffectViewRef interface {
 	Pointer() uintptr
-	Init() NSVisualEffectView
+	Init_AsNSVisualEffectView() NSVisualEffectView
 }
 
 type gen_NSVisualEffectView struct {
@@ -17931,7 +17931,7 @@ func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 }
 
 // Init is undocumented.
-func (x gen_NSVisualEffectView) Init() NSVisualEffectView {
+func (x gen_NSVisualEffectView) Init_AsNSVisualEffectView() NSVisualEffectView {
 	ret := C.NSVisualEffectView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17991,7 +17991,7 @@ func (x gen_NSVisualEffectView) SetMaskImage(
 
 type NSWindowRef interface {
 	Pointer() uintptr
-	Init() NSWindow
+	Init_AsNSWindow() NSWindow
 }
 
 type gen_NSWindow struct {
@@ -19265,7 +19265,7 @@ func (x gen_NSWindow) Zoom(
 }
 
 // Init is undocumented.
-func (x gen_NSWindow) Init() NSWindow {
+func (x gen_NSWindow) Init_AsNSWindow() NSWindow {
 	ret := C.NSWindow_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -20960,7 +20960,7 @@ func (x gen_NSWindow) SetOrderedIndex(
 
 type NSWorkspaceRef interface {
 	Pointer() uintptr
-	Init() NSWorkspace
+	Init_AsNSWorkspace() NSWorkspace
 }
 
 type gen_NSWorkspace struct {
@@ -21215,7 +21215,7 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 }
 
 // Init is undocumented.
-func (x gen_NSWorkspace) Init() NSWorkspace {
+func (x gen_NSWorkspace) Init_AsNSWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -21357,7 +21357,7 @@ func (x gen_NSWorkspace) IsVoiceOverEnabled() bool {
 
 type NSColorRef interface {
 	Pointer() uintptr
-	Init() NSColor
+	Init_AsNSColor() NSColor
 }
 
 type gen_NSColor struct {
@@ -21494,7 +21494,7 @@ func (x gen_NSColor) WriteToPasteboard(
 }
 
 // Init is undocumented.
-func (x gen_NSColor) Init() NSColor {
+func (x gen_NSColor) Init_AsNSColor() NSColor {
 	ret := C.NSColor_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -21669,7 +21669,7 @@ func (x gen_NSColor) LocalizedColorNameComponent() core.NSString {
 
 type NSTextViewRef interface {
 	Pointer() uintptr
-	Init() NSTextView
+	Init_AsNSTextView() NSTextView
 }
 
 type gen_NSTextView struct {
@@ -22596,7 +22596,7 @@ func (x gen_NSTextView) WriteSelectionToPasteboardTypes(
 }
 
 // Init is undocumented.
-func (x gen_NSTextView) Init() NSTextView {
+func (x gen_NSTextView) Init_AsNSTextView() NSTextView {
 	ret := C.NSTextView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -23798,7 +23798,7 @@ func (x gen_NSTextView) SetFont(
 
 type NSViewRef interface {
 	Pointer() uintptr
-	Init() NSView
+	Init_AsNSView() NSView
 }
 
 type gen_NSView struct {
@@ -25323,7 +25323,7 @@ func (x gen_NSView) WritePDFInsideRectToPasteboard(
 }
 
 // Init is undocumented.
-func (x gen_NSView) Init() NSView {
+func (x gen_NSView) Init_AsNSView() NSView {
 	ret := C.NSView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

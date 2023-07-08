@@ -121,7 +121,7 @@ func {{.Name}}(
 {{range $cls := .}}
 type {{.Name}}Ref interface {
 	Pointer() uintptr
-	Init() {{.Name}}
+	Init_As{{.Name}}() {{.Name}}
 }
 
 type gen_{{.Name}} struct {

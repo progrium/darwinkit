@@ -527,7 +527,7 @@ func WKPreferences_Alloc() WKPreferences {
 
 type WKNavigationRef interface {
 	Pointer() uintptr
-	Init() WKNavigation
+	Init_AsWKNavigation() WKNavigation
 }
 
 type gen_WKNavigation struct {
@@ -545,7 +545,7 @@ func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
 }
 
 // Init is undocumented.
-func (x gen_WKNavigation) Init() WKNavigation {
+func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -555,7 +555,7 @@ func (x gen_WKNavigation) Init() WKNavigation {
 
 type WKUserScriptRef interface {
 	Pointer() uintptr
-	Init() WKUserScript
+	Init_AsWKUserScript() WKUserScript
 }
 
 type gen_WKUserScript struct {
@@ -573,7 +573,7 @@ func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
 }
 
 // Init is undocumented.
-func (x gen_WKUserScript) Init() WKUserScript {
+func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -605,7 +605,7 @@ func (x gen_WKUserScript) IsForMainFrameOnly() bool {
 
 type WKWebViewRef interface {
 	Pointer() uintptr
-	Init() WKWebView
+	Init_AsWKWebView() WKWebView
 }
 
 type gen_WKWebView struct {
@@ -862,7 +862,7 @@ func (x gen_WKWebView) StopLoading_(
 }
 
 // Init is undocumented.
-func (x gen_WKWebView) Init() WKWebView {
+func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1174,7 +1174,7 @@ func (x gen_WKWebView) SetInteractionState(
 
 type WKWebViewConfigurationRef interface {
 	Pointer() uintptr
-	Init() WKWebViewConfiguration
+	Init_AsWKWebViewConfiguration() WKWebViewConfiguration
 }
 
 type gen_WKWebViewConfiguration struct {
@@ -1222,7 +1222,7 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 }
 
 // Init is undocumented.
-func (x gen_WKWebViewConfiguration) Init() WKWebViewConfiguration {
+func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1457,7 +1457,7 @@ func (x gen_WKWebViewConfiguration) SetUpgradeKnownHostsToHTTPS(
 
 type WKPreferencesRef interface {
 	Pointer() uintptr
-	Init() WKPreferences
+	Init_AsWKPreferences() WKPreferences
 }
 
 type gen_WKPreferences struct {
@@ -1489,7 +1489,7 @@ func (x gen_WKPreferences) SetValueForKey(
 }
 
 // Init is undocumented.
-func (x gen_WKPreferences) Init() WKPreferences {
+func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

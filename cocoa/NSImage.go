@@ -9,11 +9,11 @@ type NSImage struct {
 }
 
 func NSImage_InitWithData(data core.NSDataRef) NSImage {
-	return NSImage_Alloc().InitWithData_AsNSImage(data)
+	return NSImage_Alloc().InitWithData(data)
 }
 
 func NSImage_InitWithURL(url core.NSURL) NSImage {
-	return NSImage_Alloc().InitWithContentsOfURL_AsNSImage(url)
+	return NSImage_Alloc().InitWithContentsOfURL(url)
 }
 
 func NSImage_ImageNamed(name string) NSImage {

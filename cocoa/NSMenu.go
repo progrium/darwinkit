@@ -13,7 +13,7 @@ func NSMenu_New() NSMenu {
 }
 
 func NSMenu_Init(title string) NSMenu {
-	return NSMenu_Alloc().InitWithTitle_AsNSMenu(core.String(title))
+	return NSMenu_Alloc().InitWithTitle(core.String(title))
 }
 
 func (menu NSMenu) Title() string {

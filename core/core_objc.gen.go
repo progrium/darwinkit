@@ -2823,7 +2823,7 @@ func NSUserDefaults_StandardUserDefaults() NSUserDefaults {
 
 type CALayerRef interface {
 	Pointer() uintptr
-	Init() CALayer
+	Init_AsCALayer() CALayer
 }
 
 type gen_CALayer struct {
@@ -2947,7 +2947,7 @@ func (x gen_CALayer) DisplayIfNeeded() {
 // Init returns an initialized CALayer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
-func (x gen_CALayer) Init() CALayer {
+func (x gen_CALayer) Init_AsCALayer() CALayer {
 	ret := C.CALayer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4112,7 +4112,7 @@ func (x gen_CALayer) SetName(
 
 type NSArrayRef interface {
 	Pointer() uintptr
-	Init() NSArray
+	Init_AsNSArray() NSArray
 }
 
 type gen_NSArray struct {
@@ -4190,7 +4190,7 @@ func (x gen_NSArray) DescriptionWithLocaleIndent(
 // Init initializes a newly allocated array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
-func (x gen_NSArray) Init() NSArray {
+func (x gen_NSArray) Init_AsNSArray() NSArray {
 	ret := C.NSArray_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4390,7 +4390,7 @@ func (x gen_NSArray) Description() NSString {
 
 type NSAttributedStringRef interface {
 	Pointer() uintptr
-	Init() NSAttributedString
+	Init_AsNSAttributedString() NSAttributedString
 }
 
 type gen_NSAttributedString struct {
@@ -4618,7 +4618,7 @@ func (x gen_NSAttributedString) Size() NSSize {
 }
 
 // Init is undocumented.
-func (x gen_NSAttributedString) Init() NSAttributedString {
+func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4650,7 +4650,7 @@ func (x gen_NSAttributedString) Length() NSUInteger {
 
 type NSDataRef interface {
 	Pointer() uintptr
-	Init() NSData
+	Init_AsNSData() NSData
 }
 
 type gen_NSData struct {
@@ -4822,7 +4822,7 @@ func (x gen_NSData) WriteToURLAtomically(
 }
 
 // Init is undocumented.
-func (x gen_NSData) Init() NSData {
+func (x gen_NSData) Init_AsNSData() NSData {
 	ret := C.NSData_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4865,7 +4865,7 @@ func (x gen_NSData) Description() NSString {
 
 type NSDictionaryRef interface {
 	Pointer() uintptr
-	Init() NSDictionary
+	Init_AsNSDictionary() NSDictionary
 }
 
 type gen_NSDictionary struct {
@@ -5036,7 +5036,7 @@ func (x gen_NSDictionary) FileType() NSString {
 // Init initializes a newly allocated dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
-func (x gen_NSDictionary) Init() NSDictionary {
+func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5175,7 +5175,7 @@ func (x gen_NSDictionary) DescriptionInStringsFileFormat() NSString {
 
 type NSNumberRef interface {
 	Pointer() uintptr
-	Init() NSNumber
+	Init_AsNSNumber() NSNumber
 }
 
 type gen_NSNumber struct {
@@ -5291,7 +5291,7 @@ func (x gen_NSNumber) IsEqualToNumber(
 }
 
 // Init is undocumented.
-func (x gen_NSNumber) Init() NSNumber {
+func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
 	ret := C.NSNumber_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5367,7 +5367,7 @@ func (x gen_NSNumber) StringValue() NSString {
 
 type NSRunLoopRef interface {
 	Pointer() uintptr
-	Init() NSRunLoop
+	Init_AsNSRunLoop() NSRunLoop
 }
 
 type gen_NSRunLoop struct {
@@ -5450,7 +5450,7 @@ func (x gen_NSRunLoop) Run() {
 }
 
 // Init is undocumented.
-func (x gen_NSRunLoop) Init() NSRunLoop {
+func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5460,7 +5460,7 @@ func (x gen_NSRunLoop) Init() NSRunLoop {
 
 type NSStringRef interface {
 	Pointer() uintptr
-	Init() NSString
+	Init_AsNSString() NSString
 }
 
 type gen_NSString struct {
@@ -5630,7 +5630,7 @@ func (x gen_NSString) HasSuffix(
 // Init returns an initialized NSString object that contains no characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
-func (x gen_NSString) Init() NSString {
+func (x gen_NSString) Init_AsNSString() NSString {
 	ret := C.NSString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6265,7 +6265,7 @@ func (x gen_NSString) StringByRemovingPercentEncoding() NSString {
 
 type NSThreadRef interface {
 	Pointer() uintptr
-	Init() NSThread
+	Init_AsNSThread() NSThread
 }
 
 type gen_NSThread struct {
@@ -6296,7 +6296,7 @@ func (x gen_NSThread) Cancel() {
 // Init returns an initialized NSThread object.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
-func (x gen_NSThread) Init() NSThread {
+func (x gen_NSThread) Init_AsNSThread() NSThread {
 	ret := C.NSThread_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6440,7 +6440,7 @@ func (x gen_NSThread) SetStackSize(
 
 type NSURLRef interface {
 	Pointer() uintptr
-	Init() NSURL
+	Init_AsNSURL() NSURL
 }
 
 type gen_NSURL struct {
@@ -6683,7 +6683,7 @@ func (x gen_NSURL) StopAccessingSecurityScopedResource() {
 }
 
 // Init is undocumented.
-func (x gen_NSURL) Init() NSURL {
+func (x gen_NSURL) Init_AsNSURL() NSURL {
 	ret := C.NSURL_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6979,7 +6979,7 @@ func (x gen_NSURL) HasDirectoryPath() bool {
 
 type NSURLRequestRef interface {
 	Pointer() uintptr
-	Init() NSURLRequest
+	Init_AsNSURLRequest() NSURLRequest
 }
 
 type gen_NSURLRequest struct {
@@ -7025,7 +7025,7 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 }
 
 // Init is undocumented.
-func (x gen_NSURLRequest) Init() NSURLRequest {
+func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7156,7 +7156,7 @@ func (x gen_NSURLRequest) AssumesHTTP3Capable() bool {
 
 type NSUserDefaultsRef interface {
 	Pointer() uintptr
-	Init() NSUserDefaults
+	Init_AsNSUserDefaults() NSUserDefaults
 }
 
 type gen_NSUserDefaults struct {
@@ -7271,7 +7271,7 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 // Init creates a user defaults object initialized with the defaults for the app and current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
-func (x gen_NSUserDefaults) Init() NSUserDefaults {
+func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
