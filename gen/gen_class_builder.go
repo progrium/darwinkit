@@ -68,9 +68,6 @@ func (cb *classBuilder) instanceMethod(method schema.Method) MethodDef {
 		Name:        ident,
 		WrappedFunc: cb.cgoWrapperFunc(method, false),
 	}
-	if method.Name == "init" && isInstanceType(method.Return) {
-		r.Name += "_As" + cb.Class.Name
-	}
 	return r
 }
 

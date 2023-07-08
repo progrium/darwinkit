@@ -2947,7 +2947,7 @@ func (x gen_CALayer) DisplayIfNeeded() {
 // Init returns an initialized CALayer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
-func (x gen_CALayer) Init_AsCALayer() CALayer {
+func (x gen_CALayer) Init() CALayer {
 	ret := C.CALayer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4190,7 +4190,7 @@ func (x gen_NSArray) DescriptionWithLocaleIndent(
 // Init initializes a newly allocated array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
-func (x gen_NSArray) Init_AsNSArray() NSArray {
+func (x gen_NSArray) Init() NSArray {
 	ret := C.NSArray_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4618,7 +4618,7 @@ func (x gen_NSAttributedString) Size() NSSize {
 }
 
 // Init is undocumented.
-func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
+func (x gen_NSAttributedString) Init() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4822,7 +4822,7 @@ func (x gen_NSData) WriteToURLAtomically(
 }
 
 // Init is undocumented.
-func (x gen_NSData) Init_AsNSData() NSData {
+func (x gen_NSData) Init() NSData {
 	ret := C.NSData_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5036,7 +5036,7 @@ func (x gen_NSDictionary) FileType() NSString {
 // Init initializes a newly allocated dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
-func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
+func (x gen_NSDictionary) Init() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5291,7 +5291,7 @@ func (x gen_NSNumber) IsEqualToNumber(
 }
 
 // Init is undocumented.
-func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
+func (x gen_NSNumber) Init() NSNumber {
 	ret := C.NSNumber_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5450,7 +5450,7 @@ func (x gen_NSRunLoop) Run() {
 }
 
 // Init is undocumented.
-func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
+func (x gen_NSRunLoop) Init() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5630,7 +5630,7 @@ func (x gen_NSString) HasSuffix(
 // Init returns an initialized NSString object that contains no characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
-func (x gen_NSString) Init_AsNSString() NSString {
+func (x gen_NSString) Init() NSString {
 	ret := C.NSString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6296,7 +6296,7 @@ func (x gen_NSThread) Cancel() {
 // Init returns an initialized NSThread object.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
-func (x gen_NSThread) Init_AsNSThread() NSThread {
+func (x gen_NSThread) Init() NSThread {
 	ret := C.NSThread_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6683,7 +6683,7 @@ func (x gen_NSURL) StopAccessingSecurityScopedResource() {
 }
 
 // Init is undocumented.
-func (x gen_NSURL) Init_AsNSURL() NSURL {
+func (x gen_NSURL) Init() NSURL {
 	ret := C.NSURL_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7025,7 +7025,7 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 }
 
 // Init is undocumented.
-func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
+func (x gen_NSURLRequest) Init() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7271,7 +7271,7 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 // Init creates a user defaults object initialized with the defaults for the app and current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
-func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
+func (x gen_NSUserDefaults) Init() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

@@ -545,7 +545,7 @@ func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
 }
 
 // Init is undocumented.
-func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
+func (x gen_WKNavigation) Init() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -573,7 +573,7 @@ func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
 }
 
 // Init is undocumented.
-func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
+func (x gen_WKUserScript) Init() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -862,7 +862,7 @@ func (x gen_WKWebView) StopLoading_(
 }
 
 // Init is undocumented.
-func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
+func (x gen_WKWebView) Init() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1222,7 +1222,7 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 }
 
 // Init is undocumented.
-func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
+func (x gen_WKWebViewConfiguration) Init() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1489,7 +1489,7 @@ func (x gen_WKPreferences) SetValueForKey(
 }
 
 // Init is undocumented.
-func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
+func (x gen_WKPreferences) Init() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
