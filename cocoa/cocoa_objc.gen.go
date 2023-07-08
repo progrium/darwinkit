@@ -9099,8 +9099,17 @@ func (x gen_NSBundle) Unload() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSBundle class.
 func (x gen_NSBundle) Init() NSBundle {
+	ret := C.NSBundle_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSBundle_FromPointer(ret)
+}
+
+// Init_AsNSBundle is a typed version of Init.
+func (x gen_NSBundle) Init_AsNSBundle() NSBundle {
 	ret := C.NSBundle_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -9498,8 +9507,17 @@ func (x gen_NSSound) WriteToPasteboard(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSSound class.
 func (x gen_NSSound) Init() NSSound {
+	ret := C.NSSound_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSSound_FromPointer(ret)
+}
+
+// Init_AsNSSound is a typed version of Init.
+func (x gen_NSSound) Init_AsNSSound() NSSound {
 	ret := C.NSSound_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -9953,8 +9971,17 @@ func (x gen_NSApplication) UnregisterUserInterfaceItemSearchHandler(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSApplication class.
 func (x gen_NSApplication) Init() NSApplication {
+	ret := C.NSApplication_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSApplication_FromPointer(ret)
+}
+
+// Init_AsNSApplication is a typed version of Init.
+func (x gen_NSApplication) Init_AsNSApplication() NSApplication {
 	ret := C.NSApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -10469,8 +10496,17 @@ func (x gen_NSControl) ValidateEditing() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSControl class.
 func (x gen_NSControl) Init() NSControl {
+	ret := C.NSControl_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSControl_FromPointer(ret)
+}
+
+// Init_AsNSControl is a typed version of Init.
+func (x gen_NSControl) Init_AsNSControl() NSControl {
 	ret := C.NSControl_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -10964,8 +11000,17 @@ func (x gen_NSButton) SetNextState() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSButton class.
 func (x gen_NSButton) Init() NSButton {
+	ret := C.NSButton_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSButton_FromPointer(ret)
+}
+
+// Init_AsNSButton is a typed version of Init.
+func (x gen_NSButton) Init_AsNSButton() NSButton {
 	ret := C.NSButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -11467,8 +11512,17 @@ func NSEvent_FromRef(ref objc.Ref) NSEvent {
 	return NSEvent_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSEvent class.
 func (x gen_NSEvent) Init() NSEvent {
+	ret := C.NSEvent_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSEvent_FromPointer(ret)
+}
+
+// Init_AsNSEvent is a typed version of Init.
+func (x gen_NSEvent) Init_AsNSEvent() NSEvent {
 	ret := C.NSEvent_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -11938,8 +11992,17 @@ func (x gen_NSFont) Set() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSFont class.
 func (x gen_NSFont) Init() NSFont {
+	ret := C.NSFont_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSFont_FromPointer(ret)
+}
+
+// Init_AsNSFont is a typed version of Init.
+func (x gen_NSFont) Init_AsNSFont() NSFont {
 	ret := C.NSFont_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12302,8 +12365,17 @@ func (x gen_NSImage) UnlockFocus() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSImage class.
 func (x gen_NSImage) Init() NSImage {
+	ret := C.NSImage_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSImage_FromPointer(ret)
+}
+
+// Init_AsNSImage is a typed version of Init.
+func (x gen_NSImage) Init_AsNSImage() NSImage {
 	ret := C.NSImage_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12602,8 +12674,17 @@ func NSImageView_FromRef(ref objc.Ref) NSImageView {
 	return NSImageView_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSImageView class.
 func (x gen_NSImageView) Init() NSImageView {
+	ret := C.NSImageView_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSImageView_FromPointer(ret)
+}
+
+// Init_AsNSImageView is a typed version of Init.
+func (x gen_NSImageView) Init_AsNSImageView() NSImageView {
 	ret := C.NSImageView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12787,8 +12868,17 @@ func (x gen_NSNib) InstantiateWithOwnerTopLevelObjects(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSNib class.
 func (x gen_NSNib) Init() NSNib {
+	ret := C.NSNib_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSNib_FromPointer(ret)
+}
+
+// Init_AsNSNib is a typed version of Init.
+func (x gen_NSNib) Init_AsNSNib() NSNib {
 	ret := C.NSNib_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -12943,8 +13033,17 @@ func (x gen_NSPasteboard) WriteObjects(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSPasteboard class.
 func (x gen_NSPasteboard) Init() NSPasteboard {
+	ret := C.NSPasteboard_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSPasteboard_FromPointer(ret)
+}
+
+// Init_AsNSPasteboard is a typed version of Init.
+func (x gen_NSPasteboard) Init_AsNSPasteboard() NSPasteboard {
 	ret := C.NSPasteboard_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -13158,6 +13257,17 @@ func (x gen_NSLayoutManager) GlyphIndexForCharacterAtIndex(
 //
 // See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc for details.
 func (x gen_NSLayoutManager) Init() NSLayoutManager {
+	ret := C.NSLayoutManager_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSLayoutManager_FromPointer(ret)
+}
+
+// Init_AsNSLayoutManager is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/uikit/nslayoutmanager/1402975-init?language=objc for details.
+func (x gen_NSLayoutManager) Init_AsNSLayoutManager() NSLayoutManager {
 	ret := C.NSLayoutManager_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -14008,8 +14118,17 @@ func (x gen_NSMenu) Update() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSMenu class.
 func (x gen_NSMenu) Init() NSMenu {
+	ret := C.NSMenu_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMenu_FromPointer(ret)
+}
+
+// Init_AsNSMenu is a typed version of Init.
+func (x gen_NSMenu) Init_AsNSMenu() NSMenu {
 	ret := C.NSMenu_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -14316,10 +14435,21 @@ func (x gen_NSPopover) Close() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSPopover class.
 //
 // See https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc for details.
 func (x gen_NSPopover) Init() NSPopover {
+	ret := C.NSPopover_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSPopover_FromPointer(ret)
+}
+
+// Init_AsNSPopover is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/appkit/nspopover/1526851-init?language=objc for details.
+func (x gen_NSPopover) Init_AsNSPopover() NSPopover {
 	ret := C.NSPopover_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -14500,8 +14630,17 @@ func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent(
 	return NSMenuItem_FromPointer(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSMenuItem class.
 func (x gen_NSMenuItem) Init() NSMenuItem {
+	ret := C.NSMenuItem_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMenuItem_FromPointer(ret)
+}
+
+// Init_AsNSMenuItem is a typed version of Init.
+func (x gen_NSMenuItem) Init_AsNSMenuItem() NSMenuItem {
 	ret := C.NSMenuItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15213,8 +15352,17 @@ func (x gen_NSRunningApplication) Unhide() bool {
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSRunningApplication class.
 func (x gen_NSRunningApplication) Init() NSRunningApplication {
+	ret := C.NSRunningApplication_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSRunningApplication_FromPointer(ret)
+}
+
+// Init_AsNSRunningApplication is a typed version of Init.
+func (x gen_NSRunningApplication) Init_AsNSRunningApplication() NSRunningApplication {
 	ret := C.NSRunningApplication_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15401,8 +15549,17 @@ func (x gen_NSScreen) ConvertRectToBacking(
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSScreen class.
 func (x gen_NSScreen) Init() NSScreen {
+	ret := C.NSScreen_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSScreen_FromPointer(ret)
+}
+
+// Init_AsNSScreen is a typed version of Init.
+func (x gen_NSScreen) Init_AsNSScreen() NSScreen {
 	ret := C.NSScreen_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15556,8 +15713,17 @@ func (x gen_NSStatusBar) StatusItemWithLength(
 	return NSStatusItem_FromPointer(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSStatusBar class.
 func (x gen_NSStatusBar) Init() NSStatusBar {
+	ret := C.NSStatusBar_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSStatusBar_FromPointer(ret)
+}
+
+// Init_AsNSStatusBar is a typed version of Init.
+func (x gen_NSStatusBar) Init_AsNSStatusBar() NSStatusBar {
 	ret := C.NSStatusBar_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15606,8 +15772,17 @@ func NSStatusBarButton_FromRef(ref objc.Ref) NSStatusBarButton {
 	return NSStatusBarButton_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSStatusBarButton class.
 func (x gen_NSStatusBarButton) Init() NSStatusBarButton {
+	ret := C.NSStatusBarButton_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSStatusBarButton_FromPointer(ret)
+}
+
+// Init_AsNSStatusBarButton is a typed version of Init.
+func (x gen_NSStatusBarButton) Init_AsNSStatusBarButton() NSStatusBarButton {
 	ret := C.NSStatusBarButton_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -15659,8 +15834,17 @@ func NSStatusItem_FromRef(ref objc.Ref) NSStatusItem {
 	return NSStatusItem_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSStatusItem class.
 func (x gen_NSStatusItem) Init() NSStatusItem {
+	ret := C.NSStatusItem_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSStatusItem_FromPointer(ret)
+}
+
+// Init_AsNSStatusItem is a typed version of Init.
+func (x gen_NSStatusItem) Init_AsNSStatusItem() NSStatusItem {
 	ret := C.NSStatusItem_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -16119,8 +16303,17 @@ func (x gen_NSText) WriteRTFDToFileAtomically(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSText class.
 func (x gen_NSText) Init() NSText {
+	ret := C.NSText_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSText_FromPointer(ret)
+}
+
+// Init_AsNSText is a typed version of Init.
+func (x gen_NSText) Init_AsNSText() NSText {
 	ret := C.NSText_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -16600,8 +16793,17 @@ func (x gen_NSTextField) TextShouldEndEditing(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSTextField class.
 func (x gen_NSTextField) Init() NSTextField {
+	ret := C.NSTextField_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSTextField_FromPointer(ret)
+}
+
+// Init_AsNSTextField is a typed version of Init.
+func (x gen_NSTextField) Init_AsNSTextField() NSTextField {
 	ret := C.NSTextField_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17092,8 +17294,17 @@ func (x gen_NSTextContainer) ReplaceLayoutManager(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSTextContainer class.
 func (x gen_NSTextContainer) Init() NSTextContainer {
+	ret := C.NSTextContainer_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSTextContainer_FromPointer(ret)
+}
+
+// Init_AsNSTextContainer is a typed version of Init.
+func (x gen_NSTextContainer) Init_AsNSTextContainer() NSTextContainer {
 	ret := C.NSTextContainer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17625,8 +17836,17 @@ func (x gen_NSViewController) ViewWillTransitionToSize(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSViewController class.
 func (x gen_NSViewController) Init() NSViewController {
+	ret := C.NSViewController_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSViewController_FromPointer(ret)
+}
+
+// Init_AsNSViewController is a typed version of Init.
+func (x gen_NSViewController) Init_AsNSViewController() NSViewController {
 	ret := C.NSViewController_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -17930,8 +18150,17 @@ func (x gen_NSVisualEffectView) ViewWillMoveToWindow(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSVisualEffectView class.
 func (x gen_NSVisualEffectView) Init() NSVisualEffectView {
+	ret := C.NSVisualEffectView_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSVisualEffectView_FromPointer(ret)
+}
+
+// Init_AsNSVisualEffectView is a typed version of Init.
+func (x gen_NSVisualEffectView) Init_AsNSVisualEffectView() NSVisualEffectView {
 	ret := C.NSVisualEffectView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -19264,8 +19493,17 @@ func (x gen_NSWindow) Zoom(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSWindow class.
 func (x gen_NSWindow) Init() NSWindow {
+	ret := C.NSWindow_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSWindow_FromPointer(ret)
+}
+
+// Init_AsNSWindow is a typed version of Init.
+func (x gen_NSWindow) Init_AsNSWindow() NSWindow {
 	ret := C.NSWindow_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -21214,8 +21452,17 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSWorkspace class.
 func (x gen_NSWorkspace) Init() NSWorkspace {
+	ret := C.NSWorkspace_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSWorkspace_FromPointer(ret)
+}
+
+// Init_AsNSWorkspace is a typed version of Init.
+func (x gen_NSWorkspace) Init_AsNSWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -21493,8 +21740,17 @@ func (x gen_NSColor) WriteToPasteboard(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSColor class.
 func (x gen_NSColor) Init() NSColor {
+	ret := C.NSColor_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// Init_AsNSColor is a typed version of Init.
+func (x gen_NSColor) Init_AsNSColor() NSColor {
 	ret := C.NSColor_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -22595,8 +22851,17 @@ func (x gen_NSTextView) WriteSelectionToPasteboardTypes(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSTextView class.
 func (x gen_NSTextView) Init() NSTextView {
+	ret := C.NSTextView_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSTextView_FromPointer(ret)
+}
+
+// Init_AsNSTextView is a typed version of Init.
+func (x gen_NSTextView) Init_AsNSTextView() NSTextView {
 	ret := C.NSTextView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -25322,8 +25587,17 @@ func (x gen_NSView) WritePDFInsideRectToPasteboard(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSView class.
 func (x gen_NSView) Init() NSView {
+	ret := C.NSView_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSView_FromPointer(ret)
+}
+
+// Init_AsNSView is a typed version of Init.
+func (x gen_NSView) Init_AsNSView() NSView {
 	ret := C.NSView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

@@ -24,7 +24,7 @@ func init() {
 		return TerminateAfterWindowsClose
 	})
 	objc.RegisterClass(DefaultDelegateClass)
-	DefaultDelegate = objc.Get("DefaultDelegate").Alloc().Init()
+	DefaultDelegate = objc.Get("DefaultDelegate").Alloc().InitObject()
 }
 
 type NSApplication struct {
@@ -32,7 +32,7 @@ type NSApplication struct {
 }
 
 func NSApplication_New() NSApplication {
-	return NSApplication_Alloc().Init_AsNSApplication()
+	return NSApplication_Alloc().Init()
 }
 
 func NSApp() NSApplication {

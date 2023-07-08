@@ -2955,6 +2955,17 @@ func (x gen_CALayer) Init() CALayer {
 	return CALayer_FromPointer(ret)
 }
 
+// Init_AsCALayer is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
+func (x gen_CALayer) Init_AsCALayer() CALayer {
+	ret := C.CALayer_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return CALayer_FromPointer(ret)
+}
+
 // InitWithLayer override to copy or initialize custom fields of the specified layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc for details.
@@ -4198,6 +4209,17 @@ func (x gen_NSArray) Init() NSArray {
 	return NSArray_FromPointer(ret)
 }
 
+// Init_AsNSArray is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
+func (x gen_NSArray) Init_AsNSArray() NSArray {
+	ret := C.NSArray_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // InitWithArray initializes a newly allocated array by placing in it the objects contained in a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc for details.
@@ -4617,8 +4639,17 @@ func (x gen_NSAttributedString) Size() NSSize {
 	return *(*NSSize)(unsafe.Pointer(&ret))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSAttributedString class.
 func (x gen_NSAttributedString) Init() NSAttributedString {
+	ret := C.NSAttributedString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSAttributedString_FromPointer(ret)
+}
+
+// Init_AsNSAttributedString is a typed version of Init.
+func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4821,8 +4852,17 @@ func (x gen_NSData) WriteToURLAtomically(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSData class.
 func (x gen_NSData) Init() NSData {
+	ret := C.NSData_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSData_FromPointer(ret)
+}
+
+// Init_AsNSData is a typed version of Init.
+func (x gen_NSData) Init_AsNSData() NSData {
 	ret := C.NSData_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5037,6 +5077,17 @@ func (x gen_NSDictionary) FileType() NSString {
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
 func (x gen_NSDictionary) Init() NSDictionary {
+	ret := C.NSDictionary_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
+// Init_AsNSDictionary is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
+func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5290,8 +5341,17 @@ func (x gen_NSNumber) IsEqualToNumber(
 	return convertObjCBoolToGo(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSNumber class.
 func (x gen_NSNumber) Init() NSNumber {
+	ret := C.NSNumber_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// Init_AsNSNumber is a typed version of Init.
+func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
 	ret := C.NSNumber_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5449,8 +5509,17 @@ func (x gen_NSRunLoop) Run() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSRunLoop class.
 func (x gen_NSRunLoop) Init() NSRunLoop {
+	ret := C.NSRunLoop_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSRunLoop_FromPointer(ret)
+}
+
+// Init_AsNSRunLoop is a typed version of Init.
+func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5631,6 +5700,17 @@ func (x gen_NSString) HasSuffix(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
 func (x gen_NSString) Init() NSString {
+	ret := C.NSString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// Init_AsNSString is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
+func (x gen_NSString) Init_AsNSString() NSString {
 	ret := C.NSString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6304,6 +6384,17 @@ func (x gen_NSThread) Init() NSThread {
 	return NSThread_FromPointer(ret)
 }
 
+// Init_AsNSThread is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
+func (x gen_NSThread) Init_AsNSThread() NSThread {
+	ret := C.NSThread_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSThread_FromPointer(ret)
+}
+
 // InitWithTargetSelectorObject returns an NSThread object initialized with the given arguments.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414773-initwithtarget?language=objc for details.
@@ -6682,8 +6773,17 @@ func (x gen_NSURL) StopAccessingSecurityScopedResource() {
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSURL class.
 func (x gen_NSURL) Init() NSURL {
+	ret := C.NSURL_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSURL_FromPointer(ret)
+}
+
+// Init_AsNSURL is a typed version of Init.
+func (x gen_NSURL) Init_AsNSURL() NSURL {
 	ret := C.NSURL_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7024,8 +7124,17 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 	return NSString_FromPointer(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSURLRequest class.
 func (x gen_NSURLRequest) Init() NSURLRequest {
+	ret := C.NSURLRequest_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSURLRequest_FromPointer(ret)
+}
+
+// Init_AsNSURLRequest is a typed version of Init.
+func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7272,6 +7381,17 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
 func (x gen_NSUserDefaults) Init() NSUserDefaults {
+	ret := C.NSUserDefaults_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSUserDefaults_FromPointer(ret)
+}
+
+// Init_AsNSUserDefaults is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
+func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

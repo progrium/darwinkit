@@ -9,7 +9,7 @@ type NSDictionary struct {
 }
 
 func NSDictionary_New() NSDictionary {
-	return NSDictionary_Alloc().Init_AsNSDictionary()
+	return NSDictionary_Alloc().Init()
 }
 
 func NSDictionary_Init(valueKeys ...interface{}) NSDictionary {

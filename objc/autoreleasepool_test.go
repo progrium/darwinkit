@@ -18,7 +18,7 @@ func TestAutorelease(t *testing.T) {
 	RegisterClass(c)
 
 	Autorelease(func() {
-		dc := GetClass("AutoreleaseDealloc").Alloc().Init()
+		dc := GetClass("AutoreleaseDealloc").Alloc().InitObject()
 		dc.Autorelease()
 	})
 	if deallocCount != 1 {

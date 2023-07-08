@@ -12,7 +12,7 @@ type NSWindow struct {
 var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow_Alloc().Init_AsNSWindow()
+	return NSWindow_Alloc().Init()
 }
 
 func NSWindow_WithContentViewController(controller NSViewControllerRef) NSWindow {
@@ -63,10 +63,6 @@ func (w NSWindow) Opaque() bool {
 
 func (w NSWindow) MovableByWindowBackground() bool {
 	return w.IsMovableByWindowBackground()
-}
-
-func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
-	w.SetFrameDisplay(frame, display)
 }
 
 func (w NSWindow) CollectionBehavior() uint {

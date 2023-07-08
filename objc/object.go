@@ -42,7 +42,9 @@ type Object interface {
 	Alloc() Object
 
 	// Init sends the "init" message to the object.
-	Init() Object
+	// We name this InitObject to avoid a name clash with generated
+	// Init methods that have a different signature.
+	InitObject() Object
 
 	// Retain sends the "retain" message to the object.
 	Retain() Object
@@ -135,7 +137,7 @@ func (obj object) Alloc() Object {
 	return obj.Send("alloc")
 }
 
-func (obj object) Init() Object {
+func (obj object) InitObject() Object {
 	return obj.Send("init")
 }
 

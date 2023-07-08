@@ -20,7 +20,7 @@ func NSMenuItem_Init(itemName string, action objc.Selector, keyEquivalent string
 
 // NSMenuItem_New returns an initialized instance of NSMenuItem.
 func NSMenuItem_New() NSMenuItem {
-	return NSMenuItem_Alloc().Init_AsNSMenuItem()
+	return NSMenuItem_Alloc().Init()
 }
 
 // NSMenuItem_Separator returns a menu item that is used to separate logical groups of menu commands.

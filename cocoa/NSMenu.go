@@ -9,7 +9,7 @@ type NSMenu struct {
 }
 
 func NSMenu_New() NSMenu {
-	return NSMenu_Alloc().Init_AsNSMenu()
+	return NSMenu_Alloc().Init()
 }
 
 func NSMenu_Init(title string) NSMenu {

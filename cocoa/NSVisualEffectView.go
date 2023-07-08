@@ -10,7 +10,7 @@ type NSVisualEffectView struct {
 }
 
 func NSVisualEffectView_New() NSVisualEffectView {
-	return NSVisualEffectView_Alloc().Init_AsNSVisualEffectView()
+	return NSVisualEffectView_Alloc().Init()
 }
 
 // effect.Set("translatesAutoresizingMaskIntoConstraints:", false)

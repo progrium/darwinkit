@@ -20,6 +20,7 @@ func main() {
 
 		screen := cocoa.NSScreen_Main().Frame().Size
 		text := fmt.Sprintf(" %s ", strings.Join(flag.Args(), " "))
+		fmt.Println(text)
 		tr, fontSize := func() (rect core.NSRect, size float64) {
 			t := cocoa.NSTextView_Init(core.Rect(0, 0, 0, 0))
 			t.SetString(text)
@@ -65,7 +66,7 @@ func main() {
 		w.SetFrameDisplay(tr, true)
 		w.MakeKeyAndOrderFront(nil)
 
-		events := make(chan cocoa.NSEvent, 64)
+		events := make(chan cocoa.NSEvent, 964)
 		go func() {
 			<-events
 			cocoa.NSApp().Terminate()

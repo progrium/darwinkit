@@ -20,7 +20,7 @@ var NSUserNotificationCenter_ = objc.Get("NSUserNotificationCenter")
 
 func main() {
 	app := cocoa.NSApp_WithDidLaunch(func(_ objc.Object) {
-		notification := NSUserNotification{NSUserNotification_.Alloc().Init()}
+		notification := NSUserNotification{NSUserNotification_.Alloc().InitObject()}
 		notification.Set("title:", core.String("Hello, world!"))
 		notification.Set("informativeText:", core.String("More text"))
 
