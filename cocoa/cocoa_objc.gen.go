@@ -495,6 +495,15 @@ void* NSWorkspace_type_SharedWorkspace() {
 	return [NSWorkspace
 		sharedWorkspace];
 }
+void* NSSlider_type_Alloc() {
+	return [NSSlider
+		alloc];
+}
+void* NSSlider_type_SliderWithTargetAction(void* target, void* action) {
+	return [NSSlider
+		sliderWithTarget: target
+		action: action];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5472,6 +5481,61 @@ BOOL NSWorkspace_inst_IsVoiceOverEnabled(void *id) {
 		isVoiceOverEnabled];
 }
 
+BOOL NSSlider_inst_AcceptsFirstMouse(void *id, void* event) {
+	return [(NSSlider*)id
+		acceptsFirstMouse: event];
+}
+
+long NSSlider_inst_IndexOfTickMarkAtPoint(void *id, NSPoint point) {
+	return [(NSSlider*)id
+		indexOfTickMarkAtPoint: point];
+}
+
+NSRect NSSlider_inst_RectOfTickMarkAtIndex(void *id, long index) {
+	return [(NSSlider*)id
+		rectOfTickMarkAtIndex: index];
+}
+
+void* NSSlider_inst_Init(void *id) {
+	return [(NSSlider*)id
+		init];
+}
+
+double NSSlider_inst_KnobThickness(void *id) {
+	return [(NSSlider*)id
+		knobThickness];
+}
+
+void* NSSlider_inst_TrackFillColor(void *id) {
+	return [(NSSlider*)id
+		trackFillColor];
+}
+
+void NSSlider_inst_SetTrackFillColor(void *id, void* value) {
+	[(NSSlider*)id
+		setTrackFillColor: value];
+}
+
+BOOL NSSlider_inst_AllowsTickMarkValuesOnly(void *id) {
+	return [(NSSlider*)id
+		allowsTickMarkValuesOnly];
+}
+
+void NSSlider_inst_SetAllowsTickMarkValuesOnly(void *id, BOOL value) {
+	[(NSSlider*)id
+		setAllowsTickMarkValuesOnly: value];
+}
+
+long NSSlider_inst_NumberOfTickMarks(void *id) {
+	return [(NSSlider*)id
+		numberOfTickMarks];
+}
+
+void NSSlider_inst_SetNumberOfTickMarks(void *id, long value) {
+	[(NSSlider*)id
+		setNumberOfTickMarks: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -8612,6 +8676,25 @@ func NSWorkspace_SharedWorkspace() NSWorkspace {
 	ret := C.NSWorkspace_type_SharedWorkspace()
 
 	return NSWorkspace_FromPointer(ret)
+}
+
+// NSSlider_Alloc is undocumented.
+func NSSlider_Alloc() NSSlider {
+	ret := C.NSSlider_type_Alloc()
+
+	return NSSlider_FromPointer(ret)
+}
+
+// NSSlider_SliderWithTargetAction creates a continuous horizontal slider whose values range from 0.0 to 1.0.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1644494-sliderwithtarget?language=objc for details.
+func NSSlider_SliderWithTargetAction(target objc.Ref, action objc.Selector) NSSlider {
+	ret := C.NSSlider_type_SliderWithTargetAction(
+		objc.RefPointer(target),
+		action.SelectorAddress(),
+	)
+
+	return NSSlider_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -21388,6 +21471,162 @@ func (x gen_NSWorkspace) IsVoiceOverEnabled() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
+}
+
+type NSSliderRef interface {
+	Pointer() uintptr
+	Init_AsNSSlider() NSSlider
+}
+
+type gen_NSSlider struct {
+	NSControl
+}
+
+func NSSlider_FromPointer(ptr unsafe.Pointer) NSSlider {
+	return NSSlider{gen_NSSlider{
+		NSControl_FromPointer(ptr),
+	}}
+}
+
+func NSSlider_FromRef(ref objc.Ref) NSSlider {
+	return NSSlider_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AcceptsFirstMouse returns a Boolean value indicating whether a mouse-down event both activates the window and starts dragging the slider's knob.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1530290-acceptsfirstmouse?language=objc for details.
+func (x gen_NSSlider) AcceptsFirstMouse(
+	event NSEventRef,
+) bool {
+	ret := C.NSSlider_inst_AcceptsFirstMouse(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(event),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IndexOfTickMarkAtPoint returns the index of the tick mark closest to the location of the slider represented by the given point.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1526763-indexoftickmarkatpoint?language=objc for details.
+func (x gen_NSSlider) IndexOfTickMarkAtPoint(
+	point core.NSPoint,
+) core.NSInteger {
+	ret := C.NSSlider_inst_IndexOfTickMarkAtPoint(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSPoint)(unsafe.Pointer(&point)),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// RectOfTickMarkAtIndex returns the bounding rectangle of the tick mark at the given index.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532922-rectoftickmarkatindex?language=objc for details.
+func (x gen_NSSlider) RectOfTickMarkAtIndex(
+	index core.NSInteger,
+) core.NSRect {
+	ret := C.NSSlider_inst_RectOfTickMarkAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return *(*core.NSRect)(unsafe.Pointer(&ret))
+}
+
+// Init is undocumented.
+func (x gen_NSSlider) Init_AsNSSlider() NSSlider {
+	ret := C.NSSlider_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSSlider_FromPointer(ret)
+}
+
+// KnobThickness returns the knob’s thickness, in pixels.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532909-knobthickness?language=objc for details.
+func (x gen_NSSlider) KnobThickness() core.CGFloat {
+	ret := C.NSSlider_inst_KnobThickness(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.CGFloat(ret)
+}
+
+// TrackFillColor returns the color of the filled portion of the slider track, in appearances that support it.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/2560999-trackfillcolor?language=objc for details.
+func (x gen_NSSlider) TrackFillColor() NSColor {
+	ret := C.NSSlider_inst_TrackFillColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetTrackFillColor returns the color of the filled portion of the slider track, in appearances that support it.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/2560999-trackfillcolor?language=objc for details.
+func (x gen_NSSlider) SetTrackFillColor(
+	value NSColorRef,
+) {
+	C.NSSlider_inst_SetTrackFillColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// AllowsTickMarkValuesOnly returns a Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc for details.
+func (x gen_NSSlider) AllowsTickMarkValuesOnly() bool {
+	ret := C.NSSlider_inst_AllowsTickMarkValuesOnly(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetAllowsTickMarkValuesOnly returns a Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc for details.
+func (x gen_NSSlider) SetAllowsTickMarkValuesOnly(
+	value bool,
+) {
+	C.NSSlider_inst_SetAllowsTickMarkValuesOnly(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// NumberOfTickMarks returns the number of tick marks associated with the slider.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc for details.
+func (x gen_NSSlider) NumberOfTickMarks() core.NSInteger {
+	ret := C.NSSlider_inst_NumberOfTickMarks(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetNumberOfTickMarks returns the number of tick marks associated with the slider.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc for details.
+func (x gen_NSSlider) SetNumberOfTickMarks(
+	value core.NSInteger,
+) {
+	C.NSSlider_inst_SetNumberOfTickMarks(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
 }
 
 type NSColorRef interface {
