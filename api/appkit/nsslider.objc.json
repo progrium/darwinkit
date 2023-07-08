@@ -1,0 +1,450 @@
+{
+  "Class": {
+    "Name": "NSSlider",
+    "Description": "A display of a bar representing a continuous range of numerical values and a knob representing the currently selected value.",
+    "Declaration": "@interface NSSlider : NSControl",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "setKnobThickness:",
+        "Description": "",
+        "Declaration": "- (void)setKnobThickness:(CGFloat)thickness;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "thickness",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532899-setknobthickness?language=objc"
+      },
+      {
+        "Name": "acceptsFirstMouse:",
+        "Description": "Returns a Boolean value indicating whether a mouse-down event both activates the window and starts dragging the slider's knob.",
+        "Declaration": "- (BOOL)acceptsFirstMouse:(NSEvent *)event;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1530290-acceptsfirstmouse?language=objc"
+      },
+      {
+        "Name": "closestTickMarkValueToValue:",
+        "Description": "Returns the value of the tick mark closest to the specified value.",
+        "Declaration": "- (double)closestTickMarkValueToValue:(double)value;",
+        "Return": {
+          "Name": "double"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "double"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1530237-closesttickmarkvaluetovalue?language=objc"
+      },
+      {
+        "Name": "indexOfTickMarkAtPoint:",
+        "Description": "Returns the index of the tick mark closest to the location of the slider represented by the given point.",
+        "Declaration": "- (NSInteger)indexOfTickMarkAtPoint:(NSPoint)point;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1526763-indexoftickmarkatpoint?language=objc"
+      },
+      {
+        "Name": "rectOfTickMarkAtIndex:",
+        "Description": "Returns the bounding rectangle of the tick mark at the given index.",
+        "Declaration": "- (NSRect)rectOfTickMarkAtIndex:(NSInteger)index;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532922-rectoftickmarkatindex?language=objc"
+      },
+      {
+        "Name": "tickMarkValueAtIndex:",
+        "Description": "Returns the slider’s value represented by the tick mark at the specified index.",
+        "Declaration": "- (double)tickMarkValueAtIndex:(NSInteger)index;",
+        "Return": {
+          "Name": "double"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1527230-tickmarkvalueatindex?language=objc"
+      },
+      {
+        "Name": "setImage:",
+        "Description": "Sets the image the slider displays in the bar behind its knob.",
+        "Declaration": "- (void)setImage:(NSImage *)backgroundImage;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "backgroundImage",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532926-setimage?language=objc"
+      },
+      {
+        "Name": "image",
+        "Description": "Returns nil.",
+        "Declaration": "- (NSImage *)image;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532906-image?language=objc"
+      },
+      {
+        "Name": "title",
+        "Description": "Returns the slider’s title.",
+        "Declaration": "- (NSString *)title;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532913-title?language=objc"
+      },
+      {
+        "Name": "titleCell",
+        "Description": "This method has been deprecated. Returns nil.",
+        "Declaration": "- (id)titleCell;",
+        "Return": {
+          "Name": "id"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532902-titlecell?language=objc"
+      },
+      {
+        "Name": "titleColor",
+        "Description": "This method has been deprecated. Returns nil.",
+        "Declaration": "- (NSColor *)titleColor;",
+        "Return": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532896-titlecolor?language=objc"
+      },
+      {
+        "Name": "titleFont",
+        "Description": "This method has been deprecated. Returns nil.",
+        "Declaration": "- (NSFont *)titleFont;",
+        "Return": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532907-titlefont?language=objc"
+      },
+      {
+        "Name": "setTitle:",
+        "Description": "Sets the title the slider displays in the bar behind its knob.",
+        "Declaration": "- (void)setTitle:(NSString *)string;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532915-settitle?language=objc"
+      },
+      {
+        "Name": "setTitleCell:",
+        "Description": "Sets the cell used to draw the slider’s title.",
+        "Declaration": "- (void)setTitleCell:(NSCell *)cell;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cell",
+            "Type": {
+              "Name": "NSCell",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532904-settitlecell?language=objc"
+      },
+      {
+        "Name": "setTitleColor:",
+        "Description": "Sets the color used to draw the slider’s title.",
+        "Declaration": "- (void)setTitleColor:(NSColor *)newColor;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "newColor",
+            "Type": {
+              "Name": "NSColor",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532911-settitlecolor?language=objc"
+      },
+      {
+        "Name": "setTitleFont:",
+        "Description": "Sets the font used to draw the slider’s title.",
+        "Declaration": "- (void)setTitleFont:(NSFont *)fontObj;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "fontObj",
+            "Type": {
+              "Name": "NSFont",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532927-settitlefont?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "sliderType",
+        "Description": "The type of the slider, such as vertical or circular.",
+        "Declaration": "@property NSSliderType sliderType;",
+        "Type": {
+          "Name": "NSSliderType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532924-slidertype?language=objc"
+      },
+      {
+        "Name": "altIncrementValue",
+        "Description": "The amount by which the slider changes its value when the user Option-drags the slider knob.",
+        "Declaration": "@property double altIncrementValue;",
+        "Type": {
+          "Name": "double"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc"
+      },
+      {
+        "Name": "knobThickness",
+        "Description": "The knob’s thickness, in pixels.",
+        "Declaration": "@property(readonly) CGFloat knobThickness;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532909-knobthickness?language=objc"
+      },
+      {
+        "Name": "vertical",
+        "Description": "An integer indicating the orientation (horizontal or vertical) of the slider.",
+        "Declaration": "@property(readwrite, getter=isVertical) BOOL vertical;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVertical",
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1527901-vertical?language=objc"
+      },
+      {
+        "Name": "trackFillColor",
+        "Description": "The color of the filled portion of the slider track, in appearances that support it.",
+        "Declaration": "@property(copy) NSColor *trackFillColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/2560999-trackfillcolor?language=objc"
+      },
+      {
+        "Name": "maxValue",
+        "Description": "The maximum value the slider can send to its target.",
+        "Declaration": "@property double maxValue;",
+        "Type": {
+          "Name": "double"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc"
+      },
+      {
+        "Name": "minValue",
+        "Description": "The minimum value the slider can send to its target.",
+        "Declaration": "@property double minValue;",
+        "Type": {
+          "Name": "double"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc"
+      },
+      {
+        "Name": "allowsTickMarkValuesOnly",
+        "Description": "A Boolean value that indicates whether the slider fixes its values to those values represented by its tick marks.",
+        "Declaration": "@property BOOL allowsTickMarkValuesOnly;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1526898-allowstickmarkvaluesonly?language=objc"
+      },
+      {
+        "Name": "numberOfTickMarks",
+        "Description": "The number of tick marks associated with the slider.",
+        "Declaration": "@property NSInteger numberOfTickMarks;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1524268-numberoftickmarks?language=objc"
+      },
+      {
+        "Name": "tickMarkPosition",
+        "Description": "Determines where the slider’s tick marks are displayed.",
+        "Declaration": "@property NSTickMarkPosition tickMarkPosition;",
+        "Type": {
+          "Name": "NSTickMarkPosition"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1529657-tickmarkposition?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "sliderWithTarget:action:",
+        "Description": "Creates a continuous horizontal slider whose values range from 0.0 to 1.0.",
+        "Declaration": "+ (instancetype)sliderWithTarget:(id)target \n                          action:(SEL)action;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1644494-sliderwithtarget?language=objc"
+      },
+      {
+        "Name": "sliderWithValue:minValue:maxValue:target:action:",
+        "Description": "Creates a continuous horizontal slider that represents values over the specified range.",
+        "Declaration": "+ (instancetype)sliderWithValue:(double)value \n                       minValue:(double)minValue \n                       maxValue:(double)maxValue \n                         target:(id)target \n                         action:(SEL)action;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "double"
+            }
+          },
+          {
+            "Name": "minValue",
+            "Type": {
+              "Name": "double"
+            }
+          },
+          {
+            "Name": "maxValue",
+            "Type": {
+              "Name": "double"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsslider/1644495-sliderwithvalue?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T20:17:33.250833-04:00",
+  "Version": 2
+}
