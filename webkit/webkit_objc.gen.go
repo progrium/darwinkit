@@ -527,7 +527,7 @@ func WKPreferences_Alloc() WKPreferences {
 
 type WKNavigationRef interface {
 	Pointer() uintptr
-	Init_AsWKNavigation() WKNavigation
+	Init() WKNavigation
 }
 
 type gen_WKNavigation struct {
@@ -545,7 +545,7 @@ func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
 }
 
 // Init is undocumented.
-func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
+func (x gen_WKNavigation) Init() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -555,7 +555,7 @@ func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
 
 type WKUserScriptRef interface {
 	Pointer() uintptr
-	Init_AsWKUserScript() WKUserScript
+	Init() WKUserScript
 }
 
 type gen_WKUserScript struct {
@@ -573,7 +573,7 @@ func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
 }
 
 // Init is undocumented.
-func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
+func (x gen_WKUserScript) Init() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -605,7 +605,7 @@ func (x gen_WKUserScript) IsForMainFrameOnly() bool {
 
 type WKWebViewRef interface {
 	Pointer() uintptr
-	Init_AsWKWebView() WKWebView
+	Init() WKWebView
 }
 
 type gen_WKWebView struct {
@@ -675,7 +675,7 @@ func (x gen_WKWebView) GoForward_(
 // InitWithFrameConfiguration creates a web view and initializes it with the specified frame and configuration data.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414998-initwithframe?language=objc for details.
-func (x gen_WKWebView) InitWithFrameConfiguration_AsWKWebView(
+func (x gen_WKWebView) InitWithFrameConfiguration(
 	frame core.NSRect,
 	configuration WKWebViewConfigurationRef,
 ) WKWebView {
@@ -862,7 +862,7 @@ func (x gen_WKWebView) StopLoading_(
 }
 
 // Init is undocumented.
-func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
+func (x gen_WKWebView) Init() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1174,7 +1174,7 @@ func (x gen_WKWebView) SetInteractionState(
 
 type WKWebViewConfigurationRef interface {
 	Pointer() uintptr
-	Init_AsWKWebViewConfiguration() WKWebViewConfiguration
+	Init() WKWebViewConfiguration
 }
 
 type gen_WKWebViewConfiguration struct {
@@ -1222,7 +1222,7 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 }
 
 // Init is undocumented.
-func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
+func (x gen_WKWebViewConfiguration) Init() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -1457,7 +1457,7 @@ func (x gen_WKWebViewConfiguration) SetUpgradeKnownHostsToHTTPS(
 
 type WKPreferencesRef interface {
 	Pointer() uintptr
-	Init_AsWKPreferences() WKPreferences
+	Init() WKPreferences
 }
 
 type gen_WKPreferences struct {
@@ -1489,7 +1489,7 @@ func (x gen_WKPreferences) SetValueForKey(
 }
 
 // Init is undocumented.
-func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
+func (x gen_WKPreferences) Init() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)

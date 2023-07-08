@@ -2823,7 +2823,7 @@ func NSUserDefaults_StandardUserDefaults() NSUserDefaults {
 
 type CALayerRef interface {
 	Pointer() uintptr
-	Init_AsCALayer() CALayer
+	Init() CALayer
 }
 
 type gen_CALayer struct {
@@ -2947,7 +2947,7 @@ func (x gen_CALayer) DisplayIfNeeded() {
 // Init returns an initialized CALayer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
-func (x gen_CALayer) Init_AsCALayer() CALayer {
+func (x gen_CALayer) Init() CALayer {
 	ret := C.CALayer_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -2958,7 +2958,7 @@ func (x gen_CALayer) Init_AsCALayer() CALayer {
 // InitWithLayer override to copy or initialize custom fields of the specified layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc for details.
-func (x gen_CALayer) InitWithLayer_AsCALayer(
+func (x gen_CALayer) InitWithLayer(
 	layer objc.Ref,
 ) CALayer {
 	ret := C.CALayer_inst_InitWithLayer(
@@ -3042,7 +3042,7 @@ func (x gen_CALayer) LayoutSublayers() {
 // ModelLayer returns the model layer object associated with the receiver, if any.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc for details.
-func (x gen_CALayer) ModelLayer_AsCALayer() CALayer {
+func (x gen_CALayer) ModelLayer() CALayer {
 	ret := C.CALayer_inst_ModelLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -3086,7 +3086,7 @@ func (x gen_CALayer) PreferredFrameSize() NSSize {
 // PresentationLayer returns a copy of the presentation layer object that represents the state of the layer as it currently appears onscreen.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc for details.
-func (x gen_CALayer) PresentationLayer_AsCALayer() CALayer {
+func (x gen_CALayer) PresentationLayer() CALayer {
 	ret := C.CALayer_inst_PresentationLayer(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4112,7 +4112,7 @@ func (x gen_CALayer) SetName(
 
 type NSArrayRef interface {
 	Pointer() uintptr
-	Init_AsNSArray() NSArray
+	Init() NSArray
 }
 
 type gen_NSArray struct {
@@ -4190,7 +4190,7 @@ func (x gen_NSArray) DescriptionWithLocaleIndent(
 // Init initializes a newly allocated array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
-func (x gen_NSArray) Init_AsNSArray() NSArray {
+func (x gen_NSArray) Init() NSArray {
 	ret := C.NSArray_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4201,7 +4201,7 @@ func (x gen_NSArray) Init_AsNSArray() NSArray {
 // InitWithArray initializes a newly allocated array by placing in it the objects contained in a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc for details.
-func (x gen_NSArray) InitWithArray_AsNSArray(
+func (x gen_NSArray) InitWithArray(
 	array NSArrayRef,
 ) NSArray {
 	ret := C.NSArray_inst_InitWithArray(
@@ -4215,7 +4215,7 @@ func (x gen_NSArray) InitWithArray_AsNSArray(
 // InitWithArrayCopyItems initializes a newly allocated array using anArray as the source of data objects for the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408557-initwitharray?language=objc for details.
-func (x gen_NSArray) InitWithArrayCopyItems_AsNSArray(
+func (x gen_NSArray) InitWithArrayCopyItems(
 	array NSArrayRef,
 	flag bool,
 ) NSArray {
@@ -4390,7 +4390,7 @@ func (x gen_NSArray) Description() NSString {
 
 type NSAttributedStringRef interface {
 	Pointer() uintptr
-	Init_AsNSAttributedString() NSAttributedString
+	Init() NSAttributedString
 }
 
 type gen_NSAttributedString struct {
@@ -4435,7 +4435,7 @@ func (x gen_NSAttributedString) DrawInRect(
 // InitWithAttributedString creates an attributed string with the characters and attributes of the specified attributed string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1415342-initwithattributedstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithAttributedString_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithAttributedString(
 	attrStr NSAttributedStringRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithAttributedString(
@@ -4449,7 +4449,7 @@ func (x gen_NSAttributedString) InitWithAttributedString_AsNSAttributedString(
 // InitWithDocFormatDocumentAttributes creates an attributed string from Microsoft Word format data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc for details.
-func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
@@ -4465,7 +4465,7 @@ func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes_AsNSAttribut
 // InitWithHTMLBaseURLDocumentAttributes creates an attributed string from the HTML in the specified data object and base URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1524624-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes(
 	data NSDataRef,
 	base NSURLRef,
 	dict NSDictionaryRef,
@@ -4483,7 +4483,7 @@ func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes_AsNSAttrib
 // InitWithHTMLDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1525953-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
@@ -4499,7 +4499,7 @@ func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes_AsNSAttributedStr
 // InitWithHTMLOptionsDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes(
 	data NSDataRef,
 	options NSDictionaryRef,
 	dict NSDictionaryRef,
@@ -4517,7 +4517,7 @@ func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes_AsNSAttrib
 // InitWithRTFDocumentAttributes creates an attributed string by decoding the stream of RTF commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc for details.
-func (x gen_NSAttributedString) InitWithRTFDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithRTFDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
@@ -4533,7 +4533,7 @@ func (x gen_NSAttributedString) InitWithRTFDocumentAttributes_AsNSAttributedStri
 // InitWithRTFDDocumentAttributes creates an attributed string by decoding the stream of RTFD commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc for details.
-func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
@@ -4549,7 +4549,7 @@ func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes_AsNSAttributedStr
 // InitWithString creates an attributed string with the characters of the specified string and no attribute information.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithString_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithString(
 	str NSStringRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithString(
@@ -4563,7 +4563,7 @@ func (x gen_NSAttributedString) InitWithString_AsNSAttributedString(
 // InitWithStringAttributes creates an attributed string with the specified string and attributes.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1408136-initwithstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithStringAttributes_AsNSAttributedString(
+func (x gen_NSAttributedString) InitWithStringAttributes(
 	str NSStringRef,
 	attrs NSDictionaryRef,
 ) NSAttributedString {
@@ -4618,7 +4618,7 @@ func (x gen_NSAttributedString) Size() NSSize {
 }
 
 // Init is undocumented.
-func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
+func (x gen_NSAttributedString) Init() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4650,7 +4650,7 @@ func (x gen_NSAttributedString) Length() NSUInteger {
 
 type NSDataRef interface {
 	Pointer() uintptr
-	Init_AsNSData() NSData
+	Init() NSData
 }
 
 type gen_NSData struct {
@@ -4686,7 +4686,7 @@ func (x gen_NSData) GetBytesLength(
 // InitWithBytesLength initializes a data object filled with a given number of bytes copied from a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1412793-initwithbytes?language=objc for details.
-func (x gen_NSData) InitWithBytesLength_AsNSData(
+func (x gen_NSData) InitWithBytesLength(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 ) NSData {
@@ -4702,7 +4702,7 @@ func (x gen_NSData) InitWithBytesLength_AsNSData(
 // InitWithBytesNoCopyLength initializes a data object filled with a given number of bytes of data from a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1409454-initwithbytesnocopy?language=objc for details.
-func (x gen_NSData) InitWithBytesNoCopyLength_AsNSData(
+func (x gen_NSData) InitWithBytesNoCopyLength(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 ) NSData {
@@ -4718,7 +4718,7 @@ func (x gen_NSData) InitWithBytesNoCopyLength_AsNSData(
 // InitWithBytesNoCopyLengthFreeWhenDone initializes a newly allocated data object by adding the given number of bytes from the given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc for details.
-func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone_AsNSData(
+func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 	b bool,
@@ -4736,7 +4736,7 @@ func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone_AsNSData(
 // InitWithContentsOfFile initializes a data object with the content of the file at a given path.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1408672-initwithcontentsoffile?language=objc for details.
-func (x gen_NSData) InitWithContentsOfFile_AsNSData(
+func (x gen_NSData) InitWithContentsOfFile(
 	path NSStringRef,
 ) NSData {
 	ret := C.NSData_inst_InitWithContentsOfFile(
@@ -4750,7 +4750,7 @@ func (x gen_NSData) InitWithContentsOfFile_AsNSData(
 // InitWithContentsOfURL initializes a data object with the data from the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc for details.
-func (x gen_NSData) InitWithContentsOfURL_AsNSData(
+func (x gen_NSData) InitWithContentsOfURL(
 	url NSURLRef,
 ) NSData {
 	ret := C.NSData_inst_InitWithContentsOfURL(
@@ -4764,7 +4764,7 @@ func (x gen_NSData) InitWithContentsOfURL_AsNSData(
 // InitWithData initializes a data object with the contents of another data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc for details.
-func (x gen_NSData) InitWithData_AsNSData(
+func (x gen_NSData) InitWithData(
 	data NSDataRef,
 ) NSData {
 	ret := C.NSData_inst_InitWithData(
@@ -4822,7 +4822,7 @@ func (x gen_NSData) WriteToURLAtomically(
 }
 
 // Init is undocumented.
-func (x gen_NSData) Init_AsNSData() NSData {
+func (x gen_NSData) Init() NSData {
 	ret := C.NSData_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -4865,7 +4865,7 @@ func (x gen_NSData) Description() NSString {
 
 type NSDictionaryRef interface {
 	Pointer() uintptr
-	Init_AsNSDictionary() NSDictionary
+	Init() NSDictionary
 }
 
 type gen_NSDictionary struct {
@@ -5036,7 +5036,7 @@ func (x gen_NSDictionary) FileType() NSString {
 // Init initializes a newly allocated dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
-func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
+func (x gen_NSDictionary) Init() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5047,7 +5047,7 @@ func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 // InitWithDictionary initializes a newly allocated dictionary by placing in it the keys and values contained in another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418434-initwithdictionary?language=objc for details.
-func (x gen_NSDictionary) InitWithDictionary_AsNSDictionary(
+func (x gen_NSDictionary) InitWithDictionary(
 	otherDictionary NSDictionaryRef,
 ) NSDictionary {
 	ret := C.NSDictionary_inst_InitWithDictionary(
@@ -5061,7 +5061,7 @@ func (x gen_NSDictionary) InitWithDictionary_AsNSDictionary(
 // InitWithDictionaryCopyItems initializes a newly allocated dictionary using the objects contained in another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410124-initwithdictionary?language=objc for details.
-func (x gen_NSDictionary) InitWithDictionaryCopyItems_AsNSDictionary(
+func (x gen_NSDictionary) InitWithDictionaryCopyItems(
 	otherDictionary NSDictionaryRef,
 	flag bool,
 ) NSDictionary {
@@ -5077,7 +5077,7 @@ func (x gen_NSDictionary) InitWithDictionaryCopyItems_AsNSDictionary(
 // InitWithObjectsForKeys initializes a newly allocated dictionary with key-value pairs constructed from the provided arrays of keys and objects.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410010-initwithobjects?language=objc for details.
-func (x gen_NSDictionary) InitWithObjectsForKeys_AsNSDictionary(
+func (x gen_NSDictionary) InitWithObjectsForKeys(
 	objects NSArrayRef,
 	keys NSArrayRef,
 ) NSDictionary {
@@ -5175,7 +5175,7 @@ func (x gen_NSDictionary) DescriptionInStringsFileFormat() NSString {
 
 type NSNumberRef interface {
 	Pointer() uintptr
-	Init_AsNSNumber() NSNumber
+	Init() NSNumber
 }
 
 type gen_NSNumber struct {
@@ -5291,7 +5291,7 @@ func (x gen_NSNumber) IsEqualToNumber(
 }
 
 // Init is undocumented.
-func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
+func (x gen_NSNumber) Init() NSNumber {
 	ret := C.NSNumber_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5367,7 +5367,7 @@ func (x gen_NSNumber) StringValue() NSString {
 
 type NSRunLoopRef interface {
 	Pointer() uintptr
-	Init_AsNSRunLoop() NSRunLoop
+	Init() NSRunLoop
 }
 
 type gen_NSRunLoop struct {
@@ -5450,7 +5450,7 @@ func (x gen_NSRunLoop) Run() {
 }
 
 // Init is undocumented.
-func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
+func (x gen_NSRunLoop) Init() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5460,7 +5460,7 @@ func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
 
 type NSStringRef interface {
 	Pointer() uintptr
-	Init_AsNSString() NSString
+	Init() NSString
 }
 
 type gen_NSString struct {
@@ -5630,7 +5630,7 @@ func (x gen_NSString) HasSuffix(
 // Init returns an initialized NSString object that contains no characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
-func (x gen_NSString) Init_AsNSString() NSString {
+func (x gen_NSString) Init() NSString {
 	ret := C.NSString_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -5641,7 +5641,7 @@ func (x gen_NSString) Init_AsNSString() NSString {
 // InitWithBytesLengthEncoding returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc for details.
-func (x gen_NSString) InitWithBytesLengthEncoding_AsNSString(
+func (x gen_NSString) InitWithBytesLengthEncoding(
 	bytes unsafe.Pointer,
 	len NSUInteger,
 	encoding NSStringEncoding,
@@ -5659,7 +5659,7 @@ func (x gen_NSString) InitWithBytesLengthEncoding_AsNSString(
 // InitWithBytesNoCopyLengthEncodingFreeWhenDone returns an initialized NSString object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413830-initwithbytesnocopy?language=objc for details.
-func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone_AsNSString(
+func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
 	bytes unsafe.Pointer,
 	len NSUInteger,
 	encoding NSStringEncoding,
@@ -5679,7 +5679,7 @@ func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone_AsNSString(
 // InitWithDataEncoding returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc for details.
-func (x gen_NSString) InitWithDataEncoding_AsNSString(
+func (x gen_NSString) InitWithDataEncoding(
 	data NSDataRef,
 	encoding NSStringEncoding,
 ) NSString {
@@ -5695,7 +5695,7 @@ func (x gen_NSString) InitWithDataEncoding_AsNSString(
 // InitWithString returns an NSString object initialized by copying the characters from another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc for details.
-func (x gen_NSString) InitWithString_AsNSString(
+func (x gen_NSString) InitWithString(
 	aString NSStringRef,
 ) NSString {
 	ret := C.NSString_inst_InitWithString(
@@ -6265,7 +6265,7 @@ func (x gen_NSString) StringByRemovingPercentEncoding() NSString {
 
 type NSThreadRef interface {
 	Pointer() uintptr
-	Init_AsNSThread() NSThread
+	Init() NSThread
 }
 
 type gen_NSThread struct {
@@ -6296,7 +6296,7 @@ func (x gen_NSThread) Cancel() {
 // Init returns an initialized NSThread object.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
-func (x gen_NSThread) Init_AsNSThread() NSThread {
+func (x gen_NSThread) Init() NSThread {
 	ret := C.NSThread_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6307,7 +6307,7 @@ func (x gen_NSThread) Init_AsNSThread() NSThread {
 // InitWithTargetSelectorObject returns an NSThread object initialized with the given arguments.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414773-initwithtarget?language=objc for details.
-func (x gen_NSThread) InitWithTargetSelectorObject_AsNSThread(
+func (x gen_NSThread) InitWithTargetSelectorObject(
 	target objc.Ref,
 	selector objc.Selector,
 	argument objc.Ref,
@@ -6440,7 +6440,7 @@ func (x gen_NSThread) SetStackSize(
 
 type NSURLRef interface {
 	Pointer() uintptr
-	Init_AsNSURL() NSURL
+	Init() NSURL
 }
 
 type gen_NSURL struct {
@@ -6515,7 +6515,7 @@ func (x gen_NSURL) FileReferenceURL() NSURL {
 // InitAbsoluteURLWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410750-initabsoluteurlwithdatarepresent?language=objc for details.
-func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL_AsNSURL(
+func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL(
 	data NSDataRef,
 	baseURL NSURLRef,
 ) NSURL {
@@ -6531,7 +6531,7 @@ func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL_AsNSURL(
 // InitFileURLWithPath initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410301-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPath_AsNSURL(
+func (x gen_NSURL) InitFileURLWithPath(
 	path NSStringRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPath(
@@ -6545,7 +6545,7 @@ func (x gen_NSURL) InitFileURLWithPath_AsNSURL(
 // InitFileURLWithPathIsDirectory initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417505-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathIsDirectory_AsNSURL(
+func (x gen_NSURL) InitFileURLWithPathIsDirectory(
 	path NSStringRef,
 	isDir bool,
 ) NSURL {
@@ -6561,7 +6561,7 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectory_AsNSURL(
 // InitFileURLWithPathIsDirectoryRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL_AsNSURL(
+func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
 	path NSStringRef,
 	isDir bool,
 	baseURL NSURLRef,
@@ -6579,7 +6579,7 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL_AsNSURL(
 // InitFileURLWithPathRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415077-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathRelativeToURL_AsNSURL(
+func (x gen_NSURL) InitFileURLWithPathRelativeToURL(
 	path NSStringRef,
 	baseURL NSURLRef,
 ) NSURL {
@@ -6595,7 +6595,7 @@ func (x gen_NSURL) InitFileURLWithPathRelativeToURL_AsNSURL(
 // InitWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1416851-initwithdatarepresentation?language=objc for details.
-func (x gen_NSURL) InitWithDataRepresentationRelativeToURL_AsNSURL(
+func (x gen_NSURL) InitWithDataRepresentationRelativeToURL(
 	data NSDataRef,
 	baseURL NSURLRef,
 ) NSURL {
@@ -6611,7 +6611,7 @@ func (x gen_NSURL) InitWithDataRepresentationRelativeToURL_AsNSURL(
 // InitWithString initializes an NSURL object with a provided URL string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413146-initwithstring?language=objc for details.
-func (x gen_NSURL) InitWithString_AsNSURL(
+func (x gen_NSURL) InitWithString(
 	URLString NSStringRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithString(
@@ -6625,7 +6625,7 @@ func (x gen_NSURL) InitWithString_AsNSURL(
 // InitWithStringRelativeToURL initializes an NSURL object with a base URL and a relative string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc for details.
-func (x gen_NSURL) InitWithStringRelativeToURL_AsNSURL(
+func (x gen_NSURL) InitWithStringRelativeToURL(
 	URLString NSStringRef,
 	baseURL NSURLRef,
 ) NSURL {
@@ -6683,7 +6683,7 @@ func (x gen_NSURL) StopAccessingSecurityScopedResource() {
 }
 
 // Init is undocumented.
-func (x gen_NSURL) Init_AsNSURL() NSURL {
+func (x gen_NSURL) Init() NSURL {
 	ret := C.NSURL_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -6979,7 +6979,7 @@ func (x gen_NSURL) HasDirectoryPath() bool {
 
 type NSURLRequestRef interface {
 	Pointer() uintptr
-	Init_AsNSURLRequest() NSURLRequest
+	Init() NSURLRequest
 }
 
 type gen_NSURLRequest struct {
@@ -6999,7 +6999,7 @@ func NSURLRequest_FromRef(ref objc.Ref) NSURLRequest {
 // InitWithURL creates a URL request for a specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc for details.
-func (x gen_NSURLRequest) InitWithURL_AsNSURLRequest(
+func (x gen_NSURLRequest) InitWithURL(
 	URL NSURLRef,
 ) NSURLRequest {
 	ret := C.NSURLRequest_inst_InitWithURL(
@@ -7025,7 +7025,7 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 }
 
 // Init is undocumented.
-func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
+func (x gen_NSURLRequest) Init() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7156,7 +7156,7 @@ func (x gen_NSURLRequest) AssumesHTTP3Capable() bool {
 
 type NSUserDefaultsRef interface {
 	Pointer() uintptr
-	Init_AsNSUserDefaults() NSUserDefaults
+	Init() NSUserDefaults
 }
 
 type gen_NSUserDefaults struct {
@@ -7271,7 +7271,7 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 // Init creates a user defaults object initialized with the defaults for the app and current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
-func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
+func (x gen_NSUserDefaults) Init() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
 		unsafe.Pointer(x.Pointer()),
 	)
@@ -7282,7 +7282,7 @@ func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 // InitWithSuiteName creates a user defaults object initialized with the defaults for the specified database name.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409957-initwithsuitename?language=objc for details.
-func (x gen_NSUserDefaults) InitWithSuiteName_AsNSUserDefaults(
+func (x gen_NSUserDefaults) InitWithSuiteName(
 	suitename NSStringRef,
 ) NSUserDefaults {
 	ret := C.NSUserDefaults_inst_InitWithSuiteName(
