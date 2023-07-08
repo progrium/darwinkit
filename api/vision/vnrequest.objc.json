@@ -1,0 +1,283 @@
+{
+  "Class": {
+    "Name": "VNRequest",
+    "Description": "The abstract superclass for analysis requests.",
+    "Declaration": "@interface VNRequest : NSObject",
+    "Platforms": [
+      "iOS 11.0+",
+      "iPadOS 11.0+",
+      "macOS 10.13+",
+      "Mac Catalyst 13.1+",
+      "tvOS 11.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "init",
+        "Description": "Creates a new Vision request with no completion handler.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2875423-init?language=objc"
+      },
+      {
+        "Name": "initWithCompletionHandler:",
+        "Description": "Creates a new Vision request with an optional completion handler.",
+        "Declaration": "- (instancetype)initWithCompletionHandler:(VNRequestCompletionHandler)completionHandler;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Name": "VNRequestCompletionHandler"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2875416-initwithcompletionhandler?language=objc"
+      },
+      {
+        "Name": "setComputeDevice:forComputeStage:",
+        "Description": "Assigns a compute device for a compute stage.",
+        "Declaration": "- (void)setComputeDevice:(id\u003cMLComputeDeviceProtocol\u003e)computeDevice \n         forComputeStage:(VNComputeStage)computeStage;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "computeDevice",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "MLComputeDeviceProtocol"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "computeStage",
+            "Type": {
+              "Name": "VNComputeStage"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/4173242-setcomputedevice?language=objc"
+      },
+      {
+        "Name": "computeDeviceForComputeStage:",
+        "Description": "Returns the compute device for a compute stage.",
+        "Declaration": "- (id\u003cMLComputeDeviceProtocol\u003e)computeDeviceForComputeStage:(VNComputeStage)computeStage;",
+        "Return": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "MLComputeDeviceProtocol"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "computeStage",
+            "Type": {
+              "Name": "VNComputeStage"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/4173241-computedeviceforcomputestage?language=objc"
+      },
+      {
+        "Name": "supportedComputeStageDevicesAndReturnError:",
+        "Description": "The collection of compute devices per-stage that a request supports.",
+        "Declaration": "- (NSDictionary\u003cVNComputeStage,NSArray\u003cid\u003cMLComputeDeviceProtocol\u003e\u003e *\u003e *)supportedComputeStageDevicesAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNComputeStage"
+            },
+            {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "id",
+                  "Params": [
+                    {
+                      "Name": "MLComputeDeviceProtocol"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/4173243-supportedcomputestagedevicesandr?language=objc"
+      },
+      {
+        "Name": "cancel",
+        "Description": "Cancels the request before it can finish executing.",
+        "Declaration": "- (void)cancel;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2867234-cancel?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "completionHandler",
+        "Description": "The completion handler the system invokes after the request finishes processing.",
+        "Declaration": "@property(readonly, nonatomic, copy, nullable) VNRequestCompletionHandler completionHandler;",
+        "Type": {
+          "Name": "VNRequestCompletionHandler"
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2867266-completionhandler?language=objc"
+      },
+      {
+        "Name": "preferBackgroundProcessing",
+        "Description": "A hint to minimize the resource burden of the request.",
+        "Declaration": "@property(readwrite, nonatomic, assign) BOOL preferBackgroundProcessing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2875404-preferbackgroundprocessing?language=objc"
+      },
+      {
+        "Name": "results",
+        "Description": "The collection of VNObservation results generated by request processing.",
+        "Declaration": "@property(readonly, nonatomic, copy, nullable) NSArray\u003c__kindof VNObservation *\u003e *results;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNObservation",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2867238-results?language=objc"
+      },
+      {
+        "Name": "usesCPUOnly",
+        "Description": "A Boolean signifying that the Vision request should execute exclusively on the CPU.",
+        "Declaration": "@property(readwrite, nonatomic) BOOL usesCPUOnly;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2923480-usescpuonly?language=objc"
+      },
+      {
+        "Name": "revision",
+        "Description": "The specific algorithm or implementation revision that’s used to perform the request.",
+        "Declaration": "@property(readwrite, nonatomic, assign) NSUInteger revision;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2967110-revision?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "currentRevision",
+        "Description": "The current revison supported by the request.",
+        "Declaration": "@property(class, readonly, nonatomic, assign) NSUInteger currentRevision;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "assign": true,
+          "class": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2967108-currentrevision?language=objc"
+      },
+      {
+        "Name": "defaultRevision",
+        "Description": "The revision of the latest request for the particular SDK linked with the client application.",
+        "Declaration": "@property(class, readonly, nonatomic, assign) NSUInteger defaultRevision;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {
+          "assign": true,
+          "class": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2967109-defaultrevision?language=objc"
+      },
+      {
+        "Name": "supportedRevisions",
+        "Description": "The collection of currently-supported algorithm versions for the class of request.",
+        "Declaration": "@property(class, readonly, nonatomic, copy) NSIndexSet *supportedRevisions;",
+        "Type": {
+          "Name": "NSIndexSet",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "copy": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrequest/2967111-supportedrevisions?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:35:44.297541-07:00",
+  "Version": 2
+}

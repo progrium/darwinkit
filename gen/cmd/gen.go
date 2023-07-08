@@ -119,6 +119,19 @@ func main() {
 			}),
 		}},
 
+		// VisionKit
+		{"vision",
+			[]schemaLoader{
+				loadFile("api/vision/vnclassifyimagerequest.objc.json"),
+				loadFile("api/vision/vngenerateimagefeatureprintrequest.objc.json"),
+				loadFile("api/vision/vnimagebasedrequest.objc.json"),
+				loadFile("api/vision/vnimagerequesthandler.objc.json").Then(unavailableInit),
+				loadFile("api/vision/vnobservation.objc.json"),
+				loadFile("api/vision/vnrecognizedtextobservation.objc.json"),
+				loadFile("api/vision/vnrecognizetextrequest.objc.json"),
+				loadFile("api/vision/vnrequest.objc.json"),
+			}},
+
 		{"webkit", []schemaLoader{
 			loadFile("api/webkit/wknavigation.objc.json"),
 			loadFile("api/webkit/wkuserscript.objc.json"),

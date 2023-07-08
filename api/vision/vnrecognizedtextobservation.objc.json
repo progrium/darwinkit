@@ -1,0 +1,46 @@
+{
+  "Class": {
+    "Name": "VNRecognizedTextObservation",
+    "Description": "A request that detects and recognizes regions of text in an image.",
+    "Declaration": "@interface VNRecognizedTextObservation : VNRectangleObservation",
+    "Platforms": [
+      "iOS 13.0+",
+      "iPadOS 13.0+",
+      "macOS 10.15+",
+      "Mac Catalyst 13.1+",
+      "tvOS 13.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizedtextobservation?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "topCandidates:",
+        "Description": "Requests the n top candidates for a recognized text string.",
+        "Declaration": "- (NSArray\u003cVNRecognizedText *\u003e *)topCandidates:(NSUInteger)maxCandidateCount;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNRecognizedText",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "maxCandidateCount",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizedtextobservation/3152637-topcandidates?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:38:55.746943-07:00",
+  "Version": 2
+}

@@ -1,0 +1,576 @@
+{
+  "Class": {
+    "Name": "VNImageRequestHandler",
+    "Description": "An object that processes one or more image analysis requests pertaining to a single image.",
+    "Declaration": "@interface VNImageRequestHandler : NSObject",
+    "Frameworks": [
+      "Vision"
+    ],
+    "Platforms": [
+      "iOS 11.0+",
+      "iPadOS 11.0+",
+      "macOS 10.13+",
+      "Mac Catalyst 13.1+",
+      "tvOS 11.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithCGImage:options:",
+        "Description": "Creates a handler to be used for performing requests on Core Graphics images.",
+        "Declaration": "- (instancetype)initWithCGImage:(CGImageRef)image \n                        options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "CGImageRef"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866541-initwithcgimage?language=objc"
+      },
+      {
+        "Name": "initWithCGImage:orientation:options:",
+        "Description": "Creates a handler to be used for performing requests on a Core Graphics image with known orientation.",
+        "Declaration": "- (instancetype)initWithCGImage:(CGImageRef)image \n                    orientation:(CGImagePropertyOrientation)orientation \n                        options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "CGImageRef"
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869629-initwithcgimage?language=objc"
+      },
+      {
+        "Name": "initWithCIImage:options:",
+        "Description": "Creates a handler to be used for performing requests on CIImage data.",
+        "Declaration": "- (instancetype)initWithCIImage:(CIImage *)image \n                        options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "CIImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866549-initwithciimage?language=objc"
+      },
+      {
+        "Name": "initWithCIImage:orientation:options:",
+        "Description": "Creates a handler to be used for performing requests on CIImage data of a known orientation.",
+        "Declaration": "- (instancetype)initWithCIImage:(CIImage *)image \n                    orientation:(CGImagePropertyOrientation)orientation \n                        options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "CIImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869641-initwithciimage?language=objc"
+      },
+      {
+        "Name": "initWithCVPixelBuffer:options:",
+        "Description": "Creates a handler for performing requests on a Core Video pixel buffer.",
+        "Declaration": "- (instancetype)initWithCVPixelBuffer:(CVPixelBufferRef)pixelBuffer \n                              options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pixelBuffer",
+            "Type": {
+              "Name": "CVPixelBufferRef"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880309-initwithcvpixelbuffer?language=objc"
+      },
+      {
+        "Name": "initWithCVPixelBuffer:orientation:options:",
+        "Description": "Creates a handler for performing requests on a Core Video pixel buffer of a known orientation.",
+        "Declaration": "- (instancetype)initWithCVPixelBuffer:(CVPixelBufferRef)pixelBuffer \n                          orientation:(CGImagePropertyOrientation)orientation \n                              options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pixelBuffer",
+            "Type": {
+              "Name": "CVPixelBufferRef"
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880303-initwithcvpixelbuffer?language=objc"
+      },
+      {
+        "Name": "initWithCVPixelBuffer:depthData:orientation:options:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCVPixelBuffer:(CVPixelBufferRef)pixelBuffer \n                            depthData:(AVDepthData *)depthData \n                          orientation:(CGImagePropertyOrientation)orientation \n                              options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "pixelBuffer",
+            "Type": {
+              "Name": "CVPixelBufferRef"
+            }
+          },
+          {
+            "Name": "depthData",
+            "Type": {
+              "Name": "AVDepthData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/4144383-initwithcvpixelbuffer?language=objc"
+      },
+      {
+        "Name": "initWithCMSampleBuffer:options:",
+        "Description": "Creates a request handler that performs requests on an image contained within a sample buffer.",
+        "Declaration": "- (instancetype)initWithCMSampleBuffer:(CMSampleBufferRef)sampleBuffer \n                               options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "sampleBuffer",
+            "Type": {
+              "Name": "CMSampleBufferRef"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/3548373-initwithcmsamplebuffer?language=objc"
+      },
+      {
+        "Name": "initWithCMSampleBuffer:orientation:options:",
+        "Description": "Creates a request handler that performs requests on an image of a specified orientation contained within a sample buffer.",
+        "Declaration": "- (instancetype)initWithCMSampleBuffer:(CMSampleBufferRef)sampleBuffer \n                           orientation:(CGImagePropertyOrientation)orientation \n                               options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "sampleBuffer",
+            "Type": {
+              "Name": "CMSampleBufferRef"
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/3548374-initwithcmsamplebuffer?language=objc"
+      },
+      {
+        "Name": "initWithCMSampleBuffer:depthData:orientation:options:",
+        "Description": "Creates a request handler that performs requests on an image in a sample buffer that contains depth data.",
+        "Declaration": "- (instancetype)initWithCMSampleBuffer:(CMSampleBufferRef)sampleBuffer \n                             depthData:(AVDepthData *)depthData \n                           orientation:(CGImagePropertyOrientation)orientation \n                               options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "sampleBuffer",
+            "Type": {
+              "Name": "CMSampleBufferRef"
+            }
+          },
+          {
+            "Name": "depthData",
+            "Type": {
+              "Name": "AVDepthData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/4144382-initwithcmsamplebuffer?language=objc"
+      },
+      {
+        "Name": "initWithData:options:",
+        "Description": "Creates a handler to be used for performing requests on an image contained in an NSData object.",
+        "Declaration": "- (instancetype)initWithData:(NSData *)imageData \n                     options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "imageData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866551-initwithdata?language=objc"
+      },
+      {
+        "Name": "initWithData:orientation:options:",
+        "Description": "Creates a handler to be used for performing requests on an image of known orientation, contained in an NSData object.",
+        "Declaration": "- (instancetype)initWithData:(NSData *)imageData \n                 orientation:(CGImagePropertyOrientation)orientation \n                     options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "imageData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869635-initwithdata?language=objc"
+      },
+      {
+        "Name": "initWithURL:options:",
+        "Description": "Creates a handler to be used for performing requests on an image at the specified URL.",
+        "Declaration": "- (instancetype)initWithURL:(NSURL *)imageURL \n                    options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "imageURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866553-initwithurl?language=objc"
+      },
+      {
+        "Name": "initWithURL:orientation:options:",
+        "Description": "Creates a handler to be used for performing requests on an image with known orientation, at the specified URL.",
+        "Declaration": "- (instancetype)initWithURL:(NSURL *)imageURL \n                orientation:(CGImagePropertyOrientation)orientation \n                    options:(NSDictionary\u003cVNImageOption, id\u003e *)options;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "imageURL",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "orientation",
+            "Type": {
+              "Name": "CGImagePropertyOrientation"
+            }
+          },
+          {
+            "Name": "options",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNImageOption"
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2869645-initwithurl?language=objc"
+      },
+      {
+        "Name": "performRequests:error:",
+        "Description": "Schedules Vision requests to be performed.",
+        "Declaration": "- (BOOL)performRequests:(NSArray\u003cVNRequest *\u003e *)requests \n                  error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "requests",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "VNRequest",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880297-performrequests?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:37:04.099001-07:00",
+  "Version": 2
+}

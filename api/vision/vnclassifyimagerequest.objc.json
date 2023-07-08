@@ -1,0 +1,112 @@
+{
+  "Class": {
+    "Name": "VNClassifyImageRequest",
+    "Description": "A request to classify an image.",
+    "Declaration": "@interface VNClassifyImageRequest : VNImageBasedRequest",
+    "Platforms": [
+      "iOS 13.0+",
+      "iPadOS 13.0+",
+      "macOS 10.15+",
+      "Mac Catalyst 13.1+",
+      "tvOS 13.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vnclassifyimagerequest?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "supportedIdentifiersAndReturnError:",
+        "Description": "Returns the classification identifiers that the request supports in its current configuration.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)supportedIdentifiersAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3750957-supportedidentifiersandreturnerr?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "results",
+        "Description": "The results of the image classification request.",
+        "Declaration": "@property(readonly, copy, nullable) NSArray\u003cVNClassificationObservation *\u003e *results;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNClassificationObservation",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3750956-results?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "knownClassificationsForRevision:error:",
+        "Description": "Requests the collection of classifications that the Vision framework recognizes.",
+        "Declaration": "+ (NSArray\u003cVNClassificationObservation *\u003e *)knownClassificationsForRevision:(NSUInteger)requestRevision \n                                                                      error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNClassificationObservation",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "requestRevision",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3152615-knownclassificationsforrevision?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:36:32.589271-07:00",
+  "Version": 2
+}

@@ -1,0 +1,216 @@
+{
+  "Class": {
+    "Name": "VNRecognizeTextRequest",
+    "Description": "An image analysis request that finds and recognizes text in an image.",
+    "Declaration": "@interface VNRecognizeTextRequest : VNImageBasedRequest",
+    "Platforms": [
+      "iOS 13.0+",
+      "iPadOS 13.0+",
+      "macOS 10.15+",
+      "Mac Catalyst 13.1+",
+      "tvOS 13.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "supportedRecognitionLanguagesAndReturnError:",
+        "Description": "Returns the identifiers of the languages that the request supports.",
+        "Declaration": "- (NSArray\u003cNSString *\u003e *)supportedRecognitionLanguagesAndReturnError:(NSError * _Nullable *)error;",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3751006-supportedrecognitionlanguagesand?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "minimumTextHeight",
+        "Description": "The minimum height, relative to the image height, of the text to recognize.",
+        "Declaration": "@property(readwrite, nonatomic, assign) float minimumTextHeight;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152641-minimumtextheight?language=objc"
+      },
+      {
+        "Name": "recognitionLevel",
+        "Description": "A value that determines whether the request prioritizes accuracy or speed in text recognition.",
+        "Declaration": "@property(readwrite, nonatomic, assign) VNRequestTextRecognitionLevel recognitionLevel;",
+        "Type": {
+          "Name": "VNRequestTextRecognitionLevel"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152643-recognitionlevel?language=objc"
+      },
+      {
+        "Name": "results",
+        "Description": "The results of the text recognition request.",
+        "Declaration": "@property(readonly, copy, nullable) NSArray\u003cVNRecognizedTextObservation *\u003e *results;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNRecognizedTextObservation",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3751005-results?language=objc"
+      },
+      {
+        "Name": "automaticallyDetectsLanguage",
+        "Description": "A Boolean value that indicates whether to attempt detecting the language to use the appropriate model for recognition and language correction.",
+        "Declaration": "@property(readwrite, nonatomic, assign) BOOL automaticallyDetectsLanguage;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3951398-automaticallydetectslanguage?language=objc"
+      },
+      {
+        "Name": "recognitionLanguages",
+        "Description": "An array of languages to detect, in priority order.",
+        "Declaration": "@property(readwrite, nonatomic, copy) NSArray\u003cNSString *\u003e *recognitionLanguages;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152642-recognitionlanguages?language=objc"
+      },
+      {
+        "Name": "usesLanguageCorrection",
+        "Description": "A Boolean value that indicates whether the request applies language correction during the recognition process.",
+        "Declaration": "@property(readwrite, nonatomic, assign) BOOL usesLanguageCorrection;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3166773-useslanguagecorrection?language=objc"
+      },
+      {
+        "Name": "customWords",
+        "Description": "An array of strings to supplement the recognized languages at the word-recognition stage.",
+        "Declaration": "@property(readwrite, nonatomic, copy) NSArray\u003cNSString *\u003e *customWords;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152640-customwords?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "supportedRecognitionLanguagesForTextRecognitionLevel:revision:error:",
+        "Description": "Requests a list of languages that the specified revision recognizes.",
+        "Declaration": "+ (NSArray\u003cNSString *\u003e *)supportedRecognitionLanguagesForTextRecognitionLevel:(VNRequestTextRecognitionLevel)recognitionLevel \n                                                                     revision:(NSUInteger)requestRevision \n                                                                        error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "recognitionLevel",
+            "Type": {
+              "Name": "VNRequestTextRecognitionLevel"
+            }
+          },
+          {
+            "Name": "requestRevision",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152644-supportedrecognitionlanguagesfor?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:35:13.75689-07:00",
+  "Version": 2
+}
