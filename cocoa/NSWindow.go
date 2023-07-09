@@ -12,7 +12,7 @@ type NSWindow struct {
 var nsWindow = objc.Get("NSWindow")
 
 func NSWindow_New() NSWindow {
-	return NSWindow_Alloc().Init_AsNSWindow()
+	return NSWindow_Alloc().Init()
 }
 
 func NSWindow_WithContentViewController(controller NSViewControllerRef) NSWindow {
@@ -20,7 +20,7 @@ func NSWindow_WithContentViewController(controller NSViewControllerRef) NSWindow
 }
 
 func NSWindow_Init(rect core.NSRect, windowStyle core.NSUInteger, bufferingType NSBackingStoreType, deferCreation bool) NSWindow {
-	return NSWindow_Alloc().InitWithContentRectStyleMaskBackingDefer_AsNSWindow(
+	return NSWindow_Alloc().InitWithContentRectStyleMaskBackingDefer(
 		rect, core.NSUInteger(windowStyle), core.NSUInteger(bufferingType), deferCreation,
 	)
 }
@@ -63,10 +63,6 @@ func (w NSWindow) Opaque() bool {
 
 func (w NSWindow) MovableByWindowBackground() bool {
 	return w.IsMovableByWindowBackground()
-}
-
-func (w NSWindow) SetFrameDisplay(frame core.NSRect, display bool) {
-	w.SetFrameDisplay(frame, display)
 }
 
 func (w NSWindow) CollectionBehavior() uint {

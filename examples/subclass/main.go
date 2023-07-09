@@ -42,7 +42,7 @@ func main() {
 		win.SetTitle("Hello world")
 		win.SetLevel(cocoa.NSMainMenuWindowLevel + 2)
 
-		view := objc.Get("TestView").Alloc().Init()
+		view := objc.Get("TestView").Alloc().InitObject()
 		win.Set("ContentView:", view)
 		win.MakeKeyAndOrderFront(nil)
 

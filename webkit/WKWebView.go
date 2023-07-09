@@ -10,7 +10,7 @@ type WKWebView struct {
 }
 
 func WKWebView_Init(frame core.NSRect, config WKWebViewConfiguration) WKWebView {
-	return WKWebView_Alloc().InitWithFrameConfiguration_AsWKWebView(frame, config)
+	return WKWebView_Alloc().InitWithFrameConfiguration(frame, config)
 }
 
 // FIXME this would conflict with the `reload` selector that doesn't take a

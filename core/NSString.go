@@ -30,7 +30,7 @@ func NSString_FromString(s string) NSString {
 	b := []byte(s)
 	c := C.CBytes(b)
 	defer C.free(unsafe.Pointer(c))
-	ret := NSString_Alloc().InitWithBytesLengthEncoding_AsNSString(c, NSUInteger(len(b)), NSUTF8StringEncoding)
+	ret := NSString_Alloc().InitWithBytesLengthEncoding(c, NSUInteger(len(b)), NSUTF8StringEncoding)
 	return ret
 }
 

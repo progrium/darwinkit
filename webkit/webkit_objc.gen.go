@@ -544,7 +544,16 @@ func WKNavigation_FromRef(ref objc.Ref) WKNavigation {
 	return WKNavigation_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the WKNavigation class.
+func (x gen_WKNavigation) Init() WKNavigation {
+	ret := C.WKNavigation_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return WKNavigation_FromPointer(ret)
+}
+
+// Init_AsWKNavigation is a typed version of Init.
 func (x gen_WKNavigation) Init_AsWKNavigation() WKNavigation {
 	ret := C.WKNavigation_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -572,7 +581,16 @@ func WKUserScript_FromRef(ref objc.Ref) WKUserScript {
 	return WKUserScript_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the WKUserScript class.
+func (x gen_WKUserScript) Init() WKUserScript {
+	ret := C.WKUserScript_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return WKUserScript_FromPointer(ret)
+}
+
+// Init_AsWKUserScript is a typed version of Init.
 func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
 	ret := C.WKUserScript_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -675,7 +693,7 @@ func (x gen_WKWebView) GoForward_(
 // InitWithFrameConfiguration creates a web view and initializes it with the specified frame and configuration data.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414998-initwithframe?language=objc for details.
-func (x gen_WKWebView) InitWithFrameConfiguration_AsWKWebView(
+func (x gen_WKWebView) InitWithFrameConfiguration(
 	frame core.NSRect,
 	configuration WKWebViewConfigurationRef,
 ) WKWebView {
@@ -861,7 +879,16 @@ func (x gen_WKWebView) StopLoading_(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the WKWebView class.
+func (x gen_WKWebView) Init() WKWebView {
+	ret := C.WKWebView_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return WKWebView_FromPointer(ret)
+}
+
+// Init_AsWKWebView is a typed version of Init.
 func (x gen_WKWebView) Init_AsWKWebView() WKWebView {
 	ret := C.WKWebView_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -1221,7 +1248,16 @@ func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
 	return objc.Object_FromPointer(ret)
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the WKWebViewConfiguration class.
+func (x gen_WKWebViewConfiguration) Init() WKWebViewConfiguration {
+	ret := C.WKWebViewConfiguration_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return WKWebViewConfiguration_FromPointer(ret)
+}
+
+// Init_AsWKWebViewConfiguration is a typed version of Init.
 func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewConfiguration {
 	ret := C.WKWebViewConfiguration_inst_Init(
 		unsafe.Pointer(x.Pointer()),
@@ -1488,7 +1524,16 @@ func (x gen_WKPreferences) SetValueForKey(
 	return
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the WKPreferences class.
+func (x gen_WKPreferences) Init() WKPreferences {
+	ret := C.WKPreferences_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return WKPreferences_FromPointer(ret)
+}
+
+// Init_AsWKPreferences is a typed version of Init.
 func (x gen_WKPreferences) Init_AsWKPreferences() WKPreferences {
 	ret := C.WKPreferences_inst_Init(
 		unsafe.Pointer(x.Pointer()),

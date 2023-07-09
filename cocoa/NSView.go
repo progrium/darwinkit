@@ -10,7 +10,7 @@ type NSView struct {
 }
 
 func NSView_Init(frame core.NSRect) NSView {
-	return NSView_Alloc().InitWithFrame_AsNSView(frame)
+	return NSView_Alloc().InitWithFrame(frame)
 }
 
 func (v NSView) AddSubviewPositionedRelativeTo(subview NSViewRef, positioned int, relativeTo NSViewRef) {

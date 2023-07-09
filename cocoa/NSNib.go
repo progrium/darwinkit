@@ -16,7 +16,7 @@ func NSNib_InitWithNibNamed_Bundle(name string, bundle NSBundle) NSNib {
 }
 
 func NSNib_InitWithNibData_Bundle(data core.NSDataRef, bundle NSBundleRef) NSNib {
-	return NSNib_Alloc().InitWithNibDataBundle_AsNSNib(data, bundle)
+	return NSNib_Alloc().InitWithNibDataBundle(data, bundle)
 }
 
 func (nib NSNib) InstantiateWithOwner_TopLevelObjects(owner objc.Object) (core.NSArray, bool) {

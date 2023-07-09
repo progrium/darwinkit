@@ -28,7 +28,7 @@ func Callback(fn interface{}) (objc.Object, objc.Selector) {
 	cb := callbackEntry{
 		cb:       fn,
 		class:    c,
-		instance: objc.Get(delegateName).Alloc().Init(),
+		instance: objc.Get(delegateName).Alloc().InitObject(),
 	}
 	//fmt.Fprintf(os.Stderr, "%#v %d\n", delegateName, &fn)
 	//callbacks.Store(rfn.Type().String(), cb)

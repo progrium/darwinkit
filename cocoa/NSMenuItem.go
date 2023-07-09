@@ -14,13 +14,13 @@ type NSMenuItem struct {
 // NSMenuItem_Init returns an initialized instance of NSMenuItem.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc
 func NSMenuItem_Init(itemName string, action objc.Selector, keyEquivalent string) NSMenuItem {
-	return NSMenuItem_Alloc().InitWithTitleActionKeyEquivalent_AsNSMenuItem(
+	return NSMenuItem_Alloc().InitWithTitleActionKeyEquivalent(
 		core.String(itemName), action, core.String(keyEquivalent))
 }
 
 // NSMenuItem_New returns an initialized instance of NSMenuItem.
 func NSMenuItem_New() NSMenuItem {
-	return NSMenuItem_Alloc().Init_AsNSMenuItem()
+	return NSMenuItem_Alloc().Init()
 }
 
 // NSMenuItem_Separator returns a menu item that is used to separate logical groups of menu commands.
