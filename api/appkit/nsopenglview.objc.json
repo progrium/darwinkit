@@ -1,0 +1,163 @@
+{
+  "Class": {
+    "Name": "NSOpenGLView",
+    "Description": "A view that displays OpenGL content in a view.",
+    "Declaration": "@interface NSOpenGLView : NSView",
+    "Platforms": [
+      "macOS 10.0–10.14"
+    ],
+    "Deprecated": true,
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithFrame:pixelFormat:",
+        "Description": "Returns an NSOpenGLView object initialized with the specified frame rectangle and pixel format.",
+        "Declaration": "- (instancetype)initWithFrame:(NSRect)frameRect \n                  pixelFormat:(NSOpenGLPixelFormat *)format;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "format",
+            "Type": {
+              "Name": "NSOpenGLPixelFormat",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414931-initwithframe?language=objc"
+      },
+      {
+        "Name": "prepareOpenGL",
+        "Description": "Used by subclasses to initialize OpenGL state.",
+        "Declaration": "- (void)prepareOpenGL;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414940-prepareopengl?language=objc"
+      },
+      {
+        "Name": "clearGLContext",
+        "Description": "Releases the NSOpenGLContext object associated with the view.",
+        "Declaration": "- (void)clearGLContext;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414936-clearglcontext?language=objc"
+      },
+      {
+        "Name": "reshape",
+        "Description": "Called by Cocoa when the view's visible rectangle or bounds change.",
+        "Declaration": "- (void)reshape;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414948-reshape?language=objc"
+      },
+      {
+        "Name": "update",
+        "Description": "Called by Cocoa when the view’s window moves or when the view itself moves or is resized.",
+        "Declaration": "- (void)update;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414933-update?language=objc"
+      },
+      {
+        "Name": "isOpaque",
+        "Description": "Returns a Boolean value that indicates whether the view is opaque.",
+        "Declaration": "- (BOOL)isOpaque",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1807224-isopaque?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "pixelFormat",
+        "Description": "The NSOpenGLPixelFormat object associated with the receiver.",
+        "Declaration": "@property(strong) NSOpenGLPixelFormat *pixelFormat;",
+        "Type": {
+          "Name": "NSOpenGLPixelFormat",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414946-pixelformat?language=objc"
+      },
+      {
+        "Name": "openGLContext",
+        "Description": "The NSOpenGLContext object associated with the receiver.",
+        "Declaration": "@property(strong) NSOpenGLContext *openGLContext;",
+        "Type": {
+          "Name": "NSOpenGLContext",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414942-openglcontext?language=objc"
+      },
+      {
+        "Name": "wantsExtendedDynamicRangeOpenGLSurface",
+        "Description": "Enables extended dynamic range values on the screen.",
+        "Declaration": "@property BOOL wantsExtendedDynamicRangeOpenGLSurface;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1807226-wantsextendeddynamicrangeopengls?language=objc"
+      },
+      {
+        "Name": "wantsBestResolutionOpenGLSurface",
+        "Description": "A Boolean value indicating whether the view wants an OpenGL backing surface with a resolution greater than 1 pixel per point.",
+        "Declaration": "@property BOOL wantsBestResolutionOpenGLSurface;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/3172203-wantsbestresolutionopenglsurface?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "defaultPixelFormat",
+        "Description": "Returns a default NSOpenGLPixelFormat object.",
+        "Declaration": "+ (NSOpenGLPixelFormat *)defaultPixelFormat;",
+        "Return": {
+          "Name": "NSOpenGLPixelFormat",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenglview/1414944-defaultpixelformat?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:19:08.545262-07:00",
+  "Version": 2
+}

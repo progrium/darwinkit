@@ -1,0 +1,313 @@
+{
+  "Class": {
+    "Name": "NSAnimation",
+    "Description": "An object that manages the timing and progress of animations in the user interface.",
+    "Declaration": "@interface NSAnimation : NSObject",
+    "Platforms": [
+      "macOS 10.4+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithDuration:animationCurve:",
+        "Description": "Returns an NSAnimation object initialized with the specified duration and animation-curve values.",
+        "Declaration": "- (instancetype)initWithDuration:(NSTimeInterval)duration \n                  animationCurve:(NSAnimationCurve)animationCurve;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "duration",
+            "Type": {
+              "Name": "NSTimeInterval"
+            }
+          },
+          {
+            "Name": "animationCurve",
+            "Type": {
+              "Name": "NSAnimationCurve"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1530069-initwithduration?language=objc"
+      },
+      {
+        "Name": "startAnimation",
+        "Description": "Starts the animation represented by the receiver.",
+        "Declaration": "- (void)startAnimation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1529209-startanimation?language=objc"
+      },
+      {
+        "Name": "stopAnimation",
+        "Description": "Stops the animation represented by the receiver.",
+        "Declaration": "- (void)stopAnimation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1528672-stopanimation?language=objc"
+      },
+      {
+        "Name": "addProgressMark:",
+        "Description": "Adds the progress mark to the receiver.",
+        "Declaration": "- (void)addProgressMark:(NSAnimationProgress)progressMark;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "progressMark",
+            "Type": {
+              "Name": "NSAnimationProgress"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1526360-addprogressmark?language=objc"
+      },
+      {
+        "Name": "removeProgressMark:",
+        "Description": "Removes progress mark from the receiver.",
+        "Declaration": "- (void)removeProgressMark:(NSAnimationProgress)progressMark;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "progressMark",
+            "Type": {
+              "Name": "NSAnimationProgress"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1528288-removeprogressmark?language=objc"
+      },
+      {
+        "Name": "startWhenAnimation:reachesProgress:",
+        "Description": "Starts running the animation represented by the receiver when another animation reaches a specific progress mark.",
+        "Declaration": "- (void)startWhenAnimation:(NSAnimation *)animation \n           reachesProgress:(NSAnimationProgress)startProgress;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "animation",
+            "Type": {
+              "Name": "NSAnimation",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "startProgress",
+            "Type": {
+              "Name": "NSAnimationProgress"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1526774-startwhenanimation?language=objc"
+      },
+      {
+        "Name": "stopWhenAnimation:reachesProgress:",
+        "Description": "Stops running the animation represented by the receiver when another animation reaches a specific progress mark.",
+        "Declaration": "- (void)stopWhenAnimation:(NSAnimation *)animation \n          reachesProgress:(NSAnimationProgress)stopProgress;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "animation",
+            "Type": {
+              "Name": "NSAnimation",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "stopProgress",
+            "Type": {
+              "Name": "NSAnimationProgress"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1530363-stopwhenanimation?language=objc"
+      },
+      {
+        "Name": "clearStartAnimation",
+        "Description": "Clears linkage to another animation that causes the receiver to start.",
+        "Declaration": "- (void)clearStartAnimation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1535932-clearstartanimation?language=objc"
+      },
+      {
+        "Name": "clearStopAnimation",
+        "Description": "Clears linkage to another animation that causes the receiver to stop.",
+        "Declaration": "- (void)clearStopAnimation;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1524448-clearstopanimation?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1643460-initwithcoder?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "animationBlockingMode",
+        "Description": "The blocking mode of the animation.",
+        "Declaration": "@property NSAnimationBlockingMode animationBlockingMode;",
+        "Type": {
+          "Name": "NSAnimationBlockingMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1533725-animationblockingmode?language=objc"
+      },
+      {
+        "Name": "runLoopModesForAnimating",
+        "Description": "An array of strings representing the run loop modes in which the animation can run.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003cNSRunLoopMode\u003e *runLoopModesForAnimating;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSRunLoopMode"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1526965-runloopmodesforanimating?language=objc"
+      },
+      {
+        "Name": "animationCurve",
+        "Description": "The timing curve for the animation.",
+        "Declaration": "@property NSAnimationCurve animationCurve;",
+        "Type": {
+          "Name": "NSAnimationCurve"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1535321-animationcurve?language=objc"
+      },
+      {
+        "Name": "duration",
+        "Description": "The duration of the animation, in seconds.",
+        "Declaration": "@property NSTimeInterval duration;",
+        "Type": {
+          "Name": "NSTimeInterval"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1535110-duration?language=objc"
+      },
+      {
+        "Name": "frameRate",
+        "Description": "The number of frame updates per second to generate for the animation.",
+        "Declaration": "@property float frameRate;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc"
+      },
+      {
+        "Name": "delegate",
+        "Description": "The animation delegate.",
+        "Declaration": "@property(weak) id\u003cNSAnimationDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSAnimationDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1524439-delegate?language=objc"
+      },
+      {
+        "Name": "animating",
+        "Description": "A Boolean value indicating whether the animation is in progress.",
+        "Declaration": "@property(getter=isAnimating, readonly) BOOL animating;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAnimating",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1527492-animating?language=objc"
+      },
+      {
+        "Name": "currentProgress",
+        "Description": "The current progress of the animation.",
+        "Declaration": "@property NSAnimationProgress currentProgress;",
+        "Type": {
+          "Name": "NSAnimationProgress"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1530843-currentprogress?language=objc"
+      },
+      {
+        "Name": "currentValue",
+        "Description": "The current value of the animation effect, based on the current progress",
+        "Declaration": "@property(readonly) float currentValue;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1531043-currentvalue?language=objc"
+      },
+      {
+        "Name": "progressMarks",
+        "Description": "An array of floating-point numbers representing current progress marks.",
+        "Declaration": "@property(copy) NSArray\u003cNSNumber *\u003e *progressMarks;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSNumber",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsanimation/1533642-progressmarks?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:19:20.367377-07:00",
+  "Version": 2
+}

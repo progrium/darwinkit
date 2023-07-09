@@ -1,0 +1,405 @@
+{
+  "Class": {
+    "Name": "NSToolbar",
+    "Description": "An object that manages the space above your app’s custom content and either below or integrated with the window’s title bar.",
+    "Declaration": "@interface NSToolbar : NSObject",
+    "Platforms": [
+      "macOS 10.0+",
+      "Mac Catalyst 13.1+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithIdentifier:",
+        "Description": "Creates a newly allocated toolbar with the specified identifier.",
+        "Declaration": "- (instancetype)initWithIdentifier:(NSToolbarIdentifier)identifier;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSToolbarIdentifier"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516975-initwithidentifier?language=objc"
+      },
+      {
+        "Name": "init",
+        "Description": "Creates a new toolbar with an empty identifier string.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/2873241-init?language=objc"
+      },
+      {
+        "Name": "insertItemWithItemIdentifier:atIndex:",
+        "Description": "Inserts an item into the toolbar at the specified index.",
+        "Declaration": "- (void)insertItemWithItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier \n                             atIndex:(NSInteger)index;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "itemIdentifier",
+            "Type": {
+              "Name": "NSToolbarItemIdentifier"
+            }
+          },
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516941-insertitemwithitemidentifier?language=objc"
+      },
+      {
+        "Name": "removeItemAtIndex:",
+        "Description": "Removes the item at the specified index in the toolbar.",
+        "Declaration": "- (void)removeItemAtIndex:(NSInteger)index;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "index",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516980-removeitematindex?language=objc"
+      },
+      {
+        "Name": "setConfigurationFromDictionary:",
+        "Description": "Specifies the new configuration details for the toolbar.",
+        "Declaration": "- (void)setConfigurationFromDictionary:(NSDictionary\u003cNSString *,id\u003e *)configDict;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "configDict",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516951-setconfigurationfromdictionary?language=objc"
+      },
+      {
+        "Name": "runCustomizationPalette:",
+        "Description": "Displays the toolbar’s customization palette and handles any user-initiated customizations.",
+        "Declaration": "- (void)runCustomizationPalette:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516979-runcustomizationpalette?language=objc"
+      },
+      {
+        "Name": "validateVisibleItems",
+        "Description": "Validates the toolbar’s visible items during a window update.",
+        "Declaration": "- (void)validateVisibleItems;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516947-validatevisibleitems?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "delegate",
+        "Description": "The object you use to customize the toolbar contents and configuration.",
+        "Declaration": "@property(weak) id\u003cNSToolbarDelegate\u003e delegate;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "NSToolbarDelegate"
+            }
+          ]
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516939-delegate?language=objc"
+      },
+      {
+        "Name": "identifier",
+        "Description": "The value you use to identify the toolbar in your app.",
+        "Declaration": "@property(readonly, copy) NSToolbarIdentifier identifier;",
+        "Type": {
+          "Name": "NSToolbarIdentifier"
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516953-identifier?language=objc"
+      },
+      {
+        "Name": "visible",
+        "Description": "A Boolean value that indicates whether the toolbar is visible.",
+        "Declaration": "@property(getter=isVisible) BOOL visible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isVisible"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516935-visible?language=objc"
+      },
+      {
+        "Name": "displayMode",
+        "Description": "A value that indicates whether the toolbar displays items using a name, icon, or combination of elements.",
+        "Declaration": "@property NSToolbarDisplayMode displayMode;",
+        "Type": {
+          "Name": "NSToolbarDisplayMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516937-displaymode?language=objc"
+      },
+      {
+        "Name": "showsBaselineSeparator",
+        "Description": "A Boolean value that indicates whether the toolbar shows the separator between the toolbar and the main window contents.",
+        "Declaration": "@property BOOL showsBaselineSeparator;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516954-showsbaselineseparator?language=objc"
+      },
+      {
+        "Name": "allowsUserCustomization",
+        "Description": "A Boolean value that indicates whether users can modify the contents of the toolbar.",
+        "Declaration": "@property BOOL allowsUserCustomization;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516962-allowsusercustomization?language=objc"
+      },
+      {
+        "Name": "allowsExtensionItems",
+        "Description": "A Boolean value that indicates whether the toolbar can add items for Action extensions.",
+        "Declaration": "@property BOOL allowsExtensionItems;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1517005-allowsextensionitems?language=objc"
+      },
+      {
+        "Name": "items",
+        "Description": "An array containing the toolbar’s current items, in order.",
+        "Declaration": "@property(readonly, copy) NSArray\u003c__kindof NSToolbarItem *\u003e *items;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSToolbarItem",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516946-items?language=objc"
+      },
+      {
+        "Name": "visibleItems",
+        "Description": "An array containing the toolbar’s currently visible items.",
+        "Declaration": "@property(nullable, readonly, copy) NSArray\u003c__kindof NSToolbarItem *\u003e *visibleItems;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSToolbarItem",
+              "IsPtr": true,
+              "Annotations": [
+                "__kindof"
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516993-visibleitems?language=objc"
+      },
+      {
+        "Name": "centeredItemIdentifiers",
+        "Description": "The set of custom items to display in the center of the toolbar.",
+        "Declaration": "@property(copy) NSSet\u003cNSToolbarItemIdentifier\u003e *centeredItemIdentifiers;",
+        "Type": {
+          "Name": "NSSet",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSToolbarItemIdentifier"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/3969238-centereditemidentifiers?language=objc"
+      },
+      {
+        "Name": "selectedItemIdentifier",
+        "Description": "The identifier of the toolbar’s currently selected item.",
+        "Declaration": "@property(copy) NSToolbarItemIdentifier selectedItemIdentifier;",
+        "Type": {
+          "Name": "NSToolbarItemIdentifier"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516999-selecteditemidentifier?language=objc"
+      },
+      {
+        "Name": "autosavesConfiguration",
+        "Description": "A Boolean value that indicates whether the toolbar autosaves its configuration.",
+        "Declaration": "@property BOOL autosavesConfiguration;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516992-autosavesconfiguration?language=objc"
+      },
+      {
+        "Name": "configurationDictionary",
+        "Description": "A dictionary containing the current configuration details for the toolbar.",
+        "Declaration": "@property(readonly, copy) NSDictionary\u003cNSString *,id\u003e *configurationDictionary;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "id"
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516956-configurationdictionary?language=objc"
+      },
+      {
+        "Name": "customizationPaletteIsRunning",
+        "Description": "A Boolean value that indicates whether the toolbar’s customization palette is in use.",
+        "Declaration": "@property(readonly) BOOL customizationPaletteIsRunning;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516987-customizationpaletteisrunning?language=objc"
+      },
+      {
+        "Name": "centeredItemIdentifier",
+        "Description": "The item to display in the center of the toolbar.",
+        "Declaration": "@property(copy) NSToolbarItemIdentifier centeredItemIdentifier;",
+        "Type": {
+          "Name": "NSToolbarItemIdentifier"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/2967178-centereditemidentifier?language=objc"
+      },
+      {
+        "Name": "fullScreenAccessoryView",
+        "Description": "The toolbar’s full screen accessory view.",
+        "Declaration": "@property(strong) NSView *fullScreenAccessoryView;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516991-fullscreenaccessoryview?language=objc"
+      },
+      {
+        "Name": "fullScreenAccessoryViewMinHeight",
+        "Description": "The minimum height of the toolbar’s full screen accessory view.",
+        "Declaration": "@property CGFloat fullScreenAccessoryViewMinHeight;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516977-fullscreenaccessoryviewminheight?language=objc"
+      },
+      {
+        "Name": "fullScreenAccessoryViewMaxHeight",
+        "Description": "The maximum height of the toolbar’s full screen accessory view, in points.",
+        "Declaration": "@property CGFloat fullScreenAccessoryViewMaxHeight;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516989-fullscreenaccessoryviewmaxheight?language=objc"
+      },
+      {
+        "Name": "sizeMode",
+        "Description": "The toolbar’s size mode.",
+        "Declaration": "@property NSToolbarSizeMode sizeMode;",
+        "Type": {
+          "Name": "NSToolbarSizeMode"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nstoolbar/1516966-sizemode?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:17:04.351104-07:00",
+  "Version": 2
+}

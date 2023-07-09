@@ -1,0 +1,106 @@
+{
+  "Class": {
+    "Name": "MLDictionaryFeatureProvider",
+    "Description": "A convenience wrapper for the given dictionary of data.",
+    "Declaration": "@interface MLDictionaryFeatureProvider : NSObject",
+    "Platforms": [
+      "iOS 11.0+",
+      "iPadOS 11.0+",
+      "macOS 10.13+",
+      "Mac Catalyst 13.1+",
+      "tvOS 11.0+",
+      "watchOS 4.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithDictionary:error:",
+        "Description": "Creates the feature provider based on a dictionary.",
+        "Declaration": "- (instancetype)initWithDictionary:(NSDictionary\u003cNSString *,id\u003e *)dictionary \n                             error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "dictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                },
+                {
+                  "Name": "id"
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879366-initwithdictionary?language=objc"
+      },
+      {
+        "Name": "objectForKeyedSubscript:",
+        "Description": "Subscript interface for the feature provider to pass through to the dictionary.",
+        "Declaration": "- (MLFeatureValue *)objectForKeyedSubscript:(NSString *)featureName;",
+        "Return": {
+          "Name": "MLFeatureValue",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "featureName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2881954-objectforkeyedsubscript?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "dictionary",
+        "Description": "The backing dictionary.",
+        "Declaration": "@property(readonly, nonatomic) NSDictionary\u003cNSString *,MLFeatureValue *\u003e *dictionary;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "MLFeatureValue",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879354-dictionary?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-08T18:36:20.122582-07:00",
+  "Version": 2
+}

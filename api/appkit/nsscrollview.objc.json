@@ -1,0 +1,767 @@
+{
+  "Class": {
+    "Name": "NSScrollView",
+    "Description": "A view that displays a portion of a document view and provides scroll bars that allow the user to move the document view within the scroll view.",
+    "Declaration": "@interface NSScrollView : NSView",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "addFloatingSubview:forAxis:",
+        "Description": "Adds a floating subview to the document view.",
+        "Declaration": "- (void)addFloatingSubview:(NSView *)view \n                   forAxis:(NSEventGestureAxis)axis;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "axis",
+            "Type": {
+              "Name": "NSEventGestureAxis"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403546-addfloatingsubview?language=objc"
+      },
+      {
+        "Name": "scrollWheel:",
+        "Description": "Scrolls the receiver up or down, in response to the user moving the mouse’s scroll wheel specified by theEvent.",
+        "Declaration": "- (void)scrollWheel:(NSEvent *)event;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403494-scrollwheel?language=objc"
+      },
+      {
+        "Name": "reflectScrolledClipView:",
+        "Description": "Adjusts the receiver’s scrollers to reflect the size and positioning of its content view.",
+        "Declaration": "- (void)reflectScrolledClipView:(NSClipView *)cView;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cView",
+            "Type": {
+              "Name": "NSClipView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403534-reflectscrolledclipview?language=objc"
+      },
+      {
+        "Name": "tile",
+        "Description": "Lays out the components of the receiver: the content view, the scrollers, and the ruler views.",
+        "Declaration": "- (void)tile;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403509-tile?language=objc"
+      },
+      {
+        "Name": "flashScrollers",
+        "Description": "Flash the overlay scroll bars.",
+        "Declaration": "- (void)flashScrollers;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403460-flashscrollers?language=objc"
+      },
+      {
+        "Name": "magnifyToFitRect:",
+        "Description": "Magnifies the content view proportionally such that the given rectangle fits centered in the scroll view.",
+        "Declaration": "- (void)magnifyToFitRect:(NSRect)rect;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403508-magnifytofitrect?language=objc"
+      },
+      {
+        "Name": "setMagnification:centeredAtPoint:",
+        "Description": "Magnify the content by the given amount and center the result on the given point.",
+        "Declaration": "- (void)setMagnification:(CGFloat)magnification \n         centeredAtPoint:(NSPoint)point;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "magnification",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "point",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403459-setmagnification?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403527-initwithcoder?language=objc"
+      },
+      {
+        "Name": "initWithFrame:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithFrame:(NSRect)frameRect;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "frameRect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403450-initwithframe?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "contentSize",
+        "Description": "The size of the scroll view’s content view.",
+        "Declaration": "@property(readonly) NSSize contentSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403458-contentsize?language=objc"
+      },
+      {
+        "Name": "documentVisibleRect",
+        "Description": "The portion of the document view, in its own coordinate system, visible through the scroll view’s content view.",
+        "Declaration": "@property(readonly) NSRect documentVisibleRect;",
+        "Type": {
+          "Name": "NSRect"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403466-documentvisiblerect?language=objc"
+      },
+      {
+        "Name": "backgroundColor",
+        "Description": "The color of the content view’s background.",
+        "Declaration": "@property(copy) NSColor *backgroundColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403473-backgroundcolor?language=objc"
+      },
+      {
+        "Name": "drawsBackground",
+        "Description": "A Boolean that indicates whether the scroll view draws its background.",
+        "Declaration": "@property BOOL drawsBackground;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403474-drawsbackground?language=objc"
+      },
+      {
+        "Name": "borderType",
+        "Description": "A value that specifies the appearance of the scroll view’s border.",
+        "Declaration": "@property NSBorderType borderType;",
+        "Type": {
+          "Name": "NSBorderType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403528-bordertype?language=objc"
+      },
+      {
+        "Name": "documentCursor",
+        "Description": "The content view’s document cursor.",
+        "Declaration": "@property(strong) NSCursor *documentCursor;",
+        "Type": {
+          "Name": "NSCursor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403446-documentcursor?language=objc"
+      },
+      {
+        "Name": "contentView",
+        "Description": "The scroll view’s content view, the view that clips the document view.",
+        "Declaration": "@property(strong) NSClipView *contentView;",
+        "Type": {
+          "Name": "NSClipView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403547-contentview?language=objc"
+      },
+      {
+        "Name": "documentView",
+        "Description": "The view the scroll view scrolls within its content view.",
+        "Declaration": "@property(strong) __kindof NSView *documentView;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403485-documentview?language=objc"
+      },
+      {
+        "Name": "horizontalScroller",
+        "Description": "The scroll view’s horizontal scroller.",
+        "Declaration": "@property(strong) NSScroller *horizontalScroller;",
+        "Type": {
+          "Name": "NSScroller",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403447-horizontalscroller?language=objc"
+      },
+      {
+        "Name": "hasHorizontalScroller",
+        "Description": "A Boolean that indicates whether the scroll view has a horizontal scroller.",
+        "Declaration": "@property BOOL hasHorizontalScroller;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403530-hashorizontalscroller?language=objc"
+      },
+      {
+        "Name": "verticalScroller",
+        "Description": "The scroll view’s vertical scroller.",
+        "Declaration": "@property(strong) NSScroller *verticalScroller;",
+        "Type": {
+          "Name": "NSScroller",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403526-verticalscroller?language=objc"
+      },
+      {
+        "Name": "hasVerticalScroller",
+        "Description": "A Boolean that indicates whether the scroll view has a vertical scroller.",
+        "Declaration": "@property BOOL hasVerticalScroller;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403491-hasverticalscroller?language=objc"
+      },
+      {
+        "Name": "autohidesScrollers",
+        "Description": "A Boolean that indicates whether the scroll view automatically hides its scroll bars when they are not needed.",
+        "Declaration": "@property BOOL autohidesScrollers;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403536-autohidesscrollers?language=objc"
+      },
+      {
+        "Name": "hasHorizontalRuler",
+        "Description": "A Boolean that indicates whether the scroll view keeps a horizontal ruler object.",
+        "Declaration": "@property BOOL hasHorizontalRuler;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403457-hashorizontalruler?language=objc"
+      },
+      {
+        "Name": "horizontalRulerView",
+        "Description": "The scroll view’s horizontal ruler view.",
+        "Declaration": "@property(strong) NSRulerView *horizontalRulerView;",
+        "Type": {
+          "Name": "NSRulerView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403498-horizontalrulerview?language=objc"
+      },
+      {
+        "Name": "hasVerticalRuler",
+        "Description": "A Boolean that indicates whether the scroll view keeps a vertical ruler object.",
+        "Declaration": "@property BOOL hasVerticalRuler;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403496-hasverticalruler?language=objc"
+      },
+      {
+        "Name": "verticalRulerView",
+        "Description": "The scroll view’s vertical ruler view.",
+        "Declaration": "@property(strong) NSRulerView *verticalRulerView;",
+        "Type": {
+          "Name": "NSRulerView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403507-verticalrulerview?language=objc"
+      },
+      {
+        "Name": "rulersVisible",
+        "Description": "A Boolean that indicates whether the scroll view displays its rulers.",
+        "Declaration": "@property BOOL rulersVisible;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403445-rulersvisible?language=objc"
+      },
+      {
+        "Name": "automaticallyAdjustsContentInsets",
+        "Description": "A Boolean that indicates whether the scroll view automatically adjusts its content insets.",
+        "Declaration": "@property BOOL automaticallyAdjustsContentInsets;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403502-automaticallyadjustscontentinset?language=objc"
+      },
+      {
+        "Name": "contentInsets",
+        "Description": "The distance that the scroll view’s subviews are inset from the enclosing scroll view during tiling.",
+        "Declaration": "@property NSEdgeInsets contentInsets;",
+        "Type": {
+          "Name": "NSEdgeInsets"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403461-contentinsets?language=objc"
+      },
+      {
+        "Name": "scrollerInsets",
+        "Description": "The distance the scrollers are inset from the edge of the scroll view.",
+        "Declaration": "@property NSEdgeInsets scrollerInsets;",
+        "Type": {
+          "Name": "NSEdgeInsets"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403529-scrollerinsets?language=objc"
+      },
+      {
+        "Name": "scrollerKnobStyle",
+        "Description": "The knob style of scroll views that use the overlay scroller style.",
+        "Declaration": "@property NSScrollerKnobStyle scrollerKnobStyle;",
+        "Type": {
+          "Name": "NSScrollerKnobStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403544-scrollerknobstyle?language=objc"
+      },
+      {
+        "Name": "scrollerStyle",
+        "Description": "The scroller style used by the scroll view.",
+        "Declaration": "@property NSScrollerStyle scrollerStyle;",
+        "Type": {
+          "Name": "NSScrollerStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403520-scrollerstyle?language=objc"
+      },
+      {
+        "Name": "lineScroll",
+        "Description": "The scroll view’s line by line scroll amount.",
+        "Declaration": "@property CGFloat lineScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403454-linescroll?language=objc"
+      },
+      {
+        "Name": "horizontalLineScroll",
+        "Description": "The scroll view’s horizontal line by line scroll amount.",
+        "Declaration": "@property CGFloat horizontalLineScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403539-horizontallinescroll?language=objc"
+      },
+      {
+        "Name": "verticalLineScroll",
+        "Description": "The scroll view’s vertical line by line scroll amount.",
+        "Declaration": "@property CGFloat verticalLineScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403490-verticallinescroll?language=objc"
+      },
+      {
+        "Name": "pageScroll",
+        "Description": "The amount of the document view kept visible when scrolling page by page.",
+        "Declaration": "@property CGFloat pageScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403449-pagescroll?language=objc"
+      },
+      {
+        "Name": "horizontalPageScroll",
+        "Description": "The amount of the document view kept visible when scrolling horizontally page by page.",
+        "Declaration": "@property CGFloat horizontalPageScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403478-horizontalpagescroll?language=objc"
+      },
+      {
+        "Name": "verticalPageScroll",
+        "Description": "The amount of the document view kept visible when scrolling vertically page by page.",
+        "Declaration": "@property CGFloat verticalPageScroll;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403512-verticalpagescroll?language=objc"
+      },
+      {
+        "Name": "scrollsDynamically",
+        "Description": "A Boolean that indicates whether the scroll view redraws its document view while scrolling continuously.",
+        "Declaration": "@property BOOL scrollsDynamically;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403519-scrollsdynamically?language=objc"
+      },
+      {
+        "Name": "findBarPosition",
+        "Description": "The position of the find bar.",
+        "Declaration": "@property NSScrollViewFindBarPosition findBarPosition;",
+        "Type": {
+          "Name": "NSScrollViewFindBarPosition"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403501-findbarposition?language=objc"
+      },
+      {
+        "Name": "usesPredominantAxisScrolling",
+        "Description": "A Boolean that indicates whether the scroll view uses a predominant scrolling axis for content.",
+        "Declaration": "@property BOOL usesPredominantAxisScrolling;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403489-usespredominantaxisscrolling?language=objc"
+      },
+      {
+        "Name": "horizontalScrollElasticity",
+        "Description": "The scroll view’s horizontal scrolling elasticity mode.",
+        "Declaration": "@property NSScrollElasticity horizontalScrollElasticity;",
+        "Type": {
+          "Name": "NSScrollElasticity"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403540-horizontalscrollelasticity?language=objc"
+      },
+      {
+        "Name": "verticalScrollElasticity",
+        "Description": "The scroll view’s vertical scrolling elasticity mode.",
+        "Declaration": "@property NSScrollElasticity verticalScrollElasticity;",
+        "Type": {
+          "Name": "NSScrollElasticity"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403475-verticalscrollelasticity?language=objc"
+      },
+      {
+        "Name": "allowsMagnification",
+        "Description": "Allows the user to magnify the scroll view.",
+        "Declaration": "@property BOOL allowsMagnification;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403531-allowsmagnification?language=objc"
+      },
+      {
+        "Name": "magnification",
+        "Description": "The amount by which the content is currently scaled.",
+        "Declaration": "@property CGFloat magnification;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403497-magnification?language=objc"
+      },
+      {
+        "Name": "maxMagnification",
+        "Description": "The maximum value to which the content can be magnified.",
+        "Declaration": "@property CGFloat maxMagnification;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403510-maxmagnification?language=objc"
+      },
+      {
+        "Name": "minMagnification",
+        "Description": "The minimum value to which the content can be magnified.",
+        "Declaration": "@property CGFloat minMagnification;",
+        "Type": {
+          "Name": "CGFloat"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403524-minmagnification?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:",
+        "Description": "Returns the frame size of a scroll view that contains a content view with the specified size.",
+        "Declaration": "+ (NSSize)frameSizeForContentSize:(NSSize)cSize \n          horizontalScrollerClass:(Class)horizontalScrollerClass \n            verticalScrollerClass:(Class)verticalScrollerClass \n                       borderType:(NSBorderType)type \n                      controlSize:(NSControlSize)controlSize \n                    scrollerStyle:(NSScrollerStyle)scrollerStyle;\n",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "cSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "horizontalScrollerClass",
+            "Type": {
+              "Name": "Class"
+            }
+          },
+          {
+            "Name": "verticalScrollerClass",
+            "Type": {
+              "Name": "Class"
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSBorderType"
+            }
+          },
+          {
+            "Name": "controlSize",
+            "Type": {
+              "Name": "NSControlSize"
+            }
+          },
+          {
+            "Name": "scrollerStyle",
+            "Type": {
+              "Name": "NSScrollerStyle"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403545-framesizeforcontentsize?language=objc"
+      },
+      {
+        "Name": "contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:",
+        "Description": "Returns the content size calculated from the frame size and the specified specifications.",
+        "Declaration": "+ (NSSize)contentSizeForFrameSize:(NSSize)fSize \n          horizontalScrollerClass:(Class)horizontalScrollerClass \n            verticalScrollerClass:(Class)verticalScrollerClass \n                       borderType:(NSBorderType)type \n                      controlSize:(NSControlSize)controlSize \n                    scrollerStyle:(NSScrollerStyle)scrollerStyle;\n",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "fSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "horizontalScrollerClass",
+            "Type": {
+              "Name": "Class"
+            }
+          },
+          {
+            "Name": "verticalScrollerClass",
+            "Type": {
+              "Name": "Class"
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSBorderType"
+            }
+          },
+          {
+            "Name": "controlSize",
+            "Type": {
+              "Name": "NSControlSize"
+            }
+          },
+          {
+            "Name": "scrollerStyle",
+            "Type": {
+              "Name": "NSScrollerStyle"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403471-contentsizeforframesize?language=objc"
+      },
+      {
+        "Name": "frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:",
+        "Description": "Returns the frame size of an scroll view that contains a content view with the specified size.",
+        "Declaration": "+ (NSSize)frameSizeForContentSize:(NSSize)cSize \n            hasHorizontalScroller:(BOOL)hFlag \n              hasVerticalScroller:(BOOL)vFlag \n                       borderType:(NSBorderType)type;\n",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "cSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "hFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "vFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSBorderType"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403469-framesizeforcontentsize?language=objc"
+      },
+      {
+        "Name": "contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:",
+        "Description": "Returns the content size calculated from the frame size and the specified specifications.",
+        "Declaration": "+ (NSSize)contentSizeForFrameSize:(NSSize)fSize \n            hasHorizontalScroller:(BOOL)hFlag \n              hasVerticalScroller:(BOOL)vFlag \n                       borderType:(NSBorderType)type;\n",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "fSize",
+            "Type": {
+              "Name": "NSSize"
+            }
+          },
+          {
+            "Name": "hFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "vFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSBorderType"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403481-contentsizeforframesize?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "rulerViewClass",
+        "Description": "Returns the default class to be used for ruler objects in NSScrollViews.",
+        "Declaration": "@property(class) Class rulerViewClass;",
+        "Type": {
+          "Name": "Class"
+        },
+        "Attrs": {
+          "class": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsscrollview/1403492-rulerviewclass?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:18:13.039923-07:00",
+  "Version": 2
+}

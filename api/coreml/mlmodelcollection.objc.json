@@ -1,0 +1,171 @@
+{
+  "Class": {
+    "Name": "MLModelCollection",
+    "Description": "A set of Core ML models from a model deployment.",
+    "Declaration": "@interface MLModelCollection : NSObject",
+    "Platforms": [
+      "iOS 14.0–16.4",
+      "iPadOS 14.0–16.4",
+      "macOS 11.0–13.3",
+      "Mac Catalyst 14.0–16.4",
+      "visionOS 1.0–1.0"
+    ],
+    "Deprecated": true,
+    "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "identifier",
+        "Description": "The name of the model collection, unique to the development team.",
+        "Declaration": "@property(readonly, nonatomic, copy) NSString *identifier;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection/3563960-identifier?language=objc"
+      },
+      {
+        "Name": "deploymentID",
+        "Description": "The unique identifier of the model collection’s deployment.",
+        "Declaration": "@property(readonly, nonatomic, copy) NSString *deploymentID;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection/3672168-deploymentid?language=objc"
+      },
+      {
+        "Name": "entries",
+        "Description": "A dictionary of model entries keyed to the models’ identifiers.",
+        "Declaration": "@property(readonly, nonatomic, copy) NSDictionary\u003cNSString *,MLModelCollectionEntry *\u003e *entries;",
+        "Type": {
+          "Name": "NSDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSString",
+              "IsPtr": true
+            },
+            {
+              "Name": "MLModelCollectionEntry",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nonatomic": true,
+          "readonly": true
+        },
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection/3563959-entries?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "beginAccessingModelCollectionWithIdentifier:completionHandler:",
+        "Description": "Requests access to a model collection.",
+        "Declaration": "+ (NSProgress *)beginAccessingModelCollectionWithIdentifier:(NSString *)identifier \n                                          completionHandler:(void (^)(MLModelCollection *modelCollection, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "NSProgress",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "modelCollection",
+                    "Type": {
+                      "Name": "MLModelCollection",
+                      "IsPtr": true
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection/3649655-beginaccessingmodelcollectionwit?language=objc"
+      },
+      {
+        "Name": "endAccessingModelCollectionWithIdentifier:completionHandler:",
+        "Description": "Terminates access to a model collection.",
+        "Declaration": "+ (void)endAccessingModelCollectionWithIdentifier:(NSString *)identifier \n                                completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "identifier",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "completionHandler",
+            "Type": {
+              "Block": {
+                "Return": {
+                  "Name": "void"
+                },
+                "Args": [
+                  {
+                    "Name": "success",
+                    "Type": {
+                      "Name": "BOOL"
+                    }
+                  },
+                  {
+                    "Name": "error",
+                    "Type": {
+                      "Name": "NSError",
+                      "IsPtr": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelcollection/3649656-endaccessingmodelcollectionwithi?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-08T18:36:31.95568-07:00",
+  "Version": 2
+}

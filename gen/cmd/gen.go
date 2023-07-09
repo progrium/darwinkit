@@ -35,6 +35,19 @@ func main() {
 		// 	loadFile("api/coregraphics/cgrect.objc.json"),
 		// }},
 
+		// CoreML
+		{"coreml", []schemaLoader{
+			loadFile("api/coreml/mlarraybatchprovider.objc.json"),
+			loadFile("api/coreml/mlcpucomputedevice.objc.json"),
+			loadFile("api/coreml/mldictionaryfeatureprovider.objc.json"),
+			loadFile("api/coreml/mlfeaturevalue.objc.json"),
+			loadFile("api/coreml/mlgpucomputedevice.objc.json"),
+			loadFile("api/coreml/mlmodel.objc.json"),
+			loadFile("api/coreml/mlmodelasset.objc.json"),
+			loadFile("api/coreml/mlmodelcollection.objc.json"),
+			loadFile("api/coreml/mlneuralenginecomputedevice.objc.json"),
+		}},
+
 		{"cocoa", []schemaLoader{
 			loadFile("api/foundation/nsbundle.objc.json"),
 			loadFile("api/appkit/nssound.objc.json"),

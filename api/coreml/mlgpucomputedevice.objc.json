@@ -1,0 +1,48 @@
+{
+  "Class": {
+    "Name": "MLGPUComputeDevice",
+    "Description": "An object that represents a GPU compute device.",
+    "Declaration": "@interface MLGPUComputeDevice : NSObject",
+    "Platforms": [
+      "iOS 17.0+",
+      "Beta",
+      "iPadOS 17.0+",
+      "Beta",
+      "macOS 14.0+",
+      "Beta",
+      "Mac Catalyst 17.0+",
+      "Beta",
+      "tvOS 17.0+",
+      "Beta",
+      "watchOS 10.0+",
+      "Beta",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/coreml/mlgpucomputedevice?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "metalDevice",
+        "Description": "The device that represents the underlying metal device.",
+        "Declaration": "@property(strong, readonly, nonatomic) id\u003cMTLDevice\u003e metalDevice;",
+        "Type": {
+          "Name": "id",
+          "Params": [
+            {
+              "Name": "MTLDevice"
+            }
+          ]
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlgpucomputedevice/4134606-metaldevice?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-08T18:36:42.56694-07:00",
+  "Version": 2
+}

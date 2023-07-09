@@ -1,0 +1,1782 @@
+{
+  "Class": {
+    "Name": "NSCell",
+    "Description": "A mechanism for displaying text or images in a view object without the overhead of a full NSView subclass.",
+    "Declaration": "@interface NSCell : NSObject",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nscell?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initImageCell:",
+        "Description": "Returns an NSCell object initialized with the specified image and set to have the cell’s default menu.",
+        "Declaration": "- (instancetype)initImageCell:(NSImage *)image;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc"
+      },
+      {
+        "Name": "initTextCell:",
+        "Description": "Returns an NSCell object initialized with the specified string and set to have the cell’s default menu.",
+        "Declaration": "- (instancetype)initTextCell:(NSString *)string;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc"
+      },
+      {
+        "Name": "setCellAttribute:to:",
+        "Description": "Sets the value for the specified cell attribute.",
+        "Declaration": "- (void)setCellAttribute:(NSCellAttribute)parameter \n                      to:(NSInteger)value;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "parameter",
+            "Type": {
+              "Name": "NSCellAttribute"
+            }
+          },
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531257-setcellattribute?language=objc"
+      },
+      {
+        "Name": "cellAttribute:",
+        "Description": "Returns the value for the specified cell attribute.",
+        "Declaration": "- (NSInteger)cellAttribute:(NSCellAttribute)parameter;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "parameter",
+            "Type": {
+              "Name": "NSCellAttribute"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530877-cellattribute?language=objc"
+      },
+      {
+        "Name": "setNextState",
+        "Description": "Changes cell’s state to the next value in the sequence.",
+        "Declaration": "- (void)setNextState;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533557-setnextstate?language=objc"
+      },
+      {
+        "Name": "setUpFieldEditorAttributes:",
+        "Description": "Configures the textual and background attributes of the receiver's field editor.",
+        "Declaration": "- (NSText *)setUpFieldEditorAttributes:(NSText *)textObj;",
+        "Return": {
+          "Name": "NSText",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "textObj",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535864-setupfieldeditorattributes?language=objc"
+      },
+      {
+        "Name": "sendActionOn:",
+        "Description": "Sets the conditions on which the receiver sends action messages to its target.",
+        "Declaration": "- (NSInteger)sendActionOn:(NSEventMask)mask;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "mask",
+            "Type": {
+              "Name": "NSEventMask"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1528114-sendactionon?language=objc"
+      },
+      {
+        "Name": "menuForEvent:inRect:ofView:",
+        "Description": "Returns the menu associated with the cell and related to the specified event and frame.",
+        "Declaration": "- (NSMenu *)menuForEvent:(NSEvent *)event \n                  inRect:(NSRect)cellFrame \n                  ofView:(NSView *)view;\n",
+        "Return": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535924-menuforevent?language=objc"
+      },
+      {
+        "Name": "compare:",
+        "Description": "Compares the string values of the receiver another cell, disregarding case.",
+        "Declaration": "- (NSComparisonResult)compare:(id)otherCell;",
+        "Return": {
+          "Name": "NSComparisonResult"
+        },
+        "Args": [
+          {
+            "Name": "otherCell",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527644-compare?language=objc"
+      },
+      {
+        "Name": "performClick:",
+        "Description": "Simulates a single mouse click on the receiver.",
+        "Declaration": "- (void)performClick:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534984-performclick?language=objc"
+      },
+      {
+        "Name": "takeObjectValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to the object value obtained from the specified object.",
+        "Declaration": "- (void)takeObjectValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529915-takeobjectvaluefrom?language=objc"
+      },
+      {
+        "Name": "takeIntegerValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to an integer value obtained from the specified object.",
+        "Declaration": "- (void)takeIntegerValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534969-takeintegervaluefrom?language=objc"
+      },
+      {
+        "Name": "takeIntValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to an integer value obtained from the specified object.",
+        "Declaration": "- (void)takeIntValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533920-takeintvaluefrom?language=objc"
+      },
+      {
+        "Name": "takeStringValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to the string value obtained from the specified object.",
+        "Declaration": "- (void)takeStringValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527148-takestringvaluefrom?language=objc"
+      },
+      {
+        "Name": "takeDoubleValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to a double-precision floating-point value obtained from the specified object.",
+        "Declaration": "- (void)takeDoubleValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526375-takedoublevaluefrom?language=objc"
+      },
+      {
+        "Name": "takeFloatValueFrom:",
+        "Description": "Sets the value of the receiver’s cell to a single-precision floating-point value obtained from the specified object.",
+        "Declaration": "- (void)takeFloatValueFrom:(id)sender;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535839-takefloatvaluefrom?language=objc"
+      },
+      {
+        "Name": "trackMouse:inRect:ofView:untilMouseUp:",
+        "Description": "Initiates the mouse tracking behavior in a cell.",
+        "Declaration": "- (BOOL)trackMouse:(NSEvent *)event \n            inRect:(NSRect)cellFrame \n            ofView:(NSView *)controlView \n      untilMouseUp:(BOOL)flag;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533606-trackmouse?language=objc"
+      },
+      {
+        "Name": "startTrackingAt:inView:",
+        "Description": "Begins tracking mouse events within the receiver.",
+        "Declaration": "- (BOOL)startTrackingAt:(NSPoint)startPoint \n                 inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "startPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526663-starttrackingat?language=objc"
+      },
+      {
+        "Name": "continueTracking:at:inView:",
+        "Description": "Returns a Boolean value that indicates whether mouse tracking should continue in the receiving cell.",
+        "Declaration": "- (BOOL)continueTracking:(NSPoint)lastPoint \n                      at:(NSPoint)currentPoint \n                  inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "lastPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "currentPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535599-continuetracking?language=objc"
+      },
+      {
+        "Name": "stopTracking:at:inView:mouseIsUp:",
+        "Description": "Stops tracking mouse events within the receiver.",
+        "Declaration": "- (void)stopTracking:(NSPoint)lastPoint \n                  at:(NSPoint)stopPoint \n              inView:(NSView *)controlView \n           mouseIsUp:(BOOL)flag;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "lastPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "stopPoint",
+            "Type": {
+              "Name": "NSPoint"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534650-stoptracking?language=objc"
+      },
+      {
+        "Name": "getPeriodicDelay:interval:",
+        "Description": "Returns the initial delay and repeat values for continuous sending of action messages to target objects.",
+        "Declaration": "- (void)getPeriodicDelay:(float *)delay \n                interval:(float *)interval;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "delay",
+            "Type": {
+              "Name": "float",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "interval",
+            "Type": {
+              "Name": "float",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535611-getperiodicdelay?language=objc"
+      },
+      {
+        "Name": "hitTestForEvent:inRect:ofView:",
+        "Description": "Returns hit testing information for the receiver.",
+        "Declaration": "- (NSCellHitResult)hitTestForEvent:(NSEvent *)event \n                            inRect:(NSRect)cellFrame \n                            ofView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "NSCellHitResult"
+        },
+        "Args": [
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529601-hittestforevent?language=objc"
+      },
+      {
+        "Name": "resetCursorRect:inView:",
+        "Description": "Sets the receiver to show the I-beam cursor while it tracks the mouse.",
+        "Declaration": "- (void)resetCursorRect:(NSRect)cellFrame \n                 inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524496-resetcursorrect?language=objc"
+      },
+      {
+        "Name": "draggingImageComponentsWithFrame:inView:",
+        "Description": "Generates dragging image components with the specified frame in the view.",
+        "Declaration": "- (NSArray\u003cNSDraggingImageComponent *\u003e *)draggingImageComponentsWithFrame:(NSRect)frame \n                                                                   inView:(NSView *)view;\n",
+        "Return": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSDraggingImageComponent",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "frame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532987-draggingimagecomponentswithframe?language=objc"
+      },
+      {
+        "Name": "drawFocusRingMaskWithFrame:inView:",
+        "Description": "Draws the focus ring for the control.",
+        "Declaration": "- (void)drawFocusRingMaskWithFrame:(NSRect)cellFrame \n                            inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524608-drawfocusringmaskwithframe?language=objc"
+      },
+      {
+        "Name": "focusRingMaskBoundsForFrame:inView:",
+        "Description": "Returns the bounds of the focus ring mask.",
+        "Declaration": "- (NSRect)focusRingMaskBoundsForFrame:(NSRect)cellFrame \n                               inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534929-focusringmaskboundsforframe?language=objc"
+      },
+      {
+        "Name": "calcDrawInfo:",
+        "Description": "Recalculates the cell geometry.",
+        "Declaration": "- (void)calcDrawInfo:(NSRect)rect;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533752-calcdrawinfo?language=objc"
+      },
+      {
+        "Name": "cellSizeForBounds:",
+        "Description": "Returns the minimum size needed to display the receiver, constraining it to the specified rectangle.",
+        "Declaration": "- (NSSize)cellSizeForBounds:(NSRect)rect;",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524792-cellsizeforbounds?language=objc"
+      },
+      {
+        "Name": "drawingRectForBounds:",
+        "Description": "Returns the rectangle within which the receiver draws itself",
+        "Declaration": "- (NSRect)drawingRectForBounds:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526266-drawingrectforbounds?language=objc"
+      },
+      {
+        "Name": "imageRectForBounds:",
+        "Description": "Returns the rectangle in which the receiver draws its image.",
+        "Declaration": "- (NSRect)imageRectForBounds:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533408-imagerectforbounds?language=objc"
+      },
+      {
+        "Name": "titleRectForBounds:",
+        "Description": "Returns the rectangle in which the receiver draws its title text.",
+        "Declaration": "- (NSRect)titleRectForBounds:(NSRect)rect;",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531281-titlerectforbounds?language=objc"
+      },
+      {
+        "Name": "drawWithFrame:inView:",
+        "Description": "Draws the receiver’s border and then draws the interior of the cell.",
+        "Declaration": "- (void)drawWithFrame:(NSRect)cellFrame \n               inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535830-drawwithframe?language=objc"
+      },
+      {
+        "Name": "highlightColorWithFrame:inView:",
+        "Description": "Returns the color the receiver uses when drawing the selection highlight.",
+        "Declaration": "- (NSColor *)highlightColorWithFrame:(NSRect)cellFrame \n                              inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534018-highlightcolorwithframe?language=objc"
+      },
+      {
+        "Name": "drawInteriorWithFrame:inView:",
+        "Description": "Draws the interior portion of the receiver, which includes the image or text portion but does not include the border.",
+        "Declaration": "- (void)drawInteriorWithFrame:(NSRect)cellFrame \n                       inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531274-drawinteriorwithframe?language=objc"
+      },
+      {
+        "Name": "highlight:withFrame:inView:",
+        "Description": "Redraws the receiver with the specified highlight setting.",
+        "Declaration": "- (void)highlight:(BOOL)flag \n        withFrame:(NSRect)cellFrame \n           inView:(NSView *)controlView;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "flag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533933-highlight?language=objc"
+      },
+      {
+        "Name": "editWithFrame:inView:editor:delegate:event:",
+        "Description": "Begins editing of the receiver’s text using the specified field editor.",
+        "Declaration": "- (void)editWithFrame:(NSRect)rect \n               inView:(NSView *)controlView \n               editor:(NSText *)textObj \n             delegate:(id)delegate \n                event:(NSEvent *)event;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "textObj",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "delegate",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "event",
+            "Type": {
+              "Name": "NSEvent",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533600-editwithframe?language=objc"
+      },
+      {
+        "Name": "selectWithFrame:inView:editor:delegate:start:length:",
+        "Description": "Selects the specified text range in the cell's field editor.",
+        "Declaration": "- (void)selectWithFrame:(NSRect)rect \n                 inView:(NSView *)controlView \n                 editor:(NSText *)textObj \n               delegate:(id)delegate \n                  start:(NSInteger)selStart \n                 length:(NSInteger)selLength;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "rect",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "textObj",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "delegate",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "selStart",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "selLength",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527438-selectwithframe?language=objc"
+      },
+      {
+        "Name": "endEditing:",
+        "Description": "Ends the editing of text in the receiver using the specified field editor.",
+        "Declaration": "- (void)endEditing:(NSText *)textObj;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "textObj",
+            "Type": {
+              "Name": "NSText",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535574-endediting?language=objc"
+      },
+      {
+        "Name": "fieldEditorForView:",
+        "Description": "Returns a custom field editor for editing in the view.",
+        "Declaration": "- (NSTextView *)fieldEditorForView:(NSView *)controlView;",
+        "Return": {
+          "Name": "NSTextView",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "controlView",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532763-fieldeditorforview?language=objc"
+      },
+      {
+        "Name": "expansionFrameWithFrame:inView:",
+        "Description": "Returns the expansion cell frame for the receiver.",
+        "Declaration": "- (NSRect)expansionFrameWithFrame:(NSRect)cellFrame \n                           inView:(NSView *)view;\n",
+        "Return": {
+          "Name": "NSRect"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526362-expansionframewithframe?language=objc"
+      },
+      {
+        "Name": "drawWithExpansionFrame:inView:",
+        "Description": "Instructs the receiver to draw in an expansion frame.",
+        "Declaration": "- (void)drawWithExpansionFrame:(NSRect)cellFrame \n                        inView:(NSView *)view;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "cellFrame",
+            "Type": {
+              "Name": "NSRect"
+            }
+          },
+          {
+            "Name": "view",
+            "Type": {
+              "Name": "NSView",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1528566-drawwithexpansionframe?language=objc"
+      },
+      {
+        "Name": "setEntryType:",
+        "Description": "Sets how numeric data is formatted in the receiver and places restrictions on acceptable input.",
+        "Declaration": "- (void)setEntryType:(NSInteger)type;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560876-setentrytype?language=objc"
+      },
+      {
+        "Name": "entryType",
+        "Description": "Returns the type of data the user can type into the receiver.",
+        "Declaration": "- (NSInteger)entryType;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560897-entrytype?language=objc"
+      },
+      {
+        "Name": "isEntryAcceptable:",
+        "Description": "Returns whether a string representing a numeric or date value is formatted in a suitable way for the cell's entry type.",
+        "Declaration": "- (BOOL)isEntryAcceptable:(NSString *)string;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "string",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560879-isentryacceptable?language=objc"
+      },
+      {
+        "Name": "setFloatingPointFormat:left:right:",
+        "Description": "Sets the auto-ranging and floating point number format of the receiver’s cell.",
+        "Declaration": "- (void)setFloatingPointFormat:(BOOL)autoRange \n                          left:(NSUInteger)leftDigits \n                         right:(NSUInteger)rightDigits;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "autoRange",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "leftDigits",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          },
+          {
+            "Name": "rightDigits",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560888-setfloatingpointformat?language=objc"
+      },
+      {
+        "Name": "setTitleWithMnemonic:",
+        "Description": "Sets the title of the receiver with one character in the string denoted as an access key.",
+        "Declaration": "- (void)setTitleWithMnemonic:(NSString *)stringWithAmpersand;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "stringWithAmpersand",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560861-settitlewithmnemonic?language=objc"
+      },
+      {
+        "Name": "mnemonic",
+        "Description": "Returns the character in the receiver’s title that appears underlined for use as a mnemonic.",
+        "Declaration": "- (NSString *)mnemonic;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560878-mnemonic?language=objc"
+      },
+      {
+        "Name": "setMnemonicLocation:",
+        "Description": "Sets the character of the receiver’s title to be used as a mnemonic character.",
+        "Declaration": "- (void)setMnemonicLocation:(NSUInteger)location;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "location",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560877-setmnemoniclocation?language=objc"
+      },
+      {
+        "Name": "mnemonicLocation",
+        "Description": "Returns the position of the underlined mnemonic character in the receiver’s title.",
+        "Declaration": "- (NSUInteger)mnemonicLocation;",
+        "Return": {
+          "Name": "NSUInteger"
+        },
+        "Args": null,
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1560903-mnemoniclocation?language=objc"
+      },
+      {
+        "Name": "init",
+        "Description": "",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1642242-init?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1642237-initwithcoder?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "objectValue",
+        "Description": "The cell’s value as an Objective-C object.",
+        "Declaration": "@property(copy) id objectValue;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530936-objectvalue?language=objc"
+      },
+      {
+        "Name": "hasValidObjectValue",
+        "Description": "A Boolean value that indicates whether the cell has a valid object value.",
+        "Declaration": "@property(readonly) BOOL hasValidObjectValue;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534009-hasvalidobjectvalue?language=objc"
+      },
+      {
+        "Name": "intValue",
+        "Description": "The cell’s value as an integer.",
+        "Declaration": "@property int intValue;",
+        "Type": {
+          "Name": "int"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525170-intvalue?language=objc"
+      },
+      {
+        "Name": "integerValue",
+        "Description": "The cell’s value as an NSInteger type.",
+        "Declaration": "@property NSInteger integerValue;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527783-integervalue?language=objc"
+      },
+      {
+        "Name": "stringValue",
+        "Description": "The cell’s value as a string.",
+        "Declaration": "@property(copy) NSString *stringValue;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530915-stringvalue?language=objc"
+      },
+      {
+        "Name": "doubleValue",
+        "Description": "The cell’s value as a double-precision floating-point number.",
+        "Declaration": "@property double doubleValue;",
+        "Type": {
+          "Name": "double"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534765-doublevalue?language=objc"
+      },
+      {
+        "Name": "floatValue",
+        "Description": "The cell’s value as a single-precision floating-point number.",
+        "Declaration": "@property float floatValue;",
+        "Type": {
+          "Name": "float"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534292-floatvalue?language=objc"
+      },
+      {
+        "Name": "type",
+        "Description": "The type of the cell.",
+        "Declaration": "@property NSCellType type;",
+        "Type": {
+          "Name": "NSCellType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524871-type?language=objc"
+      },
+      {
+        "Name": "enabled",
+        "Description": "A Boolean value indicating whether the cell is currently enabled.",
+        "Declaration": "@property(getter=isEnabled) BOOL enabled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEnabled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533415-enabled?language=objc"
+      },
+      {
+        "Name": "allowsUndo",
+        "Description": "A Boolean value indicating whether the cell assumes responsibility for undo operations.",
+        "Declaration": "@property BOOL allowsUndo;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531576-allowsundo?language=objc"
+      },
+      {
+        "Name": "bezeled",
+        "Description": "A Boolean value indicating whether the cell has a bezeled border.",
+        "Declaration": "@property(getter=isBezeled) BOOL bezeled;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isBezeled"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533376-bezeled?language=objc"
+      },
+      {
+        "Name": "bordered",
+        "Description": "A Boolean value indicating whether the cell draws itself outlined with a plain border.",
+        "Declaration": "@property(getter=isBordered) BOOL bordered;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isBordered"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525990-bordered?language=objc"
+      },
+      {
+        "Name": "opaque",
+        "Description": "A Boolean value indicating whether the cell is completely opaque.",
+        "Declaration": "@property(getter=isOpaque, readonly) BOOL opaque;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isOpaque",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531610-opaque?language=objc"
+      },
+      {
+        "Name": "controlTint",
+        "Description": "The cell’s control tint.",
+        "Declaration": "@property NSControlTint controlTint;",
+        "Type": {
+          "Name": "NSControlTint"
+        },
+        "Attrs": {},
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529397-controltint?language=objc"
+      },
+      {
+        "Name": "backgroundStyle",
+        "Description": "The cell’s background style.",
+        "Declaration": "@property NSBackgroundStyle backgroundStyle;",
+        "Type": {
+          "Name": "NSBackgroundStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524686-backgroundstyle?language=objc"
+      },
+      {
+        "Name": "interiorBackgroundStyle",
+        "Description": "The cell’s interior background style.",
+        "Declaration": "@property(readonly) NSBackgroundStyle interiorBackgroundStyle;",
+        "Type": {
+          "Name": "NSBackgroundStyle"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526141-interiorbackgroundstyle?language=objc"
+      },
+      {
+        "Name": "allowsMixedState",
+        "Description": "A Boolean value indicating whether the cell supports three states instead of two.",
+        "Declaration": "@property BOOL allowsMixedState;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531578-allowsmixedstate?language=objc"
+      },
+      {
+        "Name": "nextState",
+        "Description": "The cell’s next state.",
+        "Declaration": "@property(readonly) NSInteger nextState;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531235-nextstate?language=objc"
+      },
+      {
+        "Name": "state",
+        "Description": "The cell’s current state.",
+        "Declaration": "@property NSControlStateValue state;",
+        "Type": {
+          "Name": "NSControlStateValue"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527417-state?language=objc"
+      },
+      {
+        "Name": "editable",
+        "Description": "A Boolean value indicating whether the cell is editable.",
+        "Declaration": "@property(getter=isEditable) BOOL editable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isEditable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535822-editable?language=objc"
+      },
+      {
+        "Name": "selectable",
+        "Description": "A Boolean value indicating whether the cell’s text can be selected.",
+        "Declaration": "@property(getter=isSelectable) BOOL selectable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSelectable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529411-selectable?language=objc"
+      },
+      {
+        "Name": "scrollable",
+        "Description": "A Boolean value indicating whether excess text scrolls past the cell’s bounds.",
+        "Declaration": "@property(getter=isScrollable) BOOL scrollable;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isScrollable"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534125-scrollable?language=objc"
+      },
+      {
+        "Name": "alignment",
+        "Description": "The alignment of the cell’s text.",
+        "Declaration": "@property NSTextAlignment alignment;",
+        "Type": {
+          "Name": "NSTextAlignment"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534359-alignment?language=objc"
+      },
+      {
+        "Name": "font",
+        "Description": "The font that the cell uses to display text.",
+        "Declaration": "@property(strong) NSFont *font;",
+        "Type": {
+          "Name": "NSFont",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526710-font?language=objc"
+      },
+      {
+        "Name": "lineBreakMode",
+        "Description": "The line break mode to use when drawing text in the cell.",
+        "Declaration": "@property NSLineBreakMode lineBreakMode;",
+        "Type": {
+          "Name": "NSLineBreakMode"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531065-linebreakmode?language=objc"
+      },
+      {
+        "Name": "truncatesLastVisibleLine",
+        "Description": "A Boolean value indicating whether the cell truncates text that does not fit within the cell’s bounds.",
+        "Declaration": "@property BOOL truncatesLastVisibleLine;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526736-truncateslastvisibleline?language=objc"
+      },
+      {
+        "Name": "wraps",
+        "Description": "A Boolean value indicating whether the cell wraps text whose length that exceeds the cell’s frame.",
+        "Declaration": "@property BOOL wraps;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527479-wraps?language=objc"
+      },
+      {
+        "Name": "baseWritingDirection",
+        "Description": "The initial writing direction used to determine the actual writing direction for text.",
+        "Declaration": "@property NSWritingDirection baseWritingDirection;",
+        "Type": {
+          "Name": "NSWritingDirection"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525503-basewritingdirection?language=objc"
+      },
+      {
+        "Name": "attributedStringValue",
+        "Description": "The cell’s value as an attributed string.",
+        "Declaration": "@property(copy) NSAttributedString *attributedStringValue;",
+        "Type": {
+          "Name": "NSAttributedString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534119-attributedstringvalue?language=objc"
+      },
+      {
+        "Name": "allowsEditingTextAttributes",
+        "Description": "A Boolean value indicating whether the cell allows the editing of its content’s text attributes by the user.",
+        "Declaration": "@property BOOL allowsEditingTextAttributes;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535675-allowseditingtextattributes?language=objc"
+      },
+      {
+        "Name": "importsGraphics",
+        "Description": "A Boolean value indicating whether the cell supports the importation of images into its text.",
+        "Declaration": "@property BOOL importsGraphics;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532380-importsgraphics?language=objc"
+      },
+      {
+        "Name": "title",
+        "Description": "The cell’s title text.",
+        "Declaration": "@property(copy) NSString *title;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525561-title?language=objc"
+      },
+      {
+        "Name": "action",
+        "Description": "The action performed by the cell.",
+        "Declaration": "@property SEL action;",
+        "Type": {
+          "Name": "SEL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1524654-action?language=objc"
+      },
+      {
+        "Name": "target",
+        "Description": "The object that receives the cell’s action messages.",
+        "Declaration": "@property(weak) id target;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535832-target?language=objc"
+      },
+      {
+        "Name": "continuous",
+        "Description": "A Boolean value indicating whether the cell sends its action message continuously during mouse tracking.",
+        "Declaration": "@property(getter=isContinuous) BOOL continuous;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isContinuous"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529179-continuous?language=objc"
+      },
+      {
+        "Name": "image",
+        "Description": "The image displayed by the cell, if any.",
+        "Declaration": "@property(strong) NSImage *image;",
+        "Type": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526028-image?language=objc"
+      },
+      {
+        "Name": "tag",
+        "Description": "A tag for identifying the cell.",
+        "Declaration": "@property NSInteger tag;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532348-tag?language=objc"
+      },
+      {
+        "Name": "formatter",
+        "Description": "The cell’s formatter object.",
+        "Declaration": "@property(strong) __kindof NSFormatter *formatter;",
+        "Type": {
+          "Name": "NSFormatter",
+          "IsPtr": true,
+          "Annotations": [
+            "__kindof"
+          ]
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531115-formatter?language=objc"
+      },
+      {
+        "Name": "menu",
+        "Description": "The cell’s contextual menu.",
+        "Declaration": "@property(strong) NSMenu *menu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530019-menu?language=objc"
+      },
+      {
+        "Name": "acceptsFirstResponder",
+        "Description": "A Boolean value indicating whether the cell accepts first responder status.",
+        "Declaration": "@property(readonly) BOOL acceptsFirstResponder;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525710-acceptsfirstresponder?language=objc"
+      },
+      {
+        "Name": "showsFirstResponder",
+        "Description": "A Boolean value indicating whether the cell provides a visual indication that it is the first responder.",
+        "Declaration": "@property BOOL showsFirstResponder;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532415-showsfirstresponder?language=objc"
+      },
+      {
+        "Name": "refusesFirstResponder",
+        "Description": "A Boolean value indicating whether the cell refuses the first responder status.",
+        "Declaration": "@property BOOL refusesFirstResponder;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525857-refusesfirstresponder?language=objc"
+      },
+      {
+        "Name": "representedObject",
+        "Description": "The object represented by the cell.",
+        "Declaration": "@property(strong) id representedObject;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1533116-representedobject?language=objc"
+      },
+      {
+        "Name": "mouseDownFlags",
+        "Description": "The modifier flags for the last (left) mouse-down event.",
+        "Declaration": "@property(readonly) NSInteger mouseDownFlags;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1527798-mousedownflags?language=objc"
+      },
+      {
+        "Name": "keyEquivalent",
+        "Description": "The key equivalent associated with clicking the cell.",
+        "Declaration": "@property(readonly, copy) NSString *keyEquivalent;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532218-keyequivalent?language=objc"
+      },
+      {
+        "Name": "focusRingType",
+        "Description": "The type of focus ring to use with the associated view.",
+        "Declaration": "@property NSFocusRingType focusRingType;",
+        "Type": {
+          "Name": "NSFocusRingType"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1534132-focusringtype?language=objc"
+      },
+      {
+        "Name": "cellSize",
+        "Description": "The minimum size needed to display the cell.",
+        "Declaration": "@property(readonly) NSSize cellSize;",
+        "Type": {
+          "Name": "NSSize"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1532056-cellsize?language=objc"
+      },
+      {
+        "Name": "controlSize",
+        "Description": "The size of the cell.",
+        "Declaration": "@property NSControlSize controlSize;",
+        "Type": {
+          "Name": "NSControlSize"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530780-controlsize?language=objc"
+      },
+      {
+        "Name": "controlView",
+        "Description": "The view associated with the cell.",
+        "Declaration": "@property(assign) NSView *controlView;",
+        "Type": {
+          "Name": "NSView",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535913-controlview?language=objc"
+      },
+      {
+        "Name": "highlighted",
+        "Description": "A Boolean value indicating whether the cell has a highlighted appearance.",
+        "Declaration": "@property(getter=isHighlighted) BOOL highlighted;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isHighlighted"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530864-highlighted?language=objc"
+      },
+      {
+        "Name": "sendsActionOnEndEditing",
+        "Description": "A Boolean value indicating whether the cell’s control object sends its action message when the user finishes editing the cell’s text.",
+        "Declaration": "@property BOOL sendsActionOnEndEditing;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1526617-sendsactiononendediting?language=objc"
+      },
+      {
+        "Name": "wantsNotificationForMarkedText",
+        "Description": "A Boolean value indicating whether the cell’s field editor should post text change notifications.",
+        "Declaration": "@property(readonly) BOOL wantsNotificationForMarkedText;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1535894-wantsnotificationformarkedtext?language=objc"
+      },
+      {
+        "Name": "usesSingleLineMode",
+        "Description": "A Boolean value indicating whether the cell restricts layout and rendering of text to a single line.",
+        "Declaration": "@property BOOL usesSingleLineMode;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525481-usessinglelinemode?language=objc"
+      },
+      {
+        "Name": "userInterfaceLayoutDirection",
+        "Description": "The layout direction of the user interface.",
+        "Declaration": "@property NSUserInterfaceLayoutDirection userInterfaceLayoutDirection;",
+        "Type": {
+          "Name": "NSUserInterfaceLayoutDirection"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1529213-userinterfacelayoutdirection?language=objc"
+      }
+    ],
+    "TypeProperties": [
+      {
+        "Name": "defaultMenu",
+        "Description": "Returns the default menu for instances of the cell.",
+        "Declaration": "@property(class, readonly, nullable, strong) NSMenu *defaultMenu;",
+        "Type": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "class": true,
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1531847-defaultmenu?language=objc"
+      },
+      {
+        "Name": "prefersTrackingUntilMouseUp",
+        "Description": "Returns a Boolean value that indicates whether tracking stops when the cursor leaves the cell.",
+        "Declaration": "@property(class, readonly) BOOL prefersTrackingUntilMouseUp;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1530790-preferstrackinguntilmouseup?language=objc"
+      },
+      {
+        "Name": "defaultFocusRingType",
+        "Description": "Returns the default type of focus ring for the receiver.",
+        "Declaration": "@property(class, readonly) NSFocusRingType defaultFocusRingType;",
+        "Type": {
+          "Name": "NSFocusRingType"
+        },
+        "Attrs": {
+          "class": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nscell/1525184-defaultfocusringtype?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:17:00.370289-07:00",
+  "Version": 2
+}
