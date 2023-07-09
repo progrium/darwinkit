@@ -631,6 +631,11 @@ BOOL NSBundle_inst_Load(void *id) {
 		load];
 }
 
+BOOL NSBundle_inst_LoadAndReturnError(void *id, void* error) {
+	return [(NSBundle*)id
+		loadAndReturnError: error];
+}
+
 void* NSBundle_inst_LoadNibNamedOwnerOptions(void *id, void* name, void* owner, void* options) {
 	return [(NSBundle*)id
 		loadNibNamed: name
@@ -694,6 +699,11 @@ void* NSBundle_inst_PathsForResourcesOfTypeInDirectoryForLocalization(void *id, 
 		pathsForResourcesOfType: ext
 		inDirectory: subpath
 		forLocalization: localizationName];
+}
+
+BOOL NSBundle_inst_PreflightAndReturnError(void *id, void* error) {
+	return [(NSBundle*)id
+		preflightAndReturnError: error];
 }
 
 BOOL NSBundle_inst_Unload(void *id) {
@@ -5406,6 +5416,14 @@ BOOL NSWorkspace_inst_SelectFileInFileViewerRootedAtPath(void *id, void* fullPat
 		inFileViewerRootedAtPath: rootFullPath];
 }
 
+BOOL NSWorkspace_inst_SetDesktopImageURLForScreenOptionsError(void *id, void* url, void* screen, void* options, void* error) {
+	return [(NSWorkspace*)id
+		setDesktopImageURL: url
+		forScreen: screen
+		options: options
+		error: error];
+}
+
 BOOL NSWorkspace_inst_ShowSearchResultsForQueryString(void *id, void* queryString) {
 	return [(NSWorkspace*)id
 		showSearchResultsForQueryString: queryString];
@@ -5414,6 +5432,12 @@ BOOL NSWorkspace_inst_ShowSearchResultsForQueryString(void *id, void* queryStrin
 BOOL NSWorkspace_inst_UnmountAndEjectDeviceAtPath(void *id, void* path) {
 	return [(NSWorkspace*)id
 		unmountAndEjectDeviceAtPath: path];
+}
+
+BOOL NSWorkspace_inst_UnmountAndEjectDeviceAtURLError(void *id, void* url, void* error) {
+	return [(NSWorkspace*)id
+		unmountAndEjectDeviceAtURL: url
+		error: error];
 }
 
 void* NSWorkspace_inst_Init(void *id) {
@@ -9011,6 +9035,20 @@ func (x gen_NSBundle) Load() bool {
 	return convertObjCBoolToGo(ret)
 }
 
+// LoadAndReturnError loads the bundle’s executable code and returns any errors.
+//
+// See https://developer.apple.com/documentation/foundation/nsbundle/1411819-loadandreturnerror?language=objc for details.
+func (x gen_NSBundle) LoadAndReturnError(
+	error core.NSErrorRef,
+) bool {
+	ret := C.NSBundle_inst_LoadAndReturnError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
 // LoadNibNamedOwnerOptions unarchives the contents of a nib file located in the receiver's bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1618147-loadnibnamed?language=objc for details.
@@ -9179,6 +9217,20 @@ func (x gen_NSBundle) PathsForResourcesOfTypeInDirectoryForLocalization(
 	)
 
 	return core.NSArray_FromPointer(ret)
+}
+
+// PreflightAndReturnError returns a Boolean value indicating whether the bundle’s executable code could be loaded successfully.
+//
+// See https://developer.apple.com/documentation/foundation/nsbundle/1415083-preflightandreturnerror?language=objc for details.
+func (x gen_NSBundle) PreflightAndReturnError(
+	error core.NSErrorRef,
+) bool {
+	ret := C.NSBundle_inst_PreflightAndReturnError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 // Unload unloads the code associated with the receiver.
@@ -21542,6 +21594,26 @@ func (x gen_NSWorkspace) SelectFileInFileViewerRootedAtPath(
 	return convertObjCBoolToGo(ret)
 }
 
+// SetDesktopImageURLForScreenOptionsError sets the desktop image for the given screen to the image at the specified URL.
+//
+// See https://developer.apple.com/documentation/appkit/nsworkspace/1527228-setdesktopimageurl?language=objc for details.
+func (x gen_NSWorkspace) SetDesktopImageURLForScreenOptionsError(
+	url core.NSURLRef,
+	screen NSScreenRef,
+	options core.NSDictionaryRef,
+	error core.NSErrorRef,
+) bool {
+	ret := C.NSWorkspace_inst_SetDesktopImageURLForScreenOptionsError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(screen),
+		objc.RefPointer(options),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
 // ShowSearchResultsForQueryString displays a Spotlight search results window in Finder for the specified query string.
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1532131-showsearchresultsforquerystring?language=objc for details.
@@ -21565,6 +21637,22 @@ func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
 	ret := C.NSWorkspace_inst_UnmountAndEjectDeviceAtPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(path),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// UnmountAndEjectDeviceAtURLError attempts to eject the volume mounted at the given path.
+//
+// See https://developer.apple.com/documentation/appkit/nsworkspace/1530469-unmountandejectdeviceaturl?language=objc for details.
+func (x gen_NSWorkspace) UnmountAndEjectDeviceAtURLError(
+	url core.NSURLRef,
+	error core.NSErrorRef,
+) bool {
+	ret := C.NSWorkspace_inst_UnmountAndEjectDeviceAtURLError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(error),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -21781,7 +21869,16 @@ func (x gen_NSSlider) RectOfTickMarkAtIndex(
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
 }
 
-// Init is undocumented.
+// Init initializes a new instance of the NSSlider class.
+func (x gen_NSSlider) Init() NSSlider {
+	ret := C.NSSlider_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSSlider_FromPointer(ret)
+}
+
+// Init_AsNSSlider is a typed version of Init.
 func (x gen_NSSlider) Init_AsNSSlider() NSSlider {
 	ret := C.NSSlider_inst_Init(
 		unsafe.Pointer(x.Pointer()),
