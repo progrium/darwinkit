@@ -1,9 +1,10 @@
 package cocoa
 
 import (
+	"unsafe"
+
 	core "github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
-	"unsafe"
 )
 
 /*
@@ -643,7 +644,117 @@ void* NSBundle_inst_LoadNibNamedOwnerOptions(void *id, void* name, void* owner, 
 		options: options];
 }
 
-void* NSBundle_inst_LocalizedAttributedStringForKeyValueTable(void *id, void* key, void* value, void* tableName) {
+void* NSBundle_inst_URLForResource_withExtension_subdirectory_(void *id, void* name, void* ext, void* subpath) {
+	return [(NSBundle*)id
+		URLForResource: name
+		withExtension: ext
+		subdirectory: subpath];
+}
+
+void* NSBundle_inst_URLForResource_withExtension_(void *id, void* name, void* ext) {
+	return [(NSBundle*)id
+		URLForResource: name
+		withExtension: ext];
+}
+
+void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_(void *id, void* ext, void* subpath) {
+	return [(NSBundle*)id
+		URLsForResourcesWithExtension: ext
+		subdirectory: subpath];
+}
+
+void* NSBundle_inst_URLForResource_withExtension_subdirectory_localization_(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+	return [(NSBundle*)id
+		URLForResource: name
+		withExtension: ext
+		subdirectory: subpath
+		localization: localizationName];
+}
+
+void* NSBundle_inst_URLsForResourcesWithExtension_subdirectory_localization_(void *id, void* ext, void* subpath, void* localizationName) {
+	return [(NSBundle*)id
+		URLsForResourcesWithExtension: ext
+		subdirectory: subpath
+		localization: localizationName];
+}
+
+void* NSBundle_inst_pathForResource_ofType_(void *id, void* name, void* ext) {
+	return [(NSBundle*)id
+		pathForResource: name
+		ofType: ext];
+}
+
+void* NSBundle_inst_pathForResource_ofType_inDirectory_(void *id, void* name, void* ext, void* subpath) {
+	return [(NSBundle*)id
+		pathForResource: name
+		ofType: ext
+		inDirectory: subpath];
+}
+
+void* NSBundle_inst_pathForResource_ofType_inDirectory_forLocalization_(void *id, void* name, void* ext, void* subpath, void* localizationName) {
+	return [(NSBundle*)id
+		pathForResource: name
+		ofType: ext
+		inDirectory: subpath
+		forLocalization: localizationName];
+}
+
+void* NSBundle_inst_pathsForResourcesOfType_inDirectory_(void *id, void* ext, void* subpath) {
+	return [(NSBundle*)id
+		pathsForResourcesOfType: ext
+		inDirectory: subpath];
+}
+
+void* NSBundle_inst_pathsForResourcesOfType_inDirectory_forLocalization_(void *id, void* ext, void* subpath, void* localizationName) {
+	return [(NSBundle*)id
+		pathsForResourcesOfType: ext
+		inDirectory: subpath
+		forLocalization: localizationName];
+}
+
+void* NSBundle_inst_localizedStringForKey_value_table_(void *id, void* key, void* value, void* tableName) {
+	return [(NSBundle*)id
+		localizedStringForKey: key
+		value: value
+		table: tableName];
+}
+
+void* NSBundle_inst_URLForAuxiliaryExecutable_(void *id, void* executableName) {
+	return [(NSBundle*)id
+		URLForAuxiliaryExecutable: executableName];
+}
+
+void* NSBundle_inst_pathForAuxiliaryExecutable_(void *id, void* executableName) {
+	return [(NSBundle*)id
+		pathForAuxiliaryExecutable: executableName];
+}
+
+void* NSBundle_inst_objectForInfoDictionaryKey_(void *id, void* key) {
+	return [(NSBundle*)id
+		objectForInfoDictionaryKey: key];
+}
+
+BOOL NSBundle_inst_preflightAndReturnError_(void *id, void* error) {
+	return [(NSBundle*)id
+		preflightAndReturnError: error];
+}
+
+BOOL NSBundle_inst_load(void *id) {
+	return [(NSBundle*)id
+		load];
+}
+
+BOOL NSBundle_inst_loadAndReturnError_(void *id, void* error) {
+	return [(NSBundle*)id
+		loadAndReturnError: error];
+}
+
+BOOL NSBundle_inst_unload(void *id) {
+	return [(NSBundle*)id
+		unload];
+}
+
+void* NSBundle_inst_localizedAttributedStringForKey_value_table_(void *id, void* key, void* value, void* tableName) {
 	return [(NSBundle*)id
 		localizedAttributedStringForKey: key
 		value: value
@@ -9085,10 +9196,92 @@ func (x gen_NSBundle) LocalizedAttributedStringForKeyValueTable(
 	return core.NSAttributedString_FromPointer(ret)
 }
 
-// LocalizedStringForKeyValueTable returns a localized version of the string designated by the specified key and residing in the specified table.
-//
-// See https://developer.apple.com/documentation/foundation/nsbundle/1417694-localizedstringforkey?language=objc for details.
-func (x gen_NSBundle) LocalizedStringForKeyValueTable(
+func (x gen_NSBundle) URLForAuxiliaryExecutable_(
+	executableName core.NSStringRef,
+) (
+	r0 core.NSURL,
+) {
+	ret := C.NSBundle_inst_URLForAuxiliaryExecutable_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(executableName),
+	)
+	r0 = core.NSURL_fromPointer(ret)
+	return
+}
+
+func (x gen_NSBundle) PathForAuxiliaryExecutable_(
+	executableName core.NSStringRef,
+) (
+	r0 core.NSString,
+) {
+	ret := C.NSBundle_inst_pathForAuxiliaryExecutable_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(executableName),
+	)
+	r0 = core.NSString_fromPointer(ret)
+	return
+}
+
+func (x gen_NSBundle) ObjectForInfoDictionaryKey_(
+	key core.NSStringRef,
+) (
+	r0 objc.Object,
+) {
+	ret := C.NSBundle_inst_objectForInfoDictionaryKey_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+	r0 = objc.Object_fromPointer(ret)
+	return
+}
+
+func (x gen_NSBundle) PreflightAndReturnError_(
+	error core.NSErrorRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSBundle_inst_preflightAndReturnError_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSBundle) Load() (
+	r0 bool,
+) {
+	ret := C.NSBundle_inst_load(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSBundle) LoadAndReturnError_(
+	error core.NSErrorRef,
+) (
+	r0 bool,
+) {
+	ret := C.NSBundle_inst_loadAndReturnError_(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSBundle) Unload() (
+	r0 bool,
+) {
+	ret := C.NSBundle_inst_unload(
+		unsafe.Pointer(x.Pointer()),
+	)
+	r0 = convertObjCBoolToGo(ret)
+	return
+}
+
+func (x gen_NSBundle) LocalizedAttributedStringForKey_value_table_(
 	key core.NSStringRef,
 	value core.NSStringRef,
 	tableName core.NSStringRef,
