@@ -144,3 +144,12 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+func unavailableInit(s *schema.Schema) error {
+	s.Class.InstanceMethods = append(s.Class.InstanceMethods, schema.Method{
+		Name:        "init",
+		Return:      schema.DataType{Name: "instancetype"},
+		Unavailable: true,
+	})
+	return nil
+}
