@@ -116,6 +116,11 @@ void* NSArray_type_ArrayWithArray(void* array) {
 	return [NSArray
 		arrayWithArray: array];
 }
+void* NSArray_type_ArrayWithContentsOfURLError(void* url, void* error) {
+	return [NSArray
+		arrayWithContentsOfURL: url
+		error: error];
+}
 void* NSAttributedString_type_Alloc() {
 	return [NSAttributedString
 		alloc];
@@ -181,9 +186,18 @@ void* NSDictionary_type_DictionaryWithDictionary(void* dict) {
 	return [NSDictionary
 		dictionaryWithDictionary: dict];
 }
+void* NSDictionary_type_DictionaryWithContentsOfURLError(void* url, void* error) {
+	return [NSDictionary
+		dictionaryWithContentsOfURL: url
+		error: error];
+}
 void* NSDictionary_type_SharedKeySetForKeys(void* keys) {
 	return [NSDictionary
 		sharedKeySetForKeys: keys];
+}
+void* NSError_type_Alloc() {
+	return [NSError
+		alloc];
 }
 void* NSNumber_type_Alloc() {
 	return [NSNumber
@@ -237,6 +251,18 @@ void* NSString_type_LocalizedUserNotificationStringForKeyArguments(void* key, vo
 void* NSString_type_StringWithString(void* string) {
 	return [NSString
 		stringWithString: string];
+}
+void* NSString_type_StringWithContentsOfFileEncodingError(void* path, unsigned long enc, void* error) {
+	return [NSString
+		stringWithContentsOfFile: path
+		encoding: enc
+		error: error];
+}
+void* NSString_type_StringWithContentsOfURLEncodingError(void* url, unsigned long enc, void* error) {
+	return [NSString
+		stringWithContentsOfURL: url
+		encoding: enc
+		error: error];
 }
 void* NSString_type_LocalizedNameOfStringEncoding(unsigned long encoding) {
 	return [NSString
@@ -335,6 +361,11 @@ void* NSURL_type_URLWithDataRepresentationRelativeToURL(void* data, void* baseUR
 		URLWithDataRepresentation: data
 		relativeToURL: baseURL];
 }
+void* NSURL_type_BookmarkDataWithContentsOfURLError(void* bookmarkFileURL, void* error) {
+	return [NSURL
+		bookmarkDataWithContentsOfURL: bookmarkFileURL
+		error: error];
+}
 void* NSURL_type_ResourceValuesForKeysFromBookmarkData(void* keys, void* bookmarkData) {
 	return [NSURL
 		resourceValuesForKeys: keys
@@ -369,6 +400,21 @@ void* NSUserDefaults_type_StandardUserDefaults() {
 void* NSObject_inst_ActionProperty(void *id) {
 	return [(NSObject*)id
 		actionProperty];
+}
+
+BOOL NSObject_inst_AttemptRecoveryFromErrorOptionIndex(void *id, void* error, unsigned long recoveryOptionIndex) {
+	return [(NSObject*)id
+		attemptRecoveryFromError: error
+		optionIndex: recoveryOptionIndex];
+}
+
+void NSObject_inst_AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(void *id, void* error, unsigned long recoveryOptionIndex, void* delegate, void* didRecoverSelector, void* contextInfo) {
+	[(NSObject*)id
+		attemptRecoveryFromError: error
+		optionIndex: recoveryOptionIndex
+		delegate: delegate
+		didRecoverSelector: didRecoverSelector
+		contextInfo: contextInfo];
 }
 
 void* NSObject_inst_Candidates(void *id, void* sender) {
@@ -1159,6 +1205,12 @@ void* NSArray_inst_InitWithArrayCopyItems(void *id, void* array, BOOL flag) {
 		copyItems: flag];
 }
 
+void* NSArray_inst_InitWithContentsOfURLError(void *id, void* url, void* error) {
+	return [(NSArray*)id
+		initWithContentsOfURL: url
+		error: error];
+}
+
 BOOL NSArray_inst_IsEqualToArray(void *id, void* otherArray) {
 	return [(NSArray*)id
 		isEqualToArray: otherArray];
@@ -1219,6 +1271,12 @@ void* NSArray_inst_ValueForKey(void *id, void* key) {
 		valueForKey: key];
 }
 
+BOOL NSArray_inst_WriteToURLError(void *id, void* url, void* error) {
+	return [(NSArray*)id
+		writeToURL: url
+		error: error];
+}
+
 unsigned long NSArray_inst_Count(void *id) {
 	return [(NSArray*)id
 		count];
@@ -1247,6 +1305,14 @@ void NSAttributedString_inst_DrawInRect(void *id, NSRect rect) {
 void* NSAttributedString_inst_InitWithAttributedString(void *id, void* attrStr) {
 	return [(NSAttributedString*)id
 		initWithAttributedString: attrStr];
+}
+
+void* NSAttributedString_inst_InitWithDataOptionsDocumentAttributesError(void *id, void* data, void* options, void* dict, void* error) {
+	return [(NSAttributedString*)id
+		initWithData: data
+		options: options
+		documentAttributes: dict
+		error: error];
 }
 
 void* NSAttributedString_inst_InitWithDocFormatDocumentAttributes(void *id, void* data, void* dict) {
@@ -1296,6 +1362,14 @@ void* NSAttributedString_inst_InitWithStringAttributes(void *id, void* str, void
 	return [(NSAttributedString*)id
 		initWithString: str
 		attributes: attrs];
+}
+
+void* NSAttributedString_inst_InitWithURLOptionsDocumentAttributesError(void *id, void* url, void* options, void* dict, void* error) {
+	return [(NSAttributedString*)id
+		initWithURL: url
+		options: options
+		documentAttributes: dict
+		error: error];
 }
 
 BOOL NSAttributedString_inst_IsEqualToAttributedString(void *id, void* other) {
@@ -1477,6 +1551,12 @@ void* NSDictionary_inst_Init(void *id) {
 		init];
 }
 
+void* NSDictionary_inst_InitWithContentsOfURLError(void *id, void* url, void* error) {
+	return [(NSDictionary*)id
+		initWithContentsOfURL: url
+		error: error];
+}
+
 void* NSDictionary_inst_InitWithDictionary(void *id, void* otherDictionary) {
 	return [(NSDictionary*)id
 		initWithDictionary: otherDictionary];
@@ -1504,6 +1584,12 @@ void* NSDictionary_inst_KeysSortedByValueUsingSelector(void *id, void* comparato
 		keysSortedByValueUsingSelector: comparator];
 }
 
+BOOL NSDictionary_inst_WriteToURLError(void *id, void* url, void* error) {
+	return [(NSDictionary*)id
+		writeToURL: url
+		error: error];
+}
+
 unsigned long NSDictionary_inst_Count(void *id) {
 	return [(NSDictionary*)id
 		count];
@@ -1527,6 +1613,56 @@ void* NSDictionary_inst_Description(void *id) {
 void* NSDictionary_inst_DescriptionInStringsFileFormat(void *id) {
 	return [(NSDictionary*)id
 		descriptionInStringsFileFormat];
+}
+
+void* NSError_inst_Init(void *id) {
+	return [(NSError*)id
+		init];
+}
+
+long NSError_inst_Code(void *id) {
+	return [(NSError*)id
+		code];
+}
+
+void* NSError_inst_UserInfo(void *id) {
+	return [(NSError*)id
+		userInfo];
+}
+
+void* NSError_inst_LocalizedDescription(void *id) {
+	return [(NSError*)id
+		localizedDescription];
+}
+
+void* NSError_inst_LocalizedRecoveryOptions(void *id) {
+	return [(NSError*)id
+		localizedRecoveryOptions];
+}
+
+void* NSError_inst_LocalizedRecoverySuggestion(void *id) {
+	return [(NSError*)id
+		localizedRecoverySuggestion];
+}
+
+void* NSError_inst_LocalizedFailureReason(void *id) {
+	return [(NSError*)id
+		localizedFailureReason];
+}
+
+void* NSError_inst_RecoveryAttempter(void *id) {
+	return [(NSError*)id
+		recoveryAttempter];
+}
+
+void* NSError_inst_HelpAnchor(void *id) {
+	return [(NSError*)id
+		helpAnchor];
+}
+
+void* NSError_inst_UnderlyingErrors(void *id) {
+	return [(NSError*)id
+		underlyingErrors];
 }
 
 void* NSNumber_inst_DescriptionWithLocale(void *id, void* locale) {
@@ -1705,6 +1841,20 @@ void* NSString_inst_InitWithBytesNoCopyLengthEncodingFreeWhenDone(void *id, void
 		freeWhenDone: freeBuffer];
 }
 
+void* NSString_inst_InitWithContentsOfFileEncodingError(void *id, void* path, unsigned long enc, void* error) {
+	return [(NSString*)id
+		initWithContentsOfFile: path
+		encoding: enc
+		error: error];
+}
+
+void* NSString_inst_InitWithContentsOfURLEncodingError(void *id, void* url, unsigned long enc, void* error) {
+	return [(NSString*)id
+		initWithContentsOfURL: url
+		encoding: enc
+		error: error];
+}
+
 void* NSString_inst_InitWithDataEncoding(void *id, void* data, unsigned long encoding) {
 	return [(NSString*)id
 		initWithData: data
@@ -1802,6 +1952,22 @@ void* NSString_inst_SubstringToIndex(void *id, unsigned long to) {
 void* NSString_inst_VariantFittingPresentationWidth(void *id, long width) {
 	return [(NSString*)id
 		variantFittingPresentationWidth: width];
+}
+
+BOOL NSString_inst_WriteToFileAtomicallyEncodingError(void *id, void* path, BOOL useAuxiliaryFile, unsigned long enc, void* error) {
+	return [(NSString*)id
+		writeToFile: path
+		atomically: useAuxiliaryFile
+		encoding: enc
+		error: error];
+}
+
+BOOL NSString_inst_WriteToURLAtomicallyEncodingError(void *id, void* url, BOOL useAuxiliaryFile, unsigned long enc, void* error) {
+	return [(NSString*)id
+		writeToURL: url
+		atomically: useAuxiliaryFile
+		encoding: enc
+		error: error];
 }
 
 unsigned long NSString_inst_Length(void *id) {
@@ -2032,6 +2198,16 @@ void* NSURL_inst_URLByAppendingPathExtension(void *id, void* pathExtension) {
 		URLByAppendingPathExtension: pathExtension];
 }
 
+BOOL NSURL_inst_CheckPromisedItemIsReachableAndReturnError(void *id, void* error) {
+	return [(NSURL*)id
+		checkPromisedItemIsReachableAndReturnError: error];
+}
+
+BOOL NSURL_inst_CheckResourceIsReachableAndReturnError(void *id, void* error) {
+	return [(NSURL*)id
+		checkResourceIsReachableAndReturnError: error];
+}
+
 void* NSURL_inst_FileReferenceURL(void *id) {
 	return [(NSURL*)id
 		fileReferenceURL];
@@ -2089,9 +2265,27 @@ BOOL NSURL_inst_IsFileReferenceURL(void *id) {
 		isFileReferenceURL];
 }
 
+void* NSURL_inst_PromisedItemResourceValuesForKeysError(void *id, void* keys, void* error) {
+	return [(NSURL*)id
+		promisedItemResourceValuesForKeys: keys
+		error: error];
+}
+
 void NSURL_inst_RemoveAllCachedResourceValues(void *id) {
 	[(NSURL*)id
 		removeAllCachedResourceValues];
+}
+
+void* NSURL_inst_ResourceValuesForKeysError(void *id, void* keys, void* error) {
+	return [(NSURL*)id
+		resourceValuesForKeys: keys
+		error: error];
+}
+
+BOOL NSURL_inst_SetResourceValuesError(void *id, void* keyedValues, void* error) {
+	return [(NSURL*)id
+		setResourceValues: keyedValues
+		error: error];
 }
 
 BOOL NSURL_inst_StartAccessingSecurityScopedResource(void *id) {
@@ -2710,6 +2904,18 @@ func NSArray_ArrayWithArray(array NSArrayRef) NSArray {
 	return NSArray_FromPointer(ret)
 }
 
+// NSArray_ArrayWithContentsOfURLError is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/2879153-arraywithcontentsofurl?language=objc for details.
+func NSArray_ArrayWithContentsOfURLError(url NSURLRef, error NSErrorRef) NSArray {
+	ret := C.NSArray_type_ArrayWithContentsOfURLError(
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // NSAttributedString_Alloc is undocumented.
 func NSAttributedString_Alloc() NSAttributedString {
 	ret := C.NSAttributedString_type_Alloc()
@@ -2860,6 +3066,18 @@ func NSDictionary_DictionaryWithDictionary(dict NSDictionaryRef) NSDictionary {
 	return NSDictionary_FromPointer(ret)
 }
 
+// NSDictionary_DictionaryWithContentsOfURLError creates a dictionary using the keys and values found in a resource specified by a given URL.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/2879163-dictionarywithcontentsofurl?language=objc for details.
+func NSDictionary_DictionaryWithContentsOfURLError(url NSURLRef, error NSErrorRef) NSDictionary {
+	ret := C.NSDictionary_type_DictionaryWithContentsOfURLError(
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
 // NSDictionary_SharedKeySetForKeys creates a shared key set object for the specified keys.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1408190-sharedkeysetforkeys?language=objc for details.
@@ -2869,6 +3087,13 @@ func NSDictionary_SharedKeySetForKeys(keys NSArrayRef) objc.Object {
 	)
 
 	return objc.Object_FromPointer(ret)
+}
+
+// NSError_Alloc is undocumented.
+func NSError_Alloc() NSError {
+	ret := C.NSError_type_Alloc()
+
+	return NSError_FromPointer(ret)
 }
 
 // NSNumber_Alloc is undocumented.
@@ -2992,6 +3217,32 @@ func NSString_LocalizedUserNotificationStringForKeyArguments(key NSStringRef, ar
 func NSString_StringWithString(string NSStringRef) NSString {
 	ret := C.NSString_type_StringWithString(
 		objc.RefPointer(string),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// NSString_StringWithContentsOfFileEncodingError returns a string created by reading data from the file at a given path interpreted using a given encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc for details.
+func NSString_StringWithContentsOfFileEncodingError(path NSStringRef, enc NSStringEncoding, error NSErrorRef) NSString {
+	ret := C.NSString_type_StringWithContentsOfFileEncodingError(
+		objc.RefPointer(path),
+		C.ulong(enc),
+		objc.RefPointer(error),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// NSString_StringWithContentsOfURLEncodingError returns a string created by reading data from a given URL interpreted using a given encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc for details.
+func NSString_StringWithContentsOfURLEncodingError(url NSURLRef, enc NSStringEncoding, error NSErrorRef) NSString {
+	ret := C.NSString_type_StringWithContentsOfURLEncodingError(
+		objc.RefPointer(url),
+		C.ulong(enc),
+		objc.RefPointer(error),
 	)
 
 	return NSString_FromPointer(ret)
@@ -3224,6 +3475,18 @@ func NSURL_URLWithDataRepresentationRelativeToURL(data NSDataRef, baseURL NSURLR
 	return NSURL_FromPointer(ret)
 }
 
+// NSURL_BookmarkDataWithContentsOfURLError initializes and returns bookmark data derived from an alias file pointed to by a specified URL.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1408344-bookmarkdatawithcontentsofurl?language=objc for details.
+func NSURL_BookmarkDataWithContentsOfURLError(bookmarkFileURL NSURLRef, error NSErrorRef) NSData {
+	ret := C.NSURL_type_BookmarkDataWithContentsOfURLError(
+		objc.RefPointer(bookmarkFileURL),
+		objc.RefPointer(error),
+	)
+
+	return NSData_FromPointer(ret)
+}
+
 // NSURL_ResourceValuesForKeysFromBookmarkData returns the resource values for properties identified by a specified array of keys contained in specified bookmark data.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1418097-resourcevaluesforkeys?language=objc for details.
@@ -3316,6 +3579,44 @@ func (x gen_NSObject) ActionProperty() NSString {
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+// AttemptRecoveryFromErrorOptionIndex implemented to attempt a recovery from an error noted in an application-modal dialog.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1416402-attemptrecoveryfromerror?language=objc for details.
+func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndex(
+	error NSErrorRef,
+	recoveryOptionIndex NSUInteger,
+) bool {
+	ret := C.NSObject_inst_AttemptRecoveryFromErrorOptionIndex(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+		C.ulong(recoveryOptionIndex),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo implemented to attempt a recovery from an error noted in a document-modal sheet.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1411071-attemptrecoveryfromerror?language=objc for details.
+func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(
+	error NSErrorRef,
+	recoveryOptionIndex NSUInteger,
+	delegate objc.Ref,
+	didRecoverSelector objc.Selector,
+	contextInfo unsafe.Pointer,
+) {
+	C.NSObject_inst_AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+		C.ulong(recoveryOptionIndex),
+		objc.RefPointer(delegate),
+		didRecoverSelector.SelectorAddress(),
+		contextInfo,
+	)
+
+	return
 }
 
 // Candidates returns an array of candidates.
@@ -3525,6 +3826,17 @@ func (x gen_NSObject) ImageVersion() NSUInteger {
 }
 
 // Init implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc for details.
+func (x gen_NSObject) Init() NSObject {
+	ret := C.NSObject_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSObject_FromPointer(ret)
+}
+
+// Init_AsNSObject is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc for details.
 func (x gen_NSObject) Init_AsNSObject() NSObject {
@@ -5349,6 +5661,22 @@ func (x gen_NSArray) InitWithArrayCopyItems(
 	return NSArray_FromPointer(ret)
 }
 
+// InitWithContentsOfURLError is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/2879134-initwithcontentsofurl?language=objc for details.
+func (x gen_NSArray) InitWithContentsOfURLError(
+	url NSURLRef,
+	error NSErrorRef,
+) NSArray {
+	ret := C.NSArray_inst_InitWithContentsOfURLError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // IsEqualToArray compares the receiving array to another array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1411770-isequaltoarray?language=objc for details.
@@ -5510,6 +5838,22 @@ func (x gen_NSArray) ValueForKey(
 	return objc.Object_FromPointer(ret)
 }
 
+// WriteToURLError is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/2879138-writetourl?language=objc for details.
+func (x gen_NSArray) WriteToURLError(
+	url NSURLRef,
+	error NSErrorRef,
+) bool {
+	ret := C.NSArray_inst_WriteToURLError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
 // Count returns the number of objects in the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1409982-count?language=objc for details.
@@ -5596,6 +5940,26 @@ func (x gen_NSAttributedString) InitWithAttributedString(
 	ret := C.NSAttributedString_inst_InitWithAttributedString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(attrStr),
+	)
+
+	return NSAttributedString_FromPointer(ret)
+}
+
+// InitWithDataOptionsDocumentAttributesError creates an attributed string from the data in the specified data object.
+//
+// See https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc for details.
+func (x gen_NSAttributedString) InitWithDataOptionsDocumentAttributesError(
+	data NSDataRef,
+	options NSDictionaryRef,
+	dict NSDictionaryRef,
+	error NSErrorRef,
+) NSAttributedString {
+	ret := C.NSAttributedString_inst_InitWithDataOptionsDocumentAttributesError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+		objc.RefPointer(options),
+		objc.RefPointer(dict),
+		objc.RefPointer(error),
 	)
 
 	return NSAttributedString_FromPointer(ret)
@@ -5726,6 +6090,26 @@ func (x gen_NSAttributedString) InitWithStringAttributes(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(str),
 		objc.RefPointer(attrs),
+	)
+
+	return NSAttributedString_FromPointer(ret)
+}
+
+// InitWithURLOptionsDocumentAttributesError creates an attributed string from the contents of the specified URL.
+//
+// See https://developer.apple.com/documentation/foundation/nsattributedstring/1530490-initwithurl?language=objc for details.
+func (x gen_NSAttributedString) InitWithURLOptionsDocumentAttributesError(
+	url NSURLRef,
+	options NSDictionaryRef,
+	dict NSDictionaryRef,
+	error NSErrorRef,
+) NSAttributedString {
+	ret := C.NSAttributedString_inst_InitWithURLOptionsDocumentAttributesError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(options),
+		objc.RefPointer(dict),
+		objc.RefPointer(error),
 	)
 
 	return NSAttributedString_FromPointer(ret)
@@ -6228,6 +6612,22 @@ func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 	return NSDictionary_FromPointer(ret)
 }
 
+// InitWithContentsOfURLError initializes a newly allocated dictionary using the keys and values found at a given URL.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/2879140-initwithcontentsofurl?language=objc for details.
+func (x gen_NSDictionary) InitWithContentsOfURLError(
+	url NSURLRef,
+	error NSErrorRef,
+) NSDictionary {
+	ret := C.NSDictionary_inst_InitWithContentsOfURLError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
 // InitWithDictionary initializes a newly allocated dictionary by placing in it the keys and values contained in another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418434-initwithdictionary?language=objc for details.
@@ -6302,6 +6702,22 @@ func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
 	return NSArray_FromPointer(ret)
 }
 
+// WriteToURLError writes a property list representation of the contents of the dictionary to a given URL.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc for details.
+func (x gen_NSDictionary) WriteToURLError(
+	url NSURLRef,
+	error NSErrorRef,
+) bool {
+	ret := C.NSDictionary_inst_WriteToURLError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
 // Count returns the number of entries in the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1409628-count?language=objc for details.
@@ -6355,6 +6771,142 @@ func (x gen_NSDictionary) DescriptionInStringsFileFormat() NSString {
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+type NSErrorRef interface {
+	Pointer() uintptr
+	Init_AsNSError() NSError
+}
+
+type gen_NSError struct {
+	objc.Object
+}
+
+func NSError_FromPointer(ptr unsafe.Pointer) NSError {
+	return NSError{gen_NSError{
+		objc.Object_FromPointer(ptr),
+	}}
+}
+
+func NSError_FromRef(ref objc.Ref) NSError {
+	return NSError_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// Init initializes a new instance of the NSError class.
+func (x gen_NSError) Init() NSError {
+	ret := C.NSError_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSError_FromPointer(ret)
+}
+
+// Init_AsNSError is a typed version of Init.
+func (x gen_NSError) Init_AsNSError() NSError {
+	ret := C.NSError_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSError_FromPointer(ret)
+}
+
+// Code returns the error code.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1409165-code?language=objc for details.
+func (x gen_NSError) Code() NSInteger {
+	ret := C.NSError_inst_Code(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSInteger(ret)
+}
+
+// UserInfo returns the user info dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1411580-userinfo?language=objc for details.
+func (x gen_NSError) UserInfo() NSDictionary {
+	ret := C.NSError_inst_UserInfo(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
+// LocalizedDescription returns a string containing the localized description of the error.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1414418-localizeddescription?language=objc for details.
+func (x gen_NSError) LocalizedDescription() NSString {
+	ret := C.NSError_inst_LocalizedDescription(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// LocalizedRecoveryOptions an array containing the localized titles of buttons appropriate for displaying in an alert panel.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1415950-localizedrecoveryoptions?language=objc for details.
+func (x gen_NSError) LocalizedRecoveryOptions() NSArray {
+	ret := C.NSError_inst_LocalizedRecoveryOptions(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// LocalizedRecoverySuggestion returns a string containing the localized recovery suggestion for the error.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion?language=objc for details.
+func (x gen_NSError) LocalizedRecoverySuggestion() NSString {
+	ret := C.NSError_inst_LocalizedRecoverySuggestion(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// LocalizedFailureReason returns a string containing the localized explanation of the reason for the error.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason?language=objc for details.
+func (x gen_NSError) LocalizedFailureReason() NSString {
+	ret := C.NSError_inst_LocalizedFailureReason(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// RecoveryAttempter returns the object in the user info dictionary corresponding to the NSRecoveryAttempterErrorKey key.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1408864-recoveryattempter?language=objc for details.
+func (x gen_NSError) RecoveryAttempter() objc.Object {
+	ret := C.NSError_inst_RecoveryAttempter(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// HelpAnchor returns a string to display in response to an alert panel help anchor button being pressed.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/1414718-helpanchor?language=objc for details.
+func (x gen_NSError) HelpAnchor() NSString {
+	ret := C.NSError_inst_HelpAnchor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// UnderlyingErrors is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nserror/3738169-underlyingerrors?language=objc for details.
+func (x gen_NSError) UnderlyingErrors() NSArray {
+	ret := C.NSError_inst_UnderlyingErrors(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSArray_FromPointer(ret)
 }
 
 type NSNumberRef interface {
@@ -6889,6 +7441,42 @@ func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
 	return NSString_FromPointer(ret)
 }
 
+// InitWithContentsOfFileEncodingError returns an NSString object initialized by reading data from the file at a given path using a given encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc for details.
+func (x gen_NSString) InitWithContentsOfFileEncodingError(
+	path NSStringRef,
+	enc NSStringEncoding,
+	error NSErrorRef,
+) NSString {
+	ret := C.NSString_inst_InitWithContentsOfFileEncodingError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		C.ulong(enc),
+		objc.RefPointer(error),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
+// InitWithContentsOfURLEncodingError returns an NSString object initialized by reading data from a given URL interpreted using a given encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc for details.
+func (x gen_NSString) InitWithContentsOfURLEncodingError(
+	url NSURLRef,
+	enc NSStringEncoding,
+	error NSErrorRef,
+) NSString {
+	ret := C.NSString_inst_InitWithContentsOfURLEncodingError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		C.ulong(enc),
+		objc.RefPointer(error),
+	)
+
+	return NSString_FromPointer(ret)
+}
+
 // InitWithDataEncoding returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc for details.
@@ -7155,6 +7743,46 @@ func (x gen_NSString) VariantFittingPresentationWidth(
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+// WriteToFileAtomicallyEncodingError writes the contents of the receiver to a file at a given path using a given encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1407654-writetofile?language=objc for details.
+func (x gen_NSString) WriteToFileAtomicallyEncodingError(
+	path NSStringRef,
+	useAuxiliaryFile bool,
+	enc NSStringEncoding,
+	error NSErrorRef,
+) bool {
+	ret := C.NSString_inst_WriteToFileAtomicallyEncodingError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+		convertToObjCBool(useAuxiliaryFile),
+		C.ulong(enc),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// WriteToURLAtomicallyEncodingError writes the contents of the receiver to the URL specified by url using the specified encoding.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1417341-writetourl?language=objc for details.
+func (x gen_NSString) WriteToURLAtomicallyEncodingError(
+	url NSURLRef,
+	useAuxiliaryFile bool,
+	enc NSStringEncoding,
+	error NSErrorRef,
+) bool {
+	ret := C.NSString_inst_WriteToURLAtomicallyEncodingError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+		convertToObjCBool(useAuxiliaryFile),
+		C.ulong(enc),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 // Length returns the number of UTF-16 code units in the receiver.
@@ -7725,6 +8353,34 @@ func (x gen_NSURL) URLByAppendingPathExtension(
 	return NSURL_FromPointer(ret)
 }
 
+// CheckPromisedItemIsReachableAndReturnError returns whether the promised item can be reached.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1410411-checkpromiseditemisreachableandr?language=objc for details.
+func (x gen_NSURL) CheckPromisedItemIsReachableAndReturnError(
+	error NSErrorRef,
+) bool {
+	ret := C.NSURL_inst_CheckPromisedItemIsReachableAndReturnError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// CheckResourceIsReachableAndReturnError returns whether the resource pointed to by a file URL can be reached.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1410597-checkresourceisreachableandretur?language=objc for details.
+func (x gen_NSURL) CheckResourceIsReachableAndReturnError(
+	error NSErrorRef,
+) bool {
+	ret := C.NSURL_inst_CheckResourceIsReachableAndReturnError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
 // FileReferenceURL returns a new file reference URL that points to the same resource as the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408631-filereferenceurl?language=objc for details.
@@ -7873,6 +8529,22 @@ func (x gen_NSURL) IsFileReferenceURL() bool {
 	return convertObjCBoolToGo(ret)
 }
 
+// PromisedItemResourceValuesForKeysError returns the resource values for the properties identified by specified array of keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1407746-promiseditemresourcevaluesforkey?language=objc for details.
+func (x gen_NSURL) PromisedItemResourceValuesForKeysError(
+	keys NSArrayRef,
+	error NSErrorRef,
+) NSDictionary {
+	ret := C.NSURL_inst_PromisedItemResourceValuesForKeysError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keys),
+		objc.RefPointer(error),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
 // RemoveAllCachedResourceValues removes all cached resource values and temporary resource values from the URL object.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417078-removeallcachedresourcevalues?language=objc for details.
@@ -7882,6 +8554,38 @@ func (x gen_NSURL) RemoveAllCachedResourceValues() {
 	)
 
 	return
+}
+
+// ResourceValuesForKeysError returns the resource values for the properties identified by specified array of keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1417657-resourcevaluesforkeys?language=objc for details.
+func (x gen_NSURL) ResourceValuesForKeysError(
+	keys NSArrayRef,
+	error NSErrorRef,
+) NSDictionary {
+	ret := C.NSURL_inst_ResourceValuesForKeysError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keys),
+		objc.RefPointer(error),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
+// SetResourceValuesError sets the URL’s resource properties for a given set of keys to a given set of values.
+//
+// See https://developer.apple.com/documentation/foundation/nsurl/1408208-setresourcevalues?language=objc for details.
+func (x gen_NSURL) SetResourceValuesError(
+	keyedValues NSDictionaryRef,
+	error NSErrorRef,
+) bool {
+	ret := C.NSURL_inst_SetResourceValuesError(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keyedValues),
+		objc.RefPointer(error),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 // StartAccessingSecurityScopedResource in an app that has adopted App Sandbox, makes the resource pointed to by a security-scoped URL available to the app.
