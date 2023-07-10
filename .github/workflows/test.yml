@@ -5,7 +5,7 @@ jobs:
     strategy:
       matrix:
         go-version: [stable, oldstable]
-        os: [macos-latest]
+        os: [macos-12, macos-11]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Install Go
