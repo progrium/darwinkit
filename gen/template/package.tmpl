@@ -46,6 +46,9 @@ bool {{.Name}}_convertObjCBool(BOOL b) {
 {{- end}}
 
 {{range .MsgSendWrappers}}
+{{- if .Unavailable}}
+// {{.Name}} marked unavailable.
+{{else }}
 {{.Return}} {{.Name}}(void *id
 	{{- range .Selector -}}{{- if .Arg -}}
 	, {{.Arg.Type}} {{.Arg.Name}}
@@ -59,6 +62,7 @@ bool {{.Name}}_convertObjCBool(BOOL b) {
 		];
 }
 {{end}}
+{{- end}}
 
 BOOL {{.Name}}_objc_bool_true = YES;
 BOOL {{.Name}}_objc_bool_false = NO;
@@ -153,6 +157,7 @@ func (x gen_{{$cls.Name}}) {{.Name}}(
 		{{- end -}}
 	{{- end -}}
 ){{end}} {
+{{ if .Unavailable }}panic("{{.Name}} is unavailable"){{ else -}}
 	{{if .WrappedFunc.HasReturn}}ret := {{end}}C.{{.WrappedFunc.Name}}(
 		unsafe.Pointer(x.Pointer()),
 		{{- range .WrappedFunc.Args}}
@@ -167,6 +172,7 @@ func (x gen_{{$cls.Name}}) {{.Name}}(
 	{{- end}}
 	return
     {{- end }}
+{{end -}}
 }
 {{end}}
 

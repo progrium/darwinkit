@@ -38,14 +38,14 @@ func main() {
 		// CoreML
 		{"coreml", []schemaLoader{
 			loadFile("api/coreml/mlarraybatchprovider.objc.json"),
-			loadFile("api/coreml/mlcpucomputedevice.objc.json"),
+			loadFile("api/coreml/mlcpucomputedevice.objc.json").Then(unavailableInit),
 			loadFile("api/coreml/mldictionaryfeatureprovider.objc.json"),
 			loadFile("api/coreml/mlfeaturevalue.objc.json"),
-			loadFile("api/coreml/mlgpucomputedevice.objc.json"),
+			loadFile("api/coreml/mlgpucomputedevice.objc.json").Then(unavailableInit),
 			loadFile("api/coreml/mlmodel.objc.json"),
-			loadFile("api/coreml/mlmodelasset.objc.json"),
-			loadFile("api/coreml/mlmodelcollection.objc.json"),
-			loadFile("api/coreml/mlneuralenginecomputedevice.objc.json"),
+			loadFile("api/coreml/mlmodelasset.objc.json").Then(unavailableInit),
+			loadFile("api/coreml/mlmodelcollection.objc.json").Then(unavailableInit),
+			loadFile("api/coreml/mlneuralenginecomputedevice.objc.json").Then(unavailableInit),
 		}},
 
 		{"cocoa", []schemaLoader{
@@ -156,4 +156,13 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func unavailableInit(s *schema.Schema) error {
+	s.Class.InstanceMethods = append(s.Class.InstanceMethods, schema.Method{
+		Name:        "init",
+		Return:      schema.DataType{Name: "instancetype"},
+		Unavailable: true,
+	})
+	return nil
 }

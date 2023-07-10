@@ -103,10 +103,7 @@ void* MLArrayBatchProvider_inst_Array(void *id) {
 		array];
 }
 
-void* MLCPUComputeDevice_inst_Init(void *id) {
-	return [(MLCPUComputeDevice*)id
-		init];
-}
+// MLCPUComputeDevice_inst_Init marked unavailable.
 
 void* MLDictionaryFeatureProvider_inst_InitWithDictionaryError(void *id, void* dictionary, void* error) {
 	return [(MLDictionaryFeatureProvider*)id
@@ -154,10 +151,7 @@ void* MLFeatureValue_inst_DictionaryValue(void *id) {
 		dictionaryValue];
 }
 
-void* MLGPUComputeDevice_inst_Init(void *id) {
-	return [(MLGPUComputeDevice*)id
-		init];
-}
+// MLGPUComputeDevice_inst_Init marked unavailable.
 
 void* MLGPUComputeDevice_inst_MetalDevice(void *id) {
 	return [(MLGPUComputeDevice*)id
@@ -181,20 +175,11 @@ void* MLModel_inst_Init(void *id) {
 		init];
 }
 
-void* MLModelAsset_inst_Init(void *id) {
-	return [(MLModelAsset*)id
-		init];
-}
+// MLModelAsset_inst_Init marked unavailable.
 
-void* MLModelCollection_inst_Init(void *id) {
-	return [(MLModelCollection*)id
-		init];
-}
+// MLModelCollection_inst_Init marked unavailable.
 
-void* MLNeuralEngineComputeDevice_inst_Init(void *id) {
-	return [(MLNeuralEngineComputeDevice*)id
-		init];
-}
+// MLNeuralEngineComputeDevice_inst_Init marked unavailable.
 
 long MLNeuralEngineComputeDevice_inst_TotalCoreCount(void *id) {
 	return [(MLNeuralEngineComputeDevice*)id
@@ -440,20 +425,12 @@ func MLCPUComputeDevice_FromRef(ref objc.Ref) MLCPUComputeDevice {
 
 // Init initializes a new instance of the MLCPUComputeDevice class.
 func (x gen_MLCPUComputeDevice) Init() MLCPUComputeDevice {
-	ret := C.MLCPUComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLCPUComputeDevice_FromPointer(ret)
+	panic("Init is unavailable")
 }
 
 // Init_AsMLCPUComputeDevice is a typed version of Init.
 func (x gen_MLCPUComputeDevice) Init_AsMLCPUComputeDevice() MLCPUComputeDevice {
-	ret := C.MLCPUComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLCPUComputeDevice_FromPointer(ret)
+	panic("Init_AsMLCPUComputeDevice is unavailable")
 }
 
 type MLDictionaryFeatureProviderRef interface {
@@ -639,20 +616,12 @@ func MLGPUComputeDevice_FromRef(ref objc.Ref) MLGPUComputeDevice {
 
 // Init initializes a new instance of the MLGPUComputeDevice class.
 func (x gen_MLGPUComputeDevice) Init() MLGPUComputeDevice {
-	ret := C.MLGPUComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLGPUComputeDevice_FromPointer(ret)
+	panic("Init is unavailable")
 }
 
 // Init_AsMLGPUComputeDevice is a typed version of Init.
 func (x gen_MLGPUComputeDevice) Init_AsMLGPUComputeDevice() MLGPUComputeDevice {
-	ret := C.MLGPUComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLGPUComputeDevice_FromPointer(ret)
+	panic("Init_AsMLGPUComputeDevice is unavailable")
 }
 
 // MetalDevice returns the device that represents the underlying metal device.
@@ -756,20 +725,12 @@ func MLModelAsset_FromRef(ref objc.Ref) MLModelAsset {
 
 // Init initializes a new instance of the MLModelAsset class.
 func (x gen_MLModelAsset) Init() MLModelAsset {
-	ret := C.MLModelAsset_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLModelAsset_FromPointer(ret)
+	panic("Init is unavailable")
 }
 
 // Init_AsMLModelAsset is a typed version of Init.
 func (x gen_MLModelAsset) Init_AsMLModelAsset() MLModelAsset {
-	ret := C.MLModelAsset_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLModelAsset_FromPointer(ret)
+	panic("Init_AsMLModelAsset is unavailable")
 }
 
 type MLModelCollectionRef interface {
@@ -793,20 +754,12 @@ func MLModelCollection_FromRef(ref objc.Ref) MLModelCollection {
 
 // Init initializes a new instance of the MLModelCollection class.
 func (x gen_MLModelCollection) Init() MLModelCollection {
-	ret := C.MLModelCollection_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLModelCollection_FromPointer(ret)
+	panic("Init is unavailable")
 }
 
 // Init_AsMLModelCollection is a typed version of Init.
 func (x gen_MLModelCollection) Init_AsMLModelCollection() MLModelCollection {
-	ret := C.MLModelCollection_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLModelCollection_FromPointer(ret)
+	panic("Init_AsMLModelCollection is unavailable")
 }
 
 type MLNeuralEngineComputeDeviceRef interface {
@@ -830,20 +783,12 @@ func MLNeuralEngineComputeDevice_FromRef(ref objc.Ref) MLNeuralEngineComputeDevi
 
 // Init initializes a new instance of the MLNeuralEngineComputeDevice class.
 func (x gen_MLNeuralEngineComputeDevice) Init() MLNeuralEngineComputeDevice {
-	ret := C.MLNeuralEngineComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLNeuralEngineComputeDevice_FromPointer(ret)
+	panic("Init is unavailable")
 }
 
 // Init_AsMLNeuralEngineComputeDevice is a typed version of Init.
 func (x gen_MLNeuralEngineComputeDevice) Init_AsMLNeuralEngineComputeDevice() MLNeuralEngineComputeDevice {
-	ret := C.MLNeuralEngineComputeDevice_inst_Init(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return MLNeuralEngineComputeDevice_FromPointer(ret)
+	panic("Init_AsMLNeuralEngineComputeDevice is unavailable")
 }
 
 // TotalCoreCount is undocumented.

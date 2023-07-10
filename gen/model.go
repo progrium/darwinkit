@@ -55,6 +55,8 @@ type CGoMsgSend struct {
 	Class    string
 	Selector []SelectorPart
 	Return   string
+
+	Unavailable bool
 }
 
 func (m CGoMsgSend) HasReturn() bool {
@@ -87,6 +89,7 @@ type MethodDef struct {
 	Description string
 	Name        string
 	WrappedFunc CGoWrapperFunc
+	Unavailable bool
 }
 
 type ClassDef struct {
