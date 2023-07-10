@@ -25,10 +25,6 @@ void* MLArrayBatchProvider_type_Alloc() {
 	return [MLArrayBatchProvider
 		alloc];
 }
-void* MLCPUComputeDevice_type_Alloc() {
-	return [MLCPUComputeDevice
-		alloc];
-}
 void* MLDictionaryFeatureProvider_type_Alloc() {
 	return [MLDictionaryFeatureProvider
 		alloc];
@@ -45,10 +41,6 @@ void* MLFeatureValue_type_FeatureValueWithDictionaryError(void* value, void* err
 	return [MLFeatureValue
 		featureValueWithDictionary: value
 		error: error];
-}
-void* MLGPUComputeDevice_type_Alloc() {
-	return [MLGPUComputeDevice
-		alloc];
 }
 void* MLModel_type_Alloc() {
 	return [MLModel
@@ -76,10 +68,6 @@ void* MLModelCollection_type_Alloc() {
 	return [MLModelCollection
 		alloc];
 }
-void* MLNeuralEngineComputeDevice_type_Alloc() {
-	return [MLNeuralEngineComputeDevice
-		alloc];
-}
 
 
 void* MLArrayBatchProvider_inst_InitWithDictionaryError(void *id, void* dictionary, void* error) {
@@ -102,8 +90,6 @@ void* MLArrayBatchProvider_inst_Array(void *id) {
 	return [(MLArrayBatchProvider*)id
 		array];
 }
-
-// MLCPUComputeDevice_inst_Init marked unavailable.
 
 void* MLDictionaryFeatureProvider_inst_InitWithDictionaryError(void *id, void* dictionary, void* error) {
 	return [(MLDictionaryFeatureProvider*)id
@@ -151,13 +137,6 @@ void* MLFeatureValue_inst_DictionaryValue(void *id) {
 		dictionaryValue];
 }
 
-// MLGPUComputeDevice_inst_Init marked unavailable.
-
-void* MLGPUComputeDevice_inst_MetalDevice(void *id) {
-	return [(MLGPUComputeDevice*)id
-		metalDevice];
-}
-
 void* MLModel_inst_PredictionFromFeaturesError(void *id, void* input, void* error) {
 	return [(MLModel*)id
 		predictionFromFeatures: input
@@ -178,13 +157,6 @@ void* MLModel_inst_Init(void *id) {
 // MLModelAsset_inst_Init marked unavailable.
 
 // MLModelCollection_inst_Init marked unavailable.
-
-// MLNeuralEngineComputeDevice_inst_Init marked unavailable.
-
-long MLNeuralEngineComputeDevice_inst_TotalCoreCount(void *id) {
-	return [(MLNeuralEngineComputeDevice*)id
-		totalCoreCount];
-}
 
 
 BOOL coreml_objc_bool_true = YES;
@@ -212,13 +184,6 @@ func MLArrayBatchProvider_Alloc() MLArrayBatchProvider {
 	ret := C.MLArrayBatchProvider_type_Alloc()
 
 	return MLArrayBatchProvider_FromPointer(ret)
-}
-
-// MLCPUComputeDevice_Alloc is undocumented.
-func MLCPUComputeDevice_Alloc() MLCPUComputeDevice {
-	ret := C.MLCPUComputeDevice_type_Alloc()
-
-	return MLCPUComputeDevice_FromPointer(ret)
 }
 
 // MLDictionaryFeatureProvider_Alloc is undocumented.
@@ -256,13 +221,6 @@ func MLFeatureValue_FeatureValueWithDictionaryError(value core.NSDictionaryRef, 
 	)
 
 	return MLFeatureValue_FromPointer(ret)
-}
-
-// MLGPUComputeDevice_Alloc is undocumented.
-func MLGPUComputeDevice_Alloc() MLGPUComputeDevice {
-	ret := C.MLGPUComputeDevice_type_Alloc()
-
-	return MLGPUComputeDevice_FromPointer(ret)
 }
 
 // MLModel_Alloc is undocumented.
@@ -317,13 +275,6 @@ func MLModelCollection_Alloc() MLModelCollection {
 	ret := C.MLModelCollection_type_Alloc()
 
 	return MLModelCollection_FromPointer(ret)
-}
-
-// MLNeuralEngineComputeDevice_Alloc is undocumented.
-func MLNeuralEngineComputeDevice_Alloc() MLNeuralEngineComputeDevice {
-	ret := C.MLNeuralEngineComputeDevice_type_Alloc()
-
-	return MLNeuralEngineComputeDevice_FromPointer(ret)
 }
 
 type MLArrayBatchProviderRef interface {
@@ -402,35 +353,6 @@ func (x gen_MLArrayBatchProvider) Array() core.NSArray {
 	)
 
 	return core.NSArray_FromPointer(ret)
-}
-
-type MLCPUComputeDeviceRef interface {
-	Pointer() uintptr
-	Init_AsMLCPUComputeDevice() MLCPUComputeDevice
-}
-
-type gen_MLCPUComputeDevice struct {
-	objc.Object
-}
-
-func MLCPUComputeDevice_FromPointer(ptr unsafe.Pointer) MLCPUComputeDevice {
-	return MLCPUComputeDevice{gen_MLCPUComputeDevice{
-		objc.Object_FromPointer(ptr),
-	}}
-}
-
-func MLCPUComputeDevice_FromRef(ref objc.Ref) MLCPUComputeDevice {
-	return MLCPUComputeDevice_FromPointer(unsafe.Pointer(ref.Pointer()))
-}
-
-// Init initializes a new instance of the MLCPUComputeDevice class.
-func (x gen_MLCPUComputeDevice) Init() MLCPUComputeDevice {
-	panic("Init is unavailable")
-}
-
-// Init_AsMLCPUComputeDevice is a typed version of Init.
-func (x gen_MLCPUComputeDevice) Init_AsMLCPUComputeDevice() MLCPUComputeDevice {
-	panic("Init_AsMLCPUComputeDevice is unavailable")
 }
 
 type MLDictionaryFeatureProviderRef interface {
@@ -595,46 +517,6 @@ func (x gen_MLFeatureValue) DictionaryValue() core.NSDictionary {
 	return core.NSDictionary_FromPointer(ret)
 }
 
-type MLGPUComputeDeviceRef interface {
-	Pointer() uintptr
-	Init_AsMLGPUComputeDevice() MLGPUComputeDevice
-}
-
-type gen_MLGPUComputeDevice struct {
-	objc.Object
-}
-
-func MLGPUComputeDevice_FromPointer(ptr unsafe.Pointer) MLGPUComputeDevice {
-	return MLGPUComputeDevice{gen_MLGPUComputeDevice{
-		objc.Object_FromPointer(ptr),
-	}}
-}
-
-func MLGPUComputeDevice_FromRef(ref objc.Ref) MLGPUComputeDevice {
-	return MLGPUComputeDevice_FromPointer(unsafe.Pointer(ref.Pointer()))
-}
-
-// Init initializes a new instance of the MLGPUComputeDevice class.
-func (x gen_MLGPUComputeDevice) Init() MLGPUComputeDevice {
-	panic("Init is unavailable")
-}
-
-// Init_AsMLGPUComputeDevice is a typed version of Init.
-func (x gen_MLGPUComputeDevice) Init_AsMLGPUComputeDevice() MLGPUComputeDevice {
-	panic("Init_AsMLGPUComputeDevice is unavailable")
-}
-
-// MetalDevice returns the device that represents the underlying metal device.
-//
-// See https://developer.apple.com/documentation/coreml/mlgpucomputedevice/4134606-metaldevice?language=objc for details.
-func (x gen_MLGPUComputeDevice) MetalDevice() objc.Object {
-	ret := C.MLGPUComputeDevice_inst_MetalDevice(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return objc.Object_FromPointer(ret)
-}
-
 type MLModelRef interface {
 	Pointer() uintptr
 	Init_AsMLModel() MLModel
@@ -760,44 +642,4 @@ func (x gen_MLModelCollection) Init() MLModelCollection {
 // Init_AsMLModelCollection is a typed version of Init.
 func (x gen_MLModelCollection) Init_AsMLModelCollection() MLModelCollection {
 	panic("Init_AsMLModelCollection is unavailable")
-}
-
-type MLNeuralEngineComputeDeviceRef interface {
-	Pointer() uintptr
-	Init_AsMLNeuralEngineComputeDevice() MLNeuralEngineComputeDevice
-}
-
-type gen_MLNeuralEngineComputeDevice struct {
-	objc.Object
-}
-
-func MLNeuralEngineComputeDevice_FromPointer(ptr unsafe.Pointer) MLNeuralEngineComputeDevice {
-	return MLNeuralEngineComputeDevice{gen_MLNeuralEngineComputeDevice{
-		objc.Object_FromPointer(ptr),
-	}}
-}
-
-func MLNeuralEngineComputeDevice_FromRef(ref objc.Ref) MLNeuralEngineComputeDevice {
-	return MLNeuralEngineComputeDevice_FromPointer(unsafe.Pointer(ref.Pointer()))
-}
-
-// Init initializes a new instance of the MLNeuralEngineComputeDevice class.
-func (x gen_MLNeuralEngineComputeDevice) Init() MLNeuralEngineComputeDevice {
-	panic("Init is unavailable")
-}
-
-// Init_AsMLNeuralEngineComputeDevice is a typed version of Init.
-func (x gen_MLNeuralEngineComputeDevice) Init_AsMLNeuralEngineComputeDevice() MLNeuralEngineComputeDevice {
-	panic("Init_AsMLNeuralEngineComputeDevice is unavailable")
-}
-
-// TotalCoreCount is undocumented.
-//
-// See https://developer.apple.com/documentation/coreml/mlneuralenginecomputedevice/4278544-totalcorecount?language=objc for details.
-func (x gen_MLNeuralEngineComputeDevice) TotalCoreCount() core.NSInteger {
-	ret := C.MLNeuralEngineComputeDevice_inst_TotalCoreCount(
-		unsafe.Pointer(x.Pointer()),
-	)
-
-	return core.NSInteger(ret)
 }

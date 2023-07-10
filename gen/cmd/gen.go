@@ -38,17 +38,17 @@ func main() {
 		// CoreML
 		{"coreml", []schemaLoader{
 			loadFile("api/coreml/mlarraybatchprovider.objc.json"),
-			loadFile("api/coreml/mlcpucomputedevice.objc.json").Then(unavailableInit),
+			// loadFile("api/coreml/mlcpucomputedevice.objc.json").Then(unavailableInit),
 			loadFile("api/coreml/mldictionaryfeatureprovider.objc.json"),
 			loadFile("api/coreml/mlfeaturevalue.objc.json"),
-			loadFile("api/coreml/mlgpucomputedevice.objc.json").Then(unavailableInit),
+			// loadFile("api/coreml/mlgpucomputedevice.objc.json").Then(unavailableInit),
 			loadFile("api/coreml/mlmodel.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.Frameworks = []string{"CoreML"}
 				return nil
 			}),
 			loadFile("api/coreml/mlmodelasset.objc.json").Then(unavailableInit),
 			loadFile("api/coreml/mlmodelcollection.objc.json").Then(unavailableInit),
-			loadFile("api/coreml/mlneuralenginecomputedevice.objc.json").Then(unavailableInit),
+			// loadFile("api/coreml/mlneuralenginecomputedevice.objc.json").Then(unavailableInit),
 		}},
 
 		{"cocoa", []schemaLoader{
