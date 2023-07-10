@@ -161,6 +161,8 @@ github.com/progrium/macschema v0.1.0 h1:j8+EhGl7ZwSkWNsFJi53dl5XTbfwRC4nyZY2QUev
 github.com/progrium/macschema v0.1.0/go.mod h1:XzxlqYAo4vKozoZd837LBMjPcfJNlvwB5yBn5Nu+RDE=
 github.com/progrium/macschema v0.1.1-0.20230703163849-29f3d05de640 h1:1CBlaXexoQ7D5BkWjr1ipfT8/A+VVh1uNZ8FxyqCBf4=
 github.com/progrium/macschema v0.1.1-0.20230703163849-29f3d05de640/go.mod h1:4Xfn2JjWUS9ZFQwyRsrU8hbOHVAuvDj+7PX29p1uhts=
+github.com/progrium/macschema v0.1.1-0.20230710021358-3f88e9c4c718 h1:nmSgjrjjSLKjJR7TxwBECfdxlpvH70rtHBnHnjFRI2o=
+github.com/progrium/macschema v0.1.1-0.20230710021358-3f88e9c4c718/go.mod h1:4Xfn2JjWUS9ZFQwyRsrU8hbOHVAuvDj+7PX29p1uhts=
 github.com/prometheus/client_golang v0.9.1/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
 github.com/prometheus/client_golang v0.9.3/go.mod h1:/TN21ttK/J9q6uSwhBd54HahCDft0ttaMvbicHlPoso=
 github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910/go.mod h1:MbSGuTsp3dbXC40dX6PRTWyKYBIrTGTE9sqQNg2J8bo=
