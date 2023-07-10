@@ -67,6 +67,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 			Description: formatComment(m, name),
 			Name:        name,
 			WrappedFunc: cb.cgoWrapperFunc(m, true),
+			Unavailable: m.Unavailable,
 		}
 
 		pkg.ClassMsgSendWrappers = append(pkg.ClassMsgSendWrappers, msg)

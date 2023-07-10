@@ -76,6 +76,7 @@ func (cb *classBuilder) instanceMethod(method schema.Method) MethodDef {
 		Description: formatComment(method, ident),
 		Name:        ident,
 		WrappedFunc: cb.cgoWrapperFunc(method, false),
+		Unavailable: method.Unavailable,
 	}
 	return r
 }
@@ -85,6 +86,8 @@ func (cb *classBuilder) msgSend(method schema.Method, isTypeMethod bool) CGoMsgS
 		Name:   msgSendFuncName(cb.generatedNames, cb.Class, method.Name, isTypeMethod),
 		Class:  cb.Class.Name,
 		Return: cb.toMsgSendReturn(method.Return),
+
+		Unavailable: method.Unavailable,
 	}
 	for i, key := range strings.SplitAfter(method.Name, ":") {
 		if key == "" {

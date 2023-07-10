@@ -119,6 +119,19 @@ func main() {
 			}),
 		}},
 
+		// VisionKit
+		{"vision",
+			[]schemaLoader{
+				loadFile("api/vision/vnclassifyimagerequest.objc.json"),
+				loadFile("api/vision/vngenerateimagefeatureprintrequest.objc.json"),
+				loadFile("api/vision/vnimagebasedrequest.objc.json"),
+				loadFile("api/vision/vnimagerequesthandler.objc.json").Then(unavailableInit),
+				loadFile("api/vision/vnobservation.objc.json"),
+				loadFile("api/vision/vnrecognizedtextobservation.objc.json"),
+				loadFile("api/vision/vnrecognizetextrequest.objc.json"),
+				loadFile("api/vision/vnrequest.objc.json"),
+			}},
+
 		{"webkit", []schemaLoader{
 			loadFile("api/webkit/wknavigation.objc.json"),
 			loadFile("api/webkit/wkuserscript.objc.json"),
@@ -143,4 +156,13 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func unavailableInit(s *schema.Schema) error {
+	s.Class.InstanceMethods = append(s.Class.InstanceMethods, schema.Method{
+		Name:        "init",
+		Return:      schema.DataType{Name: "instancetype"},
+		Unavailable: true,
+	})
+	return nil
 }

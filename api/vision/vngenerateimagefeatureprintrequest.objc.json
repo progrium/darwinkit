@@ -1,0 +1,57 @@
+{
+  "Class": {
+    "Name": "VNGenerateImageFeaturePrintRequest",
+    "Description": "An image-based request to generate feature prints from an image.",
+    "Declaration": "@interface VNGenerateImageFeaturePrintRequest : VNImageBasedRequest",
+    "Platforms": [
+      "iOS 13.0+",
+      "iPadOS 13.0+",
+      "macOS 10.15+",
+      "Mac Catalyst 13.1+",
+      "tvOS 13.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/vision/vngenerateimagefeatureprintrequest?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "imageCropAndScaleOption",
+        "Description": "An optional setting that tells the algorithm how to scale an input image before generating the feature print.",
+        "Declaration": "@property(nonatomic, readwrite, assign) VNImageCropAndScaleOption imageCropAndScaleOption;",
+        "Type": {
+          "Name": "VNImageCropAndScaleOption"
+        },
+        "Attrs": {
+          "assign": true,
+          "nonatomic": true,
+          "readwrite": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vngenerateimagefeatureprintrequest/3152620-imagecropandscaleoption?language=objc"
+      },
+      {
+        "Name": "results",
+        "Description": "The results of the feature print request.",
+        "Declaration": "@property(readonly, copy, nullable) NSArray\u003cVNFeaturePrintObservation *\u003e *results;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "VNFeaturePrintObservation",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/vision/vngenerateimagefeatureprintrequest/3750984-results?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-07T13:36:48.490631-07:00",
+  "Version": 2
+}
