@@ -1,0 +1,116 @@
+{
+  "Class": {
+    "Name": "MLArrayBatchProvider",
+    "Description": "A convenience wrapper for batches of feature providers.",
+    "Declaration": "@interface MLArrayBatchProvider : NSObject",
+    "Platforms": [
+      "iOS 12.0+",
+      "iPadOS 12.0+",
+      "macOS 10.14+",
+      "Mac Catalyst 13.1+",
+      "tvOS 12.0+",
+      "watchOS 5.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/coreml/mlarraybatchprovider?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithFeatureProviderArray:",
+        "Description": "Creates the batch provider based on the array of feature providers.",
+        "Declaration": "- (instancetype)initWithFeatureProviderArray:(NSArray\u003cid\u003cMLFeatureProvider\u003e\u003e *)array;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "array",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "id",
+                  "Params": [
+                    {
+                      "Name": "MLFeatureProvider"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962854-initwithfeatureproviderarray?language=objc"
+      },
+      {
+        "Name": "initWithDictionary:error:",
+        "Description": "Creates a batch provider based on feature names and their associated arrays of data.",
+        "Declaration": "- (instancetype)initWithDictionary:(NSDictionary\u003cNSString *,NSArray *\u003e *)dictionary \n                             error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "dictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                },
+                {
+                  "Name": "NSArray",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962853-initwithdictionary?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "array",
+        "Description": "The array of feature providers.",
+        "Declaration": "@property(readonly, nonatomic) NSArray\u003cid\u003cMLFeatureProvider\u003e\u003e *array;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "MLFeatureProvider"
+                }
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "nonatomic": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962852-array?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-08T18:36:26.709563-07:00",
+  "Version": 2
+}

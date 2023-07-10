@@ -1,0 +1,52 @@
+{
+  "Class": {
+    "Name": "MLModelAsset",
+    "Description": "An abstraction of a compiled Core ML model asset.",
+    "Declaration": "@interface MLModelAsset : NSObject",
+    "Platforms": [
+      "iOS 16.0+",
+      "iPadOS 16.0+",
+      "macOS 13.0+",
+      "Mac Catalyst 16.0+",
+      "tvOS 16.0+",
+      "watchOS 9.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelasset?language=objc",
+    "TypeMethods": [
+      {
+        "Name": "modelAssetWithSpecificationData:error:",
+        "Description": "Creates a model asset from an in-memory model specification.",
+        "Declaration": "+ (instancetype)modelAssetWithSpecificationData:(NSData *)specificationData \n                                          error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "specificationData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/coreml/mlmodelasset/3950977-modelassetwithspecificationdata?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-08T18:36:10.062163-07:00",
+  "Version": 2
+}

@@ -1,0 +1,402 @@
+{
+  "Class": {
+    "Name": "NSWindowController",
+    "Description": "A controller that manages a window, usually a window stored in a nib file.",
+    "Declaration": "@interface NSWindowController : NSResponder",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithWindow:",
+        "Description": "Returns a window controller initialized with a given window.",
+        "Declaration": "- (instancetype)initWithWindow:(NSWindow *)window;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "window",
+            "Type": {
+              "Name": "NSWindow",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1533442-initwithwindow?language=objc"
+      },
+      {
+        "Name": "initWithWindowNibName:",
+        "Description": "Returns a window controller initialized with a nib file.",
+        "Declaration": "- (instancetype)initWithWindowNibName:(NSNibName)windowNibName;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "windowNibName",
+            "Type": {
+              "Name": "NSNibName"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1527041-initwithwindownibname?language=objc"
+      },
+      {
+        "Name": "initWithWindowNibName:owner:",
+        "Description": "Returns a window controller initialized with a nib file and a specified owner for that nib file.",
+        "Declaration": "- (instancetype)initWithWindowNibName:(NSNibName)windowNibName \n                                owner:(id)owner;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "windowNibName",
+            "Type": {
+              "Name": "NSNibName"
+            }
+          },
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1535239-initwithwindownibname?language=objc"
+      },
+      {
+        "Name": "initWithWindowNibPath:owner:",
+        "Description": "Returns a window controller initialized with a nib file at an absolute path and a specified owner.",
+        "Declaration": "- (instancetype)initWithWindowNibPath:(NSString *)windowNibPath \n                                owner:(id)owner;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "windowNibPath",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "owner",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1532584-initwithwindownibpath?language=objc"
+      },
+      {
+        "Name": "loadWindow",
+        "Description": "Loads the receiver’s window from the nib file.",
+        "Declaration": "- (void)loadWindow;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1535137-loadwindow?language=objc"
+      },
+      {
+        "Name": "showWindow:",
+        "Description": "Displays the window associated with the receiver.",
+        "Declaration": "- (IBAction)showWindow:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1534037-showwindow?language=objc"
+      },
+      {
+        "Name": "windowDidLoad",
+        "Description": "Sent after the window owned by the receiver has been loaded.",
+        "Declaration": "- (void)windowDidLoad;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1534205-windowdidload?language=objc"
+      },
+      {
+        "Name": "windowWillLoad",
+        "Description": "Sent before the window owned by the receiver is loaded.",
+        "Declaration": "- (void)windowWillLoad;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1524557-windowwillload?language=objc"
+      },
+      {
+        "Name": "setDocumentEdited:",
+        "Description": "Sets the document edited flag for the window controller.",
+        "Declaration": "- (void)setDocumentEdited:(BOOL)dirtyFlag;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "dirtyFlag",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1534261-setdocumentedited?language=objc"
+      },
+      {
+        "Name": "close",
+        "Description": "Closes the window if it was loaded.",
+        "Declaration": "- (void)close;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1535390-close?language=objc"
+      },
+      {
+        "Name": "synchronizeWindowTitleWithDocumentName",
+        "Description": "Synchronizes the displayed window title and the represented filename with the information in the associated document.",
+        "Declaration": "- (void)synchronizeWindowTitleWithDocumentName;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1524667-synchronizewindowtitlewithdocume?language=objc"
+      },
+      {
+        "Name": "windowTitleForDocumentDisplayName:",
+        "Description": "Returns the window title to be used for a given document display name.",
+        "Declaration": "- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "displayName",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1528112-windowtitlefordocumentdisplaynam?language=objc"
+      },
+      {
+        "Name": "dismissController:",
+        "Description": "Dismisses the window controller.",
+        "Declaration": "- (IBAction)dismissController:(id)sender;",
+        "Return": {
+          "Name": "IBAction"
+        },
+        "Args": [
+          {
+            "Name": "sender",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1531963-dismisscontroller?language=objc"
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1529004-initwithcoder?language=objc"
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "windowLoaded",
+        "Description": "A Boolean value that indicates whether the nib file containing the receiver’s window has been loaded.",
+        "Declaration": "@property(getter=isWindowLoaded, readonly) BOOL windowLoaded;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isWindowLoaded",
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1527496-windowloaded?language=objc"
+      },
+      {
+        "Name": "window",
+        "Description": "The window owned by the receiver.",
+        "Declaration": "@property(strong) NSWindow *window;",
+        "Type": {
+          "Name": "NSWindow",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1535593-window?language=objc"
+      },
+      {
+        "Name": "document",
+        "Description": "The document associated with the window controller.",
+        "Declaration": "@property(assign) id document;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "assign": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1534220-document?language=objc"
+      },
+      {
+        "Name": "shouldCloseDocument",
+        "Description": "A Boolean value that indicates whether the receiver necessarily closes the associated document when the window it manages is closed.",
+        "Declaration": "@property BOOL shouldCloseDocument;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1526933-shouldclosedocument?language=objc"
+      },
+      {
+        "Name": "owner",
+        "Description": "The owner of the nib file containing the window managed by the receiver.",
+        "Declaration": "@property(weak, readonly) id owner;",
+        "Type": {
+          "Name": "id"
+        },
+        "Attrs": {
+          "readonly": true,
+          "weak": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1532707-owner?language=objc"
+      },
+      {
+        "Name": "storyboard",
+        "Description": "The storyboard file from which the window controller was loaded.",
+        "Declaration": "@property(nullable, readonly, strong) NSStoryboard *storyboard;",
+        "Type": {
+          "Name": "NSStoryboard",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "nullable": true,
+          "readonly": true,
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1527268-storyboard?language=objc"
+      },
+      {
+        "Name": "windowNibName",
+        "Description": "The name of the nib file that stores the window associated with the receiver.",
+        "Declaration": "@property(nullable, copy, readonly) NSNibName windowNibName;",
+        "Type": {
+          "Name": "NSNibName"
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1527084-windownibname?language=objc"
+      },
+      {
+        "Name": "windowNibPath",
+        "Description": "The full path of the nib file that stores the window associated with the receiver.",
+        "Declaration": "@property(nullable, copy, readonly) NSString *windowNibPath;",
+        "Type": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "nullable": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1524719-windownibpath?language=objc"
+      },
+      {
+        "Name": "shouldCascadeWindows",
+        "Description": "A Boolean value that indicates whether the window will cascade in relation to other document windows when it is displayed.",
+        "Declaration": "@property BOOL shouldCascadeWindows;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1528177-shouldcascadewindows?language=objc"
+      },
+      {
+        "Name": "windowFrameAutosaveName",
+        "Description": "The name under which the frame rectangle of the window owned by the receiver is stored in the defaults database.",
+        "Declaration": "@property(copy) NSWindowFrameAutosaveName windowFrameAutosaveName;",
+        "Type": {
+          "Name": "NSWindowFrameAutosaveName"
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1528616-windowframeautosavename?language=objc"
+      },
+      {
+        "Name": "contentViewController",
+        "Description": "The view controller for the window’s content view.",
+        "Declaration": "@property(strong) NSViewController *contentViewController;",
+        "Type": {
+          "Name": "NSViewController",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "strong": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/1532552-contentviewcontroller?language=objc"
+      },
+      {
+        "Name": "previewRepresentableActivityItems",
+        "Description": "",
+        "Declaration": "@property(copy) NSArray\u003cid\u003cNSPreviewRepresentableActivityItem\u003e\u003e *previewRepresentableActivityItems;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSPreviewRepresentableActivityItem"
+                }
+              ]
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nswindowcontroller/4116371-previewrepresentableactivityitem?language=objc"
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-06T15:15:17.178863-07:00",
+  "Version": 2
+}
