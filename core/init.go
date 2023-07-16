@@ -53,5 +53,5 @@ func Rect(x, y, w, h float64) NSRect {
 }
 
 func URL(url string) NSURL {
-	return NSURL_Init(url)
+	return NSURL_URLWithString(url)
 }

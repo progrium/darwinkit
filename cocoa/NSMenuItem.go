@@ -11,13 +11,6 @@ type NSMenuItem struct {
 	gen_NSMenuItem
 }
 
-// NSMenuItem_Init returns an initialized instance of NSMenuItem.
-// https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc
-func NSMenuItem_Init(itemName string, action objc.Selector, keyEquivalent string) NSMenuItem {
-	return NSMenuItem_Alloc().InitWithTitleActionKeyEquivalent(
-		core.String(itemName), action, core.String(keyEquivalent))
-}
-
 // NSMenuItem_New returns an initialized instance of NSMenuItem.
 func NSMenuItem_New() NSMenuItem {
 	return NSMenuItem_Alloc().Init()
@@ -41,34 +34,10 @@ func (i NSMenuItem) Enabled() bool {
 	return i.IsEnabled()
 }
 
-// Title returns the menu item's title.
-// https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc
-func (i NSMenuItem) Title() string {
-	return i.gen_NSMenuItem.Title().String()
-}
-
-// SetTitle sets the menu item's title.
-// https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc
-func (i NSMenuItem) SetTitle(s string) {
-	i.gen_NSMenuItem.SetTitle(core.String(s))
-}
-
 // SetAttributedTitle sets a custom string for the menu item's title.
 // https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc
 func (i NSMenuItem) SetAttributedTitle(s string) {
 	i.gen_NSMenuItem.SetAttributedTitle(core.NSAttributedString_FromString(s))
-}
-
-// ToolTip returns a help tag for the menu item.
-// https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc
-func (i NSMenuItem) ToolTip() string {
-	return i.gen_NSMenuItem.ToolTip().String()
-}
-
-// SetToolTip sets a help tag for the menu item.
-// https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc
-func (i NSMenuItem) SetToolTip(s string) {
-	i.gen_NSMenuItem.SetToolTip(core.String(s))
 }
 
 // Target returns the menu item's target.

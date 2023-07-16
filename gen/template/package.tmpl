@@ -30,6 +30,17 @@ bool {{.Name}}_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 {{range .ClassMsgSendWrappers}}
 {{.Return}} {{.Name}}(
 	{{- range $idx, $_ := .Selector -}}{{- if .Arg -}}
