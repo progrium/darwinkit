@@ -504,6 +504,14 @@ void* NSSlider_type_SliderWithTargetAction(void* target, void* action) {
 		sliderWithTarget: target
 		action: action];
 }
+void* NSOpenPanel_type_Alloc() {
+	return [NSOpenPanel
+		alloc];
+}
+void* NSOpenPanel_type_OpenPanel() {
+	return [NSOpenPanel
+		openPanel];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5560,6 +5568,86 @@ void NSSlider_inst_SetNumberOfTickMarks(void *id, long value) {
 		setNumberOfTickMarks: value];
 }
 
+void* NSOpenPanel_inst_Init(void *id) {
+	return [(NSOpenPanel*)id
+		init];
+}
+
+BOOL NSOpenPanel_inst_CanChooseFiles(void *id) {
+	return [(NSOpenPanel*)id
+		canChooseFiles];
+}
+
+void NSOpenPanel_inst_SetCanChooseFiles(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setCanChooseFiles: value];
+}
+
+BOOL NSOpenPanel_inst_CanChooseDirectories(void *id) {
+	return [(NSOpenPanel*)id
+		canChooseDirectories];
+}
+
+void NSOpenPanel_inst_SetCanChooseDirectories(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setCanChooseDirectories: value];
+}
+
+BOOL NSOpenPanel_inst_ResolvesAliases(void *id) {
+	return [(NSOpenPanel*)id
+		resolvesAliases];
+}
+
+void NSOpenPanel_inst_SetResolvesAliases(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setResolvesAliases: value];
+}
+
+BOOL NSOpenPanel_inst_AllowsMultipleSelection(void *id) {
+	return [(NSOpenPanel*)id
+		allowsMultipleSelection];
+}
+
+void NSOpenPanel_inst_SetAllowsMultipleSelection(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setAllowsMultipleSelection: value];
+}
+
+BOOL NSOpenPanel_inst_IsAccessoryViewDisclosed(void *id) {
+	return [(NSOpenPanel*)id
+		isAccessoryViewDisclosed];
+}
+
+void NSOpenPanel_inst_SetAccessoryViewDisclosed(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setAccessoryViewDisclosed: value];
+}
+
+void* NSOpenPanel_inst_URLs(void *id) {
+	return [(NSOpenPanel*)id
+		URLs];
+}
+
+BOOL NSOpenPanel_inst_CanDownloadUbiquitousContents(void *id) {
+	return [(NSOpenPanel*)id
+		canDownloadUbiquitousContents];
+}
+
+void NSOpenPanel_inst_SetCanDownloadUbiquitousContents(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setCanDownloadUbiquitousContents: value];
+}
+
+BOOL NSOpenPanel_inst_CanResolveUbiquitousConflicts(void *id) {
+	return [(NSOpenPanel*)id
+		canResolveUbiquitousConflicts];
+}
+
+void NSOpenPanel_inst_SetCanResolveUbiquitousConflicts(void *id, BOOL value) {
+	[(NSOpenPanel*)id
+		setCanResolveUbiquitousConflicts: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -8719,6 +8807,22 @@ func NSSlider_SliderWithTargetAction(target objc.Ref, action objc.Selector) NSSl
 	)
 
 	return NSSlider_FromPointer(ret)
+}
+
+// NSOpenPanel_Alloc is undocumented.
+func NSOpenPanel_Alloc() NSOpenPanel {
+	ret := C.NSOpenPanel_type_Alloc()
+
+	return NSOpenPanel_FromPointer(ret)
+}
+
+// NSOpenPanel_OpenPanel creates a new Open panel and initializes it with a default configuration.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1584365-openpanel?language=objc for details.
+func NSOpenPanel_OpenPanel() NSOpenPanel {
+	ret := C.NSOpenPanel_type_OpenPanel()
+
+	return NSOpenPanel_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -21968,6 +22072,229 @@ func (x gen_NSSlider) SetNumberOfTickMarks(
 	C.NSSlider_inst_SetNumberOfTickMarks(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
+	)
+
+	return
+}
+
+type NSOpenPanelRef interface {
+	Pointer() uintptr
+	Init_AsNSOpenPanel() NSOpenPanel
+}
+
+type gen_NSOpenPanel struct {
+	objc.Object
+}
+
+func NSOpenPanel_FromPointer(ptr unsafe.Pointer) NSOpenPanel {
+	return NSOpenPanel{gen_NSOpenPanel{
+		objc.Object_FromPointer(ptr),
+	}}
+}
+
+func NSOpenPanel_FromRef(ref objc.Ref) NSOpenPanel {
+	return NSOpenPanel_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// Init initializes a new instance of the NSOpenPanel class.
+func (x gen_NSOpenPanel) Init() NSOpenPanel {
+	ret := C.NSOpenPanel_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSOpenPanel_FromPointer(ret)
+}
+
+// Init_AsNSOpenPanel is a typed version of Init.
+func (x gen_NSOpenPanel) Init_AsNSOpenPanel() NSOpenPanel {
+	ret := C.NSOpenPanel_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSOpenPanel_FromPointer(ret)
+}
+
+// CanChooseFiles returns a Boolean that indicates whether the user can choose files in the panel.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1527060-canchoosefiles?language=objc for details.
+func (x gen_NSOpenPanel) CanChooseFiles() bool {
+	ret := C.NSOpenPanel_inst_CanChooseFiles(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetCanChooseFiles returns a Boolean that indicates whether the user can choose files in the panel.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1527060-canchoosefiles?language=objc for details.
+func (x gen_NSOpenPanel) SetCanChooseFiles(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetCanChooseFiles(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// CanChooseDirectories returns a Boolean that indicates whether the user can choose directories in the panel.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc for details.
+func (x gen_NSOpenPanel) CanChooseDirectories() bool {
+	ret := C.NSOpenPanel_inst_CanChooseDirectories(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetCanChooseDirectories returns a Boolean that indicates whether the user can choose directories in the panel.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc for details.
+func (x gen_NSOpenPanel) SetCanChooseDirectories(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetCanChooseDirectories(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// ResolvesAliases returns a Boolean that indicates whether the panel resolves aliases.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc for details.
+func (x gen_NSOpenPanel) ResolvesAliases() bool {
+	ret := C.NSOpenPanel_inst_ResolvesAliases(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetResolvesAliases returns a Boolean that indicates whether the panel resolves aliases.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc for details.
+func (x gen_NSOpenPanel) SetResolvesAliases(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetResolvesAliases(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// AllowsMultipleSelection returns a Boolean that indicates whether the user may select multiple files and directories.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc for details.
+func (x gen_NSOpenPanel) AllowsMultipleSelection() bool {
+	ret := C.NSOpenPanel_inst_AllowsMultipleSelection(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetAllowsMultipleSelection returns a Boolean that indicates whether the user may select multiple files and directories.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc for details.
+func (x gen_NSOpenPanel) SetAllowsMultipleSelection(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetAllowsMultipleSelection(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsAccessoryViewDisclosed returns a Boolean value that indicates whether the panel's accessory view is visible.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1535036-accessoryviewdisclosed?language=objc for details.
+func (x gen_NSOpenPanel) IsAccessoryViewDisclosed() bool {
+	ret := C.NSOpenPanel_inst_IsAccessoryViewDisclosed(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetAccessoryViewDisclosed returns a Boolean value that indicates whether the panel's accessory view is visible.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1535036-accessoryviewdisclosed?language=objc for details.
+func (x gen_NSOpenPanel) SetAccessoryViewDisclosed(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetAccessoryViewDisclosed(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// URLs an array of URLs, each of which contains the fully specified location of a selected file or directory.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1529845-urls?language=objc for details.
+func (x gen_NSOpenPanel) URLs() core.NSArray {
+	ret := C.NSOpenPanel_inst_URLs(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSArray_FromPointer(ret)
+}
+
+// CanDownloadUbiquitousContents returns a Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc for details.
+func (x gen_NSOpenPanel) CanDownloadUbiquitousContents() bool {
+	ret := C.NSOpenPanel_inst_CanDownloadUbiquitousContents(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetCanDownloadUbiquitousContents returns a Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc for details.
+func (x gen_NSOpenPanel) SetCanDownloadUbiquitousContents(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetCanDownloadUbiquitousContents(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// CanResolveUbiquitousConflicts returns a Boolean value that indicates how the panel responds to iCloud documents that have conflicting versions.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533261-canresolveubiquitousconflicts?language=objc for details.
+func (x gen_NSOpenPanel) CanResolveUbiquitousConflicts() bool {
+	ret := C.NSOpenPanel_inst_CanResolveUbiquitousConflicts(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetCanResolveUbiquitousConflicts returns a Boolean value that indicates how the panel responds to iCloud documents that have conflicting versions.
+//
+// See https://developer.apple.com/documentation/appkit/nsopenpanel/1533261-canresolveubiquitousconflicts?language=objc for details.
+func (x gen_NSOpenPanel) SetCanResolveUbiquitousConflicts(
+	value bool,
+) {
+	C.NSOpenPanel_inst_SetCanResolveUbiquitousConflicts(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
 	)
 
 	return

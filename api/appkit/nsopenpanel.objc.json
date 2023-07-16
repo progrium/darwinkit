@@ -1,0 +1,121 @@
+{
+  "Class": {
+    "Name": "NSOpenPanel",
+    "Description": "A panel that prompts the user to select a file to open.",
+    "Declaration": "@interface NSOpenPanel : NSSavePanel",
+    "Platforms": [
+      "macOS 10.0+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel?language=objc",
+    "InstanceProperties": [
+      {
+        "Name": "canChooseFiles",
+        "Description": "A Boolean that indicates whether the user can choose files in the panel.",
+        "Declaration": "@property BOOL canChooseFiles;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1527060-canchoosefiles?language=objc"
+      },
+      {
+        "Name": "canChooseDirectories",
+        "Description": "A Boolean that indicates whether the user can choose directories in the panel.",
+        "Declaration": "@property BOOL canChooseDirectories;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1532668-canchoosedirectories?language=objc"
+      },
+      {
+        "Name": "resolvesAliases",
+        "Description": "A Boolean that indicates whether the panel resolves aliases.",
+        "Declaration": "@property BOOL resolvesAliases;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1533625-resolvesaliases?language=objc"
+      },
+      {
+        "Name": "allowsMultipleSelection",
+        "Description": "A Boolean that indicates whether the user may select multiple files and directories.",
+        "Declaration": "@property BOOL allowsMultipleSelection;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1530786-allowsmultipleselection?language=objc"
+      },
+      {
+        "Name": "accessoryViewDisclosed",
+        "Description": "A Boolean value that indicates whether the panel's accessory view is visible.",
+        "Declaration": "@property(getter=isAccessoryViewDisclosed) BOOL accessoryViewDisclosed;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isAccessoryViewDisclosed"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1535036-accessoryviewdisclosed?language=objc"
+      },
+      {
+        "Name": "URLs",
+        "Description": "An array of URLs, each of which contains the fully specified location of a selected file or directory.",
+        "Declaration": "@property(readonly, copy) NSArray\u003cNSURL *\u003e *URLs;",
+        "Type": {
+          "Name": "NSArray",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          ]
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1529845-urls?language=objc"
+      },
+      {
+        "Name": "canDownloadUbiquitousContents",
+        "Description": "A Boolean value that indicates how the panel responds to iCloud documents that aren't fully downloaded locally.",
+        "Declaration": "@property BOOL canDownloadUbiquitousContents;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1533418-candownloadubiquitouscontents?language=objc"
+      },
+      {
+        "Name": "canResolveUbiquitousConflicts",
+        "Description": "A Boolean value that indicates how the panel responds to iCloud documents that have conflicting versions.",
+        "Declaration": "@property BOOL canResolveUbiquitousConflicts;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1533261-canresolveubiquitousconflicts?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "openPanel",
+        "Description": "Creates a new Open panel and initializes it with a default configuration.",
+        "Declaration": "+ (NSOpenPanel *)openPanel;",
+        "Return": {
+          "Name": "NSOpenPanel",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nsopenpanel/1584365-openpanel?language=objc"
+      }
+    ]
+  },
+  "Kind": "class",
+  "PullDate": "2023-07-16T13:17:39.20882-07:00",
+  "Version": 2
+}
