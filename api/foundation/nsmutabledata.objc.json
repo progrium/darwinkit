@@ -1,0 +1,345 @@
+{
+  "Class": {
+    "Name": "NSMutableData",
+    "Description": "An object representing a dynamic byte buffer in memory.",
+    "Declaration": "@interface NSMutableData : NSData",
+    "Platforms": [
+      "iOS 2.0+",
+      "iPadOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithCapacity:",
+        "Description": "Returns an initialized mutable data object capable of holding the specified number of bytes.",
+        "Declaration": "- (instancetype)initWithCapacity:(NSUInteger)capacity;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "capacity",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "initWithLength:",
+        "Description": "Initializes and returns a mutable data object containing a given number of zeroed bytes.",
+        "Declaration": "- (instancetype)initWithLength:(NSUInteger)length;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "length",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1413159-initwithlength?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "appendBytes:length:",
+        "Description": "Appends to the receiver a given number of bytes from a given buffer.",
+        "Declaration": "- (void)appendBytes:(const void *)bytes \n             length:(NSUInteger)length;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "bytes",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "length",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "appendData:",
+        "Description": "Appends the content of another data object to the receiver.",
+        "Declaration": "- (void)appendData:(NSData *)other;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "other",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1410724-appenddata?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "increaseLengthBy:",
+        "Description": "Increases the length of the receiver by a given number of bytes.",
+        "Declaration": "- (void)increaseLengthBy:(NSUInteger)extraLength;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "extraLength",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1416186-increaselengthby?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "replaceBytesInRange:withBytes:",
+        "Description": "Replaces with a given set of bytes a given range within the contents of the receiver.",
+        "Declaration": "- (void)replaceBytesInRange:(NSRange)range \n                  withBytes:(const void *)bytes;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "bytes",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1414281-replacebytesinrange?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "replaceBytesInRange:withBytes:length:",
+        "Description": "Replaces with a given set of bytes a given range within the contents of the receiver.",
+        "Declaration": "- (void)replaceBytesInRange:(NSRange)range \n                  withBytes:(const void *)replacementBytes \n                     length:(NSUInteger)replacementLength;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          },
+          {
+            "Name": "replacementBytes",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "replacementLength",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1412428-replacebytesinrange?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "resetBytesInRange:",
+        "Description": "Replaces with zeroes the contents of the receiver in a given range.",
+        "Declaration": "- (void)resetBytesInRange:(NSRange)range;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "range",
+            "Type": {
+              "Name": "NSRange"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1415526-resetbytesinrange?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setData:",
+        "Description": "Replaces the entire contents of the receiver with the contents of another data object.",
+        "Declaration": "- (void)setData:(NSData *)data;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "data",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1417012-setdata?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "compressUsingAlgorithm:error:",
+        "Description": "Compresses the data object’s bytes using an algorithm that you specify.",
+        "Declaration": "- (BOOL)compressUsingAlgorithm:(NSDataCompressionAlgorithm)algorithm \n                         error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "algorithm",
+            "Type": {
+              "Name": "NSDataCompressionAlgorithm"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/3174967-compressusingalgorithm?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "decompressUsingAlgorithm:error:",
+        "Description": "Decompresses the data object’s bytes.",
+        "Declaration": "- (BOOL)decompressUsingAlgorithm:(NSDataCompressionAlgorithm)algorithm \n                           error:(NSError * _Nullable *)error;\n",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "algorithm",
+            "Type": {
+              "Name": "NSDataCompressionAlgorithm"
+            }
+          },
+          {
+            "Name": "error",
+            "Type": {
+              "Name": "NSError",
+              "IsPtr": true,
+              "IsPtrPtr": true,
+              "Annotations": [
+                "_nullable"
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/3174968-decompressusingalgorithm?language=objc",
+        "Unavailable": false
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "mutableBytes",
+        "Description": "A pointer to the data contained by the mutable data object.",
+        "Declaration": "@property(readonly) void *mutableBytes;",
+        "Type": {
+          "Name": "void",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1410770-mutablebytes?language=objc"
+      },
+      {
+        "Name": "length",
+        "Description": "The number of bytes contained in the mutable data object.",
+        "Declaration": "@property NSUInteger length;",
+        "Type": {
+          "Name": "NSUInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "dataWithCapacity:",
+        "Description": "Creates and returns a mutable data object capable of holding the specified number of bytes.",
+        "Declaration": "+ (instancetype)dataWithCapacity:(NSUInteger)aNumItems;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "aNumItems",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dataWithLength:",
+        "Description": "Creates and returns an mutable data object containing a given number of zeroed bytes.",
+        "Declaration": "+ (instancetype)dataWithLength:(NSUInteger)length;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "length",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledata/1547233-datawithlength?language=objc",
+        "Unavailable": false
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-18T15:26:27.224487-04:00",
+  "Version": 2
+}
