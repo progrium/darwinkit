@@ -169,6 +169,18 @@ void* NSData_type_DataWithContentsOfURL(void* url) {
 	return [NSData
 		dataWithContentsOfURL: url];
 }
+void* NSMutableData_type_Alloc() {
+	return [NSMutableData
+		alloc];
+}
+void* NSMutableData_type_DataWithCapacity(unsigned long aNumItems) {
+	return [NSMutableData
+		dataWithCapacity: aNumItems];
+}
+void* NSMutableData_type_DataWithLength(unsigned long length) {
+	return [NSMutableData
+		dataWithLength: length];
+}
 void* NSDictionary_type_Alloc() {
 	return [NSDictionary
 		alloc];
@@ -1478,6 +1490,57 @@ unsigned long NSData_inst_Length(void *id) {
 void* NSData_inst_Description(void *id) {
 	return [(NSData*)id
 		description];
+}
+
+void NSMutableData_inst_AppendBytesLength(void *id, void* bytes, unsigned long length) {
+	[(NSMutableData*)id
+		appendBytes: bytes
+		length: length];
+}
+
+void NSMutableData_inst_AppendData(void *id, void* other) {
+	[(NSMutableData*)id
+		appendData: other];
+}
+
+void NSMutableData_inst_IncreaseLengthBy(void *id, unsigned long extraLength) {
+	[(NSMutableData*)id
+		increaseLengthBy: extraLength];
+}
+
+void* NSMutableData_inst_InitWithCapacity(void *id, unsigned long capacity) {
+	return [(NSMutableData*)id
+		initWithCapacity: capacity];
+}
+
+void* NSMutableData_inst_InitWithLength(void *id, unsigned long length) {
+	return [(NSMutableData*)id
+		initWithLength: length];
+}
+
+void NSMutableData_inst_SetData(void *id, void* data) {
+	[(NSMutableData*)id
+		setData: data];
+}
+
+void* NSMutableData_inst_Init(void *id) {
+	return [(NSMutableData*)id
+		init];
+}
+
+void* NSMutableData_inst_MutableBytes(void *id) {
+	return [(NSMutableData*)id
+		mutableBytes];
+}
+
+unsigned long NSMutableData_inst_Length(void *id) {
+	return [(NSMutableData*)id
+		length];
+}
+
+void NSMutableData_inst_SetLength(void *id, unsigned long value) {
+	[(NSMutableData*)id
+		setLength: value];
 }
 
 void* NSDictionary_inst_DescriptionWithLocale(void *id, void* locale) {
@@ -3025,6 +3088,35 @@ func NSData_DataWithContentsOfURL(url NSURLRef) NSData {
 	)
 
 	return NSData_FromPointer(ret)
+}
+
+// NSMutableData_Alloc is undocumented.
+func NSMutableData_Alloc() NSMutableData {
+	ret := C.NSMutableData_type_Alloc()
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// NSMutableData_DataWithCapacity creates and returns a mutable data object capable of holding the specified number of bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1547236-datawithcapacity?language=objc for details.
+func NSMutableData_DataWithCapacity(aNumItems NSUInteger) NSMutableData {
+	ret := C.NSMutableData_type_DataWithCapacity(
+		C.ulong(aNumItems),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// NSMutableData_DataWithLength creates and returns an mutable data object containing a given number of zeroed bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1547233-datawithlength?language=objc for details.
+func NSMutableData_DataWithLength(length NSUInteger) NSMutableData {
+	ret := C.NSMutableData_type_DataWithLength(
+		C.ulong(length),
+	)
+
+	return NSMutableData_FromPointer(ret)
 }
 
 // NSDictionary_Alloc is undocumented.
@@ -6418,6 +6510,165 @@ func (x gen_NSData) Description() NSString {
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+type NSMutableDataRef interface {
+	Pointer() uintptr
+	Init_AsNSMutableData() NSMutableData
+}
+
+type gen_NSMutableData struct {
+	NSData
+}
+
+func NSMutableData_FromPointer(ptr unsafe.Pointer) NSMutableData {
+	return NSMutableData{gen_NSMutableData{
+		NSData_FromPointer(ptr),
+	}}
+}
+
+func NSMutableData_FromRef(ref objc.Ref) NSMutableData {
+	return NSMutableData_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AppendBytesLength appends to the receiver a given number of bytes from a given buffer.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes?language=objc for details.
+func (x gen_NSMutableData) AppendBytesLength(
+	bytes unsafe.Pointer,
+	length NSUInteger,
+) {
+	C.NSMutableData_inst_AppendBytesLength(
+		unsafe.Pointer(x.Pointer()),
+		bytes,
+		C.ulong(length),
+	)
+
+	return
+}
+
+// AppendData appends the content of another data object to the receiver.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1410724-appenddata?language=objc for details.
+func (x gen_NSMutableData) AppendData(
+	other NSDataRef,
+) {
+	C.NSMutableData_inst_AppendData(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(other),
+	)
+
+	return
+}
+
+// IncreaseLengthBy increases the length of the receiver by a given number of bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1416186-increaselengthby?language=objc for details.
+func (x gen_NSMutableData) IncreaseLengthBy(
+	extraLength NSUInteger,
+) {
+	C.NSMutableData_inst_IncreaseLengthBy(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(extraLength),
+	)
+
+	return
+}
+
+// InitWithCapacity returns an initialized mutable data object capable of holding the specified number of bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc for details.
+func (x gen_NSMutableData) InitWithCapacity(
+	capacity NSUInteger,
+) NSMutableData {
+	ret := C.NSMutableData_inst_InitWithCapacity(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(capacity),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// InitWithLength initializes and returns a mutable data object containing a given number of zeroed bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1413159-initwithlength?language=objc for details.
+func (x gen_NSMutableData) InitWithLength(
+	length NSUInteger,
+) NSMutableData {
+	ret := C.NSMutableData_inst_InitWithLength(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(length),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// SetData replaces the entire contents of the receiver with the contents of another data object.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1417012-setdata?language=objc for details.
+func (x gen_NSMutableData) SetData(
+	data NSDataRef,
+) {
+	C.NSMutableData_inst_SetData(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(data),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSMutableData class.
+func (x gen_NSMutableData) Init() NSMutableData {
+	ret := C.NSMutableData_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// Init_AsNSMutableData is a typed version of Init.
+func (x gen_NSMutableData) Init_AsNSMutableData() NSMutableData {
+	ret := C.NSMutableData_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// MutableBytes returns a pointer to the data contained by the mutable data object.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1410770-mutablebytes?language=objc for details.
+func (x gen_NSMutableData) MutableBytes() unsafe.Pointer {
+	ret := C.NSMutableData_inst_MutableBytes(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return ret
+}
+
+// Length returns the number of bytes contained in the mutable data object.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc for details.
+func (x gen_NSMutableData) Length() NSUInteger {
+	ret := C.NSMutableData_inst_Length(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSUInteger(ret)
+}
+
+// SetLength returns the number of bytes contained in the mutable data object.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc for details.
+func (x gen_NSMutableData) SetLength(
+	value NSUInteger,
+) {
+	C.NSMutableData_inst_SetLength(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(value),
+	)
+
+	return
 }
 
 type NSDictionaryRef interface {
