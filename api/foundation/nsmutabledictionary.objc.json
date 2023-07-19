@@ -1,0 +1,1009 @@
+{
+  "Class": {
+    "Name": "NSMutableDictionary",
+    "Description": "A dynamic collection of objects associated with unique keys.",
+    "Declaration": "@interface NSMutableDictionary\u003c__covariant KeyType, __covariant ObjectType\u003e : NSDictionary",
+    "Platforms": [
+      "iOS 2.0+",
+      "iPadOS 2.0+",
+      "macOS 10.0+",
+      "Mac Catalyst 13.0+",
+      "tvOS 9.0+",
+      "watchOS 2.0+",
+      "visionOS 1.0+",
+      "Beta"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "initWithCapacity:",
+        "Description": "Initializes a newly allocated mutable dictionary, allocating enough memory to hold numItems entries.",
+        "Declaration": "- (instancetype)initWithCapacity:(NSUInteger)numItems;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "numItems",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1417898-initwithcapacity?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "init",
+        "Description": "Initializes a newly allocated mutable dictionary.",
+        "Declaration": "- (instancetype)init;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setObject:forKey:",
+        "Description": "Adds a given key-value pair to the dictionary.",
+        "Declaration": "- (void)setObject:(ObjectType)anObject \n           forKey:(id\u003cNSCopying\u003e)aKey;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "anObject",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "aKey",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSCopying"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setObject:forKeyedSubscript:",
+        "Description": "Adds a given key-value pair to the dictionary.",
+        "Declaration": "- (void)setObject:(ObjectType)obj \nforKeyedSubscript:(id\u003cNSCopying\u003e)key;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "obj",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "id",
+              "Params": [
+                {
+                  "Name": "NSCopying"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setValue:forKey:",
+        "Description": "Adds a given key-value pair to the dictionary.",
+        "Declaration": "- (void)setValue:(ObjectType)value \n          forKey:(NSString *)key;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "value",
+            "Type": {
+              "Name": "ObjectType"
+            }
+          },
+          {
+            "Name": "key",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addEntriesFromDictionary:",
+        "Description": "Adds to the receiving dictionary the entries from another dictionary.",
+        "Declaration": "- (void)addEntriesFromDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)otherDictionary;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "otherDictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411035-addentriesfromdictionary?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setDictionary:",
+        "Description": "Sets the contents of the receiving dictionary to entries in a given dictionary.",
+        "Declaration": "- (void)setDictionary:(NSDictionary\u003cKeyType, ObjectType\u003e *)otherDictionary;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "otherDictionary",
+            "Type": {
+              "Name": "NSDictionary",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                },
+                {
+                  "Name": "ObjectType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1409566-setdictionary?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "removeObjectForKey:",
+        "Description": "Removes a given key and its associated value from the dictionary.",
+        "Declaration": "- (void)removeObjectForKey:(KeyType)aKey;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "aKey",
+            "Type": {
+              "Name": "KeyType"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416518-removeobjectforkey?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "removeAllObjects",
+        "Description": "Empties the dictionary of its entries.",
+        "Declaration": "- (void)removeAllObjects;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1408955-removeallobjects?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "removeObjectsForKeys:",
+        "Description": "Removes from the dictionary entries specified by elements in a given array.",
+        "Declaration": "- (void)removeObjectsForKeys:(NSArray\u003cKeyType\u003e *)keyArray;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "keyArray",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "KeyType"
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410430-removeobjectsforkeys?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "initWithCoder:",
+        "Description": "",
+        "Declaration": "- (instancetype)initWithCoder:(NSCoder *)coder;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "coder",
+            "Type": {
+              "Name": "NSCoder",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1418255-initwithcoder?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "initWithContentsOfFile:",
+        "Description": "",
+        "Declaration": "- (NSMutableDictionary\u003cKeyType, ObjectType\u003e *)initWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSMutableDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1407593-initwithcontentsoffile?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "initWithContentsOfURL:",
+        "Description": "",
+        "Declaration": "- (NSMutableDictionary\u003cKeyType, ObjectType\u003e *)initWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSMutableDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410409-initwithcontentsofurl?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addApplicationParameterHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addApplicationParameterHeader:(const void *)inHeaderData \n                                    length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1431956-addapplicationparameterheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addAuthorizationChallengeHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addAuthorizationChallengeHeader:(const void *)inHeaderData \n                                      length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433422-addauthorizationchallengeheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addAuthorizationResponseHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addAuthorizationResponseHeader:(const void *)inHeaderData \n                                     length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1432339-addauthorizationresponseheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addBodyHeader:length:endOfBody:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addBodyHeader:(const void *)inHeaderData \n                    length:(uint32_t)inHeaderDataLength \n                 endOfBody:(BOOL)isEndOfBody;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          },
+          {
+            "Name": "isEndOfBody",
+            "Type": {
+              "Name": "BOOL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1430411-addbodyheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addByteSequenceHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addByteSequenceHeader:(const void *)inHeaderData \n                            length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428676-addbytesequenceheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addConnectionIDHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addConnectionIDHeader:(const void *)inHeaderData \n                            length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1430403-addconnectionidheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addCountHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addCountHeader:(uint32_t)inCount;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inCount",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433317-addcountheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addDescriptionHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addDescriptionHeader:(NSString *)inDescriptionString;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inDescriptionString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1434905-adddescriptionheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addHTTPHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addHTTPHeader:(const void *)inHeaderData \n                    length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1434484-addhttpheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addImageDescriptorHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addImageDescriptorHeader:(const void *)inHeaderData \n                               length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1429678-addimagedescriptorheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addImageHandleHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addImageHandleHeader:(NSString *)type;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1430878-addimagehandleheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addLengthHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addLengthHeader:(uint32_t)length;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "length",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433652-addlengthheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addNameHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addNameHeader:(NSString *)inNameString;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inNameString",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1430284-addnameheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addObjectClassHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addObjectClassHeader:(const void *)inHeaderData \n                           length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1434696-addobjectclassheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addTargetHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addTargetHeader:(const void *)inHeaderData \n                      length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428678-addtargetheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addTime4ByteHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addTime4ByteHeader:(uint32_t)time4Byte;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "time4Byte",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433527-addtime4byteheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addTimeISOHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addTimeISOHeader:(const void *)inHeaderData \n                       length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428661-addtimeisoheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addTypeHeader:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addTypeHeader:(NSString *)type;",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "type",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433211-addtypeheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addUserDefinedHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addUserDefinedHeader:(const void *)inHeaderData \n                           length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1434461-adduserdefinedheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "addWhoHeader:length:",
+        "Description": "",
+        "Declaration": "- (OBEXError)addWhoHeader:(const void *)inHeaderData \n                   length:(uint32_t)inHeaderDataLength;\n",
+        "Return": {
+          "Name": "OBEXError"
+        },
+        "Args": [
+          {
+            "Name": "inHeaderData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inHeaderDataLength",
+            "Type": {
+              "Name": "uint32_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1433510-addwhoheader?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "getHeaderBytes",
+        "Description": "",
+        "Declaration": "- (NSMutableData *)getHeaderBytes;",
+        "Return": {
+          "Name": "NSMutableData",
+          "IsPtr": true
+        },
+        "Args": null,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428890-getheaderbytes?language=objc",
+        "Unavailable": false
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "dictionaryWithCapacity:",
+        "Description": "Creates and returns a mutable dictionary, initially giving it enough allocated memory to hold a given number of entries.",
+        "Declaration": "+ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "numItems",
+            "Type": {
+              "Name": "NSUInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574186-dictionarywithcapacity?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dictionaryWithSharedKeySet:",
+        "Description": "Creates a mutable dictionary which is optimized for dealing with a known set of keys.",
+        "Declaration": "+ (NSMutableDictionary\u003cKeyType, ObjectType\u003e *)dictionaryWithSharedKeySet:(id)keyset;",
+        "Return": {
+          "Name": "NSMutableDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "keyset",
+            "Type": {
+              "Name": "id"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1412658-dictionarywithsharedkeyset?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dictionaryWithOBEXHeadersData:",
+        "Description": "",
+        "Declaration": "+ (instancetype)dictionaryWithOBEXHeadersData:(NSData *)inHeadersData;",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "inHeadersData",
+            "Type": {
+              "Name": "NSData",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428433-dictionarywithobexheadersdata?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dictionaryWithOBEXHeadersData:headersDataSize:",
+        "Description": "",
+        "Declaration": "+ (instancetype)dictionaryWithOBEXHeadersData:(const void *)inHeadersData \n                              headersDataSize:(size_t)inDataSize;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "inHeadersData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inDataSize",
+            "Type": {
+              "Name": "size_t"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1429768-dictionarywithobexheadersdata?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dictionaryWithContentsOfFile:",
+        "Description": "",
+        "Declaration": "+ (NSMutableDictionary\u003cKeyType, ObjectType\u003e *)dictionaryWithContentsOfFile:(NSString *)path;",
+        "Return": {
+          "Name": "NSMutableDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "path",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574188-dictionarywithcontentsoffile?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "dictionaryWithContentsOfURL:",
+        "Description": "",
+        "Declaration": "+ (NSMutableDictionary\u003cKeyType, ObjectType\u003e *)dictionaryWithContentsOfURL:(NSURL *)url;",
+        "Return": {
+          "Name": "NSMutableDictionary",
+          "IsPtr": true,
+          "Params": [
+            {
+              "Name": "KeyType"
+            },
+            {
+              "Name": "ObjectType"
+            }
+          ]
+        },
+        "Args": [
+          {
+            "Name": "url",
+            "Type": {
+              "Name": "NSURL",
+              "IsPtr": true
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574182-dictionarywithcontentsofurl?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "withOBEXHeadersData:headersDataSize:",
+        "Description": "",
+        "Declaration": "+ (instancetype)withOBEXHeadersData:(const void *)inHeadersData \n                    headersDataSize:(size_t)inDataSize;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "inHeadersData",
+            "Type": {
+              "Name": "void",
+              "IsPtr": true,
+              "Annotations": [
+                "const"
+              ]
+            }
+          },
+          {
+            "Name": "inDataSize",
+            "Type": {
+              "Name": "size_t"
+            }
+          }
+        ],
+        "Deprecated": true,
+        "TopicURL": "https://developer.apple.com/documentation/foundation/nsmutabledictionary/1458889-withobexheadersdata?language=objc",
+        "Unavailable": false
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-18T18:19:06.375151-04:00",
+  "Version": 2
+}

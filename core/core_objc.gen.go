@@ -116,6 +116,10 @@ void* NSArray_type_ArrayWithArray(void* array) {
 	return [NSArray
 		arrayWithArray: array];
 }
+void* NSArray_type_ArrayWithObject(void* anObject) {
+	return [NSArray
+		arrayWithObject: anObject];
+}
 void* NSArray_type_ArrayWithContentsOfURLError(void* url, void* error) {
 	return [NSArray
 		arrayWithContentsOfURL: url
@@ -194,6 +198,11 @@ void* NSDictionary_type_DictionaryWithObjectsForKeys(void* objects, void* keys) 
 		dictionaryWithObjects: objects
 		forKeys: keys];
 }
+void* NSDictionary_type_DictionaryWithObjectForKey(void* object, void* key) {
+	return [NSDictionary
+		dictionaryWithObject: object
+		forKey: key];
+}
 void* NSDictionary_type_DictionaryWithDictionary(void* dict) {
 	return [NSDictionary
 		dictionaryWithDictionary: dict];
@@ -206,6 +215,30 @@ void* NSDictionary_type_DictionaryWithContentsOfURLError(void* url, void* error)
 void* NSDictionary_type_SharedKeySetForKeys(void* keys) {
 	return [NSDictionary
 		sharedKeySetForKeys: keys];
+}
+void* NSMutableDictionary_type_Alloc() {
+	return [NSMutableDictionary
+		alloc];
+}
+void* NSMutableDictionary_type_DictionaryWithCapacity(unsigned long numItems) {
+	return [NSMutableDictionary
+		dictionaryWithCapacity: numItems];
+}
+void* NSMutableDictionary_type_DictionaryWithSharedKeySet(void* keyset) {
+	return [NSMutableDictionary
+		dictionaryWithSharedKeySet: keyset];
+}
+void* NSMutableDictionary_type_DictionaryWithOBEXHeadersData(void* inHeadersData) {
+	return [NSMutableDictionary
+		dictionaryWithOBEXHeadersData: inHeadersData];
+}
+void* NSMutableDictionary_type_DictionaryWithContentsOfFile(void* path) {
+	return [NSMutableDictionary
+		dictionaryWithContentsOfFile: path];
+}
+void* NSMutableDictionary_type_DictionaryWithContentsOfURL(void* url) {
+	return [NSMutableDictionary
+		dictionaryWithContentsOfURL: url];
 }
 void* NSError_type_Alloc() {
 	return [NSError
@@ -1180,6 +1213,11 @@ void CALayer_inst_SetName(void *id, void* value) {
 		setName: value];
 }
 
+void* NSArray_inst_ArrayByAddingObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		arrayByAddingObject: anObject];
+}
+
 void* NSArray_inst_ArrayByAddingObjectsFromArray(void *id, void* otherArray) {
 	return [(NSArray*)id
 		arrayByAddingObjectsFromArray: otherArray];
@@ -1188,6 +1226,11 @@ void* NSArray_inst_ArrayByAddingObjectsFromArray(void *id, void* otherArray) {
 void* NSArray_inst_ComponentsJoinedByString(void *id, void* separator) {
 	return [(NSArray*)id
 		componentsJoinedByString: separator];
+}
+
+BOOL NSArray_inst_ContainsObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		containsObject: anObject];
 }
 
 void* NSArray_inst_DescriptionWithLocale(void *id, void* locale) {
@@ -1199,6 +1242,21 @@ void* NSArray_inst_DescriptionWithLocaleIndent(void *id, void* locale, unsigned 
 	return [(NSArray*)id
 		descriptionWithLocale: locale
 		indent: level];
+}
+
+void* NSArray_inst_FirstObjectCommonWithArray(void *id, void* otherArray) {
+	return [(NSArray*)id
+		firstObjectCommonWithArray: otherArray];
+}
+
+unsigned long NSArray_inst_IndexOfObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		indexOfObject: anObject];
+}
+
+unsigned long NSArray_inst_IndexOfObjectIdenticalTo(void *id, void* anObject) {
+	return [(NSArray*)id
+		indexOfObjectIdenticalTo: anObject];
 }
 
 void* NSArray_inst_Init(void *id) {
@@ -1237,6 +1295,16 @@ void NSArray_inst_MakeObjectsPerformSelectorWithObject(void *id, void* aSelector
 	[(NSArray*)id
 		makeObjectsPerformSelector: aSelector
 		withObject: argument];
+}
+
+void* NSArray_inst_ObjectAtIndex(void *id, unsigned long index) {
+	return [(NSArray*)id
+		objectAtIndex: index];
+}
+
+void* NSArray_inst_ObjectAtIndexedSubscript(void *id, unsigned long idx) {
+	return [(NSArray*)id
+		objectAtIndexedSubscript: idx];
 }
 
 void* NSArray_inst_PathsMatchingExtensions(void *id, void* filterTypes) {
@@ -1292,6 +1360,16 @@ BOOL NSArray_inst_WriteToURLError(void *id, void* url, void* error) {
 unsigned long NSArray_inst_Count(void *id) {
 	return [(NSArray*)id
 		count];
+}
+
+void* NSArray_inst_FirstObject(void *id) {
+	return [(NSArray*)id
+		firstObject];
+}
+
+void* NSArray_inst_LastObject(void *id) {
+	return [(NSArray*)id
+		lastObject];
 }
 
 void* NSArray_inst_SortedArrayHint(void *id) {
@@ -1543,6 +1621,11 @@ void NSMutableData_inst_SetLength(void *id, unsigned long value) {
 		setLength: value];
 }
 
+void* NSDictionary_inst_AllKeysForObject(void *id, void* anObject) {
+	return [(NSDictionary*)id
+		allKeysForObject: anObject];
+}
+
 void* NSDictionary_inst_DescriptionWithLocale(void *id, void* locale) {
 	return [(NSDictionary*)id
 		descriptionWithLocale: locale];
@@ -1647,6 +1730,27 @@ void* NSDictionary_inst_KeysSortedByValueUsingSelector(void *id, void* comparato
 		keysSortedByValueUsingSelector: comparator];
 }
 
+void* NSDictionary_inst_ObjectForKey(void *id, void* aKey) {
+	return [(NSDictionary*)id
+		objectForKey: aKey];
+}
+
+void* NSDictionary_inst_ObjectForKeyedSubscript(void *id, void* key) {
+	return [(NSDictionary*)id
+		objectForKeyedSubscript: key];
+}
+
+void* NSDictionary_inst_ObjectsForKeysNotFoundMarker(void *id, void* keys, void* marker) {
+	return [(NSDictionary*)id
+		objectsForKeys: keys
+		notFoundMarker: marker];
+}
+
+void* NSDictionary_inst_ValueForKey(void *id, void* key) {
+	return [(NSDictionary*)id
+		valueForKey: key];
+}
+
 BOOL NSDictionary_inst_WriteToURLError(void *id, void* url, void* error) {
 	return [(NSDictionary*)id
 		writeToURL: url
@@ -1676,6 +1780,74 @@ void* NSDictionary_inst_Description(void *id) {
 void* NSDictionary_inst_DescriptionInStringsFileFormat(void *id) {
 	return [(NSDictionary*)id
 		descriptionInStringsFileFormat];
+}
+
+void NSMutableDictionary_inst_AddEntriesFromDictionary(void *id, void* otherDictionary) {
+	[(NSMutableDictionary*)id
+		addEntriesFromDictionary: otherDictionary];
+}
+
+void* NSMutableDictionary_inst_GetHeaderBytes(void *id) {
+	return [(NSMutableDictionary*)id
+		getHeaderBytes];
+}
+
+void* NSMutableDictionary_inst_Init(void *id) {
+	return [(NSMutableDictionary*)id
+		init];
+}
+
+void* NSMutableDictionary_inst_InitWithCapacity(void *id, unsigned long numItems) {
+	return [(NSMutableDictionary*)id
+		initWithCapacity: numItems];
+}
+
+void* NSMutableDictionary_inst_InitWithContentsOfFile(void *id, void* path) {
+	return [(NSMutableDictionary*)id
+		initWithContentsOfFile: path];
+}
+
+void* NSMutableDictionary_inst_InitWithContentsOfURL(void *id, void* url) {
+	return [(NSMutableDictionary*)id
+		initWithContentsOfURL: url];
+}
+
+void NSMutableDictionary_inst_RemoveAllObjects(void *id) {
+	[(NSMutableDictionary*)id
+		removeAllObjects];
+}
+
+void NSMutableDictionary_inst_RemoveObjectForKey(void *id, void* aKey) {
+	[(NSMutableDictionary*)id
+		removeObjectForKey: aKey];
+}
+
+void NSMutableDictionary_inst_RemoveObjectsForKeys(void *id, void* keyArray) {
+	[(NSMutableDictionary*)id
+		removeObjectsForKeys: keyArray];
+}
+
+void NSMutableDictionary_inst_SetDictionary(void *id, void* otherDictionary) {
+	[(NSMutableDictionary*)id
+		setDictionary: otherDictionary];
+}
+
+void NSMutableDictionary_inst_SetObjectForKey(void *id, void* anObject, void* aKey) {
+	[(NSMutableDictionary*)id
+		setObject: anObject
+		forKey: aKey];
+}
+
+void NSMutableDictionary_inst_SetObjectForKeyedSubscript(void *id, void* obj, void* key) {
+	[(NSMutableDictionary*)id
+		setObject: obj
+		forKeyedSubscript: key];
+}
+
+void NSMutableDictionary_inst_SetValueForKey(void *id, void* value, void* key) {
+	[(NSMutableDictionary*)id
+		setValue: value
+		forKey: key];
 }
 
 void* NSError_inst_Init(void *id) {
@@ -2223,6 +2395,11 @@ BOOL NSThread_inst_IsCancelled(void *id) {
 BOOL NSThread_inst_IsMainThread(void *id) {
 	return [(NSThread*)id
 		isMainThread];
+}
+
+void* NSThread_inst_ThreadDictionary(void *id) {
+	return [(NSThread*)id
+		threadDictionary];
 }
 
 void* NSThread_inst_Name(void *id) {
@@ -2967,6 +3144,17 @@ func NSArray_ArrayWithArray(array NSArrayRef) NSArray {
 	return NSArray_FromPointer(ret)
 }
 
+// NSArray_ArrayWithObject creates and returns an array containing a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1411981-arraywithobject?language=objc for details.
+func NSArray_ArrayWithObject(anObject objc.Ref) NSArray {
+	ret := C.NSArray_type_ArrayWithObject(
+		objc.RefPointer(anObject),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // NSArray_ArrayWithContentsOfURLError is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/2879153-arraywithcontentsofurl?language=objc for details.
@@ -3147,6 +3335,18 @@ func NSDictionary_DictionaryWithObjectsForKeys(objects NSArrayRef, keys NSArrayR
 	return NSDictionary_FromPointer(ret)
 }
 
+// NSDictionary_DictionaryWithObjectForKey creates a dictionary containing a given key and value.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1414965-dictionarywithobject?language=objc for details.
+func NSDictionary_DictionaryWithObjectForKey(object objc.Ref, key objc.Ref) NSDictionary {
+	ret := C.NSDictionary_type_DictionaryWithObjectForKey(
+		objc.RefPointer(object),
+		objc.RefPointer(key),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
 // NSDictionary_DictionaryWithDictionary creates a dictionary containing the keys and values from another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1574191-dictionarywithdictionary?language=objc for details.
@@ -3179,6 +3379,68 @@ func NSDictionary_SharedKeySetForKeys(keys NSArrayRef) objc.Object {
 	)
 
 	return objc.Object_FromPointer(ret)
+}
+
+// NSMutableDictionary_Alloc is undocumented.
+func NSMutableDictionary_Alloc() NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_Alloc()
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithCapacity creates and returns a mutable dictionary, initially giving it enough allocated memory to hold a given number of entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574186-dictionarywithcapacity?language=objc for details.
+func NSMutableDictionary_DictionaryWithCapacity(numItems NSUInteger) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithCapacity(
+		C.ulong(numItems),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithSharedKeySet creates a mutable dictionary which is optimized for dealing with a known set of keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1412658-dictionarywithsharedkeyset?language=objc for details.
+func NSMutableDictionary_DictionaryWithSharedKeySet(keyset objc.Ref) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithSharedKeySet(
+		objc.RefPointer(keyset),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithOBEXHeadersData is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428433-dictionarywithobexheadersdata?language=objc for details.
+func NSMutableDictionary_DictionaryWithOBEXHeadersData(inHeadersData NSDataRef) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithOBEXHeadersData(
+		objc.RefPointer(inHeadersData),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithContentsOfFile is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574188-dictionarywithcontentsoffile?language=objc for details.
+func NSMutableDictionary_DictionaryWithContentsOfFile(path NSStringRef) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithContentsOfFile(
+		objc.RefPointer(path),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithContentsOfURL is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574182-dictionarywithcontentsofurl?language=objc for details.
+func NSMutableDictionary_DictionaryWithContentsOfURL(url NSURLRef) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithContentsOfURL(
+		objc.RefPointer(url),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
 }
 
 // NSError_Alloc is undocumented.
@@ -5643,6 +5905,20 @@ func NSArray_FromRef(ref objc.Ref) NSArray {
 	return NSArray_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+// ArrayByAddingObject returns a new array that is a copy of the receiving array with a given object added to the end.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408534-arraybyaddingobject?language=objc for details.
+func (x gen_NSArray) ArrayByAddingObject(
+	anObject objc.Ref,
+) NSArray {
+	ret := C.NSArray_inst_ArrayByAddingObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // ArrayByAddingObjectsFromArray returns a new array that is a copy of the receiving array with the objects contained in another array added to the end.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412087-arraybyaddingobjectsfromarray?language=objc for details.
@@ -5669,6 +5945,20 @@ func (x gen_NSArray) ComponentsJoinedByString(
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+// ContainsObject returns a Boolean value that indicates whether a given object is present in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1407477-containsobject?language=objc for details.
+func (x gen_NSArray) ContainsObject(
+	anObject objc.Ref,
+) bool {
+	ret := C.NSArray_inst_ContainsObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 // DescriptionWithLocale returns a string that represents the contents of the array, formatted as a property list.
@@ -5699,6 +5989,48 @@ func (x gen_NSArray) DescriptionWithLocaleIndent(
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+// FirstObjectCommonWithArray returns the first object contained in the receiving array that’s equal to an object in another given array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408825-firstobjectcommonwitharray?language=objc for details.
+func (x gen_NSArray) FirstObjectCommonWithArray(
+	otherArray NSArrayRef,
+) objc.Object {
+	ret := C.NSArray_inst_FirstObjectCommonWithArray(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherArray),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// IndexOfObject returns the lowest index whose corresponding array value is equal to a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1417076-indexofobject?language=objc for details.
+func (x gen_NSArray) IndexOfObject(
+	anObject objc.Ref,
+) NSUInteger {
+	ret := C.NSArray_inst_IndexOfObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSUInteger(ret)
+}
+
+// IndexOfObjectIdenticalTo returns the lowest index whose corresponding array value is identical to a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1410847-indexofobjectidenticalto?language=objc for details.
+func (x gen_NSArray) IndexOfObjectIdenticalTo(
+	anObject objc.Ref,
+) NSUInteger {
+	ret := C.NSArray_inst_IndexOfObjectIdenticalTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSUInteger(ret)
 }
 
 // Init initializes a newly allocated array.
@@ -5811,6 +6143,34 @@ func (x gen_NSArray) MakeObjectsPerformSelectorWithObject(
 	)
 
 	return
+}
+
+// ObjectAtIndex returns the object located at the specified index.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1417555-objectatindex?language=objc for details.
+func (x gen_NSArray) ObjectAtIndex(
+	index NSUInteger,
+) objc.Object {
+	ret := C.NSArray_inst_ObjectAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(index),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectAtIndexedSubscript returns the object at the specified index.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1414084-objectatindexedsubscript?language=objc for details.
+func (x gen_NSArray) ObjectAtIndexedSubscript(
+	idx NSUInteger,
+) objc.Object {
+	ret := C.NSArray_inst_ObjectAtIndexedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(idx),
+	)
+
+	return objc.Object_FromPointer(ret)
 }
 
 // PathsMatchingExtensions returns an array containing all the pathname elements in the receiving array that have filename extensions from a given array.
@@ -5955,6 +6315,28 @@ func (x gen_NSArray) Count() NSUInteger {
 	)
 
 	return NSUInteger(ret)
+}
+
+// FirstObject returns the first object in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1412852-firstobject?language=objc for details.
+func (x gen_NSArray) FirstObject() objc.Object {
+	ret := C.NSArray_inst_FirstObject(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// LastObject returns the last object in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408316-lastobject?language=objc for details.
+func (x gen_NSArray) LastObject() objc.Object {
+	ret := C.NSArray_inst_LastObject(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
 }
 
 // SortedArrayHint analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedArrayUsingFunction:context:hint:.
@@ -6690,6 +7072,20 @@ func NSDictionary_FromRef(ref objc.Ref) NSDictionary {
 	return NSDictionary_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+// AllKeysForObject returns a new array containing the keys corresponding to all occurrences of a given object in the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1417147-allkeysforobject?language=objc for details.
+func (x gen_NSDictionary) AllKeysForObject(
+	anObject objc.Ref,
+) NSArray {
+	ret := C.NSDictionary_inst_AllKeysForObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // DescriptionWithLocale returns a string object that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417665-descriptionwithlocale?language=objc for details.
@@ -6953,6 +7349,64 @@ func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
 	return NSArray_FromPointer(ret)
 }
 
+// ObjectForKey returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1414347-objectforkey?language=objc for details.
+func (x gen_NSDictionary) ObjectForKey(
+	aKey objc.Ref,
+) objc.Object {
+	ret := C.NSDictionary_inst_ObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(aKey),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectForKeyedSubscript returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1415430-objectforkeyedsubscript?language=objc for details.
+func (x gen_NSDictionary) ObjectForKeyedSubscript(
+	key objc.Ref,
+) objc.Object {
+	ret := C.NSDictionary_inst_ObjectForKeyedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectsForKeysNotFoundMarker returns as a static array the set of objects from the dictionary that corresponds to the specified keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1408769-objectsforkeys?language=objc for details.
+func (x gen_NSDictionary) ObjectsForKeysNotFoundMarker(
+	keys NSArrayRef,
+	marker objc.Ref,
+) NSArray {
+	ret := C.NSDictionary_inst_ObjectsForKeysNotFoundMarker(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keys),
+		objc.RefPointer(marker),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// ValueForKey returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1410210-valueforkey?language=objc for details.
+func (x gen_NSDictionary) ValueForKey(
+	key NSStringRef,
+) objc.Object {
+	ret := C.NSDictionary_inst_ValueForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
 // WriteToURLError writes a property list representation of the contents of the dictionary to a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc for details.
@@ -7022,6 +7476,215 @@ func (x gen_NSDictionary) DescriptionInStringsFileFormat() NSString {
 	)
 
 	return NSString_FromPointer(ret)
+}
+
+type NSMutableDictionaryRef interface {
+	Pointer() uintptr
+	Init_AsNSMutableDictionary() NSMutableDictionary
+}
+
+type gen_NSMutableDictionary struct {
+	NSDictionary
+}
+
+func NSMutableDictionary_FromPointer(ptr unsafe.Pointer) NSMutableDictionary {
+	return NSMutableDictionary{gen_NSMutableDictionary{
+		NSDictionary_FromPointer(ptr),
+	}}
+}
+
+func NSMutableDictionary_FromRef(ref objc.Ref) NSMutableDictionary {
+	return NSMutableDictionary_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AddEntriesFromDictionary adds to the receiving dictionary the entries from another dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411035-addentriesfromdictionary?language=objc for details.
+func (x gen_NSMutableDictionary) AddEntriesFromDictionary(
+	otherDictionary NSDictionaryRef,
+) {
+	C.NSMutableDictionary_inst_AddEntriesFromDictionary(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherDictionary),
+	)
+
+	return
+}
+
+// GetHeaderBytes is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428890-getheaderbytes?language=objc for details.
+func (x gen_NSMutableDictionary) GetHeaderBytes() NSMutableData {
+	ret := C.NSMutableDictionary_inst_GetHeaderBytes(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// Init initializes a newly allocated mutable dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
+func (x gen_NSMutableDictionary) Init() NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// Init_AsNSMutableDictionary is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
+func (x gen_NSMutableDictionary) Init_AsNSMutableDictionary() NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithCapacity initializes a newly allocated mutable dictionary, allocating enough memory to hold numItems entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1417898-initwithcapacity?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithCapacity(
+	numItems NSUInteger,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithCapacity(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(numItems),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithContentsOfFile is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1407593-initwithcontentsoffile?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithContentsOfFile(
+	path NSStringRef,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithContentsOfFile(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(path),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithContentsOfURL is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410409-initwithcontentsofurl?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithContentsOfURL(
+	url NSURLRef,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithContentsOfURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// RemoveAllObjects empties the dictionary of its entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1408955-removeallobjects?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveAllObjects() {
+	C.NSMutableDictionary_inst_RemoveAllObjects(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// RemoveObjectForKey removes a given key and its associated value from the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416518-removeobjectforkey?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveObjectForKey(
+	aKey objc.Ref,
+) {
+	C.NSMutableDictionary_inst_RemoveObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(aKey),
+	)
+
+	return
+}
+
+// RemoveObjectsForKeys removes from the dictionary entries specified by elements in a given array.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410430-removeobjectsforkeys?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveObjectsForKeys(
+	keyArray NSArrayRef,
+) {
+	C.NSMutableDictionary_inst_RemoveObjectsForKeys(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keyArray),
+	)
+
+	return
+}
+
+// SetDictionary sets the contents of the receiving dictionary to entries in a given dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1409566-setdictionary?language=objc for details.
+func (x gen_NSMutableDictionary) SetDictionary(
+	otherDictionary NSDictionaryRef,
+) {
+	C.NSMutableDictionary_inst_SetDictionary(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherDictionary),
+	)
+
+	return
+}
+
+// SetObjectForKey adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc for details.
+func (x gen_NSMutableDictionary) SetObjectForKey(
+	anObject objc.Ref,
+	aKey objc.Ref,
+) {
+	C.NSMutableDictionary_inst_SetObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+		objc.RefPointer(aKey),
+	)
+
+	return
+}
+
+// SetObjectForKeyedSubscript adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc for details.
+func (x gen_NSMutableDictionary) SetObjectForKeyedSubscript(
+	obj objc.Ref,
+	key objc.Ref,
+) {
+	C.NSMutableDictionary_inst_SetObjectForKeyedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(obj),
+		objc.RefPointer(key),
+	)
+
+	return
+}
+
+// SetValueForKey adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc for details.
+func (x gen_NSMutableDictionary) SetValueForKey(
+	value objc.Ref,
+	key NSStringRef,
+) {
+	C.NSMutableDictionary_inst_SetValueForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+		objc.RefPointer(key),
+	)
+
+	return
 }
 
 type NSErrorRef interface {
@@ -8489,6 +9152,17 @@ func (x gen_NSThread) IsMainThread() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
+}
+
+// ThreadDictionary returns the thread object's dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1411433-threaddictionary?language=objc for details.
+func (x gen_NSThread) ThreadDictionary() NSMutableDictionary {
+	ret := C.NSThread_inst_ThreadDictionary(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
 }
 
 // Name returns the name of the receiver.
