@@ -23,6 +23,7 @@ func main() {
 			loadFile("api/foundation/nsdata.objc.json"),
 			loadFile("api/foundation/nsmutabledata.objc.json"),
 			loadFile("api/foundation/nsdictionary.objc.json"),
+			loadFile("api/foundation/nsmutabledictionary.objc.json"),
 			loadFile("api/foundation/nserror.objc.json"),
 			loadFile("api/foundation/nsnumber.objc.json"),
 			loadFile("api/foundation/nsrunloop.objc.json"),

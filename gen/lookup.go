@@ -158,6 +158,10 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			FromCGoFmt: "*(*" + corePkg + "NSSize)(unsafe.Pointer(&%s))",
 			ToCGoFmt:   "*(*C.NSSize)(unsafe.Pointer(&%s))",
 		}
+	case "ObjectType":
+		fallthrough
+	case "KeyType":
+		fallthrough
 	case "id":
 		return typeMapping{
 			GoType:          "objc.Object",
