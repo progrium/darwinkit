@@ -102,6 +102,34 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			FromCGoFmt: corePkg + "CGFloat(%s)",
 			ToCGoFmt:   "C.double(%s)",
 		}
+	case "short":
+		return typeMapping{
+			GoType:     "int16",
+			CType:      "short",
+			FromCGoFmt: "int16(%s)",
+			ToCGoFmt:   "C.short(%s)",
+		}
+	case "char":
+		return typeMapping{
+			GoType:     "int8",
+			CType:      "char",
+			FromCGoFmt: "int8(%s)",
+			ToCGoFmt:   "C.char(%s)",
+		}
+	case "float":
+		return typeMapping{
+			GoType:     "float32",
+			CType:      "float",
+			FromCGoFmt: "float32(%s)",
+			ToCGoFmt:   "C.float(%s)",
+		}
+	case "double":
+		return typeMapping{
+			GoType:     "float64",
+			CType:      "double",
+			FromCGoFmt: "float64(%s)",
+			ToCGoFmt:   "C.double(%s)",
+		}
 	case "NSStringEncoding":
 		return typeMapping{
 			GoType:     corePkg + "NSStringEncoding",
@@ -129,6 +157,34 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			CType:      "int",
 			FromCGoFmt: "int32(%s)",
 			ToCGoFmt:   "C.int(%s)",
+		}
+	case "long":
+		return typeMapping{
+			GoType:     "int64",
+			CType:      "long",
+			FromCGoFmt: "int64(%s)",
+			ToCGoFmt:   "C.long(%s)",
+		}
+	case "long long":
+		return typeMapping{
+			GoType:     "int64",
+			CType:      "long long",
+			FromCGoFmt: "int64(%s)",
+			ToCGoFmt:   "C.longlong(%s)",
+		}
+	case "uint32_t":
+		return typeMapping{
+			GoType:     "uint32",
+			CType:      "uint",
+			FromCGoFmt: "uint32(%s)",
+			ToCGoFmt:   "C.uint(%s)",
+		}
+	case "size_t":
+		return typeMapping{
+			GoType:     "uint",
+			CType:      "uint",
+			FromCGoFmt: "uint(%s)",
+			ToCGoFmt:   "C.uint(%s)",
 		}
 	case "SEL":
 		return typeMapping{
