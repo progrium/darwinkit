@@ -20,6 +20,17 @@ bool vision_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 
 void* VNClassifyImageRequest_type_Alloc() {
 	return [VNClassifyImageRequest

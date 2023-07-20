@@ -20,6 +20,17 @@ bool coreml_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 
 void* MLArrayBatchProvider_type_Alloc() {
 	return [MLArrayBatchProvider
@@ -203,9 +214,9 @@ func MLFeatureValue_Alloc() MLFeatureValue {
 // MLFeatureValue_FeatureValueWithString creates a feature value that contains a string.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879343-featurevaluewithstring?language=objc for details.
-func MLFeatureValue_FeatureValueWithString(value core.NSStringRef) MLFeatureValue {
+func MLFeatureValue_FeatureValueWithString(value string) MLFeatureValue {
 	ret := C.MLFeatureValue_type_FeatureValueWithString(
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return MLFeatureValue_FromPointer(ret)
@@ -394,11 +405,11 @@ func (x gen_MLDictionaryFeatureProvider) InitWithDictionaryError(
 //
 // See https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2881954-objectforkeyedsubscript?language=objc for details.
 func (x gen_MLDictionaryFeatureProvider) ObjectForKeyedSubscript(
-	featureName core.NSStringRef,
+	featureName string,
 ) MLFeatureValue {
 	ret := C.MLDictionaryFeatureProvider_inst_ObjectForKeyedSubscript(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(featureName),
+		C.createNSStringFromCString(C.CString(featureName)),
 	)
 
 	return MLFeatureValue_FromPointer(ret)
@@ -498,12 +509,12 @@ func (x gen_MLFeatureValue) IsUndefined() bool {
 // StringValue returns the underlying string of the feature value.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879349-stringvalue?language=objc for details.
-func (x gen_MLFeatureValue) StringValue() core.NSString {
+func (x gen_MLFeatureValue) StringValue() string {
 	ret := C.MLFeatureValue_inst_StringValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DictionaryValue returns the underlying dictionary of the feature value.
