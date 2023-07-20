@@ -504,6 +504,14 @@ void* NSSlider_type_SliderWithTargetAction(void* target, void* action) {
 		sliderWithTarget: target
 		action: action];
 }
+void* NSSlider_type_SliderWithValueMinValueMaxValueTargetAction(double value, double minValue, double maxValue, void* target, void* action) {
+	return [NSSlider
+		sliderWithValue: value
+		minValue: minValue
+		maxValue: maxValue
+		target: target
+		action: action];
+}
 void* NSOpenPanel_type_Alloc() {
 	return [NSOpenPanel
 		alloc];
@@ -714,6 +722,11 @@ BOOL NSBundle_inst_PreflightAndReturnError(void *id, void* error) {
 		preflightAndReturnError: error];
 }
 
+double NSBundle_inst_PreservationPriorityForTag(void *id, void* tag) {
+	return [(NSBundle*)id
+		preservationPriorityForTag: tag];
+}
+
 BOOL NSBundle_inst_Unload(void *id) {
 	return [(NSBundle*)id
 		unload];
@@ -899,6 +912,16 @@ void* NSSound_inst_Delegate(void *id) {
 void NSSound_inst_SetDelegate(void *id, void* value) {
 	[(NSSound*)id
 		setDelegate: value];
+}
+
+float NSSound_inst_Volume(void *id) {
+	return [(NSSound*)id
+		volume];
+}
+
+void NSSound_inst_SetVolume(void *id, float value) {
+	[(NSSound*)id
+		setVolume: value];
 }
 
 BOOL NSSound_inst_Loops(void *id) {
@@ -1271,6 +1294,26 @@ void NSControl_inst_SetEnabled(void *id, BOOL value) {
 		setEnabled: value];
 }
 
+double NSControl_inst_DoubleValue(void *id) {
+	return [(NSControl*)id
+		doubleValue];
+}
+
+void NSControl_inst_SetDoubleValue(void *id, double value) {
+	[(NSControl*)id
+		setDoubleValue: value];
+}
+
+float NSControl_inst_FloatValue(void *id) {
+	return [(NSControl*)id
+		floatValue];
+}
+
+void NSControl_inst_SetFloatValue(void *id, float value) {
+	[(NSControl*)id
+		setFloatValue: value];
+}
+
 int NSControl_inst_IntValue(void *id) {
 	return [(NSControl*)id
 		intValue];
@@ -1444,6 +1487,12 @@ BOOL NSButton_inst_PerformKeyEquivalent(void *id, void* key) {
 void NSButton_inst_SetNextState(void *id) {
 	[(NSButton*)id
 		setNextState];
+}
+
+void NSButton_inst_SetPeriodicDelayInterval(void *id, float delay, float interval) {
+	[(NSButton*)id
+		setPeriodicDelay: delay
+		interval: interval];
 }
 
 void* NSButton_inst_Init(void *id) {
@@ -1681,6 +1730,11 @@ BOOL NSEvent_inst_IsARepeat(void *id) {
 		isARepeat];
 }
 
+short NSEvent_inst_KeyCode(void *id) {
+	return [(NSEvent*)id
+		keyCode];
+}
+
 long NSEvent_inst_ButtonNumber(void *id) {
 	return [(NSEvent*)id
 		buttonNumber];
@@ -1731,6 +1785,11 @@ double NSEvent_inst_DeltaZ(void *id) {
 		deltaZ];
 }
 
+float NSEvent_inst_Pressure(void *id) {
+	return [(NSEvent*)id
+		pressure];
+}
+
 long NSEvent_inst_Stage(void *id) {
 	return [(NSEvent*)id
 		stage];
@@ -1776,6 +1835,11 @@ unsigned long NSEvent_inst_TabletID(void *id) {
 		tabletID];
 }
 
+long long NSEvent_inst_UniqueID(void *id) {
+	return [(NSEvent*)id
+		uniqueID];
+}
+
 unsigned long NSEvent_inst_VendorID(void *id) {
 	return [(NSEvent*)id
 		vendorID];
@@ -1799,6 +1863,16 @@ long NSEvent_inst_AbsoluteY(void *id) {
 long NSEvent_inst_AbsoluteZ(void *id) {
 	return [(NSEvent*)id
 		absoluteZ];
+}
+
+float NSEvent_inst_Rotation(void *id) {
+	return [(NSEvent*)id
+		rotation];
+}
+
+float NSEvent_inst_TangentialPressure(void *id) {
+	return [(NSEvent*)id
+		tangentialPressure];
 }
 
 NSPoint NSEvent_inst_Tilt(void *id) {
@@ -5518,6 +5592,11 @@ BOOL NSSlider_inst_AcceptsFirstMouse(void *id, void* event) {
 		acceptsFirstMouse: event];
 }
 
+double NSSlider_inst_ClosestTickMarkValueToValue(void *id, double value) {
+	return [(NSSlider*)id
+		closestTickMarkValueToValue: value];
+}
+
 long NSSlider_inst_IndexOfTickMarkAtPoint(void *id, NSPoint point) {
 	return [(NSSlider*)id
 		indexOfTickMarkAtPoint: point];
@@ -5528,9 +5607,24 @@ NSRect NSSlider_inst_RectOfTickMarkAtIndex(void *id, long index) {
 		rectOfTickMarkAtIndex: index];
 }
 
+double NSSlider_inst_TickMarkValueAtIndex(void *id, long index) {
+	return [(NSSlider*)id
+		tickMarkValueAtIndex: index];
+}
+
 void* NSSlider_inst_Init(void *id) {
 	return [(NSSlider*)id
 		init];
+}
+
+double NSSlider_inst_AltIncrementValue(void *id) {
+	return [(NSSlider*)id
+		altIncrementValue];
+}
+
+void NSSlider_inst_SetAltIncrementValue(void *id, double value) {
+	[(NSSlider*)id
+		setAltIncrementValue: value];
 }
 
 double NSSlider_inst_KnobThickness(void *id) {
@@ -5546,6 +5640,26 @@ void* NSSlider_inst_TrackFillColor(void *id) {
 void NSSlider_inst_SetTrackFillColor(void *id, void* value) {
 	[(NSSlider*)id
 		setTrackFillColor: value];
+}
+
+double NSSlider_inst_MaxValue(void *id) {
+	return [(NSSlider*)id
+		maxValue];
+}
+
+void NSSlider_inst_SetMaxValue(void *id, double value) {
+	[(NSSlider*)id
+		setMaxValue: value];
+}
+
+double NSSlider_inst_MinValue(void *id) {
+	return [(NSSlider*)id
+		minValue];
+}
+
+void NSSlider_inst_SetMinValue(void *id, double value) {
+	[(NSSlider*)id
+		setMinValue: value];
 }
 
 BOOL NSSlider_inst_AllowsTickMarkValuesOnly(void *id) {
@@ -8809,6 +8923,21 @@ func NSSlider_SliderWithTargetAction(target objc.Ref, action objc.Selector) NSSl
 	return NSSlider_FromPointer(ret)
 }
 
+// NSSlider_SliderWithValueMinValueMaxValueTargetAction creates a continuous horizontal slider that represents values over the specified range.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1644495-sliderwithvalue?language=objc for details.
+func NSSlider_SliderWithValueMinValueMaxValueTargetAction(value float64, minValue float64, maxValue float64, target objc.Ref, action objc.Selector) NSSlider {
+	ret := C.NSSlider_type_SliderWithValueMinValueMaxValueTargetAction(
+		C.double(value),
+		C.double(minValue),
+		C.double(maxValue),
+		objc.RefPointer(target),
+		action.SelectorAddress(),
+	)
+
+	return NSSlider_FromPointer(ret)
+}
+
 // NSOpenPanel_Alloc is undocumented.
 func NSOpenPanel_Alloc() NSOpenPanel {
 	ret := C.NSOpenPanel_type_Alloc()
@@ -9337,6 +9466,20 @@ func (x gen_NSBundle) PreflightAndReturnError(
 	return convertObjCBoolToGo(ret)
 }
 
+// PreservationPriorityForTag returns the current preservation priority for the specified tag.
+//
+// See https://developer.apple.com/documentation/foundation/nsbundle/1614839-preservationpriorityfortag?language=objc for details.
+func (x gen_NSBundle) PreservationPriorityForTag(
+	tag core.NSStringRef,
+) float64 {
+	ret := C.NSBundle_inst_PreservationPriorityForTag(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(tag),
+	)
+
+	return float64(ret)
+}
+
 // Unload unloads the code associated with the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1412388-unload?language=objc for details.
@@ -9794,6 +9937,31 @@ func (x gen_NSSound) SetDelegate(
 	C.NSSound_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// Volume returns the volume of the sound.
+//
+// See https://developer.apple.com/documentation/appkit/nssound/1477315-volume?language=objc for details.
+func (x gen_NSSound) Volume() float32 {
+	ret := C.NSSound_inst_Volume(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// SetVolume returns the volume of the sound.
+//
+// See https://developer.apple.com/documentation/appkit/nssound/1477315-volume?language=objc for details.
+func (x gen_NSSound) SetVolume(
+	value float32,
+) {
+	C.NSSound_inst_SetVolume(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
 	)
 
 	return
@@ -10788,6 +10956,56 @@ func (x gen_NSControl) SetEnabled(
 	return
 }
 
+// DoubleValue returns the value of the receiver’s cell as a double-precision floating-point number.
+//
+// See https://developer.apple.com/documentation/appkit/nscontrol/1428942-doublevalue?language=objc for details.
+func (x gen_NSControl) DoubleValue() float64 {
+	ret := C.NSControl_inst_DoubleValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// SetDoubleValue returns the value of the receiver’s cell as a double-precision floating-point number.
+//
+// See https://developer.apple.com/documentation/appkit/nscontrol/1428942-doublevalue?language=objc for details.
+func (x gen_NSControl) SetDoubleValue(
+	value float64,
+) {
+	C.NSControl_inst_SetDoubleValue(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return
+}
+
+// FloatValue returns the value of the receiver’s cell as a single-precision floating-point number.
+//
+// See https://developer.apple.com/documentation/appkit/nscontrol/1428889-floatvalue?language=objc for details.
+func (x gen_NSControl) FloatValue() float32 {
+	ret := C.NSControl_inst_FloatValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// SetFloatValue returns the value of the receiver’s cell as a single-precision floating-point number.
+//
+// See https://developer.apple.com/documentation/appkit/nscontrol/1428889-floatvalue?language=objc for details.
+func (x gen_NSControl) SetFloatValue(
+	value float32,
+) {
+	C.NSControl_inst_SetFloatValue(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
+	)
+
+	return
+}
+
 // IntValue returns the value of the receiver’s cell as an integer.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428939-intvalue?language=objc for details.
@@ -11244,6 +11462,22 @@ func (x gen_NSButton) PerformKeyEquivalent(
 func (x gen_NSButton) SetNextState() {
 	C.NSButton_inst_SetNextState(
 		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// SetPeriodicDelayInterval sets the message delay and interval periods for a continuous button.
+//
+// See https://developer.apple.com/documentation/appkit/nsbutton/1526612-setperiodicdelay?language=objc for details.
+func (x gen_NSButton) SetPeriodicDelayInterval(
+	delay float32,
+	interval float32,
+) {
+	C.NSButton_inst_SetPeriodicDelayInterval(
+		unsafe.Pointer(x.Pointer()),
+		C.float(delay),
+		C.float(interval),
 	)
 
 	return
@@ -11856,6 +12090,17 @@ func (x gen_NSEvent) IsARepeat() bool {
 	return convertObjCBoolToGo(ret)
 }
 
+// KeyCode returns the virtual key code for the keyboard key associated with a key event.
+//
+// See https://developer.apple.com/documentation/appkit/nsevent/1534513-keycode?language=objc for details.
+func (x gen_NSEvent) KeyCode() int16 {
+	ret := C.NSEvent_inst_KeyCode(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int16(ret)
+}
+
 // ButtonNumber returns the button number for a mouse event.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527828-buttonnumber?language=objc for details.
@@ -11966,6 +12211,17 @@ func (x gen_NSEvent) DeltaZ() core.CGFloat {
 	return core.CGFloat(ret)
 }
 
+// Pressure returns a value from 0.0 through 1.0 indicating the degree of pressure applied to an appropriate input device.
+//
+// See https://developer.apple.com/documentation/appkit/nsevent/1534543-pressure?language=objc for details.
+func (x gen_NSEvent) Pressure() float32 {
+	ret := C.NSEvent_inst_Pressure(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
 // Stage returns a value of 0, 1, or 2, indicating the stage of a gesture event of type NSEventTypePressure.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1527242-stage?language=objc for details.
@@ -12065,6 +12321,17 @@ func (x gen_NSEvent) TabletID() core.NSUInteger {
 	return core.NSUInteger(ret)
 }
 
+// UniqueID returns the unique identifier of the pointing device that generated this event.
+//
+// See https://developer.apple.com/documentation/appkit/nsevent/1535813-uniqueid?language=objc for details.
+func (x gen_NSEvent) UniqueID() int64 {
+	ret := C.NSEvent_inst_UniqueID(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
 // VendorID returns the vendor identifier of the tablet associated with the event.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1525177-vendorid?language=objc for details.
@@ -12118,6 +12385,28 @@ func (x gen_NSEvent) AbsoluteZ() core.NSInteger {
 	)
 
 	return core.NSInteger(ret)
+}
+
+// Rotation returns the rotation in degrees of the tablet pointing device associated with this event.
+//
+// See https://developer.apple.com/documentation/appkit/nsevent/1526249-rotation?language=objc for details.
+func (x gen_NSEvent) Rotation() float32 {
+	ret := C.NSEvent_inst_Rotation(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// TangentialPressure returns the tangential pressure on the device that generated this event.
+//
+// See https://developer.apple.com/documentation/appkit/nsevent/1525959-tangentialpressure?language=objc for details.
+func (x gen_NSEvent) TangentialPressure() float32 {
+	ret := C.NSEvent_inst_TangentialPressure(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
 }
 
 // Tilt returns the scaled tilt values of the pointing device that generated this event.
@@ -21945,6 +22234,20 @@ func (x gen_NSSlider) AcceptsFirstMouse(
 	return convertObjCBoolToGo(ret)
 }
 
+// ClosestTickMarkValueToValue returns the value of the tick mark closest to the specified value.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1530237-closesttickmarkvaluetovalue?language=objc for details.
+func (x gen_NSSlider) ClosestTickMarkValueToValue(
+	value float64,
+) float64 {
+	ret := C.NSSlider_inst_ClosestTickMarkValueToValue(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return float64(ret)
+}
+
 // IndexOfTickMarkAtPoint returns the index of the tick mark closest to the location of the slider represented by the given point.
 //
 // See https://developer.apple.com/documentation/appkit/nsslider/1526763-indexoftickmarkatpoint?language=objc for details.
@@ -21973,6 +22276,20 @@ func (x gen_NSSlider) RectOfTickMarkAtIndex(
 	return *(*core.NSRect)(unsafe.Pointer(&ret))
 }
 
+// TickMarkValueAtIndex returns the slider’s value represented by the tick mark at the specified index.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1527230-tickmarkvalueatindex?language=objc for details.
+func (x gen_NSSlider) TickMarkValueAtIndex(
+	index core.NSInteger,
+) float64 {
+	ret := C.NSSlider_inst_TickMarkValueAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return float64(ret)
+}
+
 // Init initializes a new instance of the NSSlider class.
 func (x gen_NSSlider) Init() NSSlider {
 	ret := C.NSSlider_inst_Init(
@@ -21989,6 +22306,31 @@ func (x gen_NSSlider) Init_AsNSSlider() NSSlider {
 	)
 
 	return NSSlider_FromPointer(ret)
+}
+
+// AltIncrementValue returns the amount by which the slider changes its value when the user Option-drags the slider knob.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc for details.
+func (x gen_NSSlider) AltIncrementValue() float64 {
+	ret := C.NSSlider_inst_AltIncrementValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// SetAltIncrementValue returns the amount by which the slider changes its value when the user Option-drags the slider knob.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532901-altincrementvalue?language=objc for details.
+func (x gen_NSSlider) SetAltIncrementValue(
+	value float64,
+) {
+	C.NSSlider_inst_SetAltIncrementValue(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return
 }
 
 // KnobThickness returns the knob’s thickness, in pixels.
@@ -22022,6 +22364,56 @@ func (x gen_NSSlider) SetTrackFillColor(
 	C.NSSlider_inst_SetTrackFillColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// MaxValue returns the maximum value the slider can send to its target.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc for details.
+func (x gen_NSSlider) MaxValue() float64 {
+	ret := C.NSSlider_inst_MaxValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// SetMaxValue returns the maximum value the slider can send to its target.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1532919-maxvalue?language=objc for details.
+func (x gen_NSSlider) SetMaxValue(
+	value float64,
+) {
+	C.NSSlider_inst_SetMaxValue(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return
+}
+
+// MinValue returns the minimum value the slider can send to its target.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc for details.
+func (x gen_NSSlider) MinValue() float64 {
+	ret := C.NSSlider_inst_MinValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// SetMinValue returns the minimum value the slider can send to its target.
+//
+// See https://developer.apple.com/documentation/appkit/nsslider/1524665-minvalue?language=objc for details.
+func (x gen_NSSlider) SetMinValue(
+	value float64,
+) {
+	C.NSSlider_inst_SetMinValue(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
 	)
 
 	return

@@ -33,6 +33,10 @@ void* MLFeatureValue_type_Alloc() {
 	return [MLFeatureValue
 		alloc];
 }
+void* MLFeatureValue_type_FeatureValueWithDouble(double value) {
+	return [MLFeatureValue
+		featureValueWithDouble: value];
+}
 void* MLFeatureValue_type_FeatureValueWithString(void* value) {
 	return [MLFeatureValue
 		featureValueWithString: value];
@@ -127,6 +131,11 @@ BOOL MLFeatureValue_inst_IsUndefined(void *id) {
 		isUndefined];
 }
 
+double MLFeatureValue_inst_DoubleValue(void *id) {
+	return [(MLFeatureValue*)id
+		doubleValue];
+}
+
 void* MLFeatureValue_inst_StringValue(void *id) {
 	return [(MLFeatureValue*)id
 		stringValue];
@@ -196,6 +205,17 @@ func MLDictionaryFeatureProvider_Alloc() MLDictionaryFeatureProvider {
 // MLFeatureValue_Alloc is undocumented.
 func MLFeatureValue_Alloc() MLFeatureValue {
 	ret := C.MLFeatureValue_type_Alloc()
+
+	return MLFeatureValue_FromPointer(ret)
+}
+
+// MLFeatureValue_FeatureValueWithDouble creates a feature value that contains a double.
+//
+// See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879398-featurevaluewithdouble?language=objc for details.
+func MLFeatureValue_FeatureValueWithDouble(value float64) MLFeatureValue {
+	ret := C.MLFeatureValue_type_FeatureValueWithDouble(
+		C.double(value),
+	)
 
 	return MLFeatureValue_FromPointer(ret)
 }
@@ -493,6 +513,17 @@ func (x gen_MLFeatureValue) IsUndefined() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
+}
+
+// DoubleValue returns the underlying double of the feature value.
+//
+// See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879375-doublevalue?language=objc for details.
+func (x gen_MLFeatureValue) DoubleValue() float64 {
+	ret := C.MLFeatureValue_inst_DoubleValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
 }
 
 // StringValue returns the underlying string of the feature value.

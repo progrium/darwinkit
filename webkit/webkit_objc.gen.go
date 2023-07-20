@@ -196,6 +196,11 @@ BOOL WKWebView_inst_IsLoading(void *id) {
 		isLoading];
 }
 
+double WKWebView_inst_EstimatedProgress(void *id) {
+	return [(WKWebView*)id
+		estimatedProgress];
+}
+
 void* WKWebView_inst_Title(void *id) {
 	return [(WKWebView*)id
 		title];
@@ -967,6 +972,17 @@ func (x gen_WKWebView) IsLoading() bool {
 	)
 
 	return convertObjCBoolToGo(ret)
+}
+
+// EstimatedProgress an estimate of what fraction of the current navigation has been loaded.
+//
+// See https://developer.apple.com/documentation/webkit/wkwebview/1415007-estimatedprogress?language=objc for details.
+func (x gen_WKWebView) EstimatedProgress() float64 {
+	ret := C.WKWebView_inst_EstimatedProgress(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
 }
 
 // Title returns the page title.

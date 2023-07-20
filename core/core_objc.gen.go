@@ -92,6 +92,10 @@ void* CALayer_type_Layer() {
 	return [CALayer
 		layer];
 }
+void* CALayer_type_LayerWithRemoteClientId(uint client_id) {
+	return [CALayer
+		layerWithRemoteClientId: client_id];
+}
 BOOL CALayer_type_NeedsDisplayForKey(void* key) {
 	return [CALayer
 		needsDisplayForKey: key];
@@ -219,6 +223,18 @@ void* NSNumber_type_NumberWithBool(BOOL value) {
 	return [NSNumber
 		numberWithBool: value];
 }
+void* NSNumber_type_NumberWithChar(char value) {
+	return [NSNumber
+		numberWithChar: value];
+}
+void* NSNumber_type_NumberWithDouble(double value) {
+	return [NSNumber
+		numberWithDouble: value];
+}
+void* NSNumber_type_NumberWithFloat(float value) {
+	return [NSNumber
+		numberWithFloat: value];
+}
 void* NSNumber_type_NumberWithInt(int value) {
 	return [NSNumber
 		numberWithInt: value];
@@ -227,6 +243,22 @@ void* NSNumber_type_NumberWithInteger(long value) {
 	return [NSNumber
 		numberWithInteger: value];
 }
+void* NSNumber_type_NumberWithLong(long value) {
+	return [NSNumber
+		numberWithLong: value];
+}
+void* NSNumber_type_NumberWithLongLong(long long value) {
+	return [NSNumber
+		numberWithLongLong: value];
+}
+void* NSNumber_type_NumberWithShort(short value) {
+	return [NSNumber
+		numberWithShort: value];
+}
+void* NSNumber_type_NumberWithUnsignedChar(char value) {
+	return [NSNumber
+		numberWithUnsignedChar: value];
+}
 void* NSNumber_type_NumberWithUnsignedInt(int value) {
 	return [NSNumber
 		numberWithUnsignedInt: value];
@@ -234,6 +266,18 @@ void* NSNumber_type_NumberWithUnsignedInt(int value) {
 void* NSNumber_type_NumberWithUnsignedInteger(unsigned long value) {
 	return [NSNumber
 		numberWithUnsignedInteger: value];
+}
+void* NSNumber_type_NumberWithUnsignedLong(long value) {
+	return [NSNumber
+		numberWithUnsignedLong: value];
+}
+void* NSNumber_type_NumberWithUnsignedLongLong(long long value) {
+	return [NSNumber
+		numberWithUnsignedLongLong: value];
+}
+void* NSNumber_type_NumberWithUnsignedShort(short value) {
+	return [NSNumber
+		numberWithUnsignedShort: value];
 }
 void* NSRunLoop_type_Alloc() {
 	return [NSRunLoop
@@ -305,6 +349,14 @@ void NSThread_type_Exit() {
 BOOL NSThread_type_IsMultiThreaded() {
 	return [NSThread
 		isMultiThreaded];
+}
+double NSThread_type_ThreadPriority() {
+	return [NSThread
+		threadPriority];
+}
+BOOL NSThread_type_SetThreadPriority(double p) {
+	return [NSThread
+		setThreadPriority: p];
 }
 BOOL NSThread_type_IsMainThread() {
 	return [NSThread
@@ -624,6 +676,13 @@ void NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(void 
 		modes: array];
 }
 
+void NSObject_inst_ProvideImageDataBytesPerRowOrigin(void *id, void* data, uint rowbytes, uint x) {
+	[(NSObject*)id
+		provideImageData: data
+		bytesPerRow: rowbytes
+		origin: x];
+}
+
 void* NSObject_inst_AutoContentAccessingProxy(void *id) {
 	return [(NSObject*)id
 		autoContentAccessingProxy];
@@ -870,6 +929,16 @@ void CALayer_inst_SetContentsCenter(void *id, NSRect value) {
 		setContentsCenter: value];
 }
 
+float CALayer_inst_Opacity(void *id) {
+	return [(CALayer*)id
+		opacity];
+}
+
+void CALayer_inst_SetOpacity(void *id, float value) {
+	[(CALayer*)id
+		setOpacity: value];
+}
+
 BOOL CALayer_inst_IsHidden(void *id) {
 	return [(CALayer*)id
 		isHidden];
@@ -928,6 +997,16 @@ double CALayer_inst_BorderWidth(void *id) {
 void CALayer_inst_SetBorderWidth(void *id, double value) {
 	[(CALayer*)id
 		setBorderWidth: value];
+}
+
+float CALayer_inst_ShadowOpacity(void *id) {
+	return [(CALayer*)id
+		shadowOpacity];
+}
+
+void CALayer_inst_SetShadowOpacity(void *id, float value) {
+	[(CALayer*)id
+		setShadowOpacity: value];
 }
 
 double CALayer_inst_ShadowRadius(void *id) {
@@ -1008,6 +1087,16 @@ void* CALayer_inst_BackgroundFilters(void *id) {
 void CALayer_inst_SetBackgroundFilters(void *id, void* value) {
 	[(CALayer*)id
 		setBackgroundFilters: value];
+}
+
+float CALayer_inst_MinificationFilterBias(void *id) {
+	return [(CALayer*)id
+		minificationFilterBias];
+}
+
+void CALayer_inst_SetMinificationFilterBias(void *id, float value) {
+	[(CALayer*)id
+		setMinificationFilterBias: value];
 }
 
 BOOL CALayer_inst_IsOpaque(void *id) {
@@ -1594,6 +1683,11 @@ unsigned long NSDictionary_inst_FilePosixPermissions(void *id) {
 		filePosixPermissions];
 }
 
+long long NSDictionary_inst_FileSize(void *id) {
+	return [(NSDictionary*)id
+		fileSize];
+}
+
 unsigned long NSDictionary_inst_FileSystemFileNumber(void *id) {
 	return [(NSDictionary*)id
 		fileSystemFileNumber];
@@ -1738,6 +1832,21 @@ void* NSNumber_inst_InitWithBool(void *id, BOOL value) {
 		initWithBool: value];
 }
 
+void* NSNumber_inst_InitWithChar(void *id, char value) {
+	return [(NSNumber*)id
+		initWithChar: value];
+}
+
+void* NSNumber_inst_InitWithDouble(void *id, double value) {
+	return [(NSNumber*)id
+		initWithDouble: value];
+}
+
+void* NSNumber_inst_InitWithFloat(void *id, float value) {
+	return [(NSNumber*)id
+		initWithFloat: value];
+}
+
 void* NSNumber_inst_InitWithInt(void *id, int value) {
 	return [(NSNumber*)id
 		initWithInt: value];
@@ -1748,6 +1857,26 @@ void* NSNumber_inst_InitWithInteger(void *id, long value) {
 		initWithInteger: value];
 }
 
+void* NSNumber_inst_InitWithLong(void *id, long value) {
+	return [(NSNumber*)id
+		initWithLong: value];
+}
+
+void* NSNumber_inst_InitWithLongLong(void *id, long long value) {
+	return [(NSNumber*)id
+		initWithLongLong: value];
+}
+
+void* NSNumber_inst_InitWithShort(void *id, short value) {
+	return [(NSNumber*)id
+		initWithShort: value];
+}
+
+void* NSNumber_inst_InitWithUnsignedChar(void *id, char value) {
+	return [(NSNumber*)id
+		initWithUnsignedChar: value];
+}
+
 void* NSNumber_inst_InitWithUnsignedInt(void *id, int value) {
 	return [(NSNumber*)id
 		initWithUnsignedInt: value];
@@ -1756,6 +1885,21 @@ void* NSNumber_inst_InitWithUnsignedInt(void *id, int value) {
 void* NSNumber_inst_InitWithUnsignedInteger(void *id, unsigned long value) {
 	return [(NSNumber*)id
 		initWithUnsignedInteger: value];
+}
+
+void* NSNumber_inst_InitWithUnsignedLong(void *id, long value) {
+	return [(NSNumber*)id
+		initWithUnsignedLong: value];
+}
+
+void* NSNumber_inst_InitWithUnsignedLongLong(void *id, long long value) {
+	return [(NSNumber*)id
+		initWithUnsignedLongLong: value];
+}
+
+void* NSNumber_inst_InitWithUnsignedShort(void *id, short value) {
+	return [(NSNumber*)id
+		initWithUnsignedShort: value];
 }
 
 BOOL NSNumber_inst_IsEqualToNumber(void *id, void* number) {
@@ -1773,6 +1917,21 @@ BOOL NSNumber_inst_BoolValue(void *id) {
 		boolValue];
 }
 
+char NSNumber_inst_CharValue(void *id) {
+	return [(NSNumber*)id
+		charValue];
+}
+
+double NSNumber_inst_DoubleValue(void *id) {
+	return [(NSNumber*)id
+		doubleValue];
+}
+
+float NSNumber_inst_FloatValue(void *id) {
+	return [(NSNumber*)id
+		floatValue];
+}
+
 int NSNumber_inst_IntValue(void *id) {
 	return [(NSNumber*)id
 		intValue];
@@ -1783,6 +1942,26 @@ long NSNumber_inst_IntegerValue(void *id) {
 		integerValue];
 }
 
+long long NSNumber_inst_LongLongValue(void *id) {
+	return [(NSNumber*)id
+		longLongValue];
+}
+
+long NSNumber_inst_LongValue(void *id) {
+	return [(NSNumber*)id
+		longValue];
+}
+
+short NSNumber_inst_ShortValue(void *id) {
+	return [(NSNumber*)id
+		shortValue];
+}
+
+char NSNumber_inst_UnsignedCharValue(void *id) {
+	return [(NSNumber*)id
+		unsignedCharValue];
+}
+
 unsigned long NSNumber_inst_UnsignedIntegerValue(void *id) {
 	return [(NSNumber*)id
 		unsignedIntegerValue];
@@ -1791,6 +1970,21 @@ unsigned long NSNumber_inst_UnsignedIntegerValue(void *id) {
 int NSNumber_inst_UnsignedIntValue(void *id) {
 	return [(NSNumber*)id
 		unsignedIntValue];
+}
+
+long long NSNumber_inst_UnsignedLongLongValue(void *id) {
+	return [(NSNumber*)id
+		unsignedLongLongValue];
+}
+
+long NSNumber_inst_UnsignedLongValue(void *id) {
+	return [(NSNumber*)id
+		unsignedLongValue];
+}
+
+short NSNumber_inst_UnsignedShortValue(void *id) {
+	return [(NSNumber*)id
+		unsignedShortValue];
 }
 
 void* NSNumber_inst_StringValue(void *id) {
@@ -2093,6 +2287,16 @@ void* NSString_inst_PrecomposedStringWithCompatibilityMapping(void *id) {
 		precomposedStringWithCompatibilityMapping];
 }
 
+double NSString_inst_DoubleValue(void *id) {
+	return [(NSString*)id
+		doubleValue];
+}
+
+float NSString_inst_FloatValue(void *id) {
+	return [(NSString*)id
+		floatValue];
+}
+
 int NSString_inst_IntValue(void *id) {
 	return [(NSString*)id
 		intValue];
@@ -2101,6 +2305,11 @@ int NSString_inst_IntValue(void *id) {
 long NSString_inst_IntegerValue(void *id) {
 	return [(NSString*)id
 		integerValue];
+}
+
+long long NSString_inst_LongLongValue(void *id) {
+	return [(NSString*)id
+		longLongValue];
 }
 
 BOOL NSString_inst_BoolValue(void *id) {
@@ -2243,6 +2452,16 @@ unsigned long NSThread_inst_StackSize(void *id) {
 void NSThread_inst_SetStackSize(void *id, unsigned long value) {
 	[(NSThread*)id
 		setStackSize: value];
+}
+
+double NSThread_inst_ThreadPriority(void *id) {
+	return [(NSThread*)id
+		threadPriority];
+}
+
+void NSThread_inst_SetThreadPriority(void *id, double value) {
+	[(NSThread*)id
+		setThreadPriority: value];
 }
 
 void* NSURL_inst_URLByAppendingPathComponent(void *id, void* pathComponent) {
@@ -2601,6 +2820,16 @@ void* NSUserDefaults_inst_DictionaryRepresentation(void *id) {
 		dictionaryRepresentation];
 }
 
+double NSUserDefaults_inst_DoubleForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		doubleForKey: defaultName];
+}
+
+float NSUserDefaults_inst_FloatForKey(void *id, void* defaultName) {
+	return [(NSUserDefaults*)id
+		floatForKey: defaultName];
+}
+
 void* NSUserDefaults_inst_Init(void *id) {
 	return [(NSUserDefaults*)id
 		init];
@@ -2665,6 +2894,18 @@ void NSUserDefaults_inst_RemoveVolatileDomainForName(void *id, void* domainName)
 void NSUserDefaults_inst_SetBoolForKey(void *id, BOOL value, void* defaultName) {
 	[(NSUserDefaults*)id
 		setBool: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_SetDoubleForKey(void *id, double value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setDouble: value
+		forKey: defaultName];
+}
+
+void NSUserDefaults_inst_SetFloatForKey(void *id, float value, void* defaultName) {
+	[(NSUserDefaults*)id
+		setFloat: value
 		forKey: defaultName];
 }
 
@@ -2903,6 +3144,17 @@ func CALayer_Alloc() CALayer {
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410793-layer?language=objc for details.
 func CALayer_Layer() CALayer {
 	ret := C.CALayer_type_Layer()
+
+	return CALayer_FromPointer(ret)
+}
+
+// CALayer_LayerWithRemoteClientId initializes a layer with a remote client ID.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1522119-layerwithremoteclientid?language=objc for details.
+func CALayer_LayerWithRemoteClientId(client_id uint32) CALayer {
+	ret := C.CALayer_type_LayerWithRemoteClientId(
+		C.uint(client_id),
+	)
 
 	return CALayer_FromPointer(ret)
 }
@@ -3206,6 +3458,39 @@ func NSNumber_NumberWithBool(value bool) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
+// NSNumber_NumberWithChar creates and returns an NSNumber object containing a given value, treating it as a signed char.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551464-numberwithchar?language=objc for details.
+func NSNumber_NumberWithChar(value int8) NSNumber {
+	ret := C.NSNumber_type_NumberWithChar(
+		C.char(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithDouble creates and returns an NSNumber object containing a given value, treating it as a double.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551463-numberwithdouble?language=objc for details.
+func NSNumber_NumberWithDouble(value float64) NSNumber {
+	ret := C.NSNumber_type_NumberWithDouble(
+		C.double(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithFloat creates and returns an NSNumber object containing a given value, treating it as a float.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551471-numberwithfloat?language=objc for details.
+func NSNumber_NumberWithFloat(value float32) NSNumber {
+	ret := C.NSNumber_type_NumberWithFloat(
+		C.float(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
 // NSNumber_NumberWithInt creates and returns an NSNumber object containing a given value, treating it as a signed int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551470-numberwithint?language=objc for details.
@@ -3228,6 +3513,50 @@ func NSNumber_NumberWithInteger(value NSInteger) NSNumber {
 	return NSNumber_FromPointer(ret)
 }
 
+// NSNumber_NumberWithLong creates and returns an NSNumber object containing a given value, treating it as a signed long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551474-numberwithlong?language=objc for details.
+func NSNumber_NumberWithLong(value int64) NSNumber {
+	ret := C.NSNumber_type_NumberWithLong(
+		C.long(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithLongLong creates and returns an NSNumber object containing a given value, treating it as a signed long long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551462-numberwithlonglong?language=objc for details.
+func NSNumber_NumberWithLongLong(value int64) NSNumber {
+	ret := C.NSNumber_type_NumberWithLongLong(
+		C.longlong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithShort creates and returns an NSNumber object containing value, treating it as a signed short.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551476-numberwithshort?language=objc for details.
+func NSNumber_NumberWithShort(value int16) NSNumber {
+	ret := C.NSNumber_type_NumberWithShort(
+		C.short(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithUnsignedChar creates and returns an NSNumber object containing a given value, treating it as an unsigned char.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551468-numberwithunsignedchar?language=objc for details.
+func NSNumber_NumberWithUnsignedChar(value int8) NSNumber {
+	ret := C.NSNumber_type_NumberWithUnsignedChar(
+		C.char(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
 // NSNumber_NumberWithUnsignedInt creates and returns an NSNumber object containing a given value, treating it as an unsigned int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1551472-numberwithunsignedint?language=objc for details.
@@ -3245,6 +3574,39 @@ func NSNumber_NumberWithUnsignedInt(value int32) NSNumber {
 func NSNumber_NumberWithUnsignedInteger(value NSUInteger) NSNumber {
 	ret := C.NSNumber_type_NumberWithUnsignedInteger(
 		C.ulong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithUnsignedLong creates and returns an NSNumber object containing a given value, treating it as an unsigned long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551477-numberwithunsignedlong?language=objc for details.
+func NSNumber_NumberWithUnsignedLong(value int64) NSNumber {
+	ret := C.NSNumber_type_NumberWithUnsignedLong(
+		C.long(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithUnsignedLongLong creates and returns an NSNumber object containing a given value, treating it as an unsigned long long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551465-numberwithunsignedlonglong?language=objc for details.
+func NSNumber_NumberWithUnsignedLongLong(value int64) NSNumber {
+	ret := C.NSNumber_type_NumberWithUnsignedLongLong(
+		C.longlong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// NSNumber_NumberWithUnsignedShort creates and returns an NSNumber object containing a given value, treating it as an unsigned short.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1551467-numberwithunsignedshort?language=objc for details.
+func NSNumber_NumberWithUnsignedShort(value int16) NSNumber {
+	ret := C.NSNumber_type_NumberWithUnsignedShort(
+		C.short(value),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -3405,6 +3767,26 @@ func NSThread_Exit() {
 // See https://developer.apple.com/documentation/foundation/nsthread/1410702-ismultithreaded?language=objc for details.
 func NSThread_IsMultiThreaded() bool {
 	ret := C.NSThread_type_IsMultiThreaded()
+
+	return convertObjCBoolToGo(ret)
+}
+
+// NSThread_ThreadPriority returns the current thread’s priority.
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1417675-threadpriority?language=objc for details.
+func NSThread_ThreadPriority() float64 {
+	ret := C.NSThread_type_ThreadPriority()
+
+	return float64(ret)
+}
+
+// NSThread_SetThreadPriority sets the current thread’s priority.
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1407523-setthreadpriority?language=objc for details.
+func NSThread_SetThreadPriority(p float64) bool {
+	ret := C.NSThread_type_SetThreadPriority(
+		C.double(p),
+	)
 
 	return convertObjCBoolToGo(ret)
 }
@@ -4222,6 +4604,24 @@ func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
 	return
 }
 
+// ProvideImageDataBytesPerRowOrigin supplies data to a CIImage object.
+//
+// See https://developer.apple.com/documentation/objectivec/nsobject/1438175-provideimagedata?language=objc for details.
+func (x gen_NSObject) ProvideImageDataBytesPerRowOrigin(
+	data unsafe.Pointer,
+	rowbytes uint,
+	x uint,
+) {
+	C.NSObject_inst_ProvideImageDataBytesPerRowOrigin(
+		unsafe.Pointer(x.Pointer()),
+		data,
+		C.uint(rowbytes),
+		C.uint(x),
+	)
+
+	return
+}
+
 // AutoContentAccessingProxy returns a proxy for the receiving object
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1409224-autocontentaccessingproxy?language=objc for details.
@@ -4852,6 +5252,31 @@ func (x gen_CALayer) SetContentsCenter(
 	return
 }
 
+// Opacity returns the opacity of the receiver. Animatable.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc for details.
+func (x gen_CALayer) Opacity() float32 {
+	ret := C.CALayer_inst_Opacity(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// SetOpacity returns the opacity of the receiver. Animatable.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc for details.
+func (x gen_CALayer) SetOpacity(
+	value float32,
+) {
+	C.CALayer_inst_SetOpacity(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
+	)
+
+	return
+}
+
 // IsHidden returns a Boolean indicating whether the layer is displayed. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc for details.
@@ -4997,6 +5422,31 @@ func (x gen_CALayer) SetBorderWidth(
 	C.CALayer_inst_SetBorderWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.double(value),
+	)
+
+	return
+}
+
+// ShadowOpacity returns the opacity of the layer’s shadow. Animatable.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc for details.
+func (x gen_CALayer) ShadowOpacity() float32 {
+	ret := C.CALayer_inst_ShadowOpacity(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// SetShadowOpacity returns the opacity of the layer’s shadow. Animatable.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc for details.
+func (x gen_CALayer) SetShadowOpacity(
+	value float32,
+) {
+	C.CALayer_inst_SetShadowOpacity(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
 	)
 
 	return
@@ -5197,6 +5647,31 @@ func (x gen_CALayer) SetBackgroundFilters(
 	C.CALayer_inst_SetBackgroundFilters(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// MinificationFilterBias returns the bias factor used by the minification filter to determine the levels of detail.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc for details.
+func (x gen_CALayer) MinificationFilterBias() float32 {
+	ret := C.CALayer_inst_MinificationFilterBias(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
+// SetMinificationFilterBias returns the bias factor used by the minification filter to determine the levels of detail.
+//
+// See https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc for details.
+func (x gen_CALayer) SetMinificationFilterBias(
+	value float32,
+) {
+	C.CALayer_inst_SetMinificationFilterBias(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
 	)
 
 	return
@@ -6808,6 +7283,17 @@ func (x gen_NSDictionary) FilePosixPermissions() NSUInteger {
 	return NSUInteger(ret)
 }
 
+// FileSize returns the file’s size, in bytes.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1413465-filesize?language=objc for details.
+func (x gen_NSDictionary) FileSize() int64 {
+	ret := C.NSDictionary_inst_FileSize(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
 // FileSystemFileNumber returns the filesystem file number.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1408396-filesystemfilenumber?language=objc for details.
@@ -7207,6 +7693,48 @@ func (x gen_NSNumber) InitWithBool(
 	return NSNumber_FromPointer(ret)
 }
 
+// InitWithChar returns an NSNumber object initialized to contain a given value, treated as a signed char.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1409777-initwithchar?language=objc for details.
+func (x gen_NSNumber) InitWithChar(
+	value int8,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithChar(
+		unsafe.Pointer(x.Pointer()),
+		C.char(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithDouble returns an NSNumber object initialized to contain value, treated as a double.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1407545-initwithdouble?language=objc for details.
+func (x gen_NSNumber) InitWithDouble(
+	value float64,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithDouble(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithFloat returns an NSNumber object initialized to contain a given value, treated as a float.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1412999-initwithfloat?language=objc for details.
+func (x gen_NSNumber) InitWithFloat(
+	value float32,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithFloat(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
 // InitWithInt returns an NSNumber object initialized to contain a given value, treated as a signed int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407580-initwithint?language=objc for details.
@@ -7235,6 +7763,62 @@ func (x gen_NSNumber) InitWithInteger(
 	return NSNumber_FromPointer(ret)
 }
 
+// InitWithLong returns an NSNumber object initialized to contain a given value, treated as a signed long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1410739-initwithlong?language=objc for details.
+func (x gen_NSNumber) InitWithLong(
+	value int64,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithLong(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithLongLong returns an NSNumber object initialized to contain value, treated as a signed long long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1408171-initwithlonglong?language=objc for details.
+func (x gen_NSNumber) InitWithLongLong(
+	value int64,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithLongLong(
+		unsafe.Pointer(x.Pointer()),
+		C.longlong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithShort returns an NSNumber object initialized to contain a given value, treated as a signed short.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1411886-initwithshort?language=objc for details.
+func (x gen_NSNumber) InitWithShort(
+	value int16,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithShort(
+		unsafe.Pointer(x.Pointer()),
+		C.short(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithUnsignedChar returns an NSNumber object initialized to contain a given value, treated as an unsigned char.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1416533-initwithunsignedchar?language=objc for details.
+func (x gen_NSNumber) InitWithUnsignedChar(
+	value int8,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithUnsignedChar(
+		unsafe.Pointer(x.Pointer()),
+		C.char(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
 // InitWithUnsignedInt returns an NSNumber object initialized to contain a given value, treated as an unsigned int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1414598-initwithunsignedint?language=objc for details.
@@ -7258,6 +7842,48 @@ func (x gen_NSNumber) InitWithUnsignedInteger(
 	ret := C.NSNumber_inst_InitWithUnsignedInteger(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithUnsignedLong returns an NSNumber object initialized to contain a given value, treated as an unsigned long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1410728-initwithunsignedlong?language=objc for details.
+func (x gen_NSNumber) InitWithUnsignedLong(
+	value int64,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithUnsignedLong(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithUnsignedLongLong returns an NSNumber object initialized to contain a given value, treated as an unsigned long long.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1416550-initwithunsignedlonglong?language=objc for details.
+func (x gen_NSNumber) InitWithUnsignedLongLong(
+	value int64,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithUnsignedLongLong(
+		unsafe.Pointer(x.Pointer()),
+		C.longlong(value),
+	)
+
+	return NSNumber_FromPointer(ret)
+}
+
+// InitWithUnsignedShort returns an NSNumber object initialized to contain a given value, treated as an unsigned short.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1407718-initwithunsignedshort?language=objc for details.
+func (x gen_NSNumber) InitWithUnsignedShort(
+	value int16,
+) NSNumber {
+	ret := C.NSNumber_inst_InitWithUnsignedShort(
+		unsafe.Pointer(x.Pointer()),
+		C.short(value),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -7306,6 +7932,39 @@ func (x gen_NSNumber) BoolValue() bool {
 	return convertObjCBoolToGo(ret)
 }
 
+// CharValue returns the number object's value expressed as a char.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1407838-charvalue?language=objc for details.
+func (x gen_NSNumber) CharValue() int8 {
+	ret := C.NSNumber_inst_CharValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int8(ret)
+}
+
+// DoubleValue returns the number object's value expressed as a double, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1414104-doublevalue?language=objc for details.
+func (x gen_NSNumber) DoubleValue() float64 {
+	ret := C.NSNumber_inst_DoubleValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// FloatValue returns the number object's value expressed as a float, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1418317-floatvalue?language=objc for details.
+func (x gen_NSNumber) FloatValue() float32 {
+	ret := C.NSNumber_inst_FloatValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
 // IntValue returns the number object's value expressed as an int, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407153-intvalue?language=objc for details.
@@ -7328,6 +7987,50 @@ func (x gen_NSNumber) IntegerValue() NSInteger {
 	return NSInteger(ret)
 }
 
+// LongLongValue returns the number object’s value expressed as a long long, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1416870-longlongvalue?language=objc for details.
+func (x gen_NSNumber) LongLongValue() int64 {
+	ret := C.NSNumber_inst_LongLongValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
+// LongValue returns the number object's value expressed as a long, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1412566-longvalue?language=objc for details.
+func (x gen_NSNumber) LongValue() int64 {
+	ret := C.NSNumber_inst_LongValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
+// ShortValue returns the number object's value expressed as a short, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1407601-shortvalue?language=objc for details.
+func (x gen_NSNumber) ShortValue() int16 {
+	ret := C.NSNumber_inst_ShortValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int16(ret)
+}
+
+// UnsignedCharValue returns the number object's value expressed as an unsigned char, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1409016-unsignedcharvalue?language=objc for details.
+func (x gen_NSNumber) UnsignedCharValue() int8 {
+	ret := C.NSNumber_inst_UnsignedCharValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int8(ret)
+}
+
 // UnsignedIntegerValue returns the number object's value expressed as an NSUInteger object, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1413324-unsignedintegervalue?language=objc for details.
@@ -7348,6 +8051,39 @@ func (x gen_NSNumber) UnsignedIntValue() int32 {
 	)
 
 	return int32(ret)
+}
+
+// UnsignedLongLongValue returns the number object’s value expressed as an unsigned long long, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1414524-unsignedlonglongvalue?language=objc for details.
+func (x gen_NSNumber) UnsignedLongLongValue() int64 {
+	ret := C.NSNumber_inst_UnsignedLongLongValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
+// UnsignedLongValue returns the number object's value expressed as an unsigned long, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1415252-unsignedlongvalue?language=objc for details.
+func (x gen_NSNumber) UnsignedLongValue() int64 {
+	ret := C.NSNumber_inst_UnsignedLongValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
+}
+
+// UnsignedShortValue returns the number object's value expressed as an unsigned short, converted as necessary.
+//
+// See https://developer.apple.com/documentation/foundation/nsnumber/1410604-unsignedshortvalue?language=objc for details.
+func (x gen_NSNumber) UnsignedShortValue() int16 {
+	ret := C.NSNumber_inst_UnsignedShortValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int16(ret)
 }
 
 // StringValue returns the number object's value expressed as a human-readable string.
@@ -8168,6 +8904,28 @@ func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() NSString {
 	return NSString_FromPointer(ret)
 }
 
+// DoubleValue returns the floating-point value of the string as a double.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1414031-doublevalue?language=objc for details.
+func (x gen_NSString) DoubleValue() float64 {
+	ret := C.NSString_inst_DoubleValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// FloatValue returns the floating-point value of the string as a float.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1412321-floatvalue?language=objc for details.
+func (x gen_NSString) FloatValue() float32 {
+	ret := C.NSString_inst_FloatValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float32(ret)
+}
+
 // IntValue returns the integer value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414988-intvalue?language=objc for details.
@@ -8188,6 +8946,17 @@ func (x gen_NSString) IntegerValue() NSInteger {
 	)
 
 	return NSInteger(ret)
+}
+
+// LongLongValue returns the long long value of the string.
+//
+// See https://developer.apple.com/documentation/foundation/nsstring/1417731-longlongvalue?language=objc for details.
+func (x gen_NSString) LongLongValue() int64 {
+	ret := C.NSString_inst_LongLongValue(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return int64(ret)
 }
 
 // BoolValue returns the Boolean value of the string.
@@ -8536,6 +9305,31 @@ func (x gen_NSThread) SetStackSize(
 	C.NSThread_inst_SetStackSize(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(value),
+	)
+
+	return
+}
+
+// ThreadPriority returns the receiver’s priority
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1411927-threadpriority?language=objc for details.
+func (x gen_NSThread) ThreadPriority() float64 {
+	ret := C.NSThread_inst_ThreadPriority(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return float64(ret)
+}
+
+// SetThreadPriority returns the receiver’s priority
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1411927-threadpriority?language=objc for details.
+func (x gen_NSThread) SetThreadPriority(
+	value float64,
+) {
+	C.NSThread_inst_SetThreadPriority(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
 	)
 
 	return
@@ -9465,6 +10259,34 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 	return NSDictionary_FromPointer(ret)
 }
 
+// DoubleForKey returns the double value associated with the specified key.
+//
+// See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416581-doubleforkey?language=objc for details.
+func (x gen_NSUserDefaults) DoubleForKey(
+	defaultName NSStringRef,
+) float64 {
+	ret := C.NSUserDefaults_inst_DoubleForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+
+	return float64(ret)
+}
+
+// FloatForKey returns the float value associated with the specified key.
+//
+// See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414027-floatforkey?language=objc for details.
+func (x gen_NSUserDefaults) FloatForKey(
+	defaultName NSStringRef,
+) float32 {
+	ret := C.NSUserDefaults_inst_FloatForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(defaultName),
+	)
+
+	return float32(ret)
+}
+
 // Init creates a user defaults object initialized with the defaults for the app and current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
@@ -9653,6 +10475,38 @@ func (x gen_NSUserDefaults) SetBoolForKey(
 	C.NSUserDefaults_inst_SetBoolForKey(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
+		objc.RefPointer(defaultName),
+	)
+
+	return
+}
+
+// SetDoubleForKey sets the value of the specified default key to the double value.
+//
+// See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408646-setdouble?language=objc for details.
+func (x gen_NSUserDefaults) SetDoubleForKey(
+	value float64,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_SetDoubleForKey(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+		objc.RefPointer(defaultName),
+	)
+
+	return
+}
+
+// SetFloatForKey sets the value of the specified default key to the specified float value.
+//
+// See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413320-setfloat?language=objc for details.
+func (x gen_NSUserDefaults) SetFloatForKey(
+	value float32,
+	defaultName NSStringRef,
+) {
+	C.NSUserDefaults_inst_SetFloatForKey(
+		unsafe.Pointer(x.Pointer()),
+		C.float(value),
 		objc.RefPointer(defaultName),
 	)
 
