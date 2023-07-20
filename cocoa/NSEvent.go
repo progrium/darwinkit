@@ -133,5 +133,5 @@ func (e NSEvent) Characters() (string, error) {
 	if eventType != NSEventTypeKeyDown && eventType != NSEventTypeKeyUp {
 		return "", errors.New("event does not contain characters")
 	}
-	return e.gen_NSEvent.Characters().String(), nil
+	return e.gen_NSEvent.Characters(), nil
 }

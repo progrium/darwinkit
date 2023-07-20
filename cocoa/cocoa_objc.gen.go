@@ -21,6 +21,17 @@ bool cocoa_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 
 void* NSBundle_type_Alloc() {
 	return [NSBundle
@@ -7734,9 +7745,9 @@ func NSBundle_BundleWithURL(url core.NSURLRef) NSBundle {
 // NSBundle_BundleWithPath returns an NSBundle object that corresponds to the specified directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1495012-bundlewithpath?language=objc for details.
-func NSBundle_BundleWithPath(path core.NSStringRef) NSBundle {
+func NSBundle_BundleWithPath(path string) NSBundle {
 	ret := C.NSBundle_type_BundleWithPath(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSBundle_FromPointer(ret)
@@ -7745,9 +7756,9 @@ func NSBundle_BundleWithPath(path core.NSStringRef) NSBundle {
 // NSBundle_BundleWithIdentifier returns the NSBundle instance that has the specified bundle identifier.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc for details.
-func NSBundle_BundleWithIdentifier(identifier core.NSStringRef) NSBundle {
+func NSBundle_BundleWithIdentifier(identifier string) NSBundle {
 	ret := C.NSBundle_type_BundleWithIdentifier(
-		objc.RefPointer(identifier),
+		C.createNSStringFromCString(C.CString(identifier)),
 	)
 
 	return NSBundle_FromPointer(ret)
@@ -7756,11 +7767,11 @@ func NSBundle_BundleWithIdentifier(identifier core.NSStringRef) NSBundle {
 // NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL creates and returns a file URL for the resource with the specified name and extension in the specified bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc for details.
-func NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name core.NSStringRef, ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSURL {
+func NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL core.NSURLRef) core.NSURL {
 	ret := C.NSBundle_type_URLForResourceWithExtensionSubdirectoryInBundleWithURL(
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 		objc.RefPointer(bundleURL),
 	)
 
@@ -7770,10 +7781,10 @@ func NSBundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name core.N
 // NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL returns an array containing the file URLs for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, within the specified bundle.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409807-urlsforresourceswithextension?language=objc for details.
-func NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext core.NSStringRef, subpath core.NSStringRef, bundleURL core.NSURLRef) core.NSArray {
+func NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext string, subpath string, bundleURL core.NSURLRef) core.NSArray {
 	ret := C.NSBundle_type_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 		objc.RefPointer(bundleURL),
 	)
 
@@ -7783,23 +7794,23 @@ func NSBundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext core.
 // NSBundle_PathForResourceOfTypeInDirectory returns the full pathname for the resource file identified by the specified name and extension and residing in a given bundle directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409523-pathforresource?language=objc for details.
-func NSBundle_PathForResourceOfTypeInDirectory(name core.NSStringRef, ext core.NSStringRef, bundlePath core.NSStringRef) core.NSString {
+func NSBundle_PathForResourceOfTypeInDirectory(name string, ext string, bundlePath string) string {
 	ret := C.NSBundle_type_PathForResourceOfTypeInDirectory(
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(bundlePath),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(bundlePath)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSBundle_PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified extension and residing in the bundle directory at the specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415876-pathsforresourcesoftype?language=objc for details.
-func NSBundle_PathsForResourcesOfTypeInDirectory(ext core.NSStringRef, bundlePath core.NSStringRef) core.NSArray {
+func NSBundle_PathsForResourcesOfTypeInDirectory(ext string, bundlePath string) core.NSArray {
 	ret := C.NSBundle_type_PathsForResourcesOfTypeInDirectory(
-		objc.RefPointer(ext),
-		objc.RefPointer(bundlePath),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(bundlePath)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -7928,9 +7939,9 @@ func NSButton_Alloc() NSButton {
 // NSButton_CheckboxWithTitleTargetAction creates a standard checkbox with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc for details.
-func NSButton_CheckboxWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+func NSButton_CheckboxWithTitleTargetAction(title string, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_CheckboxWithTitleTargetAction(
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
@@ -7954,9 +7965,9 @@ func NSButton_ButtonWithImageTargetAction(image NSImageRef, target objc.Ref, act
 // NSButton_RadioButtonWithTitleTargetAction creates a standard radio button with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644340-radiobuttonwithtitle?language=objc for details.
-func NSButton_RadioButtonWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+func NSButton_RadioButtonWithTitleTargetAction(title string, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_RadioButtonWithTitleTargetAction(
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
@@ -7967,9 +7978,9 @@ func NSButton_RadioButtonWithTitleTargetAction(title core.NSStringRef, target ob
 // NSButton_ButtonWithTitleImageTargetAction creates a standard push button with a title and image.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644719-buttonwithtitle?language=objc for details.
-func NSButton_ButtonWithTitleImageTargetAction(title core.NSStringRef, image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
+func NSButton_ButtonWithTitleImageTargetAction(title string, image NSImageRef, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_ButtonWithTitleImageTargetAction(
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 		objc.RefPointer(image),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
@@ -7981,9 +7992,9 @@ func NSButton_ButtonWithTitleImageTargetAction(title core.NSStringRef, image NSI
 // NSButton_ButtonWithTitleTargetAction creates a standard push button with the title you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc for details.
-func NSButton_ButtonWithTitleTargetAction(title core.NSStringRef, target objc.Ref, action objc.Selector) NSButton {
+func NSButton_ButtonWithTitleTargetAction(title string, target objc.Ref, action objc.Selector) NSButton {
 	ret := C.NSButton_type_ButtonWithTitleTargetAction(
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 		objc.RefPointer(target),
 		action.SelectorAddress(),
 	)
@@ -8086,9 +8097,9 @@ func NSFont_Alloc() NSFont {
 // NSFont_FontWithNameSize creates a font object for the specified font name and font size.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname?language=objc for details.
-func NSFont_FontWithNameSize(fontName core.NSStringRef, fontSize core.CGFloat) NSFont {
+func NSFont_FontWithNameSize(fontName string, fontSize core.CGFloat) NSFont {
 	ret := C.NSFont_type_FontWithNameSize(
-		objc.RefPointer(fontName),
+		C.createNSStringFromCString(C.CString(fontName)),
 		C.double(fontSize),
 	)
 
@@ -8286,10 +8297,10 @@ func NSImage_Alloc() NSImage {
 // NSImage_ImageWithSystemSymbolNameAccessibilityDescription creates a symbol image with the system symbol name and accessibility description that you specify.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/3622472-imagewithsystemsymbolname?language=objc for details.
-func NSImage_ImageWithSystemSymbolNameAccessibilityDescription(symbolName core.NSStringRef, description core.NSStringRef) NSImage {
+func NSImage_ImageWithSystemSymbolNameAccessibilityDescription(symbolName string, description string) NSImage {
 	ret := C.NSImage_type_ImageWithSystemSymbolNameAccessibilityDescription(
-		objc.RefPointer(symbolName),
-		objc.RefPointer(description),
+		C.createNSStringFromCString(C.CString(symbolName)),
+		C.createNSStringFromCString(C.CString(description)),
 	)
 
 	return NSImage_FromPointer(ret)
@@ -8359,9 +8370,9 @@ func NSPasteboard_Alloc() NSPasteboard {
 // NSPasteboard_PasteboardByFilteringFile creates a new pasteboard object that supplies the specified file in as many types as possible based on the available filter services.
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1532744-pasteboardbyfilteringfile?language=objc for details.
-func NSPasteboard_PasteboardByFilteringFile(filename core.NSStringRef) NSPasteboard {
+func NSPasteboard_PasteboardByFilteringFile(filename string) NSPasteboard {
 	ret := C.NSPasteboard_type_PasteboardByFilteringFile(
-		objc.RefPointer(filename),
+		C.createNSStringFromCString(C.CString(filename)),
 	)
 
 	return NSPasteboard_FromPointer(ret)
@@ -8510,9 +8521,9 @@ func NSRunningApplication_Alloc() NSRunningApplication {
 // NSRunningApplication_RunningApplicationsWithBundleIdentifier returns an array of currently running applications with the specified bundle identifier.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1530798-runningapplicationswithbundleide?language=objc for details.
-func NSRunningApplication_RunningApplicationsWithBundleIdentifier(bundleIdentifier core.NSStringRef) core.NSArray {
+func NSRunningApplication_RunningApplicationsWithBundleIdentifier(bundleIdentifier string) core.NSArray {
 	ret := C.NSRunningApplication_type_RunningApplicationsWithBundleIdentifier(
-		objc.RefPointer(bundleIdentifier),
+		C.createNSStringFromCString(C.CString(bundleIdentifier)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -8637,9 +8648,9 @@ func NSTextField_LabelWithAttributedString(attributedStringValue core.NSAttribut
 // NSTextField_LabelWithString initializes a text field for use as a static label that uses the system default font, doesn’t wrap, and doesn’t have selectable text.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644377-labelwithstring?language=objc for details.
-func NSTextField_LabelWithString(stringValue core.NSStringRef) NSTextField {
+func NSTextField_LabelWithString(stringValue string) NSTextField {
 	ret := C.NSTextField_type_LabelWithString(
-		objc.RefPointer(stringValue),
+		C.createNSStringFromCString(C.CString(stringValue)),
 	)
 
 	return NSTextField_FromPointer(ret)
@@ -8648,9 +8659,9 @@ func NSTextField_LabelWithString(stringValue core.NSStringRef) NSTextField {
 // NSTextField_TextFieldWithString initializes a single-line editable text field for user input using the system default font and standard visual appearance.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644706-textfieldwithstring?language=objc for details.
-func NSTextField_TextFieldWithString(stringValue core.NSStringRef) NSTextField {
+func NSTextField_TextFieldWithString(stringValue string) NSTextField {
 	ret := C.NSTextField_type_TextFieldWithString(
-		objc.RefPointer(stringValue),
+		C.createNSStringFromCString(C.CString(stringValue)),
 	)
 
 	return NSTextField_FromPointer(ret)
@@ -8659,9 +8670,9 @@ func NSTextField_TextFieldWithString(stringValue core.NSStringRef) NSTextField {
 // NSTextField_WrappingLabelWithString initializes a text field for use as a multiline static label with selectable text that uses the system default font.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1644543-wrappinglabelwithstring?language=objc for details.
-func NSTextField_WrappingLabelWithString(stringValue core.NSStringRef) NSTextField {
+func NSTextField_WrappingLabelWithString(stringValue string) NSTextField {
 	ret := C.NSTextField_type_WrappingLabelWithString(
-		objc.RefPointer(stringValue),
+		C.createNSStringFromCString(C.CString(stringValue)),
 	)
 
 	return NSTextField_FromPointer(ret)
@@ -8733,9 +8744,9 @@ func NSWindow_FrameRectForContentRectStyleMask(cRect core.NSRect, style core.NSU
 // NSWindow_MinFrameWidthWithTitleStyleMask returns the minimum width a window’s frame rectangle must have for it to display a title, with a given window style.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419294-minframewidthwithtitle?language=objc for details.
-func NSWindow_MinFrameWidthWithTitleStyleMask(title core.NSStringRef, style core.NSUInteger) core.CGFloat {
+func NSWindow_MinFrameWidthWithTitleStyleMask(title string, style core.NSUInteger) core.CGFloat {
 	ret := C.NSWindow_type_MinFrameWidthWithTitleStyleMask(
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 		C.ulong(style),
 	)
 
@@ -9002,11 +9013,11 @@ func NSBundle_FromRef(ref objc.Ref) NSBundle {
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411412-urlforauxiliaryexecutable?language=objc for details.
 func (x gen_NSBundle) URLForAuxiliaryExecutable(
-	executableName core.NSStringRef,
+	executableName string,
 ) core.NSURL {
 	ret := C.NSBundle_inst_URLForAuxiliaryExecutable(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(executableName),
+		C.createNSStringFromCString(C.CString(executableName)),
 	)
 
 	return core.NSURL_FromPointer(ret)
@@ -9016,13 +9027,13 @@ func (x gen_NSBundle) URLForAuxiliaryExecutable(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411540-urlforresource?language=objc for details.
 func (x gen_NSBundle) URLForResourceWithExtension(
-	name core.NSStringRef,
-	ext core.NSStringRef,
+	name string,
+	ext string,
 ) core.NSURL {
 	ret := C.NSBundle_inst_URLForResourceWithExtension(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
 	)
 
 	return core.NSURL_FromPointer(ret)
@@ -9032,15 +9043,15 @@ func (x gen_NSBundle) URLForResourceWithExtension(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416712-urlforresource?language=objc for details.
 func (x gen_NSBundle) URLForResourceWithExtensionSubdirectory(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
+	name string,
+	ext string,
+	subpath string,
 ) core.NSURL {
 	ret := C.NSBundle_inst_URLForResourceWithExtensionSubdirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 	)
 
 	return core.NSURL_FromPointer(ret)
@@ -9050,17 +9061,17 @@ func (x gen_NSBundle) URLForResourceWithExtensionSubdirectory(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417378-urlforresource?language=objc for details.
 func (x gen_NSBundle) URLForResourceWithExtensionSubdirectoryLocalization(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	localizationName core.NSStringRef,
+	name string,
+	ext string,
+	subpath string,
+	localizationName string,
 ) core.NSURL {
 	ret := C.NSBundle_inst_URLForResourceWithExtensionSubdirectoryLocalization(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
-		objc.RefPointer(localizationName),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
+		C.createNSStringFromCString(C.CString(localizationName)),
 	)
 
 	return core.NSURL_FromPointer(ret)
@@ -9070,13 +9081,13 @@ func (x gen_NSBundle) URLForResourceWithExtensionSubdirectoryLocalization(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407424-urlsforresourceswithextension?language=objc for details.
 func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectory(
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
+	ext string,
+	subpath string,
 ) core.NSArray {
 	ret := C.NSBundle_inst_URLsForResourcesWithExtensionSubdirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -9086,15 +9097,15 @@ func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectory(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1414688-urlsforresourceswithextension?language=objc for details.
 func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectoryLocalization(
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	localizationName core.NSStringRef,
+	ext string,
+	subpath string,
+	localizationName string,
 ) core.NSArray {
 	ret := C.NSBundle_inst_URLsForResourcesWithExtensionSubdirectoryLocalization(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
-		objc.RefPointer(localizationName),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
+		C.createNSStringFromCString(C.CString(localizationName)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -9104,11 +9115,11 @@ func (x gen_NSBundle) URLsForResourcesWithExtensionSubdirectoryLocalization(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1412741-initwithpath?language=objc for details.
 func (x gen_NSBundle) InitWithPath(
-	path core.NSStringRef,
+	path string,
 ) NSBundle {
 	ret := C.NSBundle_inst_InitWithPath(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSBundle_FromPointer(ret)
@@ -9157,13 +9168,13 @@ func (x gen_NSBundle) LoadAndReturnError(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1618147-loadnibnamed?language=objc for details.
 func (x gen_NSBundle) LoadNibNamedOwnerOptions(
-	name core.NSStringRef,
+	name string,
 	owner objc.Ref,
 	options core.NSDictionaryRef,
 ) core.NSArray {
 	ret := C.NSBundle_inst_LoadNibNamedOwnerOptions(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
+		C.createNSStringFromCString(C.CString(name)),
 		objc.RefPointer(owner),
 		objc.RefPointer(options),
 	)
@@ -9175,15 +9186,15 @@ func (x gen_NSBundle) LoadNibNamedOwnerOptions(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/3746904-localizedattributedstringforkey?language=objc for details.
 func (x gen_NSBundle) LocalizedAttributedStringForKeyValueTable(
-	key core.NSStringRef,
-	value core.NSStringRef,
-	tableName core.NSStringRef,
+	key string,
+	value string,
+	tableName string,
 ) core.NSAttributedString {
 	ret := C.NSBundle_inst_LocalizedAttributedStringForKeyValueTable(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
-		objc.RefPointer(value),
-		objc.RefPointer(tableName),
+		C.createNSStringFromCString(C.CString(key)),
+		C.createNSStringFromCString(C.CString(value)),
+		C.createNSStringFromCString(C.CString(tableName)),
 	)
 
 	return core.NSAttributedString_FromPointer(ret)
@@ -9193,29 +9204,29 @@ func (x gen_NSBundle) LocalizedAttributedStringForKeyValueTable(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417694-localizedstringforkey?language=objc for details.
 func (x gen_NSBundle) LocalizedStringForKeyValueTable(
-	key core.NSStringRef,
-	value core.NSStringRef,
-	tableName core.NSStringRef,
-) core.NSString {
+	key string,
+	value string,
+	tableName string,
+) string {
 	ret := C.NSBundle_inst_LocalizedStringForKeyValueTable(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
-		objc.RefPointer(value),
-		objc.RefPointer(tableName),
+		C.createNSStringFromCString(C.CString(key)),
+		C.createNSStringFromCString(C.CString(value)),
+		C.createNSStringFromCString(C.CString(tableName)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ObjectForInfoDictionaryKey returns the value associated with the specified key in the receiver's information property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1408696-objectforinfodictionarykey?language=objc for details.
 func (x gen_NSBundle) ObjectForInfoDictionaryKey(
-	key core.NSStringRef,
+	key string,
 ) objc.Object {
 	ret := C.NSBundle_inst_ObjectForInfoDictionaryKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -9225,81 +9236,81 @@ func (x gen_NSBundle) ObjectForInfoDictionaryKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415214-pathforauxiliaryexecutable?language=objc for details.
 func (x gen_NSBundle) PathForAuxiliaryExecutable(
-	executableName core.NSStringRef,
-) core.NSString {
+	executableName string,
+) string {
 	ret := C.NSBundle_inst_PathForAuxiliaryExecutable(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(executableName),
+		C.createNSStringFromCString(C.CString(executableName)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathForResourceOfType returns the full pathname for the resource identified by the specified name and file extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1410989-pathforresource?language=objc for details.
 func (x gen_NSBundle) PathForResourceOfType(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-) core.NSString {
+	name string,
+	ext string,
+) string {
 	ret := C.NSBundle_inst_PathForResourceOfType(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathForResourceOfTypeInDirectory returns the full pathname for the resource identified by the specified name and file extension and located in the specified bundle subdirectory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409670-pathforresource?language=objc for details.
 func (x gen_NSBundle) PathForResourceOfTypeInDirectory(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-) core.NSString {
+	name string,
+	ext string,
+	subpath string,
+) string {
 	ret := C.NSBundle_inst_PathForResourceOfTypeInDirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathForResourceOfTypeInDirectoryForLocalization returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413471-pathforresource?language=objc for details.
 func (x gen_NSBundle) PathForResourceOfTypeInDirectoryForLocalization(
-	name core.NSStringRef,
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	localizationName core.NSStringRef,
-) core.NSString {
+	name string,
+	ext string,
+	subpath string,
+	localizationName string,
+) string {
 	ret := C.NSBundle_inst_PathForResourceOfTypeInDirectoryForLocalization(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(name),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
-		objc.RefPointer(localizationName),
+		C.createNSStringFromCString(C.CString(name)),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
+		C.createNSStringFromCString(C.CString(localizationName)),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathsForResourcesOfTypeInDirectory returns an array containing the pathnames for all bundle resources having the specified filename extension and residing in the resource subdirectory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1413058-pathsforresourcesoftype?language=objc for details.
 func (x gen_NSBundle) PathsForResourcesOfTypeInDirectory(
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
+	ext string,
+	subpath string,
 ) core.NSArray {
 	ret := C.NSBundle_inst_PathsForResourcesOfTypeInDirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -9309,15 +9320,15 @@ func (x gen_NSBundle) PathsForResourcesOfTypeInDirectory(
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1416940-pathsforresourcesoftype?language=objc for details.
 func (x gen_NSBundle) PathsForResourcesOfTypeInDirectoryForLocalization(
-	ext core.NSStringRef,
-	subpath core.NSStringRef,
-	localizationName core.NSStringRef,
+	ext string,
+	subpath string,
+	localizationName string,
 ) core.NSArray {
 	ret := C.NSBundle_inst_PathsForResourcesOfTypeInDirectoryForLocalization(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(ext),
-		objc.RefPointer(subpath),
-		objc.RefPointer(localizationName),
+		C.createNSStringFromCString(C.CString(ext)),
+		C.createNSStringFromCString(C.CString(subpath)),
+		C.createNSStringFromCString(C.CString(localizationName)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -9446,67 +9457,67 @@ func (x gen_NSBundle) AppStoreReceiptURL() core.NSURL {
 // ResourcePath returns the full pathname of the bundle’s subdirectory containing resources.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417723-resourcepath?language=objc for details.
-func (x gen_NSBundle) ResourcePath() core.NSString {
+func (x gen_NSBundle) ResourcePath() string {
 	ret := C.NSBundle_inst_ResourcePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ExecutablePath returns the full pathname of the receiver's executable file.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1409078-executablepath?language=objc for details.
-func (x gen_NSBundle) ExecutablePath() core.NSString {
+func (x gen_NSBundle) ExecutablePath() string {
 	ret := C.NSBundle_inst_ExecutablePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PrivateFrameworksPath returns the full pathname of the bundle’s subdirectory containing private frameworks.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1415562-privateframeworkspath?language=objc for details.
-func (x gen_NSBundle) PrivateFrameworksPath() core.NSString {
+func (x gen_NSBundle) PrivateFrameworksPath() string {
 	ret := C.NSBundle_inst_PrivateFrameworksPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SharedFrameworksPath returns the full pathname of the bundle’s subdirectory containing shared frameworks.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417226-sharedframeworkspath?language=objc for details.
-func (x gen_NSBundle) SharedFrameworksPath() core.NSString {
+func (x gen_NSBundle) SharedFrameworksPath() string {
 	ret := C.NSBundle_inst_SharedFrameworksPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // BuiltInPlugInsPath returns the full pathname of the receiver's subdirectory containing plug-ins.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1408900-builtinpluginspath?language=objc for details.
-func (x gen_NSBundle) BuiltInPlugInsPath() core.NSString {
+func (x gen_NSBundle) BuiltInPlugInsPath() string {
 	ret := C.NSBundle_inst_BuiltInPlugInsPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SharedSupportPath returns the full pathname of the bundle’s subdirectory containing shared support files.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1411609-sharedsupportpath?language=objc for details.
-func (x gen_NSBundle) SharedSupportPath() core.NSString {
+func (x gen_NSBundle) SharedSupportPath() string {
 	ret := C.NSBundle_inst_SharedSupportPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // BundleURL returns the full URL of the receiver’s bundle directory.
@@ -9523,23 +9534,23 @@ func (x gen_NSBundle) BundleURL() core.NSURL {
 // BundlePath returns the full pathname of the receiver’s bundle directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1407973-bundlepath?language=objc for details.
-func (x gen_NSBundle) BundlePath() core.NSString {
+func (x gen_NSBundle) BundlePath() string {
 	ret := C.NSBundle_inst_BundlePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // BundleIdentifier returns the receiver’s bundle identifier.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1418023-bundleidentifier?language=objc for details.
-func (x gen_NSBundle) BundleIdentifier() core.NSString {
+func (x gen_NSBundle) BundleIdentifier() string {
 	ret := C.NSBundle_inst_BundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // InfoDictionary returns a dictionary, constructed from the bundle’s Info.plist file, that contains information about the receiver.
@@ -9578,12 +9589,12 @@ func (x gen_NSBundle) PreferredLocalizations() core.NSArray {
 // DevelopmentLocalization returns the localization for the development language.
 //
 // See https://developer.apple.com/documentation/foundation/nsbundle/1417526-developmentlocalization?language=objc for details.
-func (x gen_NSBundle) DevelopmentLocalization() core.NSString {
+func (x gen_NSBundle) DevelopmentLocalization() string {
 	ret := C.NSBundle_inst_DevelopmentLocalization(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedInfoDictionary returns a dictionary with the keys from the bundle’s localized property list.
@@ -9642,12 +9653,12 @@ func NSSound_FromRef(ref objc.Ref) NSSound {
 //
 // See https://developer.apple.com/documentation/appkit/nssound/1477274-initwithcontentsoffile?language=objc for details.
 func (x gen_NSSound) InitWithContentsOfFileByReference(
-	path core.NSStringRef,
+	path string,
 	byRef bool,
 ) NSSound {
 	ret := C.NSSound_inst_InitWithContentsOfFileByReference(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(byRef),
 	)
 
@@ -10866,23 +10877,23 @@ func (x gen_NSControl) SetObjectValue(
 // StringValue returns the value of the receiver’s cell as an NSString object.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428950-stringvalue?language=objc for details.
-func (x gen_NSControl) StringValue() core.NSString {
+func (x gen_NSControl) StringValue() string {
 	ret := C.NSControl_inst_StringValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetStringValue returns the value of the receiver’s cell as an NSString object.
 //
 // See https://developer.apple.com/documentation/appkit/nscontrol/1428950-stringvalue?language=objc for details.
 func (x gen_NSControl) SetStringValue(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSControl_inst_SetStringValue(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -11320,23 +11331,23 @@ func (x gen_NSButton) SetHasDestructiveAction(
 // AlternateTitle returns the title that the button displays when the button is in an on state.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc for details.
-func (x gen_NSButton) AlternateTitle() core.NSString {
+func (x gen_NSButton) AlternateTitle() string {
 	ret := C.NSButton_inst_AlternateTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetAlternateTitle returns the title that the button displays when the button is in an on state.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1529588-alternatetitle?language=objc for details.
 func (x gen_NSButton) SetAlternateTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSButton_inst_SetAlternateTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -11395,23 +11406,23 @@ func (x gen_NSButton) SetAttributedAlternateTitle(
 // Title returns the title displayed on the button when it’s in an off state.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc for details.
-func (x gen_NSButton) Title() core.NSString {
+func (x gen_NSButton) Title() string {
 	ret := C.NSButton_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetTitle returns the title displayed on the button when it’s in an off state.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1524430-title?language=objc for details.
 func (x gen_NSButton) SetTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSButton_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -11720,23 +11731,23 @@ func (x gen_NSButton) SetState(
 // KeyEquivalent returns the key-equivalent character of the button.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc for details.
-func (x gen_NSButton) KeyEquivalent() core.NSString {
+func (x gen_NSButton) KeyEquivalent() string {
 	ret := C.NSButton_inst_KeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetKeyEquivalent returns the key-equivalent character of the button.
 //
 // See https://developer.apple.com/documentation/appkit/nsbutton/1525368-keyequivalent?language=objc for details.
 func (x gen_NSButton) SetKeyEquivalent(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSButton_inst_SetKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -11826,23 +11837,23 @@ func (x gen_NSEvent) EventRef() unsafe.Pointer {
 // Characters returns the characters associated with a key-up or key-down event.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1534183-characters?language=objc for details.
-func (x gen_NSEvent) Characters() core.NSString {
+func (x gen_NSEvent) Characters() string {
 	ret := C.NSEvent_inst_Characters(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // CharactersIgnoringModifiers returns the characters generated by a key event as if no modifier key (except for Shift) applies.
 //
 // See https://developer.apple.com/documentation/appkit/nsevent/1524605-charactersignoringmodifiers?language=objc for details.
-func (x gen_NSEvent) CharactersIgnoringModifiers() core.NSString {
+func (x gen_NSEvent) CharactersIgnoringModifiers() string {
 	ret := C.NSEvent_inst_CharactersIgnoringModifiers(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // IsARepeat returns a Boolean value that indicates whether the key event is a repeat.
@@ -12306,34 +12317,34 @@ func (x gen_NSFont) NumberOfGlyphs() core.NSUInteger {
 // DisplayName returns the name of the font, including family and face names, to use when displaying the font information to the user.
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1531660-displayname?language=objc for details.
-func (x gen_NSFont) DisplayName() core.NSString {
+func (x gen_NSFont) DisplayName() string {
 	ret := C.NSFont_inst_DisplayName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FamilyName returns the family name of the font—for example, “Times” or “Helvetica.”
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1529585-familyname?language=objc for details.
-func (x gen_NSFont) FamilyName() core.NSString {
+func (x gen_NSFont) FamilyName() string {
 	ret := C.NSFont_inst_FamilyName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FontName returns the full name of the font, as used in PostScript language code—for example, “Times-Roman” or “Helvetica-Oblique.”
 //
 // See https://developer.apple.com/documentation/appkit/nsfont/1526183-fontname?language=objc for details.
-func (x gen_NSFont) FontName() core.NSString {
+func (x gen_NSFont) FontName() string {
 	ret := C.NSFont_inst_FontName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // IsVertical returns a Boolean value indicating whether the font is a vertical font.
@@ -12420,11 +12431,11 @@ func (x gen_NSImage) DrawInRect(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519955-initbyreferencingfile?language=objc for details.
 func (x gen_NSImage) InitByReferencingFile(
-	fileName core.NSStringRef,
+	fileName string,
 ) NSImage {
 	ret := C.NSImage_inst_InitByReferencingFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(fileName),
+		C.createNSStringFromCString(C.CString(fileName)),
 	)
 
 	return NSImage_FromPointer(ret)
@@ -12448,11 +12459,11 @@ func (x gen_NSImage) InitByReferencingURL(
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519918-initwithcontentsoffile?language=objc for details.
 func (x gen_NSImage) InitWithContentsOfFile(
-	fileName core.NSStringRef,
+	fileName string,
 ) NSImage {
 	ret := C.NSImage_inst_InitWithContentsOfFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(fileName),
+		C.createNSStringFromCString(C.CString(fileName)),
 	)
 
 	return NSImage_FromPointer(ret)
@@ -12857,23 +12868,23 @@ func (x gen_NSImage) TIFFRepresentation() core.NSData {
 // AccessibilityDescription returns the image’s accessibility description.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519943-accessibilitydescription?language=objc for details.
-func (x gen_NSImage) AccessibilityDescription() core.NSString {
+func (x gen_NSImage) AccessibilityDescription() string {
 	ret := C.NSImage_inst_AccessibilityDescription(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetAccessibilityDescription returns the image’s accessibility description.
 //
 // See https://developer.apple.com/documentation/appkit/nsimage/1519943-accessibilitydescription?language=objc for details.
 func (x gen_NSImage) SetAccessibilityDescription(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSImage_inst_SetAccessibilityDescription(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -13258,11 +13269,11 @@ func (x gen_NSPasteboard) ReleaseGlobally() {
 //
 // See https://developer.apple.com/documentation/appkit/nspasteboard/1531224-writefilecontents?language=objc for details.
 func (x gen_NSPasteboard) WriteFileContents(
-	filename core.NSStringRef,
+	filename string,
 ) bool {
 	ret := C.NSPasteboard_inst_WriteFileContents(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(filename),
+		C.createNSStringFromCString(C.CString(filename)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -14013,15 +14024,15 @@ func (x gen_NSMenu) AddItem(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518181-additemwithtitle?language=objc for details.
 func (x gen_NSMenu) AddItemWithTitleActionKeyEquivalent(
-	string core.NSStringRef,
+	string string,
 	selector objc.Selector,
-	charCode core.NSStringRef,
+	charCode string,
 ) NSMenuItem {
 	ret := C.NSMenu_inst_AddItemWithTitleActionKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		selector.SelectorAddress(),
-		objc.RefPointer(charCode),
+		C.createNSStringFromCString(C.CString(charCode)),
 	)
 
 	return NSMenuItem_FromPointer(ret)
@@ -14125,11 +14136,11 @@ func (x gen_NSMenu) IndexOfItemWithTargetAndAction(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518237-indexofitemwithtitle?language=objc for details.
 func (x gen_NSMenu) IndexOfItemWithTitle(
-	title core.NSStringRef,
+	title string,
 ) core.NSInteger {
 	ret := C.NSMenu_inst_IndexOfItemWithTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 	)
 
 	return core.NSInteger(ret)
@@ -14139,11 +14150,11 @@ func (x gen_NSMenu) IndexOfItemWithTitle(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518144-initwithtitle?language=objc for details.
 func (x gen_NSMenu) InitWithTitle(
-	title core.NSStringRef,
+	title string,
 ) NSMenu {
 	ret := C.NSMenu_inst_InitWithTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 	)
 
 	return NSMenu_FromPointer(ret)
@@ -14169,16 +14180,16 @@ func (x gen_NSMenu) InsertItemAtIndex(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518146-insertitemwithtitle?language=objc for details.
 func (x gen_NSMenu) InsertItemWithTitleActionKeyEquivalentAtIndex(
-	string core.NSStringRef,
+	string string,
 	selector objc.Selector,
-	charCode core.NSStringRef,
+	charCode string,
 	index core.NSInteger,
 ) NSMenuItem {
 	ret := C.NSMenu_inst_InsertItemWithTitleActionKeyEquivalentAtIndex(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		selector.SelectorAddress(),
-		objc.RefPointer(charCode),
+		C.createNSStringFromCString(C.CString(charCode)),
 		C.long(index),
 	)
 
@@ -14231,11 +14242,11 @@ func (x gen_NSMenu) ItemWithTag(
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518248-itemwithtitle?language=objc for details.
 func (x gen_NSMenu) ItemWithTitle(
-	title core.NSStringRef,
+	title string,
 ) NSMenuItem {
 	ret := C.NSMenu_inst_ItemWithTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(title),
+		C.createNSStringFromCString(C.CString(title)),
 	)
 
 	return NSMenuItem_FromPointer(ret)
@@ -14510,23 +14521,23 @@ func (x gen_NSMenu) SetFont(
 // Title returns the title of the menu.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518192-title?language=objc for details.
-func (x gen_NSMenu) Title() core.NSString {
+func (x gen_NSMenu) Title() string {
 	ret := C.NSMenu_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetTitle returns the title of the menu.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenu/1518192-title?language=objc for details.
 func (x gen_NSMenu) SetTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSMenu_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -14865,15 +14876,15 @@ func NSMenuItem_FromRef(ref objc.Ref) NSMenuItem {
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc for details.
 func (x gen_NSMenuItem) InitWithTitleActionKeyEquivalent(
-	string core.NSStringRef,
+	string string,
 	selector objc.Selector,
-	charCode core.NSStringRef,
+	charCode string,
 ) NSMenuItem {
 	ret := C.NSMenuItem_inst_InitWithTitleActionKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		selector.SelectorAddress(),
-		objc.RefPointer(charCode),
+		C.createNSStringFromCString(C.CString(charCode)),
 	)
 
 	return NSMenuItem_FromPointer(ret)
@@ -15011,23 +15022,23 @@ func (x gen_NSMenuItem) SetAction(
 // Title returns the menu item's title.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc for details.
-func (x gen_NSMenuItem) Title() core.NSString {
+func (x gen_NSMenuItem) Title() string {
 	ret := C.NSMenuItem_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetTitle returns the menu item's title.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc for details.
 func (x gen_NSMenuItem) SetTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSMenuItem_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -15294,23 +15305,23 @@ func (x gen_NSMenuItem) SetMenu(
 // KeyEquivalent returns the menu item’s unmodified key equivalent.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc for details.
-func (x gen_NSMenuItem) KeyEquivalent() core.NSString {
+func (x gen_NSMenuItem) KeyEquivalent() string {
 	ret := C.NSMenuItem_inst_KeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetKeyEquivalent returns the menu item’s unmodified key equivalent.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc for details.
 func (x gen_NSMenuItem) SetKeyEquivalent(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSMenuItem_inst_SetKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -15319,12 +15330,12 @@ func (x gen_NSMenuItem) SetKeyEquivalent(
 // UserKeyEquivalent returns the user-assigned key equivalent for the menu item.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514850-userkeyequivalent?language=objc for details.
-func (x gen_NSMenuItem) UserKeyEquivalent() core.NSString {
+func (x gen_NSMenuItem) UserKeyEquivalent() string {
 	ret := C.NSMenuItem_inst_UserKeyEquivalent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // IsAlternate returns a Boolean value that marks the menu item as an alternate to the previous menu item.
@@ -15380,23 +15391,23 @@ func (x gen_NSMenuItem) SetIndentationLevel(
 // ToolTip returns a help tag for the menu item.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc for details.
-func (x gen_NSMenuItem) ToolTip() core.NSString {
+func (x gen_NSMenuItem) ToolTip() string {
 	ret := C.NSMenuItem_inst_ToolTip(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetToolTip returns a help tag for the menu item.
 //
 // See https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc for details.
 func (x gen_NSMenuItem) SetToolTip(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSMenuItem_inst_SetToolTip(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -15655,12 +15666,12 @@ func (x gen_NSRunningApplication) IsHidden() bool {
 // LocalizedName indicates the localized name of the application.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1526751-localizedname?language=objc for details.
-func (x gen_NSRunningApplication) LocalizedName() core.NSString {
+func (x gen_NSRunningApplication) LocalizedName() string {
 	ret := C.NSRunningApplication_inst_LocalizedName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Icon returns the icon for the receiver’s application.
@@ -15677,12 +15688,12 @@ func (x gen_NSRunningApplication) Icon() NSImage {
 // BundleIdentifier indicates the CFBundleIdentifier of the application.
 //
 // See https://developer.apple.com/documentation/appkit/nsrunningapplication/1529140-bundleidentifier?language=objc for details.
-func (x gen_NSRunningApplication) BundleIdentifier() core.NSString {
+func (x gen_NSRunningApplication) BundleIdentifier() string {
 	ret := C.NSRunningApplication_inst_BundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // BundleURL indicates the URL to the application's bundle.
@@ -15896,12 +15907,12 @@ func (x gen_NSScreen) MaximumReferenceExtendedDynamicRangeColorComponentValue() 
 // LocalizedName is undocumented.
 //
 // See https://developer.apple.com/documentation/appkit/nsscreen/3228043-localizedname?language=objc for details.
-func (x gen_NSScreen) LocalizedName() core.NSString {
+func (x gen_NSScreen) LocalizedName() string {
 	ret := C.NSScreen_inst_LocalizedName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // MaximumFramesPerSecond is undocumented.
@@ -16417,11 +16428,11 @@ func (x gen_NSText) PasteRuler(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1532564-readrtfdfromfile?language=objc for details.
 func (x gen_NSText) ReadRTFDFromFile(
-	path core.NSStringRef,
+	path string,
 ) bool {
 	ret := C.NSText_inst_ReadRTFDFromFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -16540,12 +16551,12 @@ func (x gen_NSText) Unscript(
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1527085-writertfdtofile?language=objc for details.
 func (x gen_NSText) WriteRTFDToFileAtomically(
-	path core.NSStringRef,
+	path string,
 	flag bool,
 ) bool {
 	ret := C.NSText_inst_WriteRTFDToFileAtomically(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(flag),
 	)
 
@@ -16573,23 +16584,23 @@ func (x gen_NSText) Init_AsNSText() NSText {
 // String returns the characters of the receiver’s text.
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1528601-string?language=objc for details.
-func (x gen_NSText) String() core.NSString {
+func (x gen_NSText) String() string {
 	ret := C.NSText_inst_String(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetString returns the characters of the receiver’s text.
 //
 // See https://developer.apple.com/documentation/appkit/nstext/1528601-string?language=objc for details.
 func (x gen_NSText) SetString(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSText_inst_SetString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -17163,23 +17174,23 @@ func (x gen_NSTextField) SetImportsGraphics(
 // PlaceholderString returns the string the text field displays when empty to help the user understand the text field’s purpose.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc for details.
-func (x gen_NSTextField) PlaceholderString() core.NSString {
+func (x gen_NSTextField) PlaceholderString() string {
 	ret := C.NSTextField_inst_PlaceholderString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetPlaceholderString returns the string the text field displays when empty to help the user understand the text field’s purpose.
 //
 // See https://developer.apple.com/documentation/appkit/nstextfield/1399391-placeholderstring?language=objc for details.
 func (x gen_NSTextField) SetPlaceholderString(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSTextField_inst_SetPlaceholderString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -18167,23 +18178,23 @@ func (x gen_NSViewController) SetView(
 // Title returns the localized title of the receiver’s primary view.
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434426-title?language=objc for details.
-func (x gen_NSViewController) Title() core.NSString {
+func (x gen_NSViewController) Title() string {
 	ret := C.NSViewController_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetTitle returns the localized title of the receiver’s primary view.
 //
 // See https://developer.apple.com/documentation/appkit/nsviewcontroller/1434426-title?language=objc for details.
 func (x gen_NSViewController) SetTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSViewController_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -19599,11 +19610,11 @@ func (x gen_NSWindow) SetIsZoomed(
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419192-settitlewithrepresentedfilename?language=objc for details.
 func (x gen_NSWindow) SetTitleWithRepresentedFilename(
-	filename core.NSStringRef,
+	filename string,
 ) {
 	C.NSWindow_inst_SetTitleWithRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(filename),
+		C.createNSStringFromCString(C.CString(filename)),
 	)
 
 	return
@@ -21063,23 +21074,23 @@ func (x gen_NSWindow) BackingScaleFactor() core.CGFloat {
 // Title returns the string that appears in the title bar of the window or the path to the represented file.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419404-title?language=objc for details.
-func (x gen_NSWindow) Title() core.NSString {
+func (x gen_NSWindow) Title() string {
 	ret := C.NSWindow_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetTitle returns the string that appears in the title bar of the window or the path to the represented file.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419404-title?language=objc for details.
 func (x gen_NSWindow) SetTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSWindow_inst_SetTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -21088,23 +21099,23 @@ func (x gen_NSWindow) SetTitle(
 // Subtitle returns a secondary line of text that appears in the title bar of the window.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/3608198-subtitle?language=objc for details.
-func (x gen_NSWindow) Subtitle() core.NSString {
+func (x gen_NSWindow) Subtitle() string {
 	ret := C.NSWindow_inst_Subtitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetSubtitle returns a secondary line of text that appears in the title bar of the window.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/3608198-subtitle?language=objc for details.
 func (x gen_NSWindow) SetSubtitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSWindow_inst_SetSubtitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -21138,23 +21149,23 @@ func (x gen_NSWindow) SetTitleVisibility(
 // RepresentedFilename returns the path to the file of the window’s represented file.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419631-representedfilename?language=objc for details.
-func (x gen_NSWindow) RepresentedFilename() core.NSString {
+func (x gen_NSWindow) RepresentedFilename() string {
 	ret := C.NSWindow_inst_RepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetRepresentedFilename returns the path to the file of the window’s represented file.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419631-representedfilename?language=objc for details.
 func (x gen_NSWindow) SetRepresentedFilename(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSWindow_inst_SetRepresentedFilename(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -21346,23 +21357,23 @@ func (x gen_NSWindow) SetMiniwindowImage(
 // MiniwindowTitle returns the title displayed in the window’s minimized window.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419571-miniwindowtitle?language=objc for details.
-func (x gen_NSWindow) MiniwindowTitle() core.NSString {
+func (x gen_NSWindow) MiniwindowTitle() string {
 	ret := C.NSWindow_inst_MiniwindowTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetMiniwindowTitle returns the title displayed in the window’s minimized window.
 //
 // See https://developer.apple.com/documentation/appkit/nswindow/1419571-miniwindowtitle?language=objc for details.
 func (x gen_NSWindow) SetMiniwindowTitle(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSWindow_inst_SetMiniwindowTitle(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -21507,11 +21518,11 @@ func (x gen_NSWorkspace) URLForApplicationToOpenURL(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1534053-urlforapplicationwithbundleident?language=objc for details.
 func (x gen_NSWorkspace) URLForApplicationWithBundleIdentifier(
-	bundleIdentifier core.NSStringRef,
+	bundleIdentifier string,
 ) core.NSURL {
 	ret := C.NSWorkspace_inst_URLForApplicationWithBundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(bundleIdentifier),
+		C.createNSStringFromCString(C.CString(bundleIdentifier)),
 	)
 
 	return core.NSURL_FromPointer(ret)
@@ -21535,11 +21546,11 @@ func (x gen_NSWorkspace) URLsForApplicationsToOpenURL(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/3753001-urlsforapplicationswithbundleide?language=objc for details.
 func (x gen_NSWorkspace) URLsForApplicationsWithBundleIdentifier(
-	bundleIdentifier core.NSStringRef,
+	bundleIdentifier string,
 ) core.NSArray {
 	ret := C.NSWorkspace_inst_URLsForApplicationsWithBundleIdentifier(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(bundleIdentifier),
+		C.createNSStringFromCString(C.CString(bundleIdentifier)),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -21616,11 +21627,11 @@ func (x gen_NSWorkspace) HideOtherApplications() {
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1528158-iconforfile?language=objc for details.
 func (x gen_NSWorkspace) IconForFile(
-	fullPath core.NSStringRef,
+	fullPath string,
 ) NSImage {
 	ret := C.NSWorkspace_inst_IconForFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(fullPath),
+		C.createNSStringFromCString(C.CString(fullPath)),
 	)
 
 	return NSImage_FromPointer(ret)
@@ -21644,11 +21655,11 @@ func (x gen_NSWorkspace) IconForFiles(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1529991-isfilepackageatpath?language=objc for details.
 func (x gen_NSWorkspace) IsFilePackageAtPath(
-	fullPath core.NSStringRef,
+	fullPath string,
 ) bool {
 	ret := C.NSWorkspace_inst_IsFilePackageAtPath(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(fullPath),
+		C.createNSStringFromCString(C.CString(fullPath)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -21658,11 +21669,11 @@ func (x gen_NSWorkspace) IsFilePackageAtPath(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1525376-notefilesystemchanged?language=objc for details.
 func (x gen_NSWorkspace) NoteFileSystemChanged(
-	path core.NSStringRef,
+	path string,
 ) {
 	C.NSWorkspace_inst_NoteFileSystemChanged(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return
@@ -21686,13 +21697,13 @@ func (x gen_NSWorkspace) OpenURL(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1524399-selectfile?language=objc for details.
 func (x gen_NSWorkspace) SelectFileInFileViewerRootedAtPath(
-	fullPath core.NSStringRef,
-	rootFullPath core.NSStringRef,
+	fullPath string,
+	rootFullPath string,
 ) bool {
 	ret := C.NSWorkspace_inst_SelectFileInFileViewerRootedAtPath(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(fullPath),
-		objc.RefPointer(rootFullPath),
+		C.createNSStringFromCString(C.CString(fullPath)),
+		C.createNSStringFromCString(C.CString(rootFullPath)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -21722,11 +21733,11 @@ func (x gen_NSWorkspace) SetDesktopImageURLForScreenOptionsError(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1532131-showsearchresultsforquerystring?language=objc for details.
 func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
-	queryString core.NSStringRef,
+	queryString string,
 ) bool {
 	ret := C.NSWorkspace_inst_ShowSearchResultsForQueryString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(queryString),
+		C.createNSStringFromCString(C.CString(queryString)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -21736,11 +21747,11 @@ func (x gen_NSWorkspace) ShowSearchResultsForQueryString(
 //
 // See https://developer.apple.com/documentation/appkit/nsworkspace/1527741-unmountandejectdeviceatpath?language=objc for details.
 func (x gen_NSWorkspace) UnmountAndEjectDeviceAtPath(
-	path core.NSStringRef,
+	path string,
 ) bool {
 	ret := C.NSWorkspace_inst_UnmountAndEjectDeviceAtPath(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -22602,23 +22613,23 @@ func (x gen_NSColor) BrightnessComponent() core.CGFloat {
 // LocalizedCatalogNameComponent returns the localized version of the catalog name containing the color.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1535351-localizedcatalognamecomponent?language=objc for details.
-func (x gen_NSColor) LocalizedCatalogNameComponent() core.NSString {
+func (x gen_NSColor) LocalizedCatalogNameComponent() string {
 	ret := C.NSColor_inst_LocalizedCatalogNameComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedColorNameComponent returns the localized version of the color name.
 //
 // See https://developer.apple.com/documentation/appkit/nscolor/1527286-localizedcolornamecomponent?language=objc for details.
-func (x gen_NSColor) LocalizedColorNameComponent() core.NSString {
+func (x gen_NSColor) LocalizedColorNameComponent() string {
 	ret := C.NSColor_inst_LocalizedColorNameComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 type NSTextViewRef interface {
@@ -26733,12 +26744,12 @@ func (x gen_NSView) WantsDefaultClipping() bool {
 // PrintJobTitle returns the view’s print job title.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483753-printjobtitle?language=objc for details.
-func (x gen_NSView) PrintJobTitle() core.NSString {
+func (x gen_NSView) PrintJobTitle() string {
 	ret := C.NSView_inst_PrintJobTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PageHeader returns a default header string that includes the print job title and date.
@@ -27385,23 +27396,23 @@ func (x gen_NSView) Tag() core.NSInteger {
 // ToolTip returns the text for the view’s tooltip.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483541-tooltip?language=objc for details.
-func (x gen_NSView) ToolTip() core.NSString {
+func (x gen_NSView) ToolTip() string {
 	ret := C.NSView_inst_ToolTip(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetToolTip returns the text for the view’s tooltip.
 //
 // See https://developer.apple.com/documentation/appkit/nsview/1483541-tooltip?language=objc for details.
 func (x gen_NSView) SetToolTip(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.NSView_inst_SetToolTip(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return

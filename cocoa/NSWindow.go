@@ -42,11 +42,11 @@ func (w NSWindow) StyleMask() uint {
 }
 
 func (w NSWindow) SetTitle(title string) {
-	w.gen_NSWindow.SetTitle(core.String(title))
+	w.gen_NSWindow.SetTitle(title)
 }
 
 func (w NSWindow) Title() string {
-	return w.gen_NSWindow.Title().String()
+	return w.gen_NSWindow.Title()
 }
 
 func (w NSWindow) SetTitleVisibility(v int) {
