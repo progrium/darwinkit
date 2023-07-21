@@ -32,6 +32,7 @@ func main() {
 			loadFile("api/foundation/nsurl.objc.json"),
 			loadFile("api/foundation/nsurlrequest.objc.json"),
 			loadFile("api/foundation/nsuserdefaults.objc.json"),
+			loadFile("api/foundation/nsmutablestring.objc.json"),
 		}},
 		// {"coregraphics", []schemaLoader{
 		// 	loadFile("api/coregraphics/cgrect.objc.json"),

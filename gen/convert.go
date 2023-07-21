@@ -54,6 +54,11 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 	if decl.Base != "NSObject" {
 		if cls := cb.mapClass(decl.Base); cls != nil {
 			classDef.Base = cls.GoType
+			
+			// Needed because NSMutableString would have a base class of string without this change
+			if decl.Base == "NSString" {
+				classDef.Base = "NSString"
+			}
 		}
 	}
 
