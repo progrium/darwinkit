@@ -451,6 +451,14 @@ void* NSUserDefaults_type_StandardUserDefaults() {
 	return [NSUserDefaults
 		standardUserDefaults];
 }
+void* NSMutableString_type_Alloc() {
+	return [NSMutableString
+		alloc];
+}
+void* NSMutableString_type_StringWithCapacity(unsigned long capacity) {
+	return [NSMutableString
+		stringWithCapacity: capacity];
+}
 
 
 void* NSObject_inst_ActionProperty(void *id) {
@@ -2911,6 +2919,37 @@ void* NSUserDefaults_inst_VolatileDomainNames(void *id) {
 		volatileDomainNames];
 }
 
+void NSMutableString_inst_AppendFormat(void *id, void* format) {
+	[(NSMutableString*)id
+		appendFormat: format];
+}
+
+void NSMutableString_inst_AppendString(void *id, void* aString) {
+	[(NSMutableString*)id
+		appendString: aString];
+}
+
+void* NSMutableString_inst_InitWithCapacity(void *id, unsigned long capacity) {
+	return [(NSMutableString*)id
+		initWithCapacity: capacity];
+}
+
+void NSMutableString_inst_InsertStringAtIndex(void *id, void* aString, unsigned long loc) {
+	[(NSMutableString*)id
+		insertString: aString
+		atIndex: loc];
+}
+
+void NSMutableString_inst_SetString(void *id, void* aString) {
+	[(NSMutableString*)id
+		setString: aString];
+}
+
+void* NSMutableString_inst_Init(void *id) {
+	return [(NSMutableString*)id
+		init];
+}
+
 
 BOOL core_objc_bool_true = YES;
 BOOL core_objc_bool_false = NO;
@@ -3435,9 +3474,9 @@ func NSMutableDictionary_DictionaryWithOBEXHeadersData(inHeadersData NSDataRef) 
 // NSMutableDictionary_DictionaryWithContentsOfFile is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574188-dictionarywithcontentsoffile?language=objc for details.
-func NSMutableDictionary_DictionaryWithContentsOfFile(path NSStringRef) NSMutableDictionary {
+func NSMutableDictionary_DictionaryWithContentsOfFile(path string) NSMutableDictionary {
 	ret := C.NSMutableDictionary_type_DictionaryWithContentsOfFile(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSMutableDictionary_FromPointer(ret)
@@ -3914,6 +3953,24 @@ func NSUserDefaults_StandardUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_type_StandardUserDefaults()
 
 	return NSUserDefaults_FromPointer(ret)
+}
+
+// NSMutableString_Alloc is undocumented.
+func NSMutableString_Alloc() NSMutableString {
+	ret := C.NSMutableString_type_Alloc()
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// NSMutableString_StringWithCapacity returns an empty NSMutableString object with initial storage for a given number of characters.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1497396-stringwithcapacity?language=objc for details.
+func NSMutableString_StringWithCapacity(capacity NSUInteger) NSMutableString {
+	ret := C.NSMutableString_type_StringWithCapacity(
+		C.ulong(capacity),
+	)
+
+	return NSMutableString_FromPointer(ret)
 }
 
 type NSObjectRef interface {
@@ -7408,11 +7465,11 @@ func (x gen_NSDictionary) ObjectsForKeysNotFoundMarker(
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410210-valueforkey?language=objc for details.
 func (x gen_NSDictionary) ValueForKey(
-	key NSStringRef,
+	key string,
 ) objc.Object {
 	ret := C.NSDictionary_inst_ValueForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -7573,11 +7630,11 @@ func (x gen_NSMutableDictionary) InitWithCapacity(
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1407593-initwithcontentsoffile?language=objc for details.
 func (x gen_NSMutableDictionary) InitWithContentsOfFile(
-	path NSStringRef,
+	path string,
 ) NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_InitWithContentsOfFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSMutableDictionary_FromPointer(ret)
@@ -7687,12 +7744,12 @@ func (x gen_NSMutableDictionary) SetObjectForKeyedSubscript(
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc for details.
 func (x gen_NSMutableDictionary) SetValueForKey(
 	value objc.Ref,
-	key NSStringRef,
+	key string,
 ) {
 	C.NSMutableDictionary_inst_SetValueForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return
@@ -10486,4 +10543,113 @@ func (x gen_NSUserDefaults) VolatileDomainNames() NSArray {
 	)
 
 	return NSArray_FromPointer(ret)
+}
+
+type NSMutableStringRef interface {
+	Pointer() uintptr
+	Init_AsNSMutableString() NSMutableString
+}
+
+type gen_NSMutableString struct {
+	NSString
+}
+
+func NSMutableString_FromPointer(ptr unsafe.Pointer) NSMutableString {
+	return NSMutableString{gen_NSMutableString{
+		NSString_FromPointer(ptr),
+	}}
+}
+
+func NSMutableString_FromRef(ref objc.Ref) NSMutableString {
+	return NSMutableString_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AppendFormat adds a constructed string to the receiver.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc for details.
+func (x gen_NSMutableString) AppendFormat(
+	format string,
+) {
+	C.NSMutableString_inst_AppendFormat(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(format)),
+	)
+
+	return
+}
+
+// AppendString adds to the end of the receiver the characters of a given string.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1417883-appendstring?language=objc for details.
+func (x gen_NSMutableString) AppendString(
+	aString string,
+) {
+	C.NSMutableString_inst_AppendString(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+	)
+
+	return
+}
+
+// InitWithCapacity returns an NSMutableString object initialized with initial storage for a given number of characters,
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1416610-initwithcapacity?language=objc for details.
+func (x gen_NSMutableString) InitWithCapacity(
+	capacity NSUInteger,
+) NSMutableString {
+	ret := C.NSMutableString_inst_InitWithCapacity(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(capacity),
+	)
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// InsertStringAtIndex inserts into the receiver the characters of a given string at a given location.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1410999-insertstring?language=objc for details.
+func (x gen_NSMutableString) InsertStringAtIndex(
+	aString string,
+	loc NSUInteger,
+) {
+	C.NSMutableString_inst_InsertStringAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+		C.ulong(loc),
+	)
+
+	return
+}
+
+// SetString replaces the characters of the receiver with those in a given string.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1409483-setstring?language=objc for details.
+func (x gen_NSMutableString) SetString(
+	aString string,
+) {
+	C.NSMutableString_inst_SetString(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSMutableString class.
+func (x gen_NSMutableString) Init() NSMutableString {
+	ret := C.NSMutableString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// Init_AsNSMutableString is a typed version of Init.
+func (x gen_NSMutableString) Init_AsNSMutableString() NSMutableString {
+	ret := C.NSMutableString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableString_FromPointer(ret)
 }
