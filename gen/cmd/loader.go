@@ -153,6 +153,7 @@ func generate(basePackage string, packages []pkg) error {
 			Classes: definedClasses(schemas),
 		})
 	}
+	gen.PrintStats()
 	return nil
 }
 

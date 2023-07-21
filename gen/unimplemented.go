@@ -30,4 +30,5 @@ func ignoreIfUnimplemented(key string) {
 		panic(err)
 	}
 	log.Printf("skip %s: %s", key, err)
+	IncrementSkipped()
 }

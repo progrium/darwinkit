@@ -78,6 +78,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		checkMethodForStringException(&cb, m.Name, &wrapper)
 		pkg.ClassMsgSendWrappers = append(pkg.ClassMsgSendWrappers, msg)
 		pkg.CGoWrapperFuncs = append(pkg.CGoWrapperFuncs, wrapper)
+		IncrementSuccess()
 	})
 	cb.EachInstanceMethod(func(m schema.Method) {
 		defer ignoreIfUnimplemented(fmt.Sprintf("%s.%s", s.Class.Name, m.Name))
@@ -95,7 +96,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 			method.Description = formatComment(m, method.Name)
 			classDef.InstanceMethods = append(classDef.InstanceMethods, method)
 		}
-
+		IncrementSuccess()
 	})
 
 	return classDef, nil
