@@ -98,7 +98,7 @@ func processClassSchema(pkg *GoPackage, s *schema.Schema, imports []PackageConte
 		}
 		IncrementSuccess()
 	})
-
+	IncrementClasses() // for statistical purposes
 	return classDef, nil
 }
 

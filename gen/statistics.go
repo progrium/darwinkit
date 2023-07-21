@@ -11,6 +11,7 @@ import "fmt"
 // keeps track of count
 var successes int
 var skipped int
+var classes int
 
 // increments the successes variable when a function is successfully wrapped
 func IncrementSuccess() {
@@ -22,10 +23,17 @@ func IncrementSkipped() {
 	skipped++
 }
 
+func IncrementClasses() {
+	classes++
+}
+
 // prints statistics about the build process
 func PrintStats() {
 	fmt.Println("\n\nStatistics:")
 	fmt.Println("--------------------------------------------------")
-	fmt.Printf("Successfully wrapped methods: %8d", successes)
-	fmt.Printf("\nSkipped methods: %21d\n\n", skipped)
+	fmt.Printf("%-33s %d", "Wrapped methods:", successes)
+	fmt.Printf("\n%-33s %d", "Skipped methods:", skipped)
+	fmt.Printf("\n%-33s %.2f%%", "Percent wrapped:", float64(successes)/float64(successes + skipped)*100)
+	fmt.Printf("\n%-33s %.2f%%", "Percent skipped:", float64(skipped)/float64(successes + skipped)*100)
+	fmt.Printf("\n%-33s %d\n\n", "Classes:", classes)
 }
