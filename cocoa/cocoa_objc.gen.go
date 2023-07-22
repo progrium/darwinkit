@@ -531,6 +531,10 @@ void* NSProgressIndicator_type_Alloc() {
 	return [NSProgressIndicator
 		alloc];
 }
+void* NSDatePicker_type_Alloc() {
+	return [NSDatePicker
+		alloc];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5908,6 +5912,81 @@ void NSProgressIndicator_inst_SetDisplayedWhenStopped(void *id, BOOL value) {
 		setDisplayedWhenStopped: value];
 }
 
+void* NSDatePicker_inst_Init(void *id) {
+	return [(NSDatePicker*)id
+		init];
+}
+
+BOOL NSDatePicker_inst_IsBezeled(void *id) {
+	return [(NSDatePicker*)id
+		isBezeled];
+}
+
+void NSDatePicker_inst_SetBezeled(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setBezeled: value];
+}
+
+BOOL NSDatePicker_inst_IsBordered(void *id) {
+	return [(NSDatePicker*)id
+		isBordered];
+}
+
+void NSDatePicker_inst_SetBordered(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setBordered: value];
+}
+
+void* NSDatePicker_inst_BackgroundColor(void *id) {
+	return [(NSDatePicker*)id
+		backgroundColor];
+}
+
+void NSDatePicker_inst_SetBackgroundColor(void *id, void* value) {
+	[(NSDatePicker*)id
+		setBackgroundColor: value];
+}
+
+BOOL NSDatePicker_inst_DrawsBackground(void *id) {
+	return [(NSDatePicker*)id
+		drawsBackground];
+}
+
+void NSDatePicker_inst_SetDrawsBackground(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setDrawsBackground: value];
+}
+
+void* NSDatePicker_inst_TextColor(void *id) {
+	return [(NSDatePicker*)id
+		textColor];
+}
+
+void NSDatePicker_inst_SetTextColor(void *id, void* value) {
+	[(NSDatePicker*)id
+		setTextColor: value];
+}
+
+BOOL NSDatePicker_inst_PresentsCalendarOverlay(void *id) {
+	return [(NSDatePicker*)id
+		presentsCalendarOverlay];
+}
+
+void NSDatePicker_inst_SetPresentsCalendarOverlay(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setPresentsCalendarOverlay: value];
+}
+
+void* NSDatePicker_inst_Delegate(void *id) {
+	return [(NSDatePicker*)id
+		delegate];
+}
+
+void NSDatePicker_inst_SetDelegate(void *id, void* value) {
+	[(NSDatePicker*)id
+		setDelegate: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -9097,6 +9176,13 @@ func NSProgressIndicator_Alloc() NSProgressIndicator {
 	ret := C.NSProgressIndicator_type_Alloc()
 
 	return NSProgressIndicator_FromPointer(ret)
+}
+
+// NSDatePicker_Alloc is undocumented.
+func NSDatePicker_Alloc() NSDatePicker {
+	ret := C.NSDatePicker_type_Alloc()
+
+	return NSDatePicker_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -23229,6 +23315,218 @@ func (x gen_NSProgressIndicator) SetDisplayedWhenStopped(
 	C.NSProgressIndicator_inst_SetDisplayedWhenStopped(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
+	)
+
+	return
+}
+
+type NSDatePickerRef interface {
+	Pointer() uintptr
+	Init_AsNSDatePicker() NSDatePicker
+}
+
+type gen_NSDatePicker struct {
+	NSControl
+}
+
+func NSDatePicker_FromPointer(ptr unsafe.Pointer) NSDatePicker {
+	return NSDatePicker{gen_NSDatePicker{
+		NSControl_FromPointer(ptr),
+	}}
+}
+
+func NSDatePicker_FromRef(ref objc.Ref) NSDatePicker {
+	return NSDatePicker_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// Init initializes a new instance of the NSDatePicker class.
+func (x gen_NSDatePicker) Init() NSDatePicker {
+	ret := C.NSDatePicker_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDatePicker_FromPointer(ret)
+}
+
+// Init_AsNSDatePicker is a typed version of Init.
+func (x gen_NSDatePicker) Init_AsNSDatePicker() NSDatePicker {
+	ret := C.NSDatePicker_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDatePicker_FromPointer(ret)
+}
+
+// IsBezeled returns a Boolean value that indicates whether the date picker draws a bezeled border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533534-bezeled?language=objc for details.
+func (x gen_NSDatePicker) IsBezeled() bool {
+	ret := C.NSDatePicker_inst_IsBezeled(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetBezeled returns a Boolean value that indicates whether the date picker draws a bezeled border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533534-bezeled?language=objc for details.
+func (x gen_NSDatePicker) SetBezeled(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetBezeled(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsBordered returns a Boolean value that indicates whether the date picker has a plain border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534176-bordered?language=objc for details.
+func (x gen_NSDatePicker) IsBordered() bool {
+	ret := C.NSDatePicker_inst_IsBordered(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetBordered returns a Boolean value that indicates whether the date picker has a plain border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534176-bordered?language=objc for details.
+func (x gen_NSDatePicker) SetBordered(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetBordered(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// BackgroundColor returns the date picker’s background color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1527710-backgroundcolor?language=objc for details.
+func (x gen_NSDatePicker) BackgroundColor() NSColor {
+	ret := C.NSDatePicker_inst_BackgroundColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetBackgroundColor returns the date picker’s background color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1527710-backgroundcolor?language=objc for details.
+func (x gen_NSDatePicker) SetBackgroundColor(
+	value NSColorRef,
+) {
+	C.NSDatePicker_inst_SetBackgroundColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// DrawsBackground returns a Boolean value that indicates whether the date picker draws the background.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1528266-drawsbackground?language=objc for details.
+func (x gen_NSDatePicker) DrawsBackground() bool {
+	ret := C.NSDatePicker_inst_DrawsBackground(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetDrawsBackground returns a Boolean value that indicates whether the date picker draws the background.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1528266-drawsbackground?language=objc for details.
+func (x gen_NSDatePicker) SetDrawsBackground(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetDrawsBackground(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// TextColor returns the date picker’s text color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534294-textcolor?language=objc for details.
+func (x gen_NSDatePicker) TextColor() NSColor {
+	ret := C.NSDatePicker_inst_TextColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetTextColor returns the date picker’s text color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534294-textcolor?language=objc for details.
+func (x gen_NSDatePicker) SetTextColor(
+	value NSColorRef,
+) {
+	C.NSDatePicker_inst_SetTextColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// PresentsCalendarOverlay returns a Boolean value that indicates whether to present a graphical calendar overlay when editing a calendar element within a text-field style date picker.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/3521157-presentscalendaroverlay?language=objc for details.
+func (x gen_NSDatePicker) PresentsCalendarOverlay() bool {
+	ret := C.NSDatePicker_inst_PresentsCalendarOverlay(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetPresentsCalendarOverlay returns a Boolean value that indicates whether to present a graphical calendar overlay when editing a calendar element within a text-field style date picker.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/3521157-presentscalendaroverlay?language=objc for details.
+func (x gen_NSDatePicker) SetPresentsCalendarOverlay(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetPresentsCalendarOverlay(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// Delegate returns a delegate for the date picker’s cell
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533878-delegate?language=objc for details.
+func (x gen_NSDatePicker) Delegate() objc.Object {
+	ret := C.NSDatePicker_inst_Delegate(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// SetDelegate returns a delegate for the date picker’s cell
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533878-delegate?language=objc for details.
+func (x gen_NSDatePicker) SetDelegate(
+	value objc.Ref,
+) {
+	C.NSDatePicker_inst_SetDelegate(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
 	)
 
 	return
