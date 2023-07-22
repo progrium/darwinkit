@@ -523,6 +523,10 @@ void* NSOpenPanel_type_OpenPanel() {
 	return [NSOpenPanel
 		openPanel];
 }
+void* NSComboBox_type_Alloc() {
+	return [NSComboBox
+		alloc];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5659,6 +5663,197 @@ void NSOpenPanel_inst_SetCanResolveUbiquitousConflicts(void *id, BOOL value) {
 		setCanResolveUbiquitousConflicts: value];
 }
 
+void NSComboBox_inst_AddItemWithObjectValue(void *id, void* object) {
+	[(NSComboBox*)id
+		addItemWithObjectValue: object];
+}
+
+void NSComboBox_inst_AddItemsWithObjectValues(void *id, void* objects) {
+	[(NSComboBox*)id
+		addItemsWithObjectValues: objects];
+}
+
+void NSComboBox_inst_DeselectItemAtIndex(void *id, long index) {
+	[(NSComboBox*)id
+		deselectItemAtIndex: index];
+}
+
+long NSComboBox_inst_IndexOfItemWithObjectValue(void *id, void* object) {
+	return [(NSComboBox*)id
+		indexOfItemWithObjectValue: object];
+}
+
+void NSComboBox_inst_InsertItemWithObjectValueAtIndex(void *id, void* object, long index) {
+	[(NSComboBox*)id
+		insertItemWithObjectValue: object
+		atIndex: index];
+}
+
+void* NSComboBox_inst_ItemObjectValueAtIndex(void *id, long index) {
+	return [(NSComboBox*)id
+		itemObjectValueAtIndex: index];
+}
+
+void NSComboBox_inst_NoteNumberOfItemsChanged(void *id) {
+	[(NSComboBox*)id
+		noteNumberOfItemsChanged];
+}
+
+void NSComboBox_inst_ReloadData(void *id) {
+	[(NSComboBox*)id
+		reloadData];
+}
+
+void NSComboBox_inst_RemoveAllItems(void *id) {
+	[(NSComboBox*)id
+		removeAllItems];
+}
+
+void NSComboBox_inst_RemoveItemAtIndex(void *id, long index) {
+	[(NSComboBox*)id
+		removeItemAtIndex: index];
+}
+
+void NSComboBox_inst_RemoveItemWithObjectValue(void *id, void* object) {
+	[(NSComboBox*)id
+		removeItemWithObjectValue: object];
+}
+
+void NSComboBox_inst_ScrollItemAtIndexToTop(void *id, long index) {
+	[(NSComboBox*)id
+		scrollItemAtIndexToTop: index];
+}
+
+void NSComboBox_inst_ScrollItemAtIndexToVisible(void *id, long index) {
+	[(NSComboBox*)id
+		scrollItemAtIndexToVisible: index];
+}
+
+void NSComboBox_inst_SelectItemAtIndex(void *id, long index) {
+	[(NSComboBox*)id
+		selectItemAtIndex: index];
+}
+
+void NSComboBox_inst_SelectItemWithObjectValue(void *id, void* object) {
+	[(NSComboBox*)id
+		selectItemWithObjectValue: object];
+}
+
+void* NSComboBox_inst_Init(void *id) {
+	return [(NSComboBox*)id
+		init];
+}
+
+BOOL NSComboBox_inst_HasVerticalScroller(void *id) {
+	return [(NSComboBox*)id
+		hasVerticalScroller];
+}
+
+void NSComboBox_inst_SetHasVerticalScroller(void *id, BOOL value) {
+	[(NSComboBox*)id
+		setHasVerticalScroller: value];
+}
+
+NSSize NSComboBox_inst_IntercellSpacing(void *id) {
+	return [(NSComboBox*)id
+		intercellSpacing];
+}
+
+void NSComboBox_inst_SetIntercellSpacing(void *id, NSSize value) {
+	[(NSComboBox*)id
+		setIntercellSpacing: value];
+}
+
+BOOL NSComboBox_inst_IsButtonBordered(void *id) {
+	return [(NSComboBox*)id
+		isButtonBordered];
+}
+
+void NSComboBox_inst_SetButtonBordered(void *id, BOOL value) {
+	[(NSComboBox*)id
+		setButtonBordered: value];
+}
+
+double NSComboBox_inst_ItemHeight(void *id) {
+	return [(NSComboBox*)id
+		itemHeight];
+}
+
+void NSComboBox_inst_SetItemHeight(void *id, double value) {
+	[(NSComboBox*)id
+		setItemHeight: value];
+}
+
+long NSComboBox_inst_NumberOfVisibleItems(void *id) {
+	return [(NSComboBox*)id
+		numberOfVisibleItems];
+}
+
+void NSComboBox_inst_SetNumberOfVisibleItems(void *id, long value) {
+	[(NSComboBox*)id
+		setNumberOfVisibleItems: value];
+}
+
+void* NSComboBox_inst_DataSource(void *id) {
+	return [(NSComboBox*)id
+		dataSource];
+}
+
+void NSComboBox_inst_SetDataSource(void *id, void* value) {
+	[(NSComboBox*)id
+		setDataSource: value];
+}
+
+BOOL NSComboBox_inst_UsesDataSource(void *id) {
+	return [(NSComboBox*)id
+		usesDataSource];
+}
+
+void NSComboBox_inst_SetUsesDataSource(void *id, BOOL value) {
+	[(NSComboBox*)id
+		setUsesDataSource: value];
+}
+
+void* NSComboBox_inst_ObjectValues(void *id) {
+	return [(NSComboBox*)id
+		objectValues];
+}
+
+long NSComboBox_inst_NumberOfItems(void *id) {
+	return [(NSComboBox*)id
+		numberOfItems];
+}
+
+long NSComboBox_inst_IndexOfSelectedItem(void *id) {
+	return [(NSComboBox*)id
+		indexOfSelectedItem];
+}
+
+void* NSComboBox_inst_ObjectValueOfSelectedItem(void *id) {
+	return [(NSComboBox*)id
+		objectValueOfSelectedItem];
+}
+
+BOOL NSComboBox_inst_Completes(void *id) {
+	return [(NSComboBox*)id
+		completes];
+}
+
+void NSComboBox_inst_SetCompletes(void *id, BOOL value) {
+	[(NSComboBox*)id
+		setCompletes: value];
+}
+
+void* NSComboBox_inst_Delegate(void *id) {
+	return [(NSComboBox*)id
+		delegate];
+}
+
+void NSComboBox_inst_SetDelegate(void *id, void* value) {
+	[(NSComboBox*)id
+		setDelegate: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -8834,6 +9029,13 @@ func NSOpenPanel_OpenPanel() NSOpenPanel {
 	ret := C.NSOpenPanel_type_OpenPanel()
 
 	return NSOpenPanel_FromPointer(ret)
+}
+
+// NSComboBox_Alloc is undocumented.
+func NSComboBox_Alloc() NSComboBox {
+	ret := C.NSComboBox_type_Alloc()
+
+	return NSComboBox_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -22306,6 +22508,515 @@ func (x gen_NSOpenPanel) SetCanResolveUbiquitousConflicts(
 	C.NSOpenPanel_inst_SetCanResolveUbiquitousConflicts(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
+	)
+
+	return
+}
+
+type NSComboBoxRef interface {
+	Pointer() uintptr
+	Init_AsNSComboBox() NSComboBox
+}
+
+type gen_NSComboBox struct {
+	NSTextField
+}
+
+func NSComboBox_FromPointer(ptr unsafe.Pointer) NSComboBox {
+	return NSComboBox{gen_NSComboBox{
+		NSTextField_FromPointer(ptr),
+	}}
+}
+
+func NSComboBox_FromRef(ref objc.Ref) NSComboBox {
+	return NSComboBox_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AddItemWithObjectValue adds an object to the end of the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436739-additemwithobjectvalue?language=objc for details.
+func (x gen_NSComboBox) AddItemWithObjectValue(
+	object objc.Ref,
+) {
+	C.NSComboBox_inst_AddItemWithObjectValue(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return
+}
+
+// AddItemsWithObjectValues adds multiple objects to the end of the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436751-additemswithobjectvalues?language=objc for details.
+func (x gen_NSComboBox) AddItemsWithObjectValues(
+	objects core.NSArrayRef,
+) {
+	C.NSComboBox_inst_AddItemsWithObjectValues(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(objects),
+	)
+
+	return
+}
+
+// DeselectItemAtIndex deselects the pop-up list item at the specified index if it’s selected.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436699-deselectitematindex?language=objc for details.
+func (x gen_NSComboBox) DeselectItemAtIndex(
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_DeselectItemAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return
+}
+
+// IndexOfItemWithObjectValue searches the receiver’s internal item list for the specified object and returns the lowest matching index.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436707-indexofitemwithobjectvalue?language=objc for details.
+func (x gen_NSComboBox) IndexOfItemWithObjectValue(
+	object objc.Ref,
+) core.NSInteger {
+	ret := C.NSComboBox_inst_IndexOfItemWithObjectValue(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// InsertItemWithObjectValueAtIndex inserts an object at the specified location in the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436703-insertitemwithobjectvalue?language=objc for details.
+func (x gen_NSComboBox) InsertItemWithObjectValueAtIndex(
+	object objc.Ref,
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_InsertItemWithObjectValueAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+		C.long(index),
+	)
+
+	return
+}
+
+// ItemObjectValueAtIndex returns the object located at the given index within the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436731-itemobjectvalueatindex?language=objc for details.
+func (x gen_NSComboBox) ItemObjectValueAtIndex(
+	index core.NSInteger,
+) objc.Object {
+	ret := C.NSComboBox_inst_ItemObjectValueAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// NoteNumberOfItemsChanged informs the receiver that the number of items in its data source has changed.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436723-notenumberofitemschanged?language=objc for details.
+func (x gen_NSComboBox) NoteNumberOfItemsChanged() {
+	C.NSComboBox_inst_NoteNumberOfItemsChanged(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// ReloadData marks the receiver as needing redisplay, so that it will reload the data for visible pop-up items and draw the new values.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436717-reloaddata?language=objc for details.
+func (x gen_NSComboBox) ReloadData() {
+	C.NSComboBox_inst_ReloadData(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// RemoveAllItems removes all items from the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436721-removeallitems?language=objc for details.
+func (x gen_NSComboBox) RemoveAllItems() {
+	C.NSComboBox_inst_RemoveAllItems(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// RemoveItemAtIndex removes the object at the specified location from the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436761-removeitematindex?language=objc for details.
+func (x gen_NSComboBox) RemoveItemAtIndex(
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_RemoveItemAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return
+}
+
+// RemoveItemWithObjectValue removes all occurrences of the given object from the receiver’s internal item list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436759-removeitemwithobjectvalue?language=objc for details.
+func (x gen_NSComboBox) RemoveItemWithObjectValue(
+	object objc.Ref,
+) {
+	C.NSComboBox_inst_RemoveItemWithObjectValue(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return
+}
+
+// ScrollItemAtIndexToTop scrolls the receiver’s pop-up list vertically so that the item at the specified index is as close to the top as possible.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436778-scrollitematindextotop?language=objc for details.
+func (x gen_NSComboBox) ScrollItemAtIndexToTop(
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_ScrollItemAtIndexToTop(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return
+}
+
+// ScrollItemAtIndexToVisible scrolls the receiver’s pop-up list vertically so that the item at the specified index is visible.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436776-scrollitematindextovisible?language=objc for details.
+func (x gen_NSComboBox) ScrollItemAtIndexToVisible(
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_ScrollItemAtIndexToVisible(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return
+}
+
+// SelectItemAtIndex selects the pop-up list row at the given index.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436735-selectitematindex?language=objc for details.
+func (x gen_NSComboBox) SelectItemAtIndex(
+	index core.NSInteger,
+) {
+	C.NSComboBox_inst_SelectItemAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return
+}
+
+// SelectItemWithObjectValue selects the first pop-up list item that corresponds to the given object.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436737-selectitemwithobjectvalue?language=objc for details.
+func (x gen_NSComboBox) SelectItemWithObjectValue(
+	object objc.Ref,
+) {
+	C.NSComboBox_inst_SelectItemWithObjectValue(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(object),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSComboBox class.
+func (x gen_NSComboBox) Init() NSComboBox {
+	ret := C.NSComboBox_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSComboBox_FromPointer(ret)
+}
+
+// Init_AsNSComboBox is a typed version of Init.
+func (x gen_NSComboBox) Init_AsNSComboBox() NSComboBox {
+	ret := C.NSComboBox_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSComboBox_FromPointer(ret)
+}
+
+// HasVerticalScroller returns a Boolean value indicating whether the combo box has a vertical scroller.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436705-hasverticalscroller?language=objc for details.
+func (x gen_NSComboBox) HasVerticalScroller() bool {
+	ret := C.NSComboBox_inst_HasVerticalScroller(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetHasVerticalScroller returns a Boolean value indicating whether the combo box has a vertical scroller.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436705-hasverticalscroller?language=objc for details.
+func (x gen_NSComboBox) SetHasVerticalScroller(
+	value bool,
+) {
+	C.NSComboBox_inst_SetHasVerticalScroller(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IntercellSpacing returns the horizontal and vertical spacing between cells in the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc for details.
+func (x gen_NSComboBox) IntercellSpacing() core.NSSize {
+	ret := C.NSComboBox_inst_IntercellSpacing(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return *(*core.NSSize)(unsafe.Pointer(&ret))
+}
+
+// SetIntercellSpacing returns the horizontal and vertical spacing between cells in the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436771-intercellspacing?language=objc for details.
+func (x gen_NSComboBox) SetIntercellSpacing(
+	value core.NSSize,
+) {
+	C.NSComboBox_inst_SetIntercellSpacing(
+		unsafe.Pointer(x.Pointer()),
+		*(*C.NSSize)(unsafe.Pointer(&value)),
+	)
+
+	return
+}
+
+// IsButtonBordered returns a Boolean value indicating whether the combo box displays a border.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc for details.
+func (x gen_NSComboBox) IsButtonBordered() bool {
+	ret := C.NSComboBox_inst_IsButtonBordered(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetButtonBordered returns a Boolean value indicating whether the combo box displays a border.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436711-buttonbordered?language=objc for details.
+func (x gen_NSComboBox) SetButtonBordered(
+	value bool,
+) {
+	C.NSComboBox_inst_SetButtonBordered(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// ItemHeight returns the height of each item in the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436767-itemheight?language=objc for details.
+func (x gen_NSComboBox) ItemHeight() core.CGFloat {
+	ret := C.NSComboBox_inst_ItemHeight(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.CGFloat(ret)
+}
+
+// SetItemHeight returns the height of each item in the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436767-itemheight?language=objc for details.
+func (x gen_NSComboBox) SetItemHeight(
+	value core.CGFloat,
+) {
+	C.NSComboBox_inst_SetItemHeight(
+		unsafe.Pointer(x.Pointer()),
+		C.double(value),
+	)
+
+	return
+}
+
+// NumberOfVisibleItems returns the maximum number of visible items to display in the pop-up list at one time.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc for details.
+func (x gen_NSComboBox) NumberOfVisibleItems() core.NSInteger {
+	ret := C.NSComboBox_inst_NumberOfVisibleItems(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetNumberOfVisibleItems returns the maximum number of visible items to display in the pop-up list at one time.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436741-numberofvisibleitems?language=objc for details.
+func (x gen_NSComboBox) SetNumberOfVisibleItems(
+	value core.NSInteger,
+) {
+	C.NSComboBox_inst_SetNumberOfVisibleItems(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
+}
+
+// DataSource returns the object that provides the item data for the combo box.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436729-datasource?language=objc for details.
+func (x gen_NSComboBox) DataSource() objc.Object {
+	ret := C.NSComboBox_inst_DataSource(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// SetDataSource returns the object that provides the item data for the combo box.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436729-datasource?language=objc for details.
+func (x gen_NSComboBox) SetDataSource(
+	value objc.Ref,
+) {
+	C.NSComboBox_inst_SetDataSource(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// UsesDataSource returns a Boolean value indicating whether the combo box retrieves its items from a data source object.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc for details.
+func (x gen_NSComboBox) UsesDataSource() bool {
+	ret := C.NSComboBox_inst_UsesDataSource(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetUsesDataSource returns a Boolean value indicating whether the combo box retrieves its items from a data source object.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436727-usesdatasource?language=objc for details.
+func (x gen_NSComboBox) SetUsesDataSource(
+	value bool,
+) {
+	C.NSComboBox_inst_SetUsesDataSource(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// ObjectValues an array of the items from the combo box’s internal list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436709-objectvalues?language=objc for details.
+func (x gen_NSComboBox) ObjectValues() core.NSArray {
+	ret := C.NSComboBox_inst_ObjectValues(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSArray_FromPointer(ret)
+}
+
+// NumberOfItems returns the total number of items in the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436747-numberofitems?language=objc for details.
+func (x gen_NSComboBox) NumberOfItems() core.NSInteger {
+	ret := C.NSComboBox_inst_NumberOfItems(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// IndexOfSelectedItem returns the index of the last item selected from the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436701-indexofselecteditem?language=objc for details.
+func (x gen_NSComboBox) IndexOfSelectedItem() core.NSInteger {
+	ret := C.NSComboBox_inst_IndexOfSelectedItem(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// ObjectValueOfSelectedItem returns the object corresponding to the last item selected from the pop-up list.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436743-objectvalueofselecteditem?language=objc for details.
+func (x gen_NSComboBox) ObjectValueOfSelectedItem() objc.Object {
+	ret := C.NSComboBox_inst_ObjectValueOfSelectedItem(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// Completes returns a Boolean value indicating whether the combo box tries to complete what the user types.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436749-completes?language=objc for details.
+func (x gen_NSComboBox) Completes() bool {
+	ret := C.NSComboBox_inst_Completes(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetCompletes returns a Boolean value indicating whether the combo box tries to complete what the user types.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436749-completes?language=objc for details.
+func (x gen_NSComboBox) SetCompletes(
+	value bool,
+) {
+	C.NSComboBox_inst_SetCompletes(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// Delegate sets the receiver’s delegate.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436697-delegate?language=objc for details.
+func (x gen_NSComboBox) Delegate() objc.Object {
+	ret := C.NSComboBox_inst_Delegate(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// SetDelegate sets the receiver’s delegate.
+//
+// See https://developer.apple.com/documentation/appkit/nscombobox/1436697-delegate?language=objc for details.
+func (x gen_NSComboBox) SetDelegate(
+	value objc.Ref,
+) {
+	C.NSComboBox_inst_SetDelegate(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
 	)
 
 	return
