@@ -527,6 +527,10 @@ void* NSComboBox_type_Alloc() {
 	return [NSComboBox
 		alloc];
 }
+void* NSProgressIndicator_type_Alloc() {
+	return [NSProgressIndicator
+		alloc];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5854,6 +5858,56 @@ void NSComboBox_inst_SetDelegate(void *id, void* value) {
 		setDelegate: value];
 }
 
+void NSProgressIndicator_inst_SizeToFit(void *id) {
+	[(NSProgressIndicator*)id
+		sizeToFit];
+}
+
+void NSProgressIndicator_inst_StartAnimation(void *id, void* sender) {
+	[(NSProgressIndicator*)id
+		startAnimation: sender];
+}
+
+void NSProgressIndicator_inst_StopAnimation(void *id, void* sender) {
+	[(NSProgressIndicator*)id
+		stopAnimation: sender];
+}
+
+void* NSProgressIndicator_inst_Init(void *id) {
+	return [(NSProgressIndicator*)id
+		init];
+}
+
+BOOL NSProgressIndicator_inst_UsesThreadedAnimation(void *id) {
+	return [(NSProgressIndicator*)id
+		usesThreadedAnimation];
+}
+
+void NSProgressIndicator_inst_SetUsesThreadedAnimation(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setUsesThreadedAnimation: value];
+}
+
+BOOL NSProgressIndicator_inst_IsIndeterminate(void *id) {
+	return [(NSProgressIndicator*)id
+		isIndeterminate];
+}
+
+void NSProgressIndicator_inst_SetIndeterminate(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setIndeterminate: value];
+}
+
+BOOL NSProgressIndicator_inst_IsDisplayedWhenStopped(void *id) {
+	return [(NSProgressIndicator*)id
+		isDisplayedWhenStopped];
+}
+
+void NSProgressIndicator_inst_SetDisplayedWhenStopped(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setDisplayedWhenStopped: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -9036,6 +9090,13 @@ func NSComboBox_Alloc() NSComboBox {
 	ret := C.NSComboBox_type_Alloc()
 
 	return NSComboBox_FromPointer(ret)
+}
+
+// NSProgressIndicator_Alloc is undocumented.
+func NSProgressIndicator_Alloc() NSProgressIndicator {
+	ret := C.NSProgressIndicator_type_Alloc()
+
+	return NSProgressIndicator_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -23017,6 +23078,157 @@ func (x gen_NSComboBox) SetDelegate(
 	C.NSComboBox_inst_SetDelegate(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+
+	return
+}
+
+type NSProgressIndicatorRef interface {
+	Pointer() uintptr
+	Init_AsNSProgressIndicator() NSProgressIndicator
+}
+
+type gen_NSProgressIndicator struct {
+	NSView
+}
+
+func NSProgressIndicator_FromPointer(ptr unsafe.Pointer) NSProgressIndicator {
+	return NSProgressIndicator{gen_NSProgressIndicator{
+		NSView_FromPointer(ptr),
+	}}
+}
+
+func NSProgressIndicator_FromRef(ref objc.Ref) NSProgressIndicator {
+	return NSProgressIndicator_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// SizeToFit this action method resizes the progress indicator to an appropriate size depending on the value of style.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501144-sizetofit?language=objc for details.
+func (x gen_NSProgressIndicator) SizeToFit() {
+	C.NSProgressIndicator_inst_SizeToFit(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// StartAnimation starts the animation of an indeterminate progress indicator.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501167-startanimation?language=objc for details.
+func (x gen_NSProgressIndicator) StartAnimation(
+	sender objc.Ref,
+) {
+	C.NSProgressIndicator_inst_StartAnimation(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return
+}
+
+// StopAnimation stops the animation of an indeterminate progress indicator.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501141-stopanimation?language=objc for details.
+func (x gen_NSProgressIndicator) StopAnimation(
+	sender objc.Ref,
+) {
+	C.NSProgressIndicator_inst_StopAnimation(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSProgressIndicator class.
+func (x gen_NSProgressIndicator) Init() NSProgressIndicator {
+	ret := C.NSProgressIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSProgressIndicator_FromPointer(ret)
+}
+
+// Init_AsNSProgressIndicator is a typed version of Init.
+func (x gen_NSProgressIndicator) Init_AsNSProgressIndicator() NSProgressIndicator {
+	ret := C.NSProgressIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSProgressIndicator_FromPointer(ret)
+}
+
+// UsesThreadedAnimation returns a Boolean that indicates whether the progress indicator implements animation in a separate thread.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501160-usesthreadedanimation?language=objc for details.
+func (x gen_NSProgressIndicator) UsesThreadedAnimation() bool {
+	ret := C.NSProgressIndicator_inst_UsesThreadedAnimation(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetUsesThreadedAnimation returns a Boolean that indicates whether the progress indicator implements animation in a separate thread.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501160-usesthreadedanimation?language=objc for details.
+func (x gen_NSProgressIndicator) SetUsesThreadedAnimation(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetUsesThreadedAnimation(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsIndeterminate returns a Boolean that indicates whether the progress indicator is indeterminate.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501146-indeterminate?language=objc for details.
+func (x gen_NSProgressIndicator) IsIndeterminate() bool {
+	ret := C.NSProgressIndicator_inst_IsIndeterminate(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetIndeterminate returns a Boolean that indicates whether the progress indicator is indeterminate.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501146-indeterminate?language=objc for details.
+func (x gen_NSProgressIndicator) SetIndeterminate(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetIndeterminate(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsDisplayedWhenStopped returns a Boolean that indicates whether the progress indicator hides itself when it isn’t animating.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501171-displayedwhenstopped?language=objc for details.
+func (x gen_NSProgressIndicator) IsDisplayedWhenStopped() bool {
+	ret := C.NSProgressIndicator_inst_IsDisplayedWhenStopped(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetDisplayedWhenStopped returns a Boolean that indicates whether the progress indicator hides itself when it isn’t animating.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501171-displayedwhenstopped?language=objc for details.
+func (x gen_NSProgressIndicator) SetDisplayedWhenStopped(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetDisplayedWhenStopped(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
 	)
 
 	return
