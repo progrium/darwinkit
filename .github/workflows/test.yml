@@ -1,11 +1,13 @@
 on: [push, pull_request]
 name: Test
+env:
+  CGO_CFLAGS: -w
 jobs:
   test:
     strategy:
       matrix:
         go-version: [stable, oldstable]
-        os: [macos-13]
+        os: [macos-11, macos-12, macos-13]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Install Go
@@ -15,4 +17,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Test
-      run: go test -v ./...
+      run: |
+        TAGS=${{ matrix.os }}
+        TAGS=${TAGS//-} # remove dash
+        go test -tags $TAGS -v ./...
