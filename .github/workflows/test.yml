@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [stable, oldstable]
+        go-version: [oldstable]
         os: [macos-11, macos-12, macos-13]
     runs-on: ${{ matrix.os }}
     steps:
