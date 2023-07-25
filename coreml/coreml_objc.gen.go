@@ -1,9 +1,12 @@
+//go:build !macos12 && !macos11
+
 package coreml
 
 import (
+	"unsafe"
+
 	core "github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
-	"unsafe"
 )
 
 /*
