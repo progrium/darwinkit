@@ -21,6 +21,17 @@ bool core_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 
 void* NSObject_type_Alloc() {
 	return [NSObject
@@ -120,6 +131,10 @@ void* NSArray_type_ArrayWithArray(void* array) {
 	return [NSArray
 		arrayWithArray: array];
 }
+void* NSArray_type_ArrayWithObject(void* anObject) {
+	return [NSArray
+		arrayWithObject: anObject];
+}
 void* NSArray_type_ArrayWithContentsOfURLError(void* url, void* error) {
 	return [NSArray
 		arrayWithContentsOfURL: url
@@ -198,6 +213,11 @@ void* NSDictionary_type_DictionaryWithObjectsForKeys(void* objects, void* keys) 
 		dictionaryWithObjects: objects
 		forKeys: keys];
 }
+void* NSDictionary_type_DictionaryWithObjectForKey(void* object, void* key) {
+	return [NSDictionary
+		dictionaryWithObject: object
+		forKey: key];
+}
 void* NSDictionary_type_DictionaryWithDictionary(void* dict) {
 	return [NSDictionary
 		dictionaryWithDictionary: dict];
@@ -210,6 +230,30 @@ void* NSDictionary_type_DictionaryWithContentsOfURLError(void* url, void* error)
 void* NSDictionary_type_SharedKeySetForKeys(void* keys) {
 	return [NSDictionary
 		sharedKeySetForKeys: keys];
+}
+void* NSMutableDictionary_type_Alloc() {
+	return [NSMutableDictionary
+		alloc];
+}
+void* NSMutableDictionary_type_DictionaryWithCapacity(unsigned long numItems) {
+	return [NSMutableDictionary
+		dictionaryWithCapacity: numItems];
+}
+void* NSMutableDictionary_type_DictionaryWithSharedKeySet(void* keyset) {
+	return [NSMutableDictionary
+		dictionaryWithSharedKeySet: keyset];
+}
+void* NSMutableDictionary_type_DictionaryWithOBEXHeadersData(void* inHeadersData) {
+	return [NSMutableDictionary
+		dictionaryWithOBEXHeadersData: inHeadersData];
+}
+void* NSMutableDictionary_type_DictionaryWithContentsOfFile(void* path) {
+	return [NSMutableDictionary
+		dictionaryWithContentsOfFile: path];
+}
+void* NSMutableDictionary_type_DictionaryWithContentsOfURL(void* url) {
+	return [NSMutableDictionary
+		dictionaryWithContentsOfURL: url];
 }
 void* NSError_type_Alloc() {
 	return [NSError
@@ -458,6 +502,14 @@ void NSUserDefaults_type_ResetStandardUserDefaults() {
 void* NSUserDefaults_type_StandardUserDefaults() {
 	return [NSUserDefaults
 		standardUserDefaults];
+}
+void* NSMutableString_type_Alloc() {
+	return [NSMutableString
+		alloc];
+}
+void* NSMutableString_type_StringWithCapacity(unsigned long capacity) {
+	return [NSMutableString
+		stringWithCapacity: capacity];
 }
 
 
@@ -1269,6 +1321,11 @@ void CALayer_inst_SetName(void *id, void* value) {
 		setName: value];
 }
 
+void* NSArray_inst_ArrayByAddingObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		arrayByAddingObject: anObject];
+}
+
 void* NSArray_inst_ArrayByAddingObjectsFromArray(void *id, void* otherArray) {
 	return [(NSArray*)id
 		arrayByAddingObjectsFromArray: otherArray];
@@ -1277,6 +1334,11 @@ void* NSArray_inst_ArrayByAddingObjectsFromArray(void *id, void* otherArray) {
 void* NSArray_inst_ComponentsJoinedByString(void *id, void* separator) {
 	return [(NSArray*)id
 		componentsJoinedByString: separator];
+}
+
+BOOL NSArray_inst_ContainsObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		containsObject: anObject];
 }
 
 void* NSArray_inst_DescriptionWithLocale(void *id, void* locale) {
@@ -1288,6 +1350,21 @@ void* NSArray_inst_DescriptionWithLocaleIndent(void *id, void* locale, unsigned 
 	return [(NSArray*)id
 		descriptionWithLocale: locale
 		indent: level];
+}
+
+void* NSArray_inst_FirstObjectCommonWithArray(void *id, void* otherArray) {
+	return [(NSArray*)id
+		firstObjectCommonWithArray: otherArray];
+}
+
+unsigned long NSArray_inst_IndexOfObject(void *id, void* anObject) {
+	return [(NSArray*)id
+		indexOfObject: anObject];
+}
+
+unsigned long NSArray_inst_IndexOfObjectIdenticalTo(void *id, void* anObject) {
+	return [(NSArray*)id
+		indexOfObjectIdenticalTo: anObject];
 }
 
 void* NSArray_inst_Init(void *id) {
@@ -1326,6 +1403,16 @@ void NSArray_inst_MakeObjectsPerformSelectorWithObject(void *id, void* aSelector
 	[(NSArray*)id
 		makeObjectsPerformSelector: aSelector
 		withObject: argument];
+}
+
+void* NSArray_inst_ObjectAtIndex(void *id, unsigned long index) {
+	return [(NSArray*)id
+		objectAtIndex: index];
+}
+
+void* NSArray_inst_ObjectAtIndexedSubscript(void *id, unsigned long idx) {
+	return [(NSArray*)id
+		objectAtIndexedSubscript: idx];
 }
 
 void* NSArray_inst_PathsMatchingExtensions(void *id, void* filterTypes) {
@@ -1381,6 +1468,16 @@ BOOL NSArray_inst_WriteToURLError(void *id, void* url, void* error) {
 unsigned long NSArray_inst_Count(void *id) {
 	return [(NSArray*)id
 		count];
+}
+
+void* NSArray_inst_FirstObject(void *id) {
+	return [(NSArray*)id
+		firstObject];
+}
+
+void* NSArray_inst_LastObject(void *id) {
+	return [(NSArray*)id
+		lastObject];
 }
 
 void* NSArray_inst_SortedArrayHint(void *id) {
@@ -1632,6 +1729,11 @@ void NSMutableData_inst_SetLength(void *id, unsigned long value) {
 		setLength: value];
 }
 
+void* NSDictionary_inst_AllKeysForObject(void *id, void* anObject) {
+	return [(NSDictionary*)id
+		allKeysForObject: anObject];
+}
+
 void* NSDictionary_inst_DescriptionWithLocale(void *id, void* locale) {
 	return [(NSDictionary*)id
 		descriptionWithLocale: locale];
@@ -1741,6 +1843,27 @@ void* NSDictionary_inst_KeysSortedByValueUsingSelector(void *id, void* comparato
 		keysSortedByValueUsingSelector: comparator];
 }
 
+void* NSDictionary_inst_ObjectForKey(void *id, void* aKey) {
+	return [(NSDictionary*)id
+		objectForKey: aKey];
+}
+
+void* NSDictionary_inst_ObjectForKeyedSubscript(void *id, void* key) {
+	return [(NSDictionary*)id
+		objectForKeyedSubscript: key];
+}
+
+void* NSDictionary_inst_ObjectsForKeysNotFoundMarker(void *id, void* keys, void* marker) {
+	return [(NSDictionary*)id
+		objectsForKeys: keys
+		notFoundMarker: marker];
+}
+
+void* NSDictionary_inst_ValueForKey(void *id, void* key) {
+	return [(NSDictionary*)id
+		valueForKey: key];
+}
+
 BOOL NSDictionary_inst_WriteToURLError(void *id, void* url, void* error) {
 	return [(NSDictionary*)id
 		writeToURL: url
@@ -1770,6 +1893,74 @@ void* NSDictionary_inst_Description(void *id) {
 void* NSDictionary_inst_DescriptionInStringsFileFormat(void *id) {
 	return [(NSDictionary*)id
 		descriptionInStringsFileFormat];
+}
+
+void NSMutableDictionary_inst_AddEntriesFromDictionary(void *id, void* otherDictionary) {
+	[(NSMutableDictionary*)id
+		addEntriesFromDictionary: otherDictionary];
+}
+
+void* NSMutableDictionary_inst_GetHeaderBytes(void *id) {
+	return [(NSMutableDictionary*)id
+		getHeaderBytes];
+}
+
+void* NSMutableDictionary_inst_Init(void *id) {
+	return [(NSMutableDictionary*)id
+		init];
+}
+
+void* NSMutableDictionary_inst_InitWithCapacity(void *id, unsigned long numItems) {
+	return [(NSMutableDictionary*)id
+		initWithCapacity: numItems];
+}
+
+void* NSMutableDictionary_inst_InitWithContentsOfFile(void *id, void* path) {
+	return [(NSMutableDictionary*)id
+		initWithContentsOfFile: path];
+}
+
+void* NSMutableDictionary_inst_InitWithContentsOfURL(void *id, void* url) {
+	return [(NSMutableDictionary*)id
+		initWithContentsOfURL: url];
+}
+
+void NSMutableDictionary_inst_RemoveAllObjects(void *id) {
+	[(NSMutableDictionary*)id
+		removeAllObjects];
+}
+
+void NSMutableDictionary_inst_RemoveObjectForKey(void *id, void* aKey) {
+	[(NSMutableDictionary*)id
+		removeObjectForKey: aKey];
+}
+
+void NSMutableDictionary_inst_RemoveObjectsForKeys(void *id, void* keyArray) {
+	[(NSMutableDictionary*)id
+		removeObjectsForKeys: keyArray];
+}
+
+void NSMutableDictionary_inst_SetDictionary(void *id, void* otherDictionary) {
+	[(NSMutableDictionary*)id
+		setDictionary: otherDictionary];
+}
+
+void NSMutableDictionary_inst_SetObjectForKey(void *id, void* anObject, void* aKey) {
+	[(NSMutableDictionary*)id
+		setObject: anObject
+		forKey: aKey];
+}
+
+void NSMutableDictionary_inst_SetObjectForKeyedSubscript(void *id, void* obj, void* key) {
+	[(NSMutableDictionary*)id
+		setObject: obj
+		forKeyedSubscript: key];
+}
+
+void NSMutableDictionary_inst_SetValueForKey(void *id, void* value, void* key) {
+	[(NSMutableDictionary*)id
+		setValue: value
+		forKey: key];
 }
 
 void* NSError_inst_Init(void *id) {
@@ -2434,6 +2625,11 @@ BOOL NSThread_inst_IsMainThread(void *id) {
 		isMainThread];
 }
 
+void* NSThread_inst_ThreadDictionary(void *id) {
+	return [(NSThread*)id
+		threadDictionary];
+}
+
 void* NSThread_inst_Name(void *id) {
 	return [(NSThread*)id
 		name];
@@ -2964,6 +3160,37 @@ void* NSUserDefaults_inst_VolatileDomainNames(void *id) {
 		volatileDomainNames];
 }
 
+void NSMutableString_inst_AppendFormat(void *id, void* format) {
+	[(NSMutableString*)id
+		appendFormat: format];
+}
+
+void NSMutableString_inst_AppendString(void *id, void* aString) {
+	[(NSMutableString*)id
+		appendString: aString];
+}
+
+void* NSMutableString_inst_InitWithCapacity(void *id, unsigned long capacity) {
+	return [(NSMutableString*)id
+		initWithCapacity: capacity];
+}
+
+void NSMutableString_inst_InsertStringAtIndex(void *id, void* aString, unsigned long loc) {
+	[(NSMutableString*)id
+		insertString: aString
+		atIndex: loc];
+}
+
+void NSMutableString_inst_SetString(void *id, void* aString) {
+	[(NSMutableString*)id
+		setString: aString];
+}
+
+void* NSMutableString_inst_Init(void *id) {
+	return [(NSMutableString*)id
+		init];
+}
+
 
 BOOL core_objc_bool_true = YES;
 BOOL core_objc_bool_false = NO;
@@ -3033,10 +3260,10 @@ func NSObject_InstancesRespondToSelector(aSelector objc.Selector) bool {
 // NSObject_Description returns a string that represents the contents of the receiving class.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418799-description?language=objc for details.
-func NSObject_Description() NSString {
+func NSObject_Description() string {
 	ret := C.NSObject_type_Description()
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSObject_CancelPreviousPerformRequestsWithTarget cancels perform requests previously registered with the performSelector:withObject:afterDelay: instance method.
@@ -3117,10 +3344,10 @@ func NSObject_Version() NSInteger {
 // NSObject_DebugDescription is undocumented.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418711-debugdescription?language=objc for details.
-func NSObject_DebugDescription() NSString {
+func NSObject_DebugDescription() string {
 	ret := C.NSObject_type_DebugDescription()
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSObject_Hash is undocumented.
@@ -3162,9 +3389,9 @@ func CALayer_LayerWithRemoteClientId(client_id uint32) CALayer {
 // CALayer_NeedsDisplayForKey returns a Boolean indicating whether changes to the specified key require the layer to be redisplayed.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410769-needsdisplayforkey?language=objc for details.
-func CALayer_NeedsDisplayForKey(key NSStringRef) bool {
+func CALayer_NeedsDisplayForKey(key string) bool {
 	ret := C.CALayer_type_NeedsDisplayForKey(
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -3173,9 +3400,9 @@ func CALayer_NeedsDisplayForKey(key NSStringRef) bool {
 // CALayer_DefaultActionForKey returns the default action for the current class.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410954-defaultactionforkey?language=objc for details.
-func CALayer_DefaultActionForKey(event NSStringRef) objc.Object {
+func CALayer_DefaultActionForKey(event string) objc.Object {
 	ret := C.CALayer_type_DefaultActionForKey(
-		objc.RefPointer(event),
+		C.createNSStringFromCString(C.CString(event)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -3184,9 +3411,9 @@ func CALayer_DefaultActionForKey(event NSStringRef) objc.Object {
 // CALayer_DefaultValueForKey specifies the default value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410886-defaultvalueforkey?language=objc for details.
-func CALayer_DefaultValueForKey(key NSStringRef) objc.Object {
+func CALayer_DefaultValueForKey(key string) objc.Object {
 	ret := C.CALayer_type_DefaultValueForKey(
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -3214,6 +3441,17 @@ func NSArray_Array() NSArray {
 func NSArray_ArrayWithArray(array NSArrayRef) NSArray {
 	ret := C.NSArray_type_ArrayWithArray(
 		objc.RefPointer(array),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// NSArray_ArrayWithObject creates and returns an array containing a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1411981-arraywithobject?language=objc for details.
+func NSArray_ArrayWithObject(anObject objc.Ref) NSArray {
+	ret := C.NSArray_type_ArrayWithObject(
+		objc.RefPointer(anObject),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -3323,9 +3561,9 @@ func NSData_DataWithData(data NSDataRef) NSData {
 // NSData_DataWithContentsOfFile creates a data object by reading every byte from the file at a given path.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1547226-datawithcontentsoffile?language=objc for details.
-func NSData_DataWithContentsOfFile(path NSStringRef) NSData {
+func NSData_DataWithContentsOfFile(path string) NSData {
 	ret := C.NSData_type_DataWithContentsOfFile(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSData_FromPointer(ret)
@@ -3399,6 +3637,18 @@ func NSDictionary_DictionaryWithObjectsForKeys(objects NSArrayRef, keys NSArrayR
 	return NSDictionary_FromPointer(ret)
 }
 
+// NSDictionary_DictionaryWithObjectForKey creates a dictionary containing a given key and value.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1414965-dictionarywithobject?language=objc for details.
+func NSDictionary_DictionaryWithObjectForKey(object objc.Ref, key objc.Ref) NSDictionary {
+	ret := C.NSDictionary_type_DictionaryWithObjectForKey(
+		objc.RefPointer(object),
+		objc.RefPointer(key),
+	)
+
+	return NSDictionary_FromPointer(ret)
+}
+
 // NSDictionary_DictionaryWithDictionary creates a dictionary containing the keys and values from another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1574191-dictionarywithdictionary?language=objc for details.
@@ -3431,6 +3681,68 @@ func NSDictionary_SharedKeySetForKeys(keys NSArrayRef) objc.Object {
 	)
 
 	return objc.Object_FromPointer(ret)
+}
+
+// NSMutableDictionary_Alloc is undocumented.
+func NSMutableDictionary_Alloc() NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_Alloc()
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithCapacity creates and returns a mutable dictionary, initially giving it enough allocated memory to hold a given number of entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574186-dictionarywithcapacity?language=objc for details.
+func NSMutableDictionary_DictionaryWithCapacity(numItems NSUInteger) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithCapacity(
+		C.ulong(numItems),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithSharedKeySet creates a mutable dictionary which is optimized for dealing with a known set of keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1412658-dictionarywithsharedkeyset?language=objc for details.
+func NSMutableDictionary_DictionaryWithSharedKeySet(keyset objc.Ref) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithSharedKeySet(
+		objc.RefPointer(keyset),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithOBEXHeadersData is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428433-dictionarywithobexheadersdata?language=objc for details.
+func NSMutableDictionary_DictionaryWithOBEXHeadersData(inHeadersData NSDataRef) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithOBEXHeadersData(
+		objc.RefPointer(inHeadersData),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithContentsOfFile is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574188-dictionarywithcontentsoffile?language=objc for details.
+func NSMutableDictionary_DictionaryWithContentsOfFile(path string) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithContentsOfFile(
+		C.createNSStringFromCString(C.CString(path)),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// NSMutableDictionary_DictionaryWithContentsOfURL is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574182-dictionarywithcontentsofurl?language=objc for details.
+func NSMutableDictionary_DictionaryWithContentsOfURL(url NSURLRef) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithContentsOfURL(
+		objc.RefPointer(url),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
 }
 
 // NSError_Alloc is undocumented.
@@ -3656,21 +3968,21 @@ func NSString_String() NSString {
 // NSString_LocalizedUserNotificationStringForKeyArguments returns a localized string intended for display in a notification alert.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1649585-localizedusernotificationstringf?language=objc for details.
-func NSString_LocalizedUserNotificationStringForKeyArguments(key NSStringRef, arguments NSArrayRef) NSString {
+func NSString_LocalizedUserNotificationStringForKeyArguments(key string, arguments NSArrayRef) string {
 	ret := C.NSString_type_LocalizedUserNotificationStringForKeyArguments(
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 		objc.RefPointer(arguments),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSString_StringWithString returns a string created by copying the characters from another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1497372-stringwithstring?language=objc for details.
-func NSString_StringWithString(string NSStringRef) NSString {
+func NSString_StringWithString(string string) NSString {
 	ret := C.NSString_type_StringWithString(
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 	)
 
 	return NSString_FromPointer(ret)
@@ -3679,49 +3991,49 @@ func NSString_StringWithString(string NSStringRef) NSString {
 // NSString_StringWithContentsOfFileEncodingError returns a string created by reading data from the file at a given path interpreted using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc for details.
-func NSString_StringWithContentsOfFileEncodingError(path NSStringRef, enc NSStringEncoding, error NSErrorRef) NSString {
+func NSString_StringWithContentsOfFileEncodingError(path string, enc NSStringEncoding, error NSErrorRef) string {
 	ret := C.NSString_type_StringWithContentsOfFileEncodingError(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		C.ulong(enc),
 		objc.RefPointer(error),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSString_StringWithContentsOfURLEncodingError returns a string created by reading data from a given URL interpreted using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc for details.
-func NSString_StringWithContentsOfURLEncodingError(url NSURLRef, enc NSStringEncoding, error NSErrorRef) NSString {
+func NSString_StringWithContentsOfURLEncodingError(url NSURLRef, enc NSStringEncoding, error NSErrorRef) string {
 	ret := C.NSString_type_StringWithContentsOfURLEncodingError(
 		objc.RefPointer(url),
 		C.ulong(enc),
 		objc.RefPointer(error),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSString_LocalizedNameOfStringEncoding returns a human-readable string giving the name of a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1408318-localizednameofstringencoding?language=objc for details.
-func NSString_LocalizedNameOfStringEncoding(encoding NSStringEncoding) NSString {
+func NSString_LocalizedNameOfStringEncoding(encoding NSStringEncoding) string {
 	ret := C.NSString_type_LocalizedNameOfStringEncoding(
 		C.ulong(encoding),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSString_PathWithComponents returns a string built from the strings in a given array by concatenating them with a path separator between each pair.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417198-pathwithcomponents?language=objc for details.
-func NSString_PathWithComponents(components NSArrayRef) NSString {
+func NSString_PathWithComponents(components NSArrayRef) string {
 	ret := C.NSString_type_PathWithComponents(
 		objc.RefPointer(components),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // NSString_DefaultCStringEncoding returns the C-string encoding assumed for any method accepting a C string as an argument.
@@ -3846,9 +4158,9 @@ func NSURL_Alloc() NSURL {
 // NSURL_URLWithString creates and returns an NSURL object initialized with a provided URL string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1572047-urlwithstring?language=objc for details.
-func NSURL_URLWithString(URLString NSStringRef) NSURL {
+func NSURL_URLWithString(URLString string) NSURL {
 	ret := C.NSURL_type_URLWithString(
-		objc.RefPointer(URLString),
+		C.createNSStringFromCString(C.CString(URLString)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -3857,9 +4169,9 @@ func NSURL_URLWithString(URLString NSStringRef) NSURL {
 // NSURL_URLWithStringRelativeToURL creates and returns an NSURL object initialized with a base URL and a relative string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1572049-urlwithstring?language=objc for details.
-func NSURL_URLWithStringRelativeToURL(URLString NSStringRef, baseURL NSURLRef) NSURL {
+func NSURL_URLWithStringRelativeToURL(URLString string, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_URLWithStringRelativeToURL(
-		objc.RefPointer(URLString),
+		C.createNSStringFromCString(C.CString(URLString)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -3869,9 +4181,9 @@ func NSURL_URLWithStringRelativeToURL(URLString NSStringRef, baseURL NSURLRef) N
 // NSURL_FileURLWithPathIsDirectory initializes and returns a newly created NSURL object as a file URL with a specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414650-fileurlwithpath?language=objc for details.
-func NSURL_FileURLWithPathIsDirectory(path NSStringRef, isDir bool) NSURL {
+func NSURL_FileURLWithPathIsDirectory(path string, isDir bool) NSURL {
 	ret := C.NSURL_type_FileURLWithPathIsDirectory(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 	)
 
@@ -3881,9 +4193,9 @@ func NSURL_FileURLWithPathIsDirectory(path NSStringRef, isDir bool) NSURL {
 // NSURL_FileURLWithPathRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413201-fileurlwithpath?language=objc for details.
-func NSURL_FileURLWithPathRelativeToURL(path NSStringRef, baseURL NSURLRef) NSURL {
+func NSURL_FileURLWithPathRelativeToURL(path string, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_FileURLWithPathRelativeToURL(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -3893,9 +4205,9 @@ func NSURL_FileURLWithPathRelativeToURL(path NSStringRef, baseURL NSURLRef) NSUR
 // NSURL_FileURLWithPathIsDirectoryRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413020-fileurlwithpath?language=objc for details.
-func NSURL_FileURLWithPathIsDirectoryRelativeToURL(path NSStringRef, isDir bool, baseURL NSURLRef) NSURL {
+func NSURL_FileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseURL NSURLRef) NSURL {
 	ret := C.NSURL_type_FileURLWithPathIsDirectoryRelativeToURL(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 		objc.RefPointer(baseURL),
 	)
@@ -3906,9 +4218,9 @@ func NSURL_FileURLWithPathIsDirectoryRelativeToURL(path NSStringRef, isDir bool,
 // NSURL_FileURLWithPath initializes and returns a newly created NSURL object as a file URL with a specified path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410828-fileurlwithpath?language=objc for details.
-func NSURL_FileURLWithPath(path NSStringRef) NSURL {
+func NSURL_FileURLWithPath(path string) NSURL {
 	ret := C.NSURL_type_FileURLWithPath(
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -4025,6 +4337,24 @@ func NSUserDefaults_StandardUserDefaults() NSUserDefaults {
 	return NSUserDefaults_FromPointer(ret)
 }
 
+// NSMutableString_Alloc is undocumented.
+func NSMutableString_Alloc() NSMutableString {
+	ret := C.NSMutableString_type_Alloc()
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// NSMutableString_StringWithCapacity returns an empty NSMutableString object with initial storage for a given number of characters.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1497396-stringwithcapacity?language=objc for details.
+func NSMutableString_StringWithCapacity(capacity NSUInteger) NSMutableString {
+	ret := C.NSMutableString_type_StringWithCapacity(
+		C.ulong(capacity),
+	)
+
+	return NSMutableString_FromPointer(ret)
+}
+
 type NSObjectRef interface {
 	Pointer() uintptr
 	Init_AsNSObject() NSObject
@@ -4047,12 +4377,12 @@ func NSObject_FromRef(ref objc.Ref) NSObject {
 // ActionProperty sent to the delegate to request the property the action applies to.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411302-actionproperty?language=objc for details.
-func (x gen_NSObject) ActionProperty() NSString {
+func (x gen_NSObject) ActionProperty() string {
 	ret := C.NSObject_inst_ActionProperty(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // AttemptRecoveryFromErrorOptionIndex implemented to attempt a recovery from an error noted in an application-modal dialog.
@@ -4151,13 +4481,13 @@ func (x gen_NSObject) Copy() objc.Object {
 // See https://developer.apple.com/documentation/objectivec/nsobject/1410291-copyscriptingvalue?language=objc for details.
 func (x gen_NSObject) CopyScriptingValueForKeyWithProperties(
 	value objc.Ref,
-	key NSStringRef,
+	key string,
 	properties NSDictionaryRef,
 ) objc.Object {
 	ret := C.NSObject_inst_CopyScriptingValueForKeyWithProperties(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 		objc.RefPointer(properties),
 	)
 
@@ -4247,45 +4577,45 @@ func (x gen_NSObject) ImageRepresentation() objc.Object {
 // ImageRepresentationType returns the representation type of the image to display.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503547-imagerepresentationtype?language=objc for details.
-func (x gen_NSObject) ImageRepresentationType() NSString {
+func (x gen_NSObject) ImageRepresentationType() string {
 	ret := C.NSObject_inst_ImageRepresentationType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ImageSubtitle returns the display subtitle of the image.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503725-imagesubtitle?language=objc for details.
-func (x gen_NSObject) ImageSubtitle() NSString {
+func (x gen_NSObject) ImageSubtitle() string {
 	ret := C.NSObject_inst_ImageSubtitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ImageTitle returns the display title of the image.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1504080-imagetitle?language=objc for details.
-func (x gen_NSObject) ImageTitle() NSString {
+func (x gen_NSObject) ImageTitle() string {
 	ret := C.NSObject_inst_ImageTitle(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ImageUID returns a unique string that identifies the data source item.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503516-imageuid?language=objc for details.
-func (x gen_NSObject) ImageUID() NSString {
+func (x gen_NSObject) ImageUID() string {
 	ret := C.NSObject_inst_ImageUID(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ImageVersion returns the version of the item.
@@ -4325,12 +4655,12 @@ func (x gen_NSObject) Init_AsNSObject() NSObject {
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385446-inputtext?language=objc for details.
 func (x gen_NSObject) InputTextClient(
-	string NSStringRef,
+	string string,
 	sender objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_InputTextClient(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		objc.RefPointer(sender),
 	)
 
@@ -4341,14 +4671,14 @@ func (x gen_NSObject) InputTextClient(
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385436-inputtext?language=objc for details.
 func (x gen_NSObject) InputTextKeyModifiersClient(
-	string NSStringRef,
+	string string,
 	keyCode NSInteger,
 	flags NSUInteger,
 	sender objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_InputTextKeyModifiersClient(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		C.long(keyCode),
 		C.ulong(flags),
 		objc.RefPointer(sender),
@@ -4361,25 +4691,25 @@ func (x gen_NSObject) InputTextKeyModifiersClient(
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411046-inverseforrelationshipkey?language=objc for details.
 func (x gen_NSObject) InverseForRelationshipKey(
-	relationshipKey NSStringRef,
-) NSString {
+	relationshipKey string,
+) string {
 	ret := C.NSObject_inst_InverseForRelationshipKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(relationshipKey),
+		C.createNSStringFromCString(C.CString(relationshipKey)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // IsCaseInsensitiveLike returns a Boolean value that indicates whether receiver is considered to be “like” a given string when the case of characters in the receiver is ignored.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393837-iscaseinsensitivelike?language=objc for details.
 func (x gen_NSObject) IsCaseInsensitiveLike(
-	object NSStringRef,
+	object string,
 ) bool {
 	ret := C.NSObject_inst_IsCaseInsensitiveLike(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(object),
+		C.createNSStringFromCString(C.CString(object)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -4459,11 +4789,11 @@ func (x gen_NSObject) IsLessThanOrEqualTo(
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393866-islike?language=objc for details.
 func (x gen_NSObject) IsLike(
-	object NSStringRef,
+	object string,
 ) bool {
 	ret := C.NSObject_inst_IsLike(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(object),
+		C.createNSStringFromCString(C.CString(object)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -4669,12 +4999,12 @@ func (x gen_NSObject) ToOneRelationshipKeys() NSArray {
 // ClassName returns a string containing the name of the class.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411337-classname?language=objc for details.
-func (x gen_NSObject) ClassName() NSString {
+func (x gen_NSObject) ClassName() string {
 	ret := C.NSObject_inst_ClassName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ScriptingProperties an NSString-keyed dictionary of the receiver's scriptable properties.
@@ -4747,11 +5077,11 @@ func CALayer_FromRef(ref objc.Ref) CALayer {
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410844-actionforkey?language=objc for details.
 func (x gen_CALayer) ActionForKey(
-	event NSStringRef,
+	event string,
 ) objc.Object {
 	ret := C.CALayer_inst_ActionForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(event),
+		C.createNSStringFromCString(C.CString(event)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -5023,11 +5353,11 @@ func (x gen_CALayer) RemoveAllAnimations() {
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410939-removeanimationforkey?language=objc for details.
 func (x gen_CALayer) RemoveAnimationForKey(
-	key NSStringRef,
+	key string,
 ) {
 	C.CALayer_inst_RemoveAnimationForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return
@@ -5142,11 +5472,11 @@ func (x gen_CALayer) SetNeedsLayout() {
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410753-shouldarchivevalueforkey?language=objc for details.
 func (x gen_CALayer) ShouldArchiveValueForKey(
-	key NSStringRef,
+	key string,
 ) bool {
 	ret := C.CALayer_inst_ShouldArchiveValueForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6077,23 +6407,23 @@ func (x gen_CALayer) VisibleRect() NSRect {
 // Name returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410879-name?language=objc for details.
-func (x gen_CALayer) Name() NSString {
+func (x gen_CALayer) Name() string {
 	ret := C.CALayer_inst_Name(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetName returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410879-name?language=objc for details.
 func (x gen_CALayer) SetName(
-	value NSStringRef,
+	value string,
 ) {
 	C.CALayer_inst_SetName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -6118,6 +6448,20 @@ func NSArray_FromRef(ref objc.Ref) NSArray {
 	return NSArray_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+// ArrayByAddingObject returns a new array that is a copy of the receiving array with a given object added to the end.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408534-arraybyaddingobject?language=objc for details.
+func (x gen_NSArray) ArrayByAddingObject(
+	anObject objc.Ref,
+) NSArray {
+	ret := C.NSArray_inst_ArrayByAddingObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // ArrayByAddingObjectsFromArray returns a new array that is a copy of the receiving array with the objects contained in another array added to the end.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412087-arraybyaddingobjectsfromarray?language=objc for details.
@@ -6136,14 +6480,28 @@ func (x gen_NSArray) ArrayByAddingObjectsFromArray(
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412075-componentsjoinedbystring?language=objc for details.
 func (x gen_NSArray) ComponentsJoinedByString(
-	separator NSStringRef,
-) NSString {
+	separator string,
+) string {
 	ret := C.NSArray_inst_ComponentsJoinedByString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(separator),
+		C.createNSStringFromCString(C.CString(separator)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
+}
+
+// ContainsObject returns a Boolean value that indicates whether a given object is present in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1407477-containsobject?language=objc for details.
+func (x gen_NSArray) ContainsObject(
+	anObject objc.Ref,
+) bool {
+	ret := C.NSArray_inst_ContainsObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return convertObjCBoolToGo(ret)
 }
 
 // DescriptionWithLocale returns a string that represents the contents of the array, formatted as a property list.
@@ -6151,13 +6509,13 @@ func (x gen_NSArray) ComponentsJoinedByString(
 // See https://developer.apple.com/documentation/foundation/nsarray/1412374-descriptionwithlocale?language=objc for details.
 func (x gen_NSArray) DescriptionWithLocale(
 	locale objc.Ref,
-) NSString {
+) string {
 	ret := C.NSArray_inst_DescriptionWithLocale(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(locale),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DescriptionWithLocaleIndent returns a string that represents the contents of the array, formatted as a property list.
@@ -6166,14 +6524,56 @@ func (x gen_NSArray) DescriptionWithLocale(
 func (x gen_NSArray) DescriptionWithLocaleIndent(
 	locale objc.Ref,
 	level NSUInteger,
-) NSString {
+) string {
 	ret := C.NSArray_inst_DescriptionWithLocaleIndent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(locale),
 		C.ulong(level),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
+}
+
+// FirstObjectCommonWithArray returns the first object contained in the receiving array that’s equal to an object in another given array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408825-firstobjectcommonwitharray?language=objc for details.
+func (x gen_NSArray) FirstObjectCommonWithArray(
+	otherArray NSArrayRef,
+) objc.Object {
+	ret := C.NSArray_inst_FirstObjectCommonWithArray(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherArray),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// IndexOfObject returns the lowest index whose corresponding array value is equal to a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1417076-indexofobject?language=objc for details.
+func (x gen_NSArray) IndexOfObject(
+	anObject objc.Ref,
+) NSUInteger {
+	ret := C.NSArray_inst_IndexOfObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSUInteger(ret)
+}
+
+// IndexOfObjectIdenticalTo returns the lowest index whose corresponding array value is identical to a given object.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1410847-indexofobjectidenticalto?language=objc for details.
+func (x gen_NSArray) IndexOfObjectIdenticalTo(
+	anObject objc.Ref,
+) NSUInteger {
+	ret := C.NSArray_inst_IndexOfObjectIdenticalTo(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSUInteger(ret)
 }
 
 // Init initializes a newly allocated array.
@@ -6288,6 +6688,34 @@ func (x gen_NSArray) MakeObjectsPerformSelectorWithObject(
 	return
 }
 
+// ObjectAtIndex returns the object located at the specified index.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1417555-objectatindex?language=objc for details.
+func (x gen_NSArray) ObjectAtIndex(
+	index NSUInteger,
+) objc.Object {
+	ret := C.NSArray_inst_ObjectAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(index),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectAtIndexedSubscript returns the object at the specified index.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1414084-objectatindexedsubscript?language=objc for details.
+func (x gen_NSArray) ObjectAtIndexedSubscript(
+	idx NSUInteger,
+) objc.Object {
+	ret := C.NSArray_inst_ObjectAtIndexedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(idx),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
 // PathsMatchingExtensions returns an array containing all the pathname elements in the receiving array that have filename extensions from a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1418275-pathsmatchingextensions?language=objc for details.
@@ -6307,12 +6735,12 @@ func (x gen_NSArray) PathsMatchingExtensions(
 // See https://developer.apple.com/documentation/foundation/nsarray/1414976-removeobserver?language=objc for details.
 func (x gen_NSArray) RemoveObserverForKeyPath(
 	observer NSObjectRef,
-	keyPath NSStringRef,
+	keyPath string,
 ) {
 	C.NSArray_inst_RemoveObserverForKeyPath(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(observer),
-		objc.RefPointer(keyPath),
+		C.createNSStringFromCString(C.CString(keyPath)),
 	)
 
 	return
@@ -6323,13 +6751,13 @@ func (x gen_NSArray) RemoveObserverForKeyPath(
 // See https://developer.apple.com/documentation/foundation/nsarray/1418441-removeobserver?language=objc for details.
 func (x gen_NSArray) RemoveObserverForKeyPathContext(
 	observer NSObjectRef,
-	keyPath NSStringRef,
+	keyPath string,
 	context unsafe.Pointer,
 ) {
 	C.NSArray_inst_RemoveObserverForKeyPathContext(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(observer),
-		objc.RefPointer(keyPath),
+		C.createNSStringFromCString(C.CString(keyPath)),
 		context,
 	)
 
@@ -6341,12 +6769,12 @@ func (x gen_NSArray) RemoveObserverForKeyPathContext(
 // See https://developer.apple.com/documentation/foundation/nsarray/1408301-setvalue?language=objc for details.
 func (x gen_NSArray) SetValueForKey(
 	value objc.Ref,
-	key NSStringRef,
+	key string,
 ) {
 	C.NSArray_inst_SetValueForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return
@@ -6395,11 +6823,11 @@ func (x gen_NSArray) SortedArrayUsingSelector(
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412219-valueforkey?language=objc for details.
 func (x gen_NSArray) ValueForKey(
-	key NSStringRef,
+	key string,
 ) objc.Object {
 	ret := C.NSArray_inst_ValueForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -6432,6 +6860,28 @@ func (x gen_NSArray) Count() NSUInteger {
 	return NSUInteger(ret)
 }
 
+// FirstObject returns the first object in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1412852-firstobject?language=objc for details.
+func (x gen_NSArray) FirstObject() objc.Object {
+	ret := C.NSArray_inst_FirstObject(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// LastObject returns the last object in the array.
+//
+// See https://developer.apple.com/documentation/foundation/nsarray/1408316-lastobject?language=objc for details.
+func (x gen_NSArray) LastObject() objc.Object {
+	ret := C.NSArray_inst_LastObject(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
 // SortedArrayHint analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedArrayUsingFunction:context:hint:.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1413063-sortedarrayhint?language=objc for details.
@@ -6446,12 +6896,12 @@ func (x gen_NSArray) SortedArrayHint() NSData {
 // Description returns a string that represents the contents of the array, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1413042-description?language=objc for details.
-func (x gen_NSArray) Description() NSString {
+func (x gen_NSArray) Description() string {
 	ret := C.NSArray_inst_Description(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 type NSAttributedStringRef interface {
@@ -6636,11 +7086,11 @@ func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes(
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc for details.
 func (x gen_NSAttributedString) InitWithString(
-	str NSStringRef,
+	str string,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return NSAttributedString_FromPointer(ret)
@@ -6650,12 +7100,12 @@ func (x gen_NSAttributedString) InitWithString(
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1408136-initwithstring?language=objc for details.
 func (x gen_NSAttributedString) InitWithStringAttributes(
-	str NSStringRef,
+	str string,
 	attrs NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithStringAttributes(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 		objc.RefPointer(attrs),
 	)
 
@@ -6744,12 +7194,12 @@ func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 // String returns the character contents of the attributed string as a string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1412616-string?language=objc for details.
-func (x gen_NSAttributedString) String() NSString {
+func (x gen_NSAttributedString) String() string {
 	ret := C.NSAttributedString_inst_String(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Length returns the length of the attributed string.
@@ -6852,11 +7302,11 @@ func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone(
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1408672-initwithcontentsoffile?language=objc for details.
 func (x gen_NSData) InitWithContentsOfFile(
-	path NSStringRef,
+	path string,
 ) NSData {
 	ret := C.NSData_inst_InitWithContentsOfFile(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSData_FromPointer(ret)
@@ -6908,12 +7358,12 @@ func (x gen_NSData) IsEqualToData(
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1408033-writetofile?language=objc for details.
 func (x gen_NSData) WriteToFileAtomically(
-	path NSStringRef,
+	path string,
 	useAuxiliaryFile bool,
 ) bool {
 	ret := C.NSData_inst_WriteToFileAtomically(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(useAuxiliaryFile),
 	)
 
@@ -6979,12 +7429,12 @@ func (x gen_NSData) Length() NSUInteger {
 // Description returns a string that contains a hexadecimal representation of the data object’s contents in a property list format.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1412579-description?language=objc for details.
-func (x gen_NSData) Description() NSString {
+func (x gen_NSData) Description() string {
 	ret := C.NSData_inst_Description(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 type NSMutableDataRef interface {
@@ -7165,18 +7615,32 @@ func NSDictionary_FromRef(ref objc.Ref) NSDictionary {
 	return NSDictionary_FromPointer(unsafe.Pointer(ref.Pointer()))
 }
 
+// AllKeysForObject returns a new array containing the keys corresponding to all occurrences of a given object in the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1417147-allkeysforobject?language=objc for details.
+func (x gen_NSDictionary) AllKeysForObject(
+	anObject objc.Ref,
+) NSArray {
+	ret := C.NSDictionary_inst_AllKeysForObject(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
 // DescriptionWithLocale returns a string object that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417665-descriptionwithlocale?language=objc for details.
 func (x gen_NSDictionary) DescriptionWithLocale(
 	locale objc.Ref,
-) NSString {
+) string {
 	ret := C.NSDictionary_inst_DescriptionWithLocale(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(locale),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DescriptionWithLocaleIndent returns a string object that represents the contents of the dictionary, formatted as a property list.
@@ -7185,14 +7649,14 @@ func (x gen_NSDictionary) DescriptionWithLocale(
 func (x gen_NSDictionary) DescriptionWithLocaleIndent(
 	locale objc.Ref,
 	level NSUInteger,
-) NSString {
+) string {
 	ret := C.NSDictionary_inst_DescriptionWithLocaleIndent(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(locale),
 		C.ulong(level),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FileExtensionHidden returns a Boolean value indicating whether the file hides its extension.
@@ -7220,12 +7684,12 @@ func (x gen_NSDictionary) FileGroupOwnerAccountID() NSNumber {
 // FileGroupOwnerAccountName returns the file’s group owner account name.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416788-filegroupowneraccountname?language=objc for details.
-func (x gen_NSDictionary) FileGroupOwnerAccountName() NSString {
+func (x gen_NSDictionary) FileGroupOwnerAccountName() string {
 	ret := C.NSDictionary_inst_FileGroupOwnerAccountName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FileIsAppendOnly returns a Boolean value indicating whether the file is append only.
@@ -7264,12 +7728,12 @@ func (x gen_NSDictionary) FileOwnerAccountID() NSNumber {
 // FileOwnerAccountName returns the file’s owner account name.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417533-fileowneraccountname?language=objc for details.
-func (x gen_NSDictionary) FileOwnerAccountName() NSString {
+func (x gen_NSDictionary) FileOwnerAccountName() string {
 	ret := C.NSDictionary_inst_FileOwnerAccountName(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FilePosixPermissions returns the file’s POSIX permissions.
@@ -7319,12 +7783,12 @@ func (x gen_NSDictionary) FileSystemNumber() NSInteger {
 // FileType returns the file type.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416809-filetype?language=objc for details.
-func (x gen_NSDictionary) FileType() NSString {
+func (x gen_NSDictionary) FileType() string {
 	ret := C.NSDictionary_inst_FileType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Init initializes a newly allocated dictionary.
@@ -7439,6 +7903,64 @@ func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
 	return NSArray_FromPointer(ret)
 }
 
+// ObjectForKey returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1414347-objectforkey?language=objc for details.
+func (x gen_NSDictionary) ObjectForKey(
+	aKey objc.Ref,
+) objc.Object {
+	ret := C.NSDictionary_inst_ObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(aKey),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectForKeyedSubscript returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1415430-objectforkeyedsubscript?language=objc for details.
+func (x gen_NSDictionary) ObjectForKeyedSubscript(
+	key objc.Ref,
+) objc.Object {
+	ret := C.NSDictionary_inst_ObjectForKeyedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(key),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// ObjectsForKeysNotFoundMarker returns as a static array the set of objects from the dictionary that corresponds to the specified keys.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1408769-objectsforkeys?language=objc for details.
+func (x gen_NSDictionary) ObjectsForKeysNotFoundMarker(
+	keys NSArrayRef,
+	marker objc.Ref,
+) NSArray {
+	ret := C.NSDictionary_inst_ObjectsForKeysNotFoundMarker(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keys),
+		objc.RefPointer(marker),
+	)
+
+	return NSArray_FromPointer(ret)
+}
+
+// ValueForKey returns the value associated with a given key.
+//
+// See https://developer.apple.com/documentation/foundation/nsdictionary/1410210-valueforkey?language=objc for details.
+func (x gen_NSDictionary) ValueForKey(
+	key string,
+) objc.Object {
+	ret := C.NSDictionary_inst_ValueForKey(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(key)),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
 // WriteToURLError writes a property list representation of the contents of the dictionary to a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc for details.
@@ -7491,23 +8013,232 @@ func (x gen_NSDictionary) AllValues() NSArray {
 // Description returns a string that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410799-description?language=objc for details.
-func (x gen_NSDictionary) Description() NSString {
+func (x gen_NSDictionary) Description() string {
 	ret := C.NSDictionary_inst_Description(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DescriptionInStringsFileFormat returns a string that represents the contents of the dictionary, formatted in .strings file format.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413282-descriptioninstringsfileformat?language=objc for details.
-func (x gen_NSDictionary) DescriptionInStringsFileFormat() NSString {
+func (x gen_NSDictionary) DescriptionInStringsFileFormat() string {
 	ret := C.NSDictionary_inst_DescriptionInStringsFileFormat(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
+}
+
+type NSMutableDictionaryRef interface {
+	Pointer() uintptr
+	Init_AsNSMutableDictionary() NSMutableDictionary
+}
+
+type gen_NSMutableDictionary struct {
+	NSDictionary
+}
+
+func NSMutableDictionary_FromPointer(ptr unsafe.Pointer) NSMutableDictionary {
+	return NSMutableDictionary{gen_NSMutableDictionary{
+		NSDictionary_FromPointer(ptr),
+	}}
+}
+
+func NSMutableDictionary_FromRef(ref objc.Ref) NSMutableDictionary {
+	return NSMutableDictionary_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AddEntriesFromDictionary adds to the receiving dictionary the entries from another dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411035-addentriesfromdictionary?language=objc for details.
+func (x gen_NSMutableDictionary) AddEntriesFromDictionary(
+	otherDictionary NSDictionaryRef,
+) {
+	C.NSMutableDictionary_inst_AddEntriesFromDictionary(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherDictionary),
+	)
+
+	return
+}
+
+// GetHeaderBytes is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428890-getheaderbytes?language=objc for details.
+func (x gen_NSMutableDictionary) GetHeaderBytes() NSMutableData {
+	ret := C.NSMutableDictionary_inst_GetHeaderBytes(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableData_FromPointer(ret)
+}
+
+// Init initializes a newly allocated mutable dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
+func (x gen_NSMutableDictionary) Init() NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// Init_AsNSMutableDictionary is a typed version of Init.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
+func (x gen_NSMutableDictionary) Init_AsNSMutableDictionary() NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithCapacity initializes a newly allocated mutable dictionary, allocating enough memory to hold numItems entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1417898-initwithcapacity?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithCapacity(
+	numItems NSUInteger,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithCapacity(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(numItems),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithContentsOfFile is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1407593-initwithcontentsoffile?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithContentsOfFile(
+	path string,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithContentsOfFile(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(path)),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// InitWithContentsOfURL is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410409-initwithcontentsofurl?language=objc for details.
+func (x gen_NSMutableDictionary) InitWithContentsOfURL(
+	url NSURLRef,
+) NSMutableDictionary {
+	ret := C.NSMutableDictionary_inst_InitWithContentsOfURL(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(url),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
+// RemoveAllObjects empties the dictionary of its entries.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1408955-removeallobjects?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveAllObjects() {
+	C.NSMutableDictionary_inst_RemoveAllObjects(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// RemoveObjectForKey removes a given key and its associated value from the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416518-removeobjectforkey?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveObjectForKey(
+	aKey objc.Ref,
+) {
+	C.NSMutableDictionary_inst_RemoveObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(aKey),
+	)
+
+	return
+}
+
+// RemoveObjectsForKeys removes from the dictionary entries specified by elements in a given array.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410430-removeobjectsforkeys?language=objc for details.
+func (x gen_NSMutableDictionary) RemoveObjectsForKeys(
+	keyArray NSArrayRef,
+) {
+	C.NSMutableDictionary_inst_RemoveObjectsForKeys(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(keyArray),
+	)
+
+	return
+}
+
+// SetDictionary sets the contents of the receiving dictionary to entries in a given dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1409566-setdictionary?language=objc for details.
+func (x gen_NSMutableDictionary) SetDictionary(
+	otherDictionary NSDictionaryRef,
+) {
+	C.NSMutableDictionary_inst_SetDictionary(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(otherDictionary),
+	)
+
+	return
+}
+
+// SetObjectForKey adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc for details.
+func (x gen_NSMutableDictionary) SetObjectForKey(
+	anObject objc.Ref,
+	aKey objc.Ref,
+) {
+	C.NSMutableDictionary_inst_SetObjectForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(anObject),
+		objc.RefPointer(aKey),
+	)
+
+	return
+}
+
+// SetObjectForKeyedSubscript adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc for details.
+func (x gen_NSMutableDictionary) SetObjectForKeyedSubscript(
+	obj objc.Ref,
+	key objc.Ref,
+) {
+	C.NSMutableDictionary_inst_SetObjectForKeyedSubscript(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(obj),
+		objc.RefPointer(key),
+	)
+
+	return
+}
+
+// SetValueForKey adds a given key-value pair to the dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc for details.
+func (x gen_NSMutableDictionary) SetValueForKey(
+	value objc.Ref,
+	key string,
+) {
+	C.NSMutableDictionary_inst_SetValueForKey(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(key)),
+	)
+
+	return
 }
 
 type NSErrorRef interface {
@@ -7572,12 +8303,12 @@ func (x gen_NSError) UserInfo() NSDictionary {
 // LocalizedDescription returns a string containing the localized description of the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1414418-localizeddescription?language=objc for details.
-func (x gen_NSError) LocalizedDescription() NSString {
+func (x gen_NSError) LocalizedDescription() string {
 	ret := C.NSError_inst_LocalizedDescription(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedRecoveryOptions an array containing the localized titles of buttons appropriate for displaying in an alert panel.
@@ -7594,23 +8325,23 @@ func (x gen_NSError) LocalizedRecoveryOptions() NSArray {
 // LocalizedRecoverySuggestion returns a string containing the localized recovery suggestion for the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion?language=objc for details.
-func (x gen_NSError) LocalizedRecoverySuggestion() NSString {
+func (x gen_NSError) LocalizedRecoverySuggestion() string {
 	ret := C.NSError_inst_LocalizedRecoverySuggestion(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedFailureReason returns a string containing the localized explanation of the reason for the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason?language=objc for details.
-func (x gen_NSError) LocalizedFailureReason() NSString {
+func (x gen_NSError) LocalizedFailureReason() string {
 	ret := C.NSError_inst_LocalizedFailureReason(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // RecoveryAttempter returns the object in the user info dictionary corresponding to the NSRecoveryAttempterErrorKey key.
@@ -7627,12 +8358,12 @@ func (x gen_NSError) RecoveryAttempter() objc.Object {
 // HelpAnchor returns a string to display in response to an alert panel help anchor button being pressed.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1414718-helpanchor?language=objc for details.
-func (x gen_NSError) HelpAnchor() NSString {
+func (x gen_NSError) HelpAnchor() string {
 	ret := C.NSError_inst_HelpAnchor(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // UnderlyingErrors is undocumented.
@@ -7670,13 +8401,13 @@ func NSNumber_FromRef(ref objc.Ref) NSNumber {
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409984-descriptionwithlocale?language=objc for details.
 func (x gen_NSNumber) DescriptionWithLocale(
 	locale objc.Ref,
-) NSString {
+) string {
 	ret := C.NSNumber_inst_DescriptionWithLocale(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(locale),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // InitWithBool returns an NSNumber object initialized to contain a given value, treated as a BOOL.
@@ -8089,12 +8820,12 @@ func (x gen_NSNumber) UnsignedShortValue() int16 {
 // StringValue returns the number object's value expressed as a human-readable string.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1415802-stringvalue?language=objc for details.
-func (x gen_NSNumber) StringValue() NSString {
+func (x gen_NSNumber) StringValue() string {
 	ret := C.NSNumber_inst_StringValue(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 type NSRunLoopRef interface {
@@ -8250,14 +8981,14 @@ func (x gen_NSString) CharacterAtIndex(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411841-completepathintostring?language=objc for details.
 func (x gen_NSString) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
-	outputName NSStringRef,
+	outputName string,
 	flag bool,
 	outputArray NSArrayRef,
 	filterTypes NSArrayRef,
 ) NSUInteger {
 	ret := C.NSString_inst_CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(outputName),
+		C.createNSStringFromCString(C.CString(outputName)),
 		convertToObjCBool(flag),
 		objc.RefPointer(outputArray),
 		objc.RefPointer(filterTypes),
@@ -8270,11 +9001,11 @@ func (x gen_NSString) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterT
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413214-componentsseparatedbystring?language=objc for details.
 func (x gen_NSString) ComponentsSeparatedByString(
-	separator NSStringRef,
+	separator string,
 ) NSArray {
 	ret := C.NSString_inst_ComponentsSeparatedByString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(separator),
+		C.createNSStringFromCString(C.CString(separator)),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -8284,11 +9015,11 @@ func (x gen_NSString) ComponentsSeparatedByString(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414563-containsstring?language=objc for details.
 func (x gen_NSString) ContainsString(
-	str NSStringRef,
+	str string,
 ) bool {
 	ret := C.NSString_inst_ContainsString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8344,11 +9075,11 @@ func (x gen_NSString) DrawInRectWithAttributes(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410309-hasprefix?language=objc for details.
 func (x gen_NSString) HasPrefix(
-	str NSStringRef,
+	str string,
 ) bool {
 	ret := C.NSString_inst_HasPrefix(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8358,11 +9089,11 @@ func (x gen_NSString) HasPrefix(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416529-hassuffix?language=objc for details.
 func (x gen_NSString) HasSuffix(
-	str NSStringRef,
+	str string,
 ) bool {
 	ret := C.NSString_inst_HasSuffix(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8432,18 +9163,18 @@ func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc for details.
 func (x gen_NSString) InitWithContentsOfFileEncodingError(
-	path NSStringRef,
+	path string,
 	enc NSStringEncoding,
 	error NSErrorRef,
-) NSString {
+) string {
 	ret := C.NSString_inst_InitWithContentsOfFileEncodingError(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		C.ulong(enc),
 		objc.RefPointer(error),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // InitWithContentsOfURLEncodingError returns an NSString object initialized by reading data from a given URL interpreted using a given encoding.
@@ -8453,7 +9184,7 @@ func (x gen_NSString) InitWithContentsOfURLEncodingError(
 	url NSURLRef,
 	enc NSStringEncoding,
 	error NSErrorRef,
-) NSString {
+) string {
 	ret := C.NSString_inst_InitWithContentsOfURLEncodingError(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
@@ -8461,7 +9192,7 @@ func (x gen_NSString) InitWithContentsOfURLEncodingError(
 		objc.RefPointer(error),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // InitWithDataEncoding returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding.
@@ -8484,11 +9215,11 @@ func (x gen_NSString) InitWithDataEncoding(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc for details.
 func (x gen_NSString) InitWithString(
-	aString NSStringRef,
+	aString string,
 ) NSString {
 	ret := C.NSString_inst_InitWithString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(aString),
+		C.createNSStringFromCString(C.CString(aString)),
 	)
 
 	return NSString_FromPointer(ret)
@@ -8498,11 +9229,11 @@ func (x gen_NSString) InitWithString(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407803-isequaltostring?language=objc for details.
 func (x gen_NSString) IsEqualToString(
-	aString NSStringRef,
+	aString string,
 ) bool {
 	ret := C.NSString_inst_IsEqualToString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(aString),
+		C.createNSStringFromCString(C.CString(aString)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8526,11 +9257,11 @@ func (x gen_NSString) LengthOfBytesUsingEncoding(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412098-localizedcaseinsensitivecontains?language=objc for details.
 func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
-	str NSStringRef,
+	str string,
 ) bool {
 	ret := C.NSString_inst_LocalizedCaseInsensitiveContainsString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8540,11 +9271,11 @@ func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416328-localizedstandardcontainsstring?language=objc for details.
 func (x gen_NSString) LocalizedStandardContainsString(
-	str NSStringRef,
+	str string,
 ) bool {
 	ret := C.NSString_inst_LocalizedStandardContainsString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8604,42 +9335,42 @@ func (x gen_NSString) SizeWithAttributes(
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417069-stringbyappendingpathcomponent?language=objc for details.
 func (x gen_NSString) StringByAppendingPathComponent(
-	str NSStringRef,
-) NSString {
+	str string,
+) string {
 	ret := C.NSString_inst_StringByAppendingPathComponent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByAppendingPathExtension returns a new string made by appending to the receiver an extension separator followed by a given extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412501-stringbyappendingpathextension?language=objc for details.
 func (x gen_NSString) StringByAppendingPathExtension(
-	str NSStringRef,
-) NSString {
+	str string,
+) string {
 	ret := C.NSString_inst_StringByAppendingPathExtension(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(str),
+		C.createNSStringFromCString(C.CString(str)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByAppendingString returns a new string made by appending a given string to the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412307-stringbyappendingstring?language=objc for details.
 func (x gen_NSString) StringByAppendingString(
-	aString NSStringRef,
-) NSString {
+	aString string,
+) string {
 	ret := C.NSString_inst_StringByAppendingString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(aString),
+		C.createNSStringFromCString(C.CString(aString)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByPaddingToLengthWithStringStartingAtIndex returns a new string formed from the receiver by either removing characters from the end, or by appending as many occurrences as necessary of a given pad string.
@@ -8647,33 +9378,33 @@ func (x gen_NSString) StringByAppendingString(
 // See https://developer.apple.com/documentation/foundation/nsstring/1416395-stringbypaddingtolength?language=objc for details.
 func (x gen_NSString) StringByPaddingToLengthWithStringStartingAtIndex(
 	newLength NSUInteger,
-	padString NSStringRef,
+	padString string,
 	padIndex NSUInteger,
-) NSString {
+) string {
 	ret := C.NSString_inst_StringByPaddingToLengthWithStringStartingAtIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(newLength),
-		objc.RefPointer(padString),
+		C.createNSStringFromCString(C.CString(padString)),
 		C.ulong(padIndex),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByReplacingOccurrencesOfStringWithString returns a new string in which all occurrences of a target string in the receiver are replaced by another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412937-stringbyreplacingoccurrencesofst?language=objc for details.
 func (x gen_NSString) StringByReplacingOccurrencesOfStringWithString(
-	target NSStringRef,
-	replacement NSStringRef,
-) NSString {
+	target string,
+	replacement string,
+) string {
 	ret := C.NSString_inst_StringByReplacingOccurrencesOfStringWithString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(target),
-		objc.RefPointer(replacement),
+		C.createNSStringFromCString(C.CString(target)),
+		C.createNSStringFromCString(C.CString(replacement)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringsByAppendingPaths returns an array of strings made by separately appending to the receiver each string in a given array.
@@ -8695,13 +9426,13 @@ func (x gen_NSString) StringsByAppendingPaths(
 // See https://developer.apple.com/documentation/foundation/nsstring/1414368-substringfromindex?language=objc for details.
 func (x gen_NSString) SubstringFromIndex(
 	from NSUInteger,
-) NSString {
+) string {
 	ret := C.NSString_inst_SubstringFromIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(from),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SubstringToIndex returns a new string containing the characters of the receiver up to, but not including, the one at a given index.
@@ -8709,13 +9440,13 @@ func (x gen_NSString) SubstringFromIndex(
 // See https://developer.apple.com/documentation/foundation/nsstring/1408017-substringtoindex?language=objc for details.
 func (x gen_NSString) SubstringToIndex(
 	to NSUInteger,
-) NSString {
+) string {
 	ret := C.NSString_inst_SubstringToIndex(
 		unsafe.Pointer(x.Pointer()),
 		C.ulong(to),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // VariantFittingPresentationWidth returns a string variation suitable for the specified presentation width.
@@ -8723,27 +9454,27 @@ func (x gen_NSString) SubstringToIndex(
 // See https://developer.apple.com/documentation/foundation/nsstring/1413104-variantfittingpresentationwidth?language=objc for details.
 func (x gen_NSString) VariantFittingPresentationWidth(
 	width NSInteger,
-) NSString {
+) string {
 	ret := C.NSString_inst_VariantFittingPresentationWidth(
 		unsafe.Pointer(x.Pointer()),
 		C.long(width),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // WriteToFileAtomicallyEncodingError writes the contents of the receiver to a file at a given path using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407654-writetofile?language=objc for details.
 func (x gen_NSString) WriteToFileAtomicallyEncodingError(
-	path NSStringRef,
+	path string,
 	useAuxiliaryFile bool,
 	enc NSStringEncoding,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSString_inst_WriteToFileAtomicallyEncodingError(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(useAuxiliaryFile),
 		C.ulong(enc),
 		objc.RefPointer(error),
@@ -8797,111 +9528,111 @@ func (x gen_NSString) Hash() NSUInteger {
 // LowercaseString returns a lowercase representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1408467-lowercasestring?language=objc for details.
-func (x gen_NSString) LowercaseString() NSString {
+func (x gen_NSString) LowercaseString() string {
 	ret := C.NSString_inst_LowercaseString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedLowercaseString returns a version of the string with all letters converted to lowercase, taking into account the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414125-localizedlowercasestring?language=objc for details.
-func (x gen_NSString) LocalizedLowercaseString() NSString {
+func (x gen_NSString) LocalizedLowercaseString() string {
 	ret := C.NSString_inst_LocalizedLowercaseString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // UppercaseString an uppercase representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409855-uppercasestring?language=objc for details.
-func (x gen_NSString) UppercaseString() NSString {
+func (x gen_NSString) UppercaseString() string {
 	ret := C.NSString_inst_UppercaseString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedUppercaseString returns a version of the string with all letters converted to uppercase, taking into account the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413331-localizeduppercasestring?language=objc for details.
-func (x gen_NSString) LocalizedUppercaseString() NSString {
+func (x gen_NSString) LocalizedUppercaseString() string {
 	ret := C.NSString_inst_LocalizedUppercaseString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // CapitalizedString returns a capitalized representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416784-capitalizedstring?language=objc for details.
-func (x gen_NSString) CapitalizedString() NSString {
+func (x gen_NSString) CapitalizedString() string {
 	ret := C.NSString_inst_CapitalizedString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LocalizedCapitalizedString returns a capitalized representation of the receiver using the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414885-localizedcapitalizedstring?language=objc for details.
-func (x gen_NSString) LocalizedCapitalizedString() NSString {
+func (x gen_NSString) LocalizedCapitalizedString() string {
 	ret := C.NSString_inst_LocalizedCapitalizedString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form D.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409474-decomposedstringwithcanonicalmap?language=objc for details.
-func (x gen_NSString) DecomposedStringWithCanonicalMapping() NSString {
+func (x gen_NSString) DecomposedStringWithCanonicalMapping() string {
 	ret := C.NSString_inst_DecomposedStringWithCanonicalMapping(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KD.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1415417-decomposedstringwithcompatibilit?language=objc for details.
-func (x gen_NSString) DecomposedStringWithCompatibilityMapping() NSString {
+func (x gen_NSString) DecomposedStringWithCompatibilityMapping() string {
 	ret := C.NSString_inst_DecomposedStringWithCompatibilityMapping(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PrecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form C.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412645-precomposedstringwithcanonicalma?language=objc for details.
-func (x gen_NSString) PrecomposedStringWithCanonicalMapping() NSString {
+func (x gen_NSString) PrecomposedStringWithCanonicalMapping() string {
 	ret := C.NSString_inst_PrecomposedStringWithCanonicalMapping(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PrecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KC.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412625-precomposedstringwithcompatibili?language=objc for details.
-func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() NSString {
+func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() string {
 	ret := C.NSString_inst_PrecomposedStringWithCompatibilityMapping(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // DoubleValue returns the floating-point value of the string as a double.
@@ -8973,12 +9704,12 @@ func (x gen_NSString) BoolValue() bool {
 // Description this NSString object.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410889-description?language=objc for details.
-func (x gen_NSString) Description() NSString {
+func (x gen_NSString) Description() string {
 	ret := C.NSString_inst_Description(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FastestEncoding returns the fastest encoding to which the receiver may be converted without loss of information.
@@ -9028,100 +9759,100 @@ func (x gen_NSString) IsAbsolutePath() bool {
 // LastPathComponent returns the last path component of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416528-lastpathcomponent?language=objc for details.
-func (x gen_NSString) LastPathComponent() NSString {
+func (x gen_NSString) LastPathComponent() string {
 	ret := C.NSString_inst_LastPathComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathExtension returns the path extension, if any, of the string as interpreted as a path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407801-pathextension?language=objc for details.
-func (x gen_NSString) PathExtension() NSString {
+func (x gen_NSString) PathExtension() string {
 	ret := C.NSString_inst_PathExtension(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByAbbreviatingWithTildeInPath returns a new string that replaces the current home directory portion of the current path with a tilde (~) character.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407943-stringbyabbreviatingwithtildeinp?language=objc for details.
-func (x gen_NSString) StringByAbbreviatingWithTildeInPath() NSString {
+func (x gen_NSString) StringByAbbreviatingWithTildeInPath() string {
 	ret := C.NSString_inst_StringByAbbreviatingWithTildeInPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByDeletingLastPathComponent returns a new string made by deleting the last path component from the receiver, along with any final path separator.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411141-stringbydeletinglastpathcomponen?language=objc for details.
-func (x gen_NSString) StringByDeletingLastPathComponent() NSString {
+func (x gen_NSString) StringByDeletingLastPathComponent() string {
 	ret := C.NSString_inst_StringByDeletingLastPathComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByDeletingPathExtension returns a new string made by deleting the extension (if any, and only the last) from the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1418214-stringbydeletingpathextension?language=objc for details.
-func (x gen_NSString) StringByDeletingPathExtension() NSString {
+func (x gen_NSString) StringByDeletingPathExtension() string {
 	ret := C.NSString_inst_StringByDeletingPathExtension(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByExpandingTildeInPath returns a new string made by expanding the initial component of the receiver to its full path value.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407716-stringbyexpandingtildeinpath?language=objc for details.
-func (x gen_NSString) StringByExpandingTildeInPath() NSString {
+func (x gen_NSString) StringByExpandingTildeInPath() string {
 	ret := C.NSString_inst_StringByExpandingTildeInPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByResolvingSymlinksInPath returns a new string made from the receiver by resolving all symbolic links and standardizing path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417783-stringbyresolvingsymlinksinpath?language=objc for details.
-func (x gen_NSString) StringByResolvingSymlinksInPath() NSString {
+func (x gen_NSString) StringByResolvingSymlinksInPath() string {
 	ret := C.NSString_inst_StringByResolvingSymlinksInPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByStandardizingPath returns a new string made by removing extraneous path components from the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407194-stringbystandardizingpath?language=objc for details.
-func (x gen_NSString) StringByStandardizingPath() NSString {
+func (x gen_NSString) StringByStandardizingPath() string {
 	ret := C.NSString_inst_StringByStandardizingPath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StringByRemovingPercentEncoding returns a new string made from the receiver by replacing all percent encoded sequences with the matching UTF-8 characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409569-stringbyremovingpercentencoding?language=objc for details.
-func (x gen_NSString) StringByRemovingPercentEncoding() NSString {
+func (x gen_NSString) StringByRemovingPercentEncoding() string {
 	ret := C.NSString_inst_StringByRemovingPercentEncoding(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 type NSThreadRef interface {
@@ -9260,26 +9991,37 @@ func (x gen_NSThread) IsMainThread() bool {
 	return convertObjCBoolToGo(ret)
 }
 
+// ThreadDictionary returns the thread object's dictionary.
+//
+// See https://developer.apple.com/documentation/foundation/nsthread/1411433-threaddictionary?language=objc for details.
+func (x gen_NSThread) ThreadDictionary() NSMutableDictionary {
+	ret := C.NSThread_inst_ThreadDictionary(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
 // Name returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414122-name?language=objc for details.
-func (x gen_NSThread) Name() NSString {
+func (x gen_NSThread) Name() string {
 	ret := C.NSThread_inst_Name(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetName returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414122-name?language=objc for details.
 func (x gen_NSThread) SetName(
-	value NSStringRef,
+	value string,
 ) {
 	C.NSThread_inst_SetName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -9358,11 +10100,11 @@ func NSURL_FromRef(ref objc.Ref) NSURL {
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410614-urlbyappendingpathcomponent?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathComponent(
-	pathComponent NSStringRef,
+	pathComponent string,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathComponent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(pathComponent),
+		C.createNSStringFromCString(C.CString(pathComponent)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -9372,12 +10114,12 @@ func (x gen_NSURL) URLByAppendingPathComponent(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413953-urlbyappendingpathcomponent?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
-	pathComponent NSStringRef,
+	pathComponent string,
 	isDirectory bool,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathComponentIsDirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(pathComponent),
+		C.createNSStringFromCString(C.CString(pathComponent)),
 		convertToObjCBool(isDirectory),
 	)
 
@@ -9388,11 +10130,11 @@ func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417082-urlbyappendingpathextension?language=objc for details.
 func (x gen_NSURL) URLByAppendingPathExtension(
-	pathExtension NSStringRef,
+	pathExtension string,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathExtension(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(pathExtension),
+		C.createNSStringFromCString(C.CString(pathExtension)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -9457,11 +10199,11 @@ func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410301-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPath(
-	path NSStringRef,
+	path string,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPath(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -9471,12 +10213,12 @@ func (x gen_NSURL) InitFileURLWithPath(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417505-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathIsDirectory(
-	path NSStringRef,
+	path string,
 	isDir bool,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathIsDirectory(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 	)
 
@@ -9487,13 +10229,13 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectory(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
-	path NSStringRef,
+	path string,
 	isDir bool,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathIsDirectoryRelativeToURL(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 		objc.RefPointer(baseURL),
 	)
@@ -9505,12 +10247,12 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415077-initfileurlwithpath?language=objc for details.
 func (x gen_NSURL) InitFileURLWithPathRelativeToURL(
-	path NSStringRef,
+	path string,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathRelativeToURL(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(path),
+		C.createNSStringFromCString(C.CString(path)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -9537,11 +10279,11 @@ func (x gen_NSURL) InitWithDataRepresentationRelativeToURL(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413146-initwithstring?language=objc for details.
 func (x gen_NSURL) InitWithString(
-	URLString NSStringRef,
+	URLString string,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithString(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(URLString),
+		C.createNSStringFromCString(C.CString(URLString)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -9551,12 +10293,12 @@ func (x gen_NSURL) InitWithString(
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc for details.
 func (x gen_NSURL) InitWithStringRelativeToURL(
-	URLString NSStringRef,
+	URLString string,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithStringRelativeToURL(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(URLString),
+		C.createNSStringFromCString(C.CString(URLString)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -9698,12 +10440,12 @@ func (x gen_NSURL) IsFileURL() bool {
 // AbsoluteString returns the URL string for the receiver as an absolute URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1409868-absolutestring?language=objc for details.
-func (x gen_NSURL) AbsoluteString() NSString {
+func (x gen_NSURL) AbsoluteString() string {
 	ret := C.NSURL_inst_AbsoluteString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // AbsoluteURL an absolute URL that refers to the same resource as the receiver. (read-only)
@@ -9731,56 +10473,56 @@ func (x gen_NSURL) BaseURL() NSURL {
 // Fragment returns the fragment identifier, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413775-fragment?language=objc for details.
-func (x gen_NSURL) Fragment() NSString {
+func (x gen_NSURL) Fragment() string {
 	ret := C.NSURL_inst_Fragment(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Host returns the host, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413640-host?language=objc for details.
-func (x gen_NSURL) Host() NSString {
+func (x gen_NSURL) Host() string {
 	ret := C.NSURL_inst_Host(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // LastPathComponent returns the last path component. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417444-lastpathcomponent?language=objc for details.
-func (x gen_NSURL) LastPathComponent() NSString {
+func (x gen_NSURL) LastPathComponent() string {
 	ret := C.NSURL_inst_LastPathComponent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Password returns the password conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412096-password?language=objc for details.
-func (x gen_NSURL) Password() NSString {
+func (x gen_NSURL) Password() string {
 	ret := C.NSURL_inst_Password(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Path returns the path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408809-path?language=objc for details.
-func (x gen_NSURL) Path() NSString {
+func (x gen_NSURL) Path() string {
 	ret := C.NSURL_inst_Path(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // PathComponents an array containing the path components. (read-only)
@@ -9797,12 +10539,12 @@ func (x gen_NSURL) PathComponents() NSArray {
 // PathExtension returns the path extension. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410208-pathextension?language=objc for details.
-func (x gen_NSURL) PathExtension() NSString {
+func (x gen_NSURL) PathExtension() string {
 	ret := C.NSURL_inst_PathExtension(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Port returns the port, conforming to RFC 1808.
@@ -9819,56 +10561,56 @@ func (x gen_NSURL) Port() NSNumber {
 // Query returns the query string, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407543-query?language=objc for details.
-func (x gen_NSURL) Query() NSString {
+func (x gen_NSURL) Query() string {
 	ret := C.NSURL_inst_Query(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // RelativePath returns the relative path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410263-relativepath?language=objc for details.
-func (x gen_NSURL) RelativePath() NSString {
+func (x gen_NSURL) RelativePath() string {
 	ret := C.NSURL_inst_RelativePath(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // RelativeString returns a string representation of the relative portion of the URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411417-relativestring?language=objc for details.
-func (x gen_NSURL) RelativeString() NSString {
+func (x gen_NSURL) RelativeString() string {
 	ret := C.NSURL_inst_RelativeString(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // ResourceSpecifier returns the resource specifier. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415309-resourcespecifier?language=objc for details.
-func (x gen_NSURL) ResourceSpecifier() NSString {
+func (x gen_NSURL) ResourceSpecifier() string {
 	ret := C.NSURL_inst_ResourceSpecifier(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Scheme returns the scheme. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413437-scheme?language=objc for details.
-func (x gen_NSURL) Scheme() NSString {
+func (x gen_NSURL) Scheme() string {
 	ret := C.NSURL_inst_Scheme(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // StandardizedURL returns a copy of the URL with any instances of ".." or "." removed from its path. (read-only)
@@ -9885,12 +10627,12 @@ func (x gen_NSURL) StandardizedURL() NSURL {
 // User returns the user name, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1418335-user?language=objc for details.
-func (x gen_NSURL) User() NSString {
+func (x gen_NSURL) User() string {
 	ret := C.NSURL_inst_User(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // FilePathURL returns a file path URL that points to the same resource as the URL object. (read-only)
@@ -9996,14 +10738,14 @@ func (x gen_NSURLRequest) InitWithURL(
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1409376-valueforhttpheaderfield?language=objc for details.
 func (x gen_NSURLRequest) ValueForHTTPHeaderField(
-	field NSStringRef,
-) NSString {
+	field string,
+) string {
 	ret := C.NSURLRequest_inst_ValueForHTTPHeaderField(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(field),
+		C.createNSStringFromCString(C.CString(field)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Init initializes a new instance of the NSURLRequest class.
@@ -10027,12 +10769,12 @@ func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 // HTTPMethod returns the HTTP request method.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc for details.
-func (x gen_NSURLRequest) HTTPMethod() NSString {
+func (x gen_NSURLRequest) HTTPMethod() string {
 	ret := C.NSURLRequest_inst_HTTPMethod(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // URL returns the URL being requested.
@@ -10168,11 +10910,11 @@ func NSUserDefaults_FromRef(ref objc.Ref) NSUserDefaults {
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408648-urlforkey?language=objc for details.
 func (x gen_NSUserDefaults) URLForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSURL {
 	ret := C.NSUserDefaults_inst_URLForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10182,11 +10924,11 @@ func (x gen_NSUserDefaults) URLForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1410294-addsuitenamed?language=objc for details.
 func (x gen_NSUserDefaults) AddSuiteNamed(
-	suiteName NSStringRef,
+	suiteName string,
 ) {
 	C.NSUserDefaults_inst_AddSuiteNamed(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(suiteName),
+		C.createNSStringFromCString(C.CString(suiteName)),
 	)
 
 	return
@@ -10196,11 +10938,11 @@ func (x gen_NSUserDefaults) AddSuiteNamed(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414792-arrayforkey?language=objc for details.
 func (x gen_NSUserDefaults) ArrayForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSArray {
 	ret := C.NSUserDefaults_inst_ArrayForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -10210,11 +10952,11 @@ func (x gen_NSUserDefaults) ArrayForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416388-boolforkey?language=objc for details.
 func (x gen_NSUserDefaults) BoolForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) bool {
 	ret := C.NSUserDefaults_inst_BoolForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10224,11 +10966,11 @@ func (x gen_NSUserDefaults) BoolForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409590-dataforkey?language=objc for details.
 func (x gen_NSUserDefaults) DataForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSData {
 	ret := C.NSUserDefaults_inst_DataForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSData_FromPointer(ret)
@@ -10238,11 +10980,11 @@ func (x gen_NSUserDefaults) DataForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408563-dictionaryforkey?language=objc for details.
 func (x gen_NSUserDefaults) DictionaryForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_DictionaryForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -10313,11 +11055,11 @@ func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409957-initwithsuitename?language=objc for details.
 func (x gen_NSUserDefaults) InitWithSuiteName(
-	suitename NSStringRef,
+	suitename string,
 ) NSUserDefaults {
 	ret := C.NSUserDefaults_inst_InitWithSuiteName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(suitename),
+		C.createNSStringFromCString(C.CString(suitename)),
 	)
 
 	return NSUserDefaults_FromPointer(ret)
@@ -10327,11 +11069,11 @@ func (x gen_NSUserDefaults) InitWithSuiteName(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1407405-integerforkey?language=objc for details.
 func (x gen_NSUserDefaults) IntegerForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSInteger {
 	ret := C.NSUserDefaults_inst_IntegerForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSInteger(ret)
@@ -10341,11 +11083,11 @@ func (x gen_NSUserDefaults) IntegerForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1410095-objectforkey?language=objc for details.
 func (x gen_NSUserDefaults) ObjectForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) objc.Object {
 	ret := C.NSUserDefaults_inst_ObjectForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -10355,11 +11097,11 @@ func (x gen_NSUserDefaults) ObjectForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408635-objectisforcedforkey?language=objc for details.
 func (x gen_NSUserDefaults) ObjectIsForcedForKey(
-	key NSStringRef,
+	key string,
 ) bool {
 	ret := C.NSUserDefaults_inst_ObjectIsForcedForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10369,13 +11111,13 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416306-objectisforcedforkey?language=objc for details.
 func (x gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
-	key NSStringRef,
-	domain NSStringRef,
+	key string,
+	domain string,
 ) bool {
 	ret := C.NSUserDefaults_inst_ObjectIsForcedForKeyInDomain(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(key),
-		objc.RefPointer(domain),
+		C.createNSStringFromCString(C.CString(key)),
+		C.createNSStringFromCString(C.CString(domain)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10385,11 +11127,11 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1412197-persistentdomainforname?language=objc for details.
 func (x gen_NSUserDefaults) PersistentDomainForName(
-	domainName NSStringRef,
+	domainName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_PersistentDomainForName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -10413,11 +11155,11 @@ func (x gen_NSUserDefaults) RegisterDefaults(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1411182-removeobjectforkey?language=objc for details.
 func (x gen_NSUserDefaults) RemoveObjectForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_RemoveObjectForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -10427,11 +11169,11 @@ func (x gen_NSUserDefaults) RemoveObjectForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1417339-removepersistentdomainforname?language=objc for details.
 func (x gen_NSUserDefaults) RemovePersistentDomainForName(
-	domainName NSStringRef,
+	domainName string,
 ) {
 	C.NSUserDefaults_inst_RemovePersistentDomainForName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return
@@ -10441,11 +11183,11 @@ func (x gen_NSUserDefaults) RemovePersistentDomainForName(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408047-removesuitenamed?language=objc for details.
 func (x gen_NSUserDefaults) RemoveSuiteNamed(
-	suiteName NSStringRef,
+	suiteName string,
 ) {
 	C.NSUserDefaults_inst_RemoveSuiteNamed(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(suiteName),
+		C.createNSStringFromCString(C.CString(suiteName)),
 	)
 
 	return
@@ -10455,11 +11197,11 @@ func (x gen_NSUserDefaults) RemoveSuiteNamed(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1415955-removevolatiledomainforname?language=objc for details.
 func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
-	domainName NSStringRef,
+	domainName string,
 ) {
 	C.NSUserDefaults_inst_RemoveVolatileDomainForName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return
@@ -10470,12 +11212,12 @@ func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408905-setbool?language=objc for details.
 func (x gen_NSUserDefaults) SetBoolForKey(
 	value bool,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetBoolForKey(
 		unsafe.Pointer(x.Pointer()),
 		convertToObjCBool(value),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -10518,12 +11260,12 @@ func (x gen_NSUserDefaults) SetFloatForKey(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413614-setinteger?language=objc for details.
 func (x gen_NSUserDefaults) SetIntegerForKey(
 	value NSInteger,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetIntegerForKey(
 		unsafe.Pointer(x.Pointer()),
 		C.long(value),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -10534,12 +11276,12 @@ func (x gen_NSUserDefaults) SetIntegerForKey(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414067-setobject?language=objc for details.
 func (x gen_NSUserDefaults) SetObjectForKey(
 	value objc.Ref,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetObjectForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -10550,12 +11292,12 @@ func (x gen_NSUserDefaults) SetObjectForKey(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408187-setpersistentdomain?language=objc for details.
 func (x gen_NSUserDefaults) SetPersistentDomainForName(
 	domain NSDictionaryRef,
-	domainName NSStringRef,
+	domainName string,
 ) {
 	C.NSUserDefaults_inst_SetPersistentDomainForName(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(domain),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return
@@ -10566,12 +11308,12 @@ func (x gen_NSUserDefaults) SetPersistentDomainForName(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc for details.
 func (x gen_NSUserDefaults) SetURLForKey(
 	url NSURLRef,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetURLForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(url),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -10582,12 +11324,12 @@ func (x gen_NSUserDefaults) SetURLForKey(
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413720-setvolatiledomain?language=objc for details.
 func (x gen_NSUserDefaults) SetVolatileDomainForName(
 	domain NSDictionaryRef,
-	domainName NSStringRef,
+	domainName string,
 ) {
 	C.NSUserDefaults_inst_SetVolatileDomainForName(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(domain),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return
@@ -10597,11 +11339,11 @@ func (x gen_NSUserDefaults) SetVolatileDomainForName(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416414-stringarrayforkey?language=objc for details.
 func (x gen_NSUserDefaults) StringArrayForKey(
-	defaultName NSStringRef,
+	defaultName string,
 ) NSArray {
 	ret := C.NSUserDefaults_inst_StringArrayForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -10611,14 +11353,14 @@ func (x gen_NSUserDefaults) StringArrayForKey(
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416700-stringforkey?language=objc for details.
 func (x gen_NSUserDefaults) StringForKey(
-	defaultName NSStringRef,
-) NSString {
+	defaultName string,
+) string {
 	ret := C.NSUserDefaults_inst_StringForKey(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
-	return NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // Synchronize waits for any pending asynchronous updates to the defaults database and returns; this method is unnecessary and shouldn't be used.
@@ -10636,11 +11378,11 @@ func (x gen_NSUserDefaults) Synchronize() bool {
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409592-volatiledomainforname?language=objc for details.
 func (x gen_NSUserDefaults) VolatileDomainForName(
-	domainName NSStringRef,
+	domainName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_VolatileDomainForName(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(domainName),
+		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -10655,4 +11397,113 @@ func (x gen_NSUserDefaults) VolatileDomainNames() NSArray {
 	)
 
 	return NSArray_FromPointer(ret)
+}
+
+type NSMutableStringRef interface {
+	Pointer() uintptr
+	Init_AsNSMutableString() NSMutableString
+}
+
+type gen_NSMutableString struct {
+	NSString
+}
+
+func NSMutableString_FromPointer(ptr unsafe.Pointer) NSMutableString {
+	return NSMutableString{gen_NSMutableString{
+		NSString_FromPointer(ptr),
+	}}
+}
+
+func NSMutableString_FromRef(ref objc.Ref) NSMutableString {
+	return NSMutableString_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// AppendFormat adds a constructed string to the receiver.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc for details.
+func (x gen_NSMutableString) AppendFormat(
+	format string,
+) {
+	C.NSMutableString_inst_AppendFormat(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(format)),
+	)
+
+	return
+}
+
+// AppendString adds to the end of the receiver the characters of a given string.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1417883-appendstring?language=objc for details.
+func (x gen_NSMutableString) AppendString(
+	aString string,
+) {
+	C.NSMutableString_inst_AppendString(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+	)
+
+	return
+}
+
+// InitWithCapacity returns an NSMutableString object initialized with initial storage for a given number of characters,
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1416610-initwithcapacity?language=objc for details.
+func (x gen_NSMutableString) InitWithCapacity(
+	capacity NSUInteger,
+) NSMutableString {
+	ret := C.NSMutableString_inst_InitWithCapacity(
+		unsafe.Pointer(x.Pointer()),
+		C.ulong(capacity),
+	)
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// InsertStringAtIndex inserts into the receiver the characters of a given string at a given location.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1410999-insertstring?language=objc for details.
+func (x gen_NSMutableString) InsertStringAtIndex(
+	aString string,
+	loc NSUInteger,
+) {
+	C.NSMutableString_inst_InsertStringAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+		C.ulong(loc),
+	)
+
+	return
+}
+
+// SetString replaces the characters of the receiver with those in a given string.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutablestring/1409483-setstring?language=objc for details.
+func (x gen_NSMutableString) SetString(
+	aString string,
+) {
+	C.NSMutableString_inst_SetString(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(aString)),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSMutableString class.
+func (x gen_NSMutableString) Init() NSMutableString {
+	ret := C.NSMutableString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableString_FromPointer(ret)
+}
+
+// Init_AsNSMutableString is a typed version of Init.
+func (x gen_NSMutableString) Init_AsNSMutableString() NSMutableString {
+	ret := C.NSMutableString_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSMutableString_FromPointer(ret)
 }

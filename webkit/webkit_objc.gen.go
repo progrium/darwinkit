@@ -21,6 +21,17 @@ bool webkit_convertObjCBool(BOOL b) {
 	return false;
 }
 
+// Creates a NSString from a C string
+static void *createNSStringFromCString(char *cString) {
+    return [NSString stringWithCString: cString encoding: NSUTF8StringEncoding];
+}
+
+// Creates a C string from a NSString
+static char *createCStringFromNSString(void *objcString)
+{
+    return [objcString UTF8String];
+}
+
 
 void* WKNavigation_type_Alloc() {
 	return [WKNavigation
@@ -508,9 +519,9 @@ func WKWebView_Alloc() WKWebView {
 // WKWebView_HandlesURLScheme returns a Boolean value that indicates whether WebKit natively supports resources with the specified URL scheme.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/2875370-handlesurlscheme?language=objc for details.
-func WKWebView_HandlesURLScheme(urlScheme core.NSStringRef) bool {
+func WKWebView_HandlesURLScheme(urlScheme string) bool {
 	ret := C.WKWebView_type_HandlesURLScheme(
-		objc.RefPointer(urlScheme),
+		C.createNSStringFromCString(C.CString(urlScheme)),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -607,12 +618,12 @@ func (x gen_WKUserScript) Init_AsWKUserScript() WKUserScript {
 // Source returns the script’s source code.
 //
 // See https://developer.apple.com/documentation/webkit/wkuserscript/1537787-source?language=objc for details.
-func (x gen_WKUserScript) Source() core.NSString {
+func (x gen_WKUserScript) Source() string {
 	ret := C.WKUserScript_inst_Source(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // IsForMainFrameOnly returns a Boolean value that indicates whether to inject the script into the main frame or all frames.
@@ -716,15 +727,15 @@ func (x gen_WKWebView) InitWithFrameConfiguration(
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415011-loaddata?language=objc for details.
 func (x gen_WKWebView) LoadDataMIMETypeCharacterEncodingNameBaseURL(
 	data core.NSDataRef,
-	MIMEType core.NSStringRef,
-	characterEncodingName core.NSStringRef,
+	MIMEType string,
+	characterEncodingName string,
 	baseURL core.NSURLRef,
 ) WKNavigation {
 	ret := C.WKWebView_inst_LoadDataMIMETypeCharacterEncodingNameBaseURL(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(data),
-		objc.RefPointer(MIMEType),
-		objc.RefPointer(characterEncodingName),
+		C.createNSStringFromCString(C.CString(MIMEType)),
+		C.createNSStringFromCString(C.CString(characterEncodingName)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -767,12 +778,12 @@ func (x gen_WKWebView) LoadFileURLAllowingReadAccessToURL(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415004-loadhtmlstring?language=objc for details.
 func (x gen_WKWebView) LoadHTMLStringBaseURL(
-	string core.NSStringRef,
+	string string,
 	baseURL core.NSURLRef,
 ) WKNavigation {
 	ret := C.WKWebView_inst_LoadHTMLStringBaseURL(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 		objc.RefPointer(baseURL),
 	)
 
@@ -798,12 +809,12 @@ func (x gen_WKWebView) LoadRequest(
 // See https://developer.apple.com/documentation/webkit/wkwebview/3763095-loadsimulatedrequest?language=objc for details.
 func (x gen_WKWebView) LoadSimulatedRequestResponseHTMLString(
 	request core.NSURLRequestRef,
-	string core.NSStringRef,
+	string string,
 ) WKNavigation {
 	ret := C.WKWebView_inst_LoadSimulatedRequestResponseHTMLString(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(request),
-		objc.RefPointer(string),
+		C.createNSStringFromCString(C.CString(string)),
 	)
 
 	return WKNavigation_FromPointer(ret)
@@ -988,12 +999,12 @@ func (x gen_WKWebView) EstimatedProgress() float64 {
 // Title returns the page title.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1415015-title?language=objc for details.
-func (x gen_WKWebView) Title() core.NSString {
+func (x gen_WKWebView) Title() string {
 	ret := C.WKWebView_inst_Title(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // URL returns the URL for the current webpage.
@@ -1010,23 +1021,23 @@ func (x gen_WKWebView) URL() core.NSURL {
 // MediaType returns the media type for the contents of the web view.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc for details.
-func (x gen_WKWebView) MediaType() core.NSString {
+func (x gen_WKWebView) MediaType() string {
 	ret := C.WKWebView_inst_MediaType(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetMediaType returns the media type for the contents of the web view.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/3516410-mediatype?language=objc for details.
 func (x gen_WKWebView) SetMediaType(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.WKWebView_inst_SetMediaType(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -1035,23 +1046,23 @@ func (x gen_WKWebView) SetMediaType(
 // CustomUserAgent returns the custom user agent string.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414950-customuseragent?language=objc for details.
-func (x gen_WKWebView) CustomUserAgent() core.NSString {
+func (x gen_WKWebView) CustomUserAgent() string {
 	ret := C.WKWebView_inst_CustomUserAgent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetCustomUserAgent returns the custom user agent string.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebview/1414950-customuseragent?language=objc for details.
 func (x gen_WKWebView) SetCustomUserAgent(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.WKWebView_inst_SetCustomUserAgent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -1239,12 +1250,12 @@ func WKWebViewConfiguration_FromRef(ref objc.Ref) WKWebViewConfiguration {
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
 	urlSchemeHandler objc.Ref,
-	urlScheme core.NSStringRef,
+	urlScheme string,
 ) {
 	C.WKWebViewConfiguration_inst_SetURLSchemeHandlerForURLScheme(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(urlSchemeHandler),
-		objc.RefPointer(urlScheme),
+		C.createNSStringFromCString(C.CString(urlScheme)),
 	)
 
 	return
@@ -1254,11 +1265,11 @@ func (x gen_WKWebViewConfiguration) SetURLSchemeHandlerForURLScheme(
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875767-urlschemehandlerforurlscheme?language=objc for details.
 func (x gen_WKWebViewConfiguration) UrlSchemeHandlerForURLScheme(
-	urlScheme core.NSStringRef,
+	urlScheme string,
 ) objc.Object {
 	ret := C.WKWebViewConfiguration_inst_UrlSchemeHandlerForURLScheme(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(urlScheme),
+		C.createNSStringFromCString(C.CString(urlScheme)),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -1285,23 +1296,23 @@ func (x gen_WKWebViewConfiguration) Init_AsWKWebViewConfiguration() WKWebViewCon
 // ApplicationNameForUserAgent returns the app name that appears in the user agent string.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc for details.
-func (x gen_WKWebViewConfiguration) ApplicationNameForUserAgent() core.NSString {
+func (x gen_WKWebViewConfiguration) ApplicationNameForUserAgent() string {
 	ret := C.WKWebViewConfiguration_inst_ApplicationNameForUserAgent(
 		unsafe.Pointer(x.Pointer()),
 	)
 
-	return core.NSString_FromPointer(ret)
+	return C.GoString(C.createCStringFromNSString(ret))
 }
 
 // SetApplicationNameForUserAgent returns the app name that appears in the user agent string.
 //
 // See https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395665-applicationnameforuseragent?language=objc for details.
 func (x gen_WKWebViewConfiguration) SetApplicationNameForUserAgent(
-	value core.NSStringRef,
+	value string,
 ) {
 	C.WKWebViewConfiguration_inst_SetApplicationNameForUserAgent(
 		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(value),
+		C.createNSStringFromCString(C.CString(value)),
 	)
 
 	return
@@ -1529,12 +1540,12 @@ func WKPreferences_FromRef(ref objc.Ref) WKPreferences {
 // SetValueForKey is undocumented.
 func (x gen_WKPreferences) SetValueForKey(
 	value objc.Ref,
-	key core.NSStringRef,
+	key string,
 ) {
 	C.WKPreferences_inst_SetValueForKey(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
-		objc.RefPointer(key),
+		C.createNSStringFromCString(C.CString(key)),
 	)
 
 	return

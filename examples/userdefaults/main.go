@@ -8,7 +8,7 @@ import (
 
 func main() {
 	ud := core.NSUserDefaults_StandardUserDefaults()
-	ud.SetURLForKey(core.URL("https://github.com/progrium/macdriver"), core.String("macdriver"))
-	u := ud.URLForKey(core.String("macdriver"))
+	ud.SetURLForKey(core.URL("https://github.com/progrium/macdriver"), "macdriver")
+	u := ud.URLForKey("macdriver")
 	fmt.Println("looked up 'macdriver' key in NSUserDefaults and got:", u)
 }

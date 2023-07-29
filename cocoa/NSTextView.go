@@ -23,11 +23,11 @@ func NSTextView_Init(frame core.NSRect) NSTextView {
 }
 
 func (v NSTextView) String() string {
-	return v.gen_NSTextView.String().String()
+	return v.gen_NSTextView.String()
 }
 
 func (v NSTextView) SetString(s string) {
-	v.gen_NSTextView.SetString(core.String(s))
+	v.gen_NSTextView.SetString(s)
 }
 
 func (v NSTextView) Selectable() bool {

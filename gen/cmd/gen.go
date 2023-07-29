@@ -23,6 +23,7 @@ func main() {
 			loadFile("api/foundation/nsdata.objc.json"),
 			loadFile("api/foundation/nsmutabledata.objc.json"),
 			loadFile("api/foundation/nsdictionary.objc.json"),
+			loadFile("api/foundation/nsmutabledictionary.objc.json"),
 			loadFile("api/foundation/nserror.objc.json"),
 			loadFile("api/foundation/nsnumber.objc.json"),
 			loadFile("api/foundation/nsrunloop.objc.json"),
@@ -31,6 +32,7 @@ func main() {
 			loadFile("api/foundation/nsurl.objc.json"),
 			loadFile("api/foundation/nsurlrequest.objc.json"),
 			loadFile("api/foundation/nsuserdefaults.objc.json"),
+			loadFile("api/foundation/nsmutablestring.objc.json"),
 		}},
 		// {"coregraphics", []schemaLoader{
 		// 	loadFile("api/coregraphics/cgrect.objc.json"),
@@ -83,6 +85,7 @@ func main() {
 			loadFile("api/appkit/nsworkspace.objc.json"),
 			loadFile("api/appkit/nsslider.objc.json"),
 			loadFile("api/appkit/nsopenpanel.objc.json"),
+			loadFile("api/appkit/nscombobox.objc.json"),
 
 			loadFile("api/appkit/nscolor.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.TypeMethods = append(s.Class.TypeMethods, schema.Method{

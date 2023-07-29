@@ -43,6 +43,17 @@ func (cb *classBuilder) mapClass(name string) *typeMapping {
 	if !found {
 		return nil
 	}
+	
+	if name == "NSString" {
+		return &typeMapping{
+			GoType:          "string",
+			GoSimpleRefType: "string",
+			CType:           "void*",
+			FromCGoFmt:      "C.GoString(C.createCStringFromNSString(%s))",  // Convert return value from NSString to Go string
+			ToCGoFmt:        "C.createNSStringFromCString(C.CString(%s))",	 // Convert argument from Go string to NSString
+		}
+	}
+	
 	return &typeMapping{
 		GoType:          pkgPrefix + name,
 		GoSimpleRefType: pkgPrefix + name + "Ref",
@@ -214,6 +225,10 @@ func (cb *classBuilder) mapType(dt schema.DataType) typeMapping {
 			FromCGoFmt: "*(*" + corePkg + "NSSize)(unsafe.Pointer(&%s))",
 			ToCGoFmt:   "*(*C.NSSize)(unsafe.Pointer(&%s))",
 		}
+	case "ObjectType":
+		fallthrough
+	case "KeyType":
+		fallthrough
 	case "id":
 		return typeMapping{
 			GoType:          "objc.Object",
