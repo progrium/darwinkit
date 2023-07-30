@@ -1,12 +1,9 @@
-//go:build !macos12 && !macos11
-
 package coreml
 
 import (
-	"unsafe"
-
 	core "github.com/progrium/macdriver/core"
 	"github.com/progrium/macdriver/objc"
+	"unsafe"
 )
 
 /*
@@ -333,12 +330,12 @@ func MLArrayBatchProvider_FromRef(ref objc.Ref) MLArrayBatchProvider {
 // InitWithDictionaryError creates a batch provider based on feature names and their associated arrays of data.
 //
 // See https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962853-initwithdictionary?language=objc for details.
-func (x gen_MLArrayBatchProvider) InitWithDictionaryError(
+func (genReceiver gen_MLArrayBatchProvider) InitWithDictionaryError(
 	dictionary core.NSDictionaryRef,
 	error core.NSErrorRef,
 ) MLArrayBatchProvider {
 	ret := C.MLArrayBatchProvider_inst_InitWithDictionaryError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(dictionary),
 		objc.RefPointer(error),
 	)
@@ -349,11 +346,11 @@ func (x gen_MLArrayBatchProvider) InitWithDictionaryError(
 // InitWithFeatureProviderArray creates the batch provider based on the array of feature providers.
 //
 // See https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962854-initwithfeatureproviderarray?language=objc for details.
-func (x gen_MLArrayBatchProvider) InitWithFeatureProviderArray(
+func (genReceiver gen_MLArrayBatchProvider) InitWithFeatureProviderArray(
 	array core.NSArrayRef,
 ) MLArrayBatchProvider {
 	ret := C.MLArrayBatchProvider_inst_InitWithFeatureProviderArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(array),
 	)
 
@@ -361,18 +358,18 @@ func (x gen_MLArrayBatchProvider) InitWithFeatureProviderArray(
 }
 
 // Init initializes a new instance of the MLArrayBatchProvider class.
-func (x gen_MLArrayBatchProvider) Init() MLArrayBatchProvider {
+func (genReceiver gen_MLArrayBatchProvider) Init() MLArrayBatchProvider {
 	ret := C.MLArrayBatchProvider_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLArrayBatchProvider_FromPointer(ret)
 }
 
 // Init_AsMLArrayBatchProvider is a typed version of Init.
-func (x gen_MLArrayBatchProvider) Init_AsMLArrayBatchProvider() MLArrayBatchProvider {
+func (genReceiver gen_MLArrayBatchProvider) Init_AsMLArrayBatchProvider() MLArrayBatchProvider {
 	ret := C.MLArrayBatchProvider_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLArrayBatchProvider_FromPointer(ret)
@@ -381,9 +378,9 @@ func (x gen_MLArrayBatchProvider) Init_AsMLArrayBatchProvider() MLArrayBatchProv
 // Array returns the array of feature providers.
 //
 // See https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962852-array?language=objc for details.
-func (x gen_MLArrayBatchProvider) Array() core.NSArray {
+func (genReceiver gen_MLArrayBatchProvider) Array() core.NSArray {
 	ret := C.MLArrayBatchProvider_inst_Array(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -411,12 +408,12 @@ func MLDictionaryFeatureProvider_FromRef(ref objc.Ref) MLDictionaryFeatureProvid
 // InitWithDictionaryError creates the feature provider based on a dictionary.
 //
 // See https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879366-initwithdictionary?language=objc for details.
-func (x gen_MLDictionaryFeatureProvider) InitWithDictionaryError(
+func (genReceiver gen_MLDictionaryFeatureProvider) InitWithDictionaryError(
 	dictionary core.NSDictionaryRef,
 	error core.NSErrorRef,
 ) MLDictionaryFeatureProvider {
 	ret := C.MLDictionaryFeatureProvider_inst_InitWithDictionaryError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(dictionary),
 		objc.RefPointer(error),
 	)
@@ -427,11 +424,11 @@ func (x gen_MLDictionaryFeatureProvider) InitWithDictionaryError(
 // ObjectForKeyedSubscript subscript interface for the feature provider to pass through to the dictionary.
 //
 // See https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2881954-objectforkeyedsubscript?language=objc for details.
-func (x gen_MLDictionaryFeatureProvider) ObjectForKeyedSubscript(
+func (genReceiver gen_MLDictionaryFeatureProvider) ObjectForKeyedSubscript(
 	featureName string,
 ) MLFeatureValue {
 	ret := C.MLDictionaryFeatureProvider_inst_ObjectForKeyedSubscript(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(featureName)),
 	)
 
@@ -439,18 +436,18 @@ func (x gen_MLDictionaryFeatureProvider) ObjectForKeyedSubscript(
 }
 
 // Init initializes a new instance of the MLDictionaryFeatureProvider class.
-func (x gen_MLDictionaryFeatureProvider) Init() MLDictionaryFeatureProvider {
+func (genReceiver gen_MLDictionaryFeatureProvider) Init() MLDictionaryFeatureProvider {
 	ret := C.MLDictionaryFeatureProvider_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLDictionaryFeatureProvider_FromPointer(ret)
 }
 
 // Init_AsMLDictionaryFeatureProvider is a typed version of Init.
-func (x gen_MLDictionaryFeatureProvider) Init_AsMLDictionaryFeatureProvider() MLDictionaryFeatureProvider {
+func (genReceiver gen_MLDictionaryFeatureProvider) Init_AsMLDictionaryFeatureProvider() MLDictionaryFeatureProvider {
 	ret := C.MLDictionaryFeatureProvider_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLDictionaryFeatureProvider_FromPointer(ret)
@@ -459,9 +456,9 @@ func (x gen_MLDictionaryFeatureProvider) Init_AsMLDictionaryFeatureProvider() ML
 // Dictionary returns the backing dictionary.
 //
 // See https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879354-dictionary?language=objc for details.
-func (x gen_MLDictionaryFeatureProvider) Dictionary() core.NSDictionary {
+func (genReceiver gen_MLDictionaryFeatureProvider) Dictionary() core.NSDictionary {
 	ret := C.MLDictionaryFeatureProvider_inst_Dictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSDictionary_FromPointer(ret)
@@ -489,11 +486,11 @@ func MLFeatureValue_FromRef(ref objc.Ref) MLFeatureValue {
 // IsEqualToFeatureValue returns a Boolean value that indicates whether a feature value is equal to another.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879399-isequaltofeaturevalue?language=objc for details.
-func (x gen_MLFeatureValue) IsEqualToFeatureValue(
+func (genReceiver gen_MLFeatureValue) IsEqualToFeatureValue(
 	value MLFeatureValueRef,
 ) bool {
 	ret := C.MLFeatureValue_inst_IsEqualToFeatureValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -501,18 +498,18 @@ func (x gen_MLFeatureValue) IsEqualToFeatureValue(
 }
 
 // Init initializes a new instance of the MLFeatureValue class.
-func (x gen_MLFeatureValue) Init() MLFeatureValue {
+func (genReceiver gen_MLFeatureValue) Init() MLFeatureValue {
 	ret := C.MLFeatureValue_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLFeatureValue_FromPointer(ret)
 }
 
 // Init_AsMLFeatureValue is a typed version of Init.
-func (x gen_MLFeatureValue) Init_AsMLFeatureValue() MLFeatureValue {
+func (genReceiver gen_MLFeatureValue) Init_AsMLFeatureValue() MLFeatureValue {
 	ret := C.MLFeatureValue_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLFeatureValue_FromPointer(ret)
@@ -521,9 +518,9 @@ func (x gen_MLFeatureValue) Init_AsMLFeatureValue() MLFeatureValue {
 // IsUndefined returns a Boolean value that indicates whether the feature value is undefined or missing.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879392-undefined?language=objc for details.
-func (x gen_MLFeatureValue) IsUndefined() bool {
+func (genReceiver gen_MLFeatureValue) IsUndefined() bool {
 	ret := C.MLFeatureValue_inst_IsUndefined(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -532,9 +529,9 @@ func (x gen_MLFeatureValue) IsUndefined() bool {
 // DoubleValue returns the underlying double of the feature value.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879375-doublevalue?language=objc for details.
-func (x gen_MLFeatureValue) DoubleValue() float64 {
+func (genReceiver gen_MLFeatureValue) DoubleValue() float64 {
 	ret := C.MLFeatureValue_inst_DoubleValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float64(ret)
@@ -543,9 +540,9 @@ func (x gen_MLFeatureValue) DoubleValue() float64 {
 // StringValue returns the underlying string of the feature value.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879349-stringvalue?language=objc for details.
-func (x gen_MLFeatureValue) StringValue() string {
+func (genReceiver gen_MLFeatureValue) StringValue() string {
 	ret := C.MLFeatureValue_inst_StringValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -554,9 +551,9 @@ func (x gen_MLFeatureValue) StringValue() string {
 // DictionaryValue returns the underlying dictionary of the feature value.
 //
 // See https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879387-dictionaryvalue?language=objc for details.
-func (x gen_MLFeatureValue) DictionaryValue() core.NSDictionary {
+func (genReceiver gen_MLFeatureValue) DictionaryValue() core.NSDictionary {
 	ret := C.MLFeatureValue_inst_DictionaryValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSDictionary_FromPointer(ret)
@@ -584,12 +581,12 @@ func MLModel_FromRef(ref objc.Ref) MLModel {
 // PredictionFromFeaturesError generates a prediction from the feature values within the input feature provider.
 //
 // See https://developer.apple.com/documentation/coreml/mlmodel/2880280-predictionfromfeatures?language=objc for details.
-func (x gen_MLModel) PredictionFromFeaturesError(
+func (genReceiver gen_MLModel) PredictionFromFeaturesError(
 	input objc.Ref,
 	error core.NSErrorRef,
 ) objc.Object {
 	ret := C.MLModel_inst_PredictionFromFeaturesError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(input),
 		objc.RefPointer(error),
 	)
@@ -600,12 +597,12 @@ func (x gen_MLModel) PredictionFromFeaturesError(
 // PredictionsFromBatchError generates predictions for each input feature provider within the batch provider.
 //
 // See https://developer.apple.com/documentation/coreml/mlmodel/3088750-predictionsfrombatch?language=objc for details.
-func (x gen_MLModel) PredictionsFromBatchError(
+func (genReceiver gen_MLModel) PredictionsFromBatchError(
 	inputBatch objc.Ref,
 	error core.NSErrorRef,
 ) objc.Object {
 	ret := C.MLModel_inst_PredictionsFromBatchError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(inputBatch),
 		objc.RefPointer(error),
 	)
@@ -614,18 +611,18 @@ func (x gen_MLModel) PredictionsFromBatchError(
 }
 
 // Init initializes a new instance of the MLModel class.
-func (x gen_MLModel) Init() MLModel {
+func (genReceiver gen_MLModel) Init() MLModel {
 	ret := C.MLModel_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLModel_FromPointer(ret)
 }
 
 // Init_AsMLModel is a typed version of Init.
-func (x gen_MLModel) Init_AsMLModel() MLModel {
+func (genReceiver gen_MLModel) Init_AsMLModel() MLModel {
 	ret := C.MLModel_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return MLModel_FromPointer(ret)
@@ -651,12 +648,12 @@ func MLModelAsset_FromRef(ref objc.Ref) MLModelAsset {
 }
 
 // Init initializes a new instance of the MLModelAsset class.
-func (x gen_MLModelAsset) Init() MLModelAsset {
+func (genReceiver gen_MLModelAsset) Init() MLModelAsset {
 	panic("Init is unavailable")
 }
 
 // Init_AsMLModelAsset is a typed version of Init.
-func (x gen_MLModelAsset) Init_AsMLModelAsset() MLModelAsset {
+func (genReceiver gen_MLModelAsset) Init_AsMLModelAsset() MLModelAsset {
 	panic("Init_AsMLModelAsset is unavailable")
 }
 
@@ -680,11 +677,11 @@ func MLModelCollection_FromRef(ref objc.Ref) MLModelCollection {
 }
 
 // Init initializes a new instance of the MLModelCollection class.
-func (x gen_MLModelCollection) Init() MLModelCollection {
+func (genReceiver gen_MLModelCollection) Init() MLModelCollection {
 	panic("Init is unavailable")
 }
 
 // Init_AsMLModelCollection is a typed version of Init.
-func (x gen_MLModelCollection) Init_AsMLModelCollection() MLModelCollection {
+func (genReceiver gen_MLModelCollection) Init_AsMLModelCollection() MLModelCollection {
 	panic("Init_AsMLModelCollection is unavailable")
 }

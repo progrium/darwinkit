@@ -247,6 +247,11 @@ void* NSMutableDictionary_type_DictionaryWithOBEXHeadersData(void* inHeadersData
 	return [NSMutableDictionary
 		dictionaryWithOBEXHeadersData: inHeadersData];
 }
+void* NSMutableDictionary_type_DictionaryWithOBEXHeadersDataHeadersDataSize(void* inHeadersData, uint inDataSize) {
+	return [NSMutableDictionary
+		dictionaryWithOBEXHeadersData: inHeadersData
+		headersDataSize: inDataSize];
+}
 void* NSMutableDictionary_type_DictionaryWithContentsOfFile(void* path) {
 	return [NSMutableDictionary
 		dictionaryWithContentsOfFile: path];
@@ -3723,6 +3728,18 @@ func NSMutableDictionary_DictionaryWithOBEXHeadersData(inHeadersData NSDataRef) 
 	return NSMutableDictionary_FromPointer(ret)
 }
 
+// NSMutableDictionary_DictionaryWithOBEXHeadersDataHeadersDataSize is undocumented.
+//
+// See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1429768-dictionarywithobexheadersdata?language=objc for details.
+func NSMutableDictionary_DictionaryWithOBEXHeadersDataHeadersDataSize(inHeadersData unsafe.Pointer, inDataSize uint) NSMutableDictionary {
+	ret := C.NSMutableDictionary_type_DictionaryWithOBEXHeadersDataHeadersDataSize(
+		inHeadersData,
+		C.uint(inDataSize),
+	)
+
+	return NSMutableDictionary_FromPointer(ret)
+}
+
 // NSMutableDictionary_DictionaryWithContentsOfFile is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574188-dictionarywithcontentsoffile?language=objc for details.
@@ -4377,9 +4394,9 @@ func NSObject_FromRef(ref objc.Ref) NSObject {
 // ActionProperty sent to the delegate to request the property the action applies to.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411302-actionproperty?language=objc for details.
-func (x gen_NSObject) ActionProperty() string {
+func (genReceiver gen_NSObject) ActionProperty() string {
 	ret := C.NSObject_inst_ActionProperty(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -4388,12 +4405,12 @@ func (x gen_NSObject) ActionProperty() string {
 // AttemptRecoveryFromErrorOptionIndex implemented to attempt a recovery from an error noted in an application-modal dialog.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1416402-attemptrecoveryfromerror?language=objc for details.
-func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndex(
+func (genReceiver gen_NSObject) AttemptRecoveryFromErrorOptionIndex(
 	error NSErrorRef,
 	recoveryOptionIndex NSUInteger,
 ) bool {
 	ret := C.NSObject_inst_AttemptRecoveryFromErrorOptionIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 		C.ulong(recoveryOptionIndex),
 	)
@@ -4404,7 +4421,7 @@ func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndex(
 // AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo implemented to attempt a recovery from an error noted in a document-modal sheet.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411071-attemptrecoveryfromerror?language=objc for details.
-func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(
+func (genReceiver gen_NSObject) AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(
 	error NSErrorRef,
 	recoveryOptionIndex NSUInteger,
 	delegate objc.Ref,
@@ -4412,7 +4429,7 @@ func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelec
 	contextInfo unsafe.Pointer,
 ) {
 	C.NSObject_inst_AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelectorContextInfo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 		C.ulong(recoveryOptionIndex),
 		objc.RefPointer(delegate),
@@ -4426,11 +4443,11 @@ func (x gen_NSObject) AttemptRecoveryFromErrorOptionIndexDelegateDidRecoverSelec
 // Candidates returns an array of candidates.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385360-candidates?language=objc for details.
-func (x gen_NSObject) Candidates(
+func (genReceiver gen_NSObject) Candidates(
 	sender objc.Ref,
 ) NSArray {
 	ret := C.NSObject_inst_Candidates(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(sender),
 	)
 
@@ -4440,11 +4457,11 @@ func (x gen_NSObject) Candidates(
 // CommitComposition informs the controller that the composition should be committed.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385539-commitcomposition?language=objc for details.
-func (x gen_NSObject) CommitComposition(
+func (genReceiver gen_NSObject) CommitComposition(
 	sender objc.Ref,
 ) {
 	C.NSObject_inst_CommitComposition(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(sender),
 	)
 
@@ -4454,11 +4471,11 @@ func (x gen_NSObject) CommitComposition(
 // ComposedString return the current composed string.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385416-composedstring?language=objc for details.
-func (x gen_NSObject) ComposedString(
+func (genReceiver gen_NSObject) ComposedString(
 	sender objc.Ref,
 ) objc.Object {
 	ret := C.NSObject_inst_ComposedString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(sender),
 	)
 
@@ -4468,9 +4485,9 @@ func (x gen_NSObject) ComposedString(
 // Copy returns the object returned by copyWithZone:.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418807-copy?language=objc for details.
-func (x gen_NSObject) Copy() objc.Object {
+func (genReceiver gen_NSObject) Copy() objc.Object {
 	ret := C.NSObject_inst_Copy(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -4479,13 +4496,13 @@ func (x gen_NSObject) Copy() objc.Object {
 // CopyScriptingValueForKeyWithProperties creates and returns one or more scripting objects to be inserted into the specified relationship by copying the passed-in value and setting the properties in the copied object or objects.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1410291-copyscriptingvalue?language=objc for details.
-func (x gen_NSObject) CopyScriptingValueForKeyWithProperties(
+func (genReceiver gen_NSObject) CopyScriptingValueForKeyWithProperties(
 	value objc.Ref,
 	key string,
 	properties NSDictionaryRef,
 ) objc.Object {
 	ret := C.NSObject_inst_CopyScriptingValueForKeyWithProperties(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 		C.createNSStringFromCString(C.CString(key)),
 		objc.RefPointer(properties),
@@ -4497,9 +4514,9 @@ func (x gen_NSObject) CopyScriptingValueForKeyWithProperties(
 // Dealloc deallocates the memory occupied by the receiver.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1571947-dealloc?language=objc for details.
-func (x gen_NSObject) Dealloc() {
+func (genReceiver gen_NSObject) Dealloc() {
 	C.NSObject_inst_Dealloc(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -4508,12 +4525,12 @@ func (x gen_NSObject) Dealloc() {
 // DidCommandBySelectorClient processes a command generated by user action such as typing certain keys or pressing the mouse button.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385394-didcommandbyselector?language=objc for details.
-func (x gen_NSObject) DidCommandBySelectorClient(
+func (genReceiver gen_NSObject) DidCommandBySelectorClient(
 	aSelector objc.Selector,
 	sender objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_DidCommandBySelectorClient(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(sender),
 	)
@@ -4524,11 +4541,11 @@ func (x gen_NSObject) DidCommandBySelectorClient(
 // DoesContain returns a Boolean value that indicates whether the receiver contains a given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393848-doescontain?language=objc for details.
-func (x gen_NSObject) DoesContain(
+func (genReceiver gen_NSObject) DoesContain(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_DoesContain(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4538,11 +4555,11 @@ func (x gen_NSObject) DoesContain(
 // DoesNotRecognizeSelector handles messages the receiver doesn’t recognize.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418637-doesnotrecognizeselector?language=objc for details.
-func (x gen_NSObject) DoesNotRecognizeSelector(
+func (genReceiver gen_NSObject) DoesNotRecognizeSelector(
 	aSelector objc.Selector,
 ) {
 	C.NSObject_inst_DoesNotRecognizeSelector(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 	)
 
@@ -4552,11 +4569,11 @@ func (x gen_NSObject) DoesNotRecognizeSelector(
 // ForwardingTargetForSelector returns the object to which unrecognized messages should first be directed.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418855-forwardingtargetforselector?language=objc for details.
-func (x gen_NSObject) ForwardingTargetForSelector(
+func (genReceiver gen_NSObject) ForwardingTargetForSelector(
 	aSelector objc.Selector,
 ) objc.Object {
 	ret := C.NSObject_inst_ForwardingTargetForSelector(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 	)
 
@@ -4566,9 +4583,9 @@ func (x gen_NSObject) ForwardingTargetForSelector(
 // ImageRepresentation returns the image to display.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1504801-imagerepresentation?language=objc for details.
-func (x gen_NSObject) ImageRepresentation() objc.Object {
+func (genReceiver gen_NSObject) ImageRepresentation() objc.Object {
 	ret := C.NSObject_inst_ImageRepresentation(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -4577,9 +4594,9 @@ func (x gen_NSObject) ImageRepresentation() objc.Object {
 // ImageRepresentationType returns the representation type of the image to display.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503547-imagerepresentationtype?language=objc for details.
-func (x gen_NSObject) ImageRepresentationType() string {
+func (genReceiver gen_NSObject) ImageRepresentationType() string {
 	ret := C.NSObject_inst_ImageRepresentationType(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -4588,9 +4605,9 @@ func (x gen_NSObject) ImageRepresentationType() string {
 // ImageSubtitle returns the display subtitle of the image.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503725-imagesubtitle?language=objc for details.
-func (x gen_NSObject) ImageSubtitle() string {
+func (genReceiver gen_NSObject) ImageSubtitle() string {
 	ret := C.NSObject_inst_ImageSubtitle(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -4599,9 +4616,9 @@ func (x gen_NSObject) ImageSubtitle() string {
 // ImageTitle returns the display title of the image.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1504080-imagetitle?language=objc for details.
-func (x gen_NSObject) ImageTitle() string {
+func (genReceiver gen_NSObject) ImageTitle() string {
 	ret := C.NSObject_inst_ImageTitle(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -4610,9 +4627,9 @@ func (x gen_NSObject) ImageTitle() string {
 // ImageUID returns a unique string that identifies the data source item.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1503516-imageuid?language=objc for details.
-func (x gen_NSObject) ImageUID() string {
+func (genReceiver gen_NSObject) ImageUID() string {
 	ret := C.NSObject_inst_ImageUID(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -4621,9 +4638,9 @@ func (x gen_NSObject) ImageUID() string {
 // ImageVersion returns the version of the item.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1504444-imageversion?language=objc for details.
-func (x gen_NSObject) ImageVersion() NSUInteger {
+func (genReceiver gen_NSObject) ImageVersion() NSUInteger {
 	ret := C.NSObject_inst_ImageVersion(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -4632,9 +4649,9 @@ func (x gen_NSObject) ImageVersion() NSUInteger {
 // Init implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc for details.
-func (x gen_NSObject) Init() NSObject {
+func (genReceiver gen_NSObject) Init() NSObject {
 	ret := C.NSObject_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSObject_FromPointer(ret)
@@ -4643,9 +4660,9 @@ func (x gen_NSObject) Init() NSObject {
 // Init_AsNSObject is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418641-init?language=objc for details.
-func (x gen_NSObject) Init_AsNSObject() NSObject {
+func (genReceiver gen_NSObject) Init_AsNSObject() NSObject {
 	ret := C.NSObject_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSObject_FromPointer(ret)
@@ -4654,12 +4671,12 @@ func (x gen_NSObject) Init_AsNSObject() NSObject {
 // InputTextClient handles key down events that do not map to an action method.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385446-inputtext?language=objc for details.
-func (x gen_NSObject) InputTextClient(
+func (genReceiver gen_NSObject) InputTextClient(
 	string string,
 	sender objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_InputTextClient(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(string)),
 		objc.RefPointer(sender),
 	)
@@ -4670,14 +4687,14 @@ func (x gen_NSObject) InputTextClient(
 // InputTextKeyModifiersClient receives Unicode, the key code that generated it, and any modifier flags.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385436-inputtext?language=objc for details.
-func (x gen_NSObject) InputTextKeyModifiersClient(
+func (genReceiver gen_NSObject) InputTextKeyModifiersClient(
 	string string,
 	keyCode NSInteger,
 	flags NSUInteger,
 	sender objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_InputTextKeyModifiersClient(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(string)),
 		C.long(keyCode),
 		C.ulong(flags),
@@ -4690,11 +4707,11 @@ func (x gen_NSObject) InputTextKeyModifiersClient(
 // InverseForRelationshipKey for a given key that defines the name of the relationship from the receiver’s class to another class, returns the name of the relationship from the other class to the receiver’s class.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411046-inverseforrelationshipkey?language=objc for details.
-func (x gen_NSObject) InverseForRelationshipKey(
+func (genReceiver gen_NSObject) InverseForRelationshipKey(
 	relationshipKey string,
 ) string {
 	ret := C.NSObject_inst_InverseForRelationshipKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(relationshipKey)),
 	)
 
@@ -4704,11 +4721,11 @@ func (x gen_NSObject) InverseForRelationshipKey(
 // IsCaseInsensitiveLike returns a Boolean value that indicates whether receiver is considered to be “like” a given string when the case of characters in the receiver is ignored.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393837-iscaseinsensitivelike?language=objc for details.
-func (x gen_NSObject) IsCaseInsensitiveLike(
+func (genReceiver gen_NSObject) IsCaseInsensitiveLike(
 	object string,
 ) bool {
 	ret := C.NSObject_inst_IsCaseInsensitiveLike(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(object)),
 	)
 
@@ -4718,11 +4735,11 @@ func (x gen_NSObject) IsCaseInsensitiveLike(
 // IsEqualTo returns a Boolean value that indicates whether the receiver is equal to another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393823-isequalto?language=objc for details.
-func (x gen_NSObject) IsEqualTo(
+func (genReceiver gen_NSObject) IsEqualTo(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsEqualTo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4732,11 +4749,11 @@ func (x gen_NSObject) IsEqualTo(
 // IsGreaterThan returns a Boolean value that indicates whether the receiver is greater than another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393885-isgreaterthan?language=objc for details.
-func (x gen_NSObject) IsGreaterThan(
+func (genReceiver gen_NSObject) IsGreaterThan(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsGreaterThan(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4746,11 +4763,11 @@ func (x gen_NSObject) IsGreaterThan(
 // IsGreaterThanOrEqualTo returns a Boolean value that indicates whether the receiver is greater than or equal to another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393862-isgreaterthanorequalto?language=objc for details.
-func (x gen_NSObject) IsGreaterThanOrEqualTo(
+func (genReceiver gen_NSObject) IsGreaterThanOrEqualTo(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsGreaterThanOrEqualTo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4760,11 +4777,11 @@ func (x gen_NSObject) IsGreaterThanOrEqualTo(
 // IsLessThan returns a Boolean value that indicates whether the receiver is less than another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393841-islessthan?language=objc for details.
-func (x gen_NSObject) IsLessThan(
+func (genReceiver gen_NSObject) IsLessThan(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsLessThan(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4774,11 +4791,11 @@ func (x gen_NSObject) IsLessThan(
 // IsLessThanOrEqualTo returns a Boolean value that indicates whether the receiver is less than or equal to another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393827-islessthanorequalto?language=objc for details.
-func (x gen_NSObject) IsLessThanOrEqualTo(
+func (genReceiver gen_NSObject) IsLessThanOrEqualTo(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsLessThanOrEqualTo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4788,11 +4805,11 @@ func (x gen_NSObject) IsLessThanOrEqualTo(
 // IsLike returns a Boolean value that indicates whether the receiver is "like" another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393866-islike?language=objc for details.
-func (x gen_NSObject) IsLike(
+func (genReceiver gen_NSObject) IsLike(
 	object string,
 ) bool {
 	ret := C.NSObject_inst_IsLike(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(object)),
 	)
 
@@ -4802,11 +4819,11 @@ func (x gen_NSObject) IsLike(
 // IsNotEqualTo returns a Boolean value that indicates whether the receiver is not equal to another given object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1393843-isnotequalto?language=objc for details.
-func (x gen_NSObject) IsNotEqualTo(
+func (genReceiver gen_NSObject) IsNotEqualTo(
 	object objc.Ref,
 ) bool {
 	ret := C.NSObject_inst_IsNotEqualTo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(object),
 	)
 
@@ -4816,9 +4833,9 @@ func (x gen_NSObject) IsNotEqualTo(
 // MutableCopy returns the object returned by mutableCopyWithZone: where the zone is nil.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1418978-mutablecopy?language=objc for details.
-func (x gen_NSObject) MutableCopy() objc.Object {
+func (genReceiver gen_NSObject) MutableCopy() objc.Object {
 	ret := C.NSObject_inst_MutableCopy(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -4827,11 +4844,11 @@ func (x gen_NSObject) MutableCopy() objc.Object {
 // OriginalString return the string that consists of the precomposed Unicode characters.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1385400-originalstring?language=objc for details.
-func (x gen_NSObject) OriginalString(
+func (genReceiver gen_NSObject) OriginalString(
 	sender objc.Ref,
 ) NSAttributedString {
 	ret := C.NSObject_inst_OriginalString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(sender),
 	)
 
@@ -4841,14 +4858,14 @@ func (x gen_NSObject) OriginalString(
 // PerformSelectorOnThreadWithObjectWaitUntilDone invokes a method of the receiver on the specified thread using the default mode.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1414476-performselector?language=objc for details.
-func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDone(
+func (genReceiver gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDone(
 	aSelector objc.Selector,
 	thr NSThreadRef,
 	arg objc.Ref,
 	wait bool,
 ) {
 	C.NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDone(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(thr),
 		objc.RefPointer(arg),
@@ -4861,7 +4878,7 @@ func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDone(
 // PerformSelectorOnThreadWithObjectWaitUntilDoneModes invokes a method of the receiver on the specified thread using the specified modes.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1417922-performselector?language=objc for details.
-func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
+func (genReceiver gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
 	aSelector objc.Selector,
 	thr NSThreadRef,
 	arg objc.Ref,
@@ -4869,7 +4886,7 @@ func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
 	array NSArrayRef,
 ) {
 	C.NSObject_inst_PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(thr),
 		objc.RefPointer(arg),
@@ -4883,12 +4900,12 @@ func (x gen_NSObject) PerformSelectorOnThreadWithObjectWaitUntilDoneModes(
 // PerformSelectorInBackgroundWithObject invokes a method of the receiver on a new background thread.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1412390-performselectorinbackground?language=objc for details.
-func (x gen_NSObject) PerformSelectorInBackgroundWithObject(
+func (genReceiver gen_NSObject) PerformSelectorInBackgroundWithObject(
 	aSelector objc.Selector,
 	arg objc.Ref,
 ) {
 	C.NSObject_inst_PerformSelectorInBackgroundWithObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(arg),
 	)
@@ -4899,13 +4916,13 @@ func (x gen_NSObject) PerformSelectorInBackgroundWithObject(
 // PerformSelectorOnMainThreadWithObjectWaitUntilDone invokes a method of the receiver on the main thread using the default mode.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1414900-performselectoronmainthread?language=objc for details.
-func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDone(
+func (genReceiver gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDone(
 	aSelector objc.Selector,
 	arg objc.Ref,
 	wait bool,
 ) {
 	C.NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDone(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(arg),
 		convertToObjCBool(wait),
@@ -4917,14 +4934,14 @@ func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDone(
 // PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes invokes a method of the receiver on the main thread using the specified modes.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411637-performselectoronmainthread?language=objc for details.
-func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
+func (genReceiver gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
 	aSelector objc.Selector,
 	arg objc.Ref,
 	wait bool,
 	array NSArrayRef,
 ) {
 	C.NSObject_inst_PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(arg),
 		convertToObjCBool(wait),
@@ -4937,13 +4954,13 @@ func (x gen_NSObject) PerformSelectorOnMainThreadWithObjectWaitUntilDoneModes(
 // ProvideImageDataBytesPerRowOrigin supplies data to a CIImage object.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1438175-provideimagedata?language=objc for details.
-func (x gen_NSObject) ProvideImageDataBytesPerRowOrigin(
+func (genReceiver gen_NSObject) ProvideImageDataBytesPerRowOrigin(
 	data unsafe.Pointer,
 	rowbytes uint,
 	x uint,
 ) {
 	C.NSObject_inst_ProvideImageDataBytesPerRowOrigin(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		data,
 		C.uint(rowbytes),
 		C.uint(x),
@@ -4955,9 +4972,9 @@ func (x gen_NSObject) ProvideImageDataBytesPerRowOrigin(
 // AutoContentAccessingProxy returns a proxy for the receiving object
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1409224-autocontentaccessingproxy?language=objc for details.
-func (x gen_NSObject) AutoContentAccessingProxy() objc.Object {
+func (genReceiver gen_NSObject) AutoContentAccessingProxy() objc.Object {
 	ret := C.NSObject_inst_AutoContentAccessingProxy(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -4966,9 +4983,9 @@ func (x gen_NSObject) AutoContentAccessingProxy() objc.Object {
 // AttributeKeys an array of NSString objects containing the names of immutable values that instances of the receiver's class contain.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1415656-attributekeys?language=objc for details.
-func (x gen_NSObject) AttributeKeys() NSArray {
+func (genReceiver gen_NSObject) AttributeKeys() NSArray {
 	ret := C.NSObject_inst_AttributeKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -4977,9 +4994,9 @@ func (x gen_NSObject) AttributeKeys() NSArray {
 // ToManyRelationshipKeys an array containing the keys for the to-many relationship properties of the receiver.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1415662-tomanyrelationshipkeys?language=objc for details.
-func (x gen_NSObject) ToManyRelationshipKeys() NSArray {
+func (genReceiver gen_NSObject) ToManyRelationshipKeys() NSArray {
 	ret := C.NSObject_inst_ToManyRelationshipKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -4988,9 +5005,9 @@ func (x gen_NSObject) ToManyRelationshipKeys() NSArray {
 // ToOneRelationshipKeys returns the keys for the to-one relationship properties of the receiver, if any.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1414814-toonerelationshipkeys?language=objc for details.
-func (x gen_NSObject) ToOneRelationshipKeys() NSArray {
+func (genReceiver gen_NSObject) ToOneRelationshipKeys() NSArray {
 	ret := C.NSObject_inst_ToOneRelationshipKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -4999,9 +5016,9 @@ func (x gen_NSObject) ToOneRelationshipKeys() NSArray {
 // ClassName returns a string containing the name of the class.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1411337-classname?language=objc for details.
-func (x gen_NSObject) ClassName() string {
+func (genReceiver gen_NSObject) ClassName() string {
 	ret := C.NSObject_inst_ClassName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -5010,9 +5027,9 @@ func (x gen_NSObject) ClassName() string {
 // ScriptingProperties an NSString-keyed dictionary of the receiver's scriptable properties.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1417254-scriptingproperties?language=objc for details.
-func (x gen_NSObject) ScriptingProperties() NSDictionary {
+func (genReceiver gen_NSObject) ScriptingProperties() NSDictionary {
 	ret := C.NSObject_inst_ScriptingProperties(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -5021,11 +5038,11 @@ func (x gen_NSObject) ScriptingProperties() NSDictionary {
 // SetScriptingProperties an NSString-keyed dictionary of the receiver's scriptable properties.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1417254-scriptingproperties?language=objc for details.
-func (x gen_NSObject) SetScriptingProperties(
+func (genReceiver gen_NSObject) SetScriptingProperties(
 	value NSDictionaryRef,
 ) {
 	C.NSObject_inst_SetScriptingProperties(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5035,9 +5052,9 @@ func (x gen_NSObject) SetScriptingProperties(
 // AccessibilityNotifiesWhenDestroyed returns a Boolean value that indicates whether a custom accessibility object sends a notification when its corresponding UI element is destroyed.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/1534050-accessibilitynotifieswhendestroy?language=objc for details.
-func (x gen_NSObject) AccessibilityNotifiesWhenDestroyed() bool {
+func (genReceiver gen_NSObject) AccessibilityNotifiesWhenDestroyed() bool {
 	ret := C.NSObject_inst_AccessibilityNotifiesWhenDestroyed(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5046,9 +5063,9 @@ func (x gen_NSObject) AccessibilityNotifiesWhenDestroyed() bool {
 // IsSelectable is undocumented.
 //
 // See https://developer.apple.com/documentation/objectivec/nsobject/2369549-selectable?language=objc for details.
-func (x gen_NSObject) IsSelectable() bool {
+func (genReceiver gen_NSObject) IsSelectable() bool {
 	ret := C.NSObject_inst_IsSelectable(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5076,11 +5093,11 @@ func CALayer_FromRef(ref objc.Ref) CALayer {
 // ActionForKey returns the action object assigned to the specified key.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410844-actionforkey?language=objc for details.
-func (x gen_CALayer) ActionForKey(
+func (genReceiver gen_CALayer) ActionForKey(
 	event string,
 ) objc.Object {
 	ret := C.CALayer_inst_ActionForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(event)),
 	)
 
@@ -5090,11 +5107,11 @@ func (x gen_CALayer) ActionForKey(
 // AddSublayer appends the layer to the layer’s list of sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410833-addsublayer?language=objc for details.
-func (x gen_CALayer) AddSublayer(
+func (genReceiver gen_CALayer) AddSublayer(
 	layer CALayerRef,
 ) {
 	C.CALayer_inst_AddSublayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(layer),
 	)
 
@@ -5104,9 +5121,9 @@ func (x gen_CALayer) AddSublayer(
 // AnimationKeys returns an array of strings that identify the animations currently attached to the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410937-animationkeys?language=objc for details.
-func (x gen_CALayer) AnimationKeys() NSArray {
+func (genReceiver gen_CALayer) AnimationKeys() NSArray {
 	ret := C.CALayer_inst_AnimationKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -5115,9 +5132,9 @@ func (x gen_CALayer) AnimationKeys() NSArray {
 // ContentsAreFlipped returns a Boolean indicating whether the layer content is implicitly flipped when rendered.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410777-contentsareflipped?language=objc for details.
-func (x gen_CALayer) ContentsAreFlipped() bool {
+func (genReceiver gen_CALayer) ContentsAreFlipped() bool {
 	ret := C.CALayer_inst_ContentsAreFlipped(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5126,12 +5143,12 @@ func (x gen_CALayer) ContentsAreFlipped() bool {
 // ConvertRectFromLayer converts the rectangle from the specified layer’s coordinate system to the receiver’s coordinate system.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410948-convertrect?language=objc for details.
-func (x gen_CALayer) ConvertRectFromLayer(
+func (genReceiver gen_CALayer) ConvertRectFromLayer(
 	r NSRect,
 	l CALayerRef,
 ) NSRect {
 	ret := C.CALayer_inst_ConvertRectFromLayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&r)),
 		objc.RefPointer(l),
 	)
@@ -5142,12 +5159,12 @@ func (x gen_CALayer) ConvertRectFromLayer(
 // ConvertRectToLayer converts the rectangle from the receiver’s coordinate system to the specified layer’s coordinate system.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410742-convertrect?language=objc for details.
-func (x gen_CALayer) ConvertRectToLayer(
+func (genReceiver gen_CALayer) ConvertRectToLayer(
 	r NSRect,
 	l CALayerRef,
 ) NSRect {
 	ret := C.CALayer_inst_ConvertRectToLayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&r)),
 		objc.RefPointer(l),
 	)
@@ -5158,9 +5175,9 @@ func (x gen_CALayer) ConvertRectToLayer(
 // Display reloads the content of this layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410926-display?language=objc for details.
-func (x gen_CALayer) Display() {
+func (genReceiver gen_CALayer) Display() {
 	C.CALayer_inst_Display(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5169,9 +5186,9 @@ func (x gen_CALayer) Display() {
 // DisplayIfNeeded initiates the update process for a layer if it is currently marked as needing an update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410813-displayifneeded?language=objc for details.
-func (x gen_CALayer) DisplayIfNeeded() {
+func (genReceiver gen_CALayer) DisplayIfNeeded() {
 	C.CALayer_inst_DisplayIfNeeded(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5180,9 +5197,9 @@ func (x gen_CALayer) DisplayIfNeeded() {
 // Init returns an initialized CALayer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
-func (x gen_CALayer) Init() CALayer {
+func (genReceiver gen_CALayer) Init() CALayer {
 	ret := C.CALayer_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -5191,9 +5208,9 @@ func (x gen_CALayer) Init() CALayer {
 // Init_AsCALayer is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410835-init?language=objc for details.
-func (x gen_CALayer) Init_AsCALayer() CALayer {
+func (genReceiver gen_CALayer) Init_AsCALayer() CALayer {
 	ret := C.CALayer_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -5202,11 +5219,11 @@ func (x gen_CALayer) Init_AsCALayer() CALayer {
 // InitWithLayer override to copy or initialize custom fields of the specified layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc for details.
-func (x gen_CALayer) InitWithLayer(
+func (genReceiver gen_CALayer) InitWithLayer(
 	layer objc.Ref,
 ) CALayer {
 	ret := C.CALayer_inst_InitWithLayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(layer),
 	)
 
@@ -5216,12 +5233,12 @@ func (x gen_CALayer) InitWithLayer(
 // InsertSublayerAbove inserts the specified sublayer above a different sublayer that already belongs to the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410798-insertsublayer?language=objc for details.
-func (x gen_CALayer) InsertSublayerAbove(
+func (genReceiver gen_CALayer) InsertSublayerAbove(
 	layer CALayerRef,
 	sibling CALayerRef,
 ) {
 	C.CALayer_inst_InsertSublayerAbove(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(layer),
 		objc.RefPointer(sibling),
 	)
@@ -5232,12 +5249,12 @@ func (x gen_CALayer) InsertSublayerAbove(
 // InsertSublayerAtIndex inserts the specified layer into the receiver’s list of sublayers at the specified index.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410944-insertsublayer?language=objc for details.
-func (x gen_CALayer) InsertSublayerAtIndex(
+func (genReceiver gen_CALayer) InsertSublayerAtIndex(
 	layer CALayerRef,
 	idx int32,
 ) {
 	C.CALayer_inst_InsertSublayerAtIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(layer),
 		C.int(idx),
 	)
@@ -5248,12 +5265,12 @@ func (x gen_CALayer) InsertSublayerAtIndex(
 // InsertSublayerBelow inserts the specified sublayer below a different sublayer that already belongs to the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410840-insertsublayer?language=objc for details.
-func (x gen_CALayer) InsertSublayerBelow(
+func (genReceiver gen_CALayer) InsertSublayerBelow(
 	layer CALayerRef,
 	sibling CALayerRef,
 ) {
 	C.CALayer_inst_InsertSublayerBelow(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(layer),
 		objc.RefPointer(sibling),
 	)
@@ -5264,9 +5281,9 @@ func (x gen_CALayer) InsertSublayerBelow(
 // LayoutIfNeeded recalculate the receiver’s layout, if required.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410873-layoutifneeded?language=objc for details.
-func (x gen_CALayer) LayoutIfNeeded() {
+func (genReceiver gen_CALayer) LayoutIfNeeded() {
 	C.CALayer_inst_LayoutIfNeeded(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5275,9 +5292,9 @@ func (x gen_CALayer) LayoutIfNeeded() {
 // LayoutSublayers tells the layer to update its layout.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410935-layoutsublayers?language=objc for details.
-func (x gen_CALayer) LayoutSublayers() {
+func (genReceiver gen_CALayer) LayoutSublayers() {
 	C.CALayer_inst_LayoutSublayers(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5286,9 +5303,9 @@ func (x gen_CALayer) LayoutSublayers() {
 // ModelLayer returns the model layer object associated with the receiver, if any.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc for details.
-func (x gen_CALayer) ModelLayer() CALayer {
+func (genReceiver gen_CALayer) ModelLayer() CALayer {
 	ret := C.CALayer_inst_ModelLayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -5297,9 +5314,9 @@ func (x gen_CALayer) ModelLayer() CALayer {
 // NeedsDisplay returns a Boolean indicating whether the layer has been marked as needing an update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410958-needsdisplay?language=objc for details.
-func (x gen_CALayer) NeedsDisplay() bool {
+func (genReceiver gen_CALayer) NeedsDisplay() bool {
 	ret := C.CALayer_inst_NeedsDisplay(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5308,9 +5325,9 @@ func (x gen_CALayer) NeedsDisplay() bool {
 // NeedsLayout returns a Boolean indicating whether the layer has been marked as needing a layout update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410956-needslayout?language=objc for details.
-func (x gen_CALayer) NeedsLayout() bool {
+func (genReceiver gen_CALayer) NeedsLayout() bool {
 	ret := C.CALayer_inst_NeedsLayout(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5319,9 +5336,9 @@ func (x gen_CALayer) NeedsLayout() bool {
 // PreferredFrameSize returns the preferred size of the layer in the coordinate space of its superlayer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410980-preferredframesize?language=objc for details.
-func (x gen_CALayer) PreferredFrameSize() NSSize {
+func (genReceiver gen_CALayer) PreferredFrameSize() NSSize {
 	ret := C.CALayer_inst_PreferredFrameSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSSize)(unsafe.Pointer(&ret))
@@ -5330,9 +5347,9 @@ func (x gen_CALayer) PreferredFrameSize() NSSize {
 // PresentationLayer returns a copy of the presentation layer object that represents the state of the layer as it currently appears onscreen.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc for details.
-func (x gen_CALayer) PresentationLayer() CALayer {
+func (genReceiver gen_CALayer) PresentationLayer() CALayer {
 	ret := C.CALayer_inst_PresentationLayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -5341,9 +5358,9 @@ func (x gen_CALayer) PresentationLayer() CALayer {
 // RemoveAllAnimations remove all animations attached to the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410810-removeallanimations?language=objc for details.
-func (x gen_CALayer) RemoveAllAnimations() {
+func (genReceiver gen_CALayer) RemoveAllAnimations() {
 	C.CALayer_inst_RemoveAllAnimations(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5352,11 +5369,11 @@ func (x gen_CALayer) RemoveAllAnimations() {
 // RemoveAnimationForKey remove the animation object with the specified key.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410939-removeanimationforkey?language=objc for details.
-func (x gen_CALayer) RemoveAnimationForKey(
+func (genReceiver gen_CALayer) RemoveAnimationForKey(
 	key string,
 ) {
 	C.CALayer_inst_RemoveAnimationForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 	)
 
@@ -5366,9 +5383,9 @@ func (x gen_CALayer) RemoveAnimationForKey(
 // RemoveFromSuperlayer detaches the layer from its parent layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410767-removefromsuperlayer?language=objc for details.
-func (x gen_CALayer) RemoveFromSuperlayer() {
+func (genReceiver gen_CALayer) RemoveFromSuperlayer() {
 	C.CALayer_inst_RemoveFromSuperlayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5377,12 +5394,12 @@ func (x gen_CALayer) RemoveFromSuperlayer() {
 // ReplaceSublayerWith replaces the specified sublayer with a different layer object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410820-replacesublayer?language=objc for details.
-func (x gen_CALayer) ReplaceSublayerWith(
+func (genReceiver gen_CALayer) ReplaceSublayerWith(
 	oldLayer CALayerRef,
 	newLayer CALayerRef,
 ) {
 	C.CALayer_inst_ReplaceSublayerWith(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(oldLayer),
 		objc.RefPointer(newLayer),
 	)
@@ -5393,11 +5410,11 @@ func (x gen_CALayer) ReplaceSublayerWith(
 // ResizeSublayersWithOldSize informs the receiver’s sublayers that the receiver’s size has changed.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410929-resizesublayerswitholdsize?language=objc for details.
-func (x gen_CALayer) ResizeSublayersWithOldSize(
+func (genReceiver gen_CALayer) ResizeSublayersWithOldSize(
 	size NSSize,
 ) {
 	C.CALayer_inst_ResizeSublayersWithOldSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 
@@ -5407,11 +5424,11 @@ func (x gen_CALayer) ResizeSublayersWithOldSize(
 // ResizeWithOldSuperlayerSize informs the receiver that the size of its superlayer changed.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410894-resizewitholdsuperlayersize?language=objc for details.
-func (x gen_CALayer) ResizeWithOldSuperlayerSize(
+func (genReceiver gen_CALayer) ResizeWithOldSuperlayerSize(
 	size NSSize,
 ) {
 	C.CALayer_inst_ResizeWithOldSuperlayerSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&size)),
 	)
 
@@ -5421,11 +5438,11 @@ func (x gen_CALayer) ResizeWithOldSuperlayerSize(
 // ScrollRectToVisible initiates a scroll in the layer’s closest ancestor scroll layer so that the specified rectangle becomes visible.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1522139-scrollrecttovisible?language=objc for details.
-func (x gen_CALayer) ScrollRectToVisible(
+func (genReceiver gen_CALayer) ScrollRectToVisible(
 	r NSRect,
 ) {
 	C.CALayer_inst_ScrollRectToVisible(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&r)),
 	)
 
@@ -5435,9 +5452,9 @@ func (x gen_CALayer) ScrollRectToVisible(
 // SetNeedsDisplay marks the layer’s contents as needing to be updated.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410855-setneedsdisplay?language=objc for details.
-func (x gen_CALayer) SetNeedsDisplay() {
+func (genReceiver gen_CALayer) SetNeedsDisplay() {
 	C.CALayer_inst_SetNeedsDisplay(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5446,11 +5463,11 @@ func (x gen_CALayer) SetNeedsDisplay() {
 // SetNeedsDisplayInRect marks the region within the specified rectangle as needing to be updated.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410800-setneedsdisplayinrect?language=objc for details.
-func (x gen_CALayer) SetNeedsDisplayInRect(
+func (genReceiver gen_CALayer) SetNeedsDisplayInRect(
 	r NSRect,
 ) {
 	C.CALayer_inst_SetNeedsDisplayInRect(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&r)),
 	)
 
@@ -5460,9 +5477,9 @@ func (x gen_CALayer) SetNeedsDisplayInRect(
 // SetNeedsLayout invalidates the layer’s layout and marks it as needing an update.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410946-setneedslayout?language=objc for details.
-func (x gen_CALayer) SetNeedsLayout() {
+func (genReceiver gen_CALayer) SetNeedsLayout() {
 	C.CALayer_inst_SetNeedsLayout(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -5471,11 +5488,11 @@ func (x gen_CALayer) SetNeedsLayout() {
 // ShouldArchiveValueForKey returns a Boolean indicating whether the value of the specified key should be archived.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410753-shouldarchivevalueforkey?language=objc for details.
-func (x gen_CALayer) ShouldArchiveValueForKey(
+func (genReceiver gen_CALayer) ShouldArchiveValueForKey(
 	key string,
 ) bool {
 	ret := C.CALayer_inst_ShouldArchiveValueForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 	)
 
@@ -5485,9 +5502,9 @@ func (x gen_CALayer) ShouldArchiveValueForKey(
 // Delegate returns the layer’s delegate object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410984-delegate?language=objc for details.
-func (x gen_CALayer) Delegate() objc.Object {
+func (genReceiver gen_CALayer) Delegate() objc.Object {
 	ret := C.CALayer_inst_Delegate(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -5496,11 +5513,11 @@ func (x gen_CALayer) Delegate() objc.Object {
 // SetDelegate returns the layer’s delegate object.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410984-delegate?language=objc for details.
-func (x gen_CALayer) SetDelegate(
+func (genReceiver gen_CALayer) SetDelegate(
 	value objc.Ref,
 ) {
 	C.CALayer_inst_SetDelegate(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5510,9 +5527,9 @@ func (x gen_CALayer) SetDelegate(
 // Contents an object that provides the contents of the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410773-contents?language=objc for details.
-func (x gen_CALayer) Contents() objc.Object {
+func (genReceiver gen_CALayer) Contents() objc.Object {
 	ret := C.CALayer_inst_Contents(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -5521,11 +5538,11 @@ func (x gen_CALayer) Contents() objc.Object {
 // SetContents an object that provides the contents of the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410773-contents?language=objc for details.
-func (x gen_CALayer) SetContents(
+func (genReceiver gen_CALayer) SetContents(
 	value objc.Ref,
 ) {
 	C.CALayer_inst_SetContents(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5535,9 +5552,9 @@ func (x gen_CALayer) SetContents(
 // ContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410866-contentsrect?language=objc for details.
-func (x gen_CALayer) ContentsRect() NSRect {
+func (genReceiver gen_CALayer) ContentsRect() NSRect {
 	ret := C.CALayer_inst_ContentsRect(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSRect)(unsafe.Pointer(&ret))
@@ -5546,11 +5563,11 @@ func (x gen_CALayer) ContentsRect() NSRect {
 // SetContentsRect returns the rectangle, in the unit coordinate space, that defines the portion of the layer’s contents that should be used. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410866-contentsrect?language=objc for details.
-func (x gen_CALayer) SetContentsRect(
+func (genReceiver gen_CALayer) SetContentsRect(
 	value NSRect,
 ) {
 	C.CALayer_inst_SetContentsRect(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
 
@@ -5560,9 +5577,9 @@ func (x gen_CALayer) SetContentsRect(
 // ContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410740-contentscenter?language=objc for details.
-func (x gen_CALayer) ContentsCenter() NSRect {
+func (genReceiver gen_CALayer) ContentsCenter() NSRect {
 	ret := C.CALayer_inst_ContentsCenter(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSRect)(unsafe.Pointer(&ret))
@@ -5571,11 +5588,11 @@ func (x gen_CALayer) ContentsCenter() NSRect {
 // SetContentsCenter returns the rectangle that defines how the layer contents are scaled if the layer’s contents are resized. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410740-contentscenter?language=objc for details.
-func (x gen_CALayer) SetContentsCenter(
+func (genReceiver gen_CALayer) SetContentsCenter(
 	value NSRect,
 ) {
 	C.CALayer_inst_SetContentsCenter(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
 
@@ -5585,9 +5602,9 @@ func (x gen_CALayer) SetContentsCenter(
 // Opacity returns the opacity of the receiver. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc for details.
-func (x gen_CALayer) Opacity() float32 {
+func (genReceiver gen_CALayer) Opacity() float32 {
 	ret := C.CALayer_inst_Opacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float32(ret)
@@ -5596,11 +5613,11 @@ func (x gen_CALayer) Opacity() float32 {
 // SetOpacity returns the opacity of the receiver. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc for details.
-func (x gen_CALayer) SetOpacity(
+func (genReceiver gen_CALayer) SetOpacity(
 	value float32,
 ) {
 	C.CALayer_inst_SetOpacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.float(value),
 	)
 
@@ -5610,9 +5627,9 @@ func (x gen_CALayer) SetOpacity(
 // IsHidden returns a Boolean indicating whether the layer is displayed. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc for details.
-func (x gen_CALayer) IsHidden() bool {
+func (genReceiver gen_CALayer) IsHidden() bool {
 	ret := C.CALayer_inst_IsHidden(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5621,11 +5638,11 @@ func (x gen_CALayer) IsHidden() bool {
 // SetHidden returns a Boolean indicating whether the layer is displayed. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410838-hidden?language=objc for details.
-func (x gen_CALayer) SetHidden(
+func (genReceiver gen_CALayer) SetHidden(
 	value bool,
 ) {
 	C.CALayer_inst_SetHidden(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -5635,9 +5652,9 @@ func (x gen_CALayer) SetHidden(
 // MasksToBounds returns a Boolean indicating whether sublayers are clipped to the layer’s bounds. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410896-maskstobounds?language=objc for details.
-func (x gen_CALayer) MasksToBounds() bool {
+func (genReceiver gen_CALayer) MasksToBounds() bool {
 	ret := C.CALayer_inst_MasksToBounds(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5646,11 +5663,11 @@ func (x gen_CALayer) MasksToBounds() bool {
 // SetMasksToBounds returns a Boolean indicating whether sublayers are clipped to the layer’s bounds. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410896-maskstobounds?language=objc for details.
-func (x gen_CALayer) SetMasksToBounds(
+func (genReceiver gen_CALayer) SetMasksToBounds(
 	value bool,
 ) {
 	C.CALayer_inst_SetMasksToBounds(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -5660,9 +5677,9 @@ func (x gen_CALayer) SetMasksToBounds(
 // Mask an optional layer whose alpha channel is used to mask the layer’s content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410861-mask?language=objc for details.
-func (x gen_CALayer) Mask() CALayer {
+func (genReceiver gen_CALayer) Mask() CALayer {
 	ret := C.CALayer_inst_Mask(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -5671,11 +5688,11 @@ func (x gen_CALayer) Mask() CALayer {
 // SetMask an optional layer whose alpha channel is used to mask the layer’s content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410861-mask?language=objc for details.
-func (x gen_CALayer) SetMask(
+func (genReceiver gen_CALayer) SetMask(
 	value CALayerRef,
 ) {
 	C.CALayer_inst_SetMask(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5685,9 +5702,9 @@ func (x gen_CALayer) SetMask(
 // IsDoubleSided returns a Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410924-doublesided?language=objc for details.
-func (x gen_CALayer) IsDoubleSided() bool {
+func (genReceiver gen_CALayer) IsDoubleSided() bool {
 	ret := C.CALayer_inst_IsDoubleSided(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5696,11 +5713,11 @@ func (x gen_CALayer) IsDoubleSided() bool {
 // SetDoubleSided returns a Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410924-doublesided?language=objc for details.
-func (x gen_CALayer) SetDoubleSided(
+func (genReceiver gen_CALayer) SetDoubleSided(
 	value bool,
 ) {
 	C.CALayer_inst_SetDoubleSided(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -5710,9 +5727,9 @@ func (x gen_CALayer) SetDoubleSided(
 // CornerRadius returns the radius to use when drawing rounded corners for the layer’s background. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410818-cornerradius?language=objc for details.
-func (x gen_CALayer) CornerRadius() CGFloat {
+func (genReceiver gen_CALayer) CornerRadius() CGFloat {
 	ret := C.CALayer_inst_CornerRadius(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -5721,11 +5738,11 @@ func (x gen_CALayer) CornerRadius() CGFloat {
 // SetCornerRadius returns the radius to use when drawing rounded corners for the layer’s background. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410818-cornerradius?language=objc for details.
-func (x gen_CALayer) SetCornerRadius(
+func (genReceiver gen_CALayer) SetCornerRadius(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetCornerRadius(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -5735,9 +5752,9 @@ func (x gen_CALayer) SetCornerRadius(
 // BorderWidth returns the width of the layer’s border. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410917-borderwidth?language=objc for details.
-func (x gen_CALayer) BorderWidth() CGFloat {
+func (genReceiver gen_CALayer) BorderWidth() CGFloat {
 	ret := C.CALayer_inst_BorderWidth(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -5746,11 +5763,11 @@ func (x gen_CALayer) BorderWidth() CGFloat {
 // SetBorderWidth returns the width of the layer’s border. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410917-borderwidth?language=objc for details.
-func (x gen_CALayer) SetBorderWidth(
+func (genReceiver gen_CALayer) SetBorderWidth(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetBorderWidth(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -5760,9 +5777,9 @@ func (x gen_CALayer) SetBorderWidth(
 // ShadowOpacity returns the opacity of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc for details.
-func (x gen_CALayer) ShadowOpacity() float32 {
+func (genReceiver gen_CALayer) ShadowOpacity() float32 {
 	ret := C.CALayer_inst_ShadowOpacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float32(ret)
@@ -5771,11 +5788,11 @@ func (x gen_CALayer) ShadowOpacity() float32 {
 // SetShadowOpacity returns the opacity of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc for details.
-func (x gen_CALayer) SetShadowOpacity(
+func (genReceiver gen_CALayer) SetShadowOpacity(
 	value float32,
 ) {
 	C.CALayer_inst_SetShadowOpacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.float(value),
 	)
 
@@ -5785,9 +5802,9 @@ func (x gen_CALayer) SetShadowOpacity(
 // ShadowRadius returns the blur radius (in points) used to render the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410819-shadowradius?language=objc for details.
-func (x gen_CALayer) ShadowRadius() CGFloat {
+func (genReceiver gen_CALayer) ShadowRadius() CGFloat {
 	ret := C.CALayer_inst_ShadowRadius(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -5796,11 +5813,11 @@ func (x gen_CALayer) ShadowRadius() CGFloat {
 // SetShadowRadius returns the blur radius (in points) used to render the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410819-shadowradius?language=objc for details.
-func (x gen_CALayer) SetShadowRadius(
+func (genReceiver gen_CALayer) SetShadowRadius(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetShadowRadius(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -5810,9 +5827,9 @@ func (x gen_CALayer) SetShadowRadius(
 // ShadowOffset returns the offset (in points) of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410970-shadowoffset?language=objc for details.
-func (x gen_CALayer) ShadowOffset() NSSize {
+func (genReceiver gen_CALayer) ShadowOffset() NSSize {
 	ret := C.CALayer_inst_ShadowOffset(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSSize)(unsafe.Pointer(&ret))
@@ -5821,11 +5838,11 @@ func (x gen_CALayer) ShadowOffset() NSSize {
 // SetShadowOffset returns the offset (in points) of the layer’s shadow. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410970-shadowoffset?language=objc for details.
-func (x gen_CALayer) SetShadowOffset(
+func (genReceiver gen_CALayer) SetShadowOffset(
 	value NSSize,
 ) {
 	C.CALayer_inst_SetShadowOffset(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSSize)(unsafe.Pointer(&value)),
 	)
 
@@ -5835,9 +5852,9 @@ func (x gen_CALayer) SetShadowOffset(
 // Style an optional dictionary used to store property values that aren't explicitly defined by the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410875-style?language=objc for details.
-func (x gen_CALayer) Style() NSDictionary {
+func (genReceiver gen_CALayer) Style() NSDictionary {
 	ret := C.CALayer_inst_Style(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -5846,11 +5863,11 @@ func (x gen_CALayer) Style() NSDictionary {
 // SetStyle an optional dictionary used to store property values that aren't explicitly defined by the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410875-style?language=objc for details.
-func (x gen_CALayer) SetStyle(
+func (genReceiver gen_CALayer) SetStyle(
 	value NSDictionaryRef,
 ) {
 	C.CALayer_inst_SetStyle(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5860,9 +5877,9 @@ func (x gen_CALayer) SetStyle(
 // AllowsEdgeAntialiasing returns a Boolean indicating whether the layer is allowed to perform edge antialiasing.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621285-allowsedgeantialiasing?language=objc for details.
-func (x gen_CALayer) AllowsEdgeAntialiasing() bool {
+func (genReceiver gen_CALayer) AllowsEdgeAntialiasing() bool {
 	ret := C.CALayer_inst_AllowsEdgeAntialiasing(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5871,11 +5888,11 @@ func (x gen_CALayer) AllowsEdgeAntialiasing() bool {
 // SetAllowsEdgeAntialiasing returns a Boolean indicating whether the layer is allowed to perform edge antialiasing.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621285-allowsedgeantialiasing?language=objc for details.
-func (x gen_CALayer) SetAllowsEdgeAntialiasing(
+func (genReceiver gen_CALayer) SetAllowsEdgeAntialiasing(
 	value bool,
 ) {
 	C.CALayer_inst_SetAllowsEdgeAntialiasing(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -5885,9 +5902,9 @@ func (x gen_CALayer) SetAllowsEdgeAntialiasing(
 // AllowsGroupOpacity returns a Boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621277-allowsgroupopacity?language=objc for details.
-func (x gen_CALayer) AllowsGroupOpacity() bool {
+func (genReceiver gen_CALayer) AllowsGroupOpacity() bool {
 	ret := C.CALayer_inst_AllowsGroupOpacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -5896,11 +5913,11 @@ func (x gen_CALayer) AllowsGroupOpacity() bool {
 // SetAllowsGroupOpacity returns a Boolean indicating whether the layer is allowed to composite itself as a group separate from its parent.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1621277-allowsgroupopacity?language=objc for details.
-func (x gen_CALayer) SetAllowsGroupOpacity(
+func (genReceiver gen_CALayer) SetAllowsGroupOpacity(
 	value bool,
 ) {
 	C.CALayer_inst_SetAllowsGroupOpacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -5910,9 +5927,9 @@ func (x gen_CALayer) SetAllowsGroupOpacity(
 // Filters an array of Core Image filters to apply to the contents of the layer and its sublayers. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410901-filters?language=objc for details.
-func (x gen_CALayer) Filters() NSArray {
+func (genReceiver gen_CALayer) Filters() NSArray {
 	ret := C.CALayer_inst_Filters(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -5921,11 +5938,11 @@ func (x gen_CALayer) Filters() NSArray {
 // SetFilters an array of Core Image filters to apply to the contents of the layer and its sublayers. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410901-filters?language=objc for details.
-func (x gen_CALayer) SetFilters(
+func (genReceiver gen_CALayer) SetFilters(
 	value NSArrayRef,
 ) {
 	C.CALayer_inst_SetFilters(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5935,9 +5952,9 @@ func (x gen_CALayer) SetFilters(
 // CompositingFilter returns a CoreImage filter used to composite the layer and the content behind it. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410748-compositingfilter?language=objc for details.
-func (x gen_CALayer) CompositingFilter() objc.Object {
+func (genReceiver gen_CALayer) CompositingFilter() objc.Object {
 	ret := C.CALayer_inst_CompositingFilter(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -5946,11 +5963,11 @@ func (x gen_CALayer) CompositingFilter() objc.Object {
 // SetCompositingFilter returns a CoreImage filter used to composite the layer and the content behind it. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410748-compositingfilter?language=objc for details.
-func (x gen_CALayer) SetCompositingFilter(
+func (genReceiver gen_CALayer) SetCompositingFilter(
 	value objc.Ref,
 ) {
 	C.CALayer_inst_SetCompositingFilter(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5960,9 +5977,9 @@ func (x gen_CALayer) SetCompositingFilter(
 // BackgroundFilters an array of Core Image filters to apply to the content immediately behind the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410827-backgroundfilters?language=objc for details.
-func (x gen_CALayer) BackgroundFilters() NSArray {
+func (genReceiver gen_CALayer) BackgroundFilters() NSArray {
 	ret := C.CALayer_inst_BackgroundFilters(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -5971,11 +5988,11 @@ func (x gen_CALayer) BackgroundFilters() NSArray {
 // SetBackgroundFilters an array of Core Image filters to apply to the content immediately behind the layer. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410827-backgroundfilters?language=objc for details.
-func (x gen_CALayer) SetBackgroundFilters(
+func (genReceiver gen_CALayer) SetBackgroundFilters(
 	value NSArrayRef,
 ) {
 	C.CALayer_inst_SetBackgroundFilters(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -5985,9 +6002,9 @@ func (x gen_CALayer) SetBackgroundFilters(
 // MinificationFilterBias returns the bias factor used by the minification filter to determine the levels of detail.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc for details.
-func (x gen_CALayer) MinificationFilterBias() float32 {
+func (genReceiver gen_CALayer) MinificationFilterBias() float32 {
 	ret := C.CALayer_inst_MinificationFilterBias(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float32(ret)
@@ -5996,11 +6013,11 @@ func (x gen_CALayer) MinificationFilterBias() float32 {
 // SetMinificationFilterBias returns the bias factor used by the minification filter to determine the levels of detail.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc for details.
-func (x gen_CALayer) SetMinificationFilterBias(
+func (genReceiver gen_CALayer) SetMinificationFilterBias(
 	value float32,
 ) {
 	C.CALayer_inst_SetMinificationFilterBias(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.float(value),
 	)
 
@@ -6010,9 +6027,9 @@ func (x gen_CALayer) SetMinificationFilterBias(
 // IsOpaque returns a Boolean value indicating whether the layer contains completely opaque content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410763-opaque?language=objc for details.
-func (x gen_CALayer) IsOpaque() bool {
+func (genReceiver gen_CALayer) IsOpaque() bool {
 	ret := C.CALayer_inst_IsOpaque(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6021,11 +6038,11 @@ func (x gen_CALayer) IsOpaque() bool {
 // SetOpaque returns a Boolean value indicating whether the layer contains completely opaque content.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410763-opaque?language=objc for details.
-func (x gen_CALayer) SetOpaque(
+func (genReceiver gen_CALayer) SetOpaque(
 	value bool,
 ) {
 	C.CALayer_inst_SetOpaque(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -6035,9 +6052,9 @@ func (x gen_CALayer) SetOpaque(
 // IsGeometryFlipped returns a Boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410960-geometryflipped?language=objc for details.
-func (x gen_CALayer) IsGeometryFlipped() bool {
+func (genReceiver gen_CALayer) IsGeometryFlipped() bool {
 	ret := C.CALayer_inst_IsGeometryFlipped(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6046,11 +6063,11 @@ func (x gen_CALayer) IsGeometryFlipped() bool {
 // SetGeometryFlipped returns a Boolean that indicates whether the geometry of the layer and its sublayers is flipped vertically.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410960-geometryflipped?language=objc for details.
-func (x gen_CALayer) SetGeometryFlipped(
+func (genReceiver gen_CALayer) SetGeometryFlipped(
 	value bool,
 ) {
 	C.CALayer_inst_SetGeometryFlipped(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -6060,9 +6077,9 @@ func (x gen_CALayer) SetGeometryFlipped(
 // DrawsAsynchronously returns a Boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410974-drawsasynchronously?language=objc for details.
-func (x gen_CALayer) DrawsAsynchronously() bool {
+func (genReceiver gen_CALayer) DrawsAsynchronously() bool {
 	ret := C.CALayer_inst_DrawsAsynchronously(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6071,11 +6088,11 @@ func (x gen_CALayer) DrawsAsynchronously() bool {
 // SetDrawsAsynchronously returns a Boolean indicating whether drawing commands are deferred and processed asynchronously in a background thread.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410974-drawsasynchronously?language=objc for details.
-func (x gen_CALayer) SetDrawsAsynchronously(
+func (genReceiver gen_CALayer) SetDrawsAsynchronously(
 	value bool,
 ) {
 	C.CALayer_inst_SetDrawsAsynchronously(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -6085,9 +6102,9 @@ func (x gen_CALayer) SetDrawsAsynchronously(
 // ShouldRasterize returns a Boolean that indicates whether the layer is rendered as a bitmap before compositing. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410905-shouldrasterize?language=objc for details.
-func (x gen_CALayer) ShouldRasterize() bool {
+func (genReceiver gen_CALayer) ShouldRasterize() bool {
 	ret := C.CALayer_inst_ShouldRasterize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6096,11 +6113,11 @@ func (x gen_CALayer) ShouldRasterize() bool {
 // SetShouldRasterize returns a Boolean that indicates whether the layer is rendered as a bitmap before compositing. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410905-shouldrasterize?language=objc for details.
-func (x gen_CALayer) SetShouldRasterize(
+func (genReceiver gen_CALayer) SetShouldRasterize(
 	value bool,
 ) {
 	C.CALayer_inst_SetShouldRasterize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -6110,9 +6127,9 @@ func (x gen_CALayer) SetShouldRasterize(
 // RasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410801-rasterizationscale?language=objc for details.
-func (x gen_CALayer) RasterizationScale() CGFloat {
+func (genReceiver gen_CALayer) RasterizationScale() CGFloat {
 	ret := C.CALayer_inst_RasterizationScale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -6121,11 +6138,11 @@ func (x gen_CALayer) RasterizationScale() CGFloat {
 // SetRasterizationScale returns the scale at which to rasterize content, relative to the coordinate space of the layer. Animatable
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410801-rasterizationscale?language=objc for details.
-func (x gen_CALayer) SetRasterizationScale(
+func (genReceiver gen_CALayer) SetRasterizationScale(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetRasterizationScale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -6135,9 +6152,9 @@ func (x gen_CALayer) SetRasterizationScale(
 // Frame returns the layer’s frame rectangle.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410779-frame?language=objc for details.
-func (x gen_CALayer) Frame() NSRect {
+func (genReceiver gen_CALayer) Frame() NSRect {
 	ret := C.CALayer_inst_Frame(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSRect)(unsafe.Pointer(&ret))
@@ -6146,11 +6163,11 @@ func (x gen_CALayer) Frame() NSRect {
 // SetFrame returns the layer’s frame rectangle.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410779-frame?language=objc for details.
-func (x gen_CALayer) SetFrame(
+func (genReceiver gen_CALayer) SetFrame(
 	value NSRect,
 ) {
 	C.CALayer_inst_SetFrame(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
 
@@ -6160,9 +6177,9 @@ func (x gen_CALayer) SetFrame(
 // Bounds returns the layer’s bounds rectangle. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410915-bounds?language=objc for details.
-func (x gen_CALayer) Bounds() NSRect {
+func (genReceiver gen_CALayer) Bounds() NSRect {
 	ret := C.CALayer_inst_Bounds(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSRect)(unsafe.Pointer(&ret))
@@ -6171,11 +6188,11 @@ func (x gen_CALayer) Bounds() NSRect {
 // SetBounds returns the layer’s bounds rectangle. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410915-bounds?language=objc for details.
-func (x gen_CALayer) SetBounds(
+func (genReceiver gen_CALayer) SetBounds(
 	value NSRect,
 ) {
 	C.CALayer_inst_SetBounds(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&value)),
 	)
 
@@ -6185,9 +6202,9 @@ func (x gen_CALayer) SetBounds(
 // ZPosition returns the layer’s position on the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410884-zposition?language=objc for details.
-func (x gen_CALayer) ZPosition() CGFloat {
+func (genReceiver gen_CALayer) ZPosition() CGFloat {
 	ret := C.CALayer_inst_ZPosition(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -6196,11 +6213,11 @@ func (x gen_CALayer) ZPosition() CGFloat {
 // SetZPosition returns the layer’s position on the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410884-zposition?language=objc for details.
-func (x gen_CALayer) SetZPosition(
+func (genReceiver gen_CALayer) SetZPosition(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetZPosition(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -6210,9 +6227,9 @@ func (x gen_CALayer) SetZPosition(
 // AnchorPointZ returns the anchor point for the layer’s position along the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410796-anchorpointz?language=objc for details.
-func (x gen_CALayer) AnchorPointZ() CGFloat {
+func (genReceiver gen_CALayer) AnchorPointZ() CGFloat {
 	ret := C.CALayer_inst_AnchorPointZ(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -6221,11 +6238,11 @@ func (x gen_CALayer) AnchorPointZ() CGFloat {
 // SetAnchorPointZ returns the anchor point for the layer’s position along the z axis. Animatable.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410796-anchorpointz?language=objc for details.
-func (x gen_CALayer) SetAnchorPointZ(
+func (genReceiver gen_CALayer) SetAnchorPointZ(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetAnchorPointZ(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -6235,9 +6252,9 @@ func (x gen_CALayer) SetAnchorPointZ(
 // ContentsScale returns the scale factor applied to the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410746-contentsscale?language=objc for details.
-func (x gen_CALayer) ContentsScale() CGFloat {
+func (genReceiver gen_CALayer) ContentsScale() CGFloat {
 	ret := C.CALayer_inst_ContentsScale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CGFloat(ret)
@@ -6246,11 +6263,11 @@ func (x gen_CALayer) ContentsScale() CGFloat {
 // SetContentsScale returns the scale factor applied to the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410746-contentsscale?language=objc for details.
-func (x gen_CALayer) SetContentsScale(
+func (genReceiver gen_CALayer) SetContentsScale(
 	value CGFloat,
 ) {
 	C.CALayer_inst_SetContentsScale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -6260,9 +6277,9 @@ func (x gen_CALayer) SetContentsScale(
 // Sublayers an array containing the layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410802-sublayers?language=objc for details.
-func (x gen_CALayer) Sublayers() NSArray {
+func (genReceiver gen_CALayer) Sublayers() NSArray {
 	ret := C.CALayer_inst_Sublayers(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -6271,11 +6288,11 @@ func (x gen_CALayer) Sublayers() NSArray {
 // SetSublayers an array containing the layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410802-sublayers?language=objc for details.
-func (x gen_CALayer) SetSublayers(
+func (genReceiver gen_CALayer) SetSublayers(
 	value NSArrayRef,
 ) {
 	C.CALayer_inst_SetSublayers(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -6285,9 +6302,9 @@ func (x gen_CALayer) SetSublayers(
 // Superlayer returns the superlayer of the layer.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410761-superlayer?language=objc for details.
-func (x gen_CALayer) Superlayer() CALayer {
+func (genReceiver gen_CALayer) Superlayer() CALayer {
 	ret := C.CALayer_inst_Superlayer(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return CALayer_FromPointer(ret)
@@ -6296,9 +6313,9 @@ func (x gen_CALayer) Superlayer() CALayer {
 // NeedsDisplayOnBoundsChange returns a Boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410923-needsdisplayonboundschange?language=objc for details.
-func (x gen_CALayer) NeedsDisplayOnBoundsChange() bool {
+func (genReceiver gen_CALayer) NeedsDisplayOnBoundsChange() bool {
 	ret := C.CALayer_inst_NeedsDisplayOnBoundsChange(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -6307,11 +6324,11 @@ func (x gen_CALayer) NeedsDisplayOnBoundsChange() bool {
 // SetNeedsDisplayOnBoundsChange returns a Boolean indicating whether the layer contents must be updated when its bounds rectangle changes.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410923-needsdisplayonboundschange?language=objc for details.
-func (x gen_CALayer) SetNeedsDisplayOnBoundsChange(
+func (genReceiver gen_CALayer) SetNeedsDisplayOnBoundsChange(
 	value bool,
 ) {
 	C.CALayer_inst_SetNeedsDisplayOnBoundsChange(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -6321,9 +6338,9 @@ func (x gen_CALayer) SetNeedsDisplayOnBoundsChange(
 // LayoutManager returns the object responsible for laying out the layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410749-layoutmanager?language=objc for details.
-func (x gen_CALayer) LayoutManager() objc.Object {
+func (genReceiver gen_CALayer) LayoutManager() objc.Object {
 	ret := C.CALayer_inst_LayoutManager(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -6332,11 +6349,11 @@ func (x gen_CALayer) LayoutManager() objc.Object {
 // SetLayoutManager returns the object responsible for laying out the layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410749-layoutmanager?language=objc for details.
-func (x gen_CALayer) SetLayoutManager(
+func (genReceiver gen_CALayer) SetLayoutManager(
 	value objc.Ref,
 ) {
 	C.CALayer_inst_SetLayoutManager(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -6346,9 +6363,9 @@ func (x gen_CALayer) SetLayoutManager(
 // Constraints returns the constraints used to position current layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1521906-constraints?language=objc for details.
-func (x gen_CALayer) Constraints() NSArray {
+func (genReceiver gen_CALayer) Constraints() NSArray {
 	ret := C.CALayer_inst_Constraints(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -6357,11 +6374,11 @@ func (x gen_CALayer) Constraints() NSArray {
 // SetConstraints returns the constraints used to position current layer’s sublayers.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1521906-constraints?language=objc for details.
-func (x gen_CALayer) SetConstraints(
+func (genReceiver gen_CALayer) SetConstraints(
 	value NSArrayRef,
 ) {
 	C.CALayer_inst_SetConstraints(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -6371,9 +6388,9 @@ func (x gen_CALayer) SetConstraints(
 // Actions returns a dictionary containing layer actions.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410789-actions?language=objc for details.
-func (x gen_CALayer) Actions() NSDictionary {
+func (genReceiver gen_CALayer) Actions() NSDictionary {
 	ret := C.CALayer_inst_Actions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -6382,11 +6399,11 @@ func (x gen_CALayer) Actions() NSDictionary {
 // SetActions returns a dictionary containing layer actions.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410789-actions?language=objc for details.
-func (x gen_CALayer) SetActions(
+func (genReceiver gen_CALayer) SetActions(
 	value NSDictionaryRef,
 ) {
 	C.CALayer_inst_SetActions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 	)
 
@@ -6396,9 +6413,9 @@ func (x gen_CALayer) SetActions(
 // VisibleRect returns the visible region of the layer in its own coordinate space.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1521892-visiblerect?language=objc for details.
-func (x gen_CALayer) VisibleRect() NSRect {
+func (genReceiver gen_CALayer) VisibleRect() NSRect {
 	ret := C.CALayer_inst_VisibleRect(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSRect)(unsafe.Pointer(&ret))
@@ -6407,9 +6424,9 @@ func (x gen_CALayer) VisibleRect() NSRect {
 // Name returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410879-name?language=objc for details.
-func (x gen_CALayer) Name() string {
+func (genReceiver gen_CALayer) Name() string {
 	ret := C.CALayer_inst_Name(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -6418,11 +6435,11 @@ func (x gen_CALayer) Name() string {
 // SetName returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/quartzcore/calayer/1410879-name?language=objc for details.
-func (x gen_CALayer) SetName(
+func (genReceiver gen_CALayer) SetName(
 	value string,
 ) {
 	C.CALayer_inst_SetName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(value)),
 	)
 
@@ -6451,11 +6468,11 @@ func NSArray_FromRef(ref objc.Ref) NSArray {
 // ArrayByAddingObject returns a new array that is a copy of the receiving array with a given object added to the end.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408534-arraybyaddingobject?language=objc for details.
-func (x gen_NSArray) ArrayByAddingObject(
+func (genReceiver gen_NSArray) ArrayByAddingObject(
 	anObject objc.Ref,
 ) NSArray {
 	ret := C.NSArray_inst_ArrayByAddingObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 	)
 
@@ -6465,11 +6482,11 @@ func (x gen_NSArray) ArrayByAddingObject(
 // ArrayByAddingObjectsFromArray returns a new array that is a copy of the receiving array with the objects contained in another array added to the end.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412087-arraybyaddingobjectsfromarray?language=objc for details.
-func (x gen_NSArray) ArrayByAddingObjectsFromArray(
+func (genReceiver gen_NSArray) ArrayByAddingObjectsFromArray(
 	otherArray NSArrayRef,
 ) NSArray {
 	ret := C.NSArray_inst_ArrayByAddingObjectsFromArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherArray),
 	)
 
@@ -6479,11 +6496,11 @@ func (x gen_NSArray) ArrayByAddingObjectsFromArray(
 // ComponentsJoinedByString constructs and returns an NSString object that is the result of interposing a given separator between the elements of the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412075-componentsjoinedbystring?language=objc for details.
-func (x gen_NSArray) ComponentsJoinedByString(
+func (genReceiver gen_NSArray) ComponentsJoinedByString(
 	separator string,
 ) string {
 	ret := C.NSArray_inst_ComponentsJoinedByString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(separator)),
 	)
 
@@ -6493,11 +6510,11 @@ func (x gen_NSArray) ComponentsJoinedByString(
 // ContainsObject returns a Boolean value that indicates whether a given object is present in the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1407477-containsobject?language=objc for details.
-func (x gen_NSArray) ContainsObject(
+func (genReceiver gen_NSArray) ContainsObject(
 	anObject objc.Ref,
 ) bool {
 	ret := C.NSArray_inst_ContainsObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 	)
 
@@ -6507,11 +6524,11 @@ func (x gen_NSArray) ContainsObject(
 // DescriptionWithLocale returns a string that represents the contents of the array, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412374-descriptionwithlocale?language=objc for details.
-func (x gen_NSArray) DescriptionWithLocale(
+func (genReceiver gen_NSArray) DescriptionWithLocale(
 	locale objc.Ref,
 ) string {
 	ret := C.NSArray_inst_DescriptionWithLocale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(locale),
 	)
 
@@ -6521,12 +6538,12 @@ func (x gen_NSArray) DescriptionWithLocale(
 // DescriptionWithLocaleIndent returns a string that represents the contents of the array, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1416257-descriptionwithlocale?language=objc for details.
-func (x gen_NSArray) DescriptionWithLocaleIndent(
+func (genReceiver gen_NSArray) DescriptionWithLocaleIndent(
 	locale objc.Ref,
 	level NSUInteger,
 ) string {
 	ret := C.NSArray_inst_DescriptionWithLocaleIndent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(locale),
 		C.ulong(level),
 	)
@@ -6537,11 +6554,11 @@ func (x gen_NSArray) DescriptionWithLocaleIndent(
 // FirstObjectCommonWithArray returns the first object contained in the receiving array that’s equal to an object in another given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408825-firstobjectcommonwitharray?language=objc for details.
-func (x gen_NSArray) FirstObjectCommonWithArray(
+func (genReceiver gen_NSArray) FirstObjectCommonWithArray(
 	otherArray NSArrayRef,
 ) objc.Object {
 	ret := C.NSArray_inst_FirstObjectCommonWithArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherArray),
 	)
 
@@ -6551,11 +6568,11 @@ func (x gen_NSArray) FirstObjectCommonWithArray(
 // IndexOfObject returns the lowest index whose corresponding array value is equal to a given object.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1417076-indexofobject?language=objc for details.
-func (x gen_NSArray) IndexOfObject(
+func (genReceiver gen_NSArray) IndexOfObject(
 	anObject objc.Ref,
 ) NSUInteger {
 	ret := C.NSArray_inst_IndexOfObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 	)
 
@@ -6565,11 +6582,11 @@ func (x gen_NSArray) IndexOfObject(
 // IndexOfObjectIdenticalTo returns the lowest index whose corresponding array value is identical to a given object.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1410847-indexofobjectidenticalto?language=objc for details.
-func (x gen_NSArray) IndexOfObjectIdenticalTo(
+func (genReceiver gen_NSArray) IndexOfObjectIdenticalTo(
 	anObject objc.Ref,
 ) NSUInteger {
 	ret := C.NSArray_inst_IndexOfObjectIdenticalTo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 	)
 
@@ -6579,9 +6596,9 @@ func (x gen_NSArray) IndexOfObjectIdenticalTo(
 // Init initializes a newly allocated array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
-func (x gen_NSArray) Init() NSArray {
+func (genReceiver gen_NSArray) Init() NSArray {
 	ret := C.NSArray_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -6590,9 +6607,9 @@ func (x gen_NSArray) Init() NSArray {
 // Init_AsNSArray is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414315-init?language=objc for details.
-func (x gen_NSArray) Init_AsNSArray() NSArray {
+func (genReceiver gen_NSArray) Init_AsNSArray() NSArray {
 	ret := C.NSArray_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -6601,11 +6618,11 @@ func (x gen_NSArray) Init_AsNSArray() NSArray {
 // InitWithArray initializes a newly allocated array by placing in it the objects contained in a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc for details.
-func (x gen_NSArray) InitWithArray(
+func (genReceiver gen_NSArray) InitWithArray(
 	array NSArrayRef,
 ) NSArray {
 	ret := C.NSArray_inst_InitWithArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(array),
 	)
 
@@ -6615,12 +6632,12 @@ func (x gen_NSArray) InitWithArray(
 // InitWithArrayCopyItems initializes a newly allocated array using anArray as the source of data objects for the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408557-initwitharray?language=objc for details.
-func (x gen_NSArray) InitWithArrayCopyItems(
+func (genReceiver gen_NSArray) InitWithArrayCopyItems(
 	array NSArrayRef,
 	flag bool,
 ) NSArray {
 	ret := C.NSArray_inst_InitWithArrayCopyItems(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(array),
 		convertToObjCBool(flag),
 	)
@@ -6631,12 +6648,12 @@ func (x gen_NSArray) InitWithArrayCopyItems(
 // InitWithContentsOfURLError is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/2879134-initwithcontentsofurl?language=objc for details.
-func (x gen_NSArray) InitWithContentsOfURLError(
+func (genReceiver gen_NSArray) InitWithContentsOfURLError(
 	url NSURLRef,
 	error NSErrorRef,
 ) NSArray {
 	ret := C.NSArray_inst_InitWithContentsOfURLError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		objc.RefPointer(error),
 	)
@@ -6647,11 +6664,11 @@ func (x gen_NSArray) InitWithContentsOfURLError(
 // IsEqualToArray compares the receiving array to another array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1411770-isequaltoarray?language=objc for details.
-func (x gen_NSArray) IsEqualToArray(
+func (genReceiver gen_NSArray) IsEqualToArray(
 	otherArray NSArrayRef,
 ) bool {
 	ret := C.NSArray_inst_IsEqualToArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherArray),
 	)
 
@@ -6661,11 +6678,11 @@ func (x gen_NSArray) IsEqualToArray(
 // MakeObjectsPerformSelector sends to each object in the array the message identified by a given selector, starting with the first object and continuing through the array to the last object.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1460115-makeobjectsperformselector?language=objc for details.
-func (x gen_NSArray) MakeObjectsPerformSelector(
+func (genReceiver gen_NSArray) MakeObjectsPerformSelector(
 	aSelector objc.Selector,
 ) {
 	C.NSArray_inst_MakeObjectsPerformSelector(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 	)
 
@@ -6675,12 +6692,12 @@ func (x gen_NSArray) MakeObjectsPerformSelector(
 // MakeObjectsPerformSelectorWithObject sends the aSelector message to each object in the array, starting with the first object and continuing through the array to the last object.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1460107-makeobjectsperformselector?language=objc for details.
-func (x gen_NSArray) MakeObjectsPerformSelectorWithObject(
+func (genReceiver gen_NSArray) MakeObjectsPerformSelectorWithObject(
 	aSelector objc.Selector,
 	argument objc.Ref,
 ) {
 	C.NSArray_inst_MakeObjectsPerformSelectorWithObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(argument),
 	)
@@ -6691,11 +6708,11 @@ func (x gen_NSArray) MakeObjectsPerformSelectorWithObject(
 // ObjectAtIndex returns the object located at the specified index.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1417555-objectatindex?language=objc for details.
-func (x gen_NSArray) ObjectAtIndex(
+func (genReceiver gen_NSArray) ObjectAtIndex(
 	index NSUInteger,
 ) objc.Object {
 	ret := C.NSArray_inst_ObjectAtIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(index),
 	)
 
@@ -6705,11 +6722,11 @@ func (x gen_NSArray) ObjectAtIndex(
 // ObjectAtIndexedSubscript returns the object at the specified index.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414084-objectatindexedsubscript?language=objc for details.
-func (x gen_NSArray) ObjectAtIndexedSubscript(
+func (genReceiver gen_NSArray) ObjectAtIndexedSubscript(
 	idx NSUInteger,
 ) objc.Object {
 	ret := C.NSArray_inst_ObjectAtIndexedSubscript(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(idx),
 	)
 
@@ -6719,11 +6736,11 @@ func (x gen_NSArray) ObjectAtIndexedSubscript(
 // PathsMatchingExtensions returns an array containing all the pathname elements in the receiving array that have filename extensions from a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1418275-pathsmatchingextensions?language=objc for details.
-func (x gen_NSArray) PathsMatchingExtensions(
+func (genReceiver gen_NSArray) PathsMatchingExtensions(
 	filterTypes NSArrayRef,
 ) NSArray {
 	ret := C.NSArray_inst_PathsMatchingExtensions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(filterTypes),
 	)
 
@@ -6733,12 +6750,12 @@ func (x gen_NSArray) PathsMatchingExtensions(
 // RemoveObserverForKeyPath raises an exception.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1414976-removeobserver?language=objc for details.
-func (x gen_NSArray) RemoveObserverForKeyPath(
+func (genReceiver gen_NSArray) RemoveObserverForKeyPath(
 	observer NSObjectRef,
 	keyPath string,
 ) {
 	C.NSArray_inst_RemoveObserverForKeyPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(observer),
 		C.createNSStringFromCString(C.CString(keyPath)),
 	)
@@ -6749,13 +6766,13 @@ func (x gen_NSArray) RemoveObserverForKeyPath(
 // RemoveObserverForKeyPathContext raises an exception.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1418441-removeobserver?language=objc for details.
-func (x gen_NSArray) RemoveObserverForKeyPathContext(
+func (genReceiver gen_NSArray) RemoveObserverForKeyPathContext(
 	observer NSObjectRef,
 	keyPath string,
 	context unsafe.Pointer,
 ) {
 	C.NSArray_inst_RemoveObserverForKeyPathContext(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(observer),
 		C.createNSStringFromCString(C.CString(keyPath)),
 		context,
@@ -6767,12 +6784,12 @@ func (x gen_NSArray) RemoveObserverForKeyPathContext(
 // SetValueForKey invokes setValue:forKey: on each of the array's items using the specified value and key.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408301-setvalue?language=objc for details.
-func (x gen_NSArray) SetValueForKey(
+func (genReceiver gen_NSArray) SetValueForKey(
 	value objc.Ref,
 	key string,
 ) {
 	C.NSArray_inst_SetValueForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 		C.createNSStringFromCString(C.CString(key)),
 	)
@@ -6783,9 +6800,9 @@ func (x gen_NSArray) SetValueForKey(
 // ShuffledArray returns a new array that lists this array’s elements in a random order.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1640855-shuffledarray?language=objc for details.
-func (x gen_NSArray) ShuffledArray() NSArray {
+func (genReceiver gen_NSArray) ShuffledArray() NSArray {
 	ret := C.NSArray_inst_ShuffledArray(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -6794,11 +6811,11 @@ func (x gen_NSArray) ShuffledArray() NSArray {
 // SortedArrayUsingDescriptors returns a copy of the receiving array sorted as specified by a given array of sort descriptors.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1415069-sortedarrayusingdescriptors?language=objc for details.
-func (x gen_NSArray) SortedArrayUsingDescriptors(
+func (genReceiver gen_NSArray) SortedArrayUsingDescriptors(
 	sortDescriptors NSArrayRef,
 ) NSArray {
 	ret := C.NSArray_inst_SortedArrayUsingDescriptors(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(sortDescriptors),
 	)
 
@@ -6808,11 +6825,11 @@ func (x gen_NSArray) SortedArrayUsingDescriptors(
 // SortedArrayUsingSelector returns an array that lists the receiving array’s elements in ascending order, as determined by the comparison method specified by a given selector.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1410025-sortedarrayusingselector?language=objc for details.
-func (x gen_NSArray) SortedArrayUsingSelector(
+func (genReceiver gen_NSArray) SortedArrayUsingSelector(
 	comparator objc.Selector,
 ) NSArray {
 	ret := C.NSArray_inst_SortedArrayUsingSelector(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		comparator.SelectorAddress(),
 	)
 
@@ -6822,11 +6839,11 @@ func (x gen_NSArray) SortedArrayUsingSelector(
 // ValueForKey returns an array containing the results of invoking valueForKey: using key on each of the array's objects.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412219-valueforkey?language=objc for details.
-func (x gen_NSArray) ValueForKey(
+func (genReceiver gen_NSArray) ValueForKey(
 	key string,
 ) objc.Object {
 	ret := C.NSArray_inst_ValueForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 	)
 
@@ -6836,12 +6853,12 @@ func (x gen_NSArray) ValueForKey(
 // WriteToURLError is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/2879138-writetourl?language=objc for details.
-func (x gen_NSArray) WriteToURLError(
+func (genReceiver gen_NSArray) WriteToURLError(
 	url NSURLRef,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSArray_inst_WriteToURLError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		objc.RefPointer(error),
 	)
@@ -6852,9 +6869,9 @@ func (x gen_NSArray) WriteToURLError(
 // Count returns the number of objects in the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1409982-count?language=objc for details.
-func (x gen_NSArray) Count() NSUInteger {
+func (genReceiver gen_NSArray) Count() NSUInteger {
 	ret := C.NSArray_inst_Count(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -6863,9 +6880,9 @@ func (x gen_NSArray) Count() NSUInteger {
 // FirstObject returns the first object in the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1412852-firstobject?language=objc for details.
-func (x gen_NSArray) FirstObject() objc.Object {
+func (genReceiver gen_NSArray) FirstObject() objc.Object {
 	ret := C.NSArray_inst_FirstObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -6874,9 +6891,9 @@ func (x gen_NSArray) FirstObject() objc.Object {
 // LastObject returns the last object in the array.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1408316-lastobject?language=objc for details.
-func (x gen_NSArray) LastObject() objc.Object {
+func (genReceiver gen_NSArray) LastObject() objc.Object {
 	ret := C.NSArray_inst_LastObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -6885,9 +6902,9 @@ func (x gen_NSArray) LastObject() objc.Object {
 // SortedArrayHint analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to sortedArrayUsingFunction:context:hint:.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1413063-sortedarrayhint?language=objc for details.
-func (x gen_NSArray) SortedArrayHint() NSData {
+func (genReceiver gen_NSArray) SortedArrayHint() NSData {
 	ret := C.NSArray_inst_SortedArrayHint(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSData_FromPointer(ret)
@@ -6896,9 +6913,9 @@ func (x gen_NSArray) SortedArrayHint() NSData {
 // Description returns a string that represents the contents of the array, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsarray/1413042-description?language=objc for details.
-func (x gen_NSArray) Description() string {
+func (genReceiver gen_NSArray) Description() string {
 	ret := C.NSArray_inst_Description(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -6926,9 +6943,9 @@ func NSAttributedString_FromRef(ref objc.Ref) NSAttributedString {
 // AttributedStringByInflectingString is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/3746871-attributedstringbyinflectingstri?language=objc for details.
-func (x gen_NSAttributedString) AttributedStringByInflectingString() NSAttributedString {
+func (genReceiver gen_NSAttributedString) AttributedStringByInflectingString() NSAttributedString {
 	ret := C.NSAttributedString_inst_AttributedStringByInflectingString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSAttributedString_FromPointer(ret)
@@ -6937,11 +6954,11 @@ func (x gen_NSAttributedString) AttributedStringByInflectingString() NSAttribute
 // DrawInRect draws the attributed string inside the specified bounding rectangle in the current graphics context.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1531631-drawinrect?language=objc for details.
-func (x gen_NSAttributedString) DrawInRect(
+func (genReceiver gen_NSAttributedString) DrawInRect(
 	rect NSRect,
 ) {
 	C.NSAttributedString_inst_DrawInRect(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 	)
 
@@ -6951,11 +6968,11 @@ func (x gen_NSAttributedString) DrawInRect(
 // InitWithAttributedString creates an attributed string with the characters and attributes of the specified attributed string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1415342-initwithattributedstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithAttributedString(
+func (genReceiver gen_NSAttributedString) InitWithAttributedString(
 	attrStr NSAttributedStringRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithAttributedString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(attrStr),
 	)
 
@@ -6965,14 +6982,14 @@ func (x gen_NSAttributedString) InitWithAttributedString(
 // InitWithDataOptionsDocumentAttributesError creates an attributed string from the data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc for details.
-func (x gen_NSAttributedString) InitWithDataOptionsDocumentAttributesError(
+func (genReceiver gen_NSAttributedString) InitWithDataOptionsDocumentAttributesError(
 	data NSDataRef,
 	options NSDictionaryRef,
 	dict NSDictionaryRef,
 	error NSErrorRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithDataOptionsDocumentAttributesError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(options),
 		objc.RefPointer(dict),
@@ -6985,12 +7002,12 @@ func (x gen_NSAttributedString) InitWithDataOptionsDocumentAttributesError(
 // InitWithDocFormatDocumentAttributes creates an attributed string from Microsoft Word format data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc for details.
-func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithDocFormatDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithDocFormatDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(dict),
 	)
@@ -7001,13 +7018,13 @@ func (x gen_NSAttributedString) InitWithDocFormatDocumentAttributes(
 // InitWithHTMLBaseURLDocumentAttributes creates an attributed string from the HTML in the specified data object and base URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1524624-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes(
 	data NSDataRef,
 	base NSURLRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithHTMLBaseURLDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(base),
 		objc.RefPointer(dict),
@@ -7019,12 +7036,12 @@ func (x gen_NSAttributedString) InitWithHTMLBaseURLDocumentAttributes(
 // InitWithHTMLDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1525953-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithHTMLDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithHTMLDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(dict),
 	)
@@ -7035,13 +7052,13 @@ func (x gen_NSAttributedString) InitWithHTMLDocumentAttributes(
 // InitWithHTMLOptionsDocumentAttributes creates an attributed string from the HTML in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc for details.
-func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes(
 	data NSDataRef,
 	options NSDictionaryRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithHTMLOptionsDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(options),
 		objc.RefPointer(dict),
@@ -7053,12 +7070,12 @@ func (x gen_NSAttributedString) InitWithHTMLOptionsDocumentAttributes(
 // InitWithRTFDocumentAttributes creates an attributed string by decoding the stream of RTF commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc for details.
-func (x gen_NSAttributedString) InitWithRTFDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithRTFDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithRTFDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(dict),
 	)
@@ -7069,12 +7086,12 @@ func (x gen_NSAttributedString) InitWithRTFDocumentAttributes(
 // InitWithRTFDDocumentAttributes creates an attributed string by decoding the stream of RTFD commands and data in the specified data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc for details.
-func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes(
+func (genReceiver gen_NSAttributedString) InitWithRTFDDocumentAttributes(
 	data NSDataRef,
 	dict NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithRTFDDocumentAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(dict),
 	)
@@ -7085,11 +7102,11 @@ func (x gen_NSAttributedString) InitWithRTFDDocumentAttributes(
 // InitWithString creates an attributed string with the characters of the specified string and no attribute information.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithString(
+func (genReceiver gen_NSAttributedString) InitWithString(
 	str string,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -7099,12 +7116,12 @@ func (x gen_NSAttributedString) InitWithString(
 // InitWithStringAttributes creates an attributed string with the specified string and attributes.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1408136-initwithstring?language=objc for details.
-func (x gen_NSAttributedString) InitWithStringAttributes(
+func (genReceiver gen_NSAttributedString) InitWithStringAttributes(
 	str string,
 	attrs NSDictionaryRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithStringAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 		objc.RefPointer(attrs),
 	)
@@ -7115,14 +7132,14 @@ func (x gen_NSAttributedString) InitWithStringAttributes(
 // InitWithURLOptionsDocumentAttributesError creates an attributed string from the contents of the specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1530490-initwithurl?language=objc for details.
-func (x gen_NSAttributedString) InitWithURLOptionsDocumentAttributesError(
+func (genReceiver gen_NSAttributedString) InitWithURLOptionsDocumentAttributesError(
 	url NSURLRef,
 	options NSDictionaryRef,
 	dict NSDictionaryRef,
 	error NSErrorRef,
 ) NSAttributedString {
 	ret := C.NSAttributedString_inst_InitWithURLOptionsDocumentAttributesError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		objc.RefPointer(options),
 		objc.RefPointer(dict),
@@ -7135,11 +7152,11 @@ func (x gen_NSAttributedString) InitWithURLOptionsDocumentAttributesError(
 // IsEqualToAttributedString returns a Boolean value that indicates whether the attributed string is equal to another attributed string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1414808-isequaltoattributedstring?language=objc for details.
-func (x gen_NSAttributedString) IsEqualToAttributedString(
+func (genReceiver gen_NSAttributedString) IsEqualToAttributedString(
 	other NSAttributedStringRef,
 ) bool {
 	ret := C.NSAttributedString_inst_IsEqualToAttributedString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(other),
 	)
 
@@ -7149,12 +7166,12 @@ func (x gen_NSAttributedString) IsEqualToAttributedString(
 // NextWordFromIndexForward returns the index of the first character of the word after or before the specified index.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1535305-nextwordfromindex?language=objc for details.
-func (x gen_NSAttributedString) NextWordFromIndexForward(
+func (genReceiver gen_NSAttributedString) NextWordFromIndexForward(
 	location NSUInteger,
 	isForward bool,
 ) NSUInteger {
 	ret := C.NSAttributedString_inst_NextWordFromIndexForward(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(location),
 		convertToObjCBool(isForward),
 	)
@@ -7165,27 +7182,27 @@ func (x gen_NSAttributedString) NextWordFromIndexForward(
 // Size returns the size necessary to draw the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1528362-size?language=objc for details.
-func (x gen_NSAttributedString) Size() NSSize {
+func (genReceiver gen_NSAttributedString) Size() NSSize {
 	ret := C.NSAttributedString_inst_Size(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return *(*NSSize)(unsafe.Pointer(&ret))
 }
 
 // Init initializes a new instance of the NSAttributedString class.
-func (x gen_NSAttributedString) Init() NSAttributedString {
+func (genReceiver gen_NSAttributedString) Init() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSAttributedString_FromPointer(ret)
 }
 
 // Init_AsNSAttributedString is a typed version of Init.
-func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
+func (genReceiver gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 	ret := C.NSAttributedString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSAttributedString_FromPointer(ret)
@@ -7194,9 +7211,9 @@ func (x gen_NSAttributedString) Init_AsNSAttributedString() NSAttributedString {
 // String returns the character contents of the attributed string as a string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1412616-string?language=objc for details.
-func (x gen_NSAttributedString) String() string {
+func (genReceiver gen_NSAttributedString) String() string {
 	ret := C.NSAttributedString_inst_String(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -7205,9 +7222,9 @@ func (x gen_NSAttributedString) String() string {
 // Length returns the length of the attributed string.
 //
 // See https://developer.apple.com/documentation/foundation/nsattributedstring/1418432-length?language=objc for details.
-func (x gen_NSAttributedString) Length() NSUInteger {
+func (genReceiver gen_NSAttributedString) Length() NSUInteger {
 	ret := C.NSAttributedString_inst_Length(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7235,12 +7252,12 @@ func NSData_FromRef(ref objc.Ref) NSData {
 // GetBytesLength copies a number of bytes from the start of the data object into a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1411450-getbytes?language=objc for details.
-func (x gen_NSData) GetBytesLength(
+func (genReceiver gen_NSData) GetBytesLength(
 	buffer unsafe.Pointer,
 	length NSUInteger,
 ) {
 	C.NSData_inst_GetBytesLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		buffer,
 		C.ulong(length),
 	)
@@ -7251,12 +7268,12 @@ func (x gen_NSData) GetBytesLength(
 // InitWithBytesLength initializes a data object filled with a given number of bytes copied from a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1412793-initwithbytes?language=objc for details.
-func (x gen_NSData) InitWithBytesLength(
+func (genReceiver gen_NSData) InitWithBytesLength(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 ) NSData {
 	ret := C.NSData_inst_InitWithBytesLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(length),
 	)
@@ -7267,12 +7284,12 @@ func (x gen_NSData) InitWithBytesLength(
 // InitWithBytesNoCopyLength initializes a data object filled with a given number of bytes of data from a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1409454-initwithbytesnocopy?language=objc for details.
-func (x gen_NSData) InitWithBytesNoCopyLength(
+func (genReceiver gen_NSData) InitWithBytesNoCopyLength(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 ) NSData {
 	ret := C.NSData_inst_InitWithBytesNoCopyLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(length),
 	)
@@ -7283,13 +7300,13 @@ func (x gen_NSData) InitWithBytesNoCopyLength(
 // InitWithBytesNoCopyLengthFreeWhenDone initializes a newly allocated data object by adding the given number of bytes from the given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc for details.
-func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone(
+func (genReceiver gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 	b bool,
 ) NSData {
 	ret := C.NSData_inst_InitWithBytesNoCopyLengthFreeWhenDone(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(length),
 		convertToObjCBool(b),
@@ -7301,11 +7318,11 @@ func (x gen_NSData) InitWithBytesNoCopyLengthFreeWhenDone(
 // InitWithContentsOfFile initializes a data object with the content of the file at a given path.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1408672-initwithcontentsoffile?language=objc for details.
-func (x gen_NSData) InitWithContentsOfFile(
+func (genReceiver gen_NSData) InitWithContentsOfFile(
 	path string,
 ) NSData {
 	ret := C.NSData_inst_InitWithContentsOfFile(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 	)
 
@@ -7315,11 +7332,11 @@ func (x gen_NSData) InitWithContentsOfFile(
 // InitWithContentsOfURL initializes a data object with the data from the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc for details.
-func (x gen_NSData) InitWithContentsOfURL(
+func (genReceiver gen_NSData) InitWithContentsOfURL(
 	url NSURLRef,
 ) NSData {
 	ret := C.NSData_inst_InitWithContentsOfURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 	)
 
@@ -7329,11 +7346,11 @@ func (x gen_NSData) InitWithContentsOfURL(
 // InitWithData initializes a data object with the contents of another data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc for details.
-func (x gen_NSData) InitWithData(
+func (genReceiver gen_NSData) InitWithData(
 	data NSDataRef,
 ) NSData {
 	ret := C.NSData_inst_InitWithData(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 	)
 
@@ -7343,11 +7360,11 @@ func (x gen_NSData) InitWithData(
 // IsEqualToData returns a Boolean value indicating whether this data object is the same as another.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1409330-isequaltodata?language=objc for details.
-func (x gen_NSData) IsEqualToData(
+func (genReceiver gen_NSData) IsEqualToData(
 	other NSDataRef,
 ) bool {
 	ret := C.NSData_inst_IsEqualToData(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(other),
 	)
 
@@ -7357,12 +7374,12 @@ func (x gen_NSData) IsEqualToData(
 // WriteToFileAtomically writes the data object's bytes to the file specified by a given path.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1408033-writetofile?language=objc for details.
-func (x gen_NSData) WriteToFileAtomically(
+func (genReceiver gen_NSData) WriteToFileAtomically(
 	path string,
 	useAuxiliaryFile bool,
 ) bool {
 	ret := C.NSData_inst_WriteToFileAtomically(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(useAuxiliaryFile),
 	)
@@ -7373,12 +7390,12 @@ func (x gen_NSData) WriteToFileAtomically(
 // WriteToURLAtomically writes the data object's bytes to the location specified by a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1415134-writetourl?language=objc for details.
-func (x gen_NSData) WriteToURLAtomically(
+func (genReceiver gen_NSData) WriteToURLAtomically(
 	url NSURLRef,
 	atomically bool,
 ) bool {
 	ret := C.NSData_inst_WriteToURLAtomically(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		convertToObjCBool(atomically),
 	)
@@ -7387,18 +7404,18 @@ func (x gen_NSData) WriteToURLAtomically(
 }
 
 // Init initializes a new instance of the NSData class.
-func (x gen_NSData) Init() NSData {
+func (genReceiver gen_NSData) Init() NSData {
 	ret := C.NSData_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSData_FromPointer(ret)
 }
 
 // Init_AsNSData is a typed version of Init.
-func (x gen_NSData) Init_AsNSData() NSData {
+func (genReceiver gen_NSData) Init_AsNSData() NSData {
 	ret := C.NSData_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSData_FromPointer(ret)
@@ -7407,9 +7424,9 @@ func (x gen_NSData) Init_AsNSData() NSData {
 // Bytes returns a pointer to the data object's contents.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1410616-bytes?language=objc for details.
-func (x gen_NSData) Bytes() unsafe.Pointer {
+func (genReceiver gen_NSData) Bytes() unsafe.Pointer {
 	ret := C.NSData_inst_Bytes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return ret
@@ -7418,9 +7435,9 @@ func (x gen_NSData) Bytes() unsafe.Pointer {
 // Length returns the number of bytes contained by the data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1416769-length?language=objc for details.
-func (x gen_NSData) Length() NSUInteger {
+func (genReceiver gen_NSData) Length() NSUInteger {
 	ret := C.NSData_inst_Length(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7429,9 +7446,9 @@ func (x gen_NSData) Length() NSUInteger {
 // Description returns a string that contains a hexadecimal representation of the data object’s contents in a property list format.
 //
 // See https://developer.apple.com/documentation/foundation/nsdata/1412579-description?language=objc for details.
-func (x gen_NSData) Description() string {
+func (genReceiver gen_NSData) Description() string {
 	ret := C.NSData_inst_Description(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -7459,12 +7476,12 @@ func NSMutableData_FromRef(ref objc.Ref) NSMutableData {
 // AppendBytesLength appends to the receiver a given number of bytes from a given buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1407704-appendbytes?language=objc for details.
-func (x gen_NSMutableData) AppendBytesLength(
+func (genReceiver gen_NSMutableData) AppendBytesLength(
 	bytes unsafe.Pointer,
 	length NSUInteger,
 ) {
 	C.NSMutableData_inst_AppendBytesLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(length),
 	)
@@ -7475,11 +7492,11 @@ func (x gen_NSMutableData) AppendBytesLength(
 // AppendData appends the content of another data object to the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1410724-appenddata?language=objc for details.
-func (x gen_NSMutableData) AppendData(
+func (genReceiver gen_NSMutableData) AppendData(
 	other NSDataRef,
 ) {
 	C.NSMutableData_inst_AppendData(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(other),
 	)
 
@@ -7489,11 +7506,11 @@ func (x gen_NSMutableData) AppendData(
 // IncreaseLengthBy increases the length of the receiver by a given number of bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1416186-increaselengthby?language=objc for details.
-func (x gen_NSMutableData) IncreaseLengthBy(
+func (genReceiver gen_NSMutableData) IncreaseLengthBy(
 	extraLength NSUInteger,
 ) {
 	C.NSMutableData_inst_IncreaseLengthBy(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(extraLength),
 	)
 
@@ -7503,11 +7520,11 @@ func (x gen_NSMutableData) IncreaseLengthBy(
 // InitWithCapacity returns an initialized mutable data object capable of holding the specified number of bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc for details.
-func (x gen_NSMutableData) InitWithCapacity(
+func (genReceiver gen_NSMutableData) InitWithCapacity(
 	capacity NSUInteger,
 ) NSMutableData {
 	ret := C.NSMutableData_inst_InitWithCapacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(capacity),
 	)
 
@@ -7517,11 +7534,11 @@ func (x gen_NSMutableData) InitWithCapacity(
 // InitWithLength initializes and returns a mutable data object containing a given number of zeroed bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1413159-initwithlength?language=objc for details.
-func (x gen_NSMutableData) InitWithLength(
+func (genReceiver gen_NSMutableData) InitWithLength(
 	length NSUInteger,
 ) NSMutableData {
 	ret := C.NSMutableData_inst_InitWithLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(length),
 	)
 
@@ -7531,11 +7548,11 @@ func (x gen_NSMutableData) InitWithLength(
 // SetData replaces the entire contents of the receiver with the contents of another data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1417012-setdata?language=objc for details.
-func (x gen_NSMutableData) SetData(
+func (genReceiver gen_NSMutableData) SetData(
 	data NSDataRef,
 ) {
 	C.NSMutableData_inst_SetData(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 	)
 
@@ -7543,18 +7560,18 @@ func (x gen_NSMutableData) SetData(
 }
 
 // Init initializes a new instance of the NSMutableData class.
-func (x gen_NSMutableData) Init() NSMutableData {
+func (genReceiver gen_NSMutableData) Init() NSMutableData {
 	ret := C.NSMutableData_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableData_FromPointer(ret)
 }
 
 // Init_AsNSMutableData is a typed version of Init.
-func (x gen_NSMutableData) Init_AsNSMutableData() NSMutableData {
+func (genReceiver gen_NSMutableData) Init_AsNSMutableData() NSMutableData {
 	ret := C.NSMutableData_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableData_FromPointer(ret)
@@ -7563,9 +7580,9 @@ func (x gen_NSMutableData) Init_AsNSMutableData() NSMutableData {
 // MutableBytes returns a pointer to the data contained by the mutable data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1410770-mutablebytes?language=objc for details.
-func (x gen_NSMutableData) MutableBytes() unsafe.Pointer {
+func (genReceiver gen_NSMutableData) MutableBytes() unsafe.Pointer {
 	ret := C.NSMutableData_inst_MutableBytes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return ret
@@ -7574,9 +7591,9 @@ func (x gen_NSMutableData) MutableBytes() unsafe.Pointer {
 // Length returns the number of bytes contained in the mutable data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc for details.
-func (x gen_NSMutableData) Length() NSUInteger {
+func (genReceiver gen_NSMutableData) Length() NSUInteger {
 	ret := C.NSMutableData_inst_Length(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7585,11 +7602,11 @@ func (x gen_NSMutableData) Length() NSUInteger {
 // SetLength returns the number of bytes contained in the mutable data object.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledata/1413333-length?language=objc for details.
-func (x gen_NSMutableData) SetLength(
+func (genReceiver gen_NSMutableData) SetLength(
 	value NSUInteger,
 ) {
 	C.NSMutableData_inst_SetLength(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(value),
 	)
 
@@ -7618,11 +7635,11 @@ func NSDictionary_FromRef(ref objc.Ref) NSDictionary {
 // AllKeysForObject returns a new array containing the keys corresponding to all occurrences of a given object in the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417147-allkeysforobject?language=objc for details.
-func (x gen_NSDictionary) AllKeysForObject(
+func (genReceiver gen_NSDictionary) AllKeysForObject(
 	anObject objc.Ref,
 ) NSArray {
 	ret := C.NSDictionary_inst_AllKeysForObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 	)
 
@@ -7632,11 +7649,11 @@ func (x gen_NSDictionary) AllKeysForObject(
 // DescriptionWithLocale returns a string object that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417665-descriptionwithlocale?language=objc for details.
-func (x gen_NSDictionary) DescriptionWithLocale(
+func (genReceiver gen_NSDictionary) DescriptionWithLocale(
 	locale objc.Ref,
 ) string {
 	ret := C.NSDictionary_inst_DescriptionWithLocale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(locale),
 	)
 
@@ -7646,12 +7663,12 @@ func (x gen_NSDictionary) DescriptionWithLocale(
 // DescriptionWithLocaleIndent returns a string object that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1412690-descriptionwithlocale?language=objc for details.
-func (x gen_NSDictionary) DescriptionWithLocaleIndent(
+func (genReceiver gen_NSDictionary) DescriptionWithLocaleIndent(
 	locale objc.Ref,
 	level NSUInteger,
 ) string {
 	ret := C.NSDictionary_inst_DescriptionWithLocaleIndent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(locale),
 		C.ulong(level),
 	)
@@ -7662,9 +7679,9 @@ func (x gen_NSDictionary) DescriptionWithLocaleIndent(
 // FileExtensionHidden returns a Boolean value indicating whether the file hides its extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413177-fileextensionhidden?language=objc for details.
-func (x gen_NSDictionary) FileExtensionHidden() bool {
+func (genReceiver gen_NSDictionary) FileExtensionHidden() bool {
 	ret := C.NSDictionary_inst_FileExtensionHidden(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -7673,9 +7690,9 @@ func (x gen_NSDictionary) FileExtensionHidden() bool {
 // FileGroupOwnerAccountID returns file’s group owner account ID.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413626-filegroupowneraccountid?language=objc for details.
-func (x gen_NSDictionary) FileGroupOwnerAccountID() NSNumber {
+func (genReceiver gen_NSDictionary) FileGroupOwnerAccountID() NSNumber {
 	ret := C.NSDictionary_inst_FileGroupOwnerAccountID(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -7684,9 +7701,9 @@ func (x gen_NSDictionary) FileGroupOwnerAccountID() NSNumber {
 // FileGroupOwnerAccountName returns the file’s group owner account name.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416788-filegroupowneraccountname?language=objc for details.
-func (x gen_NSDictionary) FileGroupOwnerAccountName() string {
+func (genReceiver gen_NSDictionary) FileGroupOwnerAccountName() string {
 	ret := C.NSDictionary_inst_FileGroupOwnerAccountName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -7695,9 +7712,9 @@ func (x gen_NSDictionary) FileGroupOwnerAccountName() string {
 // FileIsAppendOnly returns a Boolean value indicating whether the file is append only.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416083-fileisappendonly?language=objc for details.
-func (x gen_NSDictionary) FileIsAppendOnly() bool {
+func (genReceiver gen_NSDictionary) FileIsAppendOnly() bool {
 	ret := C.NSDictionary_inst_FileIsAppendOnly(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -7706,9 +7723,9 @@ func (x gen_NSDictionary) FileIsAppendOnly() bool {
 // FileIsImmutable returns a Boolean value indicating whether the file is immutable.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416500-fileisimmutable?language=objc for details.
-func (x gen_NSDictionary) FileIsImmutable() bool {
+func (genReceiver gen_NSDictionary) FileIsImmutable() bool {
 	ret := C.NSDictionary_inst_FileIsImmutable(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -7717,9 +7734,9 @@ func (x gen_NSDictionary) FileIsImmutable() bool {
 // FileOwnerAccountID returns the file’s owner account ID.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1412281-fileowneraccountid?language=objc for details.
-func (x gen_NSDictionary) FileOwnerAccountID() NSNumber {
+func (genReceiver gen_NSDictionary) FileOwnerAccountID() NSNumber {
 	ret := C.NSDictionary_inst_FileOwnerAccountID(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -7728,9 +7745,9 @@ func (x gen_NSDictionary) FileOwnerAccountID() NSNumber {
 // FileOwnerAccountName returns the file’s owner account name.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1417533-fileowneraccountname?language=objc for details.
-func (x gen_NSDictionary) FileOwnerAccountName() string {
+func (genReceiver gen_NSDictionary) FileOwnerAccountName() string {
 	ret := C.NSDictionary_inst_FileOwnerAccountName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -7739,9 +7756,9 @@ func (x gen_NSDictionary) FileOwnerAccountName() string {
 // FilePosixPermissions returns the file’s POSIX permissions.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1409446-fileposixpermissions?language=objc for details.
-func (x gen_NSDictionary) FilePosixPermissions() NSUInteger {
+func (genReceiver gen_NSDictionary) FilePosixPermissions() NSUInteger {
 	ret := C.NSDictionary_inst_FilePosixPermissions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7750,9 +7767,9 @@ func (x gen_NSDictionary) FilePosixPermissions() NSUInteger {
 // FileSize returns the file’s size, in bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413465-filesize?language=objc for details.
-func (x gen_NSDictionary) FileSize() int64 {
+func (genReceiver gen_NSDictionary) FileSize() int64 {
 	ret := C.NSDictionary_inst_FileSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -7761,9 +7778,9 @@ func (x gen_NSDictionary) FileSize() int64 {
 // FileSystemFileNumber returns the filesystem file number.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1408396-filesystemfilenumber?language=objc for details.
-func (x gen_NSDictionary) FileSystemFileNumber() NSUInteger {
+func (genReceiver gen_NSDictionary) FileSystemFileNumber() NSUInteger {
 	ret := C.NSDictionary_inst_FileSystemFileNumber(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7772,9 +7789,9 @@ func (x gen_NSDictionary) FileSystemFileNumber() NSUInteger {
 // FileSystemNumber returns the filesystem number.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1415329-filesystemnumber?language=objc for details.
-func (x gen_NSDictionary) FileSystemNumber() NSInteger {
+func (genReceiver gen_NSDictionary) FileSystemNumber() NSInteger {
 	ret := C.NSDictionary_inst_FileSystemNumber(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSInteger(ret)
@@ -7783,9 +7800,9 @@ func (x gen_NSDictionary) FileSystemNumber() NSInteger {
 // FileType returns the file type.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1416809-filetype?language=objc for details.
-func (x gen_NSDictionary) FileType() string {
+func (genReceiver gen_NSDictionary) FileType() string {
 	ret := C.NSDictionary_inst_FileType(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -7794,9 +7811,9 @@ func (x gen_NSDictionary) FileType() string {
 // Init initializes a newly allocated dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
-func (x gen_NSDictionary) Init() NSDictionary {
+func (genReceiver gen_NSDictionary) Init() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -7805,9 +7822,9 @@ func (x gen_NSDictionary) Init() NSDictionary {
 // Init_AsNSDictionary is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418147-init?language=objc for details.
-func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
+func (genReceiver gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 	ret := C.NSDictionary_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -7816,12 +7833,12 @@ func (x gen_NSDictionary) Init_AsNSDictionary() NSDictionary {
 // InitWithContentsOfURLError initializes a newly allocated dictionary using the keys and values found at a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/2879140-initwithcontentsofurl?language=objc for details.
-func (x gen_NSDictionary) InitWithContentsOfURLError(
+func (genReceiver gen_NSDictionary) InitWithContentsOfURLError(
 	url NSURLRef,
 	error NSErrorRef,
 ) NSDictionary {
 	ret := C.NSDictionary_inst_InitWithContentsOfURLError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		objc.RefPointer(error),
 	)
@@ -7832,11 +7849,11 @@ func (x gen_NSDictionary) InitWithContentsOfURLError(
 // InitWithDictionary initializes a newly allocated dictionary by placing in it the keys and values contained in another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1418434-initwithdictionary?language=objc for details.
-func (x gen_NSDictionary) InitWithDictionary(
+func (genReceiver gen_NSDictionary) InitWithDictionary(
 	otherDictionary NSDictionaryRef,
 ) NSDictionary {
 	ret := C.NSDictionary_inst_InitWithDictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherDictionary),
 	)
 
@@ -7846,12 +7863,12 @@ func (x gen_NSDictionary) InitWithDictionary(
 // InitWithDictionaryCopyItems initializes a newly allocated dictionary using the objects contained in another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410124-initwithdictionary?language=objc for details.
-func (x gen_NSDictionary) InitWithDictionaryCopyItems(
+func (genReceiver gen_NSDictionary) InitWithDictionaryCopyItems(
 	otherDictionary NSDictionaryRef,
 	flag bool,
 ) NSDictionary {
 	ret := C.NSDictionary_inst_InitWithDictionaryCopyItems(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherDictionary),
 		convertToObjCBool(flag),
 	)
@@ -7862,12 +7879,12 @@ func (x gen_NSDictionary) InitWithDictionaryCopyItems(
 // InitWithObjectsForKeys initializes a newly allocated dictionary with key-value pairs constructed from the provided arrays of keys and objects.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410010-initwithobjects?language=objc for details.
-func (x gen_NSDictionary) InitWithObjectsForKeys(
+func (genReceiver gen_NSDictionary) InitWithObjectsForKeys(
 	objects NSArrayRef,
 	keys NSArrayRef,
 ) NSDictionary {
 	ret := C.NSDictionary_inst_InitWithObjectsForKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(objects),
 		objc.RefPointer(keys),
 	)
@@ -7878,11 +7895,11 @@ func (x gen_NSDictionary) InitWithObjectsForKeys(
 // IsEqualToDictionary returns a Boolean value that indicates whether the contents of the receiving dictionary are equal to the contents of another given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1415445-isequaltodictionary?language=objc for details.
-func (x gen_NSDictionary) IsEqualToDictionary(
+func (genReceiver gen_NSDictionary) IsEqualToDictionary(
 	otherDictionary NSDictionaryRef,
 ) bool {
 	ret := C.NSDictionary_inst_IsEqualToDictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherDictionary),
 	)
 
@@ -7892,11 +7909,11 @@ func (x gen_NSDictionary) IsEqualToDictionary(
 // KeysSortedByValueUsingSelector returns an array of the dictionary’s keys, in the order they would be in if the dictionary were sorted by its values.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1412484-keyssortedbyvalueusingselector?language=objc for details.
-func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
+func (genReceiver gen_NSDictionary) KeysSortedByValueUsingSelector(
 	comparator objc.Selector,
 ) NSArray {
 	ret := C.NSDictionary_inst_KeysSortedByValueUsingSelector(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		comparator.SelectorAddress(),
 	)
 
@@ -7906,11 +7923,11 @@ func (x gen_NSDictionary) KeysSortedByValueUsingSelector(
 // ObjectForKey returns the value associated with a given key.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1414347-objectforkey?language=objc for details.
-func (x gen_NSDictionary) ObjectForKey(
+func (genReceiver gen_NSDictionary) ObjectForKey(
 	aKey objc.Ref,
 ) objc.Object {
 	ret := C.NSDictionary_inst_ObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(aKey),
 	)
 
@@ -7920,11 +7937,11 @@ func (x gen_NSDictionary) ObjectForKey(
 // ObjectForKeyedSubscript returns the value associated with a given key.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1415430-objectforkeyedsubscript?language=objc for details.
-func (x gen_NSDictionary) ObjectForKeyedSubscript(
+func (genReceiver gen_NSDictionary) ObjectForKeyedSubscript(
 	key objc.Ref,
 ) objc.Object {
 	ret := C.NSDictionary_inst_ObjectForKeyedSubscript(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(key),
 	)
 
@@ -7934,12 +7951,12 @@ func (x gen_NSDictionary) ObjectForKeyedSubscript(
 // ObjectsForKeysNotFoundMarker returns as a static array the set of objects from the dictionary that corresponds to the specified keys.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1408769-objectsforkeys?language=objc for details.
-func (x gen_NSDictionary) ObjectsForKeysNotFoundMarker(
+func (genReceiver gen_NSDictionary) ObjectsForKeysNotFoundMarker(
 	keys NSArrayRef,
 	marker objc.Ref,
 ) NSArray {
 	ret := C.NSDictionary_inst_ObjectsForKeysNotFoundMarker(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(keys),
 		objc.RefPointer(marker),
 	)
@@ -7950,11 +7967,11 @@ func (x gen_NSDictionary) ObjectsForKeysNotFoundMarker(
 // ValueForKey returns the value associated with a given key.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410210-valueforkey?language=objc for details.
-func (x gen_NSDictionary) ValueForKey(
+func (genReceiver gen_NSDictionary) ValueForKey(
 	key string,
 ) objc.Object {
 	ret := C.NSDictionary_inst_ValueForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 	)
 
@@ -7964,12 +7981,12 @@ func (x gen_NSDictionary) ValueForKey(
 // WriteToURLError writes a property list representation of the contents of the dictionary to a given URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc for details.
-func (x gen_NSDictionary) WriteToURLError(
+func (genReceiver gen_NSDictionary) WriteToURLError(
 	url NSURLRef,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSDictionary_inst_WriteToURLError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		objc.RefPointer(error),
 	)
@@ -7980,9 +7997,9 @@ func (x gen_NSDictionary) WriteToURLError(
 // Count returns the number of entries in the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1409628-count?language=objc for details.
-func (x gen_NSDictionary) Count() NSUInteger {
+func (genReceiver gen_NSDictionary) Count() NSUInteger {
 	ret := C.NSDictionary_inst_Count(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -7991,9 +8008,9 @@ func (x gen_NSDictionary) Count() NSUInteger {
 // AllKeys returns a new array containing the dictionary’s keys, or an empty array if the dictionary has no entries.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1409150-allkeys?language=objc for details.
-func (x gen_NSDictionary) AllKeys() NSArray {
+func (genReceiver gen_NSDictionary) AllKeys() NSArray {
 	ret := C.NSDictionary_inst_AllKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -8002,9 +8019,9 @@ func (x gen_NSDictionary) AllKeys() NSArray {
 // AllValues returns a new array containing the dictionary’s values, or an empty array if the dictionary has no entries.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1408915-allvalues?language=objc for details.
-func (x gen_NSDictionary) AllValues() NSArray {
+func (genReceiver gen_NSDictionary) AllValues() NSArray {
 	ret := C.NSDictionary_inst_AllValues(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -8013,9 +8030,9 @@ func (x gen_NSDictionary) AllValues() NSArray {
 // Description returns a string that represents the contents of the dictionary, formatted as a property list.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1410799-description?language=objc for details.
-func (x gen_NSDictionary) Description() string {
+func (genReceiver gen_NSDictionary) Description() string {
 	ret := C.NSDictionary_inst_Description(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8024,9 +8041,9 @@ func (x gen_NSDictionary) Description() string {
 // DescriptionInStringsFileFormat returns a string that represents the contents of the dictionary, formatted in .strings file format.
 //
 // See https://developer.apple.com/documentation/foundation/nsdictionary/1413282-descriptioninstringsfileformat?language=objc for details.
-func (x gen_NSDictionary) DescriptionInStringsFileFormat() string {
+func (genReceiver gen_NSDictionary) DescriptionInStringsFileFormat() string {
 	ret := C.NSDictionary_inst_DescriptionInStringsFileFormat(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8054,11 +8071,11 @@ func NSMutableDictionary_FromRef(ref objc.Ref) NSMutableDictionary {
 // AddEntriesFromDictionary adds to the receiving dictionary the entries from another dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411035-addentriesfromdictionary?language=objc for details.
-func (x gen_NSMutableDictionary) AddEntriesFromDictionary(
+func (genReceiver gen_NSMutableDictionary) AddEntriesFromDictionary(
 	otherDictionary NSDictionaryRef,
 ) {
 	C.NSMutableDictionary_inst_AddEntriesFromDictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherDictionary),
 	)
 
@@ -8068,9 +8085,9 @@ func (x gen_NSMutableDictionary) AddEntriesFromDictionary(
 // GetHeaderBytes is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1428890-getheaderbytes?language=objc for details.
-func (x gen_NSMutableDictionary) GetHeaderBytes() NSMutableData {
+func (genReceiver gen_NSMutableDictionary) GetHeaderBytes() NSMutableData {
 	ret := C.NSMutableDictionary_inst_GetHeaderBytes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableData_FromPointer(ret)
@@ -8079,9 +8096,9 @@ func (x gen_NSMutableDictionary) GetHeaderBytes() NSMutableData {
 // Init initializes a newly allocated mutable dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
-func (x gen_NSMutableDictionary) Init() NSMutableDictionary {
+func (genReceiver gen_NSMutableDictionary) Init() NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableDictionary_FromPointer(ret)
@@ -8090,9 +8107,9 @@ func (x gen_NSMutableDictionary) Init() NSMutableDictionary {
 // Init_AsNSMutableDictionary is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410577-init?language=objc for details.
-func (x gen_NSMutableDictionary) Init_AsNSMutableDictionary() NSMutableDictionary {
+func (genReceiver gen_NSMutableDictionary) Init_AsNSMutableDictionary() NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableDictionary_FromPointer(ret)
@@ -8101,11 +8118,11 @@ func (x gen_NSMutableDictionary) Init_AsNSMutableDictionary() NSMutableDictionar
 // InitWithCapacity initializes a newly allocated mutable dictionary, allocating enough memory to hold numItems entries.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1417898-initwithcapacity?language=objc for details.
-func (x gen_NSMutableDictionary) InitWithCapacity(
+func (genReceiver gen_NSMutableDictionary) InitWithCapacity(
 	numItems NSUInteger,
 ) NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_InitWithCapacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(numItems),
 	)
 
@@ -8115,11 +8132,11 @@ func (x gen_NSMutableDictionary) InitWithCapacity(
 // InitWithContentsOfFile is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1407593-initwithcontentsoffile?language=objc for details.
-func (x gen_NSMutableDictionary) InitWithContentsOfFile(
+func (genReceiver gen_NSMutableDictionary) InitWithContentsOfFile(
 	path string,
 ) NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_InitWithContentsOfFile(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 	)
 
@@ -8129,11 +8146,11 @@ func (x gen_NSMutableDictionary) InitWithContentsOfFile(
 // InitWithContentsOfURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410409-initwithcontentsofurl?language=objc for details.
-func (x gen_NSMutableDictionary) InitWithContentsOfURL(
+func (genReceiver gen_NSMutableDictionary) InitWithContentsOfURL(
 	url NSURLRef,
 ) NSMutableDictionary {
 	ret := C.NSMutableDictionary_inst_InitWithContentsOfURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 	)
 
@@ -8143,9 +8160,9 @@ func (x gen_NSMutableDictionary) InitWithContentsOfURL(
 // RemoveAllObjects empties the dictionary of its entries.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1408955-removeallobjects?language=objc for details.
-func (x gen_NSMutableDictionary) RemoveAllObjects() {
+func (genReceiver gen_NSMutableDictionary) RemoveAllObjects() {
 	C.NSMutableDictionary_inst_RemoveAllObjects(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -8154,11 +8171,11 @@ func (x gen_NSMutableDictionary) RemoveAllObjects() {
 // RemoveObjectForKey removes a given key and its associated value from the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416518-removeobjectforkey?language=objc for details.
-func (x gen_NSMutableDictionary) RemoveObjectForKey(
+func (genReceiver gen_NSMutableDictionary) RemoveObjectForKey(
 	aKey objc.Ref,
 ) {
 	C.NSMutableDictionary_inst_RemoveObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(aKey),
 	)
 
@@ -8168,11 +8185,11 @@ func (x gen_NSMutableDictionary) RemoveObjectForKey(
 // RemoveObjectsForKeys removes from the dictionary entries specified by elements in a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410430-removeobjectsforkeys?language=objc for details.
-func (x gen_NSMutableDictionary) RemoveObjectsForKeys(
+func (genReceiver gen_NSMutableDictionary) RemoveObjectsForKeys(
 	keyArray NSArrayRef,
 ) {
 	C.NSMutableDictionary_inst_RemoveObjectsForKeys(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(keyArray),
 	)
 
@@ -8182,11 +8199,11 @@ func (x gen_NSMutableDictionary) RemoveObjectsForKeys(
 // SetDictionary sets the contents of the receiving dictionary to entries in a given dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1409566-setdictionary?language=objc for details.
-func (x gen_NSMutableDictionary) SetDictionary(
+func (genReceiver gen_NSMutableDictionary) SetDictionary(
 	otherDictionary NSDictionaryRef,
 ) {
 	C.NSMutableDictionary_inst_SetDictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(otherDictionary),
 	)
 
@@ -8196,12 +8213,12 @@ func (x gen_NSMutableDictionary) SetDictionary(
 // SetObjectForKey adds a given key-value pair to the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc for details.
-func (x gen_NSMutableDictionary) SetObjectForKey(
+func (genReceiver gen_NSMutableDictionary) SetObjectForKey(
 	anObject objc.Ref,
 	aKey objc.Ref,
 ) {
 	C.NSMutableDictionary_inst_SetObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(anObject),
 		objc.RefPointer(aKey),
 	)
@@ -8212,12 +8229,12 @@ func (x gen_NSMutableDictionary) SetObjectForKey(
 // SetObjectForKeyedSubscript adds a given key-value pair to the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc for details.
-func (x gen_NSMutableDictionary) SetObjectForKeyedSubscript(
+func (genReceiver gen_NSMutableDictionary) SetObjectForKeyedSubscript(
 	obj objc.Ref,
 	key objc.Ref,
 ) {
 	C.NSMutableDictionary_inst_SetObjectForKeyedSubscript(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(obj),
 		objc.RefPointer(key),
 	)
@@ -8228,12 +8245,12 @@ func (x gen_NSMutableDictionary) SetObjectForKeyedSubscript(
 // SetValueForKey adds a given key-value pair to the dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc for details.
-func (x gen_NSMutableDictionary) SetValueForKey(
+func (genReceiver gen_NSMutableDictionary) SetValueForKey(
 	value objc.Ref,
 	key string,
 ) {
 	C.NSMutableDictionary_inst_SetValueForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 		C.createNSStringFromCString(C.CString(key)),
 	)
@@ -8261,18 +8278,18 @@ func NSError_FromRef(ref objc.Ref) NSError {
 }
 
 // Init initializes a new instance of the NSError class.
-func (x gen_NSError) Init() NSError {
+func (genReceiver gen_NSError) Init() NSError {
 	ret := C.NSError_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSError_FromPointer(ret)
 }
 
 // Init_AsNSError is a typed version of Init.
-func (x gen_NSError) Init_AsNSError() NSError {
+func (genReceiver gen_NSError) Init_AsNSError() NSError {
 	ret := C.NSError_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSError_FromPointer(ret)
@@ -8281,9 +8298,9 @@ func (x gen_NSError) Init_AsNSError() NSError {
 // Code returns the error code.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1409165-code?language=objc for details.
-func (x gen_NSError) Code() NSInteger {
+func (genReceiver gen_NSError) Code() NSInteger {
 	ret := C.NSError_inst_Code(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSInteger(ret)
@@ -8292,9 +8309,9 @@ func (x gen_NSError) Code() NSInteger {
 // UserInfo returns the user info dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1411580-userinfo?language=objc for details.
-func (x gen_NSError) UserInfo() NSDictionary {
+func (genReceiver gen_NSError) UserInfo() NSDictionary {
 	ret := C.NSError_inst_UserInfo(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -8303,9 +8320,9 @@ func (x gen_NSError) UserInfo() NSDictionary {
 // LocalizedDescription returns a string containing the localized description of the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1414418-localizeddescription?language=objc for details.
-func (x gen_NSError) LocalizedDescription() string {
+func (genReceiver gen_NSError) LocalizedDescription() string {
 	ret := C.NSError_inst_LocalizedDescription(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8314,9 +8331,9 @@ func (x gen_NSError) LocalizedDescription() string {
 // LocalizedRecoveryOptions an array containing the localized titles of buttons appropriate for displaying in an alert panel.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1415950-localizedrecoveryoptions?language=objc for details.
-func (x gen_NSError) LocalizedRecoveryOptions() NSArray {
+func (genReceiver gen_NSError) LocalizedRecoveryOptions() NSArray {
 	ret := C.NSError_inst_LocalizedRecoveryOptions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -8325,9 +8342,9 @@ func (x gen_NSError) LocalizedRecoveryOptions() NSArray {
 // LocalizedRecoverySuggestion returns a string containing the localized recovery suggestion for the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1407500-localizedrecoverysuggestion?language=objc for details.
-func (x gen_NSError) LocalizedRecoverySuggestion() string {
+func (genReceiver gen_NSError) LocalizedRecoverySuggestion() string {
 	ret := C.NSError_inst_LocalizedRecoverySuggestion(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8336,9 +8353,9 @@ func (x gen_NSError) LocalizedRecoverySuggestion() string {
 // LocalizedFailureReason returns a string containing the localized explanation of the reason for the error.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1412752-localizedfailurereason?language=objc for details.
-func (x gen_NSError) LocalizedFailureReason() string {
+func (genReceiver gen_NSError) LocalizedFailureReason() string {
 	ret := C.NSError_inst_LocalizedFailureReason(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8347,9 +8364,9 @@ func (x gen_NSError) LocalizedFailureReason() string {
 // RecoveryAttempter returns the object in the user info dictionary corresponding to the NSRecoveryAttempterErrorKey key.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1408864-recoveryattempter?language=objc for details.
-func (x gen_NSError) RecoveryAttempter() objc.Object {
+func (genReceiver gen_NSError) RecoveryAttempter() objc.Object {
 	ret := C.NSError_inst_RecoveryAttempter(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -8358,9 +8375,9 @@ func (x gen_NSError) RecoveryAttempter() objc.Object {
 // HelpAnchor returns a string to display in response to an alert panel help anchor button being pressed.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/1414718-helpanchor?language=objc for details.
-func (x gen_NSError) HelpAnchor() string {
+func (genReceiver gen_NSError) HelpAnchor() string {
 	ret := C.NSError_inst_HelpAnchor(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8369,9 +8386,9 @@ func (x gen_NSError) HelpAnchor() string {
 // UnderlyingErrors is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nserror/3738169-underlyingerrors?language=objc for details.
-func (x gen_NSError) UnderlyingErrors() NSArray {
+func (genReceiver gen_NSError) UnderlyingErrors() NSArray {
 	ret := C.NSError_inst_UnderlyingErrors(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -8399,11 +8416,11 @@ func NSNumber_FromRef(ref objc.Ref) NSNumber {
 // DescriptionWithLocale returns a string that represents the contents of the number object for a given locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409984-descriptionwithlocale?language=objc for details.
-func (x gen_NSNumber) DescriptionWithLocale(
+func (genReceiver gen_NSNumber) DescriptionWithLocale(
 	locale objc.Ref,
 ) string {
 	ret := C.NSNumber_inst_DescriptionWithLocale(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(locale),
 	)
 
@@ -8413,11 +8430,11 @@ func (x gen_NSNumber) DescriptionWithLocale(
 // InitWithBool returns an NSNumber object initialized to contain a given value, treated as a BOOL.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1415728-initwithbool?language=objc for details.
-func (x gen_NSNumber) InitWithBool(
+func (genReceiver gen_NSNumber) InitWithBool(
 	value bool,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithBool(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 	)
 
@@ -8427,11 +8444,11 @@ func (x gen_NSNumber) InitWithBool(
 // InitWithChar returns an NSNumber object initialized to contain a given value, treated as a signed char.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409777-initwithchar?language=objc for details.
-func (x gen_NSNumber) InitWithChar(
+func (genReceiver gen_NSNumber) InitWithChar(
 	value int8,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithChar(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.char(value),
 	)
 
@@ -8441,11 +8458,11 @@ func (x gen_NSNumber) InitWithChar(
 // InitWithDouble returns an NSNumber object initialized to contain value, treated as a double.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407545-initwithdouble?language=objc for details.
-func (x gen_NSNumber) InitWithDouble(
+func (genReceiver gen_NSNumber) InitWithDouble(
 	value float64,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithDouble(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -8455,11 +8472,11 @@ func (x gen_NSNumber) InitWithDouble(
 // InitWithFloat returns an NSNumber object initialized to contain a given value, treated as a float.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412999-initwithfloat?language=objc for details.
-func (x gen_NSNumber) InitWithFloat(
+func (genReceiver gen_NSNumber) InitWithFloat(
 	value float32,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithFloat(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.float(value),
 	)
 
@@ -8469,11 +8486,11 @@ func (x gen_NSNumber) InitWithFloat(
 // InitWithInt returns an NSNumber object initialized to contain a given value, treated as a signed int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407580-initwithint?language=objc for details.
-func (x gen_NSNumber) InitWithInt(
+func (genReceiver gen_NSNumber) InitWithInt(
 	value int32,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithInt(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.int(value),
 	)
 
@@ -8483,11 +8500,11 @@ func (x gen_NSNumber) InitWithInt(
 // InitWithInteger returns an NSNumber object initialized to contain a given value, treated as an NSInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409397-initwithinteger?language=objc for details.
-func (x gen_NSNumber) InitWithInteger(
+func (genReceiver gen_NSNumber) InitWithInteger(
 	value NSInteger,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithInteger(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.long(value),
 	)
 
@@ -8497,11 +8514,11 @@ func (x gen_NSNumber) InitWithInteger(
 // InitWithLong returns an NSNumber object initialized to contain a given value, treated as a signed long.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1410739-initwithlong?language=objc for details.
-func (x gen_NSNumber) InitWithLong(
+func (genReceiver gen_NSNumber) InitWithLong(
 	value int64,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithLong(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.long(value),
 	)
 
@@ -8511,11 +8528,11 @@ func (x gen_NSNumber) InitWithLong(
 // InitWithLongLong returns an NSNumber object initialized to contain value, treated as a signed long long.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1408171-initwithlonglong?language=objc for details.
-func (x gen_NSNumber) InitWithLongLong(
+func (genReceiver gen_NSNumber) InitWithLongLong(
 	value int64,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithLongLong(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.longlong(value),
 	)
 
@@ -8525,11 +8542,11 @@ func (x gen_NSNumber) InitWithLongLong(
 // InitWithShort returns an NSNumber object initialized to contain a given value, treated as a signed short.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1411886-initwithshort?language=objc for details.
-func (x gen_NSNumber) InitWithShort(
+func (genReceiver gen_NSNumber) InitWithShort(
 	value int16,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithShort(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.short(value),
 	)
 
@@ -8539,11 +8556,11 @@ func (x gen_NSNumber) InitWithShort(
 // InitWithUnsignedChar returns an NSNumber object initialized to contain a given value, treated as an unsigned char.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1416533-initwithunsignedchar?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedChar(
+func (genReceiver gen_NSNumber) InitWithUnsignedChar(
 	value int8,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedChar(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.char(value),
 	)
 
@@ -8553,11 +8570,11 @@ func (x gen_NSNumber) InitWithUnsignedChar(
 // InitWithUnsignedInt returns an NSNumber object initialized to contain a given value, treated as an unsigned int.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1414598-initwithunsignedint?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedInt(
+func (genReceiver gen_NSNumber) InitWithUnsignedInt(
 	value int32,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedInt(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.int(value),
 	)
 
@@ -8567,11 +8584,11 @@ func (x gen_NSNumber) InitWithUnsignedInt(
 // InitWithUnsignedInteger returns an NSNumber object initialized to contain a given value, treated as an NSUInteger.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412531-initwithunsignedinteger?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedInteger(
+func (genReceiver gen_NSNumber) InitWithUnsignedInteger(
 	value NSUInteger,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedInteger(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(value),
 	)
 
@@ -8581,11 +8598,11 @@ func (x gen_NSNumber) InitWithUnsignedInteger(
 // InitWithUnsignedLong returns an NSNumber object initialized to contain a given value, treated as an unsigned long.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1410728-initwithunsignedlong?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedLong(
+func (genReceiver gen_NSNumber) InitWithUnsignedLong(
 	value int64,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedLong(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.long(value),
 	)
 
@@ -8595,11 +8612,11 @@ func (x gen_NSNumber) InitWithUnsignedLong(
 // InitWithUnsignedLongLong returns an NSNumber object initialized to contain a given value, treated as an unsigned long long.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1416550-initwithunsignedlonglong?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedLongLong(
+func (genReceiver gen_NSNumber) InitWithUnsignedLongLong(
 	value int64,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedLongLong(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.longlong(value),
 	)
 
@@ -8609,11 +8626,11 @@ func (x gen_NSNumber) InitWithUnsignedLongLong(
 // InitWithUnsignedShort returns an NSNumber object initialized to contain a given value, treated as an unsigned short.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407718-initwithunsignedshort?language=objc for details.
-func (x gen_NSNumber) InitWithUnsignedShort(
+func (genReceiver gen_NSNumber) InitWithUnsignedShort(
 	value int16,
 ) NSNumber {
 	ret := C.NSNumber_inst_InitWithUnsignedShort(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.short(value),
 	)
 
@@ -8623,11 +8640,11 @@ func (x gen_NSNumber) InitWithUnsignedShort(
 // IsEqualToNumber returns a Boolean value that indicates whether the number object’s value and a given number are equal.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1411315-isequaltonumber?language=objc for details.
-func (x gen_NSNumber) IsEqualToNumber(
+func (genReceiver gen_NSNumber) IsEqualToNumber(
 	number NSNumberRef,
 ) bool {
 	ret := C.NSNumber_inst_IsEqualToNumber(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(number),
 	)
 
@@ -8635,18 +8652,18 @@ func (x gen_NSNumber) IsEqualToNumber(
 }
 
 // Init initializes a new instance of the NSNumber class.
-func (x gen_NSNumber) Init() NSNumber {
+func (genReceiver gen_NSNumber) Init() NSNumber {
 	ret := C.NSNumber_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSNumber_FromPointer(ret)
 }
 
 // Init_AsNSNumber is a typed version of Init.
-func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
+func (genReceiver gen_NSNumber) Init_AsNSNumber() NSNumber {
 	ret := C.NSNumber_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -8655,9 +8672,9 @@ func (x gen_NSNumber) Init_AsNSNumber() NSNumber {
 // BoolValue returns the number object's value expressed as a Boolean value.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1410865-boolvalue?language=objc for details.
-func (x gen_NSNumber) BoolValue() bool {
+func (genReceiver gen_NSNumber) BoolValue() bool {
 	ret := C.NSNumber_inst_BoolValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -8666,9 +8683,9 @@ func (x gen_NSNumber) BoolValue() bool {
 // CharValue returns the number object's value expressed as a char.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407838-charvalue?language=objc for details.
-func (x gen_NSNumber) CharValue() int8 {
+func (genReceiver gen_NSNumber) CharValue() int8 {
 	ret := C.NSNumber_inst_CharValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int8(ret)
@@ -8677,9 +8694,9 @@ func (x gen_NSNumber) CharValue() int8 {
 // DoubleValue returns the number object's value expressed as a double, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1414104-doublevalue?language=objc for details.
-func (x gen_NSNumber) DoubleValue() float64 {
+func (genReceiver gen_NSNumber) DoubleValue() float64 {
 	ret := C.NSNumber_inst_DoubleValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float64(ret)
@@ -8688,9 +8705,9 @@ func (x gen_NSNumber) DoubleValue() float64 {
 // FloatValue returns the number object's value expressed as a float, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1418317-floatvalue?language=objc for details.
-func (x gen_NSNumber) FloatValue() float32 {
+func (genReceiver gen_NSNumber) FloatValue() float32 {
 	ret := C.NSNumber_inst_FloatValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float32(ret)
@@ -8699,9 +8716,9 @@ func (x gen_NSNumber) FloatValue() float32 {
 // IntValue returns the number object's value expressed as an int, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407153-intvalue?language=objc for details.
-func (x gen_NSNumber) IntValue() int32 {
+func (genReceiver gen_NSNumber) IntValue() int32 {
 	ret := C.NSNumber_inst_IntValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int32(ret)
@@ -8710,9 +8727,9 @@ func (x gen_NSNumber) IntValue() int32 {
 // IntegerValue returns the number object's value expressed as an NSInteger object, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412554-integervalue?language=objc for details.
-func (x gen_NSNumber) IntegerValue() NSInteger {
+func (genReceiver gen_NSNumber) IntegerValue() NSInteger {
 	ret := C.NSNumber_inst_IntegerValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSInteger(ret)
@@ -8721,9 +8738,9 @@ func (x gen_NSNumber) IntegerValue() NSInteger {
 // LongLongValue returns the number object’s value expressed as a long long, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1416870-longlongvalue?language=objc for details.
-func (x gen_NSNumber) LongLongValue() int64 {
+func (genReceiver gen_NSNumber) LongLongValue() int64 {
 	ret := C.NSNumber_inst_LongLongValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -8732,9 +8749,9 @@ func (x gen_NSNumber) LongLongValue() int64 {
 // LongValue returns the number object's value expressed as a long, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1412566-longvalue?language=objc for details.
-func (x gen_NSNumber) LongValue() int64 {
+func (genReceiver gen_NSNumber) LongValue() int64 {
 	ret := C.NSNumber_inst_LongValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -8743,9 +8760,9 @@ func (x gen_NSNumber) LongValue() int64 {
 // ShortValue returns the number object's value expressed as a short, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1407601-shortvalue?language=objc for details.
-func (x gen_NSNumber) ShortValue() int16 {
+func (genReceiver gen_NSNumber) ShortValue() int16 {
 	ret := C.NSNumber_inst_ShortValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int16(ret)
@@ -8754,9 +8771,9 @@ func (x gen_NSNumber) ShortValue() int16 {
 // UnsignedCharValue returns the number object's value expressed as an unsigned char, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1409016-unsignedcharvalue?language=objc for details.
-func (x gen_NSNumber) UnsignedCharValue() int8 {
+func (genReceiver gen_NSNumber) UnsignedCharValue() int8 {
 	ret := C.NSNumber_inst_UnsignedCharValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int8(ret)
@@ -8765,9 +8782,9 @@ func (x gen_NSNumber) UnsignedCharValue() int8 {
 // UnsignedIntegerValue returns the number object's value expressed as an NSUInteger object, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1413324-unsignedintegervalue?language=objc for details.
-func (x gen_NSNumber) UnsignedIntegerValue() NSUInteger {
+func (genReceiver gen_NSNumber) UnsignedIntegerValue() NSUInteger {
 	ret := C.NSNumber_inst_UnsignedIntegerValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -8776,9 +8793,9 @@ func (x gen_NSNumber) UnsignedIntegerValue() NSUInteger {
 // UnsignedIntValue returns the number object's value expressed as an unsigned int, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1417875-unsignedintvalue?language=objc for details.
-func (x gen_NSNumber) UnsignedIntValue() int32 {
+func (genReceiver gen_NSNumber) UnsignedIntValue() int32 {
 	ret := C.NSNumber_inst_UnsignedIntValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int32(ret)
@@ -8787,9 +8804,9 @@ func (x gen_NSNumber) UnsignedIntValue() int32 {
 // UnsignedLongLongValue returns the number object’s value expressed as an unsigned long long, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1414524-unsignedlonglongvalue?language=objc for details.
-func (x gen_NSNumber) UnsignedLongLongValue() int64 {
+func (genReceiver gen_NSNumber) UnsignedLongLongValue() int64 {
 	ret := C.NSNumber_inst_UnsignedLongLongValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -8798,9 +8815,9 @@ func (x gen_NSNumber) UnsignedLongLongValue() int64 {
 // UnsignedLongValue returns the number object's value expressed as an unsigned long, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1415252-unsignedlongvalue?language=objc for details.
-func (x gen_NSNumber) UnsignedLongValue() int64 {
+func (genReceiver gen_NSNumber) UnsignedLongValue() int64 {
 	ret := C.NSNumber_inst_UnsignedLongValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -8809,9 +8826,9 @@ func (x gen_NSNumber) UnsignedLongValue() int64 {
 // UnsignedShortValue returns the number object's value expressed as an unsigned short, converted as necessary.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1410604-unsignedshortvalue?language=objc for details.
-func (x gen_NSNumber) UnsignedShortValue() int16 {
+func (genReceiver gen_NSNumber) UnsignedShortValue() int16 {
 	ret := C.NSNumber_inst_UnsignedShortValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int16(ret)
@@ -8820,9 +8837,9 @@ func (x gen_NSNumber) UnsignedShortValue() int16 {
 // StringValue returns the number object's value expressed as a human-readable string.
 //
 // See https://developer.apple.com/documentation/foundation/nsnumber/1415802-stringvalue?language=objc for details.
-func (x gen_NSNumber) StringValue() string {
+func (genReceiver gen_NSNumber) StringValue() string {
 	ret := C.NSNumber_inst_StringValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -8850,13 +8867,13 @@ func NSRunLoop_FromRef(ref objc.Ref) NSRunLoop {
 // CancelPerformSelectorTargetArgument cancels the sending of a previously scheduled message.
 //
 // See https://developer.apple.com/documentation/foundation/nsrunloop/1418077-cancelperformselector?language=objc for details.
-func (x gen_NSRunLoop) CancelPerformSelectorTargetArgument(
+func (genReceiver gen_NSRunLoop) CancelPerformSelectorTargetArgument(
 	aSelector objc.Selector,
 	target objc.Ref,
 	arg objc.Ref,
 ) {
 	C.NSRunLoop_inst_CancelPerformSelectorTargetArgument(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(arg),
@@ -8868,11 +8885,11 @@ func (x gen_NSRunLoop) CancelPerformSelectorTargetArgument(
 // CancelPerformSelectorsWithTarget cancels all outstanding ordered performs scheduled with a given target.
 //
 // See https://developer.apple.com/documentation/foundation/nsrunloop/1414208-cancelperformselectorswithtarget?language=objc for details.
-func (x gen_NSRunLoop) CancelPerformSelectorsWithTarget(
+func (genReceiver gen_NSRunLoop) CancelPerformSelectorsWithTarget(
 	target objc.Ref,
 ) {
 	C.NSRunLoop_inst_CancelPerformSelectorsWithTarget(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(target),
 	)
 
@@ -8882,7 +8899,7 @@ func (x gen_NSRunLoop) CancelPerformSelectorsWithTarget(
 // PerformSelectorTargetArgumentOrderModes schedules the sending of a message on the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsrunloop/1409310-performselector?language=objc for details.
-func (x gen_NSRunLoop) PerformSelectorTargetArgumentOrderModes(
+func (genReceiver gen_NSRunLoop) PerformSelectorTargetArgumentOrderModes(
 	aSelector objc.Selector,
 	target objc.Ref,
 	arg objc.Ref,
@@ -8890,7 +8907,7 @@ func (x gen_NSRunLoop) PerformSelectorTargetArgumentOrderModes(
 	modes NSArrayRef,
 ) {
 	C.NSRunLoop_inst_PerformSelectorTargetArgumentOrderModes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		aSelector.SelectorAddress(),
 		objc.RefPointer(target),
 		objc.RefPointer(arg),
@@ -8904,27 +8921,27 @@ func (x gen_NSRunLoop) PerformSelectorTargetArgumentOrderModes(
 // Run puts the receiver into a permanent loop, during which time it processes data from all attached input sources.
 //
 // See https://developer.apple.com/documentation/foundation/nsrunloop/1412430-run?language=objc for details.
-func (x gen_NSRunLoop) Run() {
+func (genReceiver gen_NSRunLoop) Run() {
 	C.NSRunLoop_inst_Run(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
 }
 
 // Init initializes a new instance of the NSRunLoop class.
-func (x gen_NSRunLoop) Init() NSRunLoop {
+func (genReceiver gen_NSRunLoop) Init() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSRunLoop_FromPointer(ret)
 }
 
 // Init_AsNSRunLoop is a typed version of Init.
-func (x gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
+func (genReceiver gen_NSRunLoop) Init_AsNSRunLoop() NSRunLoop {
 	ret := C.NSRunLoop_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSRunLoop_FromPointer(ret)
@@ -8952,11 +8969,11 @@ func NSString_FromRef(ref objc.Ref) NSString {
 // CanBeConvertedToEncoding returns a Boolean value that indicates whether the receiver can be converted to a given encoding without loss of information.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409496-canbeconvertedtoencoding?language=objc for details.
-func (x gen_NSString) CanBeConvertedToEncoding(
+func (genReceiver gen_NSString) CanBeConvertedToEncoding(
 	encoding NSStringEncoding,
 ) bool {
 	ret := C.NSString_inst_CanBeConvertedToEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(encoding),
 	)
 
@@ -8966,11 +8983,11 @@ func (x gen_NSString) CanBeConvertedToEncoding(
 // CharacterAtIndex returns the character at a given UTF-16 code unit index.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414645-characteratindex?language=objc for details.
-func (x gen_NSString) CharacterAtIndex(
+func (genReceiver gen_NSString) CharacterAtIndex(
 	index NSUInteger,
 ) Unichar {
 	ret := C.NSString_inst_CharacterAtIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(index),
 	)
 
@@ -8980,14 +8997,14 @@ func (x gen_NSString) CharacterAtIndex(
 // CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes interprets the receiver as a path in the file system and attempts to perform filename completion, returning a numeric value that indicates whether a match was possible, and by reference the longest path that matches the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411841-completepathintostring?language=objc for details.
-func (x gen_NSString) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
+func (genReceiver gen_NSString) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
 	outputName string,
 	flag bool,
 	outputArray NSArrayRef,
 	filterTypes NSArrayRef,
 ) NSUInteger {
 	ret := C.NSString_inst_CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(outputName)),
 		convertToObjCBool(flag),
 		objc.RefPointer(outputArray),
@@ -9000,11 +9017,11 @@ func (x gen_NSString) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterT
 // ComponentsSeparatedByString returns an array containing substrings from the receiver that have been divided by a given separator.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413214-componentsseparatedbystring?language=objc for details.
-func (x gen_NSString) ComponentsSeparatedByString(
+func (genReceiver gen_NSString) ComponentsSeparatedByString(
 	separator string,
 ) NSArray {
 	ret := C.NSString_inst_ComponentsSeparatedByString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(separator)),
 	)
 
@@ -9014,11 +9031,11 @@ func (x gen_NSString) ComponentsSeparatedByString(
 // ContainsString returns a Boolean value indicating whether the string contains a given string by performing a case-sensitive, locale-unaware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414563-containsstring?language=objc for details.
-func (x gen_NSString) ContainsString(
+func (genReceiver gen_NSString) ContainsString(
 	str string,
 ) bool {
 	ret := C.NSString_inst_ContainsString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9028,11 +9045,11 @@ func (x gen_NSString) ContainsString(
 // DataUsingEncoding returns an NSData object containing a representation of the receiver encoded using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416696-datausingencoding?language=objc for details.
-func (x gen_NSString) DataUsingEncoding(
+func (genReceiver gen_NSString) DataUsingEncoding(
 	encoding NSStringEncoding,
 ) NSData {
 	ret := C.NSString_inst_DataUsingEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(encoding),
 	)
 
@@ -9042,12 +9059,12 @@ func (x gen_NSString) DataUsingEncoding(
 // DataUsingEncodingAllowLossyConversion returns an NSData object containing a representation of the receiver encoded using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413692-datausingencoding?language=objc for details.
-func (x gen_NSString) DataUsingEncodingAllowLossyConversion(
+func (genReceiver gen_NSString) DataUsingEncodingAllowLossyConversion(
 	encoding NSStringEncoding,
 	lossy bool,
 ) NSData {
 	ret := C.NSString_inst_DataUsingEncodingAllowLossyConversion(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(encoding),
 		convertToObjCBool(lossy),
 	)
@@ -9058,12 +9075,12 @@ func (x gen_NSString) DataUsingEncodingAllowLossyConversion(
 // DrawInRectWithAttributes draws the attributed string inside the specified bounding rectangle.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1529855-drawinrect?language=objc for details.
-func (x gen_NSString) DrawInRectWithAttributes(
+func (genReceiver gen_NSString) DrawInRectWithAttributes(
 	rect NSRect,
 	attrs NSDictionaryRef,
 ) {
 	C.NSString_inst_DrawInRectWithAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		*(*C.NSRect)(unsafe.Pointer(&rect)),
 		objc.RefPointer(attrs),
 	)
@@ -9074,11 +9091,11 @@ func (x gen_NSString) DrawInRectWithAttributes(
 // HasPrefix returns a Boolean value that indicates whether a given string matches the beginning characters of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410309-hasprefix?language=objc for details.
-func (x gen_NSString) HasPrefix(
+func (genReceiver gen_NSString) HasPrefix(
 	str string,
 ) bool {
 	ret := C.NSString_inst_HasPrefix(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9088,11 +9105,11 @@ func (x gen_NSString) HasPrefix(
 // HasSuffix returns a Boolean value that indicates whether a given string matches the ending characters of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416529-hassuffix?language=objc for details.
-func (x gen_NSString) HasSuffix(
+func (genReceiver gen_NSString) HasSuffix(
 	str string,
 ) bool {
 	ret := C.NSString_inst_HasSuffix(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9102,9 +9119,9 @@ func (x gen_NSString) HasSuffix(
 // Init returns an initialized NSString object that contains no characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
-func (x gen_NSString) Init() NSString {
+func (genReceiver gen_NSString) Init() NSString {
 	ret := C.NSString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSString_FromPointer(ret)
@@ -9113,9 +9130,9 @@ func (x gen_NSString) Init() NSString {
 // Init_AsNSString is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409306-init?language=objc for details.
-func (x gen_NSString) Init_AsNSString() NSString {
+func (genReceiver gen_NSString) Init_AsNSString() NSString {
 	ret := C.NSString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSString_FromPointer(ret)
@@ -9124,13 +9141,13 @@ func (x gen_NSString) Init_AsNSString() NSString {
 // InitWithBytesLengthEncoding returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc for details.
-func (x gen_NSString) InitWithBytesLengthEncoding(
+func (genReceiver gen_NSString) InitWithBytesLengthEncoding(
 	bytes unsafe.Pointer,
 	len NSUInteger,
 	encoding NSStringEncoding,
 ) NSString {
 	ret := C.NSString_inst_InitWithBytesLengthEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(len),
 		C.ulong(encoding),
@@ -9142,14 +9159,14 @@ func (x gen_NSString) InitWithBytesLengthEncoding(
 // InitWithBytesNoCopyLengthEncodingFreeWhenDone returns an initialized NSString object that contains a given number of bytes from a given buffer of bytes interpreted in a given encoding, and optionally frees the buffer.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413830-initwithbytesnocopy?language=objc for details.
-func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
+func (genReceiver gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
 	bytes unsafe.Pointer,
 	len NSUInteger,
 	encoding NSStringEncoding,
 	freeBuffer bool,
 ) NSString {
 	ret := C.NSString_inst_InitWithBytesNoCopyLengthEncodingFreeWhenDone(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		bytes,
 		C.ulong(len),
 		C.ulong(encoding),
@@ -9162,13 +9179,13 @@ func (x gen_NSString) InitWithBytesNoCopyLengthEncodingFreeWhenDone(
 // InitWithContentsOfFileEncodingError returns an NSString object initialized by reading data from the file at a given path using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc for details.
-func (x gen_NSString) InitWithContentsOfFileEncodingError(
+func (genReceiver gen_NSString) InitWithContentsOfFileEncodingError(
 	path string,
 	enc NSStringEncoding,
 	error NSErrorRef,
 ) string {
 	ret := C.NSString_inst_InitWithContentsOfFileEncodingError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		C.ulong(enc),
 		objc.RefPointer(error),
@@ -9180,13 +9197,13 @@ func (x gen_NSString) InitWithContentsOfFileEncodingError(
 // InitWithContentsOfURLEncodingError returns an NSString object initialized by reading data from a given URL interpreted using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc for details.
-func (x gen_NSString) InitWithContentsOfURLEncodingError(
+func (genReceiver gen_NSString) InitWithContentsOfURLEncodingError(
 	url NSURLRef,
 	enc NSStringEncoding,
 	error NSErrorRef,
 ) string {
 	ret := C.NSString_inst_InitWithContentsOfURLEncodingError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		C.ulong(enc),
 		objc.RefPointer(error),
@@ -9198,12 +9215,12 @@ func (x gen_NSString) InitWithContentsOfURLEncodingError(
 // InitWithDataEncoding returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc for details.
-func (x gen_NSString) InitWithDataEncoding(
+func (genReceiver gen_NSString) InitWithDataEncoding(
 	data NSDataRef,
 	encoding NSStringEncoding,
 ) NSString {
 	ret := C.NSString_inst_InitWithDataEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		C.ulong(encoding),
 	)
@@ -9214,11 +9231,11 @@ func (x gen_NSString) InitWithDataEncoding(
 // InitWithString returns an NSString object initialized by copying the characters from another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc for details.
-func (x gen_NSString) InitWithString(
+func (genReceiver gen_NSString) InitWithString(
 	aString string,
 ) NSString {
 	ret := C.NSString_inst_InitWithString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 	)
 
@@ -9228,11 +9245,11 @@ func (x gen_NSString) InitWithString(
 // IsEqualToString returns a Boolean value that indicates whether a given string is equal to the receiver using a literal Unicode-based comparison.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407803-isequaltostring?language=objc for details.
-func (x gen_NSString) IsEqualToString(
+func (genReceiver gen_NSString) IsEqualToString(
 	aString string,
 ) bool {
 	ret := C.NSString_inst_IsEqualToString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 	)
 
@@ -9242,11 +9259,11 @@ func (x gen_NSString) IsEqualToString(
 // LengthOfBytesUsingEncoding returns the number of bytes required to store the receiver in a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410710-lengthofbytesusingencoding?language=objc for details.
-func (x gen_NSString) LengthOfBytesUsingEncoding(
+func (genReceiver gen_NSString) LengthOfBytesUsingEncoding(
 	enc NSStringEncoding,
 ) NSUInteger {
 	ret := C.NSString_inst_LengthOfBytesUsingEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(enc),
 	)
 
@@ -9256,11 +9273,11 @@ func (x gen_NSString) LengthOfBytesUsingEncoding(
 // LocalizedCaseInsensitiveContainsString returns a Boolean value indicating whether the string contains a given string by performing a case-insensitive, locale-aware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412098-localizedcaseinsensitivecontains?language=objc for details.
-func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
+func (genReceiver gen_NSString) LocalizedCaseInsensitiveContainsString(
 	str string,
 ) bool {
 	ret := C.NSString_inst_LocalizedCaseInsensitiveContainsString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9270,11 +9287,11 @@ func (x gen_NSString) LocalizedCaseInsensitiveContainsString(
 // LocalizedStandardContainsString returns a Boolean value indicating whether the string contains a given string by performing a case and diacritic insensitive, locale-aware search.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416328-localizedstandardcontainsstring?language=objc for details.
-func (x gen_NSString) LocalizedStandardContainsString(
+func (genReceiver gen_NSString) LocalizedStandardContainsString(
 	str string,
 ) bool {
 	ret := C.NSString_inst_LocalizedStandardContainsString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9284,11 +9301,11 @@ func (x gen_NSString) LocalizedStandardContainsString(
 // MaximumLengthOfBytesUsingEncoding returns the maximum number of bytes needed to store the receiver in a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411611-maximumlengthofbytesusingencodin?language=objc for details.
-func (x gen_NSString) MaximumLengthOfBytesUsingEncoding(
+func (genReceiver gen_NSString) MaximumLengthOfBytesUsingEncoding(
 	enc NSStringEncoding,
 ) NSUInteger {
 	ret := C.NSString_inst_MaximumLengthOfBytesUsingEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(enc),
 	)
 
@@ -9298,9 +9315,9 @@ func (x gen_NSString) MaximumLengthOfBytesUsingEncoding(
 // PropertyList parses the receiver as a text representation of a property list, returning an NSString, NSData, NSArray, or NSDictionary object, according to the topmost element.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413115-propertylist?language=objc for details.
-func (x gen_NSString) PropertyList() objc.Object {
+func (genReceiver gen_NSString) PropertyList() objc.Object {
 	ret := C.NSString_inst_PropertyList(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return objc.Object_FromPointer(ret)
@@ -9309,9 +9326,9 @@ func (x gen_NSString) PropertyList() objc.Object {
 // PropertyListFromStringsFileFormat returns a dictionary object initialized with the keys and values found in the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407697-propertylistfromstringsfileforma?language=objc for details.
-func (x gen_NSString) PropertyListFromStringsFileFormat() NSDictionary {
+func (genReceiver gen_NSString) PropertyListFromStringsFileFormat() NSDictionary {
 	ret := C.NSString_inst_PropertyListFromStringsFileFormat(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -9320,11 +9337,11 @@ func (x gen_NSString) PropertyListFromStringsFileFormat() NSDictionary {
 // SizeWithAttributes returns the bounding box size the receiver occupies when drawn with the given attributes.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1531844-sizewithattributes?language=objc for details.
-func (x gen_NSString) SizeWithAttributes(
+func (genReceiver gen_NSString) SizeWithAttributes(
 	attrs NSDictionaryRef,
 ) NSSize {
 	ret := C.NSString_inst_SizeWithAttributes(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(attrs),
 	)
 
@@ -9334,11 +9351,11 @@ func (x gen_NSString) SizeWithAttributes(
 // StringByAppendingPathComponent returns a new string made by appending to the receiver a given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417069-stringbyappendingpathcomponent?language=objc for details.
-func (x gen_NSString) StringByAppendingPathComponent(
+func (genReceiver gen_NSString) StringByAppendingPathComponent(
 	str string,
 ) string {
 	ret := C.NSString_inst_StringByAppendingPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9348,11 +9365,11 @@ func (x gen_NSString) StringByAppendingPathComponent(
 // StringByAppendingPathExtension returns a new string made by appending to the receiver an extension separator followed by a given extension.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412501-stringbyappendingpathextension?language=objc for details.
-func (x gen_NSString) StringByAppendingPathExtension(
+func (genReceiver gen_NSString) StringByAppendingPathExtension(
 	str string,
 ) string {
 	ret := C.NSString_inst_StringByAppendingPathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(str)),
 	)
 
@@ -9362,11 +9379,11 @@ func (x gen_NSString) StringByAppendingPathExtension(
 // StringByAppendingString returns a new string made by appending a given string to the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412307-stringbyappendingstring?language=objc for details.
-func (x gen_NSString) StringByAppendingString(
+func (genReceiver gen_NSString) StringByAppendingString(
 	aString string,
 ) string {
 	ret := C.NSString_inst_StringByAppendingString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 	)
 
@@ -9376,13 +9393,13 @@ func (x gen_NSString) StringByAppendingString(
 // StringByPaddingToLengthWithStringStartingAtIndex returns a new string formed from the receiver by either removing characters from the end, or by appending as many occurrences as necessary of a given pad string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416395-stringbypaddingtolength?language=objc for details.
-func (x gen_NSString) StringByPaddingToLengthWithStringStartingAtIndex(
+func (genReceiver gen_NSString) StringByPaddingToLengthWithStringStartingAtIndex(
 	newLength NSUInteger,
 	padString string,
 	padIndex NSUInteger,
 ) string {
 	ret := C.NSString_inst_StringByPaddingToLengthWithStringStartingAtIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(newLength),
 		C.createNSStringFromCString(C.CString(padString)),
 		C.ulong(padIndex),
@@ -9394,12 +9411,12 @@ func (x gen_NSString) StringByPaddingToLengthWithStringStartingAtIndex(
 // StringByReplacingOccurrencesOfStringWithString returns a new string in which all occurrences of a target string in the receiver are replaced by another given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412937-stringbyreplacingoccurrencesofst?language=objc for details.
-func (x gen_NSString) StringByReplacingOccurrencesOfStringWithString(
+func (genReceiver gen_NSString) StringByReplacingOccurrencesOfStringWithString(
 	target string,
 	replacement string,
 ) string {
 	ret := C.NSString_inst_StringByReplacingOccurrencesOfStringWithString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(target)),
 		C.createNSStringFromCString(C.CString(replacement)),
 	)
@@ -9410,11 +9427,11 @@ func (x gen_NSString) StringByReplacingOccurrencesOfStringWithString(
 // StringsByAppendingPaths returns an array of strings made by separately appending to the receiver each string in a given array.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1415100-stringsbyappendingpaths?language=objc for details.
-func (x gen_NSString) StringsByAppendingPaths(
+func (genReceiver gen_NSString) StringsByAppendingPaths(
 	paths NSArrayRef,
 ) NSArray {
 	ret := C.NSString_inst_StringsByAppendingPaths(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(paths),
 	)
 
@@ -9424,11 +9441,11 @@ func (x gen_NSString) StringsByAppendingPaths(
 // SubstringFromIndex returns a new string containing the characters of the receiver from the one at a given index to the end.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414368-substringfromindex?language=objc for details.
-func (x gen_NSString) SubstringFromIndex(
+func (genReceiver gen_NSString) SubstringFromIndex(
 	from NSUInteger,
 ) string {
 	ret := C.NSString_inst_SubstringFromIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(from),
 	)
 
@@ -9438,11 +9455,11 @@ func (x gen_NSString) SubstringFromIndex(
 // SubstringToIndex returns a new string containing the characters of the receiver up to, but not including, the one at a given index.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1408017-substringtoindex?language=objc for details.
-func (x gen_NSString) SubstringToIndex(
+func (genReceiver gen_NSString) SubstringToIndex(
 	to NSUInteger,
 ) string {
 	ret := C.NSString_inst_SubstringToIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(to),
 	)
 
@@ -9452,11 +9469,11 @@ func (x gen_NSString) SubstringToIndex(
 // VariantFittingPresentationWidth returns a string variation suitable for the specified presentation width.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413104-variantfittingpresentationwidth?language=objc for details.
-func (x gen_NSString) VariantFittingPresentationWidth(
+func (genReceiver gen_NSString) VariantFittingPresentationWidth(
 	width NSInteger,
 ) string {
 	ret := C.NSString_inst_VariantFittingPresentationWidth(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.long(width),
 	)
 
@@ -9466,14 +9483,14 @@ func (x gen_NSString) VariantFittingPresentationWidth(
 // WriteToFileAtomicallyEncodingError writes the contents of the receiver to a file at a given path using a given encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407654-writetofile?language=objc for details.
-func (x gen_NSString) WriteToFileAtomicallyEncodingError(
+func (genReceiver gen_NSString) WriteToFileAtomicallyEncodingError(
 	path string,
 	useAuxiliaryFile bool,
 	enc NSStringEncoding,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSString_inst_WriteToFileAtomicallyEncodingError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(useAuxiliaryFile),
 		C.ulong(enc),
@@ -9486,14 +9503,14 @@ func (x gen_NSString) WriteToFileAtomicallyEncodingError(
 // WriteToURLAtomicallyEncodingError writes the contents of the receiver to the URL specified by url using the specified encoding.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417341-writetourl?language=objc for details.
-func (x gen_NSString) WriteToURLAtomicallyEncodingError(
+func (genReceiver gen_NSString) WriteToURLAtomicallyEncodingError(
 	url NSURLRef,
 	useAuxiliaryFile bool,
 	enc NSStringEncoding,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSString_inst_WriteToURLAtomicallyEncodingError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		convertToObjCBool(useAuxiliaryFile),
 		C.ulong(enc),
@@ -9506,9 +9523,9 @@ func (x gen_NSString) WriteToURLAtomicallyEncodingError(
 // Length returns the number of UTF-16 code units in the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414212-length?language=objc for details.
-func (x gen_NSString) Length() NSUInteger {
+func (genReceiver gen_NSString) Length() NSUInteger {
 	ret := C.NSString_inst_Length(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -9517,9 +9534,9 @@ func (x gen_NSString) Length() NSUInteger {
 // Hash an unsigned integer that can be used as a hash table address.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417245-hash?language=objc for details.
-func (x gen_NSString) Hash() NSUInteger {
+func (genReceiver gen_NSString) Hash() NSUInteger {
 	ret := C.NSString_inst_Hash(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -9528,9 +9545,9 @@ func (x gen_NSString) Hash() NSUInteger {
 // LowercaseString returns a lowercase representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1408467-lowercasestring?language=objc for details.
-func (x gen_NSString) LowercaseString() string {
+func (genReceiver gen_NSString) LowercaseString() string {
 	ret := C.NSString_inst_LowercaseString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9539,9 +9556,9 @@ func (x gen_NSString) LowercaseString() string {
 // LocalizedLowercaseString returns a version of the string with all letters converted to lowercase, taking into account the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414125-localizedlowercasestring?language=objc for details.
-func (x gen_NSString) LocalizedLowercaseString() string {
+func (genReceiver gen_NSString) LocalizedLowercaseString() string {
 	ret := C.NSString_inst_LocalizedLowercaseString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9550,9 +9567,9 @@ func (x gen_NSString) LocalizedLowercaseString() string {
 // UppercaseString an uppercase representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409855-uppercasestring?language=objc for details.
-func (x gen_NSString) UppercaseString() string {
+func (genReceiver gen_NSString) UppercaseString() string {
 	ret := C.NSString_inst_UppercaseString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9561,9 +9578,9 @@ func (x gen_NSString) UppercaseString() string {
 // LocalizedUppercaseString returns a version of the string with all letters converted to uppercase, taking into account the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1413331-localizeduppercasestring?language=objc for details.
-func (x gen_NSString) LocalizedUppercaseString() string {
+func (genReceiver gen_NSString) LocalizedUppercaseString() string {
 	ret := C.NSString_inst_LocalizedUppercaseString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9572,9 +9589,9 @@ func (x gen_NSString) LocalizedUppercaseString() string {
 // CapitalizedString returns a capitalized representation of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416784-capitalizedstring?language=objc for details.
-func (x gen_NSString) CapitalizedString() string {
+func (genReceiver gen_NSString) CapitalizedString() string {
 	ret := C.NSString_inst_CapitalizedString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9583,9 +9600,9 @@ func (x gen_NSString) CapitalizedString() string {
 // LocalizedCapitalizedString returns a capitalized representation of the receiver using the current locale.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414885-localizedcapitalizedstring?language=objc for details.
-func (x gen_NSString) LocalizedCapitalizedString() string {
+func (genReceiver gen_NSString) LocalizedCapitalizedString() string {
 	ret := C.NSString_inst_LocalizedCapitalizedString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9594,9 +9611,9 @@ func (x gen_NSString) LocalizedCapitalizedString() string {
 // DecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form D.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409474-decomposedstringwithcanonicalmap?language=objc for details.
-func (x gen_NSString) DecomposedStringWithCanonicalMapping() string {
+func (genReceiver gen_NSString) DecomposedStringWithCanonicalMapping() string {
 	ret := C.NSString_inst_DecomposedStringWithCanonicalMapping(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9605,9 +9622,9 @@ func (x gen_NSString) DecomposedStringWithCanonicalMapping() string {
 // DecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KD.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1415417-decomposedstringwithcompatibilit?language=objc for details.
-func (x gen_NSString) DecomposedStringWithCompatibilityMapping() string {
+func (genReceiver gen_NSString) DecomposedStringWithCompatibilityMapping() string {
 	ret := C.NSString_inst_DecomposedStringWithCompatibilityMapping(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9616,9 +9633,9 @@ func (x gen_NSString) DecomposedStringWithCompatibilityMapping() string {
 // PrecomposedStringWithCanonicalMapping returns a string made by normalizing the string’s contents using the Unicode Normalization Form C.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412645-precomposedstringwithcanonicalma?language=objc for details.
-func (x gen_NSString) PrecomposedStringWithCanonicalMapping() string {
+func (genReceiver gen_NSString) PrecomposedStringWithCanonicalMapping() string {
 	ret := C.NSString_inst_PrecomposedStringWithCanonicalMapping(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9627,9 +9644,9 @@ func (x gen_NSString) PrecomposedStringWithCanonicalMapping() string {
 // PrecomposedStringWithCompatibilityMapping returns a string made by normalizing the receiver’s contents using the Unicode Normalization Form KC.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412625-precomposedstringwithcompatibili?language=objc for details.
-func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() string {
+func (genReceiver gen_NSString) PrecomposedStringWithCompatibilityMapping() string {
 	ret := C.NSString_inst_PrecomposedStringWithCompatibilityMapping(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9638,9 +9655,9 @@ func (x gen_NSString) PrecomposedStringWithCompatibilityMapping() string {
 // DoubleValue returns the floating-point value of the string as a double.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414031-doublevalue?language=objc for details.
-func (x gen_NSString) DoubleValue() float64 {
+func (genReceiver gen_NSString) DoubleValue() float64 {
 	ret := C.NSString_inst_DoubleValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float64(ret)
@@ -9649,9 +9666,9 @@ func (x gen_NSString) DoubleValue() float64 {
 // FloatValue returns the floating-point value of the string as a float.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1412321-floatvalue?language=objc for details.
-func (x gen_NSString) FloatValue() float32 {
+func (genReceiver gen_NSString) FloatValue() float32 {
 	ret := C.NSString_inst_FloatValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float32(ret)
@@ -9660,9 +9677,9 @@ func (x gen_NSString) FloatValue() float32 {
 // IntValue returns the integer value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414988-intvalue?language=objc for details.
-func (x gen_NSString) IntValue() int32 {
+func (genReceiver gen_NSString) IntValue() int32 {
 	ret := C.NSString_inst_IntValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int32(ret)
@@ -9671,9 +9688,9 @@ func (x gen_NSString) IntValue() int32 {
 // IntegerValue returns the NSInteger value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410267-integervalue?language=objc for details.
-func (x gen_NSString) IntegerValue() NSInteger {
+func (genReceiver gen_NSString) IntegerValue() NSInteger {
 	ret := C.NSString_inst_IntegerValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSInteger(ret)
@@ -9682,9 +9699,9 @@ func (x gen_NSString) IntegerValue() NSInteger {
 // LongLongValue returns the long long value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417731-longlongvalue?language=objc for details.
-func (x gen_NSString) LongLongValue() int64 {
+func (genReceiver gen_NSString) LongLongValue() int64 {
 	ret := C.NSString_inst_LongLongValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return int64(ret)
@@ -9693,9 +9710,9 @@ func (x gen_NSString) LongLongValue() int64 {
 // BoolValue returns the Boolean value of the string.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409420-boolvalue?language=objc for details.
-func (x gen_NSString) BoolValue() bool {
+func (genReceiver gen_NSString) BoolValue() bool {
 	ret := C.NSString_inst_BoolValue(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9704,9 +9721,9 @@ func (x gen_NSString) BoolValue() bool {
 // Description this NSString object.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1410889-description?language=objc for details.
-func (x gen_NSString) Description() string {
+func (genReceiver gen_NSString) Description() string {
 	ret := C.NSString_inst_Description(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9715,9 +9732,9 @@ func (x gen_NSString) Description() string {
 // FastestEncoding returns the fastest encoding to which the receiver may be converted without loss of information.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409567-fastestencoding?language=objc for details.
-func (x gen_NSString) FastestEncoding() NSStringEncoding {
+func (genReceiver gen_NSString) FastestEncoding() NSStringEncoding {
 	ret := C.NSString_inst_FastestEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSStringEncoding(ret)
@@ -9726,9 +9743,9 @@ func (x gen_NSString) FastestEncoding() NSStringEncoding {
 // SmallestEncoding returns the smallest encoding to which the receiver can be converted without loss of information.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1418037-smallestencoding?language=objc for details.
-func (x gen_NSString) SmallestEncoding() NSStringEncoding {
+func (genReceiver gen_NSString) SmallestEncoding() NSStringEncoding {
 	ret := C.NSString_inst_SmallestEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSStringEncoding(ret)
@@ -9737,9 +9754,9 @@ func (x gen_NSString) SmallestEncoding() NSStringEncoding {
 // PathComponents returns the file-system path components of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1414489-pathcomponents?language=objc for details.
-func (x gen_NSString) PathComponents() NSArray {
+func (genReceiver gen_NSString) PathComponents() NSArray {
 	ret := C.NSString_inst_PathComponents(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -9748,9 +9765,9 @@ func (x gen_NSString) PathComponents() NSArray {
 // IsAbsolutePath returns a Boolean value that indicates whether the receiver represents an absolute path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409068-absolutepath?language=objc for details.
-func (x gen_NSString) IsAbsolutePath() bool {
+func (genReceiver gen_NSString) IsAbsolutePath() bool {
 	ret := C.NSString_inst_IsAbsolutePath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9759,9 +9776,9 @@ func (x gen_NSString) IsAbsolutePath() bool {
 // LastPathComponent returns the last path component of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1416528-lastpathcomponent?language=objc for details.
-func (x gen_NSString) LastPathComponent() string {
+func (genReceiver gen_NSString) LastPathComponent() string {
 	ret := C.NSString_inst_LastPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9770,9 +9787,9 @@ func (x gen_NSString) LastPathComponent() string {
 // PathExtension returns the path extension, if any, of the string as interpreted as a path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407801-pathextension?language=objc for details.
-func (x gen_NSString) PathExtension() string {
+func (genReceiver gen_NSString) PathExtension() string {
 	ret := C.NSString_inst_PathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9781,9 +9798,9 @@ func (x gen_NSString) PathExtension() string {
 // StringByAbbreviatingWithTildeInPath returns a new string that replaces the current home directory portion of the current path with a tilde (~) character.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407943-stringbyabbreviatingwithtildeinp?language=objc for details.
-func (x gen_NSString) StringByAbbreviatingWithTildeInPath() string {
+func (genReceiver gen_NSString) StringByAbbreviatingWithTildeInPath() string {
 	ret := C.NSString_inst_StringByAbbreviatingWithTildeInPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9792,9 +9809,9 @@ func (x gen_NSString) StringByAbbreviatingWithTildeInPath() string {
 // StringByDeletingLastPathComponent returns a new string made by deleting the last path component from the receiver, along with any final path separator.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1411141-stringbydeletinglastpathcomponen?language=objc for details.
-func (x gen_NSString) StringByDeletingLastPathComponent() string {
+func (genReceiver gen_NSString) StringByDeletingLastPathComponent() string {
 	ret := C.NSString_inst_StringByDeletingLastPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9803,9 +9820,9 @@ func (x gen_NSString) StringByDeletingLastPathComponent() string {
 // StringByDeletingPathExtension returns a new string made by deleting the extension (if any, and only the last) from the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1418214-stringbydeletingpathextension?language=objc for details.
-func (x gen_NSString) StringByDeletingPathExtension() string {
+func (genReceiver gen_NSString) StringByDeletingPathExtension() string {
 	ret := C.NSString_inst_StringByDeletingPathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9814,9 +9831,9 @@ func (x gen_NSString) StringByDeletingPathExtension() string {
 // StringByExpandingTildeInPath returns a new string made by expanding the initial component of the receiver to its full path value.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407716-stringbyexpandingtildeinpath?language=objc for details.
-func (x gen_NSString) StringByExpandingTildeInPath() string {
+func (genReceiver gen_NSString) StringByExpandingTildeInPath() string {
 	ret := C.NSString_inst_StringByExpandingTildeInPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9825,9 +9842,9 @@ func (x gen_NSString) StringByExpandingTildeInPath() string {
 // StringByResolvingSymlinksInPath returns a new string made from the receiver by resolving all symbolic links and standardizing path.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1417783-stringbyresolvingsymlinksinpath?language=objc for details.
-func (x gen_NSString) StringByResolvingSymlinksInPath() string {
+func (genReceiver gen_NSString) StringByResolvingSymlinksInPath() string {
 	ret := C.NSString_inst_StringByResolvingSymlinksInPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9836,9 +9853,9 @@ func (x gen_NSString) StringByResolvingSymlinksInPath() string {
 // StringByStandardizingPath returns a new string made by removing extraneous path components from the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1407194-stringbystandardizingpath?language=objc for details.
-func (x gen_NSString) StringByStandardizingPath() string {
+func (genReceiver gen_NSString) StringByStandardizingPath() string {
 	ret := C.NSString_inst_StringByStandardizingPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9847,9 +9864,9 @@ func (x gen_NSString) StringByStandardizingPath() string {
 // StringByRemovingPercentEncoding returns a new string made from the receiver by replacing all percent encoded sequences with the matching UTF-8 characters.
 //
 // See https://developer.apple.com/documentation/foundation/nsstring/1409569-stringbyremovingpercentencoding?language=objc for details.
-func (x gen_NSString) StringByRemovingPercentEncoding() string {
+func (genReceiver gen_NSString) StringByRemovingPercentEncoding() string {
 	ret := C.NSString_inst_StringByRemovingPercentEncoding(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -9877,9 +9894,9 @@ func NSThread_FromRef(ref objc.Ref) NSThread {
 // Cancel changes the cancelled state of the receiver to indicate that it should exit.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411303-cancel?language=objc for details.
-func (x gen_NSThread) Cancel() {
+func (genReceiver gen_NSThread) Cancel() {
 	C.NSThread_inst_Cancel(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -9888,9 +9905,9 @@ func (x gen_NSThread) Cancel() {
 // Init returns an initialized NSThread object.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
-func (x gen_NSThread) Init() NSThread {
+func (genReceiver gen_NSThread) Init() NSThread {
 	ret := C.NSThread_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSThread_FromPointer(ret)
@@ -9899,9 +9916,9 @@ func (x gen_NSThread) Init() NSThread {
 // Init_AsNSThread is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1416464-init?language=objc for details.
-func (x gen_NSThread) Init_AsNSThread() NSThread {
+func (genReceiver gen_NSThread) Init_AsNSThread() NSThread {
 	ret := C.NSThread_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSThread_FromPointer(ret)
@@ -9910,13 +9927,13 @@ func (x gen_NSThread) Init_AsNSThread() NSThread {
 // InitWithTargetSelectorObject returns an NSThread object initialized with the given arguments.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414773-initwithtarget?language=objc for details.
-func (x gen_NSThread) InitWithTargetSelectorObject(
+func (genReceiver gen_NSThread) InitWithTargetSelectorObject(
 	target objc.Ref,
 	selector objc.Selector,
 	argument objc.Ref,
 ) NSThread {
 	ret := C.NSThread_inst_InitWithTargetSelectorObject(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(target),
 		selector.SelectorAddress(),
 		objc.RefPointer(argument),
@@ -9928,9 +9945,9 @@ func (x gen_NSThread) InitWithTargetSelectorObject(
 // Main returns the main entry point routine for the thread.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1418421-main?language=objc for details.
-func (x gen_NSThread) Main() {
+func (genReceiver gen_NSThread) Main() {
 	C.NSThread_inst_Main(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -9939,9 +9956,9 @@ func (x gen_NSThread) Main() {
 // Start starts the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1418166-start?language=objc for details.
-func (x gen_NSThread) Start() {
+func (genReceiver gen_NSThread) Start() {
 	C.NSThread_inst_Start(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -9950,9 +9967,9 @@ func (x gen_NSThread) Start() {
 // IsExecuting returns a Boolean value that indicates whether the receiver is executing.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411240-executing?language=objc for details.
-func (x gen_NSThread) IsExecuting() bool {
+func (genReceiver gen_NSThread) IsExecuting() bool {
 	ret := C.NSThread_inst_IsExecuting(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9961,9 +9978,9 @@ func (x gen_NSThread) IsExecuting() bool {
 // IsFinished returns a Boolean value that indicates whether the receiver has finished execution.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1409297-finished?language=objc for details.
-func (x gen_NSThread) IsFinished() bool {
+func (genReceiver gen_NSThread) IsFinished() bool {
 	ret := C.NSThread_inst_IsFinished(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9972,9 +9989,9 @@ func (x gen_NSThread) IsFinished() bool {
 // IsCancelled returns a Boolean value that indicates whether the receiver is cancelled.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1417366-cancelled?language=objc for details.
-func (x gen_NSThread) IsCancelled() bool {
+func (genReceiver gen_NSThread) IsCancelled() bool {
 	ret := C.NSThread_inst_IsCancelled(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9983,9 +10000,9 @@ func (x gen_NSThread) IsCancelled() bool {
 // IsMainThread returns a Boolean value that indicates whether the receiver is the main thread.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1408455-ismainthread?language=objc for details.
-func (x gen_NSThread) IsMainThread() bool {
+func (genReceiver gen_NSThread) IsMainThread() bool {
 	ret := C.NSThread_inst_IsMainThread(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -9994,9 +10011,9 @@ func (x gen_NSThread) IsMainThread() bool {
 // ThreadDictionary returns the thread object's dictionary.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411433-threaddictionary?language=objc for details.
-func (x gen_NSThread) ThreadDictionary() NSMutableDictionary {
+func (genReceiver gen_NSThread) ThreadDictionary() NSMutableDictionary {
 	ret := C.NSThread_inst_ThreadDictionary(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableDictionary_FromPointer(ret)
@@ -10005,9 +10022,9 @@ func (x gen_NSThread) ThreadDictionary() NSMutableDictionary {
 // Name returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414122-name?language=objc for details.
-func (x gen_NSThread) Name() string {
+func (genReceiver gen_NSThread) Name() string {
 	ret := C.NSThread_inst_Name(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10016,11 +10033,11 @@ func (x gen_NSThread) Name() string {
 // SetName returns the name of the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1414122-name?language=objc for details.
-func (x gen_NSThread) SetName(
+func (genReceiver gen_NSThread) SetName(
 	value string,
 ) {
 	C.NSThread_inst_SetName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(value)),
 	)
 
@@ -10030,9 +10047,9 @@ func (x gen_NSThread) SetName(
 // StackSize returns the stack size of the receiver, in bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1415190-stacksize?language=objc for details.
-func (x gen_NSThread) StackSize() NSUInteger {
+func (genReceiver gen_NSThread) StackSize() NSUInteger {
 	ret := C.NSThread_inst_StackSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUInteger(ret)
@@ -10041,11 +10058,11 @@ func (x gen_NSThread) StackSize() NSUInteger {
 // SetStackSize returns the stack size of the receiver, in bytes.
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1415190-stacksize?language=objc for details.
-func (x gen_NSThread) SetStackSize(
+func (genReceiver gen_NSThread) SetStackSize(
 	value NSUInteger,
 ) {
 	C.NSThread_inst_SetStackSize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(value),
 	)
 
@@ -10055,9 +10072,9 @@ func (x gen_NSThread) SetStackSize(
 // ThreadPriority returns the receiver’s priority
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411927-threadpriority?language=objc for details.
-func (x gen_NSThread) ThreadPriority() float64 {
+func (genReceiver gen_NSThread) ThreadPriority() float64 {
 	ret := C.NSThread_inst_ThreadPriority(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return float64(ret)
@@ -10066,11 +10083,11 @@ func (x gen_NSThread) ThreadPriority() float64 {
 // SetThreadPriority returns the receiver’s priority
 //
 // See https://developer.apple.com/documentation/foundation/nsthread/1411927-threadpriority?language=objc for details.
-func (x gen_NSThread) SetThreadPriority(
+func (genReceiver gen_NSThread) SetThreadPriority(
 	value float64,
 ) {
 	C.NSThread_inst_SetThreadPriority(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
 	)
 
@@ -10099,11 +10116,11 @@ func NSURL_FromRef(ref objc.Ref) NSURL {
 // URLByAppendingPathComponent returns a new URL made by appending a path component to the original URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410614-urlbyappendingpathcomponent?language=objc for details.
-func (x gen_NSURL) URLByAppendingPathComponent(
+func (genReceiver gen_NSURL) URLByAppendingPathComponent(
 	pathComponent string,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(pathComponent)),
 	)
 
@@ -10113,12 +10130,12 @@ func (x gen_NSURL) URLByAppendingPathComponent(
 // URLByAppendingPathComponentIsDirectory returns a new URL made by appending a path component to the original URL, along with a trailing slash if the component is designated a directory.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413953-urlbyappendingpathcomponent?language=objc for details.
-func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
+func (genReceiver gen_NSURL) URLByAppendingPathComponentIsDirectory(
 	pathComponent string,
 	isDirectory bool,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathComponentIsDirectory(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(pathComponent)),
 		convertToObjCBool(isDirectory),
 	)
@@ -10129,11 +10146,11 @@ func (x gen_NSURL) URLByAppendingPathComponentIsDirectory(
 // URLByAppendingPathExtension returns a new URL made by appending a path extension to the original URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417082-urlbyappendingpathextension?language=objc for details.
-func (x gen_NSURL) URLByAppendingPathExtension(
+func (genReceiver gen_NSURL) URLByAppendingPathExtension(
 	pathExtension string,
 ) NSURL {
 	ret := C.NSURL_inst_URLByAppendingPathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(pathExtension)),
 	)
 
@@ -10143,11 +10160,11 @@ func (x gen_NSURL) URLByAppendingPathExtension(
 // CheckPromisedItemIsReachableAndReturnError returns whether the promised item can be reached.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410411-checkpromiseditemisreachableandr?language=objc for details.
-func (x gen_NSURL) CheckPromisedItemIsReachableAndReturnError(
+func (genReceiver gen_NSURL) CheckPromisedItemIsReachableAndReturnError(
 	error NSErrorRef,
 ) bool {
 	ret := C.NSURL_inst_CheckPromisedItemIsReachableAndReturnError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 	)
 
@@ -10157,11 +10174,11 @@ func (x gen_NSURL) CheckPromisedItemIsReachableAndReturnError(
 // CheckResourceIsReachableAndReturnError returns whether the resource pointed to by a file URL can be reached.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410597-checkresourceisreachableandretur?language=objc for details.
-func (x gen_NSURL) CheckResourceIsReachableAndReturnError(
+func (genReceiver gen_NSURL) CheckResourceIsReachableAndReturnError(
 	error NSErrorRef,
 ) bool {
 	ret := C.NSURL_inst_CheckResourceIsReachableAndReturnError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 	)
 
@@ -10171,9 +10188,9 @@ func (x gen_NSURL) CheckResourceIsReachableAndReturnError(
 // FileReferenceURL returns a new file reference URL that points to the same resource as the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408631-filereferenceurl?language=objc for details.
-func (x gen_NSURL) FileReferenceURL() NSURL {
+func (genReceiver gen_NSURL) FileReferenceURL() NSURL {
 	ret := C.NSURL_inst_FileReferenceURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10182,12 +10199,12 @@ func (x gen_NSURL) FileReferenceURL() NSURL {
 // InitAbsoluteURLWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410750-initabsoluteurlwithdatarepresent?language=objc for details.
-func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL(
+func (genReceiver gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL(
 	data NSDataRef,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitAbsoluteURLWithDataRepresentationRelativeToURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(baseURL),
 	)
@@ -10198,11 +10215,11 @@ func (x gen_NSURL) InitAbsoluteURLWithDataRepresentationRelativeToURL(
 // InitFileURLWithPath initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410301-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPath(
+func (genReceiver gen_NSURL) InitFileURLWithPath(
 	path string,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 	)
 
@@ -10212,12 +10229,12 @@ func (x gen_NSURL) InitFileURLWithPath(
 // InitFileURLWithPathIsDirectory initializes a newly created NSURL referencing the local file or directory at path.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417505-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathIsDirectory(
+func (genReceiver gen_NSURL) InitFileURLWithPathIsDirectory(
 	path string,
 	isDir bool,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathIsDirectory(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 	)
@@ -10228,13 +10245,13 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectory(
 // InitFileURLWithPathIsDirectoryRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
+func (genReceiver gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
 	path string,
 	isDir bool,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathIsDirectoryRelativeToURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		convertToObjCBool(isDir),
 		objc.RefPointer(baseURL),
@@ -10246,12 +10263,12 @@ func (x gen_NSURL) InitFileURLWithPathIsDirectoryRelativeToURL(
 // InitFileURLWithPathRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415077-initfileurlwithpath?language=objc for details.
-func (x gen_NSURL) InitFileURLWithPathRelativeToURL(
+func (genReceiver gen_NSURL) InitFileURLWithPathRelativeToURL(
 	path string,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitFileURLWithPathRelativeToURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(path)),
 		objc.RefPointer(baseURL),
 	)
@@ -10262,12 +10279,12 @@ func (x gen_NSURL) InitFileURLWithPathRelativeToURL(
 // InitWithDataRepresentationRelativeToURL is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1416851-initwithdatarepresentation?language=objc for details.
-func (x gen_NSURL) InitWithDataRepresentationRelativeToURL(
+func (genReceiver gen_NSURL) InitWithDataRepresentationRelativeToURL(
 	data NSDataRef,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithDataRepresentationRelativeToURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(data),
 		objc.RefPointer(baseURL),
 	)
@@ -10278,11 +10295,11 @@ func (x gen_NSURL) InitWithDataRepresentationRelativeToURL(
 // InitWithString initializes an NSURL object with a provided URL string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413146-initwithstring?language=objc for details.
-func (x gen_NSURL) InitWithString(
+func (genReceiver gen_NSURL) InitWithString(
 	URLString string,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(URLString)),
 	)
 
@@ -10292,12 +10309,12 @@ func (x gen_NSURL) InitWithString(
 // InitWithStringRelativeToURL initializes an NSURL object with a base URL and a relative string.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc for details.
-func (x gen_NSURL) InitWithStringRelativeToURL(
+func (genReceiver gen_NSURL) InitWithStringRelativeToURL(
 	URLString string,
 	baseURL NSURLRef,
 ) NSURL {
 	ret := C.NSURL_inst_InitWithStringRelativeToURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(URLString)),
 		objc.RefPointer(baseURL),
 	)
@@ -10308,9 +10325,9 @@ func (x gen_NSURL) InitWithStringRelativeToURL(
 // IsFileReferenceURL returns whether the URL is a file reference URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408507-isfilereferenceurl?language=objc for details.
-func (x gen_NSURL) IsFileReferenceURL() bool {
+func (genReceiver gen_NSURL) IsFileReferenceURL() bool {
 	ret := C.NSURL_inst_IsFileReferenceURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10319,12 +10336,12 @@ func (x gen_NSURL) IsFileReferenceURL() bool {
 // PromisedItemResourceValuesForKeysError returns the resource values for the properties identified by specified array of keys.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407746-promiseditemresourcevaluesforkey?language=objc for details.
-func (x gen_NSURL) PromisedItemResourceValuesForKeysError(
+func (genReceiver gen_NSURL) PromisedItemResourceValuesForKeysError(
 	keys NSArrayRef,
 	error NSErrorRef,
 ) NSDictionary {
 	ret := C.NSURL_inst_PromisedItemResourceValuesForKeysError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(keys),
 		objc.RefPointer(error),
 	)
@@ -10335,9 +10352,9 @@ func (x gen_NSURL) PromisedItemResourceValuesForKeysError(
 // RemoveAllCachedResourceValues removes all cached resource values and temporary resource values from the URL object.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417078-removeallcachedresourcevalues?language=objc for details.
-func (x gen_NSURL) RemoveAllCachedResourceValues() {
+func (genReceiver gen_NSURL) RemoveAllCachedResourceValues() {
 	C.NSURL_inst_RemoveAllCachedResourceValues(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -10346,12 +10363,12 @@ func (x gen_NSURL) RemoveAllCachedResourceValues() {
 // ResourceValuesForKeysError returns the resource values for the properties identified by specified array of keys.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417657-resourcevaluesforkeys?language=objc for details.
-func (x gen_NSURL) ResourceValuesForKeysError(
+func (genReceiver gen_NSURL) ResourceValuesForKeysError(
 	keys NSArrayRef,
 	error NSErrorRef,
 ) NSDictionary {
 	ret := C.NSURL_inst_ResourceValuesForKeysError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(keys),
 		objc.RefPointer(error),
 	)
@@ -10362,12 +10379,12 @@ func (x gen_NSURL) ResourceValuesForKeysError(
 // SetResourceValuesError sets the URL’s resource properties for a given set of keys to a given set of values.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408208-setresourcevalues?language=objc for details.
-func (x gen_NSURL) SetResourceValuesError(
+func (genReceiver gen_NSURL) SetResourceValuesError(
 	keyedValues NSDictionaryRef,
 	error NSErrorRef,
 ) bool {
 	ret := C.NSURL_inst_SetResourceValuesError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(keyedValues),
 		objc.RefPointer(error),
 	)
@@ -10378,9 +10395,9 @@ func (x gen_NSURL) SetResourceValuesError(
 // StartAccessingSecurityScopedResource in an app that has adopted App Sandbox, makes the resource pointed to by a security-scoped URL available to the app.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417051-startaccessingsecurityscopedreso?language=objc for details.
-func (x gen_NSURL) StartAccessingSecurityScopedResource() bool {
+func (genReceiver gen_NSURL) StartAccessingSecurityScopedResource() bool {
 	ret := C.NSURL_inst_StartAccessingSecurityScopedResource(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10389,27 +10406,27 @@ func (x gen_NSURL) StartAccessingSecurityScopedResource() bool {
 // StopAccessingSecurityScopedResource in an app that adopts App Sandbox, revokes access to the resource pointed to by a security-scoped URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413736-stopaccessingsecurityscopedresou?language=objc for details.
-func (x gen_NSURL) StopAccessingSecurityScopedResource() {
+func (genReceiver gen_NSURL) StopAccessingSecurityScopedResource() {
 	C.NSURL_inst_StopAccessingSecurityScopedResource(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
 }
 
 // Init initializes a new instance of the NSURL class.
-func (x gen_NSURL) Init() NSURL {
+func (genReceiver gen_NSURL) Init() NSURL {
 	ret := C.NSURL_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
 }
 
 // Init_AsNSURL is a typed version of Init.
-func (x gen_NSURL) Init_AsNSURL() NSURL {
+func (genReceiver gen_NSURL) Init_AsNSURL() NSURL {
 	ret := C.NSURL_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10418,9 +10435,9 @@ func (x gen_NSURL) Init_AsNSURL() NSURL {
 // DataRepresentation is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407656-datarepresentation?language=objc for details.
-func (x gen_NSURL) DataRepresentation() NSData {
+func (genReceiver gen_NSURL) DataRepresentation() NSData {
 	ret := C.NSURL_inst_DataRepresentation(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSData_FromPointer(ret)
@@ -10429,9 +10446,9 @@ func (x gen_NSURL) DataRepresentation() NSData {
 // IsFileURL returns a boolean value that determines whether the receiver is a file URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408782-fileurl?language=objc for details.
-func (x gen_NSURL) IsFileURL() bool {
+func (genReceiver gen_NSURL) IsFileURL() bool {
 	ret := C.NSURL_inst_IsFileURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10440,9 +10457,9 @@ func (x gen_NSURL) IsFileURL() bool {
 // AbsoluteString returns the URL string for the receiver as an absolute URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1409868-absolutestring?language=objc for details.
-func (x gen_NSURL) AbsoluteString() string {
+func (genReceiver gen_NSURL) AbsoluteString() string {
 	ret := C.NSURL_inst_AbsoluteString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10451,9 +10468,9 @@ func (x gen_NSURL) AbsoluteString() string {
 // AbsoluteURL an absolute URL that refers to the same resource as the receiver. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414266-absoluteurl?language=objc for details.
-func (x gen_NSURL) AbsoluteURL() NSURL {
+func (genReceiver gen_NSURL) AbsoluteURL() NSURL {
 	ret := C.NSURL_inst_AbsoluteURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10462,9 +10479,9 @@ func (x gen_NSURL) AbsoluteURL() NSURL {
 // BaseURL returns the base URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412311-baseurl?language=objc for details.
-func (x gen_NSURL) BaseURL() NSURL {
+func (genReceiver gen_NSURL) BaseURL() NSURL {
 	ret := C.NSURL_inst_BaseURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10473,9 +10490,9 @@ func (x gen_NSURL) BaseURL() NSURL {
 // Fragment returns the fragment identifier, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413775-fragment?language=objc for details.
-func (x gen_NSURL) Fragment() string {
+func (genReceiver gen_NSURL) Fragment() string {
 	ret := C.NSURL_inst_Fragment(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10484,9 +10501,9 @@ func (x gen_NSURL) Fragment() string {
 // Host returns the host, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413640-host?language=objc for details.
-func (x gen_NSURL) Host() string {
+func (genReceiver gen_NSURL) Host() string {
 	ret := C.NSURL_inst_Host(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10495,9 +10512,9 @@ func (x gen_NSURL) Host() string {
 // LastPathComponent returns the last path component. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1417444-lastpathcomponent?language=objc for details.
-func (x gen_NSURL) LastPathComponent() string {
+func (genReceiver gen_NSURL) LastPathComponent() string {
 	ret := C.NSURL_inst_LastPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10506,9 +10523,9 @@ func (x gen_NSURL) LastPathComponent() string {
 // Password returns the password conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412096-password?language=objc for details.
-func (x gen_NSURL) Password() string {
+func (genReceiver gen_NSURL) Password() string {
 	ret := C.NSURL_inst_Password(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10517,9 +10534,9 @@ func (x gen_NSURL) Password() string {
 // Path returns the path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408809-path?language=objc for details.
-func (x gen_NSURL) Path() string {
+func (genReceiver gen_NSURL) Path() string {
 	ret := C.NSURL_inst_Path(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10528,9 +10545,9 @@ func (x gen_NSURL) Path() string {
 // PathComponents an array containing the path components. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407365-pathcomponents?language=objc for details.
-func (x gen_NSURL) PathComponents() NSArray {
+func (genReceiver gen_NSURL) PathComponents() NSArray {
 	ret := C.NSURL_inst_PathComponents(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -10539,9 +10556,9 @@ func (x gen_NSURL) PathComponents() NSArray {
 // PathExtension returns the path extension. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410208-pathextension?language=objc for details.
-func (x gen_NSURL) PathExtension() string {
+func (genReceiver gen_NSURL) PathExtension() string {
 	ret := C.NSURL_inst_PathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10550,9 +10567,9 @@ func (x gen_NSURL) PathExtension() string {
 // Port returns the port, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413455-port?language=objc for details.
-func (x gen_NSURL) Port() NSNumber {
+func (genReceiver gen_NSURL) Port() NSNumber {
 	ret := C.NSURL_inst_Port(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSNumber_FromPointer(ret)
@@ -10561,9 +10578,9 @@ func (x gen_NSURL) Port() NSNumber {
 // Query returns the query string, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1407543-query?language=objc for details.
-func (x gen_NSURL) Query() string {
+func (genReceiver gen_NSURL) Query() string {
 	ret := C.NSURL_inst_Query(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10572,9 +10589,9 @@ func (x gen_NSURL) Query() string {
 // RelativePath returns the relative path, conforming to RFC 1808. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1410263-relativepath?language=objc for details.
-func (x gen_NSURL) RelativePath() string {
+func (genReceiver gen_NSURL) RelativePath() string {
 	ret := C.NSURL_inst_RelativePath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10583,9 +10600,9 @@ func (x gen_NSURL) RelativePath() string {
 // RelativeString returns a string representation of the relative portion of the URL. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411417-relativestring?language=objc for details.
-func (x gen_NSURL) RelativeString() string {
+func (genReceiver gen_NSURL) RelativeString() string {
 	ret := C.NSURL_inst_RelativeString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10594,9 +10611,9 @@ func (x gen_NSURL) RelativeString() string {
 // ResourceSpecifier returns the resource specifier. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415309-resourcespecifier?language=objc for details.
-func (x gen_NSURL) ResourceSpecifier() string {
+func (genReceiver gen_NSURL) ResourceSpecifier() string {
 	ret := C.NSURL_inst_ResourceSpecifier(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10605,9 +10622,9 @@ func (x gen_NSURL) ResourceSpecifier() string {
 // Scheme returns the scheme. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1413437-scheme?language=objc for details.
-func (x gen_NSURL) Scheme() string {
+func (genReceiver gen_NSURL) Scheme() string {
 	ret := C.NSURL_inst_Scheme(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10616,9 +10633,9 @@ func (x gen_NSURL) Scheme() string {
 // StandardizedURL returns a copy of the URL with any instances of ".." or "." removed from its path. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411073-standardizedurl?language=objc for details.
-func (x gen_NSURL) StandardizedURL() NSURL {
+func (genReceiver gen_NSURL) StandardizedURL() NSURL {
 	ret := C.NSURL_inst_StandardizedURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10627,9 +10644,9 @@ func (x gen_NSURL) StandardizedURL() NSURL {
 // User returns the user name, conforming to RFC 1808.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1418335-user?language=objc for details.
-func (x gen_NSURL) User() string {
+func (genReceiver gen_NSURL) User() string {
 	ret := C.NSURL_inst_User(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10638,9 +10655,9 @@ func (x gen_NSURL) User() string {
 // FilePathURL returns a file path URL that points to the same resource as the URL object. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1408442-filepathurl?language=objc for details.
-func (x gen_NSURL) FilePathURL() NSURL {
+func (genReceiver gen_NSURL) FilePathURL() NSURL {
 	ret := C.NSURL_inst_FilePathURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10649,9 +10666,9 @@ func (x gen_NSURL) FilePathURL() NSURL {
 // URLByDeletingLastPathComponent returns a URL created by taking the receiver and removing the last path component. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411592-urlbydeletinglastpathcomponent?language=objc for details.
-func (x gen_NSURL) URLByDeletingLastPathComponent() NSURL {
+func (genReceiver gen_NSURL) URLByDeletingLastPathComponent() NSURL {
 	ret := C.NSURL_inst_URLByDeletingLastPathComponent(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10660,9 +10677,9 @@ func (x gen_NSURL) URLByDeletingLastPathComponent() NSURL {
 // URLByDeletingPathExtension returns a URL created by taking the receiver and removing the path extension, if any. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1412357-urlbydeletingpathextension?language=objc for details.
-func (x gen_NSURL) URLByDeletingPathExtension() NSURL {
+func (genReceiver gen_NSURL) URLByDeletingPathExtension() NSURL {
 	ret := C.NSURL_inst_URLByDeletingPathExtension(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10671,9 +10688,9 @@ func (x gen_NSURL) URLByDeletingPathExtension() NSURL {
 // URLByResolvingSymlinksInPath returns a URL that points to the same resource as the receiver and includes no symbolic links. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1415965-urlbyresolvingsymlinksinpath?language=objc for details.
-func (x gen_NSURL) URLByResolvingSymlinksInPath() NSURL {
+func (genReceiver gen_NSURL) URLByResolvingSymlinksInPath() NSURL {
 	ret := C.NSURL_inst_URLByResolvingSymlinksInPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10682,9 +10699,9 @@ func (x gen_NSURL) URLByResolvingSymlinksInPath() NSURL {
 // URLByStandardizingPath returns a URL that points to the same resource as the original URL using an absolute path. (read-only)
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1414302-urlbystandardizingpath?language=objc for details.
-func (x gen_NSURL) URLByStandardizingPath() NSURL {
+func (genReceiver gen_NSURL) URLByStandardizingPath() NSURL {
 	ret := C.NSURL_inst_URLByStandardizingPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10693,9 +10710,9 @@ func (x gen_NSURL) URLByStandardizingPath() NSURL {
 // HasDirectoryPath is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurl/1411475-hasdirectorypath?language=objc for details.
-func (x gen_NSURL) HasDirectoryPath() bool {
+func (genReceiver gen_NSURL) HasDirectoryPath() bool {
 	ret := C.NSURL_inst_HasDirectoryPath(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10723,11 +10740,11 @@ func NSURLRequest_FromRef(ref objc.Ref) NSURLRequest {
 // InitWithURL creates a URL request for a specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc for details.
-func (x gen_NSURLRequest) InitWithURL(
+func (genReceiver gen_NSURLRequest) InitWithURL(
 	URL NSURLRef,
 ) NSURLRequest {
 	ret := C.NSURLRequest_inst_InitWithURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(URL),
 	)
 
@@ -10737,11 +10754,11 @@ func (x gen_NSURLRequest) InitWithURL(
 // ValueForHTTPHeaderField returns the value of the specified HTTP header field.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1409376-valueforhttpheaderfield?language=objc for details.
-func (x gen_NSURLRequest) ValueForHTTPHeaderField(
+func (genReceiver gen_NSURLRequest) ValueForHTTPHeaderField(
 	field string,
 ) string {
 	ret := C.NSURLRequest_inst_ValueForHTTPHeaderField(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(field)),
 	)
 
@@ -10749,18 +10766,18 @@ func (x gen_NSURLRequest) ValueForHTTPHeaderField(
 }
 
 // Init initializes a new instance of the NSURLRequest class.
-func (x gen_NSURLRequest) Init() NSURLRequest {
+func (genReceiver gen_NSURLRequest) Init() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURLRequest_FromPointer(ret)
 }
 
 // Init_AsNSURLRequest is a typed version of Init.
-func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
+func (genReceiver gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 	ret := C.NSURLRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURLRequest_FromPointer(ret)
@@ -10769,9 +10786,9 @@ func (x gen_NSURLRequest) Init_AsNSURLRequest() NSURLRequest {
 // HTTPMethod returns the HTTP request method.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1413030-httpmethod?language=objc for details.
-func (x gen_NSURLRequest) HTTPMethod() string {
+func (genReceiver gen_NSURLRequest) HTTPMethod() string {
 	ret := C.NSURLRequest_inst_HTTPMethod(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return C.GoString(C.createCStringFromNSString(ret))
@@ -10780,9 +10797,9 @@ func (x gen_NSURLRequest) HTTPMethod() string {
 // URL returns the URL being requested.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1408996-url?language=objc for details.
-func (x gen_NSURLRequest) URL() NSURL {
+func (genReceiver gen_NSURLRequest) URL() NSURL {
 	ret := C.NSURLRequest_inst_URL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10791,9 +10808,9 @@ func (x gen_NSURLRequest) URL() NSURL {
 // HTTPBody returns the request body.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1411317-httpbody?language=objc for details.
-func (x gen_NSURLRequest) HTTPBody() NSData {
+func (genReceiver gen_NSURLRequest) HTTPBody() NSData {
 	ret := C.NSURLRequest_inst_HTTPBody(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSData_FromPointer(ret)
@@ -10802,9 +10819,9 @@ func (x gen_NSURLRequest) HTTPBody() NSData {
 // MainDocumentURL returns the main document URL associated with the request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1414134-maindocumenturl?language=objc for details.
-func (x gen_NSURLRequest) MainDocumentURL() NSURL {
+func (genReceiver gen_NSURLRequest) MainDocumentURL() NSURL {
 	ret := C.NSURLRequest_inst_MainDocumentURL(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSURL_FromPointer(ret)
@@ -10813,9 +10830,9 @@ func (x gen_NSURLRequest) MainDocumentURL() NSURL {
 // AllHTTPHeaderFields returns a dictionary containing all of the HTTP header fields for a request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1418477-allhttpheaderfields?language=objc for details.
-func (x gen_NSURLRequest) AllHTTPHeaderFields() NSDictionary {
+func (genReceiver gen_NSURLRequest) AllHTTPHeaderFields() NSDictionary {
 	ret := C.NSURLRequest_inst_AllHTTPHeaderFields(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -10824,9 +10841,9 @@ func (x gen_NSURLRequest) AllHTTPHeaderFields() NSDictionary {
 // HTTPShouldHandleCookies returns a Boolean value that indicates whether the default cookie handling will be used for this request.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1418369-httpshouldhandlecookies?language=objc for details.
-func (x gen_NSURLRequest) HTTPShouldHandleCookies() bool {
+func (genReceiver gen_NSURLRequest) HTTPShouldHandleCookies() bool {
 	ret := C.NSURLRequest_inst_HTTPShouldHandleCookies(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10835,9 +10852,9 @@ func (x gen_NSURLRequest) HTTPShouldHandleCookies() bool {
 // HTTPShouldUsePipelining returns a Boolean value that indicates whether the request should continue transmitting data before receiving a response from an earlier transmission.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1409170-httpshouldusepipelining?language=objc for details.
-func (x gen_NSURLRequest) HTTPShouldUsePipelining() bool {
+func (genReceiver gen_NSURLRequest) HTTPShouldUsePipelining() bool {
 	ret := C.NSURLRequest_inst_HTTPShouldUsePipelining(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10846,9 +10863,9 @@ func (x gen_NSURLRequest) HTTPShouldUsePipelining() bool {
 // AllowsCellularAccess returns a Boolean value that indicates whether the request is allowed to use the cellular radio (if present).
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/1412032-allowscellularaccess?language=objc for details.
-func (x gen_NSURLRequest) AllowsCellularAccess() bool {
+func (genReceiver gen_NSURLRequest) AllowsCellularAccess() bool {
 	ret := C.NSURLRequest_inst_AllowsCellularAccess(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10857,9 +10874,9 @@ func (x gen_NSURLRequest) AllowsCellularAccess() bool {
 // AllowsConstrainedNetworkAccess returns a Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3325678-allowsconstrainednetworkaccess?language=objc for details.
-func (x gen_NSURLRequest) AllowsConstrainedNetworkAccess() bool {
+func (genReceiver gen_NSURLRequest) AllowsConstrainedNetworkAccess() bool {
 	ret := C.NSURLRequest_inst_AllowsConstrainedNetworkAccess(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10868,9 +10885,9 @@ func (x gen_NSURLRequest) AllowsConstrainedNetworkAccess() bool {
 // AllowsExpensiveNetworkAccess returns a Boolean value that indicates whether connections may use a network interface that the system considers expensive.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3325679-allowsexpensivenetworkaccess?language=objc for details.
-func (x gen_NSURLRequest) AllowsExpensiveNetworkAccess() bool {
+func (genReceiver gen_NSURLRequest) AllowsExpensiveNetworkAccess() bool {
 	ret := C.NSURLRequest_inst_AllowsExpensiveNetworkAccess(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10879,9 +10896,9 @@ func (x gen_NSURLRequest) AllowsExpensiveNetworkAccess() bool {
 // AssumesHTTP3Capable is undocumented.
 //
 // See https://developer.apple.com/documentation/foundation/nsurlrequest/3735880-assumeshttp3capable?language=objc for details.
-func (x gen_NSURLRequest) AssumesHTTP3Capable() bool {
+func (genReceiver gen_NSURLRequest) AssumesHTTP3Capable() bool {
 	ret := C.NSURLRequest_inst_AssumesHTTP3Capable(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -10909,11 +10926,11 @@ func NSUserDefaults_FromRef(ref objc.Ref) NSUserDefaults {
 // URLForKey returns the URL associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408648-urlforkey?language=objc for details.
-func (x gen_NSUserDefaults) URLForKey(
+func (genReceiver gen_NSUserDefaults) URLForKey(
 	defaultName string,
 ) NSURL {
 	ret := C.NSUserDefaults_inst_URLForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -10923,11 +10940,11 @@ func (x gen_NSUserDefaults) URLForKey(
 // AddSuiteNamed inserts the specified domain name into the receiver’s search list.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1410294-addsuitenamed?language=objc for details.
-func (x gen_NSUserDefaults) AddSuiteNamed(
+func (genReceiver gen_NSUserDefaults) AddSuiteNamed(
 	suiteName string,
 ) {
 	C.NSUserDefaults_inst_AddSuiteNamed(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(suiteName)),
 	)
 
@@ -10937,11 +10954,11 @@ func (x gen_NSUserDefaults) AddSuiteNamed(
 // ArrayForKey returns the array associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414792-arrayforkey?language=objc for details.
-func (x gen_NSUserDefaults) ArrayForKey(
+func (genReceiver gen_NSUserDefaults) ArrayForKey(
 	defaultName string,
 ) NSArray {
 	ret := C.NSUserDefaults_inst_ArrayForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -10951,11 +10968,11 @@ func (x gen_NSUserDefaults) ArrayForKey(
 // BoolForKey returns the Boolean value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416388-boolforkey?language=objc for details.
-func (x gen_NSUserDefaults) BoolForKey(
+func (genReceiver gen_NSUserDefaults) BoolForKey(
 	defaultName string,
 ) bool {
 	ret := C.NSUserDefaults_inst_BoolForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -10965,11 +10982,11 @@ func (x gen_NSUserDefaults) BoolForKey(
 // DataForKey returns the data object associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409590-dataforkey?language=objc for details.
-func (x gen_NSUserDefaults) DataForKey(
+func (genReceiver gen_NSUserDefaults) DataForKey(
 	defaultName string,
 ) NSData {
 	ret := C.NSUserDefaults_inst_DataForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -10979,11 +10996,11 @@ func (x gen_NSUserDefaults) DataForKey(
 // DictionaryForKey returns the dictionary object associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408563-dictionaryforkey?language=objc for details.
-func (x gen_NSUserDefaults) DictionaryForKey(
+func (genReceiver gen_NSUserDefaults) DictionaryForKey(
 	defaultName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_DictionaryForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -10993,9 +11010,9 @@ func (x gen_NSUserDefaults) DictionaryForKey(
 // DictionaryRepresentation returns a dictionary that contains a union of all key-value pairs in the domains in the search list.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1415919-dictionaryrepresentation?language=objc for details.
-func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
+func (genReceiver gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 	ret := C.NSUserDefaults_inst_DictionaryRepresentation(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSDictionary_FromPointer(ret)
@@ -11004,12 +11021,12 @@ func (x gen_NSUserDefaults) DictionaryRepresentation() NSDictionary {
 // DoubleForKey returns the double value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416581-doubleforkey?language=objc for details.
-func (x gen_NSUserDefaults) DoubleForKey(
-	defaultName NSStringRef,
+func (genReceiver gen_NSUserDefaults) DoubleForKey(
+	defaultName string,
 ) float64 {
 	ret := C.NSUserDefaults_inst_DoubleForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		unsafe.Pointer(genReceiver.Pointer()),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return float64(ret)
@@ -11018,12 +11035,12 @@ func (x gen_NSUserDefaults) DoubleForKey(
 // FloatForKey returns the float value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414027-floatforkey?language=objc for details.
-func (x gen_NSUserDefaults) FloatForKey(
-	defaultName NSStringRef,
+func (genReceiver gen_NSUserDefaults) FloatForKey(
+	defaultName string,
 ) float32 {
 	ret := C.NSUserDefaults_inst_FloatForKey(
-		unsafe.Pointer(x.Pointer()),
-		objc.RefPointer(defaultName),
+		unsafe.Pointer(genReceiver.Pointer()),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return float32(ret)
@@ -11032,9 +11049,9 @@ func (x gen_NSUserDefaults) FloatForKey(
 // Init creates a user defaults object initialized with the defaults for the app and current user.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
-func (x gen_NSUserDefaults) Init() NSUserDefaults {
+func (genReceiver gen_NSUserDefaults) Init() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUserDefaults_FromPointer(ret)
@@ -11043,9 +11060,9 @@ func (x gen_NSUserDefaults) Init() NSUserDefaults {
 // Init_AsNSUserDefaults is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414356-init?language=objc for details.
-func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
+func (genReceiver gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 	ret := C.NSUserDefaults_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSUserDefaults_FromPointer(ret)
@@ -11054,11 +11071,11 @@ func (x gen_NSUserDefaults) Init_AsNSUserDefaults() NSUserDefaults {
 // InitWithSuiteName creates a user defaults object initialized with the defaults for the specified database name.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409957-initwithsuitename?language=objc for details.
-func (x gen_NSUserDefaults) InitWithSuiteName(
+func (genReceiver gen_NSUserDefaults) InitWithSuiteName(
 	suitename string,
 ) NSUserDefaults {
 	ret := C.NSUserDefaults_inst_InitWithSuiteName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(suitename)),
 	)
 
@@ -11068,11 +11085,11 @@ func (x gen_NSUserDefaults) InitWithSuiteName(
 // IntegerForKey returns the integer value associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1407405-integerforkey?language=objc for details.
-func (x gen_NSUserDefaults) IntegerForKey(
+func (genReceiver gen_NSUserDefaults) IntegerForKey(
 	defaultName string,
 ) NSInteger {
 	ret := C.NSUserDefaults_inst_IntegerForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -11082,11 +11099,11 @@ func (x gen_NSUserDefaults) IntegerForKey(
 // ObjectForKey returns the object associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1410095-objectforkey?language=objc for details.
-func (x gen_NSUserDefaults) ObjectForKey(
+func (genReceiver gen_NSUserDefaults) ObjectForKey(
 	defaultName string,
 ) objc.Object {
 	ret := C.NSUserDefaults_inst_ObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -11096,11 +11113,11 @@ func (x gen_NSUserDefaults) ObjectForKey(
 // ObjectIsForcedForKey returns a Boolean value indicating whether the specified key is managed by an administrator.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408635-objectisforcedforkey?language=objc for details.
-func (x gen_NSUserDefaults) ObjectIsForcedForKey(
+func (genReceiver gen_NSUserDefaults) ObjectIsForcedForKey(
 	key string,
 ) bool {
 	ret := C.NSUserDefaults_inst_ObjectIsForcedForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 	)
 
@@ -11110,12 +11127,12 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKey(
 // ObjectIsForcedForKeyInDomain returns a Boolean value indicating whether the key in the specified domain is managed by an administrator.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416306-objectisforcedforkey?language=objc for details.
-func (x gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
+func (genReceiver gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
 	key string,
 	domain string,
 ) bool {
 	ret := C.NSUserDefaults_inst_ObjectIsForcedForKeyInDomain(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(key)),
 		C.createNSStringFromCString(C.CString(domain)),
 	)
@@ -11126,11 +11143,11 @@ func (x gen_NSUserDefaults) ObjectIsForcedForKeyInDomain(
 // PersistentDomainForName returns a dictionary representation of the defaults for the specified domain.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1412197-persistentdomainforname?language=objc for details.
-func (x gen_NSUserDefaults) PersistentDomainForName(
+func (genReceiver gen_NSUserDefaults) PersistentDomainForName(
 	domainName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_PersistentDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
@@ -11140,11 +11157,11 @@ func (x gen_NSUserDefaults) PersistentDomainForName(
 // RegisterDefaults adds the contents of the specified dictionary to the registration domain.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1417065-registerdefaults?language=objc for details.
-func (x gen_NSUserDefaults) RegisterDefaults(
+func (genReceiver gen_NSUserDefaults) RegisterDefaults(
 	registrationDictionary NSDictionaryRef,
 ) {
 	C.NSUserDefaults_inst_RegisterDefaults(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(registrationDictionary),
 	)
 
@@ -11154,11 +11171,11 @@ func (x gen_NSUserDefaults) RegisterDefaults(
 // RemoveObjectForKey removes the value of the specified default key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1411182-removeobjectforkey?language=objc for details.
-func (x gen_NSUserDefaults) RemoveObjectForKey(
+func (genReceiver gen_NSUserDefaults) RemoveObjectForKey(
 	defaultName string,
 ) {
 	C.NSUserDefaults_inst_RemoveObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -11168,11 +11185,11 @@ func (x gen_NSUserDefaults) RemoveObjectForKey(
 // RemovePersistentDomainForName removes the contents of the specified persistent domain from the user’s defaults.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1417339-removepersistentdomainforname?language=objc for details.
-func (x gen_NSUserDefaults) RemovePersistentDomainForName(
+func (genReceiver gen_NSUserDefaults) RemovePersistentDomainForName(
 	domainName string,
 ) {
 	C.NSUserDefaults_inst_RemovePersistentDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
@@ -11182,11 +11199,11 @@ func (x gen_NSUserDefaults) RemovePersistentDomainForName(
 // RemoveSuiteNamed removes the specified domain name from the receiver’s search list.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408047-removesuitenamed?language=objc for details.
-func (x gen_NSUserDefaults) RemoveSuiteNamed(
+func (genReceiver gen_NSUserDefaults) RemoveSuiteNamed(
 	suiteName string,
 ) {
 	C.NSUserDefaults_inst_RemoveSuiteNamed(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(suiteName)),
 	)
 
@@ -11196,11 +11213,11 @@ func (x gen_NSUserDefaults) RemoveSuiteNamed(
 // RemoveVolatileDomainForName removes the specified volatile domain from the user’s defaults.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1415955-removevolatiledomainforname?language=objc for details.
-func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
+func (genReceiver gen_NSUserDefaults) RemoveVolatileDomainForName(
 	domainName string,
 ) {
 	C.NSUserDefaults_inst_RemoveVolatileDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
@@ -11210,12 +11227,12 @@ func (x gen_NSUserDefaults) RemoveVolatileDomainForName(
 // SetBoolForKey sets the value of the specified default key to the specified Boolean value.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408905-setbool?language=objc for details.
-func (x gen_NSUserDefaults) SetBoolForKey(
+func (genReceiver gen_NSUserDefaults) SetBoolForKey(
 	value bool,
 	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetBoolForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		convertToObjCBool(value),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
@@ -11226,14 +11243,14 @@ func (x gen_NSUserDefaults) SetBoolForKey(
 // SetDoubleForKey sets the value of the specified default key to the double value.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408646-setdouble?language=objc for details.
-func (x gen_NSUserDefaults) SetDoubleForKey(
+func (genReceiver gen_NSUserDefaults) SetDoubleForKey(
 	value float64,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetDoubleForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.double(value),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -11242,14 +11259,14 @@ func (x gen_NSUserDefaults) SetDoubleForKey(
 // SetFloatForKey sets the value of the specified default key to the specified float value.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413320-setfloat?language=objc for details.
-func (x gen_NSUserDefaults) SetFloatForKey(
+func (genReceiver gen_NSUserDefaults) SetFloatForKey(
 	value float32,
-	defaultName NSStringRef,
+	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetFloatForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.float(value),
-		objc.RefPointer(defaultName),
+		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
 	return
@@ -11258,12 +11275,12 @@ func (x gen_NSUserDefaults) SetFloatForKey(
 // SetIntegerForKey sets the value of the specified default key to the specified integer value.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413614-setinteger?language=objc for details.
-func (x gen_NSUserDefaults) SetIntegerForKey(
+func (genReceiver gen_NSUserDefaults) SetIntegerForKey(
 	value NSInteger,
 	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetIntegerForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.long(value),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
@@ -11274,12 +11291,12 @@ func (x gen_NSUserDefaults) SetIntegerForKey(
 // SetObjectForKey sets the value of the specified default key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414067-setobject?language=objc for details.
-func (x gen_NSUserDefaults) SetObjectForKey(
+func (genReceiver gen_NSUserDefaults) SetObjectForKey(
 	value objc.Ref,
 	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetObjectForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(value),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
@@ -11290,12 +11307,12 @@ func (x gen_NSUserDefaults) SetObjectForKey(
 // SetPersistentDomainForName sets a dictionary for the specified persistent domain.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1408187-setpersistentdomain?language=objc for details.
-func (x gen_NSUserDefaults) SetPersistentDomainForName(
+func (genReceiver gen_NSUserDefaults) SetPersistentDomainForName(
 	domain NSDictionaryRef,
 	domainName string,
 ) {
 	C.NSUserDefaults_inst_SetPersistentDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(domain),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
@@ -11306,12 +11323,12 @@ func (x gen_NSUserDefaults) SetPersistentDomainForName(
 // SetURLForKey sets the value of the specified default key to the specified URL.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc for details.
-func (x gen_NSUserDefaults) SetURLForKey(
+func (genReceiver gen_NSUserDefaults) SetURLForKey(
 	url NSURLRef,
 	defaultName string,
 ) {
 	C.NSUserDefaults_inst_SetURLForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(url),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
@@ -11322,12 +11339,12 @@ func (x gen_NSUserDefaults) SetURLForKey(
 // SetVolatileDomainForName sets the dictionary for the specified volatile domain.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1413720-setvolatiledomain?language=objc for details.
-func (x gen_NSUserDefaults) SetVolatileDomainForName(
+func (genReceiver gen_NSUserDefaults) SetVolatileDomainForName(
 	domain NSDictionaryRef,
 	domainName string,
 ) {
 	C.NSUserDefaults_inst_SetVolatileDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(domain),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
@@ -11338,11 +11355,11 @@ func (x gen_NSUserDefaults) SetVolatileDomainForName(
 // StringArrayForKey returns the array of strings associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416414-stringarrayforkey?language=objc for details.
-func (x gen_NSUserDefaults) StringArrayForKey(
+func (genReceiver gen_NSUserDefaults) StringArrayForKey(
 	defaultName string,
 ) NSArray {
 	ret := C.NSUserDefaults_inst_StringArrayForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -11352,11 +11369,11 @@ func (x gen_NSUserDefaults) StringArrayForKey(
 // StringForKey returns the string associated with the specified key.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1416700-stringforkey?language=objc for details.
-func (x gen_NSUserDefaults) StringForKey(
+func (genReceiver gen_NSUserDefaults) StringForKey(
 	defaultName string,
 ) string {
 	ret := C.NSUserDefaults_inst_StringForKey(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(defaultName)),
 	)
 
@@ -11366,9 +11383,9 @@ func (x gen_NSUserDefaults) StringForKey(
 // Synchronize waits for any pending asynchronous updates to the defaults database and returns; this method is unnecessary and shouldn't be used.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414005-synchronize?language=objc for details.
-func (x gen_NSUserDefaults) Synchronize() bool {
+func (genReceiver gen_NSUserDefaults) Synchronize() bool {
 	ret := C.NSUserDefaults_inst_Synchronize(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return convertObjCBoolToGo(ret)
@@ -11377,11 +11394,11 @@ func (x gen_NSUserDefaults) Synchronize() bool {
 // VolatileDomainForName returns the dictionary for the specified volatile domain.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1409592-volatiledomainforname?language=objc for details.
-func (x gen_NSUserDefaults) VolatileDomainForName(
+func (genReceiver gen_NSUserDefaults) VolatileDomainForName(
 	domainName string,
 ) NSDictionary {
 	ret := C.NSUserDefaults_inst_VolatileDomainForName(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(domainName)),
 	)
 
@@ -11391,9 +11408,9 @@ func (x gen_NSUserDefaults) VolatileDomainForName(
 // VolatileDomainNames returns the current volatile domain names.
 //
 // See https://developer.apple.com/documentation/foundation/nsuserdefaults/1414231-volatiledomainnames?language=objc for details.
-func (x gen_NSUserDefaults) VolatileDomainNames() NSArray {
+func (genReceiver gen_NSUserDefaults) VolatileDomainNames() NSArray {
 	ret := C.NSUserDefaults_inst_VolatileDomainNames(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSArray_FromPointer(ret)
@@ -11421,11 +11438,11 @@ func NSMutableString_FromRef(ref objc.Ref) NSMutableString {
 // AppendFormat adds a constructed string to the receiver.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc for details.
-func (x gen_NSMutableString) AppendFormat(
+func (genReceiver gen_NSMutableString) AppendFormat(
 	format string,
 ) {
 	C.NSMutableString_inst_AppendFormat(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(format)),
 	)
 
@@ -11435,11 +11452,11 @@ func (x gen_NSMutableString) AppendFormat(
 // AppendString adds to the end of the receiver the characters of a given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutablestring/1417883-appendstring?language=objc for details.
-func (x gen_NSMutableString) AppendString(
+func (genReceiver gen_NSMutableString) AppendString(
 	aString string,
 ) {
 	C.NSMutableString_inst_AppendString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 	)
 
@@ -11449,11 +11466,11 @@ func (x gen_NSMutableString) AppendString(
 // InitWithCapacity returns an NSMutableString object initialized with initial storage for a given number of characters,
 //
 // See https://developer.apple.com/documentation/foundation/nsmutablestring/1416610-initwithcapacity?language=objc for details.
-func (x gen_NSMutableString) InitWithCapacity(
+func (genReceiver gen_NSMutableString) InitWithCapacity(
 	capacity NSUInteger,
 ) NSMutableString {
 	ret := C.NSMutableString_inst_InitWithCapacity(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(capacity),
 	)
 
@@ -11463,12 +11480,12 @@ func (x gen_NSMutableString) InitWithCapacity(
 // InsertStringAtIndex inserts into the receiver the characters of a given string at a given location.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutablestring/1410999-insertstring?language=objc for details.
-func (x gen_NSMutableString) InsertStringAtIndex(
+func (genReceiver gen_NSMutableString) InsertStringAtIndex(
 	aString string,
 	loc NSUInteger,
 ) {
 	C.NSMutableString_inst_InsertStringAtIndex(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 		C.ulong(loc),
 	)
@@ -11479,11 +11496,11 @@ func (x gen_NSMutableString) InsertStringAtIndex(
 // SetString replaces the characters of the receiver with those in a given string.
 //
 // See https://developer.apple.com/documentation/foundation/nsmutablestring/1409483-setstring?language=objc for details.
-func (x gen_NSMutableString) SetString(
+func (genReceiver gen_NSMutableString) SetString(
 	aString string,
 ) {
 	C.NSMutableString_inst_SetString(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.createNSStringFromCString(C.CString(aString)),
 	)
 
@@ -11491,18 +11508,18 @@ func (x gen_NSMutableString) SetString(
 }
 
 // Init initializes a new instance of the NSMutableString class.
-func (x gen_NSMutableString) Init() NSMutableString {
+func (genReceiver gen_NSMutableString) Init() NSMutableString {
 	ret := C.NSMutableString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableString_FromPointer(ret)
 }
 
 // Init_AsNSMutableString is a typed version of Init.
-func (x gen_NSMutableString) Init_AsNSMutableString() NSMutableString {
+func (genReceiver gen_NSMutableString) Init_AsNSMutableString() NSMutableString {
 	ret := C.NSMutableString_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return NSMutableString_FromPointer(ret)

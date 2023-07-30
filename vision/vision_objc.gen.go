@@ -291,11 +291,11 @@ func VNClassifyImageRequest_FromRef(ref objc.Ref) VNClassifyImageRequest {
 // SupportedIdentifiersAndReturnError returns the classification identifiers that the request supports in its current configuration.
 //
 // See https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3750957-supportedidentifiersandreturnerr?language=objc for details.
-func (x gen_VNClassifyImageRequest) SupportedIdentifiersAndReturnError(
+func (genReceiver gen_VNClassifyImageRequest) SupportedIdentifiersAndReturnError(
 	error core.NSErrorRef,
 ) core.NSArray {
 	ret := C.VNClassifyImageRequest_inst_SupportedIdentifiersAndReturnError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 	)
 
@@ -303,18 +303,18 @@ func (x gen_VNClassifyImageRequest) SupportedIdentifiersAndReturnError(
 }
 
 // Init initializes a new instance of the VNClassifyImageRequest class.
-func (x gen_VNClassifyImageRequest) Init() VNClassifyImageRequest {
+func (genReceiver gen_VNClassifyImageRequest) Init() VNClassifyImageRequest {
 	ret := C.VNClassifyImageRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNClassifyImageRequest_FromPointer(ret)
 }
 
 // Init_AsVNClassifyImageRequest is a typed version of Init.
-func (x gen_VNClassifyImageRequest) Init_AsVNClassifyImageRequest() VNClassifyImageRequest {
+func (genReceiver gen_VNClassifyImageRequest) Init_AsVNClassifyImageRequest() VNClassifyImageRequest {
 	ret := C.VNClassifyImageRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNClassifyImageRequest_FromPointer(ret)
@@ -323,9 +323,9 @@ func (x gen_VNClassifyImageRequest) Init_AsVNClassifyImageRequest() VNClassifyIm
 // Results returns the results of the image classification request.
 //
 // See https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3750956-results?language=objc for details.
-func (x gen_VNClassifyImageRequest) Results() core.NSArray {
+func (genReceiver gen_VNClassifyImageRequest) Results() core.NSArray {
 	ret := C.VNClassifyImageRequest_inst_Results(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -351,18 +351,18 @@ func VNGenerateImageFeaturePrintRequest_FromRef(ref objc.Ref) VNGenerateImageFea
 }
 
 // Init initializes a new instance of the VNGenerateImageFeaturePrintRequest class.
-func (x gen_VNGenerateImageFeaturePrintRequest) Init() VNGenerateImageFeaturePrintRequest {
+func (genReceiver gen_VNGenerateImageFeaturePrintRequest) Init() VNGenerateImageFeaturePrintRequest {
 	ret := C.VNGenerateImageFeaturePrintRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNGenerateImageFeaturePrintRequest_FromPointer(ret)
 }
 
 // Init_AsVNGenerateImageFeaturePrintRequest is a typed version of Init.
-func (x gen_VNGenerateImageFeaturePrintRequest) Init_AsVNGenerateImageFeaturePrintRequest() VNGenerateImageFeaturePrintRequest {
+func (genReceiver gen_VNGenerateImageFeaturePrintRequest) Init_AsVNGenerateImageFeaturePrintRequest() VNGenerateImageFeaturePrintRequest {
 	ret := C.VNGenerateImageFeaturePrintRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNGenerateImageFeaturePrintRequest_FromPointer(ret)
@@ -371,9 +371,9 @@ func (x gen_VNGenerateImageFeaturePrintRequest) Init_AsVNGenerateImageFeaturePri
 // Results returns the results of the feature print request.
 //
 // See https://developer.apple.com/documentation/vision/vngenerateimagefeatureprintrequest/3750984-results?language=objc for details.
-func (x gen_VNGenerateImageFeaturePrintRequest) Results() core.NSArray {
+func (genReceiver gen_VNGenerateImageFeaturePrintRequest) Results() core.NSArray {
 	ret := C.VNGenerateImageFeaturePrintRequest_inst_Results(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -399,18 +399,18 @@ func VNImageBasedRequest_FromRef(ref objc.Ref) VNImageBasedRequest {
 }
 
 // Init initializes a new instance of the VNImageBasedRequest class.
-func (x gen_VNImageBasedRequest) Init() VNImageBasedRequest {
+func (genReceiver gen_VNImageBasedRequest) Init() VNImageBasedRequest {
 	ret := C.VNImageBasedRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNImageBasedRequest_FromPointer(ret)
 }
 
 // Init_AsVNImageBasedRequest is a typed version of Init.
-func (x gen_VNImageBasedRequest) Init_AsVNImageBasedRequest() VNImageBasedRequest {
+func (genReceiver gen_VNImageBasedRequest) Init_AsVNImageBasedRequest() VNImageBasedRequest {
 	ret := C.VNImageBasedRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNImageBasedRequest_FromPointer(ret)
@@ -436,24 +436,24 @@ func VNImageRequestHandler_FromRef(ref objc.Ref) VNImageRequestHandler {
 }
 
 // Init initializes a new instance of the VNImageRequestHandler class.
-func (x gen_VNImageRequestHandler) Init() VNImageRequestHandler {
+func (genReceiver gen_VNImageRequestHandler) Init() VNImageRequestHandler {
 	panic("Init is unavailable")
 }
 
 // Init_AsVNImageRequestHandler is a typed version of Init.
-func (x gen_VNImageRequestHandler) Init_AsVNImageRequestHandler() VNImageRequestHandler {
+func (genReceiver gen_VNImageRequestHandler) Init_AsVNImageRequestHandler() VNImageRequestHandler {
 	panic("Init_AsVNImageRequestHandler is unavailable")
 }
 
 // InitWithDataOptions creates a handler to be used for performing requests on an image contained in an NSData object.
 //
 // See https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866551-initwithdata?language=objc for details.
-func (x gen_VNImageRequestHandler) InitWithDataOptions(
+func (genReceiver gen_VNImageRequestHandler) InitWithDataOptions(
 	imageData core.NSDataRef,
 	options core.NSDictionaryRef,
 ) VNImageRequestHandler {
 	ret := C.VNImageRequestHandler_inst_InitWithDataOptions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(imageData),
 		objc.RefPointer(options),
 	)
@@ -464,12 +464,12 @@ func (x gen_VNImageRequestHandler) InitWithDataOptions(
 // InitWithURLOptions creates a handler to be used for performing requests on an image at the specified URL.
 //
 // See https://developer.apple.com/documentation/vision/vnimagerequesthandler/2866553-initwithurl?language=objc for details.
-func (x gen_VNImageRequestHandler) InitWithURLOptions(
+func (genReceiver gen_VNImageRequestHandler) InitWithURLOptions(
 	imageURL core.NSURLRef,
 	options core.NSDictionaryRef,
 ) VNImageRequestHandler {
 	ret := C.VNImageRequestHandler_inst_InitWithURLOptions(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(imageURL),
 		objc.RefPointer(options),
 	)
@@ -480,12 +480,12 @@ func (x gen_VNImageRequestHandler) InitWithURLOptions(
 // PerformRequestsError schedules Vision requests to be performed.
 //
 // See https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880297-performrequests?language=objc for details.
-func (x gen_VNImageRequestHandler) PerformRequestsError(
+func (genReceiver gen_VNImageRequestHandler) PerformRequestsError(
 	requests core.NSArrayRef,
 	error core.NSErrorRef,
 ) bool {
 	ret := C.VNImageRequestHandler_inst_PerformRequestsError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(requests),
 		objc.RefPointer(error),
 	)
@@ -513,18 +513,18 @@ func VNObservation_FromRef(ref objc.Ref) VNObservation {
 }
 
 // Init initializes a new instance of the VNObservation class.
-func (x gen_VNObservation) Init() VNObservation {
+func (genReceiver gen_VNObservation) Init() VNObservation {
 	ret := C.VNObservation_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNObservation_FromPointer(ret)
 }
 
 // Init_AsVNObservation is a typed version of Init.
-func (x gen_VNObservation) Init_AsVNObservation() VNObservation {
+func (genReceiver gen_VNObservation) Init_AsVNObservation() VNObservation {
 	ret := C.VNObservation_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNObservation_FromPointer(ret)
@@ -552,11 +552,11 @@ func VNRecognizedTextObservation_FromRef(ref objc.Ref) VNRecognizedTextObservati
 // TopCandidates requests the n top candidates for a recognized text string.
 //
 // See https://developer.apple.com/documentation/vision/vnrecognizedtextobservation/3152637-topcandidates?language=objc for details.
-func (x gen_VNRecognizedTextObservation) TopCandidates(
+func (genReceiver gen_VNRecognizedTextObservation) TopCandidates(
 	maxCandidateCount core.NSUInteger,
 ) core.NSArray {
 	ret := C.VNRecognizedTextObservation_inst_TopCandidates(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		C.ulong(maxCandidateCount),
 	)
 
@@ -564,18 +564,18 @@ func (x gen_VNRecognizedTextObservation) TopCandidates(
 }
 
 // Init initializes a new instance of the VNRecognizedTextObservation class.
-func (x gen_VNRecognizedTextObservation) Init() VNRecognizedTextObservation {
+func (genReceiver gen_VNRecognizedTextObservation) Init() VNRecognizedTextObservation {
 	ret := C.VNRecognizedTextObservation_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRecognizedTextObservation_FromPointer(ret)
 }
 
 // Init_AsVNRecognizedTextObservation is a typed version of Init.
-func (x gen_VNRecognizedTextObservation) Init_AsVNRecognizedTextObservation() VNRecognizedTextObservation {
+func (genReceiver gen_VNRecognizedTextObservation) Init_AsVNRecognizedTextObservation() VNRecognizedTextObservation {
 	ret := C.VNRecognizedTextObservation_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRecognizedTextObservation_FromPointer(ret)
@@ -603,11 +603,11 @@ func VNRecognizeTextRequest_FromRef(ref objc.Ref) VNRecognizeTextRequest {
 // SupportedRecognitionLanguagesAndReturnError returns the identifiers of the languages that the request supports.
 //
 // See https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3751006-supportedrecognitionlanguagesand?language=objc for details.
-func (x gen_VNRecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(
+func (genReceiver gen_VNRecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(
 	error core.NSErrorRef,
 ) core.NSArray {
 	ret := C.VNRecognizeTextRequest_inst_SupportedRecognitionLanguagesAndReturnError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 	)
 
@@ -615,18 +615,18 @@ func (x gen_VNRecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(
 }
 
 // Init initializes a new instance of the VNRecognizeTextRequest class.
-func (x gen_VNRecognizeTextRequest) Init() VNRecognizeTextRequest {
+func (genReceiver gen_VNRecognizeTextRequest) Init() VNRecognizeTextRequest {
 	ret := C.VNRecognizeTextRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRecognizeTextRequest_FromPointer(ret)
 }
 
 // Init_AsVNRecognizeTextRequest is a typed version of Init.
-func (x gen_VNRecognizeTextRequest) Init_AsVNRecognizeTextRequest() VNRecognizeTextRequest {
+func (genReceiver gen_VNRecognizeTextRequest) Init_AsVNRecognizeTextRequest() VNRecognizeTextRequest {
 	ret := C.VNRecognizeTextRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRecognizeTextRequest_FromPointer(ret)
@@ -635,9 +635,9 @@ func (x gen_VNRecognizeTextRequest) Init_AsVNRecognizeTextRequest() VNRecognizeT
 // Results returns the results of the text recognition request.
 //
 // See https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3751005-results?language=objc for details.
-func (x gen_VNRecognizeTextRequest) Results() core.NSArray {
+func (genReceiver gen_VNRecognizeTextRequest) Results() core.NSArray {
 	ret := C.VNRecognizeTextRequest_inst_Results(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSArray_FromPointer(ret)
@@ -665,9 +665,9 @@ func VNRequest_FromRef(ref objc.Ref) VNRequest {
 // Cancel cancels the request before it can finish executing.
 //
 // See https://developer.apple.com/documentation/vision/vnrequest/2867234-cancel?language=objc for details.
-func (x gen_VNRequest) Cancel() {
+func (genReceiver gen_VNRequest) Cancel() {
 	C.VNRequest_inst_Cancel(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return
@@ -676,9 +676,9 @@ func (x gen_VNRequest) Cancel() {
 // Init creates a new Vision request with no completion handler.
 //
 // See https://developer.apple.com/documentation/vision/vnrequest/2875423-init?language=objc for details.
-func (x gen_VNRequest) Init() VNRequest {
+func (genReceiver gen_VNRequest) Init() VNRequest {
 	ret := C.VNRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRequest_FromPointer(ret)
@@ -687,9 +687,9 @@ func (x gen_VNRequest) Init() VNRequest {
 // Init_AsVNRequest is a typed version of Init.
 //
 // See https://developer.apple.com/documentation/vision/vnrequest/2875423-init?language=objc for details.
-func (x gen_VNRequest) Init_AsVNRequest() VNRequest {
+func (genReceiver gen_VNRequest) Init_AsVNRequest() VNRequest {
 	ret := C.VNRequest_inst_Init(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return VNRequest_FromPointer(ret)
@@ -698,11 +698,11 @@ func (x gen_VNRequest) Init_AsVNRequest() VNRequest {
 // SupportedComputeStageDevicesAndReturnError returns the collection of compute devices per-stage that a request supports.
 //
 // See https://developer.apple.com/documentation/vision/vnrequest/4173243-supportedcomputestagedevicesandr?language=objc for details.
-func (x gen_VNRequest) SupportedComputeStageDevicesAndReturnError(
+func (genReceiver gen_VNRequest) SupportedComputeStageDevicesAndReturnError(
 	error core.NSErrorRef,
 ) core.NSDictionary {
 	ret := C.VNRequest_inst_SupportedComputeStageDevicesAndReturnError(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 		objc.RefPointer(error),
 	)
 
@@ -712,9 +712,9 @@ func (x gen_VNRequest) SupportedComputeStageDevicesAndReturnError(
 // Results returns the collection of VNObservation results generated by request processing.
 //
 // See https://developer.apple.com/documentation/vision/vnrequest/2867238-results?language=objc for details.
-func (x gen_VNRequest) Results() core.NSArray {
+func (genReceiver gen_VNRequest) Results() core.NSArray {
 	ret := C.VNRequest_inst_Results(
-		unsafe.Pointer(x.Pointer()),
+		unsafe.Pointer(genReceiver.Pointer()),
 	)
 
 	return core.NSArray_FromPointer(ret)
