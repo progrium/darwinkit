@@ -539,6 +539,10 @@ void* NSSegmentedControl_type_Alloc() {
 	return [NSSegmentedControl
 		alloc];
 }
+void* NSLevelIndicator_type_Alloc() {
+	return [NSLevelIndicator
+		alloc];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -6155,6 +6159,106 @@ void NSSegmentedControl_inst_SetSelectedSegmentBezelColor(void *id, void* value)
 		setSelectedSegmentBezelColor: value];
 }
 
+NSRect NSLevelIndicator_inst_RectOfTickMarkAtIndex(void *id, long index) {
+	return [(NSLevelIndicator*)id
+		rectOfTickMarkAtIndex: index];
+}
+
+void* NSLevelIndicator_inst_Init(void *id) {
+	return [(NSLevelIndicator*)id
+		init];
+}
+
+long NSLevelIndicator_inst_NumberOfTickMarks(void *id) {
+	return [(NSLevelIndicator*)id
+		numberOfTickMarks];
+}
+
+void NSLevelIndicator_inst_SetNumberOfTickMarks(void *id, long value) {
+	[(NSLevelIndicator*)id
+		setNumberOfTickMarks: value];
+}
+
+long NSLevelIndicator_inst_NumberOfMajorTickMarks(void *id) {
+	return [(NSLevelIndicator*)id
+		numberOfMajorTickMarks];
+}
+
+void NSLevelIndicator_inst_SetNumberOfMajorTickMarks(void *id, long value) {
+	[(NSLevelIndicator*)id
+		setNumberOfMajorTickMarks: value];
+}
+
+void* NSLevelIndicator_inst_RatingImage(void *id) {
+	return [(NSLevelIndicator*)id
+		ratingImage];
+}
+
+void NSLevelIndicator_inst_SetRatingImage(void *id, void* value) {
+	[(NSLevelIndicator*)id
+		setRatingImage: value];
+}
+
+BOOL NSLevelIndicator_inst_DrawsTieredCapacityLevels(void *id) {
+	return [(NSLevelIndicator*)id
+		drawsTieredCapacityLevels];
+}
+
+void NSLevelIndicator_inst_SetDrawsTieredCapacityLevels(void *id, BOOL value) {
+	[(NSLevelIndicator*)id
+		setDrawsTieredCapacityLevels: value];
+}
+
+void* NSLevelIndicator_inst_FillColor(void *id) {
+	return [(NSLevelIndicator*)id
+		fillColor];
+}
+
+void NSLevelIndicator_inst_SetFillColor(void *id, void* value) {
+	[(NSLevelIndicator*)id
+		setFillColor: value];
+}
+
+void* NSLevelIndicator_inst_WarningFillColor(void *id) {
+	return [(NSLevelIndicator*)id
+		warningFillColor];
+}
+
+void NSLevelIndicator_inst_SetWarningFillColor(void *id, void* value) {
+	[(NSLevelIndicator*)id
+		setWarningFillColor: value];
+}
+
+void* NSLevelIndicator_inst_CriticalFillColor(void *id) {
+	return [(NSLevelIndicator*)id
+		criticalFillColor];
+}
+
+void NSLevelIndicator_inst_SetCriticalFillColor(void *id, void* value) {
+	[(NSLevelIndicator*)id
+		setCriticalFillColor: value];
+}
+
+void* NSLevelIndicator_inst_RatingPlaceholderImage(void *id) {
+	return [(NSLevelIndicator*)id
+		ratingPlaceholderImage];
+}
+
+void NSLevelIndicator_inst_SetRatingPlaceholderImage(void *id, void* value) {
+	[(NSLevelIndicator*)id
+		setRatingPlaceholderImage: value];
+}
+
+BOOL NSLevelIndicator_inst_IsEditable(void *id) {
+	return [(NSLevelIndicator*)id
+		isEditable];
+}
+
+void NSLevelIndicator_inst_SetEditable(void *id, BOOL value) {
+	[(NSLevelIndicator*)id
+		setEditable: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -9358,6 +9462,13 @@ func NSSegmentedControl_Alloc() NSSegmentedControl {
 	ret := C.NSSegmentedControl_type_Alloc()
 
 	return NSSegmentedControl_FromPointer(ret)
+}
+
+// NSLevelIndicator_Alloc is undocumented.
+func NSLevelIndicator_Alloc() NSLevelIndicator {
+	ret := C.NSLevelIndicator_type_Alloc()
+
+	return NSLevelIndicator_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -24162,6 +24273,282 @@ func (x gen_NSSegmentedControl) SetSelectedSegmentBezelColor(
 	C.NSSegmentedControl_inst_SetSelectedSegmentBezelColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
+	)
+
+	return
+}
+
+type NSLevelIndicatorRef interface {
+	Pointer() uintptr
+	Init_AsNSLevelIndicator() NSLevelIndicator
+}
+
+type gen_NSLevelIndicator struct {
+	NSControl
+}
+
+func NSLevelIndicator_FromPointer(ptr unsafe.Pointer) NSLevelIndicator {
+	return NSLevelIndicator{gen_NSLevelIndicator{
+		NSControl_FromPointer(ptr),
+	}}
+}
+
+func NSLevelIndicator_FromRef(ref objc.Ref) NSLevelIndicator {
+	return NSLevelIndicator_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// RectOfTickMarkAtIndex returns the bounding rectangle of the tick mark identified by the specified index (the minimum-value tick mark is at index 0).
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/1388825-rectoftickmarkatindex?language=objc for details.
+func (x gen_NSLevelIndicator) RectOfTickMarkAtIndex(
+	index core.NSInteger,
+) core.NSRect {
+	ret := C.NSLevelIndicator_inst_RectOfTickMarkAtIndex(
+		unsafe.Pointer(x.Pointer()),
+		C.long(index),
+	)
+
+	return *(*core.NSRect)(unsafe.Pointer(&ret))
+}
+
+// Init initializes a new instance of the NSLevelIndicator class.
+func (x gen_NSLevelIndicator) Init() NSLevelIndicator {
+	ret := C.NSLevelIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSLevelIndicator_FromPointer(ret)
+}
+
+// Init_AsNSLevelIndicator is a typed version of Init.
+func (x gen_NSLevelIndicator) Init_AsNSLevelIndicator() NSLevelIndicator {
+	ret := C.NSLevelIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSLevelIndicator_FromPointer(ret)
+}
+
+// NumberOfTickMarks returns the number of tick marks associated with the receiver.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc for details.
+func (x gen_NSLevelIndicator) NumberOfTickMarks() core.NSInteger {
+	ret := C.NSLevelIndicator_inst_NumberOfTickMarks(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetNumberOfTickMarks returns the number of tick marks associated with the receiver.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/1388827-numberoftickmarks?language=objc for details.
+func (x gen_NSLevelIndicator) SetNumberOfTickMarks(
+	value core.NSInteger,
+) {
+	C.NSLevelIndicator_inst_SetNumberOfTickMarks(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
+}
+
+// NumberOfMajorTickMarks returns the number of major tick marks associated with the receiver.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc for details.
+func (x gen_NSLevelIndicator) NumberOfMajorTickMarks() core.NSInteger {
+	ret := C.NSLevelIndicator_inst_NumberOfMajorTickMarks(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetNumberOfMajorTickMarks returns the number of major tick marks associated with the receiver.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/1388819-numberofmajortickmarks?language=objc for details.
+func (x gen_NSLevelIndicator) SetNumberOfMajorTickMarks(
+	value core.NSInteger,
+) {
+	C.NSLevelIndicator_inst_SetNumberOfMajorTickMarks(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
+}
+
+// RatingImage is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc for details.
+func (x gen_NSLevelIndicator) RatingImage() NSImage {
+	ret := C.NSLevelIndicator_inst_RatingImage(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSImage_FromPointer(ret)
+}
+
+// SetRatingImage is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc for details.
+func (x gen_NSLevelIndicator) SetRatingImage(
+	value NSImageRef,
+) {
+	C.NSLevelIndicator_inst_SetRatingImage(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// DrawsTieredCapacityLevels is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902322-drawstieredcapacitylevels?language=objc for details.
+func (x gen_NSLevelIndicator) DrawsTieredCapacityLevels() bool {
+	ret := C.NSLevelIndicator_inst_DrawsTieredCapacityLevels(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetDrawsTieredCapacityLevels is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902322-drawstieredcapacitylevels?language=objc for details.
+func (x gen_NSLevelIndicator) SetDrawsTieredCapacityLevels(
+	value bool,
+) {
+	C.NSLevelIndicator_inst_SetDrawsTieredCapacityLevels(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// FillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902325-fillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) FillColor() NSColor {
+	ret := C.NSLevelIndicator_inst_FillColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetFillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902325-fillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) SetFillColor(
+	value NSColorRef,
+) {
+	C.NSLevelIndicator_inst_SetFillColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// WarningFillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902307-warningfillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) WarningFillColor() NSColor {
+	ret := C.NSLevelIndicator_inst_WarningFillColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetWarningFillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902307-warningfillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) SetWarningFillColor(
+	value NSColorRef,
+) {
+	C.NSLevelIndicator_inst_SetWarningFillColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// CriticalFillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) CriticalFillColor() NSColor {
+	ret := C.NSLevelIndicator_inst_CriticalFillColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetCriticalFillColor is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc for details.
+func (x gen_NSLevelIndicator) SetCriticalFillColor(
+	value NSColorRef,
+) {
+	C.NSLevelIndicator_inst_SetCriticalFillColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// RatingPlaceholderImage is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc for details.
+func (x gen_NSLevelIndicator) RatingPlaceholderImage() NSImage {
+	ret := C.NSLevelIndicator_inst_RatingPlaceholderImage(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSImage_FromPointer(ret)
+}
+
+// SetRatingPlaceholderImage is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc for details.
+func (x gen_NSLevelIndicator) SetRatingPlaceholderImage(
+	value NSImageRef,
+) {
+	C.NSLevelIndicator_inst_SetRatingPlaceholderImage(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// IsEditable is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc for details.
+func (x gen_NSLevelIndicator) IsEditable() bool {
+	ret := C.NSLevelIndicator_inst_IsEditable(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetEditable is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nslevelindicator/2919732-editable?language=objc for details.
+func (x gen_NSLevelIndicator) SetEditable(
+	value bool,
+) {
+	C.NSLevelIndicator_inst_SetEditable(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
 	)
 
 	return

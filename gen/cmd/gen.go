@@ -89,6 +89,7 @@ func main() {
 			loadFile("api/appkit/nsprogressindicator.objc.json"),
 			loadFile("api/appkit/nsdatepicker.objc.json"),
 			loadFile("api/appkit/nssegmentedcontrol.objc.json"),
+			loadFile("api/appkit/nslevelindicator.objc.json"),
 
 			loadFile("api/appkit/nscolor.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.TypeMethods = append(s.Class.TypeMethods, schema.Method{
