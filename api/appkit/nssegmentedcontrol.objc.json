@@ -1,0 +1,758 @@
+{
+  "Class": {
+    "Name": "NSSegmentedControl",
+    "Description": "Display one or more buttons in a single horizontal group.",
+    "Declaration": "@interface NSSegmentedControl : NSControl",
+    "Platforms": [
+      "macOS 10.3+"
+    ],
+    "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol?language=objc",
+    "InstanceMethods": [
+      {
+        "Name": "labelForSegment:",
+        "Description": "Returns the label of the specified segment.",
+        "Declaration": "- (NSString *)labelForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524322-labelforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setLabel:forSegment:",
+        "Description": "Sets the label for the specified segment.",
+        "Declaration": "- (void)setLabel:(NSString *)label \n      forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "label",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533073-setlabel?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setAlignment:forSegment:",
+        "Description": "",
+        "Declaration": "- (void)setAlignment:(NSTextAlignment)alignment \n          forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "alignment",
+            "Type": {
+              "Name": "NSTextAlignment"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887107-setalignment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "alignmentForSegment:",
+        "Description": "",
+        "Declaration": "- (NSTextAlignment)alignmentForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSTextAlignment"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887114-alignmentforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setImage:forSegment:",
+        "Description": "Sets the image for the specified segment.",
+        "Declaration": "- (void)setImage:(NSImage *)image \n      forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "image",
+            "Type": {
+              "Name": "NSImage",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525540-setimage?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "imageForSegment:",
+        "Description": "Returns the image associated with the specified segment.",
+        "Declaration": "- (NSImage *)imageForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSImage",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527623-imageforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setImageScaling:forSegment:",
+        "Description": "Sets the scaling mode used to display the specified segment’s image.",
+        "Declaration": "- (void)setImageScaling:(NSImageScaling)scaling \n             forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "scaling",
+            "Type": {
+              "Name": "NSImageScaling"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1532914-setimagescaling?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "imageScalingForSegment:",
+        "Description": "Returns the scaling mode used to display the specified segment’s image.",
+        "Declaration": "- (NSImageScaling)imageScalingForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSImageScaling"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1532175-imagescalingforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setMenu:forSegment:",
+        "Description": "Sets the menu for the specified segment.",
+        "Declaration": "- (void)setMenu:(NSMenu *)menu \n     forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "menu",
+            "Type": {
+              "Name": "NSMenu",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528853-setmenu?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "menuForSegment:",
+        "Description": "Returns the menu for the specified segment.",
+        "Declaration": "- (NSMenu *)menuForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSMenu",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525880-menuforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setShowsMenuIndicator:forSegment:",
+        "Description": "",
+        "Declaration": "- (void)setShowsMenuIndicator:(BOOL)showsMenuIndicator \n                   forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "showsMenuIndicator",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887112-setshowsmenuindicator?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "showsMenuIndicatorForSegment:",
+        "Description": "",
+        "Declaration": "- (BOOL)showsMenuIndicatorForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887111-showsmenuindicatorforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "selectSegmentWithTag:",
+        "Description": "Selects the segment with the specified tag.",
+        "Declaration": "- (BOOL)selectSegmentWithTag:(NSInteger)tag;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "tag",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534016-selectsegmentwithtag?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setSelected:forSegment:",
+        "Description": "Sets the selection state of the specified segment.",
+        "Declaration": "- (void)setSelected:(BOOL)selected \n         forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "selected",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528334-setselected?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "isSelectedForSegment:",
+        "Description": "Returns a Boolean value indicating whether the specified segment is selected.",
+        "Declaration": "- (BOOL)isSelectedForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525676-isselectedforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setWidth:forSegment:",
+        "Description": "Sets the width of the specified segment.",
+        "Declaration": "- (void)setWidth:(CGFloat)width \n      forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "width",
+            "Type": {
+              "Name": "CGFloat"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534487-setwidth?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "widthForSegment:",
+        "Description": "Returns the width of the specified segment.",
+        "Declaration": "- (CGFloat)widthForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "CGFloat"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533866-widthforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "compressWithPrioritizedCompressionOptions:",
+        "Description": "",
+        "Declaration": "- (void)compressWithPrioritizedCompressionOptions:(NSArray\u003cNSUserInterfaceCompressionOptions *\u003e *)prioritizedOptions;",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "prioritizedOptions",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSUserInterfaceCompressionOptions",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952064-compresswithprioritizedcompressi?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "minimumSizeWithPrioritizedCompressionOptions:",
+        "Description": "",
+        "Declaration": "- (NSSize)minimumSizeWithPrioritizedCompressionOptions:(NSArray\u003cNSUserInterfaceCompressionOptions *\u003e *)prioritizedOptions;",
+        "Return": {
+          "Name": "NSSize"
+        },
+        "Args": [
+          {
+            "Name": "prioritizedOptions",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSUserInterfaceCompressionOptions",
+                  "IsPtr": true
+                }
+              ]
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952063-minimumsizewithprioritizedcompre?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setEnabled:forSegment:",
+        "Description": "Sets the enabled state of the specified segment",
+        "Declaration": "- (void)setEnabled:(BOOL)enabled \n        forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "enabled",
+            "Type": {
+              "Name": "BOOL"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526417-setenabled?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "isEnabledForSegment:",
+        "Description": "Returns a Boolean value indicating whether the specified segment is enabled.",
+        "Declaration": "- (BOOL)isEnabledForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "BOOL"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524542-isenabledforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "tagForSegment:",
+        "Description": "",
+        "Declaration": "- (NSInteger)tagForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSInteger"
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887113-tagforsegment?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setTag:forSegment:",
+        "Description": "",
+        "Declaration": "- (void)setTag:(NSInteger)tag \n    forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "tag",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887104-settag?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "setToolTip:forSegment:",
+        "Description": "",
+        "Declaration": "- (void)setToolTip:(NSString *)toolTip \n        forSegment:(NSInteger)segment;\n",
+        "Return": {
+          "Name": "void"
+        },
+        "Args": [
+          {
+            "Name": "toolTip",
+            "Type": {
+              "Name": "NSString",
+              "IsPtr": true
+            }
+          },
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887101-settooltip?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "toolTipForSegment:",
+        "Description": "",
+        "Declaration": "- (NSString *)toolTipForSegment:(NSInteger)segment;",
+        "Return": {
+          "Name": "NSString",
+          "IsPtr": true
+        },
+        "Args": [
+          {
+            "Name": "segment",
+            "Type": {
+              "Name": "NSInteger"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887103-tooltipforsegment?language=objc",
+        "Unavailable": false
+      }
+    ],
+    "InstanceProperties": [
+      {
+        "Name": "trackingMode",
+        "Description": "The type of tracking behavior the control exhibits.",
+        "Declaration": "@property NSSegmentSwitchTracking trackingMode;",
+        "Type": {
+          "Name": "NSSegmentSwitchTracking"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526285-trackingmode?language=objc"
+      },
+      {
+        "Name": "segmentStyle",
+        "Description": "The visual style used to display the control.",
+        "Declaration": "@property NSSegmentStyle segmentStyle;",
+        "Type": {
+          "Name": "NSSegmentStyle"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528507-segmentstyle?language=objc"
+      },
+      {
+        "Name": "segmentCount",
+        "Description": "The number of segments in the control.",
+        "Declaration": "@property NSInteger segmentCount;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527451-segmentcount?language=objc"
+      },
+      {
+        "Name": "springLoaded",
+        "Description": "A Boolean value that indicates whether spring loading is enabled for the control.",
+        "Declaration": "@property(getter=isSpringLoaded) BOOL springLoaded;",
+        "Type": {
+          "Name": "BOOL"
+        },
+        "Attrs": {
+          "getter": "isSpringLoaded"
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534122-springloaded?language=objc"
+      },
+      {
+        "Name": "selectedSegment",
+        "Description": "The index of the selected segment of the control, or -1 if no segment is selected.",
+        "Declaration": "@property NSInteger selectedSegment;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534490-selectedsegment?language=objc"
+      },
+      {
+        "Name": "indexOfSelectedItem",
+        "Description": "",
+        "Declaration": "@property(readonly) NSInteger indexOfSelectedItem;",
+        "Type": {
+          "Name": "NSInteger"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887105-indexofselecteditem?language=objc"
+      },
+      {
+        "Name": "selectedSegmentBezelColor",
+        "Description": "The color of the selected segment's bezel, in appearances that support it.",
+        "Declaration": "@property(copy) NSColor *selectedSegmentBezelColor;",
+        "Type": {
+          "Name": "NSColor",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc"
+      },
+      {
+        "Name": "doubleValueForSelectedSegment",
+        "Description": "When the tracking mode for the control is set to use a momentary accelerator, returns a value for the selected segment.",
+        "Declaration": "@property(readonly) double doubleValueForSelectedSegment;",
+        "Type": {
+          "Name": "double"
+        },
+        "Attrs": {
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1529727-doublevalueforselectedsegment?language=objc"
+      },
+      {
+        "Name": "segmentDistribution",
+        "Description": "",
+        "Declaration": "@property NSSegmentDistribution segmentDistribution;",
+        "Type": {
+          "Name": "NSSegmentDistribution"
+        },
+        "Attrs": {},
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887109-segmentdistribution?language=objc"
+      },
+      {
+        "Name": "activeCompressionOptions",
+        "Description": "",
+        "Declaration": "@property(readonly, copy) NSUserInterfaceCompressionOptions *activeCompressionOptions;",
+        "Type": {
+          "Name": "NSUserInterfaceCompressionOptions",
+          "IsPtr": true
+        },
+        "Attrs": {
+          "copy": true,
+          "readonly": true
+        },
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952062-activecompressionoptions?language=objc"
+      }
+    ],
+    "TypeMethods": [
+      {
+        "Name": "segmentedControlWithImages:trackingMode:target:action:",
+        "Description": "",
+        "Declaration": "+ (instancetype)segmentedControlWithImages:(NSArray\u003cNSImage *\u003e *)images \n                              trackingMode:(NSSegmentSwitchTracking)trackingMode \n                                    target:(id)target \n                                    action:(SEL)action;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "images",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSImage",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "trackingMode",
+            "Type": {
+              "Name": "NSSegmentSwitchTracking"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1644010-segmentedcontrolwithimages?language=objc",
+        "Unavailable": false
+      },
+      {
+        "Name": "segmentedControlWithLabels:trackingMode:target:action:",
+        "Description": "",
+        "Declaration": "+ (instancetype)segmentedControlWithLabels:(NSArray\u003cNSString *\u003e *)labels \n                              trackingMode:(NSSegmentSwitchTracking)trackingMode \n                                    target:(id)target \n                                    action:(SEL)action;\n",
+        "Return": {
+          "Name": "instancetype"
+        },
+        "Args": [
+          {
+            "Name": "labels",
+            "Type": {
+              "Name": "NSArray",
+              "IsPtr": true,
+              "Params": [
+                {
+                  "Name": "NSString",
+                  "IsPtr": true
+                }
+              ]
+            }
+          },
+          {
+            "Name": "trackingMode",
+            "Type": {
+              "Name": "NSSegmentSwitchTracking"
+            }
+          },
+          {
+            "Name": "target",
+            "Type": {
+              "Name": "id"
+            }
+          },
+          {
+            "Name": "action",
+            "Type": {
+              "Name": "SEL"
+            }
+          }
+        ],
+        "TopicURL": "https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1644011-segmentedcontrolwithlabels?language=objc",
+        "Unavailable": false
+      }
+    ]
+  },
+  "APICollection": null,
+  "Kind": "class",
+  "PullDate": "2023-07-22T18:59:29.144459-04:00",
+  "Version": 2
+}

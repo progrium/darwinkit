@@ -527,6 +527,18 @@ void* NSComboBox_type_Alloc() {
 	return [NSComboBox
 		alloc];
 }
+void* NSProgressIndicator_type_Alloc() {
+	return [NSProgressIndicator
+		alloc];
+}
+void* NSDatePicker_type_Alloc() {
+	return [NSDatePicker
+		alloc];
+}
+void* NSSegmentedControl_type_Alloc() {
+	return [NSSegmentedControl
+		alloc];
+}
 void* NSColor_type_Alloc() {
 	return [NSColor
 		alloc];
@@ -5854,6 +5866,295 @@ void NSComboBox_inst_SetDelegate(void *id, void* value) {
 		setDelegate: value];
 }
 
+void NSProgressIndicator_inst_SizeToFit(void *id) {
+	[(NSProgressIndicator*)id
+		sizeToFit];
+}
+
+void NSProgressIndicator_inst_StartAnimation(void *id, void* sender) {
+	[(NSProgressIndicator*)id
+		startAnimation: sender];
+}
+
+void NSProgressIndicator_inst_StopAnimation(void *id, void* sender) {
+	[(NSProgressIndicator*)id
+		stopAnimation: sender];
+}
+
+void* NSProgressIndicator_inst_Init(void *id) {
+	return [(NSProgressIndicator*)id
+		init];
+}
+
+BOOL NSProgressIndicator_inst_UsesThreadedAnimation(void *id) {
+	return [(NSProgressIndicator*)id
+		usesThreadedAnimation];
+}
+
+void NSProgressIndicator_inst_SetUsesThreadedAnimation(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setUsesThreadedAnimation: value];
+}
+
+BOOL NSProgressIndicator_inst_IsIndeterminate(void *id) {
+	return [(NSProgressIndicator*)id
+		isIndeterminate];
+}
+
+void NSProgressIndicator_inst_SetIndeterminate(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setIndeterminate: value];
+}
+
+BOOL NSProgressIndicator_inst_IsDisplayedWhenStopped(void *id) {
+	return [(NSProgressIndicator*)id
+		isDisplayedWhenStopped];
+}
+
+void NSProgressIndicator_inst_SetDisplayedWhenStopped(void *id, BOOL value) {
+	[(NSProgressIndicator*)id
+		setDisplayedWhenStopped: value];
+}
+
+void* NSDatePicker_inst_Init(void *id) {
+	return [(NSDatePicker*)id
+		init];
+}
+
+BOOL NSDatePicker_inst_IsBezeled(void *id) {
+	return [(NSDatePicker*)id
+		isBezeled];
+}
+
+void NSDatePicker_inst_SetBezeled(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setBezeled: value];
+}
+
+BOOL NSDatePicker_inst_IsBordered(void *id) {
+	return [(NSDatePicker*)id
+		isBordered];
+}
+
+void NSDatePicker_inst_SetBordered(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setBordered: value];
+}
+
+void* NSDatePicker_inst_BackgroundColor(void *id) {
+	return [(NSDatePicker*)id
+		backgroundColor];
+}
+
+void NSDatePicker_inst_SetBackgroundColor(void *id, void* value) {
+	[(NSDatePicker*)id
+		setBackgroundColor: value];
+}
+
+BOOL NSDatePicker_inst_DrawsBackground(void *id) {
+	return [(NSDatePicker*)id
+		drawsBackground];
+}
+
+void NSDatePicker_inst_SetDrawsBackground(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setDrawsBackground: value];
+}
+
+void* NSDatePicker_inst_TextColor(void *id) {
+	return [(NSDatePicker*)id
+		textColor];
+}
+
+void NSDatePicker_inst_SetTextColor(void *id, void* value) {
+	[(NSDatePicker*)id
+		setTextColor: value];
+}
+
+BOOL NSDatePicker_inst_PresentsCalendarOverlay(void *id) {
+	return [(NSDatePicker*)id
+		presentsCalendarOverlay];
+}
+
+void NSDatePicker_inst_SetPresentsCalendarOverlay(void *id, BOOL value) {
+	[(NSDatePicker*)id
+		setPresentsCalendarOverlay: value];
+}
+
+void* NSDatePicker_inst_Delegate(void *id) {
+	return [(NSDatePicker*)id
+		delegate];
+}
+
+void NSDatePicker_inst_SetDelegate(void *id, void* value) {
+	[(NSDatePicker*)id
+		setDelegate: value];
+}
+
+void NSSegmentedControl_inst_CompressWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
+	[(NSSegmentedControl*)id
+		compressWithPrioritizedCompressionOptions: prioritizedOptions];
+}
+
+void* NSSegmentedControl_inst_ImageForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		imageForSegment: segment];
+}
+
+BOOL NSSegmentedControl_inst_IsEnabledForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		isEnabledForSegment: segment];
+}
+
+BOOL NSSegmentedControl_inst_IsSelectedForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		isSelectedForSegment: segment];
+}
+
+void* NSSegmentedControl_inst_LabelForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		labelForSegment: segment];
+}
+
+void* NSSegmentedControl_inst_MenuForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		menuForSegment: segment];
+}
+
+NSSize NSSegmentedControl_inst_MinimumSizeWithPrioritizedCompressionOptions(void *id, void* prioritizedOptions) {
+	return [(NSSegmentedControl*)id
+		minimumSizeWithPrioritizedCompressionOptions: prioritizedOptions];
+}
+
+BOOL NSSegmentedControl_inst_SelectSegmentWithTag(void *id, long tag) {
+	return [(NSSegmentedControl*)id
+		selectSegmentWithTag: tag];
+}
+
+void NSSegmentedControl_inst_SetEnabledForSegment(void *id, BOOL enabled, long segment) {
+	[(NSSegmentedControl*)id
+		setEnabled: enabled
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetImageForSegment(void *id, void* image, long segment) {
+	[(NSSegmentedControl*)id
+		setImage: image
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetLabelForSegment(void *id, void* label, long segment) {
+	[(NSSegmentedControl*)id
+		setLabel: label
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetMenuForSegment(void *id, void* menu, long segment) {
+	[(NSSegmentedControl*)id
+		setMenu: menu
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetSelectedForSegment(void *id, BOOL selected, long segment) {
+	[(NSSegmentedControl*)id
+		setSelected: selected
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetShowsMenuIndicatorForSegment(void *id, BOOL showsMenuIndicator, long segment) {
+	[(NSSegmentedControl*)id
+		setShowsMenuIndicator: showsMenuIndicator
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetTagForSegment(void *id, long tag, long segment) {
+	[(NSSegmentedControl*)id
+		setTag: tag
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetToolTipForSegment(void *id, void* toolTip, long segment) {
+	[(NSSegmentedControl*)id
+		setToolTip: toolTip
+		forSegment: segment];
+}
+
+void NSSegmentedControl_inst_SetWidthForSegment(void *id, double width, long segment) {
+	[(NSSegmentedControl*)id
+		setWidth: width
+		forSegment: segment];
+}
+
+BOOL NSSegmentedControl_inst_ShowsMenuIndicatorForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		showsMenuIndicatorForSegment: segment];
+}
+
+long NSSegmentedControl_inst_TagForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		tagForSegment: segment];
+}
+
+void* NSSegmentedControl_inst_ToolTipForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		toolTipForSegment: segment];
+}
+
+double NSSegmentedControl_inst_WidthForSegment(void *id, long segment) {
+	return [(NSSegmentedControl*)id
+		widthForSegment: segment];
+}
+
+void* NSSegmentedControl_inst_Init(void *id) {
+	return [(NSSegmentedControl*)id
+		init];
+}
+
+long NSSegmentedControl_inst_SegmentCount(void *id) {
+	return [(NSSegmentedControl*)id
+		segmentCount];
+}
+
+void NSSegmentedControl_inst_SetSegmentCount(void *id, long value) {
+	[(NSSegmentedControl*)id
+		setSegmentCount: value];
+}
+
+BOOL NSSegmentedControl_inst_IsSpringLoaded(void *id) {
+	return [(NSSegmentedControl*)id
+		isSpringLoaded];
+}
+
+void NSSegmentedControl_inst_SetSpringLoaded(void *id, BOOL value) {
+	[(NSSegmentedControl*)id
+		setSpringLoaded: value];
+}
+
+long NSSegmentedControl_inst_SelectedSegment(void *id) {
+	return [(NSSegmentedControl*)id
+		selectedSegment];
+}
+
+void NSSegmentedControl_inst_SetSelectedSegment(void *id, long value) {
+	[(NSSegmentedControl*)id
+		setSelectedSegment: value];
+}
+
+long NSSegmentedControl_inst_IndexOfSelectedItem(void *id) {
+	return [(NSSegmentedControl*)id
+		indexOfSelectedItem];
+}
+
+void* NSSegmentedControl_inst_SelectedSegmentBezelColor(void *id) {
+	return [(NSSegmentedControl*)id
+		selectedSegmentBezelColor];
+}
+
+void NSSegmentedControl_inst_SetSelectedSegmentBezelColor(void *id, void* value) {
+	[(NSSegmentedControl*)id
+		setSelectedSegmentBezelColor: value];
+}
+
 void* NSColor_inst_BlendedColorWithFractionOfColor(void *id, double fraction, void* color) {
 	return [(NSColor*)id
 		blendedColorWithFraction: fraction
@@ -9036,6 +9337,27 @@ func NSComboBox_Alloc() NSComboBox {
 	ret := C.NSComboBox_type_Alloc()
 
 	return NSComboBox_FromPointer(ret)
+}
+
+// NSProgressIndicator_Alloc is undocumented.
+func NSProgressIndicator_Alloc() NSProgressIndicator {
+	ret := C.NSProgressIndicator_type_Alloc()
+
+	return NSProgressIndicator_FromPointer(ret)
+}
+
+// NSDatePicker_Alloc is undocumented.
+func NSDatePicker_Alloc() NSDatePicker {
+	ret := C.NSDatePicker_type_Alloc()
+
+	return NSDatePicker_FromPointer(ret)
+}
+
+// NSSegmentedControl_Alloc is undocumented.
+func NSSegmentedControl_Alloc() NSSegmentedControl {
+	ret := C.NSSegmentedControl_type_Alloc()
+
+	return NSSegmentedControl_FromPointer(ret)
 }
 
 // NSColor_Alloc is undocumented.
@@ -23015,6 +23337,829 @@ func (x gen_NSComboBox) SetDelegate(
 	value objc.Ref,
 ) {
 	C.NSComboBox_inst_SetDelegate(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+type NSProgressIndicatorRef interface {
+	Pointer() uintptr
+	Init_AsNSProgressIndicator() NSProgressIndicator
+}
+
+type gen_NSProgressIndicator struct {
+	NSView
+}
+
+func NSProgressIndicator_FromPointer(ptr unsafe.Pointer) NSProgressIndicator {
+	return NSProgressIndicator{gen_NSProgressIndicator{
+		NSView_FromPointer(ptr),
+	}}
+}
+
+func NSProgressIndicator_FromRef(ref objc.Ref) NSProgressIndicator {
+	return NSProgressIndicator_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// SizeToFit this action method resizes the progress indicator to an appropriate size depending on the value of style.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501144-sizetofit?language=objc for details.
+func (x gen_NSProgressIndicator) SizeToFit() {
+	C.NSProgressIndicator_inst_SizeToFit(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return
+}
+
+// StartAnimation starts the animation of an indeterminate progress indicator.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501167-startanimation?language=objc for details.
+func (x gen_NSProgressIndicator) StartAnimation(
+	sender objc.Ref,
+) {
+	C.NSProgressIndicator_inst_StartAnimation(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return
+}
+
+// StopAnimation stops the animation of an indeterminate progress indicator.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501141-stopanimation?language=objc for details.
+func (x gen_NSProgressIndicator) StopAnimation(
+	sender objc.Ref,
+) {
+	C.NSProgressIndicator_inst_StopAnimation(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(sender),
+	)
+
+	return
+}
+
+// Init initializes a new instance of the NSProgressIndicator class.
+func (x gen_NSProgressIndicator) Init() NSProgressIndicator {
+	ret := C.NSProgressIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSProgressIndicator_FromPointer(ret)
+}
+
+// Init_AsNSProgressIndicator is a typed version of Init.
+func (x gen_NSProgressIndicator) Init_AsNSProgressIndicator() NSProgressIndicator {
+	ret := C.NSProgressIndicator_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSProgressIndicator_FromPointer(ret)
+}
+
+// UsesThreadedAnimation returns a Boolean that indicates whether the progress indicator implements animation in a separate thread.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501160-usesthreadedanimation?language=objc for details.
+func (x gen_NSProgressIndicator) UsesThreadedAnimation() bool {
+	ret := C.NSProgressIndicator_inst_UsesThreadedAnimation(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetUsesThreadedAnimation returns a Boolean that indicates whether the progress indicator implements animation in a separate thread.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501160-usesthreadedanimation?language=objc for details.
+func (x gen_NSProgressIndicator) SetUsesThreadedAnimation(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetUsesThreadedAnimation(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsIndeterminate returns a Boolean that indicates whether the progress indicator is indeterminate.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501146-indeterminate?language=objc for details.
+func (x gen_NSProgressIndicator) IsIndeterminate() bool {
+	ret := C.NSProgressIndicator_inst_IsIndeterminate(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetIndeterminate returns a Boolean that indicates whether the progress indicator is indeterminate.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501146-indeterminate?language=objc for details.
+func (x gen_NSProgressIndicator) SetIndeterminate(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetIndeterminate(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsDisplayedWhenStopped returns a Boolean that indicates whether the progress indicator hides itself when it isn’t animating.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501171-displayedwhenstopped?language=objc for details.
+func (x gen_NSProgressIndicator) IsDisplayedWhenStopped() bool {
+	ret := C.NSProgressIndicator_inst_IsDisplayedWhenStopped(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetDisplayedWhenStopped returns a Boolean that indicates whether the progress indicator hides itself when it isn’t animating.
+//
+// See https://developer.apple.com/documentation/appkit/nsprogressindicator/1501171-displayedwhenstopped?language=objc for details.
+func (x gen_NSProgressIndicator) SetDisplayedWhenStopped(
+	value bool,
+) {
+	C.NSProgressIndicator_inst_SetDisplayedWhenStopped(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+type NSDatePickerRef interface {
+	Pointer() uintptr
+	Init_AsNSDatePicker() NSDatePicker
+}
+
+type gen_NSDatePicker struct {
+	NSControl
+}
+
+func NSDatePicker_FromPointer(ptr unsafe.Pointer) NSDatePicker {
+	return NSDatePicker{gen_NSDatePicker{
+		NSControl_FromPointer(ptr),
+	}}
+}
+
+func NSDatePicker_FromRef(ref objc.Ref) NSDatePicker {
+	return NSDatePicker_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// Init initializes a new instance of the NSDatePicker class.
+func (x gen_NSDatePicker) Init() NSDatePicker {
+	ret := C.NSDatePicker_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDatePicker_FromPointer(ret)
+}
+
+// Init_AsNSDatePicker is a typed version of Init.
+func (x gen_NSDatePicker) Init_AsNSDatePicker() NSDatePicker {
+	ret := C.NSDatePicker_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSDatePicker_FromPointer(ret)
+}
+
+// IsBezeled returns a Boolean value that indicates whether the date picker draws a bezeled border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533534-bezeled?language=objc for details.
+func (x gen_NSDatePicker) IsBezeled() bool {
+	ret := C.NSDatePicker_inst_IsBezeled(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetBezeled returns a Boolean value that indicates whether the date picker draws a bezeled border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533534-bezeled?language=objc for details.
+func (x gen_NSDatePicker) SetBezeled(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetBezeled(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// IsBordered returns a Boolean value that indicates whether the date picker has a plain border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534176-bordered?language=objc for details.
+func (x gen_NSDatePicker) IsBordered() bool {
+	ret := C.NSDatePicker_inst_IsBordered(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetBordered returns a Boolean value that indicates whether the date picker has a plain border.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534176-bordered?language=objc for details.
+func (x gen_NSDatePicker) SetBordered(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetBordered(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// BackgroundColor returns the date picker’s background color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1527710-backgroundcolor?language=objc for details.
+func (x gen_NSDatePicker) BackgroundColor() NSColor {
+	ret := C.NSDatePicker_inst_BackgroundColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetBackgroundColor returns the date picker’s background color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1527710-backgroundcolor?language=objc for details.
+func (x gen_NSDatePicker) SetBackgroundColor(
+	value NSColorRef,
+) {
+	C.NSDatePicker_inst_SetBackgroundColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// DrawsBackground returns a Boolean value that indicates whether the date picker draws the background.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1528266-drawsbackground?language=objc for details.
+func (x gen_NSDatePicker) DrawsBackground() bool {
+	ret := C.NSDatePicker_inst_DrawsBackground(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetDrawsBackground returns a Boolean value that indicates whether the date picker draws the background.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1528266-drawsbackground?language=objc for details.
+func (x gen_NSDatePicker) SetDrawsBackground(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetDrawsBackground(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// TextColor returns the date picker’s text color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534294-textcolor?language=objc for details.
+func (x gen_NSDatePicker) TextColor() NSColor {
+	ret := C.NSDatePicker_inst_TextColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetTextColor returns the date picker’s text color.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1534294-textcolor?language=objc for details.
+func (x gen_NSDatePicker) SetTextColor(
+	value NSColorRef,
+) {
+	C.NSDatePicker_inst_SetTextColor(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+// PresentsCalendarOverlay returns a Boolean value that indicates whether to present a graphical calendar overlay when editing a calendar element within a text-field style date picker.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/3521157-presentscalendaroverlay?language=objc for details.
+func (x gen_NSDatePicker) PresentsCalendarOverlay() bool {
+	ret := C.NSDatePicker_inst_PresentsCalendarOverlay(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetPresentsCalendarOverlay returns a Boolean value that indicates whether to present a graphical calendar overlay when editing a calendar element within a text-field style date picker.
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/3521157-presentscalendaroverlay?language=objc for details.
+func (x gen_NSDatePicker) SetPresentsCalendarOverlay(
+	value bool,
+) {
+	C.NSDatePicker_inst_SetPresentsCalendarOverlay(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// Delegate returns a delegate for the date picker’s cell
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533878-delegate?language=objc for details.
+func (x gen_NSDatePicker) Delegate() objc.Object {
+	ret := C.NSDatePicker_inst_Delegate(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return objc.Object_FromPointer(ret)
+}
+
+// SetDelegate returns a delegate for the date picker’s cell
+//
+// See https://developer.apple.com/documentation/appkit/nsdatepicker/1533878-delegate?language=objc for details.
+func (x gen_NSDatePicker) SetDelegate(
+	value objc.Ref,
+) {
+	C.NSDatePicker_inst_SetDelegate(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(value),
+	)
+
+	return
+}
+
+type NSSegmentedControlRef interface {
+	Pointer() uintptr
+	Init_AsNSSegmentedControl() NSSegmentedControl
+}
+
+type gen_NSSegmentedControl struct {
+	NSControl
+}
+
+func NSSegmentedControl_FromPointer(ptr unsafe.Pointer) NSSegmentedControl {
+	return NSSegmentedControl{gen_NSSegmentedControl{
+		NSControl_FromPointer(ptr),
+	}}
+}
+
+func NSSegmentedControl_FromRef(ref objc.Ref) NSSegmentedControl {
+	return NSSegmentedControl_FromPointer(unsafe.Pointer(ref.Pointer()))
+}
+
+// CompressWithPrioritizedCompressionOptions is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952064-compresswithprioritizedcompressi?language=objc for details.
+func (x gen_NSSegmentedControl) CompressWithPrioritizedCompressionOptions(
+	prioritizedOptions core.NSArrayRef,
+) {
+	C.NSSegmentedControl_inst_CompressWithPrioritizedCompressionOptions(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(prioritizedOptions),
+	)
+
+	return
+}
+
+// ImageForSegment returns the image associated with the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527623-imageforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) ImageForSegment(
+	segment core.NSInteger,
+) NSImage {
+	ret := C.NSSegmentedControl_inst_ImageForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return NSImage_FromPointer(ret)
+}
+
+// IsEnabledForSegment returns a Boolean value indicating whether the specified segment is enabled.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524542-isenabledforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) IsEnabledForSegment(
+	segment core.NSInteger,
+) bool {
+	ret := C.NSSegmentedControl_inst_IsEnabledForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// IsSelectedForSegment returns a Boolean value indicating whether the specified segment is selected.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525676-isselectedforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) IsSelectedForSegment(
+	segment core.NSInteger,
+) bool {
+	ret := C.NSSegmentedControl_inst_IsSelectedForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// LabelForSegment returns the label of the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524322-labelforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) LabelForSegment(
+	segment core.NSInteger,
+) string {
+	ret := C.NSSegmentedControl_inst_LabelForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return C.GoString(C.createCStringFromNSString(ret))
+}
+
+// MenuForSegment returns the menu for the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525880-menuforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) MenuForSegment(
+	segment core.NSInteger,
+) NSMenu {
+	ret := C.NSSegmentedControl_inst_MenuForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return NSMenu_FromPointer(ret)
+}
+
+// MinimumSizeWithPrioritizedCompressionOptions is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952063-minimumsizewithprioritizedcompre?language=objc for details.
+func (x gen_NSSegmentedControl) MinimumSizeWithPrioritizedCompressionOptions(
+	prioritizedOptions core.NSArrayRef,
+) core.NSSize {
+	ret := C.NSSegmentedControl_inst_MinimumSizeWithPrioritizedCompressionOptions(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(prioritizedOptions),
+	)
+
+	return *(*core.NSSize)(unsafe.Pointer(&ret))
+}
+
+// SelectSegmentWithTag selects the segment with the specified tag.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534016-selectsegmentwithtag?language=objc for details.
+func (x gen_NSSegmentedControl) SelectSegmentWithTag(
+	tag core.NSInteger,
+) bool {
+	ret := C.NSSegmentedControl_inst_SelectSegmentWithTag(
+		unsafe.Pointer(x.Pointer()),
+		C.long(tag),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetEnabledForSegment sets the enabled state of the specified segment
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526417-setenabled?language=objc for details.
+func (x gen_NSSegmentedControl) SetEnabledForSegment(
+	enabled bool,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetEnabledForSegment(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(enabled),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetImageForSegment sets the image for the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525540-setimage?language=objc for details.
+func (x gen_NSSegmentedControl) SetImageForSegment(
+	image NSImageRef,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetImageForSegment(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(image),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetLabelForSegment sets the label for the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533073-setlabel?language=objc for details.
+func (x gen_NSSegmentedControl) SetLabelForSegment(
+	label string,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetLabelForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(label)),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetMenuForSegment sets the menu for the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528853-setmenu?language=objc for details.
+func (x gen_NSSegmentedControl) SetMenuForSegment(
+	menu NSMenuRef,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetMenuForSegment(
+		unsafe.Pointer(x.Pointer()),
+		objc.RefPointer(menu),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetSelectedForSegment sets the selection state of the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528334-setselected?language=objc for details.
+func (x gen_NSSegmentedControl) SetSelectedForSegment(
+	selected bool,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetSelectedForSegment(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(selected),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetShowsMenuIndicatorForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887112-setshowsmenuindicator?language=objc for details.
+func (x gen_NSSegmentedControl) SetShowsMenuIndicatorForSegment(
+	showsMenuIndicator bool,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetShowsMenuIndicatorForSegment(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(showsMenuIndicator),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetTagForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887104-settag?language=objc for details.
+func (x gen_NSSegmentedControl) SetTagForSegment(
+	tag core.NSInteger,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetTagForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(tag),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetToolTipForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887101-settooltip?language=objc for details.
+func (x gen_NSSegmentedControl) SetToolTipForSegment(
+	toolTip string,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetToolTipForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.createNSStringFromCString(C.CString(toolTip)),
+		C.long(segment),
+	)
+
+	return
+}
+
+// SetWidthForSegment sets the width of the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534487-setwidth?language=objc for details.
+func (x gen_NSSegmentedControl) SetWidthForSegment(
+	width core.CGFloat,
+	segment core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetWidthForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.double(width),
+		C.long(segment),
+	)
+
+	return
+}
+
+// ShowsMenuIndicatorForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887111-showsmenuindicatorforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) ShowsMenuIndicatorForSegment(
+	segment core.NSInteger,
+) bool {
+	ret := C.NSSegmentedControl_inst_ShowsMenuIndicatorForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// TagForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887113-tagforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) TagForSegment(
+	segment core.NSInteger,
+) core.NSInteger {
+	ret := C.NSSegmentedControl_inst_TagForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// ToolTipForSegment is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887103-tooltipforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) ToolTipForSegment(
+	segment core.NSInteger,
+) string {
+	ret := C.NSSegmentedControl_inst_ToolTipForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return C.GoString(C.createCStringFromNSString(ret))
+}
+
+// WidthForSegment returns the width of the specified segment.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533866-widthforsegment?language=objc for details.
+func (x gen_NSSegmentedControl) WidthForSegment(
+	segment core.NSInteger,
+) core.CGFloat {
+	ret := C.NSSegmentedControl_inst_WidthForSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(segment),
+	)
+
+	return core.CGFloat(ret)
+}
+
+// Init initializes a new instance of the NSSegmentedControl class.
+func (x gen_NSSegmentedControl) Init() NSSegmentedControl {
+	ret := C.NSSegmentedControl_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSSegmentedControl_FromPointer(ret)
+}
+
+// Init_AsNSSegmentedControl is a typed version of Init.
+func (x gen_NSSegmentedControl) Init_AsNSSegmentedControl() NSSegmentedControl {
+	ret := C.NSSegmentedControl_inst_Init(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSSegmentedControl_FromPointer(ret)
+}
+
+// SegmentCount returns the number of segments in the control.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527451-segmentcount?language=objc for details.
+func (x gen_NSSegmentedControl) SegmentCount() core.NSInteger {
+	ret := C.NSSegmentedControl_inst_SegmentCount(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetSegmentCount returns the number of segments in the control.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527451-segmentcount?language=objc for details.
+func (x gen_NSSegmentedControl) SetSegmentCount(
+	value core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetSegmentCount(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
+}
+
+// IsSpringLoaded returns a Boolean value that indicates whether spring loading is enabled for the control.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534122-springloaded?language=objc for details.
+func (x gen_NSSegmentedControl) IsSpringLoaded() bool {
+	ret := C.NSSegmentedControl_inst_IsSpringLoaded(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return convertObjCBoolToGo(ret)
+}
+
+// SetSpringLoaded returns a Boolean value that indicates whether spring loading is enabled for the control.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534122-springloaded?language=objc for details.
+func (x gen_NSSegmentedControl) SetSpringLoaded(
+	value bool,
+) {
+	C.NSSegmentedControl_inst_SetSpringLoaded(
+		unsafe.Pointer(x.Pointer()),
+		convertToObjCBool(value),
+	)
+
+	return
+}
+
+// SelectedSegment returns the index of the selected segment of the control, or -1 if no segment is selected.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534490-selectedsegment?language=objc for details.
+func (x gen_NSSegmentedControl) SelectedSegment() core.NSInteger {
+	ret := C.NSSegmentedControl_inst_SelectedSegment(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SetSelectedSegment returns the index of the selected segment of the control, or -1 if no segment is selected.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534490-selectedsegment?language=objc for details.
+func (x gen_NSSegmentedControl) SetSelectedSegment(
+	value core.NSInteger,
+) {
+	C.NSSegmentedControl_inst_SetSelectedSegment(
+		unsafe.Pointer(x.Pointer()),
+		C.long(value),
+	)
+
+	return
+}
+
+// IndexOfSelectedItem is undocumented.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887105-indexofselecteditem?language=objc for details.
+func (x gen_NSSegmentedControl) IndexOfSelectedItem() core.NSInteger {
+	ret := C.NSSegmentedControl_inst_IndexOfSelectedItem(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return core.NSInteger(ret)
+}
+
+// SelectedSegmentBezelColor returns the color of the selected segment's bezel, in appearances that support it.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc for details.
+func (x gen_NSSegmentedControl) SelectedSegmentBezelColor() NSColor {
+	ret := C.NSSegmentedControl_inst_SelectedSegmentBezelColor(
+		unsafe.Pointer(x.Pointer()),
+	)
+
+	return NSColor_FromPointer(ret)
+}
+
+// SetSelectedSegmentBezelColor returns the color of the selected segment's bezel, in appearances that support it.
+//
+// See https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc for details.
+func (x gen_NSSegmentedControl) SetSelectedSegmentBezelColor(
+	value NSColorRef,
+) {
+	C.NSSegmentedControl_inst_SetSelectedSegmentBezelColor(
 		unsafe.Pointer(x.Pointer()),
 		objc.RefPointer(value),
 	)

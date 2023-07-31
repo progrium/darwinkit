@@ -86,6 +86,9 @@ func main() {
 			loadFile("api/appkit/nsslider.objc.json"),
 			loadFile("api/appkit/nsopenpanel.objc.json"),
 			loadFile("api/appkit/nscombobox.objc.json"),
+			loadFile("api/appkit/nsprogressindicator.objc.json"),
+			loadFile("api/appkit/nsdatepicker.objc.json"),
+			loadFile("api/appkit/nssegmentedcontrol.objc.json"),
 
 			loadFile("api/appkit/nscolor.objc.json").Then(func(s *schema.Schema) error {
 				s.Class.TypeMethods = append(s.Class.TypeMethods, schema.Method{
