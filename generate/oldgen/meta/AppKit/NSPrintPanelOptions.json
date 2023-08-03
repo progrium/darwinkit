@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSPrintPanelOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPrintPanelShowsCopies",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsPageRange",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsPaperSize",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsOrientation",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsScaling",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsPrintSelection",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsPageSetupAccessory",
+            "value": "256",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPanelShowsPreview",
+            "value": "131072",
+            "module": "AppKit"
+        }
+    ]
+}

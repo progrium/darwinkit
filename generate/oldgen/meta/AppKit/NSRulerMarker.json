@@ -1,0 +1,118 @@
+{
+    "kind": "class",
+    "name": "NSRulerMarker",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "ruler",
+            "read_only": true,
+            "type": "AppKit.NSRulerView *",
+            "weak": true
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "imageOrigin",
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "imageRectInRuler",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "thicknessRequiredInRuler",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "movable",
+            "getter_name": "isMovable",
+            "type": "BOOL"
+        },
+        {
+            "name": "removable",
+            "getter_name": "isRemovable",
+            "type": "BOOL"
+        },
+        {
+            "name": "markerLocation",
+            "type": "double"
+        },
+        {
+            "name": "representedObject",
+            "type": "id<Foundation.NSCopying>"
+        },
+        {
+            "name": "dragging",
+            "read_only": true,
+            "getter_name": "isDragging",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithRulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "markerLocation",
+                    "variable_name": "location",
+                    "type": "double"
+                },
+                {
+                    "name": "image",
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "imageOrigin",
+                    "variable_name": "imageOrigin",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "drawRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "trackMouse",
+            "params": [
+                {
+                    "variable_name": "mouseDownEvent",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "adding",
+                    "variable_name": "isAdding",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

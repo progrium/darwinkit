@@ -1,0 +1,36 @@
+{
+    "kind": "class",
+    "name": "WKDownload",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<WebKit.WKDownloadDelegate>",
+            "weak": true
+        },
+        {
+            "name": "originalRequest",
+            "read_only": true,
+            "type": "Foundation.NSURLRequest *"
+        },
+        {
+            "name": "webView",
+            "read_only": true,
+            "type": "WebKit.WKWebView *",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "cancel",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (NSData* resumeData)"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSDateFormatterStyle",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSDateFormatterNoStyle",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateFormatterShortStyle",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateFormatterMediumStyle",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateFormatterLongStyle",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateFormatterFullStyle",
+            "value": "4",
+            "module": "Foundation"
+        }
+    ]
+}

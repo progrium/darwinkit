@@ -1,0 +1,50 @@
+{
+    "kind": "protocol",
+    "name": "NSComboBoxDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSTextFieldDelegate"
+    ],
+    "methods": [
+        {
+            "name": "comboBoxSelectionDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "comboBoxSelectionIsChanging",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "comboBoxWillDismiss",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "comboBoxWillPopUp",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

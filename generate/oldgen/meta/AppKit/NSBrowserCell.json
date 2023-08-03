@@ -1,0 +1,88 @@
+{
+    "kind": "class",
+    "name": "NSBrowserCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSCell *",
+    "properties": [
+        {
+            "name": "branchImage",
+            "read_only": true,
+            "type": "AppKit.NSImage *",
+            "class_property": true
+        },
+        {
+            "name": "highlightedBranchImage",
+            "read_only": true,
+            "type": "AppKit.NSImage *",
+            "class_property": true
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "alternateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "leaf",
+            "getter_name": "isLeaf",
+            "type": "BOOL"
+        },
+        {
+            "name": "loaded",
+            "getter_name": "isLoaded",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "reset",
+            "return_type": "void"
+        },
+        {
+            "name": "set",
+            "return_type": "void"
+        },
+        {
+            "name": "highlightColorInView",
+            "params": [
+                {
+                    "variable_name": "controlView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initImageCell",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initTextCell",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

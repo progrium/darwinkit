@@ -1,0 +1,40 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewGridLayout",
+    "module": "AppKit",
+    "parent": "AppKit.NSCollectionViewLayout *",
+    "properties": [
+        {
+            "name": "maximumNumberOfRows",
+            "type": "NSUInteger"
+        },
+        {
+            "name": "maximumNumberOfColumns",
+            "type": "NSUInteger"
+        },
+        {
+            "name": "minimumItemSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "maximumItemSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "minimumInteritemSpacing",
+            "type": "double"
+        },
+        {
+            "name": "minimumLineSpacing",
+            "type": "double"
+        },
+        {
+            "name": "margins",
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "backgroundColors",
+            "type": "NSArray<AppKit.NSColor *> *"
+        }
+    ]
+}

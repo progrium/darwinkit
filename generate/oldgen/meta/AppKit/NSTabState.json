@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSTabState",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSBackgroundTab",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressedTab",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSelectedTab",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

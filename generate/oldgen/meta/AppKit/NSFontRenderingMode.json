@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSFontRenderingMode",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSFontDefaultRenderingMode",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontAntialiasedRenderingMode",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontIntegerAdvancementsRenderingMode",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontAntialiasedIntegerAdvancementsRenderingMode",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

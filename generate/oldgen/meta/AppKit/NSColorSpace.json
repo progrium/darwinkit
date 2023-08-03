@@ -1,0 +1,153 @@
+{
+    "kind": "class",
+    "name": "NSColorSpace",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "deviceRGBColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "genericRGBColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "deviceCMYKColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "genericCMYKColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "deviceGrayColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "genericGrayColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "sRGBColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "extendedSRGBColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "displayP3ColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "genericGamma22GrayColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "extendedGenericGamma22GrayColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "adobeRGB1998ColorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *",
+            "class_property": true
+        },
+        {
+            "name": "CGColorSpace",
+            "read_only": true,
+            "type": "CoreGraphics.CGColorSpaceRef"
+        },
+        {
+            "name": "colorSpaceModel",
+            "read_only": true,
+            "type": "AppKit.NSColorSpaceModel"
+        },
+        {
+            "name": "colorSyncProfile",
+            "read_only": true,
+            "type": "void *"
+        },
+        {
+            "name": "ICCProfileData",
+            "read_only": true,
+            "type": "NSData*"
+        },
+        {
+            "name": "localizedName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "numberOfColorComponents",
+            "read_only": true,
+            "type": "NSInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "availableColorSpacesWithModel",
+            "params": [
+                {
+                    "variable_name": "model",
+                    "type": "AppKit.NSColorSpaceModel"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSColorSpace *> *",
+            "class_method": true
+        },
+        {
+            "name": "initWithCGColorSpace",
+            "params": [
+                {
+                    "variable_name": "cgColorSpace",
+                    "type": "CoreGraphics.CGColorSpaceRef"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithColorSyncProfile",
+            "params": [
+                {
+                    "variable_name": "prof",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithICCProfileData",
+            "params": [
+                {
+                    "variable_name": "iccData",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

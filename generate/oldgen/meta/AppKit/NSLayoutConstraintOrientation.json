@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSLayoutConstraintOrientation",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSLayoutConstraintOrientationHorizontal",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutConstraintOrientationVertical",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

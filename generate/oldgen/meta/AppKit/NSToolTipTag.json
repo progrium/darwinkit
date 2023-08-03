@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSToolTipTag",
+    "module": "AppKit",
+    "target_type": "NSInteger"
+}

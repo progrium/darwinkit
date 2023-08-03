@@ -1,0 +1,56 @@
+{
+    "kind": "class",
+    "name": "NSCollectionLayoutEdgeSpacing",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "leading",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutSpacing *"
+        },
+        {
+            "name": "top",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutSpacing *"
+        },
+        {
+            "name": "trailing",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutSpacing *"
+        },
+        {
+            "name": "bottom",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutSpacing *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "spacingForLeading",
+            "params": [
+                {
+                    "variable_name": "leading",
+                    "type": "AppKit.NSCollectionLayoutSpacing *"
+                },
+                {
+                    "name": "top",
+                    "variable_name": "top",
+                    "type": "AppKit.NSCollectionLayoutSpacing *"
+                },
+                {
+                    "name": "trailing",
+                    "variable_name": "trailing",
+                    "type": "AppKit.NSCollectionLayoutSpacing *"
+                },
+                {
+                    "name": "bottom",
+                    "variable_name": "bottom",
+                    "type": "AppKit.NSCollectionLayoutSpacing *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

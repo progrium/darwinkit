@@ -1,0 +1,185 @@
+{
+    "kind": "class",
+    "name": "NSPrintInfo",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "sharedPrintInfo",
+            "type": "AppKit.NSPrintInfo *",
+            "class_property": true
+        },
+        {
+            "name": "paperSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "topMargin",
+            "type": "double"
+        },
+        {
+            "name": "bottomMargin",
+            "type": "double"
+        },
+        {
+            "name": "leftMargin",
+            "type": "double"
+        },
+        {
+            "name": "rightMargin",
+            "type": "double"
+        },
+        {
+            "name": "imageablePageBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "orientation",
+            "type": "AppKit.NSPaperOrientation"
+        },
+        {
+            "name": "paperName",
+            "type": "AppKit.NSPrinterPaperName"
+        },
+        {
+            "name": "localizedPaperName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "horizontalPagination",
+            "type": "AppKit.NSPrintingPaginationMode"
+        },
+        {
+            "name": "verticalPagination",
+            "type": "AppKit.NSPrintingPaginationMode"
+        },
+        {
+            "name": "horizontallyCentered",
+            "getter_name": "isHorizontallyCentered",
+            "type": "BOOL"
+        },
+        {
+            "name": "verticallyCentered",
+            "getter_name": "isVerticallyCentered",
+            "type": "BOOL"
+        },
+        {
+            "name": "printer",
+            "type": "AppKit.NSPrinter *"
+        },
+        {
+            "name": "jobDisposition",
+            "type": "AppKit.NSPrintJobDispositionValue"
+        },
+        {
+            "name": "selectionOnly",
+            "getter_name": "isSelectionOnly",
+            "type": "BOOL"
+        },
+        {
+            "name": "scalingFactor",
+            "type": "double"
+        },
+        {
+            "name": "printSettings",
+            "read_only": true,
+            "type": "Foundation.NSMutableDictionary *"
+        },
+        {
+            "name": "defaultPrinter",
+            "read_only": true,
+            "type": "AppKit.NSPrinter *",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithDictionary",
+            "params": [
+                {
+                    "variable_name": "attributes",
+                    "type": "NSDictionary<AppKit.NSPrintInfoAttributeKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "setUpPrintOperationDefaultValues",
+            "return_type": "void"
+        },
+        {
+            "name": "dictionary",
+            "return_type": "Foundation.NSMutableDictionary *"
+        },
+        {
+            "name": "PMPrintSession",
+            "return_type": "void *"
+        },
+        {
+            "name": "PMPageFormat",
+            "return_type": "void *"
+        },
+        {
+            "name": "PMPrintSettings",
+            "return_type": "void *"
+        },
+        {
+            "name": "updateFromPMPageFormat",
+            "return_type": "void"
+        },
+        {
+            "name": "updateFromPMPrintSettings",
+            "return_type": "void"
+        },
+        {
+            "name": "takeSettingsFromPDFInfo",
+            "params": [
+                {
+                    "variable_name": "inPDFInfo",
+                    "type": "AppKit.NSPDFInfo *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDefaultPrinter",
+            "params": [
+                {
+                    "variable_name": "printer",
+                    "type": "AppKit.NSPrinter *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true,
+            "deprecated": true
+        },
+        {
+            "name": "sizeForPaperName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSPrinterPaperName"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "class_method": true,
+            "deprecated": true
+        }
+    ]
+}

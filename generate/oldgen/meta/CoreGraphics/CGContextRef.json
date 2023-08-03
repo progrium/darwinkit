@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "CGContextRef",
+    "module": "CoreGraphics",
+    "target_type": "void*"
+}

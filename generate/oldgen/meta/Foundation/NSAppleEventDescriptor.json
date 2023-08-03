@@ -1,0 +1,226 @@
+{
+    "kind": "class",
+    "name": "NSAppleEventDescriptor",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "booleanValue",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "data",
+            "read_only": true,
+            "type": "NSData*"
+        },
+        {
+            "name": "int32Value",
+            "read_only": true,
+            "type": "int32_t"
+        },
+        {
+            "name": "numberOfItems",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "stringValue",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "dateValue",
+            "read_only": true,
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "doubleValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "fileURLValue",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "isRecordDescriptor",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "descriptorWithBoolean",
+            "params": [
+                {
+                    "variable_name": "boolean",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithInt32",
+            "params": [
+                {
+                    "variable_name": "signedInt",
+                    "type": "int32_t"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "listDescriptor",
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "nullDescriptor",
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "recordDescriptor",
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "initListDescriptor",
+            "return_type": "instance"
+        },
+        {
+            "name": "initRecordDescriptor",
+            "return_type": "instance"
+        },
+        {
+            "name": "descriptorAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *"
+        },
+        {
+            "name": "insertDescriptor",
+            "params": [
+                {
+                    "variable_name": "descriptor",
+                    "type": "Foundation.NSAppleEventDescriptor *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeDescriptorAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "descriptorWithApplicationURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithBundleIdentifier",
+            "params": [
+                {
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithDate",
+            "params": [
+                {
+                    "variable_name": "date",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithDouble",
+            "params": [
+                {
+                    "variable_name": "doubleValue",
+                    "type": "double"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "descriptorWithFileURL",
+            "params": [
+                {
+                    "variable_name": "fileURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        },
+        {
+            "name": "sendEventWithOptions",
+            "params": [
+                {
+                    "variable_name": "sendOptions",
+                    "type": "Foundation.NSAppleEventSendOptions"
+                },
+                {
+                    "name": "timeout",
+                    "variable_name": "timeoutInSeconds",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "Foundation.NSAppleEventDescriptor *"
+        },
+        {
+            "name": "currentProcessDescriptor",
+            "return_type": "Foundation.NSAppleEventDescriptor *",
+            "class_method": true
+        }
+    ]
+}

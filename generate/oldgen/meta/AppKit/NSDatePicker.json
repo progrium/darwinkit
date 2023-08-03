@@ -1,0 +1,79 @@
+{
+    "kind": "class",
+    "name": "NSDatePicker",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "bezeled",
+            "getter_name": "isBezeled",
+            "type": "BOOL"
+        },
+        {
+            "name": "bordered",
+            "getter_name": "isBordered",
+            "type": "BOOL"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "textColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "datePickerStyle",
+            "type": "AppKit.NSDatePickerStyle"
+        },
+        {
+            "name": "presentsCalendarOverlay",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSDatePickerCellDelegate>",
+            "weak": true
+        },
+        {
+            "name": "datePickerElements",
+            "type": "AppKit.NSDatePickerElementFlags"
+        },
+        {
+            "name": "calendar",
+            "type": "Foundation.NSCalendar *"
+        },
+        {
+            "name": "locale",
+            "type": "Foundation.NSLocale *"
+        },
+        {
+            "name": "datePickerMode",
+            "type": "AppKit.NSDatePickerMode"
+        },
+        {
+            "name": "timeZone",
+            "type": "Foundation.NSTimeZone *"
+        },
+        {
+            "name": "dateValue",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "timeInterval",
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "minDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "maxDate",
+            "type": "Foundation.NSDate *"
+        }
+    ]
+}

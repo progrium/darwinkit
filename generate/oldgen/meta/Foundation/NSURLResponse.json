@@ -1,0 +1,60 @@
+{
+    "kind": "class",
+    "name": "NSURLResponse",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "expectedContentLength",
+            "read_only": true,
+            "type": "int64_t"
+        },
+        {
+            "name": "suggestedFilename",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "MIMEType",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "textEncodingName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "URL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithURL",
+            "params": [
+                {
+                    "variable_name": "URL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "MIMEType",
+                    "variable_name": "MIMEType",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "expectedContentLength",
+                    "variable_name": "length",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "textEncodingName",
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

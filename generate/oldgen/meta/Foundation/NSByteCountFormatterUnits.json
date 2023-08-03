@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "NSByteCountFormatterUnits",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSByteCountFormatterUseDefault",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseBytes",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseKB",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseMB",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseGB",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseTB",
+            "value": "16",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUsePB",
+            "value": "32",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseEB",
+            "value": "64",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseZB",
+            "value": "128",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseYBOrHigher",
+            "value": "65280",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterUseAll",
+            "value": "65535",
+            "module": "Foundation"
+        }
+    ]
+}

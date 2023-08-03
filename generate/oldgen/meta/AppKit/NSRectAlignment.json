@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSRectAlignment",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSRectAlignmentNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentTop",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentTopLeading",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentLeading",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentBottomLeading",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentBottom",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentBottomTrailing",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentTrailing",
+            "value": "7",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRectAlignmentTopTrailing",
+            "value": "8",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "kind": "class",
+    "name": "NSEnumerator",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "allObjects",
+            "read_only": true,
+            "type": "NSArray<objectivec.NSObject *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "nextObject",
+            "return_type": "objectivec.NSObject *"
+        }
+    ]
+}

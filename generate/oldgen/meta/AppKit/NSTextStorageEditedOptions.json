@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSTextStorageEditedOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger"
+}

@@ -1,0 +1,31 @@
+{
+    "kind": "protocol",
+    "name": "WKScriptMessageHandlerWithReply",
+    "module": "WebKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "userContentController",
+            "params": [
+                {
+                    "variable_name": "userContentController",
+                    "type": "WebKit.WKUserContentController *"
+                },
+                {
+                    "name": "didReceiveScriptMessage",
+                    "variable_name": "message",
+                    "type": "WebKit.WKScriptMessage *"
+                },
+                {
+                    "name": "replyHandler",
+                    "variable_name": "replyHandler",
+                    "type": "void (^) (objectivec.NSObject * reply, NSStringNeedNil* errorMessage)"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        }
+    ]
+}

@@ -1,0 +1,411 @@
+{
+    "kind": "class",
+    "name": "NSSegmentedControl",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "trackingMode",
+            "type": "AppKit.NSSegmentSwitchTracking"
+        },
+        {
+            "name": "segmentStyle",
+            "type": "AppKit.NSSegmentStyle"
+        },
+        {
+            "name": "segmentCount",
+            "type": "NSInteger"
+        },
+        {
+            "name": "springLoaded",
+            "getter_name": "isSpringLoaded",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectedSegment",
+            "type": "NSInteger"
+        },
+        {
+            "name": "indexOfSelectedItem",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "selectedSegmentBezelColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "doubleValueForSelectedSegment",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "segmentDistribution",
+            "type": "AppKit.NSSegmentDistribution"
+        },
+        {
+            "name": "activeCompressionOptions",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "segmentedControlWithImages",
+            "params": [
+                {
+                    "variable_name": "images",
+                    "type": "NSArray<AppKit.NSImage *> *"
+                },
+                {
+                    "name": "trackingMode",
+                    "variable_name": "trackingMode",
+                    "type": "AppKit.NSSegmentSwitchTracking"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "segmentedControlWithLabels",
+            "params": [
+                {
+                    "variable_name": "labels",
+                    "type": "NSArray<NSString*> *"
+                },
+                {
+                    "name": "trackingMode",
+                    "variable_name": "trackingMode",
+                    "type": "AppKit.NSSegmentSwitchTracking"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "labelForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "setLabel",
+            "params": [
+                {
+                    "variable_name": "label",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setAlignment",
+            "params": [
+                {
+                    "variable_name": "alignment",
+                    "type": "AppKit.NSTextAlignment"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "alignmentForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSTextAlignment"
+        },
+        {
+            "name": "setImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "imageForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "setImageScaling",
+            "params": [
+                {
+                    "variable_name": "scaling",
+                    "type": "AppKit.NSImageScaling"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "imageScalingForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSImageScaling"
+        },
+        {
+            "name": "setMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "menuForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "setShowsMenuIndicator",
+            "params": [
+                {
+                    "variable_name": "showsMenuIndicator",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "showsMenuIndicatorForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "selectSegmentWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setSelected",
+            "params": [
+                {
+                    "variable_name": "selected",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "isSelectedForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setWidth",
+            "params": [
+                {
+                    "variable_name": "width",
+                    "type": "double"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "widthForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "compressWithPrioritizedCompressionOptions",
+            "params": [
+                {
+                    "variable_name": "prioritizedOptions",
+                    "type": "NSArray<AppKit.NSUserInterfaceCompressionOptions *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "minimumSizeWithPrioritizedCompressionOptions",
+            "params": [
+                {
+                    "variable_name": "prioritizedOptions",
+                    "type": "NSArray<AppKit.NSUserInterfaceCompressionOptions *> *"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "setEnabled",
+            "params": [
+                {
+                    "variable_name": "enabled",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "isEnabledForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tagForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "setTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setToolTip",
+            "params": [
+                {
+                    "variable_name": "toolTip",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSegment",
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toolTipForSegment",
+            "params": [
+                {
+                    "variable_name": "segment",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSTrackingRectTag",
+    "module": "AppKit",
+    "target_type": "NSInteger"
+}

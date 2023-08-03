@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSColorPanelOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSColorPanelGrayModeMask",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelRGBModeMask",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelCMYKModeMask",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelHSBModeMask",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelCustomPaletteModeMask",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelColorListModeMask",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelWheelModeMask",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelCrayonModeMask",
+            "value": "128",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelAllModesMask",
+            "value": "65535",
+            "module": "AppKit"
+        }
+    ]
+}

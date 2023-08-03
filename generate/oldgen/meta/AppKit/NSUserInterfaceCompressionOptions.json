@@ -1,0 +1,120 @@
+{
+    "kind": "class",
+    "name": "NSUserInterfaceCompressionOptions",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "hideImagesOption",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *",
+            "class_property": true
+        },
+        {
+            "name": "hideTextOption",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *",
+            "class_property": true
+        },
+        {
+            "name": "reduceMetricsOption",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *",
+            "class_property": true
+        },
+        {
+            "name": "breakEqualWidthsOption",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *",
+            "class_property": true
+        },
+        {
+            "name": "standardOptions",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *",
+            "class_property": true
+        },
+        {
+            "name": "empty",
+            "read_only": true,
+            "getter_name": "isEmpty",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCompressionOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "Foundation.NSSet *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "containsOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "AppKit.NSUserInterfaceCompressionOptions *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "intersectsOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "AppKit.NSUserInterfaceCompressionOptions *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "optionsByAddingOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "AppKit.NSUserInterfaceCompressionOptions *"
+                }
+            ],
+            "return_type": "AppKit.NSUserInterfaceCompressionOptions *"
+        },
+        {
+            "name": "optionsByRemovingOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "AppKit.NSUserInterfaceCompressionOptions *"
+                }
+            ],
+            "return_type": "AppKit.NSUserInterfaceCompressionOptions *"
+        }
+    ]
+}

@@ -1,0 +1,498 @@
+{
+    "kind": "class",
+    "name": "NSControl",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "enabled",
+            "getter_name": "isEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "doubleValue",
+            "type": "double"
+        },
+        {
+            "name": "floatValue",
+            "type": "float"
+        },
+        {
+            "name": "intValue",
+            "type": "int32_t"
+        },
+        {
+            "name": "integerValue",
+            "type": "NSInteger"
+        },
+        {
+            "name": "objectValue",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "stringValue",
+            "type": "NSString*"
+        },
+        {
+            "name": "attributedStringValue",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "alignment",
+            "type": "AppKit.NSTextAlignment"
+        },
+        {
+            "name": "font",
+            "type": "AppKit.NSFont *"
+        },
+        {
+            "name": "lineBreakMode",
+            "type": "AppKit.NSLineBreakMode"
+        },
+        {
+            "name": "usesSingleLineMode",
+            "type": "BOOL"
+        },
+        {
+            "name": "formatter",
+            "type": "Foundation.NSFormatter *"
+        },
+        {
+            "name": "baseWritingDirection",
+            "type": "AppKit.NSWritingDirection"
+        },
+        {
+            "name": "allowsExpansionToolTips",
+            "type": "BOOL"
+        },
+        {
+            "name": "controlSize",
+            "type": "AppKit.NSControlSize"
+        },
+        {
+            "name": "highlighted",
+            "getter_name": "isHighlighted",
+            "type": "BOOL"
+        },
+        {
+            "name": "action",
+            "type": "SEL"
+        },
+        {
+            "name": "target",
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "continuous",
+            "getter_name": "isContinuous",
+            "type": "BOOL"
+        },
+        {
+            "name": "tag",
+            "type": "NSInteger"
+        },
+        {
+            "name": "refusesFirstResponder",
+            "type": "BOOL"
+        },
+        {
+            "name": "ignoresMultiClick",
+            "type": "BOOL"
+        },
+        {
+            "name": "cell",
+            "type": "AppKit.NSCell *",
+            "deprecated": true
+        },
+        {
+            "name": "cellClass",
+            "type": "objectivec.Class *",
+            "class_property": true,
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "takeDoubleValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "takeFloatValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "takeIntValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "takeIntegerValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "takeObjectValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "takeStringValueFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setFloatingPointFormat",
+            "params": [
+                {
+                    "variable_name": "autoRange",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "left",
+                    "variable_name": "leftDigits",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "right",
+                    "variable_name": "rightDigits",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawWithExpansionFrame",
+            "params": [
+                {
+                    "variable_name": "contentFrame",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "expansionFrameWithFrame",
+            "params": [
+                {
+                    "variable_name": "contentFrame",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "abortEditing",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "currentEditor",
+            "return_type": "AppKit.NSText *"
+        },
+        {
+            "name": "validateEditing",
+            "return_type": "void"
+        },
+        {
+            "name": "editWithFrame",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "editor",
+                    "variable_name": "textObj",
+                    "type": "AppKit.NSText *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "event",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "endEditing",
+            "params": [
+                {
+                    "variable_name": "textObj",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectWithFrame",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "editor",
+                    "variable_name": "textObj",
+                    "type": "AppKit.NSText *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "start",
+                    "variable_name": "selStart",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "length",
+                    "variable_name": "selLength",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sizeThatFits",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "sizeToFit",
+            "return_type": "void"
+        },
+        {
+            "name": "sendAction",
+            "params": [
+                {
+                    "variable_name": "action",
+                    "type": "SEL"
+                },
+                {
+                    "name": "to",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "sendActionOn",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSEventMask"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "performClick",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateIntrinsicContentSizeForCell",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectedCell",
+            "return_type": "AppKit.NSCell *",
+            "deprecated": true
+        },
+        {
+            "name": "selectedTag",
+            "return_type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "setNeedsDisplay",
+            "go_name" : "setNeedsDisplay0",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "calcSize",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "selectCell",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawCell",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawCellInside",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "updateCell",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "updateCellInside",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "controlTextDidBeginEditing",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "controlTextDidChange",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "controlTextDidEndEditing",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

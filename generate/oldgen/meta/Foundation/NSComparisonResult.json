@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSComparisonResult",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSOrderedAscending",
+            "value": "-1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOrderedSame",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOrderedDescending",
+            "value": "1",
+            "module": "Foundation"
+        }
+    ]
+}

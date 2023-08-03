@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSWindowSharingType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowSharingNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowSharingReadOnly",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowSharingReadWrite",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

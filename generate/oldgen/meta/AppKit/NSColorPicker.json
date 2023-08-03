@@ -1,0 +1,100 @@
+{
+    "kind": "class",
+    "name": "NSColorPicker",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "colorPanel",
+            "read_only": true,
+            "type": "AppKit.NSColorPanel *"
+        },
+        {
+            "name": "provideNewButtonImage",
+            "read_only": true,
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "buttonToolTip",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "minContentSize",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithPickerMask",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "colorPanel",
+                    "variable_name": "owningColorPanel",
+                    "type": "AppKit.NSColorPanel *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "insertNewButtonImage",
+            "params": [
+                {
+                    "variable_name": "newButtonImage",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "in",
+                    "variable_name": "buttonCell",
+                    "type": "AppKit.NSButtonCell *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setMode",
+            "params": [
+                {
+                    "variable_name": "mode",
+                    "type": "AppKit.NSColorPanelMode"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "attachColorList",
+            "params": [
+                {
+                    "variable_name": "colorList",
+                    "type": "AppKit.NSColorList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "detachColorList",
+            "params": [
+                {
+                    "variable_name": "colorList",
+                    "type": "AppKit.NSColorList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewSizeChanged",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "kind": "class",
+    "name": "NSSharingServicePicker",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSSharingServicePickerDelegate>",
+            "weak": true
+        },
+        {
+            "name": "standardShareMenuItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithItems",
+            "params": [
+                {
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "showRelativeToRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "ofView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "preferredEdge",
+                    "variable_name": "preferredEdge",
+                    "type": "Foundation.NSRectEdge"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

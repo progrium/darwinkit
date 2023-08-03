@@ -1,0 +1,26 @@
+{
+    "kind": "protocol",
+    "name": "WKScriptMessageHandler",
+    "module": "WebKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "userContentController",
+            "params": [
+                {
+                    "variable_name": "userContentController",
+                    "type": "WebKit.WKUserContentController *"
+                },
+                {
+                    "name": "didReceiveScriptMessage",
+                    "variable_name": "message",
+                    "type": "WebKit.WKScriptMessage *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        }
+    ]
+}

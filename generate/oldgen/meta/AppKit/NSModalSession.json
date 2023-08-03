@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSModalSession",
+    "module": "AppKit",
+    "target_type": "void*"
+}

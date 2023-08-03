@@ -1,0 +1,117 @@
+{
+    "kind": "class",
+    "name": "NSTableColumn",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "tableView",
+            "type": "AppKit.NSTableView *",
+            "weak": true
+        },
+        {
+            "name": "width",
+            "type": "double"
+        },
+        {
+            "name": "minWidth",
+            "type": "double"
+        },
+        {
+            "name": "maxWidth",
+            "type": "double"
+        },
+        {
+            "name": "resizingMask",
+            "type": "AppKit.NSTableColumnResizingOptions"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "headerCell",
+            "type": "AppKit.NSTableHeaderCell *"
+        },
+        {
+            "name": "identifier",
+            "type": "AppKit.NSUserInterfaceItemIdentifier"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "sortDescriptorPrototype",
+            "type": "Foundation.NSSortDescriptor *"
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "headerToolTip",
+            "type": "NSString*"
+        },
+        {
+            "name": "dataCell",
+            "type": "objectivec.NSObject *",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "AppKit.NSUserInterfaceItemIdentifier"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "sizeToFit",
+            "return_type": "void"
+        },
+        {
+            "name": "isResizable",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setResizable",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "dataCellForRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "kind": "class",
+    "name": "NSDateIntervalFormatter",
+    "module": "Foundation",
+    "parent": "Foundation.NSFormatter *",
+    "properties": [
+        {
+            "name": "dateStyle",
+            "type": "Foundation.NSDateIntervalFormatterStyle"
+        },
+        {
+            "name": "timeStyle",
+            "type": "Foundation.NSDateIntervalFormatterStyle"
+        },
+        {
+            "name": "dateTemplate",
+            "type": "NSString*"
+        },
+        {
+            "name": "calendar",
+            "type": "Foundation.NSCalendar *"
+        },
+        {
+            "name": "locale",
+            "type": "Foundation.NSLocale *"
+        },
+        {
+            "name": "timeZone",
+            "type": "Foundation.NSTimeZone *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "stringFromDate",
+            "params": [
+                {
+                    "variable_name": "fromDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "toDate",
+                    "variable_name": "toDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromDateInterval",
+            "params": [
+                {
+                    "variable_name": "dateInterval",
+                    "type": "Foundation.NSDateInterval *"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}

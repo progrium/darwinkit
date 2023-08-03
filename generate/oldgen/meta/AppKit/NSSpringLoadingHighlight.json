@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSSpringLoadingHighlight",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSSpringLoadingHighlightNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSpringLoadingHighlightStandard",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSpringLoadingHighlightEmphasized",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

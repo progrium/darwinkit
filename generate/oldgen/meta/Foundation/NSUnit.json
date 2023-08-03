@@ -1,0 +1,25 @@
+{
+    "kind": "class",
+    "name": "NSUnit",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "symbol",
+            "read_only": true,
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithSymbol",
+            "params": [
+                {
+                    "variable_name": "symbol",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

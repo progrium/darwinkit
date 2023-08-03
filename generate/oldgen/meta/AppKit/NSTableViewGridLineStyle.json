@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewGridLineStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTableViewGridNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewSolidVerticalGridLineMask",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewSolidHorizontalGridLineMask",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewDashedHorizontalGridLineMask",
+            "value": "8",
+            "module": "AppKit"
+        }
+    ]
+}

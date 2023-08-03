@@ -1,0 +1,58 @@
+{
+    "kind": "alias",
+    "name": "NSTextCheckingOptionKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSTextCheckingDocumentAuthorKey",
+            "value": "DocumentAuthor",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingDocumentTitleKey",
+            "value": "DocumentTitle",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingDocumentURLKey",
+            "value": "DocumentURL",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingOrthographyKey",
+            "value": "Orthography",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingQuotesKey",
+            "value": "Quotes",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingReferenceDateKey",
+            "value": "ReferenceDate",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingReferenceTimeZoneKey",
+            "value": "ReferenceTimeZone",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingRegularExpressionsKey",
+            "value": "RegularExpressions",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingReplacementsKey",
+            "value": "Replacements",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCheckingSelectedRangeKey",
+            "value": "SelectedRange",
+            "module": "AppKit"
+        }
+    ]
+}

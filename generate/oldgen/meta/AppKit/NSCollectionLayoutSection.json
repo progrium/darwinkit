@@ -1,0 +1,45 @@
+{
+    "kind": "class",
+    "name": "NSCollectionLayoutSection",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "orthogonalScrollingBehavior",
+            "type": "AppKit.NSCollectionLayoutSectionOrthogonalScrollingBehavior"
+        },
+        {
+            "name": "interGroupSpacing",
+            "type": "double"
+        },
+        {
+            "name": "contentInsets",
+            "type": "AppKit.NSDirectionalEdgeInsets"
+        },
+        {
+            "name": "boundarySupplementaryItems",
+            "type": "NSArray<AppKit.NSCollectionLayoutBoundarySupplementaryItem *> *"
+        },
+        {
+            "name": "decorationItems",
+            "type": "NSArray<AppKit.NSCollectionLayoutDecorationItem *> *"
+        },
+        {
+            "name": "supplementariesFollowContentInsets",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "sectionWithGroup",
+            "params": [
+                {
+                    "variable_name": "group",
+                    "type": "AppKit.NSCollectionLayoutGroup *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

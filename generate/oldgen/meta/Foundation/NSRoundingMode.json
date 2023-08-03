@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSRoundingMode",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSRoundPlain",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRoundDown",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRoundUp",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRoundBankers",
+            "value": "3",
+            "module": "Foundation"
+        }
+    ]
+}

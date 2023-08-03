@@ -1,0 +1,73 @@
+{
+    "kind": "alias",
+    "name": "NSTextCheckingType",
+    "module": "Foundation",
+    "target_type": "uint64_t",
+    "values": [
+        {
+            "name": "NSTextCheckingTypeOrthography",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeSpelling",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeGrammar",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeDate",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeAddress",
+            "value": "16",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeLink",
+            "value": "32",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeQuote",
+            "value": "64",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeDash",
+            "value": "128",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeReplacement",
+            "value": "256",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeCorrection",
+            "value": "512",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeRegularExpression",
+            "value": "1024",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypePhoneNumber",
+            "value": "2048",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingTypeTransitInformation",
+            "value": "4096",
+            "module": "Foundation"
+        }
+    ]
+}

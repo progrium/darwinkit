@@ -1,0 +1,68 @@
+{
+    "kind": "alias",
+    "name": "NSViewLayerContentsPlacement",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSViewLayerContentsPlacementScaleAxesIndependently",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementScaleProportionallyToFit",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementScaleProportionallyToFill",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementCenter",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementTop",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementTopRight",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementRight",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementBottomRight",
+            "value": "7",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementBottom",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementBottomLeft",
+            "value": "9",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementLeft",
+            "value": "10",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsPlacementTopLeft",
+            "value": "11",
+            "module": "AppKit"
+        }
+    ]
+}

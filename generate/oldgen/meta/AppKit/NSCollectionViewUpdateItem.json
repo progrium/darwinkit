@@ -1,0 +1,23 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewUpdateItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "indexPathBeforeUpdate",
+            "read_only": true,
+            "type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "indexPathAfterUpdate",
+            "read_only": true,
+            "type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "updateAction",
+            "read_only": true,
+            "type": "AppKit.NSCollectionUpdateAction"
+        }
+    ]
+}

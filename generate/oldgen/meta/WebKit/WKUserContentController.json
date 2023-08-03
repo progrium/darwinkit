@@ -1,0 +1,147 @@
+{
+    "kind": "class",
+    "name": "WKUserContentController",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "userScripts",
+            "read_only": true,
+            "type": "NSArray<WebKit.WKUserScript *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addUserScript",
+            "params": [
+                {
+                    "variable_name": "userScript",
+                    "type": "WebKit.WKUserScript *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllUserScripts",
+            "return_type": "void"
+        },
+        {
+            "name": "addScriptMessageHandler",
+            "params": [
+                {
+                    "variable_name": "scriptMessageHandler",
+                    "type": "id<WebKit.WKScriptMessageHandler>"
+                },
+                {
+                    "name": "name",
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addScriptMessageHandler",
+            "params": [
+                {
+                    "variable_name": "scriptMessageHandler",
+                    "type": "id<WebKit.WKScriptMessageHandler>"
+                },
+                {
+                    "name": "contentWorld",
+                    "variable_name": "world",
+                    "type": "WebKit.WKContentWorld *"
+                },
+                {
+                    "name": "name",
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addScriptMessageHandlerWithReply",
+            "params": [
+                {
+                    "variable_name": "scriptMessageHandlerWithReply",
+                    "type": "id<WebKit.WKScriptMessageHandlerWithReply>"
+                },
+                {
+                    "name": "contentWorld",
+                    "variable_name": "contentWorld",
+                    "type": "WebKit.WKContentWorld *"
+                },
+                {
+                    "name": "name",
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeScriptMessageHandlerForName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeScriptMessageHandlerForName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "contentWorld",
+                    "variable_name": "contentWorld",
+                    "type": "WebKit.WKContentWorld *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllScriptMessageHandlersFromContentWorld",
+            "params": [
+                {
+                    "variable_name": "contentWorld",
+                    "type": "WebKit.WKContentWorld *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllScriptMessageHandlers",
+            "return_type": "void"
+        },
+        {
+            "name": "addContentRuleList",
+            "params": [
+                {
+                    "variable_name": "contentRuleList",
+                    "type": "WebKit.WKContentRuleList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeContentRuleList",
+            "params": [
+                {
+                    "variable_name": "contentRuleList",
+                    "type": "WebKit.WKContentRuleList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllContentRuleLists",
+            "return_type": "void"
+        }
+    ]
+}

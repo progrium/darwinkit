@@ -1,0 +1,453 @@
+{
+    "kind": "class",
+    "name": "NSText",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "string",
+            "type": "NSString*"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectable",
+            "getter_name": "isSelectable",
+            "type": "BOOL"
+        },
+        {
+            "name": "fieldEditor",
+            "getter_name": "isFieldEditor",
+            "type": "BOOL"
+        },
+        {
+            "name": "richText",
+            "getter_name": "isRichText",
+            "type": "BOOL"
+        },
+        {
+            "name": "importsGraphics",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesFontPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "rulerVisible",
+            "read_only": true,
+            "getter_name": "isRulerVisible",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectedRange",
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "font",
+            "type": "AppKit.NSFont *"
+        },
+        {
+            "name": "alignment",
+            "type": "AppKit.NSTextAlignment"
+        },
+        {
+            "name": "textColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "baseWritingDirection",
+            "type": "AppKit.NSWritingDirection"
+        },
+        {
+            "name": "maxSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "minSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "verticallyResizable",
+            "getter_name": "isVerticallyResizable",
+            "type": "BOOL"
+        },
+        {
+            "name": "horizontallyResizable",
+            "getter_name": "isHorizontallyResizable",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTextDelegate>",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "toggleRuler",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "replaceCharactersInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withRTF",
+                    "variable_name": "rtfData",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "replaceCharactersInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withRTFD",
+                    "variable_name": "rtfdData",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "replaceCharactersInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withString",
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectAll",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "copy",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cut",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "paste",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "copyFont",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "pasteFont",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "copyRuler",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "pasteRuler",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "delete",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeFont",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setFont",
+            "params": [
+                {
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "alignCenter",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "alignLeft",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "alignRight",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setTextColor",
+            "params": [
+                {
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "superscript",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "subscript",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "unscript",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "underline",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "readRTFDFromFile",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "writeRTFDToFile",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "atomically",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "RTFDFromRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "RTFFromRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "checkSpelling",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "showGuessPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sizeToFit",
+            "return_type": "void"
+        },
+        {
+            "name": "scrollRangeToVisible",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSColorRenderingIntent",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorRenderingIntentDefault",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorRenderingIntentAbsoluteColorimetric",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorRenderingIntentRelativeColorimetric",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorRenderingIntentPerceptual",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorRenderingIntentSaturation",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

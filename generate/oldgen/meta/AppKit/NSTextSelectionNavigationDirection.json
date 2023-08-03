@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionNavigationDirection",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionNavigationDirectionForward",
+            "module": "AppKit",
+            "value": "0"
+        },
+        {
+            "name": "NSTextSelectionNavigationDirectionBackward",
+            "module": "AppKit",
+            "value": "1"
+        },
+        {
+            "name": "NSTextSelectionNavigationDirectionLeft",
+            "module": "AppKit",
+            "value": "3"
+        },
+        {
+            "name": "NSTextSelectionNavigationDirectionRight",
+            "module": "AppKit",
+            "value": "2"
+        },
+        {
+            "name": "NSTextSelectionNavigationDirectionUp",
+            "module": "AppKit",
+            "value": "4"
+        },
+        {
+            "name": "NSTextSelectionNavigationDirectionDown",
+            "module": "AppKit",
+            "value": "5"
+        }
+    ]
+}

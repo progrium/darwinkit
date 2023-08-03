@@ -1,0 +1,37 @@
+{
+    "kind": "class",
+    "name": "CATextLayer",
+    "module": "QuartzCore",
+    "parent": "QuartzCore.CALayer *",
+    "properties": [
+        {
+            "name": "string",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "fontSize",
+            "type": "double"
+        },
+        {
+            "name": "foregroundColor",
+            "type": "CoreGraphics.CGColorRef"
+        },
+        {
+            "name": "allowsFontSubpixelQuantization",
+            "type": "BOOL"
+        },
+        {
+            "name": "wrapped",
+            "getter_name": "isWrapped",
+            "type": "BOOL"
+        },
+        {
+            "name": "alignmentMode",
+            "type": "QuartzCore.CATextLayerAlignmentMode"
+        },
+        {
+            "name": "truncationMode",
+            "type": "QuartzCore.CATextLayerTruncationMode"
+        }
+    ]
+}

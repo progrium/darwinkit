@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSPrintPanelJobStyleHint",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSPrintPhotoJobStyleHint",
+            "value": "Photo",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintAllPresetsJobStyleHint",
+            "value": "All",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintNoPresetsJobStyleHint",
+            "value": "None",
+            "module": "AppKit"
+        }
+    ]
+}

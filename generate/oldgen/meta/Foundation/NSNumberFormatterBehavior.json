@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSNumberFormatterBehavior",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSNumberFormatterBehaviorDefault",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterBehavior10_0",
+            "value": "1000",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterBehavior10_4",
+            "value": "1040",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "kind": "class",
+    "name": "CASpringAnimation",
+    "module": "QuartzCore",
+    "parent": "QuartzCore.CABasicAnimation *",
+    "properties": [
+        {
+            "name": "damping",
+            "type": "double"
+        },
+        {
+            "name": "initialVelocity",
+            "type": "double"
+        },
+        {
+            "name": "mass",
+            "type": "double"
+        },
+        {
+            "name": "stiffness",
+            "type": "double"
+        }
+    ]
+}

@@ -1,0 +1,309 @@
+{
+    "kind": "class",
+    "name": "NSButtonCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSActionCell *",
+    "properties": [
+        {
+            "name": "alternateTitle",
+            "type": "NSString*"
+        },
+        {
+            "name": "attributedAlternateTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "alternateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "imagePosition",
+            "type": "AppKit.NSCellImagePosition"
+        },
+        {
+            "name": "imageScaling",
+            "type": "AppKit.NSImageScaling"
+        },
+        {
+            "name": "keyEquivalent",
+            "type": "NSString*"
+        },
+        {
+            "name": "keyEquivalentFont",
+            "type": "AppKit.NSFont *",
+            "deprecated": true
+        },
+        {
+            "name": "keyEquivalentModifierMask",
+            "type": "AppKit.NSEventModifierFlags"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "bezelStyle",
+            "type": "AppKit.NSBezelStyle"
+        },
+        {
+            "name": "gradientType",
+            "type": "AppKit.NSGradientType",
+            "deprecated": true
+        },
+        {
+            "name": "imageDimsWhenDisabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "opaque",
+            "read_only": true,
+            "getter_name": "isOpaque",
+            "type": "BOOL"
+        },
+        {
+            "name": "transparent",
+            "getter_name": "isTransparent",
+            "type": "BOOL"
+        },
+        {
+            "name": "showsBorderOnlyWhileMouseInside",
+            "type": "BOOL"
+        },
+        {
+            "name": "highlightsBy",
+            "type": "AppKit.NSCellStyleMask"
+        },
+        {
+            "name": "showsStateBy",
+            "type": "AppKit.NSCellStyleMask"
+        },
+        {
+            "name": "sound",
+            "type": "AppKit.NSSound *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "alternateMnemonic",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "alternateMnemonicLocation",
+            "return_type": "NSUInteger",
+            "deprecated": true
+        },
+        {
+            "name": "setAlternateMnemonicLocation",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setAlternateTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "getPeriodicDelay",
+            "params": [
+                {
+                    "variable_name": "delay",
+                    "type": "float *"
+                },
+                {
+                    "name": "interval",
+                    "variable_name": "interval",
+                    "type": "float *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setPeriodicDelay",
+            "params": [
+                {
+                    "variable_name": "delay",
+                    "type": "float"
+                },
+                {
+                    "name": "interval",
+                    "variable_name": "interval",
+                    "type": "float"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setKeyEquivalentFont",
+            "params": [
+                {
+                    "variable_name": "fontName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "size",
+                    "variable_name": "fontSize",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setButtonType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSButtonType"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseEntered",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseExited",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performClick",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawBezelWithFrame",
+            "params": [
+                {
+                    "variable_name": "frame",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "controlView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "withFrame",
+                    "variable_name": "frame",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "controlView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "Foundation.NSAttributedString *"
+                },
+                {
+                    "name": "withFrame",
+                    "variable_name": "frame",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "controlView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initImageCell",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initTextCell",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

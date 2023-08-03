@@ -1,0 +1,22 @@
+{
+    "kind": "alias",
+    "name": "NSTouchTypeMask",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTouchTypeMaskFromType",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTouchTypeMaskDirect",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTouchTypeMaskIndirect",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

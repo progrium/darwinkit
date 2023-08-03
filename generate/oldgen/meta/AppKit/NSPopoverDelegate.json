@@ -1,0 +1,90 @@
+{
+    "kind": "protocol",
+    "name": "NSPopoverDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "detachableWindowForPopover",
+            "params": [
+                {
+                    "variable_name": "popover",
+                    "type": "AppKit.NSPopover *"
+                }
+            ],
+            "return_type": "AppKit.NSWindow *"
+        },
+        {
+            "name": "popoverShouldClose",
+            "params": [
+                {
+                    "variable_name": "popover",
+                    "type": "AppKit.NSPopover *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "popoverWillShow",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "popoverDidShow",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "popoverWillClose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "popoverDidClose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "popoverDidDetach",
+            "params": [
+                {
+                    "variable_name": "popover",
+                    "type": "AppKit.NSPopover *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "popoverShouldDetach",
+            "params": [
+                {
+                    "variable_name": "popover",
+                    "type": "AppKit.NSPopover *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

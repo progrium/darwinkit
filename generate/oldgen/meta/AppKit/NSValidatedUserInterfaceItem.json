@@ -1,0 +1,19 @@
+{
+    "kind": "protocol",
+    "name": "NSValidatedUserInterfaceItem",
+    "module": "AppKit",
+    "properties": [
+        {
+            "name": "action",
+            "read_only": true,
+            "type": "SEL",
+            "required": true
+        },
+        {
+            "name": "tag",
+            "read_only": true,
+            "type": "NSInteger",
+            "required": true
+        }
+    ]
+}

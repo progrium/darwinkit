@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSSegmentSwitchTracking",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSSegmentSwitchTrackingSelectOne",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentSwitchTrackingSelectAny",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentSwitchTrackingMomentary",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentSwitchTrackingMomentaryAccelerator",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

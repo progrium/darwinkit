@@ -1,0 +1,38 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewItem",
+    "module": "AppKit",
+    "parent": "AppKit.NSViewController *",
+    "properties": [
+        {
+            "name": "imageView",
+            "type": "AppKit.NSImageView *",
+            "weak": true
+        },
+        {
+            "name": "textField",
+            "type": "AppKit.NSTextField *",
+            "weak": true
+        },
+        {
+            "name": "selected",
+            "getter_name": "isSelected",
+            "type": "BOOL"
+        },
+        {
+            "name": "highlightState",
+            "type": "AppKit.NSCollectionViewItemHighlightState"
+        },
+        {
+            "name": "collectionView",
+            "read_only": true,
+            "type": "AppKit.NSCollectionView *",
+            "weak": true
+        },
+        {
+            "name": "draggingImageComponents",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSDraggingImageComponent *> *"
+        }
+    ]
+}

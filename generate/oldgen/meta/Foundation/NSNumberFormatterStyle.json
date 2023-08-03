@@ -1,0 +1,58 @@
+{
+    "kind": "alias",
+    "name": "NSNumberFormatterStyle",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSNumberFormatterNoStyle",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterDecimalStyle",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterPercentStyle",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterScientificStyle",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterSpellOutStyle",
+            "value": "5",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterOrdinalStyle",
+            "value": "6",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterCurrencyStyle",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterCurrencyAccountingStyle",
+            "value": "10",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterCurrencyISOCodeStyle",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNumberFormatterCurrencyPluralStyle",
+            "value": "9",
+            "module": "Foundation"
+        }
+    ]
+}

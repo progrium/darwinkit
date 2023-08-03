@@ -1,0 +1,137 @@
+{
+    "kind": "class",
+    "name": "NSParagraphStyle",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "defaultParagraphStyle",
+            "read_only": true,
+            "type": "AppKit.NSParagraphStyle *",
+            "class_property": true
+        },
+        {
+            "name": "alignment",
+            "read_only": true,
+            "type": "AppKit.NSTextAlignment"
+        },
+        {
+            "name": "firstLineHeadIndent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "headIndent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "tailIndent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "lineHeightMultiple",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "maximumLineHeight",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "minimumLineHeight",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "lineSpacing",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "paragraphSpacing",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "paragraphSpacingBefore",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "tabStops",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTextTab *> *"
+        },
+        {
+            "name": "defaultTabInterval",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "textBlocks",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTextBlock *> *"
+        },
+        {
+            "name": "textLists",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTextList *> *"
+        },
+        {
+            "name": "lineBreakMode",
+            "read_only": true,
+            "type": "AppKit.NSLineBreakMode"
+        },
+        {
+            "name": "lineBreakStrategy",
+            "read_only": true,
+            "type": "AppKit.NSLineBreakStrategy"
+        },
+        {
+            "name": "hyphenationFactor",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "usesDefaultHyphenation",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "tighteningFactorForTruncation",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "allowsDefaultTighteningForTruncation",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "headerLevel",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "baseWritingDirection",
+            "read_only": true,
+            "type": "AppKit.NSWritingDirection"
+        }
+    ],
+    "methods": [
+        {
+            "name": "defaultWritingDirectionForLanguage",
+            "params": [
+                {
+                    "variable_name": "languageName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSWritingDirection",
+            "class_method": true
+        }
+    ]
+}

@@ -1,0 +1,83 @@
+{
+    "kind": "class",
+    "name": "WKWebViewConfiguration",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "websiteDataStore",
+            "type": "WebKit.WKWebsiteDataStore *"
+        },
+        {
+            "name": "userContentController",
+            "type": "WebKit.WKUserContentController *"
+        },
+        {
+            "name": "processPool",
+            "type": "WebKit.WKProcessPool *"
+        },
+        {
+            "name": "applicationNameForUserAgent",
+            "type": "NSString*"
+        },
+        {
+            "name": "limitsNavigationsToAppBoundDomains",
+            "type": "BOOL"
+        },
+        {
+            "name": "preferences",
+            "type": "WebKit.WKPreferences *"
+        },
+        {
+            "name": "defaultWebpagePreferences",
+            "type": "WebKit.WKWebpagePreferences *"
+        },
+        {
+            "name": "suppressesIncrementalRendering",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsAirPlayForMediaPlayback",
+            "type": "BOOL"
+        },
+        {
+            "name": "mediaTypesRequiringUserActionForPlayback",
+            "type": "WebKit.WKAudiovisualMediaTypes"
+        },
+        {
+            "name": "userInterfaceDirectionPolicy",
+            "type": "WebKit.WKUserInterfaceDirectionPolicy"
+        },
+        {
+            "name": "upgradeKnownHostsToHTTPS",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "setURLSchemeHandler",
+            "params": [
+                {
+                    "variable_name": "urlSchemeHandler",
+                    "type": "id<WebKit.WKURLSchemeHandler>"
+                },
+                {
+                    "name": "forURLScheme",
+                    "variable_name": "urlScheme",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "urlSchemeHandlerForURLScheme",
+            "params": [
+                {
+                    "variable_name": "urlScheme",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "id<WebKit.WKURLSchemeHandler>"
+        }
+    ]
+}

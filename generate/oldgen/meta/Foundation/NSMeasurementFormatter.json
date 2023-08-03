@@ -1,0 +1,46 @@
+{
+    "kind": "class",
+    "name": "NSMeasurementFormatter",
+    "module": "Foundation",
+    "parent": "Foundation.NSFormatter *",
+    "properties": [
+        {
+            "name": "unitOptions",
+            "type": "Foundation.NSMeasurementFormatterUnitOptions"
+        },
+        {
+            "name": "unitStyle",
+            "type": "Foundation.NSFormattingUnitStyle"
+        },
+        {
+            "name": "locale",
+            "type": "Foundation.NSLocale *"
+        },
+        {
+            "name": "numberFormatter",
+            "type": "Foundation.NSNumberFormatter *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "stringFromMeasurement",
+            "params": [
+                {
+                    "variable_name": "measurement",
+                    "type": "Foundation.NSMeasurement *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromUnit",
+            "params": [
+                {
+                    "variable_name": "unit",
+                    "type": "Foundation.NSUnit *"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}

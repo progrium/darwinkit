@@ -1,0 +1,179 @@
+{
+    "kind": "class",
+    "name": "NSScreen",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "mainScreen",
+            "read_only": true,
+            "type": "AppKit.NSScreen *",
+            "class_property": true
+        },
+        {
+            "name": "deepestScreen",
+            "read_only": true,
+            "type": "AppKit.NSScreen *",
+            "class_property": true
+        },
+        {
+            "name": "screens",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSScreen *> *",
+            "class_property": true
+        },
+        {
+            "name": "depth",
+            "read_only": true,
+            "type": "AppKit.NSWindowDepth"
+        },
+        {
+            "name": "frame",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "supportedWindowDepths",
+            "read_only": true,
+            "type": "AppKit.NSWindowDepth *"
+        },
+        {
+            "name": "deviceDescription",
+            "read_only": true,
+            "type": "NSDictionary<AppKit.NSDeviceDescriptionKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "colorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *"
+        },
+        {
+            "name": "localizedName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "screensHaveSeparateSpaces",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "backingScaleFactor",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "visibleFrame",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "safeAreaInsets",
+            "read_only": true,
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "maximumPotentialExtendedDynamicRangeColorComponentValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "maximumExtendedDynamicRangeColorComponentValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "maximumReferenceExtendedDynamicRangeColorComponentValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "maximumFramesPerSecond",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "minimumRefreshInterval",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "maximumRefreshInterval",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "displayUpdateGranularity",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "lastDisplayUpdateTimestamp",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "auxiliaryTopLeftArea",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "auxiliaryTopRightArea",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        }
+    ],
+    "methods": [
+        {
+            "name": "userSpaceScaleFactor",
+            "return_type": "double",
+            "deprecated": true
+        },
+        {
+            "name": "canRepresentDisplayGamut",
+            "params": [
+                {
+                    "variable_name": "displayGamut",
+                    "type": "AppKit.NSDisplayGamut"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "backingAlignedRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSAlignmentOptions"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRectFromBacking",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRectToBacking",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        }
+    ]
+}

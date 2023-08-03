@@ -1,0 +1,125 @@
+{
+    "kind": "class",
+    "name": "NSPredicateEditorRowTemplate",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "templateViews",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSView *> *"
+        },
+        {
+            "name": "leftExpressions",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSExpression *> *"
+        },
+        {
+            "name": "rightExpressions",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSExpression *> *"
+        },
+        {
+            "name": "compoundTypes",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "modifier",
+            "read_only": true,
+            "type": "Foundation.NSComparisonPredicateModifier"
+        },
+        {
+            "name": "operators",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "options",
+            "read_only": true,
+            "type": "NSUInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithLeftExpressions",
+            "params": [
+                {
+                    "variable_name": "leftExpressions",
+                    "type": "NSArray<Foundation.NSExpression *> *"
+                },
+                {
+                    "name": "rightExpressions",
+                    "variable_name": "rightExpressions",
+                    "type": "NSArray<Foundation.NSExpression *> *"
+                },
+                {
+                    "name": "modifier",
+                    "variable_name": "modifier",
+                    "type": "Foundation.NSComparisonPredicateModifier"
+                },
+                {
+                    "name": "operators",
+                    "variable_name": "operators",
+                    "type": "NSArray<Foundation.NSNumber *> *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCompoundTypes",
+            "params": [
+                {
+                    "variable_name": "compoundTypes",
+                    "type": "NSArray<Foundation.NSNumber *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "matchForPredicate",
+            "params": [
+                {
+                    "variable_name": "predicate",
+                    "type": "Foundation.NSPredicate *"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "setPredicate",
+            "params": [
+                {
+                    "variable_name": "predicate",
+                    "type": "Foundation.NSPredicate *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayableSubpredicatesOfPredicate",
+            "params": [
+                {
+                    "variable_name": "predicate",
+                    "type": "Foundation.NSPredicate *"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSPredicate *> *"
+        },
+        {
+            "name": "predicateWithSubpredicates",
+            "params": [
+                {
+                    "variable_name": "subpredicates",
+                    "type": "NSArray<Foundation.NSPredicate *> *"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *"
+        }
+    ]
+}

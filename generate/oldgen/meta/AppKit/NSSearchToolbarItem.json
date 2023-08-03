@@ -1,0 +1,30 @@
+{
+    "kind": "class",
+    "name": "NSSearchToolbarItem",
+    "module": "AppKit",
+    "parent": "AppKit.NSToolbarItem *",
+    "properties": [
+        {
+            "name": "preferredWidthForSearchField",
+            "type": "double"
+        },
+        {
+            "name": "resignsFirstResponderWithCancel",
+            "type": "BOOL"
+        },
+        {
+            "name": "searchField",
+            "type": "AppKit.NSSearchField *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "beginSearchInteraction",
+            "return_type": "void"
+        },
+        {
+            "name": "endSearchInteraction",
+            "return_type": "void"
+        }
+    ]
+}

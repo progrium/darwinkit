@@ -1,0 +1,13 @@
+{
+    "kind": "class",
+    "name": "WKNavigation",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "effectiveContentMode",
+            "read_only": true,
+            "type": "WebKit.WKContentMode"
+        }
+    ]
+}

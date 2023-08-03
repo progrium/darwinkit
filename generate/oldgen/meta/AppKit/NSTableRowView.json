@@ -1,0 +1,121 @@
+{
+    "kind": "class",
+    "name": "NSTableRowView",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "emphasized",
+            "getter_name": "isEmphasized",
+            "type": "BOOL"
+        },
+        {
+            "name": "interiorBackgroundStyle",
+            "read_only": true,
+            "type": "AppKit.NSBackgroundStyle"
+        },
+        {
+            "name": "floating",
+            "getter_name": "isFloating",
+            "type": "BOOL"
+        },
+        {
+            "name": "selected",
+            "getter_name": "isSelected",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectionHighlightStyle",
+            "type": "AppKit.NSTableViewSelectionHighlightStyle"
+        },
+        {
+            "name": "draggingDestinationFeedbackStyle",
+            "type": "AppKit.NSTableViewDraggingDestinationFeedbackStyle"
+        },
+        {
+            "name": "indentationForDropOperation",
+            "type": "double"
+        },
+        {
+            "name": "targetForDropOperation",
+            "getter_name": "isTargetForDropOperation",
+            "type": "BOOL"
+        },
+        {
+            "name": "groupRowStyle",
+            "getter_name": "isGroupRowStyle",
+            "type": "BOOL"
+        },
+        {
+            "name": "numberOfColumns",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "nextRowSelected",
+            "getter_name": "isNextRowSelected",
+            "type": "BOOL"
+        },
+        {
+            "name": "previousRowSelected",
+            "getter_name": "isPreviousRowSelected",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "drawBackgroundInRect",
+            "params": [
+                {
+                    "variable_name": "dirtyRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawDraggingDestinationFeedbackInRect",
+            "params": [
+                {
+                    "variable_name": "dirtyRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawSelectionInRect",
+            "params": [
+                {
+                    "variable_name": "dirtyRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawSeparatorInRect",
+            "params": [
+                {
+                    "variable_name": "dirtyRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewAtColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        }
+    ]
+}

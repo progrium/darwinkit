@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSSoundName",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

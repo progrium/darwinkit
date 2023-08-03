@@ -1,0 +1,58 @@
+{
+    "kind": "alias",
+    "name": "NSEventSubtype",
+    "module": "AppKit",
+    "target_type": "int16_t",
+    "values": [
+        {
+            "name": "NSEventSubtypeApplicationActivated",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeApplicationDeactivated",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeScreenChanged",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeWindowExposed",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeWindowMoved",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypePowerOff",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeMouseEvent",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeTabletPoint",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeTabletProximity",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSubtypeTouch",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

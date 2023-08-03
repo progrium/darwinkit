@@ -1,0 +1,55 @@
+{
+    "kind": "class",
+    "name": "NSExtensionContext",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "inputItems",
+            "read_only": true,
+            "type": "NSArray<objectivec.NSObject *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "cancelRequestWithError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "completeRequestReturningItems",
+            "params": [
+                {
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL expired)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "openURL",
+            "params": [
+                {
+                    "variable_name": "URL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL success)"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

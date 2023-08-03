@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSBrowserColumnsAutosaveName",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

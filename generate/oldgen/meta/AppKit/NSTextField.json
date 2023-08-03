@@ -1,0 +1,212 @@
+{
+    "kind": "class",
+    "name": "NSTextField",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "selectable",
+            "getter_name": "isSelectable",
+            "type": "BOOL"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsEditingTextAttributes",
+            "type": "BOOL"
+        },
+        {
+            "name": "importsGraphics",
+            "type": "BOOL"
+        },
+        {
+            "name": "placeholderString",
+            "type": "NSString*"
+        },
+        {
+            "name": "placeholderAttributedString",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "lineBreakStrategy",
+            "type": "AppKit.NSLineBreakStrategy"
+        },
+        {
+            "name": "allowsDefaultTighteningForTruncation",
+            "type": "BOOL"
+        },
+        {
+            "name": "maximumNumberOfLines",
+            "type": "NSInteger"
+        },
+        {
+            "name": "preferredMaxLayoutWidth",
+            "type": "double"
+        },
+        {
+            "name": "textColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "bezeled",
+            "getter_name": "isBezeled",
+            "type": "BOOL"
+        },
+        {
+            "name": "bezelStyle",
+            "type": "AppKit.NSTextFieldBezelStyle"
+        },
+        {
+            "name": "bordered",
+            "getter_name": "isBordered",
+            "type": "BOOL"
+        },
+        {
+            "name": "acceptsFirstResponder",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsCharacterPickerTouchBarItem",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticTextCompletionEnabled",
+            "getter_name": "isAutomaticTextCompletionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTextFieldDelegate>",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "labelWithAttributedString",
+            "params": [
+                {
+                    "variable_name": "attributedStringValue",
+                    "type": "Foundation.NSAttributedString *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "labelWithString",
+            "params": [
+                {
+                    "variable_name": "stringValue",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "textFieldWithString",
+            "params": [
+                {
+                    "variable_name": "stringValue",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "wrappingLabelWithString",
+            "params": [
+                {
+                    "variable_name": "stringValue",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "selectText",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "textShouldBeginEditing",
+            "params": [
+                {
+                    "variable_name": "textObject",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "textDidBeginEditing",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "textDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "textShouldEndEditing",
+            "params": [
+                {
+                    "variable_name": "textObject",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "textDidEndEditing",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

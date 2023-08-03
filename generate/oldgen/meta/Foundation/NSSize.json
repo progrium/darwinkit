@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSSize",
+    "module": "Foundation",
+    "target_type": "CoreGraphics.CGSize"
+}

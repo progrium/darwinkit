@@ -1,0 +1,25 @@
+{
+    "kind": "protocol",
+    "name": "NSSoundDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "sound",
+            "params": [
+                {
+                    "variable_name": "sound",
+                    "type": "AppKit.NSSound *"
+                },
+                {
+                    "name": "didFinishPlaying",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

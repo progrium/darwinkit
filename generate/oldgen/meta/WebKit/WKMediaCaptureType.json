@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "WKMediaCaptureType",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKMediaCaptureTypeCamera",
+            "value": "0",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaCaptureTypeCameraAndMicrophone",
+            "value": "2",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaCaptureTypeMicrophone",
+            "value": "1",
+            "module": "WebKit"
+        }
+    ]
+}

@@ -1,0 +1,212 @@
+{
+    "kind": "class",
+    "name": "NSUndoManager",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "canUndo",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canRedo",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "levelsOfUndo",
+            "type": "NSUInteger"
+        },
+        {
+            "name": "groupsByEvent",
+            "type": "BOOL"
+        },
+        {
+            "name": "groupingLevel",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "undoRegistrationEnabled",
+            "read_only": true,
+            "getter_name": "isUndoRegistrationEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "undoing",
+            "read_only": true,
+            "getter_name": "isUndoing",
+            "type": "BOOL"
+        },
+        {
+            "name": "redoing",
+            "read_only": true,
+            "getter_name": "isRedoing",
+            "type": "BOOL"
+        },
+        {
+            "name": "undoActionName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "redoActionName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "undoMenuItemTitle",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "redoMenuItemTitle",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "runLoopModes",
+            "type": "NSArray<Foundation.NSRunLoopMode> *"
+        },
+        {
+            "name": "undoActionIsDiscardable",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "redoActionIsDiscardable",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "registerUndoWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "handler",
+                    "variable_name": "undoHandler",
+                    "type": "void (^) (objectivec.NSObject * target)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "registerUndoWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "selector",
+                    "variable_name": "selector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "object",
+                    "variable_name": "anObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "prepareWithInvocationTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "undo",
+            "return_type": "void"
+        },
+        {
+            "name": "undoNestedGroup",
+            "return_type": "void"
+        },
+        {
+            "name": "redo",
+            "return_type": "void"
+        },
+        {
+            "name": "beginUndoGrouping",
+            "return_type": "void"
+        },
+        {
+            "name": "endUndoGrouping",
+            "return_type": "void"
+        },
+        {
+            "name": "disableUndoRegistration",
+            "return_type": "void"
+        },
+        {
+            "name": "enableUndoRegistration",
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllActions",
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllActionsWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setActionName",
+            "params": [
+                {
+                    "variable_name": "actionName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "undoMenuTitleForUndoActionName",
+            "params": [
+                {
+                    "variable_name": "actionName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "redoMenuTitleForUndoActionName",
+            "params": [
+                {
+                    "variable_name": "actionName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "setActionIsDiscardable",
+            "params": [
+                {
+                    "variable_name": "discardable",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

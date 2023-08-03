@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewColumnAutoresizingStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTableViewNoColumnAutoresizing",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewUniformColumnAutoresizingStyle",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewSequentialColumnAutoresizingStyle",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewReverseSequentialColumnAutoresizingStyle",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewLastColumnOnlyAutoresizingStyle",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewFirstColumnOnlyAutoresizingStyle",
+            "value": "5",
+            "module": "AppKit"
+        }
+    ]
+}

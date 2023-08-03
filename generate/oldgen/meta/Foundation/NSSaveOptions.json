@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSSaveOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSSaveOptionsYes",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSSaveOptionsNo",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSSaveOptionsAsk",
+            "value": "2",
+            "module": "Foundation"
+        }
+    ]
+}

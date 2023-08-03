@@ -1,0 +1,1313 @@
+{
+    "kind": "class",
+    "name": "NSColor",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "ignoresAlpha",
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "numberOfComponents",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "alphaComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "whiteComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "redComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "greenComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "blueComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "cyanComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "magentaComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "yellowComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "blackComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "hueComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "saturationComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "brightnessComponent",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "catalogNameComponent",
+            "read_only": true,
+            "type": "AppKit.NSColorListName"
+        },
+        {
+            "name": "localizedCatalogNameComponent",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "colorNameComponent",
+            "read_only": true,
+            "type": "AppKit.NSColorName"
+        },
+        {
+            "name": "localizedColorNameComponent",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "type",
+            "read_only": true,
+            "type": "AppKit.NSColorType"
+        },
+        {
+            "name": "colorSpace",
+            "read_only": true,
+            "type": "AppKit.NSColorSpace *"
+        },
+        {
+            "name": "colorSpaceName",
+            "read_only": true,
+            "type": "AppKit.NSColorSpaceName",
+            "deprecated": true
+        },
+        {
+            "name": "CGColor",
+            "read_only": true,
+            "type": "CoreGraphics.CGColorRef"
+        },
+        {
+            "name": "systemCyanColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemMintColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "labelColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "secondaryLabelColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "tertiaryLabelColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "quaternaryLabelColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "textColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "placeholderTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "selectedTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "textBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "selectedTextBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "keyboardFocusIndicatorColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "unemphasizedSelectedTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "unemphasizedSelectedTextBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "linkColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "separatorColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "selectedContentBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "unemphasizedSelectedContentBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "selectedMenuItemTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "gridColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "headerTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "alternatingContentBackgroundColors",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSColor *> *",
+            "class_property": true
+        },
+        {
+            "name": "controlAccentColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "controlColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "controlBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "controlTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "disabledControlTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "currentControlTint",
+            "read_only": true,
+            "type": "AppKit.NSControlTint",
+            "class_property": true
+        },
+        {
+            "name": "selectedControlColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "selectedControlTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "alternateSelectedControlTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "scrubberTexturedBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "windowBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "windowFrameTextColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "underPageBackgroundColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "findHighlightColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "highlightColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "shadowColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "alternateSelectedControlColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "controlAlternatingRowBackgroundColors",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSColor *> *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "controlHighlightColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "controlLightHighlightColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "controlShadowColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "controlDarkShadowColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "headerColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "knobColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "selectedKnobColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "scrollBarColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "secondarySelectedControlColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "selectedMenuItemColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "windowFrameColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true,
+            "deprecated": true
+        },
+        {
+            "name": "systemBlueColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemBrownColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemGrayColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemGreenColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemIndigoColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemOrangeColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemPinkColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemPurpleColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemRedColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemTealColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "systemYellowColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "clearColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "blackColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "blueColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "brownColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "cyanColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "darkGrayColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "grayColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "greenColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "lightGrayColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "magentaColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "orangeColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "purpleColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "redColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "whiteColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "yellowColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *",
+            "class_property": true
+        },
+        {
+            "name": "patternImage",
+            "read_only": true,
+            "type": "AppKit.NSImage *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "colorWithSystemEffect",
+            "params": [
+                {
+                    "variable_name": "systemEffect",
+                    "type": "AppKit.NSColorSystemEffect"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "colorUsingColorSpace",
+            "params": [
+                {
+                    "variable_name": "space",
+                    "type": "AppKit.NSColorSpace *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "blendedColorWithFraction",
+            "params": [
+                {
+                    "variable_name": "fraction",
+                    "type": "double"
+                },
+                {
+                    "name": "ofColor",
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "colorWithAlphaComponent",
+            "params": [
+                {
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "highlightWithLevel",
+            "params": [
+                {
+                    "variable_name": "val",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "shadowWithLevel",
+            "params": [
+                {
+                    "variable_name": "val",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "colorUsingColorSpaceName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSColorSpaceName"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "deprecated": true
+        },
+        {
+            "name": "colorUsingColorSpaceName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSColorSpaceName"
+                },
+                {
+                    "name": "device",
+                    "variable_name": "deviceDescription",
+                    "type": "NSDictionary<AppKit.NSDeviceDescriptionKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "deprecated": true
+        },
+        {
+            "name": "colorFromPasteboard",
+            "params": [
+                {
+                    "variable_name": "pasteBoard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "writeToPasteboard",
+            "params": [
+                {
+                    "variable_name": "pasteBoard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getCyan",
+            "params": [
+                {
+                    "variable_name": "cyan",
+                    "type": "double *"
+                },
+                {
+                    "name": "magenta",
+                    "variable_name": "magenta",
+                    "type": "double *"
+                },
+                {
+                    "name": "yellow",
+                    "variable_name": "yellow",
+                    "type": "double *"
+                },
+                {
+                    "name": "black",
+                    "variable_name": "black",
+                    "type": "double *"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getHue",
+            "params": [
+                {
+                    "variable_name": "hue",
+                    "type": "double *"
+                },
+                {
+                    "name": "saturation",
+                    "variable_name": "saturation",
+                    "type": "double *"
+                },
+                {
+                    "name": "brightness",
+                    "variable_name": "brightness",
+                    "type": "double *"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getRed",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double *"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double *"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double *"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getWhite",
+            "params": [
+                {
+                    "variable_name": "white",
+                    "type": "double *"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getComponents",
+            "params": [
+                {
+                    "variable_name": "components",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "colorUsingType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSColorType"
+                }
+            ],
+            "return_type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawSwatchInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "set",
+            "return_type": "void"
+        },
+        {
+            "name": "setFill",
+            "return_type": "void"
+        },
+        {
+            "name": "setStroke",
+            "return_type": "void"
+        },
+        {
+            "name": "colorNamed",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSColorName"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorNamed",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSColorName"
+                },
+                {
+                    "name": "bundle",
+                    "variable_name": "bundle",
+                    "type": "Foundation.NSBundle *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithCatalogName",
+            "params": [
+                {
+                    "variable_name": "listName",
+                    "type": "AppKit.NSColorListName"
+                },
+                {
+                    "name": "colorName",
+                    "variable_name": "colorName",
+                    "type": "AppKit.NSColorName"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithSRGBRed",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithDisplayP3Red",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithRed",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithCalibratedRed",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithDeviceRed",
+            "params": [
+                {
+                    "variable_name": "red",
+                    "type": "double"
+                },
+                {
+                    "name": "green",
+                    "variable_name": "green",
+                    "type": "double"
+                },
+                {
+                    "name": "blue",
+                    "variable_name": "blue",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithCalibratedHue",
+            "params": [
+                {
+                    "variable_name": "hue",
+                    "type": "double"
+                },
+                {
+                    "name": "saturation",
+                    "variable_name": "saturation",
+                    "type": "double"
+                },
+                {
+                    "name": "brightness",
+                    "variable_name": "brightness",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithDeviceHue",
+            "params": [
+                {
+                    "variable_name": "hue",
+                    "type": "double"
+                },
+                {
+                    "name": "saturation",
+                    "variable_name": "saturation",
+                    "type": "double"
+                },
+                {
+                    "name": "brightness",
+                    "variable_name": "brightness",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithHue",
+            "params": [
+                {
+                    "variable_name": "hue",
+                    "type": "double"
+                },
+                {
+                    "name": "saturation",
+                    "variable_name": "saturation",
+                    "type": "double"
+                },
+                {
+                    "name": "brightness",
+                    "variable_name": "brightness",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithColorSpace",
+            "params": [
+                {
+                    "variable_name": "space",
+                    "type": "AppKit.NSColorSpace *"
+                },
+                {
+                    "name": "hue",
+                    "variable_name": "hue",
+                    "type": "double"
+                },
+                {
+                    "name": "saturation",
+                    "variable_name": "saturation",
+                    "type": "double"
+                },
+                {
+                    "name": "brightness",
+                    "variable_name": "brightness",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithDeviceCyan",
+            "params": [
+                {
+                    "variable_name": "cyan",
+                    "type": "double"
+                },
+                {
+                    "name": "magenta",
+                    "variable_name": "magenta",
+                    "type": "double"
+                },
+                {
+                    "name": "yellow",
+                    "variable_name": "yellow",
+                    "type": "double"
+                },
+                {
+                    "name": "black",
+                    "variable_name": "black",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithWhite",
+            "params": [
+                {
+                    "variable_name": "white",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithCalibratedWhite",
+            "params": [
+                {
+                    "variable_name": "white",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithDeviceWhite",
+            "params": [
+                {
+                    "variable_name": "white",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithGenericGamma22White",
+            "params": [
+                {
+                    "variable_name": "white",
+                    "type": "double"
+                },
+                {
+                    "name": "alpha",
+                    "variable_name": "alpha",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithPatternImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithName",
+            "params": [
+                {
+                    "variable_name": "colorName",
+                    "type": "AppKit.NSColorName"
+                },
+                {
+                    "name": "dynamicProvider",
+                    "variable_name": "dynamicProvider",
+                    "type": "AppKit.NSColor * (^) (AppKit.NSAppearance * param1)"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorWithColorSpace",
+            "params": [
+                {
+                    "variable_name": "space",
+                    "type": "AppKit.NSColorSpace *"
+                },
+                {
+                    "name": "components",
+                    "variable_name": "components",
+                    "type": "double *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "numberOfComponents",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "colorForControlTint",
+            "params": [
+                {
+                    "variable_name": "controlTint",
+                    "type": "AppKit.NSControlTint"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true,
+            "deprecated": true
+        },
+        {
+            "name": "colorWithCGColor",
+            "params": [
+                {
+                    "variable_name": "cgColor",
+                    "type": "CoreGraphics.CGColorRef"
+                }
+            ],
+            "return_type": "AppKit.NSColor *",
+            "class_method": true
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "kind": "class",
+    "name": "NSTextFieldCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSActionCell *",
+    "properties": [
+        {
+            "name": "textColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "bezelStyle",
+            "type": "AppKit.NSTextFieldBezelStyle"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "placeholderString",
+            "type": "NSString*"
+        },
+        {
+            "name": "placeholderAttributedString",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "allowedInputSourceLocales",
+            "type": "NSArray<NSString*> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initTextCell",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "setUpFieldEditorAttributes",
+            "params": [
+                {
+                    "variable_name": "textObj",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "AppKit.NSText *"
+        },
+        {
+            "name": "setWantsNotificationForMarkedText",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

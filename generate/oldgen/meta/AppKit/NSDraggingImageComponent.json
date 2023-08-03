@@ -1,0 +1,43 @@
+{
+    "kind": "class",
+    "name": "NSDraggingImageComponent",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "key",
+            "type": "AppKit.NSDraggingImageComponentKey"
+        },
+        {
+            "name": "contents",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "frame",
+            "type": "Foundation.NSRect"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "AppKit.NSDraggingImageComponentKey"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "draggingImageComponentWithKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "AppKit.NSDraggingImageComponentKey"
+                }
+            ],
+            "return_type": "AppKit.NSDraggingImageComponent *",
+            "class_method": true
+        }
+    ]
+}

@@ -1,0 +1,217 @@
+{
+    "kind": "class",
+    "name": "NSMenuItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "enabled",
+            "getter_name": "isEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "hiddenOrHasHiddenAncestor",
+            "read_only": true,
+            "getter_name": "isHiddenOrHasHiddenAncestor",
+            "type": "BOOL"
+        },
+        {
+            "name": "target",
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "action",
+            "type": "SEL"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "tag",
+            "type": "NSInteger"
+        },
+        {
+            "name": "state",
+            "type": "AppKit.NSControlStateValue"
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "onStateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "offStateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "mixedStateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "submenu",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "hasSubmenu",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "parentItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *",
+            "weak": true
+        },
+        {
+            "name": "separatorItem",
+            "read_only": true,
+            "getter_name": "isSeparatorItem",
+            "type": "BOOL"
+        },
+        {
+            "name": "menu",
+            "type": "AppKit.NSMenu *",
+            "weak": true
+        },
+        {
+            "name": "keyEquivalent",
+            "type": "NSString*"
+        },
+        {
+            "name": "keyEquivalentModifierMask",
+            "type": "AppKit.NSEventModifierFlags"
+        },
+        {
+            "name": "usesUserKeyEquivalents",
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "userKeyEquivalent",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "allowsAutomaticKeyEquivalentLocalization",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsAutomaticKeyEquivalentMirroring",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsKeyEquivalentWhenHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "alternate",
+            "getter_name": "isAlternate",
+            "type": "BOOL"
+        },
+        {
+            "name": "indentationLevel",
+            "type": "NSInteger"
+        },
+        {
+            "name": "toolTip",
+            "type": "NSString*"
+        },
+        {
+            "name": "representedObject",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "view",
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "highlighted",
+            "read_only": true,
+            "getter_name": "isHighlighted",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithTitle",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "selector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "keyEquivalent",
+                    "variable_name": "charCode",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "separatorItem",
+            "return_type": "AppKit.NSMenuItem *",
+            "class_method": true
+        },
+        {
+            "name": "setMnemonicLocation",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "mnemonicLocation",
+            "return_type": "NSUInteger",
+            "deprecated": true
+        },
+        {
+            "name": "setTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "mnemonic",
+            "return_type": "NSString*",
+            "deprecated": true
+        }
+    ]
+}

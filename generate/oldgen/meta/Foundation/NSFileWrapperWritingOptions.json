@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSFileWrapperWritingOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSFileWrapperWritingAtomic",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFileWrapperWritingWithNameUpdating",
+            "value": "2",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "unichar",
+    "module": "Foundation",
+    "target_type": "uint16_t"
+}

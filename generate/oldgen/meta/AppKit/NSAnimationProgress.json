@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSAnimationProgress",
+    "module": "AppKit",
+    "target_type": "float"
+}

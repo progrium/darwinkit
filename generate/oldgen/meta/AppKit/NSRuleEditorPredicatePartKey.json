@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSRuleEditorPredicatePartKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSRuleEditorPredicateComparisonModifier",
+            "value": "NSRuleEditorPredicateComparisonModifier",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateCompoundType",
+            "value": "NSRuleEditorPredicateCompoundType",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateCustomSelector",
+            "value": "NSRuleEditorPredicateCustomSelector",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateLeftExpression",
+            "value": "NSRuleEditorPredicateLeftExpression",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateOperatorType",
+            "value": "NSRuleEditorPredicateOperatorType",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateOptions",
+            "value": "NSRuleEditorPredicateOptions",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRuleEditorPredicateRightExpression",
+            "value": "NSRuleEditorPredicateRightExpression",
+            "module": "AppKit"
+        }
+    ]
+}

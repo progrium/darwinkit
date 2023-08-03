@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSColorType",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorTypeComponentBased",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorTypePattern",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorTypeCatalog",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

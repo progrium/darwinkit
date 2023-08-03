@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "NSMutableDictionary",
+    "module": "Foundation",
+    "parent": "Foundation.NSDictionary *"
+}

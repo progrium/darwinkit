@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSApplicationActivationOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSApplicationActivateAllWindows",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationActivateIgnoringOtherApps",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

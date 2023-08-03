@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSStackViewDistribution",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSStackViewDistributionEqualCentering",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewDistributionEqualSpacing",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewDistributionFill",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewDistributionFillEqually",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewDistributionFillProportionally",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewDistributionGravityAreas",
+            "value": "-1",
+            "module": "AppKit"
+        }
+    ]
+}

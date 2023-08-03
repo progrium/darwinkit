@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSRegularExpressionOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSRegularExpressionCaseInsensitive",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionAllowCommentsAndWhitespace",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionIgnoreMetacharacters",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionDotMatchesLineSeparators",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionAnchorsMatchLines",
+            "value": "16",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionUseUnixLineSeparators",
+            "value": "32",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRegularExpressionUseUnicodeWordBoundaries",
+            "value": "64",
+            "module": "Foundation"
+        }
+    ]
+}

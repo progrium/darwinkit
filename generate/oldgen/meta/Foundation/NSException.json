@@ -1,0 +1,34 @@
+{
+    "kind": "class",
+    "name": "NSException",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "name",
+            "read_only": true,
+            "type": "Foundation.NSExceptionName"
+        },
+        {
+            "name": "reason",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "callStackReturnAddresses",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "callStackSymbols",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "raise",
+            "return_type": "void"
+        }
+    ]
+}

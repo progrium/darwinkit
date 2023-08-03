@@ -1,0 +1,16 @@
+{
+    "kind": "class",
+    "name": "NSPathComponentCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSTextFieldCell *",
+    "properties": [
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "URL",
+            "type": "Foundation.NSURL *"
+        }
+    ]
+}

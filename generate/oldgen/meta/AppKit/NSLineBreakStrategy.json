@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSLineBreakStrategy",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSLineBreakStrategyNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineBreakStrategyPushOut",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineBreakStrategyHangulWordPriority",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineBreakStrategyStandard",
+            "value": "65535",
+            "module": "AppKit"
+        }
+    ]
+}

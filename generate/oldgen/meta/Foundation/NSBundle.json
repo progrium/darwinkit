@@ -1,0 +1,622 @@
+{
+    "kind": "class",
+    "name": "NSBundle",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "mainBundle",
+            "read_only": true,
+            "type": "Foundation.NSBundle *",
+            "class_property": true
+        },
+        {
+            "name": "allFrameworks",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSBundle *> *",
+            "class_property": true
+        },
+        {
+            "name": "allBundles",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSBundle *> *",
+            "class_property": true
+        },
+        {
+            "name": "resourceURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "executableURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "privateFrameworksURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "sharedFrameworksURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "builtInPlugInsURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "sharedSupportURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "appStoreReceiptURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "resourcePath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "executablePath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "privateFrameworksPath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "sharedFrameworksPath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "builtInPlugInsPath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "sharedSupportPath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "bundleURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "bundlePath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "bundleIdentifier",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "infoDictionary",
+            "read_only": true,
+            "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+        },
+        {
+            "name": "localizations",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "preferredLocalizations",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "developmentLocalization",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "localizedInfoDictionary",
+            "read_only": true,
+            "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+        },
+        {
+            "name": "principalClass",
+            "read_only": true,
+            "type": "objectivec.Class *"
+        },
+        {
+            "name": "executableArchitectures",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "loaded",
+            "read_only": true,
+            "getter_name": "isLoaded",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "bundleWithURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "bundleWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "bundleForClass",
+            "params": [
+                {
+                    "variable_name": "aClass",
+                    "type": "objectivec.Class *"
+                }
+            ],
+            "return_type": "Foundation.NSBundle *",
+            "class_method": true
+        },
+        {
+            "name": "bundleWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSBundle *",
+            "class_method": true
+        },
+        {
+            "name": "initWithURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "URLForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withExtension",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withExtension",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLsForResourcesWithExtension",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *"
+        },
+        {
+            "name": "URLForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withExtension",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "localization",
+                    "variable_name": "localizationName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLsForResourcesWithExtension",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "localization",
+                    "variable_name": "localizationName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *"
+        },
+        {
+            "name": "URLForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withExtension",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inBundleWithURL",
+                    "variable_name": "bundleURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "URLsForResourcesWithExtension",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "subdirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inBundleWithURL",
+                    "variable_name": "bundleURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *",
+            "class_method": true
+        },
+        {
+            "name": "pathForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "pathForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "pathForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forLocalization",
+                    "variable_name": "localizationName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "pathsForResourcesOfType",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "pathsForResourcesOfType",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "subpath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forLocalization",
+                    "variable_name": "localizationName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "pathForResource",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "bundlePath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "pathsForResourcesOfType",
+            "params": [
+                {
+                    "variable_name": "ext",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inDirectory",
+                    "variable_name": "bundlePath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "class_method": true
+        },
+        {
+            "name": "localizedStringForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "value",
+                    "variable_name": "value",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "table",
+                    "variable_name": "tableName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "URLForAuxiliaryExecutable",
+            "params": [
+                {
+                    "variable_name": "executableName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "pathForAuxiliaryExecutable",
+            "params": [
+                {
+                    "variable_name": "executableName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "objectForInfoDictionaryKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "preferredLocalizationsFromArray",
+            "params": [
+                {
+                    "variable_name": "localizationsArray",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "class_method": true
+        },
+        {
+            "name": "preferredLocalizationsFromArray",
+            "params": [
+                {
+                    "variable_name": "localizationsArray",
+                    "type": "NSArray<NSString*> *"
+                },
+                {
+                    "name": "forPreferences",
+                    "variable_name": "preferencesArray",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "class_method": true
+        },
+        {
+            "name": "classNamed",
+            "params": [
+                {
+                    "variable_name": "className",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.Class *"
+        },
+        {
+            "name": "preflightAndReturnError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "load",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "loadAndReturnError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "unload",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "localizedAttributedStringForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "value",
+                    "variable_name": "value",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "table",
+                    "variable_name": "tableName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSAttributedString *"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "kind": "protocol",
+    "name": "NSAlertDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "alertShowHelp",
+            "params": [
+                {
+                    "variable_name": "alert",
+                    "type": "AppKit.NSAlert *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

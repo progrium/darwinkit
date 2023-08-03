@@ -1,0 +1,62 @@
+{
+    "kind": "class",
+    "name": "NSGridColumn",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "gridView",
+            "read_only": true,
+            "type": "AppKit.NSGridView *",
+            "weak": true
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "leadingPadding",
+            "type": "double"
+        },
+        {
+            "name": "numberOfCells",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "trailingPadding",
+            "type": "double"
+        },
+        {
+            "name": "width",
+            "type": "double"
+        },
+        {
+            "name": "xPlacement",
+            "type": "AppKit.NSGridCellPlacement"
+        }
+    ],
+    "methods": [
+        {
+            "name": "cellAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSGridCell *"
+        },
+        {
+            "name": "mergeCellsInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSFontAction",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSNoFontChangeAction",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViaPanelFontAction",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAddTraitFontAction",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSizeUpFontAction",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSizeDownFontAction",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSHeavierFontAction",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLighterFontAction",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRemoveTraitFontAction",
+            "value": "7",
+            "module": "AppKit"
+        }
+    ]
+}

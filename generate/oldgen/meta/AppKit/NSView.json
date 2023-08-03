@@ -1,0 +1,2438 @@
+{
+    "kind": "class",
+    "name": "NSView",
+    "module": "AppKit",
+    "parent": "AppKit.NSResponder *",
+    "properties": [
+        {
+            "name": "superview",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "subviews",
+            "type": "NSArray<AppKit.NSView *> *"
+        },
+        {
+            "name": "window",
+            "read_only": true,
+            "type": "AppKit.NSWindow *",
+            "weak": true
+        },
+        {
+            "name": "opaqueAncestor",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "enclosingMenuItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "enclosingScrollView",
+            "read_only": true,
+            "type": "AppKit.NSScrollView *"
+        },
+        {
+            "name": "tag",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "frame",
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "frameRotation",
+            "type": "double"
+        },
+        {
+            "name": "postsFrameChangedNotifications",
+            "type": "BOOL"
+        },
+        {
+            "name": "bounds",
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "boundsRotation",
+            "type": "double"
+        },
+        {
+            "name": "postsBoundsChangedNotifications",
+            "type": "BOOL"
+        },
+        {
+            "name": "flipped",
+            "read_only": true,
+            "getter_name": "isFlipped",
+            "type": "BOOL"
+        },
+        {
+            "name": "rotatedFromBase",
+            "read_only": true,
+            "getter_name": "isRotatedFromBase",
+            "type": "BOOL"
+        },
+        {
+            "name": "rotatedOrScaledFromBase",
+            "read_only": true,
+            "getter_name": "isRotatedOrScaledFromBase",
+            "type": "BOOL"
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "hiddenOrHasHiddenAncestor",
+            "read_only": true,
+            "getter_name": "isHiddenOrHasHiddenAncestor",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsVibrancy",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "focusRingType",
+            "type": "AppKit.NSFocusRingType"
+        },
+        {
+            "name": "focusRingMaskBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "defaultFocusRingType",
+            "read_only": true,
+            "type": "AppKit.NSFocusRingType",
+            "class_property": true
+        },
+        {
+            "name": "drawingFindIndicator",
+            "read_only": true,
+            "getter_name": "isDrawingFindIndicator",
+            "type": "BOOL"
+        },
+        {
+            "name": "wantsLayer",
+            "type": "BOOL"
+        },
+        {
+            "name": "wantsUpdateLayer",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "layer",
+            "type": "QuartzCore.CALayer *"
+        },
+        {
+            "name": "layerContentsPlacement",
+            "type": "AppKit.NSViewLayerContentsPlacement"
+        },
+        {
+            "name": "layerContentsRedrawPolicy",
+            "type": "AppKit.NSViewLayerContentsRedrawPolicy"
+        },
+        {
+            "name": "canDrawSubviewsIntoLayer",
+            "type": "BOOL"
+        },
+        {
+            "name": "layerUsesCoreImageFilters",
+            "type": "BOOL"
+        },
+        {
+            "name": "alphaValue",
+            "type": "double"
+        },
+        {
+            "name": "frameCenterRotation",
+            "type": "double"
+        },
+        {
+            "name": "shadow",
+            "type": "AppKit.NSShadow *"
+        },
+        {
+            "name": "defaultMenu",
+            "read_only": true,
+            "type": "AppKit.NSMenu *",
+            "class_property": true
+        },
+        {
+            "name": "toolTip",
+            "type": "NSString*"
+        },
+        {
+            "name": "focusView",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "class_property": true
+        },
+        {
+            "name": "safeAreaRect",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "safeAreaInsets",
+            "read_only": true,
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "additionalSafeAreaInsets",
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "safeAreaLayoutGuide",
+            "read_only": true,
+            "type": "AppKit.NSLayoutGuide *"
+        },
+        {
+            "name": "userInterfaceLayoutDirection",
+            "type": "AppKit.NSUserInterfaceLayoutDirection"
+        },
+        {
+            "name": "requiresConstraintBasedLayout",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "translatesAutoresizingMaskIntoConstraints",
+            "type": "BOOL"
+        },
+        {
+            "name": "bottomAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "centerXAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "centerYAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "firstBaselineAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "heightAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutDimension *"
+        },
+        {
+            "name": "lastBaselineAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "leadingAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "leftAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "rightAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "topAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "trailingAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "widthAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutDimension *"
+        },
+        {
+            "name": "constraints",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSLayoutConstraint *> *"
+        },
+        {
+            "name": "fittingSize",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "intrinsicContentSize",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "layoutGuides",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSLayoutGuide *> *"
+        },
+        {
+            "name": "layoutMarginsGuide",
+            "read_only": true,
+            "type": "AppKit.NSLayoutGuide *"
+        },
+        {
+            "name": "alignmentRectInsets",
+            "read_only": true,
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "baselineOffsetFromBottom",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "firstBaselineOffsetFromTop",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "lastBaselineOffsetFromBottom",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "needsLayout",
+            "type": "BOOL"
+        },
+        {
+            "name": "needsUpdateConstraints",
+            "type": "BOOL"
+        },
+        {
+            "name": "horizontalContentSizeConstraintActive",
+            "getter_name": "isHorizontalContentSizeConstraintActive",
+            "type": "BOOL"
+        },
+        {
+            "name": "verticalContentSizeConstraintActive",
+            "getter_name": "isVerticalContentSizeConstraintActive",
+            "type": "BOOL"
+        },
+        {
+            "name": "hasAmbiguousLayout",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "autoresizesSubviews",
+            "type": "BOOL"
+        },
+        {
+            "name": "autoresizingMask",
+            "type": "AppKit.NSAutoresizingMaskOptions"
+        },
+        {
+            "name": "canDrawConcurrently",
+            "type": "BOOL"
+        },
+        {
+            "name": "visibleRect",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "wantsDefaultClipping",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "inFullScreenMode",
+            "read_only": true,
+            "getter_name": "isInFullScreenMode",
+            "type": "BOOL"
+        },
+        {
+            "name": "needsDisplay",
+            "type": "BOOL"
+        },
+        {
+            "name": "opaque",
+            "read_only": true,
+            "getter_name": "isOpaque",
+            "type": "BOOL"
+        },
+        {
+            "name": "inLiveResize",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "preservesContentDuringLiveResize",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "rectPreservedDuringLiveResize",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "printJobTitle",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "pageHeader",
+            "read_only": true,
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "pageFooter",
+            "read_only": true,
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "heightAdjustLimit",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "widthAdjustLimit",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "mouseDownCanMoveWindow",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "inputContext",
+            "read_only": true,
+            "type": "AppKit.NSTextInputContext *"
+        },
+        {
+            "name": "allowedTouchTypes",
+            "type": "AppKit.NSTouchTypeMask"
+        },
+        {
+            "name": "wantsRestingTouches",
+            "type": "BOOL"
+        },
+        {
+            "name": "candidateListTouchBarItem",
+            "read_only": true,
+            "type": "AppKit.NSCandidateListTouchBarItem *"
+        },
+        {
+            "name": "gestureRecognizers",
+            "type": "NSArray<AppKit.NSGestureRecognizer *> *"
+        },
+        {
+            "name": "canBecomeKeyView",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "needsPanelToBecomeKey",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "nextKeyView",
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "nextValidKeyView",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "previousKeyView",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "previousValidKeyView",
+            "read_only": true,
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "trackingAreas",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTrackingArea *> *"
+        },
+        {
+            "name": "preparedContentRect",
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "enclosingScrollView",
+            "read_only": true,
+            "type": "AppKit.NSScrollView *"
+        },
+        {
+            "name": "compatibleWithResponsiveScrolling",
+            "getter_name": "isCompatibleWithResponsiveScrolling",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "pressureConfiguration",
+            "type": "AppKit.NSPressureConfiguration *"
+        },
+        {
+            "name": "registeredDraggedTypes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPasteboardType> *"
+        },
+        {
+            "name": "wantsExtendedDynamicRangeOpenGLSurface",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "acceptsTouchEvents",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "canDraw",
+            "read_only": true,
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "wantsBestResolutionOpenGLSurface",
+            "type": "BOOL",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "prepareForReuse",
+            "return_type": "void"
+        },
+        {
+            "name": "isDescendantOf",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "ancestorSharedWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        },
+        {
+            "name": "addSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "positioned",
+                    "variable_name": "place",
+                    "type": "AppKit.NSWindowOrderingMode"
+                },
+                {
+                    "name": "relativeTo",
+                    "variable_name": "otherView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeFromSuperview",
+            "return_type": "void"
+        },
+        {
+            "name": "removeFromSuperviewWithoutNeedingDisplay",
+            "return_type": "void"
+        },
+        {
+            "name": "replaceSubview",
+            "params": [
+                {
+                    "variable_name": "oldView",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "with",
+                    "variable_name": "newView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "didAddSubview",
+            "params": [
+                {
+                    "variable_name": "subview",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidMoveToSuperview",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidMoveToWindow",
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillMoveToSuperview",
+            "params": [
+                {
+                    "variable_name": "newSuperview",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillMoveToWindow",
+            "params": [
+                {
+                    "variable_name": "newWindow",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "willRemoveSubview",
+            "params": [
+                {
+                    "variable_name": "subview",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        },
+        {
+            "name": "setFrameOrigin",
+            "params": [
+                {
+                    "variable_name": "newOrigin",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setFrameSize",
+            "params": [
+                {
+                    "variable_name": "newSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setBoundsOrigin",
+            "params": [
+                {
+                    "variable_name": "newOrigin",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setBoundsSize",
+            "params": [
+                {
+                    "variable_name": "newSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "translateOriginToPoint",
+            "params": [
+                {
+                    "variable_name": "translation",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scaleUnitSquareToSize",
+            "params": [
+                {
+                    "variable_name": "newUnitSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rotateByAngle",
+            "params": [
+                {
+                    "variable_name": "angle",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "backingAlignedRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSAlignmentOptions"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertPointFromBacking",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertPointToBacking",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertPointFromLayer",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertPointToLayer",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertRectFromBacking",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRectToBacking",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRectFromLayer",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRectToLayer",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertSizeFromBacking",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertSizeToBacking",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertSizeFromLayer",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertSizeToLayer",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "fromView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "toView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "convertSize",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "fromView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertSize",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "toView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "convertRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "fromView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "convertRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "centerScanRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "viewDidHide",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidUnhide",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidChangeEffectiveAppearance",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidChangeBackingProperties",
+            "return_type": "void"
+        },
+        {
+            "name": "drawFocusRingMask",
+            "return_type": "void"
+        },
+        {
+            "name": "noteFocusRingMaskChanged",
+            "return_type": "void"
+        },
+        {
+            "name": "setKeyboardFocusRingNeedsDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "makeBackingLayer",
+            "return_type": "QuartzCore.CALayer *"
+        },
+        {
+            "name": "menuForEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "willOpenMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "didCloseMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addCursorRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "cursor",
+                    "variable_name": "object",
+                    "type": "AppKit.NSCursor *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeCursorRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "cursor",
+                    "variable_name": "object",
+                    "type": "AppKit.NSCursor *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "discardCursorRects",
+            "return_type": "void"
+        },
+        {
+            "name": "resetCursorRects",
+            "return_type": "void"
+        },
+        {
+            "name": "addToolTipRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "owner",
+                    "variable_name": "owner",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "userData",
+                    "variable_name": "data",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "AppKit.NSToolTipTag"
+        },
+        {
+            "name": "removeAllToolTips",
+            "return_type": "void"
+        },
+        {
+            "name": "removeToolTip",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "AppKit.NSToolTipTag"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "showDefinitionForAttributedString",
+            "params": [
+                {
+                    "variable_name": "attrString",
+                    "type": "Foundation.NSAttributedString *"
+                },
+                {
+                    "name": "atPoint",
+                    "variable_name": "textBaselineOrigin",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "showDefinitionForAttributedString",
+            "params": [
+                {
+                    "variable_name": "attrString",
+                    "type": "Foundation.NSAttributedString *"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "targetRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSDefinitionOptionKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "baselineOriginProvider",
+                    "variable_name": "originProvider",
+                    "type": "Foundation.NSPoint (^) (Foundation.NSRange adjustedRange)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didRemoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "handleMouseDown",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "locationForPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "pointForLocation",
+                    "variable_name": "point",
+                    "type": "double"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldRemoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "willAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                },
+                {
+                    "name": "atLocation",
+                    "variable_name": "location",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "willMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                },
+                {
+                    "name": "toLocation",
+                    "variable_name": "location",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "willSetClientView",
+                    "variable_name": "newClient",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addConstraint",
+            "params": [
+                {
+                    "variable_name": "constraint",
+                    "type": "AppKit.NSLayoutConstraint *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addConstraints",
+            "params": [
+                {
+                    "variable_name": "constraints",
+                    "type": "NSArray<AppKit.NSLayoutConstraint *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeConstraint",
+            "params": [
+                {
+                    "variable_name": "constraint",
+                    "type": "AppKit.NSLayoutConstraint *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeConstraints",
+            "params": [
+                {
+                    "variable_name": "constraints",
+                    "type": "NSArray<AppKit.NSLayoutConstraint *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateIntrinsicContentSize",
+            "return_type": "void"
+        },
+        {
+            "name": "contentCompressionResistancePriorityForOrientation",
+            "params": [
+                {
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutPriority"
+        },
+        {
+            "name": "setContentCompressionResistancePriority",
+            "params": [
+                {
+                    "variable_name": "priority",
+                    "type": "AppKit.NSLayoutPriority"
+                },
+                {
+                    "name": "forOrientation",
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "contentHuggingPriorityForOrientation",
+            "params": [
+                {
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutPriority"
+        },
+        {
+            "name": "setContentHuggingPriority",
+            "params": [
+                {
+                    "variable_name": "priority",
+                    "type": "AppKit.NSLayoutPriority"
+                },
+                {
+                    "name": "forOrientation",
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addLayoutGuide",
+            "params": [
+                {
+                    "variable_name": "guide",
+                    "type": "AppKit.NSLayoutGuide *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeLayoutGuide",
+            "params": [
+                {
+                    "variable_name": "guide",
+                    "type": "AppKit.NSLayoutGuide *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "alignmentRectForFrame",
+            "params": [
+                {
+                    "variable_name": "frame",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "frameForAlignmentRect",
+            "params": [
+                {
+                    "variable_name": "alignmentRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "layout",
+            "return_type": "void"
+        },
+        {
+            "name": "layoutSubtreeIfNeeded",
+            "return_type": "void"
+        },
+        {
+            "name": "updateConstraints",
+            "return_type": "void"
+        },
+        {
+            "name": "updateConstraintsForSubtreeIfNeeded",
+            "return_type": "void"
+        },
+        {
+            "name": "constraintsAffectingLayoutForOrientation",
+            "params": [
+                {
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSLayoutConstraint *> *"
+        },
+        {
+            "name": "exerciseAmbiguityInLayout",
+            "return_type": "void"
+        },
+        {
+            "name": "resizeSubviewsWithOldSize",
+            "params": [
+                {
+                    "variable_name": "oldSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "resizeWithOldSuperviewSize",
+            "params": [
+                {
+                    "variable_name": "oldSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateLayer",
+            "return_type": "void"
+        },
+        {
+            "name": "drawRect",
+            "params": [
+                {
+                    "variable_name": "dirtyRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "needsToDrawRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "bitmapImageRepForCachingDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "AppKit.NSBitmapImageRep *"
+        },
+        {
+            "name": "cacheDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toBitmapImageRep",
+                    "variable_name": "bitmapImageRep",
+                    "type": "AppKit.NSBitmapImageRep *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "enterFullScreenMode",
+            "params": [
+                {
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                },
+                {
+                    "name": "withOptions",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSViewFullScreenModeOptionKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "exitFullScreenModeWithOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSViewFullScreenModeOptionKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setNeedsDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "invalidRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "display",
+            "return_type": "void"
+        },
+        {
+            "name": "displayRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayRectIgnoringOpacity",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayRectIgnoringOpacity",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inContext",
+                    "variable_name": "context",
+                    "type": "AppKit.NSGraphicsContext *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayIfNeeded",
+            "return_type": "void"
+        },
+        {
+            "name": "displayIfNeededInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayIfNeededIgnoringOpacity",
+            "return_type": "void"
+        },
+        {
+            "name": "displayIfNeededInRectIgnoringOpacity",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "translateRectsNeedingDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "clipRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "by",
+                    "variable_name": "delta",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillDraw",
+            "return_type": "void"
+        },
+        {
+            "name": "getRectsExposedDuringLiveResize",
+            "params": [
+                {
+                    "variable_name": "exposedRects",
+                    "type": "Foundation.NSRect *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillStartLiveResize",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidEndLiveResize",
+            "return_type": "void"
+        },
+        {
+            "name": "print",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "beginPageInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "atPlacement",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "dataWithEPSInsideRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "dataWithPDFInsideRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "writeEPSInsideRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pasteboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "writePDFInsideRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pasteboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawPageBorderWithSize",
+            "params": [
+                {
+                    "variable_name": "borderSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawSheetBorderWithSize",
+            "params": [
+                {
+                    "variable_name": "borderSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "adjustPageWidthNew",
+            "params": [
+                {
+                    "variable_name": "newRight",
+                    "type": "double *"
+                },
+                {
+                    "name": "left",
+                    "variable_name": "oldLeft",
+                    "type": "double"
+                },
+                {
+                    "name": "right",
+                    "variable_name": "oldRight",
+                    "type": "double"
+                },
+                {
+                    "name": "limit",
+                    "variable_name": "rightLimit",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "adjustPageHeightNew",
+            "params": [
+                {
+                    "variable_name": "newBottom",
+                    "type": "double *"
+                },
+                {
+                    "name": "top",
+                    "variable_name": "oldTop",
+                    "type": "double"
+                },
+                {
+                    "name": "bottom",
+                    "variable_name": "oldBottom",
+                    "type": "double"
+                },
+                {
+                    "name": "limit",
+                    "variable_name": "bottomLimit",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "knowsPageRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rectForPage",
+            "params": [
+                {
+                    "variable_name": "page",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "locationOfPrintRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "beginDocument",
+            "return_type": "void"
+        },
+        {
+            "name": "endDocument",
+            "return_type": "void"
+        },
+        {
+            "name": "endPage",
+            "return_type": "void"
+        },
+        {
+            "name": "acceptsFirstMouse",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "hitTest",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        },
+        {
+            "name": "mouse",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "inRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "performKeyEquivalent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "addGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rectForSmartMagnificationAtPoint",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "inRect",
+                    "variable_name": "visibleRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "addTrackingArea",
+            "params": [
+                {
+                    "variable_name": "trackingArea",
+                    "type": "AppKit.NSTrackingArea *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeTrackingArea",
+            "params": [
+                {
+                    "variable_name": "trackingArea",
+                    "type": "AppKit.NSTrackingArea *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateTrackingAreas",
+            "return_type": "void"
+        },
+        {
+            "name": "addTrackingRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "owner",
+                    "variable_name": "owner",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "userData",
+                    "variable_name": "data",
+                    "type": "void *"
+                },
+                {
+                    "name": "assumeInside",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "AppKit.NSTrackingRectTag"
+        },
+        {
+            "name": "removeTrackingRect",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "AppKit.NSTrackingRectTag"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "prepareContentInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollRectToVisible",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "autoscroll",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "adjustScroll",
+            "params": [
+                {
+                    "variable_name": "newVisible",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "scrollClipView",
+            "params": [
+                {
+                    "variable_name": "clipView",
+                    "type": "AppKit.NSClipView *"
+                },
+                {
+                    "name": "toPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "reflectScrolledClipView",
+            "params": [
+                {
+                    "variable_name": "clipView",
+                    "type": "AppKit.NSClipView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "registerForDraggedTypes",
+            "params": [
+                {
+                    "variable_name": "newTypes",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "unregisterDraggedTypes",
+            "return_type": "void"
+        },
+        {
+            "name": "beginDraggingSessionWithItems",
+            "params": [
+                {
+                    "variable_name": "items",
+                    "type": "NSArray<AppKit.NSDraggingItem *> *"
+                },
+                {
+                    "name": "event",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "source",
+                    "variable_name": "source",
+                    "type": "id<AppKit.NSDraggingSource>"
+                }
+            ],
+            "return_type": "AppKit.NSDraggingSession *"
+        },
+        {
+            "name": "shouldDelayWindowOrderingForEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "lockFocus",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "lockFocusIfCanDraw",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "lockFocusIfCanDrawInContext",
+            "params": [
+                {
+                    "variable_name": "context",
+                    "type": "AppKit.NSGraphicsContext *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "unlockFocus",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "scrollRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "by",
+                    "variable_name": "delta",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "convertPointToBase",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint",
+            "deprecated": true
+        },
+        {
+            "name": "convertPointFromBase",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSPoint",
+            "deprecated": true
+        },
+        {
+            "name": "convertSizeToBase",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "convertSizeFromBase",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "convertRectToBase",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "convertRectFromBase",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "performMnemonic",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "shouldDrawColor",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "allocateGState",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "gState",
+            "return_type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "setUpGState",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "renewGState",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "dragImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "at",
+                    "variable_name": "viewLocation",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "offset",
+                    "variable_name": "initialOffset",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "event",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "pasteboard",
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                },
+                {
+                    "name": "source",
+                    "variable_name": "sourceObj",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "slideBack",
+                    "variable_name": "slideFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "dragFile",
+            "params": [
+                {
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "fromRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "slideBack",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "event",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "dragPromisedFilesOfTypes",
+            "params": [
+                {
+                    "variable_name": "typeArray",
+                    "type": "NSArray<NSString*> *"
+                },
+                {
+                    "name": "fromRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "source",
+                    "variable_name": "sourceObject",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "slideBack",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "event",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        }
+    ]
+}

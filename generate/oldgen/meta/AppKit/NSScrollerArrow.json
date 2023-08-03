@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSScrollerArrow",
+    "module": "AppKit",
+    "target_type": "NSUInteger"
+}

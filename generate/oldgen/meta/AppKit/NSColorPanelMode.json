@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSColorPanelMode",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorPanelModeNone",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeGray",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeRGB",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeCMYK",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeHSB",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeCustomPalette",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeColorList",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeWheel",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorPanelModeCrayon",
+            "value": "7",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "kind": "protocol",
+    "name": "NSUserInterfaceItemIdentification",
+    "module": "AppKit",
+    "properties": [
+        {
+            "name": "identifier",
+            "type": "AppKit.NSUserInterfaceItemIdentifier",
+            "required": true
+        }
+    ]
+}

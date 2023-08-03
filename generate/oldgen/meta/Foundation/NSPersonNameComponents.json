@@ -1,0 +1,36 @@
+{
+    "kind": "class",
+    "name": "NSPersonNameComponents",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "namePrefix",
+            "type": "NSString*"
+        },
+        {
+            "name": "givenName",
+            "type": "NSString*"
+        },
+        {
+            "name": "middleName",
+            "type": "NSString*"
+        },
+        {
+            "name": "familyName",
+            "type": "NSString*"
+        },
+        {
+            "name": "nameSuffix",
+            "type": "NSString*"
+        },
+        {
+            "name": "nickname",
+            "type": "NSString*"
+        },
+        {
+            "name": "phoneticRepresentation",
+            "type": "Foundation.NSPersonNameComponents *"
+        }
+    ]
+}

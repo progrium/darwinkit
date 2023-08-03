@@ -1,0 +1,47 @@
+{
+    "kind": "class",
+    "name": "NSPDFPanel",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "accessoryController",
+            "type": "AppKit.NSViewController *"
+        },
+        {
+            "name": "options",
+            "type": "AppKit.NSPDFPanelOptions"
+        },
+        {
+            "name": "defaultFileName",
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "panel",
+            "return_type": "AppKit.NSPDFPanel *",
+            "class_method": true
+        },
+        {
+            "name": "beginSheetWithPDFInfo",
+            "params": [
+                {
+                    "variable_name": "pdfInfo",
+                    "type": "AppKit.NSPDFInfo *"
+                },
+                {
+                    "name": "modalForWindow",
+                    "variable_name": "docWindow",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (NSInteger param1)"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

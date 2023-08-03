@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSCellType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSNullCellType",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextCellType",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCellType",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

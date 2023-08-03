@@ -1,0 +1,1051 @@
+{
+    "kind": "class",
+    "name": "NSWorkspace",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "sharedWorkspace",
+            "read_only": true,
+            "type": "AppKit.NSWorkspace *",
+            "class_property": true
+        },
+        {
+            "name": "notificationCenter",
+            "read_only": true,
+            "type": "Foundation.NSNotificationCenter *"
+        },
+        {
+            "name": "frontmostApplication",
+            "read_only": true,
+            "type": "AppKit.NSRunningApplication *"
+        },
+        {
+            "name": "runningApplications",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSRunningApplication *> *"
+        },
+        {
+            "name": "menuBarOwningApplication",
+            "read_only": true,
+            "type": "AppKit.NSRunningApplication *"
+        },
+        {
+            "name": "fileLabels",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "fileLabelColors",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSColor *> *"
+        },
+        {
+            "name": "accessibilityDisplayShouldDifferentiateWithoutColor",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "accessibilityDisplayShouldIncreaseContrast",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "accessibilityDisplayShouldReduceTransparency",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "accessibilityDisplayShouldInvertColors",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "accessibilityDisplayShouldReduceMotion",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "switchControlEnabled",
+            "read_only": true,
+            "getter_name": "isSwitchControlEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "voiceOverEnabled",
+            "read_only": true,
+            "getter_name": "isVoiceOverEnabled",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "openURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "AppKit.NSWorkspaceOpenConfiguration *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (AppKit.NSRunningApplication * app, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "openURLs",
+            "params": [
+                {
+                    "variable_name": "urls",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                },
+                {
+                    "name": "withApplicationAtURL",
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "AppKit.NSWorkspaceOpenConfiguration *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (AppKit.NSRunningApplication * app, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "openURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "openApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "AppKit.NSWorkspaceOpenConfiguration *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (AppKit.NSRunningApplication * app, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "hideOtherApplications",
+            "return_type": "void"
+        },
+        {
+            "name": "duplicateURLs",
+            "params": [
+                {
+                    "variable_name": "URLs",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "handler",
+                    "type": "void (^) (NSDictionary<Foundation.NSURL *, Foundation.NSURL *> * newURLs, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "recycleURLs",
+            "params": [
+                {
+                    "variable_name": "URLs",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "handler",
+                    "type": "void (^) (NSDictionary<Foundation.NSURL *, Foundation.NSURL *> * newURLs, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "activateFileViewerSelectingURLs",
+            "params": [
+                {
+                    "variable_name": "fileURLs",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inFileViewerRootedAtPath",
+                    "variable_name": "rootFullPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "typeOfFile",
+            "params": [
+                {
+                    "variable_name": "absoluteFilePath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "localizedDescriptionForType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "preferredFilenameExtensionForType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "filenameExtension",
+            "params": [
+                {
+                    "variable_name": "filenameExtension",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isValidForType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "type",
+            "params": [
+                {
+                    "variable_name": "firstTypeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "conformsToType",
+                    "variable_name": "secondTypeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "URLForApplicationWithBundleIdentifier",
+            "params": [
+                {
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "getInfoForFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "application",
+                    "variable_name": "appName",
+                    "type": "NSString* *"
+                },
+                {
+                    "name": "type",
+                    "variable_name": "type",
+                    "type": "NSString* *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "URLForApplicationToOpenURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "getFileSystemInfoForPath",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isRemovable",
+                    "variable_name": "removableFlag",
+                    "type": "BOOL *"
+                },
+                {
+                    "name": "isWritable",
+                    "variable_name": "writableFlag",
+                    "type": "BOOL *"
+                },
+                {
+                    "name": "isUnmountable",
+                    "variable_name": "unmountableFlag",
+                    "type": "BOOL *"
+                },
+                {
+                    "name": "description",
+                    "variable_name": "description",
+                    "type": "NSString* *"
+                },
+                {
+                    "name": "type",
+                    "variable_name": "fileSystemType",
+                    "type": "NSString* *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "isFilePackageAtPath",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "iconForFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "iconForFiles",
+            "params": [
+                {
+                    "variable_name": "fullPaths",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "iconForContentType",
+            "params": [
+                {
+                    "variable_name": "contentType",
+                    "type": "UniformTypeIdentifiers.UTType *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "setIcon",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "forFile",
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceIconCreationOptions"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "unmountAndEjectDeviceAtPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "unmountAndEjectDeviceAtURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "desktopImageURLForScreen",
+            "params": [
+                {
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "setDesktopImageURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "forScreen",
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSWorkspaceDesktopImageOptionKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "desktopImageOptionsForScreen",
+            "params": [
+                {
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                }
+            ],
+            "return_type": "NSDictionary<AppKit.NSWorkspaceDesktopImageOptionKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "showSearchResultsForQueryString",
+            "params": [
+                {
+                    "variable_name": "queryString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "noteFileSystemChanged",
+            "go_name": "noteFileSystemChanged1",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "extendPowerOffBy",
+            "params": [
+                {
+                    "variable_name": "requested",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "requestAuthorizationOfType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSWorkspaceAuthorizationType"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (AppKit.NSWorkspaceAuthorization * authorization, Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDefaultApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "toOpenContentType",
+                    "variable_name": "contentType",
+                    "type": "UniformTypeIdentifiers.UTType *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDefaultApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "toOpenContentTypeOfFileAtURL",
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDefaultApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "toOpenFileAtURL",
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDefaultApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "toOpenURLsWithScheme",
+                    "variable_name": "urlScheme",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "URLForApplicationToOpenContentType",
+            "params": [
+                {
+                    "variable_name": "contentType",
+                    "type": "UniformTypeIdentifiers.UTType *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLsForApplicationsToOpenContentType",
+            "params": [
+                {
+                    "variable_name": "contentType",
+                    "type": "UniformTypeIdentifiers.UTType *"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *"
+        },
+        {
+            "name": "URLsForApplicationsToOpenURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *"
+        },
+        {
+            "name": "URLsForApplicationsWithBundleIdentifier",
+            "params": [
+                {
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSURL *> *"
+        },
+        {
+            "name": "openURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceLaunchOptions"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "NSDictionary<AppKit.NSWorkspaceLaunchConfigurationKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "AppKit.NSRunningApplication *",
+            "deprecated": true
+        },
+        {
+            "name": "openURLs",
+            "params": [
+                {
+                    "variable_name": "urls",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                },
+                {
+                    "name": "withApplicationAtURL",
+                    "variable_name": "applicationURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceLaunchOptions"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "NSDictionary<AppKit.NSWorkspaceLaunchConfigurationKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "AppKit.NSRunningApplication *",
+            "deprecated": true
+        },
+        {
+            "name": "openFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "openFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withApplication",
+                    "variable_name": "appName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "openFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "withApplication",
+                    "variable_name": "appName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "andDeactivate",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "openFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "fromImage",
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "at",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "launchApplication",
+            "params": [
+                {
+                    "variable_name": "appName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "launchApplication",
+            "params": [
+                {
+                    "variable_name": "appName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "showIcon",
+                    "variable_name": "showIcon",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "autolaunch",
+                    "variable_name": "autolaunch",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "launchApplicationAtURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceLaunchOptions"
+                },
+                {
+                    "name": "configuration",
+                    "variable_name": "configuration",
+                    "type": "NSDictionary<AppKit.NSWorkspaceLaunchConfigurationKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "AppKit.NSRunningApplication *",
+            "deprecated": true
+        },
+        {
+            "name": "performFileOperation",
+            "params": [
+                {
+                    "variable_name": "operation",
+                    "type": "AppKit.NSWorkspaceFileOperationName"
+                },
+                {
+                    "name": "source",
+                    "variable_name": "source",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "destination",
+                    "variable_name": "destination",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "files",
+                    "variable_name": "files",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "tag",
+                    "variable_name": "tag",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "fullPathForApplication",
+            "params": [
+                {
+                    "variable_name": "appName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "absolutePathForAppBundleWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "launchAppWithBundleIdentifier",
+            "params": [
+                {
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceLaunchOptions"
+                },
+                {
+                    "name": "additionalEventParamDescriptor",
+                    "variable_name": "descriptor",
+                    "type": "Foundation.NSAppleEventDescriptor *"
+                },
+                {
+                    "name": "launchIdentifier",
+                    "variable_name": "identifier",
+                    "type": "Foundation.NSNumber * *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "openURLs",
+            "params": [
+                {
+                    "variable_name": "urls",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                },
+                {
+                    "name": "withAppBundleIdentifier",
+                    "variable_name": "bundleIdentifier",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "AppKit.NSWorkspaceLaunchOptions"
+                },
+                {
+                    "name": "additionalEventParamDescriptor",
+                    "variable_name": "descriptor",
+                    "type": "Foundation.NSAppleEventDescriptor *"
+                },
+                {
+                    "name": "launchIdentifiers",
+                    "variable_name": "identifiers",
+                    "type": "NSArray<Foundation.NSNumber *> * *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "openTempFile",
+            "params": [
+                {
+                    "variable_name": "fullPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "findApplications",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "noteUserDefaultsChanged",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "slideImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "from",
+                    "variable_name": "fromPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "to",
+                    "variable_name": "toPoint",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "checkForRemovableMedia",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "noteFileSystemChanged",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "fileSystemChanged",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "userDefaultsChanged",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "mountNewRemovableMedia",
+            "return_type": "NSArray<objectivec.NSObject *> *",
+            "deprecated": true
+        },
+        {
+            "name": "mountedRemovableMedia",
+            "return_type": "NSArray<objectivec.NSObject *> *",
+            "deprecated": true
+        },
+        {
+            "name": "mountedLocalVolumePaths",
+            "return_type": "NSArray<objectivec.NSObject *> *",
+            "deprecated": true
+        },
+        {
+            "name": "launchedApplications",
+            "return_type": "NSArray<objectivec.NSObject *> *",
+            "deprecated": true
+        },
+        {
+            "name": "iconForFileType",
+            "params": [
+                {
+                    "variable_name": "fileType",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSImage *",
+            "deprecated": true
+        }
+    ]
+}

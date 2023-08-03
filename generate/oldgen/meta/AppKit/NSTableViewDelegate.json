@@ -1,0 +1,520 @@
+{
+    "kind": "protocol",
+    "name": "NSTableViewDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSControlTextEditingDelegate"
+    ],
+    "methods": [
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "viewForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "rowViewForRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSTableRowView *"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "didAddRowView",
+                    "variable_name": "rowView",
+                    "type": "AppKit.NSTableRowView *"
+                },
+                {
+                    "name": "forRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "didRemoveRowView",
+                    "variable_name": "rowView",
+                    "type": "AppKit.NSTableRowView *"
+                },
+                {
+                    "name": "forRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "isGroupRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "willDisplayCell",
+                    "variable_name": "cell",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "dataCellForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldShowCellExpansionForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "toolTipForCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "rect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect *"
+                },
+                {
+                    "name": "tableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "mouseLocation",
+                    "variable_name": "mouseLocation",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldEditTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "heightOfRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "sizeToFitWidthOfColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "selectionShouldChangeInTableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldSelectRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "selectionIndexesForProposedSelection",
+                    "variable_name": "proposedSelectionIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldSelectTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableViewSelectionIsChanging",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableViewSelectionDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldTypeSelectForEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "withCurrentSearchString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "typeSelectStringForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "nextTypeSelectMatchFromRow",
+                    "variable_name": "startRow",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toRow",
+                    "variable_name": "endRow",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "forString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldReorderColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toColumn",
+                    "variable_name": "newColumnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "didDragTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableViewColumnDidMove",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableViewColumnDidResize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "didClickTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "mouseDownInHeaderOfTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "shouldTrackCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "rowActionsForRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "edge",
+                    "variable_name": "edge",
+                    "type": "AppKit.NSTableRowActionEdge"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSTableViewRowAction *> *"
+        }
+    ]
+}

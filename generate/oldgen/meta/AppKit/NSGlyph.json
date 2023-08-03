@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSGlyph",
+    "module": "AppKit",
+    "target_type": "uint32_t"
+}

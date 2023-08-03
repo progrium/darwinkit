@@ -1,0 +1,383 @@
+{
+    "kind": "class",
+    "name": "NSScrollView",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "contentSize",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "documentVisibleRect",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "borderType",
+            "type": "AppKit.NSBorderType"
+        },
+        {
+            "name": "documentCursor",
+            "type": "AppKit.NSCursor *"
+        },
+        {
+            "name": "contentView",
+            "type": "AppKit.NSClipView *"
+        },
+        {
+            "name": "documentView",
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "horizontalScroller",
+            "type": "AppKit.NSScroller *"
+        },
+        {
+            "name": "hasHorizontalScroller",
+            "type": "BOOL"
+        },
+        {
+            "name": "verticalScroller",
+            "type": "AppKit.NSScroller *"
+        },
+        {
+            "name": "hasVerticalScroller",
+            "type": "BOOL"
+        },
+        {
+            "name": "autohidesScrollers",
+            "type": "BOOL"
+        },
+        {
+            "name": "rulerViewClass",
+            "type": "objectivec.Class *",
+            "class_property": true
+        },
+        {
+            "name": "hasHorizontalRuler",
+            "type": "BOOL"
+        },
+        {
+            "name": "horizontalRulerView",
+            "type": "AppKit.NSRulerView *"
+        },
+        {
+            "name": "hasVerticalRuler",
+            "type": "BOOL"
+        },
+        {
+            "name": "verticalRulerView",
+            "type": "AppKit.NSRulerView *"
+        },
+        {
+            "name": "rulersVisible",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticallyAdjustsContentInsets",
+            "type": "BOOL"
+        },
+        {
+            "name": "contentInsets",
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "scrollerInsets",
+            "type": "Foundation.NSEdgeInsets"
+        },
+        {
+            "name": "scrollerKnobStyle",
+            "type": "AppKit.NSScrollerKnobStyle"
+        },
+        {
+            "name": "scrollerStyle",
+            "type": "AppKit.NSScrollerStyle"
+        },
+        {
+            "name": "lineScroll",
+            "type": "double"
+        },
+        {
+            "name": "horizontalLineScroll",
+            "type": "double"
+        },
+        {
+            "name": "verticalLineScroll",
+            "type": "double"
+        },
+        {
+            "name": "pageScroll",
+            "type": "double"
+        },
+        {
+            "name": "horizontalPageScroll",
+            "type": "double"
+        },
+        {
+            "name": "verticalPageScroll",
+            "type": "double"
+        },
+        {
+            "name": "scrollsDynamically",
+            "type": "BOOL"
+        },
+        {
+            "name": "findBarPosition",
+            "type": "AppKit.NSScrollViewFindBarPosition"
+        },
+        {
+            "name": "usesPredominantAxisScrolling",
+            "type": "BOOL"
+        },
+        {
+            "name": "horizontalScrollElasticity",
+            "type": "AppKit.NSScrollElasticity"
+        },
+        {
+            "name": "verticalScrollElasticity",
+            "type": "AppKit.NSScrollElasticity"
+        },
+        {
+            "name": "allowsMagnification",
+            "type": "BOOL"
+        },
+        {
+            "name": "magnification",
+            "type": "double"
+        },
+        {
+            "name": "maxMagnification",
+            "type": "double"
+        },
+        {
+            "name": "minMagnification",
+            "type": "double"
+        }
+    ],
+    "methods": [
+        {
+            "name": "frameSizeForContentSize",
+            "params": [
+                {
+                    "variable_name": "cSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "horizontalScrollerClass",
+                    "variable_name": "horizontalScrollerClass",
+                    "type": "objectivec.Class *"
+                },
+                {
+                    "name": "verticalScrollerClass",
+                    "variable_name": "verticalScrollerClass",
+                    "type": "objectivec.Class *"
+                },
+                {
+                    "name": "borderType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSBorderType"
+                },
+                {
+                    "name": "controlSize",
+                    "variable_name": "controlSize",
+                    "type": "AppKit.NSControlSize"
+                },
+                {
+                    "name": "scrollerStyle",
+                    "variable_name": "scrollerStyle",
+                    "type": "AppKit.NSScrollerStyle"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "class_method": true
+        },
+        {
+            "name": "contentSizeForFrameSize",
+            "params": [
+                {
+                    "variable_name": "fSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "horizontalScrollerClass",
+                    "variable_name": "horizontalScrollerClass",
+                    "type": "objectivec.Class *"
+                },
+                {
+                    "name": "verticalScrollerClass",
+                    "variable_name": "verticalScrollerClass",
+                    "type": "objectivec.Class *"
+                },
+                {
+                    "name": "borderType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSBorderType"
+                },
+                {
+                    "name": "controlSize",
+                    "variable_name": "controlSize",
+                    "type": "AppKit.NSControlSize"
+                },
+                {
+                    "name": "scrollerStyle",
+                    "variable_name": "scrollerStyle",
+                    "type": "AppKit.NSScrollerStyle"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "class_method": true
+        },
+        {
+            "name": "addFloatingSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "forAxis",
+                    "variable_name": "axis",
+                    "type": "AppKit.NSEventGestureAxis"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollWheel",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "reflectScrolledClipView",
+            "params": [
+                {
+                    "variable_name": "cView",
+                    "type": "AppKit.NSClipView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tile",
+            "return_type": "void"
+        },
+        {
+            "name": "flashScrollers",
+            "return_type": "void"
+        },
+        {
+            "name": "magnifyToFitRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setMagnification",
+            "params": [
+                {
+                    "variable_name": "magnification",
+                    "type": "double"
+                },
+                {
+                    "name": "centeredAtPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "frameSizeForContentSize",
+            "params": [
+                {
+                    "variable_name": "cSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "hasHorizontalScroller",
+                    "variable_name": "hFlag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "hasVerticalScroller",
+                    "variable_name": "vFlag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "borderType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSBorderType"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "class_method": true,
+            "deprecated": true
+        },
+        {
+            "name": "contentSizeForFrameSize",
+            "params": [
+                {
+                    "variable_name": "fSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "hasHorizontalScroller",
+                    "variable_name": "hFlag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "hasVerticalScroller",
+                    "variable_name": "vFlag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "borderType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSBorderType"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "class_method": true,
+            "deprecated": true
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

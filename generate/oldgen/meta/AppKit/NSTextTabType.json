@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTextTabType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSLeftTabStopType",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRightTabStopType",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCenterTabStopType",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDecimalTabStopType",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

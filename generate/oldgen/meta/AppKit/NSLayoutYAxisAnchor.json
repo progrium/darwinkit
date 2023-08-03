@@ -1,0 +1,63 @@
+{
+    "kind": "class",
+    "name": "NSLayoutYAxisAnchor",
+    "module": "AppKit",
+    "parent": "AppKit.NSLayoutAnchor *",
+    "methods": [
+        {
+            "name": "constraintEqualToSystemSpacingBelowAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutYAxisAnchor *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "multiplier",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintGreaterThanOrEqualToSystemSpacingBelowAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutYAxisAnchor *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "multiplier",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintLessThanOrEqualToSystemSpacingBelowAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutYAxisAnchor *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "multiplier",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "anchorWithOffsetToAnchor",
+            "params": [
+                {
+                    "variable_name": "otherAnchor",
+                    "type": "AppKit.NSLayoutYAxisAnchor *"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutDimension *"
+        }
+    ]
+}

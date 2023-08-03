@@ -1,0 +1,252 @@
+{
+    "kind": "protocol",
+    "name": "NSTableViewDataSource",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "numberOfRowsInTableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "objectValueForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "setObjectValue",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "pasteboardWriterForRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "id<AppKit.NSPasteboardWriting>"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "acceptDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "row",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "dropOperation",
+                    "variable_name": "dropOperation",
+                    "type": "AppKit.NSTableViewDropOperation"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "namesOfPromisedFilesDroppedAtDestination",
+                    "variable_name": "dropDestination",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "forDraggedRowsWithIndexes",
+                    "variable_name": "indexSet",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "deprecated": true
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "validateDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "proposedRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "proposedDropOperation",
+                    "variable_name": "dropOperation",
+                    "type": "AppKit.NSTableViewDropOperation"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "writeRowsWithIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "draggingSession",
+                    "variable_name": "session",
+                    "type": "AppKit.NSDraggingSession *"
+                },
+                {
+                    "name": "willBeginAtPoint",
+                    "variable_name": "screenPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "forRowIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "updateDraggingItemsForDrag",
+                    "variable_name": "draggingInfo",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "draggingSession",
+                    "variable_name": "session",
+                    "type": "AppKit.NSDraggingSession *"
+                },
+                {
+                    "name": "endedAtPoint",
+                    "variable_name": "screenPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "operation",
+                    "variable_name": "operation",
+                    "type": "AppKit.NSDragOperation"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tableView",
+            "params": [
+                {
+                    "variable_name": "tableView",
+                    "type": "AppKit.NSTableView *"
+                },
+                {
+                    "name": "sortDescriptorsDidChange",
+                    "variable_name": "oldDescriptors",
+                    "type": "NSArray<Foundation.NSSortDescriptor *> *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

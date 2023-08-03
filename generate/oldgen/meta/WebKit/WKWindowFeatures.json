@@ -1,0 +1,48 @@
+{
+    "kind": "class",
+    "name": "WKWindowFeatures",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "allowsResizing",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "height",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "width",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "x",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "y",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "menuBarVisibility",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "statusBarVisibility",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "toolbarsVisibility",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        }
+    ]
+}

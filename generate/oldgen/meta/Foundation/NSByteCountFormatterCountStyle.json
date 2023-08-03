@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSByteCountFormatterCountStyle",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSByteCountFormatterCountStyleFile",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterCountStyleMemory",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterCountStyleDecimal",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSByteCountFormatterCountStyleBinary",
+            "value": "3",
+            "module": "Foundation"
+        }
+    ]
+}

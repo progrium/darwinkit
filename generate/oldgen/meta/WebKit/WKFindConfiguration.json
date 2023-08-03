@@ -1,0 +1,20 @@
+{
+    "kind": "class",
+    "name": "WKFindConfiguration",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "backwards",
+            "type": "BOOL"
+        },
+        {
+            "name": "caseSensitive",
+            "type": "BOOL"
+        },
+        {
+            "name": "wraps",
+            "type": "BOOL"
+        }
+    ]
+}

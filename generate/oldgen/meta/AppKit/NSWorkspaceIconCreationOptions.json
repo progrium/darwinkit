@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSWorkspaceIconCreationOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSExcludeQuickDrawElementsIconCreationOption",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSExclude10_4ElementsIconCreationOption",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

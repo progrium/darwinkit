@@ -1,0 +1,30 @@
+{
+    "kind": "protocol",
+    "name": "NSSearchFieldDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSTextFieldDelegate"
+    ],
+    "methods": [
+        {
+            "name": "searchFieldDidStartSearching",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSSearchField *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "searchFieldDidEndSearching",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSSearchField *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

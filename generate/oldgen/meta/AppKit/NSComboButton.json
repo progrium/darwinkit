@@ -1,0 +1,113 @@
+{
+    "kind": "class",
+    "name": "NSComboButton",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "style",
+            "type": "AppKit.NSComboButtonStyle"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "imageScaling",
+            "type": "AppKit.NSImageScaling"
+        },
+        {
+            "name": "menu",
+            "type": "AppKit.NSMenu *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "comboButtonWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "image",
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "menu",
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "comboButtonWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "menu",
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "comboButtonWithImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "menu",
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSLineSweepDirection",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSLineSweepLeft",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineSweepRight",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineSweepDown",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineSweepUp",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSCalendarOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSCalendarWrapComponents",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchStrictly",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarSearchBackwards",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchPreviousTimePreservingSmallerUnits",
+            "value": "256",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchNextTimePreservingSmallerUnits",
+            "value": "512",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchNextTime",
+            "value": "1024",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchFirst",
+            "value": "4096",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarMatchLast",
+            "value": "8192",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSScrollerStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSScrollerStyleLegacy",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSScrollerStyleOverlay",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

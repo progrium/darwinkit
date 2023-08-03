@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTickMarkPosition",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTickMarkPositionBelow",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTickMarkPositionAbove",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTickMarkPositionLeading",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTickMarkPositionTrailing",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

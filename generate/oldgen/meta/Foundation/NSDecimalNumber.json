@@ -1,0 +1,354 @@
+{
+    "kind": "class",
+    "name": "NSDecimalNumber",
+    "module": "Foundation",
+    "parent": "Foundation.NSNumber *",
+    "properties": [
+        {
+            "name": "one",
+            "read_only": true,
+            "type": "Foundation.NSDecimalNumber *",
+            "class_property": true
+        },
+        {
+            "name": "zero",
+            "read_only": true,
+            "type": "Foundation.NSDecimalNumber *",
+            "class_property": true
+        },
+        {
+            "name": "notANumber",
+            "read_only": true,
+            "type": "Foundation.NSDecimalNumber *",
+            "class_property": true
+        },
+        {
+            "name": "defaultBehavior",
+            "type": "id<Foundation.NSDecimalNumberBehaviors>",
+            "class_property": true
+        },
+        {
+            "name": "decimalValue",
+            "read_only": true,
+            "type": "Foundation.NSDecimal"
+        },
+        {
+            "name": "doubleValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "objCType",
+            "read_only": true,
+            "type": "char *"
+        },
+        {
+            "name": "maximumDecimalNumber",
+            "read_only": true,
+            "type": "Foundation.NSDecimalNumber *",
+            "class_property": true
+        },
+        {
+            "name": "minimumDecimalNumber",
+            "read_only": true,
+            "type": "Foundation.NSDecimalNumber *",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "decimalNumberWithDecimal",
+            "params": [
+                {
+                    "variable_name": "dcm",
+                    "type": "Foundation.NSDecimal"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *",
+            "class_method": true
+        },
+        {
+            "name": "decimalNumberWithMantissa",
+            "params": [
+                {
+                    "variable_name": "mantissa",
+                    "type": "uint64_t"
+                },
+                {
+                    "name": "exponent",
+                    "variable_name": "exponent",
+                    "type": "int16_t"
+                },
+                {
+                    "name": "isNegative",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *",
+            "class_method": true
+        },
+        {
+            "name": "decimalNumberWithString",
+            "params": [
+                {
+                    "variable_name": "numberValue",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *",
+            "class_method": true
+        },
+        {
+            "name": "decimalNumberWithString",
+            "params": [
+                {
+                    "variable_name": "numberValue",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "locale",
+                    "variable_name": "locale",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *",
+            "class_method": true
+        },
+        {
+            "name": "initWithDecimal",
+            "params": [
+                {
+                    "variable_name": "dcm",
+                    "type": "Foundation.NSDecimal"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithMantissa",
+            "params": [
+                {
+                    "variable_name": "mantissa",
+                    "type": "uint64_t"
+                },
+                {
+                    "name": "exponent",
+                    "variable_name": "exponent",
+                    "type": "int16_t"
+                },
+                {
+                    "name": "isNegative",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "numberValue",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "numberValue",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "locale",
+                    "variable_name": "locale",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "decimalNumberByAdding",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberBySubtracting",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByMultiplyingBy",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByDividingBy",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByRaisingToPower",
+            "params": [
+                {
+                    "variable_name": "power",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByMultiplyingByPowerOf10",
+            "params": [
+                {
+                    "variable_name": "power",
+                    "type": "int16_t"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByAdding",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberBySubtracting",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByMultiplyingBy",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByDividingBy",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSDecimalNumber *"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByRaisingToPower",
+            "params": [
+                {
+                    "variable_name": "power",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByMultiplyingByPowerOf10",
+            "params": [
+                {
+                    "variable_name": "power",
+                    "type": "int16_t"
+                },
+                {
+                    "name": "withBehavior",
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "decimalNumberByRoundingAccordingToBehavior",
+            "params": [
+                {
+                    "variable_name": "behavior",
+                    "type": "id<Foundation.NSDecimalNumberBehaviors>"
+                }
+            ],
+            "return_type": "Foundation.NSDecimalNumber *"
+        },
+        {
+            "name": "descriptionWithLocale",
+            "params": [
+                {
+                    "variable_name": "locale",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "compare",
+            "params": [
+                {
+                    "variable_name": "decimalNumber",
+                    "type": "Foundation.NSNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSComparisonResult"
+        }
+    ]
+}

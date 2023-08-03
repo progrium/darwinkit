@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSTextFieldBezelStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextFieldSquareBezel",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextFieldRoundedBezel",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

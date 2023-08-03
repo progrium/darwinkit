@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSBorderType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSBezelBorder",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSGrooveBorder",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineBorder",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSNoBorder",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

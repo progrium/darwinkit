@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "NSDictionary",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *"
+}

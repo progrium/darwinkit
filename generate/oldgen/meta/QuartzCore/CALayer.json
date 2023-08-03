@@ -1,0 +1,666 @@
+{
+    "kind": "class",
+    "name": "CALayer",
+    "module": "QuartzCore",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<QuartzCore.CALayerDelegate>",
+            "weak": true
+        },
+        {
+            "name": "contents",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "contentsRect",
+            "type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "contentsCenter",
+            "type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "contentsGravity",
+            "type": "QuartzCore.CALayerContentsGravity"
+        },
+        {
+            "name": "opacity",
+            "type": "float"
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        },
+        {
+            "name": "masksToBounds",
+            "type": "BOOL"
+        },
+        {
+            "name": "mask",
+            "type": "QuartzCore.CALayer *"
+        },
+        {
+            "name": "doubleSided",
+            "getter_name": "isDoubleSided",
+            "type": "BOOL"
+        },
+        {
+            "name": "cornerRadius",
+            "type": "double"
+        },
+        {
+            "name": "maskedCorners",
+            "type": "QuartzCore.CACornerMask"
+        },
+        {
+            "name": "borderWidth",
+            "type": "double"
+        },
+        {
+            "name": "borderColor",
+            "type": "CoreGraphics.CGColorRef"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "CoreGraphics.CGColorRef"
+        },
+        {
+            "name": "shadowOpacity",
+            "type": "float"
+        },
+        {
+            "name": "shadowRadius",
+            "type": "double"
+        },
+        {
+            "name": "shadowOffset",
+            "type": "CoreGraphics.CGSize"
+        },
+        {
+            "name": "shadowColor",
+            "type": "CoreGraphics.CGColorRef"
+        },
+        {
+            "name": "shadowPath",
+            "type": "CoreGraphics.CGPathRef"
+        },
+        {
+            "name": "allowsEdgeAntialiasing",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsGroupOpacity",
+            "type": "BOOL"
+        },
+        {
+            "name": "filters",
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "compositingFilter",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "backgroundFilters",
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "minificationFilter",
+            "type": "QuartzCore.CALayerContentsFilter"
+        },
+        {
+            "name": "minificationFilterBias",
+            "type": "float"
+        },
+        {
+            "name": "magnificationFilter",
+            "type": "QuartzCore.CALayerContentsFilter"
+        },
+        {
+            "name": "opaque",
+            "getter_name": "isOpaque",
+            "type": "BOOL"
+        },
+        {
+            "name": "edgeAntialiasingMask",
+            "type": "QuartzCore.CAEdgeAntialiasingMask"
+        },
+        {
+            "name": "geometryFlipped",
+            "getter_name": "isGeometryFlipped",
+            "type": "BOOL"
+        },
+        {
+            "name": "drawsAsynchronously",
+            "type": "BOOL"
+        },
+        {
+            "name": "shouldRasterize",
+            "type": "BOOL"
+        },
+        {
+            "name": "rasterizationScale",
+            "type": "double"
+        },
+        {
+            "name": "contentsFormat",
+            "type": "QuartzCore.CALayerContentsFormat"
+        },
+        {
+            "name": "frame",
+            "type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "bounds",
+            "type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "position",
+            "type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "zPosition",
+            "type": "double"
+        },
+        {
+            "name": "anchorPointZ",
+            "type": "double"
+        },
+        {
+            "name": "anchorPoint",
+            "type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "contentsScale",
+            "type": "double"
+        },
+        {
+            "name": "transform",
+            "type": "QuartzCore.CATransform3D"
+        },
+        {
+            "name": "sublayerTransform",
+            "type": "QuartzCore.CATransform3D"
+        },
+        {
+            "name": "sublayers",
+            "type": "NSArray<QuartzCore.CALayer *> *"
+        },
+        {
+            "name": "superlayer",
+            "read_only": true,
+            "type": "QuartzCore.CALayer *"
+        },
+        {
+            "name": "needsDisplayOnBoundsChange",
+            "type": "BOOL"
+        },
+        {
+            "name": "layoutManager",
+            "type": "id<QuartzCore.CALayoutManager>"
+        },
+        {
+            "name": "autoresizingMask",
+            "type": "QuartzCore.CAAutoresizingMask"
+        },
+        {
+            "name": "constraints",
+            "type": "NSArray<QuartzCore.CAConstraint *> *"
+        },
+        {
+            "name": "actions",
+            "type": "NSDictionary<NSString*, id<QuartzCore.CAAction>> *"
+        },
+        {
+            "name": "visibleRect",
+            "read_only": true,
+            "type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "name",
+            "type": "NSString*"
+        },
+        {
+            "name": "cornerCurve",
+            "type": "QuartzCore.CALayerCornerCurve"
+        }
+    ],
+    "methods": [
+        {
+            "name": "layer",
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "layerWithRemoteClientId",
+            "params": [
+                {
+                    "variable_name": "client_id",
+                    "type": "uint32_t"
+                }
+            ],
+            "return_type": "QuartzCore.CALayer *",
+            "class_method": true
+        },
+        {
+            "name": "presentationLayer",
+            "return_type": "instance"
+        },
+        {
+            "name": "modelLayer",
+            "return_type": "instance"
+        },
+        {
+            "name": "display",
+            "return_type": "void"
+        },
+        {
+            "name": "drawInContext",
+            "params": [
+                {
+                    "variable_name": "ctx",
+                    "type": "CoreGraphics.CGContextRef"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "contentsAreFlipped",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "renderInContext",
+            "params": [
+                {
+                    "variable_name": "ctx",
+                    "type": "CoreGraphics.CGContextRef"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "affineTransform",
+            "return_type": "CoreGraphics.CGAffineTransform"
+        },
+        {
+            "name": "setAffineTransform",
+            "params": [
+                {
+                    "variable_name": "m",
+                    "type": "CoreGraphics.CGAffineTransform"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addSublayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeFromSuperlayer",
+            "return_type": "void"
+        },
+        {
+            "name": "insertSublayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "idx",
+                    "type": "uint32_t"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertSublayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "below",
+                    "variable_name": "sibling",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertSublayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "above",
+                    "variable_name": "sibling",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "replaceSublayer",
+            "params": [
+                {
+                    "variable_name": "oldLayer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "with",
+                    "variable_name": "newLayer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setNeedsDisplay",
+            "return_type": "void"
+        },
+        {
+            "name": "setNeedsDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "r",
+                    "type": "CoreGraphics.CGRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "displayIfNeeded",
+            "return_type": "void"
+        },
+        {
+            "name": "needsDisplay",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "needsDisplayForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "addAnimation",
+            "params": [
+                {
+                    "variable_name": "anim",
+                    "type": "QuartzCore.CAAnimation *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "animationForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "QuartzCore.CAAnimation *"
+        },
+        {
+            "name": "removeAllAnimations",
+            "return_type": "void"
+        },
+        {
+            "name": "removeAnimationForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "animationKeys",
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "setNeedsLayout",
+            "return_type": "void"
+        },
+        {
+            "name": "layoutSublayers",
+            "return_type": "void"
+        },
+        {
+            "name": "layoutIfNeeded",
+            "return_type": "void"
+        },
+        {
+            "name": "needsLayout",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "resizeWithOldSuperlayerSize",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "CoreGraphics.CGSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "resizeSublayersWithOldSize",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "CoreGraphics.CGSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "preferredFrameSize",
+            "return_type": "CoreGraphics.CGSize"
+        },
+        {
+            "name": "addConstraint",
+            "params": [
+                {
+                    "variable_name": "c",
+                    "type": "QuartzCore.CAConstraint *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "actionForKey",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "id<QuartzCore.CAAction>"
+        },
+        {
+            "name": "defaultActionForKey",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "id<QuartzCore.CAAction>",
+            "class_method": true
+        },
+        {
+            "name": "convertPoint",
+            "params": [
+                {
+                    "variable_name": "p",
+                    "type": "CoreGraphics.CGPoint"
+                },
+                {
+                    "name": "fromLayer",
+                    "variable_name": "l",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "convertPoint",
+            "params": [
+                {
+                    "variable_name": "p",
+                    "type": "CoreGraphics.CGPoint"
+                },
+                {
+                    "name": "toLayer",
+                    "variable_name": "l",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "convertRect",
+            "params": [
+                {
+                    "variable_name": "r",
+                    "type": "CoreGraphics.CGRect"
+                },
+                {
+                    "name": "fromLayer",
+                    "variable_name": "l",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "convertRect",
+            "params": [
+                {
+                    "variable_name": "r",
+                    "type": "CoreGraphics.CGRect"
+                },
+                {
+                    "name": "toLayer",
+                    "variable_name": "l",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "CoreGraphics.CGRect"
+        },
+        {
+            "name": "hitTest",
+            "params": [
+                {
+                    "variable_name": "p",
+                    "type": "CoreGraphics.CGPoint"
+                }
+            ],
+            "return_type": "QuartzCore.CALayer *"
+        },
+        {
+            "name": "containsPoint",
+            "params": [
+                {
+                    "variable_name": "p",
+                    "type": "CoreGraphics.CGPoint"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "scrollPoint",
+            "params": [
+                {
+                    "variable_name": "p",
+                    "type": "CoreGraphics.CGPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollRectToVisible",
+            "params": [
+                {
+                    "variable_name": "r",
+                    "type": "CoreGraphics.CGRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "shouldArchiveValueForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "defaultValueForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "class_method": true
+        },
+        {
+            "name": "cornerCurveExpansionFactor",
+            "params": [
+                {
+                    "variable_name": "curve",
+                    "type": "QuartzCore.CALayerCornerCurve"
+                }
+            ],
+            "return_type": "double",
+            "class_method": true
+        }
+    ]
+}

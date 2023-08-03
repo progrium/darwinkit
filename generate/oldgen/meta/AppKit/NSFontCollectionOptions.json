@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSFontCollectionOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSFontCollectionApplicationOnlyMask",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

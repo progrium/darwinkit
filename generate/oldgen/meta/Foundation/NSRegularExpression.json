@@ -1,0 +1,268 @@
+{
+    "kind": "class",
+    "name": "NSRegularExpression",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "pattern",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "options",
+            "read_only": true,
+            "type": "Foundation.NSRegularExpressionOptions"
+        },
+        {
+            "name": "numberOfCaptureGroups",
+            "read_only": true,
+            "type": "NSUInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "regularExpressionWithPattern",
+            "params": [
+                {
+                    "variable_name": "pattern",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSRegularExpressionOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "Foundation.NSRegularExpression *",
+            "class_method": true
+        },
+        {
+            "name": "initWithPattern",
+            "params": [
+                {
+                    "variable_name": "pattern",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSRegularExpressionOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "numberOfMatchesInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSUInteger"
+        },
+        {
+            "name": "enumerateMatchesInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (Foundation.NSTextCheckingResult * result, Foundation.NSMatchingFlags flags, BOOL * stop)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "matchesInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSTextCheckingResult *> *"
+        },
+        {
+            "name": "firstMatchInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSTextCheckingResult *"
+        },
+        {
+            "name": "rangeOfFirstMatchInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSRange"
+        },
+        {
+            "name": "replaceMatchesInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "Foundation.NSMutableString *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withTemplate",
+                    "variable_name": "templ",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSUInteger"
+        },
+        {
+            "name": "stringByReplacingMatchesInString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSMatchingOptions"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withTemplate",
+                    "variable_name": "templ",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "escapedTemplateForString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "escapedPatternForString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "replacementStringForResult",
+            "params": [
+                {
+                    "variable_name": "result",
+                    "type": "Foundation.NSTextCheckingResult *"
+                },
+                {
+                    "name": "inString",
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "offset",
+                    "variable_name": "offset",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "template",
+                    "variable_name": "templ",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}

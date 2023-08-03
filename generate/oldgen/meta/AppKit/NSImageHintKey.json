@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSImageHintKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSImageHintCTM",
+            "value": "NSImageHintCTM",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageHintInterpolation",
+            "value": "NSImageHintInterpolation",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageHintUserInterfaceLayoutDirection",
+            "value": "NSImageHintUserInterfaceLayoutDirection",
+            "module": "AppKit"
+        }
+    ]
+}

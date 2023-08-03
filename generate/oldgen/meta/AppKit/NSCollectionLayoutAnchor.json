@@ -1,0 +1,73 @@
+{
+    "kind": "class",
+    "name": "NSCollectionLayoutAnchor",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "edges",
+            "read_only": true,
+            "type": "AppKit.NSDirectionalRectEdge"
+        },
+        {
+            "name": "offset",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "isAbsoluteOffset",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "isFractionalOffset",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "layoutAnchorWithEdges",
+            "params": [
+                {
+                    "variable_name": "edges",
+                    "type": "AppKit.NSDirectionalRectEdge"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "layoutAnchorWithEdges",
+            "params": [
+                {
+                    "variable_name": "edges",
+                    "type": "AppKit.NSDirectionalRectEdge"
+                },
+                {
+                    "name": "absoluteOffset",
+                    "variable_name": "absoluteOffset",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "layoutAnchorWithEdges",
+            "params": [
+                {
+                    "variable_name": "edges",
+                    "type": "AppKit.NSDirectionalRectEdge"
+                },
+                {
+                    "name": "fractionalOffset",
+                    "variable_name": "fractionalOffset",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

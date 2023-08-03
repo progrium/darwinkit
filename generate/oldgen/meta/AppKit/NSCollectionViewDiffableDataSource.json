@@ -1,0 +1,68 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewDiffableDataSource",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "supplementaryViewProvider",
+            "type": "AppKit.NSView * (^) (AppKit.NSCollectionView * param1, NSString* param2, Foundation.NSIndexPath * param3)"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithCollectionView",
+            "params": [
+                {
+                    "variable_name": "collectionView",
+                    "type": "AppKit.NSCollectionView *"
+                },
+                {
+                    "name": "itemProvider",
+                    "variable_name": "itemProvider",
+                    "type": "AppKit.NSCollectionViewItem * (^) (AppKit.NSCollectionView * param1, Foundation.NSIndexPath * param2, objectivec.NSObject * param3)"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "itemIdentifierForIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "indexPathForItemIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "snapshot",
+            "return_type": "AppKit.NSDiffableDataSourceSnapshot *"
+        },
+        {
+            "name": "applySnapshot",
+            "params": [
+                {
+                    "variable_name": "snapshot",
+                    "type": "AppKit.NSDiffableDataSourceSnapshot *"
+                },
+                {
+                    "name": "animatingDifferences",
+                    "variable_name": "animatingDifferences",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

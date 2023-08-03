@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSFormattingContext",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSFormattingContextUnknown",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingContextDynamic",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingContextStandalone",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingContextListItem",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingContextBeginningOfSentence",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingContextMiddleOfSentence",
+            "value": "5",
+            "module": "Foundation"
+        }
+    ]
+}

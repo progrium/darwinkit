@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSSelectionDirection",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSDirectSelection",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSelectingNext",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSelectingPrevious",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

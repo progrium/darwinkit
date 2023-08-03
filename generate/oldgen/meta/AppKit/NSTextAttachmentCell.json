@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "NSTextAttachmentCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSCell *"
+}

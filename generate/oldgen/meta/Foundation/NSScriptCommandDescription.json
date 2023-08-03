@@ -1,0 +1,69 @@
+{
+    "kind": "class",
+    "name": "NSScriptCommandDescription",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "commandClassName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "commandName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "suiteName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "argumentNames",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "returnType",
+            "read_only": true,
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "isOptionalArgumentWithName",
+            "params": [
+                {
+                    "variable_name": "argumentName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "typeForArgumentWithName",
+            "params": [
+                {
+                    "variable_name": "argumentName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "createCommandInstance",
+            "return_type": "Foundation.NSScriptCommand *"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "inCoder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

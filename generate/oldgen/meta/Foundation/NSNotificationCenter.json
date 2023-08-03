@@ -1,0 +1,121 @@
+{
+    "kind": "class",
+    "name": "NSNotificationCenter",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "defaultCenter",
+            "read_only": true,
+            "type": "Foundation.NSNotificationCenter *",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "addObserverForName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "Foundation.NSNotificationName"
+                },
+                {
+                    "name": "object",
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "queue",
+                    "variable_name": "queue",
+                    "type": "Foundation.NSOperationQueue *"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (Foundation.NSNotification * note)"
+                }
+            ],
+            "return_type": "id<objectivec.NSObject>"
+        },
+        {
+            "name": "addObserver",
+            "params": [
+                {
+                    "variable_name": "observer",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "selector",
+                    "variable_name": "aSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "name",
+                    "variable_name": "aName",
+                    "type": "Foundation.NSNotificationName"
+                },
+                {
+                    "name": "object",
+                    "variable_name": "anObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObserver",
+            "params": [
+                {
+                    "variable_name": "observer",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "name",
+                    "variable_name": "aName",
+                    "type": "Foundation.NSNotificationName"
+                },
+                {
+                    "name": "object",
+                    "variable_name": "anObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObserver",
+            "params": [
+                {
+                    "variable_name": "observer",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "postNotification",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "postNotificationName",
+            "params": [
+                {
+                    "variable_name": "aName",
+                    "type": "Foundation.NSNotificationName"
+                },
+                {
+                    "name": "object",
+                    "variable_name": "anObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

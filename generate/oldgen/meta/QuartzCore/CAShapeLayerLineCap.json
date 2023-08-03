@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "CAShapeLayerLineCap",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCALineCapButt",
+            "value": "butt",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALineCapRound",
+            "value": "round",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALineCapSquare",
+            "value": "square",
+            "module": "QuartzCore"
+        }
+    ]
+}

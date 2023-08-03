@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSTextListOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextListPrependEnclosingMarker",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

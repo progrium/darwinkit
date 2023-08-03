@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSURLBookmarkCreationOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSURLBookmarkCreationMinimalBookmark",
+            "value": "512",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLBookmarkCreationSuitableForBookmarkFile",
+            "value": "1024",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLBookmarkCreationWithSecurityScope",
+            "value": "2048",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess",
+            "value": "4096",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLBookmarkCreationWithoutImplicitSecurityScope",
+            "value": "536870912",
+            "module": "Foundation"
+        }
+    ]
+}

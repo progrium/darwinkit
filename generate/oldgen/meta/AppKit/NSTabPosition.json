@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSTabPosition",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTabPositionBottom",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTabPositionLeft",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTabPositionNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTabPositionRight",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTabPositionTop",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

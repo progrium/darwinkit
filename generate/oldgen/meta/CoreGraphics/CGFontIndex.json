@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "CGFontIndex",
+    "module": "CoreGraphics",
+    "target_type": "uint16_t"
+}

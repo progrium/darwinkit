@@ -1,0 +1,78 @@
+{
+    "kind": "alias",
+    "name": "NSApplicationPresentationOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSApplicationPresentationDefault",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationAutoHideDock",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationHideDock",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationAutoHideMenuBar",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationHideMenuBar",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableAppleMenu",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableProcessSwitching",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableForceQuit",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableSessionTermination",
+            "value": "128",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableHideApplication",
+            "value": "256",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableMenuBarTransparency",
+            "value": "512",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationFullScreen",
+            "value": "1024",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationAutoHideToolbar",
+            "value": "2048",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationPresentationDisableCursorLocationAssistance",
+            "value": "4096",
+            "module": "AppKit"
+        }
+    ]
+}

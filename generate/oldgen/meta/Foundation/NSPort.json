@@ -1,0 +1,171 @@
+{
+    "kind": "class",
+    "name": "NSPort",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "valid",
+            "read_only": true,
+            "getter_name": "isValid",
+            "type": "BOOL"
+        },
+        {
+            "name": "reservedSpaceLength",
+            "read_only": true,
+            "type": "NSUInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "port",
+            "return_type": "Foundation.NSPort *",
+            "class_method": true
+        },
+        {
+            "name": "invalidate",
+            "return_type": "void"
+        },
+        {
+            "name": "setDelegate",
+            "params": [
+                {
+                    "variable_name": "anObject",
+                    "type": "id<Foundation.NSPortDelegate>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "delegate",
+            "return_type": "id<Foundation.NSPortDelegate>"
+        },
+        {
+            "name": "addConnection",
+            "params": [
+                {
+                    "variable_name": "conn",
+                    "type": "Foundation.NSConnection *"
+                },
+                {
+                    "name": "toRunLoop",
+                    "variable_name": "runLoop",
+                    "type": "Foundation.NSRunLoop *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "removeConnection",
+            "params": [
+                {
+                    "variable_name": "conn",
+                    "type": "Foundation.NSConnection *"
+                },
+                {
+                    "name": "fromRunLoop",
+                    "variable_name": "runLoop",
+                    "type": "Foundation.NSRunLoop *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "sendBeforeDate",
+            "params": [
+                {
+                    "variable_name": "limitDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "components",
+                    "variable_name": "components",
+                    "type": "Foundation.NSMutableArray *"
+                },
+                {
+                    "name": "from",
+                    "variable_name": "receivePort",
+                    "type": "Foundation.NSPort *"
+                },
+                {
+                    "name": "reserved",
+                    "variable_name": "headerSpaceReserved",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "sendBeforeDate",
+            "params": [
+                {
+                    "variable_name": "limitDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "msgid",
+                    "variable_name": "msgID",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "components",
+                    "variable_name": "components",
+                    "type": "Foundation.NSMutableArray *"
+                },
+                {
+                    "name": "from",
+                    "variable_name": "receivePort",
+                    "type": "Foundation.NSPort *"
+                },
+                {
+                    "name": "reserved",
+                    "variable_name": "headerSpaceReserved",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "removeFromRunLoop",
+            "params": [
+                {
+                    "variable_name": "runLoop",
+                    "type": "Foundation.NSRunLoop *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scheduleInRunLoop",
+            "params": [
+                {
+                    "variable_name": "runLoop",
+                    "type": "Foundation.NSRunLoop *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

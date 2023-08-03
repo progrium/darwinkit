@@ -1,0 +1,12 @@
+{
+    "kind": "class",
+    "name": "NSPredicateEditor",
+    "module": "AppKit",
+    "parent": "AppKit.NSRuleEditor *",
+    "properties": [
+        {
+            "name": "rowTemplates",
+            "type": "NSArray<AppKit.NSPredicateEditorRowTemplate *> *"
+        }
+    ]
+}

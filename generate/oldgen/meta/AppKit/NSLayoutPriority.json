@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSLayoutPriority",
+    "module": "AppKit",
+    "target_type": "float",
+    "values": [
+        {
+            "name": "NSLayoutPriorityRequired",
+            "value": "1000",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityDefaultHigh",
+            "value": "750",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityDragThatCanResizeWindow",
+            "value": "510",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityWindowSizeStayPut",
+            "value": "500",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityDragThatCannotResizeWindow",
+            "value": "490",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityDefaultLow",
+            "value": "250",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutPriorityFittingSizeCompression",
+            "value": "50",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "kind": "class",
+    "name": "NSPageLayout",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "accessoryControllers",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSViewController *> *"
+        },
+        {
+            "name": "printInfo",
+            "read_only": true,
+            "type": "AppKit.NSPrintInfo *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "pageLayout",
+            "return_type": "AppKit.NSPageLayout *",
+            "class_method": true
+        },
+        {
+            "name": "beginSheetWithPrintInfo",
+            "params": [
+                {
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                },
+                {
+                    "name": "modalForWindow",
+                    "variable_name": "docWindow",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didEndSelector",
+                    "variable_name": "didEndSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "runModal",
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "runModalWithPrintInfo",
+            "params": [
+                {
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "addAccessoryController",
+            "params": [
+                {
+                    "variable_name": "accessoryController",
+                    "type": "AppKit.NSViewController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAccessoryController",
+            "params": [
+                {
+                    "variable_name": "accessoryController",
+                    "type": "AppKit.NSViewController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "accessoryView",
+            "return_type": "AppKit.NSView *",
+            "deprecated": true
+        },
+        {
+            "name": "setAccessoryView",
+            "params": [
+                {
+                    "variable_name": "accessoryView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "readPrintInfo",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "writePrintInfo",
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "kind": "class",
+    "name": "CAValueFunction",
+    "module": "QuartzCore",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "name",
+            "read_only": true,
+            "type": "QuartzCore.CAValueFunctionName"
+        }
+    ],
+    "methods": [
+        {
+            "name": "functionWithName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "QuartzCore.CAValueFunctionName"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

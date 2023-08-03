@@ -1,0 +1,73 @@
+{
+    "kind": "alias",
+    "name": "NSBezelStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSBezelStyleRounded",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleRegularSquare",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleShadowlessSquare",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleSmallSquare",
+            "value": "10",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleRoundRect",
+            "value": "12",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleInline",
+            "value": "15",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleRecessed",
+            "value": "13",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleDisclosure",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleRoundedDisclosure",
+            "value": "14",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleCircular",
+            "value": "7",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleHelpButton",
+            "value": "9",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleTexturedRounded",
+            "value": "11",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBezelStyleTexturedSquare",
+            "value": "8",
+            "module": "AppKit"
+        }
+    ]
+}

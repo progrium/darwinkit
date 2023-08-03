@@ -1,0 +1,42 @@
+{
+    "kind": "protocol",
+    "name": "NSViewControllerPresentationAnimator",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "animatePresentationOfViewController",
+            "params": [
+                {
+                    "variable_name": "viewController",
+                    "type": "AppKit.NSViewController *"
+                },
+                {
+                    "name": "fromViewController",
+                    "variable_name": "fromViewController",
+                    "type": "AppKit.NSViewController *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "animateDismissalOfViewController",
+            "params": [
+                {
+                    "variable_name": "viewController",
+                    "type": "AppKit.NSViewController *"
+                },
+                {
+                    "name": "fromViewController",
+                    "variable_name": "fromViewController",
+                    "type": "AppKit.NSViewController *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        }
+    ]
+}

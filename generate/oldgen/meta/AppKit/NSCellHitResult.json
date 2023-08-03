@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSCellHitResult",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSCellHitNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCellHitContentArea",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCellHitEditableTextArea",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCellHitTrackableArea",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

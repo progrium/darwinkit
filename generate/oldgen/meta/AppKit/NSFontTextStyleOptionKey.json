@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSFontTextStyleOptionKey",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

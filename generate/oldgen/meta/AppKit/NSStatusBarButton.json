@@ -1,0 +1,12 @@
+{
+    "kind": "class",
+    "name": "NSStatusBarButton",
+    "module": "AppKit",
+    "parent": "AppKit.NSButton *",
+    "properties": [
+        {
+            "name": "appearsDisabled",
+            "type": "BOOL"
+        }
+    ]
+}

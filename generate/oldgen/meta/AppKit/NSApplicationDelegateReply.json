@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSApplicationDelegateReply",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSApplicationDelegateReplySuccess",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationDelegateReplyCancel",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationDelegateReplyFailure",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

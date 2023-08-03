@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSPoint",
+    "module": "Foundation",
+    "target_type": "CoreGraphics.CGPoint"
+}

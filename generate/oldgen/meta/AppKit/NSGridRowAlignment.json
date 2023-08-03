@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSGridRowAlignment",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSGridRowAlignmentFirstBaseline",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSGridRowAlignmentInherited",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSGridRowAlignmentLastBaseline",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSGridRowAlignmentNone",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

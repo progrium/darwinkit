@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "CGError",
+    "module": "CoreGraphics",
+    "target_type": "int32_t",
+    "values": [
+        {
+            "name": "CGErrorCannotComplete",
+            "value": "1004",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorFailure",
+            "value": "1000",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorIllegalArgument",
+            "value": "1001",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorInvalidConnection",
+            "value": "1002",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorInvalidContext",
+            "value": "1003",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorInvalidOperation",
+            "value": "1010",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorNoneAvailable",
+            "value": "1011",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorNotImplemented",
+            "value": "1006",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorRangeCheck",
+            "value": "1007",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorSuccess",
+            "value": "0",
+            "module": "CoreGraphics"
+        },
+        {
+            "name": "CGErrorTypeCheck",
+            "value": "1008",
+            "module": "CoreGraphics"
+        }
+    ]
+}

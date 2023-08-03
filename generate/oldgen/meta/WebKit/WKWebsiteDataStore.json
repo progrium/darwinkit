@@ -1,0 +1,91 @@
+{
+    "kind": "class",
+    "name": "WKWebsiteDataStore",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "persistent",
+            "read_only": true,
+            "getter_name": "isPersistent",
+            "type": "BOOL"
+        },
+        {
+            "name": "httpCookieStore",
+            "read_only": true,
+            "type": "WebKit.WKHTTPCookieStore *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "defaultDataStore",
+            "return_type": "WebKit.WKWebsiteDataStore *",
+            "class_method": true
+        },
+        {
+            "name": "nonPersistentDataStore",
+            "return_type": "WebKit.WKWebsiteDataStore *",
+            "class_method": true
+        },
+        {
+            "name": "fetchDataRecordsOfTypes",
+            "params": [
+                {
+                    "variable_name": "dataTypes",
+                    "type": "Foundation.NSSet *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (NSArray<WebKit.WKWebsiteDataRecord *> * param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "allWebsiteDataTypes",
+            "return_type": "Foundation.NSSet *",
+            "class_method": true
+        },
+        {
+            "name": "removeDataOfTypes",
+            "params": [
+                {
+                    "variable_name": "dataTypes",
+                    "type": "Foundation.NSSet *"
+                },
+                {
+                    "name": "forDataRecords",
+                    "variable_name": "dataRecords",
+                    "type": "NSArray<WebKit.WKWebsiteDataRecord *> *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeDataOfTypes",
+            "params": [
+                {
+                    "variable_name": "dataTypes",
+                    "type": "Foundation.NSSet *"
+                },
+                {
+                    "name": "modifiedSince",
+                    "variable_name": "date",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

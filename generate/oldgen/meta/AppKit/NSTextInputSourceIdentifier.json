@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSTextInputSourceIdentifier",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

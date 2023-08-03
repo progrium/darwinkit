@@ -1,0 +1,37 @@
+{
+    "kind": "class",
+    "name": "NSDockTile",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "contentView",
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "size",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "owner",
+            "read_only": true,
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "showsApplicationBadge",
+            "type": "BOOL"
+        },
+        {
+            "name": "badgeLabel",
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "display",
+            "return_type": "void"
+        }
+    ]
+}

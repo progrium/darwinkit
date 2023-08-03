@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSImageLoadStatus",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSImageLoadStatusCompleted",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageLoadStatusCancelled",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageLoadStatusInvalidData",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageLoadStatusUnexpectedEOF",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageLoadStatusReadError",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

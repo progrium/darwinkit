@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSImageInterpolation",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSImageInterpolationDefault",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageInterpolationNone",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageInterpolationLow",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageInterpolationMedium",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageInterpolationHigh",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

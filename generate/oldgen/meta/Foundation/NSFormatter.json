@@ -1,0 +1,93 @@
+{
+    "kind": "class",
+    "name": "NSFormatter",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "methods": [
+        {
+            "name": "stringForObjectValue",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "attributedStringForObjectValue",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "withDefaultAttributes",
+                    "variable_name": "attrs",
+                    "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "editingStringForObjectValue",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "isPartialStringValid",
+            "params": [
+                {
+                    "variable_name": "partialString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "newEditingString",
+                    "variable_name": "newString",
+                    "type": "NSString* *"
+                },
+                {
+                    "name": "errorDescription",
+                    "variable_name": "error",
+                    "type": "NSString* *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "isPartialStringValid",
+            "params": [
+                {
+                    "variable_name": "partialStringPtr",
+                    "type": "NSString* *"
+                },
+                {
+                    "name": "proposedSelectedRange",
+                    "variable_name": "proposedSelRangePtr",
+                    "type": "Foundation.NSRange *"
+                },
+                {
+                    "name": "originalString",
+                    "variable_name": "origString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "originalSelectedRange",
+                    "variable_name": "origSelRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "errorDescription",
+                    "variable_name": "error",
+                    "type": "NSString* *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

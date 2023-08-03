@@ -1,0 +1,93 @@
+{
+    "kind": "alias",
+    "name": "NSTextListMarkerFormat",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSTextListMarkerBox",
+            "value": "{box}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerCheck",
+            "value": "{check}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerCircle",
+            "value": "{circle}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerDecimal",
+            "value": "{decimal}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerDiamond",
+            "value": "{diamond}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerDisc",
+            "value": "{disc}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerHyphen",
+            "value": "{hyphen}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerLowercaseAlpha",
+            "value": "{lower-alpha}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerLowercaseHexadecimal",
+            "value": "{lower-hexadecimal}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerLowercaseLatin",
+            "value": "{lower-latin}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerLowercaseRoman",
+            "value": "{lower-roman}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerOctal",
+            "value": "{octal}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerSquare",
+            "value": "{square}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerUppercaseAlpha",
+            "value": "{upper-alpha}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerUppercaseHexadecimal",
+            "value": "{upper-hexadecimal}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerUppercaseLatin",
+            "value": "{upper-latin}",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextListMarkerUppercaseRoman",
+            "value": "{upper-roman}",
+            "module": "AppKit"
+        }
+    ]
+}

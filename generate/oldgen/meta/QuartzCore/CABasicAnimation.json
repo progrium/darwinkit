@@ -1,0 +1,20 @@
+{
+    "kind": "class",
+    "name": "CABasicAnimation",
+    "module": "QuartzCore",
+    "parent": "QuartzCore.CAPropertyAnimation *",
+    "properties": [
+        {
+            "name": "fromValue",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "toValue",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "byValue",
+            "type": "objectivec.NSObject *"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSMeasurementFormatterUnitOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSMeasurementFormatterUnitOptionsProvidedUnit",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMeasurementFormatterUnitOptionsNaturalScale",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit",
+            "value": "4",
+            "module": "Foundation"
+        }
+    ]
+}

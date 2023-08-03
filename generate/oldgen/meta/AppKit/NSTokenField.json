@@ -1,0 +1,37 @@
+{
+    "kind": "class",
+    "name": "NSTokenField",
+    "module": "AppKit",
+    "parent": "AppKit.NSTextField *",
+    "properties": [
+        {
+            "name": "tokenStyle",
+            "type": "AppKit.NSTokenStyle"
+        },
+        {
+            "name": "tokenizingCharacterSet",
+            "type": "Foundation.NSCharacterSet *"
+        },
+        {
+            "name": "defaultTokenizingCharacterSet",
+            "read_only": true,
+            "type": "Foundation.NSCharacterSet *",
+            "class_property": true
+        },
+        {
+            "name": "completionDelay",
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "defaultCompletionDelay",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval",
+            "class_property": true
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTokenFieldDelegate>",
+            "weak": true
+        }
+    ]
+}

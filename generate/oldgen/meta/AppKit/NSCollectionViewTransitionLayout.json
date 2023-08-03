@@ -1,0 +1,65 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewTransitionLayout",
+    "module": "AppKit",
+    "parent": "AppKit.NSCollectionViewLayout *",
+    "properties": [
+        {
+            "name": "transitionProgress",
+            "type": "double",
+            "weak": true
+        },
+        {
+            "name": "currentLayout",
+            "read_only": true,
+            "type": "AppKit.NSCollectionViewLayout *"
+        },
+        {
+            "name": "nextLayout",
+            "read_only": true,
+            "type": "AppKit.NSCollectionViewLayout *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithCurrentLayout",
+            "params": [
+                {
+                    "variable_name": "currentLayout",
+                    "type": "AppKit.NSCollectionViewLayout *"
+                },
+                {
+                    "name": "nextLayout",
+                    "variable_name": "newLayout",
+                    "type": "AppKit.NSCollectionViewLayout *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "updateValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "double"
+                },
+                {
+                    "name": "forAnimatedKey",
+                    "variable_name": "key",
+                    "type": "AppKit.NSCollectionViewTransitionLayoutAnimatedKey"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "valueForAnimatedKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "AppKit.NSCollectionViewTransitionLayoutAnimatedKey"
+                }
+            ],
+            "return_type": "double"
+        }
+    ]
+}

@@ -1,0 +1,182 @@
+{
+    "kind": "class",
+    "name": "NSWindowController",
+    "module": "AppKit",
+    "parent": "AppKit.NSResponder *",
+    "properties": [
+        {
+            "name": "windowLoaded",
+            "read_only": true,
+            "getter_name": "isWindowLoaded",
+            "type": "BOOL"
+        },
+        {
+            "name": "window",
+            "type": "AppKit.NSWindow *"
+        },
+        {
+            "name": "document",
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "shouldCloseDocument",
+            "type": "BOOL"
+        },
+        {
+            "name": "owner",
+            "read_only": true,
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "storyboard",
+            "read_only": true,
+            "type": "AppKit.NSStoryboard *"
+        },
+        {
+            "name": "windowNibName",
+            "read_only": true,
+            "type": "AppKit.NSNibName"
+        },
+        {
+            "name": "windowNibPath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "shouldCascadeWindows",
+            "type": "BOOL"
+        },
+        {
+            "name": "windowFrameAutosaveName",
+            "type": "AppKit.NSWindowFrameAutosaveName"
+        },
+        {
+            "name": "contentViewController",
+            "type": "AppKit.NSViewController *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithWindow",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithWindowNibName",
+            "params": [
+                {
+                    "variable_name": "windowNibName",
+                    "type": "AppKit.NSNibName"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithWindowNibName",
+            "params": [
+                {
+                    "variable_name": "windowNibName",
+                    "type": "AppKit.NSNibName"
+                },
+                {
+                    "name": "owner",
+                    "variable_name": "owner",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithWindowNibPath",
+            "params": [
+                {
+                    "variable_name": "windowNibPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "owner",
+                    "variable_name": "owner",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "loadWindow",
+            "return_type": "void"
+        },
+        {
+            "name": "showWindow",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidLoad",
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillLoad",
+            "return_type": "void"
+        },
+        {
+            "name": "setDocumentEdited",
+            "params": [
+                {
+                    "variable_name": "dirtyFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "close",
+            "return_type": "void"
+        },
+        {
+            "name": "synchronizeWindowTitleWithDocumentName",
+            "return_type": "void"
+        },
+        {
+            "name": "windowTitleForDocumentDisplayName",
+            "params": [
+                {
+                    "variable_name": "displayName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "dismissController",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

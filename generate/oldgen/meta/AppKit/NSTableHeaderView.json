@@ -1,0 +1,50 @@
+{
+    "kind": "class",
+    "name": "NSTableHeaderView",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "tableView",
+            "type": "AppKit.NSTableView *",
+            "weak": true
+        },
+        {
+            "name": "draggedColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "draggedDistance",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "resizedColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "columnAtPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "headerRectOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        }
+    ]
+}

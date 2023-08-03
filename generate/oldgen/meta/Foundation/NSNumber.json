@@ -1,0 +1,450 @@
+{
+    "kind": "class",
+    "name": "NSNumber",
+    "module": "Foundation",
+    "parent": "Foundation.NSValue *",
+    "properties": [
+        {
+            "name": "boolValue",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "charValue",
+            "read_only": true,
+            "type": "char"
+        },
+        {
+            "name": "decimalValue",
+            "read_only": true,
+            "type": "Foundation.NSDecimal"
+        },
+        {
+            "name": "doubleValue",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "floatValue",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "intValue",
+            "read_only": true,
+            "type": "int32_t"
+        },
+        {
+            "name": "integerValue",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "longLongValue",
+            "read_only": true,
+            "type": "int64_t"
+        },
+        {
+            "name": "longValue",
+            "read_only": true,
+            "type": "int64_t"
+        },
+        {
+            "name": "shortValue",
+            "read_only": true,
+            "type": "int16_t"
+        },
+        {
+            "name": "unsignedCharValue",
+            "read_only": true,
+            "type": "char"
+        },
+        {
+            "name": "unsignedIntegerValue",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "unsignedIntValue",
+            "read_only": true,
+            "type": "uint32_t"
+        },
+        {
+            "name": "unsignedLongLongValue",
+            "read_only": true,
+            "type": "uint64_t"
+        },
+        {
+            "name": "unsignedLongValue",
+            "read_only": true,
+            "type": "uint64_t"
+        },
+        {
+            "name": "unsignedShortValue",
+            "read_only": true,
+            "type": "uint16_t"
+        },
+        {
+            "name": "stringValue",
+            "read_only": true,
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "numberWithBool",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithChar",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "char"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithDouble",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "double"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithFloat",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "float"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithInt",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int32_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithInteger",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithLongLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithShort",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int16_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedChar",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "char"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedInt",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint32_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedInteger",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedLongLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "numberWithUnsignedShort",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint16_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *",
+            "class_method": true
+        },
+        {
+            "name": "initWithBool",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithChar",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "char"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithDouble",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "double"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithFloat",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "float"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithInt",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int32_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithInteger",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithLongLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithShort",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "int16_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedChar",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "char"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedInt",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint32_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedInteger",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedLongLong",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint64_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "initWithUnsignedShort",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "uint16_t"
+                }
+            ],
+            "return_type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "descriptionWithLocale",
+            "params": [
+                {
+                    "variable_name": "locale",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "compare",
+            "params": [
+                {
+                    "variable_name": "otherNumber",
+                    "type": "Foundation.NSNumber *"
+                }
+            ],
+            "return_type": "Foundation.NSComparisonResult"
+        },
+        {
+            "name": "isEqualToNumber",
+            "params": [
+                {
+                    "variable_name": "number",
+                    "type": "Foundation.NSNumber *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

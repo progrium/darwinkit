@@ -1,0 +1,94 @@
+{
+    "kind": "protocol",
+    "name": "NSDraggingDestination",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "draggingEntered",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "wantsPeriodicDraggingUpdates",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "draggingUpdated",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "draggingEnded",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "draggingExited",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "prepareForDragOperation",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "performDragOperation",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "concludeDragOperation",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateDraggingItemsForDrag",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

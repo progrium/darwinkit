@@ -1,0 +1,245 @@
+{
+    "kind": "class",
+    "name": "NSDateFormatter",
+    "module": "Foundation",
+    "parent": "Foundation.NSFormatter *",
+    "properties": [
+        {
+            "name": "dateStyle",
+            "type": "Foundation.NSDateFormatterStyle"
+        },
+        {
+            "name": "timeStyle",
+            "type": "Foundation.NSDateFormatterStyle"
+        },
+        {
+            "name": "dateFormat",
+            "type": "NSString*"
+        },
+        {
+            "name": "formattingContext",
+            "type": "Foundation.NSFormattingContext"
+        },
+        {
+            "name": "calendar",
+            "type": "Foundation.NSCalendar *"
+        },
+        {
+            "name": "defaultDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "locale",
+            "type": "Foundation.NSLocale *"
+        },
+        {
+            "name": "timeZone",
+            "type": "Foundation.NSTimeZone *"
+        },
+        {
+            "name": "twoDigitStartDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "gregorianStartDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "formatterBehavior",
+            "type": "Foundation.NSDateFormatterBehavior"
+        },
+        {
+            "name": "defaultFormatterBehavior",
+            "type": "Foundation.NSDateFormatterBehavior",
+            "class_property": true
+        },
+        {
+            "name": "lenient",
+            "getter_name": "isLenient",
+            "type": "BOOL"
+        },
+        {
+            "name": "doesRelativeDateFormatting",
+            "type": "BOOL"
+        },
+        {
+            "name": "AMSymbol",
+            "type": "NSString*"
+        },
+        {
+            "name": "PMSymbol",
+            "type": "NSString*"
+        },
+        {
+            "name": "weekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortWeekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "veryShortWeekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "standaloneWeekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortStandaloneWeekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "veryShortStandaloneWeekdaySymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "monthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortMonthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "veryShortMonthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "standaloneMonthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortStandaloneMonthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "veryShortStandaloneMonthSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "quarterSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortQuarterSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "standaloneQuarterSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "shortStandaloneQuarterSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "eraSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "longEraSymbols",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "generatesCalendarDates",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "dateFromString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSDate *"
+        },
+        {
+            "name": "stringFromDate",
+            "params": [
+                {
+                    "variable_name": "date",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "localizedStringFromDate",
+            "params": [
+                {
+                    "variable_name": "date",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "dateStyle",
+                    "variable_name": "dstyle",
+                    "type": "Foundation.NSDateFormatterStyle"
+                },
+                {
+                    "name": "timeStyle",
+                    "variable_name": "tstyle",
+                    "type": "Foundation.NSDateFormatterStyle"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "setLocalizedDateFormatFromTemplate",
+            "params": [
+                {
+                    "variable_name": "dateFormatTemplate",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "dateFormatFromTemplate",
+            "params": [
+                {
+                    "variable_name": "tmplate",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "opts",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "locale",
+                    "variable_name": "locale",
+                    "type": "Foundation.NSLocale *"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "allowsNaturalLanguage",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "initWithDateFormat",
+            "params": [
+                {
+                    "variable_name": "format",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "allowNaturalLanguage",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        }
+    ]
+}

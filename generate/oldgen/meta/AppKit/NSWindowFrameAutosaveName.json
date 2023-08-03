@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSWindowFrameAutosaveName",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

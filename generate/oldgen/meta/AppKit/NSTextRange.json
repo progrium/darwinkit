@@ -1,0 +1,111 @@
+{
+    "kind": "class",
+    "name": "NSTextRange",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "endLocation",
+            "read_only": true,
+            "type": "id<AppKit.NSTextLocation>"
+        },
+        {
+            "name": "empty",
+            "read_only": true,
+            "getter_name": "isEmpty",
+            "type": "BOOL"
+        },
+        {
+            "name": "location",
+            "read_only": true,
+            "type": "id<AppKit.NSTextLocation>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithLocation",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "id<AppKit.NSTextLocation>"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithLocation",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "id<AppKit.NSTextLocation>"
+                },
+                {
+                    "name": "endLocation",
+                    "variable_name": "endLocation",
+                    "type": "id<AppKit.NSTextLocation>"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "textRangeByIntersectingWithTextRange",
+            "params": [
+                {
+                    "variable_name": "textRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "intersectsWithTextRange",
+            "params": [
+                {
+                    "variable_name": "textRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "isEqualToTextRange",
+            "params": [
+                {
+                    "variable_name": "textRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "textRangeByFormingUnionWithTextRange",
+            "params": [
+                {
+                    "variable_name": "textRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "containsLocation",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "id<AppKit.NSTextLocation>"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "containsRange",
+            "params": [
+                {
+                    "variable_name": "textRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

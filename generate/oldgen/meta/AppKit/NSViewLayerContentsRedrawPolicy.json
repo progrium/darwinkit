@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSViewLayerContentsRedrawPolicy",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSViewLayerContentsRedrawNever",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsRedrawOnSetNeedsDisplay",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsRedrawDuringViewResize",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsRedrawBeforeViewResize",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewLayerContentsRedrawCrossfade",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "kind": "class",
+    "name": "NSVisualEffectView",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "material",
+            "type": "AppKit.NSVisualEffectMaterial"
+        },
+        {
+            "name": "blendingMode",
+            "type": "AppKit.NSVisualEffectBlendingMode"
+        },
+        {
+            "name": "emphasized",
+            "getter_name": "isEmphasized",
+            "type": "BOOL"
+        },
+        {
+            "name": "interiorBackgroundStyle",
+            "read_only": true,
+            "type": "AppKit.NSBackgroundStyle"
+        },
+        {
+            "name": "maskImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "state",
+            "type": "AppKit.NSVisualEffectState"
+        }
+    ],
+    "methods": [
+        {
+            "name": "viewDidMoveToWindow",
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillMoveToWindow",
+            "params": [
+                {
+                    "variable_name": "newWindow",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "kind": "protocol",
+    "name": "WKURLSchemeTask",
+    "module": "WebKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "didReceiveResponse",
+            "params": [
+                {
+                    "variable_name": "response",
+                    "type": "Foundation.NSURLResponse *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "didReceiveData",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "didFinish",
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "didFailWithError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        }
+    ],
+    "properties": [
+        {
+            "name": "request",
+            "read_only": true,
+            "type": "Foundation.NSURLRequest *",
+            "required": true
+        }
+    ]
+}

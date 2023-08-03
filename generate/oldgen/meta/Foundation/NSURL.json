@@ -1,0 +1,903 @@
+{
+    "kind": "class",
+    "name": "NSURL",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "dataRepresentation",
+            "read_only": true,
+            "type": "NSData*"
+        },
+        {
+            "name": "fileURL",
+            "read_only": true,
+            "getter_name": "isFileURL",
+            "type": "BOOL"
+        },
+        {
+            "name": "absoluteString",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "absoluteURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "baseURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "fileSystemRepresentation",
+            "read_only": true,
+            "type": "char *"
+        },
+        {
+            "name": "fragment",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "host",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "lastPathComponent",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "parameterString",
+            "read_only": true,
+            "type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "password",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "path",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "pathComponents",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "pathExtension",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "port",
+            "read_only": true,
+            "type": "Foundation.NSNumber *"
+        },
+        {
+            "name": "query",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "relativePath",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "relativeString",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "resourceSpecifier",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "scheme",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "standardizedURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "user",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "filePathURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByDeletingLastPathComponent",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByDeletingPathExtension",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByResolvingSymlinksInPath",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByStandardizingPath",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "hasDirectoryPath",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "URLWithString",
+            "params": [
+                {
+                    "variable_name": "URLString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "URLString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "URLWithString",
+            "params": [
+                {
+                    "variable_name": "URLString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "URLString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initFileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initFileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initFileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initFileURLWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithPathComponents",
+            "params": [
+                {
+                    "variable_name": "components",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "URLByResolvingAliasFileAtURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSURLBookmarkResolutionOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "URLByResolvingBookmarkData",
+            "params": [
+                {
+                    "variable_name": "bookmarkData",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSURLBookmarkResolutionOptions"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "relativeURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "bookmarkDataIsStale",
+                    "variable_name": "isStale",
+                    "type": "BOOL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "initByResolvingBookmarkData",
+            "params": [
+                {
+                    "variable_name": "bookmarkData",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSURLBookmarkResolutionOptions"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "relativeURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "bookmarkDataIsStale",
+                    "variable_name": "isStale",
+                    "type": "BOOL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "fileURLWithFileSystemRepresentation",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "char *"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "getFileSystemRepresentation",
+            "params": [
+                {
+                    "variable_name": "buffer",
+                    "type": "char *"
+                },
+                {
+                    "name": "maxLength",
+                    "variable_name": "maxBufferLength",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initFileURLWithFileSystemRepresentation",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "char *"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDir",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "absoluteURLWithDataRepresentation",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initAbsoluteURLWithDataRepresentation",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "URLWithDataRepresentation",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "Foundation.NSURL *",
+            "class_method": true
+        },
+        {
+            "name": "initWithDataRepresentation",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "checkResourceIsReachableAndReturnError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "isFileReferenceURL",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "resourceValuesForKeys",
+            "params": [
+                {
+                    "variable_name": "keys",
+                    "type": "NSArray<Foundation.NSURLResourceKey> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSURLResourceKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "setResourceValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "key",
+                    "type": "Foundation.NSURLResourceKey"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setResourceValues",
+            "params": [
+                {
+                    "variable_name": "keyedValues",
+                    "type": "NSDictionary<Foundation.NSURLResourceKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "removeAllCachedResourceValues",
+            "return_type": "void"
+        },
+        {
+            "name": "removeCachedResourceValueForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "Foundation.NSURLResourceKey"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setTemporaryResourceValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "key",
+                    "type": "Foundation.NSURLResourceKey"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "fileReferenceURL",
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByAppendingPathComponent",
+            "params": [
+                {
+                    "variable_name": "pathComponent",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByAppendingPathComponent",
+            "params": [
+                {
+                    "variable_name": "pathComponent",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isDirectory",
+                    "variable_name": "isDirectory",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "URLByAppendingPathExtension",
+            "params": [
+                {
+                    "variable_name": "pathExtension",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSURL *"
+        },
+        {
+            "name": "bookmarkDataWithContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "bookmarkFileURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSData*",
+            "class_method": true
+        },
+        {
+            "name": "bookmarkDataWithOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "Foundation.NSURLBookmarkCreationOptions"
+                },
+                {
+                    "name": "includingResourceValuesForKeys",
+                    "variable_name": "keys",
+                    "type": "NSArray<Foundation.NSURLResourceKey> *"
+                },
+                {
+                    "name": "relativeToURL",
+                    "variable_name": "relativeURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "resourceValuesForKeys",
+            "params": [
+                {
+                    "variable_name": "keys",
+                    "type": "NSArray<Foundation.NSURLResourceKey> *"
+                },
+                {
+                    "name": "fromBookmarkData",
+                    "variable_name": "bookmarkData",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSURLResourceKey, objectivec.NSObject *> *",
+            "class_method": true
+        },
+        {
+            "name": "writeBookmarkData",
+            "params": [
+                {
+                    "variable_name": "bookmarkData",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "toURL",
+                    "variable_name": "bookmarkFileURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSURLBookmarkFileCreationOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "startAccessingSecurityScopedResource",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "stopAccessingSecurityScopedResource",
+            "return_type": "void"
+        },
+        {
+            "name": "checkPromisedItemIsReachableAndReturnError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "getPromisedItemResourceValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "objectivec.NSObject * *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "key",
+                    "type": "Foundation.NSURLResourceKey"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "promisedItemResourceValuesForKeys",
+            "params": [
+                {
+                    "variable_name": "keys",
+                    "type": "NSArray<Foundation.NSURLResourceKey> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSURLResourceKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "initWithScheme",
+            "params": [
+                {
+                    "variable_name": "scheme",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "host",
+                    "variable_name": "host",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "path",
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "URLHandleUsingCache",
+            "params": [
+                {
+                    "variable_name": "shouldUseCache",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSURLHandle *",
+            "deprecated": true
+        },
+        {
+            "name": "loadResourceDataNotifyingClient",
+            "params": [
+                {
+                    "variable_name": "client",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "usingCache",
+                    "variable_name": "shouldUseCache",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "resourceDataUsingCache",
+            "params": [
+                {
+                    "variable_name": "shouldUseCache",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "NSData*",
+            "deprecated": true
+        },
+        {
+            "name": "setResourceData",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "propertyForKey",
+            "params": [
+                {
+                    "variable_name": "propertyKey",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "setProperty",
+            "params": [
+                {
+                    "variable_name": "property",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "propertyKey",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        }
+    ]
+}

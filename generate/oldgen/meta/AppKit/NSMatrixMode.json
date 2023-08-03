@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSMatrixMode",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTrackModeMatrix",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSHighlightModeMatrix",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRadioModeMatrix",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSListModeMatrix",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "kind": "class",
+    "name": "NSOperation",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "completionBlock",
+            "type": "void (^) ()"
+        },
+        {
+            "name": "cancelled",
+            "read_only": true,
+            "getter_name": "isCancelled",
+            "type": "BOOL"
+        },
+        {
+            "name": "executing",
+            "read_only": true,
+            "getter_name": "isExecuting",
+            "type": "BOOL"
+        },
+        {
+            "name": "finished",
+            "read_only": true,
+            "getter_name": "isFinished",
+            "type": "BOOL"
+        },
+        {
+            "name": "concurrent",
+            "read_only": true,
+            "getter_name": "isConcurrent",
+            "type": "BOOL"
+        },
+        {
+            "name": "asynchronous",
+            "read_only": true,
+            "getter_name": "isAsynchronous",
+            "type": "BOOL"
+        },
+        {
+            "name": "ready",
+            "read_only": true,
+            "getter_name": "isReady",
+            "type": "BOOL"
+        },
+        {
+            "name": "name",
+            "type": "NSString*"
+        },
+        {
+            "name": "dependencies",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSOperation *> *"
+        },
+        {
+            "name": "qualityOfService",
+            "type": "Foundation.NSQualityOfService"
+        },
+        {
+            "name": "threadPriority",
+            "type": "double",
+            "deprecated": true
+        },
+        {
+            "name": "queuePriority",
+            "type": "Foundation.NSOperationQueuePriority"
+        }
+    ],
+    "methods": [
+        {
+            "name": "start",
+            "return_type": "void"
+        },
+        {
+            "name": "main",
+            "return_type": "void"
+        },
+        {
+            "name": "cancel",
+            "return_type": "void"
+        },
+        {
+            "name": "addDependency",
+            "params": [
+                {
+                    "variable_name": "op",
+                    "type": "Foundation.NSOperation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeDependency",
+            "params": [
+                {
+                    "variable_name": "op",
+                    "type": "Foundation.NSOperation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "waitUntilFinished",
+            "return_type": "void"
+        }
+    ]
+}

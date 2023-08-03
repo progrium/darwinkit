@@ -1,0 +1,67 @@
+{
+    "kind": "class",
+    "name": "NSClassDescription",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "attributeKeys",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "toManyRelationshipKeys",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "toOneRelationshipKeys",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "classDescriptionForClass",
+            "params": [
+                {
+                    "variable_name": "aClass",
+                    "type": "objectivec.Class *"
+                }
+            ],
+            "return_type": "Foundation.NSClassDescription *",
+            "class_method": true
+        },
+        {
+            "name": "invalidateClassDescriptionCache",
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "registerClassDescription",
+            "params": [
+                {
+                    "variable_name": "description",
+                    "type": "Foundation.NSClassDescription *"
+                },
+                {
+                    "name": "forClass",
+                    "variable_name": "aClass",
+                    "type": "objectivec.Class *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "inverseForRelationshipKey",
+            "params": [
+                {
+                    "variable_name": "relationshipKey",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}

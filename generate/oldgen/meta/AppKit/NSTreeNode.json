@@ -1,0 +1,88 @@
+{
+    "kind": "class",
+    "name": "NSTreeNode",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "representedObject",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "indexPath",
+            "read_only": true,
+            "type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "leaf",
+            "read_only": true,
+            "getter_name": "isLeaf",
+            "type": "BOOL"
+        },
+        {
+            "name": "childNodes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTreeNode *> *"
+        },
+        {
+            "name": "mutableChildNodes",
+            "read_only": true,
+            "type": "Foundation.NSMutableArray *"
+        },
+        {
+            "name": "parentNode",
+            "read_only": true,
+            "type": "AppKit.NSTreeNode *",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "treeNodeWithRepresentedObject",
+            "params": [
+                {
+                    "variable_name": "modelObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "initWithRepresentedObject",
+            "params": [
+                {
+                    "variable_name": "modelObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "descendantNodeAtIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "AppKit.NSTreeNode *"
+        },
+        {
+            "name": "sortWithSortDescriptors",
+            "params": [
+                {
+                    "variable_name": "sortDescriptors",
+                    "type": "NSArray<Foundation.NSSortDescriptor *> *"
+                },
+                {
+                    "name": "recursively",
+                    "variable_name": "recursively",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSFontWeight",
+    "module": "AppKit",
+    "target_type": "double",
+    "values": [
+        {
+            "name": "NSFontWeightUltraLight",
+            "value": "-0.800000011920929",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightThin",
+            "value": "-0.6000000238418579",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightLight",
+            "value": "-0.4000000059604645",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightRegular",
+            "value": "0.0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightMedium",
+            "value": "0.23000000417232513",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightSemibold",
+            "value": "0.30000001192092896",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightBold",
+            "value": "0.4000000059604645",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightHeavy",
+            "value": "0.5600000023841858",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWeightBlack",
+            "value": "0.6200000047683716",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,220 @@
+{
+    "kind": "class",
+    "name": "NSValue",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "objCType",
+            "read_only": true,
+            "type": "char *"
+        },
+        {
+            "name": "pointerValue",
+            "read_only": true,
+            "type": "void *"
+        },
+        {
+            "name": "nonretainedObjectValue",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "rangeValue",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "pointValue",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "sizeValue",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "rectValue",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "edgeInsetsValue",
+            "read_only": true,
+            "type": "Foundation.NSEdgeInsets"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithBytes",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "void *"
+                },
+                {
+                    "name": "objCType",
+                    "variable_name": "type",
+                    "type": "char *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "valueWithBytes",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "void *"
+                },
+                {
+                    "name": "objCType",
+                    "variable_name": "type",
+                    "type": "char *"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "value",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "void *"
+                },
+                {
+                    "name": "withObjCType",
+                    "variable_name": "type",
+                    "type": "char *"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "getValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "valueWithPointer",
+            "params": [
+                {
+                    "variable_name": "pointer",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "valueWithNonretainedObject",
+            "params": [
+                {
+                    "variable_name": "anObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "valueWithRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "valueWithPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "valueWithSize",
+            "params": [
+                {
+                    "variable_name": "size",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "valueWithRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "isEqualToValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "Foundation.NSValue *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "valueWithEdgeInsets",
+            "params": [
+                {
+                    "variable_name": "insets",
+                    "type": "Foundation.NSEdgeInsets"
+                }
+            ],
+            "return_type": "Foundation.NSValue *",
+            "class_method": true
+        },
+        {
+            "name": "getValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "void *"
+                },
+                {
+                    "name": "size",
+                    "variable_name": "size",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

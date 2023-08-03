@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSURLSessionAuthChallengeDisposition",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSURLSessionAuthChallengeUseCredential",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLSessionAuthChallengePerformDefaultHandling",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLSessionAuthChallengeCancelAuthenticationChallenge",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLSessionAuthChallengeRejectProtectionSpace",
+            "value": "3",
+            "module": "Foundation"
+        }
+    ]
+}

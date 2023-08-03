@@ -1,0 +1,73 @@
+{
+    "kind": "alias",
+    "name": "NSWindowCollectionBehavior",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowCollectionBehaviorDefault",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorCanJoinAllSpaces",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorMoveToActiveSpace",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorManaged",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorTransient",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorStationary",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorParticipatesInCycle",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorIgnoresCycle",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorFullScreenPrimary",
+            "value": "128",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorFullScreenAuxiliary",
+            "value": "256",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorFullScreenNone",
+            "value": "512",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorFullScreenAllowsTiling",
+            "value": "2048",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowCollectionBehaviorFullScreenDisallowsTiling",
+            "value": "4096",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "kind": "class",
+    "name": "NSDateComponentsFormatter",
+    "module": "Foundation",
+    "parent": "Foundation.NSFormatter *",
+    "properties": [
+        {
+            "name": "allowedUnits",
+            "type": "Foundation.NSCalendarUnit"
+        },
+        {
+            "name": "allowsFractionalUnits",
+            "type": "BOOL"
+        },
+        {
+            "name": "calendar",
+            "type": "Foundation.NSCalendar *"
+        },
+        {
+            "name": "collapsesLargestUnit",
+            "type": "BOOL"
+        },
+        {
+            "name": "includesApproximationPhrase",
+            "type": "BOOL"
+        },
+        {
+            "name": "includesTimeRemainingPhrase",
+            "type": "BOOL"
+        },
+        {
+            "name": "maximumUnitCount",
+            "type": "NSInteger"
+        },
+        {
+            "name": "unitsStyle",
+            "type": "Foundation.NSDateComponentsFormatterUnitsStyle"
+        },
+        {
+            "name": "zeroFormattingBehavior",
+            "type": "Foundation.NSDateComponentsFormatterZeroFormattingBehavior"
+        },
+        {
+            "name": "formattingContext",
+            "type": "Foundation.NSFormattingContext"
+        },
+        {
+            "name": "referenceDate",
+            "type": "Foundation.NSDate *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "stringFromDateComponents",
+            "params": [
+                {
+                    "variable_name": "components",
+                    "type": "Foundation.NSDateComponents *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringForObjectValue",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromDate",
+            "params": [
+                {
+                    "variable_name": "startDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "toDate",
+                    "variable_name": "endDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromTimeInterval",
+            "params": [
+                {
+                    "variable_name": "ti",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "localizedStringFromDateComponents",
+            "params": [
+                {
+                    "variable_name": "components",
+                    "type": "Foundation.NSDateComponents *"
+                },
+                {
+                    "name": "unitsStyle",
+                    "variable_name": "unitsStyle",
+                    "type": "Foundation.NSDateComponentsFormatterUnitsStyle"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        }
+    ]
+}

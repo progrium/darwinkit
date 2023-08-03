@@ -1,0 +1,625 @@
+{
+    "kind": "protocol",
+    "name": "NSWindowDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "willPositionSheet",
+                    "variable_name": "sheet",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "usingRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "windowWillBeginSheet",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidEndSheet",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillResize",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "toSize",
+                    "variable_name": "frameSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "windowDidResize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillStartLiveResize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidEndLiveResize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillMiniaturize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidMiniaturize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidDeminiaturize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillUseStandardFrame",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "defaultFrame",
+                    "variable_name": "newFrame",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "windowShouldZoom",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "toFrame",
+                    "variable_name": "newFrame",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "willUseFullScreenContentSize",
+                    "variable_name": "proposedSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "willUseFullScreenPresentationOptions",
+                    "variable_name": "proposedOptions",
+                    "type": "AppKit.NSApplicationPresentationOptions"
+                }
+            ],
+            "return_type": "AppKit.NSApplicationPresentationOptions"
+        },
+        {
+            "name": "windowWillEnterFullScreen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidEnterFullScreen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillExitFullScreen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidExitFullScreen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "customWindowsToEnterFullScreenForWindow",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSWindow *> *"
+        },
+        {
+            "name": "customWindowsToEnterFullScreenForWindow",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "onScreen",
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSWindow *> *"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "startCustomAnimationToEnterFullScreenWithDuration",
+                    "variable_name": "duration",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "startCustomAnimationToEnterFullScreenOnScreen",
+                    "variable_name": "screen",
+                    "type": "AppKit.NSScreen *"
+                },
+                {
+                    "name": "withDuration",
+                    "variable_name": "duration",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidFailToEnterFullScreen",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "customWindowsToExitFullScreenForWindow",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSWindow *> *"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "startCustomAnimationToExitFullScreenWithDuration",
+                    "variable_name": "duration",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidFailToExitFullScreen",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillMove",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidMove",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidChangeScreen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidChangeScreenProfile",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidChangeBackingProperties",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowShouldClose",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "windowWillClose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidBecomeKey",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidResignKey",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidBecomeMain",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidResignMain",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillReturnFieldEditor",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "toObject",
+                    "variable_name": "client",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "windowDidUpdate",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidExpose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidChangeOcclusionState",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "shouldDragDocumentWithEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "from",
+                    "variable_name": "dragImageLocation",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "withPasteboard",
+                    "variable_name": "pasteboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "windowWillReturnUndoManager",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "Foundation.NSUndoManager *"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "shouldPopUpDocumentPathMenu",
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "willEncodeRestorableState",
+                    "variable_name": "state",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "didDecodeRestorableState",
+                    "variable_name": "state",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "window",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "willResizeForVersionBrowserWithMaxPreferredSize",
+                    "variable_name": "maxPreferredFrameSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "maxAllowedSize",
+                    "variable_name": "maxAllowedFrameSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "windowWillEnterVersionBrowser",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidEnterVersionBrowser",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowWillExitVersionBrowser",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowDidExitVersionBrowser",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionNavigationModifier",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionNavigationModifierExtend",
+            "module": "AppKit",
+            "value": "1"
+        },
+        {
+            "name": "NSTextSelectionNavigationModifierMultiple",
+            "module": "AppKit",
+            "value": "4"
+        },
+        {
+            "name": "NSTextSelectionNavigationModifierVisual",
+            "module": "AppKit",
+            "value": "2"
+        }
+    ]
+}

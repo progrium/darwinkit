@@ -1,0 +1,350 @@
+{
+    "kind": "class",
+    "name": "NSGestureRecognizer",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "action",
+            "type": "SEL"
+        },
+        {
+            "name": "target",
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "state",
+            "read_only": true,
+            "type": "AppKit.NSGestureRecognizerState"
+        },
+        {
+            "name": "view",
+            "read_only": true,
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "enabled",
+            "getter_name": "isEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysPrimaryMouseButtonEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysSecondaryMouseButtonEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysOtherMouseButtonEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysKeyEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysMagnificationEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delaysRotationEvents",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSGestureRecognizerDelegate>",
+            "weak": true
+        },
+        {
+            "name": "pressureConfiguration",
+            "type": "AppKit.NSPressureConfiguration *"
+        },
+        {
+            "name": "allowedTouchTypes",
+            "type": "AppKit.NSTouchTypeMask"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "locationInView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSPoint"
+        },
+        {
+            "name": "reset",
+            "return_type": "void"
+        },
+        {
+            "name": "mouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "magnifyWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rotateWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "canBePreventedByGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "preventingGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "canPreventGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "preventedGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "shouldBeRequiredToFailByGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "otherGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "shouldRequireFailureOfGestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "otherGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "keyDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "keyUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tabletPoint",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "flagsChanged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "pressureChangeWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "touchesBeganWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesCancelledWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesEndedWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesMovedWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

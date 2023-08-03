@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSWindowButton",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowCloseButton",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowMiniaturizeButton",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowZoomButton",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowToolbarButton",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowDocumentIconButton",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowDocumentVersionsButton",
+            "value": "6",
+            "module": "AppKit"
+        }
+    ]
+}

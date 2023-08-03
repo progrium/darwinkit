@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "CATextLayerAlignmentMode",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCAAlignmentCenter",
+            "value": "center",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAAlignmentJustified",
+            "value": "justified",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAAlignmentLeft",
+            "value": "left",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAAlignmentNatural",
+            "value": "natural",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAAlignmentRight",
+            "value": "right",
+            "module": "QuartzCore"
+        }
+    ]
+}

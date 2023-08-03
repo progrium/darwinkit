@@ -1,0 +1,87 @@
+{
+    "kind": "class",
+    "name": "NSDatePickerCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSActionCell *",
+    "properties": [
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "textColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "datePickerStyle",
+            "type": "AppKit.NSDatePickerStyle"
+        },
+        {
+            "name": "datePickerElements",
+            "type": "AppKit.NSDatePickerElementFlags"
+        },
+        {
+            "name": "datePickerMode",
+            "type": "AppKit.NSDatePickerMode"
+        },
+        {
+            "name": "dateValue",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "timeInterval",
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "calendar",
+            "type": "Foundation.NSCalendar *"
+        },
+        {
+            "name": "locale",
+            "type": "Foundation.NSLocale *"
+        },
+        {
+            "name": "timeZone",
+            "type": "Foundation.NSTimeZone *"
+        },
+        {
+            "name": "minDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "maxDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSDatePickerCellDelegate>",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initTextCell",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

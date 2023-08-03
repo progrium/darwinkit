@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "NSFontPanelModeMask",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSFontPanelModeMaskAllEffects",
+            "value": "1048320",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModesMaskAllModes",
+            "value": "4294967295",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskCollection",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskDocumentColorEffect",
+            "value": "2048",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskFace",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskShadowEffect",
+            "value": "4096",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskSize",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModesMaskStandardModes",
+            "value": "65535",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskStrikethroughEffect",
+            "value": "512",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskTextColorEffect",
+            "value": "1024",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontPanelModeMaskUnderlineEffect",
+            "value": "256",
+            "module": "AppKit"
+        }
+    ]
+}

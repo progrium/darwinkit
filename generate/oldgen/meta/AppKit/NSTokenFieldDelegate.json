@@ -1,0 +1,180 @@
+{
+    "kind": "protocol",
+    "name": "NSTokenFieldDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSTextFieldDelegate"
+    ],
+    "methods": [
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "displayStringForRepresentedObject",
+                    "variable_name": "representedObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "styleForRepresentedObject",
+                    "variable_name": "representedObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSTokenStyle"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "completionsForSubstring",
+                    "variable_name": "substring",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "indexOfToken",
+                    "variable_name": "tokenIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "indexOfSelectedItem",
+                    "variable_name": "selectedIndex",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "editingStringForRepresentedObject",
+                    "variable_name": "representedObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "representedObjectForEditingString",
+                    "variable_name": "editingString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "shouldAddObjects",
+                    "variable_name": "tokens",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "readFromPasteboard",
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "writeRepresentedObjects",
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "hasMenuForRepresentedObject",
+                    "variable_name": "representedObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "tokenField",
+            "params": [
+                {
+                    "variable_name": "tokenField",
+                    "type": "AppKit.NSTokenField *"
+                },
+                {
+                    "name": "menuForRepresentedObject",
+                    "variable_name": "representedObject",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSMenu *"
+        }
+    ]
+}

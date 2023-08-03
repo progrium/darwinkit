@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSRulerOrientation",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSHorizontalRuler",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSVerticalRuler",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

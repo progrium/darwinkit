@@ -1,0 +1,578 @@
+{
+    "kind": "alias",
+    "name": "NSURLResourceKey",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSURLIsApplicationKey",
+            "value": "_NSURLIsApplicationKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLApplicationIsScriptableKey",
+            "value": "NSURLApplicationIsScriptableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsDirectoryKey",
+            "value": "NSURLIsDirectoryKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLParentDirectoryURLKey",
+            "value": "NSURLParentDirectoryURLKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileAllocatedSizeKey",
+            "value": "NSURLFileAllocatedSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileProtectionKey",
+            "value": "NSURLFileProtectionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileContentIdentifierKey",
+            "value": "NSURLFileContentIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileResourceIdentifierKey",
+            "value": "NSURLFileResourceIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileResourceTypeKey",
+            "value": "NSURLFileResourceTypeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileSecurityKey",
+            "value": "NSURLFileSecurityKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLFileSizeKey",
+            "value": "NSURLFileSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsAliasFileKey",
+            "value": "NSURLIsAliasFileKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsPackageKey",
+            "value": "NSURLIsPackageKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsRegularFileKey",
+            "value": "NSURLIsRegularFileKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsPurgeableKey",
+            "value": "NSURLIsPurgeableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsSparseKey",
+            "value": "NSURLIsSparseKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLMayHaveExtendedAttributesKey",
+            "value": "NSURLMayHaveExtendedAttributesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLMayShareFileContentKey",
+            "value": "NSURLMayShareFileContentKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLPreferredIOBlockSizeKey",
+            "value": "NSURLPreferredIOBlockSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLTotalFileAllocatedSizeKey",
+            "value": "NSURLTotalFileAllocatedSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLTotalFileSizeKey",
+            "value": "NSURLTotalFileSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeAvailableCapacityKey",
+            "value": "NSURLVolumeAvailableCapacityKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeAvailableCapacityForImportantUsageKey",
+            "value": "NSURLVolumeAvailableCapacityForImportantUsageKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeAvailableCapacityForOpportunisticUsageKey",
+            "value": "NSURLVolumeAvailableCapacityForOpportunisticUsageKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeTotalCapacityKey",
+            "value": "NSURLVolumeTotalCapacityKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsAutomountedKey",
+            "value": "NSURLVolumeIsAutomountedKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsBrowsableKey",
+            "value": "NSURLVolumeIsBrowsableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsEjectableKey",
+            "value": "NSURLVolumeIsEjectableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsEncryptedKey",
+            "value": "NSURLVolumeIsEncryptedKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsInternalKey",
+            "value": "NSURLVolumeIsInternalKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsJournalingKey",
+            "value": "NSURLVolumeIsJournalingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsLocalKey",
+            "value": "NSURLVolumeIsLocalKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsReadOnlyKey",
+            "value": "NSURLVolumeIsReadOnlyKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsRemovableKey",
+            "value": "NSURLVolumeIsRemovableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIsRootFileSystemKey",
+            "value": "NSURLVolumeIsRootFileSystemKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsFileProtectionKey",
+            "value": "NSURLVolumeSupportsFileProtectionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsMountTriggerKey",
+            "value": "NSURLIsMountTriggerKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsVolumeKey",
+            "value": "NSURLIsVolumeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeCreationDateKey",
+            "value": "NSURLVolumeCreationDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeIdentifierKey",
+            "value": "NSURLVolumeIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeLocalizedFormatDescriptionKey",
+            "value": "NSURLVolumeLocalizedFormatDescriptionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeLocalizedNameKey",
+            "value": "NSURLVolumeLocalizedNameKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeMaximumFileSizeKey",
+            "value": "NSURLVolumeMaximumFileSizeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeNameKey",
+            "value": "NSURLVolumeNameKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeResourceCountKey",
+            "value": "NSURLVolumeResourceCountKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsAccessPermissionsKey",
+            "value": "NSURLVolumeSupportsAccessPermissionsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsAdvisoryFileLockingKey",
+            "value": "NSURLVolumeSupportsAdvisoryFileLockingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsCasePreservedNamesKey",
+            "value": "NSURLVolumeSupportsCasePreservedNamesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsCaseSensitiveNamesKey",
+            "value": "NSURLVolumeSupportsCaseSensitiveNamesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsCompressionKey",
+            "value": "NSURLVolumeSupportsCompressionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsExclusiveRenamingKey",
+            "value": "NSURLVolumeSupportsExclusiveRenamingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsExtendedSecurityKey",
+            "value": "NSURLVolumeSupportsExtendedSecurityKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsFileCloningKey",
+            "value": "NSURLVolumeSupportsFileCloningKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsHardLinksKey",
+            "value": "NSURLVolumeSupportsHardLinksKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsImmutableFilesKey",
+            "value": "NSURLVolumeSupportsImmutableFilesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsJournalingKey",
+            "value": "NSURLVolumeSupportsJournalingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsPersistentIDsKey",
+            "value": "NSURLVolumeSupportsPersistentIDsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsRenamingKey",
+            "value": "NSURLVolumeSupportsRenamingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsRootDirectoryDatesKey",
+            "value": "NSURLVolumeSupportsRootDirectoryDatesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsSparseFilesKey",
+            "value": "NSURLVolumeSupportsSparseFilesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsSwapRenamingKey",
+            "value": "NSURLVolumeSupportsSwapRenamingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsSymbolicLinksKey",
+            "value": "NSURLVolumeSupportsSymbolicLinksKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsVolumeSizesKey",
+            "value": "NSURLVolumeSupportsVolumeSizesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeSupportsZeroRunsKey",
+            "value": "NSURLVolumeSupportsZeroRunsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeURLForRemountingKey",
+            "value": "NSURLVolumeURLForRemountingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeURLKey",
+            "value": "NSURLVolumeURLKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLVolumeUUIDStringKey",
+            "value": "NSURLVolumeUUIDStringKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsUbiquitousItemKey",
+            "value": "NSURLIsUbiquitousItemKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey",
+            "value": "NSURLUbiquitousSharedItemMostRecentEditorNameComponentsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemDownloadRequestedKey",
+            "value": "NSURLUbiquitousItemDownloadRequestedKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemIsDownloadingKey",
+            "value": "NSURLUbiquitousItemIsDownloadingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemDownloadingErrorKey",
+            "value": "NSURLUbiquitousItemDownloadingErrorKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemDownloadingStatusKey",
+            "value": "NSURLUbiquitousItemDownloadingStatusKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemIsExcludedFromSyncKey",
+            "value": "NSURLUbiquitousItemIsExcludedFromSyncKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemIsUploadedKey",
+            "value": "NSURLUbiquitousItemIsUploadedKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemIsUploadingKey",
+            "value": "NSURLUbiquitousItemIsUploadingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemUploadingErrorKey",
+            "value": "NSURLUbiquitousItemUploadingErrorKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemHasUnresolvedConflictsKey",
+            "value": "NSURLUbiquitousItemHasUnresolvedConflictsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemContainerDisplayNameKey",
+            "value": "NSURLUbiquitousItemContainerDisplayNameKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousSharedItemOwnerNameComponentsKey",
+            "value": "NSURLUbiquitousSharedItemOwnerNameComponentsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousSharedItemCurrentUserPermissionsKey",
+            "value": "NSURLUbiquitousSharedItemCurrentUserPermissionsKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousSharedItemCurrentUserRoleKey",
+            "value": "NSURLUbiquitousSharedItemCurrentUserRoleKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLUbiquitousItemIsSharedKey",
+            "value": "NSURLUbiquitousItemIsSharedKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLKeysOfUnsetValuesKey",
+            "value": "NSURLKeysOfUnsetValuesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLQuarantinePropertiesKey",
+            "value": "NSURLQuarantinePropertiesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLAddedToDirectoryDateKey",
+            "value": "NSURLAddedToDirectoryDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLAttributeModificationDateKey",
+            "value": "NSURLAttributeModificationDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLContentAccessDateKey",
+            "value": "NSURLContentAccessDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLContentModificationDateKey",
+            "value": "NSURLContentModificationDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLCreationDateKey",
+            "value": "NSURLCreationDateKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLCustomIconKey",
+            "value": "NSURLCustomIconKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLDocumentIdentifierKey",
+            "value": "NSURLDocumentIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLEffectiveIconKey",
+            "value": "NSURLEffectiveIconKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLGenerationIdentifierKey",
+            "value": "NSURLGenerationIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLHasHiddenExtensionKey",
+            "value": "NSURLHasHiddenExtensionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsExcludedFromBackupKey",
+            "value": "NSURLIsExcludedFromBackupKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsExecutableKey",
+            "value": "NSURLIsExecutableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsHiddenKey",
+            "value": "NSURLIsHiddenKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsReadableKey",
+            "value": "NSURLIsReadableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsSymbolicLinkKey",
+            "value": "NSURLIsSymbolicLinkKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsSystemImmutableKey",
+            "value": "NSURLIsSystemImmutableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsUserImmutableKey",
+            "value": "NSURLIsUserImmutableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLIsWritableKey",
+            "value": "NSURLIsWritableKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLabelColorKey",
+            "value": "NSURLLabelColorKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLabelNumberKey",
+            "value": "NSURLLabelNumberKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLinkCountKey",
+            "value": "NSURLLinkCountKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLocalizedLabelKey",
+            "value": "NSURLLocalizedLabelKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLocalizedNameKey",
+            "value": "NSURLLocalizedNameKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLLocalizedTypeDescriptionKey",
+            "value": "NSURLLocalizedTypeDescriptionKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNameKey",
+            "value": "NSURLNameKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLPathKey",
+            "value": "_NSURLPathKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLCanonicalPathKey",
+            "value": "NSURLCanonicalPathKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLTagNamesKey",
+            "value": "NSURLTagNamesKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLContentTypeKey",
+            "value": "NSURLContentTypeKey",
+            "module": "Foundation"
+        }
+    ]
+}

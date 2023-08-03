@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSApplicationActivationPolicy",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSApplicationActivationPolicyRegular",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationActivationPolicyAccessory",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSApplicationActivationPolicyProhibited",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "CALayerContentsFilter",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCAFilterLinear",
+            "value": "linear",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAFilterNearest",
+            "value": "nearest",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAFilterTrilinear",
+            "value": "trilinear",
+            "module": "QuartzCore"
+        }
+    ]
+}

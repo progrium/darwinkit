@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSTextTabOptionKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSTabColumnTerminatorsAttributeName",
+            "value": "NSTabColumnTerminatorsAttributeName",
+            "module": "AppKit"
+        }
+    ]
+}

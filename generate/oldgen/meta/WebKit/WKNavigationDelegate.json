@@ -1,0 +1,265 @@
+{
+    "kind": "protocol",
+    "name": "WKNavigationDelegate",
+    "module": "WebKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "decidePolicyForNavigationAction",
+                    "variable_name": "navigationAction",
+                    "type": "WebKit.WKNavigationAction *"
+                },
+                {
+                    "name": "preferences",
+                    "variable_name": "preferences",
+                    "type": "WebKit.WKWebpagePreferences *"
+                },
+                {
+                    "name": "decisionHandler",
+                    "variable_name": "decisionHandler",
+                    "type": "void (^) (WebKit.WKNavigationActionPolicy param1, WebKit.WKWebpagePreferences * param2)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "decidePolicyForNavigationAction",
+                    "variable_name": "navigationAction",
+                    "type": "WebKit.WKNavigationAction *"
+                },
+                {
+                    "name": "decisionHandler",
+                    "variable_name": "decisionHandler",
+                    "type": "void (^) (WebKit.WKNavigationActionPolicy param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "decidePolicyForNavigationResponse",
+                    "variable_name": "navigationResponse",
+                    "type": "WebKit.WKNavigationResponse *"
+                },
+                {
+                    "name": "decisionHandler",
+                    "variable_name": "decisionHandler",
+                    "type": "void (^) (WebKit.WKNavigationResponsePolicy param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didStartProvisionalNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didReceiveServerRedirectForProvisionalNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didCommitNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didFinishNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didReceiveAuthenticationChallenge",
+                    "variable_name": "challenge",
+                    "type": "Foundation.NSURLAuthenticationChallenge *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSURLSessionAuthChallengeDisposition disposition, Foundation.NSURLCredential * credential)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "authenticationChallenge",
+                    "variable_name": "challenge",
+                    "type": "Foundation.NSURLAuthenticationChallenge *"
+                },
+                {
+                    "name": "shouldAllowDeprecatedTLS",
+                    "variable_name": "decisionHandler",
+                    "type": "void (^) (BOOL param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didFailNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                },
+                {
+                    "name": "withError",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "didFailProvisionalNavigation",
+                    "variable_name": "navigation",
+                    "type": "WebKit.WKNavigation *"
+                },
+                {
+                    "name": "withError",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webViewWebContentProcessDidTerminate",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "navigationResponse",
+                    "variable_name": "navigationResponse",
+                    "type": "WebKit.WKNavigationResponse *"
+                },
+                {
+                    "name": "didBecomeDownload",
+                    "variable_name": "download",
+                    "type": "WebKit.WKDownload *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "navigationAction",
+                    "variable_name": "navigationAction",
+                    "type": "WebKit.WKNavigationAction *"
+                },
+                {
+                    "name": "didBecomeDownload",
+                    "variable_name": "download",
+                    "type": "WebKit.WKDownload *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

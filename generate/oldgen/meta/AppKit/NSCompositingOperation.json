@@ -1,0 +1,148 @@
+{
+    "kind": "alias",
+    "name": "NSCompositingOperation",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSCompositingOperationClear",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationCopy",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSourceOver",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSourceIn",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSourceOut",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSourceAtop",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDestinationOver",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDestinationIn",
+            "value": "7",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDestinationOut",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDestinationAtop",
+            "value": "9",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationXOR",
+            "value": "10",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationPlusDarker",
+            "value": "11",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationPlusLighter",
+            "value": "13",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationMultiply",
+            "value": "14",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationScreen",
+            "value": "15",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationOverlay",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDarken",
+            "value": "17",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationLighten",
+            "value": "18",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationColorDodge",
+            "value": "19",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationColorBurn",
+            "value": "20",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSoftLight",
+            "value": "21",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationHardLight",
+            "value": "22",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationDifference",
+            "value": "23",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationExclusion",
+            "value": "24",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationHue",
+            "value": "25",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationSaturation",
+            "value": "26",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationColor",
+            "value": "27",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCompositingOperationLuminosity",
+            "value": "28",
+            "module": "AppKit"
+        }
+    ]
+}

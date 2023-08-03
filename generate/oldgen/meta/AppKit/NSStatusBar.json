@@ -1,0 +1,47 @@
+{
+    "kind": "class",
+    "name": "NSStatusBar",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "systemStatusBar",
+            "read_only": true,
+            "type": "AppKit.NSStatusBar *",
+            "class_property": true
+        },
+        {
+            "name": "vertical",
+            "read_only": true,
+            "getter_name": "isVertical",
+            "type": "BOOL"
+        },
+        {
+            "name": "thickness",
+            "read_only": true,
+            "type": "double"
+        }
+    ],
+    "methods": [
+        {
+            "name": "statusItemWithLength",
+            "params": [
+                {
+                    "variable_name": "length",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSStatusItem *"
+        },
+        {
+            "name": "removeStatusItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSStatusItem *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

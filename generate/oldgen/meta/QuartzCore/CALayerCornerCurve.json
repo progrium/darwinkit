@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "CALayerCornerCurve",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCACornerCurveCircular",
+            "value": "circular",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCACornerCurveContinuous",
+            "value": "continuous",
+            "module": "QuartzCore"
+        }
+    ]
+}

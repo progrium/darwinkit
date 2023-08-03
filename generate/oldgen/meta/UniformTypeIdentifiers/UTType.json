@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "UTType",
+    "module": "UniformTypeIdentifiers",
+    "parent": "objectivec.NSObject *"
+}

@@ -1,0 +1,21 @@
+{
+    "kind": "class",
+    "name": "NSPanel",
+    "module": "AppKit",
+    "parent": "AppKit.NSWindow *",
+    "properties": [
+        {
+            "name": "floatingPanel",
+            "getter_name": "isFloatingPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "becomesKeyOnlyIfNeeded",
+            "type": "BOOL"
+        },
+        {
+            "name": "worksWhenModal",
+            "type": "BOOL"
+        }
+    ]
+}

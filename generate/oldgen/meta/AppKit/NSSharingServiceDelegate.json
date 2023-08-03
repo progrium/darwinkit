@@ -1,0 +1,135 @@
+{
+    "kind": "protocol",
+    "name": "NSSharingServiceDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "willShareItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "didShareItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "didFailToShareItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "sourceFrameOnScreenForShareItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "transitionImageForShareItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "contentRect",
+                    "variable_name": "contentRect",
+                    "type": "Foundation.NSRect *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "sharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "sourceWindowForShareItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "sharingContentScope",
+                    "variable_name": "sharingContentScope",
+                    "type": "AppKit.NSSharingContentScope *"
+                }
+            ],
+            "return_type": "AppKit.NSWindow *"
+        },
+        {
+            "name": "anchoringViewForSharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "showRelativeToRect",
+                    "variable_name": "positioningRect",
+                    "type": "Foundation.NSRect *"
+                },
+                {
+                    "name": "preferredEdge",
+                    "variable_name": "preferredEdge",
+                    "type": "Foundation.NSRectEdge *"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        }
+    ]
+}

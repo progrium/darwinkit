@@ -1,0 +1,36 @@
+{
+    "kind": "class",
+    "name": "NSCollectionLayoutSize",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "widthDimension",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutDimension *"
+        },
+        {
+            "name": "heightDimension",
+            "read_only": true,
+            "type": "AppKit.NSCollectionLayoutDimension *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "sizeWithWidthDimension",
+            "params": [
+                {
+                    "variable_name": "width",
+                    "type": "AppKit.NSCollectionLayoutDimension *"
+                },
+                {
+                    "name": "heightDimension",
+                    "variable_name": "height",
+                    "type": "AppKit.NSCollectionLayoutDimension *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

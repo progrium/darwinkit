@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSWindowPersistableFrameDescriptor",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

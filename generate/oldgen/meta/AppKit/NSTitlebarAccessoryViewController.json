@@ -1,0 +1,39 @@
+{
+    "kind": "class",
+    "name": "NSTitlebarAccessoryViewController",
+    "module": "AppKit",
+    "parent": "AppKit.NSViewController *",
+    "properties": [
+        {
+            "name": "fullScreenMinHeight",
+            "type": "double"
+        },
+        {
+            "name": "layoutAttribute",
+            "type": "AppKit.NSLayoutAttribute"
+        },
+        {
+            "name": "automaticallyAdjustsSize",
+            "type": "BOOL"
+        },
+        {
+            "name": "hidden",
+            "getter_name": "isHidden",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "viewDidAppear",
+            "return_type": "void"
+        },
+        {
+            "name": "viewDidDisappear",
+            "return_type": "void"
+        },
+        {
+            "name": "viewWillAppear",
+            "return_type": "void"
+        }
+    ]
+}

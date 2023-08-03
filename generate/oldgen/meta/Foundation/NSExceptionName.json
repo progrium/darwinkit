@@ -1,0 +1,295 @@
+{
+    "kind": "alias",
+    "name": "NSExceptionName",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSCharacterConversionException",
+            "value": "NSCharacterConversionException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDecimalNumberDivideByZeroException",
+            "value": "NSDecimalNumberDivideByZeroException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDecimalNumberExactnessException",
+            "value": "NSDecimalNumberExactnessException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDecimalNumberOverflowException",
+            "value": "NSDecimalNumberOverflowException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDecimalNumberUnderflowException",
+            "value": "NSDecimalNumberUnderflowException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDestinationInvalidException",
+            "value": "NSDestinationInvalidException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFileHandleOperationException",
+            "value": "NSFileHandleOperationException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSGenericException",
+            "value": "NSGenericException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInternalInconsistencyException",
+            "value": "NSInternalInconsistencyException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvalidArchiveOperationException",
+            "value": "NSInvalidArchiveOperationException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvalidArgumentException",
+            "value": "NSInvalidArgumentException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvalidReceivePortException",
+            "value": "NSInvalidReceivePortException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvalidSendPortException",
+            "value": "NSInvalidSendPortException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvalidUnarchiveOperationException",
+            "value": "NSInvalidUnarchiveOperationException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvocationOperationCancelledException",
+            "value": "NSInvocationOperationCancelledException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInvocationOperationVoidResultException",
+            "value": "NSInvocationOperationVoidResultException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMallocException",
+            "value": "NSMallocException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSObjectInaccessibleException",
+            "value": "NSObjectInaccessibleException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSObjectNotAvailableException",
+            "value": "NSObjectNotAvailableException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOldStyleException",
+            "value": "NSOldStyleException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSParseErrorException",
+            "value": "NSParseErrorException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSPortReceiveException",
+            "value": "NSPortReceiveException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSPortSendException",
+            "value": "NSPortSendException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSPortTimeoutException",
+            "value": "NSPortTimeoutException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSRangeException",
+            "value": "NSRangeException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUndefinedKeyException",
+            "value": "NSUnknownKeyException",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInconsistentArchiveException",
+            "value": "NSArchiverArchiveInconsistency",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSPPDIncludeNotFoundException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPPDIncludeStackOverflowException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPPDIncludeStackUnderflowException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPPDParseException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRTFPropertyStackOverflowException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTIFFException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAbortModalException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAbortPrintingException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAppKitIgnoredException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAppKitVirtualMemoryException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadBitmapParametersException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadComparisonException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadRTFColorTableException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadRTFDirectiveException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadRTFFontTableException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBadRTFStyleSheetException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBrowserIllegalDelegateException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorListIOException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorListNotEditableException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDraggingException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontUnavailableException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSIllegalSelectorException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCacheException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSNibLoadingException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPasteboardCommunicationException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintOperationExistsException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPackageException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintingCommunicationException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLineTooLongException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextNoSelectionException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextReadException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextWriteException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypedStreamVersionException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowServerCommunicationException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWordTablesReadException",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWordTablesWriteException",
+            "module": "AppKit"
+        },
+        {
+            "name": "UIViewControllerHierarchyInconsistencyException",
+            "module": "AppKit"
+        },
+        {
+            "name": "UIApplicationInvalidInterfaceOrientationException",
+            "module": "AppKit"
+        }
+    ]
+}

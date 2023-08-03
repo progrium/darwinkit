@@ -1,0 +1,118 @@
+{
+    "kind": "alias",
+    "name": "NSAlignmentOptions",
+    "module": "Foundation",
+    "target_type": "uint64_t",
+    "values": [
+        {
+            "name": "NSAlignMinXInward",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMinYInward",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxXInward",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxYInward",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignWidthInward",
+            "value": "16",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignHeightInward",
+            "value": "32",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMinXOutward",
+            "value": "256",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMinYOutward",
+            "value": "512",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxXOutward",
+            "value": "1024",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxYOutward",
+            "value": "2048",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignWidthOutward",
+            "value": "4096",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignHeightOutward",
+            "value": "8192",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMinXNearest",
+            "value": "65536",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMinYNearest",
+            "value": "131072",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxXNearest",
+            "value": "262144",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignMaxYNearest",
+            "value": "524288",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignWidthNearest",
+            "value": "1048576",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignHeightNearest",
+            "value": "2097152",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignRectFlipped",
+            "value": "9223372036854775808",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignAllEdgesInward",
+            "value": "15",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignAllEdgesOutward",
+            "value": "3840",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAlignAllEdgesNearest",
+            "value": "983040",
+            "module": "Foundation"
+        }
+    ]
+}

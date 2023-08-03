@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSEventButtonMask",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSEventButtonMaskPenTip",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventButtonMaskPenLowerSide",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventButtonMaskPenUpperSide",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

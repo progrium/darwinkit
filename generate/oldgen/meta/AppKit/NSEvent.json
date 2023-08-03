@@ -1,0 +1,713 @@
+{
+    "kind": "class",
+    "name": "NSEvent",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "type",
+            "read_only": true,
+            "type": "AppKit.NSEventType"
+        },
+        {
+            "name": "subtype",
+            "read_only": true,
+            "type": "AppKit.NSEventSubtype"
+        },
+        {
+            "name": "locationInWindow",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "timestamp",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "window",
+            "read_only": true,
+            "type": "AppKit.NSWindow *",
+            "weak": true
+        },
+        {
+            "name": "windowNumber",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "eventRef",
+            "read_only": true,
+            "type": "void *"
+        },
+        {
+            "name": "CGEvent",
+            "read_only": true,
+            "type": "CoreGraphics.CGEventRef"
+        },
+        {
+            "name": "modifierFlags",
+            "read_only": true,
+            "type": "AppKit.NSEventModifierFlags"
+        },
+        {
+            "name": "modifierFlags",
+            "read_only": true,
+            "type": "AppKit.NSEventModifierFlags",
+            "class_property": true
+        },
+        {
+            "name": "characters",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "charactersIgnoringModifiers",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "keyCode",
+            "read_only": true,
+            "type": "uint16_t"
+        },
+        {
+            "name": "keyRepeatDelay",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval",
+            "class_property": true
+        },
+        {
+            "name": "keyRepeatInterval",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval",
+            "class_property": true
+        },
+        {
+            "name": "ARepeat",
+            "read_only": true,
+            "getter_name": "isARepeat",
+            "type": "BOOL"
+        },
+        {
+            "name": "pressedMouseButtons",
+            "read_only": true,
+            "type": "NSUInteger",
+            "class_property": true
+        },
+        {
+            "name": "doubleClickInterval",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval",
+            "class_property": true
+        },
+        {
+            "name": "mouseLocation",
+            "read_only": true,
+            "type": "Foundation.NSPoint",
+            "class_property": true
+        },
+        {
+            "name": "buttonNumber",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "clickCount",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "associatedEventsMask",
+            "read_only": true,
+            "type": "AppKit.NSEventMask"
+        },
+        {
+            "name": "deltaX",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "deltaY",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "deltaZ",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "hasPreciseScrollingDeltas",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "scrollingDeltaX",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "scrollingDeltaY",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "momentumPhase",
+            "read_only": true,
+            "type": "AppKit.NSEventPhase"
+        },
+        {
+            "name": "directionInvertedFromDevice",
+            "read_only": true,
+            "getter_name": "isDirectionInvertedFromDevice",
+            "type": "BOOL"
+        },
+        {
+            "name": "swipeTrackingFromScrollEventsEnabled",
+            "getter_name": "isSwipeTrackingFromScrollEventsEnabled",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "phase",
+            "read_only": true,
+            "type": "AppKit.NSEventPhase"
+        },
+        {
+            "name": "magnification",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "mouseCoalescingEnabled",
+            "getter_name": "isMouseCoalescingEnabled",
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "pressure",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "stage",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "stageTransition",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "pressureBehavior",
+            "read_only": true,
+            "type": "AppKit.NSPressureBehavior"
+        },
+        {
+            "name": "capabilityMask",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "deviceID",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "enteringProximity",
+            "read_only": true,
+            "getter_name": "isEnteringProximity",
+            "type": "BOOL"
+        },
+        {
+            "name": "pointingDeviceID",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "pointingDeviceSerialNumber",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "pointingDeviceType",
+            "read_only": true,
+            "type": "AppKit.NSPointingDeviceType"
+        },
+        {
+            "name": "systemTabletID",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "tabletID",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "uniqueID",
+            "read_only": true,
+            "type": "uint64_t"
+        },
+        {
+            "name": "vendorID",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "vendorPointingDeviceType",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "absoluteX",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "absoluteY",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "absoluteZ",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "buttonMask",
+            "read_only": true,
+            "type": "AppKit.NSEventButtonMask"
+        },
+        {
+            "name": "rotation",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "tangentialPressure",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "tilt",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "vendorDefined",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "eventNumber",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "trackingNumber",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "trackingArea",
+            "read_only": true,
+            "type": "AppKit.NSTrackingArea *"
+        },
+        {
+            "name": "userData",
+            "read_only": true,
+            "type": "void *"
+        },
+        {
+            "name": "data1",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "data2",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "context",
+            "read_only": true,
+            "type": "AppKit.NSGraphicsContext *",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "keyEventWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSEventType"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "modifierFlags",
+                    "variable_name": "flags",
+                    "type": "AppKit.NSEventModifierFlags"
+                },
+                {
+                    "name": "timestamp",
+                    "variable_name": "time",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "windowNumber",
+                    "variable_name": "wNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "context",
+                    "variable_name": "unusedPassNil",
+                    "type": "AppKit.NSGraphicsContext *"
+                },
+                {
+                    "name": "characters",
+                    "variable_name": "keys",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "charactersIgnoringModifiers",
+                    "variable_name": "ukeys",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "isARepeat",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "keyCode",
+                    "variable_name": "code",
+                    "type": "uint16_t"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "mouseEventWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSEventType"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "modifierFlags",
+                    "variable_name": "flags",
+                    "type": "AppKit.NSEventModifierFlags"
+                },
+                {
+                    "name": "timestamp",
+                    "variable_name": "time",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "windowNumber",
+                    "variable_name": "wNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "context",
+                    "variable_name": "unusedPassNil",
+                    "type": "AppKit.NSGraphicsContext *"
+                },
+                {
+                    "name": "eventNumber",
+                    "variable_name": "eNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "clickCount",
+                    "variable_name": "cNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "pressure",
+                    "variable_name": "pressure",
+                    "type": "float"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "enterExitEventWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSEventType"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "modifierFlags",
+                    "variable_name": "flags",
+                    "type": "AppKit.NSEventModifierFlags"
+                },
+                {
+                    "name": "timestamp",
+                    "variable_name": "time",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "windowNumber",
+                    "variable_name": "wNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "context",
+                    "variable_name": "unusedPassNil",
+                    "type": "AppKit.NSGraphicsContext *"
+                },
+                {
+                    "name": "eventNumber",
+                    "variable_name": "eNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "trackingNumber",
+                    "variable_name": "tNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "userData",
+                    "variable_name": "data",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "otherEventWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSEventType"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "modifierFlags",
+                    "variable_name": "flags",
+                    "type": "AppKit.NSEventModifierFlags"
+                },
+                {
+                    "name": "timestamp",
+                    "variable_name": "time",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "windowNumber",
+                    "variable_name": "wNum",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "context",
+                    "variable_name": "unusedPassNil",
+                    "type": "AppKit.NSGraphicsContext *"
+                },
+                {
+                    "name": "subtype",
+                    "variable_name": "subtype",
+                    "type": "int16_t"
+                },
+                {
+                    "name": "data1",
+                    "variable_name": "d1",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "data2",
+                    "variable_name": "d2",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "eventWithEventRef",
+            "params": [
+                {
+                    "variable_name": "eventRef",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "eventWithCGEvent",
+            "params": [
+                {
+                    "variable_name": "cgEvent",
+                    "type": "CoreGraphics.CGEventRef"
+                }
+            ],
+            "return_type": "AppKit.NSEvent *",
+            "class_method": true
+        },
+        {
+            "name": "charactersByApplyingModifiers",
+            "params": [
+                {
+                    "variable_name": "modifiers",
+                    "type": "AppKit.NSEventModifierFlags"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "trackSwipeEventWithOptions",
+            "params": [
+                {
+                    "variable_name": "options",
+                    "type": "AppKit.NSEventSwipeTrackingOptions"
+                },
+                {
+                    "name": "dampenAmountThresholdMin",
+                    "variable_name": "minDampenThreshold",
+                    "type": "double"
+                },
+                {
+                    "name": "max",
+                    "variable_name": "maxDampenThreshold",
+                    "type": "double"
+                },
+                {
+                    "name": "usingHandler",
+                    "variable_name": "trackingHandler",
+                    "type": "void (^) (double gestureAmount, AppKit.NSEventPhase phase, BOOL isComplete, BOOL * stop)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesMatchingPhase",
+            "params": [
+                {
+                    "variable_name": "phase",
+                    "type": "AppKit.NSTouchPhase"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSSet *"
+        },
+        {
+            "name": "allTouches",
+            "return_type": "Foundation.NSSet *"
+        },
+        {
+            "name": "touchesForView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "Foundation.NSSet *"
+        },
+        {
+            "name": "coalescedTouchesForTouch",
+            "params": [
+                {
+                    "variable_name": "touch",
+                    "type": "AppKit.NSTouch *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSTouch *> *"
+        },
+        {
+            "name": "startPeriodicEventsAfterDelay",
+            "params": [
+                {
+                    "variable_name": "delay",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "withPeriod",
+                    "variable_name": "period",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "stopPeriodicEvents",
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "addGlobalMonitorForEventsMatchingMask",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSEventMask"
+                },
+                {
+                    "name": "handler",
+                    "variable_name": "block",
+                    "type": "void (^) (AppKit.NSEvent * event)"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "class_method": true
+        },
+        {
+            "name": "addLocalMonitorForEventsMatchingMask",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSEventMask"
+                },
+                {
+                    "name": "handler",
+                    "variable_name": "block",
+                    "type": "AppKit.NSEvent * (^) (AppKit.NSEvent * event)"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "class_method": true
+        },
+        {
+            "name": "removeMonitor",
+            "params": [
+                {
+                    "variable_name": "eventMonitor",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        }
+    ]
+}

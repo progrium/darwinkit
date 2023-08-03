@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSWindowListOptions",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSWindowListOrderedFrontToBack",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

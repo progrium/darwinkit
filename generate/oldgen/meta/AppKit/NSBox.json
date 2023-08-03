@@ -1,0 +1,100 @@
+{
+    "kind": "class",
+    "name": "NSBox",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "borderRect",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "boxType",
+            "type": "AppKit.NSBoxType"
+        },
+        {
+            "name": "borderType",
+            "type": "AppKit.NSBorderType",
+            "deprecated": true
+        },
+        {
+            "name": "transparent",
+            "getter_name": "isTransparent",
+            "type": "BOOL"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "titleFont",
+            "type": "AppKit.NSFont *"
+        },
+        {
+            "name": "titlePosition",
+            "type": "AppKit.NSTitlePosition"
+        },
+        {
+            "name": "titleCell",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "titleRect",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "borderColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "borderWidth",
+            "type": "double"
+        },
+        {
+            "name": "cornerRadius",
+            "type": "double"
+        },
+        {
+            "name": "fillColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "contentView",
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "contentViewMargins",
+            "type": "Foundation.NSSize"
+        }
+    ],
+    "methods": [
+        {
+            "name": "setTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setFrameFromContentFrame",
+            "params": [
+                {
+                    "variable_name": "contentFrame",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sizeToFit",
+            "return_type": "void"
+        }
+    ]
+}

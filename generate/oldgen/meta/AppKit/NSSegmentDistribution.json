@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSSegmentDistribution",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSSegmentDistributionFit",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentDistributionFill",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentDistributionFillEqually",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentDistributionFillProportionally",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

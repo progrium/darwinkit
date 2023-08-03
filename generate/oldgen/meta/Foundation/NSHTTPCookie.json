@@ -1,0 +1,131 @@
+{
+    "kind": "class",
+    "name": "NSHTTPCookie",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "domain",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "path",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "portList",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "name",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "value",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "version",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "expiresDate",
+            "read_only": true,
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "sessionOnly",
+            "read_only": true,
+            "getter_name": "isSessionOnly",
+            "type": "BOOL"
+        },
+        {
+            "name": "HTTPOnly",
+            "read_only": true,
+            "getter_name": "isHTTPOnly",
+            "type": "BOOL"
+        },
+        {
+            "name": "secure",
+            "read_only": true,
+            "getter_name": "isSecure",
+            "type": "BOOL"
+        },
+        {
+            "name": "sameSitePolicy",
+            "read_only": true,
+            "type": "Foundation.NSHTTPCookieStringPolicy"
+        },
+        {
+            "name": "properties",
+            "read_only": true,
+            "type": "NSDictionary<Foundation.NSHTTPCookiePropertyKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "comment",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "commentURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "cookiesWithResponseHeaderFields",
+            "params": [
+                {
+                    "variable_name": "headerFields",
+                    "type": "NSDictionary<NSString*, NSString*> *"
+                },
+                {
+                    "name": "forURL",
+                    "variable_name": "URL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSHTTPCookie *> *",
+            "class_method": true
+        },
+        {
+            "name": "cookieWithProperties",
+            "params": [
+                {
+                    "variable_name": "properties",
+                    "type": "NSDictionary<Foundation.NSHTTPCookiePropertyKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "Foundation.NSHTTPCookie *",
+            "class_method": true
+        },
+        {
+            "name": "initWithProperties",
+            "params": [
+                {
+                    "variable_name": "properties",
+                    "type": "NSDictionary<Foundation.NSHTTPCookiePropertyKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "requestHeaderFieldsWithCookies",
+            "params": [
+                {
+                    "variable_name": "cookies",
+                    "type": "NSArray<Foundation.NSHTTPCookie *> *"
+                }
+            ],
+            "return_type": "NSDictionary<NSString*, NSString*> *",
+            "class_method": true
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "CATextLayerTruncationMode",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCATruncationEnd",
+            "value": "end",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATruncationMiddle",
+            "value": "middle",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATruncationNone",
+            "value": "none",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATruncationStart",
+            "value": "start",
+            "module": "QuartzCore"
+        }
+    ]
+}

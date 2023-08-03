@@ -1,0 +1,141 @@
+{
+    "kind": "class",
+    "name": "NSDrawer",
+    "module": "AppKit",
+    "parent": "AppKit.NSResponder *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSDrawerDelegate>",
+            "weak": true,
+            "deprecated": true
+        },
+        {
+            "name": "state",
+            "read_only": true,
+            "type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "contentSize",
+            "type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "leadingOffset",
+            "type": "double",
+            "deprecated": true
+        },
+        {
+            "name": "maxContentSize",
+            "type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "minContentSize",
+            "type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "trailingOffset",
+            "type": "double",
+            "deprecated": true
+        },
+        {
+            "name": "edge",
+            "read_only": true,
+            "type": "Foundation.NSRectEdge",
+            "deprecated": true
+        },
+        {
+            "name": "preferredEdge",
+            "type": "Foundation.NSRectEdge",
+            "deprecated": true
+        },
+        {
+            "name": "contentView",
+            "type": "AppKit.NSView *",
+            "deprecated": true
+        },
+        {
+            "name": "parentWindow",
+            "type": "AppKit.NSWindow *",
+            "weak": true,
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithContentSize",
+            "params": [
+                {
+                    "variable_name": "contentSize",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "preferredEdge",
+                    "variable_name": "edge",
+                    "type": "Foundation.NSRectEdge"
+                }
+            ],
+            "return_type": "instance",
+            "deprecated": true
+        },
+        {
+            "name": "close",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "close",
+            "go_name": "close1",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "open",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "open",
+            "go_name": "open1",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "openOnEdge",
+            "params": [
+                {
+                    "variable_name": "edge",
+                    "type": "Foundation.NSRectEdge"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "toggle",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

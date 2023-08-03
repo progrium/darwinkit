@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSDateComponentsFormatterZeroFormattingBehavior",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorNone",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorDefault",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorDropLeading",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorDropMiddle",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorDropTrailing",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorDropAll",
+            "value": "14",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSDateComponentsFormatterZeroFormattingBehaviorPad",
+            "value": "65536",
+            "module": "Foundation"
+        }
+    ]
+}

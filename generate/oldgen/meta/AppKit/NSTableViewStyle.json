@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTableViewStyleAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewStyleFullWidth",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewStyleInset",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewStyleSourceList",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewStylePlain",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

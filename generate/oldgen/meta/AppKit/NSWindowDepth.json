@@ -1,0 +1,39 @@
+{
+    "kind": "alias",
+    "name": "NSWindowDepth",
+    "module": "AppKit",
+    "target_type": "int32_t",
+    "values": [
+        {
+            "name": "NSWindowDepthOnehundredtwentyeightBitRGB",
+            "value": "544",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowDepthSixtyfourBitRGB",
+            "value": "528",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowDepthTwentyfourBitRGB",
+            "value": "520",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBitsPerPixelFromDepth",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBitsPerSampleFromDepth",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceFromDepth",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPlanarFromDepth",
+            "module": "AppKit"
+        }
+    ]
+}

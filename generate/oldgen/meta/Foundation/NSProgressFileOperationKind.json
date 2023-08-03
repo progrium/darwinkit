@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSProgressFileOperationKind",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSProgressFileOperationKindCopying",
+            "value": "NSProgressFileOperationKindCopying",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindDecompressingAfterDownloading",
+            "value": "NSProgressFileOperationKindDecompressingAfterDownloading",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindDownloading",
+            "value": "NSProgressFileOperationKindDownloading",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindUploading",
+            "value": "NSProgressFileOperationKindUploading",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindReceiving",
+            "value": "NSProgressFileOperationKindReceiving",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindDuplicating",
+            "value": "NSProgressFileOperationKindDuplicating",
+            "module": "Foundation"
+        }
+    ]
+}

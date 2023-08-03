@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSTextBlockLayer",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextBlockPadding",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextBlockBorder",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextBlockMargin",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSPrinterTableStatus",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPrinterTableOK",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrinterTableNotFound",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrinterTableError",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

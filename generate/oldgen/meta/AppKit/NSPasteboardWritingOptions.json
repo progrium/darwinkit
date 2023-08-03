@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSPasteboardWritingOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPasteboardWritingPromised",
+            "value": "512",
+            "module": "AppKit"
+        }
+    ]
+}

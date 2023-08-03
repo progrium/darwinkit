@@ -1,0 +1,95 @@
+{
+    "kind": "protocol",
+    "name": "NSGestureRecognizerDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "gestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                },
+                {
+                    "name": "shouldAttemptToRecognizeWithEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "gestureRecognizerShouldBegin",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "gestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                },
+                {
+                    "name": "shouldRecognizeSimultaneouslyWithGestureRecognizer",
+                    "variable_name": "otherGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "gestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                },
+                {
+                    "name": "shouldRequireFailureOfGestureRecognizer",
+                    "variable_name": "otherGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "gestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                },
+                {
+                    "name": "shouldBeRequiredToFailByGestureRecognizer",
+                    "variable_name": "otherGestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "gestureRecognizer",
+            "params": [
+                {
+                    "variable_name": "gestureRecognizer",
+                    "type": "AppKit.NSGestureRecognizer *"
+                },
+                {
+                    "name": "shouldReceiveTouch",
+                    "variable_name": "touch",
+                    "type": "AppKit.NSTouch *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "kind": "class",
+    "name": "NSLayoutGuide",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "identifier",
+            "type": "AppKit.NSUserInterfaceItemIdentifier"
+        },
+        {
+            "name": "frame",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "owningView",
+            "type": "AppKit.NSView *",
+            "weak": true
+        },
+        {
+            "name": "bottomAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "centerXAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "centerYAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "heightAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutDimension *"
+        },
+        {
+            "name": "leadingAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "leftAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "rightAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "topAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutYAxisAnchor *"
+        },
+        {
+            "name": "trailingAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutXAxisAnchor *"
+        },
+        {
+            "name": "widthAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutDimension *"
+        },
+        {
+            "name": "hasAmbiguousLayout",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "constraintsAffectingLayoutForOrientation",
+            "params": [
+                {
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSLayoutConstraintOrientation"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSLayoutConstraint *> *"
+        }
+    ]
+}

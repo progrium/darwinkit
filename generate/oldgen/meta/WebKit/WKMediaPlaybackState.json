@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "WKMediaPlaybackState",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKMediaPlaybackStateNone",
+            "value": "0",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaPlaybackStatePaused",
+            "value": "1",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaPlaybackStatePlaying",
+            "value": "3",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaPlaybackStateSuspended",
+            "value": "2",
+            "module": "WebKit"
+        }
+    ]
+}

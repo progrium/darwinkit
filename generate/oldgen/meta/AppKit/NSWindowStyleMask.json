@@ -1,0 +1,68 @@
+{
+    "kind": "alias",
+    "name": "NSWindowStyleMask",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowStyleMaskBorderless",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskTitled",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskClosable",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskMiniaturizable",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskResizable",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskUnifiedTitleAndToolbar",
+            "value": "4096",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskFullScreen",
+            "value": "16384",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskFullSizeContentView",
+            "value": "32768",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskUtilityWindow",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskDocModalWindow",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskNonactivatingPanel",
+            "value": "128",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowStyleMaskHUDWindow",
+            "value": "8192",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewAnimationOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTableViewAnimationEffectNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationEffectFade",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationEffectGap",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationSlideUp",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationSlideDown",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationSlideLeft",
+            "value": "48",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewAnimationSlideRight",
+            "value": "64",
+            "module": "AppKit"
+        }
+    ]
+}

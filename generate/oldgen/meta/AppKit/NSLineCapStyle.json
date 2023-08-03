@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSLineCapStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSLineCapStyleButt",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineCapStyleRound",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLineCapStyleSquare",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

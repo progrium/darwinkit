@@ -1,0 +1,59 @@
+{
+    "kind": "class",
+    "name": "NSTintConfiguration",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "adaptsToUserAccentColor",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "defaultTintConfiguration",
+            "read_only": true,
+            "type": "AppKit.NSTintConfiguration *",
+            "class_property": true
+        },
+        {
+            "name": "monochromeTintConfiguration",
+            "read_only": true,
+            "type": "AppKit.NSTintConfiguration *",
+            "class_property": true
+        },
+        {
+            "name": "baseTintColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "equivalentContentTintColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "tintConfigurationWithFixedColor",
+            "params": [
+                {
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "tintConfigurationWithPreferredColor",
+            "params": [
+                {
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

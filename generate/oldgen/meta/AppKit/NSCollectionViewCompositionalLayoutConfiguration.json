@@ -1,0 +1,20 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewCompositionalLayoutConfiguration",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "scrollDirection",
+            "type": "AppKit.NSCollectionViewScrollDirection"
+        },
+        {
+            "name": "interSectionSpacing",
+            "type": "double"
+        },
+        {
+            "name": "boundarySupplementaryItems",
+            "type": "NSArray<AppKit.NSCollectionLayoutBoundarySupplementaryItem *> *"
+        }
+    ]
+}

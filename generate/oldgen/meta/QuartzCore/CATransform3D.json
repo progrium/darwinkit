@@ -1,0 +1,5 @@
+{
+    "kind": "struct",
+    "name": "CATransform3D",
+    "module": "QuartzCore"
+}

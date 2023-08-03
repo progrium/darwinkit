@@ -1,0 +1,20 @@
+{
+    "kind": "protocol",
+    "name": "NSPortDelegate",
+    "module": "Foundation",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "handlePortMessage",
+            "params": [
+                {
+                    "variable_name": "message",
+                    "type": "Foundation.NSPortMessage *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

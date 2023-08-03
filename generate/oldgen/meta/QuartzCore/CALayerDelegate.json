@@ -1,0 +1,70 @@
+{
+    "kind": "protocol",
+    "name": "CALayerDelegate",
+    "module": "QuartzCore",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "displayLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "inContext",
+                    "variable_name": "ctx",
+                    "type": "CoreGraphics.CGContextRef"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layerWillDraw",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layoutSublayersOfLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "actionForLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                },
+                {
+                    "name": "forKey",
+                    "variable_name": "event",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "id<QuartzCore.CAAction>"
+        }
+    ]
+}

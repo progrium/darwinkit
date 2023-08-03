@@ -1,0 +1,109 @@
+{
+    "kind": "class",
+    "name": "NSByteCountFormatter",
+    "module": "Foundation",
+    "parent": "Foundation.NSFormatter *",
+    "properties": [
+        {
+            "name": "formattingContext",
+            "type": "Foundation.NSFormattingContext"
+        },
+        {
+            "name": "countStyle",
+            "type": "Foundation.NSByteCountFormatterCountStyle"
+        },
+        {
+            "name": "allowsNonnumericFormatting",
+            "type": "BOOL"
+        },
+        {
+            "name": "includesActualByteCount",
+            "type": "BOOL"
+        },
+        {
+            "name": "adaptive",
+            "getter_name": "isAdaptive",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowedUnits",
+            "type": "Foundation.NSByteCountFormatterUnits"
+        },
+        {
+            "name": "includesCount",
+            "type": "BOOL"
+        },
+        {
+            "name": "includesUnit",
+            "type": "BOOL"
+        },
+        {
+            "name": "zeroPadsFractionDigits",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "stringFromByteCount",
+            "params": [
+                {
+                    "variable_name": "byteCount",
+                    "type": "int64_t"
+                },
+                {
+                    "name": "countStyle",
+                    "variable_name": "countStyle",
+                    "type": "Foundation.NSByteCountFormatterCountStyle"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        },
+        {
+            "name": "stringFromByteCount",
+            "params": [
+                {
+                    "variable_name": "byteCount",
+                    "type": "int64_t"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringForObjectValue",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromMeasurement",
+            "params": [
+                {
+                    "variable_name": "measurement",
+                    "type": "Foundation.NSMeasurement *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "stringFromMeasurement",
+            "params": [
+                {
+                    "variable_name": "measurement",
+                    "type": "Foundation.NSMeasurement *"
+                },
+                {
+                    "name": "countStyle",
+                    "variable_name": "countStyle",
+                    "type": "Foundation.NSByteCountFormatterCountStyle"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        }
+    ]
+}

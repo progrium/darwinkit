@@ -1,0 +1,24 @@
+{
+    "kind": "class",
+    "name": "WKNavigationResponse",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "response",
+            "read_only": true,
+            "type": "Foundation.NSURLResponse *"
+        },
+        {
+            "name": "canShowMIMEType",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "forMainFrame",
+            "read_only": true,
+            "getter_name": "isForMainFrame",
+            "type": "BOOL"
+        }
+    ]
+}

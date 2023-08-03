@@ -1,0 +1,52 @@
+{
+    "kind": "protocol",
+    "name": "NSEditor",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "commitEditing",
+            "return_type": "BOOL",
+            "required": true
+        },
+        {
+            "name": "commitEditingWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didCommitSelector",
+                    "variable_name": "didCommitSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "commitEditingAndReturnError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL",
+            "required": true
+        },
+        {
+            "name": "discardEditing",
+            "return_type": "void",
+            "required": true
+        }
+    ]
+}

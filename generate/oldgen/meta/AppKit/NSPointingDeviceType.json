@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSPointingDeviceType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPointingDeviceTypeCursor",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPointingDeviceTypeEraser",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPointingDeviceTypePen",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPointingDeviceTypeUnknown",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

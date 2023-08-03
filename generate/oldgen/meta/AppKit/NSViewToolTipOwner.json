@@ -1,0 +1,36 @@
+{
+    "kind": "protocol",
+    "name": "NSViewToolTipOwner",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "view",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "stringForToolTip",
+                    "variable_name": "tag",
+                    "type": "AppKit.NSToolTipTag"
+                },
+                {
+                    "name": "point",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "userData",
+                    "variable_name": "data",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "NSString*",
+            "required": true
+        }
+    ]
+}

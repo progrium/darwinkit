@@ -1,0 +1,12 @@
+{
+    "kind": "class",
+    "name": "NSSwitch",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "state",
+            "type": "AppKit.NSControlStateValue"
+        }
+    ]
+}

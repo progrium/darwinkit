@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "WKNavigationType",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKNavigationTypeLinkActivated",
+            "value": "0",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationTypeFormSubmitted",
+            "value": "1",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationTypeBackForward",
+            "value": "2",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationTypeReload",
+            "value": "3",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationTypeFormResubmitted",
+            "value": "4",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationTypeOther",
+            "value": "-1",
+            "module": "WebKit"
+        }
+    ]
+}

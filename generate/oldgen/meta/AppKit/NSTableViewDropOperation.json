@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewDropOperation",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTableViewDropOn",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewDropAbove",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

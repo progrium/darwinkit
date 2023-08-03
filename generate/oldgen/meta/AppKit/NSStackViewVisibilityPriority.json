@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSStackViewVisibilityPriority",
+    "module": "AppKit",
+    "target_type": "float",
+    "values": [
+        {
+            "name": "NSStackViewVisibilityPriorityMustHold",
+            "value": "1000",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewVisibilityPriorityDetachOnlyIfNecessary",
+            "value": "900",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSStackViewVisibilityPriorityNotVisible",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

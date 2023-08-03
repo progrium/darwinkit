@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSTableViewRowSizeStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTableViewRowSizeStyleDefault",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewRowSizeStyleCustom",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewRowSizeStyleSmall",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewRowSizeStyleMedium",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTableViewRowSizeStyleLarge",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSProgressIndicatorStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger"
+}

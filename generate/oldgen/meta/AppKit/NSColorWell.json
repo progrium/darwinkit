@@ -1,0 +1,89 @@
+{
+    "kind": "class",
+    "name": "NSColorWell",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "color",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "colorWellStyle",
+            "type": "AppKit.NSColorWellStyle",
+            "weak": true
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "bordered",
+            "getter_name": "isBordered",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "active",
+            "read_only": true,
+            "getter_name": "isActive",
+            "type": "BOOL"
+        },
+        {
+            "name": "pulldownAction",
+            "type": "SEL"
+        },
+        {
+            "name": "pulldownTarget",
+            "type": "objectivec.NSObject *",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "colorWellWithStyle",
+            "params": [
+                {
+                    "variable_name": "style",
+                    "type": "AppKit.NSColorWellStyle"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "takeColorFrom",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "activate",
+            "params": [
+                {
+                    "variable_name": "exclusive",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "deactivate",
+            "return_type": "void"
+        },
+        {
+            "name": "drawWellInside",
+            "params": [
+                {
+                    "variable_name": "insideRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSCollectionViewTransitionLayoutAnimatedKey",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

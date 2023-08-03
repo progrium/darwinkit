@@ -1,0 +1,141 @@
+{
+    "kind": "protocol",
+    "name": "NSDraggingInfo",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "namesOfPromisedFilesDroppedAtDestination",
+            "params": [
+                {
+                    "variable_name": "dropDestination",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "deprecated": true,
+            "required": true
+        },
+        {
+            "name": "slideDraggedImageTo",
+            "params": [
+                {
+                    "variable_name": "screenPoint",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "enumerateDraggingItemsWithOptions",
+            "params": [
+                {
+                    "variable_name": "enumOpts",
+                    "type": "AppKit.NSDraggingItemEnumerationOptions"
+                },
+                {
+                    "name": "forView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "classes",
+                    "variable_name": "classArray",
+                    "type": "NSArray<objectivec.Class *> *"
+                },
+                {
+                    "name": "searchOptions",
+                    "variable_name": "searchOptions",
+                    "type": "NSDictionary<AppKit.NSPasteboardReadingOptionKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (AppKit.NSDraggingItem * draggingItem, NSInteger idx, BOOL * stop)"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "resetSpringLoading",
+            "return_type": "void",
+            "required": true
+        }
+    ],
+    "properties": [
+        {
+            "name": "draggingPasteboard",
+            "read_only": true,
+            "type": "AppKit.NSPasteboard *",
+            "required": true
+        },
+        {
+            "name": "draggingSequenceNumber",
+            "read_only": true,
+            "type": "NSInteger",
+            "required": true
+        },
+        {
+            "name": "draggingSource",
+            "read_only": true,
+            "type": "objectivec.NSObject *",
+            "required": true
+        },
+        {
+            "name": "draggingSourceOperationMask",
+            "read_only": true,
+            "type": "AppKit.NSDragOperation",
+            "required": true
+        },
+        {
+            "name": "draggingLocation",
+            "read_only": true,
+            "type": "Foundation.NSPoint",
+            "required": true
+        },
+        {
+            "name": "draggingDestinationWindow",
+            "read_only": true,
+            "type": "AppKit.NSWindow *",
+            "required": true
+        },
+        {
+            "name": "numberOfValidItemsForDrop",
+            "type": "NSInteger",
+            "required": true
+        },
+        {
+            "name": "draggedImage",
+            "read_only": true,
+            "type": "AppKit.NSImage *",
+            "deprecated": true,
+            "required": true
+        },
+        {
+            "name": "draggedImageLocation",
+            "read_only": true,
+            "type": "Foundation.NSPoint",
+            "required": true
+        },
+        {
+            "name": "animatesToDestination",
+            "type": "BOOL",
+            "required": true
+        },
+        {
+            "name": "draggingFormation",
+            "type": "AppKit.NSDraggingFormation",
+            "required": true
+        },
+        {
+            "name": "springLoadingHighlight",
+            "read_only": true,
+            "type": "AppKit.NSSpringLoadingHighlight",
+            "required": true
+        }
+    ]
+}

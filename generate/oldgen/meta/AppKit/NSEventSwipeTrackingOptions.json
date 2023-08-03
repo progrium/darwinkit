@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSEventSwipeTrackingOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSEventSwipeTrackingLockDirection",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventSwipeTrackingClampGestureAmount",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

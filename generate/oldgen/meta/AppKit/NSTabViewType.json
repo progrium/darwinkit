@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSTabViewType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTopTabsBezelBorder",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSNoTabsBezelBorder",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSNoTabsLineBorder",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSNoTabsNoBorder",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBottomTabsBezelBorder",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLeftTabsBezelBorder",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSRightTabsBezelBorder",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

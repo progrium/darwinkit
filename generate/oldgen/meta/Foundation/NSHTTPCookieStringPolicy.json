@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSHTTPCookieStringPolicy",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSHTTPCookieSameSiteStrict",
+            "value": "strict",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSHTTPCookieSameSiteLax",
+            "value": "lax",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "kind": "class",
+    "name": "WKWebsiteDataRecord",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "displayName",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "dataTypes",
+            "read_only": true,
+            "type": "Foundation.NSSet *"
+        }
+    ]
+}

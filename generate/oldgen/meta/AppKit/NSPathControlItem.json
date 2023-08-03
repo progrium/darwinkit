@@ -1,0 +1,25 @@
+{
+    "kind": "class",
+    "name": "NSPathControlItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "URL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        }
+    ]
+}

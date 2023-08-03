@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSWindowOcclusionState",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowOcclusionStateVisible",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,175 @@
+{
+    "kind": "protocol",
+    "name": "NSControlTextEditingDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "isValidObject",
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "didFailToValidatePartialString",
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "errorDescription",
+                    "variable_name": "error",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "didFailToFormatString",
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "errorDescription",
+                    "variable_name": "error",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "textShouldBeginEditing",
+                    "variable_name": "fieldEditor",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "textShouldEndEditing",
+                    "variable_name": "fieldEditor",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "textView",
+                    "variable_name": "textView",
+                    "type": "AppKit.NSTextView *"
+                },
+                {
+                    "name": "completions",
+                    "variable_name": "words",
+                    "type": "NSArray<NSString*> *"
+                },
+                {
+                    "name": "forPartialWordRange",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "indexOfSelectedItem",
+                    "variable_name": "index",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "control",
+            "params": [
+                {
+                    "variable_name": "control",
+                    "type": "AppKit.NSControl *"
+                },
+                {
+                    "name": "textView",
+                    "variable_name": "textView",
+                    "type": "AppKit.NSTextView *"
+                },
+                {
+                    "name": "doCommandBySelector",
+                    "variable_name": "commandSelector",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "controlTextDidBeginEditing",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "controlTextDidChange",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "controlTextDidEndEditing",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

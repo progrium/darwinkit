@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSAttributedStringFormattingOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSAttributedStringFormattingApplyReplacementIndexAttribute",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging",
+            "value": "1",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,270 @@
+{
+    "kind": "protocol",
+    "name": "NSLayoutManagerDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "layoutManagerDidInvalidateLayout",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSLayoutManager *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "shouldGenerateGlyphs",
+                    "variable_name": "glyphs",
+                    "type": "CoreGraphics.CGGlyph *"
+                },
+                {
+                    "name": "properties",
+                    "variable_name": "props",
+                    "type": "AppKit.NSGlyphProperty *"
+                },
+                {
+                    "name": "characterIndexes",
+                    "variable_name": "charIndexes",
+                    "type": "NSUInteger *"
+                },
+                {
+                    "name": "font",
+                    "variable_name": "aFont",
+                    "type": "AppKit.NSFont *"
+                },
+                {
+                    "name": "forGlyphRange",
+                    "variable_name": "glyphRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSUInteger"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "shouldUseAction",
+                    "variable_name": "action",
+                    "type": "AppKit.NSControlCharacterAction"
+                },
+                {
+                    "name": "forControlCharacterAtIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "AppKit.NSControlCharacterAction"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "didCompleteLayoutForTextContainer",
+                    "variable_name": "textContainer",
+                    "type": "AppKit.NSTextContainer *"
+                },
+                {
+                    "name": "atEnd",
+                    "variable_name": "layoutFinishedFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "textContainer",
+                    "variable_name": "textContainer",
+                    "type": "AppKit.NSTextContainer *"
+                },
+                {
+                    "name": "didChangeGeometryFromSize",
+                    "variable_name": "oldSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "shouldBreakLineByHyphenatingBeforeCharacterAtIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "shouldBreakLineByWordBeforeCharacterAtIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "lineSpacingAfterGlyphAtIndex",
+                    "variable_name": "glyphIndex",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "withProposedLineFragmentRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "paragraphSpacingAfterGlyphAtIndex",
+                    "variable_name": "glyphIndex",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "withProposedLineFragmentRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "paragraphSpacingBeforeGlyphAtIndex",
+                    "variable_name": "glyphIndex",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "withProposedLineFragmentRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "boundingBoxForControlGlyphAtIndex",
+                    "variable_name": "glyphIndex",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "forTextContainer",
+                    "variable_name": "textContainer",
+                    "type": "AppKit.NSTextContainer *"
+                },
+                {
+                    "name": "proposedLineFragment",
+                    "variable_name": "proposedRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "glyphPosition",
+                    "variable_name": "glyphPosition",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "characterIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "layoutManager",
+            "params": [
+                {
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                },
+                {
+                    "name": "shouldUseTemporaryAttributes",
+                    "variable_name": "attrs",
+                    "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "forDrawingToScreen",
+                    "variable_name": "toScreen",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "atCharacterIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "effectiveRange",
+                    "variable_name": "effectiveCharRange",
+                    "type": "Foundation.NSRange *"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "kind": "class",
+    "name": "NSCollectionLayoutDimension",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "dimension",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "isAbsolute",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "isEstimated",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "isFractionalHeight",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "isFractionalWidth",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "absoluteDimension",
+            "params": [
+                {
+                    "variable_name": "absoluteDimension",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "estimatedDimension",
+            "params": [
+                {
+                    "variable_name": "estimatedDimension",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "fractionalHeightDimension",
+            "params": [
+                {
+                    "variable_name": "fractionalHeight",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "fractionalWidthDimension",
+            "params": [
+                {
+                    "variable_name": "fractionalWidth",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

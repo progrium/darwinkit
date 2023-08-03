@@ -1,0 +1,21 @@
+{
+    "kind": "class",
+    "name": "WKWebpagePreferences",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "allowsContentJavaScript",
+            "type": "BOOL"
+        },
+        {
+            "name": "preferredContentMode",
+            "type": "WebKit.WKContentMode"
+        },
+        {
+            "name": "lockdownModeEnabled",
+            "getter_name": "isLockdownModeEnabled",
+            "type": "BOOL"
+        }
+    ]
+}

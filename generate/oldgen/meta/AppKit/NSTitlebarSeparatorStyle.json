@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTitlebarSeparatorStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTitlebarSeparatorStyleAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTitlebarSeparatorStyleLine",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTitlebarSeparatorStyleNone",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTitlebarSeparatorStyleShadow",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

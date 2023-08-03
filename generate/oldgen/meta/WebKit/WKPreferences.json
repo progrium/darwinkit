@@ -1,0 +1,55 @@
+{
+    "kind": "class",
+    "name": "WKPreferences",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "minimumFontSize",
+            "type": "double"
+        },
+        {
+            "name": "tabFocusesLinks",
+            "type": "BOOL"
+        },
+        {
+            "name": "javaScriptCanOpenWindowsAutomatically",
+            "type": "BOOL"
+        },
+        {
+            "name": "fraudulentWebsiteWarningEnabled",
+            "getter_name": "isFraudulentWebsiteWarningEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "javaEnabled",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "javaScriptEnabled",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "plugInsEnabled",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "elementFullscreenEnabled",
+            "getter_name": "isElementFullscreenEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "siteSpecificQuirksModeEnabled",
+            "getter_name": "isSiteSpecificQuirksModeEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "textInteractionEnabled",
+            "getter_name": "isTextInteractionEnabled",
+            "type": "BOOL"
+        }
+    ]
+}

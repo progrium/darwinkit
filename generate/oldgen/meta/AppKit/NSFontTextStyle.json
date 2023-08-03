@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "NSFontTextStyle",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSFontTextStyleBody",
+            "value": "UICTFontTextStyleBody",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleCallout",
+            "value": "UICTFontTextStyleCallout",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleCaption1",
+            "value": "UICTFontTextStyleCaption1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleCaption2",
+            "value": "UICTFontTextStyleCaption2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleFootnote",
+            "value": "UICTFontTextStyleFootnote",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleHeadline",
+            "value": "UICTFontTextStyleHeadline",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleSubheadline",
+            "value": "UICTFontTextStyleSubhead",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleLargeTitle",
+            "value": "UICTFontTextStyleTitle0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleTitle1",
+            "value": "UICTFontTextStyleTitle1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleTitle2",
+            "value": "UICTFontTextStyleTitle2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTextStyleTitle3",
+            "value": "UICTFontTextStyleTitle3",
+            "module": "AppKit"
+        }
+    ]
+}

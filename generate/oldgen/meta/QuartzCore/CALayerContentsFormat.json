@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "CALayerContentsFormat",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCAContentsFormatRGBA16Float",
+            "value": "RGBAh",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAContentsFormatRGBA8Uint",
+            "value": "RGBA8",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAContentsFormatGray8Uint",
+            "value": "Gray8",
+            "module": "QuartzCore"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSStatusItemAutosaveName",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

@@ -1,0 +1,64 @@
+{
+    "kind": "class",
+    "name": "NSNib",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "methods": [
+        {
+            "name": "initWithContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "nibFileURL",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initWithNibNamed",
+            "params": [
+                {
+                    "variable_name": "nibName",
+                    "type": "AppKit.NSNibName"
+                },
+                {
+                    "name": "bundle",
+                    "variable_name": "bundle",
+                    "type": "Foundation.NSBundle *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithNibData",
+            "params": [
+                {
+                    "variable_name": "nibData",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "bundle",
+                    "variable_name": "bundle",
+                    "type": "Foundation.NSBundle *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "instantiateWithOwner",
+            "params": [
+                {
+                    "variable_name": "owner",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "topLevelObjects",
+                    "variable_name": "topLevelObjects",
+                    "type": "NSArray<objectivec.NSObject *> * *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

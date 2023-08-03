@@ -1,0 +1,103 @@
+{
+    "kind": "alias",
+    "name": "NSLocaleKey",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSLocaleIdentifier",
+            "value": "kCFLocaleIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCountryCode",
+            "value": "kCFLocaleCountryCodeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleLanguageCode",
+            "value": "kCFLocaleLanguageCodeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleScriptCode",
+            "value": "kCFLocaleScriptCodeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleVariantCode",
+            "value": "kCFLocaleVariantCodeKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleExemplarCharacterSet",
+            "value": "kCFLocaleExemplarCharacterSetKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCalendar",
+            "value": "kCFLocaleCalendarKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCollationIdentifier",
+            "value": "collation",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCollatorIdentifier",
+            "value": "kCFLocaleCollatorIdentifierKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleUsesMetricSystem",
+            "value": "kCFLocaleUsesMetricSystemKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleMeasurementSystem",
+            "value": "kCFLocaleMeasurementSystemKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleDecimalSeparator",
+            "value": "kCFLocaleDecimalSeparatorKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleGroupingSeparator",
+            "value": "kCFLocaleGroupingSeparatorKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCurrencySymbol",
+            "value": "kCFLocaleCurrencySymbolKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleCurrencyCode",
+            "value": "currency",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleQuotationEndDelimiterKey",
+            "value": "kCFLocaleQuotationEndDelimiterKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleQuotationBeginDelimiterKey",
+            "value": "kCFLocaleQuotationBeginDelimiterKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleAlternateQuotationEndDelimiterKey",
+            "value": "kCFLocaleAlternateQuotationEndDelimiterKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLocaleAlternateQuotationBeginDelimiterKey",
+            "value": "kCFLocaleAlternateQuotationBeginDelimiterKey",
+            "module": "Foundation"
+        }
+    ]
+}

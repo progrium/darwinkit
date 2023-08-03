@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "WKMediaCaptureState",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKMediaCaptureStateActive",
+            "value": "1",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaCaptureStateMuted",
+            "value": "2",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKMediaCaptureStateNone",
+            "value": "0",
+            "module": "WebKit"
+        }
+    ]
+}

@@ -1,0 +1,625 @@
+{
+    "kind": "protocol",
+    "name": "NSOutlineViewDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSControlTextEditingDelegate"
+    ],
+    "methods": [
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldExpandItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldCollapseItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "typeSelectStringForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "nextTypeSelectMatchFromItem",
+                    "variable_name": "startItem",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "toItem",
+                    "variable_name": "endItem",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldTypeSelectForEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "withCurrentSearchString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "toolTipForCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "rect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect *"
+                },
+                {
+                    "name": "tableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "mouseLocation",
+                    "variable_name": "mouseLocation",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldSelectTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldSelectItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "selectionIndexesForProposedSelection",
+                    "variable_name": "proposedSelectionIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "selectionShouldChangeInOutlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineViewSelectionIsChanging",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewSelectionDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "willDisplayCell",
+                    "variable_name": "cell",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "willDisplayOutlineCell",
+                    "variable_name": "cell",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "dataCellForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldShowOutlineCellForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldShowCellExpansionForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldReorderColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toColumn",
+                    "variable_name": "newColumnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineViewColumnDidMove",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewColumnDidResize",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewItemWillExpand",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewItemDidExpand",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewItemWillCollapse",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineViewItemDidCollapse",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldEditTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "mouseDownInHeaderOfTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "didClickTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "didDragTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "heightOfRowByItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "sizeToFitWidthOfColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "tintConfigurationForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSTintConfiguration *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "shouldTrackCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "isGroupItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "didAddRowView",
+                    "variable_name": "rowView",
+                    "type": "AppKit.NSTableRowView *"
+                },
+                {
+                    "name": "forRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "didRemoveRowView",
+                    "variable_name": "rowView",
+                    "type": "AppKit.NSTableRowView *"
+                },
+                {
+                    "name": "forRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "rowViewForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSTableRowView *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "viewForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSView *"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "kind": "protocol",
+    "name": "NSUserActivityDelegate",
+    "module": "Foundation",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "userActivity",
+            "params": [
+                {
+                    "variable_name": "userActivity",
+                    "type": "Foundation.NSUserActivity *"
+                },
+                {
+                    "name": "didReceiveInputStream",
+                    "variable_name": "inputStream",
+                    "type": "Foundation.NSInputStream *"
+                },
+                {
+                    "name": "outputStream",
+                    "variable_name": "outputStream",
+                    "type": "Foundation.NSOutputStream *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "userActivityWasContinued",
+            "params": [
+                {
+                    "variable_name": "userActivity",
+                    "type": "Foundation.NSUserActivity *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "userActivityWillSave",
+            "params": [
+                {
+                    "variable_name": "userActivity",
+                    "type": "Foundation.NSUserActivity *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

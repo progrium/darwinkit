@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "NSTextCheckingKey",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSTextCheckingAirlineKey",
+            "value": "Airline",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingCityKey",
+            "value": "City",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingCountryKey",
+            "value": "Country",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingFlightKey",
+            "value": "Flight",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingJobTitleKey",
+            "value": "JobTitle",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingNameKey",
+            "value": "Name",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingOrganizationKey",
+            "value": "Organization",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingPhoneKey",
+            "value": "Phone",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingStateKey",
+            "value": "State",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingStreetKey",
+            "value": "Street",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTextCheckingZIPKey",
+            "value": "ZIP",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,344 @@
+{
+    "kind": "class",
+    "name": "NSPrintOperation",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "currentOperation",
+            "type": "AppKit.NSPrintOperation *",
+            "class_property": true
+        },
+        {
+            "name": "copyingOperation",
+            "read_only": true,
+            "getter_name": "isCopyingOperation",
+            "type": "BOOL"
+        },
+        {
+            "name": "printInfo",
+            "type": "AppKit.NSPrintInfo *"
+        },
+        {
+            "name": "view",
+            "read_only": true,
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "preferredRenderingQuality",
+            "read_only": true,
+            "type": "AppKit.NSPrintRenderingQuality"
+        },
+        {
+            "name": "showsPrintPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "showsProgressPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "jobTitle",
+            "type": "NSString*"
+        },
+        {
+            "name": "printPanel",
+            "type": "AppKit.NSPrintPanel *"
+        },
+        {
+            "name": "PDFPanel",
+            "type": "AppKit.NSPDFPanel *"
+        },
+        {
+            "name": "context",
+            "read_only": true,
+            "type": "AppKit.NSGraphicsContext *"
+        },
+        {
+            "name": "currentPage",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "pageRange",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "pageOrder",
+            "type": "AppKit.NSPrintingPageOrder"
+        },
+        {
+            "name": "canSpawnSeparateThread",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "EPSOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toData",
+                    "variable_name": "data",
+                    "type": "Foundation.NSMutableData *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "EPSOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toData",
+                    "variable_name": "data",
+                    "type": "Foundation.NSMutableData *"
+                },
+                {
+                    "name": "printInfo",
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "EPSOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toPath",
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "printInfo",
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "PDFOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toData",
+                    "variable_name": "data",
+                    "type": "Foundation.NSMutableData *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "PDFOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toData",
+                    "variable_name": "data",
+                    "type": "Foundation.NSMutableData *"
+                },
+                {
+                    "name": "printInfo",
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "PDFOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "insideRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "toPath",
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "printInfo",
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "printOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "printOperationWithView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "printInfo",
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *",
+            "class_method": true
+        },
+        {
+            "name": "runOperation",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "runOperationModalForWindow",
+            "params": [
+                {
+                    "variable_name": "docWindow",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didRunSelector",
+                    "variable_name": "didRunSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cleanUpOperation",
+            "return_type": "void"
+        },
+        {
+            "name": "deliverResult",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "createContext",
+            "return_type": "AppKit.NSGraphicsContext *"
+        },
+        {
+            "name": "destroyContext",
+            "return_type": "void"
+        },
+        {
+            "name": "jobStyleHint",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "setJobStyleHint",
+            "params": [
+                {
+                    "variable_name": "hint",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "accessoryView",
+            "return_type": "AppKit.NSView *",
+            "deprecated": true
+        },
+        {
+            "name": "setAccessoryView",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "showPanels",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setShowPanels",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

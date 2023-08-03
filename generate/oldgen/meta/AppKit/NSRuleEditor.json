@@ -1,0 +1,249 @@
+{
+    "kind": "class",
+    "name": "NSRuleEditor",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSRuleEditorDelegate>",
+            "weak": true
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "nestingMode",
+            "type": "AppKit.NSRuleEditorNestingMode"
+        },
+        {
+            "name": "canRemoveAllRows",
+            "type": "BOOL"
+        },
+        {
+            "name": "rowHeight",
+            "type": "double"
+        },
+        {
+            "name": "formattingDictionary",
+            "type": "NSDictionary<NSString*, NSString*> *"
+        },
+        {
+            "name": "formattingStringsFilename",
+            "type": "NSString*"
+        },
+        {
+            "name": "numberOfRows",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "selectedRowIndexes",
+            "read_only": true,
+            "type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "predicate",
+            "read_only": true,
+            "type": "Foundation.NSPredicate *"
+        },
+        {
+            "name": "rowClass",
+            "type": "objectivec.Class *",
+            "weak": true
+        },
+        {
+            "name": "rowTypeKeyPath",
+            "type": "NSString*"
+        },
+        {
+            "name": "subrowsKeyPath",
+            "type": "NSString*"
+        },
+        {
+            "name": "criteriaKeyPath",
+            "type": "NSString*"
+        },
+        {
+            "name": "displayValuesKeyPath",
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "reloadCriteria",
+            "return_type": "void"
+        },
+        {
+            "name": "setCriteria",
+            "params": [
+                {
+                    "variable_name": "criteria",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "andDisplayValues",
+                    "variable_name": "values",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "forRowAtIndex",
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "criteriaForRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "displayValuesForRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "parentRowForRow",
+            "params": [
+                {
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "rowForDisplayValue",
+            "params": [
+                {
+                    "variable_name": "displayValue",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "rowTypeForRow",
+            "params": [
+                {
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSRuleEditorRowType"
+        },
+        {
+            "name": "subrowIndexesForRow",
+            "params": [
+                {
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "selectRowIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "byExtendingSelection",
+                    "variable_name": "extend",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addRow",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertRowAtIndex",
+            "params": [
+                {
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withType",
+                    "variable_name": "rowType",
+                    "type": "AppKit.NSRuleEditorRowType"
+                },
+                {
+                    "name": "asSubrowOfRow",
+                    "variable_name": "parentRow",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "animate",
+                    "variable_name": "shouldAnimate",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeRowAtIndex",
+            "params": [
+                {
+                    "variable_name": "rowIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeRowsAtIndexes",
+            "params": [
+                {
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "includeSubrows",
+                    "variable_name": "includeSubrows",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "reloadPredicate",
+            "return_type": "void"
+        },
+        {
+            "name": "predicateForRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *"
+        }
+    ]
+}

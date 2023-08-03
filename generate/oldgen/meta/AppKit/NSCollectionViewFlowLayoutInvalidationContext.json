@@ -1,0 +1,16 @@
+{
+    "kind": "class",
+    "name": "NSCollectionViewFlowLayoutInvalidationContext",
+    "module": "AppKit",
+    "parent": "AppKit.NSCollectionViewLayoutInvalidationContext *",
+    "properties": [
+        {
+            "name": "invalidateFlowLayoutAttributes",
+            "type": "BOOL"
+        },
+        {
+            "name": "invalidateFlowLayoutDelegateMetrics",
+            "type": "BOOL"
+        }
+    ]
+}

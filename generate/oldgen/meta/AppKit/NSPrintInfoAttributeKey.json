@@ -1,0 +1,158 @@
+{
+    "kind": "alias",
+    "name": "NSPrintInfoAttributeKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSPrintPaperName",
+            "value": "NSPaperName",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPaperSize",
+            "value": "NSPaperSize",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintOrientation",
+            "value": "NSOrientation",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintScalingFactor",
+            "value": "NSScalingFactor",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintLeftMargin",
+            "value": "NSLeftMargin",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintRightMargin",
+            "value": "NSRightMargin",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintTopMargin",
+            "value": "NSTopMargin",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintBottomMargin",
+            "value": "NSBottomMargin",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintHorizontallyCentered",
+            "value": "NSHorizontallyCentered",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintVerticallyCentered",
+            "value": "NSVerticallyCentered",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintHorizontalPagination",
+            "value": "NSHorizonalPagination",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintVerticalPagination",
+            "value": "NSVerticalPagination",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintAllPages",
+            "value": "NSPrintAllPages",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintCopies",
+            "value": "NSCopies",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintDetailedErrorReporting",
+            "value": "NSDetailedErrorReporting",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintFaxNumber",
+            "value": "NSFaxNumber",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintFirstPage",
+            "value": "NSFirstPage",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintHeaderAndFooter",
+            "value": "NSPrintHeaderAndFooter",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintJobDisposition",
+            "value": "NSJobDisposition",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintJobSavingFileNameExtensionHidden",
+            "value": "NSJobSavingFileNameExtensionHidden",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintJobSavingURL",
+            "value": "NSJobSavingURL",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintLastPage",
+            "value": "NSLastPage",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintMustCollate",
+            "value": "NSMustCollate",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPagesAcross",
+            "value": "NSPagesAcross",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPagesDown",
+            "value": "NSPagesDown",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPrinter",
+            "value": "NSPrinter",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintPrinterName",
+            "value": "NSPrinterName",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintReversePageOrder",
+            "value": "NSReversePageOrder",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintSelectionOnly",
+            "value": "NSPrintSelectionOnly",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintTime",
+            "value": "NSPrintTime",
+            "module": "AppKit"
+        }
+    ]
+}

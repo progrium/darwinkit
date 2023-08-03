@@ -1,0 +1,115 @@
+{
+    "kind": "class",
+    "name": "NSPasteboardItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "types",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPasteboardType> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "availableTypeFromArray",
+            "params": [
+                {
+                    "variable_name": "types",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                }
+            ],
+            "return_type": "AppKit.NSPasteboardType"
+        },
+        {
+            "name": "setDataProvider",
+            "params": [
+                {
+                    "variable_name": "dataProvider",
+                    "type": "id<AppKit.NSPasteboardItemDataProvider>"
+                },
+                {
+                    "name": "forTypes",
+                    "variable_name": "types",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setData",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "forType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setString",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setPropertyList",
+            "params": [
+                {
+                    "variable_name": "propertyList",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forType",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "dataForType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "stringForType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "propertyListForType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        }
+    ]
+}

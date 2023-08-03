@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSColorSpaceModel",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorSpaceModelUnknown",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelGray",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelRGB",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelCMYK",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelLAB",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelDeviceN",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelIndexed",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSpaceModelPatterned",
+            "value": "6",
+            "module": "AppKit"
+        }
+    ]
+}

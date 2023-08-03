@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSFormattingUnitStyle",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSFormattingUnitStyleShort",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingUnitStyleMedium",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFormattingUnitStyleLong",
+            "value": "3",
+            "module": "Foundation"
+        }
+    ]
+}

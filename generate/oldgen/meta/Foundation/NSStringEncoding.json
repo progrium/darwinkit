@@ -1,0 +1,128 @@
+{
+    "kind": "alias",
+    "name": "NSStringEncoding",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSASCIIStringEncoding",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNEXTSTEPStringEncoding",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSJapaneseEUCStringEncoding",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF8StringEncoding",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSISOLatin1StringEncoding",
+            "value": "5",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSSymbolStringEncoding",
+            "value": "6",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSNonLossyASCIIStringEncoding",
+            "value": "7",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSShiftJISStringEncoding",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSISOLatin2StringEncoding",
+            "value": "9",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUnicodeStringEncoding",
+            "value": "10",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSWindowsCP1251StringEncoding",
+            "value": "11",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSWindowsCP1252StringEncoding",
+            "value": "12",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSWindowsCP1253StringEncoding",
+            "value": "13",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSWindowsCP1254StringEncoding",
+            "value": "14",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSWindowsCP1250StringEncoding",
+            "value": "15",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSISO2022JPStringEncoding",
+            "value": "21",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMacOSRomanStringEncoding",
+            "value": "30",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF16StringEncoding",
+            "value": "10",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF16BigEndianStringEncoding",
+            "value": "2415919360",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF16LittleEndianStringEncoding",
+            "value": "2483028224",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF32StringEncoding",
+            "value": "2348810496",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF32BigEndianStringEncoding",
+            "value": "2550137088",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUTF32LittleEndianStringEncoding",
+            "value": "2617245952",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProprietaryStringEncoding",
+            "value": "65536",
+            "module": "Foundation"
+        }
+    ]
+}

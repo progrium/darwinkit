@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSDeviceDescriptionKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSDeviceBitsPerSample",
+            "value": "NSDeviceBitsPerSample",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDeviceColorSpaceName",
+            "value": "NSDeviceColorSpaceName",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDeviceIsPrinter",
+            "value": "NSDeviceIsPrinter",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDeviceIsScreen",
+            "value": "NSDeviceIsScreen",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDeviceResolution",
+            "value": "NSDeviceResolution",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDeviceSize",
+            "value": "NSDeviceSize",
+            "module": "AppKit"
+        }
+    ]
+}

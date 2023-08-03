@@ -1,0 +1,690 @@
+{
+    "kind": "class",
+    "name": "NSResponder",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "acceptsFirstResponder",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "nextResponder",
+            "type": "AppKit.NSResponder *",
+            "weak": true
+        },
+        {
+            "name": "restorableStateKeyPaths",
+            "read_only": true,
+            "type": "NSArray<NSString*> *",
+            "class_property": true
+        },
+        {
+            "name": "userActivity",
+            "type": "Foundation.NSUserActivity *"
+        },
+        {
+            "name": "menu",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "undoManager",
+            "read_only": true,
+            "type": "Foundation.NSUndoManager *"
+        },
+        {
+            "name": "touchBar",
+            "type": "AppKit.NSTouchBar *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "becomeFirstResponder",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "resignFirstResponder",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "validateProposedFirstResponder",
+            "params": [
+                {
+                    "variable_name": "responder",
+                    "type": "AppKit.NSResponder *"
+                },
+                {
+                    "name": "forEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "mouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseMoved",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseEntered",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "mouseExited",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rightMouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseDragged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "otherMouseUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "keyDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "keyUp",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "interpretKeyEvents",
+            "params": [
+                {
+                    "variable_name": "eventArray",
+                    "type": "NSArray<AppKit.NSEvent *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performKeyEquivalent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "performMnemonic",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "flushBufferedKeyEvents",
+            "return_type": "void"
+        },
+        {
+            "name": "pressureChangeWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cursorUpdate",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "flagsChanged",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tabletPoint",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tabletProximity",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "helpRequested",
+            "params": [
+                {
+                    "variable_name": "eventPtr",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollWheel",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "quickLookWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeModeWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "supplementalTargetForAction",
+            "params": [
+                {
+                    "variable_name": "action",
+                    "type": "SEL"
+                },
+                {
+                    "name": "sender",
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "allowedClassesForRestorableStateKeyPath",
+            "params": [
+                {
+                    "variable_name": "keyPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<objectivec.Class *> *",
+            "class_method": true
+        },
+        {
+            "name": "encodeRestorableStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "encodeRestorableStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                },
+                {
+                    "name": "backgroundQueue",
+                    "variable_name": "queue",
+                    "type": "Foundation.NSOperationQueue *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "restoreStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateRestorableState",
+            "return_type": "void"
+        },
+        {
+            "name": "updateUserActivityState",
+            "params": [
+                {
+                    "variable_name": "userActivity",
+                    "type": "Foundation.NSUserActivity *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "presentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "presentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                },
+                {
+                    "name": "modalForWindow",
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didPresentSelector",
+                    "variable_name": "didPresentSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "willPresentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "Foundation.NSError *"
+        },
+        {
+            "name": "tryToPerform",
+            "params": [
+                {
+                    "variable_name": "action",
+                    "type": "SEL"
+                },
+                {
+                    "name": "with",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "validRequestorForSendType",
+            "params": [
+                {
+                    "variable_name": "sendType",
+                    "type": "AppKit.NSPasteboardType"
+                },
+                {
+                    "name": "returnType",
+                    "variable_name": "returnType",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "shouldBeTreatedAsInkEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "noResponderFor",
+            "params": [
+                {
+                    "variable_name": "eventSelector",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setInterfaceStyle",
+            "params": [
+                {
+                    "variable_name": "interfaceStyle",
+                    "type": "AppKit.NSInterfaceStyle"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "interfaceStyle",
+            "return_type": "AppKit.NSInterfaceStyle",
+            "deprecated": true
+        },
+        {
+            "name": "beginGestureWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "endGestureWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "magnifyWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rotateWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "swipeWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesBeganWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesMovedWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesCancelledWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "touchesEndedWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "wantsForwardedScrollEventsForAxis",
+            "params": [
+                {
+                    "variable_name": "axis",
+                    "type": "AppKit.NSEventGestureAxis"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "smartMagnifyWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "wantsScrollEventsForSwipeTrackingOnAxis",
+            "params": [
+                {
+                    "variable_name": "axis",
+                    "type": "AppKit.NSEventGestureAxis"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "makeTouchBar",
+            "return_type": "AppKit.NSTouchBar *"
+        },
+        {
+            "name": "performTextFinderAction",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "newWindowForTab",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "showContextHelp",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

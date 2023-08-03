@@ -1,0 +1,75 @@
+{
+    "kind": "protocol",
+    "name": "NSCandidateListTouchBarItemDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "candidateListTouchBarItem",
+            "params": [
+                {
+                    "variable_name": "anItem",
+                    "type": "AppKit.NSCandidateListTouchBarItem *"
+                },
+                {
+                    "name": "beginSelectingCandidateAtIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "candidateListTouchBarItem",
+            "params": [
+                {
+                    "variable_name": "anItem",
+                    "type": "AppKit.NSCandidateListTouchBarItem *"
+                },
+                {
+                    "name": "changeSelectionFromCandidateAtIndex",
+                    "variable_name": "previousIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "candidateListTouchBarItem",
+            "params": [
+                {
+                    "variable_name": "anItem",
+                    "type": "AppKit.NSCandidateListTouchBarItem *"
+                },
+                {
+                    "name": "endSelectingCandidateAtIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "candidateListTouchBarItem",
+            "params": [
+                {
+                    "variable_name": "anItem",
+                    "type": "AppKit.NSCandidateListTouchBarItem *"
+                },
+                {
+                    "name": "changedCandidateListVisibility",
+                    "variable_name": "isVisible",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

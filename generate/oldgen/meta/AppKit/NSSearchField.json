@@ -1,0 +1,92 @@
+{
+    "kind": "class",
+    "name": "NSSearchField",
+    "module": "AppKit",
+    "parent": "AppKit.NSTextField *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSSearchFieldDelegate>",
+            "weak": true
+        },
+        {
+            "name": "searchMenuTemplate",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "sendsSearchStringImmediately",
+            "type": "BOOL"
+        },
+        {
+            "name": "sendsWholeSearchString",
+            "type": "BOOL"
+        },
+        {
+            "name": "recentSearches",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "maximumRecents",
+            "type": "NSInteger"
+        },
+        {
+            "name": "recentsAutosaveName",
+            "type": "AppKit.NSSearchFieldRecentsAutosaveName"
+        },
+        {
+            "name": "cancelButtonBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "searchButtonBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "searchTextBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "centersPlaceholder",
+            "type": "BOOL",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "rectForCancelButtonWhenCentered",
+            "params": [
+                {
+                    "variable_name": "isCentered",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "rectForSearchButtonWhenCentered",
+            "params": [
+                {
+                    "variable_name": "isCentered",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "rectForSearchTextWhenCentered",
+            "params": [
+                {
+                    "variable_name": "isCentered",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        }
+    ]
+}

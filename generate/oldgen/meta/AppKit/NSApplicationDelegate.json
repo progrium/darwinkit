@@ -1,0 +1,535 @@
+{
+    "kind": "protocol",
+    "name": "NSApplicationDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "applicationWillFinishLaunching",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidFinishLaunching",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationWillBecomeActive",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidBecomeActive",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationWillResignActive",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidResignActive",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationShouldTerminate",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "AppKit.NSApplicationTerminateReply"
+        },
+        {
+            "name": "applicationShouldTerminateAfterLastWindowClosed",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "applicationWillTerminate",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationWillHide",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidHide",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationWillUnhide",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidUnhide",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationWillUpdate",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidUpdate",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationShouldHandleReopen",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "hasVisibleWindows",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "applicationDockMenu",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "applicationShouldAutomaticallyLocalizeKeyEquivalents",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "willPresentError",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "Foundation.NSError *"
+        },
+        {
+            "name": "applicationDidChangeScreenParameters",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "willContinueUserActivityWithType",
+                    "variable_name": "userActivityType",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didFailToContinueUserActivityWithType",
+                    "variable_name": "userActivityType",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didUpdateUserActivity",
+                    "variable_name": "userActivity",
+                    "type": "Foundation.NSUserActivity *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didRegisterForRemoteNotificationsWithDeviceToken",
+                    "variable_name": "deviceToken",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didFailToRegisterForRemoteNotificationsWithError",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didReceiveRemoteNotification",
+                    "variable_name": "userInfo",
+                    "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "openURLs",
+                    "variable_name": "urls",
+                    "type": "NSArray<Foundation.NSURL *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "openFile",
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "openFileWithoutUI",
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "openTempFile",
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "openFiles",
+                    "variable_name": "filenames",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationShouldOpenUntitledFile",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "applicationOpenUntitledFile",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "printFile",
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "application",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "printFiles",
+                    "variable_name": "fileNames",
+                    "type": "NSArray<NSString*> *"
+                },
+                {
+                    "name": "withSettings",
+                    "variable_name": "printSettings",
+                    "type": "NSDictionary<AppKit.NSPrintInfoAttributeKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "showPrintPanels",
+                    "variable_name": "showPrintPanels",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "AppKit.NSApplicationPrintReply"
+        },
+        {
+            "name": "applicationSupportsSecureRestorableState",
+            "params": [
+                {
+                    "variable_name": "app",
+                    "type": "AppKit.NSApplication *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "applicationProtectedDataDidBecomeAvailable",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationProtectedDataWillBecomeUnavailable",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "app",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "willEncodeRestorableState",
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "app",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "didDecodeRestorableState",
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "applicationDidChangeOcclusionState",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "application",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSApplication *"
+                },
+                {
+                    "name": "delegateHandlesKey",
+                    "variable_name": "key",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

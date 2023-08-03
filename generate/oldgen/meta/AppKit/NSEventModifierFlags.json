@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSEventModifierFlags",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSEventModifierFlagCapsLock",
+            "value": "65536",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagShift",
+            "value": "131072",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagControl",
+            "value": "262144",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagOption",
+            "value": "524288",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagCommand",
+            "value": "1048576",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagNumericPad",
+            "value": "2097152",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagHelp",
+            "value": "4194304",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagFunction",
+            "value": "8388608",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSEventModifierFlagDeviceIndependentFlagsMask",
+            "value": "4294901760",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "kind": "class",
+    "name": "NSWindowTab",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "toolTip",
+            "type": "NSString*"
+        },
+        {
+            "name": "accessoryView",
+            "type": "AppKit.NSView *"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSWorkspaceDesktopImageOptionKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSWorkspaceDesktopImageScalingKey",
+            "value": "NSWorkspaceDesktopImageScalingKey",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWorkspaceDesktopImageAllowClippingKey",
+            "value": "NSWorkspaceDesktopImageAllowClippingKey",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWorkspaceDesktopImageFillColorKey",
+            "value": "NSWorkspaceDesktopImageFillColorKey",
+            "module": "AppKit"
+        }
+    ]
+}

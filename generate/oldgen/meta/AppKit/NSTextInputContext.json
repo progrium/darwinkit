@@ -1,0 +1,85 @@
+{
+    "kind": "class",
+    "name": "NSTextInputContext",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "currentInputContext",
+            "read_only": true,
+            "type": "AppKit.NSTextInputContext *",
+            "class_property": true
+        },
+        {
+            "name": "client",
+            "read_only": true,
+            "type": "id<AppKit.NSTextInputClient>"
+        },
+        {
+            "name": "acceptsGlyphInfo",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowedInputSourceLocales",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "keyboardInputSources",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTextInputSourceIdentifier> *"
+        },
+        {
+            "name": "selectedKeyboardInputSource",
+            "type": "AppKit.NSTextInputSourceIdentifier"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithClient",
+            "params": [
+                {
+                    "variable_name": "client",
+                    "type": "id<AppKit.NSTextInputClient>"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "activate",
+            "return_type": "void"
+        },
+        {
+            "name": "deactivate",
+            "return_type": "void"
+        },
+        {
+            "name": "handleEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "discardMarkedText",
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateCharacterCoordinates",
+            "return_type": "void"
+        },
+        {
+            "name": "localizedNameForInputSource",
+            "params": [
+                {
+                    "variable_name": "inputSourceIdentifier",
+                    "type": "AppKit.NSTextInputSourceIdentifier"
+                }
+            ],
+            "return_type": "NSString*",
+            "class_method": true
+        }
+    ]
+}

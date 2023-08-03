@@ -1,0 +1,116 @@
+{
+    "kind": "class",
+    "name": "NSTextTable",
+    "module": "AppKit",
+    "parent": "AppKit.NSTextBlock *",
+    "properties": [
+        {
+            "name": "numberOfColumns",
+            "type": "NSUInteger"
+        },
+        {
+            "name": "layoutAlgorithm",
+            "type": "AppKit.NSTextTableLayoutAlgorithm"
+        },
+        {
+            "name": "collapsesBorders",
+            "type": "BOOL"
+        },
+        {
+            "name": "hidesEmptyCells",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "rectForBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "AppKit.NSTextTableBlock *"
+                },
+                {
+                    "name": "layoutAtPoint",
+                    "variable_name": "startingPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "inRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "textContainer",
+                    "variable_name": "textContainer",
+                    "type": "AppKit.NSTextContainer *"
+                },
+                {
+                    "name": "characterRange",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "boundsRectForBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "AppKit.NSTextTableBlock *"
+                },
+                {
+                    "name": "contentRect",
+                    "variable_name": "contentRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "textContainer",
+                    "variable_name": "textContainer",
+                    "type": "AppKit.NSTextContainer *"
+                },
+                {
+                    "name": "characterRange",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "drawBackgroundForBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "AppKit.NSTextTableBlock *"
+                },
+                {
+                    "name": "withFrame",
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "controlView",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "characterRange",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "layoutManager",
+                    "variable_name": "layoutManager",
+                    "type": "AppKit.NSLayoutManager *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSPressureBehavior",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSPressureBehaviorUnknown",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryDefault",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryClick",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryGeneric",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryAccelerator",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryDeepClick",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPressureBehaviorPrimaryDeepDrag",
+            "value": "6",
+            "module": "AppKit"
+        }
+    ]
+}

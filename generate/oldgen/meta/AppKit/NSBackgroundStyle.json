@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSBackgroundStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSBackgroundStyleNormal",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBackgroundStyleEmphasized",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBackgroundStyleRaised",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBackgroundStyleLowered",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

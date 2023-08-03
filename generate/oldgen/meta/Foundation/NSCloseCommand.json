@@ -1,0 +1,13 @@
+{
+    "kind": "class",
+    "name": "NSCloseCommand",
+    "module": "Foundation",
+    "parent": "Foundation.NSScriptCommand *",
+    "properties": [
+        {
+            "name": "saveOptions",
+            "read_only": true,
+            "type": "Foundation.NSSaveOptions"
+        }
+    ]
+}

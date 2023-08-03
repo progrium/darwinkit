@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSPasteboardContentsOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPasteboardContentsCurrentHostOnly",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

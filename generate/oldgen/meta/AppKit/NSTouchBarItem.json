@@ -1,0 +1,60 @@
+{
+    "kind": "class",
+    "name": "NSTouchBarItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "identifier",
+            "read_only": true,
+            "type": "AppKit.NSTouchBarItemIdentifier"
+        },
+        {
+            "name": "visibilityPriority",
+            "type": "AppKit.NSTouchBarItemPriority"
+        },
+        {
+            "name": "visible",
+            "read_only": true,
+            "getter_name": "isVisible",
+            "type": "BOOL"
+        },
+        {
+            "name": "customizationLabel",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "viewController",
+            "read_only": true,
+            "type": "AppKit.NSViewController *"
+        },
+        {
+            "name": "view",
+            "read_only": true,
+            "type": "AppKit.NSView *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "AppKit.NSTouchBarItemIdentifier"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

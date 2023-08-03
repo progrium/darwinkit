@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSViewAnimationKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSViewAnimationEffectKey",
+            "value": "NSViewAnimationEffectKey",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewAnimationEndFrameKey",
+            "value": "NSViewAnimationEndFrameKey",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewAnimationStartFrameKey",
+            "value": "NSViewAnimationStartFrameKey",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewAnimationTargetKey",
+            "value": "NSViewAnimationTargetKey",
+            "module": "AppKit"
+        }
+    ]
+}

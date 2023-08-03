@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSGradientType",
+    "module": "AppKit",
+    "target_type": "NSUInteger"
+}

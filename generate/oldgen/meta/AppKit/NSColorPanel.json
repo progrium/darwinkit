@@ -1,0 +1,142 @@
+{
+    "kind": "class",
+    "name": "NSColorPanel",
+    "module": "AppKit",
+    "parent": "AppKit.NSPanel *",
+    "properties": [
+        {
+            "name": "sharedColorPanel",
+            "read_only": true,
+            "type": "AppKit.NSColorPanel *",
+            "class_property": true
+        },
+        {
+            "name": "sharedColorPanelExists",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "mode",
+            "type": "AppKit.NSColorPanelMode"
+        },
+        {
+            "name": "accessoryView",
+            "type": "AppKit.NSView *"
+        },
+        {
+            "name": "continuous",
+            "getter_name": "isContinuous",
+            "type": "BOOL"
+        },
+        {
+            "name": "showsAlpha",
+            "type": "BOOL"
+        },
+        {
+            "name": "color",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "alpha",
+            "read_only": true,
+            "type": "double"
+        }
+    ],
+    "methods": [
+        {
+            "name": "setPickerMode",
+            "params": [
+                {
+                    "variable_name": "mode",
+                    "type": "AppKit.NSColorPanelMode"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "setPickerMask",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSColorPanelOptions"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "setAction",
+            "params": [
+                {
+                    "variable_name": "selector",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "attachColorList",
+            "params": [
+                {
+                    "variable_name": "colorList",
+                    "type": "AppKit.NSColorList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "detachColorList",
+            "params": [
+                {
+                    "variable_name": "colorList",
+                    "type": "AppKit.NSColorList *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "dragColor",
+            "params": [
+                {
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "fromView",
+                    "variable_name": "sourceView",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "changeColor",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

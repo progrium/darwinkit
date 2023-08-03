@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "CAMediaTimingFunction",
+    "module": "QuartzCore",
+    "parent": "objectivec.NSObject *"
+}

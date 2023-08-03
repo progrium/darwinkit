@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSColorSystemEffect",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorSystemEffectNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSystemEffectPressed",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSystemEffectDeepPressed",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSystemEffectDisabled",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSColorSystemEffectRollover",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

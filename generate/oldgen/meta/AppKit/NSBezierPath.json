@@ -1,0 +1,656 @@
+{
+    "kind": "class",
+    "name": "NSBezierPath",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "bezierPathByFlatteningPath",
+            "read_only": true,
+            "type": "AppKit.NSBezierPath *"
+        },
+        {
+            "name": "bezierPathByReversingPath",
+            "read_only": true,
+            "type": "AppKit.NSBezierPath *"
+        },
+        {
+            "name": "windingRule",
+            "type": "AppKit.NSWindingRule"
+        },
+        {
+            "name": "lineCapStyle",
+            "type": "AppKit.NSLineCapStyle"
+        },
+        {
+            "name": "lineJoinStyle",
+            "type": "AppKit.NSLineJoinStyle"
+        },
+        {
+            "name": "lineWidth",
+            "type": "double"
+        },
+        {
+            "name": "miterLimit",
+            "type": "double"
+        },
+        {
+            "name": "flatness",
+            "type": "double"
+        },
+        {
+            "name": "defaultWindingRule",
+            "type": "AppKit.NSWindingRule",
+            "class_property": true
+        },
+        {
+            "name": "defaultLineCapStyle",
+            "type": "AppKit.NSLineCapStyle",
+            "class_property": true
+        },
+        {
+            "name": "defaultLineJoinStyle",
+            "type": "AppKit.NSLineJoinStyle",
+            "class_property": true
+        },
+        {
+            "name": "defaultLineWidth",
+            "type": "double",
+            "class_property": true
+        },
+        {
+            "name": "defaultMiterLimit",
+            "type": "double",
+            "class_property": true
+        },
+        {
+            "name": "defaultFlatness",
+            "type": "double",
+            "class_property": true
+        },
+        {
+            "name": "bounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "controlPointBounds",
+            "read_only": true,
+            "type": "Foundation.NSRect"
+        },
+        {
+            "name": "currentPoint",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "empty",
+            "read_only": true,
+            "getter_name": "isEmpty",
+            "type": "BOOL"
+        },
+        {
+            "name": "elementCount",
+            "read_only": true,
+            "type": "NSInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "bezierPath",
+            "return_type": "AppKit.NSBezierPath *",
+            "class_method": true
+        },
+        {
+            "name": "bezierPathWithOvalInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "AppKit.NSBezierPath *",
+            "class_method": true
+        },
+        {
+            "name": "bezierPathWithRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "AppKit.NSBezierPath *",
+            "class_method": true
+        },
+        {
+            "name": "bezierPathWithRoundedRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "xRadius",
+                    "variable_name": "xRadius",
+                    "type": "double"
+                },
+                {
+                    "name": "yRadius",
+                    "variable_name": "yRadius",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSBezierPath *",
+            "class_method": true
+        },
+        {
+            "name": "moveToPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "lineToPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "curveToPoint",
+            "params": [
+                {
+                    "variable_name": "endPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "controlPoint1",
+                    "variable_name": "controlPoint1",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "controlPoint2",
+                    "variable_name": "controlPoint2",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "closePath",
+            "return_type": "void"
+        },
+        {
+            "name": "relativeMoveToPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "relativeLineToPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "relativeCurveToPoint",
+            "params": [
+                {
+                    "variable_name": "endPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "controlPoint1",
+                    "variable_name": "controlPoint1",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "controlPoint2",
+                    "variable_name": "controlPoint2",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "AppKit.NSBezierPath *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithPoints",
+            "params": [
+                {
+                    "variable_name": "points",
+                    "type": "Foundation.NSPoint *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithOvalInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithArcFromPoint",
+            "params": [
+                {
+                    "variable_name": "point1",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "toPoint",
+                    "variable_name": "point2",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "radius",
+                    "variable_name": "radius",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithArcWithCenter",
+            "params": [
+                {
+                    "variable_name": "center",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "radius",
+                    "variable_name": "radius",
+                    "type": "double"
+                },
+                {
+                    "name": "startAngle",
+                    "variable_name": "startAngle",
+                    "type": "double"
+                },
+                {
+                    "name": "endAngle",
+                    "variable_name": "endAngle",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithArcWithCenter",
+            "params": [
+                {
+                    "variable_name": "center",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "radius",
+                    "variable_name": "radius",
+                    "type": "double"
+                },
+                {
+                    "name": "startAngle",
+                    "variable_name": "startAngle",
+                    "type": "double"
+                },
+                {
+                    "name": "endAngle",
+                    "variable_name": "endAngle",
+                    "type": "double"
+                },
+                {
+                    "name": "clockwise",
+                    "variable_name": "clockwise",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithRoundedRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "xRadius",
+                    "variable_name": "xRadius",
+                    "type": "double"
+                },
+                {
+                    "name": "yRadius",
+                    "variable_name": "yRadius",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithCGGlyph",
+            "params": [
+                {
+                    "variable_name": "glyph",
+                    "type": "CoreGraphics.CGGlyph"
+                },
+                {
+                    "name": "inFont",
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithCGGlyphs",
+            "params": [
+                {
+                    "variable_name": "glyphs",
+                    "type": "CoreGraphics.CGGlyph *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inFont",
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "appendBezierPathWithGlyph",
+            "params": [
+                {
+                    "variable_name": "glyph",
+                    "type": "AppKit.NSGlyph"
+                },
+                {
+                    "name": "inFont",
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "appendBezierPathWithGlyphs",
+            "params": [
+                {
+                    "variable_name": "glyphs",
+                    "type": "AppKit.NSGlyph *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inFont",
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "appendBezierPathWithPackedGlyphs",
+            "params": [
+                {
+                    "variable_name": "packedGlyphs",
+                    "type": "char *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "getLineDash",
+            "params": [
+                {
+                    "variable_name": "pattern",
+                    "type": "double *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "phase",
+                    "variable_name": "phase",
+                    "type": "double *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setLineDash",
+            "params": [
+                {
+                    "variable_name": "pattern",
+                    "type": "double *"
+                },
+                {
+                    "name": "count",
+                    "variable_name": "count",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "phase",
+                    "variable_name": "phase",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "stroke",
+            "return_type": "void"
+        },
+        {
+            "name": "fill",
+            "return_type": "void"
+        },
+        {
+            "name": "fillRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "strokeRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "strokeLineFromPoint",
+            "params": [
+                {
+                    "variable_name": "point1",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "toPoint",
+                    "variable_name": "point2",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "drawPackedGlyphs",
+            "params": [
+                {
+                    "variable_name": "packedGlyphs",
+                    "type": "char *"
+                },
+                {
+                    "name": "atPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "addClip",
+            "return_type": "void"
+        },
+        {
+            "name": "setClip",
+            "return_type": "void"
+        },
+        {
+            "name": "clipRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "containsPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "transformUsingAffineTransform",
+            "params": [
+                {
+                    "variable_name": "transform",
+                    "type": "Foundation.NSAffineTransform *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "elementAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSBezierPathElement"
+        },
+        {
+            "name": "elementAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "associatedPoints",
+                    "variable_name": "points",
+                    "type": "Foundation.NSPoint *"
+                }
+            ],
+            "return_type": "AppKit.NSBezierPathElement"
+        },
+        {
+            "name": "removeAllPoints",
+            "return_type": "void"
+        },
+        {
+            "name": "setAssociatedPoints",
+            "params": [
+                {
+                    "variable_name": "points",
+                    "type": "Foundation.NSPoint *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cachesBezierPath",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setCachesBezierPath",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

@@ -1,0 +1,533 @@
+{
+    "kind": "class",
+    "name": "NSMenu",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "menuBarHeight",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "numberOfItems",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "itemArray",
+            "type": "NSArray<AppKit.NSMenuItem *> *"
+        },
+        {
+            "name": "supermenu",
+            "type": "AppKit.NSMenu *",
+            "weak": true
+        },
+        {
+            "name": "tornOff",
+            "read_only": true,
+            "getter_name": "isTornOff",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "autoenablesItems",
+            "type": "BOOL"
+        },
+        {
+            "name": "font",
+            "type": "AppKit.NSFont *"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "minimumWidth",
+            "type": "double"
+        },
+        {
+            "name": "size",
+            "read_only": true,
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "propertiesToUpdate",
+            "read_only": true,
+            "type": "AppKit.NSMenuProperties"
+        },
+        {
+            "name": "menuChangedMessagesEnabled",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "allowsContextMenuPlugIns",
+            "type": "BOOL"
+        },
+        {
+            "name": "showsStateColumn",
+            "type": "BOOL"
+        },
+        {
+            "name": "highlightedItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "userInterfaceLayoutDirection",
+            "type": "AppKit.NSUserInterfaceLayoutDirection"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSMenuDelegate>",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "menuBarVisible",
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "setMenuBarVisible",
+            "params": [
+                {
+                    "variable_name": "visible",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "initWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "insertItem",
+            "params": [
+                {
+                    "variable_name": "newItem",
+                    "type": "AppKit.NSMenuItem *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "selector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "keyEquivalent",
+                    "variable_name": "charCode",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "addItem",
+            "params": [
+                {
+                    "variable_name": "newItem",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "selector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "keyEquivalent",
+                    "variable_name": "charCode",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "removeItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeItemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "itemChanged",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllItems",
+            "return_type": "void"
+        },
+        {
+            "name": "itemWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "itemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "itemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "indexOfItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "andAction",
+                    "variable_name": "actionSelector",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithRepresentedObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithSubmenu",
+            "params": [
+                {
+                    "variable_name": "submenu",
+                    "type": "AppKit.NSMenu *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "setSubmenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "forItem",
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "submenuAction",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "attachedMenu",
+            "return_type": "AppKit.NSMenu *",
+            "deprecated": true
+        },
+        {
+            "name": "isAttached",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "locationForSubmenu",
+            "params": [
+                {
+                    "variable_name": "submenu",
+                    "type": "AppKit.NSMenu *"
+                }
+            ],
+            "return_type": "Foundation.NSPoint",
+            "deprecated": true
+        },
+        {
+            "name": "update",
+            "return_type": "void"
+        },
+        {
+            "name": "performKeyEquivalent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "performActionForItemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sizeToFit",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "popUpContextMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "forView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "popUpContextMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "forView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "withFont",
+                    "variable_name": "font",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "helpRequested",
+            "params": [
+                {
+                    "variable_name": "eventPtr",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "popUpMenuPositioningItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                },
+                {
+                    "name": "atLocation",
+                    "variable_name": "location",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "inView",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "cancelTracking",
+            "return_type": "void"
+        },
+        {
+            "name": "cancelTrackingWithoutAnimation",
+            "return_type": "void"
+        },
+        {
+            "name": "contextMenuRepresentation",
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "setContextMenuRepresentation",
+            "params": [
+                {
+                    "variable_name": "menuRep",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "tearOffMenuRepresentation",
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "setTearOffMenuRepresentation",
+            "params": [
+                {
+                    "variable_name": "menuRep",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setMenuRepresentation",
+            "params": [
+                {
+                    "variable_name": "menuRep",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "menuRepresentation",
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

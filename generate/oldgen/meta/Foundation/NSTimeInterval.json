@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSTimeInterval",
+    "module": "Foundation",
+    "target_type": "double"
+}

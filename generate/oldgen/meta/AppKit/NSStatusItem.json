@@ -1,0 +1,139 @@
+{
+    "kind": "class",
+    "name": "NSStatusItem",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "statusBar",
+            "read_only": true,
+            "type": "AppKit.NSStatusBar *",
+            "weak": true
+        },
+        {
+            "name": "behavior",
+            "type": "AppKit.NSStatusItemBehavior",
+            "weak": true
+        },
+        {
+            "name": "button",
+            "read_only": true,
+            "type": "AppKit.NSStatusBarButton *"
+        },
+        {
+            "name": "menu",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "visible",
+            "getter_name": "isVisible",
+            "type": "BOOL",
+            "weak": true
+        },
+        {
+            "name": "length",
+            "type": "double"
+        },
+        {
+            "name": "autosaveName",
+            "type": "AppKit.NSStatusItemAutosaveName"
+        },
+        {
+            "name": "enabled",
+            "getter_name": "isEnabled",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "target",
+            "type": "objectivec.NSObject *",
+            "weak": true,
+            "deprecated": true
+        },
+        {
+            "name": "action",
+            "type": "SEL",
+            "deprecated": true
+        },
+        {
+            "name": "doubleAction",
+            "type": "SEL",
+            "deprecated": true
+        },
+        {
+            "name": "title",
+            "type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *",
+            "deprecated": true
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *",
+            "deprecated": true
+        },
+        {
+            "name": "alternateImage",
+            "type": "AppKit.NSImage *",
+            "deprecated": true
+        },
+        {
+            "name": "highlightMode",
+            "type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "toolTip",
+            "type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "view",
+            "type": "AppKit.NSView *",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "sendActionOn",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSEventMask"
+                }
+            ],
+            "return_type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "popUpStatusItemMenu",
+            "params": [
+                {
+                    "variable_name": "menu",
+                    "type": "AppKit.NSMenu *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawStatusBarBackgroundInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "withHighlight",
+                    "variable_name": "highlight",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

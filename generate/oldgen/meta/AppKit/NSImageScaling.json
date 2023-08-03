@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSImageScaling",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSImageScaleProportionallyDown",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageScaleAxesIndependently",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageScaleNone",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageScaleProportionallyUpOrDown",
+            "value": "3",
+            "module": "AppKit"
+        }
+    ]
+}

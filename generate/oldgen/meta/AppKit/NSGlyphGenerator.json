@@ -1,0 +1,41 @@
+{
+    "kind": "class",
+    "name": "NSGlyphGenerator",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "sharedGlyphGenerator",
+            "read_only": true,
+            "type": "AppKit.NSGlyphGenerator *",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "generateGlyphsForGlyphStorage",
+            "params": [
+                {
+                    "variable_name": "glyphStorage",
+                    "type": "id<AppKit.NSGlyphStorage>"
+                },
+                {
+                    "name": "desiredNumberOfCharacters",
+                    "variable_name": "nChars",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "glyphIndex",
+                    "variable_name": "glyphIndex",
+                    "type": "NSUInteger *"
+                },
+                {
+                    "name": "characterIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

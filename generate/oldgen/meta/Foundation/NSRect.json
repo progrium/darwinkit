@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSRect",
+    "module": "Foundation",
+    "target_type": "CoreGraphics.CGRect"
+}

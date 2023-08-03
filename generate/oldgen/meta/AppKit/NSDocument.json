@@ -1,0 +1,1811 @@
+{
+    "kind": "class",
+    "name": "NSDocument",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "fileURL",
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "entireFileLoaded",
+            "read_only": true,
+            "getter_name": "isEntireFileLoaded",
+            "type": "BOOL"
+        },
+        {
+            "name": "fileModificationDate",
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "keepBackupFile",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "draft",
+            "getter_name": "isDraft",
+            "type": "BOOL"
+        },
+        {
+            "name": "fileType",
+            "type": "NSString*"
+        },
+        {
+            "name": "documentEdited",
+            "read_only": true,
+            "getter_name": "isDocumentEdited",
+            "type": "BOOL"
+        },
+        {
+            "name": "inViewingMode",
+            "read_only": true,
+            "getter_name": "isInViewingMode",
+            "type": "BOOL"
+        },
+        {
+            "name": "readableTypes",
+            "read_only": true,
+            "type": "NSArray<NSString*> *",
+            "class_property": true
+        },
+        {
+            "name": "writableTypes",
+            "read_only": true,
+            "type": "NSArray<NSString*> *",
+            "class_property": true
+        },
+        {
+            "name": "windowControllers",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSWindowController *> *"
+        },
+        {
+            "name": "windowNibName",
+            "read_only": true,
+            "type": "AppKit.NSNibName"
+        },
+        {
+            "name": "windowForSheet",
+            "read_only": true,
+            "type": "AppKit.NSWindow *"
+        },
+        {
+            "name": "displayName",
+            "type": "NSString*"
+        },
+        {
+            "name": "autosavesInPlace",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "autosavesDrafts",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "preservesVersions",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "autosavedContentsFileURL",
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "autosavingFileType",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "autosavingIsImplicitlyCancellable",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "hasUnautosavedChanges",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "backupFileURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "browsingVersions",
+            "read_only": true,
+            "getter_name": "isBrowsingVersions",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesUbiquitousStorage",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "undoManager",
+            "type": "Foundation.NSUndoManager *"
+        },
+        {
+            "name": "hasUndoManager",
+            "type": "BOOL"
+        },
+        {
+            "name": "restorableStateKeyPaths",
+            "read_only": true,
+            "type": "NSArray<NSString*> *",
+            "class_property": true
+        },
+        {
+            "name": "shouldRunSavePanelWithAccessoryView",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "fileTypeFromLastRunSavePanel",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "fileNameExtensionWasHiddenInLastRunSavePanel",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "userActivity",
+            "type": "Foundation.NSUserActivity *"
+        },
+        {
+            "name": "locked",
+            "read_only": true,
+            "getter_name": "isLocked",
+            "type": "BOOL"
+        },
+        {
+            "name": "printInfo",
+            "type": "AppKit.NSPrintInfo *"
+        },
+        {
+            "name": "PDFPrintOperation",
+            "read_only": true,
+            "type": "AppKit.NSPrintOperation *"
+        },
+        {
+            "name": "allowsDocumentSharing",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "objectSpecifier",
+            "read_only": true,
+            "type": "Foundation.NSScriptObjectSpecifier *"
+        },
+        {
+            "name": "lastComponentOfFileName",
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initForURL",
+            "params": [
+                {
+                    "variable_name": "urlOrNil",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "withContentsOfURL",
+                    "variable_name": "contentsURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "canConcurrentlyReadDocumentsOfType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "readFromURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "readFromFileWrapper",
+            "params": [
+                {
+                    "variable_name": "fileWrapper",
+                    "type": "Foundation.NSFileWrapper *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "readFromData",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "canAsynchronouslyWriteToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "unblockUserInteraction",
+            "return_type": "void"
+        },
+        {
+            "name": "writeToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "writeSafelyToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "fileWrapperOfType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "Foundation.NSFileWrapper *"
+        },
+        {
+            "name": "dataOfType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSData*"
+        },
+        {
+            "name": "writeToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "originalContentsURL",
+                    "variable_name": "absoluteOriginalContentsURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "saveToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didSaveSelector",
+                    "variable_name": "didSaveSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "saveToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * errorOrNil)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "fileAttributesToWriteToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "originalContentsURL",
+                    "variable_name": "absoluteOriginalContentsURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+        },
+        {
+            "name": "isNativeType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "class_method": true
+        },
+        {
+            "name": "writableTypesForSaveOperation",
+            "params": [
+                {
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "fileNameExtensionForType",
+            "params": [
+                {
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "saveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "makeWindowControllers",
+            "return_type": "void"
+        },
+        {
+            "name": "addWindowController",
+            "params": [
+                {
+                    "variable_name": "windowController",
+                    "type": "AppKit.NSWindowController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeWindowController",
+            "params": [
+                {
+                    "variable_name": "windowController",
+                    "type": "AppKit.NSWindowController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowControllerDidLoadNib",
+            "params": [
+                {
+                    "variable_name": "windowController",
+                    "type": "AppKit.NSWindowController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "windowControllerWillLoadNib",
+            "params": [
+                {
+                    "variable_name": "windowController",
+                    "type": "AppKit.NSWindowController *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "shouldCloseWindowController",
+            "params": [
+                {
+                    "variable_name": "windowController",
+                    "type": "AppKit.NSWindowController *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "shouldCloseSelector",
+                    "variable_name": "shouldCloseSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "showWindows",
+            "return_type": "void"
+        },
+        {
+            "name": "setWindow",
+            "params": [
+                {
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDisplayName",
+            "params": [
+                {
+                    "variable_name": "displayNameOrNil",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "defaultDraftName",
+            "return_type": "NSString*"
+        },
+        {
+            "name": "encodeRestorableStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                },
+                {
+                    "name": "backgroundQueue",
+                    "variable_name": "queue",
+                    "type": "Foundation.NSOperationQueue *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "checkAutosavingSafetyAndReturnError",
+            "params": [
+                {
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "scheduleAutosaving",
+            "return_type": "void"
+        },
+        {
+            "name": "autosaveDocumentWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didAutosaveSelector",
+                    "variable_name": "didAutosaveSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "autosaveWithImplicitCancellability",
+            "params": [
+                {
+                    "variable_name": "autosavingIsImplicitlyCancellable",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * errorOrNil)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browseDocumentVersions",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "stopBrowsingVersionsWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveDocumentToUbiquityContainer",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateChangeCountWithToken",
+            "params": [
+                {
+                    "variable_name": "changeCountToken",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateChangeCount",
+            "params": [
+                {
+                    "variable_name": "change",
+                    "type": "AppKit.NSDocumentChangeType"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeCountTokenForSaveOperation",
+            "params": [
+                {
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "allowedClassesForRestorableStateKeyPath",
+            "params": [
+                {
+                    "variable_name": "keyPath",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<objectivec.Class *> *",
+            "class_method": true
+        },
+        {
+            "name": "encodeRestorableStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "restoreStateWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateRestorableState",
+            "return_type": "void"
+        },
+        {
+            "name": "restoreDocumentWindowWithIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "AppKit.NSUserInterfaceItemIdentifier"
+                },
+                {
+                    "name": "state",
+                    "variable_name": "state",
+                    "type": "Foundation.NSCoder *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (AppKit.NSWindow * param1, Foundation.NSError * param2)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "runModalSavePanelForSaveOperation",
+            "params": [
+                {
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didSaveSelector",
+                    "variable_name": "didSaveSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "prepareSavePanel",
+            "params": [
+                {
+                    "variable_name": "savePanel",
+                    "type": "AppKit.NSSavePanel *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "updateUserActivityState",
+            "params": [
+                {
+                    "variable_name": "activity",
+                    "type": "Foundation.NSUserActivity *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "validateUserInterfaceItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "id<AppKit.NSValidatedUserInterfaceItem>"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "performSynchronousFileAccessUsingBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performAsynchronousFileAccessUsingBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "void (^) (void (^) () param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performActivityWithSynchronousWaiting",
+            "params": [
+                {
+                    "variable_name": "waitSynchronously",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (void (^) () param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "continueActivityUsingBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "continueAsynchronousWorkOnMainThreadUsingBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "printDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "runPageLayout",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "revertDocumentToSaved",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "saveDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "saveDocumentAs",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "saveDocumentTo",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "saveDocumentWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didSaveSelector",
+                    "variable_name": "didSaveSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "canCloseDocumentWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "shouldCloseSelector",
+                    "variable_name": "shouldCloseSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "close",
+            "return_type": "void"
+        },
+        {
+            "name": "revertToContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "duplicateAndReturnError",
+            "params": [
+                {
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "AppKit.NSDocument *"
+        },
+        {
+            "name": "duplicateDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "duplicateDocumentWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didDuplicateSelector",
+                    "variable_name": "didDuplicateSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "renameDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveDocumentWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL didMove)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "lockDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "unlockDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "lockDocumentWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL didLock)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "lockWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "unlockDocumentWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL didUnlock)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "unlockWithCompletionHandler",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * param1)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "preparePageLayout",
+            "params": [
+                {
+                    "variable_name": "pageLayout",
+                    "type": "AppKit.NSPageLayout *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "runModalPageLayoutWithPrintInfo",
+            "params": [
+                {
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didRunSelector",
+                    "variable_name": "didRunSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "runModalPrintOperation",
+            "params": [
+                {
+                    "variable_name": "printOperation",
+                    "type": "AppKit.NSPrintOperation *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didRunSelector",
+                    "variable_name": "didRunSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "shouldChangePrintInfo",
+            "params": [
+                {
+                    "variable_name": "newPrintInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "printDocumentWithSettings",
+            "params": [
+                {
+                    "variable_name": "printSettings",
+                    "type": "NSDictionary<AppKit.NSPrintInfoAttributeKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "showPrintPanel",
+                    "variable_name": "showPrintPanel",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didPrintSelector",
+                    "variable_name": "didPrintSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "printOperationWithSettings",
+            "params": [
+                {
+                    "variable_name": "printSettings",
+                    "type": "NSDictionary<AppKit.NSPrintInfoAttributeKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "AppKit.NSPrintOperation *"
+        },
+        {
+            "name": "saveDocumentToPDF",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "prepareSharingServicePicker",
+            "params": [
+                {
+                    "variable_name": "sharingServicePicker",
+                    "type": "AppKit.NSSharingServicePicker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "shareDocumentWithSharingService",
+            "params": [
+                {
+                    "variable_name": "sharingService",
+                    "type": "AppKit.NSSharingService *"
+                },
+                {
+                    "name": "completionHandler",
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (BOOL success)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "handleCloseScriptCommand",
+            "params": [
+                {
+                    "variable_name": "command",
+                    "type": "Foundation.NSCloseCommand *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "handlePrintScriptCommand",
+            "params": [
+                {
+                    "variable_name": "command",
+                    "type": "Foundation.NSScriptCommand *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "handleSaveScriptCommand",
+            "params": [
+                {
+                    "variable_name": "command",
+                    "type": "Foundation.NSScriptCommand *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "presentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                },
+                {
+                    "name": "modalForWindow",
+                    "variable_name": "window",
+                    "type": "AppKit.NSWindow *"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didPresentSelector",
+                    "variable_name": "didPresentSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "presentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "willPresentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "Foundation.NSError *"
+        },
+        {
+            "name": "willNotPresentError",
+            "params": [
+                {
+                    "variable_name": "error",
+                    "type": "Foundation.NSError *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "dataRepresentationOfType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSData*",
+            "deprecated": true
+        },
+        {
+            "name": "fileName",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "fileWrapperRepresentationOfType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSFileWrapper *",
+            "deprecated": true
+        },
+        {
+            "name": "initWithContentsOfFile",
+            "params": [
+                {
+                    "variable_name": "absolutePath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initWithContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "loadDataRepresentation",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "loadFileWrapperRepresentation",
+            "params": [
+                {
+                    "variable_name": "wrapper",
+                    "type": "Foundation.NSFileWrapper *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "printShowingPrintPanel",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "readFromFile",
+            "params": [
+                {
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "readFromURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "revertToSavedFromFile",
+            "params": [
+                {
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "revertToSavedFromURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "runModalPageLayoutWithPrintInfo",
+            "params": [
+                {
+                    "variable_name": "printInfo",
+                    "type": "AppKit.NSPrintInfo *"
+                }
+            ],
+            "return_type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "saveToFile",
+            "params": [
+                {
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "saveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "delegate",
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didSaveSelector",
+                    "variable_name": "didSaveSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "saveToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "typeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forSaveOperation",
+                    "variable_name": "saveOperation",
+                    "type": "AppKit.NSSaveOperationType"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setFileName",
+            "params": [
+                {
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "writeToFile",
+            "params": [
+                {
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "writeToFile",
+            "params": [
+                {
+                    "variable_name": "fullDocumentPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "documentTypeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "originalFile",
+                    "variable_name": "fullOriginalDocumentPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "saveOperation",
+                    "variable_name": "saveOperationType",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "writeToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "type",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "writeWithBackupToFile",
+            "params": [
+                {
+                    "variable_name": "fullDocumentPath",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofType",
+                    "variable_name": "documentTypeName",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "saveOperation",
+                    "variable_name": "saveOperationType",
+                    "type": "AppKit.NSSaveOperationType"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        }
+    ]
+}

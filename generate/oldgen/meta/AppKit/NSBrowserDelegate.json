@@ -1,0 +1,666 @@
+{
+    "kind": "protocol",
+    "name": "NSBrowserDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "isColumnValid",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "numberOfRowsInColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "numberOfChildrenOfItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "titleOfColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "shouldTypeSelectForEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "withCurrentSearchString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "typeSelectStringForRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "nextTypeSelectMatchFromRow",
+                    "variable_name": "startRow",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toRow",
+                    "variable_name": "endRow",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "forString",
+                    "variable_name": "searchString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "selectCellWithString",
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "selectRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "selectionIndexesForProposedSelection",
+                    "variable_name": "proposedSelectionIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "child",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "ofItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "isLeafItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "shouldEditItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "objectValueForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "setObjectValue",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rootItemForBrowser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "previewViewControllerForLeafItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSViewController *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "headerViewControllerForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "AppKit.NSViewController *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "createRowsForColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inMatrix",
+                    "variable_name": "matrix",
+                    "type": "AppKit.NSMatrix *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "willDisplayCell",
+                    "variable_name": "cell",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "atRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "didChangeLastColumn",
+                    "variable_name": "oldLastColumn",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browserWillScroll",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browserDidScroll",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSBrowser *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "canDragRowsWithIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "draggingImageForRowsWithIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "offset",
+                    "variable_name": "dragImageOffset",
+                    "type": "Foundation.NSPoint *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "validateDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "proposedRow",
+                    "variable_name": "row",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "column",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "dropOperation",
+                    "variable_name": "dropOperation",
+                    "type": "AppKit.NSBrowserDropOperation *"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "acceptDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "atRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "dropOperation",
+                    "variable_name": "dropOperation",
+                    "type": "AppKit.NSBrowserDropOperation"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "writeRowsWithIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pasteboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "namesOfPromisedFilesDroppedAtDestination",
+                    "variable_name": "dropDestination",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "forDraggedRowsWithIndexes",
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "deprecated": true
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "shouldSizeColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "forUserResize",
+                    "variable_name": "forUserResize",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "toWidth",
+                    "variable_name": "suggestedWidth",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "sizeToFitWidthOfColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "browserColumnConfigurationDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "heightOfRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "browser",
+            "params": [
+                {
+                    "variable_name": "browser",
+                    "type": "AppKit.NSBrowser *"
+                },
+                {
+                    "name": "shouldShowCellExpansionForRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

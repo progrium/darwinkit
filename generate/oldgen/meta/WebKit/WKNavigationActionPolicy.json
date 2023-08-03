@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "WKNavigationActionPolicy",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKNavigationActionPolicyCancel",
+            "value": "0",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationActionPolicyAllow",
+            "value": "1",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKNavigationActionPolicyDownload",
+            "value": "2",
+            "module": "WebKit"
+        }
+    ]
+}

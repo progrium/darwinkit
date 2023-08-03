@@ -1,0 +1,100 @@
+{
+    "kind": "class",
+    "name": "NSSearchFieldCell",
+    "module": "AppKit",
+    "parent": "AppKit.NSTextFieldCell *",
+    "properties": [
+        {
+            "name": "searchButtonCell",
+            "type": "AppKit.NSButtonCell *"
+        },
+        {
+            "name": "cancelButtonCell",
+            "type": "AppKit.NSButtonCell *"
+        },
+        {
+            "name": "searchMenuTemplate",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "sendsWholeSearchString",
+            "type": "BOOL"
+        },
+        {
+            "name": "sendsSearchStringImmediately",
+            "type": "BOOL"
+        },
+        {
+            "name": "maximumRecents",
+            "type": "NSInteger"
+        },
+        {
+            "name": "recentSearches",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "recentsAutosaveName",
+            "type": "AppKit.NSSearchFieldRecentsAutosaveName"
+        }
+    ],
+    "methods": [
+        {
+            "name": "resetSearchButtonCell",
+            "return_type": "void"
+        },
+        {
+            "name": "resetCancelButtonCell",
+            "return_type": "void"
+        },
+        {
+            "name": "searchTextRectForBounds",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "searchButtonRectForBounds",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "cancelButtonRectForBounds",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initTextCell",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

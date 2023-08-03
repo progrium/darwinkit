@@ -1,0 +1,146 @@
+{
+    "kind": "class",
+    "name": "NSAnimation",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "animationBlockingMode",
+            "type": "AppKit.NSAnimationBlockingMode"
+        },
+        {
+            "name": "runLoopModesForAnimating",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSRunLoopMode> *"
+        },
+        {
+            "name": "animationCurve",
+            "type": "AppKit.NSAnimationCurve"
+        },
+        {
+            "name": "duration",
+            "type": "Foundation.NSTimeInterval"
+        },
+        {
+            "name": "frameRate",
+            "type": "float"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSAnimationDelegate>",
+            "weak": true
+        },
+        {
+            "name": "animating",
+            "read_only": true,
+            "getter_name": "isAnimating",
+            "type": "BOOL"
+        },
+        {
+            "name": "currentProgress",
+            "type": "AppKit.NSAnimationProgress"
+        },
+        {
+            "name": "currentValue",
+            "read_only": true,
+            "type": "float"
+        },
+        {
+            "name": "progressMarks",
+            "type": "NSArray<Foundation.NSNumber *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithDuration",
+            "params": [
+                {
+                    "variable_name": "duration",
+                    "type": "Foundation.NSTimeInterval"
+                },
+                {
+                    "name": "animationCurve",
+                    "variable_name": "animationCurve",
+                    "type": "AppKit.NSAnimationCurve"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "startAnimation",
+            "return_type": "void"
+        },
+        {
+            "name": "stopAnimation",
+            "return_type": "void"
+        },
+        {
+            "name": "addProgressMark",
+            "params": [
+                {
+                    "variable_name": "progressMark",
+                    "type": "AppKit.NSAnimationProgress"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeProgressMark",
+            "params": [
+                {
+                    "variable_name": "progressMark",
+                    "type": "AppKit.NSAnimationProgress"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "startWhenAnimation",
+            "params": [
+                {
+                    "variable_name": "animation",
+                    "type": "AppKit.NSAnimation *"
+                },
+                {
+                    "name": "reachesProgress",
+                    "variable_name": "startProgress",
+                    "type": "AppKit.NSAnimationProgress"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "stopWhenAnimation",
+            "params": [
+                {
+                    "variable_name": "animation",
+                    "type": "AppKit.NSAnimation *"
+                },
+                {
+                    "name": "reachesProgress",
+                    "variable_name": "stopProgress",
+                    "type": "AppKit.NSAnimationProgress"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "clearStartAnimation",
+            "return_type": "void"
+        },
+        {
+            "name": "clearStopAnimation",
+            "return_type": "void"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

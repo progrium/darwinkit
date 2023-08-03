@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSPasteboardName",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSPasteboardNameDrag",
+            "value": "Apple CFPasteboard drag",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPasteboardNameFind",
+            "value": "Apple CFPasteboard find",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPasteboardNameFont",
+            "value": "Apple CFPasteboard font",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPasteboardNameGeneral",
+            "value": "Apple CFPasteboard general",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPasteboardNameRuler",
+            "value": "Apple CFPasteboard ruler",
+            "module": "AppKit"
+        }
+    ]
+}

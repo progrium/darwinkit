@@ -1,0 +1,84 @@
+{
+    "kind": "class",
+    "name": "NSTouchBar",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTouchBarDelegate>",
+            "weak": true
+        },
+        {
+            "name": "templateItems",
+            "type": "Foundation.NSSet *"
+        },
+        {
+            "name": "defaultItemIdentifiers",
+            "type": "NSArray<AppKit.NSTouchBarItemIdentifier> *"
+        },
+        {
+            "name": "principalItemIdentifier",
+            "type": "AppKit.NSTouchBarItemIdentifier"
+        },
+        {
+            "name": "escapeKeyReplacementItemIdentifier",
+            "type": "AppKit.NSTouchBarItemIdentifier"
+        },
+        {
+            "name": "visible",
+            "read_only": true,
+            "getter_name": "isVisible",
+            "type": "BOOL"
+        },
+        {
+            "name": "itemIdentifiers",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTouchBarItemIdentifier> *"
+        },
+        {
+            "name": "customizationIdentifier",
+            "type": "AppKit.NSTouchBarCustomizationIdentifier"
+        },
+        {
+            "name": "customizationAllowedItemIdentifiers",
+            "type": "NSArray<AppKit.NSTouchBarItemIdentifier> *"
+        },
+        {
+            "name": "customizationRequiredItemIdentifiers",
+            "type": "NSArray<AppKit.NSTouchBarItemIdentifier> *"
+        },
+        {
+            "name": "automaticCustomizeTouchBarMenuItemEnabled",
+            "getter_name": "isAutomaticCustomizeTouchBarMenuItemEnabled",
+            "type": "BOOL",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "itemForIdentifier",
+            "params": [
+                {
+                    "variable_name": "identifier",
+                    "type": "AppKit.NSTouchBarItemIdentifier"
+                }
+            ],
+            "return_type": "AppKit.NSTouchBarItem *"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSSegmentStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSSegmentStyleAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleRounded",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleTexturedRounded",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleRoundRect",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleTexturedSquare",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleCapsule",
+            "value": "5",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleSmallSquare",
+            "value": "6",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSegmentStyleSeparated",
+            "value": "8",
+            "module": "AppKit"
+        }
+    ]
+}

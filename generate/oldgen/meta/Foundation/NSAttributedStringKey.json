@@ -1,0 +1,308 @@
+{
+    "kind": "alias",
+    "name": "NSAttributedStringKey",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSAttachmentAttributeName",
+            "module": "AppKit",
+            "value": "NSAttachment"
+        },
+        {
+            "name": "NSBackgroundColorAttributeName",
+            "module": "AppKit",
+            "value": "NSBackgroundColor"
+        },
+        {
+            "name": "NSBaselineOffsetAttributeName",
+            "module": "AppKit",
+            "value": "NSBaselineOffset"
+        },
+        {
+            "name": "NSCursorAttributeName",
+            "module": "AppKit",
+            "value": "NSCursor"
+        },
+        {
+            "name": "NSExpansionAttributeName",
+            "module": "AppKit",
+            "value": "NSExpansion"
+        },
+        {
+            "name": "NSFontAttributeName",
+            "module": "AppKit",
+            "value": "NSFont"
+        },
+        {
+            "name": "NSForegroundColorAttributeName",
+            "module": "AppKit",
+            "value": "NSColor"
+        },
+        {
+            "name": "NSGlyphInfoAttributeName",
+            "module": "AppKit",
+            "value": "NSGlyphInfo"
+        },
+        {
+            "name": "NSKernAttributeName",
+            "module": "AppKit",
+            "value": "NSKern"
+        },
+        {
+            "name": "NSLigatureAttributeName",
+            "module": "AppKit",
+            "value": "NSLigature"
+        },
+        {
+            "name": "NSLinkAttributeName",
+            "module": "AppKit",
+            "value": "NSLink"
+        },
+        {
+            "name": "NSMarkdownSourcePositionAttributeName",
+            "value": "NSMarkdownSourcePosition",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMarkedClauseSegmentAttributeName",
+            "module": "AppKit",
+            "value": "NSMarkedClauseSegment"
+        },
+        {
+            "name": "NSObliquenessAttributeName",
+            "module": "AppKit",
+            "value": "NSObliqueness"
+        },
+        {
+            "name": "NSParagraphStyleAttributeName",
+            "module": "AppKit",
+            "value": "NSParagraphStyle"
+        },
+        {
+            "name": "NSShadowAttributeName",
+            "module": "AppKit",
+            "value": "NSShadow"
+        },
+        {
+            "name": "NSSpellingStateAttributeName",
+            "module": "AppKit",
+            "value": "NSSpellingState"
+        },
+        {
+            "name": "NSStrikethroughColorAttributeName",
+            "module": "AppKit",
+            "value": "NSStrikethroughColor"
+        },
+        {
+            "name": "NSStrikethroughStyleAttributeName",
+            "module": "AppKit",
+            "value": "NSStrikethrough"
+        },
+        {
+            "name": "NSStrokeColorAttributeName",
+            "module": "AppKit",
+            "value": "NSStrokeColor"
+        },
+        {
+            "name": "NSStrokeWidthAttributeName",
+            "module": "AppKit",
+            "value": "NSStrokeWidth"
+        },
+        {
+            "name": "NSSuperscriptAttributeName",
+            "module": "AppKit",
+            "value": "NSSuperScript"
+        },
+        {
+            "name": "NSTextAlternativesAttributeName",
+            "module": "AppKit",
+            "value": "NSTextAlternatives"
+        },
+        {
+            "name": "NSTextEffectAttributeName",
+            "module": "AppKit",
+            "value": "NSTextEffect"
+        },
+        {
+            "name": "NSToolTipAttributeName",
+            "module": "AppKit",
+            "value": "NSToolTip"
+        },
+        {
+            "name": "NSUnderlineColorAttributeName",
+            "module": "AppKit",
+            "value": "NSUnderlineColor"
+        },
+        {
+            "name": "NSUnderlineStyleAttributeName",
+            "module": "AppKit",
+            "value": "NSUnderline"
+        },
+        {
+            "name": "NSVerticalGlyphFormAttributeName",
+            "module": "AppKit",
+            "value": "CTVerticalForms"
+        },
+        {
+            "name": "NSWritingDirectionAttributeName",
+            "module": "AppKit",
+            "value": "NSWritingDirection"
+        },
+        {
+            "name": "NSAccessibilityTextAlignmentAttribute",
+            "module": "AppKit",
+            "value": "AXATextAlignmentValue"
+        },
+        {
+            "name": "NSAccessibilityAnnotationTextAttribute",
+            "module": "AppKit",
+            "value": "AXAnnotation"
+        },
+        {
+            "name": "NSAccessibilityAttachmentTextAttribute",
+            "module": "AppKit",
+            "value": "AXAttachment"
+        },
+        {
+            "name": "NSAccessibilityAutocorrectedTextAttribute",
+            "module": "AppKit",
+            "value": "AXAutocorrected"
+        },
+        {
+            "name": "NSAccessibilityBackgroundColorTextAttribute",
+            "module": "AppKit",
+            "value": "AXBackgroundColor"
+        },
+        {
+            "name": "NSAccessibilityCustomTextAttribute",
+            "module": "AppKit",
+            "value": "AXCustom"
+        },
+        {
+            "name": "NSAccessibilityFontTextAttribute",
+            "module": "AppKit",
+            "value": "AXFont"
+        },
+        {
+            "name": "NSAccessibilityForegroundColorTextAttribute",
+            "module": "AppKit",
+            "value": "AXForegroundColor"
+        },
+        {
+            "name": "NSAccessibilityLanguageTextAttribute",
+            "module": "AppKit",
+            "value": "AXLanguage"
+        },
+        {
+            "name": "NSAccessibilityLinkTextAttribute",
+            "module": "AppKit",
+            "value": "AXLink"
+        },
+        {
+            "name": "NSAccessibilityListItemIndexTextAttribute",
+            "module": "AppKit",
+            "value": "AXListItemIndex"
+        },
+        {
+            "name": "NSAccessibilityListItemLevelTextAttribute",
+            "module": "AppKit",
+            "value": "AXListItemLevel"
+        },
+        {
+            "name": "NSAccessibilityListItemPrefixTextAttribute",
+            "module": "AppKit",
+            "value": "AXListItemPrefix"
+        },
+        {
+            "name": "NSAccessibilityMarkedMisspelledTextAttribute",
+            "module": "AppKit",
+            "value": "AXMarkedMisspelled"
+        },
+        {
+            "name": "NSAccessibilityMisspelledTextAttribute",
+            "module": "AppKit",
+            "value": "AXMisspelled"
+        },
+        {
+            "name": "NSAccessibilityShadowTextAttribute",
+            "module": "AppKit",
+            "value": "AXShadow"
+        },
+        {
+            "name": "NSAccessibilityStrikethroughTextAttribute",
+            "module": "AppKit",
+            "value": "AXStrikethrough"
+        },
+        {
+            "name": "NSAccessibilityStrikethroughColorTextAttribute",
+            "module": "AppKit",
+            "value": "AXStrikethroughColor"
+        },
+        {
+            "name": "NSAccessibilitySuperscriptTextAttribute",
+            "module": "AppKit",
+            "value": "AXSuperscript"
+        },
+        {
+            "name": "NSAccessibilityUnderlineTextAttribute",
+            "module": "AppKit",
+            "value": "AXUnderline"
+        },
+        {
+            "name": "NSAccessibilityUnderlineColorTextAttribute",
+            "module": "AppKit",
+            "value": "AXUnderlineColor"
+        },
+        {
+            "name": "NSAlternateDescriptionAttributeName",
+            "value": "NSAlternateDescription",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSImageURLAttributeName",
+            "value": "NSImageURL",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInflectionAlternativeAttributeName",
+            "value": "NSInflectionAlternative",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInflectionRuleAttributeName",
+            "value": "NSInflect",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSInlinePresentationIntentAttributeName",
+            "value": "NSInlinePresentationIntent",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSLanguageIdentifierAttributeName",
+            "value": "NSLanguage",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMorphologyAttributeName",
+            "value": "NSMorphology",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSPresentationIntentAttributeName",
+            "value": "NSPresentationIntent",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSReplacementIndexAttributeName",
+            "value": "NSReplacementIndex",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSTrackingAttributeName",
+            "module": "AppKit",
+            "value": "CTTracking"
+        }
+    ]
+}

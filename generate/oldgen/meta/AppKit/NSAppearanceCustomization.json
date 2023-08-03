@@ -1,0 +1,21 @@
+{
+    "kind": "protocol",
+    "name": "NSAppearanceCustomization",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "properties": [
+        {
+            "name": "appearance",
+            "type": "AppKit.NSAppearance *",
+            "required": true
+        },
+        {
+            "name": "effectiveAppearance",
+            "read_only": true,
+            "type": "AppKit.NSAppearance *",
+            "required": true
+        }
+    ]
+}

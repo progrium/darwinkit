@@ -1,0 +1,773 @@
+{
+    "kind": "class",
+    "name": "NSMatrix",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "mode",
+            "type": "AppKit.NSMatrixMode"
+        },
+        {
+            "name": "allowsEmptySelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectionByRect",
+            "getter_name": "isSelectionByRect",
+            "type": "BOOL"
+        },
+        {
+            "name": "cellClass",
+            "type": "objectivec.Class *",
+            "weak": true
+        },
+        {
+            "name": "prototype",
+            "type": "AppKit.NSCell *"
+        },
+        {
+            "name": "cellSize",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "intercellSpacing",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "numberOfColumns",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "numberOfRows",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "autorecalculatesCellSize",
+            "type": "BOOL"
+        },
+        {
+            "name": "keyCell",
+            "type": "AppKit.NSCell *"
+        },
+        {
+            "name": "selectedCell",
+            "read_only": true,
+            "type": "AppKit.NSCell *"
+        },
+        {
+            "name": "selectedCells",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSCell *> *"
+        },
+        {
+            "name": "selectedColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "selectedRow",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "cells",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSCell *> *"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "cellBackgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "drawsCellBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "tabKeyTraversesCells",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSMatrixDelegate>",
+            "weak": true
+        },
+        {
+            "name": "autosizesCells",
+            "type": "BOOL"
+        },
+        {
+            "name": "autoscroll",
+            "getter_name": "isAutoscroll",
+            "type": "BOOL"
+        },
+        {
+            "name": "doubleAction",
+            "type": "SEL"
+        },
+        {
+            "name": "mouseDownFlags",
+            "read_only": true,
+            "type": "NSInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "mode",
+                    "variable_name": "mode",
+                    "type": "AppKit.NSMatrixMode"
+                },
+                {
+                    "name": "cellClass",
+                    "variable_name": "factoryId",
+                    "type": "objectivec.Class *"
+                },
+                {
+                    "name": "numberOfRows",
+                    "variable_name": "rowsHigh",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "numberOfColumns",
+                    "variable_name": "colsWide",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "mode",
+                    "variable_name": "mode",
+                    "type": "AppKit.NSMatrixMode"
+                },
+                {
+                    "name": "prototype",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "numberOfRows",
+                    "variable_name": "rowsHigh",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "numberOfColumns",
+                    "variable_name": "colsWide",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "addColumn",
+            "return_type": "void"
+        },
+        {
+            "name": "addColumnWithCells",
+            "params": [
+                {
+                    "variable_name": "newCells",
+                    "type": "NSArray<AppKit.NSCell *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addRow",
+            "return_type": "void"
+        },
+        {
+            "name": "addRowWithCells",
+            "params": [
+                {
+                    "variable_name": "newCells",
+                    "type": "NSArray<AppKit.NSCell *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cellFrameAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "getNumberOfRows",
+            "params": [
+                {
+                    "variable_name": "rowCount",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "columns",
+                    "variable_name": "colCount",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withCells",
+                    "variable_name": "newCells",
+                    "type": "NSArray<AppKit.NSCell *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withCells",
+                    "variable_name": "newCells",
+                    "type": "NSArray<AppKit.NSCell *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "makeCellAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "putCell",
+            "params": [
+                {
+                    "variable_name": "newCell",
+                    "type": "AppKit.NSCell *"
+                },
+                {
+                    "name": "atRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeColumn",
+            "params": [
+                {
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "renewRows",
+            "params": [
+                {
+                    "variable_name": "newRows",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "columns",
+                    "variable_name": "newCols",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sortUsingSelector",
+            "params": [
+                {
+                    "variable_name": "comparator",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "forPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "getRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "ofCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setState",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "atRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setToolTip",
+            "params": [
+                {
+                    "variable_name": "toolTipString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forCell",
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toolTipForCell",
+            "params": [
+                {
+                    "variable_name": "cell",
+                    "type": "AppKit.NSCell *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "selectCellAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectCellWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "selectAll",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectionFrom",
+            "params": [
+                {
+                    "variable_name": "startPos",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "to",
+                    "variable_name": "endPos",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "anchor",
+                    "variable_name": "anchorPos",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "highlight",
+                    "variable_name": "lit",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "deselectAllCells",
+            "return_type": "void"
+        },
+        {
+            "name": "deselectSelectedCell",
+            "return_type": "void"
+        },
+        {
+            "name": "cellAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "cellWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "selectText",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectTextAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSCell *"
+        },
+        {
+            "name": "textShouldBeginEditing",
+            "params": [
+                {
+                    "variable_name": "textObject",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "textDidBeginEditing",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "textDidChange",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "textShouldEndEditing",
+            "params": [
+                {
+                    "variable_name": "textObject",
+                    "type": "AppKit.NSText *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "textDidEndEditing",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setValidateSize",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sizeToCells",
+            "return_type": "void"
+        },
+        {
+            "name": "setScrollable",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollCellToVisibleAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawCellAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "highlightCell",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "atRow",
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sendAction",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "sendAction",
+            "params": [
+                {
+                    "variable_name": "selector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "to",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forAllCells",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "sendDoubleAction",
+            "return_type": "void"
+        },
+        {
+            "name": "acceptsFirstMouse",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "mouseDown",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performKeyEquivalent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "resetCursorRects",
+            "return_type": "void"
+        }
+    ]
+}

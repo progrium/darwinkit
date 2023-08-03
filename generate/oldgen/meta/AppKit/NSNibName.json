@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSNibName",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

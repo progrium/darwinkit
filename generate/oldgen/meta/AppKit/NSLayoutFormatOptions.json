@@ -1,0 +1,100 @@
+{
+    "kind": "alias",
+    "name": "NSLayoutFormatOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSLayoutFormatAlignAllLeft",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllRight",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllTop",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllBottom",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllLeading",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllTrailing",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllCenterX",
+            "value": "512",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllCenterY",
+            "value": "1024",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllBaseline",
+            "value": "2048",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllLastBaseline",
+            "value": "2048",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignAllFirstBaseline",
+            "value": "4096",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatAlignmentMask",
+            "value": "65535",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatDirectionLeadingToTrailing",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatDirectionLeftToRight",
+            "value": "65536",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatDirectionRightToLeft",
+            "value": "131072",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatDirectionMask",
+            "value": "196608",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatSpacingEdgeToEdge",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatSpacingBaselineToBaseline",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSLayoutFormatSpacingMask",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSPrintingPaginationMode",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPrintingPaginationModeAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintingPaginationModeFit",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPrintingPaginationModeClip",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

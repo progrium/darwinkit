@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSSaveOperationType",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSSaveOperation",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSaveAsOperation",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSaveToOperation",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAutosaveElsewhereOperation",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAutosaveInPlaceOperation",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSAutosaveAsOperation",
+            "value": "5",
+            "module": "AppKit"
+        }
+    ]
+}

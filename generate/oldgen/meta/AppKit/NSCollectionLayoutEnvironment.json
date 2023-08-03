@@ -1,0 +1,16 @@
+{
+    "kind": "protocol",
+    "name": "NSCollectionLayoutEnvironment",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "properties": [
+        {
+            "name": "container",
+            "read_only": true,
+            "type": "id<AppKit.NSCollectionLayoutContainer>",
+            "required": true
+        }
+    ]
+}

@@ -1,0 +1,83 @@
+{
+    "kind": "alias",
+    "name": "NSBitmapImageRepPropertyKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSImageColorSyncProfileData",
+            "value": "NSImageColorSyncProfileData",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCompressionFactor",
+            "value": "NSImageCompressionFactor",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCompressionMethod",
+            "value": "NSImageCompressionMethod",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCurrentFrame",
+            "value": "NSImageCurrentFrame",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageCurrentFrameDuration",
+            "value": "NSImageCurrentFrameDuration",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageDitherTransparency",
+            "value": "NSImageDitherTransparency",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageEXIFData",
+            "value": "NSImageEXIFData",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFallbackBackgroundColor",
+            "value": "NSImageFallbackBackgroundColor",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFrameCount",
+            "value": "NSImageFrameCount",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageGamma",
+            "value": "NSImageGamma",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageInterlaced",
+            "value": "NSImageInterlaced",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageLoopCount",
+            "value": "NSImageLoopCount",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageProgressive",
+            "value": "NSImageProgressive",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageRGBColorTable",
+            "value": "NSImageRGBColorTable",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageIPTCData",
+            "value": "NSImageIPTCData",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,287 @@
+{
+    "kind": "class",
+    "name": "NSPrinter",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "printerNames",
+            "read_only": true,
+            "type": "NSArray<NSString*> *",
+            "class_property": true
+        },
+        {
+            "name": "printerTypes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPrinterTypeName> *",
+            "class_property": true
+        },
+        {
+            "name": "name",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "type",
+            "read_only": true,
+            "type": "AppKit.NSPrinterTypeName"
+        },
+        {
+            "name": "languageLevel",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "deviceDescription",
+            "read_only": true,
+            "type": "NSDictionary<AppKit.NSDeviceDescriptionKey, objectivec.NSObject *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "printerWithName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSPrinter *",
+            "class_method": true
+        },
+        {
+            "name": "printerWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSPrinterTypeName"
+                }
+            ],
+            "return_type": "AppKit.NSPrinter *",
+            "class_method": true
+        },
+        {
+            "name": "pageSizeForPaper",
+            "params": [
+                {
+                    "variable_name": "paperName",
+                    "type": "AppKit.NSPrinterPaperName"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "isKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "stringForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "stringListForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *",
+            "deprecated": true
+        },
+        {
+            "name": "booleanForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "floatForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "float",
+            "deprecated": true
+        },
+        {
+            "name": "intForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "int32_t",
+            "deprecated": true
+        },
+        {
+            "name": "rectForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "sizeForKey",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "inTable",
+                    "variable_name": "table",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "deprecated": true
+        },
+        {
+            "name": "statusForTable",
+            "params": [
+                {
+                    "variable_name": "tableName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSPrinterTableStatus",
+            "deprecated": true
+        },
+        {
+            "name": "printerWithName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "domain",
+                    "variable_name": "domain",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "includeUnavailable",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "AppKit.NSPrinter *",
+            "class_method": true,
+            "deprecated": true
+        },
+        {
+            "name": "acceptsBinary",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "domain",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "host",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "imageRectForPaper",
+            "params": [
+                {
+                    "variable_name": "paperName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSRect",
+            "deprecated": true
+        },
+        {
+            "name": "isColor",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "isFontAvailable",
+            "params": [
+                {
+                    "variable_name": "faceName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "isOutputStackInReverseOrder",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "note",
+            "return_type": "NSString*",
+            "deprecated": true
+        }
+    ]
+}

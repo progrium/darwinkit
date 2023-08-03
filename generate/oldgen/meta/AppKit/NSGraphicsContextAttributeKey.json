@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSGraphicsContextAttributeKey",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSGraphicsContextDestinationAttributeName",
+            "value": "NSGraphicsContextDestinationAttributeName",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSGraphicsContextRepresentationFormatAttributeName",
+            "value": "NSGraphicsContextRepresentationFormatAttributeName",
+            "module": "AppKit"
+        }
+    ]
+}

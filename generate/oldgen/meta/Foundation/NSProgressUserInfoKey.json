@@ -1,0 +1,53 @@
+{
+    "kind": "alias",
+    "name": "NSProgressUserInfoKey",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSProgressEstimatedTimeRemainingKey",
+            "value": "NSProgressEstimatedTimeRemainingKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressThroughputKey",
+            "value": "NSProgressThroughputKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileAnimationImageKey",
+            "value": "NSProgressFlyToImageKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileAnimationImageOriginalRectKey",
+            "value": "NSProgressFileAnimationImageOriginalRectKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileCompletedCountKey",
+            "value": "NSProgressFileCompletedCountKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileIconKey",
+            "value": "NSProgressFileIconKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileOperationKindKey",
+            "value": "NSProgressFileOperationKindKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileTotalCountKey",
+            "value": "NSProgressFileTotalCountKey",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSProgressFileURLKey",
+            "value": "NSProgressFileURLKey",
+            "module": "Foundation"
+        }
+    ]
+}

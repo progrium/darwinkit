@@ -1,0 +1,182 @@
+{
+    "kind": "class",
+    "name": "NSSplitView",
+    "module": "AppKit",
+    "parent": "AppKit.NSView *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSSplitViewDelegate>",
+            "weak": true
+        },
+        {
+            "name": "arrangesAllSubviews",
+            "type": "BOOL"
+        },
+        {
+            "name": "arrangedSubviews",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSView *> *"
+        },
+        {
+            "name": "vertical",
+            "getter_name": "isVertical",
+            "type": "BOOL"
+        },
+        {
+            "name": "dividerStyle",
+            "type": "AppKit.NSSplitViewDividerStyle"
+        },
+        {
+            "name": "dividerColor",
+            "read_only": true,
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "dividerThickness",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "autosaveName",
+            "type": "AppKit.NSSplitViewAutosaveName"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addArrangedSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertArrangedSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeArrangedSubview",
+            "params": [
+                {
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "adjustSubviews",
+            "return_type": "void"
+        },
+        {
+            "name": "isSubviewCollapsed",
+            "params": [
+                {
+                    "variable_name": "subview",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "holdingPriorityForSubviewAtIndex",
+            "params": [
+                {
+                    "variable_name": "subviewIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutPriority"
+        },
+        {
+            "name": "setHoldingPriority",
+            "params": [
+                {
+                    "variable_name": "priority",
+                    "type": "AppKit.NSLayoutPriority"
+                },
+                {
+                    "name": "forSubviewAtIndex",
+                    "variable_name": "subviewIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawDividerInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "minPossiblePositionOfDividerAtIndex",
+            "params": [
+                {
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "maxPossiblePositionOfDividerAtIndex",
+            "params": [
+                {
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "setPosition",
+            "params": [
+                {
+                    "variable_name": "position",
+                    "type": "double"
+                },
+                {
+                    "name": "ofDividerAtIndex",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "isPaneSplitter",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setIsPaneSplitter",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

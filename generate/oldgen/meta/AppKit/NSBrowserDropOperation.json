@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSBrowserDropOperation",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSBrowserDropOn",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSBrowserDropAbove",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

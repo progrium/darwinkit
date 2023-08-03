@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSScrollElasticity",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSScrollElasticityAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSScrollElasticityNone",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSScrollElasticityAllowed",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

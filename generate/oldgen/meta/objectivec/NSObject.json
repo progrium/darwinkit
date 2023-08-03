@@ -1,0 +1,21 @@
+{
+    "kind": "class",
+    "name": "NSObject",
+    "module": "objectivec",
+    "methods": [
+        {
+            "name": "alloc",
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "new",
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        }
+    ]
+}

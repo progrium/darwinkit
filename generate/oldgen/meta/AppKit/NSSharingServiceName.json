@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSSharingServiceName",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSSharingServiceNameAddToAperture",
+            "value": "com.apple.share.System.add-to-aperture",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameAddToIPhoto",
+            "value": "com.apple.share.System.add-to-iphoto",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameAddToSafariReadingList",
+            "value": "com.apple.share.System.add-to-safari-reading-list",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameCloudSharing",
+            "value": "com.apple.share.CloudSharing",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameComposeEmail",
+            "value": "com.apple.share.Mail.compose",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameComposeMessage",
+            "value": "com.apple.messages.ShareExtension",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameSendViaAirDrop",
+            "value": "com.apple.share.AirDrop.send",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSSharingServiceNameUseAsDesktopPicture",
+            "value": "com.apple.share.System.set-desktop-image",
+            "module": "AppKit"
+        }
+    ]
+}

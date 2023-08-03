@@ -1,0 +1,143 @@
+{
+    "kind": "class",
+    "name": "NSLayoutDimension",
+    "module": "AppKit",
+    "parent": "AppKit.NSLayoutAnchor *",
+    "methods": [
+        {
+            "name": "constraintEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                },
+                {
+                    "name": "constant",
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintEqualToConstant",
+            "params": [
+                {
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintGreaterThanOrEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintGreaterThanOrEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                },
+                {
+                    "name": "constant",
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintGreaterThanOrEqualToConstant",
+            "params": [
+                {
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintLessThanOrEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintLessThanOrEqualToAnchor",
+            "params": [
+                {
+                    "variable_name": "anchor",
+                    "type": "AppKit.NSLayoutDimension *"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "m",
+                    "type": "double"
+                },
+                {
+                    "name": "constant",
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        },
+        {
+            "name": "constraintLessThanOrEqualToConstant",
+            "params": [
+                {
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "AppKit.NSLayoutConstraint *"
+        }
+    ]
+}

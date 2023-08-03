@@ -1,0 +1,116 @@
+{
+    "kind": "class",
+    "name": "NSTextContentManager",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "automaticallySynchronizesToBackingStore",
+            "type": "BOOL"
+        },
+        {
+            "name": "hasEditingTransaction",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "primaryTextLayoutManager",
+            "type": "AppKit.NSTextLayoutManager *"
+        },
+        {
+            "name": "textLayoutManagers",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTextLayoutManager *> *"
+        },
+        {
+            "name": "automaticallySynchronizesTextLayoutManagers",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTextContentManagerDelegate>",
+            "weak": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "performEditingTransactionUsingBlock",
+            "params": [
+                {
+                    "variable_name": "transaction",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "recordEditActionInRange",
+            "params": [
+                {
+                    "variable_name": "originalTextRange",
+                    "type": "AppKit.NSTextRange *"
+                },
+                {
+                    "name": "newTextRange",
+                    "variable_name": "newTextRange",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addTextLayoutManager",
+            "params": [
+                {
+                    "variable_name": "textLayoutManager",
+                    "type": "AppKit.NSTextLayoutManager *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeTextLayoutManager",
+            "params": [
+                {
+                    "variable_name": "textLayoutManager",
+                    "type": "AppKit.NSTextLayoutManager *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "synchronizeTextLayoutManagers",
+            "params": [
+                {
+                    "variable_name": "completionHandler",
+                    "type": "void (^) (Foundation.NSError * error)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "textElementsForRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "AppKit.NSTextRange *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSTextElement *> *"
+        }
+    ]
+}

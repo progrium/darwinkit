@@ -1,0 +1,322 @@
+{
+    "kind": "protocol",
+    "name": "NSOutlineViewDataSource",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "acceptDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "item",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "childIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "child",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "ofItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "draggingSession",
+                    "variable_name": "session",
+                    "type": "AppKit.NSDraggingSession *"
+                },
+                {
+                    "name": "endedAtPoint",
+                    "variable_name": "screenPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "operation",
+                    "variable_name": "operation",
+                    "type": "AppKit.NSDragOperation"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "draggingSession",
+                    "variable_name": "session",
+                    "type": "AppKit.NSDraggingSession *"
+                },
+                {
+                    "name": "willBeginAtPoint",
+                    "variable_name": "screenPoint",
+                    "type": "Foundation.NSPoint"
+                },
+                {
+                    "name": "forItems",
+                    "variable_name": "draggedItems",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "isItemExpandable",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "itemForPersistentObject",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "namesOfPromisedFilesDroppedAtDestination",
+                    "variable_name": "dropDestination",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "forDraggedItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *",
+            "deprecated": true
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "numberOfChildrenOfItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "objectValueForTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "byItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "pasteboardWriterForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "id<AppKit.NSPasteboardWriting>"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "persistentObjectForItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "setObjectValue",
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "forTableColumn",
+                    "variable_name": "tableColumn",
+                    "type": "AppKit.NSTableColumn *"
+                },
+                {
+                    "name": "byItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "sortDescriptorsDidChange",
+                    "variable_name": "oldDescriptors",
+                    "type": "NSArray<Foundation.NSSortDescriptor *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "updateDraggingItemsForDrag",
+                    "variable_name": "draggingInfo",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "validateDrop",
+                    "variable_name": "info",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "proposedItem",
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "proposedChildIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "outlineView",
+            "params": [
+                {
+                    "variable_name": "outlineView",
+                    "type": "AppKit.NSOutlineView *"
+                },
+                {
+                    "name": "writeItems",
+                    "variable_name": "items",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "toPasteboard",
+                    "variable_name": "pasteboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSStoryboardSceneIdentifier",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

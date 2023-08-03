@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "CAAnimationRotationMode",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCAAnimationRotateAuto",
+            "value": "auto",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAAnimationRotateAutoReverse",
+            "value": "autoReverse",
+            "module": "QuartzCore"
+        }
+    ]
+}

@@ -1,0 +1,216 @@
+{
+    "kind": "class",
+    "name": "NSRunLoop",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "currentRunLoop",
+            "read_only": true,
+            "type": "Foundation.NSRunLoop *",
+            "class_property": true
+        },
+        {
+            "name": "currentMode",
+            "read_only": true,
+            "type": "Foundation.NSRunLoopMode"
+        },
+        {
+            "name": "mainRunLoop",
+            "read_only": true,
+            "type": "Foundation.NSRunLoop *",
+            "class_property": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "limitDateForMode",
+            "params": [
+                {
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "Foundation.NSDate *"
+        },
+        {
+            "name": "addTimer",
+            "params": [
+                {
+                    "variable_name": "timer",
+                    "type": "Foundation.NSTimer *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addPort",
+            "params": [
+                {
+                    "variable_name": "aPort",
+                    "type": "Foundation.NSPort *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removePort",
+            "params": [
+                {
+                    "variable_name": "aPort",
+                    "type": "Foundation.NSPort *"
+                },
+                {
+                    "name": "forMode",
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "configureAsServer",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "run",
+            "return_type": "void"
+        },
+        {
+            "name": "runMode",
+            "params": [
+                {
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                },
+                {
+                    "name": "beforeDate",
+                    "variable_name": "limitDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "runUntilDate",
+            "params": [
+                {
+                    "variable_name": "limitDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "acceptInputForMode",
+            "params": [
+                {
+                    "variable_name": "mode",
+                    "type": "Foundation.NSRunLoopMode"
+                },
+                {
+                    "name": "beforeDate",
+                    "variable_name": "limitDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performInModes",
+            "params": [
+                {
+                    "variable_name": "modes",
+                    "type": "NSArray<Foundation.NSRunLoopMode> *"
+                },
+                {
+                    "name": "block",
+                    "variable_name": "block",
+                    "type": "void (^) ()"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performSelector",
+            "params": [
+                {
+                    "variable_name": "aSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "argument",
+                    "variable_name": "arg",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "order",
+                    "variable_name": "order",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "modes",
+                    "variable_name": "modes",
+                    "type": "NSArray<Foundation.NSRunLoopMode> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cancelPerformSelector",
+            "params": [
+                {
+                    "variable_name": "aSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "argument",
+                    "variable_name": "arg",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cancelPerformSelectorsWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

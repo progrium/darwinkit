@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSStreamStatus",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSStreamStatusAtEnd",
+            "value": "5",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusClosed",
+            "value": "6",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusError",
+            "value": "7",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusNotOpen",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusOpen",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusOpening",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusReading",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSStreamStatusWriting",
+            "value": "4",
+            "module": "Foundation"
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "kind": "class",
+    "name": "NSLayoutConstraint",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "active",
+            "getter_name": "isActive",
+            "type": "BOOL"
+        },
+        {
+            "name": "firstItem",
+            "read_only": true,
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "firstAttribute",
+            "read_only": true,
+            "type": "AppKit.NSLayoutAttribute"
+        },
+        {
+            "name": "relation",
+            "read_only": true,
+            "type": "AppKit.NSLayoutRelation"
+        },
+        {
+            "name": "secondItem",
+            "read_only": true,
+            "type": "objectivec.NSObject *",
+            "weak": true
+        },
+        {
+            "name": "secondAttribute",
+            "read_only": true,
+            "type": "AppKit.NSLayoutAttribute"
+        },
+        {
+            "name": "multiplier",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "constant",
+            "type": "double"
+        },
+        {
+            "name": "firstAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutAnchor *"
+        },
+        {
+            "name": "secondAnchor",
+            "read_only": true,
+            "type": "AppKit.NSLayoutAnchor *"
+        },
+        {
+            "name": "priority",
+            "type": "AppKit.NSLayoutPriority"
+        },
+        {
+            "name": "identifier",
+            "type": "NSString*"
+        },
+        {
+            "name": "shouldBeArchived",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "constraintsWithVisualFormat",
+            "params": [
+                {
+                    "variable_name": "format",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "opts",
+                    "type": "AppKit.NSLayoutFormatOptions"
+                },
+                {
+                    "name": "metrics",
+                    "variable_name": "metrics",
+                    "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "views",
+                    "variable_name": "views",
+                    "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "NSArray<AppKit.NSLayoutConstraint *> *",
+            "class_method": true
+        },
+        {
+            "name": "constraintWithItem",
+            "params": [
+                {
+                    "variable_name": "view1",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "attribute",
+                    "variable_name": "attr1",
+                    "type": "AppKit.NSLayoutAttribute"
+                },
+                {
+                    "name": "relatedBy",
+                    "variable_name": "relation",
+                    "type": "AppKit.NSLayoutRelation"
+                },
+                {
+                    "name": "toItem",
+                    "variable_name": "view2",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "attribute",
+                    "variable_name": "attr2",
+                    "type": "AppKit.NSLayoutAttribute"
+                },
+                {
+                    "name": "multiplier",
+                    "variable_name": "multiplier",
+                    "type": "double"
+                },
+                {
+                    "name": "constant",
+                    "variable_name": "c",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "activateConstraints",
+            "params": [
+                {
+                    "variable_name": "constraints",
+                    "type": "NSArray<AppKit.NSLayoutConstraint *> *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "deactivateConstraints",
+            "params": [
+                {
+                    "variable_name": "constraints",
+                    "type": "NSArray<AppKit.NSLayoutConstraint *> *"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        }
+    ]
+}

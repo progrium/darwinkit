@@ -1,0 +1,58 @@
+{
+    "kind": "class",
+    "name": "NSImageView",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "imageFrameStyle",
+            "type": "AppKit.NSImageFrameStyle"
+        },
+        {
+            "name": "imageAlignment",
+            "type": "AppKit.NSImageAlignment"
+        },
+        {
+            "name": "imageScaling",
+            "type": "AppKit.NSImageScaling"
+        },
+        {
+            "name": "animates",
+            "type": "BOOL"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsCutCopyPaste",
+            "type": "BOOL"
+        },
+        {
+            "name": "contentTintColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "symbolConfiguration",
+            "type": "AppKit.NSImageSymbolConfiguration *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "imageViewWithImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSDatePickerMode",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSDatePickerModeRange",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSDatePickerModeSingle",
+            "value": "0",
+            "module": "AppKit"
+        }
+    ]
+}

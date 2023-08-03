@@ -1,0 +1,15 @@
+{
+    "kind": "protocol",
+    "name": "NSCollectionViewSectionHeaderView",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSCollectionViewElement"
+    ],
+    "properties": [
+        {
+            "name": "sectionCollapseButton",
+            "type": "AppKit.NSButton *",
+            "weak": true
+        }
+    ]
+}

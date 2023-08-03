@@ -1,0 +1,68 @@
+{
+    "kind": "alias",
+    "name": "NSFontDescriptorAttributeName",
+    "module": "AppKit",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSFontFamilyAttribute",
+            "value": "NSFontFamilyAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontNameAttribute",
+            "value": "NSFontNameAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontFaceAttribute",
+            "value": "NSFontFaceAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontSizeAttribute",
+            "value": "NSFontSizeAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontVisibleNameAttribute",
+            "value": "NSFontVisibleNameAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontMatrixAttribute",
+            "value": "NSFontMatrixAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontVariationAttribute",
+            "value": "NSCTFontVariationAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontCharacterSetAttribute",
+            "value": "NSCTFontCharacterSetAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontCascadeListAttribute",
+            "value": "NSCTFontCascadeListAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontTraitsAttribute",
+            "value": "NSCTFontTraitsAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontFixedAdvanceAttribute",
+            "value": "NSCTFontFixedAdvanceAttribute",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontFeatureSettingsAttribute",
+            "value": "NSCTFontFeatureSettingsAttribute",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "kind": "protocol",
+    "name": "NSStackViewDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "stackView",
+            "params": [
+                {
+                    "variable_name": "stackView",
+                    "type": "AppKit.NSStackView *"
+                },
+                {
+                    "name": "didReattachViews",
+                    "variable_name": "views",
+                    "type": "NSArray<AppKit.NSView *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "stackView",
+            "params": [
+                {
+                    "variable_name": "stackView",
+                    "type": "AppKit.NSStackView *"
+                },
+                {
+                    "name": "willDetachViews",
+                    "variable_name": "views",
+                    "type": "NSArray<AppKit.NSView *> *"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

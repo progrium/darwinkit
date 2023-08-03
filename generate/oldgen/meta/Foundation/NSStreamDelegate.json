@@ -1,0 +1,25 @@
+{
+    "kind": "protocol",
+    "name": "NSStreamDelegate",
+    "module": "Foundation",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "stream",
+            "params": [
+                {
+                    "variable_name": "aStream",
+                    "type": "Foundation.NSStream *"
+                },
+                {
+                    "name": "handleEvent",
+                    "variable_name": "eventCode",
+                    "type": "Foundation.NSStreamEvent"
+                }
+            ],
+            "return_type": "void"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSTypesetterBehavior",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTypesetterLatestBehavior",
+            "value": "-1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypesetterOriginalBehavior",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypesetterBehavior_10_2_WithCompatibility",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypesetterBehavior_10_2",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypesetterBehavior_10_3",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTypesetterBehavior_10_4",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

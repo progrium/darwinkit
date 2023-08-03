@@ -1,0 +1,86 @@
+{
+    "kind": "class",
+    "name": "NSOutputStream",
+    "module": "Foundation",
+    "parent": "Foundation.NSStream *",
+    "properties": [
+        {
+            "name": "hasSpaceAvailable",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "outputStreamToMemory",
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "outputStreamToFileAtPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "append",
+                    "variable_name": "shouldAppend",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "outputStreamWithURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "append",
+                    "variable_name": "shouldAppend",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "initToMemory",
+            "return_type": "instance"
+        },
+        {
+            "name": "initToFileAtPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "append",
+                    "variable_name": "shouldAppend",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "append",
+                    "variable_name": "shouldAppend",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

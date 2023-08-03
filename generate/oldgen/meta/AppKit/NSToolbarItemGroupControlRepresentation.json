@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSToolbarItemGroupControlRepresentation",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSToolbarItemGroupControlRepresentationAutomatic",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSToolbarItemGroupControlRepresentationExpanded",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSToolbarItemGroupControlRepresentationCollapsed",
+            "value": "2",
+            "module": "AppKit"
+        }
+    ]
+}

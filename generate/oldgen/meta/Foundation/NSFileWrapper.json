@@ -1,0 +1,327 @@
+{
+    "kind": "class",
+    "name": "NSFileWrapper",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "regularFile",
+            "read_only": true,
+            "getter_name": "isRegularFile",
+            "type": "BOOL"
+        },
+        {
+            "name": "directory",
+            "read_only": true,
+            "getter_name": "isDirectory",
+            "type": "BOOL"
+        },
+        {
+            "name": "symbolicLink",
+            "read_only": true,
+            "getter_name": "isSymbolicLink",
+            "type": "BOOL"
+        },
+        {
+            "name": "fileWrappers",
+            "read_only": true,
+            "type": "NSDictionary<NSString*, Foundation.NSFileWrapper *> *"
+        },
+        {
+            "name": "symbolicLinkDestinationURL",
+            "read_only": true,
+            "type": "Foundation.NSURL *"
+        },
+        {
+            "name": "serializedRepresentation",
+            "read_only": true,
+            "type": "NSData*"
+        },
+        {
+            "name": "filename",
+            "type": "NSString*"
+        },
+        {
+            "name": "preferredFilename",
+            "type": "NSString*"
+        },
+        {
+            "name": "fileAttributes",
+            "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+        },
+        {
+            "name": "regularFileContents",
+            "read_only": true,
+            "type": "NSData*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSFileWrapperReadingOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initDirectoryWithFileWrappers",
+            "params": [
+                {
+                    "variable_name": "childrenByPreferredName",
+                    "type": "NSDictionary<NSString*, Foundation.NSFileWrapper *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initRegularFileWithContents",
+            "params": [
+                {
+                    "variable_name": "contents",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initSymbolicLinkWithDestination",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "objectivec.NSObject *",
+            "deprecated": true
+        },
+        {
+            "name": "initSymbolicLinkWithDestinationURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithSerializedRepresentation",
+            "params": [
+                {
+                    "variable_name": "serializeRepresentation",
+                    "type": "NSData*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "addFileWrapper",
+            "params": [
+                {
+                    "variable_name": "child",
+                    "type": "Foundation.NSFileWrapper *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "removeFileWrapper",
+            "params": [
+                {
+                    "variable_name": "child",
+                    "type": "Foundation.NSFileWrapper *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addFileWithPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "addRegularFileWithContents",
+            "params": [
+                {
+                    "variable_name": "data",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "preferredFilename",
+                    "variable_name": "fileName",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "addSymbolicLinkWithDestination",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "preferredFilename",
+                    "variable_name": "filename",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "keyForFileWrapper",
+            "params": [
+                {
+                    "variable_name": "child",
+                    "type": "Foundation.NSFileWrapper *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "symbolicLinkDestination",
+            "return_type": "NSString*",
+            "deprecated": true
+        },
+        {
+            "name": "needsToBeUpdatedFromPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "matchesContentsOfURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "updateFromPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "readFromURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSFileWrapperReadingOptions"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "writeToFile",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "atomically",
+                    "variable_name": "atomicFlag",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "updateFilenames",
+                    "variable_name": "updateFilenamesFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "writeToURL",
+            "params": [
+                {
+                    "variable_name": "url",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSFileWrapperWritingOptions"
+                },
+                {
+                    "name": "originalContentsURL",
+                    "variable_name": "originalContentsURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "outError",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "inCoder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

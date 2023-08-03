@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSPDFPanelOptions",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSPDFPanelShowsPaperSize",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPDFPanelShowsOrientation",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSPDFPanelRequestsParentDirectory",
+            "value": "16777216",
+            "module": "AppKit"
+        }
+    ]
+}

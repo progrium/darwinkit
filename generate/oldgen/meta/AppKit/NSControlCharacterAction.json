@@ -1,0 +1,38 @@
+{
+    "kind": "alias",
+    "name": "NSControlCharacterAction",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSControlCharacterActionContainerBreak",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSControlCharacterActionHorizontalTab",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSControlCharacterActionLineBreak",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSControlCharacterActionParagraphBreak",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSControlCharacterActionWhitespace",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSControlCharacterActionZeroAdvancement",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

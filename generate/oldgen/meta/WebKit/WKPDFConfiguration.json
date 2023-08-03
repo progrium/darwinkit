@@ -1,0 +1,12 @@
+{
+    "kind": "class",
+    "name": "WKPDFConfiguration",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "rect",
+            "type": "CoreGraphics.CGRect"
+        }
+    ]
+}

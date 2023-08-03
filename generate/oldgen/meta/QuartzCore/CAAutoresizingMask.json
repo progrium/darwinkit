@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "CAAutoresizingMask",
+    "module": "QuartzCore",
+    "target_type": "uint32_t",
+    "values": [
+        {
+            "name": "kCALayerNotSizable",
+            "value": "0",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerMinXMargin",
+            "value": "1",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerWidthSizable",
+            "value": "2",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerMaxXMargin",
+            "value": "4",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerMinYMargin",
+            "value": "8",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerHeightSizable",
+            "value": "16",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALayerMaxYMargin",
+            "value": "32",
+            "module": "QuartzCore"
+        }
+    ]
+}

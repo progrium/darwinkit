@@ -1,0 +1,75 @@
+{
+    "kind": "protocol",
+    "name": "NSTextFieldDelegate",
+    "module": "AppKit",
+    "parents": [
+        "AppKit.NSControlTextEditingDelegate"
+    ],
+    "methods": [
+        {
+            "name": "textField",
+            "params": [
+                {
+                    "variable_name": "textField",
+                    "type": "AppKit.NSTextField *"
+                },
+                {
+                    "name": "textView",
+                    "variable_name": "textView",
+                    "type": "AppKit.NSTextView *"
+                },
+                {
+                    "name": "candidates",
+                    "variable_name": "candidates",
+                    "type": "NSArray<Foundation.NSTextCheckingResult *> *"
+                },
+                {
+                    "name": "forSelectedRange",
+                    "variable_name": "selectedRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSArray<Foundation.NSTextCheckingResult *> *"
+        },
+        {
+            "name": "textField",
+            "params": [
+                {
+                    "variable_name": "textField",
+                    "type": "AppKit.NSTextField *"
+                },
+                {
+                    "name": "textView",
+                    "variable_name": "textView",
+                    "type": "AppKit.NSTextView *"
+                },
+                {
+                    "name": "candidatesForSelectedRange",
+                    "variable_name": "selectedRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "textField",
+            "params": [
+                {
+                    "variable_name": "textField",
+                    "type": "AppKit.NSTextField *"
+                },
+                {
+                    "name": "textView",
+                    "variable_name": "textView",
+                    "type": "AppKit.NSTextView *"
+                },
+                {
+                    "name": "shouldSelectCandidateAtIndex",
+                    "variable_name": "index",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

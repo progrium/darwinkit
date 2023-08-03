@@ -1,0 +1,64 @@
+{
+    "kind": "class",
+    "name": "NSFontPanel",
+    "module": "AppKit",
+    "parent": "AppKit.NSPanel *",
+    "properties": [
+        {
+            "name": "sharedFontPanel",
+            "read_only": true,
+            "type": "AppKit.NSFontPanel *",
+            "class_property": true
+        },
+        {
+            "name": "sharedFontPanelExists",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "enabled",
+            "getter_name": "isEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "worksWhenModal",
+            "type": "BOOL"
+        },
+        {
+            "name": "accessoryView",
+            "type": "AppKit.NSView *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "reloadDefaultFontFamilies",
+            "return_type": "void"
+        },
+        {
+            "name": "setPanelFont",
+            "params": [
+                {
+                    "variable_name": "fontObj",
+                    "type": "AppKit.NSFont *"
+                },
+                {
+                    "name": "isMultiple",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "panelConvertFont",
+            "params": [
+                {
+                    "variable_name": "fontObj",
+                    "type": "AppKit.NSFont *"
+                }
+            ],
+            "return_type": "AppKit.NSFont *"
+        }
+    ]
+}

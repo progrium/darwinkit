@@ -1,0 +1,279 @@
+{
+    "kind": "class",
+    "name": "NSAttributedString",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "string",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "length",
+            "read_only": true,
+            "type": "NSUInteger"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "str",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithString",
+            "params": [
+                {
+                    "variable_name": "str",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "attributes",
+                    "variable_name": "attrs",
+                    "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithAttributedString",
+            "params": [
+                {
+                    "variable_name": "attrStr",
+                    "type": "Foundation.NSAttributedString *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithMarkdownString",
+            "params": [
+                {
+                    "variable_name": "markdownString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSAttributedStringMarkdownParsingOptions *"
+                },
+                {
+                    "name": "baseURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithMarkdown",
+            "params": [
+                {
+                    "variable_name": "markdown",
+                    "type": "NSData*"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSAttributedStringMarkdownParsingOptions *"
+                },
+                {
+                    "name": "baseURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithContentsOfMarkdownFileAtURL",
+            "params": [
+                {
+                    "variable_name": "markdownFile",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "Foundation.NSAttributedStringMarkdownParsingOptions *"
+                },
+                {
+                    "name": "baseURL",
+                    "variable_name": "baseURL",
+                    "type": "Foundation.NSURL *"
+                },
+                {
+                    "name": "error",
+                    "variable_name": "error",
+                    "type": "Foundation.NSError * *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "attributesAtIndex",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "effectiveRange",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange *"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "attributesAtIndex",
+            "params": [
+                {
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "longestEffectiveRange",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange *"
+                },
+                {
+                    "name": "inRange",
+                    "variable_name": "rangeLimit",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "attribute",
+            "params": [
+                {
+                    "variable_name": "attrName",
+                    "type": "Foundation.NSAttributedStringKey"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "effectiveRange",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "attribute",
+            "params": [
+                {
+                    "variable_name": "attrName",
+                    "type": "Foundation.NSAttributedStringKey"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "location",
+                    "type": "NSUInteger"
+                },
+                {
+                    "name": "longestEffectiveRange",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange *"
+                },
+                {
+                    "name": "inRange",
+                    "variable_name": "rangeLimit",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "isEqualToAttributedString",
+            "params": [
+                {
+                    "variable_name": "other",
+                    "type": "Foundation.NSAttributedString *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "attributedSubstringFromRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "enumerateAttribute",
+            "params": [
+                {
+                    "variable_name": "attrName",
+                    "type": "Foundation.NSAttributedStringKey"
+                },
+                {
+                    "name": "inRange",
+                    "variable_name": "enumerationRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "opts",
+                    "type": "Foundation.NSAttributedStringEnumerationOptions"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (objectivec.NSObject * value, Foundation.NSRange range, BOOL * stop)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "enumerateAttributesInRange",
+            "params": [
+                {
+                    "variable_name": "enumerationRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "opts",
+                    "type": "Foundation.NSAttributedStringEnumerationOptions"
+                },
+                {
+                    "name": "usingBlock",
+                    "variable_name": "block",
+                    "type": "void (^) (NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> * attrs, Foundation.NSRange range, BOOL * stop)"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "attributedStringByInflectingString",
+            "return_type": "Foundation.NSAttributedString *"
+        }
+    ]
+}

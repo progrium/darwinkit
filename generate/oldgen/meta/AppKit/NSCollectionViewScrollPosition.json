@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "NSCollectionViewScrollPosition",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSCollectionViewScrollPositionNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionTop",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionCenteredVertically",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionBottom",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionNearestHorizontalEdge",
+            "value": "512",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionLeft",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionCenteredHorizontally",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionRight",
+            "value": "32",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionLeadingEdge",
+            "value": "64",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionTrailingEdge",
+            "value": "128",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSCollectionViewScrollPositionNearestVerticalEdge",
+            "value": "256",
+            "module": "AppKit"
+        }
+    ]
+}

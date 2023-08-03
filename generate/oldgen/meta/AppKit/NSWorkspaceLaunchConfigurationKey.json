@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSWorkspaceLaunchConfigurationKey",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

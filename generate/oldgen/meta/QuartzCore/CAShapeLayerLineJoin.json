@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "CAShapeLayerLineJoin",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCALineJoinBevel",
+            "value": "bevel",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALineJoinMiter",
+            "value": "miter",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCALineJoinRound",
+            "value": "round",
+            "module": "QuartzCore"
+        }
+    ]
+}

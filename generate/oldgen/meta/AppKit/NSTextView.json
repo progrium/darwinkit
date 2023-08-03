@@ -1,0 +1,1570 @@
+{
+    "kind": "class",
+    "name": "NSTextView",
+    "module": "AppKit",
+    "parent": "AppKit.NSText *",
+    "properties": [
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSTextViewDelegate>",
+            "weak": true
+        },
+        {
+            "name": "stronglyReferencesTextStorage",
+            "read_only": true,
+            "type": "BOOL",
+            "class_property": true
+        },
+        {
+            "name": "textContainer",
+            "type": "AppKit.NSTextContainer *",
+            "weak": true
+        },
+        {
+            "name": "textContainerInset",
+            "type": "Foundation.NSSize"
+        },
+        {
+            "name": "textContainerOrigin",
+            "read_only": true,
+            "type": "Foundation.NSPoint"
+        },
+        {
+            "name": "textLayoutManager",
+            "read_only": true,
+            "type": "AppKit.NSTextLayoutManager *",
+            "weak": true
+        },
+        {
+            "name": "layoutManager",
+            "read_only": true,
+            "type": "AppKit.NSLayoutManager *",
+            "weak": true
+        },
+        {
+            "name": "textContentStorage",
+            "read_only": true,
+            "type": "AppKit.NSTextContentStorage *",
+            "weak": true
+        },
+        {
+            "name": "textStorage",
+            "read_only": true,
+            "type": "AppKit.NSTextStorage *",
+            "weak": true
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "drawsBackground",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsDocumentBackgroundColorChange",
+            "type": "BOOL"
+        },
+        {
+            "name": "shouldDrawInsertionPoint",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "allowedInputSourceLocales",
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "allowsUndo",
+            "type": "BOOL"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectable",
+            "getter_name": "isSelectable",
+            "type": "BOOL"
+        },
+        {
+            "name": "fieldEditor",
+            "getter_name": "isFieldEditor",
+            "type": "BOOL"
+        },
+        {
+            "name": "richText",
+            "getter_name": "isRichText",
+            "type": "BOOL"
+        },
+        {
+            "name": "importsGraphics",
+            "type": "BOOL"
+        },
+        {
+            "name": "defaultParagraphStyle",
+            "type": "AppKit.NSParagraphStyle *"
+        },
+        {
+            "name": "allowsImageEditing",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticQuoteSubstitutionEnabled",
+            "getter_name": "isAutomaticQuoteSubstitutionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticLinkDetectionEnabled",
+            "getter_name": "isAutomaticLinkDetectionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "displaysLinkToolTips",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticTextCompletionEnabled",
+            "getter_name": "isAutomaticTextCompletionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesAdaptiveColorMappingForDarkAppearance",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesRolloverButtonForSelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesRuler",
+            "type": "BOOL"
+        },
+        {
+            "name": "rulerVisible",
+            "getter_name": "isRulerVisible",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesInspectorBar",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectedRanges",
+            "type": "NSArray<Foundation.NSValue *> *"
+        },
+        {
+            "name": "selectionAffinity",
+            "read_only": true,
+            "type": "AppKit.NSSelectionAffinity"
+        },
+        {
+            "name": "selectionGranularity",
+            "type": "AppKit.NSSelectionGranularity"
+        },
+        {
+            "name": "insertionPointColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "selectedTextAttributes",
+            "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "markedTextAttributes",
+            "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "linkTextAttributes",
+            "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "readablePasteboardTypes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPasteboardType> *"
+        },
+        {
+            "name": "writablePasteboardTypes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPasteboardType> *"
+        },
+        {
+            "name": "typingAttributes",
+            "type": "NSDictionary<Foundation.NSAttributedStringKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "coalescingUndo",
+            "read_only": true,
+            "getter_name": "isCoalescingUndo",
+            "type": "BOOL"
+        },
+        {
+            "name": "acceptableDragTypes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSPasteboardType> *"
+        },
+        {
+            "name": "rangeForUserCharacterAttributeChange",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "rangesForUserCharacterAttributeChange",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSValue *> *"
+        },
+        {
+            "name": "rangeForUserParagraphAttributeChange",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "rangesForUserParagraphAttributeChange",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSValue *> *"
+        },
+        {
+            "name": "rangeForUserTextChange",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "rangesForUserTextChange",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSValue *> *"
+        },
+        {
+            "name": "smartInsertDeleteEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "continuousSpellCheckingEnabled",
+            "getter_name": "isContinuousSpellCheckingEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "spellCheckerDocumentTag",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "grammarCheckingEnabled",
+            "getter_name": "isGrammarCheckingEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "acceptsGlyphInfo",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesFontPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesFindPanel",
+            "type": "BOOL"
+        },
+        {
+            "name": "rangeForUserCompletion",
+            "read_only": true,
+            "type": "Foundation.NSRange"
+        },
+        {
+            "name": "enabledTextCheckingTypes",
+            "type": "Foundation.NSTextCheckingTypes"
+        },
+        {
+            "name": "automaticDashSubstitutionEnabled",
+            "getter_name": "isAutomaticDashSubstitutionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticDataDetectionEnabled",
+            "getter_name": "isAutomaticDataDetectionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticSpellingCorrectionEnabled",
+            "getter_name": "isAutomaticSpellingCorrectionEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticTextReplacementEnabled",
+            "getter_name": "isAutomaticTextReplacementEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "usesFindBar",
+            "type": "BOOL"
+        },
+        {
+            "name": "incrementalSearchingEnabled",
+            "getter_name": "isIncrementalSearchingEnabled",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsCharacterPickerTouchBarItem",
+            "type": "BOOL"
+        },
+        {
+            "name": "candidateListTouchBarItem",
+            "read_only": true,
+            "type": "AppKit.NSCandidateListTouchBarItem *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "textContainer",
+                    "variable_name": "container",
+                    "type": "AppKit.NSTextContainer *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "frameRect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "registerForServices",
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "fieldEditor",
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "replaceTextContainer",
+            "params": [
+                {
+                    "variable_name": "newContainer",
+                    "type": "AppKit.NSTextContainer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "invalidateTextContainerOrigin",
+            "return_type": "void"
+        },
+        {
+            "name": "changeDocumentBackgroundColor",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setNeedsDisplayInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "avoidAdditionalLayout",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawInsertionPointInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "color",
+                    "variable_name": "color",
+                    "type": "AppKit.NSColor *"
+                },
+                {
+                    "name": "turnedOn",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawViewBackgroundInRect",
+            "params": [
+                {
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setConstrainedFrameSize",
+            "params": [
+                {
+                    "variable_name": "desiredSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "cleanUpAfterDragOperation",
+            "return_type": "void"
+        },
+        {
+            "name": "showFindIndicatorForRange",
+            "params": [
+                {
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollableDocumentContentTextView",
+            "return_type": "AppKit.NSScrollView *",
+            "class_method": true
+        },
+        {
+            "name": "scrollablePlainDocumentContentTextView",
+            "return_type": "AppKit.NSScrollView *",
+            "class_method": true
+        },
+        {
+            "name": "scrollableTextView",
+            "return_type": "AppKit.NSScrollView *",
+            "class_method": true
+        },
+        {
+            "name": "insertText",
+            "params": [
+                {
+                    "variable_name": "insertString",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "setBaseWritingDirection",
+            "params": [
+                {
+                    "variable_name": "writingDirection",
+                    "type": "AppKit.NSWritingDirection"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleBaseWritingDirection",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "outline",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticQuoteSubstitution",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticLinkDetection",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticTextCompletion",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectedRange",
+            "params": [
+                {
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectedRange",
+            "params": [
+                {
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "affinity",
+                    "variable_name": "affinity",
+                    "type": "AppKit.NSSelectionAffinity"
+                },
+                {
+                    "name": "stillSelecting",
+                    "variable_name": "stillSelectingFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectedRanges",
+            "params": [
+                {
+                    "variable_name": "ranges",
+                    "type": "NSArray<Foundation.NSValue *> *"
+                },
+                {
+                    "name": "affinity",
+                    "variable_name": "affinity",
+                    "type": "AppKit.NSSelectionAffinity"
+                },
+                {
+                    "name": "stillSelecting",
+                    "variable_name": "stillSelectingFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateInsertionPointStateAndRestartTimer",
+            "params": [
+                {
+                    "variable_name": "restartFlag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "characterIndexForInsertionAtPoint",
+            "params": [
+                {
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "NSUInteger"
+        },
+        {
+            "name": "updateCandidates",
+            "return_type": "void"
+        },
+        {
+            "name": "preferredPasteboardTypeFromArray",
+            "params": [
+                {
+                    "variable_name": "availableTypes",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                },
+                {
+                    "name": "restrictedToTypesFromArray",
+                    "variable_name": "allowedTypes",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                }
+            ],
+            "return_type": "AppKit.NSPasteboardType"
+        },
+        {
+            "name": "readSelectionFromPasteboard",
+            "params": [
+                {
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "readSelectionFromPasteboard",
+            "params": [
+                {
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                },
+                {
+                    "name": "type",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "writeSelectionToPasteboard",
+            "params": [
+                {
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                },
+                {
+                    "name": "type",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "writeSelectionToPasteboard",
+            "params": [
+                {
+                    "variable_name": "pboard",
+                    "type": "AppKit.NSPasteboard *"
+                },
+                {
+                    "name": "types",
+                    "variable_name": "types",
+                    "type": "NSArray<AppKit.NSPasteboardType> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "validRequestorForSendType",
+            "params": [
+                {
+                    "variable_name": "sendType",
+                    "type": "AppKit.NSPasteboardType"
+                },
+                {
+                    "name": "returnType",
+                    "variable_name": "returnType",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "alignJustified",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeAttributes",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeColor",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setAlignment",
+            "params": [
+                {
+                    "variable_name": "alignment",
+                    "type": "AppKit.NSTextAlignment"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "useStandardKerning",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "lowerBaseline",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "raiseBaseline",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "turnOffKerning",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "loosenKerning",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "tightenKerning",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "useStandardLigatures",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "turnOffLigatures",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "useAllLigatures",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleTraditionalCharacterShape",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "clickedOnLink",
+            "params": [
+                {
+                    "variable_name": "link",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "charIndex",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "pasteAsPlainText",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "pasteAsRichText",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "breakUndoCoalescing",
+            "return_type": "void"
+        },
+        {
+            "name": "updateFontPanel",
+            "return_type": "void"
+        },
+        {
+            "name": "updateRuler",
+            "return_type": "void"
+        },
+        {
+            "name": "updateDragTypeRegistration",
+            "return_type": "void"
+        },
+        {
+            "name": "selectionRangeForProposedRange",
+            "params": [
+                {
+                    "variable_name": "proposedCharRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "granularity",
+                    "variable_name": "granularity",
+                    "type": "AppKit.NSSelectionGranularity"
+                }
+            ],
+            "return_type": "Foundation.NSRange"
+        },
+        {
+            "name": "shouldChangeTextInRange",
+            "params": [
+                {
+                    "variable_name": "affectedCharRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "replacementString",
+                    "variable_name": "replacementString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "shouldChangeTextInRanges",
+            "params": [
+                {
+                    "variable_name": "affectedRanges",
+                    "type": "NSArray<Foundation.NSValue *> *"
+                },
+                {
+                    "name": "replacementStrings",
+                    "variable_name": "replacementStrings",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "didChangeText",
+            "return_type": "void"
+        },
+        {
+            "name": "smartDeleteRangeForProposedRange",
+            "params": [
+                {
+                    "variable_name": "proposedCharRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "Foundation.NSRange"
+        },
+        {
+            "name": "smartInsertAfterStringForString",
+            "params": [
+                {
+                    "variable_name": "pasteString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "replacingRange",
+                    "variable_name": "charRangeToReplace",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "smartInsertBeforeStringForString",
+            "params": [
+                {
+                    "variable_name": "pasteString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "replacingRange",
+                    "variable_name": "charRangeToReplace",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "smartInsertForString",
+            "params": [
+                {
+                    "variable_name": "pasteString",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "replacingRange",
+                    "variable_name": "charRangeToReplace",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "beforeString",
+                    "variable_name": "beforeString",
+                    "type": "NSString* *"
+                },
+                {
+                    "name": "afterString",
+                    "variable_name": "afterString",
+                    "type": "NSString* *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleSmartInsertDelete",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleContinuousSpellChecking",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleGrammarChecking",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSpellingState",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "range",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontSharingServicePicker",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "willMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                },
+                {
+                    "name": "toLocation",
+                    "variable_name": "location",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldMoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didRemoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldRemoveMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "didAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "shouldAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "willAddMarker",
+                    "variable_name": "marker",
+                    "type": "AppKit.NSRulerMarker *"
+                },
+                {
+                    "name": "atLocation",
+                    "variable_name": "location",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "rulerView",
+            "params": [
+                {
+                    "variable_name": "ruler",
+                    "type": "AppKit.NSRulerView *"
+                },
+                {
+                    "name": "handleMouseDown",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "dragImageForSelectionWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "origin",
+                    "variable_name": "origin",
+                    "type": "Foundation.NSPoint *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "dragOperationForDraggingInfo",
+            "params": [
+                {
+                    "variable_name": "dragInfo",
+                    "type": "id<AppKit.NSDraggingInfo>"
+                },
+                {
+                    "name": "type",
+                    "variable_name": "type",
+                    "type": "AppKit.NSPasteboardType"
+                }
+            ],
+            "return_type": "AppKit.NSDragOperation"
+        },
+        {
+            "name": "dragSelectionWithEvent",
+            "params": [
+                {
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "offset",
+                    "variable_name": "mouseOffset",
+                    "type": "Foundation.NSSize"
+                },
+                {
+                    "name": "slideBack",
+                    "variable_name": "slideBack",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "startSpeaking",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "stopSpeaking",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performFindPanelAction",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontLinkPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontListPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontSpacingPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontTablePanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "orderFrontSubstitutionsPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "complete",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "completionsForPartialWordRange",
+            "params": [
+                {
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "indexOfSelectedItem",
+                    "variable_name": "index",
+                    "type": "NSInteger *"
+                }
+            ],
+            "return_type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "insertCompletion",
+            "params": [
+                {
+                    "variable_name": "word",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "forPartialWordRange",
+                    "variable_name": "charRange",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "movement",
+                    "variable_name": "movement",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "isFinal",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "checkTextInDocument",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "checkTextInSelection",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "checkTextInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "types",
+                    "variable_name": "checkingTypes",
+                    "type": "Foundation.NSTextCheckingTypes"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSTextCheckingOptionKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "handleTextCheckingResults",
+            "params": [
+                {
+                    "variable_name": "results",
+                    "type": "NSArray<Foundation.NSTextCheckingResult *> *"
+                },
+                {
+                    "name": "forRange",
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "types",
+                    "variable_name": "checkingTypes",
+                    "type": "Foundation.NSTextCheckingTypes"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSTextCheckingOptionKey, objectivec.NSObject *> *"
+                },
+                {
+                    "name": "orthography",
+                    "variable_name": "orthography",
+                    "type": "Foundation.NSOrthography *"
+                },
+                {
+                    "name": "wordCount",
+                    "variable_name": "wordCount",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticDashSubstitution",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticDataDetection",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticSpellingCorrection",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "toggleAutomaticTextReplacement",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performValidatedReplacementInRange",
+            "params": [
+                {
+                    "variable_name": "range",
+                    "type": "Foundation.NSRange"
+                },
+                {
+                    "name": "withAttributedString",
+                    "variable_name": "attributedString",
+                    "type": "Foundation.NSAttributedString *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "updateQuickLookPreviewPanel",
+            "return_type": "void"
+        },
+        {
+            "name": "toggleQuickLookPreviewPanel",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "changeLayoutOrientation",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setLayoutOrientation",
+            "params": [
+                {
+                    "variable_name": "orientation",
+                    "type": "AppKit.NSTextLayoutOrientation"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateTextTouchBarItems",
+            "return_type": "void"
+        },
+        {
+            "name": "updateTouchBarItemIdentifiers",
+            "return_type": "void"
+        }
+    ]
+}

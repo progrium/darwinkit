@@ -1,0 +1,63 @@
+{
+    "kind": "alias",
+    "name": "CAValueFunctionName",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCAValueFunctionRotateX",
+            "value": "rotateX",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionRotateY",
+            "value": "rotateY",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionRotateZ",
+            "value": "rotateZ",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionScale",
+            "value": "scale",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionScaleX",
+            "value": "scaleX",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionScaleY",
+            "value": "scaleY",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionScaleZ",
+            "value": "scaleZ",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionTranslate",
+            "value": "translate",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionTranslateX",
+            "value": "translateX",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionTranslateY",
+            "value": "translateY",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCAValueFunctionTranslateZ",
+            "value": "translateZ",
+            "module": "QuartzCore"
+        }
+    ]
+}

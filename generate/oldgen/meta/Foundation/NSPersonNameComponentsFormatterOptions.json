@@ -1,0 +1,13 @@
+{
+    "kind": "alias",
+    "name": "NSPersonNameComponentsFormatterOptions",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSPersonNameComponentsFormatterPhonetic",
+            "value": "2",
+            "module": "Foundation"
+        }
+    ]
+}

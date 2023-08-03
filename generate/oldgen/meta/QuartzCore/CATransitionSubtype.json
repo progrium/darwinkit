@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "CATransitionSubtype",
+    "module": "QuartzCore",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "kCATransitionFromBottom",
+            "value": "fromBottom",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATransitionFromLeft",
+            "value": "fromLeft",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATransitionFromRight",
+            "value": "fromRight",
+            "module": "QuartzCore"
+        },
+        {
+            "name": "kCATransitionFromTop",
+            "value": "fromTop",
+            "module": "QuartzCore"
+        }
+    ]
+}

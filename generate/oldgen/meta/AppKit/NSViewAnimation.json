@@ -1,0 +1,24 @@
+{
+    "kind": "class",
+    "name": "NSViewAnimation",
+    "module": "AppKit",
+    "parent": "AppKit.NSAnimation *",
+    "properties": [
+        {
+            "name": "viewAnimations",
+            "type": "NSArray<NSDictionary<AppKit.NSViewAnimationKey, objectivec.NSObject *> *> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithViewAnimations",
+            "params": [
+                {
+                    "variable_name": "viewAnimations",
+                    "type": "NSArray<NSDictionary<AppKit.NSViewAnimationKey, objectivec.NSObject *> *> *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

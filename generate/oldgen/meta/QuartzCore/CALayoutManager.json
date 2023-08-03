@@ -1,0 +1,40 @@
+{
+    "kind": "protocol",
+    "name": "CALayoutManager",
+    "module": "QuartzCore",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "invalidateLayoutOfLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "layoutSublayersOfLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "preferredSizeOfLayer",
+            "params": [
+                {
+                    "variable_name": "layer",
+                    "type": "QuartzCore.CALayer *"
+                }
+            ],
+            "return_type": "CoreGraphics.CGSize"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSWindowNumberListOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSWindowNumberListAllApplications",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSWindowNumberListAllSpaces",
+            "value": "16",
+            "module": "AppKit"
+        }
+    ]
+}

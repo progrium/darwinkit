@@ -1,0 +1,28 @@
+{
+    "kind": "class",
+    "name": "CAGradientLayer",
+    "module": "QuartzCore",
+    "parent": "QuartzCore.CALayer *",
+    "properties": [
+        {
+            "name": "colors",
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "locations",
+            "type": "NSArray<Foundation.NSNumber *> *"
+        },
+        {
+            "name": "endPoint",
+            "type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "startPoint",
+            "type": "CoreGraphics.CGPoint"
+        },
+        {
+            "name": "type",
+            "type": "QuartzCore.CAGradientLayerType"
+        }
+    ]
+}

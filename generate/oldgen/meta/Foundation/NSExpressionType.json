@@ -1,0 +1,73 @@
+{
+    "kind": "alias",
+    "name": "NSExpressionType",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSConstantValueExpressionType",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSEvaluatedObjectExpressionType",
+            "value": "1",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSVariableExpressionType",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSKeyPathExpressionType",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSFunctionExpressionType",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSUnionSetExpressionType",
+            "value": "5",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSIntersectSetExpressionType",
+            "value": "6",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSMinusSetExpressionType",
+            "value": "7",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSSubqueryExpressionType",
+            "value": "13",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAggregateExpressionType",
+            "value": "14",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSAnyKeyExpressionType",
+            "value": "15",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSBlockExpressionType",
+            "value": "19",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSConditionalExpressionType",
+            "value": "20",
+            "module": "Foundation"
+        }
+    ]
+}

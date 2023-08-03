@@ -1,0 +1,13 @@
+{
+    "kind": "class",
+    "name": "WKFindResult",
+    "module": "WebKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "matchFound",
+            "read_only": true,
+            "type": "BOOL"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "kind": "alias",
+    "name": "NSCollectionViewSupplementaryElementKind",
+    "module": "AppKit",
+    "target_type": "NSString*"
+}

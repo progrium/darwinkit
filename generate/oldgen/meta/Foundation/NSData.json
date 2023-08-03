@@ -1,0 +1,6 @@
+{
+    "kind": "class",
+    "name": "NSData",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *"
+}

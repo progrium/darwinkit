@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSImageFrameStyle",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSImageFrameNone",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFramePhoto",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFrameGrayBezel",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFrameGroove",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSImageFrameButton",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "kind": "alias",
+    "name": "NSAutoresizingMaskOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSViewNotSizable",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewMinXMargin",
+            "value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewWidthSizable",
+            "value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewMaxXMargin",
+            "value": "4",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewMinYMargin",
+            "value": "8",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewHeightSizable",
+            "value": "16",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSViewMaxYMargin",
+            "value": "32",
+            "module": "AppKit"
+        }
+    ]
+}

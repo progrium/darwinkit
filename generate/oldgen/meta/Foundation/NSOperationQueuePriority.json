@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSOperationQueuePriority",
+    "module": "Foundation",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSOperationQueuePriorityVeryLow",
+            "value": "-8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOperationQueuePriorityLow",
+            "value": "-4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOperationQueuePriorityNormal",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOperationQueuePriorityHigh",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSOperationQueuePriorityVeryHigh",
+            "value": "8",
+            "module": "Foundation"
+        }
+    ]
+}

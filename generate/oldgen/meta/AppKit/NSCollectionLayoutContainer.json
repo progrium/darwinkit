@@ -1,0 +1,34 @@
+{
+    "kind": "protocol",
+    "name": "NSCollectionLayoutContainer",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "properties": [
+        {
+            "name": "contentSize",
+            "read_only": true,
+            "type": "Foundation.NSSize",
+            "required": true
+        },
+        {
+            "name": "effectiveContentSize",
+            "read_only": true,
+            "type": "Foundation.NSSize",
+            "required": true
+        },
+        {
+            "name": "contentInsets",
+            "read_only": true,
+            "type": "AppKit.NSDirectionalEdgeInsets",
+            "required": true
+        },
+        {
+            "name": "effectiveContentInsets",
+            "read_only": true,
+            "type": "AppKit.NSDirectionalEdgeInsets",
+            "required": true
+        }
+    ]
+}

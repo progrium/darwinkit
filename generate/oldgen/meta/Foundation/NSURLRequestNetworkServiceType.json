@@ -1,0 +1,48 @@
+{
+    "kind": "alias",
+    "name": "NSURLRequestNetworkServiceType",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSURLNetworkServiceTypeDefault",
+            "value": "0",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeVideo",
+            "value": "2",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeBackground",
+            "value": "3",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeVoice",
+            "value": "4",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeCallSignaling",
+            "value": "11",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeResponsiveData",
+            "value": "6",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeAVStreaming",
+            "value": "8",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLNetworkServiceTypeResponsiveAV",
+            "value": "9",
+            "module": "Foundation"
+        }
+    ]
+}

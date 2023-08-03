@@ -1,0 +1,88 @@
+{
+    "kind": "alias",
+    "name": "NSCalendarIdentifier",
+    "module": "Foundation",
+    "target_type": "NSString*",
+    "values": [
+        {
+            "name": "NSCalendarIdentifierGregorian",
+            "value": "gregorian",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierISO8601",
+            "value": "iso8601",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierBuddhist",
+            "value": "buddhist",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierChinese",
+            "value": "chinese",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierCoptic",
+            "value": "coptic",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierEthiopicAmeteAlem",
+            "value": "ethiopic-amete-alem",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierEthiopicAmeteMihret",
+            "value": "ethiopic",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierHebrew",
+            "value": "hebrew",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierIndian",
+            "value": "indian",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierIslamic",
+            "value": "islamic",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierIslamicCivil",
+            "value": "islamic-civil",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierIslamicTabular",
+            "value": "islamic-tbla",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierIslamicUmmAlQura",
+            "value": "islamic-umalqura",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierJapanese",
+            "value": "japanese",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierPersian",
+            "value": "persian",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSCalendarIdentifierRepublicOfChina",
+            "value": "roc",
+            "module": "Foundation"
+        }
+    ]
+}

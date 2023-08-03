@@ -1,0 +1,809 @@
+{
+    "kind": "class",
+    "name": "NSBrowser",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "reusesColumns",
+            "type": "BOOL"
+        },
+        {
+            "name": "maxVisibleColumns",
+            "type": "NSInteger"
+        },
+        {
+            "name": "autohidesScroller",
+            "type": "BOOL"
+        },
+        {
+            "name": "backgroundColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "minColumnWidth",
+            "type": "double"
+        },
+        {
+            "name": "separatesColumns",
+            "type": "BOOL"
+        },
+        {
+            "name": "takesTitleFromPreviousColumn",
+            "type": "BOOL"
+        },
+        {
+            "name": "delegate",
+            "type": "id<AppKit.NSBrowserDelegate>",
+            "weak": true
+        },
+        {
+            "name": "cellClass",
+            "read_only": true,
+            "type": "objectivec.Class *",
+            "class_property": true
+        },
+        {
+            "name": "cellPrototype",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "allowsBranchSelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsEmptySelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsMultipleSelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "allowsTypeSelect",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectedCell",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "selectedCells",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSCell *> *"
+        },
+        {
+            "name": "selectionIndexPath",
+            "type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "selectionIndexPaths",
+            "type": "NSArray<Foundation.NSIndexPath *> *"
+        },
+        {
+            "name": "pathSeparator",
+            "type": "NSString*"
+        },
+        {
+            "name": "selectedColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "lastColumn",
+            "type": "NSInteger"
+        },
+        {
+            "name": "firstVisibleColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "numberOfVisibleColumns",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "lastVisibleColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "loaded",
+            "read_only": true,
+            "getter_name": "isLoaded",
+            "type": "BOOL"
+        },
+        {
+            "name": "titled",
+            "getter_name": "isTitled",
+            "type": "BOOL"
+        },
+        {
+            "name": "titleHeight",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "hasHorizontalScroller",
+            "type": "BOOL"
+        },
+        {
+            "name": "doubleAction",
+            "type": "SEL"
+        },
+        {
+            "name": "sendsActionOnArrowKeys",
+            "type": "BOOL"
+        },
+        {
+            "name": "clickedColumn",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "clickedRow",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "columnsAutosaveName",
+            "type": "AppKit.NSBrowserColumnsAutosaveName"
+        },
+        {
+            "name": "columnResizingType",
+            "type": "AppKit.NSBrowserColumnResizingType"
+        },
+        {
+            "name": "prefersAllColumnUserResizing",
+            "type": "BOOL"
+        },
+        {
+            "name": "rowHeight",
+            "type": "double"
+        }
+    ],
+    "methods": [
+        {
+            "name": "tile",
+            "return_type": "void"
+        },
+        {
+            "name": "setCellClass",
+            "params": [
+                {
+                    "variable_name": "factoryId",
+                    "type": "objectivec.Class *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectedRowIndexesInColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "selectRowIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectedCellInColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "selectAll",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectedRowInColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "selectRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "loadedCellAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "col",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "editItemAtIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "select",
+                    "variable_name": "select",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "itemAtIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "itemAtRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "indexPathForColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "isLeafItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "parentForItemsInColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "path",
+            "return_type": "NSString*"
+        },
+        {
+            "name": "setPath",
+            "params": [
+                {
+                    "variable_name": "path",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "pathToColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "addColumn",
+            "return_type": "void"
+        },
+        {
+            "name": "validateVisibleColumns",
+            "return_type": "void"
+        },
+        {
+            "name": "loadColumnZero",
+            "return_type": "void"
+        },
+        {
+            "name": "reloadColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "titleOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "setTitle",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "ofColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "drawTitleOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inRect",
+                    "variable_name": "rect",
+                    "type": "Foundation.NSRect"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "titleFrameOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "noteHeightOfRowsWithIndexesChanged",
+            "params": [
+                {
+                    "variable_name": "indexSet",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "reloadDataForRowIndexes",
+            "params": [
+                {
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollColumnToVisible",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollColumnsLeftBy",
+            "params": [
+                {
+                    "variable_name": "shiftAmount",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollColumnsRightBy",
+            "params": [
+                {
+                    "variable_name": "shiftAmount",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "scrollRowToVisible",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setDraggingSourceOperationMask",
+            "params": [
+                {
+                    "variable_name": "mask",
+                    "type": "AppKit.NSDragOperation"
+                },
+                {
+                    "name": "forLocal",
+                    "variable_name": "isLocal",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "canDragRowsWithIndexes",
+            "params": [
+                {
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "draggingImageForRowsWithIndexes",
+            "params": [
+                {
+                    "variable_name": "rowIndexes",
+                    "type": "Foundation.NSIndexSet *"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "withEvent",
+                    "variable_name": "event",
+                    "type": "AppKit.NSEvent *"
+                },
+                {
+                    "name": "offset",
+                    "variable_name": "dragImageOffset",
+                    "type": "Foundation.NSPoint *"
+                }
+            ],
+            "return_type": "AppKit.NSImage *"
+        },
+        {
+            "name": "frameOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "frameOfInsideOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "frameOfRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger"
+                },
+                {
+                    "name": "inColumn",
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "getRow",
+            "params": [
+                {
+                    "variable_name": "row",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "column",
+                    "variable_name": "column",
+                    "type": "NSInteger *"
+                },
+                {
+                    "name": "forPoint",
+                    "variable_name": "point",
+                    "type": "Foundation.NSPoint"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "sendAction",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "doClick",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "doDoubleClick",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeSavedColumnsWithAutosaveName",
+            "params": [
+                {
+                    "variable_name": "name",
+                    "type": "AppKit.NSBrowserColumnsAutosaveName"
+                }
+            ],
+            "return_type": "void",
+            "class_method": true
+        },
+        {
+            "name": "columnContentWidthForColumnWidth",
+            "params": [
+                {
+                    "variable_name": "columnWidth",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "columnWidthForColumnContentWidth",
+            "params": [
+                {
+                    "variable_name": "columnContentWidth",
+                    "type": "double"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "widthOfColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "setWidth",
+            "params": [
+                {
+                    "variable_name": "columnWidth",
+                    "type": "double"
+                },
+                {
+                    "name": "ofColumn",
+                    "variable_name": "columnIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "defaultColumnWidth",
+            "return_type": "double"
+        },
+        {
+            "name": "setDefaultColumnWidth",
+            "params": [
+                {
+                    "variable_name": "columnWidth",
+                    "type": "double"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "updateScroller",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "scrollViaScroller",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSScroller *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "displayAllColumns",
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "displayColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "columnOfMatrix",
+            "params": [
+                {
+                    "variable_name": "matrix",
+                    "type": "AppKit.NSMatrix *"
+                }
+            ],
+            "return_type": "NSInteger",
+            "deprecated": true
+        },
+        {
+            "name": "matrixInColumn",
+            "params": [
+                {
+                    "variable_name": "column",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMatrix *",
+            "deprecated": true
+        },
+        {
+            "name": "matrixClass",
+            "return_type": "objectivec.Class *",
+            "deprecated": true
+        },
+        {
+            "name": "setMatrixClass",
+            "params": [
+                {
+                    "variable_name": "factoryId",
+                    "type": "objectivec.Class *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "acceptsArrowKeys",
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "setAcceptsArrowKeys",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        }
+    ]
+}

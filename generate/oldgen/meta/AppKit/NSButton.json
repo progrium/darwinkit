@@ -1,0 +1,319 @@
+{
+    "kind": "class",
+    "name": "NSButton",
+    "module": "AppKit",
+    "parent": "AppKit.NSControl *",
+    "properties": [
+        {
+            "name": "contentTintColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "hasDestructiveAction",
+            "type": "BOOL"
+        },
+        {
+            "name": "alternateTitle",
+            "type": "NSString*"
+        },
+        {
+            "name": "attributedTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "attributedAlternateTitle",
+            "type": "Foundation.NSAttributedString *"
+        },
+        {
+            "name": "title",
+            "type": "NSString*"
+        },
+        {
+            "name": "symbolConfiguration",
+            "type": "AppKit.NSImageSymbolConfiguration *"
+        },
+        {
+            "name": "sound",
+            "type": "AppKit.NSSound *"
+        },
+        {
+            "name": "springLoaded",
+            "getter_name": "isSpringLoaded",
+            "type": "BOOL"
+        },
+        {
+            "name": "maxAcceleratorLevel",
+            "type": "NSInteger"
+        },
+        {
+            "name": "image",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "alternateImage",
+            "type": "AppKit.NSImage *"
+        },
+        {
+            "name": "imagePosition",
+            "type": "AppKit.NSCellImagePosition"
+        },
+        {
+            "name": "bordered",
+            "getter_name": "isBordered",
+            "type": "BOOL"
+        },
+        {
+            "name": "transparent",
+            "getter_name": "isTransparent",
+            "type": "BOOL"
+        },
+        {
+            "name": "bezelStyle",
+            "type": "AppKit.NSBezelStyle"
+        },
+        {
+            "name": "bezelColor",
+            "type": "AppKit.NSColor *"
+        },
+        {
+            "name": "showsBorderOnlyWhileMouseInside",
+            "type": "BOOL"
+        },
+        {
+            "name": "imageHugsTitle",
+            "type": "BOOL"
+        },
+        {
+            "name": "imageScaling",
+            "type": "AppKit.NSImageScaling"
+        },
+        {
+            "name": "activeCompressionOptions",
+            "read_only": true,
+            "type": "AppKit.NSUserInterfaceCompressionOptions *"
+        },
+        {
+            "name": "allowsMixedState",
+            "type": "BOOL"
+        },
+        {
+            "name": "state",
+            "type": "AppKit.NSControlStateValue"
+        },
+        {
+            "name": "keyEquivalent",
+            "type": "NSString*"
+        },
+        {
+            "name": "keyEquivalentModifierMask",
+            "type": "AppKit.NSEventModifierFlags"
+        }
+    ],
+    "methods": [
+        {
+            "name": "checkboxWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "buttonWithImage",
+            "params": [
+                {
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "radioButtonWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "buttonWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "image",
+                    "variable_name": "image",
+                    "type": "AppKit.NSImage *"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "buttonWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "target",
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "action",
+                    "variable_name": "action",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "instance",
+            "class_method": true
+        },
+        {
+            "name": "setButtonType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSButtonType"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "getPeriodicDelay",
+            "params": [
+                {
+                    "variable_name": "delay",
+                    "type": "float *"
+                },
+                {
+                    "name": "interval",
+                    "variable_name": "interval",
+                    "type": "float *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setPeriodicDelay",
+            "params": [
+                {
+                    "variable_name": "delay",
+                    "type": "float"
+                },
+                {
+                    "name": "interval",
+                    "variable_name": "interval",
+                    "type": "float"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setTitleWithMnemonic",
+            "params": [
+                {
+                    "variable_name": "stringWithAmpersand",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "compressWithPrioritizedCompressionOptions",
+            "params": [
+                {
+                    "variable_name": "prioritizedOptions",
+                    "type": "NSArray<AppKit.NSUserInterfaceCompressionOptions *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "minimumSizeWithPrioritizedCompressionOptions",
+            "params": [
+                {
+                    "variable_name": "prioritizedOptions",
+                    "type": "NSArray<AppKit.NSUserInterfaceCompressionOptions *> *"
+                }
+            ],
+            "return_type": "Foundation.NSSize"
+        },
+        {
+            "name": "setNextState",
+            "return_type": "void"
+        },
+        {
+            "name": "highlight",
+            "params": [
+                {
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "performKeyEquivalent",
+            "params": [
+                {
+                    "variable_name": "key",
+                    "type": "AppKit.NSEvent *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

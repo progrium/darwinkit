@@ -1,0 +1,18 @@
+{
+    "kind": "alias",
+    "name": "NSTextTableLayoutAlgorithm",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextTableAutomaticLayoutAlgorithm",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextTableFixedLayoutAlgorithm",
+            "value": "1",
+            "module": "AppKit"
+        }
+    ]
+}

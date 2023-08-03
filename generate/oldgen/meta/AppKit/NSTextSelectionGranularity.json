@@ -1,0 +1,33 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionGranularity",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionGranularityCharacter",
+            "module": "AppKit",
+            "value": "0"
+        },
+        {
+            "name": "NSTextSelectionGranularityWord",
+            "module": "AppKit",
+            "value": "1"
+        },
+        {
+            "name": "NSTextSelectionGranularityParagraph",
+            "module": "AppKit",
+            "value": "2"
+        },
+        {
+            "name": "NSTextSelectionGranularityLine",
+            "module": "AppKit",
+            "value": "3"
+        },
+        {
+            "name": "NSTextSelectionGranularitySentence",
+            "module": "AppKit",
+            "value": "4"
+        }
+    ]
+}

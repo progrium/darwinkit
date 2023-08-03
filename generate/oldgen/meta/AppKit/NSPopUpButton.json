@@ -1,0 +1,279 @@
+{
+    "kind": "class",
+    "name": "NSPopUpButton",
+    "module": "AppKit",
+    "parent": "AppKit.NSButton *",
+    "properties": [
+        {
+            "name": "pullsDown",
+            "type": "BOOL"
+        },
+        {
+            "name": "autoenablesItems",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectedItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "titleOfSelectedItem",
+            "read_only": true,
+            "type": "NSString*"
+        },
+        {
+            "name": "indexOfSelectedItem",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "selectedTag",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "menu",
+            "type": "AppKit.NSMenu *"
+        },
+        {
+            "name": "numberOfItems",
+            "read_only": true,
+            "type": "NSInteger"
+        },
+        {
+            "name": "itemArray",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSMenuItem *> *"
+        },
+        {
+            "name": "itemTitles",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        },
+        {
+            "name": "lastItem",
+            "read_only": true,
+            "type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "preferredEdge",
+            "type": "Foundation.NSRectEdge"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithFrame",
+            "params": [
+                {
+                    "variable_name": "buttonFrame",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "pullsDown",
+                    "variable_name": "flag",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "addItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addItemsWithTitles",
+            "params": [
+                {
+                    "variable_name": "itemTitles",
+                    "type": "NSArray<NSString*> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "atIndex",
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeAllItems",
+            "return_type": "void"
+        },
+        {
+            "name": "removeItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeItemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectItemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectItemWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "selectItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "itemAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "itemTitleAtIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "itemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "AppKit.NSMenuItem *"
+        },
+        {
+            "name": "indexOfItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "AppKit.NSMenuItem *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTag",
+            "params": [
+                {
+                    "variable_name": "tag",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTitle",
+            "params": [
+                {
+                    "variable_name": "title",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithRepresentedObject",
+            "params": [
+                {
+                    "variable_name": "obj",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "indexOfItemWithTarget",
+            "params": [
+                {
+                    "variable_name": "target",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "andAction",
+                    "variable_name": "actionSelector",
+                    "type": "SEL"
+                }
+            ],
+            "return_type": "NSInteger"
+        },
+        {
+            "name": "setTitle",
+            "params": [
+                {
+                    "variable_name": "string",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "synchronizeTitleAndSelectedItem",
+            "return_type": "void"
+        }
+    ]
+}

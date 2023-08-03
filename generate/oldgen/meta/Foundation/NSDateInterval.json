@@ -1,0 +1,119 @@
+{
+    "kind": "class",
+    "name": "NSDateInterval",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "startDate",
+            "read_only": true,
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "endDate",
+            "read_only": true,
+            "type": "Foundation.NSDate *"
+        },
+        {
+            "name": "duration",
+            "read_only": true,
+            "type": "Foundation.NSTimeInterval"
+        }
+    ],
+    "methods": [
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithStartDate",
+            "params": [
+                {
+                    "variable_name": "startDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "duration",
+                    "variable_name": "duration",
+                    "type": "Foundation.NSTimeInterval"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithStartDate",
+            "params": [
+                {
+                    "variable_name": "startDate",
+                    "type": "Foundation.NSDate *"
+                },
+                {
+                    "name": "endDate",
+                    "variable_name": "endDate",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "compare",
+            "params": [
+                {
+                    "variable_name": "dateInterval",
+                    "type": "Foundation.NSDateInterval *"
+                }
+            ],
+            "return_type": "Foundation.NSComparisonResult"
+        },
+        {
+            "name": "isEqualToDateInterval",
+            "params": [
+                {
+                    "variable_name": "dateInterval",
+                    "type": "Foundation.NSDateInterval *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "intersectsDateInterval",
+            "params": [
+                {
+                    "variable_name": "dateInterval",
+                    "type": "Foundation.NSDateInterval *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "intersectionWithDateInterval",
+            "params": [
+                {
+                    "variable_name": "dateInterval",
+                    "type": "Foundation.NSDateInterval *"
+                }
+            ],
+            "return_type": "Foundation.NSDateInterval *"
+        },
+        {
+            "name": "containsDate",
+            "params": [
+                {
+                    "variable_name": "date",
+                    "type": "Foundation.NSDate *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

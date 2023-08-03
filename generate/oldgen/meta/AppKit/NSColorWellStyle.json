@@ -1,0 +1,23 @@
+{
+    "kind": "alias",
+    "name": "NSColorWellStyle",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSColorWellStyleDefault",
+            "module": "AppKit",
+            "value": "0"
+        },
+        {
+            "name": "NSColorWellStyleMinimal",
+            "module": "AppKit",
+            "value": "1"
+        },
+        {
+            "name": "NSColorWellStyleExpanded",
+            "module": "AppKit",
+            "value": "2"
+        }
+    ]
+}

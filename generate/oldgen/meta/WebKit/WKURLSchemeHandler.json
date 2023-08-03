@@ -1,0 +1,42 @@
+{
+    "kind": "protocol",
+    "name": "WKURLSchemeHandler",
+    "module": "WebKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "startURLSchemeTask",
+                    "variable_name": "urlSchemeTask",
+                    "type": "id<WebKit.WKURLSchemeTask>"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        },
+        {
+            "name": "webView",
+            "params": [
+                {
+                    "variable_name": "webView",
+                    "type": "WebKit.WKWebView *"
+                },
+                {
+                    "name": "stopURLSchemeTask",
+                    "variable_name": "urlSchemeTask",
+                    "type": "id<WebKit.WKURLSchemeTask>"
+                }
+            ],
+            "return_type": "void",
+            "required": true
+        }
+    ]
+}

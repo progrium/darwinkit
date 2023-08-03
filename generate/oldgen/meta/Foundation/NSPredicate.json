@@ -1,0 +1,103 @@
+{
+    "kind": "class",
+    "name": "NSPredicate",
+    "module": "Foundation",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "predicateFormat",
+            "read_only": true,
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "predicateWithFormat",
+            "params": [
+                {
+                    "variable_name": "predicateFormat",
+                    "type": "NSString*"
+                },
+                {
+                    "name": "argumentArray",
+                    "variable_name": "arguments",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *",
+            "class_method": true
+        },
+        {
+            "name": "predicateWithSubstitutionVariables",
+            "params": [
+                {
+                    "variable_name": "variables",
+                    "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "predicateWithValue",
+            "params": [
+                {
+                    "variable_name": "value",
+                    "type": "BOOL"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *",
+            "class_method": true
+        },
+        {
+            "name": "predicateWithBlock",
+            "params": [
+                {
+                    "variable_name": "block",
+                    "type": "BOOL (^) (objectivec.NSObject * evaluatedObject, NSDictionary<NSString*, objectivec.NSObject *> * bindings)"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *",
+            "class_method": true
+        },
+        {
+            "name": "predicateFromMetadataQueryString",
+            "params": [
+                {
+                    "variable_name": "queryString",
+                    "type": "NSString*"
+                }
+            ],
+            "return_type": "Foundation.NSPredicate *",
+            "class_method": true
+        },
+        {
+            "name": "evaluateWithObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "evaluateWithObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "substitutionVariables",
+                    "variable_name": "bindings",
+                    "type": "NSDictionary<NSString*, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "allowEvaluation",
+            "return_type": "void"
+        }
+    ]
+}

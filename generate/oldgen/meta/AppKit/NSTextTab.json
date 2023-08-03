@@ -1,0 +1,78 @@
+{
+    "kind": "class",
+    "name": "NSTextTab",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "location",
+            "read_only": true,
+            "type": "double"
+        },
+        {
+            "name": "alignment",
+            "read_only": true,
+            "type": "AppKit.NSTextAlignment"
+        },
+        {
+            "name": "options",
+            "read_only": true,
+            "type": "NSDictionary<AppKit.NSTextTabOptionKey, objectivec.NSObject *> *"
+        },
+        {
+            "name": "tabStopType",
+            "read_only": true,
+            "type": "AppKit.NSTextTabType",
+            "deprecated": true
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithTextAlignment",
+            "params": [
+                {
+                    "variable_name": "alignment",
+                    "type": "AppKit.NSTextAlignment"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "loc",
+                    "type": "double"
+                },
+                {
+                    "name": "options",
+                    "variable_name": "options",
+                    "type": "NSDictionary<AppKit.NSTextTabOptionKey, objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "columnTerminatorsForLocale",
+            "params": [
+                {
+                    "variable_name": "aLocale",
+                    "type": "Foundation.NSLocale *"
+                }
+            ],
+            "return_type": "Foundation.NSCharacterSet *",
+            "class_method": true
+        },
+        {
+            "name": "initWithType",
+            "params": [
+                {
+                    "variable_name": "type",
+                    "type": "AppKit.NSTextTabType"
+                },
+                {
+                    "name": "location",
+                    "variable_name": "loc",
+                    "type": "double"
+                }
+            ],
+            "return_type": "instance",
+            "deprecated": true
+        }
+    ]
+}

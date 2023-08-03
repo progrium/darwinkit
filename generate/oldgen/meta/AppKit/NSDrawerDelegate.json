@@ -1,0 +1,92 @@
+{
+    "kind": "protocol",
+    "name": "NSDrawerDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "drawerShouldOpen",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSDrawer *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "drawerWillOpen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawerDidOpen",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawerShouldClose",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSDrawer *"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "drawerWillClose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawerDidClose",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void",
+            "deprecated": true
+        },
+        {
+            "name": "drawerWillResizeContents",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "AppKit.NSDrawer *"
+                },
+                {
+                    "name": "toSize",
+                    "variable_name": "contentSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "Foundation.NSSize",
+            "deprecated": true
+        }
+    ]
+}

@@ -1,0 +1,211 @@
+{
+    "kind": "protocol",
+    "name": "NSSplitViewDelegate",
+    "module": "AppKit",
+    "parents": [
+        "objectivec.NSObject"
+    ],
+    "methods": [
+        {
+            "name": "splitViewWillResizeSubviews",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "splitViewDidResizeSubviews",
+            "params": [
+                {
+                    "variable_name": "notification",
+                    "type": "Foundation.NSNotification *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "canCollapseSubview",
+                    "variable_name": "subview",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "shouldCollapseSubview",
+                    "variable_name": "subview",
+                    "type": "AppKit.NSView *"
+                },
+                {
+                    "name": "forDoubleClickOnDividerAtIndex",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL",
+            "deprecated": true
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "effectiveRect",
+                    "variable_name": "proposedEffectiveRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "forDrawnRect",
+                    "variable_name": "drawnRect",
+                    "type": "Foundation.NSRect"
+                },
+                {
+                    "name": "ofDividerAtIndex",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "shouldHideDividerAtIndex",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "additionalEffectiveRectOfDividerAtIndex",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "Foundation.NSRect"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "constrainSplitPosition",
+                    "variable_name": "proposedPosition",
+                    "type": "double"
+                },
+                {
+                    "name": "ofSubviewAt",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "constrainMinCoordinate",
+                    "variable_name": "proposedMinimumPosition",
+                    "type": "double"
+                },
+                {
+                    "name": "ofSubviewAt",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "constrainMaxCoordinate",
+                    "variable_name": "proposedMaximumPosition",
+                    "type": "double"
+                },
+                {
+                    "name": "ofSubviewAt",
+                    "variable_name": "dividerIndex",
+                    "type": "NSInteger"
+                }
+            ],
+            "return_type": "double"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "resizeSubviewsWithOldSize",
+                    "variable_name": "oldSize",
+                    "type": "Foundation.NSSize"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "splitView",
+            "params": [
+                {
+                    "variable_name": "splitView",
+                    "type": "AppKit.NSSplitView *"
+                },
+                {
+                    "name": "shouldAdjustSizeOfSubview",
+                    "variable_name": "view",
+                    "type": "AppKit.NSView *"
+                }
+            ],
+            "return_type": "BOOL"
+        }
+    ]
+}

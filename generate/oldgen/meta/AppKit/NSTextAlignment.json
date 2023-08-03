@@ -1,0 +1,35 @@
+{
+    "kind": "alias",
+    "name": "NSTextAlignment",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextAlignmentLeft",
+            "value": "0",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextAlignmentRight",
+            "value": "1",
+            "arm64_value": "2",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextAlignmentCenter",
+            "value": "2",
+            "arm64_value": "1",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextAlignmentJustified",
+            "value": "3",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextAlignmentNatural",
+            "value": "4",
+            "module": "AppKit"
+        }
+    ]
+}
