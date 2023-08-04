@@ -72,12 +72,12 @@ func (d *Dialog) SetView(view appkit.IView) {
 
 // Show display dialog in non-modal mode
 func (d *Dialog) Show(handle func()) {
-	action.Set(d.ok, func(sender objc.IObject) {
+	action.Set(d.ok, func(sender objc.Object) {
 		handle()
 		d.Close()
 	})
 
-	action.Set(d.cancel, func(sender objc.IObject) {
+	action.Set(d.cancel, func(sender objc.Object) {
 		d.Close()
 	})
 
@@ -88,12 +88,12 @@ func (d *Dialog) Show(handle func()) {
 func (d *Dialog) RunModal() appkit.ModalResponse {
 	app := appkit.Application_SharedApplication()
 
-	action.Set(d.ok, func(sender objc.IObject) {
+	action.Set(d.ok, func(sender objc.Object) {
 		app.StopModalWithCode(appkit.ModalResponseOK)
 		d.Close()
 	})
 
-	action.Set(d.cancel, func(sender objc.IObject) {
+	action.Set(d.cancel, func(sender objc.Object) {
 		app.StopModalWithCode(appkit.ModalResponseCancel)
 		d.Close()
 	})

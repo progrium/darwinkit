@@ -30,7 +30,7 @@ func initAndRun() {
 
 	saveButton := appkit.NewButtonWithTitle("Save...")
 	saveButton.SetFrame(rectOf(250, 330, 80, 20))
-	action.Set(saveButton, func(sender objc.IObject) {
+	action.Set(saveButton, func(sender objc.Object) {
 		savePanel := appkit.SavePanelClass.New()
 		// if savePanel.RunModal() == appkit.ModalResponseOK {
 		// 	filePathField.SetStringValue(savePanel.URL().Path())
@@ -62,7 +62,7 @@ func initAndRun() {
 	w.ContentView().AddSubview(comboBox)
 
 	slider := appkit.Slider_InitWithFrame(rectOf(330, 290, 100, 25))
-	action.Set(slider, func(sender objc.IObject) {
+	action.Set(slider, func(sender objc.Object) {
 		presentationTF.SetDoubleValue(slider.DoubleValue())
 	})
 	slider.SetMaxValue(10)
@@ -94,7 +94,7 @@ func initAndRun() {
 
 	quitBtn := appkit.NewButtonWithTitle("Quit")
 	quitBtn.SetFrame(rectOf(10, 130, 80, 25))
-	action.Set(quitBtn, func(sender objc.IObject) {
+	action.Set(quitBtn, func(sender objc.Object) {
 		app.Terminate(nil)
 	})
 	w.ContentView().AddSubview(quitBtn)
@@ -115,7 +115,7 @@ func initAndRun() {
 		})
 	})
 	tf.SetDelegate(tfd)
-	action.Set(btn, func(sender objc.IObject) {
+	action.Set(btn, func(sender objc.Object) {
 		label.SetTextColor(appkit.ColorClass.RedColor())
 	})
 
