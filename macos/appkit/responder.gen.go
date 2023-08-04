@@ -255,7 +255,6 @@ func (r_ Responder) SupplementalTargetForActionSender(action objc.Selector, send
 
 func (rc _ResponderClass) AllowedClassesForRestorableStateKeyPath(keyPath string) []objc.Class {
 	rv := objc.CallMethod[[]objc.Class](rc, objc.GetSelector("allowedClassesForRestorableStateKeyPath:"), keyPath)
-	// TODO: convert slice items...
 	return rv
 }
 

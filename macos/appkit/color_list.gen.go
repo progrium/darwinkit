@@ -124,7 +124,6 @@ func (c_ ColorList) RemoveFile() {
 
 func (cc _ColorListClass) AvailableColorLists() []ColorList {
 	rv := objc.CallMethod[[]ColorList](cc, objc.GetSelector("availableColorLists"))
-	// TODO: convert slice items...
 	return rv
 }
 

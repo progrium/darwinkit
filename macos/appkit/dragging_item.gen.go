@@ -92,7 +92,6 @@ func (d_ DraggingItem) SetDraggingFrame(value foundation.Rect) {
 
 func (d_ DraggingItem) ImageComponents() []DraggingImageComponent {
 	rv := objc.CallMethod[[]DraggingImageComponent](d_, objc.GetSelector("imageComponents"))
-	// TODO: convert slice items...
 	return rv
 }
 

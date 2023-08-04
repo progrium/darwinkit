@@ -154,7 +154,6 @@ func (t_ TextStorage) SetDelegate0(value objc.IObject) {
 
 func (t_ TextStorage) LayoutManagers() []LayoutManager {
 	rv := objc.CallMethod[[]LayoutManager](t_, objc.GetSelector("layoutManagers"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -180,7 +179,6 @@ func (t_ TextStorage) ChangeInLength() int {
 
 func (t_ TextStorage) AttributeRuns() []TextStorage {
 	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("attributeRuns"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -190,7 +188,6 @@ func (t_ TextStorage) SetAttributeRuns(value []ITextStorage) {
 
 func (t_ TextStorage) Paragraphs() []TextStorage {
 	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("paragraphs"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -200,7 +197,6 @@ func (t_ TextStorage) SetParagraphs(value []ITextStorage) {
 
 func (t_ TextStorage) Words() []TextStorage {
 	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("words"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -210,7 +206,6 @@ func (t_ TextStorage) SetWords(value []ITextStorage) {
 
 func (t_ TextStorage) Characters() []TextStorage {
 	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("characters"))
-	// TODO: convert slice items...
 	return rv
 }
 

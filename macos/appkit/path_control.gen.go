@@ -172,7 +172,6 @@ func (p_ PathControl) SetEditable(value bool) {
 
 func (p_ PathControl) PathItems() []PathControlItem {
 	rv := objc.CallMethod[[]PathControlItem](p_, objc.GetSelector("pathItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

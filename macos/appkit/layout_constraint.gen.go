@@ -88,7 +88,6 @@ func LayoutConstraint_Init() LayoutConstraint {
 
 func (lc _LayoutConstraintClass) ConstraintsWithVisualFormatOptionsMetricsViews(format string, opts LayoutFormatOptions, metrics map[string]objc.IObject, views map[string]objc.IObject) []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](lc, objc.GetSelector("constraintsWithVisualFormat:options:metrics:views:"), format, opts, metrics, views)
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -96,7 +96,6 @@ func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler fun
 
 func (t_ TextContentManager) TextElementsForRange(range_ ITextRange) []TextElement {
 	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("textElementsForRange:"), objc.ExtractPtr(range_))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -125,7 +124,6 @@ func (t_ TextContentManager) SetPrimaryTextLayoutManager(value ITextLayoutManage
 
 func (t_ TextContentManager) TextLayoutManagers() []TextLayoutManager {
 	rv := objc.CallMethod[[]TextLayoutManager](t_, objc.GetSelector("textLayoutManagers"))
-	// TODO: convert slice items...
 	return rv
 }
 

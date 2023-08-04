@@ -87,12 +87,10 @@ func (b_ BackForwardList) ForwardItem() BackForwardListItem {
 
 func (b_ BackForwardList) BackList() []BackForwardListItem {
 	rv := objc.CallMethod[[]BackForwardListItem](b_, objc.GetSelector("backList"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (b_ BackForwardList) ForwardList() []BackForwardListItem {
 	rv := objc.CallMethod[[]BackForwardListItem](b_, objc.GetSelector("forwardList"))
-	// TODO: convert slice items...
 	return rv
 }

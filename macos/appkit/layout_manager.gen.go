@@ -533,7 +533,6 @@ func (l_ LayoutManager) RulerAccessoryViewForTextViewParagraphStyleRulerEnabled(
 
 func (l_ LayoutManager) RulerMarkersForTextViewParagraphStyleRuler(view ITextView, style IParagraphStyle, ruler IRulerView) []RulerMarker {
 	rv := objc.CallMethod[[]RulerMarker](l_, objc.GetSelector("rulerMarkersForTextView:paragraphStyle:ruler:"), objc.ExtractPtr(view), objc.ExtractPtr(style), objc.ExtractPtr(ruler))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -682,7 +681,6 @@ func (l_ LayoutManager) SetUsesDefaultHyphenation(value bool) {
 
 func (l_ LayoutManager) TextContainers() []TextContainer {
 	rv := objc.CallMethod[[]TextContainer](l_, objc.GetSelector("textContainers"))
-	// TODO: convert slice items...
 	return rv
 }
 

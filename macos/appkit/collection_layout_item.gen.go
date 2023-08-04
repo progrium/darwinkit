@@ -90,7 +90,6 @@ func (c_ CollectionLayoutItem) LayoutSize() CollectionLayoutSize {
 
 func (c_ CollectionLayoutItem) SupplementaryItems() []CollectionLayoutSupplementaryItem {
 	rv := objc.CallMethod[[]CollectionLayoutSupplementaryItem](c_, objc.GetSelector("supplementaryItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

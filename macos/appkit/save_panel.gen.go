@@ -280,7 +280,6 @@ func (s_ SavePanel) IsExpanded() bool {
 
 func (s_ SavePanel) AllowedContentTypes() []uniformtypeidentifiers.Type {
 	rv := objc.CallMethod[[]uniformtypeidentifiers.Type](s_, objc.GetSelector("allowedContentTypes"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -161,7 +161,6 @@ func (f_ FontDescriptor) FontDescriptorWithSymbolicTraits(symbolicTraits FontDes
 
 func (f_ FontDescriptor) MatchingFontDescriptorsWithMandatoryKeys(mandatoryKeys foundation.ISet) []FontDescriptor {
 	rv := objc.CallMethod[[]FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorsWithMandatoryKeys:"), objc.ExtractPtr(mandatoryKeys))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -102,7 +102,6 @@ func (c_ CollectionViewLayout) PrepareLayout() {
 
 func (c_ CollectionViewLayout) LayoutAttributesForElementsInRect(rect foundation.Rect) []CollectionViewLayoutAttributes {
 	rv := objc.CallMethod[[]CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForElementsInRect:"), rect)
-	// TODO: convert slice items...
 	return rv
 }
 

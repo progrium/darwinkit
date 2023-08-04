@@ -107,7 +107,6 @@ func (t_ ToolbarItemGroup) SetSelectedAtIndex(selected bool, index int) {
 
 func (t_ ToolbarItemGroup) Subitems() []ToolbarItem {
 	rv := objc.CallMethod[[]ToolbarItem](t_, objc.GetSelector("subitems"))
-	// TODO: convert slice items...
 	return rv
 }
 

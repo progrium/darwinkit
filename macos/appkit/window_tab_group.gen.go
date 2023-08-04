@@ -102,7 +102,6 @@ func (w_ WindowTabGroup) IsTabBarVisible() bool {
 
 func (w_ WindowTabGroup) Windows() []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("windows"))
-	// TODO: convert slice items...
 	return rv
 }
 

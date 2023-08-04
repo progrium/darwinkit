@@ -70,7 +70,6 @@ func (t_ TextFieldDelegateWrapper) ImplementsTextFieldTextViewCandidatesForSelec
 
 func (t_ TextFieldDelegateWrapper) TextFieldTextViewCandidatesForSelectedRange_(textField ITextField, textView ITextView, candidates []foundation.ITextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
 	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, objc.GetSelector("textField:textView:candidates:forSelectedRange:"), objc.ExtractPtr(textField), objc.ExtractPtr(textView), candidates, selectedRange)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -80,7 +79,6 @@ func (t_ TextFieldDelegateWrapper) ImplementsTextFieldTextViewCandidatesForSelec
 
 func (t_ TextFieldDelegateWrapper) TextFieldTextViewCandidatesForSelectedRange(textField ITextField, textView ITextView, selectedRange foundation.Range) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("textField:textView:candidatesForSelectedRange:"), objc.ExtractPtr(textField), objc.ExtractPtr(textView), selectedRange)
-	// TODO: convert slice items...
 	return rv
 }
 

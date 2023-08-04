@@ -169,7 +169,6 @@ func (s_ SharingService) SetSubject(value string) {
 
 func (s_ SharingService) AttachmentFileURLs() []foundation.URL {
 	rv := objc.CallMethod[[]foundation.URL](s_, objc.GetSelector("attachmentFileURLs"))
-	// TODO: convert slice items...
 	return rv
 }
 

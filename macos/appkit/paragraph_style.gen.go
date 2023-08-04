@@ -151,7 +151,6 @@ func (p_ ParagraphStyle) ParagraphSpacingBefore() float64 {
 
 func (p_ ParagraphStyle) TabStops() []TextTab {
 	rv := objc.CallMethod[[]TextTab](p_, objc.GetSelector("tabStops"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -162,13 +161,11 @@ func (p_ ParagraphStyle) DefaultTabInterval() float64 {
 
 func (p_ ParagraphStyle) TextBlocks() []TextBlock {
 	rv := objc.CallMethod[[]TextBlock](p_, objc.GetSelector("textBlocks"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (p_ ParagraphStyle) TextLists() []TextList {
 	rv := objc.CallMethod[[]TextList](p_, objc.GetSelector("textLists"))
-	// TODO: convert slice items...
 	return rv
 }
 

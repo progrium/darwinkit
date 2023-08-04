@@ -121,7 +121,6 @@ func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []s
 
 func (f_ FontManager) AvailableMembersOfFontFamily(fam string) [][]objc.Object {
 	rv := objc.CallMethod[[][]objc.Object](f_, objc.GetSelector("availableMembersOfFontFamily:"), fam)
-	// TODO: convert slice items...
 	return rv
 }
 

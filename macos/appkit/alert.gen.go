@@ -207,7 +207,6 @@ func (a_ Alert) SetIcon(value IImage) {
 
 func (a_ Alert) Buttons() []Button {
 	rv := objc.CallMethod[[]Button](a_, objc.GetSelector("buttons"))
-	// TODO: convert slice items...
 	return rv
 }
 

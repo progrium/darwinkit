@@ -283,7 +283,6 @@ func (v_ ViewController) SetPreferredContentSize(value foundation.Size) {
 
 func (v_ ViewController) ChildViewControllers() []ViewController {
 	rv := objc.CallMethod[[]ViewController](v_, objc.GetSelector("childViewControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -298,7 +297,6 @@ func (v_ ViewController) ParentViewController() ViewController {
 
 func (v_ ViewController) PresentedViewControllers() []ViewController {
 	rv := objc.CallMethod[[]ViewController](v_, objc.GetSelector("presentedViewControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 

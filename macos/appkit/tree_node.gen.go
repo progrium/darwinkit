@@ -111,7 +111,6 @@ func (t_ TreeNode) IsLeaf() bool {
 
 func (t_ TreeNode) ChildNodes() []TreeNode {
 	rv := objc.CallMethod[[]TreeNode](t_, objc.GetSelector("childNodes"))
-	// TODO: convert slice items...
 	return rv
 }
 

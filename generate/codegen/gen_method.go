@@ -131,9 +131,6 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 		if m.needRelease() {
 			cw.WriteLine(resultName + ".Autorelease()")
 		}
-		if strings.HasPrefix(returnTypeStr, "[]") && returnTypeStr != m.ReturnType.GoName(currentModule, false) {
-			cw.WriteLine("// TODO: convert slice items...")
-		}
 		cw.WriteLine("return " + resultName)
 	}
 	cw.UnIndent()

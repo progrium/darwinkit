@@ -569,13 +569,11 @@ func (a_ Application) IsFullKeyboardAccessEnabled() bool {
 
 func (a_ Application) OrderedDocuments() []Document {
 	rv := objc.CallMethod[[]Document](a_, objc.GetSelector("orderedDocuments"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (a_ Application) OrderedWindows() []Window {
 	rv := objc.CallMethod[[]Window](a_, objc.GetSelector("orderedWindows"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -591,7 +589,6 @@ func (a_ Application) MainWindow() Window {
 
 func (a_ Application) Windows() []Window {
 	rv := objc.CallMethod[[]Window](a_, objc.GetSelector("windows"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -98,7 +98,6 @@ func (r_ RegularExpression) EnumerateMatchesInStringOptionsRangeUsingBlock(strin
 
 func (r_ RegularExpression) MatchesInStringOptionsRange(string_ string, options MatchingOptions, range_ Range) []TextCheckingResult {
 	rv := objc.CallMethod[[]TextCheckingResult](r_, objc.GetSelector("matchesInString:options:range:"), string_, options, range_)
-	// TODO: convert slice items...
 	return rv
 }
 

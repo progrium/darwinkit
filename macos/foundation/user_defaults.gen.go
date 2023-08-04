@@ -112,7 +112,6 @@ func (u_ UserDefaults) URLForKey(defaultName string) URL {
 
 func (u_ UserDefaults) ArrayForKey(defaultName string) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](u_, objc.GetSelector("arrayForKey:"), defaultName)
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -101,7 +101,6 @@ func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutA
 
 func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](l_, objc.GetSelector("constraintsAffectingLayout"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -95,7 +95,6 @@ func ColorSpace_Init() ColorSpace {
 
 func (cc _ColorSpaceClass) AvailableColorSpacesWithModel(model ColorSpaceModel) []ColorSpace {
 	rv := objc.CallMethod[[]ColorSpace](cc, objc.GetSelector("availableColorSpacesWithModel:"), model)
-	// TODO: convert slice items...
 	return rv
 }
 

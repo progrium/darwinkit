@@ -230,7 +230,6 @@ func (e_ Expression) AllowEvaluation() {
 
 func (e_ Expression) Arguments() []Expression {
 	rv := objc.CallMethod[[]Expression](e_, objc.GetSelector("arguments"))
-	// TODO: convert slice items...
 	return rv
 }
 

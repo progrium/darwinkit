@@ -202,7 +202,6 @@ func (e_ Event) TouchesForView(view IView) foundation.Set {
 
 func (e_ Event) CoalescedTouchesForTouch(touch ITouch) []Touch {
 	rv := objc.CallMethod[[]Touch](e_, objc.GetSelector("coalescedTouchesForTouch:"), objc.ExtractPtr(touch))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -309,7 +309,6 @@ func (c_ Cell) ResetCursorRectInView(cellFrame foundation.Rect, controlView IVie
 
 func (c_ Cell) DraggingImageComponentsWithFrameInView(frame foundation.Rect, view IView) []DraggingImageComponent {
 	rv := objc.CallMethod[[]DraggingImageComponent](c_, objc.GetSelector("draggingImageComponentsWithFrame:inView:"), frame, objc.ExtractPtr(view))
-	// TODO: convert slice items...
 	return rv
 }
 

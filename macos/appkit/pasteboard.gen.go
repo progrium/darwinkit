@@ -150,7 +150,6 @@ func (p_ Pasteboard) SetStringForType(string_ string, dataType PasteboardType) b
 
 func (p_ Pasteboard) ReadObjectsForClassesOptions(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](p_, objc.GetSelector("readObjectsForClasses:options:"), classArray, options)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -244,7 +243,6 @@ func Pasteboard_GeneralPasteboard() Pasteboard {
 
 func (p_ Pasteboard) PasteboardItems() []PasteboardItem {
 	rv := objc.CallMethod[[]PasteboardItem](p_, objc.GetSelector("pasteboardItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -143,7 +143,6 @@ func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
 
 func (p_ PrintPanel) AccessoryControllers() []ViewController {
 	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 

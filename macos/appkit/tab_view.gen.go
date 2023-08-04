@@ -193,7 +193,6 @@ func (t_ TabView) NumberOfTabViewItems() int {
 
 func (t_ TabView) TabViewItems() []TabViewItem {
 	rv := objc.CallMethod[[]TabViewItem](t_, objc.GetSelector("tabViewItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

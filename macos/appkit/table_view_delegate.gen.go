@@ -702,6 +702,5 @@ func (t_ TableViewDelegateWrapper) ImplementsTableViewRowActionsForRowEdge() boo
 
 func (t_ TableViewDelegateWrapper) TableViewRowActionsForRowEdge(tableView ITableView, row int, edge TableRowActionEdge) []TableViewRowAction {
 	rv := objc.CallMethod[[]TableViewRowAction](t_, objc.GetSelector("tableView:rowActionsForRow:edge:"), objc.ExtractPtr(tableView), row, edge)
-	// TODO: convert slice items...
 	return rv
 }

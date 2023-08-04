@@ -8,9 +8,12 @@ import (
 
 func main() {
 	ws := appkit.Workspace_SharedWorkspace()
-	apps := ws.RunningApplications()
-	fmt.Println(apps)
+	fmt.Println("Running:")
+	for _, app := range ws.RunningApplications() {
+		fmt.Println(app.LocalizedName())
+	}
 
+	fmt.Println("\nFrontmost:")
 	frontmost := ws.FrontmostApplication()
-	fmt.Println(frontmost)
+	fmt.Println(frontmost.LocalizedName())
 }

@@ -321,7 +321,6 @@ func (t_ Typesetter) CurrentTextContainer() TextContainer {
 
 func (t_ Typesetter) TextContainers() []TextContainer {
 	rv := objc.CallMethod[[]TextContainer](t_, objc.GetSelector("textContainers"))
-	// TODO: convert slice items...
 	return rv
 }
 

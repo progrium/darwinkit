@@ -123,7 +123,6 @@ func Screen_DeepestScreen() Screen {
 
 func (sc _ScreenClass) Screens() []Screen {
 	rv := objc.CallMethod[[]Screen](sc, objc.GetSelector("screens"))
-	// TODO: convert slice items...
 	return rv
 }
 

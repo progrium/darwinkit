@@ -129,7 +129,6 @@ func (t_ TextSelection) IsTransient() bool {
 
 func (t_ TextSelection) TextRanges() []TextRange {
 	rv := objc.CallMethod[[]TextRange](t_, objc.GetSelector("textRanges"))
-	// TODO: convert slice items...
 	return rv
 }
 

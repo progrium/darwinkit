@@ -408,7 +408,6 @@ func (w_ Window) SetContentBorderThicknessForEdge(thickness float64, edge founda
 
 func (wc _WindowClass) WindowNumbersWithOptions(options WindowNumberListOptions) []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](wc, objc.GetSelector("windowNumbersWithOptions:"), options)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1162,7 +1161,6 @@ func (w_ Window) SheetParent() Window {
 
 func (w_ Window) Sheets() []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("sheets"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1355,7 +1353,6 @@ func (w_ Window) SetToolbar(value IToolbar) {
 
 func (w_ Window) ChildWindows() []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("childWindows"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1425,7 +1422,6 @@ func (w_ Window) WindowTitlebarLayoutDirection() UserInterfaceLayoutDirection {
 
 func (w_ Window) TitlebarAccessoryViewControllers() []TitlebarAccessoryViewController {
 	rv := objc.CallMethod[[]TitlebarAccessoryViewController](w_, objc.GetSelector("titlebarAccessoryViewControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1484,7 +1480,6 @@ func (w_ Window) SetTabbingMode(value WindowTabbingMode) {
 
 func (w_ Window) TabbedWindows() []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("tabbedWindows"))
-	// TODO: convert slice items...
 	return rv
 }
 

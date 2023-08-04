@@ -154,7 +154,6 @@ func (o_ Operation) SetName(value string) {
 
 func (o_ Operation) Dependencies() []Operation {
 	rv := objc.CallMethod[[]Operation](o_, objc.GetSelector("dependencies"))
-	// TODO: convert slice items...
 	return rv
 }
 

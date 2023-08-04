@@ -938,7 +938,6 @@ func (w_ WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWindo
 
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow(window IWindow) []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:"), objc.ExtractPtr(window))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -948,7 +947,6 @@ func (w_ WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWindo
 
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindowOnScreen(window IWindow, screen IScreen) []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"), objc.ExtractPtr(window), objc.ExtractPtr(screen))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -982,7 +980,6 @@ func (w_ WindowDelegateWrapper) ImplementsCustomWindowsToExitFullScreenForWindow
 
 func (w_ WindowDelegateWrapper) CustomWindowsToExitFullScreenForWindow(window IWindow) []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToExitFullScreenForWindow:"), objc.ExtractPtr(window))
-	// TODO: convert slice items...
 	return rv
 }
 

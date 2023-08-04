@@ -122,13 +122,11 @@ func (r_ RuleEditor) SetCriteriaAndDisplayValuesForRowAtIndex(criteria []objc.IO
 
 func (r_ RuleEditor) CriteriaForRow(row int) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](r_, objc.GetSelector("criteriaForRow:"), row)
-	// TODO: convert slice items...
 	return rv
 }
 
 func (r_ RuleEditor) DisplayValuesForRow(row int) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](r_, objc.GetSelector("displayValuesForRow:"), row)
-	// TODO: convert slice items...
 	return rv
 }
 

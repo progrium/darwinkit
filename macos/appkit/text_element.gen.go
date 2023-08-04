@@ -105,6 +105,5 @@ func (t_ TextElement) ParentElement() TextElement {
 
 func (t_ TextElement) ChildElements() []TextElement {
 	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("childElements"))
-	// TODO: convert slice items...
 	return rv
 }

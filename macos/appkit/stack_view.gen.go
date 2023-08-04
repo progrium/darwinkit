@@ -142,7 +142,6 @@ func (s_ StackView) RemoveArrangedSubview(view IView) {
 
 func (s_ StackView) ViewsInGravity(gravity StackViewGravity) []View {
 	rv := objc.CallMethod[[]View](s_, objc.GetSelector("viewsInGravity:"), gravity)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -199,19 +198,16 @@ func (s_ StackView) SetDelegate0(value objc.IObject) {
 
 func (s_ StackView) ArrangedSubviews() []View {
 	rv := objc.CallMethod[[]View](s_, objc.GetSelector("arrangedSubviews"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (s_ StackView) Views() []View {
 	rv := objc.CallMethod[[]View](s_, objc.GetSelector("views"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (s_ StackView) DetachedViews() []View {
 	rv := objc.CallMethod[[]View](s_, objc.GetSelector("detachedViews"))
-	// TODO: convert slice items...
 	return rv
 }
 

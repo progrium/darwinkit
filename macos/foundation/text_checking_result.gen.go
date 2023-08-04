@@ -294,7 +294,6 @@ func (t_ TextCheckingResult) Orthography() Orthography {
 
 func (t_ TextCheckingResult) GrammarDetails() []map[string]objc.Object {
 	rv := objc.CallMethod[[]map[string]objc.Object](t_, objc.GetSelector("grammarDetails"))
-	// TODO: convert slice items...
 	return rv
 }
 

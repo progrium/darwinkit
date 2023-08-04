@@ -84,7 +84,6 @@ func HTTPCookie_Init() HTTPCookie {
 
 func (hc _HTTPCookieClass) CookiesWithResponseHeaderFieldsForURL(headerFields map[string]string, URL IURL) []HTTPCookie {
 	rv := objc.CallMethod[[]HTTPCookie](hc, objc.GetSelector("cookiesWithResponseHeaderFields:forURL:"), headerFields, objc.ExtractPtr(URL))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -122,7 +121,6 @@ func (h_ HTTPCookie) Path() string {
 
 func (h_ HTTPCookie) PortList() []Number {
 	rv := objc.CallMethod[[]Number](h_, objc.GetSelector("portList"))
-	// TODO: convert slice items...
 	return rv
 }
 

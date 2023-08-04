@@ -409,7 +409,6 @@ func (t_ TextViewDelegateWrapper) ImplementsTextViewWillChangeSelectionFromChara
 
 func (t_ TextViewDelegateWrapper) TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView ITextView, oldSelectedCharRanges []foundation.IValue, newSelectedCharRanges []foundation.IValue) []foundation.Value {
 	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), objc.ExtractPtr(textView), oldSelectedCharRanges, newSelectedCharRanges)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -427,7 +426,6 @@ func (t_ TextViewDelegateWrapper) ImplementsTextViewCandidatesForSelectedRange_(
 
 func (t_ TextViewDelegateWrapper) TextViewCandidatesForSelectedRange_(textView ITextView, candidates []foundation.ITextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
 	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, objc.GetSelector("textView:candidates:forSelectedRange:"), objc.ExtractPtr(textView), candidates, selectedRange)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -437,7 +435,6 @@ func (t_ TextViewDelegateWrapper) ImplementsTextViewCandidatesForSelectedRange()
 
 func (t_ TextViewDelegateWrapper) TextViewCandidatesForSelectedRange(textView ITextView, selectedRange foundation.Range) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("textView:candidatesForSelectedRange:"), objc.ExtractPtr(textView), selectedRange)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -527,7 +524,6 @@ func (t_ TextViewDelegateWrapper) ImplementsTextViewDidCheckTextInRangeTypesOpti
 
 func (t_ TextViewDelegateWrapper) TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view ITextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, results []foundation.ITextCheckingResult, orthography foundation.IOrthography, wordCount int) []foundation.TextCheckingResult {
 	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, objc.GetSelector("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), objc.ExtractPtr(view), range_, checkingTypes, options, results, objc.ExtractPtr(orthography), wordCount)
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -99,7 +99,6 @@ func KeyframeAnimation_Init() KeyframeAnimation {
 
 func (k_ KeyframeAnimation) Values() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](k_, objc.GetSelector("values"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -118,7 +117,6 @@ func (k_ KeyframeAnimation) SetPath(value coregraphics.PathRef) {
 
 func (k_ KeyframeAnimation) KeyTimes() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("keyTimes"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -128,7 +126,6 @@ func (k_ KeyframeAnimation) SetKeyTimes(value []foundation.INumber) {
 
 func (k_ KeyframeAnimation) TimingFunctions() []MediaTimingFunction {
 	rv := objc.CallMethod[[]MediaTimingFunction](k_, objc.GetSelector("timingFunctions"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -156,7 +153,6 @@ func (k_ KeyframeAnimation) SetRotationMode(value AnimationRotationMode) {
 
 func (k_ KeyframeAnimation) TensionValues() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("tensionValues"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -166,7 +162,6 @@ func (k_ KeyframeAnimation) SetTensionValues(value []foundation.INumber) {
 
 func (k_ KeyframeAnimation) ContinuityValues() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("continuityValues"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -176,7 +171,6 @@ func (k_ KeyframeAnimation) SetContinuityValues(value []foundation.INumber) {
 
 func (k_ KeyframeAnimation) BiasValues() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("biasValues"))
-	// TODO: convert slice items...
 	return rv
 }
 

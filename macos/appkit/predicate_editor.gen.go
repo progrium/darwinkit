@@ -73,7 +73,6 @@ func PredicateEditor_New() PredicateEditor {
 
 func (p_ PredicateEditor) RowTemplates() []PredicateEditorRowTemplate {
 	rv := objc.CallMethod[[]PredicateEditorRowTemplate](p_, objc.GetSelector("rowTemplates"))
-	// TODO: convert slice items...
 	return rv
 }
 

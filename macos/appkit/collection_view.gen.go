@@ -228,7 +228,6 @@ func (c_ CollectionView) DeselectItemsAtIndexPaths(indexPaths foundation.ISet) {
 
 func (c_ CollectionView) VisibleItems() []CollectionViewItem {
 	rv := objc.CallMethod[[]CollectionViewItem](c_, objc.GetSelector("visibleItems"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -239,7 +238,6 @@ func (c_ CollectionView) IndexPathsForVisibleItems() foundation.Set {
 
 func (c_ CollectionView) VisibleSupplementaryViewsOfKind(elementKind CollectionViewSupplementaryElementKind) []View {
 	rv := objc.CallMethod[[]View](c_, objc.GetSelector("visibleSupplementaryViewsOfKind:"), elementKind)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -347,7 +345,6 @@ func (c_ CollectionView) SetDelegate0(value objc.IObject) {
 
 func (c_ CollectionView) Content() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](c_, objc.GetSelector("content"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -366,7 +363,6 @@ func (c_ CollectionView) SetBackgroundView(value IView) {
 
 func (c_ CollectionView) BackgroundColors() []Color {
 	rv := objc.CallMethod[[]Color](c_, objc.GetSelector("backgroundColors"))
-	// TODO: convert slice items...
 	return rv
 }
 

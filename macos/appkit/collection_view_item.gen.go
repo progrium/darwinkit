@@ -122,6 +122,5 @@ func (c_ CollectionViewItem) CollectionView() CollectionView {
 
 func (c_ CollectionViewItem) DraggingImageComponents() []DraggingImageComponent {
 	rv := objc.CallMethod[[]DraggingImageComponent](c_, objc.GetSelector("draggingImageComponents"))
-	// TODO: convert slice items...
 	return rv
 }

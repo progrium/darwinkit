@@ -760,7 +760,6 @@ func (v_ View) UpdateConstraintsForSubtreeIfNeeded() {
 
 func (v_ View) ConstraintsAffectingLayoutForOrientation(orientation LayoutConstraintOrientation) []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](v_, objc.GetSelector("constraintsAffectingLayoutForOrientation:"), orientation)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1039,7 +1038,6 @@ func (v_ View) Superview() View {
 
 func (v_ View) Subviews() []View {
 	rv := objc.CallMethod[[]View](v_, objc.GetSelector("subviews"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1414,7 +1412,6 @@ func (v_ View) WidthAnchor() LayoutDimension {
 
 func (v_ View) Constraints() []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](v_, objc.GetSelector("constraints"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1430,7 +1427,6 @@ func (v_ View) IntrinsicContentSize() foundation.Size {
 
 func (v_ View) LayoutGuides() []LayoutGuide {
 	rv := objc.CallMethod[[]LayoutGuide](v_, objc.GetSelector("layoutGuides"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1631,7 +1627,6 @@ func (v_ View) CandidateListTouchBarItem() CandidateListTouchBarItem {
 
 func (v_ View) GestureRecognizers() []GestureRecognizer {
 	rv := objc.CallMethod[[]GestureRecognizer](v_, objc.GetSelector("gestureRecognizers"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -1675,7 +1670,6 @@ func (v_ View) PreviousValidKeyView() View {
 
 func (v_ View) TrackingAreas() []TrackingArea {
 	rv := objc.CallMethod[[]TrackingArea](v_, objc.GetSelector("trackingAreas"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -141,7 +141,6 @@ func (c_ CollectionViewGridLayout) SetMargins(value foundation.EdgeInsets) {
 
 func (c_ CollectionViewGridLayout) BackgroundColors() []Color {
 	rv := objc.CallMethod[[]Color](c_, objc.GetSelector("backgroundColors"))
-	// TODO: convert slice items...
 	return rv
 }
 

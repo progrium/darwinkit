@@ -162,6 +162,5 @@ func (e_ Error) HelpAnchor() string {
 
 func (e_ Error) UnderlyingErrors() []Error {
 	rv := objc.CallMethod[[]Error](e_, objc.GetSelector("underlyingErrors"))
-	// TODO: convert slice items...
 	return rv
 }

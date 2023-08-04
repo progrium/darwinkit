@@ -169,7 +169,6 @@ func (b_ Bundle) URLForResourceWithExtension(name string, ext string) URL {
 
 func (b_ Bundle) URLsForResourcesWithExtensionSubdirectory(ext string, subpath string) []URL {
 	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:"), ext, subpath)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -180,7 +179,6 @@ func (b_ Bundle) URLForResourceWithExtensionSubdirectoryLocalization(name string
 
 func (b_ Bundle) URLsForResourcesWithExtensionSubdirectoryLocalization(ext string, subpath string, localizationName string) []URL {
 	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:localization:"), ext, subpath, localizationName)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -195,7 +193,6 @@ func Bundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, 
 
 func (bc _BundleClass) URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
 	rv := objc.CallMethod[[]URL](bc, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.ExtractPtr(bundleURL))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -307,7 +304,6 @@ func Bundle_MainBundle() Bundle {
 
 func (bc _BundleClass) AllFrameworks() []Bundle {
 	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allFrameworks"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -317,7 +313,6 @@ func Bundle_AllFrameworks() []Bundle {
 
 func (bc _BundleClass) AllBundles() []Bundle {
 	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allBundles"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -437,7 +432,6 @@ func (b_ Bundle) PrincipalClass() objc.Class {
 
 func (b_ Bundle) ExecutableArchitectures() []Number {
 	rv := objc.CallMethod[[]Number](b_, objc.GetSelector("executableArchitectures"))
-	// TODO: convert slice items...
 	return rv
 }
 

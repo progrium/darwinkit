@@ -127,6 +127,5 @@ func (t_ TableCellView) SetRowSizeStyle(value TableViewRowSizeStyle) {
 
 func (t_ TableCellView) DraggingImageComponents() []DraggingImageComponent {
 	rv := objc.CallMethod[[]DraggingImageComponent](t_, objc.GetSelector("draggingImageComponents"))
-	// TODO: convert slice items...
 	return rv
 }

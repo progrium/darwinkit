@@ -79,7 +79,6 @@ func LayoutGuide_Init() LayoutGuide {
 
 func (l_ LayoutGuide) ConstraintsAffectingLayoutForOrientation(orientation LayoutConstraintOrientation) []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](l_, objc.GetSelector("constraintsAffectingLayoutForOrientation:"), orientation)
-	// TODO: convert slice items...
 	return rv
 }
 

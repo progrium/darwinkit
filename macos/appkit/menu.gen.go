@@ -278,7 +278,6 @@ func (m_ Menu) NumberOfItems() int {
 
 func (m_ Menu) ItemArray() []MenuItem {
 	rv := objc.CallMethod[[]MenuItem](m_, objc.GetSelector("itemArray"))
-	// TODO: convert slice items...
 	return rv
 }
 

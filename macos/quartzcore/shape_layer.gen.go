@@ -159,7 +159,6 @@ func (s_ ShapeLayer) SetLineCap(value ShapeLayerLineCap) {
 
 func (s_ ShapeLayer) LineDashPattern() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](s_, objc.GetSelector("lineDashPattern"))
-	// TODO: convert slice items...
 	return rv
 }
 

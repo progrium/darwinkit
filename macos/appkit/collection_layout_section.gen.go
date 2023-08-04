@@ -109,7 +109,6 @@ func (c_ CollectionLayoutSection) SetContentInsets(value DirectionalEdgeInsets) 
 
 func (c_ CollectionLayoutSection) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
 	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("boundarySupplementaryItems"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -119,7 +118,6 @@ func (c_ CollectionLayoutSection) SetBoundarySupplementaryItems(value []ICollect
 
 func (c_ CollectionLayoutSection) DecorationItems() []CollectionLayoutDecorationItem {
 	rv := objc.CallMethod[[]CollectionLayoutDecorationItem](c_, objc.GetSelector("decorationItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

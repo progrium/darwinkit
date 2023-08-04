@@ -80,7 +80,6 @@ func RunningApplication_Init() RunningApplication {
 
 func (rc _RunningApplicationClass) RunningApplicationsWithBundleIdentifier(bundleIdentifier string) []RunningApplication {
 	rv := objc.CallMethod[[]RunningApplication](rc, objc.GetSelector("runningApplicationsWithBundleIdentifier:"), bundleIdentifier)
-	// TODO: convert slice items...
 	return rv
 }
 

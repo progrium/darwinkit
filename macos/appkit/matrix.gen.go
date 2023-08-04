@@ -450,7 +450,6 @@ func (m_ Matrix) SetKeyCell(value ICell) {
 
 func (m_ Matrix) SelectedCells() []Cell {
 	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("selectedCells"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -466,7 +465,6 @@ func (m_ Matrix) SelectedRow() int {
 
 func (m_ Matrix) Cells() []Cell {
 	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("cells"))
-	// TODO: convert slice items...
 	return rv
 }
 

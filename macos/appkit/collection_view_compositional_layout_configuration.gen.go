@@ -85,7 +85,6 @@ func (c_ CollectionViewCompositionalLayoutConfiguration) SetInterSectionSpacing(
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
 	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("boundarySupplementaryItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

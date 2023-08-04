@@ -666,7 +666,6 @@ func (l_ Layer) SetAllowsGroupOpacity(value bool) {
 
 func (l_ Layer) Filters() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](l_, objc.GetSelector("filters"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -685,7 +684,6 @@ func (l_ Layer) SetCompositingFilter(value objc.IObject) {
 
 func (l_ Layer) BackgroundFilters() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](l_, objc.GetSelector("backgroundFilters"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -866,7 +864,6 @@ func (l_ Layer) SetSublayerTransform(value Transform3D) {
 
 func (l_ Layer) Sublayers() []Layer {
 	rv := objc.CallMethod[[]Layer](l_, objc.GetSelector("sublayers"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -913,7 +910,6 @@ func (l_ Layer) SetAutoresizingMask(value AutoresizingMask) {
 
 func (l_ Layer) Constraints() []Constraint {
 	rv := objc.CallMethod[[]Constraint](l_, objc.GetSelector("constraints"))
-	// TODO: convert slice items...
 	return rv
 }
 

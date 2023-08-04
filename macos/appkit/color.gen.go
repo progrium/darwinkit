@@ -680,7 +680,6 @@ func Color_HeaderTextColor() Color {
 
 func (cc _ColorClass) AlternatingContentBackgroundColors() []Color {
 	rv := objc.CallMethod[[]Color](cc, objc.GetSelector("alternatingContentBackgroundColors"))
-	// TODO: convert slice items...
 	return rv
 }
 

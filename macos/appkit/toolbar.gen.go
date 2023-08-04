@@ -185,13 +185,11 @@ func (t_ Toolbar) SetAllowsExtensionItems(value bool) {
 
 func (t_ Toolbar) Items() []ToolbarItem {
 	rv := objc.CallMethod[[]ToolbarItem](t_, objc.GetSelector("items"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (t_ Toolbar) VisibleItems() []ToolbarItem {
 	rv := objc.CallMethod[[]ToolbarItem](t_, objc.GetSelector("visibleItems"))
-	// TODO: convert slice items...
 	return rv
 }
 

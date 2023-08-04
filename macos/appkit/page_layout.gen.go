@@ -99,7 +99,6 @@ func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewControll
 
 func (p_ PageLayout) AccessoryControllers() []ViewController {
 	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 

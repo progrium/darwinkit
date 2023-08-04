@@ -100,7 +100,6 @@ func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicat
 
 func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
 	rv := objc.CallMethod[[]foundation.Predicate](p_, objc.GetSelector("displayableSubpredicatesOfPredicate:"), objc.ExtractPtr(predicate))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -111,25 +110,21 @@ func (p_ PredicateEditorRowTemplate) PredicateWithSubpredicates(subpredicates []
 
 func (p_ PredicateEditorRowTemplate) TemplateViews() []View {
 	rv := objc.CallMethod[[]View](p_, objc.GetSelector("templateViews"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) LeftExpressions() []foundation.Expression {
 	rv := objc.CallMethod[[]foundation.Expression](p_, objc.GetSelector("leftExpressions"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) RightExpressions() []foundation.Expression {
 	rv := objc.CallMethod[[]foundation.Expression](p_, objc.GetSelector("rightExpressions"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) CompoundTypes() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](p_, objc.GetSelector("compoundTypes"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -140,7 +135,6 @@ func (p_ PredicateEditorRowTemplate) Modifier() foundation.ComparisonPredicateMo
 
 func (p_ PredicateEditorRowTemplate) Operators() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](p_, objc.GetSelector("operators"))
-	// TODO: convert slice items...
 	return rv
 }
 

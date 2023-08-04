@@ -82,7 +82,6 @@ func ViewAnimation_Init() ViewAnimation {
 
 func (v_ ViewAnimation) ViewAnimations() []map[ViewAnimationKey]objc.Object {
 	rv := objc.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, objc.GetSelector("viewAnimations"))
-	// TODO: convert slice items...
 	return rv
 }
 

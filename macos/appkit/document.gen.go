@@ -395,7 +395,6 @@ func (d_ Document) ChangeCountTokenForSaveOperation(saveOperation SaveOperationT
 
 func (dc _DocumentClass) AllowedClassesForRestorableStateKeyPath(keyPath string) []objc.Class {
 	rv := objc.CallMethod[[]objc.Class](dc, objc.GetSelector("allowedClassesForRestorableStateKeyPath:"), keyPath)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -705,7 +704,6 @@ func Document_WritableTypes() []string {
 
 func (d_ Document) WindowControllers() []WindowController {
 	rv := objc.CallMethod[[]WindowController](d_, objc.GetSelector("windowControllers"))
-	// TODO: convert slice items...
 	return rv
 }
 

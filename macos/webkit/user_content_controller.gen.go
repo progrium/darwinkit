@@ -140,6 +140,5 @@ func (u_ UserContentController) RemoveAllContentRuleLists() {
 
 func (u_ UserContentController) UserScripts() []UserScript {
 	rv := objc.CallMethod[[]UserScript](u_, objc.GetSelector("userScripts"))
-	// TODO: convert slice items...
 	return rv
 }

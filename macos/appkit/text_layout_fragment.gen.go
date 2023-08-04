@@ -140,7 +140,6 @@ func (t_ TextLayoutFragment) RenderingSurfaceBounds() coregraphics.Rect {
 
 func (t_ TextLayoutFragment) TextAttachmentViewProviders() []TextAttachmentViewProvider {
 	rv := objc.CallMethod[[]TextAttachmentViewProvider](t_, objc.GetSelector("textAttachmentViewProviders"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -161,6 +160,5 @@ func (t_ TextLayoutFragment) TextElement() TextElement {
 
 func (t_ TextLayoutFragment) TextLineFragments() []TextLineFragment {
 	rv := objc.CallMethod[[]TextLineFragment](t_, objc.GetSelector("textLineFragments"))
-	// TODO: convert slice items...
 	return rv
 }

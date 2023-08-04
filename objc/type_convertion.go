@@ -251,7 +251,7 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 		if t.Elem().Kind() == reflect.Uint8 {
 			return reflect.ValueOf(ToGoBytes(*(*unsafe.Pointer)(p)))
 		} else {
-			return reflect.ValueOf(ToGoSlice(*(*unsafe.Pointer)(p), t))
+			return reflect.ValueOf(ToGoSlice(*(*unsafe.Pointer)(p), t).Interface())
 		}
 	case reflect.Map:
 		return reflect.ValueOf(ToGoMap(*(*unsafe.Pointer)(p), t))

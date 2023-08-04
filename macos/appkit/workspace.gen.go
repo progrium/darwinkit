@@ -222,19 +222,16 @@ func (w_ Workspace) URLForApplicationToOpenContentType(contentType uniformtypeid
 
 func (w_ Workspace) URLsForApplicationsToOpenContentType(contentType uniformtypeidentifiers.IType) []foundation.URL {
 	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenContentType:"), objc.ExtractPtr(contentType))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (w_ Workspace) URLsForApplicationsToOpenURL(url foundation.IURL) []foundation.URL {
 	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenURL:"), objc.ExtractPtr(url))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (w_ Workspace) URLsForApplicationsWithBundleIdentifier(bundleIdentifier string) []foundation.URL {
 	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsWithBundleIdentifier:"), bundleIdentifier)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -259,7 +256,6 @@ func (w_ Workspace) FrontmostApplication() RunningApplication {
 
 func (w_ Workspace) RunningApplications() []RunningApplication {
 	rv := objc.CallMethod[[]RunningApplication](w_, objc.GetSelector("runningApplications"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -275,7 +271,6 @@ func (w_ Workspace) FileLabels() []string {
 
 func (w_ Workspace) FileLabelColors() []Color {
 	rv := objc.CallMethod[[]Color](w_, objc.GetSelector("fileLabelColors"))
-	// TODO: convert slice items...
 	return rv
 }
 

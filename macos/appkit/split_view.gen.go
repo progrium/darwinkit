@@ -168,7 +168,6 @@ func (s_ SplitView) SetArrangesAllSubviews(value bool) {
 
 func (s_ SplitView) ArrangedSubviews() []View {
 	rv := objc.CallMethod[[]View](s_, objc.GetSelector("arrangedSubviews"))
-	// TODO: convert slice items...
 	return rv
 }
 

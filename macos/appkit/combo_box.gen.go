@@ -274,7 +274,6 @@ func (c_ ComboBox) SetUsesDataSource(value bool) {
 
 func (c_ ComboBox) ObjectValues() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](c_, objc.GetSelector("objectValues"))
-	// TODO: convert slice items...
 	return rv
 }
 

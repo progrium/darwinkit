@@ -67,7 +67,6 @@ func (s_ SharingServicePickerDelegateWrapper) ImplementsSharingServicePickerShar
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePickerSharingServicesForItemsProposedSharingServices(sharingServicePicker ISharingServicePicker, items []objc.IObject, proposedServices []ISharingService) []SharingService {
 	rv := objc.CallMethod[[]SharingService](s_, objc.GetSelector("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), objc.ExtractPtr(sharingServicePicker), items, proposedServices)
-	// TODO: convert slice items...
 	return rv
 }
 

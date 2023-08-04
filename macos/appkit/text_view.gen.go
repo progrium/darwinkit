@@ -846,7 +846,6 @@ func (t_ TextView) SetUsesInspectorBar(value bool) {
 
 func (t_ TextView) SelectedRanges() []foundation.Value {
 	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("selectedRanges"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -940,7 +939,6 @@ func (t_ TextView) RangeForUserCharacterAttributeChange() foundation.Range {
 
 func (t_ TextView) RangesForUserCharacterAttributeChange() []foundation.Value {
 	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("rangesForUserCharacterAttributeChange"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -951,7 +949,6 @@ func (t_ TextView) RangeForUserParagraphAttributeChange() foundation.Range {
 
 func (t_ TextView) RangesForUserParagraphAttributeChange() []foundation.Value {
 	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("rangesForUserParagraphAttributeChange"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -962,7 +959,6 @@ func (t_ TextView) RangeForUserTextChange() foundation.Range {
 
 func (t_ TextView) RangesForUserTextChange() []foundation.Value {
 	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("rangesForUserTextChange"))
-	// TODO: convert slice items...
 	return rv
 }
 

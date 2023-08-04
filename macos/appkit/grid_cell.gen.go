@@ -101,7 +101,6 @@ func GridCell_EmptyContentView() View {
 
 func (g_ GridCell) CustomPlacementConstraints() []LayoutConstraint {
 	rv := objc.CallMethod[[]LayoutConstraint](g_, objc.GetSelector("customPlacementConstraints"))
-	// TODO: convert slice items...
 	return rv
 }
 

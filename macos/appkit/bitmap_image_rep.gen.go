@@ -134,7 +134,6 @@ func BitmapImageRep_New() BitmapImageRep {
 
 func (bc _BitmapImageRepClass) ImageRepsWithData(data []byte) []ImageRep {
 	rv := objc.CallMethod[[]ImageRep](bc, objc.GetSelector("imageRepsWithData:"), data)
-	// TODO: convert slice items...
 	return rv
 }
 

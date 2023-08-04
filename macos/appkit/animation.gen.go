@@ -204,7 +204,6 @@ func (a_ Animation) CurrentValue() float32 {
 
 func (a_ Animation) ProgressMarks() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](a_, objc.GetSelector("progressMarks"))
-	// TODO: convert slice items...
 	return rv
 }
 

@@ -211,7 +211,6 @@ func (t_ TextLayoutManager) SetTextSelectionNavigation(value ITextSelectionNavig
 
 func (t_ TextLayoutManager) TextSelections() []TextSelection {
 	rv := objc.CallMethod[[]TextSelection](t_, objc.GetSelector("textSelections"))
-	// TODO: convert slice items...
 	return rv
 }
 

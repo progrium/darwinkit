@@ -182,7 +182,6 @@ func (r_ RulerView) SetOriginOffset(value float64) {
 
 func (r_ RulerView) Markers() []RulerMarker {
 	rv := objc.CallMethod[[]RulerMarker](r_, objc.GetSelector("markers"))
-	// TODO: convert slice items...
 	return rv
 }
 

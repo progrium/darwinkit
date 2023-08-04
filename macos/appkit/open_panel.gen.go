@@ -158,7 +158,6 @@ func (o_ OpenPanel) SetAccessoryViewDisclosed(value bool) {
 
 func (o_ OpenPanel) URLs() []foundation.URL {
 	rv := objc.CallMethod[[]foundation.URL](o_, objc.GetSelector("URLs"))
-	// TODO: convert slice items...
 	return rv
 }
 

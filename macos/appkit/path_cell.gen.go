@@ -181,7 +181,6 @@ func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
 
 func (p_ PathCell) PathComponentCells() []PathComponentCell {
 	rv := objc.CallMethod[[]PathComponentCell](p_, objc.GetSelector("pathComponentCells"))
-	// TODO: convert slice items...
 	return rv
 }
 

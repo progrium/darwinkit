@@ -390,7 +390,6 @@ func Image_ImageUnfilteredTypes() []string {
 
 func (i_ Image) Representations() []ImageRep {
 	rv := objc.CallMethod[[]ImageRep](i_, objc.GetSelector("representations"))
-	// TODO: convert slice items...
 	return rv
 }
 

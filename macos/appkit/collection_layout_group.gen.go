@@ -134,7 +134,6 @@ func (c_ CollectionLayoutGroup) VisualDescription() string {
 
 func (c_ CollectionLayoutGroup) Subitems() []CollectionLayoutItem {
 	rv := objc.CallMethod[[]CollectionLayoutItem](c_, objc.GetSelector("subitems"))
-	// TODO: convert slice items...
 	return rv
 }
 

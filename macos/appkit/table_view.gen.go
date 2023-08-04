@@ -639,7 +639,6 @@ func (t_ TableView) SetRowSizeStyle(value TableViewRowSizeStyle) {
 
 func (t_ TableView) TableColumns() []TableColumn {
 	rv := objc.CallMethod[[]TableColumn](t_, objc.GetSelector("tableColumns"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -800,7 +799,6 @@ func (t_ TableView) SetDraggingDestinationFeedbackStyle(value TableViewDraggingD
 
 func (t_ TableView) SortDescriptors() []foundation.SortDescriptor {
 	rv := objc.CallMethod[[]foundation.SortDescriptor](t_, objc.GetSelector("sortDescriptors"))
-	// TODO: convert slice items...
 	return rv
 }
 

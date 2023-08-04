@@ -190,7 +190,6 @@ func (t_ TokenFieldCellDelegateWrapper) ImplementsTokenFieldCellCompletionsForSu
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell ITokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), objc.ExtractPtr(tokenFieldCell), substring, tokenIndex, selectedIndex)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -218,7 +217,6 @@ func (t_ TokenFieldCellDelegateWrapper) ImplementsTokenFieldCellShouldAddObjects
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell ITokenFieldCell, tokens []objc.IObject, index uint) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:shouldAddObjects:atIndex:"), objc.ExtractPtr(tokenFieldCell), tokens, index)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -228,7 +226,6 @@ func (t_ TokenFieldCellDelegateWrapper) ImplementsTokenFieldCellReadFromPasteboa
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCellReadFromPasteboard(tokenFieldCell ITokenFieldCell, pboard IPasteboard) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:readFromPasteboard:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(pboard))
-	// TODO: convert slice items...
 	return rv
 }
 

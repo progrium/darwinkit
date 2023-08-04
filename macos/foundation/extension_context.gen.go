@@ -77,6 +77,5 @@ func (e_ ExtensionContext) OpenURLCompletionHandler(URL IURL, completionHandler 
 
 func (e_ ExtensionContext) InputItems() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](e_, objc.GetSelector("inputItems"))
-	// TODO: convert slice items...
 	return rv
 }

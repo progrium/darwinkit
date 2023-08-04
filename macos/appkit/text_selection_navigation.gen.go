@@ -83,7 +83,6 @@ func (t_ TextSelectionNavigation) FlushLayoutCache() {
 
 func (t_ TextSelectionNavigation) DeletionRangesForTextSelectionDirectionDestinationAllowsDecomposition(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, allowsDecomposition bool) []TextRange {
 	rv := objc.CallMethod[[]TextRange](t_, objc.GetSelector("deletionRangesForTextSelection:direction:destination:allowsDecomposition:"), objc.ExtractPtr(textSelection), direction, destination, allowsDecomposition)
-	// TODO: convert slice items...
 	return rv
 }
 

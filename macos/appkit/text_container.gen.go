@@ -143,7 +143,6 @@ func (t_ TextContainer) SetSize(value foundation.Size) {
 
 func (t_ TextContainer) ExclusionPaths() []BezierPath {
 	rv := objc.CallMethod[[]BezierPath](t_, objc.GetSelector("exclusionPaths"))
-	// TODO: convert slice items...
 	return rv
 }
 

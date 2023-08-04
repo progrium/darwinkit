@@ -522,7 +522,6 @@ func (b_ Browser) SetAllowsTypeSelect(value bool) {
 
 func (b_ Browser) SelectedCells() []Cell {
 	rv := objc.CallMethod[[]Cell](b_, objc.GetSelector("selectedCells"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -537,7 +536,6 @@ func (b_ Browser) SetSelectionIndexPath(value foundation.IIndexPath) {
 
 func (b_ Browser) SelectionIndexPaths() []foundation.IndexPath {
 	rv := objc.CallMethod[[]foundation.IndexPath](b_, objc.GetSelector("selectionIndexPaths"))
-	// TODO: convert slice items...
 	return rv
 }
 

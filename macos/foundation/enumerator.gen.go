@@ -68,6 +68,5 @@ func (e_ Enumerator) NextObject() objc.Object {
 
 func (e_ Enumerator) AllObjects() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](e_, objc.GetSelector("allObjects"))
-	// TODO: convert slice items...
 	return rv
 }

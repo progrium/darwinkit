@@ -113,7 +113,6 @@ func (d_ DiffableDataSourceSnapshot) IndexOfSectionIdentifier(sectionIdentifier 
 
 func (d_ DiffableDataSourceSnapshot) ItemIdentifiersInSectionWithIdentifier(sectionIdentifier objc.IObject) []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](d_, objc.GetSelector("itemIdentifiersInSectionWithIdentifier:"), objc.ExtractPtr(sectionIdentifier))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -186,12 +185,10 @@ func (d_ DiffableDataSourceSnapshot) NumberOfSections() int {
 
 func (d_ DiffableDataSourceSnapshot) ItemIdentifiers() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](d_, objc.GetSelector("itemIdentifiers"))
-	// TODO: convert slice items...
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) SectionIdentifiers() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](d_, objc.GetSelector("sectionIdentifiers"))
-	// TODO: convert slice items...
 	return rv
 }

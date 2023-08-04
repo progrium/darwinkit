@@ -109,7 +109,6 @@ func GradientLayer_New() GradientLayer {
 
 func (g_ GradientLayer) Colors() []objc.Object {
 	rv := objc.CallMethod[[]objc.Object](g_, objc.GetSelector("colors"))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -119,7 +118,6 @@ func (g_ GradientLayer) SetColors(value []objc.IObject) {
 
 func (g_ GradientLayer) Locations() []foundation.Number {
 	rv := objc.CallMethod[[]foundation.Number](g_, objc.GetSelector("locations"))
-	// TODO: convert slice items...
 	return rv
 }
 

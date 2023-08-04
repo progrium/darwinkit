@@ -280,7 +280,6 @@ func (p_ PopUpButton) NumberOfItems() int {
 
 func (p_ PopUpButton) ItemArray() []MenuItem {
 	rv := objc.CallMethod[[]MenuItem](p_, objc.GetSelector("itemArray"))
-	// TODO: convert slice items...
 	return rv
 }
 

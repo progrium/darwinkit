@@ -80,7 +80,6 @@ func (e_ Exception) Reason() string {
 
 func (e_ Exception) CallStackReturnAddresses() []Number {
 	rv := objc.CallMethod[[]Number](e_, objc.GetSelector("callStackReturnAddresses"))
-	// TODO: convert slice items...
 	return rv
 }
 

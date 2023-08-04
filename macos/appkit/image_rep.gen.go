@@ -84,7 +84,6 @@ func ImageRep_New() ImageRep {
 
 func (ic _ImageRepClass) ImageRepsWithContentsOfFile(filename string) []ImageRep {
 	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithContentsOfFile:"), filename)
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -94,7 +93,6 @@ func ImageRep_ImageRepsWithContentsOfFile(filename string) []ImageRep {
 
 func (ic _ImageRepClass) ImageRepsWithPasteboard(pasteboard IPasteboard) []ImageRep {
 	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithPasteboard:"), objc.ExtractPtr(pasteboard))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -104,7 +102,6 @@ func ImageRep_ImageRepsWithPasteboard(pasteboard IPasteboard) []ImageRep {
 
 func (ic _ImageRepClass) ImageRepsWithContentsOfURL(url foundation.IURL) []ImageRep {
 	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithContentsOfURL:"), objc.ExtractPtr(url))
-	// TODO: convert slice items...
 	return rv
 }
 
@@ -308,7 +305,6 @@ func (i_ ImageRep) SetLayoutDirection(value ImageLayoutDirection) {
 
 func (ic _ImageRepClass) RegisteredImageRepClasses() []objc.Class {
 	rv := objc.CallMethod[[]objc.Class](ic, objc.GetSelector("registeredImageRepClasses"))
-	// TODO: convert slice items...
 	return rv
 }
 
