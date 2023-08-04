@@ -13,7 +13,7 @@ import (
 )
 
 // Handler is a callback function for an ActionTarget.
-type Handler func(sender objc.IObject)
+type Handler func(sender objc.Object)
 
 // CanSet is an interface for objc instance which can set a target and action
 type CanSet interface {
