@@ -1,0 +1,14 @@
+SFAuthorizationStartupState 0
+SFAuthorizationViewInProgressState 2
+SFAuthorizationViewLockedState 1
+SFAuthorizationViewUnlockedState 3
+SFButtonTypeBack 0
+SFButtonTypeCancel 0
+SFButtonTypeLogin 1
+SFButtonTypeOK 1
+SFViewTypeCredentials 1
+SFViewTypeIdentityAndCredentials 0
+SFAuthorizationPluginViewUserNameKey UserName
+SFAuthorizationPluginViewUserShortNameKey UserShortName
+SFCertificateViewDisclosureStateDidChange SFCertificateViewDisclosureStateDidChange
+SFDisplayViewException Mechanism Invoke Error

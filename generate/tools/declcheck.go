@@ -21,7 +21,7 @@ func main() {
 		filter = os.Args[1]
 	}
 
-	r, err := zip.OpenReader("./symbols.zip")
+	r, err := zip.OpenReader("./generate/symbols.zip")
 	if err != nil {
 		log.Fatal(err)
 	}

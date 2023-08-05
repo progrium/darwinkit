@@ -1,5 +1,13 @@
 package declparse
 
+// TODO:
+
+// typedef struct objc_object {
+//	...
+// } id;
+
+// __kindof NSApplication *NSApp;
+
 var tests = []struct {
 	s         string
 	n         Node
