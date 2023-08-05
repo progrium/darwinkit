@@ -20,14 +20,14 @@ type Type interface {
 }
 
 func FullGoName(module modules.Module, name string, currentModule modules.Module) string {
-	if module == currentModule {
+	if module.Name == currentModule.Name {
 		return name
 	}
 	return module.Package + "." + name
 }
 
 func PrependPackage(module modules.Module, s string, currentModule modules.Module) string {
-	if module == currentModule {
+	if module.Name == currentModule.Name {
 		return s
 	}
 	return module.Package + "." + s

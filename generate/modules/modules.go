@@ -27,7 +27,7 @@ func Get(moduleName string) *Module {
 }
 
 var All = []Module{
-	//{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}},
+	{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}},
 	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}},
 	{"AppKit", "AppKit", "appkit", "Appkit/Appkit.h", []string{"NS"}},
 	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{}},

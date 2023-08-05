@@ -36,7 +36,7 @@ func getClassGen(ci *data.Class) *gen.Class {
 			panic("invalid class name:" + parentStr)
 		}
 		parentInfo := loadOneTypeInfo(module, name).(*data.Class)
-		classGen.Parent = getClassGen(parentInfo)
+		classGen.Super = getClassGen(parentInfo)
 	}
 
 	classGen.Properties = convertToGenProperties(ci.Properties)

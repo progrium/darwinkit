@@ -1,4 +1,3 @@
-// this file is marked tmp because its not generated, but should be
 package coregraphics
 
 // #import <CoreGraphics/CGGeometry.h>

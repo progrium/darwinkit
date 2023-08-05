@@ -15,7 +15,7 @@ import (
 type FileWriter struct {
 	Name        string // usually the header file name, without .h
 	Module      modules.Module
-	CodeFileDir string
+	PlatformDir string
 
 	typeCodes []CodeGen
 }
@@ -64,7 +64,7 @@ func (w *FileWriter) goFilePath() string {
 		name = w.Name[2:]
 	}
 	name = stringx.CamelToSnake(name)
-	return w.CodeFileDir + "/" + w.Module.Package + "/" + name + ".gen.go"
+	return w.PlatformDir + "/" + w.Module.Package + "/" + name + ".gen.go"
 }
 
 func Create(filename string) (*os.File, error) {

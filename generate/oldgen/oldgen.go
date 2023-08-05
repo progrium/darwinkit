@@ -53,7 +53,7 @@ func Generate(rootDir string, mod Module, ignoreTypes set.Set[string]) {
 	module := modules.Get(mod.Name)
 	mw := &gen.ModuleWriter{
 		Module:      *module,
-		CodeFileDir: rootDir,
+		PlatformDir: rootDir,
 	}
 	for _, typeInfo := range mod.Types {
 		if ignoreTypes.Contains(typeInfo.FullName()) {
@@ -66,7 +66,7 @@ func Generate(rootDir string, mod Module, ignoreTypes set.Set[string]) {
 			fw := &gen.FileWriter{
 				Name:        tti.Name,
 				Module:      *classGen.Type.Module,
-				CodeFileDir: rootDir,
+				PlatformDir: rootDir,
 			}
 			fw.Add(classGen)
 			fw.WriteCode()
@@ -76,7 +76,7 @@ func Generate(rootDir string, mod Module, ignoreTypes set.Set[string]) {
 			fw := &gen.FileWriter{
 				Name:        tti.Name,
 				Module:      *protocolGen.Type.Module,
-				CodeFileDir: rootDir,
+				PlatformDir: rootDir,
 			}
 			fw.Add(protocolGen)
 			fw.WriteCode()

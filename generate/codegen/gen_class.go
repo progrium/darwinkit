@@ -13,7 +13,7 @@ var _ CodeGen = (*Class)(nil)
 // Class is code generator for objc class
 type Class struct {
 	Type                *typing.ClassType
-	Parent              *Class
+	Super               *Class
 	Properties          []*Property
 	InstanceTypeMethods []*Method // methods that return instance type
 	Methods             []*Method
@@ -27,13 +27,13 @@ func (c *Class) Copy() CodeGen {
 	if c == nil {
 		return nil
 	}
-	var parent = c.Parent
+	var parent = c.Super
 	if parent != nil {
 		parent = parent.Copy().(*Class)
 	}
 	return &Class{
 		Type:                c.Type,
-		Parent:              parent,
+		Super:               parent,
 		Properties:          c.Properties,
 		InstanceTypeMethods: c.InstanceTypeMethods,
 		Methods:             c.Methods,
@@ -49,10 +49,10 @@ func (c *Class) Init() {
 		return
 	}
 	c.methodIdentifiers = set.New[string]()
-	if c.Parent != nil {
-		c.Parent.Init()
-		if c.Parent.Type.Name != "NSObject" {
-			c.methodIdentifiers.AddSet(c.Parent.methodIdentifiers)
+	if c.Super != nil {
+		c.Super.Init()
+		if c.Super.Type.Name != "NSObject" {
+			c.methodIdentifiers.AddSet(c.Super.methodIdentifiers)
 		}
 	}
 	c.init = true
@@ -97,8 +97,8 @@ func (c *Class) Init() {
 		imSet.Add(im.Selector())
 	}
 	// parent init methods
-	if c.Parent != nil {
-		for _, im := range c.Parent.InstanceTypeMethods {
+	if c.Super != nil {
+		for _, im := range c.Super.InstanceTypeMethods {
 			if imSet.Contains(im.Selector()) {
 				continue
 			}
@@ -114,8 +114,8 @@ func (c *Class) Init() {
 
 func (c *Class) GoImports() set.Set[string] {
 	imports := set.New("github.com/progrium/macdriver/objc")
-	if c.Parent != nil {
-		imports.Add("github.com/progrium/macdriver/macos/" + c.Parent.Type.Module.Package)
+	if c.Super != nil {
+		imports.Add("github.com/progrium/macdriver/macos/" + c.Super.Type.Module.Package)
 	}
 	for _, m := range c.InstanceTypeMethods {
 		im := m.NormalizeInstanceTypeMethod(c.Type)
@@ -149,8 +149,8 @@ func (c *Class) writeGoInterface(w *CodeWriter) {
 	w.WriteLine("type " + c.Type.GoInterfaceName() + " interface {")
 	w.Indent()
 
-	if c.Parent != nil {
-		w.WriteLine(c.Parent.Type.GoName(c.Type.Module, false))
+	if c.Super != nil {
+		w.WriteLine(c.Super.Type.GoName(c.Type.Module, false))
 	}
 
 	for _, m := range c.Methods {
@@ -175,8 +175,8 @@ func (c *Class) writeGoInterface(w *CodeWriter) {
 func (c *Class) writeGoStruct(w *CodeWriter) {
 	w.WriteLine("type " + c.Type.GoStructName() + " struct {")
 	w.Indent()
-	if c.Parent != nil {
-		w.WriteLine(c.Parent.Type.GoName(c.Type.Module, true))
+	if c.Super != nil {
+		w.WriteLine(c.Super.Type.GoName(c.Type.Module, true))
 	}
 	w.UnIndent()
 	w.WriteLine("}")
@@ -188,8 +188,8 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 	w.WriteLines([]string{
 		fmt.Sprintf("return %s{", c.Type.GoStructName()),
 	})
-	if c.Parent != nil {
-		pType := c.Parent.Type
+	if c.Super != nil {
+		pType := c.Super.Type
 		w.WriteLine(fmt.Sprintf("\t%s: %s(ptr),", pType.GName, typing.PrependPackage(*pType.Module, "Make"+pType.GName, *c.Type.Module)))
 	}
 	w.WriteLine("}")

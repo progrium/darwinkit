@@ -35,7 +35,7 @@ func main() {
 		fmt.Print(string(exportConstants(r, mod, TargetPlatform, TargetVersion)))
 	} else {
 		for _, m := range modules.All {
-			if m.Name == "UIKit" {
+			if m.Name == "UIKit" || m.Package == "objc" {
 				continue
 			}
 			dump := exportConstants(r, &m, TargetPlatform, TargetVersion)
