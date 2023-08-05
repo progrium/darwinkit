@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -51,7 +52,7 @@ func (p *PrimitiveType) GoImports() set.Set[string] {
 	return nil
 }
 
-func (p *PrimitiveType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (p *PrimitiveType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	return p.GoName_
 }
 
@@ -59,7 +60,7 @@ func (p *PrimitiveType) ObjcName() string {
 	return p.ObjcName_
 }
 
-func (p *PrimitiveType) DeclareModule() *Module {
+func (p *PrimitiveType) DeclareModule() *modules.Module {
 	return nil
 }
 

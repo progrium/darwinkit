@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -17,7 +18,7 @@ func (a *ArrayType) GoImports() set.Set[string] {
 	return imports
 }
 
-func (a *ArrayType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (a *ArrayType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	return "[]" + a.Type.GoName(currentModule, receiveFromObjc)
 }
 
@@ -25,6 +26,6 @@ func (a *ArrayType) ObjcName() string {
 	return "NSArray*"
 }
 
-func (a *ArrayType) DeclareModule() *Module {
+func (a *ArrayType) DeclareModule() *modules.Module {
 	return a.Type.DeclareModule()
 }

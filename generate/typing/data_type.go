@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -14,7 +15,7 @@ func (d *DataType) GoImports() set.Set[string] {
 	return nil
 }
 
-func (d *DataType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (d *DataType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	return "[]byte"
 }
 
@@ -22,6 +23,6 @@ func (d *DataType) ObjcName() string {
 	return "NSData*"
 }
 
-func (d *DataType) DeclareModule() *Module {
+func (d *DataType) DeclareModule() *modules.Module {
 	return nil
 }

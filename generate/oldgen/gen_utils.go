@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	gen "github.com/progrium/macdriver/generate/codegen"
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/oldgen/data"
 	"github.com/progrium/macdriver/generate/typing"
 )
@@ -21,7 +22,7 @@ func getClassGen(ci *data.Class) *gen.Class {
 	type_ := &typing.ClassType{
 		Name:   ci.Name,
 		GName:  toGoSymbolName(ci.Name),
-		Module: typing.FindModule(ci.Module),
+		Module: modules.Get(ci.Module),
 	}
 	classGen := &gen.Class{
 		Type: type_,
@@ -56,7 +57,7 @@ func getProtocolGen(pi *data.Protocol) *gen.Protocol {
 	type_ := &typing.ProtocolType{
 		Name:   pi.Name,
 		GName:  toGoSymbolName(pi.Name),
-		Module: typing.FindModule(pi.Module),
+		Module: modules.Get(pi.Module),
 	}
 	protocolGen := &gen.Protocol{
 		Type: type_,
@@ -177,7 +178,7 @@ func getEnumInfo(ai *data.Alias) *gen.EnumInfo {
 			GoName:     toGoSymbolName(ev.Name),
 			Value:      ev.Value,
 			Arm64Value: ev.Arm64Value,
-			Module:     typing.FindModule(ev.Module),
+			Module:     modules.Get(ev.Module),
 		})
 	}
 	ei := &gen.EnumInfo{

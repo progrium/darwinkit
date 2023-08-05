@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -16,7 +17,7 @@ func (c *VoidPointerType) GoImports() set.Set[string] {
 	return set.New("unsafe")
 }
 
-func (c *VoidPointerType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (c *VoidPointerType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	return "unsafe.Pointer"
 }
 
@@ -24,6 +25,6 @@ func (c *VoidPointerType) ObjcName() string {
 	return "void*"
 }
 
-func (c *VoidPointerType) DeclareModule() *Module {
+func (c *VoidPointerType) DeclareModule() *modules.Module {
 	return nil
 }

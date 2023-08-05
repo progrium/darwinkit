@@ -3,6 +3,7 @@ package oldgen
 import (
 	"strings"
 
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/oldgen/data"
 	"github.com/progrium/macdriver/generate/typing"
 )
@@ -217,7 +218,7 @@ func loadType(module, name string) typing.Type {
 		ct := &typing.ClassType{
 			Name:   tti.Name,
 			GName:  toGoSymbolName(tti.Name),
-			Module: typing.FindModule(tti.Module),
+			Module: modules.Get(tti.Module),
 		}
 
 		return ct
@@ -225,7 +226,7 @@ func loadType(module, name string) typing.Type {
 		pt := &typing.ProtocolType{
 			Name:   tti.Name,
 			GName:  toGoSymbolName(tti.Name),
-			Module: typing.FindModule(tti.Module),
+			Module: modules.Get(tti.Module),
 		}
 
 		return pt
@@ -233,7 +234,7 @@ func loadType(module, name string) typing.Type {
 		at := &typing.AliasType{
 			Name:   tti.Name,
 			GName:  toGoSymbolName(tti.Name),
-			Module: typing.FindModule(tti.Module),
+			Module: modules.Get(tti.Module),
 			Type:   ParseType(tti.TargetType),
 		}
 		return at
@@ -241,7 +242,7 @@ func loadType(module, name string) typing.Type {
 		st := &typing.StructType{
 			Name:   tti.Name,
 			GName:  toGoSymbolName(tti.Name),
-			Module: typing.FindModule(tti.Module),
+			Module: modules.Get(tti.Module),
 		}
 
 		return st

@@ -1,6 +1,7 @@
 package codegen
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/typing"
 )
 
@@ -16,7 +17,7 @@ func (p *Param) String() string {
 }
 
 // GoDeclare return go param declare code
-func (p *Param) GoDeclare(currentModule *typing.Module, receiveFromObjc bool) string {
+func (p *Param) GoDeclare(currentModule *modules.Module, receiveFromObjc bool) string {
 	return p.GoName() + " " + p.Type.GoName(currentModule, receiveFromObjc)
 }
 

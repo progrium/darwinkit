@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -8,10 +9,10 @@ var _ Type = (*AliasType)(nil)
 
 // AliasType type def types
 type AliasType struct {
-	Type   Type    // the real type
-	GName  string  // alias name for new go type
-	Name   string  // the objc name
-	Module *Module // used when Alias is not empty
+	Type   Type            // the real type
+	GName  string          // alias name for new go type
+	Name   string          // the objc name
+	Module *modules.Module // used when Alias is not empty
 }
 
 func (a *AliasType) GoImports() set.Set[string] {
@@ -23,7 +24,7 @@ func (a *AliasType) GoImports() set.Set[string] {
 	return imports
 }
 
-func (a *AliasType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (a *AliasType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	return FullGoName(*a.Module, a.GName, *currentModule)
 }
 
@@ -31,7 +32,7 @@ func (a *AliasType) ObjcName() string {
 	return a.Name
 }
 
-func (a *AliasType) DeclareModule() *Module {
+func (a *AliasType) DeclareModule() *modules.Module {
 	return a.Module
 }
 

@@ -1,6 +1,7 @@
 .DS_Store
 /_local
 /generate/symbols.zip
+/generate/symbols
 /macos/_examples/form/form
 /macos/_examples/largetype/largetype
 /macos/_examples/layout/layout

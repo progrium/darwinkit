@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"strings"
 
 	"github.com/progrium/macdriver/generate/declparse/keywords"
 	"github.com/progrium/macdriver/generate/declparse/lexer"
@@ -29,6 +30,7 @@ func NewParser(r io.Reader) *Parser {
 }
 
 func NewStringParser(s string) *Parser {
+	s = strings.TrimRight(s, ";") + ";" // normalize into statement
 	return &Parser{tb: lexer.NewTokenBuffer(bytes.NewBufferString(s))}
 }
 

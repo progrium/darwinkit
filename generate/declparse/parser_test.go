@@ -14,7 +14,7 @@ func TestParser(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.s, func(t *testing.T) {
-			p := NewStringParser(normalizeStmntString(tt.s))
+			p := NewStringParser(tt.s)
 			p.Hint = tt.Hint
 			got, err := p.Parse()
 			if err != nil {

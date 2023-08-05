@@ -2,6 +2,7 @@ package typing
 
 import "C"
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -20,7 +21,7 @@ func (d *DictType) GoImports() set.Set[string] {
 	return imports
 }
 
-func (d *DictType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (d *DictType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	if _, ok := UnwrapAlias(d.KeyType).(*StringType); ok {
 		if _, ok = d.ValueType.(*ProtocolType); !ok {
 			return "map[" + d.KeyType.GoName(currentModule, receiveFromObjc) + "]" + d.ValueType.GoName(currentModule, receiveFromObjc)
@@ -30,13 +31,13 @@ func (d *DictType) GoName(currentModule *Module, receiveFromObjc bool) string {
 	if !receiveFromObjc {
 		name = "Dictionary"
 	}
-	return FullGoName(*Foundation, name, *currentModule)
+	return FullGoName(*modules.Get("foundation"), name, *currentModule)
 }
 
 func (d *DictType) ObjcName() string {
 	return "NSDictionary*"
 }
 
-func (d *DictType) DeclareModule() *Module {
+func (d *DictType) DeclareModule() *modules.Module {
 	return d.ValueType.DeclareModule()
 }

@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/typing"
 	"github.com/progrium/macdriver/internal/set"
 	"github.com/progrium/macdriver/internal/stringx"
@@ -23,7 +24,7 @@ type CodeGen interface {
 
 // ModuleWriter mantains module level auto-generated code source files
 type ModuleWriter struct {
-	Module      typing.Module
+	Module      modules.Module
 	CodeFileDir string
 	Protocols   []*typing.ProtocolType
 	Aliases     []*EnumInfo

@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -15,7 +16,7 @@ func (s *StringType) GoImports() set.Set[string] {
 	return set.New("github.com/progrium/macdriver/macos/foundation")
 }
 
-func (s *StringType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (s *StringType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	if s.NeedNil {
 		return "foundation.String"
 	}
@@ -26,6 +27,6 @@ func (s *StringType) ObjcName() string {
 	return "NSString*"
 }
 
-func (s *StringType) DeclareModule() *Module {
-	return Foundation
+func (s *StringType) DeclareModule() *modules.Module {
+	return modules.Get("foundation")
 }

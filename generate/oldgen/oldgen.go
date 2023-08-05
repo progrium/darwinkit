@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	gen "github.com/progrium/macdriver/generate/codegen"
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/oldgen/data"
-	"github.com/progrium/macdriver/generate/typing"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -50,7 +50,7 @@ func GenerateModules(rootDir string, names []string) {
 }
 
 func Generate(rootDir string, mod Module, ignoreTypes set.Set[string]) {
-	module := typing.FindModule(mod.Name)
+	module := modules.Get(mod.Name)
 	mw := &gen.ModuleWriter{
 		Module:      *module,
 		CodeFileDir: rootDir,

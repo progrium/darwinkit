@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/typing"
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 	"github.com/progrium/macdriver/internal/stringx"
 )
@@ -14,7 +14,7 @@ import (
 // TypeWriter write codes for a go file
 type FileWriter struct {
 	Name        string // usually the header file name, without .h
-	Module      typing.Module
+	Module      modules.Module
 	CodeFileDir string
 
 	typeCodes []CodeGen

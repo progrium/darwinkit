@@ -3,6 +3,7 @@ package typing
 import (
 	"strings"
 
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -28,7 +29,7 @@ func (a *BlockType) GoImports() set.Set[string] {
 	return imports
 }
 
-func (a *BlockType) GoName(currentModule *Module, receiveFromObjc bool) string {
+func (a *BlockType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	var sb strings.Builder
 	sb.WriteString("func (")
 	for i, p := range a.Params {
@@ -68,6 +69,6 @@ func (a *BlockType) ObjcName() string {
 	return sb.String()
 }
 
-func (a *BlockType) DeclareModule() *Module {
+func (a *BlockType) DeclareModule() *modules.Module {
 	return nil
 }

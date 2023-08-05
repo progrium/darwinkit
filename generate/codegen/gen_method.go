@@ -7,6 +7,7 @@ import (
 	"github.com/progrium/macdriver/internal/set"
 	"github.com/progrium/macdriver/internal/stringx"
 
+	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/typing"
 )
 
@@ -68,7 +69,7 @@ func (m *Method) NormalizeInstanceTypeMethod(returnType *typing.ClassType) *Meth
 }
 
 // WriteGoCallCode generate go method code to call c wrapper code
-func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, cw *CodeWriter) {
+func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string, cw *CodeWriter) {
 	funcDeclare := m.GoFuncDeclare(currentModule, typeName)
 
 	if m.Deprecated {
@@ -138,7 +139,7 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 }
 
 // WriteGoInterfaceCode generate go interface method signature code
-func (m *Method) WriteGoInterfaceCode(currentModule *typing.Module, classType *typing.ClassType, w *CodeWriter) {
+func (m *Method) WriteGoInterfaceCode(currentModule *modules.Module, classType *typing.ClassType, w *CodeWriter) {
 	if m.ClassMethod {
 		return
 	}
@@ -151,7 +152,7 @@ func (m *Method) WriteGoInterfaceCode(currentModule *typing.Module, classType *t
 }
 
 // GoFuncDeclare generate go function declaration
-func (m *Method) GoFuncDeclare(currentModule *typing.Module, goTypeName string) string {
+func (m *Method) GoFuncDeclare(currentModule *modules.Module, goTypeName string) string {
 	var paramStrs []string
 	for _, p := range m.Params {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, false))
@@ -181,7 +182,7 @@ func (m *Method) GoFuncName(goTypeName string) string {
 }
 
 // ProtocolGoFuncFieldType generate go function declaration for protocol struct impl field
-func (m *Method) ProtocolGoFuncFieldType(currentModule *typing.Module) string {
+func (m *Method) ProtocolGoFuncFieldType(currentModule *modules.Module) string {
 	var paramStrs []string
 	for _, p := range m.Params {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, true))
@@ -215,9 +216,6 @@ func (m *Method) GoImports() set.Set[string] {
 	var imports = set.New("github.com/progrium/macdriver/objc")
 	for _, param := range m.Params {
 		imports.AddSet(param.Type.GoImports())
-		if _, ok := param.Type.(*typing.ClassType); ok {
-			imports.Add("github.com/progrium/macdriver/" + typing.ObjCRuntime.Package)
-		}
 	}
 	if m.WeakProperty {
 		//imports.Add("github.com/progrium/macdriver/macos/internal")
