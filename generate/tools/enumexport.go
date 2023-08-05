@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/progrium/macdriver/generate"
+	"github.com/progrium/macdriver/generate/declparse"
 	"github.com/progrium/macdriver/generate/modules"
 )
 
@@ -79,7 +80,39 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 	var constInts []string
 	var constStrs []string
 	var constFloats []string
-	var constFloatPtrs []string
+	//var constFloatPtrs []string
+	addConst := func(typeInfo declparse.TypeInfo, name string) bool {
+		switch typeInfo.Name {
+		case "int", "long", "long long", "short", "NSUInteger", "NSInteger":
+			constInts = append(constInts, name)
+			return true
+		case "NSString", "CFStringRef":
+			constStrs = append(constStrs, name)
+			return true
+		case "float", "double", "CGFloat":
+			if typeInfo.IsPtr {
+				// ignore for now
+				//constFloatPtrs = append(constFloats, name)
+				return true
+			}
+			constFloats = append(constFloats, name)
+			return true
+		case "BOOL", "Boolean":
+			// ignore bool globals, prob not constants
+			// ex: NSDeallocateZombies, globalUpdateOK
+			return true
+		case "CGSize", "CGPoint", "NSRect", "CGRect":
+			// obvious ignores
+			return true
+		case "NSFileProviderPage":
+			// other manual ignores from:
+			// NSFileProviderInitialPageSortedByName
+			return true
+		default:
+			return false
+		}
+	}
+
 	for _, file := range db.File {
 		if filepath.Dir(file.Name) == fmt.Sprintf("symbols/%s", framework.Package) {
 			s, err := generate.LoadSymbolFrom(file)
@@ -101,93 +134,59 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 				if stmt.Variable == nil {
 					log.Fatalf("%s: declaration statement not a variable: %s", s.Name, s.Declaration)
 				}
-				if stmt.Variable.Type.Name == "BOOL" ||
-					stmt.Variable.Type.Name == "Boolean" {
-					// ignore bool globals, prob not constants
-					// ex: NSDeallocateZombies, globalUpdateOK
+				if ok := addConst(stmt.Variable.Type, s.Name); ok {
 					continue
 				}
-				if stmt.Variable.Type.Name == "NSFileProviderPage" {
-					// other manual ignores from:
-					// NSFileProviderInitialPageSortedByName
-					continue
-				}
-				if stmt.Variable.Type.Name == "int" ||
-					stmt.Variable.Type.Name == "long long" ||
-					stmt.Variable.Type.Name == "long" {
-					constInts = append(constInts, s.Name)
-					continue
-				}
-				if stmt.Variable.Type.Name == "NSString" {
-					constStrs = append(constStrs, s.Name)
-					continue
-				}
-				if stmt.Variable.Type.Name == "double" ||
-					stmt.Variable.Type.Name == "float" ||
-					stmt.Variable.Type.Name == "CGFloat" {
-					if stmt.Variable.Type.IsPtr {
-						constFloatPtrs = append(constFloatPtrs, s.Name)
-					} else {
-						constFloats = append(constFloats, s.Name)
+
+				lookupType := func(name string) (ti *declparse.TypeInfo, ok bool) {
+					typ := generate.FindSymbolByName(db, name)
+					if typ == nil {
+						log.Fatalf("unable to find symbol: %s\n", name)
 					}
-					continue
-				}
-				typ := generate.FindSymbolByName(db, stmt.Variable.Type.Name)
-				if typ == nil {
-					log.Fatalf("unable to find symbol: %s\n", stmt.Variable.Type.Name)
-				}
-				if typ.Declaration == "" {
-					continue
-				}
-				typdef, err := typ.Parse()
-				if err != nil {
-					log.Fatalf("%s: %s in '%s'", typ.Name, err, typ.Declaration)
-				}
-				if typdef.Typedef == "" {
+					if typ.Declaration == "" {
+						return nil, false
+					}
+					typdef, err := typ.Parse()
+					if err != nil {
+						log.Fatalf("%s: %s in '%s'", typ.Name, err, typ.Declaration)
+					}
 					if typdef.Interface != nil {
 						// ignore global object pointers here
 						// ex: NSApp
-						continue
+						return nil, false
 					}
 					if typdef.Struct != nil {
 						// ignore weird struct refs here
 						// ex: kCFURLFileResourceTypeKey
-						continue
-					}
-					log.Fatalf("%s: declaration statement not a typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
-				}
-				if typdef.Enum != nil {
-					switch typdef.Enum.Type.Name {
-					case "NSUInteger", "NSInteger", "long long", "short":
-						constInts = append(constInts, s.Name)
-						continue
-					default:
-						log.Fatalf("%s: unsupported enum type: %s in '%s' [%s]", typ.Name, typdef.Enum.Type.Name, typ.Declaration, s.Name)
-					}
-				}
-				if typdef.TypeAlias == nil {
-					if typdef.Struct != nil {
-						// ignore global object pointers here for now
 						// ex: NSMultipleValuesMarker
-						continue
+						return nil, false
+					}
+					if typdef.Typedef == "" {
+						log.Fatalf("%s: declaration statement not a typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
+					}
+					if typdef.Enum != nil {
+						return &typdef.Enum.Type, true
+					}
+					if typdef.TypeAlias != nil {
+						return typdef.TypeAlias, true
 					}
 					log.Fatalf("%s: unsupported typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
+					return nil, false
 				}
-				switch typdef.TypeAlias.Name {
-				case "NSString", "CFStringRef":
-					constStrs = append(constStrs, s.Name)
+
+				ti, ok := lookupType(stmt.Variable.Type.Name)
+				if !ok {
 					continue
-				case "float", "double", "CGFloat":
-					constFloats = append(constFloats, s.Name)
-					continue
-				case "NSInteger", "NSUInteger", "long", "long long", "short":
-					constInts = append(constInts, s.Name)
-					continue
-				case "CGSize", "CGPoint", "NSRect", "CGRect":
-					// manual ignores for obvious reasons
-					continue
-				default:
-					log.Fatalf("%s: unsupported typedef type: %s in '%s' [%s]", typ.Name, typdef.TypeAlias.Name, typ.Declaration, s.Name)
+				}
+				if ok := addConst(*ti, s.Name); !ok {
+					// try to resolve one more level
+					tti, ok := lookupType(ti.Name)
+					if !ok {
+						continue
+					}
+					if ok := addConst(*tti, s.Name); !ok {
+						log.Fatalf("%s: unsupported type: %s [%s]", stmt.Variable.Type.Name, ti.Name, s.Name)
+					}
 				}
 			}
 
@@ -196,7 +195,7 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 	sort.Strings(constInts)
 	sort.Strings(constStrs)
 	sort.Strings(constFloats)
-	sort.Strings(constFloatPtrs)
+	// sort.Strings(constFloatPtrs)
 
 	// generate source code to export
 	var constPrintfs []string
@@ -209,6 +208,7 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 	for _, c := range constFloats {
 		constPrintfs = append(constPrintfs, fmt.Sprintf("	printf(\"%s %%f\\n\", (float)%s);\n", c, c))
 	}
+	// these can segfault, so leaving them out for now
 	// for _, c := range constFloatPtrs {
 	// 	constPrintfs = append(constPrintfs, fmt.Sprintf("	printf(\"%s %%f\\n\", (float)*%s);\n", c, c))
 	// }

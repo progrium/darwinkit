@@ -36,8 +36,10 @@ var All = []Module{
 	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},
 	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}},
 	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}},
-	{"IOBluetooth", "IOBluetooth", "iobluetooth", "IOBluetooth/IOBluetooth.h", []string{"kIOBluetooth", "kBluetooth", "IOBluetooth", "Bluetooth"}},
+	{"IOBluetooth", "IOBluetooth", "iobluetooth", "IOBluetooth/IOBluetooth.h", []string{"kIOBluetooth", "kBluetooth", "IOBluetooth", "Bluetooth", "kFTS", "kOBEX"}},
 	{"CoreGraphics", "Core Graphics", "coregraphics", "CoreGraphics/CoreGraphics.h", []string{"CG", "kCG"}},
 	{"CoreFoundation", "Core Foundation", "corefoundation", "CoreFoundation/CoreFoundation.h", []string{"CF", "kCF"}},
 	{"QuartzCore", "QuartzCore", "quartzcore", "QuartzCore/QuartzCore.h", []string{"kCA"}},
+	{"Vision", "Vision", "vision", "Vision/Vision.h", []string{"VN"}},
+	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}},
 }
