@@ -17,7 +17,6 @@ import (
 )
 
 func GenerateAll(rootDir string) {
-	log.SetFlags(log.Lshortfile | log.Ldate | log.Ltime)
 
 	RemoveGeneratedCode(rootDir)
 
@@ -107,7 +106,7 @@ func RemoveGeneratedCode(dir string) {
 }
 
 func FormatCode(dir string) {
-	log.Println("formating go code...")
+	//log.Println("formating go code...")
 	cmd := exec.Command("goimports", "-w", dir)
 	stdout, err := cmd.Output()
 

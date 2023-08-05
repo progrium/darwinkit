@@ -1,4 +1,4 @@
-// auto-generated code, do not modify
+// AUTO-GENERATED CODE, DO NOT MODIFY
 package appkit
 
 import "unsafe"
@@ -31,6 +31,7 @@ const AnimationEaseOut AnimationCurve = 2
 const AnimationLinear AnimationCurve = 3
 
 type AnimationProgress float32
+
 type AppearanceName string
 
 const AppearanceNameAqua AppearanceName = "NSAppearanceNameAqua"
@@ -194,6 +195,7 @@ const BrowserAutoColumnResizing BrowserColumnResizingType = 1
 const BrowserUserColumnResizing BrowserColumnResizingType = 2
 
 type BrowserColumnsAutosaveName string
+
 type BrowserDropOperation uint
 
 const BrowserDropOn BrowserDropOperation = 0
@@ -290,6 +292,7 @@ const CollectionUpdateActionMove CollectionUpdateAction = 3
 const CollectionUpdateActionNone CollectionUpdateAction = 4
 
 type CollectionViewDecorationElementKind string
+
 type CollectionViewDropOperation int
 
 const CollectionViewDropOn CollectionViewDropOperation = 0
@@ -322,9 +325,13 @@ const CollectionViewScrollPositionTrailingEdge CollectionViewScrollPosition = 12
 const CollectionViewScrollPositionNearestVerticalEdge CollectionViewScrollPosition = 256
 
 type CollectionViewSupplementaryElementKind string
+
 type CollectionViewTransitionLayoutAnimatedKey string
+
 type ColorListName string
+
 type ColorName string
+
 type ColorPanelMode int
 
 const ColorPanelModeNone ColorPanelMode = -1
@@ -784,6 +791,7 @@ const FontTextStyleTitle2 FontTextStyle = "UICTFontTextStyleTitle2"
 const FontTextStyleTitle3 FontTextStyle = "UICTFontTextStyleTitle3"
 
 type FontTextStyleOptionKey string
+
 type FontTraitMask uint
 
 const BoldFontMask FontTraitMask = 2
@@ -829,7 +837,9 @@ const GestureRecognizerStateFailed GestureRecognizerState = 5
 const GestureRecognizerStateRecognized GestureRecognizerState = 3
 
 type Glyph uint32
+
 type GlyphInscription uint
+
 type GlyphProperty int
 
 const GlyphPropertyNull GlyphProperty = 1
@@ -838,6 +848,7 @@ const GlyphPropertyElastic GlyphProperty = 4
 const GlyphPropertyNonBaseCharacter GlyphProperty = 8
 
 type GradientType uint
+
 type GraphicsContextAttributeKey string
 
 const GraphicsContextDestinationAttributeName GraphicsContextAttributeKey = "NSGraphicsContextDestinationAttributeName"
@@ -862,6 +873,7 @@ const GridRowAlignmentLastBaseline GridRowAlignment = 3
 const GridRowAlignmentNone GridRowAlignment = 1
 
 type HelpAnchorName string
+
 type ImageAlignment uint
 
 const ImageAlignCenter ImageAlignment = 0
@@ -1059,6 +1071,7 @@ const ImageNameUserGroup ImageName = "NSUserGroup"
 const ImageNameUserGuest ImageName = "NSUserGuest"
 
 type ImageResizingMode int
+
 type ImageScaling uint
 
 const ImageScaleProportionallyDown ImageScaling = 0
@@ -1073,6 +1086,7 @@ const ImageSymbolScaleMedium ImageSymbolScale = 2
 const ImageSymbolScaleLarge ImageSymbolScale = 3
 
 type InterfaceStyle uint
+
 type LayoutAttribute int
 
 const LayoutAttributeLeft LayoutAttribute = 1
@@ -1214,7 +1228,9 @@ const AlertSecondButtonReturn ModalResponse = 1001
 const AlertThirdButtonReturn ModalResponse = 1002
 
 type ModalSession unsafe.Pointer
+
 type NibName string
+
 type PDFPanelOptions int
 
 const PDFPanelShowsPaperSize PDFPanelOptions = 4
@@ -1359,6 +1375,7 @@ const PrintRenderingQualityBest PrintRenderingQuality = 0
 const PrintRenderingQualityResponsive PrintRenderingQuality = 1
 
 type PrinterPaperName string
+
 type PrinterTableStatus uint
 
 const PrinterTableOK PrinterTableStatus = 0
@@ -1366,6 +1383,7 @@ const PrinterTableNotFound PrinterTableStatus = 1
 const PrinterTableError PrinterTableStatus = 2
 
 type PrinterTypeName string
+
 type PrintingPageOrder int
 
 const AscendingPageOrder PrintingPageOrder = 1
@@ -1380,6 +1398,7 @@ const PrintingPaginationModeFit PrintingPaginationMode = 1
 const PrintingPaginationModeClip PrintingPaginationMode = 2
 
 type ProgressIndicatorStyle uint
+
 type RectAlignment int
 
 const RectAlignmentNone RectAlignment = 0
@@ -1448,6 +1467,7 @@ const AutosaveInPlaceOperation SaveOperationType = 4
 const AutosaveAsOperation SaveOperationType = 5
 
 type ScrollArrowPosition uint
+
 type ScrollElasticity int
 
 const ScrollElasticityAutomatic ScrollElasticity = 0
@@ -1461,6 +1481,7 @@ const ScrollViewFindBarPositionAboveContent ScrollViewFindBarPosition = 1
 const ScrollViewFindBarPositionBelowContent ScrollViewFindBarPosition = 2
 
 type ScrollerArrow uint
+
 type ScrollerKnobStyle int
 
 const ScrollerKnobStyleDefault ScrollerKnobStyle = 0
@@ -1481,6 +1502,7 @@ const ScrollerStyleLegacy ScrollerStyle = 0
 const ScrollerStyleOverlay ScrollerStyle = 1
 
 type SearchFieldRecentsAutosaveName string
+
 type SegmentDistribution int
 
 const SegmentDistributionFit SegmentDistribution = 0
@@ -1546,8 +1568,11 @@ const SliderTypeCircular SliderType = 1
 const SliderTypeLinear SliderType = 0
 
 type SoundName string
+
 type SoundPlaybackDeviceIdentifier string
+
 type SplitViewAutosaveName string
+
 type SplitViewDividerStyle int
 
 const SplitViewDividerStyleThick SplitViewDividerStyle = 1
@@ -1584,13 +1609,16 @@ const StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriori
 const StackViewVisibilityPriorityNotVisible StackViewVisibilityPriority = 0
 
 type StatusItemAutosaveName string
+
 type StatusItemBehavior uint
 
 const StatusItemBehaviorRemovalAllowed StatusItemBehavior = 2
 const StatusItemBehaviorTerminationOnRemoval StatusItemBehavior = 4
 
 type StoryboardName string
+
 type StoryboardSceneIdentifier string
+
 type TIFFCompression uint
 
 const TIFFCompressionNone TIFFCompression = 1
@@ -1654,6 +1682,7 @@ const TableViewAnimationSlideLeft TableViewAnimationOptions = 48
 const TableViewAnimationSlideRight TableViewAnimationOptions = 64
 
 type TableViewAutosaveName string
+
 type TableViewColumnAutoresizingStyle uint
 
 const TableViewNoColumnAutoresizing TableViewColumnAutoresizingStyle = 0
@@ -1760,6 +1789,7 @@ const TextFieldSquareBezel TextFieldBezelStyle = 0
 const TextFieldRoundedBezel TextFieldBezelStyle = 1
 
 type TextInputSourceIdentifier string
+
 type TextLayoutFragmentEnumerationOptions uint
 
 const TextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment TextLayoutFragmentEnumerationOptions = 8
@@ -1868,6 +1898,7 @@ const TextStorageEditedAttributes TextStorageEditActions = 1
 const TextStorageEditedCharacters TextStorageEditActions = 2
 
 type TextStorageEditedOptions uint
+
 type TextTabOptionKey string
 
 const TabColumnTerminatorsAttributeName TextTabOptionKey = "NSTabColumnTerminatorsAttributeName"
@@ -1917,6 +1948,7 @@ const TokenStyleRounded TokenStyle = 2
 const TokenStyleSquared TokenStyle = 3
 
 type ToolTipTag int
+
 type ToolbarDisplayMode uint
 
 const ToolbarDisplayModeDefault ToolbarDisplayMode = 0
@@ -1925,6 +1957,7 @@ const ToolbarDisplayModeIconOnly ToolbarDisplayMode = 2
 const ToolbarDisplayModeLabelOnly ToolbarDisplayMode = 3
 
 type ToolbarIdentifier string
+
 type ToolbarItemGroupControlRepresentation int
 
 const ToolbarItemGroupControlRepresentationAutomatic ToolbarItemGroupControlRepresentation = 0
@@ -1956,7 +1989,9 @@ const ToolbarItemVisibilityPriorityHigh ToolbarItemVisibilityPriority = 1000
 const ToolbarItemVisibilityPriorityUser ToolbarItemVisibilityPriority = 2000
 
 type ToolbarSizeMode uint
+
 type TouchBarCustomizationIdentifier string
+
 type TouchBarItemIdentifier string
 
 const TouchBarItemIdentifierFixedSpaceSmall TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceSmall"
@@ -2011,6 +2046,7 @@ const TrackingInVisibleRect TrackingAreaOptions = 512
 const TrackingEnabledDuringMouseDrag TrackingAreaOptions = 1024
 
 type TrackingRectTag int
+
 type TypesetterBehavior int
 
 const TypesetterLatestBehavior TypesetterBehavior = -1
@@ -2048,6 +2084,7 @@ const NoScrollerParts UsableScrollerParts = 0
 const AllScrollerParts UsableScrollerParts = 2
 
 type UserInterfaceItemIdentifier string
+
 type UserInterfaceLayoutDirection int
 
 const UserInterfaceLayoutDirectionLeftToRight UserInterfaceLayoutDirection = 0
@@ -2149,6 +2186,7 @@ const WindowAnimationBehaviorUtilityWindow WindowAnimationBehavior = 4
 const WindowAnimationBehaviorAlertPanel WindowAnimationBehavior = 5
 
 type WindowBackingLocation uint
+
 type WindowButton uint
 
 const WindowCloseButton WindowButton = 0
@@ -2181,6 +2219,7 @@ const WindowDepthSixtyfourBitRGB WindowDepth = 528
 const WindowDepthTwentyfourBitRGB WindowDepth = 520
 
 type WindowFrameAutosaveName string
+
 type WindowLevel int
 
 const FloatingWindowLevel WindowLevel = 3
@@ -2213,6 +2252,7 @@ const WindowBelow WindowOrderingMode = -1
 const WindowOut WindowOrderingMode = 0
 
 type WindowPersistableFrameDescriptor string
+
 type WindowSharingType uint
 
 const WindowSharingNone WindowSharingType = 0
@@ -2235,6 +2275,7 @@ const WindowStyleMaskNonactivatingPanel WindowStyleMask = 128
 const WindowStyleMaskHUDWindow WindowStyleMask = 8192
 
 type WindowTabbingIdentifier string
+
 type WindowTabbingMode int
 
 const WindowTabbingModeAutomatic WindowTabbingMode = 0
@@ -2273,13 +2314,16 @@ const WorkspaceDesktopImageAllowClippingKey WorkspaceDesktopImageOptionKey = "NS
 const WorkspaceDesktopImageFillColorKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageFillColorKey"
 
 type WorkspaceFileOperationName string
+
 type WorkspaceIconCreationOptions uint
 
 const ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
 const Exclude10_4ElementsIconCreationOption WorkspaceIconCreationOptions = 4
 
 type WorkspaceLaunchConfigurationKey string
+
 type WorkspaceLaunchOptions uint
+
 type WritingDirection int
 
 const WritingDirectionNatural WritingDirection = -1

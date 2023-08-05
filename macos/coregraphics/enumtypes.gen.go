@@ -1,11 +1,14 @@
-// auto-generated code, do not modify
+// AUTO-GENERATED CODE, DO NOT MODIFY
 package coregraphics
 
 import "unsafe"
 
 type ColorRef unsafe.Pointer
+
 type ColorSpaceRef unsafe.Pointer
+
 type ContextRef unsafe.Pointer
+
 type Error int32
 
 const ErrorCannotComplete Error = 1004
@@ -21,7 +24,11 @@ const ErrorSuccess Error = 0
 const ErrorTypeCheck Error = 1008
 
 type EventRef unsafe.Pointer
+
 type FontIndex uint16
+
 type Glyph FontIndex
+
 type ImageRef unsafe.Pointer
+
 type PathRef unsafe.Pointer

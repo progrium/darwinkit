@@ -1,4 +1,4 @@
-// auto-generated code, do not modify
+// AUTO-GENERATED CODE, DO NOT MODIFY
 package foundation
 
 type AlignmentOptions uint64
@@ -192,6 +192,7 @@ const EnumerationConcurrent EnumerationOptions = 1
 const EnumerationReverse EnumerationOptions = 2
 
 type ErrorDomain string
+
 type ErrorUserInfoKey string
 
 const URLErrorKey ErrorUserInfoKey = "NSURL"
@@ -609,6 +610,7 @@ const TextCheckingAllCustomTypes TextCheckingTypes = 18446744069414584320
 const TextCheckingAllTypes TextCheckingTypes = 18446744073709551615
 
 type TimeInterval float64
+
 type TimeZoneNameStyle int
 
 const TimeZoneNameStyleStandard TimeZoneNameStyle = 0
@@ -627,6 +629,7 @@ const URLBookmarkCreationSecurityScopeAllowOnlyReadAccess URLBookmarkCreationOpt
 const URLBookmarkCreationWithoutImplicitSecurityScope URLBookmarkCreationOptions = 536870912
 
 type URLBookmarkFileCreationOptions uint
+
 type URLBookmarkResolutionOptions uint
 
 const URLBookmarkResolutionWithoutUI URLBookmarkResolutionOptions = 256
@@ -785,4 +788,5 @@ const URLSessionAuthChallengeCancelAuthenticationChallenge URLSessionAuthChallen
 const URLSessionAuthChallengeRejectProtectionSpace URLSessionAuthChallengeDisposition = 3
 
 type UserActivityPersistentIdentifier string
+
 type unichar uint16

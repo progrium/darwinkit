@@ -1,4 +1,4 @@
-// auto-generated code, do not modify
+// AUTO-GENERATED CODE, DO NOT MODIFY
 #import "CoreGraphics/CoreGraphics.h"
 
 void importCoreGraphicsProtocols() {

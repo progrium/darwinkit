@@ -1,7 +1,6 @@
 package codegen
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,7 +24,7 @@ func (w *FileWriter) Add(types ...CodeGen) {
 }
 
 func (w *FileWriter) WriteCode() {
-	fmt.Println("- gen code for", w.Name)
+	//fmt.Println("- gen code for", w.Name)
 	goFilePath := w.goFilePath()
 	fw, err := Create(goFilePath)
 	if err != nil {

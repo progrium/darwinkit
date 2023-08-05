@@ -4,7 +4,6 @@ import (
 	"embed"
 	"encoding/json"
 	"io"
-	"log"
 	"strings"
 
 	"github.com/progrium/macdriver/generate/oldgen/data"
@@ -33,7 +32,7 @@ func LoadAllMeta() []Module {
 }
 
 func loadModule(name string) Module {
-	log.Println("load module:", name)
+	//log.Println("load module:", name)
 	entries, err := metaFS.ReadDir("meta/" + name)
 	if err != nil {
 		panic(err)
@@ -63,7 +62,7 @@ func loadOneTypeInfo(module string, name string) data.TypeInfo {
 }
 
 func loadOneTypeInner(module string, name string) data.TypeInfo {
-	log.Println("load type meta:", name)
+	//log.Println("load type meta:", name)
 	f, err := metaFS.Open("meta/" + module + "/" + name + ".json")
 	if err != nil {
 		panic(err)

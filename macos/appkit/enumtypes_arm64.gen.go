@@ -1,4 +1,4 @@
-// auto-generated code, do not modify
+// AUTO-GENERATED CODE, DO NOT MODIFY
 package appkit
 
 const ImageResizingModeTile ImageResizingMode = 0
