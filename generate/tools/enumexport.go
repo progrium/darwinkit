@@ -117,7 +117,15 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 					continue
 				}
 			}
-			if !s.HasPlatform(platform, version) {
+			if !s.HasPlatform(platform, version, true) {
+				continue
+			}
+			// ignore list. these deprecated ones aren't defined for me
+			if strIn([]string{
+				"QCCompositionInputRSSArticleDurationKey",
+				"QCCompositionInputRSSFeedURLKey",
+				"QCCompositionProtocolRSSVisualizer",
+			}, s.Name) {
 				continue
 			}
 			if s.Kind == "Constant" && s.Type == "Enumeration Case" {
@@ -261,4 +269,13 @@ func evalSource(source string) []byte {
 	}
 
 	return output
+}
+
+func strIn(slice []string, str string) bool {
+	for _, s := range slice {
+		if strings.EqualFold(str, s) {
+			return true
+		}
+	}
+	return false
 }

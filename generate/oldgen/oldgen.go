@@ -121,7 +121,7 @@ func FormatCode(dir string) {
 
 func strIn(slice []string, str string) bool {
 	for _, s := range slice {
-		if strings.ToLower(str) == strings.ToLower(s) {
+		if strings.EqualFold(str, s) {
 			return true
 		}
 	}

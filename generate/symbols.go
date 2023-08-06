@@ -54,10 +54,10 @@ func (s Symbol) HasFramework(name string) bool {
 	return false
 }
 
-func (s Symbol) HasPlatform(name string, version int) bool {
+func (s Symbol) HasPlatform(name string, version int, deprecated bool) bool {
 	for _, p := range s.Platforms {
 		if strings.EqualFold(p.Name, name) {
-			if p.Deprecated {
+			if !deprecated && p.Deprecated {
 				return false
 			}
 			ver := strings.Split(p.IntroducedAt, ".")
@@ -100,7 +100,7 @@ func FindSymbolByName(db *zip.ReadCloser, name string) *Symbol {
 			if err != nil {
 				continue
 			}
-			if s.Name == name {
+			if strings.EqualFold(s.Name, name) {
 				found = &s
 			}
 		}
@@ -109,6 +109,26 @@ func FindSymbolByName(db *zip.ReadCloser, name string) *Symbol {
 		symbolCache[name] = *found
 	}
 	return found
+}
+
+func FrameworkSymbols(db *zip.ReadCloser, module string) (symbols []Symbol) {
+	for _, file := range db.File {
+		if !file.FileInfo().IsDir() && strings.HasPrefix(file.Name, "symbols/"+strings.ToLower(module)) {
+			s, err := LoadSymbolFrom(file)
+			if err != nil {
+				continue
+			}
+			symbols = append(symbols, s)
+		}
+	}
+	if module == "appkit" {
+		for _, s := range FrameworkSymbols(db, "uikit") {
+			if s.HasFramework("appkit") {
+				symbols = append(symbols, s)
+			}
+		}
+	}
+	return
 }
 
 func LoadSymbolFrom(file *zip.File) (v Symbol, err error) {
