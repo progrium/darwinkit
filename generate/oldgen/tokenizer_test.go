@@ -3,7 +3,7 @@ package oldgen
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 func TestTokenizer_NextToken(t *testing.T) {

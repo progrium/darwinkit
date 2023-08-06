@@ -7,7 +7,7 @@ package objc
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 func TestMsgSend(t *testing.T) {

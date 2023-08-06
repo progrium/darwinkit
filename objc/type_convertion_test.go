@@ -10,7 +10,7 @@ import (
 
 	"unsafe"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 // for more array/dict tests, see foundation/foundation_custom_test.go

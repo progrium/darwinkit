@@ -10,7 +10,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 func Test_closure(t *testing.T) {

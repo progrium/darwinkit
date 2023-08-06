@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/progrium/macdriver/generate/typing"
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 func TestParseType(t *testing.T) {

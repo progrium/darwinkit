@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/progrium/macdriver/internal/assert"
 )
 
 func Test_getBlockTypeEncoding(t *testing.T) {
