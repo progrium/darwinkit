@@ -8,6 +8,8 @@ Native Mac APIs for Golang!
 <a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
 <a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
+> Aug 6, 2023: MacDriver is getting majorly overhauled and expanded on! Currently development is happening in the [darwinkit branch](https://github.com/progrium/macdriver/tree/darwinkit) and we're working towards a [preview release](https://github.com/progrium/macdriver/issues/167) in the next couple weeks before switching over.
+
 ------
 
 MacDriver is a toolkit for working with Apple/Mac APIs and frameworks in Go. It currently has 2 parts:
