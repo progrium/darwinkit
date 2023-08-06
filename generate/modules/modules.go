@@ -30,7 +30,7 @@ var All = []Module{
 	{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}},
 	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}},
 	{"AppKit", "AppKit", "appkit", "Appkit/Appkit.h", []string{"NS"}},
-	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{}},
+	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
 	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uniformtypeidentifiers", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
 	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
 	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},

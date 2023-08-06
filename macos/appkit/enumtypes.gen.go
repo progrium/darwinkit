@@ -1,7 +1,10 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
 package appkit
 
-import "unsafe"
+import (
+	"math"
+	"unsafe"
+)
 
 type AboutPanelOptionKey string
 
@@ -536,7 +539,7 @@ const DragOperationGeneric DragOperation = 4
 const DragOperationPrivate DragOperation = 8
 const DragOperationMove DragOperation = 16
 const DragOperationDelete DragOperation = 32
-const DragOperationEvery DragOperation = 18446744073709551615
+const DragOperationEvery DragOperation = math.MaxUint
 const DragOperationNone DragOperation = 0
 
 type DraggingContext int
@@ -576,7 +579,7 @@ const EventGestureAxisVertical EventGestureAxis = 2
 
 type EventMask uint64
 
-const EventMaskAny EventMask = 18446744073709551615
+const EventMaskAny EventMask = math.MaxUint
 const EventMaskLeftMouseDown EventMask = 2
 const EventMaskLeftMouseDragged EventMask = 64
 const EventMaskLeftMouseUp EventMask = 4
@@ -809,15 +812,15 @@ const UnitalicFontMask FontTraitMask = 16777216
 
 type FontWeight float64
 
-const FontWeightUltraLight FontWeight = -0.800000011920929
-const FontWeightThin FontWeight = -0.6000000238418579
-const FontWeightLight FontWeight = -0.4000000059604645
-const FontWeightRegular FontWeight = 0.0
-const FontWeightMedium FontWeight = 0.23000000417232513
-const FontWeightSemibold FontWeight = 0.30000001192092896
-const FontWeightBold FontWeight = 0.4000000059604645
-const FontWeightHeavy FontWeight = 0.5600000023841858
-const FontWeightBlack FontWeight = 0.6200000047683716
+const FontWeightUltraLight FontWeight = -0.800000
+const FontWeightThin FontWeight = -0.600000
+const FontWeightLight FontWeight = -0.400000
+const FontWeightRegular FontWeight = 0.000000
+const FontWeightMedium FontWeight = 0.230000
+const FontWeightSemibold FontWeight = 0.300000
+const FontWeightBold FontWeight = 0.400000
+const FontWeightHeavy FontWeight = 0.560000
+const FontWeightBlack FontWeight = 0.620000
 
 type FontWidth float64
 
@@ -1130,13 +1133,13 @@ const LayoutFormatDirectionMask LayoutFormatOptions = 196608
 
 type LayoutPriority float32
 
-const LayoutPriorityRequired LayoutPriority = 1000
-const LayoutPriorityDefaultHigh LayoutPriority = 750
-const LayoutPriorityDragThatCanResizeWindow LayoutPriority = 510
-const LayoutPriorityWindowSizeStayPut LayoutPriority = 500
-const LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490
-const LayoutPriorityDefaultLow LayoutPriority = 250
-const LayoutPriorityFittingSizeCompression LayoutPriority = 50
+const LayoutPriorityRequired LayoutPriority = 1000.000000
+const LayoutPriorityDefaultHigh LayoutPriority = 750.000000
+const LayoutPriorityDragThatCanResizeWindow LayoutPriority = 510.000000
+const LayoutPriorityWindowSizeStayPut LayoutPriority = 500.000000
+const LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490.000000
+const LayoutPriorityDefaultLow LayoutPriority = 250.000000
+const LayoutPriorityFittingSizeCompression LayoutPriority = 50.000000
 
 type LayoutRelation int
 
@@ -1604,9 +1607,9 @@ const StackViewGravityTrailing StackViewGravity = 3
 
 type StackViewVisibilityPriority float32
 
-const StackViewVisibilityPriorityMustHold StackViewVisibilityPriority = 1000
-const StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900
-const StackViewVisibilityPriorityNotVisible StackViewVisibilityPriority = 0
+const StackViewVisibilityPriorityMustHold StackViewVisibilityPriority = 1000.000000
+const StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900.000000
+const StackViewVisibilityPriorityNotVisible StackViewVisibilityPriority = 0.000000
 
 type StatusItemAutosaveName string
 
@@ -2008,9 +2011,9 @@ const TouchBarItemIdentifierTextStyle TouchBarItemIdentifier = "NSTouchBarItemId
 
 type TouchBarItemPriority float32
 
-const TouchBarItemPriorityLow TouchBarItemPriority = -1000.0
-const TouchBarItemPriorityNormal TouchBarItemPriority = 0.0
-const TouchBarItemPriorityHigh TouchBarItemPriority = 1000.0
+const TouchBarItemPriorityLow TouchBarItemPriority = -1000.000000
+const TouchBarItemPriorityNormal TouchBarItemPriority = 0.000000
+const TouchBarItemPriorityHigh TouchBarItemPriority = 1000.000000
 
 type TouchPhase uint
 
@@ -2020,7 +2023,7 @@ const TouchPhaseStationary TouchPhase = 4
 const TouchPhaseEnded TouchPhase = 8
 const TouchPhaseCancelled TouchPhase = 16
 const TouchPhaseTouching TouchPhase = 7
-const TouchPhaseAny TouchPhase = 18446744073709551615
+const TouchPhaseAny TouchPhase = math.MaxUint
 
 type TouchType int
 

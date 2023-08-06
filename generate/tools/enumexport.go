@@ -35,48 +35,39 @@ func main() {
 		fmt.Print(string(exportConstants(r, mod, TargetPlatform, TargetVersion)))
 	} else {
 		for _, m := range modules.All {
-			if m.Name == "UIKit" || m.Package == "objc" {
+			if m.Package == "objc" {
 				continue
 			}
 			dump := exportConstants(r, &m, TargetPlatform, TargetVersion)
-			filename := "./generate/modules/enums/" + TargetPlatform + "/" + m.Package
-			os.MkdirAll(filepath.Dir(filename), 0755)
-			if err := ioutil.WriteFile(filename, dump, 0644); err != nil {
-				log.Fatal(err)
+			if m.Package == "uikit" && TargetPlatform == "macos" {
+				// append to appkit instead
+				filename := "./generate/modules/enums/" + TargetPlatform + "/appkit"
+				log.Println(filename, "[uikit]")
+				f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+				if err != nil {
+					log.Fatal(err)
+				}
+				defer f.Close()
+				_, err = f.Write(dump)
+				if err != nil {
+					log.Fatal(err)
+				}
+			} else {
+				filename := "./generate/modules/enums/" + TargetPlatform + "/" + m.Package
+				log.Println(filename)
+				os.MkdirAll(filepath.Dir(filename), 0755)
+				if err := os.WriteFile(filename, dump, 0644); err != nil {
+					log.Fatal(err)
+				}
 			}
+
 		}
 	}
 
 }
 
 func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform string, version int) []byte {
-	// first get enums for int constants
-	var enums []string
-	for _, file := range db.File {
-		if filepath.Dir(file.Name) == fmt.Sprintf("symbols/%s", framework.Package) {
-			s, err := generate.LoadSymbolFrom(file)
-			if err != nil {
-				continue
-			}
-			if !s.HasPlatform(platform, version) {
-				continue
-			}
-			if s.Kind != "Enum" {
-				continue
-			}
-			enums = append(enums, s.Name)
-		}
-	}
-	inEnums := func(s string) bool {
-		for _, enum := range enums {
-			if enum == s {
-				return true
-			}
-		}
-		return false
-	}
 
-	// now collect types of values
 	var constInts []string
 	var constStrs []string
 	var constFloats []string
@@ -119,10 +110,17 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 			if err != nil {
 				continue
 			}
+			if platform == "macos" && framework.Package == "uikit" {
+				// we're going to pretend to be appkit later
+				// to handle the uikit symbols existing in appkit
+				if !s.HasFramework("appkit") {
+					continue
+				}
+			}
 			if !s.HasPlatform(platform, version) {
 				continue
 			}
-			if s.Kind == "Constant" && s.Type == "Enumeration Case" && inEnums(s.Parent) {
+			if s.Kind == "Constant" && s.Type == "Enumeration Case" {
 				constInts = append(constInts, s.Name)
 				continue
 			}
@@ -212,6 +210,12 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 	// for _, c := range constFloatPtrs {
 	// 	constPrintfs = append(constPrintfs, fmt.Sprintf("	printf(\"%s %%f\\n\", (float)*%s);\n", c, c))
 	// }
+
+	if platform == "macos" && framework.Package == "uikit" {
+		// in this case we will export these out of appkit
+		// since uikit does not exist on macos
+		framework = modules.Get("appkit")
+	}
 	source := fmt.Sprintf(`package main
 
 /*

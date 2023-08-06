@@ -3,9 +3,16 @@ IKCameraDeviceViewDisplayModeNone -1
 IKCameraDeviceViewDisplayModeTable 0
 IKCameraDeviceViewTransferModeFileBased 0
 IKCameraDeviceViewTransferModeMemoryBased 1
+IKCellsStyleNone 0
+IKCellsStyleOutlined 2
+IKCellsStyleShadowed 1
+IKCellsStyleSubtitled 8
+IKCellsStyleTitled 4
 IKDeviceBrowserViewDisplayModeIcon 2
 IKDeviceBrowserViewDisplayModeOutline 1
 IKDeviceBrowserViewDisplayModeTable 0
+IKGroupBezelStyle 0
+IKGroupDisclosureStyle 1
 IKImageBrowserDropBefore 1
 IKImageBrowserDropOn 0
 IKImageStateInvalid 1

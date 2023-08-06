@@ -1,12 +1,14 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
 package webkit
 
+import "math"
+
 type AudiovisualMediaTypes uint
 
 const AudiovisualMediaTypeNone AudiovisualMediaTypes = 0
 const AudiovisualMediaTypeAudio AudiovisualMediaTypes = 1
 const AudiovisualMediaTypeVideo AudiovisualMediaTypes = 2
-const AudiovisualMediaTypeAll AudiovisualMediaTypes = 18446744073709551615
+const AudiovisualMediaTypeAll AudiovisualMediaTypes = math.MaxUint
 
 type ContentMode int
 
@@ -36,9 +38,9 @@ const MediaCaptureTypeMicrophone MediaCaptureType = 1
 type MediaPlaybackState int
 
 const MediaPlaybackStateNone MediaPlaybackState = 0
-const MediaPlaybackStatePaused MediaPlaybackState = 1
-const MediaPlaybackStatePlaying MediaPlaybackState = 3
-const MediaPlaybackStateSuspended MediaPlaybackState = 2
+const MediaPlaybackStatePaused MediaPlaybackState = 2
+const MediaPlaybackStatePlaying MediaPlaybackState = 1
+const MediaPlaybackStateSuspended MediaPlaybackState = 3
 
 type NavigationActionPolicy int
 

@@ -45,9 +45,18 @@ func (s Symbol) DocURL() string {
 	return fmt.Sprintf("https://developer.apple.com/documentation/%s?language=objc", s.Path)
 }
 
+func (s Symbol) HasFramework(name string) bool {
+	for _, m := range s.Modules {
+		if strings.EqualFold(m, name) {
+			return true
+		}
+	}
+	return false
+}
+
 func (s Symbol) HasPlatform(name string, version int) bool {
 	for _, p := range s.Platforms {
-		if strings.ToLower(p.Name) == strings.ToLower(name) {
+		if strings.EqualFold(p.Name, name) {
 			if p.Deprecated {
 				return false
 			}

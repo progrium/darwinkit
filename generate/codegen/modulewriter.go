@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/generate/typing"
@@ -93,8 +94,9 @@ func (m *ModuleWriter) WriteAliasesCode() {
 	amd64cw.WriteLine("package " + m.Module.Package)
 
 	for _, ei := range enums {
+		primitiveType := ei.Type.GoName(&m.Module, false)
 		if ei.Module.Name == m.Module.Name {
-			cw.WriteLine(fmt.Sprintf("type %s %s\n", ei.GName, ei.Type.GoName(&m.Module, false)))
+			cw.WriteLine(fmt.Sprintf("type %s %s\n", ei.GName, primitiveType))
 		}
 		for _, v := range ei.Values {
 			if v.Module == nil {
@@ -103,6 +105,28 @@ func (m *ModuleWriter) WriteAliasesCode() {
 			if v.Module.Name != m.Module.Name {
 				// TODO: just skip it for now...
 				continue
+			}
+			c := modules.LookupConstant("macos", m.Module.Package, v.Name)
+			if c == nil {
+				log.Println("MISSING CONSTANT:", v.Name)
+			}
+			if c != nil {
+				v.Value = c.Value
+				v.Arm64Value = c.ArmValue
+			}
+			if primitiveType == "uint" || primitiveType == "uint64" {
+				// special cases maybe we wouldn't need if we exported properly
+				if v.Value == "-1" {
+					v.Value = "math.MaxUint"
+					if v.Arm64Value != "" {
+						v.Arm64Value = "math.MaxUint"
+					}
+				} else if strings.HasPrefix(v.Value, "-") {
+					v.Value = strings.TrimPrefix(v.Value, "-")
+					if v.Arm64Value != "" {
+						v.Arm64Value = strings.TrimPrefix(v.Arm64Value, "-")
+					}
+				}
 			}
 			if v.Value == "" {
 				log.Println("enum ", v.Name, " requires a value")

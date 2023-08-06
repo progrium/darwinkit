@@ -1,6 +1,8 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
 package foundation
 
+import "math"
+
 type AlignmentOptions uint64
 
 const AlignMinXInward AlignmentOptions = 1
@@ -606,8 +608,8 @@ const TextCheckingTypeTransitInformation TextCheckingType = 4096
 type TextCheckingTypes uint64
 
 const TextCheckingAllSystemTypes TextCheckingTypes = 4294967295
-const TextCheckingAllCustomTypes TextCheckingTypes = 18446744069414584320
-const TextCheckingAllTypes TextCheckingTypes = 18446744073709551615
+const TextCheckingAllCustomTypes TextCheckingTypes = 4294967296
+const TextCheckingAllTypes TextCheckingTypes = math.MaxUint
 
 type TimeInterval float64
 
