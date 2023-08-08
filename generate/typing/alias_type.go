@@ -25,7 +25,11 @@ func (a *AliasType) GoImports() set.Set[string] {
 }
 
 func (a *AliasType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
-	return FullGoName(*a.Module, a.GName, *currentModule)
+	mod := *a.Module
+	if currentModule.Package == "appkit" && mod.Package == "uikit" {
+		mod = *currentModule
+	}
+	return FullGoName(mod, a.GName, *currentModule)
 }
 
 func (a *AliasType) ObjcName() string {

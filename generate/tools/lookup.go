@@ -3,39 +3,29 @@
 package main
 
 import (
-	"archive/zip"
+	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
+
+	"github.com/progrium/macdriver/generate"
 )
 
 // go run ./generate/tools/lookup.go [framework/symbol, ex: appkit/nswindow]
 func main() {
-	dir := fmt.Sprintf("symbols/%s", strings.ToLower(os.Args[1]))
-	filename := fmt.Sprintf("symbols/%s.json", strings.ToLower(os.Args[1]))
-
-	r, err := zip.OpenReader("./generate/symbols.zip")
+	db, err := generate.OpenSymbols("./generate/symbols.zip")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer r.Close()
+	defer db.Close()
 
-	for _, file := range r.File {
-		if file.Name == filename || filepath.Dir(file.Name) == dir {
-			reader, err := file.Open()
+	for _, s := range db.AllSymbols() {
+		if strings.HasPrefix(s.Path, strings.ToLower(os.Args[1])) {
+			b, err := json.MarshalIndent(s, "", "  ")
 			if err != nil {
 				log.Fatal(err)
 			}
-			defer reader.Close()
-
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				log.Fatal(err)
-			}
-
 			fmt.Println(string(b))
 		}
 

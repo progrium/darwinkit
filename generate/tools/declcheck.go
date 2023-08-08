@@ -3,14 +3,12 @@
 package main
 
 import (
-	"archive/zip"
-	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"strings"
 
+	"github.com/progrium/macdriver/generate"
 	"github.com/progrium/macdriver/generate/declparse"
 )
 
@@ -21,56 +19,40 @@ func main() {
 		filter = os.Args[1]
 	}
 
-	r, err := zip.OpenReader("./generate/symbols.zip")
+	db, err := generate.OpenSymbols("./generate/symbols.zip")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer r.Close()
+	defer db.Close()
 
 	countDecls := map[string]int{}
 	countPass := map[string]int{}
-	for _, file := range r.File {
-		if !file.FileInfo().IsDir() {
-			if filter != "" {
-				if !strings.HasPrefix(strings.TrimPrefix(file.Name, "symbols/"), filter) {
-					continue
-				}
+	for _, s := range db.AllSymbols() {
+		if filter != "" {
+			if !strings.HasPrefix(s.Path, filter) {
+				continue
 			}
+		}
 
-			reader, err := file.Open()
+		if s.Declaration != "" && !strings.HasPrefix(s.Declaration, "#define") {
+			countDecls[s.Kind]++
+			//fmt.Println(s.Declaration)
+			p := declparse.NewStringParser(normalizeStmntString(s.Declaration))
+			switch s.Kind {
+			case "Constant", "Property":
+				p.Hint = declparse.HintVariable
+			case "Function":
+				p.Hint = declparse.HintFunction
+			default:
+			}
+			if s.Type == "Enumeration Case" {
+				p.Hint = declparse.HintEnumCase
+			}
+			_, err := p.Parse()
 			if err != nil {
-				log.Fatal(err)
-			}
-			defer reader.Close()
-
-			b, err := io.ReadAll(reader)
-			if err != nil {
-				log.Fatal(err)
-			}
-			var s Symbol
-			if err := json.Unmarshal(b, &s); err != nil {
-				log.Fatal(err)
-			}
-			if s.Declaration != "" && !strings.HasPrefix(s.Declaration, "#define") {
-				countDecls[s.Kind]++
-				//fmt.Println(s.Declaration)
-				p := declparse.NewStringParser(normalizeStmntString(s.Declaration))
-				switch s.Kind {
-				case "Constant", "Property":
-					p.Hint = declparse.HintVariable
-				case "Function":
-					p.Hint = declparse.HintFunction
-				default:
-				}
-				if s.Type == "Enumeration Case" {
-					p.Hint = declparse.HintEnumCase
-				}
-				_, err := p.Parse()
-				if err != nil {
-					log.Println(err, "::", s.Type, "::", s.Declaration)
-				} else {
-					countPass[s.Kind]++
-				}
+				log.Println(err, "::", s.Type, "::", s.Declaration)
+			} else {
+				countPass[s.Kind]++
 			}
 		}
 	}

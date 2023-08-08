@@ -44,7 +44,7 @@ func loadConstants(filepath string) bool {
 }
 
 func LookupConstant(platform, framework, name string) *Constant {
-	filepath := fmt.Sprintf("%s/%s", platform, framework)
+	filepath := fmt.Sprintf("%s/%s", platform, strings.ToLower(framework))
 	key := strings.ToLower(fmt.Sprintf("%s/%s", filepath, name))
 	if c, ok := constantCache[key]; ok {
 		return c

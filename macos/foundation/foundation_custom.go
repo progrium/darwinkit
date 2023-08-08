@@ -386,26 +386,6 @@ func ToGoError(err Error) error {
 	}
 }
 
-// JSONSerialization begin
-type JSONReadingOptions uint
-
-const (
-	JSONReadingMutableContainers         JSONReadingOptions = 1 << 0
-	JSONReadingMutableLeaves             JSONReadingOptions = 1 << 1
-	JSONReadingFragmentsAllowed          JSONReadingOptions = 1 << 2
-	JSONReadingJSON5Allowed              JSONReadingOptions = 1 << 3
-	JSONReadingTopLevelDictionaryAssumed JSONReadingOptions = 1 << 4
-)
-
-type JSONWritingOptions uint
-
-const (
-	JSONWritingPrettyPrinted          JSONWritingOptions = 1 << 0
-	JSONWritingSortedKeys             JSONWritingOptions = 1 << 1
-	JSONWritingFragmentsAllowed       JSONWritingOptions = 1 << 2
-	JSONWritingWithoutEscapingSlashes JSONWritingOptions = 1 << 3
-)
-
 var _NSJSONSerializationClass = objc.GetClass("NSJSONSerialization")
 
 func JSONObjectWithData(data []byte, options JSONReadingOptions) (objc.Object, error) {

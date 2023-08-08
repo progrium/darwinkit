@@ -6,8 +6,6 @@ import "github.com/progrium/macdriver/objc"
 
 // struct def should be sync with struct in <CoreGraphics/CGGeometry.h> <CoreGraphics/CGAffineTransform.h>
 
-type Float = float64
-
 type AffineTransform struct {
 	A  Float
 	B  Float

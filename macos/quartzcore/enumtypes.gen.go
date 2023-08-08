@@ -3,153 +3,192 @@ package quartzcore
 
 type AnimationCalculationMode string
 
-const AnimationCubic AnimationCalculationMode = "cubic"
-const AnimationCubicPaced AnimationCalculationMode = "cubicPaced"
-const AnimationDiscrete AnimationCalculationMode = "discrete"
-const AnimationLinear AnimationCalculationMode = "linear"
-const AnimationPaced AnimationCalculationMode = "paced"
+const KAnimationCubic AnimationCalculationMode = "cubic"
+const KAnimationCubicPaced AnimationCalculationMode = "cubicPaced"
+const KAnimationDiscrete AnimationCalculationMode = "discrete"
+const KAnimationLinear AnimationCalculationMode = "linear"
+const KAnimationPaced AnimationCalculationMode = "paced"
 
 type AnimationRotationMode string
 
-const AnimationRotateAuto AnimationRotationMode = "auto"
-const AnimationRotateAutoReverse AnimationRotationMode = "autoReverse"
+const KAnimationRotateAuto AnimationRotationMode = "auto"
+const KAnimationRotateAutoReverse AnimationRotationMode = "autoReverse"
 
-type AutoresizingMask uint32
+type AutoresizingMask int
 
-const LayerNotSizable AutoresizingMask = 0
-const LayerMinXMargin AutoresizingMask = 1
-const LayerWidthSizable AutoresizingMask = 2
-const LayerMaxXMargin AutoresizingMask = 4
-const LayerMinYMargin AutoresizingMask = 8
-const LayerHeightSizable AutoresizingMask = 16
-const LayerMaxYMargin AutoresizingMask = 32
+const KLayerHeightSizable AutoresizingMask = 16
+const KLayerMaxXMargin AutoresizingMask = 4
+const KLayerMaxYMargin AutoresizingMask = 32
+const KLayerMinXMargin AutoresizingMask = 1
+const KLayerMinYMargin AutoresizingMask = 8
+const KLayerNotSizable AutoresizingMask = 0
+const KLayerWidthSizable AutoresizingMask = 2
 
-type ConstraintAttribute int32
+type ConstraintAttribute int
 
-const ConstraintHeight ConstraintAttribute = 7
-const ConstraintMaxX ConstraintAttribute = 2
-const ConstraintMaxY ConstraintAttribute = 6
-const ConstraintMidX ConstraintAttribute = 1
-const ConstraintMidY ConstraintAttribute = 5
-const ConstraintMinX ConstraintAttribute = 0
-const ConstraintMinY ConstraintAttribute = 4
-const ConstraintWidth ConstraintAttribute = 3
+const KConstraintHeight ConstraintAttribute = 7
+const KConstraintMaxX ConstraintAttribute = 2
+const KConstraintMaxY ConstraintAttribute = 6
+const KConstraintMidX ConstraintAttribute = 1
+const KConstraintMidY ConstraintAttribute = 5
+const KConstraintMinX ConstraintAttribute = 0
+const KConstraintMinY ConstraintAttribute = 4
+const KConstraintWidth ConstraintAttribute = 3
 
 type CornerMask uint
 
-const LayerMaxXMaxYCorner CornerMask = 8
-const LayerMaxXMinYCorner CornerMask = 2
-const LayerMinXMaxYCorner CornerMask = 4
-const LayerMinXMinYCorner CornerMask = 1
+const KLayerMaxXMaxYCorner CornerMask = 8
+const KLayerMaxXMinYCorner CornerMask = 2
+const KLayerMinXMaxYCorner CornerMask = 4
+const KLayerMinXMinYCorner CornerMask = 1
 
-type EdgeAntialiasingMask uint32
+type EdgeAntialiasingMask int
 
-const LayerLeftEdge EdgeAntialiasingMask = 1
-const LayerRightEdge EdgeAntialiasingMask = 2
-const LayerBottomEdge EdgeAntialiasingMask = 4
-const LayerTopEdge EdgeAntialiasingMask = 8
+const KLayerBottomEdge EdgeAntialiasingMask = 4
+const KLayerLeftEdge EdgeAntialiasingMask = 1
+const KLayerRightEdge EdgeAntialiasingMask = 2
+const KLayerTopEdge EdgeAntialiasingMask = 8
+
+type EmitterLayerEmitterMode string
+
+const KEmitterLayerOutline EmitterLayerEmitterMode = "outline"
+const KEmitterLayerPoints EmitterLayerEmitterMode = "points"
+const KEmitterLayerSurface EmitterLayerEmitterMode = "surface"
+const KEmitterLayerVolume EmitterLayerEmitterMode = "volume"
+
+type EmitterLayerEmitterShape string
+
+const KEmitterLayerCircle EmitterLayerEmitterShape = "circle"
+const KEmitterLayerCuboid EmitterLayerEmitterShape = "cuboid"
+const KEmitterLayerLine EmitterLayerEmitterShape = "line"
+const KEmitterLayerPoint EmitterLayerEmitterShape = "point"
+const KEmitterLayerRectangle EmitterLayerEmitterShape = "rectangle"
+const KEmitterLayerSphere EmitterLayerEmitterShape = "sphere"
+
+type EmitterLayerRenderMode string
+
+const KEmitterLayerAdditive EmitterLayerRenderMode = "additive"
+const KEmitterLayerBackToFront EmitterLayerRenderMode = "backToFront"
+const KEmitterLayerOldestFirst EmitterLayerRenderMode = "oldestFirst"
+const KEmitterLayerOldestLast EmitterLayerRenderMode = "oldestLast"
+const KEmitterLayerUnordered EmitterLayerRenderMode = "unordered"
 
 type GradientLayerType string
 
-const GradientLayerAxial GradientLayerType = "axial"
-const GradientLayerConic GradientLayerType = "conic"
-const GradientLayerRadial GradientLayerType = "radial"
+const KGradientLayerAxial GradientLayerType = "axial"
+const KGradientLayerConic GradientLayerType = "conic"
+const KGradientLayerRadial GradientLayerType = "radial"
 
 type LayerContentsFilter string
 
-const FilterLinear LayerContentsFilter = "linear"
-const FilterNearest LayerContentsFilter = "nearest"
-const FilterTrilinear LayerContentsFilter = "trilinear"
+const KFilterLinear LayerContentsFilter = "linear"
+const KFilterNearest LayerContentsFilter = "nearest"
+const KFilterTrilinear LayerContentsFilter = "trilinear"
 
 type LayerContentsFormat string
 
-const ContentsFormatRGBA16Float LayerContentsFormat = "RGBAh"
-const ContentsFormatRGBA8Uint LayerContentsFormat = "RGBA8"
-const ContentsFormatGray8Uint LayerContentsFormat = "Gray8"
+const KContentsFormatGray8Uint LayerContentsFormat = "Gray8"
+const KContentsFormatRGBA16Float LayerContentsFormat = "RGBAh"
+const KContentsFormatRGBA8Uint LayerContentsFormat = "RGBA8"
 
 type LayerContentsGravity string
 
-const GravityBottom LayerContentsGravity = "bottom"
-const GravityBottomLeft LayerContentsGravity = "bottomLeft"
-const GravityBottomRight LayerContentsGravity = "bottomRight"
-const GravityCenter LayerContentsGravity = "center"
-const GravityLeft LayerContentsGravity = "left"
-const GravityResize LayerContentsGravity = "resize"
-const GravityResizeAspect LayerContentsGravity = "resizeAspect"
-const GravityResizeAspectFill LayerContentsGravity = "resizeAspectFill"
-const GravityRight LayerContentsGravity = "right"
-const GravityTop LayerContentsGravity = "top"
-const GravityTopLeft LayerContentsGravity = "topLeft"
-const GravityTopRight LayerContentsGravity = "topRight"
+const KGravityBottom LayerContentsGravity = "bottom"
+const KGravityBottomLeft LayerContentsGravity = "bottomLeft"
+const KGravityBottomRight LayerContentsGravity = "bottomRight"
+const KGravityCenter LayerContentsGravity = "center"
+const KGravityLeft LayerContentsGravity = "left"
+const KGravityResize LayerContentsGravity = "resize"
+const KGravityResizeAspect LayerContentsGravity = "resizeAspect"
+const KGravityResizeAspectFill LayerContentsGravity = "resizeAspectFill"
+const KGravityRight LayerContentsGravity = "right"
+const KGravityTop LayerContentsGravity = "top"
+const KGravityTopLeft LayerContentsGravity = "topLeft"
+const KGravityTopRight LayerContentsGravity = "topRight"
 
 type LayerCornerCurve string
 
-const CornerCurveCircular LayerCornerCurve = "circular"
-const CornerCurveContinuous LayerCornerCurve = "continuous"
+const KCornerCurveCircular LayerCornerCurve = "circular"
+const KCornerCurveContinuous LayerCornerCurve = "continuous"
+
+type MediaTimingFillMode string
+
+const KFillModeBackwards MediaTimingFillMode = "backwards"
+const KFillModeBoth MediaTimingFillMode = "both"
+const KFillModeForwards MediaTimingFillMode = "forwards"
+const KFillModeRemoved MediaTimingFillMode = "removed"
+
+type MediaTimingFunctionName string
+
+const KMediaTimingFunctionDefault MediaTimingFunctionName = "default"
+const KMediaTimingFunctionEaseIn MediaTimingFunctionName = "easeIn"
+const KMediaTimingFunctionEaseInEaseOut MediaTimingFunctionName = "easeInEaseOut"
+const KMediaTimingFunctionEaseOut MediaTimingFunctionName = "easeOut"
+const KMediaTimingFunctionLinear MediaTimingFunctionName = "linear"
 
 type ScrollLayerScrollMode string
 
-const ScrollBoth ScrollLayerScrollMode = "both"
-const ScrollHorizontally ScrollLayerScrollMode = "horizontally"
-const ScrollNone ScrollLayerScrollMode = "none"
-const ScrollVertically ScrollLayerScrollMode = "vertically"
+const KScrollBoth ScrollLayerScrollMode = "both"
+const KScrollHorizontally ScrollLayerScrollMode = "horizontally"
+const KScrollNone ScrollLayerScrollMode = "none"
+const KScrollVertically ScrollLayerScrollMode = "vertically"
 
 type ShapeLayerFillRule string
 
-const FillRuleEvenOdd ShapeLayerFillRule = "even-odd"
-const FillRuleNonZero ShapeLayerFillRule = "non-zero"
+const KFillRuleEvenOdd ShapeLayerFillRule = "even-odd"
+const KFillRuleNonZero ShapeLayerFillRule = "non-zero"
 
 type ShapeLayerLineCap string
 
-const LineCapButt ShapeLayerLineCap = "butt"
-const LineCapRound ShapeLayerLineCap = "round"
-const LineCapSquare ShapeLayerLineCap = "square"
+const KLineCapButt ShapeLayerLineCap = "butt"
+const KLineCapRound ShapeLayerLineCap = "round"
+const KLineCapSquare ShapeLayerLineCap = "square"
 
 type ShapeLayerLineJoin string
 
-const LineJoinBevel ShapeLayerLineJoin = "bevel"
-const LineJoinMiter ShapeLayerLineJoin = "miter"
-const LineJoinRound ShapeLayerLineJoin = "round"
+const KLineJoinBevel ShapeLayerLineJoin = "bevel"
+const KLineJoinMiter ShapeLayerLineJoin = "miter"
+const KLineJoinRound ShapeLayerLineJoin = "round"
 
 type TextLayerAlignmentMode string
 
-const AlignmentCenter TextLayerAlignmentMode = "center"
-const AlignmentJustified TextLayerAlignmentMode = "justified"
-const AlignmentLeft TextLayerAlignmentMode = "left"
-const AlignmentNatural TextLayerAlignmentMode = "natural"
-const AlignmentRight TextLayerAlignmentMode = "right"
+const KAlignmentCenter TextLayerAlignmentMode = "center"
+const KAlignmentJustified TextLayerAlignmentMode = "justified"
+const KAlignmentLeft TextLayerAlignmentMode = "left"
+const KAlignmentNatural TextLayerAlignmentMode = "natural"
+const KAlignmentRight TextLayerAlignmentMode = "right"
 
 type TextLayerTruncationMode string
 
-const TruncationEnd TextLayerTruncationMode = "end"
-const TruncationMiddle TextLayerTruncationMode = "middle"
-const TruncationNone TextLayerTruncationMode = "none"
-const TruncationStart TextLayerTruncationMode = "start"
+const KTruncationEnd TextLayerTruncationMode = "end"
+const KTruncationMiddle TextLayerTruncationMode = "middle"
+const KTruncationNone TextLayerTruncationMode = "none"
+const KTruncationStart TextLayerTruncationMode = "start"
 
 type TransitionSubtype string
 
-const TransitionFromBottom TransitionSubtype = "fromBottom"
-const TransitionFromLeft TransitionSubtype = "fromLeft"
-const TransitionFromRight TransitionSubtype = "fromRight"
-const TransitionFromTop TransitionSubtype = "fromTop"
+const KTransitionFromBottom TransitionSubtype = "fromBottom"
+const KTransitionFromLeft TransitionSubtype = "fromLeft"
+const KTransitionFromRight TransitionSubtype = "fromRight"
+const KTransitionFromTop TransitionSubtype = "fromTop"
 
 type TransitionType string
 
-const TransitionFade TransitionType = "fade"
-const TransitionMoveIn TransitionType = "moveIn"
-const TransitionPush TransitionType = "push"
-const TransitionReveal TransitionType = "reveal"
+const KTransitionFade TransitionType = "fade"
+const KTransitionMoveIn TransitionType = "moveIn"
+const KTransitionPush TransitionType = "push"
+const KTransitionReveal TransitionType = "reveal"
 
 type ValueFunctionName string
 
-const ValueFunctionRotateX ValueFunctionName = "rotateX"
-const ValueFunctionRotateY ValueFunctionName = "rotateY"
-const ValueFunctionRotateZ ValueFunctionName = "rotateZ"
-const ValueFunctionScale ValueFunctionName = "scale"
-const ValueFunctionScaleX ValueFunctionName = "scaleX"
-const ValueFunctionScaleY ValueFunctionName = "scaleY"
-const ValueFunctionScaleZ ValueFunctionName = "scaleZ"
-const ValueFunctionTranslate ValueFunctionName = "translate"
-const ValueFunctionTranslateX ValueFunctionName = "translateX"
-const ValueFunctionTranslateY ValueFunctionName = "translateY"
-const ValueFunctionTranslateZ ValueFunctionName = "translateZ"
+const KValueFunctionRotateX ValueFunctionName = "rotateX"
+const KValueFunctionRotateY ValueFunctionName = "rotateY"
+const KValueFunctionRotateZ ValueFunctionName = "rotateZ"
+const KValueFunctionScale ValueFunctionName = "scale"
+const KValueFunctionScaleX ValueFunctionName = "scaleX"
+const KValueFunctionScaleY ValueFunctionName = "scaleY"
+const KValueFunctionScaleZ ValueFunctionName = "scaleZ"
+const KValueFunctionTranslate ValueFunctionName = "translate"
+const KValueFunctionTranslateX ValueFunctionName = "translateX"
+const KValueFunctionTranslateY ValueFunctionName = "translateY"
+const KValueFunctionTranslateZ ValueFunctionName = "translateZ"

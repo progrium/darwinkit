@@ -35,6 +35,10 @@ func init() {
 	for _, pt := range []*PrimitiveType{Bool, Int, UInt, Float, Double, Int8, UInt8, Byte, Int16, UInt16, Int32, UInt32, Int64, UInt64} {
 		primitiveMap[pt.ObjcName_] = pt
 	}
+	primitiveMap["int"] = Int
+	primitiveMap["short"] = Int
+	primitiveMap["long"] = Int32
+	primitiveMap["long long"] = Int64
 }
 
 func GetPrimitiveType(typeName string) (*PrimitiveType, bool) {

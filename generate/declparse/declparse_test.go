@@ -8,6 +8,10 @@ package declparse
 
 // __kindof NSApplication *NSApp;
 
+// typedef const void * _Nullable (*CGDataProviderGetBytePointerCallback)(void *info);
+
+// typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);
+
 var tests = []struct {
 	s         string
 	n         Node

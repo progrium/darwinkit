@@ -1,10 +1,7 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
 package appkit
 
-import (
-	"math"
-	"unsafe"
-)
+import "math"
 
 type AboutPanelOptionKey string
 
@@ -14,11 +11,428 @@ const AboutPanelOptionApplicationVersion AboutPanelOptionKey = "ApplicationVersi
 const AboutPanelOptionCredits AboutPanelOptionKey = "Credits"
 const AboutPanelOptionVersion AboutPanelOptionKey = "Version"
 
+type AccessibilityActionName string
+
+const AccessibilityCancelAction AccessibilityActionName = "AXCancel"
+const AccessibilityConfirmAction AccessibilityActionName = "AXConfirm"
+const AccessibilityDecrementAction AccessibilityActionName = "AXDecrement"
+const AccessibilityDeleteAction AccessibilityActionName = "AXDelete"
+const AccessibilityIncrementAction AccessibilityActionName = "AXIncrement"
+const AccessibilityPickAction AccessibilityActionName = "AXPick"
+const AccessibilityPressAction AccessibilityActionName = "AXPress"
+const AccessibilityRaiseAction AccessibilityActionName = "AXRaise"
+const AccessibilityShowAlternateUIAction AccessibilityActionName = "AXShowAlternateUI"
+const AccessibilityShowDefaultUIAction AccessibilityActionName = "AXShowDefaultUI"
+const AccessibilityShowMenuAction AccessibilityActionName = "AXShowMenu"
+
+type AccessibilityAnnotationAttributeKey string
+
+const AccessibilityAnnotationElement AccessibilityAnnotationAttributeKey = "AXAnnotationElement"
+const AccessibilityAnnotationLabel AccessibilityAnnotationAttributeKey = "AXAnnotationLabel"
+const AccessibilityAnnotationLocation AccessibilityAnnotationAttributeKey = "AXAnnotationLocation"
+
+type AccessibilityAnnotationPosition int
+
+const AccessibilityAnnotationPositionEnd AccessibilityAnnotationPosition = 2
+const AccessibilityAnnotationPositionFullRange AccessibilityAnnotationPosition = 0
+const AccessibilityAnnotationPositionStart AccessibilityAnnotationPosition = 1
+
+type AccessibilityAttributeName string
+
+const AccessibilityActivationPointAttribute AccessibilityAttributeName = "AXActivationPoint"
+const AccessibilityAllowedValuesAttribute AccessibilityAttributeName = "AXAllowedValues"
+const AccessibilityAlternateUIVisibleAttribute AccessibilityAttributeName = "AXAlternateUIVisible"
+const AccessibilityCancelButtonAttribute AccessibilityAttributeName = "AXCancelButton"
+const AccessibilityChildrenAttribute AccessibilityAttributeName = "AXChildren"
+const AccessibilityClearButtonAttribute AccessibilityAttributeName = "AXClearButton"
+const AccessibilityCloseButtonAttribute AccessibilityAttributeName = "AXCloseButton"
+const AccessibilityColumnCountAttribute AccessibilityAttributeName = "AXColumnCount"
+const AccessibilityColumnHeaderUIElementsAttribute AccessibilityAttributeName = "AXColumnHeaderUIElements"
+const AccessibilityColumnIndexRangeAttribute AccessibilityAttributeName = "AXColumnIndexRange"
+const AccessibilityColumnTitlesAttribute AccessibilityAttributeName = "AXColumnTitles"
+const AccessibilityColumnsAttribute AccessibilityAttributeName = "AXColumns"
+const AccessibilityContainsProtectedContentAttribute AccessibilityAttributeName = "AXContainsProtectedContent"
+const AccessibilityContentsAttribute AccessibilityAttributeName = "AXContents"
+const AccessibilityCriticalValueAttribute AccessibilityAttributeName = "AXCriticalValue"
+const AccessibilityDecrementButtonAttribute AccessibilityAttributeName = "AXDecrementButton"
+const AccessibilityDefaultButtonAttribute AccessibilityAttributeName = "AXDefaultButton"
+const AccessibilityDescriptionAttribute AccessibilityAttributeName = "AXDescription"
+const AccessibilityDisclosedByRowAttribute AccessibilityAttributeName = "AXDisclosedByRow"
+const AccessibilityDisclosedRowsAttribute AccessibilityAttributeName = "AXDisclosedRows"
+const AccessibilityDisclosingAttribute AccessibilityAttributeName = "AXDisclosing"
+const AccessibilityDisclosureLevelAttribute AccessibilityAttributeName = "AXDisclosureLevel"
+const AccessibilityDocumentAttribute AccessibilityAttributeName = "AXDocument"
+const AccessibilityEditedAttribute AccessibilityAttributeName = "AXEdited"
+const AccessibilityEnabledAttribute AccessibilityAttributeName = "AXEnabled"
+const AccessibilityExpandedAttribute AccessibilityAttributeName = "AXExpanded"
+const AccessibilityExtrasMenuBarAttribute AccessibilityAttributeName = "AXExtrasMenuBar"
+const AccessibilityFilenameAttribute AccessibilityAttributeName = "AXFilename"
+const AccessibilityFocusedAttribute AccessibilityAttributeName = "AXFocused"
+const AccessibilityFocusedUIElementAttribute AccessibilityAttributeName = "AXFocusedUIElement"
+const AccessibilityFocusedWindowAttribute AccessibilityAttributeName = "AXFocusedWindow"
+const AccessibilityFrontmostAttribute AccessibilityAttributeName = "AXFrontmost"
+const AccessibilityFullScreenButtonAttribute AccessibilityAttributeName = "AXFullScreenButton"
+const AccessibilityGrowAreaAttribute AccessibilityAttributeName = "AXGrowArea"
+const AccessibilityHandlesAttribute AccessibilityAttributeName = "AXHandles"
+const AccessibilityHeaderAttribute AccessibilityAttributeName = "AXHeader"
+const AccessibilityHelpAttribute AccessibilityAttributeName = "AXHelp"
+const AccessibilityHiddenAttribute AccessibilityAttributeName = "AXHidden"
+const AccessibilityHorizontalScrollBarAttribute AccessibilityAttributeName = "AXHorizontalScrollBar"
+const AccessibilityHorizontalUnitDescriptionAttribute AccessibilityAttributeName = "AXHorizontalUnitDescription"
+const AccessibilityHorizontalUnitsAttribute AccessibilityAttributeName = "AXHorizontalUnits"
+const AccessibilityIdentifierAttribute AccessibilityAttributeName = "AXIdentifier"
+const AccessibilityIncrementButtonAttribute AccessibilityAttributeName = "AXIncrementButton"
+const AccessibilityIndexAttribute AccessibilityAttributeName = "AXIndex"
+const AccessibilityInsertionPointLineNumberAttribute AccessibilityAttributeName = "AXInsertionPointLineNumber"
+const AccessibilityLabelUIElementsAttribute AccessibilityAttributeName = "AXLabelUIElements"
+const AccessibilityLabelValueAttribute AccessibilityAttributeName = "AXLabelValue"
+const AccessibilityLinkedUIElementsAttribute AccessibilityAttributeName = "AXLinkedUIElements"
+const AccessibilityMainAttribute AccessibilityAttributeName = "AXMain"
+const AccessibilityMainWindowAttribute AccessibilityAttributeName = "AXMainWindow"
+const AccessibilityMarkerGroupUIElementAttribute AccessibilityAttributeName = "AXMarkerGroupUIElement"
+const AccessibilityMarkerTypeAttribute AccessibilityAttributeName = "AXMarkerType"
+const AccessibilityMarkerTypeDescriptionAttribute AccessibilityAttributeName = "AXMarkerTypeDescription"
+const AccessibilityMarkerUIElementsAttribute AccessibilityAttributeName = "AXMarkerUIElements"
+const AccessibilityMarkerValuesAttribute AccessibilityAttributeName = "AXMarkerValues"
+const AccessibilityMatteContentUIElementAttribute AccessibilityAttributeName = "AXMatteContentUIElement"
+const AccessibilityMatteHoleAttribute AccessibilityAttributeName = "AXMatteHole"
+const AccessibilityMaxValueAttribute AccessibilityAttributeName = "AXMaxValue"
+const AccessibilityMenuBarAttribute AccessibilityAttributeName = "AXMenuBar"
+const AccessibilityMinValueAttribute AccessibilityAttributeName = "AXMinValue"
+const AccessibilityMinimizeButtonAttribute AccessibilityAttributeName = "AXMinimizeButton"
+const AccessibilityMinimizedAttribute AccessibilityAttributeName = "AXMinimized"
+const AccessibilityModalAttribute AccessibilityAttributeName = "AXModal"
+const AccessibilityNextContentsAttribute AccessibilityAttributeName = "AXNextContents"
+const AccessibilityNumberOfCharactersAttribute AccessibilityAttributeName = "AXNumberOfCharacters"
+const AccessibilityOrderedByRowAttribute AccessibilityAttributeName = "AXOrderedByRow"
+const AccessibilityOrientationAttribute AccessibilityAttributeName = "AXOrientation"
+const AccessibilityOverflowButtonAttribute AccessibilityAttributeName = "AXOverflowButton"
+const AccessibilityParentAttribute AccessibilityAttributeName = "AXParent"
+const AccessibilityPlaceholderValueAttribute AccessibilityAttributeName = "AXPlaceholderValue"
+const AccessibilityPositionAttribute AccessibilityAttributeName = "AXPosition"
+const AccessibilityPreviousContentsAttribute AccessibilityAttributeName = "AXPreviousContents"
+const AccessibilityProxyAttribute AccessibilityAttributeName = "AXProxy"
+const AccessibilityRequiredAttribute AccessibilityAttributeName = "AXRequired"
+const AccessibilityRoleAttribute AccessibilityAttributeName = "AXRole"
+const AccessibilityRoleDescriptionAttribute AccessibilityAttributeName = "AXRoleDescription"
+const AccessibilityRowCountAttribute AccessibilityAttributeName = "AXRowCount"
+const AccessibilityRowHeaderUIElementsAttribute AccessibilityAttributeName = "AXRowHeaderUIElements"
+const AccessibilityRowIndexRangeAttribute AccessibilityAttributeName = "AXRowIndexRange"
+const AccessibilityRowsAttribute AccessibilityAttributeName = "AXRows"
+const AccessibilitySearchButtonAttribute AccessibilityAttributeName = "AXSearchButton"
+const AccessibilitySearchMenuAttribute AccessibilityAttributeName = "AXSearchMenu"
+const AccessibilitySelectedAttribute AccessibilityAttributeName = "AXSelected"
+const AccessibilitySelectedCellsAttribute AccessibilityAttributeName = "AXSelectedCells"
+const AccessibilitySelectedChildrenAttribute AccessibilityAttributeName = "AXSelectedChildren"
+const AccessibilitySelectedColumnsAttribute AccessibilityAttributeName = "AXSelectedColumns"
+const AccessibilitySelectedRowsAttribute AccessibilityAttributeName = "AXSelectedRows"
+const AccessibilitySelectedTextAttribute AccessibilityAttributeName = "AXSelectedText"
+const AccessibilitySelectedTextRangeAttribute AccessibilityAttributeName = "AXSelectedTextRange"
+const AccessibilitySelectedTextRangesAttribute AccessibilityAttributeName = "AXSelectedTextRanges"
+const AccessibilityServesAsTitleForUIElementsAttribute AccessibilityAttributeName = "AXServesAsTitleForUIElements"
+const AccessibilitySharedCharacterRangeAttribute AccessibilityAttributeName = "AXSharedCharacterRange"
+const AccessibilitySharedFocusElementsAttribute AccessibilityAttributeName = "AXSharedFocusElements"
+const AccessibilitySharedTextUIElementsAttribute AccessibilityAttributeName = "AXSharedTextUIElements"
+const AccessibilityShownMenuAttribute AccessibilityAttributeName = "AXShownMenuUIElement"
+const AccessibilitySizeAttribute AccessibilityAttributeName = "AXSize"
+const AccessibilitySortDirectionAttribute AccessibilityAttributeName = "AXSortDirection"
+const AccessibilitySplittersAttribute AccessibilityAttributeName = "AXSplitters"
+const AccessibilitySubroleAttribute AccessibilityAttributeName = "AXSubrole"
+const AccessibilityTabsAttribute AccessibilityAttributeName = "AXTabs"
+const AccessibilityTitleAttribute AccessibilityAttributeName = "AXTitle"
+const AccessibilityTitleUIElementAttribute AccessibilityAttributeName = "AXTitleUIElement"
+const AccessibilityToolbarButtonAttribute AccessibilityAttributeName = "AXToolbarButton"
+const AccessibilityTopLevelUIElementAttribute AccessibilityAttributeName = "AXTopLevelUIElement"
+const AccessibilityURLAttribute AccessibilityAttributeName = "AXURL"
+const AccessibilityUnitDescriptionAttribute AccessibilityAttributeName = "AXUnitDescription"
+const AccessibilityUnitsAttribute AccessibilityAttributeName = "AXUnits"
+const AccessibilityValueAttribute AccessibilityAttributeName = "AXValue"
+const AccessibilityValueDescriptionAttribute AccessibilityAttributeName = "AXValueDescription"
+const AccessibilityVerticalScrollBarAttribute AccessibilityAttributeName = "AXVerticalScrollBar"
+const AccessibilityVerticalUnitDescriptionAttribute AccessibilityAttributeName = "AXVerticalUnitDescription"
+const AccessibilityVerticalUnitsAttribute AccessibilityAttributeName = "AXVerticalUnits"
+const AccessibilityVisibleCellsAttribute AccessibilityAttributeName = "AXVisibleCells"
+const AccessibilityVisibleCharacterRangeAttribute AccessibilityAttributeName = "AXVisibleCharacterRange"
+const AccessibilityVisibleChildrenAttribute AccessibilityAttributeName = "AXVisibleChildren"
+const AccessibilityVisibleColumnsAttribute AccessibilityAttributeName = "AXVisibleColumns"
+const AccessibilityVisibleRowsAttribute AccessibilityAttributeName = "AXVisibleRows"
+const AccessibilityWarningValueAttribute AccessibilityAttributeName = "AXWarningValue"
+const AccessibilityWindowAttribute AccessibilityAttributeName = "AXWindow"
+const AccessibilityWindowsAttribute AccessibilityAttributeName = "AXWindows"
+const AccessibilityZoomButtonAttribute AccessibilityAttributeName = "AXZoomButton"
+
+type AccessibilityCustomRotorSearchDirection int
+
+const AccessibilityCustomRotorSearchDirectionNext AccessibilityCustomRotorSearchDirection = 1
+const AccessibilityCustomRotorSearchDirectionPrevious AccessibilityCustomRotorSearchDirection = 0
+
+type AccessibilityCustomRotorType int
+
+const AccessibilityCustomRotorTypeAnnotation AccessibilityCustomRotorType = 2
+const AccessibilityCustomRotorTypeAny AccessibilityCustomRotorType = 1
+const AccessibilityCustomRotorTypeAudiograph AccessibilityCustomRotorType = 21
+const AccessibilityCustomRotorTypeBoldText AccessibilityCustomRotorType = 3
+const AccessibilityCustomRotorTypeCustom AccessibilityCustomRotorType = 0
+const AccessibilityCustomRotorTypeHeading AccessibilityCustomRotorType = 4
+const AccessibilityCustomRotorTypeHeadingLevel1 AccessibilityCustomRotorType = 5
+const AccessibilityCustomRotorTypeHeadingLevel2 AccessibilityCustomRotorType = 6
+const AccessibilityCustomRotorTypeHeadingLevel3 AccessibilityCustomRotorType = 7
+const AccessibilityCustomRotorTypeHeadingLevel4 AccessibilityCustomRotorType = 8
+const AccessibilityCustomRotorTypeHeadingLevel5 AccessibilityCustomRotorType = 9
+const AccessibilityCustomRotorTypeHeadingLevel6 AccessibilityCustomRotorType = 10
+const AccessibilityCustomRotorTypeImage AccessibilityCustomRotorType = 11
+const AccessibilityCustomRotorTypeItalicText AccessibilityCustomRotorType = 12
+const AccessibilityCustomRotorTypeLandmark AccessibilityCustomRotorType = 13
+const AccessibilityCustomRotorTypeLink AccessibilityCustomRotorType = 14
+const AccessibilityCustomRotorTypeList AccessibilityCustomRotorType = 15
+const AccessibilityCustomRotorTypeMisspelledWord AccessibilityCustomRotorType = 16
+const AccessibilityCustomRotorTypeTable AccessibilityCustomRotorType = 17
+const AccessibilityCustomRotorTypeTextField AccessibilityCustomRotorType = 18
+const AccessibilityCustomRotorTypeUnderlinedText AccessibilityCustomRotorType = 19
+const AccessibilityCustomRotorTypeVisitedLink AccessibilityCustomRotorType = 20
+
+type AccessibilityFontAttributeKey string
+
+const AccessibilityFontFamilyKey AccessibilityFontAttributeKey = "AXFontFamily"
+const AccessibilityFontNameKey AccessibilityFontAttributeKey = "AXFontName"
+const AccessibilityFontSizeKey AccessibilityFontAttributeKey = "AXFontSize"
+const AccessibilityVisibleNameKey AccessibilityFontAttributeKey = "AXVisibleName"
+
+type AccessibilityNotificationName string
+
+const AccessibilityAnnouncementRequestedNotification AccessibilityNotificationName = "AXAnnouncementRequested"
+const AccessibilityApplicationActivatedNotification AccessibilityNotificationName = "AXApplicationActivated"
+const AccessibilityApplicationDeactivatedNotification AccessibilityNotificationName = "AXApplicationDeactivated"
+const AccessibilityApplicationHiddenNotification AccessibilityNotificationName = "AXApplicationHidden"
+const AccessibilityApplicationShownNotification AccessibilityNotificationName = "AXApplicationShown"
+const AccessibilityCreatedNotification AccessibilityNotificationName = "AXCreated"
+const AccessibilityDrawerCreatedNotification AccessibilityNotificationName = "AXDrawerCreated"
+const AccessibilityFocusedUIElementChangedNotification AccessibilityNotificationName = "AXFocusedUIElementChanged"
+const AccessibilityFocusedWindowChangedNotification AccessibilityNotificationName = "AXFocusedWindowChanged"
+const AccessibilityHelpTagCreatedNotification AccessibilityNotificationName = "AXHelpTagCreated"
+const AccessibilityLayoutChangedNotification AccessibilityNotificationName = "AXLayoutChanged"
+const AccessibilityMainWindowChangedNotification AccessibilityNotificationName = "AXMainWindowChanged"
+const AccessibilityMovedNotification AccessibilityNotificationName = "AXMoved"
+const AccessibilityResizedNotification AccessibilityNotificationName = "AXResized"
+const AccessibilityRowCollapsedNotification AccessibilityNotificationName = "AXRowCollapsed"
+const AccessibilityRowCountChangedNotification AccessibilityNotificationName = "AXRowCountChanged"
+const AccessibilityRowExpandedNotification AccessibilityNotificationName = "AXRowExpanded"
+const AccessibilitySelectedCellsChangedNotification AccessibilityNotificationName = "AXSelectedCellsChanged"
+const AccessibilitySelectedChildrenChangedNotification AccessibilityNotificationName = "AXSelectedChildrenChanged"
+const AccessibilitySelectedChildrenMovedNotification AccessibilityNotificationName = "AXSelectedChildrenMoved"
+const AccessibilitySelectedColumnsChangedNotification AccessibilityNotificationName = "AXSelectedColumnsChanged"
+const AccessibilitySelectedRowsChangedNotification AccessibilityNotificationName = "AXSelectedRowsChanged"
+const AccessibilitySelectedTextChangedNotification AccessibilityNotificationName = "AXSelectedTextChanged"
+const AccessibilitySheetCreatedNotification AccessibilityNotificationName = "AXSheetCreated"
+const AccessibilityTitleChangedNotification AccessibilityNotificationName = "AXTitleChanged"
+const AccessibilityUIElementDestroyedNotification AccessibilityNotificationName = "AXUIElementDestroyed"
+const AccessibilityUnitsChangedNotification AccessibilityNotificationName = "AXUnitsChanged"
+const AccessibilityValueChangedNotification AccessibilityNotificationName = "AXValueChanged"
+const AccessibilityWindowCreatedNotification AccessibilityNotificationName = "AXWindowCreated"
+const AccessibilityWindowDeminiaturizedNotification AccessibilityNotificationName = "AXWindowDeminiaturized"
+const AccessibilityWindowMiniaturizedNotification AccessibilityNotificationName = "AXWindowMiniaturized"
+const AccessibilityWindowMovedNotification AccessibilityNotificationName = "AXWindowMoved"
+const AccessibilityWindowResizedNotification AccessibilityNotificationName = "AXWindowResized"
+
+type AccessibilityNotificationUserInfoKey string
+
+const AccessibilityAnnouncementKey AccessibilityNotificationUserInfoKey = "AXAnnouncementKey"
+const AccessibilityPriorityKey AccessibilityNotificationUserInfoKey = "AXPriorityKey"
+const AccessibilityUIElementsKey AccessibilityNotificationUserInfoKey = "AXUIElementsKey"
+
+type AccessibilityOrientation int
+
+const AccessibilityOrientationHorizontal AccessibilityOrientation = 2
+const AccessibilityOrientationUnknown AccessibilityOrientation = 0
+const AccessibilityOrientationVertical AccessibilityOrientation = 1
+
+type AccessibilityOrientationValue string
+
+const AccessibilityHorizontalOrientationValue AccessibilityOrientationValue = "AXHorizontalOrientation"
+const AccessibilityUnknownOrientationValue AccessibilityOrientationValue = "AXUnknownOrientation"
+const AccessibilityVerticalOrientationValue AccessibilityOrientationValue = "AXVerticalOrientation"
+
+type AccessibilityParameterizedAttributeName string
+
+const AccessibilityAttributedStringForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXAttributedStringForRange"
+const AccessibilityBoundsForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXBoundsForRange"
+const AccessibilityCellForColumnAndRowParameterizedAttribute AccessibilityParameterizedAttributeName = "AXCellForColumnAndRow"
+const AccessibilityLayoutPointForScreenPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLayoutPointForScreenPoint"
+const AccessibilityLayoutSizeForScreenSizeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLayoutSizeForScreenSize"
+const AccessibilityLineForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLineForIndex"
+const AccessibilityRTFForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRTFForRange"
+const AccessibilityRangeForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForIndex"
+const AccessibilityRangeForLineParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForLine"
+const AccessibilityRangeForPositionParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForPosition"
+const AccessibilityScreenPointForLayoutPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXScreenPointForLayoutPoint"
+const AccessibilityScreenSizeForLayoutSizeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXScreenSizeForLayoutSize"
+const AccessibilityStringForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXStringForRange"
+const AccessibilityStyleRangeForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXStyleRangeForIndex"
+
+type AccessibilityPriorityLevel int
+
+const AccessibilityPriorityHigh AccessibilityPriorityLevel = 90
+const AccessibilityPriorityLow AccessibilityPriorityLevel = 10
+const AccessibilityPriorityMedium AccessibilityPriorityLevel = 50
+
+type AccessibilityRole string
+
+const AccessibilityApplicationRole AccessibilityRole = "AXApplication"
+const AccessibilityBrowserRole AccessibilityRole = "AXBrowser"
+const AccessibilityBusyIndicatorRole AccessibilityRole = "AXBusyIndicator"
+const AccessibilityButtonRole AccessibilityRole = "AXButton"
+const AccessibilityCellRole AccessibilityRole = "AXCell"
+const AccessibilityCheckBoxRole AccessibilityRole = "AXCheckBox"
+const AccessibilityColorWellRole AccessibilityRole = "AXColorWell"
+const AccessibilityColumnRole AccessibilityRole = "AXColumn"
+const AccessibilityComboBoxRole AccessibilityRole = "AXComboBox"
+const AccessibilityDisclosureTriangleRole AccessibilityRole = "AXDisclosureTriangle"
+const AccessibilityDrawerRole AccessibilityRole = "AXDrawer"
+const AccessibilityGridRole AccessibilityRole = "AXGrid"
+const AccessibilityGroupRole AccessibilityRole = "AXGroup"
+const AccessibilityGrowAreaRole AccessibilityRole = "AXGrowArea"
+const AccessibilityHandleRole AccessibilityRole = "AXHandle"
+const AccessibilityHelpTagRole AccessibilityRole = "AXHelpTag"
+const AccessibilityImageRole AccessibilityRole = "AXImage"
+const AccessibilityIncrementorRole AccessibilityRole = "AXIncrementor"
+const AccessibilityLayoutAreaRole AccessibilityRole = "AXLayoutArea"
+const AccessibilityLayoutItemRole AccessibilityRole = "AXLayoutItem"
+const AccessibilityLevelIndicatorRole AccessibilityRole = "AXLevelIndicator"
+const AccessibilityLinkRole AccessibilityRole = "AXLink"
+const AccessibilityListRole AccessibilityRole = "AXList"
+const AccessibilityMatteRole AccessibilityRole = "AXMatte"
+const AccessibilityMenuBarItemRole AccessibilityRole = "AXMenuBarItem"
+const AccessibilityMenuBarRole AccessibilityRole = "AXMenuBar"
+const AccessibilityMenuButtonRole AccessibilityRole = "AXMenuButton"
+const AccessibilityMenuItemRole AccessibilityRole = "AXMenuItem"
+const AccessibilityMenuRole AccessibilityRole = "AXMenu"
+const AccessibilityOutlineRole AccessibilityRole = "AXOutline"
+const AccessibilityPageRole AccessibilityRole = "AXPage"
+const AccessibilityPopUpButtonRole AccessibilityRole = "AXPopUpButton"
+const AccessibilityPopoverRole AccessibilityRole = "AXPopover"
+const AccessibilityProgressIndicatorRole AccessibilityRole = "AXProgressIndicator"
+const AccessibilityRadioButtonRole AccessibilityRole = "AXRadioButton"
+const AccessibilityRadioGroupRole AccessibilityRole = "AXRadioGroup"
+const AccessibilityRelevanceIndicatorRole AccessibilityRole = "AXRelevanceIndicator"
+const AccessibilityRowRole AccessibilityRole = "AXRow"
+const AccessibilityRulerMarkerRole AccessibilityRole = "AXRulerMarker"
+const AccessibilityRulerRole AccessibilityRole = "AXRuler"
+const AccessibilityScrollAreaRole AccessibilityRole = "AXScrollArea"
+const AccessibilityScrollBarRole AccessibilityRole = "AXScrollBar"
+const AccessibilitySheetRole AccessibilityRole = "AXSheet"
+const AccessibilitySliderRole AccessibilityRole = "AXSlider"
+const AccessibilitySortButtonRole AccessibilityRole = "AXSortButton"
+const AccessibilitySplitGroupRole AccessibilityRole = "AXSplitGroup"
+const AccessibilitySplitterRole AccessibilityRole = "AXSplitter"
+const AccessibilityStaticTextRole AccessibilityRole = "AXStaticText"
+const AccessibilitySystemWideRole AccessibilityRole = "AXSystemWide"
+const AccessibilityTabGroupRole AccessibilityRole = "AXTabGroup"
+const AccessibilityTableRole AccessibilityRole = "AXTable"
+const AccessibilityTextAreaRole AccessibilityRole = "AXTextArea"
+const AccessibilityTextFieldRole AccessibilityRole = "AXTextField"
+const AccessibilityToolbarRole AccessibilityRole = "AXToolbar"
+const AccessibilityUnknownRole AccessibilityRole = "AXUnknown"
+const AccessibilityValueIndicatorRole AccessibilityRole = "AXValueIndicator"
+const AccessibilityWindowRole AccessibilityRole = "AXWindow"
+
+type AccessibilityRulerMarkerType int
+
+const AccessibilityRulerMarkerTypeIndentFirstLine AccessibilityRulerMarkerType = 7
+const AccessibilityRulerMarkerTypeIndentHead AccessibilityRulerMarkerType = 5
+const AccessibilityRulerMarkerTypeIndentTail AccessibilityRulerMarkerType = 6
+const AccessibilityRulerMarkerTypeTabStopCenter AccessibilityRulerMarkerType = 3
+const AccessibilityRulerMarkerTypeTabStopDecimal AccessibilityRulerMarkerType = 4
+const AccessibilityRulerMarkerTypeTabStopLeft AccessibilityRulerMarkerType = 1
+const AccessibilityRulerMarkerTypeTabStopRight AccessibilityRulerMarkerType = 2
+const AccessibilityRulerMarkerTypeUnknown AccessibilityRulerMarkerType = 0
+
+type AccessibilityRulerMarkerTypeValue string
+
+const AccessibilityCenterTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXCenterTabStopMarkerType"
+const AccessibilityDecimalTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXDecimalTabStopMarkerType"
+const AccessibilityFirstLineIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXFirstLineIndentMarkerType"
+const AccessibilityHeadIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXHeadIndentMarkerType"
+const AccessibilityLeftTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXLeftTabStopMarkerType"
+const AccessibilityRightTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXRightTabStopMarkerType"
+const AccessibilityTailIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXTailIndentMarkerType"
+const AccessibilityUnknownMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXUnknownMarkerType"
+
+type AccessibilityRulerUnitValue string
+
+const AccessibilityCentimetersUnitValue AccessibilityRulerUnitValue = "AXCentimentersUnit"
+const AccessibilityInchesUnitValue AccessibilityRulerUnitValue = "AXInchesUnit"
+const AccessibilityPicasUnitValue AccessibilityRulerUnitValue = "AXPicasUnit"
+const AccessibilityPointsUnitValue AccessibilityRulerUnitValue = "AXPointsUnit"
+const AccessibilityUnknownUnitValue AccessibilityRulerUnitValue = "AXUnknownUnit"
+
+type AccessibilitySortDirection int
+
+const AccessibilitySortDirectionAscending AccessibilitySortDirection = 1
+const AccessibilitySortDirectionDescending AccessibilitySortDirection = 2
+const AccessibilitySortDirectionUnknown AccessibilitySortDirection = 0
+
+type AccessibilitySortDirectionValue string
+
+const AccessibilityAscendingSortDirectionValue AccessibilitySortDirectionValue = "AXAscendingSortDirection"
+const AccessibilityDescendingSortDirectionValue AccessibilitySortDirectionValue = "AXDescendingSortDirection"
+const AccessibilityUnknownSortDirectionValue AccessibilitySortDirectionValue = "AXUnknownSortDirection"
+
+type AccessibilitySubrole string
+
+const AccessibilityCloseButtonSubrole AccessibilitySubrole = "AXCloseButton"
+const AccessibilityCollectionListSubrole AccessibilitySubrole = "AXCollectionList"
+const AccessibilityContentListSubrole AccessibilitySubrole = "AXContentList"
+const AccessibilityDecrementArrowSubrole AccessibilitySubrole = "AXDecrementArrow"
+const AccessibilityDecrementPageSubrole AccessibilitySubrole = "AXDecrementPage"
+const AccessibilityDefinitionListSubrole AccessibilitySubrole = "AXDefinitionList"
+const AccessibilityDescriptionListSubrole AccessibilitySubrole = "AXDescriptionList"
+const AccessibilityDialogSubrole AccessibilitySubrole = "AXDialog"
+const AccessibilityFloatingWindowSubrole AccessibilitySubrole = "AXFloatingWindow"
+const AccessibilityFullScreenButtonSubrole AccessibilitySubrole = "AXFullScreenButton"
+const AccessibilityIncrementArrowSubrole AccessibilitySubrole = "AXIncrementArrow"
+const AccessibilityIncrementPageSubrole AccessibilitySubrole = "AXIncrementPage"
+const AccessibilityMinimizeButtonSubrole AccessibilitySubrole = "AXMinimizeButton"
+const AccessibilityOutlineRowSubrole AccessibilitySubrole = "AXOutlineRow"
+const AccessibilityRatingIndicatorSubrole AccessibilitySubrole = "AXRatingIndicator"
+const AccessibilitySearchFieldSubrole AccessibilitySubrole = "AXSearchField"
+const AccessibilitySectionListSubrole AccessibilitySubrole = "AXSectionList"
+const AccessibilitySecureTextFieldSubrole AccessibilitySubrole = "AXSecureTextField"
+const AccessibilitySortButtonSubrole AccessibilitySubrole = "AXSortButton"
+const AccessibilityStandardWindowSubrole AccessibilitySubrole = "AXStandardWindow"
+const AccessibilitySwitchSubrole AccessibilitySubrole = "AXSwitch"
+const AccessibilitySystemDialogSubrole AccessibilitySubrole = "AXSystemDialog"
+const AccessibilitySystemFloatingWindowSubrole AccessibilitySubrole = "AXSystemFloatingWindow"
+const AccessibilityTabButtonSubrole AccessibilitySubrole = "AXTabButton"
+const AccessibilityTableRowSubrole AccessibilitySubrole = "AXTableRow"
+const AccessibilityTextAttachmentSubrole AccessibilitySubrole = "AXTextAttachment"
+const AccessibilityTextLinkSubrole AccessibilitySubrole = "AXTextLink"
+const AccessibilityTimelineSubrole AccessibilitySubrole = "AXTimeline"
+const AccessibilityToggleSubrole AccessibilitySubrole = "AXToggle"
+const AccessibilityToolbarButtonSubrole AccessibilitySubrole = "AXToolbarButton"
+const AccessibilityUnknownSubrole AccessibilitySubrole = "AXUnknown"
+const AccessibilityZoomButtonSubrole AccessibilitySubrole = "AXZoomButton"
+
+type AccessibilityUnits int
+
+const AccessibilityUnitsCentimeters AccessibilityUnits = 2
+const AccessibilityUnitsInches AccessibilityUnits = 1
+const AccessibilityUnitsPicas AccessibilityUnits = 4
+const AccessibilityUnitsPoints AccessibilityUnits = 3
+const AccessibilityUnitsUnknown AccessibilityUnits = 0
+
 type AlertStyle uint
 
 const AlertStyleCritical AlertStyle = 2
 const AlertStyleInformational AlertStyle = 1
 const AlertStyleWarning AlertStyle = 0
+const CriticalAlertStyle AlertStyle = 2
+const InformationalAlertStyle AlertStyle = 1
+const WarningAlertStyle AlertStyle = 0
+
+type AnimatablePropertyKey string
+
+const AnimationTriggerOrderIn AnimatablePropertyKey = "NSAnimationTriggerOrderIn"
+const AnimationTriggerOrderOut AnimatablePropertyKey = "NSAnimationTriggerOrderOut"
 
 type AnimationBlockingMode uint
 
@@ -28,23 +442,101 @@ const AnimationNonblockingThreaded AnimationBlockingMode = 2
 
 type AnimationCurve uint
 
-const AnimationEaseInOut AnimationCurve = 0
 const AnimationEaseIn AnimationCurve = 1
+const AnimationEaseInOut AnimationCurve = 0
 const AnimationEaseOut AnimationCurve = 2
 const AnimationLinear AnimationCurve = 3
 
+type AnimationEffect uint
+
+const AnimationEffectDisappearingItemDefault AnimationEffect = 0
+const AnimationEffectPoof AnimationEffect = 10
+
 type AnimationProgress float32
+
+type AppKitVersion float64
+
+const AppKitVersionNumber AppKitVersion = 2113.600098
+const AppKitVersionNumber10_0 AppKitVersion = 577.000000
+const AppKitVersionNumber10_1 AppKitVersion = 620.000000
+const AppKitVersionNumber10_10 AppKitVersion = 1343.000000
+const AppKitVersionNumber10_10_2 AppKitVersion = 1344.000000
+const AppKitVersionNumber10_10_3 AppKitVersion = 1347.000000
+const AppKitVersionNumber10_10_4 AppKitVersion = 1348.000000
+const AppKitVersionNumber10_10_5 AppKitVersion = 1348.000000
+const AppKitVersionNumber10_10_Max AppKitVersion = 1349.000000
+const AppKitVersionNumber10_11 AppKitVersion = 1404.000000
+const AppKitVersionNumber10_11_1 AppKitVersion = 1404.130005
+const AppKitVersionNumber10_11_2 AppKitVersion = 1404.339966
+const AppKitVersionNumber10_11_3 AppKitVersion = 1404.339966
+const AppKitVersionNumber10_12 AppKitVersion = 1504.000000
+const AppKitVersionNumber10_12_1 AppKitVersion = 1504.599976
+const AppKitVersionNumber10_12_2 AppKitVersion = 1504.760010
+const AppKitVersionNumber10_13 AppKitVersion = 1561.000000
+const AppKitVersionNumber10_13_1 AppKitVersion = 1561.099976
+const AppKitVersionNumber10_13_2 AppKitVersion = 1561.199951
+const AppKitVersionNumber10_13_4 AppKitVersion = 1561.400024
+const AppKitVersionNumber10_14 AppKitVersion = 1671.000000
+const AppKitVersionNumber10_14_1 AppKitVersion = 1671.099976
+const AppKitVersionNumber10_14_2 AppKitVersion = 1671.199951
+const AppKitVersionNumber10_14_3 AppKitVersion = 1671.300049
+const AppKitVersionNumber10_14_4 AppKitVersion = 1671.400024
+const AppKitVersionNumber10_14_5 AppKitVersion = 1671.500000
+const AppKitVersionNumber10_15 AppKitVersion = 1894.000000
+const AppKitVersionNumber10_15_1 AppKitVersion = 1894.099976
+const AppKitVersionNumber10_15_2 AppKitVersion = 1894.199951
+const AppKitVersionNumber10_15_3 AppKitVersion = 1894.300049
+const AppKitVersionNumber10_15_4 AppKitVersion = 1894.400024
+const AppKitVersionNumber10_15_5 AppKitVersion = 1894.500000
+const AppKitVersionNumber10_15_6 AppKitVersion = 1894.599976
+const AppKitVersionNumber10_2 AppKitVersion = 663.000000
+const AppKitVersionNumber10_2_3 AppKitVersion = 663.599976
+const AppKitVersionNumber10_3 AppKitVersion = 743.000000
+const AppKitVersionNumber10_3_2 AppKitVersion = 743.140015
+const AppKitVersionNumber10_3_3 AppKitVersion = 743.200012
+const AppKitVersionNumber10_3_5 AppKitVersion = 743.239990
+const AppKitVersionNumber10_3_7 AppKitVersion = 743.330017
+const AppKitVersionNumber10_3_9 AppKitVersion = 743.359985
+const AppKitVersionNumber10_4 AppKitVersion = 824.000000
+const AppKitVersionNumber10_4_1 AppKitVersion = 824.099976
+const AppKitVersionNumber10_4_3 AppKitVersion = 824.229980
+const AppKitVersionNumber10_4_4 AppKitVersion = 824.330017
+const AppKitVersionNumber10_4_7 AppKitVersion = 824.409973
+const AppKitVersionNumber10_5 AppKitVersion = 949.000000
+const AppKitVersionNumber10_5_2 AppKitVersion = 949.270020
+const AppKitVersionNumber10_5_3 AppKitVersion = 949.330017
+const AppKitVersionNumber10_6 AppKitVersion = 1038.000000
+const AppKitVersionNumber10_7 AppKitVersion = 1138.000000
+const AppKitVersionNumber10_7_2 AppKitVersion = 1138.229980
+const AppKitVersionNumber10_7_3 AppKitVersion = 1138.319946
+const AppKitVersionNumber10_7_4 AppKitVersion = 1138.469971
+const AppKitVersionNumber10_8 AppKitVersion = 1187.000000
+const AppKitVersionNumber10_9 AppKitVersion = 1265.000000
+const AppKitVersionNumber11_0 AppKitVersion = 2022.000000
+const AppKitVersionNumber11_1 AppKitVersion = 2022.199951
+const AppKitVersionNumber11_2 AppKitVersion = 2022.300049
+const AppKitVersionNumber11_3 AppKitVersion = 2022.400024
+const AppKitVersionNumber11_4 AppKitVersion = 2022.500000
+const AppKitVersionNumberWithColumnResizingBrowser AppKitVersion = 685.000000
+const AppKitVersionNumberWithContinuousScrollingBrowser AppKitVersion = 680.000000
+const AppKitVersionNumberWithCursorSizeSupport AppKitVersion = 682.000000
+const AppKitVersionNumberWithCustomSheetPosition AppKitVersion = 686.000000
+const AppKitVersionNumberWithDeferredWindowDisplaySupport AppKitVersion = 1019.000000
+const AppKitVersionNumberWithDirectionalTabs AppKitVersion = 631.000000
+const AppKitVersionNumberWithDockTilePlugInSupport AppKitVersion = 1001.000000
+const AppKitVersionNumberWithPatternColorLeakFix AppKitVersion = 641.000000
 
 type AppearanceName string
 
-const AppearanceNameAqua AppearanceName = "NSAppearanceNameAqua"
-const AppearanceNameDarkAqua AppearanceName = "NSAppearanceNameDarkAqua"
-const AppearanceNameVibrantLight AppearanceName = "NSAppearanceNameVibrantLight"
-const AppearanceNameVibrantDark AppearanceName = "NSAppearanceNameVibrantDark"
 const AppearanceNameAccessibilityHighContrastAqua AppearanceName = "NSAppearanceNameAccessibilityAqua"
 const AppearanceNameAccessibilityHighContrastDarkAqua AppearanceName = "NSAppearanceNameAccessibilityDarkAqua"
-const AppearanceNameAccessibilityHighContrastVibrantLight AppearanceName = "NSAppearanceNameAccessibilityVibrantLight"
 const AppearanceNameAccessibilityHighContrastVibrantDark AppearanceName = "NSAppearanceNameAccessibilityVibrantDark"
+const AppearanceNameAccessibilityHighContrastVibrantLight AppearanceName = "NSAppearanceNameAccessibilityVibrantLight"
+const AppearanceNameAqua AppearanceName = "NSAppearanceNameAqua"
+const AppearanceNameDarkAqua AppearanceName = "NSAppearanceNameDarkAqua"
+const AppearanceNameLightContent AppearanceName = "NSAppearanceNameLightContent"
+const AppearanceNameVibrantDark AppearanceName = "NSAppearanceNameVibrantDark"
+const AppearanceNameVibrantLight AppearanceName = "NSAppearanceNameVibrantLight"
 
 type ApplicationActivationOptions uint
 
@@ -53,15 +545,15 @@ const ApplicationActivateIgnoringOtherApps ApplicationActivationOptions = 2
 
 type ApplicationActivationPolicy int
 
-const ApplicationActivationPolicyRegular ApplicationActivationPolicy = 0
 const ApplicationActivationPolicyAccessory ApplicationActivationPolicy = 1
 const ApplicationActivationPolicyProhibited ApplicationActivationPolicy = 2
+const ApplicationActivationPolicyRegular ApplicationActivationPolicy = 0
 
 type ApplicationDelegateReply uint
 
-const ApplicationDelegateReplySuccess ApplicationDelegateReply = 0
 const ApplicationDelegateReplyCancel ApplicationDelegateReply = 1
 const ApplicationDelegateReplyFailure ApplicationDelegateReply = 2
+const ApplicationDelegateReplySuccess ApplicationDelegateReply = 0
 
 type ApplicationOcclusionState uint
 
@@ -69,80 +561,291 @@ const ApplicationOcclusionStateVisible ApplicationOcclusionState = 2
 
 type ApplicationPresentationOptions uint
 
-const ApplicationPresentationDefault ApplicationPresentationOptions = 0
 const ApplicationPresentationAutoHideDock ApplicationPresentationOptions = 1
-const ApplicationPresentationHideDock ApplicationPresentationOptions = 2
 const ApplicationPresentationAutoHideMenuBar ApplicationPresentationOptions = 4
-const ApplicationPresentationHideMenuBar ApplicationPresentationOptions = 8
+const ApplicationPresentationAutoHideToolbar ApplicationPresentationOptions = 2048
+const ApplicationPresentationDefault ApplicationPresentationOptions = 0
 const ApplicationPresentationDisableAppleMenu ApplicationPresentationOptions = 16
-const ApplicationPresentationDisableProcessSwitching ApplicationPresentationOptions = 32
+const ApplicationPresentationDisableCursorLocationAssistance ApplicationPresentationOptions = 4096
 const ApplicationPresentationDisableForceQuit ApplicationPresentationOptions = 64
-const ApplicationPresentationDisableSessionTermination ApplicationPresentationOptions = 128
 const ApplicationPresentationDisableHideApplication ApplicationPresentationOptions = 256
 const ApplicationPresentationDisableMenuBarTransparency ApplicationPresentationOptions = 512
+const ApplicationPresentationDisableProcessSwitching ApplicationPresentationOptions = 32
+const ApplicationPresentationDisableSessionTermination ApplicationPresentationOptions = 128
 const ApplicationPresentationFullScreen ApplicationPresentationOptions = 1024
-const ApplicationPresentationAutoHideToolbar ApplicationPresentationOptions = 2048
-const ApplicationPresentationDisableCursorLocationAssistance ApplicationPresentationOptions = 4096
+const ApplicationPresentationHideDock ApplicationPresentationOptions = 2
+const ApplicationPresentationHideMenuBar ApplicationPresentationOptions = 8
 
 type ApplicationPrintReply uint
 
 const PrintingCancelled ApplicationPrintReply = 0
-const PrintingSuccess ApplicationPrintReply = 1
 const PrintingFailure ApplicationPrintReply = 3
 const PrintingReplyLater ApplicationPrintReply = 2
+const PrintingSuccess ApplicationPrintReply = 1
 
 type ApplicationTerminateReply uint
 
-const TerminateNow ApplicationTerminateReply = 1
 const TerminateCancel ApplicationTerminateReply = 0
 const TerminateLater ApplicationTerminateReply = 2
+const TerminateNow ApplicationTerminateReply = 1
+
+type AttributedStringDocumentAttributeKey string
+
+const AppearanceDocumentAttribute AttributedStringDocumentAttributeKey = "NSAppearanceDocumentAttribute"
+const AuthorDocumentAttribute AttributedStringDocumentAttributeKey = "NSAuthorDocumentAttribute"
+const BackgroundColorDocumentAttribute AttributedStringDocumentAttributeKey = "BackgroundColor"
+const BottomMarginDocumentAttribute AttributedStringDocumentAttributeKey = "BottomMargin"
+const CategoryDocumentAttribute AttributedStringDocumentAttributeKey = "NSCategoryDocumentAttribute"
+const CharacterEncodingDocumentAttribute AttributedStringDocumentAttributeKey = "CharacterEncoding"
+const CocoaVersionDocumentAttribute AttributedStringDocumentAttributeKey = "CocoaRTFVersion"
+const CommentDocumentAttribute AttributedStringDocumentAttributeKey = "NSCommentDocumentAttribute"
+const CompanyDocumentAttribute AttributedStringDocumentAttributeKey = "NSCompanyDocumentAttribute"
+const ConvertedDocumentAttribute AttributedStringDocumentAttributeKey = "Converted"
+const CopyrightDocumentAttribute AttributedStringDocumentAttributeKey = "NSCopyrightDocumentAttribute"
+const CreationTimeDocumentAttribute AttributedStringDocumentAttributeKey = "NSCreationTimeDocumentAttribute"
+const DefaultAttributesDocumentAttribute AttributedStringDocumentAttributeKey = "DefaultAttributes"
+const DefaultTabIntervalDocumentAttribute AttributedStringDocumentAttributeKey = "DefaultTabInterval"
+const DocumentTypeDocumentAttribute AttributedStringDocumentAttributeKey = "DocumentType"
+const EditorDocumentAttribute AttributedStringDocumentAttributeKey = "NSEditorDocumentAttribute"
+const ExcludedElementsDocumentAttribute AttributedStringDocumentAttributeKey = "ExcludedElements"
+const FileTypeDocumentAttribute AttributedStringDocumentAttributeKey = "UTI"
+const HyphenationFactorDocumentAttribute AttributedStringDocumentAttributeKey = "HyphenationFactor"
+const KeywordsDocumentAttribute AttributedStringDocumentAttributeKey = "NSKeywordsDocumentAttribute"
+const LeftMarginDocumentAttribute AttributedStringDocumentAttributeKey = "LeftMargin"
+const ManagerDocumentAttribute AttributedStringDocumentAttributeKey = "NSManagerDocumentAttribute"
+const ModificationTimeDocumentAttribute AttributedStringDocumentAttributeKey = "NSModificationTimeDocumentAttribute"
+const PaperSizeDocumentAttribute AttributedStringDocumentAttributeKey = "PaperSize"
+const PrefixSpacesDocumentAttribute AttributedStringDocumentAttributeKey = "PrefixSpaces"
+const ReadOnlyDocumentAttribute AttributedStringDocumentAttributeKey = "ReadOnly"
+const RightMarginDocumentAttribute AttributedStringDocumentAttributeKey = "RightMargin"
+const SourceTextScalingDocumentAttribute AttributedStringDocumentAttributeKey = "SourceTextScaling"
+const SubjectDocumentAttribute AttributedStringDocumentAttributeKey = "NSSubjectDocumentAttribute"
+const TextEncodingNameDocumentAttribute AttributedStringDocumentAttributeKey = "TextEncodingName"
+const TextLayoutSectionsAttribute AttributedStringDocumentAttributeKey = "NSTextLayoutSectionsAttribute"
+const TextScalingDocumentAttribute AttributedStringDocumentAttributeKey = "TextScaling"
+const TitleDocumentAttribute AttributedStringDocumentAttributeKey = "NSTitleDocumentAttribute"
+const TopMarginDocumentAttribute AttributedStringDocumentAttributeKey = "TopMargin"
+const ViewModeDocumentAttribute AttributedStringDocumentAttributeKey = "ViewMode"
+const ViewSizeDocumentAttribute AttributedStringDocumentAttributeKey = "ViewSize"
+const ViewZoomDocumentAttribute AttributedStringDocumentAttributeKey = "ViewZoom"
+
+type AttributedStringDocumentReadingOptionKey string
+
+const BaseURLDocumentOption AttributedStringDocumentReadingOptionKey = "BaseURL"
+const CharacterEncodingDocumentOption AttributedStringDocumentReadingOptionKey = "CharacterEncoding"
+const DefaultAttributesDocumentOption AttributedStringDocumentReadingOptionKey = "DefaultAttributes"
+const DocumentTypeDocumentOption AttributedStringDocumentReadingOptionKey = "DocumentType"
+const FileTypeDocumentOption AttributedStringDocumentReadingOptionKey = "UTI"
+const SourceTextScalingDocumentOption AttributedStringDocumentReadingOptionKey = "SourceTextScaling"
+const TargetTextScalingDocumentOption AttributedStringDocumentReadingOptionKey = "TargetTextScaling"
+const TextEncodingNameDocumentOption AttributedStringDocumentReadingOptionKey = "TextEncodingName"
+const TextSizeMultiplierDocumentOption AttributedStringDocumentReadingOptionKey = "TextSizeMultiplier"
+const TimeoutDocumentOption AttributedStringDocumentReadingOptionKey = "Timeout"
+const WebPreferencesDocumentOption AttributedStringDocumentReadingOptionKey = "WebPreferences"
+const WebResourceLoadDelegateDocumentOption AttributedStringDocumentReadingOptionKey = "WebResourceLoadDelegate"
+
+type AttributedStringDocumentType string
+
+const DocFormatTextDocumentType AttributedStringDocumentType = "NSDocFormat"
+const HTMLTextDocumentType AttributedStringDocumentType = "NSHTML"
+const MacSimpleTextDocumentType AttributedStringDocumentType = "NSMacSimpleText"
+const OfficeOpenXMLTextDocumentType AttributedStringDocumentType = "NSOfficeOpenXML"
+const OpenDocumentTextDocumentType AttributedStringDocumentType = "NSOpenDocument"
+const PlainTextDocumentType AttributedStringDocumentType = "NSPlainText"
+const RTFDTextDocumentType AttributedStringDocumentType = "NSRTFD"
+const RTFTextDocumentType AttributedStringDocumentType = "NSRTF"
+const WebArchiveTextDocumentType AttributedStringDocumentType = "NSWebArchive"
+const WordMLTextDocumentType AttributedStringDocumentType = "NSWordML"
 
 type AutoresizingMaskOptions uint
 
-const ViewNotSizable AutoresizingMaskOptions = 0
-const ViewMinXMargin AutoresizingMaskOptions = 1
-const ViewWidthSizable AutoresizingMaskOptions = 2
-const ViewMaxXMargin AutoresizingMaskOptions = 4
-const ViewMinYMargin AutoresizingMaskOptions = 8
 const ViewHeightSizable AutoresizingMaskOptions = 16
+const ViewMaxXMargin AutoresizingMaskOptions = 4
 const ViewMaxYMargin AutoresizingMaskOptions = 32
+const ViewMinXMargin AutoresizingMaskOptions = 1
+const ViewMinYMargin AutoresizingMaskOptions = 8
+const ViewNotSizable AutoresizingMaskOptions = 0
+const ViewWidthSizable AutoresizingMaskOptions = 2
 
 type BackgroundStyle int
 
-const BackgroundStyleNormal BackgroundStyle = 0
+const BackgroundStyleDark BackgroundStyle = 1
 const BackgroundStyleEmphasized BackgroundStyle = 1
-const BackgroundStyleRaised BackgroundStyle = 2
+const BackgroundStyleLight BackgroundStyle = 0
 const BackgroundStyleLowered BackgroundStyle = 3
+const BackgroundStyleNormal BackgroundStyle = 0
+const BackgroundStyleRaised BackgroundStyle = 2
 
 type BackingStoreType uint
 
 const BackingStoreBuffered BackingStoreType = 2
+const BackingStoreNonretained BackingStoreType = 1
+const BackingStoreRetained BackingStoreType = 0
 
 type BezelStyle uint
 
-const BezelStyleRounded BezelStyle = 1
-const BezelStyleRegularSquare BezelStyle = 2
-const BezelStyleShadowlessSquare BezelStyle = 6
-const BezelStyleSmallSquare BezelStyle = 10
-const BezelStyleRoundRect BezelStyle = 12
+const BezelStyleCircular BezelStyle = 7
+const BezelStyleDisclosure BezelStyle = 5
+const BezelStyleHelpButton BezelStyle = 9
 const BezelStyleInline BezelStyle = 15
 const BezelStyleRecessed BezelStyle = 13
-const BezelStyleDisclosure BezelStyle = 5
+const BezelStyleRegularSquare BezelStyle = 2
+const BezelStyleRoundRect BezelStyle = 12
+const BezelStyleRounded BezelStyle = 1
 const BezelStyleRoundedDisclosure BezelStyle = 14
-const BezelStyleCircular BezelStyle = 7
-const BezelStyleHelpButton BezelStyle = 9
+const BezelStyleShadowlessSquare BezelStyle = 6
+const BezelStyleSmallSquare BezelStyle = 10
 const BezelStyleTexturedRounded BezelStyle = 11
 const BezelStyleTexturedSquare BezelStyle = 8
+const CircularBezelStyle BezelStyle = 7
+const DisclosureBezelStyle BezelStyle = 5
+const HelpButtonBezelStyle BezelStyle = 9
+const InlineBezelStyle BezelStyle = 15
+const RecessedBezelStyle BezelStyle = 13
+const RegularSquareBezelStyle BezelStyle = 2
+const RoundRectBezelStyle BezelStyle = 12
+const RoundedBezelStyle BezelStyle = 1
+const RoundedDisclosureBezelStyle BezelStyle = 14
+const ShadowlessSquareBezelStyle BezelStyle = 6
+const SmallIconButtonBezelStyle BezelStyle = 2
+const SmallSquareBezelStyle BezelStyle = 10
+const TexturedRoundedBezelStyle BezelStyle = 11
+const TexturedSquareBezelStyle BezelStyle = 8
+const ThickSquareBezelStyle BezelStyle = 3
+const ThickerSquareBezelStyle BezelStyle = 4
 
 type BezierPathElement uint
 
-const BezierPathElementMoveTo BezierPathElement = 0
-const BezierPathElementLineTo BezierPathElement = 1
-const BezierPathElementCurveTo BezierPathElement = 2
 const BezierPathElementClosePath BezierPathElement = 3
+const BezierPathElementCurveTo BezierPathElement = 2
+const BezierPathElementLineTo BezierPathElement = 1
+const BezierPathElementMoveTo BezierPathElement = 0
+const ClosePathBezierPathElement BezierPathElement = 3
+const CurveToBezierPathElement BezierPathElement = 2
+const LineToBezierPathElement BezierPathElement = 1
+const MoveToBezierPathElement BezierPathElement = 0
+
+type BindingInfoKey string
+
+const ObservedKeyPathKey BindingInfoKey = "NSObservedKeyPath"
+const ObservedObjectKey BindingInfoKey = "NSObservedObject"
+const OptionsKey BindingInfoKey = "NSOptions"
+
+type BindingName string
+
+const AlignmentBinding BindingName = "alignment"
+const AlternateImageBinding BindingName = "alternateImage"
+const AlternateTitleBinding BindingName = "alternateTitle"
+const AnimateBinding BindingName = "animate"
+const AnimationDelayBinding BindingName = "animationDelay"
+const ArgumentBinding BindingName = "argument"
+const AttributedStringBinding BindingName = "attributedString"
+const ContentArrayBinding BindingName = "contentArray"
+const ContentArrayForMultipleSelectionBinding BindingName = "contentArrayForMultipleSelection"
+const ContentBinding BindingName = "content"
+const ContentDictionaryBinding BindingName = "contentDictionary"
+const ContentHeightBinding BindingName = "contentHeight"
+const ContentObjectBinding BindingName = "contentObject"
+const ContentObjectsBinding BindingName = "contentObjects"
+const ContentSetBinding BindingName = "contentSet"
+const ContentValuesBinding BindingName = "contentValues"
+const ContentWidthBinding BindingName = "contentWidth"
+const CriticalValueBinding BindingName = "criticalValue"
+const DataBinding BindingName = "data"
+const DisplayPatternTitleBinding BindingName = "displayPatternTitle"
+const DisplayPatternValueBinding BindingName = "displayPatternValue"
+const DocumentEditedBinding BindingName = "documentEdited"
+const DoubleClickArgumentBinding BindingName = "doubleClickArgument"
+const DoubleClickTargetBinding BindingName = "doubleClickTarget"
+const EditableBinding BindingName = "editable"
+const EnabledBinding BindingName = "enabled"
+const ExcludedKeysBinding BindingName = "excludedKeys"
+const FilterPredicateBinding BindingName = "filterPredicate"
+const FontBinding BindingName = "font"
+const FontBoldBinding BindingName = "fontBold"
+const FontFamilyNameBinding BindingName = "fontFamilyName"
+const FontItalicBinding BindingName = "fontItalic"
+const FontNameBinding BindingName = "fontName"
+const FontSizeBinding BindingName = "fontSize"
+const HeaderTitleBinding BindingName = "headerTitle"
+const HiddenBinding BindingName = "hidden"
+const ImageBinding BindingName = "image"
+const IncludedKeysBinding BindingName = "includedKeys"
+const InitialKeyBinding BindingName = "initialKey"
+const InitialValueBinding BindingName = "initialValue"
+const IsIndeterminateBinding BindingName = "isIndeterminate"
+const LabelBinding BindingName = "label"
+const LocalizedKeyDictionaryBinding BindingName = "localizedKeyDictionary"
+const ManagedObjectContextBinding BindingName = "managedObjectContext"
+const MaxValueBinding BindingName = "maxValue"
+const MaxWidthBinding BindingName = "maxWidth"
+const MaximumRecentsBinding BindingName = "maximumRecents"
+const MinValueBinding BindingName = "minValue"
+const MinWidthBinding BindingName = "minWidth"
+const MixedStateImageBinding BindingName = "mixedStateImage"
+const OffStateImageBinding BindingName = "offStateImage"
+const OnStateImageBinding BindingName = "onStateImage"
+const PositioningRectBinding BindingName = "positioningRect"
+const PredicateBinding BindingName = "predicate"
+const RecentSearchesBinding BindingName = "recentSearches"
+const RepresentedFilenameBinding BindingName = "representedFilename"
+const RowHeightBinding BindingName = "rowHeight"
+const SelectedIdentifierBinding BindingName = "selectedIdentifier"
+const SelectedIndexBinding BindingName = "selectedIndex"
+const SelectedLabelBinding BindingName = "selectedLabel"
+const SelectedObjectBinding BindingName = "selectedObject"
+const SelectedObjectsBinding BindingName = "selectedObjects"
+const SelectedTagBinding BindingName = "selectedTag"
+const SelectedValueBinding BindingName = "selectedValue"
+const SelectedValuesBinding BindingName = "selectedValues"
+const SelectionIndexPathsBinding BindingName = "selectionIndexPaths"
+const SelectionIndexesBinding BindingName = "selectionIndexes"
+const SortDescriptorsBinding BindingName = "sortDescriptors"
+const TargetBinding BindingName = "target"
+const TextColorBinding BindingName = "textColor"
+const TitleBinding BindingName = "title"
+const ToolTipBinding BindingName = "toolTip"
+const TransparentBinding BindingName = "transparent"
+const ValueBinding BindingName = "value"
+const ValuePathBinding BindingName = "valuePath"
+const ValueURLBinding BindingName = "valueURL"
+const VisibleBinding BindingName = "visible"
+const WarningValueBinding BindingName = "warningValue"
+const WidthBinding BindingName = "width"
+
+type BindingOption string
+
+const AllowsEditingMultipleValuesSelectionBindingOption BindingOption = "NSAllowsEditingMultipleValuesSelection"
+const AllowsNullArgumentBindingOption BindingOption = "NSAllowsNullArgument"
+const AlwaysPresentsApplicationModalAlertsBindingOption BindingOption = "NSAlwaysPresentsApplicationModalAlerts"
+const ConditionallySetsEditableBindingOption BindingOption = "NSConditionallySetsEditable"
+const ConditionallySetsEnabledBindingOption BindingOption = "NSConditionallySetsEnabled"
+const ConditionallySetsHiddenBindingOption BindingOption = "NSConditionallySetsHidden"
+const ContentPlacementTagBindingOption BindingOption = "NSContentPlacementTag"
+const ContinuouslyUpdatesValueBindingOption BindingOption = "NSContinuouslyUpdatesValue"
+const CreatesSortDescriptorBindingOption BindingOption = "NSCreatesSortDescriptor"
+const DeletesObjectsOnRemoveBindingsOption BindingOption = "NSDeletesObjectsOnRemove"
+const DisplayNameBindingOption BindingOption = "NSDisplayName"
+const DisplayPatternBindingOption BindingOption = "NSDisplayPattern"
+const HandlesContentAsCompoundValueBindingOption BindingOption = "NSHandlesContentAsCompoundValue"
+const InsertsNullPlaceholderBindingOption BindingOption = "NSInsertsNullPlaceholder"
+const InvokesSeparatelyWithArrayObjectsBindingOption BindingOption = "NSInvokesSeparatelyWithArrayObjects"
+const MultipleValuesPlaceholderBindingOption BindingOption = "NSMultipleValuesPlaceholder"
+const NoSelectionPlaceholderBindingOption BindingOption = "NSNoSelectionPlaceholder"
+const NotApplicablePlaceholderBindingOption BindingOption = "NSNotApplicablePlaceholder"
+const NullPlaceholderBindingOption BindingOption = "NSNullPlaceholder"
+const PredicateFormatBindingOption BindingOption = "NSPredicateFormat"
+const RaisesForNotApplicableKeysBindingOption BindingOption = "NSRaisesForNotApplicableKeys"
+const SelectorNameBindingOption BindingOption = "NSSelectorName"
+const SelectsAllWhenSettingContentBindingOption BindingOption = "NSSelectsAllWhenSettingContent"
+const ValidatesImmediatelyBindingOption BindingOption = "NSValidatesImmediately"
+const ValueTransformerBindingOption BindingOption = "NSValueTransformer"
+const ValueTransformerNameBindingOption BindingOption = "NSValueTransformerName"
 
 type BitmapFormat uint
 
+const AlphaFirstBitmapFormat BitmapFormat = 1
+const AlphaNonpremultipliedBitmapFormat BitmapFormat = 2
 const BitmapFormatAlphaFirst BitmapFormat = 1
 const BitmapFormatAlphaNonpremultiplied BitmapFormat = 2
 const BitmapFormatFloatingPointSamples BitmapFormat = 4
@@ -150,15 +853,22 @@ const BitmapFormatSixteenBitBigEndian BitmapFormat = 1024
 const BitmapFormatSixteenBitLittleEndian BitmapFormat = 256
 const BitmapFormatThirtyTwoBitBigEndian BitmapFormat = 2048
 const BitmapFormatThirtyTwoBitLittleEndian BitmapFormat = 512
+const FloatingPointSamplesBitmapFormat BitmapFormat = 4
 
 type BitmapImageFileType uint
 
-const BitmapImageFileTypeTIFF BitmapImageFileType = 0
+const BMPFileType BitmapImageFileType = 1
 const BitmapImageFileTypeBMP BitmapImageFileType = 1
 const BitmapImageFileTypeGIF BitmapImageFileType = 2
 const BitmapImageFileTypeJPEG BitmapImageFileType = 3
-const BitmapImageFileTypePNG BitmapImageFileType = 4
 const BitmapImageFileTypeJPEG2000 BitmapImageFileType = 5
+const BitmapImageFileTypePNG BitmapImageFileType = 4
+const BitmapImageFileTypeTIFF BitmapImageFileType = 0
+const GIFFileType BitmapImageFileType = 2
+const JPEG2000FileType BitmapImageFileType = 5
+const JPEGFileType BitmapImageFileType = 3
+const PNGFileType BitmapImageFileType = 4
+const TIFFFileType BitmapImageFileType = 0
 
 type BitmapImageRepPropertyKey string
 
@@ -172,11 +882,11 @@ const ImageEXIFData BitmapImageRepPropertyKey = "NSImageEXIFData"
 const ImageFallbackBackgroundColor BitmapImageRepPropertyKey = "NSImageFallbackBackgroundColor"
 const ImageFrameCount BitmapImageRepPropertyKey = "NSImageFrameCount"
 const ImageGamma BitmapImageRepPropertyKey = "NSImageGamma"
+const ImageIPTCData BitmapImageRepPropertyKey = "NSImageIPTCData"
 const ImageInterlaced BitmapImageRepPropertyKey = "NSImageInterlaced"
 const ImageLoopCount BitmapImageRepPropertyKey = "NSImageLoopCount"
 const ImageProgressive BitmapImageRepPropertyKey = "NSImageProgressive"
 const ImageRGBColorTable BitmapImageRepPropertyKey = "NSImageRGBColorTable"
-const ImageIPTCData BitmapImageRepPropertyKey = "NSImageIPTCData"
 
 type BorderType uint
 
@@ -187,42 +897,54 @@ const NoBorder BorderType = 0
 
 type BoxType uint
 
-const BoxPrimary BoxType = 0
-const BoxSeparator BoxType = 2
 const BoxCustom BoxType = 4
+const BoxOldStyle BoxType = 3
+const BoxPrimary BoxType = 0
+const BoxSecondary BoxType = 1
+const BoxSeparator BoxType = 2
 
 type BrowserColumnResizingType uint
 
-const BrowserNoColumnResizing BrowserColumnResizingType = 0
 const BrowserAutoColumnResizing BrowserColumnResizingType = 1
+const BrowserNoColumnResizing BrowserColumnResizingType = 0
 const BrowserUserColumnResizing BrowserColumnResizingType = 2
 
 type BrowserColumnsAutosaveName string
 
 type BrowserDropOperation uint
 
-const BrowserDropOn BrowserDropOperation = 0
 const BrowserDropAbove BrowserDropOperation = 1
+const BrowserDropOn BrowserDropOperation = 0
 
 type ButtonType uint
 
-const ButtonTypeMomentaryPushIn ButtonType = 7
-const ButtonTypeMomentaryLight ButtonType = 0
-const ButtonTypeMomentaryChange ButtonType = 5
-const ButtonTypePushOnPushOff ButtonType = 1
-const ButtonTypeOnOff ButtonType = 6
-const ButtonTypeToggle ButtonType = 2
-const ButtonTypeSwitch ButtonType = 3
-const ButtonTypeRadio ButtonType = 4
+const AcceleratorButton ButtonType = 8
 const ButtonTypeAccelerator ButtonType = 8
+const ButtonTypeMomentaryChange ButtonType = 5
+const ButtonTypeMomentaryLight ButtonType = 0
+const ButtonTypeMomentaryPushIn ButtonType = 7
 const ButtonTypeMultiLevelAccelerator ButtonType = 9
+const ButtonTypeOnOff ButtonType = 6
+const ButtonTypePushOnPushOff ButtonType = 1
+const ButtonTypeRadio ButtonType = 4
+const ButtonTypeSwitch ButtonType = 3
+const ButtonTypeToggle ButtonType = 2
+const MomentaryChangeButton ButtonType = 5
+const MomentaryLight ButtonType = 7
+const MomentaryLightButton ButtonType = 0
+const MomentaryPushButton ButtonType = 0
+const MomentaryPushInButton ButtonType = 7
+const MultiLevelAcceleratorButton ButtonType = 9
+const OnOffButton ButtonType = 6
+const PushOnPushOffButton ButtonType = 1
+const RadioButton ButtonType = 4
+const SwitchButton ButtonType = 3
+const ToggleButton ButtonType = 2
 
 type CellAttribute uint
 
 const CellAllowsMixedState CellAttribute = 16
-const ChangeBackgroundCell CellAttribute = 8
 const CellChangesContents CellAttribute = 14
-const ChangeGrayCell CellAttribute = 4
 const CellDisabled CellAttribute = 0
 const CellEditable CellAttribute = 3
 const CellHasImageHorizontal CellAttribute = 12
@@ -234,100 +956,125 @@ const CellIsInsetButton CellAttribute = 15
 const CellLightsByBackground CellAttribute = 9
 const CellLightsByContents CellAttribute = 6
 const CellLightsByGray CellAttribute = 7
-const PushInCell CellAttribute = 2
 const CellState CellAttribute = 1
+const ChangeBackgroundCell CellAttribute = 8
+const ChangeGrayCell CellAttribute = 4
+const PushInCell CellAttribute = 2
 
 type CellHitResult uint
 
-const CellHitNone CellHitResult = 0
 const CellHitContentArea CellHitResult = 1
 const CellHitEditableTextArea CellHitResult = 2
+const CellHitNone CellHitResult = 0
 const CellHitTrackableArea CellHitResult = 4
 
 type CellImagePosition uint
 
-const NoImage CellImagePosition = 0
-const ImageOnly CellImagePosition = 1
-const ImageLeading CellImagePosition = 7
-const ImageTrailing CellImagePosition = 8
-const ImageLeft CellImagePosition = 2
-const ImageRight CellImagePosition = 3
-const ImageBelow CellImagePosition = 4
 const ImageAbove CellImagePosition = 5
+const ImageBelow CellImagePosition = 4
+const ImageLeading CellImagePosition = 7
+const ImageLeft CellImagePosition = 2
+const ImageOnly CellImagePosition = 1
 const ImageOverlaps CellImagePosition = 6
+const ImageRight CellImagePosition = 3
+const ImageTrailing CellImagePosition = 8
+const NoImage CellImagePosition = 0
+
+type CellStateValue ControlStateValue
 
 type CellStyleMask uint
 
+const ChangeBackgroundCellMask CellStyleMask = 8
+const ChangeGrayCellMask CellStyleMask = 4
+const ContentsCellMask CellStyleMask = 1
 const NoCellMask CellStyleMask = 0
 const PushInCellMask CellStyleMask = 2
-const ContentsCellMask CellStyleMask = 1
-const ChangeGrayCellMask CellStyleMask = 4
-const ChangeBackgroundCellMask CellStyleMask = 8
 
 type CellType uint
 
+const ImageCellType CellType = 2
 const NullCellType CellType = 0
 const TextCellType CellType = 1
-const ImageCellType CellType = 2
+
+type CharacterCollection uint
+
+const AdobeCNS1CharacterCollection CharacterCollection = 1
+const AdobeGB1CharacterCollection CharacterCollection = 2
+const AdobeJapan1CharacterCollection CharacterCollection = 3
+const AdobeJapan2CharacterCollection CharacterCollection = 4
+const AdobeKorea1CharacterCollection CharacterCollection = 5
+const IdentityMappingCharacterCollection CharacterCollection = 0
+
+type CloudKitSharingServiceOptions uint
+
+const CloudKitSharingServiceAllowPrivate CloudKitSharingServiceOptions = 2
+const CloudKitSharingServiceAllowPublic CloudKitSharingServiceOptions = 1
+const CloudKitSharingServiceAllowReadOnly CloudKitSharingServiceOptions = 16
+const CloudKitSharingServiceAllowReadWrite CloudKitSharingServiceOptions = 32
+const CloudKitSharingServiceStandard CloudKitSharingServiceOptions = 0
 
 type CollectionElementCategory int
 
-const CollectionElementCategoryItem CollectionElementCategory = 0
-const CollectionElementCategorySupplementaryView CollectionElementCategory = 1
 const CollectionElementCategoryDecorationView CollectionElementCategory = 2
 const CollectionElementCategoryInterItemGap CollectionElementCategory = 3
+const CollectionElementCategoryItem CollectionElementCategory = 0
+const CollectionElementCategorySupplementaryView CollectionElementCategory = 1
 
 type CollectionLayoutSectionOrthogonalScrollingBehavior int
 
-const CollectionLayoutSectionOrthogonalScrollingBehaviorNone CollectionLayoutSectionOrthogonalScrollingBehavior = 0
 const CollectionLayoutSectionOrthogonalScrollingBehaviorContinuous CollectionLayoutSectionOrthogonalScrollingBehavior = 1
 const CollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary CollectionLayoutSectionOrthogonalScrollingBehavior = 2
-const CollectionLayoutSectionOrthogonalScrollingBehaviorPaging CollectionLayoutSectionOrthogonalScrollingBehavior = 3
 const CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging CollectionLayoutSectionOrthogonalScrollingBehavior = 4
 const CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered CollectionLayoutSectionOrthogonalScrollingBehavior = 5
+const CollectionLayoutSectionOrthogonalScrollingBehaviorNone CollectionLayoutSectionOrthogonalScrollingBehavior = 0
+const CollectionLayoutSectionOrthogonalScrollingBehaviorPaging CollectionLayoutSectionOrthogonalScrollingBehavior = 3
 
 type CollectionUpdateAction int
 
-const CollectionUpdateActionInsert CollectionUpdateAction = 0
 const CollectionUpdateActionDelete CollectionUpdateAction = 1
-const CollectionUpdateActionReload CollectionUpdateAction = 2
+const CollectionUpdateActionInsert CollectionUpdateAction = 0
 const CollectionUpdateActionMove CollectionUpdateAction = 3
 const CollectionUpdateActionNone CollectionUpdateAction = 4
+const CollectionUpdateActionReload CollectionUpdateAction = 2
 
 type CollectionViewDecorationElementKind string
 
 type CollectionViewDropOperation int
 
-const CollectionViewDropOn CollectionViewDropOperation = 0
 const CollectionViewDropBefore CollectionViewDropOperation = 1
+const CollectionViewDropOn CollectionViewDropOperation = 0
 
 type CollectionViewItemHighlightState int
 
-const CollectionViewItemHighlightNone CollectionViewItemHighlightState = 0
-const CollectionViewItemHighlightForSelection CollectionViewItemHighlightState = 1
-const CollectionViewItemHighlightForDeselection CollectionViewItemHighlightState = 2
 const CollectionViewItemHighlightAsDropTarget CollectionViewItemHighlightState = 3
+const CollectionViewItemHighlightForDeselection CollectionViewItemHighlightState = 2
+const CollectionViewItemHighlightForSelection CollectionViewItemHighlightState = 1
+const CollectionViewItemHighlightNone CollectionViewItemHighlightState = 0
 
 type CollectionViewScrollDirection int
 
-const CollectionViewScrollDirectionVertical CollectionViewScrollDirection = 0
 const CollectionViewScrollDirectionHorizontal CollectionViewScrollDirection = 1
+const CollectionViewScrollDirectionVertical CollectionViewScrollDirection = 0
 
 type CollectionViewScrollPosition uint
 
-const CollectionViewScrollPositionNone CollectionViewScrollPosition = 0
-const CollectionViewScrollPositionTop CollectionViewScrollPosition = 1
-const CollectionViewScrollPositionCenteredVertically CollectionViewScrollPosition = 2
 const CollectionViewScrollPositionBottom CollectionViewScrollPosition = 4
-const CollectionViewScrollPositionNearestHorizontalEdge CollectionViewScrollPosition = 512
-const CollectionViewScrollPositionLeft CollectionViewScrollPosition = 8
 const CollectionViewScrollPositionCenteredHorizontally CollectionViewScrollPosition = 16
-const CollectionViewScrollPositionRight CollectionViewScrollPosition = 32
+const CollectionViewScrollPositionCenteredVertically CollectionViewScrollPosition = 2
 const CollectionViewScrollPositionLeadingEdge CollectionViewScrollPosition = 64
-const CollectionViewScrollPositionTrailingEdge CollectionViewScrollPosition = 128
+const CollectionViewScrollPositionLeft CollectionViewScrollPosition = 8
+const CollectionViewScrollPositionNearestHorizontalEdge CollectionViewScrollPosition = 512
 const CollectionViewScrollPositionNearestVerticalEdge CollectionViewScrollPosition = 256
+const CollectionViewScrollPositionNone CollectionViewScrollPosition = 0
+const CollectionViewScrollPositionRight CollectionViewScrollPosition = 32
+const CollectionViewScrollPositionTop CollectionViewScrollPosition = 1
+const CollectionViewScrollPositionTrailingEdge CollectionViewScrollPosition = 128
 
 type CollectionViewSupplementaryElementKind string
+
+const CollectionElementKindInterItemGapIndicator CollectionViewSupplementaryElementKind = "NSCollectionElementKindInterItemGapIndicator"
+const CollectionElementKindSectionFooter CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionFooter"
+const CollectionElementKindSectionHeader CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionHeader"
 
 type CollectionViewTransitionLayoutAnimatedKey string
 
@@ -337,52 +1084,71 @@ type ColorName string
 
 type ColorPanelMode int
 
-const ColorPanelModeNone ColorPanelMode = -1
-const ColorPanelModeGray ColorPanelMode = 0
-const ColorPanelModeRGB ColorPanelMode = 1
+const CMYKModeColorPanel ColorPanelMode = 2
+const ColorListModeColorPanel ColorPanelMode = 5
 const ColorPanelModeCMYK ColorPanelMode = 2
-const ColorPanelModeHSB ColorPanelMode = 3
-const ColorPanelModeCustomPalette ColorPanelMode = 4
 const ColorPanelModeColorList ColorPanelMode = 5
-const ColorPanelModeWheel ColorPanelMode = 6
 const ColorPanelModeCrayon ColorPanelMode = 7
+const ColorPanelModeCustomPalette ColorPanelMode = 4
+const ColorPanelModeGray ColorPanelMode = 0
+const ColorPanelModeHSB ColorPanelMode = 3
+const ColorPanelModeNone ColorPanelMode = -1
+const ColorPanelModeRGB ColorPanelMode = 1
+const ColorPanelModeWheel ColorPanelMode = 6
+const CrayonModeColorPanel ColorPanelMode = 7
+const CustomPaletteModeColorPanel ColorPanelMode = 4
+const GrayModeColorPanel ColorPanelMode = 0
+const HSBModeColorPanel ColorPanelMode = 3
+const NoModeColorPanel ColorPanelMode = -1
+const RGBModeColorPanel ColorPanelMode = 1
+const WheelModeColorPanel ColorPanelMode = 6
 
 type ColorPanelOptions uint
 
-const ColorPanelGrayModeMask ColorPanelOptions = 1
-const ColorPanelRGBModeMask ColorPanelOptions = 2
-const ColorPanelCMYKModeMask ColorPanelOptions = 4
-const ColorPanelHSBModeMask ColorPanelOptions = 8
-const ColorPanelCustomPaletteModeMask ColorPanelOptions = 16
-const ColorPanelColorListModeMask ColorPanelOptions = 32
-const ColorPanelWheelModeMask ColorPanelOptions = 64
-const ColorPanelCrayonModeMask ColorPanelOptions = 128
 const ColorPanelAllModesMask ColorPanelOptions = 65535
+const ColorPanelCMYKModeMask ColorPanelOptions = 4
+const ColorPanelColorListModeMask ColorPanelOptions = 32
+const ColorPanelCrayonModeMask ColorPanelOptions = 128
+const ColorPanelCustomPaletteModeMask ColorPanelOptions = 16
+const ColorPanelGrayModeMask ColorPanelOptions = 1
+const ColorPanelHSBModeMask ColorPanelOptions = 8
+const ColorPanelRGBModeMask ColorPanelOptions = 2
+const ColorPanelWheelModeMask ColorPanelOptions = 64
 
 type ColorRenderingIntent int
 
-const ColorRenderingIntentDefault ColorRenderingIntent = 0
 const ColorRenderingIntentAbsoluteColorimetric ColorRenderingIntent = 1
-const ColorRenderingIntentRelativeColorimetric ColorRenderingIntent = 2
+const ColorRenderingIntentDefault ColorRenderingIntent = 0
 const ColorRenderingIntentPerceptual ColorRenderingIntent = 3
+const ColorRenderingIntentRelativeColorimetric ColorRenderingIntent = 2
 const ColorRenderingIntentSaturation ColorRenderingIntent = 4
 
 type ColorSpaceModel int
 
-const ColorSpaceModelUnknown ColorSpaceModel = -1
-const ColorSpaceModelGray ColorSpaceModel = 0
-const ColorSpaceModelRGB ColorSpaceModel = 1
+const CMYKColorSpaceModel ColorSpaceModel = 2
 const ColorSpaceModelCMYK ColorSpaceModel = 2
-const ColorSpaceModelLAB ColorSpaceModel = 3
 const ColorSpaceModelDeviceN ColorSpaceModel = 4
+const ColorSpaceModelGray ColorSpaceModel = 0
 const ColorSpaceModelIndexed ColorSpaceModel = 5
+const ColorSpaceModelLAB ColorSpaceModel = 3
 const ColorSpaceModelPatterned ColorSpaceModel = 6
+const ColorSpaceModelRGB ColorSpaceModel = 1
+const ColorSpaceModelUnknown ColorSpaceModel = -1
+const DeviceNColorSpaceModel ColorSpaceModel = 4
+const GrayColorSpaceModel ColorSpaceModel = 0
+const IndexedColorSpaceModel ColorSpaceModel = 5
+const LABColorSpaceModel ColorSpaceModel = 3
+const PatternColorSpaceModel ColorSpaceModel = 6
+const RGBColorSpaceModel ColorSpaceModel = 1
+const UnknownColorSpaceModel ColorSpaceModel = -1
 
 type ColorSpaceName string
 
+const CalibratedBlackColorSpace ColorSpaceName = "NSCalibratedBlackColorSpace"
 const CalibratedRGBColorSpace ColorSpaceName = "NSCalibratedRGBColorSpace"
 const CalibratedWhiteColorSpace ColorSpaceName = "NSCalibratedWhiteColorSpace"
 const CustomColorSpace ColorSpaceName = "NSCustomColorSpace"
+const DeviceBlackColorSpace ColorSpaceName = "NSDeviceBlackColorSpace"
 const DeviceCMYKColorSpace ColorSpaceName = "NSDeviceCMYKColorSpace"
 const DeviceRGBColorSpace ColorSpaceName = "NSDeviceRGBColorSpace"
 const DeviceWhiteColorSpace ColorSpaceName = "NSDeviceWhiteColorSpace"
@@ -391,59 +1157,78 @@ const PatternColorSpace ColorSpaceName = "NSPatternColorSpace"
 
 type ColorSystemEffect int
 
-const ColorSystemEffectNone ColorSystemEffect = 0
-const ColorSystemEffectPressed ColorSystemEffect = 1
 const ColorSystemEffectDeepPressed ColorSystemEffect = 2
 const ColorSystemEffectDisabled ColorSystemEffect = 3
+const ColorSystemEffectNone ColorSystemEffect = 0
+const ColorSystemEffectPressed ColorSystemEffect = 1
 const ColorSystemEffectRollover ColorSystemEffect = 4
 
 type ColorType int
 
+const ColorTypeCatalog ColorType = 2
 const ColorTypeComponentBased ColorType = 0
 const ColorTypePattern ColorType = 1
-const ColorTypeCatalog ColorType = 2
-
-type ColorWellStyle int
-
-const ColorWellStyleDefault ColorWellStyle = 0
-const ColorWellStyleMinimal ColorWellStyle = 1
-const ColorWellStyleExpanded ColorWellStyle = 2
-
-type ComboButtonStyle int
-
-const ComboButtonStyleSplit ComboButtonStyle = 0
-const ComboButtonStyleUnified ComboButtonStyle = 1
 
 type CompositingOperation uint
 
+const CompositeClear CompositingOperation = 0
+const CompositeColor CompositingOperation = 27
+const CompositeColorBurn CompositingOperation = 20
+const CompositeColorDodge CompositingOperation = 19
+const CompositeCopy CompositingOperation = 1
+const CompositeDarken CompositingOperation = 17
+const CompositeDestinationAtop CompositingOperation = 9
+const CompositeDestinationIn CompositingOperation = 7
+const CompositeDestinationOut CompositingOperation = 8
+const CompositeDestinationOver CompositingOperation = 6
+const CompositeDifference CompositingOperation = 23
+const CompositeExclusion CompositingOperation = 24
+const CompositeHardLight CompositingOperation = 22
+const CompositeHighlight CompositingOperation = 12
+const CompositeHue CompositingOperation = 25
+const CompositeLighten CompositingOperation = 18
+const CompositeLuminosity CompositingOperation = 28
+const CompositeMultiply CompositingOperation = 14
+const CompositeOverlay CompositingOperation = 16
+const CompositePlusDarker CompositingOperation = 11
+const CompositePlusLighter CompositingOperation = 13
+const CompositeSaturation CompositingOperation = 26
+const CompositeScreen CompositingOperation = 15
+const CompositeSoftLight CompositingOperation = 21
+const CompositeSourceAtop CompositingOperation = 5
+const CompositeSourceIn CompositingOperation = 3
+const CompositeSourceOut CompositingOperation = 4
+const CompositeSourceOver CompositingOperation = 2
+const CompositeXOR CompositingOperation = 10
 const CompositingOperationClear CompositingOperation = 0
+const CompositingOperationColor CompositingOperation = 27
+const CompositingOperationColorBurn CompositingOperation = 20
+const CompositingOperationColorDodge CompositingOperation = 19
 const CompositingOperationCopy CompositingOperation = 1
-const CompositingOperationSourceOver CompositingOperation = 2
-const CompositingOperationSourceIn CompositingOperation = 3
-const CompositingOperationSourceOut CompositingOperation = 4
-const CompositingOperationSourceAtop CompositingOperation = 5
-const CompositingOperationDestinationOver CompositingOperation = 6
+const CompositingOperationDarken CompositingOperation = 17
+const CompositingOperationDestinationAtop CompositingOperation = 9
 const CompositingOperationDestinationIn CompositingOperation = 7
 const CompositingOperationDestinationOut CompositingOperation = 8
-const CompositingOperationDestinationAtop CompositingOperation = 9
-const CompositingOperationXOR CompositingOperation = 10
-const CompositingOperationPlusDarker CompositingOperation = 11
-const CompositingOperationPlusLighter CompositingOperation = 13
-const CompositingOperationMultiply CompositingOperation = 14
-const CompositingOperationScreen CompositingOperation = 15
-const CompositingOperationOverlay CompositingOperation = 16
-const CompositingOperationDarken CompositingOperation = 17
-const CompositingOperationLighten CompositingOperation = 18
-const CompositingOperationColorDodge CompositingOperation = 19
-const CompositingOperationColorBurn CompositingOperation = 20
-const CompositingOperationSoftLight CompositingOperation = 21
-const CompositingOperationHardLight CompositingOperation = 22
+const CompositingOperationDestinationOver CompositingOperation = 6
 const CompositingOperationDifference CompositingOperation = 23
 const CompositingOperationExclusion CompositingOperation = 24
+const CompositingOperationHardLight CompositingOperation = 22
+const CompositingOperationHighlight CompositingOperation = 12
 const CompositingOperationHue CompositingOperation = 25
-const CompositingOperationSaturation CompositingOperation = 26
-const CompositingOperationColor CompositingOperation = 27
+const CompositingOperationLighten CompositingOperation = 18
 const CompositingOperationLuminosity CompositingOperation = 28
+const CompositingOperationMultiply CompositingOperation = 14
+const CompositingOperationOverlay CompositingOperation = 16
+const CompositingOperationPlusDarker CompositingOperation = 11
+const CompositingOperationPlusLighter CompositingOperation = 13
+const CompositingOperationSaturation CompositingOperation = 26
+const CompositingOperationScreen CompositingOperation = 15
+const CompositingOperationSoftLight CompositingOperation = 21
+const CompositingOperationSourceAtop CompositingOperation = 5
+const CompositingOperationSourceIn CompositingOperation = 3
+const CompositingOperationSourceOut CompositingOperation = 4
+const CompositingOperationSourceOver CompositingOperation = 2
+const CompositingOperationXOR CompositingOperation = 10
 
 type ControlCharacterAction int
 
@@ -456,23 +1241,46 @@ const ControlCharacterActionZeroAdvancement ControlCharacterAction = 1
 
 type ControlSize uint
 
-const ControlSizeMini ControlSize = 2
-const ControlSizeSmall ControlSize = 1
-const ControlSizeRegular ControlSize = 0
 const ControlSizeLarge ControlSize = 3
+const ControlSizeMini ControlSize = 2
+const ControlSizeRegular ControlSize = 0
+const ControlSizeSmall ControlSize = 1
+const MiniControlSize ControlSize = 2
+const RegularControlSize ControlSize = 0
+const SmallControlSize ControlSize = 1
 
 type ControlStateValue int
 
-const ControlStateValueOn ControlStateValue = 1
-const ControlStateValueOff ControlStateValue = 0
 const ControlStateValueMixed ControlStateValue = -1
+const ControlStateValueOff ControlStateValue = 0
+const ControlStateValueOn ControlStateValue = 1
+const MixedState ControlStateValue = -1
+const OffState ControlStateValue = 0
+const OnState ControlStateValue = 1
 
 type ControlTint uint
 
-const DefaultControlTint ControlTint = 0
 const BlueControlTint ControlTint = 1
-const GraphiteControlTint ControlTint = 6
 const ClearControlTint ControlTint = 7
+const DefaultControlTint ControlTint = 0
+const GraphiteControlTint ControlTint = 6
+
+type CorrectionIndicatorType int
+
+const CorrectionIndicatorTypeDefault CorrectionIndicatorType = 0
+const CorrectionIndicatorTypeGuesses CorrectionIndicatorType = 2
+const CorrectionIndicatorTypeReversion CorrectionIndicatorType = 1
+
+type CorrectionResponse int
+
+const CorrectionResponseAccepted CorrectionResponse = 1
+const CorrectionResponseEdited CorrectionResponse = 4
+const CorrectionResponseIgnored CorrectionResponse = 3
+const CorrectionResponseNone CorrectionResponse = 0
+const CorrectionResponseRejected CorrectionResponse = 2
+const CorrectionResponseReverted CorrectionResponse = 5
+
+type DataAssetName string
 
 type DatePickerElementFlags uint
 
@@ -482,21 +1290,37 @@ const DatePickerElementFlagHourMinuteSecond DatePickerElementFlags = 14
 const DatePickerElementFlagTimeZone DatePickerElementFlags = 16
 const DatePickerElementFlagYearMonth DatePickerElementFlags = 192
 const DatePickerElementFlagYearMonthDay DatePickerElementFlags = 224
+const EraDatePickerElementFlag DatePickerElementFlags = 256
+const HourMinuteDatePickerElementFlag DatePickerElementFlags = 12
+const HourMinuteSecondDatePickerElementFlag DatePickerElementFlags = 14
+const TimeZoneDatePickerElementFlag DatePickerElementFlags = 16
+const YearMonthDatePickerElementFlag DatePickerElementFlags = 192
+const YearMonthDayDatePickerElementFlag DatePickerElementFlags = 224
 
 type DatePickerMode uint
 
 const DatePickerModeRange DatePickerMode = 1
 const DatePickerModeSingle DatePickerMode = 0
+const RangeDateMode DatePickerMode = 1
+const SingleDateMode DatePickerMode = 0
 
 type DatePickerStyle uint
 
+const ClockAndCalendarDatePickerStyle DatePickerStyle = 1
 const DatePickerStyleClockAndCalendar DatePickerStyle = 1
 const DatePickerStyleTextField DatePickerStyle = 2
 const DatePickerStyleTextFieldAndStepper DatePickerStyle = 0
+const TextFieldAndStepperDatePickerStyle DatePickerStyle = 0
+const TextFieldDatePickerStyle DatePickerStyle = 2
 
 type DefinitionOptionKey string
 
 const DefinitionPresentationTypeKey DefinitionOptionKey = "NSDefinitionPresentationTypeKey"
+
+type DefinitionPresentationType string
+
+const DefinitionPresentationTypeDictionaryApplication DefinitionPresentationType = "NSDefinitionPresentationTypeDictionaryApplication"
+const DefinitionPresentationTypeOverlay DefinitionPresentationType = "NSDefinitionPresentationTypeOverlay"
 
 type DeviceDescriptionKey string
 
@@ -509,12 +1333,12 @@ const DeviceSize DeviceDescriptionKey = "NSDeviceSize"
 
 type DirectionalRectEdge uint
 
+const DirectionalRectEdgeAll DirectionalRectEdge = 15
+const DirectionalRectEdgeBottom DirectionalRectEdge = 4
+const DirectionalRectEdgeLeading DirectionalRectEdge = 2
 const DirectionalRectEdgeNone DirectionalRectEdge = 0
 const DirectionalRectEdgeTop DirectionalRectEdge = 1
-const DirectionalRectEdgeLeading DirectionalRectEdge = 2
-const DirectionalRectEdgeBottom DirectionalRectEdge = 4
 const DirectionalRectEdgeTrailing DirectionalRectEdge = 8
-const DirectionalRectEdgeAll DirectionalRectEdge = 15
 
 type DisplayGamut int
 
@@ -523,24 +1347,25 @@ const DisplayGamutSRGB DisplayGamut = 1
 
 type DocumentChangeType uint
 
-const ChangeDone DocumentChangeType = 0
-const ChangeUndone DocumentChangeType = 1
-const ChangeCleared DocumentChangeType = 2
-const ChangeReadOtherContents DocumentChangeType = 3
 const ChangeAutosaved DocumentChangeType = 4
-const ChangeRedone DocumentChangeType = 5
+const ChangeCleared DocumentChangeType = 2
 const ChangeDiscardable DocumentChangeType = 256
+const ChangeDone DocumentChangeType = 0
+const ChangeReadOtherContents DocumentChangeType = 3
+const ChangeRedone DocumentChangeType = 5
+const ChangeUndone DocumentChangeType = 1
 
 type DragOperation uint
 
+const DragOperationAll_Obsolete DragOperation = 15
 const DragOperationCopy DragOperation = 1
-const DragOperationLink DragOperation = 2
-const DragOperationGeneric DragOperation = 4
-const DragOperationPrivate DragOperation = 8
-const DragOperationMove DragOperation = 16
 const DragOperationDelete DragOperation = 32
 const DragOperationEvery DragOperation = math.MaxUint
+const DragOperationGeneric DragOperation = 4
+const DragOperationLink DragOperation = 2
+const DragOperationMove DragOperation = 16
 const DragOperationNone DragOperation = 0
+const DragOperationPrivate DragOperation = 8
 
 type DraggingContext int
 
@@ -550,9 +1375,9 @@ const DraggingContextWithinApplication DraggingContext = 1
 type DraggingFormation int
 
 const DraggingFormationDefault DraggingFormation = 0
+const DraggingFormationList DraggingFormation = 3
 const DraggingFormationNone DraggingFormation = 1
 const DraggingFormationPile DraggingFormation = 2
-const DraggingFormationList DraggingFormation = 3
 const DraggingFormationStack DraggingFormation = 4
 
 type DraggingImageComponentKey string
@@ -562,194 +1387,338 @@ const DraggingImageComponentLabelKey DraggingImageComponentKey = "label"
 
 type DraggingItemEnumerationOptions uint
 
-const DraggingItemEnumerationConcurrent DraggingItemEnumerationOptions = 1
 const DraggingItemEnumerationClearNonenumeratedImages DraggingItemEnumerationOptions = 65536
+const DraggingItemEnumerationConcurrent DraggingItemEnumerationOptions = 1
+
+type DrawerState uint
+
+const DrawerClosedState DrawerState = 0
+const DrawerClosingState DrawerState = 3
+const DrawerOpenState DrawerState = 2
+const DrawerOpeningState DrawerState = 1
 
 type EventButtonMask uint
 
-const EventButtonMaskPenTip EventButtonMask = 1
 const EventButtonMaskPenLowerSide EventButtonMask = 2
+const EventButtonMaskPenTip EventButtonMask = 1
 const EventButtonMaskPenUpperSide EventButtonMask = 4
+const PenLowerSideMask EventButtonMask = 2
+const PenTipMask EventButtonMask = 1
+const PenUpperSideMask EventButtonMask = 4
 
 type EventGestureAxis int
 
-const EventGestureAxisNone EventGestureAxis = 0
 const EventGestureAxisHorizontal EventGestureAxis = 1
+const EventGestureAxisNone EventGestureAxis = 0
 const EventGestureAxisVertical EventGestureAxis = 2
 
-type EventMask uint64
+type EventMask int64
 
-const EventMaskAny EventMask = math.MaxUint
+const AnyEventMask EventMask = -1
+const AppKitDefinedMask EventMask = 8192
+const ApplicationDefinedMask EventMask = 32768
+const CursorUpdateMask EventMask = 131072
+const EventMaskAny EventMask = -1
+const EventMaskAppKitDefined EventMask = 8192
+const EventMaskApplicationDefined EventMask = 32768
+const EventMaskBeginGesture EventMask = 524288
+const EventMaskChangeMode EventMask = 274877906944
+const EventMaskCursorUpdate EventMask = 131072
+const EventMaskDirectTouch EventMask = 137438953472
+const EventMaskEndGesture EventMask = 1048576
+const EventMaskFlagsChanged EventMask = 4096
+const EventMaskGesture EventMask = 536870912
+const EventMaskKeyDown EventMask = 1024
+const EventMaskKeyUp EventMask = 2048
 const EventMaskLeftMouseDown EventMask = 2
 const EventMaskLeftMouseDragged EventMask = 64
 const EventMaskLeftMouseUp EventMask = 4
-const EventMaskRightMouseDown EventMask = 8
-const EventMaskRightMouseDragged EventMask = 128
-const EventMaskRightMouseUp EventMask = 16
+const EventMaskMagnify EventMask = 1073741824
+const EventMaskMouseEntered EventMask = 256
+const EventMaskMouseExited EventMask = 512
+const EventMaskMouseMoved EventMask = 32
 const EventMaskOtherMouseDown EventMask = 33554432
 const EventMaskOtherMouseDragged EventMask = 134217728
 const EventMaskOtherMouseUp EventMask = 67108864
-const EventMaskMouseEntered EventMask = 256
-const EventMaskMouseMoved EventMask = 32
-const EventMaskMouseExited EventMask = 512
-const EventMaskKeyDown EventMask = 1024
-const EventMaskKeyUp EventMask = 2048
-const EventMaskBeginGesture EventMask = 524288
-const EventMaskEndGesture EventMask = 1048576
-const EventMaskMagnify EventMask = 1073741824
+const EventMaskPeriodic EventMask = 65536
+const EventMaskPressure EventMask = 17179869184
+const EventMaskRightMouseDown EventMask = 8
+const EventMaskRightMouseDragged EventMask = 128
+const EventMaskRightMouseUp EventMask = 16
+const EventMaskRotate EventMask = 262144
+const EventMaskScrollWheel EventMask = 4194304
 const EventMaskSmartMagnify EventMask = 4294967296
 const EventMaskSwipe EventMask = 2147483648
-const EventMaskRotate EventMask = 262144
-const EventMaskGesture EventMask = 536870912
-const EventMaskDirectTouch EventMask = 137438953472
+const EventMaskSystemDefined EventMask = 16384
 const EventMaskTabletPoint EventMask = 8388608
 const EventMaskTabletProximity EventMask = 16777216
-const EventMaskPressure EventMask = 17179869184
-const EventMaskScrollWheel EventMask = 4194304
-const EventMaskChangeMode EventMask = 274877906944
-const EventMaskAppKitDefined EventMask = 8192
-const EventMaskApplicationDefined EventMask = 32768
-const EventMaskCursorUpdate EventMask = 131072
-const EventMaskFlagsChanged EventMask = 4096
-const EventMaskPeriodic EventMask = 65536
-const EventMaskSystemDefined EventMask = 16384
+const FlagsChangedMask EventMask = 4096
+const KeyDownMask EventMask = 1024
+const KeyUpMask EventMask = 2048
+const LeftMouseDownMask EventMask = 2
+const LeftMouseDraggedMask EventMask = 64
+const LeftMouseUpMask EventMask = 4
+const MouseEnteredMask EventMask = 256
+const MouseExitedMask EventMask = 512
+const MouseMovedMask EventMask = 32
+const OtherMouseDownMask EventMask = 33554432
+const OtherMouseDraggedMask EventMask = 134217728
+const OtherMouseUpMask EventMask = 67108864
+const PeriodicMask EventMask = 65536
+const RightMouseDownMask EventMask = 8
+const RightMouseDraggedMask EventMask = 128
+const RightMouseUpMask EventMask = 16
+const ScrollWheelMask EventMask = 4194304
+const SystemDefinedMask EventMask = 16384
+const TabletPointMask EventMask = 8388608
+const TabletProximityMask EventMask = 16777216
 
 type EventModifierFlags uint
 
+const AlphaShiftKeyMask EventModifierFlags = 65536
+const AlternateKeyMask EventModifierFlags = 524288
+const CommandKeyMask EventModifierFlags = 1048576
+const ControlKeyMask EventModifierFlags = 262144
+const DeviceIndependentModifierFlagsMask EventModifierFlags = 4294901760
 const EventModifierFlagCapsLock EventModifierFlags = 65536
-const EventModifierFlagShift EventModifierFlags = 131072
-const EventModifierFlagControl EventModifierFlags = 262144
-const EventModifierFlagOption EventModifierFlags = 524288
 const EventModifierFlagCommand EventModifierFlags = 1048576
-const EventModifierFlagNumericPad EventModifierFlags = 2097152
-const EventModifierFlagHelp EventModifierFlags = 4194304
-const EventModifierFlagFunction EventModifierFlags = 8388608
+const EventModifierFlagControl EventModifierFlags = 262144
 const EventModifierFlagDeviceIndependentFlagsMask EventModifierFlags = 4294901760
+const EventModifierFlagFunction EventModifierFlags = 8388608
+const EventModifierFlagHelp EventModifierFlags = 4194304
+const EventModifierFlagNumericPad EventModifierFlags = 2097152
+const EventModifierFlagOption EventModifierFlags = 524288
+const EventModifierFlagShift EventModifierFlags = 131072
+const FunctionKeyMask EventModifierFlags = 8388608
+const HelpKeyMask EventModifierFlags = 4194304
+const NumericPadKeyMask EventModifierFlags = 2097152
+const ShiftKeyMask EventModifierFlags = 131072
 
 type EventPhase uint
 
-const EventPhaseNone EventPhase = 0
 const EventPhaseBegan EventPhase = 1
-const EventPhaseStationary EventPhase = 2
+const EventPhaseCancelled EventPhase = 16
 const EventPhaseChanged EventPhase = 4
 const EventPhaseEnded EventPhase = 8
-const EventPhaseCancelled EventPhase = 16
 const EventPhaseMayBegin EventPhase = 32
+const EventPhaseNone EventPhase = 0
+const EventPhaseStationary EventPhase = 2
 
-type EventSubtype int16
+type EventSubtype int
 
+const AWTEventType EventSubtype = 16
+const ApplicationActivatedEventType EventSubtype = 1
+const ApplicationDeactivatedEventType EventSubtype = 2
 const EventSubtypeApplicationActivated EventSubtype = 1
 const EventSubtypeApplicationDeactivated EventSubtype = 2
-const EventSubtypeScreenChanged EventSubtype = 8
-const EventSubtypeWindowExposed EventSubtype = 0
-const EventSubtypeWindowMoved EventSubtype = 4
-const EventSubtypePowerOff EventSubtype = 1
 const EventSubtypeMouseEvent EventSubtype = 0
+const EventSubtypePowerOff EventSubtype = 1
+const EventSubtypeScreenChanged EventSubtype = 8
 const EventSubtypeTabletPoint EventSubtype = 1
 const EventSubtypeTabletProximity EventSubtype = 2
 const EventSubtypeTouch EventSubtype = 3
+const EventSubtypeWindowExposed EventSubtype = 0
+const EventSubtypeWindowMoved EventSubtype = 4
+const MouseEventSubtype EventSubtype = 0
+const PowerOffEventType EventSubtype = 1
+const ScreenChangedEventType EventSubtype = 8
+const TabletPointEventSubtype EventSubtype = 1
+const TabletProximityEventSubtype EventSubtype = 2
+const TouchEventSubtype EventSubtype = 3
+const WindowExposedEventType EventSubtype = 0
+const WindowMovedEventType EventSubtype = 4
 
 type EventSwipeTrackingOptions uint
 
-const EventSwipeTrackingLockDirection EventSwipeTrackingOptions = 1
 const EventSwipeTrackingClampGestureAmount EventSwipeTrackingOptions = 2
+const EventSwipeTrackingLockDirection EventSwipeTrackingOptions = 1
 
 type EventType uint
 
+const AppKitDefined EventType = 13
+const ApplicationDefined EventType = 15
+const CursorUpdate EventType = 17
+const EventTypeAppKitDefined EventType = 13
+const EventTypeApplicationDefined EventType = 15
+const EventTypeBeginGesture EventType = 19
+const EventTypeChangeMode EventType = 38
+const EventTypeCursorUpdate EventType = 17
+const EventTypeDirectTouch EventType = 37
+const EventTypeEndGesture EventType = 20
+const EventTypeFlagsChanged EventType = 12
+const EventTypeGesture EventType = 29
+const EventTypeKeyDown EventType = 10
+const EventTypeKeyUp EventType = 11
 const EventTypeLeftMouseDown EventType = 1
 const EventTypeLeftMouseDragged EventType = 6
 const EventTypeLeftMouseUp EventType = 2
-const EventTypeRightMouseDown EventType = 3
-const EventTypeRightMouseUp EventType = 4
-const EventTypeRightMouseDragged EventType = 7
+const EventTypeMagnify EventType = 30
+const EventTypeMouseEntered EventType = 8
+const EventTypeMouseExited EventType = 9
+const EventTypeMouseMoved EventType = 5
 const EventTypeOtherMouseDown EventType = 25
 const EventTypeOtherMouseDragged EventType = 27
 const EventTypeOtherMouseUp EventType = 26
-const EventTypeMouseMoved EventType = 5
-const EventTypeMouseEntered EventType = 8
-const EventTypeMouseExited EventType = 9
-const EventTypeKeyDown EventType = 10
-const EventTypeKeyUp EventType = 11
-const EventTypeBeginGesture EventType = 19
-const EventTypeEndGesture EventType = 20
-const EventTypeMagnify EventType = 30
+const EventTypePeriodic EventType = 16
+const EventTypePressure EventType = 34
+const EventTypeQuickLook EventType = 33
+const EventTypeRightMouseDown EventType = 3
+const EventTypeRightMouseDragged EventType = 7
+const EventTypeRightMouseUp EventType = 4
+const EventTypeRotate EventType = 18
+const EventTypeScrollWheel EventType = 22
 const EventTypeSmartMagnify EventType = 32
 const EventTypeSwipe EventType = 31
-const EventTypeRotate EventType = 18
-const EventTypeGesture EventType = 29
-const EventTypeDirectTouch EventType = 37
+const EventTypeSystemDefined EventType = 14
 const EventTypeTabletPoint EventType = 23
 const EventTypeTabletProximity EventType = 24
-const EventTypePressure EventType = 34
-const EventTypeScrollWheel EventType = 22
-const EventTypeChangeMode EventType = 38
-const EventTypeAppKitDefined EventType = 13
-const EventTypeApplicationDefined EventType = 15
-const EventTypeCursorUpdate EventType = 17
-const EventTypeFlagsChanged EventType = 12
-const EventTypePeriodic EventType = 16
-const EventTypeQuickLook EventType = 33
-const EventTypeSystemDefined EventType = 14
+const FlagsChanged EventType = 12
+const KeyDown EventType = 10
+const KeyUp EventType = 11
+const LeftMouseDown EventType = 1
+const LeftMouseDragged EventType = 6
+const LeftMouseUp EventType = 2
+const MouseEntered EventType = 8
+const MouseExited EventType = 9
+const MouseMoved EventType = 5
+const OtherMouseDown EventType = 25
+const OtherMouseDragged EventType = 27
+const OtherMouseUp EventType = 26
+const Periodic EventType = 16
+const RightMouseDown EventType = 3
+const RightMouseDragged EventType = 7
+const RightMouseUp EventType = 4
+const ScrollWheel EventType = 22
+const SystemDefined EventType = 14
+const TabletPoint EventType = 23
+const TabletProximity EventType = 24
+
+type FindPanelAction uint
+
+const FindPanelActionNext FindPanelAction = 2
+const FindPanelActionPrevious FindPanelAction = 3
+const FindPanelActionReplace FindPanelAction = 5
+const FindPanelActionReplaceAll FindPanelAction = 4
+const FindPanelActionReplaceAllInSelection FindPanelAction = 8
+const FindPanelActionReplaceAndFind FindPanelAction = 6
+const FindPanelActionSelectAll FindPanelAction = 9
+const FindPanelActionSelectAllInSelection FindPanelAction = 10
+const FindPanelActionSetFindString FindPanelAction = 7
+const FindPanelActionShowFindPanel FindPanelAction = 1
+
+type FindPanelSubstringMatchType uint
+
+const FindPanelSubstringMatchTypeContains FindPanelSubstringMatchType = 0
+const FindPanelSubstringMatchTypeEndsWith FindPanelSubstringMatchType = 3
+const FindPanelSubstringMatchTypeFullWord FindPanelSubstringMatchType = 2
+const FindPanelSubstringMatchTypeStartsWith FindPanelSubstringMatchType = 1
+
+type FocusRingPlacement uint
+
+const FocusRingAbove FocusRingPlacement = 2
+const FocusRingBelow FocusRingPlacement = 1
+const FocusRingOnly FocusRingPlacement = 0
 
 type FocusRingType uint
 
 const FocusRingTypeDefault FocusRingType = 0
-const FocusRingTypeNone FocusRingType = 1
 const FocusRingTypeExterior FocusRingType = 2
+const FocusRingTypeNone FocusRingType = 1
 
 type FontAction uint
 
-const NoFontChangeAction FontAction = 0
-const ViaPanelFontAction FontAction = 1
 const AddTraitFontAction FontAction = 2
-const SizeUpFontAction FontAction = 3
-const SizeDownFontAction FontAction = 4
 const HeavierFontAction FontAction = 5
 const LighterFontAction FontAction = 6
+const NoFontChangeAction FontAction = 0
 const RemoveTraitFontAction FontAction = 7
+const SizeDownFontAction FontAction = 4
+const SizeUpFontAction FontAction = 3
+const ViaPanelFontAction FontAction = 1
+
+type FontAssetRequestOptions uint
+
+const FontAssetRequestOptionUsesStandardUI FontAssetRequestOptions = 1
+
+type FontCollectionActionTypeKey string
+
+const FontCollectionWasHidden FontCollectionActionTypeKey = "NSFontCollectionWasHidden"
+const FontCollectionWasRenamed FontCollectionActionTypeKey = "NSFontCollectionWasRenamed"
+const FontCollectionWasShown FontCollectionActionTypeKey = "NSFontCollectionWasShown"
+
+type FontCollectionMatchingOptionKey string
+
+const FontCollectionDisallowAutoActivationOption FontCollectionMatchingOptionKey = "NSCTFontCollectionDisallowAutoActivationOption"
+const FontCollectionIncludeDisabledFontsOption FontCollectionMatchingOptionKey = "NSCTFontCollectionIncludeDisabledFontsOption"
+const FontCollectionRemoveDuplicatesOption FontCollectionMatchingOptionKey = "NSCTFontCollectionRemoveDuplicatesOption"
+
+type FontCollectionName string
+
+const FontCollectionAllFonts FontCollectionName = "com.apple.AllFonts"
+const FontCollectionFavorites FontCollectionName = "com.apple.Favorites"
+const FontCollectionRecentlyUsed FontCollectionName = "com.apple.Recents"
+const FontCollectionUser FontCollectionName = "com.apple.UserFonts"
 
 type FontCollectionOptions uint
 
 const FontCollectionApplicationOnlyMask FontCollectionOptions = 1
 
+type FontCollectionUserInfoKey string
+
+const FontCollectionActionKey FontCollectionUserInfoKey = "NSFontCollectionAction"
+const FontCollectionNameKey FontCollectionUserInfoKey = "NSFontCollectionName"
+const FontCollectionOldNameKey FontCollectionUserInfoKey = "NSFontCollectionOldName"
+const FontCollectionVisibilityKey FontCollectionUserInfoKey = "NSFontCollectionVisibility"
+
+type FontCollectionVisibility uint
+
+const FontCollectionVisibilityComputer FontCollectionVisibility = 4
+const FontCollectionVisibilityProcess FontCollectionVisibility = 1
+const FontCollectionVisibilityUser FontCollectionVisibility = 2
+
 type FontDescriptorAttributeName string
 
-const FontFamilyAttribute FontDescriptorAttributeName = "NSFontFamilyAttribute"
-const FontNameAttribute FontDescriptorAttributeName = "NSFontNameAttribute"
-const FontFaceAttribute FontDescriptorAttributeName = "NSFontFaceAttribute"
-const FontSizeAttribute FontDescriptorAttributeName = "NSFontSizeAttribute"
-const FontVisibleNameAttribute FontDescriptorAttributeName = "NSFontVisibleNameAttribute"
-const FontMatrixAttribute FontDescriptorAttributeName = "NSFontMatrixAttribute"
-const FontVariationAttribute FontDescriptorAttributeName = "NSCTFontVariationAttribute"
-const FontCharacterSetAttribute FontDescriptorAttributeName = "NSCTFontCharacterSetAttribute"
 const FontCascadeListAttribute FontDescriptorAttributeName = "NSCTFontCascadeListAttribute"
-const FontTraitsAttribute FontDescriptorAttributeName = "NSCTFontTraitsAttribute"
-const FontFixedAdvanceAttribute FontDescriptorAttributeName = "NSCTFontFixedAdvanceAttribute"
+const FontCharacterSetAttribute FontDescriptorAttributeName = "NSCTFontCharacterSetAttribute"
+const FontFaceAttribute FontDescriptorAttributeName = "NSFontFaceAttribute"
+const FontFamilyAttribute FontDescriptorAttributeName = "NSFontFamilyAttribute"
 const FontFeatureSettingsAttribute FontDescriptorAttributeName = "NSCTFontFeatureSettingsAttribute"
+const FontFixedAdvanceAttribute FontDescriptorAttributeName = "NSCTFontFixedAdvanceAttribute"
+const FontMatrixAttribute FontDescriptorAttributeName = "NSFontMatrixAttribute"
+const FontNameAttribute FontDescriptorAttributeName = "NSFontNameAttribute"
+const FontSizeAttribute FontDescriptorAttributeName = "NSFontSizeAttribute"
+const FontTraitsAttribute FontDescriptorAttributeName = "NSCTFontTraitsAttribute"
+const FontVariationAttribute FontDescriptorAttributeName = "NSCTFontVariationAttribute"
+const FontVisibleNameAttribute FontDescriptorAttributeName = "NSFontVisibleNameAttribute"
+
+type FontDescriptorFeatureKey string
+
+const FontFeatureSelectorIdentifierKey FontDescriptorFeatureKey = "CTFeatureSelectorIdentifier"
+const FontFeatureTypeIdentifierKey FontDescriptorFeatureKey = "CTFeatureTypeIdentifier"
 
 type FontDescriptorSymbolicTraits uint32
 
-const FontDescriptorTraitItalic FontDescriptorSymbolicTraits = 1
-const FontDescriptorTraitBold FontDescriptorSymbolicTraits = 2
-const FontDescriptorTraitExpanded FontDescriptorSymbolicTraits = 32
-const FontDescriptorTraitCondensed FontDescriptorSymbolicTraits = 64
-const FontDescriptorTraitMonoSpace FontDescriptorSymbolicTraits = 1024
-const FontDescriptorTraitVertical FontDescriptorSymbolicTraits = 2048
-const FontDescriptorTraitUIOptimized FontDescriptorSymbolicTraits = 4096
-const FontDescriptorTraitTightLeading FontDescriptorSymbolicTraits = 32768
-const FontDescriptorTraitLooseLeading FontDescriptorSymbolicTraits = 65536
-const FontDescriptorClassMask FontDescriptorSymbolicTraits = 4026531840
-const FontDescriptorClassUnknown FontDescriptorSymbolicTraits = 0
-const FontDescriptorClassOldStyleSerifs FontDescriptorSymbolicTraits = 268435456
-const FontDescriptorClassTransitionalSerifs FontDescriptorSymbolicTraits = 536870912
-const FontDescriptorClassModernSerifs FontDescriptorSymbolicTraits = 805306368
 const FontDescriptorClassClarendonSerifs FontDescriptorSymbolicTraits = 1073741824
-const FontDescriptorClassSlabSerifs FontDescriptorSymbolicTraits = 1342177280
 const FontDescriptorClassFreeformSerifs FontDescriptorSymbolicTraits = 1879048192
-const FontDescriptorClassSansSerif FontDescriptorSymbolicTraits = 2147483648
+const FontDescriptorClassMask FontDescriptorSymbolicTraits = 4026531840
+const FontDescriptorClassModernSerifs FontDescriptorSymbolicTraits = 805306368
+const FontDescriptorClassOldStyleSerifs FontDescriptorSymbolicTraits = 268435456
 const FontDescriptorClassOrnamentals FontDescriptorSymbolicTraits = 2415919104
+const FontDescriptorClassSansSerif FontDescriptorSymbolicTraits = 2147483648
 const FontDescriptorClassScripts FontDescriptorSymbolicTraits = 2684354560
+const FontDescriptorClassSlabSerifs FontDescriptorSymbolicTraits = 1342177280
 const FontDescriptorClassSymbolic FontDescriptorSymbolicTraits = 3221225472
+const FontDescriptorClassTransitionalSerifs FontDescriptorSymbolicTraits = 536870912
+const FontDescriptorClassUnknown FontDescriptorSymbolicTraits = 0
+const FontDescriptorTraitBold FontDescriptorSymbolicTraits = 2
+const FontDescriptorTraitCondensed FontDescriptorSymbolicTraits = 64
+const FontDescriptorTraitExpanded FontDescriptorSymbolicTraits = 32
+const FontDescriptorTraitItalic FontDescriptorSymbolicTraits = 1
+const FontDescriptorTraitLooseLeading FontDescriptorSymbolicTraits = 65536
+const FontDescriptorTraitMonoSpace FontDescriptorSymbolicTraits = 1024
+const FontDescriptorTraitTightLeading FontDescriptorSymbolicTraits = 32768
+const FontDescriptorTraitUIOptimized FontDescriptorSymbolicTraits = 4096
+const FontDescriptorTraitVertical FontDescriptorSymbolicTraits = 2048
 
 type FontDescriptorSystemDesign string
 
@@ -758,26 +1727,45 @@ const FontDescriptorSystemDesignMonospaced FontDescriptorSystemDesign = "NSCTFon
 const FontDescriptorSystemDesignRounded FontDescriptorSystemDesign = "NSCTFontUIFontDesignRounded"
 const FontDescriptorSystemDesignSerif FontDescriptorSystemDesign = "NSCTFontUIFontDesignSerif"
 
+type FontDescriptorTraitKey string
+
+const FontSlantTrait FontDescriptorTraitKey = "NSCTFontSlantTrait"
+const FontSymbolicTrait FontDescriptorTraitKey = "NSCTFontSymbolicTrait"
+const FontWeightTrait FontDescriptorTraitKey = "NSCTFontWeightTrait"
+const FontWidthTrait FontDescriptorTraitKey = "NSCTFontProportionTrait"
+
+type FontDescriptorVariationKey string
+
+const FontVariationAxisDefaultValueKey FontDescriptorVariationKey = "NSCTVariationAxisDefaultValue"
+const FontVariationAxisIdentifierKey FontDescriptorVariationKey = "NSCTVariationAxisIdentifier"
+const FontVariationAxisMaximumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMaximumValue"
+const FontVariationAxisMinimumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMinimumValue"
+const FontVariationAxisNameKey FontDescriptorVariationKey = "NSCTVariationAxisName"
+
+type FontFamilyClass uint32
+
 type FontPanelModeMask uint
 
 const FontPanelModeMaskAllEffects FontPanelModeMask = 1048320
-const FontPanelModesMaskAllModes FontPanelModeMask = 4294967295
 const FontPanelModeMaskCollection FontPanelModeMask = 4
 const FontPanelModeMaskDocumentColorEffect FontPanelModeMask = 2048
 const FontPanelModeMaskFace FontPanelModeMask = 1
 const FontPanelModeMaskShadowEffect FontPanelModeMask = 4096
 const FontPanelModeMaskSize FontPanelModeMask = 2
-const FontPanelModesMaskStandardModes FontPanelModeMask = 65535
 const FontPanelModeMaskStrikethroughEffect FontPanelModeMask = 512
 const FontPanelModeMaskTextColorEffect FontPanelModeMask = 1024
 const FontPanelModeMaskUnderlineEffect FontPanelModeMask = 256
+const FontPanelModesMaskAllModes FontPanelModeMask = 4294967295
+const FontPanelModesMaskStandardModes FontPanelModeMask = 65535
 
 type FontRenderingMode uint
 
-const FontDefaultRenderingMode FontRenderingMode = 0
-const FontAntialiasedRenderingMode FontRenderingMode = 1
-const FontIntegerAdvancementsRenderingMode FontRenderingMode = 2
 const FontAntialiasedIntegerAdvancementsRenderingMode FontRenderingMode = 3
+const FontAntialiasedRenderingMode FontRenderingMode = 1
+const FontDefaultRenderingMode FontRenderingMode = 0
+const FontIntegerAdvancementsRenderingMode FontRenderingMode = 2
+
+type FontSymbolicTraits uint32
 
 type FontTextStyle string
 
@@ -787,8 +1775,8 @@ const FontTextStyleCaption1 FontTextStyle = "UICTFontTextStyleCaption1"
 const FontTextStyleCaption2 FontTextStyle = "UICTFontTextStyleCaption2"
 const FontTextStyleFootnote FontTextStyle = "UICTFontTextStyleFootnote"
 const FontTextStyleHeadline FontTextStyle = "UICTFontTextStyleHeadline"
-const FontTextStyleSubheadline FontTextStyle = "UICTFontTextStyleSubhead"
 const FontTextStyleLargeTitle FontTextStyle = "UICTFontTextStyleTitle0"
+const FontTextStyleSubheadline FontTextStyle = "UICTFontTextStyleSubhead"
 const FontTextStyleTitle1 FontTextStyle = "UICTFontTextStyleTitle1"
 const FontTextStyleTitle2 FontTextStyle = "UICTFontTextStyleTitle2"
 const FontTextStyleTitle3 FontTextStyle = "UICTFontTextStyleTitle3"
@@ -810,62 +1798,77 @@ const SmallCapsFontMask FontTraitMask = 128
 const UnboldFontMask FontTraitMask = 4
 const UnitalicFontMask FontTraitMask = 16777216
 
-type FontWeight float64
+type FontWeight float32
 
-const FontWeightUltraLight FontWeight = -0.800000
-const FontWeightThin FontWeight = -0.600000
-const FontWeightLight FontWeight = -0.400000
-const FontWeightRegular FontWeight = 0.000000
-const FontWeightMedium FontWeight = 0.230000
-const FontWeightSemibold FontWeight = 0.300000
+const FontWeightBlack FontWeight = 0.620000
 const FontWeightBold FontWeight = 0.400000
 const FontWeightHeavy FontWeight = 0.560000
-const FontWeightBlack FontWeight = 0.620000
-
-type FontWidth float64
-
-const FontWidthCompressed FontWidth = -0.3
-const FontWidthCondensed FontWidth = -0.2
-const FontWidthExpanded FontWidth = 0.2
-const FontWidthStandard FontWidth = 0.0
+const FontWeightLight FontWeight = -0.400000
+const FontWeightMedium FontWeight = 0.230000
+const FontWeightRegular FontWeight = 0.000000
+const FontWeightSemibold FontWeight = 0.300000
+const FontWeightThin FontWeight = -0.600000
+const FontWeightUltraLight FontWeight = -0.800000
 
 type GestureRecognizerState int
 
-const GestureRecognizerStatePossible GestureRecognizerState = 0
 const GestureRecognizerStateBegan GestureRecognizerState = 1
+const GestureRecognizerStateCancelled GestureRecognizerState = 4
 const GestureRecognizerStateChanged GestureRecognizerState = 2
 const GestureRecognizerStateEnded GestureRecognizerState = 3
-const GestureRecognizerStateCancelled GestureRecognizerState = 4
 const GestureRecognizerStateFailed GestureRecognizerState = 5
+const GestureRecognizerStatePossible GestureRecognizerState = 0
 const GestureRecognizerStateRecognized GestureRecognizerState = 3
 
-type Glyph uint32
+type Glyph int
 
 type GlyphInscription uint
 
+const GlyphInscribeAbove GlyphInscription = 2
+const GlyphInscribeBase GlyphInscription = 0
+const GlyphInscribeBelow GlyphInscription = 1
+const GlyphInscribeOverBelow GlyphInscription = 4
+const GlyphInscribeOverstrike GlyphInscription = 3
+
 type GlyphProperty int
 
-const GlyphPropertyNull GlyphProperty = 1
 const GlyphPropertyControlCharacter GlyphProperty = 2
 const GlyphPropertyElastic GlyphProperty = 4
 const GlyphPropertyNonBaseCharacter GlyphProperty = 8
+const GlyphPropertyNull GlyphProperty = 1
+
+type GradientDrawingOptions uint
+
+const GradientDrawsAfterEndingLocation GradientDrawingOptions = 2
+const GradientDrawsBeforeStartingLocation GradientDrawingOptions = 1
 
 type GradientType uint
+
+const GradientConcaveStrong GradientType = 2
+const GradientConcaveWeak GradientType = 1
+const GradientConvexStrong GradientType = 4
+const GradientConvexWeak GradientType = 3
+const GradientNone GradientType = 0
 
 type GraphicsContextAttributeKey string
 
 const GraphicsContextDestinationAttributeName GraphicsContextAttributeKey = "NSGraphicsContextDestinationAttributeName"
 const GraphicsContextRepresentationFormatAttributeName GraphicsContextAttributeKey = "NSGraphicsContextRepresentationFormatAttributeName"
 
+type GraphicsContextRepresentationFormatName string
+
+const GraphicsContextPDFFormat GraphicsContextRepresentationFormatName = "NSGraphicsContextPDFFormat"
+const GraphicsContextPSFormat GraphicsContextRepresentationFormatName = "NSGraphicsContextPSFormat"
+
 type GridCellPlacement int
 
-const GridCellPlacementTop GridCellPlacement = 2
 const GridCellPlacementBottom GridCellPlacement = 3
 const GridCellPlacementCenter GridCellPlacement = 4
 const GridCellPlacementFill GridCellPlacement = 5
 const GridCellPlacementInherited GridCellPlacement = 0
 const GridCellPlacementLeading GridCellPlacement = 2
 const GridCellPlacementNone GridCellPlacement = 1
+const GridCellPlacementTop GridCellPlacement = 2
 const GridCellPlacementTrailing GridCellPlacement = 3
 
 type GridRowAlignment int
@@ -875,34 +1878,50 @@ const GridRowAlignmentInherited GridRowAlignment = 0
 const GridRowAlignmentLastBaseline GridRowAlignment = 3
 const GridRowAlignmentNone GridRowAlignment = 1
 
+type HapticFeedbackPattern int
+
+const HapticFeedbackPatternAlignment HapticFeedbackPattern = 1
+const HapticFeedbackPatternGeneric HapticFeedbackPattern = 0
+const HapticFeedbackPatternLevelChange HapticFeedbackPattern = 2
+
+type HapticFeedbackPerformanceTime uint
+
+const HapticFeedbackPerformanceTimeDefault HapticFeedbackPerformanceTime = 0
+const HapticFeedbackPerformanceTimeDrawCompleted HapticFeedbackPerformanceTime = 2
+const HapticFeedbackPerformanceTimeNow HapticFeedbackPerformanceTime = 1
+
 type HelpAnchorName string
+
+type HelpBookName string
+
+type HelpManagerContextHelpKey string
 
 type ImageAlignment uint
 
-const ImageAlignCenter ImageAlignment = 0
-const ImageAlignTop ImageAlignment = 1
-const ImageAlignTopLeft ImageAlignment = 2
-const ImageAlignTopRight ImageAlignment = 3
-const ImageAlignLeft ImageAlignment = 4
 const ImageAlignBottom ImageAlignment = 5
 const ImageAlignBottomLeft ImageAlignment = 6
 const ImageAlignBottomRight ImageAlignment = 7
+const ImageAlignCenter ImageAlignment = 0
+const ImageAlignLeft ImageAlignment = 4
 const ImageAlignRight ImageAlignment = 8
+const ImageAlignTop ImageAlignment = 1
+const ImageAlignTopLeft ImageAlignment = 2
+const ImageAlignTopRight ImageAlignment = 3
 
 type ImageCacheMode uint
 
-const ImageCacheDefault ImageCacheMode = 0
 const ImageCacheAlways ImageCacheMode = 1
 const ImageCacheBySize ImageCacheMode = 2
+const ImageCacheDefault ImageCacheMode = 0
 const ImageCacheNever ImageCacheMode = 3
 
 type ImageFrameStyle uint
 
-const ImageFrameNone ImageFrameStyle = 0
-const ImageFramePhoto ImageFrameStyle = 1
+const ImageFrameButton ImageFrameStyle = 4
 const ImageFrameGrayBezel ImageFrameStyle = 2
 const ImageFrameGroove ImageFrameStyle = 3
-const ImageFrameButton ImageFrameStyle = 4
+const ImageFrameNone ImageFrameStyle = 0
+const ImageFramePhoto ImageFrameStyle = 1
 
 type ImageHintKey string
 
@@ -913,24 +1932,24 @@ const ImageHintUserInterfaceLayoutDirection ImageHintKey = "NSImageHintUserInter
 type ImageInterpolation uint
 
 const ImageInterpolationDefault ImageInterpolation = 0
-const ImageInterpolationNone ImageInterpolation = 1
+const ImageInterpolationHigh ImageInterpolation = 3
 const ImageInterpolationLow ImageInterpolation = 2
 const ImageInterpolationMedium ImageInterpolation = 4
-const ImageInterpolationHigh ImageInterpolation = 3
+const ImageInterpolationNone ImageInterpolation = 1
 
 type ImageLayoutDirection int
 
-const ImageLayoutDirectionUnspecified ImageLayoutDirection = -1
 const ImageLayoutDirectionLeftToRight ImageLayoutDirection = 2
 const ImageLayoutDirectionRightToLeft ImageLayoutDirection = 3
+const ImageLayoutDirectionUnspecified ImageLayoutDirection = -1
 
 type ImageLoadStatus uint
 
-const ImageLoadStatusCompleted ImageLoadStatus = 0
 const ImageLoadStatusCancelled ImageLoadStatus = 1
+const ImageLoadStatusCompleted ImageLoadStatus = 0
 const ImageLoadStatusInvalidData ImageLoadStatus = 2
-const ImageLoadStatusUnexpectedEOF ImageLoadStatus = 3
 const ImageLoadStatusReadError ImageLoadStatus = 4
+const ImageLoadStatusUnexpectedEOF ImageLoadStatus = 3
 
 type ImageName string
 
@@ -945,6 +1964,7 @@ const ImageNameCaution ImageName = "NSCaution"
 const ImageNameColorPanel ImageName = "NSColorPanel"
 const ImageNameColumnViewTemplate ImageName = "NSColumnViewTemplate"
 const ImageNameComputer ImageName = "NSComputer"
+const ImageNameDotMac ImageName = "NSDotMac"
 const ImageNameEnterFullScreenTemplate ImageName = "NSEnterFullScreenTemplate"
 const ImageNameEveryone ImageName = "NSEveryone"
 const ImageNameExitFullScreenTemplate ImageName = "NSExitFullScreenTemplate"
@@ -1073,39 +2093,51 @@ const ImageNameUserAccounts ImageName = "NSUserAccounts"
 const ImageNameUserGroup ImageName = "NSUserGroup"
 const ImageNameUserGuest ImageName = "NSUserGuest"
 
+type ImageRepLoadStatus int
+
+const ImageRepLoadStatusCompleted ImageRepLoadStatus = -6
+const ImageRepLoadStatusInvalidData ImageRepLoadStatus = -4
+const ImageRepLoadStatusReadingHeader ImageRepLoadStatus = -2
+const ImageRepLoadStatusUnexpectedEOF ImageRepLoadStatus = -5
+const ImageRepLoadStatusUnknownType ImageRepLoadStatus = -1
+const ImageRepLoadStatusWillNeedAllData ImageRepLoadStatus = -3
+
 type ImageResizingMode int
 
 type ImageScaling uint
 
-const ImageScaleProportionallyDown ImageScaling = 0
 const ImageScaleAxesIndependently ImageScaling = 1
 const ImageScaleNone ImageScaling = 2
+const ImageScaleProportionallyDown ImageScaling = 0
 const ImageScaleProportionallyUpOrDown ImageScaling = 3
+const ScaleNone ImageScaling = 2
+const ScaleProportionally ImageScaling = 0
+const ScaleToFit ImageScaling = 1
 
 type ImageSymbolScale int
 
-const ImageSymbolScaleSmall ImageSymbolScale = 1
-const ImageSymbolScaleMedium ImageSymbolScale = 2
 const ImageSymbolScaleLarge ImageSymbolScale = 3
+const ImageSymbolScaleMedium ImageSymbolScale = 2
+const ImageSymbolScaleSmall ImageSymbolScale = 1
 
 type InterfaceStyle uint
 
 type LayoutAttribute int
 
-const LayoutAttributeLeft LayoutAttribute = 1
-const LayoutAttributeRight LayoutAttribute = 2
-const LayoutAttributeTop LayoutAttribute = 3
+const LayoutAttributeBaseline LayoutAttribute = 11
 const LayoutAttributeBottom LayoutAttribute = 4
-const LayoutAttributeLeading LayoutAttribute = 5
-const LayoutAttributeTrailing LayoutAttribute = 6
-const LayoutAttributeWidth LayoutAttribute = 7
-const LayoutAttributeHeight LayoutAttribute = 8
 const LayoutAttributeCenterX LayoutAttribute = 9
 const LayoutAttributeCenterY LayoutAttribute = 10
-const LayoutAttributeBaseline LayoutAttribute = 11
-const LayoutAttributeLastBaseline LayoutAttribute = 11
 const LayoutAttributeFirstBaseline LayoutAttribute = 12
+const LayoutAttributeHeight LayoutAttribute = 8
+const LayoutAttributeLastBaseline LayoutAttribute = 11
+const LayoutAttributeLeading LayoutAttribute = 5
+const LayoutAttributeLeft LayoutAttribute = 1
 const LayoutAttributeNotAnAttribute LayoutAttribute = 0
+const LayoutAttributeRight LayoutAttribute = 2
+const LayoutAttributeTop LayoutAttribute = 3
+const LayoutAttributeTrailing LayoutAttribute = 6
+const LayoutAttributeWidth LayoutAttribute = 7
 
 type LayoutConstraintOrientation int
 
@@ -1114,136 +2146,205 @@ const LayoutConstraintOrientationVertical LayoutConstraintOrientation = 1
 
 type LayoutFormatOptions uint
 
+const LayoutFormatAlignAllBaseline LayoutFormatOptions = 2048
+const LayoutFormatAlignAllBottom LayoutFormatOptions = 16
+const LayoutFormatAlignAllCenterX LayoutFormatOptions = 512
+const LayoutFormatAlignAllCenterY LayoutFormatOptions = 1024
+const LayoutFormatAlignAllFirstBaseline LayoutFormatOptions = 4096
+const LayoutFormatAlignAllLastBaseline LayoutFormatOptions = 2048
+const LayoutFormatAlignAllLeading LayoutFormatOptions = 32
 const LayoutFormatAlignAllLeft LayoutFormatOptions = 2
 const LayoutFormatAlignAllRight LayoutFormatOptions = 4
 const LayoutFormatAlignAllTop LayoutFormatOptions = 8
-const LayoutFormatAlignAllBottom LayoutFormatOptions = 16
-const LayoutFormatAlignAllLeading LayoutFormatOptions = 32
 const LayoutFormatAlignAllTrailing LayoutFormatOptions = 64
-const LayoutFormatAlignAllCenterX LayoutFormatOptions = 512
-const LayoutFormatAlignAllCenterY LayoutFormatOptions = 1024
-const LayoutFormatAlignAllBaseline LayoutFormatOptions = 2048
-const LayoutFormatAlignAllLastBaseline LayoutFormatOptions = 2048
-const LayoutFormatAlignAllFirstBaseline LayoutFormatOptions = 4096
 const LayoutFormatAlignmentMask LayoutFormatOptions = 65535
 const LayoutFormatDirectionLeadingToTrailing LayoutFormatOptions = 0
 const LayoutFormatDirectionLeftToRight LayoutFormatOptions = 65536
-const LayoutFormatDirectionRightToLeft LayoutFormatOptions = 131072
 const LayoutFormatDirectionMask LayoutFormatOptions = 196608
+const LayoutFormatDirectionRightToLeft LayoutFormatOptions = 131072
 
 type LayoutPriority float32
 
-const LayoutPriorityRequired LayoutPriority = 1000.000000
 const LayoutPriorityDefaultHigh LayoutPriority = 750.000000
-const LayoutPriorityDragThatCanResizeWindow LayoutPriority = 510.000000
-const LayoutPriorityWindowSizeStayPut LayoutPriority = 500.000000
-const LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490.000000
 const LayoutPriorityDefaultLow LayoutPriority = 250.000000
+const LayoutPriorityDragThatCanResizeWindow LayoutPriority = 510.000000
+const LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490.000000
 const LayoutPriorityFittingSizeCompression LayoutPriority = 50.000000
+const LayoutPriorityRequired LayoutPriority = 1000.000000
+const LayoutPriorityWindowSizeStayPut LayoutPriority = 500.000000
 
 type LayoutRelation int
 
-const LayoutRelationLessThanOrEqual LayoutRelation = -1
 const LayoutRelationEqual LayoutRelation = 0
 const LayoutRelationGreaterThanOrEqual LayoutRelation = 1
+const LayoutRelationLessThanOrEqual LayoutRelation = -1
 
 type LevelIndicatorPlaceholderVisibility int
 
-const LevelIndicatorPlaceholderVisibilityAutomatic LevelIndicatorPlaceholderVisibility = 0
 const LevelIndicatorPlaceholderVisibilityAlways LevelIndicatorPlaceholderVisibility = 1
+const LevelIndicatorPlaceholderVisibilityAutomatic LevelIndicatorPlaceholderVisibility = 0
 const LevelIndicatorPlaceholderVisibilityWhileEditing LevelIndicatorPlaceholderVisibility = 2
 
 type LevelIndicatorStyle uint
 
-const LevelIndicatorStyleRelevancy LevelIndicatorStyle = 0
+const ContinuousCapacityLevelIndicatorStyle LevelIndicatorStyle = 1
+const DiscreteCapacityLevelIndicatorStyle LevelIndicatorStyle = 2
 const LevelIndicatorStyleContinuousCapacity LevelIndicatorStyle = 1
 const LevelIndicatorStyleDiscreteCapacity LevelIndicatorStyle = 2
 const LevelIndicatorStyleRating LevelIndicatorStyle = 3
+const LevelIndicatorStyleRelevancy LevelIndicatorStyle = 0
+const RatingLevelIndicatorStyle LevelIndicatorStyle = 3
+const RelevancyLevelIndicatorStyle LevelIndicatorStyle = 0
 
-type LineBreakMode uint
+type LineBreakMode int
 
-const LineBreakByWordWrapping LineBreakMode = 0
 const LineBreakByCharWrapping LineBreakMode = 1
 const LineBreakByClipping LineBreakMode = 2
 const LineBreakByTruncatingHead LineBreakMode = 3
-const LineBreakByTruncatingTail LineBreakMode = 4
 const LineBreakByTruncatingMiddle LineBreakMode = 5
+const LineBreakByTruncatingTail LineBreakMode = 4
+const LineBreakByWordWrapping LineBreakMode = 0
 
 type LineBreakStrategy uint
 
+const LineBreakStrategyHangulWordPriority LineBreakStrategy = 2
 const LineBreakStrategyNone LineBreakStrategy = 0
 const LineBreakStrategyPushOut LineBreakStrategy = 1
-const LineBreakStrategyHangulWordPriority LineBreakStrategy = 2
 const LineBreakStrategyStandard LineBreakStrategy = 65535
 
 type LineCapStyle uint
 
+const ButtLineCapStyle LineCapStyle = 0
 const LineCapStyleButt LineCapStyle = 0
 const LineCapStyleRound LineCapStyle = 1
 const LineCapStyleSquare LineCapStyle = 2
+const RoundLineCapStyle LineCapStyle = 1
+const SquareLineCapStyle LineCapStyle = 2
 
 type LineJoinStyle uint
 
+const BevelLineJoinStyle LineJoinStyle = 2
+const LineJoinStyleBevel LineJoinStyle = 2
 const LineJoinStyleMiter LineJoinStyle = 0
 const LineJoinStyleRound LineJoinStyle = 1
-const LineJoinStyleBevel LineJoinStyle = 2
+const MiterLineJoinStyle LineJoinStyle = 0
+const RoundLineJoinStyle LineJoinStyle = 1
 
 type LineMovementDirection uint
 
+const LineDoesntMove LineMovementDirection = 0
+const LineMovesDown LineMovementDirection = 3
 const LineMovesLeft LineMovementDirection = 1
 const LineMovesRight LineMovementDirection = 2
-const LineMovesDown LineMovementDirection = 3
 const LineMovesUp LineMovementDirection = 4
-const LineDoesntMove LineMovementDirection = 0
 
 type LineSweepDirection uint
 
+const LineSweepDown LineSweepDirection = 2
 const LineSweepLeft LineSweepDirection = 0
 const LineSweepRight LineSweepDirection = 1
-const LineSweepDown LineSweepDirection = 2
 const LineSweepUp LineSweepDirection = 3
 
 type MatrixMode uint
 
-const TrackModeMatrix MatrixMode = 3
 const HighlightModeMatrix MatrixMode = 1
-const RadioModeMatrix MatrixMode = 0
 const ListModeMatrix MatrixMode = 2
+const RadioModeMatrix MatrixMode = 0
+const TrackModeMatrix MatrixMode = 3
+
+type MediaLibrary uint
+
+const MediaLibraryAudio MediaLibrary = 1
+const MediaLibraryImage MediaLibrary = 2
+const MediaLibraryMovie MediaLibrary = 4
 
 type MenuProperties uint
 
-const MenuPropertyItemTitle MenuProperties = 1
-const MenuPropertyItemAttributedTitle MenuProperties = 2
-const MenuPropertyItemKeyEquivalent MenuProperties = 4
-const MenuPropertyItemImage MenuProperties = 8
-const MenuPropertyItemEnabled MenuProperties = 16
 const MenuPropertyItemAccessibilityDescription MenuProperties = 32
+const MenuPropertyItemAttributedTitle MenuProperties = 2
+const MenuPropertyItemEnabled MenuProperties = 16
+const MenuPropertyItemImage MenuProperties = 8
+const MenuPropertyItemKeyEquivalent MenuProperties = 4
+const MenuPropertyItemTitle MenuProperties = 1
 
 type ModalResponse int
 
-const ModalResponseOK ModalResponse = 1
-const ModalResponseCancel ModalResponse = 0
-const ModalResponseContinue ModalResponse = -1002
-const ModalResponseStop ModalResponse = -1000
-const ModalResponseAbort ModalResponse = -1001
 const AlertFirstButtonReturn ModalResponse = 1000
 const AlertSecondButtonReturn ModalResponse = 1001
 const AlertThirdButtonReturn ModalResponse = 1002
+const ModalResponseAbort ModalResponse = -1001
+const ModalResponseCancel ModalResponse = 0
+const ModalResponseContinue ModalResponse = -1002
+const ModalResponseOK ModalResponse = 1
+const ModalResponseStop ModalResponse = -1000
 
-type ModalSession unsafe.Pointer
+type MultibyteGlyphPacking uint
+
+const NativeShortGlyphPacking MultibyteGlyphPacking = 5
 
 type NibName string
 
+type OpenGLContextParameter int
+
+const OpenGLCPCurrentRendererID OpenGLContextParameter = 309
+const OpenGLCPGPUFragmentProcessing OpenGLContextParameter = 311
+const OpenGLCPGPUVertexProcessing OpenGLContextParameter = 310
+const OpenGLCPHasDrawable OpenGLContextParameter = 314
+const OpenGLCPMPSwapsInFlight OpenGLContextParameter = 315
+const OpenGLCPRasterizationEnable OpenGLContextParameter = 221
+const OpenGLCPReclaimResources OpenGLContextParameter = 308
+const OpenGLCPStateValidation OpenGLContextParameter = 301
+const OpenGLCPSurfaceBackingSize OpenGLContextParameter = 304
+const OpenGLCPSurfaceOpacity OpenGLContextParameter = 236
+const OpenGLCPSurfaceOrder OpenGLContextParameter = 235
+const OpenGLCPSurfaceSurfaceVolatile OpenGLContextParameter = 306
+const OpenGLCPSwapInterval OpenGLContextParameter = 222
+const OpenGLCPSwapRectangle OpenGLContextParameter = 200
+const OpenGLCPSwapRectangleEnable OpenGLContextParameter = 201
+const OpenGLContextParameterCurrentRendererID OpenGLContextParameter = 309
+const OpenGLContextParameterGPUFragmentProcessing OpenGLContextParameter = 311
+const OpenGLContextParameterGPUVertexProcessing OpenGLContextParameter = 310
+const OpenGLContextParameterHasDrawable OpenGLContextParameter = 314
+const OpenGLContextParameterMPSwapsInFlight OpenGLContextParameter = 315
+const OpenGLContextParameterRasterizationEnable OpenGLContextParameter = 221
+const OpenGLContextParameterReclaimResources OpenGLContextParameter = 308
+const OpenGLContextParameterStateValidation OpenGLContextParameter = 301
+const OpenGLContextParameterSurfaceBackingSize OpenGLContextParameter = 304
+const OpenGLContextParameterSurfaceOpacity OpenGLContextParameter = 236
+const OpenGLContextParameterSurfaceOrder OpenGLContextParameter = 235
+const OpenGLContextParameterSurfaceSurfaceVolatile OpenGLContextParameter = 306
+const OpenGLContextParameterSwapInterval OpenGLContextParameter = 222
+const OpenGLContextParameterSwapRectangle OpenGLContextParameter = 200
+const OpenGLContextParameterSwapRectangleEnable OpenGLContextParameter = 201
+
+type OpenGLGlobalOption uint32
+
+const OpenGLGOClearFormatCache OpenGLGlobalOption = 502
+const OpenGLGOFormatCacheSize OpenGLGlobalOption = 501
+const OpenGLGOResetLibrary OpenGLGlobalOption = 504
+const OpenGLGORetainRenderers OpenGLGlobalOption = 503
+const OpenGLGOUseBuildCache OpenGLGlobalOption = 506
+
+type OpenGLPixelFormatAttribute uint32
+
 type PDFPanelOptions int
 
-const PDFPanelShowsPaperSize PDFPanelOptions = 4
-const PDFPanelShowsOrientation PDFPanelOptions = 8
 const PDFPanelRequestsParentDirectory PDFPanelOptions = 16777216
+const PDFPanelShowsOrientation PDFPanelOptions = 8
+const PDFPanelShowsPaperSize PDFPanelOptions = 4
+
+type PageControllerObjectIdentifier string
+
+type PageControllerTransitionStyle int
+
+const PageControllerTransitionStyleHorizontalStrip PageControllerTransitionStyle = 2
+const PageControllerTransitionStyleStackBook PageControllerTransitionStyle = 1
+const PageControllerTransitionStyleStackHistory PageControllerTransitionStyle = 0
 
 type PaperOrientation int
 
-const PaperOrientationPortrait PaperOrientation = 0
 const PaperOrientationLandscape PaperOrientation = 1
+const PaperOrientationPortrait PaperOrientation = 0
 
 type PasteboardContentsOptions uint
 
@@ -1251,24 +2352,45 @@ const PasteboardContentsCurrentHostOnly PasteboardContentsOptions = 1
 
 type PasteboardName string
 
+const DragPboard PasteboardName = "Apple CFPasteboard drag"
+const FindPboard PasteboardName = "Apple CFPasteboard find"
+const FontPboard PasteboardName = "Apple CFPasteboard font"
+const GeneralPboard PasteboardName = "Apple CFPasteboard general"
 const PasteboardNameDrag PasteboardName = "Apple CFPasteboard drag"
 const PasteboardNameFind PasteboardName = "Apple CFPasteboard find"
 const PasteboardNameFont PasteboardName = "Apple CFPasteboard font"
 const PasteboardNameGeneral PasteboardName = "Apple CFPasteboard general"
 const PasteboardNameRuler PasteboardName = "Apple CFPasteboard ruler"
+const RulerPboard PasteboardName = "Apple CFPasteboard ruler"
 
 type PasteboardReadingOptionKey string
 
 const PasteboardURLReadingContentsConformToTypesKey PasteboardReadingOptionKey = "NSPasteboardURLReadingContentsConformToTypesKey"
 const PasteboardURLReadingFileURLsOnlyKey PasteboardReadingOptionKey = "NSPasteboardURLReadingFileURLsOnlyKey"
 
+type PasteboardReadingOptions uint
+
+const PasteboardReadingAsData PasteboardReadingOptions = 0
+const PasteboardReadingAsKeyedArchive PasteboardReadingOptions = 4
+const PasteboardReadingAsPropertyList PasteboardReadingOptions = 2
+const PasteboardReadingAsString PasteboardReadingOptions = 1
+
 type PasteboardType string
 
-const PasteboardTypeURL PasteboardType = "public.url"
-const PasteboardTypeColor PasteboardType = "com.apple.cocoa.pasteboard.color"
+const ColorPboardType PasteboardType = "NSColor pasteboard type"
 const FileContentsPboardType PasteboardType = "NXFileContentsPboardType"
-const PasteboardTypeFileURL PasteboardType = "public.file-url"
+const FilenamesPboardType PasteboardType = "NSFilenamesPboardType"
+const FilesPromisePboardType PasteboardType = "Apple files promise pasteboard type"
 const FindPanelSearchOptionsPboardType PasteboardType = "NSFindPanel search options pasteboard type"
+const FontPboardType PasteboardType = "NeXT font pasteboard type"
+const HTMLPboardType PasteboardType = "Apple HTML pasteboard type"
+const InkTextPboardType PasteboardType = "Apple InkText pasteboard type"
+const MultipleTextSelectionPboardType PasteboardType = "Apple multiple text selection pasteboard type"
+const PDFPboardType PasteboardType = "Apple PDF pasteboard type"
+const PICTPboardType PasteboardType = "Apple PICT pasteboard type"
+const PasteboardTypeColor PasteboardType = "com.apple.cocoa.pasteboard.color"
+const PasteboardTypeFileURL PasteboardType = "public.file-url"
+const PasteboardTypeFindPanelSearchOptions PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
 const PasteboardTypeFont PasteboardType = "com.apple.cocoa.pasteboard.character-formatting"
 const PasteboardTypeHTML PasteboardType = "public.html"
 const PasteboardTypeMultipleTextSelection PasteboardType = "com.apple.cocoa.pasteboard.multiple-text-selection"
@@ -1279,9 +2401,30 @@ const PasteboardTypeRTFD PasteboardType = "com.apple.flat-rtfd"
 const PasteboardTypeRuler PasteboardType = "com.apple.cocoa.pasteboard.paragraph-formatting"
 const PasteboardTypeSound PasteboardType = "com.apple.cocoa.pasteboard.sound"
 const PasteboardTypeString PasteboardType = "public.utf8-plain-text"
+const PasteboardTypeTIFF PasteboardType = "public.tiff"
 const PasteboardTypeTabularText PasteboardType = "public.utf8-tab-separated-values-text"
 const PasteboardTypeTextFinderOptions PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
-const PasteboardTypeTIFF PasteboardType = "public.tiff"
+const PasteboardTypeURL PasteboardType = "public.url"
+const PostScriptPboardType PasteboardType = "NeXT Encapsulated PostScript v1.2 pasteboard type"
+const RTFDPboardType PasteboardType = "NeXT RTFD pasteboard type"
+const RTFPboardType PasteboardType = "NeXT Rich Text Format v1.0 pasteboard type"
+const RulerPboardType PasteboardType = "NeXT ruler pasteboard type"
+const SoundPboardType PasteboardType = "NSSoundPboardType"
+const StringPboardType PasteboardType = "NSStringPboardType"
+const TIFFPboardType PasteboardType = "NeXT TIFF v4.0 pasteboard type"
+const TabularTextPboardType PasteboardType = "NeXT tabular text pasteboard type"
+const URLPboardType PasteboardType = "Apple URL pasteboard type"
+const VCardPboardType PasteboardType = "Apple VCard pasteboard type"
+
+type PasteboardTypeFindPanelSearchOptionKey string
+
+const FindPanelCaseInsensitiveSearch PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelCaseInsensitiveSearch"
+const FindPanelSubstringMatch PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelSubstringMatch"
+
+type PasteboardTypeTextFinderOptionKey string
+
+const TextFinderCaseInsensitiveKey PasteboardTypeTextFinderOptionKey = "NSFindPanelCaseInsensitiveSearch"
+const TextFinderMatchingTypeKey PasteboardTypeTextFinderOptionKey = "NSFindPanelSubstringMatch"
 
 type PasteboardWritingOptions uint
 
@@ -1289,88 +2432,128 @@ const PasteboardWritingPromised PasteboardWritingOptions = 512
 
 type PathStyle int
 
-const PathStyleStandard PathStyle = 0
+const PathStyleNavigationBar PathStyle = 1
 const PathStylePopUp PathStyle = 2
+const PathStyleStandard PathStyle = 0
+
+type PickerTouchBarItemControlRepresentation int
+
+const PickerTouchBarItemControlRepresentationAutomatic PickerTouchBarItemControlRepresentation = 0
+const PickerTouchBarItemControlRepresentationCollapsed PickerTouchBarItemControlRepresentation = 2
+const PickerTouchBarItemControlRepresentationExpanded PickerTouchBarItemControlRepresentation = 1
+
+type PickerTouchBarItemSelectionMode int
+
+const PickerTouchBarItemSelectionModeMomentary PickerTouchBarItemSelectionMode = 2
+const PickerTouchBarItemSelectionModeSelectAny PickerTouchBarItemSelectionMode = 1
+const PickerTouchBarItemSelectionModeSelectOne PickerTouchBarItemSelectionMode = 0
 
 type PointingDeviceType uint
 
+const CursorPointingDevice PointingDeviceType = 2
+const EraserPointingDevice PointingDeviceType = 3
+const PenPointingDevice PointingDeviceType = 1
 const PointingDeviceTypeCursor PointingDeviceType = 2
 const PointingDeviceTypeEraser PointingDeviceType = 3
 const PointingDeviceTypePen PointingDeviceType = 1
 const PointingDeviceTypeUnknown PointingDeviceType = 0
+const UnknownPointingDevice PointingDeviceType = 0
+
+type PopUpArrowPosition uint
+
+const PopUpArrowAtBottom PopUpArrowPosition = 2
+const PopUpArrowAtCenter PopUpArrowPosition = 1
+const PopUpNoArrow PopUpArrowPosition = 0
+
+type PopoverAppearance int
+
+const PopoverAppearanceHUD PopoverAppearance = 1
+const PopoverAppearanceMinimal PopoverAppearance = 0
 
 type PopoverBehavior int
 
 const PopoverBehaviorApplicationDefined PopoverBehavior = 0
-const PopoverBehaviorTransient PopoverBehavior = 1
 const PopoverBehaviorSemitransient PopoverBehavior = 2
+const PopoverBehaviorTransient PopoverBehavior = 1
+
+type PopoverCloseReasonValue string
+
+const PopoverCloseReasonDetachToWindow PopoverCloseReasonValue = "NSPopoverCloseReasonDetachToWindow"
+const PopoverCloseReasonStandard PopoverCloseReasonValue = "NSPopoverCloseReasonStandard"
 
 type PressureBehavior int
 
-const PressureBehaviorUnknown PressureBehavior = -1
-const PressureBehaviorPrimaryDefault PressureBehavior = 0
-const PressureBehaviorPrimaryClick PressureBehavior = 1
-const PressureBehaviorPrimaryGeneric PressureBehavior = 2
 const PressureBehaviorPrimaryAccelerator PressureBehavior = 3
+const PressureBehaviorPrimaryClick PressureBehavior = 1
 const PressureBehaviorPrimaryDeepClick PressureBehavior = 5
 const PressureBehaviorPrimaryDeepDrag PressureBehavior = 6
+const PressureBehaviorPrimaryDefault PressureBehavior = 0
+const PressureBehaviorPrimaryGeneric PressureBehavior = 2
+const PressureBehaviorUnknown PressureBehavior = -1
 
 type PrintInfoAttributeKey string
 
-const PrintPaperName PrintInfoAttributeKey = "NSPaperName"
-const PrintPaperSize PrintInfoAttributeKey = "NSPaperSize"
-const PrintOrientation PrintInfoAttributeKey = "NSOrientation"
-const PrintScalingFactor PrintInfoAttributeKey = "NSScalingFactor"
-const PrintLeftMargin PrintInfoAttributeKey = "NSLeftMargin"
-const PrintRightMargin PrintInfoAttributeKey = "NSRightMargin"
-const PrintTopMargin PrintInfoAttributeKey = "NSTopMargin"
-const PrintBottomMargin PrintInfoAttributeKey = "NSBottomMargin"
-const PrintHorizontallyCentered PrintInfoAttributeKey = "NSHorizontallyCentered"
-const PrintVerticallyCentered PrintInfoAttributeKey = "NSVerticallyCentered"
-const PrintHorizontalPagination PrintInfoAttributeKey = "NSHorizonalPagination"
-const PrintVerticalPagination PrintInfoAttributeKey = "NSVerticalPagination"
 const PrintAllPages PrintInfoAttributeKey = "NSPrintAllPages"
+const PrintBottomMargin PrintInfoAttributeKey = "NSBottomMargin"
 const PrintCopies PrintInfoAttributeKey = "NSCopies"
 const PrintDetailedErrorReporting PrintInfoAttributeKey = "NSDetailedErrorReporting"
 const PrintFaxNumber PrintInfoAttributeKey = "NSFaxNumber"
 const PrintFirstPage PrintInfoAttributeKey = "NSFirstPage"
 const PrintHeaderAndFooter PrintInfoAttributeKey = "NSPrintHeaderAndFooter"
+const PrintHorizontalPagination PrintInfoAttributeKey = "NSHorizonalPagination"
+const PrintHorizontallyCentered PrintInfoAttributeKey = "NSHorizontallyCentered"
 const PrintJobDisposition PrintInfoAttributeKey = "NSJobDisposition"
 const PrintJobSavingFileNameExtensionHidden PrintInfoAttributeKey = "NSJobSavingFileNameExtensionHidden"
 const PrintJobSavingURL PrintInfoAttributeKey = "NSJobSavingURL"
 const PrintLastPage PrintInfoAttributeKey = "NSLastPage"
+const PrintLeftMargin PrintInfoAttributeKey = "NSLeftMargin"
 const PrintMustCollate PrintInfoAttributeKey = "NSMustCollate"
+const PrintOrientation PrintInfoAttributeKey = "NSOrientation"
 const PrintPagesAcross PrintInfoAttributeKey = "NSPagesAcross"
 const PrintPagesDown PrintInfoAttributeKey = "NSPagesDown"
+const PrintPaperName PrintInfoAttributeKey = "NSPaperName"
+const PrintPaperSize PrintInfoAttributeKey = "NSPaperSize"
 const PrintPrinter PrintInfoAttributeKey = "NSPrinter"
 const PrintPrinterName PrintInfoAttributeKey = "NSPrinterName"
 const PrintReversePageOrder PrintInfoAttributeKey = "NSReversePageOrder"
+const PrintRightMargin PrintInfoAttributeKey = "NSRightMargin"
+const PrintScalingFactor PrintInfoAttributeKey = "NSScalingFactor"
 const PrintSelectionOnly PrintInfoAttributeKey = "NSPrintSelectionOnly"
 const PrintTime PrintInfoAttributeKey = "NSPrintTime"
+const PrintTopMargin PrintInfoAttributeKey = "NSTopMargin"
+const PrintVerticalPagination PrintInfoAttributeKey = "NSVerticalPagination"
+const PrintVerticallyCentered PrintInfoAttributeKey = "NSVerticallyCentered"
+
+type PrintInfoSettingKey string
 
 type PrintJobDispositionValue string
 
-const PrintSpoolJob PrintJobDispositionValue = "NSPrintSpoolJob"
+const PrintCancelJob PrintJobDispositionValue = "NSPrintCancelJob"
 const PrintPreviewJob PrintJobDispositionValue = "NSPrintPreviewJob"
 const PrintSaveJob PrintJobDispositionValue = "NSPrintSaveJob"
-const PrintCancelJob PrintJobDispositionValue = "NSPrintCancelJob"
+const PrintSpoolJob PrintJobDispositionValue = "NSPrintSpoolJob"
+
+type PrintPanelAccessorySummaryKey string
+
+const PrintPanelAccessorySummaryItemDescriptionKey PrintPanelAccessorySummaryKey = "description"
+const PrintPanelAccessorySummaryItemNameKey PrintPanelAccessorySummaryKey = "name"
 
 type PrintPanelJobStyleHint string
 
-const PrintPhotoJobStyleHint PrintPanelJobStyleHint = "Photo"
 const PrintAllPresetsJobStyleHint PrintPanelJobStyleHint = "All"
 const PrintNoPresetsJobStyleHint PrintPanelJobStyleHint = "None"
+const PrintPhotoJobStyleHint PrintPanelJobStyleHint = "Photo"
 
 type PrintPanelOptions uint
 
 const PrintPanelShowsCopies PrintPanelOptions = 1
-const PrintPanelShowsPageRange PrintPanelOptions = 2
-const PrintPanelShowsPaperSize PrintPanelOptions = 4
 const PrintPanelShowsOrientation PrintPanelOptions = 8
-const PrintPanelShowsScaling PrintPanelOptions = 16
-const PrintPanelShowsPrintSelection PrintPanelOptions = 32
+const PrintPanelShowsPageRange PrintPanelOptions = 2
 const PrintPanelShowsPageSetupAccessory PrintPanelOptions = 256
+const PrintPanelShowsPaperSize PrintPanelOptions = 4
 const PrintPanelShowsPreview PrintPanelOptions = 131072
+const PrintPanelShowsPrintSelection PrintPanelOptions = 32
+const PrintPanelShowsScaling PrintPanelOptions = 16
 
 type PrintRenderingQuality int
 
@@ -1381,11 +2564,16 @@ type PrinterPaperName string
 
 type PrinterTableStatus uint
 
-const PrinterTableOK PrinterTableStatus = 0
-const PrinterTableNotFound PrinterTableStatus = 1
 const PrinterTableError PrinterTableStatus = 2
+const PrinterTableNotFound PrinterTableStatus = 1
+const PrinterTableOK PrinterTableStatus = 0
 
 type PrinterTypeName string
+
+type PrintingOrientation uint
+
+const LandscapeOrientation PrintingOrientation = 1
+const PortraitOrientation PrintingOrientation = 0
 
 type PrintingPageOrder int
 
@@ -1396,30 +2584,43 @@ const UnknownPageOrder PrintingPageOrder = 2
 
 type PrintingPaginationMode uint
 
+const AutoPagination PrintingPaginationMode = 0
+const ClipPagination PrintingPaginationMode = 2
+const FitPagination PrintingPaginationMode = 1
 const PrintingPaginationModeAutomatic PrintingPaginationMode = 0
-const PrintingPaginationModeFit PrintingPaginationMode = 1
 const PrintingPaginationModeClip PrintingPaginationMode = 2
+const PrintingPaginationModeFit PrintingPaginationMode = 1
 
 type ProgressIndicatorStyle uint
 
+const ProgressIndicatorStyleBar ProgressIndicatorStyle = 0
+const ProgressIndicatorStyleSpinning ProgressIndicatorStyle = 1
+
+type ProgressIndicatorThickness uint
+
+const ProgressIndicatorPreferredAquaThickness ProgressIndicatorThickness = 12
+const ProgressIndicatorPreferredLargeThickness ProgressIndicatorThickness = 18
+const ProgressIndicatorPreferredSmallThickness ProgressIndicatorThickness = 10
+const ProgressIndicatorPreferredThickness ProgressIndicatorThickness = 14
+
 type RectAlignment int
 
+const RectAlignmentBottom RectAlignment = 5
+const RectAlignmentBottomLeading RectAlignment = 4
+const RectAlignmentBottomTrailing RectAlignment = 6
+const RectAlignmentLeading RectAlignment = 3
 const RectAlignmentNone RectAlignment = 0
 const RectAlignmentTop RectAlignment = 1
 const RectAlignmentTopLeading RectAlignment = 2
-const RectAlignmentLeading RectAlignment = 3
-const RectAlignmentBottomLeading RectAlignment = 4
-const RectAlignmentBottom RectAlignment = 5
-const RectAlignmentBottomTrailing RectAlignment = 6
-const RectAlignmentTrailing RectAlignment = 7
 const RectAlignmentTopTrailing RectAlignment = 8
+const RectAlignmentTrailing RectAlignment = 7
 
 type RemoteNotificationType uint
 
-const RemoteNotificationTypeNone RemoteNotificationType = 0
-const RemoteNotificationTypeBadge RemoteNotificationType = 1
-const RemoteNotificationTypeSound RemoteNotificationType = 2
 const RemoteNotificationTypeAlert RemoteNotificationType = 4
+const RemoteNotificationTypeBadge RemoteNotificationType = 1
+const RemoteNotificationTypeNone RemoteNotificationType = 0
+const RemoteNotificationTypeSound RemoteNotificationType = 2
 
 type RequestUserAttentionType uint
 
@@ -1462,41 +2663,52 @@ const RulerViewUnitPoints RulerViewUnitName = "Points"
 
 type SaveOperationType uint
 
-const SaveOperation SaveOperationType = 0
-const SaveAsOperation SaveOperationType = 1
-const SaveToOperation SaveOperationType = 2
+const AutosaveAsOperation SaveOperationType = 5
 const AutosaveElsewhereOperation SaveOperationType = 3
 const AutosaveInPlaceOperation SaveOperationType = 4
-const AutosaveAsOperation SaveOperationType = 5
+const AutosaveOperation SaveOperationType = 3
+const SaveAsOperation SaveOperationType = 1
+const SaveOperation SaveOperationType = 0
+const SaveToOperation SaveOperationType = 2
 
 type ScrollArrowPosition uint
 
+const ScrollerArrowsDefaultSetting ScrollArrowPosition = 0
+const ScrollerArrowsMaxEnd ScrollArrowPosition = 0
+const ScrollerArrowsMinEnd ScrollArrowPosition = 1
+const ScrollerArrowsNone ScrollArrowPosition = 2
+
 type ScrollElasticity int
 
+const ScrollElasticityAllowed ScrollElasticity = 2
 const ScrollElasticityAutomatic ScrollElasticity = 0
 const ScrollElasticityNone ScrollElasticity = 1
-const ScrollElasticityAllowed ScrollElasticity = 2
 
 type ScrollViewFindBarPosition int
 
-const ScrollViewFindBarPositionAboveHorizontalRuler ScrollViewFindBarPosition = 0
 const ScrollViewFindBarPositionAboveContent ScrollViewFindBarPosition = 1
+const ScrollViewFindBarPositionAboveHorizontalRuler ScrollViewFindBarPosition = 0
 const ScrollViewFindBarPositionBelowContent ScrollViewFindBarPosition = 2
 
 type ScrollerArrow uint
 
+const ScrollerDecrementArrow ScrollerArrow = 1
+const ScrollerIncrementArrow ScrollerArrow = 0
+
 type ScrollerKnobStyle int
 
-const ScrollerKnobStyleDefault ScrollerKnobStyle = 0
 const ScrollerKnobStyleDark ScrollerKnobStyle = 1
+const ScrollerKnobStyleDefault ScrollerKnobStyle = 0
 const ScrollerKnobStyleLight ScrollerKnobStyle = 2
 
 type ScrollerPart uint
 
+const ScrollerDecrementLine ScrollerPart = 4
+const ScrollerDecrementPage ScrollerPart = 1
+const ScrollerIncrementLine ScrollerPart = 5
+const ScrollerIncrementPage ScrollerPart = 3
 const ScrollerKnob ScrollerPart = 2
 const ScrollerKnobSlot ScrollerPart = 6
-const ScrollerDecrementPage ScrollerPart = 1
-const ScrollerIncrementPage ScrollerPart = 3
 const ScrollerNoPart ScrollerPart = 0
 
 type ScrollerStyle int
@@ -1504,37 +2716,49 @@ type ScrollerStyle int
 const ScrollerStyleLegacy ScrollerStyle = 0
 const ScrollerStyleOverlay ScrollerStyle = 1
 
+type ScrubberAlignment int
+
+const ScrubberAlignmentCenter ScrubberAlignment = 3
+const ScrubberAlignmentLeading ScrubberAlignment = 1
+const ScrubberAlignmentNone ScrubberAlignment = 0
+const ScrubberAlignmentTrailing ScrubberAlignment = 2
+
+type ScrubberMode int
+
+const ScrubberModeFixed ScrubberMode = 0
+const ScrubberModeFree ScrubberMode = 1
+
 type SearchFieldRecentsAutosaveName string
 
 type SegmentDistribution int
 
-const SegmentDistributionFit SegmentDistribution = 0
 const SegmentDistributionFill SegmentDistribution = 1
 const SegmentDistributionFillEqually SegmentDistribution = 2
 const SegmentDistributionFillProportionally SegmentDistribution = 3
+const SegmentDistributionFit SegmentDistribution = 0
 
 type SegmentStyle int
 
 const SegmentStyleAutomatic SegmentStyle = 0
-const SegmentStyleRounded SegmentStyle = 1
-const SegmentStyleTexturedRounded SegmentStyle = 2
-const SegmentStyleRoundRect SegmentStyle = 3
-const SegmentStyleTexturedSquare SegmentStyle = 4
 const SegmentStyleCapsule SegmentStyle = 5
-const SegmentStyleSmallSquare SegmentStyle = 6
+const SegmentStyleRoundRect SegmentStyle = 3
+const SegmentStyleRounded SegmentStyle = 1
 const SegmentStyleSeparated SegmentStyle = 8
+const SegmentStyleSmallSquare SegmentStyle = 6
+const SegmentStyleTexturedRounded SegmentStyle = 2
+const SegmentStyleTexturedSquare SegmentStyle = 4
 
 type SegmentSwitchTracking uint
 
-const SegmentSwitchTrackingSelectOne SegmentSwitchTracking = 0
-const SegmentSwitchTrackingSelectAny SegmentSwitchTracking = 1
 const SegmentSwitchTrackingMomentary SegmentSwitchTracking = 2
 const SegmentSwitchTrackingMomentaryAccelerator SegmentSwitchTracking = 3
+const SegmentSwitchTrackingSelectAny SegmentSwitchTracking = 1
+const SegmentSwitchTrackingSelectOne SegmentSwitchTracking = 0
 
 type SelectionAffinity uint
 
-const SelectionAffinityUpstream SelectionAffinity = 0
 const SelectionAffinityDownstream SelectionAffinity = 1
+const SelectionAffinityUpstream SelectionAffinity = 0
 
 type SelectionDirection uint
 
@@ -1545,14 +2769,16 @@ const SelectingPrevious SelectionDirection = 2
 type SelectionGranularity uint
 
 const SelectByCharacter SelectionGranularity = 0
-const SelectByWord SelectionGranularity = 1
 const SelectByParagraph SelectionGranularity = 2
+const SelectByWord SelectionGranularity = 1
+
+type ServiceProviderName string
 
 type SharingContentScope int
 
+const SharingContentScopeFull SharingContentScope = 2
 const SharingContentScopeItem SharingContentScope = 0
 const SharingContentScopePartial SharingContentScope = 1
-const SharingContentScopeFull SharingContentScope = 2
 
 type SharingServiceName string
 
@@ -1562,11 +2788,30 @@ const SharingServiceNameAddToSafariReadingList SharingServiceName = "com.apple.s
 const SharingServiceNameCloudSharing SharingServiceName = "com.apple.share.CloudSharing"
 const SharingServiceNameComposeEmail SharingServiceName = "com.apple.share.Mail.compose"
 const SharingServiceNameComposeMessage SharingServiceName = "com.apple.messages.ShareExtension"
+const SharingServiceNamePostImageOnFlickr SharingServiceName = "com.apple.share.Video.upload-image-Flickr"
+const SharingServiceNamePostOnFacebook SharingServiceName = "com.apple.share.Facebook.post"
+const SharingServiceNamePostOnLinkedIn SharingServiceName = "com.apple.share.LinkedIn.post"
+const SharingServiceNamePostOnSinaWeibo SharingServiceName = "com.apple.share.SinaWeibo.post"
+const SharingServiceNamePostOnTencentWeibo SharingServiceName = "com.apple.share.TencentWeibo.post"
+const SharingServiceNamePostOnTwitter SharingServiceName = "com.apple.share.Twitter.post"
+const SharingServiceNamePostVideoOnTudou SharingServiceName = "com.apple.share.Video.upload-Tudou"
+const SharingServiceNamePostVideoOnVimeo SharingServiceName = "com.apple.share.Video.upload-Vimeo"
+const SharingServiceNamePostVideoOnYouku SharingServiceName = "com.apple.share.Video.upload-Youku"
 const SharingServiceNameSendViaAirDrop SharingServiceName = "com.apple.share.AirDrop.send"
 const SharingServiceNameUseAsDesktopPicture SharingServiceName = "com.apple.share.System.set-desktop-image"
+const SharingServiceNameUseAsFacebookProfileImage SharingServiceName = "com.apple.share.Facebook.set-profile-image"
+const SharingServiceNameUseAsLinkedInProfileImage SharingServiceName = "com.apple.share.LinkedIn.set-profile-image"
+const SharingServiceNameUseAsTwitterProfileImage SharingServiceName = "com.apple.share.Twitter.set-profile-image"
+
+type SliderAccessoryWidth float32
+
+const SliderAccessoryWidthDefault SliderAccessoryWidth = 36.000000
+const SliderAccessoryWidthWide SliderAccessoryWidth = 72.000000
 
 type SliderType uint
 
+const CircularSlider SliderType = 1
+const LinearSlider SliderType = 0
 const SliderTypeCircular SliderType = 1
 const SliderTypeLinear SliderType = 0
 
@@ -1574,19 +2819,120 @@ type SoundName string
 
 type SoundPlaybackDeviceIdentifier string
 
+type SpeechBoundary uint
+
+const SpeechImmediateBoundary SpeechBoundary = 0
+const SpeechSentenceBoundary SpeechBoundary = 2
+const SpeechWordBoundary SpeechBoundary = 1
+
+type SpeechCommandDelimiterKey string
+
+const SpeechCommandPrefix SpeechCommandDelimiterKey = "Prefix"
+const SpeechCommandSuffix SpeechCommandDelimiterKey = "Suffix"
+
+type SpeechDictionaryKey string
+
+const SpeechDictionaryAbbreviations SpeechDictionaryKey = "Abbreviations"
+const SpeechDictionaryEntryPhonemes SpeechDictionaryKey = "Phonemes"
+const SpeechDictionaryEntrySpelling SpeechDictionaryKey = "Spelling"
+const SpeechDictionaryLocaleIdentifier SpeechDictionaryKey = "LocaleIdentifier"
+const SpeechDictionaryModificationDate SpeechDictionaryKey = "ModificationDate"
+const SpeechDictionaryPronunciations SpeechDictionaryKey = "Pronunciations"
+
+type SpeechErrorKey string
+
+const SpeechErrorCount SpeechErrorKey = "Count"
+const SpeechErrorNewestCharacterOffset SpeechErrorKey = "NewestCharacterOffset"
+const SpeechErrorNewestCode SpeechErrorKey = "NewestCode"
+const SpeechErrorOldestCharacterOffset SpeechErrorKey = "OldestCharacterOffset"
+const SpeechErrorOldestCode SpeechErrorKey = "OldestCode"
+
+type SpeechMode string
+
+const SpeechModeLiteral SpeechMode = "LTRL"
+const SpeechModeNormal SpeechMode = "NORM"
+const SpeechModePhoneme SpeechMode = "PHON"
+const SpeechModeText SpeechMode = "TEXT"
+
+type SpeechPhonemeInfoKey string
+
+const SpeechPhonemeInfoExample SpeechPhonemeInfoKey = "Example"
+const SpeechPhonemeInfoHiliteEnd SpeechPhonemeInfoKey = "HiliteEnd"
+const SpeechPhonemeInfoHiliteStart SpeechPhonemeInfoKey = "HiliteStart"
+const SpeechPhonemeInfoOpcode SpeechPhonemeInfoKey = "Opcode"
+const SpeechPhonemeInfoSymbol SpeechPhonemeInfoKey = "Symbol"
+
+type SpeechPropertyKey string
+
+const SpeechCharacterModeProperty SpeechPropertyKey = "char"
+const SpeechCommandDelimiterProperty SpeechPropertyKey = "dlim"
+const SpeechCurrentVoiceProperty SpeechPropertyKey = "cvox"
+const SpeechErrorsProperty SpeechPropertyKey = "erro"
+const SpeechInputModeProperty SpeechPropertyKey = "inpt"
+const SpeechNumberModeProperty SpeechPropertyKey = "nmbr"
+const SpeechOutputToFileURLProperty SpeechPropertyKey = "opaf"
+const SpeechPhonemeSymbolsProperty SpeechPropertyKey = "phsy"
+const SpeechPitchBaseProperty SpeechPropertyKey = "pbas"
+const SpeechPitchModProperty SpeechPropertyKey = "pmod"
+const SpeechRateProperty SpeechPropertyKey = "rate"
+const SpeechRecentSyncProperty SpeechPropertyKey = "sync"
+const SpeechResetProperty SpeechPropertyKey = "rset"
+const SpeechStatusProperty SpeechPropertyKey = "stat"
+const SpeechSynthesizerInfoProperty SpeechPropertyKey = "vers"
+const SpeechVolumeProperty SpeechPropertyKey = "volm"
+
+type SpeechStatusKey string
+
+const SpeechStatusNumberOfCharactersLeft SpeechStatusKey = "NumberOfCharactersLeft"
+const SpeechStatusOutputBusy SpeechStatusKey = "OutputBusy"
+const SpeechStatusOutputPaused SpeechStatusKey = "OutputPaused"
+const SpeechStatusPhonemeCode SpeechStatusKey = "PhonemeCode"
+
+type SpeechSynthesizerInfoKey string
+
+const SpeechSynthesizerInfoIdentifier SpeechSynthesizerInfoKey = "Identifier"
+const SpeechSynthesizerInfoVersion SpeechSynthesizerInfoKey = "Version"
+
+type SpeechSynthesizerVoiceName string
+
+type SpellingState int
+
+const SpellingStateGrammarFlag SpellingState = 2
+const SpellingStateSpellingFlag SpellingState = 1
+
 type SplitViewAutosaveName string
 
 type SplitViewDividerStyle int
 
+const SplitViewDividerStylePaneSplitter SplitViewDividerStyle = 3
 const SplitViewDividerStyleThick SplitViewDividerStyle = 1
 const SplitViewDividerStyleThin SplitViewDividerStyle = 2
-const SplitViewDividerStylePaneSplitter SplitViewDividerStyle = 3
+
+type SplitViewItemBehavior int
+
+const SplitViewItemBehaviorContentList SplitViewItemBehavior = 2
+const SplitViewItemBehaviorDefault SplitViewItemBehavior = 0
+const SplitViewItemBehaviorSidebar SplitViewItemBehavior = 1
+
+type SplitViewItemCollapseBehavior int
+
+const SplitViewItemCollapseBehaviorDefault SplitViewItemCollapseBehavior = 0
+const SplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView SplitViewItemCollapseBehavior = 2
+const SplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings SplitViewItemCollapseBehavior = 1
+const SplitViewItemCollapseBehaviorUseConstraints SplitViewItemCollapseBehavior = 3
 
 type SpringLoadingHighlight int
 
+const SpringLoadingHighlightEmphasized SpringLoadingHighlight = 2
 const SpringLoadingHighlightNone SpringLoadingHighlight = 0
 const SpringLoadingHighlightStandard SpringLoadingHighlight = 1
-const SpringLoadingHighlightEmphasized SpringLoadingHighlight = 2
+
+type SpringLoadingOptions uint
+
+const SpringLoadingContinuousActivation SpringLoadingOptions = 2
+const SpringLoadingDisabled SpringLoadingOptions = 0
+const SpringLoadingEnabled SpringLoadingOptions = 1
+const SpringLoadingNoHover SpringLoadingOptions = 8
 
 type StackViewDistribution int
 
@@ -1599,16 +2945,16 @@ const StackViewDistributionGravityAreas StackViewDistribution = -1
 
 type StackViewGravity int
 
-const StackViewGravityTop StackViewGravity = 1
-const StackViewGravityLeading StackViewGravity = 1
-const StackViewGravityCenter StackViewGravity = 2
 const StackViewGravityBottom StackViewGravity = 3
+const StackViewGravityCenter StackViewGravity = 2
+const StackViewGravityLeading StackViewGravity = 1
+const StackViewGravityTop StackViewGravity = 1
 const StackViewGravityTrailing StackViewGravity = 3
 
 type StackViewVisibilityPriority float32
 
-const StackViewVisibilityPriorityMustHold StackViewVisibilityPriority = 1000.000000
 const StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900.000000
+const StackViewVisibilityPriorityMustHold StackViewVisibilityPriority = 1000.000000
 const StackViewVisibilityPriorityNotVisible StackViewVisibilityPriority = 0.000000
 
 type StatusItemAutosaveName string
@@ -1622,16 +2968,27 @@ type StoryboardName string
 
 type StoryboardSceneIdentifier string
 
+type StoryboardSegueIdentifier string
+
+type StringDrawingOptions int
+
+const StringDrawingDisableScreenFontSubstitution StringDrawingOptions = 4
+const StringDrawingOneShot StringDrawingOptions = 16
+const StringDrawingTruncatesLastVisibleLine StringDrawingOptions = 32
+const StringDrawingUsesDeviceMetrics StringDrawingOptions = 8
+const StringDrawingUsesFontLeading StringDrawingOptions = 2
+const StringDrawingUsesLineFragmentOrigin StringDrawingOptions = 1
+
 type TIFFCompression uint
 
-const TIFFCompressionNone TIFFCompression = 1
 const TIFFCompressionCCITTFAX3 TIFFCompression = 3
 const TIFFCompressionCCITTFAX4 TIFFCompression = 4
-const TIFFCompressionLZW TIFFCompression = 5
 const TIFFCompressionJPEG TIFFCompression = 6
+const TIFFCompressionLZW TIFFCompression = 5
 const TIFFCompressionNEXT TIFFCompression = 32766
-const TIFFCompressionPackBits TIFFCompression = 32773
+const TIFFCompressionNone TIFFCompression = 1
 const TIFFCompressionOldJPEG TIFFCompression = 32865
+const TIFFCompressionPackBits TIFFCompression = 32773
 
 type TabPosition uint
 
@@ -1653,15 +3010,22 @@ const TabViewBorderTypeBezel TabViewBorderType = 2
 const TabViewBorderTypeLine TabViewBorderType = 1
 const TabViewBorderTypeNone TabViewBorderType = 0
 
+type TabViewControllerTabStyle int
+
+const TabViewControllerTabStyleSegmentedControlOnBottom TabViewControllerTabStyle = 1
+const TabViewControllerTabStyleSegmentedControlOnTop TabViewControllerTabStyle = 0
+const TabViewControllerTabStyleToolbar TabViewControllerTabStyle = 2
+const TabViewControllerTabStyleUnspecified TabViewControllerTabStyle = -1
+
 type TabViewType uint
 
-const TopTabsBezelBorder TabViewType = 0
+const BottomTabsBezelBorder TabViewType = 2
+const LeftTabsBezelBorder TabViewType = 1
 const NoTabsBezelBorder TabViewType = 4
 const NoTabsLineBorder TabViewType = 5
 const NoTabsNoBorder TabViewType = 6
-const BottomTabsBezelBorder TabViewType = 2
-const LeftTabsBezelBorder TabViewType = 1
 const RightTabsBezelBorder TabViewType = 3
+const TopTabsBezelBorder TabViewType = 0
 
 type TableColumnResizingOptions uint
 
@@ -1676,90 +3040,96 @@ const TableRowActionEdgeTrailing TableRowActionEdge = 1
 
 type TableViewAnimationOptions uint
 
-const TableViewAnimationEffectNone TableViewAnimationOptions = 0
 const TableViewAnimationEffectFade TableViewAnimationOptions = 1
 const TableViewAnimationEffectGap TableViewAnimationOptions = 2
-const TableViewAnimationSlideUp TableViewAnimationOptions = 16
+const TableViewAnimationEffectNone TableViewAnimationOptions = 0
 const TableViewAnimationSlideDown TableViewAnimationOptions = 32
 const TableViewAnimationSlideLeft TableViewAnimationOptions = 48
 const TableViewAnimationSlideRight TableViewAnimationOptions = 64
+const TableViewAnimationSlideUp TableViewAnimationOptions = 16
 
 type TableViewAutosaveName string
 
 type TableViewColumnAutoresizingStyle uint
 
-const TableViewNoColumnAutoresizing TableViewColumnAutoresizingStyle = 0
-const TableViewUniformColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 1
-const TableViewSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 2
-const TableViewReverseSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 3
-const TableViewLastColumnOnlyAutoresizingStyle TableViewColumnAutoresizingStyle = 4
 const TableViewFirstColumnOnlyAutoresizingStyle TableViewColumnAutoresizingStyle = 5
+const TableViewLastColumnOnlyAutoresizingStyle TableViewColumnAutoresizingStyle = 4
+const TableViewNoColumnAutoresizing TableViewColumnAutoresizingStyle = 0
+const TableViewReverseSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 3
+const TableViewSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 2
+const TableViewUniformColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 1
 
 type TableViewDraggingDestinationFeedbackStyle int
 
+const TableViewDraggingDestinationFeedbackStyleGap TableViewDraggingDestinationFeedbackStyle = 2
 const TableViewDraggingDestinationFeedbackStyleNone TableViewDraggingDestinationFeedbackStyle = -1
 const TableViewDraggingDestinationFeedbackStyleRegular TableViewDraggingDestinationFeedbackStyle = 0
 const TableViewDraggingDestinationFeedbackStyleSourceList TableViewDraggingDestinationFeedbackStyle = 1
-const TableViewDraggingDestinationFeedbackStyleGap TableViewDraggingDestinationFeedbackStyle = 2
 
 type TableViewDropOperation uint
 
-const TableViewDropOn TableViewDropOperation = 0
 const TableViewDropAbove TableViewDropOperation = 1
+const TableViewDropOn TableViewDropOperation = 0
 
 type TableViewGridLineStyle uint
 
-const TableViewGridNone TableViewGridLineStyle = 0
-const TableViewSolidVerticalGridLineMask TableViewGridLineStyle = 1
-const TableViewSolidHorizontalGridLineMask TableViewGridLineStyle = 2
 const TableViewDashedHorizontalGridLineMask TableViewGridLineStyle = 8
+const TableViewGridNone TableViewGridLineStyle = 0
+const TableViewSolidHorizontalGridLineMask TableViewGridLineStyle = 2
+const TableViewSolidVerticalGridLineMask TableViewGridLineStyle = 1
 
 type TableViewRowActionStyle int
 
-const TableViewRowActionStyleRegular TableViewRowActionStyle = 0
 const TableViewRowActionStyleDestructive TableViewRowActionStyle = 1
+const TableViewRowActionStyleRegular TableViewRowActionStyle = 0
 
 type TableViewRowSizeStyle int
 
-const TableViewRowSizeStyleDefault TableViewRowSizeStyle = -1
 const TableViewRowSizeStyleCustom TableViewRowSizeStyle = 0
-const TableViewRowSizeStyleSmall TableViewRowSizeStyle = 1
-const TableViewRowSizeStyleMedium TableViewRowSizeStyle = 2
+const TableViewRowSizeStyleDefault TableViewRowSizeStyle = -1
 const TableViewRowSizeStyleLarge TableViewRowSizeStyle = 3
+const TableViewRowSizeStyleMedium TableViewRowSizeStyle = 2
+const TableViewRowSizeStyleSmall TableViewRowSizeStyle = 1
 
 type TableViewSelectionHighlightStyle int
 
 const TableViewSelectionHighlightStyleNone TableViewSelectionHighlightStyle = -1
 const TableViewSelectionHighlightStyleRegular TableViewSelectionHighlightStyle = 0
+const TableViewSelectionHighlightStyleSourceList TableViewSelectionHighlightStyle = 1
 
 type TableViewStyle int
 
 const TableViewStyleAutomatic TableViewStyle = 0
 const TableViewStyleFullWidth TableViewStyle = 1
 const TableViewStyleInset TableViewStyle = 2
-const TableViewStyleSourceList TableViewStyle = 3
 const TableViewStylePlain TableViewStyle = 4
+const TableViewStyleSourceList TableViewStyle = 3
 
 type TextAlignment int
 
-const TextAlignmentLeft TextAlignment = 0
+const CenterTextAlignment TextAlignment = 2
+const JustifiedTextAlignment TextAlignment = 3
+const LeftTextAlignment TextAlignment = 0
+const NaturalTextAlignment TextAlignment = 4
+const RightTextAlignment TextAlignment = 1
 const TextAlignmentJustified TextAlignment = 3
+const TextAlignmentLeft TextAlignment = 0
 const TextAlignmentNatural TextAlignment = 4
 
 type TextBlockDimension uint
 
-const TextBlockWidth TextBlockDimension = 0
-const TextBlockMinimumWidth TextBlockDimension = 1
-const TextBlockMaximumWidth TextBlockDimension = 2
 const TextBlockHeight TextBlockDimension = 4
-const TextBlockMinimumHeight TextBlockDimension = 5
 const TextBlockMaximumHeight TextBlockDimension = 6
+const TextBlockMaximumWidth TextBlockDimension = 2
+const TextBlockMinimumHeight TextBlockDimension = 5
+const TextBlockMinimumWidth TextBlockDimension = 1
+const TextBlockWidth TextBlockDimension = 0
 
 type TextBlockLayer int
 
-const TextBlockPadding TextBlockLayer = -1
 const TextBlockBorder TextBlockLayer = 0
 const TextBlockMargin TextBlockLayer = 1
+const TextBlockPadding TextBlockLayer = -1
 
 type TextBlockValueType uint
 
@@ -1768,10 +3138,10 @@ const TextBlockPercentageValueType TextBlockValueType = 1
 
 type TextBlockVerticalAlignment uint
 
-const TextBlockTopAlignment TextBlockVerticalAlignment = 0
-const TextBlockMiddleAlignment TextBlockVerticalAlignment = 1
-const TextBlockBottomAlignment TextBlockVerticalAlignment = 2
 const TextBlockBaselineAlignment TextBlockVerticalAlignment = 3
+const TextBlockBottomAlignment TextBlockVerticalAlignment = 2
+const TextBlockMiddleAlignment TextBlockVerticalAlignment = 1
+const TextBlockTopAlignment TextBlockVerticalAlignment = 0
 
 type TextCheckingOptionKey string
 
@@ -1786,20 +3156,64 @@ const TextCheckingRegularExpressionsKey TextCheckingOptionKey = "RegularExpressi
 const TextCheckingReplacementsKey TextCheckingOptionKey = "Replacements"
 const TextCheckingSelectedRangeKey TextCheckingOptionKey = "SelectedRange"
 
+type TextContentManagerEnumerationOptions uint
+
+const TextContentManagerEnumerationOptionsNone TextContentManagerEnumerationOptions = 0
+const TextContentManagerEnumerationOptionsReverse TextContentManagerEnumerationOptions = 1
+
+type TextContentType string
+
+const TextContentTypeOneTimeCode TextContentType = "one-time-code"
+const TextContentTypePassword TextContentType = "password"
+const TextContentTypeUsername TextContentType = "username"
+
+type TextEffectStyle string
+
+const TextEffectLetterpressStyle TextEffectStyle = "_UIKitNewLetterpressStyle"
+
 type TextFieldBezelStyle uint
 
-const TextFieldSquareBezel TextFieldBezelStyle = 0
 const TextFieldRoundedBezel TextFieldBezelStyle = 1
+const TextFieldSquareBezel TextFieldBezelStyle = 0
+
+type TextFinderAction int
+
+const TextFinderActionHideFindInterface TextFinderAction = 11
+const TextFinderActionHideReplaceInterface TextFinderAction = 13
+const TextFinderActionNextMatch TextFinderAction = 2
+const TextFinderActionPreviousMatch TextFinderAction = 3
+const TextFinderActionReplace TextFinderAction = 5
+const TextFinderActionReplaceAll TextFinderAction = 4
+const TextFinderActionReplaceAllInSelection TextFinderAction = 8
+const TextFinderActionReplaceAndFind TextFinderAction = 6
+const TextFinderActionSelectAll TextFinderAction = 9
+const TextFinderActionSelectAllInSelection TextFinderAction = 10
+const TextFinderActionSetSearchString TextFinderAction = 7
+const TextFinderActionShowFindInterface TextFinderAction = 1
+const TextFinderActionShowReplaceInterface TextFinderAction = 12
+
+type TextFinderMatchingType int
+
+const TextFinderMatchingTypeContains TextFinderMatchingType = 0
+const TextFinderMatchingTypeEndsWith TextFinderMatchingType = 3
+const TextFinderMatchingTypeFullWord TextFinderMatchingType = 2
+const TextFinderMatchingTypeStartsWith TextFinderMatchingType = 1
 
 type TextInputSourceIdentifier string
+
+type TextInputTraitType int
+
+const TextInputTraitTypeDefault TextInputTraitType = 0
+const TextInputTraitTypeNo TextInputTraitType = 1
+const TextInputTraitTypeYes TextInputTraitType = 2
 
 type TextLayoutFragmentEnumerationOptions uint
 
 const TextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment TextLayoutFragmentEnumerationOptions = 8
 const TextLayoutFragmentEnumerationOptionsEnsuresLayout TextLayoutFragmentEnumerationOptions = 4
 const TextLayoutFragmentEnumerationOptionsEstimatesSize TextLayoutFragmentEnumerationOptions = 2
-const TextLayoutFragmentEnumerationOptionsReverse TextLayoutFragmentEnumerationOptions = 1
 const TextLayoutFragmentEnumerationOptionsNone TextLayoutFragmentEnumerationOptions = 0
+const TextLayoutFragmentEnumerationOptionsReverse TextLayoutFragmentEnumerationOptions = 1
 
 type TextLayoutFragmentState uint
 
@@ -1812,10 +3226,10 @@ type TextLayoutManagerSegmentOptions uint
 
 const TextLayoutManagerSegmentOptionsHeadSegmentExtended TextLayoutManagerSegmentOptions = 4
 const TextLayoutManagerSegmentOptionsMiddleFragmentsExcluded TextLayoutManagerSegmentOptions = 2
+const TextLayoutManagerSegmentOptionsNone TextLayoutManagerSegmentOptions = 0
 const TextLayoutManagerSegmentOptionsRangeNotRequired TextLayoutManagerSegmentOptions = 1
 const TextLayoutManagerSegmentOptionsTailSegmentExtended TextLayoutManagerSegmentOptions = 8
 const TextLayoutManagerSegmentOptionsUpstreamAffinity TextLayoutManagerSegmentOptions = 16
-const TextLayoutManagerSegmentOptionsNone TextLayoutManagerSegmentOptions = 0
 
 type TextLayoutManagerSegmentType int
 
@@ -1827,6 +3241,11 @@ type TextLayoutOrientation int
 
 const TextLayoutOrientationHorizontal TextLayoutOrientation = 0
 const TextLayoutOrientationVertical TextLayoutOrientation = 1
+
+type TextLayoutSectionKey string
+
+const TextLayoutSectionOrientation TextLayoutSectionKey = "NSTextLayoutSectionOrientation"
+const TextLayoutSectionRange TextLayoutSectionKey = "NSTextLayoutSectionRange"
 
 type TextListMarkerFormat string
 
@@ -1852,6 +3271,23 @@ type TextListOptions uint
 
 const TextListPrependEnclosingMarker TextListOptions = 1
 
+type TextMovement int
+
+const TextMovementBacktab TextMovement = 18
+const TextMovementCancel TextMovement = 23
+const TextMovementDown TextMovement = 22
+const TextMovementLeft TextMovement = 19
+const TextMovementOther TextMovement = 0
+const TextMovementReturn TextMovement = 16
+const TextMovementRight TextMovement = 20
+const TextMovementTab TextMovement = 17
+const TextMovementUp TextMovement = 21
+
+type TextScalingType int
+
+const TextScalingStandard TextScalingType = 0
+const TextScalingiOS TextScalingType = 1
+
 type TextSelectionAffinity int
 
 const TextSelectionAffinityDownstream TextSelectionAffinity = 1
@@ -1860,29 +3296,34 @@ const TextSelectionAffinityUpstream TextSelectionAffinity = 0
 type TextSelectionGranularity int
 
 const TextSelectionGranularityCharacter TextSelectionGranularity = 0
-const TextSelectionGranularityWord TextSelectionGranularity = 1
-const TextSelectionGranularityParagraph TextSelectionGranularity = 2
 const TextSelectionGranularityLine TextSelectionGranularity = 3
+const TextSelectionGranularityParagraph TextSelectionGranularity = 2
 const TextSelectionGranularitySentence TextSelectionGranularity = 4
+const TextSelectionGranularityWord TextSelectionGranularity = 1
 
 type TextSelectionNavigationDestination int
 
 const TextSelectionNavigationDestinationCharacter TextSelectionNavigationDestination = 0
-const TextSelectionNavigationDestinationWord TextSelectionNavigationDestination = 1
-const TextSelectionNavigationDestinationLine TextSelectionNavigationDestination = 2
-const TextSelectionNavigationDestinationSentence TextSelectionNavigationDestination = 3
-const TextSelectionNavigationDestinationParagraph TextSelectionNavigationDestination = 4
 const TextSelectionNavigationDestinationContainer TextSelectionNavigationDestination = 5
 const TextSelectionNavigationDestinationDocument TextSelectionNavigationDestination = 6
+const TextSelectionNavigationDestinationLine TextSelectionNavigationDestination = 2
+const TextSelectionNavigationDestinationParagraph TextSelectionNavigationDestination = 4
+const TextSelectionNavigationDestinationSentence TextSelectionNavigationDestination = 3
+const TextSelectionNavigationDestinationWord TextSelectionNavigationDestination = 1
 
 type TextSelectionNavigationDirection int
 
-const TextSelectionNavigationDirectionForward TextSelectionNavigationDirection = 0
 const TextSelectionNavigationDirectionBackward TextSelectionNavigationDirection = 1
+const TextSelectionNavigationDirectionDown TextSelectionNavigationDirection = 5
+const TextSelectionNavigationDirectionForward TextSelectionNavigationDirection = 0
 const TextSelectionNavigationDirectionLeft TextSelectionNavigationDirection = 3
 const TextSelectionNavigationDirectionRight TextSelectionNavigationDirection = 2
 const TextSelectionNavigationDirectionUp TextSelectionNavigationDirection = 4
-const TextSelectionNavigationDirectionDown TextSelectionNavigationDirection = 5
+
+type TextSelectionNavigationLayoutOrientation int
+
+const TextSelectionNavigationLayoutOrientationHorizontal TextSelectionNavigationLayoutOrientation = 0
+const TextSelectionNavigationLayoutOrientationVertical TextSelectionNavigationLayoutOrientation = 1
 
 type TextSelectionNavigationModifier uint
 
@@ -1908,10 +3349,10 @@ const TabColumnTerminatorsAttributeName TextTabOptionKey = "NSTabColumnTerminato
 
 type TextTabType uint
 
-const LeftTabStopType TextTabType = 0
-const RightTabStopType TextTabType = 1
 const CenterTabStopType TextTabType = 2
 const DecimalTabStopType TextTabType = 3
+const LeftTabStopType TextTabType = 0
+const RightTabStopType TextTabType = 1
 
 type TextTableLayoutAlgorithm uint
 
@@ -1920,20 +3361,24 @@ const TextTableFixedLayoutAlgorithm TextTableLayoutAlgorithm = 1
 
 type TickMarkPosition uint
 
-const TickMarkPositionBelow TickMarkPosition = 0
+const TickMarkAbove TickMarkPosition = 1
+const TickMarkBelow TickMarkPosition = 0
+const TickMarkLeft TickMarkPosition = 1
 const TickMarkPositionAbove TickMarkPosition = 1
+const TickMarkPositionBelow TickMarkPosition = 0
 const TickMarkPositionLeading TickMarkPosition = 1
 const TickMarkPositionTrailing TickMarkPosition = 0
+const TickMarkRight TickMarkPosition = 0
 
 type TitlePosition uint
 
-const NoTitle TitlePosition = 0
-const AboveTop TitlePosition = 1
-const AtTop TitlePosition = 2
-const BelowTop TitlePosition = 3
 const AboveBottom TitlePosition = 4
+const AboveTop TitlePosition = 1
 const AtBottom TitlePosition = 5
+const AtTop TitlePosition = 2
 const BelowBottom TitlePosition = 6
+const BelowTop TitlePosition = 3
+const NoTitle TitlePosition = 0
 
 type TitlebarSeparatorStyle int
 
@@ -1944,6 +3389,9 @@ const TitlebarSeparatorStyleShadow TitlebarSeparatorStyle = 3
 
 type TokenStyle uint
 
+const DefaultTokenStyle TokenStyle = 0
+const PlainTextTokenStyle TokenStyle = 1
+const RoundedTokenStyle TokenStyle = 2
 const TokenStyleDefault TokenStyle = 0
 const TokenStyleNone TokenStyle = 1
 const TokenStylePlainSquared TokenStyle = 4
@@ -1964,8 +3412,8 @@ type ToolbarIdentifier string
 type ToolbarItemGroupControlRepresentation int
 
 const ToolbarItemGroupControlRepresentationAutomatic ToolbarItemGroupControlRepresentation = 0
-const ToolbarItemGroupControlRepresentationExpanded ToolbarItemGroupControlRepresentation = 1
 const ToolbarItemGroupControlRepresentationCollapsed ToolbarItemGroupControlRepresentation = 2
+const ToolbarItemGroupControlRepresentationExpanded ToolbarItemGroupControlRepresentation = 1
 
 type ToolbarItemGroupSelectionMode int
 
@@ -1975,55 +3423,61 @@ const ToolbarItemGroupSelectionModeSelectOne ToolbarItemGroupSelectionMode = 0
 
 type ToolbarItemIdentifier string
 
-const ToolbarSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarSpaceItem"
-const ToolbarFlexibleSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarFlexibleSpaceItem"
 const ToolbarCloudSharingItemIdentifier ToolbarItemIdentifier = "NSToolbarCloudSharingItem"
+const ToolbarCustomizeToolbarItemIdentifier ToolbarItemIdentifier = "NSToolbarCustomizeToolbarItem"
+const ToolbarFlexibleSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarFlexibleSpaceItem"
 const ToolbarPrintItemIdentifier ToolbarItemIdentifier = "NSToolbarPrintItem"
+const ToolbarSeparatorItemIdentifier ToolbarItemIdentifier = "NSToolbarSeparatorItem"
 const ToolbarShowColorsItemIdentifier ToolbarItemIdentifier = "NSToolbarShowColorsItem"
 const ToolbarShowFontsItemIdentifier ToolbarItemIdentifier = "NSToolbarShowFontsItem"
-const ToolbarToggleSidebarItemIdentifier ToolbarItemIdentifier = "NSToolbarToggleSidebarItem"
 const ToolbarSidebarTrackingSeparatorItemIdentifier ToolbarItemIdentifier = "NSToolbarSidebarTrackingSeparatorItemIdentifier"
+const ToolbarSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarSpaceItem"
+const ToolbarToggleSidebarItemIdentifier ToolbarItemIdentifier = "NSToolbarToggleSidebarItem"
 
 type ToolbarItemVisibilityPriority int
 
-const ToolbarItemVisibilityPriorityStandard ToolbarItemVisibilityPriority = 0
-const ToolbarItemVisibilityPriorityLow ToolbarItemVisibilityPriority = -1000
 const ToolbarItemVisibilityPriorityHigh ToolbarItemVisibilityPriority = 1000
+const ToolbarItemVisibilityPriorityLow ToolbarItemVisibilityPriority = -1000
+const ToolbarItemVisibilityPriorityStandard ToolbarItemVisibilityPriority = 0
 const ToolbarItemVisibilityPriorityUser ToolbarItemVisibilityPriority = 2000
 
 type ToolbarSizeMode uint
+
+const ToolbarSizeModeDefault ToolbarSizeMode = 0
+const ToolbarSizeModeRegular ToolbarSizeMode = 1
+const ToolbarSizeModeSmall ToolbarSizeMode = 2
 
 type TouchBarCustomizationIdentifier string
 
 type TouchBarItemIdentifier string
 
-const TouchBarItemIdentifierFixedSpaceSmall TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceSmall"
-const TouchBarItemIdentifierFixedSpaceLarge TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceLarge"
-const TouchBarItemIdentifierFlexibleSpace TouchBarItemIdentifier = "NSTouchBarItemIdentifierFlexibleSpace"
-const TouchBarItemIdentifierOtherItemsProxy TouchBarItemIdentifier = "NSTouchBarItemIdentifierOtherItemsProxy"
 const TouchBarItemIdentifierCandidateList TouchBarItemIdentifier = "NSTouchBarItemIdentifierCandidateList"
 const TouchBarItemIdentifierCharacterPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierCharacterPicker"
-const TouchBarItemIdentifierTextFormat TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextFormat"
+const TouchBarItemIdentifierFixedSpaceLarge TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceLarge"
+const TouchBarItemIdentifierFixedSpaceSmall TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceSmall"
+const TouchBarItemIdentifierFlexibleSpace TouchBarItemIdentifier = "NSTouchBarItemIdentifierFlexibleSpace"
+const TouchBarItemIdentifierOtherItemsProxy TouchBarItemIdentifier = "NSTouchBarItemIdentifierOtherItemsProxy"
 const TouchBarItemIdentifierTextAlignment TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextAlignment"
 const TouchBarItemIdentifierTextColorPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextColorPicker"
+const TouchBarItemIdentifierTextFormat TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextFormat"
 const TouchBarItemIdentifierTextList TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextList"
 const TouchBarItemIdentifierTextStyle TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextStyle"
 
 type TouchBarItemPriority float32
 
+const TouchBarItemPriorityHigh TouchBarItemPriority = 1000.000000
 const TouchBarItemPriorityLow TouchBarItemPriority = -1000.000000
 const TouchBarItemPriorityNormal TouchBarItemPriority = 0.000000
-const TouchBarItemPriorityHigh TouchBarItemPriority = 1000.000000
 
 type TouchPhase uint
 
+const TouchPhaseAny TouchPhase = math.MaxUint
 const TouchPhaseBegan TouchPhase = 1
+const TouchPhaseCancelled TouchPhase = 16
+const TouchPhaseEnded TouchPhase = 8
 const TouchPhaseMoved TouchPhase = 2
 const TouchPhaseStationary TouchPhase = 4
-const TouchPhaseEnded TouchPhase = 8
-const TouchPhaseCancelled TouchPhase = 16
 const TouchPhaseTouching TouchPhase = 7
-const TouchPhaseAny TouchPhase = math.MaxUint
 
 type TouchType int
 
@@ -2037,56 +3491,62 @@ const TouchTypeMaskIndirect TouchTypeMask = 2
 
 type TrackingAreaOptions uint
 
+const TrackingActiveAlways TrackingAreaOptions = 128
+const TrackingActiveInActiveApp TrackingAreaOptions = 64
+const TrackingActiveInKeyWindow TrackingAreaOptions = 32
+const TrackingActiveWhenFirstResponder TrackingAreaOptions = 16
+const TrackingAssumeInside TrackingAreaOptions = 256
+const TrackingCursorUpdate TrackingAreaOptions = 4
+const TrackingEnabledDuringMouseDrag TrackingAreaOptions = 1024
+const TrackingInVisibleRect TrackingAreaOptions = 512
 const TrackingMouseEnteredAndExited TrackingAreaOptions = 1
 const TrackingMouseMoved TrackingAreaOptions = 2
-const TrackingCursorUpdate TrackingAreaOptions = 4
-const TrackingActiveWhenFirstResponder TrackingAreaOptions = 16
-const TrackingActiveInKeyWindow TrackingAreaOptions = 32
-const TrackingActiveInActiveApp TrackingAreaOptions = 64
-const TrackingActiveAlways TrackingAreaOptions = 128
-const TrackingAssumeInside TrackingAreaOptions = 256
-const TrackingInVisibleRect TrackingAreaOptions = 512
-const TrackingEnabledDuringMouseDrag TrackingAreaOptions = 1024
 
 type TrackingRectTag int
 
 type TypesetterBehavior int
 
-const TypesetterLatestBehavior TypesetterBehavior = -1
-const TypesetterOriginalBehavior TypesetterBehavior = 0
-const TypesetterBehavior_10_2_WithCompatibility TypesetterBehavior = 1
 const TypesetterBehavior_10_2 TypesetterBehavior = 2
+const TypesetterBehavior_10_2_WithCompatibility TypesetterBehavior = 1
 const TypesetterBehavior_10_3 TypesetterBehavior = 3
 const TypesetterBehavior_10_4 TypesetterBehavior = 4
+const TypesetterLatestBehavior TypesetterBehavior = -1
+const TypesetterOriginalBehavior TypesetterBehavior = 0
 
 type TypesetterControlCharacterAction uint
 
-const TypesetterZeroAdvancementAction TypesetterControlCharacterAction = 1
-const TypesetterWhitespaceAction TypesetterControlCharacterAction = 2
+const TypesetterContainerBreakAction TypesetterControlCharacterAction = 32
 const TypesetterHorizontalTabAction TypesetterControlCharacterAction = 4
 const TypesetterLineBreakAction TypesetterControlCharacterAction = 8
 const TypesetterParagraphBreakAction TypesetterControlCharacterAction = 16
-const TypesetterContainerBreakAction TypesetterControlCharacterAction = 32
+const TypesetterWhitespaceAction TypesetterControlCharacterAction = 2
+const TypesetterZeroAdvancementAction TypesetterControlCharacterAction = 1
 
 type UnderlineStyle int
 
-const UnderlineStyleNone UnderlineStyle = 0
-const UnderlineStyleSingle UnderlineStyle = 1
-const UnderlineStyleThick UnderlineStyle = 2
+const UnderlineStyleByWord UnderlineStyle = 32768
 const UnderlineStyleDouble UnderlineStyle = 9
-const UnderlineStylePatternSolid UnderlineStyle = 0
-const UnderlineStylePatternDot UnderlineStyle = 256
+const UnderlineStyleNone UnderlineStyle = 0
 const UnderlineStylePatternDash UnderlineStyle = 512
 const UnderlineStylePatternDashDot UnderlineStyle = 768
 const UnderlineStylePatternDashDotDot UnderlineStyle = 1024
-const UnderlineStyleByWord UnderlineStyle = 32768
+const UnderlineStylePatternDot UnderlineStyle = 256
+const UnderlineStylePatternSolid UnderlineStyle = 0
+const UnderlineStyleSingle UnderlineStyle = 1
+const UnderlineStyleThick UnderlineStyle = 2
 
 type UsableScrollerParts uint
 
-const NoScrollerParts UsableScrollerParts = 0
 const AllScrollerParts UsableScrollerParts = 2
+const NoScrollerParts UsableScrollerParts = 0
+const OnlyScrollerArrows UsableScrollerParts = 1
 
 type UserInterfaceItemIdentifier string
+
+const MenuItemImportFromDeviceIdentifier UserInterfaceItemIdentifier = "NSMenuItemImportFromDeviceIdentifier"
+const OutlineViewDisclosureButtonKey UserInterfaceItemIdentifier = "NSOutlineViewDisclosureButtonKey"
+const OutlineViewShowHideButtonKey UserInterfaceItemIdentifier = "NSOutlineViewShowHideButtonKey"
+const TableViewRowViewKey UserInterfaceItemIdentifier = "NSTableViewRowViewKey"
 
 type UserInterfaceLayoutDirection int
 
@@ -2098,6 +3558,11 @@ type UserInterfaceLayoutOrientation int
 const UserInterfaceLayoutOrientationHorizontal UserInterfaceLayoutOrientation = 0
 const UserInterfaceLayoutOrientationVertical UserInterfaceLayoutOrientation = 1
 
+type ViewAnimationEffectName string
+
+const ViewAnimationFadeInEffect ViewAnimationEffectName = "NSViewAnimationFadeInEffect"
+const ViewAnimationFadeOutEffect ViewAnimationEffectName = "NSViewAnimationFadeOutEffect"
+
 type ViewAnimationKey string
 
 const ViewAnimationEffectKey ViewAnimationKey = "NSViewAnimationEffectKey"
@@ -2107,15 +3572,15 @@ const ViewAnimationTargetKey ViewAnimationKey = "NSViewAnimationTargetKey"
 
 type ViewControllerTransitionOptions uint
 
-const ViewControllerTransitionNone ViewControllerTransitionOptions = 0
+const ViewControllerTransitionAllowUserInteraction ViewControllerTransitionOptions = 4096
 const ViewControllerTransitionCrossfade ViewControllerTransitionOptions = 1
-const ViewControllerTransitionSlideUp ViewControllerTransitionOptions = 16
+const ViewControllerTransitionNone ViewControllerTransitionOptions = 0
+const ViewControllerTransitionSlideBackward ViewControllerTransitionOptions = 384
 const ViewControllerTransitionSlideDown ViewControllerTransitionOptions = 32
+const ViewControllerTransitionSlideForward ViewControllerTransitionOptions = 320
 const ViewControllerTransitionSlideLeft ViewControllerTransitionOptions = 64
 const ViewControllerTransitionSlideRight ViewControllerTransitionOptions = 128
-const ViewControllerTransitionSlideForward ViewControllerTransitionOptions = 320
-const ViewControllerTransitionSlideBackward ViewControllerTransitionOptions = 384
-const ViewControllerTransitionAllowUserInteraction ViewControllerTransitionOptions = 4096
+const ViewControllerTransitionSlideUp ViewControllerTransitionOptions = 16
 
 type ViewFullScreenModeOptionKey string
 
@@ -2126,26 +3591,26 @@ const FullScreenModeWindowLevel ViewFullScreenModeOptionKey = "NSFullScreenModeW
 
 type ViewLayerContentsPlacement int
 
-const ViewLayerContentsPlacementScaleAxesIndependently ViewLayerContentsPlacement = 0
-const ViewLayerContentsPlacementScaleProportionallyToFit ViewLayerContentsPlacement = 1
-const ViewLayerContentsPlacementScaleProportionallyToFill ViewLayerContentsPlacement = 2
-const ViewLayerContentsPlacementCenter ViewLayerContentsPlacement = 3
-const ViewLayerContentsPlacementTop ViewLayerContentsPlacement = 4
-const ViewLayerContentsPlacementTopRight ViewLayerContentsPlacement = 5
-const ViewLayerContentsPlacementRight ViewLayerContentsPlacement = 6
-const ViewLayerContentsPlacementBottomRight ViewLayerContentsPlacement = 7
 const ViewLayerContentsPlacementBottom ViewLayerContentsPlacement = 8
 const ViewLayerContentsPlacementBottomLeft ViewLayerContentsPlacement = 9
+const ViewLayerContentsPlacementBottomRight ViewLayerContentsPlacement = 7
+const ViewLayerContentsPlacementCenter ViewLayerContentsPlacement = 3
 const ViewLayerContentsPlacementLeft ViewLayerContentsPlacement = 10
+const ViewLayerContentsPlacementRight ViewLayerContentsPlacement = 6
+const ViewLayerContentsPlacementScaleAxesIndependently ViewLayerContentsPlacement = 0
+const ViewLayerContentsPlacementScaleProportionallyToFill ViewLayerContentsPlacement = 2
+const ViewLayerContentsPlacementScaleProportionallyToFit ViewLayerContentsPlacement = 1
+const ViewLayerContentsPlacementTop ViewLayerContentsPlacement = 4
 const ViewLayerContentsPlacementTopLeft ViewLayerContentsPlacement = 11
+const ViewLayerContentsPlacementTopRight ViewLayerContentsPlacement = 5
 
 type ViewLayerContentsRedrawPolicy int
 
-const ViewLayerContentsRedrawNever ViewLayerContentsRedrawPolicy = 0
-const ViewLayerContentsRedrawOnSetNeedsDisplay ViewLayerContentsRedrawPolicy = 1
-const ViewLayerContentsRedrawDuringViewResize ViewLayerContentsRedrawPolicy = 2
 const ViewLayerContentsRedrawBeforeViewResize ViewLayerContentsRedrawPolicy = 3
 const ViewLayerContentsRedrawCrossfade ViewLayerContentsRedrawPolicy = 4
+const ViewLayerContentsRedrawDuringViewResize ViewLayerContentsRedrawPolicy = 2
+const ViewLayerContentsRedrawNever ViewLayerContentsRedrawPolicy = 0
+const ViewLayerContentsRedrawOnSetNeedsDisplay ViewLayerContentsRedrawPolicy = 1
 
 type VisualEffectBlendingMode int
 
@@ -2154,66 +3619,96 @@ const VisualEffectBlendingModeWithinWindow VisualEffectBlendingMode = 1
 
 type VisualEffectMaterial int
 
-const VisualEffectMaterialTitlebar VisualEffectMaterial = 3
-const VisualEffectMaterialSelection VisualEffectMaterial = 4
+const VisualEffectMaterialAppearanceBased VisualEffectMaterial = 0
+const VisualEffectMaterialContentBackground VisualEffectMaterial = 18
+const VisualEffectMaterialDark VisualEffectMaterial = 2
+const VisualEffectMaterialFullScreenUI VisualEffectMaterial = 15
+const VisualEffectMaterialHUDWindow VisualEffectMaterial = 13
+const VisualEffectMaterialHeaderView VisualEffectMaterial = 10
+const VisualEffectMaterialLight VisualEffectMaterial = 1
+const VisualEffectMaterialMediumLight VisualEffectMaterial = 8
 const VisualEffectMaterialMenu VisualEffectMaterial = 5
 const VisualEffectMaterialPopover VisualEffectMaterial = 6
-const VisualEffectMaterialSidebar VisualEffectMaterial = 7
-const VisualEffectMaterialHeaderView VisualEffectMaterial = 10
+const VisualEffectMaterialSelection VisualEffectMaterial = 4
 const VisualEffectMaterialSheet VisualEffectMaterial = 11
-const VisualEffectMaterialWindowBackground VisualEffectMaterial = 12
-const VisualEffectMaterialHUDWindow VisualEffectMaterial = 13
-const VisualEffectMaterialFullScreenUI VisualEffectMaterial = 15
+const VisualEffectMaterialSidebar VisualEffectMaterial = 7
+const VisualEffectMaterialTitlebar VisualEffectMaterial = 3
 const VisualEffectMaterialToolTip VisualEffectMaterial = 17
-const VisualEffectMaterialContentBackground VisualEffectMaterial = 18
-const VisualEffectMaterialUnderWindowBackground VisualEffectMaterial = 21
+const VisualEffectMaterialUltraDark VisualEffectMaterial = 9
 const VisualEffectMaterialUnderPageBackground VisualEffectMaterial = 22
+const VisualEffectMaterialUnderWindowBackground VisualEffectMaterial = 21
+const VisualEffectMaterialWindowBackground VisualEffectMaterial = 12
 
 type VisualEffectState int
 
-const VisualEffectStateFollowsWindowActiveState VisualEffectState = 0
 const VisualEffectStateActive VisualEffectState = 1
+const VisualEffectStateFollowsWindowActiveState VisualEffectState = 0
 const VisualEffectStateInactive VisualEffectState = 2
+
+type VoiceAttributeKey string
+
+const VoiceAge VoiceAttributeKey = "VoiceAge"
+const VoiceDemoText VoiceAttributeKey = "VoiceDemoText"
+const VoiceGender VoiceAttributeKey = "VoiceGender"
+const VoiceIdentifier VoiceAttributeKey = "VoiceIdentifier"
+const VoiceIndividuallySpokenCharacters VoiceAttributeKey = "VoiceIndividuallySpokenCharacters"
+const VoiceLanguage VoiceAttributeKey = "VoiceLanguage"
+const VoiceLocaleIdentifier VoiceAttributeKey = "VoiceLocaleIdentifier"
+const VoiceName VoiceAttributeKey = "VoiceName"
+const VoiceSupportedCharacters VoiceAttributeKey = "VoiceSupportedCharacters"
+
+type VoiceGenderName string
+
+const VoiceGenderFemale VoiceGenderName = "VoiceGenderFemale"
+const VoiceGenderMale VoiceGenderName = "VoiceGenderMale"
+const VoiceGenderNeuter VoiceGenderName = "VoiceGenderNeuter"
 
 type WindingRule uint
 
-const WindingRuleNonZero WindingRule = 0
+const EvenOddWindingRule WindingRule = 1
+const NonZeroWindingRule WindingRule = 0
 const WindingRuleEvenOdd WindingRule = 1
+const WindingRuleNonZero WindingRule = 0
 
 type WindowAnimationBehavior int
 
-const WindowAnimationBehaviorDefault WindowAnimationBehavior = 0
-const WindowAnimationBehaviorNone WindowAnimationBehavior = 2
-const WindowAnimationBehaviorDocumentWindow WindowAnimationBehavior = 3
-const WindowAnimationBehaviorUtilityWindow WindowAnimationBehavior = 4
 const WindowAnimationBehaviorAlertPanel WindowAnimationBehavior = 5
+const WindowAnimationBehaviorDefault WindowAnimationBehavior = 0
+const WindowAnimationBehaviorDocumentWindow WindowAnimationBehavior = 3
+const WindowAnimationBehaviorNone WindowAnimationBehavior = 2
+const WindowAnimationBehaviorUtilityWindow WindowAnimationBehavior = 4
 
 type WindowBackingLocation uint
+
+const WindowBackingLocationDefault WindowBackingLocation = 0
+const WindowBackingLocationMainMemory WindowBackingLocation = 2
+const WindowBackingLocationVideoMemory WindowBackingLocation = 1
 
 type WindowButton uint
 
 const WindowCloseButton WindowButton = 0
-const WindowMiniaturizeButton WindowButton = 1
-const WindowZoomButton WindowButton = 2
-const WindowToolbarButton WindowButton = 3
 const WindowDocumentIconButton WindowButton = 4
 const WindowDocumentVersionsButton WindowButton = 6
+const WindowFullScreenButton WindowButton = 7
+const WindowMiniaturizeButton WindowButton = 1
+const WindowToolbarButton WindowButton = 3
+const WindowZoomButton WindowButton = 2
 
 type WindowCollectionBehavior uint
 
-const WindowCollectionBehaviorDefault WindowCollectionBehavior = 0
 const WindowCollectionBehaviorCanJoinAllSpaces WindowCollectionBehavior = 1
-const WindowCollectionBehaviorMoveToActiveSpace WindowCollectionBehavior = 2
-const WindowCollectionBehaviorManaged WindowCollectionBehavior = 4
-const WindowCollectionBehaviorTransient WindowCollectionBehavior = 8
-const WindowCollectionBehaviorStationary WindowCollectionBehavior = 16
-const WindowCollectionBehaviorParticipatesInCycle WindowCollectionBehavior = 32
-const WindowCollectionBehaviorIgnoresCycle WindowCollectionBehavior = 64
-const WindowCollectionBehaviorFullScreenPrimary WindowCollectionBehavior = 128
-const WindowCollectionBehaviorFullScreenAuxiliary WindowCollectionBehavior = 256
-const WindowCollectionBehaviorFullScreenNone WindowCollectionBehavior = 512
+const WindowCollectionBehaviorDefault WindowCollectionBehavior = 0
 const WindowCollectionBehaviorFullScreenAllowsTiling WindowCollectionBehavior = 2048
+const WindowCollectionBehaviorFullScreenAuxiliary WindowCollectionBehavior = 256
 const WindowCollectionBehaviorFullScreenDisallowsTiling WindowCollectionBehavior = 4096
+const WindowCollectionBehaviorFullScreenNone WindowCollectionBehavior = 512
+const WindowCollectionBehaviorFullScreenPrimary WindowCollectionBehavior = 128
+const WindowCollectionBehaviorIgnoresCycle WindowCollectionBehavior = 64
+const WindowCollectionBehaviorManaged WindowCollectionBehavior = 4
+const WindowCollectionBehaviorMoveToActiveSpace WindowCollectionBehavior = 2
+const WindowCollectionBehaviorParticipatesInCycle WindowCollectionBehavior = 32
+const WindowCollectionBehaviorStationary WindowCollectionBehavior = 16
+const WindowCollectionBehaviorTransient WindowCollectionBehavior = 8
 
 type WindowDepth int32
 
@@ -2225,6 +3720,7 @@ type WindowFrameAutosaveName string
 
 type WindowLevel int
 
+const DockWindowLevel WindowLevel = 20
 const FloatingWindowLevel WindowLevel = 3
 const MainMenuWindowLevel WindowLevel = 24
 const ModalPanelWindowLevel WindowLevel = 8
@@ -2264,18 +3760,32 @@ const WindowSharingReadWrite WindowSharingType = 2
 
 type WindowStyleMask uint
 
+const BorderlessWindowMask WindowStyleMask = 0
+const ClosableWindowMask WindowStyleMask = 2
+const DocModalWindowMask WindowStyleMask = 64
+const FullScreenWindowMask WindowStyleMask = 16384
+const FullSizeContentViewWindowMask WindowStyleMask = 32768
+const HUDWindowMask WindowStyleMask = 8192
+const MiniaturizableWindowMask WindowStyleMask = 4
+const NonactivatingPanelMask WindowStyleMask = 128
+const ResizableWindowMask WindowStyleMask = 8
+const TexturedBackgroundWindowMask WindowStyleMask = 256
+const TitledWindowMask WindowStyleMask = 1
+const UnifiedTitleAndToolbarWindowMask WindowStyleMask = 4096
+const UtilityWindowMask WindowStyleMask = 16
 const WindowStyleMaskBorderless WindowStyleMask = 0
-const WindowStyleMaskTitled WindowStyleMask = 1
 const WindowStyleMaskClosable WindowStyleMask = 2
-const WindowStyleMaskMiniaturizable WindowStyleMask = 4
-const WindowStyleMaskResizable WindowStyleMask = 8
-const WindowStyleMaskUnifiedTitleAndToolbar WindowStyleMask = 4096
+const WindowStyleMaskDocModalWindow WindowStyleMask = 64
 const WindowStyleMaskFullScreen WindowStyleMask = 16384
 const WindowStyleMaskFullSizeContentView WindowStyleMask = 32768
-const WindowStyleMaskUtilityWindow WindowStyleMask = 16
-const WindowStyleMaskDocModalWindow WindowStyleMask = 64
-const WindowStyleMaskNonactivatingPanel WindowStyleMask = 128
 const WindowStyleMaskHUDWindow WindowStyleMask = 8192
+const WindowStyleMaskMiniaturizable WindowStyleMask = 4
+const WindowStyleMaskNonactivatingPanel WindowStyleMask = 128
+const WindowStyleMaskResizable WindowStyleMask = 8
+const WindowStyleMaskTexturedBackground WindowStyleMask = 256
+const WindowStyleMaskTitled WindowStyleMask = 1
+const WindowStyleMaskUnifiedTitleAndToolbar WindowStyleMask = 4096
+const WindowStyleMaskUtilityWindow WindowStyleMask = 16
 
 type WindowTabbingIdentifier string
 
@@ -2287,8 +3797,8 @@ const WindowTabbingModePreferred WindowTabbingMode = 1
 
 type WindowTitleVisibility int
 
-const WindowTitleVisible WindowTitleVisibility = 0
 const WindowTitleHidden WindowTitleVisibility = 1
+const WindowTitleVisible WindowTitleVisibility = 0
 
 type WindowToolbarStyle int
 
@@ -2312,23 +3822,57 @@ const WorkspaceAuthorizationTypeSetAttributes WorkspaceAuthorizationType = 1
 
 type WorkspaceDesktopImageOptionKey string
 
-const WorkspaceDesktopImageScalingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageScalingKey"
 const WorkspaceDesktopImageAllowClippingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageAllowClippingKey"
 const WorkspaceDesktopImageFillColorKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageFillColorKey"
+const WorkspaceDesktopImageScalingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageScalingKey"
 
 type WorkspaceFileOperationName string
 
+const WorkspaceCompressOperation WorkspaceFileOperationName = "compress"
+const WorkspaceCopyOperation WorkspaceFileOperationName = "copy"
+const WorkspaceDecompressOperation WorkspaceFileOperationName = "decompress"
+const WorkspaceDecryptOperation WorkspaceFileOperationName = "decrypt"
+const WorkspaceDestroyOperation WorkspaceFileOperationName = "destroy"
+const WorkspaceDuplicateOperation WorkspaceFileOperationName = "duplicate"
+const WorkspaceEncryptOperation WorkspaceFileOperationName = "encrypt"
+const WorkspaceLinkOperation WorkspaceFileOperationName = "link"
+const WorkspaceMoveOperation WorkspaceFileOperationName = "move"
+const WorkspaceRecycleOperation WorkspaceFileOperationName = "recycle"
+
 type WorkspaceIconCreationOptions uint
 
-const ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
 const Exclude10_4ElementsIconCreationOption WorkspaceIconCreationOptions = 4
+const ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
 
 type WorkspaceLaunchConfigurationKey string
 
+const WorkspaceLaunchConfigurationAppleEvent WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationAppleEvent"
+const WorkspaceLaunchConfigurationArchitecture WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArchitecture"
+const WorkspaceLaunchConfigurationArguments WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArguments"
+const WorkspaceLaunchConfigurationEnvironment WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationEnvironment"
+
 type WorkspaceLaunchOptions uint
+
+const WorkspaceLaunchAllowingClassicStartup WorkspaceLaunchOptions = 131072
+const WorkspaceLaunchAndHide WorkspaceLaunchOptions = 1048576
+const WorkspaceLaunchAndHideOthers WorkspaceLaunchOptions = 2097152
+const WorkspaceLaunchAndPrint WorkspaceLaunchOptions = 2
+const WorkspaceLaunchAsync WorkspaceLaunchOptions = 65536
+const WorkspaceLaunchDefault WorkspaceLaunchOptions = 65536
+const WorkspaceLaunchInhibitingBackgroundOnly WorkspaceLaunchOptions = 128
+const WorkspaceLaunchNewInstance WorkspaceLaunchOptions = 524288
+const WorkspaceLaunchPreferringClassic WorkspaceLaunchOptions = 262144
+const WorkspaceLaunchWithErrorPresentation WorkspaceLaunchOptions = 64
+const WorkspaceLaunchWithoutActivation WorkspaceLaunchOptions = 512
+const WorkspaceLaunchWithoutAddingToRecents WorkspaceLaunchOptions = 256
 
 type WritingDirection int
 
-const WritingDirectionNatural WritingDirection = -1
 const WritingDirectionLeftToRight WritingDirection = 0
+const WritingDirectionNatural WritingDirection = -1
 const WritingDirectionRightToLeft WritingDirection = 1
+
+type WritingDirectionFormatType int
+
+const WritingDirectionEmbedding WritingDirectionFormatType = 0
+const WritingDirectionOverride WritingDirectionFormatType = 2

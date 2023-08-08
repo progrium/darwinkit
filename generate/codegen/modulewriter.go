@@ -96,8 +96,16 @@ func (m *ModuleWriter) WriteAliasesCode() {
 	for _, ei := range enums {
 		primitiveType := ei.Type.GoName(&m.Module, false)
 		if ei.Module.Name == m.Module.Name {
-			cw.WriteLine(fmt.Sprintf("type %s %s\n", ei.GName, primitiveType))
+			if ei.Name == "CGFloat" {
+				// special case CGFloat to be an actual type alias
+				cw.WriteLine(fmt.Sprintf("type %s = %s\n", ei.GName, primitiveType))
+			} else {
+				cw.WriteLine(fmt.Sprintf("type %s %s\n", ei.GName, primitiveType))
+			}
 		}
+		sort.Slice(ei.Values, func(i, j int) bool {
+			return ei.Values[i].Name < ei.Values[j].Name
+		})
 		for _, v := range ei.Values {
 			if v.Module == nil {
 				continue

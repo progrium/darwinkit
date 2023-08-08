@@ -87,51 +87,23 @@ func (s Symbol) Parse() (*declparse.Statement, error) {
 	return p.Parse()
 }
 
-var symbolCache = map[string]Symbol{}
-
-func FindSymbolByName(db *zip.ReadCloser, name string) *Symbol {
-	if s, ok := symbolCache[name]; ok {
-		return &s
-	}
-	var found *Symbol
-	for _, file := range db.File {
-		if strings.Contains(file.Name, strings.ToLower(name)) {
-			s, err := LoadSymbolFrom(file)
-			if err != nil {
-				continue
-			}
-			if strings.EqualFold(s.Name, name) {
-				found = &s
-			}
-		}
-	}
-	if found != nil {
-		symbolCache[name] = *found
-	}
-	return found
+type SymbolCache struct {
+	*zip.ReadCloser
+	cache map[string]Symbol
 }
 
-func FrameworkSymbols(db *zip.ReadCloser, module string) (symbols []Symbol) {
-	for _, file := range db.File {
-		if !file.FileInfo().IsDir() && strings.HasPrefix(file.Name, "symbols/"+strings.ToLower(module)) {
-			s, err := LoadSymbolFrom(file)
-			if err != nil {
-				continue
-			}
-			symbols = append(symbols, s)
-		}
+func OpenSymbols(filename string) (*SymbolCache, error) {
+	db, err := zip.OpenReader(filename)
+	if err != nil {
+		return nil, err
 	}
-	if module == "appkit" {
-		for _, s := range FrameworkSymbols(db, "uikit") {
-			if s.HasFramework("appkit") {
-				symbols = append(symbols, s)
-			}
-		}
-	}
-	return
+	return &SymbolCache{
+		ReadCloser: db,
+		cache:      make(map[string]Symbol),
+	}, nil
 }
 
-func LoadSymbolFrom(file *zip.File) (v Symbol, err error) {
+func (db *SymbolCache) loadFrom(file *zip.File) (v Symbol, err error) {
 	var reader io.ReadCloser
 	reader, err = file.Open()
 	if err != nil {
@@ -146,6 +118,62 @@ func LoadSymbolFrom(file *zip.File) (v Symbol, err error) {
 	if err := json.Unmarshal(b, &v); err != nil {
 		return v, err
 	}
-	symbolCache[v.Name] = v
+	db.cache[v.Name] = v
+	return
+}
+
+func (db *SymbolCache) FindByName(name string) *Symbol {
+	if s, ok := db.cache[name]; ok {
+		return &s
+	}
+	var found *Symbol
+	for _, file := range db.File {
+		if strings.Contains(file.Name, strings.ToLower(name)) {
+			s, err := db.loadFrom(file)
+			if err != nil {
+				continue
+			}
+			if strings.EqualFold(s.Name, name) {
+				found = &s
+			}
+		}
+	}
+	if found != nil {
+		db.cache[name] = *found
+	}
+	return found
+}
+
+func (db *SymbolCache) AllSymbols() (symbols []Symbol) {
+	for _, file := range db.File {
+		if file.FileInfo().IsDir() {
+			continue
+		}
+		s, err := db.loadFrom(file)
+		if err != nil {
+			continue
+		}
+		symbols = append(symbols, s)
+	}
+	return
+}
+
+func (db *SymbolCache) ModuleSymbols(module string) (symbols []Symbol) {
+	for _, file := range db.File {
+		if !file.FileInfo().IsDir() && strings.HasPrefix(file.Name, "symbols/"+strings.ToLower(module)) {
+			s, err := db.loadFrom(file)
+			if err != nil {
+				continue
+			}
+			symbols = append(symbols, s)
+		}
+	}
+	if module == "appkit" {
+		for _, s := range db.ModuleSymbols("uikit") {
+			if s.HasFramework("appkit") {
+				symbols = append(symbols, s)
+			}
+		}
+	}
 	return
 }

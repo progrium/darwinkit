@@ -26,6 +26,21 @@ func Get(moduleName string) *Module {
 	return nil
 }
 
+func TrimPrefix(symbolName string) string {
+	for _, m := range All {
+		for _, prefix := range m.Prefixes {
+			if strings.HasPrefix(symbolName, prefix) {
+				name := strings.TrimPrefix(symbolName, prefix)
+				if strings.HasPrefix(symbolName, "k") {
+					return "K" + name
+				}
+				return name
+			}
+		}
+	}
+	return symbolName
+}
+
 var All = []Module{
 	{"objectivec", "Objective-C Runtime", "objc", "objc/runtime.h", []string{}},
 	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}},
@@ -39,7 +54,7 @@ var All = []Module{
 	{"IOBluetooth", "IOBluetooth", "iobluetooth", "IOBluetooth/IOBluetooth.h", []string{"kIOBluetooth", "kBluetooth", "IOBluetooth", "Bluetooth", "kFTS", "kOBEX"}},
 	{"CoreGraphics", "Core Graphics", "coregraphics", "CoreGraphics/CoreGraphics.h", []string{"CG", "kCG"}},
 	{"CoreFoundation", "Core Foundation", "corefoundation", "CoreFoundation/CoreFoundation.h", []string{"CF", "kCF"}},
-	{"QuartzCore", "QuartzCore", "quartzcore", "QuartzCore/QuartzCore.h", []string{"kCA"}},
+	{"QuartzCore", "QuartzCore", "quartzcore", "QuartzCore/QuartzCore.h", []string{"kCA", "CA"}},
 	{"Vision", "Vision", "vision", "Vision/Vision.h", []string{"VN"}},
 	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}},
 }

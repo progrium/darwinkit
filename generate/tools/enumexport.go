@@ -3,7 +3,6 @@
 package main
 
 import (
-	"archive/zip"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -24,21 +23,21 @@ const TargetVersion = 12
 // go run ./generate/tools/enumexport.go [framework]
 func main() {
 
-	r, err := zip.OpenReader("./generate/symbols.zip")
+	db, err := generate.OpenSymbols("./generate/symbols.zip")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer r.Close()
+	defer db.Close()
 
 	if len(os.Args) > 1 {
 		mod := modules.Get(strings.ToLower(os.Args[1]))
-		fmt.Print(string(exportConstants(r, mod, TargetPlatform, TargetVersion)))
+		fmt.Print(string(exportConstants(db, mod, TargetPlatform, TargetVersion)))
 	} else {
 		for _, m := range modules.All {
 			if m.Package == "objc" {
 				continue
 			}
-			dump := exportConstants(r, &m, TargetPlatform, TargetVersion)
+			dump := exportConstants(db, &m, TargetPlatform, TargetVersion)
 			if m.Package == "uikit" && TargetPlatform == "macos" {
 				// append to appkit instead
 				filename := "./generate/modules/enums/" + TargetPlatform + "/appkit"
@@ -66,7 +65,7 @@ func main() {
 
 }
 
-func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform string, version int) []byte {
+func exportConstants(db *generate.SymbolCache, framework *modules.Module, platform string, version int) []byte {
 
 	var constInts []string
 	var constStrs []string
@@ -104,98 +103,103 @@ func exportConstants(db *zip.ReadCloser, framework *modules.Module, platform str
 		}
 	}
 
-	for _, file := range db.File {
-		if filepath.Dir(file.Name) == fmt.Sprintf("symbols/%s", framework.Package) {
-			s, err := generate.LoadSymbolFrom(file)
+	for _, s := range db.ModuleSymbols(framework.Package) {
+		if platform == "macos" && framework.Package == "uikit" {
+			// we're going to pretend to be appkit later
+			// to handle the uikit symbols existing in appkit
+			if !s.HasFramework("appkit") {
+				continue
+			}
+		}
+		if !s.HasPlatform(platform, version, true) {
+			continue
+		}
+		// ignore list. these deprecated ones aren't defined for me on macOS 12
+		if strIn([]string{
+			"QCCompositionInputRSSArticleDurationKey",
+			"QCCompositionInputRSSFeedURLKey",
+			"QCCompositionProtocolRSSVisualizer",
+			"FPUIExtensionErrorCodeFailed",
+			"FPUIExtensionErrorCodeUserCancelled",
+			"FPUIErrorDomain",
+			"kIOBluetoothUISuccess",
+			"kIOBluetoothUIUserCanceledErr",
+			"kIOBluetoothServiceBrowserControllerOptionsNone",
+			"kIOBluetoothServiceBrowserControllerOptionsDisconnectWhenDone",
+			"kIOBluetoothServiceBrowserControllerOptionsAutoStartInquiry",
+			"kBluetoothKeyboardNoReturn",
+			"kBluetoothKeyboardJISReturn",
+			"kBluetoothKeyboardISOReturn",
+			"kBluetoothKeyboardANSIReturn",
+		}, s.Name) {
+			continue
+		}
+		if s.Kind == "Constant" && s.Type == "Enumeration Case" {
+			constInts = append(constInts, s.Name)
+			continue
+		}
+		if s.Kind == "Constant" && s.Type == "Global Variable" {
+			stmt, err := s.Parse()
 			if err != nil {
+				log.Fatalf("%s: %s in '%s'", s.Name, err, s.Declaration)
+			}
+			if stmt.Variable == nil {
+				log.Fatalf("%s: declaration statement not a variable: %s", s.Name, s.Declaration)
+			}
+			if ok := addConst(stmt.Variable.Type, s.Name); ok {
 				continue
 			}
-			if platform == "macos" && framework.Package == "uikit" {
-				// we're going to pretend to be appkit later
-				// to handle the uikit symbols existing in appkit
-				if !s.HasFramework("appkit") {
-					continue
-				}
-			}
-			if !s.HasPlatform(platform, version, true) {
-				continue
-			}
-			// ignore list. these deprecated ones aren't defined for me
-			if strIn([]string{
-				"QCCompositionInputRSSArticleDurationKey",
-				"QCCompositionInputRSSFeedURLKey",
-				"QCCompositionProtocolRSSVisualizer",
-			}, s.Name) {
-				continue
-			}
-			if s.Kind == "Constant" && s.Type == "Enumeration Case" {
-				constInts = append(constInts, s.Name)
-				continue
-			}
-			if s.Kind == "Constant" && s.Type == "Global Variable" {
-				stmt, err := s.Parse()
-				if err != nil {
-					log.Fatalf("%s: %s in '%s'", s.Name, err, s.Declaration)
-				}
-				if stmt.Variable == nil {
-					log.Fatalf("%s: declaration statement not a variable: %s", s.Name, s.Declaration)
-				}
-				if ok := addConst(stmt.Variable.Type, s.Name); ok {
-					continue
-				}
 
-				lookupType := func(name string) (ti *declparse.TypeInfo, ok bool) {
-					typ := generate.FindSymbolByName(db, name)
-					if typ == nil {
-						log.Fatalf("unable to find symbol: %s\n", name)
-					}
-					if typ.Declaration == "" {
-						return nil, false
-					}
-					typdef, err := typ.Parse()
-					if err != nil {
-						log.Fatalf("%s: %s in '%s'", typ.Name, err, typ.Declaration)
-					}
-					if typdef.Interface != nil {
-						// ignore global object pointers here
-						// ex: NSApp
-						return nil, false
-					}
-					if typdef.Struct != nil {
-						// ignore weird struct refs here
-						// ex: kCFURLFileResourceTypeKey
-						// ex: NSMultipleValuesMarker
-						return nil, false
-					}
-					if typdef.Typedef == "" {
-						log.Fatalf("%s: declaration statement not a typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
-					}
-					if typdef.Enum != nil {
-						return &typdef.Enum.Type, true
-					}
-					if typdef.TypeAlias != nil {
-						return typdef.TypeAlias, true
-					}
-					log.Fatalf("%s: unsupported typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
+			lookupType := func(name string) (ti *declparse.TypeInfo, ok bool) {
+				typ := db.FindByName(name)
+				if typ == nil {
+					log.Fatalf("unable to find symbol: %s\n", name)
+				}
+				if typ.Declaration == "" {
 					return nil, false
 				}
+				typdef, err := typ.Parse()
+				if err != nil {
+					log.Fatalf("%s: %s in '%s'", typ.Name, err, typ.Declaration)
+				}
+				if typdef.Interface != nil {
+					// ignore global object pointers here
+					// ex: NSApp
+					return nil, false
+				}
+				if typdef.Struct != nil {
+					// ignore weird struct refs here
+					// ex: kCFURLFileResourceTypeKey
+					// ex: NSMultipleValuesMarker
+					return nil, false
+				}
+				if typdef.Typedef == "" {
+					log.Fatalf("%s: declaration statement not a typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
+				}
+				if typdef.Enum != nil {
+					return &typdef.Enum.Type, true
+				}
+				if typdef.TypeAlias != nil {
+					return typdef.TypeAlias, true
+				}
+				log.Fatalf("%s: unsupported typedef: %s [%s]", typ.Name, typ.Declaration, s.Name)
+				return nil, false
+			}
 
-				ti, ok := lookupType(stmt.Variable.Type.Name)
+			ti, ok := lookupType(stmt.Variable.Type.Name)
+			if !ok {
+				continue
+			}
+			if ok := addConst(*ti, s.Name); !ok {
+				// try to resolve one more level
+				tti, ok := lookupType(ti.Name)
 				if !ok {
 					continue
 				}
-				if ok := addConst(*ti, s.Name); !ok {
-					// try to resolve one more level
-					tti, ok := lookupType(ti.Name)
-					if !ok {
-						continue
-					}
-					if ok := addConst(*tti, s.Name); !ok {
-						log.Fatalf("%s: unsupported type: %s [%s]", stmt.Variable.Type.Name, ti.Name, s.Name)
-					}
+				if ok := addConst(*tti, s.Name); !ok {
+					log.Fatalf("%s: unsupported type: %s [%s]", stmt.Variable.Type.Name, ti.Name, s.Name)
 				}
 			}
-
 		}
 	}
 	sort.Strings(constInts)

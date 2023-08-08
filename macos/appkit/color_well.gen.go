@@ -22,8 +22,6 @@ type IColorWell interface {
 	DrawWellInside(insideRect foundation.Rect)
 	Color() Color
 	SetColor(value IColor)
-	ColorWellStyle() ColorWellStyle
-	SetColorWellStyle(value ColorWellStyle)
 	Image() Image
 	SetImage(value IImage)
 	IsActive() bool
@@ -41,15 +39,6 @@ func MakeColorWell(ptr unsafe.Pointer) ColorWell {
 	return ColorWell{
 		Control: MakeControl(ptr),
 	}
-}
-
-func (cc _ColorWellClass) ColorWellWithStyle(style ColorWellStyle) ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("colorWellWithStyle:"), style)
-	return rv
-}
-
-func ColorWell_ColorWellWithStyle(style ColorWellStyle) ColorWell {
-	return ColorWellClass.ColorWellWithStyle(style)
 }
 
 func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
@@ -116,15 +105,6 @@ func (c_ ColorWell) Color() Color {
 
 func (c_ ColorWell) SetColor(value IColor) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
-}
-
-func (c_ ColorWell) ColorWellStyle() ColorWellStyle {
-	rv := objc.CallMethod[ColorWellStyle](c_, objc.GetSelector("colorWellStyle"))
-	return rv
-}
-
-func (c_ ColorWell) SetColorWellStyle(value ColorWellStyle) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColorWellStyle:"), value)
 }
 
 func (c_ ColorWell) Image() Image {

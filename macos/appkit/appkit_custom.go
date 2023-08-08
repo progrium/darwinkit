@@ -1,12 +1,21 @@
 package appkit
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/helper/action"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
+// todo: generate
+type ModalSession unsafe.Pointer
+
+// todo: generate
 const VariableStatusItemLength float64 = -1
+
+// for some reason not in symbols.zip?
+type FontWidth float32
 
 func DisableAutoresizingTranslate[T IView](v T) T {
 	v.SetTranslatesAutoresizingMaskIntoConstraints(false)
