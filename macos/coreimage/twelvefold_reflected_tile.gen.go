@@ -1,0 +1,142 @@
+// AUTO-GENERATED CODE, DO NOT MODIFY
+
+package coreimage
+
+import (
+	"github.com/progrium/macdriver/macos/coregraphics"
+	"github.com/progrium/macdriver/objc"
+)
+
+// The properties you use to configure a twelvefold reflected tile filter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile?language=objc
+type PTwelvefoldReflectedTile interface {
+	// optional
+	SetWidth(value float64)
+	HasSetWidth() bool
+
+	// optional
+	Width() float64
+	HasWidth() bool
+
+	// optional
+	SetInputImage(value Image)
+	HasSetInputImage() bool
+
+	// optional
+	InputImage() IImage
+	HasInputImage() bool
+
+	// optional
+	SetAngle(value float64)
+	HasSetAngle() bool
+
+	// optional
+	Angle() float64
+	HasAngle() bool
+
+	// optional
+	SetCenter(value coregraphics.Point)
+	HasSetCenter() bool
+
+	// optional
+	Center() coregraphics.Point
+	HasCenter() bool
+}
+
+// A concrete type wrapper for the [PTwelvefoldReflectedTile] protocol.
+type TwelvefoldReflectedTileWrapper struct {
+	objc.Object
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasSetWidth() bool {
+	return t_.RespondsToSelector(objc.Sel("setWidth:"))
+}
+
+// The width of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228817-width?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) SetWidth(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setWidth:"), value)
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasWidth() bool {
+	return t_.RespondsToSelector(objc.Sel("width"))
+}
+
+// The width of a tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228817-width?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) Width() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("width"))
+	return rv
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasSetInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("setInputImage:"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228816-inputimage?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) SetInputImage(value IImage) {
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasInputImage() bool {
+	return t_.RespondsToSelector(objc.Sel("inputImage"))
+}
+
+// The image to use as an input image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228816-inputimage?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) InputImage() Image {
+	rv := objc.Call[Image](t_, objc.Sel("inputImage"))
+	return rv
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasSetAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("setAngle:"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) SetAngle(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasAngle() bool {
+	return t_.RespondsToSelector(objc.Sel("angle"))
+}
+
+// The angle, in radians, of the tiled pattern. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) Angle() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("angle"))
+	return rv
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasSetCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("setCenter:"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) SetCenter(value coregraphics.Point) {
+	objc.Call[objc.Void](t_, objc.Sel("setCenter:"), value)
+}
+
+func (t_ TwelvefoldReflectedTileWrapper) HasCenter() bool {
+	return t_.RespondsToSelector(objc.Sel("center"))
+}
+
+// The x and y position to use as the center of the effect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228815-center?language=objc
+func (t_ TwelvefoldReflectedTileWrapper) Center() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](t_, objc.Sel("center"))
+	return rv
+}
