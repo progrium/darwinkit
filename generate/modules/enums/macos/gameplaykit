@@ -1,0 +1,9 @@
+GKGameModelMaxScore 16777216
+GKGameModelMinScore -16777216
+GKMeshGraphTriangulationModeCenters 2
+GKMeshGraphTriangulationModeEdgeMidpoints 4
+GKMeshGraphTriangulationModeVertices 1
+GKRTreeSplitStrategyHalve 0
+GKRTreeSplitStrategyLinear 1
+GKRTreeSplitStrategyQuadratic 2
+GKRTreeSplitStrategyReduceOverlap 3

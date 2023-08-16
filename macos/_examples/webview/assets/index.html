@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <h1>WEBX TEST</h1>
+        <div id="info"></div>
+    </body>
+    <script>
+        const div = document.getElementById('info');
+        div.textContent = "begin to post message...";
+        try {
+            window.webkit.messageHandlers.greet.postMessage("from web backend").then((info) => {
+                div.textContent = info;
+            }, (err) => {
+                div.textContent = "return error:" + err.message;
+            });
+        } catch(err) {
+            div.textContent = "error:" + err.message;
+        }
+    </script>
+</html>

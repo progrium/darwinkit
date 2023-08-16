@@ -1,8 +1,12 @@
 module github.com/progrium/macdriver
 
-go 1.16
+go 1.18
+
+require github.com/go-test/deep v1.1.0
 
 require (
-	github.com/progrium/macschema v0.1.1-0.20230710021358-3f88e9c4c718
-	github.com/stretchr/testify v1.7.0
+	github.com/yuin/goldmark v1.5.5 // indirect
+	golang.org/x/mod v0.12.0 // indirect
+	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/tools v0.12.0 // indirect
 )

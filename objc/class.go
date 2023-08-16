@@ -1,296 +1,234 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
+// Copyright 2021 Liu Dong. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 package objc
 
-/*
-#cgo LDFLAGS: -lobjc -framework Foundation
-#define __OBJC2__ 1
-#include <stdlib.h>
-#include <objc/runtime.h>
-#include <objc/message.h>
-
-static unsigned long key = 0xbadc0c0a;
-
-void *GoObjc_GetClassByName(char *name) {
-	return (void *) objc_getClass(name);
-}
-
-void *GoObjc_GetObjectClass(void *obj) {
-	return (void *) object_getClass(obj);
-}
-
-void *GoObjc_AllocateClassPair(void *superCls, char *name) {
-	return (void *) objc_allocateClassPair(superCls, name, 0);
-}
-
-void GoObjc_ClassAddMethod(void *subCls, void *sel, void *imp, char *typ) {
-	class_addMethod(subCls, sel, imp, typ);
-}
-
-void GoObjc_SetInternal(void *obj, void *ptr) {
-	objc_setAssociatedObject(obj, (void *)&key, ptr, OBJC_ASSOCIATION_ASSIGN);
-}
-
-void *GoObjc_GetInternal(void *obj) {
-	return (void *) objc_getAssociatedObject(obj, (void *)&key);
-}
-
-void GoObjc_RegisterClass(void *cls) {
-	objc_registerClassPair(cls);
-}
-
-char *GoObjc_GetClassName(void *cls) {
-	return (char *) class_getName(cls);
-}
-
-void GoObjc_Swizzle(void *cls, void *sel1, void *sel2) {
-	Method m1 = class_getInstanceMethod(cls, sel1);
-	Method m2 = class_getInstanceMethod(cls, sel2);
-	method_exchangeImplementations(m1, m2);
-}
-
-*/
+// #import <stdlib.h>
+// #import <stdint.h>
+// #import <stdbool.h>
+//
+// void* Objc_GetClass(const char* name);
+// void* Objc_AllocateClassPair(void* superClass, const char* name, size_t extraBytes);
+// void Objc_RegisterClassPair(void* class);
+// void Objc_DisposeClassPair(void* class);
+//
+// void* Class_CreateInstance(void* cls, unsigned idxIvars);
+// const char* Class_GetName(void *cls);
+// void Class_SetVersion(void* cls, int);
+// int Class_GetVersion(void* cls);
+// void* Class_GetSuperClass(void* cls);
+// bool Class_RespondsToSelectorAddMethod(void* cls, void* sel);
+// bool Class_AddProtocol(void* cls, void* protocol);
+// bool Class_AddMethod(void* cls, void* sel, void* imp, const char* types);
+// void* Class_ReplaceMethod(void* cls, void* sel, void* imp, const char* types);
+// void* Class_GetMethodImplementation(void* cls, void* sel);
+// void* Class_GetMethodImplementationStret(void* cls, void* sel);
+// void* Class_GetInstanceMethod(void* cls, void* sel);
+// void* Class_GetClassMethod(void* cls, void* sel);
+// void* Class_CopyMethodList(void* cls, unsigned int *outCount);
+// void* Class_GetProperty(void* cls, const char *name);
+// void* Class_CopyPropertyList(void* cls, unsigned int *outCount);
+// bool Class_AddProperty(void* cls, const char *name, void* attributes, unsigned int attributeCount);
+// void Class_ReplaceProperty(void* cls, const char *name, void* attributes, unsigned int attributeCount);
 import "C"
 import (
-	"reflect"
-	"strings"
 	"unsafe"
 )
 
-type classInfo struct {
-	typ       reflect.Type
-	methodMap map[string]interface{}
-	refs      map[uintptr]unsafe.Pointer
-	setters   map[string]struct{}
+type IClass interface {
+	Pointer
+	CreateInstance(idxIvars uint) Object
+	Name() string
+	SetVersion(version int)
+	Version() int
+	Class() Class
+	SuperClass() Class
+	RespondsToSelector(sel Selector) bool
+	AddMethod(sel Selector, imp IMP, types string) bool
+	ReplaceMethod(sel Selector, imp IMP, types string) IMP
+	MethodImplementation(sel Selector) IMP
+	MethodImplementationStret(sel Selector) IMP
+	InstanceMethod(sel Selector) Method
+	ClassMethod(sel Selector) Method
+	Property(name string) Property
+	AddProperty(name string, attributes []PropertyAttribute) bool
+	ReplaceProperty(name string, attributes []PropertyAttribute)
+	AddProtocol(protocol Protocol) bool
+	CopyMethodList() []Method
+	CopyPropertyList() []Property
 }
 
-func (ci classInfo) MethodForSelector(sel string) interface{} {
-	return ci.methodMap[sel]
+type Class struct {
+	ptr unsafe.Pointer
 }
 
-func (ci *classInfo) AddRef(ptr unsafe.Pointer) {
-	if ci.refs == nil {
-		ci.refs = make(map[uintptr]unsafe.Pointer)
-	}
-	ci.refs[uintptr(ptr)] = ptr
+func (c Class) Ptr() unsafe.Pointer {
+	return c.ptr
 }
 
-func (ci *classInfo) RemoveRef(ptr unsafe.Pointer) {
-	if ci.refs != nil {
-		delete(ci.refs, uintptr(ptr))
-	}
-}
-
-var (
-	classMap map[string]classInfo
-)
-
-func init() {
-	classMap = make(map[string]classInfo)
-}
-
-// A Class represents a special Objective-C
-// class Object.
-type Class interface {
-	Object
-
-	// AddMethod registers a Go function to be called whenever
-	// an instance of the class receives a message for the given
-	// selector.
-	//
-	// The AddMethod call only works for classes created with
-	// objc.NewClass. Method calls will only be received by the
-	// Go function if instances of the class are instanciated
-	// by calling objc.NewGoInstance.
-	AddMethod(selector string, fn interface{})
-
-	// Swizzle swaps the implementation of two methods on a class
-	// so that messages sent to selectorA are received by the
-	// implementation of selectorB and vice-versa.
-	Swizzle(selectorA, selectorB string)
-}
-
-func NewClass(classname string, superclass string) Class {
-	superClass := GetClass(superclass)
-
-	ptr := allocateClassPair(unsafe.Pointer(superClass.Pointer()), classname)
-	if ptr == nil {
-		panic("unable to AllocateClassPair")
-	}
-
-	// Register the dealloc method to be able to properly remove the classInfo
-	// reference to our internal pointer.
-	classAddMethod(ptr, "dealloc", encVoid+encId+encSelector)
-
-	lazilyRegisterClassInMap(classname)
-	return object{ptr: uintptr(ptr)}
-}
-
-func lazilyRegisterClassInMap(className string) {
-	if _, found := classMap[className]; found {
-		return
-	}
-
-	classMap[className] = classInfo{
-		typ:       reflect.TypeOf(struct{ Object }{}),
-		methodMap: map[string]interface{}{},
-		setters:   map[string]struct{}{},
-	}
-}
-
-// NewClass returns a new class. The value parameter must
-// point to a value of the struct that is used to represent
-// instances of the class in Go.
-func NewClassFromStruct(value interface{}) Class {
-	typ := reflect.ValueOf(value).Type()
-
-	// The tag of the first field contains a
-	// description of the class: its name in
-	// Objective-C and its super class.
-	//
-	// For example:
-	//   `objc:"GOAppDelegate : NSObject"`
-	field := typ.Field(0)
-	descrStr := field.Tag.Get("objc")
-	descr := strings.Split(descrStr, " : ")
-	if len(descr) != 2 {
-		panic("objc: bad description string for class " + typ.Name())
-	}
-
-	className := descr[0]
-	superClassName := descr[1]
-	superClass := GetClass(superClassName)
-
-	ptr := allocateClassPair(unsafe.Pointer(superClass.Pointer()), className)
-	if ptr == nil {
-		panic("unable to AllocateClassPair")
-	}
-
-	// Check whether the class has any IBOutlets, and generate
-	// appropriate setter methods so we can load NIBs on OS X.
-	setters := map[string]struct{}{}
-	for i := 0; i < typ.NumField(); i++ {
-		field := typ.Field(i)
-		if field.Tag.Get("objc") == "IBOutlet" {
-			if field.Type.Implements(objectInterfaceType) {
-				setters["set"+field.Name+":"] = struct{}{}
-				break
-			} else {
-				panic("IBOutlets must implement objc.Object")
-			}
-		}
-	}
-
-	// Register the IBOutlet setters.
-	for setterSelector := range setters {
-		classAddMethod(ptr, setterSelector, encVoid+encId+encSelector+encId)
-	}
-
-	// Register the setValue:forKey: method for our custom IBOutlet handling
-	// if the class has any IBOutlets. (Currently only relevant for the iOS runtime)
-	if len(setters) > 0 {
-		classAddMethod(ptr, "setValue:forKey:", encVoid+encId+encSelector+encId+encId)
-	}
-
-	// Register the dealloc method to be able to properly remove the classInfo
-	// reference to our internal pointer.
-	classAddMethod(ptr, "dealloc", encVoid+encId+encSelector)
-
-	classMap[className] = classInfo{
-		typ:       reflect.TypeOf(value),
-		methodMap: make(map[string]interface{}),
-		setters:   setters,
-	}
-
-	return object{ptr: uintptr(ptr)}
-}
-
-func allocateClassPair(ptr unsafe.Pointer, className string) unsafe.Pointer {
-	cstr := C.CString(className)
-	defer C.free(unsafe.Pointer(cstr))
-	return C.GoObjc_AllocateClassPair(ptr, cstr)
-}
-
-func classAddMethod(ptr unsafe.Pointer, sel string, typeInfo string) {
-	typeCStr := C.CString(typeInfo)
-	defer C.free(unsafe.Pointer(typeCStr))
-	C.GoObjc_ClassAddMethod(ptr, selectorWithName(sel), methodCallTarget(), typeCStr)
-}
-
-// Get looks up a class by name.
-func Get(name string) Class {
-	cstr := C.CString(name)
-	defer C.free(unsafe.Pointer(cstr))
-	return object{ptr: uintptr(C.GoObjc_GetClassByName(cstr))}
-}
-
-// deprecated
+// GetClass returns an Objective-C Class by name
 func GetClass(name string) Class {
-	return Get(name)
-}
-
-// Get the Class of an object. This equivalent to sending the
-// class message to the object, but this is not always possible.
-// (The SendMsg method, for example, needs to get the class of the
-// object it is sending a message to. This would end in an infinite
-// loop.)
-func getObjectClass(obj Object) Class {
-	classPtr := C.GoObjc_GetObjectClass(unsafe.Pointer(obj.Pointer()))
-	return object{ptr: uintptr(classPtr)}
-}
-
-// RegisterClass registers a Class with the Objective-C runtime.
-func RegisterClass(class Class) {
-	C.GoObjc_RegisterClass(unsafe.Pointer(class.Pointer()))
-}
-
-// className returns the name of the Class represented by object.
-func (cls object) className() string {
-	return C.GoString(C.GoObjc_GetClassName(unsafe.Pointer(cls.Pointer())))
-}
-
-// AddMethod adds a new method to a Class.
-func (cls object) AddMethod(selector string, fn interface{}) {
-	clsName := cls.className()
-	clsInfo := classMap[clsName]
-
-	// Check if this method has already implicitly been
-	// added by an IBOutlet tagged struct field.
-	if _, isSetter := clsInfo.setters[selector]; isSetter {
-		panic("objc: unable to add method '" + selector + "'; would shadow IBOutlet setter with same name.")
+	nameStr := C.CString(name)
+	defer C.free(unsafe.Pointer(nameStr))
+	return Class{
+		ptr: C.Objc_GetClass(nameStr),
 	}
-
-	classAddMethod(unsafe.Pointer(cls.Pointer()), selector, funcTypeInfo(fn))
-
-	// Add the method to the class's method map
-	clsInfo.methodMap[selector] = fn
 }
 
-// Swizzle swaps the implementation of two methods.
-func (cls object) Swizzle(selectorA, selectorB string) {
-	selA := selectorWithName(selectorA)
-	selB := selectorWithName(selectorB)
-	C.GoObjc_Swizzle(unsafe.Pointer(cls.Pointer()), selA, selB)
-
-	clsName := cls.className()
-	clsInfo := classMap[clsName]
-	mm := clsInfo.methodMap
-
-	mm[selectorA], mm[selectorB] = mm[selectorB], mm[selectorA]
+// Creates a new class and metaclass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418559-objc_allocateclasspair?language=objc
+func AllocateClass(superClass Class, name string, extraBytes uint) Class {
+	nameStr := C.CString(name)
+	defer C.free(unsafe.Pointer(nameStr))
+	return Class{
+		ptr: C.Objc_AllocateClassPair(superClass.Ptr(), nameStr, C.size_t(extraBytes)),
+	}
 }
 
-// setInternalPointer sets an internal pointer on the object.
-// This is used to implement correct method dispatch for
-// Objective-C classes created from within Go.
-func (obj object) setInternalPointer(value unsafe.Pointer) {
-	C.GoObjc_SetInternal(unsafe.Pointer(obj.Pointer()), unsafe.Pointer(value))
+// Registers a class that was allocated using [AllocateClass] [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418603-objc_registerclasspair?language=objc
+func RegisterClass(class Class) {
+	C.Objc_RegisterClassPair(class.Ptr())
 }
 
-// internalPointer returns the object's internal pointer.
-// Must only be called on objects that are known to have
-// an internal pointer set.
-func (obj object) internalPointer() unsafe.Pointer {
-	return C.GoObjc_GetInternal(unsafe.Pointer(obj.Pointer()))
+// Destroys a class and its associated metaclass. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418912-objc_disposeclasspair?language=objc
+func DisposeClass(class Class) {
+	C.Objc_DisposeClassPair(class.Ptr())
+}
+
+func (c Class) CreateInstance(idxIvars uint) Object {
+	ptr := C.Class_CreateInstance(c.ptr, C.uint(idxIvars))
+	return ObjectFrom(ptr)
+}
+
+func (c Class) Name() string {
+	cname := C.Class_GetName(c.ptr)
+	name := C.GoString(cname)
+	return name
+}
+
+func (c Class) Class() Class {
+	return ObjectFrom(c.ptr).Class()
+}
+
+func (c Class) SetVersion(version int) {
+	C.Class_SetVersion(c.ptr, C.int(version))
+}
+
+func (c Class) Version() int {
+	return int(C.Class_GetVersion(c.ptr))
+}
+
+func (c Class) SuperClass() Class {
+	ptr := C.Class_GetSuperClass(c.ptr)
+	return Class{ptr}
+}
+
+func (c Class) RespondsToSelector(sel Selector) bool {
+	r := C.Class_RespondsToSelectorAddMethod(c.ptr, sel.ptr)
+	return bool(r)
+}
+
+func (c Class) AddMethod(sel Selector, imp IMP, types string) bool {
+	ctypes := C.CString(types)
+	defer C.free(unsafe.Pointer(ctypes))
+	r := C.Class_AddMethod(c.ptr, sel.ptr, imp.ptr, ctypes)
+	return bool(r)
+}
+
+func (c Class) ReplaceMethod(sel Selector, imp IMP, types string) IMP {
+	ctypes := C.CString(types)
+	defer C.free(unsafe.Pointer(ctypes))
+	r := C.Class_ReplaceMethod(c.ptr, sel.ptr, imp.ptr, ctypes)
+	return IMP{ptr: r}
+}
+
+func (c Class) MethodImplementation(sel Selector) IMP {
+	r := C.Class_GetMethodImplementation(c.ptr, sel.ptr)
+	return IMP{ptr: r}
+}
+
+func (c Class) MethodImplementationStret(sel Selector) IMP {
+	r := C.Class_GetMethodImplementationStret(c.ptr, sel.ptr)
+	return IMP{ptr: r}
+}
+
+func (c Class) InstanceMethod(sel Selector) Method {
+	r := C.Class_GetInstanceMethod(c.ptr, sel.ptr)
+	return Method{ptr: r}
+}
+
+func (c Class) ClassMethod(sel Selector) Method {
+	r := C.Class_GetClassMethod(c.ptr, sel.ptr)
+	return Method{ptr: r}
+}
+
+func (c Class) CopyMethodList() []Method {
+	var count C.uint
+	rp := C.Class_CopyMethodList(c.ptr, &count)
+	return convertToSliceAndFreePointer[Method](rp, int(count))
+}
+
+func (c Class) AddProtocol(protocol Protocol) bool {
+	r := C.Class_AddProtocol(c.ptr, protocol.ptr)
+	return bool(r)
+}
+
+func (c Class) Property(name string) Property {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	return Property{
+		ptr: C.Class_GetProperty(c.Ptr(), cname),
+	}
+}
+
+func (c Class) CopyPropertyList() []Property {
+	var outCount C.uint
+	pp := C.Class_CopyPropertyList(c.Ptr(), &outCount)
+	return convertToSliceAndFreePointer[Property](pp, int(outCount))
+}
+
+func convertToSliceAndFreePointer[T Pointer](p unsafe.Pointer, count int) []T {
+	if p == nil {
+		return nil
+	}
+	defer C.free(p)
+	ps := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(p)), count)
+	slice := make([]T, count)
+	for i := 0; i < int(count); i++ {
+		slice[i] = ForceCast[unsafe.Pointer, T](ps[i])
+	}
+	return slice
+}
+
+func (c Class) AddProperty(name string, attributes []PropertyAttribute) bool {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	cattributes := convertToObjcPropertyAttributes(attributes)
+	defer func() {
+		for _, ca := range cattributes {
+			C.free(unsafe.Pointer(ca.name))
+			C.free(unsafe.Pointer(ca.value))
+		}
+	}()
+	r := C.Class_AddProperty(c.Ptr(), cname, unsafe.Pointer(&cattributes[0]), C.uint(len(attributes)))
+	return bool(r)
+}
+
+func (c Class) ReplaceProperty(name string, attributes []PropertyAttribute) {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	cattributes := convertToObjcPropertyAttributes(attributes)
+	defer func() {
+		for _, ca := range cattributes {
+			C.free(unsafe.Pointer(ca.name))
+			C.free(unsafe.Pointer(ca.value))
+		}
+	}()
+	C.Class_ReplaceProperty(c.Ptr(), cname, unsafe.Pointer(&cattributes[0]), C.uint(len(attributes)))
 }

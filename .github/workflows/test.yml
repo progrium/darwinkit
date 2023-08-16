@@ -1,7 +1,5 @@
 on: [pull_request]
 name: Test
-env:
-  CGO_CFLAGS: -w
 jobs:
   test:
     strategy:

@@ -1,22 +1,16 @@
-
 GOEXE ?= go
 
-help: ## show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
-.PHONY: help
+generate:
+	$(GOEXE) generate ./...
+.PHONY: generate
 
-largetype: ## build and run largetype example
-	$(GOEXE) run ./examples/largetype -font="Monaco" "Hello world"
-.PHONY: largetype
+clobber:
+	$(GOEXE) run ./generate/tools/clobbergen.go ./macos
+.PHONY: clobber
 
-topframe: ## build and run topframe example
-	$(GOEXE) run ./examples/_topframe
-.PHONY: topframe
+example:
+	$(GOEXE) run ./macos/_examples/widgets/main.go
+.PHONY: example
 
-notification: ## build and run notification example
-	$(GOEXE) run ./examples/notification
-.PHONY: notification
-
-pomodoro: ## build and run pomodoro example
-	$(GOEXE) run ./examples/pomodoro
-.PHONY: pomodoro
+generate/symbols.zip:
+	cd generate && wget https://github.com/mactypes/symbolsdb/releases/download/1.0/symbols.zip

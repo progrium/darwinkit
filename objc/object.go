@@ -1,192 +1,223 @@
-// Copyright (c) 2012 The 'objc' Package Authors. All rights reserved.
+// Copyright 2021 Liu Dong. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package objc implements access to the Objective-C runtime from Go
 package objc
 
+// #import <stdlib.h>
+// #import <stdint.h>
+// #import <stdbool.h>
+//
+// void* C_NSObject_NewObject();
+// bool Object_IsKindOfClass(void* ptr, void* classPtr);
+// bool Object_IsMemberOfClass(void* ptr, void* classPtr);
+// bool Object_RespondsToSelector(void* ptr, void* sel);
+// bool Object_ConformsToProtocol(void* ptr, void* protocolPtr);
+// void* Object_GetClass(void* ptr);
+// bool Object_IsProxy(void* ptr);
+// int Object_RetainCount(void* ptr);
+// void* Object_Retain(void* ptr);
+// void Object_Release(void* ptr);
+// void* Object_Autorelease(void* ptr);
+// void* C_NSObject_Copy(void* ptr);
+// void* C_NSObject_MutableCopy(void* ptr);
+// void Object_Dealloc(void* ptr);
+// void* Object_PerformSelector(void* ptr, void* sel_p);
+// void* Object_PerformSelector_WithObject(void* ptr, void* sel_p, void* param);
+// void* Object_PerformSelector_WithObject_WithObject(void* ptr, void* sel_p, void* param1, void* param2);
+// const char* Object_Description(void* ptr);
 import "C"
-
 import (
-	"fmt"
-	"strings"
 	"unsafe"
 )
 
-// A Ref represents an Objective-C object.
-// The basic interface only includes the address (aka ID) of the object.
-// For richer wrapper, use `Object`.
-type Ref interface {
-	// Pointer returns the in-memory address of the object.
-	Pointer() uintptr
+// Pointer is an interface for holding an Objective-C pointer
+type Pointer interface {
+	// Ptr returns the underlying unsafe.Pointer
+	Ptr() unsafe.Pointer
 }
 
-// An Object represents an Objective-C object, along with
-// some convenience methods only found on NSObjects.
-type Object interface {
-	Ref
+// An interface definition for the [Object] class.
+type IObject interface {
+	Pointer
+	IsNil() bool
 
-	// SendMsg sends an arbitrary message to the method on the
-	// object that is identified by selectorName.
-	Send(selector string, args ...interface{}) Object
-
-	// SendSuperMsg is like SendMsg, but sends to the object's
-	// super class instead.
-	SendSuper(selector string, args ...interface{}) Object
-
-	// Class returns the the special class object corresponding
-	// to this object.
 	Class() Class
+	IsKindOfClass(class Class) bool
+	IsMemberOfClass(class Class) bool
+	RespondsToSelector(sel Selector) bool
+	ConformsToProtocol(protocol Protocol) bool
 
-	// Alloc sends the  "alloc" message to the object.
-	Alloc() Object
+	IsProxy() bool
 
-	// Init sends the "init" message to the object.
-	// We name this InitObject to avoid a name clash with generated
-	// Init methods that have a different signature.
-	InitObject() Object
-
-	// Retain sends the "retain" message to the object.
 	Retain() Object
-
-	// Release sends the "release" message to the object.
-	Release() Object
-
-	// Autorelease sends the "autorelease" message to the object.
+	Release()
 	Autorelease() Object
+	RetainCount() uint
 
-	// Copy sends the "copy" message to the object.
-	Copy() Object
+	// Copy() IObject
+	// MutableCopy() IObject
 
-	Equals(o Object) bool
-
-	// String returns a string-representation of the object.
-	// This is equivalent to sending the "description"
-	// message to the object, except that this method
-	// returns a Go string.
-	String() string
-
-	// Uint returns the value of the object as an uint64.
-	Uint() uint64
-
-	// Int returns the value of the object as an int64.
-	Int() int64
-
-	// Float returns the value of the object as a float64.
-	Float() float64
-
-	// Bool returns the value of the object as a bool.
-	Bool() bool
-
-	// CString returns the value of the object as a C string.
-	CString() string
-
-	Set(setter string, args ...interface{})
-	Get(getter string) Object
-	GetSt(getter string, ret interface{})
+	Dealloc()
+	Description() string
 }
 
-// Type object is the package's internal representation of an Object.
-// Besides implementing the Object interface, object also implements
-// the Class interface.
-type object struct {
-	ptr uintptr
-}
-
-func ObjectPtr(ptr uintptr) Object {
-	return object{ptr: ptr}
-}
-
-func Object_FromPointer(id unsafe.Pointer) Object {
-	return ObjectPtr(uintptr(id))
-}
-
-func Object_FromRef(ref Ref) Object {
-	if ref == nil {
-		return nil
-	}
-	return ObjectPtr(ref.Pointer())
-}
-
-func RefPointer(o Ref) unsafe.Pointer {
+// Ptr returns unsafe.Pointer or nil
+func Ptr(o Pointer) unsafe.Pointer {
 	if o == nil {
 		return nil
 	}
-	return unsafe.Pointer(o.Pointer())
+	return o.Ptr()
 }
 
-// Pointer returns the object as a uintptr.
+// The root class of most Objective-C class hierarchies, from which subclasses inherit a basic interface to the runtime system and the ability to behave as Objective-C objects. [Full Topic]
 //
-// Using package unsafe, this uintptr can further
-// be converted to an unsafe.Pointer.
-func (obj object) Pointer() uintptr {
-	return obj.ptr
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/nsobject?language=objc
+type Object struct {
+	ptr unsafe.Pointer
 }
 
-func (obj object) Class() Class {
-	cls := obj.Send("class").(Class)
-	lazilyRegisterClassInMap(cls.(object).className())
-	return cls
+// Returns a Boolean value that indicates whether the receiver is an instance of given class or an instance of any class that inherits from that class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418511-iskindofclass
+func (o Object) IsKindOfClass(class Class) bool {
+	return bool(C.Object_IsKindOfClass(o.Ptr(), class.Ptr()))
 }
 
-func (obj object) Equals(o Object) bool {
-	return obj.Pointer() == o.Pointer()
+// Returns a Boolean value that indicates whether the receiver is an instance of a given class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418766-ismemberofclass
+func (o Object) IsMemberOfClass(class Class) bool {
+	return bool(C.Object_IsMemberOfClass(o.Ptr(), class.Ptr()))
 }
 
-func (obj object) Alloc() Object {
-	return obj.Send("alloc")
+// Returns a Boolean value that indicates whether the receiver implements or inherits a method that can respond to a specified message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418583-respondstoselector
+func (o Object) RespondsToSelector(sel Selector) bool {
+	return bool(C.Object_RespondsToSelector(o.Ptr(), sel.ptr))
 }
 
-func (obj object) InitObject() Object {
-	return obj.Send("init")
+// Returns a Boolean value that indicates whether the receiver conforms to a given protocol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418515-conformstoprotocol
+func (o Object) ConformsToProtocol(protocol Protocol) bool {
+	return bool(C.Object_ConformsToProtocol(o.Ptr(), protocol.ptr))
 }
 
-func (obj object) Retain() Object {
-	return obj.Send("retain")
+// Make an [Object] from an unsafe.Pointer
+func ObjectFrom(ptr unsafe.Pointer) Object {
+	return Object{ptr}
 }
 
-func (obj object) Release() Object {
-	return obj.Send("release")
+// IsNil returns true if the underlying pointer is nil
+func (o Object) IsNil() bool {
+	return o.ptr == nil
 }
 
-func (obj object) Autorelease() Object {
-	return obj.Send("autorelease")
+// Ptr returns the underlying unsafe.Pointer
+func (o Object) Ptr() unsafe.Pointer {
+	return o.ptr
 }
 
-func (obj object) Copy() Object {
-	return obj.Send("copy")
+// Instantiate a new [Object] with Autorelease called
+func NewObject() Object {
+	o := ObjectFrom(C.C_NSObject_NewObject())
+	o.Autorelease()
+	return o
 }
 
-func (obj object) Get(getter string) Object {
-	return obj.Send(getter)
+// Returns the class object for the receiver’s class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571949-class
+func (o Object) Class() Class {
+	return Class{C.Object_GetClass(o.Ptr())}
 }
 
-func (obj object) GetSt(getter string, ret interface{}) {
-	obj.Send(getter, ret)
+// Returns a Boolean value that indicates whether the receiver does not descend from NSObject. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418528-isproxy/
+func (o Object) IsProxy() bool {
+	return bool(C.Object_IsProxy(o.Ptr()))
 }
 
-func (obj object) Set(setter string, args ...interface{}) {
-	obj.Send(fmt.Sprintf("set%s", strings.Title(setter)), args...)
+// func (o Object) Copy() Object {
+// 	v := ObjectFrom(C.C_NSObject_Copy(o.Ptr()))
+// 	v.Autorelease()
+// 	return v
+// }
+
+// func (o Object) MutableCopy() Object {
+// 	v := ObjectFrom(C.C_NSObject_MutableCopy(o.Ptr()))
+// 	v.Autorelease()
+// 	return v
+// }
+
+// Sends a specified message to the receiver and returns the result of the message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418867-performselector?language=objc
+func (o Object) PerformSelector(sel Selector) Object {
+	rp := C.Object_PerformSelector(o.Ptr(), sel.Ptr())
+	return ObjectFrom(rp)
 }
 
-func (obj object) CString() string {
-	if obj.Pointer() == 0 {
-		return ""
-	}
-
-	return C.GoString((*C.char)(unsafe.Pointer(obj.Pointer())))
+// Sends a message to the receiver with an object as the argument. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418764-performselector?language=objc
+func (o Object) PerformSelectorWithObject(sel Selector, object Object) Object {
+	var param = Ptr(object)
+	rp := C.Object_PerformSelector_WithObject(o.Ptr(), sel.Ptr(), param)
+	return ObjectFrom(rp)
 }
 
-func (obj object) String() string {
-	// TODO: some kind of recover to catch when this doesnt work
-	var r string
-	Autorelease(func() {
-		bytes := obj.Send("description").Send("UTF8String")
-		if bytes.Pointer() == 0 {
-			r = "(nil)"
-		} else {
-			r = bytes.CString()
-		}
-	})
-	return r
+// Sends a message to the receiver with two objects as arguments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1418667-performselector?language=objc
+func (o Object) PerformSelectorWithObjectWithObject(sel Selector, obj1, obj2 Object) Object {
+	param1 := Ptr(obj1)
+	param2 := Ptr(obj2)
+	rp := C.Object_PerformSelector_WithObject_WithObject(o.Ptr(), sel.Ptr(), param1, param2)
+	return ObjectFrom(rp)
+}
+
+// "Do not use this method." [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571952-retaincount?language=objc
+func (o Object) RetainCount() uint {
+	return uint(C.Object_RetainCount(o.Ptr()))
+}
+
+// Increments the receiver’s reference count. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571946-retain?language=objc
+func (o Object) Retain() Object {
+	return ObjectFrom(C.Object_Retain(o.Ptr()))
+}
+
+// Decrements the receiver’s reference count. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571957-release?language=objc
+func (o Object) Release() {
+	C.Object_Release(o.Ptr())
+}
+
+// Decrements the receiver’s retain count at the end of the current autorelease pool block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418956-nsobject/1571951-autorelease?language=objc
+func (o Object) Autorelease() Object {
+	return ObjectFrom(C.Object_Autorelease(o.Ptr()))
+}
+
+// Deallocates the memory occupied by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/nsobject/1571947-dealloc?language=objc
+func (o Object) Dealloc() {
+	C.Object_Dealloc(o.Ptr())
+}
+
+// Returns a string that represents the contents of the receiving class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/nsobject/1418799-description?language=objc
+func (o Object) Description() string {
+	return C.GoString(C.Object_Description(o.Ptr()))
 }
