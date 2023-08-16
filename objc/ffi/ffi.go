@@ -32,7 +32,6 @@ type Closure C.ffi_closure
 var OK Status = C.FFI_OK
 var BAD_TYPEDEF Status = C.FFI_BAD_TYPEDEF
 var BAD_ABI Status = C.FFI_BAD_ABI
-var BAD_ARGTYPE Status = C.FFI_BAD_ARGTYPE
 
 var DEFAULT_ABI ABI = C.FFI_DEFAULT_ABI
 
