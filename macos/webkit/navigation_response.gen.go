@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -8,31 +9,36 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [NavigationResponse] class.
 var NavigationResponseClass = _NavigationResponseClass{objc.GetClass("WKNavigationResponse")}
 
 type _NavigationResponseClass struct {
 	objc.Class
 }
 
+// An interface definition for the [NavigationResponse] class.
 type INavigationResponse interface {
 	objc.IObject
+	IsForMainFrame() bool
 	Response() foundation.URLResponse
 	CanShowMIMEType() bool
-	IsForMainFrame() bool
 }
 
+// An object that contains the response to a navigation request, and which you use to make navigation-related policy decisions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse?language=objc
 type NavigationResponse struct {
 	objc.Object
 }
 
-func MakeNavigationResponse(ptr unsafe.Pointer) NavigationResponse {
+func NavigationResponseFrom(ptr unsafe.Pointer) NavigationResponse {
 	return NavigationResponse{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (nc _NavigationResponseClass) Alloc() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](nc, objc.GetSelector("alloc"))
+	rv := objc.Call[NavigationResponse](nc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -41,7 +47,7 @@ func NavigationResponse_Alloc() NavigationResponse {
 }
 
 func (nc _NavigationResponseClass) New() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](nc, objc.GetSelector("new"))
+	rv := objc.Call[NavigationResponse](nc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -50,30 +56,31 @@ func NewNavigationResponse() NavigationResponse {
 	return NavigationResponseClass.New()
 }
 
-func NavigationResponse_New() NavigationResponse {
-	return NavigationResponseClass.New()
-}
-
 func (n_ NavigationResponse) Init() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](n_, objc.GetSelector("init"))
+	rv := objc.Call[NavigationResponse](n_, objc.Sel("init"))
 	return rv
 }
 
-func NavigationResponse_Init() NavigationResponse {
-	return NavigationResponseClass.Alloc().Init()
-}
-
-func (n_ NavigationResponse) Response() foundation.URLResponse {
-	rv := objc.CallMethod[foundation.URLResponse](n_, objc.GetSelector("response"))
-	return rv
-}
-
-func (n_ NavigationResponse) CanShowMIMEType() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("canShowMIMEType"))
-	return rv
-}
-
+// A Boolean value that indicates whether the response targets the web view’s main frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459482-formainframe?language=objc
 func (n_ NavigationResponse) IsForMainFrame() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("isForMainFrame"))
+	rv := objc.Call[bool](n_, objc.Sel("isForMainFrame"))
+	return rv
+}
+
+// The frame’s response. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459484-response?language=objc
+func (n_ NavigationResponse) Response() foundation.URLResponse {
+	rv := objc.Call[foundation.URLResponse](n_, objc.Sel("response"))
+	return rv
+}
+
+// A Boolean value that indicates whether WebKit is capable of displaying the response’s MIME type natively. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponse/1459480-canshowmimetype?language=objc
+func (n_ NavigationResponse) CanShowMIMEType() bool {
+	rv := objc.Call[bool](n_, objc.Sel("canShowMIMEType"))
 	return rv
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 #import "QuartzCore/QuartzCore.h"
 
 void importQuartzCoreProtocols() {
@@ -7,4 +8,6 @@ void importQuartzCoreProtocols() {
     o = @protocol(CAAnimationDelegate);
     o = @protocol(CALayerDelegate);
     o = @protocol(CALayoutManager);
+    o = @protocol(CAMediaTiming);
+    o = @protocol(CAMetalDrawable);
 }

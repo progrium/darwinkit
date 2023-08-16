@@ -84,27 +84,29 @@ func (d *Dialog) Show(handle func()) {
 	d.MakeKeyAndOrderFront(d.Panel)
 }
 
+// commented out due to lack of RunModalForWindow method atm
+
 // RunModal display dialog in modal mode
-func (d *Dialog) RunModal() appkit.ModalResponse {
-	app := appkit.Application_SharedApplication()
+// func (d *Dialog) RunModal() appkit.ModalResponse {
+// 	app := appkit.Application_SharedApplication()
 
-	action.Set(d.ok, func(sender objc.Object) {
-		app.StopModalWithCode(appkit.ModalResponseOK)
-		d.Close()
-	})
+// 	action.Set(d.ok, func(sender objc.Object) {
+// 		app.StopModalWithCode(appkit.ModalResponseOK)
+// 		d.Close()
+// 	})
 
-	action.Set(d.cancel, func(sender objc.Object) {
-		app.StopModalWithCode(appkit.ModalResponseCancel)
-		d.Close()
-	})
+// 	action.Set(d.cancel, func(sender objc.Object) {
+// 		app.StopModalWithCode(appkit.ModalResponseCancel)
+// 		d.Close()
+// 	})
 
-	dialogDelegate := &appkit.WindowDelegate{}
-	dialogDelegate.SetWindowShouldClose(func(sender appkit.Window) bool {
-		app.StopModalWithCode(appkit.ModalResponseCancel)
-		return true
-	})
+// 	dialogDelegate := &appkit.WindowDelegate{}
+// 	dialogDelegate.SetWindowShouldClose(func(sender appkit.Window) bool {
+// 		app.StopModalWithCode(appkit.ModalResponseCancel)
+// 		return true
+// 	})
 
-	d.SetDelegate(dialogDelegate)
+// 	d.SetDelegate(dialogDelegate)
 
-	return app.RunModalForWindow(d)
-}
+// 	return app.RunModalForWindow(d)
+// }

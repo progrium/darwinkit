@@ -15,14 +15,18 @@ func init() {
 }
 
 func main() {
-
 	fontName := flag.String("font", "Helvetica", "font to use")
 	flag.Parse()
+	text := strings.Join(flag.Args(), " ")
+	if text == "" {
+		text = "Hello world"
+	}
 
 	app := appkit.Application_SharedApplication()
 	screen := appkit.Screen_MainScreen().Frame().Size
-	text := fmt.Sprintf(" %s ", strings.Join(flag.Args(), " "))
+	text = fmt.Sprintf(" %s ", text)
 	fmt.Println(text)
+
 	tr, fontSize := func() (rect foundation.Rect, size float64) {
 		t := appkit.TextView_InitWithFrame(rectOf(0, 0, 0, 0))
 		t.SetString(text)
@@ -49,7 +53,7 @@ func main() {
 
 	c := appkit.View_InitWithFrame(rectOf(0, 0, 0, 0))
 	// deprecated...
-	//c.SetBackgroundColor(appkit.Color_ColorWithRedGreenBlueAlpha(0, 0, 0, 0.75))
+	// c.SetBackgroundColor(appkit.Color_ColorWithRedGreenBlueAlpha(0, 0, 0, 0.75))
 	c.SetWantsLayer(true)
 	c.Layer().SetCornerRadius(32.0)
 	c.AddSubviewPositionedRelativeTo(t, appkit.WindowAbove, nil)
@@ -69,7 +73,7 @@ func main() {
 	w.SetFrameDisplay(tr, true)
 	w.MakeKeyAndOrderFront(nil)
 
-	appkit.Event_AddGlobalMonitorForEventsMatchingMaskHandler(appkit.EventMaskAny, func(event appkit.IEvent) {
+	appkit.Event_AddGlobalMonitorForEventsMatchingMaskHandler(appkit.EventMaskAny, func(event appkit.Event) {
 		appkit.Application_SharedApplication().Terminate(nil)
 	})
 

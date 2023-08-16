@@ -1,3878 +1,5820 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import "math"
 
+// Keys to include in the options dictionary when displaying an About panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaboutpaneloptionkey?language=objc
 type AboutPanelOptionKey string
 
-const AboutPanelOptionApplicationIcon AboutPanelOptionKey = "ApplicationIcon"
-const AboutPanelOptionApplicationName AboutPanelOptionKey = "ApplicationName"
-const AboutPanelOptionApplicationVersion AboutPanelOptionKey = "ApplicationVersion"
-const AboutPanelOptionCredits AboutPanelOptionKey = "Credits"
-const AboutPanelOptionVersion AboutPanelOptionKey = "Version"
+const (
+	AboutPanelOptionApplicationIcon    AboutPanelOptionKey = "ApplicationIcon"
+	AboutPanelOptionApplicationName    AboutPanelOptionKey = "ApplicationName"
+	AboutPanelOptionApplicationVersion AboutPanelOptionKey = "ApplicationVersion"
+	AboutPanelOptionCredits            AboutPanelOptionKey = "Credits"
+	AboutPanelOptionVersion            AboutPanelOptionKey = "Version"
+)
 
+// Constants that describe types of actions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityactionname?language=objc
 type AccessibilityActionName string
 
-const AccessibilityCancelAction AccessibilityActionName = "AXCancel"
-const AccessibilityConfirmAction AccessibilityActionName = "AXConfirm"
-const AccessibilityDecrementAction AccessibilityActionName = "AXDecrement"
-const AccessibilityDeleteAction AccessibilityActionName = "AXDelete"
-const AccessibilityIncrementAction AccessibilityActionName = "AXIncrement"
-const AccessibilityPickAction AccessibilityActionName = "AXPick"
-const AccessibilityPressAction AccessibilityActionName = "AXPress"
-const AccessibilityRaiseAction AccessibilityActionName = "AXRaise"
-const AccessibilityShowAlternateUIAction AccessibilityActionName = "AXShowAlternateUI"
-const AccessibilityShowDefaultUIAction AccessibilityActionName = "AXShowDefaultUI"
-const AccessibilityShowMenuAction AccessibilityActionName = "AXShowMenu"
+const (
+	AccessibilityCancelAction          AccessibilityActionName = "AXCancel"
+	AccessibilityConfirmAction         AccessibilityActionName = "AXConfirm"
+	AccessibilityDecrementAction       AccessibilityActionName = "AXDecrement"
+	AccessibilityDeleteAction          AccessibilityActionName = "AXDelete"
+	AccessibilityIncrementAction       AccessibilityActionName = "AXIncrement"
+	AccessibilityPickAction            AccessibilityActionName = "AXPick"
+	AccessibilityPressAction           AccessibilityActionName = "AXPress"
+	AccessibilityRaiseAction           AccessibilityActionName = "AXRaise"
+	AccessibilityShowAlternateUIAction AccessibilityActionName = "AXShowAlternateUI"
+	AccessibilityShowDefaultUIAction   AccessibilityActionName = "AXShowDefaultUI"
+	AccessibilityShowMenuAction        AccessibilityActionName = "AXShowMenu"
+)
 
+// Keys for annotation attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityannotationattributekey?language=objc
 type AccessibilityAnnotationAttributeKey string
 
-const AccessibilityAnnotationElement AccessibilityAnnotationAttributeKey = "AXAnnotationElement"
-const AccessibilityAnnotationLabel AccessibilityAnnotationAttributeKey = "AXAnnotationLabel"
-const AccessibilityAnnotationLocation AccessibilityAnnotationAttributeKey = "AXAnnotationLocation"
+const (
+	AccessibilityAnnotationElement  AccessibilityAnnotationAttributeKey = "AXAnnotationElement"
+	AccessibilityAnnotationLabel    AccessibilityAnnotationAttributeKey = "AXAnnotationLabel"
+	AccessibilityAnnotationLocation AccessibilityAnnotationAttributeKey = "AXAnnotationLocation"
+)
 
+// Constants that specify the position where the annotation applies. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityannotationposition?language=objc
 type AccessibilityAnnotationPosition int
 
-const AccessibilityAnnotationPositionEnd AccessibilityAnnotationPosition = 2
-const AccessibilityAnnotationPositionFullRange AccessibilityAnnotationPosition = 0
-const AccessibilityAnnotationPositionStart AccessibilityAnnotationPosition = 1
+const (
+	AccessibilityAnnotationPositionEnd       AccessibilityAnnotationPosition = 2
+	AccessibilityAnnotationPositionFullRange AccessibilityAnnotationPosition = 0
+	AccessibilityAnnotationPositionStart     AccessibilityAnnotationPosition = 1
+)
 
+// Constants that describe attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityattributename?language=objc
 type AccessibilityAttributeName string
 
-const AccessibilityActivationPointAttribute AccessibilityAttributeName = "AXActivationPoint"
-const AccessibilityAllowedValuesAttribute AccessibilityAttributeName = "AXAllowedValues"
-const AccessibilityAlternateUIVisibleAttribute AccessibilityAttributeName = "AXAlternateUIVisible"
-const AccessibilityCancelButtonAttribute AccessibilityAttributeName = "AXCancelButton"
-const AccessibilityChildrenAttribute AccessibilityAttributeName = "AXChildren"
-const AccessibilityClearButtonAttribute AccessibilityAttributeName = "AXClearButton"
-const AccessibilityCloseButtonAttribute AccessibilityAttributeName = "AXCloseButton"
-const AccessibilityColumnCountAttribute AccessibilityAttributeName = "AXColumnCount"
-const AccessibilityColumnHeaderUIElementsAttribute AccessibilityAttributeName = "AXColumnHeaderUIElements"
-const AccessibilityColumnIndexRangeAttribute AccessibilityAttributeName = "AXColumnIndexRange"
-const AccessibilityColumnTitlesAttribute AccessibilityAttributeName = "AXColumnTitles"
-const AccessibilityColumnsAttribute AccessibilityAttributeName = "AXColumns"
-const AccessibilityContainsProtectedContentAttribute AccessibilityAttributeName = "AXContainsProtectedContent"
-const AccessibilityContentsAttribute AccessibilityAttributeName = "AXContents"
-const AccessibilityCriticalValueAttribute AccessibilityAttributeName = "AXCriticalValue"
-const AccessibilityDecrementButtonAttribute AccessibilityAttributeName = "AXDecrementButton"
-const AccessibilityDefaultButtonAttribute AccessibilityAttributeName = "AXDefaultButton"
-const AccessibilityDescriptionAttribute AccessibilityAttributeName = "AXDescription"
-const AccessibilityDisclosedByRowAttribute AccessibilityAttributeName = "AXDisclosedByRow"
-const AccessibilityDisclosedRowsAttribute AccessibilityAttributeName = "AXDisclosedRows"
-const AccessibilityDisclosingAttribute AccessibilityAttributeName = "AXDisclosing"
-const AccessibilityDisclosureLevelAttribute AccessibilityAttributeName = "AXDisclosureLevel"
-const AccessibilityDocumentAttribute AccessibilityAttributeName = "AXDocument"
-const AccessibilityEditedAttribute AccessibilityAttributeName = "AXEdited"
-const AccessibilityEnabledAttribute AccessibilityAttributeName = "AXEnabled"
-const AccessibilityExpandedAttribute AccessibilityAttributeName = "AXExpanded"
-const AccessibilityExtrasMenuBarAttribute AccessibilityAttributeName = "AXExtrasMenuBar"
-const AccessibilityFilenameAttribute AccessibilityAttributeName = "AXFilename"
-const AccessibilityFocusedAttribute AccessibilityAttributeName = "AXFocused"
-const AccessibilityFocusedUIElementAttribute AccessibilityAttributeName = "AXFocusedUIElement"
-const AccessibilityFocusedWindowAttribute AccessibilityAttributeName = "AXFocusedWindow"
-const AccessibilityFrontmostAttribute AccessibilityAttributeName = "AXFrontmost"
-const AccessibilityFullScreenButtonAttribute AccessibilityAttributeName = "AXFullScreenButton"
-const AccessibilityGrowAreaAttribute AccessibilityAttributeName = "AXGrowArea"
-const AccessibilityHandlesAttribute AccessibilityAttributeName = "AXHandles"
-const AccessibilityHeaderAttribute AccessibilityAttributeName = "AXHeader"
-const AccessibilityHelpAttribute AccessibilityAttributeName = "AXHelp"
-const AccessibilityHiddenAttribute AccessibilityAttributeName = "AXHidden"
-const AccessibilityHorizontalScrollBarAttribute AccessibilityAttributeName = "AXHorizontalScrollBar"
-const AccessibilityHorizontalUnitDescriptionAttribute AccessibilityAttributeName = "AXHorizontalUnitDescription"
-const AccessibilityHorizontalUnitsAttribute AccessibilityAttributeName = "AXHorizontalUnits"
-const AccessibilityIdentifierAttribute AccessibilityAttributeName = "AXIdentifier"
-const AccessibilityIncrementButtonAttribute AccessibilityAttributeName = "AXIncrementButton"
-const AccessibilityIndexAttribute AccessibilityAttributeName = "AXIndex"
-const AccessibilityInsertionPointLineNumberAttribute AccessibilityAttributeName = "AXInsertionPointLineNumber"
-const AccessibilityLabelUIElementsAttribute AccessibilityAttributeName = "AXLabelUIElements"
-const AccessibilityLabelValueAttribute AccessibilityAttributeName = "AXLabelValue"
-const AccessibilityLinkedUIElementsAttribute AccessibilityAttributeName = "AXLinkedUIElements"
-const AccessibilityMainAttribute AccessibilityAttributeName = "AXMain"
-const AccessibilityMainWindowAttribute AccessibilityAttributeName = "AXMainWindow"
-const AccessibilityMarkerGroupUIElementAttribute AccessibilityAttributeName = "AXMarkerGroupUIElement"
-const AccessibilityMarkerTypeAttribute AccessibilityAttributeName = "AXMarkerType"
-const AccessibilityMarkerTypeDescriptionAttribute AccessibilityAttributeName = "AXMarkerTypeDescription"
-const AccessibilityMarkerUIElementsAttribute AccessibilityAttributeName = "AXMarkerUIElements"
-const AccessibilityMarkerValuesAttribute AccessibilityAttributeName = "AXMarkerValues"
-const AccessibilityMatteContentUIElementAttribute AccessibilityAttributeName = "AXMatteContentUIElement"
-const AccessibilityMatteHoleAttribute AccessibilityAttributeName = "AXMatteHole"
-const AccessibilityMaxValueAttribute AccessibilityAttributeName = "AXMaxValue"
-const AccessibilityMenuBarAttribute AccessibilityAttributeName = "AXMenuBar"
-const AccessibilityMinValueAttribute AccessibilityAttributeName = "AXMinValue"
-const AccessibilityMinimizeButtonAttribute AccessibilityAttributeName = "AXMinimizeButton"
-const AccessibilityMinimizedAttribute AccessibilityAttributeName = "AXMinimized"
-const AccessibilityModalAttribute AccessibilityAttributeName = "AXModal"
-const AccessibilityNextContentsAttribute AccessibilityAttributeName = "AXNextContents"
-const AccessibilityNumberOfCharactersAttribute AccessibilityAttributeName = "AXNumberOfCharacters"
-const AccessibilityOrderedByRowAttribute AccessibilityAttributeName = "AXOrderedByRow"
-const AccessibilityOrientationAttribute AccessibilityAttributeName = "AXOrientation"
-const AccessibilityOverflowButtonAttribute AccessibilityAttributeName = "AXOverflowButton"
-const AccessibilityParentAttribute AccessibilityAttributeName = "AXParent"
-const AccessibilityPlaceholderValueAttribute AccessibilityAttributeName = "AXPlaceholderValue"
-const AccessibilityPositionAttribute AccessibilityAttributeName = "AXPosition"
-const AccessibilityPreviousContentsAttribute AccessibilityAttributeName = "AXPreviousContents"
-const AccessibilityProxyAttribute AccessibilityAttributeName = "AXProxy"
-const AccessibilityRequiredAttribute AccessibilityAttributeName = "AXRequired"
-const AccessibilityRoleAttribute AccessibilityAttributeName = "AXRole"
-const AccessibilityRoleDescriptionAttribute AccessibilityAttributeName = "AXRoleDescription"
-const AccessibilityRowCountAttribute AccessibilityAttributeName = "AXRowCount"
-const AccessibilityRowHeaderUIElementsAttribute AccessibilityAttributeName = "AXRowHeaderUIElements"
-const AccessibilityRowIndexRangeAttribute AccessibilityAttributeName = "AXRowIndexRange"
-const AccessibilityRowsAttribute AccessibilityAttributeName = "AXRows"
-const AccessibilitySearchButtonAttribute AccessibilityAttributeName = "AXSearchButton"
-const AccessibilitySearchMenuAttribute AccessibilityAttributeName = "AXSearchMenu"
-const AccessibilitySelectedAttribute AccessibilityAttributeName = "AXSelected"
-const AccessibilitySelectedCellsAttribute AccessibilityAttributeName = "AXSelectedCells"
-const AccessibilitySelectedChildrenAttribute AccessibilityAttributeName = "AXSelectedChildren"
-const AccessibilitySelectedColumnsAttribute AccessibilityAttributeName = "AXSelectedColumns"
-const AccessibilitySelectedRowsAttribute AccessibilityAttributeName = "AXSelectedRows"
-const AccessibilitySelectedTextAttribute AccessibilityAttributeName = "AXSelectedText"
-const AccessibilitySelectedTextRangeAttribute AccessibilityAttributeName = "AXSelectedTextRange"
-const AccessibilitySelectedTextRangesAttribute AccessibilityAttributeName = "AXSelectedTextRanges"
-const AccessibilityServesAsTitleForUIElementsAttribute AccessibilityAttributeName = "AXServesAsTitleForUIElements"
-const AccessibilitySharedCharacterRangeAttribute AccessibilityAttributeName = "AXSharedCharacterRange"
-const AccessibilitySharedFocusElementsAttribute AccessibilityAttributeName = "AXSharedFocusElements"
-const AccessibilitySharedTextUIElementsAttribute AccessibilityAttributeName = "AXSharedTextUIElements"
-const AccessibilityShownMenuAttribute AccessibilityAttributeName = "AXShownMenuUIElement"
-const AccessibilitySizeAttribute AccessibilityAttributeName = "AXSize"
-const AccessibilitySortDirectionAttribute AccessibilityAttributeName = "AXSortDirection"
-const AccessibilitySplittersAttribute AccessibilityAttributeName = "AXSplitters"
-const AccessibilitySubroleAttribute AccessibilityAttributeName = "AXSubrole"
-const AccessibilityTabsAttribute AccessibilityAttributeName = "AXTabs"
-const AccessibilityTitleAttribute AccessibilityAttributeName = "AXTitle"
-const AccessibilityTitleUIElementAttribute AccessibilityAttributeName = "AXTitleUIElement"
-const AccessibilityToolbarButtonAttribute AccessibilityAttributeName = "AXToolbarButton"
-const AccessibilityTopLevelUIElementAttribute AccessibilityAttributeName = "AXTopLevelUIElement"
-const AccessibilityURLAttribute AccessibilityAttributeName = "AXURL"
-const AccessibilityUnitDescriptionAttribute AccessibilityAttributeName = "AXUnitDescription"
-const AccessibilityUnitsAttribute AccessibilityAttributeName = "AXUnits"
-const AccessibilityValueAttribute AccessibilityAttributeName = "AXValue"
-const AccessibilityValueDescriptionAttribute AccessibilityAttributeName = "AXValueDescription"
-const AccessibilityVerticalScrollBarAttribute AccessibilityAttributeName = "AXVerticalScrollBar"
-const AccessibilityVerticalUnitDescriptionAttribute AccessibilityAttributeName = "AXVerticalUnitDescription"
-const AccessibilityVerticalUnitsAttribute AccessibilityAttributeName = "AXVerticalUnits"
-const AccessibilityVisibleCellsAttribute AccessibilityAttributeName = "AXVisibleCells"
-const AccessibilityVisibleCharacterRangeAttribute AccessibilityAttributeName = "AXVisibleCharacterRange"
-const AccessibilityVisibleChildrenAttribute AccessibilityAttributeName = "AXVisibleChildren"
-const AccessibilityVisibleColumnsAttribute AccessibilityAttributeName = "AXVisibleColumns"
-const AccessibilityVisibleRowsAttribute AccessibilityAttributeName = "AXVisibleRows"
-const AccessibilityWarningValueAttribute AccessibilityAttributeName = "AXWarningValue"
-const AccessibilityWindowAttribute AccessibilityAttributeName = "AXWindow"
-const AccessibilityWindowsAttribute AccessibilityAttributeName = "AXWindows"
-const AccessibilityZoomButtonAttribute AccessibilityAttributeName = "AXZoomButton"
+const (
+	AccessibilityActivationPointAttribute            AccessibilityAttributeName = "AXActivationPoint"
+	AccessibilityAllowedValuesAttribute              AccessibilityAttributeName = "AXAllowedValues"
+	AccessibilityAlternateUIVisibleAttribute         AccessibilityAttributeName = "AXAlternateUIVisible"
+	AccessibilityCancelButtonAttribute               AccessibilityAttributeName = "AXCancelButton"
+	AccessibilityChildrenAttribute                   AccessibilityAttributeName = "AXChildren"
+	AccessibilityClearButtonAttribute                AccessibilityAttributeName = "AXClearButton"
+	AccessibilityCloseButtonAttribute                AccessibilityAttributeName = "AXCloseButton"
+	AccessibilityColumnCountAttribute                AccessibilityAttributeName = "AXColumnCount"
+	AccessibilityColumnHeaderUIElementsAttribute     AccessibilityAttributeName = "AXColumnHeaderUIElements"
+	AccessibilityColumnIndexRangeAttribute           AccessibilityAttributeName = "AXColumnIndexRange"
+	AccessibilityColumnTitlesAttribute               AccessibilityAttributeName = "AXColumnTitles"
+	AccessibilityColumnsAttribute                    AccessibilityAttributeName = "AXColumns"
+	AccessibilityContainsProtectedContentAttribute   AccessibilityAttributeName = "AXContainsProtectedContent"
+	AccessibilityContentsAttribute                   AccessibilityAttributeName = "AXContents"
+	AccessibilityCriticalValueAttribute              AccessibilityAttributeName = "AXCriticalValue"
+	AccessibilityDecrementButtonAttribute            AccessibilityAttributeName = "AXDecrementButton"
+	AccessibilityDefaultButtonAttribute              AccessibilityAttributeName = "AXDefaultButton"
+	AccessibilityDescriptionAttribute                AccessibilityAttributeName = "AXDescription"
+	AccessibilityDisclosedByRowAttribute             AccessibilityAttributeName = "AXDisclosedByRow"
+	AccessibilityDisclosedRowsAttribute              AccessibilityAttributeName = "AXDisclosedRows"
+	AccessibilityDisclosingAttribute                 AccessibilityAttributeName = "AXDisclosing"
+	AccessibilityDisclosureLevelAttribute            AccessibilityAttributeName = "AXDisclosureLevel"
+	AccessibilityDocumentAttribute                   AccessibilityAttributeName = "AXDocument"
+	AccessibilityEditedAttribute                     AccessibilityAttributeName = "AXEdited"
+	AccessibilityEnabledAttribute                    AccessibilityAttributeName = "AXEnabled"
+	AccessibilityExpandedAttribute                   AccessibilityAttributeName = "AXExpanded"
+	AccessibilityExtrasMenuBarAttribute              AccessibilityAttributeName = "AXExtrasMenuBar"
+	AccessibilityFilenameAttribute                   AccessibilityAttributeName = "AXFilename"
+	AccessibilityFocusedAttribute                    AccessibilityAttributeName = "AXFocused"
+	AccessibilityFocusedUIElementAttribute           AccessibilityAttributeName = "AXFocusedUIElement"
+	AccessibilityFocusedWindowAttribute              AccessibilityAttributeName = "AXFocusedWindow"
+	AccessibilityFrontmostAttribute                  AccessibilityAttributeName = "AXFrontmost"
+	AccessibilityFullScreenButtonAttribute           AccessibilityAttributeName = "AXFullScreenButton"
+	AccessibilityGrowAreaAttribute                   AccessibilityAttributeName = "AXGrowArea"
+	AccessibilityHandlesAttribute                    AccessibilityAttributeName = "AXHandles"
+	AccessibilityHeaderAttribute                     AccessibilityAttributeName = "AXHeader"
+	AccessibilityHelpAttribute                       AccessibilityAttributeName = "AXHelp"
+	AccessibilityHiddenAttribute                     AccessibilityAttributeName = "AXHidden"
+	AccessibilityHorizontalScrollBarAttribute        AccessibilityAttributeName = "AXHorizontalScrollBar"
+	AccessibilityHorizontalUnitDescriptionAttribute  AccessibilityAttributeName = "AXHorizontalUnitDescription"
+	AccessibilityHorizontalUnitsAttribute            AccessibilityAttributeName = "AXHorizontalUnits"
+	AccessibilityIdentifierAttribute                 AccessibilityAttributeName = "AXIdentifier"
+	AccessibilityIncrementButtonAttribute            AccessibilityAttributeName = "AXIncrementButton"
+	AccessibilityIndexAttribute                      AccessibilityAttributeName = "AXIndex"
+	AccessibilityInsertionPointLineNumberAttribute   AccessibilityAttributeName = "AXInsertionPointLineNumber"
+	AccessibilityLabelUIElementsAttribute            AccessibilityAttributeName = "AXLabelUIElements"
+	AccessibilityLabelValueAttribute                 AccessibilityAttributeName = "AXLabelValue"
+	AccessibilityLinkedUIElementsAttribute           AccessibilityAttributeName = "AXLinkedUIElements"
+	AccessibilityMainAttribute                       AccessibilityAttributeName = "AXMain"
+	AccessibilityMainWindowAttribute                 AccessibilityAttributeName = "AXMainWindow"
+	AccessibilityMarkerGroupUIElementAttribute       AccessibilityAttributeName = "AXMarkerGroupUIElement"
+	AccessibilityMarkerTypeAttribute                 AccessibilityAttributeName = "AXMarkerType"
+	AccessibilityMarkerTypeDescriptionAttribute      AccessibilityAttributeName = "AXMarkerTypeDescription"
+	AccessibilityMarkerUIElementsAttribute           AccessibilityAttributeName = "AXMarkerUIElements"
+	AccessibilityMarkerValuesAttribute               AccessibilityAttributeName = "AXMarkerValues"
+	AccessibilityMatteContentUIElementAttribute      AccessibilityAttributeName = "AXMatteContentUIElement"
+	AccessibilityMatteHoleAttribute                  AccessibilityAttributeName = "AXMatteHole"
+	AccessibilityMaxValueAttribute                   AccessibilityAttributeName = "AXMaxValue"
+	AccessibilityMenuBarAttribute                    AccessibilityAttributeName = "AXMenuBar"
+	AccessibilityMinValueAttribute                   AccessibilityAttributeName = "AXMinValue"
+	AccessibilityMinimizeButtonAttribute             AccessibilityAttributeName = "AXMinimizeButton"
+	AccessibilityMinimizedAttribute                  AccessibilityAttributeName = "AXMinimized"
+	AccessibilityModalAttribute                      AccessibilityAttributeName = "AXModal"
+	AccessibilityNextContentsAttribute               AccessibilityAttributeName = "AXNextContents"
+	AccessibilityNumberOfCharactersAttribute         AccessibilityAttributeName = "AXNumberOfCharacters"
+	AccessibilityOrderedByRowAttribute               AccessibilityAttributeName = "AXOrderedByRow"
+	AccessibilityOrientationAttribute                AccessibilityAttributeName = "AXOrientation"
+	AccessibilityOverflowButtonAttribute             AccessibilityAttributeName = "AXOverflowButton"
+	AccessibilityParentAttribute                     AccessibilityAttributeName = "AXParent"
+	AccessibilityPlaceholderValueAttribute           AccessibilityAttributeName = "AXPlaceholderValue"
+	AccessibilityPositionAttribute                   AccessibilityAttributeName = "AXPosition"
+	AccessibilityPreviousContentsAttribute           AccessibilityAttributeName = "AXPreviousContents"
+	AccessibilityProxyAttribute                      AccessibilityAttributeName = "AXProxy"
+	AccessibilityRequiredAttribute                   AccessibilityAttributeName = "AXRequired"
+	AccessibilityRoleAttribute                       AccessibilityAttributeName = "AXRole"
+	AccessibilityRoleDescriptionAttribute            AccessibilityAttributeName = "AXRoleDescription"
+	AccessibilityRowCountAttribute                   AccessibilityAttributeName = "AXRowCount"
+	AccessibilityRowHeaderUIElementsAttribute        AccessibilityAttributeName = "AXRowHeaderUIElements"
+	AccessibilityRowIndexRangeAttribute              AccessibilityAttributeName = "AXRowIndexRange"
+	AccessibilityRowsAttribute                       AccessibilityAttributeName = "AXRows"
+	AccessibilitySearchButtonAttribute               AccessibilityAttributeName = "AXSearchButton"
+	AccessibilitySearchMenuAttribute                 AccessibilityAttributeName = "AXSearchMenu"
+	AccessibilitySelectedAttribute                   AccessibilityAttributeName = "AXSelected"
+	AccessibilitySelectedCellsAttribute              AccessibilityAttributeName = "AXSelectedCells"
+	AccessibilitySelectedChildrenAttribute           AccessibilityAttributeName = "AXSelectedChildren"
+	AccessibilitySelectedColumnsAttribute            AccessibilityAttributeName = "AXSelectedColumns"
+	AccessibilitySelectedRowsAttribute               AccessibilityAttributeName = "AXSelectedRows"
+	AccessibilitySelectedTextAttribute               AccessibilityAttributeName = "AXSelectedText"
+	AccessibilitySelectedTextRangeAttribute          AccessibilityAttributeName = "AXSelectedTextRange"
+	AccessibilitySelectedTextRangesAttribute         AccessibilityAttributeName = "AXSelectedTextRanges"
+	AccessibilityServesAsTitleForUIElementsAttribute AccessibilityAttributeName = "AXServesAsTitleForUIElements"
+	AccessibilitySharedCharacterRangeAttribute       AccessibilityAttributeName = "AXSharedCharacterRange"
+	AccessibilitySharedFocusElementsAttribute        AccessibilityAttributeName = "AXSharedFocusElements"
+	AccessibilitySharedTextUIElementsAttribute       AccessibilityAttributeName = "AXSharedTextUIElements"
+	AccessibilityShownMenuAttribute                  AccessibilityAttributeName = "AXShownMenuUIElement"
+	AccessibilitySizeAttribute                       AccessibilityAttributeName = "AXSize"
+	AccessibilitySortDirectionAttribute              AccessibilityAttributeName = "AXSortDirection"
+	AccessibilitySplittersAttribute                  AccessibilityAttributeName = "AXSplitters"
+	AccessibilitySubroleAttribute                    AccessibilityAttributeName = "AXSubrole"
+	AccessibilityTabsAttribute                       AccessibilityAttributeName = "AXTabs"
+	AccessibilityTitleAttribute                      AccessibilityAttributeName = "AXTitle"
+	AccessibilityTitleUIElementAttribute             AccessibilityAttributeName = "AXTitleUIElement"
+	AccessibilityToolbarButtonAttribute              AccessibilityAttributeName = "AXToolbarButton"
+	AccessibilityTopLevelUIElementAttribute          AccessibilityAttributeName = "AXTopLevelUIElement"
+	AccessibilityURLAttribute                        AccessibilityAttributeName = "AXURL"
+	AccessibilityUnitDescriptionAttribute            AccessibilityAttributeName = "AXUnitDescription"
+	AccessibilityUnitsAttribute                      AccessibilityAttributeName = "AXUnits"
+	AccessibilityValueAttribute                      AccessibilityAttributeName = "AXValue"
+	AccessibilityValueDescriptionAttribute           AccessibilityAttributeName = "AXValueDescription"
+	AccessibilityVerticalScrollBarAttribute          AccessibilityAttributeName = "AXVerticalScrollBar"
+	AccessibilityVerticalUnitDescriptionAttribute    AccessibilityAttributeName = "AXVerticalUnitDescription"
+	AccessibilityVerticalUnitsAttribute              AccessibilityAttributeName = "AXVerticalUnits"
+	AccessibilityVisibleCellsAttribute               AccessibilityAttributeName = "AXVisibleCells"
+	AccessibilityVisibleCharacterRangeAttribute      AccessibilityAttributeName = "AXVisibleCharacterRange"
+	AccessibilityVisibleChildrenAttribute            AccessibilityAttributeName = "AXVisibleChildren"
+	AccessibilityVisibleColumnsAttribute             AccessibilityAttributeName = "AXVisibleColumns"
+	AccessibilityVisibleRowsAttribute                AccessibilityAttributeName = "AXVisibleRows"
+	AccessibilityWarningValueAttribute               AccessibilityAttributeName = "AXWarningValue"
+	AccessibilityWindowAttribute                     AccessibilityAttributeName = "AXWindow"
+	AccessibilityWindowsAttribute                    AccessibilityAttributeName = "AXWindows"
+	AccessibilityZoomButtonAttribute                 AccessibilityAttributeName = "AXZoomButton"
+)
 
+// Constants that describe the direction to search for an item result. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchdirection?language=objc
 type AccessibilityCustomRotorSearchDirection int
 
-const AccessibilityCustomRotorSearchDirectionNext AccessibilityCustomRotorSearchDirection = 1
-const AccessibilityCustomRotorSearchDirectionPrevious AccessibilityCustomRotorSearchDirection = 0
+const (
+	AccessibilityCustomRotorSearchDirectionNext     AccessibilityCustomRotorSearchDirection = 1
+	AccessibilityCustomRotorSearchDirectionPrevious AccessibilityCustomRotorSearchDirection = 0
+)
 
+// Constants that indicate the type of content that the rotor represents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotortype?language=objc
 type AccessibilityCustomRotorType int
 
-const AccessibilityCustomRotorTypeAnnotation AccessibilityCustomRotorType = 2
-const AccessibilityCustomRotorTypeAny AccessibilityCustomRotorType = 1
-const AccessibilityCustomRotorTypeAudiograph AccessibilityCustomRotorType = 21
-const AccessibilityCustomRotorTypeBoldText AccessibilityCustomRotorType = 3
-const AccessibilityCustomRotorTypeCustom AccessibilityCustomRotorType = 0
-const AccessibilityCustomRotorTypeHeading AccessibilityCustomRotorType = 4
-const AccessibilityCustomRotorTypeHeadingLevel1 AccessibilityCustomRotorType = 5
-const AccessibilityCustomRotorTypeHeadingLevel2 AccessibilityCustomRotorType = 6
-const AccessibilityCustomRotorTypeHeadingLevel3 AccessibilityCustomRotorType = 7
-const AccessibilityCustomRotorTypeHeadingLevel4 AccessibilityCustomRotorType = 8
-const AccessibilityCustomRotorTypeHeadingLevel5 AccessibilityCustomRotorType = 9
-const AccessibilityCustomRotorTypeHeadingLevel6 AccessibilityCustomRotorType = 10
-const AccessibilityCustomRotorTypeImage AccessibilityCustomRotorType = 11
-const AccessibilityCustomRotorTypeItalicText AccessibilityCustomRotorType = 12
-const AccessibilityCustomRotorTypeLandmark AccessibilityCustomRotorType = 13
-const AccessibilityCustomRotorTypeLink AccessibilityCustomRotorType = 14
-const AccessibilityCustomRotorTypeList AccessibilityCustomRotorType = 15
-const AccessibilityCustomRotorTypeMisspelledWord AccessibilityCustomRotorType = 16
-const AccessibilityCustomRotorTypeTable AccessibilityCustomRotorType = 17
-const AccessibilityCustomRotorTypeTextField AccessibilityCustomRotorType = 18
-const AccessibilityCustomRotorTypeUnderlinedText AccessibilityCustomRotorType = 19
-const AccessibilityCustomRotorTypeVisitedLink AccessibilityCustomRotorType = 20
+const (
+	AccessibilityCustomRotorTypeAnnotation     AccessibilityCustomRotorType = 2
+	AccessibilityCustomRotorTypeAny            AccessibilityCustomRotorType = 1
+	AccessibilityCustomRotorTypeAudiograph     AccessibilityCustomRotorType = 21
+	AccessibilityCustomRotorTypeBoldText       AccessibilityCustomRotorType = 3
+	AccessibilityCustomRotorTypeCustom         AccessibilityCustomRotorType = 0
+	AccessibilityCustomRotorTypeHeading        AccessibilityCustomRotorType = 4
+	AccessibilityCustomRotorTypeHeadingLevel1  AccessibilityCustomRotorType = 5
+	AccessibilityCustomRotorTypeHeadingLevel2  AccessibilityCustomRotorType = 6
+	AccessibilityCustomRotorTypeHeadingLevel3  AccessibilityCustomRotorType = 7
+	AccessibilityCustomRotorTypeHeadingLevel4  AccessibilityCustomRotorType = 8
+	AccessibilityCustomRotorTypeHeadingLevel5  AccessibilityCustomRotorType = 9
+	AccessibilityCustomRotorTypeHeadingLevel6  AccessibilityCustomRotorType = 10
+	AccessibilityCustomRotorTypeImage          AccessibilityCustomRotorType = 11
+	AccessibilityCustomRotorTypeItalicText     AccessibilityCustomRotorType = 12
+	AccessibilityCustomRotorTypeLandmark       AccessibilityCustomRotorType = 13
+	AccessibilityCustomRotorTypeLink           AccessibilityCustomRotorType = 14
+	AccessibilityCustomRotorTypeList           AccessibilityCustomRotorType = 15
+	AccessibilityCustomRotorTypeMisspelledWord AccessibilityCustomRotorType = 16
+	AccessibilityCustomRotorTypeTable          AccessibilityCustomRotorType = 17
+	AccessibilityCustomRotorTypeTextField      AccessibilityCustomRotorType = 18
+	AccessibilityCustomRotorTypeUnderlinedText AccessibilityCustomRotorType = 19
+	AccessibilityCustomRotorTypeVisitedLink    AccessibilityCustomRotorType = 20
+)
 
+// Keys for font attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityfontattributekey?language=objc
 type AccessibilityFontAttributeKey string
 
-const AccessibilityFontFamilyKey AccessibilityFontAttributeKey = "AXFontFamily"
-const AccessibilityFontNameKey AccessibilityFontAttributeKey = "AXFontName"
-const AccessibilityFontSizeKey AccessibilityFontAttributeKey = "AXFontSize"
-const AccessibilityVisibleNameKey AccessibilityFontAttributeKey = "AXVisibleName"
+const (
+	AccessibilityFontFamilyKey  AccessibilityFontAttributeKey = "AXFontFamily"
+	AccessibilityFontNameKey    AccessibilityFontAttributeKey = "AXFontName"
+	AccessibilityFontSizeKey    AccessibilityFontAttributeKey = "AXFontSize"
+	AccessibilityVisibleNameKey AccessibilityFontAttributeKey = "AXVisibleName"
+)
 
+// The name of the notification. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynotificationname?language=objc
 type AccessibilityNotificationName string
 
-const AccessibilityAnnouncementRequestedNotification AccessibilityNotificationName = "AXAnnouncementRequested"
-const AccessibilityApplicationActivatedNotification AccessibilityNotificationName = "AXApplicationActivated"
-const AccessibilityApplicationDeactivatedNotification AccessibilityNotificationName = "AXApplicationDeactivated"
-const AccessibilityApplicationHiddenNotification AccessibilityNotificationName = "AXApplicationHidden"
-const AccessibilityApplicationShownNotification AccessibilityNotificationName = "AXApplicationShown"
-const AccessibilityCreatedNotification AccessibilityNotificationName = "AXCreated"
-const AccessibilityDrawerCreatedNotification AccessibilityNotificationName = "AXDrawerCreated"
-const AccessibilityFocusedUIElementChangedNotification AccessibilityNotificationName = "AXFocusedUIElementChanged"
-const AccessibilityFocusedWindowChangedNotification AccessibilityNotificationName = "AXFocusedWindowChanged"
-const AccessibilityHelpTagCreatedNotification AccessibilityNotificationName = "AXHelpTagCreated"
-const AccessibilityLayoutChangedNotification AccessibilityNotificationName = "AXLayoutChanged"
-const AccessibilityMainWindowChangedNotification AccessibilityNotificationName = "AXMainWindowChanged"
-const AccessibilityMovedNotification AccessibilityNotificationName = "AXMoved"
-const AccessibilityResizedNotification AccessibilityNotificationName = "AXResized"
-const AccessibilityRowCollapsedNotification AccessibilityNotificationName = "AXRowCollapsed"
-const AccessibilityRowCountChangedNotification AccessibilityNotificationName = "AXRowCountChanged"
-const AccessibilityRowExpandedNotification AccessibilityNotificationName = "AXRowExpanded"
-const AccessibilitySelectedCellsChangedNotification AccessibilityNotificationName = "AXSelectedCellsChanged"
-const AccessibilitySelectedChildrenChangedNotification AccessibilityNotificationName = "AXSelectedChildrenChanged"
-const AccessibilitySelectedChildrenMovedNotification AccessibilityNotificationName = "AXSelectedChildrenMoved"
-const AccessibilitySelectedColumnsChangedNotification AccessibilityNotificationName = "AXSelectedColumnsChanged"
-const AccessibilitySelectedRowsChangedNotification AccessibilityNotificationName = "AXSelectedRowsChanged"
-const AccessibilitySelectedTextChangedNotification AccessibilityNotificationName = "AXSelectedTextChanged"
-const AccessibilitySheetCreatedNotification AccessibilityNotificationName = "AXSheetCreated"
-const AccessibilityTitleChangedNotification AccessibilityNotificationName = "AXTitleChanged"
-const AccessibilityUIElementDestroyedNotification AccessibilityNotificationName = "AXUIElementDestroyed"
-const AccessibilityUnitsChangedNotification AccessibilityNotificationName = "AXUnitsChanged"
-const AccessibilityValueChangedNotification AccessibilityNotificationName = "AXValueChanged"
-const AccessibilityWindowCreatedNotification AccessibilityNotificationName = "AXWindowCreated"
-const AccessibilityWindowDeminiaturizedNotification AccessibilityNotificationName = "AXWindowDeminiaturized"
-const AccessibilityWindowMiniaturizedNotification AccessibilityNotificationName = "AXWindowMiniaturized"
-const AccessibilityWindowMovedNotification AccessibilityNotificationName = "AXWindowMoved"
-const AccessibilityWindowResizedNotification AccessibilityNotificationName = "AXWindowResized"
+const (
+	AccessibilityAnnouncementRequestedNotification   AccessibilityNotificationName = "AXAnnouncementRequested"
+	AccessibilityApplicationActivatedNotification    AccessibilityNotificationName = "AXApplicationActivated"
+	AccessibilityApplicationDeactivatedNotification  AccessibilityNotificationName = "AXApplicationDeactivated"
+	AccessibilityApplicationHiddenNotification       AccessibilityNotificationName = "AXApplicationHidden"
+	AccessibilityApplicationShownNotification        AccessibilityNotificationName = "AXApplicationShown"
+	AccessibilityCreatedNotification                 AccessibilityNotificationName = "AXCreated"
+	AccessibilityDrawerCreatedNotification           AccessibilityNotificationName = "AXDrawerCreated"
+	AccessibilityFocusedUIElementChangedNotification AccessibilityNotificationName = "AXFocusedUIElementChanged"
+	AccessibilityFocusedWindowChangedNotification    AccessibilityNotificationName = "AXFocusedWindowChanged"
+	AccessibilityHelpTagCreatedNotification          AccessibilityNotificationName = "AXHelpTagCreated"
+	AccessibilityLayoutChangedNotification           AccessibilityNotificationName = "AXLayoutChanged"
+	AccessibilityMainWindowChangedNotification       AccessibilityNotificationName = "AXMainWindowChanged"
+	AccessibilityMovedNotification                   AccessibilityNotificationName = "AXMoved"
+	AccessibilityResizedNotification                 AccessibilityNotificationName = "AXResized"
+	AccessibilityRowCollapsedNotification            AccessibilityNotificationName = "AXRowCollapsed"
+	AccessibilityRowCountChangedNotification         AccessibilityNotificationName = "AXRowCountChanged"
+	AccessibilityRowExpandedNotification             AccessibilityNotificationName = "AXRowExpanded"
+	AccessibilitySelectedCellsChangedNotification    AccessibilityNotificationName = "AXSelectedCellsChanged"
+	AccessibilitySelectedChildrenChangedNotification AccessibilityNotificationName = "AXSelectedChildrenChanged"
+	AccessibilitySelectedChildrenMovedNotification   AccessibilityNotificationName = "AXSelectedChildrenMoved"
+	AccessibilitySelectedColumnsChangedNotification  AccessibilityNotificationName = "AXSelectedColumnsChanged"
+	AccessibilitySelectedRowsChangedNotification     AccessibilityNotificationName = "AXSelectedRowsChanged"
+	AccessibilitySelectedTextChangedNotification     AccessibilityNotificationName = "AXSelectedTextChanged"
+	AccessibilitySheetCreatedNotification            AccessibilityNotificationName = "AXSheetCreated"
+	AccessibilityTitleChangedNotification            AccessibilityNotificationName = "AXTitleChanged"
+	AccessibilityUIElementDestroyedNotification      AccessibilityNotificationName = "AXUIElementDestroyed"
+	AccessibilityUnitsChangedNotification            AccessibilityNotificationName = "AXUnitsChanged"
+	AccessibilityValueChangedNotification            AccessibilityNotificationName = "AXValueChanged"
+	AccessibilityWindowCreatedNotification           AccessibilityNotificationName = "AXWindowCreated"
+	AccessibilityWindowDeminiaturizedNotification    AccessibilityNotificationName = "AXWindowDeminiaturized"
+	AccessibilityWindowMiniaturizedNotification      AccessibilityNotificationName = "AXWindowMiniaturized"
+	AccessibilityWindowMovedNotification             AccessibilityNotificationName = "AXWindowMoved"
+	AccessibilityWindowResizedNotification           AccessibilityNotificationName = "AXWindowResized"
+)
 
+// The key in the user info dictionary for a notification. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitynotificationuserinfokey?language=objc
 type AccessibilityNotificationUserInfoKey string
 
-const AccessibilityAnnouncementKey AccessibilityNotificationUserInfoKey = "AXAnnouncementKey"
-const AccessibilityPriorityKey AccessibilityNotificationUserInfoKey = "AXPriorityKey"
-const AccessibilityUIElementsKey AccessibilityNotificationUserInfoKey = "AXUIElementsKey"
+const (
+	AccessibilityAnnouncementKey AccessibilityNotificationUserInfoKey = "AXAnnouncementKey"
+	AccessibilityPriorityKey     AccessibilityNotificationUserInfoKey = "AXPriorityKey"
+	AccessibilityUIElementsKey   AccessibilityNotificationUserInfoKey = "AXUIElementsKey"
+)
 
+// Values that indicate the orientation of accessibility elements, such as scroll bars and split views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityorientation?language=objc
 type AccessibilityOrientation int
 
-const AccessibilityOrientationHorizontal AccessibilityOrientation = 2
-const AccessibilityOrientationUnknown AccessibilityOrientation = 0
-const AccessibilityOrientationVertical AccessibilityOrientation = 1
+const (
+	AccessibilityOrientationHorizontal AccessibilityOrientation = 2
+	AccessibilityOrientationUnknown    AccessibilityOrientation = 0
+	AccessibilityOrientationVertical   AccessibilityOrientation = 1
+)
 
+// Values that indicate the orientation of user interface elements, such as scroll bars and split views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityorientationvalue?language=objc
 type AccessibilityOrientationValue string
 
-const AccessibilityHorizontalOrientationValue AccessibilityOrientationValue = "AXHorizontalOrientation"
-const AccessibilityUnknownOrientationValue AccessibilityOrientationValue = "AXUnknownOrientation"
-const AccessibilityVerticalOrientationValue AccessibilityOrientationValue = "AXVerticalOrientation"
+const (
+	AccessibilityHorizontalOrientationValue AccessibilityOrientationValue = "AXHorizontalOrientation"
+	AccessibilityUnknownOrientationValue    AccessibilityOrientationValue = "AXUnknownOrientation"
+	AccessibilityVerticalOrientationValue   AccessibilityOrientationValue = "AXVerticalOrientation"
+)
 
+// Values that describe parameterized attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityparameterizedattributename?language=objc
 type AccessibilityParameterizedAttributeName string
 
-const AccessibilityAttributedStringForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXAttributedStringForRange"
-const AccessibilityBoundsForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXBoundsForRange"
-const AccessibilityCellForColumnAndRowParameterizedAttribute AccessibilityParameterizedAttributeName = "AXCellForColumnAndRow"
-const AccessibilityLayoutPointForScreenPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLayoutPointForScreenPoint"
-const AccessibilityLayoutSizeForScreenSizeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLayoutSizeForScreenSize"
-const AccessibilityLineForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLineForIndex"
-const AccessibilityRTFForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRTFForRange"
-const AccessibilityRangeForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForIndex"
-const AccessibilityRangeForLineParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForLine"
-const AccessibilityRangeForPositionParameterizedAttribute AccessibilityParameterizedAttributeName = "AXRangeForPosition"
-const AccessibilityScreenPointForLayoutPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXScreenPointForLayoutPoint"
-const AccessibilityScreenSizeForLayoutSizeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXScreenSizeForLayoutSize"
-const AccessibilityStringForRangeParameterizedAttribute AccessibilityParameterizedAttributeName = "AXStringForRange"
-const AccessibilityStyleRangeForIndexParameterizedAttribute AccessibilityParameterizedAttributeName = "AXStyleRangeForIndex"
+const (
+	AccessibilityAttributedStringForRangeParameterizedAttribute  AccessibilityParameterizedAttributeName = "AXAttributedStringForRange"
+	AccessibilityBoundsForRangeParameterizedAttribute            AccessibilityParameterizedAttributeName = "AXBoundsForRange"
+	AccessibilityCellForColumnAndRowParameterizedAttribute       AccessibilityParameterizedAttributeName = "AXCellForColumnAndRow"
+	AccessibilityLayoutPointForScreenPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXLayoutPointForScreenPoint"
+	AccessibilityLayoutSizeForScreenSizeParameterizedAttribute   AccessibilityParameterizedAttributeName = "AXLayoutSizeForScreenSize"
+	AccessibilityLineForIndexParameterizedAttribute              AccessibilityParameterizedAttributeName = "AXLineForIndex"
+	AccessibilityRTFForRangeParameterizedAttribute               AccessibilityParameterizedAttributeName = "AXRTFForRange"
+	AccessibilityRangeForIndexParameterizedAttribute             AccessibilityParameterizedAttributeName = "AXRangeForIndex"
+	AccessibilityRangeForLineParameterizedAttribute              AccessibilityParameterizedAttributeName = "AXRangeForLine"
+	AccessibilityRangeForPositionParameterizedAttribute          AccessibilityParameterizedAttributeName = "AXRangeForPosition"
+	AccessibilityScreenPointForLayoutPointParameterizedAttribute AccessibilityParameterizedAttributeName = "AXScreenPointForLayoutPoint"
+	AccessibilityScreenSizeForLayoutSizeParameterizedAttribute   AccessibilityParameterizedAttributeName = "AXScreenSizeForLayoutSize"
+	AccessibilityStringForRangeParameterizedAttribute            AccessibilityParameterizedAttributeName = "AXStringForRange"
+	AccessibilityStyleRangeForIndexParameterizedAttribute        AccessibilityParameterizedAttributeName = "AXStyleRangeForIndex"
+)
 
+// A data type for notification priority levels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityprioritylevel?language=objc
 type AccessibilityPriorityLevel int
 
-const AccessibilityPriorityHigh AccessibilityPriorityLevel = 90
-const AccessibilityPriorityLow AccessibilityPriorityLevel = 10
-const AccessibilityPriorityMedium AccessibilityPriorityLevel = 50
+const (
+	AccessibilityPriorityHigh   AccessibilityPriorityLevel = 90
+	AccessibilityPriorityLow    AccessibilityPriorityLevel = 10
+	AccessibilityPriorityMedium AccessibilityPriorityLevel = 50
+)
 
+// Values that describe types of objects that accessibility elements represent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityrole?language=objc
 type AccessibilityRole string
 
-const AccessibilityApplicationRole AccessibilityRole = "AXApplication"
-const AccessibilityBrowserRole AccessibilityRole = "AXBrowser"
-const AccessibilityBusyIndicatorRole AccessibilityRole = "AXBusyIndicator"
-const AccessibilityButtonRole AccessibilityRole = "AXButton"
-const AccessibilityCellRole AccessibilityRole = "AXCell"
-const AccessibilityCheckBoxRole AccessibilityRole = "AXCheckBox"
-const AccessibilityColorWellRole AccessibilityRole = "AXColorWell"
-const AccessibilityColumnRole AccessibilityRole = "AXColumn"
-const AccessibilityComboBoxRole AccessibilityRole = "AXComboBox"
-const AccessibilityDisclosureTriangleRole AccessibilityRole = "AXDisclosureTriangle"
-const AccessibilityDrawerRole AccessibilityRole = "AXDrawer"
-const AccessibilityGridRole AccessibilityRole = "AXGrid"
-const AccessibilityGroupRole AccessibilityRole = "AXGroup"
-const AccessibilityGrowAreaRole AccessibilityRole = "AXGrowArea"
-const AccessibilityHandleRole AccessibilityRole = "AXHandle"
-const AccessibilityHelpTagRole AccessibilityRole = "AXHelpTag"
-const AccessibilityImageRole AccessibilityRole = "AXImage"
-const AccessibilityIncrementorRole AccessibilityRole = "AXIncrementor"
-const AccessibilityLayoutAreaRole AccessibilityRole = "AXLayoutArea"
-const AccessibilityLayoutItemRole AccessibilityRole = "AXLayoutItem"
-const AccessibilityLevelIndicatorRole AccessibilityRole = "AXLevelIndicator"
-const AccessibilityLinkRole AccessibilityRole = "AXLink"
-const AccessibilityListRole AccessibilityRole = "AXList"
-const AccessibilityMatteRole AccessibilityRole = "AXMatte"
-const AccessibilityMenuBarItemRole AccessibilityRole = "AXMenuBarItem"
-const AccessibilityMenuBarRole AccessibilityRole = "AXMenuBar"
-const AccessibilityMenuButtonRole AccessibilityRole = "AXMenuButton"
-const AccessibilityMenuItemRole AccessibilityRole = "AXMenuItem"
-const AccessibilityMenuRole AccessibilityRole = "AXMenu"
-const AccessibilityOutlineRole AccessibilityRole = "AXOutline"
-const AccessibilityPageRole AccessibilityRole = "AXPage"
-const AccessibilityPopUpButtonRole AccessibilityRole = "AXPopUpButton"
-const AccessibilityPopoverRole AccessibilityRole = "AXPopover"
-const AccessibilityProgressIndicatorRole AccessibilityRole = "AXProgressIndicator"
-const AccessibilityRadioButtonRole AccessibilityRole = "AXRadioButton"
-const AccessibilityRadioGroupRole AccessibilityRole = "AXRadioGroup"
-const AccessibilityRelevanceIndicatorRole AccessibilityRole = "AXRelevanceIndicator"
-const AccessibilityRowRole AccessibilityRole = "AXRow"
-const AccessibilityRulerMarkerRole AccessibilityRole = "AXRulerMarker"
-const AccessibilityRulerRole AccessibilityRole = "AXRuler"
-const AccessibilityScrollAreaRole AccessibilityRole = "AXScrollArea"
-const AccessibilityScrollBarRole AccessibilityRole = "AXScrollBar"
-const AccessibilitySheetRole AccessibilityRole = "AXSheet"
-const AccessibilitySliderRole AccessibilityRole = "AXSlider"
-const AccessibilitySortButtonRole AccessibilityRole = "AXSortButton"
-const AccessibilitySplitGroupRole AccessibilityRole = "AXSplitGroup"
-const AccessibilitySplitterRole AccessibilityRole = "AXSplitter"
-const AccessibilityStaticTextRole AccessibilityRole = "AXStaticText"
-const AccessibilitySystemWideRole AccessibilityRole = "AXSystemWide"
-const AccessibilityTabGroupRole AccessibilityRole = "AXTabGroup"
-const AccessibilityTableRole AccessibilityRole = "AXTable"
-const AccessibilityTextAreaRole AccessibilityRole = "AXTextArea"
-const AccessibilityTextFieldRole AccessibilityRole = "AXTextField"
-const AccessibilityToolbarRole AccessibilityRole = "AXToolbar"
-const AccessibilityUnknownRole AccessibilityRole = "AXUnknown"
-const AccessibilityValueIndicatorRole AccessibilityRole = "AXValueIndicator"
-const AccessibilityWindowRole AccessibilityRole = "AXWindow"
+const (
+	AccessibilityApplicationRole        AccessibilityRole = "AXApplication"
+	AccessibilityBrowserRole            AccessibilityRole = "AXBrowser"
+	AccessibilityBusyIndicatorRole      AccessibilityRole = "AXBusyIndicator"
+	AccessibilityButtonRole             AccessibilityRole = "AXButton"
+	AccessibilityCellRole               AccessibilityRole = "AXCell"
+	AccessibilityCheckBoxRole           AccessibilityRole = "AXCheckBox"
+	AccessibilityColorWellRole          AccessibilityRole = "AXColorWell"
+	AccessibilityColumnRole             AccessibilityRole = "AXColumn"
+	AccessibilityComboBoxRole           AccessibilityRole = "AXComboBox"
+	AccessibilityDisclosureTriangleRole AccessibilityRole = "AXDisclosureTriangle"
+	AccessibilityDrawerRole             AccessibilityRole = "AXDrawer"
+	AccessibilityGridRole               AccessibilityRole = "AXGrid"
+	AccessibilityGroupRole              AccessibilityRole = "AXGroup"
+	AccessibilityGrowAreaRole           AccessibilityRole = "AXGrowArea"
+	AccessibilityHandleRole             AccessibilityRole = "AXHandle"
+	AccessibilityHelpTagRole            AccessibilityRole = "AXHelpTag"
+	AccessibilityImageRole              AccessibilityRole = "AXImage"
+	AccessibilityIncrementorRole        AccessibilityRole = "AXIncrementor"
+	AccessibilityLayoutAreaRole         AccessibilityRole = "AXLayoutArea"
+	AccessibilityLayoutItemRole         AccessibilityRole = "AXLayoutItem"
+	AccessibilityLevelIndicatorRole     AccessibilityRole = "AXLevelIndicator"
+	AccessibilityLinkRole               AccessibilityRole = "AXLink"
+	AccessibilityListRole               AccessibilityRole = "AXList"
+	AccessibilityMatteRole              AccessibilityRole = "AXMatte"
+	AccessibilityMenuBarItemRole        AccessibilityRole = "AXMenuBarItem"
+	AccessibilityMenuBarRole            AccessibilityRole = "AXMenuBar"
+	AccessibilityMenuButtonRole         AccessibilityRole = "AXMenuButton"
+	AccessibilityMenuItemRole           AccessibilityRole = "AXMenuItem"
+	AccessibilityMenuRole               AccessibilityRole = "AXMenu"
+	AccessibilityOutlineRole            AccessibilityRole = "AXOutline"
+	AccessibilityPageRole               AccessibilityRole = "AXPage"
+	AccessibilityPopUpButtonRole        AccessibilityRole = "AXPopUpButton"
+	AccessibilityPopoverRole            AccessibilityRole = "AXPopover"
+	AccessibilityProgressIndicatorRole  AccessibilityRole = "AXProgressIndicator"
+	AccessibilityRadioButtonRole        AccessibilityRole = "AXRadioButton"
+	AccessibilityRadioGroupRole         AccessibilityRole = "AXRadioGroup"
+	AccessibilityRelevanceIndicatorRole AccessibilityRole = "AXRelevanceIndicator"
+	AccessibilityRowRole                AccessibilityRole = "AXRow"
+	AccessibilityRulerMarkerRole        AccessibilityRole = "AXRulerMarker"
+	AccessibilityRulerRole              AccessibilityRole = "AXRuler"
+	AccessibilityScrollAreaRole         AccessibilityRole = "AXScrollArea"
+	AccessibilityScrollBarRole          AccessibilityRole = "AXScrollBar"
+	AccessibilitySheetRole              AccessibilityRole = "AXSheet"
+	AccessibilitySliderRole             AccessibilityRole = "AXSlider"
+	AccessibilitySortButtonRole         AccessibilityRole = "AXSortButton"
+	AccessibilitySplitGroupRole         AccessibilityRole = "AXSplitGroup"
+	AccessibilitySplitterRole           AccessibilityRole = "AXSplitter"
+	AccessibilityStaticTextRole         AccessibilityRole = "AXStaticText"
+	AccessibilitySystemWideRole         AccessibilityRole = "AXSystemWide"
+	AccessibilityTabGroupRole           AccessibilityRole = "AXTabGroup"
+	AccessibilityTableRole              AccessibilityRole = "AXTable"
+	AccessibilityTextAreaRole           AccessibilityRole = "AXTextArea"
+	AccessibilityTextFieldRole          AccessibilityRole = "AXTextField"
+	AccessibilityToolbarRole            AccessibilityRole = "AXToolbar"
+	AccessibilityUnknownRole            AccessibilityRole = "AXUnknown"
+	AccessibilityValueIndicatorRole     AccessibilityRole = "AXValueIndicator"
+	AccessibilityWindowRole             AccessibilityRole = "AXWindow"
+)
 
+// Values that indicate the marker type of an accessibility element. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityrulermarkertype?language=objc
 type AccessibilityRulerMarkerType int
 
-const AccessibilityRulerMarkerTypeIndentFirstLine AccessibilityRulerMarkerType = 7
-const AccessibilityRulerMarkerTypeIndentHead AccessibilityRulerMarkerType = 5
-const AccessibilityRulerMarkerTypeIndentTail AccessibilityRulerMarkerType = 6
-const AccessibilityRulerMarkerTypeTabStopCenter AccessibilityRulerMarkerType = 3
-const AccessibilityRulerMarkerTypeTabStopDecimal AccessibilityRulerMarkerType = 4
-const AccessibilityRulerMarkerTypeTabStopLeft AccessibilityRulerMarkerType = 1
-const AccessibilityRulerMarkerTypeTabStopRight AccessibilityRulerMarkerType = 2
-const AccessibilityRulerMarkerTypeUnknown AccessibilityRulerMarkerType = 0
+const (
+	AccessibilityRulerMarkerTypeIndentFirstLine AccessibilityRulerMarkerType = 7
+	AccessibilityRulerMarkerTypeIndentHead      AccessibilityRulerMarkerType = 5
+	AccessibilityRulerMarkerTypeIndentTail      AccessibilityRulerMarkerType = 6
+	AccessibilityRulerMarkerTypeTabStopCenter   AccessibilityRulerMarkerType = 3
+	AccessibilityRulerMarkerTypeTabStopDecimal  AccessibilityRulerMarkerType = 4
+	AccessibilityRulerMarkerTypeTabStopLeft     AccessibilityRulerMarkerType = 1
+	AccessibilityRulerMarkerTypeTabStopRight    AccessibilityRulerMarkerType = 2
+	AccessibilityRulerMarkerTypeUnknown         AccessibilityRulerMarkerType = 0
+)
 
+// Values that describe ruler marker types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityrulermarkertypevalue?language=objc
 type AccessibilityRulerMarkerTypeValue string
 
-const AccessibilityCenterTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXCenterTabStopMarkerType"
-const AccessibilityDecimalTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXDecimalTabStopMarkerType"
-const AccessibilityFirstLineIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXFirstLineIndentMarkerType"
-const AccessibilityHeadIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXHeadIndentMarkerType"
-const AccessibilityLeftTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXLeftTabStopMarkerType"
-const AccessibilityRightTabStopMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXRightTabStopMarkerType"
-const AccessibilityTailIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXTailIndentMarkerType"
-const AccessibilityUnknownMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXUnknownMarkerType"
+const (
+	AccessibilityCenterTabStopMarkerTypeValue   AccessibilityRulerMarkerTypeValue = "AXCenterTabStopMarkerType"
+	AccessibilityDecimalTabStopMarkerTypeValue  AccessibilityRulerMarkerTypeValue = "AXDecimalTabStopMarkerType"
+	AccessibilityFirstLineIndentMarkerTypeValue AccessibilityRulerMarkerTypeValue = "AXFirstLineIndentMarkerType"
+	AccessibilityHeadIndentMarkerTypeValue      AccessibilityRulerMarkerTypeValue = "AXHeadIndentMarkerType"
+	AccessibilityLeftTabStopMarkerTypeValue     AccessibilityRulerMarkerTypeValue = "AXLeftTabStopMarkerType"
+	AccessibilityRightTabStopMarkerTypeValue    AccessibilityRulerMarkerTypeValue = "AXRightTabStopMarkerType"
+	AccessibilityTailIndentMarkerTypeValue      AccessibilityRulerMarkerTypeValue = "AXTailIndentMarkerType"
+	AccessibilityUnknownMarkerTypeValue         AccessibilityRulerMarkerTypeValue = "AXUnknownMarkerType"
+)
 
+// Values that indicate the unit values of a ruler or layout area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityrulerunitvalue?language=objc
 type AccessibilityRulerUnitValue string
 
-const AccessibilityCentimetersUnitValue AccessibilityRulerUnitValue = "AXCentimentersUnit"
-const AccessibilityInchesUnitValue AccessibilityRulerUnitValue = "AXInchesUnit"
-const AccessibilityPicasUnitValue AccessibilityRulerUnitValue = "AXPicasUnit"
-const AccessibilityPointsUnitValue AccessibilityRulerUnitValue = "AXPointsUnit"
-const AccessibilityUnknownUnitValue AccessibilityRulerUnitValue = "AXUnknownUnit"
+const (
+	AccessibilityCentimetersUnitValue AccessibilityRulerUnitValue = "AXCentimentersUnit"
+	AccessibilityInchesUnitValue      AccessibilityRulerUnitValue = "AXInchesUnit"
+	AccessibilityPicasUnitValue       AccessibilityRulerUnitValue = "AXPicasUnit"
+	AccessibilityPointsUnitValue      AccessibilityRulerUnitValue = "AXPointsUnit"
+	AccessibilityUnknownUnitValue     AccessibilityRulerUnitValue = "AXUnknownUnit"
+)
 
+// Values that indicate the sort direction of a column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitysortdirection?language=objc
 type AccessibilitySortDirection int
 
-const AccessibilitySortDirectionAscending AccessibilitySortDirection = 1
-const AccessibilitySortDirectionDescending AccessibilitySortDirection = 2
-const AccessibilitySortDirectionUnknown AccessibilitySortDirection = 0
+const (
+	AccessibilitySortDirectionAscending  AccessibilitySortDirection = 1
+	AccessibilitySortDirectionDescending AccessibilitySortDirection = 2
+	AccessibilitySortDirectionUnknown    AccessibilitySortDirection = 0
+)
 
+// Values that indicate the sort direction of a column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitysortdirectionvalue?language=objc
 type AccessibilitySortDirectionValue string
 
-const AccessibilityAscendingSortDirectionValue AccessibilitySortDirectionValue = "AXAscendingSortDirection"
-const AccessibilityDescendingSortDirectionValue AccessibilitySortDirectionValue = "AXDescendingSortDirection"
-const AccessibilityUnknownSortDirectionValue AccessibilitySortDirectionValue = "AXUnknownSortDirection"
+const (
+	AccessibilityAscendingSortDirectionValue  AccessibilitySortDirectionValue = "AXAscendingSortDirection"
+	AccessibilityDescendingSortDirectionValue AccessibilitySortDirectionValue = "AXDescendingSortDirection"
+	AccessibilityUnknownSortDirectionValue    AccessibilitySortDirectionValue = "AXUnknownSortDirection"
+)
 
+// Values that describe specialized object subtypes that accessibility elements represent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitysubrole?language=objc
 type AccessibilitySubrole string
 
-const AccessibilityCloseButtonSubrole AccessibilitySubrole = "AXCloseButton"
-const AccessibilityCollectionListSubrole AccessibilitySubrole = "AXCollectionList"
-const AccessibilityContentListSubrole AccessibilitySubrole = "AXContentList"
-const AccessibilityDecrementArrowSubrole AccessibilitySubrole = "AXDecrementArrow"
-const AccessibilityDecrementPageSubrole AccessibilitySubrole = "AXDecrementPage"
-const AccessibilityDefinitionListSubrole AccessibilitySubrole = "AXDefinitionList"
-const AccessibilityDescriptionListSubrole AccessibilitySubrole = "AXDescriptionList"
-const AccessibilityDialogSubrole AccessibilitySubrole = "AXDialog"
-const AccessibilityFloatingWindowSubrole AccessibilitySubrole = "AXFloatingWindow"
-const AccessibilityFullScreenButtonSubrole AccessibilitySubrole = "AXFullScreenButton"
-const AccessibilityIncrementArrowSubrole AccessibilitySubrole = "AXIncrementArrow"
-const AccessibilityIncrementPageSubrole AccessibilitySubrole = "AXIncrementPage"
-const AccessibilityMinimizeButtonSubrole AccessibilitySubrole = "AXMinimizeButton"
-const AccessibilityOutlineRowSubrole AccessibilitySubrole = "AXOutlineRow"
-const AccessibilityRatingIndicatorSubrole AccessibilitySubrole = "AXRatingIndicator"
-const AccessibilitySearchFieldSubrole AccessibilitySubrole = "AXSearchField"
-const AccessibilitySectionListSubrole AccessibilitySubrole = "AXSectionList"
-const AccessibilitySecureTextFieldSubrole AccessibilitySubrole = "AXSecureTextField"
-const AccessibilitySortButtonSubrole AccessibilitySubrole = "AXSortButton"
-const AccessibilityStandardWindowSubrole AccessibilitySubrole = "AXStandardWindow"
-const AccessibilitySwitchSubrole AccessibilitySubrole = "AXSwitch"
-const AccessibilitySystemDialogSubrole AccessibilitySubrole = "AXSystemDialog"
-const AccessibilitySystemFloatingWindowSubrole AccessibilitySubrole = "AXSystemFloatingWindow"
-const AccessibilityTabButtonSubrole AccessibilitySubrole = "AXTabButton"
-const AccessibilityTableRowSubrole AccessibilitySubrole = "AXTableRow"
-const AccessibilityTextAttachmentSubrole AccessibilitySubrole = "AXTextAttachment"
-const AccessibilityTextLinkSubrole AccessibilitySubrole = "AXTextLink"
-const AccessibilityTimelineSubrole AccessibilitySubrole = "AXTimeline"
-const AccessibilityToggleSubrole AccessibilitySubrole = "AXToggle"
-const AccessibilityToolbarButtonSubrole AccessibilitySubrole = "AXToolbarButton"
-const AccessibilityUnknownSubrole AccessibilitySubrole = "AXUnknown"
-const AccessibilityZoomButtonSubrole AccessibilitySubrole = "AXZoomButton"
+const (
+	AccessibilityCloseButtonSubrole          AccessibilitySubrole = "AXCloseButton"
+	AccessibilityCollectionListSubrole       AccessibilitySubrole = "AXCollectionList"
+	AccessibilityContentListSubrole          AccessibilitySubrole = "AXContentList"
+	AccessibilityDecrementArrowSubrole       AccessibilitySubrole = "AXDecrementArrow"
+	AccessibilityDecrementPageSubrole        AccessibilitySubrole = "AXDecrementPage"
+	AccessibilityDefinitionListSubrole       AccessibilitySubrole = "AXDefinitionList"
+	AccessibilityDescriptionListSubrole      AccessibilitySubrole = "AXDescriptionList"
+	AccessibilityDialogSubrole               AccessibilitySubrole = "AXDialog"
+	AccessibilityFloatingWindowSubrole       AccessibilitySubrole = "AXFloatingWindow"
+	AccessibilityFullScreenButtonSubrole     AccessibilitySubrole = "AXFullScreenButton"
+	AccessibilityIncrementArrowSubrole       AccessibilitySubrole = "AXIncrementArrow"
+	AccessibilityIncrementPageSubrole        AccessibilitySubrole = "AXIncrementPage"
+	AccessibilityMinimizeButtonSubrole       AccessibilitySubrole = "AXMinimizeButton"
+	AccessibilityOutlineRowSubrole           AccessibilitySubrole = "AXOutlineRow"
+	AccessibilityRatingIndicatorSubrole      AccessibilitySubrole = "AXRatingIndicator"
+	AccessibilitySearchFieldSubrole          AccessibilitySubrole = "AXSearchField"
+	AccessibilitySectionListSubrole          AccessibilitySubrole = "AXSectionList"
+	AccessibilitySecureTextFieldSubrole      AccessibilitySubrole = "AXSecureTextField"
+	AccessibilitySortButtonSubrole           AccessibilitySubrole = "AXSortButton"
+	AccessibilityStandardWindowSubrole       AccessibilitySubrole = "AXStandardWindow"
+	AccessibilitySwitchSubrole               AccessibilitySubrole = "AXSwitch"
+	AccessibilitySystemDialogSubrole         AccessibilitySubrole = "AXSystemDialog"
+	AccessibilitySystemFloatingWindowSubrole AccessibilitySubrole = "AXSystemFloatingWindow"
+	AccessibilityTabButtonSubrole            AccessibilitySubrole = "AXTabButton"
+	AccessibilityTableRowSubrole             AccessibilitySubrole = "AXTableRow"
+	AccessibilityTextAttachmentSubrole       AccessibilitySubrole = "AXTextAttachment"
+	AccessibilityTextLinkSubrole             AccessibilitySubrole = "AXTextLink"
+	AccessibilityTimelineSubrole             AccessibilitySubrole = "AXTimeline"
+	AccessibilityToggleSubrole               AccessibilitySubrole = "AXToggle"
+	AccessibilityToolbarButtonSubrole        AccessibilitySubrole = "AXToolbarButton"
+	AccessibilityUnknownSubrole              AccessibilitySubrole = "AXUnknown"
+	AccessibilityZoomButtonSubrole           AccessibilitySubrole = "AXZoomButton"
+)
 
+// Values that indicate the unit values of a ruler or layout area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityunits?language=objc
 type AccessibilityUnits int
 
-const AccessibilityUnitsCentimeters AccessibilityUnits = 2
-const AccessibilityUnitsInches AccessibilityUnits = 1
-const AccessibilityUnitsPicas AccessibilityUnits = 4
-const AccessibilityUnitsPoints AccessibilityUnits = 3
-const AccessibilityUnitsUnknown AccessibilityUnits = 0
+const (
+	AccessibilityUnitsCentimeters AccessibilityUnits = 2
+	AccessibilityUnitsInches      AccessibilityUnits = 1
+	AccessibilityUnitsPicas       AccessibilityUnits = 4
+	AccessibilityUnitsPoints      AccessibilityUnits = 3
+	AccessibilityUnitsUnknown     AccessibilityUnits = 0
+)
 
+// The NSAlert class defines the alert styles used by the alertStyle property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsalertstyle?language=objc
 type AlertStyle uint
 
-const AlertStyleCritical AlertStyle = 2
-const AlertStyleInformational AlertStyle = 1
-const AlertStyleWarning AlertStyle = 0
-const CriticalAlertStyle AlertStyle = 2
-const InformationalAlertStyle AlertStyle = 1
-const WarningAlertStyle AlertStyle = 0
+const (
+	AlertStyleCritical      AlertStyle = 2
+	AlertStyleInformational AlertStyle = 1
+	AlertStyleWarning       AlertStyle = 0
+	CriticalAlertStyle      AlertStyle = 2
+	InformationalAlertStyle AlertStyle = 1
+	WarningAlertStyle       AlertStyle = 0
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimatablepropertykey?language=objc
 type AnimatablePropertyKey string
 
-const AnimationTriggerOrderIn AnimatablePropertyKey = "NSAnimationTriggerOrderIn"
-const AnimationTriggerOrderOut AnimatablePropertyKey = "NSAnimationTriggerOrderOut"
+const (
+	AnimationTriggerOrderIn  AnimatablePropertyKey = "NSAnimationTriggerOrderIn"
+	AnimationTriggerOrderOut AnimatablePropertyKey = "NSAnimationTriggerOrderOut"
+)
 
+// These constants indicate the blocking mode of an NSAnimation object when it is running. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationblockingmode?language=objc
 type AnimationBlockingMode uint
 
-const AnimationBlocking AnimationBlockingMode = 0
-const AnimationNonblocking AnimationBlockingMode = 1
-const AnimationNonblockingThreaded AnimationBlockingMode = 2
+const (
+	AnimationBlocking            AnimationBlockingMode = 0
+	AnimationNonblocking         AnimationBlockingMode = 1
+	AnimationNonblockingThreaded AnimationBlockingMode = 2
+)
 
+// These constants describe the curve of an animation—that is, the relative speed of an animation from start to finish. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcurve?language=objc
 type AnimationCurve uint
 
-const AnimationEaseIn AnimationCurve = 1
-const AnimationEaseInOut AnimationCurve = 0
-const AnimationEaseOut AnimationCurve = 2
-const AnimationLinear AnimationCurve = 3
+const (
+	AnimationEaseIn    AnimationCurve = 1
+	AnimationEaseInOut AnimationCurve = 0
+	AnimationEaseOut   AnimationCurve = 2
+	AnimationLinear    AnimationCurve = 3
+)
 
+// The type for standard system animation effects, which include both display and sound. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationeffect?language=objc
 type AnimationEffect uint
 
-const AnimationEffectDisappearingItemDefault AnimationEffect = 0
-const AnimationEffectPoof AnimationEffect = 10
+const (
+	AnimationEffectDisappearingItemDefault AnimationEffect = 0
+	AnimationEffectPoof                    AnimationEffect = 10
+)
 
-type AnimationProgress float32
+// The animation progress, as a floating-point number between 0.0 and 1.0. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationprogress?language=objc
+type AnimationProgress float64
 
+// Constants for determining which version of AppKit is available. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappkitversion?language=objc
 type AppKitVersion float64
 
-const AppKitVersionNumber AppKitVersion = 2113.600098
-const AppKitVersionNumber10_0 AppKitVersion = 577.000000
-const AppKitVersionNumber10_1 AppKitVersion = 620.000000
-const AppKitVersionNumber10_10 AppKitVersion = 1343.000000
-const AppKitVersionNumber10_10_2 AppKitVersion = 1344.000000
-const AppKitVersionNumber10_10_3 AppKitVersion = 1347.000000
-const AppKitVersionNumber10_10_4 AppKitVersion = 1348.000000
-const AppKitVersionNumber10_10_5 AppKitVersion = 1348.000000
-const AppKitVersionNumber10_10_Max AppKitVersion = 1349.000000
-const AppKitVersionNumber10_11 AppKitVersion = 1404.000000
-const AppKitVersionNumber10_11_1 AppKitVersion = 1404.130005
-const AppKitVersionNumber10_11_2 AppKitVersion = 1404.339966
-const AppKitVersionNumber10_11_3 AppKitVersion = 1404.339966
-const AppKitVersionNumber10_12 AppKitVersion = 1504.000000
-const AppKitVersionNumber10_12_1 AppKitVersion = 1504.599976
-const AppKitVersionNumber10_12_2 AppKitVersion = 1504.760010
-const AppKitVersionNumber10_13 AppKitVersion = 1561.000000
-const AppKitVersionNumber10_13_1 AppKitVersion = 1561.099976
-const AppKitVersionNumber10_13_2 AppKitVersion = 1561.199951
-const AppKitVersionNumber10_13_4 AppKitVersion = 1561.400024
-const AppKitVersionNumber10_14 AppKitVersion = 1671.000000
-const AppKitVersionNumber10_14_1 AppKitVersion = 1671.099976
-const AppKitVersionNumber10_14_2 AppKitVersion = 1671.199951
-const AppKitVersionNumber10_14_3 AppKitVersion = 1671.300049
-const AppKitVersionNumber10_14_4 AppKitVersion = 1671.400024
-const AppKitVersionNumber10_14_5 AppKitVersion = 1671.500000
-const AppKitVersionNumber10_15 AppKitVersion = 1894.000000
-const AppKitVersionNumber10_15_1 AppKitVersion = 1894.099976
-const AppKitVersionNumber10_15_2 AppKitVersion = 1894.199951
-const AppKitVersionNumber10_15_3 AppKitVersion = 1894.300049
-const AppKitVersionNumber10_15_4 AppKitVersion = 1894.400024
-const AppKitVersionNumber10_15_5 AppKitVersion = 1894.500000
-const AppKitVersionNumber10_15_6 AppKitVersion = 1894.599976
-const AppKitVersionNumber10_2 AppKitVersion = 663.000000
-const AppKitVersionNumber10_2_3 AppKitVersion = 663.599976
-const AppKitVersionNumber10_3 AppKitVersion = 743.000000
-const AppKitVersionNumber10_3_2 AppKitVersion = 743.140015
-const AppKitVersionNumber10_3_3 AppKitVersion = 743.200012
-const AppKitVersionNumber10_3_5 AppKitVersion = 743.239990
-const AppKitVersionNumber10_3_7 AppKitVersion = 743.330017
-const AppKitVersionNumber10_3_9 AppKitVersion = 743.359985
-const AppKitVersionNumber10_4 AppKitVersion = 824.000000
-const AppKitVersionNumber10_4_1 AppKitVersion = 824.099976
-const AppKitVersionNumber10_4_3 AppKitVersion = 824.229980
-const AppKitVersionNumber10_4_4 AppKitVersion = 824.330017
-const AppKitVersionNumber10_4_7 AppKitVersion = 824.409973
-const AppKitVersionNumber10_5 AppKitVersion = 949.000000
-const AppKitVersionNumber10_5_2 AppKitVersion = 949.270020
-const AppKitVersionNumber10_5_3 AppKitVersion = 949.330017
-const AppKitVersionNumber10_6 AppKitVersion = 1038.000000
-const AppKitVersionNumber10_7 AppKitVersion = 1138.000000
-const AppKitVersionNumber10_7_2 AppKitVersion = 1138.229980
-const AppKitVersionNumber10_7_3 AppKitVersion = 1138.319946
-const AppKitVersionNumber10_7_4 AppKitVersion = 1138.469971
-const AppKitVersionNumber10_8 AppKitVersion = 1187.000000
-const AppKitVersionNumber10_9 AppKitVersion = 1265.000000
-const AppKitVersionNumber11_0 AppKitVersion = 2022.000000
-const AppKitVersionNumber11_1 AppKitVersion = 2022.199951
-const AppKitVersionNumber11_2 AppKitVersion = 2022.300049
-const AppKitVersionNumber11_3 AppKitVersion = 2022.400024
-const AppKitVersionNumber11_4 AppKitVersion = 2022.500000
-const AppKitVersionNumberWithColumnResizingBrowser AppKitVersion = 685.000000
-const AppKitVersionNumberWithContinuousScrollingBrowser AppKitVersion = 680.000000
-const AppKitVersionNumberWithCursorSizeSupport AppKitVersion = 682.000000
-const AppKitVersionNumberWithCustomSheetPosition AppKitVersion = 686.000000
-const AppKitVersionNumberWithDeferredWindowDisplaySupport AppKitVersion = 1019.000000
-const AppKitVersionNumberWithDirectionalTabs AppKitVersion = 631.000000
-const AppKitVersionNumberWithDockTilePlugInSupport AppKitVersion = 1001.000000
-const AppKitVersionNumberWithPatternColorLeakFix AppKitVersion = 641.000000
+const (
+	AppKitVersionNumber                                 AppKitVersion = 2113.600098
+	AppKitVersionNumber10_0                             AppKitVersion = 577.000000
+	AppKitVersionNumber10_1                             AppKitVersion = 620.000000
+	AppKitVersionNumber10_10                            AppKitVersion = 1343.000000
+	AppKitVersionNumber10_10_2                          AppKitVersion = 1344.000000
+	AppKitVersionNumber10_10_3                          AppKitVersion = 1347.000000
+	AppKitVersionNumber10_10_4                          AppKitVersion = 1348.000000
+	AppKitVersionNumber10_10_5                          AppKitVersion = 1348.000000
+	AppKitVersionNumber10_10_Max                        AppKitVersion = 1349.000000
+	AppKitVersionNumber10_11                            AppKitVersion = 1404.000000
+	AppKitVersionNumber10_11_1                          AppKitVersion = 1404.130005
+	AppKitVersionNumber10_11_2                          AppKitVersion = 1404.339966
+	AppKitVersionNumber10_11_3                          AppKitVersion = 1404.339966
+	AppKitVersionNumber10_12                            AppKitVersion = 1504.000000
+	AppKitVersionNumber10_12_1                          AppKitVersion = 1504.599976
+	AppKitVersionNumber10_12_2                          AppKitVersion = 1504.760010
+	AppKitVersionNumber10_13                            AppKitVersion = 1561.000000
+	AppKitVersionNumber10_13_1                          AppKitVersion = 1561.099976
+	AppKitVersionNumber10_13_2                          AppKitVersion = 1561.199951
+	AppKitVersionNumber10_13_4                          AppKitVersion = 1561.400024
+	AppKitVersionNumber10_14                            AppKitVersion = 1671.000000
+	AppKitVersionNumber10_14_1                          AppKitVersion = 1671.099976
+	AppKitVersionNumber10_14_2                          AppKitVersion = 1671.199951
+	AppKitVersionNumber10_14_3                          AppKitVersion = 1671.300049
+	AppKitVersionNumber10_14_4                          AppKitVersion = 1671.400024
+	AppKitVersionNumber10_14_5                          AppKitVersion = 1671.500000
+	AppKitVersionNumber10_15                            AppKitVersion = 1894.000000
+	AppKitVersionNumber10_15_1                          AppKitVersion = 1894.099976
+	AppKitVersionNumber10_15_2                          AppKitVersion = 1894.199951
+	AppKitVersionNumber10_15_3                          AppKitVersion = 1894.300049
+	AppKitVersionNumber10_15_4                          AppKitVersion = 1894.400024
+	AppKitVersionNumber10_15_5                          AppKitVersion = 1894.500000
+	AppKitVersionNumber10_15_6                          AppKitVersion = 1894.599976
+	AppKitVersionNumber10_2                             AppKitVersion = 663.000000
+	AppKitVersionNumber10_2_3                           AppKitVersion = 663.599976
+	AppKitVersionNumber10_3                             AppKitVersion = 743.000000
+	AppKitVersionNumber10_3_2                           AppKitVersion = 743.140015
+	AppKitVersionNumber10_3_3                           AppKitVersion = 743.200012
+	AppKitVersionNumber10_3_5                           AppKitVersion = 743.239990
+	AppKitVersionNumber10_3_7                           AppKitVersion = 743.330017
+	AppKitVersionNumber10_3_9                           AppKitVersion = 743.359985
+	AppKitVersionNumber10_4                             AppKitVersion = 824.000000
+	AppKitVersionNumber10_4_1                           AppKitVersion = 824.099976
+	AppKitVersionNumber10_4_3                           AppKitVersion = 824.229980
+	AppKitVersionNumber10_4_4                           AppKitVersion = 824.330017
+	AppKitVersionNumber10_4_7                           AppKitVersion = 824.409973
+	AppKitVersionNumber10_5                             AppKitVersion = 949.000000
+	AppKitVersionNumber10_5_2                           AppKitVersion = 949.270020
+	AppKitVersionNumber10_5_3                           AppKitVersion = 949.330017
+	AppKitVersionNumber10_6                             AppKitVersion = 1038.000000
+	AppKitVersionNumber10_7                             AppKitVersion = 1138.000000
+	AppKitVersionNumber10_7_2                           AppKitVersion = 1138.229980
+	AppKitVersionNumber10_7_3                           AppKitVersion = 1138.319946
+	AppKitVersionNumber10_7_4                           AppKitVersion = 1138.469971
+	AppKitVersionNumber10_8                             AppKitVersion = 1187.000000
+	AppKitVersionNumber10_9                             AppKitVersion = 1265.000000
+	AppKitVersionNumber11_0                             AppKitVersion = 2022.000000
+	AppKitVersionNumber11_1                             AppKitVersion = 2022.199951
+	AppKitVersionNumber11_2                             AppKitVersion = 2022.300049
+	AppKitVersionNumber11_3                             AppKitVersion = 2022.400024
+	AppKitVersionNumber11_4                             AppKitVersion = 2022.500000
+	AppKitVersionNumberWithColumnResizingBrowser        AppKitVersion = 685.000000
+	AppKitVersionNumberWithContinuousScrollingBrowser   AppKitVersion = 680.000000
+	AppKitVersionNumberWithCursorSizeSupport            AppKitVersion = 682.000000
+	AppKitVersionNumberWithCustomSheetPosition          AppKitVersion = 686.000000
+	AppKitVersionNumberWithDeferredWindowDisplaySupport AppKitVersion = 1019.000000
+	AppKitVersionNumberWithDirectionalTabs              AppKitVersion = 631.000000
+	AppKitVersionNumberWithDockTilePlugInSupport        AppKitVersion = 1001.000000
+	AppKitVersionNumberWithPatternColorLeakFix          AppKitVersion = 641.000000
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancename?language=objc
 type AppearanceName string
 
-const AppearanceNameAccessibilityHighContrastAqua AppearanceName = "NSAppearanceNameAccessibilityAqua"
-const AppearanceNameAccessibilityHighContrastDarkAqua AppearanceName = "NSAppearanceNameAccessibilityDarkAqua"
-const AppearanceNameAccessibilityHighContrastVibrantDark AppearanceName = "NSAppearanceNameAccessibilityVibrantDark"
-const AppearanceNameAccessibilityHighContrastVibrantLight AppearanceName = "NSAppearanceNameAccessibilityVibrantLight"
-const AppearanceNameAqua AppearanceName = "NSAppearanceNameAqua"
-const AppearanceNameDarkAqua AppearanceName = "NSAppearanceNameDarkAqua"
-const AppearanceNameLightContent AppearanceName = "NSAppearanceNameLightContent"
-const AppearanceNameVibrantDark AppearanceName = "NSAppearanceNameVibrantDark"
-const AppearanceNameVibrantLight AppearanceName = "NSAppearanceNameVibrantLight"
+const (
+	AppearanceNameAccessibilityHighContrastAqua         AppearanceName = "NSAppearanceNameAccessibilityAqua"
+	AppearanceNameAccessibilityHighContrastDarkAqua     AppearanceName = "NSAppearanceNameAccessibilityDarkAqua"
+	AppearanceNameAccessibilityHighContrastVibrantDark  AppearanceName = "NSAppearanceNameAccessibilityVibrantDark"
+	AppearanceNameAccessibilityHighContrastVibrantLight AppearanceName = "NSAppearanceNameAccessibilityVibrantLight"
+	AppearanceNameAqua                                  AppearanceName = "NSAppearanceNameAqua"
+	AppearanceNameDarkAqua                              AppearanceName = "NSAppearanceNameDarkAqua"
+	AppearanceNameLightContent                          AppearanceName = "NSAppearanceNameLightContent"
+	AppearanceNameVibrantDark                           AppearanceName = "NSAppearanceNameVibrantDark"
+	AppearanceNameVibrantLight                          AppearanceName = "NSAppearanceNameVibrantLight"
+)
 
+// The following flags are for activateWithOptions:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationactivationoptions?language=objc
 type ApplicationActivationOptions uint
 
-const ApplicationActivateAllWindows ApplicationActivationOptions = 1
-const ApplicationActivateIgnoringOtherApps ApplicationActivationOptions = 2
+const (
+	ApplicationActivateAllWindows        ApplicationActivationOptions = 1
+	ApplicationActivateIgnoringOtherApps ApplicationActivationOptions = 2
+)
 
+// Activation policies (used by activationPolicy) that control whether and how an app may be activated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationactivationpolicy?language=objc
 type ApplicationActivationPolicy int
 
-const ApplicationActivationPolicyAccessory ApplicationActivationPolicy = 1
-const ApplicationActivationPolicyProhibited ApplicationActivationPolicy = 2
-const ApplicationActivationPolicyRegular ApplicationActivationPolicy = 0
+const (
+	ApplicationActivationPolicyAccessory  ApplicationActivationPolicy = 1
+	ApplicationActivationPolicyProhibited ApplicationActivationPolicy = 2
+	ApplicationActivationPolicyRegular    ApplicationActivationPolicy = 0
+)
 
+// Constants that indicate whether a copy or print operation was successful, was canceled, or failed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegatereply?language=objc
 type ApplicationDelegateReply uint
 
-const ApplicationDelegateReplyCancel ApplicationDelegateReply = 1
-const ApplicationDelegateReplyFailure ApplicationDelegateReply = 2
-const ApplicationDelegateReplySuccess ApplicationDelegateReply = 0
+const (
+	ApplicationDelegateReplyCancel  ApplicationDelegateReply = 1
+	ApplicationDelegateReplyFailure ApplicationDelegateReply = 2
+	ApplicationDelegateReplySuccess ApplicationDelegateReply = 0
+)
 
+// This constant indicates whether at least part of any window owned by this app is visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationocclusionstate?language=objc
 type ApplicationOcclusionState uint
 
-const ApplicationOcclusionStateVisible ApplicationOcclusionState = 2
+const (
+	ApplicationOcclusionStateVisible ApplicationOcclusionState = 2
+)
 
+// Constants that control the presentation of the app, typically for fullscreen apps such as games or kiosks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationpresentationoptions?language=objc
 type ApplicationPresentationOptions uint
 
-const ApplicationPresentationAutoHideDock ApplicationPresentationOptions = 1
-const ApplicationPresentationAutoHideMenuBar ApplicationPresentationOptions = 4
-const ApplicationPresentationAutoHideToolbar ApplicationPresentationOptions = 2048
-const ApplicationPresentationDefault ApplicationPresentationOptions = 0
-const ApplicationPresentationDisableAppleMenu ApplicationPresentationOptions = 16
-const ApplicationPresentationDisableCursorLocationAssistance ApplicationPresentationOptions = 4096
-const ApplicationPresentationDisableForceQuit ApplicationPresentationOptions = 64
-const ApplicationPresentationDisableHideApplication ApplicationPresentationOptions = 256
-const ApplicationPresentationDisableMenuBarTransparency ApplicationPresentationOptions = 512
-const ApplicationPresentationDisableProcessSwitching ApplicationPresentationOptions = 32
-const ApplicationPresentationDisableSessionTermination ApplicationPresentationOptions = 128
-const ApplicationPresentationFullScreen ApplicationPresentationOptions = 1024
-const ApplicationPresentationHideDock ApplicationPresentationOptions = 2
-const ApplicationPresentationHideMenuBar ApplicationPresentationOptions = 8
+const (
+	ApplicationPresentationAutoHideDock                    ApplicationPresentationOptions = 1
+	ApplicationPresentationAutoHideMenuBar                 ApplicationPresentationOptions = 4
+	ApplicationPresentationAutoHideToolbar                 ApplicationPresentationOptions = 2048
+	ApplicationPresentationDefault                         ApplicationPresentationOptions = 0
+	ApplicationPresentationDisableAppleMenu                ApplicationPresentationOptions = 16
+	ApplicationPresentationDisableCursorLocationAssistance ApplicationPresentationOptions = 4096
+	ApplicationPresentationDisableForceQuit                ApplicationPresentationOptions = 64
+	ApplicationPresentationDisableHideApplication          ApplicationPresentationOptions = 256
+	ApplicationPresentationDisableMenuBarTransparency      ApplicationPresentationOptions = 512
+	ApplicationPresentationDisableProcessSwitching         ApplicationPresentationOptions = 32
+	ApplicationPresentationDisableSessionTermination       ApplicationPresentationOptions = 128
+	ApplicationPresentationFullScreen                      ApplicationPresentationOptions = 1024
+	ApplicationPresentationHideDock                        ApplicationPresentationOptions = 2
+	ApplicationPresentationHideMenuBar                     ApplicationPresentationOptions = 8
+)
 
+// Constants that indicate the outcome of a print request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationprintreply?language=objc
 type ApplicationPrintReply uint
 
-const PrintingCancelled ApplicationPrintReply = 0
-const PrintingFailure ApplicationPrintReply = 3
-const PrintingReplyLater ApplicationPrintReply = 2
-const PrintingSuccess ApplicationPrintReply = 1
+const (
+	PrintingCancelled  ApplicationPrintReply = 0
+	PrintingFailure    ApplicationPrintReply = 3
+	PrintingReplyLater ApplicationPrintReply = 2
+	PrintingSuccess    ApplicationPrintReply = 1
+)
 
+// Constants that determine whether an app should terminate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationterminatereply?language=objc
 type ApplicationTerminateReply uint
 
-const TerminateCancel ApplicationTerminateReply = 0
-const TerminateLater ApplicationTerminateReply = 2
-const TerminateNow ApplicationTerminateReply = 1
+const (
+	TerminateCancel ApplicationTerminateReply = 0
+	TerminateLater  ApplicationTerminateReply = 2
+	TerminateNow    ApplicationTerminateReply = 1
+)
 
+// Attributes that apply to a document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsattributedstringdocumentattributekey?language=objc
 type AttributedStringDocumentAttributeKey string
 
-const AppearanceDocumentAttribute AttributedStringDocumentAttributeKey = "NSAppearanceDocumentAttribute"
-const AuthorDocumentAttribute AttributedStringDocumentAttributeKey = "NSAuthorDocumentAttribute"
-const BackgroundColorDocumentAttribute AttributedStringDocumentAttributeKey = "BackgroundColor"
-const BottomMarginDocumentAttribute AttributedStringDocumentAttributeKey = "BottomMargin"
-const CategoryDocumentAttribute AttributedStringDocumentAttributeKey = "NSCategoryDocumentAttribute"
-const CharacterEncodingDocumentAttribute AttributedStringDocumentAttributeKey = "CharacterEncoding"
-const CocoaVersionDocumentAttribute AttributedStringDocumentAttributeKey = "CocoaRTFVersion"
-const CommentDocumentAttribute AttributedStringDocumentAttributeKey = "NSCommentDocumentAttribute"
-const CompanyDocumentAttribute AttributedStringDocumentAttributeKey = "NSCompanyDocumentAttribute"
-const ConvertedDocumentAttribute AttributedStringDocumentAttributeKey = "Converted"
-const CopyrightDocumentAttribute AttributedStringDocumentAttributeKey = "NSCopyrightDocumentAttribute"
-const CreationTimeDocumentAttribute AttributedStringDocumentAttributeKey = "NSCreationTimeDocumentAttribute"
-const DefaultAttributesDocumentAttribute AttributedStringDocumentAttributeKey = "DefaultAttributes"
-const DefaultTabIntervalDocumentAttribute AttributedStringDocumentAttributeKey = "DefaultTabInterval"
-const DocumentTypeDocumentAttribute AttributedStringDocumentAttributeKey = "DocumentType"
-const EditorDocumentAttribute AttributedStringDocumentAttributeKey = "NSEditorDocumentAttribute"
-const ExcludedElementsDocumentAttribute AttributedStringDocumentAttributeKey = "ExcludedElements"
-const FileTypeDocumentAttribute AttributedStringDocumentAttributeKey = "UTI"
-const HyphenationFactorDocumentAttribute AttributedStringDocumentAttributeKey = "HyphenationFactor"
-const KeywordsDocumentAttribute AttributedStringDocumentAttributeKey = "NSKeywordsDocumentAttribute"
-const LeftMarginDocumentAttribute AttributedStringDocumentAttributeKey = "LeftMargin"
-const ManagerDocumentAttribute AttributedStringDocumentAttributeKey = "NSManagerDocumentAttribute"
-const ModificationTimeDocumentAttribute AttributedStringDocumentAttributeKey = "NSModificationTimeDocumentAttribute"
-const PaperSizeDocumentAttribute AttributedStringDocumentAttributeKey = "PaperSize"
-const PrefixSpacesDocumentAttribute AttributedStringDocumentAttributeKey = "PrefixSpaces"
-const ReadOnlyDocumentAttribute AttributedStringDocumentAttributeKey = "ReadOnly"
-const RightMarginDocumentAttribute AttributedStringDocumentAttributeKey = "RightMargin"
-const SourceTextScalingDocumentAttribute AttributedStringDocumentAttributeKey = "SourceTextScaling"
-const SubjectDocumentAttribute AttributedStringDocumentAttributeKey = "NSSubjectDocumentAttribute"
-const TextEncodingNameDocumentAttribute AttributedStringDocumentAttributeKey = "TextEncodingName"
-const TextLayoutSectionsAttribute AttributedStringDocumentAttributeKey = "NSTextLayoutSectionsAttribute"
-const TextScalingDocumentAttribute AttributedStringDocumentAttributeKey = "TextScaling"
-const TitleDocumentAttribute AttributedStringDocumentAttributeKey = "NSTitleDocumentAttribute"
-const TopMarginDocumentAttribute AttributedStringDocumentAttributeKey = "TopMargin"
-const ViewModeDocumentAttribute AttributedStringDocumentAttributeKey = "ViewMode"
-const ViewSizeDocumentAttribute AttributedStringDocumentAttributeKey = "ViewSize"
-const ViewZoomDocumentAttribute AttributedStringDocumentAttributeKey = "ViewZoom"
+const (
+	AppearanceDocumentAttribute         AttributedStringDocumentAttributeKey = "NSAppearanceDocumentAttribute"
+	AuthorDocumentAttribute             AttributedStringDocumentAttributeKey = "NSAuthorDocumentAttribute"
+	BackgroundColorDocumentAttribute    AttributedStringDocumentAttributeKey = "BackgroundColor"
+	BottomMarginDocumentAttribute       AttributedStringDocumentAttributeKey = "BottomMargin"
+	CategoryDocumentAttribute           AttributedStringDocumentAttributeKey = "NSCategoryDocumentAttribute"
+	CharacterEncodingDocumentAttribute  AttributedStringDocumentAttributeKey = "CharacterEncoding"
+	CocoaVersionDocumentAttribute       AttributedStringDocumentAttributeKey = "CocoaRTFVersion"
+	CommentDocumentAttribute            AttributedStringDocumentAttributeKey = "NSCommentDocumentAttribute"
+	CompanyDocumentAttribute            AttributedStringDocumentAttributeKey = "NSCompanyDocumentAttribute"
+	ConvertedDocumentAttribute          AttributedStringDocumentAttributeKey = "Converted"
+	CopyrightDocumentAttribute          AttributedStringDocumentAttributeKey = "NSCopyrightDocumentAttribute"
+	CreationTimeDocumentAttribute       AttributedStringDocumentAttributeKey = "NSCreationTimeDocumentAttribute"
+	DefaultAttributesDocumentAttribute  AttributedStringDocumentAttributeKey = "DefaultAttributes"
+	DefaultTabIntervalDocumentAttribute AttributedStringDocumentAttributeKey = "DefaultTabInterval"
+	DocumentTypeDocumentAttribute       AttributedStringDocumentAttributeKey = "DocumentType"
+	EditorDocumentAttribute             AttributedStringDocumentAttributeKey = "NSEditorDocumentAttribute"
+	ExcludedElementsDocumentAttribute   AttributedStringDocumentAttributeKey = "ExcludedElements"
+	FileTypeDocumentAttribute           AttributedStringDocumentAttributeKey = "UTI"
+	HyphenationFactorDocumentAttribute  AttributedStringDocumentAttributeKey = "HyphenationFactor"
+	KeywordsDocumentAttribute           AttributedStringDocumentAttributeKey = "NSKeywordsDocumentAttribute"
+	LeftMarginDocumentAttribute         AttributedStringDocumentAttributeKey = "LeftMargin"
+	ManagerDocumentAttribute            AttributedStringDocumentAttributeKey = "NSManagerDocumentAttribute"
+	ModificationTimeDocumentAttribute   AttributedStringDocumentAttributeKey = "NSModificationTimeDocumentAttribute"
+	PaperSizeDocumentAttribute          AttributedStringDocumentAttributeKey = "PaperSize"
+	PrefixSpacesDocumentAttribute       AttributedStringDocumentAttributeKey = "PrefixSpaces"
+	ReadOnlyDocumentAttribute           AttributedStringDocumentAttributeKey = "ReadOnly"
+	RightMarginDocumentAttribute        AttributedStringDocumentAttributeKey = "RightMargin"
+	SourceTextScalingDocumentAttribute  AttributedStringDocumentAttributeKey = "SourceTextScaling"
+	SubjectDocumentAttribute            AttributedStringDocumentAttributeKey = "NSSubjectDocumentAttribute"
+	TextEncodingNameDocumentAttribute   AttributedStringDocumentAttributeKey = "TextEncodingName"
+	TextLayoutSectionsAttribute         AttributedStringDocumentAttributeKey = "NSTextLayoutSectionsAttribute"
+	TextScalingDocumentAttribute        AttributedStringDocumentAttributeKey = "TextScaling"
+	TitleDocumentAttribute              AttributedStringDocumentAttributeKey = "NSTitleDocumentAttribute"
+	TopMarginDocumentAttribute          AttributedStringDocumentAttributeKey = "TopMargin"
+	ViewModeDocumentAttribute           AttributedStringDocumentAttributeKey = "ViewMode"
+	ViewSizeDocumentAttribute           AttributedStringDocumentAttributeKey = "ViewSize"
+	ViewZoomDocumentAttribute           AttributedStringDocumentAttributeKey = "ViewZoom"
+)
 
+// Options for importing documents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsattributedstringdocumentreadingoptionkey?language=objc
 type AttributedStringDocumentReadingOptionKey string
 
-const BaseURLDocumentOption AttributedStringDocumentReadingOptionKey = "BaseURL"
-const CharacterEncodingDocumentOption AttributedStringDocumentReadingOptionKey = "CharacterEncoding"
-const DefaultAttributesDocumentOption AttributedStringDocumentReadingOptionKey = "DefaultAttributes"
-const DocumentTypeDocumentOption AttributedStringDocumentReadingOptionKey = "DocumentType"
-const FileTypeDocumentOption AttributedStringDocumentReadingOptionKey = "UTI"
-const SourceTextScalingDocumentOption AttributedStringDocumentReadingOptionKey = "SourceTextScaling"
-const TargetTextScalingDocumentOption AttributedStringDocumentReadingOptionKey = "TargetTextScaling"
-const TextEncodingNameDocumentOption AttributedStringDocumentReadingOptionKey = "TextEncodingName"
-const TextSizeMultiplierDocumentOption AttributedStringDocumentReadingOptionKey = "TextSizeMultiplier"
-const TimeoutDocumentOption AttributedStringDocumentReadingOptionKey = "Timeout"
-const WebPreferencesDocumentOption AttributedStringDocumentReadingOptionKey = "WebPreferences"
-const WebResourceLoadDelegateDocumentOption AttributedStringDocumentReadingOptionKey = "WebResourceLoadDelegate"
+const (
+	BaseURLDocumentOption                 AttributedStringDocumentReadingOptionKey = "BaseURL"
+	CharacterEncodingDocumentOption       AttributedStringDocumentReadingOptionKey = "CharacterEncoding"
+	DefaultAttributesDocumentOption       AttributedStringDocumentReadingOptionKey = "DefaultAttributes"
+	DocumentTypeDocumentOption            AttributedStringDocumentReadingOptionKey = "DocumentType"
+	FileTypeDocumentOption                AttributedStringDocumentReadingOptionKey = "UTI"
+	SourceTextScalingDocumentOption       AttributedStringDocumentReadingOptionKey = "SourceTextScaling"
+	TargetTextScalingDocumentOption       AttributedStringDocumentReadingOptionKey = "TargetTextScaling"
+	TextEncodingNameDocumentOption        AttributedStringDocumentReadingOptionKey = "TextEncodingName"
+	TextSizeMultiplierDocumentOption      AttributedStringDocumentReadingOptionKey = "TextSizeMultiplier"
+	TimeoutDocumentOption                 AttributedStringDocumentReadingOptionKey = "Timeout"
+	WebPreferencesDocumentOption          AttributedStringDocumentReadingOptionKey = "WebPreferences"
+	WebResourceLoadDelegateDocumentOption AttributedStringDocumentReadingOptionKey = "WebResourceLoadDelegate"
+)
 
+// Constants for the document type document attribute key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsattributedstringdocumenttype?language=objc
 type AttributedStringDocumentType string
 
-const DocFormatTextDocumentType AttributedStringDocumentType = "NSDocFormat"
-const HTMLTextDocumentType AttributedStringDocumentType = "NSHTML"
-const MacSimpleTextDocumentType AttributedStringDocumentType = "NSMacSimpleText"
-const OfficeOpenXMLTextDocumentType AttributedStringDocumentType = "NSOfficeOpenXML"
-const OpenDocumentTextDocumentType AttributedStringDocumentType = "NSOpenDocument"
-const PlainTextDocumentType AttributedStringDocumentType = "NSPlainText"
-const RTFDTextDocumentType AttributedStringDocumentType = "NSRTFD"
-const RTFTextDocumentType AttributedStringDocumentType = "NSRTF"
-const WebArchiveTextDocumentType AttributedStringDocumentType = "NSWebArchive"
-const WordMLTextDocumentType AttributedStringDocumentType = "NSWordML"
+const (
+	DocFormatTextDocumentType     AttributedStringDocumentType = "NSDocFormat"
+	HTMLTextDocumentType          AttributedStringDocumentType = "NSHTML"
+	MacSimpleTextDocumentType     AttributedStringDocumentType = "NSMacSimpleText"
+	OfficeOpenXMLTextDocumentType AttributedStringDocumentType = "NSOfficeOpenXML"
+	OpenDocumentTextDocumentType  AttributedStringDocumentType = "NSOpenDocument"
+	PlainTextDocumentType         AttributedStringDocumentType = "NSPlainText"
+	RTFDTextDocumentType          AttributedStringDocumentType = "NSRTFD"
+	RTFTextDocumentType           AttributedStringDocumentType = "NSRTF"
+	WebArchiveTextDocumentType    AttributedStringDocumentType = "NSWebArchive"
+	WordMLTextDocumentType        AttributedStringDocumentType = "NSWordML"
+)
 
+// Constants that specify the autoresizing behaviors for views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsautoresizingmaskoptions?language=objc
 type AutoresizingMaskOptions uint
 
-const ViewHeightSizable AutoresizingMaskOptions = 16
-const ViewMaxXMargin AutoresizingMaskOptions = 4
-const ViewMaxYMargin AutoresizingMaskOptions = 32
-const ViewMinXMargin AutoresizingMaskOptions = 1
-const ViewMinYMargin AutoresizingMaskOptions = 8
-const ViewNotSizable AutoresizingMaskOptions = 0
-const ViewWidthSizable AutoresizingMaskOptions = 2
+const (
+	ViewHeightSizable AutoresizingMaskOptions = 16
+	ViewMaxXMargin    AutoresizingMaskOptions = 4
+	ViewMaxYMargin    AutoresizingMaskOptions = 32
+	ViewMinXMargin    AutoresizingMaskOptions = 1
+	ViewMinYMargin    AutoresizingMaskOptions = 8
+	ViewNotSizable    AutoresizingMaskOptions = 0
+	ViewWidthSizable  AutoresizingMaskOptions = 2
+)
 
+// Background styles to apply to a view’s cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbackgroundstyle?language=objc
 type BackgroundStyle int
 
-const BackgroundStyleDark BackgroundStyle = 1
-const BackgroundStyleEmphasized BackgroundStyle = 1
-const BackgroundStyleLight BackgroundStyle = 0
-const BackgroundStyleLowered BackgroundStyle = 3
-const BackgroundStyleNormal BackgroundStyle = 0
-const BackgroundStyleRaised BackgroundStyle = 2
+const (
+	BackgroundStyleDark       BackgroundStyle = 1
+	BackgroundStyleEmphasized BackgroundStyle = 1
+	BackgroundStyleLight      BackgroundStyle = 0
+	BackgroundStyleLowered    BackgroundStyle = 3
+	BackgroundStyleNormal     BackgroundStyle = 0
+	BackgroundStyleRaised     BackgroundStyle = 2
+)
 
+// Constants that specify how the window device buffers the drawing done in a window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbackingstoretype?language=objc
 type BackingStoreType uint
 
-const BackingStoreBuffered BackingStoreType = 2
-const BackingStoreNonretained BackingStoreType = 1
-const BackingStoreRetained BackingStoreType = 0
+const (
+	BackingStoreBuffered    BackingStoreType = 2
+	BackingStoreNonretained BackingStoreType = 1
+	BackingStoreRetained    BackingStoreType = 0
+)
 
+// Bezel styles used by the bezelStyle property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezelstyle?language=objc
 type BezelStyle uint
 
-const BezelStyleCircular BezelStyle = 7
-const BezelStyleDisclosure BezelStyle = 5
-const BezelStyleHelpButton BezelStyle = 9
-const BezelStyleInline BezelStyle = 15
-const BezelStyleRecessed BezelStyle = 13
-const BezelStyleRegularSquare BezelStyle = 2
-const BezelStyleRoundRect BezelStyle = 12
-const BezelStyleRounded BezelStyle = 1
-const BezelStyleRoundedDisclosure BezelStyle = 14
-const BezelStyleShadowlessSquare BezelStyle = 6
-const BezelStyleSmallSquare BezelStyle = 10
-const BezelStyleTexturedRounded BezelStyle = 11
-const BezelStyleTexturedSquare BezelStyle = 8
-const CircularBezelStyle BezelStyle = 7
-const DisclosureBezelStyle BezelStyle = 5
-const HelpButtonBezelStyle BezelStyle = 9
-const InlineBezelStyle BezelStyle = 15
-const RecessedBezelStyle BezelStyle = 13
-const RegularSquareBezelStyle BezelStyle = 2
-const RoundRectBezelStyle BezelStyle = 12
-const RoundedBezelStyle BezelStyle = 1
-const RoundedDisclosureBezelStyle BezelStyle = 14
-const ShadowlessSquareBezelStyle BezelStyle = 6
-const SmallIconButtonBezelStyle BezelStyle = 2
-const SmallSquareBezelStyle BezelStyle = 10
-const TexturedRoundedBezelStyle BezelStyle = 11
-const TexturedSquareBezelStyle BezelStyle = 8
-const ThickSquareBezelStyle BezelStyle = 3
-const ThickerSquareBezelStyle BezelStyle = 4
+const (
+	BezelStyleCircular          BezelStyle = 7
+	BezelStyleDisclosure        BezelStyle = 5
+	BezelStyleHelpButton        BezelStyle = 9
+	BezelStyleInline            BezelStyle = 15
+	BezelStyleRecessed          BezelStyle = 13
+	BezelStyleRegularSquare     BezelStyle = 2
+	BezelStyleRoundRect         BezelStyle = 12
+	BezelStyleRounded           BezelStyle = 1
+	BezelStyleRoundedDisclosure BezelStyle = 14
+	BezelStyleShadowlessSquare  BezelStyle = 6
+	BezelStyleSmallSquare       BezelStyle = 10
+	BezelStyleTexturedRounded   BezelStyle = 11
+	BezelStyleTexturedSquare    BezelStyle = 8
+	CircularBezelStyle          BezelStyle = 7
+	DisclosureBezelStyle        BezelStyle = 5
+	HelpButtonBezelStyle        BezelStyle = 9
+	InlineBezelStyle            BezelStyle = 15
+	RecessedBezelStyle          BezelStyle = 13
+	RegularSquareBezelStyle     BezelStyle = 2
+	RoundRectBezelStyle         BezelStyle = 12
+	RoundedBezelStyle           BezelStyle = 1
+	RoundedDisclosureBezelStyle BezelStyle = 14
+	ShadowlessSquareBezelStyle  BezelStyle = 6
+	SmallIconButtonBezelStyle   BezelStyle = 2
+	SmallSquareBezelStyle       BezelStyle = 10
+	TexturedRoundedBezelStyle   BezelStyle = 11
+	TexturedSquareBezelStyle    BezelStyle = 8
+	ThickSquareBezelStyle       BezelStyle = 3
+	ThickerSquareBezelStyle     BezelStyle = 4
+)
 
+// Constants that specify basic path element commands. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezierpathelement?language=objc
 type BezierPathElement uint
 
-const BezierPathElementClosePath BezierPathElement = 3
-const BezierPathElementCurveTo BezierPathElement = 2
-const BezierPathElementLineTo BezierPathElement = 1
-const BezierPathElementMoveTo BezierPathElement = 0
-const ClosePathBezierPathElement BezierPathElement = 3
-const CurveToBezierPathElement BezierPathElement = 2
-const LineToBezierPathElement BezierPathElement = 1
-const MoveToBezierPathElement BezierPathElement = 0
+const (
+	BezierPathElementClosePath BezierPathElement = 3
+	BezierPathElementCurveTo   BezierPathElement = 2
+	BezierPathElementLineTo    BezierPathElement = 1
+	BezierPathElementMoveTo    BezierPathElement = 0
+	ClosePathBezierPathElement BezierPathElement = 3
+	CurveToBezierPathElement   BezierPathElement = 2
+	LineToBezierPathElement    BezierPathElement = 1
+	MoveToBezierPathElement    BezierPathElement = 0
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindinginfokey?language=objc
 type BindingInfoKey string
 
-const ObservedKeyPathKey BindingInfoKey = "NSObservedKeyPath"
-const ObservedObjectKey BindingInfoKey = "NSObservedObject"
-const OptionsKey BindingInfoKey = "NSOptions"
+const (
+	ObservedKeyPathKey BindingInfoKey = "NSObservedKeyPath"
+	ObservedObjectKey  BindingInfoKey = "NSObservedObject"
+	OptionsKey         BindingInfoKey = "NSOptions"
+)
 
+// Values that specify a binding for certain methods. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindingname?language=objc
 type BindingName string
 
-const AlignmentBinding BindingName = "alignment"
-const AlternateImageBinding BindingName = "alternateImage"
-const AlternateTitleBinding BindingName = "alternateTitle"
-const AnimateBinding BindingName = "animate"
-const AnimationDelayBinding BindingName = "animationDelay"
-const ArgumentBinding BindingName = "argument"
-const AttributedStringBinding BindingName = "attributedString"
-const ContentArrayBinding BindingName = "contentArray"
-const ContentArrayForMultipleSelectionBinding BindingName = "contentArrayForMultipleSelection"
-const ContentBinding BindingName = "content"
-const ContentDictionaryBinding BindingName = "contentDictionary"
-const ContentHeightBinding BindingName = "contentHeight"
-const ContentObjectBinding BindingName = "contentObject"
-const ContentObjectsBinding BindingName = "contentObjects"
-const ContentSetBinding BindingName = "contentSet"
-const ContentValuesBinding BindingName = "contentValues"
-const ContentWidthBinding BindingName = "contentWidth"
-const CriticalValueBinding BindingName = "criticalValue"
-const DataBinding BindingName = "data"
-const DisplayPatternTitleBinding BindingName = "displayPatternTitle"
-const DisplayPatternValueBinding BindingName = "displayPatternValue"
-const DocumentEditedBinding BindingName = "documentEdited"
-const DoubleClickArgumentBinding BindingName = "doubleClickArgument"
-const DoubleClickTargetBinding BindingName = "doubleClickTarget"
-const EditableBinding BindingName = "editable"
-const EnabledBinding BindingName = "enabled"
-const ExcludedKeysBinding BindingName = "excludedKeys"
-const FilterPredicateBinding BindingName = "filterPredicate"
-const FontBinding BindingName = "font"
-const FontBoldBinding BindingName = "fontBold"
-const FontFamilyNameBinding BindingName = "fontFamilyName"
-const FontItalicBinding BindingName = "fontItalic"
-const FontNameBinding BindingName = "fontName"
-const FontSizeBinding BindingName = "fontSize"
-const HeaderTitleBinding BindingName = "headerTitle"
-const HiddenBinding BindingName = "hidden"
-const ImageBinding BindingName = "image"
-const IncludedKeysBinding BindingName = "includedKeys"
-const InitialKeyBinding BindingName = "initialKey"
-const InitialValueBinding BindingName = "initialValue"
-const IsIndeterminateBinding BindingName = "isIndeterminate"
-const LabelBinding BindingName = "label"
-const LocalizedKeyDictionaryBinding BindingName = "localizedKeyDictionary"
-const ManagedObjectContextBinding BindingName = "managedObjectContext"
-const MaxValueBinding BindingName = "maxValue"
-const MaxWidthBinding BindingName = "maxWidth"
-const MaximumRecentsBinding BindingName = "maximumRecents"
-const MinValueBinding BindingName = "minValue"
-const MinWidthBinding BindingName = "minWidth"
-const MixedStateImageBinding BindingName = "mixedStateImage"
-const OffStateImageBinding BindingName = "offStateImage"
-const OnStateImageBinding BindingName = "onStateImage"
-const PositioningRectBinding BindingName = "positioningRect"
-const PredicateBinding BindingName = "predicate"
-const RecentSearchesBinding BindingName = "recentSearches"
-const RepresentedFilenameBinding BindingName = "representedFilename"
-const RowHeightBinding BindingName = "rowHeight"
-const SelectedIdentifierBinding BindingName = "selectedIdentifier"
-const SelectedIndexBinding BindingName = "selectedIndex"
-const SelectedLabelBinding BindingName = "selectedLabel"
-const SelectedObjectBinding BindingName = "selectedObject"
-const SelectedObjectsBinding BindingName = "selectedObjects"
-const SelectedTagBinding BindingName = "selectedTag"
-const SelectedValueBinding BindingName = "selectedValue"
-const SelectedValuesBinding BindingName = "selectedValues"
-const SelectionIndexPathsBinding BindingName = "selectionIndexPaths"
-const SelectionIndexesBinding BindingName = "selectionIndexes"
-const SortDescriptorsBinding BindingName = "sortDescriptors"
-const TargetBinding BindingName = "target"
-const TextColorBinding BindingName = "textColor"
-const TitleBinding BindingName = "title"
-const ToolTipBinding BindingName = "toolTip"
-const TransparentBinding BindingName = "transparent"
-const ValueBinding BindingName = "value"
-const ValuePathBinding BindingName = "valuePath"
-const ValueURLBinding BindingName = "valueURL"
-const VisibleBinding BindingName = "visible"
-const WarningValueBinding BindingName = "warningValue"
-const WidthBinding BindingName = "width"
+const (
+	AlignmentBinding                        BindingName = "alignment"
+	AlternateImageBinding                   BindingName = "alternateImage"
+	AlternateTitleBinding                   BindingName = "alternateTitle"
+	AnimateBinding                          BindingName = "animate"
+	AnimationDelayBinding                   BindingName = "animationDelay"
+	ArgumentBinding                         BindingName = "argument"
+	AttributedStringBinding                 BindingName = "attributedString"
+	ContentArrayBinding                     BindingName = "contentArray"
+	ContentArrayForMultipleSelectionBinding BindingName = "contentArrayForMultipleSelection"
+	ContentBinding                          BindingName = "content"
+	ContentDictionaryBinding                BindingName = "contentDictionary"
+	ContentHeightBinding                    BindingName = "contentHeight"
+	ContentObjectBinding                    BindingName = "contentObject"
+	ContentObjectsBinding                   BindingName = "contentObjects"
+	ContentSetBinding                       BindingName = "contentSet"
+	ContentValuesBinding                    BindingName = "contentValues"
+	ContentWidthBinding                     BindingName = "contentWidth"
+	CriticalValueBinding                    BindingName = "criticalValue"
+	DataBinding                             BindingName = "data"
+	DisplayPatternTitleBinding              BindingName = "displayPatternTitle"
+	DisplayPatternValueBinding              BindingName = "displayPatternValue"
+	DocumentEditedBinding                   BindingName = "documentEdited"
+	DoubleClickArgumentBinding              BindingName = "doubleClickArgument"
+	DoubleClickTargetBinding                BindingName = "doubleClickTarget"
+	EditableBinding                         BindingName = "editable"
+	EnabledBinding                          BindingName = "enabled"
+	ExcludedKeysBinding                     BindingName = "excludedKeys"
+	FilterPredicateBinding                  BindingName = "filterPredicate"
+	FontBinding                             BindingName = "font"
+	FontBoldBinding                         BindingName = "fontBold"
+	FontFamilyNameBinding                   BindingName = "fontFamilyName"
+	FontItalicBinding                       BindingName = "fontItalic"
+	FontNameBinding                         BindingName = "fontName"
+	FontSizeBinding                         BindingName = "fontSize"
+	HeaderTitleBinding                      BindingName = "headerTitle"
+	HiddenBinding                           BindingName = "hidden"
+	ImageBinding                            BindingName = "image"
+	IncludedKeysBinding                     BindingName = "includedKeys"
+	InitialKeyBinding                       BindingName = "initialKey"
+	InitialValueBinding                     BindingName = "initialValue"
+	IsIndeterminateBinding                  BindingName = "isIndeterminate"
+	LabelBinding                            BindingName = "label"
+	LocalizedKeyDictionaryBinding           BindingName = "localizedKeyDictionary"
+	ManagedObjectContextBinding             BindingName = "managedObjectContext"
+	MaxValueBinding                         BindingName = "maxValue"
+	MaxWidthBinding                         BindingName = "maxWidth"
+	MaximumRecentsBinding                   BindingName = "maximumRecents"
+	MinValueBinding                         BindingName = "minValue"
+	MinWidthBinding                         BindingName = "minWidth"
+	MixedStateImageBinding                  BindingName = "mixedStateImage"
+	OffStateImageBinding                    BindingName = "offStateImage"
+	OnStateImageBinding                     BindingName = "onStateImage"
+	PositioningRectBinding                  BindingName = "positioningRect"
+	PredicateBinding                        BindingName = "predicate"
+	RecentSearchesBinding                   BindingName = "recentSearches"
+	RepresentedFilenameBinding              BindingName = "representedFilename"
+	RowHeightBinding                        BindingName = "rowHeight"
+	SelectedIdentifierBinding               BindingName = "selectedIdentifier"
+	SelectedIndexBinding                    BindingName = "selectedIndex"
+	SelectedLabelBinding                    BindingName = "selectedLabel"
+	SelectedObjectBinding                   BindingName = "selectedObject"
+	SelectedObjectsBinding                  BindingName = "selectedObjects"
+	SelectedTagBinding                      BindingName = "selectedTag"
+	SelectedValueBinding                    BindingName = "selectedValue"
+	SelectedValuesBinding                   BindingName = "selectedValues"
+	SelectionIndexPathsBinding              BindingName = "selectionIndexPaths"
+	SelectionIndexesBinding                 BindingName = "selectionIndexes"
+	SortDescriptorsBinding                  BindingName = "sortDescriptors"
+	TargetBinding                           BindingName = "target"
+	TextColorBinding                        BindingName = "textColor"
+	TitleBinding                            BindingName = "title"
+	ToolTipBinding                          BindingName = "toolTip"
+	TransparentBinding                      BindingName = "transparent"
+	ValueBinding                            BindingName = "value"
+	ValuePathBinding                        BindingName = "valuePath"
+	ValueURLBinding                         BindingName = "valueURL"
+	VisibleBinding                          BindingName = "visible"
+	WarningValueBinding                     BindingName = "warningValue"
+	WidthBinding                            BindingName = "width"
+)
 
+// Values that are used as keys in the options dictionary passed to the bind:toObject:withKeyPath:options: method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindingoption?language=objc
 type BindingOption string
 
-const AllowsEditingMultipleValuesSelectionBindingOption BindingOption = "NSAllowsEditingMultipleValuesSelection"
-const AllowsNullArgumentBindingOption BindingOption = "NSAllowsNullArgument"
-const AlwaysPresentsApplicationModalAlertsBindingOption BindingOption = "NSAlwaysPresentsApplicationModalAlerts"
-const ConditionallySetsEditableBindingOption BindingOption = "NSConditionallySetsEditable"
-const ConditionallySetsEnabledBindingOption BindingOption = "NSConditionallySetsEnabled"
-const ConditionallySetsHiddenBindingOption BindingOption = "NSConditionallySetsHidden"
-const ContentPlacementTagBindingOption BindingOption = "NSContentPlacementTag"
-const ContinuouslyUpdatesValueBindingOption BindingOption = "NSContinuouslyUpdatesValue"
-const CreatesSortDescriptorBindingOption BindingOption = "NSCreatesSortDescriptor"
-const DeletesObjectsOnRemoveBindingsOption BindingOption = "NSDeletesObjectsOnRemove"
-const DisplayNameBindingOption BindingOption = "NSDisplayName"
-const DisplayPatternBindingOption BindingOption = "NSDisplayPattern"
-const HandlesContentAsCompoundValueBindingOption BindingOption = "NSHandlesContentAsCompoundValue"
-const InsertsNullPlaceholderBindingOption BindingOption = "NSInsertsNullPlaceholder"
-const InvokesSeparatelyWithArrayObjectsBindingOption BindingOption = "NSInvokesSeparatelyWithArrayObjects"
-const MultipleValuesPlaceholderBindingOption BindingOption = "NSMultipleValuesPlaceholder"
-const NoSelectionPlaceholderBindingOption BindingOption = "NSNoSelectionPlaceholder"
-const NotApplicablePlaceholderBindingOption BindingOption = "NSNotApplicablePlaceholder"
-const NullPlaceholderBindingOption BindingOption = "NSNullPlaceholder"
-const PredicateFormatBindingOption BindingOption = "NSPredicateFormat"
-const RaisesForNotApplicableKeysBindingOption BindingOption = "NSRaisesForNotApplicableKeys"
-const SelectorNameBindingOption BindingOption = "NSSelectorName"
-const SelectsAllWhenSettingContentBindingOption BindingOption = "NSSelectsAllWhenSettingContent"
-const ValidatesImmediatelyBindingOption BindingOption = "NSValidatesImmediately"
-const ValueTransformerBindingOption BindingOption = "NSValueTransformer"
-const ValueTransformerNameBindingOption BindingOption = "NSValueTransformerName"
+const (
+	AllowsEditingMultipleValuesSelectionBindingOption BindingOption = "NSAllowsEditingMultipleValuesSelection"
+	AllowsNullArgumentBindingOption                   BindingOption = "NSAllowsNullArgument"
+	AlwaysPresentsApplicationModalAlertsBindingOption BindingOption = "NSAlwaysPresentsApplicationModalAlerts"
+	ConditionallySetsEditableBindingOption            BindingOption = "NSConditionallySetsEditable"
+	ConditionallySetsEnabledBindingOption             BindingOption = "NSConditionallySetsEnabled"
+	ConditionallySetsHiddenBindingOption              BindingOption = "NSConditionallySetsHidden"
+	ContentPlacementTagBindingOption                  BindingOption = "NSContentPlacementTag"
+	ContinuouslyUpdatesValueBindingOption             BindingOption = "NSContinuouslyUpdatesValue"
+	CreatesSortDescriptorBindingOption                BindingOption = "NSCreatesSortDescriptor"
+	DeletesObjectsOnRemoveBindingsOption              BindingOption = "NSDeletesObjectsOnRemove"
+	DisplayNameBindingOption                          BindingOption = "NSDisplayName"
+	DisplayPatternBindingOption                       BindingOption = "NSDisplayPattern"
+	HandlesContentAsCompoundValueBindingOption        BindingOption = "NSHandlesContentAsCompoundValue"
+	InsertsNullPlaceholderBindingOption               BindingOption = "NSInsertsNullPlaceholder"
+	InvokesSeparatelyWithArrayObjectsBindingOption    BindingOption = "NSInvokesSeparatelyWithArrayObjects"
+	MultipleValuesPlaceholderBindingOption            BindingOption = "NSMultipleValuesPlaceholder"
+	NoSelectionPlaceholderBindingOption               BindingOption = "NSNoSelectionPlaceholder"
+	NotApplicablePlaceholderBindingOption             BindingOption = "NSNotApplicablePlaceholder"
+	NullPlaceholderBindingOption                      BindingOption = "NSNullPlaceholder"
+	PredicateFormatBindingOption                      BindingOption = "NSPredicateFormat"
+	RaisesForNotApplicableKeysBindingOption           BindingOption = "NSRaisesForNotApplicableKeys"
+	SelectorNameBindingOption                         BindingOption = "NSSelectorName"
+	SelectsAllWhenSettingContentBindingOption         BindingOption = "NSSelectsAllWhenSettingContent"
+	ValidatesImmediatelyBindingOption                 BindingOption = "NSValidatesImmediately"
+	ValueTransformerBindingOption                     BindingOption = "NSValueTransformer"
+	ValueTransformerNameBindingOption                 BindingOption = "NSValueTransformerName"
+)
 
+// Constants that represent bitmap component formats. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapformat?language=objc
 type BitmapFormat uint
 
-const AlphaFirstBitmapFormat BitmapFormat = 1
-const AlphaNonpremultipliedBitmapFormat BitmapFormat = 2
-const BitmapFormatAlphaFirst BitmapFormat = 1
-const BitmapFormatAlphaNonpremultiplied BitmapFormat = 2
-const BitmapFormatFloatingPointSamples BitmapFormat = 4
-const BitmapFormatSixteenBitBigEndian BitmapFormat = 1024
-const BitmapFormatSixteenBitLittleEndian BitmapFormat = 256
-const BitmapFormatThirtyTwoBitBigEndian BitmapFormat = 2048
-const BitmapFormatThirtyTwoBitLittleEndian BitmapFormat = 512
-const FloatingPointSamplesBitmapFormat BitmapFormat = 4
+const (
+	AlphaFirstBitmapFormat               BitmapFormat = 1
+	AlphaNonpremultipliedBitmapFormat    BitmapFormat = 2
+	BitmapFormatAlphaFirst               BitmapFormat = 1
+	BitmapFormatAlphaNonpremultiplied    BitmapFormat = 2
+	BitmapFormatFloatingPointSamples     BitmapFormat = 4
+	BitmapFormatSixteenBitBigEndian      BitmapFormat = 1024
+	BitmapFormatSixteenBitLittleEndian   BitmapFormat = 256
+	BitmapFormatThirtyTwoBitBigEndian    BitmapFormat = 2048
+	BitmapFormatThirtyTwoBitLittleEndian BitmapFormat = 512
+	FloatingPointSamplesBitmapFormat     BitmapFormat = 4
+)
 
+// Constants that specify bitmap file types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagefiletype?language=objc
 type BitmapImageFileType uint
 
-const BMPFileType BitmapImageFileType = 1
-const BitmapImageFileTypeBMP BitmapImageFileType = 1
-const BitmapImageFileTypeGIF BitmapImageFileType = 2
-const BitmapImageFileTypeJPEG BitmapImageFileType = 3
-const BitmapImageFileTypeJPEG2000 BitmapImageFileType = 5
-const BitmapImageFileTypePNG BitmapImageFileType = 4
-const BitmapImageFileTypeTIFF BitmapImageFileType = 0
-const GIFFileType BitmapImageFileType = 2
-const JPEG2000FileType BitmapImageFileType = 5
-const JPEGFileType BitmapImageFileType = 3
-const PNGFileType BitmapImageFileType = 4
-const TIFFFileType BitmapImageFileType = 0
+const (
+	BMPFileType                 BitmapImageFileType = 1
+	BitmapImageFileTypeBMP      BitmapImageFileType = 1
+	BitmapImageFileTypeGIF      BitmapImageFileType = 2
+	BitmapImageFileTypeJPEG     BitmapImageFileType = 3
+	BitmapImageFileTypeJPEG2000 BitmapImageFileType = 5
+	BitmapImageFileTypePNG      BitmapImageFileType = 4
+	BitmapImageFileTypeTIFF     BitmapImageFileType = 0
+	GIFFileType                 BitmapImageFileType = 2
+	JPEG2000FileType            BitmapImageFileType = 5
+	JPEGFileType                BitmapImageFileType = 3
+	PNGFileType                 BitmapImageFileType = 4
+	TIFFFileType                BitmapImageFileType = 0
+)
 
+// Constants that identify bitmap image representation properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagereppropertykey?language=objc
 type BitmapImageRepPropertyKey string
 
-const ImageColorSyncProfileData BitmapImageRepPropertyKey = "NSImageColorSyncProfileData"
-const ImageCompressionFactor BitmapImageRepPropertyKey = "NSImageCompressionFactor"
-const ImageCompressionMethod BitmapImageRepPropertyKey = "NSImageCompressionMethod"
-const ImageCurrentFrame BitmapImageRepPropertyKey = "NSImageCurrentFrame"
-const ImageCurrentFrameDuration BitmapImageRepPropertyKey = "NSImageCurrentFrameDuration"
-const ImageDitherTransparency BitmapImageRepPropertyKey = "NSImageDitherTransparency"
-const ImageEXIFData BitmapImageRepPropertyKey = "NSImageEXIFData"
-const ImageFallbackBackgroundColor BitmapImageRepPropertyKey = "NSImageFallbackBackgroundColor"
-const ImageFrameCount BitmapImageRepPropertyKey = "NSImageFrameCount"
-const ImageGamma BitmapImageRepPropertyKey = "NSImageGamma"
-const ImageIPTCData BitmapImageRepPropertyKey = "NSImageIPTCData"
-const ImageInterlaced BitmapImageRepPropertyKey = "NSImageInterlaced"
-const ImageLoopCount BitmapImageRepPropertyKey = "NSImageLoopCount"
-const ImageProgressive BitmapImageRepPropertyKey = "NSImageProgressive"
-const ImageRGBColorTable BitmapImageRepPropertyKey = "NSImageRGBColorTable"
+const (
+	ImageColorSyncProfileData    BitmapImageRepPropertyKey = "NSImageColorSyncProfileData"
+	ImageCompressionFactor       BitmapImageRepPropertyKey = "NSImageCompressionFactor"
+	ImageCompressionMethod       BitmapImageRepPropertyKey = "NSImageCompressionMethod"
+	ImageCurrentFrame            BitmapImageRepPropertyKey = "NSImageCurrentFrame"
+	ImageCurrentFrameDuration    BitmapImageRepPropertyKey = "NSImageCurrentFrameDuration"
+	ImageDitherTransparency      BitmapImageRepPropertyKey = "NSImageDitherTransparency"
+	ImageEXIFData                BitmapImageRepPropertyKey = "NSImageEXIFData"
+	ImageFallbackBackgroundColor BitmapImageRepPropertyKey = "NSImageFallbackBackgroundColor"
+	ImageFrameCount              BitmapImageRepPropertyKey = "NSImageFrameCount"
+	ImageGamma                   BitmapImageRepPropertyKey = "NSImageGamma"
+	ImageIPTCData                BitmapImageRepPropertyKey = "NSImageIPTCData"
+	ImageInterlaced              BitmapImageRepPropertyKey = "NSImageInterlaced"
+	ImageLoopCount               BitmapImageRepPropertyKey = "NSImageLoopCount"
+	ImageProgressive             BitmapImageRepPropertyKey = "NSImageProgressive"
+	ImageRGBColorTable           BitmapImageRepPropertyKey = "NSImageRGBColorTable"
+)
 
+// These constants specify the type of a view’s border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbordertype?language=objc
 type BorderType uint
 
-const BezelBorder BorderType = 2
-const GrooveBorder BorderType = 3
-const LineBorder BorderType = 1
-const NoBorder BorderType = 0
+const (
+	BezelBorder  BorderType = 2
+	GrooveBorder BorderType = 3
+	LineBorder   BorderType = 1
+	NoBorder     BorderType = 0
+)
 
+// These constants and data type identifies box types, which, in conjunction with a box's border type, define the appearance of the box. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsboxtype?language=objc
 type BoxType uint
 
-const BoxCustom BoxType = 4
-const BoxOldStyle BoxType = 3
-const BoxPrimary BoxType = 0
-const BoxSecondary BoxType = 1
-const BoxSeparator BoxType = 2
+const (
+	BoxCustom    BoxType = 4
+	BoxOldStyle  BoxType = 3
+	BoxPrimary   BoxType = 0
+	BoxSecondary BoxType = 1
+	BoxSeparator BoxType = 2
+)
 
+// Types of browser column resizing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercolumnresizingtype?language=objc
 type BrowserColumnResizingType uint
 
-const BrowserAutoColumnResizing BrowserColumnResizingType = 1
-const BrowserNoColumnResizing BrowserColumnResizingType = 0
-const BrowserUserColumnResizing BrowserColumnResizingType = 2
+const (
+	BrowserAutoColumnResizing BrowserColumnResizingType = 1
+	BrowserNoColumnResizing   BrowserColumnResizingType = 0
+	BrowserUserColumnResizing BrowserColumnResizingType = 2
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercolumnsautosavename?language=objc
 type BrowserColumnsAutosaveName string
 
+// The type used to specify the drop type of a drag-and-drop operation. See browser:objectValueForItem: for more information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdropoperation?language=objc
 type BrowserDropOperation uint
 
-const BrowserDropAbove BrowserDropOperation = 1
-const BrowserDropOn BrowserDropOperation = 0
+const (
+	BrowserDropAbove BrowserDropOperation = 1
+	BrowserDropOn    BrowserDropOperation = 0
+)
 
+// Button types that you can specify using setButtonType:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontype?language=objc
 type ButtonType uint
 
-const AcceleratorButton ButtonType = 8
-const ButtonTypeAccelerator ButtonType = 8
-const ButtonTypeMomentaryChange ButtonType = 5
-const ButtonTypeMomentaryLight ButtonType = 0
-const ButtonTypeMomentaryPushIn ButtonType = 7
-const ButtonTypeMultiLevelAccelerator ButtonType = 9
-const ButtonTypeOnOff ButtonType = 6
-const ButtonTypePushOnPushOff ButtonType = 1
-const ButtonTypeRadio ButtonType = 4
-const ButtonTypeSwitch ButtonType = 3
-const ButtonTypeToggle ButtonType = 2
-const MomentaryChangeButton ButtonType = 5
-const MomentaryLight ButtonType = 7
-const MomentaryLightButton ButtonType = 0
-const MomentaryPushButton ButtonType = 0
-const MomentaryPushInButton ButtonType = 7
-const MultiLevelAcceleratorButton ButtonType = 9
-const OnOffButton ButtonType = 6
-const PushOnPushOffButton ButtonType = 1
-const RadioButton ButtonType = 4
-const SwitchButton ButtonType = 3
-const ToggleButton ButtonType = 2
+const (
+	AcceleratorButton               ButtonType = 8
+	ButtonTypeAccelerator           ButtonType = 8
+	ButtonTypeMomentaryChange       ButtonType = 5
+	ButtonTypeMomentaryLight        ButtonType = 0
+	ButtonTypeMomentaryPushIn       ButtonType = 7
+	ButtonTypeMultiLevelAccelerator ButtonType = 9
+	ButtonTypeOnOff                 ButtonType = 6
+	ButtonTypePushOnPushOff         ButtonType = 1
+	ButtonTypeRadio                 ButtonType = 4
+	ButtonTypeSwitch                ButtonType = 3
+	ButtonTypeToggle                ButtonType = 2
+	MomentaryChangeButton           ButtonType = 5
+	MomentaryLight                  ButtonType = 7
+	MomentaryLightButton            ButtonType = 0
+	MomentaryPushButton             ButtonType = 0
+	MomentaryPushInButton           ButtonType = 7
+	MultiLevelAcceleratorButton     ButtonType = 9
+	OnOffButton                     ButtonType = 6
+	PushOnPushOffButton             ButtonType = 1
+	RadioButton                     ButtonType = 4
+	SwitchButton                    ButtonType = 3
+	ToggleButton                    ButtonType = 2
+)
 
+// Constants for specifying how a button behaves when pressed and how it displays its state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscellattribute?language=objc
 type CellAttribute uint
 
-const CellAllowsMixedState CellAttribute = 16
-const CellChangesContents CellAttribute = 14
-const CellDisabled CellAttribute = 0
-const CellEditable CellAttribute = 3
-const CellHasImageHorizontal CellAttribute = 12
-const CellHasImageOnLeftOrBottom CellAttribute = 13
-const CellHasOverlappingImage CellAttribute = 11
-const CellHighlighted CellAttribute = 5
-const CellIsBordered CellAttribute = 10
-const CellIsInsetButton CellAttribute = 15
-const CellLightsByBackground CellAttribute = 9
-const CellLightsByContents CellAttribute = 6
-const CellLightsByGray CellAttribute = 7
-const CellState CellAttribute = 1
-const ChangeBackgroundCell CellAttribute = 8
-const ChangeGrayCell CellAttribute = 4
-const PushInCell CellAttribute = 2
+const (
+	CellAllowsMixedState       CellAttribute = 16
+	CellChangesContents        CellAttribute = 14
+	CellDisabled               CellAttribute = 0
+	CellEditable               CellAttribute = 3
+	CellHasImageHorizontal     CellAttribute = 12
+	CellHasImageOnLeftOrBottom CellAttribute = 13
+	CellHasOverlappingImage    CellAttribute = 11
+	CellHighlighted            CellAttribute = 5
+	CellIsBordered             CellAttribute = 10
+	CellIsInsetButton          CellAttribute = 15
+	CellLightsByBackground     CellAttribute = 9
+	CellLightsByContents       CellAttribute = 6
+	CellLightsByGray           CellAttribute = 7
+	CellState                  CellAttribute = 1
+	ChangeBackgroundCell       CellAttribute = 8
+	ChangeGrayCell             CellAttribute = 4
+	PushInCell                 CellAttribute = 2
+)
 
+// Constants used by the hitTestForEvent:inRect:ofView: method to determine the effect of an event. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscellhitresult?language=objc
 type CellHitResult uint
 
-const CellHitContentArea CellHitResult = 1
-const CellHitEditableTextArea CellHitResult = 2
-const CellHitNone CellHitResult = 0
-const CellHitTrackableArea CellHitResult = 4
+const (
+	CellHitContentArea      CellHitResult = 1
+	CellHitEditableTextArea CellHitResult = 2
+	CellHitNone             CellHitResult = 0
+	CellHitTrackableArea    CellHitResult = 4
+)
 
+// A constant for specifying the position of a button’s image relative to its title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscellimageposition?language=objc
 type CellImagePosition uint
 
-const ImageAbove CellImagePosition = 5
-const ImageBelow CellImagePosition = 4
-const ImageLeading CellImagePosition = 7
-const ImageLeft CellImagePosition = 2
-const ImageOnly CellImagePosition = 1
-const ImageOverlaps CellImagePosition = 6
-const ImageRight CellImagePosition = 3
-const ImageTrailing CellImagePosition = 8
-const NoImage CellImagePosition = 0
+const (
+	ImageAbove    CellImagePosition = 5
+	ImageBelow    CellImagePosition = 4
+	ImageLeading  CellImagePosition = 7
+	ImageLeft     CellImagePosition = 2
+	ImageOnly     CellImagePosition = 1
+	ImageOverlaps CellImagePosition = 6
+	ImageRight    CellImagePosition = 3
+	ImageTrailing CellImagePosition = 8
+	NoImage       CellImagePosition = 0
+)
 
+// Constants for specifying a cell’s state and are used mostly for buttons. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscellstatevalue?language=objc
 type CellStateValue ControlStateValue
 
+// Constants for specifying what happens when a button is pressed or is displaying its alternate state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscellstylemask?language=objc
 type CellStyleMask uint
 
-const ChangeBackgroundCellMask CellStyleMask = 8
-const ChangeGrayCellMask CellStyleMask = 4
-const ContentsCellMask CellStyleMask = 1
-const NoCellMask CellStyleMask = 0
-const PushInCellMask CellStyleMask = 2
+const (
+	ChangeBackgroundCellMask CellStyleMask = 8
+	ChangeGrayCellMask       CellStyleMask = 4
+	ContentsCellMask         CellStyleMask = 1
+	NoCellMask               CellStyleMask = 0
+	PushInCellMask           CellStyleMask = 2
+)
 
+// Constants for specifying how a cell represents its data (as text or as an image). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscelltype?language=objc
 type CellType uint
 
-const ImageCellType CellType = 2
-const NullCellType CellType = 0
-const TextCellType CellType = 1
+const (
+	ImageCellType CellType = 2
+	NullCellType  CellType = 0
+	TextCellType  CellType = 1
+)
 
+// Values that map character identifiers to glyphs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscharactercollection?language=objc
 type CharacterCollection uint
 
-const AdobeCNS1CharacterCollection CharacterCollection = 1
-const AdobeGB1CharacterCollection CharacterCollection = 2
-const AdobeJapan1CharacterCollection CharacterCollection = 3
-const AdobeJapan2CharacterCollection CharacterCollection = 4
-const AdobeKorea1CharacterCollection CharacterCollection = 5
-const IdentityMappingCharacterCollection CharacterCollection = 0
+const (
+	AdobeCNS1CharacterCollection       CharacterCollection = 1
+	AdobeGB1CharacterCollection        CharacterCollection = 2
+	AdobeJapan1CharacterCollection     CharacterCollection = 3
+	AdobeJapan2CharacterCollection     CharacterCollection = 4
+	AdobeKorea1CharacterCollection     CharacterCollection = 5
+	IdentityMappingCharacterCollection CharacterCollection = 0
+)
 
+// Constants that describe how a participant can configure a CloudKit share. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudkitsharingserviceoptions?language=objc
 type CloudKitSharingServiceOptions uint
 
-const CloudKitSharingServiceAllowPrivate CloudKitSharingServiceOptions = 2
-const CloudKitSharingServiceAllowPublic CloudKitSharingServiceOptions = 1
-const CloudKitSharingServiceAllowReadOnly CloudKitSharingServiceOptions = 16
-const CloudKitSharingServiceAllowReadWrite CloudKitSharingServiceOptions = 32
-const CloudKitSharingServiceStandard CloudKitSharingServiceOptions = 0
+const (
+	CloudKitSharingServiceAllowPrivate   CloudKitSharingServiceOptions = 2
+	CloudKitSharingServiceAllowPublic    CloudKitSharingServiceOptions = 1
+	CloudKitSharingServiceAllowReadOnly  CloudKitSharingServiceOptions = 16
+	CloudKitSharingServiceAllowReadWrite CloudKitSharingServiceOptions = 32
+	CloudKitSharingServiceStandard       CloudKitSharingServiceOptions = 0
+)
 
+// Constants specifying the type of element in the collection view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionelementcategory?language=objc
 type CollectionElementCategory int
 
-const CollectionElementCategoryDecorationView CollectionElementCategory = 2
-const CollectionElementCategoryInterItemGap CollectionElementCategory = 3
-const CollectionElementCategoryItem CollectionElementCategory = 0
-const CollectionElementCategorySupplementaryView CollectionElementCategory = 1
+const (
+	CollectionElementCategoryDecorationView    CollectionElementCategory = 2
+	CollectionElementCategoryInterItemGap      CollectionElementCategory = 3
+	CollectionElementCategoryItem              CollectionElementCategory = 0
+	CollectionElementCategorySupplementaryView CollectionElementCategory = 1
+)
 
+// The scrolling behavior of the layout's sections in relation to the main layout axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionlayoutsectionorthogonalscrollingbehavior?language=objc
 type CollectionLayoutSectionOrthogonalScrollingBehavior int
 
-const CollectionLayoutSectionOrthogonalScrollingBehaviorContinuous CollectionLayoutSectionOrthogonalScrollingBehavior = 1
-const CollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary CollectionLayoutSectionOrthogonalScrollingBehavior = 2
-const CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging CollectionLayoutSectionOrthogonalScrollingBehavior = 4
-const CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered CollectionLayoutSectionOrthogonalScrollingBehavior = 5
-const CollectionLayoutSectionOrthogonalScrollingBehaviorNone CollectionLayoutSectionOrthogonalScrollingBehavior = 0
-const CollectionLayoutSectionOrthogonalScrollingBehaviorPaging CollectionLayoutSectionOrthogonalScrollingBehavior = 3
+const (
+	CollectionLayoutSectionOrthogonalScrollingBehaviorContinuous                     CollectionLayoutSectionOrthogonalScrollingBehavior = 1
+	CollectionLayoutSectionOrthogonalScrollingBehaviorContinuousGroupLeadingBoundary CollectionLayoutSectionOrthogonalScrollingBehavior = 2
+	CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPaging                    CollectionLayoutSectionOrthogonalScrollingBehavior = 4
+	CollectionLayoutSectionOrthogonalScrollingBehaviorGroupPagingCentered            CollectionLayoutSectionOrthogonalScrollingBehavior = 5
+	CollectionLayoutSectionOrthogonalScrollingBehaviorNone                           CollectionLayoutSectionOrthogonalScrollingBehavior = 0
+	CollectionLayoutSectionOrthogonalScrollingBehaviorPaging                         CollectionLayoutSectionOrthogonalScrollingBehavior = 3
+)
 
+// Constants indicating the type of action being performed on an item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionupdateaction?language=objc
 type CollectionUpdateAction int
 
-const CollectionUpdateActionDelete CollectionUpdateAction = 1
-const CollectionUpdateActionInsert CollectionUpdateAction = 0
-const CollectionUpdateActionMove CollectionUpdateAction = 3
-const CollectionUpdateActionNone CollectionUpdateAction = 4
-const CollectionUpdateActionReload CollectionUpdateAction = 2
+const (
+	CollectionUpdateActionDelete CollectionUpdateAction = 1
+	CollectionUpdateActionInsert CollectionUpdateAction = 0
+	CollectionUpdateActionMove   CollectionUpdateAction = 3
+	CollectionUpdateActionNone   CollectionUpdateAction = 4
+	CollectionUpdateActionReload CollectionUpdateAction = 2
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdecorationelementkind?language=objc
 type CollectionViewDecorationElementKind string
 
+// These constants specify if acceptance of a drop should be at the item it is dropped on or before the item. These constants are used by the  collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath: and collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath: methods in NSCollectionViewDelegate [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdropoperation?language=objc
 type CollectionViewDropOperation int
 
-const CollectionViewDropBefore CollectionViewDropOperation = 1
-const CollectionViewDropOn CollectionViewDropOperation = 0
+const (
+	CollectionViewDropBefore CollectionViewDropOperation = 1
+	CollectionViewDropOn     CollectionViewDropOperation = 0
+)
 
+// Constants indicating the type of highlight applied to an item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitemhighlightstate?language=objc
 type CollectionViewItemHighlightState int
 
-const CollectionViewItemHighlightAsDropTarget CollectionViewItemHighlightState = 3
-const CollectionViewItemHighlightForDeselection CollectionViewItemHighlightState = 2
-const CollectionViewItemHighlightForSelection CollectionViewItemHighlightState = 1
-const CollectionViewItemHighlightNone CollectionViewItemHighlightState = 0
+const (
+	CollectionViewItemHighlightAsDropTarget   CollectionViewItemHighlightState = 3
+	CollectionViewItemHighlightForDeselection CollectionViewItemHighlightState = 2
+	CollectionViewItemHighlightForSelection   CollectionViewItemHighlightState = 1
+	CollectionViewItemHighlightNone           CollectionViewItemHighlightState = 0
+)
 
+// Constants indicating the scrolling direction for the layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewscrolldirection?language=objc
 type CollectionViewScrollDirection int
 
-const CollectionViewScrollDirectionHorizontal CollectionViewScrollDirection = 1
-const CollectionViewScrollDirectionVertical CollectionViewScrollDirection = 0
+const (
+	CollectionViewScrollDirectionHorizontal CollectionViewScrollDirection = 1
+	CollectionViewScrollDirectionVertical   CollectionViewScrollDirection = 0
+)
 
+// Constants indicating the options for scrolling the collection view’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewscrollposition?language=objc
 type CollectionViewScrollPosition uint
 
-const CollectionViewScrollPositionBottom CollectionViewScrollPosition = 4
-const CollectionViewScrollPositionCenteredHorizontally CollectionViewScrollPosition = 16
-const CollectionViewScrollPositionCenteredVertically CollectionViewScrollPosition = 2
-const CollectionViewScrollPositionLeadingEdge CollectionViewScrollPosition = 64
-const CollectionViewScrollPositionLeft CollectionViewScrollPosition = 8
-const CollectionViewScrollPositionNearestHorizontalEdge CollectionViewScrollPosition = 512
-const CollectionViewScrollPositionNearestVerticalEdge CollectionViewScrollPosition = 256
-const CollectionViewScrollPositionNone CollectionViewScrollPosition = 0
-const CollectionViewScrollPositionRight CollectionViewScrollPosition = 32
-const CollectionViewScrollPositionTop CollectionViewScrollPosition = 1
-const CollectionViewScrollPositionTrailingEdge CollectionViewScrollPosition = 128
+const (
+	CollectionViewScrollPositionBottom                CollectionViewScrollPosition = 4
+	CollectionViewScrollPositionCenteredHorizontally  CollectionViewScrollPosition = 16
+	CollectionViewScrollPositionCenteredVertically    CollectionViewScrollPosition = 2
+	CollectionViewScrollPositionLeadingEdge           CollectionViewScrollPosition = 64
+	CollectionViewScrollPositionLeft                  CollectionViewScrollPosition = 8
+	CollectionViewScrollPositionNearestHorizontalEdge CollectionViewScrollPosition = 512
+	CollectionViewScrollPositionNearestVerticalEdge   CollectionViewScrollPosition = 256
+	CollectionViewScrollPositionNone                  CollectionViewScrollPosition = 0
+	CollectionViewScrollPositionRight                 CollectionViewScrollPosition = 32
+	CollectionViewScrollPositionTop                   CollectionViewScrollPosition = 1
+	CollectionViewScrollPositionTrailingEdge          CollectionViewScrollPosition = 128
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewsupplementaryelementkind?language=objc
 type CollectionViewSupplementaryElementKind string
 
-const CollectionElementKindInterItemGapIndicator CollectionViewSupplementaryElementKind = "NSCollectionElementKindInterItemGapIndicator"
-const CollectionElementKindSectionFooter CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionFooter"
-const CollectionElementKindSectionHeader CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionHeader"
+const (
+	CollectionElementKindInterItemGapIndicator CollectionViewSupplementaryElementKind = "NSCollectionElementKindInterItemGapIndicator"
+	CollectionElementKindSectionFooter         CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionFooter"
+	CollectionElementKindSectionHeader         CollectionViewSupplementaryElementKind = "UICollectionElementKindSectionHeader"
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayoutanimatedkey?language=objc
 type CollectionViewTransitionLayoutAnimatedKey string
 
+// The name assigned to a color list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlistname?language=objc
 type ColorListName string
 
+// The name of a color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorname?language=objc
 type ColorName string
 
+// A type defined for the enum constants specifying color panel modes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanelmode?language=objc
 type ColorPanelMode int
 
-const CMYKModeColorPanel ColorPanelMode = 2
-const ColorListModeColorPanel ColorPanelMode = 5
-const ColorPanelModeCMYK ColorPanelMode = 2
-const ColorPanelModeColorList ColorPanelMode = 5
-const ColorPanelModeCrayon ColorPanelMode = 7
-const ColorPanelModeCustomPalette ColorPanelMode = 4
-const ColorPanelModeGray ColorPanelMode = 0
-const ColorPanelModeHSB ColorPanelMode = 3
-const ColorPanelModeNone ColorPanelMode = -1
-const ColorPanelModeRGB ColorPanelMode = 1
-const ColorPanelModeWheel ColorPanelMode = 6
-const CrayonModeColorPanel ColorPanelMode = 7
-const CustomPaletteModeColorPanel ColorPanelMode = 4
-const GrayModeColorPanel ColorPanelMode = 0
-const HSBModeColorPanel ColorPanelMode = 3
-const NoModeColorPanel ColorPanelMode = -1
-const RGBModeColorPanel ColorPanelMode = 1
-const WheelModeColorPanel ColorPanelMode = 6
+const (
+	CMYKModeColorPanel          ColorPanelMode = 2
+	ColorListModeColorPanel     ColorPanelMode = 5
+	ColorPanelModeCMYK          ColorPanelMode = 2
+	ColorPanelModeColorList     ColorPanelMode = 5
+	ColorPanelModeCrayon        ColorPanelMode = 7
+	ColorPanelModeCustomPalette ColorPanelMode = 4
+	ColorPanelModeGray          ColorPanelMode = 0
+	ColorPanelModeHSB           ColorPanelMode = 3
+	ColorPanelModeNone          ColorPanelMode = -1
+	ColorPanelModeRGB           ColorPanelMode = 1
+	ColorPanelModeWheel         ColorPanelMode = 6
+	CrayonModeColorPanel        ColorPanelMode = 7
+	CustomPaletteModeColorPanel ColorPanelMode = 4
+	GrayModeColorPanel          ColorPanelMode = 0
+	HSBModeColorPanel           ColorPanelMode = 3
+	NoModeColorPanel            ColorPanelMode = -1
+	RGBModeColorPanel           ColorPanelMode = 1
+	WheelModeColorPanel         ColorPanelMode = 6
+)
 
+// The color modes that are enabled for a color panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpaneloptions?language=objc
 type ColorPanelOptions uint
 
-const ColorPanelAllModesMask ColorPanelOptions = 65535
-const ColorPanelCMYKModeMask ColorPanelOptions = 4
-const ColorPanelColorListModeMask ColorPanelOptions = 32
-const ColorPanelCrayonModeMask ColorPanelOptions = 128
-const ColorPanelCustomPaletteModeMask ColorPanelOptions = 16
-const ColorPanelGrayModeMask ColorPanelOptions = 1
-const ColorPanelHSBModeMask ColorPanelOptions = 8
-const ColorPanelRGBModeMask ColorPanelOptions = 2
-const ColorPanelWheelModeMask ColorPanelOptions = 64
+const (
+	ColorPanelAllModesMask          ColorPanelOptions = 65535
+	ColorPanelCMYKModeMask          ColorPanelOptions = 4
+	ColorPanelColorListModeMask     ColorPanelOptions = 32
+	ColorPanelCrayonModeMask        ColorPanelOptions = 128
+	ColorPanelCustomPaletteModeMask ColorPanelOptions = 16
+	ColorPanelGrayModeMask          ColorPanelOptions = 1
+	ColorPanelHSBModeMask           ColorPanelOptions = 8
+	ColorPanelRGBModeMask           ColorPanelOptions = 2
+	ColorPanelWheelModeMask         ColorPanelOptions = 64
+)
 
+// Constants that specify how Cocoa should handle colors that are not located within the destination color space of a graphics context. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorrenderingintent?language=objc
 type ColorRenderingIntent int
 
-const ColorRenderingIntentAbsoluteColorimetric ColorRenderingIntent = 1
-const ColorRenderingIntentDefault ColorRenderingIntent = 0
-const ColorRenderingIntentPerceptual ColorRenderingIntent = 3
-const ColorRenderingIntentRelativeColorimetric ColorRenderingIntent = 2
-const ColorRenderingIntentSaturation ColorRenderingIntent = 4
+const (
+	ColorRenderingIntentAbsoluteColorimetric ColorRenderingIntent = 1
+	ColorRenderingIntentDefault              ColorRenderingIntent = 0
+	ColorRenderingIntentPerceptual           ColorRenderingIntent = 3
+	ColorRenderingIntentRelativeColorimetric ColorRenderingIntent = 2
+	ColorRenderingIntentSaturation           ColorRenderingIntent = 4
+)
 
+// Constants that describe the abstract model on which color space objects are based. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorspacemodel?language=objc
 type ColorSpaceModel int
 
-const CMYKColorSpaceModel ColorSpaceModel = 2
-const ColorSpaceModelCMYK ColorSpaceModel = 2
-const ColorSpaceModelDeviceN ColorSpaceModel = 4
-const ColorSpaceModelGray ColorSpaceModel = 0
-const ColorSpaceModelIndexed ColorSpaceModel = 5
-const ColorSpaceModelLAB ColorSpaceModel = 3
-const ColorSpaceModelPatterned ColorSpaceModel = 6
-const ColorSpaceModelRGB ColorSpaceModel = 1
-const ColorSpaceModelUnknown ColorSpaceModel = -1
-const DeviceNColorSpaceModel ColorSpaceModel = 4
-const GrayColorSpaceModel ColorSpaceModel = 0
-const IndexedColorSpaceModel ColorSpaceModel = 5
-const LABColorSpaceModel ColorSpaceModel = 3
-const PatternColorSpaceModel ColorSpaceModel = 6
-const RGBColorSpaceModel ColorSpaceModel = 1
-const UnknownColorSpaceModel ColorSpaceModel = -1
+const (
+	CMYKColorSpaceModel      ColorSpaceModel = 2
+	ColorSpaceModelCMYK      ColorSpaceModel = 2
+	ColorSpaceModelDeviceN   ColorSpaceModel = 4
+	ColorSpaceModelGray      ColorSpaceModel = 0
+	ColorSpaceModelIndexed   ColorSpaceModel = 5
+	ColorSpaceModelLAB       ColorSpaceModel = 3
+	ColorSpaceModelPatterned ColorSpaceModel = 6
+	ColorSpaceModelRGB       ColorSpaceModel = 1
+	ColorSpaceModelUnknown   ColorSpaceModel = -1
+	DeviceNColorSpaceModel   ColorSpaceModel = 4
+	GrayColorSpaceModel      ColorSpaceModel = 0
+	IndexedColorSpaceModel   ColorSpaceModel = 5
+	LABColorSpaceModel       ColorSpaceModel = 3
+	PatternColorSpaceModel   ColorSpaceModel = 6
+	RGBColorSpaceModel       ColorSpaceModel = 1
+	UnknownColorSpaceModel   ColorSpaceModel = -1
+)
 
+// Constants that specify color space names. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorspacename?language=objc
 type ColorSpaceName string
 
-const CalibratedBlackColorSpace ColorSpaceName = "NSCalibratedBlackColorSpace"
-const CalibratedRGBColorSpace ColorSpaceName = "NSCalibratedRGBColorSpace"
-const CalibratedWhiteColorSpace ColorSpaceName = "NSCalibratedWhiteColorSpace"
-const CustomColorSpace ColorSpaceName = "NSCustomColorSpace"
-const DeviceBlackColorSpace ColorSpaceName = "NSDeviceBlackColorSpace"
-const DeviceCMYKColorSpace ColorSpaceName = "NSDeviceCMYKColorSpace"
-const DeviceRGBColorSpace ColorSpaceName = "NSDeviceRGBColorSpace"
-const DeviceWhiteColorSpace ColorSpaceName = "NSDeviceWhiteColorSpace"
-const NamedColorSpace ColorSpaceName = "NSNamedColorSpace"
-const PatternColorSpace ColorSpaceName = "NSPatternColorSpace"
+const (
+	CalibratedBlackColorSpace ColorSpaceName = "NSCalibratedBlackColorSpace"
+	CalibratedRGBColorSpace   ColorSpaceName = "NSCalibratedRGBColorSpace"
+	CalibratedWhiteColorSpace ColorSpaceName = "NSCalibratedWhiteColorSpace"
+	CustomColorSpace          ColorSpaceName = "NSCustomColorSpace"
+	DeviceBlackColorSpace     ColorSpaceName = "NSDeviceBlackColorSpace"
+	DeviceCMYKColorSpace      ColorSpaceName = "NSDeviceCMYKColorSpace"
+	DeviceRGBColorSpace       ColorSpaceName = "NSDeviceRGBColorSpace"
+	DeviceWhiteColorSpace     ColorSpaceName = "NSDeviceWhiteColorSpace"
+	NamedColorSpace           ColorSpaceName = "NSNamedColorSpace"
+	PatternColorSpace         ColorSpaceName = "NSPatternColorSpace"
+)
 
+// Constants for user interactions that change the appearance of a view or control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorsystemeffect?language=objc
 type ColorSystemEffect int
 
-const ColorSystemEffectDeepPressed ColorSystemEffect = 2
-const ColorSystemEffectDisabled ColorSystemEffect = 3
-const ColorSystemEffectNone ColorSystemEffect = 0
-const ColorSystemEffectPressed ColorSystemEffect = 1
-const ColorSystemEffectRollover ColorSystemEffect = 4
+const (
+	ColorSystemEffectDeepPressed ColorSystemEffect = 2
+	ColorSystemEffectDisabled    ColorSystemEffect = 3
+	ColorSystemEffectNone        ColorSystemEffect = 0
+	ColorSystemEffectPressed     ColorSystemEffect = 1
+	ColorSystemEffectRollover    ColorSystemEffect = 4
+)
 
+// Constants that indicate the color's type, and which methods may be called on the color object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolortype?language=objc
 type ColorType int
 
-const ColorTypeCatalog ColorType = 2
-const ColorTypeComponentBased ColorType = 0
-const ColorTypePattern ColorType = 1
+const (
+	ColorTypeCatalog        ColorType = 2
+	ColorTypeComponentBased ColorType = 0
+	ColorTypePattern        ColorType = 1
+)
 
+// Constants that describe compositing operators in terms of source and destination images, each having an opaque and transparent region. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscompositingoperation?language=objc
 type CompositingOperation uint
 
-const CompositeClear CompositingOperation = 0
-const CompositeColor CompositingOperation = 27
-const CompositeColorBurn CompositingOperation = 20
-const CompositeColorDodge CompositingOperation = 19
-const CompositeCopy CompositingOperation = 1
-const CompositeDarken CompositingOperation = 17
-const CompositeDestinationAtop CompositingOperation = 9
-const CompositeDestinationIn CompositingOperation = 7
-const CompositeDestinationOut CompositingOperation = 8
-const CompositeDestinationOver CompositingOperation = 6
-const CompositeDifference CompositingOperation = 23
-const CompositeExclusion CompositingOperation = 24
-const CompositeHardLight CompositingOperation = 22
-const CompositeHighlight CompositingOperation = 12
-const CompositeHue CompositingOperation = 25
-const CompositeLighten CompositingOperation = 18
-const CompositeLuminosity CompositingOperation = 28
-const CompositeMultiply CompositingOperation = 14
-const CompositeOverlay CompositingOperation = 16
-const CompositePlusDarker CompositingOperation = 11
-const CompositePlusLighter CompositingOperation = 13
-const CompositeSaturation CompositingOperation = 26
-const CompositeScreen CompositingOperation = 15
-const CompositeSoftLight CompositingOperation = 21
-const CompositeSourceAtop CompositingOperation = 5
-const CompositeSourceIn CompositingOperation = 3
-const CompositeSourceOut CompositingOperation = 4
-const CompositeSourceOver CompositingOperation = 2
-const CompositeXOR CompositingOperation = 10
-const CompositingOperationClear CompositingOperation = 0
-const CompositingOperationColor CompositingOperation = 27
-const CompositingOperationColorBurn CompositingOperation = 20
-const CompositingOperationColorDodge CompositingOperation = 19
-const CompositingOperationCopy CompositingOperation = 1
-const CompositingOperationDarken CompositingOperation = 17
-const CompositingOperationDestinationAtop CompositingOperation = 9
-const CompositingOperationDestinationIn CompositingOperation = 7
-const CompositingOperationDestinationOut CompositingOperation = 8
-const CompositingOperationDestinationOver CompositingOperation = 6
-const CompositingOperationDifference CompositingOperation = 23
-const CompositingOperationExclusion CompositingOperation = 24
-const CompositingOperationHardLight CompositingOperation = 22
-const CompositingOperationHighlight CompositingOperation = 12
-const CompositingOperationHue CompositingOperation = 25
-const CompositingOperationLighten CompositingOperation = 18
-const CompositingOperationLuminosity CompositingOperation = 28
-const CompositingOperationMultiply CompositingOperation = 14
-const CompositingOperationOverlay CompositingOperation = 16
-const CompositingOperationPlusDarker CompositingOperation = 11
-const CompositingOperationPlusLighter CompositingOperation = 13
-const CompositingOperationSaturation CompositingOperation = 26
-const CompositingOperationScreen CompositingOperation = 15
-const CompositingOperationSoftLight CompositingOperation = 21
-const CompositingOperationSourceAtop CompositingOperation = 5
-const CompositingOperationSourceIn CompositingOperation = 3
-const CompositingOperationSourceOut CompositingOperation = 4
-const CompositingOperationSourceOver CompositingOperation = 2
-const CompositingOperationXOR CompositingOperation = 10
+const (
+	CompositeClear                      CompositingOperation = 0
+	CompositeColor                      CompositingOperation = 27
+	CompositeColorBurn                  CompositingOperation = 20
+	CompositeColorDodge                 CompositingOperation = 19
+	CompositeCopy                       CompositingOperation = 1
+	CompositeDarken                     CompositingOperation = 17
+	CompositeDestinationAtop            CompositingOperation = 9
+	CompositeDestinationIn              CompositingOperation = 7
+	CompositeDestinationOut             CompositingOperation = 8
+	CompositeDestinationOver            CompositingOperation = 6
+	CompositeDifference                 CompositingOperation = 23
+	CompositeExclusion                  CompositingOperation = 24
+	CompositeHardLight                  CompositingOperation = 22
+	CompositeHighlight                  CompositingOperation = 12
+	CompositeHue                        CompositingOperation = 25
+	CompositeLighten                    CompositingOperation = 18
+	CompositeLuminosity                 CompositingOperation = 28
+	CompositeMultiply                   CompositingOperation = 14
+	CompositeOverlay                    CompositingOperation = 16
+	CompositePlusDarker                 CompositingOperation = 11
+	CompositePlusLighter                CompositingOperation = 13
+	CompositeSaturation                 CompositingOperation = 26
+	CompositeScreen                     CompositingOperation = 15
+	CompositeSoftLight                  CompositingOperation = 21
+	CompositeSourceAtop                 CompositingOperation = 5
+	CompositeSourceIn                   CompositingOperation = 3
+	CompositeSourceOut                  CompositingOperation = 4
+	CompositeSourceOver                 CompositingOperation = 2
+	CompositeXOR                        CompositingOperation = 10
+	CompositingOperationClear           CompositingOperation = 0
+	CompositingOperationColor           CompositingOperation = 27
+	CompositingOperationColorBurn       CompositingOperation = 20
+	CompositingOperationColorDodge      CompositingOperation = 19
+	CompositingOperationCopy            CompositingOperation = 1
+	CompositingOperationDarken          CompositingOperation = 17
+	CompositingOperationDestinationAtop CompositingOperation = 9
+	CompositingOperationDestinationIn   CompositingOperation = 7
+	CompositingOperationDestinationOut  CompositingOperation = 8
+	CompositingOperationDestinationOver CompositingOperation = 6
+	CompositingOperationDifference      CompositingOperation = 23
+	CompositingOperationExclusion       CompositingOperation = 24
+	CompositingOperationHardLight       CompositingOperation = 22
+	CompositingOperationHighlight       CompositingOperation = 12
+	CompositingOperationHue             CompositingOperation = 25
+	CompositingOperationLighten         CompositingOperation = 18
+	CompositingOperationLuminosity      CompositingOperation = 28
+	CompositingOperationMultiply        CompositingOperation = 14
+	CompositingOperationOverlay         CompositingOperation = 16
+	CompositingOperationPlusDarker      CompositingOperation = 11
+	CompositingOperationPlusLighter     CompositingOperation = 13
+	CompositingOperationSaturation      CompositingOperation = 26
+	CompositingOperationScreen          CompositingOperation = 15
+	CompositingOperationSoftLight       CompositingOperation = 21
+	CompositingOperationSourceAtop      CompositingOperation = 5
+	CompositingOperationSourceIn        CompositingOperation = 3
+	CompositingOperationSourceOut       CompositingOperation = 4
+	CompositingOperationSourceOver      CompositingOperation = 2
+	CompositingOperationXOR             CompositingOperation = 10
+)
 
+// Constants that describe actions for control characters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscontrolcharacteraction?language=objc
 type ControlCharacterAction int
 
-const ControlCharacterActionContainerBreak ControlCharacterAction = 32
-const ControlCharacterActionHorizontalTab ControlCharacterAction = 4
-const ControlCharacterActionLineBreak ControlCharacterAction = 8
-const ControlCharacterActionParagraphBreak ControlCharacterAction = 16
-const ControlCharacterActionWhitespace ControlCharacterAction = 2
-const ControlCharacterActionZeroAdvancement ControlCharacterAction = 1
+const (
+	ControlCharacterActionContainerBreak  ControlCharacterAction = 32
+	ControlCharacterActionHorizontalTab   ControlCharacterAction = 4
+	ControlCharacterActionLineBreak       ControlCharacterAction = 8
+	ControlCharacterActionParagraphBreak  ControlCharacterAction = 16
+	ControlCharacterActionWhitespace      ControlCharacterAction = 2
+	ControlCharacterActionZeroAdvancement ControlCharacterAction = 1
+)
 
+// A constant for specifying a cell’s size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrolsize?language=objc
 type ControlSize uint
 
-const ControlSizeLarge ControlSize = 3
-const ControlSizeMini ControlSize = 2
-const ControlSizeRegular ControlSize = 0
-const ControlSizeSmall ControlSize = 1
-const MiniControlSize ControlSize = 2
-const RegularControlSize ControlSize = 0
-const SmallControlSize ControlSize = 1
+const (
+	ControlSizeLarge   ControlSize = 3
+	ControlSizeMini    ControlSize = 2
+	ControlSizeRegular ControlSize = 0
+	ControlSizeSmall   ControlSize = 1
+	MiniControlSize    ControlSize = 2
+	RegularControlSize ControlSize = 0
+	SmallControlSize   ControlSize = 1
+)
 
+// A constant that indicates whether a control is on, off, or in a mixed state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrolstatevalue?language=objc
 type ControlStateValue int
 
-const ControlStateValueMixed ControlStateValue = -1
-const ControlStateValueOff ControlStateValue = 0
-const ControlStateValueOn ControlStateValue = 1
-const MixedState ControlStateValue = -1
-const OffState ControlStateValue = 0
-const OnState ControlStateValue = 1
+const (
+	ControlStateValueMixed ControlStateValue = -1
+	ControlStateValueOff   ControlStateValue = 0
+	ControlStateValueOn    ControlStateValue = 1
+	MixedState             ControlStateValue = -1
+	OffState               ControlStateValue = 0
+	OnState                ControlStateValue = 1
+)
 
+// Constants for specifying a cell’s tint color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltint?language=objc
 type ControlTint uint
 
-const BlueControlTint ControlTint = 1
-const ClearControlTint ControlTint = 7
-const DefaultControlTint ControlTint = 0
-const GraphiteControlTint ControlTint = 6
+const (
+	BlueControlTint     ControlTint = 1
+	ClearControlTint    ControlTint = 7
+	DefaultControlTint  ControlTint = 0
+	GraphiteControlTint ControlTint = 6
+)
 
+// Constants that allow an app to specify the correction indicator type displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscorrectionindicatortype?language=objc
 type CorrectionIndicatorType int
 
-const CorrectionIndicatorTypeDefault CorrectionIndicatorType = 0
-const CorrectionIndicatorTypeGuesses CorrectionIndicatorType = 2
-const CorrectionIndicatorTypeReversion CorrectionIndicatorType = 1
+const (
+	CorrectionIndicatorTypeDefault   CorrectionIndicatorType = 0
+	CorrectionIndicatorTypeGuesses   CorrectionIndicatorType = 2
+	CorrectionIndicatorTypeReversion CorrectionIndicatorType = 1
+)
 
+// The correction response passed to therecordResponse:toCorrection:forWord:language:inSpellDocumentWithTag: method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscorrectionresponse?language=objc
 type CorrectionResponse int
 
-const CorrectionResponseAccepted CorrectionResponse = 1
-const CorrectionResponseEdited CorrectionResponse = 4
-const CorrectionResponseIgnored CorrectionResponse = 3
-const CorrectionResponseNone CorrectionResponse = 0
-const CorrectionResponseRejected CorrectionResponse = 2
-const CorrectionResponseReverted CorrectionResponse = 5
+const (
+	CorrectionResponseAccepted CorrectionResponse = 1
+	CorrectionResponseEdited   CorrectionResponse = 4
+	CorrectionResponseIgnored  CorrectionResponse = 3
+	CorrectionResponseNone     CorrectionResponse = 0
+	CorrectionResponseRejected CorrectionResponse = 2
+	CorrectionResponseReverted CorrectionResponse = 5
+)
 
+// The name of a data asset. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsdataassetname?language=objc
 type DataAssetName string
 
+// Constants that specify the date and time elements displayed by the picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickerelementflags?language=objc
 type DatePickerElementFlags uint
 
-const DatePickerElementFlagEra DatePickerElementFlags = 256
-const DatePickerElementFlagHourMinute DatePickerElementFlags = 12
-const DatePickerElementFlagHourMinuteSecond DatePickerElementFlags = 14
-const DatePickerElementFlagTimeZone DatePickerElementFlags = 16
-const DatePickerElementFlagYearMonth DatePickerElementFlags = 192
-const DatePickerElementFlagYearMonthDay DatePickerElementFlags = 224
-const EraDatePickerElementFlag DatePickerElementFlags = 256
-const HourMinuteDatePickerElementFlag DatePickerElementFlags = 12
-const HourMinuteSecondDatePickerElementFlag DatePickerElementFlags = 14
-const TimeZoneDatePickerElementFlag DatePickerElementFlags = 16
-const YearMonthDatePickerElementFlag DatePickerElementFlags = 192
-const YearMonthDayDatePickerElementFlag DatePickerElementFlags = 224
+const (
+	DatePickerElementFlagEra              DatePickerElementFlags = 256
+	DatePickerElementFlagHourMinute       DatePickerElementFlags = 12
+	DatePickerElementFlagHourMinuteSecond DatePickerElementFlags = 14
+	DatePickerElementFlagTimeZone         DatePickerElementFlags = 16
+	DatePickerElementFlagYearMonth        DatePickerElementFlags = 192
+	DatePickerElementFlagYearMonthDay     DatePickerElementFlags = 224
+	EraDatePickerElementFlag              DatePickerElementFlags = 256
+	HourMinuteDatePickerElementFlag       DatePickerElementFlags = 12
+	HourMinuteSecondDatePickerElementFlag DatePickerElementFlags = 14
+	TimeZoneDatePickerElementFlag         DatePickerElementFlags = 16
+	YearMonthDatePickerElementFlag        DatePickerElementFlags = 192
+	YearMonthDayDatePickerElementFlag     DatePickerElementFlags = 224
+)
 
+// Constants that define whether the picker provides a single date, or a range of dates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickermode?language=objc
 type DatePickerMode uint
 
-const DatePickerModeRange DatePickerMode = 1
-const DatePickerModeSingle DatePickerMode = 0
-const RangeDateMode DatePickerMode = 1
-const SingleDateMode DatePickerMode = 0
+const (
+	DatePickerModeRange  DatePickerMode = 1
+	DatePickerModeSingle DatePickerMode = 0
+	RangeDateMode        DatePickerMode = 1
+	SingleDateMode       DatePickerMode = 0
+)
 
+// Constants that define the visual appearance of the date picker cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickerstyle?language=objc
 type DatePickerStyle uint
 
-const ClockAndCalendarDatePickerStyle DatePickerStyle = 1
-const DatePickerStyleClockAndCalendar DatePickerStyle = 1
-const DatePickerStyleTextField DatePickerStyle = 2
-const DatePickerStyleTextFieldAndStepper DatePickerStyle = 0
-const TextFieldAndStepperDatePickerStyle DatePickerStyle = 0
-const TextFieldDatePickerStyle DatePickerStyle = 2
+const (
+	ClockAndCalendarDatePickerStyle    DatePickerStyle = 1
+	DatePickerStyleClockAndCalendar    DatePickerStyle = 1
+	DatePickerStyleTextField           DatePickerStyle = 2
+	DatePickerStyleTextFieldAndStepper DatePickerStyle = 0
+	TextFieldAndStepperDatePickerStyle DatePickerStyle = 0
+	TextFieldDatePickerStyle           DatePickerStyle = 2
+)
 
+// Keys to include in your definition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdefinitionoptionkey?language=objc
 type DefinitionOptionKey string
 
-const DefinitionPresentationTypeKey DefinitionOptionKey = "NSDefinitionPresentationTypeKey"
+const (
+	DefinitionPresentationTypeKey DefinitionOptionKey = "NSDefinitionPresentationTypeKey"
+)
 
+// Presentation options for the window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdefinitionpresentationtype?language=objc
 type DefinitionPresentationType string
 
-const DefinitionPresentationTypeDictionaryApplication DefinitionPresentationType = "NSDefinitionPresentationTypeDictionaryApplication"
-const DefinitionPresentationTypeOverlay DefinitionPresentationType = "NSDefinitionPresentationTypeOverlay"
+const (
+	DefinitionPresentationTypeDictionaryApplication DefinitionPresentationType = "NSDefinitionPresentationTypeDictionaryApplication"
+	DefinitionPresentationTypeOverlay               DefinitionPresentationType = "NSDefinitionPresentationTypeOverlay"
+)
 
+// These constants are the keys for device description dictionaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdevicedescriptionkey?language=objc
 type DeviceDescriptionKey string
 
-const DeviceBitsPerSample DeviceDescriptionKey = "NSDeviceBitsPerSample"
-const DeviceColorSpaceName DeviceDescriptionKey = "NSDeviceColorSpaceName"
-const DeviceIsPrinter DeviceDescriptionKey = "NSDeviceIsPrinter"
-const DeviceIsScreen DeviceDescriptionKey = "NSDeviceIsScreen"
-const DeviceResolution DeviceDescriptionKey = "NSDeviceResolution"
-const DeviceSize DeviceDescriptionKey = "NSDeviceSize"
+const (
+	DeviceBitsPerSample  DeviceDescriptionKey = "NSDeviceBitsPerSample"
+	DeviceColorSpaceName DeviceDescriptionKey = "NSDeviceColorSpaceName"
+	DeviceIsPrinter      DeviceDescriptionKey = "NSDeviceIsPrinter"
+	DeviceIsScreen       DeviceDescriptionKey = "NSDeviceIsScreen"
+	DeviceResolution     DeviceDescriptionKey = "NSDeviceResolution"
+	DeviceSize           DeviceDescriptionKey = "NSDeviceSize"
+)
 
+// Constants that specify an edge or a set of edges, taking the user interface layout direction into account. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsdirectionalrectedge?language=objc
 type DirectionalRectEdge uint
 
-const DirectionalRectEdgeAll DirectionalRectEdge = 15
-const DirectionalRectEdgeBottom DirectionalRectEdge = 4
-const DirectionalRectEdgeLeading DirectionalRectEdge = 2
-const DirectionalRectEdgeNone DirectionalRectEdge = 0
-const DirectionalRectEdgeTop DirectionalRectEdge = 1
-const DirectionalRectEdgeTrailing DirectionalRectEdge = 8
+const (
+	DirectionalRectEdgeAll      DirectionalRectEdge = 15
+	DirectionalRectEdgeBottom   DirectionalRectEdge = 4
+	DirectionalRectEdgeLeading  DirectionalRectEdge = 2
+	DirectionalRectEdgeNone     DirectionalRectEdge = 0
+	DirectionalRectEdgeTop      DirectionalRectEdge = 1
+	DirectionalRectEdgeTrailing DirectionalRectEdge = 8
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdisplaygamut?language=objc
 type DisplayGamut int
 
-const DisplayGamutP3 DisplayGamut = 2
-const DisplayGamutSRGB DisplayGamut = 1
+const (
+	DisplayGamutP3   DisplayGamut = 2
+	DisplayGamutSRGB DisplayGamut = 1
+)
 
+// Values that indicate a document’s edit status. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentchangetype?language=objc
 type DocumentChangeType uint
 
-const ChangeAutosaved DocumentChangeType = 4
-const ChangeCleared DocumentChangeType = 2
-const ChangeDiscardable DocumentChangeType = 256
-const ChangeDone DocumentChangeType = 0
-const ChangeReadOtherContents DocumentChangeType = 3
-const ChangeRedone DocumentChangeType = 5
-const ChangeUndone DocumentChangeType = 1
+const (
+	ChangeAutosaved         DocumentChangeType = 4
+	ChangeCleared           DocumentChangeType = 2
+	ChangeDiscardable       DocumentChangeType = 256
+	ChangeDone              DocumentChangeType = 0
+	ChangeReadOtherContents DocumentChangeType = 3
+	ChangeRedone            DocumentChangeType = 5
+	ChangeUndone            DocumentChangeType = 1
+)
 
+// A group of constants that represent which operations the dragging source can perform on dragging items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragoperation?language=objc
 type DragOperation uint
 
-const DragOperationAll_Obsolete DragOperation = 15
-const DragOperationCopy DragOperation = 1
-const DragOperationDelete DragOperation = 32
-const DragOperationEvery DragOperation = math.MaxUint
-const DragOperationGeneric DragOperation = 4
-const DragOperationLink DragOperation = 2
-const DragOperationMove DragOperation = 16
-const DragOperationNone DragOperation = 0
-const DragOperationPrivate DragOperation = 8
+const (
+	DragOperationAll_Obsolete DragOperation = 15
+	DragOperationCopy         DragOperation = 1
+	DragOperationDelete       DragOperation = 32
+	DragOperationEvery        DragOperation = math.MaxUint
+	DragOperationGeneric      DragOperation = 4
+	DragOperationLink         DragOperation = 2
+	DragOperationMove         DragOperation = 16
+	DragOperationNone         DragOperation = 0
+	DragOperationPrivate      DragOperation = 8
+)
 
+// Constants that specify whether a drag terminates within or outside the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingcontext?language=objc
 type DraggingContext int
 
-const DraggingContextOutsideApplication DraggingContext = 0
-const DraggingContextWithinApplication DraggingContext = 1
+const (
+	DraggingContextOutsideApplication DraggingContext = 0
+	DraggingContextWithinApplication  DraggingContext = 1
+)
 
+// Constants that control the visual format of multiple dragging items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingformation?language=objc
 type DraggingFormation int
 
-const DraggingFormationDefault DraggingFormation = 0
-const DraggingFormationList DraggingFormation = 3
-const DraggingFormationNone DraggingFormation = 1
-const DraggingFormationPile DraggingFormation = 2
-const DraggingFormationStack DraggingFormation = 4
+const (
+	DraggingFormationDefault DraggingFormation = 0
+	DraggingFormationList    DraggingFormation = 3
+	DraggingFormationNone    DraggingFormation = 1
+	DraggingFormationPile    DraggingFormation = 2
+	DraggingFormationStack   DraggingFormation = 4
+)
 
+// Keys that identify components of a dragging image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingimagecomponentkey?language=objc
 type DraggingImageComponentKey string
 
-const DraggingImageComponentIconKey DraggingImageComponentKey = "icon"
-const DraggingImageComponentLabelKey DraggingImageComponentKey = "label"
+const (
+	DraggingImageComponentIconKey  DraggingImageComponentKey = "icon"
+	DraggingImageComponentLabelKey DraggingImageComponentKey = "label"
+)
 
+// A group of constants that specify options to use when enumerating dragging items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitemenumerationoptions?language=objc
 type DraggingItemEnumerationOptions uint
 
-const DraggingItemEnumerationClearNonenumeratedImages DraggingItemEnumerationOptions = 65536
-const DraggingItemEnumerationConcurrent DraggingItemEnumerationOptions = 1
+const (
+	DraggingItemEnumerationClearNonenumeratedImages DraggingItemEnumerationOptions = 65536
+	DraggingItemEnumerationConcurrent               DraggingItemEnumerationOptions = 1
+)
 
+// These constants specify the possible states of a drawer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdrawerstate?language=objc
 type DrawerState uint
 
-const DrawerClosedState DrawerState = 0
-const DrawerClosingState DrawerState = 3
-const DrawerOpenState DrawerState = 2
-const DrawerOpeningState DrawerState = 1
+const (
+	DrawerClosedState  DrawerState = 0
+	DrawerClosingState DrawerState = 3
+	DrawerOpenState    DrawerState = 2
+	DrawerOpeningState DrawerState = 1
+)
 
+// Constants you use to identify the activated tablet buttons in an event. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventbuttonmask?language=objc
 type EventButtonMask uint
 
-const EventButtonMaskPenLowerSide EventButtonMask = 2
-const EventButtonMaskPenTip EventButtonMask = 1
-const EventButtonMaskPenUpperSide EventButtonMask = 4
-const PenLowerSideMask EventButtonMask = 2
-const PenTipMask EventButtonMask = 1
-const PenUpperSideMask EventButtonMask = 4
+const (
+	EventButtonMaskPenLowerSide EventButtonMask = 2
+	EventButtonMaskPenTip       EventButtonMask = 1
+	EventButtonMaskPenUpperSide EventButtonMask = 4
+	PenLowerSideMask            EventButtonMask = 2
+	PenTipMask                  EventButtonMask = 1
+	PenUpperSideMask            EventButtonMask = 4
+)
 
+// Constants that specify the direction of travel for a gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventgestureaxis?language=objc
 type EventGestureAxis int
 
-const EventGestureAxisHorizontal EventGestureAxis = 1
-const EventGestureAxisNone EventGestureAxis = 0
-const EventGestureAxisVertical EventGestureAxis = 2
+const (
+	EventGestureAxisHorizontal EventGestureAxis = 1
+	EventGestureAxisNone       EventGestureAxis = 0
+	EventGestureAxisVertical   EventGestureAxis = 2
+)
 
+// Constants that you use to filter out specific event types from the stream of incoming events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventmask?language=objc
 type EventMask int64
 
-const AnyEventMask EventMask = -1
-const AppKitDefinedMask EventMask = 8192
-const ApplicationDefinedMask EventMask = 32768
-const CursorUpdateMask EventMask = 131072
-const EventMaskAny EventMask = -1
-const EventMaskAppKitDefined EventMask = 8192
-const EventMaskApplicationDefined EventMask = 32768
-const EventMaskBeginGesture EventMask = 524288
-const EventMaskChangeMode EventMask = 274877906944
-const EventMaskCursorUpdate EventMask = 131072
-const EventMaskDirectTouch EventMask = 137438953472
-const EventMaskEndGesture EventMask = 1048576
-const EventMaskFlagsChanged EventMask = 4096
-const EventMaskGesture EventMask = 536870912
-const EventMaskKeyDown EventMask = 1024
-const EventMaskKeyUp EventMask = 2048
-const EventMaskLeftMouseDown EventMask = 2
-const EventMaskLeftMouseDragged EventMask = 64
-const EventMaskLeftMouseUp EventMask = 4
-const EventMaskMagnify EventMask = 1073741824
-const EventMaskMouseEntered EventMask = 256
-const EventMaskMouseExited EventMask = 512
-const EventMaskMouseMoved EventMask = 32
-const EventMaskOtherMouseDown EventMask = 33554432
-const EventMaskOtherMouseDragged EventMask = 134217728
-const EventMaskOtherMouseUp EventMask = 67108864
-const EventMaskPeriodic EventMask = 65536
-const EventMaskPressure EventMask = 17179869184
-const EventMaskRightMouseDown EventMask = 8
-const EventMaskRightMouseDragged EventMask = 128
-const EventMaskRightMouseUp EventMask = 16
-const EventMaskRotate EventMask = 262144
-const EventMaskScrollWheel EventMask = 4194304
-const EventMaskSmartMagnify EventMask = 4294967296
-const EventMaskSwipe EventMask = 2147483648
-const EventMaskSystemDefined EventMask = 16384
-const EventMaskTabletPoint EventMask = 8388608
-const EventMaskTabletProximity EventMask = 16777216
-const FlagsChangedMask EventMask = 4096
-const KeyDownMask EventMask = 1024
-const KeyUpMask EventMask = 2048
-const LeftMouseDownMask EventMask = 2
-const LeftMouseDraggedMask EventMask = 64
-const LeftMouseUpMask EventMask = 4
-const MouseEnteredMask EventMask = 256
-const MouseExitedMask EventMask = 512
-const MouseMovedMask EventMask = 32
-const OtherMouseDownMask EventMask = 33554432
-const OtherMouseDraggedMask EventMask = 134217728
-const OtherMouseUpMask EventMask = 67108864
-const PeriodicMask EventMask = 65536
-const RightMouseDownMask EventMask = 8
-const RightMouseDraggedMask EventMask = 128
-const RightMouseUpMask EventMask = 16
-const ScrollWheelMask EventMask = 4194304
-const SystemDefinedMask EventMask = 16384
-const TabletPointMask EventMask = 8388608
-const TabletProximityMask EventMask = 16777216
+const (
+	AnyEventMask                EventMask = -1
+	AppKitDefinedMask           EventMask = 8192
+	ApplicationDefinedMask      EventMask = 32768
+	CursorUpdateMask            EventMask = 131072
+	EventMaskAny                EventMask = -1
+	EventMaskAppKitDefined      EventMask = 8192
+	EventMaskApplicationDefined EventMask = 32768
+	EventMaskBeginGesture       EventMask = 524288
+	EventMaskChangeMode         EventMask = 274877906944
+	EventMaskCursorUpdate       EventMask = 131072
+	EventMaskDirectTouch        EventMask = 137438953472
+	EventMaskEndGesture         EventMask = 1048576
+	EventMaskFlagsChanged       EventMask = 4096
+	EventMaskGesture            EventMask = 536870912
+	EventMaskKeyDown            EventMask = 1024
+	EventMaskKeyUp              EventMask = 2048
+	EventMaskLeftMouseDown      EventMask = 2
+	EventMaskLeftMouseDragged   EventMask = 64
+	EventMaskLeftMouseUp        EventMask = 4
+	EventMaskMagnify            EventMask = 1073741824
+	EventMaskMouseEntered       EventMask = 256
+	EventMaskMouseExited        EventMask = 512
+	EventMaskMouseMoved         EventMask = 32
+	EventMaskOtherMouseDown     EventMask = 33554432
+	EventMaskOtherMouseDragged  EventMask = 134217728
+	EventMaskOtherMouseUp       EventMask = 67108864
+	EventMaskPeriodic           EventMask = 65536
+	EventMaskPressure           EventMask = 17179869184
+	EventMaskRightMouseDown     EventMask = 8
+	EventMaskRightMouseDragged  EventMask = 128
+	EventMaskRightMouseUp       EventMask = 16
+	EventMaskRotate             EventMask = 262144
+	EventMaskScrollWheel        EventMask = 4194304
+	EventMaskSmartMagnify       EventMask = 4294967296
+	EventMaskSwipe              EventMask = 2147483648
+	EventMaskSystemDefined      EventMask = 16384
+	EventMaskTabletPoint        EventMask = 8388608
+	EventMaskTabletProximity    EventMask = 16777216
+	FlagsChangedMask            EventMask = 4096
+	KeyDownMask                 EventMask = 1024
+	KeyUpMask                   EventMask = 2048
+	LeftMouseDownMask           EventMask = 2
+	LeftMouseDraggedMask        EventMask = 64
+	LeftMouseUpMask             EventMask = 4
+	MouseEnteredMask            EventMask = 256
+	MouseExitedMask             EventMask = 512
+	MouseMovedMask              EventMask = 32
+	OtherMouseDownMask          EventMask = 33554432
+	OtherMouseDraggedMask       EventMask = 134217728
+	OtherMouseUpMask            EventMask = 67108864
+	PeriodicMask                EventMask = 65536
+	RightMouseDownMask          EventMask = 8
+	RightMouseDraggedMask       EventMask = 128
+	RightMouseUpMask            EventMask = 16
+	ScrollWheelMask             EventMask = 4194304
+	SystemDefinedMask           EventMask = 16384
+	TabletPointMask             EventMask = 8388608
+	TabletProximityMask         EventMask = 16777216
+)
 
+// Flags that represent key states in an event object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventmodifierflags?language=objc
 type EventModifierFlags uint
 
-const AlphaShiftKeyMask EventModifierFlags = 65536
-const AlternateKeyMask EventModifierFlags = 524288
-const CommandKeyMask EventModifierFlags = 1048576
-const ControlKeyMask EventModifierFlags = 262144
-const DeviceIndependentModifierFlagsMask EventModifierFlags = 4294901760
-const EventModifierFlagCapsLock EventModifierFlags = 65536
-const EventModifierFlagCommand EventModifierFlags = 1048576
-const EventModifierFlagControl EventModifierFlags = 262144
-const EventModifierFlagDeviceIndependentFlagsMask EventModifierFlags = 4294901760
-const EventModifierFlagFunction EventModifierFlags = 8388608
-const EventModifierFlagHelp EventModifierFlags = 4194304
-const EventModifierFlagNumericPad EventModifierFlags = 2097152
-const EventModifierFlagOption EventModifierFlags = 524288
-const EventModifierFlagShift EventModifierFlags = 131072
-const FunctionKeyMask EventModifierFlags = 8388608
-const HelpKeyMask EventModifierFlags = 4194304
-const NumericPadKeyMask EventModifierFlags = 2097152
-const ShiftKeyMask EventModifierFlags = 131072
+const (
+	AlphaShiftKeyMask                           EventModifierFlags = 65536
+	AlternateKeyMask                            EventModifierFlags = 524288
+	CommandKeyMask                              EventModifierFlags = 1048576
+	ControlKeyMask                              EventModifierFlags = 262144
+	DeviceIndependentModifierFlagsMask          EventModifierFlags = 4294901760
+	EventModifierFlagCapsLock                   EventModifierFlags = 65536
+	EventModifierFlagCommand                    EventModifierFlags = 1048576
+	EventModifierFlagControl                    EventModifierFlags = 262144
+	EventModifierFlagDeviceIndependentFlagsMask EventModifierFlags = 4294901760
+	EventModifierFlagFunction                   EventModifierFlags = 8388608
+	EventModifierFlagHelp                       EventModifierFlags = 4194304
+	EventModifierFlagNumericPad                 EventModifierFlags = 2097152
+	EventModifierFlagOption                     EventModifierFlags = 524288
+	EventModifierFlagShift                      EventModifierFlags = 131072
+	FunctionKeyMask                             EventModifierFlags = 8388608
+	HelpKeyMask                                 EventModifierFlags = 4194304
+	NumericPadKeyMask                           EventModifierFlags = 2097152
+	ShiftKeyMask                                EventModifierFlags = 131072
+)
 
+// Constants that represent the possible phases during an event phase. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventphase?language=objc
 type EventPhase uint
 
-const EventPhaseBegan EventPhase = 1
-const EventPhaseCancelled EventPhase = 16
-const EventPhaseChanged EventPhase = 4
-const EventPhaseEnded EventPhase = 8
-const EventPhaseMayBegin EventPhase = 32
-const EventPhaseNone EventPhase = 0
-const EventPhaseStationary EventPhase = 2
+const (
+	EventPhaseBegan      EventPhase = 1
+	EventPhaseCancelled  EventPhase = 16
+	EventPhaseChanged    EventPhase = 4
+	EventPhaseEnded      EventPhase = 8
+	EventPhaseMayBegin   EventPhase = 32
+	EventPhaseNone       EventPhase = 0
+	EventPhaseStationary EventPhase = 2
+)
 
+// Subtypes for various types of events. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventsubtype?language=objc
 type EventSubtype int
 
-const AWTEventType EventSubtype = 16
-const ApplicationActivatedEventType EventSubtype = 1
-const ApplicationDeactivatedEventType EventSubtype = 2
-const EventSubtypeApplicationActivated EventSubtype = 1
-const EventSubtypeApplicationDeactivated EventSubtype = 2
-const EventSubtypeMouseEvent EventSubtype = 0
-const EventSubtypePowerOff EventSubtype = 1
-const EventSubtypeScreenChanged EventSubtype = 8
-const EventSubtypeTabletPoint EventSubtype = 1
-const EventSubtypeTabletProximity EventSubtype = 2
-const EventSubtypeTouch EventSubtype = 3
-const EventSubtypeWindowExposed EventSubtype = 0
-const EventSubtypeWindowMoved EventSubtype = 4
-const MouseEventSubtype EventSubtype = 0
-const PowerOffEventType EventSubtype = 1
-const ScreenChangedEventType EventSubtype = 8
-const TabletPointEventSubtype EventSubtype = 1
-const TabletProximityEventSubtype EventSubtype = 2
-const TouchEventSubtype EventSubtype = 3
-const WindowExposedEventType EventSubtype = 0
-const WindowMovedEventType EventSubtype = 4
+const (
+	AWTEventType                       EventSubtype = 16
+	ApplicationActivatedEventType      EventSubtype = 1
+	ApplicationDeactivatedEventType    EventSubtype = 2
+	EventSubtypeApplicationActivated   EventSubtype = 1
+	EventSubtypeApplicationDeactivated EventSubtype = 2
+	EventSubtypeMouseEvent             EventSubtype = 0
+	EventSubtypePowerOff               EventSubtype = 1
+	EventSubtypeScreenChanged          EventSubtype = 8
+	EventSubtypeTabletPoint            EventSubtype = 1
+	EventSubtypeTabletProximity        EventSubtype = 2
+	EventSubtypeTouch                  EventSubtype = 3
+	EventSubtypeWindowExposed          EventSubtype = 0
+	EventSubtypeWindowMoved            EventSubtype = 4
+	MouseEventSubtype                  EventSubtype = 0
+	PowerOffEventType                  EventSubtype = 1
+	ScreenChangedEventType             EventSubtype = 8
+	TabletPointEventSubtype            EventSubtype = 1
+	TabletProximityEventSubtype        EventSubtype = 2
+	TouchEventSubtype                  EventSubtype = 3
+	WindowExposedEventType             EventSubtype = 0
+	WindowMovedEventType               EventSubtype = 4
+)
 
+// Constants that specify swipe-tracking options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventswipetrackingoptions?language=objc
 type EventSwipeTrackingOptions uint
 
-const EventSwipeTrackingClampGestureAmount EventSwipeTrackingOptions = 2
-const EventSwipeTrackingLockDirection EventSwipeTrackingOptions = 1
+const (
+	EventSwipeTrackingClampGestureAmount EventSwipeTrackingOptions = 2
+	EventSwipeTrackingLockDirection      EventSwipeTrackingOptions = 1
+)
 
+// Constants for the types of events that responder objects can handle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nseventtype?language=objc
 type EventType uint
 
-const AppKitDefined EventType = 13
-const ApplicationDefined EventType = 15
-const CursorUpdate EventType = 17
-const EventTypeAppKitDefined EventType = 13
-const EventTypeApplicationDefined EventType = 15
-const EventTypeBeginGesture EventType = 19
-const EventTypeChangeMode EventType = 38
-const EventTypeCursorUpdate EventType = 17
-const EventTypeDirectTouch EventType = 37
-const EventTypeEndGesture EventType = 20
-const EventTypeFlagsChanged EventType = 12
-const EventTypeGesture EventType = 29
-const EventTypeKeyDown EventType = 10
-const EventTypeKeyUp EventType = 11
-const EventTypeLeftMouseDown EventType = 1
-const EventTypeLeftMouseDragged EventType = 6
-const EventTypeLeftMouseUp EventType = 2
-const EventTypeMagnify EventType = 30
-const EventTypeMouseEntered EventType = 8
-const EventTypeMouseExited EventType = 9
-const EventTypeMouseMoved EventType = 5
-const EventTypeOtherMouseDown EventType = 25
-const EventTypeOtherMouseDragged EventType = 27
-const EventTypeOtherMouseUp EventType = 26
-const EventTypePeriodic EventType = 16
-const EventTypePressure EventType = 34
-const EventTypeQuickLook EventType = 33
-const EventTypeRightMouseDown EventType = 3
-const EventTypeRightMouseDragged EventType = 7
-const EventTypeRightMouseUp EventType = 4
-const EventTypeRotate EventType = 18
-const EventTypeScrollWheel EventType = 22
-const EventTypeSmartMagnify EventType = 32
-const EventTypeSwipe EventType = 31
-const EventTypeSystemDefined EventType = 14
-const EventTypeTabletPoint EventType = 23
-const EventTypeTabletProximity EventType = 24
-const FlagsChanged EventType = 12
-const KeyDown EventType = 10
-const KeyUp EventType = 11
-const LeftMouseDown EventType = 1
-const LeftMouseDragged EventType = 6
-const LeftMouseUp EventType = 2
-const MouseEntered EventType = 8
-const MouseExited EventType = 9
-const MouseMoved EventType = 5
-const OtherMouseDown EventType = 25
-const OtherMouseDragged EventType = 27
-const OtherMouseUp EventType = 26
-const Periodic EventType = 16
-const RightMouseDown EventType = 3
-const RightMouseDragged EventType = 7
-const RightMouseUp EventType = 4
-const ScrollWheel EventType = 22
-const SystemDefined EventType = 14
-const TabletPoint EventType = 23
-const TabletProximity EventType = 24
+const (
+	AppKitDefined               EventType = 13
+	ApplicationDefined          EventType = 15
+	CursorUpdate                EventType = 17
+	EventTypeAppKitDefined      EventType = 13
+	EventTypeApplicationDefined EventType = 15
+	EventTypeBeginGesture       EventType = 19
+	EventTypeChangeMode         EventType = 38
+	EventTypeCursorUpdate       EventType = 17
+	EventTypeDirectTouch        EventType = 37
+	EventTypeEndGesture         EventType = 20
+	EventTypeFlagsChanged       EventType = 12
+	EventTypeGesture            EventType = 29
+	EventTypeKeyDown            EventType = 10
+	EventTypeKeyUp              EventType = 11
+	EventTypeLeftMouseDown      EventType = 1
+	EventTypeLeftMouseDragged   EventType = 6
+	EventTypeLeftMouseUp        EventType = 2
+	EventTypeMagnify            EventType = 30
+	EventTypeMouseEntered       EventType = 8
+	EventTypeMouseExited        EventType = 9
+	EventTypeMouseMoved         EventType = 5
+	EventTypeOtherMouseDown     EventType = 25
+	EventTypeOtherMouseDragged  EventType = 27
+	EventTypeOtherMouseUp       EventType = 26
+	EventTypePeriodic           EventType = 16
+	EventTypePressure           EventType = 34
+	EventTypeQuickLook          EventType = 33
+	EventTypeRightMouseDown     EventType = 3
+	EventTypeRightMouseDragged  EventType = 7
+	EventTypeRightMouseUp       EventType = 4
+	EventTypeRotate             EventType = 18
+	EventTypeScrollWheel        EventType = 22
+	EventTypeSmartMagnify       EventType = 32
+	EventTypeSwipe              EventType = 31
+	EventTypeSystemDefined      EventType = 14
+	EventTypeTabletPoint        EventType = 23
+	EventTypeTabletProximity    EventType = 24
+	FlagsChanged                EventType = 12
+	KeyDown                     EventType = 10
+	KeyUp                       EventType = 11
+	LeftMouseDown               EventType = 1
+	LeftMouseDragged            EventType = 6
+	LeftMouseUp                 EventType = 2
+	MouseEntered                EventType = 8
+	MouseExited                 EventType = 9
+	MouseMoved                  EventType = 5
+	OtherMouseDown              EventType = 25
+	OtherMouseDragged           EventType = 27
+	OtherMouseUp                EventType = 26
+	Periodic                    EventType = 16
+	RightMouseDown              EventType = 3
+	RightMouseDragged           EventType = 7
+	RightMouseUp                EventType = 4
+	ScrollWheel                 EventType = 22
+	SystemDefined               EventType = 14
+	TabletPoint                 EventType = 23
+	TabletProximity             EventType = 24
+)
 
+// These constants define the tags for performFindPanelAction:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfindpanelaction?language=objc
 type FindPanelAction uint
 
-const FindPanelActionNext FindPanelAction = 2
-const FindPanelActionPrevious FindPanelAction = 3
-const FindPanelActionReplace FindPanelAction = 5
-const FindPanelActionReplaceAll FindPanelAction = 4
-const FindPanelActionReplaceAllInSelection FindPanelAction = 8
-const FindPanelActionReplaceAndFind FindPanelAction = 6
-const FindPanelActionSelectAll FindPanelAction = 9
-const FindPanelActionSelectAllInSelection FindPanelAction = 10
-const FindPanelActionSetFindString FindPanelAction = 7
-const FindPanelActionShowFindPanel FindPanelAction = 1
+const (
+	FindPanelActionNext                  FindPanelAction = 2
+	FindPanelActionPrevious              FindPanelAction = 3
+	FindPanelActionReplace               FindPanelAction = 5
+	FindPanelActionReplaceAll            FindPanelAction = 4
+	FindPanelActionReplaceAllInSelection FindPanelAction = 8
+	FindPanelActionReplaceAndFind        FindPanelAction = 6
+	FindPanelActionSelectAll             FindPanelAction = 9
+	FindPanelActionSelectAllInSelection  FindPanelAction = 10
+	FindPanelActionSetFindString         FindPanelAction = 7
+	FindPanelActionShowFindPanel         FindPanelAction = 1
+)
 
+// The type of substring matching used by the Find panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfindpanelsubstringmatchtype?language=objc
 type FindPanelSubstringMatchType uint
 
-const FindPanelSubstringMatchTypeContains FindPanelSubstringMatchType = 0
-const FindPanelSubstringMatchTypeEndsWith FindPanelSubstringMatchType = 3
-const FindPanelSubstringMatchTypeFullWord FindPanelSubstringMatchType = 2
-const FindPanelSubstringMatchTypeStartsWith FindPanelSubstringMatchType = 1
+const (
+	FindPanelSubstringMatchTypeContains   FindPanelSubstringMatchType = 0
+	FindPanelSubstringMatchTypeEndsWith   FindPanelSubstringMatchType = 3
+	FindPanelSubstringMatchTypeFullWord   FindPanelSubstringMatchType = 2
+	FindPanelSubstringMatchTypeStartsWith FindPanelSubstringMatchType = 1
+)
 
+// Constants that indicate how the system draws the focus ring. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfocusringplacement?language=objc
 type FocusRingPlacement uint
 
-const FocusRingAbove FocusRingPlacement = 2
-const FocusRingBelow FocusRingPlacement = 1
-const FocusRingOnly FocusRingPlacement = 0
+const (
+	FocusRingAbove FocusRingPlacement = 2
+	FocusRingBelow FocusRingPlacement = 1
+	FocusRingOnly  FocusRingPlacement = 0
+)
 
+// Constants that describe the style of the focus ring. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfocusringtype?language=objc
 type FocusRingType uint
 
-const FocusRingTypeDefault FocusRingType = 0
-const FocusRingTypeExterior FocusRingType = 2
-const FocusRingTypeNone FocusRingType = 1
+const (
+	FocusRingTypeDefault  FocusRingType = 0
+	FocusRingTypeExterior FocusRingType = 2
+	FocusRingTypeNone     FocusRingType = 1
+)
 
+// Actions that modify a font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontaction?language=objc
 type FontAction uint
 
-const AddTraitFontAction FontAction = 2
-const HeavierFontAction FontAction = 5
-const LighterFontAction FontAction = 6
-const NoFontChangeAction FontAction = 0
-const RemoveTraitFontAction FontAction = 7
-const SizeDownFontAction FontAction = 4
-const SizeUpFontAction FontAction = 3
-const ViaPanelFontAction FontAction = 1
+const (
+	AddTraitFontAction    FontAction = 2
+	HeavierFontAction     FontAction = 5
+	LighterFontAction     FontAction = 6
+	NoFontChangeAction    FontAction = 0
+	RemoveTraitFontAction FontAction = 7
+	SizeDownFontAction    FontAction = 4
+	SizeUpFontAction      FontAction = 3
+	ViaPanelFontAction    FontAction = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequestoptions?language=objc
 type FontAssetRequestOptions uint
 
-const FontAssetRequestOptionUsesStandardUI FontAssetRequestOptions = 1
+const (
+	FontAssetRequestOptionUsesStandardUI FontAssetRequestOptions = 1
+)
 
+// The following actions are possible values of the NSFontCollectionActionKey in the NSFontCollectionDidChangeNotification userInfo method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionactiontypekey?language=objc
 type FontCollectionActionTypeKey string
 
-const FontCollectionWasHidden FontCollectionActionTypeKey = "NSFontCollectionWasHidden"
-const FontCollectionWasRenamed FontCollectionActionTypeKey = "NSFontCollectionWasRenamed"
-const FontCollectionWasShown FontCollectionActionTypeKey = "NSFontCollectionWasShown"
+const (
+	FontCollectionWasHidden  FontCollectionActionTypeKey = "NSFontCollectionWasHidden"
+	FontCollectionWasRenamed FontCollectionActionTypeKey = "NSFontCollectionWasRenamed"
+	FontCollectionWasShown   FontCollectionActionTypeKey = "NSFontCollectionWasShown"
+)
 
+// These constants are used by the matchingDescriptorsWithOptions: and matchingDescriptorsForFamily: options dictionary parameters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionmatchingoptionkey?language=objc
 type FontCollectionMatchingOptionKey string
 
-const FontCollectionDisallowAutoActivationOption FontCollectionMatchingOptionKey = "NSCTFontCollectionDisallowAutoActivationOption"
-const FontCollectionIncludeDisabledFontsOption FontCollectionMatchingOptionKey = "NSCTFontCollectionIncludeDisabledFontsOption"
-const FontCollectionRemoveDuplicatesOption FontCollectionMatchingOptionKey = "NSCTFontCollectionRemoveDuplicatesOption"
+const (
+	FontCollectionDisallowAutoActivationOption FontCollectionMatchingOptionKey = "NSCTFontCollectionDisallowAutoActivationOption"
+	FontCollectionIncludeDisabledFontsOption   FontCollectionMatchingOptionKey = "NSCTFontCollectionIncludeDisabledFontsOption"
+	FontCollectionRemoveDuplicatesOption       FontCollectionMatchingOptionKey = "NSCTFontCollectionRemoveDuplicatesOption"
+)
 
+// The constants represent the standard mutable collection names—these names are included in the list of allFontCollectionNames--they have special meaning to the Cocoa font system and should not be hidden or renamed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionname?language=objc
 type FontCollectionName string
 
-const FontCollectionAllFonts FontCollectionName = "com.apple.AllFonts"
-const FontCollectionFavorites FontCollectionName = "com.apple.Favorites"
-const FontCollectionRecentlyUsed FontCollectionName = "com.apple.Recents"
-const FontCollectionUser FontCollectionName = "com.apple.UserFonts"
+const (
+	FontCollectionAllFonts     FontCollectionName = "com.apple.AllFonts"
+	FontCollectionFavorites    FontCollectionName = "com.apple.Favorites"
+	FontCollectionRecentlyUsed FontCollectionName = "com.apple.Recents"
+	FontCollectionUser         FontCollectionName = "com.apple.UserFonts"
+)
 
+// Constants that support font collection management. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionoptions?language=objc
 type FontCollectionOptions uint
 
-const FontCollectionApplicationOnlyMask FontCollectionOptions = 1
+const (
+	FontCollectionApplicationOnlyMask FontCollectionOptions = 1
+)
 
+// These constants are used as keys in the NSFontCollectionDidChangeNotification userInfo dictionary to indicate the changes that have taken place. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionuserinfokey?language=objc
 type FontCollectionUserInfoKey string
 
-const FontCollectionActionKey FontCollectionUserInfoKey = "NSFontCollectionAction"
-const FontCollectionNameKey FontCollectionUserInfoKey = "NSFontCollectionName"
-const FontCollectionOldNameKey FontCollectionUserInfoKey = "NSFontCollectionOldName"
-const FontCollectionVisibilityKey FontCollectionUserInfoKey = "NSFontCollectionVisibility"
+const (
+	FontCollectionActionKey     FontCollectionUserInfoKey = "NSFontCollectionAction"
+	FontCollectionNameKey       FontCollectionUserInfoKey = "NSFontCollectionName"
+	FontCollectionOldNameKey    FontCollectionUserInfoKey = "NSFontCollectionOldName"
+	FontCollectionVisibilityKey FontCollectionUserInfoKey = "NSFontCollectionVisibility"
+)
 
+// Constants that specify the visibility of font collections. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollectionvisibility?language=objc
 type FontCollectionVisibility uint
 
-const FontCollectionVisibilityComputer FontCollectionVisibility = 4
-const FontCollectionVisibilityProcess FontCollectionVisibility = 1
-const FontCollectionVisibilityUser FontCollectionVisibility = 2
+const (
+	FontCollectionVisibilityComputer FontCollectionVisibility = 4
+	FontCollectionVisibilityProcess  FontCollectionVisibility = 1
+	FontCollectionVisibilityUser     FontCollectionVisibility = 2
+)
 
+// Constants for the names of font attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptorattributename?language=objc
 type FontDescriptorAttributeName string
 
-const FontCascadeListAttribute FontDescriptorAttributeName = "NSCTFontCascadeListAttribute"
-const FontCharacterSetAttribute FontDescriptorAttributeName = "NSCTFontCharacterSetAttribute"
-const FontFaceAttribute FontDescriptorAttributeName = "NSFontFaceAttribute"
-const FontFamilyAttribute FontDescriptorAttributeName = "NSFontFamilyAttribute"
-const FontFeatureSettingsAttribute FontDescriptorAttributeName = "NSCTFontFeatureSettingsAttribute"
-const FontFixedAdvanceAttribute FontDescriptorAttributeName = "NSCTFontFixedAdvanceAttribute"
-const FontMatrixAttribute FontDescriptorAttributeName = "NSFontMatrixAttribute"
-const FontNameAttribute FontDescriptorAttributeName = "NSFontNameAttribute"
-const FontSizeAttribute FontDescriptorAttributeName = "NSFontSizeAttribute"
-const FontTraitsAttribute FontDescriptorAttributeName = "NSCTFontTraitsAttribute"
-const FontVariationAttribute FontDescriptorAttributeName = "NSCTFontVariationAttribute"
-const FontVisibleNameAttribute FontDescriptorAttributeName = "NSFontVisibleNameAttribute"
+const (
+	FontCascadeListAttribute     FontDescriptorAttributeName = "NSCTFontCascadeListAttribute"
+	FontCharacterSetAttribute    FontDescriptorAttributeName = "NSCTFontCharacterSetAttribute"
+	FontFaceAttribute            FontDescriptorAttributeName = "NSFontFaceAttribute"
+	FontFamilyAttribute          FontDescriptorAttributeName = "NSFontFamilyAttribute"
+	FontFeatureSettingsAttribute FontDescriptorAttributeName = "NSCTFontFeatureSettingsAttribute"
+	FontFixedAdvanceAttribute    FontDescriptorAttributeName = "NSCTFontFixedAdvanceAttribute"
+	FontMatrixAttribute          FontDescriptorAttributeName = "NSFontMatrixAttribute"
+	FontNameAttribute            FontDescriptorAttributeName = "NSFontNameAttribute"
+	FontSizeAttribute            FontDescriptorAttributeName = "NSFontSizeAttribute"
+	FontTraitsAttribute          FontDescriptorAttributeName = "NSCTFontTraitsAttribute"
+	FontVariationAttribute       FontDescriptorAttributeName = "NSCTFontVariationAttribute"
+	FontVisibleNameAttribute     FontDescriptorAttributeName = "NSFontVisibleNameAttribute"
+)
 
+// Constants to use as keys to retrieve information about a font descriptor from its feature dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptorfeaturekey?language=objc
 type FontDescriptorFeatureKey string
 
-const FontFeatureSelectorIdentifierKey FontDescriptorFeatureKey = "CTFeatureSelectorIdentifier"
-const FontFeatureTypeIdentifierKey FontDescriptorFeatureKey = "CTFeatureTypeIdentifier"
+const (
+	FontFeatureSelectorIdentifierKey FontDescriptorFeatureKey = "CTFeatureSelectorIdentifier"
+	FontFeatureTypeIdentifierKey     FontDescriptorFeatureKey = "CTFeatureTypeIdentifier"
+)
 
+// A symbolic description of the stylistic aspects of a font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptorsymbolictraits?language=objc
 type FontDescriptorSymbolicTraits uint32
 
-const FontDescriptorClassClarendonSerifs FontDescriptorSymbolicTraits = 1073741824
-const FontDescriptorClassFreeformSerifs FontDescriptorSymbolicTraits = 1879048192
-const FontDescriptorClassMask FontDescriptorSymbolicTraits = 4026531840
-const FontDescriptorClassModernSerifs FontDescriptorSymbolicTraits = 805306368
-const FontDescriptorClassOldStyleSerifs FontDescriptorSymbolicTraits = 268435456
-const FontDescriptorClassOrnamentals FontDescriptorSymbolicTraits = 2415919104
-const FontDescriptorClassSansSerif FontDescriptorSymbolicTraits = 2147483648
-const FontDescriptorClassScripts FontDescriptorSymbolicTraits = 2684354560
-const FontDescriptorClassSlabSerifs FontDescriptorSymbolicTraits = 1342177280
-const FontDescriptorClassSymbolic FontDescriptorSymbolicTraits = 3221225472
-const FontDescriptorClassTransitionalSerifs FontDescriptorSymbolicTraits = 536870912
-const FontDescriptorClassUnknown FontDescriptorSymbolicTraits = 0
-const FontDescriptorTraitBold FontDescriptorSymbolicTraits = 2
-const FontDescriptorTraitCondensed FontDescriptorSymbolicTraits = 64
-const FontDescriptorTraitExpanded FontDescriptorSymbolicTraits = 32
-const FontDescriptorTraitItalic FontDescriptorSymbolicTraits = 1
-const FontDescriptorTraitLooseLeading FontDescriptorSymbolicTraits = 65536
-const FontDescriptorTraitMonoSpace FontDescriptorSymbolicTraits = 1024
-const FontDescriptorTraitTightLeading FontDescriptorSymbolicTraits = 32768
-const FontDescriptorTraitUIOptimized FontDescriptorSymbolicTraits = 4096
-const FontDescriptorTraitVertical FontDescriptorSymbolicTraits = 2048
+const (
+	FontDescriptorClassClarendonSerifs    FontDescriptorSymbolicTraits = 1073741824
+	FontDescriptorClassFreeformSerifs     FontDescriptorSymbolicTraits = 1879048192
+	FontDescriptorClassMask               FontDescriptorSymbolicTraits = 4026531840
+	FontDescriptorClassModernSerifs       FontDescriptorSymbolicTraits = 805306368
+	FontDescriptorClassOldStyleSerifs     FontDescriptorSymbolicTraits = 268435456
+	FontDescriptorClassOrnamentals        FontDescriptorSymbolicTraits = 2415919104
+	FontDescriptorClassSansSerif          FontDescriptorSymbolicTraits = 2147483648
+	FontDescriptorClassScripts            FontDescriptorSymbolicTraits = 2684354560
+	FontDescriptorClassSlabSerifs         FontDescriptorSymbolicTraits = 1342177280
+	FontDescriptorClassSymbolic           FontDescriptorSymbolicTraits = 3221225472
+	FontDescriptorClassTransitionalSerifs FontDescriptorSymbolicTraits = 536870912
+	FontDescriptorClassUnknown            FontDescriptorSymbolicTraits = 0
+	FontDescriptorTraitBold               FontDescriptorSymbolicTraits = 2
+	FontDescriptorTraitCondensed          FontDescriptorSymbolicTraits = 64
+	FontDescriptorTraitExpanded           FontDescriptorSymbolicTraits = 32
+	FontDescriptorTraitItalic             FontDescriptorSymbolicTraits = 1
+	FontDescriptorTraitLooseLeading       FontDescriptorSymbolicTraits = 65536
+	FontDescriptorTraitMonoSpace          FontDescriptorSymbolicTraits = 1024
+	FontDescriptorTraitTightLeading       FontDescriptorSymbolicTraits = 32768
+	FontDescriptorTraitUIOptimized        FontDescriptorSymbolicTraits = 4096
+	FontDescriptorTraitVertical           FontDescriptorSymbolicTraits = 2048
+)
 
+// Constants for font designs, such as monospace, rounded, and serif. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptorsystemdesign?language=objc
 type FontDescriptorSystemDesign string
 
-const FontDescriptorSystemDesignDefault FontDescriptorSystemDesign = "NSCTFontUIFontDesignDefault"
-const FontDescriptorSystemDesignMonospaced FontDescriptorSystemDesign = "NSCTFontUIFontDesignMonospaced"
-const FontDescriptorSystemDesignRounded FontDescriptorSystemDesign = "NSCTFontUIFontDesignRounded"
-const FontDescriptorSystemDesignSerif FontDescriptorSystemDesign = "NSCTFontUIFontDesignSerif"
+const (
+	FontDescriptorSystemDesignDefault    FontDescriptorSystemDesign = "NSCTFontUIFontDesignDefault"
+	FontDescriptorSystemDesignMonospaced FontDescriptorSystemDesign = "NSCTFontUIFontDesignMonospaced"
+	FontDescriptorSystemDesignRounded    FontDescriptorSystemDesign = "NSCTFontUIFontDesignRounded"
+	FontDescriptorSystemDesignSerif      FontDescriptorSystemDesign = "NSCTFontUIFontDesignSerif"
+)
 
+// Constants that can be used as keys to retrieve information about a font descriptor from its trait dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptortraitkey?language=objc
 type FontDescriptorTraitKey string
 
-const FontSlantTrait FontDescriptorTraitKey = "NSCTFontSlantTrait"
-const FontSymbolicTrait FontDescriptorTraitKey = "NSCTFontSymbolicTrait"
-const FontWeightTrait FontDescriptorTraitKey = "NSCTFontWeightTrait"
-const FontWidthTrait FontDescriptorTraitKey = "NSCTFontProportionTrait"
+const (
+	FontSlantTrait    FontDescriptorTraitKey = "NSCTFontSlantTrait"
+	FontSymbolicTrait FontDescriptorTraitKey = "NSCTFontSymbolicTrait"
+	FontWeightTrait   FontDescriptorTraitKey = "NSCTFontWeightTrait"
+	FontWidthTrait    FontDescriptorTraitKey = "NSCTFontProportionTrait"
+)
 
+// Constants that can be used as keys to retrieve information about a font descriptor from its variation axis dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptorvariationkey?language=objc
 type FontDescriptorVariationKey string
 
-const FontVariationAxisDefaultValueKey FontDescriptorVariationKey = "NSCTVariationAxisDefaultValue"
-const FontVariationAxisIdentifierKey FontDescriptorVariationKey = "NSCTVariationAxisIdentifier"
-const FontVariationAxisMaximumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMaximumValue"
-const FontVariationAxisMinimumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMinimumValue"
-const FontVariationAxisNameKey FontDescriptorVariationKey = "NSCTVariationAxisName"
+const (
+	FontVariationAxisDefaultValueKey FontDescriptorVariationKey = "NSCTVariationAxisDefaultValue"
+	FontVariationAxisIdentifierKey   FontDescriptorVariationKey = "NSCTVariationAxisIdentifier"
+	FontVariationAxisMaximumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMaximumValue"
+	FontVariationAxisMinimumValueKey FontDescriptorVariationKey = "NSCTVariationAxisMinimumValue"
+	FontVariationAxisNameKey         FontDescriptorVariationKey = "NSCTVariationAxisName"
+)
 
+// Constants that classify certain stylistic qualities of the font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontfamilyclass?language=objc
 type FontFamilyClass uint32
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanelmodemask?language=objc
 type FontPanelModeMask uint
 
-const FontPanelModeMaskAllEffects FontPanelModeMask = 1048320
-const FontPanelModeMaskCollection FontPanelModeMask = 4
-const FontPanelModeMaskDocumentColorEffect FontPanelModeMask = 2048
-const FontPanelModeMaskFace FontPanelModeMask = 1
-const FontPanelModeMaskShadowEffect FontPanelModeMask = 4096
-const FontPanelModeMaskSize FontPanelModeMask = 2
-const FontPanelModeMaskStrikethroughEffect FontPanelModeMask = 512
-const FontPanelModeMaskTextColorEffect FontPanelModeMask = 1024
-const FontPanelModeMaskUnderlineEffect FontPanelModeMask = 256
-const FontPanelModesMaskAllModes FontPanelModeMask = 4294967295
-const FontPanelModesMaskStandardModes FontPanelModeMask = 65535
+const (
+	FontPanelModeMaskAllEffects          FontPanelModeMask = 1048320
+	FontPanelModeMaskCollection          FontPanelModeMask = 4
+	FontPanelModeMaskDocumentColorEffect FontPanelModeMask = 2048
+	FontPanelModeMaskFace                FontPanelModeMask = 1
+	FontPanelModeMaskShadowEffect        FontPanelModeMask = 4096
+	FontPanelModeMaskSize                FontPanelModeMask = 2
+	FontPanelModeMaskStrikethroughEffect FontPanelModeMask = 512
+	FontPanelModeMaskTextColorEffect     FontPanelModeMask = 1024
+	FontPanelModeMaskUnderlineEffect     FontPanelModeMask = 256
+	FontPanelModesMaskAllModes           FontPanelModeMask = 4294967295
+	FontPanelModesMaskStandardModes      FontPanelModeMask = 65535
+)
 
+// The font rendering mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontrenderingmode?language=objc
 type FontRenderingMode uint
 
-const FontAntialiasedIntegerAdvancementsRenderingMode FontRenderingMode = 3
-const FontAntialiasedRenderingMode FontRenderingMode = 1
-const FontDefaultRenderingMode FontRenderingMode = 0
-const FontIntegerAdvancementsRenderingMode FontRenderingMode = 2
+const (
+	FontAntialiasedIntegerAdvancementsRenderingMode FontRenderingMode = 3
+	FontAntialiasedRenderingMode                    FontRenderingMode = 1
+	FontDefaultRenderingMode                        FontRenderingMode = 0
+	FontIntegerAdvancementsRenderingMode            FontRenderingMode = 2
+)
 
+// A symbolic description of stylistic aspects of a font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontsymbolictraits?language=objc
 type FontSymbolicTraits uint32
 
+// Constants that specify the preferred text styles you use with fonts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfonttextstyle?language=objc
 type FontTextStyle string
 
-const FontTextStyleBody FontTextStyle = "UICTFontTextStyleBody"
-const FontTextStyleCallout FontTextStyle = "UICTFontTextStyleCallout"
-const FontTextStyleCaption1 FontTextStyle = "UICTFontTextStyleCaption1"
-const FontTextStyleCaption2 FontTextStyle = "UICTFontTextStyleCaption2"
-const FontTextStyleFootnote FontTextStyle = "UICTFontTextStyleFootnote"
-const FontTextStyleHeadline FontTextStyle = "UICTFontTextStyleHeadline"
-const FontTextStyleLargeTitle FontTextStyle = "UICTFontTextStyleTitle0"
-const FontTextStyleSubheadline FontTextStyle = "UICTFontTextStyleSubhead"
-const FontTextStyleTitle1 FontTextStyle = "UICTFontTextStyleTitle1"
-const FontTextStyleTitle2 FontTextStyle = "UICTFontTextStyleTitle2"
-const FontTextStyleTitle3 FontTextStyle = "UICTFontTextStyleTitle3"
+const (
+	FontTextStyleBody        FontTextStyle = "UICTFontTextStyleBody"
+	FontTextStyleCallout     FontTextStyle = "UICTFontTextStyleCallout"
+	FontTextStyleCaption1    FontTextStyle = "UICTFontTextStyleCaption1"
+	FontTextStyleCaption2    FontTextStyle = "UICTFontTextStyleCaption2"
+	FontTextStyleFootnote    FontTextStyle = "UICTFontTextStyleFootnote"
+	FontTextStyleHeadline    FontTextStyle = "UICTFontTextStyleHeadline"
+	FontTextStyleLargeTitle  FontTextStyle = "UICTFontTextStyleTitle0"
+	FontTextStyleSubheadline FontTextStyle = "UICTFontTextStyleSubhead"
+	FontTextStyleTitle1      FontTextStyle = "UICTFontTextStyleTitle1"
+	FontTextStyleTitle2      FontTextStyle = "UICTFontTextStyleTitle2"
+	FontTextStyleTitle3      FontTextStyle = "UICTFontTextStyleTitle3"
+)
 
+// The options that you apply when requesting the font or font descriptor of a preferred text style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfonttextstyleoptionkey?language=objc
 type FontTextStyleOptionKey string
 
+// Constants for isolating specific traits of a font. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfonttraitmask?language=objc
 type FontTraitMask uint
 
-const BoldFontMask FontTraitMask = 2
-const CompressedFontMask FontTraitMask = 512
-const CondensedFontMask FontTraitMask = 64
-const ExpandedFontMask FontTraitMask = 32
-const FixedPitchFontMask FontTraitMask = 1024
-const ItalicFontMask FontTraitMask = 1
-const NarrowFontMask FontTraitMask = 16
-const NonStandardCharacterSetFontMask FontTraitMask = 8
-const PosterFontMask FontTraitMask = 256
-const SmallCapsFontMask FontTraitMask = 128
-const UnboldFontMask FontTraitMask = 4
-const UnitalicFontMask FontTraitMask = 16777216
+const (
+	BoldFontMask                    FontTraitMask = 2
+	CompressedFontMask              FontTraitMask = 512
+	CondensedFontMask               FontTraitMask = 64
+	ExpandedFontMask                FontTraitMask = 32
+	FixedPitchFontMask              FontTraitMask = 1024
+	ItalicFontMask                  FontTraitMask = 1
+	NarrowFontMask                  FontTraitMask = 16
+	NonStandardCharacterSetFontMask FontTraitMask = 8
+	PosterFontMask                  FontTraitMask = 256
+	SmallCapsFontMask               FontTraitMask = 128
+	UnboldFontMask                  FontTraitMask = 4
+	UnitalicFontMask                FontTraitMask = 16777216
+)
 
-type FontWeight float32
+// System-defined font-weight values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontweight?language=objc
+type FontWeight float64
 
-const FontWeightBlack FontWeight = 0.620000
-const FontWeightBold FontWeight = 0.400000
-const FontWeightHeavy FontWeight = 0.560000
-const FontWeightLight FontWeight = -0.400000
-const FontWeightMedium FontWeight = 0.230000
-const FontWeightRegular FontWeight = 0.000000
-const FontWeightSemibold FontWeight = 0.300000
-const FontWeightThin FontWeight = -0.600000
-const FontWeightUltraLight FontWeight = -0.800000
+const (
+	FontWeightBlack      FontWeight = 0.620000
+	FontWeightBold       FontWeight = 0.400000
+	FontWeightHeavy      FontWeight = 0.560000
+	FontWeightLight      FontWeight = -0.400000
+	FontWeightMedium     FontWeight = 0.230000
+	FontWeightRegular    FontWeight = 0.000000
+	FontWeightSemibold   FontWeight = 0.300000
+	FontWeightThin       FontWeight = -0.600000
+	FontWeightUltraLight FontWeight = -0.800000
+)
 
+// The current state of the gesture recognizer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerstate?language=objc
 type GestureRecognizerState int
 
-const GestureRecognizerStateBegan GestureRecognizerState = 1
-const GestureRecognizerStateCancelled GestureRecognizerState = 4
-const GestureRecognizerStateChanged GestureRecognizerState = 2
-const GestureRecognizerStateEnded GestureRecognizerState = 3
-const GestureRecognizerStateFailed GestureRecognizerState = 5
-const GestureRecognizerStatePossible GestureRecognizerState = 0
-const GestureRecognizerStateRecognized GestureRecognizerState = 3
+const (
+	GestureRecognizerStateBegan      GestureRecognizerState = 1
+	GestureRecognizerStateCancelled  GestureRecognizerState = 4
+	GestureRecognizerStateChanged    GestureRecognizerState = 2
+	GestureRecognizerStateEnded      GestureRecognizerState = 3
+	GestureRecognizerStateFailed     GestureRecognizerState = 5
+	GestureRecognizerStatePossible   GestureRecognizerState = 0
+	GestureRecognizerStateRecognized GestureRecognizerState = 3
+)
 
+// The type used to specify glyphs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyph?language=objc
 type Glyph int
 
+// Constants that specify how a glyph is laid out relative to the previous glyph. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphinscription?language=objc
 type GlyphInscription uint
 
-const GlyphInscribeAbove GlyphInscription = 2
-const GlyphInscribeBase GlyphInscription = 0
-const GlyphInscribeBelow GlyphInscription = 1
-const GlyphInscribeOverBelow GlyphInscription = 4
-const GlyphInscribeOverstrike GlyphInscription = 3
+const (
+	GlyphInscribeAbove      GlyphInscription = 2
+	GlyphInscribeBase       GlyphInscription = 0
+	GlyphInscribeBelow      GlyphInscription = 1
+	GlyphInscribeOverBelow  GlyphInscription = 4
+	GlyphInscribeOverstrike GlyphInscription = 3
+)
 
+// Glyph properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsglyphproperty?language=objc
 type GlyphProperty int
 
-const GlyphPropertyControlCharacter GlyphProperty = 2
-const GlyphPropertyElastic GlyphProperty = 4
-const GlyphPropertyNonBaseCharacter GlyphProperty = 8
-const GlyphPropertyNull GlyphProperty = 1
+const (
+	GlyphPropertyControlCharacter GlyphProperty = 2
+	GlyphPropertyElastic          GlyphProperty = 4
+	GlyphPropertyNonBaseCharacter GlyphProperty = 8
+	GlyphPropertyNull             GlyphProperty = 1
+)
 
+// Constants that specify gradient drawing options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradientdrawingoptions?language=objc
 type GradientDrawingOptions uint
 
-const GradientDrawsAfterEndingLocation GradientDrawingOptions = 2
-const GradientDrawsBeforeStartingLocation GradientDrawingOptions = 1
+const (
+	GradientDrawsAfterEndingLocation    GradientDrawingOptions = 2
+	GradientDrawsBeforeStartingLocation GradientDrawingOptions = 1
+)
 
+// Specify the gradients used by the gradientType property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradienttype?language=objc
 type GradientType uint
 
-const GradientConcaveStrong GradientType = 2
-const GradientConcaveWeak GradientType = 1
-const GradientConvexStrong GradientType = 4
-const GradientConvexWeak GradientType = 3
-const GradientNone GradientType = 0
+const (
+	GradientConcaveStrong GradientType = 2
+	GradientConcaveWeak   GradientType = 1
+	GradientConvexStrong  GradientType = 4
+	GradientConvexWeak    GradientType = 3
+	GradientNone          GradientType = 0
+)
 
+// Constants that specify the dictionary keys for the attributes of the graphics context. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgraphicscontextattributekey?language=objc
 type GraphicsContextAttributeKey string
 
-const GraphicsContextDestinationAttributeName GraphicsContextAttributeKey = "NSGraphicsContextDestinationAttributeName"
-const GraphicsContextRepresentationFormatAttributeName GraphicsContextAttributeKey = "NSGraphicsContextRepresentationFormatAttributeName"
+const (
+	GraphicsContextDestinationAttributeName          GraphicsContextAttributeKey = "NSGraphicsContextDestinationAttributeName"
+	GraphicsContextRepresentationFormatAttributeName GraphicsContextAttributeKey = "NSGraphicsContextRepresentationFormatAttributeName"
+)
 
+// Constants that specify values for the representation format name key in a graphic context’s attributes dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgraphicscontextrepresentationformatname?language=objc
 type GraphicsContextRepresentationFormatName string
 
-const GraphicsContextPDFFormat GraphicsContextRepresentationFormatName = "NSGraphicsContextPDFFormat"
-const GraphicsContextPSFormat GraphicsContextRepresentationFormatName = "NSGraphicsContextPSFormat"
+const (
+	GraphicsContextPDFFormat GraphicsContextRepresentationFormatName = "NSGraphicsContextPDFFormat"
+	GraphicsContextPSFormat  GraphicsContextRepresentationFormatName = "NSGraphicsContextPSFormat"
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcellplacement?language=objc
 type GridCellPlacement int
 
-const GridCellPlacementBottom GridCellPlacement = 3
-const GridCellPlacementCenter GridCellPlacement = 4
-const GridCellPlacementFill GridCellPlacement = 5
-const GridCellPlacementInherited GridCellPlacement = 0
-const GridCellPlacementLeading GridCellPlacement = 2
-const GridCellPlacementNone GridCellPlacement = 1
-const GridCellPlacementTop GridCellPlacement = 2
-const GridCellPlacementTrailing GridCellPlacement = 3
+const (
+	GridCellPlacementBottom    GridCellPlacement = 3
+	GridCellPlacementCenter    GridCellPlacement = 4
+	GridCellPlacementFill      GridCellPlacement = 5
+	GridCellPlacementInherited GridCellPlacement = 0
+	GridCellPlacementLeading   GridCellPlacement = 2
+	GridCellPlacementNone      GridCellPlacement = 1
+	GridCellPlacementTop       GridCellPlacement = 2
+	GridCellPlacementTrailing  GridCellPlacement = 3
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridrowalignment?language=objc
 type GridRowAlignment int
 
-const GridRowAlignmentFirstBaseline GridRowAlignment = 2
-const GridRowAlignmentInherited GridRowAlignment = 0
-const GridRowAlignmentLastBaseline GridRowAlignment = 3
-const GridRowAlignmentNone GridRowAlignment = 1
+const (
+	GridRowAlignmentFirstBaseline GridRowAlignment = 2
+	GridRowAlignmentInherited     GridRowAlignment = 0
+	GridRowAlignmentLastBaseline  GridRowAlignment = 3
+	GridRowAlignmentNone          GridRowAlignment = 1
+)
 
+// A pattern of haptic feedback to be provided to the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshapticfeedbackpattern?language=objc
 type HapticFeedbackPattern int
 
-const HapticFeedbackPatternAlignment HapticFeedbackPattern = 1
-const HapticFeedbackPatternGeneric HapticFeedbackPattern = 0
-const HapticFeedbackPatternLevelChange HapticFeedbackPattern = 2
+const (
+	HapticFeedbackPatternAlignment   HapticFeedbackPattern = 1
+	HapticFeedbackPatternGeneric     HapticFeedbackPattern = 0
+	HapticFeedbackPatternLevelChange HapticFeedbackPattern = 2
+)
 
+// A time at which to provide haptic feedback to the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshapticfeedbackperformancetime?language=objc
 type HapticFeedbackPerformanceTime uint
 
-const HapticFeedbackPerformanceTimeDefault HapticFeedbackPerformanceTime = 0
-const HapticFeedbackPerformanceTimeDrawCompleted HapticFeedbackPerformanceTime = 2
-const HapticFeedbackPerformanceTimeNow HapticFeedbackPerformanceTime = 1
+const (
+	HapticFeedbackPerformanceTimeDefault       HapticFeedbackPerformanceTime = 0
+	HapticFeedbackPerformanceTimeDrawCompleted HapticFeedbackPerformanceTime = 2
+	HapticFeedbackPerformanceTimeNow           HapticFeedbackPerformanceTime = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpanchorname?language=objc
 type HelpAnchorName string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpbookname?language=objc
 type HelpBookName string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanagercontexthelpkey?language=objc
 type HelpManagerContextHelpKey string
 
+// Constants used by imageAlignment that allow you to specify the location of the image in the frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagealignment?language=objc
 type ImageAlignment uint
 
-const ImageAlignBottom ImageAlignment = 5
-const ImageAlignBottomLeft ImageAlignment = 6
-const ImageAlignBottomRight ImageAlignment = 7
-const ImageAlignCenter ImageAlignment = 0
-const ImageAlignLeft ImageAlignment = 4
-const ImageAlignRight ImageAlignment = 8
-const ImageAlignTop ImageAlignment = 1
-const ImageAlignTopLeft ImageAlignment = 2
-const ImageAlignTopRight ImageAlignment = 3
+const (
+	ImageAlignBottom      ImageAlignment = 5
+	ImageAlignBottomLeft  ImageAlignment = 6
+	ImageAlignBottomRight ImageAlignment = 7
+	ImageAlignCenter      ImageAlignment = 0
+	ImageAlignLeft        ImageAlignment = 4
+	ImageAlignRight       ImageAlignment = 8
+	ImageAlignTop         ImageAlignment = 1
+	ImageAlignTopLeft     ImageAlignment = 2
+	ImageAlignTopRight    ImageAlignment = 3
+)
 
+// Constants that specify the caching policy on a per-image basis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagecachemode?language=objc
 type ImageCacheMode uint
 
-const ImageCacheAlways ImageCacheMode = 1
-const ImageCacheBySize ImageCacheMode = 2
-const ImageCacheDefault ImageCacheMode = 0
-const ImageCacheNever ImageCacheMode = 3
+const (
+	ImageCacheAlways  ImageCacheMode = 1
+	ImageCacheBySize  ImageCacheMode = 2
+	ImageCacheDefault ImageCacheMode = 0
+	ImageCacheNever   ImageCacheMode = 3
+)
 
+// Constants that allow you to specify the kind of frame bordering the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageframestyle?language=objc
 type ImageFrameStyle uint
 
-const ImageFrameButton ImageFrameStyle = 4
-const ImageFrameGrayBezel ImageFrameStyle = 2
-const ImageFrameGroove ImageFrameStyle = 3
-const ImageFrameNone ImageFrameStyle = 0
-const ImageFramePhoto ImageFrameStyle = 1
+const (
+	ImageFrameButton    ImageFrameStyle = 4
+	ImageFrameGrayBezel ImageFrameStyle = 2
+	ImageFrameGroove    ImageFrameStyle = 3
+	ImageFrameNone      ImageFrameStyle = 0
+	ImageFramePhoto     ImageFrameStyle = 1
+)
 
+// Constants for the keys to include in a hints dictionary when drawing the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagehintkey?language=objc
 type ImageHintKey string
 
-const ImageHintCTM ImageHintKey = "NSImageHintCTM"
-const ImageHintInterpolation ImageHintKey = "NSImageHintInterpolation"
-const ImageHintUserInterfaceLayoutDirection ImageHintKey = "NSImageHintUserInterfaceLayoutDirection"
+const (
+	ImageHintCTM                          ImageHintKey = "NSImageHintCTM"
+	ImageHintInterpolation                ImageHintKey = "NSImageHintInterpolation"
+	ImageHintUserInterfaceLayoutDirection ImageHintKey = "NSImageHintUserInterfaceLayoutDirection"
+)
 
+// Constants that specify the interpolation, or image smoothing, behavior used by the image interpolation property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageinterpolation?language=objc
 type ImageInterpolation uint
 
-const ImageInterpolationDefault ImageInterpolation = 0
-const ImageInterpolationHigh ImageInterpolation = 3
-const ImageInterpolationLow ImageInterpolation = 2
-const ImageInterpolationMedium ImageInterpolation = 4
-const ImageInterpolationNone ImageInterpolation = 1
+const (
+	ImageInterpolationDefault ImageInterpolation = 0
+	ImageInterpolationHigh    ImageInterpolation = 3
+	ImageInterpolationLow     ImageInterpolation = 2
+	ImageInterpolationMedium  ImageInterpolation = 4
+	ImageInterpolationNone    ImageInterpolation = 1
+)
 
+// Constants that describe the layout direction for the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagelayoutdirection?language=objc
 type ImageLayoutDirection int
 
-const ImageLayoutDirectionLeftToRight ImageLayoutDirection = 2
-const ImageLayoutDirectionRightToLeft ImageLayoutDirection = 3
-const ImageLayoutDirectionUnspecified ImageLayoutDirection = -1
+const (
+	ImageLayoutDirectionLeftToRight ImageLayoutDirection = 2
+	ImageLayoutDirectionRightToLeft ImageLayoutDirection = 3
+	ImageLayoutDirectionUnspecified ImageLayoutDirection = -1
+)
 
+// Status values for incremental image loading. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageloadstatus?language=objc
 type ImageLoadStatus uint
 
-const ImageLoadStatusCancelled ImageLoadStatus = 1
-const ImageLoadStatusCompleted ImageLoadStatus = 0
-const ImageLoadStatusInvalidData ImageLoadStatus = 2
-const ImageLoadStatusReadError ImageLoadStatus = 4
-const ImageLoadStatusUnexpectedEOF ImageLoadStatus = 3
+const (
+	ImageLoadStatusCancelled     ImageLoadStatus = 1
+	ImageLoadStatusCompleted     ImageLoadStatus = 0
+	ImageLoadStatusInvalidData   ImageLoadStatus = 2
+	ImageLoadStatusReadError     ImageLoadStatus = 4
+	ImageLoadStatusUnexpectedEOF ImageLoadStatus = 3
+)
 
+// Named images, defined by the system or you, for use in your app. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagename?language=objc
 type ImageName string
 
-const ImageNameActionTemplate ImageName = "NSActionTemplate"
-const ImageNameAddTemplate ImageName = "NSAddTemplate"
-const ImageNameAdvanced ImageName = "NSAdvanced"
-const ImageNameApplicationIcon ImageName = "NSApplicationIcon"
-const ImageNameBluetoothTemplate ImageName = "NSBluetoothTemplate"
-const ImageNameBonjour ImageName = "NSBonjour"
-const ImageNameBookmarksTemplate ImageName = "NSBookmarksTemplate"
-const ImageNameCaution ImageName = "NSCaution"
-const ImageNameColorPanel ImageName = "NSColorPanel"
-const ImageNameColumnViewTemplate ImageName = "NSColumnViewTemplate"
-const ImageNameComputer ImageName = "NSComputer"
-const ImageNameDotMac ImageName = "NSDotMac"
-const ImageNameEnterFullScreenTemplate ImageName = "NSEnterFullScreenTemplate"
-const ImageNameEveryone ImageName = "NSEveryone"
-const ImageNameExitFullScreenTemplate ImageName = "NSExitFullScreenTemplate"
-const ImageNameFlowViewTemplate ImageName = "NSFlowViewTemplate"
-const ImageNameFolder ImageName = "NSFolder"
-const ImageNameFolderBurnable ImageName = "NSFolderBurnable"
-const ImageNameFolderSmart ImageName = "NSFolderSmart"
-const ImageNameFollowLinkFreestandingTemplate ImageName = "NSFollowLinkFreestandingTemplate"
-const ImageNameFontPanel ImageName = "NSFontPanel"
-const ImageNameGoBackTemplate ImageName = "NSGoBackTemplate"
-const ImageNameGoForwardTemplate ImageName = "NSGoForwardTemplate"
-const ImageNameGoLeftTemplate ImageName = "NSGoLeftTemplate"
-const ImageNameGoRightTemplate ImageName = "NSGoRightTemplate"
-const ImageNameHomeTemplate ImageName = "NSHomeTemplate"
-const ImageNameIChatTheaterTemplate ImageName = "NSIChatTheaterTemplate"
-const ImageNameIconViewTemplate ImageName = "NSIconViewTemplate"
-const ImageNameInfo ImageName = "NSInfo"
-const ImageNameInvalidDataFreestandingTemplate ImageName = "NSInvalidDataFreestandingTemplate"
-const ImageNameLeftFacingTriangleTemplate ImageName = "NSLeftFacingTriangleTemplate"
-const ImageNameListViewTemplate ImageName = "NSListViewTemplate"
-const ImageNameLockLockedTemplate ImageName = "NSLockLockedTemplate"
-const ImageNameLockUnlockedTemplate ImageName = "NSLockUnlockedTemplate"
-const ImageNameMenuMixedStateTemplate ImageName = "NSMenuMixedStateTemplate"
-const ImageNameMenuOnStateTemplate ImageName = "NSMenuOnStateTemplate"
-const ImageNameMobileMe ImageName = "NSMobileMe"
-const ImageNameMultipleDocuments ImageName = "NSMultipleDocuments"
-const ImageNameNetwork ImageName = "NSNetwork"
-const ImageNamePathTemplate ImageName = "NSPathTemplate"
-const ImageNamePreferencesGeneral ImageName = "NSPreferencesGeneral"
-const ImageNameQuickLookTemplate ImageName = "NSQuickLookTemplate"
-const ImageNameRefreshFreestandingTemplate ImageName = "NSRefreshFreestandingTemplate"
-const ImageNameRefreshTemplate ImageName = "NSRefreshTemplate"
-const ImageNameRemoveTemplate ImageName = "NSRemoveTemplate"
-const ImageNameRevealFreestandingTemplate ImageName = "NSRevealFreestandingTemplate"
-const ImageNameRightFacingTriangleTemplate ImageName = "NSRightFacingTriangleTemplate"
-const ImageNameShareTemplate ImageName = "NSShareTemplate"
-const ImageNameSlideshowTemplate ImageName = "NSSlideshowTemplate"
-const ImageNameSmartBadgeTemplate ImageName = "NSSmartBadgeTemplate"
-const ImageNameStatusAvailable ImageName = "NSStatusAvailable"
-const ImageNameStatusNone ImageName = "NSStatusNone"
-const ImageNameStatusPartiallyAvailable ImageName = "NSStatusPartiallyAvailable"
-const ImageNameStatusUnavailable ImageName = "NSStatusUnavailable"
-const ImageNameStopProgressFreestandingTemplate ImageName = "NSStopProgressFreestandingTemplate"
-const ImageNameStopProgressTemplate ImageName = "NSStopProgressTemplate"
-const ImageNameTouchBarAddDetailTemplate ImageName = "NSTouchBarAddDetailTemplate"
-const ImageNameTouchBarAddTemplate ImageName = "NSTouchBarAddTemplate"
-const ImageNameTouchBarAlarmTemplate ImageName = "NSTouchBarAlarmTemplate"
-const ImageNameTouchBarAudioInputMuteTemplate ImageName = "NSTouchBarAudioInputMuteTemplate"
-const ImageNameTouchBarAudioInputTemplate ImageName = "NSTouchBarAudioInputTemplate"
-const ImageNameTouchBarAudioOutputMuteTemplate ImageName = "NSTouchBarAudioOutputMuteTemplate"
-const ImageNameTouchBarAudioOutputVolumeHighTemplate ImageName = "NSTouchBarAudioOutputVolumeHighTemplate"
-const ImageNameTouchBarAudioOutputVolumeLowTemplate ImageName = "NSTouchBarAudioOutputVolumeLowTemplate"
-const ImageNameTouchBarAudioOutputVolumeMediumTemplate ImageName = "NSTouchBarAudioOutputVolumeMediumTemplate"
-const ImageNameTouchBarAudioOutputVolumeOffTemplate ImageName = "NSTouchBarAudioOutputVolumeOffTemplate"
-const ImageNameTouchBarBookmarksTemplate ImageName = "NSTouchBarBookmarksTemplate"
-const ImageNameTouchBarColorPickerFill ImageName = "NSTouchBarColorPickerFill"
-const ImageNameTouchBarColorPickerFont ImageName = "NSTouchBarColorPickerFont"
-const ImageNameTouchBarColorPickerStroke ImageName = "NSTouchBarColorPickerStroke"
-const ImageNameTouchBarCommunicationAudioTemplate ImageName = "NSTouchBarCommunicationAudioTemplate"
-const ImageNameTouchBarCommunicationVideoTemplate ImageName = "NSTouchBarCommunicationVideoTemplate"
-const ImageNameTouchBarComposeTemplate ImageName = "NSTouchBarComposeTemplate"
-const ImageNameTouchBarDeleteTemplate ImageName = "NSTouchBarDeleteTemplate"
-const ImageNameTouchBarDownloadTemplate ImageName = "NSTouchBarDownloadTemplate"
-const ImageNameTouchBarEnterFullScreenTemplate ImageName = "NSTouchBarEnterFullScreenTemplate"
-const ImageNameTouchBarExitFullScreenTemplate ImageName = "NSTouchBarExitFullScreenTemplate"
-const ImageNameTouchBarFastForwardTemplate ImageName = "NSTouchBarFastForwardTemplate"
-const ImageNameTouchBarFolderCopyToTemplate ImageName = "NSTouchBarFolderCopyToTemplate"
-const ImageNameTouchBarFolderMoveToTemplate ImageName = "NSTouchBarFolderMoveToTemplate"
-const ImageNameTouchBarFolderTemplate ImageName = "NSTouchBarFolderTemplate"
-const ImageNameTouchBarGetInfoTemplate ImageName = "NSTouchBarGetInfoTemplate"
-const ImageNameTouchBarGoBackTemplate ImageName = "NSTouchBarGoBackTemplate"
-const ImageNameTouchBarGoDownTemplate ImageName = "NSTouchBarGoDownTemplate"
-const ImageNameTouchBarGoForwardTemplate ImageName = "NSTouchBarGoForwardTemplate"
-const ImageNameTouchBarGoUpTemplate ImageName = "NSTouchBarGoUpTemplate"
-const ImageNameTouchBarHistoryTemplate ImageName = "NSTouchBarHistoryTemplate"
-const ImageNameTouchBarIconViewTemplate ImageName = "NSTouchBarIconViewTemplate"
-const ImageNameTouchBarListViewTemplate ImageName = "NSTouchBarListViewTemplate"
-const ImageNameTouchBarMailTemplate ImageName = "NSTouchBarMailTemplate"
-const ImageNameTouchBarNewFolderTemplate ImageName = "NSTouchBarNewFolderTemplate"
-const ImageNameTouchBarNewMessageTemplate ImageName = "NSTouchBarNewMessageTemplate"
-const ImageNameTouchBarOpenInBrowserTemplate ImageName = "NSTouchBarOpenInBrowserTemplate"
-const ImageNameTouchBarPauseTemplate ImageName = "NSTouchBarPauseTemplate"
-const ImageNameTouchBarPlayPauseTemplate ImageName = "NSTouchBarPlayPauseTemplate"
-const ImageNameTouchBarPlayTemplate ImageName = "NSTouchBarPlayTemplate"
-const ImageNameTouchBarPlayheadTemplate ImageName = "NSTouchBarPlayheadTemplate"
-const ImageNameTouchBarQuickLookTemplate ImageName = "NSTouchBarQuickLookTemplate"
-const ImageNameTouchBarRecordStartTemplate ImageName = "NSTouchBarRecordStartTemplate"
-const ImageNameTouchBarRecordStopTemplate ImageName = "NSTouchBarRecordStopTemplate"
-const ImageNameTouchBarRefreshTemplate ImageName = "NSTouchBarRefreshTemplate"
-const ImageNameTouchBarRemoveTemplate ImageName = "NSTouchBarRemoveTemplate"
-const ImageNameTouchBarRewindTemplate ImageName = "NSTouchBarRewindTemplate"
-const ImageNameTouchBarRotateLeftTemplate ImageName = "NSTouchBarRotateLeftTemplate"
-const ImageNameTouchBarRotateRightTemplate ImageName = "NSTouchBarRotateRightTemplate"
-const ImageNameTouchBarSearchTemplate ImageName = "NSTouchBarSearchTemplate"
-const ImageNameTouchBarShareTemplate ImageName = "NSTouchBarShareTemplate"
-const ImageNameTouchBarSidebarTemplate ImageName = "NSTouchBarSidebarTemplate"
-const ImageNameTouchBarSkipAhead15SecondsTemplate ImageName = "NSTouchBarSkipAhead15SecondsTemplate"
-const ImageNameTouchBarSkipAhead30SecondsTemplate ImageName = "NSTouchBarSkipAhead30SecondsTemplate"
-const ImageNameTouchBarSkipAheadTemplate ImageName = "NSTouchBarSkipAheadTemplate"
-const ImageNameTouchBarSkipBack15SecondsTemplate ImageName = "NSTouchBarSkipBack15SecondsTemplate"
-const ImageNameTouchBarSkipBack30SecondsTemplate ImageName = "NSTouchBarSkipBack30SecondsTemplate"
-const ImageNameTouchBarSkipBackTemplate ImageName = "NSTouchBarSkipBackTemplate"
-const ImageNameTouchBarSkipToEndTemplate ImageName = "NSTouchBarSkipToEndTemplate"
-const ImageNameTouchBarSkipToStartTemplate ImageName = "NSTouchBarSkipToStartTemplate"
-const ImageNameTouchBarSlideshowTemplate ImageName = "NSTouchBarSlideshowTemplate"
-const ImageNameTouchBarTagIconTemplate ImageName = "NSTouchBarTagIconTemplate"
-const ImageNameTouchBarTextBoldTemplate ImageName = "NSTouchBarTextBoldTemplate"
-const ImageNameTouchBarTextBoxTemplate ImageName = "NSTouchBarTextBoxTemplate"
-const ImageNameTouchBarTextCenterAlignTemplate ImageName = "NSTouchBarTextCenterAlignTemplate"
-const ImageNameTouchBarTextItalicTemplate ImageName = "NSTouchBarTextItalicTemplate"
-const ImageNameTouchBarTextJustifiedAlignTemplate ImageName = "NSTouchBarTextJustifiedAlignTemplate"
-const ImageNameTouchBarTextLeftAlignTemplate ImageName = "NSTouchBarTextLeftAlignTemplate"
-const ImageNameTouchBarTextListTemplate ImageName = "NSTouchBarTextListTemplate"
-const ImageNameTouchBarTextRightAlignTemplate ImageName = "NSTouchBarTextRightAlignTemplate"
-const ImageNameTouchBarTextStrikethroughTemplate ImageName = "NSTouchBarTextStrikethroughTemplate"
-const ImageNameTouchBarTextUnderlineTemplate ImageName = "NSTouchBarTextUnderlineTemplate"
-const ImageNameTouchBarUserAddTemplate ImageName = "NSTouchBarUserAddTemplate"
-const ImageNameTouchBarUserGroupTemplate ImageName = "NSTouchBarUserGroupTemplate"
-const ImageNameTouchBarUserTemplate ImageName = "NSTouchBarUserTemplate"
-const ImageNameTouchBarVolumeDownTemplate ImageName = "NSTouchBarVolumeDownTemplate"
-const ImageNameTouchBarVolumeUpTemplate ImageName = "NSTouchBarVolumeUpTemplate"
-const ImageNameTrashEmpty ImageName = "NSTrashEmpty"
-const ImageNameTrashFull ImageName = "NSTrashFull"
-const ImageNameUser ImageName = "NSUser"
-const ImageNameUserAccounts ImageName = "NSUserAccounts"
-const ImageNameUserGroup ImageName = "NSUserGroup"
-const ImageNameUserGuest ImageName = "NSUserGuest"
+const (
+	ImageNameActionTemplate                          ImageName = "NSActionTemplate"
+	ImageNameAddTemplate                             ImageName = "NSAddTemplate"
+	ImageNameAdvanced                                ImageName = "NSAdvanced"
+	ImageNameApplicationIcon                         ImageName = "NSApplicationIcon"
+	ImageNameBluetoothTemplate                       ImageName = "NSBluetoothTemplate"
+	ImageNameBonjour                                 ImageName = "NSBonjour"
+	ImageNameBookmarksTemplate                       ImageName = "NSBookmarksTemplate"
+	ImageNameCaution                                 ImageName = "NSCaution"
+	ImageNameColorPanel                              ImageName = "NSColorPanel"
+	ImageNameColumnViewTemplate                      ImageName = "NSColumnViewTemplate"
+	ImageNameComputer                                ImageName = "NSComputer"
+	ImageNameDotMac                                  ImageName = "NSDotMac"
+	ImageNameEnterFullScreenTemplate                 ImageName = "NSEnterFullScreenTemplate"
+	ImageNameEveryone                                ImageName = "NSEveryone"
+	ImageNameExitFullScreenTemplate                  ImageName = "NSExitFullScreenTemplate"
+	ImageNameFlowViewTemplate                        ImageName = "NSFlowViewTemplate"
+	ImageNameFolder                                  ImageName = "NSFolder"
+	ImageNameFolderBurnable                          ImageName = "NSFolderBurnable"
+	ImageNameFolderSmart                             ImageName = "NSFolderSmart"
+	ImageNameFollowLinkFreestandingTemplate          ImageName = "NSFollowLinkFreestandingTemplate"
+	ImageNameFontPanel                               ImageName = "NSFontPanel"
+	ImageNameGoBackTemplate                          ImageName = "NSGoBackTemplate"
+	ImageNameGoForwardTemplate                       ImageName = "NSGoForwardTemplate"
+	ImageNameGoLeftTemplate                          ImageName = "NSGoLeftTemplate"
+	ImageNameGoRightTemplate                         ImageName = "NSGoRightTemplate"
+	ImageNameHomeTemplate                            ImageName = "NSHomeTemplate"
+	ImageNameIChatTheaterTemplate                    ImageName = "NSIChatTheaterTemplate"
+	ImageNameIconViewTemplate                        ImageName = "NSIconViewTemplate"
+	ImageNameInfo                                    ImageName = "NSInfo"
+	ImageNameInvalidDataFreestandingTemplate         ImageName = "NSInvalidDataFreestandingTemplate"
+	ImageNameLeftFacingTriangleTemplate              ImageName = "NSLeftFacingTriangleTemplate"
+	ImageNameListViewTemplate                        ImageName = "NSListViewTemplate"
+	ImageNameLockLockedTemplate                      ImageName = "NSLockLockedTemplate"
+	ImageNameLockUnlockedTemplate                    ImageName = "NSLockUnlockedTemplate"
+	ImageNameMenuMixedStateTemplate                  ImageName = "NSMenuMixedStateTemplate"
+	ImageNameMenuOnStateTemplate                     ImageName = "NSMenuOnStateTemplate"
+	ImageNameMobileMe                                ImageName = "NSMobileMe"
+	ImageNameMultipleDocuments                       ImageName = "NSMultipleDocuments"
+	ImageNameNetwork                                 ImageName = "NSNetwork"
+	ImageNamePathTemplate                            ImageName = "NSPathTemplate"
+	ImageNamePreferencesGeneral                      ImageName = "NSPreferencesGeneral"
+	ImageNameQuickLookTemplate                       ImageName = "NSQuickLookTemplate"
+	ImageNameRefreshFreestandingTemplate             ImageName = "NSRefreshFreestandingTemplate"
+	ImageNameRefreshTemplate                         ImageName = "NSRefreshTemplate"
+	ImageNameRemoveTemplate                          ImageName = "NSRemoveTemplate"
+	ImageNameRevealFreestandingTemplate              ImageName = "NSRevealFreestandingTemplate"
+	ImageNameRightFacingTriangleTemplate             ImageName = "NSRightFacingTriangleTemplate"
+	ImageNameShareTemplate                           ImageName = "NSShareTemplate"
+	ImageNameSlideshowTemplate                       ImageName = "NSSlideshowTemplate"
+	ImageNameSmartBadgeTemplate                      ImageName = "NSSmartBadgeTemplate"
+	ImageNameStatusAvailable                         ImageName = "NSStatusAvailable"
+	ImageNameStatusNone                              ImageName = "NSStatusNone"
+	ImageNameStatusPartiallyAvailable                ImageName = "NSStatusPartiallyAvailable"
+	ImageNameStatusUnavailable                       ImageName = "NSStatusUnavailable"
+	ImageNameStopProgressFreestandingTemplate        ImageName = "NSStopProgressFreestandingTemplate"
+	ImageNameStopProgressTemplate                    ImageName = "NSStopProgressTemplate"
+	ImageNameTouchBarAddDetailTemplate               ImageName = "NSTouchBarAddDetailTemplate"
+	ImageNameTouchBarAddTemplate                     ImageName = "NSTouchBarAddTemplate"
+	ImageNameTouchBarAlarmTemplate                   ImageName = "NSTouchBarAlarmTemplate"
+	ImageNameTouchBarAudioInputMuteTemplate          ImageName = "NSTouchBarAudioInputMuteTemplate"
+	ImageNameTouchBarAudioInputTemplate              ImageName = "NSTouchBarAudioInputTemplate"
+	ImageNameTouchBarAudioOutputMuteTemplate         ImageName = "NSTouchBarAudioOutputMuteTemplate"
+	ImageNameTouchBarAudioOutputVolumeHighTemplate   ImageName = "NSTouchBarAudioOutputVolumeHighTemplate"
+	ImageNameTouchBarAudioOutputVolumeLowTemplate    ImageName = "NSTouchBarAudioOutputVolumeLowTemplate"
+	ImageNameTouchBarAudioOutputVolumeMediumTemplate ImageName = "NSTouchBarAudioOutputVolumeMediumTemplate"
+	ImageNameTouchBarAudioOutputVolumeOffTemplate    ImageName = "NSTouchBarAudioOutputVolumeOffTemplate"
+	ImageNameTouchBarBookmarksTemplate               ImageName = "NSTouchBarBookmarksTemplate"
+	ImageNameTouchBarColorPickerFill                 ImageName = "NSTouchBarColorPickerFill"
+	ImageNameTouchBarColorPickerFont                 ImageName = "NSTouchBarColorPickerFont"
+	ImageNameTouchBarColorPickerStroke               ImageName = "NSTouchBarColorPickerStroke"
+	ImageNameTouchBarCommunicationAudioTemplate      ImageName = "NSTouchBarCommunicationAudioTemplate"
+	ImageNameTouchBarCommunicationVideoTemplate      ImageName = "NSTouchBarCommunicationVideoTemplate"
+	ImageNameTouchBarComposeTemplate                 ImageName = "NSTouchBarComposeTemplate"
+	ImageNameTouchBarDeleteTemplate                  ImageName = "NSTouchBarDeleteTemplate"
+	ImageNameTouchBarDownloadTemplate                ImageName = "NSTouchBarDownloadTemplate"
+	ImageNameTouchBarEnterFullScreenTemplate         ImageName = "NSTouchBarEnterFullScreenTemplate"
+	ImageNameTouchBarExitFullScreenTemplate          ImageName = "NSTouchBarExitFullScreenTemplate"
+	ImageNameTouchBarFastForwardTemplate             ImageName = "NSTouchBarFastForwardTemplate"
+	ImageNameTouchBarFolderCopyToTemplate            ImageName = "NSTouchBarFolderCopyToTemplate"
+	ImageNameTouchBarFolderMoveToTemplate            ImageName = "NSTouchBarFolderMoveToTemplate"
+	ImageNameTouchBarFolderTemplate                  ImageName = "NSTouchBarFolderTemplate"
+	ImageNameTouchBarGetInfoTemplate                 ImageName = "NSTouchBarGetInfoTemplate"
+	ImageNameTouchBarGoBackTemplate                  ImageName = "NSTouchBarGoBackTemplate"
+	ImageNameTouchBarGoDownTemplate                  ImageName = "NSTouchBarGoDownTemplate"
+	ImageNameTouchBarGoForwardTemplate               ImageName = "NSTouchBarGoForwardTemplate"
+	ImageNameTouchBarGoUpTemplate                    ImageName = "NSTouchBarGoUpTemplate"
+	ImageNameTouchBarHistoryTemplate                 ImageName = "NSTouchBarHistoryTemplate"
+	ImageNameTouchBarIconViewTemplate                ImageName = "NSTouchBarIconViewTemplate"
+	ImageNameTouchBarListViewTemplate                ImageName = "NSTouchBarListViewTemplate"
+	ImageNameTouchBarMailTemplate                    ImageName = "NSTouchBarMailTemplate"
+	ImageNameTouchBarNewFolderTemplate               ImageName = "NSTouchBarNewFolderTemplate"
+	ImageNameTouchBarNewMessageTemplate              ImageName = "NSTouchBarNewMessageTemplate"
+	ImageNameTouchBarOpenInBrowserTemplate           ImageName = "NSTouchBarOpenInBrowserTemplate"
+	ImageNameTouchBarPauseTemplate                   ImageName = "NSTouchBarPauseTemplate"
+	ImageNameTouchBarPlayPauseTemplate               ImageName = "NSTouchBarPlayPauseTemplate"
+	ImageNameTouchBarPlayTemplate                    ImageName = "NSTouchBarPlayTemplate"
+	ImageNameTouchBarPlayheadTemplate                ImageName = "NSTouchBarPlayheadTemplate"
+	ImageNameTouchBarQuickLookTemplate               ImageName = "NSTouchBarQuickLookTemplate"
+	ImageNameTouchBarRecordStartTemplate             ImageName = "NSTouchBarRecordStartTemplate"
+	ImageNameTouchBarRecordStopTemplate              ImageName = "NSTouchBarRecordStopTemplate"
+	ImageNameTouchBarRefreshTemplate                 ImageName = "NSTouchBarRefreshTemplate"
+	ImageNameTouchBarRemoveTemplate                  ImageName = "NSTouchBarRemoveTemplate"
+	ImageNameTouchBarRewindTemplate                  ImageName = "NSTouchBarRewindTemplate"
+	ImageNameTouchBarRotateLeftTemplate              ImageName = "NSTouchBarRotateLeftTemplate"
+	ImageNameTouchBarRotateRightTemplate             ImageName = "NSTouchBarRotateRightTemplate"
+	ImageNameTouchBarSearchTemplate                  ImageName = "NSTouchBarSearchTemplate"
+	ImageNameTouchBarShareTemplate                   ImageName = "NSTouchBarShareTemplate"
+	ImageNameTouchBarSidebarTemplate                 ImageName = "NSTouchBarSidebarTemplate"
+	ImageNameTouchBarSkipAhead15SecondsTemplate      ImageName = "NSTouchBarSkipAhead15SecondsTemplate"
+	ImageNameTouchBarSkipAhead30SecondsTemplate      ImageName = "NSTouchBarSkipAhead30SecondsTemplate"
+	ImageNameTouchBarSkipAheadTemplate               ImageName = "NSTouchBarSkipAheadTemplate"
+	ImageNameTouchBarSkipBack15SecondsTemplate       ImageName = "NSTouchBarSkipBack15SecondsTemplate"
+	ImageNameTouchBarSkipBack30SecondsTemplate       ImageName = "NSTouchBarSkipBack30SecondsTemplate"
+	ImageNameTouchBarSkipBackTemplate                ImageName = "NSTouchBarSkipBackTemplate"
+	ImageNameTouchBarSkipToEndTemplate               ImageName = "NSTouchBarSkipToEndTemplate"
+	ImageNameTouchBarSkipToStartTemplate             ImageName = "NSTouchBarSkipToStartTemplate"
+	ImageNameTouchBarSlideshowTemplate               ImageName = "NSTouchBarSlideshowTemplate"
+	ImageNameTouchBarTagIconTemplate                 ImageName = "NSTouchBarTagIconTemplate"
+	ImageNameTouchBarTextBoldTemplate                ImageName = "NSTouchBarTextBoldTemplate"
+	ImageNameTouchBarTextBoxTemplate                 ImageName = "NSTouchBarTextBoxTemplate"
+	ImageNameTouchBarTextCenterAlignTemplate         ImageName = "NSTouchBarTextCenterAlignTemplate"
+	ImageNameTouchBarTextItalicTemplate              ImageName = "NSTouchBarTextItalicTemplate"
+	ImageNameTouchBarTextJustifiedAlignTemplate      ImageName = "NSTouchBarTextJustifiedAlignTemplate"
+	ImageNameTouchBarTextLeftAlignTemplate           ImageName = "NSTouchBarTextLeftAlignTemplate"
+	ImageNameTouchBarTextListTemplate                ImageName = "NSTouchBarTextListTemplate"
+	ImageNameTouchBarTextRightAlignTemplate          ImageName = "NSTouchBarTextRightAlignTemplate"
+	ImageNameTouchBarTextStrikethroughTemplate       ImageName = "NSTouchBarTextStrikethroughTemplate"
+	ImageNameTouchBarTextUnderlineTemplate           ImageName = "NSTouchBarTextUnderlineTemplate"
+	ImageNameTouchBarUserAddTemplate                 ImageName = "NSTouchBarUserAddTemplate"
+	ImageNameTouchBarUserGroupTemplate               ImageName = "NSTouchBarUserGroupTemplate"
+	ImageNameTouchBarUserTemplate                    ImageName = "NSTouchBarUserTemplate"
+	ImageNameTouchBarVolumeDownTemplate              ImageName = "NSTouchBarVolumeDownTemplate"
+	ImageNameTouchBarVolumeUpTemplate                ImageName = "NSTouchBarVolumeUpTemplate"
+	ImageNameTrashEmpty                              ImageName = "NSTrashEmpty"
+	ImageNameTrashFull                               ImageName = "NSTrashFull"
+	ImageNameUser                                    ImageName = "NSUser"
+	ImageNameUserAccounts                            ImageName = "NSUserAccounts"
+	ImageNameUserGroup                               ImageName = "NSUserGroup"
+	ImageNameUserGuest                               ImageName = "NSUserGuest"
+)
 
+// Constants that identify the loading status of the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagereploadstatus?language=objc
 type ImageRepLoadStatus int
 
-const ImageRepLoadStatusCompleted ImageRepLoadStatus = -6
-const ImageRepLoadStatusInvalidData ImageRepLoadStatus = -4
-const ImageRepLoadStatusReadingHeader ImageRepLoadStatus = -2
-const ImageRepLoadStatusUnexpectedEOF ImageRepLoadStatus = -5
-const ImageRepLoadStatusUnknownType ImageRepLoadStatus = -1
-const ImageRepLoadStatusWillNeedAllData ImageRepLoadStatus = -3
+const (
+	ImageRepLoadStatusCompleted       ImageRepLoadStatus = -6
+	ImageRepLoadStatusInvalidData     ImageRepLoadStatus = -4
+	ImageRepLoadStatusReadingHeader   ImageRepLoadStatus = -2
+	ImageRepLoadStatusUnexpectedEOF   ImageRepLoadStatus = -5
+	ImageRepLoadStatusUnknownType     ImageRepLoadStatus = -1
+	ImageRepLoadStatusWillNeedAllData ImageRepLoadStatus = -3
+)
 
+// Constants that describe the resizing mode for the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageresizingmode?language=objc
 type ImageResizingMode int
 
+const ()
+
+// Constants that specify a cell’s image scaling behavior. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagescaling?language=objc
 type ImageScaling uint
 
-const ImageScaleAxesIndependently ImageScaling = 1
-const ImageScaleNone ImageScaling = 2
-const ImageScaleProportionallyDown ImageScaling = 0
-const ImageScaleProportionallyUpOrDown ImageScaling = 3
-const ScaleNone ImageScaling = 2
-const ScaleProportionally ImageScaling = 0
-const ScaleToFit ImageScaling = 1
+const (
+	ImageScaleAxesIndependently      ImageScaling = 1
+	ImageScaleNone                   ImageScaling = 2
+	ImageScaleProportionallyDown     ImageScaling = 0
+	ImageScaleProportionallyUpOrDown ImageScaling = 3
+	ScaleNone                        ImageScaling = 2
+	ScaleProportionally              ImageScaling = 0
+	ScaleToFit                       ImageScaling = 1
+)
 
+// Constants that specify which scale variant of a symbol image to use. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagesymbolscale?language=objc
 type ImageSymbolScale int
 
-const ImageSymbolScaleLarge ImageSymbolScale = 3
-const ImageSymbolScaleMedium ImageSymbolScale = 2
-const ImageSymbolScaleSmall ImageSymbolScale = 1
+const (
+	ImageSymbolScaleLarge  ImageSymbolScale = 3
+	ImageSymbolScaleMedium ImageSymbolScale = 2
+	ImageSymbolScaleSmall  ImageSymbolScale = 1
+)
 
+// These constants are used in NSResponder’s interfaceStyle method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsinterfacestyle?language=objc
 type InterfaceStyle uint
 
+// The part of the object’s visual representation that should be used to get the value for the constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutattribute?language=objc
 type LayoutAttribute int
 
-const LayoutAttributeBaseline LayoutAttribute = 11
-const LayoutAttributeBottom LayoutAttribute = 4
-const LayoutAttributeCenterX LayoutAttribute = 9
-const LayoutAttributeCenterY LayoutAttribute = 10
-const LayoutAttributeFirstBaseline LayoutAttribute = 12
-const LayoutAttributeHeight LayoutAttribute = 8
-const LayoutAttributeLastBaseline LayoutAttribute = 11
-const LayoutAttributeLeading LayoutAttribute = 5
-const LayoutAttributeLeft LayoutAttribute = 1
-const LayoutAttributeNotAnAttribute LayoutAttribute = 0
-const LayoutAttributeRight LayoutAttribute = 2
-const LayoutAttributeTop LayoutAttribute = 3
-const LayoutAttributeTrailing LayoutAttribute = 6
-const LayoutAttributeWidth LayoutAttribute = 7
+const (
+	LayoutAttributeBaseline       LayoutAttribute = 11
+	LayoutAttributeBottom         LayoutAttribute = 4
+	LayoutAttributeCenterX        LayoutAttribute = 9
+	LayoutAttributeCenterY        LayoutAttribute = 10
+	LayoutAttributeFirstBaseline  LayoutAttribute = 12
+	LayoutAttributeHeight         LayoutAttribute = 8
+	LayoutAttributeLastBaseline   LayoutAttribute = 11
+	LayoutAttributeLeading        LayoutAttribute = 5
+	LayoutAttributeLeft           LayoutAttribute = 1
+	LayoutAttributeNotAnAttribute LayoutAttribute = 0
+	LayoutAttributeRight          LayoutAttribute = 2
+	LayoutAttributeTop            LayoutAttribute = 3
+	LayoutAttributeTrailing       LayoutAttribute = 6
+	LayoutAttributeWidth          LayoutAttribute = 7
+)
 
+// The layout constraint orientation, either horizontal or vertical, that the constraint uses to enforce layout between objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutconstraintorientation?language=objc
 type LayoutConstraintOrientation int
 
-const LayoutConstraintOrientationHorizontal LayoutConstraintOrientation = 0
-const LayoutConstraintOrientationVertical LayoutConstraintOrientation = 1
+const (
+	LayoutConstraintOrientationHorizontal LayoutConstraintOrientation = 0
+	LayoutConstraintOrientationVertical   LayoutConstraintOrientation = 1
+)
 
+// A bit mask that specifies both a part of an interface element to align and a direction for the alignment between two interface elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutformatoptions?language=objc
 type LayoutFormatOptions uint
 
-const LayoutFormatAlignAllBaseline LayoutFormatOptions = 2048
-const LayoutFormatAlignAllBottom LayoutFormatOptions = 16
-const LayoutFormatAlignAllCenterX LayoutFormatOptions = 512
-const LayoutFormatAlignAllCenterY LayoutFormatOptions = 1024
-const LayoutFormatAlignAllFirstBaseline LayoutFormatOptions = 4096
-const LayoutFormatAlignAllLastBaseline LayoutFormatOptions = 2048
-const LayoutFormatAlignAllLeading LayoutFormatOptions = 32
-const LayoutFormatAlignAllLeft LayoutFormatOptions = 2
-const LayoutFormatAlignAllRight LayoutFormatOptions = 4
-const LayoutFormatAlignAllTop LayoutFormatOptions = 8
-const LayoutFormatAlignAllTrailing LayoutFormatOptions = 64
-const LayoutFormatAlignmentMask LayoutFormatOptions = 65535
-const LayoutFormatDirectionLeadingToTrailing LayoutFormatOptions = 0
-const LayoutFormatDirectionLeftToRight LayoutFormatOptions = 65536
-const LayoutFormatDirectionMask LayoutFormatOptions = 196608
-const LayoutFormatDirectionRightToLeft LayoutFormatOptions = 131072
+const (
+	LayoutFormatAlignAllBaseline           LayoutFormatOptions = 2048
+	LayoutFormatAlignAllBottom             LayoutFormatOptions = 16
+	LayoutFormatAlignAllCenterX            LayoutFormatOptions = 512
+	LayoutFormatAlignAllCenterY            LayoutFormatOptions = 1024
+	LayoutFormatAlignAllFirstBaseline      LayoutFormatOptions = 4096
+	LayoutFormatAlignAllLastBaseline       LayoutFormatOptions = 2048
+	LayoutFormatAlignAllLeading            LayoutFormatOptions = 32
+	LayoutFormatAlignAllLeft               LayoutFormatOptions = 2
+	LayoutFormatAlignAllRight              LayoutFormatOptions = 4
+	LayoutFormatAlignAllTop                LayoutFormatOptions = 8
+	LayoutFormatAlignAllTrailing           LayoutFormatOptions = 64
+	LayoutFormatAlignmentMask              LayoutFormatOptions = 65535
+	LayoutFormatDirectionLeadingToTrailing LayoutFormatOptions = 0
+	LayoutFormatDirectionLeftToRight       LayoutFormatOptions = 65536
+	LayoutFormatDirectionMask              LayoutFormatOptions = 196608
+	LayoutFormatDirectionRightToLeft       LayoutFormatOptions = 131072
+)
 
-type LayoutPriority float32
+// Layout priority used to indicate the relative importance of constraints, allowing Auto Layout to make appropriate tradeoffs when satisfying the constraints of the system as a whole. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutpriority?language=objc
+type LayoutPriority float64
 
-const LayoutPriorityDefaultHigh LayoutPriority = 750.000000
-const LayoutPriorityDefaultLow LayoutPriority = 250.000000
-const LayoutPriorityDragThatCanResizeWindow LayoutPriority = 510.000000
-const LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490.000000
-const LayoutPriorityFittingSizeCompression LayoutPriority = 50.000000
-const LayoutPriorityRequired LayoutPriority = 1000.000000
-const LayoutPriorityWindowSizeStayPut LayoutPriority = 500.000000
+const (
+	LayoutPriorityDefaultHigh                LayoutPriority = 750.000000
+	LayoutPriorityDefaultLow                 LayoutPriority = 250.000000
+	LayoutPriorityDragThatCanResizeWindow    LayoutPriority = 510.000000
+	LayoutPriorityDragThatCannotResizeWindow LayoutPriority = 490.000000
+	LayoutPriorityFittingSizeCompression     LayoutPriority = 50.000000
+	LayoutPriorityRequired                   LayoutPriority = 1000.000000
+	LayoutPriorityWindowSizeStayPut          LayoutPriority = 500.000000
+)
 
+// The relation between the first attribute and the modified second attribute in a constraint. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutrelation?language=objc
 type LayoutRelation int
 
-const LayoutRelationEqual LayoutRelation = 0
-const LayoutRelationGreaterThanOrEqual LayoutRelation = 1
-const LayoutRelationLessThanOrEqual LayoutRelation = -1
+const (
+	LayoutRelationEqual              LayoutRelation = 0
+	LayoutRelationGreaterThanOrEqual LayoutRelation = 1
+	LayoutRelationLessThanOrEqual    LayoutRelation = -1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorplaceholdervisibility?language=objc
 type LevelIndicatorPlaceholderVisibility int
 
-const LevelIndicatorPlaceholderVisibilityAlways LevelIndicatorPlaceholderVisibility = 1
-const LevelIndicatorPlaceholderVisibilityAutomatic LevelIndicatorPlaceholderVisibility = 0
-const LevelIndicatorPlaceholderVisibilityWhileEditing LevelIndicatorPlaceholderVisibility = 2
+const (
+	LevelIndicatorPlaceholderVisibilityAlways       LevelIndicatorPlaceholderVisibility = 1
+	LevelIndicatorPlaceholderVisibilityAutomatic    LevelIndicatorPlaceholderVisibility = 0
+	LevelIndicatorPlaceholderVisibilityWhileEditing LevelIndicatorPlaceholderVisibility = 2
+)
 
+// Constants that specify a level indicator's appearance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorstyle?language=objc
 type LevelIndicatorStyle uint
 
-const ContinuousCapacityLevelIndicatorStyle LevelIndicatorStyle = 1
-const DiscreteCapacityLevelIndicatorStyle LevelIndicatorStyle = 2
-const LevelIndicatorStyleContinuousCapacity LevelIndicatorStyle = 1
-const LevelIndicatorStyleDiscreteCapacity LevelIndicatorStyle = 2
-const LevelIndicatorStyleRating LevelIndicatorStyle = 3
-const LevelIndicatorStyleRelevancy LevelIndicatorStyle = 0
-const RatingLevelIndicatorStyle LevelIndicatorStyle = 3
-const RelevancyLevelIndicatorStyle LevelIndicatorStyle = 0
+const (
+	ContinuousCapacityLevelIndicatorStyle LevelIndicatorStyle = 1
+	DiscreteCapacityLevelIndicatorStyle   LevelIndicatorStyle = 2
+	LevelIndicatorStyleContinuousCapacity LevelIndicatorStyle = 1
+	LevelIndicatorStyleDiscreteCapacity   LevelIndicatorStyle = 2
+	LevelIndicatorStyleRating             LevelIndicatorStyle = 3
+	LevelIndicatorStyleRelevancy          LevelIndicatorStyle = 0
+	RatingLevelIndicatorStyle             LevelIndicatorStyle = 3
+	RelevancyLevelIndicatorStyle          LevelIndicatorStyle = 0
+)
 
+// Constants that specify what happens when a line is too long for a container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslinebreakmode?language=objc
 type LineBreakMode int
 
-const LineBreakByCharWrapping LineBreakMode = 1
-const LineBreakByClipping LineBreakMode = 2
-const LineBreakByTruncatingHead LineBreakMode = 3
-const LineBreakByTruncatingMiddle LineBreakMode = 5
-const LineBreakByTruncatingTail LineBreakMode = 4
-const LineBreakByWordWrapping LineBreakMode = 0
+const (
+	LineBreakByCharWrapping     LineBreakMode = 1
+	LineBreakByClipping         LineBreakMode = 2
+	LineBreakByTruncatingHead   LineBreakMode = 3
+	LineBreakByTruncatingMiddle LineBreakMode = 5
+	LineBreakByTruncatingTail   LineBreakMode = 4
+	LineBreakByWordWrapping     LineBreakMode = 0
+)
 
+// Constants that specify how the text system breaks lines while laying out paragraphs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslinebreakstrategy?language=objc
 type LineBreakStrategy uint
 
-const LineBreakStrategyHangulWordPriority LineBreakStrategy = 2
-const LineBreakStrategyNone LineBreakStrategy = 0
-const LineBreakStrategyPushOut LineBreakStrategy = 1
-const LineBreakStrategyStandard LineBreakStrategy = 65535
+const (
+	LineBreakStrategyHangulWordPriority LineBreakStrategy = 2
+	LineBreakStrategyNone               LineBreakStrategy = 0
+	LineBreakStrategyPushOut            LineBreakStrategy = 1
+	LineBreakStrategyStandard           LineBreakStrategy = 65535
+)
 
+// Constants that specify the shape of endpoints for an open path when it is stroked. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslinecapstyle?language=objc
 type LineCapStyle uint
 
-const ButtLineCapStyle LineCapStyle = 0
-const LineCapStyleButt LineCapStyle = 0
-const LineCapStyleRound LineCapStyle = 1
-const LineCapStyleSquare LineCapStyle = 2
-const RoundLineCapStyle LineCapStyle = 1
-const SquareLineCapStyle LineCapStyle = 2
+const (
+	ButtLineCapStyle   LineCapStyle = 0
+	LineCapStyleButt   LineCapStyle = 0
+	LineCapStyleRound  LineCapStyle = 1
+	LineCapStyleSquare LineCapStyle = 2
+	RoundLineCapStyle  LineCapStyle = 1
+	SquareLineCapStyle LineCapStyle = 2
+)
 
+// Constants that specify the shape of the joins between connected segments of a stroked path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslinejoinstyle?language=objc
 type LineJoinStyle uint
 
-const BevelLineJoinStyle LineJoinStyle = 2
-const LineJoinStyleBevel LineJoinStyle = 2
-const LineJoinStyleMiter LineJoinStyle = 0
-const LineJoinStyleRound LineJoinStyle = 1
-const MiterLineJoinStyle LineJoinStyle = 0
-const RoundLineJoinStyle LineJoinStyle = 1
+const (
+	BevelLineJoinStyle LineJoinStyle = 2
+	LineJoinStyleBevel LineJoinStyle = 2
+	LineJoinStyleMiter LineJoinStyle = 0
+	LineJoinStyleRound LineJoinStyle = 1
+	MiterLineJoinStyle LineJoinStyle = 0
+	RoundLineJoinStyle LineJoinStyle = 1
+)
 
+// The direction in which a line moves. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslinemovementdirection?language=objc
 type LineMovementDirection uint
 
-const LineDoesntMove LineMovementDirection = 0
-const LineMovesDown LineMovementDirection = 3
-const LineMovesLeft LineMovementDirection = 1
-const LineMovesRight LineMovementDirection = 2
-const LineMovesUp LineMovementDirection = 4
+const (
+	LineDoesntMove LineMovementDirection = 0
+	LineMovesDown  LineMovementDirection = 3
+	LineMovesLeft  LineMovementDirection = 1
+	LineMovesRight LineMovementDirection = 2
+	LineMovesUp    LineMovementDirection = 4
+)
 
+// Values that describe the progression of text on a page. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslinesweepdirection?language=objc
 type LineSweepDirection uint
 
-const LineSweepDown LineSweepDirection = 2
-const LineSweepLeft LineSweepDirection = 0
-const LineSweepRight LineSweepDirection = 1
-const LineSweepUp LineSweepDirection = 3
+const (
+	LineSweepDown  LineSweepDirection = 2
+	LineSweepLeft  LineSweepDirection = 0
+	LineSweepRight LineSweepDirection = 1
+	LineSweepUp    LineSweepDirection = 3
+)
 
+// These constants determine how NSCell objects behave when an NSMatrix object is tracking the mouse. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrixmode?language=objc
 type MatrixMode uint
 
-const HighlightModeMatrix MatrixMode = 1
-const ListModeMatrix MatrixMode = 2
-const RadioModeMatrix MatrixMode = 0
-const TrackModeMatrix MatrixMode = 3
+const (
+	HighlightModeMatrix MatrixMode = 1
+	ListModeMatrix      MatrixMode = 2
+	RadioModeMatrix     MatrixMode = 0
+	TrackModeMatrix     MatrixMode = 3
+)
 
+// These constants are masks used to configure a Media Library Browser to display specific types of media. Combined masks are not yet supported.  In other words, only one nonzero mask value is supported at a time.  If masks are combined, the lowest mask value is used. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmedialibrary?language=objc
 type MediaLibrary uint
 
-const MediaLibraryAudio MediaLibrary = 1
-const MediaLibraryImage MediaLibrary = 2
-const MediaLibraryMovie MediaLibrary = 4
+const (
+	MediaLibraryAudio MediaLibrary = 1
+	MediaLibraryImage MediaLibrary = 2
+	MediaLibraryMovie MediaLibrary = 4
+)
 
+// These constants are used as a bitmask for specifying a set of menu or menu item properties, and are contained by the propertiesToUpdate property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuproperties?language=objc
 type MenuProperties uint
 
-const MenuPropertyItemAccessibilityDescription MenuProperties = 32
-const MenuPropertyItemAttributedTitle MenuProperties = 2
-const MenuPropertyItemEnabled MenuProperties = 16
-const MenuPropertyItemImage MenuProperties = 8
-const MenuPropertyItemKeyEquivalent MenuProperties = 4
-const MenuPropertyItemTitle MenuProperties = 1
+const (
+	MenuPropertyItemAccessibilityDescription MenuProperties = 32
+	MenuPropertyItemAttributedTitle          MenuProperties = 2
+	MenuPropertyItemEnabled                  MenuProperties = 16
+	MenuPropertyItemImage                    MenuProperties = 8
+	MenuPropertyItemKeyEquivalent            MenuProperties = 4
+	MenuPropertyItemTitle                    MenuProperties = 1
+)
 
+// A set of button return values for modal dialogs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmodalresponse?language=objc
 type ModalResponse int
 
-const AlertFirstButtonReturn ModalResponse = 1000
-const AlertSecondButtonReturn ModalResponse = 1001
-const AlertThirdButtonReturn ModalResponse = 1002
-const ModalResponseAbort ModalResponse = -1001
-const ModalResponseCancel ModalResponse = 0
-const ModalResponseContinue ModalResponse = -1002
-const ModalResponseOK ModalResponse = 1
-const ModalResponseStop ModalResponse = -1000
+const (
+	AlertFirstButtonReturn  ModalResponse = 1000
+	AlertSecondButtonReturn ModalResponse = 1001
+	AlertThirdButtonReturn  ModalResponse = 1002
+	ModalResponseAbort      ModalResponse = -1001
+	ModalResponseCancel     ModalResponse = 0
+	ModalResponseContinue   ModalResponse = -1002
+	ModalResponseOK         ModalResponse = 1
+	ModalResponseStop       ModalResponse = -1000
+)
 
+// A constant for glyph packing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmultibyteglyphpacking?language=objc
 type MultibyteGlyphPacking uint
 
-const NativeShortGlyphPacking MultibyteGlyphPacking = 5
+const (
+	NativeShortGlyphPacking MultibyteGlyphPacking = 5
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsnibname?language=objc
 type NibName string
 
+// Constants that specify context parameters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenglcontextparameter?language=objc
 type OpenGLContextParameter int
 
-const OpenGLCPCurrentRendererID OpenGLContextParameter = 309
-const OpenGLCPGPUFragmentProcessing OpenGLContextParameter = 311
-const OpenGLCPGPUVertexProcessing OpenGLContextParameter = 310
-const OpenGLCPHasDrawable OpenGLContextParameter = 314
-const OpenGLCPMPSwapsInFlight OpenGLContextParameter = 315
-const OpenGLCPRasterizationEnable OpenGLContextParameter = 221
-const OpenGLCPReclaimResources OpenGLContextParameter = 308
-const OpenGLCPStateValidation OpenGLContextParameter = 301
-const OpenGLCPSurfaceBackingSize OpenGLContextParameter = 304
-const OpenGLCPSurfaceOpacity OpenGLContextParameter = 236
-const OpenGLCPSurfaceOrder OpenGLContextParameter = 235
-const OpenGLCPSurfaceSurfaceVolatile OpenGLContextParameter = 306
-const OpenGLCPSwapInterval OpenGLContextParameter = 222
-const OpenGLCPSwapRectangle OpenGLContextParameter = 200
-const OpenGLCPSwapRectangleEnable OpenGLContextParameter = 201
-const OpenGLContextParameterCurrentRendererID OpenGLContextParameter = 309
-const OpenGLContextParameterGPUFragmentProcessing OpenGLContextParameter = 311
-const OpenGLContextParameterGPUVertexProcessing OpenGLContextParameter = 310
-const OpenGLContextParameterHasDrawable OpenGLContextParameter = 314
-const OpenGLContextParameterMPSwapsInFlight OpenGLContextParameter = 315
-const OpenGLContextParameterRasterizationEnable OpenGLContextParameter = 221
-const OpenGLContextParameterReclaimResources OpenGLContextParameter = 308
-const OpenGLContextParameterStateValidation OpenGLContextParameter = 301
-const OpenGLContextParameterSurfaceBackingSize OpenGLContextParameter = 304
-const OpenGLContextParameterSurfaceOpacity OpenGLContextParameter = 236
-const OpenGLContextParameterSurfaceOrder OpenGLContextParameter = 235
-const OpenGLContextParameterSurfaceSurfaceVolatile OpenGLContextParameter = 306
-const OpenGLContextParameterSwapInterval OpenGLContextParameter = 222
-const OpenGLContextParameterSwapRectangle OpenGLContextParameter = 200
-const OpenGLContextParameterSwapRectangleEnable OpenGLContextParameter = 201
+const (
+	OpenGLCPCurrentRendererID                    OpenGLContextParameter = 309
+	OpenGLCPGPUFragmentProcessing                OpenGLContextParameter = 311
+	OpenGLCPGPUVertexProcessing                  OpenGLContextParameter = 310
+	OpenGLCPHasDrawable                          OpenGLContextParameter = 314
+	OpenGLCPMPSwapsInFlight                      OpenGLContextParameter = 315
+	OpenGLCPRasterizationEnable                  OpenGLContextParameter = 221
+	OpenGLCPReclaimResources                     OpenGLContextParameter = 308
+	OpenGLCPStateValidation                      OpenGLContextParameter = 301
+	OpenGLCPSurfaceBackingSize                   OpenGLContextParameter = 304
+	OpenGLCPSurfaceOpacity                       OpenGLContextParameter = 236
+	OpenGLCPSurfaceOrder                         OpenGLContextParameter = 235
+	OpenGLCPSurfaceSurfaceVolatile               OpenGLContextParameter = 306
+	OpenGLCPSwapInterval                         OpenGLContextParameter = 222
+	OpenGLCPSwapRectangle                        OpenGLContextParameter = 200
+	OpenGLCPSwapRectangleEnable                  OpenGLContextParameter = 201
+	OpenGLContextParameterCurrentRendererID      OpenGLContextParameter = 309
+	OpenGLContextParameterGPUFragmentProcessing  OpenGLContextParameter = 311
+	OpenGLContextParameterGPUVertexProcessing    OpenGLContextParameter = 310
+	OpenGLContextParameterHasDrawable            OpenGLContextParameter = 314
+	OpenGLContextParameterMPSwapsInFlight        OpenGLContextParameter = 315
+	OpenGLContextParameterRasterizationEnable    OpenGLContextParameter = 221
+	OpenGLContextParameterReclaimResources       OpenGLContextParameter = 308
+	OpenGLContextParameterStateValidation        OpenGLContextParameter = 301
+	OpenGLContextParameterSurfaceBackingSize     OpenGLContextParameter = 304
+	OpenGLContextParameterSurfaceOpacity         OpenGLContextParameter = 236
+	OpenGLContextParameterSurfaceOrder           OpenGLContextParameter = 235
+	OpenGLContextParameterSurfaceSurfaceVolatile OpenGLContextParameter = 306
+	OpenGLContextParameterSwapInterval           OpenGLContextParameter = 222
+	OpenGLContextParameterSwapRectangle          OpenGLContextParameter = 200
+	OpenGLContextParameterSwapRectangleEnable    OpenGLContextParameter = 201
+)
 
+// Constants that specify OpenGL options. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenglglobaloption?language=objc
 type OpenGLGlobalOption uint32
 
-const OpenGLGOClearFormatCache OpenGLGlobalOption = 502
-const OpenGLGOFormatCacheSize OpenGLGlobalOption = 501
-const OpenGLGOResetLibrary OpenGLGlobalOption = 504
-const OpenGLGORetainRenderers OpenGLGlobalOption = 503
-const OpenGLGOUseBuildCache OpenGLGlobalOption = 506
+const (
+	OpenGLGOClearFormatCache OpenGLGlobalOption = 502
+	OpenGLGOFormatCacheSize  OpenGLGlobalOption = 501
+	OpenGLGOResetLibrary     OpenGLGlobalOption = 504
+	OpenGLGORetainRenderers  OpenGLGlobalOption = 503
+	OpenGLGOUseBuildCache    OpenGLGlobalOption = 506
+)
 
+// Pixel format attributes for OpenGL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsopenglpixelformatattribute?language=objc
 type OpenGLPixelFormatAttribute uint32
 
+// Constants used to configure the contents of a PDF panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfpaneloptions?language=objc
 type PDFPanelOptions int
 
-const PDFPanelRequestsParentDirectory PDFPanelOptions = 16777216
-const PDFPanelShowsOrientation PDFPanelOptions = 8
-const PDFPanelShowsPaperSize PDFPanelOptions = 4
+const (
+	PDFPanelRequestsParentDirectory PDFPanelOptions = 16777216
+	PDFPanelShowsOrientation        PDFPanelOptions = 8
+	PDFPanelShowsPaperSize          PDFPanelOptions = 4
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerobjectidentifier?language=objc
 type PageControllerObjectIdentifier string
 
+// These constants control the transition style of the page controller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollertransitionstyle?language=objc
 type PageControllerTransitionStyle int
 
-const PageControllerTransitionStyleHorizontalStrip PageControllerTransitionStyle = 2
-const PageControllerTransitionStyleStackBook PageControllerTransitionStyle = 1
-const PageControllerTransitionStyleStackHistory PageControllerTransitionStyle = 0
+const (
+	PageControllerTransitionStyleHorizontalStrip PageControllerTransitionStyle = 2
+	PageControllerTransitionStyleStackBook       PageControllerTransitionStyle = 1
+	PageControllerTransitionStyleStackHistory    PageControllerTransitionStyle = 0
+)
 
+// Constants that describe the orientation of printing on a page. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspaperorientation?language=objc
 type PaperOrientation int
 
-const PaperOrientationLandscape PaperOrientation = 1
-const PaperOrientationPortrait PaperOrientation = 0
+const (
+	PaperOrientationLandscape PaperOrientation = 1
+	PaperOrientationPortrait  PaperOrientation = 0
+)
 
+// Options for preparing the pasteboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardcontentsoptions?language=objc
 type PasteboardContentsOptions uint
 
-const PasteboardContentsCurrentHostOnly PasteboardContentsOptions = 1
+const (
+	PasteboardContentsCurrentHostOnly PasteboardContentsOptions = 1
+)
 
+// Constants that represent the standard pasteboard names. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardname?language=objc
 type PasteboardName string
 
-const DragPboard PasteboardName = "Apple CFPasteboard drag"
-const FindPboard PasteboardName = "Apple CFPasteboard find"
-const FontPboard PasteboardName = "Apple CFPasteboard font"
-const GeneralPboard PasteboardName = "Apple CFPasteboard general"
-const PasteboardNameDrag PasteboardName = "Apple CFPasteboard drag"
-const PasteboardNameFind PasteboardName = "Apple CFPasteboard find"
-const PasteboardNameFont PasteboardName = "Apple CFPasteboard font"
-const PasteboardNameGeneral PasteboardName = "Apple CFPasteboard general"
-const PasteboardNameRuler PasteboardName = "Apple CFPasteboard ruler"
-const RulerPboard PasteboardName = "Apple CFPasteboard ruler"
+const (
+	DragPboard            PasteboardName = "Apple CFPasteboard drag"
+	FindPboard            PasteboardName = "Apple CFPasteboard find"
+	FontPboard            PasteboardName = "Apple CFPasteboard font"
+	GeneralPboard         PasteboardName = "Apple CFPasteboard general"
+	PasteboardNameDrag    PasteboardName = "Apple CFPasteboard drag"
+	PasteboardNameFind    PasteboardName = "Apple CFPasteboard find"
+	PasteboardNameFont    PasteboardName = "Apple CFPasteboard font"
+	PasteboardNameGeneral PasteboardName = "Apple CFPasteboard general"
+	PasteboardNameRuler   PasteboardName = "Apple CFPasteboard ruler"
+	RulerPboard           PasteboardName = "Apple CFPasteboard ruler"
+)
 
+// Options for reading pasteboard data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardreadingoptionkey?language=objc
 type PasteboardReadingOptionKey string
 
-const PasteboardURLReadingContentsConformToTypesKey PasteboardReadingOptionKey = "NSPasteboardURLReadingContentsConformToTypesKey"
-const PasteboardURLReadingFileURLsOnlyKey PasteboardReadingOptionKey = "NSPasteboardURLReadingFileURLsOnlyKey"
+const (
+	PasteboardURLReadingContentsConformToTypesKey PasteboardReadingOptionKey = "NSPasteboardURLReadingContentsConformToTypesKey"
+	PasteboardURLReadingFileURLsOnlyKey           PasteboardReadingOptionKey = "NSPasteboardURLReadingFileURLsOnlyKey"
+)
 
+// Options that specify how to interpret data on the pasteboard when initializing pasteboard data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardreadingoptions?language=objc
 type PasteboardReadingOptions uint
 
-const PasteboardReadingAsData PasteboardReadingOptions = 0
-const PasteboardReadingAsKeyedArchive PasteboardReadingOptions = 4
-const PasteboardReadingAsPropertyList PasteboardReadingOptions = 2
-const PasteboardReadingAsString PasteboardReadingOptions = 1
+const (
+	PasteboardReadingAsData         PasteboardReadingOptions = 0
+	PasteboardReadingAsKeyedArchive PasteboardReadingOptions = 4
+	PasteboardReadingAsPropertyList PasteboardReadingOptions = 2
+	PasteboardReadingAsString       PasteboardReadingOptions = 1
+)
 
+// The supported pasteboard types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtype?language=objc
 type PasteboardType string
 
-const ColorPboardType PasteboardType = "NSColor pasteboard type"
-const FileContentsPboardType PasteboardType = "NXFileContentsPboardType"
-const FilenamesPboardType PasteboardType = "NSFilenamesPboardType"
-const FilesPromisePboardType PasteboardType = "Apple files promise pasteboard type"
-const FindPanelSearchOptionsPboardType PasteboardType = "NSFindPanel search options pasteboard type"
-const FontPboardType PasteboardType = "NeXT font pasteboard type"
-const HTMLPboardType PasteboardType = "Apple HTML pasteboard type"
-const InkTextPboardType PasteboardType = "Apple InkText pasteboard type"
-const MultipleTextSelectionPboardType PasteboardType = "Apple multiple text selection pasteboard type"
-const PDFPboardType PasteboardType = "Apple PDF pasteboard type"
-const PICTPboardType PasteboardType = "Apple PICT pasteboard type"
-const PasteboardTypeColor PasteboardType = "com.apple.cocoa.pasteboard.color"
-const PasteboardTypeFileURL PasteboardType = "public.file-url"
-const PasteboardTypeFindPanelSearchOptions PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
-const PasteboardTypeFont PasteboardType = "com.apple.cocoa.pasteboard.character-formatting"
-const PasteboardTypeHTML PasteboardType = "public.html"
-const PasteboardTypeMultipleTextSelection PasteboardType = "com.apple.cocoa.pasteboard.multiple-text-selection"
-const PasteboardTypePDF PasteboardType = "com.adobe.pdf"
-const PasteboardTypePNG PasteboardType = "public.png"
-const PasteboardTypeRTF PasteboardType = "public.rtf"
-const PasteboardTypeRTFD PasteboardType = "com.apple.flat-rtfd"
-const PasteboardTypeRuler PasteboardType = "com.apple.cocoa.pasteboard.paragraph-formatting"
-const PasteboardTypeSound PasteboardType = "com.apple.cocoa.pasteboard.sound"
-const PasteboardTypeString PasteboardType = "public.utf8-plain-text"
-const PasteboardTypeTIFF PasteboardType = "public.tiff"
-const PasteboardTypeTabularText PasteboardType = "public.utf8-tab-separated-values-text"
-const PasteboardTypeTextFinderOptions PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
-const PasteboardTypeURL PasteboardType = "public.url"
-const PostScriptPboardType PasteboardType = "NeXT Encapsulated PostScript v1.2 pasteboard type"
-const RTFDPboardType PasteboardType = "NeXT RTFD pasteboard type"
-const RTFPboardType PasteboardType = "NeXT Rich Text Format v1.0 pasteboard type"
-const RulerPboardType PasteboardType = "NeXT ruler pasteboard type"
-const SoundPboardType PasteboardType = "NSSoundPboardType"
-const StringPboardType PasteboardType = "NSStringPboardType"
-const TIFFPboardType PasteboardType = "NeXT TIFF v4.0 pasteboard type"
-const TabularTextPboardType PasteboardType = "NeXT tabular text pasteboard type"
-const URLPboardType PasteboardType = "Apple URL pasteboard type"
-const VCardPboardType PasteboardType = "Apple VCard pasteboard type"
+const (
+	ColorPboardType                      PasteboardType = "NSColor pasteboard type"
+	FileContentsPboardType               PasteboardType = "NXFileContentsPboardType"
+	FilenamesPboardType                  PasteboardType = "NSFilenamesPboardType"
+	FilesPromisePboardType               PasteboardType = "Apple files promise pasteboard type"
+	FindPanelSearchOptionsPboardType     PasteboardType = "NSFindPanel search options pasteboard type"
+	FontPboardType                       PasteboardType = "NeXT font pasteboard type"
+	HTMLPboardType                       PasteboardType = "Apple HTML pasteboard type"
+	InkTextPboardType                    PasteboardType = "Apple InkText pasteboard type"
+	MultipleTextSelectionPboardType      PasteboardType = "Apple multiple text selection pasteboard type"
+	PDFPboardType                        PasteboardType = "Apple PDF pasteboard type"
+	PICTPboardType                       PasteboardType = "Apple PICT pasteboard type"
+	PasteboardTypeColor                  PasteboardType = "com.apple.cocoa.pasteboard.color"
+	PasteboardTypeFileURL                PasteboardType = "public.file-url"
+	PasteboardTypeFindPanelSearchOptions PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
+	PasteboardTypeFont                   PasteboardType = "com.apple.cocoa.pasteboard.character-formatting"
+	PasteboardTypeHTML                   PasteboardType = "public.html"
+	PasteboardTypeMultipleTextSelection  PasteboardType = "com.apple.cocoa.pasteboard.multiple-text-selection"
+	PasteboardTypePDF                    PasteboardType = "com.adobe.pdf"
+	PasteboardTypePNG                    PasteboardType = "public.png"
+	PasteboardTypeRTF                    PasteboardType = "public.rtf"
+	PasteboardTypeRTFD                   PasteboardType = "com.apple.flat-rtfd"
+	PasteboardTypeRuler                  PasteboardType = "com.apple.cocoa.pasteboard.paragraph-formatting"
+	PasteboardTypeSound                  PasteboardType = "com.apple.cocoa.pasteboard.sound"
+	PasteboardTypeString                 PasteboardType = "public.utf8-plain-text"
+	PasteboardTypeTIFF                   PasteboardType = "public.tiff"
+	PasteboardTypeTabularText            PasteboardType = "public.utf8-tab-separated-values-text"
+	PasteboardTypeTextFinderOptions      PasteboardType = "com.apple.cocoa.pasteboard.find-panel-search-options"
+	PasteboardTypeURL                    PasteboardType = "public.url"
+	PostScriptPboardType                 PasteboardType = "NeXT Encapsulated PostScript v1.2 pasteboard type"
+	RTFDPboardType                       PasteboardType = "NeXT RTFD pasteboard type"
+	RTFPboardType                        PasteboardType = "NeXT Rich Text Format v1.0 pasteboard type"
+	RulerPboardType                      PasteboardType = "NeXT ruler pasteboard type"
+	SoundPboardType                      PasteboardType = "NSSoundPboardType"
+	StringPboardType                     PasteboardType = "NSStringPboardType"
+	TIFFPboardType                       PasteboardType = "NeXT TIFF v4.0 pasteboard type"
+	TabularTextPboardType                PasteboardType = "NeXT tabular text pasteboard type"
+	URLPboardType                        PasteboardType = "Apple URL pasteboard type"
+	VCardPboardType                      PasteboardType = "Apple VCard pasteboard type"
+)
 
+// Search options for the find panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypefindpanelsearchoptionkey?language=objc
 type PasteboardTypeFindPanelSearchOptionKey string
 
-const FindPanelCaseInsensitiveSearch PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelCaseInsensitiveSearch"
-const FindPanelSubstringMatch PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelSubstringMatch"
+const (
+	FindPanelCaseInsensitiveSearch PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelCaseInsensitiveSearch"
+	FindPanelSubstringMatch        PasteboardTypeFindPanelSearchOptionKey = "NSFindPanelSubstringMatch"
+)
 
+// Search options for text in Finder. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypetextfinderoptionkey?language=objc
 type PasteboardTypeTextFinderOptionKey string
 
-const TextFinderCaseInsensitiveKey PasteboardTypeTextFinderOptionKey = "NSFindPanelCaseInsensitiveSearch"
-const TextFinderMatchingTypeKey PasteboardTypeTextFinderOptionKey = "NSFindPanelSubstringMatch"
+const (
+	TextFinderCaseInsensitiveKey PasteboardTypeTextFinderOptionKey = "NSFindPanelCaseInsensitiveSearch"
+	TextFinderMatchingTypeKey    PasteboardTypeTextFinderOptionKey = "NSFindPanelSubstringMatch"
+)
 
+// Type to specify options for writing to a pasteboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardwritingoptions?language=objc
 type PasteboardWritingOptions uint
 
-const PasteboardWritingPromised PasteboardWritingOptions = 512
+const (
+	PasteboardWritingPromised PasteboardWritingOptions = 512
+)
 
+// NSPathStyle constants represent the different visual and behavioral styles an NSPathControl or NSPathCell object can have. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathstyle?language=objc
 type PathStyle int
 
-const PathStyleNavigationBar PathStyle = 1
-const PathStylePopUp PathStyle = 2
-const PathStyleStandard PathStyle = 0
+const (
+	PathStyleNavigationBar PathStyle = 1
+	PathStylePopUp         PathStyle = 2
+	PathStyleStandard      PathStyle = 0
+)
 
+// Constants that specify display styles for picker bar items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspickertouchbaritemcontrolrepresentation?language=objc
 type PickerTouchBarItemControlRepresentation int
 
-const PickerTouchBarItemControlRepresentationAutomatic PickerTouchBarItemControlRepresentation = 0
-const PickerTouchBarItemControlRepresentationCollapsed PickerTouchBarItemControlRepresentation = 2
-const PickerTouchBarItemControlRepresentationExpanded PickerTouchBarItemControlRepresentation = 1
+const (
+	PickerTouchBarItemControlRepresentationAutomatic PickerTouchBarItemControlRepresentation = 0
+	PickerTouchBarItemControlRepresentationCollapsed PickerTouchBarItemControlRepresentation = 2
+	PickerTouchBarItemControlRepresentationExpanded  PickerTouchBarItemControlRepresentation = 1
+)
 
+// Constants that specify selection modes for picker bar items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspickertouchbaritemselectionmode?language=objc
 type PickerTouchBarItemSelectionMode int
 
-const PickerTouchBarItemSelectionModeMomentary PickerTouchBarItemSelectionMode = 2
-const PickerTouchBarItemSelectionModeSelectAny PickerTouchBarItemSelectionMode = 1
-const PickerTouchBarItemSelectionModeSelectOne PickerTouchBarItemSelectionMode = 0
+const (
+	PickerTouchBarItemSelectionModeMomentary PickerTouchBarItemSelectionMode = 2
+	PickerTouchBarItemSelectionModeSelectAny PickerTouchBarItemSelectionMode = 1
+	PickerTouchBarItemSelectionModeSelectOne PickerTouchBarItemSelectionMode = 0
+)
 
+// The pointing-device types for tablet-proximity events or mouse events with a proximity event subtype. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspointingdevicetype?language=objc
 type PointingDeviceType uint
 
-const CursorPointingDevice PointingDeviceType = 2
-const EraserPointingDevice PointingDeviceType = 3
-const PenPointingDevice PointingDeviceType = 1
-const PointingDeviceTypeCursor PointingDeviceType = 2
-const PointingDeviceTypeEraser PointingDeviceType = 3
-const PointingDeviceTypePen PointingDeviceType = 1
-const PointingDeviceTypeUnknown PointingDeviceType = 0
-const UnknownPointingDevice PointingDeviceType = 0
+const (
+	CursorPointingDevice      PointingDeviceType = 2
+	EraserPointingDevice      PointingDeviceType = 3
+	PenPointingDevice         PointingDeviceType = 1
+	PointingDeviceTypeCursor  PointingDeviceType = 2
+	PointingDeviceTypeEraser  PointingDeviceType = 3
+	PointingDeviceTypePen     PointingDeviceType = 1
+	PointingDeviceTypeUnknown PointingDeviceType = 0
+	UnknownPointingDevice     PointingDeviceType = 0
+)
 
+// These constants are defined for use with the arrowPosition property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopuparrowposition?language=objc
 type PopUpArrowPosition uint
 
-const PopUpArrowAtBottom PopUpArrowPosition = 2
-const PopUpArrowAtCenter PopUpArrowPosition = 1
-const PopUpNoArrow PopUpArrowPosition = 0
+const (
+	PopUpArrowAtBottom PopUpArrowPosition = 2
+	PopUpArrowAtCenter PopUpArrowPosition = 1
+	PopUpNoArrow       PopUpArrowPosition = 0
+)
 
+// The set of predefined appearances for a popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverappearance?language=objc
 type PopoverAppearance int
 
-const PopoverAppearanceHUD PopoverAppearance = 1
-const PopoverAppearanceMinimal PopoverAppearance = 0
+const (
+	PopoverAppearanceHUD     PopoverAppearance = 1
+	PopoverAppearanceMinimal PopoverAppearance = 0
+)
 
+// The appearance and disappearance behavior of a popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverbehavior?language=objc
 type PopoverBehavior int
 
-const PopoverBehaviorApplicationDefined PopoverBehavior = 0
-const PopoverBehaviorSemitransient PopoverBehavior = 2
-const PopoverBehaviorTransient PopoverBehavior = 1
+const (
+	PopoverBehaviorApplicationDefined PopoverBehavior = 0
+	PopoverBehaviorSemitransient      PopoverBehavior = 2
+	PopoverBehaviorTransient          PopoverBehavior = 1
+)
 
+// Values that specify the reason for the NSPopoverWillCloseNotification notification. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverclosereasonvalue?language=objc
 type PopoverCloseReasonValue string
 
-const PopoverCloseReasonDetachToWindow PopoverCloseReasonValue = "NSPopoverCloseReasonDetachToWindow"
-const PopoverCloseReasonStandard PopoverCloseReasonValue = "NSPopoverCloseReasonStandard"
+const (
+	PopoverCloseReasonDetachToWindow PopoverCloseReasonValue = "NSPopoverCloseReasonDetachToWindow"
+	PopoverCloseReasonStandard       PopoverCloseReasonValue = "NSPopoverCloseReasonStandard"
+)
 
+// These constants describe the behavior and progression of a pressure gesture. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspressurebehavior?language=objc
 type PressureBehavior int
 
-const PressureBehaviorPrimaryAccelerator PressureBehavior = 3
-const PressureBehaviorPrimaryClick PressureBehavior = 1
-const PressureBehaviorPrimaryDeepClick PressureBehavior = 5
-const PressureBehaviorPrimaryDeepDrag PressureBehavior = 6
-const PressureBehaviorPrimaryDefault PressureBehavior = 0
-const PressureBehaviorPrimaryGeneric PressureBehavior = 2
-const PressureBehaviorUnknown PressureBehavior = -1
+const (
+	PressureBehaviorPrimaryAccelerator PressureBehavior = 3
+	PressureBehaviorPrimaryClick       PressureBehavior = 1
+	PressureBehaviorPrimaryDeepClick   PressureBehavior = 5
+	PressureBehaviorPrimaryDeepDrag    PressureBehavior = 6
+	PressureBehaviorPrimaryDefault     PressureBehavior = 0
+	PressureBehaviorPrimaryGeneric     PressureBehavior = 2
+	PressureBehaviorUnknown            PressureBehavior = -1
+)
 
+// Constants that specify print job attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfoattributekey?language=objc
 type PrintInfoAttributeKey string
 
-const PrintAllPages PrintInfoAttributeKey = "NSPrintAllPages"
-const PrintBottomMargin PrintInfoAttributeKey = "NSBottomMargin"
-const PrintCopies PrintInfoAttributeKey = "NSCopies"
-const PrintDetailedErrorReporting PrintInfoAttributeKey = "NSDetailedErrorReporting"
-const PrintFaxNumber PrintInfoAttributeKey = "NSFaxNumber"
-const PrintFirstPage PrintInfoAttributeKey = "NSFirstPage"
-const PrintHeaderAndFooter PrintInfoAttributeKey = "NSPrintHeaderAndFooter"
-const PrintHorizontalPagination PrintInfoAttributeKey = "NSHorizonalPagination"
-const PrintHorizontallyCentered PrintInfoAttributeKey = "NSHorizontallyCentered"
-const PrintJobDisposition PrintInfoAttributeKey = "NSJobDisposition"
-const PrintJobSavingFileNameExtensionHidden PrintInfoAttributeKey = "NSJobSavingFileNameExtensionHidden"
-const PrintJobSavingURL PrintInfoAttributeKey = "NSJobSavingURL"
-const PrintLastPage PrintInfoAttributeKey = "NSLastPage"
-const PrintLeftMargin PrintInfoAttributeKey = "NSLeftMargin"
-const PrintMustCollate PrintInfoAttributeKey = "NSMustCollate"
-const PrintOrientation PrintInfoAttributeKey = "NSOrientation"
-const PrintPagesAcross PrintInfoAttributeKey = "NSPagesAcross"
-const PrintPagesDown PrintInfoAttributeKey = "NSPagesDown"
-const PrintPaperName PrintInfoAttributeKey = "NSPaperName"
-const PrintPaperSize PrintInfoAttributeKey = "NSPaperSize"
-const PrintPrinter PrintInfoAttributeKey = "NSPrinter"
-const PrintPrinterName PrintInfoAttributeKey = "NSPrinterName"
-const PrintReversePageOrder PrintInfoAttributeKey = "NSReversePageOrder"
-const PrintRightMargin PrintInfoAttributeKey = "NSRightMargin"
-const PrintScalingFactor PrintInfoAttributeKey = "NSScalingFactor"
-const PrintSelectionOnly PrintInfoAttributeKey = "NSPrintSelectionOnly"
-const PrintTime PrintInfoAttributeKey = "NSPrintTime"
-const PrintTopMargin PrintInfoAttributeKey = "NSTopMargin"
-const PrintVerticalPagination PrintInfoAttributeKey = "NSVerticalPagination"
-const PrintVerticallyCentered PrintInfoAttributeKey = "NSVerticallyCentered"
+const (
+	PrintAllPages                         PrintInfoAttributeKey = "NSPrintAllPages"
+	PrintBottomMargin                     PrintInfoAttributeKey = "NSBottomMargin"
+	PrintCopies                           PrintInfoAttributeKey = "NSCopies"
+	PrintDetailedErrorReporting           PrintInfoAttributeKey = "NSDetailedErrorReporting"
+	PrintFaxNumber                        PrintInfoAttributeKey = "NSFaxNumber"
+	PrintFirstPage                        PrintInfoAttributeKey = "NSFirstPage"
+	PrintHeaderAndFooter                  PrintInfoAttributeKey = "NSPrintHeaderAndFooter"
+	PrintHorizontalPagination             PrintInfoAttributeKey = "NSHorizonalPagination"
+	PrintHorizontallyCentered             PrintInfoAttributeKey = "NSHorizontallyCentered"
+	PrintJobDisposition                   PrintInfoAttributeKey = "NSJobDisposition"
+	PrintJobSavingFileNameExtensionHidden PrintInfoAttributeKey = "NSJobSavingFileNameExtensionHidden"
+	PrintJobSavingURL                     PrintInfoAttributeKey = "NSJobSavingURL"
+	PrintLastPage                         PrintInfoAttributeKey = "NSLastPage"
+	PrintLeftMargin                       PrintInfoAttributeKey = "NSLeftMargin"
+	PrintMustCollate                      PrintInfoAttributeKey = "NSMustCollate"
+	PrintOrientation                      PrintInfoAttributeKey = "NSOrientation"
+	PrintPagesAcross                      PrintInfoAttributeKey = "NSPagesAcross"
+	PrintPagesDown                        PrintInfoAttributeKey = "NSPagesDown"
+	PrintPaperName                        PrintInfoAttributeKey = "NSPaperName"
+	PrintPaperSize                        PrintInfoAttributeKey = "NSPaperSize"
+	PrintPrinter                          PrintInfoAttributeKey = "NSPrinter"
+	PrintPrinterName                      PrintInfoAttributeKey = "NSPrinterName"
+	PrintReversePageOrder                 PrintInfoAttributeKey = "NSReversePageOrder"
+	PrintRightMargin                      PrintInfoAttributeKey = "NSRightMargin"
+	PrintScalingFactor                    PrintInfoAttributeKey = "NSScalingFactor"
+	PrintSelectionOnly                    PrintInfoAttributeKey = "NSPrintSelectionOnly"
+	PrintTime                             PrintInfoAttributeKey = "NSPrintTime"
+	PrintTopMargin                        PrintInfoAttributeKey = "NSTopMargin"
+	PrintVerticalPagination               PrintInfoAttributeKey = "NSVerticalPagination"
+	PrintVerticallyCentered               PrintInfoAttributeKey = "NSVerticallyCentered"
+)
 
+// The type you use to specify a print info setting key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfosettingkey?language=objc
 type PrintInfoSettingKey string
 
+// Constants that specify values for the print job disposition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintjobdispositionvalue?language=objc
 type PrintJobDispositionValue string
 
-const PrintCancelJob PrintJobDispositionValue = "NSPrintCancelJob"
-const PrintPreviewJob PrintJobDispositionValue = "NSPrintPreviewJob"
-const PrintSaveJob PrintJobDispositionValue = "NSPrintSaveJob"
-const PrintSpoolJob PrintJobDispositionValue = "NSPrintSpoolJob"
+const (
+	PrintCancelJob  PrintJobDispositionValue = "NSPrintCancelJob"
+	PrintPreviewJob PrintJobDispositionValue = "NSPrintPreviewJob"
+	PrintSaveJob    PrintJobDispositionValue = "NSPrintSaveJob"
+	PrintSpoolJob   PrintJobDispositionValue = "NSPrintSpoolJob"
+)
 
+// Constants that specify the accessory panel keys. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanelaccessorysummarykey?language=objc
 type PrintPanelAccessorySummaryKey string
 
-const PrintPanelAccessorySummaryItemDescriptionKey PrintPanelAccessorySummaryKey = "description"
-const PrintPanelAccessorySummaryItemNameKey PrintPanelAccessorySummaryKey = "name"
+const (
+	PrintPanelAccessorySummaryItemDescriptionKey PrintPanelAccessorySummaryKey = "description"
+	PrintPanelAccessorySummaryItemNameKey        PrintPanelAccessorySummaryKey = "name"
+)
 
+// Constants that specify job style hints for activating the simplified Print panel interface and setting the options to display. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpaneljobstylehint?language=objc
 type PrintPanelJobStyleHint string
 
-const PrintAllPresetsJobStyleHint PrintPanelJobStyleHint = "All"
-const PrintNoPresetsJobStyleHint PrintPanelJobStyleHint = "None"
-const PrintPhotoJobStyleHint PrintPanelJobStyleHint = "Photo"
+const (
+	PrintAllPresetsJobStyleHint PrintPanelJobStyleHint = "All"
+	PrintNoPresetsJobStyleHint  PrintPanelJobStyleHint = "None"
+	PrintPhotoJobStyleHint      PrintPanelJobStyleHint = "Photo"
+)
 
+// Constants that specify options for configuring the contents of the main Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpaneloptions?language=objc
 type PrintPanelOptions uint
 
-const PrintPanelShowsCopies PrintPanelOptions = 1
-const PrintPanelShowsOrientation PrintPanelOptions = 8
-const PrintPanelShowsPageRange PrintPanelOptions = 2
-const PrintPanelShowsPageSetupAccessory PrintPanelOptions = 256
-const PrintPanelShowsPaperSize PrintPanelOptions = 4
-const PrintPanelShowsPreview PrintPanelOptions = 131072
-const PrintPanelShowsPrintSelection PrintPanelOptions = 32
-const PrintPanelShowsScaling PrintPanelOptions = 16
+const (
+	PrintPanelShowsCopies             PrintPanelOptions = 1
+	PrintPanelShowsOrientation        PrintPanelOptions = 8
+	PrintPanelShowsPageRange          PrintPanelOptions = 2
+	PrintPanelShowsPageSetupAccessory PrintPanelOptions = 256
+	PrintPanelShowsPaperSize          PrintPanelOptions = 4
+	PrintPanelShowsPreview            PrintPanelOptions = 131072
+	PrintPanelShowsPrintSelection     PrintPanelOptions = 32
+	PrintPanelShowsScaling            PrintPanelOptions = 16
+)
 
+// Constants that specify the print quality in use. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintrenderingquality?language=objc
 type PrintRenderingQuality int
 
-const PrintRenderingQualityBest PrintRenderingQuality = 0
-const PrintRenderingQualityResponsive PrintRenderingQuality = 1
+const (
+	PrintRenderingQualityBest       PrintRenderingQuality = 0
+	PrintRenderingQualityResponsive PrintRenderingQuality = 1
+)
 
+// The type you use to specify the name of a type of paper. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprinterpapername?language=objc
 type PrinterPaperName string
 
+// Constants that describe the state of a printer information table stored by a printer object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintertablestatus?language=objc
 type PrinterTableStatus uint
 
-const PrinterTableError PrinterTableStatus = 2
-const PrinterTableNotFound PrinterTableStatus = 1
-const PrinterTableOK PrinterTableStatus = 0
+const (
+	PrinterTableError    PrinterTableStatus = 2
+	PrinterTableNotFound PrinterTableStatus = 1
+	PrinterTableOK       PrinterTableStatus = 0
+)
 
+// The type you use to describe a printer’s make and model. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintertypename?language=objc
 type PrinterTypeName string
 
+// Constants that specify page orientations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintingorientation?language=objc
 type PrintingOrientation uint
 
-const LandscapeOrientation PrintingOrientation = 1
-const PortraitOrientation PrintingOrientation = 0
+const (
+	LandscapeOrientation PrintingOrientation = 1
+	PortraitOrientation  PrintingOrientation = 0
+)
 
+// Constants that specify the page order. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintingpageorder?language=objc
 type PrintingPageOrder int
 
-const AscendingPageOrder PrintingPageOrder = 1
-const DescendingPageOrder PrintingPageOrder = -1
-const SpecialPageOrder PrintingPageOrder = 0
-const UnknownPageOrder PrintingPageOrder = 2
+const (
+	AscendingPageOrder  PrintingPageOrder = 1
+	DescendingPageOrder PrintingPageOrder = -1
+	SpecialPageOrder    PrintingPageOrder = 0
+	UnknownPageOrder    PrintingPageOrder = 2
+)
 
+// Constants that specify the different ways in which an image is divided into pages. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintingpaginationmode?language=objc
 type PrintingPaginationMode uint
 
-const AutoPagination PrintingPaginationMode = 0
-const ClipPagination PrintingPaginationMode = 2
-const FitPagination PrintingPaginationMode = 1
-const PrintingPaginationModeAutomatic PrintingPaginationMode = 0
-const PrintingPaginationModeClip PrintingPaginationMode = 2
-const PrintingPaginationModeFit PrintingPaginationMode = 1
+const (
+	AutoPagination                  PrintingPaginationMode = 0
+	ClipPagination                  PrintingPaginationMode = 2
+	FitPagination                   PrintingPaginationMode = 1
+	PrintingPaginationModeAutomatic PrintingPaginationMode = 0
+	PrintingPaginationModeClip      PrintingPaginationMode = 2
+	PrintingPaginationModeFit       PrintingPaginationMode = 1
+)
 
+// Constants that specify the progress indicator’s style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprogressindicatorstyle?language=objc
 type ProgressIndicatorStyle uint
 
-const ProgressIndicatorStyleBar ProgressIndicatorStyle = 0
-const ProgressIndicatorStyleSpinning ProgressIndicatorStyle = 1
+const (
+	ProgressIndicatorStyleBar      ProgressIndicatorStyle = 0
+	ProgressIndicatorStyleSpinning ProgressIndicatorStyle = 1
+)
 
+// Specify the height of a progress indicator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprogressindicatorthickness?language=objc
 type ProgressIndicatorThickness uint
 
-const ProgressIndicatorPreferredAquaThickness ProgressIndicatorThickness = 12
-const ProgressIndicatorPreferredLargeThickness ProgressIndicatorThickness = 18
-const ProgressIndicatorPreferredSmallThickness ProgressIndicatorThickness = 10
-const ProgressIndicatorPreferredThickness ProgressIndicatorThickness = 14
+const (
+	ProgressIndicatorPreferredAquaThickness  ProgressIndicatorThickness = 12
+	ProgressIndicatorPreferredLargeThickness ProgressIndicatorThickness = 18
+	ProgressIndicatorPreferredSmallThickness ProgressIndicatorThickness = 10
+	ProgressIndicatorPreferredThickness      ProgressIndicatorThickness = 14
+)
 
+// Constants that specify alignment to an edge or a set of edges depending on the user interface layout direction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsrectalignment?language=objc
 type RectAlignment int
 
-const RectAlignmentBottom RectAlignment = 5
-const RectAlignmentBottomLeading RectAlignment = 4
-const RectAlignmentBottomTrailing RectAlignment = 6
-const RectAlignmentLeading RectAlignment = 3
-const RectAlignmentNone RectAlignment = 0
-const RectAlignmentTop RectAlignment = 1
-const RectAlignmentTopLeading RectAlignment = 2
-const RectAlignmentTopTrailing RectAlignment = 8
-const RectAlignmentTrailing RectAlignment = 7
+const (
+	RectAlignmentBottom         RectAlignment = 5
+	RectAlignmentBottomLeading  RectAlignment = 4
+	RectAlignmentBottomTrailing RectAlignment = 6
+	RectAlignmentLeading        RectAlignment = 3
+	RectAlignmentNone           RectAlignment = 0
+	RectAlignmentTop            RectAlignment = 1
+	RectAlignmentTopLeading     RectAlignment = 2
+	RectAlignmentTopTrailing    RectAlignment = 8
+	RectAlignmentTrailing       RectAlignment = 7
+)
 
+// These constants determine whether apps launched by remote notifications display a badge. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsremotenotificationtype?language=objc
 type RemoteNotificationType uint
 
-const RemoteNotificationTypeAlert RemoteNotificationType = 4
-const RemoteNotificationTypeBadge RemoteNotificationType = 1
-const RemoteNotificationTypeNone RemoteNotificationType = 0
-const RemoteNotificationTypeSound RemoteNotificationType = 2
+const (
+	RemoteNotificationTypeAlert RemoteNotificationType = 4
+	RemoteNotificationTypeBadge RemoteNotificationType = 1
+	RemoteNotificationTypeNone  RemoteNotificationType = 0
+	RemoteNotificationTypeSound RemoteNotificationType = 2
+)
 
+// These constants specify the level of severity of a user attention request and are used by cancelUserAttentionRequest: and requestUserAttention:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrequestuserattentiontype?language=objc
 type RequestUserAttentionType uint
 
-const CriticalRequest RequestUserAttentionType = 0
-const InformationalRequest RequestUserAttentionType = 10
+const (
+	CriticalRequest      RequestUserAttentionType = 0
+	InformationalRequest RequestUserAttentionType = 10
+)
 
+// Specifies a type for nesting modes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditornestingmode?language=objc
 type RuleEditorNestingMode uint
 
-const RuleEditorNestingModeCompound RuleEditorNestingMode = 2
-const RuleEditorNestingModeList RuleEditorNestingMode = 1
-const RuleEditorNestingModeSimple RuleEditorNestingMode = 3
-const RuleEditorNestingModeSingle RuleEditorNestingMode = 0
+const (
+	RuleEditorNestingModeCompound RuleEditorNestingMode = 2
+	RuleEditorNestingModeList     RuleEditorNestingMode = 1
+	RuleEditorNestingModeSimple   RuleEditorNestingMode = 3
+	RuleEditorNestingModeSingle   RuleEditorNestingMode = 0
+)
 
+// These strings are used as keys to the dictionary returned from the delegate’s ruleEditor:numberOfChildrenForCriterion:withRowType: optional method. To construct a valid predicate, the union of the dictionaries for each item in the row must contain the required parts. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditorpredicatepartkey?language=objc
 type RuleEditorPredicatePartKey string
 
-const RuleEditorPredicateComparisonModifier RuleEditorPredicatePartKey = "NSRuleEditorPredicateComparisonModifier"
-const RuleEditorPredicateCompoundType RuleEditorPredicatePartKey = "NSRuleEditorPredicateCompoundType"
-const RuleEditorPredicateCustomSelector RuleEditorPredicatePartKey = "NSRuleEditorPredicateCustomSelector"
-const RuleEditorPredicateLeftExpression RuleEditorPredicatePartKey = "NSRuleEditorPredicateLeftExpression"
-const RuleEditorPredicateOperatorType RuleEditorPredicatePartKey = "NSRuleEditorPredicateOperatorType"
-const RuleEditorPredicateOptions RuleEditorPredicatePartKey = "NSRuleEditorPredicateOptions"
-const RuleEditorPredicateRightExpression RuleEditorPredicatePartKey = "NSRuleEditorPredicateRightExpression"
+const (
+	RuleEditorPredicateComparisonModifier RuleEditorPredicatePartKey = "NSRuleEditorPredicateComparisonModifier"
+	RuleEditorPredicateCompoundType       RuleEditorPredicatePartKey = "NSRuleEditorPredicateCompoundType"
+	RuleEditorPredicateCustomSelector     RuleEditorPredicatePartKey = "NSRuleEditorPredicateCustomSelector"
+	RuleEditorPredicateLeftExpression     RuleEditorPredicatePartKey = "NSRuleEditorPredicateLeftExpression"
+	RuleEditorPredicateOperatorType       RuleEditorPredicatePartKey = "NSRuleEditorPredicateOperatorType"
+	RuleEditorPredicateOptions            RuleEditorPredicatePartKey = "NSRuleEditorPredicateOptions"
+	RuleEditorPredicateRightExpression    RuleEditorPredicatePartKey = "NSRuleEditorPredicateRightExpression"
+)
 
+// Specifies a type for row types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditorrowtype?language=objc
 type RuleEditorRowType uint
 
-const RuleEditorRowTypeCompound RuleEditorRowType = 1
-const RuleEditorRowTypeSimple RuleEditorRowType = 0
+const (
+	RuleEditorRowTypeCompound RuleEditorRowType = 1
+	RuleEditorRowTypeSimple   RuleEditorRowType = 0
+)
 
+// These constants are defined to specify a ruler’s orientation and are used by orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerorientation?language=objc
 type RulerOrientation uint
 
-const HorizontalRuler RulerOrientation = 0
-const VerticalRuler RulerOrientation = 1
+const (
+	HorizontalRuler RulerOrientation = 0
+	VerticalRuler   RulerOrientation = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerviewunitname?language=objc
 type RulerViewUnitName string
 
-const RulerViewUnitCentimeters RulerViewUnitName = "Centimeters"
-const RulerViewUnitInches RulerViewUnitName = "Inches"
-const RulerViewUnitPicas RulerViewUnitName = "Picas"
-const RulerViewUnitPoints RulerViewUnitName = "Points"
+const (
+	RulerViewUnitCentimeters RulerViewUnitName = "Centimeters"
+	RulerViewUnitInches      RulerViewUnitName = "Inches"
+	RulerViewUnitPicas       RulerViewUnitName = "Picas"
+	RulerViewUnitPoints      RulerViewUnitName = "Points"
+)
 
+// Constants for specifying the type of document-save operation to perform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssaveoperationtype?language=objc
 type SaveOperationType uint
 
-const AutosaveAsOperation SaveOperationType = 5
-const AutosaveElsewhereOperation SaveOperationType = 3
-const AutosaveInPlaceOperation SaveOperationType = 4
-const AutosaveOperation SaveOperationType = 3
-const SaveAsOperation SaveOperationType = 1
-const SaveOperation SaveOperationType = 0
-const SaveToOperation SaveOperationType = 2
+const (
+	AutosaveAsOperation        SaveOperationType = 5
+	AutosaveElsewhereOperation SaveOperationType = 3
+	AutosaveInPlaceOperation   SaveOperationType = 4
+	AutosaveOperation          SaveOperationType = 3
+	SaveAsOperation            SaveOperationType = 1
+	SaveOperation              SaveOperationType = 0
+	SaveToOperation            SaveOperationType = 2
+)
 
+// These constants specify where the scroller’s buttons appear and are used by the arrowsPosition property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollarrowposition?language=objc
 type ScrollArrowPosition uint
 
-const ScrollerArrowsDefaultSetting ScrollArrowPosition = 0
-const ScrollerArrowsMaxEnd ScrollArrowPosition = 0
-const ScrollerArrowsMinEnd ScrollArrowPosition = 1
-const ScrollerArrowsNone ScrollArrowPosition = 2
+const (
+	ScrollerArrowsDefaultSetting ScrollArrowPosition = 0
+	ScrollerArrowsMaxEnd         ScrollArrowPosition = 0
+	ScrollerArrowsMinEnd         ScrollArrowPosition = 1
+	ScrollerArrowsNone           ScrollArrowPosition = 2
+)
 
+// These constants determine the elasticity behavior for an axis of the scrollview. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollelasticity?language=objc
 type ScrollElasticity int
 
-const ScrollElasticityAllowed ScrollElasticity = 2
-const ScrollElasticityAutomatic ScrollElasticity = 0
-const ScrollElasticityNone ScrollElasticity = 1
+const (
+	ScrollElasticityAllowed   ScrollElasticity = 2
+	ScrollElasticityAutomatic ScrollElasticity = 0
+	ScrollElasticityNone      ScrollElasticity = 1
+)
 
+// These constants define the position of the find bar in relation to the scroll view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollviewfindbarposition?language=objc
 type ScrollViewFindBarPosition int
 
-const ScrollViewFindBarPositionAboveContent ScrollViewFindBarPosition = 1
-const ScrollViewFindBarPositionAboveHorizontalRuler ScrollViewFindBarPosition = 0
-const ScrollViewFindBarPositionBelowContent ScrollViewFindBarPosition = 2
+const (
+	ScrollViewFindBarPositionAboveContent         ScrollViewFindBarPosition = 1
+	ScrollViewFindBarPositionAboveHorizontalRuler ScrollViewFindBarPosition = 0
+	ScrollViewFindBarPositionBelowContent         ScrollViewFindBarPosition = 2
+)
 
+// These constants describe the two scroller buttons and are used by drawArrow:highlight:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollerarrow?language=objc
 type ScrollerArrow uint
 
-const ScrollerDecrementArrow ScrollerArrow = 1
-const ScrollerIncrementArrow ScrollerArrow = 0
+const (
+	ScrollerDecrementArrow ScrollerArrow = 1
+	ScrollerIncrementArrow ScrollerArrow = 0
+)
 
+// Specify different knob styles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollerknobstyle?language=objc
 type ScrollerKnobStyle int
 
-const ScrollerKnobStyleDark ScrollerKnobStyle = 1
-const ScrollerKnobStyleDefault ScrollerKnobStyle = 0
-const ScrollerKnobStyleLight ScrollerKnobStyle = 2
+const (
+	ScrollerKnobStyleDark    ScrollerKnobStyle = 1
+	ScrollerKnobStyleDefault ScrollerKnobStyle = 0
+	ScrollerKnobStyleLight   ScrollerKnobStyle = 2
+)
 
+// These constants specify the different parts of the scroller: [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollerpart?language=objc
 type ScrollerPart uint
 
-const ScrollerDecrementLine ScrollerPart = 4
-const ScrollerDecrementPage ScrollerPart = 1
-const ScrollerIncrementLine ScrollerPart = 5
-const ScrollerIncrementPage ScrollerPart = 3
-const ScrollerKnob ScrollerPart = 2
-const ScrollerKnobSlot ScrollerPart = 6
-const ScrollerNoPart ScrollerPart = 0
+const (
+	ScrollerDecrementLine ScrollerPart = 4
+	ScrollerDecrementPage ScrollerPart = 1
+	ScrollerIncrementLine ScrollerPart = 5
+	ScrollerIncrementPage ScrollerPart = 3
+	ScrollerKnob          ScrollerPart = 2
+	ScrollerKnobSlot      ScrollerPart = 6
+	ScrollerNoPart        ScrollerPart = 0
+)
 
+// Constants to specify the scroller style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollerstyle?language=objc
 type ScrollerStyle int
 
-const ScrollerStyleLegacy ScrollerStyle = 0
-const ScrollerStyleOverlay ScrollerStyle = 1
+const (
+	ScrollerStyleLegacy  ScrollerStyle = 0
+	ScrollerStyleOverlay ScrollerStyle = 1
+)
 
+// The specified preferred alignment of items within the scrubber, when they come to rest following a user’s scrolling or paging interaction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberalignment?language=objc
 type ScrubberAlignment int
 
-const ScrubberAlignmentCenter ScrubberAlignment = 3
-const ScrubberAlignmentLeading ScrubberAlignment = 1
-const ScrubberAlignmentNone ScrubberAlignment = 0
-const ScrubberAlignmentTrailing ScrubberAlignment = 2
+const (
+	ScrubberAlignmentCenter   ScrubberAlignment = 3
+	ScrubberAlignmentLeading  ScrubberAlignment = 1
+	ScrubberAlignmentNone     ScrubberAlignment = 0
+	ScrubberAlignmentTrailing ScrubberAlignment = 2
+)
 
+// The scrolling behavior for a scrubber. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubbermode?language=objc
 type ScrubberMode int
 
-const ScrubberModeFixed ScrubberMode = 0
-const ScrubberModeFree ScrubberMode = 1
+const (
+	ScrubberModeFixed ScrubberMode = 0
+	ScrubberModeFree  ScrubberMode = 1
+)
 
+// The string that stores the name under which a search field automatically archives a list of recent search strings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldrecentsautosavename?language=objc
 type SearchFieldRecentsAutosaveName string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentdistribution?language=objc
 type SegmentDistribution int
 
-const SegmentDistributionFill SegmentDistribution = 1
-const SegmentDistributionFillEqually SegmentDistribution = 2
-const SegmentDistributionFillProportionally SegmentDistribution = 3
-const SegmentDistributionFit SegmentDistribution = 0
+const (
+	SegmentDistributionFill               SegmentDistribution = 1
+	SegmentDistributionFillEqually        SegmentDistribution = 2
+	SegmentDistributionFillProportionally SegmentDistribution = 3
+	SegmentDistributionFit                SegmentDistribution = 0
+)
 
+// The following constants specify the visual style used to display the segmented control. They are used by segmentStyle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentstyle?language=objc
 type SegmentStyle int
 
-const SegmentStyleAutomatic SegmentStyle = 0
-const SegmentStyleCapsule SegmentStyle = 5
-const SegmentStyleRoundRect SegmentStyle = 3
-const SegmentStyleRounded SegmentStyle = 1
-const SegmentStyleSeparated SegmentStyle = 8
-const SegmentStyleSmallSquare SegmentStyle = 6
-const SegmentStyleTexturedRounded SegmentStyle = 2
-const SegmentStyleTexturedSquare SegmentStyle = 4
+const (
+	SegmentStyleAutomatic       SegmentStyle = 0
+	SegmentStyleCapsule         SegmentStyle = 5
+	SegmentStyleRoundRect       SegmentStyle = 3
+	SegmentStyleRounded         SegmentStyle = 1
+	SegmentStyleSeparated       SegmentStyle = 8
+	SegmentStyleSmallSquare     SegmentStyle = 6
+	SegmentStyleTexturedRounded SegmentStyle = 2
+	SegmentStyleTexturedSquare  SegmentStyle = 4
+)
 
+// The following constants specify the type of tracking behavior a segmented control exhibits. They are used by trackingMode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentswitchtracking?language=objc
 type SegmentSwitchTracking uint
 
-const SegmentSwitchTrackingMomentary SegmentSwitchTracking = 2
-const SegmentSwitchTrackingMomentaryAccelerator SegmentSwitchTracking = 3
-const SegmentSwitchTrackingSelectAny SegmentSwitchTracking = 1
-const SegmentSwitchTrackingSelectOne SegmentSwitchTracking = 0
+const (
+	SegmentSwitchTrackingMomentary            SegmentSwitchTracking = 2
+	SegmentSwitchTrackingMomentaryAccelerator SegmentSwitchTracking = 3
+	SegmentSwitchTrackingSelectAny            SegmentSwitchTracking = 1
+	SegmentSwitchTrackingSelectOne            SegmentSwitchTracking = 0
+)
 
+// These constants specify the preferred direction of selection. They’re used by selectionAffinity and setSelectedRange:affinity:stillSelecting:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsselectionaffinity?language=objc
 type SelectionAffinity uint
 
-const SelectionAffinityDownstream SelectionAffinity = 1
-const SelectionAffinityUpstream SelectionAffinity = 0
+const (
+	SelectionAffinityDownstream SelectionAffinity = 1
+	SelectionAffinityUpstream   SelectionAffinity = 0
+)
 
+// Constants that specify the direction a window is currently using to change the key view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsselectiondirection?language=objc
 type SelectionDirection uint
 
-const DirectSelection SelectionDirection = 0
-const SelectingNext SelectionDirection = 1
-const SelectingPrevious SelectionDirection = 2
+const (
+	DirectSelection   SelectionDirection = 0
+	SelectingNext     SelectionDirection = 1
+	SelectingPrevious SelectionDirection = 2
+)
 
+// These constants specify how much the text view extends the selection when the user drags the mouse. They’re used by selectionGranularity, and selectionRangeForProposedRange:granularity:: [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsselectiongranularity?language=objc
 type SelectionGranularity uint
 
-const SelectByCharacter SelectionGranularity = 0
-const SelectByParagraph SelectionGranularity = 2
-const SelectByWord SelectionGranularity = 1
+const (
+	SelectByCharacter SelectionGranularity = 0
+	SelectByParagraph SelectionGranularity = 2
+	SelectByWord      SelectionGranularity = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsserviceprovidername?language=objc
 type ServiceProviderName string
 
+// The sharing scope constants specify the nature of the things you are sharing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingcontentscope?language=objc
 type SharingContentScope int
 
-const SharingContentScopeFull SharingContentScope = 2
-const SharingContentScopeItem SharingContentScope = 0
-const SharingContentScopePartial SharingContentScope = 1
+const (
+	SharingContentScopeFull    SharingContentScope = 2
+	SharingContentScopeItem    SharingContentScope = 0
+	SharingContentScopePartial SharingContentScope = 1
+)
 
+// Constants that describe the sharing services that macOS supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicename?language=objc
 type SharingServiceName string
 
-const SharingServiceNameAddToAperture SharingServiceName = "com.apple.share.System.add-to-aperture"
-const SharingServiceNameAddToIPhoto SharingServiceName = "com.apple.share.System.add-to-iphoto"
-const SharingServiceNameAddToSafariReadingList SharingServiceName = "com.apple.share.System.add-to-safari-reading-list"
-const SharingServiceNameCloudSharing SharingServiceName = "com.apple.share.CloudSharing"
-const SharingServiceNameComposeEmail SharingServiceName = "com.apple.share.Mail.compose"
-const SharingServiceNameComposeMessage SharingServiceName = "com.apple.messages.ShareExtension"
-const SharingServiceNamePostImageOnFlickr SharingServiceName = "com.apple.share.Video.upload-image-Flickr"
-const SharingServiceNamePostOnFacebook SharingServiceName = "com.apple.share.Facebook.post"
-const SharingServiceNamePostOnLinkedIn SharingServiceName = "com.apple.share.LinkedIn.post"
-const SharingServiceNamePostOnSinaWeibo SharingServiceName = "com.apple.share.SinaWeibo.post"
-const SharingServiceNamePostOnTencentWeibo SharingServiceName = "com.apple.share.TencentWeibo.post"
-const SharingServiceNamePostOnTwitter SharingServiceName = "com.apple.share.Twitter.post"
-const SharingServiceNamePostVideoOnTudou SharingServiceName = "com.apple.share.Video.upload-Tudou"
-const SharingServiceNamePostVideoOnVimeo SharingServiceName = "com.apple.share.Video.upload-Vimeo"
-const SharingServiceNamePostVideoOnYouku SharingServiceName = "com.apple.share.Video.upload-Youku"
-const SharingServiceNameSendViaAirDrop SharingServiceName = "com.apple.share.AirDrop.send"
-const SharingServiceNameUseAsDesktopPicture SharingServiceName = "com.apple.share.System.set-desktop-image"
-const SharingServiceNameUseAsFacebookProfileImage SharingServiceName = "com.apple.share.Facebook.set-profile-image"
-const SharingServiceNameUseAsLinkedInProfileImage SharingServiceName = "com.apple.share.LinkedIn.set-profile-image"
-const SharingServiceNameUseAsTwitterProfileImage SharingServiceName = "com.apple.share.Twitter.set-profile-image"
+const (
+	SharingServiceNameAddToAperture             SharingServiceName = "com.apple.share.System.add-to-aperture"
+	SharingServiceNameAddToIPhoto               SharingServiceName = "com.apple.share.System.add-to-iphoto"
+	SharingServiceNameAddToSafariReadingList    SharingServiceName = "com.apple.share.System.add-to-safari-reading-list"
+	SharingServiceNameCloudSharing              SharingServiceName = "com.apple.share.CloudSharing"
+	SharingServiceNameComposeEmail              SharingServiceName = "com.apple.share.Mail.compose"
+	SharingServiceNameComposeMessage            SharingServiceName = "com.apple.messages.ShareExtension"
+	SharingServiceNamePostImageOnFlickr         SharingServiceName = "com.apple.share.Video.upload-image-Flickr"
+	SharingServiceNamePostOnFacebook            SharingServiceName = "com.apple.share.Facebook.post"
+	SharingServiceNamePostOnLinkedIn            SharingServiceName = "com.apple.share.LinkedIn.post"
+	SharingServiceNamePostOnSinaWeibo           SharingServiceName = "com.apple.share.SinaWeibo.post"
+	SharingServiceNamePostOnTencentWeibo        SharingServiceName = "com.apple.share.TencentWeibo.post"
+	SharingServiceNamePostOnTwitter             SharingServiceName = "com.apple.share.Twitter.post"
+	SharingServiceNamePostVideoOnTudou          SharingServiceName = "com.apple.share.Video.upload-Tudou"
+	SharingServiceNamePostVideoOnVimeo          SharingServiceName = "com.apple.share.Video.upload-Vimeo"
+	SharingServiceNamePostVideoOnYouku          SharingServiceName = "com.apple.share.Video.upload-Youku"
+	SharingServiceNameSendViaAirDrop            SharingServiceName = "com.apple.share.AirDrop.send"
+	SharingServiceNameUseAsDesktopPicture       SharingServiceName = "com.apple.share.System.set-desktop-image"
+	SharingServiceNameUseAsFacebookProfileImage SharingServiceName = "com.apple.share.Facebook.set-profile-image"
+	SharingServiceNameUseAsLinkedInProfileImage SharingServiceName = "com.apple.share.LinkedIn.set-profile-image"
+	SharingServiceNameUseAsTwitterProfileImage  SharingServiceName = "com.apple.share.Twitter.set-profile-image"
+)
 
-type SliderAccessoryWidth float32
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorywidth?language=objc
+type SliderAccessoryWidth float64
 
-const SliderAccessoryWidthDefault SliderAccessoryWidth = 36.000000
-const SliderAccessoryWidthWide SliderAccessoryWidth = 72.000000
+const (
+	SliderAccessoryWidthDefault SliderAccessoryWidth = 36.000000
+	SliderAccessoryWidthWide    SliderAccessoryWidth = 72.000000
+)
 
+// The types of sliders, used by sliderType. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertype?language=objc
 type SliderType uint
 
-const CircularSlider SliderType = 1
-const LinearSlider SliderType = 0
-const SliderTypeCircular SliderType = 1
-const SliderTypeLinear SliderType = 0
+const (
+	CircularSlider     SliderType = 1
+	LinearSlider       SliderType = 0
+	SliderTypeCircular SliderType = 1
+	SliderTypeLinear   SliderType = 0
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssoundname?language=objc
 type SoundName string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssoundplaybackdeviceidentifier?language=objc
 type SoundPlaybackDeviceIdentifier string
 
+// These constants are used to indicate where speech should be stopped and paused. See pauseSpeakingAtBoundary: and stopSpeakingAtBoundary:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechboundary?language=objc
 type SpeechBoundary uint
 
-const SpeechImmediateBoundary SpeechBoundary = 0
-const SpeechSentenceBoundary SpeechBoundary = 2
-const SpeechWordBoundary SpeechBoundary = 1
+const (
+	SpeechImmediateBoundary SpeechBoundary = 0
+	SpeechSentenceBoundary  SpeechBoundary = 2
+	SpeechWordBoundary      SpeechBoundary = 1
+)
 
+// Keys for the command delimiters. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechcommanddelimiterkey?language=objc
 type SpeechCommandDelimiterKey string
 
-const SpeechCommandPrefix SpeechCommandDelimiterKey = "Prefix"
-const SpeechCommandSuffix SpeechCommandDelimiterKey = "Suffix"
+const (
+	SpeechCommandPrefix SpeechCommandDelimiterKey = "Prefix"
+	SpeechCommandSuffix SpeechCommandDelimiterKey = "Suffix"
+)
 
+// These constants identify key-value pairs used to add vocabulary to the dictionary using addSpeechDictionary:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechdictionarykey?language=objc
 type SpeechDictionaryKey string
 
-const SpeechDictionaryAbbreviations SpeechDictionaryKey = "Abbreviations"
-const SpeechDictionaryEntryPhonemes SpeechDictionaryKey = "Phonemes"
-const SpeechDictionaryEntrySpelling SpeechDictionaryKey = "Spelling"
-const SpeechDictionaryLocaleIdentifier SpeechDictionaryKey = "LocaleIdentifier"
-const SpeechDictionaryModificationDate SpeechDictionaryKey = "ModificationDate"
-const SpeechDictionaryPronunciations SpeechDictionaryKey = "Pronunciations"
+const (
+	SpeechDictionaryAbbreviations    SpeechDictionaryKey = "Abbreviations"
+	SpeechDictionaryEntryPhonemes    SpeechDictionaryKey = "Phonemes"
+	SpeechDictionaryEntrySpelling    SpeechDictionaryKey = "Spelling"
+	SpeechDictionaryLocaleIdentifier SpeechDictionaryKey = "LocaleIdentifier"
+	SpeechDictionaryModificationDate SpeechDictionaryKey = "ModificationDate"
+	SpeechDictionaryPronunciations   SpeechDictionaryKey = "Pronunciations"
+)
 
+// Keys that identify errors that may occur during speech synthesis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeecherrorkey?language=objc
 type SpeechErrorKey string
 
-const SpeechErrorCount SpeechErrorKey = "Count"
-const SpeechErrorNewestCharacterOffset SpeechErrorKey = "NewestCharacterOffset"
-const SpeechErrorNewestCode SpeechErrorKey = "NewestCode"
-const SpeechErrorOldestCharacterOffset SpeechErrorKey = "OldestCharacterOffset"
-const SpeechErrorOldestCode SpeechErrorKey = "OldestCode"
+const (
+	SpeechErrorCount                 SpeechErrorKey = "Count"
+	SpeechErrorNewestCharacterOffset SpeechErrorKey = "NewestCharacterOffset"
+	SpeechErrorNewestCode            SpeechErrorKey = "NewestCode"
+	SpeechErrorOldestCharacterOffset SpeechErrorKey = "OldestCharacterOffset"
+	SpeechErrorOldestCode            SpeechErrorKey = "OldestCode"
+)
 
+// Keys for the speaking mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechmode?language=objc
 type SpeechMode string
 
-const SpeechModeLiteral SpeechMode = "LTRL"
-const SpeechModeNormal SpeechMode = "NORM"
-const SpeechModePhoneme SpeechMode = "PHON"
-const SpeechModeText SpeechMode = "TEXT"
+const (
+	SpeechModeLiteral SpeechMode = "LTRL"
+	SpeechModeNormal  SpeechMode = "NORM"
+	SpeechModePhoneme SpeechMode = "PHON"
+	SpeechModeText    SpeechMode = "TEXT"
+)
 
+// Keys for the speech phoneme information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechphonemeinfokey?language=objc
 type SpeechPhonemeInfoKey string
 
-const SpeechPhonemeInfoExample SpeechPhonemeInfoKey = "Example"
-const SpeechPhonemeInfoHiliteEnd SpeechPhonemeInfoKey = "HiliteEnd"
-const SpeechPhonemeInfoHiliteStart SpeechPhonemeInfoKey = "HiliteStart"
-const SpeechPhonemeInfoOpcode SpeechPhonemeInfoKey = "Opcode"
-const SpeechPhonemeInfoSymbol SpeechPhonemeInfoKey = "Symbol"
+const (
+	SpeechPhonemeInfoExample     SpeechPhonemeInfoKey = "Example"
+	SpeechPhonemeInfoHiliteEnd   SpeechPhonemeInfoKey = "HiliteEnd"
+	SpeechPhonemeInfoHiliteStart SpeechPhonemeInfoKey = "HiliteStart"
+	SpeechPhonemeInfoOpcode      SpeechPhonemeInfoKey = "Opcode"
+	SpeechPhonemeInfoSymbol      SpeechPhonemeInfoKey = "Symbol"
+)
 
+// These constants are used with setObject:forProperty:error: and objectForProperty:error: to get or set the characteristics of a synthesizer. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechpropertykey?language=objc
 type SpeechPropertyKey string
 
-const SpeechCharacterModeProperty SpeechPropertyKey = "char"
-const SpeechCommandDelimiterProperty SpeechPropertyKey = "dlim"
-const SpeechCurrentVoiceProperty SpeechPropertyKey = "cvox"
-const SpeechErrorsProperty SpeechPropertyKey = "erro"
-const SpeechInputModeProperty SpeechPropertyKey = "inpt"
-const SpeechNumberModeProperty SpeechPropertyKey = "nmbr"
-const SpeechOutputToFileURLProperty SpeechPropertyKey = "opaf"
-const SpeechPhonemeSymbolsProperty SpeechPropertyKey = "phsy"
-const SpeechPitchBaseProperty SpeechPropertyKey = "pbas"
-const SpeechPitchModProperty SpeechPropertyKey = "pmod"
-const SpeechRateProperty SpeechPropertyKey = "rate"
-const SpeechRecentSyncProperty SpeechPropertyKey = "sync"
-const SpeechResetProperty SpeechPropertyKey = "rset"
-const SpeechStatusProperty SpeechPropertyKey = "stat"
-const SpeechSynthesizerInfoProperty SpeechPropertyKey = "vers"
-const SpeechVolumeProperty SpeechPropertyKey = "volm"
+const (
+	SpeechCharacterModeProperty    SpeechPropertyKey = "char"
+	SpeechCommandDelimiterProperty SpeechPropertyKey = "dlim"
+	SpeechCurrentVoiceProperty     SpeechPropertyKey = "cvox"
+	SpeechErrorsProperty           SpeechPropertyKey = "erro"
+	SpeechInputModeProperty        SpeechPropertyKey = "inpt"
+	SpeechNumberModeProperty       SpeechPropertyKey = "nmbr"
+	SpeechOutputToFileURLProperty  SpeechPropertyKey = "opaf"
+	SpeechPhonemeSymbolsProperty   SpeechPropertyKey = "phsy"
+	SpeechPitchBaseProperty        SpeechPropertyKey = "pbas"
+	SpeechPitchModProperty         SpeechPropertyKey = "pmod"
+	SpeechRateProperty             SpeechPropertyKey = "rate"
+	SpeechRecentSyncProperty       SpeechPropertyKey = "sync"
+	SpeechResetProperty            SpeechPropertyKey = "rset"
+	SpeechStatusProperty           SpeechPropertyKey = "stat"
+	SpeechSynthesizerInfoProperty  SpeechPropertyKey = "vers"
+	SpeechVolumeProperty           SpeechPropertyKey = "volm"
+)
 
+// Keys for the speech synthesizier status. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechstatuskey?language=objc
 type SpeechStatusKey string
 
-const SpeechStatusNumberOfCharactersLeft SpeechStatusKey = "NumberOfCharactersLeft"
-const SpeechStatusOutputBusy SpeechStatusKey = "OutputBusy"
-const SpeechStatusOutputPaused SpeechStatusKey = "OutputPaused"
-const SpeechStatusPhonemeCode SpeechStatusKey = "PhonemeCode"
+const (
+	SpeechStatusNumberOfCharactersLeft SpeechStatusKey = "NumberOfCharactersLeft"
+	SpeechStatusOutputBusy             SpeechStatusKey = "OutputBusy"
+	SpeechStatusOutputPaused           SpeechStatusKey = "OutputPaused"
+	SpeechStatusPhonemeCode            SpeechStatusKey = "PhonemeCode"
+)
 
+// Keys for the speech synthesizier information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechsynthesizerinfokey?language=objc
 type SpeechSynthesizerInfoKey string
 
-const SpeechSynthesizerInfoIdentifier SpeechSynthesizerInfoKey = "Identifier"
-const SpeechSynthesizerInfoVersion SpeechSynthesizerInfoKey = "Version"
+const (
+	SpeechSynthesizerInfoIdentifier SpeechSynthesizerInfoKey = "Identifier"
+	SpeechSynthesizerInfoVersion    SpeechSynthesizerInfoKey = "Version"
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechsynthesizervoicename?language=objc
 type SpeechSynthesizerVoiceName string
 
+// Constants for the spelling state attribute key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellingstate?language=objc
 type SpellingState int
 
-const SpellingStateGrammarFlag SpellingState = 2
-const SpellingStateSpellingFlag SpellingState = 1
+const (
+	SpellingStateGrammarFlag  SpellingState = 2
+	SpellingStateSpellingFlag SpellingState = 1
+)
 
+// The type that specifies the split view’s autosave name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewautosavename?language=objc
 type SplitViewAutosaveName string
 
+// Constants that specify the style of the split view’s dividers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewdividerstyle?language=objc
 type SplitViewDividerStyle int
 
-const SplitViewDividerStylePaneSplitter SplitViewDividerStyle = 3
-const SplitViewDividerStyleThick SplitViewDividerStyle = 1
-const SplitViewDividerStyleThin SplitViewDividerStyle = 2
+const (
+	SplitViewDividerStylePaneSplitter SplitViewDividerStyle = 3
+	SplitViewDividerStyleThick        SplitViewDividerStyle = 1
+	SplitViewDividerStyleThin         SplitViewDividerStyle = 2
+)
 
+// Constants that describe the behavior of the split view item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewitembehavior?language=objc
 type SplitViewItemBehavior int
 
-const SplitViewItemBehaviorContentList SplitViewItemBehavior = 2
-const SplitViewItemBehaviorDefault SplitViewItemBehavior = 0
-const SplitViewItemBehaviorSidebar SplitViewItemBehavior = 1
+const (
+	SplitViewItemBehaviorContentList SplitViewItemBehavior = 2
+	SplitViewItemBehaviorDefault     SplitViewItemBehavior = 0
+	SplitViewItemBehaviorSidebar     SplitViewItemBehavior = 1
+)
 
+// Constants that describe the split view item’s collapsing behavior. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewitemcollapsebehavior?language=objc
 type SplitViewItemCollapseBehavior int
 
-const SplitViewItemCollapseBehaviorDefault SplitViewItemCollapseBehavior = 0
-const SplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView SplitViewItemCollapseBehavior = 2
-const SplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings SplitViewItemCollapseBehavior = 1
-const SplitViewItemCollapseBehaviorUseConstraints SplitViewItemCollapseBehavior = 3
+const (
+	SplitViewItemCollapseBehaviorDefault                                  SplitViewItemCollapseBehavior = 0
+	SplitViewItemCollapseBehaviorPreferResizingSiblingsWithFixedSplitView SplitViewItemCollapseBehavior = 2
+	SplitViewItemCollapseBehaviorPreferResizingSplitViewWithFixedSiblings SplitViewItemCollapseBehavior = 1
+	SplitViewItemCollapseBehaviorUseConstraints                           SplitViewItemCollapseBehavior = 3
+)
 
+// A group of constants that indicate a highlighting style for your app’s user interface to display during a spring-loading operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadinghighlight?language=objc
 type SpringLoadingHighlight int
 
-const SpringLoadingHighlightEmphasized SpringLoadingHighlight = 2
-const SpringLoadingHighlightNone SpringLoadingHighlight = 0
-const SpringLoadingHighlightStandard SpringLoadingHighlight = 1
+const (
+	SpringLoadingHighlightEmphasized SpringLoadingHighlight = 2
+	SpringLoadingHighlightNone       SpringLoadingHighlight = 0
+	SpringLoadingHighlightStandard   SpringLoadingHighlight = 1
+)
 
+// These constants denote the type of spring-loading behavior configured for the destination object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsspringloadingoptions?language=objc
 type SpringLoadingOptions uint
 
-const SpringLoadingContinuousActivation SpringLoadingOptions = 2
-const SpringLoadingDisabled SpringLoadingOptions = 0
-const SpringLoadingEnabled SpringLoadingOptions = 1
-const SpringLoadingNoHover SpringLoadingOptions = 8
+const (
+	SpringLoadingContinuousActivation SpringLoadingOptions = 2
+	SpringLoadingDisabled             SpringLoadingOptions = 0
+	SpringLoadingEnabled              SpringLoadingOptions = 1
+	SpringLoadingNoHover              SpringLoadingOptions = 8
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewdistribution?language=objc
 type StackViewDistribution int
 
-const StackViewDistributionEqualCentering StackViewDistribution = 4
-const StackViewDistributionEqualSpacing StackViewDistribution = 3
-const StackViewDistributionFill StackViewDistribution = 0
-const StackViewDistributionFillEqually StackViewDistribution = 1
-const StackViewDistributionFillProportionally StackViewDistribution = 2
-const StackViewDistributionGravityAreas StackViewDistribution = -1
+const (
+	StackViewDistributionEqualCentering     StackViewDistribution = 4
+	StackViewDistributionEqualSpacing       StackViewDistribution = 3
+	StackViewDistributionFill               StackViewDistribution = 0
+	StackViewDistributionFillEqually        StackViewDistribution = 1
+	StackViewDistributionFillProportionally StackViewDistribution = 2
+	StackViewDistributionGravityAreas       StackViewDistribution = -1
+)
 
+// The gravity areas available in a stack view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewgravity?language=objc
 type StackViewGravity int
 
-const StackViewGravityBottom StackViewGravity = 3
-const StackViewGravityCenter StackViewGravity = 2
-const StackViewGravityLeading StackViewGravity = 1
-const StackViewGravityTop StackViewGravity = 1
-const StackViewGravityTrailing StackViewGravity = 3
+const (
+	StackViewGravityBottom   StackViewGravity = 3
+	StackViewGravityCenter   StackViewGravity = 2
+	StackViewGravityLeading  StackViewGravity = 1
+	StackViewGravityTop      StackViewGravity = 1
+	StackViewGravityTrailing StackViewGravity = 3
+)
 
-type StackViewVisibilityPriority float32
+// The various Auto Layout priorities for a view in the stack view to remain attached. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewvisibilitypriority?language=objc
+type StackViewVisibilityPriority float64
 
-const StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900.000000
-const StackViewVisibilityPriorityMustHold StackViewVisibilityPriority = 1000.000000
-const StackViewVisibilityPriorityNotVisible StackViewVisibilityPriority = 0.000000
+const (
+	StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900.000000
+	StackViewVisibilityPriorityMustHold              StackViewVisibilityPriority = 1000.000000
+	StackViewVisibilityPriorityNotVisible            StackViewVisibilityPriority = 0.000000
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitemautosavename?language=objc
 type StatusItemAutosaveName string
 
+// A set of optional status item behaviors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitembehavior?language=objc
 type StatusItemBehavior uint
 
-const StatusItemBehaviorRemovalAllowed StatusItemBehavior = 2
-const StatusItemBehaviorTerminationOnRemoval StatusItemBehavior = 4
+const (
+	StatusItemBehaviorRemovalAllowed       StatusItemBehavior = 2
+	StatusItemBehaviorTerminationOnRemoval StatusItemBehavior = 4
+)
 
+// The name of the storyboard file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboardname?language=objc
 type StoryboardName string
 
+// A string that uniquely identifies a view controller or window controller in your storyboard file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboardsceneidentifier?language=objc
 type StoryboardSceneIdentifier string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboardsegueidentifier?language=objc
 type StoryboardSegueIdentifier string
 
+// Constants that specify the rendering options for drawing a string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsstringdrawingoptions?language=objc
 type StringDrawingOptions int
 
-const StringDrawingDisableScreenFontSubstitution StringDrawingOptions = 4
-const StringDrawingOneShot StringDrawingOptions = 16
-const StringDrawingTruncatesLastVisibleLine StringDrawingOptions = 32
-const StringDrawingUsesDeviceMetrics StringDrawingOptions = 8
-const StringDrawingUsesFontLeading StringDrawingOptions = 2
-const StringDrawingUsesLineFragmentOrigin StringDrawingOptions = 1
+const (
+	StringDrawingDisableScreenFontSubstitution StringDrawingOptions = 4
+	StringDrawingOneShot                       StringDrawingOptions = 16
+	StringDrawingTruncatesLastVisibleLine      StringDrawingOptions = 32
+	StringDrawingUsesDeviceMetrics             StringDrawingOptions = 8
+	StringDrawingUsesFontLeading               StringDrawingOptions = 2
+	StringDrawingUsesLineFragmentOrigin        StringDrawingOptions = 1
+)
 
+// Constants that represent the supported TIFF data-compression schemes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstiffcompression?language=objc
 type TIFFCompression uint
 
-const TIFFCompressionCCITTFAX3 TIFFCompression = 3
-const TIFFCompressionCCITTFAX4 TIFFCompression = 4
-const TIFFCompressionJPEG TIFFCompression = 6
-const TIFFCompressionLZW TIFFCompression = 5
-const TIFFCompressionNEXT TIFFCompression = 32766
-const TIFFCompressionNone TIFFCompression = 1
-const TIFFCompressionOldJPEG TIFFCompression = 32865
-const TIFFCompressionPackBits TIFFCompression = 32773
+const (
+	TIFFCompressionCCITTFAX3 TIFFCompression = 3
+	TIFFCompressionCCITTFAX4 TIFFCompression = 4
+	TIFFCompressionJPEG      TIFFCompression = 6
+	TIFFCompressionLZW       TIFFCompression = 5
+	TIFFCompressionNEXT      TIFFCompression = 32766
+	TIFFCompressionNone      TIFFCompression = 1
+	TIFFCompressionOldJPEG   TIFFCompression = 32865
+	TIFFCompressionPackBits  TIFFCompression = 32773
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabposition?language=objc
 type TabPosition uint
 
-const TabPositionBottom TabPosition = 3
-const TabPositionLeft TabPosition = 2
-const TabPositionNone TabPosition = 0
-const TabPositionRight TabPosition = 4
-const TabPositionTop TabPosition = 1
+const (
+	TabPositionBottom TabPosition = 3
+	TabPositionLeft   TabPosition = 2
+	TabPositionNone   TabPosition = 0
+	TabPositionRight  TabPosition = 4
+	TabPositionTop    TabPosition = 1
+)
 
+// These constants describe the current display state of a tab: [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabstate?language=objc
 type TabState uint
 
-const BackgroundTab TabState = 1
-const PressedTab TabState = 2
-const SelectedTab TabState = 0
+const (
+	BackgroundTab TabState = 1
+	PressedTab    TabState = 2
+	SelectedTab   TabState = 0
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewbordertype?language=objc
 type TabViewBorderType uint
 
-const TabViewBorderTypeBezel TabViewBorderType = 2
-const TabViewBorderTypeLine TabViewBorderType = 1
-const TabViewBorderTypeNone TabViewBorderType = 0
+const (
+	TabViewBorderTypeBezel TabViewBorderType = 2
+	TabViewBorderTypeLine  TabViewBorderType = 1
+	TabViewBorderTypeNone  TabViewBorderType = 0
+)
 
+// Tab control style options for a tab view controller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontrollertabstyle?language=objc
 type TabViewControllerTabStyle int
 
-const TabViewControllerTabStyleSegmentedControlOnBottom TabViewControllerTabStyle = 1
-const TabViewControllerTabStyleSegmentedControlOnTop TabViewControllerTabStyle = 0
-const TabViewControllerTabStyleToolbar TabViewControllerTabStyle = 2
-const TabViewControllerTabStyleUnspecified TabViewControllerTabStyle = -1
+const (
+	TabViewControllerTabStyleSegmentedControlOnBottom TabViewControllerTabStyle = 1
+	TabViewControllerTabStyleSegmentedControlOnTop    TabViewControllerTabStyle = 0
+	TabViewControllerTabStyleToolbar                  TabViewControllerTabStyle = 2
+	TabViewControllerTabStyleUnspecified              TabViewControllerTabStyle = -1
+)
 
+// These constants specify the tab view’s type as used by the tabViewType property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewtype?language=objc
 type TabViewType uint
 
-const BottomTabsBezelBorder TabViewType = 2
-const LeftTabsBezelBorder TabViewType = 1
-const NoTabsBezelBorder TabViewType = 4
-const NoTabsLineBorder TabViewType = 5
-const NoTabsNoBorder TabViewType = 6
-const RightTabsBezelBorder TabViewType = 3
-const TopTabsBezelBorder TabViewType = 0
+const (
+	BottomTabsBezelBorder TabViewType = 2
+	LeftTabsBezelBorder   TabViewType = 1
+	NoTabsBezelBorder     TabViewType = 4
+	NoTabsLineBorder      TabViewType = 5
+	NoTabsNoBorder        TabViewType = 6
+	RightTabsBezelBorder  TabViewType = 3
+	TopTabsBezelBorder    TabViewType = 0
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecolumnresizingoptions?language=objc
 type TableColumnResizingOptions uint
 
-const TableColumnAutoresizingMask TableColumnResizingOptions = 1
-const TableColumnNoResizing TableColumnResizingOptions = 0
-const TableColumnUserResizingMask TableColumnResizingOptions = 2
+const (
+	TableColumnAutoresizingMask TableColumnResizingOptions = 1
+	TableColumnNoResizing       TableColumnResizingOptions = 0
+	TableColumnUserResizingMask TableColumnResizingOptions = 2
+)
 
+// These constants define table row edges on which row actions are attached. They are used by the tableView:rowActionsForRow:edge: delegate method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstablerowactionedge?language=objc
 type TableRowActionEdge int
 
-const TableRowActionEdgeLeading TableRowActionEdge = 0
-const TableRowActionEdgeTrailing TableRowActionEdge = 1
+const (
+	TableRowActionEdgeLeading  TableRowActionEdge = 0
+	TableRowActionEdgeTrailing TableRowActionEdge = 1
+)
 
+// Specifies the animation effects to apply when inserting or removing rows. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewanimationoptions?language=objc
 type TableViewAnimationOptions uint
 
-const TableViewAnimationEffectFade TableViewAnimationOptions = 1
-const TableViewAnimationEffectGap TableViewAnimationOptions = 2
-const TableViewAnimationEffectNone TableViewAnimationOptions = 0
-const TableViewAnimationSlideDown TableViewAnimationOptions = 32
-const TableViewAnimationSlideLeft TableViewAnimationOptions = 48
-const TableViewAnimationSlideRight TableViewAnimationOptions = 64
-const TableViewAnimationSlideUp TableViewAnimationOptions = 16
+const (
+	TableViewAnimationEffectFade TableViewAnimationOptions = 1
+	TableViewAnimationEffectGap  TableViewAnimationOptions = 2
+	TableViewAnimationEffectNone TableViewAnimationOptions = 0
+	TableViewAnimationSlideDown  TableViewAnimationOptions = 32
+	TableViewAnimationSlideLeft  TableViewAnimationOptions = 48
+	TableViewAnimationSlideRight TableViewAnimationOptions = 64
+	TableViewAnimationSlideUp    TableViewAnimationOptions = 16
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewautosavename?language=objc
 type TableViewAutosaveName string
 
+// The following constants specify the autoresizing styles. These constants are used by the  columnAutoresizingStyle property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewcolumnautoresizingstyle?language=objc
 type TableViewColumnAutoresizingStyle uint
 
-const TableViewFirstColumnOnlyAutoresizingStyle TableViewColumnAutoresizingStyle = 5
-const TableViewLastColumnOnlyAutoresizingStyle TableViewColumnAutoresizingStyle = 4
-const TableViewNoColumnAutoresizing TableViewColumnAutoresizingStyle = 0
-const TableViewReverseSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 3
-const TableViewSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 2
-const TableViewUniformColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 1
+const (
+	TableViewFirstColumnOnlyAutoresizingStyle         TableViewColumnAutoresizingStyle = 5
+	TableViewLastColumnOnlyAutoresizingStyle          TableViewColumnAutoresizingStyle = 4
+	TableViewNoColumnAutoresizing                     TableViewColumnAutoresizingStyle = 0
+	TableViewReverseSequentialColumnAutoresizingStyle TableViewColumnAutoresizingStyle = 3
+	TableViewSequentialColumnAutoresizingStyle        TableViewColumnAutoresizingStyle = 2
+	TableViewUniformColumnAutoresizingStyle           TableViewColumnAutoresizingStyle = 1
+)
 
+// These constants specify the drag styles displayed by the table view. They’re used by draggingDestinationFeedbackStyle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdraggingdestinationfeedbackstyle?language=objc
 type TableViewDraggingDestinationFeedbackStyle int
 
-const TableViewDraggingDestinationFeedbackStyleGap TableViewDraggingDestinationFeedbackStyle = 2
-const TableViewDraggingDestinationFeedbackStyleNone TableViewDraggingDestinationFeedbackStyle = -1
-const TableViewDraggingDestinationFeedbackStyleRegular TableViewDraggingDestinationFeedbackStyle = 0
-const TableViewDraggingDestinationFeedbackStyleSourceList TableViewDraggingDestinationFeedbackStyle = 1
+const (
+	TableViewDraggingDestinationFeedbackStyleGap        TableViewDraggingDestinationFeedbackStyle = 2
+	TableViewDraggingDestinationFeedbackStyleNone       TableViewDraggingDestinationFeedbackStyle = -1
+	TableViewDraggingDestinationFeedbackStyleRegular    TableViewDraggingDestinationFeedbackStyle = 0
+	TableViewDraggingDestinationFeedbackStyleSourceList TableViewDraggingDestinationFeedbackStyle = 1
+)
 
+// NSTableView defines these constants to specify drop operations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdropoperation?language=objc
 type TableViewDropOperation uint
 
-const TableViewDropAbove TableViewDropOperation = 1
-const TableViewDropOn TableViewDropOperation = 0
+const (
+	TableViewDropAbove TableViewDropOperation = 1
+	TableViewDropOn    TableViewDropOperation = 0
+)
 
+// NSTableView defines these constants to specify grid styles. These constants are used by the gridStyleMask property. The mask can be either [appkit/nstableviewgridlinestyle/nstableviewgridnone] or it can contain either or both of the other options combined using the C bitwise OR operator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewgridlinestyle?language=objc
 type TableViewGridLineStyle uint
 
-const TableViewDashedHorizontalGridLineMask TableViewGridLineStyle = 8
-const TableViewGridNone TableViewGridLineStyle = 0
-const TableViewSolidHorizontalGridLineMask TableViewGridLineStyle = 2
-const TableViewSolidVerticalGridLineMask TableViewGridLineStyle = 1
+const (
+	TableViewDashedHorizontalGridLineMask TableViewGridLineStyle = 8
+	TableViewGridNone                     TableViewGridLineStyle = 0
+	TableViewSolidHorizontalGridLineMask  TableViewGridLineStyle = 2
+	TableViewSolidVerticalGridLineMask    TableViewGridLineStyle = 1
+)
 
+// Constants that help define the appearance and behavior of action buttons. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowactionstyle?language=objc
 type TableViewRowActionStyle int
 
-const TableViewRowActionStyleDestructive TableViewRowActionStyle = 1
-const TableViewRowActionStyleRegular TableViewRowActionStyle = 0
+const (
+	TableViewRowActionStyleDestructive TableViewRowActionStyle = 1
+	TableViewRowActionStyleRegular     TableViewRowActionStyle = 0
+)
 
+// The row size style constants define the size of the rows in the table view. They are used by the effectiveRowSizeStyle and rowSizeStyle properties. You can also query the row size in the NSTableCellView class’ property rowSizeStyle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowsizestyle?language=objc
 type TableViewRowSizeStyle int
 
-const TableViewRowSizeStyleCustom TableViewRowSizeStyle = 0
-const TableViewRowSizeStyleDefault TableViewRowSizeStyle = -1
-const TableViewRowSizeStyleLarge TableViewRowSizeStyle = 3
-const TableViewRowSizeStyleMedium TableViewRowSizeStyle = 2
-const TableViewRowSizeStyleSmall TableViewRowSizeStyle = 1
+const (
+	TableViewRowSizeStyleCustom  TableViewRowSizeStyle = 0
+	TableViewRowSizeStyleDefault TableViewRowSizeStyle = -1
+	TableViewRowSizeStyleLarge   TableViewRowSizeStyle = 3
+	TableViewRowSizeStyleMedium  TableViewRowSizeStyle = 2
+	TableViewRowSizeStyleSmall   TableViewRowSizeStyle = 1
+)
 
+// The following constants specify the selection highlight styles. These constants are used by the selectionHighlightStyle property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewselectionhighlightstyle?language=objc
 type TableViewSelectionHighlightStyle int
 
-const TableViewSelectionHighlightStyleNone TableViewSelectionHighlightStyle = -1
-const TableViewSelectionHighlightStyleRegular TableViewSelectionHighlightStyle = 0
-const TableViewSelectionHighlightStyleSourceList TableViewSelectionHighlightStyle = 1
+const (
+	TableViewSelectionHighlightStyleNone       TableViewSelectionHighlightStyle = -1
+	TableViewSelectionHighlightStyleRegular    TableViewSelectionHighlightStyle = 0
+	TableViewSelectionHighlightStyleSourceList TableViewSelectionHighlightStyle = 1
+)
 
+// Contains the possible style values for a table view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewstyle?language=objc
 type TableViewStyle int
 
-const TableViewStyleAutomatic TableViewStyle = 0
-const TableViewStyleFullWidth TableViewStyle = 1
-const TableViewStyleInset TableViewStyle = 2
-const TableViewStylePlain TableViewStyle = 4
-const TableViewStyleSourceList TableViewStyle = 3
+const (
+	TableViewStyleAutomatic  TableViewStyle = 0
+	TableViewStyleFullWidth  TableViewStyle = 1
+	TableViewStyleInset      TableViewStyle = 2
+	TableViewStylePlain      TableViewStyle = 4
+	TableViewStyleSourceList TableViewStyle = 3
+)
 
+// Constants that specify text alignment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextalignment?language=objc
 type TextAlignment int
 
-const CenterTextAlignment TextAlignment = 2
-const JustifiedTextAlignment TextAlignment = 3
-const LeftTextAlignment TextAlignment = 0
-const NaturalTextAlignment TextAlignment = 4
-const RightTextAlignment TextAlignment = 1
-const TextAlignmentJustified TextAlignment = 3
-const TextAlignmentLeft TextAlignment = 0
-const TextAlignmentNatural TextAlignment = 4
+const (
+	CenterTextAlignment    TextAlignment = 2
+	JustifiedTextAlignment TextAlignment = 3
+	LeftTextAlignment      TextAlignment = 0
+	NaturalTextAlignment   TextAlignment = 4
+	RightTextAlignment     TextAlignment = 1
+	TextAlignmentJustified TextAlignment = 3
+	TextAlignmentLeft      TextAlignment = 0
+	TextAlignmentNatural   TextAlignment = 4
+)
 
+// The following constants specify values used by the methods setValue:type:forDimension:, valueForDimension:, and valueTypeForDimension: to specify text block dimensions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockdimension?language=objc
 type TextBlockDimension uint
 
-const TextBlockHeight TextBlockDimension = 4
-const TextBlockMaximumHeight TextBlockDimension = 6
-const TextBlockMaximumWidth TextBlockDimension = 2
-const TextBlockMinimumHeight TextBlockDimension = 5
-const TextBlockMinimumWidth TextBlockDimension = 1
-const TextBlockWidth TextBlockDimension = 0
+const (
+	TextBlockHeight        TextBlockDimension = 4
+	TextBlockMaximumHeight TextBlockDimension = 6
+	TextBlockMaximumWidth  TextBlockDimension = 2
+	TextBlockMinimumHeight TextBlockDimension = 5
+	TextBlockMinimumWidth  TextBlockDimension = 1
+	TextBlockWidth         TextBlockDimension = 0
+)
 
+// The following constants specify values used by the properties and methods contentWidthValueType, setWidth:type:forLayer:, setWidth:type:forLayer:, widthForLayer:edge:, and widthValueTypeForLayer:edge: to specify text block layer values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblocklayer?language=objc
 type TextBlockLayer int
 
-const TextBlockBorder TextBlockLayer = 0
-const TextBlockMargin TextBlockLayer = 1
-const TextBlockPadding TextBlockLayer = -1
+const (
+	TextBlockBorder  TextBlockLayer = 0
+	TextBlockMargin  TextBlockLayer = 1
+	TextBlockPadding TextBlockLayer = -1
+)
 
+// The following constants specify values used by the methods setValue:type:forDimension: and valueTypeForDimension: to specify text block value types. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockvaluetype?language=objc
 type TextBlockValueType uint
 
-const TextBlockAbsoluteValueType TextBlockValueType = 0
-const TextBlockPercentageValueType TextBlockValueType = 1
+const (
+	TextBlockAbsoluteValueType   TextBlockValueType = 0
+	TextBlockPercentageValueType TextBlockValueType = 1
+)
 
+// The following constants specify values used by the property verticalAlignment to specify vertical alignment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblockverticalalignment?language=objc
 type TextBlockVerticalAlignment uint
 
-const TextBlockBaselineAlignment TextBlockVerticalAlignment = 3
-const TextBlockBottomAlignment TextBlockVerticalAlignment = 2
-const TextBlockMiddleAlignment TextBlockVerticalAlignment = 1
-const TextBlockTopAlignment TextBlockVerticalAlignment = 0
+const (
+	TextBlockBaselineAlignment TextBlockVerticalAlignment = 3
+	TextBlockBottomAlignment   TextBlockVerticalAlignment = 2
+	TextBlockMiddleAlignment   TextBlockVerticalAlignment = 1
+	TextBlockTopAlignment      TextBlockVerticalAlignment = 0
+)
 
+// The constants are optional keys that can be used in the options dictionary parameter of the checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:, requestCheckingOfString:range:types:options:inSpellDocumentWithTag:completionHandler:, and menuForResult:string:options:atLocation:inView: methods. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingoptionkey?language=objc
 type TextCheckingOptionKey string
 
-const TextCheckingDocumentAuthorKey TextCheckingOptionKey = "DocumentAuthor"
-const TextCheckingDocumentTitleKey TextCheckingOptionKey = "DocumentTitle"
-const TextCheckingDocumentURLKey TextCheckingOptionKey = "DocumentURL"
-const TextCheckingOrthographyKey TextCheckingOptionKey = "Orthography"
-const TextCheckingQuotesKey TextCheckingOptionKey = "Quotes"
-const TextCheckingReferenceDateKey TextCheckingOptionKey = "ReferenceDate"
-const TextCheckingReferenceTimeZoneKey TextCheckingOptionKey = "ReferenceTimeZone"
-const TextCheckingRegularExpressionsKey TextCheckingOptionKey = "RegularExpressions"
-const TextCheckingReplacementsKey TextCheckingOptionKey = "Replacements"
-const TextCheckingSelectedRangeKey TextCheckingOptionKey = "SelectedRange"
+const (
+	TextCheckingDocumentAuthorKey     TextCheckingOptionKey = "DocumentAuthor"
+	TextCheckingDocumentTitleKey      TextCheckingOptionKey = "DocumentTitle"
+	TextCheckingDocumentURLKey        TextCheckingOptionKey = "DocumentURL"
+	TextCheckingOrthographyKey        TextCheckingOptionKey = "Orthography"
+	TextCheckingQuotesKey             TextCheckingOptionKey = "Quotes"
+	TextCheckingReferenceDateKey      TextCheckingOptionKey = "ReferenceDate"
+	TextCheckingReferenceTimeZoneKey  TextCheckingOptionKey = "ReferenceTimeZone"
+	TextCheckingRegularExpressionsKey TextCheckingOptionKey = "RegularExpressions"
+	TextCheckingReplacementsKey       TextCheckingOptionKey = "Replacements"
+	TextCheckingSelectedRangeKey      TextCheckingOptionKey = "SelectedRange"
+)
 
+// Values that control the order in which the framework enumerates text elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerenumerationoptions?language=objc
 type TextContentManagerEnumerationOptions uint
 
-const TextContentManagerEnumerationOptionsNone TextContentManagerEnumerationOptions = 0
-const TextContentManagerEnumerationOptionsReverse TextContentManagerEnumerationOptions = 1
+const (
+	TextContentManagerEnumerationOptionsNone    TextContentManagerEnumerationOptions = 0
+	TextContentManagerEnumerationOptionsReverse TextContentManagerEnumerationOptions = 1
+)
 
+// Constants that identify the semantic meaning for a text-entry area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcontenttype?language=objc
 type TextContentType string
 
-const TextContentTypeOneTimeCode TextContentType = "one-time-code"
-const TextContentTypePassword TextContentType = "password"
-const TextContentTypeUsername TextContentType = "username"
+const (
+	TextContentTypeOneTimeCode TextContentType = "one-time-code"
+	TextContentTypePassword    TextContentType = "password"
+	TextContentTypeUsername    TextContentType = "username"
+)
 
+// Constants for the text effect attribute key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstexteffectstyle?language=objc
 type TextEffectStyle string
 
-const TextEffectLetterpressStyle TextEffectStyle = "_UIKitNewLetterpressStyle"
+const (
+	TextEffectLetterpressStyle TextEffectStyle = "_UIKitNewLetterpressStyle"
+)
 
+// The style of bezel the text field displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldbezelstyle?language=objc
 type TextFieldBezelStyle uint
 
-const TextFieldRoundedBezel TextFieldBezelStyle = 1
-const TextFieldSquareBezel TextFieldBezelStyle = 0
+const (
+	TextFieldRoundedBezel TextFieldBezelStyle = 1
+	TextFieldSquareBezel  TextFieldBezelStyle = 0
+)
 
+// These constants specify the user interface item tags that correspond find action. These constants are passed to the performTextFinderAction: method, the responder will call the appropriate method for the tag. That method will, in turn, determine the desired action and invoke the appropriate method in the NSTextFinder object’s NSTextFinderClient protocol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderaction?language=objc
 type TextFinderAction int
 
-const TextFinderActionHideFindInterface TextFinderAction = 11
-const TextFinderActionHideReplaceInterface TextFinderAction = 13
-const TextFinderActionNextMatch TextFinderAction = 2
-const TextFinderActionPreviousMatch TextFinderAction = 3
-const TextFinderActionReplace TextFinderAction = 5
-const TextFinderActionReplaceAll TextFinderAction = 4
-const TextFinderActionReplaceAllInSelection TextFinderAction = 8
-const TextFinderActionReplaceAndFind TextFinderAction = 6
-const TextFinderActionSelectAll TextFinderAction = 9
-const TextFinderActionSelectAllInSelection TextFinderAction = 10
-const TextFinderActionSetSearchString TextFinderAction = 7
-const TextFinderActionShowFindInterface TextFinderAction = 1
-const TextFinderActionShowReplaceInterface TextFinderAction = 12
+const (
+	TextFinderActionHideFindInterface     TextFinderAction = 11
+	TextFinderActionHideReplaceInterface  TextFinderAction = 13
+	TextFinderActionNextMatch             TextFinderAction = 2
+	TextFinderActionPreviousMatch         TextFinderAction = 3
+	TextFinderActionReplace               TextFinderAction = 5
+	TextFinderActionReplaceAll            TextFinderAction = 4
+	TextFinderActionReplaceAllInSelection TextFinderAction = 8
+	TextFinderActionReplaceAndFind        TextFinderAction = 6
+	TextFinderActionSelectAll             TextFinderAction = 9
+	TextFinderActionSelectAllInSelection  TextFinderAction = 10
+	TextFinderActionSetSearchString       TextFinderAction = 7
+	TextFinderActionShowFindInterface     TextFinderAction = 1
+	TextFinderActionShowReplaceInterface  TextFinderAction = 12
+)
 
+// The following constants indicate the type of search anchor an action should perform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfindermatchingtype?language=objc
 type TextFinderMatchingType int
 
-const TextFinderMatchingTypeContains TextFinderMatchingType = 0
-const TextFinderMatchingTypeEndsWith TextFinderMatchingType = 3
-const TextFinderMatchingTypeFullWord TextFinderMatchingType = 2
-const TextFinderMatchingTypeStartsWith TextFinderMatchingType = 1
+const (
+	TextFinderMatchingTypeContains   TextFinderMatchingType = 0
+	TextFinderMatchingTypeEndsWith   TextFinderMatchingType = 3
+	TextFinderMatchingTypeFullWord   TextFinderMatchingType = 2
+	TextFinderMatchingTypeStartsWith TextFinderMatchingType = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputsourceidentifier?language=objc
 type TextInputSourceIdentifier string
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputtraittype?language=objc
 type TextInputTraitType int
 
-const TextInputTraitTypeDefault TextInputTraitType = 0
-const TextInputTraitTypeNo TextInputTraitType = 1
-const TextInputTraitTypeYes TextInputTraitType = 2
+const (
+	TextInputTraitTypeDefault TextInputTraitType = 0
+	TextInputTraitTypeNo      TextInputTraitType = 1
+	TextInputTraitTypeYes     TextInputTraitType = 2
+)
 
+// Values that describe options for enumerating text layout fragments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutfragmentenumerationoptions?language=objc
 type TextLayoutFragmentEnumerationOptions uint
 
-const TextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment TextLayoutFragmentEnumerationOptions = 8
-const TextLayoutFragmentEnumerationOptionsEnsuresLayout TextLayoutFragmentEnumerationOptions = 4
-const TextLayoutFragmentEnumerationOptionsEstimatesSize TextLayoutFragmentEnumerationOptions = 2
-const TextLayoutFragmentEnumerationOptionsNone TextLayoutFragmentEnumerationOptions = 0
-const TextLayoutFragmentEnumerationOptionsReverse TextLayoutFragmentEnumerationOptions = 1
+const (
+	TextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment TextLayoutFragmentEnumerationOptions = 8
+	TextLayoutFragmentEnumerationOptionsEnsuresLayout            TextLayoutFragmentEnumerationOptions = 4
+	TextLayoutFragmentEnumerationOptionsEstimatesSize            TextLayoutFragmentEnumerationOptions = 2
+	TextLayoutFragmentEnumerationOptionsNone                     TextLayoutFragmentEnumerationOptions = 0
+	TextLayoutFragmentEnumerationOptionsReverse                  TextLayoutFragmentEnumerationOptions = 1
+)
 
+// Values that describe the possible layout states. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutfragmentstate?language=objc
 type TextLayoutFragmentState uint
 
-const TextLayoutFragmentStateCalculatedUsageBounds TextLayoutFragmentState = 2
-const TextLayoutFragmentStateEstimatedUsageBounds TextLayoutFragmentState = 1
-const TextLayoutFragmentStateLayoutAvailable TextLayoutFragmentState = 3
-const TextLayoutFragmentStateNone TextLayoutFragmentState = 0
+const (
+	TextLayoutFragmentStateCalculatedUsageBounds TextLayoutFragmentState = 2
+	TextLayoutFragmentStateEstimatedUsageBounds  TextLayoutFragmentState = 1
+	TextLayoutFragmentStateLayoutAvailable       TextLayoutFragmentState = 3
+	TextLayoutFragmentStateNone                  TextLayoutFragmentState = 0
+)
 
+// Values that describe where and how the framework extends segments of a selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagersegmentoptions?language=objc
 type TextLayoutManagerSegmentOptions uint
 
-const TextLayoutManagerSegmentOptionsHeadSegmentExtended TextLayoutManagerSegmentOptions = 4
-const TextLayoutManagerSegmentOptionsMiddleFragmentsExcluded TextLayoutManagerSegmentOptions = 2
-const TextLayoutManagerSegmentOptionsNone TextLayoutManagerSegmentOptions = 0
-const TextLayoutManagerSegmentOptionsRangeNotRequired TextLayoutManagerSegmentOptions = 1
-const TextLayoutManagerSegmentOptionsTailSegmentExtended TextLayoutManagerSegmentOptions = 8
-const TextLayoutManagerSegmentOptionsUpstreamAffinity TextLayoutManagerSegmentOptions = 16
+const (
+	TextLayoutManagerSegmentOptionsHeadSegmentExtended     TextLayoutManagerSegmentOptions = 4
+	TextLayoutManagerSegmentOptionsMiddleFragmentsExcluded TextLayoutManagerSegmentOptions = 2
+	TextLayoutManagerSegmentOptionsNone                    TextLayoutManagerSegmentOptions = 0
+	TextLayoutManagerSegmentOptionsRangeNotRequired        TextLayoutManagerSegmentOptions = 1
+	TextLayoutManagerSegmentOptionsTailSegmentExtended     TextLayoutManagerSegmentOptions = 8
+	TextLayoutManagerSegmentOptionsUpstreamAffinity        TextLayoutManagerSegmentOptions = 16
+)
 
+// Values that describe the rendering of selection boundaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagersegmenttype?language=objc
 type TextLayoutManagerSegmentType int
 
-const TextLayoutManagerSegmentTypeHighlight TextLayoutManagerSegmentType = 2
-const TextLayoutManagerSegmentTypeSelection TextLayoutManagerSegmentType = 1
-const TextLayoutManagerSegmentTypeStandard TextLayoutManagerSegmentType = 0
+const (
+	TextLayoutManagerSegmentTypeHighlight TextLayoutManagerSegmentType = 2
+	TextLayoutManagerSegmentTypeSelection TextLayoutManagerSegmentType = 1
+	TextLayoutManagerSegmentTypeStandard  TextLayoutManagerSegmentType = 0
+)
 
+// Constants that describe the text layout orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutorientation?language=objc
 type TextLayoutOrientation int
 
-const TextLayoutOrientationHorizontal TextLayoutOrientation = 0
-const TextLayoutOrientationVertical TextLayoutOrientation = 1
+const (
+	TextLayoutOrientationHorizontal TextLayoutOrientation = 0
+	TextLayoutOrientationVertical   TextLayoutOrientation = 1
+)
 
+// Constants for the text layout sections document attribute key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutsectionkey?language=objc
 type TextLayoutSectionKey string
 
-const TextLayoutSectionOrientation TextLayoutSectionKey = "NSTextLayoutSectionOrientation"
-const TextLayoutSectionRange TextLayoutSectionKey = "NSTextLayoutSectionRange"
+const (
+	TextLayoutSectionOrientation TextLayoutSectionKey = "NSTextLayoutSectionOrientation"
+	TextLayoutSectionRange       TextLayoutSectionKey = "NSTextLayoutSectionRange"
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlistmarkerformat?language=objc
 type TextListMarkerFormat string
 
-const TextListMarkerBox TextListMarkerFormat = "{box}"
-const TextListMarkerCheck TextListMarkerFormat = "{check}"
-const TextListMarkerCircle TextListMarkerFormat = "{circle}"
-const TextListMarkerDecimal TextListMarkerFormat = "{decimal}"
-const TextListMarkerDiamond TextListMarkerFormat = "{diamond}"
-const TextListMarkerDisc TextListMarkerFormat = "{disc}"
-const TextListMarkerHyphen TextListMarkerFormat = "{hyphen}"
-const TextListMarkerLowercaseAlpha TextListMarkerFormat = "{lower-alpha}"
-const TextListMarkerLowercaseHexadecimal TextListMarkerFormat = "{lower-hexadecimal}"
-const TextListMarkerLowercaseLatin TextListMarkerFormat = "{lower-latin}"
-const TextListMarkerLowercaseRoman TextListMarkerFormat = "{lower-roman}"
-const TextListMarkerOctal TextListMarkerFormat = "{octal}"
-const TextListMarkerSquare TextListMarkerFormat = "{square}"
-const TextListMarkerUppercaseAlpha TextListMarkerFormat = "{upper-alpha}"
-const TextListMarkerUppercaseHexadecimal TextListMarkerFormat = "{upper-hexadecimal}"
-const TextListMarkerUppercaseLatin TextListMarkerFormat = "{upper-latin}"
-const TextListMarkerUppercaseRoman TextListMarkerFormat = "{upper-roman}"
+const (
+	TextListMarkerBox                  TextListMarkerFormat = "{box}"
+	TextListMarkerCheck                TextListMarkerFormat = "{check}"
+	TextListMarkerCircle               TextListMarkerFormat = "{circle}"
+	TextListMarkerDecimal              TextListMarkerFormat = "{decimal}"
+	TextListMarkerDiamond              TextListMarkerFormat = "{diamond}"
+	TextListMarkerDisc                 TextListMarkerFormat = "{disc}"
+	TextListMarkerHyphen               TextListMarkerFormat = "{hyphen}"
+	TextListMarkerLowercaseAlpha       TextListMarkerFormat = "{lower-alpha}"
+	TextListMarkerLowercaseHexadecimal TextListMarkerFormat = "{lower-hexadecimal}"
+	TextListMarkerLowercaseLatin       TextListMarkerFormat = "{lower-latin}"
+	TextListMarkerLowercaseRoman       TextListMarkerFormat = "{lower-roman}"
+	TextListMarkerOctal                TextListMarkerFormat = "{octal}"
+	TextListMarkerSquare               TextListMarkerFormat = "{square}"
+	TextListMarkerUppercaseAlpha       TextListMarkerFormat = "{upper-alpha}"
+	TextListMarkerUppercaseHexadecimal TextListMarkerFormat = "{upper-hexadecimal}"
+	TextListMarkerUppercaseLatin       TextListMarkerFormat = "{upper-latin}"
+	TextListMarkerUppercaseRoman       TextListMarkerFormat = "{upper-roman}"
+)
 
+// Values that available options for text list items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlistoptions?language=objc
 type TextListOptions uint
 
-const TextListPrependEnclosingMarker TextListOptions = 1
+const (
+	TextListPrependEnclosingMarker TextListOptions = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextmovement?language=objc
 type TextMovement int
 
-const TextMovementBacktab TextMovement = 18
-const TextMovementCancel TextMovement = 23
-const TextMovementDown TextMovement = 22
-const TextMovementLeft TextMovement = 19
-const TextMovementOther TextMovement = 0
-const TextMovementReturn TextMovement = 16
-const TextMovementRight TextMovement = 20
-const TextMovementTab TextMovement = 17
-const TextMovementUp TextMovement = 21
+const (
+	TextMovementBacktab TextMovement = 18
+	TextMovementCancel  TextMovement = 23
+	TextMovementDown    TextMovement = 22
+	TextMovementLeft    TextMovement = 19
+	TextMovementOther   TextMovement = 0
+	TextMovementReturn  TextMovement = 16
+	TextMovementRight   TextMovement = 20
+	TextMovementTab     TextMovement = 17
+	TextMovementUp      TextMovement = 21
+)
 
+// Constants that specify the text scaling. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextscalingtype?language=objc
 type TextScalingType int
 
-const TextScalingStandard TextScalingType = 0
-const TextScalingiOS TextScalingType = 1
+const (
+	TextScalingStandard TextScalingType = 0
+	TextScalingiOS      TextScalingType = 1
+)
 
+// Values that describe the visual location of the text cursor, or the direction of the non-anchored edge of the selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionaffinity?language=objc
 type TextSelectionAffinity int
 
-const TextSelectionAffinityDownstream TextSelectionAffinity = 1
-const TextSelectionAffinityUpstream TextSelectionAffinity = 0
+const (
+	TextSelectionAffinityDownstream TextSelectionAffinity = 1
+	TextSelectionAffinityUpstream   TextSelectionAffinity = 0
+)
 
+// Values that describe the different granularities available to make a selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectiongranularity?language=objc
 type TextSelectionGranularity int
 
-const TextSelectionGranularityCharacter TextSelectionGranularity = 0
-const TextSelectionGranularityLine TextSelectionGranularity = 3
-const TextSelectionGranularityParagraph TextSelectionGranularity = 2
-const TextSelectionGranularitySentence TextSelectionGranularity = 4
-const TextSelectionGranularityWord TextSelectionGranularity = 1
+const (
+	TextSelectionGranularityCharacter TextSelectionGranularity = 0
+	TextSelectionGranularityLine      TextSelectionGranularity = 3
+	TextSelectionGranularityParagraph TextSelectionGranularity = 2
+	TextSelectionGranularitySentence  TextSelectionGranularity = 4
+	TextSelectionGranularityWord      TextSelectionGranularity = 1
+)
 
+// Values that affect how the framework handles navigation across different textual boundaries during a selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigationdestination?language=objc
 type TextSelectionNavigationDestination int
 
-const TextSelectionNavigationDestinationCharacter TextSelectionNavigationDestination = 0
-const TextSelectionNavigationDestinationContainer TextSelectionNavigationDestination = 5
-const TextSelectionNavigationDestinationDocument TextSelectionNavigationDestination = 6
-const TextSelectionNavigationDestinationLine TextSelectionNavigationDestination = 2
-const TextSelectionNavigationDestinationParagraph TextSelectionNavigationDestination = 4
-const TextSelectionNavigationDestinationSentence TextSelectionNavigationDestination = 3
-const TextSelectionNavigationDestinationWord TextSelectionNavigationDestination = 1
+const (
+	TextSelectionNavigationDestinationCharacter TextSelectionNavigationDestination = 0
+	TextSelectionNavigationDestinationContainer TextSelectionNavigationDestination = 5
+	TextSelectionNavigationDestinationDocument  TextSelectionNavigationDestination = 6
+	TextSelectionNavigationDestinationLine      TextSelectionNavigationDestination = 2
+	TextSelectionNavigationDestinationParagraph TextSelectionNavigationDestination = 4
+	TextSelectionNavigationDestinationSentence  TextSelectionNavigationDestination = 3
+	TextSelectionNavigationDestinationWord      TextSelectionNavigationDestination = 1
+)
 
+// Values that describe the direction of a selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigationdirection?language=objc
 type TextSelectionNavigationDirection int
 
-const TextSelectionNavigationDirectionBackward TextSelectionNavigationDirection = 1
-const TextSelectionNavigationDirectionDown TextSelectionNavigationDirection = 5
-const TextSelectionNavigationDirectionForward TextSelectionNavigationDirection = 0
-const TextSelectionNavigationDirectionLeft TextSelectionNavigationDirection = 3
-const TextSelectionNavigationDirectionRight TextSelectionNavigationDirection = 2
-const TextSelectionNavigationDirectionUp TextSelectionNavigationDirection = 4
+const (
+	TextSelectionNavigationDirectionBackward TextSelectionNavigationDirection = 1
+	TextSelectionNavigationDirectionDown     TextSelectionNavigationDirection = 5
+	TextSelectionNavigationDirectionForward  TextSelectionNavigationDirection = 0
+	TextSelectionNavigationDirectionLeft     TextSelectionNavigationDirection = 3
+	TextSelectionNavigationDirectionRight    TextSelectionNavigationDirection = 2
+	TextSelectionNavigationDirectionUp       TextSelectionNavigationDirection = 4
+)
 
+// Values that describe the possible layout orientations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigationlayoutorientation?language=objc
 type TextSelectionNavigationLayoutOrientation int
 
-const TextSelectionNavigationLayoutOrientationHorizontal TextSelectionNavigationLayoutOrientation = 0
-const TextSelectionNavigationLayoutOrientationVertical TextSelectionNavigationLayoutOrientation = 1
+const (
+	TextSelectionNavigationLayoutOrientationHorizontal TextSelectionNavigationLayoutOrientation = 0
+	TextSelectionNavigationLayoutOrientationVertical   TextSelectionNavigationLayoutOrientation = 1
+)
 
+// Values that describe how the framework handles different kinds of selection modifiers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigationmodifier?language=objc
 type TextSelectionNavigationModifier uint
 
-const TextSelectionNavigationModifierExtend TextSelectionNavigationModifier = 1
-const TextSelectionNavigationModifierMultiple TextSelectionNavigationModifier = 4
-const TextSelectionNavigationModifierVisual TextSelectionNavigationModifier = 2
+const (
+	TextSelectionNavigationModifierExtend   TextSelectionNavigationModifier = 1
+	TextSelectionNavigationModifierMultiple TextSelectionNavigationModifier = 4
+	TextSelectionNavigationModifierVisual   TextSelectionNavigationModifier = 2
+)
 
+// Values that describe the writing direction inside a text selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigationwritingdirection?language=objc
 type TextSelectionNavigationWritingDirection int
 
-const TextSelectionNavigationWritingDirectionLeftToRight TextSelectionNavigationWritingDirection = 0
-const TextSelectionNavigationWritingDirectionRightToLeft TextSelectionNavigationWritingDirection = 1
+const (
+	TextSelectionNavigationWritingDirectionLeftToRight TextSelectionNavigationWritingDirection = 0
+	TextSelectionNavigationWritingDirectionRightToLeft TextSelectionNavigationWritingDirection = 1
+)
 
+// Constants that indicate the types of changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorageeditactions?language=objc
 type TextStorageEditActions uint
 
-const TextStorageEditedAttributes TextStorageEditActions = 1
-const TextStorageEditedCharacters TextStorageEditActions = 2
+const (
+	TextStorageEditedAttributes TextStorageEditActions = 1
+	TextStorageEditedCharacters TextStorageEditActions = 2
+)
 
+// Constants that indicate the types of edits. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextstorageeditedoptions?language=objc
 type TextStorageEditedOptions uint
 
+// The terminating character for a tab column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttaboptionkey?language=objc
 type TextTabOptionKey string
 
-const TabColumnTerminatorsAttributeName TextTabOptionKey = "NSTabColumnTerminatorsAttributeName"
+const (
+	TabColumnTerminatorsAttributeName TextTabOptionKey = "NSTabColumnTerminatorsAttributeName"
+)
 
+// Constants that specify the type of tab stop. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttabtype?language=objc
 type TextTabType uint
 
-const CenterTabStopType TextTabType = 2
-const DecimalTabStopType TextTabType = 3
-const LeftTabStopType TextTabType = 0
-const RightTabStopType TextTabType = 1
+const (
+	CenterTabStopType  TextTabType = 2
+	DecimalTabStopType TextTabType = 3
+	LeftTabStopType    TextTabType = 0
+	RightTabStopType   TextTabType = 1
+)
 
+// These constants, specifying the type of text table layout algorithm, are used with layoutAlgorithm. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttablelayoutalgorithm?language=objc
 type TextTableLayoutAlgorithm uint
 
-const TextTableAutomaticLayoutAlgorithm TextTableLayoutAlgorithm = 0
-const TextTableFixedLayoutAlgorithm TextTableLayoutAlgorithm = 1
+const (
+	TextTableAutomaticLayoutAlgorithm TextTableLayoutAlgorithm = 0
+	TextTableFixedLayoutAlgorithm     TextTableLayoutAlgorithm = 1
+)
 
+// The position where a linear slider’s tick marks appear (above, below, leading, or trailing). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstickmarkposition?language=objc
 type TickMarkPosition uint
 
-const TickMarkAbove TickMarkPosition = 1
-const TickMarkBelow TickMarkPosition = 0
-const TickMarkLeft TickMarkPosition = 1
-const TickMarkPositionAbove TickMarkPosition = 1
-const TickMarkPositionBelow TickMarkPosition = 0
-const TickMarkPositionLeading TickMarkPosition = 1
-const TickMarkPositionTrailing TickMarkPosition = 0
-const TickMarkRight TickMarkPosition = 0
+const (
+	TickMarkAbove            TickMarkPosition = 1
+	TickMarkBelow            TickMarkPosition = 0
+	TickMarkLeft             TickMarkPosition = 1
+	TickMarkPositionAbove    TickMarkPosition = 1
+	TickMarkPositionBelow    TickMarkPosition = 0
+	TickMarkPositionLeading  TickMarkPosition = 1
+	TickMarkPositionTrailing TickMarkPosition = 0
+	TickMarkRight            TickMarkPosition = 0
+)
 
+// Specify the location of a box’s title with respect to its border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitleposition?language=objc
 type TitlePosition uint
 
-const AboveBottom TitlePosition = 4
-const AboveTop TitlePosition = 1
-const AtBottom TitlePosition = 5
-const AtTop TitlePosition = 2
-const BelowBottom TitlePosition = 6
-const BelowTop TitlePosition = 3
-const NoTitle TitlePosition = 0
+const (
+	AboveBottom TitlePosition = 4
+	AboveTop    TitlePosition = 1
+	AtBottom    TitlePosition = 5
+	AtTop       TitlePosition = 2
+	BelowBottom TitlePosition = 6
+	BelowTop    TitlePosition = 3
+	NoTitle     TitlePosition = 0
+)
 
+// Styles that determine the type of separator displayed between the title bar and content of a window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstitlebarseparatorstyle?language=objc
 type TitlebarSeparatorStyle int
 
-const TitlebarSeparatorStyleAutomatic TitlebarSeparatorStyle = 0
-const TitlebarSeparatorStyleLine TitlebarSeparatorStyle = 2
-const TitlebarSeparatorStyleNone TitlebarSeparatorStyle = 1
-const TitlebarSeparatorStyleShadow TitlebarSeparatorStyle = 3
+const (
+	TitlebarSeparatorStyleAutomatic TitlebarSeparatorStyle = 0
+	TitlebarSeparatorStyleLine      TitlebarSeparatorStyle = 2
+	TitlebarSeparatorStyleNone      TitlebarSeparatorStyle = 1
+	TitlebarSeparatorStyleShadow    TitlebarSeparatorStyle = 3
+)
 
+// The NSTokenStyle constants define how tokens are displayed and editable in the NSTokenFieldCell. These values are used by tokenStyle and the delegate method tokenFieldCell:editingStringForRepresentedObject:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenstyle?language=objc
 type TokenStyle uint
 
-const DefaultTokenStyle TokenStyle = 0
-const PlainTextTokenStyle TokenStyle = 1
-const RoundedTokenStyle TokenStyle = 2
-const TokenStyleDefault TokenStyle = 0
-const TokenStyleNone TokenStyle = 1
-const TokenStylePlainSquared TokenStyle = 4
-const TokenStyleRounded TokenStyle = 2
-const TokenStyleSquared TokenStyle = 3
+const (
+	DefaultTokenStyle      TokenStyle = 0
+	PlainTextTokenStyle    TokenStyle = 1
+	RoundedTokenStyle      TokenStyle = 2
+	TokenStyleDefault      TokenStyle = 0
+	TokenStyleNone         TokenStyle = 1
+	TokenStylePlainSquared TokenStyle = 4
+	TokenStyleRounded      TokenStyle = 2
+	TokenStyleSquared      TokenStyle = 3
+)
 
+// This type describes the rectangle used to identify a tooltip rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstooltiptag?language=objc
 type ToolTipTag int
 
+// Constants that indicate whether the toolbar displays items using a name, icon, or combination of elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardisplaymode?language=objc
 type ToolbarDisplayMode uint
 
-const ToolbarDisplayModeDefault ToolbarDisplayMode = 0
-const ToolbarDisplayModeIconAndLabel ToolbarDisplayMode = 1
-const ToolbarDisplayModeIconOnly ToolbarDisplayMode = 2
-const ToolbarDisplayModeLabelOnly ToolbarDisplayMode = 3
+const (
+	ToolbarDisplayModeDefault      ToolbarDisplayMode = 0
+	ToolbarDisplayModeIconAndLabel ToolbarDisplayMode = 1
+	ToolbarDisplayModeIconOnly     ToolbarDisplayMode = 2
+	ToolbarDisplayModeLabelOnly    ToolbarDisplayMode = 3
+)
 
+// A string value that you use to differentiate your app’s toolbars. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaridentifier?language=objc
 type ToolbarIdentifier string
 
+// A value that indicates the display style for a grouped toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroupcontrolrepresentation?language=objc
 type ToolbarItemGroupControlRepresentation int
 
-const ToolbarItemGroupControlRepresentationAutomatic ToolbarItemGroupControlRepresentation = 0
-const ToolbarItemGroupControlRepresentationCollapsed ToolbarItemGroupControlRepresentation = 2
-const ToolbarItemGroupControlRepresentationExpanded ToolbarItemGroupControlRepresentation = 1
+const (
+	ToolbarItemGroupControlRepresentationAutomatic ToolbarItemGroupControlRepresentation = 0
+	ToolbarItemGroupControlRepresentationCollapsed ToolbarItemGroupControlRepresentation = 2
+	ToolbarItemGroupControlRepresentationExpanded  ToolbarItemGroupControlRepresentation = 1
+)
 
+// A value that indicates how a grouped toolbar item selects its subitems. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemgroupselectionmode?language=objc
 type ToolbarItemGroupSelectionMode int
 
-const ToolbarItemGroupSelectionModeMomentary ToolbarItemGroupSelectionMode = 2
-const ToolbarItemGroupSelectionModeSelectAny ToolbarItemGroupSelectionMode = 1
-const ToolbarItemGroupSelectionModeSelectOne ToolbarItemGroupSelectionMode = 0
+const (
+	ToolbarItemGroupSelectionModeMomentary ToolbarItemGroupSelectionMode = 2
+	ToolbarItemGroupSelectionModeSelectAny ToolbarItemGroupSelectionMode = 1
+	ToolbarItemGroupSelectionModeSelectOne ToolbarItemGroupSelectionMode = 0
+)
 
+// Constants for the standard toolbar items that the system provides. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemidentifier?language=objc
 type ToolbarItemIdentifier string
 
-const ToolbarCloudSharingItemIdentifier ToolbarItemIdentifier = "NSToolbarCloudSharingItem"
-const ToolbarCustomizeToolbarItemIdentifier ToolbarItemIdentifier = "NSToolbarCustomizeToolbarItem"
-const ToolbarFlexibleSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarFlexibleSpaceItem"
-const ToolbarPrintItemIdentifier ToolbarItemIdentifier = "NSToolbarPrintItem"
-const ToolbarSeparatorItemIdentifier ToolbarItemIdentifier = "NSToolbarSeparatorItem"
-const ToolbarShowColorsItemIdentifier ToolbarItemIdentifier = "NSToolbarShowColorsItem"
-const ToolbarShowFontsItemIdentifier ToolbarItemIdentifier = "NSToolbarShowFontsItem"
-const ToolbarSidebarTrackingSeparatorItemIdentifier ToolbarItemIdentifier = "NSToolbarSidebarTrackingSeparatorItemIdentifier"
-const ToolbarSpaceItemIdentifier ToolbarItemIdentifier = "NSToolbarSpaceItem"
-const ToolbarToggleSidebarItemIdentifier ToolbarItemIdentifier = "NSToolbarToggleSidebarItem"
+const (
+	ToolbarCloudSharingItemIdentifier             ToolbarItemIdentifier = "NSToolbarCloudSharingItem"
+	ToolbarCustomizeToolbarItemIdentifier         ToolbarItemIdentifier = "NSToolbarCustomizeToolbarItem"
+	ToolbarFlexibleSpaceItemIdentifier            ToolbarItemIdentifier = "NSToolbarFlexibleSpaceItem"
+	ToolbarPrintItemIdentifier                    ToolbarItemIdentifier = "NSToolbarPrintItem"
+	ToolbarSeparatorItemIdentifier                ToolbarItemIdentifier = "NSToolbarSeparatorItem"
+	ToolbarShowColorsItemIdentifier               ToolbarItemIdentifier = "NSToolbarShowColorsItem"
+	ToolbarShowFontsItemIdentifier                ToolbarItemIdentifier = "NSToolbarShowFontsItem"
+	ToolbarSidebarTrackingSeparatorItemIdentifier ToolbarItemIdentifier = "NSToolbarSidebarTrackingSeparatorItemIdentifier"
+	ToolbarSpaceItemIdentifier                    ToolbarItemIdentifier = "NSToolbarSpaceItem"
+	ToolbarToggleSidebarItemIdentifier            ToolbarItemIdentifier = "NSToolbarToggleSidebarItem"
+)
 
+// Constants that indicate which toolbar items to keep in the toolbar when space is limited. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemvisibilitypriority?language=objc
 type ToolbarItemVisibilityPriority int
 
-const ToolbarItemVisibilityPriorityHigh ToolbarItemVisibilityPriority = 1000
-const ToolbarItemVisibilityPriorityLow ToolbarItemVisibilityPriority = -1000
-const ToolbarItemVisibilityPriorityStandard ToolbarItemVisibilityPriority = 0
-const ToolbarItemVisibilityPriorityUser ToolbarItemVisibilityPriority = 2000
+const (
+	ToolbarItemVisibilityPriorityHigh     ToolbarItemVisibilityPriority = 1000
+	ToolbarItemVisibilityPriorityLow      ToolbarItemVisibilityPriority = -1000
+	ToolbarItemVisibilityPriorityStandard ToolbarItemVisibilityPriority = 0
+	ToolbarItemVisibilityPriorityUser     ToolbarItemVisibilityPriority = 2000
+)
 
+// Constants that specify toolbar display modes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbarsizemode?language=objc
 type ToolbarSizeMode uint
 
-const ToolbarSizeModeDefault ToolbarSizeMode = 0
-const ToolbarSizeModeRegular ToolbarSizeMode = 1
-const ToolbarSizeModeSmall ToolbarSizeMode = 2
+const (
+	ToolbarSizeModeDefault ToolbarSizeMode = 0
+	ToolbarSizeModeRegular ToolbarSizeMode = 1
+	ToolbarSizeModeSmall   ToolbarSizeMode = 2
+)
 
+// The default type for a Touch Bar customization identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbarcustomizationidentifier?language=objc
 type TouchBarCustomizationIdentifier string
 
+// An identifier for an item in the Touch Bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritemidentifier?language=objc
 type TouchBarItemIdentifier string
 
-const TouchBarItemIdentifierCandidateList TouchBarItemIdentifier = "NSTouchBarItemIdentifierCandidateList"
-const TouchBarItemIdentifierCharacterPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierCharacterPicker"
-const TouchBarItemIdentifierFixedSpaceLarge TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceLarge"
-const TouchBarItemIdentifierFixedSpaceSmall TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceSmall"
-const TouchBarItemIdentifierFlexibleSpace TouchBarItemIdentifier = "NSTouchBarItemIdentifierFlexibleSpace"
-const TouchBarItemIdentifierOtherItemsProxy TouchBarItemIdentifier = "NSTouchBarItemIdentifierOtherItemsProxy"
-const TouchBarItemIdentifierTextAlignment TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextAlignment"
-const TouchBarItemIdentifierTextColorPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextColorPicker"
-const TouchBarItemIdentifierTextFormat TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextFormat"
-const TouchBarItemIdentifierTextList TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextList"
-const TouchBarItemIdentifierTextStyle TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextStyle"
+const (
+	TouchBarItemIdentifierCandidateList   TouchBarItemIdentifier = "NSTouchBarItemIdentifierCandidateList"
+	TouchBarItemIdentifierCharacterPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierCharacterPicker"
+	TouchBarItemIdentifierFixedSpaceLarge TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceLarge"
+	TouchBarItemIdentifierFixedSpaceSmall TouchBarItemIdentifier = "NSTouchBarItemIdentifierFixedSpaceSmall"
+	TouchBarItemIdentifierFlexibleSpace   TouchBarItemIdentifier = "NSTouchBarItemIdentifierFlexibleSpace"
+	TouchBarItemIdentifierOtherItemsProxy TouchBarItemIdentifier = "NSTouchBarItemIdentifierOtherItemsProxy"
+	TouchBarItemIdentifierTextAlignment   TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextAlignment"
+	TouchBarItemIdentifierTextColorPicker TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextColorPicker"
+	TouchBarItemIdentifierTextFormat      TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextFormat"
+	TouchBarItemIdentifierTextList        TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextList"
+	TouchBarItemIdentifierTextStyle       TouchBarItemIdentifier = "NSTouchBarItemIdentifierTextStyle"
+)
 
-type TouchBarItemPriority float32
+// Priorities for the visibility of a Touch Bar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritempriority?language=objc
+type TouchBarItemPriority float64
 
-const TouchBarItemPriorityHigh TouchBarItemPriority = 1000.000000
-const TouchBarItemPriorityLow TouchBarItemPriority = -1000.000000
-const TouchBarItemPriorityNormal TouchBarItemPriority = 0.000000
+const (
+	TouchBarItemPriorityHigh   TouchBarItemPriority = 1000.000000
+	TouchBarItemPriorityLow    TouchBarItemPriority = -1000.000000
+	TouchBarItemPriorityNormal TouchBarItemPriority = 0.000000
+)
 
+// The possible phases of a touch. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchphase?language=objc
 type TouchPhase uint
 
-const TouchPhaseAny TouchPhase = math.MaxUint
-const TouchPhaseBegan TouchPhase = 1
-const TouchPhaseCancelled TouchPhase = 16
-const TouchPhaseEnded TouchPhase = 8
-const TouchPhaseMoved TouchPhase = 2
-const TouchPhaseStationary TouchPhase = 4
-const TouchPhaseTouching TouchPhase = 7
+const (
+	TouchPhaseAny        TouchPhase = math.MaxUint
+	TouchPhaseBegan      TouchPhase = 1
+	TouchPhaseCancelled  TouchPhase = 16
+	TouchPhaseEnded      TouchPhase = 8
+	TouchPhaseMoved      TouchPhase = 2
+	TouchPhaseStationary TouchPhase = 4
+	TouchPhaseTouching   TouchPhase = 7
+)
 
+// A bit mask identifying a direct or indirect touch type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchtype?language=objc
 type TouchType int
 
-const TouchTypeDirect TouchType = 0
-const TouchTypeIndirect TouchType = 1
+const (
+	TouchTypeDirect   TouchType = 0
+	TouchTypeIndirect TouchType = 1
+)
 
+// A bit mask identifying a direct or indirect touch type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchtypemask?language=objc
 type TouchTypeMask uint
 
-const TouchTypeMaskDirect TouchTypeMask = 1
-const TouchTypeMaskIndirect TouchTypeMask = 2
+const (
+	TouchTypeMaskDirect   TouchTypeMask = 1
+	TouchTypeMaskIndirect TouchTypeMask = 2
+)
 
+// The data type defined for the constants specified in the options parameter of initWithRect:options:owner:userInfo:. These constants are described below; you can specify multiple constants by performing a bitwise-OR operation with them. In particular, you must supply one or more of the tracking-type constants (that is, [appkit/nstrackingareaoptions/nstrackingmouseenteredandexited], [appkit/nstrackingareaoptions/nstrackingmousemoved], and [appkit/nstrackingareaoptions/nstrackingcursorupdate]) and one of the active constants (that is, [appkit/nstrackingareaoptions/nstrackingactivewhenfirstresponder], [appkit/nstrackingareaoptions/nstrackingactiveinkeywindow], [appkit/nstrackingareaoptions/nstrackingactiveinactiveapp], and [appkit/nstrackingareaoptions/nstrackingactivealways]). In addition, you may specify any of the behavior constants (that is, [appkit/nstrackingareaoptions/nstrackingassumeinside], [appkit/nstrackingareaoptions/nstrackinginvisiblerect], and [appkit/nstrackingareaoptions/nstrackingenabledduringmousedrag]). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingareaoptions?language=objc
 type TrackingAreaOptions uint
 
-const TrackingActiveAlways TrackingAreaOptions = 128
-const TrackingActiveInActiveApp TrackingAreaOptions = 64
-const TrackingActiveInKeyWindow TrackingAreaOptions = 32
-const TrackingActiveWhenFirstResponder TrackingAreaOptions = 16
-const TrackingAssumeInside TrackingAreaOptions = 256
-const TrackingCursorUpdate TrackingAreaOptions = 4
-const TrackingEnabledDuringMouseDrag TrackingAreaOptions = 1024
-const TrackingInVisibleRect TrackingAreaOptions = 512
-const TrackingMouseEnteredAndExited TrackingAreaOptions = 1
-const TrackingMouseMoved TrackingAreaOptions = 2
+const (
+	TrackingActiveAlways             TrackingAreaOptions = 128
+	TrackingActiveInActiveApp        TrackingAreaOptions = 64
+	TrackingActiveInKeyWindow        TrackingAreaOptions = 32
+	TrackingActiveWhenFirstResponder TrackingAreaOptions = 16
+	TrackingAssumeInside             TrackingAreaOptions = 256
+	TrackingCursorUpdate             TrackingAreaOptions = 4
+	TrackingEnabledDuringMouseDrag   TrackingAreaOptions = 1024
+	TrackingInVisibleRect            TrackingAreaOptions = 512
+	TrackingMouseEnteredAndExited    TrackingAreaOptions = 1
+	TrackingMouseMoved               TrackingAreaOptions = 2
+)
 
+// This type describes the rectangle used to track the mouse. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingrecttag?language=objc
 type TrackingRectTag int
 
+// Constants that determine the layout manager's behavior during layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetterbehavior?language=objc
 type TypesetterBehavior int
 
-const TypesetterBehavior_10_2 TypesetterBehavior = 2
-const TypesetterBehavior_10_2_WithCompatibility TypesetterBehavior = 1
-const TypesetterBehavior_10_3 TypesetterBehavior = 3
-const TypesetterBehavior_10_4 TypesetterBehavior = 4
-const TypesetterLatestBehavior TypesetterBehavior = -1
-const TypesetterOriginalBehavior TypesetterBehavior = 0
+const (
+	TypesetterBehavior_10_2                   TypesetterBehavior = 2
+	TypesetterBehavior_10_2_WithCompatibility TypesetterBehavior = 1
+	TypesetterBehavior_10_3                   TypesetterBehavior = 3
+	TypesetterBehavior_10_4                   TypesetterBehavior = 4
+	TypesetterLatestBehavior                  TypesetterBehavior = -1
+	TypesetterOriginalBehavior                TypesetterBehavior = 0
+)
 
+// The following constants are possible values returned by the actionForControlCharacterAtIndex: method to determine the action associated with a control character. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesettercontrolcharacteraction?language=objc
 type TypesetterControlCharacterAction uint
 
-const TypesetterContainerBreakAction TypesetterControlCharacterAction = 32
-const TypesetterHorizontalTabAction TypesetterControlCharacterAction = 4
-const TypesetterLineBreakAction TypesetterControlCharacterAction = 8
-const TypesetterParagraphBreakAction TypesetterControlCharacterAction = 16
-const TypesetterWhitespaceAction TypesetterControlCharacterAction = 2
-const TypesetterZeroAdvancementAction TypesetterControlCharacterAction = 1
+const (
+	TypesetterContainerBreakAction  TypesetterControlCharacterAction = 32
+	TypesetterHorizontalTabAction   TypesetterControlCharacterAction = 4
+	TypesetterLineBreakAction       TypesetterControlCharacterAction = 8
+	TypesetterParagraphBreakAction  TypesetterControlCharacterAction = 16
+	TypesetterWhitespaceAction      TypesetterControlCharacterAction = 2
+	TypesetterZeroAdvancementAction TypesetterControlCharacterAction = 1
+)
 
+// Constants for the underline style and strikethrough style attribute keys. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nsunderlinestyle?language=objc
 type UnderlineStyle int
 
-const UnderlineStyleByWord UnderlineStyle = 32768
-const UnderlineStyleDouble UnderlineStyle = 9
-const UnderlineStyleNone UnderlineStyle = 0
-const UnderlineStylePatternDash UnderlineStyle = 512
-const UnderlineStylePatternDashDot UnderlineStyle = 768
-const UnderlineStylePatternDashDotDot UnderlineStyle = 1024
-const UnderlineStylePatternDot UnderlineStyle = 256
-const UnderlineStylePatternSolid UnderlineStyle = 0
-const UnderlineStyleSingle UnderlineStyle = 1
-const UnderlineStyleThick UnderlineStyle = 2
+const (
+	UnderlineStyleByWord            UnderlineStyle = 32768
+	UnderlineStyleDouble            UnderlineStyle = 9
+	UnderlineStyleNone              UnderlineStyle = 0
+	UnderlineStylePatternDash       UnderlineStyle = 512
+	UnderlineStylePatternDashDot    UnderlineStyle = 768
+	UnderlineStylePatternDashDotDot UnderlineStyle = 1024
+	UnderlineStylePatternDot        UnderlineStyle = 256
+	UnderlineStylePatternSolid      UnderlineStyle = 0
+	UnderlineStyleSingle            UnderlineStyle = 1
+	UnderlineStyleThick             UnderlineStyle = 2
+)
 
+// These constants specify which parts of the scroller are visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsusablescrollerparts?language=objc
 type UsableScrollerParts uint
 
-const AllScrollerParts UsableScrollerParts = 2
-const NoScrollerParts UsableScrollerParts = 0
-const OnlyScrollerArrows UsableScrollerParts = 1
+const (
+	AllScrollerParts   UsableScrollerParts = 2
+	NoScrollerParts    UsableScrollerParts = 0
+	OnlyScrollerArrows UsableScrollerParts = 1
+)
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfaceitemidentifier?language=objc
 type UserInterfaceItemIdentifier string
 
-const MenuItemImportFromDeviceIdentifier UserInterfaceItemIdentifier = "NSMenuItemImportFromDeviceIdentifier"
-const OutlineViewDisclosureButtonKey UserInterfaceItemIdentifier = "NSOutlineViewDisclosureButtonKey"
-const OutlineViewShowHideButtonKey UserInterfaceItemIdentifier = "NSOutlineViewShowHideButtonKey"
-const TableViewRowViewKey UserInterfaceItemIdentifier = "NSTableViewRowViewKey"
+const (
+	MenuItemImportFromDeviceIdentifier UserInterfaceItemIdentifier = "NSMenuItemImportFromDeviceIdentifier"
+	OutlineViewDisclosureButtonKey     UserInterfaceItemIdentifier = "NSOutlineViewDisclosureButtonKey"
+	OutlineViewShowHideButtonKey       UserInterfaceItemIdentifier = "NSOutlineViewShowHideButtonKey"
+	TableViewRowViewKey                UserInterfaceItemIdentifier = "NSTableViewRowViewKey"
+)
 
+// Specifies the directional flow of the user interface. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacelayoutdirection?language=objc
 type UserInterfaceLayoutDirection int
 
-const UserInterfaceLayoutDirectionLeftToRight UserInterfaceLayoutDirection = 0
-const UserInterfaceLayoutDirectionRightToLeft UserInterfaceLayoutDirection = 1
+const (
+	UserInterfaceLayoutDirectionLeftToRight UserInterfaceLayoutDirection = 0
+	UserInterfaceLayoutDirectionRightToLeft UserInterfaceLayoutDirection = 1
+)
 
+// The stack view layout directions, and user interface axes for hugging priority and clipping resistance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacelayoutorientation?language=objc
 type UserInterfaceLayoutOrientation int
 
-const UserInterfaceLayoutOrientationHorizontal UserInterfaceLayoutOrientation = 0
-const UserInterfaceLayoutOrientationVertical UserInterfaceLayoutOrientation = 1
+const (
+	UserInterfaceLayoutOrientationHorizontal UserInterfaceLayoutOrientation = 0
+	UserInterfaceLayoutOrientationVertical   UserInterfaceLayoutOrientation = 1
+)
 
+// The following constants specify the animation effect to apply and are used as values for the animation effect property of the animation view. See the description of NSViewAnimationEffectKey for usage details. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimationeffectname?language=objc
 type ViewAnimationEffectName string
 
-const ViewAnimationFadeInEffect ViewAnimationEffectName = "NSViewAnimationFadeInEffect"
-const ViewAnimationFadeOutEffect ViewAnimationEffectName = "NSViewAnimationFadeOutEffect"
+const (
+	ViewAnimationFadeInEffect  ViewAnimationEffectName = "NSViewAnimationFadeInEffect"
+	ViewAnimationFadeOutEffect ViewAnimationEffectName = "NSViewAnimationFadeOutEffect"
+)
 
+// The following string constants are keys for the dictionaries in the array passed into initWithViewAnimations: and viewAnimations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimationkey?language=objc
 type ViewAnimationKey string
 
-const ViewAnimationEffectKey ViewAnimationKey = "NSViewAnimationEffectKey"
-const ViewAnimationEndFrameKey ViewAnimationKey = "NSViewAnimationEndFrameKey"
-const ViewAnimationStartFrameKey ViewAnimationKey = "NSViewAnimationStartFrameKey"
-const ViewAnimationTargetKey ViewAnimationKey = "NSViewAnimationTargetKey"
+const (
+	ViewAnimationEffectKey     ViewAnimationKey = "NSViewAnimationEffectKey"
+	ViewAnimationEndFrameKey   ViewAnimationKey = "NSViewAnimationEndFrameKey"
+	ViewAnimationStartFrameKey ViewAnimationKey = "NSViewAnimationStartFrameKey"
+	ViewAnimationTargetKey     ViewAnimationKey = "NSViewAnimationTargetKey"
+)
 
+// Animation options for view transitions in a view controller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollertransitionoptions?language=objc
 type ViewControllerTransitionOptions uint
 
-const ViewControllerTransitionAllowUserInteraction ViewControllerTransitionOptions = 4096
-const ViewControllerTransitionCrossfade ViewControllerTransitionOptions = 1
-const ViewControllerTransitionNone ViewControllerTransitionOptions = 0
-const ViewControllerTransitionSlideBackward ViewControllerTransitionOptions = 384
-const ViewControllerTransitionSlideDown ViewControllerTransitionOptions = 32
-const ViewControllerTransitionSlideForward ViewControllerTransitionOptions = 320
-const ViewControllerTransitionSlideLeft ViewControllerTransitionOptions = 64
-const ViewControllerTransitionSlideRight ViewControllerTransitionOptions = 128
-const ViewControllerTransitionSlideUp ViewControllerTransitionOptions = 16
+const (
+	ViewControllerTransitionAllowUserInteraction ViewControllerTransitionOptions = 4096
+	ViewControllerTransitionCrossfade            ViewControllerTransitionOptions = 1
+	ViewControllerTransitionNone                 ViewControllerTransitionOptions = 0
+	ViewControllerTransitionSlideBackward        ViewControllerTransitionOptions = 384
+	ViewControllerTransitionSlideDown            ViewControllerTransitionOptions = 32
+	ViewControllerTransitionSlideForward         ViewControllerTransitionOptions = 320
+	ViewControllerTransitionSlideLeft            ViewControllerTransitionOptions = 64
+	ViewControllerTransitionSlideRight           ViewControllerTransitionOptions = 128
+	ViewControllerTransitionSlideUp              ViewControllerTransitionOptions = 16
+)
 
+// These constants are keys that you can use in the options dictionary in enterFullScreenMode:withOptions: and exitFullScreenModeWithOptions:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewfullscreenmodeoptionkey?language=objc
 type ViewFullScreenModeOptionKey string
 
-const FullScreenModeAllScreens ViewFullScreenModeOptionKey = "NSFullScreenModeAllScreens"
-const FullScreenModeApplicationPresentationOptions ViewFullScreenModeOptionKey = "NSFullScreenModeApplicationPresentationOptions"
-const FullScreenModeSetting ViewFullScreenModeOptionKey = "NSFullScreenModeSetting"
-const FullScreenModeWindowLevel ViewFullScreenModeOptionKey = "NSFullScreenModeWindowLevel"
+const (
+	FullScreenModeAllScreens                     ViewFullScreenModeOptionKey = "NSFullScreenModeAllScreens"
+	FullScreenModeApplicationPresentationOptions ViewFullScreenModeOptionKey = "NSFullScreenModeApplicationPresentationOptions"
+	FullScreenModeSetting                        ViewFullScreenModeOptionKey = "NSFullScreenModeSetting"
+	FullScreenModeWindowLevel                    ViewFullScreenModeOptionKey = "NSFullScreenModeWindowLevel"
+)
 
+// These constants specify the location of the layer content when the content is not rerendered in response to view resizing. For more information, see the layerContentsPlacement property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewlayercontentsplacement?language=objc
 type ViewLayerContentsPlacement int
 
-const ViewLayerContentsPlacementBottom ViewLayerContentsPlacement = 8
-const ViewLayerContentsPlacementBottomLeft ViewLayerContentsPlacement = 9
-const ViewLayerContentsPlacementBottomRight ViewLayerContentsPlacement = 7
-const ViewLayerContentsPlacementCenter ViewLayerContentsPlacement = 3
-const ViewLayerContentsPlacementLeft ViewLayerContentsPlacement = 10
-const ViewLayerContentsPlacementRight ViewLayerContentsPlacement = 6
-const ViewLayerContentsPlacementScaleAxesIndependently ViewLayerContentsPlacement = 0
-const ViewLayerContentsPlacementScaleProportionallyToFill ViewLayerContentsPlacement = 2
-const ViewLayerContentsPlacementScaleProportionallyToFit ViewLayerContentsPlacement = 1
-const ViewLayerContentsPlacementTop ViewLayerContentsPlacement = 4
-const ViewLayerContentsPlacementTopLeft ViewLayerContentsPlacement = 11
-const ViewLayerContentsPlacementTopRight ViewLayerContentsPlacement = 5
+const (
+	ViewLayerContentsPlacementBottom                    ViewLayerContentsPlacement = 8
+	ViewLayerContentsPlacementBottomLeft                ViewLayerContentsPlacement = 9
+	ViewLayerContentsPlacementBottomRight               ViewLayerContentsPlacement = 7
+	ViewLayerContentsPlacementCenter                    ViewLayerContentsPlacement = 3
+	ViewLayerContentsPlacementLeft                      ViewLayerContentsPlacement = 10
+	ViewLayerContentsPlacementRight                     ViewLayerContentsPlacement = 6
+	ViewLayerContentsPlacementScaleAxesIndependently    ViewLayerContentsPlacement = 0
+	ViewLayerContentsPlacementScaleProportionallyToFill ViewLayerContentsPlacement = 2
+	ViewLayerContentsPlacementScaleProportionallyToFit  ViewLayerContentsPlacement = 1
+	ViewLayerContentsPlacementTop                       ViewLayerContentsPlacement = 4
+	ViewLayerContentsPlacementTopLeft                   ViewLayerContentsPlacement = 11
+	ViewLayerContentsPlacementTopRight                  ViewLayerContentsPlacement = 5
+)
 
+// Constants that specify how layer resizing is handled when a view is layer-backed or layer-hosting. For more information, see the  layerContentsRedrawPolicy property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewlayercontentsredrawpolicy?language=objc
 type ViewLayerContentsRedrawPolicy int
 
-const ViewLayerContentsRedrawBeforeViewResize ViewLayerContentsRedrawPolicy = 3
-const ViewLayerContentsRedrawCrossfade ViewLayerContentsRedrawPolicy = 4
-const ViewLayerContentsRedrawDuringViewResize ViewLayerContentsRedrawPolicy = 2
-const ViewLayerContentsRedrawNever ViewLayerContentsRedrawPolicy = 0
-const ViewLayerContentsRedrawOnSetNeedsDisplay ViewLayerContentsRedrawPolicy = 1
+const (
+	ViewLayerContentsRedrawBeforeViewResize  ViewLayerContentsRedrawPolicy = 3
+	ViewLayerContentsRedrawCrossfade         ViewLayerContentsRedrawPolicy = 4
+	ViewLayerContentsRedrawDuringViewResize  ViewLayerContentsRedrawPolicy = 2
+	ViewLayerContentsRedrawNever             ViewLayerContentsRedrawPolicy = 0
+	ViewLayerContentsRedrawOnSetNeedsDisplay ViewLayerContentsRedrawPolicy = 1
+)
 
+// Constants that specify whether the visual effect view blends with what's either behind or within the window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectblendingmode?language=objc
 type VisualEffectBlendingMode int
 
-const VisualEffectBlendingModeBehindWindow VisualEffectBlendingMode = 0
-const VisualEffectBlendingModeWithinWindow VisualEffectBlendingMode = 1
+const (
+	VisualEffectBlendingModeBehindWindow VisualEffectBlendingMode = 0
+	VisualEffectBlendingModeWithinWindow VisualEffectBlendingMode = 1
+)
 
+// Constants to specify the material shown by the visual effect view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectmaterial?language=objc
 type VisualEffectMaterial int
 
-const VisualEffectMaterialAppearanceBased VisualEffectMaterial = 0
-const VisualEffectMaterialContentBackground VisualEffectMaterial = 18
-const VisualEffectMaterialDark VisualEffectMaterial = 2
-const VisualEffectMaterialFullScreenUI VisualEffectMaterial = 15
-const VisualEffectMaterialHUDWindow VisualEffectMaterial = 13
-const VisualEffectMaterialHeaderView VisualEffectMaterial = 10
-const VisualEffectMaterialLight VisualEffectMaterial = 1
-const VisualEffectMaterialMediumLight VisualEffectMaterial = 8
-const VisualEffectMaterialMenu VisualEffectMaterial = 5
-const VisualEffectMaterialPopover VisualEffectMaterial = 6
-const VisualEffectMaterialSelection VisualEffectMaterial = 4
-const VisualEffectMaterialSheet VisualEffectMaterial = 11
-const VisualEffectMaterialSidebar VisualEffectMaterial = 7
-const VisualEffectMaterialTitlebar VisualEffectMaterial = 3
-const VisualEffectMaterialToolTip VisualEffectMaterial = 17
-const VisualEffectMaterialUltraDark VisualEffectMaterial = 9
-const VisualEffectMaterialUnderPageBackground VisualEffectMaterial = 22
-const VisualEffectMaterialUnderWindowBackground VisualEffectMaterial = 21
-const VisualEffectMaterialWindowBackground VisualEffectMaterial = 12
+const (
+	VisualEffectMaterialAppearanceBased       VisualEffectMaterial = 0
+	VisualEffectMaterialContentBackground     VisualEffectMaterial = 18
+	VisualEffectMaterialDark                  VisualEffectMaterial = 2
+	VisualEffectMaterialFullScreenUI          VisualEffectMaterial = 15
+	VisualEffectMaterialHUDWindow             VisualEffectMaterial = 13
+	VisualEffectMaterialHeaderView            VisualEffectMaterial = 10
+	VisualEffectMaterialLight                 VisualEffectMaterial = 1
+	VisualEffectMaterialMediumLight           VisualEffectMaterial = 8
+	VisualEffectMaterialMenu                  VisualEffectMaterial = 5
+	VisualEffectMaterialPopover               VisualEffectMaterial = 6
+	VisualEffectMaterialSelection             VisualEffectMaterial = 4
+	VisualEffectMaterialSheet                 VisualEffectMaterial = 11
+	VisualEffectMaterialSidebar               VisualEffectMaterial = 7
+	VisualEffectMaterialTitlebar              VisualEffectMaterial = 3
+	VisualEffectMaterialToolTip               VisualEffectMaterial = 17
+	VisualEffectMaterialUltraDark             VisualEffectMaterial = 9
+	VisualEffectMaterialUnderPageBackground   VisualEffectMaterial = 22
+	VisualEffectMaterialUnderWindowBackground VisualEffectMaterial = 21
+	VisualEffectMaterialWindowBackground      VisualEffectMaterial = 12
+)
 
+// Constants to specify how the material appearance should reflect window activity state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectstate?language=objc
 type VisualEffectState int
 
-const VisualEffectStateActive VisualEffectState = 1
-const VisualEffectStateFollowsWindowActiveState VisualEffectState = 0
-const VisualEffectStateInactive VisualEffectState = 2
+const (
+	VisualEffectStateActive                   VisualEffectState = 1
+	VisualEffectStateFollowsWindowActiveState VisualEffectState = 0
+	VisualEffectStateInactive                 VisualEffectState = 2
+)
 
+// The following constants are keys for the dictionary returned by attributesForVoice:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvoiceattributekey?language=objc
 type VoiceAttributeKey string
 
-const VoiceAge VoiceAttributeKey = "VoiceAge"
-const VoiceDemoText VoiceAttributeKey = "VoiceDemoText"
-const VoiceGender VoiceAttributeKey = "VoiceGender"
-const VoiceIdentifier VoiceAttributeKey = "VoiceIdentifier"
-const VoiceIndividuallySpokenCharacters VoiceAttributeKey = "VoiceIndividuallySpokenCharacters"
-const VoiceLanguage VoiceAttributeKey = "VoiceLanguage"
-const VoiceLocaleIdentifier VoiceAttributeKey = "VoiceLocaleIdentifier"
-const VoiceName VoiceAttributeKey = "VoiceName"
-const VoiceSupportedCharacters VoiceAttributeKey = "VoiceSupportedCharacters"
+const (
+	VoiceAge                          VoiceAttributeKey = "VoiceAge"
+	VoiceDemoText                     VoiceAttributeKey = "VoiceDemoText"
+	VoiceGender                       VoiceAttributeKey = "VoiceGender"
+	VoiceIdentifier                   VoiceAttributeKey = "VoiceIdentifier"
+	VoiceIndividuallySpokenCharacters VoiceAttributeKey = "VoiceIndividuallySpokenCharacters"
+	VoiceLanguage                     VoiceAttributeKey = "VoiceLanguage"
+	VoiceLocaleIdentifier             VoiceAttributeKey = "VoiceLocaleIdentifier"
+	VoiceName                         VoiceAttributeKey = "VoiceName"
+	VoiceSupportedCharacters          VoiceAttributeKey = "VoiceSupportedCharacters"
+)
 
+// The following constants define voice gender attributes, which are the allowable values of the NSVoiceGender key returned by attributesForVoice:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsvoicegendername?language=objc
 type VoiceGenderName string
 
-const VoiceGenderFemale VoiceGenderName = "VoiceGenderFemale"
-const VoiceGenderMale VoiceGenderName = "VoiceGenderMale"
-const VoiceGenderNeuter VoiceGenderName = "VoiceGenderNeuter"
+const (
+	VoiceGenderFemale VoiceGenderName = "VoiceGenderFemale"
+	VoiceGenderMale   VoiceGenderName = "VoiceGenderMale"
+	VoiceGenderNeuter VoiceGenderName = "VoiceGenderNeuter"
+)
 
+// Constants that specify the winding rule a Bézier path uses. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindingrule?language=objc
 type WindingRule uint
 
-const EvenOddWindingRule WindingRule = 1
-const NonZeroWindingRule WindingRule = 0
-const WindingRuleEvenOdd WindingRule = 1
-const WindingRuleNonZero WindingRule = 0
+const (
+	EvenOddWindingRule WindingRule = 1
+	NonZeroWindingRule WindingRule = 0
+	WindingRuleEvenOdd WindingRule = 1
+	WindingRuleNonZero WindingRule = 0
+)
 
+// Constants that control the automatic window animation behavior windows use when ordering to the front or out of view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowanimationbehavior?language=objc
 type WindowAnimationBehavior int
 
-const WindowAnimationBehaviorAlertPanel WindowAnimationBehavior = 5
-const WindowAnimationBehaviorDefault WindowAnimationBehavior = 0
-const WindowAnimationBehaviorDocumentWindow WindowAnimationBehavior = 3
-const WindowAnimationBehaviorNone WindowAnimationBehavior = 2
-const WindowAnimationBehaviorUtilityWindow WindowAnimationBehavior = 4
+const (
+	WindowAnimationBehaviorAlertPanel     WindowAnimationBehavior = 5
+	WindowAnimationBehaviorDefault        WindowAnimationBehavior = 0
+	WindowAnimationBehaviorDocumentWindow WindowAnimationBehavior = 3
+	WindowAnimationBehaviorNone           WindowAnimationBehavior = 2
+	WindowAnimationBehaviorUtilityWindow  WindowAnimationBehavior = 4
+)
 
+// The following constants and the related data type represent a window’s possible backing locations. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowbackinglocation?language=objc
 type WindowBackingLocation uint
 
-const WindowBackingLocationDefault WindowBackingLocation = 0
-const WindowBackingLocationMainMemory WindowBackingLocation = 2
-const WindowBackingLocationVideoMemory WindowBackingLocation = 1
+const (
+	WindowBackingLocationDefault     WindowBackingLocation = 0
+	WindowBackingLocationMainMemory  WindowBackingLocation = 2
+	WindowBackingLocationVideoMemory WindowBackingLocation = 1
+)
 
+// Constants that provide a way to access standard title bar buttons. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowbutton?language=objc
 type WindowButton uint
 
-const WindowCloseButton WindowButton = 0
-const WindowDocumentIconButton WindowButton = 4
-const WindowDocumentVersionsButton WindowButton = 6
-const WindowFullScreenButton WindowButton = 7
-const WindowMiniaturizeButton WindowButton = 1
-const WindowToolbarButton WindowButton = 3
-const WindowZoomButton WindowButton = 2
+const (
+	WindowCloseButton            WindowButton = 0
+	WindowDocumentIconButton     WindowButton = 4
+	WindowDocumentVersionsButton WindowButton = 6
+	WindowFullScreenButton       WindowButton = 7
+	WindowMiniaturizeButton      WindowButton = 1
+	WindowToolbarButton          WindowButton = 3
+	WindowZoomButton             WindowButton = 2
+)
 
+// Window collection behaviors related to Mission Control, Spaces, and Stage Manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcollectionbehavior?language=objc
 type WindowCollectionBehavior uint
 
-const WindowCollectionBehaviorCanJoinAllSpaces WindowCollectionBehavior = 1
-const WindowCollectionBehaviorDefault WindowCollectionBehavior = 0
-const WindowCollectionBehaviorFullScreenAllowsTiling WindowCollectionBehavior = 2048
-const WindowCollectionBehaviorFullScreenAuxiliary WindowCollectionBehavior = 256
-const WindowCollectionBehaviorFullScreenDisallowsTiling WindowCollectionBehavior = 4096
-const WindowCollectionBehaviorFullScreenNone WindowCollectionBehavior = 512
-const WindowCollectionBehaviorFullScreenPrimary WindowCollectionBehavior = 128
-const WindowCollectionBehaviorIgnoresCycle WindowCollectionBehavior = 64
-const WindowCollectionBehaviorManaged WindowCollectionBehavior = 4
-const WindowCollectionBehaviorMoveToActiveSpace WindowCollectionBehavior = 2
-const WindowCollectionBehaviorParticipatesInCycle WindowCollectionBehavior = 32
-const WindowCollectionBehaviorStationary WindowCollectionBehavior = 16
-const WindowCollectionBehaviorTransient WindowCollectionBehavior = 8
+const (
+	WindowCollectionBehaviorCanJoinAllSpaces          WindowCollectionBehavior = 1
+	WindowCollectionBehaviorDefault                   WindowCollectionBehavior = 0
+	WindowCollectionBehaviorFullScreenAllowsTiling    WindowCollectionBehavior = 2048
+	WindowCollectionBehaviorFullScreenAuxiliary       WindowCollectionBehavior = 256
+	WindowCollectionBehaviorFullScreenDisallowsTiling WindowCollectionBehavior = 4096
+	WindowCollectionBehaviorFullScreenNone            WindowCollectionBehavior = 512
+	WindowCollectionBehaviorFullScreenPrimary         WindowCollectionBehavior = 128
+	WindowCollectionBehaviorIgnoresCycle              WindowCollectionBehavior = 64
+	WindowCollectionBehaviorManaged                   WindowCollectionBehavior = 4
+	WindowCollectionBehaviorMoveToActiveSpace         WindowCollectionBehavior = 2
+	WindowCollectionBehaviorParticipatesInCycle       WindowCollectionBehavior = 32
+	WindowCollectionBehaviorStationary                WindowCollectionBehavior = 16
+	WindowCollectionBehaviorTransient                 WindowCollectionBehavior = 8
+)
 
+// A type that represents the depth, or amount of memory, for a single pixel in a window or screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdepth?language=objc
 type WindowDepth int32
 
-const WindowDepthOnehundredtwentyeightBitRGB WindowDepth = 544
-const WindowDepthSixtyfourBitRGB WindowDepth = 528
-const WindowDepthTwentyfourBitRGB WindowDepth = 520
+const (
+	WindowDepthOnehundredtwentyeightBitRGB WindowDepth = 544
+	WindowDepthSixtyfourBitRGB             WindowDepth = 528
+	WindowDepthTwentyfourBitRGB            WindowDepth = 520
+)
 
+// The type of a window’s frame autosave name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowframeautosavename?language=objc
 type WindowFrameAutosaveName string
 
+// The standard window levels in macOS. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowlevel?language=objc
 type WindowLevel int
 
-const DockWindowLevel WindowLevel = 20
-const FloatingWindowLevel WindowLevel = 3
-const MainMenuWindowLevel WindowLevel = 24
-const ModalPanelWindowLevel WindowLevel = 8
-const NormalWindowLevel WindowLevel = 0
-const PopUpMenuWindowLevel WindowLevel = 101
-const ScreenSaverWindowLevel WindowLevel = 1000
-const StatusWindowLevel WindowLevel = 25
-const SubmenuWindowLevel WindowLevel = 3
-const TornOffMenuWindowLevel WindowLevel = 3
+const (
+	DockWindowLevel        WindowLevel = 20
+	FloatingWindowLevel    WindowLevel = 3
+	MainMenuWindowLevel    WindowLevel = 24
+	ModalPanelWindowLevel  WindowLevel = 8
+	NormalWindowLevel      WindowLevel = 0
+	PopUpMenuWindowLevel   WindowLevel = 101
+	ScreenSaverWindowLevel WindowLevel = 1000
+	StatusWindowLevel      WindowLevel = 25
+	SubmenuWindowLevel     WindowLevel = 3
+	TornOffMenuWindowLevel WindowLevel = 3
+)
 
+// This constant indicates a window ordering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowlistoptions?language=objc
 type WindowListOptions int
 
-const WindowListOrderedFrontToBack WindowListOptions = 1
+const (
+	WindowListOrderedFrontToBack WindowListOptions = 1
+)
 
+// Options to use when retrieving window numbers from the system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindownumberlistoptions?language=objc
 type WindowNumberListOptions uint
 
-const WindowNumberListAllApplications WindowNumberListOptions = 1
-const WindowNumberListAllSpaces WindowNumberListOptions = 16
+const (
+	WindowNumberListAllApplications WindowNumberListOptions = 1
+	WindowNumberListAllSpaces       WindowNumberListOptions = 16
+)
 
+// Specifies whether the window is occluded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowocclusionstate?language=objc
 type WindowOcclusionState uint
 
-const WindowOcclusionStateVisible WindowOcclusionState = 2
+const (
+	WindowOcclusionStateVisible WindowOcclusionState = 2
+)
 
+// Constants that let you specify how a window is ordered relative to another window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindoworderingmode?language=objc
 type WindowOrderingMode int
 
-const WindowAbove WindowOrderingMode = 1
-const WindowBelow WindowOrderingMode = -1
-const WindowOut WindowOrderingMode = 0
+const (
+	WindowAbove WindowOrderingMode = 1
+	WindowBelow WindowOrderingMode = -1
+	WindowOut   WindowOrderingMode = 0
+)
 
+// The type of a window’s frame descriptor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowpersistableframedescriptor?language=objc
 type WindowPersistableFrameDescriptor string
 
+// Constants that represent the access levels other processes can have to a window’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowsharingtype?language=objc
 type WindowSharingType uint
 
-const WindowSharingNone WindowSharingType = 0
-const WindowSharingReadOnly WindowSharingType = 1
-const WindowSharingReadWrite WindowSharingType = 2
+const (
+	WindowSharingNone      WindowSharingType = 0
+	WindowSharingReadOnly  WindowSharingType = 1
+	WindowSharingReadWrite WindowSharingType = 2
+)
 
+// Constants that specify the style of a window, and that you can combine with the C bitwise OR operator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowstylemask?language=objc
 type WindowStyleMask uint
 
-const BorderlessWindowMask WindowStyleMask = 0
-const ClosableWindowMask WindowStyleMask = 2
-const DocModalWindowMask WindowStyleMask = 64
-const FullScreenWindowMask WindowStyleMask = 16384
-const FullSizeContentViewWindowMask WindowStyleMask = 32768
-const HUDWindowMask WindowStyleMask = 8192
-const MiniaturizableWindowMask WindowStyleMask = 4
-const NonactivatingPanelMask WindowStyleMask = 128
-const ResizableWindowMask WindowStyleMask = 8
-const TexturedBackgroundWindowMask WindowStyleMask = 256
-const TitledWindowMask WindowStyleMask = 1
-const UnifiedTitleAndToolbarWindowMask WindowStyleMask = 4096
-const UtilityWindowMask WindowStyleMask = 16
-const WindowStyleMaskBorderless WindowStyleMask = 0
-const WindowStyleMaskClosable WindowStyleMask = 2
-const WindowStyleMaskDocModalWindow WindowStyleMask = 64
-const WindowStyleMaskFullScreen WindowStyleMask = 16384
-const WindowStyleMaskFullSizeContentView WindowStyleMask = 32768
-const WindowStyleMaskHUDWindow WindowStyleMask = 8192
-const WindowStyleMaskMiniaturizable WindowStyleMask = 4
-const WindowStyleMaskNonactivatingPanel WindowStyleMask = 128
-const WindowStyleMaskResizable WindowStyleMask = 8
-const WindowStyleMaskTexturedBackground WindowStyleMask = 256
-const WindowStyleMaskTitled WindowStyleMask = 1
-const WindowStyleMaskUnifiedTitleAndToolbar WindowStyleMask = 4096
-const WindowStyleMaskUtilityWindow WindowStyleMask = 16
+const (
+	BorderlessWindowMask                  WindowStyleMask = 0
+	ClosableWindowMask                    WindowStyleMask = 2
+	DocModalWindowMask                    WindowStyleMask = 64
+	FullScreenWindowMask                  WindowStyleMask = 16384
+	FullSizeContentViewWindowMask         WindowStyleMask = 32768
+	HUDWindowMask                         WindowStyleMask = 8192
+	MiniaturizableWindowMask              WindowStyleMask = 4
+	NonactivatingPanelMask                WindowStyleMask = 128
+	ResizableWindowMask                   WindowStyleMask = 8
+	TexturedBackgroundWindowMask          WindowStyleMask = 256
+	TitledWindowMask                      WindowStyleMask = 1
+	UnifiedTitleAndToolbarWindowMask      WindowStyleMask = 4096
+	UtilityWindowMask                     WindowStyleMask = 16
+	WindowStyleMaskBorderless             WindowStyleMask = 0
+	WindowStyleMaskClosable               WindowStyleMask = 2
+	WindowStyleMaskDocModalWindow         WindowStyleMask = 64
+	WindowStyleMaskFullScreen             WindowStyleMask = 16384
+	WindowStyleMaskFullSizeContentView    WindowStyleMask = 32768
+	WindowStyleMaskHUDWindow              WindowStyleMask = 8192
+	WindowStyleMaskMiniaturizable         WindowStyleMask = 4
+	WindowStyleMaskNonactivatingPanel     WindowStyleMask = 128
+	WindowStyleMaskResizable              WindowStyleMask = 8
+	WindowStyleMaskTexturedBackground     WindowStyleMask = 256
+	WindowStyleMaskTitled                 WindowStyleMask = 1
+	WindowStyleMaskUnifiedTitleAndToolbar WindowStyleMask = 4096
+	WindowStyleMaskUtilityWindow          WindowStyleMask = 16
+)
 
+// A value that allows a group of related windows. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabbingidentifier?language=objc
 type WindowTabbingIdentifier string
 
+// The preferred tabbing behavior of a window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabbingmode?language=objc
 type WindowTabbingMode int
 
-const WindowTabbingModeAutomatic WindowTabbingMode = 0
-const WindowTabbingModeDisallowed WindowTabbingMode = 2
-const WindowTabbingModePreferred WindowTabbingMode = 1
+const (
+	WindowTabbingModeAutomatic  WindowTabbingMode = 0
+	WindowTabbingModeDisallowed WindowTabbingMode = 2
+	WindowTabbingModePreferred  WindowTabbingMode = 1
+)
 
+// Specifies the appearance of the window’s title bar area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtitlevisibility?language=objc
 type WindowTitleVisibility int
 
-const WindowTitleHidden WindowTitleVisibility = 1
-const WindowTitleVisible WindowTitleVisibility = 0
+const (
+	WindowTitleHidden  WindowTitleVisibility = 1
+	WindowTitleVisible WindowTitleVisibility = 0
+)
 
+// Styles that determine the appearance and location of the toolbar in relation to the title bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtoolbarstyle?language=objc
 type WindowToolbarStyle int
 
-const WindowToolbarStyleAutomatic WindowToolbarStyle = 0
-const WindowToolbarStyleExpanded WindowToolbarStyle = 1
-const WindowToolbarStylePreference WindowToolbarStyle = 2
-const WindowToolbarStyleUnified WindowToolbarStyle = 3
-const WindowToolbarStyleUnifiedCompact WindowToolbarStyle = 4
+const (
+	WindowToolbarStyleAutomatic      WindowToolbarStyle = 0
+	WindowToolbarStyleExpanded       WindowToolbarStyle = 1
+	WindowToolbarStylePreference     WindowToolbarStyle = 2
+	WindowToolbarStyleUnified        WindowToolbarStyle = 3
+	WindowToolbarStyleUnifiedCompact WindowToolbarStyle = 4
+)
 
+// A value that indicates the user’s preference for window tabbing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowusertabbingpreference?language=objc
 type WindowUserTabbingPreference int
 
-const WindowUserTabbingPreferenceAlways WindowUserTabbingPreference = 1
-const WindowUserTabbingPreferenceInFullScreen WindowUserTabbingPreference = 2
-const WindowUserTabbingPreferenceManual WindowUserTabbingPreference = 0
+const (
+	WindowUserTabbingPreferenceAlways       WindowUserTabbingPreference = 1
+	WindowUserTabbingPreferenceInFullScreen WindowUserTabbingPreference = 2
+	WindowUserTabbingPreferenceManual       WindowUserTabbingPreference = 0
+)
 
+// The types of privileged file operations that can be authorized by the user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspaceauthorizationtype?language=objc
 type WorkspaceAuthorizationType int
 
-const WorkspaceAuthorizationTypeCreateSymbolicLink WorkspaceAuthorizationType = 0
-const WorkspaceAuthorizationTypeReplaceFile WorkspaceAuthorizationType = 2
-const WorkspaceAuthorizationTypeSetAttributes WorkspaceAuthorizationType = 1
+const (
+	WorkspaceAuthorizationTypeCreateSymbolicLink WorkspaceAuthorizationType = 0
+	WorkspaceAuthorizationTypeReplaceFile        WorkspaceAuthorizationType = 2
+	WorkspaceAuthorizationTypeSetAttributes      WorkspaceAuthorizationType = 1
+)
 
+// Keys that indicate how to display a new desktop image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacedesktopimageoptionkey?language=objc
 type WorkspaceDesktopImageOptionKey string
 
-const WorkspaceDesktopImageAllowClippingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageAllowClippingKey"
-const WorkspaceDesktopImageFillColorKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageFillColorKey"
-const WorkspaceDesktopImageScalingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageScalingKey"
+const (
+	WorkspaceDesktopImageAllowClippingKey WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageAllowClippingKey"
+	WorkspaceDesktopImageFillColorKey     WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageFillColorKey"
+	WorkspaceDesktopImageScalingKey       WorkspaceDesktopImageOptionKey = "NSWorkspaceDesktopImageScalingKey"
+)
 
+// These constants specify different types of file operations used by performFileOperation:source:destination:files:tag:. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacefileoperationname?language=objc
 type WorkspaceFileOperationName string
 
-const WorkspaceCompressOperation WorkspaceFileOperationName = "compress"
-const WorkspaceCopyOperation WorkspaceFileOperationName = "copy"
-const WorkspaceDecompressOperation WorkspaceFileOperationName = "decompress"
-const WorkspaceDecryptOperation WorkspaceFileOperationName = "decrypt"
-const WorkspaceDestroyOperation WorkspaceFileOperationName = "destroy"
-const WorkspaceDuplicateOperation WorkspaceFileOperationName = "duplicate"
-const WorkspaceEncryptOperation WorkspaceFileOperationName = "encrypt"
-const WorkspaceLinkOperation WorkspaceFileOperationName = "link"
-const WorkspaceMoveOperation WorkspaceFileOperationName = "move"
-const WorkspaceRecycleOperation WorkspaceFileOperationName = "recycle"
+const (
+	WorkspaceCompressOperation   WorkspaceFileOperationName = "compress"
+	WorkspaceCopyOperation       WorkspaceFileOperationName = "copy"
+	WorkspaceDecompressOperation WorkspaceFileOperationName = "decompress"
+	WorkspaceDecryptOperation    WorkspaceFileOperationName = "decrypt"
+	WorkspaceDestroyOperation    WorkspaceFileOperationName = "destroy"
+	WorkspaceDuplicateOperation  WorkspaceFileOperationName = "duplicate"
+	WorkspaceEncryptOperation    WorkspaceFileOperationName = "encrypt"
+	WorkspaceLinkOperation       WorkspaceFileOperationName = "link"
+	WorkspaceMoveOperation       WorkspaceFileOperationName = "move"
+	WorkspaceRecycleOperation    WorkspaceFileOperationName = "recycle"
+)
 
+// Constants that describe options for creating icons. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspaceiconcreationoptions?language=objc
 type WorkspaceIconCreationOptions uint
 
-const Exclude10_4ElementsIconCreationOption WorkspaceIconCreationOptions = 4
-const ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
+const (
+	Exclude10_4ElementsIconCreationOption      WorkspaceIconCreationOptions = 4
+	ExcludeQuickDrawElementsIconCreationOption WorkspaceIconCreationOptions = 2
+)
 
+// The following keys can be used in the configuration dictionary of the launchApplicationAtURL:options:configuration:error: method.  Each key is optional, and if omitted, default behavior is applied. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacelaunchconfigurationkey?language=objc
 type WorkspaceLaunchConfigurationKey string
 
-const WorkspaceLaunchConfigurationAppleEvent WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationAppleEvent"
-const WorkspaceLaunchConfigurationArchitecture WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArchitecture"
-const WorkspaceLaunchConfigurationArguments WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArguments"
-const WorkspaceLaunchConfigurationEnvironment WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationEnvironment"
+const (
+	WorkspaceLaunchConfigurationAppleEvent   WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationAppleEvent"
+	WorkspaceLaunchConfigurationArchitecture WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArchitecture"
+	WorkspaceLaunchConfigurationArguments    WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationArguments"
+	WorkspaceLaunchConfigurationEnvironment  WorkspaceLaunchConfigurationKey = "NSWorkspaceLaunchConfigurationEnvironment"
+)
 
+// Constants specifying how you want to launch an app [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspacelaunchoptions?language=objc
 type WorkspaceLaunchOptions uint
 
-const WorkspaceLaunchAllowingClassicStartup WorkspaceLaunchOptions = 131072
-const WorkspaceLaunchAndHide WorkspaceLaunchOptions = 1048576
-const WorkspaceLaunchAndHideOthers WorkspaceLaunchOptions = 2097152
-const WorkspaceLaunchAndPrint WorkspaceLaunchOptions = 2
-const WorkspaceLaunchAsync WorkspaceLaunchOptions = 65536
-const WorkspaceLaunchDefault WorkspaceLaunchOptions = 65536
-const WorkspaceLaunchInhibitingBackgroundOnly WorkspaceLaunchOptions = 128
-const WorkspaceLaunchNewInstance WorkspaceLaunchOptions = 524288
-const WorkspaceLaunchPreferringClassic WorkspaceLaunchOptions = 262144
-const WorkspaceLaunchWithErrorPresentation WorkspaceLaunchOptions = 64
-const WorkspaceLaunchWithoutActivation WorkspaceLaunchOptions = 512
-const WorkspaceLaunchWithoutAddingToRecents WorkspaceLaunchOptions = 256
+const (
+	WorkspaceLaunchAllowingClassicStartup   WorkspaceLaunchOptions = 131072
+	WorkspaceLaunchAndHide                  WorkspaceLaunchOptions = 1048576
+	WorkspaceLaunchAndHideOthers            WorkspaceLaunchOptions = 2097152
+	WorkspaceLaunchAndPrint                 WorkspaceLaunchOptions = 2
+	WorkspaceLaunchAsync                    WorkspaceLaunchOptions = 65536
+	WorkspaceLaunchDefault                  WorkspaceLaunchOptions = 65536
+	WorkspaceLaunchInhibitingBackgroundOnly WorkspaceLaunchOptions = 128
+	WorkspaceLaunchNewInstance              WorkspaceLaunchOptions = 524288
+	WorkspaceLaunchPreferringClassic        WorkspaceLaunchOptions = 262144
+	WorkspaceLaunchWithErrorPresentation    WorkspaceLaunchOptions = 64
+	WorkspaceLaunchWithoutActivation        WorkspaceLaunchOptions = 512
+	WorkspaceLaunchWithoutAddingToRecents   WorkspaceLaunchOptions = 256
+)
 
+// Constants that specify the writing direction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nswritingdirection?language=objc
 type WritingDirection int
 
-const WritingDirectionLeftToRight WritingDirection = 0
-const WritingDirectionNatural WritingDirection = -1
-const WritingDirectionRightToLeft WritingDirection = 1
+const (
+	WritingDirectionLeftToRight WritingDirection = 0
+	WritingDirectionNatural     WritingDirection = -1
+	WritingDirectionRightToLeft WritingDirection = 1
+)
 
+// Constants for the writing direction attribute key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nswritingdirectionformattype?language=objc
 type WritingDirectionFormatType int
 
-const WritingDirectionEmbedding WritingDirectionFormatType = 0
-const WritingDirectionOverride WritingDirectionFormatType = 2
+const (
+	WritingDirectionEmbedding WritingDirectionFormatType = 0
+	WritingDirectionOverride  WritingDirectionFormatType = 2
+)

@@ -22,7 +22,7 @@ func main() {
 	ad := &appkit.ApplicationDelegate{}
 	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
 
-		item := appkit.StatusBar_SystemStatusBar().StatusItemWithLength(appkit.VariableStatusItemLength)
+		item := appkit.StatusBar_SystemStatusBar().StatusItemWithLength(-1)
 		item.Retain()
 		item.Button().SetTitle("▶️ Ready")
 
@@ -70,13 +70,13 @@ func main() {
 
 		itemNext := appkit.NewMenuItem()
 		itemNext.SetTitle("Next")
-		action.Set(itemNext, func(sender objc.IObject) {
+		action.Set(itemNext, func(sender objc.Object) {
 			nextClicked <- true
 		})
 
 		itemQuit := appkit.NewMenuItem()
 		itemQuit.SetTitle("Quit")
-		itemQuit.SetAction(objc.GetSelector("terminate:"))
+		itemQuit.SetAction(objc.Sel("terminate:"))
 
 		menu := appkit.NewMenu()
 		menu.AddItem(itemNext)

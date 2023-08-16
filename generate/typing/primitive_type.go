@@ -5,14 +5,12 @@ import (
 	"github.com/progrium/macdriver/internal/set"
 )
 
-var _ Type = (*PrimitiveType)(nil)
-
 var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL"}
 
 var Int = &PrimitiveType{GoName_: "int", ObjcName_: "NSInteger"}
 var UInt = &PrimitiveType{GoName_: "uint", ObjcName_: "NSUInteger"}
 
-var Float = &PrimitiveType{GoName_: "float32", ObjcName_: "float"}
+var Float = &PrimitiveType{GoName_: "float64", ObjcName_: "float"}
 var Double = &PrimitiveType{GoName_: "float64", ObjcName_: "double"}
 
 var Int8 = &PrimitiveType{GoName_: "int8", ObjcName_: "int8_t"}
@@ -35,10 +33,22 @@ func init() {
 	for _, pt := range []*PrimitiveType{Bool, Int, UInt, Float, Double, Int8, UInt8, Byte, Int16, UInt16, Int32, UInt32, Int64, UInt64} {
 		primitiveMap[pt.ObjcName_] = pt
 	}
+	primitiveMap["char"] = UInt8
+	primitiveMap["bool"] = Bool
 	primitiveMap["int"] = Int
 	primitiveMap["short"] = Int
 	primitiveMap["long"] = Int32
 	primitiveMap["long long"] = Int64
+	primitiveMap["size_t"] = UInt
+	primitiveMap["uintptr_t"] = UInt
+
+	primitiveMap["Boolean"] = Bool
+	primitiveMap["SInt16"] = Int16
+	primitiveMap["SInt32"] = Int32
+	primitiveMap["SInt64"] = Int64
+	primitiveMap["UInt16"] = UInt16
+	primitiveMap["UInt32"] = UInt32
+	primitiveMap["UInt64"] = UInt64
 }
 
 func GetPrimitiveType(typeName string) (*PrimitiveType, bool) {

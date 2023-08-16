@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package quartzcore
 
 import (
@@ -6,43 +7,58 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type ILayoutManager interface {
-	ImplementsInvalidateLayoutOfLayer() bool
-	// optional
-	InvalidateLayoutOfLayer(layer Layer)
-	ImplementsLayoutSublayersOfLayer() bool
+// Methods that allow an object to manage the layout of a layer and its sublayers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager?language=objc
+type PLayoutManager interface {
 	// optional
 	LayoutSublayersOfLayer(layer Layer)
-	ImplementsPreferredSizeOfLayer() bool
+	HasLayoutSublayersOfLayer() bool
+
+	// optional
+	InvalidateLayoutOfLayer(layer Layer)
+	HasInvalidateLayoutOfLayer() bool
+
 	// optional
 	PreferredSizeOfLayer(layer Layer) coregraphics.Size
+	HasPreferredSizeOfLayer() bool
 }
 
+// A concrete type wrapper for the [PLayoutManager] protocol.
 type LayoutManagerWrapper struct {
 	objc.Object
 }
 
-func (l_ LayoutManagerWrapper) ImplementsInvalidateLayoutOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("invalidateLayoutOfLayer:"))
+func (l_ LayoutManagerWrapper) HasLayoutSublayersOfLayer() bool {
+	return l_.RespondsToSelector(objc.Sel("layoutSublayersOfLayer:"))
 }
 
-func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("invalidateLayoutOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("layoutSublayersOfLayer:"))
-}
-
+// Override to customize layout of sublayers whenever the layer needs redrawing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097260-layoutsublayersoflayer?language=objc
 func (l_ LayoutManagerWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), objc.Ptr(layer))
 }
 
-func (l_ LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("preferredSizeOfLayer:"))
+func (l_ LayoutManagerWrapper) HasInvalidateLayoutOfLayer() bool {
+	return l_.RespondsToSelector(objc.Sel("invalidateLayoutOfLayer:"))
 }
 
+// Invalidates the layout of a layer so it knows to refresh its content on the next frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097258-invalidatelayoutoflayer?language=objc
+func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
+	objc.Call[objc.Void](l_, objc.Sel("invalidateLayoutOfLayer:"), objc.Ptr(layer))
+}
+
+func (l_ LayoutManagerWrapper) HasPreferredSizeOfLayer() bool {
+	return l_.RespondsToSelector(objc.Sel("preferredSizeOfLayer:"))
+}
+
+// Override to customize layer size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097256-preferredsizeoflayer?language=objc
 func (l_ LayoutManagerWrapper) PreferredSizeOfLayer(layer ILayer) coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("preferredSizeOfLayer:"), objc.ExtractPtr(layer))
+	rv := objc.Call[coregraphics.Size](l_, objc.Sel("preferredSizeOfLayer:"), objc.Ptr(layer))
 	return rv
 }

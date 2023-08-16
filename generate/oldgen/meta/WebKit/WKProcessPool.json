@@ -1,6 +1,0 @@
-{
-    "kind": "class",
-    "name": "WKProcessPool",
-    "module": "WebKit",
-    "parent": "objectivec.NSObject *"
-}

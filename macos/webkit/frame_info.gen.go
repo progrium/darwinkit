@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -8,32 +9,36 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [FrameInfo] class.
 var FrameInfoClass = _FrameInfoClass{objc.GetClass("WKFrameInfo")}
 
 type _FrameInfoClass struct {
 	objc.Class
 }
 
+// An interface definition for the [FrameInfo] class.
 type IFrameInfo interface {
 	objc.IObject
-	IsMainFrame() bool
 	Request() foundation.URLRequest
+	IsMainFrame() bool
 	SecurityOrigin() SecurityOrigin
-	WebView() WebView
 }
 
+// An object that contains information about a frame on a webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo?language=objc
 type FrameInfo struct {
 	objc.Object
 }
 
-func MakeFrameInfo(ptr unsafe.Pointer) FrameInfo {
+func FrameInfoFrom(ptr unsafe.Pointer) FrameInfo {
 	return FrameInfo{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (fc _FrameInfoClass) Alloc() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](fc, objc.GetSelector("alloc"))
+	rv := objc.Call[FrameInfo](fc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -42,7 +47,7 @@ func FrameInfo_Alloc() FrameInfo {
 }
 
 func (fc _FrameInfoClass) New() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](fc, objc.GetSelector("new"))
+	rv := objc.Call[FrameInfo](fc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -51,35 +56,31 @@ func NewFrameInfo() FrameInfo {
 	return FrameInfoClass.New()
 }
 
-func FrameInfo_New() FrameInfo {
-	return FrameInfoClass.New()
-}
-
 func (f_ FrameInfo) Init() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](f_, objc.GetSelector("init"))
+	rv := objc.Call[FrameInfo](f_, objc.Sel("init"))
 	return rv
 }
 
-func FrameInfo_Init() FrameInfo {
-	return FrameInfoClass.Alloc().Init()
-}
-
-func (f_ FrameInfo) IsMainFrame() bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("isMainFrame"))
-	return rv
-}
-
+// The frame’s current request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503091-request?language=objc
 func (f_ FrameInfo) Request() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](f_, objc.GetSelector("request"))
+	rv := objc.Call[foundation.URLRequest](f_, objc.Sel("request"))
 	return rv
 }
 
+// A Boolean value indicating whether the frame is the web site's main frame or a subframe. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503096-mainframe?language=objc
+func (f_ FrameInfo) IsMainFrame() bool {
+	rv := objc.Call[bool](f_, objc.Sel("isMainFrame"))
+	return rv
+}
+
+// The frame’s security origin. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkframeinfo/1503089-securityorigin?language=objc
 func (f_ FrameInfo) SecurityOrigin() SecurityOrigin {
-	rv := objc.CallMethod[SecurityOrigin](f_, objc.GetSelector("securityOrigin"))
-	return rv
-}
-
-func (f_ FrameInfo) WebView() WebView {
-	rv := objc.CallMethod[WebView](f_, objc.GetSelector("webView"))
+	rv := objc.Call[SecurityOrigin](f_, objc.Sel("securityOrigin"))
 	return rv
 }

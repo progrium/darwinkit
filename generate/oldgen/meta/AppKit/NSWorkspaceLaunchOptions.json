@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSWorkspaceLaunchOptions",
-    "module": "AppKit",
-    "target_type": "NSUInteger"
-}

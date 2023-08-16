@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,12 +8,14 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [MenuToolbarItem] class.
 var MenuToolbarItemClass = _MenuToolbarItemClass{objc.GetClass("NSMenuToolbarItem")}
 
 type _MenuToolbarItemClass struct {
 	objc.Class
 }
 
+// An interface definition for the [MenuToolbarItem] class.
 type IMenuToolbarItem interface {
 	IToolbarItem
 	ShowsIndicator() bool
@@ -21,27 +24,21 @@ type IMenuToolbarItem interface {
 	SetMenu(value IMenu)
 }
 
+// A control that presents a menu in a window’s toolbar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem?language=objc
 type MenuToolbarItem struct {
 	ToolbarItem
 }
 
-func MakeMenuToolbarItem(ptr unsafe.Pointer) MenuToolbarItem {
+func MenuToolbarItemFrom(ptr unsafe.Pointer) MenuToolbarItem {
 	return MenuToolbarItem{
-		ToolbarItem: MakeToolbarItem(ptr),
+		ToolbarItem: ToolbarItemFrom(ptr),
 	}
 }
 
-func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](m_, objc.GetSelector("initWithItemIdentifier:"), itemIdentifier)
-	return rv
-}
-
-func MenuToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
-	return MenuToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
-}
-
 func (mc _MenuToolbarItemClass) Alloc() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](mc, objc.GetSelector("alloc"))
+	rv := objc.Call[MenuToolbarItem](mc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -50,7 +47,7 @@ func MenuToolbarItem_Alloc() MenuToolbarItem {
 }
 
 func (mc _MenuToolbarItemClass) New() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](mc, objc.GetSelector("new"))
+	rv := objc.Call[MenuToolbarItem](mc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,33 +56,49 @@ func NewMenuToolbarItem() MenuToolbarItem {
 	return MenuToolbarItemClass.New()
 }
 
-func MenuToolbarItem_New() MenuToolbarItem {
-	return MenuToolbarItemClass.New()
-}
-
 func (m_ MenuToolbarItem) Init() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](m_, objc.GetSelector("init"))
+	rv := objc.Call[MenuToolbarItem](m_, objc.Sel("init"))
 	return rv
 }
 
-func MenuToolbarItem_Init() MenuToolbarItem {
-	return MenuToolbarItemClass.Alloc().Init()
+func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
+	rv := objc.Call[MenuToolbarItem](m_, objc.Sel("initWithItemIdentifier:"), itemIdentifier)
+	return rv
 }
 
+// Creates a toolbar item with the specified identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
+func MenuToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
+	return MenuToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+}
+
+// A Boolean value that determines whether the toolbar item displays an indicator of additional functionality. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237192-showsindicator?language=objc
 func (m_ MenuToolbarItem) ShowsIndicator() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("showsIndicator"))
+	rv := objc.Call[bool](m_, objc.Sel("showsIndicator"))
 	return rv
 }
 
+// A Boolean value that determines whether the toolbar item displays an indicator of additional functionality. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237192-showsindicator?language=objc
 func (m_ MenuToolbarItem) SetShowsIndicator(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setShowsIndicator:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setShowsIndicator:"), value)
 }
 
+// The menu presented from the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
 func (m_ MenuToolbarItem) Menu() Menu {
-	rv := objc.CallMethod[Menu](m_, objc.GetSelector("menu"))
+	rv := objc.Call[Menu](m_, objc.Sel("menu"))
 	return rv
 }
 
+// The menu presented from the toolbar item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
 func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), objc.Ptr(value))
 }

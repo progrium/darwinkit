@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package quartzcore
 
 import (
@@ -7,52 +8,39 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [BasicAnimation] class.
 var BasicAnimationClass = _BasicAnimationClass{objc.GetClass("CABasicAnimation")}
 
 type _BasicAnimationClass struct {
 	objc.Class
 }
 
+// An interface definition for the [BasicAnimation] class.
 type IBasicAnimation interface {
 	IPropertyAnimation
+	ByValue() objc.Object
+	SetByValue(value objc.IObject)
 	FromValue() objc.Object
 	SetFromValue(value objc.IObject)
 	ToValue() objc.Object
 	SetToValue(value objc.IObject)
-	ByValue() objc.Object
-	SetByValue(value objc.IObject)
 }
 
+// An object that provides basic, single-keyframe animation capabilities for a layer property. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation?language=objc
 type BasicAnimation struct {
 	PropertyAnimation
 }
 
-func MakeBasicAnimation(ptr unsafe.Pointer) BasicAnimation {
+func BasicAnimationFrom(ptr unsafe.Pointer) BasicAnimation {
 	return BasicAnimation{
-		PropertyAnimation: MakePropertyAnimation(ptr),
+		PropertyAnimation: PropertyAnimationFrom(ptr),
 	}
 }
 
-func (bc _BasicAnimationClass) AnimationWithKeyPath(path string) BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("animationWithKeyPath:"), path)
-	return rv
-}
-
-func BasicAnimation_AnimationWithKeyPath(path string) BasicAnimation {
-	return BasicAnimationClass.AnimationWithKeyPath(path)
-}
-
-func (bc _BasicAnimationClass) Animation() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("animation"))
-	return rv
-}
-
-func BasicAnimation_Animation() BasicAnimation {
-	return BasicAnimationClass.Animation()
-}
-
 func (bc _BasicAnimationClass) Alloc() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("alloc"))
+	rv := objc.Call[BasicAnimation](bc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -61,7 +49,7 @@ func BasicAnimation_Alloc() BasicAnimation {
 }
 
 func (bc _BasicAnimationClass) New() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("new"))
+	rv := objc.Call[BasicAnimation](bc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -70,42 +58,76 @@ func NewBasicAnimation() BasicAnimation {
 	return BasicAnimationClass.New()
 }
 
-func BasicAnimation_New() BasicAnimation {
-	return BasicAnimationClass.New()
-}
-
 func (b_ BasicAnimation) Init() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](b_, objc.GetSelector("init"))
+	rv := objc.Call[BasicAnimation](b_, objc.Sel("init"))
 	return rv
 }
 
-func BasicAnimation_Init() BasicAnimation {
-	return BasicAnimationClass.Alloc().Init()
-}
-
-func (b_ BasicAnimation) FromValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("fromValue"))
+func (bc _BasicAnimationClass) AnimationWithKeyPath(path string) BasicAnimation {
+	rv := objc.Call[BasicAnimation](bc, objc.Sel("animationWithKeyPath:"), path)
 	return rv
 }
 
-func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFromValue:"), objc.ExtractPtr(value))
+// Creates and returns an CAPropertyAnimation instance for the specified key path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412534-animationwithkeypath?language=objc
+func BasicAnimation_AnimationWithKeyPath(path string) BasicAnimation {
+	return BasicAnimationClass.AnimationWithKeyPath(path)
 }
 
-func (b_ BasicAnimation) ToValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("toValue"))
+func (bc _BasicAnimationClass) Animation() BasicAnimation {
+	rv := objc.Call[BasicAnimation](bc, objc.Sel("animation"))
 	return rv
 }
 
-func (b_ BasicAnimation) SetToValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setToValue:"), objc.ExtractPtr(value))
+// Creates and returns a new CAAnimation instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412479-animation?language=objc
+func BasicAnimation_Animation() BasicAnimation {
+	return BasicAnimationClass.Animation()
 }
 
+// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
 func (b_ BasicAnimation) ByValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("byValue"))
+	rv := objc.Call[objc.Object](b_, objc.Sel("byValue"))
 	return rv
 }
 
+// Defines the value the receiver uses to perform relative interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412445-byvalue?language=objc
 func (b_ BasicAnimation) SetByValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setByValue:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setByValue:"), value)
+}
+
+// Defines the value the receiver uses to start interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412519-fromvalue?language=objc
+func (b_ BasicAnimation) FromValue() objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("fromValue"))
+	return rv
+}
+
+// Defines the value the receiver uses to start interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412519-fromvalue?language=objc
+func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
+	objc.Call[objc.Void](b_, objc.Sel("setFromValue:"), value)
+}
+
+// Defines the value the receiver uses to end interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
+func (b_ BasicAnimation) ToValue() objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("toValue"))
+	return rv
+}
+
+// Defines the value the receiver uses to end interpolation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/cabasicanimation/1412523-tovalue?language=objc
+func (b_ BasicAnimation) SetToValue(value objc.IObject) {
+	objc.Call[objc.Void](b_, objc.Sel("setToValue:"), value)
 }

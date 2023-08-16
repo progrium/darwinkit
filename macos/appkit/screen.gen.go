@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,51 +9,54 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Screen] class.
 var ScreenClass = _ScreenClass{objc.GetClass("NSScreen")}
 
 type _ScreenClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Screen] class.
 type IScreen interface {
 	objc.IObject
-	CanRepresentDisplayGamut(displayGamut DisplayGamut) bool
-	BackingAlignedRectOptions(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect
 	ConvertRectFromBacking(rect foundation.Rect) foundation.Rect
 	ConvertRectToBacking(rect foundation.Rect) foundation.Rect
+	CanRepresentDisplayGamut(displayGamut DisplayGamut) bool
+	BackingAlignedRectOptions(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect
+	MinimumRefreshInterval() foundation.TimeInterval
+	MaximumExtendedDynamicRangeColorComponentValue() float64
+	VisibleFrame() foundation.Rect
+	DisplayUpdateGranularity() foundation.TimeInterval
+	MaximumRefreshInterval() foundation.TimeInterval
+	LocalizedName() string
+	MaximumPotentialExtendedDynamicRangeColorComponentValue() float64
+	ColorSpace() ColorSpace
+	SafeAreaInsets() foundation.EdgeInsets
+	MaximumReferenceExtendedDynamicRangeColorComponentValue() float64
+	LastDisplayUpdateTimestamp() foundation.TimeInterval
+	DeviceDescription() map[DeviceDescriptionKey]objc.Object
 	Depth() WindowDepth
+	BackingScaleFactor() float64
 	Frame() foundation.Rect
 	SupportedWindowDepths() *WindowDepth
-	DeviceDescription() map[DeviceDescriptionKey]objc.Object
-	ColorSpace() ColorSpace
-	LocalizedName() string
-	BackingScaleFactor() float64
-	VisibleFrame() foundation.Rect
-	SafeAreaInsets() foundation.EdgeInsets
-	MaximumPotentialExtendedDynamicRangeColorComponentValue() float64
-	MaximumExtendedDynamicRangeColorComponentValue() float64
-	MaximumReferenceExtendedDynamicRangeColorComponentValue() float64
 	MaximumFramesPerSecond() int
-	MinimumRefreshInterval() foundation.TimeInterval
-	MaximumRefreshInterval() foundation.TimeInterval
-	DisplayUpdateGranularity() foundation.TimeInterval
-	LastDisplayUpdateTimestamp() foundation.TimeInterval
-	AuxiliaryTopLeftArea() foundation.Rect
-	AuxiliaryTopRightArea() foundation.Rect
 }
 
+// An object that describes the attributes of a computer’s monitor or screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen?language=objc
 type Screen struct {
 	objc.Object
 }
 
-func MakeScreen(ptr unsafe.Pointer) Screen {
+func ScreenFrom(ptr unsafe.Pointer) Screen {
 	return Screen{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (sc _ScreenClass) Alloc() Screen {
-	rv := objc.CallMethod[Screen](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[Screen](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -61,7 +65,7 @@ func Screen_Alloc() Screen {
 }
 
 func (sc _ScreenClass) New() Screen {
-	rv := objc.CallMethod[Screen](sc, objc.GetSelector("new"))
+	rv := objc.Call[Screen](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -70,166 +74,235 @@ func NewScreen() Screen {
 	return ScreenClass.New()
 }
 
-func Screen_New() Screen {
-	return ScreenClass.New()
-}
-
 func (s_ Screen) Init() Screen {
-	rv := objc.CallMethod[Screen](s_, objc.GetSelector("init"))
+	rv := objc.Call[Screen](s_, objc.Sel("init"))
 	return rv
 }
 
-func Screen_Init() Screen {
-	return ScreenClass.Alloc().Init()
-}
-
-func (s_ Screen) CanRepresentDisplayGamut(displayGamut DisplayGamut) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("canRepresentDisplayGamut:"), displayGamut)
-	return rv
-}
-
-func (s_ Screen) BackingAlignedRectOptions(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("backingAlignedRect:options:"), rect, options)
-	return rv
-}
-
+// Converts the rectangle from the device pixel aligned coordinates system of a screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388364-convertrectfrombacking?language=objc
 func (s_ Screen) ConvertRectFromBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("convertRectFromBacking:"), rect)
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("convertRectFromBacking:"), rect)
 	return rv
 }
 
+// Converts the rectangle to the device pixel aligned coordinates system of a screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388389-convertrecttobacking?language=objc
 func (s_ Screen) ConvertRectToBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("convertRectToBacking:"), rect)
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("convertRectToBacking:"), rect)
 	return rv
 }
 
-func (sc _ScreenClass) MainScreen() Screen {
-	rv := objc.CallMethod[Screen](sc, objc.GetSelector("mainScreen"))
+// A Boolean value indicating whether the color space of the screen is capable of representing the specified display gamut. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/2138325-canrepresentdisplaygamut?language=objc
+func (s_ Screen) CanRepresentDisplayGamut(displayGamut DisplayGamut) bool {
+	rv := objc.Call[bool](s_, objc.Sel("canRepresentDisplayGamut:"), displayGamut)
 	return rv
 }
 
-func Screen_MainScreen() Screen {
-	return ScreenClass.MainScreen()
+// Converts a rectangle in global screen coordinates to a pixel aligned rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388381-backingalignedrect?language=objc
+func (s_ Screen) BackingAlignedRectOptions(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("backingAlignedRect:options:"), rect, options)
+	return rv
 }
 
+// The shortest refresh interval that the screen supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3824747-minimumrefreshinterval?language=objc
+func (s_ Screen) MinimumRefreshInterval() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](s_, objc.Sel("minimumRefreshInterval"))
+	return rv
+}
+
+// The current maximum color component value for the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388362-maximumextendeddynamicrangecolor?language=objc
+func (s_ Screen) MaximumExtendedDynamicRangeColorComponentValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("maximumExtendedDynamicRangeColorComponentValue"))
+	return rv
+}
+
+// The current location and dimensions of the visible screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388369-visibleframe?language=objc
+func (s_ Screen) VisibleFrame() foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("visibleFrame"))
+	return rv
+}
+
+// The number of seconds between the screen’s supported update rates, for screens that support fixed update rates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3824743-displayupdategranularity?language=objc
+func (s_ Screen) DisplayUpdateGranularity() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](s_, objc.Sel("displayUpdateGranularity"))
+	return rv
+}
+
+// The largest refresh interval that the screen supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3824746-maximumrefreshinterval?language=objc
+func (s_ Screen) MaximumRefreshInterval() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](s_, objc.Sel("maximumRefreshInterval"))
+	return rv
+}
+
+// The localized name of the display. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3228043-localizedname?language=objc
+func (s_ Screen) LocalizedName() string {
+	rv := objc.Call[string](s_, objc.Sel("localizedName"))
+	return rv
+}
+
+// Returns a screen object representing the screen that can best represent color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388374-deepestscreen?language=objc
 func (sc _ScreenClass) DeepestScreen() Screen {
-	rv := objc.CallMethod[Screen](sc, objc.GetSelector("deepestScreen"))
+	rv := objc.Call[Screen](sc, objc.Sel("deepestScreen"))
 	return rv
 }
 
+// Returns a screen object representing the screen that can best represent color. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388374-deepestscreen?language=objc
 func Screen_DeepestScreen() Screen {
 	return ScreenClass.DeepestScreen()
 }
 
-func (sc _ScreenClass) Screens() []Screen {
-	rv := objc.CallMethod[[]Screen](sc, objc.GetSelector("screens"))
+// The maximum possible color component value for the screen when it's in extended dynamic range (EDR) mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3180381-maximumpotentialextendeddynamicr?language=objc
+func (s_ Screen) MaximumPotentialExtendedDynamicRangeColorComponentValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("maximumPotentialExtendedDynamicRangeColorComponentValue"))
 	return rv
 }
 
+// The color space of the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388383-colorspace?language=objc
+func (s_ Screen) ColorSpace() ColorSpace {
+	rv := objc.Call[ColorSpace](s_, objc.Sel("colorSpace"))
+	return rv
+}
+
+// The distances from the screen’s edges at which content isn’t obscured. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3882821-safeareainsets?language=objc
+func (s_ Screen) SafeAreaInsets() foundation.EdgeInsets {
+	rv := objc.Call[foundation.EdgeInsets](s_, objc.Sel("safeAreaInsets"))
+	return rv
+}
+
+// The current maximum color component value for reference rendering to the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3180382-maximumreferenceextendeddynamicr?language=objc
+func (s_ Screen) MaximumReferenceExtendedDynamicRangeColorComponentValue() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("maximumReferenceExtendedDynamicRangeColorComponentValue"))
+	return rv
+}
+
+// Returns an array of screen objects representing all of the screens available on the system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388393-screens?language=objc
+func (sc _ScreenClass) Screens() []Screen {
+	rv := objc.Call[[]Screen](sc, objc.Sel("screens"))
+	return rv
+}
+
+// Returns an array of screen objects representing all of the screens available on the system. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388393-screens?language=objc
 func Screen_Screens() []Screen {
 	return ScreenClass.Screens()
 }
 
-func (s_ Screen) Depth() WindowDepth {
-	rv := objc.CallMethod[WindowDepth](s_, objc.GetSelector("depth"))
+// The time of the last framebuffer update, expressed as the number of seconds since system startup. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3824744-lastdisplayupdatetimestamp?language=objc
+func (s_ Screen) LastDisplayUpdateTimestamp() foundation.TimeInterval {
+	rv := objc.Call[foundation.TimeInterval](s_, objc.Sel("lastDisplayUpdateTimestamp"))
 	return rv
 }
 
-func (s_ Screen) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("frame"))
-	return rv
-}
-
-func (s_ Screen) SupportedWindowDepths() *WindowDepth {
-	rv := objc.CallMethod[*WindowDepth](s_, objc.GetSelector("supportedWindowDepths"))
-	return rv
-}
-
+// The device dictionary for the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388360-devicedescription?language=objc
 func (s_ Screen) DeviceDescription() map[DeviceDescriptionKey]objc.Object {
-	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](s_, objc.GetSelector("deviceDescription"))
+	rv := objc.Call[map[DeviceDescriptionKey]objc.Object](s_, objc.Sel("deviceDescription"))
 	return rv
 }
 
-func (s_ Screen) ColorSpace() ColorSpace {
-	rv := objc.CallMethod[ColorSpace](s_, objc.GetSelector("colorSpace"))
-	return rv
-}
-
-func (s_ Screen) LocalizedName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("localizedName"))
-	return rv
-}
-
+// Returns a Boolean value indicating whether each screen can have its own set of spaces. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388365-screenshaveseparatespaces?language=objc
 func (sc _ScreenClass) ScreensHaveSeparateSpaces() bool {
-	rv := objc.CallMethod[bool](sc, objc.GetSelector("screensHaveSeparateSpaces"))
+	rv := objc.Call[bool](sc, objc.Sel("screensHaveSeparateSpaces"))
 	return rv
 }
 
+// Returns a Boolean value indicating whether each screen can have its own set of spaces. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388365-screenshaveseparatespaces?language=objc
 func Screen_ScreensHaveSeparateSpaces() bool {
 	return ScreenClass.ScreensHaveSeparateSpaces()
 }
 
+// The current bit depth and colorspace information of the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388373-depth?language=objc
+func (s_ Screen) Depth() WindowDepth {
+	rv := objc.Call[WindowDepth](s_, objc.Sel("depth"))
+	return rv
+}
+
+// The backing store pixel scale factor for the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388385-backingscalefactor?language=objc
 func (s_ Screen) BackingScaleFactor() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("backingScaleFactor"))
+	rv := objc.Call[float64](s_, objc.Sel("backingScaleFactor"))
 	return rv
 }
 
-func (s_ Screen) VisibleFrame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("visibleFrame"))
+// The dimensions and location of the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388387-frame?language=objc
+func (s_ Screen) Frame() foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("frame"))
 	return rv
 }
 
-func (s_ Screen) SafeAreaInsets() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](s_, objc.GetSelector("safeAreaInsets"))
+// Returns the screen object containing the window with the keyboard focus. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388371-mainscreen?language=objc
+func (sc _ScreenClass) MainScreen() Screen {
+	rv := objc.Call[Screen](sc, objc.Sel("mainScreen"))
 	return rv
 }
 
-func (s_ Screen) MaximumPotentialExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumPotentialExtendedDynamicRangeColorComponentValue"))
+// Returns the screen object containing the window with the keyboard focus. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388371-mainscreen?language=objc
+func Screen_MainScreen() Screen {
+	return ScreenClass.MainScreen()
+}
+
+// A zero-terminated array of the window depths supported by the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/1388391-supportedwindowdepths?language=objc
+func (s_ Screen) SupportedWindowDepths() *WindowDepth {
+	rv := objc.Call[*WindowDepth](s_, objc.Sel("supportedWindowDepths"))
 	return rv
 }
 
-func (s_ Screen) MaximumExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumExtendedDynamicRangeColorComponentValue"))
-	return rv
-}
-
-func (s_ Screen) MaximumReferenceExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumReferenceExtendedDynamicRangeColorComponentValue"))
-	return rv
-}
-
+// The maximum number of frames per second that the screen supports. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscreen/3824745-maximumframespersecond?language=objc
 func (s_ Screen) MaximumFramesPerSecond() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("maximumFramesPerSecond"))
-	return rv
-}
-
-func (s_ Screen) MinimumRefreshInterval() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("minimumRefreshInterval"))
-	return rv
-}
-
-func (s_ Screen) MaximumRefreshInterval() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("maximumRefreshInterval"))
-	return rv
-}
-
-func (s_ Screen) DisplayUpdateGranularity() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("displayUpdateGranularity"))
-	return rv
-}
-
-func (s_ Screen) LastDisplayUpdateTimestamp() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("lastDisplayUpdateTimestamp"))
-	return rv
-}
-
-func (s_ Screen) AuxiliaryTopLeftArea() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("auxiliaryTopLeftArea"))
-	return rv
-}
-
-func (s_ Screen) AuxiliaryTopRightArea() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("auxiliaryTopRightArea"))
+	rv := objc.Call[int](s_, objc.Sel("maximumFramesPerSecond"))
 	return rv
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,41 +9,48 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Storyboard] class.
 var StoryboardClass = _StoryboardClass{objc.GetClass("NSStoryboard")}
 
 type _StoryboardClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Storyboard] class.
 type IStoryboard interface {
 	objc.IObject
+	InstantiateControllerWithIdentifierCreator(identifier StoryboardSceneIdentifier, block StoryboardControllerCreator) objc.Object
 	InstantiateInitialController() objc.Object
-	InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object
-	InstantiateControllerWithIdentifierCreator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.Object) objc.Object
-	InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.Object) objc.Object
+	InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object
 }
 
+// An encapsulation of the design-time view controller and window controller graph represented in an Interface Builder storyboard resource file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard?language=objc
 type Storyboard struct {
 	objc.Object
 }
 
-func MakeStoryboard(ptr unsafe.Pointer) Storyboard {
+func StoryboardFrom(ptr unsafe.Pointer) Storyboard {
 	return Storyboard{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (sc _StoryboardClass) StoryboardWithNameBundle(name StoryboardName, storyboardBundleOrNil foundation.IBundle) Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("storyboardWithName:bundle:"), name, objc.ExtractPtr(storyboardBundleOrNil))
+	rv := objc.Call[Storyboard](sc, objc.Sel("storyboardWithName:bundle:"), name, objc.Ptr(storyboardBundleOrNil))
 	return rv
 }
 
+// Creates a storyboard based on the named storyboard file in the specified bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/1426547-storyboardwithname?language=objc
 func Storyboard_StoryboardWithNameBundle(name StoryboardName, storyboardBundleOrNil foundation.IBundle) Storyboard {
 	return StoryboardClass.StoryboardWithNameBundle(name, storyboardBundleOrNil)
 }
 
 func (sc _StoryboardClass) Alloc() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[Storyboard](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -51,7 +59,7 @@ func Storyboard_Alloc() Storyboard {
 }
 
 func (sc _StoryboardClass) New() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("new"))
+	rv := objc.Call[Storyboard](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -60,44 +68,46 @@ func NewStoryboard() Storyboard {
 	return StoryboardClass.New()
 }
 
-func Storyboard_New() Storyboard {
-	return StoryboardClass.New()
-}
-
 func (s_ Storyboard) Init() Storyboard {
-	rv := objc.CallMethod[Storyboard](s_, objc.GetSelector("init"))
+	rv := objc.Call[Storyboard](s_, objc.Sel("init"))
 	return rv
 }
 
-func Storyboard_Init() Storyboard {
-	return StoryboardClass.Alloc().Init()
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/3174922-instantiatecontrollerwithidentif?language=objc
+func (s_ Storyboard) InstantiateControllerWithIdentifierCreator(identifier StoryboardSceneIdentifier, block StoryboardControllerCreator) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateControllerWithIdentifier:creator:"), identifier, block)
+	return rv
 }
 
+// Creates the initial view controller or window controller from a storyboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/1426545-instantiateinitialcontroller?language=objc
 func (s_ Storyboard) InstantiateInitialController() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateInitialController"))
+	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateInitialController"))
 	return rv
 }
 
-func (s_ Storyboard) InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateControllerWithIdentifier:"), identifier)
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/3174923-instantiateinitialcontrollerwith?language=objc
+func (s_ Storyboard) InstantiateInitialControllerWithCreator(block StoryboardControllerCreator) objc.Object {
+	rv := objc.Call[objc.Object](s_, objc.Sel("instantiateInitialControllerWithCreator:"), block)
 	return rv
 }
 
-func (s_ Storyboard) InstantiateControllerWithIdentifierCreator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.Object) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateControllerWithIdentifier:creator:"), identifier, block)
-	return rv
-}
-
-func (s_ Storyboard) InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.Object) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateInitialControllerWithCreator:"), block)
-	return rv
-}
-
+// The app's main storyboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/2881236-mainstoryboard?language=objc
 func (sc _StoryboardClass) MainStoryboard() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("mainStoryboard"))
+	rv := objc.Call[Storyboard](sc, objc.Sel("mainStoryboard"))
 	return rv
 }
 
+// The app's main storyboard. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboard/2881236-mainstoryboard?language=objc
 func Storyboard_MainStoryboard() Storyboard {
 	return StoryboardClass.MainStoryboard()
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,79 +9,57 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [PathCell] class.
 var PathCellClass = _PathCellClass{objc.GetClass("NSPathCell")}
 
 type _PathCellClass struct {
 	objc.Class
 }
 
+// An interface definition for the [PathCell] class.
 type IPathCell interface {
 	IActionCell
 	MouseEnteredWithFrameInView(event IEvent, frame foundation.Rect, view IView)
-	MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView)
-	RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect
 	PathComponentCellAtPointWithFrameInView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell
-	AllowedTypes() []string
-	SetAllowedTypes(value []string)
-	PathStyle() PathStyle
-	SetPathStyle(value PathStyle)
-	PlaceholderAttributedString() foundation.AttributedString
-	SetPlaceholderAttributedString(value foundation.IAttributedString)
-	PlaceholderString() string
-	SetPlaceholderString(value string)
-	BackgroundColor() Color
-	SetBackgroundColor(value IColor)
-	ClickedPathComponentCell() PathComponentCell
-	PathComponentCells() []PathComponentCell
-	SetPathComponentCells(value []IPathComponentCell)
+	RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect
+	MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView)
 	DoubleAction() objc.Selector
 	SetDoubleAction(value objc.Selector)
+	Delegate() PathCellDelegateWrapper
+	SetDelegate(value PPathCellDelegate)
+	SetDelegateObject(valueObject objc.IObject)
+	PlaceholderAttributedString() foundation.AttributedString
+	SetPlaceholderAttributedString(value foundation.IAttributedString)
+	BackgroundColor() Color
+	SetBackgroundColor(value IColor)
+	PathComponentCells() []PathComponentCell
+	SetPathComponentCells(value []IPathComponentCell)
+	PathStyle() PathStyle
+	SetPathStyle(value PathStyle)
+	AllowedTypes() []string
+	SetAllowedTypes(value []string)
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
-	Delegate() PathCellDelegateWrapper
-	SetDelegate(value IPathCellDelegate)
-	SetDelegate0(value objc.IObject)
+	PlaceholderString() string
+	SetPlaceholderString(value string)
+	ClickedPathComponentCell() PathComponentCell
 }
 
+// The user interface of a path control object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell?language=objc
 type PathCell struct {
 	ActionCell
 }
 
-func MakePathCell(ptr unsafe.Pointer) PathCell {
+func PathCellFrom(ptr unsafe.Pointer) PathCell {
 	return PathCell{
-		ActionCell: MakeActionCell(ptr),
+		ActionCell: ActionCellFrom(ptr),
 	}
 }
 
-func (p_ PathCell) InitImageCell(image IImage) PathCell {
-	rv := objc.CallMethod[PathCell](p_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
-	return rv
-}
-
-func PathCell_InitImageCell(image IImage) PathCell {
-	return PathCellClass.Alloc().InitImageCell(image)
-}
-
-func (p_ PathCell) InitTextCell(string_ string) PathCell {
-	rv := objc.CallMethod[PathCell](p_, objc.GetSelector("initTextCell:"), string_)
-	return rv
-}
-
-func PathCell_InitTextCell(string_ string) PathCell {
-	return PathCellClass.Alloc().InitTextCell(string_)
-}
-
-func (p_ PathCell) Init() PathCell {
-	rv := objc.CallMethod[PathCell](p_, objc.GetSelector("init"))
-	return rv
-}
-
-func PathCell_Init() PathCell {
-	return PathCellClass.Alloc().Init()
-}
-
 func (pc _PathCellClass) Alloc() PathCell {
-	rv := objc.CallMethod[PathCell](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[PathCell](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -89,7 +68,7 @@ func PathCell_Alloc() PathCell {
 }
 
 func (pc _PathCellClass) New() PathCell {
-	rv := objc.CallMethod[PathCell](pc, objc.GetSelector("new"))
+	rv := objc.Call[PathCell](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -98,125 +77,228 @@ func NewPathCell() PathCell {
 	return PathCellClass.New()
 }
 
-func PathCell_New() PathCell {
-	return PathCellClass.New()
+func (p_ PathCell) Init() PathCell {
+	rv := objc.Call[PathCell](p_, objc.Sel("init"))
+	return rv
 }
 
+func (p_ PathCell) InitImageCell(image IImage) PathCell {
+	rv := objc.Call[PathCell](p_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	return rv
+}
+
+// Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
+func PathCell_InitImageCell(image IImage) PathCell {
+	return PathCellClass.Alloc().InitImageCell(image)
+}
+
+func (p_ PathCell) InitTextCell(string_ string) PathCell {
+	rv := objc.Call[PathCell](p_, objc.Sel("initTextCell:"), string_)
+	return rv
+}
+
+// Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
+func PathCell_InitTextCell(string_ string) PathCell {
+	return PathCellClass.Alloc().InitTextCell(string_)
+}
+
+// Displays the cell component over which the mouse is hovering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1526407-mouseentered?language=objc
 func (p_ PathCell) MouseEnteredWithFrameInView(event IEvent, frame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseEntered:withFrame:inView:"), objc.ExtractPtr(event), frame, objc.ExtractPtr(view))
+	objc.Call[objc.Void](p_, objc.Sel("mouseEntered:withFrame:inView:"), objc.Ptr(event), frame, objc.Ptr(view))
 }
 
-func (p_ PathCell) MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseExited:withFrame:inView:"), objc.ExtractPtr(event), frame, objc.ExtractPtr(view))
-}
-
-func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("rectOfPathComponentCell:withFrame:inView:"), objc.ExtractPtr(cell), frame, objc.ExtractPtr(view))
-	return rv
-}
-
+// Returns the cell located at the given point within the given frame of the given view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1528185-pathcomponentcellatpoint?language=objc
 func (p_ PathCell) PathComponentCellAtPointWithFrameInView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("pathComponentCellAtPoint:withFrame:inView:"), point, frame, objc.ExtractPtr(view))
+	rv := objc.Call[PathComponentCell](p_, objc.Sel("pathComponentCellAtPoint:withFrame:inView:"), point, frame, objc.Ptr(view))
 	return rv
 }
 
-func (p_ PathCell) AllowedTypes() []string {
-	rv := objc.CallMethod[[]string](p_, objc.GetSelector("allowedTypes"))
+// Returns the current rectangle being displayed for a given path component cell, with respect to a given frame in a given view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1534143-rectofpathcomponentcell?language=objc
+func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("rectOfPathComponentCell:withFrame:inView:"), objc.Ptr(cell), frame, objc.Ptr(view))
 	return rv
 }
 
-func (p_ PathCell) SetAllowedTypes(value []string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAllowedTypes:"), value)
+// Hides the cell component over which the mouse is hovering. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525878-mouseexited?language=objc
+func (p_ PathCell) MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView) {
+	objc.Call[objc.Void](p_, objc.Sel("mouseExited:withFrame:inView:"), objc.Ptr(event), frame, objc.Ptr(view))
 }
 
-func (p_ PathCell) PathStyle() PathStyle {
-	rv := objc.CallMethod[PathStyle](p_, objc.GetSelector("pathStyle"))
+// Sets the receiver’s double-click action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
+func (p_ PathCell) DoubleAction() objc.Selector {
+	rv := objc.Call[objc.Selector](p_, objc.Sel("doubleAction"))
 	return rv
 }
 
-func (p_ PathCell) SetPathStyle(value PathStyle) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPathStyle:"), value)
+// Sets the receiver’s double-click action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532554-doubleaction?language=objc
+func (p_ PathCell) SetDoubleAction(value objc.Selector) {
+	objc.Call[objc.Void](p_, objc.Sel("setDoubleAction:"), value)
 }
 
+// Sets the receiver’s delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532834-delegate?language=objc
+func (p_ PathCell) Delegate() PathCellDelegateWrapper {
+	rv := objc.Call[PathCellDelegateWrapper](p_, objc.Sel("delegate"))
+	return rv
+}
+
+// Sets the receiver’s delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532834-delegate?language=objc
+func (p_ PathCell) SetDelegate(value PPathCellDelegate) {
+	po0 := objc.WrapAsProtocol("NSPathCellDelegate", value)
+	objc.SetAssociatedObject(p_, objc.AssociationKey("setDelegate"), po0, objc.ASSOCIATION_RETAIN)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), po0)
+}
+
+// Sets the receiver’s delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532834-delegate?language=objc
+func (p_ PathCell) SetDelegateObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+}
+
+// Sets the value of the placeholder attributed string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
 func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](p_, objc.GetSelector("placeholderAttributedString"))
+	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("placeholderAttributedString"))
 	return rv
 }
 
+// Sets the value of the placeholder attributed string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
 func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
 }
 
-func (p_ PathCell) PlaceholderString() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("placeholderString"))
-	return rv
-}
-
-func (p_ PathCell) SetPlaceholderString(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderString:"), value)
-}
-
+// Returns the current background color of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1527481-backgroundcolor?language=objc
 func (p_ PathCell) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](p_, objc.GetSelector("backgroundColor"))
+	rv := objc.Call[Color](p_, objc.Sel("backgroundColor"))
 	return rv
 }
 
+// Returns the current background color of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1527481-backgroundcolor?language=objc
 func (p_ PathCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
 }
 
-func (pc _PathCellClass) PathComponentCellClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](pc, objc.GetSelector("pathComponentCellClass"))
+// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
+func (p_ PathCell) PathComponentCells() []PathComponentCell {
+	rv := objc.Call[[]PathComponentCell](p_, objc.Sel("pathComponentCells"))
 	return rv
 }
 
+// Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1529433-pathcomponentcells?language=objc
+func (p_ PathCell) SetPathComponentCells(value []IPathComponentCell) {
+	objc.Call[objc.Void](p_, objc.Sel("setPathComponentCells:"), value)
+}
+
+// Sets the receiver’s path style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
+func (p_ PathCell) PathStyle() PathStyle {
+	rv := objc.Call[PathStyle](p_, objc.Sel("pathStyle"))
+	return rv
+}
+
+// Sets the receiver’s path style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524249-pathstyle?language=objc
+func (p_ PathCell) SetPathStyle(value PathStyle) {
+	objc.Call[objc.Void](p_, objc.Sel("setPathStyle:"), value)
+}
+
+// Sets the component types allowed in the path when the cell is editable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
+func (p_ PathCell) AllowedTypes() []string {
+	rv := objc.Call[[]string](p_, objc.Sel("allowedTypes"))
+	return rv
+}
+
+// Sets the component types allowed in the path when the cell is editable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524305-allowedtypes?language=objc
+func (p_ PathCell) SetAllowedTypes(value []string) {
+	objc.Call[objc.Void](p_, objc.Sel("setAllowedTypes:"), value)
+}
+
+// Returns the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
+func (p_ PathCell) URL() foundation.URL {
+	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
+	return rv
+}
+
+// Returns the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
+func (p_ PathCell) SetURL(value foundation.IURL) {
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+}
+
+// Returns the placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
+func (p_ PathCell) PlaceholderString() string {
+	rv := objc.Call[string](p_, objc.Sel("placeholderString"))
+	return rv
+}
+
+// Returns the placeholder string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1531136-placeholderstring?language=objc
+func (p_ PathCell) SetPlaceholderString(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderString:"), value)
+}
+
+// Sets the value of the path displayed by the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524894-clickedpathcomponentcell?language=objc
+func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
+	rv := objc.Call[PathComponentCell](p_, objc.Sel("clickedPathComponentCell"))
+	return rv
+}
+
+// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
+func (pc _PathCellClass) PathComponentCellClass() objc.Class {
+	rv := objc.Call[objc.Class](pc, objc.Sel("pathComponentCellClass"))
+	return rv
+}
+
+// Returns the class used to create pathComponentCell objects when automatically filling up the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1535369-pathcomponentcellclass?language=objc
 func PathCell_PathComponentCellClass() objc.Class {
 	return PathCellClass.PathComponentCellClass()
-}
-
-func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("clickedPathComponentCell"))
-	return rv
-}
-
-func (p_ PathCell) PathComponentCells() []PathComponentCell {
-	rv := objc.CallMethod[[]PathComponentCell](p_, objc.GetSelector("pathComponentCells"))
-	return rv
-}
-
-func (p_ PathCell) SetPathComponentCells(value []IPathComponentCell) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPathComponentCells:"), value)
-}
-
-func (p_ PathCell) DoubleAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](p_, objc.GetSelector("doubleAction"))
-	return rv
-}
-
-func (p_ PathCell) SetDoubleAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDoubleAction:"), value)
-}
-
-func (p_ PathCell) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](p_, objc.GetSelector("URL"))
-	return rv
-}
-
-func (p_ PathCell) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
-}
-
-func (p_ PathCell) Delegate() PathCellDelegateWrapper {
-	rv := objc.CallMethod[PathCellDelegateWrapper](p_, objc.GetSelector("delegate"))
-	return rv
-}
-
-func (p_ PathCell) SetDelegate(value IPathCellDelegate) {
-	po := objc.WrapAsProtocol("NSPathCellDelegate", value)
-	objc.SetAssociatedObject(p_, objc.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (p_ PathCell) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

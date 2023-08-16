@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,96 +8,74 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [CollectionLayoutGroup] class.
 var CollectionLayoutGroupClass = _CollectionLayoutGroupClass{objc.GetClass("NSCollectionLayoutGroup")}
 
 type _CollectionLayoutGroupClass struct {
 	objc.Class
 }
 
+// An interface definition for the [CollectionLayoutGroup] class.
 type ICollectionLayoutGroup interface {
 	ICollectionLayoutItem
 	VisualDescription() string
-	Subitems() []CollectionLayoutItem
 	SetSupplementaryItems(value []ICollectionLayoutSupplementaryItem)
+	Subitems() []CollectionLayoutItem
 	InterItemSpacing() CollectionLayoutSpacing
 	SetInterItemSpacing(value ICollectionLayoutSpacing)
 }
 
+// A container for a set of items that lays out the items along a path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup?language=objc
 type CollectionLayoutGroup struct {
 	CollectionLayoutItem
 }
 
-func MakeCollectionLayoutGroup(ptr unsafe.Pointer) CollectionLayoutGroup {
+func CollectionLayoutGroupFrom(ptr unsafe.Pointer) CollectionLayoutGroup {
 	return CollectionLayoutGroup{
-		CollectionLayoutItem: MakeCollectionLayoutItem(ptr),
+		CollectionLayoutItem: CollectionLayoutItemFrom(ptr),
 	}
 }
 
-func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitems:"), objc.ExtractPtr(layoutSize), subitems)
-	return rv
-}
-
-func CollectionLayoutGroup_HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.HorizontalGroupWithLayoutSizeSubitems(layoutSize, subitems)
-}
-
 func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitems:"), objc.ExtractPtr(layoutSize), subitems)
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("verticalGroupWithLayoutSize:subitems:"), objc.Ptr(layoutSize), subitems)
 	return rv
 }
 
+// Creates a group of the specified size, containing an array of items arranged in a vertical line. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213860-verticalgroupwithlayoutsize?language=objc
 func CollectionLayoutGroup_VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
 	return CollectionLayoutGroupClass.VerticalGroupWithLayoutSizeSubitems(layoutSize, subitems)
 }
 
-func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider func(layoutEnvironment CollectionLayoutEnvironmentWrapper) []CollectionLayoutGroupCustomItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("customGroupWithLayoutSize:itemProvider:"), objc.ExtractPtr(layoutSize), itemProvider)
+func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("horizontalGroupWithLayoutSize:subitems:"), objc.Ptr(layoutSize), subitems)
 	return rv
 }
 
-func CollectionLayoutGroup_CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider func(layoutEnvironment CollectionLayoutEnvironmentWrapper) []CollectionLayoutGroupCustomItem) CollectionLayoutGroup {
+// Creates a group of the specified size, containing an array of items arranged in a horizontal line. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213855-horizontalgroupwithlayoutsize?language=objc
+func CollectionLayoutGroup_HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
+	return CollectionLayoutGroupClass.HorizontalGroupWithLayoutSizeSubitems(layoutSize, subitems)
+}
+
+func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("customGroupWithLayoutSize:itemProvider:"), objc.Ptr(layoutSize), itemProvider)
+	return rv
+}
+
+// Creates a group of the specified size, with an item provider that creates a custom arrangement for those items. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213853-customgroupwithlayoutsize?language=objc
+func CollectionLayoutGroup_CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
 	return CollectionLayoutGroupClass.CustomGroupWithLayoutSizeItemProvider(layoutSize, itemProvider)
 }
 
-func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSizeSubitemCount(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitem:count:"), objc.ExtractPtr(layoutSize), objc.ExtractPtr(subitem), count)
-	return rv
-}
-
-func CollectionLayoutGroup_HorizontalGroupWithLayoutSizeSubitemCount(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.HorizontalGroupWithLayoutSizeSubitemCount(layoutSize, subitem, count)
-}
-
-func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSizeSubitemCount(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitem:count:"), objc.ExtractPtr(layoutSize), objc.ExtractPtr(subitem), count)
-	return rv
-}
-
-func CollectionLayoutGroup_VerticalGroupWithLayoutSizeSubitemCount(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.VerticalGroupWithLayoutSizeSubitemCount(layoutSize, subitem, count)
-}
-
-func (cc _CollectionLayoutGroupClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
-	return rv
-}
-
-func CollectionLayoutGroup_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.ItemWithLayoutSize(layoutSize)
-}
-
-func (cc _CollectionLayoutGroupClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
-	return rv
-}
-
-func CollectionLayoutGroup_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 func (cc _CollectionLayoutGroupClass) Alloc() CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -105,7 +84,7 @@ func CollectionLayoutGroup_Alloc() CollectionLayoutGroup {
 }
 
 func (cc _CollectionLayoutGroupClass) New() CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("new"))
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -114,38 +93,57 @@ func NewCollectionLayoutGroup() CollectionLayoutGroup {
 	return CollectionLayoutGroupClass.New()
 }
 
-func CollectionLayoutGroup_New() CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.New()
-}
-
 func (c_ CollectionLayoutGroup) Init() CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](c_, objc.GetSelector("init"))
+	rv := objc.Call[CollectionLayoutGroup](c_, objc.Sel("init"))
 	return rv
 }
 
-func CollectionLayoutGroup_Init() CollectionLayoutGroup {
-	return CollectionLayoutGroupClass.Alloc().Init()
+func (cc _CollectionLayoutGroupClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
+	return rv
 }
 
+// Creates an item of the specified size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213871-itemwithlayoutsize?language=objc
+func CollectionLayoutGroup_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
+	return CollectionLayoutGroupClass.ItemWithLayoutSize(layoutSize)
+}
+
+// Returns a string with an ASCII representation of the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199082-visualdescription?language=objc
 func (c_ CollectionLayoutGroup) VisualDescription() string {
-	rv := objc.CallMethod[string](c_, objc.GetSelector("visualDescription"))
+	rv := objc.Call[string](c_, objc.Sel("visualDescription"))
 	return rv
 }
 
-func (c_ CollectionLayoutGroup) Subitems() []CollectionLayoutItem {
-	rv := objc.CallMethod[[]CollectionLayoutItem](c_, objc.GetSelector("subitems"))
-	return rv
-}
-
+// An array of the supplementary items that are anchored to the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199079-supplementaryitems?language=objc
 func (c_ CollectionLayoutGroup) SetSupplementaryItems(value []ICollectionLayoutSupplementaryItem) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSupplementaryItems:"), value)
+	objc.Call[objc.Void](c_, objc.Sel("setSupplementaryItems:"), value)
 }
 
-func (c_ CollectionLayoutGroup) InterItemSpacing() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("interItemSpacing"))
+// An array of the items contained in the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3213857-subitems?language=objc
+func (c_ CollectionLayoutGroup) Subitems() []CollectionLayoutItem {
+	rv := objc.Call[[]CollectionLayoutItem](c_, objc.Sel("subitems"))
 	return rv
 }
 
+// The amount of space between the items in the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199078-interitemspacing?language=objc
+func (c_ CollectionLayoutGroup) InterItemSpacing() CollectionLayoutSpacing {
+	rv := objc.Call[CollectionLayoutSpacing](c_, objc.Sel("interItemSpacing"))
+	return rv
+}
+
+// The amount of space between the items in the group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199078-interitemspacing?language=objc
 func (c_ CollectionLayoutGroup) SetInterItemSpacing(value ICollectionLayoutSpacing) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInterItemSpacing:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInterItemSpacing:"), objc.Ptr(value))
 }

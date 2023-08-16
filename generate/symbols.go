@@ -5,11 +5,37 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"sort"
 	"strconv"
 	"strings"
 
 	"github.com/progrium/macdriver/generate/declparse"
+	"github.com/progrium/macdriver/generate/modules"
 )
+
+var blacklist = []string{
+	"CMPersistentTrackID",                      // type alias, enum overlap. causes infinite loop
+	"CMSubtitleFormatType",                     // type alias, enum overlap. causes infinite loop
+	"CMAttachmentMode",                         // type alias, enum overlap. causes infinite loop
+	"CMMetadataFormatType",                     // type alias, enum overlap. causes infinite loop
+	"CMMediaType",                              // type alias, enum overlap. causes infinite loop
+	"CMAudioCodecType",                         // type alias, enum overlap. causes infinite loop
+	"CMTimeCodeFormatType",                     // type alias, enum overlap. causes infinite loop
+	"CMMuxedStreamType",                        // type alias, enum overlap. causes infinite loop
+	"AUEventSampleTime",                        // type alias, enum overlap. causes infinite loop
+	"os_workgroup_t",                           // os module struct ref thing
+	"NSFileProviderItem",                       // type alias, protocol overlap
+	"NSItemProviderReading",                    // protocol with class methods
+	"NSSecureCoding",                           // protocol with class methods
+	"NSProxy",                                  // complicated
+	"NSDistantObject",                          // based on proxy
+	"NSProtocolChecker",                        // based on proxy
+	"AUInternalRenderBlock",                    // "not supported pointer to: AURenderEvent"
+	"CGDataProviderGetBytesAtPositionCallback", // uses a weird kernel type not sure how to handle
+	"off_t",
+	"NSAccessibilityColor", // "cannot find protocol declaration" when added to protocols.gen.m
+	"WebView",              // gets picked up instead of WKWebView
+}
 
 type Symbol struct {
 	Name string
@@ -54,6 +80,31 @@ func (s Symbol) HasFramework(name string) bool {
 	return false
 }
 
+func (s Symbol) MainModule() *modules.Module {
+	if s.Name == "IOSurface" {
+		return modules.Get("iosurface")
+	}
+	if len(s.Modules) == 0 {
+		return nil
+	}
+	sort.Strings(s.Modules)
+	defer func() {
+		if r := recover(); r != nil {
+			if strings.Contains(r.(string), "module not found") {
+				if !modules.CanIgnoreNotFound(r) {
+					panic(r)
+				}
+			}
+		}
+	}()
+	mod := modules.Get(s.Modules[0])
+	if strings.HasPrefix(s.Name, "CG") && mod.Package == "corefoundation" {
+		// lets just normalize CG symbols under corefoundation to coregraphics
+		mod = modules.Get("coregraphics")
+	}
+	return mod
+}
+
 func (s Symbol) HasPlatform(name string, version int, deprecated bool) bool {
 	for _, p := range s.Platforms {
 		if strings.EqualFold(p.Name, name) {
@@ -89,7 +140,9 @@ func (s Symbol) Parse() (*declparse.Statement, error) {
 
 type SymbolCache struct {
 	*zip.ReadCloser
-	cache map[string]Symbol
+	cache   map[string]Symbol
+	all     []Symbol
+	modSyms map[string][]Symbol
 }
 
 func OpenSymbols(filename string) (*SymbolCache, error) {
@@ -100,6 +153,7 @@ func OpenSymbols(filename string) (*SymbolCache, error) {
 	return &SymbolCache{
 		ReadCloser: db,
 		cache:      make(map[string]Symbol),
+		modSyms:    make(map[string][]Symbol),
 	}, nil
 }
 
@@ -118,33 +172,52 @@ func (db *SymbolCache) loadFrom(file *zip.File) (v Symbol, err error) {
 	if err := json.Unmarshal(b, &v); err != nil {
 		return v, err
 	}
-	db.cache[v.Name] = v
+	if strIn(blacklist, v.Name) {
+		return v, fmt.Errorf("blacklisted symbol: %s", v.Name)
+	}
+	if v.Kind != "Property" && v.Kind != "Method" && v.Kind != "Framework" {
+		db.cache[v.Name] = v
+	}
 	return
 }
 
-func (db *SymbolCache) FindByName(name string) *Symbol {
+func (db *SymbolCache) ModuleSymbol(m modules.Module) *Symbol {
+	for _, s := range db.AllSymbols() {
+		if s.Kind != "Framework" {
+			continue
+		}
+		if strings.EqualFold(s.Path, m.Name) {
+			fs := s
+			return &fs
+		}
+	}
+	return nil
+}
+
+func (db *SymbolCache) FindTypeSymbol(name string) *Symbol {
 	if s, ok := db.cache[name]; ok {
 		return &s
 	}
 	var found *Symbol
-	for _, file := range db.File {
-		if strings.Contains(file.Name, strings.ToLower(name)) {
-			s, err := db.loadFrom(file)
-			if err != nil {
-				continue
-			}
-			if strings.EqualFold(s.Name, name) {
-				found = &s
-			}
+	for _, s := range db.AllSymbols() {
+		if s.Kind == "Property" || s.Kind == "Method" || s.Kind == "Framework" {
+			continue
+		}
+		if strings.EqualFold(s.Name, name) {
+			found = &s
+			break
 		}
 	}
 	if found != nil {
-		db.cache[name] = *found
+		db.cache[found.Name] = *found
 	}
 	return found
 }
 
 func (db *SymbolCache) AllSymbols() (symbols []Symbol) {
+	if len(db.all) > 0 {
+		return db.all
+	}
 	for _, file := range db.File {
 		if file.FileInfo().IsDir() {
 			continue
@@ -155,12 +228,22 @@ func (db *SymbolCache) AllSymbols() (symbols []Symbol) {
 		}
 		symbols = append(symbols, s)
 	}
+	db.all = symbols
 	return
 }
 
 func (db *SymbolCache) ModuleSymbols(module string) (symbols []Symbol) {
+	m := modules.Get(module)
+	if m == nil {
+		return
+	}
+	if s, ok := db.modSyms[m.Name]; ok {
+		return s
+	}
 	for _, file := range db.File {
-		if !file.FileInfo().IsDir() && strings.HasPrefix(file.Name, "symbols/"+strings.ToLower(module)) {
+		if !file.FileInfo().IsDir() &&
+			(strings.HasPrefix(file.Name, fmt.Sprintf("symbols/%s/", strings.ToLower(m.Name))) ||
+				file.Name == fmt.Sprintf("symbols/%s.json", strings.ToLower(m.Name))) {
 			s, err := db.loadFrom(file)
 			if err != nil {
 				continue
@@ -175,5 +258,6 @@ func (db *SymbolCache) ModuleSymbols(module string) (symbols []Symbol) {
 			}
 		}
 	}
+	db.modSyms[m.Name] = symbols
 	return
 }

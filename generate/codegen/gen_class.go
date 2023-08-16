@@ -8,8 +8,6 @@ import (
 	"github.com/progrium/macdriver/internal/set"
 )
 
-var _ CodeGen = (*Class)(nil)
-
 // Class is code generator for objc class
 type Class struct {
 	Type                *typing.ClassType
@@ -17,6 +15,8 @@ type Class struct {
 	Properties          []*Property
 	InstanceTypeMethods []*Method // methods that return instance type
 	Methods             []*Method
+	Description         string
+	DocURL              string
 
 	init              bool
 	methodIdentifiers set.Set[string]
@@ -37,6 +37,8 @@ func (c *Class) Copy() CodeGen {
 		Properties:          c.Properties,
 		InstanceTypeMethods: c.InstanceTypeMethods,
 		Methods:             c.Methods,
+		Description:         c.Description,
+		DocURL:              c.DocURL,
 	}
 }
 
@@ -77,13 +79,14 @@ func (c *Class) Init() {
 				c.InstanceTypeMethods = append(c.InstanceTypeMethods, m)
 			}
 		} else {
-			if c.methodIdentifiers.Contains(m.Selector()) {
+			if c.methodIdentifiers.Contains(m.GoFuncName()) {
 				continue
 			}
-			c.methodIdentifiers.Add(m.Selector())
+			c.methodIdentifiers.Add(m.GoFuncName())
 			finalMethods = append(finalMethods, m)
 			if m.HasProtocolParam() {
 				finalMethods = append(finalMethods, m.ToProtocolParamAsObjectMethod())
+				c.methodIdentifiers.Add(m.ToProtocolParamAsObjectMethod().GoFuncName())
 			}
 		}
 	}
@@ -137,6 +140,7 @@ func (c *Class) WriteGoCode(cw *CodeWriter) {
 }
 
 func (c *Class) writeClassDef(cw *CodeWriter) {
+	cw.WriteLine(fmt.Sprintf("// The class instance for the [%s] class.", c.Type.GoStructName()))
 	cw.WriteLine(fmt.Sprintf("var %sClass = _%sClass{objc.GetClass(\"%s\")}", c.Type.GName, c.Type.GName, c.Type.Name))
 	cw.WriteLine(fmt.Sprintf("type _%sClass struct {", c.Type.GName))
 	cw.Indent()
@@ -146,6 +150,7 @@ func (c *Class) writeClassDef(cw *CodeWriter) {
 }
 
 func (c *Class) writeGoInterface(w *CodeWriter) {
+	w.WriteLine(fmt.Sprintf("// An interface definition for the [%s] class.", c.Type.GoStructName()))
 	w.WriteLine("type " + c.Type.GoInterfaceName() + " interface {")
 	w.Indent()
 
@@ -173,6 +178,10 @@ func (c *Class) writeGoInterface(w *CodeWriter) {
 }
 
 func (c *Class) writeGoStruct(w *CodeWriter) {
+	if c.DocURL != "" {
+		w.WriteLine(fmt.Sprintf("// %s [Full Topic]", c.Description))
+		w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", c.DocURL))
+	}
 	w.WriteLine("type " + c.Type.GoStructName() + " struct {")
 	w.Indent()
 	if c.Super != nil {
@@ -183,23 +192,27 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 
 	// make func
 	w.WriteLine("")
-	w.WriteLine(fmt.Sprintf("func Make%s(ptr unsafe.Pointer) %s {", c.Type.GName, c.Type.GoStructName()))
+	w.WriteLine(fmt.Sprintf("func %sFrom(ptr unsafe.Pointer) %s {", c.Type.GName, c.Type.GoStructName()))
 	w.Indent()
 	w.WriteLines([]string{
 		fmt.Sprintf("return %s{", c.Type.GoStructName()),
 	})
 	if c.Super != nil {
 		pType := c.Super.Type
-		w.WriteLine(fmt.Sprintf("\t%s: %s(ptr),", pType.GName, typing.PrependPackage(*pType.Module, "Make"+pType.GName, *c.Type.Module)))
+		w.WriteLine(fmt.Sprintf("\t%s: %s(ptr),", pType.GName, typing.FullGoName(*pType.Module, pType.GName+"From", *c.Type.Module)))
 	}
 	w.WriteLine("}")
 	w.UnIndent()
 	w.WriteLine("}")
 
 	// methods
+	methodsWritten := make(map[string]bool)
 	for _, m := range c.InstanceTypeMethods {
-		w.WriteLine("")
 		im := m.NormalizeInstanceTypeMethod(c.Type)
+		if _, written := methodsWritten[im.ProtocolGoFuncName()]; written {
+			continue
+		}
+		w.WriteLine("")
 		im.WriteGoCallCode(c.Type.Module, c.Type.GoStructName(), w)
 		if im.Name == "new" {
 			//add a convenient Newxxx Method
@@ -210,9 +223,13 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			w.UnIndent()
 			w.WriteLine("}")
 		}
-		if im.InitMethod || im.ClassMethod {
-			//add a convenient init / class method function
+		if (im.InitMethod || im.ClassMethod) && im.Name != "new" && im.Name != "init" {
+			//add a convenient custom init method function
 			w.WriteLine("")
+			if m.DocURL != "" {
+				w.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
+				w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
+			}
 			funcDeclare := im.GoFuncDeclare(c.Type.Module, c.Type.GoStructName())
 			w.WriteLine(fmt.Sprintf("func %s_%s {", c.Type.GName, funcDeclare))
 			w.Indent()
@@ -227,19 +244,27 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			w.WriteLine(fmt.Sprintf("return %sClass%s.%s(%s)",
 				c.Type.GName,
 				alloc,
-				m.GoFuncName(c.Type.GoStructName()),
+				m.GoFuncName(),
 				strings.Join(params, ", ")))
 			w.UnIndent()
 			w.WriteLine("}")
 		}
+		methodsWritten[im.ProtocolGoFuncName()] = true
 	}
 
 	for _, m := range c.Methods {
+		if _, written := methodsWritten[m.ProtocolGoFuncName()]; written {
+			continue
+		}
 		w.WriteLine("")
 		m.WriteGoCallCode(c.Type.Module, c.Type.GoStructName(), w)
 		if m.ClassMethod && !m.Deprecated {
-			//add a convenient init / class method function
+			// add convenient class method function
 			w.WriteLine("")
+			if m.DocURL != "" {
+				w.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
+				w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
+			}
 			funcDeclare := m.GoFuncDeclare(c.Type.Module, c.Type.GoStructName())
 			w.WriteLine(fmt.Sprintf("func %s_%s {", c.Type.GName, funcDeclare))
 			w.Indent()
@@ -255,11 +280,12 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			w.WriteLine(fmt.Sprintf("%s%sClass.%s(%s)",
 				returnKeyword,
 				c.Type.GName,
-				m.GoFuncName(c.Type.GoStructName()),
+				m.GoFuncName(),
 				strings.Join(params, ", ")))
 			w.UnIndent()
 			w.WriteLine("}")
 		}
+		methodsWritten[m.ProtocolGoFuncName()] = true
 	}
 
 }

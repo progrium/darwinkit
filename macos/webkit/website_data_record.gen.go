@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -8,30 +9,35 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [WebsiteDataRecord] class.
 var WebsiteDataRecordClass = _WebsiteDataRecordClass{objc.GetClass("WKWebsiteDataRecord")}
 
 type _WebsiteDataRecordClass struct {
 	objc.Class
 }
 
+// An interface definition for the [WebsiteDataRecord] class.
 type IWebsiteDataRecord interface {
 	objc.IObject
-	DisplayName() string
 	DataTypes() foundation.Set
+	DisplayName() string
 }
 
+// A record of the data that a particular website stores persistently. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatarecord?language=objc
 type WebsiteDataRecord struct {
 	objc.Object
 }
 
-func MakeWebsiteDataRecord(ptr unsafe.Pointer) WebsiteDataRecord {
+func WebsiteDataRecordFrom(ptr unsafe.Pointer) WebsiteDataRecord {
 	return WebsiteDataRecord{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (wc _WebsiteDataRecordClass) Alloc() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("alloc"))
+	rv := objc.Call[WebsiteDataRecord](wc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -40,7 +46,7 @@ func WebsiteDataRecord_Alloc() WebsiteDataRecord {
 }
 
 func (wc _WebsiteDataRecordClass) New() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("new"))
+	rv := objc.Call[WebsiteDataRecord](wc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,25 +55,23 @@ func NewWebsiteDataRecord() WebsiteDataRecord {
 	return WebsiteDataRecordClass.New()
 }
 
-func WebsiteDataRecord_New() WebsiteDataRecord {
-	return WebsiteDataRecordClass.New()
-}
-
 func (w_ WebsiteDataRecord) Init() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](w_, objc.GetSelector("init"))
+	rv := objc.Call[WebsiteDataRecord](w_, objc.Sel("init"))
 	return rv
 }
 
-func WebsiteDataRecord_Init() WebsiteDataRecord {
-	return WebsiteDataRecordClass.Alloc().Init()
-}
-
-func (w_ WebsiteDataRecord) DisplayName() string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("displayName"))
-	return rv
-}
-
+// The types of data associated with the record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatarecord/1538007-datatypes?language=objc
 func (w_ WebsiteDataRecord) DataTypes() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](w_, objc.GetSelector("dataTypes"))
+	rv := objc.Call[foundation.Set](w_, objc.Sel("dataTypes"))
+	return rv
+}
+
+// The display name for the data record. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatarecord/1537733-displayname?language=objc
+func (w_ WebsiteDataRecord) DisplayName() string {
+	rv := objc.Call[string](w_, objc.Sel("displayName"))
 	return rv
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -7,49 +8,48 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [UserScript] class.
 var UserScriptClass = _UserScriptClass{objc.GetClass("WKUserScript")}
 
 type _UserScriptClass struct {
 	objc.Class
 }
 
+// An interface definition for the [UserScript] class.
 type IUserScript interface {
 	objc.IObject
 	Source() string
-	InjectionTime() UserScriptInjectionTime
 	IsForMainFrameOnly() bool
+	InjectionTime() UserScriptInjectionTime
 }
 
+// A script that the web view injects into a webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript?language=objc
 type UserScript struct {
 	objc.Object
 }
 
-func MakeUserScript(ptr unsafe.Pointer) UserScript {
+func UserScriptFrom(ptr unsafe.Pointer) UserScript {
 	return UserScript{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
-	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:"), source, injectionTime, forMainFrameOnly)
+	rv := objc.Call[UserScript](u_, objc.Sel("initWithSource:injectionTime:forMainFrameOnly:"), source, injectionTime, forMainFrameOnly)
 	return rv
 }
 
+// Creates a user script object that contains the specified source code and attributes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537750-initwithsource?language=objc
 func UserScript_InitWithSourceInjectionTimeForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
 	return UserScriptClass.Alloc().InitWithSourceInjectionTimeForMainFrameOnly(source, injectionTime, forMainFrameOnly)
 }
 
-func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, objc.ExtractPtr(contentWorld))
-	return rv
-}
-
-func UserScript_InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	return UserScriptClass.Alloc().InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source, injectionTime, forMainFrameOnly, contentWorld)
-}
-
 func (uc _UserScriptClass) Alloc() UserScript {
-	rv := objc.CallMethod[UserScript](uc, objc.GetSelector("alloc"))
+	rv := objc.Call[UserScript](uc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -58,7 +58,7 @@ func UserScript_Alloc() UserScript {
 }
 
 func (uc _UserScriptClass) New() UserScript {
-	rv := objc.CallMethod[UserScript](uc, objc.GetSelector("new"))
+	rv := objc.Call[UserScript](uc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -67,30 +67,31 @@ func NewUserScript() UserScript {
 	return UserScriptClass.New()
 }
 
-func UserScript_New() UserScript {
-	return UserScriptClass.New()
-}
-
 func (u_ UserScript) Init() UserScript {
-	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("init"))
+	rv := objc.Call[UserScript](u_, objc.Sel("init"))
 	return rv
 }
 
-func UserScript_Init() UserScript {
-	return UserScriptClass.Alloc().Init()
-}
-
+// The script’s source code. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537787-source?language=objc
 func (u_ UserScript) Source() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("source"))
+	rv := objc.Call[string](u_, objc.Sel("source"))
 	return rv
 }
 
-func (u_ UserScript) InjectionTime() UserScriptInjectionTime {
-	rv := objc.CallMethod[UserScriptInjectionTime](u_, objc.GetSelector("injectionTime"))
-	return rv
-}
-
+// A Boolean value that indicates whether to inject the script into the main frame or all frames. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537856-formainframeonly?language=objc
 func (u_ UserScript) IsForMainFrameOnly() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isForMainFrameOnly"))
+	rv := objc.Call[bool](u_, objc.Sel("isForMainFrameOnly"))
+	return rv
+}
+
+// The time at which to inject the script into the webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1536492-injectiontime?language=objc
+func (u_ UserScript) InjectionTime() UserScriptInjectionTime {
+	rv := objc.Call[UserScriptInjectionTime](u_, objc.Sel("injectionTime"))
 	return rv
 }

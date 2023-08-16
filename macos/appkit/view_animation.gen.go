@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,48 +9,47 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [ViewAnimation] class.
 var ViewAnimationClass = _ViewAnimationClass{objc.GetClass("NSViewAnimation")}
 
 type _ViewAnimationClass struct {
 	objc.Class
 }
 
+// An interface definition for the [ViewAnimation] class.
 type IViewAnimation interface {
 	IAnimation
 	ViewAnimations() []map[ViewAnimationKey]objc.Object
 	SetViewAnimations(value []map[ViewAnimationKey]objc.IObject)
 }
 
+// An animation of an app's views, limited to changes in frame location and size, and to fade-in and fade-out effects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimation?language=objc
 type ViewAnimation struct {
 	Animation
 }
 
-func MakeViewAnimation(ptr unsafe.Pointer) ViewAnimation {
+func ViewAnimationFrom(ptr unsafe.Pointer) ViewAnimation {
 	return ViewAnimation{
-		Animation: MakeAnimation(ptr),
+		Animation: AnimationFrom(ptr),
 	}
 }
 
 func (v_ ViewAnimation) InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("initWithViewAnimations:"), viewAnimations)
+	rv := objc.Call[ViewAnimation](v_, objc.Sel("initWithViewAnimations:"), viewAnimations)
 	return rv
 }
 
+// Returns an NSViewAnimation object initialized with the supplied information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimation/1531141-initwithviewanimations?language=objc
 func ViewAnimation_InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
 	return ViewAnimationClass.Alloc().InitWithViewAnimations(viewAnimations)
 }
 
-func (v_ ViewAnimation) InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("initWithDuration:animationCurve:"), duration, animationCurve)
-	return rv
-}
-
-func ViewAnimation_InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
-	return ViewAnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
-}
-
 func (vc _ViewAnimationClass) Alloc() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](vc, objc.GetSelector("alloc"))
+	rv := objc.Call[ViewAnimation](vc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -58,7 +58,7 @@ func ViewAnimation_Alloc() ViewAnimation {
 }
 
 func (vc _ViewAnimationClass) New() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](vc, objc.GetSelector("new"))
+	rv := objc.Call[ViewAnimation](vc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -67,24 +67,34 @@ func NewViewAnimation() ViewAnimation {
 	return ViewAnimationClass.New()
 }
 
-func ViewAnimation_New() ViewAnimation {
-	return ViewAnimationClass.New()
-}
-
 func (v_ ViewAnimation) Init() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("init"))
+	rv := objc.Call[ViewAnimation](v_, objc.Sel("init"))
 	return rv
 }
 
-func ViewAnimation_Init() ViewAnimation {
-	return ViewAnimationClass.Alloc().Init()
+func (v_ ViewAnimation) InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
+	rv := objc.Call[ViewAnimation](v_, objc.Sel("initWithDuration:animationCurve:"), duration, animationCurve)
+	return rv
 }
 
+// Returns an NSAnimation object initialized with the specified duration and animation-curve values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530069-initwithduration?language=objc
+func ViewAnimation_InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
+	return ViewAnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
+}
+
+// The dictionaries defining the objects to animate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimation/1527416-viewanimations?language=objc
 func (v_ ViewAnimation) ViewAnimations() []map[ViewAnimationKey]objc.Object {
-	rv := objc.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, objc.GetSelector("viewAnimations"))
+	rv := objc.Call[[]map[ViewAnimationKey]objc.Object](v_, objc.Sel("viewAnimations"))
 	return rv
 }
 
+// The dictionaries defining the objects to animate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimation/1527416-viewanimations?language=objc
 func (v_ ViewAnimation) SetViewAnimations(value []map[ViewAnimationKey]objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setViewAnimations:"), value)
+	objc.Call[objc.Void](v_, objc.Sel("setViewAnimations:"), value)
 }

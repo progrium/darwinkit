@@ -19,11 +19,16 @@ func parseMethod(p *Parser) (next stateFn, node Node, err error) {
 		return nil, nil, fmt.Errorf("found %q, expected + or - at %v", lit, pos)
 	}
 
-	typ, err := p.expectType(true)
-	if err != nil {
-		return nil, nil, err
+	if tok, _, _ := p.tb.Scan(); tok == lexer.LPAREN {
+		p.tb.Unscan()
+		typ, err := p.expectType(true)
+		if err != nil {
+			return nil, nil, err
+		}
+		decl.ReturnType = *typ
+	} else {
+		p.tb.Unscan()
 	}
-	decl.ReturnType = *typ
 
 	name, err := p.expectIdent()
 	if err != nil {

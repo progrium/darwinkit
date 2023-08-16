@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,79 +9,48 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [ColorPanel] class.
 var ColorPanelClass = _ColorPanelClass{objc.GetClass("NSColorPanel")}
 
 type _ColorPanelClass struct {
 	objc.Class
 }
 
+// An interface definition for the [ColorPanel] class.
 type IColorPanel interface {
 	IPanel
-	SetAction(selector objc.Selector)
-	SetTarget(target objc.IObject)
 	AttachColorList(colorList IColorList)
 	DetachColorList(colorList IColorList)
-	Mode() ColorPanelMode
-	SetMode(value ColorPanelMode)
-	AccessoryView() View
-	SetAccessoryView(value IView)
-	IsContinuous() bool
-	SetContinuous(value bool)
-	ShowsAlpha() bool
-	SetShowsAlpha(value bool)
+	SetAction(selector objc.Selector)
+	SetTarget(target objc.IObject)
 	Color() Color
 	SetColor(value IColor)
+	IsContinuous() bool
+	SetContinuous(value bool)
+	AccessoryView() View
+	SetAccessoryView(value IView)
 	Alpha() float64
+	Mode() ColorPanelMode
+	SetMode(value ColorPanelMode)
+	ShowsAlpha() bool
+	SetShowsAlpha(value bool)
 }
 
+// A standard user interface for selecting color in an app. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel?language=objc
 type ColorPanel struct {
 	Panel
 }
 
-func MakeColorPanel(ptr unsafe.Pointer) ColorPanel {
+func ColorPanelFrom(ptr unsafe.Pointer) ColorPanel {
 	return ColorPanel{
-		Panel: MakePanel(ptr),
+		Panel: PanelFrom(ptr),
 	}
 }
 
-func (cc _ColorPanelClass) WindowWithContentViewController(contentViewController IViewController) ColorPanel {
-	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
-	return rv
-}
-
-func ColorPanel_WindowWithContentViewController(contentViewController IViewController) ColorPanel {
-	return ColorPanelClass.WindowWithContentViewController(contentViewController)
-}
-
-func (c_ ColorPanel) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) ColorPanel {
-	rv := objc.CallMethod[ColorPanel](c_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-func ColorPanel_InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) ColorPanel {
-	return ColorPanelClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-}
-
-func (c_ ColorPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
-	rv := objc.CallMethod[ColorPanel](c_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
-	return rv
-}
-
-func ColorPanel_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
-	return ColorPanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
-}
-
-func (c_ ColorPanel) Init() ColorPanel {
-	rv := objc.CallMethod[ColorPanel](c_, objc.GetSelector("init"))
-	return rv
-}
-
-func ColorPanel_Init() ColorPanel {
-	return ColorPanelClass.Alloc().Init()
-}
-
 func (cc _ColorPanelClass) Alloc() ColorPanel {
-	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[ColorPanel](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -89,7 +59,7 @@ func ColorPanel_Alloc() ColorPanel {
 }
 
 func (cc _ColorPanelClass) New() ColorPanel {
-	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("new"))
+	rv := objc.Call[ColorPanel](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -98,115 +68,215 @@ func NewColorPanel() ColorPanel {
 	return ColorPanelClass.New()
 }
 
-func ColorPanel_New() ColorPanel {
-	return ColorPanelClass.New()
+func (c_ ColorPanel) Init() ColorPanel {
+	rv := objc.Call[ColorPanel](c_, objc.Sel("init"))
+	return rv
 }
 
+func (cc _ColorPanelClass) WindowWithContentViewController(contentViewController IViewController) ColorPanel {
+	rv := objc.Call[ColorPanel](cc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	return rv
+}
+
+// Creates a titled window that contains the specified content view controller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419551-windowwithcontentviewcontroller?language=objc
+func ColorPanel_WindowWithContentViewController(contentViewController IViewController) ColorPanel {
+	return ColorPanelClass.WindowWithContentViewController(contentViewController)
+}
+
+func (c_ ColorPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
+	rv := objc.Call[ColorPanel](c_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	return rv
+}
+
+// Initializes an allocated window with the specified values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc
+func ColorPanel_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
+	return ColorPanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+}
+
+// Adds the list of NSColor objects specified to all the color pickers in the receiver that display color lists by invoking attachColorList: on all color pickers in the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1531970-attachcolorlist?language=objc
+func (c_ ColorPanel) AttachColorList(colorList IColorList) {
+	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), objc.Ptr(colorList))
+}
+
+// Specifies the color panel’s initial picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1532235-setpickermode?language=objc
 func (cc _ColorPanelClass) SetPickerMode(mode ColorPanelMode) {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("setPickerMode:"), mode)
+	objc.Call[objc.Void](cc, objc.Sel("setPickerMode:"), mode)
 }
 
+// Specifies the color panel’s initial picker. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1532235-setpickermode?language=objc
 func ColorPanel_SetPickerMode(mode ColorPanelMode) {
 	ColorPanelClass.SetPickerMode(mode)
 }
 
+// Determines which color selection modes are available in an application’s NSColorPanel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1534004-setpickermask?language=objc
 func (cc _ColorPanelClass) SetPickerMask(mask ColorPanelOptions) {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("setPickerMask:"), mask)
+	objc.Call[objc.Void](cc, objc.Sel("setPickerMask:"), mask)
 }
 
+// Determines which color selection modes are available in an application’s NSColorPanel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1534004-setpickermask?language=objc
 func ColorPanel_SetPickerMask(mask ColorPanelOptions) {
 	ColorPanelClass.SetPickerMask(mask)
 }
 
-func (c_ ColorPanel) SetAction(selector objc.Selector) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAction:"), selector)
-}
-
-func (c_ ColorPanel) SetTarget(target objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(target))
-}
-
-func (c_ ColorPanel) AttachColorList(colorList IColorList) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("attachColorList:"), objc.ExtractPtr(colorList))
-}
-
+// Removes the list of colors from all the color pickers in the receiver that display color lists by invoking detachColorList: on all color pickers in the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1529357-detachcolorlist?language=objc
 func (c_ ColorPanel) DetachColorList(colorList IColorList) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("detachColorList:"), objc.ExtractPtr(colorList))
+	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), objc.Ptr(colorList))
 }
 
+// Drags a color into a destination view from the specified source view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1529152-dragcolor?language=objc
 func (cc _ColorPanelClass) DragColorWithEventFromView(color IColor, event IEvent, sourceView IView) bool {
-	rv := objc.CallMethod[bool](cc, objc.GetSelector("dragColor:withEvent:fromView:"), objc.ExtractPtr(color), objc.ExtractPtr(event), objc.ExtractPtr(sourceView))
+	rv := objc.Call[bool](cc, objc.Sel("dragColor:withEvent:fromView:"), objc.Ptr(color), objc.Ptr(event), objc.Ptr(sourceView))
 	return rv
 }
 
+// Drags a color into a destination view from the specified source view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1529152-dragcolor?language=objc
 func ColorPanel_DragColorWithEventFromView(color IColor, event IEvent, sourceView IView) bool {
 	return ColorPanelClass.DragColorWithEventFromView(color, event, sourceView)
 }
 
-func (cc _ColorPanelClass) SharedColorPanel() ColorPanel {
-	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("sharedColorPanel"))
+// Sets the color panel's action message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1531244-setaction?language=objc
+func (c_ ColorPanel) SetAction(selector objc.Selector) {
+	objc.Call[objc.Void](c_, objc.Sel("setAction:"), selector)
+}
+
+// Sets the target of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1524753-settarget?language=objc
+func (c_ ColorPanel) SetTarget(target objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("setTarget:"), target)
+}
+
+// The color of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1530835-color?language=objc
+func (c_ ColorPanel) Color() Color {
+	rv := objc.Call[Color](c_, objc.Sel("color"))
 	return rv
 }
 
-func ColorPanel_SharedColorPanel() ColorPanel {
-	return ColorPanelClass.SharedColorPanel()
+// The color of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1530835-color?language=objc
+func (c_ ColorPanel) SetColor(value IColor) {
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
 }
 
+// Returns  a Boolean value indicating whether the NSColorPanel has been created already. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525183-sharedcolorpanelexists?language=objc
 func (cc _ColorPanelClass) SharedColorPanelExists() bool {
-	rv := objc.CallMethod[bool](cc, objc.GetSelector("sharedColorPanelExists"))
+	rv := objc.Call[bool](cc, objc.Sel("sharedColorPanelExists"))
 	return rv
 }
 
+// Returns  a Boolean value indicating whether the NSColorPanel has been created already. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525183-sharedcolorpanelexists?language=objc
 func ColorPanel_SharedColorPanelExists() bool {
 	return ColorPanelClass.SharedColorPanelExists()
 }
 
-func (c_ ColorPanel) Mode() ColorPanelMode {
-	rv := objc.CallMethod[ColorPanelMode](c_, objc.GetSelector("mode"))
+// Returns the shared NSColorPanel instance, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1524482-sharedcolorpanel?language=objc
+func (cc _ColorPanelClass) SharedColorPanel() ColorPanel {
+	rv := objc.Call[ColorPanel](cc, objc.Sel("sharedColorPanel"))
 	return rv
 }
 
-func (c_ ColorPanel) SetMode(value ColorPanelMode) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMode:"), value)
+// Returns the shared NSColorPanel instance, creating it if necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1524482-sharedcolorpanel?language=objc
+func ColorPanel_SharedColorPanel() ColorPanel {
+	return ColorPanelClass.SharedColorPanel()
 }
 
-func (c_ ColorPanel) AccessoryView() View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("accessoryView"))
-	return rv
-}
-
-func (c_ ColorPanel) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
-}
-
+// A Boolean value indicating whether the receiver continuously sends the action message to the target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1528265-continuous?language=objc
 func (c_ ColorPanel) IsContinuous() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isContinuous"))
+	rv := objc.Call[bool](c_, objc.Sel("isContinuous"))
 	return rv
 }
 
+// A Boolean value indicating whether the receiver continuously sends the action message to the target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1528265-continuous?language=objc
 func (c_ ColorPanel) SetContinuous(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContinuous:"), value)
+	objc.Call[objc.Void](c_, objc.Sel("setContinuous:"), value)
 }
 
-func (c_ ColorPanel) ShowsAlpha() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("showsAlpha"))
+// The accessory view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1526892-accessoryview?language=objc
+func (c_ ColorPanel) AccessoryView() View {
+	rv := objc.Call[View](c_, objc.Sel("accessoryView"))
 	return rv
 }
 
-func (c_ ColorPanel) SetShowsAlpha(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setShowsAlpha:"), value)
+// The accessory view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1526892-accessoryview?language=objc
+func (c_ ColorPanel) SetAccessoryView(value IView) {
+	objc.Call[objc.Void](c_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
 }
 
-func (c_ ColorPanel) Color() Color {
-	rv := objc.CallMethod[Color](c_, objc.GetSelector("color"))
-	return rv
-}
-
-func (c_ ColorPanel) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
-}
-
+// The receiver’s current alpha value based on its opacity slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1526246-alpha?language=objc
 func (c_ ColorPanel) Alpha() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("alpha"))
+	rv := objc.Call[float64](c_, objc.Sel("alpha"))
 	return rv
+}
+
+// The mode of the receiver the mode is one of the modes allowed by the color mask. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525410-mode?language=objc
+func (c_ ColorPanel) Mode() ColorPanelMode {
+	rv := objc.Call[ColorPanelMode](c_, objc.Sel("mode"))
+	return rv
+}
+
+// The mode of the receiver the mode is one of the modes allowed by the color mask. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525410-mode?language=objc
+func (c_ ColorPanel) SetMode(value ColorPanelMode) {
+	objc.Call[objc.Void](c_, objc.Sel("setMode:"), value)
+}
+
+// A Boolean value that indicates whether the receiver shows alpha values and an opacity slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525279-showsalpha?language=objc
+func (c_ ColorPanel) ShowsAlpha() bool {
+	rv := objc.Call[bool](c_, objc.Sel("showsAlpha"))
+	return rv
+}
+
+// A Boolean value that indicates whether the receiver shows alpha values and an opacity slider. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpanel/1525279-showsalpha?language=objc
+func (c_ ColorPanel) SetShowsAlpha(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setShowsAlpha:"), value)
 }

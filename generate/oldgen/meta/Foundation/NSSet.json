@@ -1,6 +1,0 @@
-{
-    "kind": "class",
-    "name": "NSSet",
-    "module": "Foundation",
-    "parent": "objectivec.NSObject *"
-}

@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSToolbarSizeMode",
-    "module": "AppKit",
-    "target_type": "NSUInteger"
-}

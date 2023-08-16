@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,60 +9,47 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Scroller] class.
 var ScrollerClass = _ScrollerClass{objc.GetClass("NSScroller")}
 
 type _ScrollerClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Scroller] class.
 type IScroller interface {
 	IControl
-	SetKnobProportion(proportion float64)
-	RectForPart(partCode ScrollerPart) foundation.Rect
-	TestPart(point foundation.Point) ScrollerPart
 	CheckSpaceForParts()
-	DrawKnobSlotInRectHighlight(slotRect foundation.Rect, flag bool)
-	DrawKnob()
 	TrackKnob(event IEvent)
-	UsableParts() UsableScrollerParts
-	HitPart() ScrollerPart
+	SetKnobProportion(proportion float64)
+	TestPart(point foundation.Point) ScrollerPart
+	DrawKnob()
+	DrawKnobSlotInRectHighlight(slotRect foundation.Rect, flag bool)
+	RectForPart(partCode ScrollerPart) foundation.Rect
 	ScrollerStyle() ScrollerStyle
 	SetScrollerStyle(value ScrollerStyle)
 	KnobStyle() ScrollerKnobStyle
 	SetKnobStyle(value ScrollerKnobStyle)
+	UsableParts() UsableScrollerParts
+	HitPart() ScrollerPart
 	KnobProportion() float64
 }
 
+// An object that controls scrolling of a document view within a scroll view or other type of container view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller?language=objc
 type Scroller struct {
 	Control
 }
 
-func MakeScroller(ptr unsafe.Pointer) Scroller {
+func ScrollerFrom(ptr unsafe.Pointer) Scroller {
 	return Scroller{
-		Control: MakeControl(ptr),
+		Control: ControlFrom(ptr),
 	}
 }
 
-func (s_ Scroller) InitWithFrame(frameRect foundation.Rect) Scroller {
-	rv := objc.CallMethod[Scroller](s_, objc.GetSelector("initWithFrame:"), frameRect)
-	return rv
-}
-
-func Scroller_InitWithFrame(frameRect foundation.Rect) Scroller {
-	return ScrollerClass.Alloc().InitWithFrame(frameRect)
-}
-
-func (s_ Scroller) Init() Scroller {
-	rv := objc.CallMethod[Scroller](s_, objc.GetSelector("init"))
-	return rv
-}
-
-func Scroller_Init() Scroller {
-	return ScrollerClass.Alloc().Init()
-}
-
 func (sc _ScrollerClass) Alloc() Scroller {
-	rv := objc.CallMethod[Scroller](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[Scroller](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -70,7 +58,7 @@ func Scroller_Alloc() Scroller {
 }
 
 func (sc _ScrollerClass) New() Scroller {
-	rv := objc.CallMethod[Scroller](sc, objc.GetSelector("new"))
+	rv := objc.Call[Scroller](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -79,96 +67,154 @@ func NewScroller() Scroller {
 	return ScrollerClass.New()
 }
 
-func Scroller_New() Scroller {
-	return ScrollerClass.New()
-}
-
-func (sc _ScrollerClass) ScrollerWidthForControlSizeScrollerStyle(controlSize ControlSize, scrollerStyle ScrollerStyle) float64 {
-	rv := objc.CallMethod[float64](sc, objc.GetSelector("scrollerWidthForControlSize:scrollerStyle:"), controlSize, scrollerStyle)
+func (s_ Scroller) Init() Scroller {
+	rv := objc.Call[Scroller](s_, objc.Sel("init"))
 	return rv
 }
 
-func Scroller_ScrollerWidthForControlSizeScrollerStyle(controlSize ControlSize, scrollerStyle ScrollerStyle) float64 {
-	return ScrollerClass.ScrollerWidthForControlSizeScrollerStyle(controlSize, scrollerStyle)
-}
-
-func (s_ Scroller) SetKnobProportion(proportion float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setKnobProportion:"), proportion)
-}
-
-func (s_ Scroller) RectForPart(partCode ScrollerPart) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("rectForPart:"), partCode)
+func (s_ Scroller) InitWithFrame(frameRect foundation.Rect) Scroller {
+	rv := objc.Call[Scroller](s_, objc.Sel("initWithFrame:"), frameRect)
 	return rv
 }
 
-func (s_ Scroller) TestPart(point foundation.Point) ScrollerPart {
-	rv := objc.CallMethod[ScrollerPart](s_, objc.GetSelector("testPart:"), point)
-	return rv
+// Initializes a control with the specified frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
+func Scroller_InitWithFrame(frameRect foundation.Rect) Scroller {
+	return ScrollerClass.Alloc().InitWithFrame(frameRect)
 }
 
+// Checks to see if there is enough room in the receiver to display the knob and buttons. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523625-checkspaceforparts?language=objc
 func (s_ Scroller) CheckSpaceForParts() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("checkSpaceForParts"))
+	objc.Call[objc.Void](s_, objc.Sel("checkSpaceForParts"))
 }
 
-func (s_ Scroller) DrawKnobSlotInRectHighlight(slotRect foundation.Rect, flag bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawKnobSlotInRect:highlight:"), slotRect, flag)
-}
-
-func (s_ Scroller) DrawKnob() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawKnob"))
-}
-
+// Tracks the knob and sends action messages to the receiver’s target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523594-trackknob?language=objc
 func (s_ Scroller) TrackKnob(event IEvent) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("trackKnob:"), objc.ExtractPtr(event))
+	objc.Call[objc.Void](s_, objc.Sel("trackKnob:"), objc.Ptr(event))
 }
 
-func (s_ Scroller) UsableParts() UsableScrollerParts {
-	rv := objc.CallMethod[UsableScrollerParts](s_, objc.GetSelector("usableParts"))
+// The proportion of the knob slot that the knob should fill. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523626-setknobproportion?language=objc
+func (s_ Scroller) SetKnobProportion(proportion float64) {
+	objc.Call[objc.Void](s_, objc.Sel("setKnobProportion:"), proportion)
+}
+
+// Returns the part that would be hit by a mouse-down event at aPoint (expressed in the window’s coordinate system). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523645-testpart?language=objc
+func (s_ Scroller) TestPart(point foundation.Point) ScrollerPart {
+	rv := objc.Call[ScrollerPart](s_, objc.Sel("testPart:"), point)
 	return rv
 }
 
-func (s_ Scroller) HitPart() ScrollerPart {
-	rv := objc.CallMethod[ScrollerPart](s_, objc.GetSelector("hitPart"))
+// Draws the knob. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523663-drawknob?language=objc
+func (s_ Scroller) DrawKnob() {
+	objc.Call[objc.Void](s_, objc.Sel("drawKnob"))
+}
+
+// Draws the portion of the scroller’s track, possibly including the line increment and decrement arrow buttons, that falls in the given rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523622-drawknobslotinrect?language=objc
+func (s_ Scroller) DrawKnobSlotInRectHighlight(slotRect foundation.Rect, flag bool) {
+	objc.Call[objc.Void](s_, objc.Sel("drawKnobSlotInRect:highlight:"), slotRect, flag)
+}
+
+// Returns the rectangle occupied by aPart, which for this method is interpreted literally rather than as an indicator of scrolling direction. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523647-rectforpart?language=objc
+func (s_ Scroller) RectForPart(partCode ScrollerPart) foundation.Rect {
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("rectForPart:"), partCode)
 	return rv
 }
 
+// The scroller style for this scroller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523591-scrollerstyle?language=objc
+func (s_ Scroller) ScrollerStyle() ScrollerStyle {
+	rv := objc.Call[ScrollerStyle](s_, objc.Sel("scrollerStyle"))
+	return rv
+}
+
+// The scroller style for this scroller. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523591-scrollerstyle?language=objc
+func (s_ Scroller) SetScrollerStyle(value ScrollerStyle) {
+	objc.Call[objc.Void](s_, objc.Sel("setScrollerStyle:"), value)
+}
+
+// The scroller’s knob style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523666-knobstyle?language=objc
+func (s_ Scroller) KnobStyle() ScrollerKnobStyle {
+	rv := objc.Call[ScrollerKnobStyle](s_, objc.Sel("knobStyle"))
+	return rv
+}
+
+// The scroller’s knob style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523666-knobstyle?language=objc
+func (s_ Scroller) SetKnobStyle(value ScrollerKnobStyle) {
+	objc.Call[objc.Void](s_, objc.Sel("setKnobStyle:"), value)
+}
+
+// Returns the style of scrollers that applications should use wherever possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523620-preferredscrollerstyle?language=objc
 func (sc _ScrollerClass) PreferredScrollerStyle() ScrollerStyle {
-	rv := objc.CallMethod[ScrollerStyle](sc, objc.GetSelector("preferredScrollerStyle"))
+	rv := objc.Call[ScrollerStyle](sc, objc.Sel("preferredScrollerStyle"))
 	return rv
 }
 
+// Returns the style of scrollers that applications should use wherever possible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523620-preferredscrollerstyle?language=objc
 func Scroller_PreferredScrollerStyle() ScrollerStyle {
 	return ScrollerClass.PreferredScrollerStyle()
 }
 
-func (s_ Scroller) ScrollerStyle() ScrollerStyle {
-	rv := objc.CallMethod[ScrollerStyle](s_, objc.GetSelector("scrollerStyle"))
+// A value that indicates which parts of the receiver are displayed and usable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523648-usableparts?language=objc
+func (s_ Scroller) UsableParts() UsableScrollerParts {
+	rv := objc.Call[UsableScrollerParts](s_, objc.Sel("usableParts"))
 	return rv
 }
 
-func (s_ Scroller) SetScrollerStyle(value ScrollerStyle) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScrollerStyle:"), value)
-}
-
-func (s_ Scroller) KnobStyle() ScrollerKnobStyle {
-	rv := objc.CallMethod[ScrollerKnobStyle](s_, objc.GetSelector("knobStyle"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/2870071-compatiblewithoverlayscrollers?language=objc
+func (sc _ScrollerClass) CompatibleWithOverlayScrollers() bool {
+	rv := objc.Call[bool](sc, objc.Sel("compatibleWithOverlayScrollers"))
 	return rv
 }
 
-func (s_ Scroller) SetKnobStyle(value ScrollerKnobStyle) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setKnobStyle:"), value)
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/2870071-compatiblewithoverlayscrollers?language=objc
+func Scroller_CompatibleWithOverlayScrollers() bool {
+	return ScrollerClass.CompatibleWithOverlayScrollers()
 }
 
+// A part code indicating the manner in which the scrolling should be performed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523596-hitpart?language=objc
+func (s_ Scroller) HitPart() ScrollerPart {
+	rv := objc.Call[ScrollerPart](s_, objc.Sel("hitPart"))
+	return rv
+}
+
+// The proportion of the knob slot that the knob should fill. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523593-knobproportion?language=objc
 func (s_ Scroller) KnobProportion() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("knobProportion"))
+	rv := objc.Call[float64](s_, objc.Sel("knobProportion"))
 	return rv
-}
-
-func (sc _ScrollerClass) IsCompatibleWithOverlayScrollers() bool {
-	rv := objc.CallMethod[bool](sc, objc.GetSelector("isCompatibleWithOverlayScrollers"))
-	return rv
-}
-
-func Scroller_IsCompatibleWithOverlayScrollers() bool {
-	return ScrollerClass.IsCompatibleWithOverlayScrollers()
 }

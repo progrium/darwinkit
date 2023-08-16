@@ -1,36 +1,48 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IFontChanging interface {
-	ImplementsChangeFont() bool
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging?language=objc
+type PFontChanging interface {
 	// optional
 	ChangeFont(sender FontManager)
-	ImplementsValidModesForFontPanel() bool
+	HasChangeFont() bool
+
 	// optional
 	ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask
+	HasValidModesForFontPanel() bool
 }
 
+// A concrete type wrapper for the [PFontChanging] protocol.
 type FontChangingWrapper struct {
 	objc.Object
 }
 
-func (f_ FontChangingWrapper) ImplementsChangeFont() bool {
-	return f_.RespondsToSelector(objc.GetSelector("changeFont:"))
+func (f_ FontChangingWrapper) HasChangeFont() bool {
+	return f_.RespondsToSelector(objc.Sel("changeFont:"))
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005180-changefont?language=objc
 func (f_ FontChangingWrapper) ChangeFont(sender IFontManager) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("changeFont:"), objc.ExtractPtr(sender))
+	objc.Call[objc.Void](f_, objc.Sel("changeFont:"), objc.Ptr(sender))
 }
 
-func (f_ FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
-	return f_.RespondsToSelector(objc.GetSelector("validModesForFontPanel:"))
+func (f_ FontChangingWrapper) HasValidModesForFontPanel() bool {
+	return f_.RespondsToSelector(objc.Sel("validModesForFontPanel:"))
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005181-validmodesforfontpanel?language=objc
 func (f_ FontChangingWrapper) ValidModesForFontPanel(fontPanel IFontPanel) FontPanelModeMask {
-	rv := objc.CallMethod[FontPanelModeMask](f_, objc.GetSelector("validModesForFontPanel:"), objc.ExtractPtr(fontPanel))
+	rv := objc.Call[FontPanelModeMask](f_, objc.Sel("validModesForFontPanel:"), objc.Ptr(fontPanel))
 	return rv
 }

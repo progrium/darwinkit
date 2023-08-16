@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -7,29 +8,34 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [ContentRuleList] class.
 var ContentRuleListClass = _ContentRuleListClass{objc.GetClass("WKContentRuleList")}
 
 type _ContentRuleListClass struct {
 	objc.Class
 }
 
+// An interface definition for the [ContentRuleList] class.
 type IContentRuleList interface {
 	objc.IObject
 	Identifier() string
 }
 
+// A compiled list of rules to apply to web content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentrulelist?language=objc
 type ContentRuleList struct {
 	objc.Object
 }
 
-func MakeContentRuleList(ptr unsafe.Pointer) ContentRuleList {
+func ContentRuleListFrom(ptr unsafe.Pointer) ContentRuleList {
 	return ContentRuleList{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (cc _ContentRuleListClass) Alloc() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[ContentRuleList](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -38,7 +44,7 @@ func ContentRuleList_Alloc() ContentRuleList {
 }
 
 func (cc _ContentRuleListClass) New() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](cc, objc.GetSelector("new"))
+	rv := objc.Call[ContentRuleList](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,20 +53,15 @@ func NewContentRuleList() ContentRuleList {
 	return ContentRuleListClass.New()
 }
 
-func ContentRuleList_New() ContentRuleList {
-	return ContentRuleListClass.New()
-}
-
 func (c_ ContentRuleList) Init() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](c_, objc.GetSelector("init"))
+	rv := objc.Call[ContentRuleList](c_, objc.Sel("init"))
 	return rv
 }
 
-func ContentRuleList_Init() ContentRuleList {
-	return ContentRuleListClass.Alloc().Init()
-}
-
+// The identifier for the rule list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentrulelist/2902755-identifier?language=objc
 func (c_ ContentRuleList) Identifier() string {
-	rv := objc.CallMethod[string](c_, objc.GetSelector("identifier"))
+	rv := objc.Call[string](c_, objc.Sel("identifier"))
 	return rv
 }

@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "CGPathRef",
-    "module": "CoreGraphics",
-    "target_type": "void*"
-}

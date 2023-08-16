@@ -1,8 +1,0 @@
-{
-    "kind": "protocol",
-    "name": "NSMatrixDelegate",
-    "module": "AppKit",
-    "parents": [
-        "AppKit.NSControlTextEditingDelegate"
-    ]
-}

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -7,29 +8,34 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Navigation] class.
 var NavigationClass = _NavigationClass{objc.GetClass("WKNavigation")}
 
 type _NavigationClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Navigation] class.
 type INavigation interface {
 	objc.IObject
 	EffectiveContentMode() ContentMode
 }
 
+// An object that tracks the loading progress of a webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigation?language=objc
 type Navigation struct {
 	objc.Object
 }
 
-func MakeNavigation(ptr unsafe.Pointer) Navigation {
+func NavigationFrom(ptr unsafe.Pointer) Navigation {
 	return Navigation{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (nc _NavigationClass) Alloc() Navigation {
-	rv := objc.CallMethod[Navigation](nc, objc.GetSelector("alloc"))
+	rv := objc.Call[Navigation](nc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -38,7 +44,7 @@ func Navigation_Alloc() Navigation {
 }
 
 func (nc _NavigationClass) New() Navigation {
-	rv := objc.CallMethod[Navigation](nc, objc.GetSelector("new"))
+	rv := objc.Call[Navigation](nc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,20 +53,15 @@ func NewNavigation() Navigation {
 	return NavigationClass.New()
 }
 
-func Navigation_New() Navigation {
-	return NavigationClass.New()
-}
-
 func (n_ Navigation) Init() Navigation {
-	rv := objc.CallMethod[Navigation](n_, objc.GetSelector("init"))
+	rv := objc.Call[Navigation](n_, objc.Sel("init"))
 	return rv
 }
 
-func Navigation_Init() Navigation {
-	return NavigationClass.Alloc().Init()
-}
-
+// The content mode WebKit uses to load the webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigation/3229061-effectivecontentmode?language=objc
 func (n_ Navigation) EffectiveContentMode() ContentMode {
-	rv := objc.CallMethod[ContentMode](n_, objc.GetSelector("effectiveContentMode"))
+	rv := objc.Call[ContentMode](n_, objc.Sel("effectiveContentMode"))
 	return rv
 }

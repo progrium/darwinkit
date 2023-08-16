@@ -29,6 +29,7 @@ type ProtocolDecl struct {
 
 type InterfaceDecl struct {
 	Name      string
+	Params    []TypeInfo
 	SuperName string
 }
 
@@ -37,6 +38,11 @@ type PropertyDecl struct {
 	Type     TypeInfo
 	Attrs    map[PropAttr]string
 	IsOutlet bool
+}
+
+func (p *PropertyDecl) HasAttr(attr PropAttr) bool {
+	_, has := p.Attrs[attr]
+	return has
 }
 
 type FunctionDecl struct {
@@ -86,6 +92,20 @@ type TypeInfo struct {
 	Annots   map[TypeAnnotation]bool
 	Func     *FunctionDecl
 	Params   []TypeInfo
+}
+
+func (ti TypeInfo) TypeNames() (t []string) {
+	t = append(t, ti.Name)
+	for _, p := range ti.Params {
+		t = append(t, p.TypeNames()...)
+	}
+	if ti.Func != nil {
+		t = append(t, ti.Func.ReturnType.TypeNames()...)
+		for _, a := range ti.Func.Args {
+			t = append(t, a.Type.TypeNames()...)
+		}
+	}
+	return
 }
 
 type ArgInfo struct {

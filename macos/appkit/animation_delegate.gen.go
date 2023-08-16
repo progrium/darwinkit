@@ -1,134 +1,155 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IAnimationDelegate interface {
-	ImplementsAnimationDidEnd() bool
+// A set of optional methods implemented by delegates of NSAnimation objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate?language=objc
+type PAnimationDelegate interface {
 	// optional
 	AnimationDidEnd(animation Animation)
-	ImplementsAnimationDidStop() bool
-	// optional
-	AnimationDidStop(animation Animation)
-	ImplementsAnimationShouldStart() bool
-	// optional
-	AnimationShouldStart(animation Animation) bool
-	ImplementsAnimationValueForProgress() bool
-	// optional
-	AnimationValueForProgress(animation Animation, progress AnimationProgress) float32
-	ImplementsAnimationDidReachProgressMark() bool
+	HasAnimationDidEnd() bool
+
 	// optional
 	AnimationDidReachProgressMark(animation Animation, progress AnimationProgress)
+	HasAnimationDidReachProgressMark() bool
+
+	// optional
+	AnimationShouldStart(animation Animation) bool
+	HasAnimationShouldStart() bool
+
+	// optional
+	AnimationDidStop(animation Animation)
+	HasAnimationDidStop() bool
 }
 
+// A delegate implementation builder for the [PAnimationDelegate] protocol.
 type AnimationDelegate struct {
 	_AnimationDidEnd               func(animation Animation)
-	_AnimationDidStop              func(animation Animation)
-	_AnimationShouldStart          func(animation Animation) bool
-	_AnimationValueForProgress     func(animation Animation, progress AnimationProgress) float32
 	_AnimationDidReachProgressMark func(animation Animation, progress AnimationProgress)
+	_AnimationShouldStart          func(animation Animation) bool
+	_AnimationDidStop              func(animation Animation)
 }
 
-func (di *AnimationDelegate) ImplementsAnimationDidEnd() bool {
+func (di *AnimationDelegate) HasAnimationDidEnd() bool {
 	return di._AnimationDidEnd != nil
 }
 
+// Sent to the delegate when the specified animation completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535871-animationdidend?language=objc
 func (di *AnimationDelegate) SetAnimationDidEnd(f func(animation Animation)) {
 	di._AnimationDidEnd = f
 }
 
+// Sent to the delegate when the specified animation completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535871-animationdidend?language=objc
 func (di *AnimationDelegate) AnimationDidEnd(animation Animation) {
 	di._AnimationDidEnd(animation)
 }
-func (di *AnimationDelegate) ImplementsAnimationDidStop() bool {
-	return di._AnimationDidStop != nil
-}
-
-func (di *AnimationDelegate) SetAnimationDidStop(f func(animation Animation)) {
-	di._AnimationDidStop = f
-}
-
-func (di *AnimationDelegate) AnimationDidStop(animation Animation) {
-	di._AnimationDidStop(animation)
-}
-func (di *AnimationDelegate) ImplementsAnimationShouldStart() bool {
-	return di._AnimationShouldStart != nil
-}
-
-func (di *AnimationDelegate) SetAnimationShouldStart(f func(animation Animation) bool) {
-	di._AnimationShouldStart = f
-}
-
-func (di *AnimationDelegate) AnimationShouldStart(animation Animation) bool {
-	return di._AnimationShouldStart(animation)
-}
-func (di *AnimationDelegate) ImplementsAnimationValueForProgress() bool {
-	return di._AnimationValueForProgress != nil
-}
-
-func (di *AnimationDelegate) SetAnimationValueForProgress(f func(animation Animation, progress AnimationProgress) float32) {
-	di._AnimationValueForProgress = f
-}
-
-func (di *AnimationDelegate) AnimationValueForProgress(animation Animation, progress AnimationProgress) float32 {
-	return di._AnimationValueForProgress(animation, progress)
-}
-func (di *AnimationDelegate) ImplementsAnimationDidReachProgressMark() bool {
+func (di *AnimationDelegate) HasAnimationDidReachProgressMark() bool {
 	return di._AnimationDidReachProgressMark != nil
 }
 
+// Sent to the delegate when an animation reaches a specific progress mark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535100-animation?language=objc
 func (di *AnimationDelegate) SetAnimationDidReachProgressMark(f func(animation Animation, progress AnimationProgress)) {
 	di._AnimationDidReachProgressMark = f
 }
 
+// Sent to the delegate when an animation reaches a specific progress mark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535100-animation?language=objc
 func (di *AnimationDelegate) AnimationDidReachProgressMark(animation Animation, progress AnimationProgress) {
 	di._AnimationDidReachProgressMark(animation, progress)
 }
+func (di *AnimationDelegate) HasAnimationShouldStart() bool {
+	return di._AnimationShouldStart != nil
+}
 
+// Sent to the delegate just after an animation is started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1533279-animationshouldstart?language=objc
+func (di *AnimationDelegate) SetAnimationShouldStart(f func(animation Animation) bool) {
+	di._AnimationShouldStart = f
+}
+
+// Sent to the delegate just after an animation is started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1533279-animationshouldstart?language=objc
+func (di *AnimationDelegate) AnimationShouldStart(animation Animation) bool {
+	return di._AnimationShouldStart(animation)
+}
+func (di *AnimationDelegate) HasAnimationDidStop() bool {
+	return di._AnimationDidStop != nil
+}
+
+// Sent to the delegate when the specified animation is stopped before it completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1534155-animationdidstop?language=objc
+func (di *AnimationDelegate) SetAnimationDidStop(f func(animation Animation)) {
+	di._AnimationDidStop = f
+}
+
+// Sent to the delegate when the specified animation is stopped before it completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1534155-animationdidstop?language=objc
+func (di *AnimationDelegate) AnimationDidStop(animation Animation) {
+	di._AnimationDidStop(animation)
+}
+
+// A concrete type wrapper for the [PAnimationDelegate] protocol.
 type AnimationDelegateWrapper struct {
 	objc.Object
 }
 
-func (a_ AnimationDelegateWrapper) ImplementsAnimationDidEnd() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidEnd:"))
+func (a_ AnimationDelegateWrapper) HasAnimationDidEnd() bool {
+	return a_.RespondsToSelector(objc.Sel("animationDidEnd:"))
 }
 
+// Sent to the delegate when the specified animation completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535871-animationdidend?language=objc
 func (a_ AnimationDelegateWrapper) AnimationDidEnd(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidEnd:"), objc.ExtractPtr(animation))
+	objc.Call[objc.Void](a_, objc.Sel("animationDidEnd:"), objc.Ptr(animation))
 }
 
-func (a_ AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidStop:"))
+func (a_ AnimationDelegateWrapper) HasAnimationDidReachProgressMark() bool {
+	return a_.RespondsToSelector(objc.Sel("animation:didReachProgressMark:"))
 }
 
-func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:"), objc.ExtractPtr(animation))
-}
-
-func (a_ AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationShouldStart:"))
-}
-
-func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("animationShouldStart:"), objc.ExtractPtr(animation))
-	return rv
-}
-
-func (a_ AnimationDelegateWrapper) ImplementsAnimationValueForProgress() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animation:valueForProgress:"))
-}
-
-func (a_ AnimationDelegateWrapper) AnimationValueForProgress(animation IAnimation, progress AnimationProgress) float32 {
-	rv := objc.CallMethod[float32](a_, objc.GetSelector("animation:valueForProgress:"), objc.ExtractPtr(animation), progress)
-	return rv
-}
-
-func (a_ AnimationDelegateWrapper) ImplementsAnimationDidReachProgressMark() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animation:didReachProgressMark:"))
-}
-
+// Sent to the delegate when an animation reaches a specific progress mark. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535100-animation?language=objc
 func (a_ AnimationDelegateWrapper) AnimationDidReachProgressMark(animation IAnimation, progress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animation:didReachProgressMark:"), objc.ExtractPtr(animation), progress)
+	objc.Call[objc.Void](a_, objc.Sel("animation:didReachProgressMark:"), objc.Ptr(animation), progress)
+}
+
+func (a_ AnimationDelegateWrapper) HasAnimationShouldStart() bool {
+	return a_.RespondsToSelector(objc.Sel("animationShouldStart:"))
+}
+
+// Sent to the delegate just after an animation is started. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1533279-animationshouldstart?language=objc
+func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
+	rv := objc.Call[bool](a_, objc.Sel("animationShouldStart:"), objc.Ptr(animation))
+	return rv
+}
+
+func (a_ AnimationDelegateWrapper) HasAnimationDidStop() bool {
+	return a_.RespondsToSelector(objc.Sel("animationDidStop:"))
+}
+
+// Sent to the delegate when the specified animation is stopped before it completes its run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1534155-animationdidstop?language=objc
+func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
+	objc.Call[objc.Void](a_, objc.Sel("animationDidStop:"), objc.Ptr(animation))
 }

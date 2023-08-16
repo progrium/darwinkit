@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,73 +9,60 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Box] class.
 var BoxClass = _BoxClass{objc.GetClass("NSBox")}
 
 type _BoxClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Box] class.
 type IBox interface {
 	IView
-	SetFrameFromContentFrame(contentFrame foundation.Rect)
 	SizeToFit()
-	BorderRect() foundation.Rect
-	BoxType() BoxType
-	SetBoxType(value BoxType)
+	SetFrameFromContentFrame(contentFrame foundation.Rect)
 	IsTransparent() bool
 	SetTransparent(value bool)
-	Title() string
-	SetTitle(value string)
-	TitleFont() Font
-	SetTitleFont(value IFont)
 	TitlePosition() TitlePosition
 	SetTitlePosition(value TitlePosition)
-	TitleCell() objc.Object
+	ContentView() View
+	SetContentView(value IView)
 	TitleRect() foundation.Rect
-	BorderColor() Color
-	SetBorderColor(value IColor)
-	BorderWidth() float64
-	SetBorderWidth(value float64)
+	TitleCell() objc.Object
 	CornerRadius() float64
 	SetCornerRadius(value float64)
 	FillColor() Color
 	SetFillColor(value IColor)
-	ContentView() View
-	SetContentView(value IView)
+	BoxType() BoxType
+	SetBoxType(value BoxType)
+	Title() string
+	SetTitle(value string)
+	BorderColor() Color
+	SetBorderColor(value IColor)
+	BorderWidth() float64
+	SetBorderWidth(value float64)
+	TitleFont() Font
+	SetTitleFont(value IFont)
 	ContentViewMargins() foundation.Size
 	SetContentViewMargins(value foundation.Size)
+	BorderRect() foundation.Rect
 }
 
+// A stylized rectangular box with an optional title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox?language=objc
 type Box struct {
 	View
 }
 
-func MakeBox(ptr unsafe.Pointer) Box {
+func BoxFrom(ptr unsafe.Pointer) Box {
 	return Box{
-		View: MakeView(ptr),
+		View: ViewFrom(ptr),
 	}
 }
 
-func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
-	rv := objc.CallMethod[Box](b_, objc.GetSelector("initWithFrame:"), frameRect)
-	return rv
-}
-
-func Box_InitWithFrame(frameRect foundation.Rect) Box {
-	return BoxClass.Alloc().InitWithFrame(frameRect)
-}
-
-func (b_ Box) Init() Box {
-	rv := objc.CallMethod[Box](b_, objc.GetSelector("init"))
-	return rv
-}
-
-func Box_Init() Box {
-	return BoxClass.Alloc().Init()
-}
-
 func (bc _BoxClass) Alloc() Box {
-	rv := objc.CallMethod[Box](bc, objc.GetSelector("alloc"))
+	rv := objc.Call[Box](bc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -83,7 +71,7 @@ func Box_Alloc() Box {
 }
 
 func (bc _BoxClass) New() Box {
-	rv := objc.CallMethod[Box](bc, objc.GetSelector("new"))
+	rv := objc.Call[Box](bc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -92,128 +80,222 @@ func NewBox() Box {
 	return BoxClass.New()
 }
 
-func Box_New() Box {
-	return BoxClass.New()
+func (b_ Box) Init() Box {
+	rv := objc.Call[Box](b_, objc.Sel("init"))
+	return rv
 }
 
-func (b_ Box) SetFrameFromContentFrame(contentFrame foundation.Rect) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFrameFromContentFrame:"), contentFrame)
+func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
+	rv := objc.Call[Box](b_, objc.Sel("initWithFrame:"), frameRect)
+	return rv
 }
 
+// Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
+func Box_InitWithFrame(frameRect foundation.Rect) Box {
+	return BoxClass.Alloc().InitWithFrame(frameRect)
+}
+
+// Resizes and moves the receiver’s content view so it just encloses its subviews. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429826-sizetofit?language=objc
 func (b_ Box) SizeToFit() {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("sizeToFit"))
+	objc.Call[objc.Void](b_, objc.Sel("sizeToFit"))
 }
 
-func (b_ Box) BorderRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("borderRect"))
-	return rv
+// Places the receiver so its content view lies on the specified frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429816-setframefromcontentframe?language=objc
+func (b_ Box) SetFrameFromContentFrame(contentFrame foundation.Rect) {
+	objc.Call[objc.Void](b_, objc.Sel("setFrameFromContentFrame:"), contentFrame)
 }
 
-func (b_ Box) BoxType() BoxType {
-	rv := objc.CallMethod[BoxType](b_, objc.GetSelector("boxType"))
-	return rv
-}
-
-func (b_ Box) SetBoxType(value BoxType) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBoxType:"), value)
-}
-
+// A Boolean value that indicates whether the receiver is transparent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429821-transparent?language=objc
 func (b_ Box) IsTransparent() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isTransparent"))
+	rv := objc.Call[bool](b_, objc.Sel("isTransparent"))
 	return rv
 }
 
+// A Boolean value that indicates whether the receiver is transparent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429821-transparent?language=objc
 func (b_ Box) SetTransparent(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTransparent:"), value)
+	objc.Call[objc.Void](b_, objc.Sel("setTransparent:"), value)
 }
 
-func (b_ Box) Title() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("title"))
-	return rv
-}
-
-func (b_ Box) SetTitle(value string) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitle:"), value)
-}
-
-func (b_ Box) TitleFont() Font {
-	rv := objc.CallMethod[Font](b_, objc.GetSelector("titleFont"))
-	return rv
-}
-
-func (b_ Box) SetTitleFont(value IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleFont:"), objc.ExtractPtr(value))
-}
-
+// A constant representing the title position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429844-titleposition?language=objc
 func (b_ Box) TitlePosition() TitlePosition {
-	rv := objc.CallMethod[TitlePosition](b_, objc.GetSelector("titlePosition"))
+	rv := objc.Call[TitlePosition](b_, objc.Sel("titlePosition"))
 	return rv
 }
 
+// A constant representing the title position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429844-titleposition?language=objc
 func (b_ Box) SetTitlePosition(value TitlePosition) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitlePosition:"), value)
+	objc.Call[objc.Void](b_, objc.Sel("setTitlePosition:"), value)
 }
 
-func (b_ Box) TitleCell() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("titleCell"))
-	return rv
-}
-
-func (b_ Box) TitleRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("titleRect"))
-	return rv
-}
-
-func (b_ Box) BorderColor() Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("borderColor"))
-	return rv
-}
-
-func (b_ Box) SetBorderColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderColor:"), objc.ExtractPtr(value))
-}
-
-func (b_ Box) BorderWidth() float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("borderWidth"))
-	return rv
-}
-
-func (b_ Box) SetBorderWidth(value float64) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderWidth:"), value)
-}
-
-func (b_ Box) CornerRadius() float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("cornerRadius"))
-	return rv
-}
-
-func (b_ Box) SetCornerRadius(value float64) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCornerRadius:"), value)
-}
-
-func (b_ Box) FillColor() Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("fillColor"))
-	return rv
-}
-
-func (b_ Box) SetFillColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFillColor:"), objc.ExtractPtr(value))
-}
-
+// The receiver’s content view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429818-contentview?language=objc
 func (b_ Box) ContentView() View {
-	rv := objc.CallMethod[View](b_, objc.GetSelector("contentView"))
+	rv := objc.Call[View](b_, objc.Sel("contentView"))
 	return rv
 }
 
+// The receiver’s content view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429818-contentview?language=objc
 func (b_ Box) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setContentView:"), objc.Ptr(value))
 }
 
-func (b_ Box) ContentViewMargins() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](b_, objc.GetSelector("contentViewMargins"))
+// The rectangle in which the receiver’s title is drawn. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429785-titlerect?language=objc
+func (b_ Box) TitleRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](b_, objc.Sel("titleRect"))
 	return rv
 }
 
+// The cell used to display the receiver’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429789-titlecell?language=objc
+func (b_ Box) TitleCell() objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("titleCell"))
+	return rv
+}
+
+// The radius of the receiver’s corners when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429812-cornerradius?language=objc
+func (b_ Box) CornerRadius() float64 {
+	rv := objc.Call[float64](b_, objc.Sel("cornerRadius"))
+	return rv
+}
+
+// The radius of the receiver’s corners when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429812-cornerradius?language=objc
+func (b_ Box) SetCornerRadius(value float64) {
+	objc.Call[objc.Void](b_, objc.Sel("setCornerRadius:"), value)
+}
+
+// The color of the receiver’s background when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429797-fillcolor?language=objc
+func (b_ Box) FillColor() Color {
+	rv := objc.Call[Color](b_, objc.Sel("fillColor"))
+	return rv
+}
+
+// The color of the receiver’s background when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429797-fillcolor?language=objc
+func (b_ Box) SetFillColor(value IColor) {
+	objc.Call[objc.Void](b_, objc.Sel("setFillColor:"), objc.Ptr(value))
+}
+
+// The receiver’s box type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429822-boxtype?language=objc
+func (b_ Box) BoxType() BoxType {
+	rv := objc.Call[BoxType](b_, objc.Sel("boxType"))
+	return rv
+}
+
+// The receiver’s box type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429822-boxtype?language=objc
+func (b_ Box) SetBoxType(value BoxType) {
+	objc.Call[objc.Void](b_, objc.Sel("setBoxType:"), value)
+}
+
+// The receiver’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429795-title?language=objc
+func (b_ Box) Title() string {
+	rv := objc.Call[string](b_, objc.Sel("title"))
+	return rv
+}
+
+// The receiver’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429795-title?language=objc
+func (b_ Box) SetTitle(value string) {
+	objc.Call[objc.Void](b_, objc.Sel("setTitle:"), value)
+}
+
+// The color of the receiver’s border when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429839-bordercolor?language=objc
+func (b_ Box) BorderColor() Color {
+	rv := objc.Call[Color](b_, objc.Sel("borderColor"))
+	return rv
+}
+
+// The color of the receiver’s border when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429839-bordercolor?language=objc
+func (b_ Box) SetBorderColor(value IColor) {
+	objc.Call[objc.Void](b_, objc.Sel("setBorderColor:"), objc.Ptr(value))
+}
+
+// The width of the receiver’s border when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429831-borderwidth?language=objc
+func (b_ Box) BorderWidth() float64 {
+	rv := objc.Call[float64](b_, objc.Sel("borderWidth"))
+	return rv
+}
+
+// The width of the receiver’s border when the receiver is a custom box with a simple line border. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429831-borderwidth?language=objc
+func (b_ Box) SetBorderWidth(value float64) {
+	objc.Call[objc.Void](b_, objc.Sel("setBorderWidth:"), value)
+}
+
+// The font object used to draw the receiver’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429791-titlefont?language=objc
+func (b_ Box) TitleFont() Font {
+	rv := objc.Call[Font](b_, objc.Sel("titleFont"))
+	return rv
+}
+
+// The font object used to draw the receiver’s title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429791-titlefont?language=objc
+func (b_ Box) SetTitleFont(value IFont) {
+	objc.Call[objc.Void](b_, objc.Sel("setTitleFont:"), objc.Ptr(value))
+}
+
+// The distances between the border and the content view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429837-contentviewmargins?language=objc
+func (b_ Box) ContentViewMargins() foundation.Size {
+	rv := objc.Call[foundation.Size](b_, objc.Sel("contentViewMargins"))
+	return rv
+}
+
+// The distances between the border and the content view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429837-contentviewmargins?language=objc
 func (b_ Box) SetContentViewMargins(value foundation.Size) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentViewMargins:"), value)
+	objc.Call[objc.Void](b_, objc.Sel("setContentViewMargins:"), value)
+}
+
+// The rectangle in which the receiver’s border is drawn. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429787-borderrect?language=objc
+func (b_ Box) BorderRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](b_, objc.Sel("borderRect"))
+	return rv
 }

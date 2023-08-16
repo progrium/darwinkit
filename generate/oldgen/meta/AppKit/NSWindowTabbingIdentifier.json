@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSWindowTabbingIdentifier",
-    "module": "AppKit",
-    "target_type": "NSString*"
-}

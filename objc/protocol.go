@@ -28,6 +28,16 @@ import (
 	"github.com/progrium/macdriver/objc/ffi"
 )
 
+type IProtocol interface {
+	Pointer
+	Name() string
+	MethodDescription(sel Selector, required bool, instanceMethod bool) MethodDescription
+	CopyMethodDescriptionList(required bool, instanceMethod bool) []MethodDescription
+	CopyProtocolList() []Protocol
+	Property(name string, required bool, isInstanceProperty bool) Property
+	CopyPropertyList() []Property
+}
+
 type Protocol struct {
 	ptr unsafe.Pointer
 }
@@ -52,13 +62,13 @@ func AllocateProtocol(name string) Protocol {
 	}
 }
 
-func (p Protocol) GetName() string {
+func (p Protocol) Name() string {
 	cname := C.Protocol_GetName(p.ptr)
 	name := C.GoString(cname)
 	return name
 }
 
-func (p Protocol) GetMethodDescription(sel Selector, required bool, instanceMethod bool) MethodDescription {
+func (p Protocol) MethodDescription(sel Selector, required bool, instanceMethod bool) MethodDescription {
 	md := C.Protocol_GetMethodDescription(p.ptr, sel.ptr, C.bool(required), C.bool(instanceMethod))
 	return MethodDescription{
 		Name:  Selector{unsafe.Pointer(md.name)},
@@ -90,7 +100,7 @@ func (p Protocol) CopyProtocolList() []Protocol {
 	return convertToSliceAndFreePointer[Protocol](pp, int(count))
 }
 
-func (p Protocol) GetProperty(name string, required bool, isInstanceProperty bool) Property {
+func (p Protocol) Property(name string, required bool, isInstanceProperty bool) Property {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
 	return Property{
@@ -141,7 +151,7 @@ func WrapAsProtocol[T any](protocolName string, d T) Object {
 		protocolName: protocolName,
 	}
 	h := cgo.NewHandle(ii)
-	return MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
+	return ObjectFrom(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
 }
 
 func createClass(t reflect.Type, protocolName string) *classInfo {
@@ -150,7 +160,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 	}
 
 	return classCache.Load(protocolName, func(key string) *classInfo {
-		class := AllocateClassPair(baseClass, protocolName+"Adaptor", 0)
+		class := AllocateClass(baseClass, protocolName+"Adaptor", 0)
 		protocol := GetProtocol(protocolName)
 		class.AddProtocol(protocol)
 
@@ -158,7 +168,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 		var selectorToSuffix = map[string]string{}
 		var selectorSeen = map[string]string{}
 		for _, md := range getProtocolMethods(protocol) {
-			sel := md.Name.GetName()
+			sel := md.Name.Name()
 			goSel := selectorToGoName(sel)
 			if selectorSeen[goSel] != "" {
 				// if conflict, mark the longer selector to add suffix
@@ -175,7 +185,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 		var methodInfos = map[string]*methodInfo{} // selector name to method signature
 		for _, md := range getProtocolMethods(protocol) {
 			selector := md.Name
-			selName := selector.GetName()
+			selName := selector.Name()
 			goFuncName := selectorToGoName(selName)
 			if selectorToSuffix[goFuncName] == selName {
 				goFuncName += "_"
@@ -189,7 +199,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 				}
 			}
 			addProtocolMethod(class, md, goMethod)
-			hasFunc, _ := t.MethodByName("Implements" + goFuncName)
+			hasFunc, _ := t.MethodByName("Has" + goFuncName)
 
 			methodInfos[selName] = &methodInfo{
 				required: md.required,
@@ -197,7 +207,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 			}
 		}
 
-		RegisterClassPair(class)
+		RegisterClass(class)
 		return &classInfo{
 			class:       class,
 			methodInfos: methodInfos,
@@ -213,7 +223,7 @@ type methodDescription struct {
 }
 
 func getProtocolMethods(protocol Protocol) []methodDescription {
-	if protocol.GetName() == "NSObject" {
+	if protocol.Name() == "NSObject" {
 		return nil
 	}
 	var mds []methodDescription
@@ -271,8 +281,8 @@ func addProtocolMethod(class IClass, md methodDescription, method reflect.Method
 	}
 
 	fn, handle, status := ffi.CreateClosure(cif, func(cif *ffi.CIF, ret unsafe.Pointer, objcArgs []unsafe.Pointer) {
-		o := MakeObject(*(*unsafe.Pointer)(objcArgs[0]))
-		handle := CallMethod[uintptr](o, GetSelector("goID"))
+		o := ObjectFrom(*(*unsafe.Pointer)(objcArgs[0]))
+		handle := Call[uintptr](o, Sel("goID"))
 		instance := cgo.Handle(handle).Value().(*instanceInfo)
 
 		var goArgs = make([]reflect.Value, len(objcArgs)-1)
@@ -290,7 +300,7 @@ func addProtocolMethod(class IClass, md methodDescription, method reflect.Method
 	if status != ffi.OK {
 		panic("ffi prep closure status not ok")
 	}
-	flag := class.AddMethod(md.Name, MakeIMP(fn), md.Types)
+	flag := class.AddMethod(md.Name, IMPFrom(fn), md.Types)
 	if !flag {
 		panic("add method to protocol failed")
 	}
@@ -298,7 +308,7 @@ func addProtocolMethod(class IClass, md methodDescription, method reflect.Method
 
 //export respondsTo
 func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
-	selName := MakeSelector(sel).GetName()
+	selName := SelectorFrom(sel).Name()
 	ii := cgo.Handle(goID).Value().(*instanceInfo)
 	mi := ii.classInfo.methodInfos[selName]
 	if mi == nil {

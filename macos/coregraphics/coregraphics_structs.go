@@ -2,9 +2,19 @@ package coregraphics
 
 // #import <CoreGraphics/CGGeometry.h>
 import "C"
-import "github.com/progrium/macdriver/objc"
+import (
+	"unsafe"
+
+	"github.com/progrium/macdriver/objc"
+)
 
 // struct def should be sync with struct in <CoreGraphics/CGGeometry.h> <CoreGraphics/CGAffineTransform.h>
+
+// todo
+type PathElement struct{}
+type ScreenUpdateMoveDelta struct{}
+
+type DisplayStreamUpdateRef unsafe.Pointer
 
 type AffineTransform struct {
 	A  Float

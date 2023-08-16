@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,86 +9,64 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [SegmentedCell] class.
 var SegmentedCellClass = _SegmentedCellClass{objc.GetClass("NSSegmentedCell")}
 
 type _SegmentedCellClass struct {
 	objc.Class
 }
 
+// An interface definition for the [SegmentedCell] class.
 type ISegmentedCell interface {
 	IActionCell
-	SetSelectedForSegment(selected bool, segment int)
-	SelectSegmentWithTag(tag int) bool
-	MakeNextSegmentKey()
-	MakePreviousSegmentKey()
-	IsSelectedForSegment(segment int) bool
 	SetLabelForSegment(label string, segment int)
-	LabelForSegment(segment int) string
-	SetImageForSegment(image IImage, segment int)
-	ImageForSegment(segment int) Image
-	SetImageScalingForSegment(scaling ImageScaling, segment int)
 	ImageScalingForSegment(segment int) ImageScaling
-	SetWidthForSegment(width float64, segment int)
-	WidthForSegment(segment int) float64
-	SetEnabledForSegment(enabled bool, segment int)
-	IsEnabledForSegment(segment int) bool
-	SetMenuForSegment(menu IMenu, segment int)
-	MenuForSegment(segment int) Menu
 	SetToolTipForSegment(toolTip string, segment int)
-	ToolTipForSegment(segment int) string
-	SetTagForSegment(tag int, segment int)
 	TagForSegment(segment int) int
-	DrawSegmentInFrameWithView(segment int, frame foundation.Rect, controlView IView)
+	ToolTipForSegment(segment int) string
+	SetSelectedForSegment(selected bool, segment int)
+	IsSelectedForSegment(segment int) bool
+	SetImageForSegment(image IImage, segment int)
+	MakeNextSegmentKey()
+	ImageForSegment(segment int) Image
 	InteriorBackgroundStyleForSegment(segment int) BackgroundStyle
+	SetEnabledForSegment(enabled bool, segment int)
+	WidthForSegment(segment int) float64
+	MakePreviousSegmentKey()
+	SelectSegmentWithTag(tag int) bool
+	SetImageScalingForSegment(scaling ImageScaling, segment int)
+	SetTagForSegment(tag int, segment int)
+	MenuForSegment(segment int) Menu
+	SetMenuForSegment(menu IMenu, segment int)
+	DrawSegmentInFrameWithView(segment int, frame foundation.Rect, controlView IView)
+	LabelForSegment(segment int) string
+	SetWidthForSegment(width float64, segment int)
+	IsEnabledForSegment(segment int) bool
+	SegmentStyle() SegmentStyle
+	SetSegmentStyle(value SegmentStyle)
 	SegmentCount() int
 	SetSegmentCount(value int)
 	SelectedSegment() int
 	SetSelectedSegment(value int)
 	TrackingMode() SegmentSwitchTracking
 	SetTrackingMode(value SegmentSwitchTracking)
-	SegmentStyle() SegmentStyle
-	SetSegmentStyle(value SegmentStyle)
 }
 
+// An NSSegmentedCell object implements the appearance and behavior of a horizontal button divided into multiple segments. This class is used in conjunction with the NSSegmentedControl class to implement a segmented control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell?language=objc
 type SegmentedCell struct {
 	ActionCell
 }
 
-func MakeSegmentedCell(ptr unsafe.Pointer) SegmentedCell {
+func SegmentedCellFrom(ptr unsafe.Pointer) SegmentedCell {
 	return SegmentedCell{
-		ActionCell: MakeActionCell(ptr),
+		ActionCell: ActionCellFrom(ptr),
 	}
 }
 
-func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](s_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
-	return rv
-}
-
-func SegmentedCell_InitImageCell(image IImage) SegmentedCell {
-	return SegmentedCellClass.Alloc().InitImageCell(image)
-}
-
-func (s_ SegmentedCell) InitTextCell(string_ string) SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](s_, objc.GetSelector("initTextCell:"), string_)
-	return rv
-}
-
-func SegmentedCell_InitTextCell(string_ string) SegmentedCell {
-	return SegmentedCellClass.Alloc().InitTextCell(string_)
-}
-
-func (s_ SegmentedCell) Init() SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](s_, objc.GetSelector("init"))
-	return rv
-}
-
-func SegmentedCell_Init() SegmentedCell {
-	return SegmentedCellClass.Alloc().Init()
-}
-
 func (sc _SegmentedCellClass) Alloc() SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[SegmentedCell](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -96,7 +75,7 @@ func SegmentedCell_Alloc() SegmentedCell {
 }
 
 func (sc _SegmentedCellClass) New() SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](sc, objc.GetSelector("new"))
+	rv := objc.Call[SegmentedCell](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -105,145 +84,263 @@ func NewSegmentedCell() SegmentedCell {
 	return SegmentedCellClass.New()
 }
 
-func SegmentedCell_New() SegmentedCell {
-	return SegmentedCellClass.New()
-}
-
-func (s_ SegmentedCell) SetSelectedForSegment(selected bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelected:forSegment:"), selected, segment)
-}
-
-func (s_ SegmentedCell) SelectSegmentWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("selectSegmentWithTag:"), tag)
+func (s_ SegmentedCell) Init() SegmentedCell {
+	rv := objc.Call[SegmentedCell](s_, objc.Sel("init"))
 	return rv
 }
 
-func (s_ SegmentedCell) MakeNextSegmentKey() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("makeNextSegmentKey"))
-}
-
-func (s_ SegmentedCell) MakePreviousSegmentKey() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("makePreviousSegmentKey"))
-}
-
-func (s_ SegmentedCell) IsSelectedForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSelectedForSegment:"), segment)
+func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
+	rv := objc.Call[SegmentedCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
 	return rv
 }
 
+// Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
+func SegmentedCell_InitImageCell(image IImage) SegmentedCell {
+	return SegmentedCellClass.Alloc().InitImageCell(image)
+}
+
+func (s_ SegmentedCell) InitTextCell(string_ string) SegmentedCell {
+	rv := objc.Call[SegmentedCell](s_, objc.Sel("initTextCell:"), string_)
+	return rv
+}
+
+// Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
+func SegmentedCell_InitTextCell(string_ string) SegmentedCell {
+	return SegmentedCellClass.Alloc().InitTextCell(string_)
+}
+
+// Sets the label for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500213-setlabel?language=objc
 func (s_ SegmentedCell) SetLabelForSegment(label string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLabel:forSegment:"), label, segment)
+	objc.Call[objc.Void](s_, objc.Sel("setLabel:forSegment:"), label, segment)
 }
 
-func (s_ SegmentedCell) LabelForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("labelForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedCell) SetImageForSegment(image IImage, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), objc.ExtractPtr(image), segment)
-}
-
-func (s_ SegmentedCell) ImageForSegment(segment int) Image {
-	rv := objc.CallMethod[Image](s_, objc.GetSelector("imageForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedCell) SetImageScalingForSegment(scaling ImageScaling, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImageScaling:forSegment:"), scaling, segment)
-}
-
+// Returns the image scaling mode associated with the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500217-imagescalingforsegment?language=objc
 func (s_ SegmentedCell) ImageScalingForSegment(segment int) ImageScaling {
-	rv := objc.CallMethod[ImageScaling](s_, objc.GetSelector("imageScalingForSegment:"), segment)
+	rv := objc.Call[ImageScaling](s_, objc.Sel("imageScalingForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedCell) SetWidthForSegment(width float64, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setWidth:forSegment:"), width, segment)
-}
-
-func (s_ SegmentedCell) WidthForSegment(segment int) float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("widthForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedCell) SetEnabledForSegment(enabled bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setEnabled:forSegment:"), enabled, segment)
-}
-
-func (s_ SegmentedCell) IsEnabledForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isEnabledForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedCell) SetMenuForSegment(menu IMenu, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
-}
-
-func (s_ SegmentedCell) MenuForSegment(segment int) Menu {
-	rv := objc.CallMethod[Menu](s_, objc.GetSelector("menuForSegment:"), segment)
-	return rv
-}
-
+// Sets the tooltip for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500186-settooltip?language=objc
 func (s_ SegmentedCell) SetToolTipForSegment(toolTip string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setToolTip:forSegment:"), toolTip, segment)
+	objc.Call[objc.Void](s_, objc.Sel("setToolTip:forSegment:"), toolTip, segment)
 }
 
-func (s_ SegmentedCell) ToolTipForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("toolTipForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedCell) SetTagForSegment(tag int, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTag:forSegment:"), tag, segment)
-}
-
+// Returns the tag of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500207-tagforsegment?language=objc
 func (s_ SegmentedCell) TagForSegment(segment int) int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("tagForSegment:"), segment)
+	rv := objc.Call[int](s_, objc.Sel("tagForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedCell) DrawSegmentInFrameWithView(segment int, frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawSegment:inFrame:withView:"), segment, frame, objc.ExtractPtr(controlView))
+// Returns the tooltip of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500183-tooltipforsegment?language=objc
+func (s_ SegmentedCell) ToolTipForSegment(segment int) string {
+	rv := objc.Call[string](s_, objc.Sel("toolTipForSegment:"), segment)
+	return rv
 }
 
+// Sets the selection state of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500188-setselected?language=objc
+func (s_ SegmentedCell) SetSelectedForSegment(selected bool, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSelected:forSegment:"), selected, segment)
+}
+
+// Returns a Boolean value indicating whether the specified segment is selected, [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500177-isselectedforsegment?language=objc
+func (s_ SegmentedCell) IsSelectedForSegment(segment int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("isSelectedForSegment:"), segment)
+	return rv
+}
+
+// Sets the image for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500174-setimage?language=objc
+func (s_ SegmentedCell) SetImageForSegment(image IImage, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), objc.Ptr(image), segment)
+}
+
+// Selects the next segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500190-makenextsegmentkey?language=objc
+func (s_ SegmentedCell) MakeNextSegmentKey() {
+	objc.Call[objc.Void](s_, objc.Sel("makeNextSegmentKey"))
+}
+
+// Returns the image associated with the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500204-imageforsegment?language=objc
+func (s_ SegmentedCell) ImageForSegment(segment int) Image {
+	rv := objc.Call[Image](s_, objc.Sel("imageForSegment:"), segment)
+	return rv
+}
+
+// Returns the interior background style for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500198-interiorbackgroundstyleforsegmen?language=objc
 func (s_ SegmentedCell) InteriorBackgroundStyleForSegment(segment int) BackgroundStyle {
-	rv := objc.CallMethod[BackgroundStyle](s_, objc.GetSelector("interiorBackgroundStyleForSegment:"), segment)
+	rv := objc.Call[BackgroundStyle](s_, objc.Sel("interiorBackgroundStyleForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedCell) SegmentCount() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("segmentCount"))
+// Sets the enabled state of the specified segment [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500219-setenabled?language=objc
+func (s_ SegmentedCell) SetEnabledForSegment(enabled bool, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setEnabled:forSegment:"), enabled, segment)
+}
+
+// Returns the width of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500211-widthforsegment?language=objc
+func (s_ SegmentedCell) WidthForSegment(segment int) float64 {
+	rv := objc.Call[float64](s_, objc.Sel("widthForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedCell) SetSegmentCount(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentCount:"), value)
+// Selects the previous segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500170-makeprevioussegmentkey?language=objc
+func (s_ SegmentedCell) MakePreviousSegmentKey() {
+	objc.Call[objc.Void](s_, objc.Sel("makePreviousSegmentKey"))
 }
 
-func (s_ SegmentedCell) SelectedSegment() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("selectedSegment"))
+// Selects the segment with the specified tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500196-selectsegmentwithtag?language=objc
+func (s_ SegmentedCell) SelectSegmentWithTag(tag int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("selectSegmentWithTag:"), tag)
 	return rv
 }
 
-func (s_ SegmentedCell) SetSelectedSegment(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegment:"), value)
+// Sets the image scaling mode for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500209-setimagescaling?language=objc
+func (s_ SegmentedCell) SetImageScalingForSegment(scaling ImageScaling, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setImageScaling:forSegment:"), scaling, segment)
 }
 
-func (s_ SegmentedCell) TrackingMode() SegmentSwitchTracking {
-	rv := objc.CallMethod[SegmentSwitchTracking](s_, objc.GetSelector("trackingMode"))
+// Sets the tag for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500181-settag?language=objc
+func (s_ SegmentedCell) SetTagForSegment(tag int, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setTag:forSegment:"), tag, segment)
+}
+
+// Returns the menu for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500175-menuforsegment?language=objc
+func (s_ SegmentedCell) MenuForSegment(segment int) Menu {
+	rv := objc.Call[Menu](s_, objc.Sel("menuForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedCell) SetTrackingMode(value SegmentSwitchTracking) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTrackingMode:"), value)
+// Sets the menu for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500194-setmenu?language=objc
+func (s_ SegmentedCell) SetMenuForSegment(menu IMenu, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), objc.Ptr(menu), segment)
 }
 
+// Draws the image and label of the segment in the specified view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500191-drawsegment?language=objc
+func (s_ SegmentedCell) DrawSegmentInFrameWithView(segment int, frame foundation.Rect, controlView IView) {
+	objc.Call[objc.Void](s_, objc.Sel("drawSegment:inFrame:withView:"), segment, frame, objc.Ptr(controlView))
+}
+
+// Returns the label of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500215-labelforsegment?language=objc
+func (s_ SegmentedCell) LabelForSegment(segment int) string {
+	rv := objc.Call[string](s_, objc.Sel("labelForSegment:"), segment)
+	return rv
+}
+
+// Sets the width of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500202-setwidth?language=objc
+func (s_ SegmentedCell) SetWidthForSegment(width float64, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setWidth:forSegment:"), width, segment)
+}
+
+// Returns a Boolean value indicating whether the specified segment is enabled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500206-isenabledforsegment?language=objc
+func (s_ SegmentedCell) IsEnabledForSegment(segment int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("isEnabledForSegment:"), segment)
+	return rv
+}
+
+// The visual style used to display the segmented control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500172-segmentstyle?language=objc
 func (s_ SegmentedCell) SegmentStyle() SegmentStyle {
-	rv := objc.CallMethod[SegmentStyle](s_, objc.GetSelector("segmentStyle"))
+	rv := objc.Call[SegmentStyle](s_, objc.Sel("segmentStyle"))
 	return rv
 }
 
+// The visual style used to display the segmented control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500172-segmentstyle?language=objc
 func (s_ SegmentedCell) SetSegmentStyle(value SegmentStyle) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentStyle:"), value)
+	objc.Call[objc.Void](s_, objc.Sel("setSegmentStyle:"), value)
+}
+
+// The number of segments in the segmented control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500185-segmentcount?language=objc
+func (s_ SegmentedCell) SegmentCount() int {
+	rv := objc.Call[int](s_, objc.Sel("segmentCount"))
+	return rv
+}
+
+// The number of segments in the segmented control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500185-segmentcount?language=objc
+func (s_ SegmentedCell) SetSegmentCount(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSegmentCount:"), value)
+}
+
+// The index of the selected segment of the control, or -1 if no segment is selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500193-selectedsegment?language=objc
+func (s_ SegmentedCell) SelectedSegment() int {
+	rv := objc.Call[int](s_, objc.Sel("selectedSegment"))
+	return rv
+}
+
+// The index of the selected segment of the control, or -1 if no segment is selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500193-selectedsegment?language=objc
+func (s_ SegmentedCell) SetSelectedSegment(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSelectedSegment:"), value)
+}
+
+// The tracking mode used for the segments of the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500200-trackingmode?language=objc
+func (s_ SegmentedCell) TrackingMode() SegmentSwitchTracking {
+	rv := objc.Call[SegmentSwitchTracking](s_, objc.Sel("trackingMode"))
+	return rv
+}
+
+// The tracking mode used for the segments of the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500200-trackingmode?language=objc
+func (s_ SegmentedCell) SetTrackingMode(value SegmentSwitchTracking) {
+	objc.Call[objc.Void](s_, objc.Sel("setTrackingMode:"), value)
 }

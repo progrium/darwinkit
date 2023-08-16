@@ -5,10 +5,10 @@ package main
 import (
 	"os"
 
-	"github.com/progrium/macdriver/generate/oldgen"
+	"github.com/progrium/macdriver/generate"
 )
 
 // go run ./generate/tools/clobbergen.go [dir, ex: ./macos/appkit]
 func main() {
-	oldgen.RemoveGeneratedCode(os.Args[1])
+	generate.RemoveGeneratedCode(os.Args[1])
 }

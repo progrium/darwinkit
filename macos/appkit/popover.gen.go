@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,58 +9,59 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Popover] class.
 var PopoverClass = _PopoverClass{objc.GetClass("NSPopover")}
 
 type _PopoverClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Popover] class.
 type IPopover interface {
 	IResponder
-	ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge)
-	PerformClose(sender objc.IObject)
 	Close()
-	ContentViewController() ViewController
-	SetContentViewController(value IViewController)
+	ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge)
+	PerformClose(sender objc.IObject) objc.Object
 	Behavior() PopoverBehavior
 	SetBehavior(value PopoverBehavior)
-	PositioningRect() foundation.Rect
-	SetPositioningRect(value foundation.Rect)
-	Appearance() Appearance
-	SetAppearance(value IAppearance)
-	EffectiveAppearance() Appearance
-	Animates() bool
-	SetAnimates(value bool)
-	ContentSize() foundation.Size
-	SetContentSize(value foundation.Size)
 	IsShown() bool
+	EffectiveAppearance() Appearance
 	IsDetached() bool
 	Delegate() PopoverDelegateWrapper
-	SetDelegate(value IPopoverDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value PPopoverDelegate)
+	SetDelegateObject(valueObject objc.IObject)
+	ContentSize() foundation.Size
+	SetContentSize(value foundation.Size)
+	ContentViewController() ViewController
+	SetContentViewController(value IViewController)
+	PositioningRect() foundation.Rect
+	SetPositioningRect(value foundation.Rect)
+	Animates() bool
+	SetAnimates(value bool)
+	Appearance() Appearance
+	SetAppearance(value IAppearance)
 }
 
+// A means to display additional content related to existing content on the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover?language=objc
 type Popover struct {
 	Responder
 }
 
-func MakePopover(ptr unsafe.Pointer) Popover {
+func PopoverFrom(ptr unsafe.Pointer) Popover {
 	return Popover{
-		Responder: MakeResponder(ptr),
+		Responder: ResponderFrom(ptr),
 	}
 }
 
 func (p_ Popover) Init() Popover {
-	rv := objc.CallMethod[Popover](p_, objc.GetSelector("init"))
+	rv := objc.Call[Popover](p_, objc.Sel("init"))
 	return rv
 }
 
-func Popover_Init() Popover {
-	return PopoverClass.Alloc().Init()
-}
-
 func (pc _PopoverClass) Alloc() Popover {
-	rv := objc.CallMethod[Popover](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[Popover](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -68,7 +70,7 @@ func Popover_Alloc() Popover {
 }
 
 func (pc _PopoverClass) New() Popover {
-	rv := objc.CallMethod[Popover](pc, objc.GetSelector("new"))
+	rv := objc.Call[Popover](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -77,102 +79,162 @@ func NewPopover() Popover {
 	return PopoverClass.New()
 }
 
-func Popover_New() Popover {
-	return PopoverClass.New()
-}
-
-func (p_ Popover) ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), positioningRect, objc.ExtractPtr(positioningView), preferredEdge)
-}
-
-func (p_ Popover) PerformClose(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("performClose:"), objc.ExtractPtr(sender))
-}
-
+// Forces the popover to close without consulting its delegate. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526823-close?language=objc
 func (p_ Popover) Close() {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("close"))
+	objc.Call[objc.Void](p_, objc.Sel("close"))
 }
 
-func (p_ Popover) ContentViewController() ViewController {
-	rv := objc.CallMethod[ViewController](p_, objc.GetSelector("contentViewController"))
+// Shows the popover anchored to the specified view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1532113-showrelativetorect?language=objc
+func (p_ Popover) ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge) {
+	objc.Call[objc.Void](p_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, objc.Ptr(positioningView), preferredEdge)
+}
+
+// Attempts to close the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1534290-performclose?language=objc
+func (p_ Popover) PerformClose(sender objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](p_, objc.Sel("performClose:"), sender)
 	return rv
 }
 
-func (p_ Popover) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentViewController:"), objc.ExtractPtr(value))
-}
-
+// Specifies the behavior of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
 func (p_ Popover) Behavior() PopoverBehavior {
-	rv := objc.CallMethod[PopoverBehavior](p_, objc.GetSelector("behavior"))
+	rv := objc.Call[PopoverBehavior](p_, objc.Sel("behavior"))
 	return rv
 }
 
+// Specifies the behavior of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1533539-behavior?language=objc
 func (p_ Popover) SetBehavior(value PopoverBehavior) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBehavior:"), value)
+	objc.Call[objc.Void](p_, objc.Sel("setBehavior:"), value)
 }
 
-func (p_ Popover) PositioningRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("positioningRect"))
-	return rv
-}
-
-func (p_ Popover) SetPositioningRect(value foundation.Rect) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPositioningRect:"), value)
-}
-
-func (p_ Popover) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](p_, objc.GetSelector("appearance"))
-	return rv
-}
-
-func (p_ Popover) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
-}
-
-func (p_ Popover) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](p_, objc.GetSelector("effectiveAppearance"))
-	return rv
-}
-
-func (p_ Popover) Animates() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("animates"))
-	return rv
-}
-
-func (p_ Popover) SetAnimates(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAnimates:"), value)
-}
-
-func (p_ Popover) ContentSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](p_, objc.GetSelector("contentSize"))
-	return rv
-}
-
-func (p_ Popover) SetContentSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentSize:"), value)
-}
-
+// The display state of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1535120-shown?language=objc
 func (p_ Popover) IsShown() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isShown"))
+	rv := objc.Call[bool](p_, objc.Sel("isShown"))
 	return rv
 }
 
+// The appearance that will be used when the popover is displayed onscreen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526863-effectiveappearance?language=objc
+func (p_ Popover) EffectiveAppearance() Appearance {
+	rv := objc.Call[Appearance](p_, objc.Sel("effectiveAppearance"))
+	return rv
+}
+
+// A Boolean value that indicates whether the window created by a popover's detachment is automatically created. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1534278-detached?language=objc
 func (p_ Popover) IsDetached() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isDetached"))
+	rv := objc.Call[bool](p_, objc.Sel("isDetached"))
 	return rv
 }
 
+// The delegate of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
 func (p_ Popover) Delegate() PopoverDelegateWrapper {
-	rv := objc.CallMethod[PopoverDelegateWrapper](p_, objc.GetSelector("delegate"))
+	rv := objc.Call[PopoverDelegateWrapper](p_, objc.Sel("delegate"))
 	return rv
 }
 
-func (p_ Popover) SetDelegate(value IPopoverDelegate) {
-	po := objc.WrapAsProtocol("NSPopoverDelegate", value)
-	objc.SetAssociatedObject(p_, objc.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
+// The delegate of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
+func (p_ Popover) SetDelegate(value PPopoverDelegate) {
+	po0 := objc.WrapAsProtocol("NSPopoverDelegate", value)
+	objc.SetAssociatedObject(p_, objc.AssociationKey("setDelegate"), po0, objc.ASSOCIATION_RETAIN)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), po0)
 }
 
-func (p_ Popover) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+// The delegate of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
+func (p_ Popover) SetDelegateObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+}
+
+// The content size of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1524677-contentsize?language=objc
+func (p_ Popover) ContentSize() foundation.Size {
+	rv := objc.Call[foundation.Size](p_, objc.Sel("contentSize"))
+	return rv
+}
+
+// The content size of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1524677-contentsize?language=objc
+func (p_ Popover) SetContentSize(value foundation.Size) {
+	objc.Call[objc.Void](p_, objc.Sel("setContentSize:"), value)
+}
+
+// The view controller that manages the content of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526794-contentviewcontroller?language=objc
+func (p_ Popover) ContentViewController() ViewController {
+	rv := objc.Call[ViewController](p_, objc.Sel("contentViewController"))
+	return rv
+}
+
+// The view controller that manages the content of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526794-contentviewcontroller?language=objc
+func (p_ Popover) SetContentViewController(value IViewController) {
+	objc.Call[objc.Void](p_, objc.Sel("setContentViewController:"), objc.Ptr(value))
+}
+
+// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
+func (p_ Popover) PositioningRect() foundation.Rect {
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("positioningRect"))
+	return rv
+}
+
+// The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526090-positioningrect?language=objc
+func (p_ Popover) SetPositioningRect(value foundation.Rect) {
+	objc.Call[objc.Void](p_, objc.Sel("setPositioningRect:"), value)
+}
+
+// Specifies if the popover is to be animated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
+func (p_ Popover) Animates() bool {
+	rv := objc.Call[bool](p_, objc.Sel("animates"))
+	return rv
+}
+
+// Specifies if the popover is to be animated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526527-animates?language=objc
+func (p_ Popover) SetAnimates(value bool) {
+	objc.Call[objc.Void](p_, objc.Sel("setAnimates:"), value)
+}
+
+// The appearance of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
+func (p_ Popover) Appearance() Appearance {
+	rv := objc.Call[Appearance](p_, objc.Sel("appearance"))
+	return rv
+}
+
+// The appearance of the popover. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
+func (p_ Popover) SetAppearance(value IAppearance) {
+	objc.Call[objc.Void](p_, objc.Sel("setAppearance:"), objc.Ptr(value))
 }

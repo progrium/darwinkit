@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,108 +8,123 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Bundle] class.
 var BundleClass = _BundleClass{objc.GetClass("NSBundle")}
 
 type _BundleClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Bundle] class.
 type IBundle interface {
 	objc.IObject
-	URLForResourceWithExtensionSubdirectory(name string, ext string, subpath string) URL
-	URLForResourceWithExtension(name string, ext string) URL
-	URLsForResourcesWithExtensionSubdirectory(ext string, subpath string) []URL
-	URLForResourceWithExtensionSubdirectoryLocalization(name string, ext string, subpath string, localizationName string) URL
 	URLsForResourcesWithExtensionSubdirectoryLocalization(ext string, subpath string, localizationName string) []URL
-	PathForResourceOfType(name string, ext string) string
-	PathForResourceOfTypeInDirectory_(name string, ext string, subpath string) string
+	URLForImageResource(name objc.IObject) URL
 	PathForResourceOfTypeInDirectoryForLocalization(name string, ext string, subpath string, localizationName string) string
-	PathsForResourcesOfTypeInDirectory_(ext string, subpath string) []string
-	PathsForResourcesOfTypeInDirectoryForLocalization(ext string, subpath string, localizationName string) []string
-	LocalizedStringForKeyValueTable(key string, value string, tableName string) string
 	URLForAuxiliaryExecutable(executableName string) URL
-	PathForAuxiliaryExecutable(executableName string) string
-	ObjectForInfoDictionaryKey(key string) objc.Object
-	ClassNamed(className string) objc.Class
-	PreflightAndReturnError(error *Error) bool
-	Load() bool
-	LoadAndReturnError(error *Error) bool
 	Unload() bool
+	ImageForResource(name objc.IObject) objc.Object
+	ContextHelpForKey(key objc.IObject) AttributedString
 	LocalizedAttributedStringForKeyValueTable(key string, value string, tableName string) AttributedString
-	ResourceURL() URL
+	PathsForResourcesOfTypeInDirectoryForLocalization(ext string, subpath string, localizationName string) []string
+	ClassNamed(className string) objc.Class
+	ObjectForInfoDictionaryKey(key string) objc.Object
+	LocalizedStringForKeyValueTable(key string, value string, tableName string) string
+	PathForAuxiliaryExecutable(executableName string) string
+	PathForSoundResource(name objc.IObject) string
+	LoadAndReturnError(error IError) bool
+	Load() bool
+	PreflightAndReturnError(error IError) bool
+	PathForImageResource(name objc.IObject) string
+	DevelopmentLocalization() string
+	PreferredLocalizations() []string
+	BuiltInPlugInsPath() string
+	PrincipalClass() objc.Class
+	BundlePath() string
+	AppStoreReceiptURL() URL
+	BundleIdentifier() string
+	Localizations() []string
 	ExecutableURL() URL
+	SharedFrameworksPath() string
+	PrivateFrameworksPath() string
+	ExecutablePath() string
+	IsLoaded() bool
+	SharedSupportPath() string
+	ExecutableArchitectures() []Number
 	PrivateFrameworksURL() URL
+	LocalizedInfoDictionary() map[string]objc.Object
 	SharedFrameworksURL() URL
+	InfoDictionary() map[string]objc.Object
+	ResourceURL() URL
+	ResourcePath() string
+	BundleURL() URL
 	BuiltInPlugInsURL() URL
 	SharedSupportURL() URL
-	AppStoreReceiptURL() URL
-	ResourcePath() string
-	ExecutablePath() string
-	PrivateFrameworksPath() string
-	SharedFrameworksPath() string
-	BuiltInPlugInsPath() string
-	SharedSupportPath() string
-	BundleURL() URL
-	BundlePath() string
-	BundleIdentifier() string
-	InfoDictionary() map[string]objc.Object
-	Localizations() []string
-	PreferredLocalizations() []string
-	DevelopmentLocalization() string
-	LocalizedInfoDictionary() map[string]objc.Object
-	PrincipalClass() objc.Class
-	ExecutableArchitectures() []Number
-	IsLoaded() bool
 }
 
+// A representation of the code and resources stored in a bundle directory on disk. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle?language=objc
 type Bundle struct {
 	objc.Object
 }
 
-func MakeBundle(ptr unsafe.Pointer) Bundle {
+func BundleFrom(ptr unsafe.Pointer) Bundle {
 	return Bundle{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (bc _BundleClass) BundleWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithURL:"), objc.ExtractPtr(url))
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleWithURL:"), objc.Ptr(url))
 	return rv
 }
 
+// Returns an NSBundle object that corresponds to the specified file URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1494992-bundlewithurl?language=objc
 func Bundle_BundleWithURL(url IURL) Bundle {
 	return BundleClass.BundleWithURL(url)
 }
 
-func (bc _BundleClass) BundleWithPath(path string) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithPath:"), path)
-	return rv
-}
-
-func Bundle_BundleWithPath(path string) Bundle {
-	return BundleClass.BundleWithPath(path)
-}
-
 func (b_ Bundle) InitWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(url))
+	rv := objc.Call[Bundle](b_, objc.Sel("initWithURL:"), objc.Ptr(url))
 	return rv
 }
 
+// Returns an NSBundle object initialized to correspond to the specified file URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409352-initwithurl?language=objc
 func Bundle_InitWithURL(url IURL) Bundle {
 	return BundleClass.Alloc().InitWithURL(url)
 }
 
 func (b_ Bundle) InitWithPath(path string) Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithPath:"), path)
+	rv := objc.Call[Bundle](b_, objc.Sel("initWithPath:"), path)
 	return rv
 }
 
+// Returns an NSBundle object initialized to correspond to the specified directory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1412741-initwithpath?language=objc
 func Bundle_InitWithPath(path string) Bundle {
 	return BundleClass.Alloc().InitWithPath(path)
 }
 
+func (bc _BundleClass) BundleWithPath(path string) Bundle {
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleWithPath:"), path)
+	return rv
+}
+
+// Returns an NSBundle object that corresponds to the specified directory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1495012-bundlewithpath?language=objc
+func Bundle_BundleWithPath(path string) Bundle {
+	return BundleClass.BundleWithPath(path)
+}
+
 func (bc _BundleClass) Alloc() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("alloc"))
+	rv := objc.Call[Bundle](bc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -117,7 +133,7 @@ func Bundle_Alloc() Bundle {
 }
 
 func (bc _BundleClass) New() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("new"))
+	rv := objc.Call[Bundle](bc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -126,316 +142,448 @@ func NewBundle() Bundle {
 	return BundleClass.New()
 }
 
-func Bundle_New() Bundle {
-	return BundleClass.New()
-}
-
 func (b_ Bundle) Init() Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("init"))
+	rv := objc.Call[Bundle](b_, objc.Sel("init"))
 	return rv
 }
 
-func Bundle_Init() Bundle {
-	return BundleClass.Alloc().Init()
+// Returns an array containing the file URLs for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1414688-urlsforresourceswithextension?language=objc
+func (b_ Bundle) URLsForResourcesWithExtensionSubdirectoryLocalization(ext string, subpath string, localizationName string) []URL {
+	rv := objc.Call[[]URL](b_, objc.Sel("URLsForResourcesWithExtension:subdirectory:localization:"), ext, subpath, localizationName)
+	return rv
 }
 
+// Returns the location of the specified image resource as an NSURL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519886-urlforimageresource?language=objc
+func (b_ Bundle) URLForImageResource(name objc.IObject) URL {
+	rv := objc.Call[URL](b_, objc.Sel("URLForImageResource:"), objc.Ptr(name))
+	return rv
+}
+
+// Returns the full pathname for the resource identified by the specified name and file extension, located in the specified bundle subdirectory, and limited to global resources and those associated with the specified localization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413471-pathforresource?language=objc
+func (b_ Bundle) PathForResourceOfTypeInDirectoryForLocalization(name string, ext string, subpath string, localizationName string) string {
+	rv := objc.Call[string](b_, objc.Sel("pathForResource:ofType:inDirectory:forLocalization:"), name, ext, subpath, localizationName)
+	return rv
+}
+
+// Returns the file URL of the executable with the specified name in the receiver’s bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411412-urlforauxiliaryexecutable?language=objc
+func (b_ Bundle) URLForAuxiliaryExecutable(executableName string) URL {
+	rv := objc.Call[URL](b_, objc.Sel("URLForAuxiliaryExecutable:"), executableName)
+	return rv
+}
+
+// Unloads the code associated with the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1412388-unload?language=objc
+func (b_ Bundle) Unload() bool {
+	rv := objc.Call[bool](b_, objc.Sel("unload"))
+	return rv
+}
+
+// Returns an NSImage instance associated with the specified name, which can be backed by multiple files representing different resolution versions of the image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519901-imageforresource?language=objc
+func (b_ Bundle) ImageForResource(name objc.IObject) objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("imageForResource:"), objc.Ptr(name))
+	return rv
+}
+
+// Returns the context-sensitive help for the specified key from the bundle's help file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1500918-contexthelpforkey?language=objc
+func (b_ Bundle) ContextHelpForKey(key objc.IObject) AttributedString {
+	rv := objc.Call[AttributedString](b_, objc.Sel("contextHelpForKey:"), objc.Ptr(key))
+	return rv
+}
+
+// Returns the NSBundle object with which the specified class is associated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417717-bundleforclass?language=objc
 func (bc _BundleClass) BundleForClass(aClass objc.IClass) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleForClass:"), objc.ExtractPtr(aClass))
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleForClass:"), objc.Ptr(aClass))
 	return rv
 }
 
+// Returns the NSBundle object with which the specified class is associated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417717-bundleforclass?language=objc
 func Bundle_BundleForClass(aClass objc.IClass) Bundle {
 	return BundleClass.BundleForClass(aClass)
 }
 
-func (bc _BundleClass) BundleWithIdentifier(identifier string) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithIdentifier:"), identifier)
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/3746904-localizedattributedstringforkey?language=objc
+func (b_ Bundle) LocalizedAttributedStringForKeyValueTable(key string, value string, tableName string) AttributedString {
+	rv := objc.Call[AttributedString](b_, objc.Sel("localizedAttributedStringForKey:value:table:"), key, value, tableName)
 	return rv
 }
 
-func Bundle_BundleWithIdentifier(identifier string) Bundle {
-	return BundleClass.BundleWithIdentifier(identifier)
-}
-
-func (b_ Bundle) URLForResourceWithExtensionSubdirectory(name string, ext string, subpath string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:subdirectory:"), name, ext, subpath)
-	return rv
-}
-
-func (b_ Bundle) URLForResourceWithExtension(name string, ext string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:"), name, ext)
-	return rv
-}
-
-func (b_ Bundle) URLsForResourcesWithExtensionSubdirectory(ext string, subpath string) []URL {
-	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:"), ext, subpath)
-	return rv
-}
-
-func (b_ Bundle) URLForResourceWithExtensionSubdirectoryLocalization(name string, ext string, subpath string, localizationName string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:subdirectory:localization:"), name, ext, subpath, localizationName)
-	return rv
-}
-
-func (b_ Bundle) URLsForResourcesWithExtensionSubdirectoryLocalization(ext string, subpath string, localizationName string) []URL {
-	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:localization:"), ext, subpath, localizationName)
-	return rv
-}
-
-func (bc _BundleClass) URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
-	rv := objc.CallMethod[URL](bc, objc.GetSelector("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.ExtractPtr(bundleURL))
-	return rv
-}
-
-func Bundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
-	return BundleClass.URLForResourceWithExtensionSubdirectoryInBundleWithURL(name, ext, subpath, bundleURL)
-}
-
-func (bc _BundleClass) URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
-	rv := objc.CallMethod[[]URL](bc, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.ExtractPtr(bundleURL))
-	return rv
-}
-
-func Bundle_URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
-	return BundleClass.URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext, subpath, bundleURL)
-}
-
-func (b_ Bundle) PathForResourceOfType(name string, ext string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:"), name, ext)
-	return rv
-}
-
-func (b_ Bundle) PathForResourceOfTypeInDirectory_(name string, ext string, subpath string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:inDirectory:"), name, ext, subpath)
-	return rv
-}
-
-func (b_ Bundle) PathForResourceOfTypeInDirectoryForLocalization(name string, ext string, subpath string, localizationName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:inDirectory:forLocalization:"), name, ext, subpath, localizationName)
-	return rv
-}
-
-func (b_ Bundle) PathsForResourcesOfTypeInDirectory_(ext string, subpath string) []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("pathsForResourcesOfType:inDirectory:"), ext, subpath)
-	return rv
-}
-
+// Returns an array containing the file for all bundle resources having the specified filename extension, residing in the specified resource subdirectory, and limited to global resources and those associated with the specified localization. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1416940-pathsforresourcesoftype?language=objc
 func (b_ Bundle) PathsForResourcesOfTypeInDirectoryForLocalization(ext string, subpath string, localizationName string) []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("pathsForResourcesOfType:inDirectory:forLocalization:"), ext, subpath, localizationName)
+	rv := objc.Call[[]string](b_, objc.Sel("pathsForResourcesOfType:inDirectory:forLocalization:"), ext, subpath, localizationName)
 	return rv
 }
 
-func (b_ Bundle) LocalizedStringForKeyValueTable(key string, value string, tableName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("localizedStringForKey:value:table:"), key, value, tableName)
+// Returns the Class object for the specified name. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1407299-classnamed?language=objc
+func (b_ Bundle) ClassNamed(className string) objc.Class {
+	rv := objc.Call[objc.Class](b_, objc.Sel("classNamed:"), className)
 	return rv
 }
 
-func (b_ Bundle) URLForAuxiliaryExecutable(executableName string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForAuxiliaryExecutable:"), executableName)
-	return rv
-}
-
-func (b_ Bundle) PathForAuxiliaryExecutable(executableName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForAuxiliaryExecutable:"), executableName)
-	return rv
-}
-
-func (b_ Bundle) ObjectForInfoDictionaryKey(key string) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("objectForInfoDictionaryKey:"), key)
-	return rv
-}
-
+// Returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417249-preferredlocalizationsfromarray?language=objc
 func (bc _BundleClass) PreferredLocalizationsFromArray(localizationsArray []string) []string {
-	rv := objc.CallMethod[[]string](bc, objc.GetSelector("preferredLocalizationsFromArray:"), localizationsArray)
+	rv := objc.Call[[]string](bc, objc.Sel("preferredLocalizationsFromArray:"), localizationsArray)
 	return rv
 }
 
+// Returns one or more localizations from the specified list that a bundle object would use to locate resources for the current user. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417249-preferredlocalizationsfromarray?language=objc
 func Bundle_PreferredLocalizationsFromArray(localizationsArray []string) []string {
 	return BundleClass.PreferredLocalizationsFromArray(localizationsArray)
 }
 
-func (bc _BundleClass) PreferredLocalizationsFromArrayForPreferences(localizationsArray []string, preferencesArray []string) []string {
-	rv := objc.CallMethod[[]string](bc, objc.GetSelector("preferredLocalizationsFromArray:forPreferences:"), localizationsArray, preferencesArray)
+// Creates and returns a file URL for the resource with the specified name and extension in the specified bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc
+func (bc _BundleClass) URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
+	rv := objc.Call[URL](bc, objc.Sel("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.Ptr(bundleURL))
 	return rv
 }
 
-func Bundle_PreferredLocalizationsFromArrayForPreferences(localizationsArray []string, preferencesArray []string) []string {
-	return BundleClass.PreferredLocalizationsFromArrayForPreferences(localizationsArray, preferencesArray)
+// Creates and returns a file URL for the resource with the specified name and extension in the specified bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc
+func Bundle_URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
+	return BundleClass.URLForResourceWithExtensionSubdirectoryInBundleWithURL(name, ext, subpath, bundleURL)
 }
 
-func (b_ Bundle) ClassNamed(className string) objc.Class {
-	rv := objc.CallMethod[objc.Class](b_, objc.GetSelector("classNamed:"), className)
+// Returns the value associated with the specified key in the receiver's information property list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1408696-objectforinfodictionarykey?language=objc
+func (b_ Bundle) ObjectForInfoDictionaryKey(key string) objc.Object {
+	rv := objc.Call[objc.Object](b_, objc.Sel("objectForInfoDictionaryKey:"), key)
 	return rv
 }
 
-func (b_ Bundle) PreflightAndReturnError(error *Error) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("preflightAndReturnError:"), unsafe.Pointer(error))
+// Returns a localized version of the string designated by the specified key and residing in the specified table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417694-localizedstringforkey?language=objc
+func (b_ Bundle) LocalizedStringForKeyValueTable(key string, value string, tableName string) string {
+	rv := objc.Call[string](b_, objc.Sel("localizedStringForKey:value:table:"), key, value, tableName)
 	return rv
 }
 
+// Returns the full pathname of the executable with the specified name in the receiver’s bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415214-pathforauxiliaryexecutable?language=objc
+func (b_ Bundle) PathForAuxiliaryExecutable(executableName string) string {
+	rv := objc.Call[string](b_, objc.Sel("pathForAuxiliaryExecutable:"), executableName)
+	return rv
+}
+
+// Returns the location of the specified sound resource file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1477280-pathforsoundresource?language=objc
+func (b_ Bundle) PathForSoundResource(name objc.IObject) string {
+	rv := objc.Call[string](b_, objc.Sel("pathForSoundResource:"), objc.Ptr(name))
+	return rv
+}
+
+// Loads the bundle’s executable code and returns any errors. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411819-loadandreturnerror?language=objc
+func (b_ Bundle) LoadAndReturnError(error IError) bool {
+	rv := objc.Call[bool](b_, objc.Sel("loadAndReturnError:"), objc.Ptr(error))
+	return rv
+}
+
+// Dynamically loads the bundle’s executable code into a running program, if the code has not already been loaded. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415927-load?language=objc
 func (b_ Bundle) Load() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("load"))
+	rv := objc.Call[bool](b_, objc.Sel("load"))
 	return rv
 }
 
-func (b_ Bundle) LoadAndReturnError(error *Error) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("loadAndReturnError:"), unsafe.Pointer(error))
+// Returns a Boolean value indicating whether the bundle’s executable code could be loaded successfully. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415083-preflightandreturnerror?language=objc
+func (b_ Bundle) PreflightAndReturnError(error IError) bool {
+	rv := objc.Call[bool](b_, objc.Sel("preflightAndReturnError:"), objc.Ptr(error))
 	return rv
 }
 
-func (b_ Bundle) Unload() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("unload"))
+// Returns the location of the specified image resource file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519854-pathforimageresource?language=objc
+func (b_ Bundle) PathForImageResource(name objc.IObject) string {
+	rv := objc.Call[string](b_, objc.Sel("pathForImageResource:"), objc.Ptr(name))
 	return rv
 }
 
-func (b_ Bundle) LocalizedAttributedStringForKeyValueTable(key string, value string, tableName string) AttributedString {
-	rv := objc.CallMethod[AttributedString](b_, objc.GetSelector("localizedAttributedStringForKey:value:table:"), key, value, tableName)
+// Returns the NSBundle instance that has the specified bundle identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc
+func (bc _BundleClass) BundleWithIdentifier(identifier string) Bundle {
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleWithIdentifier:"), identifier)
 	return rv
 }
 
-func (bc _BundleClass) MainBundle() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("mainBundle"))
+// Returns the NSBundle instance that has the specified bundle identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411929-bundlewithidentifier?language=objc
+func Bundle_BundleWithIdentifier(identifier string) Bundle {
+	return BundleClass.BundleWithIdentifier(identifier)
+}
+
+// The localization for the development language. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417526-developmentlocalization?language=objc
+func (b_ Bundle) DevelopmentLocalization() string {
+	rv := objc.Call[string](b_, objc.Sel("developmentLocalization"))
 	return rv
 }
 
-func Bundle_MainBundle() Bundle {
-	return BundleClass.MainBundle()
+// An ordered list of preferred localizations contained in the bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413220-preferredlocalizations?language=objc
+func (b_ Bundle) PreferredLocalizations() []string {
+	rv := objc.Call[[]string](b_, objc.Sel("preferredLocalizations"))
+	return rv
 }
 
+// The full pathname of the receiver's subdirectory containing plug-ins. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1408900-builtinpluginspath?language=objc
+func (b_ Bundle) BuiltInPlugInsPath() string {
+	rv := objc.Call[string](b_, objc.Sel("builtInPlugInsPath"))
+	return rv
+}
+
+// The bundle’s principal class. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409048-principalclass?language=objc
+func (b_ Bundle) PrincipalClass() objc.Class {
+	rv := objc.Call[objc.Class](b_, objc.Sel("principalClass"))
+	return rv
+}
+
+// The full pathname of the receiver’s bundle directory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1407973-bundlepath?language=objc
+func (b_ Bundle) BundlePath() string {
+	rv := objc.Call[string](b_, objc.Sel("bundlePath"))
+	return rv
+}
+
+// The file URL for the bundle’s App Store receipt. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1407276-appstorereceipturl?language=objc
+func (b_ Bundle) AppStoreReceiptURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("appStoreReceiptURL"))
+	return rv
+}
+
+// The receiver’s bundle identifier. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1418023-bundleidentifier?language=objc
+func (b_ Bundle) BundleIdentifier() string {
+	rv := objc.Call[string](b_, objc.Sel("bundleIdentifier"))
+	return rv
+}
+
+// A list of all the localizations contained in the bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417415-localizations?language=objc
+func (b_ Bundle) Localizations() []string {
+	rv := objc.Call[[]string](b_, objc.Sel("localizations"))
+	return rv
+}
+
+// The file URL of the receiver's executable file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1410470-executableurl?language=objc
+func (b_ Bundle) ExecutableURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("executableURL"))
+	return rv
+}
+
+// Returns an array of all of the application’s bundles that represent frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1408056-allframeworks?language=objc
 func (bc _BundleClass) AllFrameworks() []Bundle {
-	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allFrameworks"))
+	rv := objc.Call[[]Bundle](bc, objc.Sel("allFrameworks"))
 	return rv
 }
 
+// Returns an array of all of the application’s bundles that represent frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1408056-allframeworks?language=objc
 func Bundle_AllFrameworks() []Bundle {
 	return BundleClass.AllFrameworks()
 }
 
-func (bc _BundleClass) AllBundles() []Bundle {
-	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allBundles"))
+// The full pathname of the bundle’s subdirectory containing shared frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417226-sharedframeworkspath?language=objc
+func (b_ Bundle) SharedFrameworksPath() string {
+	rv := objc.Call[string](b_, objc.Sel("sharedFrameworksPath"))
 	return rv
 }
 
+// The full pathname of the bundle’s subdirectory containing private frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415562-privateframeworkspath?language=objc
+func (b_ Bundle) PrivateFrameworksPath() string {
+	rv := objc.Call[string](b_, objc.Sel("privateFrameworksPath"))
+	return rv
+}
+
+// The full pathname of the receiver's executable file. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409078-executablepath?language=objc
+func (b_ Bundle) ExecutablePath() string {
+	rv := objc.Call[string](b_, objc.Sel("executablePath"))
+	return rv
+}
+
+// The load status of a bundle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413594-loaded?language=objc
+func (b_ Bundle) IsLoaded() bool {
+	rv := objc.Call[bool](b_, objc.Sel("isLoaded"))
+	return rv
+}
+
+// The full pathname of the bundle’s subdirectory containing shared support files. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411609-sharedsupportpath?language=objc
+func (b_ Bundle) SharedSupportPath() string {
+	rv := objc.Call[string](b_, objc.Sel("sharedSupportPath"))
+	return rv
+}
+
+// An array of numbers indicating the architecture types supported by the bundle’s executable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415499-executablearchitectures?language=objc
+func (b_ Bundle) ExecutableArchitectures() []Number {
+	rv := objc.Call[[]Number](b_, objc.Sel("executableArchitectures"))
+	return rv
+}
+
+// The file URL of the bundle’s subdirectory containing private frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417617-privateframeworksurl?language=objc
+func (b_ Bundle) PrivateFrameworksURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("privateFrameworksURL"))
+	return rv
+}
+
+// A dictionary with the keys from the bundle’s localized property list. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1407645-localizedinfodictionary?language=objc
+func (b_ Bundle) LocalizedInfoDictionary() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](b_, objc.Sel("localizedInfoDictionary"))
+	return rv
+}
+
+// The file URL of the receiver's subdirectory containing shared frameworks. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411774-sharedframeworksurl?language=objc
+func (b_ Bundle) SharedFrameworksURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("sharedFrameworksURL"))
+	return rv
+}
+
+// A dictionary, constructed from the bundle’s Info.plist file, that contains information about the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413477-infodictionary?language=objc
+func (b_ Bundle) InfoDictionary() map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](b_, objc.Sel("infoDictionary"))
+	return rv
+}
+
+// The file URL of the bundle’s subdirectory containing resource files. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1414821-resourceurl?language=objc
+func (b_ Bundle) ResourceURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("resourceURL"))
+	return rv
+}
+
+// Returns the bundle object that contains the current executable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc
+func (bc _BundleClass) MainBundle() Bundle {
+	rv := objc.Call[Bundle](bc, objc.Sel("mainBundle"))
+	return rv
+}
+
+// Returns the bundle object that contains the current executable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1410786-mainbundle?language=objc
+func Bundle_MainBundle() Bundle {
+	return BundleClass.MainBundle()
+}
+
+// The full pathname of the bundle’s subdirectory containing resources. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417723-resourcepath?language=objc
+func (b_ Bundle) ResourcePath() string {
+	rv := objc.Call[string](b_, objc.Sel("resourcePath"))
+	return rv
+}
+
+// The full URL of the receiver’s bundle directory. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415654-bundleurl?language=objc
+func (b_ Bundle) BundleURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("bundleURL"))
+	return rv
+}
+
+// The file URL of the receiver's subdirectory containing plug-ins. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409603-builtinpluginsurl?language=objc
+func (b_ Bundle) BuiltInPlugInsURL() URL {
+	rv := objc.Call[URL](b_, objc.Sel("builtInPlugInsURL"))
+	return rv
+}
+
+// Returns an array of all the application’s non-framework bundles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413705-allbundles?language=objc
+func (bc _BundleClass) AllBundles() []Bundle {
+	rv := objc.Call[[]Bundle](bc, objc.Sel("allBundles"))
+	return rv
+}
+
+// Returns an array of all the application’s non-framework bundles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1413705-allbundles?language=objc
 func Bundle_AllBundles() []Bundle {
 	return BundleClass.AllBundles()
 }
 
-func (b_ Bundle) ResourceURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("resourceURL"))
-	return rv
-}
-
-func (b_ Bundle) ExecutableURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("executableURL"))
-	return rv
-}
-
-func (b_ Bundle) PrivateFrameworksURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("privateFrameworksURL"))
-	return rv
-}
-
-func (b_ Bundle) SharedFrameworksURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("sharedFrameworksURL"))
-	return rv
-}
-
-func (b_ Bundle) BuiltInPlugInsURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("builtInPlugInsURL"))
-	return rv
-}
-
+// The file URL of the bundle’s subdirectory containing shared support files. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1416823-sharedsupporturl?language=objc
 func (b_ Bundle) SharedSupportURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("sharedSupportURL"))
-	return rv
-}
-
-func (b_ Bundle) AppStoreReceiptURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("appStoreReceiptURL"))
-	return rv
-}
-
-func (b_ Bundle) ResourcePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("resourcePath"))
-	return rv
-}
-
-func (b_ Bundle) ExecutablePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("executablePath"))
-	return rv
-}
-
-func (b_ Bundle) PrivateFrameworksPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("privateFrameworksPath"))
-	return rv
-}
-
-func (b_ Bundle) SharedFrameworksPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("sharedFrameworksPath"))
-	return rv
-}
-
-func (b_ Bundle) BuiltInPlugInsPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("builtInPlugInsPath"))
-	return rv
-}
-
-func (b_ Bundle) SharedSupportPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("sharedSupportPath"))
-	return rv
-}
-
-func (b_ Bundle) BundleURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("bundleURL"))
-	return rv
-}
-
-func (b_ Bundle) BundlePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("bundlePath"))
-	return rv
-}
-
-func (b_ Bundle) BundleIdentifier() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("bundleIdentifier"))
-	return rv
-}
-
-func (b_ Bundle) InfoDictionary() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](b_, objc.GetSelector("infoDictionary"))
-	return rv
-}
-
-func (b_ Bundle) Localizations() []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("localizations"))
-	return rv
-}
-
-func (b_ Bundle) PreferredLocalizations() []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("preferredLocalizations"))
-	return rv
-}
-
-func (b_ Bundle) DevelopmentLocalization() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("developmentLocalization"))
-	return rv
-}
-
-func (b_ Bundle) LocalizedInfoDictionary() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](b_, objc.GetSelector("localizedInfoDictionary"))
-	return rv
-}
-
-func (b_ Bundle) PrincipalClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](b_, objc.GetSelector("principalClass"))
-	return rv
-}
-
-func (b_ Bundle) ExecutableArchitectures() []Number {
-	rv := objc.CallMethod[[]Number](b_, objc.GetSelector("executableArchitectures"))
-	return rv
-}
-
-func (b_ Bundle) IsLoaded() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLoaded"))
+	rv := objc.Call[URL](b_, objc.Sel("sharedSupportURL"))
 	return rv
 }

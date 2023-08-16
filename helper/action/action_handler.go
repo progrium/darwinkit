@@ -34,7 +34,7 @@ func Wrap(handler Handler) (target Target, selector objc.Selector) {
 	}
 	h := cgo.NewHandle(handler)
 	return Target{
-		Object: objc.MakeObject(C.C_NewAction(C.uintptr_t(h))),
+		Object: objc.ObjectFrom(C.C_NewAction(C.uintptr_t(h))),
 	}, objc.SelectorRegisterName("onAction:")
 }
 
@@ -51,7 +51,7 @@ func Set(instance CanSet, handler Handler) {
 func callAction(hp C.uintptr_t, senderPtr unsafe.Pointer) {
 	h := cgo.Handle(hp)
 	handler := h.Value().(Handler)
-	handler(objc.MakeObject(senderPtr))
+	handler(objc.ObjectFrom(senderPtr))
 }
 
 //export deleteActionHandle

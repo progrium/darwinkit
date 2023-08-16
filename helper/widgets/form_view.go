@@ -21,10 +21,10 @@ type FormView struct {
 
 // NewFormView create new form view
 func NewFormView() *FormView {
-	gv := appkit.GridViewClass.GridViewWithNumberOfColumnsRows(2, 0)
+	gv := appkit.GridView_GridViewWithNumberOfColumnsRows(2, 0)
 	gv.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	gv.SetContentHuggingPriorityForOrientation(appkit.LayoutPriorityDefaultHigh, appkit.LayoutConstraintOrientationHorizontal)
-	gv.SetContentHuggingPriorityForOrientation(appkit.LayoutPriorityDefaultHigh, appkit.LayoutConstraintOrientationVertical)
+	gv.SetContentHuggingPriorityForOrientation(750.0, appkit.LayoutConstraintOrientationHorizontal)
+	gv.SetContentHuggingPriorityForOrientation(750.0, appkit.LayoutConstraintOrientationVertical)
 
 	return &FormView{
 		GridView: gv,
@@ -83,7 +83,7 @@ func (f *FormView) SetLabelFont(font appkit.IFont) {
 	size := labelColumn.NumberOfCells()
 	for i := 0; i < size; i++ {
 		v := labelColumn.CellAtIndex(i).ContentView()
-		label := appkit.MakeTextField(v.Ptr())
+		label := appkit.TextFieldFrom(v.Ptr())
 		label.SetFont(font)
 	}
 }

@@ -10,12 +10,60 @@ import (
 
 // todo: generate
 type ModalSession unsafe.Pointer
+type AccessibilityLoadingToken unsafe.Pointer
 
 // todo: generate
 const VariableStatusItemLength float64 = -1
 
 // for some reason not in symbols.zip?
-type FontWidth float32
+type FontWidth float64
+
+// symbols db is missing a few common methods
+
+func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:constant:"), anchor, c)
+	return rv
+}
+
+// Inserts a view among the view’s subviews so it’s displayed immediately above or below another view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483640-addsubview?language=objc
+func (v_ View) AddSubviewPositionedRelativeTo(view IView, place WindowOrderingMode, otherView IView) {
+	objc.Call[objc.Void](v_, objc.Sel("addSubview:positioned:relativeTo:"), view, place, otherView)
+}
+
+func (fc _FontClass) FontWithNameSize(fontName string, fontSize float64) Font {
+	rv := objc.Call[Font](fc, objc.Sel("fontWithName:size:"), fontName, fontSize)
+	return rv
+}
+
+// Creates a font object for the specified font name and font size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname/
+func Font_FontWithNameSize(fontName string, fontSize float64) Font {
+	return FontClass.FontWithNameSize(fontName, fontSize)
+}
+
+func (w_ Window) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
+	rv := objc.Call[Window](w_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
+	return rv
+}
+
+// Initializes the window with the specified values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
+func Window_InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
+	return WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
+}
+
+// currently this is deprecated but is still needed pre-mac14
+// todo: remove when deprecated are added back (but also under build tag per version)
+
+func (a_ Application) ActivateIgnoringOtherApps(flag bool) {
+	objc.Call[objc.Void](a_, objc.Sel("activateIgnoringOtherApps:"), flag)
+}
+
+// helpers?
 
 func DisableAutoresizingTranslate[T IView](v T) T {
 	v.SetTranslatesAutoresizingMaskIntoConstraints(false)
@@ -95,14 +143,14 @@ type ScrollableTextView struct {
 
 // ContentTextView return the inner TextView
 func (t *ScrollableTextView) ContentTextView() TextView {
-	return MakeTextView(t.DocumentView().Ptr())
+	return TextViewFrom(t.DocumentView().Ptr())
 }
 
 // NewScrollableTextView create and return new scrollable text view.
 func NewScrollableTextView() ScrollableTextView {
-	stv := TextViewClass.ScrollableTextView()
+	stv := TextView_ScrollableTextView()
 	stv.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	tv := MakeTextView(stv.DocumentView().Ptr())
+	tv := TextViewFrom(stv.DocumentView().Ptr())
 	tv.SetAutomaticQuoteSubstitutionEnabled(false)
 	tv.SetAutomaticDashSubstitutionEnabled(false)
 	tv.SetAllowsUndo(true)
@@ -111,7 +159,7 @@ func NewScrollableTextView() ScrollableTextView {
 
 // NewWindowWithSize create a common window with close/minimize buttons
 func NewWindowWithSize(width, height float64) Window {
-	return WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(
+	return Window_InitWithContentRectStyleMaskBackingDefer(
 		foundation.Rect{Size: foundation.Size{Width: width, Height: height}},
 		WindowStyleMaskTitled|WindowStyleMaskClosable|WindowStyleMaskResizable|WindowStyleMaskMiniaturizable,
 		BackingStoreBuffered,
@@ -121,7 +169,7 @@ func NewWindowWithSize(width, height float64) Window {
 
 // NewWindowWithSizeAndStyle create a common window with styles
 func NewWindowWithSizeAndStyle(width, height float64, style WindowStyleMask) Window {
-	return WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(
+	return Window_InitWithContentRectStyleMaskBackingDefer(
 		foundation.Rect{Size: foundation.Size{Width: width, Height: height}},
 		style,
 		BackingStoreBuffered,

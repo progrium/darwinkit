@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSUserInterfaceItemIdentifier",
-    "module": "AppKit",
-    "target_type": "NSString*"
-}

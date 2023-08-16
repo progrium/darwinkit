@@ -45,7 +45,7 @@ func (i IMP) Ptr() unsafe.Pointer {
 	return i.ptr
 }
 
-func MakeIMP(ptr unsafe.Pointer) IMP {
+func IMPFrom(ptr unsafe.Pointer) IMP {
 	return IMP{ptr}
 }
 
@@ -198,14 +198,14 @@ type Selector struct {
 	ptr unsafe.Pointer
 }
 
-func MakeSelector(ptr unsafe.Pointer) Selector {
+func SelectorFrom(ptr unsafe.Pointer) Selector {
 	return Selector{ptr}
 }
 
 var selectorCache = SyncCache[string, Selector]{}
 
-// GetSelector return a method selector by the name. The selector is cached at go side.
-func GetSelector(selName string) Selector {
+// Sel return a method selector by the name. The selector is cached at go side.
+func Sel(selName string) Selector {
 	return selectorCache.Load(selName, func(selName string) Selector {
 		return SelectorRegisterName(selName)
 	})
@@ -222,8 +222,8 @@ func (s Selector) Ptr() unsafe.Pointer {
 	return s.ptr
 }
 
-// GetName return selector name
-func (s Selector) GetName() string {
+// Name return selector name
+func (s Selector) Name() string {
 	cstr := C.Selector_SEL_GetName(s.ptr)
 	return C.GoString(cstr)
 }
@@ -243,7 +243,7 @@ func SetAssociatedObject(o IObject, key unsafe.Pointer, value IObject, policy As
 }
 
 func GetAssociatedObject(o IObject, key unsafe.Pointer) Object {
-	return MakeObject(C.Objc_GetAssociatedObject(o.Ptr(), key))
+	return ObjectFrom(C.Objc_GetAssociatedObject(o.Ptr(), key))
 }
 
 func RemoveAssociatedObjects(o IObject) {

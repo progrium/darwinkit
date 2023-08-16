@@ -18,9 +18,7 @@ func (c *PointerType) GoImports() set.Set[string] {
 
 func (c *PointerType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	switch UnwrapAlias(c.Type).(type) {
-	case *StructType:
-		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
-	case *PrimitiveType:
+	case *StructType, *PrimitiveType, *KernelType:
 		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
 	case *ClassType:
 		return "*" + c.Type.GoName(currentModule, true)

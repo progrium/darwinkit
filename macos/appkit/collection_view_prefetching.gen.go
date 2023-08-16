@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -6,26 +7,27 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type ICollectionViewPrefetching interface {
-	ImplementsCollectionViewCancelPrefetchingForItemsAtIndexPaths() bool
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewprefetching?language=objc
+type PCollectionViewPrefetching interface {
 	// optional
-	CollectionViewCancelPrefetchingForItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath)
-	// required
 	CollectionViewPrefetchItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath)
+	HasCollectionViewPrefetchItemsAtIndexPaths() bool
 }
 
+// A concrete type wrapper for the [PCollectionViewPrefetching] protocol.
 type CollectionViewPrefetchingWrapper struct {
 	objc.Object
 }
 
-func (c_ CollectionViewPrefetchingWrapper) ImplementsCollectionViewCancelPrefetchingForItemsAtIndexPaths() bool {
-	return c_.RespondsToSelector(objc.GetSelector("collectionView:cancelPrefetchingForItemsAtIndexPaths:"))
+func (c_ CollectionViewPrefetchingWrapper) HasCollectionViewPrefetchItemsAtIndexPaths() bool {
+	return c_.RespondsToSelector(objc.Sel("collectionView:prefetchItemsAtIndexPaths:"))
 }
 
-func (c_ CollectionViewPrefetchingWrapper) CollectionViewCancelPrefetchingForItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:cancelPrefetchingForItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), indexPaths)
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewprefetching/2879293-collectionview?language=objc
 func (c_ CollectionViewPrefetchingWrapper) CollectionViewPrefetchItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:prefetchItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), indexPaths)
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:prefetchItemsAtIndexPaths:"), objc.Ptr(collectionView), indexPaths)
 }

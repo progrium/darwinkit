@@ -34,7 +34,7 @@ func main() {
 		fmt.Print(string(exportConstants(db, mod, TargetPlatform, TargetVersion)))
 	} else {
 		for _, m := range modules.All {
-			if m.Package == "objc" {
+			if m.Package == "objc" || m.Package == "dispatch" || m.Package == "kernel" {
 				continue
 			}
 			dump := exportConstants(db, &m, TargetPlatform, TargetVersion)
@@ -73,7 +73,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 	//var constFloatPtrs []string
 	addConst := func(typeInfo declparse.TypeInfo, name string) bool {
 		switch typeInfo.Name {
-		case "int", "long", "long long", "short", "NSUInteger", "NSInteger":
+		case "int", "long", "long long", "short", "NSUInteger", "NSInteger", "uint8_t", "char":
 			constInts = append(constInts, name)
 			return true
 		case "NSString", "CFStringRef":
@@ -114,6 +114,21 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 		if !s.HasPlatform(platform, version, true) {
 			continue
 		}
+		if strings.Contains(s.Path, "anonymous") ||
+			strings.HasPrefix(s.Name, "IOSurfaceProperty") || // deprecated non defined, replaced with functions
+			strings.HasPrefix(s.Name, "kAudioDeviceClockAlgorithm") || // not sure what include is needed for these
+			strings.HasPrefix(s.Name, "kAudioServerPlugIn") || // not sure what include is needed for these
+			strings.HasPrefix(s.Name, "kAUCarbon") || // carbon related ones seem to be gone?
+			strings.HasPrefix(s.Name, "kAudioUnitCarbon") || // carbon related ones seem to be gone?
+			strings.HasPrefix(s.Name, "kCMIOBlockBufferAttachmentKey") ||
+			strings.HasPrefix(s.Name, "kCMIOSampleBufferAttachment") {
+			// core media has a bunch of anonymous enums
+			// where the cases don't seem defined. as well
+			// as these enums / const prefixes:
+			// kCMIOBlockBufferAttachmentKey
+			// kCMIOSampleBufferAttachment
+			continue
+		}
 		// ignore list. these deprecated ones aren't defined for me on macOS 12
 		if strIn([]string{
 			"QCCompositionInputRSSArticleDurationKey",
@@ -131,6 +146,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 			"kBluetoothKeyboardJISReturn",
 			"kBluetoothKeyboardISOReturn",
 			"kBluetoothKeyboardANSIReturn",
+			"MTLGPUFamilyApple8", // prob not on my platform
 		}, s.Name) {
 			continue
 		}
@@ -149,9 +165,12 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 			if ok := addConst(stmt.Variable.Type, s.Name); ok {
 				continue
 			}
+			if stmt.Variable.Type.Name == "id" {
+				continue
+			}
 
 			lookupType := func(name string) (ti *declparse.TypeInfo, ok bool) {
-				typ := db.FindByName(name)
+				typ := db.FindTypeSymbol(name)
 				if typ == nil {
 					log.Fatalf("unable to find symbol: %s\n", name)
 				}
@@ -228,12 +247,29 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 		// since uikit does not exist on macos
 		framework = modules.Get("appkit")
 	}
+	extraInclude := ""
+	extraLoad := ""
+	if framework.Package == "coremedia" {
+		extraInclude = "#include <CoreVideo/CoreVideo.h>"
+		extraLoad = "-framework CoreVideo"
+	}
+	if framework.Package == "audiotoolbox" {
+		extraInclude = "#include <AudioUnit/AudioUnit.h>"
+		extraLoad = "-framework AudioUnit"
+	}
+	if framework.Package == "coreaudiotypes" {
+		framework.Name = "CoreAudio"
+	}
+	if framework.Package == "iosurface" {
+		extraInclude = "#import <IOSurface/IOSurfaceRef.h>"
+	}
 	source := fmt.Sprintf(`package main
 
 /*
 #cgo CFLAGS: -w -x objective-c
-#cgo LDFLAGS: -lobjc -framework %s
+#cgo LDFLAGS: -lobjc -framework %s %s
 #include <%s>
+%s
 
 void Main() {
 %s
@@ -245,7 +281,7 @@ import "C"
 func main() {
 	C.Main()
 }
-`, framework.Name, framework.Header, strings.Join(constPrintfs, ""))
+`, framework.Name, extraLoad, framework.Header, extraInclude, strings.Join(constPrintfs, ""))
 
 	return evalSource(source)
 }

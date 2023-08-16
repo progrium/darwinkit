@@ -23,7 +23,7 @@ func initAndRun() {
 	// text field
 	textView := appkit.TextView_ScrollableTextView()
 	textView.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	tv := appkit.MakeTextView(textView.DocumentView().Ptr())
+	tv := appkit.TextViewFrom(textView.DocumentView().Ptr())
 	tv.SetAllowsUndo(true)
 	tv.SetRichText(false)
 	w.ContentView().AddSubview(textView)
@@ -59,22 +59,23 @@ func setMainMenu(app appkit.Application) {
 	menu := appkit.Menu_InitWithTitle("main")
 	app.SetMainMenu(menu)
 
-	mainMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
+	mainMenuItem := appkit.NewMenuItemWithSelector(" ", " ", objc.Selector{})
 	mainMenuMenu := appkit.Menu_InitWithTitle("App")
-	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", app.Hide))
-	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", app.Terminate))
+	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", func(sender objc.Object) { app.Hide(nil) }))
+	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", func(sender objc.Object) { app.Terminate(nil) }))
 	mainMenuItem.SetSubmenu(mainMenuMenu)
 	menu.AddItem(mainMenuItem)
 
-	testMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
+	testMenuItem := appkit.NewMenuItemWithSelector(" ", " ", objc.Selector{})
 	testMenu := appkit.Menu_InitWithTitle("Edit")
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.GetSelector("selectAll:")))
-	testMenu.AddItem(appkit.MenuItem_SeparatorItem())
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Copy", "c", objc.GetSelector("copy:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Paste", "v", objc.GetSelector("paste:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Cut", "x", objc.GetSelector("cut:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Undo", "z", objc.GetSelector("undo:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Redo", "Z", objc.GetSelector("redo:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.Sel("selectAll:")))
+	// missing symbol?
+	//testMenu.AddItem(appkit.MenuItem_SeparatorItem())
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Copy", "c", objc.Sel("copy:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Paste", "v", objc.Sel("paste:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Cut", "x", objc.Sel("cut:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Undo", "z", objc.Sel("undo:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Redo", "Z", objc.Sel("redo:")))
 	testMenuItem.SetSubmenu(testMenu)
 	menu.AddItem(testMenuItem)
 }
@@ -86,8 +87,8 @@ func setSystemBar(app appkit.Application) {
 	button.SetTitle("TestTray")
 
 	menu := appkit.Menu_InitWithTitle("main")
-	menu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", app.Hide))
-	menu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", app.Terminate))
+	menu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", func(sender objc.Object) { app.Hide(nil) }))
+	menu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", func(sender objc.Object) { app.Terminate(nil) }))
 	item.SetMenu(menu)
 }
 

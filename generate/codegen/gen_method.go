@@ -23,12 +23,18 @@ type Method struct {
 	Required     bool // If this method is required. only for protocol method.
 	InitMethod   bool // method that return instancetype
 	Suffix       bool // GoName conflicts so add suffix to this method
+	Description  string
+	DocURL       string
 
 	goFuncName string
 	identifier string
 }
 
 func (m *Method) needRelease() bool {
+	switch m.ReturnType.(type) {
+	case *typing.PrimitiveType, *typing.StringType:
+		return false
+	}
 	return strings.HasPrefix(m.Name, "new") || !strings.HasPrefix(m.Name, "init") && strings.HasPrefix(m.Name, "Initial") ||
 		strings.HasPrefix(m.Name, "copy") || strings.HasPrefix(m.Name, "mutableCopy")
 }
@@ -77,6 +83,11 @@ func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string,
 		cw.WriteLine("// deprecated")
 	}
 
+	if m.DocURL != "" {
+		cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
+		cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
+	}
+
 	var receiver string
 	if m.ClassMethod {
 		receiver = strings.ToLower(typeName[0:1]) + "c"
@@ -96,20 +107,21 @@ func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string,
 	default:
 		returnTypeStr = m.ReturnType.GoName(currentModule, true)
 	}
-	callCode := fmt.Sprintf("objc.CallMethod[%s](%s, objc.GetSelector(\"%s\")", returnTypeStr, receiver, m.Selector())
+	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, m.Selector())
 	var sb strings.Builder
-	for _, p := range m.Params {
+	for idx, p := range m.Params {
 		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
 		case *typing.ClassType:
-			sb.WriteString("objc.ExtractPtr(" + p.GoName() + ")")
+			sb.WriteString("objc.Ptr(" + p.GoName() + ")")
 		case *typing.ProtocolType:
-			cw.WriteLineF("po := objc.WrapAsProtocol(\"%s\", %s)", tt.Name, p.GoName())
+			pvar := fmt.Sprintf("po%d", idx)
+			cw.WriteLineF("%s := objc.WrapAsProtocol(\"%s\", %s)", pvar, tt.Name, p.GoName())
 			if m.WeakProperty { // weak property setter
 				cw.WriteLineF("objc.SetAssociatedObject(%s, objc.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
-					receiver, m.GoName, "po")
+					receiver, m.GoName, pvar)
 			}
-			sb.WriteString("po")
+			sb.WriteString(pvar)
 		case *typing.PointerType:
 			switch tt.Type.(type) {
 			case *typing.ClassType: //object pointer convert to unsafe.Pointer, avoiding ffi treat it as PointerHolder
@@ -159,23 +171,28 @@ func (m *Method) GoFuncDeclare(currentModule *modules.Module, goTypeName string)
 	}
 
 	var returnType = m.ReturnType.GoName(currentModule, true)
-	return m.GoFuncName(goTypeName) + "(" + strings.Join(paramStrs, ", ") + ")" + " " + returnType
+	return m.GoFuncName() + "(" + strings.Join(paramStrs, ", ") + ")" + " " + returnType
 }
 
 // GoFuncName return go func name
-func (m *Method) GoFuncName(goTypeName string) string {
+func (m *Method) GoFuncName() string {
 	if m.goFuncName == "" {
 		var sb strings.Builder
 		name := m.GoName
-		sb.WriteString(stringx.Capitalize(name))
+		if len(m.Params) == 0 {
+			sb.WriteString(stringx.Capitalize(name))
+		}
 
 		for _, p := range m.Params {
 			sb.WriteString(stringx.Capitalize(p.FieldName))
+			if p.Object {
+				sb.WriteString("Object")
+			}
 		}
 
 		m.goFuncName = sb.String()
 	}
-	if m.Suffix {
+	if m.Suffix || m.goFuncName == "Object" {
 		return m.goFuncName + "_"
 	}
 	return m.goFuncName
@@ -201,6 +218,9 @@ func (m *Method) ProtocolGoFuncName() string {
 				continue
 			}
 			sb.WriteString(stringx.Capitalize(p.FieldName))
+			if p.Object {
+				sb.WriteString("Object")
+			}
 		}
 
 		m.goFuncName = sb.String()
@@ -217,10 +237,9 @@ func (m *Method) GoImports() set.Set[string] {
 	for _, param := range m.Params {
 		imports.AddSet(param.Type.GoImports())
 	}
-	if m.WeakProperty {
-		//imports.Add("github.com/progrium/macdriver/macos/internal")
+	if m.ReturnType != nil {
+		imports.AddSet(m.ReturnType.GoImports())
 	}
-	imports.AddSet(m.ReturnType.GoImports())
 	return imports
 }
 
@@ -243,6 +262,7 @@ func (m *Method) ToProtocolParamAsObjectMethod() *Method {
 				Name:      p.Name,
 				Type:      typing.Object,
 				FieldName: p.FieldName,
+				Object:    true,
 			}
 		default:
 			newParams[i] = p
@@ -250,7 +270,7 @@ func (m *Method) ToProtocolParamAsObjectMethod() *Method {
 	}
 	return &Method{
 		Name:         m.Name,
-		GoName:       m.GoName + "0",
+		GoName:       m.GoName,
 		Params:       newParams,
 		Suffix:       m.Suffix,
 		ReturnType:   m.ReturnType,
@@ -258,5 +278,7 @@ func (m *Method) ToProtocolParamAsObjectMethod() *Method {
 		WeakProperty: m.WeakProperty,
 		Deprecated:   m.Deprecated,
 		Required:     m.Required,
+		Description:  m.Description,
+		DocURL:       m.DocURL,
 	}
 }

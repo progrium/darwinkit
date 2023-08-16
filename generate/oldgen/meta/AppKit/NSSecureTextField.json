@@ -1,6 +1,0 @@
-{
-    "kind": "class",
-    "name": "NSSecureTextField",
-    "module": "AppKit",
-    "parent": "AppKit.NSTextField *"
-}

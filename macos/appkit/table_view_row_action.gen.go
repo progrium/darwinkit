@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,44 +8,52 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [TableViewRowAction] class.
 var TableViewRowActionClass = _TableViewRowActionClass{objc.GetClass("NSTableViewRowAction")}
 
 type _TableViewRowActionClass struct {
 	objc.Class
 }
 
+// An interface definition for the [TableViewRowAction] class.
 type ITableViewRowAction interface {
 	objc.IObject
 	Style() TableViewRowActionStyle
-	Title() string
-	SetTitle(value string)
 	BackgroundColor() Color
 	SetBackgroundColor(value IColor)
+	Title() string
+	SetTitle(value string)
 	Image() Image
 	SetImage(value IImage)
 }
 
+// A single action to present when the user swipes horizontally on a table row. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction?language=objc
 type TableViewRowAction struct {
 	objc.Object
 }
 
-func MakeTableViewRowAction(ptr unsafe.Pointer) TableViewRowAction {
+func TableViewRowActionFrom(ptr unsafe.Pointer) TableViewRowAction {
 	return TableViewRowAction{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (tc _TableViewRowActionClass) RowActionWithStyleTitleHandler(style TableViewRowActionStyle, title string, handler func(action TableViewRowAction, row int)) TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("rowActionWithStyle:title:handler:"), style, title, handler)
+	rv := objc.Call[TableViewRowAction](tc, objc.Sel("rowActionWithStyle:title:handler:"), style, title, handler)
 	return rv
 }
 
+// Creates and returns a new table view row action object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401994-rowactionwithstyle?language=objc
 func TableViewRowAction_RowActionWithStyleTitleHandler(style TableViewRowActionStyle, title string, handler func(action TableViewRowAction, row int)) TableViewRowAction {
 	return TableViewRowActionClass.RowActionWithStyleTitleHandler(style, title, handler)
 }
 
 func (tc _TableViewRowActionClass) Alloc() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("alloc"))
+	rv := objc.Call[TableViewRowAction](tc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -53,7 +62,7 @@ func TableViewRowAction_Alloc() TableViewRowAction {
 }
 
 func (tc _TableViewRowActionClass) New() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("new"))
+	rv := objc.Call[TableViewRowAction](tc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,47 +71,60 @@ func NewTableViewRowAction() TableViewRowAction {
 	return TableViewRowActionClass.New()
 }
 
-func TableViewRowAction_New() TableViewRowAction {
-	return TableViewRowActionClass.New()
-}
-
 func (t_ TableViewRowAction) Init() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](t_, objc.GetSelector("init"))
+	rv := objc.Call[TableViewRowAction](t_, objc.Sel("init"))
 	return rv
 }
 
-func TableViewRowAction_Init() TableViewRowAction {
-	return TableViewRowActionClass.Alloc().Init()
-}
-
+// The style applied to the action button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401982-style?language=objc
 func (t_ TableViewRowAction) Style() TableViewRowActionStyle {
-	rv := objc.CallMethod[TableViewRowActionStyle](t_, objc.GetSelector("style"))
+	rv := objc.Call[TableViewRowActionStyle](t_, objc.Sel("style"))
 	return rv
 }
 
-func (t_ TableViewRowAction) Title() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("title"))
-	return rv
-}
-
-func (t_ TableViewRowAction) SetTitle(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTitle:"), value)
-}
-
+// The background color of the action button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401984-backgroundcolor?language=objc
 func (t_ TableViewRowAction) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](t_, objc.GetSelector("backgroundColor"))
+	rv := objc.Call[Color](t_, objc.Sel("backgroundColor"))
 	return rv
 }
 
+// The background color of the action button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401984-backgroundcolor?language=objc
 func (t_ TableViewRowAction) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
 }
 
-func (t_ TableViewRowAction) Image() Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("image"))
+// The title of the action button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401992-title?language=objc
+func (t_ TableViewRowAction) Title() string {
+	rv := objc.Call[string](t_, objc.Sel("title"))
 	return rv
 }
 
+// The title of the action button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401992-title?language=objc
+func (t_ TableViewRowAction) SetTitle(value string) {
+	objc.Call[objc.Void](t_, objc.Sel("setTitle:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
+func (t_ TableViewRowAction) Image() Image {
+	rv := objc.Call[Image](t_, objc.Sel("image"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
 func (t_ TableViewRowAction) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), objc.Ptr(value))
 }

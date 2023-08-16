@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSHelpAnchorName",
-    "module": "AppKit",
-    "target_type": "NSString*"
-}

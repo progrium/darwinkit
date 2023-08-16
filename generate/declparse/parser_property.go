@@ -32,6 +32,12 @@ func parseProperty(p *Parser) (next stateFn, node Node, err error) {
 						if err != nil {
 							return nil, nil, err
 						}
+						t, _, _ := p.tb.Scan()
+						if t.String() == ":" {
+							val = val + ":"
+						} else {
+							p.tb.Unscan()
+						}
 						decl.Attrs[attr] = val
 					default:
 						decl.Attrs[attr] = ""
@@ -62,6 +68,12 @@ func parseProperty(p *Parser) (next stateFn, node Node, err error) {
 		return nil, nil, err
 	}
 	decl.Type = *typ
+
+	if typ.Func != nil {
+		decl.Name = typ.Func.Name
+		typ.Func.Name = ""
+		return nil, decl, nil
+	}
 
 	decl.Name, err = p.expectIdent()
 	if err != nil {

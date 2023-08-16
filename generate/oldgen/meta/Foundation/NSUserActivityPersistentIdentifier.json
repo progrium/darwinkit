@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSUserActivityPersistentIdentifier",
-    "module": "Foundation",
-    "target_type": "NSString*"
-}

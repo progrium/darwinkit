@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,151 +9,132 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Matrix] class.
 var MatrixClass = _MatrixClass{objc.GetClass("NSMatrix")}
 
 type _MatrixClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Matrix] class.
 type IMatrix interface {
 	IControl
-	AddColumn()
-	AddColumnWithCells(newCells []ICell)
-	AddRow()
-	AddRowWithCells(newCells []ICell)
-	CellFrameAtRowColumn(row int, col int) foundation.Rect
-	GetNumberOfRowsColumns(rowCount *int, colCount *int)
-	InsertColumn(column int)
-	InsertColumnWithCells(column int, newCells []ICell)
-	InsertRow(row int)
-	InsertRowWithCells(row int, newCells []ICell)
-	MakeCellAtRowColumn(row int, col int) Cell
-	PutCellAtRowColumn(newCell ICell, row int, col int)
-	RemoveColumn(col int)
-	RemoveRow(row int)
-	RenewRowsColumns(newRows int, newCols int)
-	SortUsingSelector(comparator objc.Selector)
-	GetRowColumnForPoint(row *int, col *int, point foundation.Point) bool
-	GetRowColumnOfCell(row *int, col *int, cell ICell) bool
-	SetStateAtRowColumn(value int, row int, col int)
-	SetToolTipForCell(toolTipString string, cell ICell)
-	ToolTipForCell(cell ICell) string
-	SelectCellAtRowColumn(row int, col int)
-	SelectCellWithTag(tag int) bool
-	SelectAll(sender objc.IObject)
-	SetSelectionFromToAnchorHighlight(startPos int, endPos int, anchorPos int, lit bool)
-	DeselectAllCells()
+	SendAction() bool
 	DeselectSelectedCell()
-	CellAtRowColumn(row int, col int) Cell
-	CellWithTag(tag int) Cell
+	AddColumnWithCells(newCells []ICell)
+	CellFrameAtRowColumn(row int, col int) foundation.Rect
+	SetToolTipForCell(toolTipString string, cell ICell)
+	AddRow()
+	RemoveRow(row int)
+	SortUsingFunctionContext(compare func(arg0 objc.Object, arg1 objc.Object, arg2 unsafe.Pointer) int, context unsafe.Pointer)
+	SizeToCells()
+	ScrollCellToVisibleAtRowColumn(row int, col int)
+	DrawCellAtRowColumn(row int, col int)
+	SelectCellWithTag(tag int) bool
+	PutCellAtRowColumn(newCell ICell, row int, col int)
+	HighlightCellAtRowColumn(flag bool, row int, col int)
+	SelectAll(sender objc.IObject)
 	SelectText(sender objc.IObject)
 	SelectTextAtRowColumn(row int, col int) Cell
 	TextShouldBeginEditing(textObject IText) bool
-	TextDidBeginEditing(notification foundation.INotification)
+	AddRowWithCells(newCells []ICell)
+	SortUsingSelector(comparator objc.Selector)
+	InsertRow(row int)
+	InsertColumnWithCells(column int, newCells []ICell)
 	TextDidChange(notification foundation.INotification)
-	TextShouldEndEditing(textObject IText) bool
-	TextDidEndEditing(notification foundation.INotification)
-	SetValidateSize(flag bool)
-	SizeToCells()
+	CellWithTag(tag int) Cell
+	CellAtRowColumn(row int, col int) Cell
+	TextDidBeginEditing(notification foundation.INotification)
 	SetScrollable(flag bool)
-	ScrollCellToVisibleAtRowColumn(row int, col int)
-	DrawCellAtRowColumn(row int, col int)
-	HighlightCellAtRowColumn(flag bool, row int, col int)
-	SendAction() bool
-	SendActionToForAllCells(selector objc.Selector, object objc.IObject, flag bool)
 	SendDoubleAction()
-	Mode() MatrixMode
-	SetMode(value MatrixMode)
+	SelectCellAtRowColumn(row int, col int)
+	RemoveColumn(col int)
+	DeselectAllCells()
+	MakeCellAtRowColumn(row int, col int) Cell
+	SetSelectionFromToAnchorHighlight(startPos int, endPos int, anchorPos int, lit bool)
+	ToolTipForCell(cell ICell) string
+	SetValidateSize(flag bool)
+	TextShouldEndEditing(textObject IText) bool
+	AddColumn()
+	RenewRowsColumns(newRows int, newCols int)
+	GetRowColumnOfCell(row *int, col *int, cell ICell) bool
+	TextDidEndEditing(notification foundation.INotification)
+	GetNumberOfRowsColumns(rowCount *int, colCount *int)
+	SetStateAtRowColumn(value int, row int, col int)
+	MouseDownFlags() int
+	DoubleAction() objc.Selector
+	SetDoubleAction(value objc.Selector)
+	SelectedCells() []Cell
+	TabKeyTraversesCells() bool
+	SetTabKeyTraversesCells(value bool)
+	SelectedCell() Cell
 	AllowsEmptySelection() bool
 	SetAllowsEmptySelection(value bool)
+	Cells() []Cell
+	CellBackgroundColor() Color
+	SetCellBackgroundColor(value IColor)
 	IsSelectionByRect() bool
 	SetSelectionByRect(value bool)
-	Prototype() Cell
-	SetPrototype(value ICell)
+	IsAutoscroll() bool
+	SetAutoscroll(value bool)
+	DrawsCellBackground() bool
+	SetDrawsCellBackground(value bool)
+	AutorecalculatesCellSize() bool
+	SetAutorecalculatesCellSize(value bool)
+	Delegate() MatrixDelegateWrapper
+	SetDelegate(value PMatrixDelegate)
+	SetDelegateObject(valueObject objc.IObject)
+	BackgroundColor() Color
+	SetBackgroundColor(value IColor)
+	DrawsBackground() bool
+	SetDrawsBackground(value bool)
 	CellSize() foundation.Size
 	SetCellSize(value foundation.Size)
+	KeyCell() Cell
+	SetKeyCell(value ICell)
+	SelectedColumn() int
+	SelectedRow() int
+	Mode() MatrixMode
+	SetMode(value MatrixMode)
+	AutosizesCells() bool
+	SetAutosizesCells(value bool)
+	CellClass() objc.Class
+	SetCellClass(value objc.IClass)
+	Prototype() Cell
+	SetPrototype(value ICell)
+	NumberOfRows() int
 	IntercellSpacing() foundation.Size
 	SetIntercellSpacing(value foundation.Size)
 	NumberOfColumns() int
-	NumberOfRows() int
-	AutorecalculatesCellSize() bool
-	SetAutorecalculatesCellSize(value bool)
-	KeyCell() Cell
-	SetKeyCell(value ICell)
-	SelectedCells() []Cell
-	SelectedColumn() int
-	SelectedRow() int
-	Cells() []Cell
-	BackgroundColor() Color
-	SetBackgroundColor(value IColor)
-	CellBackgroundColor() Color
-	SetCellBackgroundColor(value IColor)
-	DrawsBackground() bool
-	SetDrawsBackground(value bool)
-	DrawsCellBackground() bool
-	SetDrawsCellBackground(value bool)
-	TabKeyTraversesCells() bool
-	SetTabKeyTraversesCells(value bool)
-	Delegate() MatrixDelegateWrapper
-	SetDelegate(value IMatrixDelegate)
-	SetDelegate0(value objc.IObject)
-	AutosizesCells() bool
-	SetAutosizesCells(value bool)
-	IsAutoscroll() bool
-	SetAutoscroll(value bool)
-	DoubleAction() objc.Selector
-	SetDoubleAction(value objc.Selector)
-	MouseDownFlags() int
 }
 
+// A legacy interface for grouping radio buttons or other types of cells together. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix?language=objc
 type Matrix struct {
 	Control
 }
 
-func MakeMatrix(ptr unsafe.Pointer) Matrix {
+func MatrixFrom(ptr unsafe.Pointer) Matrix {
 	return Matrix{
-		Control: MakeControl(ptr),
+		Control: ControlFrom(ptr),
 	}
 }
 
 func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithFrame:"), frameRect)
 	return rv
 }
 
+// Initializes a newly allocated matrix with the specified frame. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436428-initwithframe?language=objc
 func Matrix_InitWithFrame(frameRect foundation.Rect) Matrix {
 	return MatrixClass.Alloc().InitWithFrame(frameRect)
 }
 
-func (m_ Matrix) InitWithFrameModeCellClassNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(factoryId), rowsHigh, colsWide)
-	return rv
-}
-
-func Matrix_InitWithFrameModeCellClassNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
-	return MatrixClass.Alloc().InitWithFrameModeCellClassNumberOfRowsNumberOfColumns(frameRect, mode, factoryId, rowsHigh, colsWide)
-}
-
-func (m_ Matrix) InitWithFrameModePrototypeNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(cell), rowsHigh, colsWide)
-	return rv
-}
-
-func Matrix_InitWithFrameModePrototypeNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
-	return MatrixClass.Alloc().InitWithFrameModePrototypeNumberOfRowsNumberOfColumns(frameRect, mode, cell, rowsHigh, colsWide)
-}
-
-func (m_ Matrix) Init() Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("init"))
-	return rv
-}
-
-func Matrix_Init() Matrix {
-	return MatrixClass.Alloc().Init()
-}
-
 func (mc _MatrixClass) Alloc() Matrix {
-	rv := objc.CallMethod[Matrix](mc, objc.GetSelector("alloc"))
+	rv := objc.Call[Matrix](mc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -161,7 +143,7 @@ func Matrix_Alloc() Matrix {
 }
 
 func (mc _MatrixClass) New() Matrix {
-	rv := objc.CallMethod[Matrix](mc, objc.GetSelector("new"))
+	rv := objc.Call[Matrix](mc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -170,392 +152,655 @@ func NewMatrix() Matrix {
 	return MatrixClass.New()
 }
 
-func Matrix_New() Matrix {
-	return MatrixClass.New()
-}
-
-func (m_ Matrix) AddColumn() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addColumn"))
-}
-
-func (m_ Matrix) AddColumnWithCells(newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addColumnWithCells:"), newCells)
-}
-
-func (m_ Matrix) AddRow() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addRow"))
-}
-
-func (m_ Matrix) AddRowWithCells(newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addRowWithCells:"), newCells)
-}
-
-func (m_ Matrix) CellFrameAtRowColumn(row int, col int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](m_, objc.GetSelector("cellFrameAtRow:column:"), row, col)
+func (m_ Matrix) Init() Matrix {
+	rv := objc.Call[Matrix](m_, objc.Sel("init"))
 	return rv
 }
 
-func (m_ Matrix) GetNumberOfRowsColumns(rowCount *int, colCount *int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("getNumberOfRows:columns:"), rowCount, colCount)
-}
-
-func (m_ Matrix) InsertColumn(column int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertColumn:"), column)
-}
-
-func (m_ Matrix) InsertColumnWithCells(column int, newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertColumn:withCells:"), column, newCells)
-}
-
-func (m_ Matrix) InsertRow(row int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertRow:"), row)
-}
-
-func (m_ Matrix) InsertRowWithCells(row int, newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertRow:withCells:"), row, newCells)
-}
-
-func (m_ Matrix) MakeCellAtRowColumn(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("makeCellAtRow:column:"), row, col)
-	return rv
-}
-
-func (m_ Matrix) PutCellAtRowColumn(newCell ICell, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("putCell:atRow:column:"), objc.ExtractPtr(newCell), row, col)
-}
-
-func (m_ Matrix) RemoveColumn(col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeColumn:"), col)
-}
-
-func (m_ Matrix) RemoveRow(row int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeRow:"), row)
-}
-
-func (m_ Matrix) RenewRowsColumns(newRows int, newCols int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("renewRows:columns:"), newRows, newCols)
-}
-
-func (m_ Matrix) SortUsingSelector(comparator objc.Selector) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sortUsingSelector:"), comparator)
-}
-
-func (m_ Matrix) GetRowColumnForPoint(row *int, col *int, point foundation.Point) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("getRow:column:forPoint:"), row, col, point)
-	return rv
-}
-
-func (m_ Matrix) GetRowColumnOfCell(row *int, col *int, cell ICell) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("getRow:column:ofCell:"), row, col, objc.ExtractPtr(cell))
-	return rv
-}
-
-func (m_ Matrix) SetStateAtRowColumn(value int, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setState:atRow:column:"), value, row, col)
-}
-
-func (m_ Matrix) SetToolTipForCell(toolTipString string, cell ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setToolTip:forCell:"), toolTipString, objc.ExtractPtr(cell))
-}
-
-func (m_ Matrix) ToolTipForCell(cell ICell) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("toolTipForCell:"), objc.ExtractPtr(cell))
-	return rv
-}
-
-func (m_ Matrix) SelectCellAtRowColumn(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectCellAtRow:column:"), row, col)
-}
-
-func (m_ Matrix) SelectCellWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("selectCellWithTag:"), tag)
-	return rv
-}
-
-func (m_ Matrix) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
-}
-
-func (m_ Matrix) SetSelectionFromToAnchorHighlight(startPos int, endPos int, anchorPos int, lit bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSelectionFrom:to:anchor:highlight:"), startPos, endPos, anchorPos, lit)
-}
-
-func (m_ Matrix) DeselectAllCells() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("deselectAllCells"))
-}
-
-func (m_ Matrix) DeselectSelectedCell() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("deselectSelectedCell"))
-}
-
-func (m_ Matrix) CellAtRowColumn(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("cellAtRow:column:"), row, col)
-	return rv
-}
-
-func (m_ Matrix) CellWithTag(tag int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("cellWithTag:"), tag)
-	return rv
-}
-
-func (m_ Matrix) SelectText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectText:"), objc.ExtractPtr(sender))
-}
-
-func (m_ Matrix) SelectTextAtRowColumn(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("selectTextAtRow:column:"), row, col)
-	return rv
-}
-
-func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
-	return rv
-}
-
-func (m_ Matrix) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
-}
-
-func (m_ Matrix) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
-}
-
-func (m_ Matrix) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
-	return rv
-}
-
-func (m_ Matrix) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
-}
-
-func (m_ Matrix) SetValidateSize(flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setValidateSize:"), flag)
-}
-
-func (m_ Matrix) SizeToCells() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sizeToCells"))
-}
-
-func (m_ Matrix) SetScrollable(flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setScrollable:"), flag)
-}
-
-func (m_ Matrix) ScrollCellToVisibleAtRowColumn(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("scrollCellToVisibleAtRow:column:"), row, col)
-}
-
-func (m_ Matrix) DrawCellAtRowColumn(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("drawCellAtRow:column:"), row, col)
-}
-
-func (m_ Matrix) HighlightCellAtRowColumn(flag bool, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("highlightCell:atRow:column:"), flag, row, col)
-}
-
+// If the selected cell has both an action and a target, sends its action to its target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436413-sendaction?language=objc
 func (m_ Matrix) SendAction() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("sendAction"))
+	rv := objc.Call[bool](m_, objc.Sel("sendAction"))
 	return rv
 }
 
-func (m_ Matrix) SendActionToForAllCells(selector objc.Selector, object objc.IObject, flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sendAction:to:forAllCells:"), selector, objc.ExtractPtr(object), flag)
+// Deselects the selected cell or cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436440-deselectselectedcell?language=objc
+func (m_ Matrix) DeselectSelectedCell() {
+	objc.Call[objc.Void](m_, objc.Sel("deselectSelectedCell"))
 }
 
+// Adds a new column of cells to the right of the last column, using the given cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436453-addcolumnwithcells?language=objc
+func (m_ Matrix) AddColumnWithCells(newCells []ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("addColumnWithCells:"), newCells)
+}
+
+// Returns the frame rectangle of the cell that would be drawn at the specified location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436417-cellframeatrow?language=objc
+func (m_ Matrix) CellFrameAtRowColumn(row int, col int) foundation.Rect {
+	rv := objc.Call[foundation.Rect](m_, objc.Sel("cellFrameAtRow:column:"), row, col)
+	return rv
+}
+
+// Sets the tooltip for the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436372-settooltip?language=objc
+func (m_ Matrix) SetToolTipForCell(toolTipString string, cell ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("setToolTip:forCell:"), toolTipString, objc.Ptr(cell))
+}
+
+// Adds a new row of cells below the last row. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436414-addrow?language=objc
+func (m_ Matrix) AddRow() {
+	objc.Call[objc.Void](m_, objc.Sel("addRow"))
+}
+
+// Removes the specified row from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436403-removerow?language=objc
+func (m_ Matrix) RemoveRow(row int) {
+	objc.Call[objc.Void](m_, objc.Sel("removeRow:"), row)
+}
+
+// Sorts the receiver’s cells in ascending order as defined by the specified comparison function. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436468-sortusingfunction?language=objc
+func (m_ Matrix) SortUsingFunctionContext(compare func(arg0 objc.Object, arg1 objc.Object, arg2 unsafe.Pointer) int, context unsafe.Pointer) {
+	objc.Call[objc.Void](m_, objc.Sel("sortUsingFunction:context:"), compare, context)
+}
+
+// Changes the width and the height of the receiver’s frame so it exactly contains the cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436408-sizetocells?language=objc
+func (m_ Matrix) SizeToCells() {
+	objc.Call[objc.Void](m_, objc.Sel("sizeToCells"))
+}
+
+// Scrolls the receiver so the specified cell is visible. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436455-scrollcelltovisibleatrow?language=objc
+func (m_ Matrix) ScrollCellToVisibleAtRowColumn(row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("scrollCellToVisibleAtRow:column:"), row, col)
+}
+
+// Displays the cell at the specified row and column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436495-drawcellatrow?language=objc
+func (m_ Matrix) DrawCellAtRowColumn(row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("drawCellAtRow:column:"), row, col)
+}
+
+// Selects the last cell with the given tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436446-selectcellwithtag?language=objc
+func (m_ Matrix) SelectCellWithTag(tag int) bool {
+	rv := objc.Call[bool](m_, objc.Sel("selectCellWithTag:"), tag)
+	return rv
+}
+
+// Replaces the cell at the specified row and column with the new cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436384-putcell?language=objc
+func (m_ Matrix) PutCellAtRowColumn(newCell ICell, row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("putCell:atRow:column:"), objc.Ptr(newCell), row, col)
+}
+
+// Highlights or unhighlights the cell at the specified row and column location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436499-highlightcell?language=objc
+func (m_ Matrix) HighlightCellAtRowColumn(flag bool, row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("highlightCell:atRow:column:"), flag, row, col)
+}
+
+// Selects and highlights all cells in the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436378-selectall?language=objc
+func (m_ Matrix) SelectAll(sender objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("selectAll:"), sender)
+}
+
+// Selects text in the currently selected cell or in the key cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436470-selecttext?language=objc
+func (m_ Matrix) SelectText(sender objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("selectText:"), sender)
+}
+
+// Selects the text in the cell at the specified location and returns the cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436459-selecttextatrow?language=objc
+func (m_ Matrix) SelectTextAtRowColumn(row int, col int) Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("selectTextAtRow:column:"), row, col)
+	return rv
+}
+
+// Requests permission to begin editing text. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436393-textshouldbeginediting?language=objc
+func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
+	rv := objc.Call[bool](m_, objc.Sel("textShouldBeginEditing:"), objc.Ptr(textObject))
+	return rv
+}
+
+// Adds a new row of cells below the last row, using the specified cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436450-addrowwithcells?language=objc
+func (m_ Matrix) AddRowWithCells(newCells []ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("addRowWithCells:"), newCells)
+}
+
+// Sorts the receiver’s cells in ascending order as defined by the comparison method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436475-sortusingselector?language=objc
+func (m_ Matrix) SortUsingSelector(comparator objc.Selector) {
+	objc.Call[objc.Void](m_, objc.Sel("sortUsingSelector:"), comparator)
+}
+
+// Inserts a new row of cells before the specified row. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436427-insertrow?language=objc
+func (m_ Matrix) InsertRow(row int) {
+	objc.Call[objc.Void](m_, objc.Sel("insertRow:"), row)
+}
+
+// Inserts a new column of cells before the specified column, using the given cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436483-insertcolumn?language=objc
+func (m_ Matrix) InsertColumnWithCells(column int, newCells []ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("insertColumn:withCells:"), column, newCells)
+}
+
+// Invoked when a key-down event or paste operation occurs that changes the receiver’s contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436489-textdidchange?language=objc
+func (m_ Matrix) TextDidChange(notification foundation.INotification) {
+	objc.Call[objc.Void](m_, objc.Sel("textDidChange:"), objc.Ptr(notification))
+}
+
+// Searches the receiver and returns the last cell matching the specified tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436481-cellwithtag?language=objc
+func (m_ Matrix) CellWithTag(tag int) Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("cellWithTag:"), tag)
+	return rv
+}
+
+// Returns the cell at the specified row and column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436424-cellatrow?language=objc
+func (m_ Matrix) CellAtRowColumn(row int, col int) Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("cellAtRow:column:"), row, col)
+	return rv
+}
+
+// Invoked when there’s a change in the text after the receiver gains first responder status. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436395-textdidbeginediting?language=objc
+func (m_ Matrix) TextDidBeginEditing(notification foundation.INotification) {
+	objc.Call[objc.Void](m_, objc.Sel("textDidBeginEditing:"), objc.Ptr(notification))
+}
+
+// Specifies whether the cells in the matrix are scrollable. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436420-setscrollable?language=objc
+func (m_ Matrix) SetScrollable(flag bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setScrollable:"), flag)
+}
+
+// Sends the double-click action message to the target of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436436-senddoubleaction?language=objc
 func (m_ Matrix) SendDoubleAction() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sendDoubleAction"))
+	objc.Call[objc.Void](m_, objc.Sel("sendDoubleAction"))
 }
 
-func (m_ Matrix) Mode() MatrixMode {
-	rv := objc.CallMethod[MatrixMode](m_, objc.GetSelector("mode"))
+// Selects the cell at the specified row and column within the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436399-selectcellatrow?language=objc
+func (m_ Matrix) SelectCellAtRowColumn(row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("selectCellAtRow:column:"), row, col)
+}
+
+// Removes the specified column at from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436397-removecolumn?language=objc
+func (m_ Matrix) RemoveColumn(col int) {
+	objc.Call[objc.Void](m_, objc.Sel("removeColumn:"), col)
+}
+
+// Deselects all cells in the receiver and, if necessary, redisplays the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436396-deselectallcells?language=objc
+func (m_ Matrix) DeselectAllCells() {
+	objc.Call[objc.Void](m_, objc.Sel("deselectAllCells"))
+}
+
+// Creates a new cell at the location specified by the given row and column in the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436439-makecellatrow?language=objc
+func (m_ Matrix) MakeCellAtRowColumn(row int, col int) Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("makeCellAtRow:column:"), row, col)
 	return rv
 }
 
-func (m_ Matrix) SetMode(value MatrixMode) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMode:"), value)
+// Programmatically selects a range of cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436405-setselectionfrom?language=objc
+func (m_ Matrix) SetSelectionFromToAnchorHighlight(startPos int, endPos int, anchorPos int, lit bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setSelectionFrom:to:anchor:highlight:"), startPos, endPos, anchorPos, lit)
 }
 
-func (m_ Matrix) AllowsEmptySelection() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("allowsEmptySelection"))
+// Returns the tooltip for the specified cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436401-tooltipforcell?language=objc
+func (m_ Matrix) ToolTipForCell(cell ICell) string {
+	rv := objc.Call[string](m_, objc.Sel("toolTipForCell:"), objc.Ptr(cell))
 	return rv
 }
 
-func (m_ Matrix) SetAllowsEmptySelection(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsEmptySelection:"), value)
+// Specifies whether the receiver's size information is validated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436503-setvalidatesize?language=objc
+func (m_ Matrix) SetValidateSize(flag bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setValidateSize:"), flag)
 }
 
-func (m_ Matrix) IsSelectionByRect() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isSelectionByRect"))
+// Requests permission to end editing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436509-textshouldendediting?language=objc
+func (m_ Matrix) TextShouldEndEditing(textObject IText) bool {
+	rv := objc.Call[bool](m_, objc.Sel("textShouldEndEditing:"), objc.Ptr(textObject))
 	return rv
 }
 
-func (m_ Matrix) SetSelectionByRect(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSelectionByRect:"), value)
+// Adds a new column of cells to the right of the last column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436419-addcolumn?language=objc
+func (m_ Matrix) AddColumn() {
+	objc.Call[objc.Void](m_, objc.Sel("addColumn"))
 }
 
-func (m_ Matrix) Prototype() Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("prototype"))
+// Changes the number of rows and columns in the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436452-renewrows?language=objc
+func (m_ Matrix) RenewRowsColumns(newRows int, newCols int) {
+	objc.Call[objc.Void](m_, objc.Sel("renewRows:columns:"), newRows, newCols)
+}
+
+// Searches the receiver for the specified cell and returns the row and column of the cell [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436421-getrow?language=objc
+func (m_ Matrix) GetRowColumnOfCell(row *int, col *int, cell ICell) bool {
+	rv := objc.Call[bool](m_, objc.Sel("getRow:column:ofCell:"), row, col, objc.Ptr(cell))
 	return rv
 }
 
-func (m_ Matrix) SetPrototype(value ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setPrototype:"), objc.ExtractPtr(value))
+// Invoked when text editing ends. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436426-textdidendediting?language=objc
+func (m_ Matrix) TextDidEndEditing(notification foundation.INotification) {
+	objc.Call[objc.Void](m_, objc.Sel("textDidEndEditing:"), objc.Ptr(notification))
 }
 
-func (m_ Matrix) CellSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](m_, objc.GetSelector("cellSize"))
-	return rv
+// Obtains the number of rows and columns in the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436423-getnumberofrows?language=objc
+func (m_ Matrix) GetNumberOfRowsColumns(rowCount *int, colCount *int) {
+	objc.Call[objc.Void](m_, objc.Sel("getNumberOfRows:columns:"), rowCount, colCount)
 }
 
-func (m_ Matrix) SetCellSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCellSize:"), value)
+// Sets the state of the cell at specified location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436479-setstate?language=objc
+func (m_ Matrix) SetStateAtRowColumn(value int, row int, col int) {
+	objc.Call[objc.Void](m_, objc.Sel("setState:atRow:column:"), value, row, col)
 }
 
-func (m_ Matrix) IntercellSpacing() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](m_, objc.GetSelector("intercellSpacing"))
-	return rv
-}
-
-func (m_ Matrix) SetIntercellSpacing(value foundation.Size) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setIntercellSpacing:"), value)
-}
-
-func (m_ Matrix) NumberOfColumns() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("numberOfColumns"))
-	return rv
-}
-
-func (m_ Matrix) NumberOfRows() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("numberOfRows"))
-	return rv
-}
-
-func (m_ Matrix) AutorecalculatesCellSize() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("autorecalculatesCellSize"))
-	return rv
-}
-
-func (m_ Matrix) SetAutorecalculatesCellSize(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutorecalculatesCellSize:"), value)
-}
-
-func (m_ Matrix) KeyCell() Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("keyCell"))
-	return rv
-}
-
-func (m_ Matrix) SetKeyCell(value ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setKeyCell:"), objc.ExtractPtr(value))
-}
-
-func (m_ Matrix) SelectedCells() []Cell {
-	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("selectedCells"))
-	return rv
-}
-
-func (m_ Matrix) SelectedColumn() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("selectedColumn"))
-	return rv
-}
-
-func (m_ Matrix) SelectedRow() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("selectedRow"))
-	return rv
-}
-
-func (m_ Matrix) Cells() []Cell {
-	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("cells"))
-	return rv
-}
-
-func (m_ Matrix) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](m_, objc.GetSelector("backgroundColor"))
-	return rv
-}
-
-func (m_ Matrix) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
-}
-
-func (m_ Matrix) CellBackgroundColor() Color {
-	rv := objc.CallMethod[Color](m_, objc.GetSelector("cellBackgroundColor"))
-	return rv
-}
-
-func (m_ Matrix) SetCellBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCellBackgroundColor:"), objc.ExtractPtr(value))
-}
-
-func (m_ Matrix) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("drawsBackground"))
-	return rv
-}
-
-func (m_ Matrix) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDrawsBackground:"), value)
-}
-
-func (m_ Matrix) DrawsCellBackground() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("drawsCellBackground"))
-	return rv
-}
-
-func (m_ Matrix) SetDrawsCellBackground(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDrawsCellBackground:"), value)
-}
-
-func (m_ Matrix) TabKeyTraversesCells() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("tabKeyTraversesCells"))
-	return rv
-}
-
-func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTabKeyTraversesCells:"), value)
-}
-
-func (m_ Matrix) Delegate() MatrixDelegateWrapper {
-	rv := objc.CallMethod[MatrixDelegateWrapper](m_, objc.GetSelector("delegate"))
-	return rv
-}
-
-func (m_ Matrix) SetDelegate(value IMatrixDelegate) {
-	po := objc.WrapAsProtocol("NSMatrixDelegate", value)
-	objc.SetAssociatedObject(m_, objc.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (m_ Matrix) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
-}
-
-func (m_ Matrix) AutosizesCells() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("autosizesCells"))
-	return rv
-}
-
-func (m_ Matrix) SetAutosizesCells(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutosizesCells:"), value)
-}
-
-func (m_ Matrix) IsAutoscroll() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isAutoscroll"))
-	return rv
-}
-
-func (m_ Matrix) SetAutoscroll(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutoscroll:"), value)
-}
-
-func (m_ Matrix) DoubleAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](m_, objc.GetSelector("doubleAction"))
-	return rv
-}
-
-func (m_ Matrix) SetDoubleAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDoubleAction:"), value)
-}
-
+// The flags in effect at the mouse-down event that started the current tracking session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436487-mousedownflags?language=objc
 func (m_ Matrix) MouseDownFlags() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("mouseDownFlags"))
+	rv := objc.Call[int](m_, objc.Sel("mouseDownFlags"))
+	return rv
+}
+
+// The action sent to the target of the receiver when the user double-clicks a cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436469-doubleaction?language=objc
+func (m_ Matrix) DoubleAction() objc.Selector {
+	rv := objc.Call[objc.Selector](m_, objc.Sel("doubleAction"))
+	return rv
+}
+
+// The action sent to the target of the receiver when the user double-clicks a cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436469-doubleaction?language=objc
+func (m_ Matrix) SetDoubleAction(value objc.Selector) {
+	objc.Call[objc.Void](m_, objc.Sel("setDoubleAction:"), value)
+}
+
+// An array containing all of the matrix’s highlighted cells plus its selected cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436434-selectedcells?language=objc
+func (m_ Matrix) SelectedCells() []Cell {
+	rv := objc.Call[[]Cell](m_, objc.Sel("selectedCells"))
+	return rv
+}
+
+// A Boolean that indicates whether pressing the Tab key advances the key cell to the next selectable cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436491-tabkeytraversescells?language=objc
+func (m_ Matrix) TabKeyTraversesCells() bool {
+	rv := objc.Call[bool](m_, objc.Sel("tabKeyTraversesCells"))
+	return rv
+}
+
+// A Boolean that indicates whether pressing the Tab key advances the key cell to the next selectable cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436491-tabkeytraversescells?language=objc
+func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setTabKeyTraversesCells:"), value)
+}
+
+// The most recently selected cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436472-selectedcell?language=objc
+func (m_ Matrix) SelectedCell() Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("selectedCell"))
+	return rv
+}
+
+// A Boolean that indicates whether a radio-mode matrix supports an empty selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436394-allowsemptyselection?language=objc
+func (m_ Matrix) AllowsEmptySelection() bool {
+	rv := objc.Call[bool](m_, objc.Sel("allowsEmptySelection"))
+	return rv
+}
+
+// A Boolean that indicates whether a radio-mode matrix supports an empty selection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436394-allowsemptyselection?language=objc
+func (m_ Matrix) SetAllowsEmptySelection(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsEmptySelection:"), value)
+}
+
+// An array containing the cells of the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436464-cells?language=objc
+func (m_ Matrix) Cells() []Cell {
+	rv := objc.Call[[]Cell](m_, objc.Sel("cells"))
+	return rv
+}
+
+// The background color of the matrix’s cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436449-cellbackgroundcolor?language=objc
+func (m_ Matrix) CellBackgroundColor() Color {
+	rv := objc.Call[Color](m_, objc.Sel("cellBackgroundColor"))
+	return rv
+}
+
+// The background color of the matrix’s cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436449-cellbackgroundcolor?language=objc
+func (m_ Matrix) SetCellBackgroundColor(value IColor) {
+	objc.Call[objc.Void](m_, objc.Sel("setCellBackgroundColor:"), objc.Ptr(value))
+}
+
+// A Boolean that indicates whether the user can select a rectangle of cells in the receiver by dragging the cursor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436431-selectionbyrect?language=objc
+func (m_ Matrix) IsSelectionByRect() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isSelectionByRect"))
+	return rv
+}
+
+// A Boolean that indicates whether the user can select a rectangle of cells in the receiver by dragging the cursor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436431-selectionbyrect?language=objc
+func (m_ Matrix) SetSelectionByRect(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setSelectionByRect:"), value)
+}
+
+// A Boolean that indicates whether the receiver is automatically scrolled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436410-autoscroll?language=objc
+func (m_ Matrix) IsAutoscroll() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isAutoscroll"))
+	return rv
+}
+
+// A Boolean that indicates whether the receiver is automatically scrolled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436410-autoscroll?language=objc
+func (m_ Matrix) SetAutoscroll(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAutoscroll:"), value)
+}
+
+// A Boolean that indicates whether the matrix draws the background within each of its cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436379-drawscellbackground?language=objc
+func (m_ Matrix) DrawsCellBackground() bool {
+	rv := objc.Call[bool](m_, objc.Sel("drawsCellBackground"))
+	return rv
+}
+
+// A Boolean that indicates whether the matrix draws the background within each of its cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436379-drawscellbackground?language=objc
+func (m_ Matrix) SetDrawsCellBackground(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setDrawsCellBackground:"), value)
+}
+
+// A Boolean that indicates whether the matrix auto-recalculates its cell size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436501-autorecalculatescellsize?language=objc
+func (m_ Matrix) AutorecalculatesCellSize() bool {
+	rv := objc.Call[bool](m_, objc.Sel("autorecalculatesCellSize"))
+	return rv
+}
+
+// A Boolean that indicates whether the matrix auto-recalculates its cell size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436501-autorecalculatescellsize?language=objc
+func (m_ Matrix) SetAutorecalculatesCellSize(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAutorecalculatesCellSize:"), value)
+}
+
+// The delegate for messages from the field editor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436404-delegate?language=objc
+func (m_ Matrix) Delegate() MatrixDelegateWrapper {
+	rv := objc.Call[MatrixDelegateWrapper](m_, objc.Sel("delegate"))
+	return rv
+}
+
+// The delegate for messages from the field editor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436404-delegate?language=objc
+func (m_ Matrix) SetDelegate(value PMatrixDelegate) {
+	po0 := objc.WrapAsProtocol("NSMatrixDelegate", value)
+	objc.SetAssociatedObject(m_, objc.AssociationKey("setDelegate"), po0, objc.ASSOCIATION_RETAIN)
+	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), po0)
+}
+
+// The delegate for messages from the field editor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436404-delegate?language=objc
+func (m_ Matrix) SetDelegateObject(valueObject objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+}
+
+// The background color of the matrix (the space between the cells). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436442-backgroundcolor?language=objc
+func (m_ Matrix) BackgroundColor() Color {
+	rv := objc.Call[Color](m_, objc.Sel("backgroundColor"))
+	return rv
+}
+
+// The background color of the matrix (the space between the cells). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436442-backgroundcolor?language=objc
+func (m_ Matrix) SetBackgroundColor(value IColor) {
+	objc.Call[objc.Void](m_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+}
+
+// A Boolean that indicates whether the matrix draws its background. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436447-drawsbackground?language=objc
+func (m_ Matrix) DrawsBackground() bool {
+	rv := objc.Call[bool](m_, objc.Sel("drawsBackground"))
+	return rv
+}
+
+// A Boolean that indicates whether the matrix draws its background. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436447-drawsbackground?language=objc
+func (m_ Matrix) SetDrawsBackground(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setDrawsBackground:"), value)
+}
+
+// The size of each cell in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436497-cellsize?language=objc
+func (m_ Matrix) CellSize() foundation.Size {
+	rv := objc.Call[foundation.Size](m_, objc.Sel("cellSize"))
+	return rv
+}
+
+// The size of each cell in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436497-cellsize?language=objc
+func (m_ Matrix) SetCellSize(value foundation.Size) {
+	objc.Call[objc.Void](m_, objc.Sel("setCellSize:"), value)
+}
+
+// The cell that will be clicked when the user presses the Space bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436411-keycell?language=objc
+func (m_ Matrix) KeyCell() Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("keyCell"))
+	return rv
+}
+
+// The cell that will be clicked when the user presses the Space bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436411-keycell?language=objc
+func (m_ Matrix) SetKeyCell(value ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("setKeyCell:"), objc.Ptr(value))
+}
+
+// The column number of the selected cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436389-selectedcolumn?language=objc
+func (m_ Matrix) SelectedColumn() int {
+	rv := objc.Call[int](m_, objc.Sel("selectedColumn"))
+	return rv
+}
+
+// The row number of the selected cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436377-selectedrow?language=objc
+func (m_ Matrix) SelectedRow() int {
+	rv := objc.Call[int](m_, objc.Sel("selectedRow"))
+	return rv
+}
+
+// The selection mode of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436390-mode?language=objc
+func (m_ Matrix) Mode() MatrixMode {
+	rv := objc.Call[MatrixMode](m_, objc.Sel("mode"))
+	return rv
+}
+
+// The selection mode of the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436390-mode?language=objc
+func (m_ Matrix) SetMode(value MatrixMode) {
+	objc.Call[objc.Void](m_, objc.Sel("setMode:"), value)
+}
+
+// A Boolean that indicates whether the cell sizes change when the receiver is resized. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436375-autosizescells?language=objc
+func (m_ Matrix) AutosizesCells() bool {
+	rv := objc.Call[bool](m_, objc.Sel("autosizesCells"))
+	return rv
+}
+
+// A Boolean that indicates whether the cell sizes change when the receiver is resized. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436375-autosizescells?language=objc
+func (m_ Matrix) SetAutosizesCells(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAutosizesCells:"), value)
+}
+
+// The subclass of NSCell that the matrix uses when creating new (empty) cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436445-cellclass?language=objc
+func (m_ Matrix) CellClass() objc.Class {
+	rv := objc.Call[objc.Class](m_, objc.Sel("cellClass"))
+	return rv
+}
+
+// The subclass of NSCell that the matrix uses when creating new (empty) cells. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436445-cellclass?language=objc
+func (m_ Matrix) SetCellClass(value objc.IClass) {
+	objc.Call[objc.Void](m_, objc.Sel("setCellClass:"), objc.Ptr(value))
+}
+
+// The prototype cell that’s copied whenever the matrix creates a new cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436406-prototype?language=objc
+func (m_ Matrix) Prototype() Cell {
+	rv := objc.Call[Cell](m_, objc.Sel("prototype"))
+	return rv
+}
+
+// The prototype cell that’s copied whenever the matrix creates a new cell. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436406-prototype?language=objc
+func (m_ Matrix) SetPrototype(value ICell) {
+	objc.Call[objc.Void](m_, objc.Sel("setPrototype:"), objc.Ptr(value))
+}
+
+// The number of rows in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436507-numberofrows?language=objc
+func (m_ Matrix) NumberOfRows() int {
+	rv := objc.Call[int](m_, objc.Sel("numberOfRows"))
+	return rv
+}
+
+// The vertical and horizontal spacing between cells in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436398-intercellspacing?language=objc
+func (m_ Matrix) IntercellSpacing() foundation.Size {
+	rv := objc.Call[foundation.Size](m_, objc.Sel("intercellSpacing"))
+	return rv
+}
+
+// The vertical and horizontal spacing between cells in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436398-intercellspacing?language=objc
+func (m_ Matrix) SetIntercellSpacing(value foundation.Size) {
+	objc.Call[objc.Void](m_, objc.Sel("setIntercellSpacing:"), value)
+}
+
+// The number of columns in the matrix. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436461-numberofcolumns?language=objc
+func (m_ Matrix) NumberOfColumns() int {
+	rv := objc.Call[int](m_, objc.Sel("numberOfColumns"))
 	return rv
 }

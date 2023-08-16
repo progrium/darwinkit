@@ -29,7 +29,7 @@ type Block struct {
 	ptr unsafe.Pointer
 }
 
-func MakeBlock(ptr unsafe.Pointer) Block {
+func BlockFrom(ptr unsafe.Pointer) Block {
 	return Block{ptr: ptr}
 }
 
@@ -53,7 +53,7 @@ func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 		panic("too many return values")
 	}
 
-	b := MakeBlock(bp)
+	b := BlockFrom(bp)
 	b = b.Copy()
 	var sentinel = new(int)
 	fv := reflect.MakeFunc(funcType, func(args []reflect.Value) (results []reflect.Value) {
@@ -146,8 +146,8 @@ func CreateMallocBlock(f any) Block {
 	cte := C.CString(typeEncoding)
 	imp, handle := wrapGoFuncAsBlockIMP(rf)
 	bp := C.block_create_malloc(cte, imp.ptr, C.uintptr_t(handle))
-	b := MakeBlock(bp)
-	MakeObject(bp).Autorelease()
+	b := BlockFrom(bp)
+	ObjectFrom(bp).Autorelease()
 	return b
 }
 
@@ -162,7 +162,7 @@ func CreateGlobalBlock(f any) Block {
 	cte := C.CString(typeEncoding) // // cte will be freed by oc_dispose_helper
 	imp, _ := wrapGoFuncAsBlockIMP(rf)
 	bp := C.block_create_global(cte, imp.ptr)
-	b := MakeBlock(bp)
+	b := BlockFrom(bp)
 	return b
 }
 
@@ -208,7 +208,7 @@ func wrapGoFuncAsBlockIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 		panic("ffi prep closure status not ok")
 	}
 
-	return MakeIMP(fn), handle
+	return IMPFrom(fn), handle
 }
 
 func getBlockTypeEncoding(ft reflect.Type) string {
@@ -232,7 +232,7 @@ func getBlockTypeEncoding(ft reflect.Type) string {
 }
 
 func testBlock() Block {
-	return MakeBlock(C.testBlock())
+	return BlockFrom(C.testBlock())
 }
 
 func toUIntptr[T any](ptr *T) C.uintptr_t {

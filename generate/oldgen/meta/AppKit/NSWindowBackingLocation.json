@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSWindowBackingLocation",
-    "module": "AppKit",
-    "target_type": "NSUInteger"
-}

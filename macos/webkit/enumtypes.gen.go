@@ -1,133 +1,224 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import "math"
 
+// The media types that require a user gesture to begin playing. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkaudiovisualmediatypes?language=objc
 type AudiovisualMediaTypes uint
 
-const AudiovisualMediaTypeAll AudiovisualMediaTypes = math.MaxUint
-const AudiovisualMediaTypeAudio AudiovisualMediaTypes = 1
-const AudiovisualMediaTypeNone AudiovisualMediaTypes = 0
-const AudiovisualMediaTypeVideo AudiovisualMediaTypes = 2
+const (
+	AudiovisualMediaTypeAll   AudiovisualMediaTypes = math.MaxUint
+	AudiovisualMediaTypeAudio AudiovisualMediaTypes = 1
+	AudiovisualMediaTypeNone  AudiovisualMediaTypes = 0
+	AudiovisualMediaTypeVideo AudiovisualMediaTypes = 2
+)
 
+// Constants that indicate how to render web view content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkcontentmode?language=objc
 type ContentMode int
 
-const ContentModeDesktop ContentMode = 2
-const ContentModeMobile ContentMode = 1
-const ContentModeRecommended ContentMode = 0
+const (
+	ContentModeDesktop     ContentMode = 2
+	ContentModeMobile      ContentMode = 1
+	ContentModeRecommended ContentMode = 0
+)
 
+// An enumeration with cases that indicate whether to proceed with a redirect. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloadredirectpolicy?language=objc
 type DownloadRedirectPolicy int
 
-const DownloadRedirectPolicyAllow DownloadRedirectPolicy = 1
-const DownloadRedirectPolicyCancel DownloadRedirectPolicy = 0
+const (
+	DownloadRedirectPolicyAllow  DownloadRedirectPolicy = 1
+	DownloadRedirectPolicyCancel DownloadRedirectPolicy = 0
+)
 
+// Possible error values that WebKit APIs can return. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkerrorcode?language=objc
 type ErrorCode int
 
-const ErrorAttributedStringContentFailedToLoad ErrorCode = 10
-const ErrorAttributedStringContentLoadTimedOut ErrorCode = 11
-const ErrorContentRuleListStoreCompileFailed ErrorCode = 6
-const ErrorContentRuleListStoreLookUpFailed ErrorCode = 7
-const ErrorContentRuleListStoreRemoveFailed ErrorCode = 8
-const ErrorContentRuleListStoreVersionMismatch ErrorCode = 9
-const ErrorJavaScriptAppBoundDomain ErrorCode = 14
-const ErrorJavaScriptExceptionOccurred ErrorCode = 4
-const ErrorJavaScriptInvalidFrameTarget ErrorCode = 12
-const ErrorJavaScriptResultTypeIsUnsupported ErrorCode = 5
-const ErrorNavigationAppBoundDomain ErrorCode = 13
-const ErrorUnknown ErrorCode = 1
-const ErrorWebContentProcessTerminated ErrorCode = 2
-const ErrorWebViewInvalidated ErrorCode = 3
+const (
+	ErrorAttributedStringContentFailedToLoad ErrorCode = 10
+	ErrorAttributedStringContentLoadTimedOut ErrorCode = 11
+	ErrorContentRuleListStoreCompileFailed   ErrorCode = 6
+	ErrorContentRuleListStoreLookUpFailed    ErrorCode = 7
+	ErrorContentRuleListStoreRemoveFailed    ErrorCode = 8
+	ErrorContentRuleListStoreVersionMismatch ErrorCode = 9
+	ErrorJavaScriptAppBoundDomain            ErrorCode = 14
+	ErrorJavaScriptExceptionOccurred         ErrorCode = 4
+	ErrorJavaScriptInvalidFrameTarget        ErrorCode = 12
+	ErrorJavaScriptResultTypeIsUnsupported   ErrorCode = 5
+	ErrorNavigationAppBoundDomain            ErrorCode = 13
+	ErrorUnknown                             ErrorCode = 1
+	ErrorWebContentProcessTerminated         ErrorCode = 2
+	ErrorWebViewInvalidated                  ErrorCode = 3
+)
 
+// An enumeration that describes whether a media device, like a camera or microphone, is currently capturing audio or video. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkmediacapturestate?language=objc
 type MediaCaptureState int
 
-const MediaCaptureStateActive MediaCaptureState = 1
-const MediaCaptureStateMuted MediaCaptureState = 2
-const MediaCaptureStateNone MediaCaptureState = 0
+const (
+	MediaCaptureStateActive MediaCaptureState = 1
+	MediaCaptureStateMuted  MediaCaptureState = 2
+	MediaCaptureStateNone   MediaCaptureState = 0
+)
 
+// An enumeration listing the types of media devices that can capture audio, video, or both. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkmediacapturetype?language=objc
 type MediaCaptureType int
 
-const MediaCaptureTypeCamera MediaCaptureType = 0
-const MediaCaptureTypeCameraAndMicrophone MediaCaptureType = 2
-const MediaCaptureTypeMicrophone MediaCaptureType = 1
+const (
+	MediaCaptureTypeCamera              MediaCaptureType = 0
+	MediaCaptureTypeCameraAndMicrophone MediaCaptureType = 2
+	MediaCaptureTypeMicrophone          MediaCaptureType = 1
+)
 
+// An enumeration that describes whether an audio or video presentation is playing, paused, or suspended. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkmediaplaybackstate?language=objc
 type MediaPlaybackState int
 
-const MediaPlaybackStateNone MediaPlaybackState = 0
-const MediaPlaybackStatePaused MediaPlaybackState = 2
-const MediaPlaybackStatePlaying MediaPlaybackState = 1
-const MediaPlaybackStateSuspended MediaPlaybackState = 3
+const (
+	MediaPlaybackStateNone      MediaPlaybackState = 0
+	MediaPlaybackStatePaused    MediaPlaybackState = 2
+	MediaPlaybackStatePlaying   MediaPlaybackState = 1
+	MediaPlaybackStateSuspended MediaPlaybackState = 3
+)
 
+// Constants that indicate whether to allow or cancel navigation to a webpage from an action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationactionpolicy?language=objc
 type NavigationActionPolicy int
 
-const NavigationActionPolicyAllow NavigationActionPolicy = 1
-const NavigationActionPolicyCancel NavigationActionPolicy = 0
-const NavigationActionPolicyDownload NavigationActionPolicy = 2
+const (
+	NavigationActionPolicyAllow    NavigationActionPolicy = 1
+	NavigationActionPolicyCancel   NavigationActionPolicy = 0
+	NavigationActionPolicyDownload NavigationActionPolicy = 2
+)
 
+// Constants that indicate whether to allow or cancel navigation to a webpage from a response. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationresponsepolicy?language=objc
 type NavigationResponsePolicy int
 
-const NavigationResponsePolicyAllow NavigationResponsePolicy = 1
-const NavigationResponsePolicyCancel NavigationResponsePolicy = 0
-const NavigationResponsePolicyDownload NavigationResponsePolicy = 2
+const (
+	NavigationResponsePolicyAllow    NavigationResponsePolicy = 1
+	NavigationResponsePolicyCancel   NavigationResponsePolicy = 0
+	NavigationResponsePolicyDownload NavigationResponsePolicy = 2
+)
 
+// The type of action that triggered the navigation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationtype?language=objc
 type NavigationType int
 
-const NavigationTypeBackForward NavigationType = 2
-const NavigationTypeFormResubmitted NavigationType = 4
-const NavigationTypeFormSubmitted NavigationType = 1
-const NavigationTypeLinkActivated NavigationType = 0
-const NavigationTypeOther NavigationType = -1
-const NavigationTypeReload NavigationType = 3
+const (
+	NavigationTypeBackForward     NavigationType = 2
+	NavigationTypeFormResubmitted NavigationType = 4
+	NavigationTypeFormSubmitted   NavigationType = 1
+	NavigationTypeLinkActivated   NavigationType = 0
+	NavigationTypeOther           NavigationType = -1
+	NavigationTypeReload          NavigationType = 3
+)
 
+// An enumeration of possible permission decisions for device resource access. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkpermissiondecision?language=objc
 type PermissionDecision int
 
-const PermissionDecisionDeny PermissionDecision = 2
-const PermissionDecisionGrant PermissionDecision = 1
-const PermissionDecisionPrompt PermissionDecision = 0
+const (
+	PermissionDecisionDeny   PermissionDecision = 2
+	PermissionDecisionGrant  PermissionDecision = 1
+	PermissionDecisionPrompt PermissionDecision = 0
+)
 
+// The policy that determines the directionality of user interface elements in a web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserinterfacedirectionpolicy?language=objc
 type UserInterfaceDirectionPolicy int
 
-const UserInterfaceDirectionPolicyContent UserInterfaceDirectionPolicy = 0
-const UserInterfaceDirectionPolicySystem UserInterfaceDirectionPolicy = 1
+const (
+	UserInterfaceDirectionPolicyContent UserInterfaceDirectionPolicy = 0
+	UserInterfaceDirectionPolicySystem  UserInterfaceDirectionPolicy = 1
+)
 
+// Constants for the times at which to inject script content into a webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscriptinjectiontime?language=objc
 type UserScriptInjectionTime int
 
-const UserScriptInjectionTimeAtDocumentEnd UserScriptInjectionTime = 1
-const UserScriptInjectionTimeAtDocumentStart UserScriptInjectionTime = 0
+const (
+	UserScriptInjectionTimeAtDocumentEnd   UserScriptInjectionTime = 1
+	UserScriptInjectionTimeAtDocumentStart UserScriptInjectionTime = 0
+)
 
+// Specifies the caching model for a web view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webcachemodel?language=objc
 type WebCacheModel uint
 
-const WebCacheModelDocumentBrowser WebCacheModel = 1
-const WebCacheModelDocumentViewer WebCacheModel = 0
-const WebCacheModelPrimaryWebBrowser WebCacheModel = 2
+const (
+	WebCacheModelDocumentBrowser   WebCacheModel = 1
+	WebCacheModelDocumentViewer    WebCacheModel = 0
+	WebCacheModelPrimaryWebBrowser WebCacheModel = 2
+)
 
+// Actions that the destination object of a drag operation can perform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webdragdestinationaction?language=objc
 type WebDragDestinationAction uint
 
-const WebDragDestinationActionAny WebDragDestinationAction = 4294967295
-const WebDragDestinationActionDHTML WebDragDestinationAction = 1
-const WebDragDestinationActionEdit WebDragDestinationAction = 2
-const WebDragDestinationActionLoad WebDragDestinationAction = 4
-const WebDragDestinationActionNone WebDragDestinationAction = 0
+const (
+	WebDragDestinationActionAny   WebDragDestinationAction = 4294967295
+	WebDragDestinationActionDHTML WebDragDestinationAction = 1
+	WebDragDestinationActionEdit  WebDragDestinationAction = 2
+	WebDragDestinationActionLoad  WebDragDestinationAction = 4
+	WebDragDestinationActionNone  WebDragDestinationAction = 0
+)
 
+// Actions that the source object of a drag operation can perform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webdragsourceaction?language=objc
 type WebDragSourceAction uint
 
-const WebDragSourceActionAny WebDragSourceAction = 4294967295
-const WebDragSourceActionDHTML WebDragSourceAction = 1
-const WebDragSourceActionImage WebDragSourceAction = 2
-const WebDragSourceActionLink WebDragSourceAction = 4
-const WebDragSourceActionNone WebDragSourceAction = 0
-const WebDragSourceActionSelection WebDragSourceAction = 8
+const (
+	WebDragSourceActionAny       WebDragSourceAction = 4294967295
+	WebDragSourceActionDHTML     WebDragSourceAction = 1
+	WebDragSourceActionImage     WebDragSourceAction = 2
+	WebDragSourceActionLink      WebDragSourceAction = 4
+	WebDragSourceActionNone      WebDragSourceAction = 0
+	WebDragSourceActionSelection WebDragSourceAction = 8
+)
 
+// Possible values for the WebActionNavigationTypeKey key that appears in an action dictionary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webnavigationtype?language=objc
 type WebNavigationType int
 
-const WebNavigationTypeBackForward WebNavigationType = 2
-const WebNavigationTypeFormResubmitted WebNavigationType = 4
-const WebNavigationTypeFormSubmitted WebNavigationType = 1
-const WebNavigationTypeLinkClicked WebNavigationType = 0
-const WebNavigationTypeOther WebNavigationType = 5
-const WebNavigationTypeReload WebNavigationType = 3
+const (
+	WebNavigationTypeBackForward     WebNavigationType = 2
+	WebNavigationTypeFormResubmitted WebNavigationType = 4
+	WebNavigationTypeFormSubmitted   WebNavigationType = 1
+	WebNavigationTypeLinkClicked     WebNavigationType = 0
+	WebNavigationTypeOther           WebNavigationType = 5
+	WebNavigationTypeReload          WebNavigationType = 3
+)
 
+// The type of user action that initiated a delegate message. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/webviewinsertaction?language=objc
 type WebViewInsertAction int
 
-const WebViewInsertActionDropped WebViewInsertAction = 2
-const WebViewInsertActionPasted WebViewInsertAction = 1
-const WebViewInsertActionTyped WebViewInsertAction = 0
+const (
+	WebViewInsertActionDropped WebViewInsertAction = 2
+	WebViewInsertActionPasted  WebViewInsertAction = 1
+	WebViewInsertActionTyped   WebViewInsertAction = 0
+)

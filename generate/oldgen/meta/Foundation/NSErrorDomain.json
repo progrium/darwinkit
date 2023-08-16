@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSErrorDomain",
-    "module": "Foundation",
-    "target_type": "NSString*"
-}

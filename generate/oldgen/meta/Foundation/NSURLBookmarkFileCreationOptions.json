@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSURLBookmarkFileCreationOptions",
-    "module": "Foundation",
-    "target_type": "NSUInteger"
-}

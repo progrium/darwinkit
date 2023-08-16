@@ -1,75 +1,72 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/macdriver/macos/coregraphics"
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [TextContainer] class.
 var TextContainerClass = _TextContainerClass{objc.GetClass("NSTextContainer")}
 
 type _TextContainerClass struct {
 	objc.Class
 }
 
+// An interface definition for the [TextContainer] class.
 type ITextContainer interface {
 	objc.IObject
 	ReplaceLayoutManager(newLayoutManager ILayoutManager)
-	LineFragmentRectForProposedRectAtIndexWritingDirectionRemainingRect(proposedRect foundation.Rect, characterIndex uint, baseWritingDirection WritingDirection, remainingRect *foundation.Rect) foundation.Rect
-	LayoutManager() LayoutManager
-	SetLayoutManager(value ILayoutManager)
 	TextLayoutManager() TextLayoutManager
-	TextView() TextView
-	SetTextView(value ITextView)
-	Size() foundation.Size
-	SetSize(value foundation.Size)
-	ExclusionPaths() []BezierPath
-	SetExclusionPaths(value []IBezierPath)
-	LineBreakMode() LineBreakMode
-	SetLineBreakMode(value LineBreakMode)
-	WidthTracksTextView() bool
-	SetWidthTracksTextView(value bool)
-	HeightTracksTextView() bool
-	SetHeightTracksTextView(value bool)
 	MaximumNumberOfLines() uint
 	SetMaximumNumberOfLines(value uint)
+	HeightTracksTextView() bool
+	SetHeightTracksTextView(value bool)
+	TextView() TextView
+	SetTextView(value ITextView)
+	IsSimpleRectangularTextContainer() bool
+	LayoutManager() LayoutManager
+	SetLayoutManager(value ILayoutManager)
 	LineFragmentPadding() float64
 	SetLineFragmentPadding(value float64)
-	IsSimpleRectangularTextContainer() bool
+	ExclusionPaths() []BezierPath
+	SetExclusionPaths(value []IBezierPath)
+	WidthTracksTextView() bool
+	SetWidthTracksTextView(value bool)
+	Size() coregraphics.Size
+	SetSize(value coregraphics.Size)
 }
 
+// A region where text layout occurs. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer?language=objc
 type TextContainer struct {
 	objc.Object
 }
 
-func MakeTextContainer(ptr unsafe.Pointer) TextContainer {
+func TextContainerFrom(ptr unsafe.Pointer) TextContainer {
 	return TextContainer{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
-func (t_ TextContainer) InitWithSize(size foundation.Size) TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("initWithSize:"), size)
+func (t_ TextContainer) InitWithSize(size coregraphics.Size) TextContainer {
+	rv := objc.Call[TextContainer](t_, objc.Sel("initWithSize:"), size)
 	return rv
 }
 
-func TextContainer_InitWithSize(size foundation.Size) TextContainer {
+// Initializes a text container with a specified bounding rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444529-initwithsize?language=objc
+func TextContainer_InitWithSize(size coregraphics.Size) TextContainer {
 	return TextContainerClass.Alloc().InitWithSize(size)
 }
 
-func (t_ TextContainer) InitWithContainerSize(aContainerSize foundation.Size) TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("initWithContainerSize:"), aContainerSize)
-	return rv
-}
-
-func TextContainer_InitWithContainerSize(aContainerSize foundation.Size) TextContainer {
-	return TextContainerClass.Alloc().InitWithContainerSize(aContainerSize)
-}
-
 func (tc _TextContainerClass) Alloc() TextContainer {
-	rv := objc.CallMethod[TextContainer](tc, objc.GetSelector("alloc"))
+	rv := objc.Call[TextContainer](tc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -78,7 +75,7 @@ func TextContainer_Alloc() TextContainer {
 }
 
 func (tc _TextContainerClass) New() TextContainer {
-	rv := objc.CallMethod[TextContainer](tc, objc.GetSelector("new"))
+	rv := objc.Call[TextContainer](tc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -87,115 +84,150 @@ func NewTextContainer() TextContainer {
 	return TextContainerClass.New()
 }
 
-func TextContainer_New() TextContainer {
-	return TextContainerClass.New()
-}
-
 func (t_ TextContainer) Init() TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("init"))
+	rv := objc.Call[TextContainer](t_, objc.Sel("init"))
 	return rv
 }
 
-func TextContainer_Init() TextContainer {
-	return TextContainerClass.Alloc().Init()
-}
-
+// Replaces the layout manager for the group of text system objects that contains the text container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444545-replacelayoutmanager?language=objc
 func (t_ TextContainer) ReplaceLayoutManager(newLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceLayoutManager:"), objc.ExtractPtr(newLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("replaceLayoutManager:"), objc.Ptr(newLayoutManager))
 }
 
-func (t_ TextContainer) LineFragmentRectForProposedRectAtIndexWritingDirectionRemainingRect(proposedRect foundation.Rect, characterIndex uint, baseWritingDirection WritingDirection, remainingRect *foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect:"), proposedRect, characterIndex, baseWritingDirection, remainingRect)
-	return rv
-}
-
-func (t_ TextContainer) LayoutManager() LayoutManager {
-	rv := objc.CallMethod[LayoutManager](t_, objc.GetSelector("layoutManager"))
-	return rv
-}
-
-func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/3809914-textlayoutmanager?language=objc
 func (t_ TextContainer) TextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
+	rv := objc.Call[TextLayoutManager](t_, objc.Sel("textLayoutManager"))
 	return rv
 }
 
-func (t_ TextContainer) TextView() TextView {
-	rv := objc.CallMethod[TextView](t_, objc.GetSelector("textView"))
-	return rv
-}
-
-func (t_ TextContainer) SetTextView(value ITextView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextView:"), objc.ExtractPtr(value))
-}
-
-func (t_ TextContainer) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("size"))
-	return rv
-}
-
-func (t_ TextContainer) SetSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSize:"), value)
-}
-
-func (t_ TextContainer) ExclusionPaths() []BezierPath {
-	rv := objc.CallMethod[[]BezierPath](t_, objc.GetSelector("exclusionPaths"))
-	return rv
-}
-
-func (t_ TextContainer) SetExclusionPaths(value []IBezierPath) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setExclusionPaths:"), value)
-}
-
-func (t_ TextContainer) LineBreakMode() LineBreakMode {
-	rv := objc.CallMethod[LineBreakMode](t_, objc.GetSelector("lineBreakMode"))
-	return rv
-}
-
-func (t_ TextContainer) SetLineBreakMode(value LineBreakMode) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLineBreakMode:"), value)
-}
-
-func (t_ TextContainer) WidthTracksTextView() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("widthTracksTextView"))
-	return rv
-}
-
-func (t_ TextContainer) SetWidthTracksTextView(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWidthTracksTextView:"), value)
-}
-
-func (t_ TextContainer) HeightTracksTextView() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("heightTracksTextView"))
-	return rv
-}
-
-func (t_ TextContainer) SetHeightTracksTextView(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeightTracksTextView:"), value)
-}
-
+// The maximum number of lines that the text container can store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444531-maximumnumberoflines?language=objc
 func (t_ TextContainer) MaximumNumberOfLines() uint {
-	rv := objc.CallMethod[uint](t_, objc.GetSelector("maximumNumberOfLines"))
+	rv := objc.Call[uint](t_, objc.Sel("maximumNumberOfLines"))
 	return rv
 }
 
+// The maximum number of lines that the text container can store. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444531-maximumnumberoflines?language=objc
 func (t_ TextContainer) SetMaximumNumberOfLines(value uint) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaximumNumberOfLines:"), value)
+	objc.Call[objc.Void](t_, objc.Sel("setMaximumNumberOfLines:"), value)
 }
 
-func (t_ TextContainer) LineFragmentPadding() float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("lineFragmentPadding"))
+// A Boolean that controls whether the text container adjusts the height of its bounding rectangle when its text view resizes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444559-heighttrackstextview?language=objc
+func (t_ TextContainer) HeightTracksTextView() bool {
+	rv := objc.Call[bool](t_, objc.Sel("heightTracksTextView"))
 	return rv
 }
 
-func (t_ TextContainer) SetLineFragmentPadding(value float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLineFragmentPadding:"), value)
+// A Boolean that controls whether the text container adjusts the height of its bounding rectangle when its text view resizes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444559-heighttrackstextview?language=objc
+func (t_ TextContainer) SetHeightTracksTextView(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setHeightTracksTextView:"), value)
 }
 
+// The text container’s text view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcontainer/1444537-textview?language=objc
+func (t_ TextContainer) TextView() TextView {
+	rv := objc.Call[TextView](t_, objc.Sel("textView"))
+	return rv
+}
+
+// The text container’s text view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcontainer/1444537-textview?language=objc
+func (t_ TextContainer) SetTextView(value ITextView) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextView:"), objc.Ptr(value))
+}
+
+// A Boolean that indicates whether the text container’s region is a rectangle with no holes or gaps, and whose edges are parallel to the text view's coordinate system axes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444525-simplerectangulartextcontainer?language=objc
 func (t_ TextContainer) IsSimpleRectangularTextContainer() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isSimpleRectangularTextContainer"))
+	rv := objc.Call[bool](t_, objc.Sel("isSimpleRectangularTextContainer"))
 	return rv
+}
+
+// The text container’s layout manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444517-layoutmanager?language=objc
+func (t_ TextContainer) LayoutManager() LayoutManager {
+	rv := objc.Call[LayoutManager](t_, objc.Sel("layoutManager"))
+	return rv
+}
+
+// The text container’s layout manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444517-layoutmanager?language=objc
+func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
+	objc.Call[objc.Void](t_, objc.Sel("setLayoutManager:"), objc.Ptr(value))
+}
+
+// The value for the text inset within line fragment rectangles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444527-linefragmentpadding?language=objc
+func (t_ TextContainer) LineFragmentPadding() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("lineFragmentPadding"))
+	return rv
+}
+
+// The value for the text inset within line fragment rectangles. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444527-linefragmentpadding?language=objc
+func (t_ TextContainer) SetLineFragmentPadding(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setLineFragmentPadding:"), value)
+}
+
+// An array of path objects that represents the regions where text doesn’t display in the text container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444569-exclusionpaths?language=objc
+func (t_ TextContainer) ExclusionPaths() []BezierPath {
+	rv := objc.Call[[]BezierPath](t_, objc.Sel("exclusionPaths"))
+	return rv
+}
+
+// An array of path objects that represents the regions where text doesn’t display in the text container. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444569-exclusionpaths?language=objc
+func (t_ TextContainer) SetExclusionPaths(value []IBezierPath) {
+	objc.Call[objc.Void](t_, objc.Sel("setExclusionPaths:"), value)
+}
+
+// A Boolean that controls whether the text container adjusts the width of its bounding rectangle when its text view resizes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444563-widthtrackstextview?language=objc
+func (t_ TextContainer) WidthTracksTextView() bool {
+	rv := objc.Call[bool](t_, objc.Sel("widthTracksTextView"))
+	return rv
+}
+
+// A Boolean that controls whether the text container adjusts the width of its bounding rectangle when its text view resizes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444563-widthtrackstextview?language=objc
+func (t_ TextContainer) SetWidthTracksTextView(value bool) {
+	objc.Call[objc.Void](t_, objc.Sel("setWidthTracksTextView:"), value)
+}
+
+// The size of the text container’s bounding rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444553-size?language=objc
+func (t_ TextContainer) Size() coregraphics.Size {
+	rv := objc.Call[coregraphics.Size](t_, objc.Sel("size"))
+	return rv
+}
+
+// The size of the text container’s bounding rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444553-size?language=objc
+func (t_ TextContainer) SetSize(value coregraphics.Size) {
+	objc.Call[objc.Void](t_, objc.Sel("setSize:"), value)
 }

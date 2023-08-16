@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,43 +8,47 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [PrintPanel] class.
 var PrintPanelClass = _PrintPanelClass{objc.GetClass("NSPrintPanel")}
 
 type _PrintPanelClass struct {
 	objc.Class
 }
 
+// An interface definition for the [PrintPanel] class.
 type IPrintPanel interface {
 	objc.IObject
+	RemoveAccessoryController(accessoryController IViewController)
+	RunModal() int
+	AddAccessoryController(accessoryController IViewController)
+	RunModalWithPrintInfo(printInfo IPrintInfo) int
 	DefaultButtonTitle() string
 	SetDefaultButtonTitle(defaultButtonTitle string)
-	AddAccessoryController(accessoryController IViewController)
-	RemoveAccessoryController(accessoryController IViewController)
-	BeginSheetWithPrintInfoModalForWindowDelegateDidEndSelectorContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
-	RunModal() int
-	RunModalWithPrintInfo(printInfo IPrintInfo) int
-	JobStyleHint() PrintPanelJobStyleHint
-	SetJobStyleHint(value PrintPanelJobStyleHint)
+	PrintInfo() PrintInfo
+	AccessoryControllers() []ViewController
 	Options() PrintPanelOptions
 	SetOptions(value PrintPanelOptions)
+	JobStyleHint() PrintPanelJobStyleHint
+	SetJobStyleHint(value PrintPanelJobStyleHint)
 	HelpAnchor() HelpAnchorName
 	SetHelpAnchor(value HelpAnchorName)
-	AccessoryControllers() []ViewController
-	PrintInfo() PrintInfo
 }
 
+// The Print panel that queries the user for information about a print job. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel?language=objc
 type PrintPanel struct {
 	objc.Object
 }
 
-func MakePrintPanel(ptr unsafe.Pointer) PrintPanel {
+func PrintPanelFrom(ptr unsafe.Pointer) PrintPanel {
 	return PrintPanel{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (pc _PrintPanelClass) Alloc() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[PrintPanel](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -52,7 +57,7 @@ func PrintPanel_Alloc() PrintPanel {
 }
 
 func (pc _PrintPanelClass) New() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("new"))
+	rv := objc.Call[PrintPanel](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,92 +66,128 @@ func NewPrintPanel() PrintPanel {
 	return PrintPanelClass.New()
 }
 
-func PrintPanel_New() PrintPanel {
-	return PrintPanelClass.New()
-}
-
 func (p_ PrintPanel) Init() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](p_, objc.GetSelector("init"))
+	rv := objc.Call[PrintPanel](p_, objc.Sel("init"))
 	return rv
 }
 
-func PrintPanel_Init() PrintPanel {
-	return PrintPanelClass.Alloc().Init()
+// Removes the specified controller and accessory view from the Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490527-removeaccessorycontroller?language=objc
+func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
+	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), objc.Ptr(accessoryController))
 }
 
+// Displays the Print panel and begins the modal loop. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490523-runmodal?language=objc
+func (p_ PrintPanel) RunModal() int {
+	rv := objc.Call[int](p_, objc.Sel("runModal"))
+	return rv
+}
+
+// Adds a custom controller to the Print panel to manage an accessory view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490510-addaccessorycontroller?language=objc
+func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
+	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), objc.Ptr(accessoryController))
+}
+
+// Displays the Print panel and runs the modal loop using the specified printing information. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490539-runmodalwithprintinfo?language=objc
+func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
+	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), objc.Ptr(printInfo))
+	return rv
+}
+
+// Returns a new print panel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490531-printpanel?language=objc
 func (pc _PrintPanelClass) PrintPanel() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("printPanel"))
+	rv := objc.Call[PrintPanel](pc, objc.Sel("printPanel"))
 	return rv
 }
 
+// Returns a new print panel object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490531-printpanel?language=objc
 func PrintPanel_PrintPanel() PrintPanel {
 	return PrintPanelClass.PrintPanel()
 }
 
+// Returns the title of the Print panel’s default button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490548-defaultbuttontitle?language=objc
 func (p_ PrintPanel) DefaultButtonTitle() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("defaultButtonTitle"))
+	rv := objc.Call[string](p_, objc.Sel("defaultButtonTitle"))
 	return rv
 }
 
+// Sets the title of the Print panel’s default button. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490525-setdefaultbuttontitle?language=objc
 func (p_ PrintPanel) SetDefaultButtonTitle(defaultButtonTitle string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDefaultButtonTitle:"), defaultButtonTitle)
+	objc.Call[objc.Void](p_, objc.Sel("setDefaultButtonTitle:"), defaultButtonTitle)
 }
 
-func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), objc.ExtractPtr(accessoryController))
-}
-
-func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), objc.ExtractPtr(accessoryController))
-}
-
-func (p_ PrintPanel) BeginSheetWithPrintInfoModalForWindowDelegateDidEndSelectorContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), objc.ExtractPtr(printInfo), objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
-}
-
-func (p_ PrintPanel) RunModal() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("runModal"))
-	return rv
-}
-
-func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), objc.ExtractPtr(printInfo))
-	return rv
-}
-
-func (p_ PrintPanel) JobStyleHint() PrintPanelJobStyleHint {
-	rv := objc.CallMethod[PrintPanelJobStyleHint](p_, objc.GetSelector("jobStyleHint"))
-	return rv
-}
-
-func (p_ PrintPanel) SetJobStyleHint(value PrintPanelJobStyleHint) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJobStyleHint:"), value)
-}
-
-func (p_ PrintPanel) Options() PrintPanelOptions {
-	rv := objc.CallMethod[PrintPanelOptions](p_, objc.GetSelector("options"))
-	return rv
-}
-
-func (p_ PrintPanel) SetOptions(value PrintPanelOptions) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setOptions:"), value)
-}
-
-func (p_ PrintPanel) HelpAnchor() HelpAnchorName {
-	rv := objc.CallMethod[HelpAnchorName](p_, objc.GetSelector("helpAnchor"))
-	return rv
-}
-
-func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setHelpAnchor:"), value)
-}
-
-func (p_ PrintPanel) AccessoryControllers() []ViewController {
-	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
-	return rv
-}
-
+// The information associated with the running Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490513-printinfo?language=objc
 func (p_ PrintPanel) PrintInfo() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("printInfo"))
+	rv := objc.Call[PrintInfo](p_, objc.Sel("printInfo"))
 	return rv
+}
+
+// The array of controller objects that manage the Print panel’s accessory views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490543-accessorycontrollers?language=objc
+func (p_ PrintPanel) AccessoryControllers() []ViewController {
+	rv := objc.Call[[]ViewController](p_, objc.Sel("accessoryControllers"))
+	return rv
+}
+
+// The current configuration options for the Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490542-options?language=objc
+func (p_ PrintPanel) Options() PrintPanelOptions {
+	rv := objc.Call[PrintPanelOptions](p_, objc.Sel("options"))
+	return rv
+}
+
+// The current configuration options for the Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490542-options?language=objc
+func (p_ PrintPanel) SetOptions(value PrintPanelOptions) {
+	objc.Call[objc.Void](p_, objc.Sel("setOptions:"), value)
+}
+
+// The type of settings that the print panel displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490529-jobstylehint?language=objc
+func (p_ PrintPanel) JobStyleHint() PrintPanelJobStyleHint {
+	rv := objc.Call[PrintPanelJobStyleHint](p_, objc.Sel("jobStyleHint"))
+	return rv
+}
+
+// The type of settings that the print panel displays. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490529-jobstylehint?language=objc
+func (p_ PrintPanel) SetJobStyleHint(value PrintPanelJobStyleHint) {
+	objc.Call[objc.Void](p_, objc.Sel("setJobStyleHint:"), value)
+}
+
+// The HTML help anchor associated with the Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490537-helpanchor?language=objc
+func (p_ PrintPanel) HelpAnchor() HelpAnchorName {
+	rv := objc.Call[HelpAnchorName](p_, objc.Sel("helpAnchor"))
+	return rv
+}
+
+// The HTML help anchor associated with the Print panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490537-helpanchor?language=objc
+func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
+	objc.Call[objc.Void](p_, objc.Sel("setHelpAnchor:"), value)
 }

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 
 	"github.com/progrium/macdriver/generate"
-	"github.com/progrium/macdriver/generate/oldgen"
 	"github.com/progrium/macdriver/internal/set"
 )
 
@@ -28,8 +28,10 @@ func main() {
 	}
 	defer db.Close()
 
+	fmt.Printf("Generating %s...\n", os.Getenv("GOPACKAGE"))
+
 	// first generate using oldgen (for now)
-	oldgen.GenerateModules(filepath.Dir(cwd), []string{os.Getenv("GOPACKAGE")})
+	//oldgen.GenerateModules(filepath.Dir(cwd), []string{os.Getenv("GOPACKAGE")})
 
 	// then use new generate for enums and others as they come online
 	gen := generate.Generator{SymbolCache: db}

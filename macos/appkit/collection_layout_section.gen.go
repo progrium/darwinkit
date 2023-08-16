@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,49 +8,59 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [CollectionLayoutSection] class.
 var CollectionLayoutSectionClass = _CollectionLayoutSectionClass{objc.GetClass("NSCollectionLayoutSection")}
 
 type _CollectionLayoutSectionClass struct {
 	objc.Class
 }
 
+// An interface definition for the [CollectionLayoutSection] class.
 type ICollectionLayoutSection interface {
 	objc.IObject
-	OrthogonalScrollingBehavior() CollectionLayoutSectionOrthogonalScrollingBehavior
-	SetOrthogonalScrollingBehavior(value CollectionLayoutSectionOrthogonalScrollingBehavior)
-	InterGroupSpacing() float64
-	SetInterGroupSpacing(value float64)
-	ContentInsets() DirectionalEdgeInsets
-	SetContentInsets(value DirectionalEdgeInsets)
-	BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem
-	SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem)
-	DecorationItems() []CollectionLayoutDecorationItem
-	SetDecorationItems(value []ICollectionLayoutDecorationItem)
 	SupplementariesFollowContentInsets() bool
 	SetSupplementariesFollowContentInsets(value bool)
+	OrthogonalScrollingBehavior() CollectionLayoutSectionOrthogonalScrollingBehavior
+	SetOrthogonalScrollingBehavior(value CollectionLayoutSectionOrthogonalScrollingBehavior)
+	ContentInsets() DirectionalEdgeInsets
+	SetContentInsets(value DirectionalEdgeInsets)
+	VisibleItemsInvalidationHandler() CollectionLayoutSectionVisibleItemsInvalidationHandler
+	SetVisibleItemsInvalidationHandler(value CollectionLayoutSectionVisibleItemsInvalidationHandler)
+	DecorationItems() []CollectionLayoutDecorationItem
+	SetDecorationItems(value []ICollectionLayoutDecorationItem)
+	InterGroupSpacing() float64
+	SetInterGroupSpacing(value float64)
+	BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem
+	SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem)
 }
 
+// A container that combines a set of groups into distinct visual groupings. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection?language=objc
 type CollectionLayoutSection struct {
 	objc.Object
 }
 
-func MakeCollectionLayoutSection(ptr unsafe.Pointer) CollectionLayoutSection {
+func CollectionLayoutSectionFrom(ptr unsafe.Pointer) CollectionLayoutSection {
 	return CollectionLayoutSection{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (cc _CollectionLayoutSectionClass) SectionWithGroup(group ICollectionLayoutGroup) CollectionLayoutSection {
-	rv := objc.CallMethod[CollectionLayoutSection](cc, objc.GetSelector("sectionWithGroup:"), objc.ExtractPtr(group))
+	rv := objc.Call[CollectionLayoutSection](cc, objc.Sel("sectionWithGroup:"), objc.Ptr(group))
 	return rv
 }
 
+// Creates a section containing the specified group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3213881-sectionwithgroup?language=objc
 func CollectionLayoutSection_SectionWithGroup(group ICollectionLayoutGroup) CollectionLayoutSection {
 	return CollectionLayoutSectionClass.SectionWithGroup(group)
 }
 
 func (cc _CollectionLayoutSectionClass) Alloc() CollectionLayoutSection {
-	rv := objc.CallMethod[CollectionLayoutSection](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[CollectionLayoutSection](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -58,7 +69,7 @@ func CollectionLayoutSection_Alloc() CollectionLayoutSection {
 }
 
 func (cc _CollectionLayoutSectionClass) New() CollectionLayoutSection {
-	rv := objc.CallMethod[CollectionLayoutSection](cc, objc.GetSelector("new"))
+	rv := objc.Call[CollectionLayoutSection](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -67,69 +78,112 @@ func NewCollectionLayoutSection() CollectionLayoutSection {
 	return CollectionLayoutSectionClass.New()
 }
 
-func CollectionLayoutSection_New() CollectionLayoutSection {
-	return CollectionLayoutSectionClass.New()
-}
-
 func (c_ CollectionLayoutSection) Init() CollectionLayoutSection {
-	rv := objc.CallMethod[CollectionLayoutSection](c_, objc.GetSelector("init"))
+	rv := objc.Call[CollectionLayoutSection](c_, objc.Sel("init"))
 	return rv
 }
 
-func CollectionLayoutSection_Init() CollectionLayoutSection {
-	return CollectionLayoutSectionClass.Alloc().Init()
-}
-
-func (c_ CollectionLayoutSection) OrthogonalScrollingBehavior() CollectionLayoutSectionOrthogonalScrollingBehavior {
-	rv := objc.CallMethod[CollectionLayoutSectionOrthogonalScrollingBehavior](c_, objc.GetSelector("orthogonalScrollingBehavior"))
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetOrthogonalScrollingBehavior(value CollectionLayoutSectionOrthogonalScrollingBehavior) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setOrthogonalScrollingBehavior:"), value)
-}
-
-func (c_ CollectionLayoutSection) InterGroupSpacing() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("interGroupSpacing"))
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetInterGroupSpacing(value float64) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInterGroupSpacing:"), value)
-}
-
-func (c_ CollectionLayoutSection) ContentInsets() DirectionalEdgeInsets {
-	rv := objc.CallMethod[DirectionalEdgeInsets](c_, objc.GetSelector("contentInsets"))
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetContentInsets(value DirectionalEdgeInsets) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContentInsets:"), value)
-}
-
-func (c_ CollectionLayoutSection) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("boundarySupplementaryItems"))
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBoundarySupplementaryItems:"), value)
-}
-
-func (c_ CollectionLayoutSection) DecorationItems() []CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[[]CollectionLayoutDecorationItem](c_, objc.GetSelector("decorationItems"))
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetDecorationItems(value []ICollectionLayoutDecorationItem) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDecorationItems:"), value)
-}
-
+// A Boolean value that indicates whether the section’s supplementary items follow the specified content insets for the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199095-supplementariesfollowcontentinse?language=objc
 func (c_ CollectionLayoutSection) SupplementariesFollowContentInsets() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("supplementariesFollowContentInsets"))
+	rv := objc.Call[bool](c_, objc.Sel("supplementariesFollowContentInsets"))
 	return rv
 }
 
+// A Boolean value that indicates whether the section’s supplementary items follow the specified content insets for the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199095-supplementariesfollowcontentinse?language=objc
 func (c_ CollectionLayoutSection) SetSupplementariesFollowContentInsets(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSupplementariesFollowContentInsets:"), value)
+	objc.Call[objc.Void](c_, objc.Sel("setSupplementariesFollowContentInsets:"), value)
+}
+
+// The section’s scrolling behavior in relation to the main layout axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199094-orthogonalscrollingbehavior?language=objc
+func (c_ CollectionLayoutSection) OrthogonalScrollingBehavior() CollectionLayoutSectionOrthogonalScrollingBehavior {
+	rv := objc.Call[CollectionLayoutSectionOrthogonalScrollingBehavior](c_, objc.Sel("orthogonalScrollingBehavior"))
+	return rv
+}
+
+// The section’s scrolling behavior in relation to the main layout axis. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199094-orthogonalscrollingbehavior?language=objc
+func (c_ CollectionLayoutSection) SetOrthogonalScrollingBehavior(value CollectionLayoutSectionOrthogonalScrollingBehavior) {
+	objc.Call[objc.Void](c_, objc.Sel("setOrthogonalScrollingBehavior:"), value)
+}
+
+// The amount of space between the content of the section and its boundaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199090-contentinsets?language=objc
+func (c_ CollectionLayoutSection) ContentInsets() DirectionalEdgeInsets {
+	rv := objc.Call[DirectionalEdgeInsets](c_, objc.Sel("contentInsets"))
+	return rv
+}
+
+// The amount of space between the content of the section and its boundaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199090-contentinsets?language=objc
+func (c_ CollectionLayoutSection) SetContentInsets(value DirectionalEdgeInsets) {
+	objc.Call[objc.Void](c_, objc.Sel("setContentInsets:"), value)
+}
+
+// A closure called before each layout cycle to allow modification of the items in the section immediately before they’re displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199096-visibleitemsinvalidationhandler?language=objc
+func (c_ CollectionLayoutSection) VisibleItemsInvalidationHandler() CollectionLayoutSectionVisibleItemsInvalidationHandler {
+	rv := objc.Call[CollectionLayoutSectionVisibleItemsInvalidationHandler](c_, objc.Sel("visibleItemsInvalidationHandler"))
+	return rv
+}
+
+// A closure called before each layout cycle to allow modification of the items in the section immediately before they’re displayed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199096-visibleitemsinvalidationhandler?language=objc
+func (c_ CollectionLayoutSection) SetVisibleItemsInvalidationHandler(value CollectionLayoutSectionVisibleItemsInvalidationHandler) {
+	objc.Call[objc.Void](c_, objc.Sel("setVisibleItemsInvalidationHandler:"), value)
+}
+
+// An array of the decoration items that are anchored to the section, such as background decoration views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199091-decorationitems?language=objc
+func (c_ CollectionLayoutSection) DecorationItems() []CollectionLayoutDecorationItem {
+	rv := objc.Call[[]CollectionLayoutDecorationItem](c_, objc.Sel("decorationItems"))
+	return rv
+}
+
+// An array of the decoration items that are anchored to the section, such as background decoration views. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199091-decorationitems?language=objc
+func (c_ CollectionLayoutSection) SetDecorationItems(value []ICollectionLayoutDecorationItem) {
+	objc.Call[objc.Void](c_, objc.Sel("setDecorationItems:"), value)
+}
+
+// The amount of space between the groups in the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199093-intergroupspacing?language=objc
+func (c_ CollectionLayoutSection) InterGroupSpacing() float64 {
+	rv := objc.Call[float64](c_, objc.Sel("interGroupSpacing"))
+	return rv
+}
+
+// The amount of space between the groups in the section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199093-intergroupspacing?language=objc
+func (c_ CollectionLayoutSection) SetInterGroupSpacing(value float64) {
+	objc.Call[objc.Void](c_, objc.Sel("setInterGroupSpacing:"), value)
+}
+
+// An array of the supplementary items that are associated with the boundary edges of the section, such as headers and footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199089-boundarysupplementaryitems?language=objc
+func (c_ CollectionLayoutSection) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
+	rv := objc.Call[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.Sel("boundarySupplementaryItems"))
+	return rv
+}
+
+// An array of the supplementary items that are associated with the boundary edges of the section, such as headers and footers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsection/3199089-boundarysupplementaryitems?language=objc
+func (c_ CollectionLayoutSection) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
+	objc.Call[objc.Void](c_, objc.Sel("setBoundarySupplementaryItems:"), value)
 }

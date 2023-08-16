@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -6,203 +7,278 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IDraggingInfo interface {
-	// required
-	// deprecated
-	NamesOfPromisedFilesDroppedAtDestination(dropDestination foundation.URL) []string
-	// required
-	SlideDraggedImageTo(screenPoint foundation.Point)
-	// required
+// A set of methods that supply information about a dragging session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo?language=objc
+type PDraggingInfo interface {
+	// optional
 	EnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock(enumOpts DraggingItemEnumerationOptions, view View, classArray []objc.Class, searchOptions map[PasteboardReadingOptionKey]objc.Object, block func(draggingItem DraggingItem, idx int, stop *bool))
-	// required
+	HasEnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock() bool
+
+	// optional
 	ResetSpringLoading()
-	ImplementsDraggingPasteboard() bool
+	HasResetSpringLoading() bool
+
 	// optional
-	DraggingPasteboard() IPasteboard
-	ImplementsDraggingSequenceNumber() bool
-	// optional
-	DraggingSequenceNumber() int
-	ImplementsDraggingSource() bool
-	// optional
-	DraggingSource() objc.IObject
-	ImplementsDraggingSourceOperationMask() bool
-	// optional
-	DraggingSourceOperationMask() DragOperation
-	ImplementsDraggingLocation() bool
-	// optional
-	DraggingLocation() foundation.Point
-	ImplementsDraggingDestinationWindow() bool
+	SlideDraggedImageTo(screenPoint foundation.Point)
+	HasSlideDraggedImageTo() bool
+
 	// optional
 	DraggingDestinationWindow() IWindow
-	ImplementsSetNumberOfValidItemsForDrop() bool
+	HasDraggingDestinationWindow() bool
+
+	// optional
+	DraggingPasteboard() IPasteboard
+	HasDraggingPasteboard() bool
+
+	// optional
+	DraggingSourceOperationMask() DragOperation
+	HasDraggingSourceOperationMask() bool
+
 	// optional
 	SetNumberOfValidItemsForDrop(value int)
-	ImplementsNumberOfValidItemsForDrop() bool
+	HasSetNumberOfValidItemsForDrop() bool
+
 	// optional
 	NumberOfValidItemsForDrop() int
-	ImplementsDraggedImage() bool
-	// optional
-	// deprecated
-	DraggedImage() IImage
-	ImplementsDraggedImageLocation() bool
-	// optional
-	DraggedImageLocation() foundation.Point
-	ImplementsSetAnimatesToDestination() bool
-	// optional
-	SetAnimatesToDestination(value bool)
-	ImplementsAnimatesToDestination() bool
-	// optional
-	AnimatesToDestination() bool
-	ImplementsSetDraggingFormation() bool
+	HasNumberOfValidItemsForDrop() bool
+
 	// optional
 	SetDraggingFormation(value DraggingFormation)
-	ImplementsDraggingFormation() bool
+	HasSetDraggingFormation() bool
+
 	// optional
 	DraggingFormation() DraggingFormation
-	ImplementsSpringLoadingHighlight() bool
+	HasDraggingFormation() bool
+
 	// optional
 	SpringLoadingHighlight() SpringLoadingHighlight
+	HasSpringLoadingHighlight() bool
+
+	// optional
+	DraggedImageLocation() foundation.Point
+	HasDraggedImageLocation() bool
+
+	// optional
+	DraggingLocation() foundation.Point
+	HasDraggingLocation() bool
+
+	// optional
+	DraggingSource() objc.IObject
+	HasDraggingSource() bool
+
+	// optional
+	SetAnimatesToDestination(value bool)
+	HasSetAnimatesToDestination() bool
+
+	// optional
+	AnimatesToDestination() bool
+	HasAnimatesToDestination() bool
+
+	// optional
+	DraggingSequenceNumber() int
+	HasDraggingSequenceNumber() bool
 }
 
+// A concrete type wrapper for the [PDraggingInfo] protocol.
 type DraggingInfoWrapper struct {
 	objc.Object
 }
 
-func (d_ DraggingInfoWrapper) SlideDraggedImageTo(screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("slideDraggedImageTo:"), screenPoint)
+func (d_ DraggingInfoWrapper) HasEnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock() bool {
+	return d_.RespondsToSelector(objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"))
 }
 
+// Enumerates through each dragging item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416074-enumeratedraggingitemswithoption?language=objc
 func (d_ DraggingInfoWrapper) EnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.ExtractPtr(view), classArray, searchOptions, block)
+	objc.Call[objc.Void](d_, objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.Ptr(view), classArray, searchOptions, block)
 }
 
+func (d_ DraggingInfoWrapper) HasResetSpringLoading() bool {
+	return d_.RespondsToSelector(objc.Sel("resetSpringLoading"))
+}
+
+// Resets a spring-loading operation to its initial state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416012-resetspringloading?language=objc
 func (d_ DraggingInfoWrapper) ResetSpringLoading() {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("resetSpringLoading"))
+	objc.Call[objc.Void](d_, objc.Sel("resetSpringLoading"))
 }
 
-func (d_ DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingPasteboard"))
+func (d_ DraggingInfoWrapper) HasSlideDraggedImageTo() bool {
+	return d_.RespondsToSelector(objc.Sel("slideDraggedImageTo:"))
 }
 
-func (d_ DraggingInfoWrapper) DraggingPasteboard() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](d_, objc.GetSelector("draggingPasteboard"))
-	return rv
+// Slides the image to a specified location. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416045-slidedraggedimageto?language=objc
+func (d_ DraggingInfoWrapper) SlideDraggedImageTo(screenPoint foundation.Point) {
+	objc.Call[objc.Void](d_, objc.Sel("slideDraggedImageTo:"), screenPoint)
 }
 
-func (d_ DraggingInfoWrapper) ImplementsDraggingSequenceNumber() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSequenceNumber"))
+func (d_ DraggingInfoWrapper) HasDraggingDestinationWindow() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingDestinationWindow"))
 }
 
-func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("draggingSequenceNumber"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsDraggingSource() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSource"))
-}
-
-func (d_ DraggingInfoWrapper) DraggingSource() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("draggingSource"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsDraggingSourceOperationMask() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSourceOperationMask"))
-}
-
-func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingSourceOperationMask"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsDraggingLocation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingLocation"))
-}
-
-func (d_ DraggingInfoWrapper) DraggingLocation() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggingLocation"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsDraggingDestinationWindow() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingDestinationWindow"))
-}
-
+// The destination window for the dragging operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416088-draggingdestinationwindow?language=objc
 func (d_ DraggingInfoWrapper) DraggingDestinationWindow() Window {
-	rv := objc.CallMethod[Window](d_, objc.GetSelector("draggingDestinationWindow"))
+	rv := objc.Call[Window](d_, objc.Sel("draggingDestinationWindow"))
 	return rv
 }
 
-func (d_ DraggingInfoWrapper) ImplementsSetNumberOfValidItemsForDrop() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setNumberOfValidItemsForDrop:"))
+func (d_ DraggingInfoWrapper) HasDraggingPasteboard() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingPasteboard"))
 }
 
+// The pasteboard object that holds the dragged data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416092-draggingpasteboard?language=objc
+func (d_ DraggingInfoWrapper) DraggingPasteboard() Pasteboard {
+	rv := objc.Call[Pasteboard](d_, objc.Sel("draggingPasteboard"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasDraggingSourceOperationMask() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingSourceOperationMask"))
+}
+
+// Information about the dragging operation and the data it contains. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1415966-draggingsourceoperationmask?language=objc
+func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
+	rv := objc.Call[DragOperation](d_, objc.Sel("draggingSourceOperationMask"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasSetNumberOfValidItemsForDrop() bool {
+	return d_.RespondsToSelector(objc.Sel("setNumberOfValidItemsForDrop:"))
+}
+
+// The number of valid items for a drop operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416033-numberofvaliditemsfordrop?language=objc
 func (d_ DraggingInfoWrapper) SetNumberOfValidItemsForDrop(value int) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setNumberOfValidItemsForDrop:"), value)
+	objc.Call[objc.Void](d_, objc.Sel("setNumberOfValidItemsForDrop:"), value)
 }
 
-func (d_ DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
-	return d_.RespondsToSelector(objc.GetSelector("numberOfValidItemsForDrop"))
+func (d_ DraggingInfoWrapper) HasNumberOfValidItemsForDrop() bool {
+	return d_.RespondsToSelector(objc.Sel("numberOfValidItemsForDrop"))
 }
 
+// The number of valid items for a drop operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416033-numberofvaliditemsfordrop?language=objc
 func (d_ DraggingInfoWrapper) NumberOfValidItemsForDrop() int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("numberOfValidItemsForDrop"))
+	rv := objc.Call[int](d_, objc.Sel("numberOfValidItemsForDrop"))
 	return rv
 }
 
-func (d_ DraggingInfoWrapper) ImplementsDraggedImage() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggedImage"))
+func (d_ DraggingInfoWrapper) HasSetDraggingFormation() bool {
+	return d_.RespondsToSelector(objc.Sel("setDraggingFormation:"))
 }
 
-func (d_ DraggingInfoWrapper) ImplementsDraggedImageLocation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggedImageLocation"))
-}
-
-func (d_ DraggingInfoWrapper) DraggedImageLocation() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggedImageLocation"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsSetAnimatesToDestination() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setAnimatesToDestination:"))
-}
-
-func (d_ DraggingInfoWrapper) SetAnimatesToDestination(value bool) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAnimatesToDestination:"), value)
-}
-
-func (d_ DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
-	return d_.RespondsToSelector(objc.GetSelector("animatesToDestination"))
-}
-
-func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("animatesToDestination"))
-	return rv
-}
-
-func (d_ DraggingInfoWrapper) ImplementsSetDraggingFormation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setDraggingFormation:"))
-}
-
+// The formation of the dragging items while the drag is over the destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416041-draggingformation?language=objc
 func (d_ DraggingInfoWrapper) SetDraggingFormation(value DraggingFormation) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFormation:"), value)
+	objc.Call[objc.Void](d_, objc.Sel("setDraggingFormation:"), value)
 }
 
-func (d_ DraggingInfoWrapper) ImplementsDraggingFormation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingFormation"))
+func (d_ DraggingInfoWrapper) HasDraggingFormation() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingFormation"))
 }
 
+// The formation of the dragging items while the drag is over the destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416041-draggingformation?language=objc
 func (d_ DraggingInfoWrapper) DraggingFormation() DraggingFormation {
-	rv := objc.CallMethod[DraggingFormation](d_, objc.GetSelector("draggingFormation"))
+	rv := objc.Call[DraggingFormation](d_, objc.Sel("draggingFormation"))
 	return rv
 }
 
-func (d_ DraggingInfoWrapper) ImplementsSpringLoadingHighlight() bool {
-	return d_.RespondsToSelector(objc.GetSelector("springLoadingHighlight"))
+func (d_ DraggingInfoWrapper) HasSpringLoadingHighlight() bool {
+	return d_.RespondsToSelector(objc.Sel("springLoadingHighlight"))
 }
 
+// A highlighting style for your app’s user interface to display during a spring-loading operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416077-springloadinghighlight?language=objc
 func (d_ DraggingInfoWrapper) SpringLoadingHighlight() SpringLoadingHighlight {
-	rv := objc.CallMethod[SpringLoadingHighlight](d_, objc.GetSelector("springLoadingHighlight"))
+	rv := objc.Call[SpringLoadingHighlight](d_, objc.Sel("springLoadingHighlight"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasDraggedImageLocation() bool {
+	return d_.RespondsToSelector(objc.Sel("draggedImageLocation"))
+}
+
+// The current location of the dragged image’s origin, in the base coordinate system of the destination object’s window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1415990-draggedimagelocation?language=objc
+func (d_ DraggingInfoWrapper) DraggedImageLocation() foundation.Point {
+	rv := objc.Call[foundation.Point](d_, objc.Sel("draggedImageLocation"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasDraggingLocation() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingLocation"))
+}
+
+// The current location of the mouse pointer in the base coordinate system of the destination object’s window. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416070-dragginglocation?language=objc
+func (d_ DraggingInfoWrapper) DraggingLocation() foundation.Point {
+	rv := objc.Call[foundation.Point](d_, objc.Sel("draggingLocation"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasDraggingSource() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingSource"))
+}
+
+// The source, or owner, of the dragged data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416068-draggingsource?language=objc
+func (d_ DraggingInfoWrapper) DraggingSource() objc.Object {
+	rv := objc.Call[objc.Object](d_, objc.Sel("draggingSource"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasSetAnimatesToDestination() bool {
+	return d_.RespondsToSelector(objc.Sel("setAnimatesToDestination:"))
+}
+
+// A Boolean value that indicates whether the dragging formation animates while the drag is over the destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416098-animatestodestination?language=objc
+func (d_ DraggingInfoWrapper) SetAnimatesToDestination(value bool) {
+	objc.Call[objc.Void](d_, objc.Sel("setAnimatesToDestination:"), value)
+}
+
+func (d_ DraggingInfoWrapper) HasAnimatesToDestination() bool {
+	return d_.RespondsToSelector(objc.Sel("animatesToDestination"))
+}
+
+// A Boolean value that indicates whether the dragging formation animates while the drag is over the destination. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416098-animatestodestination?language=objc
+func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
+	rv := objc.Call[bool](d_, objc.Sel("animatesToDestination"))
+	return rv
+}
+
+func (d_ DraggingInfoWrapper) HasDraggingSequenceNumber() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingSequenceNumber"))
+}
+
+// A number that uniquely identifies the dragging session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416039-draggingsequencenumber?language=objc
+func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
+	rv := objc.Call[int](d_, objc.Sel("draggingSequenceNumber"))
 	return rv
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,72 +8,68 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Number] class.
 var NumberClass = _NumberClass{objc.GetClass("NSNumber")}
 
 type _NumberClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Number] class.
 type INumber interface {
 	IValue
-	InitWithBool(value bool) Number
-	InitWithChar(value byte) Number
-	InitWithDouble(value float64) Number
-	InitWithFloat(value float32) Number
-	InitWithInt(value int32) Number
+	InitWithUnsignedLong(value int32) Number
 	InitWithInteger(value int) Number
-	InitWithLong(value int64) Number
+	InitWithUnsignedShort(value int) Number
+	InitWithLong(value int32) Number
+	InitWithUnsignedLongLong(value int64) Number
+	InitWithInt(value int) Number
 	InitWithLongLong(value int64) Number
-	InitWithShort(value int16) Number
-	InitWithUnsignedChar(value byte) Number
-	InitWithUnsignedInt(value uint32) Number
-	InitWithUnsignedInteger(value uint) Number
-	InitWithUnsignedLong(value uint64) Number
-	InitWithUnsignedLongLong(value uint64) Number
-	InitWithUnsignedShort(value uint16) Number
+	InitWithShort(value int) Number
+	InitWithChar(value uint8) Number
+	InitWithFloat(value float64) Number
+	InitWithDouble(value float64) Number
 	DescriptionWithLocale(locale objc.IObject) string
+	InitWithUnsignedChar(value uint8) Number
 	Compare(otherNumber INumber) ComparisonResult
+	InitWithBool(value bool) Number
+	InitWithUnsignedInteger(value uint) Number
+	InitWithUnsignedInt(value int) Number
 	IsEqualToNumber(number INumber) bool
-	BoolValue() bool
-	CharValue() byte
-	DecimalValue() Decimal
-	DoubleValue() float64
-	FloatValue() float32
-	IntValue() int32
 	IntegerValue() int
-	LongLongValue() int64
-	LongValue() int64
-	ShortValue() int16
-	UnsignedCharValue() byte
-	UnsignedIntegerValue() uint
-	UnsignedIntValue() uint32
-	UnsignedLongLongValue() uint64
-	UnsignedLongValue() uint64
-	UnsignedShortValue() uint16
+	UnsignedLongLongValue() int64
+	IntValue() int
+	ShortValue() int
+	UnsignedIntValue() int
 	StringValue() string
+	LongLongValue() int64
+	UnsignedShortValue() int
+	DoubleValue() float64
+	UnsignedLongValue() int32
+	CharValue() uint8
+	DecimalValue() Decimal
+	BoolValue() bool
+	FloatValue() float64
+	UnsignedIntegerValue() uint
+	UnsignedCharValue() uint8
+	LongValue() int32
 }
 
+// An object wrapper for primitive scalar numeric values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber?language=objc
 type Number struct {
 	Value
 }
 
-func MakeNumber(ptr unsafe.Pointer) Number {
+func NumberFrom(ptr unsafe.Pointer) Number {
 	return Number{
-		Value: MakeValue(ptr),
+		Value: ValueFrom(ptr),
 	}
 }
 
-func (n_ Number) InitWithBytesObjCType(value unsafe.Pointer, type_ *byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithBytes:objCType:"), value, type_)
-	return rv
-}
-
-func Number_InitWithBytesObjCType(value unsafe.Pointer, type_ *byte) Number {
-	return NumberClass.Alloc().InitWithBytesObjCType(value, type_)
-}
-
 func (nc _NumberClass) Alloc() Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("alloc"))
+	rv := objc.Call[Number](nc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -81,7 +78,7 @@ func Number_Alloc() Number {
 }
 
 func (nc _NumberClass) New() Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("new"))
+	rv := objc.Call[Number](nc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -90,325 +87,524 @@ func NewNumber() Number {
 	return NumberClass.New()
 }
 
-func Number_New() Number {
-	return NumberClass.New()
-}
-
 func (n_ Number) Init() Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("init"))
+	rv := objc.Call[Number](n_, objc.Sel("init"))
 	return rv
 }
 
-func Number_Init() Number {
-	return NumberClass.Alloc().Init()
-}
-
-func (nc _NumberClass) NumberWithBool(value bool) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithBool:"), value)
+func (n_ Number) InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithBytes:objCType:"), value, type_)
 	return rv
 }
 
-func Number_NumberWithBool(value bool) Number {
-	return NumberClass.NumberWithBool(value)
+// Initializes a value object to contain the specified value, interpreted with the specified Objective-C type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsvalue/1411621-initwithbytes?language=objc
+func Number_InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Number {
+	return NumberClass.Alloc().InitWithBytesObjCType(value, type_)
 }
 
-func (nc _NumberClass) NumberWithChar(value byte) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithChar:"), value)
+// Returns an NSNumber object initialized to contain a given value, treated as an unsigned long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1410728-initwithunsignedlong?language=objc
+func (n_ Number) InitWithUnsignedLong(value int32) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedLong:"), value)
 	return rv
 }
 
-func Number_NumberWithChar(value byte) Number {
+// Creates and returns an NSNumber object containing a given value, treating it as a signed char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551464-numberwithchar?language=objc
+func (nc _NumberClass) NumberWithChar(value uint8) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithChar:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a signed char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551464-numberwithchar?language=objc
+func Number_NumberWithChar(value uint8) Number {
 	return NumberClass.NumberWithChar(value)
 }
 
-func (nc _NumberClass) NumberWithDouble(value float64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithDouble:"), value)
+// Returns an NSNumber object initialized to contain a given value, treated as an NSInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1409397-initwithinteger?language=objc
+func (n_ Number) InitWithInteger(value int) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithInteger:"), value)
 	return rv
 }
 
+// Creates and returns an NSNumber object containing a given value, treating it as a double. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551463-numberwithdouble?language=objc
+func (nc _NumberClass) NumberWithDouble(value float64) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithDouble:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a double. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551463-numberwithdouble?language=objc
 func Number_NumberWithDouble(value float64) Number {
 	return NumberClass.NumberWithDouble(value)
 }
 
-func (nc _NumberClass) NumberWithFloat(value float32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithFloat:"), value)
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551465-numberwithunsignedlonglong?language=objc
+func (nc _NumberClass) NumberWithUnsignedLongLong(value int64) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedLongLong:"), value)
 	return rv
 }
 
-func Number_NumberWithFloat(value float32) Number {
-	return NumberClass.NumberWithFloat(value)
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551465-numberwithunsignedlonglong?language=objc
+func Number_NumberWithUnsignedLongLong(value int64) Number {
+	return NumberClass.NumberWithUnsignedLongLong(value)
 }
 
-func (nc _NumberClass) NumberWithInt(value int32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithInt:"), value)
-	return rv
-}
-
-func Number_NumberWithInt(value int32) Number {
-	return NumberClass.NumberWithInt(value)
-}
-
+// Creates and returns an NSNumber object containing a given value, treating it as an NSInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551473-numberwithinteger?language=objc
 func (nc _NumberClass) NumberWithInteger(value int) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithInteger:"), value)
+	rv := objc.Call[Number](nc, objc.Sel("numberWithInteger:"), value)
 	return rv
 }
 
+// Creates and returns an NSNumber object containing a given value, treating it as an NSInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551473-numberwithinteger?language=objc
 func Number_NumberWithInteger(value int) Number {
 	return NumberClass.NumberWithInteger(value)
 }
 
-func (nc _NumberClass) NumberWithLong(value int64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithLong:"), value)
+// Returns an NSNumber object initialized to contain a given value, treated as an unsigned short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407718-initwithunsignedshort?language=objc
+func (n_ Number) InitWithUnsignedShort(value int) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedShort:"), value)
 	return rv
 }
 
-func Number_NumberWithLong(value int64) Number {
-	return NumberClass.NumberWithLong(value)
+// Creates and returns an NSNumber object containing value, treating it as a signed short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551476-numberwithshort?language=objc
+func (nc _NumberClass) NumberWithShort(value int) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithShort:"), value)
+	return rv
 }
 
+// Creates and returns an NSNumber object containing value, treating it as a signed short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551476-numberwithshort?language=objc
+func Number_NumberWithShort(value int) Number {
+	return NumberClass.NumberWithShort(value)
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551477-numberwithunsignedlong?language=objc
+func (nc _NumberClass) NumberWithUnsignedLong(value int32) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedLong:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551477-numberwithunsignedlong?language=objc
+func Number_NumberWithUnsignedLong(value int32) Number {
+	return NumberClass.NumberWithUnsignedLong(value)
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as a signed long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1410739-initwithlong?language=objc
+func (n_ Number) InitWithLong(value int32) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithLong:"), value)
+	return rv
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as an unsigned long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1416550-initwithunsignedlonglong?language=objc
+func (n_ Number) InitWithUnsignedLongLong(value int64) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedLongLong:"), value)
+	return rv
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as a signed int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407580-initwithint?language=objc
+func (n_ Number) InitWithInt(value int) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithInt:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a signed int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551470-numberwithint?language=objc
+func (nc _NumberClass) NumberWithInt(value int) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithInt:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a signed int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551470-numberwithint?language=objc
+func Number_NumberWithInt(value int) Number {
+	return NumberClass.NumberWithInt(value)
+}
+
+// Returns an NSNumber object initialized to contain value, treated as a signed long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1408171-initwithlonglong?language=objc
+func (n_ Number) InitWithLongLong(value int64) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithLongLong:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a float. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551471-numberwithfloat?language=objc
+func (nc _NumberClass) NumberWithFloat(value float64) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithFloat:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a float. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551471-numberwithfloat?language=objc
+func Number_NumberWithFloat(value float64) Number {
+	return NumberClass.NumberWithFloat(value)
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551467-numberwithunsignedshort?language=objc
+func (nc _NumberClass) NumberWithUnsignedShort(value int) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedShort:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551467-numberwithunsignedshort?language=objc
+func Number_NumberWithUnsignedShort(value int) Number {
+	return NumberClass.NumberWithUnsignedShort(value)
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a BOOL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551475-numberwithbool?language=objc
+func (nc _NumberClass) NumberWithBool(value bool) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithBool:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a BOOL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551475-numberwithbool?language=objc
+func Number_NumberWithBool(value bool) Number {
+	return NumberClass.NumberWithBool(value)
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as a signed short. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1411886-initwithshort?language=objc
+func (n_ Number) InitWithShort(value int) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithShort:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551468-numberwithunsignedchar?language=objc
+func (nc _NumberClass) NumberWithUnsignedChar(value uint8) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedChar:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551468-numberwithunsignedchar?language=objc
+func Number_NumberWithUnsignedChar(value uint8) Number {
+	return NumberClass.NumberWithUnsignedChar(value)
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as a signed char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1409777-initwithchar?language=objc
+func (n_ Number) InitWithChar(value uint8) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithChar:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551472-numberwithunsignedint?language=objc
+func (nc _NumberClass) NumberWithUnsignedInt(value int) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedInt:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as an unsigned int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551472-numberwithunsignedint?language=objc
+func Number_NumberWithUnsignedInt(value int) Number {
+	return NumberClass.NumberWithUnsignedInt(value)
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as a float. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1412999-initwithfloat?language=objc
+func (n_ Number) InitWithFloat(value float64) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithFloat:"), value)
+	return rv
+}
+
+// Returns an NSNumber object initialized to contain value, treated as a double. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407545-initwithdouble?language=objc
+func (n_ Number) InitWithDouble(value float64) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithDouble:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a signed long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551462-numberwithlonglong?language=objc
 func (nc _NumberClass) NumberWithLongLong(value int64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithLongLong:"), value)
+	rv := objc.Call[Number](nc, objc.Sel("numberWithLongLong:"), value)
 	return rv
 }
 
+// Creates and returns an NSNumber object containing a given value, treating it as a signed long long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551462-numberwithlonglong?language=objc
 func Number_NumberWithLongLong(value int64) Number {
 	return NumberClass.NumberWithLongLong(value)
 }
 
-func (nc _NumberClass) NumberWithShort(value int16) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithShort:"), value)
-	return rv
-}
-
-func Number_NumberWithShort(value int16) Number {
-	return NumberClass.NumberWithShort(value)
-}
-
-func (nc _NumberClass) NumberWithUnsignedChar(value byte) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedChar:"), value)
-	return rv
-}
-
-func Number_NumberWithUnsignedChar(value byte) Number {
-	return NumberClass.NumberWithUnsignedChar(value)
-}
-
-func (nc _NumberClass) NumberWithUnsignedInt(value uint32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedInt:"), value)
-	return rv
-}
-
-func Number_NumberWithUnsignedInt(value uint32) Number {
-	return NumberClass.NumberWithUnsignedInt(value)
-}
-
+// Creates and returns an NSNumber object containing a given value, treating it as an NSUInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551469-numberwithunsignedinteger?language=objc
 func (nc _NumberClass) NumberWithUnsignedInteger(value uint) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedInteger:"), value)
+	rv := objc.Call[Number](nc, objc.Sel("numberWithUnsignedInteger:"), value)
 	return rv
 }
 
+// Creates and returns an NSNumber object containing a given value, treating it as an NSUInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551469-numberwithunsignedinteger?language=objc
 func Number_NumberWithUnsignedInteger(value uint) Number {
 	return NumberClass.NumberWithUnsignedInteger(value)
 }
 
-func (nc _NumberClass) NumberWithUnsignedLong(value uint64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedLong:"), value)
-	return rv
-}
-
-func Number_NumberWithUnsignedLong(value uint64) Number {
-	return NumberClass.NumberWithUnsignedLong(value)
-}
-
-func (nc _NumberClass) NumberWithUnsignedLongLong(value uint64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedLongLong:"), value)
-	return rv
-}
-
-func Number_NumberWithUnsignedLongLong(value uint64) Number {
-	return NumberClass.NumberWithUnsignedLongLong(value)
-}
-
-func (nc _NumberClass) NumberWithUnsignedShort(value uint16) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedShort:"), value)
-	return rv
-}
-
-func Number_NumberWithUnsignedShort(value uint16) Number {
-	return NumberClass.NumberWithUnsignedShort(value)
-}
-
-func (n_ Number) InitWithBool(value bool) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithBool:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithChar(value byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithChar:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithDouble(value float64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithDouble:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithFloat(value float32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithFloat:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithInt(value int32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithInt:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithInteger(value int) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithInteger:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithLong(value int64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithLong:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithLongLong(value int64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithLongLong:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithShort(value int16) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithShort:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedChar(value byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedChar:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedInt(value uint32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedInt:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedInteger(value uint) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedInteger:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedLong(value uint64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedLong:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedLongLong(value uint64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedLongLong:"), value)
-	return rv
-}
-
-func (n_ Number) InitWithUnsignedShort(value uint16) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedShort:"), value)
-	return rv
-}
-
+// Returns a string that represents the contents of the number object for a given locale. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1409984-descriptionwithlocale?language=objc
 func (n_ Number) DescriptionWithLocale(locale objc.IObject) string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("descriptionWithLocale:"), objc.ExtractPtr(locale))
+	rv := objc.Call[string](n_, objc.Sel("descriptionWithLocale:"), locale)
 	return rv
 }
 
+// Creates and returns an NSNumber object containing a given value, treating it as a signed long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551474-numberwithlong?language=objc
+func (nc _NumberClass) NumberWithLong(value int32) Number {
+	rv := objc.Call[Number](nc, objc.Sel("numberWithLong:"), value)
+	return rv
+}
+
+// Creates and returns an NSNumber object containing a given value, treating it as a signed long. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551474-numberwithlong?language=objc
+func Number_NumberWithLong(value int32) Number {
+	return NumberClass.NumberWithLong(value)
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as an unsigned char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1416533-initwithunsignedchar?language=objc
+func (n_ Number) InitWithUnsignedChar(value uint8) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedChar:"), value)
+	return rv
+}
+
+// Returns an NSComparisonResult value that indicates whether the number object’s value is greater than, equal to, or less than a given number. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1413562-compare?language=objc
 func (n_ Number) Compare(otherNumber INumber) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](n_, objc.GetSelector("compare:"), objc.ExtractPtr(otherNumber))
+	rv := objc.Call[ComparisonResult](n_, objc.Sel("compare:"), objc.Ptr(otherNumber))
 	return rv
 }
 
+// Returns an NSNumber object initialized to contain a given value, treated as a BOOL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1415728-initwithbool?language=objc
+func (n_ Number) InitWithBool(value bool) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithBool:"), value)
+	return rv
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as an NSUInteger. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1412531-initwithunsignedinteger?language=objc
+func (n_ Number) InitWithUnsignedInteger(value uint) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedInteger:"), value)
+	return rv
+}
+
+// Returns an NSNumber object initialized to contain a given value, treated as an unsigned int. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1414598-initwithunsignedint?language=objc
+func (n_ Number) InitWithUnsignedInt(value int) Number {
+	rv := objc.Call[Number](n_, objc.Sel("initWithUnsignedInt:"), value)
+	return rv
+}
+
+// Returns a Boolean value that indicates whether the number object’s value and a given number are equal. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1411315-isequaltonumber?language=objc
 func (n_ Number) IsEqualToNumber(number INumber) bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("isEqualToNumber:"), objc.ExtractPtr(number))
+	rv := objc.Call[bool](n_, objc.Sel("isEqualToNumber:"), objc.Ptr(number))
 	return rv
 }
 
-func (n_ Number) BoolValue() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("boolValue"))
-	return rv
-}
-
-func (n_ Number) CharValue() byte {
-	rv := objc.CallMethod[byte](n_, objc.GetSelector("charValue"))
-	return rv
-}
-
-func (n_ Number) DecimalValue() Decimal {
-	rv := objc.CallMethod[Decimal](n_, objc.GetSelector("decimalValue"))
-	return rv
-}
-
-func (n_ Number) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](n_, objc.GetSelector("doubleValue"))
-	return rv
-}
-
-func (n_ Number) FloatValue() float32 {
-	rv := objc.CallMethod[float32](n_, objc.GetSelector("floatValue"))
-	return rv
-}
-
-func (n_ Number) IntValue() int32 {
-	rv := objc.CallMethod[int32](n_, objc.GetSelector("intValue"))
-	return rv
-}
-
+// The number object's value expressed as an NSInteger object, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1412554-integervalue?language=objc
 func (n_ Number) IntegerValue() int {
-	rv := objc.CallMethod[int](n_, objc.GetSelector("integerValue"))
+	rv := objc.Call[int](n_, objc.Sel("integerValue"))
 	return rv
 }
 
-func (n_ Number) LongLongValue() int64 {
-	rv := objc.CallMethod[int64](n_, objc.GetSelector("longLongValue"))
+// The number object’s value expressed as an unsigned long long, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1414524-unsignedlonglongvalue?language=objc
+func (n_ Number) UnsignedLongLongValue() int64 {
+	rv := objc.Call[int64](n_, objc.Sel("unsignedLongLongValue"))
 	return rv
 }
 
-func (n_ Number) LongValue() int64 {
-	rv := objc.CallMethod[int64](n_, objc.GetSelector("longValue"))
+// The number object's value expressed as an int, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407153-intvalue?language=objc
+func (n_ Number) IntValue() int {
+	rv := objc.Call[int](n_, objc.Sel("intValue"))
 	return rv
 }
 
-func (n_ Number) ShortValue() int16 {
-	rv := objc.CallMethod[int16](n_, objc.GetSelector("shortValue"))
+// The number object's value expressed as a short, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407601-shortvalue?language=objc
+func (n_ Number) ShortValue() int {
+	rv := objc.Call[int](n_, objc.Sel("shortValue"))
 	return rv
 }
 
-func (n_ Number) UnsignedCharValue() byte {
-	rv := objc.CallMethod[byte](n_, objc.GetSelector("unsignedCharValue"))
+// The number object's value expressed as an unsigned int, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1417875-unsignedintvalue?language=objc
+func (n_ Number) UnsignedIntValue() int {
+	rv := objc.Call[int](n_, objc.Sel("unsignedIntValue"))
 	return rv
 }
 
-func (n_ Number) UnsignedIntegerValue() uint {
-	rv := objc.CallMethod[uint](n_, objc.GetSelector("unsignedIntegerValue"))
-	return rv
-}
-
-func (n_ Number) UnsignedIntValue() uint32 {
-	rv := objc.CallMethod[uint32](n_, objc.GetSelector("unsignedIntValue"))
-	return rv
-}
-
-func (n_ Number) UnsignedLongLongValue() uint64 {
-	rv := objc.CallMethod[uint64](n_, objc.GetSelector("unsignedLongLongValue"))
-	return rv
-}
-
-func (n_ Number) UnsignedLongValue() uint64 {
-	rv := objc.CallMethod[uint64](n_, objc.GetSelector("unsignedLongValue"))
-	return rv
-}
-
-func (n_ Number) UnsignedShortValue() uint16 {
-	rv := objc.CallMethod[uint16](n_, objc.GetSelector("unsignedShortValue"))
-	return rv
-}
-
+// The number object's value expressed as a human-readable string. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1415802-stringvalue?language=objc
 func (n_ Number) StringValue() string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("stringValue"))
+	rv := objc.Call[string](n_, objc.Sel("stringValue"))
+	return rv
+}
+
+// The number object’s value expressed as a long long, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1416870-longlongvalue?language=objc
+func (n_ Number) LongLongValue() int64 {
+	rv := objc.Call[int64](n_, objc.Sel("longLongValue"))
+	return rv
+}
+
+// The number object's value expressed as an unsigned short, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1410604-unsignedshortvalue?language=objc
+func (n_ Number) UnsignedShortValue() int {
+	rv := objc.Call[int](n_, objc.Sel("unsignedShortValue"))
+	return rv
+}
+
+// The number object's value expressed as a double, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1414104-doublevalue?language=objc
+func (n_ Number) DoubleValue() float64 {
+	rv := objc.Call[float64](n_, objc.Sel("doubleValue"))
+	return rv
+}
+
+// The number object's value expressed as an unsigned long, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1415252-unsignedlongvalue?language=objc
+func (n_ Number) UnsignedLongValue() int32 {
+	rv := objc.Call[int32](n_, objc.Sel("unsignedLongValue"))
+	return rv
+}
+
+// The number object's value expressed as a char. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407838-charvalue?language=objc
+func (n_ Number) CharValue() uint8 {
+	rv := objc.Call[uint8](n_, objc.Sel("charValue"))
+	return rv
+}
+
+// The number object's value expressed as an NSDecimal structure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1407409-decimalvalue?language=objc
+func (n_ Number) DecimalValue() Decimal {
+	rv := objc.Call[Decimal](n_, objc.Sel("decimalValue"))
+	return rv
+}
+
+// The number object's value expressed as a Boolean value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1410865-boolvalue?language=objc
+func (n_ Number) BoolValue() bool {
+	rv := objc.Call[bool](n_, objc.Sel("boolValue"))
+	return rv
+}
+
+// The number object's value expressed as a float, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1418317-floatvalue?language=objc
+func (n_ Number) FloatValue() float64 {
+	rv := objc.Call[float64](n_, objc.Sel("floatValue"))
+	return rv
+}
+
+// The number object's value expressed as an NSUInteger object, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1413324-unsignedintegervalue?language=objc
+func (n_ Number) UnsignedIntegerValue() uint {
+	rv := objc.Call[uint](n_, objc.Sel("unsignedIntegerValue"))
+	return rv
+}
+
+// The number object's value expressed as an unsigned char, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1409016-unsignedcharvalue?language=objc
+func (n_ Number) UnsignedCharValue() uint8 {
+	rv := objc.Call[uint8](n_, objc.Sel("unsignedCharValue"))
+	return rv
+}
+
+// The number object's value expressed as a long, converted as necessary. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1412566-longvalue?language=objc
+func (n_ Number) LongValue() int32 {
+	rv := objc.Call[int32](n_, objc.Sel("longValue"))
 	return rv
 }

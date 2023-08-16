@@ -13,25 +13,29 @@ var _ CodeGen = (*Protocol)(nil)
 
 // Protocol is code generator for objc protocol.
 type Protocol struct {
-	Type       *typing.ProtocolType
-	Parents    []*Protocol
-	Methods    []*Method
-	Properties []*Property
+	Type        *typing.ProtocolType
+	Supers      []*Protocol
+	Methods     []*Method
+	Properties  []*Property
+	Description string
+	DocURL      string
 
 	init bool
 }
 
 // Copy implements CodeGen
 func (p *Protocol) Copy() CodeGen {
-	parents := make([]*Protocol, len(p.Parents))
-	for i := 0; i < len(p.Parents); i++ {
-		parents[i] = p.Parents[i].Copy().(*Protocol)
+	supers := make([]*Protocol, len(p.Supers))
+	for i := 0; i < len(p.Supers); i++ {
+		supers[i] = p.Supers[i].Copy().(*Protocol)
 	}
 	return &Protocol{
-		Type:       p.Type,
-		Parents:    p.Parents,
-		Methods:    p.Methods,
-		Properties: p.Properties,
+		Type:        p.Type,
+		Supers:      supers,
+		Methods:     p.Methods,
+		Properties:  p.Properties,
+		Description: p.Description,
+		DocURL:      p.DocURL,
 	}
 }
 
@@ -50,7 +54,7 @@ func (p *Protocol) Init() {
 		}
 	}
 
-	for _, parent := range p.Parents {
+	for _, parent := range p.Supers {
 		if parent != nil && parent.Type.Name != "NSObject" {
 			parent.Init()
 		}
@@ -85,7 +89,7 @@ func (p *Protocol) Init() {
 
 func (p *Protocol) GoImports() set.Set[string] {
 	imports := set.New("github.com/progrium/macdriver/objc")
-	for _, parent := range p.Parents {
+	for _, parent := range p.Supers {
 		imports.Add("github.com/progrium/macdriver/macos/" + parent.Type.Module.Package)
 	}
 	for _, m := range p.Methods {
@@ -115,16 +119,19 @@ func (p *Protocol) WriteGoCode(w *CodeWriter) {
 }
 
 func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
+	if p.DocURL != "" {
+		w.WriteLine(fmt.Sprintf("// %s [Full Topic]", p.Description))
+		w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", p.DocURL))
+	}
 	w.WriteLine("type " + p.Type.GoInterfaceName() + " interface {")
 	w.Indent()
-	for _, pp := range p.Parents {
+	for _, pp := range p.Supers {
 		if pp.Type.Name != "NSObject" {
 			w.WriteLine(pp.Type.GoName(p.Type.Module, false))
 		}
 	}
 	for _, m := range p.allMethods() {
 		if !m.Required {
-			w.WriteLine("Implements" + m.ProtocolGoFuncName() + "() bool")
 			w.WriteLine("// optional")
 		} else {
 			w.WriteLine("// required")
@@ -133,6 +140,10 @@ func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
 			w.WriteLine("// deprecated")
 		}
 		w.WriteLine(m.ProtocolGoFuncName() + m.ProtocolGoFuncFieldType(p.Type.Module))
+		if !m.Required {
+			w.WriteLine("Has" + m.ProtocolGoFuncName() + "() bool")
+		}
+		w.WriteLine("")
 	}
 	w.UnIndent()
 	w.WriteLine("}")
@@ -140,8 +151,9 @@ func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
 
 func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
 	implStructName := p.Type.GoStructName()
+	w.WriteLine(fmt.Sprintf("// A delegate implementation builder for the [%s] protocol.", p.Type.GoInterfaceName()))
 	w.WriteLine("type " + implStructName + " struct {")
-	for _, pp := range p.Parents {
+	for _, pp := range p.Supers {
 		if pp.Type.Name != "NSObject" {
 			w.WriteLine(pp.Type.GoStructName())
 		}
@@ -156,25 +168,26 @@ func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
 	receiver := "di"
 	for _, m := range p.allMethods() {
 		if !m.Required {
-			w.WriteLine(fmt.Sprintf("func (%s *%s) Implements%s() bool {", receiver, implStructName, m.ProtocolGoFuncName()))
+			w.WriteLine(fmt.Sprintf("func (%s *%s) Has%s() bool {", receiver, implStructName, m.ProtocolGoFuncName()))
 			w.WriteLine(fmt.Sprintf("\t return %s._%s != nil", receiver, m.ProtocolGoFuncName()))
 			w.WriteLine("}")
 		}
 
 		w.WriteLine("")
-		if m.Deprecated {
-			w.WriteLine("// deprecated")
+		if m.DocURL != "" {
+			w.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
+			w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
 		}
 		w.WriteLine(fmt.Sprintf("func (%s *%s) Set%s(f func %s) {", receiver, implStructName, m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module)))
 		w.WriteLine(fmt.Sprintf("\t%s._%s = f", receiver, m.ProtocolGoFuncName()))
 		w.WriteLine("}")
 
-		if m.Required {
-			w.WriteLine("// required")
-		}
-		w.WriteLine("")
-		if m.Deprecated {
-			w.WriteLine("// deprecated")
+		// if m.Required {
+		// 	w.WriteLine("// required")
+		// }
+		if m.DocURL != "" {
+			w.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
+			w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
 		}
 		w.WriteLine(fmt.Sprintf("func (%s *%s) %s%s {", receiver, implStructName, m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module)))
 		var sb strings.Builder
@@ -196,12 +209,13 @@ func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
 
 func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 	typeName := p.Type.GoWrapperName()
+	w.WriteLine(fmt.Sprintf("// A concrete type wrapper for the [%s] protocol.", p.Type.GoInterfaceName()))
 	w.WriteLine("type " + typeName + " struct {")
 	w.Indent()
-	if len(p.Parents) == 0 {
+	if len(p.Supers) == 0 {
 		w.WriteLine("objc.Object")
 	}
-	for _, pp := range p.Parents {
+	for _, pp := range p.Supers {
 		if pp.Type.Name != "NSObject" {
 			w.WriteLine(pp.Type.GoName(p.Type.Module, true))
 		} else {
@@ -215,8 +229,8 @@ func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 		w.WriteLine("")
 		if !m.Required {
 			receiver := strings.ToLower(typeName[0:1] + "_")
-			w.WriteLine(fmt.Sprintf("func (%s %s) Implements%s() bool {", receiver, typeName, m.ProtocolGoFuncName()))
-			w.WriteLine(fmt.Sprintf("\t return %s.RespondsToSelector(objc.GetSelector(\"%s\"))", receiver, m.Selector()))
+			w.WriteLine(fmt.Sprintf("func (%s %s) Has%s() bool {", receiver, typeName, m.ProtocolGoFuncName()))
+			w.WriteLine(fmt.Sprintf("\t return %s.RespondsToSelector(objc.Sel(\"%s\"))", receiver, m.Selector()))
 			w.WriteLine("}")
 		}
 		w.WriteLine("")
@@ -227,8 +241,13 @@ func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 
 // include property getter/setter
 func (p *Protocol) allMethods() []*Method {
-	var allMethods = make([]*Method, len(p.Methods))
-	copy(allMethods, p.Methods)
+	var allMethods []*Method
+	for _, m := range p.Methods {
+		if !m.ClassMethod {
+			// class method not supported yet
+			allMethods = append(allMethods, m)
+		}
+	}
 	for _, pp := range p.Properties {
 		if !pp.ReadOnly {
 			allMethods = append(allMethods, (*Method)(pp.setter()))

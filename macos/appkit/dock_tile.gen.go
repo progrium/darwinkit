@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,37 +9,42 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [DockTile] class.
 var DockTileClass = _DockTileClass{objc.GetClass("NSDockTile")}
 
 type _DockTileClass struct {
 	objc.Class
 }
 
+// An interface definition for the [DockTile] class.
 type IDockTile interface {
 	objc.IObject
 	Display()
 	ContentView() View
 	SetContentView(value IView)
-	Size() foundation.Size
-	Owner() objc.Object
 	ShowsApplicationBadge() bool
 	SetShowsApplicationBadge(value bool)
+	Owner() objc.Object
 	BadgeLabel() string
 	SetBadgeLabel(value string)
+	Size() foundation.Size
 }
 
+// The visual representation of your app’s miniaturized windows and app icon as they appear in the Dock. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile?language=objc
 type DockTile struct {
 	objc.Object
 }
 
-func MakeDockTile(ptr unsafe.Pointer) DockTile {
+func DockTileFrom(ptr unsafe.Pointer) DockTile {
 	return DockTile{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (dc _DockTileClass) Alloc() DockTile {
-	rv := objc.CallMethod[DockTile](dc, objc.GetSelector("alloc"))
+	rv := objc.Call[DockTile](dc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -47,7 +53,7 @@ func DockTile_Alloc() DockTile {
 }
 
 func (dc _DockTileClass) New() DockTile {
-	rv := objc.CallMethod[DockTile](dc, objc.GetSelector("new"))
+	rv := objc.Call[DockTile](dc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,56 +62,75 @@ func NewDockTile() DockTile {
 	return DockTileClass.New()
 }
 
-func DockTile_New() DockTile {
-	return DockTileClass.New()
-}
-
 func (d_ DockTile) Init() DockTile {
-	rv := objc.CallMethod[DockTile](d_, objc.GetSelector("init"))
+	rv := objc.Call[DockTile](d_, objc.Sel("init"))
 	return rv
 }
 
-func DockTile_Init() DockTile {
-	return DockTileClass.Alloc().Init()
-}
-
+// Redraws the dock tile’s content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1527292-display?language=objc
 func (d_ DockTile) Display() {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("display"))
+	objc.Call[objc.Void](d_, objc.Sel("display"))
 }
 
+// The view to use for drawing the dock tile contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
 func (d_ DockTile) ContentView() View {
-	rv := objc.CallMethod[View](d_, objc.GetSelector("contentView"))
+	rv := objc.Call[View](d_, objc.Sel("contentView"))
 	return rv
 }
 
+// The view to use for drawing the dock tile contents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
 func (d_ DockTile) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setContentView:"), objc.Ptr(value))
 }
 
-func (d_ DockTile) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](d_, objc.GetSelector("size"))
-	return rv
-}
-
-func (d_ DockTile) Owner() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("owner"))
-	return rv
-}
-
+// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
 func (d_ DockTile) ShowsApplicationBadge() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("showsApplicationBadge"))
+	rv := objc.Call[bool](d_, objc.Sel("showsApplicationBadge"))
 	return rv
 }
 
+// A Boolean showing whether the tile is badged with the application’s icon [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1528057-showsapplicationbadge?language=objc
 func (d_ DockTile) SetShowsApplicationBadge(value bool) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShowsApplicationBadge:"), value)
+	objc.Call[objc.Void](d_, objc.Sel("setShowsApplicationBadge:"), value)
 }
 
-func (d_ DockTile) BadgeLabel() string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("badgeLabel"))
+// The object represented by the dock tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1533723-owner?language=objc
+func (d_ DockTile) Owner() objc.Object {
+	rv := objc.Call[objc.Object](d_, objc.Sel("owner"))
 	return rv
 }
 
+// The string to be displayed in the tile’s badging area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1524433-badgelabel?language=objc
+func (d_ DockTile) BadgeLabel() string {
+	rv := objc.Call[string](d_, objc.Sel("badgeLabel"))
+	return rv
+}
+
+// The string to be displayed in the tile’s badging area. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1524433-badgelabel?language=objc
 func (d_ DockTile) SetBadgeLabel(value string) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setBadgeLabel:"), value)
+	objc.Call[objc.Void](d_, objc.Sel("setBadgeLabel:"), value)
+}
+
+// The size of the tile. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1534239-size?language=objc
+func (d_ DockTile) Size() foundation.Size {
+	rv := objc.Call[foundation.Size](d_, objc.Sel("size"))
+	return rv
 }

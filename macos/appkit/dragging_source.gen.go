@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -6,61 +7,43 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IDraggingSource interface {
-	// required
-	DraggingSessionSourceOperationMaskForDraggingContext(session DraggingSession, context DraggingContext) DragOperation
-	ImplementsDraggingSessionEndedAtPointOperation() bool
-	// optional
-	DraggingSessionEndedAtPointOperation(session DraggingSession, screenPoint foundation.Point, operation DragOperation)
-	ImplementsDraggingSessionMovedToPoint() bool
+// A set of methods that are implemented by the source object in a dragging session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource?language=objc
+type PDraggingSource interface {
 	// optional
 	DraggingSessionMovedToPoint(session DraggingSession, screenPoint foundation.Point)
-	ImplementsDraggingSessionWillBeginAtPoint() bool
-	// optional
-	DraggingSessionWillBeginAtPoint(session DraggingSession, screenPoint foundation.Point)
-	ImplementsIgnoreModifierKeysForDraggingSession() bool
+	HasDraggingSessionMovedToPoint() bool
+
 	// optional
 	IgnoreModifierKeysForDraggingSession(session DraggingSession) bool
+	HasIgnoreModifierKeysForDraggingSession() bool
 }
 
+// A concrete type wrapper for the [PDraggingSource] protocol.
 type DraggingSourceWrapper struct {
 	objc.Object
 }
 
-func (d_ DraggingSourceWrapper) DraggingSessionSourceOperationMaskForDraggingContext(session IDraggingSession, context DraggingContext) DragOperation {
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingSession:sourceOperationMaskForDraggingContext:"), objc.ExtractPtr(session), context)
-	return rv
+func (d_ DraggingSourceWrapper) HasDraggingSessionMovedToPoint() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingSession:movedToPoint:"))
 }
 
-func (d_ DraggingSourceWrapper) ImplementsDraggingSessionEndedAtPointOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSession:endedAtPoint:operation:"))
-}
-
-func (d_ DraggingSourceWrapper) DraggingSessionEndedAtPointOperation(session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:endedAtPoint:operation:"), objc.ExtractPtr(session), screenPoint, operation)
-}
-
-func (d_ DraggingSourceWrapper) ImplementsDraggingSessionMovedToPoint() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSession:movedToPoint:"))
-}
-
+// Invoked when the drag moves on the screen. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1416079-draggingsession?language=objc
 func (d_ DraggingSourceWrapper) DraggingSessionMovedToPoint(session IDraggingSession, screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:movedToPoint:"), objc.ExtractPtr(session), screenPoint)
+	objc.Call[objc.Void](d_, objc.Sel("draggingSession:movedToPoint:"), objc.Ptr(session), screenPoint)
 }
 
-func (d_ DraggingSourceWrapper) ImplementsDraggingSessionWillBeginAtPoint() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSession:willBeginAtPoint:"))
+func (d_ DraggingSourceWrapper) HasIgnoreModifierKeysForDraggingSession() bool {
+	return d_.RespondsToSelector(objc.Sel("ignoreModifierKeysForDraggingSession:"))
 }
 
-func (d_ DraggingSourceWrapper) DraggingSessionWillBeginAtPoint(session IDraggingSession, screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:willBeginAtPoint:"), objc.ExtractPtr(session), screenPoint)
-}
-
-func (d_ DraggingSourceWrapper) ImplementsIgnoreModifierKeysForDraggingSession() bool {
-	return d_.RespondsToSelector(objc.GetSelector("ignoreModifierKeysForDraggingSession:"))
-}
-
+// Returns whether the modifier keys will be ignored for this dragging session. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1415974-ignoremodifierkeysfordraggingses?language=objc
 func (d_ DraggingSourceWrapper) IgnoreModifierKeysForDraggingSession(session IDraggingSession) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("ignoreModifierKeysForDraggingSession:"), objc.ExtractPtr(session))
+	rv := objc.Call[bool](d_, objc.Sel("ignoreModifierKeysForDraggingSession:"), objc.Ptr(session))
 	return rv
 }

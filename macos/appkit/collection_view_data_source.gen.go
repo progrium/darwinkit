@@ -1,52 +1,49 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
-type ICollectionViewDataSource interface {
-	ImplementsNumberOfSectionsInCollectionView() bool
+// A set of methods that a data source object implements to provide the information and view objects that a collection view requires to present content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource?language=objc
+type PCollectionViewDataSource interface {
 	// optional
 	NumberOfSectionsInCollectionView(collectionView CollectionView) int
-	// required
-	CollectionViewNumberOfItemsInSection(collectionView CollectionView, section int) int
-	// required
-	CollectionViewItemForRepresentedObjectAtIndexPath(collectionView CollectionView, indexPath foundation.IndexPath) ICollectionViewItem
-	ImplementsCollectionViewViewForSupplementaryElementOfKindAtIndexPath() bool
+	HasNumberOfSectionsInCollectionView() bool
+
 	// optional
-	CollectionViewViewForSupplementaryElementOfKindAtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) IView
+	CollectionViewNumberOfItemsInSection(collectionView CollectionView, section int) int
+	HasCollectionViewNumberOfItemsInSection() bool
 }
 
+// A concrete type wrapper for the [PCollectionViewDataSource] protocol.
 type CollectionViewDataSourceWrapper struct {
 	objc.Object
 }
 
-func (c_ CollectionViewDataSourceWrapper) ImplementsNumberOfSectionsInCollectionView() bool {
-	return c_.RespondsToSelector(objc.GetSelector("numberOfSectionsInCollectionView:"))
+func (c_ CollectionViewDataSourceWrapper) HasNumberOfSectionsInCollectionView() bool {
+	return c_.RespondsToSelector(objc.Sel("numberOfSectionsInCollectionView:"))
 }
 
+// Asks your data source object to provide the total number of sections. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1525901-numberofsectionsincollectionview?language=objc
 func (c_ CollectionViewDataSourceWrapper) NumberOfSectionsInCollectionView(collectionView ICollectionView) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfSectionsInCollectionView:"), objc.ExtractPtr(collectionView))
+	rv := objc.Call[int](c_, objc.Sel("numberOfSectionsInCollectionView:"), objc.Ptr(collectionView))
 	return rv
 }
 
+func (c_ CollectionViewDataSourceWrapper) HasCollectionViewNumberOfItemsInSection() bool {
+	return c_.RespondsToSelector(objc.Sel("collectionView:numberOfItemsInSection:"))
+}
+
+// Asks your data source object to provide the number of items in the specified section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1525594-collectionview?language=objc
 func (c_ CollectionViewDataSourceWrapper) CollectionViewNumberOfItemsInSection(collectionView ICollectionView, section int) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("collectionView:numberOfItemsInSection:"), objc.ExtractPtr(collectionView), section)
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionViewItemForRepresentedObjectAtIndexPath(collectionView ICollectionView, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("collectionView:itemForRepresentedObjectAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPath))
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) ImplementsCollectionViewViewForSupplementaryElementOfKindAtIndexPath() bool {
-	return c_.RespondsToSelector(objc.GetSelector("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"))
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionViewViewForSupplementaryElementOfKindAtIndexPath(collectionView ICollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"), objc.ExtractPtr(collectionView), kind, objc.ExtractPtr(indexPath))
+	rv := objc.Call[int](c_, objc.Sel("collectionView:numberOfItemsInSection:"), objc.Ptr(collectionView), section)
 	return rv
 }

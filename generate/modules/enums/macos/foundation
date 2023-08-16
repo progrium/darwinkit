@@ -338,7 +338,6 @@ NSGreaterThanComparison 4
 NSGreaterThanOrEqualToComparison 3
 NSGreaterThanOrEqualToPredicateOperatorType 3
 NSGreaterThanPredicateOperatorType 2
-NSHPUXOperatingSystem 4
 NSHTTPCookieAcceptPolicyAlways 0
 NSHTTPCookieAcceptPolicyNever 1
 NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain 2
@@ -445,7 +444,6 @@ NSLocaleLanguageDirectionLeftToRight 1
 NSLocaleLanguageDirectionRightToLeft 2
 NSLocaleLanguageDirectionTopToBottom 3
 NSLocaleLanguageDirectionUnknown 0
-NSMACHOperatingSystem 5
 NSMacOSRomanStringEncoding 30
 NSMachPortDeallocateNone 0
 NSMachPortDeallocateReceiveRight 2
@@ -537,7 +535,6 @@ NSNumberFormatterRoundUp 3
 NSNumberFormatterScientificStyle 4
 NSNumberFormatterSpellOutStyle 5
 NSNumericSearch 64
-NSOSF1OperatingSystem 7
 NSOpenStepUnicodeReservedBase 62464
 NSOperationNotSupportedForKeyScriptError 9
 NSOperationNotSupportedForKeySpecifierError 6
@@ -657,7 +654,6 @@ NSScannedOption 1
 NSSecondCalendarUnit 128
 NSSharedPublicDirectory 21
 NSShiftJISStringEncoding 8
-NSSolarisOperatingSystem 3
 NSSortConcurrent 1
 NSSortStable 16
 NSStreamEventEndEncountered 16
@@ -687,14 +683,10 @@ NSStringEnumerationLocalized 1024
 NSStringEnumerationReverse 256
 NSStringEnumerationSubstringNotRequired 512
 NSSubqueryExpressionType 13
-NSSunOSOperatingSystem 6
 NSSymbolStringEncoding 6
 NSSystemDomainMask 8
 NSTaskTerminationReasonExit 1
 NSTaskTerminationReasonUncaughtSignal 2
-NSTextCheckingAllCustomTypes -4294967296
-NSTextCheckingAllSystemTypes 4294967295
-NSTextCheckingAllTypes -1
 NSTextCheckingTypeAddress 16
 NSTextCheckingTypeCorrection 512
 NSTextCheckingTypeDash 128
@@ -901,13 +893,11 @@ NSWeekOfYearCalendarUnit 8192
 NSWeekdayCalendarUnit 512
 NSWeekdayOrdinalCalendarUnit 1024
 NSWidthInsensitiveSearch 256
-NSWindows95OperatingSystem 2
 NSWindowsCP1250StringEncoding 15
 NSWindowsCP1251StringEncoding 11
 NSWindowsCP1252StringEncoding 12
 NSWindowsCP1253StringEncoding 13
 NSWindowsCP1254StringEncoding 14
-NSWindowsNTOperatingSystem 1
 NSWrapCalendarComponents 1
 NSXMLAttributeCDATAKind 6
 NSXMLAttributeDeclarationKind 10

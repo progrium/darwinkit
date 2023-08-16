@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,35 +8,39 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [PageLayout] class.
 var PageLayoutClass = _PageLayoutClass{objc.GetClass("NSPageLayout")}
 
 type _PageLayoutClass struct {
 	objc.Class
 }
 
+// An interface definition for the [PageLayout] class.
 type IPageLayout interface {
 	objc.IObject
-	BeginSheetWithPrintInfoModalForWindowDelegateDidEndSelectorContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
-	RunModal() int
-	RunModalWithPrintInfo(printInfo IPrintInfo) int
-	AddAccessoryController(accessoryController IViewController)
 	RemoveAccessoryController(accessoryController IViewController)
-	AccessoryControllers() []ViewController
+	RunModal() int
+	AddAccessoryController(accessoryController IViewController)
+	RunModalWithPrintInfo(printInfo IPrintInfo) int
 	PrintInfo() PrintInfo
+	AccessoryControllers() []ViewController
 }
 
+// A panel that queries the user for information such as paper type and orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout?language=objc
 type PageLayout struct {
 	objc.Object
 }
 
-func MakePageLayout(ptr unsafe.Pointer) PageLayout {
+func PageLayoutFrom(ptr unsafe.Pointer) PageLayout {
 	return PageLayout{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (pc _PageLayoutClass) Alloc() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[PageLayout](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -44,7 +49,7 @@ func PageLayout_Alloc() PageLayout {
 }
 
 func (pc _PageLayoutClass) New() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("new"))
+	rv := objc.Call[PageLayout](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,56 +58,68 @@ func NewPageLayout() PageLayout {
 	return PageLayoutClass.New()
 }
 
-func PageLayout_New() PageLayout {
-	return PageLayoutClass.New()
-}
-
 func (p_ PageLayout) Init() PageLayout {
-	rv := objc.CallMethod[PageLayout](p_, objc.GetSelector("init"))
+	rv := objc.Call[PageLayout](p_, objc.Sel("init"))
 	return rv
 }
 
-func PageLayout_Init() PageLayout {
-	return PageLayoutClass.Alloc().Init()
+// Removes the specified controller of an accessory view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397802-removeaccessorycontroller?language=objc
+func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
+	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), objc.Ptr(accessoryController))
 }
 
+// Displays the page layout panel and begins the modal loop using the shared print info object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397798-runmodal?language=objc
+func (p_ PageLayout) RunModal() int {
+	rv := objc.Call[int](p_, objc.Sel("runModal"))
+	return rv
+}
+
+// Adds the specified controller of an accessory view to be presented in the page setup panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397790-addaccessorycontroller?language=objc
+func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
+	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), objc.Ptr(accessoryController))
+}
+
+// Displays the page layout panel and begins the modal loop using the specified print info object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397784-runmodalwithprintinfo?language=objc
+func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
+	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), objc.Ptr(printInfo))
+	return rv
+}
+
+// Returns a newly created page layout object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397806-pagelayout?language=objc
 func (pc _PageLayoutClass) PageLayout() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("pageLayout"))
+	rv := objc.Call[PageLayout](pc, objc.Sel("pageLayout"))
 	return rv
 }
 
+// Returns a newly created page layout object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397806-pagelayout?language=objc
 func PageLayout_PageLayout() PageLayout {
 	return PageLayoutClass.PageLayout()
 }
 
-func (p_ PageLayout) BeginSheetWithPrintInfoModalForWindowDelegateDidEndSelectorContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), objc.ExtractPtr(printInfo), objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
-}
-
-func (p_ PageLayout) RunModal() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("runModal"))
-	return rv
-}
-
-func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), objc.ExtractPtr(printInfo))
-	return rv
-}
-
-func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), objc.ExtractPtr(accessoryController))
-}
-
-func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), objc.ExtractPtr(accessoryController))
-}
-
-func (p_ PageLayout) AccessoryControllers() []ViewController {
-	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
-	return rv
-}
-
+// The printing information object used when the page layout panel is run. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397804-printinfo?language=objc
 func (p_ PageLayout) PrintInfo() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("printInfo"))
+	rv := objc.Call[PrintInfo](p_, objc.Sel("printInfo"))
+	return rv
+}
+
+// An array of accessory view controllers belonging to the page layout panel. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397788-accessorycontrollers?language=objc
+func (p_ PageLayout) AccessoryControllers() []ViewController {
+	rv := objc.Call[[]ViewController](p_, objc.Sel("accessoryControllers"))
 	return rv
 }

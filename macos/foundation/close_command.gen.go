@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,38 +8,34 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [CloseCommand] class.
 var CloseCommandClass = _CloseCommandClass{objc.GetClass("NSCloseCommand")}
 
 type _CloseCommandClass struct {
 	objc.Class
 }
 
+// An interface definition for the [CloseCommand] class.
 type ICloseCommand interface {
 	IScriptCommand
 	SaveOptions() SaveOptions
 }
 
+// A command that closes one or more scriptable objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclosecommand?language=objc
 type CloseCommand struct {
 	ScriptCommand
 }
 
-func MakeCloseCommand(ptr unsafe.Pointer) CloseCommand {
+func CloseCommandFrom(ptr unsafe.Pointer) CloseCommand {
 	return CloseCommand{
-		ScriptCommand: MakeScriptCommand(ptr),
+		ScriptCommand: ScriptCommandFrom(ptr),
 	}
 }
 
-func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
-	return rv
-}
-
-func CloseCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	return CloseCommandClass.Alloc().InitWithCommandDescription(commandDef)
-}
-
 func (cc _CloseCommandClass) Alloc() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[CloseCommand](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -47,7 +44,7 @@ func CloseCommand_Alloc() CloseCommand {
 }
 
 func (cc _CloseCommandClass) New() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](cc, objc.GetSelector("new"))
+	rv := objc.Call[CloseCommand](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,20 +53,27 @@ func NewCloseCommand() CloseCommand {
 	return CloseCommandClass.New()
 }
 
-func CloseCommand_New() CloseCommand {
-	return CloseCommandClass.New()
-}
-
 func (c_ CloseCommand) Init() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("init"))
+	rv := objc.Call[CloseCommand](c_, objc.Sel("init"))
 	return rv
 }
 
-func CloseCommand_Init() CloseCommand {
-	return CloseCommandClass.Alloc().Init()
+func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
+	rv := objc.Call[CloseCommand](c_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	return rv
 }
 
+// Returns an a script command object initialized from the passed command description. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
+func CloseCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
+	return CloseCommandClass.Alloc().InitWithCommandDescription(commandDef)
+}
+
+// Returns a constant indicating how to deal with closing any modified documents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsclosecommand/1415647-saveoptions?language=objc
 func (c_ CloseCommand) SaveOptions() SaveOptions {
-	rv := objc.CallMethod[SaveOptions](c_, objc.GetSelector("saveOptions"))
+	rv := objc.Call[SaveOptions](c_, objc.Sel("saveOptions"))
 	return rv
 }

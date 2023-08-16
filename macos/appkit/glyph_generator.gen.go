@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,30 +8,35 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [GlyphGenerator] class.
 var GlyphGeneratorClass = _GlyphGeneratorClass{objc.GetClass("NSGlyphGenerator")}
 
 type _GlyphGeneratorClass struct {
 	objc.Class
 }
 
+// An interface definition for the [GlyphGenerator] class.
 type IGlyphGenerator interface {
 	objc.IObject
-	GenerateGlyphsForGlyphStorageDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage IGlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint)
-	GenerateGlyphsForGlyphStorage0DesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint)
+	GenerateGlyphsForGlyphStorageDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage PGlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint)
+	GenerateGlyphsForGlyphStorageObjectDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorageObject objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint)
 }
 
+// An object that performs the initial, nominal glyph generation phase in the layout process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator?language=objc
 type GlyphGenerator struct {
 	objc.Object
 }
 
-func MakeGlyphGenerator(ptr unsafe.Pointer) GlyphGenerator {
+func GlyphGeneratorFrom(ptr unsafe.Pointer) GlyphGenerator {
 	return GlyphGenerator{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (gc _GlyphGeneratorClass) Alloc() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("alloc"))
+	rv := objc.Call[GlyphGenerator](gc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -39,7 +45,7 @@ func GlyphGenerator_Alloc() GlyphGenerator {
 }
 
 func (gc _GlyphGeneratorClass) New() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("new"))
+	rv := objc.Call[GlyphGenerator](gc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,33 +54,37 @@ func NewGlyphGenerator() GlyphGenerator {
 	return GlyphGeneratorClass.New()
 }
 
-func GlyphGenerator_New() GlyphGenerator {
-	return GlyphGeneratorClass.New()
-}
-
 func (g_ GlyphGenerator) Init() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](g_, objc.GetSelector("init"))
+	rv := objc.Call[GlyphGenerator](g_, objc.Sel("init"))
 	return rv
 }
 
-func GlyphGenerator_Init() GlyphGenerator {
-	return GlyphGeneratorClass.Alloc().Init()
+// Generates glyphs for the specified glyph storage object (NSLayoutManager by default). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator/1425139-generateglyphsforglyphstorage?language=objc
+func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorageDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage PGlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint) {
+	po0 := objc.WrapAsProtocol("NSGlyphStorage", glyphStorage)
+	objc.Call[objc.Void](g_, objc.Sel("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), po0, nChars, glyphIndex, charIndex)
 }
 
-func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorageDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage IGlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint) {
-	po := objc.WrapAsProtocol("NSGlyphStorage", glyphStorage)
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), po, nChars, glyphIndex, charIndex)
+// Generates glyphs for the specified glyph storage object (NSLayoutManager by default). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator/1425139-generateglyphsforglyphstorage?language=objc
+func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorageObjectDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorageObject objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
+	objc.Call[objc.Void](g_, objc.Sel("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.Ptr(glyphStorageObject), nChars, glyphIndex, charIndex)
 }
 
-func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage0DesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.ExtractPtr(glyphStorage), nChars, glyphIndex, charIndex)
-}
-
+// Returns a shared instance of NSGlyphGenerator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator/1425155-sharedglyphgenerator?language=objc
 func (gc _GlyphGeneratorClass) SharedGlyphGenerator() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("sharedGlyphGenerator"))
+	rv := objc.Call[GlyphGenerator](gc, objc.Sel("sharedGlyphGenerator"))
 	return rv
 }
 
+// Returns a shared instance of NSGlyphGenerator. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator/1425155-sharedglyphgenerator?language=objc
 func GlyphGenerator_SharedGlyphGenerator() GlyphGenerator {
 	return GlyphGeneratorClass.SharedGlyphGenerator()
 }

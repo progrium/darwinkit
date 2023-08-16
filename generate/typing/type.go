@@ -3,6 +3,7 @@ package typing
 import (
 	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/macdriver/internal/stringx"
 )
 
 // Type interface for all type
@@ -21,14 +22,7 @@ type Type interface {
 
 func FullGoName(module modules.Module, name string, currentModule modules.Module) string {
 	if module.Name == currentModule.Name {
-		return name
+		return stringx.Capitalize(name)
 	}
-	return module.Package + "." + name
-}
-
-func PrependPackage(module modules.Module, s string, currentModule modules.Module) string {
-	if module.Name == currentModule.Name {
-		return s
-	}
-	return module.Package + "." + s
+	return module.Package + "." + stringx.Capitalize(name)
 }

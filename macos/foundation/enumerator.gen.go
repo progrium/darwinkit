@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,30 +8,35 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Enumerator] class.
 var EnumeratorClass = _EnumeratorClass{objc.GetClass("NSEnumerator")}
 
 type _EnumeratorClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Enumerator] class.
 type IEnumerator interface {
 	objc.IObject
 	NextObject() objc.Object
 	AllObjects() []objc.Object
 }
 
+// An abstract class whose subclasses enumerate collections of objects, such as arrays and dictionaries. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsenumerator?language=objc
 type Enumerator struct {
 	objc.Object
 }
 
-func MakeEnumerator(ptr unsafe.Pointer) Enumerator {
+func EnumeratorFrom(ptr unsafe.Pointer) Enumerator {
 	return Enumerator{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (ec _EnumeratorClass) Alloc() Enumerator {
-	rv := objc.CallMethod[Enumerator](ec, objc.GetSelector("alloc"))
+	rv := objc.Call[Enumerator](ec, objc.Sel("alloc"))
 	return rv
 }
 
@@ -39,7 +45,7 @@ func Enumerator_Alloc() Enumerator {
 }
 
 func (ec _EnumeratorClass) New() Enumerator {
-	rv := objc.CallMethod[Enumerator](ec, objc.GetSelector("new"))
+	rv := objc.Call[Enumerator](ec, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,25 +54,23 @@ func NewEnumerator() Enumerator {
 	return EnumeratorClass.New()
 }
 
-func Enumerator_New() Enumerator {
-	return EnumeratorClass.New()
-}
-
 func (e_ Enumerator) Init() Enumerator {
-	rv := objc.CallMethod[Enumerator](e_, objc.GetSelector("init"))
+	rv := objc.Call[Enumerator](e_, objc.Sel("init"))
 	return rv
 }
 
-func Enumerator_Init() Enumerator {
-	return EnumeratorClass.Alloc().Init()
-}
-
+// Returns the next object from the collection being enumerated. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsenumerator/1409616-nextobject?language=objc
 func (e_ Enumerator) NextObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](e_, objc.GetSelector("nextObject"))
+	rv := objc.Call[objc.Object](e_, objc.Sel("nextObject"))
 	return rv
 }
 
+// The array of unenumerated objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsenumerator/1417755-allobjects?language=objc
 func (e_ Enumerator) AllObjects() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](e_, objc.GetSelector("allObjects"))
+	rv := objc.Call[[]objc.Object](e_, objc.Sel("allObjects"))
 	return rv
 }

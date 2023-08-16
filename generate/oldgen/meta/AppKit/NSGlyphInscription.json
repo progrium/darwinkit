@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSGlyphInscription",
-    "module": "AppKit",
-    "target_type": "NSUInteger"
-}

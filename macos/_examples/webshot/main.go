@@ -48,7 +48,7 @@ func initAndRun() {
 		dispatch.GetMainQueue().DispatchAsync(func() {
 			script := `var rect = {"width":document.body.scrollWidth, "height":document.body.scrollHeight}; rect`
 			webView.EvaluateJavaScriptCompletionHandler(script, func(value objc.Object, err foundation.Error) {
-				rect := foundation.DictToMap[string, foundation.Number](foundation.MakeDictionary(value.Ptr()))
+				rect := foundation.DictToMap[string, foundation.Number](foundation.DictionaryFrom(value.Ptr()))
 				width := rect["width"].DoubleValue()
 				height := rect["height"].DoubleValue()
 				snapshotWin.SetFrameDisplay(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
@@ -64,7 +64,7 @@ func initAndRun() {
 	})
 	snapshotWebView.SetNavigationDelegate(ssnd)
 
-	action.Set(snapshotButton, func(sender objc.IObject) {
+	action.Set(snapshotButton, func(sender objc.Object) {
 		snapshotWebView.TakeSnapshotWithConfigurationCompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
 			imageRef := image.CGImageForProposedRectContextHints(nil, nil, nil)
 			imageRepo := appkit.BitmapImageRep_InitWithCGImage(imageRef)

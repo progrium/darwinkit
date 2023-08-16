@@ -1,11 +1,27 @@
 package foundation
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/coregraphics"
 	"github.com/progrium/macdriver/objc"
 )
 
 // struct define should be synced with <Foundation/NSRange.h> <Foundation/NSAffineTransform.h> <Foundation/NSDecimal.h>
+
+type AppleEventManagerSuspensionID unsafe.Pointer
+type RangePointer unsafe.Pointer
+type RectPointer unsafe.Pointer
+type PointPointer unsafe.Pointer
+type RectArray unsafe.Pointer
+type SizeArray unsafe.Pointer
+type PointArray unsafe.Pointer
+
+// todo
+type FastEnumerationState struct{}
+type OperatingSystemVersion struct{}
+
+type PropertyListReadOptions PropertyListMutabilityOptions
 
 type Point = coregraphics.Point
 type Size = coregraphics.Size

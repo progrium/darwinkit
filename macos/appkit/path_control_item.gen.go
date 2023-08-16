@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,35 +9,40 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [PathControlItem] class.
 var PathControlItemClass = _PathControlItemClass{objc.GetClass("NSPathControlItem")}
 
 type _PathControlItemClass struct {
 	objc.Class
 }
 
+// An interface definition for the [PathControlItem] class.
 type IPathControlItem interface {
 	objc.IObject
 	AttributedTitle() foundation.AttributedString
 	SetAttributedTitle(value foundation.IAttributedString)
-	Image() Image
-	SetImage(value IImage)
+	URL() foundation.URL
 	Title() string
 	SetTitle(value string)
-	URL() foundation.URL
+	Image() Image
+	SetImage(value IImage)
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem?language=objc
 type PathControlItem struct {
 	objc.Object
 }
 
-func MakePathControlItem(ptr unsafe.Pointer) PathControlItem {
+func PathControlItemFrom(ptr unsafe.Pointer) PathControlItem {
 	return PathControlItem{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (pc _PathControlItemClass) Alloc() PathControlItem {
-	rv := objc.CallMethod[PathControlItem](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[PathControlItem](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -45,7 +51,7 @@ func PathControlItem_Alloc() PathControlItem {
 }
 
 func (pc _PathControlItemClass) New() PathControlItem {
-	rv := objc.CallMethod[PathControlItem](pc, objc.GetSelector("new"))
+	rv := objc.Call[PathControlItem](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,47 +60,60 @@ func NewPathControlItem() PathControlItem {
 	return PathControlItemClass.New()
 }
 
-func PathControlItem_New() PathControlItem {
-	return PathControlItemClass.New()
-}
-
 func (p_ PathControlItem) Init() PathControlItem {
-	rv := objc.CallMethod[PathControlItem](p_, objc.GetSelector("init"))
+	rv := objc.Call[PathControlItem](p_, objc.Sel("init"))
 	return rv
 }
 
-func PathControlItem_Init() PathControlItem {
-	return PathControlItemClass.Alloc().Init()
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388287-attributedtitle?language=objc
 func (p_ PathControlItem) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](p_, objc.GetSelector("attributedTitle"))
+	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedTitle"))
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388287-attributedtitle?language=objc
 func (p_ PathControlItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
 }
 
-func (p_ PathControlItem) Image() Image {
-	rv := objc.CallMethod[Image](p_, objc.GetSelector("image"))
-	return rv
-}
-
-func (p_ PathControlItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
-}
-
-func (p_ PathControlItem) Title() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("title"))
-	return rv
-}
-
-func (p_ PathControlItem) SetTitle(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setTitle:"), value)
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388289-url?language=objc
 func (p_ PathControlItem) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](p_, objc.GetSelector("URL"))
+	rv := objc.Call[foundation.URL](p_, objc.Sel("URL"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
+func (p_ PathControlItem) Title() string {
+	rv := objc.Call[string](p_, objc.Sel("title"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388293-title?language=objc
+func (p_ PathControlItem) SetTitle(value string) {
+	objc.Call[objc.Void](p_, objc.Sel("setTitle:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388295-image?language=objc
+func (p_ PathControlItem) Image() Image {
+	rv := objc.Call[Image](p_, objc.Sel("image"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388295-image?language=objc
+func (p_ PathControlItem) SetImage(value IImage) {
+	objc.Call[objc.Void](p_, objc.Sel("setImage:"), objc.Ptr(value))
 }

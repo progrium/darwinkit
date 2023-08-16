@@ -36,7 +36,7 @@ func (p *ProtocolType) DeclareModule() *modules.Module {
 
 // GoInterfaceName return the go wrapper interface name
 func (p *ProtocolType) GoInterfaceName() string {
-	return "I" + p.GName
+	return "P" + p.GName
 }
 
 // GoStructName return the go wrapper struct name

@@ -1,37 +1,48 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type ICollectionViewSectionHeaderView interface {
-	ICollectionViewElement
-	ImplementsSetSectionCollapseButton() bool
+// A protocol that defines a button to control the collapse of a collection view’s section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewsectionheaderview?language=objc
+type PCollectionViewSectionHeaderView interface {
 	// optional
 	SetSectionCollapseButton(value Button)
-	ImplementsSectionCollapseButton() bool
+	HasSetSectionCollapseButton() bool
+
 	// optional
 	SectionCollapseButton() IButton
+	HasSectionCollapseButton() bool
 }
 
+// A concrete type wrapper for the [PCollectionViewSectionHeaderView] protocol.
 type CollectionViewSectionHeaderViewWrapper struct {
-	CollectionViewElementWrapper
+	objc.Object
 }
 
-func (c_ CollectionViewSectionHeaderViewWrapper) ImplementsSetSectionCollapseButton() bool {
-	return c_.RespondsToSelector(objc.GetSelector("setSectionCollapseButton:"))
+func (c_ CollectionViewSectionHeaderViewWrapper) HasSetSectionCollapseButton() bool {
+	return c_.RespondsToSelector(objc.Sel("setSectionCollapseButton:"))
 }
 
+// A control that lets users collapse and open a collection view section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewsectionheaderview/1644266-sectioncollapsebutton?language=objc
 func (c_ CollectionViewSectionHeaderViewWrapper) SetSectionCollapseButton(value IButton) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSectionCollapseButton:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setSectionCollapseButton:"), objc.Ptr(value))
 }
 
-func (c_ CollectionViewSectionHeaderViewWrapper) ImplementsSectionCollapseButton() bool {
-	return c_.RespondsToSelector(objc.GetSelector("sectionCollapseButton"))
+func (c_ CollectionViewSectionHeaderViewWrapper) HasSectionCollapseButton() bool {
+	return c_.RespondsToSelector(objc.Sel("sectionCollapseButton"))
 }
 
+// A control that lets users collapse and open a collection view section. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewsectionheaderview/1644266-sectioncollapsebutton?language=objc
 func (c_ CollectionViewSectionHeaderViewWrapper) SectionCollapseButton() Button {
-	rv := objc.CallMethod[Button](c_, objc.GetSelector("sectionCollapseButton"))
+	rv := objc.Call[Button](c_, objc.Sel("sectionCollapseButton"))
 	return rv
 }

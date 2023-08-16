@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "CGColorRef",
-    "module": "CoreGraphics",
-    "target_type": "void*"
-}

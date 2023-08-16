@@ -10,7 +10,7 @@ import (
 
 func TestNSObject_GetClass(t *testing.T) {
 	o := NewObject()
-	if o.GetClass().GetName() != "NSObject" {
+	if o.Class().Name() != "NSObject" {
 		t.Fail()
 	}
 }

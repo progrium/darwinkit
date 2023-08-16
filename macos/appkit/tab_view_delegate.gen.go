@@ -1,110 +1,88 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type ITabViewDelegate interface {
-	ImplementsTabViewDidChangeNumberOfTabViewItems() bool
+// The NSTabViewDelegate protocol defines the optional methods implemented by delegates of NSTabView objects. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate?language=objc
+type PTabViewDelegate interface {
 	// optional
 	TabViewDidChangeNumberOfTabViewItems(tabView TabView)
-	ImplementsTabViewShouldSelectTabViewItem() bool
-	// optional
-	TabViewShouldSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) bool
-	ImplementsTabViewWillSelectTabViewItem() bool
-	// optional
-	TabViewWillSelectTabViewItem(tabView TabView, tabViewItem TabViewItem)
-	ImplementsTabViewDidSelectTabViewItem() bool
+	HasTabViewDidChangeNumberOfTabViewItems() bool
+
 	// optional
 	TabViewDidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem)
+	HasTabViewDidSelectTabViewItem() bool
 }
 
+// A delegate implementation builder for the [PTabViewDelegate] protocol.
 type TabViewDelegate struct {
 	_TabViewDidChangeNumberOfTabViewItems func(tabView TabView)
-	_TabViewShouldSelectTabViewItem       func(tabView TabView, tabViewItem TabViewItem) bool
-	_TabViewWillSelectTabViewItem         func(tabView TabView, tabViewItem TabViewItem)
 	_TabViewDidSelectTabViewItem          func(tabView TabView, tabViewItem TabViewItem)
 }
 
-func (di *TabViewDelegate) ImplementsTabViewDidChangeNumberOfTabViewItems() bool {
+func (di *TabViewDelegate) HasTabViewDidChangeNumberOfTabViewItems() bool {
 	return di._TabViewDidChangeNumberOfTabViewItems != nil
 }
 
+// Informs the delegate that the number of tab view items in tabView has changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391657-tabviewdidchangenumberoftabviewi?language=objc
 func (di *TabViewDelegate) SetTabViewDidChangeNumberOfTabViewItems(f func(tabView TabView)) {
 	di._TabViewDidChangeNumberOfTabViewItems = f
 }
 
+// Informs the delegate that the number of tab view items in tabView has changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391657-tabviewdidchangenumberoftabviewi?language=objc
 func (di *TabViewDelegate) TabViewDidChangeNumberOfTabViewItems(tabView TabView) {
 	di._TabViewDidChangeNumberOfTabViewItems(tabView)
 }
-func (di *TabViewDelegate) ImplementsTabViewShouldSelectTabViewItem() bool {
-	return di._TabViewShouldSelectTabViewItem != nil
-}
-
-func (di *TabViewDelegate) SetTabViewShouldSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem) bool) {
-	di._TabViewShouldSelectTabViewItem = f
-}
-
-func (di *TabViewDelegate) TabViewShouldSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) bool {
-	return di._TabViewShouldSelectTabViewItem(tabView, tabViewItem)
-}
-func (di *TabViewDelegate) ImplementsTabViewWillSelectTabViewItem() bool {
-	return di._TabViewWillSelectTabViewItem != nil
-}
-
-func (di *TabViewDelegate) SetTabViewWillSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem)) {
-	di._TabViewWillSelectTabViewItem = f
-}
-
-func (di *TabViewDelegate) TabViewWillSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
-	di._TabViewWillSelectTabViewItem(tabView, tabViewItem)
-}
-func (di *TabViewDelegate) ImplementsTabViewDidSelectTabViewItem() bool {
+func (di *TabViewDelegate) HasTabViewDidSelectTabViewItem() bool {
 	return di._TabViewDidSelectTabViewItem != nil
 }
 
+// Informs the delegate that tabView has selected tabViewItem. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391582-tabview?language=objc
 func (di *TabViewDelegate) SetTabViewDidSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem)) {
 	di._TabViewDidSelectTabViewItem = f
 }
 
+// Informs the delegate that tabView has selected tabViewItem. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391582-tabview?language=objc
 func (di *TabViewDelegate) TabViewDidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
 	di._TabViewDidSelectTabViewItem(tabView, tabViewItem)
 }
 
+// A concrete type wrapper for the [PTabViewDelegate] protocol.
 type TabViewDelegateWrapper struct {
 	objc.Object
 }
 
-func (t_ TabViewDelegateWrapper) ImplementsTabViewDidChangeNumberOfTabViewItems() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"))
+func (t_ TabViewDelegateWrapper) HasTabViewDidChangeNumberOfTabViewItems() bool {
+	return t_.RespondsToSelector(objc.Sel("tabViewDidChangeNumberOfTabViewItems:"))
 }
 
+// Informs the delegate that the number of tab view items in tabView has changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391657-tabviewdidchangenumberoftabviewi?language=objc
 func (t_ TabViewDelegateWrapper) TabViewDidChangeNumberOfTabViewItems(tabView ITabView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), objc.ExtractPtr(tabView))
+	objc.Call[objc.Void](t_, objc.Sel("tabViewDidChangeNumberOfTabViewItems:"), objc.Ptr(tabView))
 }
 
-func (t_ TabViewDelegateWrapper) ImplementsTabViewShouldSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:shouldSelectTabViewItem:"))
+func (t_ TabViewDelegateWrapper) HasTabViewDidSelectTabViewItem() bool {
+	return t_.RespondsToSelector(objc.Sel("tabView:didSelectTabViewItem:"))
 }
 
-func (t_ TabViewDelegateWrapper) TabViewShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tabView:shouldSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-	return rv
-}
-
-func (t_ TabViewDelegateWrapper) ImplementsTabViewWillSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:willSelectTabViewItem:"))
-}
-
-func (t_ TabViewDelegateWrapper) TabViewWillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:willSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-}
-
-func (t_ TabViewDelegateWrapper) ImplementsTabViewDidSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:didSelectTabViewItem:"))
-}
-
+// Informs the delegate that tabView has selected tabViewItem. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391582-tabview?language=objc
 func (t_ TabViewDelegateWrapper) TabViewDidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:didSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
 }

@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/progrium/macdriver/generate/modules"
@@ -36,9 +37,14 @@ func (a *BlockType) GoName(currentModule *modules.Module, receiveFromObjc bool) 
 		if i > 0 {
 			sb.WriteString(", ")
 		}
+		if _, ok := p.Type.(*VoidType); ok {
+			continue
+		}
 		switch p.Name {
-		case "range":
+		case "range", "type":
 			sb.WriteString(p.Name + "_")
+		case "":
+			sb.WriteString(fmt.Sprintf("arg%d", i))
 		default:
 			sb.WriteString(p.Name)
 		}

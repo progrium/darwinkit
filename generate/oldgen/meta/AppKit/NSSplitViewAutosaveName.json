@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSSplitViewAutosaveName",
-    "module": "AppKit",
-    "target_type": "NSString*"
-}

@@ -1,48 +1,64 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IAppearanceCustomization interface {
-	ImplementsSetAppearance() bool
-	// optional
-	SetAppearance(value Appearance)
-	ImplementsAppearance() bool
-	// optional
-	Appearance() IAppearance
-	ImplementsEffectiveAppearance() bool
+// A set of methods for getting and setting the appearance attributes of a view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancecustomization?language=objc
+type PAppearanceCustomization interface {
 	// optional
 	EffectiveAppearance() IAppearance
+	HasEffectiveAppearance() bool
+
+	// optional
+	SetAppearance(value Appearance)
+	HasSetAppearance() bool
+
+	// optional
+	Appearance() IAppearance
+	HasAppearance() bool
 }
 
+// A concrete type wrapper for the [PAppearanceCustomization] protocol.
 type AppearanceCustomizationWrapper struct {
 	objc.Object
 }
 
-func (a_ AppearanceCustomizationWrapper) ImplementsSetAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("setAppearance:"))
+func (a_ AppearanceCustomizationWrapper) HasEffectiveAppearance() bool {
+	return a_.RespondsToSelector(objc.Sel("effectiveAppearance"))
 }
 
-func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
-}
-
-func (a_ AppearanceCustomizationWrapper) ImplementsAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("appearance"))
-}
-
-func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("appearance"))
+// The appearance that will be used when the receiver is drawn onscreen, in an NSAppearance object. (read-only) [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancecustomization/1535147-effectiveappearance?language=objc
+func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {
+	rv := objc.Call[Appearance](a_, objc.Sel("effectiveAppearance"))
 	return rv
 }
 
-func (a_ AppearanceCustomizationWrapper) ImplementsEffectiveAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("effectiveAppearance"))
+func (a_ AppearanceCustomizationWrapper) HasSetAppearance() bool {
+	return a_.RespondsToSelector(objc.Sel("setAppearance:"))
 }
 
-func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("effectiveAppearance"))
+// The appearance of the receiver, in an NSAppearance object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancecustomization/1533925-appearance?language=objc
+func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
+	objc.Call[objc.Void](a_, objc.Sel("setAppearance:"), objc.Ptr(value))
+}
+
+func (a_ AppearanceCustomizationWrapper) HasAppearance() bool {
+	return a_.RespondsToSelector(objc.Sel("appearance"))
+}
+
+// The appearance of the receiver, in an NSAppearance object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancecustomization/1533925-appearance?language=objc
+func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
+	rv := objc.Call[Appearance](a_, objc.Sel("appearance"))
 	return rv
 }

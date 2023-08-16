@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,38 +8,43 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [MeasurementFormatter] class.
 var MeasurementFormatterClass = _MeasurementFormatterClass{objc.GetClass("NSMeasurementFormatter")}
 
 type _MeasurementFormatterClass struct {
 	objc.Class
 }
 
+// An interface definition for the [MeasurementFormatter] class.
 type IMeasurementFormatter interface {
 	IFormatter
-	StringFromMeasurement(measurement IMeasurement) string
 	StringFromUnit(unit IUnit) string
+	StringFromMeasurement(measurement IMeasurement) string
 	UnitOptions() MeasurementFormatterUnitOptions
 	SetUnitOptions(value MeasurementFormatterUnitOptions)
-	UnitStyle() FormattingUnitStyle
-	SetUnitStyle(value FormattingUnitStyle)
 	Locale() Locale
 	SetLocale(value ILocale)
+	UnitStyle() FormattingUnitStyle
+	SetUnitStyle(value FormattingUnitStyle)
 	NumberFormatter() NumberFormatter
 	SetNumberFormatter(value INumberFormatter)
 }
 
+// A formatter that provides localized representations of units and measurements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter?language=objc
 type MeasurementFormatter struct {
 	Formatter
 }
 
-func MakeMeasurementFormatter(ptr unsafe.Pointer) MeasurementFormatter {
+func MeasurementFormatterFrom(ptr unsafe.Pointer) MeasurementFormatter {
 	return MeasurementFormatter{
-		Formatter: MakeFormatter(ptr),
+		Formatter: FormatterFrom(ptr),
 	}
 }
 
 func (mc _MeasurementFormatterClass) Alloc() MeasurementFormatter {
-	rv := objc.CallMethod[MeasurementFormatter](mc, objc.GetSelector("alloc"))
+	rv := objc.Call[MeasurementFormatter](mc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -47,7 +53,7 @@ func MeasurementFormatter_Alloc() MeasurementFormatter {
 }
 
 func (mc _MeasurementFormatterClass) New() MeasurementFormatter {
-	rv := objc.CallMethod[MeasurementFormatter](mc, objc.GetSelector("new"))
+	rv := objc.Call[MeasurementFormatter](mc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,61 +62,83 @@ func NewMeasurementFormatter() MeasurementFormatter {
 	return MeasurementFormatterClass.New()
 }
 
-func MeasurementFormatter_New() MeasurementFormatter {
-	return MeasurementFormatterClass.New()
-}
-
 func (m_ MeasurementFormatter) Init() MeasurementFormatter {
-	rv := objc.CallMethod[MeasurementFormatter](m_, objc.GetSelector("init"))
+	rv := objc.Call[MeasurementFormatter](m_, objc.Sel("init"))
 	return rv
 }
 
-func MeasurementFormatter_Init() MeasurementFormatter {
-	return MeasurementFormatterClass.Alloc().Init()
-}
-
-func (m_ MeasurementFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromMeasurement:"), objc.ExtractPtr(measurement))
-	return rv
-}
-
+// Creates and returns a localized string representation of the provided unit of measure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642059-stringfromunit?language=objc
 func (m_ MeasurementFormatter) StringFromUnit(unit IUnit) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromUnit:"), objc.ExtractPtr(unit))
+	rv := objc.Call[string](m_, objc.Sel("stringFromUnit:"), objc.Ptr(unit))
 	return rv
 }
 
+// Creates and returns a localized string representation of the provided measurement. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642057-stringfrommeasurement?language=objc
+func (m_ MeasurementFormatter) StringFromMeasurement(measurement IMeasurement) string {
+	rv := objc.Call[string](m_, objc.Sel("stringFromMeasurement:"), objc.Ptr(measurement))
+	return rv
+}
+
+// The options for how the unit is formatted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642066-unitoptions?language=objc
 func (m_ MeasurementFormatter) UnitOptions() MeasurementFormatterUnitOptions {
-	rv := objc.CallMethod[MeasurementFormatterUnitOptions](m_, objc.GetSelector("unitOptions"))
+	rv := objc.Call[MeasurementFormatterUnitOptions](m_, objc.Sel("unitOptions"))
 	return rv
 }
 
+// The options for how the unit is formatted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642066-unitoptions?language=objc
 func (m_ MeasurementFormatter) SetUnitOptions(value MeasurementFormatterUnitOptions) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setUnitOptions:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setUnitOptions:"), value)
 }
 
-func (m_ MeasurementFormatter) UnitStyle() FormattingUnitStyle {
-	rv := objc.CallMethod[FormattingUnitStyle](m_, objc.GetSelector("unitStyle"))
-	return rv
-}
-
-func (m_ MeasurementFormatter) SetUnitStyle(value FormattingUnitStyle) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setUnitStyle:"), value)
-}
-
+// The locale of the formatter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642061-locale?language=objc
 func (m_ MeasurementFormatter) Locale() Locale {
-	rv := objc.CallMethod[Locale](m_, objc.GetSelector("locale"))
+	rv := objc.Call[Locale](m_, objc.Sel("locale"))
 	return rv
 }
 
+// The locale of the formatter. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642061-locale?language=objc
 func (m_ MeasurementFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), objc.Ptr(value))
 }
 
-func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
-	rv := objc.CallMethod[NumberFormatter](m_, objc.GetSelector("numberFormatter"))
+// The unit style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
+func (m_ MeasurementFormatter) UnitStyle() FormattingUnitStyle {
+	rv := objc.Call[FormattingUnitStyle](m_, objc.Sel("unitStyle"))
 	return rv
 }
 
+// The unit style. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642067-unitstyle?language=objc
+func (m_ MeasurementFormatter) SetUnitStyle(value FormattingUnitStyle) {
+	objc.Call[objc.Void](m_, objc.Sel("setUnitStyle:"), value)
+}
+
+// The number formatter used to format the quantity of a measurement. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642056-numberformatter?language=objc
+func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
+	rv := objc.Call[NumberFormatter](m_, objc.Sel("numberFormatter"))
+	return rv
+}
+
+// The number formatter used to format the quantity of a measurement. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642056-numberformatter?language=objc
 func (m_ MeasurementFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setNumberFormatter:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setNumberFormatter:"), objc.Ptr(value))
 }

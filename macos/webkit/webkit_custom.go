@@ -14,7 +14,7 @@ import (
 
 // LoadURL is convinent method for loading url into webview
 func LoadURL(v IWebView, url string) {
-	req := foundation.URLRequestClass.RequestWithURL(foundation.URLClass.URLWithString(url))
+	req := foundation.URLRequest_RequestWithURL(foundation.URLClass.URLWithString(url))
 	v.LoadRequest(req)
 }
 
@@ -32,13 +32,17 @@ func AddScriptMessageHandlerWithReply(v IWebView, name string, handler func(mess
 		handler: handler,
 	}
 	v.Configuration().UserContentController().AddScriptMessageHandlerWithReplyContentWorldName(h,
-		ContentWorldClass.PageWorld(), name)
+		ContentWorld_PageWorld(), name)
 }
 
-var _ IScriptMessageHandler = (*scriptMessageHandler)(nil)
+var _ PScriptMessageHandler = (*scriptMessageHandler)(nil)
 
 type scriptMessageHandler struct {
 	handler func(message objc.Object)
+}
+
+func (h *scriptMessageHandler) HasUserContentControllerDidReceiveScriptMessage() bool {
+	return true
 }
 
 // UserContentControllerDidReceiveScriptMessage implements ScriptMessageHandler
@@ -54,23 +58,27 @@ func (h *scriptMessageHandler) UserContentControllerDidReceiveScriptMessage(
 
 }
 
-var _ IScriptMessageHandlerWithReply = (*scriptMessageHandlerWithReply)(nil)
+var _ PScriptMessageHandlerWithReply = (*scriptMessageHandlerWithReply)(nil)
 
 type scriptMessageHandlerWithReply struct {
 	handler func(message objc.Object) (objc.Object, error)
 }
 
+func (h *scriptMessageHandlerWithReply) HasUserContentControllerDidReceiveScriptMessageReplyHandler() bool {
+	return true
+}
+
 // UserContentControllerDidReceiveScriptMessageReplyHandler implements ScriptMessageHandlerWithReply
 func (h *scriptMessageHandlerWithReply) UserContentControllerDidReceiveScriptMessageReplyHandler(
 	userContentController UserContentController, message ScriptMessage,
-	replyHandler func(reply objc.Object, errorMessage foundation.String)) {
+	replyHandler func(reply objc.Object, errorMessage string)) {
 	message.Retain()
 	go func() {
 		defer message.Release()
 		reply, err := h.handler(message.Body())
 		var errMsg = foundation.String{} // nil
 		if err != nil {
-			errMsg = foundation.NewString(err.Error())
+			errMsg = foundation.String_InitWithString(err.Error())
 		}
 		if !reply.IsNil() {
 			reply.Retain()
@@ -82,16 +90,20 @@ func (h *scriptMessageHandlerWithReply) UserContentControllerDidReceiveScriptMes
 					reply.Release()
 				}
 			}()
-			replyHandler(reply, errMsg)
+			replyHandler(reply, errMsg.String())
 		})
 	}()
 }
 
-var _ IURLSchemeHandler = (*FileSystemURLSchemeHandler)(nil)
+var _ PURLSchemeHandler = (*FileSystemURLSchemeHandler)(nil)
 
 // FileSystemURLSchemeHandler is a WebView URLSchemeHandler supportting the go FileSystem.
 type FileSystemURLSchemeHandler struct {
 	FS fs.FS
+}
+
+func (h *FileSystemURLSchemeHandler) HasWebViewStartURLSchemeTask() bool {
+	return true
 }
 
 // WebViewStartURLSchemeTask implements URLSchemeHandler

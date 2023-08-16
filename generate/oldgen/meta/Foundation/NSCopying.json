@@ -1,8 +1,0 @@
-{
-    "kind": "protocol",
-    "name": "NSCopying",
-    "module": "AppKit",
-    "parents": [
-        "objectivec.NSObject"
-    ]
-}

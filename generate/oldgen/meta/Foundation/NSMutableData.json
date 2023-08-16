@@ -1,6 +1,0 @@
-{
-    "kind": "class",
-    "name": "NSMutableData",
-    "module": "Foundation",
-    "parent": "Foundation.NSData *"
-}

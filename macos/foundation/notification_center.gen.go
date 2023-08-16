@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,33 +8,38 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [NotificationCenter] class.
 var NotificationCenterClass = _NotificationCenterClass{objc.GetClass("NSNotificationCenter")}
 
 type _NotificationCenterClass struct {
 	objc.Class
 }
 
+// An interface definition for the [NotificationCenter] class.
 type INotificationCenter interface {
 	objc.IObject
-	AddObserverSelectorNameObject(observer objc.IObject, aSelector objc.Selector, aName NotificationName, anObject objc.IObject)
+	PostNotificationNameObjectUserInfo(aName NotificationName, anObject objc.IObject, aUserInfo Dictionary)
+	AddObserverForNameObjectQueueUsingBlock(name NotificationName, obj objc.IObject, queue IOperationQueue, block func(notification Notification)) objc.Object
 	RemoveObserverNameObject(observer objc.IObject, aName NotificationName, anObject objc.IObject)
-	RemoveObserver(observer objc.IObject)
+	AddObserverSelectorNameObject(observer objc.IObject, aSelector objc.Selector, aName NotificationName, anObject objc.IObject)
 	PostNotification(notification INotification)
-	PostNotificationNameObject(aName NotificationName, anObject objc.IObject)
 }
 
+// A notification dispatch mechanism that enables the broadcast of information to registered observers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter?language=objc
 type NotificationCenter struct {
 	objc.Object
 }
 
-func MakeNotificationCenter(ptr unsafe.Pointer) NotificationCenter {
+func NotificationCenterFrom(ptr unsafe.Pointer) NotificationCenter {
 	return NotificationCenter{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (nc _NotificationCenterClass) Alloc() NotificationCenter {
-	rv := objc.CallMethod[NotificationCenter](nc, objc.GetSelector("alloc"))
+	rv := objc.Call[NotificationCenter](nc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -42,7 +48,7 @@ func NotificationCenter_Alloc() NotificationCenter {
 }
 
 func (nc _NotificationCenterClass) New() NotificationCenter {
-	rv := objc.CallMethod[NotificationCenter](nc, objc.GetSelector("new"))
+	rv := objc.Call[NotificationCenter](nc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -51,44 +57,58 @@ func NewNotificationCenter() NotificationCenter {
 	return NotificationCenterClass.New()
 }
 
-func NotificationCenter_New() NotificationCenter {
-	return NotificationCenterClass.New()
-}
-
 func (n_ NotificationCenter) Init() NotificationCenter {
-	rv := objc.CallMethod[NotificationCenter](n_, objc.GetSelector("init"))
+	rv := objc.Call[NotificationCenter](n_, objc.Sel("init"))
 	return rv
 }
 
-func NotificationCenter_Init() NotificationCenter {
-	return NotificationCenterClass.Alloc().Init()
+// Creates a notification with a given name, sender, and information and posts it to the notification center. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1410608-postnotificationname?language=objc
+func (n_ NotificationCenter) PostNotificationNameObjectUserInfo(aName NotificationName, anObject objc.IObject, aUserInfo Dictionary) {
+	objc.Call[objc.Void](n_, objc.Sel("postNotificationName:object:userInfo:"), aName, anObject, aUserInfo)
 }
 
-func (n_ NotificationCenter) AddObserverSelectorNameObject(observer objc.IObject, aSelector objc.Selector, aName NotificationName, anObject objc.IObject) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("addObserver:selector:name:object:"), objc.ExtractPtr(observer), aSelector, aName, objc.ExtractPtr(anObject))
+// Adds an entry to the notification center to receive notifications that passed to the provided block. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1411723-addobserverforname?language=objc
+func (n_ NotificationCenter) AddObserverForNameObjectQueueUsingBlock(name NotificationName, obj objc.IObject, queue IOperationQueue, block func(notification Notification)) objc.Object {
+	rv := objc.Call[objc.Object](n_, objc.Sel("addObserverForName:object:queue:usingBlock:"), name, obj, objc.Ptr(queue), block)
+	return rv
 }
 
+// Removes matching entries from the notification center's dispatch table. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1407263-removeobserver?language=objc
 func (n_ NotificationCenter) RemoveObserverNameObject(observer objc.IObject, aName NotificationName, anObject objc.IObject) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("removeObserver:name:object:"), objc.ExtractPtr(observer), aName, objc.ExtractPtr(anObject))
+	objc.Call[objc.Void](n_, objc.Sel("removeObserver:name:object:"), observer, aName, anObject)
 }
 
-func (n_ NotificationCenter) RemoveObserver(observer objc.IObject) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("removeObserver:"), objc.ExtractPtr(observer))
+// Adds an entry to the notification center to call the provided selector with the notification. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1415360-addobserver?language=objc
+func (n_ NotificationCenter) AddObserverSelectorNameObject(observer objc.IObject, aSelector objc.Selector, aName NotificationName, anObject objc.IObject) {
+	objc.Call[objc.Void](n_, objc.Sel("addObserver:selector:name:object:"), observer, aSelector, aName, anObject)
 }
 
+// Posts a given notification to the notification center. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1410472-postnotification?language=objc
 func (n_ NotificationCenter) PostNotification(notification INotification) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("postNotification:"), objc.ExtractPtr(notification))
+	objc.Call[objc.Void](n_, objc.Sel("postNotification:"), objc.Ptr(notification))
 }
 
-func (n_ NotificationCenter) PostNotificationNameObject(aName NotificationName, anObject objc.IObject) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("postNotificationName:object:"), aName, objc.ExtractPtr(anObject))
-}
-
+// The app’s default notification center. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1414169-defaultcenter?language=objc
 func (nc _NotificationCenterClass) DefaultCenter() NotificationCenter {
-	rv := objc.CallMethod[NotificationCenter](nc, objc.GetSelector("defaultCenter"))
+	rv := objc.Call[NotificationCenter](nc, objc.Sel("defaultCenter"))
 	return rv
 }
 
+// The app’s default notification center. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1414169-defaultcenter?language=objc
 func NotificationCenter_DefaultCenter() NotificationCenter {
 	return NotificationCenterClass.DefaultCenter()
 }

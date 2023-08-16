@@ -1,6 +1,0 @@
-{
-    "kind": "class",
-    "name": "NSCoder",
-    "module": "Foundation",
-    "parent": "objectivec.NSObject *"
-}

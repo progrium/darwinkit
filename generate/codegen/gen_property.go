@@ -11,11 +11,14 @@ type Property struct {
 	GoName        string
 	ReadOnly      bool
 	GetterName    string
+	SetterName    string
 	Type          typing.Type
 	ClassProperty bool
 	Weak          bool
 	Deprecated    bool
 	Required      bool //for protocol
+	Description   string
+	DocURL        string
 }
 
 func (p *Property) String() string {
@@ -38,17 +41,29 @@ func (p *Property) getter() *Method {
 		WeakProperty: p.Weak,
 		ClassMethod:  p.ClassProperty,
 		Deprecated:   p.Deprecated,
+		Description:  p.Description,
+		DocURL:       p.DocURL,
 	}
 }
 
 func (p *Property) setter() *Method {
+	name := "set" + stringx.Capitalize(p.Name)
+	if p.SetterName != "" {
+		name = p.SetterName
+	}
+	goName := "set" + stringx.Capitalize(p.GoName)
+	if p.SetterName != "" {
+		goName = p.SetterName
+	}
 	return &Method{
-		Name:         "set" + stringx.Capitalize(p.Name),
-		GoName:       "set" + stringx.Capitalize(p.GoName),
-		Params:       []*Param{{Name: "value", Type: p.Type}},
+		Name:         name,
+		GoName:       goName,
+		Params:       []*Param{{Name: "value", Type: p.Type, FieldName: goName}},
 		ReturnType:   &typing.VoidType{},
 		WeakProperty: p.Weak,
 		ClassMethod:  p.ClassProperty,
 		Deprecated:   p.Deprecated,
+		Description:  p.Description,
+		DocURL:       p.DocURL,
 	}
 }

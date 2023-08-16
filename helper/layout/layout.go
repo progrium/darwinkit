@@ -50,7 +50,9 @@ func AliginCenterY(view appkit.IView, targetView appkit.IView) {
 }
 
 func PinAnchorTo(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor, offset float64) {
-	anchor.ConstraintEqualToAnchorConstant(targetAncor, offset).SetActive(true)
+	// we do this because this method was not added to ILayoutAnchor, but we
+	// added it to LayoutAnchor manually
+	anchor.(appkit.LayoutAnchor).ConstraintEqualToAnchorConstant(targetAncor, offset).SetActive(true)
 }
 
 // PinEdgesToSuperView set view's insets to it's super view.

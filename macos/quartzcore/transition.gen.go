@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package quartzcore
 
 import (
@@ -7,47 +8,43 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Transition] class.
 var TransitionClass = _TransitionClass{objc.GetClass("CATransition")}
 
 type _TransitionClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Transition] class.
 type ITransition interface {
 	IAnimation
-	StartProgress() float32
-	SetStartProgress(value float32)
-	EndProgress() float32
-	SetEndProgress(value float32)
-	Type() TransitionType
-	SetType(value TransitionType)
-	Subtype() TransitionSubtype
-	SetSubtype(value TransitionSubtype)
 	Filter() objc.Object
 	SetFilter(value objc.IObject)
+	EndProgress() float64
+	SetEndProgress(value float64)
+	Subtype() TransitionSubtype
+	SetSubtype(value TransitionSubtype)
+	Type() TransitionType
+	SetType(value TransitionType)
+	StartProgress() float64
+	SetStartProgress(value float64)
 }
 
+// An object that provides an animated transition between a layer's states. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition?language=objc
 type Transition struct {
 	Animation
 }
 
-func MakeTransition(ptr unsafe.Pointer) Transition {
+func TransitionFrom(ptr unsafe.Pointer) Transition {
 	return Transition{
-		Animation: MakeAnimation(ptr),
+		Animation: AnimationFrom(ptr),
 	}
 }
 
-func (tc _TransitionClass) Animation() Transition {
-	rv := objc.CallMethod[Transition](tc, objc.GetSelector("animation"))
-	return rv
-}
-
-func Transition_Animation() Transition {
-	return TransitionClass.Animation()
-}
-
 func (tc _TransitionClass) Alloc() Transition {
-	rv := objc.CallMethod[Transition](tc, objc.GetSelector("alloc"))
+	rv := objc.Call[Transition](tc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -56,7 +53,7 @@ func Transition_Alloc() Transition {
 }
 
 func (tc _TransitionClass) New() Transition {
-	rv := objc.CallMethod[Transition](tc, objc.GetSelector("new"))
+	rv := objc.Call[Transition](tc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,60 +62,94 @@ func NewTransition() Transition {
 	return TransitionClass.New()
 }
 
-func Transition_New() Transition {
-	return TransitionClass.New()
-}
-
 func (t_ Transition) Init() Transition {
-	rv := objc.CallMethod[Transition](t_, objc.GetSelector("init"))
+	rv := objc.Call[Transition](t_, objc.Sel("init"))
 	return rv
 }
 
-func Transition_Init() Transition {
-	return TransitionClass.Alloc().Init()
-}
-
-func (t_ Transition) StartProgress() float32 {
-	rv := objc.CallMethod[float32](t_, objc.GetSelector("startProgress"))
+func (tc _TransitionClass) Animation() Transition {
+	rv := objc.Call[Transition](tc, objc.Sel("animation"))
 	return rv
 }
 
-func (t_ Transition) SetStartProgress(value float32) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setStartProgress:"), value)
+// Creates and returns a new CAAnimation instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412479-animation?language=objc
+func Transition_Animation() Transition {
+	return TransitionClass.Animation()
 }
 
-func (t_ Transition) EndProgress() float32 {
-	rv := objc.CallMethod[float32](t_, objc.GetSelector("endProgress"))
-	return rv
-}
-
-func (t_ Transition) SetEndProgress(value float32) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEndProgress:"), value)
-}
-
-func (t_ Transition) Type() TransitionType {
-	rv := objc.CallMethod[TransitionType](t_, objc.GetSelector("type"))
-	return rv
-}
-
-func (t_ Transition) SetType(value TransitionType) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setType:"), value)
-}
-
-func (t_ Transition) Subtype() TransitionSubtype {
-	rv := objc.CallMethod[TransitionSubtype](t_, objc.GetSelector("subtype"))
-	return rv
-}
-
-func (t_ Transition) SetSubtype(value TransitionSubtype) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSubtype:"), value)
-}
-
+// An optional Core Image filter object that provides the transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
 func (t_ Transition) Filter() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("filter"))
+	rv := objc.Call[objc.Object](t_, objc.Sel("filter"))
 	return rv
 }
 
+// An optional Core Image filter object that provides the transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412506-filter?language=objc
 func (t_ Transition) SetFilter(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFilter:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFilter:"), value)
+}
+
+// Indicates the end point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412509-endprogress?language=objc
+func (t_ Transition) EndProgress() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("endProgress"))
+	return rv
+}
+
+// Indicates the end point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412509-endprogress?language=objc
+func (t_ Transition) SetEndProgress(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setEndProgress:"), value)
+}
+
+// Specifies an optional subtype that indicates the direction for the predefined motion-based transitions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412467-subtype?language=objc
+func (t_ Transition) Subtype() TransitionSubtype {
+	rv := objc.Call[TransitionSubtype](t_, objc.Sel("subtype"))
+	return rv
+}
+
+// Specifies an optional subtype that indicates the direction for the predefined motion-based transitions. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412467-subtype?language=objc
+func (t_ Transition) SetSubtype(value TransitionSubtype) {
+	objc.Call[objc.Void](t_, objc.Sel("setSubtype:"), value)
+}
+
+// Specifies the predefined transition type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412502-type?language=objc
+func (t_ Transition) Type() TransitionType {
+	rv := objc.Call[TransitionType](t_, objc.Sel("type"))
+	return rv
+}
+
+// Specifies the predefined transition type. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412502-type?language=objc
+func (t_ Transition) SetType(value TransitionType) {
+	objc.Call[objc.Void](t_, objc.Sel("setType:"), value)
+}
+
+// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
+func (t_ Transition) StartProgress() float64 {
+	rv := objc.Call[float64](t_, objc.Sel("startProgress"))
+	return rv
+}
+
+// Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
+func (t_ Transition) SetStartProgress(value float64) {
+	objc.Call[objc.Void](t_, objc.Sel("setStartProgress:"), value)
 }

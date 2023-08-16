@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,91 +9,99 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [MenuItem] class.
 var MenuItemClass = _MenuItemClass{objc.GetClass("NSMenuItem")}
 
 type _MenuItemClass struct {
 	objc.Class
 }
 
+// An interface definition for the [MenuItem] class.
 type IMenuItem interface {
 	objc.IObject
-	IsEnabled() bool
-	SetEnabled(value bool)
-	IsHidden() bool
-	SetHidden(value bool)
-	IsHiddenOrHasHiddenAncestor() bool
-	Target() objc.Object
-	SetTarget(value objc.IObject)
-	Action() objc.Selector
-	SetAction(value objc.Selector)
-	Title() string
-	SetTitle(value string)
-	AttributedTitle() foundation.AttributedString
-	SetAttributedTitle(value foundation.IAttributedString)
-	Tag() int
-	SetTag(value int)
-	State() ControlStateValue
-	SetState(value ControlStateValue)
-	Image() Image
-	SetImage(value IImage)
-	OnStateImage() Image
-	SetOnStateImage(value IImage)
+	KeyEquivalent() string
+	SetKeyEquivalent(value string)
 	OffStateImage() Image
 	SetOffStateImage(value IImage)
+	IsHighlighted() bool
+	UserKeyEquivalent() string
+	Target() objc.Object
+	SetTarget(value objc.IObject)
+	State() ControlStateValue
+	SetState(value ControlStateValue)
+	IsHidden() bool
+	SetHidden(value bool)
+	IndentationLevel() int
+	SetIndentationLevel(value int)
+	Action() objc.Selector
+	SetAction(value objc.Selector)
+	ToolTip() string
+	SetToolTip(value string)
+	IsAlternate() bool
+	SetAlternate(value bool)
+	View() View
+	SetView(value IView)
+	AllowsAutomaticKeyEquivalentLocalization() bool
+	SetAllowsAutomaticKeyEquivalentLocalization(value bool)
+	AttributedTitle() foundation.AttributedString
+	SetAttributedTitle(value foundation.IAttributedString)
+	OnStateImage() Image
+	SetOnStateImage(value IImage)
+	AllowsKeyEquivalentWhenHidden() bool
+	SetAllowsKeyEquivalentWhenHidden(value bool)
+	AllowsAutomaticKeyEquivalentMirroring() bool
+	SetAllowsAutomaticKeyEquivalentMirroring(value bool)
+	Menu() Menu
+	SetMenu(value IMenu)
+	IsSeparatorItem() bool
+	RepresentedObject() objc.Object
+	SetRepresentedObject(value objc.IObject)
+	Tag() int
+	SetTag(value int)
+	Title() string
+	SetTitle(value string)
 	MixedStateImage() Image
 	SetMixedStateImage(value IImage)
 	Submenu() Menu
 	SetSubmenu(value IMenu)
 	HasSubmenu() bool
-	ParentItem() MenuItem
-	IsSeparatorItem() bool
-	Menu() Menu
-	SetMenu(value IMenu)
-	KeyEquivalent() string
-	SetKeyEquivalent(value string)
 	KeyEquivalentModifierMask() EventModifierFlags
 	SetKeyEquivalentModifierMask(value EventModifierFlags)
-	UserKeyEquivalent() string
-	AllowsAutomaticKeyEquivalentLocalization() bool
-	SetAllowsAutomaticKeyEquivalentLocalization(value bool)
-	AllowsAutomaticKeyEquivalentMirroring() bool
-	SetAllowsAutomaticKeyEquivalentMirroring(value bool)
-	AllowsKeyEquivalentWhenHidden() bool
-	SetAllowsKeyEquivalentWhenHidden(value bool)
-	IsAlternate() bool
-	SetAlternate(value bool)
-	IndentationLevel() int
-	SetIndentationLevel(value int)
-	ToolTip() string
-	SetToolTip(value string)
-	RepresentedObject() objc.Object
-	SetRepresentedObject(value objc.IObject)
-	View() View
-	SetView(value IView)
-	IsHighlighted() bool
+	IsHiddenOrHasHiddenAncestor() bool
+	ParentItem() MenuItem
+	IsEnabled() bool
+	SetEnabled(value bool)
+	Image() Image
+	SetImage(value IImage)
 }
 
+// A command item in an app menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem?language=objc
 type MenuItem struct {
 	objc.Object
 }
 
-func MakeMenuItem(ptr unsafe.Pointer) MenuItem {
+func MenuItemFrom(ptr unsafe.Pointer) MenuItem {
 	return MenuItem{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (m_ MenuItem) InitWithTitleActionKeyEquivalent(string_ string, selector objc.Selector, charCode string) MenuItem {
-	rv := objc.CallMethod[MenuItem](m_, objc.GetSelector("initWithTitle:action:keyEquivalent:"), string_, selector, charCode)
+	rv := objc.Call[MenuItem](m_, objc.Sel("initWithTitle:action:keyEquivalent:"), string_, selector, charCode)
 	return rv
 }
 
+// Returns an initialized instance of NSMenuItem. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc
 func MenuItem_InitWithTitleActionKeyEquivalent(string_ string, selector objc.Selector, charCode string) MenuItem {
 	return MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent(string_, selector, charCode)
 }
 
 func (mc _MenuItemClass) Alloc() MenuItem {
-	rv := objc.CallMethod[MenuItem](mc, objc.GetSelector("alloc"))
+	rv := objc.Call[MenuItem](mc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -101,7 +110,7 @@ func MenuItem_Alloc() MenuItem {
 }
 
 func (mc _MenuItemClass) New() MenuItem {
-	rv := objc.CallMethod[MenuItem](mc, objc.GetSelector("new"))
+	rv := objc.Call[MenuItem](mc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -110,287 +119,444 @@ func NewMenuItem() MenuItem {
 	return MenuItemClass.New()
 }
 
-func MenuItem_New() MenuItem {
-	return MenuItemClass.New()
-}
-
 func (m_ MenuItem) Init() MenuItem {
-	rv := objc.CallMethod[MenuItem](m_, objc.GetSelector("init"))
+	rv := objc.Call[MenuItem](m_, objc.Sel("init"))
 	return rv
 }
 
-func MenuItem_Init() MenuItem {
-	return MenuItemClass.Alloc().Init()
-}
-
-func (mc _MenuItemClass) SeparatorItem() MenuItem {
-	rv := objc.CallMethod[MenuItem](mc, objc.GetSelector("separatorItem"))
-	return rv
-}
-
-func MenuItem_SeparatorItem() MenuItem {
-	return MenuItemClass.SeparatorItem()
-}
-
-func (m_ MenuItem) IsEnabled() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isEnabled"))
-	return rv
-}
-
-func (m_ MenuItem) SetEnabled(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setEnabled:"), value)
-}
-
-func (m_ MenuItem) IsHidden() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isHidden"))
-	return rv
-}
-
-func (m_ MenuItem) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHidden:"), value)
-}
-
-func (m_ MenuItem) IsHiddenOrHasHiddenAncestor() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isHiddenOrHasHiddenAncestor"))
-	return rv
-}
-
-func (m_ MenuItem) Target() objc.Object {
-	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("target"))
-	return rv
-}
-
-func (m_ MenuItem) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](m_, objc.GetSelector("action"))
-	return rv
-}
-
-func (m_ MenuItem) SetAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAction:"), value)
-}
-
-func (m_ MenuItem) Title() string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("title"))
-	return rv
-}
-
-func (m_ MenuItem) SetTitle(value string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTitle:"), value)
-}
-
-func (m_ MenuItem) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](m_, objc.GetSelector("attributedTitle"))
-	return rv
-}
-
-func (m_ MenuItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) Tag() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("tag"))
-	return rv
-}
-
-func (m_ MenuItem) SetTag(value int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTag:"), value)
-}
-
-func (m_ MenuItem) State() ControlStateValue {
-	rv := objc.CallMethod[ControlStateValue](m_, objc.GetSelector("state"))
-	return rv
-}
-
-func (m_ MenuItem) SetState(value ControlStateValue) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setState:"), value)
-}
-
-func (m_ MenuItem) Image() Image {
-	rv := objc.CallMethod[Image](m_, objc.GetSelector("image"))
-	return rv
-}
-
-func (m_ MenuItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) OnStateImage() Image {
-	rv := objc.CallMethod[Image](m_, objc.GetSelector("onStateImage"))
-	return rv
-}
-
-func (m_ MenuItem) SetOnStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOnStateImage:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) OffStateImage() Image {
-	rv := objc.CallMethod[Image](m_, objc.GetSelector("offStateImage"))
-	return rv
-}
-
-func (m_ MenuItem) SetOffStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOffStateImage:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) MixedStateImage() Image {
-	rv := objc.CallMethod[Image](m_, objc.GetSelector("mixedStateImage"))
-	return rv
-}
-
-func (m_ MenuItem) SetMixedStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMixedStateImage:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) Submenu() Menu {
-	rv := objc.CallMethod[Menu](m_, objc.GetSelector("submenu"))
-	return rv
-}
-
-func (m_ MenuItem) SetSubmenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSubmenu:"), objc.ExtractPtr(value))
-}
-
-func (m_ MenuItem) HasSubmenu() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("hasSubmenu"))
-	return rv
-}
-
-func (m_ MenuItem) ParentItem() MenuItem {
-	rv := objc.CallMethod[MenuItem](m_, objc.GetSelector("parentItem"))
-	return rv
-}
-
-func (m_ MenuItem) IsSeparatorItem() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isSeparatorItem"))
-	return rv
-}
-
-func (m_ MenuItem) Menu() Menu {
-	rv := objc.CallMethod[Menu](m_, objc.GetSelector("menu"))
-	return rv
-}
-
-func (m_ MenuItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
-}
-
+// The menu item’s unmodified key equivalent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc
 func (m_ MenuItem) KeyEquivalent() string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("keyEquivalent"))
+	rv := objc.Call[string](m_, objc.Sel("keyEquivalent"))
 	return rv
 }
 
+// The menu item’s unmodified key equivalent. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514842-keyequivalent?language=objc
 func (m_ MenuItem) SetKeyEquivalent(value string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setKeyEquivalent:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setKeyEquivalent:"), value)
 }
 
-func (m_ MenuItem) KeyEquivalentModifierMask() EventModifierFlags {
-	rv := objc.CallMethod[EventModifierFlags](m_, objc.GetSelector("keyEquivalentModifierMask"))
+// The image of the menu item that indicates an “off” state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514821-offstateimage?language=objc
+func (m_ MenuItem) OffStateImage() Image {
+	rv := objc.Call[Image](m_, objc.Sel("offStateImage"))
 	return rv
 }
 
-func (m_ MenuItem) SetKeyEquivalentModifierMask(value EventModifierFlags) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setKeyEquivalentModifierMask:"), value)
+// The image of the menu item that indicates an “off” state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514821-offstateimage?language=objc
+func (m_ MenuItem) SetOffStateImage(value IImage) {
+	objc.Call[objc.Void](m_, objc.Sel("setOffStateImage:"), objc.Ptr(value))
 }
 
+// A Boolean value that indicates whether the menu item should be drawn highlighted. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514856-highlighted?language=objc
+func (m_ MenuItem) IsHighlighted() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isHighlighted"))
+	return rv
+}
+
+// The user-assigned key equivalent for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514850-userkeyequivalent?language=objc
+func (m_ MenuItem) UserKeyEquivalent() string {
+	rv := objc.Call[string](m_, objc.Sel("userKeyEquivalent"))
+	return rv
+}
+
+// The menu item's target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514843-target?language=objc
+func (m_ MenuItem) Target() objc.Object {
+	rv := objc.Call[objc.Object](m_, objc.Sel("target"))
+	return rv
+}
+
+// The menu item's target. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514843-target?language=objc
+func (m_ MenuItem) SetTarget(value objc.IObject) {
+	objc.Call[objc.Void](m_, objc.Sel("setTarget:"), value)
+}
+
+// The state of the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514804-state?language=objc
+func (m_ MenuItem) State() ControlStateValue {
+	rv := objc.Call[ControlStateValue](m_, objc.Sel("state"))
+	return rv
+}
+
+// The state of the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514804-state?language=objc
+func (m_ MenuItem) SetState(value ControlStateValue) {
+	objc.Call[objc.Void](m_, objc.Sel("setState:"), value)
+}
+
+// A Boolean value that indicates whether the menu item is hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514846-hidden?language=objc
+func (m_ MenuItem) IsHidden() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isHidden"))
+	return rv
+}
+
+// A Boolean value that indicates whether the menu item is hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514846-hidden?language=objc
+func (m_ MenuItem) SetHidden(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setHidden:"), value)
+}
+
+// The menu item indentation level for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514809-indentationlevel?language=objc
+func (m_ MenuItem) IndentationLevel() int {
+	rv := objc.Call[int](m_, objc.Sel("indentationLevel"))
+	return rv
+}
+
+// The menu item indentation level for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514809-indentationlevel?language=objc
+func (m_ MenuItem) SetIndentationLevel(value int) {
+	objc.Call[objc.Void](m_, objc.Sel("setIndentationLevel:"), value)
+}
+
+// The menu item's action-method selector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514825-action?language=objc
+func (m_ MenuItem) Action() objc.Selector {
+	rv := objc.Call[objc.Selector](m_, objc.Sel("action"))
+	return rv
+}
+
+// The menu item's action-method selector. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514825-action?language=objc
+func (m_ MenuItem) SetAction(value objc.Selector) {
+	objc.Call[objc.Void](m_, objc.Sel("setAction:"), value)
+}
+
+// A help tag for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc
+func (m_ MenuItem) ToolTip() string {
+	rv := objc.Call[string](m_, objc.Sel("toolTip"))
+	return rv
+}
+
+// A help tag for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514848-tooltip?language=objc
+func (m_ MenuItem) SetToolTip(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setToolTip:"), value)
+}
+
+// A Boolean value that marks the menu item as an alternate to the previous menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514823-alternate?language=objc
+func (m_ MenuItem) IsAlternate() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isAlternate"))
+	return rv
+}
+
+// A Boolean value that marks the menu item as an alternate to the previous menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514823-alternate?language=objc
+func (m_ MenuItem) SetAlternate(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAlternate:"), value)
+}
+
+// The content view for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514835-view?language=objc
+func (m_ MenuItem) View() View {
+	rv := objc.Call[View](m_, objc.Sel("view"))
+	return rv
+}
+
+// The content view for the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514835-view?language=objc
+func (m_ MenuItem) SetView(value IView) {
+	objc.Call[objc.Void](m_, objc.Sel("setView:"), objc.Ptr(value))
+}
+
+// A Boolean value that determines whether the system automatically remaps the keyboard shortcut to support localized keyboards. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/3787554-allowsautomatickeyequivalentloca?language=objc
+func (m_ MenuItem) AllowsAutomaticKeyEquivalentLocalization() bool {
+	rv := objc.Call[bool](m_, objc.Sel("allowsAutomaticKeyEquivalentLocalization"))
+	return rv
+}
+
+// A Boolean value that determines whether the system automatically remaps the keyboard shortcut to support localized keyboards. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/3787554-allowsautomatickeyequivalentloca?language=objc
+func (m_ MenuItem) SetAllowsAutomaticKeyEquivalentLocalization(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsAutomaticKeyEquivalentLocalization:"), value)
+}
+
+// A custom string for a menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc
+func (m_ MenuItem) AttributedTitle() foundation.AttributedString {
+	rv := objc.Call[foundation.AttributedString](m_, objc.Sel("attributedTitle"))
+	return rv
+}
+
+// A custom string for a menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc
+func (m_ MenuItem) SetAttributedTitle(value foundation.IAttributedString) {
+	objc.Call[objc.Void](m_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+}
+
+// The image of the menu item that indicates an “on” state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514861-onstateimage?language=objc
+func (m_ MenuItem) OnStateImage() Image {
+	rv := objc.Call[Image](m_, objc.Sel("onStateImage"))
+	return rv
+}
+
+// The image of the menu item that indicates an “on” state. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514861-onstateimage?language=objc
+func (m_ MenuItem) SetOnStateImage(value IImage) {
+	objc.Call[objc.Void](m_, objc.Sel("setOnStateImage:"), objc.Ptr(value))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/2880316-allowskeyequivalentwhenhidden?language=objc
+func (m_ MenuItem) AllowsKeyEquivalentWhenHidden() bool {
+	rv := objc.Call[bool](m_, objc.Sel("allowsKeyEquivalentWhenHidden"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/2880316-allowskeyequivalentwhenhidden?language=objc
+func (m_ MenuItem) SetAllowsKeyEquivalentWhenHidden(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsKeyEquivalentWhenHidden:"), value)
+}
+
+// A Boolean value that determines whether the system automatically swaps input strings for some keyboard shortcuts when the interface direction changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/3787555-allowsautomatickeyequivalentmirr?language=objc
+func (m_ MenuItem) AllowsAutomaticKeyEquivalentMirroring() bool {
+	rv := objc.Call[bool](m_, objc.Sel("allowsAutomaticKeyEquivalentMirroring"))
+	return rv
+}
+
+// A Boolean value that determines whether the system automatically swaps input strings for some keyboard shortcuts when the interface direction changes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/3787555-allowsautomatickeyequivalentmirr?language=objc
+func (m_ MenuItem) SetAllowsAutomaticKeyEquivalentMirroring(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsAutomaticKeyEquivalentMirroring:"), value)
+}
+
+// The menu item’s menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514830-menu?language=objc
+func (m_ MenuItem) Menu() Menu {
+	rv := objc.Call[Menu](m_, objc.Sel("menu"))
+	return rv
+}
+
+// The menu item’s menu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514830-menu?language=objc
+func (m_ MenuItem) SetMenu(value IMenu) {
+	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), objc.Ptr(value))
+}
+
+// Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
 func (mc _MenuItemClass) UsesUserKeyEquivalents() bool {
-	rv := objc.CallMethod[bool](mc, objc.GetSelector("usesUserKeyEquivalents"))
+	rv := objc.Call[bool](mc, objc.Sel("usesUserKeyEquivalents"))
 	return rv
 }
 
+// Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
 func MenuItem_UsesUserKeyEquivalents() bool {
 	return MenuItemClass.UsesUserKeyEquivalents()
 }
 
+// Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
 func (mc _MenuItemClass) SetUsesUserKeyEquivalents(value bool) {
-	objc.CallMethod[objc.Void](mc, objc.GetSelector("setUsesUserKeyEquivalents:"), value)
+	objc.Call[objc.Void](mc, objc.Sel("setUsesUserKeyEquivalents:"), value)
 }
 
+// Returns a Boolean value that indicates whether menu items conform to user preferences for key equivalents. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514811-usesuserkeyequivalents?language=objc
 func MenuItem_SetUsesUserKeyEquivalents(value bool) {
 	MenuItemClass.SetUsesUserKeyEquivalents(value)
 }
 
-func (m_ MenuItem) UserKeyEquivalent() string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("userKeyEquivalent"))
+// A Boolean value indicating whether the menu item is a separator item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514837-separatoritem?language=objc
+func (m_ MenuItem) IsSeparatorItem() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isSeparatorItem"))
 	return rv
 }
 
-func (m_ MenuItem) AllowsAutomaticKeyEquivalentLocalization() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("allowsAutomaticKeyEquivalentLocalization"))
-	return rv
-}
-
-func (m_ MenuItem) SetAllowsAutomaticKeyEquivalentLocalization(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsAutomaticKeyEquivalentLocalization:"), value)
-}
-
-func (m_ MenuItem) AllowsAutomaticKeyEquivalentMirroring() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("allowsAutomaticKeyEquivalentMirroring"))
-	return rv
-}
-
-func (m_ MenuItem) SetAllowsAutomaticKeyEquivalentMirroring(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsAutomaticKeyEquivalentMirroring:"), value)
-}
-
-func (m_ MenuItem) AllowsKeyEquivalentWhenHidden() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("allowsKeyEquivalentWhenHidden"))
-	return rv
-}
-
-func (m_ MenuItem) SetAllowsKeyEquivalentWhenHidden(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsKeyEquivalentWhenHidden:"), value)
-}
-
-func (m_ MenuItem) IsAlternate() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isAlternate"))
-	return rv
-}
-
-func (m_ MenuItem) SetAlternate(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAlternate:"), value)
-}
-
-func (m_ MenuItem) IndentationLevel() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("indentationLevel"))
-	return rv
-}
-
-func (m_ MenuItem) SetIndentationLevel(value int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setIndentationLevel:"), value)
-}
-
-func (m_ MenuItem) ToolTip() string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("toolTip"))
-	return rv
-}
-
-func (m_ MenuItem) SetToolTip(value string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setToolTip:"), value)
-}
-
+// The object represented by the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514834-representedobject?language=objc
 func (m_ MenuItem) RepresentedObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("representedObject"))
+	rv := objc.Call[objc.Object](m_, objc.Sel("representedObject"))
 	return rv
 }
 
+// The object represented by the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514834-representedobject?language=objc
 func (m_ MenuItem) SetRepresentedObject(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setRepresentedObject:"), value)
 }
 
-func (m_ MenuItem) View() View {
-	rv := objc.CallMethod[View](m_, objc.GetSelector("view"))
+// The menu item's tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514840-tag?language=objc
+func (m_ MenuItem) Tag() int {
+	rv := objc.Call[int](m_, objc.Sel("tag"))
 	return rv
 }
 
-func (m_ MenuItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
+// The menu item's tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514840-tag?language=objc
+func (m_ MenuItem) SetTag(value int) {
+	objc.Call[objc.Void](m_, objc.Sel("setTag:"), value)
 }
 
-func (m_ MenuItem) IsHighlighted() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isHighlighted"))
+// The menu item's title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc
+func (m_ MenuItem) Title() string {
+	rv := objc.Call[string](m_, objc.Sel("title"))
 	return rv
+}
+
+// The menu item's title. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514805-title?language=objc
+func (m_ MenuItem) SetTitle(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setTitle:"), value)
+}
+
+// The image of the menu item that indicates a “mixed” state, that is, a state neither “on” nor “off.” [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514827-mixedstateimage?language=objc
+func (m_ MenuItem) MixedStateImage() Image {
+	rv := objc.Call[Image](m_, objc.Sel("mixedStateImage"))
+	return rv
+}
+
+// The image of the menu item that indicates a “mixed” state, that is, a state neither “on” nor “off.” [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514827-mixedstateimage?language=objc
+func (m_ MenuItem) SetMixedStateImage(value IImage) {
+	objc.Call[objc.Void](m_, objc.Sel("setMixedStateImage:"), objc.Ptr(value))
+}
+
+// The submenu of the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514845-submenu?language=objc
+func (m_ MenuItem) Submenu() Menu {
+	rv := objc.Call[Menu](m_, objc.Sel("submenu"))
+	return rv
+}
+
+// The submenu of the menu item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514845-submenu?language=objc
+func (m_ MenuItem) SetSubmenu(value IMenu) {
+	objc.Call[objc.Void](m_, objc.Sel("setSubmenu:"), objc.Ptr(value))
+}
+
+// A Boolean value that indicates whether the menu item has a submenu. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514817-hassubmenu?language=objc
+func (m_ MenuItem) HasSubmenu() bool {
+	rv := objc.Call[bool](m_, objc.Sel("hasSubmenu"))
+	return rv
+}
+
+// The menu item’s keyboard equivalent modifiers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514815-keyequivalentmodifiermask?language=objc
+func (m_ MenuItem) KeyEquivalentModifierMask() EventModifierFlags {
+	rv := objc.Call[EventModifierFlags](m_, objc.Sel("keyEquivalentModifierMask"))
+	return rv
+}
+
+// The menu item’s keyboard equivalent modifiers. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514815-keyequivalentmodifiermask?language=objc
+func (m_ MenuItem) SetKeyEquivalentModifierMask(value EventModifierFlags) {
+	objc.Call[objc.Void](m_, objc.Sel("setKeyEquivalentModifierMask:"), value)
+}
+
+// A Boolean value that indicates whether the menu item or any of its superitems is hidden. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514832-hiddenorhashiddenancestor?language=objc
+func (m_ MenuItem) IsHiddenOrHasHiddenAncestor() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isHiddenOrHasHiddenAncestor"))
+	return rv
+}
+
+// The menu item whose submenu contains the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514813-parentitem?language=objc
+func (m_ MenuItem) ParentItem() MenuItem {
+	rv := objc.Call[MenuItem](m_, objc.Sel("parentItem"))
+	return rv
+}
+
+// A Boolean value that indicates whether the menu item is enabled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514863-enabled?language=objc
+func (m_ MenuItem) IsEnabled() bool {
+	rv := objc.Call[bool](m_, objc.Sel("isEnabled"))
+	return rv
+}
+
+// A Boolean value that indicates whether the menu item is enabled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514863-enabled?language=objc
+func (m_ MenuItem) SetEnabled(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setEnabled:"), value)
+}
+
+// The menu item’s image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc
+func (m_ MenuItem) Image() Image {
+	rv := objc.Call[Image](m_, objc.Sel("image"))
+	return rv
+}
+
+// The menu item’s image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc
+func (m_ MenuItem) SetImage(value IImage) {
+	objc.Call[objc.Void](m_, objc.Sel("setImage:"), objc.Ptr(value))
 }

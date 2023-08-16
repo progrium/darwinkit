@@ -1,125 +1,165 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type IDraggingDestination interface {
-	ImplementsDraggingEntered() bool
-	// optional
-	DraggingEntered(sender DraggingInfoWrapper) DragOperation
-	ImplementsWantsPeriodicDraggingUpdates() bool
+// A set of methods that the destination object (or recipient) of a dragged image must implement. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination?language=objc
+type PDraggingDestination interface {
 	// optional
 	WantsPeriodicDraggingUpdates() bool
-	ImplementsDraggingUpdated() bool
-	// optional
-	DraggingUpdated(sender DraggingInfoWrapper) DragOperation
-	ImplementsDraggingEnded() bool
-	// optional
-	DraggingEnded(sender DraggingInfoWrapper)
-	ImplementsDraggingExited() bool
-	// optional
-	DraggingExited(sender DraggingInfoWrapper)
-	ImplementsPrepareForDragOperation() bool
+	HasWantsPeriodicDraggingUpdates() bool
+
 	// optional
 	PrepareForDragOperation(sender DraggingInfoWrapper) bool
-	ImplementsPerformDragOperation() bool
+	HasPrepareForDragOperation() bool
+
+	// optional
+	DraggingEntered(sender DraggingInfoWrapper) DragOperation
+	HasDraggingEntered() bool
+
 	// optional
 	PerformDragOperation(sender DraggingInfoWrapper) bool
-	ImplementsConcludeDragOperation() bool
+	HasPerformDragOperation() bool
+
 	// optional
 	ConcludeDragOperation(sender DraggingInfoWrapper)
-	ImplementsUpdateDraggingItemsForDrag() bool
+	HasConcludeDragOperation() bool
+
+	// optional
+	DraggingUpdated(sender DraggingInfoWrapper) DragOperation
+	HasDraggingUpdated() bool
+
+	// optional
+	DraggingEnded(sender DraggingInfoWrapper)
+	HasDraggingEnded() bool
+
 	// optional
 	UpdateDraggingItemsForDrag(sender DraggingInfoWrapper)
+	HasUpdateDraggingItemsForDrag() bool
+
+	// optional
+	DraggingExited(sender DraggingInfoWrapper)
+	HasDraggingExited() bool
 }
 
+// A concrete type wrapper for the [PDraggingDestination] protocol.
 type DraggingDestinationWrapper struct {
 	objc.Object
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsDraggingEntered() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingEntered:"))
+func (d_ DraggingDestinationWrapper) HasWantsPeriodicDraggingUpdates() bool {
+	return d_.RespondsToSelector(objc.Sel("wantsPeriodicDraggingUpdates"))
 }
 
-func (d_ DraggingDestinationWrapper) DraggingEntered(sender IDraggingInfo) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingEntered:"), po)
-	return rv
-}
-
-func (d_ DraggingDestinationWrapper) ImplementsWantsPeriodicDraggingUpdates() bool {
-	return d_.RespondsToSelector(objc.GetSelector("wantsPeriodicDraggingUpdates"))
-}
-
+// Asks the destination object whether it wants to receive periodic draggingUpdated: messages. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416049-wantsperiodicdraggingupdates?language=objc
 func (d_ DraggingDestinationWrapper) WantsPeriodicDraggingUpdates() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("wantsPeriodicDraggingUpdates"))
+	rv := objc.Call[bool](d_, objc.Sel("wantsPeriodicDraggingUpdates"))
 	return rv
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsDraggingUpdated() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingUpdated:"))
+func (d_ DraggingDestinationWrapper) HasPrepareForDragOperation() bool {
+	return d_.RespondsToSelector(objc.Sel("prepareForDragOperation:"))
 }
 
-func (d_ DraggingDestinationWrapper) DraggingUpdated(sender IDraggingInfo) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingUpdated:"), po)
+// Invoked when the image is released, allowing the receiver to agree to or refuse drag operation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416066-preparefordragoperation?language=objc
+func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender PDraggingInfo) bool {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	rv := objc.Call[bool](d_, objc.Sel("prepareForDragOperation:"), po0)
 	return rv
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsDraggingEnded() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingEnded:"))
+func (d_ DraggingDestinationWrapper) HasDraggingEntered() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingEntered:"))
 }
 
-func (d_ DraggingDestinationWrapper) DraggingEnded(sender IDraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingEnded:"), po)
-}
-
-func (d_ DraggingDestinationWrapper) ImplementsDraggingExited() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingExited:"))
-}
-
-func (d_ DraggingDestinationWrapper) DraggingExited(sender IDraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingExited:"), po)
-}
-
-func (d_ DraggingDestinationWrapper) ImplementsPrepareForDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("prepareForDragOperation:"))
-}
-
-func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender IDraggingInfo) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareForDragOperation:"), po)
+// Invoked when the dragged image enters destination bounds or frame; delegate returns dragging operation to perform. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416019-draggingentered?language=objc
+func (d_ DraggingDestinationWrapper) DraggingEntered(sender PDraggingInfo) DragOperation {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	rv := objc.Call[DragOperation](d_, objc.Sel("draggingEntered:"), po0)
 	return rv
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsPerformDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("performDragOperation:"))
+func (d_ DraggingDestinationWrapper) HasPerformDragOperation() bool {
+	return d_.RespondsToSelector(objc.Sel("performDragOperation:"))
 }
 
-func (d_ DraggingDestinationWrapper) PerformDragOperation(sender IDraggingInfo) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("performDragOperation:"), po)
+// Invoked after the released image has been removed from the screen, signaling the receiver to import the pasteboard data. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1415970-performdragoperation?language=objc
+func (d_ DraggingDestinationWrapper) PerformDragOperation(sender PDraggingInfo) bool {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	rv := objc.Call[bool](d_, objc.Sel("performDragOperation:"), po0)
 	return rv
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsConcludeDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("concludeDragOperation:"))
+func (d_ DraggingDestinationWrapper) HasConcludeDragOperation() bool {
+	return d_.RespondsToSelector(objc.Sel("concludeDragOperation:"))
 }
 
-func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender IDraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("concludeDragOperation:"), po)
+// Invoked when the dragging operation is complete, signaling the receiver to perform any necessary clean-up. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416010-concludedragoperation?language=objc
+func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender PDraggingInfo) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("concludeDragOperation:"), po0)
 }
 
-func (d_ DraggingDestinationWrapper) ImplementsUpdateDraggingItemsForDrag() bool {
-	return d_.RespondsToSelector(objc.GetSelector("updateDraggingItemsForDrag:"))
+func (d_ DraggingDestinationWrapper) HasDraggingUpdated() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingUpdated:"))
 }
 
-func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender IDraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateDraggingItemsForDrag:"), po)
+// Invoked periodically as the image is held within the destination area, allowing modification of the dragging operation or mouse-pointer position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1415998-draggingupdated?language=objc
+func (d_ DraggingDestinationWrapper) DraggingUpdated(sender PDraggingInfo) DragOperation {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	rv := objc.Call[DragOperation](d_, objc.Sel("draggingUpdated:"), po0)
+	return rv
+}
+
+func (d_ DraggingDestinationWrapper) HasDraggingEnded() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingEnded:"))
+}
+
+// Called when a drag operation ends. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416096-draggingended?language=objc
+func (d_ DraggingDestinationWrapper) DraggingEnded(sender PDraggingInfo) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("draggingEnded:"), po0)
+}
+
+func (d_ DraggingDestinationWrapper) HasUpdateDraggingItemsForDrag() bool {
+	return d_.RespondsToSelector(objc.Sel("updateDraggingItemsForDrag:"))
+}
+
+// Invoked when the dragging images should be changed. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416050-updatedraggingitemsfordrag?language=objc
+func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender PDraggingInfo) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("updateDraggingItemsForDrag:"), po0)
+}
+
+func (d_ DraggingDestinationWrapper) HasDraggingExited() bool {
+	return d_.RespondsToSelector(objc.Sel("draggingExited:"))
+}
+
+// Invoked when the dragged image exits the destination’s bounds rectangle (in the case of a view object) or its frame rectangle (in the case of a window object). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingdestination/1416056-draggingexited?language=objc
+func (d_ DraggingDestinationWrapper) DraggingExited(sender PDraggingInfo) {
+	po0 := objc.WrapAsProtocol("NSDraggingInfo", sender)
+	objc.Call[objc.Void](d_, objc.Sel("draggingExited:"), po0)
 }

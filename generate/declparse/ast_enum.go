@@ -71,6 +71,7 @@ const (
 	TypeAnnotSigned
 	TypeAnnotUnsigned
 	TypeAnnotKindOf
+	TypeAnnotCovariant
 	TypeAnnotIn
 	TypeAnnotOut
 	TypeAnnotInout
@@ -92,6 +93,7 @@ var typeAnnots = map[TypeAnnotation]string{
 	TypeAnnotSigned:          "signed %s",
 	TypeAnnotUnsigned:        "unsigned %s",
 	TypeAnnotKindOf:          "__kindof %s",
+	TypeAnnotCovariant:       "__covariant %s",
 	TypeAnnotIn:              "in %s",
 	TypeAnnotOut:             "out %s",
 	TypeAnnotInout:           "inout %s",

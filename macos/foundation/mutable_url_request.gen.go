@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,84 +8,51 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [MutableURLRequest] class.
 var MutableURLRequestClass = _MutableURLRequestClass{objc.GetClass("NSMutableURLRequest")}
 
 type _MutableURLRequestClass struct {
 	objc.Class
 }
 
+// An interface definition for the [MutableURLRequest] class.
 type IMutableURLRequest interface {
 	IURLRequest
 	AddValueForHTTPHeaderField(value string, field string)
 	SetValueForHTTPHeaderField(value string, field string)
-	SetCachePolicy(value URLRequestCachePolicy)
-	SetHTTPMethod(value string)
-	SetURL(value IURL)
-	SetHTTPBody(value []byte)
-	SetHTTPBodyStream(value IInputStream)
-	SetMainDocumentURL(value IURL)
 	SetAllHTTPHeaderFields(value map[string]string)
-	SetTimeoutInterval(value TimeInterval)
+	SetMainDocumentURL(value IURL)
 	SetHTTPShouldHandleCookies(value bool)
-	SetHTTPShouldUsePipelining(value bool)
+	SetHTTPMethod(value string)
 	SetAllowsCellularAccess(value bool)
-	SetAllowsConstrainedNetworkAccess(value bool)
-	SetAllowsExpensiveNetworkAccess(value bool)
-	SetNetworkServiceType(value URLRequestNetworkServiceType)
-	SetAttribution(value URLRequestAttribution)
+	SetURL(value IURL)
+	SetHTTPBodyStream(value IInputStream)
 	SetAssumesHTTP3Capable(value bool)
-	RequiresDNSSECValidation() bool
-	SetRequiresDNSSECValidation(value bool)
+	SetAllowsExpensiveNetworkAccess(value bool)
+	SetAllowsConstrainedNetworkAccess(value bool)
+	SetTimeoutInterval(value TimeInterval)
+	SetAttribution(value URLRequestAttribution)
+	SetHTTPBody(value []byte)
+	SetCachePolicy(value URLRequestCachePolicy)
+	SetNetworkServiceType(value URLRequestNetworkServiceType)
+	SetHTTPShouldUsePipelining(value bool)
 }
 
+// A mutable URL load request that is independent of protocol or URL scheme. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest?language=objc
 type MutableURLRequest struct {
 	URLRequest
 }
 
-func MakeMutableURLRequest(ptr unsafe.Pointer) MutableURLRequest {
+func MutableURLRequestFrom(ptr unsafe.Pointer) MutableURLRequest {
 	return MutableURLRequest{
-		URLRequest: MakeURLRequest(ptr),
+		URLRequest: URLRequestFrom(ptr),
 	}
 }
 
-func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:"), objc.ExtractPtr(URL))
-	return rv
-}
-
-func MutableURLRequest_RequestWithURL(URL IURL) MutableURLRequest {
-	return MutableURLRequestClass.RequestWithURL(URL)
-}
-
-func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(URL))
-	return rv
-}
-
-func MutableURLRequest_InitWithURL(URL IURL) MutableURLRequest {
-	return MutableURLRequestClass.Alloc().InitWithURL(URL)
-}
-
-func (mc _MutableURLRequestClass) RequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
-	return rv
-}
-
-func MutableURLRequest_RequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	return MutableURLRequestClass.RequestWithURLCachePolicyTimeoutInterval(URL, cachePolicy, timeoutInterval)
-}
-
-func (m_ MutableURLRequest) InitWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
-	return rv
-}
-
-func MutableURLRequest_InitWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	return MutableURLRequestClass.Alloc().InitWithURLCachePolicyTimeoutInterval(URL, cachePolicy, timeoutInterval)
-}
-
 func (mc _MutableURLRequestClass) Alloc() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("alloc"))
+	rv := objc.Call[MutableURLRequest](mc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -93,7 +61,7 @@ func MutableURLRequest_Alloc() MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) New() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("new"))
+	rv := objc.Call[MutableURLRequest](mc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -102,96 +70,157 @@ func NewMutableURLRequest() MutableURLRequest {
 	return MutableURLRequestClass.New()
 }
 
-func MutableURLRequest_New() MutableURLRequest {
-	return MutableURLRequestClass.New()
-}
-
 func (m_ MutableURLRequest) Init() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("init"))
+	rv := objc.Call[MutableURLRequest](m_, objc.Sel("init"))
 	return rv
 }
 
-func MutableURLRequest_Init() MutableURLRequest {
-	return MutableURLRequestClass.Alloc().Init()
+func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
+	rv := objc.Call[MutableURLRequest](m_, objc.Sel("initWithURL:"), objc.Ptr(URL))
+	return rv
 }
 
+// Creates a URL request for a specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc
+func MutableURLRequest_InitWithURL(URL IURL) MutableURLRequest {
+	return MutableURLRequestClass.Alloc().InitWithURL(URL)
+}
+
+func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
+	rv := objc.Call[MutableURLRequest](mc, objc.Sel("requestWithURL:"), objc.Ptr(URL))
+	return rv
+}
+
+// Creates and returns a URL request for a specified URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1528603-requestwithurl?language=objc
+func MutableURLRequest_RequestWithURL(URL IURL) MutableURLRequest {
+	return MutableURLRequestClass.RequestWithURL(URL)
+}
+
+// Adds a value to the header field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1407676-addvalue?language=objc
 func (m_ MutableURLRequest) AddValueForHTTPHeaderField(value string, field string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addValue:forHTTPHeaderField:"), value, field)
+	objc.Call[objc.Void](m_, objc.Sel("addValue:forHTTPHeaderField:"), value, field)
 }
 
+// Sets a value for the header field. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1408793-setvalue?language=objc
 func (m_ MutableURLRequest) SetValueForHTTPHeaderField(value string, field string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setValue:forHTTPHeaderField:"), value, field)
+	objc.Call[objc.Void](m_, objc.Sel("setValue:forHTTPHeaderField:"), value, field)
 }
 
-func (m_ MutableURLRequest) SetCachePolicy(value URLRequestCachePolicy) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCachePolicy:"), value)
-}
-
-func (m_ MutableURLRequest) SetHTTPMethod(value string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPMethod:"), value)
-}
-
-func (m_ MutableURLRequest) SetURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
-}
-
-func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBody:"), value)
-}
-
-func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBodyStream:"), objc.ExtractPtr(value))
-}
-
-func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMainDocumentURL:"), objc.ExtractPtr(value))
-}
-
+// A dictionary containing all of the HTTP header fields for a request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1414617-allhttpheaderfields?language=objc
 func (m_ MutableURLRequest) SetAllHTTPHeaderFields(value map[string]string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllHTTPHeaderFields:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setAllHTTPHeaderFields:"), value)
 }
 
-func (m_ MutableURLRequest) SetTimeoutInterval(value TimeInterval) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTimeoutInterval:"), value)
+// The main document URL. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1415630-maindocumenturl?language=objc
+func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
+	objc.Call[objc.Void](m_, objc.Sel("setMainDocumentURL:"), objc.Ptr(value))
 }
 
+// A Boolean value that indicates whether the request should use the default cookie handling for the request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1415485-httpshouldhandlecookies?language=objc
 func (m_ MutableURLRequest) SetHTTPShouldHandleCookies(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPShouldHandleCookies:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPShouldHandleCookies:"), value)
 }
 
-func (m_ MutableURLRequest) SetHTTPShouldUsePipelining(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPShouldUsePipelining:"), value)
+// The HTTP request method. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1413047-httpmethod?language=objc
+func (m_ MutableURLRequest) SetHTTPMethod(value string) {
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPMethod:"), value)
 }
 
+// A Boolean value that indicates whether a connection can use the device’s cellular network (if present). [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1416749-allowscellularaccess?language=objc
 func (m_ MutableURLRequest) SetAllowsCellularAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsCellularAccess:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsCellularAccess:"), value)
 }
 
-func (m_ MutableURLRequest) SetAllowsConstrainedNetworkAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsConstrainedNetworkAccess:"), value)
+// The URL being requested. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1410342-url?language=objc
+func (m_ MutableURLRequest) SetURL(value IURL) {
+	objc.Call[objc.Void](m_, objc.Sel("setURL:"), objc.Ptr(value))
 }
 
-func (m_ MutableURLRequest) SetAllowsExpensiveNetworkAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsExpensiveNetworkAccess:"), value)
+// The request body as an input stream. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1409529-httpbodystream?language=objc
+func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPBodyStream:"), objc.Ptr(value))
 }
 
-func (m_ MutableURLRequest) SetNetworkServiceType(value URLRequestNetworkServiceType) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setNetworkServiceType:"), value)
-}
-
-func (m_ MutableURLRequest) SetAttribution(value URLRequestAttribution) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttribution:"), value)
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/3735879-assumeshttp3capable?language=objc
 func (m_ MutableURLRequest) SetAssumesHTTP3Capable(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAssumesHTTP3Capable:"), value)
+	objc.Call[objc.Void](m_, objc.Sel("setAssumesHTTP3Capable:"), value)
 }
 
-func (m_ MutableURLRequest) RequiresDNSSECValidation() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("requiresDNSSECValidation"))
-	return rv
+// A Boolean value that indicates whether connections may use a network interface that the system considers expensive. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/3325677-allowsexpensivenetworkaccess?language=objc
+func (m_ MutableURLRequest) SetAllowsExpensiveNetworkAccess(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsExpensiveNetworkAccess:"), value)
 }
 
-func (m_ MutableURLRequest) SetRequiresDNSSECValidation(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setRequiresDNSSECValidation:"), value)
+// A Boolean value that indicates whether connections may use the network when the user has specified Low Data Mode. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/3325676-allowsconstrainednetworkaccess?language=objc
+func (m_ MutableURLRequest) SetAllowsConstrainedNetworkAccess(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setAllowsConstrainedNetworkAccess:"), value)
+}
+
+// The request’s timeout interval, in seconds. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1414063-timeoutinterval?language=objc
+func (m_ MutableURLRequest) SetTimeoutInterval(value TimeInterval) {
+	objc.Call[objc.Void](m_, objc.Sel("setTimeoutInterval:"), value)
+}
+
+// The entity that initiates the network request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/3746972-attribution?language=objc
+func (m_ MutableURLRequest) SetAttribution(value URLRequestAttribution) {
+	objc.Call[objc.Void](m_, objc.Sel("setAttribution:"), value)
+}
+
+// The request body. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1409064-httpbody?language=objc
+func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPBody:"), value)
+}
+
+// The request’s cache policy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1414716-cachepolicy?language=objc
+func (m_ MutableURLRequest) SetCachePolicy(value URLRequestCachePolicy) {
+	objc.Call[objc.Void](m_, objc.Sel("setCachePolicy:"), value)
+}
+
+// The network service type of the connection. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1412378-networkservicetype?language=objc
+func (m_ MutableURLRequest) SetNetworkServiceType(value URLRequestNetworkServiceType) {
+	objc.Call[objc.Void](m_, objc.Sel("setNetworkServiceType:"), value)
+}
+
+// A Boolean value that indicates whether the request can continue transmitting data before receiving a response from an earlier transmission. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1412705-httpshouldusepipelining?language=objc
+func (m_ MutableURLRequest) SetHTTPShouldUsePipelining(value bool) {
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPShouldUsePipelining:"), value)
 }

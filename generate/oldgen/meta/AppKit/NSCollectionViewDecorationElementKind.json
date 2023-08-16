@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSCollectionViewDecorationElementKind",
-    "module": "AppKit",
-    "target_type": "NSString*"
-}

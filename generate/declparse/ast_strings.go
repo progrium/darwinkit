@@ -52,7 +52,15 @@ func (i ProtocolDecl) String() string {
 
 func (i InterfaceDecl) String() string {
 	b := &strings.Builder{}
-	_, _ = fmt.Fprintf(b, "@interface %s", i.Name)
+	params := ""
+	if len(i.Params) > 0 {
+		var p []string
+		for _, param := range i.Params {
+			p = append(p, param.String())
+		}
+		params = fmt.Sprintf("<%s>", strings.Join(p, ", "))
+	}
+	_, _ = fmt.Fprintf(b, "@interface %s%s", i.Name, params)
 	if i.SuperName != "" {
 		_, _ = fmt.Fprintf(b, " : %s", i.SuperName)
 	}
@@ -124,7 +132,11 @@ func (m MethodDecl) String() string {
 		prefix = "+"
 	}
 	if len(m.Args) == 0 {
-		fmt.Fprintf(b, "%s (%s)%s", prefix, m.ReturnType, m.Name())
+		if m.ReturnType.Name == "" {
+			fmt.Fprintf(b, "%s %s", prefix, m.Name())
+		} else {
+			fmt.Fprintf(b, "%s (%s)%s", prefix, m.ReturnType, m.Name())
+		}
 	} else {
 		var parts []string
 		for arg, part := range m.NameParts {

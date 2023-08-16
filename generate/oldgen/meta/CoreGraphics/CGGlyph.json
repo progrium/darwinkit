@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "CGGlyph",
-    "module": "CoreGraphics",
-    "target_type": "CoreGraphics.CGFontIndex"
-}

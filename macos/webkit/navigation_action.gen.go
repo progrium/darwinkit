@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package webkit
 
 import (
@@ -9,35 +10,40 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [NavigationAction] class.
 var NavigationActionClass = _NavigationActionClass{objc.GetClass("WKNavigationAction")}
 
 type _NavigationActionClass struct {
 	objc.Class
 }
 
+// An interface definition for the [NavigationAction] class.
 type INavigationAction interface {
 	objc.IObject
-	NavigationType() NavigationType
 	Request() foundation.URLRequest
+	ModifierFlags() appkit.EventModifierFlags
+	ButtonNumber() int
 	SourceFrame() FrameInfo
 	TargetFrame() FrameInfo
-	ButtonNumber() int
-	ModifierFlags() appkit.EventModifierFlags
 	ShouldPerformDownload() bool
+	NavigationType() NavigationType
 }
 
+// An object that contains information about an action that causes navigation to occur. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction?language=objc
 type NavigationAction struct {
 	objc.Object
 }
 
-func MakeNavigationAction(ptr unsafe.Pointer) NavigationAction {
+func NavigationActionFrom(ptr unsafe.Pointer) NavigationAction {
 	return NavigationAction{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (nc _NavigationActionClass) Alloc() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](nc, objc.GetSelector("alloc"))
+	rv := objc.Call[NavigationAction](nc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -46,7 +52,7 @@ func NavigationAction_Alloc() NavigationAction {
 }
 
 func (nc _NavigationActionClass) New() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](nc, objc.GetSelector("new"))
+	rv := objc.Call[NavigationAction](nc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,50 +61,63 @@ func NewNavigationAction() NavigationAction {
 	return NavigationActionClass.New()
 }
 
-func NavigationAction_New() NavigationAction {
-	return NavigationActionClass.New()
-}
-
 func (n_ NavigationAction) Init() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](n_, objc.GetSelector("init"))
+	rv := objc.Call[NavigationAction](n_, objc.Sel("init"))
 	return rv
 }
 
-func NavigationAction_Init() NavigationAction {
-	return NavigationActionClass.Alloc().Init()
-}
-
-func (n_ NavigationAction) NavigationType() NavigationType {
-	rv := objc.CallMethod[NavigationType](n_, objc.GetSelector("navigationType"))
-	return rv
-}
-
+// The URL request object associated with the navigation action. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401910-request?language=objc
 func (n_ NavigationAction) Request() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](n_, objc.GetSelector("request"))
+	rv := objc.Call[foundation.URLRequest](n_, objc.Sel("request"))
 	return rv
 }
 
-func (n_ NavigationAction) SourceFrame() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](n_, objc.GetSelector("sourceFrame"))
-	return rv
-}
-
-func (n_ NavigationAction) TargetFrame() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](n_, objc.GetSelector("targetFrame"))
-	return rv
-}
-
-func (n_ NavigationAction) ButtonNumber() int {
-	rv := objc.CallMethod[int](n_, objc.GetSelector("buttonNumber"))
-	return rv
-}
-
+// The modifier keys that were pressed at the time of the navigation request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401934-modifierflags?language=objc
 func (n_ NavigationAction) ModifierFlags() appkit.EventModifierFlags {
-	rv := objc.CallMethod[appkit.EventModifierFlags](n_, objc.GetSelector("modifierFlags"))
+	rv := objc.Call[appkit.EventModifierFlags](n_, objc.Sel("modifierFlags"))
 	return rv
 }
 
+// The number of the mouse button that caused the navigation request. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401916-buttonnumber?language=objc
+func (n_ NavigationAction) ButtonNumber() int {
+	rv := objc.Call[int](n_, objc.Sel("buttonNumber"))
+	return rv
+}
+
+// The frame that requested the navigation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401926-sourceframe?language=objc
+func (n_ NavigationAction) SourceFrame() FrameInfo {
+	rv := objc.Call[FrameInfo](n_, objc.Sel("sourceFrame"))
+	return rv
+}
+
+// The frame in which to display the new content. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401918-targetframe?language=objc
+func (n_ NavigationAction) TargetFrame() FrameInfo {
+	rv := objc.Call[FrameInfo](n_, objc.Sel("targetFrame"))
+	return rv
+}
+
+// A Boolean value that indicates whether the web content provided an attribute that indicates a download. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/3727357-shouldperformdownload?language=objc
 func (n_ NavigationAction) ShouldPerformDownload() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("shouldPerformDownload"))
+	rv := objc.Call[bool](n_, objc.Sel("shouldPerformDownload"))
+	return rv
+}
+
+// The type of action that triggered the navigation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationaction/1401914-navigationtype?language=objc
+func (n_ NavigationAction) NavigationType() NavigationType {
+	rv := objc.Call[NavigationType](n_, objc.Sel("navigationType"))
 	return rv
 }

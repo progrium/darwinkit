@@ -17,7 +17,7 @@ func main() {
 
 	nsbundle := foundation.Bundle_MainBundle().GetClass()
 	objc.ReplaceMethod(nsbundle, objc.GetSelector("bundleIdentifier"), func(_ objc.IObject) string {
-		return "com.example.fake1" // change this if you miss the allow notification
+		return "com.example.fake2" // change this if you miss the allow notification
 	})
 
 	ad := &appkit.ApplicationDelegate{}
@@ -31,7 +31,7 @@ func main() {
 		center := objc.CallMethod[objc.Object](objc.GetClass("NSUserNotificationCenter"), objc.GetSelector("defaultUserNotificationCenter"))
 		objc.CallMethod[objc.Void](center, objc.GetSelector("deliverNotification:"), notif)
 
-		app.Terminate(nil)
+		//app.Terminate(nil)
 
 	})
 	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {

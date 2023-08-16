@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "CGImageRef",
-    "module": "CoreGraphics",
-    "target_type": "void*"
-}

@@ -1,0 +1,221 @@
+package generate
+
+import (
+	"fmt"
+	"strings"
+
+	"github.com/progrium/macdriver/generate/declparse"
+	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/macdriver/generate/typing"
+	"github.com/progrium/macdriver/internal/stringx"
+)
+
+func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
+	m := sym.MainModule()
+	if m == nil {
+		return nil
+	}
+	module := m.Name
+	if db.Platform == "macos" && module == "UIKit" {
+		module = "AppKit"
+	}
+	switch sym.Kind {
+	case "Class":
+		return &typing.ClassType{
+			Name:   sym.Name,
+			GName:  modules.TrimPrefix(sym.Name),
+			Module: modules.Get(module),
+		}
+	case "Protocol":
+		return &typing.ProtocolType{
+			Name:   sym.Name,
+			GName:  modules.TrimPrefix(sym.Name),
+			Module: modules.Get(module),
+		}
+	case "Enum":
+		st, err := sym.Parse()
+		if err != nil || st.Enum == nil {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("invalid enum decl")
+		}
+
+		return &typing.AliasType{
+			Name:   sym.Name,
+			GName:  stringx.Capitalize(modules.TrimPrefix(sym.Name)), // reset in ToEnumInfo
+			Module: modules.Get(module),
+			Type:   db.ParseType(st.Enum.Type),
+		}
+	case "Union":
+		return &typing.RefType{
+			Name: sym.Name,
+		}
+	case "Type":
+		if sym.Type != "Type Alias" {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("unknown type")
+		}
+		if (strings.HasSuffix(sym.Name, "Ref") && strings.Contains(sym.Declaration, "struct")) ||
+			sym.Name == "AudioComponent" ||
+			// sym.Name == "NSZone" ||
+			sym.Name == "MusicSequence" {
+			return &typing.RefType{
+				Name: sym.Name,
+			}
+		}
+		st, err := sym.Parse()
+		if err != nil {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("bad declaration")
+		}
+		if st.Struct != nil {
+			return &typing.RefType{
+				Name: st.Struct.Name,
+			}
+		}
+		if st.TypeAlias == nil {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("bad type alias")
+		}
+		typ := db.ParseType(*st.TypeAlias)
+		if typ == nil {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("unable to parse type")
+		}
+		return &typing.AliasType{
+			Name:   sym.Name,
+			GName:  modules.TrimPrefix(sym.Name),
+			Module: modules.Get(module),
+			Type:   typ,
+		}
+	case "Struct":
+		return &typing.StructType{
+			Name:   sym.Name,
+			GName:  modules.TrimPrefix(sym.Name),
+			Module: modules.Get(module),
+		}
+	default:
+		fmt.Printf("TypeFromSymbol: kind=%s name=%s path=%s\n", sym.Kind, sym.Name, sym.Path)
+		panic("bad type")
+	}
+
+}
+
+func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("ParseType: %s panic=%s\n", ti.Name, r)
+			if strings.Contains(r.(string), "module not found") {
+				if !modules.CanIgnoreNotFound(r) {
+					panic(r)
+				}
+			}
+		}
+	}()
+	if ti.Func != nil {
+		var blockParams []typing.BlockParam
+		for _, arg := range ti.Func.Args {
+			blockParams = append(blockParams, typing.BlockParam{
+				Name: arg.Name,
+				Type: db.ParseType(arg.Type),
+			})
+		}
+		return &typing.BlockType{
+			ReturnType: db.ParseType(ti.Func.ReturnType),
+			Params:     blockParams,
+		}
+	}
+
+	ref := false
+	switch ti.Name {
+	case "SEL":
+		typ = &typing.SelectorType{}
+	case "void":
+		typ = &typing.VoidType{}
+	case "instancetype":
+		typ = &typing.InstanceType{}
+	case "id":
+		typ = &typing.IDType{}
+		if len(ti.Params) > 0 {
+			idtype := db.FindTypeSymbol(ti.Params[0].Name)
+			if idtype != nil {
+				ptyp, ok := db.TypeFromSymbol(*idtype).(*typing.ProtocolType)
+				if ok {
+					typ = ptyp
+				}
+			}
+		}
+	case "OSType", "OSStatus", "FourCharCode":
+		// to kernel types?
+		typ = typing.UInt
+	case "kern_return_t":
+		// to kernel type
+		typ = typing.Int
+	case "Class":
+		// objc type
+		typ = typing.Class
+	case "CGFloat", "Float64":
+		typ = typing.Float
+	case "NSString":
+		typ = &typing.StringType{}
+		ref = true
+	case "NSStringNeedNil":
+		typ = &typing.StringType{NeedNil: true}
+		ref = true
+	case "NSData":
+		typ = &typing.DataType{}
+		ref = true
+	case "NSArray":
+		at := &typing.ArrayType{}
+		typ = at
+		if len(ti.Params) == 1 {
+			at.Type = db.ParseType(ti.Params[0])
+		} else {
+			at.Type = typing.Object
+		}
+		ref = true
+	case "NSZone", "ipc_port_t":
+		typ = &typing.RefType{Name: ti.Name}
+		ref = true
+	case "NSDictionary":
+		dt := &typing.DictType{}
+		typ = dt
+		if len(ti.Params) == 2 {
+			dt.KeyType = db.ParseType(ti.Params[0])
+			dt.ValueType = db.ParseType(ti.Params[1])
+		} else {
+			dt.KeyType = typing.Object
+			dt.ValueType = typing.Object
+		}
+		ref = true
+	default:
+		var ok bool
+		typ, ok = typing.GetPrimitiveType(ti.Name)
+		if !ok {
+			typ, ok = typing.GetDispatchType(ti.Name)
+		}
+		if !ok {
+			typ, ok = typing.GetKernelType(ti.Name)
+		}
+		if !ok {
+			typ = db.TypeFromSymbolName(ti.Name)
+			switch typ.(type) {
+			case *typing.ClassType:
+				ref = true
+			case *typing.ProtocolType:
+				panic("standalone proto type")
+			}
+		}
+	}
+
+	if ti.IsPtr && !ref {
+		if _, ok := typ.(*typing.VoidType); ok {
+			typ = &typing.VoidPointerType{}
+		} else {
+			typ = &typing.PointerType{
+				Type: typ,
+			}
+		}
+	}
+
+	return
+}

@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "CGEventRef",
-    "module": "CoreGraphics",
-    "target_type": "void*"
-}

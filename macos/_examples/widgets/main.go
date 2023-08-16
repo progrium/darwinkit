@@ -18,8 +18,8 @@ func init() {
 	runtime.LockOSThread()
 }
 
-func initAndRun() {
-	app := appkit.ApplicationClass.SharedApplication()
+func main() {
+	app := appkit.Application_SharedApplication()
 	w := appkit.NewWindowWithSize(600, 400)
 
 	w.SetTitle("Test widgets")
@@ -55,8 +55,8 @@ func initAndRun() {
 
 	comboBox := appkit.ComboBox_InitWithFrame(rectOf(210, 290, 100, 25))
 	comboBox.AddItemsWithObjectValues([]objc.IObject{
-		foundation.NewString("Test1"),
-		foundation.NewString("Test2"),
+		foundation.String_InitWithString("Test1"),
+		foundation.String_InitWithString("Test2"),
 	})
 	comboBox.SelectItemAtIndex(0)
 	w.ContentView().AddSubview(comboBox)
@@ -105,7 +105,7 @@ func initAndRun() {
 	tf.SetFrame(rectOf(10, 100, 150, 25))
 
 	// label
-	label := appkit.NewLabel("")
+	label := appkit.NewLabel(" ")
 	label.SetFrame(rectOf(170, 100, 150, 25))
 	w.ContentView().AddSubview(label)
 	tfd := &appkit.TextFieldDelegate{}
@@ -154,14 +154,14 @@ func initAndRun() {
 	}()
 
 	// text view & scroll view
-	sv := appkit.TextViewClass.ScrollableTextView()
+	sv := appkit.TextView_ScrollableTextView()
 	sv.SetFrame(rectOf(10, 200, 200, 30))
-	appkit.MakeTextView(sv.DocumentView().Ptr()).SetAllowsUndo(true)
+	appkit.TextViewFrom(sv.DocumentView().Ptr()).SetAllowsUndo(true)
 	w.ContentView().AddSubview(sv)
 
-	sv2 := appkit.TextViewClass.ScrollableTextView()
+	sv2 := appkit.TextView_ScrollableTextView()
 	sv2.SetFrame(rectOf(250, 200, 200, 30))
-	appkit.MakeTextView(sv2.DocumentView().Ptr()).SetAllowsUndo(true)
+	appkit.TextViewFrom(sv2.DocumentView().Ptr()).SetAllowsUndo(true)
 	w.ContentView().AddSubview(sv2)
 
 	wd := &appkit.WindowDelegate{}
@@ -178,6 +178,7 @@ func initAndRun() {
 	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
 		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 		app.ActivateIgnoringOtherApps(true)
+		fmt.Println("launched")
 	})
 	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
 		return true
@@ -185,10 +186,6 @@ func initAndRun() {
 	app.SetDelegate(ad)
 
 	app.Run()
-}
-
-func main() {
-	initAndRun()
 }
 
 func rectOf(x, y, width, height float64) foundation.Rect {

@@ -1,95 +1,59 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/macdriver/macos/coregraphics"
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [CollectionLayoutBoundarySupplementaryItem] class.
 var CollectionLayoutBoundarySupplementaryItemClass = _CollectionLayoutBoundarySupplementaryItemClass{objc.GetClass("NSCollectionLayoutBoundarySupplementaryItem")}
 
 type _CollectionLayoutBoundarySupplementaryItemClass struct {
 	objc.Class
 }
 
+// An interface definition for the [CollectionLayoutBoundarySupplementaryItem] class.
 type ICollectionLayoutBoundarySupplementaryItem interface {
 	ICollectionLayoutSupplementaryItem
+	Alignment() RectAlignment
 	PinToVisibleBounds() bool
 	SetPinToVisibleBounds(value bool)
-	Offset() foundation.Point
-	Alignment() RectAlignment
+	Offset() coregraphics.Point
 	ExtendsBoundary() bool
 	SetExtendsBoundary(value bool)
 }
 
+// An object used to add headers or footers to a collection view. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem?language=objc
 type CollectionLayoutBoundarySupplementaryItem struct {
 	CollectionLayoutSupplementaryItem
 }
 
-func MakeCollectionLayoutBoundarySupplementaryItem(ptr unsafe.Pointer) CollectionLayoutBoundarySupplementaryItem {
+func CollectionLayoutBoundarySupplementaryItemFrom(ptr unsafe.Pointer) CollectionLayoutBoundarySupplementaryItem {
 	return CollectionLayoutBoundarySupplementaryItem{
-		CollectionLayoutSupplementaryItem: MakeCollectionLayoutSupplementaryItem(ptr),
+		CollectionLayoutSupplementaryItem: CollectionLayoutSupplementaryItemFrom(ptr),
 	}
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSizeElementKindAlignment(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), objc.ExtractPtr(layoutSize), elementKind, alignment)
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), objc.Ptr(layoutSize), elementKind, alignment)
 	return rv
 }
 
+// Creates a boundary supplementary item of the specified size and element kind, with an alignment relative to a section or layout. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3213819-boundarysupplementaryitemwithlay?language=objc
 func CollectionLayoutBoundarySupplementaryItem_BoundarySupplementaryItemWithLayoutSizeElementKindAlignment(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment) CollectionLayoutBoundarySupplementaryItem {
 	return CollectionLayoutBoundarySupplementaryItemClass.BoundarySupplementaryItemWithLayoutSizeElementKindAlignment(layoutSize, elementKind, alignment)
 }
 
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), objc.ExtractPtr(layoutSize), elementKind, alignment, absoluteOffset)
-	return rv
-}
-
-func CollectionLayoutBoundarySupplementaryItem_BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize, elementKind, alignment, absoluteOffset)
-}
-
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), objc.ExtractPtr(layoutSize), elementKind, objc.ExtractPtr(containerAnchor))
-	return rv
-}
-
-func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize, elementKind, containerAnchor)
-}
-
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), objc.ExtractPtr(layoutSize), elementKind, objc.ExtractPtr(containerAnchor), objc.ExtractPtr(itemAnchor))
-	return rv
-}
-
-func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize, elementKind, containerAnchor, itemAnchor)
-}
-
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
-	return rv
-}
-
-func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.ItemWithLayoutSize(layoutSize)
-}
-
-func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
-	return rv
-}
-
-func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.ItemWithLayoutSizeSupplementaryItems(layoutSize, supplementaryItems)
-}
-
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) Alloc() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -98,7 +62,7 @@ func CollectionLayoutBoundarySupplementaryItem_Alloc() CollectionLayoutBoundaryS
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) New() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("new"))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -107,43 +71,77 @@ func NewCollectionLayoutBoundarySupplementaryItem() CollectionLayoutBoundarySupp
 	return CollectionLayoutBoundarySupplementaryItemClass.New()
 }
 
-func CollectionLayoutBoundarySupplementaryItem_New() CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.New()
-}
-
 func (c_ CollectionLayoutBoundarySupplementaryItem) Init() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("init"))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](c_, objc.Sel("init"))
 	return rv
 }
 
-func CollectionLayoutBoundarySupplementaryItem_Init() CollectionLayoutBoundarySupplementaryItem {
-	return CollectionLayoutBoundarySupplementaryItemClass.Alloc().Init()
-}
-
-func (c_ CollectionLayoutBoundarySupplementaryItem) PinToVisibleBounds() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("pinToVisibleBounds"))
+func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), objc.Ptr(layoutSize), elementKind, objc.Ptr(containerAnchor), objc.Ptr(itemAnchor))
 	return rv
 }
 
-func (c_ CollectionLayoutBoundarySupplementaryItem) SetPinToVisibleBounds(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPinToVisibleBounds:"), value)
+// Creates a supplementary item of the specified size and element kind, an anchor relative to a container, and an anchor relative to an item. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutsupplementaryitem/3213900-supplementaryitemwithlayoutsize?language=objc
+func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
+	return CollectionLayoutBoundarySupplementaryItemClass.SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize, elementKind, containerAnchor, itemAnchor)
 }
 
-func (c_ CollectionLayoutBoundarySupplementaryItem) Offset() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](c_, objc.GetSelector("offset"))
+func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
 	return rv
 }
 
+// Creates an item of the specified size. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3213871-itemwithlayoutsize?language=objc
+func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
+	return CollectionLayoutBoundarySupplementaryItemClass.ItemWithLayoutSize(layoutSize)
+}
+
+// The alignment of the boundary supplementary item relative to the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199039-alignment?language=objc
 func (c_ CollectionLayoutBoundarySupplementaryItem) Alignment() RectAlignment {
-	rv := objc.CallMethod[RectAlignment](c_, objc.GetSelector("alignment"))
+	rv := objc.Call[RectAlignment](c_, objc.Sel("alignment"))
 	return rv
 }
 
+// A Boolean value that indicates whether a header or footer is pinned to the top or bottom visible boundary of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199044-pintovisiblebounds?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) PinToVisibleBounds() bool {
+	rv := objc.Call[bool](c_, objc.Sel("pinToVisibleBounds"))
+	return rv
+}
+
+// A Boolean value that indicates whether a header or footer is pinned to the top or bottom visible boundary of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199044-pintovisiblebounds?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) SetPinToVisibleBounds(value bool) {
+	objc.Call[objc.Void](c_, objc.Sel("setPinToVisibleBounds:"), value)
+}
+
+// The floating-point value of the boundary supplementary item’s offset from the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199043-offset?language=objc
+func (c_ CollectionLayoutBoundarySupplementaryItem) Offset() coregraphics.Point {
+	rv := objc.Call[coregraphics.Point](c_, objc.Sel("offset"))
+	return rv
+}
+
+// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
 func (c_ CollectionLayoutBoundarySupplementaryItem) ExtendsBoundary() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("extendsBoundary"))
+	rv := objc.Call[bool](c_, objc.Sel("extendsBoundary"))
 	return rv
 }
 
+// A Boolean value that indicates whether a boundary supplementary item extends the content area of the section or layout it’s attached to. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutboundarysupplementaryitem/3199040-extendsboundary?language=objc
 func (c_ CollectionLayoutBoundarySupplementaryItem) SetExtendsBoundary(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setExtendsBoundary:"), value)
+	objc.Call[objc.Void](c_, objc.Sel("setExtendsBoundary:"), value)
 }

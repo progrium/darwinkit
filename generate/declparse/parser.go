@@ -37,14 +37,14 @@ func NewStringParser(s string) *Parser {
 func (p *Parser) Parse() (*Statement, error) {
 	p.tb.IgnoreWhitespace = true
 
-	tok, _, lit := p.tb.Scan()
+	tok, _, _ := p.tb.Scan()
 	if tok == keywords.TYPEDEF {
 		p.typedef = true
 	} else {
 		p.tb.Unscan()
 	}
 
-	tok, _, lit = p.tb.Peek()
+	tok, _, _ = p.tb.Peek()
 	switch tok {
 	case lexer.PLUS, lexer.MINUS:
 		decl, err := p.parse(parseMethod)
@@ -76,12 +76,6 @@ func (p *Parser) Parse() (*Statement, error) {
 			return nil, err
 		}
 		return &Statement{Enum: decl.(*EnumDecl), Typedef: p.finishTypedef()}, nil
-	case keywords.CONST:
-		decl, err := p.parse(parseVariable)
-		if err != nil {
-			return nil, err
-		}
-		return &Statement{Variable: decl.(*VariableDecl)}, nil
 	case keywords.STRUCT:
 		decl, err := p.parse(parseStruct)
 		if err != nil {
@@ -89,13 +83,6 @@ func (p *Parser) Parse() (*Statement, error) {
 		}
 		return &Statement{Struct: decl.(*StructDecl), Typedef: p.finishTypedef()}, nil
 	default:
-		if p.Hint == HintVariable {
-			decl, err := p.parse(parseVariable)
-			if err != nil {
-				return nil, err
-			}
-			return &Statement{Variable: decl.(*VariableDecl)}, nil
-		}
 		if p.Hint == HintEnumCase {
 			decl, err := p.parse(parseEnumCase)
 			if err != nil {
@@ -115,9 +102,20 @@ func (p *Parser) Parse() (*Statement, error) {
 			if err != nil {
 				return nil, err
 			}
-			return &Statement{TypeAlias: ti, Typedef: p.finishTypedef()}, nil
+			typedef := p.finishTypedef()
+			if typedef == "" && ti.Func != nil {
+				typedef = ti.Func.Name
+				ti.Func.Name = ""
+			}
+			return &Statement{TypeAlias: ti, Typedef: typedef}, nil
 		}
-		return nil, fmt.Errorf("unable to parse start token: %s %s", tok, lit)
+		// assume variable
+		decl, err := p.parse(parseVariable)
+		if err != nil {
+			return nil, err
+		}
+		return &Statement{Variable: decl.(*VariableDecl)}, nil
+		//return nil, fmt.Errorf("unable to parse start token: %s %s", tok, lit)
 	}
 }
 
@@ -141,6 +139,9 @@ func (p *Parser) finishTypedef() string {
 func (p *Parser) expectToken(t lexer.Token) error {
 	tok, pos, lit := p.tb.Scan()
 	if tok != t {
+		// pc, _, _, _ := runtime.Caller(1)
+		// caller := runtime.FuncForPC(pc).Name()
+		// caller = caller[strings.LastIndex(caller, ".")+1:]
 		return fmt.Errorf("found %s (%q), expected token %s at %v", tok, lit, t, pos)
 	}
 	return nil
@@ -148,6 +149,10 @@ func (p *Parser) expectToken(t lexer.Token) error {
 
 func (p *Parser) expectIdent() (string, error) {
 	tok, pos, lit := p.tb.Scan()
+	// special case possible tokens as identifiers (esp w/o case)
+	if tok == keywords.ENUM {
+		return tok.String(), nil
+	}
 	if tok != lexer.IDENT {
 		return "", fmt.Errorf("found %s (%q), expected identifier at %v", tok, lit, pos)
 	}

@@ -10,6 +10,7 @@ type Param struct {
 	Name      string
 	Type      typing.Type
 	FieldName string // objc param field name(part of function name)
+	Object    bool   // version of param generalized to IObject for protocols
 }
 
 func (p *Param) String() string {
@@ -25,10 +26,15 @@ func (p *Param) ObjcDeclare() string {
 	return p.Type.ObjcName() + " " + p.GoName()
 }
 
-func (p *Param) GoName() string {
+func (p *Param) GoName() (name string) {
 	switch p.Name {
 	case "type", "range", "map", "string", "select":
-		return p.Name + "_"
+		name = p.Name + "_"
+	default:
+		name = p.Name
 	}
-	return p.Name
+	if p.Object {
+		name = name + "Object"
+	}
+	return
 }

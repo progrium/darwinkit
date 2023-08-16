@@ -1,17 +1,5 @@
 package declparse
 
-// TODO:
-
-// typedef struct objc_object {
-//	...
-// } id;
-
-// __kindof NSApplication *NSApp;
-
-// typedef const void * _Nullable (*CGDataProviderGetBytePointerCallback)(void *info);
-
-// typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);
-
 var tests = []struct {
 	s         string
 	n         Node
@@ -23,6 +11,119 @@ var tests = []struct {
 		s: `@interface NSMenu : NSObject`,
 		n: &InterfaceDecl{
 			Name:      "NSMenu",
+			SuperName: "NSObject",
+		},
+	},
+
+	{
+		ParseOnly: true,
+		// notice eNum is "enum"
+		s: `+ (NSEvent *)enterExitEventWithType:(NSEventType)type location:(NSPoint)location modifierFlags:(NSEventModifierFlags)flags timestamp:(NSTimeInterval)time windowNumber:(NSInteger)wNum context:(NSGraphicsContext *)unusedPassNil eventNumber:(NSInteger)eNum trackingNumber:(NSInteger)tNum userData:(void *)data;`,
+		n: &MethodDecl{
+			TypeMethod: true,
+			ReturnType: TypeInfo{
+				Name:  "NSEvent",
+				IsPtr: true,
+			},
+			NameParts: []string{"enterExitEventWithType", "location", "modifierFlags", "timestamp", "windowNumber", "context", "eventNumber", "trackingNumber", "userData"},
+			Args: []ArgInfo{
+				{
+					Name: "type",
+					Type: TypeInfo{
+						Name: "NSEventType",
+					},
+				},
+				{
+					Name: "location",
+					Type: TypeInfo{
+						Name: "NSPoint",
+					},
+				},
+				{
+					Name: "flags",
+					Type: TypeInfo{
+						Name: "NSEventModifierFlags",
+					},
+				},
+				{
+					Name: "time",
+					Type: TypeInfo{
+						Name: "NSTimeInterval",
+					},
+				},
+				{
+					Name: "wNum",
+					Type: TypeInfo{
+						Name: "NSInteger",
+					},
+				},
+				{
+					Name: "unusedPassNil",
+					Type: TypeInfo{
+						Name:  "NSGraphicsContext",
+						IsPtr: true,
+					},
+				},
+				{
+					Name: "enum", // have to expect downcase
+					Type: TypeInfo{
+						Name: "NSInteger",
+					},
+				},
+				{
+					Name: "tNum",
+					Type: TypeInfo{
+						Name: "NSInteger",
+					},
+				},
+				{
+					Name: "data",
+					Type: TypeInfo{
+						Name:  "void",
+						IsPtr: true,
+					},
+				},
+			},
+		},
+	},
+
+	{
+		s: `- init`,
+		n: &MethodDecl{
+			NameParts: []string{"init"},
+		},
+	},
+
+	{
+		ParseOnly: true,
+		s:         `@property(readwrite, assign, nonatomic, setter=setLaplacianScale:, getter=getLaplacianScale) float laplacianScale;`,
+		n: &PropertyDecl{
+			Name: "laplacianScale",
+			Type: TypeInfo{
+				Name: "float",
+			},
+			Attrs: map[PropAttr]string{
+				PropAttrReadwrite: "",
+				PropAttrAssign:    "",
+				PropAttrNonatomic: "",
+				PropAttrSetter:    "setLaplacianScale:",
+				PropAttrGetter:    "getLaplacianScale",
+			},
+		},
+	},
+
+	{
+		s: `@interface NSFetchedResultsController<__covariant ResultType> : NSObject`,
+		n: &InterfaceDecl{
+			Name: "NSFetchedResultsController",
+			Params: []TypeInfo{
+				{
+					Name: "ResultType",
+					Annots: map[TypeAnnotation]bool{
+						TypeAnnotCovariant: true,
+					},
+				},
+			},
 			SuperName: "NSObject",
 		},
 	},
@@ -726,8 +827,8 @@ var tests = []struct {
 
 	{
 		ParseOnly: true,
-		Hint:      HintVariable,
-		s:         `NSString *const NSAssertionHandlerKey;`,
+		// Hint:      HintVariable,
+		s: `NSString *const NSAssertionHandlerKey;`,
 		n: &Statement{
 			Variable: &VariableDecl{
 				Name: "NSAssertionHandlerKey",
@@ -784,8 +885,8 @@ var tests = []struct {
 
 	{
 		ParseOnly: true,
-		Hint:      HintVariable,
-		s:         `CGPoint origin;`,
+		// Hint:      HintVariable,
+		s: `CGPoint origin;`,
 		n: &Statement{
 			Variable: &VariableDecl{
 				Name: "origin",
@@ -879,6 +980,130 @@ var tests = []struct {
 				},
 				NameParts:   []string{"init"},
 				Unavailable: true,
+			},
+		},
+	},
+	{
+		// Hint:      HintVariable,
+		ParseOnly: true,
+		s:         `__kindof NSApplication *NSApp;`,
+		n: &Statement{
+			Variable: &VariableDecl{
+				Name: "NSApp",
+				Type: TypeInfo{
+					Name:  "NSApplication",
+					IsPtr: true,
+					Annots: map[TypeAnnotation]bool{
+						TypeAnnotKindOf: true,
+					},
+				},
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         `typedef struct objc_object {	...	} id;`,
+		n: &Statement{
+			Typedef: "id",
+			Struct: &StructDecl{
+				Name: "objc_object",
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         `typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);`,
+		n: &Statement{
+			Typedef: "CFDictionaryRetainCallBack",
+			TypeAlias: &TypeInfo{
+				Func: &FunctionDecl{
+					IsPtr: true,
+					ReturnType: TypeInfo{
+						Name:  "void",
+						IsPtr: true,
+						Annots: map[TypeAnnotation]bool{
+							TypeAnnotConst: true,
+						},
+					},
+					Args: FuncArgs{
+						ArgInfo{
+							Name: "allocator",
+							Type: TypeInfo{
+								Name: "CFAllocatorRef",
+							},
+						},
+						ArgInfo{
+							Name: "value",
+							Type: TypeInfo{
+								Name:  "void",
+								IsPtr: true,
+								Annots: map[TypeAnnotation]bool{
+									TypeAnnotConst: true,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         `@property(copy) BOOL (^dictionaryHandler)(void *obj);`,
+		n: &Statement{
+			Property: &PropertyDecl{
+				Name: "dictionaryHandler",
+				Type: TypeInfo{
+					Func: &FunctionDecl{
+						IsBlock: true,
+						ReturnType: TypeInfo{
+							Name: "BOOL",
+						},
+						Args: FuncArgs{
+							ArgInfo{
+								Name: "obj",
+								Type: TypeInfo{
+									Name:  "void",
+									IsPtr: true,
+								},
+							},
+						},
+					},
+				},
+				Attrs: map[PropAttr]string{
+					PropAttrCopy: "",
+				},
+			},
+		},
+	},
+	{
+		ParseOnly: true,
+		s:         `typedef void (^VNRequestCompletionHandler)(VNRequest *request, NSError *error);`,
+		n: &Statement{
+			Typedef: "VNRequestCompletionHandler",
+			TypeAlias: &TypeInfo{
+				Func: &FunctionDecl{
+					IsBlock: true,
+					ReturnType: TypeInfo{
+						Name: "void",
+					},
+					Args: FuncArgs{
+						ArgInfo{
+							Name: "request",
+							Type: TypeInfo{
+								Name:  "VNRequest",
+								IsPtr: true,
+							},
+						},
+						ArgInfo{
+							Name: "error",
+							Type: TypeInfo{
+								Name:  "NSError",
+								IsPtr: true,
+							},
+						},
+					},
+				},
 			},
 		},
 	},

@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"io/fs"
 	"runtime"
 	"time"
@@ -27,9 +28,10 @@ func main() {
 	configuration.SetURLSchemeHandlerForURLScheme(gofsHandler, "gofs")
 
 	view := webkit.WebView_InitWithFrameConfiguration(foundation.Rect{}, configuration)
-	webkit.AddScriptMessageHandlerWithReply(view, "greet", func(message objc.Object) (objc.IObject, error) {
+	webkit.AddScriptMessageHandlerWithReply(view, "greet", func(message objc.Object) (objc.Object, error) {
 		param := message.Description()
-		return foundation.NewString("hello: " + param), nil
+		fmt.Println("greet handled")
+		return foundation.String_InitWithString("hello: " + param).Object, nil
 	})
 	w.SetContentView(view)
 

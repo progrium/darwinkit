@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package quartzcore
 
 import (
@@ -7,12 +8,14 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [PropertyAnimation] class.
 var PropertyAnimationClass = _PropertyAnimationClass{objc.GetClass("CAPropertyAnimation")}
 
 type _PropertyAnimationClass struct {
 	objc.Class
 }
 
+// An interface definition for the [PropertyAnimation] class.
 type IPropertyAnimation interface {
 	IAnimation
 	KeyPath() string
@@ -25,36 +28,33 @@ type IPropertyAnimation interface {
 	SetValueFunction(value IValueFunction)
 }
 
+// An abstract subclass of CAAnimation for creating animations that manipulate the value of layer properties. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation?language=objc
 type PropertyAnimation struct {
 	Animation
 }
 
-func MakePropertyAnimation(ptr unsafe.Pointer) PropertyAnimation {
+func PropertyAnimationFrom(ptr unsafe.Pointer) PropertyAnimation {
 	return PropertyAnimation{
-		Animation: MakeAnimation(ptr),
+		Animation: AnimationFrom(ptr),
 	}
 }
 
 func (pc _PropertyAnimationClass) AnimationWithKeyPath(path string) PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("animationWithKeyPath:"), path)
+	rv := objc.Call[PropertyAnimation](pc, objc.Sel("animationWithKeyPath:"), path)
 	return rv
 }
 
+// Creates and returns an CAPropertyAnimation instance for the specified key path. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412534-animationwithkeypath?language=objc
 func PropertyAnimation_AnimationWithKeyPath(path string) PropertyAnimation {
 	return PropertyAnimationClass.AnimationWithKeyPath(path)
 }
 
-func (pc _PropertyAnimationClass) Animation() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("animation"))
-	return rv
-}
-
-func PropertyAnimation_Animation() PropertyAnimation {
-	return PropertyAnimationClass.Animation()
-}
-
 func (pc _PropertyAnimationClass) Alloc() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("alloc"))
+	rv := objc.Call[PropertyAnimation](pc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -63,7 +63,7 @@ func PropertyAnimation_Alloc() PropertyAnimation {
 }
 
 func (pc _PropertyAnimationClass) New() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("new"))
+	rv := objc.Call[PropertyAnimation](pc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -72,51 +72,79 @@ func NewPropertyAnimation() PropertyAnimation {
 	return PropertyAnimationClass.New()
 }
 
-func PropertyAnimation_New() PropertyAnimation {
-	return PropertyAnimationClass.New()
-}
-
 func (p_ PropertyAnimation) Init() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](p_, objc.GetSelector("init"))
+	rv := objc.Call[PropertyAnimation](p_, objc.Sel("init"))
 	return rv
 }
 
-func PropertyAnimation_Init() PropertyAnimation {
-	return PropertyAnimationClass.Alloc().Init()
+func (pc _PropertyAnimationClass) Animation() PropertyAnimation {
+	rv := objc.Call[PropertyAnimation](pc, objc.Sel("animation"))
+	return rv
 }
 
+// Creates and returns a new CAAnimation instance. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412479-animation?language=objc
+func PropertyAnimation_Animation() PropertyAnimation {
+	return PropertyAnimationClass.Animation()
+}
+
+// Specifies the key path the receiver animates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
 func (p_ PropertyAnimation) KeyPath() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("keyPath"))
+	rv := objc.Call[string](p_, objc.Sel("keyPath"))
 	return rv
 }
 
+// Specifies the key path the receiver animates. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412496-keypath?language=objc
 func (p_ PropertyAnimation) SetKeyPath(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setKeyPath:"), value)
+	objc.Call[objc.Void](p_, objc.Sel("setKeyPath:"), value)
 }
 
+// Determines if the value of the property is the value at the end of the previous repeat cycle, plus the value of the current repeat cycle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412538-cumulative?language=objc
 func (p_ PropertyAnimation) IsCumulative() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isCumulative"))
+	rv := objc.Call[bool](p_, objc.Sel("isCumulative"))
 	return rv
 }
 
+// Determines if the value of the property is the value at the end of the previous repeat cycle, plus the value of the current repeat cycle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412538-cumulative?language=objc
 func (p_ PropertyAnimation) SetCumulative(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setCumulative:"), value)
+	objc.Call[objc.Void](p_, objc.Sel("setCumulative:"), value)
 }
 
+// Determines if the value specified by the animation is added to the current render tree value to produce the new render tree value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412493-additive?language=objc
 func (p_ PropertyAnimation) IsAdditive() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isAdditive"))
+	rv := objc.Call[bool](p_, objc.Sel("isAdditive"))
 	return rv
 }
 
+// Determines if the value specified by the animation is added to the current render tree value to produce the new render tree value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412493-additive?language=objc
 func (p_ PropertyAnimation) SetAdditive(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAdditive:"), value)
+	objc.Call[objc.Void](p_, objc.Sel("setAdditive:"), value)
 }
 
+// An optional value function that is applied to interpolated values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
 func (p_ PropertyAnimation) ValueFunction() ValueFunction {
-	rv := objc.CallMethod[ValueFunction](p_, objc.GetSelector("valueFunction"))
+	rv := objc.Call[ValueFunction](p_, objc.Sel("valueFunction"))
 	return rv
 }
 
+// An optional value function that is applied to interpolated values. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
 func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setValueFunction:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setValueFunction:"), objc.Ptr(value))
 }

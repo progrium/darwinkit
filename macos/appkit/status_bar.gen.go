@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,12 +8,14 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [StatusBar] class.
 var StatusBarClass = _StatusBarClass{objc.GetClass("NSStatusBar")}
 
 type _StatusBarClass struct {
 	objc.Class
 }
 
+// An interface definition for the [StatusBar] class.
 type IStatusBar interface {
 	objc.IObject
 	StatusItemWithLength(length float64) StatusItem
@@ -21,18 +24,21 @@ type IStatusBar interface {
 	Thickness() float64
 }
 
+// An object that manages a collection of status items displayed within the system-wide menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar?language=objc
 type StatusBar struct {
 	objc.Object
 }
 
-func MakeStatusBar(ptr unsafe.Pointer) StatusBar {
+func StatusBarFrom(ptr unsafe.Pointer) StatusBar {
 	return StatusBar{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (sc _StatusBarClass) Alloc() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[StatusBar](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -41,7 +47,7 @@ func StatusBar_Alloc() StatusBar {
 }
 
 func (sc _StatusBarClass) New() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("new"))
+	rv := objc.Call[StatusBar](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -50,43 +56,53 @@ func NewStatusBar() StatusBar {
 	return StatusBarClass.New()
 }
 
-func StatusBar_New() StatusBar {
-	return StatusBarClass.New()
-}
-
 func (s_ StatusBar) Init() StatusBar {
-	rv := objc.CallMethod[StatusBar](s_, objc.GetSelector("init"))
+	rv := objc.Call[StatusBar](s_, objc.Sel("init"))
 	return rv
 }
 
-func StatusBar_Init() StatusBar {
-	return StatusBarClass.Alloc().Init()
-}
-
+// Returns a newly created status item that has been allotted a specified space within the status bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1532895-statusitemwithlength?language=objc
 func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
-	rv := objc.CallMethod[StatusItem](s_, objc.GetSelector("statusItemWithLength:"), length)
+	rv := objc.Call[StatusItem](s_, objc.Sel("statusItemWithLength:"), length)
 	return rv
 }
 
+// Removes the specified status item from the receiver. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530377-removestatusitem?language=objc
 func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeStatusItem:"), objc.ExtractPtr(item))
+	objc.Call[objc.Void](s_, objc.Sel("removeStatusItem:"), objc.Ptr(item))
 }
 
+// Returns the system-wide status bar located in the menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
 func (sc _StatusBarClass) SystemStatusBar() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("systemStatusBar"))
+	rv := objc.Call[StatusBar](sc, objc.Sel("systemStatusBar"))
 	return rv
 }
 
+// Returns the system-wide status bar located in the menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530619-systemstatusbar?language=objc
 func StatusBar_SystemStatusBar() StatusBar {
 	return StatusBarClass.SystemStatusBar()
 }
 
+// A Boolean value indicating whether the status bar has a vertical orientation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530580-vertical?language=objc
 func (s_ StatusBar) IsVertical() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isVertical"))
+	rv := objc.Call[bool](s_, objc.Sel("isVertical"))
 	return rv
 }
 
+// The thickness of the status bar, in pixels. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1534591-thickness?language=objc
 func (s_ StatusBar) Thickness() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("thickness"))
+	rv := objc.Call[float64](s_, objc.Sel("thickness"))
 	return rv
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package foundation
 
 import (
@@ -7,38 +8,46 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [Unit] class.
 var UnitClass = _UnitClass{objc.GetClass("NSUnit")}
 
 type _UnitClass struct {
 	objc.Class
 }
 
+// An interface definition for the [Unit] class.
 type IUnit interface {
 	objc.IObject
 	Symbol() string
 }
 
+// An abstract class representing a unit of measure. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit?language=objc
 type Unit struct {
 	objc.Object
 }
 
-func MakeUnit(ptr unsafe.Pointer) Unit {
+func UnitFrom(ptr unsafe.Pointer) Unit {
 	return Unit{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (u_ Unit) InitWithSymbol(symbol string) Unit {
-	rv := objc.CallMethod[Unit](u_, objc.GetSelector("initWithSymbol:"), symbol)
+	rv := objc.Call[Unit](u_, objc.Sel("initWithSymbol:"), symbol)
 	return rv
 }
 
+// Initializes a new unit with the specified symbol. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
 func Unit_InitWithSymbol(symbol string) Unit {
 	return UnitClass.Alloc().InitWithSymbol(symbol)
 }
 
 func (uc _UnitClass) Alloc() Unit {
-	rv := objc.CallMethod[Unit](uc, objc.GetSelector("alloc"))
+	rv := objc.Call[Unit](uc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -47,7 +56,7 @@ func Unit_Alloc() Unit {
 }
 
 func (uc _UnitClass) New() Unit {
-	rv := objc.CallMethod[Unit](uc, objc.GetSelector("new"))
+	rv := objc.Call[Unit](uc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,20 +65,15 @@ func NewUnit() Unit {
 	return UnitClass.New()
 }
 
-func Unit_New() Unit {
-	return UnitClass.New()
-}
-
 func (u_ Unit) Init() Unit {
-	rv := objc.CallMethod[Unit](u_, objc.GetSelector("init"))
+	rv := objc.Call[Unit](u_, objc.Sel("init"))
 	return rv
 }
 
-func Unit_Init() Unit {
-	return UnitClass.Alloc().Init()
-}
-
+// The symbolic representation of the unit. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1642700-symbol?language=objc
 func (u_ Unit) Symbol() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("symbol"))
+	rv := objc.Call[string](u_, objc.Sel("symbol"))
 	return rv
 }

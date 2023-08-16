@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,106 +9,99 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [SegmentedControl] class.
 var SegmentedControlClass = _SegmentedControlClass{objc.GetClass("NSSegmentedControl")}
 
 type _SegmentedControlClass struct {
 	objc.Class
 }
 
+// An interface definition for the [SegmentedControl] class.
 type ISegmentedControl interface {
 	IControl
-	LabelForSegment(segment int) string
 	SetLabelForSegment(label string, segment int)
-	SetAlignmentForSegment(alignment TextAlignment, segment int)
-	AlignmentForSegment(segment int) TextAlignment
-	SetImageForSegment(image IImage, segment int)
-	ImageForSegment(segment int) Image
-	SetImageScalingForSegment(scaling ImageScaling, segment int)
 	ImageScalingForSegment(segment int) ImageScaling
-	SetMenuForSegment(menu IMenu, segment int)
-	MenuForSegment(segment int) Menu
-	SetShowsMenuIndicatorForSegment(showsMenuIndicator bool, segment int)
-	ShowsMenuIndicatorForSegment(segment int) bool
-	SelectSegmentWithTag(tag int) bool
+	SetToolTipForSegment(toolTip string, segment int)
+	TagForSegment(segment int) int
+	ToolTipForSegment(segment int) string
+	SetAlignmentForSegment(alignment TextAlignment, segment int)
 	SetSelectedForSegment(selected bool, segment int)
 	IsSelectedForSegment(segment int) bool
-	SetWidthForSegment(width float64, segment int)
-	WidthForSegment(segment int) float64
-	CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions)
+	SetImageForSegment(image IImage, segment int)
+	SetShowsMenuIndicatorForSegment(showsMenuIndicator bool, segment int)
 	MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size
+	ImageForSegment(segment int) Image
+	CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions)
 	SetEnabledForSegment(enabled bool, segment int)
-	IsEnabledForSegment(segment int) bool
-	TagForSegment(segment int) int
+	WidthForSegment(segment int) float64
+	SelectSegmentWithTag(tag int) bool
+	AlignmentForSegment(segment int) TextAlignment
+	SetImageScalingForSegment(scaling ImageScaling, segment int)
 	SetTagForSegment(tag int, segment int)
-	SetToolTipForSegment(toolTip string, segment int)
-	ToolTipForSegment(segment int) string
-	TrackingMode() SegmentSwitchTracking
-	SetTrackingMode(value SegmentSwitchTracking)
+	MenuForSegment(segment int) Menu
+	SetMenuForSegment(menu IMenu, segment int)
+	ShowsMenuIndicatorForSegment(segment int) bool
+	LabelForSegment(segment int) string
+	SetWidthForSegment(width float64, segment int)
+	IsEnabledForSegment(segment int) bool
+	ActiveCompressionOptions() UserInterfaceCompressionOptions
+	IndexOfSelectedItem() int
 	SegmentStyle() SegmentStyle
 	SetSegmentStyle(value SegmentStyle)
 	SegmentCount() int
 	SetSegmentCount(value int)
-	IsSpringLoaded() bool
-	SetSpringLoaded(value bool)
 	SelectedSegment() int
 	SetSelectedSegment(value int)
-	IndexOfSelectedItem() int
-	SelectedSegmentBezelColor() Color
-	SetSelectedSegmentBezelColor(value IColor)
-	DoubleValueForSelectedSegment() float64
 	SegmentDistribution() SegmentDistribution
 	SetSegmentDistribution(value SegmentDistribution)
-	ActiveCompressionOptions() UserInterfaceCompressionOptions
+	TrackingMode() SegmentSwitchTracking
+	SetTrackingMode(value SegmentSwitchTracking)
+	DoubleValueForSelectedSegment() float64
+	SelectedSegmentBezelColor() Color
+	SetSelectedSegmentBezelColor(value IColor)
+	IsSpringLoaded() bool
+	SetSpringLoaded(value bool)
 }
 
+// Display one or more buttons in a single horizontal group. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol?language=objc
 type SegmentedControl struct {
 	Control
 }
 
-func MakeSegmentedControl(ptr unsafe.Pointer) SegmentedControl {
+func SegmentedControlFrom(ptr unsafe.Pointer) SegmentedControl {
 	return SegmentedControl{
-		Control: MakeControl(ptr),
+		Control: ControlFrom(ptr),
 	}
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithImagesTrackingModeTargetAction(images []IImage, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, objc.ExtractPtr(target), action)
+	rv := objc.Call[SegmentedControl](sc, objc.Sel("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, target, action)
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1644010-segmentedcontrolwithimages?language=objc
 func SegmentedControl_SegmentedControlWithImagesTrackingModeTargetAction(images []IImage, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
 	return SegmentedControlClass.SegmentedControlWithImagesTrackingModeTargetAction(images, trackingMode, target, action)
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithLabelsTrackingModeTargetAction(labels []string, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, objc.ExtractPtr(target), action)
+	rv := objc.Call[SegmentedControl](sc, objc.Sel("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, target, action)
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1644011-segmentedcontrolwithlabels?language=objc
 func SegmentedControl_SegmentedControlWithLabelsTrackingModeTargetAction(labels []string, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
 	return SegmentedControlClass.SegmentedControlWithLabelsTrackingModeTargetAction(labels, trackingMode, target, action)
 }
 
-func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](s_, objc.GetSelector("initWithFrame:"), frameRect)
-	return rv
-}
-
-func SegmentedControl_InitWithFrame(frameRect foundation.Rect) SegmentedControl {
-	return SegmentedControlClass.Alloc().InitWithFrame(frameRect)
-}
-
-func (s_ SegmentedControl) Init() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](s_, objc.GetSelector("init"))
-	return rv
-}
-
-func SegmentedControl_Init() SegmentedControl {
-	return SegmentedControlClass.Alloc().Init()
-}
-
 func (sc _SegmentedControlClass) Alloc() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[SegmentedControl](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -116,7 +110,7 @@ func SegmentedControl_Alloc() SegmentedControl {
 }
 
 func (sc _SegmentedControlClass) New() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("new"))
+	rv := objc.Call[SegmentedControl](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -125,197 +119,336 @@ func NewSegmentedControl() SegmentedControl {
 	return SegmentedControlClass.New()
 }
 
-func SegmentedControl_New() SegmentedControl {
-	return SegmentedControlClass.New()
-}
-
-func (s_ SegmentedControl) LabelForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("labelForSegment:"), segment)
+func (s_ SegmentedControl) Init() SegmentedControl {
+	rv := objc.Call[SegmentedControl](s_, objc.Sel("init"))
 	return rv
 }
 
+func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedControl {
+	rv := objc.Call[SegmentedControl](s_, objc.Sel("initWithFrame:"), frameRect)
+	return rv
+}
+
+// Initializes a control with the specified frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
+func SegmentedControl_InitWithFrame(frameRect foundation.Rect) SegmentedControl {
+	return SegmentedControlClass.Alloc().InitWithFrame(frameRect)
+}
+
+// Sets the label for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533073-setlabel?language=objc
 func (s_ SegmentedControl) SetLabelForSegment(label string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLabel:forSegment:"), label, segment)
+	objc.Call[objc.Void](s_, objc.Sel("setLabel:forSegment:"), label, segment)
 }
 
-func (s_ SegmentedControl) SetAlignmentForSegment(alignment TextAlignment, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAlignment:forSegment:"), alignment, segment)
-}
-
-func (s_ SegmentedControl) AlignmentForSegment(segment int) TextAlignment {
-	rv := objc.CallMethod[TextAlignment](s_, objc.GetSelector("alignmentForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SetImageForSegment(image IImage, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), objc.ExtractPtr(image), segment)
-}
-
-func (s_ SegmentedControl) ImageForSegment(segment int) Image {
-	rv := objc.CallMethod[Image](s_, objc.GetSelector("imageForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SetImageScalingForSegment(scaling ImageScaling, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImageScaling:forSegment:"), scaling, segment)
-}
-
+// Returns the scaling mode used to display the specified segment’s image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1532175-imagescalingforsegment?language=objc
 func (s_ SegmentedControl) ImageScalingForSegment(segment int) ImageScaling {
-	rv := objc.CallMethod[ImageScaling](s_, objc.GetSelector("imageScalingForSegment:"), segment)
+	rv := objc.Call[ImageScaling](s_, objc.Sel("imageScalingForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetMenuForSegment(menu IMenu, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
-}
-
-func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
-	rv := objc.CallMethod[Menu](s_, objc.GetSelector("menuForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SetShowsMenuIndicatorForSegment(showsMenuIndicator bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShowsMenuIndicator:forSegment:"), showsMenuIndicator, segment)
-}
-
-func (s_ SegmentedControl) ShowsMenuIndicatorForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("showsMenuIndicatorForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SelectSegmentWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("selectSegmentWithTag:"), tag)
-	return rv
-}
-
-func (s_ SegmentedControl) SetSelectedForSegment(selected bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelected:forSegment:"), selected, segment)
-}
-
-func (s_ SegmentedControl) IsSelectedForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSelectedForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SetWidthForSegment(width float64, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setWidth:forSegment:"), width, segment)
-}
-
-func (s_ SegmentedControl) WidthForSegment(segment int) float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("widthForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
-}
-
-func (s_ SegmentedControl) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](s_, objc.GetSelector("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
-	return rv
-}
-
-func (s_ SegmentedControl) SetEnabledForSegment(enabled bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setEnabled:forSegment:"), enabled, segment)
-}
-
-func (s_ SegmentedControl) IsEnabledForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isEnabledForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) TagForSegment(segment int) int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("tagForSegment:"), segment)
-	return rv
-}
-
-func (s_ SegmentedControl) SetTagForSegment(tag int, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTag:forSegment:"), tag, segment)
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887101-settooltip?language=objc
 func (s_ SegmentedControl) SetToolTipForSegment(toolTip string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setToolTip:forSegment:"), toolTip, segment)
+	objc.Call[objc.Void](s_, objc.Sel("setToolTip:forSegment:"), toolTip, segment)
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887113-tagforsegment?language=objc
+func (s_ SegmentedControl) TagForSegment(segment int) int {
+	rv := objc.Call[int](s_, objc.Sel("tagForSegment:"), segment)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887103-tooltipforsegment?language=objc
 func (s_ SegmentedControl) ToolTipForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("toolTipForSegment:"), segment)
+	rv := objc.Call[string](s_, objc.Sel("toolTipForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) TrackingMode() SegmentSwitchTracking {
-	rv := objc.CallMethod[SegmentSwitchTracking](s_, objc.GetSelector("trackingMode"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887107-setalignment?language=objc
+func (s_ SegmentedControl) SetAlignmentForSegment(alignment TextAlignment, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setAlignment:forSegment:"), alignment, segment)
+}
+
+// Sets the selection state of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528334-setselected?language=objc
+func (s_ SegmentedControl) SetSelectedForSegment(selected bool, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSelected:forSegment:"), selected, segment)
+}
+
+// Returns a Boolean value indicating whether the specified segment is selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525676-isselectedforsegment?language=objc
+func (s_ SegmentedControl) IsSelectedForSegment(segment int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("isSelectedForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetTrackingMode(value SegmentSwitchTracking) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTrackingMode:"), value)
+// Sets the image for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525540-setimage?language=objc
+func (s_ SegmentedControl) SetImageForSegment(image IImage, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), objc.Ptr(image), segment)
 }
 
-func (s_ SegmentedControl) SegmentStyle() SegmentStyle {
-	rv := objc.CallMethod[SegmentStyle](s_, objc.GetSelector("segmentStyle"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887112-setshowsmenuindicator?language=objc
+func (s_ SegmentedControl) SetShowsMenuIndicatorForSegment(showsMenuIndicator bool, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setShowsMenuIndicator:forSegment:"), showsMenuIndicator, segment)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952063-minimumsizewithprioritizedcompre?language=objc
+func (s_ SegmentedControl) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
+	rv := objc.Call[foundation.Size](s_, objc.Sel("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSegmentStyle(value SegmentStyle) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentStyle:"), value)
-}
-
-func (s_ SegmentedControl) SegmentCount() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("segmentCount"))
+// Returns the image associated with the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527623-imageforsegment?language=objc
+func (s_ SegmentedControl) ImageForSegment(segment int) Image {
+	rv := objc.Call[Image](s_, objc.Sel("imageForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSegmentCount(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentCount:"), value)
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952064-compresswithprioritizedcompressi?language=objc
+func (s_ SegmentedControl) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
+	objc.Call[objc.Void](s_, objc.Sel("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
 }
 
-func (s_ SegmentedControl) IsSpringLoaded() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSpringLoaded"))
+// Sets the enabled state of the specified segment [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526417-setenabled?language=objc
+func (s_ SegmentedControl) SetEnabledForSegment(enabled bool, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setEnabled:forSegment:"), enabled, segment)
+}
+
+// Returns the width of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1533866-widthforsegment?language=objc
+func (s_ SegmentedControl) WidthForSegment(segment int) float64 {
+	rv := objc.Call[float64](s_, objc.Sel("widthForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSpringLoaded(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSpringLoaded:"), value)
-}
-
-func (s_ SegmentedControl) SelectedSegment() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("selectedSegment"))
+// Selects the segment with the specified tag. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534016-selectsegmentwithtag?language=objc
+func (s_ SegmentedControl) SelectSegmentWithTag(tag int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("selectSegmentWithTag:"), tag)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSelectedSegment(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegment:"), value)
-}
-
-func (s_ SegmentedControl) IndexOfSelectedItem() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("indexOfSelectedItem"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887114-alignmentforsegment?language=objc
+func (s_ SegmentedControl) AlignmentForSegment(segment int) TextAlignment {
+	rv := objc.Call[TextAlignment](s_, objc.Sel("alignmentForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
-	rv := objc.CallMethod[Color](s_, objc.GetSelector("selectedSegmentBezelColor"))
+// Sets the scaling mode used to display the specified segment’s image. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1532914-setimagescaling?language=objc
+func (s_ SegmentedControl) SetImageScalingForSegment(scaling ImageScaling, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setImageScaling:forSegment:"), scaling, segment)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887104-settag?language=objc
+func (s_ SegmentedControl) SetTagForSegment(tag int, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setTag:forSegment:"), tag, segment)
+}
+
+// Returns the menu for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525880-menuforsegment?language=objc
+func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
+	rv := objc.Call[Menu](s_, objc.Sel("menuForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegmentBezelColor:"), objc.ExtractPtr(value))
+// Sets the menu for the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528853-setmenu?language=objc
+func (s_ SegmentedControl) SetMenuForSegment(menu IMenu, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), objc.Ptr(menu), segment)
 }
 
-func (s_ SegmentedControl) DoubleValueForSelectedSegment() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("doubleValueForSelectedSegment"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887111-showsmenuindicatorforsegment?language=objc
+func (s_ SegmentedControl) ShowsMenuIndicatorForSegment(segment int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("showsMenuIndicatorForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SegmentDistribution() SegmentDistribution {
-	rv := objc.CallMethod[SegmentDistribution](s_, objc.GetSelector("segmentDistribution"))
+// Returns the label of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524322-labelforsegment?language=objc
+func (s_ SegmentedControl) LabelForSegment(segment int) string {
+	rv := objc.Call[string](s_, objc.Sel("labelForSegment:"), segment)
 	return rv
 }
 
-func (s_ SegmentedControl) SetSegmentDistribution(value SegmentDistribution) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentDistribution:"), value)
+// Sets the width of the specified segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534487-setwidth?language=objc
+func (s_ SegmentedControl) SetWidthForSegment(width float64, segment int) {
+	objc.Call[objc.Void](s_, objc.Sel("setWidth:forSegment:"), width, segment)
 }
 
+// Returns a Boolean value indicating whether the specified segment is enabled. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1524542-isenabledforsegment?language=objc
+func (s_ SegmentedControl) IsEnabledForSegment(segment int) bool {
+	rv := objc.Call[bool](s_, objc.Sel("isEnabledForSegment:"), segment)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2952062-activecompressionoptions?language=objc
 func (s_ SegmentedControl) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](s_, objc.GetSelector("activeCompressionOptions"))
+	rv := objc.Call[UserInterfaceCompressionOptions](s_, objc.Sel("activeCompressionOptions"))
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887105-indexofselecteditem?language=objc
+func (s_ SegmentedControl) IndexOfSelectedItem() int {
+	rv := objc.Call[int](s_, objc.Sel("indexOfSelectedItem"))
+	return rv
+}
+
+// The visual style used to display the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528507-segmentstyle?language=objc
+func (s_ SegmentedControl) SegmentStyle() SegmentStyle {
+	rv := objc.Call[SegmentStyle](s_, objc.Sel("segmentStyle"))
+	return rv
+}
+
+// The visual style used to display the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528507-segmentstyle?language=objc
+func (s_ SegmentedControl) SetSegmentStyle(value SegmentStyle) {
+	objc.Call[objc.Void](s_, objc.Sel("setSegmentStyle:"), value)
+}
+
+// The number of segments in the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527451-segmentcount?language=objc
+func (s_ SegmentedControl) SegmentCount() int {
+	rv := objc.Call[int](s_, objc.Sel("segmentCount"))
+	return rv
+}
+
+// The number of segments in the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1527451-segmentcount?language=objc
+func (s_ SegmentedControl) SetSegmentCount(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSegmentCount:"), value)
+}
+
+// The index of the selected segment of the control, or -1 if no segment is selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534490-selectedsegment?language=objc
+func (s_ SegmentedControl) SelectedSegment() int {
+	rv := objc.Call[int](s_, objc.Sel("selectedSegment"))
+	return rv
+}
+
+// The index of the selected segment of the control, or -1 if no segment is selected. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534490-selectedsegment?language=objc
+func (s_ SegmentedControl) SetSelectedSegment(value int) {
+	objc.Call[objc.Void](s_, objc.Sel("setSelectedSegment:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887109-segmentdistribution?language=objc
+func (s_ SegmentedControl) SegmentDistribution() SegmentDistribution {
+	rv := objc.Call[SegmentDistribution](s_, objc.Sel("segmentDistribution"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2887109-segmentdistribution?language=objc
+func (s_ SegmentedControl) SetSegmentDistribution(value SegmentDistribution) {
+	objc.Call[objc.Void](s_, objc.Sel("setSegmentDistribution:"), value)
+}
+
+// The type of tracking behavior the control exhibits. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526285-trackingmode?language=objc
+func (s_ SegmentedControl) TrackingMode() SegmentSwitchTracking {
+	rv := objc.Call[SegmentSwitchTracking](s_, objc.Sel("trackingMode"))
+	return rv
+}
+
+// The type of tracking behavior the control exhibits. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1526285-trackingmode?language=objc
+func (s_ SegmentedControl) SetTrackingMode(value SegmentSwitchTracking) {
+	objc.Call[objc.Void](s_, objc.Sel("setTrackingMode:"), value)
+}
+
+// When the tracking mode for the control is set to use a momentary accelerator, returns a value for the selected segment. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1529727-doublevalueforselectedsegment?language=objc
+func (s_ SegmentedControl) DoubleValueForSelectedSegment() float64 {
+	rv := objc.Call[float64](s_, objc.Sel("doubleValueForSelectedSegment"))
+	return rv
+}
+
+// The color of the selected segment's bezel, in appearances that support it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc
+func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
+	rv := objc.Call[Color](s_, objc.Sel("selectedSegmentBezelColor"))
+	return rv
+}
+
+// The color of the selected segment's bezel, in appearances that support it. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc
+func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
+	objc.Call[objc.Void](s_, objc.Sel("setSelectedSegmentBezelColor:"), objc.Ptr(value))
+}
+
+// A Boolean value that indicates whether spring loading is enabled for the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534122-springloaded?language=objc
+func (s_ SegmentedControl) IsSpringLoaded() bool {
+	rv := objc.Call[bool](s_, objc.Sel("isSpringLoaded"))
+	return rv
+}
+
+// A Boolean value that indicates whether spring loading is enabled for the control. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1534122-springloaded?language=objc
+func (s_ SegmentedControl) SetSpringLoaded(value bool) {
+	objc.Call[objc.Void](s_, objc.Sel("setSpringLoaded:"), value)
 }

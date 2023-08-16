@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,44 +8,49 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [TextElement] class.
 var TextElementClass = _TextElementClass{objc.GetClass("NSTextElement")}
 
 type _TextElementClass struct {
 	objc.Class
 }
 
+// An interface definition for the [TextElement] class.
 type ITextElement interface {
 	objc.IObject
-	TextContentManager() TextContentManager
-	SetTextContentManager(value ITextContentManager)
 	ElementRange() TextRange
 	SetElementRange(value ITextRange)
-	IsRepresentedElement() bool
-	ParentElement() TextElement
-	ChildElements() []TextElement
+	TextContentManager() TextContentManager
+	SetTextContentManager(value ITextContentManager)
 }
 
+// An abstract base class that represents the smallest units of text layout such as paragraphs or attachments. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement?language=objc
 type TextElement struct {
 	objc.Object
 }
 
-func MakeTextElement(ptr unsafe.Pointer) TextElement {
+func TextElementFrom(ptr unsafe.Pointer) TextElement {
 	return TextElement{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
-	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("initWithTextContentManager:"), objc.ExtractPtr(textContentManager))
+	rv := objc.Call[TextElement](t_, objc.Sel("initWithTextContentManager:"), objc.Ptr(textContentManager))
 	return rv
 }
 
+// Creates a new text element with the content manager you provide. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809955-initwithtextcontentmanager?language=objc
 func TextElement_InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
 	return TextElementClass.Alloc().InitWithTextContentManager(textContentManager)
 }
 
 func (tc _TextElementClass) Alloc() TextElement {
-	rv := objc.CallMethod[TextElement](tc, objc.GetSelector("alloc"))
+	rv := objc.Call[TextElement](tc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -53,7 +59,7 @@ func TextElement_Alloc() TextElement {
 }
 
 func (tc _TextElementClass) New() TextElement {
-	rv := objc.CallMethod[TextElement](tc, objc.GetSelector("new"))
+	rv := objc.Call[TextElement](tc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,48 +68,37 @@ func NewTextElement() TextElement {
 	return TextElementClass.New()
 }
 
-func TextElement_New() TextElement {
-	return TextElementClass.New()
-}
-
 func (t_ TextElement) Init() TextElement {
-	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("init"))
+	rv := objc.Call[TextElement](t_, objc.Sel("init"))
 	return rv
 }
 
-func TextElement_Init() TextElement {
-	return TextElementClass.Alloc().Init()
-}
-
-func (t_ TextElement) TextContentManager() TextContentManager {
-	rv := objc.CallMethod[TextContentManager](t_, objc.GetSelector("textContentManager"))
-	return rv
-}
-
-func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContentManager:"), objc.ExtractPtr(value))
-}
-
+// A range value that represents the range of the element inside the document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809954-elementrange?language=objc
 func (t_ TextElement) ElementRange() TextRange {
-	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("elementRange"))
+	rv := objc.Call[TextRange](t_, objc.Sel("elementRange"))
 	return rv
 }
 
+// A range value that represents the range of the element inside the document. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809954-elementrange?language=objc
 func (t_ TextElement) SetElementRange(value ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setElementRange:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setElementRange:"), objc.Ptr(value))
 }
 
-func (t_ TextElement) IsRepresentedElement() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isRepresentedElement"))
+// The value that represents the current content manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
+func (t_ TextElement) TextContentManager() TextContentManager {
+	rv := objc.Call[TextContentManager](t_, objc.Sel("textContentManager"))
 	return rv
 }
 
-func (t_ TextElement) ParentElement() TextElement {
-	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("parentElement"))
-	return rv
-}
-
-func (t_ TextElement) ChildElements() []TextElement {
-	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("childElements"))
-	return rv
+// The value that represents the current content manager. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
+func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
+	objc.Call[objc.Void](t_, objc.Sel("setTextContentManager:"), objc.Ptr(value))
 }

@@ -330,6 +330,12 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 		}
 		return getStructValuePointer(v)
 	case reflect.String:
+		// need some way to have nil NSString values,
+		// so let's try empty strings are nil
+		if v.String() == "" {
+			var p unsafe.Pointer = nil
+			return unsafe.Pointer(&p)
+		}
 		sp := ToNSString(v.String())
 		return unsafe.Pointer(&sp)
 	case reflect.Slice:

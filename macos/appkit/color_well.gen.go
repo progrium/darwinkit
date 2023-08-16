@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,59 +9,40 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [ColorWell] class.
 var ColorWellClass = _ColorWellClass{objc.GetClass("NSColorWell")}
 
 type _ColorWellClass struct {
 	objc.Class
 }
 
+// An interface definition for the [ColorWell] class.
 type IColorWell interface {
 	IControl
-	TakeColorFrom(sender objc.IObject)
 	Activate(exclusive bool)
-	Deactivate()
 	DrawWellInside(insideRect foundation.Rect)
+	TakeColorFrom(sender objc.IObject)
+	Deactivate()
 	Color() Color
 	SetColor(value IColor)
-	Image() Image
-	SetImage(value IImage)
 	IsActive() bool
-	PulldownAction() objc.Selector
-	SetPulldownAction(value objc.Selector)
-	PulldownTarget() objc.Object
-	SetPulldownTarget(value objc.IObject)
 }
 
+// A control that displays a color value and lets the user change that color value. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell?language=objc
 type ColorWell struct {
 	Control
 }
 
-func MakeColorWell(ptr unsafe.Pointer) ColorWell {
+func ColorWellFrom(ptr unsafe.Pointer) ColorWell {
 	return ColorWell{
-		Control: MakeControl(ptr),
+		Control: ControlFrom(ptr),
 	}
 }
 
-func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
-	rv := objc.CallMethod[ColorWell](c_, objc.GetSelector("initWithFrame:"), frameRect)
-	return rv
-}
-
-func ColorWell_InitWithFrame(frameRect foundation.Rect) ColorWell {
-	return ColorWellClass.Alloc().InitWithFrame(frameRect)
-}
-
-func (c_ ColorWell) Init() ColorWell {
-	rv := objc.CallMethod[ColorWell](c_, objc.GetSelector("init"))
-	return rv
-}
-
-func ColorWell_Init() ColorWell {
-	return ColorWellClass.Alloc().Init()
-}
-
 func (cc _ColorWellClass) Alloc() ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("alloc"))
+	rv := objc.Call[ColorWell](cc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -69,7 +51,7 @@ func ColorWell_Alloc() ColorWell {
 }
 
 func (cc _ColorWellClass) New() ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("new"))
+	rv := objc.Call[ColorWell](cc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -78,63 +60,70 @@ func NewColorWell() ColorWell {
 	return ColorWellClass.New()
 }
 
-func ColorWell_New() ColorWell {
-	return ColorWellClass.New()
+func (c_ ColorWell) Init() ColorWell {
+	rv := objc.Call[ColorWell](c_, objc.Sel("init"))
+	return rv
 }
 
-func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeColorFrom:"), objc.ExtractPtr(sender))
+func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
+	rv := objc.Call[ColorWell](c_, objc.Sel("initWithFrame:"), frameRect)
+	return rv
 }
 
+// Initializes a control with the specified frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
+func ColorWell_InitWithFrame(frameRect foundation.Rect) ColorWell {
+	return ColorWellClass.Alloc().InitWithFrame(frameRect)
+}
+
+// Activates the color well, displays the color panel, and synchronizes the two UI elements. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1527152-activate?language=objc
 func (c_ ColorWell) Activate(exclusive bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("activate:"), exclusive)
+	objc.Call[objc.Void](c_, objc.Sel("activate:"), exclusive)
 }
 
-func (c_ ColorWell) Deactivate() {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("deactivate"))
-}
-
+// Draws the area inside the color well at the specified location without drawing borders. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1530268-drawwellinside?language=objc
 func (c_ ColorWell) DrawWellInside(insideRect foundation.Rect) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWellInside:"), insideRect)
+	objc.Call[objc.Void](c_, objc.Sel("drawWellInside:"), insideRect)
 }
 
+// Changes the currently selected color to the color of the specified object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1524407-takecolorfrom?language=objc
+func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
+	objc.Call[objc.Void](c_, objc.Sel("takeColorFrom:"), sender)
+}
+
+// Deactivates the color well. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1524493-deactivate?language=objc
+func (c_ ColorWell) Deactivate() {
+	objc.Call[objc.Void](c_, objc.Sel("deactivate"))
+}
+
+// The currently selected color for the color well. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1534546-color?language=objc
 func (c_ ColorWell) Color() Color {
-	rv := objc.CallMethod[Color](c_, objc.GetSelector("color"))
+	rv := objc.Call[Color](c_, objc.Sel("color"))
 	return rv
 }
 
+// The currently selected color for the color well. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1534546-color?language=objc
 func (c_ ColorWell) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
 }
 
-func (c_ ColorWell) Image() Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("image"))
-	return rv
-}
-
-func (c_ ColorWell) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
-}
-
+// A Boolean value that indicates whether the color well is currently active. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1528698-active?language=objc
 func (c_ ColorWell) IsActive() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isActive"))
+	rv := objc.Call[bool](c_, objc.Sel("isActive"))
 	return rv
-}
-
-func (c_ ColorWell) PulldownAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](c_, objc.GetSelector("pulldownAction"))
-	return rv
-}
-
-func (c_ ColorWell) SetPulldownAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownAction:"), value)
-}
-
-func (c_ ColorWell) PulldownTarget() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("pulldownTarget"))
-	return rv
-}
-
-func (c_ ColorWell) SetPulldownTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownTarget:"), objc.ExtractPtr(value))
 }

@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -8,93 +9,35 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [StatusBarButton] class.
 var StatusBarButtonClass = _StatusBarButtonClass{objc.GetClass("NSStatusBarButton")}
 
 type _StatusBarButtonClass struct {
 	objc.Class
 }
 
+// An interface definition for the [StatusBarButton] class.
 type IStatusBarButton interface {
 	IButton
 	AppearsDisabled() bool
 	SetAppearsDisabled(value bool)
 }
 
+// The appearance and behavior of an item in the systemwide menu bar. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbarbutton?language=objc
 type StatusBarButton struct {
 	Button
 }
 
-func MakeStatusBarButton(ptr unsafe.Pointer) StatusBarButton {
+func StatusBarButtonFrom(ptr unsafe.Pointer) StatusBarButton {
 	return StatusBarButton{
-		Button: MakeButton(ptr),
+		Button: ButtonFrom(ptr),
 	}
 }
 
-func (sc _StatusBarButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
-	return rv
-}
-
-func StatusBarButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.CheckboxWithTitleTargetAction(title, target, action)
-}
-
-func (sc _StatusBarButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
-	return rv
-}
-
-func StatusBarButton_ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.ButtonWithImageTargetAction(image, target, action)
-}
-
-func (sc _StatusBarButtonClass) RadioButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
-	return rv
-}
-
-func StatusBarButton_RadioButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.RadioButtonWithTitleTargetAction(title, target, action)
-}
-
-func (sc _StatusBarButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
-	return rv
-}
-
-func StatusBarButton_ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.ButtonWithTitleImageTargetAction(title, image, target, action)
-}
-
-func (sc _StatusBarButtonClass) ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
-	return rv
-}
-
-func StatusBarButton_ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	return StatusBarButtonClass.ButtonWithTitleTargetAction(title, target, action)
-}
-
-func (s_ StatusBarButton) InitWithFrame(frameRect foundation.Rect) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](s_, objc.GetSelector("initWithFrame:"), frameRect)
-	return rv
-}
-
-func StatusBarButton_InitWithFrame(frameRect foundation.Rect) StatusBarButton {
-	return StatusBarButtonClass.Alloc().InitWithFrame(frameRect)
-}
-
-func (s_ StatusBarButton) Init() StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](s_, objc.GetSelector("init"))
-	return rv
-}
-
-func StatusBarButton_Init() StatusBarButton {
-	return StatusBarButtonClass.Alloc().Init()
-}
-
 func (sc _StatusBarButtonClass) Alloc() StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("alloc"))
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -103,7 +46,7 @@ func StatusBarButton_Alloc() StatusBarButton {
 }
 
 func (sc _StatusBarButtonClass) New() StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("new"))
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -112,15 +55,82 @@ func NewStatusBarButton() StatusBarButton {
 	return StatusBarButtonClass.New()
 }
 
-func StatusBarButton_New() StatusBarButton {
-	return StatusBarButtonClass.New()
-}
-
-func (s_ StatusBarButton) AppearsDisabled() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("appearsDisabled"))
+func (s_ StatusBarButton) Init() StatusBarButton {
+	rv := objc.Call[StatusBarButton](s_, objc.Sel("init"))
 	return rv
 }
 
+func (sc _StatusBarButtonClass) CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("checkboxWithTitle:target:action:"), title, target, action)
+	return rv
+}
+
+// Creates a standard checkbox with the title you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644525-checkboxwithtitle?language=objc
+func StatusBarButton_CheckboxWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	return StatusBarButtonClass.CheckboxWithTitleTargetAction(title, target, action)
+}
+
+func (sc _StatusBarButtonClass) ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithTitle:target:action:"), title, target, action)
+	return rv
+}
+
+// Creates a standard push button with the title you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644256-buttonwithtitle?language=objc
+func StatusBarButton_ButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	return StatusBarButtonClass.ButtonWithTitleTargetAction(title, target, action)
+}
+
+func (sc _StatusBarButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithImage:target:action:"), objc.Ptr(image), target, action)
+	return rv
+}
+
+// Creates a standard push button with the image you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644659-buttonwithimage?language=objc
+func StatusBarButton_ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
+	return StatusBarButtonClass.ButtonWithImageTargetAction(image, target, action)
+}
+
+func (sc _StatusBarButtonClass) RadioButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("radioButtonWithTitle:target:action:"), title, target, action)
+	return rv
+}
+
+// Creates a standard radio button with the title you specify. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1644340-radiobuttonwithtitle?language=objc
+func StatusBarButton_RadioButtonWithTitleTargetAction(title string, target objc.IObject, action objc.Selector) StatusBarButton {
+	return StatusBarButtonClass.RadioButtonWithTitleTargetAction(title, target, action)
+}
+
+func (s_ StatusBarButton) InitWithFrame(frameRect foundation.Rect) StatusBarButton {
+	rv := objc.Call[StatusBarButton](s_, objc.Sel("initWithFrame:"), frameRect)
+	return rv
+}
+
+// Initializes a control with the specified frame rectangle. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
+func StatusBarButton_InitWithFrame(frameRect foundation.Rect) StatusBarButton {
+	return StatusBarButtonClass.Alloc().InitWithFrame(frameRect)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbarbutton/1409292-appearsdisabled?language=objc
+func (s_ StatusBarButton) AppearsDisabled() bool {
+	rv := objc.Call[bool](s_, objc.Sel("appearsDisabled"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbarbutton/1409292-appearsdisabled?language=objc
 func (s_ StatusBarButton) SetAppearsDisabled(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAppearsDisabled:"), value)
+	objc.Call[objc.Void](s_, objc.Sel("setAppearsDisabled:"), value)
 }

@@ -23,7 +23,7 @@ func deleteHandle(hp C.uintptr_t) {
 // Call multi times will remove previouse listener.
 func SetDeallocListener(o Object, listener func()) {
 	h := cgo.NewHandle(listener)
-	lo := MakeObject(C.C_NewDeallocListener(C.uintptr_t(h)))
+	lo := ObjectFrom(C.C_NewDeallocListener(C.uintptr_t(h)))
 	defer lo.Release()
 	SetAssociatedObject(o, AssociationKey("deallocListener"), lo, ASSOCIATION_RETAIN)
 }

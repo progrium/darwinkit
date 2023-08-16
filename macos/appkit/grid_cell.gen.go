@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,40 +8,45 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [GridCell] class.
 var GridCellClass = _GridCellClass{objc.GetClass("NSGridCell")}
 
 type _GridCellClass struct {
 	objc.Class
 }
 
+// An interface definition for the [GridCell] class.
 type IGridCell interface {
 	objc.IObject
-	Column() GridColumn
-	Row() GridRow
+	RowAlignment() GridRowAlignment
+	SetRowAlignment(value GridRowAlignment)
 	ContentView() View
 	SetContentView(value IView)
 	CustomPlacementConstraints() []LayoutConstraint
 	SetCustomPlacementConstraints(value []ILayoutConstraint)
-	RowAlignment() GridRowAlignment
-	SetRowAlignment(value GridRowAlignment)
-	XPlacement() GridCellPlacement
-	SetXPlacement(value GridCellPlacement)
 	YPlacement() GridCellPlacement
 	SetYPlacement(value GridCellPlacement)
+	Column() GridColumn
+	Row() GridRow
+	XPlacement() GridCellPlacement
+	SetXPlacement(value GridCellPlacement)
 }
 
+// An individual content area within a grid view, typically at the intersection of a row and a column. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell?language=objc
 type GridCell struct {
 	objc.Object
 }
 
-func MakeGridCell(ptr unsafe.Pointer) GridCell {
+func GridCellFrom(ptr unsafe.Pointer) GridCell {
 	return GridCell{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (gc _GridCellClass) Alloc() GridCell {
-	rv := objc.CallMethod[GridCell](gc, objc.GetSelector("alloc"))
+	rv := objc.Call[GridCell](gc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -49,7 +55,7 @@ func GridCell_Alloc() GridCell {
 }
 
 func (gc _GridCellClass) New() GridCell {
-	rv := objc.CallMethod[GridCell](gc, objc.GetSelector("new"))
+	rv := objc.Call[GridCell](gc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -58,79 +64,113 @@ func NewGridCell() GridCell {
 	return GridCellClass.New()
 }
 
-func GridCell_New() GridCell {
-	return GridCellClass.New()
-}
-
 func (g_ GridCell) Init() GridCell {
-	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("init"))
+	rv := objc.Call[GridCell](g_, objc.Sel("init"))
 	return rv
 }
 
-func GridCell_Init() GridCell {
-	return GridCellClass.Alloc().Init()
-}
-
-func (g_ GridCell) Column() GridColumn {
-	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("column"))
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1823686-rowalignment?language=objc
+func (g_ GridCell) RowAlignment() GridRowAlignment {
+	rv := objc.Call[GridRowAlignment](g_, objc.Sel("rowAlignment"))
 	return rv
 }
 
-func (g_ GridCell) Row() GridRow {
-	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("row"))
-	return rv
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1823686-rowalignment?language=objc
+func (g_ GridCell) SetRowAlignment(value GridRowAlignment) {
+	objc.Call[objc.Void](g_, objc.Sel("setRowAlignment:"), value)
 }
 
-func (g_ GridCell) ContentView() View {
-	rv := objc.CallMethod[View](g_, objc.GetSelector("contentView"))
-	return rv
-}
-
-func (g_ GridCell) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639681-emptycontentview?language=objc
 func (gc _GridCellClass) EmptyContentView() View {
-	rv := objc.CallMethod[View](gc, objc.GetSelector("emptyContentView"))
+	rv := objc.Call[View](gc, objc.Sel("emptyContentView"))
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639681-emptycontentview?language=objc
 func GridCell_EmptyContentView() View {
 	return GridCellClass.EmptyContentView()
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639721-contentview?language=objc
+func (g_ GridCell) ContentView() View {
+	rv := objc.Call[View](g_, objc.Sel("contentView"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639721-contentview?language=objc
+func (g_ GridCell) SetContentView(value IView) {
+	objc.Call[objc.Void](g_, objc.Sel("setContentView:"), objc.Ptr(value))
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639717-customplacementconstraints?language=objc
 func (g_ GridCell) CustomPlacementConstraints() []LayoutConstraint {
-	rv := objc.CallMethod[[]LayoutConstraint](g_, objc.GetSelector("customPlacementConstraints"))
+	rv := objc.Call[[]LayoutConstraint](g_, objc.Sel("customPlacementConstraints"))
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639717-customplacementconstraints?language=objc
 func (g_ GridCell) SetCustomPlacementConstraints(value []ILayoutConstraint) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setCustomPlacementConstraints:"), value)
+	objc.Call[objc.Void](g_, objc.Sel("setCustomPlacementConstraints:"), value)
 }
 
-func (g_ GridCell) RowAlignment() GridRowAlignment {
-	rv := objc.CallMethod[GridRowAlignment](g_, objc.GetSelector("rowAlignment"))
-	return rv
-}
-
-func (g_ GridCell) SetRowAlignment(value GridRowAlignment) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setRowAlignment:"), value)
-}
-
-func (g_ GridCell) XPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("xPlacement"))
-	return rv
-}
-
-func (g_ GridCell) SetXPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setXPlacement:"), value)
-}
-
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639737-yplacement?language=objc
 func (g_ GridCell) YPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("yPlacement"))
+	rv := objc.Call[GridCellPlacement](g_, objc.Sel("yPlacement"))
 	return rv
 }
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639737-yplacement?language=objc
 func (g_ GridCell) SetYPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setYPlacement:"), value)
+	objc.Call[objc.Void](g_, objc.Sel("setYPlacement:"), value)
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639747-column?language=objc
+func (g_ GridCell) Column() GridColumn {
+	rv := objc.Call[GridColumn](g_, objc.Sel("column"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639763-row?language=objc
+func (g_ GridCell) Row() GridRow {
+	rv := objc.Call[GridRow](g_, objc.Sel("row"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639710-xplacement?language=objc
+func (g_ GridCell) XPlacement() GridCellPlacement {
+	rv := objc.Call[GridCellPlacement](g_, objc.Sel("xPlacement"))
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639710-xplacement?language=objc
+func (g_ GridCell) SetXPlacement(value GridCellPlacement) {
+	objc.Call[objc.Void](g_, objc.Sel("setXPlacement:"), value)
 }

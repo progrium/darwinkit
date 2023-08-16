@@ -1,4 +1,5 @@
 // AUTO-GENERATED CODE, DO NOT MODIFY
+
 package appkit
 
 import (
@@ -7,38 +8,40 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
+// The class instance for the [LayoutAnchor] class.
 var LayoutAnchorClass = _LayoutAnchorClass{objc.GetClass("NSLayoutAnchor")}
 
 type _LayoutAnchorClass struct {
 	objc.Class
 }
 
+// An interface definition for the [LayoutAnchor] class.
 type ILayoutAnchor interface {
 	objc.IObject
-	ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
-	ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
-	ConstraintGreaterThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
 	ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
-	ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint
+	ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
+	ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint
+	Item() objc.Object
+	Name() string
 	ConstraintsAffectingLayout() []LayoutConstraint
 	HasAmbiguousLayout() bool
-	Name() string
-	Item() objc.Object
 }
 
+// A factory class for creating layout constraint objects using a fluent API. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor?language=objc
 type LayoutAnchor struct {
 	objc.Object
 }
 
-func MakeLayoutAnchor(ptr unsafe.Pointer) LayoutAnchor {
+func LayoutAnchorFrom(ptr unsafe.Pointer) LayoutAnchor {
 	return LayoutAnchor{
-		Object: objc.MakeObject(ptr),
+		Object: objc.ObjectFrom(ptr),
 	}
 }
 
 func (lc _LayoutAnchorClass) Alloc() LayoutAnchor {
-	rv := objc.CallMethod[LayoutAnchor](lc, objc.GetSelector("alloc"))
+	rv := objc.Call[LayoutAnchor](lc, objc.Sel("alloc"))
 	return rv
 }
 
@@ -47,7 +50,7 @@ func LayoutAnchor_Alloc() LayoutAnchor {
 }
 
 func (lc _LayoutAnchorClass) New() LayoutAnchor {
-	rv := objc.CallMethod[LayoutAnchor](lc, objc.GetSelector("new"))
+	rv := objc.Call[LayoutAnchor](lc, objc.Sel("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,65 +59,63 @@ func NewLayoutAnchor() LayoutAnchor {
 	return LayoutAnchorClass.New()
 }
 
-func LayoutAnchor_New() LayoutAnchor {
-	return LayoutAnchorClass.New()
-}
-
 func (l_ LayoutAnchor) Init() LayoutAnchor {
-	rv := objc.CallMethod[LayoutAnchor](l_, objc.GetSelector("init"))
+	rv := objc.Call[LayoutAnchor](l_, objc.Sel("init"))
 	return rv
 }
 
-func LayoutAnchor_Init() LayoutAnchor {
-	return LayoutAnchorClass.Alloc().Init()
-}
-
-func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:"), objc.ExtractPtr(anchor))
-	return rv
-}
-
-func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:constant:"), objc.ExtractPtr(anchor), c)
-	return rv
-}
-
-func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:"), objc.ExtractPtr(anchor))
-	return rv
-}
-
-func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:constant:"), objc.ExtractPtr(anchor), c)
-	return rv
-}
-
+// Returns a constraint that defines one item’s attribute as less than or equal to another. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500953-constraintlessthanorequaltoancho?language=objc
 func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:"), objc.ExtractPtr(anchor))
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:"), objc.Ptr(anchor))
 	return rv
 }
 
-func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:constant:"), objc.ExtractPtr(anchor), c)
+// Returns a constraint that defines one item’s attribute as equal to another. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500946-constraintequaltoanchor?language=objc
+func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:"), objc.Ptr(anchor))
 	return rv
 }
 
-func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
-	rv := objc.CallMethod[[]LayoutConstraint](l_, objc.GetSelector("constraintsAffectingLayout"))
+// Returns a constraint that defines one item’s attribute as greater than or equal to another. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500936-constraintgreaterthanorequaltoan?language=objc
+func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:"), objc.Ptr(anchor))
 	return rv
 }
 
-func (l_ LayoutAnchor) HasAmbiguousLayout() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("hasAmbiguousLayout"))
-	return rv
-}
-
-func (l_ LayoutAnchor) Name() string {
-	rv := objc.CallMethod[string](l_, objc.GetSelector("name"))
-	return rv
-}
-
+// The layout item used to calculate the anchor’s position. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870025-item?language=objc
 func (l_ LayoutAnchor) Item() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("item"))
+	rv := objc.Call[objc.Object](l_, objc.Sel("item"))
+	return rv
+}
+
+// The name assigned to the anchor for debugging purposes. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870022-name?language=objc
+func (l_ LayoutAnchor) Name() string {
+	rv := objc.Call[string](l_, objc.Sel("name"))
+	return rv
+}
+
+// The constraints that impact the layout of the anchor. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870023-constraintsaffectinglayout?language=objc
+func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
+	rv := objc.Call[[]LayoutConstraint](l_, objc.Sel("constraintsAffectingLayout"))
+	return rv
+}
+
+// A Boolean value indicating whether the constraints impacting the anchor specify its location ambiguously. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutanchor/2870024-hasambiguouslayout?language=objc
+func (l_ LayoutAnchor) HasAmbiguousLayout() bool {
+	rv := objc.Call[bool](l_, objc.Sel("hasAmbiguousLayout"))
 	return rv
 }

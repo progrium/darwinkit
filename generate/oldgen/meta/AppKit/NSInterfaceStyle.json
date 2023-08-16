@@ -1,6 +1,0 @@
-{
-    "kind": "alias",
-    "name": "NSInterfaceStyle",
-    "module": "AppKit",
-    "target_type": "NSUInteger"
-}

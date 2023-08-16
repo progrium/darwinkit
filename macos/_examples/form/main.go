@@ -26,7 +26,7 @@ func initAndRun() {
 	fv.SetLabelAlignment(widgets.LabelAlignmentTrailing)
 	fv.SetLabelControlSpacing(10)
 	fv.AddRow("user", appkit.NewTextField())
-	fv.SetLabelFont(appkit.FontClass.UserFontOfSize(13))
+	fv.SetLabelFont(appkit.Font_UserFontOfSize(13))
 	fv.AddRow("password", appkit.NewSecureTextField())
 	cb := appkit.NewCheckBox("")
 	fv.AddRow("males", cb)
