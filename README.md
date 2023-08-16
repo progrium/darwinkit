@@ -2,7 +2,7 @@
 
 Native Apple APIs for Golang!
 
-[![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://godoc.org/github.com/progrium/macdriver/macos)
+[![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://godoc.org/github.com/progrium/macdriver@main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/progrium/macdriver)](https://goreportcard.com/report/github.com/progrium/macdriver)
 <a href="https://twitter.com/progriumHQ" title="@progriumHQ on Twitter"><img src="https://img.shields.io/badge/twitter-@progriumHQ-55acee.svg" alt="@progriumHQ on Twitter"></a>
 <a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
@@ -12,7 +12,7 @@ Native Apple APIs for Golang!
 
 ------
 
-DarwinKit lets you work with [supported Apple frameworks](https://godoc.org/github.com/progrium/macdriver/macos) and build native applications using Go. It makes developing simple applications simple. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
+DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/github.com/progrium/macdriver/macos@main#section-directories) and build native applications using Go. It makes developing simple applications simple. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
 
 ```go
 package main
