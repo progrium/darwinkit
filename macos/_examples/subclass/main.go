@@ -17,16 +17,16 @@ func (v TestView) acceptsFirstResponder() bool {
 }
 
 func (v TestView) keyDown(event appkit.Event) {
-	log.Println("Keydown:", v.GetClass().GetName(), event.GetClass().GetName())
+	log.Println("Keydown:", v.Class().Name(), event.Class().Name())
 }
 
 func main() {
 	log.Println("Program started.")
 
-	c := objc.AllocateClassPair(objc.GetClass("NSView"), "TestView", 0)
-	objc.AddMethod(c, objc.GetSelector("acceptsFirstResponder"), (TestView).acceptsFirstResponder)
-	objc.AddMethod(c, objc.GetSelector("keyDown:"), (TestView).keyDown)
-	objc.RegisterClassPair(c)
+	c := objc.AllocateClass(objc.GetClass("NSView"), "TestView", 0)
+	objc.AddMethod(c, objc.Sel("acceptsFirstResponder"), (TestView).acceptsFirstResponder)
+	objc.AddMethod(c, objc.Sel("keyDown:"), (TestView).keyDown)
+	objc.RegisterClass(c)
 
 	app := appkit.Application_SharedApplication()
 
@@ -46,7 +46,7 @@ func main() {
 		win.SetLevel(appkit.MainMenuWindowLevel + 2)
 
 		view := c.CreateInstance(0)
-		objc.CallMethod[objc.Void](win, objc.GetSelector("setContentView:"), view)
+		objc.Call[objc.Void](win, objc.Sel("setContentView:"), view)
 		win.MakeKeyAndOrderFront(nil)
 
 		log.Println("App started.")

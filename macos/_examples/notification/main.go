@@ -15,21 +15,21 @@ func init() {
 func main() {
 	app := appkit.Application_SharedApplication()
 
-	nsbundle := foundation.Bundle_MainBundle().GetClass()
-	objc.ReplaceMethod(nsbundle, objc.GetSelector("bundleIdentifier"), func(_ objc.IObject) string {
+	nsbundle := foundation.Bundle_MainBundle().Class()
+	objc.ReplaceMethod(nsbundle, objc.Sel("bundleIdentifier"), func(_ objc.IObject) string {
 		return "com.example.fake2" // change this if you miss the allow notification
 	})
 
 	ad := &appkit.ApplicationDelegate{}
 	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
 
-		notif := objc.CallMethod[objc.Object](objc.GetClass("NSUserNotification"), objc.GetSelector("new"))
+		notif := objc.Call[objc.Object](objc.GetClass("NSUserNotification"), objc.Sel("new"))
 		notif.Autorelease()
-		objc.CallMethod[objc.Void](notif, objc.GetSelector("setTitle:"), "Hello, world!")
-		objc.CallMethod[objc.Void](notif, objc.GetSelector("setInformativeText:"), "More text")
+		objc.Call[objc.Void](notif, objc.Sel("setTitle:"), "Hello, world!")
+		objc.Call[objc.Void](notif, objc.Sel("setInformativeText:"), "More text")
 
-		center := objc.CallMethod[objc.Object](objc.GetClass("NSUserNotificationCenter"), objc.GetSelector("defaultUserNotificationCenter"))
-		objc.CallMethod[objc.Void](center, objc.GetSelector("deliverNotification:"), notif)
+		center := objc.Call[objc.Object](objc.GetClass("NSUserNotificationCenter"), objc.Sel("defaultUserNotificationCenter"))
+		objc.Call[objc.Void](center, objc.Sel("deliverNotification:"), notif)
 
 		//app.Terminate(nil)
 

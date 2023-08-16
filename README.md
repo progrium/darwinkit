@@ -8,7 +8,7 @@ Native Apple APIs for Golang!
 <a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
 <a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
-> Aug 15, 2023: **MacDriver is becoming DarwinKit**, which increases API coverage by an order of magnitude and is an overall upgrade in quality and scope. It has been rewritten, reorganized, and definitely has breaking API changes. The legacy branch and previous releases are still available for existing code to work against. We're working towards a [0.5.0-preview release](https://github.com/progrium/macdriver/issues/167) followed by a 0.5.0 release finalizing the new API and rename to DarwinKit.
+> Aug 15, 2023: **MacDriver is becoming DarwinKit**, which increases API coverage by an order of magnitude and is an overall upgrade in quality and scope. It has been rewritten, reorganized, and definitely has breaking API changes. The [legacy branch](https://github.com/progrium/macdriver/tree/legacy) and [previous releases](https://github.com/progrium/macdriver/releases) are still available for existing code to work against. We're working towards a [0.5.0-preview release](https://github.com/progrium/macdriver/issues/177) followed by a [0.5.0 release](https://github.com/progrium/macdriver/milestone/4) finalizing the new API and rename to DarwinKit.
 
 ------
 
@@ -81,10 +81,10 @@ Although currently outside the scope of this project, if you wanted you could pu
 
 ## Examples
 [macos/_examples/largetype](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/main.go#L1) - A Contacts/Quicksilver-style Large Type utility in under 80 lines:
-![largetype screenshot](https://pbs.twimg.com/media/EqaoO2MXIAEJNK2?format=jpg&name=large)
+![largetype screenshot](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/largetype.jpeg?raw=true)
 
 [macos/_examples/pomodoro](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/main.go#L1) - A menu bar pomodoro timer in under 80 lines:
-![pomodoro gif](https://github.com/progrium/macdriver/blob/main/examples/pomodoro/pomodoro.gif?raw=true)
+![pomodoro gif](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/pomodoro.gif?raw=true)
 
 **[More examples](https://github.com/progrium/macdriver/blob/main/macos/_examples)**
 

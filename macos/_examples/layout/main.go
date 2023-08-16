@@ -29,15 +29,15 @@ func initAndRun() {
 	dButton := appkit.NewButtonWithTitle("dialog")
 	textView := appkit.TextViewClass.ScrollableTextView()
 
-	action.Set(mdButton, func(sender objc.IObject) {
+	action.Set(mdButton, func(sender objc.Object) {
 		d := widgets.NewDialog(400, 300)
 		d.SetView(appkit.NewLabel("test modal dialog"))
-		if d.RunModal() == appkit.ModalResponseOK {
-			fmt.Println("ok!")
-		}
+		// if d.RunModal() == appkit.ModalResponseOK {
+		// 	fmt.Println("ok!")
+		// }
 	})
 
-	action.Set(dButton, func(sender objc.IObject) {
+	action.Set(dButton, func(sender objc.Object) {
 		d := widgets.NewDialog(400, 300)
 		d.SetView(appkit.NewLabel("test dialog"))
 		d.Center()
