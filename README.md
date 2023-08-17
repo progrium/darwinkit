@@ -4,7 +4,7 @@ Native Apple APIs for Golang!
 
 [![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://pkg.go.dev/github.com/progrium/macdriver@main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/progrium/macdriver)](https://goreportcard.com/report/github.com/progrium/macdriver)
-<a href="https://twitter.com/progriumHQ" title="@progriumHQ on Twitter"><img src="https://img.shields.io/badge/twitter-@progriumHQ-55acee.svg" alt="@progriumHQ on Twitter"></a>
+<a href="https://twitter.com/progrium" title="@progrium on Twitter"><img src="https://img.shields.io/badge/twitter-@progrium-55acee.svg" alt="@progrium on Twitter"></a>
 <a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
 <a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
@@ -76,8 +76,8 @@ Although currently outside the scope of this project, if you wanted you could pu
 ### Caveats
 
 * You still need to know or learn how Apple frameworks work, so you'll have to use Apple documentation and understand how to translate Objective-C example code to the equivalent Go with DarwinKit.
-* Your programs link against the actual Apple frameworks, so XCode needs to be installed for the framework headers and any program built will use [cgo](https://pkg.go.dev/cmd/cgo).
-* You will be using two memory management systems. Framework objects are managed by the [Objective-C memory manager](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html#//apple_ref/doc/uid/10000011-SW1), so be sure to read our docs on [memory management](docs/memorymanagement.md).
+* Your programs link against the actual Apple frameworks using [cgo](https://pkg.go.dev/cmd/cgo), so XCode needs to be installed for the framework headers.
+* You will be using two memory management systems. Framework objects are managed by [Objective-C memory management](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html#//apple_ref/doc/uid/10000011-SW1), so be sure to read our docs on [memory management](docs/memorymanagement.md) with DarwinKit.
 * Exceptions in frameworks will segfault, giving you both an Objective-C stacktrace and a Go panic stacktrace. You will be debugging a hybrid Go and Objective-C program.
 * Goroutines that interact with GUI objects need to [dispatch](https://pkg.go.dev/github.com/progrium/macdriver@main/dispatch) operations on the main thread otherwise it will segfault.
 * This is all tenable for simple programs, but these are the reasons we don't *recommend* large/complex programs using DarwinKit.
@@ -95,17 +95,19 @@ Although currently outside the scope of this project, if you wanted you could pu
 
 <details>
 <summary>Brief background on Objective-C</summary>
+	
 Ever since acquiring NeXT Computer in the 90s, Apple has used [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP) as the basis of their software stack, which is written in Objective-C. Unlike most systems languages with object orientation, Objective-C implements OOP as a runtime library. In fact, Objective-C is just C with the weird OOP specific syntax rewritten into C calls to [libobjc](https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc), which is a normal C library implementing an object runtime. This runtime could be used to bring OOP to any language that can make calls to C code. It also lets you interact with objects and classes registered by other libraries, such as the Apple frameworks. 
+
 </details>
 
-At the heart of DarwinKit is a package wrapping the Objective-C runtime using cgo and libffi. This is actually all you need to interact with Objective-C objects and classes, it'll just look like this:
+At the heart of DarwinKit is a package wrapping the Objective-C runtime using [cgo](https://pkg.go.dev/cmd/cgo) and [libffi](https://github.com/libffi/libffi). This is actually all you need to interact with Objective-C objects and classes, it'll just look like this:
 
 ```go
 app := objc.Call[objc.Object](objc.GetClass("NSApplication"), objc.Sel("sharedApplication"))
 objc.Call[objc.Void](app, objc.Sel("run"))
 ```
 
-So we wrap these calls in a Go API that lets us write code like this:
+So we wrap these calls in a [Go API](docs/bindings.md) that lets us write code like this:
 
 ```go
 app := appkit.NSApplication_SharedApplication()
@@ -118,8 +120,8 @@ mention all the constants, functions, structs, unions, and enums we need to work
 
 So DarwinKit generates its bindings. This is the hard part. Making sure the generation pipeline accurately produces usable bindings for all possible symbols is quite an arduous, iterative, manual process. Then since we're moving symbols that lived in a single namespace into Go packages, we have to manually decouple dependencies between them enough to avoid circular imports. If you want to help add frameworks, read our documentation on [generation](docs/generation.md).
 
-Objects in Objective-C are passed around as typed pointer values. When we receive an object from a method
-call in Go, the `objc` package receives it as a pointer, which it first puts into an `unsafe.Pointer`. The
+Objects are passed around as typed pointer values in Objective-C. When we receive an object from a method
+call in Go, the `objc` package receives it as a raw pointer, which it first puts into an `unsafe.Pointer`. The
 bindings for a class define a struct type that embeds an `objc.Object` struct, which contains a single
 field to hold the `unsafe.Pointer`. So unless working with a primitive type, you're working with an `unsafe.Pointer` wrapped in an `objc.Object` wrapped in a struct type that has the methods for the class of the object of the pointer. Be sure to read our documentation on [memory management](docs/memorymanagement.md).
 
