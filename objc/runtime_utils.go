@@ -9,6 +9,7 @@ package objc
 // void Run_WithAutoreleasePool(uintptr_t ptr);
 import "C"
 import (
+	"runtime"
 	"runtime/cgo"
 )
 
@@ -28,10 +29,18 @@ func SetDeallocListener(o Object, listener func()) {
 	SetAssociatedObject(o, AssociationKey("deallocListener"), lo, ASSOCIATION_RETAIN)
 }
 
-// WithAutoreleasePool run code in a new auto release pool.
+// WithAutoreleasePool runs code in a new AutoreleasePool.
 func WithAutoreleasePool(task func()) {
 	id := cgo.NewHandle(task)
 	C.Run_WithAutoreleasePool(C.uintptr_t(id))
+}
+
+// Retain retains the object and sets a finalizer to release.
+func Retain(o IObject) {
+	o.Retain()
+	runtime.SetFinalizer(o, func(o IObject) {
+		o.Release()
+	})
 }
 
 //export runTaskAndDeleteHandle

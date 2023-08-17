@@ -28,7 +28,7 @@ import (
 )
 
 var bytesType = reflect.TypeOf([]byte{})
-var pointerHolderType = reflect.TypeOf((*Pointer)(nil)).Elem()
+var pointerHolderType = reflect.TypeOf((*Handle)(nil)).Elem()
 var selectorType = reflect.TypeOf(Selector{})
 var classType = reflect.TypeOf(Class{})
 
@@ -106,11 +106,11 @@ func toNSElement(v reflect.Value) unsafe.Pointer {
 		}
 	case reflect.Interface:
 		if t.AssignableTo(pointerHolderType) {
-			return v.Interface().(Pointer).Ptr()
+			return v.Interface().(Handle).Ptr()
 		}
 	case reflect.Struct:
 		if t.Implements(pointerHolderType) {
-			return v.Interface().(Pointer).Ptr()
+			return v.Interface().(Handle).Ptr()
 		}
 	default:
 
@@ -319,13 +319,13 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 		return unsafe.Pointer(&cv)
 	case reflect.Interface:
 		if v.Type().AssignableTo(pointerHolderType) {
-			cv := v.Interface().(Pointer).Ptr()
+			cv := v.Interface().(Handle).Ptr()
 			return unsafe.Pointer(&cv)
 		}
 		panic(fmt.Sprintf("not support type: %T", v))
 	case reflect.Struct:
 		if v.Type().Implements(pointerHolderType) {
-			cv := v.Interface().(Pointer).Ptr()
+			cv := v.Interface().(Handle).Ptr()
 			return unsafe.Pointer(&cv)
 		}
 		return getStructValuePointer(v)
@@ -391,13 +391,13 @@ func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
 		*(*unsafe.Pointer)(p) = rv.UnsafePointer()
 	case reflect.Interface:
 		if rv.Type().AssignableTo(pointerHolderType) {
-			*(*unsafe.Pointer)(p) = rv.Interface().(Pointer).Ptr()
+			*(*unsafe.Pointer)(p) = rv.Interface().(Handle).Ptr()
 		} else {
 			panic(fmt.Sprintf("not support type: %v", rv.Type()))
 		}
 	case reflect.Struct:
 		if rv.Type().Implements(pointerHolderType) {
-			*(*unsafe.Pointer)(p) = rv.Interface().(Pointer).Ptr()
+			*(*unsafe.Pointer)(p) = rv.Interface().(Handle).Ptr()
 		} else {
 			sp := getStructValuePointer(rv)
 			size := rv.Type().Size()

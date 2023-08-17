@@ -133,8 +133,7 @@ func callBlock(b Block, params []reflect.Value, rt reflect.Type) reflect.Value {
 	return convertToGoValue(retPtr, rt)
 }
 
-// CreateMallocBlock wrap a go function to objc block.
-// f is the go function to wrap as a objc block
+// CreateMallocBlock wraps a Go function as an autoreleased Block.
 func CreateMallocBlock(f any) Block {
 	rf := reflect.ValueOf(f)
 	ft := rf.Type()
@@ -151,6 +150,7 @@ func CreateMallocBlock(f any) Block {
 	return b
 }
 
+// CreateMallocBlock wraps a Go function as a global Block.
 func CreateGlobalBlock(f any) Block {
 	rf := reflect.ValueOf(f)
 	ft := rf.Type()
