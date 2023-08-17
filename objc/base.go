@@ -34,9 +34,6 @@ import (
 	"unsafe"
 )
 
-//https://developer.apple.com/documentation/objectivec/objective-c_runtime?language=objc
-
-// IMP is function pointer
 type IMP struct {
 	ptr unsafe.Pointer
 }
@@ -55,7 +52,7 @@ func IMPWithBlock(b Block) IMP {
 	}
 }
 
-func (i IMP) GetBlock() Block {
+func (i IMP) Block() Block {
 	return Block{
 		ptr: C.IMP_GetBlock(i.ptr),
 	}
@@ -107,12 +104,12 @@ const (
 	PropertyAttributeNameType      = "T"
 )
 
-func (p Property) GetName() string {
+func (p Property) Name() string {
 	cs := C.Property_GetName(p.Ptr())
 	return C.GoString(cs)
 }
 
-func (p Property) GetAttributes() string {
+func (p Property) Attributes() string {
 	cs := C.Property_GetAttributes(p.Ptr())
 	return C.GoString(cs)
 }
@@ -154,18 +151,18 @@ func (m Method) Ptr() unsafe.Pointer {
 	return m.ptr
 }
 
-func (m Method) GetName() Selector {
+func (m Method) Name() Selector {
 	return Selector{
 		ptr: C.Method_GetName(m.ptr),
 	}
 }
 
-func (m Method) GetTypeEncoding() string {
+func (m Method) TypeEncoding() string {
 	r := C.Method_GetTypeEncoding(m.ptr)
 	return C.GoString(r)
 }
 
-func (m Method) GetImplementation() IMP {
+func (m Method) Implementation() IMP {
 	return IMP{
 		ptr: C.Method_GetImplementation(m.ptr),
 	}
@@ -193,7 +190,6 @@ func (c Category) Ptr() unsafe.Pointer {
 	return c.Ptr()
 }
 
-// Selector for select and hold method
 type Selector struct {
 	ptr unsafe.Pointer
 }
@@ -204,15 +200,15 @@ func SelectorFrom(ptr unsafe.Pointer) Selector {
 
 var selectorCache = SyncCache[string, Selector]{}
 
-// Sel return a method selector by the name. The selector is cached at go side.
+// Sel returns a cached method selector by name, registering it if needed.
 func Sel(selName string) Selector {
 	return selectorCache.Load(selName, func(selName string) Selector {
-		return SelectorRegisterName(selName)
+		return RegisterSelectorName(selName)
 	})
 }
 
-// SelectorRegisterName registers a method with the Objective-C runtime system, maps the method name to a selector, and returns the selector value
-func SelectorRegisterName(name string) Selector {
+// RegisterSelectorName registers a method with the Objective-C runtime system, maps the method name to a selector, and returns the selector value.
+func RegisterSelectorName(name string) Selector {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
 	return Selector{C.Selector_SEL_RegisterName(cname)}
@@ -222,12 +218,14 @@ func (s Selector) Ptr() unsafe.Pointer {
 	return s.ptr
 }
 
-// Name return selector name
 func (s Selector) Name() string {
 	cstr := C.Selector_SEL_GetName(s.ptr)
 	return C.GoString(cstr)
 }
 
+// Type to specify the behavior of an association. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/objc_associationpolicy?language=objc
 type AssociationPolicy uintptr
 
 const (
@@ -238,14 +236,23 @@ const (
 	ASSOCIATION_COPY             = 01403 //Specifies that the associated object is copied. The association is made atomically.
 )
 
+// Sets an associated value for a given object using a given key and association policy. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418509-objc_setassociatedobject?language=objc
 func SetAssociatedObject(o IObject, key unsafe.Pointer, value IObject, policy AssociationPolicy) {
 	C.Objc_SetAssociatedObject(o.Ptr(), key, value.Ptr(), C.uintptr_t(policy))
 }
 
+// Returns the value associated with a given object for a given key. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418865-objc_getassociatedobject?language=objc
 func GetAssociatedObject(o IObject, key unsafe.Pointer) Object {
 	return ObjectFrom(C.Objc_GetAssociatedObject(o.Ptr(), key))
 }
 
+// Removes all associations for a given object. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/objectivec/1418683-objc_removeassociatedobjects?language=objc
 func RemoveAssociatedObjects(o IObject) {
 	C.Objc_RemoveAssociatedObjects(o.Ptr())
 }

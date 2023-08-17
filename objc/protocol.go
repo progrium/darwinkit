@@ -29,7 +29,7 @@ import (
 )
 
 type IProtocol interface {
-	Pointer
+	Handle
 	Name() string
 	MethodDescription(sel Selector, required bool, instanceMethod bool) MethodDescription
 	CopyMethodDescriptionList(required bool, instanceMethod bool) []MethodDescription
@@ -133,10 +133,6 @@ type methodInfo struct {
 	hasFunc  reflect.Value // the hasXXX func for this method
 }
 
-// WrapAsProtocol wrap go interface to protocol implement instance.
-//
-// param protocolName: the delegate go interface name
-// param d: the delegate go implementaion
 func WrapAsProtocol[T any](protocolName string, d T) Object {
 	t := reflect.TypeOf((*T)(nil)).Elem()
 	if t.Kind() != reflect.Interface {

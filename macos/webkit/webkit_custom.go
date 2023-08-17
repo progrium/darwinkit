@@ -84,7 +84,7 @@ func (h *scriptMessageHandlerWithReply) UserContentControllerDidReceiveScriptMes
 			reply.Retain()
 		}
 
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			defer func() {
 				if !reply.IsNil() {
 					reply.Release()

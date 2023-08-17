@@ -68,7 +68,7 @@ func didLaunch(foundation.Notification) {
 	// Request updates at 60Hz
 	go func() {
 		for range time.Tick(time.Second / 60) {
-			dispatch.GetMainQueue().DispatchAsync(func() { objc.CallMethod[objc.Void](view, objc.GetSelector("setNeedsDisplay")) })
+			dispatch.MainQueue().DispatchAsync(func() { objc.CallMethod[objc.Void](view, objc.GetSelector("setNeedsDisplay")) })
 		}
 	}()
 

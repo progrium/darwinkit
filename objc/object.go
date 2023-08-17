@@ -31,15 +31,15 @@ import (
 	"unsafe"
 )
 
-// Pointer is an interface for holding an Objective-C pointer
-type Pointer interface {
+// Handle is an interface for holding an Objective-C pointer
+type Handle interface {
 	// Ptr returns the underlying unsafe.Pointer
 	Ptr() unsafe.Pointer
 }
 
 // An interface definition for the [Object] class.
 type IObject interface {
-	Pointer
+	Handle
 	IsNil() bool
 
 	Class() Class
@@ -63,7 +63,7 @@ type IObject interface {
 }
 
 // Ptr returns unsafe.Pointer or nil
-func Ptr(o Pointer) unsafe.Pointer {
+func Ptr(o Handle) unsafe.Pointer {
 	if o == nil {
 		return nil
 	}

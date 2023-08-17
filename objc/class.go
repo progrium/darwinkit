@@ -37,7 +37,7 @@ import (
 )
 
 type IClass interface {
-	Pointer
+	Handle
 	CreateInstance(idxIvars uint) Object
 	Name() string
 	SetVersion(version int)
@@ -193,7 +193,7 @@ func (c Class) CopyPropertyList() []Property {
 	return convertToSliceAndFreePointer[Property](pp, int(outCount))
 }
 
-func convertToSliceAndFreePointer[T Pointer](p unsafe.Pointer, count int) []T {
+func convertToSliceAndFreePointer[T Handle](p unsafe.Pointer, count int) []T {
 	if p == nil {
 		return nil
 	}

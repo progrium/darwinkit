@@ -61,7 +61,7 @@ func main() {
 					3: "⏸️ Break %02d:%02d",
 				}
 				// updates to the ui should happen on the main thread to avoid segfaults
-				dispatch.GetMainQueue().DispatchAsync(func() {
+				dispatch.MainQueue().DispatchAsync(func() {
 					item.Button().SetTitle(fmt.Sprintf(labels[state], timer/60, timer%60))
 				})
 			}

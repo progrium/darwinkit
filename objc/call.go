@@ -9,8 +9,8 @@ import (
 	"github.com/progrium/macdriver/objc/ffi"
 )
 
-// type T: the ret value type
-func Call[T any](o Pointer, selector Selector, params ...any) T {
+// Call sends a message to the Handle and returns a value
+func Call[T any](o Handle, selector Selector, params ...any) T {
 	ptr := o.Ptr()
 	if ptr == nil {
 		panic("object is nil")
@@ -76,8 +76,9 @@ func directPointer(t reflect.Type) bool {
 	}
 }
 
-// AddMethod add a new objc instance method with a go function.
-// The first param of go function should be the object instance, the second param should be the method selector.
+// AddMethod adds an instance method using a Go function.
+// The first argument of the Go function should be the object instance,
+// the second argument should be the method selector.
 func AddMethod(class Class, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 
@@ -91,8 +92,9 @@ func AddMethod(class Class, sel Selector, f any) bool {
 	return flag
 }
 
-// ReplaceMethod replace objc instance method with a go function.
-// The first param of go function should be the object instance, the second param should be the method selector.
+// ReplaceMethod replaces an instance method using a Go function.
+// The first argument of the Go function should be the object instance,
+// the second argument should be the method selector.
 func ReplaceMethod(class Class, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), false)
@@ -105,8 +107,9 @@ func ReplaceMethod(class Class, sel Selector, f any) {
 	}
 }
 
-// AddClassMethod add a new objc class method with a go function.
-// The first param of go function should be the class, the second param should be the method selector.
+// AddClassMethod adds a class method using a Go function.
+// The first argument of the Go function should be the class,
+// the second argument should be the method selector.
 func AddClassMethod(class Class, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)
@@ -123,7 +126,9 @@ func AddClassMethod(class Class, sel Selector, f any) bool {
 	return flag
 }
 
-// ReplaceClassMethod replace objc class method with a go function.
+// ReplaceClassMethod replaces a class method using a Go function.
+// The first argument of the Go function should be the class,
+// the second argument should be the method selector.
 func ReplaceClassMethod(class Class, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)

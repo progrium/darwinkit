@@ -9,7 +9,7 @@ clobber:
 .PHONY: clobber
 
 example:
-	$(GOEXE) run ./macos/_examples/widgets/main.go
+	$(GOEXE) run ./macos/_examples/helloworld/main.go
 .PHONY: example
 
 generate/symbols.zip:

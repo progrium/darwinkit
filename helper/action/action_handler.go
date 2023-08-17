@@ -35,7 +35,7 @@ func Wrap(handler Handler) (target Target, selector objc.Selector) {
 	h := cgo.NewHandle(handler)
 	return Target{
 		Object: objc.ObjectFrom(C.C_NewAction(C.uintptr_t(h))),
-	}, objc.SelectorRegisterName("onAction:")
+	}, objc.RegisterSelectorName("onAction:")
 }
 
 // Set set action for an ojbc instance, if it has target and setAction method.

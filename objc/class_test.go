@@ -26,12 +26,12 @@ func TestGetClass(t *testing.T) {
 func TestGetMethod(t *testing.T) {
 	cls := GetClass("NSObject")
 
-	m := cls.ClassMethod(SelectorRegisterName("alloc"))
-	name := m.GetName().Name()
+	m := cls.ClassMethod(RegisterSelectorName("alloc"))
+	name := m.Name().Name()
 	if name != "alloc" {
 		t.Failed()
 	}
-	te := m.GetTypeEncoding()
+	te := m.TypeEncoding()
 	if te != "@16@0:8" {
 		t.Failed()
 	}
