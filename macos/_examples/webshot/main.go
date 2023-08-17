@@ -45,7 +45,7 @@ func initAndRun() {
 
 	navigationDelegate := &webkit.NavigationDelegate{}
 	navigationDelegate.SetWebViewDidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			script := `var rect = {"width":document.body.scrollWidth, "height":document.body.scrollHeight}; rect`
 			webView.EvaluateJavaScriptCompletionHandler(script, func(value objc.Object, err foundation.Error) {
 				rect := foundation.DictToMap[string, foundation.Number](foundation.DictionaryFrom(value.Ptr()))

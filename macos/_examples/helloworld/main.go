@@ -14,7 +14,7 @@ func init() {
 }
 
 func main() {
-	macos.Launch(func(app appkit.Application, delegate *appkit.ApplicationDelegate) {
+	macos.RunApp(func(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 		app.ActivateIgnoringOtherApps(true)
 

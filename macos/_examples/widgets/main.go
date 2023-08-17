@@ -110,7 +110,7 @@ func main() {
 	w.ContentView().AddSubview(label)
 	tfd := &appkit.TextFieldDelegate{}
 	tfd.SetControlTextDidChange(func(obj foundation.Notification) {
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			label.SetStringValue(tf.StringValue())
 		})
 	})
@@ -124,7 +124,7 @@ func main() {
 	stf.SetFrame(rectOf(340, 100, 150, 25))
 	tfd2 := &appkit.TextFieldDelegate{}
 	tfd2.SetControlTextDidChange(func(obj foundation.Notification) {
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			label.SetStringValue(stf.StringValue())
 		})
 	})
@@ -139,16 +139,16 @@ func main() {
 	indicator.SetDisplayedWhenStopped(false)
 	w.ContentView().AddSubview(indicator)
 	go func() {
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			indicator.StartAnimation(indicator)
 		})
 		for i := 0; i < 10; i++ {
 			time.Sleep(1 * time.Second)
-			dispatch.GetMainQueue().DispatchAsync(func() {
+			dispatch.MainQueue().DispatchAsync(func() {
 				indicator.SetDoubleValue(0.1 * float64(i))
 			})
 		}
-		dispatch.GetMainQueue().DispatchAsync(func() {
+		dispatch.MainQueue().DispatchAsync(func() {
 			indicator.StopAnimation(indicator)
 		})
 	}()
