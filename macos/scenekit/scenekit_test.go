@@ -1,7 +1,5 @@
 package scenekit
 
 import "testing"
-
-func TestSceneKitValid(t *testing.T) {
-
-}
+	
+func TestSceneKitValid(t *testing.T) {}
