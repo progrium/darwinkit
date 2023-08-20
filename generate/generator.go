@@ -23,6 +23,7 @@ type Generator struct {
 	genCache      map[string]codegen.CodeGen
 }
 
+// Generate generates the code for the given platform, version, and framework
 func (db *Generator) Generate(platform string, version int, rootDir string, framework string, ignoreTypes set.Set[string]) {
 	db.Platform = platform
 	db.Version = version
