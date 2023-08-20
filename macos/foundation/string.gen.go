@@ -42,7 +42,7 @@ type IString interface {
 	SubstringToIndex(to uint) string
 	CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(outputName string, flag bool, outputArray []string, filterTypes []string) uint
 	ParagraphRangeForRange(range_ Range) Range
-	StringByAppendingFormat(format string) string
+	StringByAppendingFormat(format string, args ...any) string
 	DataUsingEncoding(encoding StringEncoding) []byte
 	SizeWithAttributes(attrs map[AttributedStringKey]objc.IObject) coregraphics.Size
 	StringByReplacingOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) string
@@ -148,16 +148,16 @@ func String_StringWithString(string_ string) String {
 	return StringClass.StringWithString(string_)
 }
 
-func (s_ String) InitWithFormatLocale(format string, locale objc.IObject) String {
-	rv := objc.Call[String](s_, objc.Sel("initWithFormat:locale:"), format, locale)
+func (s_ String) InitWithFormatLocale(format string, locale objc.IObject, args ...any) String {
+	rv := objc.Call[String](s_, objc.Sel("initWithFormat:locale:"), append([]any{format, locale}, args...)...)
 	return rv
 }
 
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func String_InitWithFormatLocale(format string, locale objc.IObject) String {
-	return StringClass.Alloc().InitWithFormatLocale(format, locale)
+func String_InitWithFormatLocale(format string, locale objc.IObject, args ...any) String {
+	return StringClass.Alloc().InitWithFormatLocale(format, locale, args...)
 }
 
 func (s_ String) InitWithDataEncoding(data []byte, encoding StringEncoding) String {
@@ -172,16 +172,16 @@ func String_InitWithDataEncoding(data []byte, encoding StringEncoding) String {
 	return StringClass.Alloc().InitWithDataEncoding(data, encoding)
 }
 
-func (sc _StringClass) StringWithFormat(format string) String {
-	rv := objc.Call[String](sc, objc.Sel("stringWithFormat:"), format)
+func (sc _StringClass) StringWithFormat(format string, args ...any) String {
+	rv := objc.Call[String](sc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
-func String_StringWithFormat(format string) String {
-	return StringClass.StringWithFormat(format)
+func String_StringWithFormat(format string, args ...any) String {
+	return StringClass.StringWithFormat(format, args...)
 }
 
 func (s_ String) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) String {
@@ -206,18 +206,6 @@ func (s_ String) InitWithString(aString string) String {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
 func String_InitWithString(aString string) String {
 	return StringClass.Alloc().InitWithString(aString)
-}
-
-func (sc _StringClass) String() String {
-	rv := objc.Call[String](sc, objc.Sel("string"))
-	return rv
-}
-
-// Returns an empty string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497312-string?language=objc
-func String_String() String {
-	return StringClass.String()
 }
 
 func (s_ String) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) String {
@@ -268,16 +256,16 @@ func String_InitWithUTF8String(nullTerminatedCString *uint8) String {
 	return StringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
 }
 
-func (sc _StringClass) LocalizedStringWithFormat(format string) String {
-	rv := objc.Call[String](sc, objc.Sel("localizedStringWithFormat:"), format)
+func (sc _StringClass) LocalizedStringWithFormat(format string, args ...any) String {
+	rv := objc.Call[String](sc, objc.Sel("localizedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted according to the current locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497301-localizedstringwithformat?language=objc
-func String_LocalizedStringWithFormat(format string) String {
-	return StringClass.LocalizedStringWithFormat(format)
+func String_LocalizedStringWithFormat(format string, args ...any) String {
+	return StringClass.LocalizedStringWithFormat(format, args...)
 }
 
 func (s_ String) Init() String {
@@ -557,8 +545,8 @@ func String_PathWithComponents(components []string) string {
 // Returns a string made by appending to the receiver a string constructed from a given format string and the following arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497272-stringbyappendingformat?language=objc
-func (s_ String) StringByAppendingFormat(format string) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByAppendingFormat:"), format)
+func (s_ String) StringByAppendingFormat(format string, args ...any) string {
+	rv := objc.Call[string](s_, objc.Sel("stringByAppendingFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
@@ -573,16 +561,16 @@ func (s_ String) DataUsingEncoding(encoding StringEncoding) []byte {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/2990401-deferredlocalizedintentsstringwi?language=objc
-func (sc _StringClass) DeferredLocalizedIntentsStringWithFormat(format string) string {
-	rv := objc.Call[string](sc, objc.Sel("deferredLocalizedIntentsStringWithFormat:"), format)
+func (sc _StringClass) DeferredLocalizedIntentsStringWithFormat(format string, args ...any) string {
+	rv := objc.Call[string](sc, objc.Sel("deferredLocalizedIntentsStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/2990401-deferredlocalizedintentsstringwi?language=objc
-func String_DeferredLocalizedIntentsStringWithFormat(format string) string {
-	return StringClass.DeferredLocalizedIntentsStringWithFormat(format)
+func String_DeferredLocalizedIntentsStringWithFormat(format string, args ...any) string {
+	return StringClass.DeferredLocalizedIntentsStringWithFormat(format, args...)
 }
 
 // Returns the bounding box size the receiver occupies when drawn with the given attributes. [Full Topic]

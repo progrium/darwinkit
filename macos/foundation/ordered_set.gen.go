@@ -85,28 +85,28 @@ func OrderedSet_OrderedSetWithOrderedSet(set IOrderedSet) OrderedSet {
 	return OrderedSetClass.OrderedSetWithOrderedSet(set)
 }
 
-func (o_ OrderedSet) InitWithObjects(firstObj objc.IObject) OrderedSet {
-	rv := objc.Call[OrderedSet](o_, objc.Sel("initWithObjects:"), objc.Ptr(firstObj))
+func (o_ OrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
+	rv := objc.Call[OrderedSet](o_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
-func OrderedSet_InitWithObjects(firstObj objc.IObject) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithObjects(firstObj)
+func OrderedSet_InitWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
+	return OrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
 }
 
-func (oc _OrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject) OrderedSet {
-	rv := objc.Call[OrderedSet](oc, objc.Sel("orderedSetWithObjects:"), objc.Ptr(firstObj))
+func (oc _OrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
+	rv := objc.Call[OrderedSet](oc, objc.Sel("orderedSetWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Creates and returns a ordered set containing the objects in a given argument list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543312-orderedsetwithobjects?language=objc
-func OrderedSet_OrderedSetWithObjects(firstObj objc.IObject) OrderedSet {
-	return OrderedSetClass.OrderedSetWithObjects(firstObj)
+func OrderedSet_OrderedSetWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
+	return OrderedSetClass.OrderedSetWithObjects(firstObj, args...)
 }
 
 func (o_ OrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) OrderedSet {

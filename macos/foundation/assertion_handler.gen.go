@@ -18,8 +18,8 @@ type _AssertionHandlerClass struct {
 // An interface definition for the [AssertionHandler] class.
 type IAssertionHandler interface {
 	objc.IObject
-	HandleFailureInMethodObjectFileLineNumberDescription(selector objc.Selector, object objc.IObject, fileName string, line int, format string)
-	HandleFailureInFunctionFileLineNumberDescription(functionName string, fileName string, line int, format string)
+	HandleFailureInMethodObjectFileLineNumberDescription(selector objc.Selector, object objc.IObject, fileName string, line int, format string, args ...any)
+	HandleFailureInFunctionFileLineNumberDescription(functionName string, fileName string, line int, format string, args ...any)
 }
 
 // An object that logs an assertion to the console. [Full Topic]
@@ -62,15 +62,15 @@ func (a_ AssertionHandler) Init() AssertionHandler {
 // Logs (using NSLog) an error message that includes the name of the method that failed, the class name of the object, the name of the source file, and the line number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsassertionhandler/1569513-handlefailureinmethod?language=objc
-func (a_ AssertionHandler) HandleFailureInMethodObjectFileLineNumberDescription(selector objc.Selector, object objc.IObject, fileName string, line int, format string) {
-	objc.Call[objc.Void](a_, objc.Sel("handleFailureInMethod:object:file:lineNumber:description:"), selector, object, fileName, line, format)
+func (a_ AssertionHandler) HandleFailureInMethodObjectFileLineNumberDescription(selector objc.Selector, object objc.IObject, fileName string, line int, format string, args ...any) {
+	objc.Call[objc.Void](a_, objc.Sel("handleFailureInMethod:object:file:lineNumber:description:"), append([]any{selector, object, fileName, line, format}, args...)...)
 }
 
 // Logs (using NSLog) an error message that includes the name of the function, the name of the file, and the line number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsassertionhandler/1569532-handlefailureinfunction?language=objc
-func (a_ AssertionHandler) HandleFailureInFunctionFileLineNumberDescription(functionName string, fileName string, line int, format string) {
-	objc.Call[objc.Void](a_, objc.Sel("handleFailureInFunction:file:lineNumber:description:"), functionName, fileName, line, format)
+func (a_ AssertionHandler) HandleFailureInFunctionFileLineNumberDescription(functionName string, fileName string, line int, format string, args ...any) {
+	objc.Call[objc.Void](a_, objc.Sel("handleFailureInFunction:file:lineNumber:description:"), append([]any{functionName, fileName, line, format}, args...)...)
 }
 
 // Returns the NSAssertionHandler object associated with the current thread. [Full Topic]

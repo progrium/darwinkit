@@ -122,28 +122,28 @@ func MutableOrderedSet_OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedS
 	return MutableOrderedSetClass.OrderedSetWithOrderedSet(set)
 }
 
-func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), objc.Ptr(firstObj))
+func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
-func MutableOrderedSet_InitWithObjects(firstObj objc.IObject) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithObjects(firstObj)
+func MutableOrderedSet_InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	return MutableOrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
 }
 
-func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), objc.Ptr(firstObj))
+func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Creates and returns a ordered set containing the objects in a given argument list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543312-orderedsetwithobjects?language=objc
-func MutableOrderedSet_OrderedSetWithObjects(firstObj objc.IObject) MutableOrderedSet {
-	return MutableOrderedSetClass.OrderedSetWithObjects(firstObj)
+func MutableOrderedSet_OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	return MutableOrderedSetClass.OrderedSetWithObjects(firstObj, args...)
 }
 
 func (m_ MutableOrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {

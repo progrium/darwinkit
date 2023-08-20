@@ -18,7 +18,7 @@ type _MutableAttributedStringClass struct {
 // An interface definition for the [MutableAttributedString] class.
 type IMutableAttributedString interface {
 	IAttributedString
-	AppendLocalizedFormat(format IAttributedString)
+	AppendLocalizedFormat(format IAttributedString, args ...any)
 	AppendAttributedString(attrString IAttributedString)
 	DeleteCharactersInRange(range_ Range)
 	SetAlignmentRange(alignment objc.IObject, range_ Range)
@@ -94,16 +94,16 @@ func MutableAttributedString_InitWithHTMLOptionsDocumentAttributes(data []byte, 
 	return MutableAttributedStringClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
 }
 
-func (mc _MutableAttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:"), objc.Ptr(format))
+func (mc _MutableAttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{objc.Ptr(format)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746877-localizedattributedstringwithfor?language=objc
-func MutableAttributedString_LocalizedAttributedStringWithFormat(format IAttributedString) MutableAttributedString {
-	return MutableAttributedStringClass.LocalizedAttributedStringWithFormat(format)
+func MutableAttributedString_LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) MutableAttributedString {
+	return MutableAttributedStringClass.LocalizedAttributedStringWithFormat(format, args...)
 }
 
 func (m_ MutableAttributedString) InitWithAttributedString(attrStr IAttributedString) MutableAttributedString {
@@ -130,16 +130,16 @@ func MutableAttributedString_InitWithContentsOfMarkdownFileAtURLOptionsBaseURLEr
 	return MutableAttributedStringClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
 }
 
-func (m_ MutableAttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithFormat:options:locale:"), objc.Ptr(format), options, objc.Ptr(locale))
+func (m_ MutableAttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithFormat:options:locale:"), append([]any{objc.Ptr(format), options, objc.Ptr(locale)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746873-initwithformat?language=objc
-func MutableAttributedString_InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale)
+func MutableAttributedString_InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
+	return MutableAttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
 }
 
 func (m_ MutableAttributedString) InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
@@ -241,8 +241,8 @@ func MutableAttributedString_InitWithRTFDFileWrapperDocumentAttributes(wrapper I
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/3746902-appendlocalizedformat?language=objc
-func (m_ MutableAttributedString) AppendLocalizedFormat(format IAttributedString) {
-	objc.Call[objc.Void](m_, objc.Sel("appendLocalizedFormat:"), objc.Ptr(format))
+func (m_ MutableAttributedString) AppendLocalizedFormat(format IAttributedString, args ...any) {
+	objc.Call[objc.Void](m_, objc.Sel("appendLocalizedFormat:"), append([]any{objc.Ptr(format)}, args...)...)
 }
 
 // Adds the characters and attributes of a given attributed string to the end of the receiver. [Full Topic]

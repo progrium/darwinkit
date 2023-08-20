@@ -118,16 +118,16 @@ func CountedSet_Set() CountedSet {
 	return CountedSetClass.Set()
 }
 
-func (c_ CountedSet) InitWithObjects(firstObj objc.IObject) CountedSet {
-	rv := objc.Call[CountedSet](c_, objc.Sel("initWithObjects:"), objc.Ptr(firstObj))
+func (c_ CountedSet) InitWithObjects(firstObj objc.IObject, args ...any) CountedSet {
+	rv := objc.Call[CountedSet](c_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func CountedSet_InitWithObjects(firstObj objc.IObject) CountedSet {
-	return CountedSetClass.Alloc().InitWithObjects(firstObj)
+func CountedSet_InitWithObjects(firstObj objc.IObject, args ...any) CountedSet {
+	return CountedSetClass.Alloc().InitWithObjects(firstObj, args...)
 }
 
 func (cc _CountedSetClass) SetWithSet(set ISet) CountedSet {

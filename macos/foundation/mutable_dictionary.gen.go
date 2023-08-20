@@ -136,16 +136,16 @@ func MutableDictionary_DictionaryWithObjectsForKeys(objects []objc.IObject, keys
 	return MutableDictionaryClass.DictionaryWithObjectsForKeys(objects, keys)
 }
 
-func (m_ MutableDictionary) InitWithObjectsAndKeys(firstObject objc.IObject) MutableDictionary {
-	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithObjectsAndKeys:"), firstObject)
+func (m_ MutableDictionary) InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) MutableDictionary {
+	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated dictionary with entries constructed from the specified set of values and keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574190-initwithobjectsandkeys?language=objc
-func MutableDictionary_InitWithObjectsAndKeys(firstObject objc.IObject) MutableDictionary {
-	return MutableDictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject)
+func MutableDictionary_InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) MutableDictionary {
+	return MutableDictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject, args...)
 }
 
 func (m_ MutableDictionary) InitWithObjectsForKeys(objects []objc.IObject, keys []PCopying) MutableDictionary {
@@ -185,16 +185,16 @@ func MutableDictionary_Dictionary() MutableDictionary {
 	return MutableDictionaryClass.Dictionary()
 }
 
-func (mc _MutableDictionaryClass) DictionaryWithObjectsAndKeys(firstObject objc.IObject) MutableDictionary {
-	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObjectsAndKeys:"), firstObject)
+func (mc _MutableDictionaryClass) DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) MutableDictionary {
+	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
 	return rv
 }
 
 // Creates a dictionary containing entries constructed from the specified set of values and keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574181-dictionarywithobjectsandkeys?language=objc
-func MutableDictionary_DictionaryWithObjectsAndKeys(firstObject objc.IObject) MutableDictionary {
-	return MutableDictionaryClass.DictionaryWithObjectsAndKeys(firstObject)
+func MutableDictionary_DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) MutableDictionary {
+	return MutableDictionaryClass.DictionaryWithObjectsAndKeys(firstObject, args...)
 }
 
 func (mc _MutableDictionaryClass) DictionaryWithDictionary(dict Dictionary) MutableDictionary {
