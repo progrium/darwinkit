@@ -211,6 +211,7 @@ func (db *Generator) Members(fw string, sym Symbol, covariantTypes []string) (pr
 					Params:      params,
 					ReturnType:  rettyp,
 					ClassMethod: st.Method.TypeMethod,
+					Variadic:    st.Method.Variadic,
 					Description: s.Description,
 					DocURL:      s.DocURL(),
 					Deprecated:  false, // todo: support deprecated

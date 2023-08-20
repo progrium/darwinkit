@@ -23,6 +23,7 @@ type Method struct {
 	Required     bool // If this method is required. only for protocol method.
 	InitMethod   bool // method that return instancetype
 	Suffix       bool // GoName conflicts so add suffix to this method
+	Variadic     bool
 	Description  string
 	DocURL       string
 
@@ -70,6 +71,7 @@ func (m *Method) NormalizeInstanceTypeMethod(returnType *typing.ClassType) *Meth
 		InitMethod:  m.InitMethod,
 		goFuncName:  m.goFuncName,
 		Suffix:      m.Suffix,
+		Variadic:    m.Variadic,
 	}
 	return nm
 }
@@ -108,12 +110,11 @@ func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string,
 		returnTypeStr = m.ReturnType.GoName(currentModule, true)
 	}
 	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, m.Selector())
-	var sb strings.Builder
+	var args []string
 	for idx, p := range m.Params {
-		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
 		case *typing.ClassType:
-			sb.WriteString("objc.Ptr(" + p.GoName() + ")")
+			args = append(args, "objc.Ptr("+p.GoName()+")")
 		case *typing.ProtocolType:
 			pvar := fmt.Sprintf("po%d", idx)
 			cw.WriteLineF("%s := objc.WrapAsProtocol(\"%s\", %s)", pvar, tt.Name, p.GoName())
@@ -121,19 +122,23 @@ func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string,
 				cw.WriteLineF("objc.SetAssociatedObject(%s, objc.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
 					receiver, m.GoName, pvar)
 			}
-			sb.WriteString(pvar)
+			args = append(args, pvar)
 		case *typing.PointerType:
 			switch tt.Type.(type) {
 			case *typing.ClassType: //object pointer convert to unsafe.Pointer, avoiding ffi treat it as PointerHolder
-				sb.WriteString(fmt.Sprintf("unsafe.Pointer(%s)", p.GoName()))
+				args = append(args, fmt.Sprintf("unsafe.Pointer(%s)", p.GoName()))
 			default:
-				sb.WriteString(p.GoName())
+				args = append(args, p.GoName())
 			}
 		default:
-			sb.WriteString(p.GoName())
+			args = append(args, p.GoName())
 		}
 	}
-	callCode += sb.String() + ")"
+	if m.Variadic {
+		callCode += fmt.Sprintf(", append([]any{%s}, args...)...)", strings.Join(args, ", "))
+	} else {
+		callCode += fmt.Sprintf(", %s)", strings.Join(args, ", "))
+	}
 
 	switch rt.(type) {
 	case *typing.VoidType:
@@ -169,6 +174,9 @@ func (m *Method) GoFuncDeclare(currentModule *modules.Module, goTypeName string)
 	for _, p := range m.Params {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, false))
 	}
+	if m.Variadic {
+		paramStrs = append(paramStrs, "args ...any")
+	}
 
 	var returnType = m.ReturnType.GoName(currentModule, true)
 	return m.GoFuncName() + "(" + strings.Join(paramStrs, ", ") + ")" + " " + returnType
@@ -203,6 +211,9 @@ func (m *Method) ProtocolGoFuncFieldType(currentModule *modules.Module) string {
 	var paramStrs []string
 	for _, p := range m.Params {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, true))
+	}
+	if m.Variadic {
+		paramStrs = append(paramStrs, "args ...any")
 	}
 
 	return "(" + strings.Join(paramStrs, ", ") + ")" + " " + m.ReturnType.GoName(currentModule, false)
@@ -280,5 +291,6 @@ func (m *Method) ToProtocolParamAsObjectMethod() *Method {
 		Required:     m.Required,
 		Description:  m.Description,
 		DocURL:       m.DocURL,
+		Variadic:     m.Variadic,
 	}
 }
