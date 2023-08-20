@@ -71,14 +71,15 @@ func (h *scriptMessageHandlerWithReply) HasUserContentControllerDidReceiveScript
 // UserContentControllerDidReceiveScriptMessageReplyHandler implements ScriptMessageHandlerWithReply
 func (h *scriptMessageHandlerWithReply) UserContentControllerDidReceiveScriptMessageReplyHandler(
 	userContentController UserContentController, message ScriptMessage,
-	replyHandler func(reply objc.Object, errorMessage string)) {
+	replyHandler func(reply objc.Object, errorMessage *string)) {
 	message.Retain()
 	go func() {
 		defer message.Release()
 		reply, err := h.handler(message.Body())
-		var errMsg = foundation.String{} // nil
+		var errMsg *string
 		if err != nil {
-			errMsg = foundation.String_InitWithString(err.Error())
+			str := err.Error()
+			errMsg = &str
 		}
 		if !reply.IsNil() {
 			reply.Retain()
@@ -90,7 +91,7 @@ func (h *scriptMessageHandlerWithReply) UserContentControllerDidReceiveScriptMes
 					reply.Release()
 				}
 			}()
-			replyHandler(reply, errMsg.String())
+			replyHandler(reply, errMsg)
 		})
 	}()
 }
@@ -221,4 +222,32 @@ func (h *FileSystemURLSchemeHandler) getMime(path string) string {
 	default:
 		return "application/octet-stream"
 	}
+}
+
+// the following was custom defined to fix the type for errorMessage in the callback.
+// generation would make it a string but we need it to be a *string
+
+// An interface for responding to messages from JavaScript code running in a webpage. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessagehandlerwithreply?language=objc
+type PScriptMessageHandlerWithReply interface {
+	// optional
+	UserContentControllerDidReceiveScriptMessageReplyHandler(userContentController UserContentController, message ScriptMessage, replyHandler func(reply objc.Object, errorMessage *string))
+	HasUserContentControllerDidReceiveScriptMessageReplyHandler() bool
+}
+
+// A concrete type wrapper for the [PScriptMessageHandlerWithReply] protocol.
+type ScriptMessageHandlerWithReplyWrapper struct {
+	objc.Object
+}
+
+func (s_ ScriptMessageHandlerWithReplyWrapper) HasUserContentControllerDidReceiveScriptMessageReplyHandler() bool {
+	return s_.RespondsToSelector(objc.Sel("userContentController:didReceiveScriptMessage:replyHandler:"))
+}
+
+// Tells the handler that a webpage sent a script message that included a reply. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessagehandlerwithreply/3585111-usercontentcontroller?language=objc
+func (s_ ScriptMessageHandlerWithReplyWrapper) UserContentControllerDidReceiveScriptMessageReplyHandler(userContentController IUserContentController, message IScriptMessage, replyHandler func(reply objc.Object, errorMessage *string)) {
+	objc.Call[objc.Void](s_, objc.Sel("userContentController:didReceiveScriptMessage:replyHandler:"), objc.Ptr(userContentController), objc.Ptr(message), replyHandler)
 }

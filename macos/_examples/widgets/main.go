@@ -105,7 +105,7 @@ func main() {
 	tf.SetFrame(rectOf(10, 100, 150, 25))
 
 	// label
-	label := appkit.NewLabel(" ")
+	label := appkit.NewLabel("")
 	label.SetFrame(rectOf(170, 100, 150, 25))
 	w.ContentView().AddSubview(label)
 	tfd := &appkit.TextFieldDelegate{}
