@@ -42,16 +42,16 @@ func GradientFrom(ptr unsafe.Pointer) Gradient {
 	}
 }
 
-func (g_ Gradient) InitWithColorsAndLocations(firstColor IColor) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithColorsAndLocations:"), objc.Ptr(firstColor))
+func (g_ Gradient) InitWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
+	rv := objc.Call[Gradient](g_, objc.Sel("initWithColorsAndLocations:"), append([]any{objc.Ptr(firstColor)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated gradient object with a comma-separated list of arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1555387-initwithcolorsandlocations?language=objc
-func Gradient_InitWithColorsAndLocations(firstColor IColor) Gradient {
-	return GradientClass.Alloc().InitWithColorsAndLocations(firstColor)
+func Gradient_InitWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
+	return GradientClass.Alloc().InitWithColorsAndLocations(firstColor, args...)
 }
 
 func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {

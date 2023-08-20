@@ -99,16 +99,16 @@ func TextStorage_InitWithHTMLOptionsDocumentAttributes(data []byte, options map[
 	return TextStorageClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
 }
 
-func (tc _TextStorageClass) LocalizedAttributedStringWithFormat(format foundation.IAttributedString) TextStorage {
-	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:"), objc.Ptr(format))
+func (tc _TextStorageClass) LocalizedAttributedStringWithFormat(format foundation.IAttributedString, args ...any) TextStorage {
+	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{objc.Ptr(format)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746877-localizedattributedstringwithfor?language=objc
-func TextStorage_LocalizedAttributedStringWithFormat(format foundation.IAttributedString) TextStorage {
-	return TextStorageClass.LocalizedAttributedStringWithFormat(format)
+func TextStorage_LocalizedAttributedStringWithFormat(format foundation.IAttributedString, args ...any) TextStorage {
+	return TextStorageClass.LocalizedAttributedStringWithFormat(format, args...)
 }
 
 func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
@@ -135,16 +135,16 @@ func TextStorage_InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdown
 	return TextStorageClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
 }
 
-func (t_ TextStorage) InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithFormat:options:locale:"), objc.Ptr(format), options, objc.Ptr(locale))
+func (t_ TextStorage) InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithFormat:options:locale:"), append([]any{objc.Ptr(format), options, objc.Ptr(locale)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746873-initwithformat?language=objc
-func TextStorage_InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale) TextStorage {
-	return TextStorageClass.Alloc().InitWithFormatOptionsLocale(format, options, locale)
+func TextStorage_InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
+	return TextStorageClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
 }
 
 func (t_ TextStorage) InitWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
