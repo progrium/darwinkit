@@ -27,87 +27,68 @@ type Function struct {
 	identifier string
 }
 
-func (f *Function) Init() {
+// GoArgs return go function args
+func (f *Function) GoArgs() string {
+	var args []string
+	for _, p := range f.Params {
+		args = append(args, p.GoName())
+	}
+	return strings.Join(args, ", ")
 }
 
-func (f *Function) WriteGoCode(cw *CodeWriter) {
-	panic("implement me")
-}
-
-// Copy for copy fetcher cache value
-func (f *Function) Copy() CodeGen {
-	if f == nil {
-		return nil
+// GoReturn return go function return
+func (f *Function) GoReturn() string {
+	if f.ReturnType == nil {
+		return ""
 	}
-	return &Function{
-		Type:        f.Type,
-		Name:        f.Name,
-		GoName:      f.GoName,
-		Params:      f.Params,
-		ReturnType:  f.ReturnType,
-		Deprecated:  f.Deprecated,
-		Suffix:      f.Suffix,
-		Description: f.Description,
-		DocURL:      f.DocURL,
-		goFuncName:  f.goFuncName,
-		identifier:  f.identifier,
-	}
-}
-
-func (m *Function) needRelease() bool {
-	switch m.ReturnType.(type) {
-	case *typing.PrimitiveType, *typing.StringType:
-		return false
-	}
-	return strings.HasPrefix(m.Name, "new") || !strings.HasPrefix(m.Name, "init") && strings.HasPrefix(m.Name, "Initial") ||
-		strings.HasPrefix(m.Name, "copy") || strings.HasPrefix(m.Name, "mutableCopy")
+	return f.ReturnType.GoName(nil, true)
 }
 
 // Selector return full Objc function name
-func (m *Function) Selector() string {
-	if m.identifier == "" {
+func (f *Function) Selector() string {
+	if f.identifier == "" {
 		var sb strings.Builder
-		sb.WriteString(m.Name)
-		for idx, p := range m.Params {
+		sb.WriteString(f.Name)
+		for idx, p := range f.Params {
 			if idx > 0 {
 				sb.WriteString(p.FieldName)
 			}
 			sb.WriteString(":")
 		}
-		m.identifier = sb.String()
+		f.identifier = sb.String()
 	}
-	return m.identifier
+	return f.identifier
 }
 
-func (m *Function) String() string {
-	return m.Selector()
+func (f *Function) String() string {
+	return f.Selector()
 }
 
 // NormalizeInstanceTypeFunction return new init function.
-func (m *Function) NormalizeInstanceTypeFunction(returnType *typing.ClassType) *Function {
+func (f *Function) NormalizeInstanceTypeFunction(returnType *typing.ClassType) *Function {
 	nm := &Function{
-		Name:       m.Name,
-		GoName:     m.GoName,
-		Params:     m.Params,
+		Name:       f.Name,
+		GoName:     f.GoName,
+		Params:     f.Params,
 		ReturnType: returnType,
-		goFuncName: m.goFuncName,
-		Suffix:     m.Suffix,
+		goFuncName: f.goFuncName,
+		Suffix:     f.Suffix,
 	}
 	return nm
 }
 
 // WriteGoCallCode generate go function code to call c wrapper code
-func (m *Function) WriteGoCallCode(currentModule *modules.Module, typeName string, cw *CodeWriter) {
-	funcDeclare := m.GoFuncDeclare(currentModule, typeName)
+func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName string, cw *CodeWriter) {
+	funcDeclare := f.GoFuncDeclare(currentModule, typeName)
 
-	if m.Deprecated {
+	if f.Deprecated {
 		return
 		cw.WriteLine("// deprecated")
 	}
 
-	if m.DocURL != "" {
-		cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", m.Description))
-		cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
+	if f.DocURL != "" {
+		cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", f.Description))
+		cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", f.DocURL))
 	}
 
 	var receiver string
@@ -117,16 +98,16 @@ func (m *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 	cw.Indent()
 
 	var returnTypeStr string
-	rt := typing.UnwrapAlias(m.ReturnType)
+	rt := typing.UnwrapAlias(f.ReturnType)
 	switch rt.(type) {
 	case *typing.VoidType:
 		returnTypeStr = "objc.Void"
 	default:
-		returnTypeStr = m.ReturnType.GoName(currentModule, true)
+		returnTypeStr = f.ReturnType.GoName(currentModule, true)
 	}
-	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, m.Selector())
+	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, f.Selector())
 	var sb strings.Builder
-	for idx, p := range m.Params {
+	for idx, p := range f.Params {
 		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
 		case *typing.ClassType:
@@ -154,9 +135,6 @@ func (m *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 	default:
 		var resultName = "rv"
 		cw.WriteLine(resultName + " := " + callCode)
-		if m.needRelease() {
-			cw.WriteLine(resultName + ".Autorelease()")
-		}
 		cw.WriteLine("return " + resultName)
 	}
 	cw.UnIndent()

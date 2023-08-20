@@ -7,11 +7,19 @@ import (
 
 var _ Type = (*FunctionType)(nil)
 
-// FunctionType Objective-c interface type
+type Parameter struct {
+	Type Type
+	Name string // the param name
+}
+
+// FunctionType Objective-c function type
 type FunctionType struct {
 	Name   string          // objc type name
 	GName  string          // Go name, usually is objc type name without prefix 'NS'
 	Module *modules.Module // object-c module
+
+	Parameters []Parameter // function parameters
+	Return     Type        // function return type
 }
 
 var Function = &FunctionType{

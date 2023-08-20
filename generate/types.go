@@ -100,6 +100,14 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			GName:  modules.TrimPrefix(sym.Name),
 			Module: modules.Get(module),
 		}
+	case "Function":
+		ft := &typing.FunctionType{
+			Name:   sym.Name,
+			GName:  modules.TrimPrefix(sym.Name),
+			Module: modules.Get(module),
+		}
+		// TODO: parse function params and return type from declaration
+		return ft
 	default:
 		fmt.Printf("TypeFromSymbol: kind=%s name=%s path=%s\n", sym.Kind, sym.Name, sym.Path)
 		panic("bad type")
