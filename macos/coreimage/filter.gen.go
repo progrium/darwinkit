@@ -21,7 +21,7 @@ type IFilter interface {
 	objc.IObject
 	SetDefaults()
 	Name() string
-	Apply(k IKernel) Image
+	Apply(k IKernel, args ...any) Image
 	OutputKeys() []string
 	InputKeys() []string
 	IsEnabled() bool
@@ -2380,8 +2380,8 @@ func Filter_ThermalFilter() Filter {
 // Produces a CIImage object by applying a kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1562058-apply?language=objc
-func (f_ Filter) Apply(k IKernel) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:"), objc.Ptr(k))
+func (f_ Filter) Apply(k IKernel, args ...any) Image {
+	rv := objc.Call[Image](f_, objc.Sel("apply:"), append([]any{objc.Ptr(k)}, args...)...)
 	return rv
 }
 
@@ -3543,16 +3543,16 @@ func Filter_ConvolutionRGB5X5Filter() Filter {
 // Creates a CIFilter object for a specific kind of filter and initializes the input values with a nil-terminated list of arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1562057-filterwithname?language=objc
-func (fc _FilterClass) FilterWithNameKeysAndValues(name string, key0 objc.IObject) Filter {
-	rv := objc.Call[Filter](fc, objc.Sel("filterWithName:keysAndValues:"), name, key0)
+func (fc _FilterClass) FilterWithNameKeysAndValues(name string, key0 objc.IObject, args ...any) Filter {
+	rv := objc.Call[Filter](fc, objc.Sel("filterWithName:keysAndValues:"), append([]any{name, key0}, args...)...)
 	return rv
 }
 
 // Creates a CIFilter object for a specific kind of filter and initializes the input values with a nil-terminated list of arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1562057-filterwithname?language=objc
-func Filter_FilterWithNameKeysAndValues(name string, key0 objc.IObject) Filter {
-	return FilterClass.FilterWithNameKeysAndValues(name, key0)
+func Filter_FilterWithNameKeysAndValues(name string, key0 objc.IObject, args ...any) Filter {
+	return FilterClass.FilterWithNameKeysAndValues(name, key0, args...)
 }
 
 // Returns a convolution 3 x 3 filter. [Full Topic]
