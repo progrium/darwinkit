@@ -34,7 +34,7 @@ type ICoder interface {
 	EncodeArrayOfObjCTypeCountAt(type_ *uint8, count uint, array unsafe.Pointer)
 	EncodeValueOfObjCTypeAt(type_ *uint8, addr unsafe.Pointer)
 	EncodeConditionalObject(object objc.IObject)
-	DecodeValuesOfObjCTypes(types *uint8)
+	DecodeValuesOfObjCTypes(types *uint8, args ...any)
 	DecodeObject() objc.Object
 	DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object
 	FailWithError(error IError)
@@ -77,7 +77,7 @@ type ICoder interface {
 	DecodeArrayOfObjectsOfClassesForKey(classes ISet, key string) []objc.Object
 	DecodeCMTimeRangeForKey(key string) coremedia.TimeRange
 	EncodeFloatForKey(value float64, key string)
-	EncodeValuesOfObjCTypes(types *uint8)
+	EncodeValuesOfObjCTypes(types *uint8, args ...any)
 	ContainsValueForKey(key string) bool
 	EncodeDoubleForKey(value float64, key string)
 	EncodeIntForKey(value int, key string)
@@ -244,8 +244,8 @@ func (c_ Coder) EncodeConditionalObject(object objc.IObject) {
 // Decodes a series of potentially different Objective-C types. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442577-decodevaluesofobjctypes?language=objc
-func (c_ Coder) DecodeValuesOfObjCTypes(types *uint8) {
-	objc.Call[objc.Void](c_, objc.Sel("decodeValuesOfObjCTypes:"), types)
+func (c_ Coder) DecodeValuesOfObjCTypes(types *uint8, args ...any) {
+	objc.Call[objc.Void](c_, objc.Sel("decodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
 }
 
 // Decodes and returns an object that was previously encoded with any of the encode…Object methods. [Full Topic]
@@ -571,8 +571,8 @@ func (c_ Coder) EncodeFloatForKey(value float64, key string) {
 // Encodes a series of values of potentially differing Objective-C types. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442581-encodevaluesofobjctypes?language=objc
-func (c_ Coder) EncodeValuesOfObjCTypes(types *uint8) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeValuesOfObjCTypes:"), types)
+func (c_ Coder) EncodeValuesOfObjCTypes(types *uint8, args ...any) {
+	objc.Call[objc.Void](c_, objc.Sel("encodeValuesOfObjCTypes:"), append([]any{types}, args...)...)
 }
 
 // Returns a Boolean value that indicates whether an encoded value is available for a string. [Full Topic]

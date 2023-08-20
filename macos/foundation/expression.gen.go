@@ -298,16 +298,16 @@ func Expression_ExpressionForFunctionSelectorNameArguments(target IExpression, n
 // Creates the expression with the specified expression arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1587937-expressionwithformat?language=objc
-func (ec _ExpressionClass) ExpressionWithFormat(expressionFormat string) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionWithFormat:"), expressionFormat)
+func (ec _ExpressionClass) ExpressionWithFormat(expressionFormat string, args ...any) Expression {
+	rv := objc.Call[Expression](ec, objc.Sel("expressionWithFormat:"), append([]any{expressionFormat}, args...)...)
 	return rv
 }
 
 // Creates the expression with the specified expression arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1587937-expressionwithformat?language=objc
-func Expression_ExpressionWithFormat(expressionFormat string) Expression {
-	return ExpressionClass.ExpressionWithFormat(expressionFormat)
+func Expression_ExpressionWithFormat(expressionFormat string, args ...any) Expression {
+	return ExpressionClass.ExpressionWithFormat(expressionFormat, args...)
 }
 
 // The expression type for the expression. [Full Topic]

@@ -95,16 +95,16 @@ func LocalizedString_StringWithString(string_ string) LocalizedString {
 	return LocalizedStringClass.StringWithString(string_)
 }
 
-func (l_ LocalizedString) InitWithFormatLocale(format string, locale objc.IObject) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithFormat:locale:"), format, locale)
+func (l_ LocalizedString) InitWithFormatLocale(format string, locale objc.IObject, args ...any) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithFormat:locale:"), append([]any{format, locale}, args...)...)
 	return rv
 }
 
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func LocalizedString_InitWithFormatLocale(format string, locale objc.IObject) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithFormatLocale(format, locale)
+func LocalizedString_InitWithFormatLocale(format string, locale objc.IObject, args ...any) LocalizedString {
+	return LocalizedStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
 }
 
 func (l_ LocalizedString) InitWithDataEncoding(data []byte, encoding foundation.StringEncoding) LocalizedString {
@@ -119,16 +119,16 @@ func LocalizedString_InitWithDataEncoding(data []byte, encoding foundation.Strin
 	return LocalizedStringClass.Alloc().InitWithDataEncoding(data, encoding)
 }
 
-func (lc _LocalizedStringClass) StringWithFormat(format string) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithFormat:"), format)
+func (lc _LocalizedStringClass) StringWithFormat(format string, args ...any) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
-func LocalizedString_StringWithFormat(format string) LocalizedString {
-	return LocalizedStringClass.StringWithFormat(format)
+func LocalizedString_StringWithFormat(format string, args ...any) LocalizedString {
+	return LocalizedStringClass.StringWithFormat(format, args...)
 }
 
 func (l_ LocalizedString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
@@ -215,16 +215,16 @@ func LocalizedString_InitWithUTF8String(nullTerminatedCString *uint8) LocalizedS
 	return LocalizedStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
 }
 
-func (lc _LocalizedStringClass) LocalizedStringWithFormat(format string) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("localizedStringWithFormat:"), format)
+func (lc _LocalizedStringClass) LocalizedStringWithFormat(format string, args ...any) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("localizedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted according to the current locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497301-localizedstringwithformat?language=objc
-func LocalizedString_LocalizedStringWithFormat(format string) LocalizedString {
-	return LocalizedStringClass.LocalizedStringWithFormat(format)
+func LocalizedString_LocalizedStringWithFormat(format string, args ...any) LocalizedString {
+	return LocalizedStringClass.LocalizedStringWithFormat(format, args...)
 }
 
 func (lc _LocalizedStringClass) StringWithUTF8String(nullTerminatedCString *uint8) LocalizedString {

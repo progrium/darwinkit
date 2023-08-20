@@ -71,16 +71,16 @@ func Set_Set() Set {
 	return SetClass.Set()
 }
 
-func (s_ Set) InitWithObjects(firstObj objc.IObject) Set {
-	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:"), objc.Ptr(firstObj))
+func (s_ Set) InitWithObjects(firstObj objc.IObject, args ...any) Set {
+	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func Set_InitWithObjects(firstObj objc.IObject) Set {
-	return SetClass.Alloc().InitWithObjects(firstObj)
+func Set_InitWithObjects(firstObj objc.IObject, args ...any) Set {
+	return SetClass.Alloc().InitWithObjects(firstObj, args...)
 }
 
 func (sc _SetClass) SetWithSet(set ISet) Set {

@@ -85,16 +85,16 @@ func Dictionary_DictionaryWithObjectsForKeys(objects []objc.IObject, keys []PCop
 	return DictionaryClass.DictionaryWithObjectsForKeys(objects, keys)
 }
 
-func (d_ Dictionary) InitWithObjectsAndKeys(firstObject objc.IObject) Dictionary {
-	rv := objc.Call[Dictionary](d_, objc.Sel("initWithObjectsAndKeys:"), firstObject)
+func (d_ Dictionary) InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
+	rv := objc.Call[Dictionary](d_, objc.Sel("initWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated dictionary with entries constructed from the specified set of values and keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574190-initwithobjectsandkeys?language=objc
-func Dictionary_InitWithObjectsAndKeys(firstObject objc.IObject) Dictionary {
-	return DictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject)
+func Dictionary_InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
+	return DictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject, args...)
 }
 
 func (d_ Dictionary) InitWithObjectsForKeys(objects []objc.IObject, keys []PCopying) Dictionary {
@@ -134,16 +134,16 @@ func Dictionary_Dictionary() Dictionary {
 	return DictionaryClass.Dictionary()
 }
 
-func (dc _DictionaryClass) DictionaryWithObjectsAndKeys(firstObject objc.IObject) Dictionary {
-	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObjectsAndKeys:"), firstObject)
+func (dc _DictionaryClass) DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
+	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
 	return rv
 }
 
 // Creates a dictionary containing entries constructed from the specified set of values and keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574181-dictionarywithobjectsandkeys?language=objc
-func Dictionary_DictionaryWithObjectsAndKeys(firstObject objc.IObject) Dictionary {
-	return DictionaryClass.DictionaryWithObjectsAndKeys(firstObject)
+func Dictionary_DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
+	return DictionaryClass.DictionaryWithObjectsAndKeys(firstObject, args...)
 }
 
 func (dc _DictionaryClass) DictionaryWithDictionary(dict Dictionary) Dictionary {

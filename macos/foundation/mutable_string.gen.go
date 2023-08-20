@@ -18,7 +18,7 @@ type _MutableStringClass struct {
 // An interface definition for the [MutableString] class.
 type IMutableString interface {
 	IString
-	AppendFormat(format string)
+	AppendFormat(format string, args ...any)
 	DeleteCharactersInRange(range_ Range)
 	ApplyTransformReverseRangeUpdatedRange(transform StringTransform, reverse bool, range_ Range, resultingRange RangePointer) bool
 	InitWithCapacity(capacity uint) MutableString
@@ -90,16 +90,16 @@ func MutableString_StringWithString(string_ string) MutableString {
 	return MutableStringClass.StringWithString(string_)
 }
 
-func (m_ MutableString) InitWithFormatLocale(format string, locale objc.IObject) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithFormat:locale:"), format, locale)
+func (m_ MutableString) InitWithFormatLocale(format string, locale objc.IObject, args ...any) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithFormat:locale:"), append([]any{format, locale}, args...)...)
 	return rv
 }
 
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func MutableString_InitWithFormatLocale(format string, locale objc.IObject) MutableString {
-	return MutableStringClass.Alloc().InitWithFormatLocale(format, locale)
+func MutableString_InitWithFormatLocale(format string, locale objc.IObject, args ...any) MutableString {
+	return MutableStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
 }
 
 func (m_ MutableString) InitWithDataEncoding(data []byte, encoding StringEncoding) MutableString {
@@ -114,16 +114,16 @@ func MutableString_InitWithDataEncoding(data []byte, encoding StringEncoding) Mu
 	return MutableStringClass.Alloc().InitWithDataEncoding(data, encoding)
 }
 
-func (mc _MutableStringClass) StringWithFormat(format string) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithFormat:"), format)
+func (mc _MutableStringClass) StringWithFormat(format string, args ...any) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497275-stringwithformat?language=objc
-func MutableString_StringWithFormat(format string) MutableString {
-	return MutableStringClass.StringWithFormat(format)
+func MutableString_StringWithFormat(format string, args ...any) MutableString {
+	return MutableStringClass.StringWithFormat(format, args...)
 }
 
 func (m_ MutableString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
@@ -148,18 +148,6 @@ func (m_ MutableString) InitWithString(aString string) MutableString {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
 func MutableString_InitWithString(aString string) MutableString {
 	return MutableStringClass.Alloc().InitWithString(aString)
-}
-
-func (mc _MutableStringClass) String() MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("string"))
-	return rv
-}
-
-// Returns an empty string. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497312-string?language=objc
-func MutableString_String() MutableString {
-	return MutableStringClass.String()
 }
 
 func (m_ MutableString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) MutableString {
@@ -210,16 +198,16 @@ func MutableString_InitWithUTF8String(nullTerminatedCString *uint8) MutableStrin
 	return MutableStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
 }
 
-func (mc _MutableStringClass) LocalizedStringWithFormat(format string) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("localizedStringWithFormat:"), format)
+func (mc _MutableStringClass) LocalizedStringWithFormat(format string, args ...any) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("localizedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
 // Returns a string created by using a given format string as a template into which the remaining argument values are substituted according to the current locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497301-localizedstringwithformat?language=objc
-func MutableString_LocalizedStringWithFormat(format string) MutableString {
-	return MutableStringClass.LocalizedStringWithFormat(format)
+func MutableString_LocalizedStringWithFormat(format string, args ...any) MutableString {
+	return MutableStringClass.LocalizedStringWithFormat(format, args...)
 }
 
 func (mc _MutableStringClass) StringWithUTF8String(nullTerminatedCString *uint8) MutableString {
@@ -276,8 +264,8 @@ func MutableString_StringWithCapacity(capacity uint) MutableString {
 // Adds a constructed string to the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablestring/1497308-appendformat?language=objc
-func (m_ MutableString) AppendFormat(format string) {
-	objc.Call[objc.Void](m_, objc.Sel("appendFormat:"), format)
+func (m_ MutableString) AppendFormat(format string, args ...any) {
+	objc.Call[objc.Void](m_, objc.Sel("appendFormat:"), append([]any{format}, args...)...)
 }
 
 // Removes from the receiver the characters in a given range. [Full Topic]

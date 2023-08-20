@@ -75,16 +75,16 @@ func AttributedString_InitWithHTMLOptionsDocumentAttributes(data []byte, options
 	return AttributedStringClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
 }
 
-func (ac _AttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString) AttributedString {
-	rv := objc.Call[AttributedString](ac, objc.Sel("localizedAttributedStringWithFormat:"), objc.Ptr(format))
+func (ac _AttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) AttributedString {
+	rv := objc.Call[AttributedString](ac, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{objc.Ptr(format)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746877-localizedattributedstringwithfor?language=objc
-func AttributedString_LocalizedAttributedStringWithFormat(format IAttributedString) AttributedString {
-	return AttributedStringClass.LocalizedAttributedStringWithFormat(format)
+func AttributedString_LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) AttributedString {
+	return AttributedStringClass.LocalizedAttributedStringWithFormat(format, args...)
 }
 
 func (a_ AttributedString) InitWithAttributedString(attrStr IAttributedString) AttributedString {
@@ -111,16 +111,16 @@ func AttributedString_InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(mar
 	return AttributedStringClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
 }
 
-func (a_ AttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale) AttributedString {
-	rv := objc.Call[AttributedString](a_, objc.Sel("initWithFormat:options:locale:"), objc.Ptr(format), options, objc.Ptr(locale))
+func (a_ AttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) AttributedString {
+	rv := objc.Call[AttributedString](a_, objc.Sel("initWithFormat:options:locale:"), append([]any{objc.Ptr(format), options, objc.Ptr(locale)}, args...)...)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746873-initwithformat?language=objc
-func AttributedString_InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale) AttributedString {
-	return AttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale)
+func AttributedString_InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) AttributedString {
+	return AttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
 }
 
 func (a_ AttributedString) InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) AttributedString {

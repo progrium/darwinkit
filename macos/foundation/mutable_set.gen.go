@@ -102,16 +102,16 @@ func MutableSet_Set() MutableSet {
 	return MutableSetClass.Set()
 }
 
-func (m_ MutableSet) InitWithObjects(firstObj objc.IObject) MutableSet {
-	rv := objc.Call[MutableSet](m_, objc.Sel("initWithObjects:"), objc.Ptr(firstObj))
+func (m_ MutableSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableSet {
+	rv := objc.Call[MutableSet](m_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
 	return rv
 }
 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func MutableSet_InitWithObjects(firstObj objc.IObject) MutableSet {
-	return MutableSetClass.Alloc().InitWithObjects(firstObj)
+func MutableSet_InitWithObjects(firstObj objc.IObject, args ...any) MutableSet {
+	return MutableSetClass.Alloc().InitWithObjects(firstObj, args...)
 }
 
 func (mc _MutableSetClass) SetWithSet(set ISet) MutableSet {

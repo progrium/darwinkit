@@ -237,6 +237,9 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			for _, p := range m.Params {
 				params = append(params, p.GoName())
 			}
+			if m.Variadic {
+				params = append(params, "args...")
+			}
 			alloc := ".Alloc()"
 			if im.ClassMethod {
 				alloc = ""
@@ -271,6 +274,9 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			var params []string
 			for _, p := range m.Params {
 				params = append(params, p.GoName())
+			}
+			if m.Variadic {
+				params = append(params, "args...")
 			}
 			returnKeyword := "return "
 			rt := typing.UnwrapAlias(m.ReturnType)
