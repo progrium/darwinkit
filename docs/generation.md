@@ -213,3 +213,9 @@ Shell script that gives basic stats on generated frameworks.
 Finds type symbol(s) in symbolsdb with the given type name. Can be used with `jq`.
 
 `go run ./generate/tools/type.go NSWindow`
+
+### regen [platform]
+
+Re-generates frameworks that have been generated (have .gen.go files).
+
+`./generate/tools/regen.sh macos`
