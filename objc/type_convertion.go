@@ -314,7 +314,20 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 	case reflect.Float64:
 		cv := float64(v.Float())
 		return unsafe.Pointer(&cv)
-	case reflect.UnsafePointer, reflect.Pointer:
+	case reflect.Pointer:
+		// allow use of *string
+		if rt.Elem().Kind() == reflect.String {
+			if v.IsNil() {
+				var p unsafe.Pointer = nil
+				return unsafe.Pointer(&p)
+			}
+			sp := ToNSString(v.Elem().String())
+			return unsafe.Pointer(&sp)
+		}
+		// otherwise treat as unsafe pointer
+		cv := v.UnsafePointer()
+		return unsafe.Pointer(&cv)
+	case reflect.UnsafePointer:
 		cv := v.UnsafePointer()
 		return unsafe.Pointer(&cv)
 	case reflect.Interface:
@@ -330,12 +343,6 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 		}
 		return getStructValuePointer(v)
 	case reflect.String:
-		// need some way to have nil NSString values,
-		// so let's try empty strings are nil
-		if v.String() == "" {
-			var p unsafe.Pointer = nil
-			return unsafe.Pointer(&p)
-		}
 		sp := ToNSString(v.String())
 		return unsafe.Pointer(&sp)
 	case reflect.Slice:
