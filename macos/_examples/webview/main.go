@@ -16,6 +16,10 @@ import (
 //go:embed assets
 var assetsFS embed.FS
 
+func init() {
+	runtime.LockOSThread()
+}
+
 func main() {
 	app := appkit.ApplicationClass.SharedApplication()
 	w := appkit.NewWindowWithSize(600, 400)

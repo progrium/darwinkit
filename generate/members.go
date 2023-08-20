@@ -217,6 +217,13 @@ func (db *Generator) Members(fw string, sym Symbol, covariantTypes []string) (pr
 					//Required:    ??,
 				}
 
+				// skip if defined in custom
+				qualifiedName := fmt.Sprintf("%s#%s", modules.TrimPrefix(sym.Name), gm.GoFuncName())
+				if db.customMethods.Contains(qualifiedName) {
+					log.Printf("skipping custom defined method '%s'\n", qualifiedName)
+					continue
+				}
+
 				// handle name conflicts
 				sel := gm.Selector()
 				goSel := gm.ProtocolGoFuncName()

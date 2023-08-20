@@ -14,11 +14,13 @@ import (
 
 type Generator struct {
 	*SymbolCache
-	Platform  string
-	Version   int
-	Framework string
-	enumCache map[string][]Symbol
-	genCache  map[string]codegen.CodeGen
+	Platform      string
+	Version       int
+	Framework     string
+	customTypes   set.Set[string]
+	customMethods set.Set[string]
+	enumCache     map[string][]Symbol
+	genCache      map[string]codegen.CodeGen
 }
 
 func (db *Generator) Generate(platform string, version int, rootDir string, framework string, ignoreTypes set.Set[string]) {
@@ -27,6 +29,10 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 	module := modules.Get(framework)
 	db.Framework = module.Package
 	modsym := db.ModuleSymbol(*module)
+
+	types, methods := exportedSourceSymbols(fmt.Sprintf("%s/%s/%s_custom.go", rootDir, db.Framework, db.Framework))
+	db.customTypes = set.New(types...)
+	db.customMethods = set.New(methods...)
 
 	RemoveGeneratedCode(fmt.Sprintf("%s/%s", rootDir, db.Framework))
 
@@ -45,6 +51,10 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 		}
 		switch s.Kind {
 		case "Class":
+			if db.customTypes.Contains(modules.TrimPrefix(s.Name)) {
+				log.Println("skipping class with custom definition", s.Name)
+				continue
+			}
 			classGen := db.ToClassGen(s)
 			if classGen == nil {
 				log.Println("skipping class", s.Name)
@@ -64,6 +74,18 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				log.Println("skipping protocol", s.Name)
 				continue
 			}
+			if db.customTypes.Contains("P" + modules.TrimPrefix(s.Name)) {
+				log.Println("skipping protocol interface with custom definition", s.Name)
+				protocolGen.SkipInterface = true
+			}
+			if db.customTypes.Contains(modules.TrimPrefix(s.Name) + "Wrapper") {
+				log.Println("skipping protocol wrapper with custom definition", s.Name)
+				protocolGen.SkipWrapper = true
+			}
+			if db.customTypes.Contains(modules.TrimPrefix(s.Name)) {
+				log.Println("skipping protocol delegate with custom definition", s.Name)
+				protocolGen.SkipDelegate = true
+			}
 			protocolGen.Init()
 			fw := &codegen.FileWriter{
 				Name:        s.Name,
@@ -75,10 +97,19 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 			mw.Protocols = append(mw.Protocols, protocolGen.Type)
 		case "Enum":
 			if s.Name == "MTLArgumentAccess" {
+				// todo: regen metal without this skip to see why
+				continue
+			}
+			if db.customTypes.Contains(modules.TrimPrefix(s.Name)) {
+				log.Println("skipping enum with custom definition", s.Name)
 				continue
 			}
 			mw.EnumAliases = append(mw.EnumAliases, db.ToEnumInfo(framework, s))
 		case "Type":
+			if db.customTypes.Contains(modules.TrimPrefix(s.Name)) {
+				log.Println("skipping type with custom definition", s.Name)
+				continue
+			}
 			if db.AllowedEnumAlias(s) {
 				mw.EnumAliases = append(mw.EnumAliases, db.ToEnumInfo(framework, s))
 				continue
