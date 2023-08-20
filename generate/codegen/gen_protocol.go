@@ -20,6 +20,10 @@ type Protocol struct {
 	Description string
 	DocURL      string
 
+	SkipInterface bool
+	SkipWrapper   bool
+	SkipDelegate  bool
+
 	init bool
 }
 
@@ -104,18 +108,23 @@ func (p *Protocol) GoImports() set.Set[string] {
 func (p *Protocol) WriteGoCode(w *CodeWriter) {
 	w.WriteLine("")
 
-	// Protocol Interface
-	p.writeProtocolInterface(w)
+	if !p.SkipInterface {
+		p.writeProtocolInterface(w)
+	}
 
 	// Delegate Prototol impl struct
 	w.WriteLine("")
-	if strings.Contains(p.Type.GName, "Delegate") {
+
+	if strings.Contains(p.Type.GName, "Delegate") && !p.SkipDelegate {
 		p.writeDelegateStruct(w)
 	}
 
-	// Protocol Wrapper
 	w.WriteLine("")
-	p.writeProtocolWrapperStruct(w)
+
+	if !p.SkipWrapper {
+		p.writeProtocolWrapperStruct(w)
+	}
+
 }
 
 func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
