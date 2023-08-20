@@ -104,12 +104,12 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		typ, err := sym.Parse(db.Platform)
 		if err != nil {
 			fmt.Printf("TypeFromSymbol: failed to parse %s: %s\n", sym.Declaration, err)
-			panic("bad function")
+			panic("bad function decl")
 		}
 		fn := typ.Function
 		if fn == nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
-			panic("bad function")
+			panic("bad function decl")
 		}
 		ft := &typing.FunctionType{
 			Name:   sym.Name,
