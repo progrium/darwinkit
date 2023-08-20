@@ -101,11 +101,28 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Module: modules.Get(module),
 		}
 	case "Function":
+		typ, err := sym.Parse(db.Platform)
+		if err != nil {
+			fmt.Printf("TypeFromSymbol: failed to parse %s: %s\n", sym.Declaration, err)
+			panic("bad function")
+		}
+		fn := typ.Function
+		if fn == nil {
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			panic("bad function")
+		}
 		ft := &typing.FunctionType{
 			Name:   sym.Name,
 			GName:  modules.TrimPrefix(sym.Name),
 			Module: modules.Get(module),
 		}
+		for _, arg := range fn.Args {
+			ft.Parameters = append(ft.Parameters, typing.Parameter{
+				Name: arg.Name,
+				Type: db.ParseType(arg.Type),
+			})
+		}
+		ft.ReturnType = db.ParseType(fn.ReturnType)
 		// TODO: parse function params and return type from declaration
 		return ft
 	default:

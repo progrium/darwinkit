@@ -129,7 +129,7 @@ func (m *ModuleWriter) WriteFunctions() {
 			cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", fa.Description))
 			cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", fa.DocURL))
 		}
-		cw.WriteLineF("// func %s(%s) %s", fa.Name, fa.GoArgs(), fa.GoReturn())
+		cw.WriteLineF("// func %s(%s) %s {}", fa.GoName, fa.GoArgs(&m.Module), fa.GoReturn(&m.Module))
 	}
 }
 

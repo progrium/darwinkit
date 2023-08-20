@@ -16,7 +16,7 @@ type Function struct {
 	Type        *typing.FunctionType
 	Name        string // the first part of objc function name
 	GoName      string
-	Params      []*Param
+	Parameters  []*Param
 	ReturnType  typing.Type
 	Deprecated  bool // if has been deprecated
 	Suffix      bool // GoName conflicts so add suffix to this function
@@ -28,20 +28,20 @@ type Function struct {
 }
 
 // GoArgs return go function args
-func (f *Function) GoArgs() string {
+func (f *Function) GoArgs(currentModule *modules.Module) string {
 	var args []string
-	for _, p := range f.Params {
-		args = append(args, p.GoName())
+	for _, p := range f.Parameters {
+		args = append(args, fmt.Sprintf("%s %s", p.Name, p.Type.GoName(currentModule, true)))
 	}
 	return strings.Join(args, ", ")
 }
 
 // GoReturn return go function return
-func (f *Function) GoReturn() string {
+func (f *Function) GoReturn(currentModule *modules.Module) string {
 	if f.ReturnType == nil {
 		return ""
 	}
-	return f.ReturnType.GoName(nil, true)
+	return f.ReturnType.GoName(currentModule, true)
 }
 
 // Selector return full Objc function name
@@ -49,7 +49,7 @@ func (f *Function) Selector() string {
 	if f.identifier == "" {
 		var sb strings.Builder
 		sb.WriteString(f.Name)
-		for idx, p := range f.Params {
+		for idx, p := range f.Parameters {
 			if idx > 0 {
 				sb.WriteString(p.FieldName)
 			}
@@ -69,7 +69,7 @@ func (f *Function) NormalizeInstanceTypeFunction(returnType *typing.ClassType) *
 	nm := &Function{
 		Name:       f.Name,
 		GoName:     f.GoName,
-		Params:     f.Params,
+		Parameters: f.Parameters,
 		ReturnType: returnType,
 		goFuncName: f.goFuncName,
 		Suffix:     f.Suffix,
@@ -107,7 +107,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 	}
 	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, f.Selector())
 	var sb strings.Builder
-	for idx, p := range f.Params {
+	for idx, p := range f.Parameters {
 		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
 		case *typing.ClassType:
@@ -154,7 +154,7 @@ func (f *Function) WriteGoInterfaceCode(currentModule *modules.Module, classType
 // GoFuncDeclare generate go function declaration
 func (f *Function) GoFuncDeclare(currentModule *modules.Module, goTypeName string) string {
 	var paramStrs []string
-	for _, p := range f.Params {
+	for _, p := range f.Parameters {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, false))
 	}
 
@@ -167,11 +167,11 @@ func (f *Function) GoFuncName() string {
 	if f.goFuncName == "" {
 		var sb strings.Builder
 		name := f.GoName
-		if len(f.Params) == 0 {
+		if len(f.Parameters) == 0 {
 			sb.WriteString(stringx.Capitalize(name))
 		}
 
-		for _, p := range f.Params {
+		for _, p := range f.Parameters {
 			sb.WriteString(stringx.Capitalize(p.FieldName))
 			if p.Object {
 				sb.WriteString("Object")
@@ -189,7 +189,7 @@ func (f *Function) GoFuncName() string {
 // ProtocolGoFuncFieldType generate go function declaration for protocol struct impl field
 func (f *Function) ProtocolGoFuncFieldType(currentModule *modules.Module) string {
 	var paramStrs []string
-	for _, p := range f.Params {
+	for _, p := range f.Parameters {
 		paramStrs = append(paramStrs, p.GoDeclare(currentModule, true))
 	}
 
@@ -201,7 +201,7 @@ func (f *Function) ProtocolGoFuncName() string {
 	if f.goFuncName == "" {
 		var sb strings.Builder
 		sb.WriteString(stringx.Capitalize(f.Name))
-		for idx, p := range f.Params {
+		for idx, p := range f.Parameters {
 			if idx == 0 {
 				continue
 			}
@@ -222,7 +222,7 @@ func (f *Function) ProtocolGoFuncName() string {
 // GoImports return all imports for go file
 func (f *Function) GoImports() set.Set[string] {
 	var imports = set.New("github.com/progrium/darwinkit/objc")
-	for _, param := range f.Params {
+	for _, param := range f.Parameters {
 		imports.AddSet(param.Type.GoImports())
 	}
 	if f.ReturnType != nil {
@@ -232,7 +232,7 @@ func (f *Function) GoImports() set.Set[string] {
 }
 
 func (f *Function) HasProtocolParam() bool {
-	for _, p := range f.Params {
+	for _, p := range f.Parameters {
 		switch p.Type.(type) {
 		case *typing.ProtocolType:
 			return true
@@ -242,8 +242,8 @@ func (f *Function) HasProtocolParam() bool {
 }
 
 func (f *Function) ToProtocolParamAsObjectFunction() *Function {
-	var newParams = make([]*Param, len(f.Params))
-	for i, p := range f.Params {
+	var newParams = make([]*Param, len(f.Parameters))
+	for i, p := range f.Parameters {
 		switch p.Type.(type) {
 		case *typing.ProtocolType:
 			newParams[i] = &Param{
@@ -259,7 +259,7 @@ func (f *Function) ToProtocolParamAsObjectFunction() *Function {
 	return &Function{
 		Name:        f.Name,
 		GoName:      f.GoName,
-		Params:      newParams,
+		Parameters:  newParams,
 		Suffix:      f.Suffix,
 		ReturnType:  f.ReturnType,
 		Deprecated:  f.Deprecated,

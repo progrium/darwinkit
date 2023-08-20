@@ -19,7 +19,7 @@ type FunctionType struct {
 	Module *modules.Module // object-c module
 
 	Parameters []Parameter // function parameters
-	Return     Type        // function return type
+	ReturnType Type        // function return type
 }
 
 var Function = &FunctionType{
