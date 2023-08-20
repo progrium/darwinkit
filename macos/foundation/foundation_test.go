@@ -20,3 +20,18 @@ func TestFoundationDictionary(t *testing.T) {
 		t.Fatal("unexpected final map from dictionary")
 	}
 }
+
+func TestFoundationArray(t *testing.T) {
+	s := String_StringWithString("one")
+	a1 := Array_ArrayWithObjects(s, "two", "three", nil)
+	s1 := ArrayToSlice[string](a1)
+	a2 := ArrayOf(s1)
+	s2 := ArrayToSlice[string](a2)
+	if !reflect.DeepEqual(s2, []string{
+		"one",
+		"two",
+		"three",
+	}) {
+		t.Fatal("unexpected final slice from array")
+	}
+}
