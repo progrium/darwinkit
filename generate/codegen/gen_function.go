@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/progrium/darwinkit/internal/set"
-	"github.com/progrium/darwinkit/internal/stringx"
 
 	"github.com/progrium/darwinkit/generate/modules"
 	"github.com/progrium/darwinkit/generate/typing"
@@ -51,6 +50,16 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 	return f.ReturnType.GoName(currentModule, true)
 }
 
+// CArgs return go function args
+func (f *Function) CArgs(currentModule *modules.Module) string {
+	// log.Println("rendering function", f.Name)
+	var args []string
+	for _, p := range f.Parameters {
+		args = append(args, fmt.Sprintf("%s %s", p.Type.ObjcName(), p.Name))
+	}
+	return strings.Join(args, ", ")
+}
+
 // Selector return full Objc function name
 func (f *Function) Selector() string {
 	if f.identifier == "" {
@@ -85,8 +94,8 @@ func (f *Function) NormalizeInstanceTypeFunction(returnType *typing.ClassType) *
 }
 
 // WriteGoCallCode generate go function code to call c wrapper code
-func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName string, cw *CodeWriter) {
-	funcDeclare := f.GoFuncDeclare(currentModule, typeName)
+func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter) {
+	funcDeclare := f.GoFuncDeclare(currentModule)
 
 	if f.Deprecated {
 		return
@@ -98,10 +107,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 		cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", f.DocURL))
 	}
 
-	var receiver string
-	receiver = strings.ToLower(typeName[0:1] + "_")
-	cw.WriteLine("func (" + receiver + " " + typeName + ") " + funcDeclare + " {")
-
+	cw.WriteLine("func " + funcDeclare + " {")
 	cw.Indent()
 
 	var returnTypeStr string
@@ -112,7 +118,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 	default:
 		returnTypeStr = f.ReturnType.GoName(currentModule, true)
 	}
-	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, receiver, f.Selector())
+	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, f.Selector())
 	var sb strings.Builder
 	for idx, p := range f.Parameters {
 		sb.WriteString(", ")
@@ -148,82 +154,32 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, typeName strin
 	cw.WriteLine("}")
 }
 
+func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter) {
+	var returnTypeStr string
+	rt := typing.UnwrapAlias(f.ReturnType)
+	switch rt.(type) {
+	case *typing.VoidType:
+		returnTypeStr = "void *"
+	default:
+		returnTypeStr = f.ReturnType.ObjcName()
+	}
+	cw.WriteLineF("// %v %v(%v); ", returnTypeStr, f.GoName, f.CArgs(currentModule))
+}
+
 // WriteGoInterfaceCode generate go interface function signature code
 func (f *Function) WriteGoInterfaceCode(currentModule *modules.Module, classType *typing.ClassType, w *CodeWriter) {
 	if f.Deprecated {
 		return
 		w.WriteLine("// deprecated")
 	}
-	funcDeclare := f.GoFuncDeclare(currentModule, classType.GName)
+	funcDeclare := f.GoFuncDeclare(currentModule)
 	w.WriteLine(funcDeclare)
 }
 
 // GoFuncDeclare generate go function declaration
-func (f *Function) GoFuncDeclare(currentModule *modules.Module, goTypeName string) string {
-	var paramStrs []string
-	for _, p := range f.Parameters {
-		paramStrs = append(paramStrs, p.GoDeclare(currentModule, false))
-	}
-
-	var returnType = f.ReturnType.GoName(currentModule, true)
-	return f.GoFuncName() + "(" + strings.Join(paramStrs, ", ") + ")" + " " + returnType
-}
-
-// GoFuncName return go func name
-func (f *Function) GoFuncName() string {
-	if f.goFuncName == "" {
-		var sb strings.Builder
-		name := f.GoName
-		if len(f.Parameters) == 0 {
-			sb.WriteString(stringx.Capitalize(name))
-		}
-
-		for _, p := range f.Parameters {
-			sb.WriteString(stringx.Capitalize(p.FieldName))
-			if p.Object {
-				sb.WriteString("Object")
-			}
-		}
-
-		f.goFuncName = sb.String()
-	}
-	if f.Suffix || f.goFuncName == "Object" {
-		return f.goFuncName + "_"
-	}
-	return f.goFuncName
-}
-
-// ProtocolGoFuncFieldType generate go function declaration for protocol struct impl field
-func (f *Function) ProtocolGoFuncFieldType(currentModule *modules.Module) string {
-	var paramStrs []string
-	for _, p := range f.Parameters {
-		paramStrs = append(paramStrs, p.GoDeclare(currentModule, true))
-	}
-
-	return "(" + strings.Join(paramStrs, ", ") + ")" + " " + f.ReturnType.GoName(currentModule, false)
-}
-
-// ProtocolGoFuncName return go protocol func name
-func (f *Function) ProtocolGoFuncName() string {
-	if f.goFuncName == "" {
-		var sb strings.Builder
-		sb.WriteString(stringx.Capitalize(f.Name))
-		for idx, p := range f.Parameters {
-			if idx == 0 {
-				continue
-			}
-			sb.WriteString(stringx.Capitalize(p.FieldName))
-			if p.Object {
-				sb.WriteString("Object")
-			}
-		}
-
-		f.goFuncName = sb.String()
-	}
-	if f.Suffix {
-		return f.goFuncName + "_"
-	}
-	return f.goFuncName
+func (f *Function) GoFuncDeclare(currentModule *modules.Module) string {
+	var returnType = f.GoReturn(currentModule)
+	return f.Type.GoName(currentModule, true) + "(" + f.GoArgs(currentModule) + ") " + returnType
 }
 
 // GoImports return all imports for go file
@@ -236,41 +192,4 @@ func (f *Function) GoImports() set.Set[string] {
 		imports.AddSet(f.ReturnType.GoImports())
 	}
 	return imports
-}
-
-func (f *Function) HasProtocolParam() bool {
-	for _, p := range f.Parameters {
-		switch p.Type.(type) {
-		case *typing.ProtocolType:
-			return true
-		}
-	}
-	return false
-}
-
-func (f *Function) ToProtocolParamAsObjectFunction() *Function {
-	var newParams = make([]*Param, len(f.Parameters))
-	for i, p := range f.Parameters {
-		switch p.Type.(type) {
-		case *typing.ProtocolType:
-			newParams[i] = &Param{
-				Name:      p.Name,
-				Type:      typing.Object,
-				FieldName: p.FieldName,
-				Object:    true,
-			}
-		default:
-			newParams[i] = p
-		}
-	}
-	return &Function{
-		Name:        f.Name,
-		GoName:      f.GoName,
-		Parameters:  newParams,
-		Suffix:      f.Suffix,
-		ReturnType:  f.ReturnType,
-		Deprecated:  f.Deprecated,
-		Description: f.Description,
-		DocURL:      f.DocURL,
-	}
 }
