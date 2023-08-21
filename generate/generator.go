@@ -137,9 +137,23 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				})
 				continue
 			}
-			// any other type aliases can be added manually
-			// since they're just a go type alias or an
-			// unsafe.Pointer type
+		case "Function":
+			fn := db.ToFunction(framework, s)
+			if fn == nil {
+				continue
+			}
+			mw.Functions = append(mw.Functions, fn)
+		case "Struct":
+			if s.Name != "CGImageRef" {
+				continue
+			}
+			fn := db.ToStruct(framework, s)
+			if fn == nil {
+				continue
+			}
+			mw.Structs = append(mw.Structs, fn)
+		default:
+			log.Printf("skipping '%s', unhandled kind: %s", s.Name, s.Kind)
 		}
 	}
 	mw.WriteCode()

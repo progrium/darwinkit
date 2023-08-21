@@ -30,11 +30,11 @@ type Function struct {
 
 // GoArgs return go function args
 func (f *Function) GoArgs(currentModule *modules.Module) string {
-	log.Println("rendering function", f.Name)
+	// log.Println("rendering function", f.Name)
 	var args []string
 	for _, p := range f.Parameters {
 		log.Println("rendering function", f.Name, p.Name, p.Type)
-		log.Printf("type: %T", p.Type)
+		log.Printf("rendering function ptype: %T", p.Type)
 		if pt, ok := p.Type.(*typing.PointerType); ok {
 			log.Printf("ptr type: %T", pt.Type)
 		}

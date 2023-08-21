@@ -101,6 +101,9 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Module: modules.Get(module),
 		}
 	case "Function":
+		if sym.Name != "CGDisplayCreateImage" {
+			return nil
+		}
 		typ, err := sym.Parse(db.Platform)
 		if err != nil {
 			fmt.Printf("TypeFromSymbol: failed to parse %s: %s\n", sym.Declaration, err)
@@ -123,7 +126,6 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			})
 		}
 		ft.ReturnType = db.ParseType(fn.ReturnType)
-		// TODO: parse function params and return type from declaration
 		return ft
 	default:
 		fmt.Printf("TypeFromSymbol: kind=%s name=%s path=%s\n", sym.Kind, sym.Name, sym.Path)
@@ -143,6 +145,18 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 			}
 		}
 	}()
+	if ti.Name == "CFURLRef" {
+		log.Printf("ParseType: %s\n", ti.Name)
+		log.Printf("info: %v\n", ti)
+		log.Printf("info fn: %v\n", ti.Func)
+		defer func() {
+			log.Printf("info typ: %T %+v\n", typ, typ)
+			if pt, ok := typ.(*typing.PointerType); ok {
+				log.Printf("info typ: %T %+v\n", pt.Type, pt.Type)
+			}
+
+		}()
+	}
 	if ti.Func != nil {
 		var blockParams []typing.BlockParam
 		for _, arg := range ti.Func.Args {
@@ -226,17 +240,23 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 	default:
 		var ok bool
 		typ, ok = typing.GetPrimitiveType(ti.Name)
+		log.Println("primitive", ti.Name, ok)
 		if !ok {
 			typ, ok = typing.GetDispatchType(ti.Name)
 		}
+		log.Println("dispatch", ti.Name, ok)
 		if !ok {
 			typ, ok = typing.GetKernelType(ti.Name)
 		}
+		log.Println("kernel", ti.Name, ok)
 		if !ok {
 			typ = db.TypeFromSymbolName(ti.Name)
+			log.Println("symbol", ti.Name, typ, ok)
 			switch typ.(type) {
 			case *typing.ClassType:
 				ref = true
+			// case *typing.StructType:
+			// 	ref = true
 			case *typing.ProtocolType:
 				panic("standalone proto type")
 			}
@@ -247,6 +267,9 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		if _, ok := typ.(*typing.VoidType); ok {
 			typ = &typing.VoidPointerType{}
 		} else {
+			if typ == nil {
+				panic("nil type")
+			}
 			typ = &typing.PointerType{
 				Type: typ,
 			}

@@ -264,7 +264,7 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	for _, p := range fntyp.Parameters {
 		if p.Type == nil {
 			fmt.Printf("skipping %s: %s because of nil type\n", sym.Name, p.Name)
-			continue
+			return nil
 		}
 		fn.Parameters = append(fn.Parameters, &codegen.Param{
 			Name: p.Name,
