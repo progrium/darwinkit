@@ -66,7 +66,7 @@ Then in this directory run:
 
 ```
 go mod init helloworld
-go get github.com/progrium/macdriver@latest
+go get github.com/progrium/macdriver@main
 go run main.go
 ```
 
