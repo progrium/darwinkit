@@ -81,19 +81,6 @@ func (f *Function) String() string {
 	return f.Selector()
 }
 
-// NormalizeInstanceTypeFunction return new init function.
-func (f *Function) NormalizeInstanceTypeFunction(returnType *typing.ClassType) *Function {
-	nm := &Function{
-		Name:       f.Name,
-		GoName:     f.GoName,
-		Parameters: f.Parameters,
-		ReturnType: returnType,
-		goFuncName: f.goFuncName,
-		Suffix:     f.Suffix,
-	}
-	return nm
-}
-
 // WriteGoCallCode generate go function code to call c wrapper code
 func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter) {
 	funcDeclare := f.GoFuncDeclare(currentModule)
