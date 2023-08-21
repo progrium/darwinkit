@@ -2,6 +2,16 @@
 
 Working with Objective-C from Go requires understanding how [Objective-C memory management works](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html#//apple_ref/doc/uid/10000011-SW1) and how DarwinKit facilitates the co-existance of the two memory management systems. 
 
+### Quick Version
+
+ARC is a feature of the Objective-C compiler, which does not compile Go code. Therefore memory management of Objective-C objects in Go is done with MMR. DarwinKit continues the policy of "the code that allocates is the code responsible for releasing" so unless you explicitly call the `Alloc()` method, you can assume `Autorelease()` has been called on the object unless documented otherwise. 
+
+This applies to the Go-style constructors made for classes, which are the functions prefixed with "New". This also means all code should be run in an autorelease pool. This is already the case for most delegates and callbacks since these are called from the AppKit event loop, which has an autorelease pool for every cycle of the loop. Code outside this loop (such as code run before appkit.Application is run, or code in a goroutine) should be wrapped in [objc.WithAutoreleasePool](https://pkg.go.dev/github.com/progrium/macdriver@main/objc#WithAutoreleasePool). 
+
+Objects that you want to retain should be passed by reference to [objc.Retain](https://pkg.go.dev/github.com/progrium/macdriver@main/objc#Retain). Using this instead of the object's `Retain()` method directly will let the Go GC know it should release the object before cleaning it up. Objects that only need to exist within the current event cycle don't need to be retained. Objects passed to other objects that need to be retained by them should be retained by the receiving object. If you get an unexplained segfault, chances are an object needed to be retained. A common situation for this are appkit.Windows you create. 
+
+### Full Explanation
+
 Objective-C uses reference counting or a "retain and release" model where objects are deallocated when their internal retain count reaches zero. When an object is allocated, its retain count is set to 1. It is the responsibility of the allocating code to release the object when finished, decrementing its retain count by 1. This would deallocate the object unless other code has retained the object, incrementing the retain count by 1. Every alloc or retain must have a subsequent release.
 
 It should be noted that modern Objective-C and Swift code don't have to do this manual retain and release process because of Automatic Reference Counting, or ARC, which is a feature of their compiler that figures out where to insert retains and releases for you. Our code is compiled by Go so we don't get to take advantage of this, but we do have access to the underlying retain and release methods.
