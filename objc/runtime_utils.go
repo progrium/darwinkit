@@ -35,7 +35,9 @@ func WithAutoreleasePool(task func()) {
 	C.Run_WithAutoreleasePool(C.uintptr_t(id))
 }
 
-// Retain retains the object and sets a finalizer to release.
+// Retain will retain the object and set a finalizer for the Go GC to release.
+// This is the preferred way to retain objects. Note the object
+// must be passed by reference.
 func Retain(o IObject) {
 	o.Retain()
 	runtime.SetFinalizer(o, func(o IObject) {
