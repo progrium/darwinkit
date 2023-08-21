@@ -79,8 +79,10 @@ func (i_ Image) InitWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Imag
 // Initializes an image object from the contents of a Core Video image buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438012-initwithcvimagebuffer?language=objc
-func Image_InitWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
-	return ImageClass.Alloc().InitWithCVImageBuffer(imageBuffer)
+func NewImageWithCVImageBuffer(imageBuffer corevideo.ImageBufferRef) Image {
+	instance := ImageClass.Alloc().InitWithCVImageBuffer(imageBuffer)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithIOSurface(surface iosurface.Ref) Image {
@@ -91,8 +93,10 @@ func (i_ Image) InitWithIOSurface(surface iosurface.Ref) Image {
 // Initializes an image with the contents of an IOSurface. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438030-initwithiosurface?language=objc
-func Image_InitWithIOSurface(surface iosurface.Ref) Image {
-	return ImageClass.Alloc().InitWithIOSurface(surface)
+func NewImageWithIOSurface(surface iosurface.Ref) Image {
+	instance := ImageClass.Alloc().InitWithIOSurface(surface)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
@@ -103,8 +107,10 @@ func (i_ Image) InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, b
 // Initializes an image object with bitmap data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437857-initwithbitmapdata?language=objc
-func Image_InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
-	return ImageClass.Alloc().InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
+func NewImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytesPerRow uint, size coregraphics.Size, format Format, colorSpace coregraphics.ColorSpaceRef) Image {
+	instance := ImageClass.Alloc().InitWithBitmapDataBytesPerRowSizeFormatColorSpace(data, bytesPerRow, size, format, colorSpace)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithColor(color IColor) Image {
@@ -115,8 +121,10 @@ func (i_ Image) InitWithColor(color IColor) Image {
 // Initializes an image of infinite extent whose entire content is the specified color. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437947-initwithcolor?language=objc
-func Image_InitWithColor(color IColor) Image {
-	return ImageClass.Alloc().InitWithColor(color)
+func NewImageWithColor(color IColor) Image {
+	instance := ImageClass.Alloc().InitWithColor(color)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithData(data []byte) Image {
@@ -127,8 +135,10 @@ func (i_ Image) InitWithData(data []byte) Image {
 // Initializes an image object with the supplied image data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437925-initwithdata?language=objc
-func Image_InitWithData(data []byte) Image {
-	return ImageClass.Alloc().InitWithData(data)
+func NewImageWithData(data []byte) Image {
+	instance := ImageClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
@@ -139,8 +149,10 @@ func (i_ Image) InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
 // Initializes an image object with the specified bitmap image representation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1535335-initwithbitmapimagerep?language=objc
-func Image_InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
-	return ImageClass.Alloc().InitWithBitmapImageRep(bitmapImageRep)
+func NewImageWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
+	instance := ImageClass.Alloc().InitWithBitmapImageRep(bitmapImageRep)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithMTLTextureOptions(texture metal.PTexture, options map[ImageOption]objc.IObject) Image {
@@ -152,8 +164,10 @@ func (i_ Image) InitWithMTLTextureOptions(texture metal.PTexture, options map[Im
 // Initializes an image object with data supplied by a Metal texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437890-initwithmtltexture?language=objc
-func Image_InitWithMTLTextureOptions(texture metal.PTexture, options map[ImageOption]objc.IObject) Image {
-	return ImageClass.Alloc().InitWithMTLTextureOptions(texture, options)
+func NewImageWithMTLTextureOptions(texture metal.PTexture, options map[ImageOption]objc.IObject) Image {
+	instance := ImageClass.Alloc().InitWithMTLTextureOptions(texture, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
@@ -164,8 +178,10 @@ func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
 // Initializes an image object by reading an image from a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437908-initwithcontentsofurl?language=objc
-func Image_InitWithContentsOfURL(url foundation.IURL) Image {
-	return ImageClass.Alloc().InitWithContentsOfURL(url)
+func NewImageWithContentsOfURL(url foundation.IURL) Image {
+	instance := ImageClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithImageProviderSize(p objc.IObject, width uint) Image {
@@ -176,8 +192,10 @@ func (i_ Image) InitWithImageProviderSize(p objc.IObject, width uint) Image {
 // Initializes an image object with  data provided by an image provider, using the specified options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437868-initwithimageprovider?language=objc
-func Image_InitWithImageProviderSize(p objc.IObject, width uint) Image {
-	return ImageClass.Alloc().InitWithImageProviderSize(p, width)
+func NewImageWithImageProviderSize(p objc.IObject, width uint) Image {
+	instance := ImageClass.Alloc().InitWithImageProviderSize(p, width)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
@@ -188,8 +206,10 @@ func (i_ Image) InitWithCGImageSourceIndexOptions(source imageio.ImageSourceRef,
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/3152399-initwithcgimagesource?language=objc
-func Image_InitWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
-	return ImageClass.Alloc().InitWithCGImageSourceIndexOptions(source, index, dict)
+func NewImageWithCGImageSourceIndexOptions(source imageio.ImageSourceRef, index uint, dict map[ImageOption]objc.IObject) Image {
+	instance := ImageClass.Alloc().InitWithCGImageSourceIndexOptions(source, index, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithCGImage(image coregraphics.ImageRef) Image {
@@ -200,8 +220,10 @@ func (i_ Image) InitWithCGImage(image coregraphics.ImageRef) Image {
 // Initializes an image object with a Quartz 2D image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437986-initwithcgimage?language=objc
-func Image_InitWithCGImage(image coregraphics.ImageRef) Image {
-	return ImageClass.Alloc().InitWithCGImage(image)
+func NewImageWithCGImage(image coregraphics.ImageRef) Image {
+	instance := ImageClass.Alloc().InitWithCGImage(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
@@ -212,8 +234,10 @@ func (i_ Image) InitWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Imag
 // Initializes an image object from the contents of a Core Video pixel buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1438072-initwithcvpixelbuffer?language=objc
-func Image_InitWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
-	return ImageClass.Alloc().InitWithCVPixelBuffer(pixelBuffer)
+func NewImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
+	instance := ImageClass.Alloc().InitWithCVPixelBuffer(pixelBuffer)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _ImageClass) Alloc() Image {

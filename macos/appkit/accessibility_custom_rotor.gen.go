@@ -52,8 +52,10 @@ func (a_ AccessibilityCustomRotor) InitWithRotorTypeItemSearchDelegate(rotorType
 // Creates a custom rotor with the specified rotor type and item search delegate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876299-initwithrotortype?language=objc
-func AccessibilityCustomRotor_InitWithRotorTypeItemSearchDelegate(rotorType AccessibilityCustomRotorType, itemSearchDelegate PAccessibilityCustomRotorItemSearchDelegate) AccessibilityCustomRotor {
-	return AccessibilityCustomRotorClass.Alloc().InitWithRotorTypeItemSearchDelegate(rotorType, itemSearchDelegate)
+func NewAccessibilityCustomRotorWithRotorTypeItemSearchDelegate(rotorType AccessibilityCustomRotorType, itemSearchDelegate PAccessibilityCustomRotorItemSearchDelegate) AccessibilityCustomRotor {
+	instance := AccessibilityCustomRotorClass.Alloc().InitWithRotorTypeItemSearchDelegate(rotorType, itemSearchDelegate)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AccessibilityCustomRotor) InitWithLabelItemSearchDelegate(label string, itemSearchDelegate PAccessibilityCustomRotorItemSearchDelegate) AccessibilityCustomRotor {
@@ -65,8 +67,10 @@ func (a_ AccessibilityCustomRotor) InitWithLabelItemSearchDelegate(label string,
 // Creates a custom rotor with the specified label and item search delegate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876333-initwithlabel?language=objc
-func AccessibilityCustomRotor_InitWithLabelItemSearchDelegate(label string, itemSearchDelegate PAccessibilityCustomRotorItemSearchDelegate) AccessibilityCustomRotor {
-	return AccessibilityCustomRotorClass.Alloc().InitWithLabelItemSearchDelegate(label, itemSearchDelegate)
+func NewAccessibilityCustomRotorWithLabelItemSearchDelegate(label string, itemSearchDelegate PAccessibilityCustomRotorItemSearchDelegate) AccessibilityCustomRotor {
+	instance := AccessibilityCustomRotorClass.Alloc().InitWithLabelItemSearchDelegate(label, itemSearchDelegate)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AccessibilityCustomRotorClass) Alloc() AccessibilityCustomRotor {

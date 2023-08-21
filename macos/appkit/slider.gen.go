@@ -113,8 +113,10 @@ func (s_ Slider) InitWithFrame(frameRect foundation.Rect) Slider {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Slider_InitWithFrame(frameRect foundation.Rect) Slider {
-	return SliderClass.Alloc().InitWithFrame(frameRect)
+func NewSliderWithFrame(frameRect foundation.Rect) Slider {
+	instance := SliderClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the bounding rectangle of the tick mark at the given index. [Full Topic]

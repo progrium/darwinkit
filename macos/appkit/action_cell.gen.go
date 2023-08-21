@@ -65,8 +65,10 @@ func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func ActionCell_InitImageCell(image IImage) ActionCell {
-	return ActionCellClass.Alloc().InitImageCell(image)
+func NewActionCellImageCell(image IImage) ActionCell {
+	instance := ActionCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ ActionCell) InitTextCell(string_ string) ActionCell {
@@ -77,6 +79,8 @@ func (a_ ActionCell) InitTextCell(string_ string) ActionCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func ActionCell_InitTextCell(string_ string) ActionCell {
-	return ActionCellClass.Alloc().InitTextCell(string_)
+func NewActionCellTextCell(string_ string) ActionCell {
+	instance := ActionCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }

@@ -68,8 +68,10 @@ func (s_ SharingServicePickerToolbarItem) InitWithItemIdentifier(itemIdentifier 
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func SharingServicePickerToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SharingServicePickerToolbarItem {
-	return SharingServicePickerToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewSharingServicePickerToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SharingServicePickerToolbarItem {
+	instance := SharingServicePickerToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The custom object from your app that provides the items to share. [Full Topic]

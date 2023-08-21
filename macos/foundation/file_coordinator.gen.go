@@ -50,8 +50,10 @@ func (f_ FileCoordinator) InitWithFilePresenter(filePresenterOrNil PFilePresente
 // Initializes and returns a file coordinator object using the specified file presenter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1416795-initwithfilepresenter?language=objc
-func FileCoordinator_InitWithFilePresenter(filePresenterOrNil PFilePresenter) FileCoordinator {
-	return FileCoordinatorClass.Alloc().InitWithFilePresenter(filePresenterOrNil)
+func NewFileCoordinatorWithFilePresenter(filePresenterOrNil PFilePresenter) FileCoordinator {
+	instance := FileCoordinatorClass.Alloc().InitWithFilePresenter(filePresenterOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FileCoordinatorClass) Alloc() FileCoordinator {

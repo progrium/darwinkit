@@ -91,8 +91,10 @@ func (v_ ViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOr
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func ViewController_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
-	return ViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
+	instance := ViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _ViewControllerClass) Alloc() ViewController {

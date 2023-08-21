@@ -77,8 +77,10 @@ func (u_ UnitLength) InitWithSymbolConverter(symbol string, converter IUnitConve
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitLength_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitLength {
-	return UnitLengthClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitLengthWithSymbolConverter(symbol string, converter IUnitConverter) UnitLength {
+	instance := UnitLengthClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitLength) InitWithSymbol(symbol string) UnitLength {
@@ -89,8 +91,10 @@ func (u_ UnitLength) InitWithSymbol(symbol string) UnitLength {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitLength_InitWithSymbol(symbol string) UnitLength {
-	return UnitLengthClass.Alloc().InitWithSymbol(symbol)
+func NewUnitLengthWithSymbol(symbol string) UnitLength {
+	instance := UnitLengthClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The parsecs unit of length. [Full Topic]

@@ -219,8 +219,10 @@ func (t_ TextView) InitWithFrameTextContainer(frameRect foundation.Rect, contain
 // Initializes a text view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449347-initwithframe?language=objc
-func TextView_InitWithFrameTextContainer(frameRect foundation.Rect, container ITextContainer) TextView {
-	return TextViewClass.Alloc().InitWithFrameTextContainer(frameRect, container)
+func NewTextViewWithFrameTextContainer(frameRect foundation.Rect, container ITextContainer) TextView {
+	instance := TextViewClass.Alloc().InitWithFrameTextContainer(frameRect, container)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextViewClass) Alloc() TextView {
@@ -255,8 +257,10 @@ func (t_ TextView) InitWithFrame(frameRect foundation.Rect) TextView {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1525191-initwithframe?language=objc
-func TextView_InitWithFrame(frameRect foundation.Rect) TextView {
-	return TextViewClass.Alloc().InitWithFrame(frameRect)
+func NewTextViewWithFrame(frameRect foundation.Rect) TextView {
+	instance := TextViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Begins dragging the current selected text range. [Full Topic]

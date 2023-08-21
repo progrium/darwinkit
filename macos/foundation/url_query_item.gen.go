@@ -43,8 +43,10 @@ func (u_ URLQueryItem) InitWithNameValue(name string, value string) URLQueryItem
 // Initializes a newly allocated query item with the specified name and value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlqueryitem/1410963-initwithname?language=objc
-func URLQueryItem_InitWithNameValue(name string, value string) URLQueryItem {
-	return URLQueryItemClass.Alloc().InitWithNameValue(name, value)
+func NewURLQueryItemWithNameValue(name string, value string) URLQueryItem {
+	instance := URLQueryItemClass.Alloc().InitWithNameValue(name, value)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLQueryItemClass) QueryItemWithNameValue(name string, value string) URLQueryItem {

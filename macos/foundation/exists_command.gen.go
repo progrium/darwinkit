@@ -65,6 +65,8 @@ func (e_ ExistsCommand) InitWithCommandDescription(commandDef IScriptCommandDesc
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func ExistsCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) ExistsCommand {
-	return ExistsCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewExistsCommandWithCommandDescription(commandDef IScriptCommandDescription) ExistsCommand {
+	instance := ExistsCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }

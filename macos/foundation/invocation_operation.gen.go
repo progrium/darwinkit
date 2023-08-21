@@ -43,8 +43,10 @@ func (i_ InvocationOperation) InitWithInvocation(inv IInvocation) InvocationOper
 // Returns an NSInvocationOperation object initialized with the specified invocation object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocationoperation/1543647-initwithinvocation?language=objc
-func InvocationOperation_InitWithInvocation(inv IInvocation) InvocationOperation {
-	return InvocationOperationClass.Alloc().InitWithInvocation(inv)
+func NewInvocationOperationWithInvocation(inv IInvocation) InvocationOperation {
+	instance := InvocationOperationClass.Alloc().InitWithInvocation(inv)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ InvocationOperation) InitWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
@@ -55,8 +57,10 @@ func (i_ InvocationOperation) InitWithTargetSelectorObject(target objc.IObject, 
 // Returns an NSInvocationOperation object initialized with the specified target and selector. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocationoperation/1543653-initwithtarget?language=objc
-func InvocationOperation_InitWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
-	return InvocationOperationClass.Alloc().InitWithTargetSelectorObject(target, sel, arg)
+func NewInvocationOperationWithTargetSelectorObject(target objc.IObject, sel objc.Selector, arg objc.IObject) InvocationOperation {
+	instance := InvocationOperationClass.Alloc().InitWithTargetSelectorObject(target, sel, arg)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _InvocationOperationClass) Alloc() InvocationOperation {

@@ -112,8 +112,10 @@ func (s_ StackView) InitWithFrame(frameRect foundation.Rect) StackView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func StackView_InitWithFrame(frameRect foundation.Rect) StackView {
-	return StackViewClass.Alloc().InitWithFrame(frameRect)
+func NewStackViewWithFrame(frameRect foundation.Rect) StackView {
+	instance := StackViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Removes a specified view from the stack view. [Full Topic]

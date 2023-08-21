@@ -45,8 +45,10 @@ func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContent
 // Creates a new text element with the content manager you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809955-initwithtextcontentmanager?language=objc
-func TextElement_InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
-	return TextElementClass.Alloc().InitWithTextContentManager(textContentManager)
+func NewTextElementWithTextContentManager(textContentManager ITextContentManager) TextElement {
+	instance := TextElementClass.Alloc().InitWithTextContentManager(textContentManager)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextElementClass) Alloc() TextElement {

@@ -77,8 +77,10 @@ func (u_ UnitElectricCharge) InitWithSymbolConverter(symbol string, converter IU
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitElectricCharge_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCharge {
-	return UnitElectricChargeClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitElectricChargeWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCharge {
+	instance := UnitElectricChargeClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitElectricCharge) InitWithSymbol(symbol string) UnitElectricCharge {
@@ -89,8 +91,10 @@ func (u_ UnitElectricCharge) InitWithSymbol(symbol string) UnitElectricCharge {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitElectricCharge_InitWithSymbol(symbol string) UnitElectricCharge {
-	return UnitElectricChargeClass.Alloc().InitWithSymbol(symbol)
+func NewUnitElectricChargeWithSymbol(symbol string) UnitElectricCharge {
+	instance := UnitElectricChargeClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The kiloampere hours unit of electric charge. [Full Topic]

@@ -60,8 +60,10 @@ func (l_ LevelIndicatorCell) InitWithLevelIndicatorStyle(levelIndicatorStyle Lev
 // Initializes the receiver with the style specified by levelIndicatorStyle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicatorcell/1527498-initwithlevelindicatorstyle?language=objc
-func LevelIndicatorCell_InitWithLevelIndicatorStyle(levelIndicatorStyle LevelIndicatorStyle) LevelIndicatorCell {
-	return LevelIndicatorCellClass.Alloc().InitWithLevelIndicatorStyle(levelIndicatorStyle)
+func NewLevelIndicatorCellWithLevelIndicatorStyle(levelIndicatorStyle LevelIndicatorStyle) LevelIndicatorCell {
+	instance := LevelIndicatorCellClass.Alloc().InitWithLevelIndicatorStyle(levelIndicatorStyle)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LevelIndicatorCellClass) Alloc() LevelIndicatorCell {
@@ -96,8 +98,10 @@ func (l_ LevelIndicatorCell) InitImageCell(image IImage) LevelIndicatorCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func LevelIndicatorCell_InitImageCell(image IImage) LevelIndicatorCell {
-	return LevelIndicatorCellClass.Alloc().InitImageCell(image)
+func NewLevelIndicatorCellImageCell(image IImage) LevelIndicatorCell {
+	instance := LevelIndicatorCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LevelIndicatorCell) InitTextCell(string_ string) LevelIndicatorCell {
@@ -108,8 +112,10 @@ func (l_ LevelIndicatorCell) InitTextCell(string_ string) LevelIndicatorCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func LevelIndicatorCell_InitTextCell(string_ string) LevelIndicatorCell {
-	return LevelIndicatorCellClass.Alloc().InitTextCell(string_)
+func NewLevelIndicatorCellTextCell(string_ string) LevelIndicatorCell {
+	instance := LevelIndicatorCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the bounding rectangle of the tick mark identified by index (the minimum-value tick mark is at index 0). [Full Topic]

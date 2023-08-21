@@ -49,8 +49,10 @@ func (p_ PositionalSpecifier) InitWithPositionObjectSpecifier(position Insertion
 // Initializes a positional specifier with a given position relative to another given specifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1416546-initwithposition?language=objc
-func PositionalSpecifier_InitWithPositionObjectSpecifier(position InsertionPosition, specifier IScriptObjectSpecifier) PositionalSpecifier {
-	return PositionalSpecifierClass.Alloc().InitWithPositionObjectSpecifier(position, specifier)
+func NewPositionalSpecifierWithPositionObjectSpecifier(position InsertionPosition, specifier IScriptObjectSpecifier) PositionalSpecifier {
+	instance := PositionalSpecifierClass.Alloc().InitWithPositionObjectSpecifier(position, specifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PositionalSpecifierClass) Alloc() PositionalSpecifier {

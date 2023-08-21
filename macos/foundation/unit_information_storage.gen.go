@@ -77,8 +77,10 @@ func (u_ UnitInformationStorage) InitWithSymbolConverter(symbol string, converte
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitInformationStorage_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitInformationStorage {
-	return UnitInformationStorageClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitInformationStorageWithSymbolConverter(symbol string, converter IUnitConverter) UnitInformationStorage {
+	instance := UnitInformationStorageClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitInformationStorage) InitWithSymbol(symbol string) UnitInformationStorage {
@@ -89,8 +91,10 @@ func (u_ UnitInformationStorage) InitWithSymbol(symbol string) UnitInformationSt
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitInformationStorage_InitWithSymbol(symbol string) UnitInformationStorage {
-	return UnitInformationStorageClass.Alloc().InitWithSymbol(symbol)
+func NewUnitInformationStorageWithSymbol(symbol string) UnitInformationStorage {
+	instance := UnitInformationStorageClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The gibibytes unit of information. [Full Topic]

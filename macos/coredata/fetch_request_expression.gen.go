@@ -69,8 +69,10 @@ func (f_ FetchRequestExpression) InitWithExpressionType(type_ foundation.Express
 // Creates the expression with the specified expression type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1418351-initwithexpressiontype?language=objc
-func FetchRequestExpression_InitWithExpressionType(type_ foundation.ExpressionType) FetchRequestExpression {
-	return FetchRequestExpressionClass.Alloc().InitWithExpressionType(type_)
+func NewFetchRequestExpressionWithExpressionType(type_ foundation.ExpressionType) FetchRequestExpression {
+	instance := FetchRequestExpressionClass.Alloc().InitWithExpressionType(type_)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns an expression which will evaluate to the result of executing a fetch request on a context. [Full Topic]

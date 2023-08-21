@@ -8,6 +8,7 @@ import (
 
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/macdriver/objc"
 )
 
 func init() {
@@ -28,7 +29,7 @@ func main() {
 	fmt.Println(text)
 
 	tr, fontSize := func() (rect foundation.Rect, size float64) {
-		t := appkit.TextView_InitWithFrame(rectOf(0, 0, 0, 0))
+		t := appkit.NewTextViewWithFrame(rectOf(0, 0, 0, 0))
 		t.SetString(text)
 		for s := 70.0; s <= 550; s += 12 {
 			t.SetFont(appkit.Font_FontWithNameSize(*fontName, s))
@@ -44,14 +45,14 @@ func main() {
 
 	height := tr.Size.Height * 1.5
 	tr.Origin.Y = (height / 2) - (tr.Size.Height / 2)
-	t := appkit.TextView_InitWithFrame(tr)
+	t := appkit.NewTextViewWithFrame(tr)
 	t.SetString(text)
 	t.SetFont(appkit.Font_FontWithNameSize(*fontName, fontSize))
 	t.SetEditable(false)
 	t.SetImportsGraphics(false)
 	t.SetDrawsBackground(false)
 
-	c := appkit.View_InitWithFrame(rectOf(0, 0, 0, 0))
+	c := appkit.NewViewWithFrame(rectOf(0, 0, 0, 0))
 	// deprecated...
 	// c.SetBackgroundColor(appkit.Color_ColorWithRedGreenBlueAlpha(0, 0, 0, 0.75))
 	c.SetWantsLayer(true)
@@ -62,8 +63,9 @@ func main() {
 	tr.Origin.X = (screen.Width / 2) - (tr.Size.Width / 2)
 	tr.Origin.Y = (screen.Height / 2) - (tr.Size.Height / 2)
 
-	w := appkit.Window_InitWithContentRectStyleMaskBackingDefer(rectOf(0, 0, 0, 0),
+	w := appkit.NewWindowWithContentRectStyleMaskBackingDefer(rectOf(0, 0, 0, 0),
 		appkit.WindowStyleMaskBorderless, appkit.BackingStoreBuffered, false)
+	objc.Retain(&w)
 	w.SetContentView(c)
 	w.SetTitlebarAppearsTransparent(true)
 	w.SetTitleVisibility(appkit.WindowTitleHidden)

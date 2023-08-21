@@ -44,8 +44,10 @@ func (l_ LocationSortDescriptor) InitWithKeyRelativeLocation(key string, relativ
 // Creates a location sort descriptor using the specified key and relative location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cklocationsortdescriptor/1515071-initwithkey?language=objc
-func LocationSortDescriptor_InitWithKeyRelativeLocation(key string, relativeLocation corelocation.ILocation) LocationSortDescriptor {
-	return LocationSortDescriptorClass.Alloc().InitWithKeyRelativeLocation(key, relativeLocation)
+func NewLocationSortDescriptorWithKeyRelativeLocation(key string, relativeLocation corelocation.ILocation) LocationSortDescriptor {
+	instance := LocationSortDescriptorClass.Alloc().InitWithKeyRelativeLocation(key, relativeLocation)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocationSortDescriptorClass) Alloc() LocationSortDescriptor {
@@ -92,8 +94,10 @@ func (l_ LocationSortDescriptor) InitWithKeyAscending(key string, ascending bool
 // Creates a sort descriptor with a specified string key path and sort order. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1413572-initwithkey?language=objc
-func LocationSortDescriptor_InitWithKeyAscending(key string, ascending bool) LocationSortDescriptor {
-	return LocationSortDescriptorClass.Alloc().InitWithKeyAscending(key, ascending)
+func NewLocationSortDescriptorWithKeyAscending(key string, ascending bool) LocationSortDescriptor {
+	instance := LocationSortDescriptorClass.Alloc().InitWithKeyAscending(key, ascending)
+	instance.Autorelease()
+	return instance
 }
 
 // The reference location for sorting records. [Full Topic]

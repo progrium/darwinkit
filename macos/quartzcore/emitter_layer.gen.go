@@ -108,8 +108,10 @@ func (e_ EmitterLayer) InitWithLayer(layer objc.IObject) EmitterLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func EmitterLayer_InitWithLayer(layer objc.IObject) EmitterLayer {
-	return EmitterLayerClass.Alloc().InitWithLayer(layer)
+func NewEmitterLayerWithLayer(layer objc.IObject) EmitterLayer {
+	instance := EmitterLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (e_ EmitterLayer) ModelLayer() EmitterLayer {
@@ -121,7 +123,9 @@ func (e_ EmitterLayer) ModelLayer() EmitterLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func EmitterLayer_ModelLayer() EmitterLayer {
-	return EmitterLayerClass.Alloc().ModelLayer()
+	instance := EmitterLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (e_ EmitterLayer) PresentationLayer() EmitterLayer {
@@ -133,7 +137,9 @@ func (e_ EmitterLayer) PresentationLayer() EmitterLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func EmitterLayer_PresentationLayer() EmitterLayer {
-	return EmitterLayerClass.Alloc().PresentationLayer()
+	instance := EmitterLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // Defines a multiplier applied to the cell-defined particle scale. [Full Topic]

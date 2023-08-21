@@ -45,8 +45,10 @@ func (p_ PersistentCloudKitContainerOptions) InitWithContainerIdentifier(contain
 // Initializes container options using the given CloudKit container identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcloudkitcontaineroptions/3141675-initwithcontaineridentifier?language=objc
-func PersistentCloudKitContainerOptions_InitWithContainerIdentifier(containerIdentifier string) PersistentCloudKitContainerOptions {
-	return PersistentCloudKitContainerOptionsClass.Alloc().InitWithContainerIdentifier(containerIdentifier)
+func NewPersistentCloudKitContainerOptionsWithContainerIdentifier(containerIdentifier string) PersistentCloudKitContainerOptions {
+	instance := PersistentCloudKitContainerOptionsClass.Alloc().InitWithContainerIdentifier(containerIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentCloudKitContainerOptionsClass) Alloc() PersistentCloudKitContainerOptions {

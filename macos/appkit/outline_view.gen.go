@@ -97,8 +97,10 @@ func (o_ OutlineView) InitWithFrame(frameRect foundation.Rect) OutlineView {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1525511-initwithframe?language=objc
-func OutlineView_InitWithFrame(frameRect foundation.Rect) OutlineView {
-	return OutlineViewClass.Alloc().InitWithFrame(frameRect)
+func NewOutlineViewWithFrame(frameRect foundation.Rect) OutlineView {
+	instance := OutlineViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Used to “retarget” a proposed drop. [Full Topic]

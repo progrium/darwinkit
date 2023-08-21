@@ -43,8 +43,10 @@ func (i_ IndexSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyI
 // Initializes an allocated NSIndexSpecifier object with a class description, container specifier, collection key, and object index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexspecifier/1407502-initwithcontainerclassdescriptio?language=objc
-func IndexSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyIndex(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, index int) IndexSpecifier {
-	return IndexSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyIndex(classDesc, container, property, index)
+func NewIndexSpecifierWithContainerClassDescriptionContainerSpecifierKeyIndex(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, index int) IndexSpecifier {
+	instance := IndexSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyIndex(classDesc, container, property, index)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IndexSpecifierClass) Alloc() IndexSpecifier {
@@ -79,8 +81,10 @@ func (i_ IndexSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func IndexSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) IndexSpecifier {
-	return IndexSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewIndexSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) IndexSpecifier {
+	instance := IndexSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ IndexSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) IndexSpecifier {
@@ -91,8 +95,10 @@ func (i_ IndexSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSp
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func IndexSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) IndexSpecifier {
-	return IndexSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewIndexSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) IndexSpecifier {
+	instance := IndexSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the value of the receiver’s index property. [Full Topic]

@@ -61,8 +61,10 @@ func (t_ TextLayoutFragment) InitWithTextElementRange(textElement ITextElement, 
 // Create a new layout fragment using the provided text element and range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutfragment/3809966-initwithtextelement?language=objc
-func TextLayoutFragment_InitWithTextElementRange(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
-	return TextLayoutFragmentClass.Alloc().InitWithTextElementRange(textElement, rangeInElement)
+func NewTextLayoutFragmentWithTextElementRange(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
+	instance := TextLayoutFragmentClass.Alloc().InitWithTextElementRange(textElement, rangeInElement)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextLayoutFragmentClass) Alloc() TextLayoutFragment {

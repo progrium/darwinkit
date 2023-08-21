@@ -52,8 +52,10 @@ func (w_ Window) InitWithContentRectStyleMaskBackingDefer(contentRect foundation
 // Initializes the window with the specified values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func Window_InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
-	return WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
+func NewWindowWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
+	instance := WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
+	instance.Autorelease()
+	return instance
 }
 
 // currently this is deprecated but is still needed pre-mac14
@@ -159,7 +161,7 @@ func NewScrollableTextView() ScrollableTextView {
 
 // NewWindowWithSize create a common window with close/minimize buttons
 func NewWindowWithSize(width, height float64) Window {
-	return Window_InitWithContentRectStyleMaskBackingDefer(
+	return NewWindowWithContentRectStyleMaskBackingDefer(
 		foundation.Rect{Size: foundation.Size{Width: width, Height: height}},
 		WindowStyleMaskTitled|WindowStyleMaskClosable|WindowStyleMaskResizable|WindowStyleMaskMiniaturizable,
 		BackingStoreBuffered,
@@ -169,7 +171,7 @@ func NewWindowWithSize(width, height float64) Window {
 
 // NewWindowWithSizeAndStyle create a common window with styles
 func NewWindowWithSizeAndStyle(width, height float64, style WindowStyleMask) Window {
-	return Window_InitWithContentRectStyleMaskBackingDefer(
+	return NewWindowWithContentRectStyleMaskBackingDefer(
 		foundation.Rect{Size: foundation.Size{Width: width, Height: height}},
 		style,
 		BackingStoreBuffered,

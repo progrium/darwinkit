@@ -43,8 +43,10 @@ func (r_ RecordID) InitWithRecordName(recordName string) RecordID {
 // Creates a new record ID with the specified name in the default zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordid/1500975-initwithrecordname?language=objc
-func RecordID_InitWithRecordName(recordName string) RecordID {
-	return RecordIDClass.Alloc().InitWithRecordName(recordName)
+func NewRecordIDWithRecordName(recordName string) RecordID {
+	instance := RecordIDClass.Alloc().InitWithRecordName(recordName)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RecordIDClass) Alloc() RecordID {

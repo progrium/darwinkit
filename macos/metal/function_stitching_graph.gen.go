@@ -49,8 +49,10 @@ func (f_ FunctionStitchingGraph) InitWithFunctionNameNodesOutputNodeAttributes(f
 // Creates a description of a new function call graph. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750541-initwithfunctionname?language=objc
-func FunctionStitchingGraph_InitWithFunctionNameNodesOutputNodeAttributes(functionName string, nodes []IFunctionStitchingFunctionNode, outputNode IFunctionStitchingFunctionNode, attributes []PFunctionStitchingAttribute) FunctionStitchingGraph {
-	return FunctionStitchingGraphClass.Alloc().InitWithFunctionNameNodesOutputNodeAttributes(functionName, nodes, outputNode, attributes)
+func NewFunctionStitchingGraphWithFunctionNameNodesOutputNodeAttributes(functionName string, nodes []IFunctionStitchingFunctionNode, outputNode IFunctionStitchingFunctionNode, attributes []PFunctionStitchingAttribute) FunctionStitchingGraph {
+	instance := FunctionStitchingGraphClass.Alloc().InitWithFunctionNameNodesOutputNodeAttributes(functionName, nodes, outputNode, attributes)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FunctionStitchingGraphClass) Alloc() FunctionStitchingGraph {

@@ -74,8 +74,10 @@ func (m_ MutableString) InitWithCharactersNoCopyLengthDeallocator(chars *Unichar
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
-func MutableString_InitWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
-	return MutableStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+func NewMutableStringWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) MutableString {
+	instance := MutableStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableStringClass) StringWithString(string_ string) MutableString {
@@ -98,8 +100,10 @@ func (m_ MutableString) InitWithFormatLocale(format string, locale objc.IObject,
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func MutableString_InitWithFormatLocale(format string, locale objc.IObject, args ...any) MutableString {
-	return MutableStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+func NewMutableStringWithFormatLocale(format string, locale objc.IObject, args ...any) MutableString {
+	instance := MutableStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableString) InitWithDataEncoding(data []byte, encoding StringEncoding) MutableString {
@@ -110,8 +114,10 @@ func (m_ MutableString) InitWithDataEncoding(data []byte, encoding StringEncodin
 // Returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc
-func MutableString_InitWithDataEncoding(data []byte, encoding StringEncoding) MutableString {
-	return MutableStringClass.Alloc().InitWithDataEncoding(data, encoding)
+func NewMutableStringWithDataEncoding(data []byte, encoding StringEncoding) MutableString {
+	instance := MutableStringClass.Alloc().InitWithDataEncoding(data, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableStringClass) StringWithFormat(format string, args ...any) MutableString {
@@ -134,8 +140,10 @@ func (m_ MutableString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsaf
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
-func MutableString_InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
-	return MutableStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+func NewMutableStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) MutableString {
+	instance := MutableStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableString) InitWithString(aString string) MutableString {
@@ -146,8 +154,10 @@ func (m_ MutableString) InitWithString(aString string) MutableString {
 // Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
-func MutableString_InitWithString(aString string) MutableString {
-	return MutableStringClass.Alloc().InitWithString(aString)
+func NewMutableStringWithString(aString string) MutableString {
+	instance := MutableStringClass.Alloc().InitWithString(aString)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) MutableString {
@@ -158,8 +168,10 @@ func (m_ MutableString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len ui
 // Returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc
-func MutableString_InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) MutableString {
-	return MutableStringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+func NewMutableStringWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) MutableString {
+	instance := MutableStringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableStringClass) StringWithCharactersLength(characters *Unichar, length uint) MutableString {
@@ -182,8 +194,10 @@ func (m_ MutableString) InitWithCharactersLength(characters *Unichar, length uin
 // Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
-func MutableString_InitWithCharactersLength(characters *Unichar, length uint) MutableString {
-	return MutableStringClass.Alloc().InitWithCharactersLength(characters, length)
+func NewMutableStringWithCharactersLength(characters *Unichar, length uint) MutableString {
+	instance := MutableStringClass.Alloc().InitWithCharactersLength(characters, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableString) InitWithUTF8String(nullTerminatedCString *uint8) MutableString {
@@ -194,8 +208,10 @@ func (m_ MutableString) InitWithUTF8String(nullTerminatedCString *uint8) Mutable
 // Returns an NSString object initialized by copying the characters from a given C array of UTF8-encoded bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412128-initwithutf8string?language=objc
-func MutableString_InitWithUTF8String(nullTerminatedCString *uint8) MutableString {
-	return MutableStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+func NewMutableStringWithUTF8String(nullTerminatedCString *uint8) MutableString {
+	instance := MutableStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableStringClass) LocalizedStringWithFormat(format string, args ...any) MutableString {

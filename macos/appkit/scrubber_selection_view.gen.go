@@ -66,6 +66,8 @@ func (s_ ScrubberSelectionView) InitWithFrame(frameRect foundation.Rect) Scrubbe
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ScrubberSelectionView_InitWithFrame(frameRect foundation.Rect) ScrubberSelectionView {
-	return ScrubberSelectionViewClass.Alloc().InitWithFrame(frameRect)
+func NewScrubberSelectionViewWithFrame(frameRect foundation.Rect) ScrubberSelectionView {
+	instance := ScrubberSelectionViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }

@@ -56,8 +56,10 @@ func (a_ AppleEventDescriptor) InitRecordDescriptor() AppleEventDescriptor {
 // Initializes a newly allocated instance as a descriptor that is an Apple event record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1416093-initrecorddescriptor?language=objc
-func AppleEventDescriptor_InitRecordDescriptor() AppleEventDescriptor {
-	return AppleEventDescriptorClass.Alloc().InitRecordDescriptor()
+func NewAppleEventDescriptorRecordDescriptor() AppleEventDescriptor {
+	instance := AppleEventDescriptorClass.Alloc().InitRecordDescriptor()
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AppleEventDescriptor) InitListDescriptor() AppleEventDescriptor {
@@ -68,8 +70,10 @@ func (a_ AppleEventDescriptor) InitListDescriptor() AppleEventDescriptor {
 // Initializes a newly allocated instance as an empty list descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1416351-initlistdescriptor?language=objc
-func AppleEventDescriptor_InitListDescriptor() AppleEventDescriptor {
-	return AppleEventDescriptorClass.Alloc().InitListDescriptor()
+func NewAppleEventDescriptorListDescriptor() AppleEventDescriptor {
+	instance := AppleEventDescriptorClass.Alloc().InitListDescriptor()
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AppleEventDescriptorClass) Alloc() AppleEventDescriptor {

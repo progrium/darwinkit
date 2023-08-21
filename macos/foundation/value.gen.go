@@ -55,8 +55,10 @@ func (v_ Value) InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Value 
 // Initializes a value object to contain the specified value, interpreted with the specified Objective-C type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsvalue/1411621-initwithbytes?language=objc
-func Value_InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Value {
-	return ValueClass.Alloc().InitWithBytesObjCType(value, type_)
+func NewValueWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Value {
+	instance := ValueClass.Alloc().InitWithBytesObjCType(value, type_)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _ValueClass) Alloc() Value {

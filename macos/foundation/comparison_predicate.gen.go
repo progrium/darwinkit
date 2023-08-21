@@ -47,8 +47,10 @@ func (c_ ComparisonPredicate) InitWithLeftExpressionRightExpressionCustomSelecto
 // Creates a predicate that you form by combining specified left and right expressions using a specified selector. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscomparisonpredicate/1409054-initwithleftexpression?language=objc
-func ComparisonPredicate_InitWithLeftExpressionRightExpressionCustomSelector(lhs IExpression, rhs IExpression, selector objc.Selector) ComparisonPredicate {
-	return ComparisonPredicateClass.Alloc().InitWithLeftExpressionRightExpressionCustomSelector(lhs, rhs, selector)
+func NewComparisonPredicateWithLeftExpressionRightExpressionCustomSelector(lhs IExpression, rhs IExpression, selector objc.Selector) ComparisonPredicate {
+	instance := ComparisonPredicateClass.Alloc().InitWithLeftExpressionRightExpressionCustomSelector(lhs, rhs, selector)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ComparisonPredicateClass) Alloc() ComparisonPredicate {
@@ -84,7 +86,9 @@ func (c_ ComparisonPredicate) PredicateWithSubstitutionVariables(variables map[s
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1413227-predicatewithsubstitutionvariabl?language=objc
 func ComparisonPredicate_PredicateWithSubstitutionVariables(variables map[string]objc.IObject) ComparisonPredicate {
-	return ComparisonPredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance := ComparisonPredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a new predicate formed by combining the left and right expressions using a given selector. [Full Topic]

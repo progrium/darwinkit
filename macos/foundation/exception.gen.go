@@ -47,8 +47,10 @@ func (e_ Exception) InitWithNameReasonUserInfo(aName ExceptionName, aReason stri
 // Initializes and returns a newly allocated exception object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexception/1414506-initwithname?language=objc
-func Exception_InitWithNameReasonUserInfo(aName ExceptionName, aReason string, aUserInfo Dictionary) Exception {
-	return ExceptionClass.Alloc().InitWithNameReasonUserInfo(aName, aReason, aUserInfo)
+func NewExceptionWithNameReasonUserInfo(aName ExceptionName, aReason string, aUserInfo Dictionary) Exception {
+	instance := ExceptionClass.Alloc().InitWithNameReasonUserInfo(aName, aReason, aUserInfo)
+	instance.Autorelease()
+	return instance
 }
 
 func (ec _ExceptionClass) Alloc() Exception {

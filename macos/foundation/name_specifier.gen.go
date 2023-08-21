@@ -43,8 +43,10 @@ func (n_ NameSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyNa
 // Invokes the super class’s initWithContainerClassDescription:containerSpecifier:key: method and then sets the name instance variable to name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnamespecifier/1408615-initwithcontainerclassdescriptio?language=objc
-func NameSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyName(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, name string) NameSpecifier {
-	return NameSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyName(classDesc, container, property, name)
+func NewNameSpecifierWithContainerClassDescriptionContainerSpecifierKeyName(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, name string) NameSpecifier {
+	instance := NameSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyName(classDesc, container, property, name)
+	instance.Autorelease()
+	return instance
 }
 
 func (nc _NameSpecifierClass) Alloc() NameSpecifier {
@@ -79,8 +81,10 @@ func (n_ NameSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(c
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func NameSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) NameSpecifier {
-	return NameSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewNameSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) NameSpecifier {
+	instance := NameSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (n_ NameSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) NameSpecifier {
@@ -91,8 +95,10 @@ func (n_ NameSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpe
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func NameSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) NameSpecifier {
-	return NameSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewNameSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) NameSpecifier {
+	instance := NameSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the name encapsulated with the receiver for the specified object in the container. [Full Topic]

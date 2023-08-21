@@ -48,8 +48,10 @@ func (u_ URLProtocol) InitWithTaskCachedResponseClient(task IURLSessionTask, cac
 // Creates a URL protocol instance to handle the task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1417672-initwithtask?language=objc
-func URLProtocol_InitWithTaskCachedResponseClient(task IURLSessionTask, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
-	return URLProtocolClass.Alloc().InitWithTaskCachedResponseClient(task, cachedResponse, client)
+func NewURLProtocolWithTaskCachedResponseClient(task IURLSessionTask, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
+	instance := URLProtocolClass.Alloc().InitWithTaskCachedResponseClient(task, cachedResponse, client)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLProtocol) InitWithRequestCachedResponseClient(request IURLRequest, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
@@ -61,8 +63,10 @@ func (u_ URLProtocol) InitWithRequestCachedResponseClient(request IURLRequest, c
 // Creates a URL protocol instance to handle the request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1414366-initwithrequest?language=objc
-func URLProtocol_InitWithRequestCachedResponseClient(request IURLRequest, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
-	return URLProtocolClass.Alloc().InitWithRequestCachedResponseClient(request, cachedResponse, client)
+func NewURLProtocolWithRequestCachedResponseClient(request IURLRequest, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
+	instance := URLProtocolClass.Alloc().InitWithRequestCachedResponseClient(request, cachedResponse, client)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLProtocolClass) Alloc() URLProtocol {

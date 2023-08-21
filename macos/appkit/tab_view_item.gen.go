@@ -62,8 +62,10 @@ func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
 // Performs default initialization for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477533-initwithidentifier?language=objc
-func TabViewItem_InitWithIdentifier(identifier objc.IObject) TabViewItem {
-	return TabViewItemClass.Alloc().InitWithIdentifier(identifier)
+func NewTabViewItemWithIdentifier(identifier objc.IObject) TabViewItem {
+	instance := TabViewItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {

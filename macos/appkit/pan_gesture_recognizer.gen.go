@@ -73,8 +73,10 @@ func (p_ PanGestureRecognizer) InitWithTargetAction(target objc.IObject, action 
 // Initializes the gesture recognizer with the specified target and action information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535012-initwithtarget?language=objc
-func PanGestureRecognizer_InitWithTargetAction(target objc.IObject, action objc.Selector) PanGestureRecognizer {
-	return PanGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+func NewPanGestureRecognizerWithTargetAction(target objc.IObject, action objc.Selector) PanGestureRecognizer {
+	instance := PanGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+	instance.Autorelease()
+	return instance
 }
 
 // Changes the current translation value of the gesture recognizer. [Full Topic]

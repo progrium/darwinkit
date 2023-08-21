@@ -67,8 +67,10 @@ func (m_ MagnificationGestureRecognizer) InitWithTargetAction(target objc.IObjec
 // Initializes the gesture recognizer with the specified target and action information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535012-initwithtarget?language=objc
-func MagnificationGestureRecognizer_InitWithTargetAction(target objc.IObject, action objc.Selector) MagnificationGestureRecognizer {
-	return MagnificationGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+func NewMagnificationGestureRecognizerWithTargetAction(target objc.IObject, action objc.Selector) MagnificationGestureRecognizer {
+	instance := MagnificationGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+	instance.Autorelease()
+	return instance
 }
 
 // The amount of magnification to apply. [Full Topic]

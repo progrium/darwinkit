@@ -61,8 +61,10 @@ func (t_ TextContainer) InitWithSize(size coregraphics.Size) TextContainer {
 // Initializes a text container with a specified bounding rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444529-initwithsize?language=objc
-func TextContainer_InitWithSize(size coregraphics.Size) TextContainer {
-	return TextContainerClass.Alloc().InitWithSize(size)
+func NewTextContainerWithSize(size coregraphics.Size) TextContainer {
+	instance := TextContainerClass.Alloc().InitWithSize(size)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextContainerClass) Alloc() TextContainer {

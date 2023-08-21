@@ -45,8 +45,10 @@ func (m_ MappingModel) InitWithContentsOfURL(url foundation.IURL) MappingModel {
 // Returns a mapping model initialized from a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506304-initwithcontentsofurl?language=objc
-func MappingModel_InitWithContentsOfURL(url foundation.IURL) MappingModel {
-	return MappingModelClass.Alloc().InitWithContentsOfURL(url)
+func NewMappingModelWithContentsOfURL(url foundation.IURL) MappingModel {
+	instance := MappingModelClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MappingModelClass) Alloc() MappingModel {

@@ -48,8 +48,10 @@ func (c_ ConstraintConflict) InitWithConstraintDatabaseObjectDatabaseSnapshotCon
 // Initializes a constraint conflict. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsconstraintconflict/1506668-initwithconstraint?language=objc
-func ConstraintConflict_InitWithConstraintDatabaseObjectDatabaseSnapshotConflictingObjectsConflictingSnapshots(contraint []string, databaseObject IManagedObject, databaseSnapshot foundation.Dictionary, conflictingObjects []IManagedObject, conflictingSnapshots []objc.IObject) ConstraintConflict {
-	return ConstraintConflictClass.Alloc().InitWithConstraintDatabaseObjectDatabaseSnapshotConflictingObjectsConflictingSnapshots(contraint, databaseObject, databaseSnapshot, conflictingObjects, conflictingSnapshots)
+func NewConstraintConflictWithConstraintDatabaseObjectDatabaseSnapshotConflictingObjectsConflictingSnapshots(contraint []string, databaseObject IManagedObject, databaseSnapshot foundation.Dictionary, conflictingObjects []IManagedObject, conflictingSnapshots []objc.IObject) ConstraintConflict {
+	instance := ConstraintConflictClass.Alloc().InitWithConstraintDatabaseObjectDatabaseSnapshotConflictingObjectsConflictingSnapshots(contraint, databaseObject, databaseSnapshot, conflictingObjects, conflictingSnapshots)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ConstraintConflictClass) Alloc() ConstraintConflict {

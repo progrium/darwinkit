@@ -43,8 +43,10 @@ func (u_ UniqueIDSpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 // Returns an NSUniqueIDSpecifier object, initialized with the given arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuniqueidspecifier/1416055-initwithcontainerclassdescriptio?language=objc
-func UniqueIDSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyUniqueID(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, uniqueID objc.IObject) UniqueIDSpecifier {
-	return UniqueIDSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyUniqueID(classDesc, container, property, uniqueID)
+func NewUniqueIDSpecifierWithContainerClassDescriptionContainerSpecifierKeyUniqueID(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, uniqueID objc.IObject) UniqueIDSpecifier {
+	instance := UniqueIDSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyUniqueID(classDesc, container, property, uniqueID)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UniqueIDSpecifierClass) Alloc() UniqueIDSpecifier {
@@ -79,8 +81,10 @@ func (u_ UniqueIDSpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func UniqueIDSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
-	return UniqueIDSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewUniqueIDSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
+	instance := UniqueIDSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UniqueIDSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
@@ -91,8 +95,10 @@ func (u_ UniqueIDSpecifier) InitWithContainerSpecifierKey(container IScriptObjec
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func UniqueIDSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
-	return UniqueIDSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewUniqueIDSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
+	instance := UniqueIDSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the ID encapsulated by the receiver. [Full Topic]

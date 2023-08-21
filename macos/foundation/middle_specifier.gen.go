@@ -65,8 +65,10 @@ func (m_ MiddleSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func MiddleSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) MiddleSpecifier {
-	return MiddleSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewMiddleSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) MiddleSpecifier {
+	instance := MiddleSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MiddleSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) MiddleSpecifier {
@@ -77,6 +79,8 @@ func (m_ MiddleSpecifier) InitWithContainerSpecifierKey(container IScriptObjectS
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func MiddleSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) MiddleSpecifier {
-	return MiddleSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewMiddleSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) MiddleSpecifier {
+	instance := MiddleSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }

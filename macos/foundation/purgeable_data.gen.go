@@ -65,8 +65,10 @@ func (p_ PurgeableData) InitWithLength(length uint) PurgeableData {
 // Initializes and returns a mutable data object containing a given number of zeroed bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413159-initwithlength?language=objc
-func PurgeableData_InitWithLength(length uint) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithLength(length)
+func NewPurgeableDataWithLength(length uint) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithLength(length)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PurgeableDataClass) DataWithLength(length uint) PurgeableData {
@@ -89,8 +91,10 @@ func (p_ PurgeableData) InitWithCapacity(capacity uint) PurgeableData {
 // Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
-func PurgeableData_InitWithCapacity(capacity uint) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithCapacity(capacity)
+func NewPurgeableDataWithCapacity(capacity uint) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithCapacity(capacity)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PurgeableDataClass) DataWithCapacity(aNumItems uint) PurgeableData {
@@ -113,8 +117,10 @@ func (p_ PurgeableData) InitWithContentsOfFileOptionsError(path string, readOpti
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func PurgeableData_InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+func NewPurgeableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
@@ -126,7 +132,9 @@ func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompress
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
 func PurgeableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
-	return PurgeableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance := PurgeableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PurgeableDataClass) DataWithContentsOfURL(url IURL) PurgeableData {
@@ -149,8 +157,10 @@ func (p_ PurgeableData) InitWithData(data []byte) PurgeableData {
 // Initializes a data object with the contents of another data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
-func PurgeableData_InitWithData(data []byte) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithData(data)
+func NewPurgeableDataWithData(data []byte) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
@@ -161,8 +171,10 @@ func (p_ PurgeableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Point
 // Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
-func PurgeableData_InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+func NewPurgeableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PurgeableDataClass) DataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) PurgeableData {
@@ -221,8 +233,10 @@ func (p_ PurgeableData) InitWithBytesLength(bytes unsafe.Pointer, length uint) P
 // Initializes a data object filled with a given number of bytes copied from a given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1412793-initwithbytes?language=objc
-func PurgeableData_InitWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithBytesLength(bytes, length)
+func NewPurgeableDataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBytesLength(bytes, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) InitWithContentsOfURL(url IURL) PurgeableData {
@@ -233,8 +247,10 @@ func (p_ PurgeableData) InitWithContentsOfURL(url IURL) PurgeableData {
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc
-func PurgeableData_InitWithContentsOfURL(url IURL) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithContentsOfURL(url)
+func NewPurgeableDataWithContentsOfURL(url IURL) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
@@ -246,7 +262,9 @@ func (p_ PurgeableData) DecompressedDataUsingAlgorithmError(algorithm DataCompre
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
 func PurgeableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
-	return PurgeableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance := PurgeableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
@@ -257,8 +275,10 @@ func (p_ PurgeableData) InitWithBase64EncodedDataOptions(base64Data []byte, opti
 // Initializes a data object with the given Base64 encoded data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
-func PurgeableData_InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+func NewPurgeableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PurgeableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
@@ -269,8 +289,10 @@ func (p_ PurgeableData) InitWithBase64EncodedStringOptions(base64String string, 
 // Initializes a data object with the given Base64 encoded string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
-func PurgeableData_InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
-	return PurgeableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+func NewPurgeableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) PurgeableData {
+	instance := PurgeableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PurgeableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) PurgeableData {

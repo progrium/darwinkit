@@ -61,8 +61,10 @@ func (r_ RulerMarker) InitWithRulerViewMarkerLocationImageImageOrigin(ruler IRul
 // Initializes a newly allocated ruler marker, associating it with (but not adding it to) a specified ruler view and assigning the attributes provided. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496240-initwithrulerview?language=objc
-func RulerMarker_InitWithRulerViewMarkerLocationImageImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
-	return RulerMarkerClass.Alloc().InitWithRulerViewMarkerLocationImageImageOrigin(ruler, location, image, imageOrigin)
+func NewRulerMarkerWithRulerViewMarkerLocationImageImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
+	instance := RulerMarkerClass.Alloc().InitWithRulerViewMarkerLocationImageImageOrigin(ruler, location, image, imageOrigin)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RulerMarkerClass) Alloc() RulerMarker {

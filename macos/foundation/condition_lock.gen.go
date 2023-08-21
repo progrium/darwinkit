@@ -49,8 +49,10 @@ func (c_ ConditionLock) InitWithCondition(condition int) ConditionLock {
 // Initializes a newly allocated NSConditionLock object and sets its condition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1413018-initwithcondition?language=objc
-func ConditionLock_InitWithCondition(condition int) ConditionLock {
-	return ConditionLockClass.Alloc().InitWithCondition(condition)
+func NewConditionLockWithCondition(condition int) ConditionLock {
+	instance := ConditionLockClass.Alloc().InitWithCondition(condition)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ConditionLockClass) Alloc() ConditionLock {

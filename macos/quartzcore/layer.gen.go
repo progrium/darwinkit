@@ -202,8 +202,10 @@ func (l_ Layer) InitWithLayer(layer objc.IObject) Layer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func Layer_InitWithLayer(layer objc.IObject) Layer {
-	return LayerClass.Alloc().InitWithLayer(layer)
+func NewLayerWithLayer(layer objc.IObject) Layer {
+	instance := LayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ Layer) Init() Layer {
@@ -220,7 +222,9 @@ func (l_ Layer) ModelLayer() Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func Layer_ModelLayer() Layer {
-	return LayerClass.Alloc().ModelLayer()
+	instance := LayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ Layer) PresentationLayer() Layer {
@@ -232,7 +236,9 @@ func (l_ Layer) PresentationLayer() Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func Layer_PresentationLayer() Layer {
-	return LayerClass.Alloc().PresentationLayer()
+	instance := LayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LayerClass) Alloc() Layer {

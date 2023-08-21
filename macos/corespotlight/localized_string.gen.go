@@ -43,8 +43,10 @@ func (l_ LocalizedString) InitWithLocalizedStrings(localizedStrings foundation.D
 // Initializes a CSLocalizedString object with the specified dictionary of localized strings. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cslocalizedstring/1616403-initwithlocalizedstrings?language=objc
-func LocalizedString_InitWithLocalizedStrings(localizedStrings foundation.Dictionary) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithLocalizedStrings(localizedStrings)
+func NewLocalizedStringWithLocalizedStrings(localizedStrings foundation.Dictionary) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithLocalizedStrings(localizedStrings)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) Alloc() LocalizedString {
@@ -79,8 +81,10 @@ func (l_ LocalizedString) InitWithCharactersNoCopyLengthDeallocator(chars *found
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
-func LocalizedString_InitWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+func NewLocalizedStringWithCharactersNoCopyLengthDeallocator(chars *foundation.Unichar, len uint, deallocator func(arg0 *foundation.Unichar, arg1 uint)) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) StringWithString(string_ string) LocalizedString {
@@ -103,8 +107,10 @@ func (l_ LocalizedString) InitWithFormatLocale(format string, locale objc.IObjec
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func LocalizedString_InitWithFormatLocale(format string, locale objc.IObject, args ...any) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+func NewLocalizedStringWithFormatLocale(format string, locale objc.IObject, args ...any) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LocalizedString) InitWithDataEncoding(data []byte, encoding foundation.StringEncoding) LocalizedString {
@@ -115,8 +121,10 @@ func (l_ LocalizedString) InitWithDataEncoding(data []byte, encoding foundation.
 // Returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc
-func LocalizedString_InitWithDataEncoding(data []byte, encoding foundation.StringEncoding) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithDataEncoding(data, encoding)
+func NewLocalizedStringWithDataEncoding(data []byte, encoding foundation.StringEncoding) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithDataEncoding(data, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) StringWithFormat(format string, args ...any) LocalizedString {
@@ -139,8 +147,10 @@ func (l_ LocalizedString) InitWithBytesNoCopyLengthEncodingDeallocator(bytes uns
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
-func LocalizedString_InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+func NewLocalizedStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LocalizedString) InitWithString(aString string) LocalizedString {
@@ -151,8 +161,10 @@ func (l_ LocalizedString) InitWithString(aString string) LocalizedString {
 // Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
-func LocalizedString_InitWithString(aString string) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithString(aString)
+func NewLocalizedStringWithString(aString string) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithString(aString)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) String() LocalizedString {
@@ -175,8 +187,10 @@ func (l_ LocalizedString) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len 
 // Returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc
-func LocalizedString_InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+func NewLocalizedStringWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding foundation.StringEncoding) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) StringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
@@ -199,8 +213,10 @@ func (l_ LocalizedString) InitWithCharactersLength(characters *foundation.Unicha
 // Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
-func LocalizedString_InitWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithCharactersLength(characters, length)
+func NewLocalizedStringWithCharactersLength(characters *foundation.Unichar, length uint) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithCharactersLength(characters, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LocalizedString) InitWithUTF8String(nullTerminatedCString *uint8) LocalizedString {
@@ -211,8 +227,10 @@ func (l_ LocalizedString) InitWithUTF8String(nullTerminatedCString *uint8) Local
 // Returns an NSString object initialized by copying the characters from a given C array of UTF8-encoded bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412128-initwithutf8string?language=objc
-func LocalizedString_InitWithUTF8String(nullTerminatedCString *uint8) LocalizedString {
-	return LocalizedStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+func NewLocalizedStringWithUTF8String(nullTerminatedCString *uint8) LocalizedString {
+	instance := LocalizedStringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocalizedStringClass) LocalizedStringWithFormat(format string, args ...any) LocalizedString {

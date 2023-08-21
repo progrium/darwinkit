@@ -51,8 +51,10 @@ func (w_ WhoseSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyT
 // Returns an NSWhoseSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412173-initwithcontainerclassdescriptio?language=objc
-func WhoseSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyTest(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, test IScriptWhoseTest) WhoseSpecifier {
-	return WhoseSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyTest(classDesc, container, property, test)
+func NewWhoseSpecifierWithContainerClassDescriptionContainerSpecifierKeyTest(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, test IScriptWhoseTest) WhoseSpecifier {
+	instance := WhoseSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyTest(classDesc, container, property, test)
+	instance.Autorelease()
+	return instance
 }
 
 func (wc _WhoseSpecifierClass) Alloc() WhoseSpecifier {
@@ -87,8 +89,10 @@ func (w_ WhoseSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func WhoseSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) WhoseSpecifier {
-	return WhoseSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewWhoseSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) WhoseSpecifier {
+	instance := WhoseSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (w_ WhoseSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) WhoseSpecifier {
@@ -99,8 +103,10 @@ func (w_ WhoseSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSp
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func WhoseSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) WhoseSpecifier {
-	return WhoseSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewWhoseSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) WhoseSpecifier {
+	instance := WhoseSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the index position of the first sub-element within the range of objects being tested that pass the receiver's test. [Full Topic]

@@ -60,8 +60,10 @@ func (m_ ModifyRecordsOperation) InitWithRecordsToSaveRecordIDsToDelete(records 
 // Creates an operation for modifying the specified records. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckmodifyrecordsoperation/1447464-initwithrecordstosave?language=objc
-func ModifyRecordsOperation_InitWithRecordsToSaveRecordIDsToDelete(records []IRecord, recordIDs []IRecordID) ModifyRecordsOperation {
-	return ModifyRecordsOperationClass.Alloc().InitWithRecordsToSaveRecordIDsToDelete(records, recordIDs)
+func NewModifyRecordsOperationWithRecordsToSaveRecordIDsToDelete(records []IRecord, recordIDs []IRecordID) ModifyRecordsOperation {
+	instance := ModifyRecordsOperationClass.Alloc().InitWithRecordsToSaveRecordIDsToDelete(records, recordIDs)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ ModifyRecordsOperation) Init() ModifyRecordsOperation {

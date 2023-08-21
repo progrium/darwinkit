@@ -42,8 +42,10 @@ func (p_ PhoneNumber) InitWithStringValue(string_ string) PhoneNumber {
 // Returns a new phone number object initialized with the specified phone number string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnphonenumber/1401355-initwithstringvalue?language=objc
-func PhoneNumber_InitWithStringValue(string_ string) PhoneNumber {
-	return PhoneNumberClass.Alloc().InitWithStringValue(string_)
+func NewPhoneNumberWithStringValue(string_ string) PhoneNumber {
+	instance := PhoneNumberClass.Alloc().InitWithStringValue(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PhoneNumberClass) PhoneNumberWithStringValue(stringValue string) PhoneNumber {

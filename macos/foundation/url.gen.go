@@ -88,8 +88,10 @@ func (u_ URL) InitAbsoluteURLWithDataRepresentationRelativeToURL(data []byte, ba
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1410750-initabsoluteurlwithdatarepresent?language=objc
-func URL_InitAbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	return URLClass.Alloc().InitAbsoluteURLWithDataRepresentationRelativeToURL(data, baseURL)
+func NewURLAbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
+	instance := URLClass.Alloc().InitAbsoluteURLWithDataRepresentationRelativeToURL(data, baseURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URL) InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uint8, isDir bool, baseURL IURL) URL {
@@ -100,8 +102,10 @@ func (u_ URL) InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(pa
 // Initializes a URL object with a C string representing a local file system path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1411210-initfileurlwithfilesystemreprese?language=objc
-func URL_InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uint8, isDir bool, baseURL IURL) URL {
-	return URLClass.Alloc().InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path, isDir, baseURL)
+func NewURLFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uint8, isDir bool, baseURL IURL) URL {
+	instance := URLClass.Alloc().InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path, isDir, baseURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URL) InitWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
@@ -112,8 +116,10 @@ func (u_ URL) InitWithDataRepresentationRelativeToURL(data []byte, baseURL IURL)
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1416851-initwithdatarepresentation?language=objc
-func URL_InitWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	return URLClass.Alloc().InitWithDataRepresentationRelativeToURL(data, baseURL)
+func NewURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
+	instance := URLClass.Alloc().InitWithDataRepresentationRelativeToURL(data, baseURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URL) InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
@@ -124,8 +130,10 @@ func (u_ URL) InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStale
 // Initializes a newly created NSURL that points to a location specified by resolving bookmark data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1413475-initbyresolvingbookmarkdata?language=objc
-func URL_InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
-	return URLClass.Alloc().InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData, options, relativeURL, isStale, error)
+func NewURLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
+	instance := URLClass.Alloc().InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData, options, relativeURL, isStale, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URL) InitWithStringRelativeToURL(URLString string, baseURL IURL) URL {
@@ -136,8 +144,10 @@ func (u_ URL) InitWithStringRelativeToURL(URLString string, baseURL IURL) URL {
 // Initializes an NSURL object with a base URL and a relative string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1417949-initwithstring?language=objc
-func URL_InitWithStringRelativeToURL(URLString string, baseURL IURL) URL {
-	return URLClass.Alloc().InitWithStringRelativeToURL(URLString, baseURL)
+func NewURLWithStringRelativeToURL(URLString string, baseURL IURL) URL {
+	instance := URLClass.Alloc().InitWithStringRelativeToURL(URLString, baseURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLClass) URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
@@ -184,8 +194,10 @@ func (u_ URL) InitFileURLWithPathIsDirectoryRelativeToURL(path string, isDir boo
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1417932-initfileurlwithpath?language=objc
-func URL_InitFileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseURL IURL) URL {
-	return URLClass.Alloc().InitFileURLWithPathIsDirectoryRelativeToURL(path, isDir, baseURL)
+func NewURLFileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseURL IURL) URL {
+	instance := URLClass.Alloc().InitFileURLWithPathIsDirectoryRelativeToURL(path, isDir, baseURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLClass) Alloc() URL {

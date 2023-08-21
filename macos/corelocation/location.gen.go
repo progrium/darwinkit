@@ -55,8 +55,10 @@ func (l_ Location) InitWithLatitudeLongitude(latitude LocationDegrees, longitude
 // Creates a location object with the specified latitude and longitude. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423660-initwithlatitude?language=objc
-func Location_InitWithLatitudeLongitude(latitude LocationDegrees, longitude LocationDegrees) Location {
-	return LocationClass.Alloc().InitWithLatitudeLongitude(latitude, longitude)
+func NewLocationWithLatitudeLongitude(latitude LocationDegrees, longitude LocationDegrees) Location {
+	instance := LocationClass.Alloc().InitWithLatitudeLongitude(latitude, longitude)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
@@ -67,8 +69,10 @@ func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyT
 // Creates a location object with the specified coordinate and altitude information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423666-initwithcoordinate?language=objc
-func Location_InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
-	return LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate, altitude, hAccuracy, vAccuracy, timestamp)
+func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
+	instance := LocationClass.Alloc().InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate, altitude, hAccuracy, vAccuracy, timestamp)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocationClass) Alloc() Location {

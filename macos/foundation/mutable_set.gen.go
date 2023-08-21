@@ -50,8 +50,10 @@ func (m_ MutableSet) InitWithCapacity(numItems uint) MutableSet {
 // Returns an initialized mutable set with a given initial capacity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableset/1411953-initwithcapacity?language=objc
-func MutableSet_InitWithCapacity(numItems uint) MutableSet {
-	return MutableSetClass.Alloc().InitWithCapacity(numItems)
+func NewMutableSetWithCapacity(numItems uint) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableSetClass) SetWithCapacity(numItems uint) MutableSet {
@@ -110,8 +112,10 @@ func (m_ MutableSet) InitWithObjects(firstObj objc.IObject, args ...any) Mutable
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func MutableSet_InitWithObjects(firstObj objc.IObject, args ...any) MutableSet {
-	return MutableSetClass.Alloc().InitWithObjects(firstObj, args...)
+func NewMutableSetWithObjects(firstObj objc.IObject, args ...any) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableSetClass) SetWithSet(set ISet) MutableSet {
@@ -146,8 +150,10 @@ func (m_ MutableSet) InitWithArray(array []objc.IObject) MutableSet {
 // Initializes a newly allocated set with the objects that are contained in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1408152-initwitharray?language=objc
-func MutableSet_InitWithArray(array []objc.IObject) MutableSet {
-	return MutableSetClass.Alloc().InitWithArray(array)
+func NewMutableSetWithArray(array []objc.IObject) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableSetClass) SetWithArray(array []objc.IObject) MutableSet {
@@ -206,8 +212,10 @@ func (m_ MutableSet) InitWithSet(set ISet) MutableSet {
 // Initializes a newly allocated set and adds to it objects from another given set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1410612-initwithset?language=objc
-func MutableSet_InitWithSet(set ISet) MutableSet {
-	return MutableSetClass.Alloc().InitWithSet(set)
+func NewMutableSetWithSet(set ISet) MutableSet {
+	instance := MutableSetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 // Adds to the set each object contained in a given array that is not already a member. [Full Topic]

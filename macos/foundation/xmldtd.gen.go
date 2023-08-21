@@ -55,8 +55,10 @@ func (x_ XMLDTD) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, erro
 // Initializes and returns an NSXMLDTD object created from the DTD declarations encapsulated in an NSData object [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412807-initwithdata?language=objc
-func XMLDTD_InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDTD {
-	return XMLDTDClass.Alloc().InitWithDataOptionsError(data, mask, error)
+func NewXMLDTDWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDTD {
+	instance := XMLDTDClass.Alloc().InitWithDataOptionsError(data, mask, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDTD) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDTD {
@@ -67,8 +69,10 @@ func (x_ XMLDTD) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions
 // Initializes and returns an NSXMLDTD object created from the DTD declarations in a URL-referenced source. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1410482-initwithcontentsofurl?language=objc
-func XMLDTD_InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDTD {
-	return XMLDTDClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
+func NewXMLDTDWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDTD {
+	instance := XMLDTDClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDTD) Init() XMLDTD {
@@ -103,8 +107,10 @@ func (x_ XMLDTD) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) X
 // Returns an NSXMLNode instance initialized with the constant indicating node kind and one or more initialization options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409747-initwithkind?language=objc
-func XMLDTD_InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTD {
-	return XMLDTDClass.Alloc().InitWithKindOptions(kind, options)
+func NewXMLDTDWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTD {
+	instance := XMLDTDClass.Alloc().InitWithKindOptions(kind, options)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the DTD node representing the notation declaration identified by the specified notation name. [Full Topic]

@@ -45,8 +45,10 @@ func (a_ AztecCodeDescriptor) InitWithPayloadIsCompactLayerCountDataCodewordCoun
 // Initializes a descriptor that can be used as input to the CIBarcodeGenerator filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodedescriptor/2875188-initwithpayload?language=objc
-func AztecCodeDescriptor_InitWithPayloadIsCompactLayerCountDataCodewordCount(errorCorrectedPayload []byte, isCompact bool, layerCount int, dataCodewordCount int) AztecCodeDescriptor {
-	return AztecCodeDescriptorClass.Alloc().InitWithPayloadIsCompactLayerCountDataCodewordCount(errorCorrectedPayload, isCompact, layerCount, dataCodewordCount)
+func NewAztecCodeDescriptorWithPayloadIsCompactLayerCountDataCodewordCount(errorCorrectedPayload []byte, isCompact bool, layerCount int, dataCodewordCount int) AztecCodeDescriptor {
+	instance := AztecCodeDescriptorClass.Alloc().InitWithPayloadIsCompactLayerCountDataCodewordCount(errorCorrectedPayload, isCompact, layerCount, dataCodewordCount)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AztecCodeDescriptorClass) DescriptorWithPayloadIsCompactLayerCountDataCodewordCount(errorCorrectedPayload []byte, isCompact bool, layerCount int, dataCodewordCount int) AztecCodeDescriptor {

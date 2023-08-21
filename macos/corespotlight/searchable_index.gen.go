@@ -64,8 +64,10 @@ func (s_ SearchableIndex) InitWithName(name string) SearchableIndex {
 // Returns an on-device index with the specified name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindex/1620347-initwithname?language=objc
-func SearchableIndex_InitWithName(name string) SearchableIndex {
-	return SearchableIndexClass.Alloc().InitWithName(name)
+func NewSearchableIndexWithName(name string) SearchableIndex {
+	instance := SearchableIndexClass.Alloc().InitWithName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SearchableIndexClass) Alloc() SearchableIndex {

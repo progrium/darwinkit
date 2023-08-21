@@ -56,8 +56,10 @@ func (t_ TextSelection) InitWithRangeAffinityGranularity(range_ ITextRange, affi
 // Creates a new text selection with the range, selection affinity, and granularity you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801821-initwithrange?language=objc
-func TextSelection_InitWithRangeAffinityGranularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	return TextSelectionClass.Alloc().InitWithRangeAffinityGranularity(range_, affinity, granularity)
+func NewTextSelectionWithRangeAffinityGranularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
+	instance := TextSelectionClass.Alloc().InitWithRangeAffinityGranularity(range_, affinity, granularity)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextSelection) InitWithLocationAffinity(location PTextLocation, affinity TextSelectionAffinity) TextSelection {
@@ -69,8 +71,10 @@ func (t_ TextSelection) InitWithLocationAffinity(location PTextLocation, affinit
 // Creates a new text selection with the location and selection affinity you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801820-initwithlocation?language=objc
-func TextSelection_InitWithLocationAffinity(location PTextLocation, affinity TextSelectionAffinity) TextSelection {
-	return TextSelectionClass.Alloc().InitWithLocationAffinity(location, affinity)
+func NewTextSelectionWithLocationAffinity(location PTextLocation, affinity TextSelectionAffinity) TextSelection {
+	instance := TextSelectionClass.Alloc().InitWithLocationAffinity(location, affinity)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextSelection) InitWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
@@ -81,8 +85,10 @@ func (t_ TextSelection) InitWithRangesAffinityGranularity(textRanges []ITextRang
 // Creates a new text selection with the ranges, selection affinity, and granularity you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801822-initwithranges?language=objc
-func TextSelection_InitWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	return TextSelectionClass.Alloc().InitWithRangesAffinityGranularity(textRanges, affinity, granularity)
+func NewTextSelectionWithRangesAffinityGranularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
+	instance := TextSelectionClass.Alloc().InitWithRangesAffinityGranularity(textRanges, affinity, granularity)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextSelectionClass) Alloc() TextSelection {

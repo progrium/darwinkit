@@ -51,8 +51,10 @@ func (c_ CoreDataCoreSpotlightDelegate) InitForStoreWithDescriptionCoordinator(d
 // Creates a Core Spotlight delegate with the specified store description and coordinator. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/3751984-initforstorewithdescription?language=objc
-func CoreDataCoreSpotlightDelegate_InitForStoreWithDescriptionCoordinator(description IPersistentStoreDescription, psc IPersistentStoreCoordinator) CoreDataCoreSpotlightDelegate {
-	return CoreDataCoreSpotlightDelegateClass.Alloc().InitForStoreWithDescriptionCoordinator(description, psc)
+func NewCoreDataCoreSpotlightDelegateForStoreWithDescriptionCoordinator(description IPersistentStoreDescription, psc IPersistentStoreCoordinator) CoreDataCoreSpotlightDelegate {
+	instance := CoreDataCoreSpotlightDelegateClass.Alloc().InitForStoreWithDescriptionCoordinator(description, psc)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CoreDataCoreSpotlightDelegateClass) Alloc() CoreDataCoreSpotlightDelegate {

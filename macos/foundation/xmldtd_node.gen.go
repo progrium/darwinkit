@@ -50,8 +50,10 @@ func (x_ XMLDTDNode) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOption
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1408553-initwithkind?language=objc
-func XMLDTDNode_InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTDNode {
-	return XMLDTDNodeClass.Alloc().InitWithKindOptions(kind, options)
+func NewXMLDTDNodeWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDTDNode {
+	instance := XMLDTDNodeClass.Alloc().InitWithKindOptions(kind, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDTDNode) InitWithXMLString(string_ string) XMLDTDNode {
@@ -62,8 +64,10 @@ func (x_ XMLDTDNode) InitWithXMLString(string_ string) XMLDTDNode {
 // Returns an NSXMLDTDNode object initialized with the DTD declaration in a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtdnode/1409605-initwithxmlstring?language=objc
-func XMLDTDNode_InitWithXMLString(string_ string) XMLDTDNode {
-	return XMLDTDNodeClass.Alloc().InitWithXMLString(string_)
+func NewXMLDTDNodeWithXMLString(string_ string) XMLDTDNode {
+	instance := XMLDTDNodeClass.Alloc().InitWithXMLString(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDTDNode) Init() XMLDTDNode {

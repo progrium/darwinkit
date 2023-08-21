@@ -72,8 +72,10 @@ func (u_ UserDefaults) InitWithSuiteName(suitename string) UserDefaults {
 // Creates a user defaults object initialized with the defaults for the specified database name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1409957-initwithsuitename?language=objc
-func UserDefaults_InitWithSuiteName(suitename string) UserDefaults {
-	return UserDefaultsClass.Alloc().InitWithSuiteName(suitename)
+func NewUserDefaultsWithSuiteName(suitename string) UserDefaults {
+	instance := UserDefaultsClass.Alloc().InitWithSuiteName(suitename)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UserDefaults) Init() UserDefaults {

@@ -68,8 +68,10 @@ func (u_ UserAutomatorTask) InitWithURLError(url IURL, error IError) UserAutomat
 // Return a user script task instance given a URL for a script file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttask/1409998-initwithurl?language=objc
-func UserAutomatorTask_InitWithURLError(url IURL, error IError) UserAutomatorTask {
-	return UserAutomatorTaskClass.Alloc().InitWithURLError(url, error)
+func NewUserAutomatorTaskWithURLError(url IURL, error IError) UserAutomatorTask {
+	instance := UserAutomatorTaskClass.Alloc().InitWithURLError(url, error)
+	instance.Autorelease()
+	return instance
 }
 
 // Execute the Automator workflow by providing it as securely coded input. [Full Topic]

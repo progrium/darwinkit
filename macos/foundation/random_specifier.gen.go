@@ -65,8 +65,10 @@ func (r_ RandomSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func RandomSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RandomSpecifier {
-	return RandomSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewRandomSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RandomSpecifier {
+	instance := RandomSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RandomSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RandomSpecifier {
@@ -77,6 +79,8 @@ func (r_ RandomSpecifier) InitWithContainerSpecifierKey(container IScriptObjectS
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func RandomSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RandomSpecifier {
-	return RandomSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewRandomSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RandomSpecifier {
+	instance := RandomSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }

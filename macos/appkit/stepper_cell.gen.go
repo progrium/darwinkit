@@ -75,8 +75,10 @@ func (s_ StepperCell) InitImageCell(image IImage) StepperCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func StepperCell_InitImageCell(image IImage) StepperCell {
-	return StepperCellClass.Alloc().InitImageCell(image)
+func NewStepperCellImageCell(image IImage) StepperCell {
+	instance := StepperCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ StepperCell) InitTextCell(string_ string) StepperCell {
@@ -87,8 +89,10 @@ func (s_ StepperCell) InitTextCell(string_ string) StepperCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func StepperCell_InitTextCell(string_ string) StepperCell {
-	return StepperCellClass.Alloc().InitTextCell(string_)
+func NewStepperCellTextCell(string_ string) StepperCell {
+	instance := StepperCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean value indicating whether the receiver wraps around the minimum and maximum values. [Full Topic]

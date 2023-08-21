@@ -132,8 +132,10 @@ func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedCon
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func SegmentedControl_InitWithFrame(frameRect foundation.Rect) SegmentedControl {
-	return SegmentedControlClass.Alloc().InitWithFrame(frameRect)
+func NewSegmentedControlWithFrame(frameRect foundation.Rect) SegmentedControl {
+	instance := SegmentedControlClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the label for the specified segment. [Full Topic]

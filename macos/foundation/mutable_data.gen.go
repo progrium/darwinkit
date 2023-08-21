@@ -51,8 +51,10 @@ func (m_ MutableData) InitWithLength(length uint) MutableData {
 // Initializes and returns a mutable data object containing a given number of zeroed bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413159-initwithlength?language=objc
-func MutableData_InitWithLength(length uint) MutableData {
-	return MutableDataClass.Alloc().InitWithLength(length)
+func NewMutableDataWithLength(length uint) MutableData {
+	instance := MutableDataClass.Alloc().InitWithLength(length)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableDataClass) DataWithLength(length uint) MutableData {
@@ -75,8 +77,10 @@ func (m_ MutableData) InitWithCapacity(capacity uint) MutableData {
 // Returns an initialized mutable data object capable of holding the specified number of bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/1413350-initwithcapacity?language=objc
-func MutableData_InitWithCapacity(capacity uint) MutableData {
-	return MutableDataClass.Alloc().InitWithCapacity(capacity)
+func NewMutableDataWithCapacity(capacity uint) MutableData {
+	instance := MutableDataClass.Alloc().InitWithCapacity(capacity)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableDataClass) DataWithCapacity(aNumItems uint) MutableData {
@@ -123,8 +127,10 @@ func (m_ MutableData) InitWithContentsOfFileOptionsError(path string, readOption
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func MutableData_InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
-	return MutableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+func NewMutableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
+	instance := MutableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
@@ -136,7 +142,9 @@ func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressio
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
 func MutableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
-	return MutableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance := MutableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableDataClass) DataWithContentsOfURL(url IURL) MutableData {
@@ -159,8 +167,10 @@ func (m_ MutableData) InitWithData(data []byte) MutableData {
 // Initializes a data object with the contents of another data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
-func MutableData_InitWithData(data []byte) MutableData {
-	return MutableDataClass.Alloc().InitWithData(data)
+func NewMutableDataWithData(data []byte) MutableData {
+	instance := MutableDataClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
@@ -171,8 +181,10 @@ func (m_ MutableData) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer
 // Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
-func MutableData_InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
-	return MutableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+func NewMutableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableDataClass) DataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) MutableData {
@@ -231,8 +243,10 @@ func (m_ MutableData) InitWithBytesLength(bytes unsafe.Pointer, length uint) Mut
 // Initializes a data object filled with a given number of bytes copied from a given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1412793-initwithbytes?language=objc
-func MutableData_InitWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
-	return MutableDataClass.Alloc().InitWithBytesLength(bytes, length)
+func NewMutableDataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBytesLength(bytes, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) InitWithContentsOfURL(url IURL) MutableData {
@@ -243,8 +257,10 @@ func (m_ MutableData) InitWithContentsOfURL(url IURL) MutableData {
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc
-func MutableData_InitWithContentsOfURL(url IURL) MutableData {
-	return MutableDataClass.Alloc().InitWithContentsOfURL(url)
+func NewMutableDataWithContentsOfURL(url IURL) MutableData {
+	instance := MutableDataClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
@@ -256,7 +272,9 @@ func (m_ MutableData) DecompressedDataUsingAlgorithmError(algorithm DataCompress
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
 func MutableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
-	return MutableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance := MutableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
@@ -267,8 +285,10 @@ func (m_ MutableData) InitWithBase64EncodedDataOptions(base64Data []byte, option
 // Initializes a data object with the given Base64 encoded data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
-func MutableData_InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
-	return MutableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+func NewMutableDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableData) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
@@ -279,8 +299,10 @@ func (m_ MutableData) InitWithBase64EncodedStringOptions(base64String string, op
 // Initializes a data object with the given Base64 encoded string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
-func MutableData_InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
-	return MutableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+func NewMutableDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) MutableData {
+	instance := MutableDataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableDataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) MutableData {

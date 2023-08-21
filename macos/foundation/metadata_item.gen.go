@@ -44,8 +44,10 @@ func (m_ MetadataItem) InitWithURL(url IURL) MetadataItem {
 // Initializes a metadata item with a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataitem/1414919-initwithurl?language=objc
-func MetadataItem_InitWithURL(url IURL) MetadataItem {
-	return MetadataItemClass.Alloc().InitWithURL(url)
+func NewMetadataItemWithURL(url IURL) MetadataItem {
+	instance := MetadataItemClass.Alloc().InitWithURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MetadataItemClass) Alloc() MetadataItem {

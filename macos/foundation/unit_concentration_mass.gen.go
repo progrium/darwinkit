@@ -77,8 +77,10 @@ func (u_ UnitConcentrationMass) InitWithSymbolConverter(symbol string, converter
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitConcentrationMass_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitConcentrationMass {
-	return UnitConcentrationMassClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitConcentrationMassWithSymbolConverter(symbol string, converter IUnitConverter) UnitConcentrationMass {
+	instance := UnitConcentrationMassClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitConcentrationMass) InitWithSymbol(symbol string) UnitConcentrationMass {
@@ -89,8 +91,10 @@ func (u_ UnitConcentrationMass) InitWithSymbol(symbol string) UnitConcentrationM
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitConcentrationMass_InitWithSymbol(symbol string) UnitConcentrationMass {
-	return UnitConcentrationMassClass.Alloc().InitWithSymbol(symbol)
+func NewUnitConcentrationMassWithSymbol(symbol string) UnitConcentrationMass {
+	instance := UnitConcentrationMassClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the millimoles per liter unit with the specified number of grams per mole. [Full Topic]

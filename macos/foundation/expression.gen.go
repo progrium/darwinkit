@@ -57,8 +57,10 @@ func (e_ Expression) InitWithExpressionType(type_ ExpressionType) Expression {
 // Creates the expression with the specified expression type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1418351-initwithexpressiontype?language=objc
-func Expression_InitWithExpressionType(type_ ExpressionType) Expression {
-	return ExpressionClass.Alloc().InitWithExpressionType(type_)
+func NewExpressionWithExpressionType(type_ ExpressionType) Expression {
+	instance := ExpressionClass.Alloc().InitWithExpressionType(type_)
+	instance.Autorelease()
+	return instance
 }
 
 func (ec _ExpressionClass) Alloc() Expression {

@@ -35,13 +35,13 @@ func main() {
 
 		frame := rectOf(400, 400, 300, 200)
 
-		win := appkit.Window_InitWithContentRectStyleMaskBackingDefer(
+		win := appkit.NewWindowWithContentRectStyleMaskBackingDefer(
 			frame,
 			appkit.WindowStyleMaskTitled|appkit.WindowStyleMaskClosable,
 			appkit.BackingStoreBuffered,
 			false,
 		)
-		win.Retain()
+		objc.Retain(&win)
 		win.SetTitle("Hello world")
 		win.SetLevel(appkit.MainMenuWindowLevel + 2)
 

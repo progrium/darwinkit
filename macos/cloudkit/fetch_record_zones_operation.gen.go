@@ -48,8 +48,10 @@ func (f_ FetchRecordZonesOperation) InitWithRecordZoneIDs(zoneIDs []IRecordZoneI
 // Creates an operation for fetching the specified record zones. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonesoperation/1515299-initwithrecordzoneids?language=objc
-func FetchRecordZonesOperation_InitWithRecordZoneIDs(zoneIDs []IRecordZoneID) FetchRecordZonesOperation {
-	return FetchRecordZonesOperationClass.Alloc().InitWithRecordZoneIDs(zoneIDs)
+func NewFetchRecordZonesOperationWithRecordZoneIDs(zoneIDs []IRecordZoneID) FetchRecordZonesOperation {
+	instance := FetchRecordZonesOperationClass.Alloc().InitWithRecordZoneIDs(zoneIDs)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchRecordZonesOperationClass) FetchAllRecordZonesOperation() FetchRecordZonesOperation {

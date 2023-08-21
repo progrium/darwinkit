@@ -45,8 +45,10 @@ func (c_ CachedURLResponse) InitWithResponseData(response IURLResponse, data []b
 // Creates a cached URL response instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedurlresponse/1413035-initwithresponse?language=objc
-func CachedURLResponse_InitWithResponseData(response IURLResponse, data []byte) CachedURLResponse {
-	return CachedURLResponseClass.Alloc().InitWithResponseData(response, data)
+func NewCachedURLResponseWithResponseData(response IURLResponse, data []byte) CachedURLResponse {
+	instance := CachedURLResponseClass.Alloc().InitWithResponseData(response, data)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CachedURLResponseClass) Alloc() CachedURLResponse {

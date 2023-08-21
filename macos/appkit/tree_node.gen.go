@@ -62,8 +62,10 @@ func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode 
 // Initializes a newly allocated tree node that represents the specified object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1533294-initwithrepresentedobject?language=objc
-func TreeNode_InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	return TreeNodeClass.Alloc().InitWithRepresentedObject(modelObject)
+func NewTreeNodeWithRepresentedObject(modelObject objc.IObject) TreeNode {
+	instance := TreeNodeClass.Alloc().InitWithRepresentedObject(modelObject)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TreeNodeClass) Alloc() TreeNode {

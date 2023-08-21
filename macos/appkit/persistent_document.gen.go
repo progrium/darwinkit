@@ -71,8 +71,10 @@ func (p_ PersistentDocument) InitWithTypeError(typeName string, outError foundat
 // Initializes a document of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515159-initwithtype?language=objc
-func PersistentDocument_InitWithTypeError(typeName string, outError foundation.IError) PersistentDocument {
-	return PersistentDocumentClass.Alloc().InitWithTypeError(typeName, outError)
+func NewPersistentDocumentWithTypeError(typeName string, outError foundation.IError) PersistentDocument {
+	instance := PersistentDocumentClass.Alloc().InitWithTypeError(typeName, outError)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
@@ -83,8 +85,10 @@ func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil fou
 // Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
-func PersistentDocument_InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
-	return PersistentDocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
+func NewPersistentDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
+	instance := PersistentDocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the type of persistent store associated with the specified file type. [Full Topic]

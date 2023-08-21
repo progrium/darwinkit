@@ -43,8 +43,10 @@ func (s_ SharedEventListener) InitWithDispatchQueue(dispatchQueue dispatch.Queue
 // Creates a new shareable event listener with a specific dispatch queue. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsharedeventlistener/2966579-initwithdispatchqueue?language=objc
-func SharedEventListener_InitWithDispatchQueue(dispatchQueue dispatch.Queue) SharedEventListener {
-	return SharedEventListenerClass.Alloc().InitWithDispatchQueue(dispatchQueue)
+func NewSharedEventListenerWithDispatchQueue(dispatchQueue dispatch.Queue) SharedEventListener {
+	instance := SharedEventListenerClass.Alloc().InitWithDispatchQueue(dispatchQueue)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SharedEventListener) Init() SharedEventListener {

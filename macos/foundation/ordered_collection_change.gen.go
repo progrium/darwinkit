@@ -45,8 +45,10 @@ func (o_ OrderedCollectionChange) InitWithObjectTypeIndexAssociatedIndex(anObjec
 // Creates a change object that represents inserting, removing, or moving an object from an ordered collection at a specific index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152180-initwithobject?language=objc
-func OrderedCollectionChange_InitWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
-	return OrderedCollectionChangeClass.Alloc().InitWithObjectTypeIndexAssociatedIndex(anObject, type_, index, associatedIndex)
+func NewOrderedCollectionChangeWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
+	instance := OrderedCollectionChangeClass.Alloc().InitWithObjectTypeIndexAssociatedIndex(anObject, type_, index, associatedIndex)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OrderedCollectionChangeClass) Alloc() OrderedCollectionChange {

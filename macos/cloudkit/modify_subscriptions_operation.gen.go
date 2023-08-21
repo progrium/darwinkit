@@ -52,8 +52,10 @@ func (m_ ModifySubscriptionsOperation) InitWithSubscriptionsToSaveSubscriptionID
 // Creates an operation for saving and deleting the specified subscriptions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckmodifysubscriptionsoperation/1515015-initwithsubscriptionstosave?language=objc
-func ModifySubscriptionsOperation_InitWithSubscriptionsToSaveSubscriptionIDsToDelete(subscriptionsToSave []ISubscription, subscriptionIDsToDelete []SubscriptionID) ModifySubscriptionsOperation {
-	return ModifySubscriptionsOperationClass.Alloc().InitWithSubscriptionsToSaveSubscriptionIDsToDelete(subscriptionsToSave, subscriptionIDsToDelete)
+func NewModifySubscriptionsOperationWithSubscriptionsToSaveSubscriptionIDsToDelete(subscriptionsToSave []ISubscription, subscriptionIDsToDelete []SubscriptionID) ModifySubscriptionsOperation {
+	instance := ModifySubscriptionsOperationClass.Alloc().InitWithSubscriptionsToSaveSubscriptionIDsToDelete(subscriptionsToSave, subscriptionIDsToDelete)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ ModifySubscriptionsOperation) Init() ModifySubscriptionsOperation {

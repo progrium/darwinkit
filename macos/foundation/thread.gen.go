@@ -56,8 +56,10 @@ func (t_ Thread) InitWithBlock(block func()) Thread {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsthread/2088561-initwithblock?language=objc
-func Thread_InitWithBlock(block func()) Thread {
-	return ThreadClass.Alloc().InitWithBlock(block)
+func NewThreadWithBlock(block func()) Thread {
+	instance := ThreadClass.Alloc().InitWithBlock(block)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ Thread) Init() Thread {
@@ -73,8 +75,10 @@ func (t_ Thread) InitWithTargetSelectorObject(target objc.IObject, selector objc
 // Returns an NSThread object initialized with the given arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsthread/1414773-initwithtarget?language=objc
-func Thread_InitWithTargetSelectorObject(target objc.IObject, selector objc.Selector, argument objc.IObject) Thread {
-	return ThreadClass.Alloc().InitWithTargetSelectorObject(target, selector, argument)
+func NewThreadWithTargetSelectorObject(target objc.IObject, selector objc.Selector, argument objc.IObject) Thread {
+	instance := ThreadClass.Alloc().InitWithTargetSelectorObject(target, selector, argument)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _ThreadClass) Alloc() Thread {

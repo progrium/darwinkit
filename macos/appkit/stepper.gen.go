@@ -76,8 +76,10 @@ func (s_ Stepper) InitWithFrame(frameRect foundation.Rect) Stepper {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Stepper_InitWithFrame(frameRect foundation.Rect) Stepper {
-	return StepperClass.Alloc().InitWithFrame(frameRect)
+func NewStepperWithFrame(frameRect foundation.Rect) Stepper {
+	instance := StepperClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean value that indicates whether the stepper wraps around the minimum and maximum values. [Full Topic]

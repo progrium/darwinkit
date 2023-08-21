@@ -81,8 +81,10 @@ func (t_ TrackingSeparatorToolbarItem) InitWithItemIdentifier(itemIdentifier Too
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func TrackingSeparatorToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) TrackingSeparatorToolbarItem {
-	return TrackingSeparatorToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewTrackingSeparatorToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) TrackingSeparatorToolbarItem {
+	instance := TrackingSeparatorToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The vertical split view to align with the toolbar separator. [Full Topic]

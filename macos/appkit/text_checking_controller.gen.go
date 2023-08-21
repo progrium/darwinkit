@@ -62,8 +62,10 @@ func (t_ TextCheckingController) InitWithClient(client PTextCheckingClient) Text
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingcontroller/3242753-initwithclient?language=objc
-func TextCheckingController_InitWithClient(client PTextCheckingClient) TextCheckingController {
-	return TextCheckingControllerClass.Alloc().InitWithClient(client)
+func NewTextCheckingControllerWithClient(client PTextCheckingClient) TextCheckingController {
+	instance := TextCheckingControllerClass.Alloc().InitWithClient(client)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextCheckingControllerClass) Alloc() TextCheckingController {

@@ -95,8 +95,10 @@ func (t_ TableRowView) InitWithFrame(frameRect foundation.Rect) TableRowView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func TableRowView_InitWithFrame(frameRect foundation.Rect) TableRowView {
-	return TableRowViewClass.Alloc().InitWithFrame(frameRect)
+func NewTableRowViewWithFrame(frameRect foundation.Rect) TableRowView {
+	instance := TableRowViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Provides access to the given view at a particular column. [Full Topic]

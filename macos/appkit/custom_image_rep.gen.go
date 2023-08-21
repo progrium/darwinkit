@@ -45,8 +45,10 @@ func (c_ CustomImageRep) InitWithSizeFlippedDrawingHandler(size foundation.Size,
 // Initializes a representation of an image of the specified size and flipped status, using a block to draw its content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomimagerep/1526521-initwithsize?language=objc
-func CustomImageRep_InitWithSizeFlippedDrawingHandler(size foundation.Size, drawingHandlerShouldBeCalledWithFlippedContext bool, drawingHandler func(dstRect foundation.Rect) bool) CustomImageRep {
-	return CustomImageRepClass.Alloc().InitWithSizeFlippedDrawingHandler(size, drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler)
+func NewCustomImageRepWithSizeFlippedDrawingHandler(size foundation.Size, drawingHandlerShouldBeCalledWithFlippedContext bool, drawingHandler func(dstRect foundation.Rect) bool) CustomImageRep {
+	instance := CustomImageRepClass.Alloc().InitWithSizeFlippedDrawingHandler(size, drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CustomImageRep) InitWithDrawSelectorDelegate(selector objc.Selector, delegate objc.IObject) CustomImageRep {
@@ -57,8 +59,10 @@ func (c_ CustomImageRep) InitWithDrawSelectorDelegate(selector objc.Selector, de
 // Returns a representation of an image initialized with the specified delegate information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomimagerep/1533328-initwithdrawselector?language=objc
-func CustomImageRep_InitWithDrawSelectorDelegate(selector objc.Selector, delegate objc.IObject) CustomImageRep {
-	return CustomImageRepClass.Alloc().InitWithDrawSelectorDelegate(selector, delegate)
+func NewCustomImageRepWithDrawSelectorDelegate(selector objc.Selector, delegate objc.IObject) CustomImageRep {
+	instance := CustomImageRepClass.Alloc().InitWithDrawSelectorDelegate(selector, delegate)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CustomImageRepClass) Alloc() CustomImageRep {

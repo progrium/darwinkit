@@ -60,8 +60,10 @@ func (x_ XPCConnection) InitWithListenerEndpoint(endpoint IXPCListenerEndpoint) 
 // Initializes an NSXPCConnection object to connect to an NSXPCListener object in another process, identified by an NSXPCListenerEndpoint object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1416298-initwithlistenerendpoint?language=objc
-func XPCConnection_InitWithListenerEndpoint(endpoint IXPCListenerEndpoint) XPCConnection {
-	return XPCConnectionClass.Alloc().InitWithListenerEndpoint(endpoint)
+func NewXPCConnectionWithListenerEndpoint(endpoint IXPCListenerEndpoint) XPCConnection {
+	instance := XPCConnectionClass.Alloc().InitWithListenerEndpoint(endpoint)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XPCConnection) InitWithMachServiceNameOptions(name string, options XPCConnectionOptions) XPCConnection {
@@ -72,8 +74,10 @@ func (x_ XPCConnection) InitWithMachServiceNameOptions(name string, options XPCC
 // Initializes an NSXPCConnection object to connect to a LaunchAgent or LaunchDaemon with a name advertised in a launchd.plist. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1418074-initwithmachservicename?language=objc
-func XPCConnection_InitWithMachServiceNameOptions(name string, options XPCConnectionOptions) XPCConnection {
-	return XPCConnectionClass.Alloc().InitWithMachServiceNameOptions(name, options)
+func NewXPCConnectionWithMachServiceNameOptions(name string, options XPCConnectionOptions) XPCConnection {
+	instance := XPCConnectionClass.Alloc().InitWithMachServiceNameOptions(name, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XPCConnection) InitWithServiceName(serviceName string) XPCConnection {
@@ -84,8 +88,10 @@ func (x_ XPCConnection) InitWithServiceName(serviceName string) XPCConnection {
 // Initializes an NSXPCConnection object to connect to an NSXPCListener object in an XPC service, identified by a service name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1416370-initwithservicename?language=objc
-func XPCConnection_InitWithServiceName(serviceName string) XPCConnection {
-	return XPCConnectionClass.Alloc().InitWithServiceName(serviceName)
+func NewXPCConnectionWithServiceName(serviceName string) XPCConnection {
+	instance := XPCConnectionClass.Alloc().InitWithServiceName(serviceName)
+	instance.Autorelease()
+	return instance
 }
 
 func (xc _XPCConnectionClass) Alloc() XPCConnection {

@@ -58,8 +58,10 @@ func (u_ URLRequest) InitWithURL(URL IURL) URLRequest {
 // Creates a URL request for a specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc
-func URLRequest_InitWithURL(URL IURL) URLRequest {
-	return URLRequestClass.Alloc().InitWithURL(URL)
+func NewURLRequestWithURL(URL IURL) URLRequest {
+	instance := URLRequestClass.Alloc().InitWithURL(URL)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLRequestClass) RequestWithURL(URL IURL) URLRequest {

@@ -77,8 +77,10 @@ func (u_ UnitPower) InitWithSymbolConverter(symbol string, converter IUnitConver
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitPower_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitPower {
-	return UnitPowerClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitPowerWithSymbolConverter(symbol string, converter IUnitConverter) UnitPower {
+	instance := UnitPowerClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitPower) InitWithSymbol(symbol string) UnitPower {
@@ -89,8 +91,10 @@ func (u_ UnitPower) InitWithSymbol(symbol string) UnitPower {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitPower_InitWithSymbol(symbol string) UnitPower {
-	return UnitPowerClass.Alloc().InitWithSymbol(symbol)
+func NewUnitPowerWithSymbol(symbol string) UnitPower {
+	instance := UnitPowerClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The femtowatts unit of power. [Full Topic]

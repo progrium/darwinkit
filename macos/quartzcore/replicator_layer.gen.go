@@ -97,8 +97,10 @@ func (r_ ReplicatorLayer) InitWithLayer(layer objc.IObject) ReplicatorLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func ReplicatorLayer_InitWithLayer(layer objc.IObject) ReplicatorLayer {
-	return ReplicatorLayerClass.Alloc().InitWithLayer(layer)
+func NewReplicatorLayerWithLayer(layer objc.IObject) ReplicatorLayer {
+	instance := ReplicatorLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ ReplicatorLayer) ModelLayer() ReplicatorLayer {
@@ -110,7 +112,9 @@ func (r_ ReplicatorLayer) ModelLayer() ReplicatorLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func ReplicatorLayer_ModelLayer() ReplicatorLayer {
-	return ReplicatorLayerClass.Alloc().ModelLayer()
+	instance := ReplicatorLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ ReplicatorLayer) PresentationLayer() ReplicatorLayer {
@@ -122,7 +126,9 @@ func (r_ ReplicatorLayer) PresentationLayer() ReplicatorLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func ReplicatorLayer_PresentationLayer() ReplicatorLayer {
-	return ReplicatorLayerClass.Alloc().PresentationLayer()
+	instance := ReplicatorLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]

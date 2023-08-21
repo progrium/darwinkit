@@ -48,8 +48,10 @@ func (t_ TouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier) Tou
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func TouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) TouchBarItem {
-	return TouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) TouchBarItem {
+	instance := TouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TouchBarItemClass) Alloc() TouchBarItem {

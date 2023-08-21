@@ -77,8 +77,10 @@ func (t_ TransformLayer) InitWithLayer(layer objc.IObject) TransformLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func TransformLayer_InitWithLayer(layer objc.IObject) TransformLayer {
-	return TransformLayerClass.Alloc().InitWithLayer(layer)
+func NewTransformLayerWithLayer(layer objc.IObject) TransformLayer {
+	instance := TransformLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TransformLayer) ModelLayer() TransformLayer {
@@ -90,7 +92,9 @@ func (t_ TransformLayer) ModelLayer() TransformLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func TransformLayer_ModelLayer() TransformLayer {
-	return TransformLayerClass.Alloc().ModelLayer()
+	instance := TransformLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TransformLayer) PresentationLayer() TransformLayer {
@@ -102,5 +106,7 @@ func (t_ TransformLayer) PresentationLayer() TransformLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func TransformLayer_PresentationLayer() TransformLayer {
-	return TransformLayerClass.Alloc().PresentationLayer()
+	instance := TransformLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }

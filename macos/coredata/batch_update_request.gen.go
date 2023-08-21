@@ -64,8 +64,10 @@ func (b_ BatchUpdateRequest) InitWithEntityName(entityName string) BatchUpdateRe
 // Creates a batch-update request for a named managed entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdaterequest/1506702-initwithentityname?language=objc
-func BatchUpdateRequest_InitWithEntityName(entityName string) BatchUpdateRequest {
-	return BatchUpdateRequestClass.Alloc().InitWithEntityName(entityName)
+func NewBatchUpdateRequestWithEntityName(entityName string) BatchUpdateRequest {
+	instance := BatchUpdateRequestClass.Alloc().InitWithEntityName(entityName)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BatchUpdateRequest) InitWithEntity(entity IEntityDescription) BatchUpdateRequest {
@@ -76,8 +78,10 @@ func (b_ BatchUpdateRequest) InitWithEntity(entity IEntityDescription) BatchUpda
 // Creates a batch-update request for a managed entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdaterequest/1506374-initwithentity?language=objc
-func BatchUpdateRequest_InitWithEntity(entity IEntityDescription) BatchUpdateRequest {
-	return BatchUpdateRequestClass.Alloc().InitWithEntity(entity)
+func NewBatchUpdateRequestWithEntity(entity IEntityDescription) BatchUpdateRequest {
+	instance := BatchUpdateRequestClass.Alloc().InitWithEntity(entity)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BatchUpdateRequestClass) Alloc() BatchUpdateRequest {

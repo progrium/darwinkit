@@ -60,8 +60,10 @@ func (s_ SharingService) InitWithTitleImageAlternateImageHandler(title string, i
 // Creates a custom sharing service object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402614-initwithtitle?language=objc
-func SharingService_InitWithTitleImageAlternateImageHandler(title string, image IImage, alternateImage IImage, block func()) SharingService {
-	return SharingServiceClass.Alloc().InitWithTitleImageAlternateImageHandler(title, image, alternateImage, block)
+func NewSharingServiceWithTitleImageAlternateImageHandler(title string, image IImage, alternateImage IImage, block func()) SharingService {
+	instance := SharingServiceClass.Alloc().InitWithTitleImageAlternateImageHandler(title, image, alternateImage, block)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SharingServiceClass) Alloc() SharingService {

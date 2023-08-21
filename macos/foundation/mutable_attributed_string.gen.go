@@ -90,8 +90,10 @@ func (m_ MutableAttributedString) InitWithHTMLOptionsDocumentAttributes(data []b
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc
-func MutableAttributedString_InitWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict Dictionary) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
+func NewMutableAttributedStringWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict Dictionary) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableAttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) MutableAttributedString {
@@ -114,8 +116,10 @@ func (m_ MutableAttributedString) InitWithAttributedString(attrStr IAttributedSt
 // Creates an attributed string with the characters and attributes of the specified attributed string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1415342-initwithattributedstring?language=objc
-func MutableAttributedString_InitWithAttributedString(attrStr IAttributedString) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithAttributedString(attrStr)
+func NewMutableAttributedStringWithAttributedString(attrStr IAttributedString) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithAttributedString(attrStr)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
@@ -126,8 +130,10 @@ func (m_ MutableAttributedString) InitWithContentsOfMarkdownFileAtURLOptionsBase
 // Creates an attributed string from the contents of a specified URL that contains Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746872-initwithcontentsofmarkdownfileat?language=objc
-func MutableAttributedString_InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
+func NewMutableAttributedStringWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
@@ -138,8 +144,10 @@ func (m_ MutableAttributedString) InitWithFormatOptionsLocale(format IAttributed
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746873-initwithformat?language=objc
-func MutableAttributedString_InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
+func NewMutableAttributedStringWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
@@ -150,8 +158,10 @@ func (m_ MutableAttributedString) InitWithDataOptionsDocumentAttributesError(dat
 // Creates an attributed string from the data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc
-func MutableAttributedString_InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
+func NewMutableAttributedStringWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithString(str string) MutableAttributedString {
@@ -162,8 +172,10 @@ func (m_ MutableAttributedString) InitWithString(str string) MutableAttributedSt
 // Creates an attributed string with the characters of the specified string and no attribute information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc
-func MutableAttributedString_InitWithString(str string) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithString(str)
+func NewMutableAttributedStringWithString(str string) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithString(str)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
@@ -174,8 +186,10 @@ func (m_ MutableAttributedString) InitWithMarkdownStringOptionsBaseURLError(mark
 // Creates an attributed string from a Markdown-formatted string using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746876-initwithmarkdownstring?language=objc
-func MutableAttributedString_InitWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
+func NewMutableAttributedStringWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
@@ -186,8 +200,10 @@ func (m_ MutableAttributedString) InitWithMarkdownOptionsBaseURLError(markdown [
 // Creates an attributed string from Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746875-initwithmarkdown?language=objc
-func MutableAttributedString_InitWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
+func NewMutableAttributedStringWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithDocFormatDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
@@ -198,8 +214,10 @@ func (m_ MutableAttributedString) InitWithDocFormatDocumentAttributes(data []byt
 // Creates an attributed string from Microsoft Word format data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc
-func MutableAttributedString_InitWithDocFormatDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
+func NewMutableAttributedStringWithDocFormatDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithRTFDDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
@@ -210,8 +228,10 @@ func (m_ MutableAttributedString) InitWithRTFDDocumentAttributes(data []byte, di
 // Creates an attributed string by decoding the stream of RTFD commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc
-func MutableAttributedString_InitWithRTFDDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
+func NewMutableAttributedStringWithRTFDDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithRTFDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
@@ -222,8 +242,10 @@ func (m_ MutableAttributedString) InitWithRTFDocumentAttributes(data []byte, dic
 // Creates an attributed string by decoding the stream of RTF commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc
-func MutableAttributedString_InitWithRTFDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
+func NewMutableAttributedStringWithRTFDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableAttributedString) InitWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict Dictionary) MutableAttributedString {
@@ -234,8 +256,10 @@ func (m_ MutableAttributedString) InitWithRTFDFileWrapperDocumentAttributes(wrap
 // Creates an attributed string from the specified file wrapper that contains an RTFD document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1533594-initwithrtfdfilewrapper?language=objc
-func MutableAttributedString_InitWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict Dictionary) MutableAttributedString {
-	return MutableAttributedStringClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
+func NewMutableAttributedStringWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict Dictionary) MutableAttributedString {
+	instance := MutableAttributedStringClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

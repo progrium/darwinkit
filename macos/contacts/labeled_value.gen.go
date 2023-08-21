@@ -45,7 +45,9 @@ func (l_ LabeledValue) LabeledValueBySettingLabel(label string) LabeledValue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403198-labeledvaluebysettinglabel?language=objc
 func LabeledValue_LabeledValueBySettingLabel(label string) LabeledValue {
-	return LabeledValueClass.Alloc().LabeledValueBySettingLabel(label)
+	instance := LabeledValueClass.Alloc().LabeledValueBySettingLabel(label)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LabeledValue) LabeledValueBySettingValue(value objc.IObject) LabeledValue {
@@ -57,7 +59,9 @@ func (l_ LabeledValue) LabeledValueBySettingValue(value objc.IObject) LabeledVal
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403084-labeledvaluebysettingvalue?language=objc
 func LabeledValue_LabeledValueBySettingValue(value objc.IObject) LabeledValue {
-	return LabeledValueClass.Alloc().LabeledValueBySettingValue(value)
+	instance := LabeledValueClass.Alloc().LabeledValueBySettingValue(value)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LabeledValueClass) LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
@@ -80,8 +84,10 @@ func (l_ LabeledValue) InitWithLabelValue(label string, value objc.IObject) Labe
 // Returns a new labeled value identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnlabeledvalue/1403404-initwithlabel?language=objc
-func LabeledValue_InitWithLabelValue(label string, value objc.IObject) LabeledValue {
-	return LabeledValueClass.Alloc().InitWithLabelValue(label, value)
+func NewLabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
+	instance := LabeledValueClass.Alloc().InitWithLabelValue(label, value)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LabeledValueClass) Alloc() LabeledValue {

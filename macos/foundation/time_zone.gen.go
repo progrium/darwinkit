@@ -79,8 +79,10 @@ func (t_ TimeZone) InitWithNameData(tzName string, aData []byte) TimeZone {
 // Initializes a time zone with a given identifier and time zone data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387250-initwithname?language=objc
-func TimeZone_InitWithNameData(tzName string, aData []byte) TimeZone {
-	return TimeZoneClass.Alloc().InitWithNameData(tzName, aData)
+func NewTimeZoneWithNameData(tzName string, aData []byte) TimeZone {
+	instance := TimeZoneClass.Alloc().InitWithNameData(tzName, aData)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TimeZoneClass) TimeZoneForSecondsFromGMT(seconds int) TimeZone {

@@ -48,8 +48,10 @@ func (f_ FetchShareParticipantsOperation) InitWithUserIdentityLookupInfos(userId
 // Creates an operation for generating share participants from the specified user data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchshareparticipantsoperation/1640471-initwithuseridentitylookupinfos?language=objc
-func FetchShareParticipantsOperation_InitWithUserIdentityLookupInfos(userIdentityLookupInfos []IUserIdentityLookupInfo) FetchShareParticipantsOperation {
-	return FetchShareParticipantsOperationClass.Alloc().InitWithUserIdentityLookupInfos(userIdentityLookupInfos)
+func NewFetchShareParticipantsOperationWithUserIdentityLookupInfos(userIdentityLookupInfos []IUserIdentityLookupInfo) FetchShareParticipantsOperation {
+	instance := FetchShareParticipantsOperationClass.Alloc().InitWithUserIdentityLookupInfos(userIdentityLookupInfos)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchShareParticipantsOperation) Init() FetchShareParticipantsOperation {

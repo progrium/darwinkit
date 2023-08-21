@@ -43,8 +43,10 @@ func (n_ NotificationQueue) InitWithNotificationCenter(notificationCenter INotif
 // Initializes and returns a notification queue for the specified notification center. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1410062-initwithnotificationcenter?language=objc
-func NotificationQueue_InitWithNotificationCenter(notificationCenter INotificationCenter) NotificationQueue {
-	return NotificationQueueClass.Alloc().InitWithNotificationCenter(notificationCenter)
+func NewNotificationQueueWithNotificationCenter(notificationCenter INotificationCenter) NotificationQueue {
+	instance := NotificationQueueClass.Alloc().InitWithNotificationCenter(notificationCenter)
+	instance.Autorelease()
+	return instance
 }
 
 func (nc _NotificationQueueClass) Alloc() NotificationQueue {

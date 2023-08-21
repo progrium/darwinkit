@@ -84,8 +84,10 @@ func (c_ CandidateListTouchBarItem) InitWithIdentifier(identifier TouchBarItemId
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func CandidateListTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) CandidateListTouchBarItem {
-	return CandidateListTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewCandidateListTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) CandidateListTouchBarItem {
+	instance := CandidateListTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets an array of candidate objects to be displayed in the candidate list bar item. [Full Topic]

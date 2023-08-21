@@ -43,8 +43,10 @@ func (u_ UserScriptTask) InitWithURLError(url IURL, error IError) UserScriptTask
 // Return a user script task instance given a URL for a script file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttask/1409998-initwithurl?language=objc
-func UserScriptTask_InitWithURLError(url IURL, error IError) UserScriptTask {
-	return UserScriptTaskClass.Alloc().InitWithURLError(url, error)
+func NewUserScriptTaskWithURLError(url IURL, error IError) UserScriptTask {
+	instance := UserScriptTaskClass.Alloc().InitWithURLError(url, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UserScriptTaskClass) Alloc() UserScriptTask {

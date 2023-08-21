@@ -66,6 +66,8 @@ func (f_ Form) InitWithFrame(frameRect foundation.Rect) Form {
 // Initializes a newly allocated matrix with the specified frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436428-initwithframe?language=objc
-func Form_InitWithFrame(frameRect foundation.Rect) Form {
-	return FormClass.Alloc().InitWithFrame(frameRect)
+func NewFormWithFrame(frameRect foundation.Rect) Form {
+	instance := FormClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }

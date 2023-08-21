@@ -42,8 +42,10 @@ func (i_ InflectionRuleExplicit) InitWithMorphology(morphology IMorphology) Infl
 // Creates an inflection rule with the given morphology. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinflectionruleexplicit/3746914-initwithmorphology?language=objc
-func InflectionRuleExplicit_InitWithMorphology(morphology IMorphology) InflectionRuleExplicit {
-	return InflectionRuleExplicitClass.Alloc().InitWithMorphology(morphology)
+func NewInflectionRuleExplicitWithMorphology(morphology IMorphology) InflectionRuleExplicit {
+	instance := InflectionRuleExplicitClass.Alloc().InitWithMorphology(morphology)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _InflectionRuleExplicitClass) Alloc() InflectionRuleExplicit {

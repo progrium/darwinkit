@@ -54,8 +54,10 @@ func (s_ ScriptCommandDescription) InitWithSuiteNameCommandNameDictionary(suiteN
 // Initializes and returns a newly allocated instance of NSScriptCommandDescription. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommanddescription/1410038-initwithsuitename?language=objc
-func ScriptCommandDescription_InitWithSuiteNameCommandNameDictionary(suiteName string, commandName string, commandDeclaration Dictionary) ScriptCommandDescription {
-	return ScriptCommandDescriptionClass.Alloc().InitWithSuiteNameCommandNameDictionary(suiteName, commandName, commandDeclaration)
+func NewScriptCommandDescriptionWithSuiteNameCommandNameDictionary(suiteName string, commandName string, commandDeclaration Dictionary) ScriptCommandDescription {
+	instance := ScriptCommandDescriptionClass.Alloc().InitWithSuiteNameCommandNameDictionary(suiteName, commandName, commandDeclaration)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScriptCommandDescriptionClass) Alloc() ScriptCommandDescription {

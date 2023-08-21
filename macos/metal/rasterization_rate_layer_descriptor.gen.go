@@ -47,8 +47,10 @@ func (r_ RasterizationRateLayerDescriptor) InitWithSampleCount(sampleCount Size)
 // Initializes the layer map with an empty grid. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerdescriptor/3088860-initwithsamplecount?language=objc
-func RasterizationRateLayerDescriptor_InitWithSampleCount(sampleCount Size) RasterizationRateLayerDescriptor {
-	return RasterizationRateLayerDescriptorClass.Alloc().InitWithSampleCount(sampleCount)
+func NewRasterizationRateLayerDescriptorWithSampleCount(sampleCount Size) RasterizationRateLayerDescriptor {
+	instance := RasterizationRateLayerDescriptorClass.Alloc().InitWithSampleCount(sampleCount)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RasterizationRateLayerDescriptorClass) Alloc() RasterizationRateLayerDescriptor {

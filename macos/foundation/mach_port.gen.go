@@ -42,8 +42,10 @@ func (m_ MachPort) InitWithMachPort(machPort uint32) MachPort {
 // Initializes a newly allocated NSMachPort object with a given Mach port. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmachport/1399499-initwithmachport?language=objc
-func MachPort_InitWithMachPort(machPort uint32) MachPort {
-	return MachPortClass.Alloc().InitWithMachPort(machPort)
+func NewMachPortWithMachPort(machPort uint32) MachPort {
+	instance := MachPortClass.Alloc().InitWithMachPort(machPort)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MachPortClass) Alloc() MachPort {

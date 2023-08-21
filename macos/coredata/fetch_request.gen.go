@@ -95,8 +95,10 @@ func (f_ FetchRequest) InitWithEntityName(entityName string) FetchRequest {
 // Initializes a fetch request configured with a given entity name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506802-initwithentityname?language=objc
-func FetchRequest_InitWithEntityName(entityName string) FetchRequest {
-	return FetchRequestClass.Alloc().InitWithEntityName(entityName)
+func NewFetchRequestWithEntityName(entityName string) FetchRequest {
+	instance := FetchRequestClass.Alloc().InitWithEntityName(entityName)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchRequestClass) Alloc() FetchRequest {

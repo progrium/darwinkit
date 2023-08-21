@@ -176,8 +176,10 @@ func (c_ Cell) InitImageCell(image IImage) Cell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func Cell_InitImageCell(image IImage) Cell {
-	return CellClass.Alloc().InitImageCell(image)
+func NewCellImageCell(image IImage) Cell {
+	instance := CellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ Cell) InitTextCell(string_ string) Cell {
@@ -188,8 +190,10 @@ func (c_ Cell) InitTextCell(string_ string) Cell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func Cell_InitTextCell(string_ string) Cell {
-	return CellClass.Alloc().InitTextCell(string_)
+func NewCellTextCell(string_ string) Cell {
+	instance := CellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ Cell) Init() Cell {

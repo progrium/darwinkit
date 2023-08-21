@@ -57,8 +57,10 @@ func (f_ FetchedResultsController) InitWithFetchRequestManagedObjectContextSecti
 // Returns a fetch request controller initialized using the given arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622282-initwithfetchrequest?language=objc
-func FetchedResultsController_InitWithFetchRequestManagedObjectContextSectionNameKeyPathCacheName(fetchRequest IFetchRequest, context IManagedObjectContext, sectionNameKeyPath string, name string) FetchedResultsController {
-	return FetchedResultsControllerClass.Alloc().InitWithFetchRequestManagedObjectContextSectionNameKeyPathCacheName(fetchRequest, context, sectionNameKeyPath, name)
+func NewFetchedResultsControllerWithFetchRequestManagedObjectContextSectionNameKeyPathCacheName(fetchRequest IFetchRequest, context IManagedObjectContext, sectionNameKeyPath string, name string) FetchedResultsController {
+	instance := FetchedResultsControllerClass.Alloc().InitWithFetchRequestManagedObjectContextSectionNameKeyPathCacheName(fetchRequest, context, sectionNameKeyPath, name)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchedResultsControllerClass) Alloc() FetchedResultsController {

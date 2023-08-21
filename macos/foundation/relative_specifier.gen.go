@@ -45,8 +45,10 @@ func (r_ RelativeSpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 // Invokes the super class’s initWithContainerClassDescription:containerSpecifier:key: method and initializes the relative position and base specifier to relPos and baseSpecifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409205-initwithcontainerclassdescriptio?language=objc
-func RelativeSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, relPos RelativePosition, baseSpecifier IScriptObjectSpecifier) RelativeSpecifier {
-	return RelativeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc, container, property, relPos, baseSpecifier)
+func NewRelativeSpecifierWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, relPos RelativePosition, baseSpecifier IScriptObjectSpecifier) RelativeSpecifier {
+	instance := RelativeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc, container, property, relPos, baseSpecifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RelativeSpecifierClass) Alloc() RelativeSpecifier {
@@ -81,8 +83,10 @@ func (r_ RelativeSpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func RelativeSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RelativeSpecifier {
-	return RelativeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewRelativeSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RelativeSpecifier {
+	instance := RelativeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RelativeSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RelativeSpecifier {
@@ -93,8 +97,10 @@ func (r_ RelativeSpecifier) InitWithContainerSpecifierKey(container IScriptObjec
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func RelativeSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RelativeSpecifier {
-	return RelativeSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewRelativeSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RelativeSpecifier {
+	instance := RelativeSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the relative position encapsulated by the receiver. [Full Topic]

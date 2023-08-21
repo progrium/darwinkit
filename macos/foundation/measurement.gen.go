@@ -47,8 +47,10 @@ func (m_ Measurement) InitWithDoubleValueUnit(doubleValue float64, unit objc.IOb
 // Initializes a new measurement with a specified double-precision floating-point value and unit. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1643012-initwithdoublevalue?language=objc
-func Measurement_InitWithDoubleValueUnit(doubleValue float64, unit objc.IObject) Measurement {
-	return MeasurementClass.Alloc().InitWithDoubleValueUnit(doubleValue, unit)
+func NewMeasurementWithDoubleValueUnit(doubleValue float64, unit objc.IObject) Measurement {
+	instance := MeasurementClass.Alloc().InitWithDoubleValueUnit(doubleValue, unit)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MeasurementClass) Alloc() Measurement {

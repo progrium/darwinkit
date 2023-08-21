@@ -79,8 +79,10 @@ func (s_ SplitViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBun
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func SplitViewController_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) SplitViewController {
-	return SplitViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewSplitViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) SplitViewController {
+	instance := SplitViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 // Removes a specified split view item from the split view controller. [Full Topic]

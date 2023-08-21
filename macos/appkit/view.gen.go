@@ -322,8 +322,10 @@ func (v_ View) InitWithFrame(frameRect foundation.Rect) View {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func View_InitWithFrame(frameRect foundation.Rect) View {
-	return ViewClass.Alloc().InitWithFrame(frameRect)
+func NewViewWithFrame(frameRect foundation.Rect) View {
+	instance := ViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _ViewClass) Alloc() View {

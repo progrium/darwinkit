@@ -49,8 +49,10 @@ func (f_ FetchIndexDescription) InitWithNameElements(name string, elements []IFe
 // Creates a fetch index description using the specified name and element descriptions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887053-initwithname?language=objc
-func FetchIndexDescription_InitWithNameElements(name string, elements []IFetchIndexElementDescription) FetchIndexDescription {
-	return FetchIndexDescriptionClass.Alloc().InitWithNameElements(name, elements)
+func NewFetchIndexDescriptionWithNameElements(name string, elements []IFetchIndexElementDescription) FetchIndexDescription {
+	instance := FetchIndexDescriptionClass.Alloc().InitWithNameElements(name, elements)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchIndexDescriptionClass) Alloc() FetchIndexDescription {

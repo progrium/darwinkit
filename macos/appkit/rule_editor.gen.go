@@ -109,8 +109,10 @@ func (r_ RuleEditor) InitWithFrame(frameRect foundation.Rect) RuleEditor {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func RuleEditor_InitWithFrame(frameRect foundation.Rect) RuleEditor {
-	return RuleEditorClass.Alloc().InitWithFrame(frameRect)
+func NewRuleEditorWithFrame(frameRect foundation.Rect) RuleEditor {
+	instance := RuleEditorClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the currently chosen items for a given row. [Full Topic]

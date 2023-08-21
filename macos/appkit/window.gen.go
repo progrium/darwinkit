@@ -341,8 +341,10 @@ func (w_ Window) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foun
 // Initializes an allocated window with the specified values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc
-func Window_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
-	return WindowClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+func NewWindowWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
+	instance := WindowClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+	instance.Autorelease()
+	return instance
 }
 
 func (wc _WindowClass) Alloc() Window {

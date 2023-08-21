@@ -54,8 +54,10 @@ func (t_ TextAttachmentViewProvider) InitWithTextAttachmentParentViewTextLayoutM
 // Creates a new text attachment view whose content starts at the location you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857595-initwithtextattachment?language=objc
-func TextAttachmentViewProvider_InitWithTextAttachmentParentViewTextLayoutManagerLocation(textAttachment ITextAttachment, parentView IView, textLayoutManager ITextLayoutManager, location PTextLocation) TextAttachmentViewProvider {
-	return TextAttachmentViewProviderClass.Alloc().InitWithTextAttachmentParentViewTextLayoutManagerLocation(textAttachment, parentView, textLayoutManager, location)
+func NewTextAttachmentViewProviderWithTextAttachmentParentViewTextLayoutManagerLocation(textAttachment ITextAttachment, parentView IView, textLayoutManager ITextLayoutManager, location PTextLocation) TextAttachmentViewProvider {
+	instance := TextAttachmentViewProviderClass.Alloc().InitWithTextAttachmentParentViewTextLayoutManagerLocation(textAttachment, parentView, textLayoutManager, location)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextAttachmentViewProviderClass) Alloc() TextAttachmentViewProvider {

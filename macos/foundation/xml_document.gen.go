@@ -67,8 +67,10 @@ func (x_ XMLDocument) InitWithDataOptionsError(data []byte, mask XMLNodeOptions,
 // Initializes and returns an NSXMLDocument object created from an NSData object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1413086-initwithdata?language=objc
-func XMLDocument_InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDocument {
-	return XMLDocumentClass.Alloc().InitWithDataOptionsError(data, mask, error)
+func NewXMLDocumentWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDocument {
+	instance := XMLDocumentClass.Alloc().InitWithDataOptionsError(data, mask, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDocument) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDocument {
@@ -79,8 +81,10 @@ func (x_ XMLDocument) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOp
 // Initializes and returns an NSXMLDocument object created from the XML or HTML contents of a URL-referenced source [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1418467-initwithcontentsofurl?language=objc
-func XMLDocument_InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDocument {
-	return XMLDocumentClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
+func NewXMLDocumentWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDocument {
+	instance := XMLDocumentClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDocument) InitWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error IError) XMLDocument {
@@ -91,8 +95,10 @@ func (x_ XMLDocument) InitWithXMLStringOptionsError(string_ string, mask XMLNode
 // Initializes and returns an NSXMLDocument object created from a string containing XML markup text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1416228-initwithxmlstring?language=objc
-func XMLDocument_InitWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error IError) XMLDocument {
-	return XMLDocumentClass.Alloc().InitWithXMLStringOptionsError(string_, mask, error)
+func NewXMLDocumentWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error IError) XMLDocument {
+	instance := XMLDocumentClass.Alloc().InitWithXMLStringOptionsError(string_, mask, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDocument) InitWithRootElement(element IXMLElement) XMLDocument {
@@ -103,8 +109,10 @@ func (x_ XMLDocument) InitWithRootElement(element IXMLElement) XMLDocument {
 // Returns an NSXMLDocument object initialized with a single child, the root element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1409062-initwithrootelement?language=objc
-func XMLDocument_InitWithRootElement(element IXMLElement) XMLDocument {
-	return XMLDocumentClass.Alloc().InitWithRootElement(element)
+func NewXMLDocumentWithRootElement(element IXMLElement) XMLDocument {
+	instance := XMLDocumentClass.Alloc().InitWithRootElement(element)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLDocument) Init() XMLDocument {
@@ -139,8 +147,10 @@ func (x_ XMLDocument) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptio
 // Returns an NSXMLNode instance initialized with the constant indicating node kind and one or more initialization options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409747-initwithkind?language=objc
-func XMLDocument_InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDocument {
-	return XMLDocumentClass.Alloc().InitWithKindOptions(kind, options)
+func NewXMLDocumentWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLDocument {
+	instance := XMLDocumentClass.Alloc().InitWithKindOptions(kind, options)
+	instance.Autorelease()
+	return instance
 }
 
 // Applies the XSLT pattern rules and templates (specified as a string) to the receiver and returns a document object containing transformed XML or HTML markup. [Full Topic]

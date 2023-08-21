@@ -44,8 +44,10 @@ func (d_ DataAsset) InitWithName(name DataAssetName) DataAsset {
 // Initializes and returns an object with a reference to the named data asset in an asset catalog. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdataasset/1403439-initwithname?language=objc
-func DataAsset_InitWithName(name DataAssetName) DataAsset {
-	return DataAssetClass.Alloc().InitWithName(name)
+func NewDataAssetWithName(name DataAssetName) DataAsset {
+	instance := DataAssetClass.Alloc().InitWithName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataAssetClass) Alloc() DataAsset {

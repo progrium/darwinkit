@@ -101,8 +101,10 @@ func (g_ GroupTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func GroupTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) GroupTouchBarItem {
-	return GroupTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewGroupTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) GroupTouchBarItem {
+	instance := GroupTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The user-visible string identifying this item during bar customization. [Full Topic]

@@ -44,8 +44,10 @@ func (b_ BatchDeleteRequest) InitWithFetchRequest(fetch IFetchRequest) BatchDele
 // Creates a request that deletes the results of the specified fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchdeleterequest/1506302-initwithfetchrequest?language=objc
-func BatchDeleteRequest_InitWithFetchRequest(fetch IFetchRequest) BatchDeleteRequest {
-	return BatchDeleteRequestClass.Alloc().InitWithFetchRequest(fetch)
+func NewBatchDeleteRequestWithFetchRequest(fetch IFetchRequest) BatchDeleteRequest {
+	instance := BatchDeleteRequestClass.Alloc().InitWithFetchRequest(fetch)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BatchDeleteRequest) InitWithObjectIDs(objects []IManagedObjectID) BatchDeleteRequest {
@@ -56,8 +58,10 @@ func (b_ BatchDeleteRequest) InitWithObjectIDs(objects []IManagedObjectID) Batch
 // Creates a request that deletes the managed objects with the specified identifiers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchdeleterequest/1506746-initwithobjectids?language=objc
-func BatchDeleteRequest_InitWithObjectIDs(objects []IManagedObjectID) BatchDeleteRequest {
-	return BatchDeleteRequestClass.Alloc().InitWithObjectIDs(objects)
+func NewBatchDeleteRequestWithObjectIDs(objects []IManagedObjectID) BatchDeleteRequest {
+	instance := BatchDeleteRequestClass.Alloc().InitWithObjectIDs(objects)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BatchDeleteRequestClass) Alloc() BatchDeleteRequest {

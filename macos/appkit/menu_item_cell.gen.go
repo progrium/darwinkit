@@ -59,8 +59,10 @@ func (m_ MenuItemCell) InitTextCell(string_ string) MenuItemCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1641970-inittextcell?language=objc
-func MenuItemCell_InitTextCell(string_ string) MenuItemCell {
-	return MenuItemCellClass.Alloc().InitTextCell(string_)
+func NewMenuItemCellTextCell(string_ string) MenuItemCell {
+	instance := MenuItemCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MenuItemCellClass) Alloc() MenuItemCell {
@@ -95,8 +97,10 @@ func (m_ MenuItemCell) InitImageCell(image IImage) MenuItemCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1639152-initimagecell?language=objc
-func MenuItemCell_InitImageCell(image IImage) MenuItemCell {
-	return MenuItemCellClass.Alloc().InitImageCell(image)
+func NewMenuItemCellImageCell(image IImage) MenuItemCell {
+	instance := MenuItemCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the rectangle into which the menu item’s key equivalent should be drawn. [Full Topic]

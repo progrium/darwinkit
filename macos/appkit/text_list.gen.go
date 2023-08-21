@@ -46,8 +46,10 @@ func (t_ TextList) InitWithMarkerFormatOptions(markerFormat TextListMarkerFormat
 // Returns an initialized text list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextlist/1526123-initwithmarkerformat?language=objc
-func TextList_InitWithMarkerFormatOptions(markerFormat TextListMarkerFormat, options uint) TextList {
-	return TextListClass.Alloc().InitWithMarkerFormatOptions(markerFormat, options)
+func NewTextListWithMarkerFormatOptions(markerFormat TextListMarkerFormat, options uint) TextList {
+	instance := TextListClass.Alloc().InitWithMarkerFormatOptions(markerFormat, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextListClass) Alloc() TextList {

@@ -81,8 +81,10 @@ func (g_ GridView) InitWithFrame(frameRect foundation.Rect) GridView {
 // Creates a newly allocated grid view object with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639692-initwithframe?language=objc
-func GridView_InitWithFrame(frameRect foundation.Rect) GridView {
-	return GridViewClass.Alloc().InitWithFrame(frameRect)
+func NewGridViewWithFrame(frameRect foundation.Rect) GridView {
+	instance := GridViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (gc _GridViewClass) GridViewWithViews(rows [][]IView) GridView {

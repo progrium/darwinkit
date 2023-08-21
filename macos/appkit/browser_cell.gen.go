@@ -50,8 +50,10 @@ func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1644593-initimagecell?language=objc
-func BrowserCell_InitImageCell(image IImage) BrowserCell {
-	return BrowserCellClass.Alloc().InitImageCell(image)
+func NewBrowserCellImageCell(image IImage) BrowserCell {
+	instance := BrowserCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BrowserCell) InitTextCell(string_ string) BrowserCell {
@@ -62,8 +64,10 @@ func (b_ BrowserCell) InitTextCell(string_ string) BrowserCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1644701-inittextcell?language=objc
-func BrowserCell_InitTextCell(string_ string) BrowserCell {
-	return BrowserCellClass.Alloc().InitTextCell(string_)
+func NewBrowserCellTextCell(string_ string) BrowserCell {
+	instance := BrowserCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BrowserCellClass) Alloc() BrowserCell {

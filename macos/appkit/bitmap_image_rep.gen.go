@@ -70,8 +70,10 @@ func (b_ BitmapImageRep) InitWithCIImage(ciImage coreimage.IImage) BitmapImageRe
 // Returns a bitmap image representation from a Core Image object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395587-initwithciimage?language=objc
-func BitmapImageRep_InitWithCIImage(ciImage coreimage.IImage) BitmapImageRep {
-	return BitmapImageRepClass.Alloc().InitWithCIImage(ciImage)
+func NewBitmapImageRepWithCIImage(ciImage coreimage.IImage) BitmapImageRep {
+	instance := BitmapImageRepClass.Alloc().InitWithCIImage(ciImage)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BitmapImageRep) InitForIncrementalLoad() BitmapImageRep {
@@ -82,8 +84,10 @@ func (b_ BitmapImageRep) InitForIncrementalLoad() BitmapImageRep {
 // Initializes a newly allocated bitmap image representation for incremental loading. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395522-initforincrementalload?language=objc
-func BitmapImageRep_InitForIncrementalLoad() BitmapImageRep {
-	return BitmapImageRepClass.Alloc().InitForIncrementalLoad()
+func NewBitmapImageRepForIncrementalLoad() BitmapImageRep {
+	instance := BitmapImageRepClass.Alloc().InitForIncrementalLoad()
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BitmapImageRep) InitWithData(data []byte) BitmapImageRep {
@@ -94,8 +98,10 @@ func (b_ BitmapImageRep) InitWithData(data []byte) BitmapImageRep {
 // Initializes a newly allocated bitmap image representation from the specified data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395569-initwithdata?language=objc
-func BitmapImageRep_InitWithData(data []byte) BitmapImageRep {
-	return BitmapImageRepClass.Alloc().InitWithData(data)
+func NewBitmapImageRepWithData(data []byte) BitmapImageRep {
+	instance := BitmapImageRepClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
@@ -106,8 +112,10 @@ func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSamp
 // Initializes a newly allocated bitmap image representation so it can render the specified image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395540-initwithbitmapdataplanes?language=objc
-func BitmapImageRep_InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
-	return BitmapImageRepClass.Alloc().InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, rBytes, pBits)
+func NewBitmapImageRepWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
+	instance := BitmapImageRepClass.Alloc().InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, rBytes, pBits)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BitmapImageRepClass) ImageRepWithData(data []byte) BitmapImageRep {
@@ -130,8 +138,10 @@ func (b_ BitmapImageRep) InitWithCGImage(cgImage coregraphics.ImageRef) BitmapIm
 // Returns a bitmap image representation from a Core Graphics image object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395423-initwithcgimage?language=objc
-func BitmapImageRep_InitWithCGImage(cgImage coregraphics.ImageRef) BitmapImageRep {
-	return BitmapImageRepClass.Alloc().InitWithCGImage(cgImage)
+func NewBitmapImageRepWithCGImage(cgImage coregraphics.ImageRef) BitmapImageRep {
+	instance := BitmapImageRepClass.Alloc().InitWithCGImage(cgImage)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BitmapImageRepClass) Alloc() BitmapImageRep {

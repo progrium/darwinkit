@@ -43,8 +43,10 @@ func (s_ ScrubberProportionalLayout) InitWithNumberOfVisibleItems(numberOfVisibl
 // Initializes and returns a newly allocated proportional layout, configured to display the given number of items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberproportionallayout/2544646-initwithnumberofvisibleitems?language=objc
-func ScrubberProportionalLayout_InitWithNumberOfVisibleItems(numberOfVisibleItems int) ScrubberProportionalLayout {
-	return ScrubberProportionalLayoutClass.Alloc().InitWithNumberOfVisibleItems(numberOfVisibleItems)
+func NewScrubberProportionalLayoutWithNumberOfVisibleItems(numberOfVisibleItems int) ScrubberProportionalLayout {
+	instance := ScrubberProportionalLayoutClass.Alloc().InitWithNumberOfVisibleItems(numberOfVisibleItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScrubberProportionalLayoutClass) Alloc() ScrubberProportionalLayout {

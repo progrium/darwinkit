@@ -82,8 +82,10 @@ func (p_ Panel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect found
 // Initializes an allocated window with the specified values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc
-func Panel_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Panel {
-	return PanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+func NewPanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Panel {
+	instance := PanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean value that indicates whether the receiver becomes the key window only when needed. [Full Topic]

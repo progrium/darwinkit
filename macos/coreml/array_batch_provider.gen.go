@@ -43,8 +43,10 @@ func (a_ ArrayBatchProvider) InitWithDictionaryError(dictionary map[string][]obj
 // Creates a batch provider based on feature names and their associated arrays of data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962853-initwithdictionary?language=objc
-func ArrayBatchProvider_InitWithDictionaryError(dictionary map[string][]objc.IObject, error foundation.IError) ArrayBatchProvider {
-	return ArrayBatchProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
+func NewArrayBatchProviderWithDictionaryError(dictionary map[string][]objc.IObject, error foundation.IError) ArrayBatchProvider {
+	instance := ArrayBatchProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ ArrayBatchProvider) InitWithFeatureProviderArray(array []PFeatureProvider) ArrayBatchProvider {
@@ -55,8 +57,10 @@ func (a_ ArrayBatchProvider) InitWithFeatureProviderArray(array []PFeatureProvid
 // Creates the batch provider based on the array of feature providers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962854-initwithfeatureproviderarray?language=objc
-func ArrayBatchProvider_InitWithFeatureProviderArray(array []PFeatureProvider) ArrayBatchProvider {
-	return ArrayBatchProviderClass.Alloc().InitWithFeatureProviderArray(array)
+func NewArrayBatchProviderWithFeatureProviderArray(array []PFeatureProvider) ArrayBatchProvider {
+	instance := ArrayBatchProviderClass.Alloc().InitWithFeatureProviderArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _ArrayBatchProviderClass) Alloc() ArrayBatchProvider {

@@ -81,8 +81,10 @@ func (p_ PersistentCloudKitContainer) InitWithName(name string) PersistentCloudK
 // Creates a container with the specified name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcontainer/1640557-initwithname?language=objc
-func PersistentCloudKitContainer_InitWithName(name string) PersistentCloudKitContainer {
-	return PersistentCloudKitContainerClass.Alloc().InitWithName(name)
+func NewPersistentCloudKitContainerWithName(name string) PersistentCloudKitContainer {
+	instance := PersistentCloudKitContainerClass.Alloc().InitWithName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentCloudKitContainerClass) PersistentContainerWithName(name string) PersistentCloudKitContainer {

@@ -85,8 +85,10 @@ func (f_ FontPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect f
 // Initializes an allocated window with the specified values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc
-func FontPanel_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) FontPanel {
-	return FontPanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+func NewFontPanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) FontPanel {
+	instance := FontPanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+	instance.Autorelease()
+	return instance
 }
 
 // Converts the specified font using the settings in the receiver, with the aid of the shared NSFontManager if necessary. [Full Topic]

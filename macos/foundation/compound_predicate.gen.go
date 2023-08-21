@@ -43,8 +43,10 @@ func (c_ CompoundPredicate) InitWithTypeSubpredicates(type_ CompoundPredicateTyp
 // Returns the receiver that a specified type initializes using predicates from a specified array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1407744-initwithtype?language=objc
-func CompoundPredicate_InitWithTypeSubpredicates(type_ CompoundPredicateType, subpredicates []IPredicate) CompoundPredicate {
-	return CompoundPredicateClass.Alloc().InitWithTypeSubpredicates(type_, subpredicates)
+func NewCompoundPredicateWithTypeSubpredicates(type_ CompoundPredicateType, subpredicates []IPredicate) CompoundPredicate {
+	instance := CompoundPredicateClass.Alloc().InitWithTypeSubpredicates(type_, subpredicates)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CompoundPredicateClass) Alloc() CompoundPredicate {
@@ -80,7 +82,9 @@ func (c_ CompoundPredicate) PredicateWithSubstitutionVariables(variables map[str
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1413227-predicatewithsubstitutionvariabl?language=objc
 func CompoundPredicate_PredicateWithSubstitutionVariables(variables map[string]objc.IObject) CompoundPredicate {
-	return CompoundPredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance := CompoundPredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a new predicate that you form using a NOT operation on a specified predicate. [Full Topic]

@@ -82,8 +82,10 @@ func (s_ ScrollLayer) InitWithLayer(layer objc.IObject) ScrollLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func ScrollLayer_InitWithLayer(layer objc.IObject) ScrollLayer {
-	return ScrollLayerClass.Alloc().InitWithLayer(layer)
+func NewScrollLayerWithLayer(layer objc.IObject) ScrollLayer {
+	instance := ScrollLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ ScrollLayer) ModelLayer() ScrollLayer {
@@ -95,7 +97,9 @@ func (s_ ScrollLayer) ModelLayer() ScrollLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func ScrollLayer_ModelLayer() ScrollLayer {
-	return ScrollLayerClass.Alloc().ModelLayer()
+	instance := ScrollLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ ScrollLayer) PresentationLayer() ScrollLayer {
@@ -107,7 +111,9 @@ func (s_ ScrollLayer) PresentationLayer() ScrollLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func ScrollLayer_PresentationLayer() ScrollLayer {
-	return ScrollLayerClass.Alloc().PresentationLayer()
+	instance := ScrollLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // Changes the origin of the receiver to the specified point. [Full Topic]

@@ -43,8 +43,10 @@ func (f_ FunctionStitchingInputNode) InitWithArgumentIndex(argument uint) Functi
 // Creates a new input node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinginputnode/3750546-initwithargumentindex?language=objc
-func FunctionStitchingInputNode_InitWithArgumentIndex(argument uint) FunctionStitchingInputNode {
-	return FunctionStitchingInputNodeClass.Alloc().InitWithArgumentIndex(argument)
+func NewFunctionStitchingInputNodeWithArgumentIndex(argument uint) FunctionStitchingInputNode {
+	instance := FunctionStitchingInputNodeClass.Alloc().InitWithArgumentIndex(argument)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FunctionStitchingInputNodeClass) Alloc() FunctionStitchingInputNode {

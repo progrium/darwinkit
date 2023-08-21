@@ -93,8 +93,10 @@ func (s_ SliderCell) InitImageCell(image IImage) SliderCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func SliderCell_InitImageCell(image IImage) SliderCell {
-	return SliderCellClass.Alloc().InitImageCell(image)
+func NewSliderCellImageCell(image IImage) SliderCell {
+	instance := SliderCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SliderCell) InitTextCell(string_ string) SliderCell {
@@ -105,8 +107,10 @@ func (s_ SliderCell) InitTextCell(string_ string) SliderCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func SliderCell_InitTextCell(string_ string) SliderCell {
-	return SliderCellClass.Alloc().InitTextCell(string_)
+func NewSliderCellTextCell(string_ string) SliderCell {
+	instance := SliderCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the bounding rectangle of the tick mark at the specified index. [Full Topic]

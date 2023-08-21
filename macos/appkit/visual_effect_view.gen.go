@@ -77,8 +77,10 @@ func (v_ VisualEffectView) InitWithFrame(frameRect foundation.Rect) VisualEffect
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func VisualEffectView_InitWithFrame(frameRect foundation.Rect) VisualEffectView {
-	return VisualEffectViewClass.Alloc().InitWithFrame(frameRect)
+func NewVisualEffectViewWithFrame(frameRect foundation.Rect) VisualEffectView {
+	instance := VisualEffectViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // A value that indicates whether a view has a visual effect applied. [Full Topic]

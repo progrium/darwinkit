@@ -63,8 +63,10 @@ func (m_ MultiArray) InitWithShapeDataTypeError(shape []foundation.INumber, data
 // Creates a multidimensional array with a shape and type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879232-initwithshape?language=objc
-func MultiArray_InitWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error foundation.IError) MultiArray {
-	return MultiArrayClass.Alloc().InitWithShapeDataTypeError(shape, dataType, error)
+func NewMultiArrayWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error foundation.IError) MultiArray {
+	instance := MultiArrayClass.Alloc().InitWithShapeDataTypeError(shape, dataType, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error foundation.IError) MultiArray {
@@ -75,8 +77,10 @@ func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dat
 // Creates a multiarray from a data pointer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2881219-initwithdatapointer?language=objc
-func MultiArray_InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error foundation.IError) MultiArray {
-	return MultiArrayClass.Alloc().InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer, shape, dataType, strides, deallocator, error)
+func NewMultiArrayWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error foundation.IError) MultiArray {
+	instance := MultiArrayClass.Alloc().InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer, shape, dataType, strides, deallocator, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MultiArray) InitWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
@@ -87,8 +91,10 @@ func (m_ MultiArray) InitWithPixelBufferShape(pixelBuffer corevideo.PixelBufferR
 // Creates a multiarray sharing the surface of a pixel buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/3882834-initwithpixelbuffer?language=objc
-func MultiArray_InitWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
-	return MultiArrayClass.Alloc().InitWithPixelBufferShape(pixelBuffer, shape)
+func NewMultiArrayWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, shape []foundation.INumber) MultiArray {
+	instance := MultiArrayClass.Alloc().InitWithPixelBufferShape(pixelBuffer, shape)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MultiArrayClass) Alloc() MultiArray {

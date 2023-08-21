@@ -52,8 +52,10 @@ func (f_ FetchRecordsOperation) InitWithRecordIDs(recordIDs []IRecordID) FetchRe
 // Creates a fetch operation for retrieving the records with the specified IDs. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordsoperation/1476074-initwithrecordids?language=objc
-func FetchRecordsOperation_InitWithRecordIDs(recordIDs []IRecordID) FetchRecordsOperation {
-	return FetchRecordsOperationClass.Alloc().InitWithRecordIDs(recordIDs)
+func NewFetchRecordsOperationWithRecordIDs(recordIDs []IRecordID) FetchRecordsOperation {
+	instance := FetchRecordsOperationClass.Alloc().InitWithRecordIDs(recordIDs)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchRecordsOperation) Init() FetchRecordsOperation {

@@ -77,8 +77,10 @@ func (u_ UnitElectricResistance) InitWithSymbolConverter(symbol string, converte
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitElectricResistance_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricResistance {
-	return UnitElectricResistanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitElectricResistanceWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricResistance {
+	instance := UnitElectricResistanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitElectricResistance) InitWithSymbol(symbol string) UnitElectricResistance {
@@ -89,8 +91,10 @@ func (u_ UnitElectricResistance) InitWithSymbol(symbol string) UnitElectricResis
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitElectricResistance_InitWithSymbol(symbol string) UnitElectricResistance {
-	return UnitElectricResistanceClass.Alloc().InitWithSymbol(symbol)
+func NewUnitElectricResistanceWithSymbol(symbol string) UnitElectricResistance {
+	instance := UnitElectricResistanceClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The ohms unit of electric resistance. [Full Topic]

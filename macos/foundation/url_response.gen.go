@@ -46,8 +46,10 @@ func (u_ URLResponse) InitWithURLMIMETypeExpectedContentLengthTextEncodingName(U
 // Creates an initialized NSURLResponse object with the URL, MIME type, length, and text encoding set to given values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlresponse/1413566-initwithurl?language=objc
-func URLResponse_InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) URLResponse {
-	return URLResponseClass.Alloc().InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL, MIMEType, length, name)
+func NewURLResponseWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) URLResponse {
+	instance := URLResponseClass.Alloc().InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL, MIMEType, length, name)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLResponseClass) Alloc() URLResponse {

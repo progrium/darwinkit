@@ -39,16 +39,17 @@ func main() {
 		app.ActivateIgnoringOtherApps(true)
 
 		url := foundation.URL_URLWithString("http://progrium.com")
-		req := foundation.URLRequest_InitWithURL(url)
+		req := foundation.NewURLRequestWithURL(url)
 		frame := foundation.Rect{Size: foundation.Size{1440, 900}}
 
 		config := webkit.NewWebViewConfiguration()
-		wv := webkit.WebView_InitWithFrameConfiguration(frame, config)
+		wv := webkit.NewWebViewWithFrameConfiguration(frame, config)
 		wv.LoadRequest(req)
 
-		w := appkit.Window_InitWithContentRectStyleMaskBackingDefer(frame,
+		w := appkit.NewWindowWithContentRectStyleMaskBackingDefer(frame,
 			appkit.ClosableWindowMask|appkit.TitledWindowMask,
 			appkit.BackingStoreBuffered, false)
+		objc.Retain(&w)
 		w.SetContentView(wv)
 		w.MakeKeyAndOrderFront(w)
 		w.Center()

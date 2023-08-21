@@ -117,8 +117,10 @@ func (s_ SavePanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect f
 // Initializes an allocated window with the specified values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419755-initwithcontentrect?language=objc
-func SavePanel_InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
-	return SavePanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+func NewSavePanelWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
+	instance := SavePanelClass.Alloc().InitWithContentRectStyleMaskBackingDeferScreen(contentRect, style, backingStoreType, flag, screen)
+	instance.Autorelease()
+	return instance
 }
 
 // The action method that the panel calls when the user clicks the OK button. [Full Topic]

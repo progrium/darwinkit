@@ -44,8 +44,10 @@ func (r_ RecordZone) InitWithZoneName(zoneName string) RecordZone {
 // Creates a record zone object with the specified zone name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzone/1515102-initwithzonename?language=objc
-func RecordZone_InitWithZoneName(zoneName string) RecordZone {
-	return RecordZoneClass.Alloc().InitWithZoneName(zoneName)
+func NewRecordZoneWithZoneName(zoneName string) RecordZone {
+	instance := RecordZoneClass.Alloc().InitWithZoneName(zoneName)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RecordZone) InitWithZoneID(zoneID IRecordZoneID) RecordZone {
@@ -56,8 +58,10 @@ func (r_ RecordZone) InitWithZoneID(zoneID IRecordZoneID) RecordZone {
 // Creates a record zone object with the specified zone ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzone/1515207-initwithzoneid?language=objc
-func RecordZone_InitWithZoneID(zoneID IRecordZoneID) RecordZone {
-	return RecordZoneClass.Alloc().InitWithZoneID(zoneID)
+func NewRecordZoneWithZoneID(zoneID IRecordZoneID) RecordZone {
+	instance := RecordZoneClass.Alloc().InitWithZoneID(zoneID)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RecordZoneClass) Alloc() RecordZone {

@@ -46,8 +46,10 @@ func (q_ Query) InitWithRecordTypePredicate(recordType RecordType, predicate fou
 // Creates a query with the specified record type and predicate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquery/1413119-initwithrecordtype?language=objc
-func Query_InitWithRecordTypePredicate(recordType RecordType, predicate foundation.IPredicate) Query {
-	return QueryClass.Alloc().InitWithRecordTypePredicate(recordType, predicate)
+func NewQueryWithRecordTypePredicate(recordType RecordType, predicate foundation.IPredicate) Query {
+	instance := QueryClass.Alloc().InitWithRecordTypePredicate(recordType, predicate)
+	instance.Autorelease()
+	return instance
 }
 
 func (qc _QueryClass) Alloc() Query {

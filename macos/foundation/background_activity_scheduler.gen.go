@@ -53,8 +53,10 @@ func (b_ BackgroundActivityScheduler) InitWithIdentifier(identifier string) Back
 // Initializes a background activity scheduler object with a specified unique identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbackgroundactivityscheduler/1407482-initwithidentifier?language=objc
-func BackgroundActivityScheduler_InitWithIdentifier(identifier string) BackgroundActivityScheduler {
-	return BackgroundActivitySchedulerClass.Alloc().InitWithIdentifier(identifier)
+func NewBackgroundActivitySchedulerWithIdentifier(identifier string) BackgroundActivityScheduler {
+	instance := BackgroundActivitySchedulerClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BackgroundActivitySchedulerClass) Alloc() BackgroundActivityScheduler {

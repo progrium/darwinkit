@@ -72,8 +72,10 @@ func (u_ UserUnixTask) InitWithURLError(url IURL, error IError) UserUnixTask {
 // Return a user script task instance given a URL for a script file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttask/1409998-initwithurl?language=objc
-func UserUnixTask_InitWithURLError(url IURL, error IError) UserUnixTask {
-	return UserUnixTaskClass.Alloc().InitWithURLError(url, error)
+func NewUserUnixTaskWithURLError(url IURL, error IError) UserUnixTask {
+	instance := UserUnixTaskClass.Alloc().InitWithURLError(url, error)
+	instance.Autorelease()
+	return instance
 }
 
 // Execute the unix script with the specified arguments. [Full Topic]

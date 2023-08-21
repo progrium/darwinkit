@@ -54,8 +54,10 @@ func (m_ MediaTimingFunction) InitWithControlPoints(c1x float64) MediaTimingFunc
 // Returns an initialized timing function modeled as a cubic Bézier curve using the specified control points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-initwithcontrolpoints?language=objc
-func MediaTimingFunction_InitWithControlPoints(c1x float64) MediaTimingFunction {
-	return MediaTimingFunctionClass.Alloc().InitWithControlPoints(c1x)
+func NewMediaTimingFunctionWithControlPoints(c1x float64) MediaTimingFunction {
+	instance := MediaTimingFunctionClass.Alloc().InitWithControlPoints(c1x)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MediaTimingFunctionClass) FunctionWithControlPoints(c1x float64) MediaTimingFunction {

@@ -77,8 +77,10 @@ func (u_ UnitPressure) InitWithSymbolConverter(symbol string, converter IUnitCon
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitPressure_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitPressure {
-	return UnitPressureClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitPressureWithSymbolConverter(symbol string, converter IUnitConverter) UnitPressure {
+	instance := UnitPressureClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitPressure) InitWithSymbol(symbol string) UnitPressure {
@@ -89,8 +91,10 @@ func (u_ UnitPressure) InitWithSymbol(symbol string) UnitPressure {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitPressure_InitWithSymbol(symbol string) UnitPressure {
-	return UnitPressureClass.Alloc().InitWithSymbol(symbol)
+func NewUnitPressureWithSymbol(symbol string) UnitPressure {
+	instance := UnitPressureClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The gigapascals unit of pressure. [Full Topic]

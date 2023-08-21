@@ -52,8 +52,10 @@ func (s_ SearchQuery) InitWithQueryStringAttributes(queryString string, attribut
 // Initializes and returns a query object with the specified query string and item attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchquery/1649308-initwithquerystring?language=objc
-func SearchQuery_InitWithQueryStringAttributes(queryString string, attributes []string) SearchQuery {
-	return SearchQueryClass.Alloc().InitWithQueryStringAttributes(queryString, attributes)
+func NewSearchQueryWithQueryStringAttributes(queryString string, attributes []string) SearchQuery {
+	instance := SearchQueryClass.Alloc().InitWithQueryStringAttributes(queryString, attributes)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SearchQueryClass) Alloc() SearchQuery {

@@ -64,8 +64,10 @@ func (p_ PersistentStoreDescription) InitWithURL(url foundation.IURL) Persistent
 // Initializes the receiver with a URL for the store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640563-initwithurl?language=objc
-func PersistentStoreDescription_InitWithURL(url foundation.IURL) PersistentStoreDescription {
-	return PersistentStoreDescriptionClass.Alloc().InitWithURL(url)
+func NewPersistentStoreDescriptionWithURL(url foundation.IURL) PersistentStoreDescription {
+	instance := PersistentStoreDescriptionClass.Alloc().InitWithURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentStoreDescriptionClass) PersistentStoreDescriptionWithURL(URL foundation.IURL) PersistentStoreDescription {

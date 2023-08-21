@@ -50,8 +50,10 @@ func (s_ Share) InitWithRootRecord(rootRecord IRecord) Share {
 // Creates a new share for the specified record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640448-initwithrootrecord?language=objc
-func Share_InitWithRootRecord(rootRecord IRecord) Share {
-	return ShareClass.Alloc().InitWithRootRecord(rootRecord)
+func NewShareWithRootRecord(rootRecord IRecord) Share {
+	instance := ShareClass.Alloc().InitWithRootRecord(rootRecord)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ Share) InitWithRecordZoneID(recordZoneID IRecordZoneID) Share {
@@ -62,8 +64,10 @@ func (s_ Share) InitWithRecordZoneID(recordZoneID IRecordZoneID) Share {
 // Creates a new share for the specified record zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/3746825-initwithrecordzoneid?language=objc
-func Share_InitWithRecordZoneID(recordZoneID IRecordZoneID) Share {
-	return ShareClass.Alloc().InitWithRecordZoneID(recordZoneID)
+func NewShareWithRecordZoneID(recordZoneID IRecordZoneID) Share {
+	instance := ShareClass.Alloc().InitWithRecordZoneID(recordZoneID)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ShareClass) Alloc() Share {
@@ -98,8 +102,10 @@ func (s_ Share) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZo
 // Creates a record in the specified zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462202-initwithrecordtype?language=objc
-func Share_InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Share {
-	return ShareClass.Alloc().InitWithRecordTypeZoneID(recordType, zoneID)
+func NewShareWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Share {
+	instance := ShareClass.Alloc().InitWithRecordTypeZoneID(recordType, zoneID)
+	instance.Autorelease()
+	return instance
 }
 
 // Adds a participant to the share. [Full Topic]

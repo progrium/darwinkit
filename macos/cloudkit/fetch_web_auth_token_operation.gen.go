@@ -46,8 +46,10 @@ func (f_ FetchWebAuthTokenOperation) InitWithAPIToken(APIToken string) FetchWebA
 // Creates a fetch operation for the specified API token. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchwebauthtokenoperation/1515266-initwithapitoken?language=objc
-func FetchWebAuthTokenOperation_InitWithAPIToken(APIToken string) FetchWebAuthTokenOperation {
-	return FetchWebAuthTokenOperationClass.Alloc().InitWithAPIToken(APIToken)
+func NewFetchWebAuthTokenOperationWithAPIToken(APIToken string) FetchWebAuthTokenOperation {
+	instance := FetchWebAuthTokenOperationClass.Alloc().InitWithAPIToken(APIToken)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchWebAuthTokenOperation) Init() FetchWebAuthTokenOperation {

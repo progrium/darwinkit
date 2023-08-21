@@ -65,6 +65,8 @@ func (g_ GetCommand) InitWithCommandDescription(commandDef IScriptCommandDescrip
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func GetCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) GetCommand {
-	return GetCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewGetCommandWithCommandDescription(commandDef IScriptCommandDescription) GetCommand {
+	instance := GetCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }

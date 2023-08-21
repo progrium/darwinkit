@@ -48,8 +48,10 @@ func (d_ DraggingImageComponent) InitWithKey(key DraggingImageComponentKey) Drag
 // Initializes and returns a dragging image component with the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingimagecomponent/1534187-initwithkey?language=objc
-func DraggingImageComponent_InitWithKey(key DraggingImageComponentKey) DraggingImageComponent {
-	return DraggingImageComponentClass.Alloc().InitWithKey(key)
+func NewDraggingImageComponentWithKey(key DraggingImageComponentKey) DraggingImageComponent {
+	instance := DraggingImageComponentClass.Alloc().InitWithKey(key)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DraggingImageComponentClass) Alloc() DraggingImageComponent {

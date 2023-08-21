@@ -51,8 +51,10 @@ func (t_ TableViewDiffableDataSource) InitWithTableViewCellProvider(tableView IT
 // Creates a diffable data source with the specified cell provider, and connects it to the specified table view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553215-initwithtableview?language=objc
-func TableViewDiffableDataSource_InitWithTableViewCellProvider(tableView ITableView, cellProvider TableViewDiffableDataSourceCellProvider) TableViewDiffableDataSource {
-	return TableViewDiffableDataSourceClass.Alloc().InitWithTableViewCellProvider(tableView, cellProvider)
+func NewTableViewDiffableDataSourceWithTableViewCellProvider(tableView ITableView, cellProvider TableViewDiffableDataSourceCellProvider) TableViewDiffableDataSource {
+	instance := TableViewDiffableDataSourceClass.Alloc().InitWithTableViewCellProvider(tableView, cellProvider)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TableViewDiffableDataSourceClass) Alloc() TableViewDiffableDataSource {

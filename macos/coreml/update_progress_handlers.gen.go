@@ -41,8 +41,10 @@ func (u_ UpdateProgressHandlers) InitForEventsProgressHandlerCompletionHandler(i
 // Creates the collection of closures an update task uses to notify your app of its progress. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdateprogresshandlers/3294204-initforevents?language=objc
-func UpdateProgressHandlers_InitForEventsProgressHandlerCompletionHandler(interestedEvents UpdateProgressEvent, progressHandler func(context UpdateContext), completionHandler func(context UpdateContext)) UpdateProgressHandlers {
-	return UpdateProgressHandlersClass.Alloc().InitForEventsProgressHandlerCompletionHandler(interestedEvents, progressHandler, completionHandler)
+func NewUpdateProgressHandlersForEventsProgressHandlerCompletionHandler(interestedEvents UpdateProgressEvent, progressHandler func(context UpdateContext), completionHandler func(context UpdateContext)) UpdateProgressHandlers {
+	instance := UpdateProgressHandlersClass.Alloc().InitForEventsProgressHandlerCompletionHandler(interestedEvents, progressHandler, completionHandler)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UpdateProgressHandlersClass) Alloc() UpdateProgressHandlers {

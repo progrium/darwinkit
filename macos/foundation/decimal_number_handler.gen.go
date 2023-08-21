@@ -41,8 +41,10 @@ func (d_ DecimalNumberHandler) InitWithRoundingModeScaleRaiseOnExactnessRaiseOnO
 // Returns an NSDecimalNumberHandler object initialized so it behaves as specified by the method’s arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumberhandler/1416492-initwithroundingmode?language=objc
-func DecimalNumberHandler_InitWithRoundingModeScaleRaiseOnExactnessRaiseOnOverflowRaiseOnUnderflowRaiseOnDivideByZero(roundingMode RoundingMode, scale int, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {
-	return DecimalNumberHandlerClass.Alloc().InitWithRoundingModeScaleRaiseOnExactnessRaiseOnOverflowRaiseOnUnderflowRaiseOnDivideByZero(roundingMode, scale, exact, overflow, underflow, divideByZero)
+func NewDecimalNumberHandlerWithRoundingModeScaleRaiseOnExactnessRaiseOnOverflowRaiseOnUnderflowRaiseOnDivideByZero(roundingMode RoundingMode, scale int, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {
+	instance := DecimalNumberHandlerClass.Alloc().InitWithRoundingModeScaleRaiseOnExactnessRaiseOnOverflowRaiseOnUnderflowRaiseOnDivideByZero(roundingMode, scale, exact, overflow, underflow, divideByZero)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DecimalNumberHandlerClass) DecimalNumberHandlerWithRoundingModeScaleRaiseOnExactnessRaiseOnOverflowRaiseOnUnderflowRaiseOnDivideByZero(roundingMode RoundingMode, scale int, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {

@@ -61,8 +61,10 @@ func (r_ RenderDestination) InitWithGLTextureTargetWidthHeight(texture int, targ
 // Creates a render destination based on an OpenGL texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2875438-initwithgltexture?language=objc
-func RenderDestination_InitWithGLTextureTargetWidthHeight(texture int, target int, width uint, height uint) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithGLTextureTargetWidthHeight(texture, target, width, height)
+func NewRenderDestinationWithGLTextureTargetWidthHeight(texture int, target int, width uint, height uint) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithGLTextureTargetWidthHeight(texture, target, width, height)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RenderDestination) InitWithIOSurface(surface iosurface.IIOSurface) RenderDestination {
@@ -73,8 +75,10 @@ func (r_ RenderDestination) InitWithIOSurface(surface iosurface.IIOSurface) Rend
 // Creates a render destination based on an IOSurface object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2876044-initwithiosurface?language=objc
-func RenderDestination_InitWithIOSurface(surface iosurface.IIOSurface) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithIOSurface(surface)
+func NewRenderDestinationWithIOSurface(surface iosurface.IIOSurface) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithIOSurface(surface)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RenderDestination) InitWithBitmapDataWidthHeightBytesPerRowFormat(data unsafe.Pointer, width uint, height uint, bytesPerRow uint, format Format) RenderDestination {
@@ -85,8 +89,10 @@ func (r_ RenderDestination) InitWithBitmapDataWidthHeightBytesPerRowFormat(data 
 // Creates a render destination based on a client-managed buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2875427-initwithbitmapdata?language=objc
-func RenderDestination_InitWithBitmapDataWidthHeightBytesPerRowFormat(data unsafe.Pointer, width uint, height uint, bytesPerRow uint, format Format) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithBitmapDataWidthHeightBytesPerRowFormat(data, width, height, bytesPerRow, format)
+func NewRenderDestinationWithBitmapDataWidthHeightBytesPerRowFormat(data unsafe.Pointer, width uint, height uint, bytesPerRow uint, format Format) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithBitmapDataWidthHeightBytesPerRowFormat(data, width, height, bytesPerRow, format)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RenderDestination) InitWithWidthHeightPixelFormatCommandBufferMtlTextureProvider(width uint, height uint, pixelFormat metal.PixelFormat, commandBuffer metal.PCommandBuffer, block func() metal.TextureWrapper) RenderDestination {
@@ -98,8 +104,10 @@ func (r_ RenderDestination) InitWithWidthHeightPixelFormatCommandBufferMtlTextur
 // Creates a render destination based on a Metal texture with specified pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2880274-initwithwidth?language=objc
-func RenderDestination_InitWithWidthHeightPixelFormatCommandBufferMtlTextureProvider(width uint, height uint, pixelFormat metal.PixelFormat, commandBuffer metal.PCommandBuffer, block func() metal.TextureWrapper) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithWidthHeightPixelFormatCommandBufferMtlTextureProvider(width, height, pixelFormat, commandBuffer, block)
+func NewRenderDestinationWithWidthHeightPixelFormatCommandBufferMtlTextureProvider(width uint, height uint, pixelFormat metal.PixelFormat, commandBuffer metal.PCommandBuffer, block func() metal.TextureWrapper) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithWidthHeightPixelFormatCommandBufferMtlTextureProvider(width, height, pixelFormat, commandBuffer, block)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RenderDestination) InitWithMTLTextureCommandBuffer(texture metal.PTexture, commandBuffer metal.PCommandBuffer) RenderDestination {
@@ -112,8 +120,10 @@ func (r_ RenderDestination) InitWithMTLTextureCommandBuffer(texture metal.PTextu
 // Creates a render destination based on a Metal texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2880273-initwithmtltexture?language=objc
-func RenderDestination_InitWithMTLTextureCommandBuffer(texture metal.PTexture, commandBuffer metal.PCommandBuffer) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithMTLTextureCommandBuffer(texture, commandBuffer)
+func NewRenderDestinationWithMTLTextureCommandBuffer(texture metal.PTexture, commandBuffer metal.PCommandBuffer) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithMTLTextureCommandBuffer(texture, commandBuffer)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RenderDestination) InitWithPixelBuffer(pixelBuffer corevideo.PixelBufferRef) RenderDestination {
@@ -124,8 +134,10 @@ func (r_ RenderDestination) InitWithPixelBuffer(pixelBuffer corevideo.PixelBuffe
 // Creates a render destination based on a Core Video pixel buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2875436-initwithpixelbuffer?language=objc
-func RenderDestination_InitWithPixelBuffer(pixelBuffer corevideo.PixelBufferRef) RenderDestination {
-	return RenderDestinationClass.Alloc().InitWithPixelBuffer(pixelBuffer)
+func NewRenderDestinationWithPixelBuffer(pixelBuffer corevideo.PixelBufferRef) RenderDestination {
+	instance := RenderDestinationClass.Alloc().InitWithPixelBuffer(pixelBuffer)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RenderDestinationClass) Alloc() RenderDestination {

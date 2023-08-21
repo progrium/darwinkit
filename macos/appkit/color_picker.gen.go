@@ -51,8 +51,10 @@ func (c_ ColorPicker) InitWithPickerMaskColorPanel(mask uint, owningColorPanel I
 // Initializes the color picker with the specified color panel and color picker mode mask. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492397-initwithpickermask?language=objc
-func ColorPicker_InitWithPickerMaskColorPanel(mask uint, owningColorPanel IColorPanel) ColorPicker {
-	return ColorPickerClass.Alloc().InitWithPickerMaskColorPanel(mask, owningColorPanel)
+func NewColorPickerWithPickerMaskColorPanel(mask uint, owningColorPanel IColorPanel) ColorPicker {
+	instance := ColorPickerClass.Alloc().InitWithPickerMaskColorPanel(mask, owningColorPanel)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ColorPickerClass) Alloc() ColorPicker {

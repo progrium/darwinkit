@@ -68,8 +68,10 @@ func (p_ PredicateEditor) InitWithFrame(frameRect foundation.Rect) PredicateEdit
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func PredicateEditor_InitWithFrame(frameRect foundation.Rect) PredicateEditor {
-	return PredicateEditorClass.Alloc().InitWithFrame(frameRect)
+func NewPredicateEditorWithFrame(frameRect foundation.Rect) PredicateEditor {
+	instance := PredicateEditorClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The row templates for the receiver. [Full Topic]

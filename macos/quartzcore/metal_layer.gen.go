@@ -104,8 +104,10 @@ func (m_ MetalLayer) InitWithLayer(layer objc.IObject) MetalLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func MetalLayer_InitWithLayer(layer objc.IObject) MetalLayer {
-	return MetalLayerClass.Alloc().InitWithLayer(layer)
+func NewMetalLayerWithLayer(layer objc.IObject) MetalLayer {
+	instance := MetalLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MetalLayer) ModelLayer() MetalLayer {
@@ -117,7 +119,9 @@ func (m_ MetalLayer) ModelLayer() MetalLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func MetalLayer_ModelLayer() MetalLayer {
-	return MetalLayerClass.Alloc().ModelLayer()
+	instance := MetalLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MetalLayer) PresentationLayer() MetalLayer {
@@ -129,7 +133,9 @@ func (m_ MetalLayer) PresentationLayer() MetalLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func MetalLayer_PresentationLayer() MetalLayer {
-	return MetalLayerClass.Alloc().PresentationLayer()
+	instance := MetalLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // Waits until a Metal drawable is available, and then returns it. [Full Topic]

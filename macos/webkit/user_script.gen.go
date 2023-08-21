@@ -44,8 +44,10 @@ func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnly(source string, 
 // Creates a user script object that contains the specified source code and attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuserscript/1537750-initwithsource?language=objc
-func UserScript_InitWithSourceInjectionTimeForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
-	return UserScriptClass.Alloc().InitWithSourceInjectionTimeForMainFrameOnly(source, injectionTime, forMainFrameOnly)
+func NewUserScriptWithSourceInjectionTimeForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
+	instance := UserScriptClass.Alloc().InitWithSourceInjectionTimeForMainFrameOnly(source, injectionTime, forMainFrameOnly)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UserScriptClass) Alloc() UserScript {

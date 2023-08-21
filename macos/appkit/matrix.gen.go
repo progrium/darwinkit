@@ -129,8 +129,10 @@ func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
 // Initializes a newly allocated matrix with the specified frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436428-initwithframe?language=objc
-func Matrix_InitWithFrame(frameRect foundation.Rect) Matrix {
-	return MatrixClass.Alloc().InitWithFrame(frameRect)
+func NewMatrixWithFrame(frameRect foundation.Rect) Matrix {
+	instance := MatrixClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MatrixClass) Alloc() Matrix {

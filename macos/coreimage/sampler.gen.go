@@ -56,8 +56,10 @@ func (s_ Sampler) InitWithImage(im IImage) Sampler {
 // Initializes a sampler with an image object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisampler/1438117-initwithimage?language=objc
-func Sampler_InitWithImage(im IImage) Sampler {
-	return SamplerClass.Alloc().InitWithImage(im)
+func NewSamplerWithImage(im IImage) Sampler {
+	instance := SamplerClass.Alloc().InitWithImage(im)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SamplerClass) Alloc() Sampler {

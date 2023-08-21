@@ -74,8 +74,10 @@ func (t_ TitlebarAccessoryViewController) InitWithNibNameBundle(nibNameOrNil Nib
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func TitlebarAccessoryViewController_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
-	return TitlebarAccessoryViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewTitlebarAccessoryViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
+	instance := TitlebarAccessoryViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

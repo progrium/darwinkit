@@ -44,8 +44,10 @@ func (d_ DictionaryFeatureProvider) InitWithDictionaryError(dictionary map[strin
 // Creates the feature provider based on a dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879366-initwithdictionary?language=objc
-func DictionaryFeatureProvider_InitWithDictionaryError(dictionary map[string]objc.IObject, error foundation.IError) DictionaryFeatureProvider {
-	return DictionaryFeatureProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
+func NewDictionaryFeatureProviderWithDictionaryError(dictionary map[string]objc.IObject, error foundation.IError) DictionaryFeatureProvider {
+	instance := DictionaryFeatureProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DictionaryFeatureProviderClass) Alloc() DictionaryFeatureProvider {

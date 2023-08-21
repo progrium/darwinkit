@@ -50,8 +50,10 @@ func (s_ SearchableItem) InitWithUniqueIdentifierDomainIdentifierAttributeSet(un
 // Returns a searchable item associated with the specified identifier, domain identifier, and attribute set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621647-initwithuniqueidentifier?language=objc
-func SearchableItem_InitWithUniqueIdentifierDomainIdentifierAttributeSet(uniqueIdentifier string, domainIdentifier string, attributeSet ISearchableItemAttributeSet) SearchableItem {
-	return SearchableItemClass.Alloc().InitWithUniqueIdentifierDomainIdentifierAttributeSet(uniqueIdentifier, domainIdentifier, attributeSet)
+func NewSearchableItemWithUniqueIdentifierDomainIdentifierAttributeSet(uniqueIdentifier string, domainIdentifier string, attributeSet ISearchableItemAttributeSet) SearchableItem {
+	instance := SearchableItemClass.Alloc().InitWithUniqueIdentifierDomainIdentifierAttributeSet(uniqueIdentifier, domainIdentifier, attributeSet)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SearchableItemClass) Alloc() SearchableItem {

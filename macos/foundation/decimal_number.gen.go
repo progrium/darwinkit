@@ -53,8 +53,10 @@ func (d_ DecimalNumber) InitWithString(numberValue string) DecimalNumber {
 // Initializes a decimal number so that its value is equivalent to that in a given numeric string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1409902-initwithstring?language=objc
-func DecimalNumber_InitWithString(numberValue string) DecimalNumber {
-	return DecimalNumberClass.Alloc().InitWithString(numberValue)
+func NewDecimalNumberWithString(numberValue string) DecimalNumber {
+	instance := DecimalNumberClass.Alloc().InitWithString(numberValue)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ DecimalNumber) InitWithDecimal(dcm Decimal) DecimalNumber {
@@ -65,8 +67,10 @@ func (d_ DecimalNumber) InitWithDecimal(dcm Decimal) DecimalNumber {
 // Initializes a decimal number to represent a given decimal. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1412692-initwithdecimal?language=objc
-func DecimalNumber_InitWithDecimal(dcm Decimal) DecimalNumber {
-	return DecimalNumberClass.Alloc().InitWithDecimal(dcm)
+func NewDecimalNumberWithDecimal(dcm Decimal) DecimalNumber {
+	instance := DecimalNumberClass.Alloc().InitWithDecimal(dcm)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ DecimalNumber) InitWithMantissaExponentIsNegative(mantissa int64, exponent int, flag bool) DecimalNumber {
@@ -77,8 +81,10 @@ func (d_ DecimalNumber) InitWithMantissaExponentIsNegative(mantissa int64, expon
 // Initializes a decimal number using the given mantissa, exponent, and sign. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1416003-initwithmantissa?language=objc
-func DecimalNumber_InitWithMantissaExponentIsNegative(mantissa int64, exponent int, flag bool) DecimalNumber {
-	return DecimalNumberClass.Alloc().InitWithMantissaExponentIsNegative(mantissa, exponent, flag)
+func NewDecimalNumberWithMantissaExponentIsNegative(mantissa int64, exponent int, flag bool) DecimalNumber {
+	instance := DecimalNumberClass.Alloc().InitWithMantissaExponentIsNegative(mantissa, exponent, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DecimalNumberClass) Alloc() DecimalNumber {
@@ -113,8 +119,10 @@ func (d_ DecimalNumber) InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8
 // Initializes a value object to contain the specified value, interpreted with the specified Objective-C type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsvalue/1411621-initwithbytes?language=objc
-func DecimalNumber_InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) DecimalNumber {
-	return DecimalNumberClass.Alloc().InitWithBytesObjCType(value, type_)
+func NewDecimalNumberWithBytesObjCType(value unsafe.Pointer, type_ *uint8) DecimalNumber {
+	instance := DecimalNumberClass.Alloc().InitWithBytesObjCType(value, type_)
+	instance.Autorelease()
+	return instance
 }
 
 // Multiplies this number by another given number using the specified behavior. [Full Topic]

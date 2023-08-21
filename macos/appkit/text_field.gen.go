@@ -159,8 +159,10 @@ func (t_ TextField) InitWithFrame(frameRect foundation.Rect) TextField {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func TextField_InitWithFrame(frameRect foundation.Rect) TextField {
-	return TextFieldClass.Alloc().InitWithFrame(frameRect)
+func NewTextFieldWithFrame(frameRect foundation.Rect) TextField {
+	instance := TextFieldClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Ends editing in the text field and, if it’s selectable, selects the entire text content. [Full Topic]

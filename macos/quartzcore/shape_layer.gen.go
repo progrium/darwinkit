@@ -103,8 +103,10 @@ func (s_ ShapeLayer) InitWithLayer(layer objc.IObject) ShapeLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func ShapeLayer_InitWithLayer(layer objc.IObject) ShapeLayer {
-	return ShapeLayerClass.Alloc().InitWithLayer(layer)
+func NewShapeLayerWithLayer(layer objc.IObject) ShapeLayer {
+	instance := ShapeLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ ShapeLayer) ModelLayer() ShapeLayer {
@@ -116,7 +118,9 @@ func (s_ ShapeLayer) ModelLayer() ShapeLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func ShapeLayer_ModelLayer() ShapeLayer {
-	return ShapeLayerClass.Alloc().ModelLayer()
+	instance := ShapeLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ ShapeLayer) PresentationLayer() ShapeLayer {
@@ -128,7 +132,9 @@ func (s_ ShapeLayer) PresentationLayer() ShapeLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func ShapeLayer_PresentationLayer() ShapeLayer {
-	return ShapeLayerClass.Alloc().PresentationLayer()
+	instance := ShapeLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // The path defining the shape to be rendered. Animatable. [Full Topic]

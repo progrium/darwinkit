@@ -116,8 +116,10 @@ func (s_ StatusBarButton) InitWithFrame(frameRect foundation.Rect) StatusBarButt
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func StatusBarButton_InitWithFrame(frameRect foundation.Rect) StatusBarButton {
-	return StatusBarButtonClass.Alloc().InitWithFrame(frameRect)
+func NewStatusBarButtonWithFrame(frameRect foundation.Rect) StatusBarButton {
+	instance := StatusBarButtonClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

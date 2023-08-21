@@ -66,8 +66,10 @@ func (m_ MoveCommand) InitWithCommandDescription(commandDef IScriptCommandDescri
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func MoveCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) MoveCommand {
-	return MoveCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewMoveCommandWithCommandDescription(commandDef IScriptCommandDescription) MoveCommand {
+	instance := MoveCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a specifier for the object or objects to be moved. [Full Topic]

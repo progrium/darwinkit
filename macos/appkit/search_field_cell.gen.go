@@ -63,8 +63,10 @@ func (s_ SearchFieldCell) InitTextCell(string_ string) SearchFieldCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1643722-inittextcell?language=objc
-func SearchFieldCell_InitTextCell(string_ string) SearchFieldCell {
-	return SearchFieldCellClass.Alloc().InitTextCell(string_)
+func NewSearchFieldCellTextCell(string_ string) SearchFieldCell {
+	instance := SearchFieldCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SearchFieldCellClass) Alloc() SearchFieldCell {
@@ -99,8 +101,10 @@ func (s_ SearchFieldCell) InitImageCell(image IImage) SearchFieldCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func SearchFieldCell_InitImageCell(image IImage) SearchFieldCell {
-	return SearchFieldCellClass.Alloc().InitImageCell(image)
+func NewSearchFieldCellImageCell(image IImage) SearchFieldCell {
+	instance := SearchFieldCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // Modifies the bounding rectangle for the search-text field cell. [Full Topic]

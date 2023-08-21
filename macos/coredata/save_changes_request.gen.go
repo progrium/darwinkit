@@ -46,8 +46,10 @@ func (s_ SaveChangesRequest) InitWithInsertedObjectsUpdatedObjectsDeletedObjects
 // Initializes a save changes request with collections of given changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nssavechangesrequest/1500418-initwithinsertedobjects?language=objc
-func SaveChangesRequest_InitWithInsertedObjectsUpdatedObjectsDeletedObjectsLockedObjects(insertedObjects foundation.ISet, updatedObjects foundation.ISet, deletedObjects foundation.ISet, lockedObjects foundation.ISet) SaveChangesRequest {
-	return SaveChangesRequestClass.Alloc().InitWithInsertedObjectsUpdatedObjectsDeletedObjectsLockedObjects(insertedObjects, updatedObjects, deletedObjects, lockedObjects)
+func NewSaveChangesRequestWithInsertedObjectsUpdatedObjectsDeletedObjectsLockedObjects(insertedObjects foundation.ISet, updatedObjects foundation.ISet, deletedObjects foundation.ISet, lockedObjects foundation.ISet) SaveChangesRequest {
+	instance := SaveChangesRequestClass.Alloc().InitWithInsertedObjectsUpdatedObjectsDeletedObjectsLockedObjects(insertedObjects, updatedObjects, deletedObjects, lockedObjects)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SaveChangesRequestClass) Alloc() SaveChangesRequest {

@@ -108,8 +108,10 @@ func (w_ WebView) InitWithFrameConfiguration(frame coregraphics.Rect, configurat
 // Creates a web view and initializes it with the specified frame and configuration data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebview/1414998-initwithframe?language=objc
-func WebView_InitWithFrameConfiguration(frame coregraphics.Rect, configuration IWebViewConfiguration) WebView {
-	return WebViewClass.Alloc().InitWithFrameConfiguration(frame, configuration)
+func NewWebViewWithFrameConfiguration(frame coregraphics.Rect, configuration IWebViewConfiguration) WebView {
+	instance := WebViewClass.Alloc().InitWithFrameConfiguration(frame, configuration)
+	instance.Autorelease()
+	return instance
 }
 
 func (wc _WebViewClass) Alloc() WebView {
@@ -144,8 +146,10 @@ func (w_ WebView) InitWithFrame(frameRect foundation.Rect) WebView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func WebView_InitWithFrame(frameRect foundation.Rect) WebView {
-	return WebViewClass.Alloc().InitWithFrame(frameRect)
+func NewWebViewWithFrame(frameRect foundation.Rect) WebView {
+	instance := WebViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Scales the page content and centers the result on the specified point. [Full Topic]

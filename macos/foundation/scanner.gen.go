@@ -66,8 +66,10 @@ func (s_ Scanner) InitWithString(string_ string) Scanner {
 // Returns an NSScanner object initialized to scan a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1417131-initwithstring?language=objc
-func Scanner_InitWithString(string_ string) Scanner {
-	return ScannerClass.Alloc().InitWithString(string_)
+func NewScannerWithString(string_ string) Scanner {
+	instance := ScannerClass.Alloc().InitWithString(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScannerClass) ScannerWithString(string_ string) Scanner {

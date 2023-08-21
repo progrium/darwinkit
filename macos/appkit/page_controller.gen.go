@@ -81,8 +81,10 @@ func (p_ PageController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOr
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func PageController_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) PageController {
-	return PageControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewPageControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) PageController {
+	instance := PageControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 // Navigates to the next object in the page controller’s arranged objects array, if appropriate. [Full Topic]

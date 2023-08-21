@@ -74,8 +74,10 @@ func (o_ ObjectController) InitWithContent(content objc.IObject) ObjectControlle
 // Initializes and returns an NSObjectController object with the given content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1529422-initwithcontent?language=objc
-func ObjectController_InitWithContent(content objc.IObject) ObjectController {
-	return ObjectControllerClass.Alloc().InitWithContent(content)
+func NewObjectControllerWithContent(content objc.IObject) ObjectController {
+	instance := ObjectControllerClass.Alloc().InitWithContent(content)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _ObjectControllerClass) Alloc() ObjectController {

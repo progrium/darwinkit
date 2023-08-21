@@ -45,8 +45,10 @@ func (p_ PDF417CodeDescriptor) InitWithPayloadIsCompactRowCountColumnCount(error
 // Initializes a descriptor that can be used as input to the CIBarcodeGenerator filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417codedescriptor/2875182-initwithpayload?language=objc
-func PDF417CodeDescriptor_InitWithPayloadIsCompactRowCountColumnCount(errorCorrectedPayload []byte, isCompact bool, rowCount int, columnCount int) PDF417CodeDescriptor {
-	return PDF417CodeDescriptorClass.Alloc().InitWithPayloadIsCompactRowCountColumnCount(errorCorrectedPayload, isCompact, rowCount, columnCount)
+func NewPDF417CodeDescriptorWithPayloadIsCompactRowCountColumnCount(errorCorrectedPayload []byte, isCompact bool, rowCount int, columnCount int) PDF417CodeDescriptor {
+	instance := PDF417CodeDescriptorClass.Alloc().InitWithPayloadIsCompactRowCountColumnCount(errorCorrectedPayload, isCompact, rowCount, columnCount)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PDF417CodeDescriptorClass) DescriptorWithPayloadIsCompactRowCountColumnCount(errorCorrectedPayload []byte, isCompact bool, rowCount int, columnCount int) PDF417CodeDescriptor {

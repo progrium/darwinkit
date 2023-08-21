@@ -150,8 +150,10 @@ func (c_ ComboBox) InitWithFrame(frameRect foundation.Rect) ComboBox {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func ComboBox_InitWithFrame(frameRect foundation.Rect) ComboBox {
-	return ComboBoxClass.Alloc().InitWithFrame(frameRect)
+func NewComboBoxWithFrame(frameRect foundation.Rect) ComboBox {
+	instance := ComboBoxClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Removes all occurrences of the given object from the receiver’s internal item list. [Full Topic]

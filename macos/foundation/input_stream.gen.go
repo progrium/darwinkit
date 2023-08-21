@@ -56,8 +56,10 @@ func (i_ InputStream) InitWithData(data []byte) InputStream {
 // Initializes and returns an NSInputStream object for reading from a given NSData object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1412470-initwithdata?language=objc
-func InputStream_InitWithData(data []byte) InputStream {
-	return InputStreamClass.Alloc().InitWithData(data)
+func NewInputStreamWithData(data []byte) InputStream {
+	instance := InputStreamClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ InputStream) InitWithURL(url IURL) InputStream {
@@ -68,8 +70,10 @@ func (i_ InputStream) InitWithURL(url IURL) InputStream {
 // Initializes and returns an NSInputStream object that reads data from the file at a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1417891-initwithurl?language=objc
-func InputStream_InitWithURL(url IURL) InputStream {
-	return InputStreamClass.Alloc().InitWithURL(url)
+func NewInputStreamWithURL(url IURL) InputStream {
+	instance := InputStreamClass.Alloc().InitWithURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
@@ -80,8 +84,10 @@ func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
 // Initializes and returns an NSInputStream object that reads data from the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1408976-initwithfileatpath?language=objc
-func InputStream_InitWithFileAtPath(path string) InputStream {
-	return InputStreamClass.Alloc().InitWithFileAtPath(path)
+func NewInputStreamWithFileAtPath(path string) InputStream {
+	instance := InputStreamClass.Alloc().InitWithFileAtPath(path)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _InputStreamClass) InputStreamWithData(data []byte) InputStream {

@@ -97,8 +97,10 @@ func (m_ MutableIndexSet) InitWithIndexesInRange(range_ Range) MutableIndexSet {
 // Initializes an allocated NSIndexSet object with an index range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1414013-initwithindexesinrange?language=objc
-func MutableIndexSet_InitWithIndexesInRange(range_ Range) MutableIndexSet {
-	return MutableIndexSetClass.Alloc().InitWithIndexesInRange(range_)
+func NewMutableIndexSetWithIndexesInRange(range_ Range) MutableIndexSet {
+	instance := MutableIndexSetClass.Alloc().InitWithIndexesInRange(range_)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableIndexSet) InitWithIndexSet(indexSet IIndexSet) MutableIndexSet {
@@ -109,8 +111,10 @@ func (m_ MutableIndexSet) InitWithIndexSet(indexSet IIndexSet) MutableIndexSet {
 // Initializes an allocated NSIndexSet object with an index set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1415602-initwithindexset?language=objc
-func MutableIndexSet_InitWithIndexSet(indexSet IIndexSet) MutableIndexSet {
-	return MutableIndexSetClass.Alloc().InitWithIndexSet(indexSet)
+func NewMutableIndexSetWithIndexSet(indexSet IIndexSet) MutableIndexSet {
+	instance := MutableIndexSetClass.Alloc().InitWithIndexSet(indexSet)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableIndexSetClass) IndexSetWithIndexesInRange(range_ Range) MutableIndexSet {
@@ -133,8 +137,10 @@ func (m_ MutableIndexSet) InitWithIndex(value uint) MutableIndexSet {
 // Initializes an allocated NSIndexSet object with an index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1416501-initwithindex?language=objc
-func MutableIndexSet_InitWithIndex(value uint) MutableIndexSet {
-	return MutableIndexSetClass.Alloc().InitWithIndex(value)
+func NewMutableIndexSetWithIndex(value uint) MutableIndexSet {
+	instance := MutableIndexSetClass.Alloc().InitWithIndex(value)
+	instance.Autorelease()
+	return instance
 }
 
 // Shifts a group of indexes to the left or the right within the receiver. [Full Topic]

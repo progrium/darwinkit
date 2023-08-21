@@ -66,8 +66,10 @@ func (d_ DeleteCommand) InitWithCommandDescription(commandDef IScriptCommandDesc
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func DeleteCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) DeleteCommand {
-	return DeleteCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewDeleteCommandWithCommandDescription(commandDef IScriptCommandDescription) DeleteCommand {
+	instance := DeleteCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a specifier for the object or objects to be deleted. [Full Topic]

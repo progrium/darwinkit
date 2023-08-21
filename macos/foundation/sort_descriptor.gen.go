@@ -60,8 +60,10 @@ func (s_ SortDescriptor) InitWithKeyAscending(key string, ascending bool) SortDe
 // Creates a sort descriptor with a specified string key path and sort order. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssortdescriptor/1413572-initwithkey?language=objc
-func SortDescriptor_InitWithKeyAscending(key string, ascending bool) SortDescriptor {
-	return SortDescriptorClass.Alloc().InitWithKeyAscending(key, ascending)
+func NewSortDescriptorWithKeyAscending(key string, ascending bool) SortDescriptor {
+	instance := SortDescriptorClass.Alloc().InitWithKeyAscending(key, ascending)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SortDescriptorClass) Alloc() SortDescriptor {

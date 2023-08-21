@@ -100,8 +100,10 @@ func (n_ Number) InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Numbe
 // Initializes a value object to contain the specified value, interpreted with the specified Objective-C type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsvalue/1411621-initwithbytes?language=objc
-func Number_InitWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Number {
-	return NumberClass.Alloc().InitWithBytesObjCType(value, type_)
+func NewNumberWithBytesObjCType(value unsafe.Pointer, type_ *uint8) Number {
+	instance := NumberClass.Alloc().InitWithBytesObjCType(value, type_)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns an NSNumber object initialized to contain a given value, treated as an unsigned long. [Full Topic]

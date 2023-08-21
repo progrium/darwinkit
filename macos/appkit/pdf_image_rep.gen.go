@@ -47,8 +47,10 @@ func (p_ PDFImageRep) InitWithData(pdfData []byte) PDFImageRep {
 // Returns a representation of an image initialized with the specified PDF data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfimagerep/1535547-initwithdata?language=objc
-func PDFImageRep_InitWithData(pdfData []byte) PDFImageRep {
-	return PDFImageRepClass.Alloc().InitWithData(pdfData)
+func NewPDFImageRepWithData(pdfData []byte) PDFImageRep {
+	instance := PDFImageRepClass.Alloc().InitWithData(pdfData)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PDFImageRepClass) ImageRepWithData(pdfData []byte) PDFImageRep {

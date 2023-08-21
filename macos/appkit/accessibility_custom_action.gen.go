@@ -49,8 +49,10 @@ func (a_ AccessibilityCustomAction) InitWithNameHandler(name string, handler fun
 // Creates a custom action object with the specified name and handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomaction/2870120-initwithname?language=objc
-func AccessibilityCustomAction_InitWithNameHandler(name string, handler func() bool) AccessibilityCustomAction {
-	return AccessibilityCustomActionClass.Alloc().InitWithNameHandler(name, handler)
+func NewAccessibilityCustomActionWithNameHandler(name string, handler func() bool) AccessibilityCustomAction {
+	instance := AccessibilityCustomActionClass.Alloc().InitWithNameHandler(name, handler)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AccessibilityCustomActionClass) Alloc() AccessibilityCustomAction {

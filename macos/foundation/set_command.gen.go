@@ -66,8 +66,10 @@ func (s_ SetCommand) InitWithCommandDescription(commandDef IScriptCommandDescrip
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func SetCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) SetCommand {
-	return SetCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewSetCommandWithCommandDescription(commandDef IScriptCommandDescription) SetCommand {
+	instance := SetCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a specifier that identifies the attribute or relationship that is to be set for the receiver of the set AppleScript command. [Full Topic]

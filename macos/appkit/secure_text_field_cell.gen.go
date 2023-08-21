@@ -67,8 +67,10 @@ func (s_ SecureTextFieldCell) InitTextCell(string_ string) SecureTextFieldCell {
 // Initializes a text field cell that displays the specified string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1642278-inittextcell?language=objc
-func SecureTextFieldCell_InitTextCell(string_ string) SecureTextFieldCell {
-	return SecureTextFieldCellClass.Alloc().InitTextCell(string_)
+func NewSecureTextFieldCellTextCell(string_ string) SecureTextFieldCell {
+	instance := SecureTextFieldCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SecureTextFieldCell) InitImageCell(image IImage) SecureTextFieldCell {
@@ -79,8 +81,10 @@ func (s_ SecureTextFieldCell) InitImageCell(image IImage) SecureTextFieldCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func SecureTextFieldCell_InitImageCell(image IImage) SecureTextFieldCell {
-	return SecureTextFieldCellClass.Alloc().InitImageCell(image)
+func NewSecureTextFieldCellImageCell(image IImage) SecureTextFieldCell {
+	instance := SecureTextFieldCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean that indicates whether the receiver echoes a bullet character rather than each character typed. [Full Topic]

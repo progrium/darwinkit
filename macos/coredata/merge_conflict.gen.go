@@ -47,8 +47,10 @@ func (m_ MergeConflict) InitWithSourceNewVersionOldVersionCachedSnapshotPersiste
 // Initializes a merge conflict. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergeconflict/1506216-initwithsource?language=objc
-func MergeConflict_InitWithSourceNewVersionOldVersionCachedSnapshotPersistedSnapshot(srcObject IManagedObject, newvers uint, oldvers uint, cachesnap map[string]objc.IObject, persnap map[string]objc.IObject) MergeConflict {
-	return MergeConflictClass.Alloc().InitWithSourceNewVersionOldVersionCachedSnapshotPersistedSnapshot(srcObject, newvers, oldvers, cachesnap, persnap)
+func NewMergeConflictWithSourceNewVersionOldVersionCachedSnapshotPersistedSnapshot(srcObject IManagedObject, newvers uint, oldvers uint, cachesnap map[string]objc.IObject, persnap map[string]objc.IObject) MergeConflict {
+	instance := MergeConflictClass.Alloc().InitWithSourceNewVersionOldVersionCachedSnapshotPersistedSnapshot(srcObject, newvers, oldvers, cachesnap, persnap)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MergeConflictClass) Alloc() MergeConflict {

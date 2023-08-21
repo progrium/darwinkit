@@ -90,8 +90,10 @@ func (p_ Progress) InitWithParentUserInfo(parentProgressOrNil IProgress, userInf
 // Creates a new progress instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/1409133-initwithparent?language=objc
-func Progress_InitWithParentUserInfo(parentProgressOrNil IProgress, userInfoOrNil map[ProgressUserInfoKey]objc.IObject) Progress {
-	return ProgressClass.Alloc().InitWithParentUserInfo(parentProgressOrNil, userInfoOrNil)
+func NewProgressWithParentUserInfo(parentProgressOrNil IProgress, userInfoOrNil map[ProgressUserInfoKey]objc.IObject) Progress {
+	instance := ProgressClass.Alloc().InitWithParentUserInfo(parentProgressOrNil, userInfoOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _ProgressClass) Alloc() Progress {

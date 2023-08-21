@@ -64,7 +64,9 @@ func (d_ Date) DateByAddingTimeInterval(ti TimeInterval) Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1408823-datebyaddingtimeinterval?language=objc
 func Date_DateByAddingTimeInterval(ti TimeInterval) Date {
-	return DateClass.Alloc().DateByAddingTimeInterval(ti)
+	instance := DateClass.Alloc().DateByAddingTimeInterval(ti)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DateClass) DateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) Date {
@@ -111,8 +113,10 @@ func (d_ Date) InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
 // Returns a date object initialized relative to 00:00:00 UTC on 1 January 2001 by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1409769-initwithtimeintervalsincereferen?language=objc
-func Date_InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
-	return DateClass.Alloc().InitWithTimeIntervalSinceReferenceDate(ti)
+func NewDateWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
+	instance := DateClass.Alloc().InitWithTimeIntervalSinceReferenceDate(ti)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Date) InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
@@ -123,8 +127,10 @@ func (d_ Date) InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
 // Returns a date object initialized relative to the current date and time by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1411701-initwithtimeintervalsincenow?language=objc
-func Date_InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
-	return DateClass.Alloc().InitWithTimeIntervalSinceNow(secs)
+func NewDateWithTimeIntervalSinceNow(secs TimeInterval) Date {
+	instance := DateClass.Alloc().InitWithTimeIntervalSinceNow(secs)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DateClass) DateWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
@@ -147,8 +153,10 @@ func (d_ Date) InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date ID
 // Returns a date object initialized relative to another given date by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1414201-initwithtimeinterval?language=objc
-func Date_InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	return DateClass.Alloc().InitWithTimeIntervalSinceDate(secsToBeAdded, date)
+func NewDateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) Date {
+	instance := DateClass.Alloc().InitWithTimeIntervalSinceDate(secsToBeAdded, date)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Date) Init() Date {
@@ -164,8 +172,10 @@ func (d_ Date) InitWithTimeIntervalSince1970(secs TimeInterval) Date {
 // Returns a date object initialized relative to 00:00:00 UTC on 1 January 1970 by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1416453-initwithtimeintervalsince1970?language=objc
-func Date_InitWithTimeIntervalSince1970(secs TimeInterval) Date {
-	return DateClass.Alloc().InitWithTimeIntervalSince1970(secs)
+func NewDateWithTimeIntervalSince1970(secs TimeInterval) Date {
+	instance := DateClass.Alloc().InitWithTimeIntervalSince1970(secs)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DateClass) Alloc() Date {

@@ -83,8 +83,10 @@ func (p_ PopUpButtonCell) InitTextCellPullsDown(stringValue string, pullDown boo
 // Returns an NSPopUpButtonCell object initialized with the specified title. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbuttoncell/1528591-inittextcell?language=objc
-func PopUpButtonCell_InitTextCellPullsDown(stringValue string, pullDown bool) PopUpButtonCell {
-	return PopUpButtonCellClass.Alloc().InitTextCellPullsDown(stringValue, pullDown)
+func NewPopUpButtonCellTextCellPullsDown(stringValue string, pullDown bool) PopUpButtonCell {
+	instance := PopUpButtonCellClass.Alloc().InitTextCellPullsDown(stringValue, pullDown)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PopUpButtonCellClass) Alloc() PopUpButtonCell {
@@ -119,8 +121,10 @@ func (p_ PopUpButtonCell) InitTextCell(string_ string) PopUpButtonCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1641970-inittextcell?language=objc
-func PopUpButtonCell_InitTextCell(string_ string) PopUpButtonCell {
-	return PopUpButtonCellClass.Alloc().InitTextCell(string_)
+func NewPopUpButtonCellTextCell(string_ string) PopUpButtonCell {
+	instance := PopUpButtonCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PopUpButtonCell) InitImageCell(image IImage) PopUpButtonCell {
@@ -131,8 +135,10 @@ func (p_ PopUpButtonCell) InitImageCell(image IImage) PopUpButtonCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1639152-initimagecell?language=objc
-func PopUpButtonCell_InitImageCell(image IImage) PopUpButtonCell {
-	return PopUpButtonCellClass.Alloc().InitImageCell(image)
+func NewPopUpButtonCellImageCell(image IImage) PopUpButtonCell {
+	instance := PopUpButtonCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the menu item at the specified index. [Full Topic]

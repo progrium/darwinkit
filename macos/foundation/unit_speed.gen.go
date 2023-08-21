@@ -77,8 +77,10 @@ func (u_ UnitSpeed) InitWithSymbolConverter(symbol string, converter IUnitConver
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitSpeed_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitSpeed {
-	return UnitSpeedClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitSpeedWithSymbolConverter(symbol string, converter IUnitConverter) UnitSpeed {
+	instance := UnitSpeedClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitSpeed) InitWithSymbol(symbol string) UnitSpeed {
@@ -89,8 +91,10 @@ func (u_ UnitSpeed) InitWithSymbol(symbol string) UnitSpeed {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitSpeed_InitWithSymbol(symbol string) UnitSpeed {
-	return UnitSpeedClass.Alloc().InitWithSymbol(symbol)
+func NewUnitSpeedWithSymbol(symbol string) UnitSpeed {
+	instance := UnitSpeedClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The knots unit of speed. [Full Topic]

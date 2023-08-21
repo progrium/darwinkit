@@ -86,8 +86,10 @@ func (s_ SliderTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifie
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func SliderTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) SliderTouchBarItem {
-	return SliderTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewSliderTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) SliderTouchBarItem {
+	instance := SliderTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The minimum width of the slider’s track. [Full Topic]

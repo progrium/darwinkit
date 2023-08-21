@@ -104,8 +104,10 @@ func (t_ TabView) InitWithFrame(frameRect foundation.Rect) TabView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func TabView_InitWithFrame(frameRect foundation.Rect) TabView {
-	return TabViewClass.Alloc().InitWithFrame(frameRect)
+func NewTabViewWithFrame(frameRect foundation.Rect) TabView {
+	instance := TabViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the tab view item at index in the tab view’s array of items. [Full Topic]

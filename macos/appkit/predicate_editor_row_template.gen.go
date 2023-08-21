@@ -55,8 +55,10 @@ func (p_ PredicateEditorRowTemplate) InitWithLeftExpressionsRightExpressionsModi
 // Initializes and returns a “pop-up-pop-up-pop-up”–style row template. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401175-initwithleftexpressions?language=objc
-func PredicateEditorRowTemplate_InitWithLeftExpressionsRightExpressionsModifierOperatorsOptions(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
-	return PredicateEditorRowTemplateClass.Alloc().InitWithLeftExpressionsRightExpressionsModifierOperatorsOptions(leftExpressions, rightExpressions, modifier, operators, options)
+func NewPredicateEditorRowTemplateWithLeftExpressionsRightExpressionsModifierOperatorsOptions(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
+	instance := PredicateEditorRowTemplateClass.Alloc().InitWithLeftExpressionsRightExpressionsModifierOperatorsOptions(leftExpressions, rightExpressions, modifier, operators, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
@@ -67,8 +69,10 @@ func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []found
 // Initializes and returns a row template suitable for displaying compound predicates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401177-initwithcompoundtypes?language=objc
-func PredicateEditorRowTemplate_InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
-	return PredicateEditorRowTemplateClass.Alloc().InitWithCompoundTypes(compoundTypes)
+func NewPredicateEditorRowTemplateWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
+	instance := PredicateEditorRowTemplateClass.Alloc().InitWithCompoundTypes(compoundTypes)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PredicateEditorRowTemplateClass) Alloc() PredicateEditorRowTemplate {

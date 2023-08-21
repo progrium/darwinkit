@@ -46,8 +46,10 @@ func (t_ TrackingArea) InitWithRectOptionsOwnerUserInfo(rect foundation.Rect, op
 // Initializes and returns an object defining a region of a view to receive mouse-tracking events, mouse-moved events, cursor-update events, or possibly all these events. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingarea/1524488-initwithrect?language=objc
-func TrackingArea_InitWithRectOptionsOwnerUserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.Dictionary) TrackingArea {
-	return TrackingAreaClass.Alloc().InitWithRectOptionsOwnerUserInfo(rect, options, owner, userInfo)
+func NewTrackingAreaWithRectOptionsOwnerUserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.Dictionary) TrackingArea {
+	instance := TrackingAreaClass.Alloc().InitWithRectOptionsOwnerUserInfo(rect, options, owner, userInfo)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TrackingAreaClass) Alloc() TrackingArea {

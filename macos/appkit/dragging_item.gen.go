@@ -50,8 +50,10 @@ func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter PPasteboardWrit
 // Creates and returns a dragging item using the specified content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingitem/1535417-initwithpasteboardwriter?language=objc
-func DraggingItem_InitWithPasteboardWriter(pasteboardWriter PPasteboardWriting) DraggingItem {
-	return DraggingItemClass.Alloc().InitWithPasteboardWriter(pasteboardWriter)
+func NewDraggingItemWithPasteboardWriter(pasteboardWriter PPasteboardWriting) DraggingItem {
+	instance := DraggingItemClass.Alloc().InitWithPasteboardWriter(pasteboardWriter)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DraggingItemClass) Alloc() DraggingItem {

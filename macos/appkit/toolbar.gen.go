@@ -68,8 +68,10 @@ func (t_ Toolbar) InitWithIdentifier(identifier ToolbarIdentifier) Toolbar {
 // Creates a newly allocated toolbar with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516975-initwithidentifier?language=objc
-func Toolbar_InitWithIdentifier(identifier ToolbarIdentifier) Toolbar {
-	return ToolbarClass.Alloc().InitWithIdentifier(identifier)
+func NewToolbarWithIdentifier(identifier ToolbarIdentifier) Toolbar {
+	instance := ToolbarClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ Toolbar) Init() Toolbar {

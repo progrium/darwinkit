@@ -71,8 +71,10 @@ func (s_ ScrubberArrangedView) InitWithFrame(frameRect foundation.Rect) Scrubber
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ScrubberArrangedView_InitWithFrame(frameRect foundation.Rect) ScrubberArrangedView {
-	return ScrubberArrangedViewClass.Alloc().InitWithFrame(frameRect)
+func NewScrubberArrangedViewWithFrame(frameRect foundation.Rect) ScrubberArrangedView {
+	instance := ScrubberArrangedViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Updates the layout of the arranged view to respect the provided layout attributes. [Full Topic]

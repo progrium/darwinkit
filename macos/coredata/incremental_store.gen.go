@@ -74,8 +74,10 @@ func (i_ IncrementalStore) InitWithPersistentStoreCoordinatorConfigurationNameUR
 // Returns a store initialized with the given arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506232-initwithpersistentstorecoordinat?language=objc
-func IncrementalStore_InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) IncrementalStore {
-	return IncrementalStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root, name, url, options)
+func NewIncrementalStoreWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) IncrementalStore {
+	instance := IncrementalStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root, name, url, options)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the reference data used to construct a given object ID. [Full Topic]

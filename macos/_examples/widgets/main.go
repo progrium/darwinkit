@@ -24,7 +24,7 @@ func main() {
 
 	w.SetTitle("Test widgets")
 
-	filePathField := appkit.TextField_InitWithFrame(rectOf(10, 330, 200, 20))
+	filePathField := appkit.NewTextFieldWithFrame(rectOf(10, 330, 200, 20))
 	filePathField.SetEditable(false)
 	w.ContentView().AddSubview(filePathField)
 
@@ -43,32 +43,32 @@ func main() {
 	})
 	w.ContentView().AddSubview(saveButton)
 
-	presentationTF := appkit.TextField_InitWithFrame(rectOf(10, 290, 100, 25))
+	presentationTF := appkit.NewTextFieldWithFrame(rectOf(10, 290, 100, 25))
 	w.ContentView().AddSubview(presentationTF)
 
-	stepper := appkit.Stepper_InitWithFrame(rectOf(130, 290, 16, 25))
+	stepper := appkit.NewStepperWithFrame(rectOf(130, 290, 16, 25))
 	stepper.SetDoubleValue(100)
 	w.ContentView().AddSubview(stepper)
 
-	colorWell := appkit.ColorWell_InitWithFrame(rectOf(160, 290, 30, 25))
+	colorWell := appkit.NewColorWellWithFrame(rectOf(160, 290, 30, 25))
 	w.ContentView().AddSubview(colorWell)
 
-	comboBox := appkit.ComboBox_InitWithFrame(rectOf(210, 290, 100, 25))
+	comboBox := appkit.NewComboBoxWithFrame(rectOf(210, 290, 100, 25))
 	comboBox.AddItemsWithObjectValues([]objc.IObject{
-		foundation.String_InitWithString("Test1"),
-		foundation.String_InitWithString("Test2"),
+		foundation.NewStringWithString("Test1"),
+		foundation.NewStringWithString("Test2"),
 	})
 	comboBox.SelectItemAtIndex(0)
 	w.ContentView().AddSubview(comboBox)
 
-	slider := appkit.Slider_InitWithFrame(rectOf(330, 290, 100, 25))
+	slider := appkit.NewSliderWithFrame(rectOf(330, 290, 100, 25))
 	action.Set(slider, func(sender objc.Object) {
 		presentationTF.SetDoubleValue(slider.DoubleValue())
 	})
 	slider.SetMaxValue(10)
 	w.ContentView().AddSubview(slider)
 
-	datePicker := appkit.DatePicker_InitWithFrame(rectOf(450, 290, 140, 25))
+	datePicker := appkit.NewDatePickerWithFrame(rectOf(450, 290, 140, 25))
 	w.ContentView().AddSubview(datePicker)
 
 	// buttons
@@ -80,10 +80,10 @@ func main() {
 	rb.SetFrame(rectOf(150, 250, 120, 25))
 	w.ContentView().AddSubview(rb)
 
-	sw := appkit.Switch_InitWithFrame(rectOf(260, 250, 120, 25))
+	sw := appkit.NewSwitchWithFrame(rectOf(260, 250, 120, 25))
 	w.ContentView().AddSubview(sw)
 
-	li := appkit.LevelIndicator_InitWithFrame(rectOf(370, 250, 120, 25))
+	li := appkit.NewLevelIndicatorWithFrame(rectOf(370, 250, 120, 25))
 	li.SetCriticalValue(4)
 	li.SetDoubleValue(3)
 	w.ContentView().AddSubview(li)
@@ -132,7 +132,7 @@ func main() {
 	w.ContentView().AddSubview(stf)
 
 	// progress indicator
-	indicator := appkit.ProgressIndicator_InitWithFrame(rectOf(10, 70, 350, 25))
+	indicator := appkit.NewProgressIndicatorWithFrame(rectOf(10, 70, 350, 25))
 	indicator.SetMinValue(0)
 	indicator.SetMaxValue(1)
 	indicator.SetIndeterminate(false)

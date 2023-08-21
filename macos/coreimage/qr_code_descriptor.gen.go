@@ -45,8 +45,10 @@ func (q_ QRCodeDescriptor) InitWithPayloadSymbolVersionMaskPatternErrorCorrectio
 // Initializes a descriptor that can be used as input to the CIBarcodeGenerator filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciqrcodedescriptor/2875180-initwithpayload?language=objc
-func QRCodeDescriptor_InitWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
-	return QRCodeDescriptorClass.Alloc().InitWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
+func NewQRCodeDescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {
+	instance := QRCodeDescriptorClass.Alloc().InitWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload, symbolVersion, maskPattern, errorCorrectionLevel)
+	instance.Autorelease()
+	return instance
 }
 
 func (qc _QRCodeDescriptorClass) DescriptorWithPayloadSymbolVersionMaskPatternErrorCorrectionLevel(errorCorrectedPayload []byte, symbolVersion int, maskPattern uint8, errorCorrectionLevel QRCodeErrorCorrectionLevel) QRCodeDescriptor {

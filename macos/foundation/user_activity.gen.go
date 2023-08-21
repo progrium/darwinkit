@@ -85,8 +85,10 @@ func (u_ UserActivity) InitWithActivityType(activityType string) UserActivity {
 // Creates a user activity object with the specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1410714-initwithactivitytype?language=objc
-func UserActivity_InitWithActivityType(activityType string) UserActivity {
-	return UserActivityClass.Alloc().InitWithActivityType(activityType)
+func NewUserActivityWithActivityType(activityType string) UserActivity {
+	instance := UserActivityClass.Alloc().InitWithActivityType(activityType)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UserActivityClass) Alloc() UserActivity {

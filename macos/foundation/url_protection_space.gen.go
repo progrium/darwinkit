@@ -50,8 +50,10 @@ func (u_ URLProtectionSpace) InitWithProxyHostPortTypeRealmAuthenticationMethod(
 // Creates a protection space object representing a proxy server. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1417998-initwithproxyhost?language=objc
-func URLProtectionSpace_InitWithProxyHostPortTypeRealmAuthenticationMethod(host string, port int, type_ string, realm string, authenticationMethod string) URLProtectionSpace {
-	return URLProtectionSpaceClass.Alloc().InitWithProxyHostPortTypeRealmAuthenticationMethod(host, port, type_, realm, authenticationMethod)
+func NewURLProtectionSpaceWithProxyHostPortTypeRealmAuthenticationMethod(host string, port int, type_ string, realm string, authenticationMethod string) URLProtectionSpace {
+	instance := URLProtectionSpaceClass.Alloc().InitWithProxyHostPortTypeRealmAuthenticationMethod(host, port, type_, realm, authenticationMethod)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLProtectionSpace) InitWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
@@ -62,8 +64,10 @@ func (u_ URLProtectionSpace) InitWithHostPortProtocolRealmAuthenticationMethod(h
 // Creates a protection space object from the given host, port, protocol, realm, and authentication method. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotectionspace/1414165-initwithhost?language=objc
-func URLProtectionSpace_InitWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
-	return URLProtectionSpaceClass.Alloc().InitWithHostPortProtocolRealmAuthenticationMethod(host, port, protocol, realm, authenticationMethod)
+func NewURLProtectionSpaceWithHostPortProtocolRealmAuthenticationMethod(host string, port int, protocol string, realm string, authenticationMethod string) URLProtectionSpace {
+	instance := URLProtectionSpaceClass.Alloc().InitWithHostPortProtocolRealmAuthenticationMethod(host, port, protocol, realm, authenticationMethod)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLProtectionSpaceClass) Alloc() URLProtectionSpace {

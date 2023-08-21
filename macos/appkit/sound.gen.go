@@ -62,8 +62,10 @@ func (s_ Sound) InitWithPasteboard(pasteboard IPasteboard) Sound {
 // Initializes the receiver with data from a pasteboard. The pasteboard should contain a type returned by NSSound. NSSound expects the data to have a proper magic number, sound header, and data for the formats it supports. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477294-initwithpasteboard?language=objc
-func Sound_InitWithPasteboard(pasteboard IPasteboard) Sound {
-	return SoundClass.Alloc().InitWithPasteboard(pasteboard)
+func NewSoundWithPasteboard(pasteboard IPasteboard) Sound {
+	instance := SoundClass.Alloc().InitWithPasteboard(pasteboard)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ Sound) InitWithContentsOfFileByReference(path string, byRef bool) Sound {
@@ -74,8 +76,10 @@ func (s_ Sound) InitWithContentsOfFileByReference(path string, byRef bool) Sound
 // Initializes the receiver with the audio data located at a given filepath. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477274-initwithcontentsoffile?language=objc
-func Sound_InitWithContentsOfFileByReference(path string, byRef bool) Sound {
-	return SoundClass.Alloc().InitWithContentsOfFileByReference(path, byRef)
+func NewSoundWithContentsOfFileByReference(path string, byRef bool) Sound {
+	instance := SoundClass.Alloc().InitWithContentsOfFileByReference(path, byRef)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ Sound) InitWithData(data []byte) Sound {
@@ -86,8 +90,10 @@ func (s_ Sound) InitWithData(data []byte) Sound {
 // Initializes the receiver with a given audio data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477292-initwithdata?language=objc
-func Sound_InitWithData(data []byte) Sound {
-	return SoundClass.Alloc().InitWithData(data)
+func NewSoundWithData(data []byte) Sound {
+	instance := SoundClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ Sound) InitWithContentsOfURLByReference(url foundation.IURL, byRef bool) Sound {
@@ -98,8 +104,10 @@ func (s_ Sound) InitWithContentsOfURLByReference(url foundation.IURL, byRef bool
 // Initializes the receiver with the audio data located at a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477288-initwithcontentsofurl?language=objc
-func Sound_InitWithContentsOfURLByReference(url foundation.IURL, byRef bool) Sound {
-	return SoundClass.Alloc().InitWithContentsOfURLByReference(url, byRef)
+func NewSoundWithContentsOfURLByReference(url foundation.IURL, byRef bool) Sound {
+	instance := SoundClass.Alloc().InitWithContentsOfURLByReference(url, byRef)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SoundClass) Alloc() Sound {
