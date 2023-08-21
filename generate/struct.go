@@ -4,11 +4,11 @@ import (
 	"log"
 
 	"github.com/progrium/darwinkit/generate/codegen"
+	"github.com/progrium/darwinkit/generate/modules"
 	"github.com/progrium/darwinkit/generate/typing"
 )
 
 func (db *Generator) ToStruct(fw string, sym Symbol) *codegen.Struct {
-	// these structs have known declparse failures
 	knownIssues := map[string]bool{}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
@@ -22,7 +22,7 @@ func (db *Generator) ToStruct(fw string, sym Symbol) *codegen.Struct {
 	}
 	s := &codegen.Struct{
 		Name:        sym.Name,
-		GoName:      sym.Name,
+		GoName:      modules.TrimPrefix(sym.Name),
 		Description: sym.Description,
 		DocURL:      sym.DocURL(),
 		Type:        styp,

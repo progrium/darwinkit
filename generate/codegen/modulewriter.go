@@ -136,7 +136,7 @@ func (m *ModuleWriter) WriteStructs() {
 
 		// if Ref type, allias to unsafe.Pointer
 		if strings.HasSuffix(s.Name, "Ref") {
-			cw.WriteLineF("type %s = unsafe.Pointer", s.GoName)
+			cw.WriteLineF("type %s unsafe.Pointer", s.GoName)
 			continue
 		}
 	}
@@ -180,7 +180,7 @@ func (m *ModuleWriter) WriteFunctions() {
 			cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", fa.Description))
 			cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", fa.DocURL))
 		}
-		cw.WriteLineF("func %s(%s) %s {}", fa.Type.GoName(&m.Module, true), fa.GoArgs(&m.Module), fa.GoReturn(&m.Module))
+		cw.WriteLineF("// func %s(%s) %s {}", fa.Type.GoName(&m.Module, true), fa.GoArgs(&m.Module), fa.GoReturn(&m.Module))
 	}
 }
 

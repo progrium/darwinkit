@@ -144,9 +144,6 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 			}
 			mw.Functions = append(mw.Functions, fn)
 		case "Struct":
-			if s.Name != "CGImageRef" {
-				continue
-			}
 			fn := db.ToStruct(framework, s)
 			if fn == nil {
 				continue
