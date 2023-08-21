@@ -71,9 +71,9 @@ go get github.com/progrium/macdriver@main
 go run main.go
 ```
 
-You just made a macOS program without using XCode or Objective-C. Run `go build` to get an executable. 
+This may take a moment the first time, but once the window pops up you just made a macOS program without using XCode or Objective-C. Run `go build` to get an executable. 
 
-Although currently outside the scope of this project, if you wanted you could put this executable [into an Application bundle](https://stackoverflow.com/a/3251285). You could even add [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements?language=objc), then [sign and notarize](https://developer.apple.com/support/code-signing/) this bundle or executable to let others run it. It could theoretically even be put on the App Store. It could *theoretically* be put on an iOS, tvOS, or watchOS device, though you would have to use different APIs.
+Although currently outside the scope of this project, if you wanted you could put this executable [into an Application bundle](https://stackoverflow.com/a/3251285). You could even add [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements?language=objc), then [sign and notarize](https://developer.apple.com/support/code-signing/) this bundle or executable to let others run it. It could theoretically even be put on the App Store. It could *theoretically* be put on an iOS, tvOS, or watchOS device, though you would have to use different platform specific frameworks.
 
 ### Caveats
 
@@ -82,7 +82,8 @@ Although currently outside the scope of this project, if you wanted you could pu
 * You will be using two memory management systems. Framework objects are managed by [Objective-C memory management](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html#//apple_ref/doc/uid/10000011-SW1), so be sure to read our docs on [memory management](docs/memorymanagement.md) with DarwinKit.
 * Exceptions in frameworks will segfault, giving you both an Objective-C stacktrace and a Go panic stacktrace. You will be debugging a hybrid Go and Objective-C program.
 * Goroutines that interact with GUI objects need to [dispatch](https://pkg.go.dev/github.com/progrium/macdriver@main/dispatch) operations on the main thread otherwise it will segfault.
-* This is all tenable for simple programs, but these are the reasons we don't *recommend* large/complex programs using DarwinKit.
+
+This is all tenable for simple programs, but these are the reasons we don't *recommend* large/complex programs using DarwinKit.
 
 ## Examples
 [macos/_examples/largetype](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/main.go#L1) - A Contacts/Quicksilver-style Large Type utility in under 80 lines:
