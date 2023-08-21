@@ -5,7 +5,6 @@ import (
 
 	"github.com/progrium/darwinkit/generate/codegen"
 	"github.com/progrium/darwinkit/generate/modules"
-	"github.com/progrium/darwinkit/generate/typing"
 )
 
 func (db *Generator) ToStruct(fw string, sym Symbol) *codegen.Struct {
@@ -16,16 +15,12 @@ func (db *Generator) ToStruct(fw string, sym Symbol) *codegen.Struct {
 		return nil
 	}
 	typ := db.TypeFromSymbol(sym)
-	styp, ok := typ.(*typing.StructType)
-	if !ok {
-		return nil
-	}
 	s := &codegen.Struct{
 		Name:        sym.Name,
 		GoName:      modules.TrimPrefix(sym.Name),
 		Description: sym.Description,
 		DocURL:      sym.DocURL(),
-		Type:        styp,
+		Type:        typ,
 	}
 
 	return s

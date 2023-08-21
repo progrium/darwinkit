@@ -6,7 +6,7 @@ import (
 
 // Struct is code generator for objective-c struct
 type Struct struct {
-	Type        *typing.StructType
+	Type        typing.Type
 	Name        string // the first part of objc function name
 	GoName      string
 	Deprecated  bool // if has been deprecated

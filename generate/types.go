@@ -54,7 +54,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		}
 	case "Union":
 		return &typing.RefType{
-			Name: sym.Name,
+			Name:  sym.Name,
+			GName: modules.TrimPrefix(sym.Name),
 		}
 	case "Type":
 		if sym.Type != "Type Alias" {
@@ -66,7 +67,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			// sym.Name == "NSZone" ||
 			sym.Name == "MusicSequence" {
 			return &typing.RefType{
-				Name: sym.Name,
+				Name:  sym.Name,
+				GName: modules.TrimPrefix(sym.Name),
 			}
 		}
 		st, err := sym.Parse(db.Platform)
@@ -76,7 +78,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		}
 		if st.Struct != nil {
 			return &typing.RefType{
-				Name: st.Struct.Name,
+				Name:  st.Struct.Name,
+				GName: modules.TrimPrefix(sym.Name),
 			}
 		}
 		if st.TypeAlias == nil {
@@ -97,7 +100,9 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 	case "Struct":
 		if strings.HasSuffix(sym.Name, "Ref") {
 			return &typing.RefType{
-				Name: sym.Name,
+				Name:   sym.Name,
+				GName:  modules.TrimPrefix(sym.Name),
+				Module: modules.Get(module),
 			}
 		}
 		return &typing.StructType{
@@ -106,7 +111,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Module: modules.Get(module),
 		}
 	case "Function":
-		if sym.Name != "CGDisplayCreateImage" {
+		if sym.Name != "CGDisplayCreateImage" &&
+			sym.Name != "CGMainDisplayID" {
 			return nil
 		}
 		typ, err := sym.Parse(db.Platform)

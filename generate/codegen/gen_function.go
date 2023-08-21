@@ -47,6 +47,7 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 	if f.ReturnType == nil {
 		return ""
 	}
+	log.Printf("rendering GoReturn function return: %s %T", f.ReturnType, f.ReturnType)
 	return f.ReturnType.GoName(currentModule, true)
 }
 
@@ -127,10 +128,26 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	cw.WriteLine("}")
 }
 
+func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWriter) {
+	if f.Deprecated {
+		return
+		cw.WriteLine("// deprecated")
+	}
+	returnTypeStr := f.Type.ReturnType.CName()
+	cw.WriteLineF("%v %v(%v) {", returnTypeStr, f.GoName, f.CArgs(currentModule))
+	cw.Indent()
+	var args []string
+	for _, p := range f.Parameters {
+		args = append(args, p.Name)
+	}
+	cw.WriteLineF("return %v(%v);", f.Type.Name, strings.Join(args, ", "))
+	cw.UnIndent()
+	cw.WriteLine("}")
+}
+
 func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter) {
 	var returnTypeStr string
 	rt := f.Type.ReturnType
-	log.Printf("rt: %T", rt)
 	returnTypeStr = rt.CName()
 	cw.WriteLineF("// %v %v(%v); ", returnTypeStr, f.GoName, f.CArgs(currentModule))
 }

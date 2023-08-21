@@ -144,11 +144,11 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 			}
 			mw.Functions = append(mw.Functions, fn)
 		case "Struct":
-			fn := db.ToStruct(framework, s)
-			if fn == nil {
+			s := db.ToStruct(framework, s)
+			if s == nil {
 				continue
 			}
-			mw.Structs = append(mw.Structs, fn)
+			mw.Structs = append(mw.Structs, s)
 		}
 	}
 	mw.WriteCode()
