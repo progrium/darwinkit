@@ -132,6 +132,10 @@ If you have questions, feel free to ask in the [discussion forums](https://githu
 
 This project was inspired by and originally based on packages written by [Mikkel Krautz](https://github.com/mkrautz). The latest version is based on packages written by [Dong Liu](https://github.com/hsiafan).
 
+## Notice
+
+This project is not affiliated or supported by Apple.
+
 ## License
 
 MIT
