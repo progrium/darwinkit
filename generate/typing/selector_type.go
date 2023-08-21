@@ -27,6 +27,10 @@ func (s *SelectorType) ObjcName() string {
 	return "SEL"
 }
 
+func (s *SelectorType) CName() string {
+	return "SEL"
+}
+
 func (s *SelectorType) DeclareModule() *modules.Module {
 	return modules.Get("objc")
 }

@@ -40,6 +40,10 @@ func (c *PointerType) ObjcName() string {
 	return c.Type.ObjcName() + "*"
 }
 
+func (c *PointerType) CName() string {
+	return c.Type.ObjcName() + "*"
+}
+
 func (c *PointerType) DeclareModule() *modules.Module {
 	return c.Type.DeclareModule()
 }

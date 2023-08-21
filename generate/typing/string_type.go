@@ -27,6 +27,10 @@ func (s *StringType) ObjcName() string {
 	return "NSString*"
 }
 
+func (s *StringType) CName() string {
+	return "NSString*"
+}
+
 func (s *StringType) DeclareModule() *modules.Module {
 	return modules.Get("foundation")
 }

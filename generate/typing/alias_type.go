@@ -36,6 +36,10 @@ func (a *AliasType) ObjcName() string {
 	return a.Name
 }
 
+func (a *AliasType) CName() string {
+	return a.Type.CName()
+}
+
 func (a *AliasType) DeclareModule() *modules.Module {
 	return a.Module
 }

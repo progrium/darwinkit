@@ -23,6 +23,10 @@ func (d *DataType) ObjcName() string {
 	return "NSData*"
 }
 
+func (d *DataType) CName() string {
+	return "NSData*"
+}
+
 func (d *DataType) DeclareModule() *modules.Module {
 	return nil
 }

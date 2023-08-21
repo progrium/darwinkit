@@ -25,6 +25,10 @@ func (s *RefType) ObjcName() string {
 	return s.Name
 }
 
+func (s *RefType) CName() string {
+	return "void *"
+}
+
 func (s *RefType) DeclareModule() *modules.Module {
 	return nil
 }

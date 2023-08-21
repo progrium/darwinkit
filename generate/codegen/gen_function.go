@@ -55,7 +55,8 @@ func (f *Function) CArgs(currentModule *modules.Module) string {
 	// log.Println("rendering function", f.Name)
 	var args []string
 	for _, p := range f.Parameters {
-		args = append(args, fmt.Sprintf("%s %s", p.Type.ObjcName(), p.Name))
+		log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
+		args = append(args, fmt.Sprintf("%s %s", p.Type.CName(), p.Name))
 	}
 	return strings.Join(args, ", ")
 }
@@ -110,45 +111,30 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	cw.WriteLine("func " + funcDeclare + " {")
 	cw.Indent()
 
-	var returnTypeStr string
-	rt := typing.UnwrapAlias(f.ReturnType)
-	switch rt.(type) {
-	case *typing.VoidType:
-		returnTypeStr = "objc.Void"
-	default:
-		returnTypeStr = f.ReturnType.GoName(currentModule, true)
-	}
-	callCode := fmt.Sprintf("objc.Call[%s](%s, objc.Sel(\"%s\")", returnTypeStr, f.Selector())
+	returnTypeStr := f.GoReturn(currentModule)
+
+	callCode := fmt.Sprintf("C.%s(", f.GoName)
 	var sb strings.Builder
 	for idx, p := range f.Parameters {
-		sb.WriteString(", ")
+		// cast to C type
 		switch tt := p.Type.(type) {
-		case *typing.ClassType:
-			sb.WriteString("objc.Ptr(" + p.GoName() + ")")
-		case *typing.ProtocolType:
-			pvar := fmt.Sprintf("po%d", idx)
-			cw.WriteLineF("%s := objc.WrapAsProtocol(\"%s\", %s)", pvar, tt.Name, p.GoName())
-			sb.WriteString(pvar)
-		case *typing.PointerType:
-			switch tt.Type.(type) {
-			case *typing.ClassType: //object pointer convert to unsafe.Pointer, avoiding ffi treat it as PointerHolder
-				sb.WriteString(fmt.Sprintf("unsafe.Pointer(%s)", p.GoName()))
-			default:
-				sb.WriteString(p.GoName())
-			}
+		case *typing.AliasType:
+			sb.WriteString(fmt.Sprintf("C.%s(%s)", tt.CName(), p.GoName()))
 		default:
 			sb.WriteString(p.GoName())
+		}
+		if idx < len(f.Parameters)-1 {
+			sb.WriteString(", ")
 		}
 	}
 	callCode += sb.String() + ")"
 
-	switch rt.(type) {
-	case *typing.VoidType:
+	if returnTypeStr == "" {
 		cw.WriteLine(callCode)
-	default:
+	} else {
 		var resultName = "rv"
 		cw.WriteLine(resultName + " := " + callCode)
-		cw.WriteLine("return " + resultName)
+		cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
 	}
 	cw.UnIndent()
 	cw.WriteLine("}")
@@ -156,13 +142,9 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 
 func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter) {
 	var returnTypeStr string
-	rt := typing.UnwrapAlias(f.ReturnType)
-	switch rt.(type) {
-	case *typing.VoidType:
-		returnTypeStr = "void *"
-	default:
-		returnTypeStr = f.ReturnType.ObjcName()
-	}
+	rt := f.Type.ReturnType
+	log.Printf("rt: %T", rt)
+	returnTypeStr = rt.CName()
 	cw.WriteLineF("// %v %v(%v); ", returnTypeStr, f.GoName, f.CArgs(currentModule))
 }
 

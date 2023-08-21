@@ -79,6 +79,10 @@ func (p *PrimitiveType) ObjcName() string {
 	return p.ObjcName_
 }
 
+func (p *PrimitiveType) CName() string {
+	return p.ObjcName_
+}
+
 func (p *PrimitiveType) DeclareModule() *modules.Module {
 	return nil
 }

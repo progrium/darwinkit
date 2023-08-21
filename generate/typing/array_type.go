@@ -26,6 +26,10 @@ func (a *ArrayType) ObjcName() string {
 	return "NSArray*"
 }
 
+func (a *ArrayType) CName() string {
+	return "NSArray*"
+}
+
 func (a *ArrayType) DeclareModule() *modules.Module {
 	return a.Type.DeclareModule()
 }

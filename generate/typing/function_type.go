@@ -44,6 +44,10 @@ func (c *FunctionType) ObjcName() string {
 	return c.Name + "*"
 }
 
+func (c *FunctionType) CName() string {
+	return c.Name + "*"
+}
+
 func (c *FunctionType) DeclareModule() *modules.Module {
 	return c.Module
 }

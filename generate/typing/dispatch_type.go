@@ -45,6 +45,10 @@ func (d *DispatchType) ObjcName() string {
 	return d.ObjcName_
 }
 
+func (d *DispatchType) CName() string {
+	return d.ObjcName_
+}
+
 func (d *DispatchType) DeclareModule() *modules.Module {
 	return modules.Get("dispatch")
 }

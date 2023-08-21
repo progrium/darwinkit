@@ -95,6 +95,11 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Type:   typ,
 		}
 	case "Struct":
+		if strings.HasSuffix(sym.Name, "Ref") {
+			return &typing.RefType{
+				Name: sym.Name,
+			}
+		}
 		return &typing.StructType{
 			Name:   sym.Name,
 			GName:  modules.TrimPrefix(sym.Name),

@@ -13,6 +13,9 @@ type Type interface {
 	// ObjcName Objective-c type name
 	ObjcName() string
 
+	// CName C type name
+	CName() string
+
 	// GoImports go imports for this type
 	GoImports() set.Set[string]
 
