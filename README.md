@@ -21,6 +21,7 @@ package main
 import (
 	"runtime"
 
+	"github.com/progrium/macdriver/objc"
 	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
