@@ -231,7 +231,11 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 				w.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", m.DocURL))
 			}
 			funcDeclare := im.GoFuncDeclare(c.Type.Module, c.Type.GoStructName())
-			w.WriteLine(fmt.Sprintf("func %s_%s {", c.Type.GName, funcDeclare))
+			if strings.HasPrefix(funcDeclare, "Init") {
+				w.WriteLine(fmt.Sprintf("func New%s%s {", c.Type.GName, strings.TrimPrefix(funcDeclare, "Init")))
+			} else {
+				w.WriteLine(fmt.Sprintf("func %s_%s {", c.Type.GName, funcDeclare))
+			}
 			w.Indent()
 			var params []string
 			for _, p := range m.Params {
@@ -240,15 +244,20 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			if m.Variadic {
 				params = append(params, "args...")
 			}
-			alloc := ".Alloc()"
 			if im.ClassMethod {
-				alloc = ""
+				w.WriteLine(fmt.Sprintf("return %sClass.%s(%s)",
+					c.Type.GName,
+					m.GoFuncName(),
+					strings.Join(params, ", ")))
+			} else {
+				w.WriteLine(fmt.Sprintf("instance := %sClass.Alloc().%s(%s)",
+					c.Type.GName,
+					m.GoFuncName(),
+					strings.Join(params, ", ")))
+				w.WriteLine("instance.Autorelease()")
+				w.WriteLine("return instance")
 			}
-			w.WriteLine(fmt.Sprintf("return %sClass%s.%s(%s)",
-				c.Type.GName,
-				alloc,
-				m.GoFuncName(),
-				strings.Join(params, ", ")))
+
 			w.UnIndent()
 			w.WriteLine("}")
 		}
