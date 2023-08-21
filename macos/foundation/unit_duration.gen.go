@@ -77,8 +77,10 @@ func (u_ UnitDuration) InitWithSymbolConverter(symbol string, converter IUnitCon
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitDuration_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitDuration {
-	return UnitDurationClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitDurationWithSymbolConverter(symbol string, converter IUnitConverter) UnitDuration {
+	instance := UnitDurationClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitDuration) InitWithSymbol(symbol string) UnitDuration {
@@ -89,8 +91,10 @@ func (u_ UnitDuration) InitWithSymbol(symbol string) UnitDuration {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitDuration_InitWithSymbol(symbol string) UnitDuration {
-	return UnitDurationClass.Alloc().InitWithSymbol(symbol)
+func NewUnitDurationWithSymbol(symbol string) UnitDuration {
+	instance := UnitDurationClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The second unit of duration. [Full Topic]

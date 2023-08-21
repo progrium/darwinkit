@@ -100,8 +100,10 @@ func (l_ LevelIndicator) InitWithFrame(frameRect foundation.Rect) LevelIndicator
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func LevelIndicator_InitWithFrame(frameRect foundation.Rect) LevelIndicator {
-	return LevelIndicatorClass.Alloc().InitWithFrame(frameRect)
+func NewLevelIndicatorWithFrame(frameRect foundation.Rect) LevelIndicator {
+	instance := LevelIndicatorClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the bounding rectangle of the tick mark identified by the specified index (the minimum-value tick mark is at index 0). [Full Topic]

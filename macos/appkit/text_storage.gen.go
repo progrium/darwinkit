@@ -95,8 +95,10 @@ func (t_ TextStorage) InitWithHTMLOptionsDocumentAttributes(data []byte, options
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc
-func TextStorage_InitWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	return TextStorageClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
+func NewTextStorageWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextStorageClass) LocalizedAttributedStringWithFormat(format foundation.IAttributedString, args ...any) TextStorage {
@@ -119,8 +121,10 @@ func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedStr
 // Creates an attributed string with the characters and attributes of the specified attributed string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1415342-initwithattributedstring?language=objc
-func TextStorage_InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
-	return TextStorageClass.Alloc().InitWithAttributedString(attrStr)
+func NewTextStorageWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithAttributedString(attrStr)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
@@ -131,8 +135,10 @@ func (t_ TextStorage) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(mar
 // Creates an attributed string from the contents of a specified URL that contains Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746872-initwithcontentsofmarkdownfileat?language=objc
-func TextStorage_InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	return TextStorageClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
+func NewTextStorageWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
@@ -143,8 +149,10 @@ func (t_ TextStorage) InitWithFormatOptionsLocale(format foundation.IAttributedS
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746873-initwithformat?language=objc
-func TextStorage_InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
-	return TextStorageClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
+func NewTextStorageWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithFormatOptionsLocale(format, options, locale, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
@@ -155,8 +163,10 @@ func (t_ TextStorage) InitWithDataOptionsDocumentAttributesError(data []byte, op
 // Creates an attributed string from the data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc
-func TextStorage_InitWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
-	return TextStorageClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
+func NewTextStorageWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithString(str string) TextStorage {
@@ -167,8 +177,10 @@ func (t_ TextStorage) InitWithString(str string) TextStorage {
 // Creates an attributed string with the characters of the specified string and no attribute information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1407481-initwithstring?language=objc
-func TextStorage_InitWithString(str string) TextStorage {
-	return TextStorageClass.Alloc().InitWithString(str)
+func NewTextStorageWithString(str string) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithString(str)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
@@ -179,8 +191,10 @@ func (t_ TextStorage) InitWithMarkdownStringOptionsBaseURLError(markdownString s
 // Creates an attributed string from a Markdown-formatted string using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746876-initwithmarkdownstring?language=objc
-func TextStorage_InitWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	return TextStorageClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
+func NewTextStorageWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
@@ -191,8 +205,10 @@ func (t_ TextStorage) InitWithMarkdownOptionsBaseURLError(markdown []byte, optio
 // Creates an attributed string from Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746875-initwithmarkdown?language=objc
-func TextStorage_InitWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	return TextStorageClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
+func NewTextStorageWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithDocFormatDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
@@ -203,8 +219,10 @@ func (t_ TextStorage) InitWithDocFormatDocumentAttributes(data []byte, dict map[
 // Creates an attributed string from Microsoft Word format data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc
-func TextStorage_InitWithDocFormatDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	return TextStorageClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
+func NewTextStorageWithDocFormatDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithRTFDDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
@@ -215,8 +233,10 @@ func (t_ TextStorage) InitWithRTFDDocumentAttributes(data []byte, dict map[Attri
 // Creates an attributed string by decoding the stream of RTFD commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc
-func TextStorage_InitWithRTFDDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	return TextStorageClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
+func NewTextStorageWithRTFDDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithRTFDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
@@ -227,8 +247,10 @@ func (t_ TextStorage) InitWithRTFDocumentAttributes(data []byte, dict map[Attrib
 // Creates an attributed string by decoding the stream of RTF commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc
-func TextStorage_InitWithRTFDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	return TextStorageClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
+func NewTextStorageWithRTFDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextStorage) InitWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
@@ -239,8 +261,10 @@ func (t_ TextStorage) InitWithRTFDFileWrapperDocumentAttributes(wrapper foundati
 // Creates an attributed string from the specified file wrapper that contains an RTFD document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1533594-initwithrtfdfilewrapper?language=objc
-func TextStorage_InitWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	return TextStorageClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
+func NewTextStorageWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+	instance := TextStorageClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
+	instance.Autorelease()
+	return instance
 }
 
 // Ensures that attribute fixing occurs in the specified range. [Full Topic]

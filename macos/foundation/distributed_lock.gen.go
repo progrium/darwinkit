@@ -45,8 +45,10 @@ func (d_ DistributedLock) InitWithPath(path string) DistributedLock {
 // Initializes an NSDistributedLock object to use as the lock the file-system entry specified by a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdistributedlock/1410387-initwithpath?language=objc
-func DistributedLock_InitWithPath(path string) DistributedLock {
-	return DistributedLockClass.Alloc().InitWithPath(path)
+func NewDistributedLockWithPath(path string) DistributedLock {
+	instance := DistributedLockClass.Alloc().InitWithPath(path)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DistributedLockClass) Alloc() DistributedLock {

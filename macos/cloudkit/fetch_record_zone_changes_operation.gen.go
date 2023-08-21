@@ -58,8 +58,10 @@ func (f_ FetchRecordZoneChangesOperation) InitWithRecordZoneIDsConfigurationsByR
 // Creates an operation for fetching record zone changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesoperation/2980665-initwithrecordzoneids?language=objc
-func FetchRecordZoneChangesOperation_InitWithRecordZoneIDsConfigurationsByRecordZoneID(recordZoneIDs []IRecordZoneID, configurationsByRecordZoneID foundation.Dictionary) FetchRecordZoneChangesOperation {
-	return FetchRecordZoneChangesOperationClass.Alloc().InitWithRecordZoneIDsConfigurationsByRecordZoneID(recordZoneIDs, configurationsByRecordZoneID)
+func NewFetchRecordZoneChangesOperationWithRecordZoneIDsConfigurationsByRecordZoneID(recordZoneIDs []IRecordZoneID, configurationsByRecordZoneID foundation.Dictionary) FetchRecordZoneChangesOperation {
+	instance := FetchRecordZoneChangesOperationClass.Alloc().InitWithRecordZoneIDsConfigurationsByRecordZoneID(recordZoneIDs, configurationsByRecordZoneID)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchRecordZoneChangesOperation) Init() FetchRecordZoneChangesOperation {

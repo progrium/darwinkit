@@ -48,8 +48,10 @@ func (u_ URLAuthenticationChallenge) InitWithProtectionSpaceProposedCredentialPr
 // Initializes an authentication challenge from parameters you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1416511-initwithprotectionspace?language=objc
-func URLAuthenticationChallenge_InitWithProtectionSpaceProposedCredentialPreviousFailureCountFailureResponseErrorSender(space IURLProtectionSpace, credential IURLCredential, previousFailureCount int, response IURLResponse, error IError, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
-	return URLAuthenticationChallengeClass.Alloc().InitWithProtectionSpaceProposedCredentialPreviousFailureCountFailureResponseErrorSender(space, credential, previousFailureCount, response, error, sender)
+func NewURLAuthenticationChallengeWithProtectionSpaceProposedCredentialPreviousFailureCountFailureResponseErrorSender(space IURLProtectionSpace, credential IURLCredential, previousFailureCount int, response IURLResponse, error IError, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
+	instance := URLAuthenticationChallengeClass.Alloc().InitWithProtectionSpaceProposedCredentialPreviousFailureCountFailureResponseErrorSender(space, credential, previousFailureCount, response, error, sender)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLAuthenticationChallenge) InitWithAuthenticationChallengeSender(challenge IURLAuthenticationChallenge, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
@@ -61,8 +63,10 @@ func (u_ URLAuthenticationChallenge) InitWithAuthenticationChallengeSender(chall
 // Creates an authentication challenge from an existing challenge instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallenge/1411154-initwithauthenticationchallenge?language=objc
-func URLAuthenticationChallenge_InitWithAuthenticationChallengeSender(challenge IURLAuthenticationChallenge, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
-	return URLAuthenticationChallengeClass.Alloc().InitWithAuthenticationChallengeSender(challenge, sender)
+func NewURLAuthenticationChallengeWithAuthenticationChallengeSender(challenge IURLAuthenticationChallenge, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
+	instance := URLAuthenticationChallengeClass.Alloc().InitWithAuthenticationChallengeSender(challenge, sender)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLAuthenticationChallengeClass) Alloc() URLAuthenticationChallenge {

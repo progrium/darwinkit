@@ -43,8 +43,10 @@ func (o_ OutputStream) InitWithURLAppend(url IURL, shouldAppend bool) OutputStre
 // Returns an initialized output stream for writing to a specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1414446-initwithurl?language=objc
-func OutputStream_InitWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	return OutputStreamClass.Alloc().InitWithURLAppend(url, shouldAppend)
+func NewOutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
+	instance := OutputStreamClass.Alloc().InitWithURLAppend(url, shouldAppend)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OutputStream) InitToBufferCapacity(buffer *uint8, capacity uint) OutputStream {
@@ -55,8 +57,10 @@ func (o_ OutputStream) InitToBufferCapacity(buffer *uint8, capacity uint) Output
 // Returns an initialized output stream that can write to a provided buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1410805-inittobuffer?language=objc
-func OutputStream_InitToBufferCapacity(buffer *uint8, capacity uint) OutputStream {
-	return OutputStreamClass.Alloc().InitToBufferCapacity(buffer, capacity)
+func NewOutputStreamToBufferCapacity(buffer *uint8, capacity uint) OutputStream {
+	instance := OutputStreamClass.Alloc().InitToBufferCapacity(buffer, capacity)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OutputStreamClass) OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
@@ -91,8 +95,10 @@ func (o_ OutputStream) InitToFileAtPathAppend(path string, shouldAppend bool) Ou
 // Returns an initialized output stream for writing to a specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1416367-inittofileatpath?language=objc
-func OutputStream_InitToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
-	return OutputStreamClass.Alloc().InitToFileAtPathAppend(path, shouldAppend)
+func NewOutputStreamToFileAtPathAppend(path string, shouldAppend bool) OutputStream {
+	instance := OutputStreamClass.Alloc().InitToFileAtPathAppend(path, shouldAppend)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
@@ -127,8 +133,10 @@ func (o_ OutputStream) InitToMemory() OutputStream {
 // Returns an initialized output stream that will write to memory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoutputstream/1409909-inittomemory?language=objc
-func OutputStream_InitToMemory() OutputStream {
-	return OutputStreamClass.Alloc().InitToMemory()
+func NewOutputStreamToMemory() OutputStream {
+	instance := OutputStreamClass.Alloc().InitToMemory()
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OutputStreamClass) Alloc() OutputStream {

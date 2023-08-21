@@ -77,8 +77,10 @@ func (t_ TableCellView) InitWithFrame(frameRect foundation.Rect) TableCellView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func TableCellView_InitWithFrame(frameRect foundation.Rect) TableCellView {
-	return TableCellViewClass.Alloc().InitWithFrame(frameRect)
+func NewTableCellViewWithFrame(frameRect foundation.Rect) TableCellView {
+	instance := TableCellViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // This property is automatically set by the enclosing row view to let this view know what its background looks like. [Full Topic]

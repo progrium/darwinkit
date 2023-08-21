@@ -77,8 +77,10 @@ func (o_ OpenGLLayer) InitWithLayer(layer objc.IObject) OpenGLLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func OpenGLLayer_InitWithLayer(layer objc.IObject) OpenGLLayer {
-	return OpenGLLayerClass.Alloc().InitWithLayer(layer)
+func NewOpenGLLayerWithLayer(layer objc.IObject) OpenGLLayer {
+	instance := OpenGLLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OpenGLLayer) ModelLayer() OpenGLLayer {
@@ -90,7 +92,9 @@ func (o_ OpenGLLayer) ModelLayer() OpenGLLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func OpenGLLayer_ModelLayer() OpenGLLayer {
-	return OpenGLLayerClass.Alloc().ModelLayer()
+	instance := OpenGLLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OpenGLLayer) PresentationLayer() OpenGLLayer {
@@ -102,5 +106,7 @@ func (o_ OpenGLLayer) PresentationLayer() OpenGLLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func OpenGLLayer_PresentationLayer() OpenGLLayer {
-	return OpenGLLayerClass.Alloc().PresentationLayer()
+	instance := OpenGLLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }

@@ -43,8 +43,10 @@ func (r_ Reference) InitWithRecordIDAction(recordID IRecordID, action ReferenceA
 // Creates a reference object that points to the record with the specified ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckreference/1515280-initwithrecordid?language=objc
-func Reference_InitWithRecordIDAction(recordID IRecordID, action ReferenceAction) Reference {
-	return ReferenceClass.Alloc().InitWithRecordIDAction(recordID, action)
+func NewReferenceWithRecordIDAction(recordID IRecordID, action ReferenceAction) Reference {
+	instance := ReferenceClass.Alloc().InitWithRecordIDAction(recordID, action)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ Reference) InitWithRecordAction(record IRecord, action ReferenceAction) Reference {
@@ -55,8 +57,10 @@ func (r_ Reference) InitWithRecordAction(record IRecord, action ReferenceAction)
 // Creates a reference object that points to the specified record object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckreference/1515312-initwithrecord?language=objc
-func Reference_InitWithRecordAction(record IRecord, action ReferenceAction) Reference {
-	return ReferenceClass.Alloc().InitWithRecordAction(record, action)
+func NewReferenceWithRecordAction(record IRecord, action ReferenceAction) Reference {
+	instance := ReferenceClass.Alloc().InitWithRecordAction(record, action)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _ReferenceClass) Alloc() Reference {

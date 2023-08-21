@@ -175,8 +175,10 @@ func (b_ Browser) InitWithFrame(frameRect foundation.Rect) Browser {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Browser_InitWithFrame(frameRect foundation.Rect) Browser {
-	return BrowserClass.Alloc().InitWithFrame(frameRect)
+func NewBrowserWithFrame(frameRect foundation.Rect) Browser {
+	instance := BrowserClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Sends the action message to the target. [Full Topic]

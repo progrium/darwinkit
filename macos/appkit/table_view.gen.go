@@ -178,8 +178,10 @@ func (t_ TableView) InitWithFrame(frameRect foundation.Rect) TableView {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1525511-initwithframe?language=objc
-func TableView_InitWithFrame(frameRect foundation.Rect) TableView {
-	return TableViewClass.Alloc().InitWithFrame(frameRect)
+func NewTableViewWithFrame(frameRect foundation.Rect) TableView {
+	instance := TableViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TableViewClass) Alloc() TableView {

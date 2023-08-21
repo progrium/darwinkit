@@ -60,8 +60,10 @@ func (m_ MigrationManager) InitWithSourceModelDestinationModel(sourceModel IMana
 // Initializes a migration manager instance with given source and destination models. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417583-initwithsourcemodel?language=objc
-func MigrationManager_InitWithSourceModelDestinationModel(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel) MigrationManager {
-	return MigrationManagerClass.Alloc().InitWithSourceModelDestinationModel(sourceModel, destinationModel)
+func NewMigrationManagerWithSourceModelDestinationModel(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel) MigrationManager {
+	instance := MigrationManagerClass.Alloc().InitWithSourceModelDestinationModel(sourceModel, destinationModel)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MigrationManagerClass) Alloc() MigrationManager {

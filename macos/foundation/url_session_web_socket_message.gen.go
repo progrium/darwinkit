@@ -44,8 +44,10 @@ func (u_ URLSessionWebSocketMessage) InitWithData(data []byte) URLSessionWebSock
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181192-initwithdata?language=objc
-func URLSessionWebSocketMessage_InitWithData(data []byte) URLSessionWebSocketMessage {
-	return URLSessionWebSocketMessageClass.Alloc().InitWithData(data)
+func NewURLSessionWebSocketMessageWithData(data []byte) URLSessionWebSocketMessage {
+	instance := URLSessionWebSocketMessageClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLSessionWebSocketMessage) InitWithString(string_ string) URLSessionWebSocketMessage {
@@ -56,8 +58,10 @@ func (u_ URLSessionWebSocketMessage) InitWithString(string_ string) URLSessionWe
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketmessage/3181193-initwithstring?language=objc
-func URLSessionWebSocketMessage_InitWithString(string_ string) URLSessionWebSocketMessage {
-	return URLSessionWebSocketMessageClass.Alloc().InitWithString(string_)
+func NewURLSessionWebSocketMessageWithString(string_ string) URLSessionWebSocketMessage {
+	instance := URLSessionWebSocketMessageClass.Alloc().InitWithString(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLSessionWebSocketMessageClass) Alloc() URLSessionWebSocketMessage {

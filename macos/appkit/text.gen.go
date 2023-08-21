@@ -111,8 +111,10 @@ func (t_ Text) InitWithFrame(frameRect foundation.Rect) Text {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1525191-initwithframe?language=objc
-func Text_InitWithFrame(frameRect foundation.Rect) Text {
-	return TextClass.Alloc().InitWithFrame(frameRect)
+func NewTextWithFrame(frameRect foundation.Rect) Text {
+	instance := TextClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextClass) Alloc() Text {

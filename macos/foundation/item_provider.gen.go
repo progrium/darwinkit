@@ -68,8 +68,10 @@ func (i_ ItemProvider) InitWithObject(object PItemProviderWriting) ItemProvider 
 // Creates a new item provider, employing a specified object’s type identifiers to specify the data representations eligible for the provider to load. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/2888328-initwithobject?language=objc
-func ItemProvider_InitWithObject(object PItemProviderWriting) ItemProvider {
-	return ItemProviderClass.Alloc().InitWithObject(object)
+func NewItemProviderWithObject(object PItemProviderWriting) ItemProvider {
+	instance := ItemProviderClass.Alloc().InitWithObject(object)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ ItemProvider) InitWithContentsOfURL(fileURL IURL) ItemProvider {
@@ -80,8 +82,10 @@ func (i_ ItemProvider) InitWithContentsOfURL(fileURL IURL) ItemProvider {
 // Provides data-backed content from an existing file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/1403911-initwithcontentsofurl?language=objc
-func ItemProvider_InitWithContentsOfURL(fileURL IURL) ItemProvider {
-	return ItemProviderClass.Alloc().InitWithContentsOfURL(fileURL)
+func NewItemProviderWithContentsOfURL(fileURL IURL) ItemProvider {
+	instance := ItemProviderClass.Alloc().InitWithContentsOfURL(fileURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ ItemProvider) InitWithItemTypeIdentifier(item objc.IObject, typeIdentifier string) ItemProvider {
@@ -92,8 +96,10 @@ func (i_ ItemProvider) InitWithItemTypeIdentifier(item objc.IObject, typeIdentif
 // Creates an item provider with an object, according to the item provider type coercion policy. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/1403933-initwithitem?language=objc
-func ItemProvider_InitWithItemTypeIdentifier(item objc.IObject, typeIdentifier string) ItemProvider {
-	return ItemProviderClass.Alloc().InitWithItemTypeIdentifier(item, typeIdentifier)
+func NewItemProviderWithItemTypeIdentifier(item objc.IObject, typeIdentifier string) ItemProvider {
+	instance := ItemProviderClass.Alloc().InitWithItemTypeIdentifier(item, typeIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ ItemProvider) Init() ItemProvider {

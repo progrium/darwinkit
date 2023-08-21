@@ -114,6 +114,8 @@ func (s_ SecureTextField) InitWithFrame(frameRect foundation.Rect) SecureTextFie
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func SecureTextField_InitWithFrame(frameRect foundation.Rect) SecureTextField {
-	return SecureTextFieldClass.Alloc().InitWithFrame(frameRect)
+func NewSecureTextFieldWithFrame(frameRect foundation.Rect) SecureTextField {
+	instance := SecureTextFieldClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }

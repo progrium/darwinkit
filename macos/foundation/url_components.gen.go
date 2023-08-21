@@ -106,8 +106,10 @@ func (u_ URLComponents) InitWithURLResolvingAgainstBaseURL(url IURL, resolve boo
 // Initializes a URL components object by parsing the URL from an NSURL object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcomponents/1416476-initwithurl?language=objc
-func URLComponents_InitWithURLResolvingAgainstBaseURL(url IURL, resolve bool) URLComponents {
-	return URLComponentsClass.Alloc().InitWithURLResolvingAgainstBaseURL(url, resolve)
+func NewURLComponentsWithURLResolvingAgainstBaseURL(url IURL, resolve bool) URLComponents {
+	instance := URLComponentsClass.Alloc().InitWithURLResolvingAgainstBaseURL(url, resolve)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLComponents) InitWithString(URLString string) URLComponents {
@@ -118,8 +120,10 @@ func (u_ URLComponents) InitWithString(URLString string) URLComponents {
 // Initializes a URL components object by parsing a URL in string form. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcomponents/1410784-initwithstring?language=objc
-func URLComponents_InitWithString(URLString string) URLComponents {
-	return URLComponentsClass.Alloc().InitWithString(URLString)
+func NewURLComponentsWithString(URLString string) URLComponents {
+	instance := URLComponentsClass.Alloc().InitWithString(URLString)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ URLComponents) Init() URLComponents {

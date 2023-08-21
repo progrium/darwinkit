@@ -46,8 +46,10 @@ func (s_ SocketPort) InitWithProtocolFamilySocketTypeProtocolSocket(family int, 
 // Initializes the receiver with a previously created local socket. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399484-initwithprotocolfamily?language=objc
-func SocketPort_InitWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
-	return SocketPortClass.Alloc().InitWithProtocolFamilySocketTypeProtocolSocket(family, type_, protocol, sock)
+func NewSocketPortWithProtocolFamilySocketTypeProtocolSocket(family int, type_ int, protocol int, sock SocketNativeHandle) SocketPort {
+	instance := SocketPortClass.Alloc().InitWithProtocolFamilySocketTypeProtocolSocket(family, type_, protocol, sock)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SocketPort) InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
@@ -58,8 +60,10 @@ func (s_ SocketPort) InitRemoteWithProtocolFamilySocketTypeProtocolAddress(famil
 // Initializes the receiver as a remote socket with the provided arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399535-initremotewithprotocolfamily?language=objc
-func SocketPort_InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
-	return SocketPortClass.Alloc().InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family, type_, protocol, address)
+func NewSocketPortRemoteWithProtocolFamilySocketTypeProtocolAddress(family int, type_ int, protocol int, address []byte) SocketPort {
+	instance := SocketPortClass.Alloc().InitRemoteWithProtocolFamilySocketTypeProtocolAddress(family, type_, protocol, address)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SocketPort) InitWithTCPPort(port int) SocketPort {
@@ -70,8 +74,10 @@ func (s_ SocketPort) InitWithTCPPort(port int) SocketPort {
 // Initializes the receiver as a local TCP/IP socket of type SOCK_STREAM, listening on a specified port number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399488-initwithtcpport?language=objc
-func SocketPort_InitWithTCPPort(port int) SocketPort {
-	return SocketPortClass.Alloc().InitWithTCPPort(port)
+func NewSocketPortWithTCPPort(port int) SocketPort {
+	instance := SocketPortClass.Alloc().InitWithTCPPort(port)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SocketPort) Init() SocketPort {
@@ -87,8 +93,10 @@ func (s_ SocketPort) InitRemoteWithTCPPortHost(port int, hostName string) Socket
 // Initializes the receiver as a TCP/IP socket of type SOCK_STREAM that can connect to a remote host on a specified port. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nssocketport/1399474-initremotewithtcpport?language=objc
-func SocketPort_InitRemoteWithTCPPortHost(port int, hostName string) SocketPort {
-	return SocketPortClass.Alloc().InitRemoteWithTCPPortHost(port, hostName)
+func NewSocketPortRemoteWithTCPPortHost(port int, hostName string) SocketPort {
+	instance := SocketPortClass.Alloc().InitRemoteWithTCPPortHost(port, hostName)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SocketPortClass) Alloc() SocketPort {

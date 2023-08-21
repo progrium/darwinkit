@@ -67,8 +67,10 @@ func (w_ WindowController) InitWithWindow(window IWindow) WindowController {
 // Returns a window controller initialized with a given window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcontroller/1533442-initwithwindow?language=objc
-func WindowController_InitWithWindow(window IWindow) WindowController {
-	return WindowControllerClass.Alloc().InitWithWindow(window)
+func NewWindowControllerWithWindow(window IWindow) WindowController {
+	instance := WindowControllerClass.Alloc().InitWithWindow(window)
+	instance.Autorelease()
+	return instance
 }
 
 func (w_ WindowController) InitWithWindowNibPathOwner(windowNibPath string, owner objc.IObject) WindowController {
@@ -79,8 +81,10 @@ func (w_ WindowController) InitWithWindowNibPathOwner(windowNibPath string, owne
 // Returns a window controller initialized with a nib file at an absolute path and a specified owner. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcontroller/1532584-initwithwindownibpath?language=objc
-func WindowController_InitWithWindowNibPathOwner(windowNibPath string, owner objc.IObject) WindowController {
-	return WindowControllerClass.Alloc().InitWithWindowNibPathOwner(windowNibPath, owner)
+func NewWindowControllerWithWindowNibPathOwner(windowNibPath string, owner objc.IObject) WindowController {
+	instance := WindowControllerClass.Alloc().InitWithWindowNibPathOwner(windowNibPath, owner)
+	instance.Autorelease()
+	return instance
 }
 
 func (w_ WindowController) InitWithWindowNibNameOwner(windowNibName NibName, owner objc.IObject) WindowController {
@@ -91,8 +95,10 @@ func (w_ WindowController) InitWithWindowNibNameOwner(windowNibName NibName, own
 // Returns a window controller initialized with a nib file and a specified owner for that nib file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcontroller/1535239-initwithwindownibname?language=objc
-func WindowController_InitWithWindowNibNameOwner(windowNibName NibName, owner objc.IObject) WindowController {
-	return WindowControllerClass.Alloc().InitWithWindowNibNameOwner(windowNibName, owner)
+func NewWindowControllerWithWindowNibNameOwner(windowNibName NibName, owner objc.IObject) WindowController {
+	instance := WindowControllerClass.Alloc().InitWithWindowNibNameOwner(windowNibName, owner)
+	instance.Autorelease()
+	return instance
 }
 
 func (wc _WindowControllerClass) Alloc() WindowController {

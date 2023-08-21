@@ -96,8 +96,10 @@ func (m_ MenuItem) InitWithTitleActionKeyEquivalent(string_ string, selector obj
 // Returns an initialized instance of NSMenuItem. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514858-initwithtitle?language=objc
-func MenuItem_InitWithTitleActionKeyEquivalent(string_ string, selector objc.Selector, charCode string) MenuItem {
-	return MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent(string_, selector, charCode)
+func NewMenuItemWithTitleActionKeyEquivalent(string_ string, selector objc.Selector, charCode string) MenuItem {
+	instance := MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent(string_, selector, charCode)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MenuItemClass) Alloc() MenuItem {

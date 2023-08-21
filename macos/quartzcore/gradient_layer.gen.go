@@ -89,8 +89,10 @@ func (g_ GradientLayer) InitWithLayer(layer objc.IObject) GradientLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func GradientLayer_InitWithLayer(layer objc.IObject) GradientLayer {
-	return GradientLayerClass.Alloc().InitWithLayer(layer)
+func NewGradientLayerWithLayer(layer objc.IObject) GradientLayer {
+	instance := GradientLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (g_ GradientLayer) ModelLayer() GradientLayer {
@@ -102,7 +104,9 @@ func (g_ GradientLayer) ModelLayer() GradientLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func GradientLayer_ModelLayer() GradientLayer {
-	return GradientLayerClass.Alloc().ModelLayer()
+	instance := GradientLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (g_ GradientLayer) PresentationLayer() GradientLayer {
@@ -114,7 +118,9 @@ func (g_ GradientLayer) PresentationLayer() GradientLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func GradientLayer_PresentationLayer() GradientLayer {
-	return GradientLayerClass.Alloc().PresentationLayer()
+	instance := GradientLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // An optional array of NSNumber objects defining the location of each gradient stop. Animatable. [Full Topic]

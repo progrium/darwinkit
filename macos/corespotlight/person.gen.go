@@ -46,8 +46,10 @@ func (p_ Person) InitWithDisplayNameHandlesHandleIdentifier(displayName string, 
 // Returns a new CSPerson object initialized with the specified display name and contact attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/csperson/1618464-initwithdisplayname?language=objc
-func Person_InitWithDisplayNameHandlesHandleIdentifier(displayName string, handles []string, handleIdentifier string) Person {
-	return PersonClass.Alloc().InitWithDisplayNameHandlesHandleIdentifier(displayName, handles, handleIdentifier)
+func NewPersonWithDisplayNameHandlesHandleIdentifier(displayName string, handles []string, handleIdentifier string) Person {
+	instance := PersonClass.Alloc().InitWithDisplayNameHandlesHandleIdentifier(displayName, handles, handleIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersonClass) Alloc() Person {

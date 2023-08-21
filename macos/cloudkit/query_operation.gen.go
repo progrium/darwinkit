@@ -56,8 +56,10 @@ func (q_ QueryOperation) InitWithQuery(query IQuery) QueryOperation {
 // Creates an operation that searches for records in the specified record zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1514958-initwithquery?language=objc
-func QueryOperation_InitWithQuery(query IQuery) QueryOperation {
-	return QueryOperationClass.Alloc().InitWithQuery(query)
+func NewQueryOperationWithQuery(query IQuery) QueryOperation {
+	instance := QueryOperationClass.Alloc().InitWithQuery(query)
+	instance.Autorelease()
+	return instance
 }
 
 func (q_ QueryOperation) InitWithCursor(cursor IQueryCursor) QueryOperation {
@@ -68,8 +70,10 @@ func (q_ QueryOperation) InitWithCursor(cursor IQueryCursor) QueryOperation {
 // Creates an operation with additional results from a previous search. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515033-initwithcursor?language=objc
-func QueryOperation_InitWithCursor(cursor IQueryCursor) QueryOperation {
-	return QueryOperationClass.Alloc().InitWithCursor(cursor)
+func NewQueryOperationWithCursor(cursor IQueryCursor) QueryOperation {
+	instance := QueryOperationClass.Alloc().InitWithCursor(cursor)
+	instance.Autorelease()
+	return instance
 }
 
 func (q_ QueryOperation) Init() QueryOperation {

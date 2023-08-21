@@ -85,8 +85,10 @@ func (t_ TiledLayer) InitWithLayer(layer objc.IObject) TiledLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func TiledLayer_InitWithLayer(layer objc.IObject) TiledLayer {
-	return TiledLayerClass.Alloc().InitWithLayer(layer)
+func NewTiledLayerWithLayer(layer objc.IObject) TiledLayer {
+	instance := TiledLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TiledLayer) ModelLayer() TiledLayer {
@@ -98,7 +100,9 @@ func (t_ TiledLayer) ModelLayer() TiledLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func TiledLayer_ModelLayer() TiledLayer {
-	return TiledLayerClass.Alloc().ModelLayer()
+	instance := TiledLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TiledLayer) PresentationLayer() TiledLayer {
@@ -110,7 +114,9 @@ func (t_ TiledLayer) PresentationLayer() TiledLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func TiledLayer_PresentationLayer() TiledLayer {
-	return TiledLayerClass.Alloc().PresentationLayer()
+	instance := TiledLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // The time, in seconds, that newly added images take to "fade-in" to the rendered representation of the tiled layer. [Full Topic]

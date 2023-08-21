@@ -66,8 +66,10 @@ func (q_ QuitCommand) InitWithCommandDescription(commandDef IScriptCommandDescri
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func QuitCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) QuitCommand {
-	return QuitCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewQuitCommandWithCommandDescription(commandDef IScriptCommandDescription) QuitCommand {
+	instance := QuitCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a constant indicating how to deal with closing any modified documents. [Full Topic]

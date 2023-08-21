@@ -77,8 +77,10 @@ func (u_ UnitEnergy) InitWithSymbolConverter(symbol string, converter IUnitConve
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitEnergy_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitEnergy {
-	return UnitEnergyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitEnergyWithSymbolConverter(symbol string, converter IUnitConverter) UnitEnergy {
+	instance := UnitEnergyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitEnergy) InitWithSymbol(symbol string) UnitEnergy {
@@ -89,8 +91,10 @@ func (u_ UnitEnergy) InitWithSymbol(symbol string) UnitEnergy {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitEnergy_InitWithSymbol(symbol string) UnitEnergy {
-	return UnitEnergyClass.Alloc().InitWithSymbol(symbol)
+func NewUnitEnergyWithSymbol(symbol string) UnitEnergy {
+	instance := UnitEnergyClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The kilowatt hours unit of energy. [Full Topic]

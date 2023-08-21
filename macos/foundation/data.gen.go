@@ -53,8 +53,10 @@ func (d_ Data) InitWithContentsOfFileOptionsError(path string, readOptionsMask D
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func Data_InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
-	return DataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+func NewDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
+	instance := DataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
@@ -66,7 +68,9 @@ func (d_ Data) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgori
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
 func Data_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
-	return DataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance := DataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataClass) DataWithContentsOfURL(url IURL) Data {
@@ -89,8 +93,10 @@ func (d_ Data) InitWithData(data []byte) Data {
 // Initializes a data object with the contents of another data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417055-initwithdata?language=objc
-func Data_InitWithData(data []byte) Data {
-	return DataClass.Alloc().InitWithData(data)
+func NewDataWithData(data []byte) Data {
+	instance := DataClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) Data {
@@ -101,8 +107,10 @@ func (d_ Data) InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, lengt
 // Initializes a newly allocated data object by adding the given number of bytes from the given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1416020-initwithbytesnocopy?language=objc
-func Data_InitWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) Data {
-	return DataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+func NewDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) Data {
+	instance := DataClass.Alloc().InitWithBytesNoCopyLengthFreeWhenDone(bytes, length, b)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataClass) DataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint, b bool) Data {
@@ -161,8 +169,10 @@ func (d_ Data) InitWithBytesLength(bytes unsafe.Pointer, length uint) Data {
 // Initializes a data object filled with a given number of bytes copied from a given buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1412793-initwithbytes?language=objc
-func Data_InitWithBytesLength(bytes unsafe.Pointer, length uint) Data {
-	return DataClass.Alloc().InitWithBytesLength(bytes, length)
+func NewDataWithBytesLength(bytes unsafe.Pointer, length uint) Data {
+	instance := DataClass.Alloc().InitWithBytesLength(bytes, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) InitWithContentsOfURL(url IURL) Data {
@@ -173,8 +183,10 @@ func (d_ Data) InitWithContentsOfURL(url IURL) Data {
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1413892-initwithcontentsofurl?language=objc
-func Data_InitWithContentsOfURL(url IURL) Data {
-	return DataClass.Alloc().InitWithContentsOfURL(url)
+func NewDataWithContentsOfURL(url IURL) Data {
+	instance := DataClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
@@ -186,7 +198,9 @@ func (d_ Data) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
 func Data_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
-	return DataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance := DataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) Data {
@@ -197,8 +211,10 @@ func (d_ Data) InitWithBase64EncodedDataOptions(base64Data []byte, options DataB
 // Initializes a data object with the given Base64 encoded data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1417833-initwithbase64encodeddata?language=objc
-func Data_InitWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) Data {
-	return DataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+func NewDataWithBase64EncodedDataOptions(base64Data []byte, options DataBase64DecodingOptions) Data {
+	instance := DataClass.Alloc().InitWithBase64EncodedDataOptions(base64Data, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Data) InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) Data {
@@ -209,8 +225,10 @@ func (d_ Data) InitWithBase64EncodedStringOptions(base64String string, options D
 // Initializes a data object with the given Base64 encoded string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410081-initwithbase64encodedstring?language=objc
-func Data_InitWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) Data {
-	return DataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+func NewDataWithBase64EncodedStringOptions(base64String string, options DataBase64DecodingOptions) Data {
+	instance := DataClass.Alloc().InitWithBase64EncodedStringOptions(base64String, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataClass) DataWithBytesLength(bytes unsafe.Pointer, length uint) Data {

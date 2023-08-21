@@ -44,8 +44,10 @@ func (v_ ViewAnimation) InitWithViewAnimations(viewAnimations []map[ViewAnimatio
 // Returns an NSViewAnimation object initialized with the supplied information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewanimation/1531141-initwithviewanimations?language=objc
-func ViewAnimation_InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
-	return ViewAnimationClass.Alloc().InitWithViewAnimations(viewAnimations)
+func NewViewAnimationWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
+	instance := ViewAnimationClass.Alloc().InitWithViewAnimations(viewAnimations)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _ViewAnimationClass) Alloc() ViewAnimation {
@@ -80,8 +82,10 @@ func (v_ ViewAnimation) InitWithDurationAnimationCurve(duration foundation.TimeI
 // Returns an NSAnimation object initialized with the specified duration and animation-curve values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530069-initwithduration?language=objc
-func ViewAnimation_InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
-	return ViewAnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
+func NewViewAnimationWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
+	instance := ViewAnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
+	instance.Autorelease()
+	return instance
 }
 
 // The dictionaries defining the objects to animate. [Full Topic]

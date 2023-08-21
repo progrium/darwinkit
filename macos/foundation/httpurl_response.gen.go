@@ -44,8 +44,10 @@ func (h_ HTTPURLResponse) InitWithURLStatusCodeHTTPVersionHeaderFields(url IURL,
 // Initializes an HTTP URL response object with a status code, protocol version, and response headers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpurlresponse/1415870-initwithurl?language=objc
-func HTTPURLResponse_InitWithURLStatusCodeHTTPVersionHeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
-	return HTTPURLResponseClass.Alloc().InitWithURLStatusCodeHTTPVersionHeaderFields(url, statusCode, HTTPVersion, headerFields)
+func NewHTTPURLResponseWithURLStatusCodeHTTPVersionHeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
+	instance := HTTPURLResponseClass.Alloc().InitWithURLStatusCodeHTTPVersionHeaderFields(url, statusCode, HTTPVersion, headerFields)
+	instance.Autorelease()
+	return instance
 }
 
 func (hc _HTTPURLResponseClass) Alloc() HTTPURLResponse {
@@ -80,8 +82,10 @@ func (h_ HTTPURLResponse) InitWithURLMIMETypeExpectedContentLengthTextEncodingNa
 // Creates an initialized NSURLResponse object with the URL, MIME type, length, and text encoding set to given values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlresponse/1413566-initwithurl?language=objc
-func HTTPURLResponse_InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
-	return HTTPURLResponseClass.Alloc().InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL, MIMEType, length, name)
+func NewHTTPURLResponseWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
+	instance := HTTPURLResponseClass.Alloc().InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL, MIMEType, length, name)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a localized string corresponding to a specified HTTP status code. [Full Topic]

@@ -67,6 +67,8 @@ func (w_ WebFrameView) InitWithFrame(frameRect foundation.Rect) WebFrameView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func WebFrameView_InitWithFrame(frameRect foundation.Rect) WebFrameView {
-	return WebFrameViewClass.Alloc().InitWithFrame(frameRect)
+func NewWebFrameViewWithFrame(frameRect foundation.Rect) WebFrameView {
+	instance := WebFrameViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }

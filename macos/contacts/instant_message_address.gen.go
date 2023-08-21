@@ -43,8 +43,10 @@ func (i_ InstantMessageAddress) InitWithUsernameService(username string, service
 // Returns a CNInstantMessageAddress object initialized with the specified user name and service. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cninstantmessageaddress/1402808-initwithusername?language=objc
-func InstantMessageAddress_InitWithUsernameService(username string, service string) InstantMessageAddress {
-	return InstantMessageAddressClass.Alloc().InitWithUsernameService(username, service)
+func NewInstantMessageAddressWithUsernameService(username string, service string) InstantMessageAddress {
+	instance := InstantMessageAddressClass.Alloc().InitWithUsernameService(username, service)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _InstantMessageAddressClass) Alloc() InstantMessageAddress {

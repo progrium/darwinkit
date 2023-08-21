@@ -105,8 +105,10 @@ func (c_ Control) InitWithFrame(frameRect foundation.Rect) Control {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Control_InitWithFrame(frameRect foundation.Rect) Control {
-	return ControlClass.Alloc().InitWithFrame(frameRect)
+func NewControlWithFrame(frameRect foundation.Rect) Control {
+	instance := ControlClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ControlClass) Alloc() Control {

@@ -104,8 +104,10 @@ func (p_ PickerTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifie
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func PickerTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) PickerTouchBarItem {
-	return PickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewPickerTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) PickerTouchBarItem {
+	instance := PickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

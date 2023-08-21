@@ -89,8 +89,10 @@ func (p_ PathControl) InitWithFrame(frameRect foundation.Rect) PathControl {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func PathControl_InitWithFrame(frameRect foundation.Rect) PathControl {
-	return PathControlClass.Alloc().InitWithFrame(frameRect)
+func NewPathControlWithFrame(frameRect foundation.Rect) PathControl {
+	instance := PathControlClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Configures the default value returned from draggingSourceOperationMaskForLocal:. [Full Topic]

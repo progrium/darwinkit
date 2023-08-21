@@ -45,7 +45,9 @@ func (p_ Predicate) PredicateWithSubstitutionVariables(variables map[string]objc
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspredicate/1413227-predicatewithsubstitutionvariabl?language=objc
 func Predicate_PredicateWithSubstitutionVariables(variables map[string]objc.IObject) Predicate {
-	return PredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance := PredicateClass.Alloc().PredicateWithSubstitutionVariables(variables)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PredicateClass) Alloc() Predicate {

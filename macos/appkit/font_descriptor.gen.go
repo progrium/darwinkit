@@ -57,8 +57,10 @@ func (f_ FontDescriptor) InitWithFontAttributes(attributes map[FontDescriptorAtt
 // Initializes and returns a new font descriptor with the specified attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/1469991-initwithfontattributes?language=objc
-func FontDescriptor_InitWithFontAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
-	return FontDescriptorClass.Alloc().InitWithFontAttributes(attributes)
+func NewFontDescriptorWithFontAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
+	instance := FontDescriptorClass.Alloc().InitWithFontAttributes(attributes)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FontDescriptor) FontDescriptorWithDesign(design FontDescriptorSystemDesign) FontDescriptor {
@@ -70,7 +72,9 @@ func (f_ FontDescriptor) FontDescriptorWithDesign(design FontDescriptorSystemDes
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/3152380-fontdescriptorwithdesign?language=objc
 func FontDescriptor_FontDescriptorWithDesign(design FontDescriptorSystemDesign) FontDescriptor {
-	return FontDescriptorClass.Alloc().FontDescriptorWithDesign(design)
+	instance := FontDescriptorClass.Alloc().FontDescriptorWithDesign(design)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FontDescriptorClass) Alloc() FontDescriptor {

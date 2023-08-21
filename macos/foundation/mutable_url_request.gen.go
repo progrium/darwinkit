@@ -83,8 +83,10 @@ func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
 // Creates a URL request for a specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlrequest/1410303-initwithurl?language=objc
-func MutableURLRequest_InitWithURL(URL IURL) MutableURLRequest {
-	return MutableURLRequestClass.Alloc().InitWithURL(URL)
+func NewMutableURLRequestWithURL(URL IURL) MutableURLRequest {
+	instance := MutableURLRequestClass.Alloc().InitWithURL(URL)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {

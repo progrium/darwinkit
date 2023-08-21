@@ -46,8 +46,10 @@ func (c_ CollectionViewDiffableDataSource) InitWithCollectionViewItemProvider(co
 // Creates a diffable data source with the specified item provider, and connects it to the specified collection view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdiffabledatasource/3281818-initwithcollectionview?language=objc
-func CollectionViewDiffableDataSource_InitWithCollectionViewItemProvider(collectionView ICollectionView, itemProvider CollectionViewDiffableDataSourceItemProvider) CollectionViewDiffableDataSource {
-	return CollectionViewDiffableDataSourceClass.Alloc().InitWithCollectionViewItemProvider(collectionView, itemProvider)
+func NewCollectionViewDiffableDataSourceWithCollectionViewItemProvider(collectionView ICollectionView, itemProvider CollectionViewDiffableDataSourceItemProvider) CollectionViewDiffableDataSource {
+	instance := CollectionViewDiffableDataSourceClass.Alloc().InitWithCollectionViewItemProvider(collectionView, itemProvider)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CollectionViewDiffableDataSourceClass) Alloc() CollectionViewDiffableDataSource {

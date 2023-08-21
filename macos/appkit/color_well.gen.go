@@ -73,8 +73,10 @@ func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func ColorWell_InitWithFrame(frameRect foundation.Rect) ColorWell {
-	return ColorWellClass.Alloc().InitWithFrame(frameRect)
+func NewColorWellWithFrame(frameRect foundation.Rect) ColorWell {
+	instance := ColorWellClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Activates the color well, displays the color panel, and synchronizes the two UI elements. [Full Topic]

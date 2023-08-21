@@ -114,7 +114,9 @@ func (i_ ImageSymbolConfiguration) ConfigurationByApplyingConfiguration(configur
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagesymbolconfiguration/3852560-configurationbyapplyingconfigura?language=objc
 func ImageSymbolConfiguration_ConfigurationByApplyingConfiguration(configuration IImageSymbolConfiguration) ImageSymbolConfiguration {
-	return ImageSymbolConfigurationClass.Alloc().ConfigurationByApplyingConfiguration(configuration)
+	instance := ImageSymbolConfigurationClass.Alloc().ConfigurationByApplyingConfiguration(configuration)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _ImageSymbolConfigurationClass) Alloc() ImageSymbolConfiguration {

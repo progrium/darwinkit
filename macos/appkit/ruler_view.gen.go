@@ -71,8 +71,10 @@ func (r_ RulerView) InitWithScrollViewOrientation(scrollView IScrollView, orient
 // Initializes a newly allocated NSRulerView to have orientation (NSHorizontalRuler or NSVerticalRuler) within aScrollView. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1535316-initwithscrollview?language=objc
-func RulerView_InitWithScrollViewOrientation(scrollView IScrollView, orientation RulerOrientation) RulerView {
-	return RulerViewClass.Alloc().InitWithScrollViewOrientation(scrollView, orientation)
+func NewRulerViewWithScrollViewOrientation(scrollView IScrollView, orientation RulerOrientation) RulerView {
+	instance := RulerViewClass.Alloc().InitWithScrollViewOrientation(scrollView, orientation)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RulerViewClass) Alloc() RulerView {
@@ -107,8 +109,10 @@ func (r_ RulerView) InitWithFrame(frameRect foundation.Rect) RulerView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func RulerView_InitWithFrame(frameRect foundation.Rect) RulerView {
-	return RulerViewClass.Alloc().InitWithFrame(frameRect)
+func NewRulerViewWithFrame(frameRect foundation.Rect) RulerView {
+	instance := RulerViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Registers a new unit of measurement with the NSRulerView class, making it available to all instances of NSRulerView. [Full Topic]

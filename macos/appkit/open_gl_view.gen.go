@@ -66,6 +66,8 @@ func (o_ OpenGLView) InitWithFrame(frameRect foundation.Rect) OpenGLView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func OpenGLView_InitWithFrame(frameRect foundation.Rect) OpenGLView {
-	return OpenGLViewClass.Alloc().InitWithFrame(frameRect)
+func NewOpenGLViewWithFrame(frameRect foundation.Rect) OpenGLView {
+	instance := OpenGLViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }

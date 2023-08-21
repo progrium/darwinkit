@@ -47,8 +47,10 @@ func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options fou
 // Creates an option object that represents the union of the supplied options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909987-initwithcompressionoptions?language=objc
-func UserInterfaceCompressionOptions_InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
-	return UserInterfaceCompressionOptionsClass.Alloc().InitWithCompressionOptions(options)
+func NewUserInterfaceCompressionOptionsWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
+	instance := UserInterfaceCompressionOptionsClass.Alloc().InitWithCompressionOptions(options)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
@@ -59,8 +61,10 @@ func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) 
 // Creates an option object with the given identifier string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909979-initwithidentifier?language=objc
-func UserInterfaceCompressionOptions_InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
-	return UserInterfaceCompressionOptionsClass.Alloc().InitWithIdentifier(identifier)
+func NewUserInterfaceCompressionOptionsWithIdentifier(identifier string) UserInterfaceCompressionOptions {
+	instance := UserInterfaceCompressionOptionsClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {

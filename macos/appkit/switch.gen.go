@@ -68,8 +68,10 @@ func (s_ Switch) InitWithFrame(frameRect foundation.Rect) Switch {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Switch_InitWithFrame(frameRect foundation.Rect) Switch {
-	return SwitchClass.Alloc().InitWithFrame(frameRect)
+func NewSwitchWithFrame(frameRect foundation.Rect) Switch {
+	instance := SwitchClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The current position of the switch. [Full Topic]

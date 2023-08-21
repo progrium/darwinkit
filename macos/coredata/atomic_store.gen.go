@@ -53,8 +53,10 @@ func (a_ AtomicStore) InitWithPersistentStoreCoordinatorConfigurationNameURLOpti
 // Creates an atomic store at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388054-initwithpersistentstorecoordinat?language=objc
-func AtomicStore_InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(coordinator IPersistentStoreCoordinator, configurationName string, url foundation.IURL, options foundation.Dictionary) AtomicStore {
-	return AtomicStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(coordinator, configurationName, url, options)
+func NewAtomicStoreWithPersistentStoreCoordinatorConfigurationNameURLOptions(coordinator IPersistentStoreCoordinator, configurationName string, url foundation.IURL, options foundation.Dictionary) AtomicStore {
+	instance := AtomicStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(coordinator, configurationName, url, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AtomicStoreClass) Alloc() AtomicStore {

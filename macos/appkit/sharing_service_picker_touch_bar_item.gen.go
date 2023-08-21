@@ -74,8 +74,10 @@ func (s_ SharingServicePickerTouchBarItem) InitWithIdentifier(identifier TouchBa
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func SharingServicePickerTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) SharingServicePickerTouchBarItem {
-	return SharingServicePickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewSharingServicePickerTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) SharingServicePickerTouchBarItem {
+	instance := SharingServicePickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The image displayed in the sharing service picker item button. [Full Topic]

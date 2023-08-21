@@ -69,8 +69,10 @@ func (s_ ScrubberTextItemView) InitWithFrame(frameRect foundation.Rect) Scrubber
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ScrubberTextItemView_InitWithFrame(frameRect foundation.Rect) ScrubberTextItemView {
-	return ScrubberTextItemViewClass.Alloc().InitWithFrame(frameRect)
+func NewScrubberTextItemViewWithFrame(frameRect foundation.Rect) ScrubberTextItemView {
+	instance := ScrubberTextItemViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The text field that the scrubber item uses to display its text. [Full Topic]

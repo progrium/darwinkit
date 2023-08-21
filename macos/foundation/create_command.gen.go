@@ -67,8 +67,10 @@ func (c_ CreateCommand) InitWithCommandDescription(commandDef IScriptCommandDesc
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func CreateCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) CreateCommand {
-	return CreateCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewCreateCommandWithCommandDescription(commandDef IScriptCommandDescription) CreateCommand {
+	instance := CreateCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a dictionary that contains the properties that were specified in the make Apple event command that has been converted to this NSCreateCommand object. [Full Topic]

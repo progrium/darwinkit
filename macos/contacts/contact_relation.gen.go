@@ -42,8 +42,10 @@ func (c_ ContactRelation) InitWithName(name string) ContactRelation {
 // Creates an object with the name of the related contact. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactrelation/1403385-initwithname?language=objc
-func ContactRelation_InitWithName(name string) ContactRelation {
-	return ContactRelationClass.Alloc().InitWithName(name)
+func NewContactRelationWithName(name string) ContactRelation {
+	instance := ContactRelationClass.Alloc().InitWithName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ContactRelationClass) ContactRelationWithName(name string) ContactRelation {

@@ -46,8 +46,10 @@ func (a_ Appearance) InitWithAppearanceNamedBundle(name AppearanceName, bundle f
 // Creates an appearance object from the named appearance file located in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearance/1529131-initwithappearancenamed?language=objc
-func Appearance_InitWithAppearanceNamedBundle(name AppearanceName, bundle foundation.IBundle) Appearance {
-	return AppearanceClass.Alloc().InitWithAppearanceNamedBundle(name, bundle)
+func NewAppearanceWithAppearanceNamedBundle(name AppearanceName, bundle foundation.IBundle) Appearance {
+	instance := AppearanceClass.Alloc().InitWithAppearanceNamedBundle(name, bundle)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AppearanceClass) Alloc() Appearance {

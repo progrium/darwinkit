@@ -87,8 +87,10 @@ func (t_ ToolbarItemGroup) InitWithItemIdentifier(itemIdentifier ToolbarItemIden
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func ToolbarItemGroup_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItemGroup {
-	return ToolbarItemGroupClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewToolbarItemGroupWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItemGroup {
+	instance := ToolbarItemGroupClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the selected state of a subitem in a grouped toolbar item. [Full Topic]

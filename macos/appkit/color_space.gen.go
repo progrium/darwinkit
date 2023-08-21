@@ -48,8 +48,10 @@ func (c_ ColorSpace) InitWithCGColorSpace(cgColorSpace coregraphics.ColorSpaceRe
 // Initializes and returns a color space object initialized from a Core Graphics color-space object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorspace/1412059-initwithcgcolorspace?language=objc
-func ColorSpace_InitWithCGColorSpace(cgColorSpace coregraphics.ColorSpaceRef) ColorSpace {
-	return ColorSpaceClass.Alloc().InitWithCGColorSpace(cgColorSpace)
+func NewColorSpaceWithCGColorSpace(cgColorSpace coregraphics.ColorSpaceRef) ColorSpace {
+	instance := ColorSpaceClass.Alloc().InitWithCGColorSpace(cgColorSpace)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ ColorSpace) InitWithICCProfileData(iccData []byte) ColorSpace {
@@ -60,8 +62,10 @@ func (c_ ColorSpace) InitWithICCProfileData(iccData []byte) ColorSpace {
 // Initializes and returns a color space object from the specified ICC profile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorspace/1412094-initwithiccprofiledata?language=objc
-func ColorSpace_InitWithICCProfileData(iccData []byte) ColorSpace {
-	return ColorSpaceClass.Alloc().InitWithICCProfileData(iccData)
+func NewColorSpaceWithICCProfileData(iccData []byte) ColorSpace {
+	instance := ColorSpaceClass.Alloc().InitWithICCProfileData(iccData)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ ColorSpace) InitWithColorSyncProfile(prof unsafe.Pointer) ColorSpace {
@@ -72,8 +76,10 @@ func (c_ ColorSpace) InitWithColorSyncProfile(prof unsafe.Pointer) ColorSpace {
 // Initializes and returns a color space object from the specified ColorSync profile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorspace/1412062-initwithcolorsyncprofile?language=objc
-func ColorSpace_InitWithColorSyncProfile(prof unsafe.Pointer) ColorSpace {
-	return ColorSpaceClass.Alloc().InitWithColorSyncProfile(prof)
+func NewColorSpaceWithColorSyncProfile(prof unsafe.Pointer) ColorSpace {
+	instance := ColorSpaceClass.Alloc().InitWithColorSyncProfile(prof)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ColorSpaceClass) Alloc() ColorSpace {

@@ -60,8 +60,10 @@ func (t_ TextAttachment) InitWithDataOfType(contentData []byte, uti string) Text
 // Creates a text attachment object with the specified data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachment/1508374-initwithdata?language=objc
-func TextAttachment_InitWithDataOfType(contentData []byte, uti string) TextAttachment {
-	return TextAttachmentClass.Alloc().InitWithDataOfType(contentData, uti)
+func NewTextAttachmentWithDataOfType(contentData []byte, uti string) TextAttachment {
+	instance := TextAttachmentClass.Alloc().InitWithDataOfType(contentData, uti)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextAttachment) InitWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
@@ -72,8 +74,10 @@ func (t_ TextAttachment) InitWithFileWrapper(fileWrapper foundation.IFileWrapper
 // Creates a text attachment object to contain the specified file wrapper. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextattachment/1508373-initwithfilewrapper?language=objc
-func TextAttachment_InitWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
-	return TextAttachmentClass.Alloc().InitWithFileWrapper(fileWrapper)
+func NewTextAttachmentWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
+	instance := TextAttachmentClass.Alloc().InitWithFileWrapper(fileWrapper)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextAttachmentClass) Alloc() TextAttachment {

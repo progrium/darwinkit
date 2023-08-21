@@ -95,8 +95,10 @@ func (b_ Bundle) InitWithURL(url IURL) Bundle {
 // Returns an NSBundle object initialized to correspond to the specified file URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409352-initwithurl?language=objc
-func Bundle_InitWithURL(url IURL) Bundle {
-	return BundleClass.Alloc().InitWithURL(url)
+func NewBundleWithURL(url IURL) Bundle {
+	instance := BundleClass.Alloc().InitWithURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ Bundle) InitWithPath(path string) Bundle {
@@ -107,8 +109,10 @@ func (b_ Bundle) InitWithPath(path string) Bundle {
 // Returns an NSBundle object initialized to correspond to the specified directory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1412741-initwithpath?language=objc
-func Bundle_InitWithPath(path string) Bundle {
-	return BundleClass.Alloc().InitWithPath(path)
+func NewBundleWithPath(path string) Bundle {
+	instance := BundleClass.Alloc().InitWithPath(path)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BundleClass) BundleWithPath(path string) Bundle {

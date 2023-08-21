@@ -80,8 +80,10 @@ func (b_ ButtonCell) InitImageCell(image IImage) ButtonCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1639152-initimagecell?language=objc
-func ButtonCell_InitImageCell(image IImage) ButtonCell {
-	return ButtonCellClass.Alloc().InitImageCell(image)
+func NewButtonCellImageCell(image IImage) ButtonCell {
+	instance := ButtonCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (b_ ButtonCell) InitTextCell(string_ string) ButtonCell {
@@ -92,8 +94,10 @@ func (b_ ButtonCell) InitTextCell(string_ string) ButtonCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1639134-inittextcell?language=objc
-func ButtonCell_InitTextCell(string_ string) ButtonCell {
-	return ButtonCellClass.Alloc().InitTextCell(string_)
+func NewButtonCellTextCell(string_ string) ButtonCell {
+	instance := ButtonCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _ButtonCellClass) Alloc() ButtonCell {

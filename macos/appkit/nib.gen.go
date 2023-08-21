@@ -43,8 +43,10 @@ func (n_ Nib) InitWithNibNamedBundle(nibName NibName, bundle foundation.IBundle)
 // Returns an NSNib object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1533932-initwithnibnamed?language=objc
-func Nib_InitWithNibNamedBundle(nibName NibName, bundle foundation.IBundle) Nib {
-	return NibClass.Alloc().InitWithNibNamedBundle(nibName, bundle)
+func NewNibWithNibNamedBundle(nibName NibName, bundle foundation.IBundle) Nib {
+	instance := NibClass.Alloc().InitWithNibNamedBundle(nibName, bundle)
+	instance.Autorelease()
+	return instance
 }
 
 func (n_ Nib) InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
@@ -55,8 +57,10 @@ func (n_ Nib) InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) N
 // Initializes an instance with nib data and specified bundle for locating resources. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1535865-initwithnibdata?language=objc
-func Nib_InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
-	return NibClass.Alloc().InitWithNibDataBundle(nibData, bundle)
+func NewNibWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
+	instance := NibClass.Alloc().InitWithNibDataBundle(nibData, bundle)
+	instance.Autorelease()
+	return instance
 }
 
 func (nc _NibClass) Alloc() Nib {

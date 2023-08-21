@@ -71,8 +71,10 @@ func (s_ ScrubberImageItemView) InitWithFrame(frameRect foundation.Rect) Scrubbe
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ScrubberImageItemView_InitWithFrame(frameRect foundation.Rect) ScrubberImageItemView {
-	return ScrubberImageItemViewClass.Alloc().InitWithFrame(frameRect)
+func NewScrubberImageItemViewWithFrame(frameRect foundation.Rect) ScrubberImageItemView {
+	instance := ScrubberImageItemViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The alignment of the image within the scrubber item. [Full Topic]

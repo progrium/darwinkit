@@ -86,8 +86,10 @@ func (t_ TabViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundl
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func TabViewController_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TabViewController {
-	return TabViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewTabViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TabViewController {
+	instance := TabViewControllerClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the tab view item for the specified child view controller. [Full Topic]

@@ -108,8 +108,10 @@ func (a_ ArrayController) InitWithContent(content objc.IObject) ArrayController 
 // Initializes and returns an NSObjectController object with the given content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1529422-initwithcontent?language=objc
-func ArrayController_InitWithContent(content objc.IObject) ArrayController {
-	return ArrayControllerClass.Alloc().InitWithContent(content)
+func NewArrayControllerWithContent(content objc.IObject) ArrayController {
+	instance := ArrayControllerClass.Alloc().InitWithContent(content)
+	instance.Autorelease()
+	return instance
 }
 
 // Removes the object at the specified index in the receiver’s arranged objects from the receiver’s content array. [Full Topic]

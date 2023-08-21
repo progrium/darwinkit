@@ -52,8 +52,10 @@ func (f_ FetchShareMetadataOperation) InitWithShareURLs(shareURLs []foundation.I
 // Creates an operation for fetching the metadata for the specified shares. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsharemetadataoperation/1640495-initwithshareurls?language=objc
-func FetchShareMetadataOperation_InitWithShareURLs(shareURLs []foundation.IURL) FetchShareMetadataOperation {
-	return FetchShareMetadataOperationClass.Alloc().InitWithShareURLs(shareURLs)
+func NewFetchShareMetadataOperationWithShareURLs(shareURLs []foundation.IURL) FetchShareMetadataOperation {
+	instance := FetchShareMetadataOperationClass.Alloc().InitWithShareURLs(shareURLs)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchShareMetadataOperation) Init() FetchShareMetadataOperation {

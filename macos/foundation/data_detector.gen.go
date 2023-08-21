@@ -42,8 +42,10 @@ func (d_ DataDetector) InitWithTypesError(checkingTypes TextCheckingTypes, error
 // Initializes and returns a data detector instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatadetector/1409829-initwithtypes?language=objc
-func DataDetector_InitWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
-	return DataDetectorClass.Alloc().InitWithTypesError(checkingTypes, error)
+func NewDataDetectorWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
+	instance := DataDetectorClass.Alloc().InitWithTypesError(checkingTypes, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataDetectorClass) Alloc() DataDetector {
@@ -78,8 +80,10 @@ func (d_ DataDetector) InitWithPatternOptionsError(pattern string, options Regul
 // Returns an initialized NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1410900-initwithpattern?language=objc
-func DataDetector_InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) DataDetector {
-	return DataDetectorClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
+func NewDataDetectorWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) DataDetector {
+	instance := DataDetectorClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
+	instance.Autorelease()
+	return instance
 }
 
 // Creates and returns a new data detector instance. [Full Topic]

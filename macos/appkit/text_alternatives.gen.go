@@ -44,8 +44,10 @@ func (t_ TextAlternatives) InitWithPrimaryStringAlternativeStrings(primaryString
 // Initializes an NSTextAlternatives instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextalternatives/1529445-initwithprimarystring?language=objc
-func TextAlternatives_InitWithPrimaryStringAlternativeStrings(primaryString string, alternativeStrings []string) TextAlternatives {
-	return TextAlternativesClass.Alloc().InitWithPrimaryStringAlternativeStrings(primaryString, alternativeStrings)
+func NewTextAlternativesWithPrimaryStringAlternativeStrings(primaryString string, alternativeStrings []string) TextAlternatives {
+	instance := TextAlternativesClass.Alloc().InitWithPrimaryStringAlternativeStrings(primaryString, alternativeStrings)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextAlternativesClass) Alloc() TextAlternatives {

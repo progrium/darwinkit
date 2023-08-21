@@ -81,8 +81,10 @@ func (p_ PopoverTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifi
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func PopoverTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) PopoverTouchBarItem {
-	return PopoverTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewPopoverTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) PopoverTouchBarItem {
+	instance := PopoverTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // Replaces the main bar with this item's popover bar. [Full Topic]

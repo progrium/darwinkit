@@ -77,8 +77,10 @@ func (u_ UnitArea) InitWithSymbolConverter(symbol string, converter IUnitConvert
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitArea_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitArea {
-	return UnitAreaClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitAreaWithSymbolConverter(symbol string, converter IUnitConverter) UnitArea {
+	instance := UnitAreaClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitArea) InitWithSymbol(symbol string) UnitArea {
@@ -89,8 +91,10 @@ func (u_ UnitArea) InitWithSymbol(symbol string) UnitArea {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitArea_InitWithSymbol(symbol string) UnitArea {
-	return UnitAreaClass.Alloc().InitWithSymbol(symbol)
+func NewUnitAreaWithSymbol(symbol string) UnitArea {
+	instance := UnitAreaClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The ares unit of area. [Full Topic]

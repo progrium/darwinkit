@@ -47,8 +47,10 @@ func (a_ AtomicStoreCacheNode) InitWithObjectID(moid IManagedObjectID) AtomicSto
 // Returns a cache node for the given managed object ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506754-initwithobjectid?language=objc
-func AtomicStoreCacheNode_InitWithObjectID(moid IManagedObjectID) AtomicStoreCacheNode {
-	return AtomicStoreCacheNodeClass.Alloc().InitWithObjectID(moid)
+func NewAtomicStoreCacheNodeWithObjectID(moid IManagedObjectID) AtomicStoreCacheNode {
+	instance := AtomicStoreCacheNodeClass.Alloc().InitWithObjectID(moid)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AtomicStoreCacheNodeClass) Alloc() AtomicStoreCacheNode {

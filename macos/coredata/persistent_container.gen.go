@@ -51,8 +51,10 @@ func (p_ PersistentContainer) InitWithName(name string) PersistentContainer {
 // Creates a container with the specified name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentcontainer/1640557-initwithname?language=objc
-func PersistentContainer_InitWithName(name string) PersistentContainer {
-	return PersistentContainerClass.Alloc().InitWithName(name)
+func NewPersistentContainerWithName(name string) PersistentContainer {
+	instance := PersistentContainerClass.Alloc().InitWithName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentContainerClass) PersistentContainerWithName(name string) PersistentContainer {

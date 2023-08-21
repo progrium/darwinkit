@@ -52,8 +52,10 @@ func (r_ RegularExpression) InitWithPatternOptionsError(pattern string, options 
 // Returns an initialized NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1410900-initwithpattern?language=objc
-func RegularExpression_InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
-	return RegularExpressionClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
+func NewRegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
+	instance := RegularExpressionClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RegularExpressionClass) Alloc() RegularExpression {

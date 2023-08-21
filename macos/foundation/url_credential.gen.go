@@ -46,8 +46,10 @@ func (u_ URLCredential) InitWithUserPasswordPersistence(user string, password st
 // Creates a URL credential instance initialized with a given user name and password, using a given persistence setting. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcredential/1417977-initwithuser?language=objc
-func URLCredential_InitWithUserPasswordPersistence(user string, password string, persistence URLCredentialPersistence) URLCredential {
-	return URLCredentialClass.Alloc().InitWithUserPasswordPersistence(user, password, persistence)
+func NewURLCredentialWithUserPasswordPersistence(user string, password string, persistence URLCredentialPersistence) URLCredential {
+	instance := URLCredentialClass.Alloc().InitWithUserPasswordPersistence(user, password, persistence)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLCredentialClass) Alloc() URLCredential {

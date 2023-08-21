@@ -90,8 +90,10 @@ func (p_ PathCell) InitImageCell(image IImage) PathCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func PathCell_InitImageCell(image IImage) PathCell {
-	return PathCellClass.Alloc().InitImageCell(image)
+func NewPathCellImageCell(image IImage) PathCell {
+	instance := PathCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PathCell) InitTextCell(string_ string) PathCell {
@@ -102,8 +104,10 @@ func (p_ PathCell) InitTextCell(string_ string) PathCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func PathCell_InitTextCell(string_ string) PathCell {
-	return PathCellClass.Alloc().InitTextCell(string_)
+func NewPathCellTextCell(string_ string) PathCell {
+	instance := PathCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // Displays the cell component over which the mouse is hovering. [Full Topic]

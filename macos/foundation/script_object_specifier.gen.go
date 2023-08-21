@@ -61,8 +61,10 @@ func (s_ ScriptObjectSpecifier) InitWithContainerClassDescriptionContainerSpecif
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func ScriptObjectSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	return ScriptObjectSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewScriptObjectSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
+	instance := ScriptObjectSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
@@ -73,8 +75,10 @@ func (s_ ScriptObjectSpecifier) InitWithContainerSpecifierKey(container IScriptO
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func ScriptObjectSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	return ScriptObjectSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewScriptObjectSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
+	instance := ScriptObjectSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScriptObjectSpecifierClass) Alloc() ScriptObjectSpecifier {

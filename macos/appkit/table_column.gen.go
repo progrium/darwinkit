@@ -67,8 +67,10 @@ func (t_ TableColumn) InitWithIdentifier(identifier UserInterfaceItemIdentifier)
 // Initializes a newly created table column with a string identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecolumn/1526749-initwithidentifier?language=objc
-func TableColumn_InitWithIdentifier(identifier UserInterfaceItemIdentifier) TableColumn {
-	return TableColumnClass.Alloc().InitWithIdentifier(identifier)
+func NewTableColumnWithIdentifier(identifier UserInterfaceItemIdentifier) TableColumn {
+	instance := TableColumnClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TableColumnClass) Alloc() TableColumn {

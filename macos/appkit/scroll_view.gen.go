@@ -121,8 +121,10 @@ func (s_ ScrollView) InitWithFrame(frameRect foundation.Rect) ScrollView {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403450-initwithframe?language=objc
-func ScrollView_InitWithFrame(frameRect foundation.Rect) ScrollView {
-	return ScrollViewClass.Alloc().InitWithFrame(frameRect)
+func NewScrollViewWithFrame(frameRect foundation.Rect) ScrollView {
+	instance := ScrollViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScrollViewClass) Alloc() ScrollView {

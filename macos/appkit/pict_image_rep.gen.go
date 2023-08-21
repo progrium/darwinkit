@@ -44,8 +44,10 @@ func (p_ PICTImageRep) InitWithData(pictData []byte) PICTImageRep {
 // Returns a representation of an image from the specified data in the PICT file format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspictimagerep/1533954-initwithdata?language=objc
-func PICTImageRep_InitWithData(pictData []byte) PICTImageRep {
-	return PICTImageRepClass.Alloc().InitWithData(pictData)
+func NewPICTImageRepWithData(pictData []byte) PICTImageRep {
+	instance := PICTImageRepClass.Alloc().InitWithData(pictData)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PICTImageRepClass) ImageRepWithData(pictData []byte) PICTImageRep {

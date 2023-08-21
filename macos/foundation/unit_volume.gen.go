@@ -77,8 +77,10 @@ func (u_ UnitVolume) InitWithSymbolConverter(symbol string, converter IUnitConve
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitVolume_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitVolume {
-	return UnitVolumeClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitVolumeWithSymbolConverter(symbol string, converter IUnitConverter) UnitVolume {
+	instance := UnitVolumeClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitVolume) InitWithSymbol(symbol string) UnitVolume {
@@ -89,8 +91,10 @@ func (u_ UnitVolume) InitWithSymbol(symbol string) UnitVolume {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitVolume_InitWithSymbol(symbol string) UnitVolume {
-	return UnitVolumeClass.Alloc().InitWithSymbol(symbol)
+func NewUnitVolumeWithSymbol(symbol string) UnitVolume {
+	instance := UnitVolumeClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The megaliters unit of volume. [Full Topic]

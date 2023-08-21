@@ -43,8 +43,10 @@ func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionL
 // Creates a compositional layout object with a single section. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayout/3281806-initwithsection?language=objc
-func CollectionViewCompositionalLayout_InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	return CollectionViewCompositionalLayoutClass.Alloc().InitWithSection(section)
+func NewCollectionViewCompositionalLayoutWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
+	instance := CollectionViewCompositionalLayoutClass.Alloc().InitWithSection(section)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider CollectionViewCompositionalLayoutSectionProvider) CollectionViewCompositionalLayout {
@@ -55,8 +57,10 @@ func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvi
 // Creates a compositional layout object with a section provider to supply the layout's sections. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayout/3281808-initwithsectionprovider?language=objc
-func CollectionViewCompositionalLayout_InitWithSectionProvider(sectionProvider CollectionViewCompositionalLayoutSectionProvider) CollectionViewCompositionalLayout {
-	return CollectionViewCompositionalLayoutClass.Alloc().InitWithSectionProvider(sectionProvider)
+func NewCollectionViewCompositionalLayoutWithSectionProvider(sectionProvider CollectionViewCompositionalLayoutSectionProvider) CollectionViewCompositionalLayout {
+	instance := CollectionViewCompositionalLayoutClass.Alloc().InitWithSectionProvider(sectionProvider)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CollectionViewCompositionalLayoutClass) Alloc() CollectionViewCompositionalLayout {

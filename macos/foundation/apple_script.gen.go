@@ -47,8 +47,10 @@ func (a_ AppleScript) InitWithContentsOfURLError(url IURL, errorInfo map[string]
 // Initializes a newly allocated script instance from the source identified by the passed URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1412508-initwithcontentsofurl?language=objc
-func AppleScript_InitWithContentsOfURLError(url IURL, errorInfo map[string]objc.IObject) AppleScript {
-	return AppleScriptClass.Alloc().InitWithContentsOfURLError(url, errorInfo)
+func NewAppleScriptWithContentsOfURLError(url IURL, errorInfo map[string]objc.IObject) AppleScript {
+	instance := AppleScriptClass.Alloc().InitWithContentsOfURLError(url, errorInfo)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AppleScript) InitWithSource(source string) AppleScript {
@@ -59,8 +61,10 @@ func (a_ AppleScript) InitWithSource(source string) AppleScript {
 // Initializes a newly allocated script instance from the passed source. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1414313-initwithsource?language=objc
-func AppleScript_InitWithSource(source string) AppleScript {
-	return AppleScriptClass.Alloc().InitWithSource(source)
+func NewAppleScriptWithSource(source string) AppleScript {
+	instance := AppleScriptClass.Alloc().InitWithSource(source)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AppleScriptClass) Alloc() AppleScript {

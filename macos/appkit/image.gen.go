@@ -102,8 +102,10 @@ func (i_ Image) InitWithPasteboard(pasteboard IPasteboard) Image {
 // Initializes and returns an image object with data from the specified pasteboard. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519952-initwithpasteboard?language=objc
-func Image_InitWithPasteboard(pasteboard IPasteboard) Image {
-	return ImageClass.Alloc().InitWithPasteboard(pasteboard)
+func NewImageWithPasteboard(pasteboard IPasteboard) Image {
+	instance := ImageClass.Alloc().InitWithPasteboard(pasteboard)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithContentsOfFile(fileName string) Image {
@@ -114,8 +116,10 @@ func (i_ Image) InitWithContentsOfFile(fileName string) Image {
 // Initializes and returns an image object with the contents of the specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519918-initwithcontentsoffile?language=objc
-func Image_InitWithContentsOfFile(fileName string) Image {
-	return ImageClass.Alloc().InitWithContentsOfFile(fileName)
+func NewImageWithContentsOfFile(fileName string) Image {
+	instance := ImageClass.Alloc().InitWithContentsOfFile(fileName)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithSize(size foundation.Size) Image {
@@ -126,8 +130,10 @@ func (i_ Image) InitWithSize(size foundation.Size) Image {
 // Initializes and returns an image object with the specified dimensions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1520033-initwithsize?language=objc
-func Image_InitWithSize(size foundation.Size) Image {
-	return ImageClass.Alloc().InitWithSize(size)
+func NewImageWithSize(size foundation.Size) Image {
+	instance := ImageClass.Alloc().InitWithSize(size)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithData(data []byte) Image {
@@ -138,8 +144,10 @@ func (i_ Image) InitWithData(data []byte) Image {
 // Initializes and returns an image object using the provided image data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519941-initwithdata?language=objc
-func Image_InitWithData(data []byte) Image {
-	return ImageClass.Alloc().InitWithData(data)
+func NewImageWithData(data []byte) Image {
+	instance := ImageClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithDataIgnoringOrientation(data []byte) Image {
@@ -150,8 +158,10 @@ func (i_ Image) InitWithDataIgnoringOrientation(data []byte) Image {
 // Initializes and returns an image object using the provided image data and ignoring the EXIF orientation tags. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519915-initwithdataignoringorientation?language=objc
-func Image_InitWithDataIgnoringOrientation(data []byte) Image {
-	return ImageClass.Alloc().InitWithDataIgnoringOrientation(data)
+func NewImageWithDataIgnoringOrientation(data []byte) Image {
+	instance := ImageClass.Alloc().InitWithDataIgnoringOrientation(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _ImageClass) ImageWithSystemSymbolNameAccessibilityDescription(name string, description string) Image {
@@ -174,8 +184,10 @@ func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
 // Initializes and returns an image object with the contents of the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519907-initwithcontentsofurl?language=objc
-func Image_InitWithContentsOfURL(url foundation.IURL) Image {
-	return ImageClass.Alloc().InitWithContentsOfURL(url)
+func NewImageWithContentsOfURL(url foundation.IURL) Image {
+	instance := ImageClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
@@ -186,8 +198,10 @@ func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
 // Initializes and returns an image object using the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519990-initbyreferencingurl?language=objc
-func Image_InitByReferencingURL(url foundation.IURL) Image {
-	return ImageClass.Alloc().InitByReferencingURL(url)
+func NewImageByReferencingURL(url foundation.IURL) Image {
+	instance := ImageClass.Alloc().InitByReferencingURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitWithCGImageSize(cgImage coregraphics.ImageRef, size foundation.Size) Image {
@@ -198,8 +212,10 @@ func (i_ Image) InitWithCGImageSize(cgImage coregraphics.ImageRef, size foundati
 // Creates a new image using the contents of the provided image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519939-initwithcgimage?language=objc
-func Image_InitWithCGImageSize(cgImage coregraphics.ImageRef, size foundation.Size) Image {
-	return ImageClass.Alloc().InitWithCGImageSize(cgImage, size)
+func NewImageWithCGImageSize(cgImage coregraphics.ImageRef, size foundation.Size) Image {
+	instance := ImageClass.Alloc().InitWithCGImageSize(cgImage, size)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ Image) InitByReferencingFile(fileName string) Image {
@@ -210,8 +226,10 @@ func (i_ Image) InitByReferencingFile(fileName string) Image {
 // Initializes and returns an image object using the specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519955-initbyreferencingfile?language=objc
-func Image_InitByReferencingFile(fileName string) Image {
-	return ImageClass.Alloc().InitByReferencingFile(fileName)
+func NewImageByReferencingFile(fileName string) Image {
+	instance := ImageClass.Alloc().InitByReferencingFile(fileName)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _ImageClass) Alloc() Image {

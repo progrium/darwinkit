@@ -77,8 +77,10 @@ func (u_ UnitFuelEfficiency) InitWithSymbolConverter(symbol string, converter IU
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitFuelEfficiency_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitFuelEfficiency {
-	return UnitFuelEfficiencyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitFuelEfficiencyWithSymbolConverter(symbol string, converter IUnitConverter) UnitFuelEfficiency {
+	instance := UnitFuelEfficiencyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitFuelEfficiency) InitWithSymbol(symbol string) UnitFuelEfficiency {
@@ -89,8 +91,10 @@ func (u_ UnitFuelEfficiency) InitWithSymbol(symbol string) UnitFuelEfficiency {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitFuelEfficiency_InitWithSymbol(symbol string) UnitFuelEfficiency {
-	return UnitFuelEfficiencyClass.Alloc().InitWithSymbol(symbol)
+func NewUnitFuelEfficiencyWithSymbol(symbol string) UnitFuelEfficiency {
+	instance := UnitFuelEfficiencyClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The liters per 100 kilometers unit of fuel efficiency. [Full Topic]

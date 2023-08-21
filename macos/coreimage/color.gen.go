@@ -62,8 +62,10 @@ func (c_ Color) InitWithColor(color objc.IObject) Color {
 // Initializes a Core Image color object using a UIKit (or AppKit) color object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1528762-initwithcolor?language=objc
-func Color_InitWithColor(color objc.IObject) Color {
-	return ColorClass.Alloc().InitWithColor(color)
+func NewColorWithColor(color objc.IObject) Color {
+	instance := ColorClass.Alloc().InitWithColor(color)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ Color) InitWithCGColor(c coregraphics.ColorRef) Color {
@@ -74,8 +76,10 @@ func (c_ Color) InitWithCGColor(c coregraphics.ColorRef) Color {
 // Initializes a Core Image color object with a Core Graphics color. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1437821-initwithcgcolor?language=objc
-func Color_InitWithCGColor(c coregraphics.ColorRef) Color {
-	return ColorClass.Alloc().InitWithCGColor(c)
+func NewColorWithCGColor(c coregraphics.ColorRef) Color {
+	instance := ColorClass.Alloc().InitWithCGColor(c)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ColorClass) ColorWithString(representation string) Color {
@@ -110,8 +114,10 @@ func (c_ Color) InitWithRedGreenBlue(r float64, g float64, b float64) Color {
 // Initializes a Core Image color object with the specified red, green, and blue component values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolor/1502102-initwithred?language=objc
-func Color_InitWithRedGreenBlue(r float64, g float64, b float64) Color {
-	return ColorClass.Alloc().InitWithRedGreenBlue(r, g, b)
+func NewColorWithRedGreenBlue(r float64, g float64, b float64) Color {
+	instance := ColorClass.Alloc().InitWithRedGreenBlue(r, g, b)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ColorClass) Alloc() Color {

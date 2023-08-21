@@ -52,8 +52,10 @@ func (m_ ModifyRecordZonesOperation) InitWithRecordZonesToSaveRecordZoneIDsToDel
 // Creates an operation for modifying the specified record zones. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckmodifyrecordzonesoperation/1415167-initwithrecordzonestosave?language=objc
-func ModifyRecordZonesOperation_InitWithRecordZonesToSaveRecordZoneIDsToDelete(recordZonesToSave []IRecordZone, recordZoneIDsToDelete []IRecordZoneID) ModifyRecordZonesOperation {
-	return ModifyRecordZonesOperationClass.Alloc().InitWithRecordZonesToSaveRecordZoneIDsToDelete(recordZonesToSave, recordZoneIDsToDelete)
+func NewModifyRecordZonesOperationWithRecordZonesToSaveRecordZoneIDsToDelete(recordZonesToSave []IRecordZone, recordZoneIDsToDelete []IRecordZoneID) ModifyRecordZonesOperation {
+	instance := ModifyRecordZonesOperationClass.Alloc().InitWithRecordZonesToSaveRecordZoneIDsToDelete(recordZonesToSave, recordZoneIDsToDelete)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ ModifyRecordZonesOperation) Init() ModifyRecordZonesOperation {

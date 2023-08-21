@@ -63,8 +63,10 @@ func (f_ FileWrapper) InitRegularFileWithContents(contents []byte) FileWrapper {
 // Initializes the receiver as a regular-file file wrapper. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1409508-initregularfilewithcontents?language=objc
-func FileWrapper_InitRegularFileWithContents(contents []byte) FileWrapper {
-	return FileWrapperClass.Alloc().InitRegularFileWithContents(contents)
+func NewFileWrapperRegularFileWithContents(contents []byte) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitRegularFileWithContents(contents)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
@@ -75,8 +77,10 @@ func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
 // Initializes the receiver as a symbolic-link file wrapper that links to a specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415098-initsymboliclinkwithdestinationu?language=objc
-func FileWrapper_InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
-	return FileWrapperClass.Alloc().InitSymbolicLinkWithDestinationURL(url)
+func NewFileWrapperSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitSymbolicLinkWithDestinationURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FileWrapper) InitWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
@@ -87,8 +91,10 @@ func (f_ FileWrapper) InitWithSerializedRepresentation(serializeRepresentation [
 // Initializes the receiver as a regular-file file wrapper from given serialized data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1407515-initwithserializedrepresentation?language=objc
-func FileWrapper_InitWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
-	return FileWrapperClass.Alloc().InitWithSerializedRepresentation(serializeRepresentation)
+func NewFileWrapperWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitWithSerializedRepresentation(serializeRepresentation)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FileWrapper) InitDirectoryWithFileWrappers(childrenByPreferredName map[string]IFileWrapper) FileWrapper {
@@ -99,8 +105,10 @@ func (f_ FileWrapper) InitDirectoryWithFileWrappers(childrenByPreferredName map[
 // Initializes the receiver as a directory file wrapper, with a given file-wrapper list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415121-initdirectorywithfilewrappers?language=objc
-func FileWrapper_InitDirectoryWithFileWrappers(childrenByPreferredName map[string]IFileWrapper) FileWrapper {
-	return FileWrapperClass.Alloc().InitDirectoryWithFileWrappers(childrenByPreferredName)
+func NewFileWrapperDirectoryWithFileWrappers(childrenByPreferredName map[string]IFileWrapper) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitDirectoryWithFileWrappers(childrenByPreferredName)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) FileWrapper {
@@ -111,8 +119,10 @@ func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadi
 // Initializes a file wrapper instance whose kind is determined by the type of file-system node located by the URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415658-initwithurl?language=objc
-func FileWrapper_InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) FileWrapper {
-	return FileWrapperClass.Alloc().InitWithURLOptionsError(url, options, outError)
+func NewFileWrapperWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) FileWrapper {
+	instance := FileWrapperClass.Alloc().InitWithURLOptionsError(url, options, outError)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FileWrapperClass) Alloc() FileWrapper {

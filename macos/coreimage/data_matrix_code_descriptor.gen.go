@@ -45,8 +45,10 @@ func (d_ DataMatrixCodeDescriptor) InitWithPayloadRowCountColumnCountEccVersion(
 // Initializes a descriptor that can be used as input to the CIBarcodeGenerator filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidatamatrixcodedescriptor/2875201-initwithpayload?language=objc
-func DataMatrixCodeDescriptor_InitWithPayloadRowCountColumnCountEccVersion(errorCorrectedPayload []byte, rowCount int, columnCount int, eccVersion DataMatrixCodeECCVersion) DataMatrixCodeDescriptor {
-	return DataMatrixCodeDescriptorClass.Alloc().InitWithPayloadRowCountColumnCountEccVersion(errorCorrectedPayload, rowCount, columnCount, eccVersion)
+func NewDataMatrixCodeDescriptorWithPayloadRowCountColumnCountEccVersion(errorCorrectedPayload []byte, rowCount int, columnCount int, eccVersion DataMatrixCodeECCVersion) DataMatrixCodeDescriptor {
+	instance := DataMatrixCodeDescriptorClass.Alloc().InitWithPayloadRowCountColumnCountEccVersion(errorCorrectedPayload, rowCount, columnCount, eccVersion)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DataMatrixCodeDescriptorClass) DescriptorWithPayloadRowCountColumnCountEccVersion(errorCorrectedPayload []byte, rowCount int, columnCount int, eccVersion DataMatrixCodeECCVersion) DataMatrixCodeDescriptor {

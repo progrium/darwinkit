@@ -48,8 +48,10 @@ func (k_ KeyedUnarchiver) InitForReadingFromDataError(data []byte, error IError)
 // Initializes an archiver to decode data from the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiver/2962883-initforreadingfromdata?language=objc
-func KeyedUnarchiver_InitForReadingFromDataError(data []byte, error IError) KeyedUnarchiver {
-	return KeyedUnarchiverClass.Alloc().InitForReadingFromDataError(data, error)
+func NewKeyedUnarchiverForReadingFromDataError(data []byte, error IError) KeyedUnarchiver {
+	instance := KeyedUnarchiverClass.Alloc().InitForReadingFromDataError(data, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (kc _KeyedUnarchiverClass) Alloc() KeyedUnarchiver {

@@ -77,8 +77,10 @@ func (u_ UnitAngle) InitWithSymbolConverter(symbol string, converter IUnitConver
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitAngle_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAngle {
-	return UnitAngleClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitAngleWithSymbolConverter(symbol string, converter IUnitConverter) UnitAngle {
+	instance := UnitAngleClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitAngle) InitWithSymbol(symbol string) UnitAngle {
@@ -89,8 +91,10 @@ func (u_ UnitAngle) InitWithSymbol(symbol string) UnitAngle {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitAngle_InitWithSymbol(symbol string) UnitAngle {
-	return UnitAngleClass.Alloc().InitWithSymbol(symbol)
+func NewUnitAngleWithSymbol(symbol string) UnitAngle {
+	instance := UnitAngleClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The revolutions unit of angle. [Full Topic]

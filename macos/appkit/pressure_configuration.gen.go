@@ -43,8 +43,10 @@ func (p_ PressureConfiguration) InitWithPressureBehavior(pressureBehavior Pressu
 // Initializes a pressure configuration object with a specified pressure behavior. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspressureconfiguration/1426883-initwithpressurebehavior?language=objc
-func PressureConfiguration_InitWithPressureBehavior(pressureBehavior PressureBehavior) PressureConfiguration {
-	return PressureConfigurationClass.Alloc().InitWithPressureBehavior(pressureBehavior)
+func NewPressureConfigurationWithPressureBehavior(pressureBehavior PressureBehavior) PressureConfiguration {
+	instance := PressureConfigurationClass.Alloc().InitWithPressureBehavior(pressureBehavior)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PressureConfigurationClass) Alloc() PressureConfiguration {

@@ -77,8 +77,10 @@ func (u_ UnitElectricPotentialDifference) InitWithSymbolConverter(symbol string,
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitElectricPotentialDifference_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricPotentialDifference {
-	return UnitElectricPotentialDifferenceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitElectricPotentialDifferenceWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricPotentialDifference {
+	instance := UnitElectricPotentialDifferenceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitElectricPotentialDifference) InitWithSymbol(symbol string) UnitElectricPotentialDifference {
@@ -89,8 +91,10 @@ func (u_ UnitElectricPotentialDifference) InitWithSymbol(symbol string) UnitElec
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitElectricPotentialDifference_InitWithSymbol(symbol string) UnitElectricPotentialDifference {
-	return UnitElectricPotentialDifferenceClass.Alloc().InitWithSymbol(symbol)
+func NewUnitElectricPotentialDifferenceWithSymbol(symbol string) UnitElectricPotentialDifference {
+	instance := UnitElectricPotentialDifferenceClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The volts unit of electric potential difference. [Full Topic]

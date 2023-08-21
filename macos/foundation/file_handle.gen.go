@@ -97,8 +97,10 @@ func (f_ FileHandle) InitWithFileDescriptor(fd int) FileHandle {
 // Creates and returns a file handle object associated with the specified file descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/1409825-initwithfiledescriptor?language=objc
-func FileHandle_InitWithFileDescriptor(fd int) FileHandle {
-	return FileHandleClass.Alloc().InitWithFileDescriptor(fd)
+func NewFileHandleWithFileDescriptor(fd int) FileHandle {
+	instance := FileHandleClass.Alloc().InitWithFileDescriptor(fd)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FileHandleClass) FileHandleForWritingAtPath(path string) FileHandle {

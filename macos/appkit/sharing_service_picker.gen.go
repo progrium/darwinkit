@@ -46,8 +46,10 @@ func (s_ SharingServicePicker) InitWithItems(items []objc.IObject) SharingServic
 // Creates a new sharing service picker for the selected items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepicker/1402691-initwithitems?language=objc
-func SharingServicePicker_InitWithItems(items []objc.IObject) SharingServicePicker {
-	return SharingServicePickerClass.Alloc().InitWithItems(items)
+func NewSharingServicePickerWithItems(items []objc.IObject) SharingServicePicker {
+	instance := SharingServicePickerClass.Alloc().InitWithItems(items)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SharingServicePickerClass) Alloc() SharingServicePicker {

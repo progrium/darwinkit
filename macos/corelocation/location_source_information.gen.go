@@ -43,8 +43,10 @@ func (l_ LocationSourceInformation) InitWithSoftwareSimulationStateAndExternalAc
 // Creates an instance of location source information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationsourceinformation/3861805-initwithsoftwaresimulationstate?language=objc
-func LocationSourceInformation_InitWithSoftwareSimulationStateAndExternalAccessoryState(isSoftware bool, isAccessory bool) LocationSourceInformation {
-	return LocationSourceInformationClass.Alloc().InitWithSoftwareSimulationStateAndExternalAccessoryState(isSoftware, isAccessory)
+func NewLocationSourceInformationWithSoftwareSimulationStateAndExternalAccessoryState(isSoftware bool, isAccessory bool) LocationSourceInformation {
+	instance := LocationSourceInformationClass.Alloc().InitWithSoftwareSimulationStateAndExternalAccessoryState(isSoftware, isAccessory)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocationSourceInformationClass) Alloc() LocationSourceInformation {

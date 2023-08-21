@@ -45,8 +45,10 @@ func (t_ TextParagraph) InitWithAttributedString(attributedString foundation.IAt
 // Creates a new paragraph with the attributed string you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextparagraph/3809959-initwithattributedstring?language=objc
-func TextParagraph_InitWithAttributedString(attributedString foundation.IAttributedString) TextParagraph {
-	return TextParagraphClass.Alloc().InitWithAttributedString(attributedString)
+func NewTextParagraphWithAttributedString(attributedString foundation.IAttributedString) TextParagraph {
+	instance := TextParagraphClass.Alloc().InitWithAttributedString(attributedString)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextParagraphClass) Alloc() TextParagraph {
@@ -81,8 +83,10 @@ func (t_ TextParagraph) InitWithTextContentManager(textContentManager ITextConte
 // Creates a new text element with the content manager you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809955-initwithtextcontentmanager?language=objc
-func TextParagraph_InitWithTextContentManager(textContentManager ITextContentManager) TextParagraph {
-	return TextParagraphClass.Alloc().InitWithTextContentManager(textContentManager)
+func NewTextParagraphWithTextContentManager(textContentManager ITextContentManager) TextParagraph {
+	instance := TextParagraphClass.Alloc().InitWithTextContentManager(textContentManager)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the source attributed string. [Full Topic]

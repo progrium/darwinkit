@@ -68,8 +68,10 @@ func (p_ PathComponentCell) InitTextCell(string_ string) PathComponentCell {
 // Initializes a text field cell that displays the specified string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1642278-inittextcell?language=objc
-func PathComponentCell_InitTextCell(string_ string) PathComponentCell {
-	return PathComponentCellClass.Alloc().InitTextCell(string_)
+func NewPathComponentCellTextCell(string_ string) PathComponentCell {
+	instance := PathComponentCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
@@ -80,8 +82,10 @@ func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func PathComponentCell_InitImageCell(image IImage) PathComponentCell {
-	return PathComponentCellClass.Alloc().InitImageCell(image)
+func NewPathComponentCellImageCell(image IImage) PathComponentCell {
+	instance := PathComponentCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // The portion of the path from the root through the component represented by the receiver. [Full Topic]

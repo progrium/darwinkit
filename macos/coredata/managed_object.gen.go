@@ -80,8 +80,10 @@ func (m_ ManagedObject) InitWithContext(moc IManagedObjectContext) ManagedObject
 // Initializes a managed object subclass and inserts it into the specified managed object context. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1640602-initwithcontext?language=objc
-func ManagedObject_InitWithContext(moc IManagedObjectContext) ManagedObject {
-	return ManagedObjectClass.Alloc().InitWithContext(moc)
+func NewManagedObjectWithContext(moc IManagedObjectContext) ManagedObject {
+	instance := ManagedObjectClass.Alloc().InitWithContext(moc)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _ManagedObjectClass) Alloc() ManagedObject {

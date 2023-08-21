@@ -45,8 +45,10 @@ func (r_ RangeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyS
 // Returns a range specifier initialized with the given properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrangespecifier/1409215-initwithcontainerclassdescriptio?language=objc
-func RangeSpecifier_InitWithContainerClassDescriptionContainerSpecifierKeyStartSpecifierEndSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, startSpec IScriptObjectSpecifier, endSpec IScriptObjectSpecifier) RangeSpecifier {
-	return RangeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyStartSpecifierEndSpecifier(classDesc, container, property, startSpec, endSpec)
+func NewRangeSpecifierWithContainerClassDescriptionContainerSpecifierKeyStartSpecifierEndSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, startSpec IScriptObjectSpecifier, endSpec IScriptObjectSpecifier) RangeSpecifier {
+	instance := RangeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKeyStartSpecifierEndSpecifier(classDesc, container, property, startSpec, endSpec)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RangeSpecifierClass) Alloc() RangeSpecifier {
@@ -81,8 +83,10 @@ func (r_ RangeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func RangeSpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RangeSpecifier {
-	return RangeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewRangeSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RangeSpecifier {
+	instance := RangeSpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (r_ RangeSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RangeSpecifier {
@@ -93,8 +97,10 @@ func (r_ RangeSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSp
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func RangeSpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RangeSpecifier {
-	return RangeSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewRangeSpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RangeSpecifier {
+	instance := RangeSpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the object specifier representing the first object of the range. [Full Topic]

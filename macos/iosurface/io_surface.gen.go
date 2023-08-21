@@ -73,8 +73,10 @@ func (i_ IOSurface) InitWithProperties(properties map[PropertyKey]objc.IObject) 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/iosurface/iosurface/2092523-initwithproperties?language=objc
-func IOSurface_InitWithProperties(properties map[PropertyKey]objc.IObject) IOSurface {
-	return IOSurfaceClass.Alloc().InitWithProperties(properties)
+func NewIOSurfaceWithProperties(properties map[PropertyKey]objc.IObject) IOSurface {
+	instance := IOSurfaceClass.Alloc().InitWithProperties(properties)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IOSurfaceClass) Alloc() IOSurface {

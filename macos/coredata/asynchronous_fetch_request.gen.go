@@ -45,8 +45,10 @@ func (a_ AsynchronousFetchRequest) InitWithFetchRequestCompletionBlock(request I
 // Initializes a new asynchronous fetch request configured with the provided fetch request and completion block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsasynchronousfetchrequest/1506218-initwithfetchrequest?language=objc
-func AsynchronousFetchRequest_InitWithFetchRequestCompletionBlock(request IFetchRequest, blk func(arg0 AsynchronousFetchResult)) AsynchronousFetchRequest {
-	return AsynchronousFetchRequestClass.Alloc().InitWithFetchRequestCompletionBlock(request, blk)
+func NewAsynchronousFetchRequestWithFetchRequestCompletionBlock(request IFetchRequest, blk func(arg0 AsynchronousFetchResult)) AsynchronousFetchRequest {
+	instance := AsynchronousFetchRequestClass.Alloc().InitWithFetchRequestCompletionBlock(request, blk)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AsynchronousFetchRequestClass) Alloc() AsynchronousFetchRequest {

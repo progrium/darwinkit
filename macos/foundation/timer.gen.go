@@ -50,8 +50,10 @@ func (t_ Timer) InitWithFireDateIntervalRepeatsBlock(date IDate, interval TimeIn
 // Initializes a timer for the specified date and time interval with the specified block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/2091887-initwithfiredate?language=objc
-func Timer_InitWithFireDateIntervalRepeatsBlock(date IDate, interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
-	return TimerClass.Alloc().InitWithFireDateIntervalRepeatsBlock(date, interval, repeats, block)
+func NewTimerWithFireDateIntervalRepeatsBlock(date IDate, interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
+	instance := TimerClass.Alloc().InitWithFireDateIntervalRepeatsBlock(date, interval, repeats, block)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TimerClass) Alloc() Timer {

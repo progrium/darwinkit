@@ -93,8 +93,10 @@ func (o_ OrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) Ordered
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
-func OrderedSet_InitWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
+func NewOrderedSetWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
+	instance := OrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) OrderedSet {
@@ -117,8 +119,10 @@ func (o_ OrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Ra
 // Initializes a new ordered set with the contents of an ordered set, optionally copying the items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1417751-initwithorderedset?language=objc
-func OrderedSet_InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
+func NewOrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) OrderedSet {
+	instance := OrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OrderedSet) InitWithObject(object objc.IObject) OrderedSet {
@@ -129,8 +133,10 @@ func (o_ OrderedSet) InitWithObject(object objc.IObject) OrderedSet {
 // Initializes a new ordered set with the object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1413883-initwithobject?language=objc
-func OrderedSet_InitWithObject(object objc.IObject) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithObject(object)
+func NewOrderedSetWithObject(object objc.IObject) OrderedSet {
+	instance := OrderedSetClass.Alloc().InitWithObject(object)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OrderedSet) InitWithArrayCopyItems(set []objc.IObject, flag bool) OrderedSet {
@@ -141,8 +147,10 @@ func (o_ OrderedSet) InitWithArrayCopyItems(set []objc.IObject, flag bool) Order
 // Initializes a newly allocated set with the objects that are contained in a given array, optionally copying the items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1418006-initwitharray?language=objc
-func OrderedSet_InitWithArrayCopyItems(set []objc.IObject, flag bool) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithArrayCopyItems(set, flag)
+func NewOrderedSetWithArrayCopyItems(set []objc.IObject, flag bool) OrderedSet {
+	instance := OrderedSetClass.Alloc().InitWithArrayCopyItems(set, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OrderedSetClass) OrderedSetWithArray(array []objc.IObject) OrderedSet {
@@ -189,8 +197,10 @@ func (o_ OrderedSet) InitWithSet(set ISet) OrderedSet {
 // Initializes a new ordered set with the contents of a set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1416344-initwithset?language=objc
-func OrderedSet_InitWithSet(set ISet) OrderedSet {
-	return OrderedSetClass.Alloc().InitWithSet(set)
+func NewOrderedSetWithSet(set ISet) OrderedSet {
+	instance := OrderedSetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OrderedSet) Init() OrderedSet {

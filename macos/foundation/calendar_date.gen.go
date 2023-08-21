@@ -78,7 +78,9 @@ func (c_ CalendarDate) DateByAddingTimeInterval(ti TimeInterval) CalendarDate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1408823-datebyaddingtimeinterval?language=objc
 func CalendarDate_DateByAddingTimeInterval(ti TimeInterval) CalendarDate {
-	return CalendarDateClass.Alloc().DateByAddingTimeInterval(ti)
+	instance := CalendarDateClass.Alloc().DateByAddingTimeInterval(ti)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CalendarDateClass) DateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) CalendarDate {
@@ -125,8 +127,10 @@ func (c_ CalendarDate) InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) C
 // Returns a date object initialized relative to 00:00:00 UTC on 1 January 2001 by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1409769-initwithtimeintervalsincereferen?language=objc
-func CalendarDate_InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) CalendarDate {
-	return CalendarDateClass.Alloc().InitWithTimeIntervalSinceReferenceDate(ti)
+func NewCalendarDateWithTimeIntervalSinceReferenceDate(ti TimeInterval) CalendarDate {
+	instance := CalendarDateClass.Alloc().InitWithTimeIntervalSinceReferenceDate(ti)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CalendarDate) InitWithTimeIntervalSinceNow(secs TimeInterval) CalendarDate {
@@ -137,8 +141,10 @@ func (c_ CalendarDate) InitWithTimeIntervalSinceNow(secs TimeInterval) CalendarD
 // Returns a date object initialized relative to the current date and time by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1411701-initwithtimeintervalsincenow?language=objc
-func CalendarDate_InitWithTimeIntervalSinceNow(secs TimeInterval) CalendarDate {
-	return CalendarDateClass.Alloc().InitWithTimeIntervalSinceNow(secs)
+func NewCalendarDateWithTimeIntervalSinceNow(secs TimeInterval) CalendarDate {
+	instance := CalendarDateClass.Alloc().InitWithTimeIntervalSinceNow(secs)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CalendarDateClass) DateWithTimeIntervalSinceReferenceDate(ti TimeInterval) CalendarDate {
@@ -161,8 +167,10 @@ func (c_ CalendarDate) InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval,
 // Returns a date object initialized relative to another given date by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1414201-initwithtimeinterval?language=objc
-func CalendarDate_InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) CalendarDate {
-	return CalendarDateClass.Alloc().InitWithTimeIntervalSinceDate(secsToBeAdded, date)
+func NewCalendarDateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) CalendarDate {
+	instance := CalendarDateClass.Alloc().InitWithTimeIntervalSinceDate(secsToBeAdded, date)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CalendarDate) InitWithTimeIntervalSince1970(secs TimeInterval) CalendarDate {
@@ -173,6 +181,8 @@ func (c_ CalendarDate) InitWithTimeIntervalSince1970(secs TimeInterval) Calendar
 // Returns a date object initialized relative to 00:00:00 UTC on 1 January 1970 by a given number of seconds. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1416453-initwithtimeintervalsince1970?language=objc
-func CalendarDate_InitWithTimeIntervalSince1970(secs TimeInterval) CalendarDate {
-	return CalendarDateClass.Alloc().InitWithTimeIntervalSince1970(secs)
+func NewCalendarDateWithTimeIntervalSince1970(secs TimeInterval) CalendarDate {
+	instance := CalendarDateClass.Alloc().InitWithTimeIntervalSince1970(secs)
+	instance.Autorelease()
+	return instance
 }

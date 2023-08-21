@@ -77,8 +77,10 @@ func (u_ UnitDispersion) InitWithSymbolConverter(symbol string, converter IUnitC
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitDispersion_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitDispersion {
-	return UnitDispersionClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitDispersionWithSymbolConverter(symbol string, converter IUnitConverter) UnitDispersion {
+	instance := UnitDispersionClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitDispersion) InitWithSymbol(symbol string) UnitDispersion {
@@ -89,8 +91,10 @@ func (u_ UnitDispersion) InitWithSymbol(symbol string) UnitDispersion {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitDispersion_InitWithSymbol(symbol string) UnitDispersion {
-	return UnitDispersionClass.Alloc().InitWithSymbol(symbol)
+func NewUnitDispersionWithSymbol(symbol string) UnitDispersion {
+	instance := UnitDispersionClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The parts per million unit. [Full Topic]

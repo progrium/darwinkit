@@ -44,8 +44,10 @@ func (u_ UUID) InitWithUUIDBytes(bytes *uint8) UUID {
 // Initializes a new UUID with the given bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuuid/1417039-initwithuuidbytes?language=objc
-func UUID_InitWithUUIDBytes(bytes *uint8) UUID {
-	return UUIDClass.Alloc().InitWithUUIDBytes(bytes)
+func NewUUIDWithUUIDBytes(bytes *uint8) UUID {
+	instance := UUIDClass.Alloc().InitWithUUIDBytes(bytes)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UUIDClass) UUID() UUID {
@@ -73,8 +75,10 @@ func (u_ UUID) InitWithUUIDString(string_ string) UUID {
 // Initializes a new UUID with the formatted string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuuid/1411662-initwithuuidstring?language=objc
-func UUID_InitWithUUIDString(string_ string) UUID {
-	return UUIDClass.Alloc().InitWithUUIDString(string_)
+func NewUUIDWithUUIDString(string_ string) UUID {
+	instance := UUIDClass.Alloc().InitWithUUIDString(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UUIDClass) Alloc() UUID {

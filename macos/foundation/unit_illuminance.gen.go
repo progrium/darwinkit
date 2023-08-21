@@ -77,8 +77,10 @@ func (u_ UnitIlluminance) InitWithSymbolConverter(symbol string, converter IUnit
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitIlluminance_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitIlluminance {
-	return UnitIlluminanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitIlluminanceWithSymbolConverter(symbol string, converter IUnitConverter) UnitIlluminance {
+	instance := UnitIlluminanceClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitIlluminance) InitWithSymbol(symbol string) UnitIlluminance {
@@ -89,8 +91,10 @@ func (u_ UnitIlluminance) InitWithSymbol(symbol string) UnitIlluminance {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitIlluminance_InitWithSymbol(symbol string) UnitIlluminance {
-	return UnitIlluminanceClass.Alloc().InitWithSymbol(symbol)
+func NewUnitIlluminanceWithSymbol(symbol string) UnitIlluminance {
+	instance := UnitIlluminanceClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The lux unit of illuminance. [Full Topic]

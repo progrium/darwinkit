@@ -77,8 +77,10 @@ func (u_ UnitAcceleration) InitWithSymbolConverter(symbol string, converter IUni
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitAcceleration_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAcceleration {
-	return UnitAccelerationClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitAccelerationWithSymbolConverter(symbol string, converter IUnitConverter) UnitAcceleration {
+	instance := UnitAccelerationClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitAcceleration) InitWithSymbol(symbol string) UnitAcceleration {
@@ -89,8 +91,10 @@ func (u_ UnitAcceleration) InitWithSymbol(symbol string) UnitAcceleration {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitAcceleration_InitWithSymbol(symbol string) UnitAcceleration {
-	return UnitAccelerationClass.Alloc().InitWithSymbol(symbol)
+func NewUnitAccelerationWithSymbol(symbol string) UnitAcceleration {
+	instance := UnitAccelerationClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the meter per second squared unit of acceleration. [Full Topic]

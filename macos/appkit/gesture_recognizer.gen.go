@@ -95,8 +95,10 @@ func (g_ GestureRecognizer) InitWithTargetAction(target objc.IObject, action obj
 // Initializes the gesture recognizer with the specified target and action information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535012-initwithtarget?language=objc
-func GestureRecognizer_InitWithTargetAction(target objc.IObject, action objc.Selector) GestureRecognizer {
-	return GestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+func NewGestureRecognizerWithTargetAction(target objc.IObject, action objc.Selector) GestureRecognizer {
+	instance := GestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+	instance.Autorelease()
+	return instance
 }
 
 func (gc _GestureRecognizerClass) Alloc() GestureRecognizer {

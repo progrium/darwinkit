@@ -71,8 +71,10 @@ func (i_ ImageCell) InitImageCell(image IImage) ImageCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func ImageCell_InitImageCell(image IImage) ImageCell {
-	return ImageCellClass.Alloc().InitImageCell(image)
+func NewImageCellImageCell(image IImage) ImageCell {
+	instance := ImageCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ ImageCell) InitTextCell(string_ string) ImageCell {
@@ -83,8 +85,10 @@ func (i_ ImageCell) InitTextCell(string_ string) ImageCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func ImageCell_InitTextCell(string_ string) ImageCell {
-	return ImageCellClass.Alloc().InitTextCell(string_)
+func NewImageCellTextCell(string_ string) ImageCell {
+	instance := ImageCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // The alignment of the receiver’s image relative to its frame. [Full Topic]

@@ -46,8 +46,10 @@ func (t_ TextTableBlock) InitWithTableStartingRowRowSpanStartingColumnColumnSpan
 // Returns an initialized text table block. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttableblock/1532894-initwithtable?language=objc
-func TextTableBlock_InitWithTableStartingRowRowSpanStartingColumnColumnSpan(table ITextTable, row int, rowSpan int, col int, colSpan int) TextTableBlock {
-	return TextTableBlockClass.Alloc().InitWithTableStartingRowRowSpanStartingColumnColumnSpan(table, row, rowSpan, col, colSpan)
+func NewTextTableBlockWithTableStartingRowRowSpanStartingColumnColumnSpan(table ITextTable, row int, rowSpan int, col int, colSpan int) TextTableBlock {
+	instance := TextTableBlockClass.Alloc().InitWithTableStartingRowRowSpanStartingColumnColumnSpan(table, row, rowSpan, col, colSpan)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextTableBlockClass) Alloc() TextTableBlock {

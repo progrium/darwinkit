@@ -71,8 +71,10 @@ func (d_ DatePickerCell) InitTextCell(string_ string) DatePickerCell {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1643566-inittextcell?language=objc
-func DatePickerCell_InitTextCell(string_ string) DatePickerCell {
-	return DatePickerCellClass.Alloc().InitTextCell(string_)
+func NewDatePickerCellTextCell(string_ string) DatePickerCell {
+	instance := DatePickerCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DatePickerCellClass) Alloc() DatePickerCell {
@@ -107,8 +109,10 @@ func (d_ DatePickerCell) InitImageCell(image IImage) DatePickerCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func DatePickerCell_InitImageCell(image IImage) DatePickerCell {
-	return DatePickerCellClass.Alloc().InitImageCell(image)
+func NewDatePickerCellImageCell(image IImage) DatePickerCell {
+	instance := DatePickerCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // A bitmask that indicates which visual elements are shown by the date picker. [Full Topic]

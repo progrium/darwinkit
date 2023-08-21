@@ -73,8 +73,10 @@ func (t_ TableHeaderView) InitWithFrame(frameRect foundation.Rect) TableHeaderVi
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func TableHeaderView_InitWithFrame(frameRect foundation.Rect) TableHeaderView {
-	return TableHeaderViewClass.Alloc().InitWithFrame(frameRect)
+func NewTableHeaderViewWithFrame(frameRect foundation.Rect) TableHeaderView {
+	instance := TableHeaderViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the index of the column whose header lies under aPoint in the receiver, or –1 if no such column is found. [Full Topic]

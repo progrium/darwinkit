@@ -49,8 +49,10 @@ func (f_ FilterShape) InitWithRect(r coregraphics.Rect) FilterShape {
 // Initializes a filter shape object with a rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltershape/1437921-initwithrect?language=objc
-func FilterShape_InitWithRect(r coregraphics.Rect) FilterShape {
-	return FilterShapeClass.Alloc().InitWithRect(r)
+func NewFilterShapeWithRect(r coregraphics.Rect) FilterShape {
+	instance := FilterShapeClass.Alloc().InitWithRect(r)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FilterShapeClass) ShapeWithRect(r coregraphics.Rect) FilterShape {

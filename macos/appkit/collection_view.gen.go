@@ -133,8 +133,10 @@ func (c_ CollectionView) InitWithFrame(frameRect foundation.Rect) CollectionView
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func CollectionView_InitWithFrame(frameRect foundation.Rect) CollectionView {
-	return CollectionViewClass.Alloc().InitWithFrame(frameRect)
+func NewCollectionViewWithFrame(frameRect foundation.Rect) CollectionView {
+	instance := CollectionViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the collection view item for the represented object at the specified index. [Full Topic]

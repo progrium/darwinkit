@@ -47,8 +47,10 @@ func (w_ WebResource) InitWithDataURLMIMETypeTextEncodingNameFrameName(data []by
 // Initializes and returns a web resource instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/webresource/1392185-initwithdata?language=objc
-func WebResource_InitWithDataURLMIMETypeTextEncodingNameFrameName(data []byte, URL foundation.IURL, MIMEType string, textEncodingName string, frameName string) WebResource {
-	return WebResourceClass.Alloc().InitWithDataURLMIMETypeTextEncodingNameFrameName(data, URL, MIMEType, textEncodingName, frameName)
+func NewWebResourceWithDataURLMIMETypeTextEncodingNameFrameName(data []byte, URL foundation.IURL, MIMEType string, textEncodingName string, frameName string) WebResource {
+	instance := WebResourceClass.Alloc().InitWithDataURLMIMETypeTextEncodingNameFrameName(data, URL, MIMEType, textEncodingName, frameName)
+	instance.Autorelease()
+	return instance
 }
 
 func (wc _WebResourceClass) Alloc() WebResource {

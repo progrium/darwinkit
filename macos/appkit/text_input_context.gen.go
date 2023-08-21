@@ -55,8 +55,10 @@ func (t_ TextInputContext) InitWithClient(client PTextInputClient) TextInputCont
 // The designated initializer [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1532777-initwithclient?language=objc
-func TextInputContext_InitWithClient(client PTextInputClient) TextInputContext {
-	return TextInputContextClass.Alloc().InitWithClient(client)
+func NewTextInputContextWithClient(client PTextInputClient) TextInputContext {
+	instance := TextInputContextClass.Alloc().InitWithClient(client)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextInputContextClass) Alloc() TextInputContext {

@@ -72,8 +72,10 @@ func (o_ Orthography) InitWithDominantScriptLanguageMap(script string, map_ map[
 // Creates an orthography object with the specified dominant script and language map. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorthography/1408708-initwithdominantscript?language=objc
-func Orthography_InitWithDominantScriptLanguageMap(script string, map_ map[string][]string) Orthography {
-	return OrthographyClass.Alloc().InitWithDominantScriptLanguageMap(script, map_)
+func NewOrthographyWithDominantScriptLanguageMap(script string, map_ map[string][]string) Orthography {
+	instance := OrthographyClass.Alloc().InitWithDominantScriptLanguageMap(script, map_)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OrthographyClass) Alloc() Orthography {

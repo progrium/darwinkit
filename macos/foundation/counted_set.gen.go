@@ -42,8 +42,10 @@ func (c_ CountedSet) InitWithCapacity(numItems uint) CountedSet {
 // Returns a counted set object initialized with enough memory to hold a given number of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1415625-initwithcapacity?language=objc
-func CountedSet_InitWithCapacity(numItems uint) CountedSet {
-	return CountedSetClass.Alloc().InitWithCapacity(numItems)
+func NewCountedSetWithCapacity(numItems uint) CountedSet {
+	instance := CountedSetClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CountedSet) InitWithArray(array []objc.IObject) CountedSet {
@@ -54,8 +56,10 @@ func (c_ CountedSet) InitWithArray(array []objc.IObject) CountedSet {
 // Returns a counted set object initialized with the contents of a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1416767-initwitharray?language=objc
-func CountedSet_InitWithArray(array []objc.IObject) CountedSet {
-	return CountedSetClass.Alloc().InitWithArray(array)
+func NewCountedSetWithArray(array []objc.IObject) CountedSet {
+	instance := CountedSetClass.Alloc().InitWithArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (c_ CountedSet) InitWithSet(set ISet) CountedSet {
@@ -66,8 +70,10 @@ func (c_ CountedSet) InitWithSet(set ISet) CountedSet {
 // Returns a counted set object initialized with the contents of a given set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscountedset/1411730-initwithset?language=objc
-func CountedSet_InitWithSet(set ISet) CountedSet {
-	return CountedSetClass.Alloc().InitWithSet(set)
+func NewCountedSetWithSet(set ISet) CountedSet {
+	instance := CountedSetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CountedSetClass) Alloc() CountedSet {
@@ -126,8 +132,10 @@ func (c_ CountedSet) InitWithObjects(firstObj objc.IObject, args ...any) Counted
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func CountedSet_InitWithObjects(firstObj objc.IObject, args ...any) CountedSet {
-	return CountedSetClass.Alloc().InitWithObjects(firstObj, args...)
+func NewCountedSetWithObjects(firstObj objc.IObject, args ...any) CountedSet {
+	instance := CountedSetClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CountedSetClass) SetWithSet(set ISet) CountedSet {

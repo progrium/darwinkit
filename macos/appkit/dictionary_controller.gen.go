@@ -77,8 +77,10 @@ func (d_ DictionaryController) InitWithContent(content objc.IObject) DictionaryC
 // Initializes and returns an NSObjectController object with the given content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1529422-initwithcontent?language=objc
-func DictionaryController_InitWithContent(content objc.IObject) DictionaryController {
-	return DictionaryControllerClass.Alloc().InitWithContent(content)
+func NewDictionaryControllerWithContent(content objc.IObject) DictionaryController {
+	instance := DictionaryControllerClass.Alloc().InitWithContent(content)
+	instance.Autorelease()
+	return instance
 }
 
 // The key names that are never displayed in the user interface items bound to the receiver. [Full Topic]

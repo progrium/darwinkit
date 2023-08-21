@@ -46,8 +46,10 @@ func (c_ CustomAttributeKey) InitWithKeyName(keyName string) CustomAttributeKey 
 // Returns a new custom attribute key with the specified name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cscustomattributekey/1616402-initwithkeyname?language=objc
-func CustomAttributeKey_InitWithKeyName(keyName string) CustomAttributeKey {
-	return CustomAttributeKeyClass.Alloc().InitWithKeyName(keyName)
+func NewCustomAttributeKeyWithKeyName(keyName string) CustomAttributeKey {
+	instance := CustomAttributeKeyClass.Alloc().InitWithKeyName(keyName)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CustomAttributeKeyClass) Alloc() CustomAttributeKey {

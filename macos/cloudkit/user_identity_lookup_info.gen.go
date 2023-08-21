@@ -44,8 +44,10 @@ func (u_ UserIdentityLookupInfo) InitWithEmailAddress(emailAddress string) UserI
 // Creates a lookup info for the specified email address. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640484-initwithemailaddress?language=objc
-func UserIdentityLookupInfo_InitWithEmailAddress(emailAddress string) UserIdentityLookupInfo {
-	return UserIdentityLookupInfoClass.Alloc().InitWithEmailAddress(emailAddress)
+func NewUserIdentityLookupInfoWithEmailAddress(emailAddress string) UserIdentityLookupInfo {
+	instance := UserIdentityLookupInfoClass.Alloc().InitWithEmailAddress(emailAddress)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UserIdentityLookupInfo) InitWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
@@ -56,8 +58,10 @@ func (u_ UserIdentityLookupInfo) InitWithUserRecordID(userRecordID IRecordID) Us
 // Creates a lookup info for the specified user record ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640419-initwithuserrecordid?language=objc
-func UserIdentityLookupInfo_InitWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
-	return UserIdentityLookupInfoClass.Alloc().InitWithUserRecordID(userRecordID)
+func NewUserIdentityLookupInfoWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
+	instance := UserIdentityLookupInfoClass.Alloc().InitWithUserRecordID(userRecordID)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UserIdentityLookupInfo) InitWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
@@ -68,8 +72,10 @@ func (u_ UserIdentityLookupInfo) InitWithPhoneNumber(phoneNumber string) UserIde
 // Creates a lookup info for the specified phone number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckuseridentitylookupinfo/1640402-initwithphonenumber?language=objc
-func UserIdentityLookupInfo_InitWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
-	return UserIdentityLookupInfoClass.Alloc().InitWithPhoneNumber(phoneNumber)
+func NewUserIdentityLookupInfoWithPhoneNumber(phoneNumber string) UserIdentityLookupInfo {
+	instance := UserIdentityLookupInfoClass.Alloc().InitWithPhoneNumber(phoneNumber)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UserIdentityLookupInfoClass) Alloc() UserIdentityLookupInfo {

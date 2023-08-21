@@ -45,8 +45,10 @@ func (t_ TextTab) InitWithTextAlignmentLocationOptions(alignment TextAlignment, 
 // Initializes a text tab with the specified text alignment, location, and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttab/1526080-initwithtextalignment?language=objc
-func TextTab_InitWithTextAlignmentLocationOptions(alignment TextAlignment, loc float64, options map[TextTabOptionKey]objc.IObject) TextTab {
-	return TextTabClass.Alloc().InitWithTextAlignmentLocationOptions(alignment, loc, options)
+func NewTextTabWithTextAlignmentLocationOptions(alignment TextAlignment, loc float64, options map[TextTabOptionKey]objc.IObject) TextTab {
+	instance := TextTabClass.Alloc().InitWithTextAlignmentLocationOptions(alignment, loc, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextTabClass) Alloc() TextTab {

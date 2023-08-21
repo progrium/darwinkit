@@ -86,8 +86,10 @@ func (p_ ProgressIndicator) InitWithFrame(frameRect foundation.Rect) ProgressInd
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ProgressIndicator_InitWithFrame(frameRect foundation.Rect) ProgressIndicator {
-	return ProgressIndicatorClass.Alloc().InitWithFrame(frameRect)
+func NewProgressIndicatorWithFrame(frameRect foundation.Rect) ProgressIndicator {
+	instance := ProgressIndicatorClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Advances the progress bar of a determinate progress indicator by the specified amount. [Full Topic]

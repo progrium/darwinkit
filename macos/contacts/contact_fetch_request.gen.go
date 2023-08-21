@@ -52,8 +52,10 @@ func (c_ ContactFetchRequest) InitWithKeysToFetch(keysToFetch []objc.IObject) Co
 // Creates a fetch request for the specified keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403020-initwithkeystofetch?language=objc
-func ContactFetchRequest_InitWithKeysToFetch(keysToFetch []objc.IObject) ContactFetchRequest {
-	return ContactFetchRequestClass.Alloc().InitWithKeysToFetch(keysToFetch)
+func NewContactFetchRequestWithKeysToFetch(keysToFetch []objc.IObject) ContactFetchRequest {
+	instance := ContactFetchRequestClass.Alloc().InitWithKeysToFetch(keysToFetch)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ContactFetchRequestClass) Alloc() ContactFetchRequest {

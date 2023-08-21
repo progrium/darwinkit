@@ -43,8 +43,10 @@ func (a_ Asset) InitWithFileURL(fileURL foundation.IURL) Asset {
 // Creates an asset that references a file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckasset/1514990-initwithfileurl?language=objc
-func Asset_InitWithFileURL(fileURL foundation.IURL) Asset {
-	return AssetClass.Alloc().InitWithFileURL(fileURL)
+func NewAssetWithFileURL(fileURL foundation.IURL) Asset {
+	instance := AssetClass.Alloc().InitWithFileURL(fileURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AssetClass) Alloc() Asset {

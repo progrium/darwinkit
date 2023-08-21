@@ -128,7 +128,7 @@ func (h *FileSystemURLSchemeHandler) WebViewStartURLSchemeTask(webView WebView, 
 
 	mime := h.getMime(path)
 	foundation.NewURLResponse()
-	response := foundation.HTTPURLResponse_InitWithURLMIMETypeExpectedContentLengthTextEncodingName(
+	response := foundation.NewHTTPURLResponseWithURLMIMETypeExpectedContentLengthTextEncodingName(
 		url, mime, len(data), "utf-8",
 	)
 
@@ -144,7 +144,7 @@ func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskWrap
 		status = 404
 	}
 	data := []byte(err.Error())
-	response := foundation.HTTPURLResponse_InitWithURLStatusCodeHTTPVersionHeaderFields(
+	response := foundation.NewHTTPURLResponseWithURLStatusCodeHTTPVersionHeaderFields(
 		url, status, "", map[string]string{
 			"Content-type":   "text/plain; charset=utf-8",
 			"Content-length": strconv.Itoa(len(data)),

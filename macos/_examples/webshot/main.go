@@ -67,7 +67,7 @@ func initAndRun() {
 	action.Set(snapshotButton, func(sender objc.Object) {
 		snapshotWebView.TakeSnapshotWithConfigurationCompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
 			imageRef := image.CGImageForProposedRectContextHints(nil, nil, nil)
-			imageRepo := appkit.BitmapImageRep_InitWithCGImage(imageRef)
+			imageRepo := appkit.NewBitmapImageRepWithCGImage(imageRef)
 			imageRepo.SetSize(image.Size())
 			pngData := imageRepo.RepresentationUsingTypeProperties(appkit.BitmapImageFileTypePNG, nil)
 

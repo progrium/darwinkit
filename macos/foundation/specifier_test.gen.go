@@ -41,8 +41,10 @@ func (s_ SpecifierTest) InitWithObjectSpecifierComparisonOperatorTestObject(obj1
 // Returns a specifier test initialized to evaluate a test object against an object specified by an object specifier using a given comparison operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspecifiertest/1393833-initwithobjectspecifier?language=objc
-func SpecifierTest_InitWithObjectSpecifierComparisonOperatorTestObject(obj1 IScriptObjectSpecifier, compOp TestComparisonOperation, obj2 objc.IObject) SpecifierTest {
-	return SpecifierTestClass.Alloc().InitWithObjectSpecifierComparisonOperatorTestObject(obj1, compOp, obj2)
+func NewSpecifierTestWithObjectSpecifierComparisonOperatorTestObject(obj1 IScriptObjectSpecifier, compOp TestComparisonOperation, obj2 objc.IObject) SpecifierTest {
+	instance := SpecifierTestClass.Alloc().InitWithObjectSpecifierComparisonOperatorTestObject(obj1, compOp, obj2)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SpecifierTestClass) Alloc() SpecifierTest {

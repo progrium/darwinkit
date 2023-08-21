@@ -41,8 +41,10 @@ func (l_ LogicalTest) InitAndTestWithTests(subTests []ISpecifierTest) LogicalTes
 // Returns an NSLogicalTest object initialized to perform an AND operation with the NSSpecifierTest objects in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393854-initandtestwithtests?language=objc
-func LogicalTest_InitAndTestWithTests(subTests []ISpecifierTest) LogicalTest {
-	return LogicalTestClass.Alloc().InitAndTestWithTests(subTests)
+func NewLogicalTestAndTestWithTests(subTests []ISpecifierTest) LogicalTest {
+	instance := LogicalTestClass.Alloc().InitAndTestWithTests(subTests)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LogicalTest) InitOrTestWithTests(subTests []ISpecifierTest) LogicalTest {
@@ -53,8 +55,10 @@ func (l_ LogicalTest) InitOrTestWithTests(subTests []ISpecifierTest) LogicalTest
 // Returns an NSLogicalTest object initialized to perform an OR operation with the NSSpecifierTest objects in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393875-initortestwithtests?language=objc
-func LogicalTest_InitOrTestWithTests(subTests []ISpecifierTest) LogicalTest {
-	return LogicalTestClass.Alloc().InitOrTestWithTests(subTests)
+func NewLogicalTestOrTestWithTests(subTests []ISpecifierTest) LogicalTest {
+	instance := LogicalTestClass.Alloc().InitOrTestWithTests(subTests)
+	instance.Autorelease()
+	return instance
 }
 
 func (l_ LogicalTest) InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
@@ -65,8 +69,10 @@ func (l_ LogicalTest) InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest 
 // Returns an NSLogicalTest object initialized to perform a NOT operation on the given NSScriptWhoseTest object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslogicaltest/1393879-initnottestwithtest?language=objc
-func LogicalTest_InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
-	return LogicalTestClass.Alloc().InitNotTestWithTest(subTest)
+func NewLogicalTestNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
+	instance := LogicalTestClass.Alloc().InitNotTestWithTest(subTest)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LogicalTestClass) Alloc() LogicalTest {

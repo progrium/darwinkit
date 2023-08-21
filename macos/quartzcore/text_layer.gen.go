@@ -95,8 +95,10 @@ func (t_ TextLayer) InitWithLayer(layer objc.IObject) TextLayer {
 // Override to copy or initialize custom fields of the specified layer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410842-initwithlayer?language=objc
-func TextLayer_InitWithLayer(layer objc.IObject) TextLayer {
-	return TextLayerClass.Alloc().InitWithLayer(layer)
+func NewTextLayerWithLayer(layer objc.IObject) TextLayer {
+	instance := TextLayerClass.Alloc().InitWithLayer(layer)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextLayer) ModelLayer() TextLayer {
@@ -108,7 +110,9 @@ func (t_ TextLayer) ModelLayer() TextLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410853-modellayer?language=objc
 func TextLayer_ModelLayer() TextLayer {
-	return TextLayerClass.Alloc().ModelLayer()
+	instance := TextLayerClass.Alloc().ModelLayer()
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextLayer) PresentationLayer() TextLayer {
@@ -120,7 +124,9 @@ func (t_ TextLayer) PresentationLayer() TextLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410744-presentationlayer?language=objc
 func TextLayer_PresentationLayer() TextLayer {
-	return TextLayerClass.Alloc().PresentationLayer()
+	instance := TextLayerClass.Alloc().PresentationLayer()
+	instance.Autorelease()
+	return instance
 }
 
 // The font size used to render the receiver’s text. Animatable. [Full Topic]

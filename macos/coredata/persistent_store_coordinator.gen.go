@@ -59,8 +59,10 @@ func (p_ PersistentStoreCoordinator) InitWithManagedObjectModel(model IManagedOb
 // Creates a persistent store coordinator with the specified managed object model. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstorecoordinator/1468895-initwithmanagedobjectmodel?language=objc
-func PersistentStoreCoordinator_InitWithManagedObjectModel(model IManagedObjectModel) PersistentStoreCoordinator {
-	return PersistentStoreCoordinatorClass.Alloc().InitWithManagedObjectModel(model)
+func NewPersistentStoreCoordinatorWithManagedObjectModel(model IManagedObjectModel) PersistentStoreCoordinator {
+	instance := PersistentStoreCoordinatorClass.Alloc().InitWithManagedObjectModel(model)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentStoreCoordinatorClass) Alloc() PersistentStoreCoordinator {

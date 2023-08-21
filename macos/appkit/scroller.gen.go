@@ -80,8 +80,10 @@ func (s_ Scroller) InitWithFrame(frameRect foundation.Rect) Scroller {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Scroller_InitWithFrame(frameRect foundation.Rect) Scroller {
-	return ScrollerClass.Alloc().InitWithFrame(frameRect)
+func NewScrollerWithFrame(frameRect foundation.Rect) Scroller {
+	instance := ScrollerClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Checks to see if there is enough room in the receiver to display the knob and buttons. [Full Topic]

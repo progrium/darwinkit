@@ -165,8 +165,10 @@ func (d_ Document) InitWithTypeError(typeName string, outError foundation.IError
 // Initializes a document of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515159-initwithtype?language=objc
-func Document_InitWithTypeError(typeName string, outError foundation.IError) Document {
-	return DocumentClass.Alloc().InitWithTypeError(typeName, outError)
+func NewDocumentWithTypeError(typeName string, outError foundation.IError) Document {
+	instance := DocumentClass.Alloc().InitWithTypeError(typeName, outError)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Document) Init() Document {
@@ -182,8 +184,10 @@ func (d_ Document) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IU
 // Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
-func Document_InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document {
-	return DocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
+func NewDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document {
+	instance := DocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DocumentClass) Alloc() Document {

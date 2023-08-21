@@ -54,8 +54,10 @@ func (k_ KeyedArchiver) InitRequiringSecureCoding(requiresSecureCoding bool) Key
 // Creates an archiver to encode data, and optionally disables secure coding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/2962881-initrequiringsecurecoding?language=objc
-func KeyedArchiver_InitRequiringSecureCoding(requiresSecureCoding bool) KeyedArchiver {
-	return KeyedArchiverClass.Alloc().InitRequiringSecureCoding(requiresSecureCoding)
+func NewKeyedArchiverRequiringSecureCoding(requiresSecureCoding bool) KeyedArchiver {
+	instance := KeyedArchiverClass.Alloc().InitRequiringSecureCoding(requiresSecureCoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (kc _KeyedArchiverClass) Alloc() KeyedArchiver {

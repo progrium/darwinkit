@@ -80,8 +80,10 @@ func (m_ MutableArray) InitWithCapacity(numItems uint) MutableArray {
 // Returns an array, initialized with enough memory to initially hold a given number of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1415811-initwithcapacity?language=objc
-func MutableArray_InitWithCapacity(numItems uint) MutableArray {
-	return MutableArrayClass.Alloc().InitWithCapacity(numItems)
+func NewMutableArrayWithCapacity(numItems uint) MutableArray {
+	instance := MutableArrayClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableArray) Init() MutableArray {
@@ -116,8 +118,10 @@ func (m_ MutableArray) InitWithObjects(firstObj objc.IObject, args ...any) Mutab
 // Initializes a newly allocated array by placing in it the objects in the argument list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460068-initwithobjects?language=objc
-func MutableArray_InitWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	return MutableArrayClass.Alloc().InitWithObjects(firstObj, args...)
+func NewMutableArrayWithObjects(firstObj objc.IObject, args ...any) MutableArray {
+	instance := MutableArrayClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableArrayClass) Array() MutableArray {
@@ -152,8 +156,10 @@ func (m_ MutableArray) InitWithArray(array []objc.IObject) MutableArray {
 // Initializes a newly allocated array by placing in it the objects contained in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc
-func MutableArray_InitWithArray(array []objc.IObject) MutableArray {
-	return MutableArrayClass.Alloc().InitWithArray(array)
+func NewMutableArrayWithArray(array []objc.IObject) MutableArray {
+	instance := MutableArrayClass.Alloc().InitWithArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableArrayClass) ArrayWithArray(array []objc.IObject) MutableArray {

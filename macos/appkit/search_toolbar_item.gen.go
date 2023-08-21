@@ -73,8 +73,10 @@ func (s_ SearchToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIde
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func SearchToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SearchToolbarItem {
-	return SearchToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewSearchToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SearchToolbarItem {
+	instance := SearchToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 // Ends a search interaction by giving up the first responder and adjusting the size of the search field to the available width for the toolbar item if necessary. [Full Topic]

@@ -97,8 +97,10 @@ func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func SegmentedCell_InitImageCell(image IImage) SegmentedCell {
-	return SegmentedCellClass.Alloc().InitImageCell(image)
+func NewSegmentedCellImageCell(image IImage) SegmentedCell {
+	instance := SegmentedCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ SegmentedCell) InitTextCell(string_ string) SegmentedCell {
@@ -109,8 +111,10 @@ func (s_ SegmentedCell) InitTextCell(string_ string) SegmentedCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func SegmentedCell_InitTextCell(string_ string) SegmentedCell {
-	return SegmentedCellClass.Alloc().InitTextCell(string_)
+func NewSegmentedCellTextCell(string_ string) SegmentedCell {
+	instance := SegmentedCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the label for the specified segment. [Full Topic]

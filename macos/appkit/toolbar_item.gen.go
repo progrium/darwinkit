@@ -75,8 +75,10 @@ func (t_ ToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifie
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func ToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItem {
-	return ToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItem {
+	instance := ToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _ToolbarItemClass) Alloc() ToolbarItem {

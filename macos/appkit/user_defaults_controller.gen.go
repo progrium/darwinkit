@@ -52,8 +52,10 @@ func (u_ UserDefaultsController) InitWithDefaultsInitialValues(defaults foundati
 // Returns an initialized NSUserDefaultsController object using the NSUserDefaults instance specified in defaults and the initial default values contained in the initialValues dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserdefaultscontroller/1388184-initwithdefaults?language=objc
-func UserDefaultsController_InitWithDefaultsInitialValues(defaults foundation.IUserDefaults, initialValues map[string]objc.IObject) UserDefaultsController {
-	return UserDefaultsControllerClass.Alloc().InitWithDefaultsInitialValues(defaults, initialValues)
+func NewUserDefaultsControllerWithDefaultsInitialValues(defaults foundation.IUserDefaults, initialValues map[string]objc.IObject) UserDefaultsController {
+	instance := UserDefaultsControllerClass.Alloc().InitWithDefaultsInitialValues(defaults, initialValues)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UserDefaultsControllerClass) Alloc() UserDefaultsController {

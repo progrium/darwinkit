@@ -75,8 +75,10 @@ func (t_ TokenFieldCell) InitTextCell(string_ string) TokenFieldCell {
 // Initializes a text field cell that displays the specified string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1642278-inittextcell?language=objc
-func TokenFieldCell_InitTextCell(string_ string) TokenFieldCell {
-	return TokenFieldCellClass.Alloc().InitTextCell(string_)
+func NewTokenFieldCellTextCell(string_ string) TokenFieldCell {
+	instance := TokenFieldCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TokenFieldCell) InitImageCell(image IImage) TokenFieldCell {
@@ -87,8 +89,10 @@ func (t_ TokenFieldCell) InitImageCell(image IImage) TokenFieldCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func TokenFieldCell_InitImageCell(image IImage) TokenFieldCell {
-	return TokenFieldCellClass.Alloc().InitImageCell(image)
+func NewTokenFieldCellImageCell(image IImage) TokenFieldCell {
+	instance := TokenFieldCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // The receiver’s tokenizing character set to a given character set. [Full Topic]

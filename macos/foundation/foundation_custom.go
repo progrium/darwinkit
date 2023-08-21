@@ -39,7 +39,7 @@ func ToNSError(code int, err error) Error {
 		return Error{}
 	}
 	return ErrorClass.ErrorWithDomainCodeUserInfo("darwinkit.progrium.github.com", code, map[ErrorUserInfoKey]objc.IObject{
-		"Error reason": String_InitWithString(err.Error()),
+		"Error reason": NewStringWithString(err.Error()),
 	})
 }
 

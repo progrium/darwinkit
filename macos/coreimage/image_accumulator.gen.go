@@ -47,8 +47,10 @@ func (i_ ImageAccumulator) InitWithExtentFormat(extent coregraphics.Rect, format
 // Initializes an image accumulator with the specified extent and pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427718-initwithextent?language=objc
-func ImageAccumulator_InitWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
-	return ImageAccumulatorClass.Alloc().InitWithExtentFormat(extent, format)
+func NewImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {
+	instance := ImageAccumulatorClass.Alloc().InitWithExtentFormat(extent, format)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _ImageAccumulatorClass) ImageAccumulatorWithExtentFormat(extent coregraphics.Rect, format Format) ImageAccumulator {

@@ -58,8 +58,10 @@ func (p_ PersistentStore) InitWithPersistentStoreCoordinatorConfigurationNameURL
 // Returns a store initialized with the given arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506232-initwithpersistentstorecoordinat?language=objc
-func PersistentStore_InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) PersistentStore {
-	return PersistentStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root, name, url, options)
+func NewPersistentStoreWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) PersistentStore {
+	instance := PersistentStoreClass.Alloc().InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root, name, url, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PersistentStoreClass) Alloc() PersistentStore {

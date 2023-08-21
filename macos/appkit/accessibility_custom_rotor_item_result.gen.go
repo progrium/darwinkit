@@ -48,8 +48,10 @@ func (a_ AccessibilityCustomRotorItemResult) InitWithItemLoadingTokenCustomLabel
 // Creates an item result with the specified item load token and custom label. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2890782-initwithitemloadingtoken?language=objc
-func AccessibilityCustomRotorItemResult_InitWithItemLoadingTokenCustomLabel(itemLoadingToken AccessibilityLoadingToken, customLabel string) AccessibilityCustomRotorItemResult {
-	return AccessibilityCustomRotorItemResultClass.Alloc().InitWithItemLoadingTokenCustomLabel(itemLoadingToken, customLabel)
+func NewAccessibilityCustomRotorItemResultWithItemLoadingTokenCustomLabel(itemLoadingToken AccessibilityLoadingToken, customLabel string) AccessibilityCustomRotorItemResult {
+	instance := AccessibilityCustomRotorItemResultClass.Alloc().InitWithItemLoadingTokenCustomLabel(itemLoadingToken, customLabel)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AccessibilityCustomRotorItemResult) InitWithTargetElement(targetElement objc.IObject) AccessibilityCustomRotorItemResult {
@@ -60,8 +62,10 @@ func (a_ AccessibilityCustomRotorItemResult) InitWithTargetElement(targetElement
 // Creates an item result with the specified target element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemresult/2876308-initwithtargetelement?language=objc
-func AccessibilityCustomRotorItemResult_InitWithTargetElement(targetElement objc.IObject) AccessibilityCustomRotorItemResult {
-	return AccessibilityCustomRotorItemResultClass.Alloc().InitWithTargetElement(targetElement)
+func NewAccessibilityCustomRotorItemResultWithTargetElement(targetElement objc.IObject) AccessibilityCustomRotorItemResult {
+	instance := AccessibilityCustomRotorItemResultClass.Alloc().InitWithTargetElement(targetElement)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AccessibilityCustomRotorItemResultClass) Alloc() AccessibilityCustomRotorItemResult {

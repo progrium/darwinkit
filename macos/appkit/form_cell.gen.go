@@ -58,8 +58,10 @@ func (f_ FormCell) InitTextCell(string_ string) FormCell {
 // Returns an NSFormCell object initialized with the specified title string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1526669-inittextcell?language=objc
-func FormCell_InitTextCell(string_ string) FormCell {
-	return FormCellClass.Alloc().InitTextCell(string_)
+func NewFormCellTextCell(string_ string) FormCell {
+	instance := FormCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FormCellClass) Alloc() FormCell {
@@ -94,8 +96,10 @@ func (f_ FormCell) InitImageCell(image IImage) FormCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func FormCell_InitImageCell(image IImage) FormCell {
-	return FormCellClass.Alloc().InitImageCell(image)
+func NewFormCellImageCell(image IImage) FormCell {
+	instance := FormCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // The alignment of the title. [Full Topic]

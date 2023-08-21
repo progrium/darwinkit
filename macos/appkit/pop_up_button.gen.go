@@ -75,8 +75,10 @@ func (p_ PopUpButton) InitWithFramePullsDown(buttonFrame foundation.Rect, flag b
 // Returns an NSPopUpButton object initialized to the specified dimensions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1524562-initwithframe?language=objc
-func PopUpButton_InitWithFramePullsDown(buttonFrame foundation.Rect, flag bool) PopUpButton {
-	return PopUpButtonClass.Alloc().InitWithFramePullsDown(buttonFrame, flag)
+func NewPopUpButtonWithFramePullsDown(buttonFrame foundation.Rect, flag bool) PopUpButton {
+	instance := PopUpButtonClass.Alloc().InitWithFramePullsDown(buttonFrame, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PopUpButtonClass) Alloc() PopUpButton {
@@ -159,8 +161,10 @@ func (p_ PopUpButton) InitWithFrame(frameRect foundation.Rect) PopUpButton {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func PopUpButton_InitWithFrame(frameRect foundation.Rect) PopUpButton {
-	return PopUpButtonClass.Alloc().InitWithFrame(frameRect)
+func NewPopUpButtonWithFrame(frameRect foundation.Rect) PopUpButton {
+	instance := PopUpButtonClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the menu item at the specified index. [Full Topic]

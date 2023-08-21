@@ -72,8 +72,10 @@ func (x_ XMLNode) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) 
 // Returns an NSXMLNode instance initialized with the constant indicating node kind and one or more initialization options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409747-initwithkind?language=objc
-func XMLNode_InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLNode {
-	return XMLNodeClass.Alloc().InitWithKindOptions(kind, options)
+func NewXMLNodeWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLNode {
+	instance := XMLNodeClass.Alloc().InitWithKindOptions(kind, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLNode) Init() XMLNode {

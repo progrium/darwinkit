@@ -54,8 +54,10 @@ func (d_ Dimension) InitWithSymbolConverter(symbol string, converter IUnitConver
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func Dimension_InitWithSymbolConverter(symbol string, converter IUnitConverter) Dimension {
-	return DimensionClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewDimensionWithSymbolConverter(symbol string, converter IUnitConverter) Dimension {
+	instance := DimensionClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DimensionClass) Alloc() Dimension {
@@ -90,8 +92,10 @@ func (d_ Dimension) InitWithSymbol(symbol string) Dimension {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func Dimension_InitWithSymbol(symbol string) Dimension {
-	return DimensionClass.Alloc().InitWithSymbol(symbol)
+func NewDimensionWithSymbol(symbol string) Dimension {
+	instance := DimensionClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The unit converter that represents the unit in terms of the dimension’s base unit. [Full Topic]

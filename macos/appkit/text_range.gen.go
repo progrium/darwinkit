@@ -50,7 +50,9 @@ func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) T
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801813-textrangebyformingunionwithtextr?language=objc
 func TextRange_TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
-	return TextRangeClass.Alloc().TextRangeByFormingUnionWithTextRange(textRange)
+	instance := TextRangeClass.Alloc().TextRangeByFormingUnionWithTextRange(textRange)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextRange) InitWithLocation(location PTextLocation) TextRange {
@@ -62,8 +64,10 @@ func (t_ TextRange) InitWithLocation(location PTextLocation) TextRange {
 // Creates a new text range at the location you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801808-initwithlocation?language=objc
-func TextRange_InitWithLocation(location PTextLocation) TextRange {
-	return TextRangeClass.Alloc().InitWithLocation(location)
+func NewTextRangeWithLocation(location PTextLocation) TextRange {
+	instance := TextRangeClass.Alloc().InitWithLocation(location)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
@@ -75,7 +79,9 @@ func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) T
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801814-textrangebyintersectingwithtextr?language=objc
 func TextRange_TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	return TextRangeClass.Alloc().TextRangeByIntersectingWithTextRange(textRange)
+	instance := TextRangeClass.Alloc().TextRangeByIntersectingWithTextRange(textRange)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextRangeClass) Alloc() TextRange {

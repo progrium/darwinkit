@@ -76,8 +76,10 @@ func (c_ CollectionViewItem) InitWithNibNameBundle(nibNameOrNil NibName, nibBund
 // Returns a view controller object initialized to the nib file in the specified bundle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434481-initwithnibname?language=objc
-func CollectionViewItem_InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
-	return CollectionViewItemClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+func NewCollectionViewItemWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
+	instance := CollectionViewItemClass.Alloc().InitWithNibNameBundle(nibNameOrNil, nibBundleOrNil)
+	instance.Autorelease()
+	return instance
 }
 
 // The highlight state currently applied to the item. [Full Topic]

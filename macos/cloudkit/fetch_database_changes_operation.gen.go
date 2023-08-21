@@ -65,8 +65,10 @@ func (f_ FetchDatabaseChangesOperation) InitWithPreviousServerChangeToken(previo
 // Creates an operation for fetching database changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640502-initwithpreviousserverchangetoke?language=objc
-func FetchDatabaseChangesOperation_InitWithPreviousServerChangeToken(previousServerChangeToken IServerChangeToken) FetchDatabaseChangesOperation {
-	return FetchDatabaseChangesOperationClass.Alloc().InitWithPreviousServerChangeToken(previousServerChangeToken)
+func NewFetchDatabaseChangesOperationWithPreviousServerChangeToken(previousServerChangeToken IServerChangeToken) FetchDatabaseChangesOperation {
+	instance := FetchDatabaseChangesOperationClass.Alloc().InitWithPreviousServerChangeToken(previousServerChangeToken)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchDatabaseChangesOperationClass) Alloc() FetchDatabaseChangesOperation {

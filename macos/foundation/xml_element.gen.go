@@ -64,8 +64,10 @@ func (x_ XMLElement) InitWithKindOptions(kind XMLNodeKind, options XMLNodeOption
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388323-initwithkind?language=objc
-func XMLElement_InitWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLElement {
-	return XMLElementClass.Alloc().InitWithKindOptions(kind, options)
+func NewXMLElementWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLElement {
+	instance := XMLElementClass.Alloc().InitWithKindOptions(kind, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLElement) InitWithNameStringValue(name string, string_ string) XMLElement {
@@ -76,8 +78,10 @@ func (x_ XMLElement) InitWithNameStringValue(name string, string_ string) XMLEle
 // Returns an NSXMLElement object initialized with a specified name and a single text-node child containing a specified value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388356-initwithname?language=objc
-func XMLElement_InitWithNameStringValue(name string, string_ string) XMLElement {
-	return XMLElementClass.Alloc().InitWithNameStringValue(name, string_)
+func NewXMLElementWithNameStringValue(name string, string_ string) XMLElement {
+	instance := XMLElementClass.Alloc().InitWithNameStringValue(name, string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLElement) InitWithXMLStringError(string_ string, error IError) XMLElement {
@@ -88,8 +92,10 @@ func (x_ XMLElement) InitWithXMLStringError(string_ string, error IError) XMLEle
 // Returns an NSXMLElement object created from a specified string containing XML markup. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388325-initwithxmlstring?language=objc
-func XMLElement_InitWithXMLStringError(string_ string, error IError) XMLElement {
-	return XMLElementClass.Alloc().InitWithXMLStringError(string_, error)
+func NewXMLElementWithXMLStringError(string_ string, error IError) XMLElement {
+	instance := XMLElementClass.Alloc().InitWithXMLStringError(string_, error)
+	instance.Autorelease()
+	return instance
 }
 
 func (xc _XMLElementClass) Alloc() XMLElement {

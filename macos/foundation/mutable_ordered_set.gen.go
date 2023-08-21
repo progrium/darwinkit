@@ -82,8 +82,10 @@ func (m_ MutableOrderedSet) InitWithCapacity(numItems uint) MutableOrderedSet {
 // Returns an initialized mutable ordered set with a given initial capacity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411583-initwithcapacity?language=objc
-func MutableOrderedSet_InitWithCapacity(numItems uint) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithCapacity(numItems)
+func NewMutableOrderedSetWithCapacity(numItems uint) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithCapacity(numItems)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableOrderedSet) Init() MutableOrderedSet {
@@ -130,8 +132,10 @@ func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) 
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543287-initwithobjects?language=objc
-func MutableOrderedSet_InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
+func NewMutableOrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
@@ -154,8 +158,10 @@ func (m_ MutableOrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, ra
 // Initializes a new ordered set with the contents of an ordered set, optionally copying the items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1417751-initwithorderedset?language=objc
-func MutableOrderedSet_InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
+func NewMutableOrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithOrderedSetRangeCopyItems(set, range_, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableOrderedSet) InitWithObject(object objc.IObject) MutableOrderedSet {
@@ -166,8 +172,10 @@ func (m_ MutableOrderedSet) InitWithObject(object objc.IObject) MutableOrderedSe
 // Initializes a new ordered set with the object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1413883-initwithobject?language=objc
-func MutableOrderedSet_InitWithObject(object objc.IObject) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithObject(object)
+func NewMutableOrderedSetWithObject(object objc.IObject) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithObject(object)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ MutableOrderedSet) InitWithArrayCopyItems(set []objc.IObject, flag bool) MutableOrderedSet {
@@ -178,8 +186,10 @@ func (m_ MutableOrderedSet) InitWithArrayCopyItems(set []objc.IObject, flag bool
 // Initializes a newly allocated set with the objects that are contained in a given array, optionally copying the items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1418006-initwitharray?language=objc
-func MutableOrderedSet_InitWithArrayCopyItems(set []objc.IObject, flag bool) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithArrayCopyItems(set, flag)
+func NewMutableOrderedSetWithArrayCopyItems(set []objc.IObject, flag bool) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithArrayCopyItems(set, flag)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithArray(array []objc.IObject) MutableOrderedSet {
@@ -226,8 +236,10 @@ func (m_ MutableOrderedSet) InitWithSet(set ISet) MutableOrderedSet {
 // Initializes a new ordered set with the contents of a set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1416344-initwithset?language=objc
-func MutableOrderedSet_InitWithSet(set ISet) MutableOrderedSet {
-	return MutableOrderedSetClass.Alloc().InitWithSet(set)
+func NewMutableOrderedSetWithSet(set ISet) MutableOrderedSet {
+	instance := MutableOrderedSetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithSet(set ISet) MutableOrderedSet {

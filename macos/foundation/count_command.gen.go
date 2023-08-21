@@ -65,6 +65,8 @@ func (c_ CountCommand) InitWithCommandDescription(commandDef IScriptCommandDescr
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func CountCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) CountCommand {
-	return CountCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewCountCommandWithCommandDescription(commandDef IScriptCommandDescription) CountCommand {
+	instance := CountCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }

@@ -52,8 +52,10 @@ func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManag
 // Creates a new instance with the text layout manager you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824769-initwithtextlayoutmanager?language=objc
-func TextViewportLayoutController_InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
-	return TextViewportLayoutControllerClass.Alloc().InitWithTextLayoutManager(textLayoutManager)
+func NewTextViewportLayoutControllerWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
+	instance := TextViewportLayoutControllerClass.Alloc().InitWithTextLayoutManager(textLayoutManager)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextViewportLayoutControllerClass) Alloc() TextViewportLayoutController {

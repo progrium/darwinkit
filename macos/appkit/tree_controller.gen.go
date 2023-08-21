@@ -106,8 +106,10 @@ func (t_ TreeController) InitWithContent(content objc.IObject) TreeController {
 // Initializes and returns an NSObjectController object with the given content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1529422-initwithcontent?language=objc
-func TreeController_InitWithContent(content objc.IObject) TreeController {
-	return TreeControllerClass.Alloc().InitWithContent(content)
+func NewTreeControllerWithContent(content objc.IObject) TreeController {
+	instance := TreeControllerClass.Alloc().InitWithContent(content)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns the key path that specifies whether the node is a leaf node. [Full Topic]

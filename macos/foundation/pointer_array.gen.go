@@ -51,8 +51,10 @@ func (p_ PointerArray) InitWithPointerFunctions(functions IPointerFunctions) Poi
 // Initializes the receiver to use the given functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1416727-initwithpointerfunctions?language=objc
-func PointerArray_InitWithPointerFunctions(functions IPointerFunctions) PointerArray {
-	return PointerArrayClass.Alloc().InitWithPointerFunctions(functions)
+func NewPointerArrayWithPointerFunctions(functions IPointerFunctions) PointerArray {
+	instance := PointerArrayClass.Alloc().InitWithPointerFunctions(functions)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PointerArray) InitWithOptions(options PointerFunctionsOptions) PointerArray {
@@ -63,8 +65,10 @@ func (p_ PointerArray) InitWithOptions(options PointerFunctionsOptions) PointerA
 // Initializes the receiver to use the given options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1408229-initwithoptions?language=objc
-func PointerArray_InitWithOptions(options PointerFunctionsOptions) PointerArray {
-	return PointerArrayClass.Alloc().InitWithOptions(options)
+func NewPointerArrayWithOptions(options PointerFunctionsOptions) PointerArray {
+	instance := PointerArrayClass.Alloc().InitWithOptions(options)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PointerArrayClass) Alloc() PointerArray {

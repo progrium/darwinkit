@@ -84,8 +84,10 @@ func (c_ ClipView) InitWithFrame(frameRect foundation.Rect) ClipView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func ClipView_InitWithFrame(frameRect foundation.Rect) ClipView {
-	return ClipViewClass.Alloc().InitWithFrame(frameRect)
+func NewClipViewWithFrame(frameRect foundation.Rect) ClipView {
+	instance := ClipViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Handles an NSViewBoundsDidChangeNotification, passed in the aNotification argument, by updating a containing NSScrollView based on the new bounds. [Full Topic]

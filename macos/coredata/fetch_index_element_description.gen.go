@@ -48,8 +48,10 @@ func (f_ FetchIndexElementDescription) InitWithPropertyCollationType(property IP
 // Creates an index element description using the specified property description and collation type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexelementdescription/2887043-initwithproperty?language=objc
-func FetchIndexElementDescription_InitWithPropertyCollationType(property IPropertyDescription, collationType FetchIndexElementType) FetchIndexElementDescription {
-	return FetchIndexElementDescriptionClass.Alloc().InitWithPropertyCollationType(property, collationType)
+func NewFetchIndexElementDescriptionWithPropertyCollationType(property IPropertyDescription, collationType FetchIndexElementType) FetchIndexElementDescription {
+	instance := FetchIndexElementDescriptionClass.Alloc().InitWithPropertyCollationType(property, collationType)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FetchIndexElementDescriptionClass) Alloc() FetchIndexElementDescription {

@@ -53,8 +53,10 @@ func (p_ PointerFunctions) InitWithOptions(options PointerFunctionsOptions) Poin
 // Returns an NSPointerFunctions object initialized with the given options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerfunctions/1417715-initwithoptions?language=objc
-func PointerFunctions_InitWithOptions(options PointerFunctionsOptions) PointerFunctions {
-	return PointerFunctionsClass.Alloc().InitWithOptions(options)
+func NewPointerFunctionsWithOptions(options PointerFunctionsOptions) PointerFunctions {
+	instance := PointerFunctionsClass.Alloc().InitWithOptions(options)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PointerFunctionsClass) Alloc() PointerFunctions {

@@ -132,8 +132,10 @@ func (s_ String) InitWithCharactersNoCopyLengthDeallocator(chars *Unichar, len u
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547180-initwithcharactersnocopy?language=objc
-func String_InitWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) String {
-	return StringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+func NewStringWithCharactersNoCopyLengthDeallocator(chars *Unichar, len uint, deallocator func(arg0 *Unichar, arg1 uint)) String {
+	instance := StringClass.Alloc().InitWithCharactersNoCopyLengthDeallocator(chars, len, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _StringClass) StringWithString(string_ string) String {
@@ -156,8 +158,10 @@ func (s_ String) InitWithFormatLocale(format string, locale objc.IObject, args .
 // Returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to given locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497317-initwithformat?language=objc
-func String_InitWithFormatLocale(format string, locale objc.IObject, args ...any) String {
-	return StringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+func NewStringWithFormatLocale(format string, locale objc.IObject, args ...any) String {
+	instance := StringClass.Alloc().InitWithFormatLocale(format, locale, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ String) InitWithDataEncoding(data []byte, encoding StringEncoding) String {
@@ -168,8 +172,10 @@ func (s_ String) InitWithDataEncoding(data []byte, encoding StringEncoding) Stri
 // Returns an NSString object initialized by converting given data into UTF-16 code units using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1416374-initwithdata?language=objc
-func String_InitWithDataEncoding(data []byte, encoding StringEncoding) String {
-	return StringClass.Alloc().InitWithDataEncoding(data, encoding)
+func NewStringWithDataEncoding(data []byte, encoding StringEncoding) String {
+	instance := StringClass.Alloc().InitWithDataEncoding(data, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _StringClass) StringWithFormat(format string, args ...any) String {
@@ -192,8 +198,10 @@ func (s_ String) InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Point
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3547179-initwithbytesnocopy?language=objc
-func String_InitWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) String {
-	return StringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+func NewStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len uint, encoding StringEncoding, deallocator func(arg0 unsafe.Pointer, arg1 uint)) String {
+	instance := StringClass.Alloc().InitWithBytesNoCopyLengthEncodingDeallocator(bytes, len, encoding, deallocator)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ String) InitWithString(aString string) String {
@@ -204,8 +212,10 @@ func (s_ String) InitWithString(aString string) String {
 // Returns an NSString object initialized by copying the characters from another given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411293-initwithstring?language=objc
-func String_InitWithString(aString string) String {
-	return StringClass.Alloc().InitWithString(aString)
+func NewStringWithString(aString string) String {
+	instance := StringClass.Alloc().InitWithString(aString)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ String) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) String {
@@ -216,8 +226,10 @@ func (s_ String) InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, enc
 // Returns an initialized NSString object containing a given number of bytes from a given buffer of bytes interpreted in a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1407339-initwithbytes?language=objc
-func String_InitWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) String {
-	return StringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+func NewStringWithBytesLengthEncoding(bytes unsafe.Pointer, len uint, encoding StringEncoding) String {
+	instance := StringClass.Alloc().InitWithBytesLengthEncoding(bytes, len, encoding)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _StringClass) StringWithCharactersLength(characters *Unichar, length uint) String {
@@ -240,8 +252,10 @@ func (s_ String) InitWithCharactersLength(characters *Unichar, length uint) Stri
 // Returns an initialized NSString object that contains a given number of characters from a given C array of UTF-16 code units. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410997-initwithcharacters?language=objc
-func String_InitWithCharactersLength(characters *Unichar, length uint) String {
-	return StringClass.Alloc().InitWithCharactersLength(characters, length)
+func NewStringWithCharactersLength(characters *Unichar, length uint) String {
+	instance := StringClass.Alloc().InitWithCharactersLength(characters, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ String) InitWithUTF8String(nullTerminatedCString *uint8) String {
@@ -252,8 +266,10 @@ func (s_ String) InitWithUTF8String(nullTerminatedCString *uint8) String {
 // Returns an NSString object initialized by copying the characters from a given C array of UTF8-encoded bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412128-initwithutf8string?language=objc
-func String_InitWithUTF8String(nullTerminatedCString *uint8) String {
-	return StringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+func NewStringWithUTF8String(nullTerminatedCString *uint8) String {
+	instance := StringClass.Alloc().InitWithUTF8String(nullTerminatedCString)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _StringClass) LocalizedStringWithFormat(format string, args ...any) String {

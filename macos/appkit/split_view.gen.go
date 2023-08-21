@@ -91,8 +91,10 @@ func (s_ SplitView) InitWithFrame(frameRect foundation.Rect) SplitView {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func SplitView_InitWithFrame(frameRect foundation.Rect) SplitView {
-	return SplitViewClass.Alloc().InitWithFrame(frameRect)
+func NewSplitViewWithFrame(frameRect foundation.Rect) SplitView {
+	instance := SplitViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Adjusts the sizes of the split view’s subviews so they (plus the dividers) fill the split view. [Full Topic]

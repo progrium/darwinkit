@@ -77,8 +77,10 @@ func (u_ UnitFrequency) InitWithSymbolConverter(symbol string, converter IUnitCo
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitFrequency_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitFrequency {
-	return UnitFrequencyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitFrequencyWithSymbolConverter(symbol string, converter IUnitConverter) UnitFrequency {
+	instance := UnitFrequencyClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitFrequency) InitWithSymbol(symbol string) UnitFrequency {
@@ -89,8 +91,10 @@ func (u_ UnitFrequency) InitWithSymbol(symbol string) UnitFrequency {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitFrequency_InitWithSymbol(symbol string) UnitFrequency {
-	return UnitFrequencyClass.Alloc().InitWithSymbol(symbol)
+func NewUnitFrequencyWithSymbol(symbol string) UnitFrequency {
+	instance := UnitFrequencyClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The frames per second unit of frequency. [Full Topic]

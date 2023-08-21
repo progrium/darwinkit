@@ -42,8 +42,10 @@ func (u_ Unit) InitWithSymbol(symbol string) Unit {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func Unit_InitWithSymbol(symbol string) Unit {
-	return UnitClass.Alloc().InitWithSymbol(symbol)
+func NewUnitWithSymbol(symbol string) Unit {
+	instance := UnitClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _UnitClass) Alloc() Unit {

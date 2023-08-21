@@ -56,18 +56,18 @@ func initAndRun() {
 }
 
 func setMainMenu(app appkit.Application) {
-	menu := appkit.Menu_InitWithTitle("main")
+	menu := appkit.NewMenuWithTitle("main")
 	app.SetMainMenu(menu)
 
 	mainMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
-	mainMenuMenu := appkit.Menu_InitWithTitle("App")
+	mainMenuMenu := appkit.NewMenuWithTitle("App")
 	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", func(sender objc.Object) { app.Hide(nil) }))
 	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", func(sender objc.Object) { app.Terminate(nil) }))
 	mainMenuItem.SetSubmenu(mainMenuMenu)
 	menu.AddItem(mainMenuItem)
 
 	testMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
-	testMenu := appkit.Menu_InitWithTitle("Edit")
+	testMenu := appkit.NewMenuWithTitle("Edit")
 	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.Sel("selectAll:")))
 	// missing symbol?
 	//testMenu.AddItem(appkit.MenuItem_SeparatorItem())
@@ -86,7 +86,7 @@ func setSystemBar(app appkit.Application) {
 	button := item.Button()
 	button.SetTitle("TestTray")
 
-	menu := appkit.Menu_InitWithTitle("main")
+	menu := appkit.NewMenuWithTitle("main")
 	menu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", func(sender objc.Object) { app.Hide(nil) }))
 	menu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", func(sender objc.Object) { app.Terminate(nil) }))
 	item.SetMenu(menu)

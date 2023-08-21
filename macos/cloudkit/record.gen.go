@@ -63,8 +63,10 @@ func (r_ Record) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZ
 // Creates a record in the specified zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462202-initwithrecordtype?language=objc
-func Record_InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Record {
-	return RecordClass.Alloc().InitWithRecordTypeZoneID(recordType, zoneID)
+func NewRecordWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Record {
+	instance := RecordClass.Alloc().InitWithRecordTypeZoneID(recordType, zoneID)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RecordClass) Alloc() Record {

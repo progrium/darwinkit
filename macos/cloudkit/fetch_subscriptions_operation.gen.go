@@ -60,8 +60,10 @@ func (f_ FetchSubscriptionsOperation) InitWithSubscriptionIDs(subscriptionIDs []
 // Creates an operation for fetching the specified subscriptions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchsubscriptionsoperation/1515157-initwithsubscriptionids?language=objc
-func FetchSubscriptionsOperation_InitWithSubscriptionIDs(subscriptionIDs []SubscriptionID) FetchSubscriptionsOperation {
-	return FetchSubscriptionsOperationClass.Alloc().InitWithSubscriptionIDs(subscriptionIDs)
+func NewFetchSubscriptionsOperationWithSubscriptionIDs(subscriptionIDs []SubscriptionID) FetchSubscriptionsOperation {
+	instance := FetchSubscriptionsOperationClass.Alloc().InitWithSubscriptionIDs(subscriptionIDs)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FetchSubscriptionsOperation) Init() FetchSubscriptionsOperation {

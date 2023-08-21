@@ -45,8 +45,10 @@ func (s_ SocialProfile) InitWithUrlStringUsernameUserIdentifierService(urlString
 // Initializes a new social profile object with the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsocialprofile/1402989-initwithurlstring?language=objc
-func SocialProfile_InitWithUrlStringUsernameUserIdentifierService(urlString string, username string, userIdentifier string, service string) SocialProfile {
-	return SocialProfileClass.Alloc().InitWithUrlStringUsernameUserIdentifierService(urlString, username, userIdentifier, service)
+func NewSocialProfileWithUrlStringUsernameUserIdentifierService(urlString string, username string, userIdentifier string, service string) SocialProfile {
+	instance := SocialProfileClass.Alloc().InitWithUrlStringUsernameUserIdentifierService(urlString, username, userIdentifier, service)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SocialProfileClass) Alloc() SocialProfile {

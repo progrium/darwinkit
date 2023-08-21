@@ -58,8 +58,10 @@ func (m_ ManagedObjectModel) InitWithContentsOfURL(url foundation.IURL) ManagedO
 // Initializes the managed object model using the model file at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506225-initwithcontentsofurl?language=objc
-func ManagedObjectModel_InitWithContentsOfURL(url foundation.IURL) ManagedObjectModel {
-	return ManagedObjectModelClass.Alloc().InitWithContentsOfURL(url)
+func NewManagedObjectModelWithContentsOfURL(url foundation.IURL) ManagedObjectModel {
+	instance := ManagedObjectModelClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (m_ ManagedObjectModel) Init() ManagedObjectModel {

@@ -69,8 +69,10 @@ func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdent
 // Creates a toolbar item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534084-initwithitemidentifier?language=objc
-func MenuToolbarItem_InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
-	return MenuToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+func NewMenuToolbarItemWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
+	instance := MenuToolbarItemClass.Alloc().InitWithItemIdentifier(itemIdentifier)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean value that determines whether the toolbar item displays an indicator of additional functionality. [Full Topic]

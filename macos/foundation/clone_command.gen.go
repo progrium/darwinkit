@@ -66,8 +66,10 @@ func (c_ CloneCommand) InitWithCommandDescription(commandDef IScriptCommandDescr
 // Returns an a script command object initialized from the passed command description. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1413516-initwithcommanddescription?language=objc
-func CloneCommand_InitWithCommandDescription(commandDef IScriptCommandDescription) CloneCommand {
-	return CloneCommandClass.Alloc().InitWithCommandDescription(commandDef)
+func NewCloneCommandWithCommandDescription(commandDef IScriptCommandDescription) CloneCommand {
+	instance := CloneCommandClass.Alloc().InitWithCommandDescription(commandDef)
+	instance.Autorelease()
+	return instance
 }
 
 // Returns a specifier for the object or objects to be cloned. [Full Topic]

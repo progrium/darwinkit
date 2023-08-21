@@ -415,8 +415,10 @@ func (s_ SearchableItemAttributeSet) InitWithContentType(contentType uti.IType) 
 // Creates an attribute set for the specified content type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/3573909-initwithcontenttype?language=objc
-func SearchableItemAttributeSet_InitWithContentType(contentType uti.IType) SearchableItemAttributeSet {
-	return SearchableItemAttributeSetClass.Alloc().InitWithContentType(contentType)
+func NewSearchableItemAttributeSetWithContentType(contentType uti.IType) SearchableItemAttributeSet {
+	instance := SearchableItemAttributeSetClass.Alloc().InitWithContentType(contentType)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SearchableItemAttributeSetClass) Alloc() SearchableItemAttributeSet {

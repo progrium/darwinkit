@@ -61,8 +61,10 @@ func (x_ XMLParser) InitWithData(data []byte) XMLParser {
 // Initializes a parser with the XML contents encapsulated in a given data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1418103-initwithdata?language=objc
-func XMLParser_InitWithData(data []byte) XMLParser {
-	return XMLParserClass.Alloc().InitWithData(data)
+func NewXMLParserWithData(data []byte) XMLParser {
+	instance := XMLParserClass.Alloc().InitWithData(data)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLParser) InitWithContentsOfURL(url IURL) XMLParser {
@@ -73,8 +75,10 @@ func (x_ XMLParser) InitWithContentsOfURL(url IURL) XMLParser {
 // Initializes a parser with the XML content referenced by the given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1415575-initwithcontentsofurl?language=objc
-func XMLParser_InitWithContentsOfURL(url IURL) XMLParser {
-	return XMLParserClass.Alloc().InitWithContentsOfURL(url)
+func NewXMLParserWithContentsOfURL(url IURL) XMLParser {
+	instance := XMLParserClass.Alloc().InitWithContentsOfURL(url)
+	instance.Autorelease()
+	return instance
 }
 
 func (x_ XMLParser) InitWithStream(stream IInputStream) XMLParser {
@@ -85,8 +89,10 @@ func (x_ XMLParser) InitWithStream(stream IInputStream) XMLParser {
 // Initializes a parser with the XML contents from the specified stream and parses it. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1415904-initwithstream?language=objc
-func XMLParser_InitWithStream(stream IInputStream) XMLParser {
-	return XMLParserClass.Alloc().InitWithStream(stream)
+func NewXMLParserWithStream(stream IInputStream) XMLParser {
+	instance := XMLParserClass.Alloc().InitWithStream(stream)
+	instance.Autorelease()
+	return instance
 }
 
 func (xc _XMLParserClass) Alloc() XMLParser {

@@ -77,8 +77,10 @@ func (u_ UnitTemperature) InitWithSymbolConverter(symbol string, converter IUnit
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitTemperature_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitTemperature {
-	return UnitTemperatureClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitTemperatureWithSymbolConverter(symbol string, converter IUnitConverter) UnitTemperature {
+	instance := UnitTemperatureClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitTemperature) InitWithSymbol(symbol string) UnitTemperature {
@@ -89,8 +91,10 @@ func (u_ UnitTemperature) InitWithSymbol(symbol string) UnitTemperature {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitTemperature_InitWithSymbol(symbol string) UnitTemperature {
-	return UnitTemperatureClass.Alloc().InitWithSymbol(symbol)
+func NewUnitTemperatureWithSymbol(symbol string) UnitTemperature {
+	instance := UnitTemperatureClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The kelvin unit of temperature. [Full Topic]

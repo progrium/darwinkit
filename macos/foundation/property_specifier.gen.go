@@ -65,8 +65,10 @@ func (p_ PropertySpecifier) InitWithContainerClassDescriptionContainerSpecifierK
 // Returns an NSScriptObjectSpecifier object initialized with the given attributes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1410480-initwithcontainerclassdescriptio?language=objc
-func PropertySpecifier_InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) PropertySpecifier {
-	return PropertySpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+func NewPropertySpecifierWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) PropertySpecifier {
+	instance := PropertySpecifierClass.Alloc().InitWithContainerClassDescriptionContainerSpecifierKey(classDesc, container, property)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PropertySpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) PropertySpecifier {
@@ -77,6 +79,8 @@ func (p_ PropertySpecifier) InitWithContainerSpecifierKey(container IScriptObjec
 // Returns an NSScriptObjectSpecifier object initialized with a given container specifier  and key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409384-initwithcontainerspecifier?language=objc
-func PropertySpecifier_InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) PropertySpecifier {
-	return PropertySpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+func NewPropertySpecifierWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) PropertySpecifier {
+	instance := PropertySpecifierClass.Alloc().InitWithContainerSpecifierKey(container, property)
+	instance.Autorelease()
+	return instance
 }

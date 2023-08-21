@@ -101,8 +101,10 @@ func (d_ DatePicker) InitWithFrame(frameRect foundation.Rect) DatePicker {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func DatePicker_InitWithFrame(frameRect foundation.Rect) DatePicker {
-	return DatePickerClass.Alloc().InitWithFrame(frameRect)
+func NewDatePickerWithFrame(frameRect foundation.Rect) DatePicker {
+	instance := DatePickerClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // A Boolean value that indicates whether the date picker has a plain border. [Full Topic]

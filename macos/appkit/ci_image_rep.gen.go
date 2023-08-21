@@ -43,8 +43,10 @@ func (c_ CIImageRep) InitWithCIImage(image coreimage.IImage) CIImageRep {
 // Returns a representation of an image initialized to the specified Core Image instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsciimagerep/1528642-initwithciimage?language=objc
-func CIImageRep_InitWithCIImage(image coreimage.IImage) CIImageRep {
-	return CIImageRepClass.Alloc().InitWithCIImage(image)
+func NewCIImageRepWithCIImage(image coreimage.IImage) CIImageRep {
+	instance := CIImageRepClass.Alloc().InitWithCIImage(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CIImageRepClass) ImageRepWithCIImage(image coreimage.IImage) CIImageRep {

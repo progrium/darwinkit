@@ -44,8 +44,10 @@ func (n_ Notification) InitWithNameObjectUserInfo(name NotificationName, object 
 // Initializes a notification with a specified name, object, and user information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotification/1415764-initwithname?language=objc
-func Notification_InitWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
-	return NotificationClass.Alloc().InitWithNameObjectUserInfo(name, object, userInfo)
+func NewNotificationWithNameObjectUserInfo(name NotificationName, object objc.IObject, userInfo Dictionary) Notification {
+	instance := NotificationClass.Alloc().InitWithNameObjectUserInfo(name, object, userInfo)
+	instance.Autorelease()
+	return instance
 }
 
 func (nc _NotificationClass) NotificationWithNameObject(aName NotificationName, anObject objc.IObject) Notification {

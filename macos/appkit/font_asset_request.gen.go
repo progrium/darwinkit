@@ -45,8 +45,10 @@ func (f_ FontAssetRequest) InitWithFontDescriptorsOptions(fontDescriptors []IFon
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontassetrequest/2890807-initwithfontdescriptors?language=objc
-func FontAssetRequest_InitWithFontDescriptorsOptions(fontDescriptors []IFontDescriptor, options FontAssetRequestOptions) FontAssetRequest {
-	return FontAssetRequestClass.Alloc().InitWithFontDescriptorsOptions(fontDescriptors, options)
+func NewFontAssetRequestWithFontDescriptorsOptions(fontDescriptors []IFontDescriptor, options FontAssetRequestOptions) FontAssetRequest {
+	instance := FontAssetRequestClass.Alloc().InitWithFontDescriptorsOptions(fontDescriptors, options)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FontAssetRequestClass) Alloc() FontAssetRequest {

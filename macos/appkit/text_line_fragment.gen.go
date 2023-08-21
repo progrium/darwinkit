@@ -51,8 +51,10 @@ func (t_ TextLineFragment) InitWithAttributedStringRange(attributedString founda
 // Creates a new line fragment from the attributed string for the range of characters you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlinefragment/3810042-initwithattributedstring?language=objc
-func TextLineFragment_InitWithAttributedStringRange(attributedString foundation.IAttributedString, range_ foundation.Range) TextLineFragment {
-	return TextLineFragmentClass.Alloc().InitWithAttributedStringRange(attributedString, range_)
+func NewTextLineFragmentWithAttributedStringRange(attributedString foundation.IAttributedString, range_ foundation.Range) TextLineFragment {
+	instance := TextLineFragmentClass.Alloc().InitWithAttributedStringRange(attributedString, range_)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextLineFragment) InitWithStringAttributesRange(string_ string, attributes map[foundation.AttributedStringKey]objc.IObject, range_ foundation.Range) TextLineFragment {
@@ -63,8 +65,10 @@ func (t_ TextLineFragment) InitWithStringAttributesRange(string_ string, attribu
 // Creates a new line fragment using the string, attributes, and range you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlinefragment/3810044-initwithstring?language=objc
-func TextLineFragment_InitWithStringAttributesRange(string_ string, attributes map[foundation.AttributedStringKey]objc.IObject, range_ foundation.Range) TextLineFragment {
-	return TextLineFragmentClass.Alloc().InitWithStringAttributesRange(string_, attributes, range_)
+func NewTextLineFragmentWithStringAttributesRange(string_ string, attributes map[foundation.AttributedStringKey]objc.IObject, range_ foundation.Range) TextLineFragment {
+	instance := TextLineFragmentClass.Alloc().InitWithStringAttributesRange(string_, attributes, range_)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextLineFragmentClass) Alloc() TextLineFragment {

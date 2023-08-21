@@ -56,8 +56,10 @@ func (a_ AffineTransform) InitWithTransform(transform IAffineTransform) AffineTr
 // Initializes the receiver’s matrix using another transform object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsaffinetransform/1413399-initwithtransform?language=objc
-func AffineTransform_InitWithTransform(transform IAffineTransform) AffineTransform {
-	return AffineTransformClass.Alloc().InitWithTransform(transform)
+func NewAffineTransformWithTransform(transform IAffineTransform) AffineTransform {
+	instance := AffineTransformClass.Alloc().InitWithTransform(transform)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AffineTransform) Init() AffineTransform {

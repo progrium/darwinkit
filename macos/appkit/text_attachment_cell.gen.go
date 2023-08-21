@@ -74,8 +74,10 @@ func (t_ TextAttachmentCell) InitImageCell(image IImage) TextAttachmentCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func TextAttachmentCell_InitImageCell(image IImage) TextAttachmentCell {
-	return TextAttachmentCellClass.Alloc().InitImageCell(image)
+func NewTextAttachmentCellImageCell(image IImage) TextAttachmentCell {
+	instance := TextAttachmentCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 func (t_ TextAttachmentCell) InitTextCell(string_ string) TextAttachmentCell {
@@ -86,8 +88,10 @@ func (t_ TextAttachmentCell) InitTextCell(string_ string) TextAttachmentCell {
 // Returns an NSCell object initialized with the specified string and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530851-inittextcell?language=objc
-func TextAttachmentCell_InitTextCell(string_ string) TextAttachmentCell {
-	return TextAttachmentCellClass.Alloc().InitTextCell(string_)
+func NewTextAttachmentCellTextCell(string_ string) TextAttachmentCell {
+	instance := TextAttachmentCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 // Allows an attachment to specify the events for which it tracks the mouse. [Full Topic]

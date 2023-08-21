@@ -53,8 +53,10 @@ func (d_ DatabaseSubscription) InitWithSubscriptionID(subscriptionID Subscriptio
 // Creates a named subscription for all records in a database. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabasesubscription/1640530-initwithsubscriptionid?language=objc
-func DatabaseSubscription_InitWithSubscriptionID(subscriptionID SubscriptionID) DatabaseSubscription {
-	return DatabaseSubscriptionClass.Alloc().InitWithSubscriptionID(subscriptionID)
+func NewDatabaseSubscriptionWithSubscriptionID(subscriptionID SubscriptionID) DatabaseSubscription {
+	instance := DatabaseSubscriptionClass.Alloc().InitWithSubscriptionID(subscriptionID)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DatabaseSubscriptionClass) Alloc() DatabaseSubscription {

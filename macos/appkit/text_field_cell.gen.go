@@ -57,8 +57,10 @@ func (t_ TextFieldCell) InitTextCell(string_ string) TextFieldCell {
 // Initializes a text field cell that displays the specified string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1642278-inittextcell?language=objc
-func TextFieldCell_InitTextCell(string_ string) TextFieldCell {
-	return TextFieldCellClass.Alloc().InitTextCell(string_)
+func NewTextFieldCellTextCell(string_ string) TextFieldCell {
+	instance := TextFieldCellClass.Alloc().InitTextCell(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextFieldCellClass) Alloc() TextFieldCell {
@@ -93,8 +95,10 @@ func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
 // Returns an NSCell object initialized with the specified image and set to have the cell’s default menu. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533898-initimagecell?language=objc
-func TextFieldCell_InitImageCell(image IImage) TextFieldCell {
-	return TextFieldCellClass.Alloc().InitImageCell(image)
+func NewTextFieldCellImageCell(image IImage) TextFieldCell {
+	instance := TextFieldCellClass.Alloc().InitImageCell(image)
+	instance.Autorelease()
+	return instance
 }
 
 // Directs the cell’s associated field editor to post text change notifications. [Full Topic]

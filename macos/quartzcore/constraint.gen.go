@@ -58,8 +58,10 @@ func (c_ Constraint) InitWithAttributeRelativeToAttributeScaleOffset(attr Constr
 // Returns an CAConstraint object with the specified parameters. Designated initializer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caconstraint/1522213-initwithattribute?language=objc
-func Constraint_InitWithAttributeRelativeToAttributeScaleOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, m float64, c float64) Constraint {
-	return ConstraintClass.Alloc().InitWithAttributeRelativeToAttributeScaleOffset(attr, srcId, srcAttr, m, c)
+func NewConstraintWithAttributeRelativeToAttributeScaleOffset(attr ConstraintAttribute, srcId string, srcAttr ConstraintAttribute, m float64, c float64) Constraint {
+	instance := ConstraintClass.Alloc().InitWithAttributeRelativeToAttributeScaleOffset(attr, srcId, srcAttr, m, c)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ConstraintClass) Alloc() Constraint {

@@ -47,8 +47,10 @@ func (p_ PortMessage) InitWithSendPortReceivePortComponents(sendPort IPort, repl
 // Initializes a newly allocated NSPortMessage object to send given data on a given port and to receiver replies on another given port. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1417387-initwithsendport?language=objc
-func PortMessage_InitWithSendPortReceivePortComponents(sendPort IPort, replyPort IPort, components []objc.IObject) PortMessage {
-	return PortMessageClass.Alloc().InitWithSendPortReceivePortComponents(sendPort, replyPort, components)
+func NewPortMessageWithSendPortReceivePortComponents(sendPort IPort, replyPort IPort, components []objc.IObject) PortMessage {
+	instance := PortMessageClass.Alloc().InitWithSendPortReceivePortComponents(sendPort, replyPort, components)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PortMessageClass) Alloc() PortMessage {

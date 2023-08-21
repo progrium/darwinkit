@@ -48,8 +48,10 @@ func (x_ XPCListener) InitWithMachServiceName(name string) XPCListener {
 // Initializes a listener in a LaunchAgent or LaunchDaemon which has a name advertised in a launchd.plist file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1414106-initwithmachservicename?language=objc
-func XPCListener_InitWithMachServiceName(name string) XPCListener {
-	return XPCListenerClass.Alloc().InitWithMachServiceName(name)
+func NewXPCListenerWithMachServiceName(name string) XPCListener {
+	instance := XPCListenerClass.Alloc().InitWithMachServiceName(name)
+	instance.Autorelease()
+	return instance
 }
 
 func (xc _XPCListenerClass) Alloc() XPCListener {

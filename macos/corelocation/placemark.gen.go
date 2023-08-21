@@ -72,8 +72,10 @@ func (p_ Placemark) InitWithPlacemark(placemark IPlacemark) Placemark {
 // Initializes and returns a placemark object from another placemark object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clplacemark/1423818-initwithplacemark?language=objc
-func Placemark_InitWithPlacemark(placemark IPlacemark) Placemark {
-	return PlacemarkClass.Alloc().InitWithPlacemark(placemark)
+func NewPlacemarkWithPlacemark(placemark IPlacemark) Placemark {
+	instance := PlacemarkClass.Alloc().InitWithPlacemark(placemark)
+	instance.Autorelease()
+	return instance
 }
 
 func (pc _PlacemarkClass) Alloc() Placemark {

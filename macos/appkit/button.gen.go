@@ -170,8 +170,10 @@ func (b_ Button) InitWithFrame(frameRect foundation.Rect) Button {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func Button_InitWithFrame(frameRect foundation.Rect) Button {
-	return ButtonClass.Alloc().InitWithFrame(frameRect)
+func NewButtonWithFrame(frameRect foundation.Rect) Button {
+	instance := ButtonClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Sets the button to its next state. [Full Topic]

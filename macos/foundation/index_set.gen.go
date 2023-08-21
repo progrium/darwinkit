@@ -91,8 +91,10 @@ func (i_ IndexSet) InitWithIndexesInRange(range_ Range) IndexSet {
 // Initializes an allocated NSIndexSet object with an index range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1414013-initwithindexesinrange?language=objc
-func IndexSet_InitWithIndexesInRange(range_ Range) IndexSet {
-	return IndexSetClass.Alloc().InitWithIndexesInRange(range_)
+func NewIndexSetWithIndexesInRange(range_ Range) IndexSet {
+	instance := IndexSetClass.Alloc().InitWithIndexesInRange(range_)
+	instance.Autorelease()
+	return instance
 }
 
 func (i_ IndexSet) InitWithIndexSet(indexSet IIndexSet) IndexSet {
@@ -103,8 +105,10 @@ func (i_ IndexSet) InitWithIndexSet(indexSet IIndexSet) IndexSet {
 // Initializes an allocated NSIndexSet object with an index set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1415602-initwithindexset?language=objc
-func IndexSet_InitWithIndexSet(indexSet IIndexSet) IndexSet {
-	return IndexSetClass.Alloc().InitWithIndexSet(indexSet)
+func NewIndexSetWithIndexSet(indexSet IIndexSet) IndexSet {
+	instance := IndexSetClass.Alloc().InitWithIndexSet(indexSet)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IndexSetClass) IndexSetWithIndexesInRange(range_ Range) IndexSet {
@@ -127,8 +131,10 @@ func (i_ IndexSet) InitWithIndex(value uint) IndexSet {
 // Initializes an allocated NSIndexSet object with an index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1416501-initwithindex?language=objc
-func IndexSet_InitWithIndex(value uint) IndexSet {
-	return IndexSetClass.Alloc().InitWithIndex(value)
+func NewIndexSetWithIndex(value uint) IndexSet {
+	instance := IndexSetClass.Alloc().InitWithIndex(value)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IndexSetClass) Alloc() IndexSet {

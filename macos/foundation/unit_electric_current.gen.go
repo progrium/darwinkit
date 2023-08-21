@@ -77,8 +77,10 @@ func (u_ UnitElectricCurrent) InitWithSymbolConverter(symbol string, converter I
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitElectricCurrent_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCurrent {
-	return UnitElectricCurrentClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitElectricCurrentWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCurrent {
+	instance := UnitElectricCurrentClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitElectricCurrent) InitWithSymbol(symbol string) UnitElectricCurrent {
@@ -89,8 +91,10 @@ func (u_ UnitElectricCurrent) InitWithSymbol(symbol string) UnitElectricCurrent 
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitElectricCurrent_InitWithSymbol(symbol string) UnitElectricCurrent {
-	return UnitElectricCurrentClass.Alloc().InitWithSymbol(symbol)
+func NewUnitElectricCurrentWithSymbol(symbol string) UnitElectricCurrent {
+	instance := UnitElectricCurrentClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The microamperes unit of electric current. [Full Topic]

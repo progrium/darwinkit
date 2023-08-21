@@ -55,8 +55,10 @@ func (h_ HTTPCookie) InitWithProperties(properties map[HTTPCookiePropertyKey]obj
 // Initializes an HTTP cookie object with the given cookie properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookie/1392975-initwithproperties?language=objc
-func HTTPCookie_InitWithProperties(properties map[HTTPCookiePropertyKey]objc.IObject) HTTPCookie {
-	return HTTPCookieClass.Alloc().InitWithProperties(properties)
+func NewHTTPCookieWithProperties(properties map[HTTPCookiePropertyKey]objc.IObject) HTTPCookie {
+	instance := HTTPCookieClass.Alloc().InitWithProperties(properties)
+	instance.Autorelease()
+	return instance
 }
 
 func (hc _HTTPCookieClass) Alloc() HTTPCookie {

@@ -51,8 +51,10 @@ func (c_ ColorList) InitWithNameFromFile(name ColorListName, path string) ColorL
 // Initializes and returns a color list from the specified file, registering it under the specified name if it isn’t in use already. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522133-initwithname?language=objc
-func ColorList_InitWithNameFromFile(name ColorListName, path string) ColorList {
-	return ColorListClass.Alloc().InitWithNameFromFile(name, path)
+func NewColorListWithNameFromFile(name ColorListName, path string) ColorList {
+	instance := ColorListClass.Alloc().InitWithNameFromFile(name, path)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _ColorListClass) Alloc() ColorList {

@@ -89,8 +89,10 @@ func (a_ Array) InitWithObjects(firstObj objc.IObject, args ...any) Array {
 // Initializes a newly allocated array by placing in it the objects in the argument list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460068-initwithobjects?language=objc
-func Array_InitWithObjects(firstObj objc.IObject, args ...any) Array {
-	return ArrayClass.Alloc().InitWithObjects(firstObj, args...)
+func NewArrayWithObjects(firstObj objc.IObject, args ...any) Array {
+	instance := ArrayClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _ArrayClass) Array() Array {
@@ -125,8 +127,10 @@ func (a_ Array) InitWithArray(array []objc.IObject) Array {
 // Initializes a newly allocated array by placing in it the objects contained in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1412169-initwitharray?language=objc
-func Array_InitWithArray(array []objc.IObject) Array {
-	return ArrayClass.Alloc().InitWithArray(array)
+func NewArrayWithArray(array []objc.IObject) Array {
+	instance := ArrayClass.Alloc().InitWithArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _ArrayClass) ArrayWithArray(array []objc.IObject) Array {

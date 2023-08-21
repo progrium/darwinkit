@@ -54,8 +54,10 @@ func (u_ URLCache) InitWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity
 // Creates a URL cache object with the specified memory and disk capacities, in the specified directory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/3240612-initwithmemorycapacity?language=objc
-func URLCache_InitWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity uint, diskCapacity uint, directoryURL IURL) URLCache {
-	return URLCacheClass.Alloc().InitWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity, diskCapacity, directoryURL)
+func NewURLCacheWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity uint, diskCapacity uint, directoryURL IURL) URLCache {
+	instance := URLCacheClass.Alloc().InitWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity, diskCapacity, directoryURL)
+	instance.Autorelease()
+	return instance
 }
 
 func (uc _URLCacheClass) Alloc() URLCache {

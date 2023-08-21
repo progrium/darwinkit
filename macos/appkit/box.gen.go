@@ -93,8 +93,10 @@ func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
 // Initializes and returns a newly allocated NSView object with a specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483458-initwithframe?language=objc
-func Box_InitWithFrame(frameRect foundation.Rect) Box {
-	return BoxClass.Alloc().InitWithFrame(frameRect)
+func NewBoxWithFrame(frameRect foundation.Rect) Box {
+	instance := BoxClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // Resizes and moves the receiver’s content view so it just encloses its subviews. [Full Topic]

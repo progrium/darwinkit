@@ -91,8 +91,10 @@ func (s_ StepperTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifi
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func StepperTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) StepperTouchBarItem {
-	return StepperTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewStepperTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) StepperTouchBarItem {
+	instance := StepperTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

@@ -47,8 +47,10 @@ func (f_ FunctionStitchingFunctionNode) InitWithNameArgumentsControlDependencies
 // Creates a new function node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchingfunctionnode/3750536-initwithname?language=objc
-func FunctionStitchingFunctionNode_InitWithNameArgumentsControlDependencies(name string, arguments []PFunctionStitchingNode, controlDependencies []IFunctionStitchingFunctionNode) FunctionStitchingFunctionNode {
-	return FunctionStitchingFunctionNodeClass.Alloc().InitWithNameArgumentsControlDependencies(name, arguments, controlDependencies)
+func NewFunctionStitchingFunctionNodeWithNameArgumentsControlDependencies(name string, arguments []PFunctionStitchingNode, controlDependencies []IFunctionStitchingFunctionNode) FunctionStitchingFunctionNode {
+	instance := FunctionStitchingFunctionNodeClass.Alloc().InitWithNameArgumentsControlDependencies(name, arguments, controlDependencies)
+	instance.Autorelease()
+	return instance
 }
 
 func (fc _FunctionStitchingFunctionNodeClass) Alloc() FunctionStitchingFunctionNode {

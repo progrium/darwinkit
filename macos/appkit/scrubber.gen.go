@@ -85,8 +85,10 @@ func (s_ Scrubber) InitWithFrame(frameRect foundation.Rect) Scrubber {
 // Initializes and returns a newly allocated scrubber object with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2588263-initwithframe?language=objc
-func Scrubber_InitWithFrame(frameRect foundation.Rect) Scrubber {
-	return ScrubberClass.Alloc().InitWithFrame(frameRect)
+func NewScrubberWithFrame(frameRect foundation.Rect) Scrubber {
+	instance := ScrubberClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _ScrubberClass) Alloc() Scrubber {

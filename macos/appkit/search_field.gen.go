@@ -129,8 +129,10 @@ func (s_ SearchField) InitWithFrame(frameRect foundation.Rect) SearchField {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func SearchField_InitWithFrame(frameRect foundation.Rect) SearchField {
-	return SearchFieldClass.Alloc().InitWithFrame(frameRect)
+func NewSearchFieldWithFrame(frameRect foundation.Rect) SearchField {
+	instance := SearchFieldClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The name under which the search field automatically archives the list of recent search strings. [Full Topic]

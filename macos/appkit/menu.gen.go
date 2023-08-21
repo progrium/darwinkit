@@ -93,8 +93,10 @@ func (m_ Menu) InitWithTitle(title string) Menu {
 // Initializes and returns a menu having the specified title and with autoenabling of menu items turned on. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518144-initwithtitle?language=objc
-func Menu_InitWithTitle(title string) Menu {
-	return MenuClass.Alloc().InitWithTitle(title)
+func NewMenuWithTitle(title string) Menu {
+	instance := MenuClass.Alloc().InitWithTitle(title)
+	instance.Autorelease()
+	return instance
 }
 
 func (mc _MenuClass) Alloc() Menu {

@@ -83,8 +83,10 @@ func (p_ PrintInfo) InitWithDictionary(attributes map[PrintInfoAttributeKey]objc
 // Returns a printing information object initialized with the parameters in the specified dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1526768-initwithdictionary?language=objc
-func PrintInfo_InitWithDictionary(attributes map[PrintInfoAttributeKey]objc.IObject) PrintInfo {
-	return PrintInfoClass.Alloc().InitWithDictionary(attributes)
+func NewPrintInfoWithDictionary(attributes map[PrintInfoAttributeKey]objc.IObject) PrintInfo {
+	instance := PrintInfoClass.Alloc().InitWithDictionary(attributes)
+	instance.Autorelease()
+	return instance
 }
 
 func (p_ PrintInfo) Init() PrintInfo {

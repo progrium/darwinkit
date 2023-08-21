@@ -120,8 +120,10 @@ func (t_ TokenField) InitWithFrame(frameRect foundation.Rect) TokenField {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func TokenField_InitWithFrame(frameRect foundation.Rect) TokenField {
-	return TokenFieldClass.Alloc().InitWithFrame(frameRect)
+func NewTokenFieldWithFrame(frameRect foundation.Rect) TokenField {
+	instance := TokenFieldClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 // The recevier’s tokenizing character set to characterSet. [Full Topic]

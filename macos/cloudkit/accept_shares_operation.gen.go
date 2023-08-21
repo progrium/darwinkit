@@ -48,8 +48,10 @@ func (a_ AcceptSharesOperation) InitWithShareMetadatas(shareMetadatas []IShareMe
 // Creates an operation for accepting the specified shares. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckacceptsharesoperation/1823506-initwithsharemetadatas?language=objc
-func AcceptSharesOperation_InitWithShareMetadatas(shareMetadatas []IShareMetadata) AcceptSharesOperation {
-	return AcceptSharesOperationClass.Alloc().InitWithShareMetadatas(shareMetadatas)
+func NewAcceptSharesOperationWithShareMetadatas(shareMetadatas []IShareMetadata) AcceptSharesOperation {
+	instance := AcceptSharesOperationClass.Alloc().InitWithShareMetadatas(shareMetadatas)
+	instance.Autorelease()
+	return instance
 }
 
 func (a_ AcceptSharesOperation) Init() AcceptSharesOperation {

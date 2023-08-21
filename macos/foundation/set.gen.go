@@ -79,8 +79,10 @@ func (s_ Set) InitWithObjects(firstObj objc.IObject, args ...any) Set {
 // Initializes a newly allocated set with members taken from the specified list of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574822-initwithobjects?language=objc
-func Set_InitWithObjects(firstObj objc.IObject, args ...any) Set {
-	return SetClass.Alloc().InitWithObjects(firstObj, args...)
+func NewSetWithObjects(firstObj objc.IObject, args ...any) Set {
+	instance := SetClass.Alloc().InitWithObjects(firstObj, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SetClass) SetWithSet(set ISet) Set {
@@ -115,8 +117,10 @@ func (s_ Set) InitWithArray(array []objc.IObject) Set {
 // Initializes a newly allocated set with the objects that are contained in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1408152-initwitharray?language=objc
-func Set_InitWithArray(array []objc.IObject) Set {
-	return SetClass.Alloc().InitWithArray(array)
+func NewSetWithArray(array []objc.IObject) Set {
+	instance := SetClass.Alloc().InitWithArray(array)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _SetClass) SetWithArray(array []objc.IObject) Set {
@@ -175,8 +179,10 @@ func (s_ Set) InitWithSet(set ISet) Set {
 // Initializes a newly allocated set and adds to it objects from another given set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1410612-initwithset?language=objc
-func Set_InitWithSet(set ISet) Set {
-	return SetClass.Alloc().InitWithSet(set)
+func NewSetWithSet(set ISet) Set {
+	instance := SetClass.Alloc().InitWithSet(set)
+	instance.Autorelease()
+	return instance
 }
 
 func (s_ Set) Init() Set {

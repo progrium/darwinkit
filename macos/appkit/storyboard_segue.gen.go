@@ -45,8 +45,10 @@ func (s_ StoryboardSegue) InitWithIdentifierSourceDestination(identifier Storybo
 // The designated initializer for a storyboard segue. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstoryboardsegue/1409572-initwithidentifier?language=objc
-func StoryboardSegue_InitWithIdentifierSourceDestination(identifier StoryboardSegueIdentifier, sourceController objc.IObject, destinationController objc.IObject) StoryboardSegue {
-	return StoryboardSegueClass.Alloc().InitWithIdentifierSourceDestination(identifier, sourceController, destinationController)
+func NewStoryboardSegueWithIdentifierSourceDestination(identifier StoryboardSegueIdentifier, sourceController objc.IObject, destinationController objc.IObject) StoryboardSegue {
+	instance := StoryboardSegueClass.Alloc().InitWithIdentifierSourceDestination(identifier, sourceController, destinationController)
+	instance.Autorelease()
+	return instance
 }
 
 func (sc _StoryboardSegueClass) SegueWithIdentifierSourceDestinationPerformHandler(identifier StoryboardSegueIdentifier, sourceController objc.IObject, destinationController objc.IObject, performHandler func()) StoryboardSegue {

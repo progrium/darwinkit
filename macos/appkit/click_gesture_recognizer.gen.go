@@ -71,8 +71,10 @@ func (c_ ClickGestureRecognizer) InitWithTargetAction(target objc.IObject, actio
 // Initializes the gesture recognizer with the specified target and action information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535012-initwithtarget?language=objc
-func ClickGestureRecognizer_InitWithTargetAction(target objc.IObject, action objc.Selector) ClickGestureRecognizer {
-	return ClickGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+func NewClickGestureRecognizerWithTargetAction(target objc.IObject, action objc.Selector) ClickGestureRecognizer {
+	instance := ClickGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+	instance.Autorelease()
+	return instance
 }
 
 // A bit mask of the button (or buttons) required to recognize this click. [Full Topic]

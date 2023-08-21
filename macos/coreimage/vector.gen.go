@@ -56,8 +56,10 @@ func (v_ Vector) InitWithCGRect(r coregraphics.Rect) Vector {
 // Initializes a vector that is initialized with values provided by a CGRect structure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437644-initwithcgrect?language=objc
-func Vector_InitWithCGRect(r coregraphics.Rect) Vector {
-	return VectorClass.Alloc().InitWithCGRect(r)
+func NewVectorWithCGRect(r coregraphics.Rect) Vector {
+	instance := VectorClass.Alloc().InitWithCGRect(r)
+	instance.Autorelease()
+	return instance
 }
 
 func (v_ Vector) InitWithValuesCount(values *float64, count uint) Vector {
@@ -68,8 +70,10 @@ func (v_ Vector) InitWithValuesCount(values *float64, count uint) Vector {
 // Initializes a vector with the provided values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437849-initwithvalues?language=objc
-func Vector_InitWithValuesCount(values *float64, count uint) Vector {
-	return VectorClass.Alloc().InitWithValuesCount(values, count)
+func NewVectorWithValuesCount(values *float64, count uint) Vector {
+	instance := VectorClass.Alloc().InitWithValuesCount(values, count)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _VectorClass) VectorWithCGAffineTransform(t coregraphics.AffineTransform) Vector {
@@ -92,8 +96,10 @@ func (v_ Vector) InitWithString(representation string) Vector {
 // Initializes a vector with values provided in a string representation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437938-initwithstring?language=objc
-func Vector_InitWithString(representation string) Vector {
-	return VectorClass.Alloc().InitWithString(representation)
+func NewVectorWithString(representation string) Vector {
+	instance := VectorClass.Alloc().InitWithString(representation)
+	instance.Autorelease()
+	return instance
 }
 
 func (v_ Vector) InitWithXY(x float64, y float64) Vector {
@@ -104,8 +110,10 @@ func (v_ Vector) InitWithXY(x float64, y float64) Vector {
 // Initializes the first two positions of a vector with the provided values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1437865-initwithx?language=objc
-func Vector_InitWithXY(x float64, y float64) Vector {
-	return VectorClass.Alloc().InitWithXY(x, y)
+func NewVectorWithXY(x float64, y float64) Vector {
+	instance := VectorClass.Alloc().InitWithXY(x, y)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _VectorClass) VectorWithX(x float64) Vector {
@@ -128,8 +136,10 @@ func (v_ Vector) InitWithCGAffineTransform(r coregraphics.AffineTransform) Vecto
 // Initializes a vector that is initialized with values provided by a CGAffineTransform structure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438102-initwithcgaffinetransform?language=objc
-func Vector_InitWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
-	return VectorClass.Alloc().InitWithCGAffineTransform(r)
+func NewVectorWithCGAffineTransform(r coregraphics.AffineTransform) Vector {
+	instance := VectorClass.Alloc().InitWithCGAffineTransform(r)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _VectorClass) VectorWithCGRect(r coregraphics.Rect) Vector {
@@ -152,8 +162,10 @@ func (v_ Vector) InitWithCGPoint(p coregraphics.Point) Vector {
 // Initializes a vector that is initialized with values provided by a CGPoint structure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civector/1438133-initwithcgpoint?language=objc
-func Vector_InitWithCGPoint(p coregraphics.Point) Vector {
-	return VectorClass.Alloc().InitWithCGPoint(p)
+func NewVectorWithCGPoint(p coregraphics.Point) Vector {
+	instance := VectorClass.Alloc().InitWithCGPoint(p)
+	instance.Autorelease()
+	return instance
 }
 
 func (vc _VectorClass) VectorWithValuesCount(values *float64, count uint) Vector {

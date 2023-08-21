@@ -49,8 +49,10 @@ func (f_ FilePromiseProvider) InitWithFileTypeDelegate(fileType string, delegate
 // Initializes a file promise provider for a certain file type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644594-initwithfiletype?language=objc
-func FilePromiseProvider_InitWithFileTypeDelegate(fileType string, delegate PFilePromiseProviderDelegate) FilePromiseProvider {
-	return FilePromiseProviderClass.Alloc().InitWithFileTypeDelegate(fileType, delegate)
+func NewFilePromiseProviderWithFileTypeDelegate(fileType string, delegate PFilePromiseProviderDelegate) FilePromiseProvider {
+	instance := FilePromiseProviderClass.Alloc().InitWithFileTypeDelegate(fileType, delegate)
+	instance.Autorelease()
+	return instance
 }
 
 func (f_ FilePromiseProvider) Init() FilePromiseProvider {

@@ -93,8 +93,10 @@ func (d_ Dictionary) InitWithObjectsAndKeys(firstObject objc.IObject, args ...an
 // Initializes a newly allocated dictionary with entries constructed from the specified set of values and keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574190-initwithobjectsandkeys?language=objc
-func Dictionary_InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
-	return DictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject, args...)
+func NewDictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
+	instance := DictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Dictionary) InitWithObjectsForKeys(objects []objc.IObject, keys []PCopying) Dictionary {
@@ -105,8 +107,10 @@ func (d_ Dictionary) InitWithObjectsForKeys(objects []objc.IObject, keys []PCopy
 // Initializes a newly allocated dictionary with key-value pairs constructed from the provided arrays of keys and objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1410010-initwithobjects?language=objc
-func Dictionary_InitWithObjectsForKeys(objects []objc.IObject, keys []PCopying) Dictionary {
-	return DictionaryClass.Alloc().InitWithObjectsForKeys(objects, keys)
+func NewDictionaryWithObjectsForKeys(objects []objc.IObject, keys []PCopying) Dictionary {
+	instance := DictionaryClass.Alloc().InitWithObjectsForKeys(objects, keys)
+	instance.Autorelease()
+	return instance
 }
 
 func (dc _DictionaryClass) DictionaryWithObjectForKey(object objc.IObject, key PCopying) Dictionary {
@@ -166,8 +170,10 @@ func (d_ Dictionary) InitWithDictionary(otherDictionary Dictionary) Dictionary {
 // Initializes a newly allocated dictionary by placing in it the keys and values contained in another given dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1418434-initwithdictionary?language=objc
-func Dictionary_InitWithDictionary(otherDictionary Dictionary) Dictionary {
-	return DictionaryClass.Alloc().InitWithDictionary(otherDictionary)
+func NewDictionaryWithDictionary(otherDictionary Dictionary) Dictionary {
+	instance := DictionaryClass.Alloc().InitWithDictionary(otherDictionary)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ Dictionary) Init() Dictionary {

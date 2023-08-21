@@ -43,8 +43,10 @@ func (r_ RecordZoneID) InitWithZoneNameOwnerName(zoneName string, ownerName stri
 // Creates a record zone ID with the specified name and owner. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecordzoneid/1508089-initwithzonename?language=objc
-func RecordZoneID_InitWithZoneNameOwnerName(zoneName string, ownerName string) RecordZoneID {
-	return RecordZoneIDClass.Alloc().InitWithZoneNameOwnerName(zoneName, ownerName)
+func NewRecordZoneIDWithZoneNameOwnerName(zoneName string, ownerName string) RecordZoneID {
+	instance := RecordZoneIDClass.Alloc().InitWithZoneNameOwnerName(zoneName, ownerName)
+	instance.Autorelease()
+	return instance
 }
 
 func (rc _RecordZoneIDClass) Alloc() RecordZoneID {

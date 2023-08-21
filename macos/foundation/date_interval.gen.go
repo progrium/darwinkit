@@ -49,8 +49,10 @@ func (d_ DateInterval) InitWithStartDateEndDate(startDate IDate, endDate IDate) 
 // Initializes a date interval from a given start date and end date. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641639-initwithstartdate?language=objc
-func DateInterval_InitWithStartDateEndDate(startDate IDate, endDate IDate) DateInterval {
-	return DateIntervalClass.Alloc().InitWithStartDateEndDate(startDate, endDate)
+func NewDateIntervalWithStartDateEndDate(startDate IDate, endDate IDate) DateInterval {
+	instance := DateIntervalClass.Alloc().InitWithStartDateEndDate(startDate, endDate)
+	instance.Autorelease()
+	return instance
 }
 
 func (d_ DateInterval) Init() DateInterval {

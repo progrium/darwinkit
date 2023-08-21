@@ -99,8 +99,10 @@ func (e_ Error) InitWithDomainCodeUserInfo(domain ErrorDomain, code int, dict ma
 // Returns an NSError object initialized for a given domain and code with a given userInfo dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nserror/1417063-initwithdomain?language=objc
-func Error_InitWithDomainCodeUserInfo(domain ErrorDomain, code int, dict map[ErrorUserInfoKey]objc.IObject) Error {
-	return ErrorClass.Alloc().InitWithDomainCodeUserInfo(domain, code, dict)
+func NewErrorWithDomainCodeUserInfo(domain ErrorDomain, code int, dict map[ErrorUserInfoKey]objc.IObject) Error {
+	instance := ErrorClass.Alloc().InitWithDomainCodeUserInfo(domain, code, dict)
+	instance.Autorelease()
+	return instance
 }
 
 func (ec _ErrorClass) Alloc() Error {

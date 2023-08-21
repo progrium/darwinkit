@@ -116,8 +116,10 @@ func (c_ ColorPickerTouchBarItem) InitWithIdentifier(identifier TouchBarItemIden
 // Creates a new item with the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritem/2544755-initwithidentifier?language=objc
-func ColorPickerTouchBarItem_InitWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
-	return ColorPickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+func NewColorPickerTouchBarItemWithIdentifier(identifier TouchBarItemIdentifier) ColorPickerTouchBarItem {
+	instance := ColorPickerTouchBarItemClass.Alloc().InitWithIdentifier(identifier)
+	instance.Autorelease()
+	return instance
 }
 
 // The picker's currently selected color. [Full Topic]

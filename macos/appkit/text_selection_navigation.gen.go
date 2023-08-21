@@ -55,8 +55,10 @@ func (t_ TextSelectionNavigation) InitWithDataSource(dataSource PTextSelectionDa
 // Creates a new object using the text selection data source you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801854-initwithdatasource?language=objc
-func TextSelectionNavigation_InitWithDataSource(dataSource PTextSelectionDataSource) TextSelectionNavigation {
-	return TextSelectionNavigationClass.Alloc().InitWithDataSource(dataSource)
+func NewTextSelectionNavigationWithDataSource(dataSource PTextSelectionDataSource) TextSelectionNavigation {
+	instance := TextSelectionNavigationClass.Alloc().InitWithDataSource(dataSource)
+	instance.Autorelease()
+	return instance
 }
 
 func (tc _TextSelectionNavigationClass) Alloc() TextSelectionNavigation {

@@ -81,8 +81,10 @@ func (l_ Locale) InitWithLocaleIdentifier(string_ string) Locale {
 // Initializes a locale using a given locale identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslocale/1414217-initwithlocaleidentifier?language=objc
-func Locale_InitWithLocaleIdentifier(string_ string) Locale {
-	return LocaleClass.Alloc().InitWithLocaleIdentifier(string_)
+func NewLocaleWithLocaleIdentifier(string_ string) Locale {
+	instance := LocaleClass.Alloc().InitWithLocaleIdentifier(string_)
+	instance.Autorelease()
+	return instance
 }
 
 func (lc _LocaleClass) Alloc() Locale {

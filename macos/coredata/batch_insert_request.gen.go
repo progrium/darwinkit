@@ -52,8 +52,10 @@ func (b_ BatchInsertRequest) InitWithEntityNameObjects(entityName string, dictio
 // Creates a batch-insertion request for a named managed entity, and provides an array of data dictionaries for insertion. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchinsertrequest/3333237-initwithentityname?language=objc
-func BatchInsertRequest_InitWithEntityNameObjects(entityName string, dictionaries []map[string]objc.IObject) BatchInsertRequest {
-	return BatchInsertRequestClass.Alloc().InitWithEntityNameObjects(entityName, dictionaries)
+func NewBatchInsertRequestWithEntityNameObjects(entityName string, dictionaries []map[string]objc.IObject) BatchInsertRequest {
+	instance := BatchInsertRequestClass.Alloc().InitWithEntityNameObjects(entityName, dictionaries)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BatchInsertRequestClass) BatchInsertRequestWithEntityNameObjects(entityName string, dictionaries []map[string]objc.IObject) BatchInsertRequest {
@@ -76,8 +78,10 @@ func (b_ BatchInsertRequest) InitWithEntityManagedObjectHandler(entity IEntityDe
 // Creates a batch-insertion request for a managed entity, and specifies a closure that inserts data into the entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchinsertrequest/3618791-initwithentity?language=objc
-func BatchInsertRequest_InitWithEntityManagedObjectHandler(entity IEntityDescription, handler func(obj ManagedObject) bool) BatchInsertRequest {
-	return BatchInsertRequestClass.Alloc().InitWithEntityManagedObjectHandler(entity, handler)
+func NewBatchInsertRequestWithEntityManagedObjectHandler(entity IEntityDescription, handler func(obj ManagedObject) bool) BatchInsertRequest {
+	instance := BatchInsertRequestClass.Alloc().InitWithEntityManagedObjectHandler(entity, handler)
+	instance.Autorelease()
+	return instance
 }
 
 func (bc _BatchInsertRequestClass) Alloc() BatchInsertRequest {

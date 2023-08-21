@@ -45,8 +45,10 @@ func (i_ IncrementalStoreNode) InitWithObjectIDWithValuesVersion(objectID IManag
 // Returns an object initialized with the given values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506321-initwithobjectid?language=objc
-func IncrementalStoreNode_InitWithObjectIDWithValuesVersion(objectID IManagedObjectID, values map[string]objc.IObject, version uint64) IncrementalStoreNode {
-	return IncrementalStoreNodeClass.Alloc().InitWithObjectIDWithValuesVersion(objectID, values, version)
+func NewIncrementalStoreNodeWithObjectIDWithValuesVersion(objectID IManagedObjectID, values map[string]objc.IObject, version uint64) IncrementalStoreNode {
+	instance := IncrementalStoreNodeClass.Alloc().InitWithObjectIDWithValuesVersion(objectID, values, version)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IncrementalStoreNodeClass) Alloc() IncrementalStoreNode {

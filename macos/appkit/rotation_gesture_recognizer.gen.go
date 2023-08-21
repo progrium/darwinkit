@@ -69,8 +69,10 @@ func (r_ RotationGestureRecognizer) InitWithTargetAction(target objc.IObject, ac
 // Initializes the gesture recognizer with the specified target and action information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535012-initwithtarget?language=objc
-func RotationGestureRecognizer_InitWithTargetAction(target objc.IObject, action objc.Selector) RotationGestureRecognizer {
-	return RotationGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+func NewRotationGestureRecognizerWithTargetAction(target objc.IObject, action objc.Selector) RotationGestureRecognizer {
+	instance := RotationGestureRecognizerClass.Alloc().InitWithTargetAction(target, action)
+	instance.Autorelease()
+	return instance
 }
 
 // The rotation of the gesture in radians. [Full Topic]

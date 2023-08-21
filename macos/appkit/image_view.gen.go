@@ -96,8 +96,10 @@ func (i_ ImageView) InitWithFrame(frameRect foundation.Rect) ImageView {
 // Initializes a control with the specified frame rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428900-initwithframe?language=objc
-func ImageView_InitWithFrame(frameRect foundation.Rect) ImageView {
-	return ImageViewClass.Alloc().InitWithFrame(frameRect)
+func NewImageViewWithFrame(frameRect foundation.Rect) ImageView {
+	instance := ImageViewClass.Alloc().InitWithFrame(frameRect)
+	instance.Autorelease()
+	return instance
 }
 
 //	[Full Topic]

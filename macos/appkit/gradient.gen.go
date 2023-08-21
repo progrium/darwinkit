@@ -50,8 +50,10 @@ func (g_ Gradient) InitWithColorsAndLocations(firstColor IColor, args ...any) Gr
 // Initializes a newly allocated gradient object with a comma-separated list of arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1555387-initwithcolorsandlocations?language=objc
-func Gradient_InitWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
-	return GradientClass.Alloc().InitWithColorsAndLocations(firstColor, args...)
+func NewGradientWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
+	instance := GradientClass.Alloc().InitWithColorsAndLocations(firstColor, args...)
+	instance.Autorelease()
+	return instance
 }
 
 func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
@@ -62,8 +64,10 @@ func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, ending
 // Initializes a newly allocated gradient object with two colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1525448-initwithstartingcolor?language=objc
-func Gradient_InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
-	return GradientClass.Alloc().InitWithStartingColorEndingColor(startingColor, endingColor)
+func NewGradientWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
+	instance := GradientClass.Alloc().InitWithStartingColorEndingColor(startingColor, endingColor)
+	instance.Autorelease()
+	return instance
 }
 
 func (g_ Gradient) InitWithColors(colorArray []IColor) Gradient {
@@ -74,8 +78,10 @@ func (g_ Gradient) InitWithColors(colorArray []IColor) Gradient {
 // Initializes a newly allocated gradient object with an array of colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1535315-initwithcolors?language=objc
-func Gradient_InitWithColors(colorArray []IColor) Gradient {
-	return GradientClass.Alloc().InitWithColors(colorArray)
+func NewGradientWithColors(colorArray []IColor) Gradient {
+	instance := GradientClass.Alloc().InitWithColors(colorArray)
+	instance.Autorelease()
+	return instance
 }
 
 func (gc _GradientClass) Alloc() Gradient {

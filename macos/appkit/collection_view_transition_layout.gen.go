@@ -47,8 +47,10 @@ func (c_ CollectionViewTransitionLayout) InitWithCurrentLayoutNextLayout(current
 // Initializes and returns the transition layout object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewtransitionlayout/1524431-initwithcurrentlayout?language=objc
-func CollectionViewTransitionLayout_InitWithCurrentLayoutNextLayout(currentLayout ICollectionViewLayout, newLayout ICollectionViewLayout) CollectionViewTransitionLayout {
-	return CollectionViewTransitionLayoutClass.Alloc().InitWithCurrentLayoutNextLayout(currentLayout, newLayout)
+func NewCollectionViewTransitionLayoutWithCurrentLayoutNextLayout(currentLayout ICollectionViewLayout, newLayout ICollectionViewLayout) CollectionViewTransitionLayout {
+	instance := CollectionViewTransitionLayoutClass.Alloc().InitWithCurrentLayoutNextLayout(currentLayout, newLayout)
+	instance.Autorelease()
+	return instance
 }
 
 func (cc _CollectionViewTransitionLayoutClass) Alloc() CollectionViewTransitionLayout {

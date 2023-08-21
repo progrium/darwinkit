@@ -45,8 +45,10 @@ func (o_ OrderedCollectionDifference) InitWithChanges(changes []IOrderedCollecti
 // Creates an ordered collection difference using an array of ordered collection changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152185-initwithchanges?language=objc
-func OrderedCollectionDifference_InitWithChanges(changes []IOrderedCollectionChange) OrderedCollectionDifference {
-	return OrderedCollectionDifferenceClass.Alloc().InitWithChanges(changes)
+func NewOrderedCollectionDifferenceWithChanges(changes []IOrderedCollectionChange) OrderedCollectionDifference {
+	instance := OrderedCollectionDifferenceClass.Alloc().InitWithChanges(changes)
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OrderedCollectionDifference) InverseDifference() OrderedCollectionDifference {
@@ -58,7 +60,9 @@ func (o_ OrderedCollectionDifference) InverseDifference() OrderedCollectionDiffe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3180114-inversedifference?language=objc
 func OrderedCollectionDifference_InverseDifference() OrderedCollectionDifference {
-	return OrderedCollectionDifferenceClass.Alloc().InverseDifference()
+	instance := OrderedCollectionDifferenceClass.Alloc().InverseDifference()
+	instance.Autorelease()
+	return instance
 }
 
 func (o_ OrderedCollectionDifference) InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject) OrderedCollectionDifference {
@@ -69,8 +73,10 @@ func (o_ OrderedCollectionDifference) InitWithInsertIndexesInsertedObjectsRemove
 // Creates an ordered collection difference from arrays of inserted and removed objects with corresponding sets of indices. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectiondifference/3152186-initwithinsertindexes?language=objc
-func OrderedCollectionDifference_InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject) OrderedCollectionDifference {
-	return OrderedCollectionDifferenceClass.Alloc().InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts, insertedObjects, removes, removedObjects)
+func NewOrderedCollectionDifferenceWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject) OrderedCollectionDifference {
+	instance := OrderedCollectionDifferenceClass.Alloc().InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts, insertedObjects, removes, removedObjects)
+	instance.Autorelease()
+	return instance
 }
 
 func (oc _OrderedCollectionDifferenceClass) Alloc() OrderedCollectionDifference {

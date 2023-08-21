@@ -68,8 +68,10 @@ func (a_ Animation) InitWithDurationAnimationCurve(duration foundation.TimeInter
 // Returns an NSAnimation object initialized with the specified duration and animation-curve values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530069-initwithduration?language=objc
-func Animation_InitWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) Animation {
-	return AnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
+func NewAnimationWithDurationAnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) Animation {
+	instance := AnimationClass.Alloc().InitWithDurationAnimationCurve(duration, animationCurve)
+	instance.Autorelease()
+	return instance
 }
 
 func (ac _AnimationClass) Alloc() Animation {

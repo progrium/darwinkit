@@ -60,8 +60,10 @@ func (i_ IndexPath) InitWithIndexesLength(indexes *uint, length uint) IndexPath 
 // Initializes an index path with the given nodes and length. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1416906-initwithindexes?language=objc
-func IndexPath_InitWithIndexesLength(indexes *uint, length uint) IndexPath {
-	return IndexPathClass.Alloc().InitWithIndexesLength(indexes, length)
+func NewIndexPathWithIndexesLength(indexes *uint, length uint) IndexPath {
+	instance := IndexPathClass.Alloc().InitWithIndexesLength(indexes, length)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IndexPathClass) IndexPathForItemInSection(item int, section int) IndexPath {
@@ -96,8 +98,10 @@ func (i_ IndexPath) InitWithIndex(index uint) IndexPath {
 // Initializes an index path with a single node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1416855-initwithindex?language=objc
-func IndexPath_InitWithIndex(index uint) IndexPath {
-	return IndexPathClass.Alloc().InitWithIndex(index)
+func NewIndexPathWithIndex(index uint) IndexPath {
+	instance := IndexPathClass.Alloc().InitWithIndex(index)
+	instance.Autorelease()
+	return instance
 }
 
 func (ic _IndexPathClass) Alloc() IndexPath {

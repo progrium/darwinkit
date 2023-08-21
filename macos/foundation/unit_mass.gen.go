@@ -77,8 +77,10 @@ func (u_ UnitMass) InitWithSymbolConverter(symbol string, converter IUnitConvert
 // Initializes a dimensional unit with the symbol and unit converter you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdimension/1823633-initwithsymbol?language=objc
-func UnitMass_InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitMass {
-	return UnitMassClass.Alloc().InitWithSymbolConverter(symbol, converter)
+func NewUnitMassWithSymbolConverter(symbol string, converter IUnitConverter) UnitMass {
+	instance := UnitMassClass.Alloc().InitWithSymbolConverter(symbol, converter)
+	instance.Autorelease()
+	return instance
 }
 
 func (u_ UnitMass) InitWithSymbol(symbol string) UnitMass {
@@ -89,8 +91,10 @@ func (u_ UnitMass) InitWithSymbol(symbol string) UnitMass {
 // Initializes a new unit with the specified symbol. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsunit/1690760-initwithsymbol?language=objc
-func UnitMass_InitWithSymbol(symbol string) UnitMass {
-	return UnitMassClass.Alloc().InitWithSymbol(symbol)
+func NewUnitMassWithSymbol(symbol string) UnitMass {
+	instance := UnitMassClass.Alloc().InitWithSymbol(symbol)
+	instance.Autorelease()
+	return instance
 }
 
 // The micrograms unit of mass. [Full Topic]
