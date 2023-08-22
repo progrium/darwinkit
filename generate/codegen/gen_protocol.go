@@ -140,6 +140,10 @@ func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
 		}
 	}
 	for _, m := range p.allMethods() {
+		// don't support class methods on protocols yet
+		if m.ClassMethod {
+			continue
+		}
 		if !m.Required {
 			w.WriteLine("// optional")
 		} else {
@@ -176,6 +180,10 @@ func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
 
 	receiver := "di"
 	for _, m := range p.allMethods() {
+		// don't support class methods on protocols yet
+		if m.ClassMethod {
+			continue
+		}
 		if !m.Required {
 			w.WriteLine(fmt.Sprintf("func (%s *%s) Has%s() bool {", receiver, implStructName, m.ProtocolGoFuncName()))
 			w.WriteLine(fmt.Sprintf("\t return %s._%s != nil", receiver, m.ProtocolGoFuncName()))
@@ -235,6 +243,10 @@ func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 	w.WriteLine("}")
 
 	for _, m := range p.allMethods() {
+		// don't support class methods on protocols yet
+		if m.ClassMethod {
+			continue
+		}
 		w.WriteLine("")
 		if !m.Required {
 			receiver := strings.ToLower(typeName[0:1] + "_")
