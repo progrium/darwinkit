@@ -52,8 +52,10 @@ func TrimPrefix(symbolName string) string {
 func CanAbstractModuleCoupling(in string, mod string) bool {
 	mods, ok := map[string][]string{
 		"foundation": []string{"appkit", "coreimage", "corespotlight", "fileprovider", "gameplaykit", "iobluetooth", "uti"},
-		"appkit":     []string{"spritekit"},
+		"appkit":     []string{"spritekit", "cloudkit"},
 		"coreimage":  []string{"appkit"},
+		"coredata":   []string{"corespotlight"},
+		"cloudkit":   []string{"corelocation"},
 	}[in]
 	if !ok {
 		return false

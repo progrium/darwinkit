@@ -5,7 +5,6 @@ package cloudkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corelocation"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,7 +19,7 @@ type _LocationSortDescriptorClass struct {
 // An interface definition for the [LocationSortDescriptor] class.
 type ILocationSortDescriptor interface {
 	foundation.ISortDescriptor
-	RelativeLocation() corelocation.Location
+	RelativeLocation() objc.Object
 }
 
 // An object for sorting records that contain location data. [Full Topic]
@@ -36,7 +35,7 @@ func LocationSortDescriptorFrom(ptr unsafe.Pointer) LocationSortDescriptor {
 	}
 }
 
-func (l_ LocationSortDescriptor) InitWithKeyRelativeLocation(key string, relativeLocation corelocation.ILocation) LocationSortDescriptor {
+func (l_ LocationSortDescriptor) InitWithKeyRelativeLocation(key string, relativeLocation objc.IObject) LocationSortDescriptor {
 	rv := objc.Call[LocationSortDescriptor](l_, objc.Sel("initWithKey:relativeLocation:"), key, objc.Ptr(relativeLocation))
 	return rv
 }
@@ -44,7 +43,7 @@ func (l_ LocationSortDescriptor) InitWithKeyRelativeLocation(key string, relativ
 // Creates a location sort descriptor using the specified key and relative location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cklocationsortdescriptor/1515071-initwithkey?language=objc
-func NewLocationSortDescriptorWithKeyRelativeLocation(key string, relativeLocation corelocation.ILocation) LocationSortDescriptor {
+func NewLocationSortDescriptorWithKeyRelativeLocation(key string, relativeLocation objc.IObject) LocationSortDescriptor {
 	instance := LocationSortDescriptorClass.Alloc().InitWithKeyRelativeLocation(key, relativeLocation)
 	instance.Autorelease()
 	return instance
@@ -103,7 +102,7 @@ func NewLocationSortDescriptorWithKeyAscending(key string, ascending bool) Locat
 // The reference location for sorting records. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cklocationsortdescriptor/1514915-relativelocation?language=objc
-func (l_ LocationSortDescriptor) RelativeLocation() corelocation.Location {
-	rv := objc.Call[corelocation.Location](l_, objc.Sel("relativeLocation"))
+func (l_ LocationSortDescriptor) RelativeLocation() objc.Object {
+	rv := objc.Call[objc.Object](l_, objc.Sel("relativeLocation"))
 	return rv
 }

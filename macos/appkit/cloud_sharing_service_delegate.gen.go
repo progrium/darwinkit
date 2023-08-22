@@ -3,7 +3,6 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/cloudkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -13,7 +12,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate?language=objc
 type PCloudSharingServiceDelegate interface {
 	// optional
-	SharingServiceDidSaveShare(sharingService SharingService, share cloudkit.Share)
+	SharingServiceDidSaveShare(sharingService SharingService, share objc.Object)
 	HasSharingServiceDidSaveShare() bool
 
 	// optional
@@ -23,7 +22,7 @@ type PCloudSharingServiceDelegate interface {
 
 // A delegate implementation builder for the [PCloudSharingServiceDelegate] protocol.
 type CloudSharingServiceDelegate struct {
-	_SharingServiceDidSaveShare            func(sharingService SharingService, share cloudkit.Share)
+	_SharingServiceDidSaveShare            func(sharingService SharingService, share objc.Object)
 	_OptionsForSharingServiceShareProvider func(cloudKitSharingService SharingService, provider foundation.ItemProvider) CloudKitSharingServiceOptions
 }
 
@@ -34,14 +33,14 @@ func (di *CloudSharingServiceDelegate) HasSharingServiceDidSaveShare() bool {
 // Tells the delegate when the cloud-sharing service saves the CloudKit share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644712-sharingservice?language=objc
-func (di *CloudSharingServiceDelegate) SetSharingServiceDidSaveShare(f func(sharingService SharingService, share cloudkit.Share)) {
+func (di *CloudSharingServiceDelegate) SetSharingServiceDidSaveShare(f func(sharingService SharingService, share objc.Object)) {
 	di._SharingServiceDidSaveShare = f
 }
 
 // Tells the delegate when the cloud-sharing service saves the CloudKit share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644712-sharingservice?language=objc
-func (di *CloudSharingServiceDelegate) SharingServiceDidSaveShare(sharingService SharingService, share cloudkit.Share) {
+func (di *CloudSharingServiceDelegate) SharingServiceDidSaveShare(sharingService SharingService, share objc.Object) {
 	di._SharingServiceDidSaveShare(sharingService, share)
 }
 func (di *CloudSharingServiceDelegate) HasOptionsForSharingServiceShareProvider() bool {
@@ -74,7 +73,7 @@ func (c_ CloudSharingServiceDelegateWrapper) HasSharingServiceDidSaveShare() boo
 // Tells the delegate when the cloud-sharing service saves the CloudKit share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644712-sharingservice?language=objc
-func (c_ CloudSharingServiceDelegateWrapper) SharingServiceDidSaveShare(sharingService ISharingService, share cloudkit.IShare) {
+func (c_ CloudSharingServiceDelegateWrapper) SharingServiceDidSaveShare(sharingService ISharingService, share objc.IObject) {
 	objc.Call[objc.Void](c_, objc.Sel("sharingService:didSaveShare:"), objc.Ptr(sharingService), objc.Ptr(share))
 }
 

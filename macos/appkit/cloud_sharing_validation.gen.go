@@ -3,7 +3,6 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/cloudkit"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -12,7 +11,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingvalidation?language=objc
 type PCloudSharingValidation interface {
 	// optional
-	CloudShareForUserInterfaceItem(item ValidatedUserInterfaceItemWrapper) cloudkit.IShare
+	CloudShareForUserInterfaceItem(item ValidatedUserInterfaceItemWrapper) objc.IObject
 	HasCloudShareForUserInterfaceItem() bool
 }
 
@@ -28,8 +27,8 @@ func (c_ CloudSharingValidationWrapper) HasCloudShareForUserInterfaceItem() bool
 // Returns the Cloud share object that corresponds to the specified item, if one exists. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingvalidation/2315049-cloudshareforuserinterfaceitem?language=objc
-func (c_ CloudSharingValidationWrapper) CloudShareForUserInterfaceItem(item PValidatedUserInterfaceItem) cloudkit.Share {
+func (c_ CloudSharingValidationWrapper) CloudShareForUserInterfaceItem(item PValidatedUserInterfaceItem) objc.Object {
 	po0 := objc.WrapAsProtocol("NSValidatedUserInterfaceItem", item)
-	rv := objc.Call[cloudkit.Share](c_, objc.Sel("cloudShareForUserInterfaceItem:"), po0)
+	rv := objc.Call[objc.Object](c_, objc.Sel("cloudShareForUserInterfaceItem:"), po0)
 	return rv
 }
