@@ -72,7 +72,9 @@ func (s Symbol) DocURL() string {
 }
 
 func (s Symbol) HasFramework(name string) bool {
+	name = strings.ReplaceAll(name, " ", "")
 	for _, m := range s.Modules {
+		m = strings.ReplaceAll(m, " ", "")
 		if strings.EqualFold(m, name) {
 			return true
 		}
