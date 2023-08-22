@@ -45,8 +45,8 @@ func main() {
 		win.SetTitle("Hello world")
 		win.SetLevel(appkit.MainMenuWindowLevel + 2)
 
-		view := c.CreateInstance(0)
-		objc.Call[objc.Void](win, objc.Sel("setContentView:"), view)
+		view := appkit.ViewFrom(c.CreateInstance(0).Ptr()).InitWithFrame(frame)
+		win.SetContentView(view)
 		win.MakeKeyAndOrderFront(nil)
 
 		log.Println("App started.")
