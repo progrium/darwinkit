@@ -19,3 +19,8 @@ jobs:
         TAGS=${{ matrix.os }}
         TAGS=${TAGS//-} # remove dash
         go test -tags $TAGS -v ./...
+    - name: Build helloworld
+      run: |
+        TAGS=${{ matrix.os }}
+        TAGS=${TAGS//-} # remove dash
+        go build -tags $TAGS ./macos/_examples/helloworld
