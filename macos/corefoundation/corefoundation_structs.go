@@ -24,3 +24,4 @@ type WriteStreamRef = unsafe.Pointer
 type FileDescriptorRef = unsafe.Pointer
 type PlugInInstanceRef = unsafe.Pointer
 type UUIDRef = unsafe.Pointer
+type ArrayRef = unsafe.Pointer

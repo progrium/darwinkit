@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/progrium/macdriver/generate/declparse"
@@ -42,7 +43,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		st, err := sym.Parse()
 		if err != nil || st.Enum == nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
-			panic("invalid enum decl")
+			log.Panicf("invalid enum decl. %s", err)
 		}
 
 		return &typing.AliasType{
