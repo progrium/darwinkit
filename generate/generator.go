@@ -156,7 +156,7 @@ func (db *Generator) ResolveTypeAlias(typeName string) (declparse.TypeInfo, bool
 
 func (db *Generator) TypeFromSymbolName(name string) typing.Type {
 	// hardcoded for now
-	if db.Platform == "macos" && strings.HasPrefix(name, "UI") {
+	if db.Platform == "macos" && strings.HasPrefix(name, "UI") && !strings.HasPrefix(name, "UInt") {
 		name = "NS" + strings.TrimPrefix(name, "UI")
 	}
 	s := db.FindTypeSymbol(name)
