@@ -132,7 +132,7 @@ var All = []Module{
 	{"CoreAudioKit", "Core Audio Kit", "coreaudiokit", "CoreAudioKit/CoreAudioKit.h", []string{"CA", "AU"}},
 	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}},
 	{"CoreData", "Core Data", "coredata", "CoreData/CoreData.h", []string{"NS"}},
-	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CoreMediaIO.h", []string{"CMIO"}},
+	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CMIOHardware.h", []string{"CMIO"}},
 	{"CoreMedia", "Core Media", "coremedia", "CoreMedia/CoreMedia.h", []string{"CM"}},
 	{"CoreImage", "Core Image", "coreimage", "CoreImage/CoreImage.h", []string{"CI"}},
 	{"CoreMIDI", "Core MIDI", "coremidi", "CoreMIDI/CoreMIDI.h", []string{"MIDI", "kMIDI"}},
