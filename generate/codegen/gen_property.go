@@ -1,6 +1,8 @@
 package codegen
 
 import (
+	"strings"
+
 	"github.com/progrium/macdriver/generate/typing"
 	"github.com/progrium/macdriver/internal/stringx"
 )
@@ -49,11 +51,11 @@ func (p *Property) getter() *Method {
 func (p *Property) setter() *Method {
 	name := "set" + stringx.Capitalize(p.Name)
 	if p.SetterName != "" {
-		name = p.SetterName
+		name = strings.TrimSuffix(p.SetterName, ":")
 	}
 	goName := "set" + stringx.Capitalize(p.GoName)
 	if p.SetterName != "" {
-		goName = p.SetterName
+		goName = strings.TrimSuffix(p.SetterName, ":")
 	}
 	return &Method{
 		Name:         name,
