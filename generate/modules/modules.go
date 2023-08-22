@@ -90,7 +90,6 @@ func CanSkipModuleCoupling(in string, mod string) bool {
 func CanIgnoreNotFound(p any) bool {
 	mod := strings.TrimPrefix(p.(string), "module not found: ")
 	for _, m := range []string{
-		"Media Player",
 		"Security",
 		"JavaScriptCore",
 		"ImageCaptureCore",
@@ -120,6 +119,7 @@ var All = []Module{
 	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
 	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
 	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
+	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
 	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},
 	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}},
 	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}},
