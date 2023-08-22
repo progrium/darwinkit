@@ -14,6 +14,7 @@ import (
 type PathElement struct{}
 type ScreenUpdateMoveDelta struct{}
 
+type ColorConversionInfoRef unsafe.Pointer
 type DisplayStreamUpdateRef unsafe.Pointer
 
 type AffineTransform struct {
