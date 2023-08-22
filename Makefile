@@ -4,6 +4,10 @@ generate:
 	$(GOEXE) generate ./...
 .PHONY: generate
 
+test:
+	$(GOEXE) test ./...
+.PHONY: test
+
 clobber:
 	$(GOEXE) run ./generate/tools/clobbergen.go ./macos
 .PHONY: clobber
