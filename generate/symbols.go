@@ -113,8 +113,8 @@ func (s Symbol) HasPlatform(name string, version int, deprecated bool) bool {
 			}
 			ver := strings.Split(p.IntroducedAt, ".")
 			major, _ := strconv.Atoi(ver[0])
-			minor, _ := strconv.Atoi(ver[1])
-			if version > major || (version == major && minor == 0) {
+			//minor, _ := strconv.Atoi(ver[1])
+			if version >= major {
 				return true
 			}
 			return false
