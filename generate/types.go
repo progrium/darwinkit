@@ -179,7 +179,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 			at.Type = typing.Object
 		}
 		ref = true
-	case "NSZone", "ipc_port_t":
+	case "NSZone", "ipc_port_t", "io_object_t":
 		typ = &typing.RefType{Name: ti.Name}
 		ref = true
 	case "NSDictionary":
