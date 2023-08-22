@@ -19,6 +19,12 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 	if db.Platform == "macos" && module == "UIKit" {
 		module = "AppKit"
 	}
+	// cases where symbol lives in two places,
+	// we want it local if it belongs to the
+	// framework we're generating
+	if sym.HasFramework(db.Framework) {
+		module = db.Framework
+	}
 	switch sym.Kind {
 	case "Class":
 		return &typing.ClassType{
