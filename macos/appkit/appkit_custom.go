@@ -44,6 +44,18 @@ func Font_FontWithNameSize(fontName string, fontSize float64) Font {
 	return FontClass.FontWithNameSize(fontName, fontSize)
 }
 
+func (ic _MenuItemClass) SeparatorItem() MenuItem {
+	rv := objc.Call[MenuItem](ic, objc.Sel("separatorItem"))
+	return rv
+}
+
+// Returns a menu item that is used to separate logical groups of menu commands.
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem
+func MenuItem_SeparatorItem() MenuItem {
+	return MenuItemClass.SeparatorItem()
+}
+
 func (w_ Window) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
 	rv := objc.Call[Window](w_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
 	return rv
@@ -74,19 +86,19 @@ func DisableAutoresizingTranslate[T IView](v T) T {
 
 // NewMenuItem create a new menu item, with selector
 func NewMenuItemWithSelector(title string, charCode string, selector objc.Selector) MenuItem {
-	return MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent(title, selector, charCode)
+	return NewMenuItemWithTitleActionKeyEquivalent(title, selector, charCode)
 }
 
 // NewMenuItemWithAction create a new menu item with action
 func NewMenuItemWithAction(title string, charCode string, handler action.Handler) MenuItem {
-	item := MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent(title, objc.Selector{}, charCode)
+	item := NewMenuItemWithTitleActionKeyEquivalent(title, objc.Selector{}, charCode)
 	action.Set(item, handler)
 	return item
 }
 
 // NewSubMenuItem create a menu item that hold a sub menu
 func NewSubMenuItem(menu IMenu) MenuItem {
-	item := MenuItemClass.Alloc().InitWithTitleActionKeyEquivalent("", objc.Selector{}, "")
+	item := NewMenuItemWithTitleActionKeyEquivalent("", objc.Selector{}, "")
 	item.SetSubmenu(menu)
 	return item
 }
@@ -113,7 +125,7 @@ func NewRadioButton(title string) Button {
 
 // NewPushButton return a button that switches between on and off states with each click.
 func NewPushButton(title string) Button {
-	btn := ButtonClass.New()
+	btn := NewButton()
 	btn.SetButtonType(ButtonTypePushOnPushOff)
 	btn.SetTitle(title)
 	return btn
@@ -121,14 +133,14 @@ func NewPushButton(title string) Button {
 
 // NewVerticalStackView return a new vertical StackView
 func NewVerticalStackView() StackView {
-	sv := StackViewClass.New()
+	sv := NewStackView()
 	sv.SetOrientation(UserInterfaceLayoutOrientationVertical)
 	return sv
 }
 
 // NewHorizontalStackView return a new horizontal StackView
 func NewHorizontalStackView() StackView {
-	sv := StackViewClass.New()
+	sv := NewStackView()
 	sv.SetOrientation(UserInterfaceLayoutOrientationHorizontal)
 	return sv
 }

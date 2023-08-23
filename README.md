@@ -19,19 +19,12 @@ DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/git
 package main
 
 import (
-	"runtime"
-
 	"github.com/progrium/macdriver/objc"
 	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/macos/webkit"
 )
-
-func init() {
-	// ensure main is run on the startup thread
-	runtime.LockOSThread()
-}
 
 func main() {
 	// runs macOS application event loop with a callback on success

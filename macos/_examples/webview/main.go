@@ -4,9 +4,8 @@ import (
 	"embed"
 	"fmt"
 	"io/fs"
-	"runtime"
-	"time"
 
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/macos/webkit"
@@ -16,13 +15,14 @@ import (
 //go:embed assets
 var assetsFS embed.FS
 
-func init() {
-	runtime.LockOSThread()
+func main() {
+	macos.RunApp(launched)
 }
 
-func main() {
-	app := appkit.ApplicationClass.SharedApplication()
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	w := appkit.NewWindowWithSize(600, 400)
+	objc.Retain(&w)
+
 	w.SetTitle("Test FS WebView")
 
 	_fs, _ := fs.Sub(assetsFS, "assets")
@@ -38,24 +38,15 @@ func main() {
 		return foundation.NewStringWithString("hello: " + param).Object, nil
 	})
 	w.SetContentView(view)
-
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-		webkit.LoadURL(view, "gofs:/index.html")
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
+	webkit.LoadURL(view, "gofs:/index.html")
+
+	delegate.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
 		return true
 	})
-	app.SetDelegate(ad)
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
 
-	go func() {
-		time.Sleep(time.Second * 1)
-		runtime.GC()
-	}()
-	app.Run()
 }

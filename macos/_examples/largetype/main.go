@@ -3,30 +3,35 @@ package main
 import (
 	"flag"
 	"fmt"
-	"runtime"
 	"strings"
 
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
-func init() {
-	runtime.LockOSThread()
-}
+var (
+	fontName *string
+	text     string
+)
 
 func main() {
-	fontName := flag.String("font", "Helvetica", "font to use")
+	fontName = flag.String("font", "Helvetica", "font to use")
 	flag.Parse()
-	text := strings.Join(flag.Args(), " ")
+
+	text = strings.Join(flag.Args(), " ")
 	if text == "" {
 		text = "Hello world"
 	}
-
-	app := appkit.Application_SharedApplication()
-	screen := appkit.Screen_MainScreen().Frame().Size
 	text = fmt.Sprintf(" %s ", text)
 	fmt.Println(text)
+
+	macos.RunApp(launched)
+}
+
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
+	screen := appkit.Screen_MainScreen().Frame().Size
 
 	tr, fontSize := func() (rect foundation.Rect, size float64) {
 		t := appkit.NewTextViewWithFrame(rectOf(0, 0, 0, 0))
@@ -53,8 +58,8 @@ func main() {
 	t.SetDrawsBackground(false)
 
 	c := appkit.NewViewWithFrame(rectOf(0, 0, 0, 0))
-	// deprecated...
-	// c.SetBackgroundColor(appkit.Color_ColorWithRedGreenBlueAlpha(0, 0, 0, 0.75))
+	// deprecated call, no bindings
+	objc.Call[objc.Void](c, objc.Sel("setBackgroundColor:"), appkit.Color_ColorWithRedGreenBlueAlpha(0, 0, 0, 0.75))
 	c.SetWantsLayer(true)
 	c.Layer().SetCornerRadius(32.0)
 	c.AddSubviewPositionedRelativeTo(t, appkit.WindowAbove, nil)
@@ -79,14 +84,8 @@ func main() {
 		appkit.Application_SharedApplication().Terminate(nil)
 	})
 
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	app.SetDelegate(ad)
-
-	app.Run()
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
 }
 
 func rectOf(x, y, width, height float64) foundation.Rect {
