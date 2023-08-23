@@ -79,13 +79,18 @@ Although currently outside the scope of this project, if you wanted you could pu
 This is all tenable for simple programs, but these are the reasons we don't *recommend* large/complex programs using DarwinKit.
 
 ## Examples
-[macos/_examples/largetype](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/main.go#L1) - A Contacts/Quicksilver-style Large Type utility in under 80 lines:
+
+### [largetype](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/main.go)
+A Contacts/Quicksilver-style Large Type utility in under 80 lines:
+
 ![largetype screenshot](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/largetype.jpeg?raw=true)
 
-[macos/_examples/pomodoro](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/main.go#L1) - A menu bar pomodoro timer in under 80 lines:
+### [pomodoro](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/main.go)
+A menu bar pomodoro timer in under 80 lines:
+
 ![pomodoro gif](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/pomodoro.gif?raw=true)
 
-**[More examples](https://github.com/progrium/macdriver/blob/main/macos/_examples)**
+### [See all examples](https://github.com/progrium/macdriver/blob/main/macos/_examples)
 
 ## How it works
 
@@ -106,7 +111,7 @@ objc.Call[objc.Void](app, objc.Sel("run"))
 So we wrap these calls in a [Go API](docs/bindings.md) that lets us write code like this:
 
 ```go
-app := appkit.NSApplication_SharedApplication()
+app := appkit.Application_SharedApplication()
 app.Run()
 ```
 
