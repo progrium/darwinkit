@@ -3,33 +3,32 @@ package main
 import (
 	"fmt"
 	"os"
-	"runtime"
 
 	"github.com/progrium/macdriver/dispatch"
 	"github.com/progrium/macdriver/helper/action"
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/macos/webkit"
 	"github.com/progrium/macdriver/objc"
 )
 
-// Arrange that main.main runs on main thread.
-func init() {
-	runtime.LockOSThread()
+func main() {
+	macos.RunApp(launched)
 }
 
-func initAndRun() {
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	var html = "<html><h1>Hello World!</h1></html>"
 	var url = "https://www.test.com"
 
-	app := appkit.Application_SharedApplication()
 	w := appkit.NewWindowWithSize(600, 400)
+	objc.Retain(&w)
 	w.SetTitle("Test widgets")
 
 	sv := appkit.NewVerticalStackView()
 	w.SetContentView(sv)
 
-	webView := webkit.WebViewClass.New()
+	webView := webkit.NewWebView()
 	webView.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	webView.LoadHTMLStringBaseURL(html, foundation.URLClass.URLWithString(url))
 	sv.AddViewInGravity(webView, appkit.StackViewGravityTop)
@@ -37,9 +36,10 @@ func initAndRun() {
 	snapshotButton := appkit.NewButtonWithTitle("capture")
 
 	snapshotWin := appkit.NewWindowWithSize(0, 0)
+	objc.Retain(&snapshotWin)
 	snapshotWin.SetTitle("Test widgets")
 
-	snapshotWebView := webkit.WebViewClass.New()
+	snapshotWebView := webkit.NewWebView()
 	snapshotWebView.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	snapshotWin.SetContentView(snapshotWebView)
 
@@ -91,19 +91,9 @@ func initAndRun() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
+	delegate.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
 		return true
 	})
-	app.SetDelegate(ad)
-
-	app.Run()
-}
-
-func main() {
-	initAndRun()
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
 }

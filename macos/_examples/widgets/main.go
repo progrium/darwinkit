@@ -2,25 +2,23 @@ package main
 
 import (
 	"fmt"
-	"runtime"
 	"time"
 
 	"github.com/progrium/macdriver/dispatch"
 	"github.com/progrium/macdriver/helper/action"
-
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
-// Arrange that main.main runs on main thread.
-func init() {
-	runtime.LockOSThread()
+func main() {
+	macos.RunApp(launched)
 }
 
-func main() {
-	app := appkit.Application_SharedApplication()
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	w := appkit.NewWindowWithSize(600, 400)
+	objc.Retain(&w)
 
 	w.SetTitle("Test widgets")
 
@@ -174,18 +172,11 @@ func main() {
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
 
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-		fmt.Println("launched")
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
+	delegate.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
 		return true
 	})
-	app.SetDelegate(ad)
-
-	app.Run()
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
 }
 
 func rectOf(x, y, width, height float64) foundation.Rect {

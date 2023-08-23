@@ -1,21 +1,21 @@
 package main
 
 import (
-	"runtime"
 	"strconv"
 
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/macdriver/objc"
 )
 
-// Arrange that main.main runs on main thread.
-func init() {
-	runtime.LockOSThread()
+func main() {
+	macos.RunApp(launched)
 }
 
-func initAndRun() {
-	app := appkit.Application_SharedApplication()
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	w := appkit.NewWindowWithSize(720, 440)
+	objc.Retain(&w)
 	w.SetTitle("Decoder")
 
 	tabView := appkit.NewTabView()
@@ -26,23 +26,18 @@ func initAndRun() {
 	tabView.AddTabViewItem(createNewView(2))
 
 	w.SetContentView(tabView)
-
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationWillFinishLaunching(func(foundation.Notification) {
-		w.SetFrameAutosaveName("tab-test")
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
-
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
-	app.Run()
+
+	delegate.SetApplicationWillFinishLaunching(func(foundation.Notification) {
+		w.SetFrameAutosaveName("tab-test")
+	})
+	delegate.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
+		return true
+	})
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
+
 }
 
 func createNewView(idx int) appkit.ITabViewItem {
@@ -54,8 +49,4 @@ func createNewView(idx int) appkit.ITabViewItem {
 	ti.SetLabel("Tab" + strconv.Itoa(idx))
 	ti.SetView(sv)
 	return ti
-}
-
-func main() {
-	initAndRun()
 }

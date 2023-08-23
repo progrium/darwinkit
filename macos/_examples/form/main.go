@@ -1,24 +1,21 @@
 package main
 
 import (
-	"runtime"
-
 	"github.com/progrium/macdriver/helper/layout"
 	"github.com/progrium/macdriver/helper/widgets"
+	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/macdriver/objc"
 )
 
-// Arrange that main.main runs on main thread.
-func init() {
-	runtime.LockOSThread()
+func main() {
+	macos.RunApp(launched)
 }
 
-func initAndRun() {
-	app := appkit.Application_SharedApplication()
-	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-	app.ActivateIgnoringOtherApps(true)
+func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	w := appkit.NewWindowWithSize(600, 400)
+	objc.Retain(&w)
 	w.SetTitle("Form")
 
 	fv := widgets.NewFormView()
@@ -38,19 +35,9 @@ func initAndRun() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegate{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
+	delegate.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
 		return true
 	})
-	app.SetDelegate(ad)
-
-	app.Run()
-}
-
-func main() {
-	initAndRun()
+	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	app.ActivateIgnoringOtherApps(true)
 }

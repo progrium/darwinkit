@@ -1,19 +1,12 @@
 package main
 
 import (
-	"runtime"
-
 	"github.com/progrium/macdriver/macos"
 	"github.com/progrium/macdriver/macos/appkit"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/macos/webkit"
 	"github.com/progrium/macdriver/objc"
 )
-
-func init() {
-	// ensure main is run on the startup thread
-	runtime.LockOSThread()
-}
 
 func main() {
 	// runs macOS application event loop with a callback on success
