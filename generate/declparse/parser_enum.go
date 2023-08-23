@@ -30,7 +30,8 @@ func parseEnum(p *Parser) (next stateFn, node Node, err error) {
 	}
 
 	if err := p.expectToken(lexer.LCURLY); err != nil {
-		return nil, nil, err
+		p.tb.Unscan()
+		return nil, decl, nil
 	}
 
 	if err = p.expectToken(lexer.VARARG); err != nil {

@@ -51,6 +51,10 @@ func (db *Generator) ToClassGen(sym Symbol) *codegen.Class {
 		}
 	}
 	if st.Interface.SuperName != "" {
+		// MPSGraphObject not documented, but we should assume its at least similar to NSObject
+		if st.Interface.SuperName == "MPSGraphObject" {
+			st.Interface.SuperName = "NSObject"
+		}
 		if st.Interface.SuperName == "NSObject" {
 			classGen.Super = &codegen.Class{
 				Type: typing.Object,

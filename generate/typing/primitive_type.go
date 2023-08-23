@@ -43,9 +43,11 @@ func init() {
 	primitiveMap["uintptr_t"] = UInt
 
 	primitiveMap["Boolean"] = Bool
+	primitiveMap["SInt8"] = Int8
 	primitiveMap["SInt16"] = Int16
 	primitiveMap["SInt32"] = Int32
 	primitiveMap["SInt64"] = Int64
+	primitiveMap["UInt8"] = UInt8
 	primitiveMap["UInt16"] = UInt16
 	primitiveMap["UInt32"] = UInt32
 	primitiveMap["UInt64"] = UInt64

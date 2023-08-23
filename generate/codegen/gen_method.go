@@ -36,8 +36,8 @@ func (m *Method) needRelease() bool {
 	case *typing.PrimitiveType, *typing.StringType:
 		return false
 	}
-	return strings.HasPrefix(m.Name, "new") || !strings.HasPrefix(m.Name, "init") && strings.HasPrefix(m.Name, "Initial") ||
-		strings.HasPrefix(m.Name, "copy") || strings.HasPrefix(m.Name, "mutableCopy")
+	//!strings.HasPrefix(m.Name, "init") && strings.HasPrefix(m.Name, "Initial")
+	return m.Name == "new" || m.Name == "copy" || m.Name == "mutableCopy"
 }
 
 // Selector return full Objc function name

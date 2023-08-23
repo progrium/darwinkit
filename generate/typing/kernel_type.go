@@ -22,6 +22,7 @@ func GetKernelType(typeName string) (Type, bool) {
 		"matrix_float4x4",
 		"matrix_float4x3",
 		"matrix_double4x4",
+		"vector_uchar16",
 	} {
 		if typeName == name {
 			return &KernelType{ObjcName_: typeName}, true

@@ -15,7 +15,15 @@ type AliasInfo struct {
 
 // IsString return if is a string type Enum
 func (e *AliasInfo) IsString() bool {
-	_, ok := e.Type.(*typing.StringType)
+	t := e.Type
+	for {
+		at, ok := t.(*typing.AliasType)
+		if !ok {
+			break
+		}
+		t = at.Type
+	}
+	_, ok := t.(*typing.StringType)
 	return ok
 }
 

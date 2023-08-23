@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/progrium/macdriver/generate/declparse"
@@ -18,6 +19,12 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 	module := m.Name
 	if db.Platform == "macos" && module == "UIKit" {
 		module = "AppKit"
+	}
+	// cases where symbol lives in two places,
+	// we want it local if it belongs to the
+	// framework we're generating
+	if sym.HasFramework(db.Framework) {
+		module = db.Framework
 	}
 	switch sym.Kind {
 	case "Class":
@@ -36,7 +43,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		st, err := sym.Parse()
 		if err != nil || st.Enum == nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
-			panic("invalid enum decl")
+			log.Panicf("invalid enum decl. %s", err)
 		}
 
 		return &typing.AliasType{
@@ -173,7 +180,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 			at.Type = typing.Object
 		}
 		ref = true
-	case "NSZone", "ipc_port_t":
+	case "NSZone", "ipc_port_t", "io_object_t":
 		typ = &typing.RefType{Name: ti.Name}
 		ref = true
 	case "NSDictionary":

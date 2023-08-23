@@ -52,8 +52,10 @@ func TrimPrefix(symbolName string) string {
 func CanAbstractModuleCoupling(in string, mod string) bool {
 	mods, ok := map[string][]string{
 		"foundation": []string{"appkit", "coreimage", "corespotlight", "fileprovider", "gameplaykit", "iobluetooth", "uti"},
-		"appkit":     []string{"spritekit"},
+		"appkit":     []string{"spritekit", "cloudkit"},
 		"coreimage":  []string{"appkit"},
+		"coredata":   []string{"corespotlight"},
+		"cloudkit":   []string{"corelocation"},
 	}[in]
 	if !ok {
 		return false
@@ -88,7 +90,6 @@ func CanSkipModuleCoupling(in string, mod string) bool {
 func CanIgnoreNotFound(p any) bool {
 	mod := strings.TrimPrefix(p.(string), "module not found: ")
 	for _, m := range []string{
-		"Media Player",
 		"Security",
 		"JavaScriptCore",
 		"ImageCaptureCore",
@@ -118,6 +119,7 @@ var All = []Module{
 	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
 	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
 	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
+	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
 	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},
 	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}},
 	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}},
@@ -130,7 +132,7 @@ var All = []Module{
 	{"CoreAudioKit", "Core Audio Kit", "coreaudiokit", "CoreAudioKit/CoreAudioKit.h", []string{"CA", "AU"}},
 	{"CoreML", "Core ML", "coreml", "CoreML/CoreML.h", []string{"ML"}},
 	{"CoreData", "Core Data", "coredata", "CoreData/CoreData.h", []string{"NS"}},
-	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CoreMediaIO.h", []string{"CMIO"}},
+	{"CoreMediaIO", "Core Media I/O", "coremediaio", "CoreMediaIO/CMIOHardware.h", []string{"CMIO"}},
 	{"CoreMedia", "Core Media", "coremedia", "CoreMedia/CoreMedia.h", []string{"CM"}},
 	{"CoreImage", "Core Image", "coreimage", "CoreImage/CoreImage.h", []string{"CI"}},
 	{"CoreMIDI", "Core MIDI", "coremidi", "CoreMIDI/CoreMIDI.h", []string{"MIDI", "kMIDI"}},
@@ -155,4 +157,5 @@ var All = []Module{
 	{"MetalKit", "Metal Kit", "metalkit", "MetalKit/MetalKit.h", []string{"MTK"}},
 	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}},
 	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}},
+	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}},
 }

@@ -4,6 +4,7 @@ type Coordinate2D = SamplePosition
 
 // todo
 type Region struct{}
+type Origin struct{}
 type TextureSwizzleChannels struct{}
 type Size struct{}
 type Viewport struct{}

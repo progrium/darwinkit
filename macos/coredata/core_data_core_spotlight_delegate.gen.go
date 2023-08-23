@@ -5,7 +5,6 @@ package coredata
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corespotlight"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -21,8 +20,8 @@ type _CoreDataCoreSpotlightDelegateClass struct {
 type ICoreDataCoreSpotlightDelegate interface {
 	objc.IObject
 	StartSpotlightIndexing()
-	SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex corespotlight.ISearchableIndex, acknowledgementHandler func())
-	AttributeSetForObject(object IManagedObject) corespotlight.SearchableItemAttributeSet
+	SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex objc.IObject, acknowledgementHandler func())
+	AttributeSetForObject(object IManagedObject) objc.Object
 	DomainIdentifier() string
 	StopSpotlightIndexing()
 	DeleteSpotlightIndexWithCompletionHandler(completionHandler func(error foundation.Error))
@@ -91,15 +90,15 @@ func (c_ CoreDataCoreSpotlightDelegate) StartSpotlightIndexing() {
 // Reindexes all searchable items and clears any local state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897201-searchableindex?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex corespotlight.ISearchableIndex, acknowledgementHandler func()) {
+func (c_ CoreDataCoreSpotlightDelegate) SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex objc.IObject, acknowledgementHandler func()) {
 	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexAllSearchableItemsWithAcknowledgementHandler:"), objc.Ptr(searchableIndex), acknowledgementHandler)
 }
 
 // Returns the searchable attributes for the specified managed object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897197-attributesetforobject?language=objc
-func (c_ CoreDataCoreSpotlightDelegate) AttributeSetForObject(object IManagedObject) corespotlight.SearchableItemAttributeSet {
-	rv := objc.Call[corespotlight.SearchableItemAttributeSet](c_, objc.Sel("attributeSetForObject:"), objc.Ptr(object))
+func (c_ CoreDataCoreSpotlightDelegate) AttributeSetForObject(object IManagedObject) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("attributeSetForObject:"), objc.Ptr(object))
 	return rv
 }
 

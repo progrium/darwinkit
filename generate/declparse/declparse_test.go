@@ -17,6 +17,20 @@ var tests = []struct {
 
 	{
 		ParseOnly: true,
+		s:         `typedef enum SCPreferencesNotification : uint32_t SCPreferencesNotification;`,
+		n: &Statement{
+			Enum: &EnumDecl{
+				Name: "SCPreferencesNotification",
+				Type: TypeInfo{
+					Name: "uint32_t",
+				},
+			},
+			Typedef: "SCPreferencesNotification",
+		},
+	},
+
+	{
+		ParseOnly: true,
 		// notice eNum is "enum"
 		s: `+ (NSEvent *)enterExitEventWithType:(NSEventType)type location:(NSPoint)location modifierFlags:(NSEventModifierFlags)flags timestamp:(NSTimeInterval)time windowNumber:(NSInteger)wNum context:(NSGraphicsContext *)unusedPassNil eventNumber:(NSInteger)eNum trackingNumber:(NSInteger)tNum userData:(void *)data;`,
 		n: &MethodDecl{

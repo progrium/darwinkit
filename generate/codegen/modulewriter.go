@@ -34,6 +34,14 @@ func (m *ModuleWriter) WriteCode() {
 		// get "cannot find protocol declaration" with protocol imports
 		return
 	}
+	if m.Module.Package == "coremediaio" {
+		// get "cannot find protocol declaration" with protocol imports
+		return
+	}
+	if m.Module.Package == "fileprovider" {
+		// get "cannot find protocol declaration" with protocol imports
+		return
+	}
 	m.WriteProtocolsImportCode()
 }
 
