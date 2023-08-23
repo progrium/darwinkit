@@ -23,71 +23,65 @@ func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 
 	w := appkit.NewWindowWithSize(600, 400)
 	objc.Retain(&w)
-	w.SetTitle("Test widgets")
-
+	w.SetTitle("Webshot Demo")
 	sv := appkit.NewVerticalStackView()
 	w.SetContentView(sv)
 
-	webView := webkit.NewWebView()
-	webView.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	webView.LoadHTMLStringBaseURL(html, foundation.URLClass.URLWithString(url))
-	sv.AddViewInGravity(webView, appkit.StackViewGravityTop)
+	wv := webkit.NewWebView()
+	wv.SetTranslatesAutoresizingMaskIntoConstraints(false)
+	wv.LoadHTMLStringBaseURL(html, foundation.URL_URLWithString(url))
+	sv.AddViewInGravity(wv, appkit.StackViewGravityTop)
 
-	snapshotButton := appkit.NewButtonWithTitle("capture")
+	sw := appkit.NewWindowWithSize(0, 0)
+	objc.Retain(&sw)
+	swv := webkit.NewWebView()
+	swv.SetTranslatesAutoresizingMaskIntoConstraints(false)
+	sw.SetContentView(swv)
 
-	snapshotWin := appkit.NewWindowWithSize(0, 0)
-	objc.Retain(&snapshotWin)
-	snapshotWin.SetTitle("Test widgets")
-
-	snapshotWebView := webkit.NewWebView()
-	snapshotWebView.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	snapshotWin.SetContentView(snapshotWebView)
-
-	navigationDelegate := &webkit.NavigationDelegate{}
-	navigationDelegate.SetWebViewDidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
+	navDelegate := &webkit.NavigationDelegate{}
+	navDelegate.SetWebViewDidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
 		dispatch.MainQueue().DispatchAsync(func() {
 			script := `var rect = {"width":document.body.scrollWidth, "height":document.body.scrollHeight}; rect`
 			webView.EvaluateJavaScriptCompletionHandler(script, func(value objc.Object, err foundation.Error) {
 				rect := foundation.DictToMap[string, foundation.Number](foundation.DictionaryFrom(value.Ptr()))
 				width := rect["width"].DoubleValue()
 				height := rect["height"].DoubleValue()
-				snapshotWin.SetFrameDisplay(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
-				snapshotWebView.LoadHTMLStringBaseURL(html, foundation.URLClass.URLWithString(url))
+				sw.SetFrameDisplay(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
+				swv.LoadHTMLStringBaseURL(html, foundation.URL_URLWithString(url))
 			})
 		})
 	})
-	webView.SetNavigationDelegate(navigationDelegate)
+	wv.SetNavigationDelegate(navDelegate)
 
-	ssnd := &webkit.NavigationDelegate{}
-	ssnd.SetWebViewDidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
-		snapshotButton.SetEnabled(true)
+	button := appkit.NewButtonWithTitle("capture")
+
+	snd := &webkit.NavigationDelegate{}
+	snd.SetWebViewDidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
+		button.SetEnabled(true)
 	})
-	snapshotWebView.SetNavigationDelegate(ssnd)
+	swv.SetNavigationDelegate(snd)
 
-	action.Set(snapshotButton, func(sender objc.Object) {
-		snapshotWebView.TakeSnapshotWithConfigurationCompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
-			imageRef := image.CGImageForProposedRectContextHints(nil, nil, nil)
-			imageRepo := appkit.NewBitmapImageRepWithCGImage(imageRef)
-			imageRepo.SetSize(image.Size())
-			pngData := imageRepo.RepresentationUsingTypeProperties(appkit.BitmapImageFileTypePNG, nil)
-
-			if err := os.WriteFile("webview_screenshot.png", pngData, os.ModePerm); err != nil {
-				fmt.Println("write image to file error:", err)
+	action.Set(button, func(sender objc.Object) {
+		swv.TakeSnapshotWithConfigurationCompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
+			imgref := image.CGImageForProposedRectContextHints(nil, nil, nil)
+			img := appkit.NewBitmapImageRepWithCGImage(imgref)
+			img.SetSize(image.Size())
+			png := img.RepresentationUsingTypeProperties(appkit.BitmapImageFileTypePNG, nil)
+			if err := os.WriteFile("webview_screenshot.png", png, os.ModePerm); err != nil {
+				fmt.Println("image write to file error:", err)
 			} else {
 				fmt.Println("image captured to webview_screenshot.png")
 			}
 		})
 	})
-	snapshotButton.SetEnabled(false)
-
-	sv.AddViewInGravity(snapshotButton, appkit.StackViewGravityTop)
+	button.SetEnabled(false)
+	sv.AddViewInGravity(button, appkit.StackViewGravityTop)
 
 	wd := &appkit.WindowDelegate{}
 	wd.SetWindowWillClose(func(notification foundation.Notification) {
-		snapshotWin.Close()
+		sw.Close()
 	})
 	w.SetDelegate(wd)
-
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 

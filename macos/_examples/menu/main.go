@@ -75,7 +75,8 @@ func setMainMenu(app appkit.Application) {
 func setSystemBar(app appkit.Application) {
 	item := appkit.StatusBar_SystemStatusBar().StatusItemWithLength(appkit.VariableStatusItemLength)
 	objc.Retain(&item)
-	item.Button().SetTitle("TestTray")
+	img := appkit.Image_ImageWithSystemSymbolNameAccessibilityDescription("multiply.circle.fill", "A multiply symbol inside a filled circle.")
+	item.Button().SetImage(img)
 
 	menu := appkit.NewMenuWithTitle("main")
 	menu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", func(sender objc.Object) { app.Hide(nil) }))
