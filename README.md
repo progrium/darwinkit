@@ -80,17 +80,22 @@ This is all tenable for simple programs, but these are the reasons we don't *rec
 
 ## Examples
 
-### [largetype](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/main.go)
+### [largetype](./macos/_examples/largetype/main.go)
 A Contacts/Quicksilver-style Large Type utility in under 80 lines:
 
-![largetype screenshot](https://github.com/progrium/macdriver/blob/main/macos/_examples/largetype/largetype.jpeg?raw=true)
+![largetype screenshot](./macos/_examples/largetype/largetype.jpeg?raw=true)
 
-### [pomodoro](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/main.go)
+### [pomodoro](./macos/_examples/pomodoro/main.go)
 A menu bar pomodoro timer in under 80 lines:
 
-![pomodoro gif](https://github.com/progrium/macdriver/blob/main/macos/_examples/pomodoro/pomodoro.gif?raw=true)
+![pomodoro gif](./macos/_examples/pomodoro/pomodoro.gif?raw=true)
 
-### [See all examples](https://github.com/progrium/macdriver/blob/main/macos/_examples)
+### [webshot](./macos/_examples/webshot/main.go)
+A webview PNG capture example in under 100 lines:
+
+![webshot screenshot](./macos/_examples/webshot/webshot.png?raw=true)
+
+### [See all examples](./macos/_examples)
 
 ## How it works
 
