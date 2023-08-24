@@ -9,7 +9,7 @@ Native Apple APIs for Golang!
 <a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
 > [!IMPORTANT]
-> Aug 15, 2023: **MacDriver is becoming DarwinKit**, which increases API coverage by an order of magnitude and is an overall upgrade in quality and scope. It has been rewritten, reorganized, and definitely has breaking API changes. The [legacy branch](https://github.com/progrium/macdriver/tree/legacy) and [previous releases](https://github.com/progrium/macdriver/releases) are still available for existing code to work against. We're working towards a [0.5.0-preview release](https://github.com/progrium/macdriver/issues/177) followed by a [0.5.0 release](https://github.com/progrium/macdriver/milestone/4) finalizing the new API and rename to DarwinKit.
+> Aug 23, 2023: **MacDriver is becoming DarwinKit with the [0.5.0-preview](https://github.com/progrium/macdriver/releases/tag/v0.5.0-preview) release now available!** The [legacy branch](https://github.com/progrium/macdriver/tree/legacy) and [previous releases](https://github.com/progrium/macdriver/releases) are still available for existing code to work against. Help me reach the [0.5.0 release milestone](https://github.com/progrium/macdriver/milestone/4) or request examples you'd like to see by posting in [Discussions](https://github.com/progrium/macdriver/discussions).
 
 ------
 
