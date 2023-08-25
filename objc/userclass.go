@@ -2,10 +2,6 @@ package objc
 
 import "reflect"
 
-// TODO:
-// - tests
-// - builtin method adding
-
 // UserClass is a generic wrapper around Class returned by NewClass.
 type UserClass[T IObject] struct {
 	Class
