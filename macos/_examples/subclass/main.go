@@ -8,44 +8,44 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-type TestView struct {
-	objc.Object
+type CustomView struct {
+	appkit.View `objc:"NSView"`
 }
 
-func (v TestView) acceptsFirstResponder() bool {
+func (v CustomView) AcceptsFirstResponder() bool {
 	return true
 }
 
-func (v TestView) keyDown(event appkit.Event) {
+func (v CustomView) KeyDown(event appkit.Event) {
 	log.Println("Keydown:", v.Class().Name(), event.Class().Name())
 }
 
-func (v TestView) dividerThickness() float64 {
+type CustomSplitView struct {
+	appkit.SplitView `objc:"NSSplitView"`
+}
+
+func (v CustomSplitView) DividerThickness() float64 {
 	return 10.0
 }
 
-func (v TestView) dividerColor() appkit.Color {
+func (v CustomSplitView) DividerColor() appkit.Color {
 	return appkit.Color_BlackColor()
 }
 
 func main() {
 	log.Println("Program started.")
 
-	// Create a SplitView subclass using AllocateClass
-	SplitViewClass := objc.AllocateClass(objc.GetClass("NSSplitView"), "TestSplitView", 0)
-	objc.AddMethod(SplitViewClass, objc.Sel("acceptsFirstResponder"), (TestView).acceptsFirstResponder)
-	objc.AddMethod(SplitViewClass, objc.Sel("keyDown:"), (TestView).keyDown)
+	CustomViewClass := objc.NewClass[CustomView](
+		objc.Sel("acceptsFirstResponder"),
+		objc.Sel("keyDown:"),
+	)
+	objc.RegisterClass(CustomViewClass)
 
-	// Implement these methods for the dividerThickness and dividerColor properties on the subclass
-	objc.AddMethod(SplitViewClass, objc.Sel("dividerThickness"), (TestView).dividerThickness)
-	objc.AddMethod(SplitViewClass, objc.Sel("dividerColor"), (TestView).dividerColor)
-
-	objc.RegisterClass(SplitViewClass)
-
-	ViewClass := objc.AllocateClass(objc.GetClass("NSView"), "TestView", 0)
-	objc.AddMethod(ViewClass, objc.Sel("acceptsFirstResponder"), (TestView).acceptsFirstResponder)
-	objc.AddMethod(ViewClass, objc.Sel("keyDown:"), (TestView).keyDown)
-	objc.RegisterClass(ViewClass)
+	CustomSplitViewClass := objc.NewClass[CustomSplitView](
+		objc.Sel("dividerThickness"),
+		objc.Sel("dividerColor"),
+	)
+	objc.RegisterClass(CustomSplitViewClass)
 
 	app := appkit.Application_SharedApplication()
 
@@ -64,11 +64,11 @@ func main() {
 		win.SetTitle("Hello world")
 		win.SetLevel(appkit.MainMenuWindowLevel + 2)
 
-		view := appkit.SplitViewFrom(SplitViewClass.CreateInstance(0).Ptr()).InitWithFrame(frame)
+		view := CustomSplitViewClass.New().InitWithFrame(frame)
 		view.SetVertical(true)
 
-		neatView := appkit.ViewFrom(ViewClass.CreateInstance(0).Ptr()).InitWithFrame(rectOf(0, 0, 150, 99))
-		coolView := appkit.ViewFrom(ViewClass.CreateInstance(0).Ptr()).InitWithFrame(rectOf(10, 0, 150, 99))
+		neatView := CustomViewClass.New().InitWithFrame(rectOf(0, 0, 150, 99))
+		coolView := CustomViewClass.New().InitWithFrame(rectOf(10, 0, 150, 99))
 		neatView.AddSubview(appkit.NewLabel("NEAT"))
 		coolView.AddSubview(appkit.NewLabel("COOL"))
 

@@ -79,7 +79,7 @@ func directPointer(t reflect.Type) bool {
 // AddMethod adds an instance method using a Go function.
 // The first argument of the Go function should be the object instance,
 // the second argument should be the method selector.
-func AddMethod(class Class, sel Selector, f any) bool {
+func AddMethod(class IClass, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), false)
@@ -95,7 +95,7 @@ func AddMethod(class Class, sel Selector, f any) bool {
 // ReplaceMethod replaces an instance method using a Go function.
 // The first argument of the Go function should be the object instance,
 // the second argument should be the method selector.
-func ReplaceMethod(class Class, sel Selector, f any) {
+func ReplaceMethod(class IClass, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), false)
 
@@ -110,12 +110,12 @@ func ReplaceMethod(class Class, sel Selector, f any) {
 // AddClassMethod adds a class method using a Go function.
 // The first argument of the Go function should be the class,
 // the second argument should be the method selector.
-func AddClassMethod(class Class, sel Selector, f any) bool {
+func AddClassMethod(class IClass, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)
 
 	imp, handle := wrapGoFuncAsMethodIMP(rf)
-	metaClass := class.Class()
+	metaClass := class.MetaClass()
 	if metaClass.Ptr() == nil {
 		panic("no meta class")
 	}
@@ -129,7 +129,7 @@ func AddClassMethod(class Class, sel Selector, f any) bool {
 // ReplaceClassMethod replaces a class method using a Go function.
 // The first argument of the Go function should be the class,
 // the second argument should be the method selector.
-func ReplaceClassMethod(class Class, sel Selector, f any) {
+func ReplaceClassMethod(class IClass, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)
 

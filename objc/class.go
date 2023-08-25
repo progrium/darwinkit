@@ -42,7 +42,7 @@ type IClass interface {
 	Name() string
 	SetVersion(version int)
 	Version() int
-	Class() Class
+	MetaClass() Class
 	SuperClass() Class
 	RespondsToSelector(sel Selector) bool
 	AddMethod(sel Selector, imp IMP, types string) bool
@@ -90,14 +90,14 @@ func AllocateClass(superClass Class, name string, extraBytes uint) Class {
 // Registers a class that was allocated using [AllocateClass] [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/objectivec/1418603-objc_registerclasspair?language=objc
-func RegisterClass(class Class) {
+func RegisterClass(class IClass) {
 	C.Objc_RegisterClassPair(class.Ptr())
 }
 
 // Destroys a class and its associated metaclass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/objectivec/1418912-objc_disposeclasspair?language=objc
-func DisposeClass(class Class) {
+func DisposeClass(class IClass) {
 	C.Objc_DisposeClassPair(class.Ptr())
 }
 
@@ -112,7 +112,7 @@ func (c Class) Name() string {
 	return name
 }
 
-func (c Class) Class() Class {
+func (c Class) MetaClass() Class {
 	return ObjectFrom(c.ptr).Class()
 }
 

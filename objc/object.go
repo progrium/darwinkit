@@ -28,6 +28,7 @@ package objc
 // const char* Object_Description(void* ptr);
 import "C"
 import (
+	"reflect"
 	"unsafe"
 )
 
@@ -68,6 +69,38 @@ func Ptr(o Handle) unsafe.Pointer {
 		return nil
 	}
 	return o.Ptr()
+}
+
+func setPtr(obj any, ptr unsafe.Pointer) {
+	if o, ok := obj.(*Object); ok {
+		o.ptr = ptr
+	} else {
+		if objPtr := findObjectPointer(reflect.ValueOf(obj)); objPtr != nil {
+			objPtr.ptr = ptr
+		} else {
+			panic("unable to find embedded object")
+		}
+	}
+}
+
+func findObjectPointer(v reflect.Value) *Object {
+	if v.Kind() == reflect.Ptr {
+		v = v.Elem()
+	}
+	t := v.Type()
+	for i := 0; i < v.NumField(); i++ {
+		if t.Field(i).Type == reflect.TypeOf(Object{}) {
+			ptr := v.Field(i).Addr().Interface().(*Object)
+			return ptr
+		}
+		if t.Field(i).Anonymous {
+			f := findObjectPointer(v.Field(i))
+			if f != nil {
+				return f
+			}
+		}
+	}
+	return nil
 }
 
 // The root class of most Objective-C class hierarchies, from which subclasses inherit a basic interface to the runtime system and the ability to behave as Objective-C objects. [Full Topic]
