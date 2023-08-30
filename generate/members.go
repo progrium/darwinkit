@@ -93,7 +93,7 @@ func (db *Generator) Members(fw string, sym Symbol, covariantTypes []string) (pr
 				s.Declaration = strings.ReplaceAll(s.Declaration, fmt.Sprintf("<%s>", ct), "<NSObject>")
 			}
 
-			st, err := s.Parse()
+			st, err := s.Parse(db.Platform)
 			if err != nil {
 				log.Println("Members:", sym.Name, "::", s.Declaration)
 				panic(err)

@@ -40,7 +40,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Module: modules.Get(module),
 		}
 	case "Enum":
-		st, err := sym.Parse()
+		st, err := sym.Parse(db.Platform)
 		if err != nil || st.Enum == nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
 			log.Panicf("invalid enum decl. %s", err)
@@ -69,7 +69,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 				Name: sym.Name,
 			}
 		}
-		st, err := sym.Parse()
+		st, err := sym.Parse(db.Platform)
 		if err != nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
 			panic("bad declaration")

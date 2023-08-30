@@ -42,15 +42,17 @@ type Symbol struct {
 	Path string
 	Kind string
 
-	Description string
-	Type        string
-	Parent      string
-	Modules     []string
-	Platforms   []Platform
-	Declaration string
-	Parameters  []Parameter
-	Return      string
-	Deprecated  bool
+	Description   string
+	Type          string
+	Parent        string
+	Modules       []string
+	Platforms     []Platform
+	Declaration   string
+	Declarations  map[string]string
+	Parameters    []Parameter
+	Return        string
+	Deprecated    bool
+	InheritedFrom string
 }
 
 type Platform struct {
@@ -125,8 +127,12 @@ func (s Symbol) HasPlatform(name string, version int, deprecated bool) bool {
 	return false
 }
 
-func (s Symbol) Parse() (*declparse.Statement, error) {
-	p := declparse.NewStringParser(s.Declaration)
+func (s Symbol) Parse(platform string) (*declparse.Statement, error) {
+	decl := s.Declaration
+	if decl == "" && len(s.Declarations) > 0 {
+		decl = s.Declarations[platform]
+	}
+	p := declparse.NewStringParser(decl)
 	switch s.Kind {
 	case "Constant", "Property":
 		p.Hint = declparse.HintVariable

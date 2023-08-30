@@ -40,7 +40,7 @@ func (db *Generator) ToClassGen(sym Symbol) *codegen.Class {
 		DocURL:      sym.DocURL(),
 	}
 
-	st, err := sym.Parse()
+	st, err := sym.Parse(db.Platform)
 	if err != nil {
 		panic(err)
 	}
