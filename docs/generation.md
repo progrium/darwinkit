@@ -219,3 +219,9 @@ Finds type symbol(s) in symbolsdb with the given type name. Can be used with `jq
 Re-generates frameworks that have been generated (have .gen.go files).
 
 `./generate/tools/regen.sh macos`
+
+### findstruct [struct-name]
+
+Looks through XCode SDK headers for a struct definition. Helpful to fill in struct definitions.
+
+`go run ./generate/tools/findstruct.go CLLocationCoordinate2D`
