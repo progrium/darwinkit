@@ -224,4 +224,4 @@ Re-generates frameworks that have been generated (have .gen.go files).
 
 Looks through XCode SDK headers for a struct definition. Helpful to fill in struct definitions.
 
-`./generate/tools/findstruct.go CLLocationCoordinate2D`
+`go run ./generate/tools/findstruct.go CLLocationCoordinate2D`
