@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/progrium/darwinkit/internal/set"
@@ -44,16 +43,18 @@ var typeMap = map[string]string{
 	"*kernel.UniChar":   "*uint16",
 	"kernel.Boolean_t":  "int",
 	"kernel.Pid_t":      "int32",
+	"CGFloat":           "float64",
+	"uint8_t":           "byte",
 }
 
 // GoArgs return go function args
 func (f *Function) GoArgs(currentModule *modules.Module) string {
-	log.Println("rendering function", f.Name)
+	// log.Println("rendering function", f.Name)
 	var args []string
 	var blankArgCounter = 0
 	for _, p := range f.Parameters {
-		log.Println("rendering function", f.Name, p.Name, p.Type)
-		log.Printf("rendering function ptype: %T", p.Type)
+		// log.Println("rendering function", f.Name, p.Name, p.Type)
+		// log.Printf("rendering function ptype: %T", p.Type)
 		// if is reserved word, add _ suffix
 		if p.Name == "" {
 			p.Name = fmt.Sprintf("arg%d", blankArgCounter)
@@ -146,7 +147,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	cw.WriteLine("func " + funcDeclare + " {")
 	cw.Indent()
 
-	returnTypeStr := f.GoReturn(currentModule)
+	f.writeGoCallParameterPrep(currentModule, cw)
 
 	callCode := fmt.Sprintf("C.%s(\n", f.GoName)
 	var sb strings.Builder
@@ -164,6 +165,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			} else {
 				sb.WriteString(cw.IndentStr + fmt.Sprintf("(C.%s)(%s)", tt.CName(), p.GoName()))
 			}
+		case *typing.CStringType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  %vVal", p.GoName()))
 		case *typing.RefType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
 		case *typing.StructType:
@@ -179,6 +182,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	}
 	callCode += sb.String() + cw.IndentStr + ")"
 
+	returnTypeStr := f.GoReturn(currentModule)
 	if returnTypeStr == "" {
 		cw.WriteLine(callCode)
 	} else {
@@ -196,6 +200,19 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	cw.WriteLine("}")
 }
 
+// writeGoCallParameterPrep generate go code to prepare parameters for c function call
+func (f *Function) writeGoCallParameterPrep(currentModule *modules.Module, cw *CodeWriter) {
+	for _, p := range f.Parameters {
+		switch p.Type.(type) {
+		default:
+			continue
+		case *typing.CStringType:
+			cw.WriteLineF("%sVal := C.CString(%v)", p.GoName(), p.GoName())
+			cw.WriteLineF("defer C.free(unsafe.Pointer(%sVal))", p.GoName())
+		}
+	}
+}
+
 func hasBlockParam(params []*Param) bool {
 	for _, p := range params {
 		if _, ok := p.Type.(*typing.BlockType); ok {
@@ -211,6 +228,7 @@ func hasBlockParam(params []*Param) bool {
 	return false
 }
 
+// WriteObjcWrapper generate objc wrapper code that maps between C and ObjC.
 func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWriter) {
 	if f.Deprecated {
 		return
@@ -226,11 +244,29 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 	}
 	cw.WriteLineF("%v %v(%v) {", returnTypeStr, f.GoName, f.CArgs(currentModule))
 	cw.Indent()
-	var args []string
-	for _, p := range f.Parameters {
-		args = append(args, p.Name)
+	cw.WriteLineF("return (%v)%v(", returnTypeStr, f.Type.Name)
+	cw.Indent()
+
+	for idx, p := range f.Parameters {
+		cw.WriteLineF("// %T", p.Type)
+
+		var conv string
+		switch tt := p.Type.(type) {
+		case *typing.PointerType:
+			conv = tt.ObjcName()
+		default:
+			conv = tt.ObjcName()
+		}
+		// get conversion to C type
+		arg := fmt.Sprintf("(%v)%v", conv, p.Name)
+		if idx < len(f.Parameters)-1 {
+			arg += ","
+		}
+		cw.WriteLineF("%v", arg)
 	}
-	cw.WriteLineF("return %v(%v);", f.Type.Name, strings.Join(args, ", "))
+	//cw.WriteLineF("return (%v)%v(%v);", returnTypeStr, f.Type.Name, strings.Join(args, ", "))
+	cw.UnIndent()
+	cw.WriteLine(");")
 	cw.UnIndent()
 	cw.WriteLine("}")
 }

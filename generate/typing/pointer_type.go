@@ -9,7 +9,8 @@ var _ Type = (*PointerType)(nil)
 
 // PointerType is c pointer type
 type PointerType struct {
-	Type Type
+	Type    Type
+	IsConst bool
 }
 
 func (c *PointerType) GoImports() set.Set[string] {
@@ -30,6 +31,8 @@ func (c *PointerType) GoName(currentModule *modules.Module, receiveFromObjc bool
 		return "*" + (&ClassType{Name: "NSArray", GName: "Array", Module: modules.Get("foundation")}).GoName(currentModule, true)
 	case *DictType:
 		return "*" + (&ClassType{Name: "NSDictionary", GName: "Dictionary", Module: modules.Get("foundation")}).GoName(currentModule, true)
+	case *PointerType:
+		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
 	default:
 		panic("not supported pointer to: " + c.Type.ObjcName())
 	}
@@ -45,7 +48,11 @@ func (c *PointerType) CName() string {
 }
 
 func (c *PointerType) CSignature() string {
-	return c.Type.ObjcName() + "*"
+	t := c.Type.ObjcName() + "*"
+	if c.IsConst {
+		t = "const " + t
+	}
+	return t
 }
 
 func (c *PointerType) DeclareModule() *modules.Module {

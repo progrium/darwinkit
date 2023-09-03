@@ -242,6 +242,12 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"OBEXSessionSetServerCallback":                               true,
 		"CFSocketCopyRegisteredValue":                                true,
 	}
+	if _, ok := map[string]bool{
+		//"CGColorSpaceCreateCalibratedGray": true,
+		"CGPDFDocumentUnlockWithPassword": true,
+	}[sym.Name]; !ok {
+		return nil
+	}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
 		log.Printf("skipping function %s %s because of known issue: decl='%s' err='%v'\n", fw, sym.Name, sym.Declaration, err)
@@ -260,9 +266,19 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		DocURL:      sym.DocURL(),
 		Type:        fntyp,
 	}
+	// temporary skip for things deprecated in 14.0
+	// check if macOS platform is DeprecatedAt 14.0
+	for _, p := range sym.Platforms {
+		if p.Name == "macOS" && p.Deprecated {
+			fn.Deprecated = true
+		}
+	}
+
 	// populate params:
-	log.Printf("decl: %s\n", sym.Declaration)
-	log.Printf("params: %+v\n", fntyp.Parameters)
+	log.Printf("decl: %v %s\n", sym.Name, sym.Declaration)
+	for i, p := range fntyp.Parameters {
+		log.Printf(" param %#v: %v %+v\n", i, p.Name, p.Type.ObjcName())
+	}
 	for _, p := range fntyp.Parameters {
 		if p.Type == nil {
 			fmt.Printf("skipping %s: %s because of nil type\n", sym.Name, p.Name)

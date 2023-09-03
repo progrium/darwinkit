@@ -1153,4 +1153,35 @@ var tests = []struct {
 			},
 		},
 	},
+	{
+		ParseOnly: true,
+		s:         "bool CGPDFDocumentUnlockWithPassword(CGPDFDocumentRef document, const char *password);",
+		Hint:      HintFunction,
+		n: &Statement{
+			Function: &FunctionDecl{
+				ReturnType: TypeInfo{
+					Name: "bool",
+				},
+				Name: "CGPDFDocumentUnlockWithPassword",
+				Args: FuncArgs{
+					ArgInfo{
+						Name: "document",
+						Type: TypeInfo{
+							Name: "CGPDFDocumentRef",
+						},
+					},
+					ArgInfo{
+						Name: "password",
+						Type: TypeInfo{
+							Name:  "char",
+							IsPtr: true,
+							Annots: map[TypeAnnotation]bool{
+								TypeAnnotConst: true,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 }
