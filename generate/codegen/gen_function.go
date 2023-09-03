@@ -62,7 +62,7 @@ func (f *Function) GoArgs(currentModule *modules.Module) string {
 		if _, ok := reservedWords[p.Name]; ok {
 			p.Name = p.Name + "_"
 		}
-		typ := p.Type.GoName(currentModule, false)
+		typ := p.Type.GoName(currentModule, true)
 		if v, ok := typeMap[typ]; ok {
 			typ = v
 		}
@@ -171,7 +171,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 		case *typing.PrimitiveType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  C.%s(%s)", tt.CName(), p.GoName()))
 		case *typing.PointerType:
-			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", tt.Type.CName(), p.GoName()))
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", tt.Type.ObjcName(), p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
 		}
@@ -184,8 +184,9 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 	} else {
 		var resultName = "rv"
 		cw.WriteLine(resultName + " := " + callCode)
+		cw.WriteLineF("// %T", f.ReturnType)
 		switch tt := f.ReturnType.(type) {
-		case *typing.StructType:
+		case *typing.StructType, *typing.PointerType:
 			cw.WriteLineF("return *(*%s)(unsafe.Pointer(&%s))", tt.GoName(currentModule, true), resultName)
 		default:
 			cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
