@@ -38,6 +38,13 @@ var reservedWords = map[string]bool{
 	"type":  true,
 }
 
+var typeMap = map[string]string{
+	"*kernel.Boolean_t": "*int",
+	"*kernel.UniChar":   "*uint16",
+	"kernel.Boolean_t":  "int",
+	"kernel.Pid_t":      "int32",
+}
+
 // GoArgs return go function args
 func (f *Function) GoArgs(currentModule *modules.Module) string {
 	log.Println("rendering function", f.Name)
@@ -54,7 +61,11 @@ func (f *Function) GoArgs(currentModule *modules.Module) string {
 			p.Name = fmt.Sprintf("arg%d", blankArgCounter)
 			blankArgCounter++
 		}
-		args = append(args, fmt.Sprintf("%s %s", p.Name, p.Type.GoName(currentModule, true)))
+		typ := p.Type.GoName(currentModule, false)
+		if v, ok := typeMap[typ]; ok {
+			typ = v
+		}
+		args = append(args, fmt.Sprintf("%s %s", p.Name, typ))
 	}
 	return strings.Join(args, ", ")
 }
@@ -65,7 +76,11 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 		return ""
 	}
 	// log.Printf("rendering GoReturn function return: %s %T", f.ReturnType, f.ReturnType)
-	return f.ReturnType.GoName(currentModule, true)
+	typ := f.ReturnType.GoName(currentModule, true)
+	if v, ok := typeMap[typ]; ok {
+		typ = v
+	}
+	return typ
 }
 
 // CArgs return go function args

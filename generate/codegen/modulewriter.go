@@ -151,7 +151,11 @@ func shouldSkipFunction(f *Function) bool {
 		return true
 	}
 	if _, ok := map[string]bool{
-		"CGDirectDisplayCopyCurrentMetalDevice": true,
+		"CGDirectDisplayCopyCurrentMetalDevice":            true,
+		"CGColorSpaceCreateWithPropertyList":               true,
+		"CGDisplayIOServicePort":                           true,
+		"CGGetEventTapList":                                true,
+		"CGColorConversionInfoCreateFromListWithArguments": true,
 	}[f.Name]; ok {
 		return true
 	}
@@ -238,6 +242,9 @@ func (m *ModuleWriter) WriteFunctionWrappers() {
 	//TODO: determine appropriate imports
 	cw.WriteLineF("#import \"%s\"", m.Module.Header)
 	for _, f := range m.Functions {
+		if shouldSkipFunction(f) {
+			continue
+		}
 		f.WriteObjcWrapper(&m.Module, cw)
 	}
 }
