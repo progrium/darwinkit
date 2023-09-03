@@ -28,14 +28,15 @@ type Function struct {
 }
 
 var reservedWords = map[string]bool{
-	"func":  true,
-	"map":   true,
-	"new":   true,
-	"var":   true,
-	"len":   true,
-	"copy":  true,
-	"range": true,
-	"type":  true,
+	"func":   true,
+	"map":    true,
+	"new":    true,
+	"var":    true,
+	"len":    true,
+	"copy":   true,
+	"range":  true,
+	"type":   true,
+	"string": true,
 }
 
 var typeMap = map[string]string{
@@ -54,12 +55,12 @@ func (f *Function) GoArgs(currentModule *modules.Module) string {
 		log.Println("rendering function", f.Name, p.Name, p.Type)
 		log.Printf("rendering function ptype: %T", p.Type)
 		// if is reserved word, add _ suffix
-		if _, ok := reservedWords[p.Name]; ok {
-			p.Name = p.Name + "_"
-		}
 		if p.Name == "" {
 			p.Name = fmt.Sprintf("arg%d", blankArgCounter)
 			blankArgCounter++
+		}
+		if _, ok := reservedWords[p.Name]; ok {
+			p.Name = p.Name + "_"
 		}
 		typ := p.Type.GoName(currentModule, false)
 		if v, ok := typeMap[typ]; ok {
@@ -89,7 +90,16 @@ func (f *Function) CArgs(currentModule *modules.Module) string {
 	var args []string
 	for _, p := range f.Parameters {
 		// log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
-		args = append(args, fmt.Sprintf("%s %s", p.Type.CName(), p.Name))
+		typ := p.Type.CName()
+		if cs, ok := p.Type.(CSignatureer); ok {
+			typ = cs.CSignature()
+		}
+		// check reserved words
+		if _, ok := reservedWords[p.Name]; ok {
+			p.Name = p.Name + "_"
+		}
+		args = append(args, fmt.Sprintf("%s %s", typ, p.Name))
+
 	}
 	return strings.Join(args, ", ")
 }
@@ -138,28 +148,48 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 
 	returnTypeStr := f.GoReturn(currentModule)
 
-	callCode := fmt.Sprintf("C.%s(", f.GoName)
+	callCode := fmt.Sprintf("C.%s(\n", f.GoName)
 	var sb strings.Builder
-	for idx, p := range f.Parameters {
+	for _, p := range f.Parameters {
 		// cast to C type
-		switch tt := p.Type.(type) {
+		sb.WriteString(fmt.Sprintf(cw.IndentStr+" // %T\n", p.Type))
+		typ := p.Type
+		switch tt := typ.(type) {
 		case *typing.AliasType:
-			sb.WriteString(fmt.Sprintf("C.%s(%s)", tt.CName(), p.GoName()))
+			sb.WriteString(fmt.Sprintf(cw.IndentStr+" // %T\n", tt.Type))
+			if _, ok := tt.Type.(*typing.VoidPointerType); ok {
+				sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
+			} else if _, ok := tt.Type.(*typing.ClassType); ok {
+				sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
+			} else {
+				sb.WriteString(cw.IndentStr + fmt.Sprintf("(C.%s)(%s)", tt.CName(), p.GoName()))
+			}
+		case *typing.RefType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
+		case *typing.StructType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  *(*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
+		case *typing.PrimitiveType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  C.%s(%s)", tt.CName(), p.GoName()))
+		case *typing.PointerType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", tt.Type.CName(), p.GoName()))
 		default:
-			sb.WriteString(p.GoName())
+			sb.WriteString(cw.IndentStr + p.GoName())
 		}
-		if idx < len(f.Parameters)-1 {
-			sb.WriteString(", ")
-		}
+		sb.WriteString(",\n")
 	}
-	callCode += sb.String() + ")"
+	callCode += sb.String() + cw.IndentStr + ")"
 
 	if returnTypeStr == "" {
 		cw.WriteLine(callCode)
 	} else {
 		var resultName = "rv"
 		cw.WriteLine(resultName + " := " + callCode)
-		cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
+		switch tt := f.ReturnType.(type) {
+		case *typing.StructType:
+			cw.WriteLineF("return *(*%s)(unsafe.Pointer(&%s))", tt.GoName(currentModule, true), resultName)
+		default:
+			cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
+		}
 	}
 	cw.UnIndent()
 	cw.WriteLine("}")
@@ -190,6 +220,9 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 		cw.WriteLine("// deprecated")
 	}
 	returnTypeStr := f.Type.ReturnType.CName()
+	if cs, ok := f.Type.ReturnType.(CSignatureer); ok {
+		returnTypeStr = cs.CSignature()
+	}
 	cw.WriteLineF("%v %v(%v) {", returnTypeStr, f.GoName, f.CArgs(currentModule))
 	cw.Indent()
 	var args []string
@@ -199,6 +232,10 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 	cw.WriteLineF("return %v(%v);", f.Type.Name, strings.Join(args, ", "))
 	cw.UnIndent()
 	cw.WriteLine("}")
+}
+
+type CSignatureer interface {
+	CSignature() string
 }
 
 func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter) {

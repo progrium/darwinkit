@@ -44,6 +44,10 @@ func (c *PointerType) CName() string {
 	return c.Type.ObjcName() + "*"
 }
 
+func (c *PointerType) CSignature() string {
+	return c.Type.ObjcName() + "*"
+}
+
 func (c *PointerType) DeclareModule() *modules.Module {
 	return c.Type.DeclareModule()
 }
