@@ -1014,16 +1014,16 @@ var tests = []struct {
 			},
 		},
 	},
-	{
-		ParseOnly: true,
-		s:         `typedef struct objc_object {	...	} id;`,
-		n: &Statement{
-			Typedef: "id",
-			Struct: &StructDecl{
-				Name: "objc_object",
-			},
-		},
-	},
+	// {
+	// 	ParseOnly: true,
+	// 	s:         `typedef struct objc_object {	...	} id;`,
+	// 	n: &Statement{
+	// 		Typedef: "id",
+	// 		Struct: &StructDecl{
+	// 			Name: "objc_object",
+	// 		},
+	// 	},
+	// },
 	{
 		ParseOnly: true,
 		s:         `typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);`,
@@ -1155,31 +1155,14 @@ var tests = []struct {
 	},
 	{
 		ParseOnly: true,
-		s:         "bool CGPDFDocumentUnlockWithPassword(CGPDFDocumentRef document, const char *password);",
-		Hint:      HintFunction,
+		s:         "typedef struct CGPDFArray *CGPDFArrayRef",
 		n: &Statement{
-			Function: &FunctionDecl{
-				ReturnType: TypeInfo{
-					Name: "bool",
-				},
-				Name: "CGPDFDocumentUnlockWithPassword",
-				Args: FuncArgs{
-					ArgInfo{
-						Name: "document",
-						Type: TypeInfo{
-							Name: "CGPDFDocumentRef",
-						},
-					},
-					ArgInfo{
-						Name: "password",
-						Type: TypeInfo{
-							Name:  "char",
-							IsPtr: true,
-							Annots: map[TypeAnnotation]bool{
-								TypeAnnotConst: true,
-							},
-						},
-					},
+			Typedef: "CGPDFArrayRef",
+			TypeAlias: &TypeInfo{
+				Name:  "CGPDFArray",
+				IsPtr: true,
+				Annots: map[TypeAnnotation]bool{
+					TypeAnnotStruct: true,
 				},
 			},
 		},

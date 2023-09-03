@@ -1,11 +1,18 @@
 package typing
 
 import (
+	"fmt"
+
 	"github.com/progrium/darwinkit/generate/modules"
 	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*PointerType)(nil)
+
+var objCToCMap = map[string]string{
+	"NSInteger":  "int",
+	"NSUInteger": "uint",
+}
 
 // PointerType is c pointer type
 type PointerType struct {
@@ -33,6 +40,8 @@ func (c *PointerType) GoName(currentModule *modules.Module, receiveFromObjc bool
 		return "*" + (&ClassType{Name: "NSDictionary", GName: "Dictionary", Module: modules.Get("foundation")}).GoName(currentModule, true)
 	case *PointerType:
 		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
+	case *RefType:
+		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
 	default:
 		panic("not supported pointer to: " + c.Type.ObjcName())
 	}
@@ -44,14 +53,31 @@ func (c *PointerType) ObjcName() string {
 }
 
 func (c *PointerType) CName() string {
-	return c.Type.ObjcName() + "*"
+	switch tt := c.Type.(type) {
+	case *VoidPointerType:
+		return ""
+	case *RefType:
+		return tt.CName() + "*"
+	}
+	return c.Type.CName() + "*"
+}
+
+type hasCSignature interface {
+	CSignature() string
 }
 
 func (c *PointerType) CSignature() string {
-	t := c.Type.ObjcName() + "*"
+	t := c.Type.CName() + "*"
+	if sig, ok := c.Type.(hasCSignature); ok {
+		t = sig.CSignature() + "*"
+	}
+	if v, ok := objCToCMap[t]; ok {
+		t = v
+	}
 	if c.IsConst {
 		t = "const " + t
 	}
+	fmt.Printf("PointerType.CSignature: %T: %s -> %s\n", c.Type, c.Type.ObjcName(), t)
 	return t
 }
 

@@ -38,13 +38,19 @@ var reservedWords = map[string]bool{
 	"string": true,
 }
 
-var typeMap = map[string]string{
+var goTypeFixupMap = map[string]string{
 	"*kernel.Boolean_t": "*int",
 	"*kernel.UniChar":   "*uint16",
 	"kernel.Boolean_t":  "int",
 	"kernel.Pid_t":      "int32",
 	"CGFloat":           "float64",
 	"uint8_t":           "byte",
+}
+
+var objCtoCMap = map[string]string{
+	"NSInteger":  "int",
+	"NSUInteger": "uint",
+	"BOOL":       "bool",
 }
 
 // GoArgs return go function args
@@ -64,7 +70,7 @@ func (f *Function) GoArgs(currentModule *modules.Module) string {
 			p.Name = p.Name + "_"
 		}
 		typ := p.Type.GoName(currentModule, true)
-		if v, ok := typeMap[typ]; ok {
+		if v, ok := goTypeFixupMap[typ]; ok {
 			typ = v
 		}
 		args = append(args, fmt.Sprintf("%s %s", p.Name, typ))
@@ -79,7 +85,7 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 	}
 	// log.Printf("rendering GoReturn function return: %s %T", f.ReturnType, f.ReturnType)
 	typ := f.ReturnType.GoName(currentModule, true)
-	if v, ok := typeMap[typ]; ok {
+	if v, ok := goTypeFixupMap[typ]; ok {
 		typ = v
 	}
 	return typ
@@ -93,6 +99,7 @@ func (f *Function) CArgs(currentModule *modules.Module) string {
 		// log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
 		typ := p.Type.CName()
 		if cs, ok := p.Type.(CSignatureer); ok {
+			fmt.Printf("has CSignatureer: %T %v -> %v\n", p.Type, typ, cs.CSignature())
 			typ = cs.CSignature()
 		}
 		// check reserved words
@@ -174,7 +181,12 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 		case *typing.PrimitiveType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  C.%s(%s)", tt.CName(), p.GoName()))
 		case *typing.PointerType:
-			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", tt.Type.ObjcName(), p.GoName()))
+			cTyp := tt.Type.CName()
+			if v, ok := objCtoCMap[cTyp]; ok {
+				// note: we should drive use of this branch down
+				cTyp = v
+			}
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", cTyp, p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
 		}
@@ -192,6 +204,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 		switch tt := f.ReturnType.(type) {
 		case *typing.StructType, *typing.PointerType:
 			cw.WriteLineF("return *(*%s)(unsafe.Pointer(&%s))", tt.GoName(currentModule, true), resultName)
+		case *typing.CStringType:
+			cw.WriteLineF("return C.GoString(%s)", resultName)
 		default:
 			cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
 		}
@@ -253,7 +267,10 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 		var conv string
 		switch tt := p.Type.(type) {
 		case *typing.PointerType:
+			cw.WriteLineF("// -> %T", tt.Type)
 			conv = tt.ObjcName()
+		// case *typing.AliasType:
+		// 	conv = tt.ObjcName() + "*"
 		default:
 			conv = tt.ObjcName()
 		}
@@ -279,11 +296,7 @@ func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter
 	var returnTypeStr string
 	rt := f.Type.ReturnType
 	returnTypeStr = rt.CName()
-	if v, ok := map[string]string{
-		"NSInteger":  "int",
-		"NSUInteger": "uint",
-		"BOOL":       "bool",
-	}[returnTypeStr]; ok {
+	if v, ok := objCtoCMap[returnTypeStr]; ok {
 		returnTypeStr = v
 	}
 	if hasBlockParam(f.Parameters) {

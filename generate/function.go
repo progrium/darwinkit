@@ -120,12 +120,15 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"CFSetRemoveValue":                                           true,
 		"CFSetReplaceValue":                                          true,
 		"CFSetSetValue":                                              true,
+		"CFSocketCopyRegisteredValue":                                true,
 		"CFTreeApplyFunctionToChildren":                              true,
 		"CFTreeSortChildren":                                         true,
 		"CFURLCopyResourcePropertyForKey":                            true,
 		"CFXMLNodeCreate":                                            true,
 		"CGBitmapContextCreate":                                      true,
+		"CGPDFScannerPopName":                                        true,
 		"CGBitmapContextCreateWithData":                              true,
+		"CGColorSpaceCreateIndexed":                                  true,
 		"CGColorSpaceCreateWithPlatformColorSpace":                   true,
 		"CGConvertColorDataWithFormat":                               true,
 		"CGDataConsumerCreate":                                       true,
@@ -138,11 +141,14 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"CGEventTapCreate":                                           true,
 		"CGEventTapCreateForPSN":                                     true,
 		"CGEventTapCreateForPid":                                     true,
+		"CGEventTapPostEvent":                                        true,
 		"CGFontCreateWithPlatformFont":                               true,
 		"CGFunctionCreate":                                           true,
 		"CGPDFArrayApplyBlock":                                       true,
+		"CGPDFArrayGetName":                                          true,
 		"CGPDFDictionaryApplyBlock":                                  true,
 		"CGPDFDictionaryApplyFunction":                               true,
+		"CGPDFDictionaryGetName":                                     true,
 		"CGPDFObjectGetValue":                                        true,
 		"CGPDFScannerCreate":                                         true,
 		"CGPSConverterCreate":                                        true,
@@ -240,13 +246,6 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"OBEXSessionSetPath":                                         true,
 		"OBEXSessionSetPathResponse":                                 true,
 		"OBEXSessionSetServerCallback":                               true,
-		"CFSocketCopyRegisteredValue":                                true,
-	}
-	if _, ok := map[string]bool{
-		//"CGColorSpaceCreateCalibratedGray": true,
-		"CGPDFDocumentUnlockWithPassword": true,
-	}[sym.Name]; !ok {
-		return nil
 	}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
@@ -277,12 +276,21 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	// populate params:
 	log.Printf("decl: %v %s\n", sym.Name, sym.Declaration)
 	for i, p := range fntyp.Parameters {
-		log.Printf(" param %#v: %v %+v\n", i, p.Name, p.Type.ObjcName())
+		if p.Type != nil {
+			log.Printf(" param %#v: %v %+v\n", i, p.Name, p.Type.ObjcName())
+		}
 	}
 	for _, p := range fntyp.Parameters {
 		if p.Type == nil {
 			fmt.Printf("skipping %s: %s because of nil type\n", sym.Name, p.Name)
 			return nil
+		}
+		// skip pointers to ref types (for now)
+		if pt, ok := p.Type.(*typing.PointerType); ok {
+			if _, ok := pt.Type.(*typing.RefType); ok {
+				fmt.Printf("skipping %s: %s because of pointer to ref type\n", sym.Name, p.Name)
+				return nil
+			}
 		}
 		fn.Parameters = append(fn.Parameters, &codegen.Param{
 			Name: p.Name,

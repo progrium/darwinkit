@@ -1,8 +1,10 @@
 package generate
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/progrium/darwinkit/generate/declparse"
@@ -62,6 +64,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("unknown type")
 		}
+
+		// special handling of Ref structs
 		if (strings.HasSuffix(sym.Name, "Ref") && strings.Contains(sym.Declaration, "struct")) ||
 			sym.Name == "AudioComponent" ||
 			// sym.Name == "NSZone" ||
@@ -91,13 +95,22 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("unable to parse type")
 		}
-		return &typing.AliasType{
+		typ = &typing.AliasType{
 			Name:   sym.Name,
 			GName:  modules.TrimPrefix(sym.Name),
 			Module: modules.Get(module),
 			Type:   typ,
 		}
+
+		j, _ := json.Marshal(typ)
+		fmt.Println(string(j))
+		if sym.Name == "CGPDFArrayRef" {
+			os.Exit(1)
+		}
+
+		return typ
 	case "Struct":
+		fmt.Println("STURCT AHDNLE:", sym.Name)
 		if strings.HasSuffix(sym.Name, "Ref") {
 			return &typing.RefType{
 				Name:   sym.Name,
@@ -238,6 +251,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		typ = typing.Object
 		ref = true
 	default:
+
 		var ok bool
 		typ, ok = typing.GetPrimitiveType(ti.Name)
 		// log.Println("primitive", ti.Name, ok)
@@ -251,12 +265,13 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		// log.Println("kernel", ti.Name, ok)
 		if !ok {
 			typ = db.TypeFromSymbolName(ti.Name)
-			log.Println("symbol", ti.Name, typ, ok)
+			j, _ := json.Marshal(ti)
+			log.Printf("symbol %v %T %v - %v", ti.Name, typ, ok, string(j))
 			switch typ.(type) {
 			case *typing.ClassType:
 				ref = true
-			// case *typing.StructType:
-			// 	ref = true
+			case *typing.StructType:
+				//ref = true
 			case *typing.ProtocolType:
 				panic("standalone proto type")
 			}
@@ -267,7 +282,8 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		return typ
 	}
 
-	if ti.IsPtr && !ref {
+	//fmt.Printf("ParseType: %s %s %s\n", ti.Name, typ, ti)
+	if (ti.IsPtr || ti.IsPtrPtr) && !ref {
 		if _, ok := typ.(*typing.VoidType); ok {
 			typ = &typing.VoidPointerType{}
 		} else {
