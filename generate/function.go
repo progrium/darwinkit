@@ -254,6 +254,7 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	}
 	fn := &codegen.Function{
 		Name:        sym.Name,
+		Deprecated:  sym.Deprecated,
 		GoName:      modules.TrimPrefix(sym.Name),
 		Description: sym.Description,
 		DocURL:      sym.DocURL(),

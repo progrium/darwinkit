@@ -128,14 +128,14 @@ func (f *Function) String() string {
 func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter) {
 	funcDeclare := f.GoFuncDeclare(currentModule)
 
-	if hasBlockParam(f.Parameters) {
-		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
+	if f.Deprecated {
+		cw.WriteLine("// deprecated")
 		return
 	}
 
-	if f.Deprecated {
+	if hasBlockParam(f.Parameters) {
+		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
 		return
-		cw.WriteLine("// deprecated")
 	}
 
 	if f.DocURL != "" {
@@ -212,13 +212,13 @@ func hasBlockParam(params []*Param) bool {
 }
 
 func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWriter) {
-	if hasBlockParam(f.Parameters) {
-		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
-		return
-	}
 	if f.Deprecated {
 		return
 		cw.WriteLine("// deprecated")
+	}
+	if hasBlockParam(f.Parameters) {
+		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
+		return
 	}
 	returnTypeStr := f.Type.ReturnType.CName()
 	if cs, ok := f.Type.ReturnType.(CSignatureer); ok {
