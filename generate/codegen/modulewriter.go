@@ -143,6 +143,21 @@ func (m *ModuleWriter) WriteStructs() {
 	}
 }
 
+func shouldSkipFunction(f *Function) bool {
+	if f.Deprecated {
+		return true
+	}
+	if hasBlockParam(f.Parameters) {
+		return true
+	}
+	if _, ok := map[string]bool{
+		"CGDirectDisplayCopyCurrentMetalDevice": true,
+	}[f.Name]; ok {
+		return true
+	}
+	return false
+}
+
 // WriteFunctions writes the go code to call exposed functions.
 func (m *ModuleWriter) WriteFunctions() {
 	if len(m.Functions) == 0 {
@@ -167,6 +182,9 @@ func (m *ModuleWriter) WriteFunctions() {
 // #import <stdbool.h>
 // #import "%s"`, m.Module.Header)
 	for _, f := range m.Functions {
+		if shouldSkipFunction(f) {
+			continue
+		}
 		f.WriteCSignature(&m.Module, cw)
 	}
 	cw.WriteLine(`import "C"`)
@@ -191,6 +209,9 @@ func (m *ModuleWriter) WriteFunctions() {
 	cw.WriteLine(")")
 
 	for _, f := range m.Functions {
+		if shouldSkipFunction(f) {
+			continue
+		}
 		f.WriteGoCallCode(&m.Module, cw)
 	}
 }

@@ -76,7 +76,7 @@ func (a *BlockType) ObjcName() string {
 }
 
 func (a *BlockType) CName() string {
-	return a.ObjcName()
+	return "implement me"
 }
 
 func (a *BlockType) DeclareModule() *modules.Module {
