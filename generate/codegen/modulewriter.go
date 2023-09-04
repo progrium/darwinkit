@@ -16,15 +16,16 @@ import (
 
 // ModuleWriter mantains module level auto-generated code source files
 type ModuleWriter struct {
-	Module      modules.Module
-	Description string
-	DocURL      string
-	PlatformDir string
-	Protocols   []*typing.ProtocolType
-	EnumAliases []*AliasInfo
-	FuncAliases []*AliasInfo
-	Functions   []*Function
-	Structs     []*Struct
+	Module        modules.Module
+	Description   string
+	DocURL        string
+	PlatformDir   string
+	Protocols     []*typing.ProtocolType
+	EnumAliases   []*AliasInfo
+	FuncAliases   []*AliasInfo
+	StructAliases []*AliasInfo
+	Functions     []*Function
+	Structs       []*Struct
 }
 
 func (m *ModuleWriter) WriteCode() {
@@ -94,6 +95,14 @@ func (m *ModuleWriter) WriteTypeAliases() {
 		}
 		cw.WriteLineF("type %s = %s", fa.GName, fa.Type.GoName(&m.Module, false))
 	}
+
+	for _, fa := range m.StructAliases {
+		if fa.DocURL != "" {
+			cw.WriteLine(fmt.Sprintf("// %s [Full Topic]", fa.Description))
+			cw.WriteLine(fmt.Sprintf("//\n// [Full Topic]: %s", fa.DocURL))
+		}
+		cw.WriteLineF("type %s = unsafe.Pointer", fa.GName)
+	}
 }
 
 func (m *ModuleWriter) WriteStructs() {
@@ -140,6 +149,7 @@ func (m *ModuleWriter) WriteStructs() {
 			cw.WriteLineF("type %s unsafe.Pointer", s.GoName)
 			continue
 		}
+		log.Println("skipping struct", s.Name)
 	}
 }
 

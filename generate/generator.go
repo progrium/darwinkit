@@ -137,6 +137,19 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				})
 				continue
 			}
+
+			if st.TypeAlias.Annots[declparse.TypeAnnotStruct] {
+				mw.StructAliases = append(mw.StructAliases, &codegen.AliasInfo{
+					AliasType: typing.AliasType{
+						Name:  s.Name,
+						GName: modules.TrimPrefix(s.Name),
+						Type:  db.ParseType(*st.TypeAlias),
+					},
+					Description: s.Description,
+					DocURL:      s.DocURL(),
+				})
+				continue
+			}
 		case "Function":
 			fn := db.ToFunction(framework, s)
 			if fn == nil {

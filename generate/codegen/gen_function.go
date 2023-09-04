@@ -2,6 +2,7 @@ package codegen
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/progrium/darwinkit/internal/set"
@@ -96,9 +97,9 @@ func (f *Function) CArgs(currentModule *modules.Module) string {
 	// log.Println("rendering function", f.Name)
 	var args []string
 	for _, p := range f.Parameters {
-		// log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
+		log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
 		typ := p.Type.CName()
-		if cs, ok := p.Type.(CSignatureer); ok {
+		if cs, ok := p.Type.(hasCSignature); ok {
 			fmt.Printf("has CSignatureer: %T %v -> %v\n", p.Type, typ, cs.CSignature())
 			typ = cs.CSignature()
 		}
@@ -167,8 +168,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			sb.WriteString(fmt.Sprintf(cw.IndentStr+" // %T\n", tt.Type))
 			if _, ok := tt.Type.(*typing.VoidPointerType); ok {
 				sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
-			} else if _, ok := tt.Type.(*typing.ClassType); ok {
-				sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
+				// } else if _, ok := tt.Type.(*typing.ClassType); ok {
+				// 	sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
 			} else {
 				sb.WriteString(cw.IndentStr + fmt.Sprintf("(C.%s)(%s)", tt.CName(), p.GoName()))
 			}
@@ -253,7 +254,7 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 		return
 	}
 	returnTypeStr := f.Type.ReturnType.CName()
-	if cs, ok := f.Type.ReturnType.(CSignatureer); ok {
+	if cs, ok := f.Type.ReturnType.(hasCSignature); ok {
 		returnTypeStr = cs.CSignature()
 	}
 	cw.WriteLineF("%v %v(%v) {", returnTypeStr, f.GoName, f.CArgs(currentModule))
@@ -288,7 +289,7 @@ func (f *Function) WriteObjcWrapper(currentModule *modules.Module, cw *CodeWrite
 	cw.WriteLine("}")
 }
 
-type CSignatureer interface {
+type hasCSignature interface {
 	CSignature() string
 }
 

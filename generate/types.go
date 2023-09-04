@@ -103,14 +103,14 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		}
 
 		j, _ := json.Marshal(typ)
-		fmt.Println(string(j))
+		fmt.Println("AliasType:", string(j))
 		if sym.Name == "CGPDFArrayRef" {
 			os.Exit(1)
 		}
 
 		return typ
 	case "Struct":
-		fmt.Println("STURCT AHDNLE:", sym.Name)
+		fmt.Println("Handling Struct:", sym.Name)
 		if strings.HasSuffix(sym.Name, "Ref") {
 			return &typing.RefType{
 				Name:   sym.Name,
@@ -131,12 +131,12 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		typ, err := sym.Parse(db.Platform)
 		if err != nil {
 			fmt.Printf("TypeFromSymbol: failed to parse %s: %s\n", sym.Declaration, err)
-			panic("bad function decl")
+			return nil
 		}
 		fn := typ.Function
 		if fn == nil {
 			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
-			panic("bad function decl")
+			return nil
 		}
 		ft := &typing.FunctionType{
 			Name:   sym.Name,
