@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/progrium/darwinkit/internal/set"
@@ -11,7 +10,7 @@ import (
 	"github.com/progrium/darwinkit/generate/typing"
 )
 
-// Function is code generator for objective-c function
+// Function is code generator for objective-c (and c) functions.
 type Function struct {
 	Type        *typing.FunctionType
 	Name        string // the first part of objc function name
@@ -48,20 +47,11 @@ var goTypeFixupMap = map[string]string{
 	"uint8_t":           "byte",
 }
 
-var objCtoCMap = map[string]string{
-	"NSInteger":  "int",
-	"NSUInteger": "uint",
-	"BOOL":       "bool",
-}
-
 // GoArgs return go function args
 func (f *Function) GoArgs(currentModule *modules.Module) string {
-	// log.Println("rendering function", f.Name)
 	var args []string
 	var blankArgCounter = 0
 	for _, p := range f.Parameters {
-		// log.Println("rendering function", f.Name, p.Name, p.Type)
-		// log.Printf("rendering function ptype: %T", p.Type)
 		// if is reserved word, add _ suffix
 		if p.Name == "" {
 			p.Name = fmt.Sprintf("arg%d", blankArgCounter)
@@ -84,7 +74,6 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 	if f.ReturnType == nil {
 		return ""
 	}
-	// log.Printf("rendering GoReturn function return: %s %T", f.ReturnType, f.ReturnType)
 	typ := f.ReturnType.GoName(currentModule, true)
 	if v, ok := goTypeFixupMap[typ]; ok {
 		typ = v
@@ -94,13 +83,10 @@ func (f *Function) GoReturn(currentModule *modules.Module) string {
 
 // CArgs return go function args
 func (f *Function) CArgs(currentModule *modules.Module) string {
-	// log.Println("rendering function", f.Name)
 	var args []string
 	for _, p := range f.Parameters {
-		log.Printf("rendering cfunction arg: %s %s %T", p.Name, p.Type, p.Type)
 		typ := p.Type.CName()
 		if cs, ok := p.Type.(hasCSignature); ok {
-			fmt.Printf("has CSignatureer: %T %v -> %v\n", p.Type, typ, cs.CSignature())
 			typ = cs.CSignature()
 		}
 		// check reserved words
@@ -177,10 +163,6 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  C.%s(%s)", tt.CName(), p.GoName()))
 		case *typing.PointerType:
 			cTyp := tt.Type.CName()
-			if v, ok := objCtoCMap[cTyp]; ok {
-				// note: we should drive use of this branch down
-				cTyp = v
-			}
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", cTyp, p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
@@ -291,9 +273,6 @@ func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter
 	var returnTypeStr string
 	rt := f.Type.ReturnType
 	returnTypeStr = rt.CName()
-	if v, ok := objCtoCMap[returnTypeStr]; ok {
-		returnTypeStr = v
-	}
 	if hasBlockParam(f.Parameters) {
 		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
 		return

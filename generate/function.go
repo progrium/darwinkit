@@ -45,12 +45,6 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	}
 
 	// populate params:
-	log.Printf("decl: %v %s\n", sym.Name, sym.Declaration)
-	for i, p := range fntyp.Parameters {
-		if p.Type != nil {
-			log.Printf(" param %#v: %v %+v\n", i, p.Name, p.Type.ObjcName())
-		}
-	}
 	for _, p := range fntyp.Parameters {
 		if p.Type == nil {
 			fmt.Printf("skipping %s: %s because of nil type\n", sym.Name, p.Name)

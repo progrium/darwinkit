@@ -1,10 +1,8 @@
 package generate
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
 	"github.com/progrium/darwinkit/generate/declparse"
@@ -101,16 +99,8 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			Module: modules.Get(module),
 			Type:   typ,
 		}
-
-		j, _ := json.Marshal(typ)
-		fmt.Println("AliasType:", string(j))
-		if sym.Name == "CGPDFArrayRef" {
-			os.Exit(1)
-		}
-
 		return typ
 	case "Struct":
-		fmt.Println("Handling Struct:", sym.Name)
 		if strings.HasSuffix(sym.Name, "Ref") {
 			return &typing.RefType{
 				Name:   sym.Name,
@@ -265,8 +255,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		// log.Println("kernel", ti.Name, ok)
 		if !ok {
 			typ = db.TypeFromSymbolName(ti.Name)
-			j, _ := json.Marshal(ti)
-			log.Printf("symbol %v %T %v - %v", ti.Name, typ, ok, string(j))
+			// log.Printf("symbol %v %T %v - %v", ti.Name, typ, ok, string(j))
 			switch typ.(type) {
 			case *typing.ClassType:
 				ref = true
