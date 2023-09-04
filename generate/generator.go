@@ -187,6 +187,17 @@ func (db *Generator) TypeFromSymbolName(name string) typing.Type {
 	}
 	s := db.FindTypeSymbol(name)
 	if s == nil {
+
+		// __ prefixed symbols are generally structs
+		if strings.HasPrefix(name, "__") {
+			s := &typing.StructType{
+				Name:   name,
+				GName:  modules.TrimPrefix(name),
+				Module: modules.Get(db.Framework),
+			}
+			log.Printf("using Struct for unknown symbol: %s\n", name)
+			return s
+		}
 		log.Printf("using NSObject for unknown symbol: %s\n", name)
 		return typing.Object
 	}

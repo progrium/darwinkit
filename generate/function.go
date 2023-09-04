@@ -11,7 +11,13 @@ import (
 
 func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	// these functions have known declparse failures
-	knownIssues := map[string]bool{}
+	knownIssues := map[string]bool{
+
+		"CGColorSpaceCreateIndexed": true, // "const unsigned char *"
+		"CGPDFArrayGetName":         true, // "const char * _Nullable *"
+		"CGPDFDictionaryGetName":    true, // "const char *key, const char * _Nullable *"
+		"CGPDFScannerPopName":       true, // "const char * _Nullable *"
+	}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
 		log.Printf("skipping function %s %s because of known issue: decl='%s' err='%v'\n", fw, sym.Name, sym.Declaration, err)

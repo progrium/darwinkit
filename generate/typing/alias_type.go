@@ -41,7 +41,7 @@ func (a *AliasType) CName() string {
 }
 
 func (a *AliasType) CSignature() string {
-	return a.Name + " *"
+	return a.Name
 }
 
 func (a *AliasType) DeclareModule() *modules.Module {

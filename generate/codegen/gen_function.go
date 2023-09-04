@@ -166,16 +166,7 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 		switch tt := typ.(type) {
 		case *typing.AliasType:
 			sb.WriteString(fmt.Sprintf(cw.IndentStr+" // %T\n", tt.Type))
-			if _, ok := tt.Type.(*typing.PointerType); ok {
-				sb.WriteString(fmt.Sprintf(cw.IndentStr+" // %T\n", tt.Type))
-				sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(%s)", tt.CName(), p.GoName()))
-			} else if _, ok := tt.Type.(*typing.VoidPointerType); ok {
-				sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
-				// } else if _, ok := tt.Type.(*typing.ClassType); ok {
-				// 	sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(%s)", p.GoName()))
-			} else {
-				sb.WriteString(cw.IndentStr + fmt.Sprintf("(C.%s)(%s)", tt.CName(), p.GoName()))
-			}
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("(C.%s)(%s)", tt.CName(), p.GoName()))
 		case *typing.CStringType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  %vVal", p.GoName()))
 		case *typing.RefType:

@@ -47,6 +47,11 @@ func (c *ClassType) CName() string {
 	return c.Name + "*"
 }
 
+func (c *ClassType) CSignature() string {
+	panic(32)
+	return "void *"
+}
+
 func (c *ClassType) DeclareModule() *modules.Module {
 	return c.Module
 }
