@@ -38,12 +38,22 @@ var reservedWords = map[string]bool{
 	"string": true,
 }
 
+// list of fixups for types that are not properly mapped
+// ideally we shorten this list over time
 var goTypeFixupMap = map[string]string{
 	"*kernel.Boolean_t": "*int",
+	"*kernel.Mode_t":    "*int",
+	"*kernel.Uid_t":     "*int",
+	"*kernel.Gid_t":     "*int",
 	"*kernel.UniChar":   "*uint16",
-	"kernel.Boolean_t":  "int",
-	"kernel.Pid_t":      "int32",
 	"CGFloat":           "float64",
+	"kernel.Boolean_t":  "int",
+	"kernel.Cpu_type_t": "int",
+	"kernel.Gid_t":      "int",
+	"kernel.Mode_t":     "int",
+	"kernel.Pid_t":      "int32",
+	"kernel.Uid_t":      "int",
+	"kernel.UniChar":    "uint16",
 	"uint8_t":           "byte",
 }
 
@@ -162,8 +172,9 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 		case *typing.PrimitiveType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  C.%s(%s)", tt.CName(), p.GoName()))
 		case *typing.PointerType:
-			cTyp := tt.Type.CName()
-			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(%s))", cTyp, p.GoName()))
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
+		case *typing.DispatchType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
 		}

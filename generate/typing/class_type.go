@@ -48,7 +48,6 @@ func (c *ClassType) CName() string {
 }
 
 func (c *ClassType) CSignature() string {
-	panic(32)
 	return "void *"
 }
 

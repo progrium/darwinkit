@@ -56,8 +56,9 @@ func (c *PointerType) CName() string {
 		return ""
 	case *RefType:
 		return tt.CName() + "*"
+	default:
+		return c.Type.CName()
 	}
-	return c.Type.CName() + "*"
 }
 
 type hasCSignature interface {

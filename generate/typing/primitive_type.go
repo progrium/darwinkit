@@ -6,6 +6,7 @@ import (
 )
 
 var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL", CName_: "bool"}
+var Boolean = &PrimitiveType{GoName_: "bool", ObjcName_: "Boolean", CName_: "bool"}
 
 var Int = &PrimitiveType{GoName_: "int", ObjcName_: "NSInteger", CName_: "long"}
 var UInt = &PrimitiveType{GoName_: "uint", ObjcName_: "NSUInteger", CName_: "uint"}
@@ -43,7 +44,7 @@ func init() {
 	primitiveMap["size_t"] = UInt
 	primitiveMap["uintptr_t"] = UInt
 
-	primitiveMap["Boolean"] = Bool
+	primitiveMap["Boolean"] = Boolean
 	primitiveMap["SInt8"] = Int8
 	primitiveMap["SInt16"] = Int16
 	primitiveMap["SInt32"] = Int32
