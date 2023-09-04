@@ -99,7 +99,6 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 
 	// populate params:
 	for _, p := range fntyp.Parameters {
-		fmt.Printf("PARAM: %v: %v %T\n", sym.Name, p.Name, p.Type)
 		if p.Type == nil {
 			fmt.Printf("skipping %s: %s because of nil type\n", sym.Name, p.Name)
 			return nil
@@ -118,7 +117,6 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		}
 
 		// detect if we have a CFRange, CFTypeRef, or CFStringInlineBuffer as an argument type
-		fmt.Println("P ocname:", sym.Name, p.Type.ObjcName(), unhandledStructType(p.Type.ObjcName()))
 		if unhandledStructType(p.Type.ObjcName()) {
 			fmt.Printf("skipping %s: %s because of unhandled struct type %s\n", sym.Name, p.Name, p.Type.ObjcName())
 			return nil
