@@ -18,6 +18,7 @@ var unhandledStructTypes = map[string]bool{
 	"CFBinaryHeapCallBacks":             true,
 	"CFBinaryHeapCompareContext":        true,
 	"CFCalendarIdentifier":              true,
+	"CFDateFormatterKey":                true,
 	"CFDictionaryKeyCallBacks":          true,
 	"CFDictionaryValueCallBacks":        true,
 	"CFErrorDomain":                     true,
@@ -25,10 +26,9 @@ var unhandledStructTypes = map[string]bool{
 	"CFLocaleIdentifier":                true,
 	"CFLocaleKey":                       true,
 	"CFMachPortContext":                 true,
-	"CFMachPortRef":                     true,
 	"CFMessagePortContext":              true,
 	"CFMessagePortInvalidationCallBack": true,
-	"CFPropertyListRef":                 true,
+	"CFNumberFormatterKey":              true,
 	"CFRange":                           true,
 	"CFRunLoopMode":                     true,
 	"CFRunLoopObserverContext":          true,
@@ -37,12 +37,11 @@ var unhandledStructTypes = map[string]bool{
 	"CFSetCallBacks":                    true,
 	"CFSocketContext":                   true,
 	"CFSocketSignature":                 true,
+	"CFStreamPropertyKey":               true,
 	"CFStringInlineBuffer":              true,
-	"CFStringRef":                       true,
 	"CFSwappedFloat32":                  true,
 	"CFSwappedFloat64":                  true,
 	"CFTreeContext":                     true,
-	"CFTypeRef":                         true,
 	"CFUUIDBytes":                       true,
 	"dispatch_queue_t":                  true, // for return values, not parameters
 	"va_list":                           true,
@@ -53,10 +52,19 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	knownIssues := map[string]bool{
 
 		"CFCharacterSetIsLongCharacterMember":      true, // "UTF32Char theChar"
+		"CFStringGetCharactersPtr":                 true, // return handling
+		"CFStringCreateWithFormat":                 true, // format param
+		"CFStringAppendFormat":                     true, // format param
 		"CFFileSecurityCopyAccessControlList":      true, // "acl_t accessControlList"
 		"CFFileSecuritySetAccessControlList":       true, // "acl_t accessControlList"
+		"CFMachPortGetInvalidationCallBack":        true, // converting return value to function pointer
+		"CFMachPortGetPort":                        true, // handling return of mach_port_t
 		"CFStringAppendPascalString":               true, // "ConstStr255Param pStr"
+		"CFStringCreateWithPascalString":           true, // StringPtr
+		"CFStringCreateWithPascalStringNoCopy":     true, // StringPtr
 		"CFStringGetLongCharacterForSurrogatePair": true, // "UTF16Char surrogateHigh, UTF16Char surrogateLow"
+		"CFStringGetPascalString":                  true, // StringPtr
+		"CFStringGetPascalStringPtr":               true, // StringPtr
 		"CFStringGetSurrogatePairForLongCharacter": true, // "UTF32Char character"
 		"CGColorSpaceCreateIndexed":                true, // "const unsigned char *"
 		"CGPDFArrayGetName":                        true, // "const char * _Nullable *"
