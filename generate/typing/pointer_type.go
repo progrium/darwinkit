@@ -56,6 +56,8 @@ func (c *PointerType) CName() string {
 		return ""
 	case *RefType:
 		return tt.CName() + "*"
+	case *PointerType:
+		return tt.Type.CName()
 	default:
 		return c.Type.CName()
 	}

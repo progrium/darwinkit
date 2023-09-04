@@ -284,6 +284,10 @@ func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter
 	var returnTypeStr string
 	rt := f.Type.ReturnType
 	returnTypeStr = rt.CName()
+	// check for CSignature:
+	if cs, ok := rt.(hasCSignature); ok {
+		returnTypeStr = cs.CSignature()
+	}
 	if hasBlockParam(f.Parameters) {
 		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
 		return
