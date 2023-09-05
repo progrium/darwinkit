@@ -45,6 +45,9 @@ var unhandledStructTypes = map[string]bool{
 	"CFUUIDBytes":                       true,
 	"dispatch_queue_t":                  true, // for return values, not parameters
 	"va_list":                           true,
+
+	"MTLIndirectCommandBufferExecutionRange": true,
+	"MTLPackedFloat3":                        true,
 }
 
 func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
@@ -70,9 +73,8 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"CGPDFArrayGetName":                        true, // "const char * _Nullable *"
 		"CGPDFDictionaryGetName":                   true, // "const char *key, const char * _Nullable *"
 		"CGPDFScannerPopName":                      true, // "const char * _Nullable *"
-	}
-	if sym.Name != "MTLCreateSystemDefaultDevice" {
-		return nil
+
+		"MTLSizeMake": true, // duplicate symbol issue
 	}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
@@ -132,6 +134,12 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 	}
 	if unhandledStructType(fntyp.ReturnType.ObjcName()) {
 		fmt.Printf("skipping %s because of unhandled struct type %s\n", sym.Name, fntyp.ReturnType.ObjcName())
+		return nil
+	}
+
+	// we (unfortuantely) don't handle array returns cleanly yet:
+	if _, ok := fntyp.ReturnType.(*typing.ArrayType); ok {
+		fmt.Printf("skipping %s because of array return type\n", sym.Name)
 		return nil
 	}
 	// populate return type

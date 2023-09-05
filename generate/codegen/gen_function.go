@@ -175,6 +175,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
 		case *typing.DispatchType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
+		case *typing.IDType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  %s.Ptr()", p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
 		}
@@ -196,6 +198,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			cw.WriteLineF("return C.GoString(%s)", resultName)
 		case *typing.ProtocolType:
 			cw.WriteLineF("return %s{objc.ObjectFrom(%s)}", returnTypeStr, resultName)
+		case *typing.AliasType:
+			cw.WriteLineF("return *(*%s)(unsafe.Pointer(&%s))", returnTypeStr, resultName)
 		default:
 			cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
 		}
@@ -290,6 +294,7 @@ func (f *Function) WriteCSignature(currentModule *modules.Module, cw *CodeWriter
 	if cs, ok := rt.(hasCSignature); ok {
 		returnTypeStr = cs.CSignature()
 	}
+
 	if hasBlockParam(f.Parameters) {
 		cw.WriteLineF("// // TODO: %v not implemented (missing block param support)", f.Name)
 		return

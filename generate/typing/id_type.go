@@ -25,7 +25,7 @@ func (i *IDType) ObjcName() string {
 }
 
 func (i *IDType) CName() string {
-	return "id"
+	return "void *"
 }
 
 func (i *IDType) DeclareModule() *modules.Module {
