@@ -194,6 +194,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			cw.WriteLineF("return *(*%s)(unsafe.Pointer(&%s))", tt.GoName(currentModule, true), resultName)
 		case *typing.CStringType:
 			cw.WriteLineF("return C.GoString(%s)", resultName)
+		case *typing.ProtocolType:
+			cw.WriteLineF("return %s{objc.ObjectFrom(%s)}", returnTypeStr, resultName)
 		default:
 			cw.WriteLineF("return %s(%s)", returnTypeStr, resultName)
 		}

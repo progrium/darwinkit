@@ -71,6 +71,9 @@ func (db *Generator) ToFunction(fw string, sym Symbol) *codegen.Function {
 		"CGPDFDictionaryGetName":                   true, // "const char *key, const char * _Nullable *"
 		"CGPDFScannerPopName":                      true, // "const char * _Nullable *"
 	}
+	if sym.Name != "MTLCreateSystemDefaultDevice" {
+		return nil
+	}
 	if knownIssues[sym.Name] {
 		_, err := sym.Parse(db.Platform)
 		log.Printf("skipping function %s %s because of known issue: decl='%s' err='%v'\n", fw, sym.Name, sym.Declaration, err)

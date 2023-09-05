@@ -27,7 +27,11 @@ func (p *ProtocolType) ObjcName() string {
 }
 
 func (p *ProtocolType) CName() string {
-	return "id<" + p.Name + ">"
+	return "void *"
+}
+
+func (p *ProtocolType) CSignature() string {
+	return "void *"
 }
 
 func (p *ProtocolType) GoImports() set.Set[string] {

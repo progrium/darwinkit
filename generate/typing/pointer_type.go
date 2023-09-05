@@ -1,6 +1,8 @@
 package typing
 
 import (
+	"fmt"
+
 	"github.com/progrium/darwinkit/generate/modules"
 	"github.com/progrium/darwinkit/internal/set"
 )
@@ -40,8 +42,10 @@ func (c *PointerType) GoName(currentModule *modules.Module, receiveFromObjc bool
 		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
 	case *RefType:
 		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
+	case *ProtocolType:
+		return "*" + c.Type.GoName(currentModule, receiveFromObjc)
 	default:
-		panic("not supported pointer to: " + c.Type.ObjcName())
+		panic(fmt.Sprintf("not supported pointer to: %T %v", c.Type, c.Type.ObjcName()))
 	}
 
 }
