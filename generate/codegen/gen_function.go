@@ -177,6 +177,8 @@ func (f *Function) WriteGoCallCode(currentModule *modules.Module, cw *CodeWriter
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  (*C.%s)(unsafe.Pointer(&%s))", tt.CName(), p.GoName()))
 		case *typing.IDType:
 			sb.WriteString(cw.IndentStr + fmt.Sprintf("  %s.Ptr()", p.GoName()))
+		case *typing.ClassType, *typing.ProtocolType:
+			sb.WriteString(cw.IndentStr + fmt.Sprintf("  unsafe.Pointer(&%s)", p.GoName()))
 		default:
 			sb.WriteString(cw.IndentStr + p.GoName())
 		}
