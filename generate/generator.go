@@ -88,7 +88,7 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 			}
 			protocolGen.Init()
 			fw := &codegen.FileWriter{
-				Name:        s.Name,
+				Name:        s.Name + "Protocol",
 				Module:      *protocolGen.Type.Module,
 				PlatformDir: rootDir,
 			}

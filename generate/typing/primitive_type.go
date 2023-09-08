@@ -51,6 +51,8 @@ func init() {
 	primitiveMap["UInt16"] = UInt16
 	primitiveMap["UInt32"] = UInt32
 	primitiveMap["UInt64"] = UInt64
+
+	primitiveMap["Float32"] = Float
 }
 
 func GetPrimitiveType(typeName string) (*PrimitiveType, bool) {

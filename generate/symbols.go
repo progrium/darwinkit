@@ -37,6 +37,11 @@ var blacklist = []string{
 	"WebView",              // gets picked up instead of WKWebView
 }
 
+var pathBlacklist = []string{
+	"foundation/nshashtable/legacy_hash_table_implementation/nshashtable", // found instead of NSHashTable class
+	"foundation/nsmaptable/legacy_map_table_implementation/nsmaptable",    // same
+}
+
 type Symbol struct {
 	Name string
 	Path string
@@ -182,6 +187,9 @@ func (db *SymbolCache) loadFrom(file *zip.File) (v Symbol, err error) {
 	}
 	if strIn(blacklist, v.Name) {
 		return v, fmt.Errorf("blacklisted symbol: %s", v.Name)
+	}
+	if strIn(pathBlacklist, v.Path) {
+		return v, fmt.Errorf("blacklisted path: %s", v.Path)
 	}
 	if v.Kind != "Property" && v.Kind != "Method" && v.Kind != "Framework" {
 		db.cache[v.Name] = v

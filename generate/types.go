@@ -58,7 +58,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		}
 	case "Type":
 		if sym.Type != "Type Alias" {
-			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("unknown type")
 		}
 		if (strings.HasSuffix(sym.Name, "Ref") && strings.Contains(sym.Declaration, "struct")) ||
@@ -71,7 +71,7 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 		}
 		st, err := sym.Parse(db.Platform)
 		if err != nil {
-			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("bad declaration")
 		}
 		if st.Struct != nil {
@@ -80,12 +80,12 @@ func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {
 			}
 		}
 		if st.TypeAlias == nil {
-			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("bad type alias")
 		}
 		typ := db.ParseType(*st.TypeAlias)
 		if typ == nil {
-			fmt.Printf("TypeFromSymbol: name=%s declaration=%s\n", sym.Name, sym.Declaration)
+			fmt.Printf("TypeFromSymbol: name=%s declaration=%s path=%s\n", sym.Name, sym.Declaration, sym.Path)
 			panic("unable to parse type")
 		}
 		return &typing.AliasType{
@@ -142,7 +142,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		typ = &typing.InstanceType{}
 	case "id":
 		typ = &typing.IDType{}
-		if len(ti.Params) > 0 {
+		if len(ti.Params) > 0 && ti.Params[0].Name != "NSObject" {
 			idtype := db.FindTypeSymbol(ti.Params[0].Name)
 			if idtype != nil {
 				ptyp, ok := db.TypeFromSymbol(*idtype).(*typing.ProtocolType)
@@ -193,6 +193,10 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 			dt.KeyType = typing.Object
 			dt.ValueType = typing.Object
 		}
+		ref = true
+	case "NSObject":
+		// force possible NSObject protocol to be NSObject class
+		typ = typing.Object
 		ref = true
 	default:
 		var ok bool

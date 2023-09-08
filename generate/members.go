@@ -8,6 +8,7 @@ import (
 	"github.com/progrium/macdriver/generate/codegen"
 	"github.com/progrium/macdriver/generate/declparse"
 	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/macdriver/generate/typing"
 )
 
 func (db *Generator) shouldSkipType(ti declparse.TypeInfo) bool {
@@ -64,6 +65,7 @@ func (db *Generator) shouldSkipType(ti declparse.TypeInfo) bool {
 		"CLBeaconIdentityConstraint",
 		"mach_port_t",
 		"cpu_type_t",
+		"ptrdiff_t",
 	} {
 		if ti.Name == n {
 			return true
@@ -180,6 +182,12 @@ func (db *Generator) Members(fw string, sym Symbol, covariantTypes []string) (pr
 					ptyp := db.ParseType(arg.Type)
 					if ptyp == nil {
 						log.Fatalf("Method param type failure: owner=%s arg=%s type=%s methoddecl=%s", sym.Name, arg.Name, arg.Type.Name, s.Declaration)
+					}
+					if ptrtyp, ok := ptyp.(*typing.PointerType); ok {
+						if ptrtyp.Type == nil {
+							log.Println("using NSObject in place of missing type:", arg.Type.Name)
+							ptyp = typing.Object
+						}
 					}
 					param := &codegen.Param{
 						Name:      arg.Name,

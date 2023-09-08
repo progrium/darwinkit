@@ -119,7 +119,6 @@ var All = []Module{
 	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
 	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
 	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
-	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
 	{"FileProvider", "File Provider", "fileprovider", "FileProvider/FileProvider.h", []string{"NS"}},
 	{"Quartz", "Quartz", "quartz", "Quartz/Quartz.h", []string{"IK", "kQC", "kQuartz", "QC", "IK_"}},
 	{"SecurityInterface", "Security Interface", "securityinterface", "SecurityInterface/SecurityInterface.h", []string{"SF"}},
@@ -158,4 +157,5 @@ var All = []Module{
 	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}},
 	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}},
 	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}},
+	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
 }

@@ -26,6 +26,7 @@ type Method struct {
 	Variadic     bool
 	Description  string
 	DocURL       string
+	Protocol     bool
 
 	goFuncName string
 	identifier string
@@ -72,6 +73,7 @@ func (m *Method) NormalizeInstanceTypeMethod(returnType *typing.ClassType) *Meth
 		goFuncName:  m.goFuncName,
 		Suffix:      m.Suffix,
 		Variadic:    m.Variadic,
+		Protocol:    m.Protocol,
 	}
 	return nm
 }
@@ -172,7 +174,7 @@ func (m *Method) WriteGoInterfaceCode(currentModule *modules.Module, classType *
 func (m *Method) GoFuncDeclare(currentModule *modules.Module, goTypeName string) string {
 	var paramStrs []string
 	for _, p := range m.Params {
-		paramStrs = append(paramStrs, p.GoDeclare(currentModule, false))
+		paramStrs = append(paramStrs, p.GoDeclare(currentModule, m.Protocol))
 	}
 	if m.Variadic {
 		paramStrs = append(paramStrs, "args ...any")
@@ -216,7 +218,7 @@ func (m *Method) ProtocolGoFuncFieldType(currentModule *modules.Module) string {
 		paramStrs = append(paramStrs, "args ...any")
 	}
 
-	return "(" + strings.Join(paramStrs, ", ") + ")" + " " + m.ReturnType.GoName(currentModule, false)
+	return "(" + strings.Join(paramStrs, ", ") + ")" + " " + m.ReturnType.GoName(currentModule, true)
 }
 
 // ProtocolGoFuncName return go protocol func name
@@ -292,5 +294,6 @@ func (m *Method) ToProtocolParamAsObjectMethod() *Method {
 		Description:  m.Description,
 		DocURL:       m.DocURL,
 		Variadic:     m.Variadic,
+		Protocol:     m.Protocol,
 	}
 }

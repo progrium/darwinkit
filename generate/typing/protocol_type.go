@@ -34,12 +34,10 @@ func (p *ProtocolType) DeclareModule() *modules.Module {
 	return p.Module
 }
 
-// GoInterfaceName return the go wrapper interface name
 func (p *ProtocolType) GoInterfaceName() string {
 	return "P" + p.GName
 }
 
-// GoStructName return the go wrapper struct name
 func (p *ProtocolType) GoStructName() string {
 	return p.GName
 }
@@ -48,5 +46,5 @@ func (p *ProtocolType) GoWrapperName() string {
 	if p.GName == "Object" {
 		return p.GName
 	}
-	return p.GName + "Wrapper"
+	return p.GName + "Object"
 }
