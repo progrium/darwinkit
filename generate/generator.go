@@ -88,7 +88,7 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 			}
 			protocolGen.Init()
 			fw := &codegen.FileWriter{
-				Name:        s.Name,
+				Name:        s.Name + "Protocol",
 				Module:      *protocolGen.Type.Module,
 				PlatformDir: rootDir,
 			}
@@ -114,7 +114,7 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				mw.EnumAliases = append(mw.EnumAliases, db.ToEnumInfo(framework, s))
 				continue
 			}
-			st, err := s.Parse()
+			st, err := s.Parse(db.Platform)
 			if err != nil || st.TypeAlias == nil {
 				log.Printf("skipping '%s', bad decl: %s", s.Name, s.Declaration)
 				continue
@@ -147,7 +147,7 @@ func (db *Generator) ResolveTypeAlias(typeName string) (declparse.TypeInfo, bool
 	if s == nil {
 		return declparse.TypeInfo{}, false
 	}
-	st, err := s.Parse()
+	st, err := s.Parse(db.Platform)
 	if err != nil || st.TypeAlias == nil {
 		return declparse.TypeInfo{}, false
 	}

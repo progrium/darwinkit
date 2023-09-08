@@ -31,3 +31,6 @@ type ImageCoordinate struct{}
 
 // https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayoffsets?language=objc
 type NDArrayOffsets struct{}
+
+// https://developer.apple.com/documentation/metalperformanceshaders/mpsimagereadwriteparams?language=objc
+type ImageReadWriteParams struct{}

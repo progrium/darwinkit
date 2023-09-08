@@ -3,6 +3,7 @@ package codegen
 import (
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/progrium/macdriver/generate/modules"
 	"github.com/progrium/macdriver/internal/set"
@@ -57,6 +58,9 @@ func (w *FileWriter) WriteCode() {
 }
 
 func (w *FileWriter) goFilePath() string {
+	if strings.Contains(w.Name, "Delegate") {
+		w.Name = strings.Replace(w.Name, "Protocol", "", -1)
+	}
 	name := stringx.CamelToSnake(modules.TrimPrefix(w.Name))
 	return w.PlatformDir + "/" + w.Module.Package + "/" + name + ".gen.go"
 }

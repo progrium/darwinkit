@@ -17,4 +17,4 @@ example:
 .PHONY: example
 
 generate/symbols.zip:
-	cd generate && wget https://github.com/mactypes/symbolsdb/releases/download/1.0/symbols.zip
+	cd generate && wget https://github.com/mactypes/symbolsdb/releases/download/1.1/symbols.zip

@@ -13,7 +13,7 @@ func (db *Generator) ToProtocolGen(fw string, sym Symbol) *codegen.Protocol {
 	if db.genCache == nil {
 		db.genCache = make(map[string]codegen.CodeGen)
 	}
-	key := fmt.Sprintf("%s.%s", fw, sym.Name)
+	key := fmt.Sprintf("%s.P%s", fw, sym.Name)
 	cg, ok := db.genCache[key]
 	if ok {
 		if pcg, ok := cg.Copy().(*codegen.Protocol); ok {
@@ -34,8 +34,8 @@ func (db *Generator) ToProtocolGen(fw string, sym Symbol) *codegen.Protocol {
 		Type:        type_,
 	}
 
-	// symbolsdb doesnt have protocol superclasses yet,
-	// so these are known ones for appkit for now
+	// symbolsdb should have protocol superclasses now via inheritsFrom,
+	// but these are known ones for appkit for now
 	knownSupers := map[string]string{
 		"NSComboBoxDelegate":    "NSTextFieldDelegate",
 		"NSMatrixDelegate":      "NSControlTextEditingDelegate",

@@ -1,5 +1,7 @@
 package metal
 
+import "unsafe"
+
 type Coordinate2D = SamplePosition
 
 // todo
@@ -14,3 +16,6 @@ type SizeAndAlign struct{}
 type SamplePosition struct{}
 type ClearColor struct{}
 type AccelerationStructureSizes struct{}
+
+type AutoreleasedComputePipelineReflection unsafe.Pointer
+type AutoreleasedRenderPipelineReflection unsafe.Pointer

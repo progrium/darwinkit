@@ -108,7 +108,7 @@ func (h *FileSystemURLSchemeHandler) HasWebViewStartURLSchemeTask() bool {
 }
 
 // WebViewStartURLSchemeTask implements URLSchemeHandler
-func (h *FileSystemURLSchemeHandler) WebViewStartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper) {
+func (h *FileSystemURLSchemeHandler) WebViewStartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskObject) {
 	url := urlSchemeTask.Request().URL()
 	path := url.Path()
 	if len(path) > 0 && path[0] == '/' {
@@ -132,12 +132,12 @@ func (h *FileSystemURLSchemeHandler) WebViewStartURLSchemeTask(webView WebView, 
 		url, mime, len(data), "utf-8",
 	)
 
-	urlSchemeTask.DidReceiveResponse(response)
+	urlSchemeTask.DidReceiveResponse(response.URLResponse)
 	urlSchemeTask.DidReceiveData(data)
 	urlSchemeTask.DidFinish()
 }
 
-func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskWrapper, err error) {
+func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskObject, err error) {
 	url := urlSchemeTask.Request().URL()
 	var status = 500
 	if errors.Is(err, fs.ErrNotExist) {
@@ -149,13 +149,17 @@ func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskWrap
 			"Content-type":   "text/plain; charset=utf-8",
 			"Content-length": strconv.Itoa(len(data)),
 		})
-	urlSchemeTask.DidReceiveResponse(response)
+	urlSchemeTask.DidReceiveResponse(response.URLResponse)
 	urlSchemeTask.DidReceiveData(data)
 	urlSchemeTask.DidFinish()
 }
 
 // WebViewStopURLSchemeTask implements URLSchemeHandler
-func (h *FileSystemURLSchemeHandler) WebViewStopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper) {
+func (h *FileSystemURLSchemeHandler) WebViewStopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskObject) {
+}
+
+func (h *FileSystemURLSchemeHandler) HasWebViewStopURLSchemeTask() bool {
+	return true
 }
 
 func (h *FileSystemURLSchemeHandler) getMime(path string) string {

@@ -16,7 +16,7 @@ func (db *Generator) ToEnumInfo(fw string, sym Symbol) *codegen.AliasInfo {
 	}
 	var enumValues []*codegen.EnumValue
 	for _, ev := range db.EnumValues(fw) {
-		st, _ := ev.Parse()
+		st, _ := ev.Parse(db.Platform)
 		if st.Variable.Type.Name != sym.Name && ev.Parent != sym.Name {
 			continue
 		}
@@ -129,7 +129,7 @@ func (db *Generator) AllowedEnumAlias(s Symbol) bool {
 		"UInt32",
 		"UInt64",
 	}
-	st, err := s.Parse()
+	st, err := s.Parse(db.Platform)
 	if err != nil {
 		return false
 	}

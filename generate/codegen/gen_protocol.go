@@ -226,7 +226,10 @@ func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
 
 func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 	typeName := p.Type.GoWrapperName()
-	w.WriteLine(fmt.Sprintf("// A concrete type wrapper for the [%s] protocol.", p.Type.GoInterfaceName()))
+	w.WriteLine("// ensure impl type implements protocol interface")
+	w.WriteLine(fmt.Sprintf("var _ %s = (*%s)(nil)", p.Type.GoInterfaceName(), typeName))
+	w.WriteLine("")
+	w.WriteLine(fmt.Sprintf("// A concrete type for the [%s] protocol.", p.Type.GoInterfaceName()))
 	w.WriteLine("type " + typeName + " struct {")
 	w.Indent()
 	if len(p.Supers) == 0 {
@@ -275,6 +278,9 @@ func (p *Protocol) allMethods() []*Method {
 		}
 
 		allMethods = append(allMethods, (*Method)(pp.getter()))
+	}
+	for idx := range allMethods {
+		allMethods[idx].Protocol = true
 	}
 	return allMethods
 }

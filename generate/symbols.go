@@ -37,20 +37,27 @@ var blacklist = []string{
 	"WebView",              // gets picked up instead of WKWebView
 }
 
+var pathBlacklist = []string{
+	"foundation/nshashtable/legacy_hash_table_implementation/nshashtable", // found instead of NSHashTable class
+	"foundation/nsmaptable/legacy_map_table_implementation/nsmaptable",    // same
+}
+
 type Symbol struct {
 	Name string
 	Path string
 	Kind string
 
-	Description string
-	Type        string
-	Parent      string
-	Modules     []string
-	Platforms   []Platform
-	Declaration string
-	Parameters  []Parameter
-	Return      string
-	Deprecated  bool
+	Description   string
+	Type          string
+	Parent        string
+	Modules       []string
+	Platforms     []Platform
+	Declaration   string
+	Declarations  map[string]string
+	Parameters    []Parameter
+	Return        string
+	Deprecated    bool
+	InheritedFrom string
 }
 
 type Platform struct {
@@ -125,8 +132,12 @@ func (s Symbol) HasPlatform(name string, version int, deprecated bool) bool {
 	return false
 }
 
-func (s Symbol) Parse() (*declparse.Statement, error) {
-	p := declparse.NewStringParser(s.Declaration)
+func (s Symbol) Parse(platform string) (*declparse.Statement, error) {
+	decl := s.Declaration
+	if decl == "" && len(s.Declarations) > 0 {
+		decl = s.Declarations[platform]
+	}
+	p := declparse.NewStringParser(decl)
 	switch s.Kind {
 	case "Constant", "Property":
 		p.Hint = declparse.HintVariable
@@ -176,6 +187,9 @@ func (db *SymbolCache) loadFrom(file *zip.File) (v Symbol, err error) {
 	}
 	if strIn(blacklist, v.Name) {
 		return v, fmt.Errorf("blacklisted symbol: %s", v.Name)
+	}
+	if strIn(pathBlacklist, v.Path) {
+		return v, fmt.Errorf("blacklisted path: %s", v.Path)
 	}
 	if v.Kind != "Property" && v.Kind != "Method" && v.Kind != "Framework" {
 		db.cache[v.Name] = v

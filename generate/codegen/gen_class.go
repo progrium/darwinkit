@@ -223,7 +223,7 @@ func (c *Class) writeGoStruct(w *CodeWriter) {
 			w.UnIndent()
 			w.WriteLine("}")
 		}
-		if (im.InitMethod || im.ClassMethod) && im.Name != "new" && im.Name != "init" {
+		if (im.InitMethod || im.ClassMethod) && im.Name != "new" && im.Name != "init" && im.Name != "alloc" {
 			//add a convenient custom init method function
 			w.WriteLine("")
 			if m.DocURL != "" {
