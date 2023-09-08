@@ -1,3 +1,0 @@
-// AUTO-GENERATED CODE, DO NOT MODIFY
-
-package webkit

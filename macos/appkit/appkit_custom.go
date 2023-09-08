@@ -18,58 +18,6 @@ const VariableStatusItemLength float64 = -1
 // for some reason not in symbols.zip?
 type FontWidth float64
 
-// symbols db is missing a few common methods
-
-func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:constant:"), anchor, c)
-	return rv
-}
-
-// Inserts a view among the view’s subviews so it’s displayed immediately above or below another view. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483640-addsubview?language=objc
-func (v_ View) AddSubviewPositionedRelativeTo(view IView, place WindowOrderingMode, otherView IView) {
-	objc.Call[objc.Void](v_, objc.Sel("addSubview:positioned:relativeTo:"), view, place, otherView)
-}
-
-func (fc _FontClass) FontWithNameSize(fontName string, fontSize float64) Font {
-	rv := objc.Call[Font](fc, objc.Sel("fontWithName:size:"), fontName, fontSize)
-	return rv
-}
-
-// Creates a font object for the specified font name and font size. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1525977-fontwithname/
-func Font_FontWithNameSize(fontName string, fontSize float64) Font {
-	return FontClass.FontWithNameSize(fontName, fontSize)
-}
-
-func (ic _MenuItemClass) SeparatorItem() MenuItem {
-	rv := objc.Call[MenuItem](ic, objc.Sel("separatorItem"))
-	return rv
-}
-
-// Returns a menu item that is used to separate logical groups of menu commands.
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514838-separatoritem
-func MenuItem_SeparatorItem() MenuItem {
-	return MenuItemClass.SeparatorItem()
-}
-
-func (w_ Window) InitWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
-	rv := objc.Call[Window](w_, objc.Sel("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
-	return rv
-}
-
-// Initializes the window with the specified values. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419477-initwithcontentrect?language=objc
-func NewWindowWithContentRectStyleMaskBackingDefer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
-	instance := WindowClass.Alloc().InitWithContentRectStyleMaskBackingDefer(contentRect, style, backingStoreType, flag)
-	instance.Autorelease()
-	return instance
-}
-
 // currently this is deprecated but is still needed pre-mac14
 // todo: remove when deprecated are added back (but also under build tag per version)
 
