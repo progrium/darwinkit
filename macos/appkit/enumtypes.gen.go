@@ -3004,7 +3004,7 @@ const (
 // Layout priority used to indicate the relative importance of constraints, allowing Auto Layout to make appropriate tradeoffs when satisfying the constraints of the system as a whole. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutpriority?language=objc
-type LayoutPriority float64
+type LayoutPriority float32
 
 const (
 	LayoutPriorityDefaultHigh                LayoutPriority = 750.000000
