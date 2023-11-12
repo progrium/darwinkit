@@ -155,7 +155,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 			continue
 		}
 		if s.Kind == "Constant" && s.Type == "Global Variable" {
-			stmt, err := s.Parse()
+			stmt, err := s.Parse(TargetPlatform)
 			if err != nil {
 				log.Fatalf("%s: %s in '%s'", s.Name, err, s.Declaration)
 			}
@@ -177,7 +177,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 				if typ.Declaration == "" {
 					return nil, false
 				}
-				typdef, err := typ.Parse()
+				typdef, err := typ.Parse(TargetPlatform)
 				if err != nil {
 					log.Fatalf("%s: %s in '%s'", typ.Name, err, typ.Declaration)
 				}
