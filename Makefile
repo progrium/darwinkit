@@ -1,20 +1,27 @@
+.PHONY: generate test clobber example examples
+
 GOEXE ?= go
+EXAMPLES := $(wildcard macos/_examples/*)
 
 generate:
 	$(GOEXE) generate ./...
-.PHONY: generate
 
 test:
 	$(GOEXE) test ./...
-.PHONY: test
 
 clobber:
 	$(GOEXE) run ./generate/tools/clobbergen.go ./macos
-.PHONY: clobber
 
 example:
 	$(GOEXE) run ./macos/_examples/helloworld/main.go
-.PHONY: example
+
+examples: _local/bin
+	@for dir in $(EXAMPLES); do \
+		$(GOEXE) build -o ./_local/bin/$$(basename $$dir) ./$$dir; \
+	done
+
+_local/bin:
+	mkdir -p _local/bin
 
 generate/symbols.zip:
 	cd generate && wget https://github.com/mactypes/symbolsdb/releases/download/1.1/symbols.zip
