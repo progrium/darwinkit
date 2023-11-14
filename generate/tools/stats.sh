@@ -11,3 +11,7 @@ awk '/type [a-zA-Z0-9_]+ interface {/,/}/' ./macos/*/*.gen.go | grep ')' | wc -l
 echo
 echo "Enums/constants:"
 cat ./macos/*/enumtypes.gen.go | grep -v '^\s*//' | grep -v '^\s*$' | grep -v '[\(\)]' | wc -l
+echo
+echo "Structs:"
+find . -type f -name "*_structs.go" -exec grep '^type' {} + | wc -l
+echo
