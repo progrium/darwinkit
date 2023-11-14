@@ -136,6 +136,9 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				})
 				continue
 			}
+			// any other type aliases can be added manually
+			// since they're just a go type alias or an
+			// unsafe.Pointer type
 		}
 	}
 	mw.WriteCode()

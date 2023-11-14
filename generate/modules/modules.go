@@ -148,6 +148,7 @@ var All = []Module{
 	{"AVFoundation", "AVFoundation", "avfoundation", "AVFoundation/AVFoundation.h", []string{"AV"}},
 	{"AVKit", "AVKit", "avkit", "AVKit/AVKit.h", []string{"AV"}},
 	{"GameplayKit", "GameplayKit", "gameplaykit", "GameplayKit/GameplayKit.h", []string{"GK"}},
+	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}},
 	{"SceneKit", "SceneKit", "scenekit", "SceneKit/SceneKit.h", []string{"SCN"}},
 	{"SpriteKit", "SpriteKit", "spritekit", "SpriteKit/SpriteKit.h", []string{"SK"}},
 	{"ModelIO", "Model I/O", "modelio", "ModelIO/ModelIO.h", []string{"MDL"}},
@@ -156,6 +157,5 @@ var All = []Module{
 	{"MetalKit", "Metal Kit", "metalkit", "MetalKit/MetalKit.h", []string{"MTK"}},
 	{"MetalPerformanceShadersGraph", "Metal Performance Shaders Graph", "mpsgraph", "MetalPerformanceShadersGraph/MetalPerformanceShadersGraph.h", []string{"MPSGraph"}},
 	{"MetalPerformanceShaders", "Metal Performance Shaders", "mps", "MetalPerformanceShaders/MetalPerformanceShaders.h", []string{"MPS"}},
-	{"SystemConfiguration", "System Configuration", "sysconfig", "SystemConfiguration/SystemConfiguration.h", []string{"SC", "kSC"}},
 	{"MediaPlayer", "Media Player", "mediaplayer", "MediaPlayer/MediaPlayer.h", []string{"MP"}},
 }

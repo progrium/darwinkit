@@ -115,6 +115,13 @@ Once it generates good output, you can pipe it to the appropriate file under ./g
 
 The [initmod](#initmod-platform-framework) tool can now be run to generate the initial files for the package that are not intended to be generated again. At this point you won't have to modify anything in these yet, they're good as is. 
 
+This is also where you should generate structs. This is done out of band from regular generation
+so that they can be tweaked manually if needed. You can use the [structs](#structs) tool like this:
+
+`go run ./generate/tools/structs.go [framework] > ./macos/[framework]/[framework]_structs.go`
+
+Be sure to check the output! If it was unable to generate a struct it will include it in the comments at the bottom. If any other struct has a field using a struct type it couldn't generate it will start with ` _Ctype_struct_`, which you'll need to comment out or replace with a placeholder until you have that type.
+
 
 ### Step 4: Run go generate for your framework
 
@@ -220,8 +227,8 @@ Re-generates frameworks that have been generated (have .gen.go files).
 
 `./generate/tools/regen.sh macos`
 
-### findstruct [struct-name]
+### structs [framework]
 
-Looks through XCode SDK headers for a struct definition. Helpful to fill in struct definitions.
+Generates documented Go structs for a framework. 
 
-`go run ./generate/tools/findstruct.go CLLocationCoordinate2D`
+`go run ./generate/tools/structs.go foundation > ./macos/foundation/foundation_structs.go`

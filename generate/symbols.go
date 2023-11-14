@@ -45,7 +45,7 @@ var pathBlacklist = []string{
 type Symbol struct {
 	Name string
 	Path string
-	Kind string
+	Kind string // Class, Constant, Enum, Framework, Function, Macro, Method, Property, Protocol, Struct, Type
 
 	Description   string
 	Type          string
