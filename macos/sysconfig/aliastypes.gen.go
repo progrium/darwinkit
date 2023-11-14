@@ -16,12 +16,12 @@ type PreferencesCallBack = func(prefs PreferencesRef, notificationType Preferenc
 // The type of callback function used when a status event is delivered. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/systemconfiguration/scnetworkconnectioncallback?language=objc
-type etworkConnectionCallBack = func(connection EtworkConnectionRef, status EtworkConnectionStatus, info unsafe.Pointer)
+type NetworkConnectionCallBack = func(connection NetworkConnectionRef, status NetworkConnectionStatus, info unsafe.Pointer)
 
 // Type of callback function used when the reachability of a network address or name changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/systemconfiguration/scnetworkreachabilitycallback?language=objc
-type etworkReachabilityCallBack = func(target EtworkReachabilityRef, flags EtworkReachabilityFlags, info unsafe.Pointer)
+type NetworkReachabilityCallBack = func(target NetworkReachabilityRef, flags NetworkReachabilityFlags, info unsafe.Pointer)
 
 // Callback used when notification of changes made to the dynamic store is delivered. [Full Topic]
 //

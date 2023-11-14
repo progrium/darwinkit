@@ -5,8 +5,23 @@ import (
 	"reflect"
 	"unsafe"
 
+	"github.com/progrium/macdriver/macos/coregraphics"
 	"github.com/progrium/macdriver/objc"
 )
+
+type AppleEventManagerSuspensionID unsafe.Pointer
+type RangePointer unsafe.Pointer
+type RectPointer unsafe.Pointer
+type PointPointer unsafe.Pointer
+type RectArray unsafe.Pointer
+type SizeArray unsafe.Pointer
+type PointArray unsafe.Pointer
+
+type PropertyListReadOptions PropertyListMutabilityOptions
+
+type Point = coregraphics.Point
+type Size = coregraphics.Size
+type Rect = coregraphics.Rect
 
 func (N *String) String() string {
 	return objc.ToGoString(N.Ptr())

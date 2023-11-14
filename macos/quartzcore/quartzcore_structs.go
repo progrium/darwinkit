@@ -1,5 +1,17 @@
 package quartzcore
 
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/caframeraterange?language=objc
+type FrameRateRange struct {
+	Minimum   float32
+	Maximum   float32
+	Preferred float32
+}
+
+// The standard transform matrix used throughout Core Animation. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransform3d?language=objc
 type Transform3D struct {
 	M11 float64
 	M12 float64
@@ -17,10 +29,4 @@ type Transform3D struct {
 	M42 float64
 	M43 float64
 	M44 float64
-}
-
-type FrameRateRange struct {
-	minimum   float32
-	maximum   float32
-	preferred float32
 }

@@ -8,11 +8,9 @@ import (
 	"github.com/progrium/macdriver/objc"
 )
 
-// todo: generate
-type ModalSession unsafe.Pointer
+// todo: generate?
 type AccessibilityLoadingToken unsafe.Pointer
 
-// todo: generate
 const VariableStatusItemLength float64 = -1
 
 // for some reason not in symbols.zip?
