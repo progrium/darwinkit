@@ -1,0 +1,8 @@
+package coremedia
+
+import "github.com/progrium/macdriver/macos/corefoundation"
+
+type BufferRef corefoundation.TypeRef
+type MetadataFormatDescriptionRef FormatDescriptionRef
+type VideoFormatDescriptionRef FormatDescriptionRef
+type AudioFormatDescriptionRef FormatDescriptionRef

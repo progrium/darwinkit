@@ -23,6 +23,10 @@ type Point = coregraphics.Point
 type Size = coregraphics.Size
 type Rect = coregraphics.Rect
 
+type FastEnumerationState struct {
+	// TODO
+}
+
 func (N *String) String() string {
 	return objc.ToGoString(N.Ptr())
 }
