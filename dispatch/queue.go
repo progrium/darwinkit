@@ -9,6 +9,7 @@ package dispatch
 // void Dispatch_Release(void* queue);
 // void Dispatch_Async(void* queue, uintptr_t task);
 // void Dispatch_Sync(void* queue, uintptr_t task);
+// void* Dispatch_Create_Queue(const char* label, void* attr);
 import "C"
 import (
 	"math"
@@ -72,4 +73,13 @@ func runQueueTask(p C.uintptr_t) {
 	task := h.Value().(func())
 	task()
 	h.Delete()
+}
+
+// Creates a new dispatch queue to which blocks can be submitted.
+//
+// [Full Topic]: https://developer.apple.com/documentation/dispatch/1453030-dispatch_queue_create?language=objc
+func CreateQueue(label string, attr uintptr) Queue {
+	cLabel := C.CString(label)
+	p := C.Dispatch_Create_Queue(cLabel, unsafe.Pointer(attr))
+	return Queue{p}
 }
