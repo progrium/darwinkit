@@ -56,7 +56,7 @@ func (f *FormView) InsertRow(index int, name string, control appkit.IControl) {
 
 // SetRowSpacing set spacing between rows.
 func (f *FormView) SetRowSpacing(spacing float64) {
-	f.SetRowSpacing(spacing)
+	f.GridView.SetRowSpacing(spacing)
 }
 
 // SetLabelWidth set width for labels
