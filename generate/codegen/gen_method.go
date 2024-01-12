@@ -116,7 +116,7 @@ func (m *Method) WriteGoCallCode(currentModule *modules.Module, typeName string,
 	for idx, p := range m.Params {
 		switch tt := p.Type.(type) {
 		case *typing.ClassType:
-			args = append(args, "objc.Ptr("+p.GoName()+")")
+			args = append(args, p.GoName())
 		case *typing.ProtocolType:
 			pvar := fmt.Sprintf("po%d", idx)
 			cw.WriteLineF("%s := objc.WrapAsProtocol(\"%s\", %s)", pvar, tt.Name, p.GoName())
