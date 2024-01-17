@@ -1,8 +1,12 @@
 package foundation
 
 import (
+	"fmt"
 	"reflect"
+	"strings"
 	"testing"
+
+	"github.com/progrium/macdriver/objc"
 )
 
 func TestFoundationValid(t *testing.T) {}
@@ -34,4 +38,80 @@ func TestFoundationArray(t *testing.T) {
 	}) {
 		t.Fatal("unexpected final slice from array")
 	}
+}
+
+
+// Test the (NS)Error type
+func TestFoundationError(t *testing.T) {
+	t.Run("Empty Map", func(t *testing.T) {
+
+		// declare the variables
+		var domain ErrorDomain = "My Domain"
+		code := -99
+		userInfo := make(map[ErrorUserInfoKey]objc.IObject)
+
+		// create the (NS)Error object
+		myError := Error_ErrorWithDomainCodeUserInfo(domain, code, userInfo)
+
+		// check that length of map is zero
+		length := len(myError.UserInfo())
+		if length != 0 {
+			t.Log("Error: Empty map length is not zero")
+			t.Fail()
+		}
+	})
+
+	t.Run("Map with items in it", func(t *testing.T) {
+
+		// declare the variables
+		var domain ErrorDomain = "My Domain"
+		code := -99
+		userInfo := make(map[ErrorUserInfoKey]objc.IObject)
+		userInfo["one"] = String_StringWithString("ONE")
+		userInfo["two"] = String_StringWithString("TWO")
+		userInfo["three"] = String_StringWithString("THREE")
+		userInfo["four"] = String_StringWithString("FOUR")
+		userInfo["five"] = String_StringWithString("FIVE")
+
+		// create the (NS)Error object
+		myError := Error_ErrorWithDomainCodeUserInfo(domain, code, userInfo)
+
+		// check each key with its value to see if they go together
+		for key, value := range myError.UserInfo() {
+			goKey := fmt.Sprintf("%s", reflect.ValueOf(key))
+			goValue := string(value.Description())
+			if strings.ToUpper(goKey) != goValue {
+				message := fmt.Sprintf("Failure detected: %s != %s", strings.ToUpper(goKey), goValue)
+				t.Log(message)
+				t.Fail()
+			}
+		}
+	})
+
+	t.Run("Check domain and code parameters", func(t *testing.T) {
+
+		// declare the variables
+		var domain ErrorDomain = "My Domain"
+		code := -99
+		userInfo := make(map[ErrorUserInfoKey]objc.IObject)
+
+		// create the (NS)Error object
+		myError := Error_ErrorWithDomainCodeUserInfo(domain, code, userInfo)
+
+		// check domain
+		checkDomain := myError.Domain()
+		if domain != checkDomain {
+			message := fmt.Sprintf("Expected domain value %s - actual %s", domain, checkDomain)
+			t.Log(message)
+			t.Fail()
+		}
+
+		// check code
+		checkCode := myError.Code()
+		if code != checkCode {
+			message := fmt.Sprintf("Expected code value %d - actual %d", code, checkCode)
+			t.Log(message)
+			t.Fail()
+		}
+	})
 }

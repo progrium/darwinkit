@@ -254,7 +254,7 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 			return reflect.ValueOf(ToGoSlice(*(*unsafe.Pointer)(p), t).Interface())
 		}
 	case reflect.Map:
-		return reflect.ValueOf(ToGoMap(*(*unsafe.Pointer)(p), t))
+		return ToGoMap(*(*unsafe.Pointer)(p), t)
 	case reflect.Struct:
 		return reflect.NewAt(t, p).Elem()
 	case reflect.Func:

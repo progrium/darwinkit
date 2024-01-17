@@ -65,6 +65,7 @@ dict to_c_items(void* ptr) {
     dict c_dict;
     NSArray * keys = [result_ allKeys];
     int size = [keys count];
+    c_dict.len = size;
     if (size > 0) {
         void** key_data = malloc(size * sizeof(void*));
         void** value_data = malloc(size * sizeof(void*));
@@ -76,7 +77,6 @@ dict to_c_items(void* ptr) {
         }
         c_dict.key_data = key_data;
         c_dict.value_data = value_data;
-        c_dict.len = size;
     }
     return c_dict;
 }
