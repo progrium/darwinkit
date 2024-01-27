@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"io"
+	"os"
 
 	"github.com/progrium/macdriver/generate/codegen"
 	"github.com/progrium/macdriver/generate/declparse"
@@ -42,6 +44,8 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 		Module:      *module,
 		PlatformDir: rootDir,
 	}
+	copySpecialFile(framework)
+
 	for _, s := range db.ModuleSymbols(framework) {
 		if ignoreTypes.Contains(s.Name) {
 			continue
@@ -67,6 +71,7 @@ func (db *Generator) Generate(platform string, version int, rootDir string, fram
 				PlatformDir: rootDir,
 			}
 			fw.Add(classGen)
+			removeMethods(classGen)
 			fw.WriteCode()
 		case "Protocol":
 			protocolGen := db.ToProtocolGen(framework, s)
@@ -182,4 +187,155 @@ func strIn(slice []string, str string) bool {
 		}
 	}
 	return false
+}
+
+// used to store information from special.go files
+type SkipMethod struct {
+	ClassName string
+	Selector string
+	Note string
+}
+
+// the database of methods that should not be generated
+var methodSkipList []SkipMethod
+var attemptedRead = false // prevents multiple unnecessary read attempts
+
+// reads a file called special.go and creates a database of methods to not generate "skip"
+func getFilteredSelectors() []SkipMethod {
+	workingPath, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error:", err)
+		return nil
+	}
+	specialFilePath := workingPath + "/special.go"
+	specialFile, err := os.ReadFile(specialFilePath)
+	if err != nil {
+		return nil
+	}
+	
+	// The special.go file will contain a section that begins with "begin-skip"
+	// and end with "end-skip". The information between these two indicators
+	// is used to create a database of methods to not generate.
+	// The format is "Objective-c class name", "selector", "note to display while generating".
+	specialFileContents := string(specialFile)
+	start := strings.Index(specialFileContents, "begin-skip") + 10
+	end := strings.Index(specialFileContents, "end-skip")
+	data := specialFileContents[start:end]
+	rows := strings.Split(data, "\n")
+	buffer := make([]SkipMethod, 0)
+	for _,row := range(rows) {
+		if row == "" {
+			continue
+		}
+		row = strings.ReplaceAll(row, "\"", "")
+		columns := strings.Split(row, ",")
+		newSkipMethod := SkipMethod{}
+		newSkipMethod.ClassName = strings.TrimSpace(columns[0])
+		newSkipMethod.Selector = strings.TrimSpace(columns[1])
+		newSkipMethod.Note = strings.TrimSpace(columns[2])
+		buffer = append(buffer, newSkipMethod)
+	}
+	return buffer
+}
+
+// removes methods that are on the list of methods to skip
+func removeMethods(theClass *codegen.Class) {
+
+	if methodSkipList == nil && attemptedRead == true {
+		return // no need to continue if there is no list
+	}
+	
+	// cache the list
+	if methodSkipList == nil && attemptedRead == false {
+		methodSkipList = getFilteredSelectors()
+		attemptedRead = true
+	}
+
+	// find and remove the skippable instance methods
+	methodBuffer := make([]*codegen.Method, len(theClass.InstanceTypeMethods))
+	copy(methodBuffer, theClass.InstanceTypeMethods)
+	for index, method := range(theClass.InstanceTypeMethods) {
+		for _, skipMethod := range(methodSkipList) {
+			if skipMethod.ClassName == theClass.String() {
+				if skipMethod.Selector == method.Selector() {
+					fmt.Printf("Removing [%s %s] - %s\n", theClass, skipMethod.Selector, skipMethod.Note)
+					//remove the element from the slice
+					methodBuffer[index] = nil
+				}
+			}
+		}
+	}
+
+	// create a new slice with all the skipped instance methods gone
+	theClass.InstanceTypeMethods = nil
+	for _, method := range(methodBuffer) {
+		if method != nil {
+			theClass.InstanceTypeMethods = append(theClass.InstanceTypeMethods, method)
+		}
+	}
+
+	// find and remove the skippable methods
+	methodBuffer = make([]*codegen.Method, len(theClass.Methods))
+	copy(methodBuffer, theClass.Methods)
+	for index, method := range(theClass.Methods) {
+		for _, skipMethod := range(methodSkipList) {
+			if skipMethod.ClassName == theClass.String() {
+				if skipMethod.Selector == method.Selector() {
+					fmt.Printf("Removing [%s %s] - %s\n", theClass, skipMethod.Selector, skipMethod.Note)
+					//remove the element from the slice
+					methodBuffer[index] = nil
+				}
+			}
+		}
+	}
+
+	// create a new slice with all the skipped methods gone
+	theClass.Methods = nil
+	for _, method := range(methodBuffer) {
+		if method != nil {
+			theClass.Methods = append(theClass.Methods, method)
+		}
+	}
+}
+
+// Copies the special.go file to the current framework's folder
+func copySpecialFile(framework string) {
+
+	// the folder all the frameworks are in is named one of these
+	platforms := []string {
+		"macos",
+		"ios",
+		"ipados",
+		"tvos",
+		"watchos",
+		"visionos",
+	}
+
+	workingPath, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	sourcePath := workingPath + "/../../generate/special/"
+
+	// Go thru every platform
+	for _, platform := range(platforms) {
+		sourcePath = sourcePath + platform
+		sourcePath = sourcePath + "/" + framework
+		sourcePath = sourcePath + "/special.go"
+		source, err := os.Open(sourcePath)
+		if err != nil {
+			continue // platform not available, move on to the next platform
+		}
+
+		destPath := workingPath + "/special.go"
+		destination, err := os.Create(destPath)
+
+		// copy the file to the framework's folder
+		_, err = io.Copy(destination, source)
+		if err != nil {
+			fmt.Println("Error copying file:", err)
+			return
+		}
+	}
 }

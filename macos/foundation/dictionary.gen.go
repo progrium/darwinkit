@@ -89,32 +89,6 @@ func NewDictionaryWithDictionary(otherDictionary Dictionary) Dictionary {
 	return instance
 }
 
-func (dc _DictionaryClass) DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
-	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
-	return rv
-}
-
-// Creates a dictionary containing entries constructed from the specified set of values and keys. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574181-dictionarywithobjectsandkeys?language=objc
-func Dictionary_DictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
-	return DictionaryClass.DictionaryWithObjectsAndKeys(firstObject, args...)
-}
-
-func (d_ Dictionary) InitWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
-	rv := objc.Call[Dictionary](d_, objc.Sel("initWithObjectsAndKeys:"), append([]any{firstObject}, args...)...)
-	return rv
-}
-
-// Initializes a newly allocated dictionary with entries constructed from the specified set of values and keys. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574190-initwithobjectsandkeys?language=objc
-func NewDictionaryWithObjectsAndKeys(firstObject objc.IObject, args ...any) Dictionary {
-	instance := DictionaryClass.Alloc().InitWithObjectsAndKeys(firstObject, args...)
-	instance.Autorelease()
-	return instance
-}
-
 func (d_ Dictionary) Init() Dictionary {
 	rv := objc.Call[Dictionary](d_, objc.Sel("init"))
 	return rv
