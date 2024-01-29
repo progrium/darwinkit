@@ -32,3 +32,14 @@ void Dispatch_Sync(void* queue, uintptr_t task) {
         runQueueTask(task);
     });
 }
+
+void Dispatch_Main() {
+    dispatch_main();
+}
+
+void* Dispatch_Create_Queue(const char* label, int type) {
+    if (type == 0) {
+        return dispatch_queue_create(label, DISPATCH_QUEUE_SERIAL);
+    }
+    return dispatch_queue_create(label, DISPATCH_QUEUE_CONCURRENT);
+}

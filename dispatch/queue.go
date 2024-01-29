@@ -9,6 +9,8 @@ package dispatch
 // void Dispatch_Release(void* queue);
 // void Dispatch_Async(void* queue, uintptr_t task);
 // void Dispatch_Sync(void* queue, uintptr_t task);
+// void* Dispatch_Create_Queue(const char* label, int type);
+// void Dispatch_Main();
 import "C"
 import (
 	"math"
@@ -28,6 +30,13 @@ const (
 	QueuePriorityHigh       QueuePriority = 2
 	QueuePriorityLow        QueuePriority = -2
 	QueuePriorityBackground QueuePriority = math.MinInt16
+)
+
+type QueueType int
+
+const (
+	QueueTypeSerial     QueueType = 0
+	QueueTypeConcurrent QueueType = 1
 )
 
 // Returns the serial dispatch queue associated with the application’s main thread. [Full Topic]
@@ -72,4 +81,18 @@ func runQueueTask(p C.uintptr_t) {
 	task := h.Value().(func())
 	task()
 	h.Delete()
+}
+
+// Main executes blocks submitted to the main queue.
+func Main() {
+	C.Dispatch_Main()
+}
+
+// Creates a new dispatch queue to which blocks can be submitted.
+//
+// [Full Topic]: https://developer.apple.com/documentation/dispatch/1453030-dispatch_queue_create?language=objc
+func CreateQueue(label string, queueType QueueType) Queue {
+	cLabel := C.CString(label)
+	p := C.Dispatch_Create_Queue(cLabel, C.int(queueType))
+	return Queue{p}
 }
