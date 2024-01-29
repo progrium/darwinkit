@@ -11,15 +11,22 @@ type Param struct {
 	Type      typing.Type
 	FieldName string // objc param field name(part of function name)
 	Object    bool   // version of param generalized to IObject for protocols
+	IsPtrPtr  bool
 }
 
 func (p *Param) String() string {
 	return p.FieldName + ":" + p.Name
 }
 
-// GoDeclare return go param declare code
+// Return Go parameter code
 func (p *Param) GoDeclare(currentModule *modules.Module, receiveFromObjc bool) string {
-	return p.GoName() + " " + p.Type.GoName(currentModule, receiveFromObjc)
+	returnValue := p.GoName() + " "
+	if p.IsPtrPtr == true { // Example: NSError **error
+		returnValue = returnValue + "unsafe.Pointer"
+	} else {
+		returnValue = returnValue + p.Type.GoName(currentModule, receiveFromObjc)
+	}
+	return returnValue
 }
 
 func (p *Param) ObjcDeclare() string {

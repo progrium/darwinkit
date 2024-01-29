@@ -193,6 +193,7 @@ func (db *Generator) Members(fw string, sym Symbol, covariantTypes []string) (pr
 						Name:      arg.Name,
 						Type:      ptyp,
 						FieldName: st.Method.NameParts[idx],
+						IsPtrPtr:  arg.Type.IsPtrPtr,
 					}
 					params = append(params, param)
 				}
