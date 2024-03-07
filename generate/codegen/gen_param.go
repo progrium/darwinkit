@@ -35,7 +35,7 @@ func (p *Param) ObjcDeclare() string {
 
 func (p *Param) GoName() (name string) {
 	switch p.Name {
-	case "type", "range", "map", "string", "select":
+	case "type", "range", "map", "string", "select", "interface":
 		name = p.Name + "_"
 	default:
 		name = p.Name
