@@ -161,20 +161,6 @@ func MutableArray_ArrayWithObject(anObject objc.IObject) MutableArray {
 	return MutableArrayClass.ArrayWithObject(anObject)
 }
 
-func (m_ MutableArray) InitWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	rv := objc.Call[MutableArray](m_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
-	return rv
-}
-
-// Initializes a newly allocated array by placing in it the objects in the argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460068-initwithobjects?language=objc
-func NewMutableArrayWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	instance := MutableArrayClass.Alloc().InitWithObjects(firstObj, args...)
-	instance.Autorelease()
-	return instance
-}
-
 func (mc _MutableArrayClass) Array() MutableArray {
 	rv := objc.Call[MutableArray](mc, objc.Sel("array"))
 	return rv
@@ -211,18 +197,6 @@ func (mc _MutableArrayClass) ArrayWithObjectsCount(objects objc.IObject, cnt uin
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460096-arraywithobjects?language=objc
 func MutableArray_ArrayWithObjectsCount(objects objc.IObject, cnt uint) MutableArray {
 	return MutableArrayClass.ArrayWithObjectsCount(objects, cnt)
-}
-
-func (mc _MutableArrayClass) ArrayWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
-	return rv
-}
-
-// Creates and returns an array containing the objects in the argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460145-arraywithobjects?language=objc
-func MutableArray_ArrayWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	return MutableArrayClass.ArrayWithObjects(firstObj, args...)
 }
 
 // Removes from the receiving array the objects in another given array. [Full Topic]

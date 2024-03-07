@@ -150,20 +150,6 @@ func Array_ArrayWithObject(anObject objc.IObject) Array {
 	return ArrayClass.ArrayWithObject(anObject)
 }
 
-func (a_ Array) InitWithObjects(firstObj objc.IObject, args ...any) Array {
-	rv := objc.Call[Array](a_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
-	return rv
-}
-
-// Initializes a newly allocated array by placing in it the objects in the argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460068-initwithobjects?language=objc
-func NewArrayWithObjects(firstObj objc.IObject, args ...any) Array {
-	instance := ArrayClass.Alloc().InitWithObjects(firstObj, args...)
-	instance.Autorelease()
-	return instance
-}
-
 func (ac _ArrayClass) Array() Array {
 	rv := objc.Call[Array](ac, objc.Sel("array"))
 	return rv
@@ -200,18 +186,6 @@ func (ac _ArrayClass) ArrayWithObjectsCount(objects objc.IObject, cnt uint) Arra
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460096-arraywithobjects?language=objc
 func Array_ArrayWithObjectsCount(objects objc.IObject, cnt uint) Array {
 	return ArrayClass.ArrayWithObjectsCount(objects, cnt)
-}
-
-func (ac _ArrayClass) ArrayWithObjects(firstObj objc.IObject, args ...any) Array {
-	rv := objc.Call[Array](ac, objc.Sel("arrayWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
-	return rv
-}
-
-// Creates and returns an array containing the objects in the argument list. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460145-arraywithobjects?language=objc
-func Array_ArrayWithObjects(firstObj objc.IObject, args ...any) Array {
-	return ArrayClass.ArrayWithObjects(firstObj, args...)
 }
 
 func (ac _ArrayClass) Alloc() Array {
