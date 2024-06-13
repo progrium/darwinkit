@@ -18,7 +18,7 @@ import (
 )
 
 const TargetPlatform = "macos"
-const TargetVersion = 12
+const TargetVersion = 14
 
 // go run ./generate/tools/enumexport.go [framework]
 func main() {
@@ -267,11 +267,14 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 	if framework.Package == "iosurface" {
 		extraInclude = "#import <IOSurface/IOSurfaceRef.h>"
 	}
+	if framework.Package == "coremediaio" {
+		extraInclude = "#import <CoreMediaIO/CMIOExtension.h>"
+	}
 	source := fmt.Sprintf(`package main
 
 /*
 #cgo CFLAGS: -w -x objective-c
-#cgo LDFLAGS: -lobjc -framework %s %s
+#cgo LDFLAGS: -framework %s %s
 #include <stdio.h>
 #include <%s>
 %s
