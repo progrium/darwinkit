@@ -29,7 +29,7 @@ func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	fv.AddRow("males", cb)
 	fv.AddExpandRow()
 
-	w.ContentView().AddSubview(fv)
+	w.ContentView().AddSubview(fv.GridView)
 	layout.PinEdgesToSuperView(fv, foundation.EdgeInsets{Top: 10, Left: 10, Bottom: 10, Right: 10})
 
 	w.MakeKeyAndOrderFront(nil)
