@@ -52,6 +52,7 @@ func launched(app appkit.Application, delegate *appkit.ApplicationDelegate) {
 	tr.Origin.Y = (height / 2) - (tr.Size.Height / 2)
 	t := appkit.NewTextViewWithFrame(tr)
 	t.SetString(text)
+	t.SetTextColor(appkit.Color_WhiteColor())
 	t.SetFont(appkit.Font_FontWithNameSize(*fontName, fontSize))
 	t.SetEditable(false)
 	t.SetImportsGraphics(false)
