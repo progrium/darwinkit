@@ -249,6 +249,10 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 	}
 	extraInclude := ""
 	extraLoad := ""
+	if framework.Package == "dispatch" {
+		extraInclude = "#include <dispatch/dispatch.h>"
+		framework.Name = "CoreFoundation" // just to satisfy LD
+	}
 	if framework.Package == "coremedia" {
 		extraInclude = "#include <CoreVideo/CoreVideo.h>"
 		extraLoad = "-framework CoreVideo"
@@ -268,6 +272,7 @@ func exportConstants(db *generate.SymbolCache, framework *modules.Module, platfo
 /*
 #cgo CFLAGS: -w -x objective-c
 #cgo LDFLAGS: -lobjc -framework %s %s
+#include <stdio.h>
 #include <%s>
 %s
 
