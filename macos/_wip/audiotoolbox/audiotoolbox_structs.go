@@ -553,16 +553,6 @@ type QueueLevelMeterState struct {
 	MPeakPower    float32
 }
 
-// A structure that describes a scheduled parameter event. [Full Topic]
-//
-// [Full Topic]: https://developer.apple.com/documentation/audiotoolbox/auparameterevent?language=objc
-type ParameterEvent struct {
-	ParameterID uint32
-	Scope       uint32
-	Element     uint32
-	Value       float32
-}
-
 // A callback used to provide input to an audio unit. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/audiotoolbox/aunoderendercallback?language=objc
