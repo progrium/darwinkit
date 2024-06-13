@@ -4,7 +4,7 @@ package avfoundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursoraudiodependencyinfo?language=objc
 type SampleCursorAudioDependencyInfo struct {
-	AudioSampleIsIndependentlyDecodable int8
+	AudioSampleIsIndependentlyDecodable bool
 	AudioSamplePacketRefreshCount       int64
 }
 
@@ -23,9 +23,9 @@ type EdgeWidths struct {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursorchunkinfo?language=objc
 type SampleCursorChunkInfo struct {
 	ChunkSampleCount                  int64
-	ChunkHasUniformSampleSizes        int8
-	ChunkHasUniformSampleDurations    int8
-	ChunkHasUniformFormatDescriptions int8
+	ChunkHasUniformSampleSizes        bool
+	ChunkHasUniformSampleDurations    bool
+	ChunkHasUniformFormatDescriptions bool
 	Pad_cgo_0                         [5]byte
 }
 
@@ -41,12 +41,12 @@ type CaptionPoint struct {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursordependencyinfo?language=objc
 type SampleCursorDependencyInfo struct {
-	SampleIndicatesWhetherItHasDependentSamples int8
-	SampleHasDependentSamples                   int8
-	SampleIndicatesWhetherItDependsOnOthers     int8
-	SampleDependsOnOthers                       int8
-	SampleIndicatesWhetherItHasRedundantCoding  int8
-	SampleHasRedundantCoding                    int8
+	SampleIndicatesWhetherItHasDependentSamples bool
+	SampleHasDependentSamples                   bool
+	SampleIndicatesWhetherItDependsOnOthers     bool
+	SampleDependsOnOthers                       bool
+	SampleIndicatesWhetherItHasRedundantCoding  bool
+	SampleHasRedundantCoding                    bool
 }
 
 // A structure that defines the height and width of a caption. [Full Topic]
@@ -69,9 +69,9 @@ type PixelAspectRatio struct {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursorsyncinfo?language=objc
 type SampleCursorSyncInfo struct {
-	SampleIsFullSync    int8
-	SampleIsPartialSync int8
-	SampleIsDroppable   int8
+	SampleIsFullSync    bool
+	SampleIsPartialSync bool
+	SampleIsDroppable   bool
 }
 
 // A structure that defines a caption dimension. [Full Topic]

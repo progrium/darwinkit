@@ -15,7 +15,7 @@ import (
 )
 
 const TargetPlatform = "macos"
-const TargetVersion = 12
+const TargetVersion = 14
 
 // go run ./generate/tools/structs.go [framework]
 func main() {
@@ -110,7 +110,7 @@ func goDefsFor(mod *modules.Module, structDefs []string) (string, error) {
 
 /*
 #cgo CFLAGS: -w -x objective-c
-#cgo LDFLAGS: -lobjc -framework %s %s
+#cgo LDFLAGS: -framework %s %s
 #include <%s>
 %s
 */

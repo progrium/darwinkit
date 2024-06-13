@@ -258,7 +258,7 @@ type IntersectionDistancePrimitiveIndexCoordinates struct {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistograminfo?language=objc
 type ImageHistogramInfo struct {
 	NumberOfHistogramEntries uint64
-	HistogramForAlpha        int8
+	HistogramForAlpha        bool
 	Pad_cgo_0                [4]byte
 	MinPixelValue            [4]float32
 	MaxPixelValue            [4]float32
