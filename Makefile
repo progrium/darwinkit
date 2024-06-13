@@ -3,6 +3,8 @@
 GOEXE ?= go
 EXAMPLES := $(wildcard macos/_examples/*)
 
+export CGO_LDFLAGS="-Wl,-no_warn_duplicate_libraries"
+
 generate:
 	$(GOEXE) generate ./...
 
