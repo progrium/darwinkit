@@ -3,6 +3,7 @@ package modules
 import (
 	"log"
 	"strings"
+	"unicode"
 )
 
 // Module Objective-c module
@@ -36,7 +37,7 @@ func TrimPrefix(symbolName string) string {
 			if len(prefix) == len(symbolName) {
 				continue
 			}
-			if strings.HasPrefix(symbolName, prefix) {
+			if strings.HasPrefix(symbolName, prefix) && unicode.IsUpper(rune(symbolName[len(prefix)])) {
 				name := strings.TrimPrefix(symbolName, prefix)
 				if strings.HasPrefix(symbolName, "k") {
 					return "K" + name
@@ -115,7 +116,7 @@ var All = []Module{
 	{"Kernel", "Kernel", "kernel", "Kernel/Kernel.h", []string{}},
 
 	{"Foundation", "Foundation", "foundation", "Foundation/Foundation.h", []string{"NS"}},
-	{"AppKit", "AppKit", "appkit", "Appkit/Appkit.h", []string{"NS"}},
+	{"AppKit", "AppKit", "appkit", "AppKit/AppKit.h", []string{"NS"}},
 	{"UIKit", "UIKit", "uikit", "UIKit/UIKit.h", []string{"NS"}},
 	{"UniformTypeIdentifiers", "Uniform Type Identifiers", "uti", "UniformTypeIdentifiers/UniformTypeIdentifiers.h", []string{"UT"}},
 	{"WebKit", "WebKit", "webkit", "WebKit/WebKit.h", []string{"WK"}},
