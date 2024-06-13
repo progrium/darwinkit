@@ -161,7 +161,7 @@ func (db *Generator) ParseType(ti declparse.TypeInfo) (typ typing.Type) {
 		// objc type
 		typ = typing.Class
 	case "CGFloat", "Float64":
-		typ = typing.Float
+		typ = typing.Double
 	case "NSString":
 		typ = &typing.StringType{}
 		ref = true

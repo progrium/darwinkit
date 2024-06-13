@@ -53,6 +53,7 @@ func init() {
 	primitiveMap["UInt64"] = UInt64
 
 	primitiveMap["Float32"] = Float
+	primitiveMap["Float64"] = Double
 }
 
 func GetPrimitiveType(typeName string) (*PrimitiveType, bool) {
