@@ -159,6 +159,10 @@ WKErrorNavigationAppBoundDomain 13
 WKErrorUnknown 1
 WKErrorWebContentProcessTerminated 2
 WKErrorWebViewInvalidated 3
+WKFullscreenStateEnteringFullscreen 1
+WKFullscreenStateExitingFullscreen 3
+WKFullscreenStateInFullscreen 2
+WKFullscreenStateNotInFullscreen 0
 WKMediaCaptureStateActive 1
 WKMediaCaptureStateMuted 2
 WKMediaCaptureStateNone 0

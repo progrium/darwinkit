@@ -589,6 +589,8 @@ MTLTessellationPartitionModeFractionalEven 3
 MTLTessellationPartitionModeFractionalOdd 2
 MTLTessellationPartitionModeInteger 1
 MTLTessellationPartitionModePow2 0
+MTLTextureCompressionTypeLossless 0
+MTLTextureCompressionTypeLossy 1
 MTLTextureSwizzleAlpha 5
 MTLTextureSwizzleBlue 4
 MTLTextureSwizzleGreen 3

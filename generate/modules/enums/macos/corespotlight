@@ -9,7 +9,7 @@ CSSearchQueryErrorCodeCancelled -2003
 CSSearchQueryErrorCodeIndexUnreachable -2001
 CSSearchQueryErrorCodeInvalidQuery -2002
 CSSearchQueryErrorCodeUnknown -2000
-CoreSpotlightVersionString 140703526593520
+CoreSpotlightVersionString 6691122304
 CSIndexErrorDomain CSIndexErrorDomain
 CSMailboxArchive mailbox.archive
 CSMailboxDrafts mailbox.drafts
@@ -22,4 +22,4 @@ CSSearchQueryErrorDomain CSSearchQueryErrorDomain
 CSSearchQueryString kCSSearchQueryString
 CSSearchableItemActionType com.apple.corespotlightitem
 CSSearchableItemActivityIdentifier kCSSearchableItemActivityIdentifier
-CoreSpotlightVersionNumber 2183.229980
+CoreSpotlightVersionNumber 2274.229980

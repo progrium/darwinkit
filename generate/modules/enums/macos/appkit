@@ -454,6 +454,7 @@ NSDocModalWindowMask 64
 NSDockWindowLevel 20
 NSDownArrowFunctionKey 63233
 NSDownTextMovement 22
+NSDragOperationAll 15
 NSDragOperationAll_Obsolete 15
 NSDragOperationCopy 1
 NSDragOperationDelete 32
@@ -3021,6 +3022,7 @@ NSVoiceGender VoiceGender
 NSVoiceGenderFemale VoiceGenderFemale
 NSVoiceGenderMale VoiceGenderMale
 NSVoiceGenderNeuter VoiceGenderNeuter
+NSVoiceGenderNeutral VoiceGenderNeutral
 NSVoiceIdentifier VoiceIdentifier
 NSVoiceIndividuallySpokenCharacters VoiceIndividuallySpokenCharacters
 NSVoiceLanguage VoiceLanguage
@@ -3110,7 +3112,7 @@ NSWorkspaceWillPowerOffNotification NSWorkspaceWillPowerOffNotification
 NSWorkspaceWillSleepNotification NSWorkspaceWillSleepNotification
 NSWorkspaceWillUnmountNotification NSWorkspaceWillUnmountNotification
 NSWritingDirectionAttributeName NSWritingDirection
-NSAppKitVersionNumber 2113.600098
+NSAppKitVersionNumber 2487.500000
 NSAppKitVersionNumber10_0 577.000000
 NSAppKitVersionNumber10_1 620.000000
 NSAppKitVersionNumber10_10 1343.000000
@@ -3205,6 +3207,7 @@ NSSliderAccessoryWidthWide 72.000000
 NSSplitViewControllerAutomaticDimension -340282346638528859811704183484516925440.000000
 NSSplitViewItemUnspecifiedDimension -1.000000
 NSSquareStatusItemLength -2.000000
+NSStackViewSpacingUseDefault 340282346638528859811704183484516925440.000000
 NSStackViewVisibilityPriorityDetachOnlyIfNecessary 900.000000
 NSStackViewVisibilityPriorityMustHold 1000.000000
 NSStackViewVisibilityPriorityNotVisible 0.000000

@@ -59,10 +59,10 @@ CIFeatureTypeFace Face
 CIFeatureTypeQRCode QRCode
 CIFeatureTypeRectangle Rectangle
 CIFeatureTypeText Text
-CIRAWDecoderVersion6 8
-CIRAWDecoderVersion6DNG 8.dng
-CIRAWDecoderVersion7 8
-CIRAWDecoderVersion7DNG 8.dng
+CIRAWDecoderVersion6 6
+CIRAWDecoderVersion6DNG 6.dng
+CIRAWDecoderVersion7 7
+CIRAWDecoderVersion7DNG 7.dng
 CIRAWDecoderVersion8 8
 CIRAWDecoderVersion8DNG 8.dng
 CIRAWDecoderVersionNone None

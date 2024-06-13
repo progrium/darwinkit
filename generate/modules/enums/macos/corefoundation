@@ -796,4 +796,4 @@ kCFXMLTreeErrorLocation kCFXMLTreeErrorLocation
 kCFXMLTreeErrorStatusCode kCFXMLTreeErrorStatusCode
 kCFAbsoluteTimeIntervalSince1904 3061152000.000000
 kCFAbsoluteTimeIntervalSince1970 978307200.000000
-kCFCoreFoundationVersionNumber 1866.000000
+kCFCoreFoundationVersionNumber 2420.000000

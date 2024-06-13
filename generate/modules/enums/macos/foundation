@@ -470,10 +470,14 @@ NSMatchingReportProgress 1
 NSMatchingRequiredEnd 8
 NSMatchingWithTransparentBounds 8
 NSMatchingWithoutAnchoringBounds 16
+NSMaxXEdge 2
+NSMaxYEdge 3
 NSMeasurementFormatterUnitOptionsNaturalScale 2
 NSMeasurementFormatterUnitOptionsProvidedUnit 1
 NSMeasurementFormatterUnitOptionsTemperatureWithoutUnit 4
 NSMiddleSubelement 2
+NSMinXEdge 0
+NSMinYEdge 1
 NSMinusSetExpressionType 7
 NSMinuteCalendarUnit 64
 NSMonthCalendarUnit 8
@@ -1081,6 +1085,7 @@ NSAppleScriptErrorMessage NSAppleScriptErrorMessage
 NSAppleScriptErrorNumber NSAppleScriptErrorNumber
 NSAppleScriptErrorRange NSAppleScriptErrorRange
 NSArgumentDomain NSArgumentDomain
+NSAssertionHandlerKey NSAssertionHandler
 NSAverageKeyValueOperator avg
 NSBuddhistCalendar buddhist
 NSBundleDidLoadNotification NSBundleDidLoadNotification
@@ -1837,7 +1842,7 @@ NSXMLParserErrorDomain NSXMLParserErrorDomain
 NSYearMonthWeekDesignations NSYearMonthWeekDesignations
 NSAppleEventTimeOutDefault -1.000000
 NSAppleEventTimeOutNone -2.000000
-NSFoundationVersionNumber 1866.000000
+NSFoundationVersionNumber 2420.000000
 NSURLSessionTaskPriorityDefault 0.500000
 NSURLSessionTaskPriorityHigh 0.750000
 NSURLSessionTaskPriorityLow 0.250000

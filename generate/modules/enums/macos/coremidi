@@ -2,6 +2,7 @@ MIDIChannelsWholePort 127
 MIDINetworkConnectionPolicy_Anyone 2
 MIDINetworkConnectionPolicy_HostsInContactList 1
 MIDINetworkConnectionPolicy_NoOne 0
+kMIDI1UPMaxSysexSize 6
 kMIDICVStatusAssignableControl 3
 kMIDICVStatusAssignablePNC 1
 kMIDICVStatusChannelPressure 13
