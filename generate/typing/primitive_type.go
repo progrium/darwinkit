@@ -10,7 +10,7 @@ var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL"}
 var Int = &PrimitiveType{GoName_: "int", ObjcName_: "NSInteger"}
 var UInt = &PrimitiveType{GoName_: "uint", ObjcName_: "NSUInteger"}
 
-var Float = &PrimitiveType{GoName_: "float64", ObjcName_: "float"}
+var Float = &PrimitiveType{GoName_: "float32", ObjcName_: "float"}
 var Double = &PrimitiveType{GoName_: "float64", ObjcName_: "double"}
 
 var Int8 = &PrimitiveType{GoName_: "int8", ObjcName_: "int8_t"}
